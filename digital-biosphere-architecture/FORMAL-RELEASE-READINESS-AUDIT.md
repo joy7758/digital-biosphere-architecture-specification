@@ -30,7 +30,7 @@ is not ready for formal release.
 | Website artifact integrity | `/release-manifest.json`; remote `sha256sum -c` | `PASS` |
 | HTTPS and security headers | Public response and origin checks | `PASS` |
 | Website rollback | Atomic switch to previous artifact and restore | `PASS` |
-| GitHub website artifact | `v0.1-public-website-candidate.4`; `6fd94a62`; prerelease | `PASS_CANDIDATE_ONLY` |
+| GitHub website artifact | `v0.1-public-website-candidate.5`; `7fe88e8b`; prerelease | `PASS_CANDIDATE_ONLY` |
 | DBA clean clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `PASS` |
 | DBOS clean clone | 331 tests, 34 validators, two demos | `PASS_PRIVATE_ACCESS` |
 | SAEE public clean clone | public smoke/demo、8/8 Adapter tests | `PASS` |

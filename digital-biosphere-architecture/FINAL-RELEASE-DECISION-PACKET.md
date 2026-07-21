@@ -30,7 +30,7 @@ last_reviewed: 2026-07-21
 | Agent customer validation | `TMAI-ACV-20260721-001`；千帆／方舟 12/12；公开识别 6/6；权限错误 0 | `CONDITIONAL_REMEDIATION_REQUIRED` |
 | Agent customer validation rerun | `TMAI-ACV-20260722-002`；相同阈值；12/12 sessions；全部阈值通过 | `PASS_NOT_RELEASE_AUTHORIZATION` |
 | Open-web discovery | `TMAI-OWD-20260722-001`；GitHub 完整新 description 已命中；规范英文名、中文名与公开搜索未命中 | `PARTIAL_METADATA_ONLY_CANONICAL_RECHECK_OR_LIMIT_ACCEPTANCE_PENDING` |
-| GitHub website artifact | `v0.1-public-website-candidate.4`；`6fd94a62`；`prerelease=true` | `WEBSITE_CANDIDATE_PRERELEASED_NOT_DEVELOPER_PREVIEW` |
+| GitHub website artifact | `v0.1-public-website-candidate.5`；`7fe88e8b`；`prerelease=true` | `WEBSITE_CANDIDATE_PRERELEASED_NOT_DEVELOPER_PREVIEW` |
 | DBOS repository visibility | GitHub API 返回 `PRIVATE` | `PUBLIC_ACCESS_NOT_ESTABLISHED` |
 
 ## 2. DQ-011 — SAEE Adapter Publication Boundary（SAEE 适配器公开边界）
