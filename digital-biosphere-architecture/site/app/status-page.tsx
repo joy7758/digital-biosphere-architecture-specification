@@ -13,7 +13,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         gates: "验证闸门",
         visibility: "可见性",
         next: "下一步",
-        nextBody: "修复公开适配边界、选择许可证并验证外部访问后，才能授权外部开发者试用。",
+        nextBody: "智能体客户验证已通过，GitHub 描述已部分可发现，但规范名称仍未命中。下一步是复查索引、决定 DBOS 智能体访问路线、复核剩余风险并决定正式发布。",
         back: "返回首页",
       }
     : {
@@ -25,7 +25,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         gates: "Validation gates",
         visibility: "Visibility",
         next: "Next step",
-        nextBody: "Repair the public adapter boundary, select a license, and validate external access before authorizing an external developer trial.",
+        nextBody: "Agent customer validation passed and the GitHub description is partially discoverable, but canonical names still do not match. Next, recheck indexing and make explicit human decisions on DBOS agent access, remaining risk, and formal release.",
         back: "Back to home",
       };
 
@@ -38,7 +38,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
             <p className="section-kicker">{copy.eyebrow}</p>
             <h1>{copy.title}</h1>
             <p>{copy.lead}</p>
-            <div className="observed-chip"><span>{copy.observed}</span><strong>2026-07-21 · Asia/Shanghai</strong></div>
+            <div className="observed-chip"><span>{copy.observed}</span><strong>2026-07-22 · Asia/Shanghai</strong></div>
           </div>
         </section>
         <section className="section status-detail-section">
@@ -72,7 +72,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         </section>
         <section className="section next-gate-section">
           <div className="section-shell next-gate-card">
-            <span>DQ-010</span>
+            <span>DQ-009</span>
             <div><h2>{copy.next}</h2><p>{copy.nextBody}</p></div>
             <a className="button button-secondary" href={locale === "zh" ? "/" : "/en/"}>{copy.back}</a>
           </div>

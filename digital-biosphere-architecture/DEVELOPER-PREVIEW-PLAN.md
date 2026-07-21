@@ -191,7 +191,7 @@ RECOMMEND_BOUNDED_DBOS_LOCAL_PREVIEW=true
 RECOMMEND_DEVELOPER_PREVIEW_RELEASE=false
 ```
 
-只有 DP-2 至 DP-5B 的退出条件全部有可复核证据，并经 `DQ-009` 人工发布决定后，才可改为：
+只有 DP-2 至 DP-5D 的退出条件都有可复核证据或已记录的显式限制接受，并经 `DQ-009` 人工发布决定后，才可改为：
 
 ```text
 RECOMMEND_DEVELOPER_PREVIEW_RELEASE=true

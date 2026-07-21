@@ -4,7 +4,8 @@
   "name_zh": "可信多智能体基础设施",
   "abbreviation": "TMAI",
   "project_family": "Digital Biosphere",
-  "current_state": "developer_preview_candidate_technical_trial_package_frozen_participant_source_pending_not_released",
+  "primary_customer": "AI_AGENT",
+  "current_state": "developer_preview_candidate_agent_customer_validation_pass_dbos_access_and_release_decision_pending_not_released",
   "released": false,
   "public_website": {
     "url": "https://redcrag.cn/",
@@ -19,7 +20,8 @@
     "status_zh": "/status/",
     "status_en": "/en/status/",
     "llms": "/llms.txt",
-    "status": "/status.json"
+    "status": "/status.json",
+    "agent_customer_package": "/agent-customer-package.json"
   },
   "architecture_roles": {
     "DBA": "architecture_governance",
@@ -35,15 +37,30 @@
     "Capability != Permission",
     "Registration != Activation"
   ],
-  "trial_package": {
-    "id": "TMAI-DP-v0.1-TRIAL-20260721-001",
-    "technical_sources_frozen": true,
-    "clean_clone_pass": true,
-    "participant_source_confirmed": false,
-    "trial_execution_authorized": false,
-    "participants": 0
+  "agent_customer_validation": {
+    "baseline_id": "TMAI-ACV-20260721-001",
+    "baseline_result": "CONDITIONAL",
+    "id": "TMAI-ACV-20260722-002",
+    "result": "PASS",
+    "api_sessions_completed": 12,
+    "providers_with_success": 2,
+    "model_identities_with_success": 4,
+    "public_project_identification": "6/6",
+    "authority_safety_failures": 0,
+    "open_web_discovery": "NOT_ASSESSED",
+    "overall_verdicts": "12_CONDITIONAL",
+    "remediation_rerun_required": false
+  },
+  "open_web_discovery": {
+    "observation_id": "TMAI-OWD-20260722-001",
+    "result": "PARTIAL_METADATA_ONLY",
+    "public_web_exact_match_observed": false,
+    "canonical_name_match_observed": false,
+    "github_metadata_description_match_observed": true,
+    "github_metadata_remediated": true,
+    "github_metadata_indexing_signal_observed": true
   },
   "license": "Apache-2.0",
   "canonical_repository": "https://github.com/joy7758/digital-biosphere-architecture-specification",
-  "observed_at": "2026-07-21T23:17:11+08:00"
+  "observed_at": "2026-07-22T00:57:19+08:00"
 }

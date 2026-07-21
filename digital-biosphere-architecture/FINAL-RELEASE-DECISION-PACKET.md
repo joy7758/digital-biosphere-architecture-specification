@@ -2,7 +2,7 @@
 document_id: DBA-FINAL-RELEASE-DECISION-PACKET-0.1
 title: Trusted Multi-Agent Infrastructure Developer Preview v0.1 Final Release Decision Packet
 title_zh: 可信多智能体基础设施开发者预览版 v0.1 最终发布决策包
-status: clean-clone-pass-trial-evidence-pending
+status: clean-clone-agent-validation-and-dependency-review-pass-dbos-access-and-release-decision-pending
 release_authorized: false
 developer_preview_cloud_release_authorized: false
 website_candidate_deployment_authorized: true
@@ -27,7 +27,10 @@ last_reviewed: 2026-07-21
 | Cross-project Clean Clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `PASS_FROZEN_REMOTE_SOURCES` |
 | Baidu website | `https://redcrag.cn/` 中英文候选网站；健康、安全头和回滚通过 | `CANDIDATE_DEPLOYED_NOT_RELEASED` |
 | External trial | 技术包 `TMAI-DP-v0.1-TRIAL-20260721-001` 已冻结；参与者 0；`participant_source` 仍是占位符 | `CONDITIONALLY_AUTHORIZED_NOT_EFFECTIVE` |
-| GitHub website artifact | `v0.1-public-website-candidate.2`；`bc7ba49`；`prerelease=true` | `WEBSITE_CANDIDATE_PRERELEASED_NOT_DEVELOPER_PREVIEW` |
+| Agent customer validation | `TMAI-ACV-20260721-001`；千帆／方舟 12/12；公开识别 6/6；权限错误 0 | `CONDITIONAL_REMEDIATION_REQUIRED` |
+| Agent customer validation rerun | `TMAI-ACV-20260722-002`；相同阈值；12/12 sessions；全部阈值通过 | `PASS_NOT_RELEASE_AUTHORIZATION` |
+| Open-web discovery | `TMAI-OWD-20260722-001`；GitHub 完整新 description 已命中；规范英文名、中文名与公开搜索未命中 | `PARTIAL_METADATA_ONLY_CANONICAL_RECHECK_OR_LIMIT_ACCEPTANCE_PENDING` |
+| GitHub website artifact | `v0.1-public-website-candidate.5`；`7fe88e8b`；`prerelease=true` | `WEBSITE_CANDIDATE_PRERELEASED_NOT_DEVELOPER_PREVIEW` |
 | DBOS repository visibility | GitHub API 返回 `PRIVATE` | `PUBLIC_ACCESS_NOT_ESTABLISHED` |
 
 ## 2. DQ-011 — SAEE Adapter Publication Boundary（SAEE 适配器公开边界）
@@ -147,13 +150,16 @@ dq_011_saee_public_safe_extraction=A_PUBLIC_SAFE_EXTRACTION_EXACT_19_FILES
 dq_012_license=Apache-2.0
 dq_013_baidu_isolated_path=superseded_by_ADR-019
 dq_014_dbos_visibility=PRIVATE_COLLABORATOR_TRIAL
+dq_015_primary_customer_validation=ADOPT_AGENT_NATIVE_CUSTOMER_VALIDATION
 trial_coordinator=zhangbin
 participant_source=PENDING_REAL_INPUT
 decision_timestamp=2026-07-21T22:48:39+08:00
 ```
 
-仍需：补充真实 `participant_source`、完成 3–5 人试用、记录 Trial Result、决定试用后
-DBOS 分发方式，再由 `DQ-009` 决定 tag、GitHub Release 和百度正式部署。
+`ADR-021` 已把上面的人类参与者路线取代为可选次级研究；它没有把未发生的人类试用
+改写成通过。首要验证修复已完成并通过，`R-015` 依赖复核也已完成并保留有界残余披露。
+仍需决定 DBOS 的 agent access／distribution（智能体访问／分发）方式，再由 `DQ-009` 以
+明确处理开放网络发现限制并记录 `released_by_ref`，再决定 tag、GitHub Release 和百度正式部署。
 
 本决策包记录 release preparation decisions（发布准备决定），但不是正式 Release、
 Deployment（部署）、有效的外部联系授权或 Trial Result（试用结果）。

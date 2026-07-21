@@ -34,7 +34,10 @@ risk_acceptance_authority_assigned: false
 | `R-011` | `HIGH` | DBOS 当前文档演化与 `DBOS-EXP-0001` 冻结 identity evidence 的校验语义冲突 | Version-aware historical binding 已实现；旧 digest 未改写；34/34 validators 通过并对当前漂移发 warning | source 隔离与 clean-clone 回归后再决定是否正式关闭 | `LOCAL_MITIGATION_VALIDATED_NOT_RELEASED` |
 | `R-012` | `MEDIUM` | DBOS 默认顶层测试曾发现 0 tests，开发者可能误读结果 | `tools/run_tests.py` 现在逐目录运行且零测试失败；331/331 tests | 发布时只推荐单一 runner，并保留其自测 | `LOCAL_MITIGATION_VALIDATED_NOT_RELEASED` |
 | `R-014` | `HIGH` | 3–5 人小样本、个别正面反馈或试用 PASS 可能被过度解释为客户验证、市场采用或发布授权 | External Developer Trial Plan 明确样本仅验证 onboarding、理解、使用和问题相关性信号 | 预冻结成功阈值；保留失败；Trial Result、Customer Validation、Release、Adoption 分开；发布仍需 `DQ-009` | `MITIGATED_BY_PLAN_NOT_YET_TESTED` |
-| `R-015` | `MEDIUM` | 站点依赖审计报告 12 项已知问题，其中 production dependency tree（生产依赖树）有 2 项 PostCSS moderate advisories（中等级通告） | 2026-07-21 `npm audit --omit=dev --audit-level=high` 返回 0，但列出 2 项 moderate；当前部署只复制静态 `out/`，不部署 Node.js 或构建依赖 | 禁止 `npm audit fix --force` 造成未审查破坏性升级；在正式发布决策前复核上游修复版本或记录有界风险决定 | `DEPENDENCY_REVIEW_REQUIRED_BEFORE_FORMAL_RELEASE` |
+| `R-015` | `MEDIUM` | 站点构建树仍含 2 项 Next 内置 PostCSS moderate advisories（中等级通告） | `TMAI-WEB-DEPENDENCY-REVIEW-20260722-001`：同主版本升级后完整树为 0 critical、0 high、2 moderate；5/5 tests、lint 和静态导出通过；服务器不部署 Node.js 或构建依赖 | 保持静态部署边界和 release-note 披露；等待 Next 的非破坏性上游修复；禁止 `npm audit fix --force` 降级到 Next 9 | `MITIGATED_REVIEW_COMPLETE_RESIDUAL_DISCLOSED` |
+| `R-016` | `HIGH` | Agent API 模型的推荐或 `PASS` 被误写成真实客户采用、market fit（市场匹配）或发布授权 | `TMAI-ACV-20260721-001` 是 12 个受控、给定材料的模型会话，不含真实生产调用 | 固定 `Agent Recommendation ≠ Customer Adoption ≠ Release`；保留 Human `released_by_ref` | `MITIGATED_BY_PROTOCOL` |
+| `R-017` | `MEDIUM` | 给定 URL 后的机器理解或元数据 description 命中被误写成 open-web discovery（开放网络自然发现） | `TMAI-OWD-20260722-001` 首轮 6 查询无命中；修复后 GitHub 完整新 description 已命中，但规范英文名、中文名和 4 个公开搜索仍无精确命中 | 保留 `OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY`；等待规范名称索引后复查，或由 Human Owner 显式接受 Developer Preview 的发现限制 | `PARTIAL_METADATA_ONLY_CANONICAL_RECHECK_REQUIRED` |
+| `R-018` | `HIGH` | DBOS 保持 private，使 AI agent 能理解 TMAI 但不能自主获取、运行或复用核心存在基础设施 | 12/12 模型把 private／未发布列为 blocker；overall verdict 为 6 `CONDITIONAL` + 6 `DO_NOT_RECOMMEND` | 由 Human Owner 与 DBOS Domain Owner 单独决定 public package、受控 agent access 或继续 private | `DECISION_REQUIRED_BEFORE_OPERATIONAL_RECOMMENDABILITY` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -44,7 +47,8 @@ risk_acceptance_authority_assigned: false
 | `B-003` | canonical status source 未确认 | 自动或周期性可信状态汇总 | DBOS、SAEE、Pilot 各自提供 source + freshness + conflict policy | 当前时间点只读 snapshot |
 | `B-004` | Research Agent Human Review 与 approved source 不完整 | Prototype Authorization Review 和实验 | Pilot 自己的 readiness gate 达到可审查状态并获得人工决定 | Pilot 规范改进和 DBA 项目群规划 |
 | `B-005` | 两个 DBA 语义表面未完成 canonical reconciliation | 对外唯一入口、规范优先级和自动检索路由 | `DQ-008` 形成决定并完成引用/迁移验证 | 当前仓库作为 Program Governance Cockpit 的工作树基线 |
-| `B-008` | `participant_source` 仍是占位符，没有 3–5 名真实开发者或明确招募渠道 | `DQ-010` 条件授权生效、外部联系、DBOS collaborator 添加和 Trial Execution | Human Owner 提供可执行的真实参与者引用或明确招募渠道 | 技术试用包冻结、内部 Clean Clone 和发布前文档改进 |
+| `B-010` | DBOS 没有公开 package、API 或面向 AI agent 的受控可调用路径 | 真实 operational use/reuse（运行使用／复用）与无协作者人工介入的智能体客户路径 | 新 Human Decision 明确公开、受控服务或继续 private；通过安全与 release gate | DBA／SAEE 公开规范的发现和架构复用 |
+| `B-011` | GitHub 只有完整元数据描述查询可命中；规范名称与公开网络仍未命中 TMAI | 无给定 URL 的 canonical-name agent discovery（规范名称智能体自然发现）和不加限定的 discoverable claim（可发现声明） | 外部索引刷新后规范英文名或中文名得到可验证命中，或 Human Owner 明确接受 Developer Preview 的发现限制并继续保留 `PARTIAL_METADATA_ONLY` | 直接 URL、GitHub URL、完整 metadata query、`llms.txt` 和 Agent Customer Package 的给定入口使用 |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
 
@@ -54,6 +58,8 @@ risk_acceptance_authority_assigned: false
 | `R-013` | 三仓库没有冻结、可引用、可复验的最终远端 source commits | DBA `91928e3`、DBOS `0caa2c4`、SAEE `2173c25`；完整 Clean Clone、331 tests、34 validators、8 Adapter tests 和 19/19 blobs 通过 | 只关闭 source/clean-clone 风险；不产生外部验证或发布授权 |
 | `B-001` | 没有已记录的 Program Owner / decision source | `DQ-001` / `ADR-020`，`decided_by_ref=zhangbin` | 每个执行、外部联系和发布动作仍遵循各自 gate |
 | `B-007` | 三仓库 source commits 未冻结且跨仓库 Clean Clone 未通过 | `CLEAN-CLONE-VALIDATION-REPORT.md` 后继结果 `PASS` | DBOS 是 authenticated private clone；外部试用仍受 `B-008` 阻塞 |
+| `B-008` | 缺少 3–5 名人类开发者或招募渠道 | `ADR-021` 采用 AI agent 为首要客户并完成 12/12 受控模型基线 | 人类试用没有执行、没有被改写成通过；未来仍可作为次级可用性研究 |
+| `B-009` | Agent Customer Validation 基线的 exact invocation、composition、positive fit 和 simple-task negative control 未达阈值 | `TMAI-ACV-20260722-002` 用相同阈值复测：12/12 sessions、全部阈值通过；原 `001=CONDITIONAL` 保留 | 只解除 agent-readable packaging blocker；不产生 DBOS 公开、客户采用或发布授权 |
 
 | blocker_id | 原阻塞 | 解除证据 | 保留边界 |
 |---|---|---|---|
@@ -69,11 +75,11 @@ risk_acceptance_authority_assigned: false
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=15
-ACTIVE_RISKS=13
+TRACKED_RISKS=18
+ACTIVE_RISKS=16
 RESOLVED_RISKS=2
-ACTIVE_BLOCKERS=5
-BLOCKERS_CLEARED=3
+ACTIVE_BLOCKERS=6
+BLOCKERS_CLEARED=5
 LOCAL_BLOCKERS_CLEARED_NOT_RELEASED=1
 RISKS_ACCEPTED=0
 RISK_REGISTER_GRANTS_AUTHORITY=false

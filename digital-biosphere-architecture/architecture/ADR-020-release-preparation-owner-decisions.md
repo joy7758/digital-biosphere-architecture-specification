@@ -8,11 +8,15 @@ decided_by_ref: zhangbin
 program_owner_ref: zhangbin
 saee_domain_owner_ref: zhangbin
 release_authorized: false
-trial_execution_effective: false
+trial_execution_effective: superseded-for-primary-route
 runtime_effect: none
 ---
 
 # ADR-020: Release Preparation Owner Decisions（发布准备阶段 Owner 决策）
+
+> Follow-up（后继决定）：`ADR-021` 取代 `DQ-010` 的人类参与者路线作为首要客户验证路径。
+> 本 ADR 的 DBOS private visibility（私有可见性）、许可证、Owner 和 SAEE 精确提取决定继续有效；
+> `DQ-010` 不被改写成通过，只标记为 `SUPERSEDED_FOR_PRIMARY_ROUTE`。
 
 ## Context（背景）
 

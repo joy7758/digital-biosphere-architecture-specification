@@ -6,7 +6,7 @@ status: observed-governance-snapshot-owner-decisions-recorded
 observed_at: 2026-07-21
 freshness: point-in-time
 release_status: website-candidate-published-developer-preview-not-released
-developer_preview_status: website-live-clean-clone-pass-trial-participant-source-pending
+developer_preview_status: website-live-agent-customer-validation-pass-dbos-access-and-release-decision-pending
 source_policy: direct-read-only-observation
 ---
 
@@ -18,7 +18,7 @@ source_policy: direct-read-only-observation
 PROGRAM_ID=DIGITAL_BIOSPHERE
 PROGRAM_PHASE=TRUSTED_MULTI_AGENT_INFRASTRUCTURE_WEBSITE_CANDIDATE_AND_RELEASE_GATING
 PROGRAM_HEALTH=ATTENTION_REQUIRED
-CURRENT_MILESTONE=DP-5B-ENTRY
+CURRENT_MILESTONE=DP-R-RELEASE-DECISION-ENTRY
 CORE_PROJECTS=3
 PILOT_PROJECTS=1
 PROGRAM_AUTHORITY_ASSIGNED=true
@@ -30,15 +30,28 @@ DEVELOPER_PREVIEW_RELEASED=false
 DBOS_TESTS_PASS=331
 DBOS_VALIDATORS_PASS=34
 DEVELOPER_PREVIEW_LOCAL_CANDIDATE_VALIDATED=true
-EXTERNAL_DEVELOPER_TRIAL_PLAN_DEFINED=true
-EXTERNAL_DEVELOPER_TRIAL_CONDITIONALLY_AUTHORIZED=true
-EXTERNAL_DEVELOPER_TRIAL_EXECUTION_AUTHORIZED=false
-EXTERNAL_CONTACT_AUTHORIZED=false
-PARTICIPANT_SOURCE_CONFIRMED=false
+PRIMARY_CUSTOMER=AI_AGENT
+AGENT_CUSTOMER_VALIDATION_PROTOCOL_DEFINED=true
+AGENT_CUSTOMER_VALIDATION_ID=TMAI-ACV-20260721-001
+AGENT_CUSTOMER_VALIDATION_BASELINE_RESULT=CONDITIONAL
+AGENT_CUSTOMER_VALIDATION_RERUN_ID=TMAI-ACV-20260722-002
+AGENT_CUSTOMER_VALIDATION_RESULT=PASS
+AGENT_CUSTOMER_API_SESSIONS_COMPLETED=12
+AGENT_CUSTOMER_PROVIDERS_WITH_SUCCESS=2
+AGENT_CUSTOMER_MODEL_IDENTITIES_WITH_SUCCESS=4
+AGENT_CUSTOMER_AUTHORITY_SAFETY_FAILURES=0
+OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY
+OPEN_WEB_DISCOVERY_OBSERVATION_ID=TMAI-OWD-20260722-001
+OPEN_WEB_CANONICAL_NAME_MATCH=false
+GITHUB_DISCOVERY_METADATA_REMEDIATED=true
+GITHUB_METADATA_DESCRIPTION_MATCH=true
+GITHUB_METADATA_INDEXING_SIGNAL_OBSERVED=true
+PUBLIC_WEB_EXACT_PROJECT_MATCH=false
+HUMAN_DEVELOPER_TRIAL_REQUIRED_FOR_PRIMARY_ROUTE=false
 TRIAL_PACKAGE_ID=TMAI-DP-v0.1-TRIAL-20260721-001
 TRIAL_PACKAGE_TECHNICAL_FREEZE=true
-EXTERNAL_DEVELOPER_VALIDATION_COMPLETE=false
-EXTERNAL_DEVELOPER_PARTICIPANTS=0
+AGENT_CUSTOMER_RERUN_COMPLETE=true
+HUMAN_DEVELOPER_PARTICIPANTS=0
 DBA_REMOTE_BASELINE_CREATED=true
 DBOS_REMOTE_BASELINE_CREATED=true
 DBA_CLEAN_CLONE_PASS=true
@@ -47,8 +60,8 @@ SAEE_PUBLIC_CLEAN_CLONE_PASS=true
 SAEE_DBOS_ADAPTER_CLEAN_CLONE_PASS=true
 CROSS_PROJECT_CLEAN_CLONE_PASS=true
 PUBLIC_WEBSITE_DEPLOYED=true
-PUBLIC_WEBSITE_SOURCE_REVISION=bc7ba49a357ebc007e2a4c9dc01178a37e74d2d8
-PUBLIC_WEBSITE_GITHUB_PRERELEASE_TAG=v0.1-public-website-candidate.2
+PUBLIC_WEBSITE_SOURCE_REVISION=7fe88e8bb267b141c43f3132155714c1e110e172
+PUBLIC_WEBSITE_GITHUB_PRERELEASE_TAG=v0.1-public-website-candidate.5
 PUBLIC_WEBSITE_HEALTH_PASS=true
 PUBLIC_WEBSITE_ROLLBACK_VALIDATED=true
 GITHUB_WEBSITE_PRERELEASE_PUBLISHED=true
@@ -87,8 +100,9 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 | DBOS local developer path | `SCOPED_LOCAL_CONFORMANCE_PASS` | local editable install、单一 runner、331/331 tests、34/34 validators |
 | Multi-Agent Trust Demo | `LOCAL_DETERMINISTIC_PASS` | 3 个角色模拟、3 个执行记录、3 个证据引用、9 个结构 Validation；无 Agent/Runtime |
 | SAEE Evaluation Layer v0.1 | `LOCAL_READ_ONLY_PASS` | 8/8 adapter tests；Reliability/Stability fail closed；Risk/Recommendation 复用现有 evaluator |
-| External Developer Trial Preparation | `TECHNICAL_PACKAGE_FROZEN_PARTICIPANT_SOURCE_PENDING` | `TMAI-DP-v0.1-TRIAL-20260721-001` 已冻结；参与者 0、无外部联系或试用 |
+| Optional Human Developer Trial | `SUPERSEDED_AS_PRIMARY_GATE_NOT_EXECUTED` | 历史技术包仍保留；参与者 0；不再阻塞首要 agent-native 路线 |
 | Clean Clone Validation | `PASS_FROZEN_REMOTE_SOURCES` | DBA、DBOS、SAEE 与只读 Adapter 全通过；见 `CLEAN-CLONE-VALIDATION-REPORT.md` |
+| Agent Customer Validation | `PASS_BOUNDARY_AWARE_CONDITIONAL_RECOMMENDATION` | 修复后千帆／方舟 12/12 会话和全部预冻结阈值通过；12/12 overall verdict 为边界正确的 `CONDITIONAL`；不是客户采用或发布 |
 
 ## 4. Active Decisions and Blockers（当前决策与阻塞）
 
@@ -96,9 +110,10 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 - `DQ-003`：确认 DBOS、SAEE、Research Agent Pilot 的 canonical status source；
 - `DQ-004`：选择第一个跨项目 conformance（符合性）里程碑；
 - `DQ-008`：决定当前驾驶舱与既有 DBA public meaning layer 的规范关系和单一前门；
-- `DQ-009`：最终 Developer Preview Release（开发者预览版发布）仍需 Trial Result 和 `released_by_ref`；
+- `DQ-009`：`R-015` 依赖复核已完成；最终 Developer Preview Release（开发者预览版发布）仍需 DBOS access/distribution 决定、开放网络发现限制的处理决定和 `released_by_ref`；
 - `DQ-001`、`DQ-011`、`DQ-012`、`DQ-014` 已由 `ADR-020` 关闭；
-- `DQ-010` 已形成条件决定：Clean Clone、试用包、真实参与者来源、隐私和停止规则全部满足后才生效；
+- `DQ-010` 的人类参与者路径已由 `ADR-021` 标记为 `SUPERSEDED_FOR_PRIMARY_ROUTE`，没有被改写成执行通过；
+- `DQ-015` 已接受 agent-native customer validation，并完成 12/12 会话基线；
 - `DQ-013` 已由 `ADR-019` 标记为 `SUPERSEDED`；
 - `B-001` 已由 `ADR-020` 解除；Program Owner 是 `zhangbin`，不产生运行、演化或发布权；
 - `B-002`：DBA Git 根目录不是 DBA 目录本身，影响仓库边界和远端展示；
@@ -106,17 +121,17 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 - `B-005`：两个 DBA 语义表面尚未完成 canonical reconciliation（规范对齐），阻止对外声明唯一入口。
 - `B-006` 已在当前本地工作树中通过 version-aware historical binding（版本感知历史绑定）处理，34/34 validators 通过；历史 Evidence 未改写。该缓解尚未形成发布版本。
 - `B-007` 已解除：三个远端 source commits 已冻结，SAEE 19/19 blob 与完整 Clean Clone 已通过。
-- 当前试用执行唯一外部输入阻塞是 `participant_source` 仍为占位符；具体 DBOS collaborator 尚未添加。
+- `B-009` 已由 `TMAI-ACV-20260722-002` 解除；真实运行使用仍受 `B-010`（DBOS private、无公开调用路径）阻塞。
+- `B-011`：`TMAI-OWD-20260722-001` 只观察到 GitHub 完整新描述命中；规范英文名、中文名和公开搜索仍无精确项目命中。
 
 详细信息见 [`DECISION-QUEUE.md`](DECISION-QUEUE.md) 和 [`RISK-AND-BLOCKER-REGISTER.md`](RISK-AND-BLOCKER-REGISTER.md)。
 
 ## 5. Next Program Actions（下一步项目群行动）
 
-1. 保持 `TMAI-DP-v0.1-TRIAL-20260721-001` 的 source commits、指标、隐私和停止规则不变；
-2. 等待真实 `participant_source`，再使 `DQ-010` 条件授权生效；
-3. 逐名确认 3–5 位合格开发者并授予最小 DBOS private collaborator access；
-4. 保留失败和干预等级，完成 Trial Result 后再处理 `DQ-009`；
-5. Pilot 自身 gate 通过前保持 Research Agent Prototype 为 `NOT_READY`。
+1. 保留基线 `001=CONDITIONAL` 与复测 `002=PASS` 的全部原始回答、评分和失败历史；
+2. 由 Human Owner 单独决定 DBOS 的 agent access／distribution 路线；
+3. 在外部索引刷新窗口后用规范英文名／中文名复查 `TMAI-OWD-20260722-001`，或由 Human Owner 显式接受 Developer Preview 的发现限制；
+4. 以上输入完成后，把 `DQ-009` 提交明确 `released_by_ref` 的人工发布决定，并在 release notes 中披露 `R-015` 的 2 项 moderate 残余。
 
 ## 6. Refresh Protocol（刷新协议）
 
