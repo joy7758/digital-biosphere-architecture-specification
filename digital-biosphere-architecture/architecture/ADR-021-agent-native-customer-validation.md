@@ -39,8 +39,9 @@ runtime_effect: none
 
 后继观察 [`../OPEN-WEB-DISCOVERY-OBSERVATION.md`](../OPEN-WEB-DISCOVERY-OBSERVATION.md)
 已经满足第 8 项“使用真实搜索／索引观察”的证据要求，但结果是
-`TMAI-OWD-20260722-001=NOT_OBSERVED`，不是 `PASS`。GitHub 元数据修复不等于索引刷新，
-因此该结果进入 `DP-5D` 复查闸门，不改写两轮 API 会话中的 `NOT_ASSESSED` 历史字段。
+`TMAI-OWD-20260722-001=PARTIAL_METADATA_ONLY`，不是 `PASS`。GitHub 完整新 description
+已经能命中仓库，但规范英文名、中文名和公开搜索仍不能命中；因此该结果进入 `DP-5D`
+复查闸门，不改写两轮 API 会话中的 `NOT_ASSESSED` 历史字段。
 
 ## Baseline Result（基线结果）
 

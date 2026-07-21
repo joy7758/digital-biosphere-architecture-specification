@@ -26,7 +26,7 @@ is not ready for formal release.
 | Agent customer package | `/agent-customer-package.json` | `PUBLIC_CANDIDATE_DEPLOYED_PASS_NOT_RUNTIME` |
 | Agent customer validation baseline | `TMAI-ACV-20260721-001`；12/12 sessions；2 providers；4 models | `CONDITIONAL_REMEDIATION_REQUIRED` |
 | Agent customer validation rerun | `TMAI-ACV-20260722-002`；same thresholds；12/12 sessions；0 failed thresholds | `PASS_NOT_RELEASE_AUTHORIZATION` |
-| Open-web discovery observation | `TMAI-OWD-20260722-001`；4 public-web + 2 GitHub queries；no exact project match | `NOT_OBSERVED_METADATA_REMEDIATED_RECHECK_REQUIRED` |
+| Open-web discovery observation | `TMAI-OWD-20260722-001`；GitHub full-description match；canonical English／Chinese and public-web queries still no match | `PARTIAL_METADATA_ONLY_CANONICAL_RECHECK_REQUIRED` |
 | Website artifact integrity | `/release-manifest.json`; remote `sha256sum -c` | `PASS` |
 | HTTPS and security headers | Public response and origin checks | `PASS` |
 | Website rollback | Atomic switch to previous artifact and restore | `PASS` |

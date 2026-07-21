@@ -13,7 +13,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         gates: "验证闸门",
         visibility: "可见性",
         next: "下一步",
-        nextBody: "智能体客户验证已通过，但开放网络精确命中尚未观察到。下一步是复查索引、决定 DBOS 智能体访问路线、复核剩余风险并决定正式发布。",
+        nextBody: "智能体客户验证已通过，GitHub 描述已部分可发现，但规范名称仍未命中。下一步是复查索引、决定 DBOS 智能体访问路线、复核剩余风险并决定正式发布。",
         back: "返回首页",
       }
     : {
@@ -25,7 +25,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         gates: "Validation gates",
         visibility: "Visibility",
         next: "Next step",
-        nextBody: "Agent customer validation passed, but no exact open-web project match has been observed. Next, recheck indexing and make explicit human decisions on DBOS agent access, remaining risk, and formal release.",
+        nextBody: "Agent customer validation passed and the GitHub description is partially discoverable, but canonical names still do not match. Next, recheck indexing and make explicit human decisions on DBOS agent access, remaining risk, and formal release.",
         back: "Back to home",
       };
 

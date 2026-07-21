@@ -54,9 +54,9 @@ export const gateRows = [
   },
   {
     id: "OPEN_WEB_DISCOVERY",
-    state: "NOT_OBSERVED",
-    zh: "6 个开放网络与 GitHub 精确查询没有观察到项目命中；GitHub 元数据已修复，等待重新索引后复查。",
-    en: "Six exact open-web and GitHub queries found no project match; GitHub metadata was remediated and reindexing must be rechecked.",
+    state: "PARTIAL",
+    zh: "GitHub 完整新描述已能命中项目，但规范英文名、中文名和公开搜索仍未命中。",
+    en: "The full new GitHub description finds the project, but canonical English and Chinese names and public-web queries still do not.",
   },
   {
     id: "PREVIEW_DEPLOYMENT_HEALTH_PASS",
@@ -149,7 +149,7 @@ export const content = {
     governanceTitle: "公开前仍需完成",
     governanceItems: [
       "明确决定 DBOS 的智能体访问或分发路线",
-      "等待 GitHub 元数据重新索引并复查开放网络自然发现",
+      "等待规范英文／中文名称进入索引并复查开放网络自然发现",
       "复核静态网站依赖风险 R-015",
       "形成明确的人工发布决定",
     ],
@@ -240,7 +240,7 @@ export const content = {
     governanceTitle: "Still required before release",
     governanceItems: [
       "Make an explicit decision on DBOS agent access or distribution",
-      "Recheck open-web discovery after GitHub metadata reindexing",
+      "Recheck canonical-name discovery after external indexing",
       "Review static website dependency risk R-015",
       "Record an explicit human release decision",
     ],

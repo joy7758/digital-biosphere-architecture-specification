@@ -36,7 +36,7 @@ risk_acceptance_authority_assigned: false
 | `R-014` | `HIGH` | 3–5 人小样本、个别正面反馈或试用 PASS 可能被过度解释为客户验证、市场采用或发布授权 | External Developer Trial Plan 明确样本仅验证 onboarding、理解、使用和问题相关性信号 | 预冻结成功阈值；保留失败；Trial Result、Customer Validation、Release、Adoption 分开；发布仍需 `DQ-009` | `MITIGATED_BY_PLAN_NOT_YET_TESTED` |
 | `R-015` | `MEDIUM` | 站点依赖审计报告 12 项已知问题，其中 production dependency tree（生产依赖树）有 2 项 PostCSS moderate advisories（中等级通告） | 2026-07-21 `npm audit --omit=dev --audit-level=high` 返回 0，但列出 2 项 moderate；当前部署只复制静态 `out/`，不部署 Node.js 或构建依赖 | 禁止 `npm audit fix --force` 造成未审查破坏性升级；在正式发布决策前复核上游修复版本或记录有界风险决定 | `DEPENDENCY_REVIEW_REQUIRED_BEFORE_FORMAL_RELEASE` |
 | `R-016` | `HIGH` | Agent API 模型的推荐或 `PASS` 被误写成真实客户采用、market fit（市场匹配）或发布授权 | `TMAI-ACV-20260721-001` 是 12 个受控、给定材料的模型会话，不含真实生产调用 | 固定 `Agent Recommendation ≠ Customer Adoption ≠ Release`；保留 Human `released_by_ref` | `MITIGATED_BY_PROTOCOL` |
-| `R-017` | `MEDIUM` | 给定 URL 后的机器理解或元数据修复被误写成 open-web discovery（开放网络自然发现） | `TMAI-OWD-20260722-001` 的 4 个公开搜索和 2 个 GitHub 查询均未观察到精确项目命中；GitHub description、homepage、topics 随后已修复 | 保留 `OPEN_WEB_DISCOVERY=NOT_OBSERVED`；等待外部索引刷新后按同一查询集复查，或由 Human Owner 显式接受 Developer Preview 的发现限制 | `METADATA_REMEDIATED_RECHECK_REQUIRED` |
+| `R-017` | `MEDIUM` | 给定 URL 后的机器理解或元数据 description 命中被误写成 open-web discovery（开放网络自然发现） | `TMAI-OWD-20260722-001` 首轮 6 查询无命中；修复后 GitHub 完整新 description 已命中，但规范英文名、中文名和 4 个公开搜索仍无精确命中 | 保留 `OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY`；等待规范名称索引后复查，或由 Human Owner 显式接受 Developer Preview 的发现限制 | `PARTIAL_METADATA_ONLY_CANONICAL_RECHECK_REQUIRED` |
 | `R-018` | `HIGH` | DBOS 保持 private，使 AI agent 能理解 TMAI 但不能自主获取、运行或复用核心存在基础设施 | 12/12 模型把 private／未发布列为 blocker；overall verdict 为 6 `CONDITIONAL` + 6 `DO_NOT_RECOMMEND` | 由 Human Owner 与 DBOS Domain Owner 单独决定 public package、受控 agent access 或继续 private | `DECISION_REQUIRED_BEFORE_OPERATIONAL_RECOMMENDABILITY` |
 
 ## 3. Active Blockers（当前阻塞）
@@ -48,7 +48,7 @@ risk_acceptance_authority_assigned: false
 | `B-004` | Research Agent Human Review 与 approved source 不完整 | Prototype Authorization Review 和实验 | Pilot 自己的 readiness gate 达到可审查状态并获得人工决定 | Pilot 规范改进和 DBA 项目群规划 |
 | `B-005` | 两个 DBA 语义表面未完成 canonical reconciliation | 对外唯一入口、规范优先级和自动检索路由 | `DQ-008` 形成决定并完成引用/迁移验证 | 当前仓库作为 Program Governance Cockpit 的工作树基线 |
 | `B-010` | DBOS 没有公开 package、API 或面向 AI agent 的受控可调用路径 | 真实 operational use/reuse（运行使用／复用）与无协作者人工介入的智能体客户路径 | 新 Human Decision 明确公开、受控服务或继续 private；通过安全与 release gate | DBA／SAEE 公开规范的发现和架构复用 |
-| `B-011` | 开放网络与 GitHub 精确检索尚未观察到 TMAI 规范项目命中 | 无给定 URL 的 agent discovery（智能体自然发现）和不加限定的 discoverable claim（可发现声明） | 外部索引刷新后同一查询集得到可验证精确命中，或 Human Owner 明确接受 Developer Preview 的发现限制并继续保留 `NOT_OBSERVED` | 直接 URL、GitHub URL、`llms.txt` 和 Agent Customer Package 的给定入口使用 |
+| `B-011` | GitHub 只有完整元数据描述查询可命中；规范名称与公开网络仍未命中 TMAI | 无给定 URL 的 canonical-name agent discovery（规范名称智能体自然发现）和不加限定的 discoverable claim（可发现声明） | 外部索引刷新后规范英文名或中文名得到可验证命中，或 Human Owner 明确接受 Developer Preview 的发现限制并继续保留 `PARTIAL_METADATA_ONLY` | 直接 URL、GitHub URL、完整 metadata query、`llms.txt` 和 Agent Customer Package 的给定入口使用 |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
 

@@ -79,7 +79,7 @@ Governance Decision（治理决策，保留人工权力）
 - SAEE 已形成只读 DBOS Developer Preview adapter（开发者预览适配器），复用现有 Reliability Framework 与 `saee.evaluate_agent_run`；
 - DBOS → SAEE 本地合成链路已通过 scoped conformance（限定范围符合性），但结果诚实保持 `Reliability=NOT_ASSESSED`、`Stability=NOT_ASSESSED`、`EvolutionRecommendation=HOLD`；
 - 首轮 Agent Customer Validation（智能体客户验证）完成 12/12 个跨千帆／方舟会话并得到 `CONDITIONAL`；修复后复测 `TMAI-ACV-20260722-002` 再完成 12/12，会话与全部预冻结阈值通过，12/12 overall verdict 为边界正确的 `CONDITIONAL`；
-- 开放网络观察 `TMAI-OWD-20260722-001` 没有得到规范项目精确命中；GitHub description、homepage 和 topics 已修复，但尚未观察到索引刷新，因此自然发现保持 `NOT_OBSERVED`；
+- 开放网络观察 `TMAI-OWD-20260722-001` 已得到 GitHub 新 description 的部分索引命中，但规范英文名、中文名和公开搜索仍无精确命中，因此保持 `PARTIAL_METADATA_ONLY`；
 - 旧的 3–5 名人类开发者试用路线已由 `ADR-021` 取代为可选次级研究，不再是本次首要发布前置条件；
 - DBOS 仍为 private（私有），没有 public Runtime／API／package 声明，也没有 Human Release Decision，因此 Developer Preview release 仍为 `NOT_READY`。
 
@@ -95,7 +95,7 @@ Governance Decision（治理决策，保留人工权力）
 | 智能体客户验证协议 | [`AGENT-CUSTOMER-VALIDATION-PROTOCOL.md`](AGENT-CUSTOMER-VALIDATION-PROTOCOL.md) | 预冻结 Provider、场景、阈值和非效果 |
 | 首轮智能体客户验证结果 | [`AGENT-CUSTOMER-VALIDATION-REPORT.md`](AGENT-CUSTOMER-VALIDATION-REPORT.md) | 历史基线 `CONDITIONAL`；失败保留 |
 | 修复后智能体客户验证结果 | [`AGENT-CUSTOMER-VALIDATION-RERUN-REPORT.md`](AGENT-CUSTOMER-VALIDATION-RERUN-REPORT.md) | `PASS`；不等于采用或发布授权 |
-| 开放网络自然发现观察 | [`OPEN-WEB-DISCOVERY-OBSERVATION.md`](OPEN-WEB-DISCOVERY-OBSERVATION.md) | `NOT_OBSERVED`；元数据修复不等于索引通过 |
+| 开放网络自然发现观察 | [`OPEN-WEB-DISCOVERY-OBSERVATION.md`](OPEN-WEB-DISCOVERY-OBSERVATION.md) | `PARTIAL_METADATA_ONLY`；描述命中不等于规范名称自然发现 |
 | Developer Preview 如何完成 | [`DEVELOPER-PREVIEW-PLAN.md`](DEVELOPER-PREVIEW-PLAN.md) | 交付与 gate 计划 |
 | 如何发布 | [`DEVELOPER-PREVIEW-RELEASE-PLAN.md`](DEVELOPER-PREVIEW-RELEASE-PLAN.md) | 发布治理计划 |
 | 本地符合性结果 | [`DEVELOPER-PREVIEW-CONFORMANCE-REPORT.md`](DEVELOPER-PREVIEW-CONFORMANCE-REPORT.md) | 当前工作树本地通过；不是 release |
@@ -131,10 +131,11 @@ AGENT_CUSTOMER_VALIDATION_BASELINE=CONDITIONAL
 AGENT_CUSTOMER_VALIDATION_RERUN=PASS
 AGENT_CUSTOMER_API_SESSIONS=24
 HUMAN_DEVELOPER_TRIAL_REQUIRED_FOR_PRIMARY_ROUTE=false
-OPEN_WEB_DISCOVERY=NOT_OBSERVED
+OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY
 OPEN_WEB_DISCOVERY_OBSERVATION_ID=TMAI-OWD-20260722-001
 GITHUB_DISCOVERY_METADATA_REMEDIATED=true
-OPEN_WEB_REINDEX_OBSERVED=false
+GITHUB_METADATA_DESCRIPTION_MATCH=true
+OPEN_WEB_CANONICAL_NAME_MATCH=false
 PRODUCTION_RUNTIME_CREATED=false
 AGENT_INSTANCE_CREATED=false
 PERMISSION_GRANTED=false

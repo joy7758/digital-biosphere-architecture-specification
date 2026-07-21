@@ -27,7 +27,7 @@ last_reviewed: 2026-07-21
 | `DQ-006` | `P2` | POP、ARO、Agent Evidence、Token Governor、ACP 哪些进入正式 Portfolio？ | `OPEN` | 每个项目的目的、Owner、canonical source、重复能力和接口边界 | 项目组合与依赖范围 | 本地发现、历史关联或相邻角色等于正式准入 |
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
-| `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | source／Clean Clone 与 Agent Customer Validation `PASS` 已齐；`TMAI-OWD-20260722-001=NOT_OBSERVED`；仍缺 DBOS agent access／distribution 决定、发现限制处理、`R-015` 复核和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | 网站、API 模型推荐、元数据修复、测试或 validation PASS 自动等于发布授权 |
+| `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | source／Clean Clone 与 Agent Customer Validation `PASS` 已齐；`TMAI-OWD-20260722-001=PARTIAL_METADATA_ONLY`；仍缺 DBOS agent access／distribution 决定、发现限制处理、`R-015` 复核和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | 网站、API 模型推荐、元数据描述命中、测试或 validation PASS 自动等于发布授权 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 

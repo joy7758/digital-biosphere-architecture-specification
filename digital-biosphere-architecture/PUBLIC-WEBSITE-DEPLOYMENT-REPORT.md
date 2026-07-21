@@ -107,7 +107,7 @@ gates. In particular:
 - `AGENT_CUSTOMER_VALIDATION_RERUN_RESULT=PASS` does not equal customer adoption or release authorization
 - all 12 rerun verdicts are boundary-aware `CONDITIONAL`, not unconditional production recommendations
 - `DBOS` remains private; no public Runtime, package or API is claimed
-- `OPEN_WEB_DISCOVERY=NOT_OBSERVED`; `TMAI-OWD-20260722-001` found no exact public-search or GitHub project match; metadata remediation is not reindex evidence
+- `OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY`; GitHub's full new description finds the project, while canonical English／Chinese names and public-search queries still do not
 - dependency risk `R-015` still requires review before formal release
 - no GitHub Developer Preview Release exists
 
