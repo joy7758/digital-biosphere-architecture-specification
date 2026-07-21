@@ -41,8 +41,8 @@ test("renders bilingual status pages with fail-closed truth", async () => {
   const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
   assert.match(zh, /当前不是正式发布/);
   assert.match(en, /This is not a release/);
-  assert.match(zh, /BLOCKED/);
-  assert.match(en, /BLOCKED/);
+  assert.match(zh, /CONDITIONAL/);
+  assert.match(en, /CONDITIONAL/);
   assert.match(zh, /0caa2c45e511/);
   assert.match(en, /2173c258f91a/);
 });
@@ -53,24 +53,31 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("llms.txt", root)),
     access(new URL("agent-index.json", root)),
     access(new URL("status.json", root)),
+    access(new URL("agent-customer-package.json", root)),
     access(new URL("robots.txt", root)),
     access(new URL("sitemap.xml", root)),
   ]);
 
-  const [agentIndex, status, llms] = await Promise.all([
+  const [agentIndex, status, agentCustomerPackage, llms] = await Promise.all([
     readFile(new URL("agent-index.json", root), "utf8").then(JSON.parse),
     readFile(new URL("status.json", root), "utf8").then(JSON.parse),
+    readFile(new URL("agent-customer-package.json", root), "utf8").then(JSON.parse),
     readFile(new URL("llms.txt", root), "utf8"),
   ]);
   assert.equal(agentIndex.released, false);
   assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
-  assert.equal(status.gates.DQ_010_EFFECTIVE, false);
-  assert.equal(status.external_trial.participant_source_confirmed, false);
+  assert.equal(status.gates.DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE, true);
+  assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL, true);
+  assert.equal(status.agent_customer_validation.api_sessions_completed, 12);
+  assert.equal(status.agent_customer_validation.open_web_discovery, "NOT_ASSESSED");
+  assert.equal(agentCustomerPackage.intended_customer, "AI_AGENT");
+  assert.equal(agentCustomerPackage.released, false);
   assert.equal(status.license.selected, true);
   assert.equal(status.license.identifier, "Apache-2.0");
   assert.equal(status.public_website.deployed, true);
   assert.equal(status.public_website.rollback_validated, true);
   assert.match(llms, /Recommendation != Decision/);
+  assert.match(llms, /DBOS records -> SAEE evaluation\/recommendation -> Governance Decision review\/adoption -> DBOS authorized execution/);
 });
 
 test("removes the disposable starter preview", async () => {

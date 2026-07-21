@@ -31,8 +31,8 @@ VERSION_NE_IMPLEMENTATION=true
 | DBOS Local Package Path | DBOS | 可复制安装、锁定依赖或明确版本、单一测试入口 | 已发布 PyPI package（Python 包） |
 | Multi-Agent Trust Demo | Demo + DBOS | 三角色、记录链、负向边界、确定性运行 | 生产 Agent 或真实外部执行 |
 | SAEE Evaluation Layer | SAEE | 四类输出、数据来源、局限、只读接口 | 自动决策或 DBOS 控制权 |
-| External Developer Trial Plan | DBA | 3–5 人画像、流程、理解／使用／价值指标、成功标准、试用到发布的 gate | 计划等于试用执行或客户验证 |
-| Trial Guide and Session Record | DBA / Developer Experience | 操作步骤、自由回答、评分 rubric、隐私和清理说明 | 参与者反馈等于采用、认证或 SLA（服务等级协议） |
+| Agent Customer Validation Protocol | DBA | 多 Provider／model 画像、公开与冻结上下文、正负场景、预冻结阈值 | 模型推荐等于采用或发布授权 |
+| Agent Customer Package and Result | DBA | 机器发现、精确公开验证命令、组合流、适用／不适用规则、原始回答与评分 | 给定 URL 等于开放网络自然发现，或规范等于 Runtime |
 | Conformance Report | DBA aggregation（聚合） | 命令、版本、测试、validator、已知限制 | 子项目 capability truth 被 DBA 改写 |
 | Test-to-Feature Ledger | DBA aggregation；功能归责任仓库 | 失败测试、归属、重复审查、最小功能和回归结果 | 测试失败自动授权功能或 Demo 成为 canonical implementation |
 
@@ -43,8 +43,8 @@ DRAFT
   -> INTERNAL_REVIEW
   -> RELEASE_CANDIDATE
   -> VALIDATED
-  -> EXTERNAL_TRIAL
-  -> TRIAL_REVIEW
+  -> AGENT_CUSTOMER_VALIDATION
+  -> AGENT_VALIDATION_REVIEW
   -> RELEASE_DECISION
   -> RELEASED
   -> DEPRECATED
@@ -66,14 +66,13 @@ DRAFT
 - [x] SAEE 输出只含 Evaluation / Recommendation，不含 Command；
 - [x] DBOS output / SAEE input 跨项目 conformance tests 通过；
 - [x] 无 Agent、Runtime、Entity、Permission、Digital Organism 生产实例；
-- [x] 外部试用指南和反馈入口已准备；
-- [x] External Developer Trial Plan、预先冻结成功标准和 ADR-018 已准备；
+- [x] Agent Customer Validation Protocol、预先冻结成功标准和 ADR-021 已准备；
+- [x] 首轮 12/12 Agent API sessions 已完成并保留原始回答；
 - [x] DBA、DBOS、SAEE source commits 已冻结并分配 `trial_package_id`；
 - [x] clean-clone validation 已对同一冻结版本通过；
-- [ ] 已提供真实 `participant_source`，并确认参与者能够获得冻结版本；
-- [ ] `DQ-010` 已授权试用执行和外部联系；
-- [ ] 3–5 名合格外部 Agent Developer 已完成试用并保留失败记录；
-- [ ] Trial Result Report 已按 `PASS|CONDITIONAL|FAIL|INCOMPLETE` 完成复核；
+- [ ] 四项 agent-readable 失败阈值已修复并用新 validation ID 复测；
+- [ ] Agent Customer Validation Result 已达到 `PASS` 或经人工接受的 remediated `CONDITIONAL`；
+- [ ] DBOS agent access／distribution 路线已有明确 Human Decision；
 - [ ] Human Release Decision（人工发布决策）包含明确 `released_by_ref`；
 - [ ] release notes（发布说明）区分本地预览、发布、部署和采用。
 
@@ -97,23 +96,21 @@ DBOS_SOURCE_COMMIT_READY=true
 SAEE_PUBLIC_ADAPTER_SOURCE_READY=true
 CLEAN_CLONE_VALIDATED=true
 CLEAN_CLONE_RESULT=PASS_FROZEN_REMOTE_SOURCES
-TRIAL_PACKAGE_ID=TMAI-DP-v0.1-TRIAL-20260721-001
-TRIAL_PACKAGE_TECHNICAL_FREEZE=true
-TRIAL_PACKAGE_DISTRIBUTION_READY=false
-PARTICIPANT_SOURCE_CONFIRMED=false
-TRIAL_EXECUTION_AUTHORIZED=false
-EXTERNAL_CONTACT_AUTHORIZED=false
-EXTERNAL_TRIAL_PARTICIPANTS=0
-EXTERNAL_TRIAL_EXECUTED=false
-EXTERNAL_TRIAL_RESULT=NOT_ASSESSED
+AGENT_CUSTOMER_VALIDATION_ID=TMAI-ACV-20260721-001
+AGENT_CUSTOMER_API_SESSIONS=12
+AGENT_CUSTOMER_VALIDATION_RESULT=CONDITIONAL
+AGENT_CUSTOMER_REMEDIATION_REQUIRED=true
+AGENT_CUSTOMER_RERUN_COMPLETE=false
+HUMAN_DEVELOPER_TRIAL_REQUIRED=false
+DBOS_AGENT_ACCESS_DECIDED=false
 RELEASE_AUTHORIZED=false
 ```
 
 阻塞原因：
 
-1. 真实 `participant_source` 尚未提供，因此 `DQ-010` 的条件授权尚未生效；
-2. 3–5 名外部开发者试用和 Trial Result Report 尚未发生；
-3. 试用后的 DBOS 分发／可见性安排仍需按 `PRIVATE_COLLABORATOR_TRIAL` 逐人受控实施；
+1. 首轮 Agent Customer Validation 为 `CONDITIONAL`，精确调用、组合、正向推荐和简单任务负控需复测；
+2. DBOS 仍为 private，AI agent 没有公开 package、API 或自主获取路径；
+3. `OPEN_WEB_DISCOVERY` 尚未评估，不能用给定 URL 测试替代；
 4. `DQ-009` 尚无 Human Release Decision 与 `released_by_ref`。
 
 ## 6. Rollback and Preservation（回退与保留）

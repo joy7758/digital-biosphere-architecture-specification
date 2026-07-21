@@ -27,7 +27,7 @@ last_reviewed: 2026-07-21
 | `DQ-006` | `P2` | POP、ARO、Agent Evidence、Token Governor、ACP 哪些进入正式 Portfolio？ | `OPEN` | 每个项目的目的、Owner、canonical source、重复能力和接口边界 | 项目组合与依赖范围 | 本地发现、历史关联或相邻角色等于正式准入 |
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
-| `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | 冻结 source commits、Clean Clone、Trial Plan、Guide 与已知限制已齐；仍缺真实 `participant_source`、3–5 人 Trial Result、试用后 DBOS 分发决定和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | ADR-017、测试通过、本地 Demo、Clean Clone 或 Trial PASS 自动等于发布授权 |
+| `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | source commits 与 Clean Clone 已齐；Agent Customer Validation 基线为 `CONDITIONAL`，仍缺修复后复测、DBOS agent access／distribution 决定和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | 网站、API 模型推荐、测试或 validation PASS 自动等于发布授权 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
@@ -35,14 +35,16 @@ last_reviewed: 2026-07-21
 |---|---|---|---|
 | `ADR-016` | `ACCEPTED`：DBA 升级为 Program Governance + Architecture Specification cockpit | 2026-07-21 用户明确目标 | 允许更新 DBA 文档和治理入口；不授权修改 DBOS、SAEE、Pilot、Runtime 或外部状态 |
 | `ADR-017` | `ACCEPTED`：进入 Trusted Multi-Agent Infrastructure Developer Preview v0.1 阶段 | 2026-07-21 用户明确目标 | 允许按 DBA / DBOS / Demo / SAEE 责任域推进受限实现；不授权发布、生产 Runtime、自动 Permission 或 Evidence 改写 |
-| `ADR-018` | `ACCEPTED`：在发布前建立 3–5 人 External Developer Trial Gate | 2026-07-21 用户明确目标 | 允许建立试用计划、测量与 gate；不授权招募、外部联系、试用执行、客户验证或发布 |
+| `ADR-018` | `SUPERSEDED_AS_PRIMARY_BY_ADR-021`：3–5 人 External Developer Trial 保留为可选次级研究 | 2026-07-21 原目标与后继客户模型决定 | 不授权招募、外部联系、试用执行、客户验证或发布 |
 | `ADR-019` | `ACCEPTED_AND_EXECUTED`：清理过期云端应用资产并在 `redcrag.cn` 根入口部署双语 TMAI 网站候选 | 2026-07-21 用户明确清理与网站要求 | 只授权公开网站候选及其 GitHub prerelease；不授权 Developer Preview Release、DBOS 公开、SAEE 边界变更或外部试用 |
 | `ADR-020 / DQ-001` | `ACCEPTED`：指派 `zhangbin` 为 Human Program Owner | `decided_by_ref=zhangbin`，2026-07-21T22:48:39+08:00 | 项目群决定来源生效，重大 release 时复核；不产生 DBOS 运行权、SAEE 演化权或自动发布权 |
-| `ADR-020 / DQ-010` | `DECIDED_CONDITIONAL`：`AUTHORIZE_AFTER_CLEAN_CLONE_PASS`，协调者 `zhangbin` | Clean Clone 与 `TMAI-DP-v0.1-TRIAL-20260721-001` 已冻结 | 真实 `participant_source` 仍缺失，因此外部联系、协作者添加与试用执行仍为 `false` |
+| `ADR-020 / DQ-010` | `SUPERSEDED_FOR_PRIMARY_ROUTE`：原决定为 `AUTHORIZE_AFTER_CLEAN_CLONE_PASS` | Clean Clone 与原技术包仍保留 | 人类试用未执行；不再作为首要发布 gate，也不产生外部联系或协作者权限 |
 | `ADR-020 / DQ-011` | `ACCEPTED`：`A_PUBLIC_SAFE_EXTRACTION_EXACT_19_FILES` | `decided_by_ref=zhangbin`、`saee_domain_owner_ref=zhangbin` | 只允许冻结 19 文件及精确 blob；不允许 private core、第二套 evaluator 或正式发布 |
 | `ADR-020 / DQ-012` | `ACCEPTED`：DBA、DBOS、SAEE Owner-created public surfaces 采用 `Apache-2.0` | `decided_by_ref=zhangbin` | 允许发布根 `LICENSE`；不重许可第三方材料、数据或依赖 |
 | `ADR-019 / DQ-013` | `SUPERSEDED`：不再采用独立子路径问题 | 2026-07-21 Human Owner 清理和网站决定 | `redcrag.cn` 根入口网站候选已执行；不等于 Developer Preview Release |
 | `ADR-020 / DQ-014` | `ACCEPTED`：`PRIVATE_COLLABORATOR_TRIAL` | `decided_by_ref=zhangbin` | DBOS 保持 private；不授权 public visibility、具体协作者、Permission 或发布 |
+| `ADR-021 / DQ-010` | `SUPERSEDED_FOR_PRIMARY_ROUTE`：人类参与者招募不再是首要客户验证路径 | 2026-07-21 Human Owner 明确核心客户是 AI agent | 不把未执行的人类试用改写成通过；可作为未来次级可用性研究保留 |
+| `ADR-021 / DQ-015` | `ACCEPTED_AND_BASELINE_EXECUTED`：`ADOPT_AGENT_NATIVE_CUSTOMER_VALIDATION` | `decided_by_ref=zhangbin`，并指定复用既有千帆／方舟凭证 | 允许协议范围内 12 次基线和一次修复后复测；不创建 Agent／Runtime，不授权发布、DBOS 公开或客户采用 |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 
@@ -66,7 +68,7 @@ release_authorized=true|false
 ```text
 DECISION_QUEUE_ACTIVE=true
 OPEN_DECISIONS=8
-CONDITIONALLY_DECIDED_NOT_EFFECTIVE=1
+CONDITIONALLY_DECIDED_NOT_EFFECTIVE=0
 QUEUE_CREATES_AUTHORITY=false
 QUEUE_CREATES_PERMISSION=false
 QUEUE_EXECUTES_DECISIONS=false

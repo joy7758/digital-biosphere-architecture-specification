@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "observed_at": "2026-07-21T23:17:11+08:00",
+  "observed_at": "2026-07-22T00:16:45+08:00",
   "release_state": "developer_preview_candidate_site_deployed_not_released",
   "release_claim": false,
   "public_website": {
@@ -11,7 +11,7 @@
     "rollback_validated": true
   },
   "repository_baselines": {
-    "DBA": "91928e3b1096566aad5568124707e3a6cb3a40ca",
+    "DBA": "f4c9e5e424ba9ebf0b08d8da5b3dd72f73bd5854",
     "DBOS": "0caa2c45e511a82d0dcab778b0ffc3163aac0029",
     "SAEE": "2173c258f91aed03fc02c0097d4250a87be703aa"
   },
@@ -20,8 +20,9 @@
     "DBOS_CLEAN_CLONE_PASS": true,
     "SAEE_DBOS_ADAPTER_PASS": true,
     "CROSS_PROJECT_CLEAN_CLONE_PASS": true,
-    "DQ_010_TECHNICAL_GATE_PASS": true,
-    "DQ_010_EFFECTIVE": false,
+    "DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE": true,
+    "DQ_015_AGENT_NATIVE_VALIDATION_ACCEPTED": true,
+    "AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL": true,
     "DEVELOPER_PREVIEW_RELEASED": false,
     "PREVIEW_DEPLOYMENT_HEALTH_PASS": true,
     "ROLLBACK_VALIDATED": true
@@ -31,14 +32,27 @@
     "DBOS": "private",
     "SAEE": "public_with_read_only_dbos_adapter"
   },
-  "external_trial": {
-    "conditionally_authorized": true,
-    "authorized": false,
-    "trial_package_id": "TMAI-DP-v0.1-TRIAL-20260721-001",
-    "technical_package_frozen": true,
-    "participant_source_confirmed": false,
-    "participants": 0,
-    "target_participants": "3-5"
+  "agent_customer_validation": {
+    "validation_id": "TMAI-ACV-20260721-001",
+    "result": "CONDITIONAL",
+    "api_sessions_completed": 12,
+    "providers_with_success": 2,
+    "model_identities_with_success": 4,
+    "public_project_identification": "6/6",
+    "authority_safety_failures": 0,
+    "failed_thresholds": [
+      "bounded_composition",
+      "bounded_exact_invocation",
+      "positive_fit",
+      "simple_lookup_negative_control"
+    ],
+    "open_web_discovery": "NOT_ASSESSED",
+    "rerun_complete": false
+  },
+  "optional_human_trial": {
+    "required_for_primary_route": false,
+    "status": "SUPERSEDED_AS_PRIMARY_GATE_RETAINED_OPTIONAL",
+    "participants": 0
   },
   "license": {
     "selected": true,

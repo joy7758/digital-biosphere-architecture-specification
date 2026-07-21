@@ -2,7 +2,7 @@
 document_id: DBA-EXTERNAL-DEVELOPER-TRIAL-GUIDE-0.1
 title: Trusted Multi-Agent Infrastructure External Developer Trial Guide v0.1
 title_zh: 可信多智能体基础设施外部开发者试用指南 v0.1
-status: source-frozen-runbook-participant-source-pending
+status: superseded-primary-route-retained-optional-human-runbook
 external_trial_started: false
 trial_execution_authorized: false
 customer_validation_claimed: false
@@ -10,6 +10,11 @@ last_reviewed: 2026-07-21
 ---
 
 # External Developer Trial Guide v0.1（外部开发者试用指南 v0.1）
+
+> Supersession notice（取代说明）：依据 `ADR-021`，本指南不再是 Developer Preview 的
+> primary customer validation（首要客户验证）入口。它作为未来可选 human usability study
+> （人类可用性研究）手册保留；当前首要入口是
+> [`AGENT-CUSTOMER-VALIDATION-PROTOCOL.md`](AGENT-CUSTOMER-VALIDATION-PROTOCOL.md)。
 
 本指南是参与者操作手册。参与者画像、测量、成功条件、结果状态和发布闸门由 [`EXTERNAL-DEVELOPER-TRIAL-PLAN.md`](EXTERNAL-DEVELOPER-TRIAL-PLAN.md) 定义。
 

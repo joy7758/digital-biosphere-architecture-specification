@@ -159,13 +159,14 @@ export function PortalPage({ locale }: { locale: Locale }) {
         <section className="section developer-section" id="developers" data-section-id="developers">
           <div className="section-shell developer-grid">
             <div>
-              <p className="section-kicker">DEVELOPERS / 开发者</p>
+              <p className="section-kicker">AGENTS / 智能体</p>
               <h2>{c.developersTitle}</h2>
               <p>{c.developersBody}</p>
               <div className="developer-links">
                 <a href={architectureHref}>{c.developerLinks[0]}<span>↗</span></a>
                 <a href="/status.json">{c.developerLinks[1]}<span>↗</span></a>
                 <a href="/llms.txt">{c.developerLinks[2]}<span>↗</span></a>
+                <a href="/agent-customer-package.json">{c.developerLinks[3]}<span>↗</span></a>
               </div>
             </div>
             <aside className="governance-card">

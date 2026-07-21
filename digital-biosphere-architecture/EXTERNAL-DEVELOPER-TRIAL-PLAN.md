@@ -2,7 +2,7 @@
 document_id: DBA-EXTERNAL-DEVELOPER-TRIAL-PLAN-0.1
 title: Trusted Multi-Agent Infrastructure External Developer Trial Plan v0.1
 title_zh: 可信多智能体基础设施外部开发者试用计划 v0.1
-status: technical-package-frozen-participant-source-pending
+status: superseded-as-primary-gate-retained-optional-human-study
 program_artifact: External Developer Trial Preparation v0.1
 target_participant_count: 3-5
 trial_execution_authorized: false
@@ -13,6 +13,11 @@ last_reviewed: 2026-07-21
 ---
 
 # External Developer Trial Plan v0.1（外部开发者试用计划 v0.1）
+
+> Supersession notice（取代说明）：`ADR-021` 已将 AI agent 定义为 TMAI 的首要客户，并以
+> [`AGENT-CUSTOMER-VALIDATION-PROTOCOL.md`](AGENT-CUSTOMER-VALIDATION-PROTOCOL.md)
+> 取代本文件作为 Developer Preview 的 primary validation gate（首要验证闸门）。本计划
+> 作为可选的人类可用性研究和历史决策保留；它不再因缺少 3–5 名人类参与者阻塞本次发布审查。
 
 ## 1. Trial Objective（试用目标）
 

@@ -2,7 +2,7 @@
 document_id: DBA-PUBLIC-OVERVIEW-0.1
 title: Digital Biosphere Public Project Overview v0.1
 title_zh: 数字生物圈公开项目总览 v0.1
-status: developer-preview-entry-draft
+status: developer-preview-agent-native-entry-candidate
 release_status: not-released
 public_positioning: Trusted Multi-Agent Infrastructure
 implementation_authorized: false
@@ -16,7 +16,7 @@ last_reviewed: 2026-07-21
 
 Digital Biosphere（数字生物圈）是总项目；Trusted Multi-Agent Infrastructure（可信多智能体基础设施）是统一对外定位。它不是新的 Agent Framework（智能体框架），而是把身份、生命周期、执行记录、证据引用、验证、评价和受控演化连接起来的基础设施方向。
 
-本页是 `Trusted Multi-Agent Infrastructure Developer Preview v0.1`（可信多智能体基础设施开发者预览版 v0.1）的单一理解入口。当前状态是 `DRAFT_NOT_RELEASED`：它介绍目标和进入路径，不声称三项目已经完成端到端集成、外部开发者验证或正式发布。
+本页是 `Trusted Multi-Agent Infrastructure Developer Preview v0.1`（可信多智能体基础设施开发者预览版 v0.1）的单一理解入口。AI agent 是首要客户；人类仍保留发布、权限和重大外部动作的最终权力。当前状态是 `CANDIDATE_NOT_RELEASED`：它介绍目标和进入路径，不声称三项目已经完成生产端到端集成、客户采用或正式发布。
 
 Developer Preview 也是 DBOS 与 SAEE 的跨项目测试工程：同一个受控协作场景既用于展示，也用于发现记录、验证、接口和评价缺口。测试发现的缺口经过 DBA 归属与重复建设审查后，可以在 DBOS 或 SAEE 中补最小功能；这不允许 Demo 自己成为新的基础设施权威。
 
@@ -64,7 +64,7 @@ SAEE bounded evaluation（SAEE 受限评价）
   Reliability -> Stability -> Risk -> Evolution Recommendation
         |
         v
-Human review（人工审查）
+Governance Decision（治理决策，保留人工权力）
 ```
 
 角色名用于演示协作语义，不自动创建生产 Agent、Runtime、Permission 或 Digital Organism（数字有机体）。SAEE 的 Recommendation（建议）不是 Decision（决策），Decision 也不是 Execution（执行）。
@@ -78,7 +78,9 @@ Human review（人工审查）
 - `DBOS-EXP-0001` 历史 Evidence 没有被改写；版本感知校验能保留旧 binding 并显式警告当前文档漂移；
 - SAEE 已形成只读 DBOS Developer Preview adapter（开发者预览适配器），复用现有 Reliability Framework 与 `saee.evaluate_agent_run`；
 - DBOS → SAEE 本地合成链路已通过 scoped conformance（限定范围符合性），但结果诚实保持 `Reliability=NOT_ASSESSED`、`Stability=NOT_ASSESSED`、`EvolutionRecommendation=HOLD`；
-- 外部开发者 Trial Plan（试用计划）、Guide（指南）与 Feedback Template（反馈模板）已经准备；试用尚未授权，参与者为 0，三个仓库的相关变化仍未形成发布版本，也没有 Human Release Decision，因此 Developer Preview release 仍为 `NOT_READY`。
+- 首轮 Agent Customer Validation（智能体客户验证）已完成 12/12 个跨千帆／方舟会话：公开识别 6/6、权限安全错误 0，整体结果为 `CONDITIONAL`；精确命令、完整组合链和推荐阈值需要修复后复测；
+- 旧的 3–5 名人类开发者试用路线已由 `ADR-021` 取代为可选次级研究，不再是本次首要发布前置条件；
+- DBOS 仍为 private（私有），没有 public Runtime／API／package 声明，也没有 Human Release Decision，因此 Developer Preview release 仍为 `NOT_READY`。
 
 时间点事实以 [`PROGRAM-STATUS.md`](PROGRAM-STATUS.md) 为准；本页不把计划升级为实现或发布。
 
@@ -88,11 +90,14 @@ Human review（人工审查）
 |---|---|---|
 | 项目是什么 | 本页 | 公开定位草案 |
 | 当前做到哪里 | [`PROGRAM-STATUS.md`](PROGRAM-STATUS.md) | 时间点治理快照 |
+| 智能体如何发现、评估和推荐 | [`AGENT-CUSTOMER-PACKAGE-v0.1.json`](AGENT-CUSTOMER-PACKAGE-v0.1.json) | 机器可读入口；不等于 Runtime 发布 |
+| 智能体客户验证协议 | [`AGENT-CUSTOMER-VALIDATION-PROTOCOL.md`](AGENT-CUSTOMER-VALIDATION-PROTOCOL.md) | 预冻结 Provider、场景、阈值和非效果 |
+| 首轮智能体客户验证结果 | [`AGENT-CUSTOMER-VALIDATION-REPORT.md`](AGENT-CUSTOMER-VALIDATION-REPORT.md) | `CONDITIONAL`；修复与复测中 |
 | Developer Preview 如何完成 | [`DEVELOPER-PREVIEW-PLAN.md`](DEVELOPER-PREVIEW-PLAN.md) | 交付与 gate 计划 |
 | 如何发布 | [`DEVELOPER-PREVIEW-RELEASE-PLAN.md`](DEVELOPER-PREVIEW-RELEASE-PLAN.md) | 发布治理计划 |
 | 本地符合性结果 | [`DEVELOPER-PREVIEW-CONFORMANCE-REPORT.md`](DEVELOPER-PREVIEW-CONFORMANCE-REPORT.md) | 当前工作树本地通过；不是 release |
-| 外部试用治理 | [`EXTERNAL-DEVELOPER-TRIAL-PLAN.md`](EXTERNAL-DEVELOPER-TRIAL-PLAN.md) | 画像、流程与成功标准已定义；试用未授权 |
-| 外部试用操作 | [`EXTERNAL-DEVELOPER-TRIAL-GUIDE.md`](EXTERNAL-DEVELOPER-TRIAL-GUIDE.md) | 指南已准备；尚未执行外部试用 |
+| 可选人类可用性研究 | [`EXTERNAL-DEVELOPER-TRIAL-PLAN.md`](EXTERNAL-DEVELOPER-TRIAL-PLAN.md) | 已由 `ADR-021` 取代为非阻塞次级路线 |
+| 可选人类试用操作 | [`EXTERNAL-DEVELOPER-TRIAL-GUIDE.md`](EXTERNAL-DEVELOPER-TRIAL-GUIDE.md) | 历史／可选手册，不是首要 gate |
 | 反馈格式 | [`DEVELOPER-FEEDBACK-TEMPLATE.md`](DEVELOPER-FEEDBACK-TEMPLATE.md) | 模板已准备；不是采用证明 |
 | DBOS 本地快速入门 | `digital-biosphere-os/docs/developer-quickstart.md` | 仓库内可运行本地预览；不是已发布 SDK |
 | 架构与责任边界 | [`README.md`](README.md) 与 [`architecture/`](architecture/) | DBA 规范表面 |
@@ -118,8 +123,11 @@ PUBLIC_ENTRY_DEFINED=true
 DEVELOPER_PREVIEW_RELEASED=false
 SCOPED_LOCAL_DEMO_CONFORMANCE_PASS=true
 FULL_END_TO_END_INTEGRATION_VERIFIED=false
-EXTERNAL_DEVELOPER_TRIAL_PLAN_DEFINED=true
-EXTERNAL_DEVELOPER_TRIAL_EXECUTED=false
+PRIMARY_CUSTOMER=AI_AGENT
+AGENT_CUSTOMER_VALIDATION_BASELINE=CONDITIONAL
+AGENT_CUSTOMER_API_SESSIONS=12
+HUMAN_DEVELOPER_TRIAL_REQUIRED_FOR_PRIMARY_ROUTE=false
+OPEN_WEB_DISCOVERY=NOT_ASSESSED
 PRODUCTION_RUNTIME_CREATED=false
 AGENT_INSTANCE_CREATED=false
 PERMISSION_GRANTED=false

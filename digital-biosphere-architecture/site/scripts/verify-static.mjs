@@ -13,6 +13,7 @@ const requiredFiles = [
   "llms.txt",
   "agent-index.json",
   "status.json",
+  "agent-customer-package.json",
   "release.json",
   "release-manifest.json",
   "robots.txt",
@@ -22,12 +23,13 @@ const requiredFiles = [
 
 await Promise.all(requiredFiles.map((file) => access(join(outputRoot, file))));
 
-const [zh, en, zhStatus, enStatus, status, release, manifest] = await Promise.all([
+const [zh, en, zhStatus, enStatus, status, agentCustomerPackage, release, manifest] = await Promise.all([
   readFile(join(outputRoot, "index.html"), "utf8"),
   readFile(join(outputRoot, "en/index.html"), "utf8"),
   readFile(join(outputRoot, "status/index.html"), "utf8"),
   readFile(join(outputRoot, "en/status/index.html"), "utf8"),
   readFile(join(outputRoot, "status.json"), "utf8").then(JSON.parse),
+  readFile(join(outputRoot, "agent-customer-package.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release-manifest.json"), "utf8").then(JSON.parse),
 ]);
@@ -41,8 +43,12 @@ assert.match(en, /SAEE_DBOS_ADAPTER_PASS/);
 assert.doesNotMatch(zh, /codex-preview|Your site is taking shape/);
 assert.doesNotMatch(en, /codex-preview|Your site is taking shape/);
 assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
-assert.equal(status.gates.DQ_010_EFFECTIVE, false);
-assert.equal(status.external_trial.participant_source_confirmed, false);
+assert.equal(status.gates.DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE, true);
+assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL, true);
+assert.equal(status.agent_customer_validation.api_sessions_completed, 12);
+assert.equal(status.agent_customer_validation.open_web_discovery, "NOT_ASSESSED");
+assert.equal(agentCustomerPackage.intended_customer, "AI_AGENT");
+assert.equal(agentCustomerPackage.released, false);
 assert.equal(status.gates.DEVELOPER_PREVIEW_RELEASED, false);
 assert.equal(release.developer_preview_released, false);
 assert.equal(release.deployment_state, "candidate_not_released");

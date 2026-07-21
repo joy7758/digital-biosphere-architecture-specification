@@ -2,7 +2,7 @@
 adr_id: ADR-018
 title: Establish the External Developer Trial Gate
 title_zh: 建立外部开发者试用闸门
-status: accepted
+status: superseded-as-primary-gate-by-ADR-021
 decision_date: 2026-07-21
 decision_source: explicit-user-program-goal
 trial_execution_authorized: false
@@ -14,6 +14,10 @@ runtime_effect: none
 # ADR-018: Establish the External Developer Trial Gate
 
 中文：建立外部开发者试用闸门。
+
+> Historical status（历史状态）：`ADR-021` 已取代本 ADR 作为 Developer Preview 的首要
+> 客户验证路径。3–5 名人类开发者试用继续作为 optional secondary usability study（可选次级
+> 可用性研究）保留，不删除历史，也不再阻塞本次 agent-native release review（智能体原生发布审查）。
 
 ## Context（背景）
 
