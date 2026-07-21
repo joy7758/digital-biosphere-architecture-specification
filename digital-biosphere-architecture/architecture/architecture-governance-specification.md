@@ -6,7 +6,9 @@ status: non-executable-architecture-governance-specification
 architecture_authority_scope: normative-rules-and-records-only
 architecture_authority_assigned: false
 program_governance_defined: true
-program_authority_assigned: false
+program_authority_assigned: true
+program_owner_ref: zhangbin
+program_owner_assignment_reference: ADR-020
 version_governance_defined: true
 version_authority_assigned: false
 runtime_effect: none
@@ -187,7 +189,9 @@ Program Priority（项目优先级）不能直接改变 architecture truth；Arc
 
 ```text
 PROGRAM_GOVERNANCE_DEFINED=true
-PROGRAM_AUTHORITY_ASSIGNED=false
+PROGRAM_AUTHORITY_ASSIGNED=true
+PROGRAM_OWNER_REF=zhangbin
+PROGRAM_OWNER_ASSIGNMENT_REFERENCE=ADR-020
 PROGRAM_GOVERNANCE_RUNTIME_CREATED=false
 PROGRAM_STATUS_CHANGES_CHILD_TRUTH=false
 ```
@@ -201,7 +205,9 @@ ARCHITECTURE_AUTHORITY_ASSIGNED=false
 ARCHITECTURE_CHANGE_PROCESS_DEFINED=true
 PROGRAM_GOVERNANCE_SPECIFICATION_DEFINED=true
 PROGRAM_GOVERNANCE_COCKPIT_DEFINED=true
-PROGRAM_AUTHORITY_ASSIGNED=false
+PROGRAM_AUTHORITY_ASSIGNED=true
+PROGRAM_OWNER_REF=zhangbin
+PROGRAM_OWNER_ASSIGNMENT_REFERENCE=ADR-020
 VERSION_GOVERNANCE_SPECIFICATION_DEFINED=true
 VERSION_AUTHORITY_ASSIGNED=false
 ARCHITECTURE_RELEASE_CREATED=false

@@ -2,10 +2,11 @@
 document_id: DBA-DBOS-PUBLIC-VISIBILITY-PREFLIGHT-2026-07-21
 title: DBOS Repository Public Visibility Preflight
 title_zh: DBOS 仓库公开可见性预检
-status: independent-history-scan-pass-license-and-owner-decision-open
+status: private-collaborator-trial-selected-public-visibility-not-authorized
 source_commit: b4e3cbe2af442be861dbab3f7b2ffd2567443077
 repository_visibility: private
 repository_visibility_changed: false
+decision_reference: architecture/ADR-020-release-preparation-owner-decisions.md
 child_repository_modified: false
 last_reviewed: 2026-07-21
 ---
@@ -62,7 +63,11 @@ GITHUB_VISIBILITY_CHANGED=false
 - `PRIVATE` 仓库的 authenticated clean clone（认证检出）不等于匿名开发者可访问；
 - 公开前仍需确认文档、fixture、历史 commit message 和个人数据边界。
 
-## 4. Required Gate Before Public（公开前必须闸门）
+## 4. Decision and Future Public Gate（决定与未来公开闸门）
+
+`ADR-020` 已选择 `PRIVATE_COLLABORATOR_TRIAL`。本次试用不把 DBOS 切换为 public，
+不把认证检出写成匿名可用，也不授权具体协作者。未来如提出 public visibility 变化，
+仍必须重新完成下列闸门并形成新决定：
 
 1. `DQ-012` 选择许可证，并由各 Repository Owner 采用；
 2. 在未来最终 remote commit 与 tag 上重跑相同 Gitleaks 版本；
@@ -80,11 +85,14 @@ HIGH_CONFIDENCE_SECRET_PATTERN_HITS=0
 GITLEAKS_FULL_REACHABLE_HISTORY_SCAN_PASS=true
 GITLEAKS_FINDINGS=0
 FULL_SECRET_HISTORY_AUDIT_COMPLETE=false
-LICENSE_SELECTED=false
+LICENSE_SELECTED=true
+LICENSE_ID=Apache-2.0
 DBOS_PUBLIC=false
 DBOS_PUBLICATION_AUTHORIZED=false
+PRIVATE_COLLABORATOR_TRIAL_SELECTED=true
+COLLABORATORS_ADDED=0
 DEVELOPER_PREVIEW_RELEASED=false
 ```
 
-结论：`PRIVATE_COLLABORATOR_TRIAL` 仍是风险较低的推荐顺序；本预检不自动批准添加
-协作者、改变仓库可见性或正式发布。
+结论：`PRIVATE_COLLABORATOR_TRIAL` 已被 Human Owner 选择；本预检和该选择不自动批准
+添加具体协作者、改变仓库可见性或正式发布。

@@ -21,7 +21,7 @@ creates_project_relationships: false
 
 | project_id | 项目 | v0.1 架构角色 | 最近责任域 | 事实边界 | 待澄清的重复建设风险 |
 |---|---|---|---|---|---|
-| `PROJECT-DIGITAL-BIOSPHERE-ARCHITECTURE` | Digital Biosphere Architecture | Program Governance Hub（项目群治理中心）+ Architecture Specification Hub（架构规范中心）+ Architecture Authority Layer（架构权力层） | Program Governance / Architecture Governance / Rules | 驾驶舱管理组合、路线图、状态引用、依赖、决策、gate 与风险；不是 Runtime、Entity、最终授权主体或执行权来源，也不指派实际 Program/Architecture Authority | 与既有 public meaning layer 的 canonical reconciliation、角色任命、Git topology 和版本发布机制仍待定义 |
+| `PROJECT-DIGITAL-BIOSPHERE-ARCHITECTURE` | Digital Biosphere Architecture | Program Governance Hub（项目群治理中心）+ Architecture Specification Hub（架构规范中心）+ Architecture Authority Layer（架构权力层） | Program Governance / Architecture Governance / Rules | 驾驶舱管理组合、路线图、状态引用、依赖、决策、gate 与风险；`ADR-020` 指派 `zhangbin` 为 Human Program Owner，但 DBA 仍不是 Runtime、Entity、最终授权主体或执行权来源 | 与既有 public meaning layer 的 canonical reconciliation、其余角色任命、Git topology 和版本发布机制仍待定义 |
 | `PROJECT-DBOS` | DBOS | Open Digital Entity Infrastructure（开放数字实体基础设施）；Digital Biosphere Operating System；Operational Authority（运行权力）；Infrastructure Entity（基础设施实体）的架构角色示例 | Existence Governance / DBOS | DBOS repository 不是 Entity；DBOS 不是 Agent Application 或 Foundation Model；Operational Authority 不等于最终授权权，也不证明 Identity、Execution、Federation 或实体实例已存在 | 与 POP、Token Governor、证据组件的实现边界及未来实体资格需逐项契约化 |
 | `PROJECT-SAEE` | SAEE | Evolution Intelligence Layer（演化智能层）；Evolution Engine；Evolution Authority（演化权力）；Evolution Entity（演化实体）的架构角色示例 | Evolution Governance / SAEE | SAEE repository 不是 Entity；Evolution Authority 只覆盖评价，不授予 DBOS 写权、执行权或架构修改权 | Governance Evolution 与 DBOS/Token Governor 的策略生效及未来实体资格需澄清 |
 | `ARCH-LAYER-GOVERNANCE-DECISION` | Governance Decision Layer | Decision Authority（决策权力）的 record and state boundary（记录与状态边界） | SAEE 与 DBOS 之间的独立治理边界 | 不是项目实现、DBOS 模块、SAEE 模块、Runtime、Entity 或自动授权主体；`Decision Authority` 标签不定义最终授权者 | 最终 reviewer、decision authority、adoption authority 与职责分离规则尚需定义 |
@@ -143,7 +143,9 @@ ARCHITECTURE_AUTHORITY_LAYER_RECORDED=true
 ARCHITECTURE_AUTHORITY_ASSIGNED=false
 PROGRAM_GOVERNANCE_HUB_RECORDED=true
 PROGRAM_GOVERNANCE_COCKPIT_DEFINED=true
-PROGRAM_AUTHORITY_ASSIGNED=false
+PROGRAM_AUTHORITY_ASSIGNED=true
+PROGRAM_OWNER_REF=zhangbin
+PROGRAM_OWNER_ASSIGNMENT_REFERENCE=ADR-020
 PROGRAM_STATUS_CHANGES_PROJECT_FACTS=false
 DBOS_AUTHORITY_ROLE=OPERATIONAL_AUTHORITY
 SAEE_AUTHORITY_ROLE=EVOLUTION_AUTHORITY
