@@ -29,6 +29,12 @@ last_reviewed: 2026-07-21
 
 ## 2. DQ-011 — SAEE Adapter Publication Boundary（SAEE 适配器公开边界）
 
+精确技术清单和隔离复验见
+[`SAEE-PUBLIC-SAFE-EXTRACTION-REVIEW.md`](SAEE-PUBLIC-SAFE-EXTRACTION-REVIEW.md)。
+现有候选在隔离目录中 8/8 tests 通过并能消费冻结 DBOS 演示输出，但最小闭包为
+19 个文件，且 8 个 Python 实现／测试路径全部不在 SAEE public `main`。这使公开
+边界修订成为真实 Decision，而不是缺少一次复制命令。
+
 ### Dependency audit（依赖审计）
 
 当前内部、只读 Adapter 的最小 Python 依赖闭包为：
@@ -100,6 +106,12 @@ developer_preview_released=false
 DBOS 公开、SAEE Adapter 迁移、许可证选择或外部试用。
 
 ## 5. DQ-014 — DBOS Repository Visibility（DBOS 仓库可见性）
+
+只读预检见
+[`DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md`](DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md)。
+当前 457 个 tracked files（已跟踪文件）中未发现高置信度密钥模式、敏感文件名或
+超过 5 MiB 的历史 blob；但 GitHub Secret Scanning 与 Dependabot Alerts 均禁用，
+根许可证缺失，完整历史安全审查仍未完成。
 
 DBOS `b4e3cbe` 的 clean clone 使用当前 GitHub 凭据完成；这不是 anonymous clone
 （匿名检出）证据。仓库当前为 `PRIVATE`，因此 3–5 名陌生开发者和正式公开用户默认

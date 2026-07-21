@@ -31,9 +31,11 @@ is not ready for formal release.
 | DBOS clean clone | 331 tests, 34 validators, two demos | `PASS_PRIVATE_ACCESS` |
 | SAEE public clean clone | public smoke/demo | `PASS_ADAPTER_MISSING` |
 | SAEE ↔ DBOS public adapter | public `main` lacks required adapter | `FAIL` |
+| SAEE adapter extraction preflight | `SAEE-PUBLIC-SAFE-EXTRACTION-REVIEW.md`; isolated 8/8 tests and exact 19-file closure | `PASS_TECHNICAL_SCOPE_DECISION_REQUIRED` |
 | Cross-project clean clone | `CROSS_PROJECT_CLEAN_CLONE_PASS=false` | `FAIL` |
 | Public license | no root `LICENSE` in DBA, DBOS, or SAEE | `MISSING_DECISION` |
 | DBOS anonymous access | GitHub visibility is `PRIVATE` | `FAIL` |
+| DBOS public visibility preflight | `DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md`; no high-confidence pattern hits, GitHub security alerts disabled | `PRELIMINARY_PASS_FULL_AUDIT_REQUIRED` |
 | External developer trial | 0 participants; DQ-010 not authorized | `NOT_STARTED` |
 | Human Developer Preview release decision | DQ-009 `BLOCKED_INPUT` | `MISSING` |
 
@@ -49,9 +51,12 @@ FORMAL_RELEASE_READY=false
 
 ## Required decisions and external evidence
 
-1. `DQ-011`: approve or reject `A_PUBLIC_SAFE_EXTRACTION` for the SAEE adapter.
+1. `DQ-011`: approve or reject the exact 19-file `A_PUBLIC_SAFE_EXTRACTION`
+   candidate in `SAEE-PUBLIC-SAFE-EXTRACTION-REVIEW.md`.
 2. `DQ-012`: select `Apache-2.0`, another license, or withhold a license.
-3. `DQ-014`: choose DBOS public timing or controlled collaborator trial access.
+3. `DQ-014`: use `DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md` to choose DBOS public
+   timing or controlled collaborator trial access; preliminary scanning is not
+   a complete security audit.
 4. Repair the chosen public adapter/access path and rerun full clean-clone
    validation.
 5. `DQ-010`: authorize a named coordinator and 3–5 real external Agent
