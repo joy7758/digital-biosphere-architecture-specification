@@ -35,6 +35,7 @@ EXTERNAL_DEVELOPER_VALIDATION_COMPLETE=false
 EXTERNAL_DEVELOPER_PARTICIPANTS=0
 DBA_REMOTE_BASELINE_CREATED=true
 DBOS_REMOTE_BASELINE_CREATED=true
+DBA_CLEAN_CLONE_PASS=true
 DBOS_CLEAN_CLONE_PASS=true
 SAEE_PUBLIC_CLEAN_CLONE_PASS=true
 SAEE_DBOS_ADAPTER_CLEAN_CLONE_PASS=false
@@ -49,7 +50,7 @@ CROSS_PROJECT_CLEAN_CLONE_PASS=false
 
 | project_id | branch | observed commit | worktree observation | remote observation | 规范状态摘要 |
 |---|---|---|---|---|---|
-| `DBA` | `main` | `36e85271c65771bbd4d9511d2e0b8f36601dfb50` | source commit 已推送；根入口修正待后续 commit | `origin/main` 已包含 Developer Preview 治理材料 | 文档与 302 links 通过；被验证 commit 的 GitHub 根 README 缺失 |
+| `DBA` | `main` | `8974e8a957a3002c0f4cd1e64390a8f1f962d153` | source commit 已推送 | `origin/main` 可干净检出并包含 GitHub 根入口 | root README、root AGENTS 与 307 links 通过；版本未发布 |
 | `DBOS` | `main` | `b4e3cbe2af442be861dbab3f7b2ffd2567443077` | source commit 已推送 | `origin/main` 可干净检出；仓库当前为 private | fresh install、331/331 tests、34/34 validators、两个 Demo 通过；不是 Agent Runtime |
 | `SAEE` | public `main` | `e503c22109bdb7c83dc465d66e2a22760a3c8d90` | public source 可干净检出；内部工作树另有未发布变化 | `origin/main` 是裁剪公共产品层 | public smoke/demo 通过；DBOS Developer Preview Adapter 不在公共 source，跨项目 gate 失败 |
 | `RESEARCH-AGENT-PILOT` | `main` | `8445fe5d13cd889032c3786ba527d801f56d5351` | `dirty_count=30` | 未发现 `origin` | `V1_0_STATUS=INCOMPLETE_NOT_READY`；Agent、Runtime、Entity、Execution 均为 0 |
@@ -72,7 +73,7 @@ CROSS_PROJECT_CLEAN_CLONE_PASS=false
 | Multi-Agent Trust Demo | `LOCAL_DETERMINISTIC_PASS` | 3 个角色模拟、3 个执行记录、3 个证据引用、9 个结构 Validation；无 Agent/Runtime |
 | SAEE Evaluation Layer v0.1 | `LOCAL_READ_ONLY_PASS` | 8/8 adapter tests；Reliability/Stability fail closed；Risk/Recommendation 复用现有 evaluator |
 | External Developer Trial Preparation | `PLAN_DEFINED_TRIAL_NOT_AUTHORIZED` | Trial Plan、Guide、Feedback Template、Conformance Report 与 ADR-018 已形成；参与者 0、无外部试用 |
-| Clean Clone Validation | `FAIL_REQUIRED_SAEE_ADAPTER_MISSING` | DBOS 全通过；DBA 根入口待复验；SAEE public source 缺少必需 Adapter；见 `CLEAN-CLONE-VALIDATION-REPORT.md` |
+| Clean Clone Validation | `FAIL_REQUIRED_SAEE_ADAPTER_MISSING` | DBA 与 DBOS 全通过；SAEE public source 缺少必需 Adapter；见 `CLEAN-CLONE-VALIDATION-REPORT.md` |
 
 ## 4. Active Decisions and Blockers（当前决策与阻塞）
 
@@ -94,12 +95,11 @@ CROSS_PROJECT_CLEAN_CLONE_PASS=false
 
 ## 5. Next Program Actions（下一步项目群行动）
 
-1. 推送并复验 DBA GitHub 根入口修正；
-2. 处理 `DQ-011`，冻结不暴露 private core、不复制 evaluator 的 SAEE Adapter 分发方式；
-3. 使用三个最终远端 commit 重跑完整 clean-clone；
-4. 整体通过后再准备 `trial_package_id`、试用协调者、隐私说明并处理 `DQ-010`；
-5. 获得授权后联系 3–5 名外部 Agent Developer；Trial Result 完成后再处理 `DQ-009`；
-6. 在 Pilot 自身 gate 通过前保持 Research Agent Prototype 为 `NOT_READY`。
+1. 处理 `DQ-011`，冻结不暴露 private core、不复制 evaluator 的 SAEE Adapter 分发方式；
+2. 使用三个最终远端 commit 重跑完整 clean-clone；
+3. 整体通过后再准备 `trial_package_id`、试用协调者、隐私说明并处理 `DQ-010`；
+4. 获得授权后联系 3–5 名外部 Agent Developer；Trial Result 完成后再处理 `DQ-009`；
+5. 在 Pilot 自身 gate 通过前保持 Research Agent Prototype 为 `NOT_READY`。
 
 ## 6. Refresh Protocol（刷新协议）
 

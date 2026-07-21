@@ -18,7 +18,7 @@ validated_at: 2026-07-21
 
 | 项目 | 远端引用 | 验证 commit |
 |---|---|---|
-| DBA | `joy7758/digital-biosphere-architecture-specification:main` | `36e85271c65771bbd4d9511d2e0b8f36601dfb50` |
+| DBA | `joy7758/digital-biosphere-architecture-specification:main` | `8974e8a957a3002c0f4cd1e64390a8f1f962d153` |
 | DBOS | `joy7758/digital-biosphere-os:main` | `b4e3cbe2af442be861dbab3f7b2ffd2567443077` |
 | SAEE public layer | `joy7758/SAEE:main` | `e503c22109bdb7c83dc465d66e2a22760a3c8d90` |
 
@@ -30,7 +30,7 @@ validated_at: 2026-07-21
 |---|---|---|---|
 | DBA | Markdown links | `PASS` | 302 个本地链接，0 个断链 |
 | DBA | Governance / Public Entry | `PASS` | 驾驶舱与公开入口文件存在 |
-| DBA | GitHub repository root entry | `FAIL_REMEDIATION_PREPARED` | 被验证 commit 的 README 位于子目录；根入口已作为后续修正准备 |
+| DBA | GitHub repository root entry | `PASS` | 从修正 commit 重新 clone，root `README.md` 与 `AGENTS.md` 均存在 |
 | DBOS | Fresh editable install | `PASS` | 新建 Python venv 并从 clone 安装 `digital-biosphere-os-preview==0.1.0.dev0` |
 | DBOS | Test suite | `PASS` | 15 个目录，331 tests |
 | DBOS | Validator suite | `PASS` | 34/34 validators |
@@ -43,7 +43,7 @@ validated_at: 2026-07-21
 ## 3. Overall Gate（整体闸门）
 
 ```text
-DBA_CLEAN_CLONE_PASS=PARTIAL
+DBA_CLEAN_CLONE_PASS=true
 DBOS_CLEAN_CLONE_PASS=true
 DBOS_TESTS_PASS=true
 DBOS_VALIDATORS_PASS=true
@@ -68,10 +68,9 @@ DEVELOPER_PREVIEW_RELEASED=false
 
 ## 5. Required Remediation（必须修正）
 
-1. 验证新增的 DBA GitHub 根 README 与智能体入口；
-2. 处理 `DQ-011`：决定 SAEE Adapter 的安全公开／分发方式；
-3. 该方案必须复用 SAEE 规范评价器，同时不暴露 private core（私有核心）、不创建第二套评价算法；
-4. 使用最终三个远端 commit 重跑完整 Clean Clone；
-5. 只有整体 `PASS` 后，`DQ-010` 才能进入试用授权审查。
+1. 处理 `DQ-011`：决定 SAEE Adapter 的安全公开／分发方式；
+2. 该方案必须复用 SAEE 规范评价器，同时不暴露 private core（私有核心）、不创建第二套评价算法；
+3. 使用最终三个远端 commit 重跑完整 Clean Clone；
+4. 只有整体 `PASS` 后，`DQ-010` 才能进入试用授权审查。
 
 本报告不授权 external contact（外部联系）、试用、发布、部署或客户验证。

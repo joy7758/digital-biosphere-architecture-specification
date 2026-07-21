@@ -50,7 +50,7 @@ DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
 
 | preview milestone | required gate | 当前结果 | 直接证据 | 下一状态条件 |
 |---|---|---|---|---|
-| `DP-1` | `G1/G2` | `PASS_REMOTE_BASELINE_ROOT_REMEDIATION_PENDING` | DBA `36e8527` 已推送；302 links 通过；根 README 修正待复验 | 推送根入口修正并重验 |
+| `DP-1` | `G1/G2` | `PASS_CLEAN_CLONE` | DBA `8974e8a` 已推送；root README、root AGENTS、307 links 通过 | 保持同一公开入口 |
 | `DP-2` | `G3/G4` | `PASS_CLEAN_CLONE` | DBOS `b4e3cbe` fresh install；331/331 tests；34/34 validators | 保持同一冻结 commit |
 | `DP-3` | `G4/G6` | `PASS_SYNTHETIC_SCOPE` | 11/11 tests；3 角色、3 execution records、3 Evidence References、9 Validation results | 不外推为真实 Agent/Execution |
 | `DP-4` | `G3/G4/G7` | `FAIL_CLEAN_CLONE_ADAPTER_MISSING` | 内部 8/8 adapter tests 通过，但 SAEE public `main` 不含 Adapter | `DQ-011` 决定安全分发边界并重验 |

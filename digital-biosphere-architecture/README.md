@@ -39,7 +39,7 @@ research_agent_implementation_authorized: false
 public_positioning_defined: true
 public_positioning: Trusted Multi-Agent Infrastructure
 developer_preview_stage_accepted: true
-developer_preview_release_status: local-candidate-validated-not-released
+developer_preview_release_status: remote-baseline-clean-clone-blocked-not-released
 developer_preview_release_authorized: false
 clean_clone_validation_result: fail-required-saee-adapter-missing
 external_developer_trial_plan_defined: true

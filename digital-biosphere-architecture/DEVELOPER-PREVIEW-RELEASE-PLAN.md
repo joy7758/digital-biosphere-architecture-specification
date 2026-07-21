@@ -108,7 +108,7 @@ RELEASE_AUTHORIZED=false
 阻塞原因：
 
 1. DBA 与 DBOS source commits 已形成，但 SAEE public `main` 不含必需 DBOS Adapter；
-2. Clean Clone 中 DBOS 通过、DBA 根入口待复验、SAEE Adapter 失败；
+2. Clean Clone 中 DBA、DBOS 通过，SAEE Adapter 失败；
 3. `DQ-011` 尚未决定安全的 SAEE Adapter 公开／分发边界；
 4. `DQ-010` 尚未授权试用执行、参与者联系或反馈收集；
 5. 3–5 名外部开发者试用和 Trial Result Report 尚未发生；
