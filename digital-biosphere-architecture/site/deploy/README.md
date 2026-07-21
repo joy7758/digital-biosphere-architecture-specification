@@ -10,11 +10,21 @@ Target layout:
 └── current -> releases/<source_revision>/
 ```
 
-The website is exported with:
+The website candidate is exported with:
 
 ```bash
-SOURCE_REVISION="$(git rev-parse HEAD)" npm run release:static
+RELEASE_MODE=candidate SOURCE_REVISION="$(git rev-parse HEAD)" npm run release:static
 ```
+
+`candidate` is the default and fails if any checked-in public truth surface claims
+that the Developer Preview or DBOS wheel is released. `formal` mode is available
+only after an explicit Human Release Decision. It requires
+`RELEASE_DECISION_REF`, `RELEASED_BY_REF`, `PUBLIC_RELEASE_TAG`, and an HTTPS
+`DBOS_WHEEL_URL`, and it fails unless the rendered bilingual pages plus all four
+machine-readable truth surfaces already agree on the released state.
+
+Do not run `RELEASE_MODE=formal` during release preparation. The mode is an
+execution guard, not Release Authorization（发布授权）.
 
 Deployment copies only the generated `out/` directory to a new immutable release
 directory. The `current` symlink changes only after manifest verification and

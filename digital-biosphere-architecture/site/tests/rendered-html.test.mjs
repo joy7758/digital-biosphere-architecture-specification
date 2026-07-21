@@ -1,6 +1,22 @@
 import assert from "node:assert/strict";
 import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
+import { resolveReleaseContext, routeMarkers } from "../scripts/release-mode.mjs";
+
+const publicRoot = new URL("../public/", import.meta.url);
+const [publicStatus, publicAgentIndex, publicAgentCustomerPackage, publicDbosPackage] = await Promise.all([
+  readFile(new URL("status.json", publicRoot), "utf8").then(JSON.parse),
+  readFile(new URL("agent-index.json", publicRoot), "utf8").then(JSON.parse),
+  readFile(new URL("agent-customer-package.json", publicRoot), "utf8").then(JSON.parse),
+  readFile(new URL("dbos-public-package-manifest.json", publicRoot), "utf8").then(JSON.parse),
+]);
+const releaseContext = resolveReleaseContext(process.env, {
+  status: publicStatus,
+  agentIndex: publicAgentIndex,
+  agentCustomerPackage: publicAgentCustomerPackage,
+  dbosPackage: publicDbosPackage,
+});
+const expectedMarkers = routeMarkers(releaseContext.mode);
 
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -22,15 +38,21 @@ test("renders equivalent Chinese and English public entry points", async () => {
   const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
   assert.match(zh, /面向多智能体系统的可信基础设施/);
   assert.match(en, /Trust infrastructure for multi-agent systems/);
-  assert.match(zh, /Developer Preview Candidate/);
-  assert.match(en, /Developer Preview Candidate/);
+  for (const marker of expectedMarkers.zhHome) assert.match(zh, new RegExp(marker));
+  for (const marker of expectedMarkers.enHome) assert.match(en, new RegExp(marker));
   assert.match(zh, /Evidence/);
   assert.match(en, /Evidence/);
   assert.match(zh, /SAEE_DBOS_ADAPTER_PASS/);
   assert.match(en, /SAEE_DBOS_ADAPTER_PASS/);
-  assert.match(zh, /不是正式发布/);
-  assert.doesNotMatch(zh, /production-ready|现已正式发布|已经正式发布/);
-  assert.doesNotMatch(en, /production-ready|now released/i);
+  if (releaseContext.mode === "candidate") {
+    assert.match(zh, /Developer Preview Candidate/);
+    assert.match(en, /Developer Preview Candidate/);
+    assert.doesNotMatch(zh, /production-ready|现已正式发布|已经正式发布/);
+    assert.doesNotMatch(en, /production-ready|now released/i);
+  } else {
+    assert.doesNotMatch(zh, /Developer Preview Candidate/);
+    assert.doesNotMatch(en, /Developer Preview Candidate/);
+  }
 });
 
 test("renders bilingual status pages with fail-closed truth", async () => {
@@ -39,8 +61,8 @@ test("renders bilingual status pages with fail-closed truth", async () => {
     render("/en/status"),
   ]);
   const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
-  assert.match(zh, /当前不是正式发布/);
-  assert.match(en, /This is not a release/);
+  for (const marker of expectedMarkers.zhStatus) assert.match(zh, new RegExp(marker.replace(".", "\\.")));
+  for (const marker of expectedMarkers.enStatus) assert.match(en, new RegExp(marker.replace(".", "\\.")));
   assert.match(zh, /AGENT_CUSTOMER_VALIDATION_BASELINE/);
   assert.match(en, /AGENT_CUSTOMER_VALIDATION_BASELINE/);
   assert.match(zh, /PASS/);
@@ -70,7 +92,7 @@ test("ships agent-readable and discovery resources", async () => {
     readFile(new URL("dbos-public-package-manifest.json", root), "utf8").then(JSON.parse),
     readFile(new URL("llms.txt", root), "utf8"),
   ]);
-  assert.equal(agentIndex.released, false);
+  assert.equal(agentIndex.released, releaseContext.developerPreviewReleased);
   assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
   assert.equal(status.gates.DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE, true);
   assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL, true);
@@ -86,13 +108,10 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.open_web_discovery.github_metadata_remediated, true);
   assert.equal(status.open_web_discovery.github_metadata_indexing_signal_observed, true);
   assert.equal(agentCustomerPackage.intended_customer, "AI_AGENT");
-  assert.equal(agentCustomerPackage.released, false);
+  assert.equal(agentCustomerPackage.released, releaseContext.developerPreviewReleased);
   assert.equal(agentCustomerPackage.validation_truth.rerun_result, "PASS");
-  assert.equal(dbosPackage.status, "VALIDATED_NOT_PUBLISHED");
-  assert.equal(dbosPackage.public_download_url, null);
   assert.equal(dbosPackage.public_safe_boundary.absolute_user_path_matches, 0);
   assert.equal(status.gates.DBOS_PUBLIC_SAFE_WHEEL_VALIDATED, true);
-  assert.equal(status.gates.DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED, false);
   assert.equal(status.license.selected, true);
   assert.equal(status.license.identifier, "Apache-2.0");
   assert.equal(status.public_website.deployed, true);
@@ -100,7 +119,12 @@ test("ships agent-readable and discovery resources", async () => {
   assert.match(llms, /Recommendation != Decision/);
   assert.match(llms, /DBOS records -> SAEE evaluation\/recommendation -> Governance Decision review\/adoption -> DBOS authorized execution/);
   assert.match(llms, /OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY/);
-  assert.match(llms, /DBOS_PUBLIC_SAFE_WHEEL=VALIDATED_NOT_PUBLISHED/);
+  assert.match(
+    llms,
+    releaseContext.mode === "candidate"
+      ? /DBOS_PUBLIC_SAFE_WHEEL=VALIDATED_NOT_PUBLISHED/
+      : /DBOS_PUBLIC_SAFE_WHEEL=PUBLISHED/,
+  );
 });
 
 test("removes the disposable starter preview", async () => {

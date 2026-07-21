@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { access, readFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
+import { resolveReleaseContext } from "./release-mode.mjs";
 
 const siteRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputRoot = join(siteRoot, "out");
@@ -35,11 +36,23 @@ const [zh, en, zhStatus, enStatus, status, agentCustomerPackage, dbosPackage, re
   readFile(join(outputRoot, "release.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release-manifest.json"), "utf8").then(JSON.parse),
 ]);
+const agentIndex = await readFile(join(outputRoot, "agent-index.json"), "utf8").then(JSON.parse);
+const releaseContext = resolveReleaseContext(process.env, {
+  status,
+  agentIndex,
+  agentCustomerPackage,
+  dbosPackage,
+});
 
 assert.match(zh, /面向多智能体系统的可信基础设施/);
 assert.match(en, /Trust infrastructure for multi-agent systems/);
-assert.match(zhStatus, /当前不是正式发布/);
-assert.match(enStatus, /This is not a release/);
+if (releaseContext.mode === "candidate") {
+  assert.match(zhStatus, /当前不是正式发布/);
+  assert.match(enStatus, /This is not a release/);
+} else {
+  assert.match(zhStatus, /可信多智能体基础设施开发者预览版 v0\.1 已发布/);
+  assert.match(enStatus, /Trusted Multi-Agent Infrastructure Developer Preview v0\.1 is released/);
+}
 assert.match(zh, /SAEE_DBOS_ADAPTER_PASS/);
 assert.match(en, /SAEE_DBOS_ADAPTER_PASS/);
 assert.doesNotMatch(zh, /codex-preview|Your site is taking shape/);
@@ -59,25 +72,26 @@ assert.equal(status.open_web_discovery.github_metadata_description_match_observe
 assert.equal(status.open_web_discovery.github_metadata_remediated, true);
 assert.equal(status.open_web_discovery.github_metadata_indexing_signal_observed, true);
 assert.equal(agentCustomerPackage.intended_customer, "AI_AGENT");
-assert.equal(agentCustomerPackage.released, false);
+assert.equal(agentCustomerPackage.released, releaseContext.developerPreviewReleased);
 assert.equal(agentCustomerPackage.validation_truth.rerun_result, "PASS");
 assert.equal(dbosPackage.package_id, "TMAI-DBOS-WHEEL-CANDIDATE-20260722-001");
-assert.equal(dbosPackage.status, "VALIDATED_NOT_PUBLISHED");
-assert.equal(dbosPackage.release_authorized, false);
-assert.equal(dbosPackage.public_download_url, null);
 assert.equal(dbosPackage.source.source_revision, "cd3f867c4379ec555c45e7d554088ad12ce08a24");
 assert.equal(dbosPackage.public_safe_boundary.absolute_user_path_matches, 0);
 assert.equal(dbosPackage.public_safe_boundary.gitleaks_findings, 0);
 assert.equal(status.gates.DBOS_PUBLIC_SAFE_WHEEL_VALIDATED, true);
-assert.equal(status.gates.DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED, false);
-assert.equal(status.gates.DEVELOPER_PREVIEW_RELEASED, false);
-assert.equal(release.developer_preview_released, false);
-assert.equal(release.deployment_state, "candidate_not_released");
+assert.equal(release.release_mode, releaseContext.mode);
+assert.equal(release.developer_preview_released, releaseContext.developerPreviewReleased);
+assert.equal(release.deployment_state, releaseContext.deploymentState);
+assert.equal(release.release_decision_reference, releaseContext.releaseDecisionReference);
+assert.equal(release.released_by_ref, releaseContext.releasedByRef);
+assert.equal(release.public_release_tag, releaseContext.publicReleaseTag);
+assert.equal(release.dbos_public_package_url, releaseContext.dbosWheelUrl);
 assert.ok(manifest.files.length >= 10);
 assert.equal(manifest.source_revision, release.source_revision);
 
 console.log("STATIC_EXPORT_PASS=true");
 console.log("ZH_EN_CONTENT_PARITY_PASS=true");
 console.log("TRUTH_BOUNDARY_VALIDATION_PASS=true");
+console.log(`RELEASE_MODE=${releaseContext.mode}`);
 console.log(`SOURCE_REVISION=${release.source_revision}`);
 console.log(`MANIFEST_FILES=${manifest.files.length}`);
