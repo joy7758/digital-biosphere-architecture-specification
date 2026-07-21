@@ -62,6 +62,20 @@ export function resolveReleaseContext(environment, resources) {
   invariant(dbosPackage.release_authorized === true, "formal export requires DBOS package release_authorized=true");
   invariant(dbosPackage.status === "PUBLISHED", "formal export requires DBOS package status PUBLISHED");
   invariant(dbosPackage.public_download_url === dbosWheelUrl, "DBOS_WHEEL_URL must match the DBOS package manifest");
+  invariant(status.release?.decision_reference === releaseDecisionReference, "RELEASE_DECISION_REF must match status.release");
+  invariant(status.release?.released_by_ref === releasedByRef, "RELEASED_BY_REF must match status.release");
+  invariant(status.release?.tag === publicReleaseTag, "PUBLIC_RELEASE_TAG must match status.release");
+  invariant(agentIndex.release?.decision_reference === releaseDecisionReference, "RELEASE_DECISION_REF must match agent-index");
+  invariant(agentIndex.release?.released_by_ref === releasedByRef, "RELEASED_BY_REF must match agent-index");
+  invariant(agentIndex.release?.tag === publicReleaseTag, "PUBLIC_RELEASE_TAG must match agent-index");
+  invariant(dbosPackage.release?.decision_reference === releaseDecisionReference, "RELEASE_DECISION_REF must match DBOS package release");
+  invariant(dbosPackage.release?.released_by_ref === releasedByRef, "RELEASED_BY_REF must match DBOS package release");
+  invariant(dbosPackage.release?.tag === publicReleaseTag, "PUBLIC_RELEASE_TAG must match DBOS package release");
+  invariant(dbosPackage.release?.whole_repository_visibility === "PRIVATE", "formal export requires the whole DBOS repository to remain PRIVATE");
+  invariant(agentCustomerPackage.non_effects?.release_authorized === true, "formal export requires agent-customer release_authorized=true");
+  invariant(status.open_web_discovery?.result === "PARTIAL_METADATA_ONLY", "formal export must preserve PARTIAL_METADATA_ONLY");
+  invariant(status.open_web_discovery?.accepted_limitation_for_v0_1 === true, "formal export requires the accepted v0.1 discovery limitation");
+  invariant(dbosWheelUrl.endsWith(`/${dbosPackage.artifact.filename}`), "DBOS_WHEEL_URL filename must match the DBOS artifact");
 
   return {
     mode,

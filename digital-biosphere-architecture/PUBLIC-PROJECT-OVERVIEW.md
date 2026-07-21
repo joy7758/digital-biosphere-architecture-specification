@@ -71,9 +71,9 @@ Governance Decision（治理决策，保留人工权力）
 
 ## 3. Current Truth（当前事实）
 
-截至 2026-07-21：
+截至 2026-07-22：
 
-- DBA 已建立项目群驾驶舱、路线图、项目组合和集成闸门；Developer Preview 入口正在工作树中形成，尚未发布；
+- DBA 已建立项目群驾驶舱、路线图、项目组合和集成闸门；Developer Preview v0.1 已按 `ADR-022` 发布，但不构成生产就绪或客户采用；
 - DBOS 已形成 local editable install（本地可编辑安装）、单一测试入口、Quick Start（快速入门）和三角色 synthetic demo（合成演示）；331/331 tests 与 34/34 validators 在当前工作树通过；
 - `DBOS-EXP-0001` 历史 Evidence 没有被改写；版本感知校验能保留旧 binding 并显式警告当前文档漂移；
 - SAEE 已形成只读 DBOS Developer Preview adapter（开发者预览适配器），复用现有 Reliability Framework 与 `saee.evaluate_agent_run`；
@@ -81,7 +81,7 @@ Governance Decision（治理决策，保留人工权力）
 - 首轮 Agent Customer Validation（智能体客户验证）完成 12/12 个跨千帆／方舟会话并得到 `CONDITIONAL`；修复后复测 `TMAI-ACV-20260722-002` 再完成 12/12，会话与全部预冻结阈值通过，12/12 overall verdict 为边界正确的 `CONDITIONAL`；
 - 开放网络观察 `TMAI-OWD-20260722-001` 已得到 GitHub 新 description 的部分索引命中，但规范英文名、中文名和公开搜索仍无精确命中，因此保持 `PARTIAL_METADATA_ONLY`；
 - 旧的 3–5 名人类开发者试用路线已由 `ADR-021` 取代为可选次级研究，不再是本次首要发布前置条件；
-- DBOS 仍为 private（私有），没有 public Runtime／API／package 声明，也没有 Human Release Decision，因此 Developer Preview release 仍为 `NOT_READY`。
+- DBOS 整仓继续为 private（私有）；exact public-safe wheel 已作为 v0.1 GitHub Release asset 公开，但没有 public Runtime、托管 API、Permission 或生产兼容声明。
 
 时间点事实以 [`PROGRAM-STATUS.md`](PROGRAM-STATUS.md) 为准；本页不把计划升级为实现或发布。
 
@@ -89,7 +89,7 @@ Governance Decision（治理决策，保留人工权力）
 
 | 需要了解 | 入口 | 当前效力 |
 |---|---|---|
-| 项目是什么 | 本页 | 公开定位草案 |
+| 项目是什么 | 本页 | Developer Preview v0.1 公开定位 |
 | 当前做到哪里 | [`PROGRAM-STATUS.md`](PROGRAM-STATUS.md) | 时间点治理快照 |
 | 智能体如何发现、评估和推荐 | [`AGENT-CUSTOMER-PACKAGE-v0.1.1.json`](AGENT-CUSTOMER-PACKAGE-v0.1.1.json) | 机器可读入口与复测结果；不等于 Runtime 发布 |
 | 智能体客户验证协议 | [`AGENT-CUSTOMER-VALIDATION-PROTOCOL.md`](AGENT-CUSTOMER-VALIDATION-PROTOCOL.md) | 预冻结 Provider、场景、阈值和非效果 |
@@ -102,9 +102,10 @@ Governance Decision（治理决策，保留人工权力）
 | 可选人类可用性研究 | [`EXTERNAL-DEVELOPER-TRIAL-PLAN.md`](EXTERNAL-DEVELOPER-TRIAL-PLAN.md) | 已由 `ADR-021` 取代为非阻塞次级路线 |
 | 可选人类试用操作 | [`EXTERNAL-DEVELOPER-TRIAL-GUIDE.md`](EXTERNAL-DEVELOPER-TRIAL-GUIDE.md) | 历史／可选手册，不是首要 gate |
 | 反馈格式 | [`DEVELOPER-FEEDBACK-TEMPLATE.md`](DEVELOPER-FEEDBACK-TEMPLATE.md) | 模板已准备；不是采用证明 |
-| DBOS 本地快速入门 | `digital-biosphere-os/docs/developer-quickstart.md` | 仓库内可运行本地预览；不是已发布 SDK |
+| DBOS public-safe wheel | [`DBOS-PUBLIC-PACKAGE-MANIFEST-v0.1.json`](DBOS-PUBLIC-PACKAGE-MANIFEST-v0.1.json) | 已发布的有界 Developer Preview 包；不是 Runtime 或生产 SDK |
 | 架构与责任边界 | [`README.md`](README.md) 与 [`architecture/`](architecture/) | DBA 规范表面 |
 | 为什么进入此阶段 | [`architecture/ADR-017-trusted-multi-agent-infrastructure-developer-preview.md`](architecture/ADR-017-trusted-multi-agent-infrastructure-developer-preview.md) | 已接受的阶段决策 |
+| 为什么允许发布 | [`architecture/ADR-022-developer-preview-release.md`](architecture/ADR-022-developer-preview-release.md) | exact artifact 和公开边界的人工发布决定 |
 
 ## 5. Public Claim Boundary（对外声明边界）
 

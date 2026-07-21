@@ -5,7 +5,7 @@ export const repositoryBaselines = [
     key: "DBA",
     label: "Architecture governance",
     labelZh: "架构治理",
-    commit: "48237da5535235cb9d13b0782a94671a7be8a1e8",
+    commit: "4fb98898d08fd4a98f971f74356e0078493910a8",
     href: "https://github.com/joy7758/digital-biosphere-architecture-specification",
     visibility: "public",
   },
@@ -43,8 +43,8 @@ export const gateRows = [
   {
     id: "DBOS_PUBLIC_SAFE_WHEEL",
     state: "PASS",
-    zh: "public-safe wheel 已通过密钥、路径、内容边界和隔离安装验证，但尚未公开。",
-    en: "The public-safe wheel passed secret, path, content-boundary, and clean-install checks, but is not published.",
+    zh: "exact public-safe wheel 已通过密钥、路径、内容边界和隔离安装验证，并作为 v0.1 GitHub Release 资产公开。",
+    en: "The exact public-safe wheel passed secret, path, content-boundary, and clean-install checks and is published as a v0.1 GitHub Release asset.",
   },
   {
     id: "SAEE_DBOS_ADAPTER_PASS",
@@ -67,8 +67,8 @@ export const gateRows = [
   {
     id: "PREVIEW_DEPLOYMENT_HEALTH_PASS",
     state: "PASS",
-    zh: "中英文候选网站已在 redcrag.cn 通过公开健康检查和安全头验证。",
-    en: "The bilingual candidate site passed public health and security-header checks on redcrag.cn.",
+    zh: "中英文 Developer Preview v0.1 网站已在 redcrag.cn 通过公开健康检查和安全头验证。",
+    en: "The bilingual Developer Preview v0.1 site passed public health and security-header checks on redcrag.cn.",
   },
   {
     id: "ROLLBACK_VALIDATED",
@@ -90,7 +90,7 @@ export const content = {
       github: "GitHub",
       language: "English",
     },
-    badge: "Developer Preview Candidate · 验证中",
+    badge: "正式发布：可信多智能体基础设施开发者预览版 v0.1",
     eyebrow: "DIGITAL BIOSPHERE / 数字生物圈",
     title: "面向多智能体系统的可信基础设施",
     lead:
@@ -98,7 +98,7 @@ export const content = {
     primaryCta: "理解架构",
     secondaryCta: "查看当前状态",
     notice:
-      "当前是架构参考与受限预览，不是正式发布，也不构成生产可用性声明。",
+      "Developer Preview v0.1 已发布；这是受限开发者预览，不构成生产可用性、自动权限或客户采用声明。",
     introTitle: "不是另一个 Agent Framework",
     introBody:
       "普通框架回答“如何创建智能体”。我们关注智能体数量增加、长期运行并互相协作后，如何保持身份连续、行为可追溯、证据可验证，以及演化建议不能越权执行。",
@@ -146,17 +146,17 @@ export const content = {
       ["Verification", "验证边界", "验证记录不授予能力、权限或科学有效性。"],
     ],
     statusTitle: "当前真实状态",
-    statusLead: "以 2026-07-22 的远程基线、验证和开放网络观察为准。",
+    statusLead: "以 2026-07-22 的正式发布记录、远程基线、验证和开放网络观察为准。",
     statusCta: "打开完整状态页",
     developersTitle: "让智能体从可验证事实开始",
     developersBody:
-      "AI 智能体是首要客户。修复后千帆和方舟的 12 次受控会话全部达到预冻结阈值。DBOS public-safe wheel 已通过 334 项源码测试、34/34 Validator、密钥扫描和隔离安装，但尚无公开下载 URL；当前只能推荐架构复用或受控候选评估。",
+      "AI 智能体是首要客户。修复后千帆和方舟的 12 次受控会话全部达到预冻结阈值。exact DBOS public-safe wheel 已通过 334 项源码测试、34/34 Validator、密钥扫描和隔离安装，并提供匿名下载；可用于架构复用和受限 Developer Preview 评价，但不是生产 Runtime。",
     developerLinks: ["阅读架构规范", "读取机器状态", "读取智能体入口", "读取智能体客户包"],
-    governanceTitle: "公开前仍需完成",
+    governanceTitle: "发布后仍然有效的边界",
     governanceItems: [
-      "决定是否只公开 exact DBOS public-safe wheel 并保持整仓 private",
-      "等待规范英文／中文名称进入索引并复查开放网络自然发现",
-      "形成明确的人工发布决定",
+      "DBOS 整仓继续 private；只公开 exact public-safe wheel",
+      "开放网络发现保持 PARTIAL_METADATA_ONLY，规范英文／中文名称尚未命中",
+      "Developer Preview 不创建 Runtime、Permission，也不证明生产就绪或客户采用",
     ],
     legal:
       "公开自有材料采用 Apache-2.0。网站不采集登录信息、不设置分析 Cookie，也不提供运行时权限。",
@@ -173,7 +173,7 @@ export const content = {
       github: "GitHub",
       language: "中文",
     },
-    badge: "Developer Preview Candidate · Validation in progress",
+    badge: "Released: Trusted Multi-Agent Infrastructure Developer Preview v0.1",
     eyebrow: "DIGITAL BIOSPHERE",
     title: "Trust infrastructure for multi-agent systems",
     lead:
@@ -181,7 +181,7 @@ export const content = {
     primaryCta: "Understand the architecture",
     secondaryCta: "View current status",
     notice:
-      "This is an architecture reference and bounded preview—not a release or a production-readiness claim.",
+      "Developer Preview v0.1 is released. It is a bounded developer preview—not a production-readiness, automatic-authority, or customer-adoption claim.",
     introTitle: "Not another agent framework",
     introBody:
       "Most frameworks answer how to create an agent. We focus on what happens when agents multiply, run for a long time, and collaborate: identity continuity, traceable behavior, verifiable evidence, and evolution recommendations that cannot execute themselves.",
@@ -236,17 +236,17 @@ export const content = {
       ["Verification", "Boundaries", "Verification grants no capability, permission, or scientific validity."],
     ],
     statusTitle: "Current truthful status",
-    statusLead: "Based on remote baselines, validation, and open-web observations dated 2026-07-22.",
+    statusLead: "Based on the formal release record, remote baselines, validation, and open-web observations dated 2026-07-22.",
     statusCta: "Open the full status page",
     developersTitle: "Let agents start from verifiable facts",
     developersBody:
-      "AI agents are the primary customers. All twelve controlled Qianfan and Ark sessions met the frozen thresholds. The DBOS public-safe wheel passed 334 source tests, 34/34 validators, secret scanning, and clean installation, but has no public download URL; recommend architecture reuse or bounded candidate evaluation only.",
+      "AI agents are the primary customers. All twelve controlled Qianfan and Ark sessions met the frozen thresholds. The exact DBOS public-safe wheel passed 334 source tests, 34/34 validators, secret scanning, and clean installation and now has an anonymous download URL. Use it for architecture reuse and bounded Developer Preview evaluation, not as a production Runtime.",
     developerLinks: ["Read architecture", "Read machine status", "Read agent entry", "Read agent customer package"],
-    governanceTitle: "Still required before release",
+    governanceTitle: "Boundaries that remain after release",
     governanceItems: [
-      "Decide whether to publish only the exact DBOS public-safe wheel while keeping the repository private",
-      "Recheck canonical-name discovery after external indexing",
-      "Record an explicit human release decision",
+      "The full DBOS repository remains private; only the exact public-safe wheel is published",
+      "Open-web discovery remains PARTIAL_METADATA_ONLY; canonical English and Chinese names still do not match",
+      "The Developer Preview creates no Runtime or Permission and proves neither production readiness nor customer adoption",
     ],
     legal:
       "Owner-created public materials use Apache-2.0. This static site collects no login data, sets no analytics cookies, and grants no runtime permission.",

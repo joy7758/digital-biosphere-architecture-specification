@@ -2,9 +2,9 @@
 report_id: DBA-FORMAL-RELEASE-READINESS-AUDIT-2026-07-21
 title: Trusted Multi-Agent Infrastructure Formal Release Readiness Audit
 title_zh: 可信多智能体基础设施正式发布就绪审计
-status: clean-clone-agent-validation-dependency-and-wheel-review-pass-distribution-and-release-decision-blocked
+status: formal-release-ready-authorized-execution-in-progress
 observed_at: 2026-07-22T01:54:00+08:00
-formal_release_ready: false
+formal_release_ready: true
 developer_preview_released: false
 ---
 
@@ -12,9 +12,9 @@ developer_preview_released: false
 
 ## Outcome
 
-The public website and its GitHub website artifact are published as an explicit
-candidate. The full Trusted Multi-Agent Infrastructure Developer Preview v0.1
-is not ready for formal release.
+All formal release prerequisites and explicit Human decisions are satisfied.
+`ADR-022` authorizes the exact GitHub and Baidu Cloud release transaction. This
+readiness audit remains distinct from the post-release external verification.
 
 ## Requirement audit
 
@@ -40,11 +40,11 @@ is not ready for formal release.
 | Cross-project clean clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `PASS` |
 | Public license | 三仓库根 `LICENSE`；与 Apache 官方 `LICENSE-2.0.txt` 一致 | `PASS_OWNER_CREATED_SURFACES` |
 | Website dependency audit | `TMAI-WEB-DEPENDENCY-REVIEW-20260722-001`：0 critical、0 high、2 moderate；5/5 tests、lint、静态导出通过；服务器只部署静态 `out/` | `PASS_WITH_BOUNDED_RESIDUAL_DISCLOSED` |
-| DBOS anonymous access | GitHub visibility is `PRIVATE`；public-safe wheel has no public URL | `FAIL_DQ-016_PENDING` |
+| DBOS anonymous access | exact public-safe wheel URL fixed by `ADR-022`；whole repository remains `PRIVATE` | `AUTHORIZED_EXTERNAL_VERIFICATION_REQUIRED` |
 | DBOS trial access decision | `PRIVATE_COLLABORATOR_TRIAL` selected；repository remains private | `PASS_FOR_TRIAL_NO_COLLABORATORS_ADDED` |
 | Trial package | `TMAI-DP-v0.1-TRIAL-20260721-001` | `TECHNICAL_FREEZE_PASS_DISTRIBUTION_BLOCKED` |
 | Human developer trial | 0 participants；`ADR-021` retains it as an optional secondary study | `SUPERSEDED_AS_PRIMARY_GATE_NOT_EXECUTED` |
-| Human Developer Preview release decision | DQ-009 `BLOCKED_INPUT` | `MISSING` |
+| Human Developer Preview release decision | `ADR-022`；`released_by_ref=zhangbin` | `PASS_AUTHORIZED` |
 
 ## Release classification
 
@@ -53,18 +53,20 @@ PUBLIC_WEBSITE_DEPLOYED=true
 GITHUB_WEBSITE_PRERELEASE_PUBLISHED=true
 WEBSITE_CANDIDATE_PUBLISHED=true
 TRUSTED_MULTI_AGENT_INFRASTRUCTURE_DEVELOPER_PREVIEW_RELEASED=false
-FORMAL_RELEASE_READY=false
+FORMAL_RELEASE_READY=true
+RELEASE_AUTHORIZED=true
+RELEASE_DECISION_REF=architecture/ADR-022-developer-preview-release.md
 ```
 
 ## Remaining implementation and external evidence
 
-1. Decide `DQ-016`: keep the whole DBOS repository private and publish only the
-   exact validated public-safe wheel, or retain the current no-public-package state.
-2. Recheck `TMAI-OWD-20260722-001` after external indexing, or record explicit
-   Human acceptance of the Developer Preview discovery limitation; metadata repair
-   is not discovery evidence.
-3. `DQ-009`: record an explicit Human Release Decision with `released_by_ref`;
-   the decision must preserve disclosure of the bounded `R-015` residual.
+1. Publish the exact wheel and verify anonymous SHA-256, byte size and clean installation.
+2. Publish `v0.1-developer-preview` as a non-draft, non-prerelease GitHub Release.
+3. Deploy the formal static artifact to Baidu Cloud and verify manifest, Nginx,
+   public routes, security headers and rollback preservation.
+4. Reconfirm DBOS repository visibility remains `PRIVATE`.
+5. Record the post-release evidence without upgrading `PARTIAL_METADATA_ONLY`,
+   `R-015`, customer adoption or production-readiness claims.
 
 No local test, model recommendation, website deployment, prerelease tag, or
-synthetic demo can replace these decisions or Human Release Authorization.
+synthetic demo replaces the external execution evidence still required after authorization.

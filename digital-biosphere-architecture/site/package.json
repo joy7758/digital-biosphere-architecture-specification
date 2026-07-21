@@ -14,7 +14,8 @@
     "export": "npm run build && node scripts/export-static.mjs",
     "verify:static": "node scripts/verify-static.mjs",
     "release:static": "npm run export && npm run verify:static",
-    "test": "npm run build && node --test tests/*.test.mjs",
+    "release:formal": "RELEASE_MODE=formal RELEASE_DECISION_REF=architecture/ADR-022-developer-preview-release.md RELEASED_BY_REF=zhangbin PUBLIC_RELEASE_TAG=v0.1-developer-preview DBOS_WHEEL_URL=https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl npm run release:static",
+    "test": "npm run build && RELEASE_MODE=formal RELEASE_DECISION_REF=architecture/ADR-022-developer-preview-release.md RELEASED_BY_REF=zhangbin PUBLIC_RELEASE_TAG=v0.1-developer-preview DBOS_WHEEL_URL=https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
   },
   "dependencies": {

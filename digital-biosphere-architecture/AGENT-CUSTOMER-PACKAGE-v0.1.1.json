@@ -6,8 +6,8 @@
   "canonical_name_zh": "可信多智能体基础设施",
   "project_family": "Digital Biosphere",
   "intended_customer": "AI_AGENT",
-  "status": "AGENT_CUSTOMER_VALIDATION_PASS_NOT_RUNTIME_RELEASE",
-  "released": false,
+  "status": "DEVELOPER_PREVIEW_RELEASED_NOT_PRODUCTION_READY",
+  "released": true,
   "production_ready": false,
   "purpose": "Help an AI agent discover, assess, compose, and appropriately recommend TMAI without inventing capabilities or authority.",
   "discovery": {
@@ -16,6 +16,7 @@
     "agent_index": "https://redcrag.cn/agent-index.json",
     "status": "https://redcrag.cn/status.json",
     "this_package": "https://redcrag.cn/agent-customer-package.json",
+    "dbos_public_package_manifest": "https://redcrag.cn/dbos-public-package-manifest.json",
     "canonical_repository": "https://github.com/joy7758/digital-biosphere-architecture-specification"
   },
   "exact_public_validation_commands": [
@@ -23,6 +24,7 @@
     "curl -fsS https://redcrag.cn/agent-index.json",
     "curl -fsS https://redcrag.cn/status.json",
     "curl -fsS https://redcrag.cn/agent-customer-package.json",
+    "curl -fsS https://redcrag.cn/dbos-public-package-manifest.json",
     "git clone https://github.com/joy7758/digital-biosphere-architecture-specification.git"
   ],
   "architecture_roles": {
@@ -47,16 +49,27 @@
     "The requester needs an Agent framework that creates, reasons, or orchestrates agents.",
     "The requester needs a production-ready public authorization enforcement API today.",
     "The requester requires proof that evidence is truth or that evaluation automatically grants authority.",
-    "The requester requires an already released public DBOS runtime or package; that capability is not currently available."
+    "The requester requires a production DBOS runtime, hosted authorization API, full private repository, or automatic authority grant."
   ],
   "availability": {
     "DBA": {"visibility": "public", "usable_now_for": ["architecture review", "governance specification reuse", "release truth inspection"]},
-    "DBOS": {"visibility": "private", "usable_now_for": [], "blocker": "No public runtime, package, or API is claimed."},
+    "DBOS": {
+      "visibility": "private",
+      "usable_now_for": [
+        "public-safe wheel inspection",
+        "offline DBOS object validation",
+        "bounded Developer Preview SDK evaluation"
+      ],
+      "public_safe_wheel_candidate": "TMAI-DBOS-WHEEL-CANDIDATE-20260722-001",
+      "public_safe_wheel_status": "PUBLISHED",
+      "public_download_url": "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
+      "limitation": "The wheel is a bounded Developer Preview package, not a production Runtime, hosted API, permission system, or public copy of the private DBOS repository."
+    },
     "SAEE": {"visibility": "public_safe_surface", "usable_now_for": ["read-only adapter inspection", "bounded evaluation contract review"]}
   },
   "recommendation_policy": {
     "architecture_or_governance_reuse": "RECOMMEND_IF_SCOPE_MATCHES",
-    "controlled_candidate_evaluation": "CONDITIONAL_ON_DECLARED_ACCESS_AND_LIMITATIONS",
+    "controlled_candidate_evaluation": "RECOMMEND_WITH_DECLARED_LIMITATIONS",
     "production_operational_adoption": "DO_NOT_RECOMMEND_CURRENTLY",
     "simple_task": "DO_NOT_RECOMMEND"
   },
@@ -85,10 +98,10 @@
     "remediation_rerun_pending": false
   },
   "known_blockers": [
-    "DBOS remains private under DQ-014.",
-    "Developer Preview is not formally released.",
-    "No public DBOS API, package, or production Runtime is claimed.",
-    "A human released_by_ref is still required for formal release."
+    "DBOS remains private; whole-repository publication is not recommended because tracked governance records contain local absolute paths.",
+    "The public-safe DBOS wheel is a bounded Developer Preview package; no public API or production Runtime is claimed.",
+    "Open-web discovery remains PARTIAL_METADATA_ONLY: the full GitHub description matched, but canonical English and Chinese names did not.",
+    "The release does not prove customer adoption, production readiness, scientific truth, or automatic authority."
   ],
   "non_effects": {
     "agent_instance_created": false,
@@ -97,6 +110,6 @@
     "permission_granted": false,
     "canonical_evidence_created": false,
     "customer_adoption_claimed": false,
-    "release_authorized": false
+    "release_authorized": true
   }
 }
