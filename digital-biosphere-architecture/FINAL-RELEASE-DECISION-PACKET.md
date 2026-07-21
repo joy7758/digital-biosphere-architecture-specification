@@ -12,7 +12,7 @@ license_selected: true
 license_id: Apache-2.0
 release_preparation_authorized: true
 trial_execution_authorized: false
-last_reviewed: 2026-07-21
+last_reviewed: 2026-07-22
 ---
 
 # Final Release Decision Packet v0.1（最终发布决策包 v0.1）
@@ -21,7 +21,7 @@ last_reviewed: 2026-07-21
 
 | Surface（表面） | Current evidence（当前证据） | 状态 |
 |---|---|---|
-| DBA GitHub | `origin/main@91928e3`；Owner 决策、Apache-2.0、公开网站与治理入口 | `REMOTE_BASELINE_PASS` |
+| DBA GitHub | `origin/main@ac5374ad`；Agent Customer Validation、发现边界、依赖复核和公开网站 | `REMOTE_CLEAN_CLONE_PASS` |
 | DBOS GitHub | `origin/main@0caa2c4`；fresh install、331 tests、34 validators、两个 Demo | `REMOTE_CLEAN_CLONE_PASS_PRIVATE_REPO` |
 | SAEE GitHub public layer | `origin/main@2173c25`；19/19 blobs、public smoke/demo、8 tests | `PUBLIC_SAFE_ADAPTER_PASS` |
 | Cross-project Clean Clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `PASS_FROZEN_REMOTE_SOURCES` |
@@ -30,7 +30,7 @@ last_reviewed: 2026-07-21
 | Agent customer validation | `TMAI-ACV-20260721-001`；千帆／方舟 12/12；公开识别 6/6；权限错误 0 | `CONDITIONAL_REMEDIATION_REQUIRED` |
 | Agent customer validation rerun | `TMAI-ACV-20260722-002`；相同阈值；12/12 sessions；全部阈值通过 | `PASS_NOT_RELEASE_AUTHORIZATION` |
 | Open-web discovery | `TMAI-OWD-20260722-001`；GitHub 完整新 description 已命中；规范英文名、中文名与公开搜索未命中 | `PARTIAL_METADATA_ONLY_CANONICAL_RECHECK_OR_LIMIT_ACCEPTANCE_PENDING` |
-| GitHub website artifact | `v0.1-public-website-candidate.5`；`7fe88e8b`；`prerelease=true` | `WEBSITE_CANDIDATE_PRERELEASED_NOT_DEVELOPER_PREVIEW` |
+| GitHub website artifact | `v0.1-public-website-candidate.6`；`ac5374ad`；`prerelease=true` | `WEBSITE_CANDIDATE_PRERELEASED_NOT_DEVELOPER_PREVIEW` |
 | DBOS repository visibility | GitHub API 返回 `PRIVATE` | `PUBLIC_ACCESS_NOT_ESTABLISHED` |
 
 ## 2. DQ-011 — SAEE Adapter Publication Boundary（SAEE 适配器公开边界）

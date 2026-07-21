@@ -3,14 +3,14 @@ report_id: DBA-WEB-DEPLOY-002
 title: Trusted Multi-Agent Infrastructure Public Website Deployment Report
 title_zh: 可信多智能体基础设施公开网站部署报告
 status: pass-candidate-deployed-not-released
-observed_at: 2026-07-22T01:03:31+08:00
+observed_at: 2026-07-22T01:17:50+08:00
 public_url: https://redcrag.cn/
-github_prerelease_url: https://github.com/joy7758/digital-biosphere-architecture-specification/releases/tag/v0.1-public-website-candidate.5
-github_prerelease_tag: v0.1-public-website-candidate.5
+github_prerelease_url: https://github.com/joy7758/digital-biosphere-architecture-specification/releases/tag/v0.1-public-website-candidate.6
+github_prerelease_tag: v0.1-public-website-candidate.6
 github_prerelease_published: true
 host: 180.76.115.193
 initial_validated_source_revision: 6e05f8d383f409ed5790390da440890fd9603c48
-current_validated_source_revision: 7fe88e8bb267b141c43f3132155714c1e110e172
+current_validated_source_revision: ac5374ad326e95a71a326da4b2d9ec74880c608f
 deployment_state: candidate-deployed-not-released
 developer_preview_released: false
 production_ready: false
@@ -56,11 +56,12 @@ PRODUCTION_READY=false
 ## Artifact integrity
 
 The current validated deployment was generated from source revision
-`7fe88e8bb267b141c43f3132155714c1e110e172`. The initial validated deployment
+`ac5374ad326e95a71a326da4b2d9ec74880c608f`. The initial validated deployment
 `6e05f8d383f409ed5790390da440890fd9603c48`, the preceding public candidates
 `bc7ba49a357ebc007e2a4c9dc01178a37e74d2d8` and
 `f217831c287b9b09f0a56f54374ec16d91fa5070` and
-`6fd94a62f5eea26b7edd9d2f66a9dde99ab7832f`, and the pre-rerun remediation candidate
+`6fd94a62f5eea26b7edd9d2f66a9dde99ab7832f` and
+`7fe88e8bb267b141c43f3132155714c1e110e172`, and the pre-rerun remediation candidate
 `a0f014d4bb0454f7612c6bd899e9f0b83fb0be2f` remain preserved. The authoritative
 active revision is the value returned by `https://redcrag.cn/release.json`.
 
@@ -68,10 +69,9 @@ Every file listed in `release-manifest.json` passed an on-host SHA-256 and byte-
 manifest verifier before Nginx activation.
 
 For the current artifact, all 20 manifest entries passed byte-size and SHA-256
-verification before the atomic switch. Nine public health routes returned HTTP
-200 on the first health-check attempt; `/release-manifest.json` passed on the
-second attempt. The prior `f217831…` deployment's second-attempt
-`/agent-index.json` event also remains recorded in history.
+verification before the atomic switch. All 10 primary public health routes
+returned HTTP 200 on the first post-switch check. Earlier second-attempt health
+events remain recorded in deployment history rather than being rewritten.
 
 GNU tar reported ignored `LIBARCHIVE.xattr.com.apple.provenance` extended-header
 keywords while extracting the macOS-created archive. All declared bytes and
@@ -92,8 +92,8 @@ signal and is not treated as content corruption or silently rewritten as absent.
 
 The rollback mechanism was previously validated by an actual atomic switch and
 restore. The current update used the same immutable release-directory and atomic
-symlink mechanism, preserving `a0f014d…`, `bc7ba49…`, `f217831…`, `6fd94a62…`
-and older verified artifacts.
+symlink mechanism, preserving `a0f014d…`, `bc7ba49…`, `f217831…`, `6fd94a62…`,
+`7fe88e8…` and older verified artifacts.
 
 ```text
 ROLLBACK_VALIDATED=true
@@ -110,7 +110,7 @@ gates. In particular:
 - all 12 rerun verdicts are boundary-aware `CONDITIONAL`, not unconditional production recommendations
 - `DBOS` remains private; no public Runtime, package or API is claimed
 - `OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY`; GitHub's full new description finds the project, while canonical English／Chinese names and public-search queries still do not
-- dependency risk `R-015` still requires review before formal release
+- dependency risk `R-015` review is complete with 0 high／critical and 2 disclosed moderate residuals
 - no GitHub Developer Preview Release exists
 
 No Agent, Runtime, Permission, Digital Entity instance, or scientific Evidence
@@ -121,15 +121,15 @@ was created by this deployment.
 The same source revision is tagged and published as an explicit GitHub
 prerelease:
 
-- Tag: `v0.1-public-website-candidate.5`
-- Release title: `TMAI Public Website Candidate v0.1.5`
-- Source revision: `7fe88e8bb267b141c43f3132155714c1e110e172`
-- Asset: `tmai-public-website-candidate-7fe88e8b.tar.gz`
+- Tag: `v0.1-public-website-candidate.6`
+- Release title: `Trusted Multi-Agent Infrastructure public website candidate 6`
+- Source revision: `ac5374ad326e95a71a326da4b2d9ec74880c608f`
+- Asset: `tmai-public-website-candidate-ac5374ad326e95a71a326da4b2d9ec74880c608f.tar.gz`
 - Asset SHA-256:
-  `1905d3920aba8bb06e3f773b0f8017ff365a37d4f2716b2b2883e598e040f5f0`
+  `35a01d42856edb03a040b9a89afced4d73d3b3271db3725aa8285e981740f00f`
 - GitHub state: `prerelease=true`, `draft=false`
 
 This GitHub prerelease distributes the website candidate artifact. It is not a
 Developer Preview release and does not resolve DBOS agent access, open-web
-discovery, dependency-review, or Human Release Decision gates. Previous website
+discovery or Human Release Decision gates. Previous website
 candidate prereleases remain historical and have not been retagged.

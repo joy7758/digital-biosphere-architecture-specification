@@ -1,9 +1,9 @@
 ---
-document_id: DBA-PROGRAM-STATUS-2026-07-21
+document_id: DBA-PROGRAM-STATUS-2026-07-22
 title: Digital Biosphere Program Status Snapshot
 title_zh: 数字生物圈项目群状态快照
 status: observed-governance-snapshot-owner-decisions-recorded
-observed_at: 2026-07-21
+observed_at: 2026-07-22
 freshness: point-in-time
 release_status: website-candidate-published-developer-preview-not-released
 developer_preview_status: website-live-agent-customer-validation-pass-dbos-access-and-release-decision-pending
@@ -60,8 +60,8 @@ SAEE_PUBLIC_CLEAN_CLONE_PASS=true
 SAEE_DBOS_ADAPTER_CLEAN_CLONE_PASS=true
 CROSS_PROJECT_CLEAN_CLONE_PASS=true
 PUBLIC_WEBSITE_DEPLOYED=true
-PUBLIC_WEBSITE_SOURCE_REVISION=7fe88e8bb267b141c43f3132155714c1e110e172
-PUBLIC_WEBSITE_GITHUB_PRERELEASE_TAG=v0.1-public-website-candidate.5
+PUBLIC_WEBSITE_SOURCE_REVISION=ac5374ad326e95a71a326da4b2d9ec74880c608f
+PUBLIC_WEBSITE_GITHUB_PRERELEASE_TAG=v0.1-public-website-candidate.6
 PUBLIC_WEBSITE_HEALTH_PASS=true
 PUBLIC_WEBSITE_ROLLBACK_VALIDATED=true
 GITHUB_WEBSITE_PRERELEASE_PUBLISHED=true
@@ -78,7 +78,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 
 | project_id | branch | observed commit | worktree observation | remote observation | 规范状态摘要 |
 |---|---|---|---|---|---|
-| `DBA` | `main` | `91928e3b1096566aad5568124707e3a6cb3a40ca` | Owner 决策与 Apache-2.0 已推送 | public remote 可干净检出 | 317 个本地链接通过；Developer Preview 未发布 |
+| `DBA` | `main` | `ac5374ad326e95a71a326da4b2d9ec74880c608f` | Agent Customer Validation、发现边界和依赖复核已合并 | public remote 可干净检出 | 103 个 Markdown 文件、342 个本地链接和网站 Clean Clone 通过；Developer Preview 未发布 |
 | `DBOS` | `main` | `0caa2c45e511a82d0dcab778b0ffc3163aac0029` | Apache-2.0 和 private trial boundary 已推送 | authenticated clean clone 通过；仓库保持 private | fresh install、331/331 tests、34/34 validators、两个 Demo 通过；不是 Agent Runtime |
 | `SAEE` | public `main` | `2173c258f91aed03fc02c0097d4250a87be703aa` | exact 19-file public-safe extraction 与 Apache-2.0 已合并 | public remote 可干净检出；内部工作树另有未发布变化且未被使用 | 19/19 blob、public smoke/demo、8/8 tests 和 DBOS 只读 Adapter 通过；无写回或 authority |
 | `RESEARCH-AGENT-PILOT` | `main` | `8445fe5d13cd889032c3786ba527d801f56d5351` | `dirty_count=30` | 未发现 `origin` | `V1_0_STATUS=INCOMPLETE_NOT_READY`；Agent、Runtime、Entity、Execution 均为 0 |
