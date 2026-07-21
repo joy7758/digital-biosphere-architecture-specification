@@ -5,6 +5,8 @@ title_zh: 数字生物圈架构治理规范 v0.1
 status: non-executable-architecture-governance-specification
 architecture_authority_scope: normative-rules-and-records-only
 architecture_authority_assigned: false
+program_governance_defined: true
+program_authority_assigned: false
 version_governance_defined: true
 version_authority_assigned: false
 runtime_effect: none
@@ -31,6 +33,8 @@ DBOS_NE_SAEE=true
 ARCHITECTURE_CHANGE_REQUIRES_EXPLICIT_DECISION=true
 ARCHITECTURE_GOVERNANCE_CREATES_RUNTIME=false
 ARCHITECTURE_GOVERNANCE_GRANTS_PERMISSION=false
+PROGRAM_GOVERNANCE_NE_ARCHITECTURE_GOVERNANCE=true
+PROGRAM_AUTHORITY_NE_EXECUTION_AUTHORITY=true
 ```
 
 1. Architecture Governance ≠ Runtime Governance：架构治理定义规则，DBOS 在有效授权与生命周期边界内负责运行。
@@ -168,13 +172,36 @@ Release: Release Proposal → Review → Decision → Release → Adoption
 | [`release-governance-model.md`](release-governance-model.md) | Release Proposal、Decision、Release 与 Adoption 分离 |
 | [`ADR-007-version-governance.md`](ADR-007-version-governance.md) | 建立版本和发布治理的架构决策 |
 
-## 9. 非实现状态
+## 9. Architecture Governance 与 Program Governance 的边界
+
+DBA 同时承载 Architecture Governance（架构治理）和 Program Governance（项目群治理），但两者职责不同：
+
+| 维度 | Architecture Governance | Program Governance |
+|---|---|---|
+| 核心问题 | 规则、边界、接口和版本如何定义与改变？ | 整体现在在哪里、先做什么、谁负责、缺什么证据？ |
+| 主要工件 | Specification、ADR、Change Record、Version、Release Record | Charter、Portfolio、Roadmap、Status、Dependency、Decision Queue、Gate、Risk |
+| 决策对象 | Architecture Change（架构变化） | 项目优先级、组合准入、推进顺序和 gate |
+| 不拥有 | Runtime、DBOS 状态、SAEE 评价 | 子项目实现事实、执行权、算法权或自动授权 |
+
+Program Priority（项目优先级）不能直接改变 architecture truth；Architecture Decision 也不能自动批准项目实施。二者需要分别记录、相互引用，并遵守 [`program-governance-specification.md`](program-governance-specification.md) 与根目录 [`PROGRAM-CHARTER.md`](../PROGRAM-CHARTER.md)。
+
+```text
+PROGRAM_GOVERNANCE_DEFINED=true
+PROGRAM_AUTHORITY_ASSIGNED=false
+PROGRAM_GOVERNANCE_RUNTIME_CREATED=false
+PROGRAM_STATUS_CHANGES_CHILD_TRUTH=false
+```
+
+## 10. 非实现状态
 
 ```text
 ARCHITECTURE_GOVERNANCE_SPECIFICATION_DEFINED=true
 ARCHITECTURE_AUTHORITY_ROLE_MODEL_DEFINED=true
 ARCHITECTURE_AUTHORITY_ASSIGNED=false
 ARCHITECTURE_CHANGE_PROCESS_DEFINED=true
+PROGRAM_GOVERNANCE_SPECIFICATION_DEFINED=true
+PROGRAM_GOVERNANCE_COCKPIT_DEFINED=true
+PROGRAM_AUTHORITY_ASSIGNED=false
 VERSION_GOVERNANCE_SPECIFICATION_DEFINED=true
 VERSION_AUTHORITY_ASSIGNED=false
 ARCHITECTURE_RELEASE_CREATED=false

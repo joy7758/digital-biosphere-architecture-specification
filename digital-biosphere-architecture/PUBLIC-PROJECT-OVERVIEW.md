@@ -1,0 +1,127 @@
+---
+document_id: DBA-PUBLIC-OVERVIEW-0.1
+title: Digital Biosphere Public Project Overview v0.1
+title_zh: 数字生物圈公开项目总览 v0.1
+status: developer-preview-entry-draft
+release_status: not-released
+public_positioning: Trusted Multi-Agent Infrastructure
+implementation_authorized: false
+runtime_effect: none
+last_reviewed: 2026-07-21
+---
+
+# Digital Biosphere Public Project Overview v0.1（数字生物圈公开项目总览 v0.1）
+
+> 我们提供可信多智能体基础设施，让 AI Agent（人工智能智能体）能够长期运行、协作并产生可验证证据。
+
+Digital Biosphere（数字生物圈）是总项目；Trusted Multi-Agent Infrastructure（可信多智能体基础设施）是统一对外定位。它不是新的 Agent Framework（智能体框架），而是把身份、生命周期、执行记录、证据引用、验证、评价和受控演化连接起来的基础设施方向。
+
+本页是 `Trusted Multi-Agent Infrastructure Developer Preview v0.1`（可信多智能体基础设施开发者预览版 v0.1）的单一理解入口。当前状态是 `DRAFT_NOT_RELEASED`：它介绍目标和进入路径，不声称三项目已经完成端到端集成、外部开发者验证或正式发布。
+
+Developer Preview 也是 DBOS 与 SAEE 的跨项目测试工程：同一个受控协作场景既用于展示，也用于发现记录、验证、接口和评价缺口。测试发现的缺口经过 DBA 归属与重复建设审查后，可以在 DBOS 或 SAEE 中补最小功能；这不允许 Demo 自己成为新的基础设施权威。
+
+## 1. Architecture at a Glance（架构总览）
+
+```text
+Digital Biosphere
+  public positioning: Trusted Multi-Agent Infrastructure
+  |
+  +-- DBA   Program Governance and Architecture Cockpit
+  |         项目群治理、架构边界、路线图、风险、决策与集成闸门
+  |
+  +-- DBOS  Existence Infrastructure
+  |         身份、生命周期、能力边界、执行记录、证据引用与验证
+  |
+  +-- SAEE  Evolution Intelligence Layer
+            可靠性、稳定性、风险评价与演化建议
+```
+
+三者共同服务一个项目目标，但保持独立责任域：
+
+```text
+DBA_NE_DBOS=true
+DBA_NE_SAEE=true
+DBOS_NE_SAEE=true
+SAEE_NE_DBOS=true
+DBOS_NE_AGENT_FRAMEWORK=true
+SAEE_NE_AUTOMATIC_CONTROLLER=true
+```
+
+## 2. What the Developer Preview Must Demonstrate（开发者预览必须展示什么）
+
+Developer Preview v0.1 只有在以下连续链路可运行并可复核时才成立：
+
+```text
+Three governed role simulations（三个受治理角色模拟）
+  Research Agent -> Analysis Agent -> Review Agent
+        |
+        v
+DBOS trust records（DBOS 可信记录）
+  Identity -> Execution -> Evidence Reference -> Validation
+        |
+        v
+SAEE bounded evaluation（SAEE 受限评价）
+  Reliability -> Stability -> Risk -> Evolution Recommendation
+        |
+        v
+Human review（人工审查）
+```
+
+角色名用于演示协作语义，不自动创建生产 Agent、Runtime、Permission 或 Digital Organism（数字有机体）。SAEE 的 Recommendation（建议）不是 Decision（决策），Decision 也不是 Execution（执行）。
+
+## 3. Current Truth（当前事实）
+
+截至 2026-07-21：
+
+- DBA 已建立项目群驾驶舱、路线图、项目组合和集成闸门；Developer Preview 入口正在工作树中形成，尚未发布；
+- DBOS 已形成 local editable install（本地可编辑安装）、单一测试入口、Quick Start（快速入门）和三角色 synthetic demo（合成演示）；331/331 tests 与 34/34 validators 在当前工作树通过；
+- `DBOS-EXP-0001` 历史 Evidence 没有被改写；版本感知校验能保留旧 binding 并显式警告当前文档漂移；
+- SAEE 已形成只读 DBOS Developer Preview adapter（开发者预览适配器），复用现有 Reliability Framework 与 `saee.evaluate_agent_run`；
+- DBOS → SAEE 本地合成链路已通过 scoped conformance（限定范围符合性），但结果诚实保持 `Reliability=NOT_ASSESSED`、`Stability=NOT_ASSESSED`、`EvolutionRecommendation=HOLD`；
+- 外部开发者 Trial Plan（试用计划）、Guide（指南）与 Feedback Template（反馈模板）已经准备；试用尚未授权，参与者为 0，三个仓库的相关变化仍未形成发布版本，也没有 Human Release Decision，因此 Developer Preview release 仍为 `NOT_READY`。
+
+时间点事实以 [`PROGRAM-STATUS.md`](PROGRAM-STATUS.md) 为准；本页不把计划升级为实现或发布。
+
+## 4. Developer Navigation（开发者导航）
+
+| 需要了解 | 入口 | 当前效力 |
+|---|---|---|
+| 项目是什么 | 本页 | 公开定位草案 |
+| 当前做到哪里 | [`PROGRAM-STATUS.md`](PROGRAM-STATUS.md) | 时间点治理快照 |
+| Developer Preview 如何完成 | [`DEVELOPER-PREVIEW-PLAN.md`](DEVELOPER-PREVIEW-PLAN.md) | 交付与 gate 计划 |
+| 如何发布 | [`DEVELOPER-PREVIEW-RELEASE-PLAN.md`](DEVELOPER-PREVIEW-RELEASE-PLAN.md) | 发布治理计划 |
+| 本地符合性结果 | [`DEVELOPER-PREVIEW-CONFORMANCE-REPORT.md`](DEVELOPER-PREVIEW-CONFORMANCE-REPORT.md) | 当前工作树本地通过；不是 release |
+| 外部试用治理 | [`EXTERNAL-DEVELOPER-TRIAL-PLAN.md`](EXTERNAL-DEVELOPER-TRIAL-PLAN.md) | 画像、流程与成功标准已定义；试用未授权 |
+| 外部试用操作 | [`EXTERNAL-DEVELOPER-TRIAL-GUIDE.md`](EXTERNAL-DEVELOPER-TRIAL-GUIDE.md) | 指南已准备；尚未执行外部试用 |
+| 反馈格式 | [`DEVELOPER-FEEDBACK-TEMPLATE.md`](DEVELOPER-FEEDBACK-TEMPLATE.md) | 模板已准备；不是采用证明 |
+| DBOS 本地快速入门 | `digital-biosphere-os/docs/developer-quickstart.md` | 仓库内可运行本地预览；不是已发布 SDK |
+| 架构与责任边界 | [`README.md`](README.md) 与 [`architecture/`](architecture/) | DBA 规范表面 |
+| 为什么进入此阶段 | [`architecture/ADR-017-trusted-multi-agent-infrastructure-developer-preview.md`](architecture/ADR-017-trusted-multi-agent-infrastructure-developer-preview.md) | 已接受的阶段决策 |
+
+## 5. Public Claim Boundary（对外声明边界）
+
+在 Release Gate（发布闸门）通过前，只允许使用：
+
+> Developer Preview in progress（开发者预览正在形成）。
+
+不得使用：
+
+- production-ready（生产就绪）；
+- end-to-end integration verified（端到端集成已验证）；
+- autonomous evolution（自主演化）；
+- Agent platform（智能体平台）；
+- published SDK（已发布 SDK）；
+- evidence proves truth（证据证明真相）。
+
+```text
+PUBLIC_ENTRY_DEFINED=true
+DEVELOPER_PREVIEW_RELEASED=false
+SCOPED_LOCAL_DEMO_CONFORMANCE_PASS=true
+FULL_END_TO_END_INTEGRATION_VERIFIED=false
+EXTERNAL_DEVELOPER_TRIAL_PLAN_DEFINED=true
+EXTERNAL_DEVELOPER_TRIAL_EXECUTED=false
+PRODUCTION_RUNTIME_CREATED=false
+AGENT_INSTANCE_CREATED=false
+PERMISSION_GRANTED=false
+EVIDENCE_NE_TRUTH=true
+```

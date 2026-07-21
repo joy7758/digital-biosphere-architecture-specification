@@ -1,0 +1,101 @@
+---
+document_id: DBA-MASTER-ROADMAP-0.1
+title: Digital Biosphere Master Roadmap v0.1
+title_zh: 数字生物圈总路线图 v0.1
+status: program-sequencing-baseline
+current_milestone: DP-5B
+roadmap_is_authorization: false
+roadmap_is_implementation: false
+last_reviewed: 2026-07-21
+---
+
+# Digital Biosphere Master Roadmap v0.1（数字生物圈总路线图 v0.1）
+
+## 1. Roadmap Rule（路线图规则）
+
+本路线图定义跨项目推进顺序和进入条件，不授权代码修改、Runtime、Agent、实验、部署、发布或外部采用。里程碑只有在对应 gate evidence（闸门证据）存在时才能升级状态。
+
+合法状态：
+
+```text
+NOT_STARTED
+PLANNED
+IN_PROGRESS
+BASELINE_DEFINED
+GATE_PASSED
+BLOCKED
+DEFERRED
+SUPERSEDED
+```
+
+## 2. Program Milestones（项目群里程碑）
+
+Developer Preview 是当前执行主线；原 `M0` 至 `M8` 继续保留为长期项目群路线，不因阶段切换被删除。
+
+| preview milestone | 目标 | primary repository | 当前状态 | 完成证据 | 下一步 |
+|---|---|---|---|---|---|
+| `DP-1` | 建立 Digital Biosphere 统一公开入口 | DBA | `GATE_PASSED` | Public Overview、Developer Preview Plan、Release Plan、ADR-017、链接与边界验证 | 保持未发布边界 |
+| `DP-2` | 建立可复制、可回归测试的 DBOS Developer Preview | DBOS | `GATE_PASSED` | local editable install、单一测试入口、331/331 tests、34/34 validators；历史 Evidence 未改写 | 隔离 source changes，准备 clean clone |
+| `DP-3` | 建立三角色 Multi-Agent Trust Demo 和跨项目 fixture | Demo + DBOS | `GATE_PASSED` | Research/Analysis/Review 角色链、3/3 records、11/11 tests、确定性重放、同一 SAEE envelope | 保持 synthetic/non-Agent 边界 |
+| `DP-4` | 建立并测试 SAEE Evaluation Layer v0.1 | SAEE | `GATE_PASSED` | 现有能力审计、8/8 adapter tests、四类 fail-closed 输出、跨项目 conformance、无写回 | 隔离 SAEE 变更并审查 |
+| `DP-5A` | 完成 External Developer Trial Preparation | DBA + Developer Experience | `GATE_PASSED` | Trial Plan、Guide、Feedback Template、ADR-018、3–5 人画像与成功标准 | 准备冻结试用包并处理 `DQ-010` |
+| `DP-5B` | 执行 External Developer Trial | DBA + Trial Coordinator | `BLOCKED` | 3–5 份 session records、理解／使用／价值信号、失败保留与 Trial Result Report | `B-007` 解除且 `DQ-010` 授权 |
+| `DP-R` | Developer Preview Release Decision | DBA + Human Release Authority | `BLOCKED` | Release checklist、Trial Result、source commits、限制与 `released_by_ref` | `DP-5B` 通过并处理 `DQ-009` |
+
+| milestone | 目标 | primary repository | 当前状态 | 完成证据 | 下一步 |
+|---|---|---|---|---|---|
+| `M0` | 建立 DBA、DBOS、SAEE、Digital Entity 和 Governance Decision 的基本边界 | DBA | `GATE_PASSED` | 当前架构规范、接口契约、ADR-001 至 ADR-015 | 保持一致性，不再重复定义 |
+| `M1` | 将 DBA 建成项目群治理与架构总驾驶舱 | DBA | `BASELINE_DEFINED` | 本路线图、Portfolio、Status、Decision、Gate、Risk、Program Governance Spec 和 ADR-016 | 完成验证并决定版本发布 |
+| `M2` | 为核心项目确认 canonical status source 与刷新规则 | DBA 协调；各项目提供来源 | `PLANNED` | DBOS、SAEE、Research Agent Pilot 的明确状态入口、Owner、freshness 和冲突处理记录 | 处理 `DQ-003` |
+| `M3` | 建立 DBOS ↔ SAEE contract conformance baseline（契约符合性基线） | DBA 协调；DBOS/SAEE 分别实施 | `PLANNED` | 字段映射、版本、正负用例、验证结果；不要求真实 Runtime 调用 | 处理 `DQ-004` |
+| `M4` | 建立 Digital Entity admission and registration conformance（准入与登记符合性） | DBOS；DBA gate | `NOT_STARTED` | Candidate、Decision、Authorization、Registration 的连续引用和负例证据 | M2、M3 先通过 |
+| `M5` | 决定 Research Agent Prototype（科研智能体原型）是否获准创建 | Research Agent Pilot；DBA 协调 | `NOT_STARTED` | Human Review、approved sources、protocol freeze、prototype authorization | 当前保持 `NOT_READY` |
+| `M6` | 执行第一个受控 Digital Entity research loop（数字主体研究闭环） | Research Agent Pilot + DBOS + SAEE | `NOT_STARTED` | 显式实验授权、执行记录、Evidence、Verification、Evaluation、Human Decision | 不得由路线图自动启动 |
+| `M7` | 建立可重复的多主体接入和联邦符合性 | DBOS + future Digital Entities | `NOT_STARTED` | 至少一个已验证 Pilot 后的通用接入契约和负例 | 不能从单一 Pilot 直接外推 |
+| `M8` | 推进开发者生态、认证与商业服务 | 各相应项目 | `DEFERRED` | 实现、采用和商业状态分别有独立证据 | 不得用战略文档声称已提供 |
+
+## 3. Critical Path（关键路径）
+
+```text
+DP-1 Public Entry
+  → DP-2 DBOS Developer Preview
+  → DP-3 Multi-Agent Trust Demo
+  → DP-4 SAEE Evaluation Layer
+  → DP-5A External Trial Preparation
+  → DP-5B External Developer Trial
+  → DP-R Human Release Decision
+
+Long-term continuation:
+M2 Canonical Status Sources
+  → M3 DBOS / SAEE Conformance
+  → M4 Entity Admission Conformance
+  → M5 Human Prototype Decision
+  → M6 Controlled Research Loop
+  → M7 Repeatable Multi-entity Onboarding
+```
+
+`M8` 不是 `M6` 或 `M7` 的自动结果。Commercial Offering（商业服务）、Certification（认证）和 Marketplace（市场）需要独立决策与证据。
+
+## 4. Current Program Focus（当前项目群焦点）
+
+```text
+CURRENT_FOCUS=DP_5B_EXTERNAL_DEVELOPER_TRIAL_ENTRY
+NEXT_BLOCKER=B-007_UNCOMMITTED_MULTI_REPOSITORY_SOURCE_STATE
+NEXT_DECISION=DQ_010_TRIAL_EXECUTION_AUTHORIZATION
+NEXT_DELIVERY=FROZEN_TRIAL_PACKAGE_AND_CLEAN_CLONE_VALIDATION
+NEXT_INTEGRATION=THREE_TO_FIVE_EXTERNAL_DEVELOPER_SESSIONS
+RESEARCH_AGENT_PROTOTYPE_AUTHORIZED=false
+```
+
+当前不应继续增加新的 Entity、生产 Runtime 或无验证接口承诺。优先任务是形成公开开发者可运行、可展示、可验证的最小链路，同时让驾驶舱持续回答：现在在哪里、谁负责、缺什么证据、哪个决定阻塞下一步。
+
+## 5. Roadmap Non-claims（路线图非声明）
+
+```text
+ROADMAP_DEFINED=true
+ROADMAP_APPROVES_IMPLEMENTATION=false
+ROADMAP_APPROVES_EXECUTION=false
+ROADMAP_APPROVES_EXPERIMENT=false
+ROADMAP_PROVES_INTEGRATION=false
+ROADMAP_PROVES_ADOPTION=false
+```
