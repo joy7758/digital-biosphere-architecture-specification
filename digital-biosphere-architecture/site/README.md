@@ -46,6 +46,8 @@ npm run release:static
 `npm run release:static` 会生成带 SHA-256 清单的 `out/` 静态部署包；该目录
 被 Git 忽略，不作为源码事实提交。
 
+每次构建都会先清空 `dist/` 和 `.vinext/`，避免旧资源混入新的发布清单。
+
 ## Design boundary
 
 视觉系统参考 OpenTelemetry 官网的清晰导航、深色 Hero（首屏）、亮色强调、

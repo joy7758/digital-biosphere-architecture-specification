@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { access, readFile } from "node:fs/promises";
+import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 
 async function render(pathname = "/") {
@@ -75,4 +75,10 @@ test("removes the disposable starter preview", async () => {
   const page = await readFile(new URL("app/page.tsx", root), "utf8");
   assert.doesNotMatch(packageJson, /react-loading-skeleton/);
   assert.doesNotMatch(page, /codex-preview|SkeletonPreview/);
+});
+
+test("does not retain stale generated font assets", async () => {
+  const assetsRoot = new URL("../dist/client/assets/", import.meta.url);
+  const entries = await readdir(assetsRoot);
+  assert.equal(entries.some((entry) => entry.startsWith("_vinext_fonts")), false);
 });
