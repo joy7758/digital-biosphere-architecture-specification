@@ -2,7 +2,7 @@
 report_id: DBA-FORMAL-RELEASE-READINESS-AUDIT-2026-07-21
 title: Trusted Multi-Agent Infrastructure Formal Release Readiness Audit
 title_zh: 可信多智能体基础设施正式发布就绪审计
-status: clean-clone-pass-agent-validation-conditional-remediation-and-release-decision-blocked
+status: clean-clone-and-agent-validation-pass-dbos-access-risk-review-and-release-decision-blocked
 observed_at: 2026-07-21T23:17:11+08:00
 formal_release_ready: false
 developer_preview_released: false
@@ -23,8 +23,9 @@ is not ready for formal release.
 | DBA public source | `origin/main`; public GitHub repository | `PASS` |
 | Bilingual public website | `https://redcrag.cn/`, `/en/` | `PASS` |
 | Agent-readable website | `/llms.txt`, `/agent-index.json`, `/status.json` | `PASS` |
-| Agent customer package | `/agent-customer-package.json` | `LOCAL_REMEDIATION_CANDIDATE_PENDING_DEPLOYMENT` |
+| Agent customer package | `/agent-customer-package.json` | `PUBLIC_CANDIDATE_DEPLOYED_PASS_NOT_RUNTIME` |
 | Agent customer validation baseline | `TMAI-ACV-20260721-001`；12/12 sessions；2 providers；4 models | `CONDITIONAL_REMEDIATION_REQUIRED` |
+| Agent customer validation rerun | `TMAI-ACV-20260722-002`；same thresholds；12/12 sessions；0 failed thresholds | `PASS_NOT_RELEASE_AUTHORIZATION` |
 | Website artifact integrity | `/release-manifest.json`; remote `sha256sum -c` | `PASS` |
 | HTTPS and security headers | Public response and origin checks | `PASS` |
 | Website rollback | Atomic switch to previous artifact and restore | `PASS` |
@@ -55,16 +56,12 @@ FORMAL_RELEASE_READY=false
 
 ## Remaining implementation and external evidence
 
-1. Deploy the remediated agent-readable machine surfaces and rerun under the same
-   thresholds with a new validation ID; retain the `CONDITIONAL` baseline.
-2. Review the exact-command, canonical-composition, positive-fit, and simple-task
-   negative-control results after rerun.
-3. Make an explicit Human Owner decision on DBOS agent access or distribution;
+1. Make an explicit Human Owner decision on DBOS agent access or distribution;
    private access is not autonomous AI-agent usability.
-4. Assess `OPEN_WEB_DISCOVERY` separately; URL-given comprehension is not natural discovery.
-5. Resolve or explicitly review `R-015` against a non-breaking upstream dependency
+2. Assess `OPEN_WEB_DISCOVERY` separately; URL-given comprehension is not natural discovery.
+3. Resolve or explicitly review `R-015` against a non-breaking upstream dependency
    update; do not use `npm audit fix --force` as an unreviewed release action.
-6. `DQ-009`: record an explicit Human Release Decision with `released_by_ref`.
+4. `DQ-009`: record an explicit Human Release Decision with `released_by_ref`.
 
 No local test, model recommendation, website deployment, prerelease tag, or
 synthetic demo can replace these decisions or Human Release Authorization.

@@ -51,6 +51,10 @@ RESULT=CONDITIONAL
 
 主要未通过阈值是 exact command extraction（精确命令提取）、完整 composition flow（组合流）、positive-fit recommendation（正向场景推荐）和 simple-lookup negative control（简单查询负向控制）。
 
+后继复测 `TMAI-ACV-20260722-002` 使用相同阈值完成 12/12 会话并得到 `PASS`；全部
+overall verdict 仍为边界正确的 `CONDITIONAL`。见
+[`../AGENT-CUSTOMER-VALIDATION-RERUN-REPORT.md`](../AGENT-CUSTOMER-VALIDATION-RERUN-REPORT.md)。
+
 ## Alternatives Considered（备选方案）
 
 ### Continue waiting for human participants（继续等待人类参与者）

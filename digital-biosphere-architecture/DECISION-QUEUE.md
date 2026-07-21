@@ -27,7 +27,7 @@ last_reviewed: 2026-07-21
 | `DQ-006` | `P2` | POP、ARO、Agent Evidence、Token Governor、ACP 哪些进入正式 Portfolio？ | `OPEN` | 每个项目的目的、Owner、canonical source、重复能力和接口边界 | 项目组合与依赖范围 | 本地发现、历史关联或相邻角色等于正式准入 |
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
-| `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | source commits 与 Clean Clone 已齐；Agent Customer Validation 基线为 `CONDITIONAL`，仍缺修复后复测、DBOS agent access／distribution 决定和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | 网站、API 模型推荐、测试或 validation PASS 自动等于发布授权 |
+| `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | source／Clean Clone 与 Agent Customer Validation `PASS` 已齐；仍缺 DBOS agent access／distribution 决定、`R-015` 复核和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | 网站、API 模型推荐、测试或 validation PASS 自动等于发布授权 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
@@ -44,7 +44,7 @@ last_reviewed: 2026-07-21
 | `ADR-019 / DQ-013` | `SUPERSEDED`：不再采用独立子路径问题 | 2026-07-21 Human Owner 清理和网站决定 | `redcrag.cn` 根入口网站候选已执行；不等于 Developer Preview Release |
 | `ADR-020 / DQ-014` | `ACCEPTED`：`PRIVATE_COLLABORATOR_TRIAL` | `decided_by_ref=zhangbin` | DBOS 保持 private；不授权 public visibility、具体协作者、Permission 或发布 |
 | `ADR-021 / DQ-010` | `SUPERSEDED_FOR_PRIMARY_ROUTE`：人类参与者招募不再是首要客户验证路径 | 2026-07-21 Human Owner 明确核心客户是 AI agent | 不把未执行的人类试用改写成通过；可作为未来次级可用性研究保留 |
-| `ADR-021 / DQ-015` | `ACCEPTED_AND_BASELINE_EXECUTED`：`ADOPT_AGENT_NATIVE_CUSTOMER_VALIDATION` | `decided_by_ref=zhangbin`，并指定复用既有千帆／方舟凭证 | 允许协议范围内 12 次基线和一次修复后复测；不创建 Agent／Runtime，不授权发布、DBOS 公开或客户采用 |
+| `ADR-021 / DQ-015` | `ACCEPTED_AND_EXECUTED_PASS`：`ADOPT_AGENT_NATIVE_CUSTOMER_VALIDATION` | `decided_by_ref=zhangbin`；`001=CONDITIONAL`、`002=PASS` | 两轮各 12 次会话全部保留；不创建 Agent／Runtime，不授权发布、DBOS 公开或客户采用 |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 

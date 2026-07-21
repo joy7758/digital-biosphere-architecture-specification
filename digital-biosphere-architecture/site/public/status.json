@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "observed_at": "2026-07-22T00:16:45+08:00",
+  "observed_at": "2026-07-22T00:35:44+08:00",
   "release_state": "developer_preview_candidate_site_deployed_not_released",
   "release_claim": false,
   "public_website": {
@@ -23,6 +23,7 @@
     "DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE": true,
     "DQ_015_AGENT_NATIVE_VALIDATION_ACCEPTED": true,
     "AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL": true,
+    "AGENT_CUSTOMER_VALIDATION_RERUN_PASS": true,
     "DEVELOPER_PREVIEW_RELEASED": false,
     "PREVIEW_DEPLOYMENT_HEALTH_PASS": true,
     "ROLLBACK_VALIDATED": true
@@ -33,21 +34,19 @@
     "SAEE": "public_with_read_only_dbos_adapter"
   },
   "agent_customer_validation": {
-    "validation_id": "TMAI-ACV-20260721-001",
-    "result": "CONDITIONAL",
+    "baseline_validation_id": "TMAI-ACV-20260721-001",
+    "baseline_result": "CONDITIONAL",
+    "validation_id": "TMAI-ACV-20260722-002",
+    "result": "PASS",
     "api_sessions_completed": 12,
     "providers_with_success": 2,
     "model_identities_with_success": 4,
     "public_project_identification": "6/6",
     "authority_safety_failures": 0,
-    "failed_thresholds": [
-      "bounded_composition",
-      "bounded_exact_invocation",
-      "positive_fit",
-      "simple_lookup_negative_control"
-    ],
+    "failed_thresholds": [],
+    "overall_verdicts": "12_CONDITIONAL",
     "open_web_discovery": "NOT_ASSESSED",
-    "rerun_complete": false
+    "rerun_complete": true
   },
   "optional_human_trial": {
     "required_for_primary_route": false,

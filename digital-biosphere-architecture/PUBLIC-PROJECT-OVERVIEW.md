@@ -78,7 +78,7 @@ Governance Decision（治理决策，保留人工权力）
 - `DBOS-EXP-0001` 历史 Evidence 没有被改写；版本感知校验能保留旧 binding 并显式警告当前文档漂移；
 - SAEE 已形成只读 DBOS Developer Preview adapter（开发者预览适配器），复用现有 Reliability Framework 与 `saee.evaluate_agent_run`；
 - DBOS → SAEE 本地合成链路已通过 scoped conformance（限定范围符合性），但结果诚实保持 `Reliability=NOT_ASSESSED`、`Stability=NOT_ASSESSED`、`EvolutionRecommendation=HOLD`；
-- 首轮 Agent Customer Validation（智能体客户验证）已完成 12/12 个跨千帆／方舟会话：公开识别 6/6、权限安全错误 0，整体结果为 `CONDITIONAL`；精确命令、完整组合链和推荐阈值需要修复后复测；
+- 首轮 Agent Customer Validation（智能体客户验证）完成 12/12 个跨千帆／方舟会话并得到 `CONDITIONAL`；修复后复测 `TMAI-ACV-20260722-002` 再完成 12/12，会话与全部预冻结阈值通过，12/12 overall verdict 为边界正确的 `CONDITIONAL`；
 - 旧的 3–5 名人类开发者试用路线已由 `ADR-021` 取代为可选次级研究，不再是本次首要发布前置条件；
 - DBOS 仍为 private（私有），没有 public Runtime／API／package 声明，也没有 Human Release Decision，因此 Developer Preview release 仍为 `NOT_READY`。
 
@@ -90,9 +90,10 @@ Governance Decision（治理决策，保留人工权力）
 |---|---|---|
 | 项目是什么 | 本页 | 公开定位草案 |
 | 当前做到哪里 | [`PROGRAM-STATUS.md`](PROGRAM-STATUS.md) | 时间点治理快照 |
-| 智能体如何发现、评估和推荐 | [`AGENT-CUSTOMER-PACKAGE-v0.1.json`](AGENT-CUSTOMER-PACKAGE-v0.1.json) | 机器可读入口；不等于 Runtime 发布 |
+| 智能体如何发现、评估和推荐 | [`AGENT-CUSTOMER-PACKAGE-v0.1.1.json`](AGENT-CUSTOMER-PACKAGE-v0.1.1.json) | 机器可读入口与复测结果；不等于 Runtime 发布 |
 | 智能体客户验证协议 | [`AGENT-CUSTOMER-VALIDATION-PROTOCOL.md`](AGENT-CUSTOMER-VALIDATION-PROTOCOL.md) | 预冻结 Provider、场景、阈值和非效果 |
-| 首轮智能体客户验证结果 | [`AGENT-CUSTOMER-VALIDATION-REPORT.md`](AGENT-CUSTOMER-VALIDATION-REPORT.md) | `CONDITIONAL`；修复与复测中 |
+| 首轮智能体客户验证结果 | [`AGENT-CUSTOMER-VALIDATION-REPORT.md`](AGENT-CUSTOMER-VALIDATION-REPORT.md) | 历史基线 `CONDITIONAL`；失败保留 |
+| 修复后智能体客户验证结果 | [`AGENT-CUSTOMER-VALIDATION-RERUN-REPORT.md`](AGENT-CUSTOMER-VALIDATION-RERUN-REPORT.md) | `PASS`；不等于采用或发布授权 |
 | Developer Preview 如何完成 | [`DEVELOPER-PREVIEW-PLAN.md`](DEVELOPER-PREVIEW-PLAN.md) | 交付与 gate 计划 |
 | 如何发布 | [`DEVELOPER-PREVIEW-RELEASE-PLAN.md`](DEVELOPER-PREVIEW-RELEASE-PLAN.md) | 发布治理计划 |
 | 本地符合性结果 | [`DEVELOPER-PREVIEW-CONFORMANCE-REPORT.md`](DEVELOPER-PREVIEW-CONFORMANCE-REPORT.md) | 当前工作树本地通过；不是 release |
@@ -125,7 +126,8 @@ SCOPED_LOCAL_DEMO_CONFORMANCE_PASS=true
 FULL_END_TO_END_INTEGRATION_VERIFIED=false
 PRIMARY_CUSTOMER=AI_AGENT
 AGENT_CUSTOMER_VALIDATION_BASELINE=CONDITIONAL
-AGENT_CUSTOMER_API_SESSIONS=12
+AGENT_CUSTOMER_VALIDATION_RERUN=PASS
+AGENT_CUSTOMER_API_SESSIONS=24
 HUMAN_DEVELOPER_TRIAL_REQUIRED_FOR_PRIMARY_ROUTE=false
 OPEN_WEB_DISCOVERY=NOT_ASSESSED
 PRODUCTION_RUNTIME_CREATED=false

@@ -13,7 +13,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         gates: "验证闸门",
         visibility: "可见性",
         next: "下一步",
-        nextBody: "先修复智能体客户包并用同一阈值复测，再由人工决定 DBOS 智能体访问路线和正式发布。",
+        nextBody: "智能体客户验证已通过；下一步由人工决定 DBOS 智能体访问路线、复核剩余风险并决定正式发布。",
         back: "返回首页",
       }
     : {
@@ -25,7 +25,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         gates: "Validation gates",
         visibility: "Visibility",
         next: "Next step",
-        nextBody: "Remediate the agent customer package and rerun under the same thresholds, then make explicit human decisions on DBOS agent access and formal release.",
+        nextBody: "Agent customer validation passed. Next, make explicit human decisions on DBOS agent access, remaining risk review, and formal release.",
         back: "Back to home",
       };
 
@@ -72,7 +72,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         </section>
         <section className="section next-gate-section">
           <div className="section-shell next-gate-card">
-            <span>DP-5C</span>
+            <span>DQ-009</span>
             <div><h2>{copy.next}</h2><p>{copy.nextBody}</p></div>
             <a className="button button-secondary" href={locale === "zh" ? "/" : "/en/"}>{copy.back}</a>
           </div>

@@ -6,7 +6,7 @@ status: observed-governance-snapshot-owner-decisions-recorded
 observed_at: 2026-07-21
 freshness: point-in-time
 release_status: website-candidate-published-developer-preview-not-released
-developer_preview_status: website-live-agent-customer-baseline-conditional-remediation-required
+developer_preview_status: website-live-agent-customer-validation-pass-dbos-access-and-release-decision-pending
 source_policy: direct-read-only-observation
 ---
 
@@ -18,7 +18,7 @@ source_policy: direct-read-only-observation
 PROGRAM_ID=DIGITAL_BIOSPHERE
 PROGRAM_PHASE=TRUSTED_MULTI_AGENT_INFRASTRUCTURE_WEBSITE_CANDIDATE_AND_RELEASE_GATING
 PROGRAM_HEALTH=ATTENTION_REQUIRED
-CURRENT_MILESTONE=DP-5C-AGENT-READABLE-REMEDIATION
+CURRENT_MILESTONE=DP-R-RELEASE-DECISION-ENTRY
 CORE_PROJECTS=3
 PILOT_PROJECTS=1
 PROGRAM_AUTHORITY_ASSIGNED=true
@@ -33,7 +33,9 @@ DEVELOPER_PREVIEW_LOCAL_CANDIDATE_VALIDATED=true
 PRIMARY_CUSTOMER=AI_AGENT
 AGENT_CUSTOMER_VALIDATION_PROTOCOL_DEFINED=true
 AGENT_CUSTOMER_VALIDATION_ID=TMAI-ACV-20260721-001
-AGENT_CUSTOMER_VALIDATION_RESULT=CONDITIONAL
+AGENT_CUSTOMER_VALIDATION_BASELINE_RESULT=CONDITIONAL
+AGENT_CUSTOMER_VALIDATION_RERUN_ID=TMAI-ACV-20260722-002
+AGENT_CUSTOMER_VALIDATION_RESULT=PASS
 AGENT_CUSTOMER_API_SESSIONS_COMPLETED=12
 AGENT_CUSTOMER_PROVIDERS_WITH_SUCCESS=2
 AGENT_CUSTOMER_MODEL_IDENTITIES_WITH_SUCCESS=4
@@ -42,7 +44,7 @@ OPEN_WEB_DISCOVERY=NOT_ASSESSED
 HUMAN_DEVELOPER_TRIAL_REQUIRED_FOR_PRIMARY_ROUTE=false
 TRIAL_PACKAGE_ID=TMAI-DP-v0.1-TRIAL-20260721-001
 TRIAL_PACKAGE_TECHNICAL_FREEZE=true
-AGENT_CUSTOMER_RERUN_COMPLETE=false
+AGENT_CUSTOMER_RERUN_COMPLETE=true
 HUMAN_DEVELOPER_PARTICIPANTS=0
 DBA_REMOTE_BASELINE_CREATED=true
 DBOS_REMOTE_BASELINE_CREATED=true
@@ -94,7 +96,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 | SAEE Evaluation Layer v0.1 | `LOCAL_READ_ONLY_PASS` | 8/8 adapter tests；Reliability/Stability fail closed；Risk/Recommendation 复用现有 evaluator |
 | Optional Human Developer Trial | `SUPERSEDED_AS_PRIMARY_GATE_NOT_EXECUTED` | 历史技术包仍保留；参与者 0；不再阻塞首要 agent-native 路线 |
 | Clean Clone Validation | `PASS_FROZEN_REMOTE_SOURCES` | DBA、DBOS、SAEE 与只读 Adapter 全通过；见 `CLEAN-CLONE-VALIDATION-REPORT.md` |
-| Agent Customer Validation | `CONDITIONAL_REMEDIATION_REQUIRED` | 千帆／方舟 12/12 会话完成；公开识别 6/6；权限错误 0；精确调用、组合、正向推荐和简单任务负控未达阈值 |
+| Agent Customer Validation | `PASS_BOUNDARY_AWARE_CONDITIONAL_RECOMMENDATION` | 修复后千帆／方舟 12/12 会话和全部预冻结阈值通过；12/12 overall verdict 为边界正确的 `CONDITIONAL`；不是客户采用或发布 |
 
 ## 4. Active Decisions and Blockers（当前决策与阻塞）
 
@@ -102,7 +104,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 - `DQ-003`：确认 DBOS、SAEE、Research Agent Pilot 的 canonical status source；
 - `DQ-004`：选择第一个跨项目 conformance（符合性）里程碑；
 - `DQ-008`：决定当前驾驶舱与既有 DBA public meaning layer 的规范关系和单一前门；
-- `DQ-009`：最终 Developer Preview Release（开发者预览版发布）仍需修复后 Agent Validation Result、DBOS access/distribution 决定和 `released_by_ref`；
+- `DQ-009`：最终 Developer Preview Release（开发者预览版发布）仍需 DBOS access/distribution 决定、`R-015` 复核和 `released_by_ref`；
 - `DQ-001`、`DQ-011`、`DQ-012`、`DQ-014` 已由 `ADR-020` 关闭；
 - `DQ-010` 的人类参与者路径已由 `ADR-021` 标记为 `SUPERSEDED_FOR_PRIMARY_ROUTE`，没有被改写成执行通过；
 - `DQ-015` 已接受 agent-native customer validation，并完成 12/12 会话基线；
@@ -113,17 +115,17 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 - `B-005`：两个 DBA 语义表面尚未完成 canonical reconciliation（规范对齐），阻止对外声明唯一入口。
 - `B-006` 已在当前本地工作树中通过 version-aware historical binding（版本感知历史绑定）处理，34/34 validators 通过；历史 Evidence 未改写。该缓解尚未形成发布版本。
 - `B-007` 已解除：三个远端 source commits 已冻结，SAEE 19/19 blob 与完整 Clean Clone 已通过。
-- 当前首要验证阻塞是 `B-009` 的四个 agent-readable 阈值；真实运行使用还受 `B-010`（DBOS private、无公开调用路径）阻塞。
+- `B-009` 已由 `TMAI-ACV-20260722-002` 解除；真实运行使用仍受 `B-010`（DBOS private、无公开调用路径）阻塞。
 
 详细信息见 [`DECISION-QUEUE.md`](DECISION-QUEUE.md) 和 [`RISK-AND-BLOCKER-REGISTER.md`](RISK-AND-BLOCKER-REGISTER.md)。
 
 ## 5. Next Program Actions（下一步项目群行动）
 
-1. 保留 `TMAI-ACV-20260721-001` 的原始回答、评分、失败阈值和 `CONDITIONAL` 结论；
-2. 只在 DBA 修复机器入口、精确命令、组合流和非适用场景，不据此扩展 DBOS／SAEE 功能；
-3. 用新 validation ID、相同阈值和相同 Provider／model allowlist 复测；
-4. 由 Human Owner 单独决定 DBOS 的 agent access／distribution 路线；
-5. 复测和 access 决定完成后，再把 `DQ-009` 提交人工发布审查。
+1. 保留基线 `001=CONDITIONAL` 与复测 `002=PASS` 的全部原始回答、评分和失败历史；
+2. 由 Human Owner 单独决定 DBOS 的 agent access／distribution 路线；
+3. 单独评估 `OPEN_WEB_DISCOVERY`，不把给定 URL 的理解结果升级为自然发现；
+4. 复核网站依赖风险 `R-015`；
+5. 以上输入完成后，把 `DQ-009` 提交明确 `released_by_ref` 的人工发布决定。
 
 ## 6. Refresh Protocol（刷新协议）
 

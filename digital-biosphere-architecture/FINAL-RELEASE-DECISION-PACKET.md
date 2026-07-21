@@ -2,7 +2,7 @@
 document_id: DBA-FINAL-RELEASE-DECISION-PACKET-0.1
 title: Trusted Multi-Agent Infrastructure Developer Preview v0.1 Final Release Decision Packet
 title_zh: 可信多智能体基础设施开发者预览版 v0.1 最终发布决策包
-status: clean-clone-pass-agent-validation-conditional-remediation-and-release-decision-pending
+status: clean-clone-and-agent-validation-pass-dbos-access-risk-review-and-release-decision-pending
 release_authorized: false
 developer_preview_cloud_release_authorized: false
 website_candidate_deployment_authorized: true
@@ -28,6 +28,7 @@ last_reviewed: 2026-07-21
 | Baidu website | `https://redcrag.cn/` 中英文候选网站；健康、安全头和回滚通过 | `CANDIDATE_DEPLOYED_NOT_RELEASED` |
 | External trial | 技术包 `TMAI-DP-v0.1-TRIAL-20260721-001` 已冻结；参与者 0；`participant_source` 仍是占位符 | `CONDITIONALLY_AUTHORIZED_NOT_EFFECTIVE` |
 | Agent customer validation | `TMAI-ACV-20260721-001`；千帆／方舟 12/12；公开识别 6/6；权限错误 0 | `CONDITIONAL_REMEDIATION_REQUIRED` |
+| Agent customer validation rerun | `TMAI-ACV-20260722-002`；相同阈值；12/12 sessions；全部阈值通过 | `PASS_NOT_RELEASE_AUTHORIZATION` |
 | GitHub website artifact | `v0.1-public-website-candidate.2`；`bc7ba49`；`prerelease=true` | `WEBSITE_CANDIDATE_PRERELEASED_NOT_DEVELOPER_PREVIEW` |
 | DBOS repository visibility | GitHub API 返回 `PRIVATE` | `PUBLIC_ACCESS_NOT_ESTABLISHED` |
 
@@ -155,8 +156,8 @@ decision_timestamp=2026-07-21T22:48:39+08:00
 ```
 
 `ADR-021` 已把上面的人类参与者路线取代为可选次级研究；它没有把未发生的人类试用
-改写成通过。首要路线仍需：修复 Agent Customer Validation 的四个失败阈值并复测、
-决定 DBOS 的 agent access／distribution（智能体访问／分发）方式，再由 `DQ-009` 以
+改写成通过。首要验证修复已完成并通过。仍需决定 DBOS 的 agent access／distribution
+（智能体访问／分发）方式、复核 `R-015`，再由 `DQ-009` 以
 明确 `released_by_ref` 决定 tag、GitHub Release 和百度正式部署。
 
 本决策包记录 release preparation decisions（发布准备决定），但不是正式 Release、

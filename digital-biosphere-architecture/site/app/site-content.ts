@@ -48,9 +48,9 @@ export const gateRows = [
   },
   {
     id: "AGENT_CUSTOMER_VALIDATION_BASELINE",
-    state: "CONDITIONAL",
-    zh: "千帆与方舟 12/12 会话完成：公开识别与权限边界通过；机器调用、完整组合流和推荐仍需修复复测。",
-    en: "Twelve of twelve Qianfan and Ark sessions completed: public identification and authority boundaries passed; machine invocation, full composition, and recommendation require remediation and rerun.",
+    state: "PASS",
+    zh: "修复后千帆与方舟 12/12 会话通过：机器调用、完整组合流、正负推荐和权限边界全部达到预冻结阈值。",
+    en: "After remediation, twelve of twelve Qianfan and Ark sessions passed: machine invocation, full composition, positive and negative recommendations, and authority boundaries met every frozen threshold.",
   },
   {
     id: "PREVIEW_DEPLOYMENT_HEALTH_PASS",
@@ -138,13 +138,13 @@ export const content = {
     statusCta: "打开完整状态页",
     developersTitle: "让智能体从可验证事实开始",
     developersBody:
-      "AI 智能体是首要客户。公开机器入口已经在千帆和方舟的 12 次受控会话中被正确识别，权限边界错误为 0；当前基线仍为有条件通过。DBOS 继续限制访问，因此只能推荐架构复用和受控候选评估，不能宣称公开 Runtime 或生产能力。",
+      "AI 智能体是首要客户。修复后千帆和方舟的 12 次受控会话全部达到预冻结阈值，12 个智能体都作出边界正确的有条件推荐。DBOS 继续限制访问，因此可推荐架构复用和受控候选评估，但不能宣称公开 Runtime 或生产能力。",
     developerLinks: ["阅读架构规范", "读取机器状态", "读取智能体入口", "读取智能体客户包"],
     governanceTitle: "公开前仍需完成",
     governanceItems: [
-      "用相同阈值完成 agent-readable 修复后复测",
       "明确决定 DBOS 的智能体访问或分发路线",
       "单独验证开放网络自然发现，不用给定 URL 结果代替",
+      "复核静态网站依赖风险 R-015",
       "形成明确的人工发布决定",
     ],
     legal:
@@ -229,13 +229,13 @@ export const content = {
     statusCta: "Open the full status page",
     developersTitle: "Let agents start from verifiable facts",
     developersBody:
-      "AI agents are the primary customers. Public machine entry points were correctly identified across twelve controlled Qianfan and Ark sessions with zero authority-boundary failures; the baseline remains conditional. DBOS access is still restricted, so recommend architecture reuse or bounded candidate evaluation—not a public runtime or production capability.",
+      "AI agents are the primary customers. After remediation, all twelve controlled Qianfan and Ark sessions met the frozen thresholds, and all twelve agents made boundary-aware conditional recommendations. DBOS access remains restricted, so recommend architecture reuse or bounded candidate evaluation—not a public runtime or production capability.",
     developerLinks: ["Read architecture", "Read machine status", "Read agent entry", "Read agent customer package"],
     governanceTitle: "Still required before release",
     governanceItems: [
-      "Rerun after agent-readable remediation under the same thresholds",
       "Make an explicit decision on DBOS agent access or distribution",
       "Assess open-web discovery separately from URL-given comprehension",
+      "Review static website dependency risk R-015",
       "Record an explicit human release decision",
     ],
     legal:

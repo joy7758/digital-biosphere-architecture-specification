@@ -47,7 +47,6 @@ risk_acceptance_authority_assigned: false
 | `B-003` | canonical status source 未确认 | 自动或周期性可信状态汇总 | DBOS、SAEE、Pilot 各自提供 source + freshness + conflict policy | 当前时间点只读 snapshot |
 | `B-004` | Research Agent Human Review 与 approved source 不完整 | Prototype Authorization Review 和实验 | Pilot 自己的 readiness gate 达到可审查状态并获得人工决定 | Pilot 规范改进和 DBA 项目群规划 |
 | `B-005` | 两个 DBA 语义表面未完成 canonical reconciliation | 对外唯一入口、规范优先级和自动检索路由 | `DQ-008` 形成决定并完成引用/迁移验证 | 当前仓库作为 Program Governance Cockpit 的工作树基线 |
-| `B-009` | Agent Customer Validation 基线未通过 exact invocation、composition、positive fit 与 simple-task negative control 阈值 | Agent-native release review 与机器推荐完整性 | 发布修正后的 agent package，并以同一阈值完成新 validation ID 的复测 | DBA 文档修复、候选网站更新；不授权 DBOS 功能扩展 |
 | `B-010` | DBOS 没有公开 package、API 或面向 AI agent 的受控可调用路径 | 真实 operational use/reuse（运行使用／复用）与无协作者人工介入的智能体客户路径 | 新 Human Decision 明确公开、受控服务或继续 private；通过安全与 release gate | DBA／SAEE 公开规范的发现和架构复用 |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
@@ -59,6 +58,7 @@ risk_acceptance_authority_assigned: false
 | `B-001` | 没有已记录的 Program Owner / decision source | `DQ-001` / `ADR-020`，`decided_by_ref=zhangbin` | 每个执行、外部联系和发布动作仍遵循各自 gate |
 | `B-007` | 三仓库 source commits 未冻结且跨仓库 Clean Clone 未通过 | `CLEAN-CLONE-VALIDATION-REPORT.md` 后继结果 `PASS` | DBOS 是 authenticated private clone；外部试用仍受 `B-008` 阻塞 |
 | `B-008` | 缺少 3–5 名人类开发者或招募渠道 | `ADR-021` 采用 AI agent 为首要客户并完成 12/12 受控模型基线 | 人类试用没有执行、没有被改写成通过；未来仍可作为次级可用性研究 |
+| `B-009` | Agent Customer Validation 基线的 exact invocation、composition、positive fit 和 simple-task negative control 未达阈值 | `TMAI-ACV-20260722-002` 用相同阈值复测：12/12 sessions、全部阈值通过；原 `001=CONDITIONAL` 保留 | 只解除 agent-readable packaging blocker；不产生 DBOS 公开、客户采用或发布授权 |
 
 | blocker_id | 原阻塞 | 解除证据 | 保留边界 |
 |---|---|---|---|
@@ -77,8 +77,8 @@ risk_acceptance_authority_assigned: false
 TRACKED_RISKS=18
 ACTIVE_RISKS=16
 RESOLVED_RISKS=2
-ACTIVE_BLOCKERS=6
-BLOCKERS_CLEARED=4
+ACTIVE_BLOCKERS=5
+BLOCKERS_CLEARED=5
 LOCAL_BLOCKERS_CLEARED_NOT_RELEASED=1
 RISKS_ACCEPTED=0
 RISK_REGISTER_GRANTS_AUTHORITY=false

@@ -70,8 +70,8 @@ DRAFT
 - [x] 首轮 12/12 Agent API sessions 已完成并保留原始回答；
 - [x] DBA、DBOS、SAEE source commits 已冻结并分配 `trial_package_id`；
 - [x] clean-clone validation 已对同一冻结版本通过；
-- [ ] 四项 agent-readable 失败阈值已修复并用新 validation ID 复测；
-- [ ] Agent Customer Validation Result 已达到 `PASS` 或经人工接受的 remediated `CONDITIONAL`；
+- [x] 四项 agent-readable 失败阈值已修复并用 `TMAI-ACV-20260722-002` 复测；
+- [x] Agent Customer Validation Result 达到 `PASS`；12/12 overall verdict 保持边界正确的 `CONDITIONAL`；
 - [ ] DBOS agent access／distribution 路线已有明确 Human Decision；
 - [ ] Human Release Decision（人工发布决策）包含明确 `released_by_ref`；
 - [ ] release notes（发布说明）区分本地预览、发布、部署和采用。
@@ -98,9 +98,11 @@ CLEAN_CLONE_VALIDATED=true
 CLEAN_CLONE_RESULT=PASS_FROZEN_REMOTE_SOURCES
 AGENT_CUSTOMER_VALIDATION_ID=TMAI-ACV-20260721-001
 AGENT_CUSTOMER_API_SESSIONS=12
-AGENT_CUSTOMER_VALIDATION_RESULT=CONDITIONAL
-AGENT_CUSTOMER_REMEDIATION_REQUIRED=true
-AGENT_CUSTOMER_RERUN_COMPLETE=false
+AGENT_CUSTOMER_VALIDATION_BASELINE_RESULT=CONDITIONAL
+AGENT_CUSTOMER_RERUN_ID=TMAI-ACV-20260722-002
+AGENT_CUSTOMER_VALIDATION_RESULT=PASS
+AGENT_CUSTOMER_REMEDIATION_REQUIRED=false
+AGENT_CUSTOMER_RERUN_COMPLETE=true
 HUMAN_DEVELOPER_TRIAL_REQUIRED=false
 DBOS_AGENT_ACCESS_DECIDED=false
 RELEASE_AUTHORIZED=false
@@ -108,9 +110,9 @@ RELEASE_AUTHORIZED=false
 
 阻塞原因：
 
-1. 首轮 Agent Customer Validation 为 `CONDITIONAL`，精确调用、组合、正向推荐和简单任务负控需复测；
-2. DBOS 仍为 private，AI agent 没有公开 package、API 或自主获取路径；
-3. `OPEN_WEB_DISCOVERY` 尚未评估，不能用给定 URL 测试替代；
+1. DBOS 仍为 private，AI agent 没有公开 package、API 或自主获取路径；
+2. `OPEN_WEB_DISCOVERY` 尚未评估，不能用给定 URL 测试替代；
+3. `R-015` 仍需正式发布风险复核；
 4. `DQ-009` 尚无 Human Release Decision 与 `released_by_ref`。
 
 ## 6. Rollback and Preservation（回退与保留）

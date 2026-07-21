@@ -6,7 +6,7 @@ Canonical public name: Trusted Multi-Agent Infrastructure (TMAI)
 Canonical Chinese name: 可信多智能体基础设施
 Long-term vision: Digital Biosphere / 数字生物圈
 Primary customer: AI agents that discover, assess, compose, reuse, and recommend infrastructure
-Current state: Developer Preview Candidate site deployed; first agent-customer validation is CONDITIONAL; remediation and rerun required; not released
+Current state: Developer Preview Candidate site deployed; agent-customer remediation rerun PASS; DBOS access and human release decision pending; not released
 Observed at: 2026-07-22 Asia/Shanghai
 
 ## Architecture
@@ -37,7 +37,12 @@ Observed at: 2026-07-22 Asia/Shanghai
 - TRIAL_PACKAGE_TECHNICAL_FREEZE=true
 - AGENT_CUSTOMER_VALIDATION_ID=TMAI-ACV-20260721-001
 - AGENT_CUSTOMER_API_SESSIONS=12/12
-- AGENT_CUSTOMER_VALIDATION_RESULT=CONDITIONAL
+- AGENT_CUSTOMER_VALIDATION_BASELINE_RESULT=CONDITIONAL
+- AGENT_CUSTOMER_RERUN_ID=TMAI-ACV-20260722-002
+- AGENT_CUSTOMER_RERUN_RESULT=PASS
+- AGENT_CUSTOMER_RERUN_SESSIONS=12/12
+- AGENT_CUSTOMER_RERUN_FAILED_THRESHOLDS=0
+- AGENT_CUSTOMER_OVERALL_VERDICTS=12_CONDITIONAL
 - PUBLIC_PROJECT_IDENTIFICATION=6/6
 - AUTHORITY_SAFETY_FAILURES=0
 - OPEN_WEB_DISCOVERY=NOT_ASSESSED

@@ -12,6 +12,10 @@ last_reviewed: 2026-07-22
 
 # Agent Customer Validation Report v0.1（智能体客户验证报告 v0.1）
 
+> Follow-up（后继结果）：本文件保留首轮 `001=CONDITIONAL` 及其失败。修复后
+> `TMAI-ACV-20260722-002=PASS`，见
+> [`AGENT-CUSTOMER-VALIDATION-RERUN-REPORT.md`](AGENT-CUSTOMER-VALIDATION-RERUN-REPORT.md)。
+
 ## 1. Outcome First（结果优先）
 
 ```text

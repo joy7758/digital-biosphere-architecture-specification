@@ -44,7 +44,7 @@ DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
 | DBOS ↔ SAEE Contract | `PASS_CORE_ROLE` | `PASS_FROZEN_REMOTE_SOURCES` | `SPECIFICATION_DEFINED` | `PASS_SCOPED_CLEAN_CLONE` | `PASS_SCOPED_CLEAN_CLONE` | `G6_SYNTHETIC_RECORD_CHAIN_G7_RECOMMENDATION_ONLY` | 只可称为冻结源码上的合成契约符合性；不得称为生产集成或受治理演化闭环 |
 | Research Agent Pilot ↔ DBOS / SAEE | `PASS_PILOT_ROLE` | `PARTIAL` | `SPECIFICATION_DEFINED` | `PREPARED_ONLY` | `NOT_ASSESSED` | `BLOCKED_NOT_READY` | 不得创建 Prototype、Agent、Runtime 或实验 |
 | Adjacent components | `NOT_PASSED` | `NOT_ASSESSED` | `REVIEW_REQUIRED` | `NOT_ASSESSED` | `NOT_ASSESSED` | `NOT_ASSESSED` | 仅保留候选映射 |
-| Trusted Multi-Agent Infrastructure Developer Preview | `PASS_CORE_SCOPE` | `PASS_FROZEN_REMOTE_BASELINE` | `PASS` | `PASS_SCOPED_CLEAN_CLONE` | `AGENT_CUSTOMER_BASELINE_CONDITIONAL` | `G6_SYNTHETIC_G7_PASS_G8_AGENT_REMEDIATION_REQUIRED` | 12/12 模型会话完成；发现和边界通过，调用／组合／推荐仍需修复复测；未发布 |
+| Trusted Multi-Agent Infrastructure Developer Preview | `PASS_CORE_SCOPE` | `PASS_FROZEN_REMOTE_BASELINE` | `PASS` | `PASS_SCOPED_CLEAN_CLONE` | `AGENT_CUSTOMER_RERUN_PASS` | `G6_SYNTHETIC_G7_PASS_G8_DBOS_ACCESS_AND_HUMAN_RELEASE_BLOCKED` | 修复后 12/12 会话和全部阈值通过；DBOS access 与人工发布决定仍缺失 |
 
 ### Developer Preview Gate Detail（开发者预览闸门明细）
 
@@ -56,8 +56,8 @@ DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
 | `DP-4` | `G3/G4/G7` | `PASS_CLEAN_CLONE_ADVISORY_ONLY` | SAEE `2173c25` public main；8/8 adapter tests；pipeline 输出 `HOLD` 且无 Authority | 不外推为 SAEE 决策权或生产集成 |
 | `DP-5A` | `G8_PREPARATION` | `PASS_AGENT_PROTOCOL_FROZEN` | `TMAI-ACV-20260721-001`、Protocol、12-session plan、ADR-021 | 不表示 Agent instance、客户采用或发布 |
 | `DP-5B` | `G1/G4/G8_AGENT_VALIDATION` | `CONDITIONAL` | 2 Providers、4 models、12/12 parsed；公开识别 6/6；权限错误 0；4 个阈值失败 | 修复 agent-readable package，并以相同阈值复测 |
-| `DP-5C` | `G1/G4/G8_AGENT_RERUN` | `IN_PROGRESS` | `AGENT-CUSTOMER-PACKAGE-v0.1.json` 与机器入口正在形成 | 新 validation ID 完成并复核 `B-009` |
-| `DP-R` | `G8` | `BLOCKED_DP-5C_DBOS_ACCESS_DQ-009` | Agent baseline 不是发布；DBOS 仍 private；没有 `released_by_ref` | agent rerun、DBOS access decision、人工发布决定和完整 release record |
+| `DP-5C` | `G1/G4/G8_AGENT_RERUN` | `PASS` | `TMAI-ACV-20260722-002`：2 Providers、4 models、12/12 parsed、全部阈值通过、权限错误 0 | 保留原 `001=CONDITIONAL` 与 `OPEN_WEB_DISCOVERY=NOT_ASSESSED` |
+| `DP-R` | `G8` | `BLOCKED_DBOS_ACCESS_R015_DQ-009` | Agent customer validation 已通过；DBOS 仍 private；`R-015` 未复核；没有 `released_by_ref` | DBOS access decision、风险复核、人工发布决定和完整 release record |
 
 ## 4. Gate Evidence Record（闸门证据记录）
 

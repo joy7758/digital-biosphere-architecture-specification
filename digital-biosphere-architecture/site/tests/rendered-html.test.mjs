@@ -41,8 +41,10 @@ test("renders bilingual status pages with fail-closed truth", async () => {
   const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
   assert.match(zh, /当前不是正式发布/);
   assert.match(en, /This is not a release/);
-  assert.match(zh, /CONDITIONAL/);
-  assert.match(en, /CONDITIONAL/);
+  assert.match(zh, /AGENT_CUSTOMER_VALIDATION_BASELINE/);
+  assert.match(en, /AGENT_CUSTOMER_VALIDATION_BASELINE/);
+  assert.match(zh, /PASS/);
+  assert.match(en, /PASS/);
   assert.match(zh, /0caa2c45e511/);
   assert.match(en, /2173c258f91a/);
 });
@@ -68,10 +70,13 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
   assert.equal(status.gates.DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE, true);
   assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL, true);
+  assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_RERUN_PASS, true);
   assert.equal(status.agent_customer_validation.api_sessions_completed, 12);
+  assert.equal(status.agent_customer_validation.result, "PASS");
   assert.equal(status.agent_customer_validation.open_web_discovery, "NOT_ASSESSED");
   assert.equal(agentCustomerPackage.intended_customer, "AI_AGENT");
   assert.equal(agentCustomerPackage.released, false);
+  assert.equal(agentCustomerPackage.validation_truth.rerun_result, "PASS");
   assert.equal(status.license.selected, true);
   assert.equal(status.license.identifier, "Apache-2.0");
   assert.equal(status.public_website.deployed, true);
