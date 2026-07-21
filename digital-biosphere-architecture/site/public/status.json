@@ -1,0 +1,33 @@
+{
+  "schema_version": "0.1",
+  "observed_at": "2026-07-21T19:00:00+08:00",
+  "release_state": "developer_preview_candidate_in_preparation",
+  "release_claim": false,
+  "repository_baselines": {
+    "DBA": "dd57af17b40bcdf4d74681053e24b76e0f589b3e",
+    "DBOS": "b4e3cbe2af442be861dbab3f7b2ffd2567443077",
+    "SAEE": "e503c22109bdb7c83dc465d66e2a22760a3c8d90"
+  },
+  "gates": {
+    "DBA_CLEAN_CLONE_PASS": true,
+    "DBOS_CLEAN_CLONE_PASS": true,
+    "SAEE_DBOS_ADAPTER_PASS": false,
+    "CROSS_PROJECT_CLEAN_CLONE_PASS": false,
+    "DQ_010_READY": false,
+    "DEVELOPER_PREVIEW_RELEASED": false
+  },
+  "access": {
+    "DBA": "public",
+    "DBOS": "private",
+    "SAEE": "public_without_required_dbos_adapter"
+  },
+  "external_trial": {
+    "authorized": false,
+    "participants": 0,
+    "target_participants": "3-5"
+  },
+  "license": {
+    "selected": false,
+    "status": "pending_explicit_architecture_decision"
+  }
+}

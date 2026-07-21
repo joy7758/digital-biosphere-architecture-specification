@@ -1,0 +1,235 @@
+export type Locale = "zh" | "en";
+
+export const repositoryBaselines = [
+  {
+    key: "DBA",
+    label: "Architecture governance",
+    labelZh: "架构治理",
+    commit: "dd57af17b40bcdf4d74681053e24b76e0f589b3e",
+    href: "https://github.com/joy7758/digital-biosphere-architecture-specification",
+    visibility: "public",
+  },
+  {
+    key: "DBOS",
+    label: "Existence and execution records",
+    labelZh: "存在与执行记录",
+    commit: "b4e3cbe2af442be861dbab3f7b2ffd2567443077",
+    href: "https://github.com/joy7758/digital-biosphere-os",
+    visibility: "private",
+  },
+  {
+    key: "SAEE",
+    label: "Evaluation and evolution",
+    labelZh: "评价与演化",
+    commit: "e503c22109bdb7c83dc465d66e2a22760a3c8d90",
+    href: "https://github.com/joy7758/SAEE",
+    visibility: "public",
+  },
+] as const;
+
+export const gateRows = [
+  {
+    id: "DBA_CLEAN_CLONE_PASS",
+    state: "PASS",
+    zh: "DBA 文档入口与内部链接已通过干净检出验证。",
+    en: "DBA document entry points and internal links passed clean-clone validation.",
+  },
+  {
+    id: "DBOS_CLEAN_CLONE_PASS",
+    state: "PASS",
+    zh: "DBOS 在隔离环境中通过 331 项测试、34/34 Validator 和演示。",
+    en: "DBOS passed 331 tests, 34/34 validators, and demos in an isolated environment.",
+  },
+  {
+    id: "SAEE_DBOS_ADAPTER_PASS",
+    state: "BLOCKED",
+    zh: "公开 SAEE main 尚无可执行 DBOS Adapter；不得宣称跨仓链路通过。",
+    en: "Public SAEE main has no executable DBOS Adapter; the cross-repository path is not passed.",
+  },
+  {
+    id: "EXTERNAL_DEVELOPER_TRIAL",
+    state: "NOT_STARTED",
+    zh: "外部开发者试用尚未启动，参与者为 0。",
+    en: "The external developer trial has not started; participant count is 0.",
+  },
+] as const;
+
+export const content = {
+  zh: {
+    lang: "zh-CN",
+    nav: {
+      architecture: "架构",
+      trust: "可信边界",
+      workflow: "工作流",
+      status: "状态",
+      developers: "开发者",
+      github: "GitHub",
+      language: "English",
+    },
+    badge: "Developer Preview Candidate · 准备中",
+    eyebrow: "DIGITAL BIOSPHERE / 数字生物圈",
+    title: "面向多智能体系统的可信基础设施",
+    lead:
+      "让 AI 智能体在长期运行与协作中拥有可追溯身份、受控生命周期、可验证证据和明确治理边界。",
+    primaryCta: "理解架构",
+    secondaryCta: "查看当前状态",
+    notice:
+      "当前是架构参考与受限预览，不是正式发布，也不构成生产可用性声明。",
+    introTitle: "不是另一个 Agent Framework",
+    introBody:
+      "普通框架回答“如何创建智能体”。我们关注智能体数量增加、长期运行并互相协作后，如何保持身份连续、行为可追溯、证据可验证，以及演化建议不能越权执行。",
+    layersTitle: "三层协作，一个可信栈",
+    layersLead: "规则、存在和演化相互协作，但不能相互替代。",
+    layers: [
+      {
+        index: "01",
+        name: "DBA",
+        title: "架构治理",
+        body: "维护规范、边界、ADR、发布闸门和跨项目一致性。DBA 不运行 Agent，也不替代 DBOS 或 SAEE。",
+        tag: "GOVERNS RULES",
+      },
+      {
+        index: "02",
+        name: "DBOS",
+        title: "存在可信层",
+        body: "管理身份、能力边界、生命周期、执行记录、证据引用和验证记录。记录不等于执行，能力不等于权限。",
+        tag: "GOVERNS EXISTENCE",
+      },
+      {
+        index: "03",
+        name: "SAEE",
+        title: "演化智能层",
+        body: "评价可靠性、效率、适应性和稳定性，输出风险评估与演化建议。评价不是授权，建议不是命令。",
+        tag: "GOVERNS EVOLUTION",
+      },
+    ],
+    trustTitle: "四条不可跨越的可信边界",
+    trustLead: "系统可信来自明确分离，而不是模糊地把所有权力交给一个组件。",
+    trustCards: [
+      ["Evidence", "Truth", "证据完整不代表科学正确。"],
+      ["Evaluation", "Authority", "评价结果不自动产生权力。"],
+      ["Recommendation", "Decision", "建议必须经过显式审查和决策。"],
+      ["Decision", "Execution", "决策记录必须回到 DBOS 生命周期执行。"],
+    ],
+    workflowTitle: "可信生命周期",
+    workflowLead: "每一步都产生来源和记录；任何阶段都不能自动升级到下一种权限事实。",
+    workflow: ["登记", "执行记录", "证据引用", "验证", "评价", "治理决策"],
+    signalsTitle: "基础设施信号",
+    signals: [
+      ["Identity", "身份连续", "主体、候选、登记与运行实例保持可区分。"],
+      ["Lifecycle", "生命周期", "状态变化有来源、有记录、可审查。"],
+      ["Evidence", "证据引用", "保留输入、过程、输出和失败，但不宣称真理。"],
+      ["Verification", "验证边界", "验证记录不授予能力、权限或科学有效性。"],
+    ],
+    statusTitle: "当前真实状态",
+    statusLead: "以 2026-07-21 的远程基线和干净检出记录为准。",
+    statusCta: "打开完整状态页",
+    developersTitle: "从可验证事实开始",
+    developersBody:
+      "架构规范已经公开；DBOS 当前仍限制访问；SAEE 的公开主分支不包含所需适配器。开始前请先阅读状态和边界，而不是假设端到端链路已经发布。",
+    developerLinks: ["阅读架构规范", "读取机器状态", "供智能体读取"],
+    governanceTitle: "公开前仍需完成",
+    governanceItems: [
+      "选择并记录公开许可证",
+      "完成 SAEE ↔ DBOS 公开适配边界",
+      "验证 DBOS 外部试用访问",
+      "完成 3–5 名外部开发者试用",
+      "形成明确的人工发布决定",
+    ],
+    legal:
+      "许可证决定尚未完成。网站不采集登录信息、不设置分析 Cookie，也不提供运行时权限。",
+    footer: "Digital Biosphere 是长期愿景；TMAI 是对外技术入口。",
+  },
+  en: {
+    lang: "en",
+    nav: {
+      architecture: "Architecture",
+      trust: "Trust boundaries",
+      workflow: "Workflow",
+      status: "Status",
+      developers: "Developers",
+      github: "GitHub",
+      language: "中文",
+    },
+    badge: "Developer Preview Candidate · In preparation",
+    eyebrow: "DIGITAL BIOSPHERE",
+    title: "Trust infrastructure for multi-agent systems",
+    lead:
+      "Give long-running, collaborative AI agents traceable identity, governed lifecycles, verifiable evidence, and explicit authority boundaries.",
+    primaryCta: "Understand the architecture",
+    secondaryCta: "View current status",
+    notice:
+      "This is an architecture reference and bounded preview—not a release or a production-readiness claim.",
+    introTitle: "Not another agent framework",
+    introBody:
+      "Most frameworks answer how to create an agent. We focus on what happens when agents multiply, run for a long time, and collaborate: identity continuity, traceable behavior, verifiable evidence, and evolution recommendations that cannot execute themselves.",
+    layersTitle: "Three layers, one trustworthy stack",
+    layersLead: "Rules, existence, and evolution cooperate without replacing one another.",
+    layers: [
+      {
+        index: "01",
+        name: "DBA",
+        title: "Architecture governance",
+        body: "Maintains specifications, boundaries, ADRs, release gates, and cross-project consistency. DBA runs no agents and replaces neither DBOS nor SAEE.",
+        tag: "GOVERNS RULES",
+      },
+      {
+        index: "02",
+        name: "DBOS",
+        title: "Existence trust layer",
+        body: "Governs identity, capability boundaries, lifecycle, execution records, evidence references, and verification records. A record is not execution; capability is not permission.",
+        tag: "GOVERNS EXISTENCE",
+      },
+      {
+        index: "03",
+        name: "SAEE",
+        title: "Evolution intelligence layer",
+        body: "Assesses reliability, efficiency, adaptability, and stability, then emits risk assessments and evolution recommendations. Evaluation is not authority; a recommendation is not a command.",
+        tag: "GOVERNS EVOLUTION",
+      },
+    ],
+    trustTitle: "Four trust boundaries that must not collapse",
+    trustLead: "Trust comes from explicit separation, not from concentrating every authority in one component.",
+    trustCards: [
+      ["Evidence", "Truth", "Complete evidence does not prove scientific correctness."],
+      ["Evaluation", "Authority", "An assessment does not automatically create authority."],
+      ["Recommendation", "Decision", "A recommendation requires explicit review and decision."],
+      ["Decision", "Execution", "A decision record returns to DBOS lifecycle control for execution."],
+    ],
+    workflowTitle: "Governed lifecycle",
+    workflowLead: "Every step has provenance and a record; no stage silently upgrades the next authority fact.",
+    workflow: [
+      "Registration",
+      "Execution record",
+      "Evidence reference",
+      "Verification",
+      "Evaluation",
+      "Governance decision",
+    ],
+    signalsTitle: "Infrastructure signals",
+    signals: [
+      ["Identity", "Continuity", "Keep candidates, registered entities, subjects, and runtime instances distinct."],
+      ["Lifecycle", "Governed state", "Every state transition has provenance, a record, and a review boundary."],
+      ["Evidence", "References", "Preserve inputs, process, outputs, and failures without claiming truth."],
+      ["Verification", "Boundaries", "Verification grants no capability, permission, or scientific validity."],
+    ],
+    statusTitle: "Current truthful status",
+    statusLead: "Based on remote baselines and clean-clone observations dated 2026-07-21.",
+    statusCta: "Open the full status page",
+    developersTitle: "Start from verifiable facts",
+    developersBody:
+      "The architecture specification is public. DBOS access is currently restricted. Public SAEE main does not contain the required adapter. Read status and boundaries before assuming an end-to-end release exists.",
+    developerLinks: ["Read architecture", "Read machine status", "Read as an agent"],
+    governanceTitle: "Still required before release",
+    governanceItems: [
+      "Select and record the public license",
+      "Complete the public SAEE ↔ DBOS adapter boundary",
+      "Validate external trial access to DBOS",
+      "Run a trial with 3–5 external developers",
+      "Record an explicit human release decision",
+    ],
+    legal:
+      "The license decision is pending. This static site collects no login data, sets no analytics cookies, and grants no runtime permission.",
+    footer: "Digital Biosphere is the long-term vision; TMAI is the public technical entry point.",
+  },
+} as const;
