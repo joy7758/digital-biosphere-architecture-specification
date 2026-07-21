@@ -49,7 +49,7 @@ public_website_deployment_state: candidate-deployed-not-released
 public_website_health_pass: true
 public_website_rollback_validated: true
 public_website_github_prerelease_published: true
-public_website_github_prerelease_tag: v0.1-public-website-candidate
+public_website_github_prerelease_tag: v0.1-public-website-candidate.2
 developer_preview_stage_accepted: true
 developer_preview_release_status: website-candidate-deployed-clean-clone-pass-trial-participant-source-pending-not-released
 developer_preview_release_authorized: false
