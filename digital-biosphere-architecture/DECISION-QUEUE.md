@@ -33,6 +33,7 @@ last_reviewed: 2026-07-21
 | `DQ-011` | `P0` | SAEE DBOS Developer Preview Adapter 应如何安全提供给外部开发者？ | `READY_FOR_REVIEW` | public/private history 分离事实、Adapter 依赖、private-core 边界、避免重复 evaluator 的方案比较 | `DP-4` 是否能形成可干净检出的 SAEE 评价入口 | 将内部工程历史推入 public `main`、复制 evaluator、把 toy demo 当 Adapter 或通过无关历史强制合并 |
 | `DQ-012` | `P0` | Developer Preview 的 DBA、DBOS、SAEE 公开表面采用什么许可证？ | `READY_FOR_REVIEW` | 当前无根 LICENSE、目标复用方式、专利与贡献边界；推荐 `Apache-2.0` | 外部复制、修改、分发与 GitHub Release 的法律边界 | Open Infrastructure 自动等于 Apache/MIT，或 public repo 自动授予复用权 |
 | `DQ-013` | `P0` | 百度正式发布是否采用 `redcrag.cn/trusted-multi-agent-infrastructure/` 独立路径？ | `READY_FOR_REVIEW` | 当前 HTTPS/证书、Nginx、历史 releases、非破坏部署与回退方案 | 是否允许准备独立 release directory、Nginx route 和最终部署 | 清空或覆盖现有 `/saee/`，或把服务器健康自动等于部署授权 |
+| `DQ-014` | `P0` | DBOS 何时从 private repository 转为 public repository？ | `READY_FOR_REVIEW` | clean clone、许可证、secret/private-material audit、外部试用方式与 rollback | 匿名开发者能否获取 SDK、Quick Start 和 Demo | authenticated clone 自动等于 public availability，或 trial collaborator access 自动等于公开发布 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
@@ -63,7 +64,7 @@ release_authorized=true|false
 
 ```text
 DECISION_QUEUE_ACTIVE=true
-OPEN_DECISIONS=13
+OPEN_DECISIONS=14
 QUEUE_CREATES_AUTHORITY=false
 QUEUE_CREATES_PERMISSION=false
 QUEUE_EXECUTES_DECISIONS=false

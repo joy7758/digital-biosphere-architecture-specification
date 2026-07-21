@@ -22,6 +22,7 @@ last_reviewed: 2026-07-21
 | Baidu mirror | `https://redcrag.cn/` HTTP/2 200；证书有效至 2026-10-09 | `EXISTING_SAEE_SITE_HEALTHY_NO_TMAI_PATH` |
 | External trial | 参与者 0，`DQ-010` 未授权 | `NOT_STARTED` |
 | GitHub Release | 没有本版本 tag / release | `NOT_CREATED` |
+| DBOS repository visibility | GitHub API 返回 `PRIVATE` | `PUBLIC_ACCESS_NOT_ESTABLISHED` |
 
 ## 2. DQ-011 — SAEE Adapter Publication Boundary（SAEE 适配器公开边界）
 
@@ -93,13 +94,31 @@ atomic_rollback_required=true
 该方案在独立目录部署，不清空 `/srv/saee/public/saee`，不修改历史 Evidence，且保留
 原子回退。仍需 Human Deployment Authorization（人工部署授权）后才能修改 Nginx 或上传。
 
-## 5. Required Human Decision Record（所需人工决定记录）
+## 5. DQ-014 — DBOS Repository Visibility（DBOS 仓库可见性）
+
+DBOS `b4e3cbe` 的 clean clone 使用当前 GitHub 凭据完成；这不是 anonymous clone
+（匿名检出）证据。仓库当前为 `PRIVATE`，因此 3–5 名陌生开发者和正式公开用户默认
+无法获取 SDK、Quick Start 或 Demo。
+
+推荐在许可证、SAEE public-safe extraction、最终 clean clone 和外部试用修正完成后，
+由 Owner 将 DBOS 切换为 `PUBLIC`；切换前必须再次扫描 secret、private material 和
+历史 Evidence 边界。试用阶段可以用受控 collaborator access（协作者访问），但不能
+据此声称 public release（公开发布）。
+
+```text
+DBOS_REPOSITORY_VISIBILITY=PRIVATE
+ANONYMOUS_CLONE_VALIDATED=false
+DBOS_PUBLICATION_AUTHORIZED=false
+```
+
+## 6. Required Human Decision Record（所需人工决定记录）
 
 ```text
 decided_by_ref=
 dq_011_saee_public_safe_extraction=approved|rejected
 dq_012_license=Apache-2.0|other|withheld
 dq_013_baidu_isolated_path=approved|rejected
+dq_014_dbos_visibility=public_after_trial|private_collaborator_trial|rejected
 decision_timestamp=
 ```
 

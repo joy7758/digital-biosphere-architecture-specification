@@ -86,6 +86,7 @@ CROSS_PROJECT_CLEAN_CLONE_PASS=false
 - `DQ-011`：决定 SAEE DBOS Preview Adapter 如何在不公开 private core、不复制 evaluator 的前提下向外部开发者提供；
 - `DQ-012`：选择 Developer Preview 的公开许可证；当前推荐 `Apache-2.0`，尚未批准；
 - `DQ-013`：决定是否使用 `https://redcrag.cn/trusted-multi-agent-infrastructure/` 独立、非破坏部署路径；
+- `DQ-014`：决定 DBOS 从 private 转为 public 的时点和公开前审计要求；
 - `B-001`：没有已记录的 Program Authority assignment（项目群权力指派），阻止高影响项目群决策闭环；
 - `B-002`：DBA Git 根目录不是 DBA 目录本身，影响仓库边界和远端展示；
 - `B-003`：核心项目状态入口尚未统一，阻止可靠自动汇总。
