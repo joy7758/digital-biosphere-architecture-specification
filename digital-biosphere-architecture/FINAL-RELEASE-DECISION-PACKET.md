@@ -27,7 +27,7 @@ last_reviewed: 2026-07-21
 | Cross-project Clean Clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `PASS_FROZEN_REMOTE_SOURCES` |
 | Baidu website | `https://redcrag.cn/` 中英文候选网站；健康、安全头和回滚通过 | `CANDIDATE_DEPLOYED_NOT_RELEASED` |
 | External trial | 技术包 `TMAI-DP-v0.1-TRIAL-20260721-001` 已冻结；参与者 0；`participant_source` 仍是占位符 | `CONDITIONALLY_AUTHORIZED_NOT_EFFECTIVE` |
-| GitHub website artifact | `v0.1-public-website-candidate`；`prerelease=true` | `WEBSITE_CANDIDATE_PRERELEASED` |
+| GitHub website artifact | `v0.1-public-website-candidate.2`；`bc7ba49`；`prerelease=true` | `WEBSITE_CANDIDATE_PRERELEASED_NOT_DEVELOPER_PREVIEW` |
 | DBOS repository visibility | GitHub API 返回 `PRIVATE` | `PUBLIC_ACCESS_NOT_ESTABLISHED` |
 
 ## 2. DQ-011 — SAEE Adapter Publication Boundary（SAEE 适配器公开边界）
