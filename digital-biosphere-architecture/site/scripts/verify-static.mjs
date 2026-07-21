@@ -14,6 +14,7 @@ const requiredFiles = [
   "agent-index.json",
   "status.json",
   "agent-customer-package.json",
+  "dbos-public-package-manifest.json",
   "release.json",
   "release-manifest.json",
   "robots.txt",
@@ -23,13 +24,14 @@ const requiredFiles = [
 
 await Promise.all(requiredFiles.map((file) => access(join(outputRoot, file))));
 
-const [zh, en, zhStatus, enStatus, status, agentCustomerPackage, release, manifest] = await Promise.all([
+const [zh, en, zhStatus, enStatus, status, agentCustomerPackage, dbosPackage, release, manifest] = await Promise.all([
   readFile(join(outputRoot, "index.html"), "utf8"),
   readFile(join(outputRoot, "en/index.html"), "utf8"),
   readFile(join(outputRoot, "status/index.html"), "utf8"),
   readFile(join(outputRoot, "en/status/index.html"), "utf8"),
   readFile(join(outputRoot, "status.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "agent-customer-package.json"), "utf8").then(JSON.parse),
+  readFile(join(outputRoot, "dbos-public-package-manifest.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release-manifest.json"), "utf8").then(JSON.parse),
 ]);
@@ -59,6 +61,15 @@ assert.equal(status.open_web_discovery.github_metadata_indexing_signal_observed,
 assert.equal(agentCustomerPackage.intended_customer, "AI_AGENT");
 assert.equal(agentCustomerPackage.released, false);
 assert.equal(agentCustomerPackage.validation_truth.rerun_result, "PASS");
+assert.equal(dbosPackage.package_id, "TMAI-DBOS-WHEEL-CANDIDATE-20260722-001");
+assert.equal(dbosPackage.status, "VALIDATED_NOT_PUBLISHED");
+assert.equal(dbosPackage.release_authorized, false);
+assert.equal(dbosPackage.public_download_url, null);
+assert.equal(dbosPackage.source.source_revision, "cd3f867c4379ec555c45e7d554088ad12ce08a24");
+assert.equal(dbosPackage.public_safe_boundary.absolute_user_path_matches, 0);
+assert.equal(dbosPackage.public_safe_boundary.gitleaks_findings, 0);
+assert.equal(status.gates.DBOS_PUBLIC_SAFE_WHEEL_VALIDATED, true);
+assert.equal(status.gates.DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED, false);
 assert.equal(status.gates.DEVELOPER_PREVIEW_RELEASED, false);
 assert.equal(release.developer_preview_released, false);
 assert.equal(release.deployment_state, "candidate_not_released");

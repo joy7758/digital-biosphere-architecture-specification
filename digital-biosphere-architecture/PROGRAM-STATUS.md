@@ -27,7 +27,7 @@ SCOPED_LOCAL_DBOS_SAEE_CONFORMANCE_PASS=true
 FULL_END_TO_END_INTEGRATION_VERIFIED=false
 ACTIVE_DIGITAL_ENTITY_VERIFIED_BY_DBA=false
 DEVELOPER_PREVIEW_RELEASED=false
-DBOS_TESTS_PASS=331
+DBOS_TESTS_PASS=334
 DBOS_VALIDATORS_PASS=34
 DEVELOPER_PREVIEW_LOCAL_CANDIDATE_VALIDATED=true
 PRIMARY_CUSTOMER=AI_AGENT
@@ -68,6 +68,9 @@ GITHUB_WEBSITE_PRERELEASE_PUBLISHED=true
 SAEE_PUBLIC_SAFE_EXTRACTION_AUTHORIZED=true
 PUBLIC_LICENSE_SELECTED=Apache-2.0
 DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
+DBOS_SOURCE_REVISION=cd3f867c4379ec555c45e7d554088ad12ce08a24
+DBOS_PUBLIC_SAFE_WHEEL_VALIDATED=true
+DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED=false
 ```
 
 `ATTENTION_REQUIRED` 表示存在需要人工决定、状态来源对齐和仓库拓扑处理的事项，不表示任何子项目失败或不可用。
@@ -78,8 +81,8 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 
 | project_id | branch | observed commit | worktree observation | remote observation | 规范状态摘要 |
 |---|---|---|---|---|---|
-| `DBA` | `main` | `ac5374ad326e95a71a326da4b2d9ec74880c608f` | Agent Customer Validation、发现边界和依赖复核已合并 | public remote 可干净检出 | 103 个 Markdown 文件、342 个本地链接和网站 Clean Clone 通过；Developer Preview 未发布 |
-| `DBOS` | `main` | `0caa2c45e511a82d0dcab778b0ffc3163aac0029` | Apache-2.0 和 private trial boundary 已推送 | authenticated clean clone 通过；仓库保持 private | fresh install、331/331 tests、34/34 validators、两个 Demo 通过；不是 Agent Runtime |
+| `DBA` | `main` | `48237da5535235cb9d13b0782a94671a7be8a1e8` | website candidate 6 的远端记录已合并；当前 public-safe wheel 决策工件仍在候选分支 | public remote 可干净检出 | 网站候选健康、依赖复核和驾驶舱验证通过；Developer Preview 未发布 |
+| `DBOS` | `main` | `cd3f867c4379ec555c45e7d554088ad12ce08a24` | 自包含 wheel candidate、Apache-2.0 和 private repository boundary 已推送 | authenticated clean clone 通过；仓库保持 private；整仓因 48 个本机路径文件不公开 | fresh install、334/334 tests、34/34 validators、两个 Demo 和 public-safe wheel 隔离安装通过；不是 Agent Runtime |
 | `SAEE` | public `main` | `2173c258f91aed03fc02c0097d4250a87be703aa` | exact 19-file public-safe extraction 与 Apache-2.0 已合并 | public remote 可干净检出；内部工作树另有未发布变化且未被使用 | 19/19 blob、public smoke/demo、8/8 tests 和 DBOS 只读 Adapter 通过；无写回或 authority |
 | `RESEARCH-AGENT-PILOT` | `main` | `8445fe5d13cd889032c3786ba527d801f56d5351` | `dirty_count=30` | 未发现 `origin` | `V1_0_STATUS=INCOMPLETE_NOT_READY`；Agent、Runtime、Entity、Execution 均为 0 |
 
@@ -97,7 +100,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 | Research Agent SAEE connection | `PREPARED_ONLY` | Pilot README 的当前状态 |
 | End-to-end governed evolution loop | `NOT_VERIFIED` | 本阶段只验证 synthetic record-to-evaluation 链；没有真实 Execution、Verified Evidence、Decision 或 Adoption 闭环 |
 | Developer Preview public entry | `WEBSITE_CANDIDATE_DEPLOYED_NOT_RELEASED` | `redcrag.cn`、`PUBLIC-WEBSITE-DEPLOYMENT-REPORT.md`、ADR-019 与 GitHub website prerelease |
-| DBOS local developer path | `SCOPED_LOCAL_CONFORMANCE_PASS` | local editable install、单一 runner、331/331 tests、34/34 validators |
+| DBOS local developer path | `PUBLIC_SAFE_WHEEL_VALIDATED_NOT_PUBLISHED` | local editable install、单一 runner、334/334 tests、34/34 validators、wheel install PASS；尚无公开 URL |
 | Multi-Agent Trust Demo | `LOCAL_DETERMINISTIC_PASS` | 3 个角色模拟、3 个执行记录、3 个证据引用、9 个结构 Validation；无 Agent/Runtime |
 | SAEE Evaluation Layer v0.1 | `LOCAL_READ_ONLY_PASS` | 8/8 adapter tests；Reliability/Stability fail closed；Risk/Recommendation 复用现有 evaluator |
 | Optional Human Developer Trial | `SUPERSEDED_AS_PRIMARY_GATE_NOT_EXECUTED` | 历史技术包仍保留；参与者 0；不再阻塞首要 agent-native 路线 |
@@ -111,6 +114,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 - `DQ-004`：选择第一个跨项目 conformance（符合性）里程碑；
 - `DQ-008`：决定当前驾驶舱与既有 DBA public meaning layer 的规范关系和单一前门；
 - `DQ-009`：`R-015` 依赖复核已完成；最终 Developer Preview Release（开发者预览版发布）仍需 DBOS access/distribution 决定、开放网络发现限制的处理决定和 `released_by_ref`；
+- `DQ-016`：决定是否保持 DBOS 整仓 private，只公开 `TMAI-DBOS-WHEEL-CANDIDATE-20260722-001`；
 - `DQ-001`、`DQ-011`、`DQ-012`、`DQ-014` 已由 `ADR-020` 关闭；
 - `DQ-010` 的人类参与者路径已由 `ADR-021` 标记为 `SUPERSEDED_FOR_PRIMARY_ROUTE`，没有被改写成执行通过；
 - `DQ-015` 已接受 agent-native customer validation，并完成 12/12 会话基线；
@@ -121,7 +125,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 - `B-005`：两个 DBA 语义表面尚未完成 canonical reconciliation（规范对齐），阻止对外声明唯一入口。
 - `B-006` 已在当前本地工作树中通过 version-aware historical binding（版本感知历史绑定）处理，34/34 validators 通过；历史 Evidence 未改写。该缓解尚未形成发布版本。
 - `B-007` 已解除：三个远端 source commits 已冻结，SAEE 19/19 blob 与完整 Clean Clone 已通过。
-- `B-009` 已由 `TMAI-ACV-20260722-002` 解除；真实运行使用仍受 `B-010`（DBOS private、无公开调用路径）阻塞。
+- `B-009` 已由 `TMAI-ACV-20260722-002` 解除；真实运行使用仍受 `B-010`（public-safe wheel 已验证但无公开 URL）阻塞。
 - `B-011`：`TMAI-OWD-20260722-001` 只观察到 GitHub 完整新描述命中；规范英文名、中文名和公开搜索仍无精确项目命中。
 
 详细信息见 [`DECISION-QUEUE.md`](DECISION-QUEUE.md) 和 [`RISK-AND-BLOCKER-REGISTER.md`](RISK-AND-BLOCKER-REGISTER.md)。
@@ -129,7 +133,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 ## 5. Next Program Actions（下一步项目群行动）
 
 1. 保留基线 `001=CONDITIONAL` 与复测 `002=PASS` 的全部原始回答、评分和失败历史；
-2. 由 Human Owner 单独决定 DBOS 的 agent access／distribution 路线；
+2. 由 Human Owner 处理 `DQ-016`：推荐只公开 exact public-safe wheel，DBOS 整仓继续 private；
 3. 在外部索引刷新窗口后用规范英文名／中文名复查 `TMAI-OWD-20260722-001`，或由 Human Owner 显式接受 Developer Preview 的发现限制；
 4. 以上输入完成后，把 `DQ-009` 提交明确 `released_by_ref` 的人工发布决定，并在 release notes 中披露 `R-015` 的 2 项 moderate 残余。
 

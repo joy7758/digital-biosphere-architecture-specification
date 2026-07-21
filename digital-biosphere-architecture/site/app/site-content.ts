@@ -5,7 +5,7 @@ export const repositoryBaselines = [
     key: "DBA",
     label: "Architecture governance",
     labelZh: "架构治理",
-    commit: "f4c9e5e424ba9ebf0b08d8da5b3dd72f73bd5854",
+    commit: "48237da5535235cb9d13b0782a94671a7be8a1e8",
     href: "https://github.com/joy7758/digital-biosphere-architecture-specification",
     visibility: "public",
   },
@@ -13,7 +13,7 @@ export const repositoryBaselines = [
     key: "DBOS",
     label: "Existence and execution records",
     labelZh: "存在与执行记录",
-    commit: "0caa2c45e511a82d0dcab778b0ffc3163aac0029",
+    commit: "cd3f867c4379ec555c45e7d554088ad12ce08a24",
     href: "https://github.com/joy7758/digital-biosphere-os",
     visibility: "private",
   },
@@ -37,8 +37,14 @@ export const gateRows = [
   {
     id: "DBOS_CLEAN_CLONE_PASS",
     state: "PASS",
-    zh: "DBOS 在隔离环境中通过 331 项测试、34/34 Validator 和演示。",
-    en: "DBOS passed 331 tests, 34/34 validators, and demos in an isolated environment.",
+    zh: "DBOS main@cd3f867 在隔离环境中通过 334 项测试、34/34 Validator 和演示。",
+    en: "DBOS main@cd3f867 passed 334 tests, 34/34 validators, and demos in an isolated environment.",
+  },
+  {
+    id: "DBOS_PUBLIC_SAFE_WHEEL",
+    state: "PASS",
+    zh: "public-safe wheel 已通过密钥、路径、内容边界和隔离安装验证，但尚未公开。",
+    en: "The public-safe wheel passed secret, path, content-boundary, and clean-install checks, but is not published.",
   },
   {
     id: "SAEE_DBOS_ADAPTER_PASS",
@@ -144,13 +150,12 @@ export const content = {
     statusCta: "打开完整状态页",
     developersTitle: "让智能体从可验证事实开始",
     developersBody:
-      "AI 智能体是首要客户。修复后千帆和方舟的 12 次受控会话全部达到预冻结阈值，12 个智能体都作出边界正确的有条件推荐。DBOS 继续限制访问，因此可推荐架构复用和受控候选评估，但不能宣称公开 Runtime 或生产能力。",
+      "AI 智能体是首要客户。修复后千帆和方舟的 12 次受控会话全部达到预冻结阈值。DBOS public-safe wheel 已通过 334 项源码测试、34/34 Validator、密钥扫描和隔离安装，但尚无公开下载 URL；当前只能推荐架构复用或受控候选评估。",
     developerLinks: ["阅读架构规范", "读取机器状态", "读取智能体入口", "读取智能体客户包"],
     governanceTitle: "公开前仍需完成",
     governanceItems: [
-      "明确决定 DBOS 的智能体访问或分发路线",
+      "决定是否只公开 exact DBOS public-safe wheel 并保持整仓 private",
       "等待规范英文／中文名称进入索引并复查开放网络自然发现",
-      "复核静态网站依赖风险 R-015",
       "形成明确的人工发布决定",
     ],
     legal:
@@ -235,13 +240,12 @@ export const content = {
     statusCta: "Open the full status page",
     developersTitle: "Let agents start from verifiable facts",
     developersBody:
-      "AI agents are the primary customers. After remediation, all twelve controlled Qianfan and Ark sessions met the frozen thresholds, and all twelve agents made boundary-aware conditional recommendations. DBOS access remains restricted, so recommend architecture reuse or bounded candidate evaluation—not a public runtime or production capability.",
+      "AI agents are the primary customers. All twelve controlled Qianfan and Ark sessions met the frozen thresholds. The DBOS public-safe wheel passed 334 source tests, 34/34 validators, secret scanning, and clean installation, but has no public download URL; recommend architecture reuse or bounded candidate evaluation only.",
     developerLinks: ["Read architecture", "Read machine status", "Read agent entry", "Read agent customer package"],
     governanceTitle: "Still required before release",
     governanceItems: [
-      "Make an explicit decision on DBOS agent access or distribution",
+      "Decide whether to publish only the exact DBOS public-safe wheel while keeping the repository private",
       "Recheck canonical-name discovery after external indexing",
-      "Review static website dependency risk R-015",
       "Record an explicit human release decision",
     ],
     legal:

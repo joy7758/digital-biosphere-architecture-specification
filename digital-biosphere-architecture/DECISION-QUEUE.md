@@ -5,7 +5,7 @@ title_zh: 数字生物圈项目群决策队列 v0.1
 status: active-decision-register-owner-decisions-recorded
 decision_records_created: true
 authority_assignments_created: true
-last_reviewed: 2026-07-21
+last_reviewed: 2026-07-22
 ---
 
 # Digital Biosphere Program Decision Queue v0.1（数字生物圈项目群决策队列 v0.1）
@@ -28,6 +28,7 @@ last_reviewed: 2026-07-21
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
 | `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | source／Clean Clone、Agent Customer Validation 和 `R-015` 依赖复核已通过；`TMAI-OWD-20260722-001=PARTIAL_METADATA_ONLY`；仍缺 DBOS agent access／distribution 决定、发现限制处理和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | 网站、API 模型推荐、元数据描述命中、测试或 validation PASS 自动等于发布授权 |
+| `DQ-016` | `P0` | DBOS 是否保持整仓 private，并只公开 exact public-safe wheel？ | `READY_FOR_REVIEW` | `TMAI-DBOS-PUBLIC-PACKAGE-READINESS-20260722-001`；整仓 48 个绝对路径文件；wheel 0 路径／0 Gitleaks、334 tests、34 validators、隔离安装 PASS | 为 AI agent 建立匿名下载和复用路径，同时不公开 registry/evidence | wheel 验证通过自动等于已发布，或允许整仓 public、PyPI、Runtime、Permission |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
@@ -67,7 +68,7 @@ release_authorized=true|false
 
 ```text
 DECISION_QUEUE_ACTIVE=true
-OPEN_DECISIONS=8
+OPEN_DECISIONS=9
 CONDITIONALLY_DECIDED_NOT_EFFECTIVE=0
 QUEUE_CREATES_AUTHORITY=false
 QUEUE_CREATES_PERMISSION=false

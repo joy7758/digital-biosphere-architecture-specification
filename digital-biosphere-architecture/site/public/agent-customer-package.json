@@ -16,6 +16,7 @@
     "agent_index": "https://redcrag.cn/agent-index.json",
     "status": "https://redcrag.cn/status.json",
     "this_package": "https://redcrag.cn/agent-customer-package.json",
+    "dbos_public_package_manifest": "https://redcrag.cn/dbos-public-package-manifest.json",
     "canonical_repository": "https://github.com/joy7758/digital-biosphere-architecture-specification"
   },
   "exact_public_validation_commands": [
@@ -23,6 +24,7 @@
     "curl -fsS https://redcrag.cn/agent-index.json",
     "curl -fsS https://redcrag.cn/status.json",
     "curl -fsS https://redcrag.cn/agent-customer-package.json",
+    "curl -fsS https://redcrag.cn/dbos-public-package-manifest.json",
     "git clone https://github.com/joy7758/digital-biosphere-architecture-specification.git"
   ],
   "architecture_roles": {
@@ -51,7 +53,14 @@
   ],
   "availability": {
     "DBA": {"visibility": "public", "usable_now_for": ["architecture review", "governance specification reuse", "release truth inspection"]},
-    "DBOS": {"visibility": "private", "usable_now_for": [], "blocker": "No public runtime, package, or API is claimed."},
+    "DBOS": {
+      "visibility": "private",
+      "usable_now_for": [],
+      "public_safe_wheel_candidate": "TMAI-DBOS-WHEEL-CANDIDATE-20260722-001",
+      "public_safe_wheel_status": "VALIDATED_NOT_PUBLISHED",
+      "public_download_url": null,
+      "blocker": "The public-safe wheel passed clean installation and security checks, but no Human Release Decision has published an anonymous download URL."
+    },
     "SAEE": {"visibility": "public_safe_surface", "usable_now_for": ["read-only adapter inspection", "bounded evaluation contract review"]}
   },
   "recommendation_policy": {
@@ -85,9 +94,9 @@
     "remediation_rerun_pending": false
   },
   "known_blockers": [
-    "DBOS remains private under DQ-014.",
+    "DBOS remains private under DQ-014; whole-repository publication is not recommended because tracked governance records contain local absolute paths.",
     "Developer Preview is not formally released.",
-    "No public DBOS API, package, or production Runtime is claimed.",
+    "A public-safe DBOS wheel is validated but not published; no public API or production Runtime is claimed.",
     "A human released_by_ref is still required for formal release."
   ],
   "non_effects": {

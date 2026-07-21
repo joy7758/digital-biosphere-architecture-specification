@@ -74,6 +74,7 @@ DRAFT
 - [x] Agent Customer Validation Result 达到 `PASS`；12/12 overall verdict 保持边界正确的 `CONDITIONAL`；
 - [x] 使用真实公开搜索与 GitHub repository search 单独观察自然发现，结果保留为 `PARTIAL_METADATA_ONLY`；
 - [x] `R-015` 依赖复核完成：0 critical、0 high、2 moderate；静态部署边界和残余披露已记录；
+- [x] DBOS `main@cd3f867` 的 public-safe wheel 通过 334 tests、34 validators、Gitleaks、隔离安装和路径排除复核；
 - [ ] 元数据修复后观察到外部索引刷新，或 Human Owner 显式接受 Developer Preview 的发现限制；
 - [ ] DBOS agent access／distribution 路线已有明确 Human Decision；
 - [ ] Human Release Decision（人工发布决策）包含明确 `released_by_ref`；
@@ -87,7 +88,7 @@ DRAFT
 RELEASE_STATUS=NOT_READY
 PUBLIC_ENTRY_DRAFTED=true
 DBOS_EXAMPLES_LOCALLY_RUN=true
-DBOS_TESTS=331_PASS
+DBOS_TESTS=334_PASS
 DBOS_FULL_VALIDATOR_SUITE=34_PASS
 MULTI_AGENT_TRUST_DEMO_LOCAL=true
 SAEE_EVALUATION_LAYER_LOCAL=true
@@ -113,12 +114,14 @@ GITHUB_METADATA_DESCRIPTION_MATCH=true
 OPEN_WEB_CANONICAL_NAME_MATCH=false
 HUMAN_DEVELOPER_TRIAL_REQUIRED=false
 DBOS_AGENT_ACCESS_DECIDED=false
+DBOS_PUBLIC_SAFE_WHEEL_VALIDATED=true
+DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED=false
 RELEASE_AUTHORIZED=false
 ```
 
 阻塞原因：
 
-1. DBOS 仍为 private，AI agent 没有公开 package、API 或自主获取路径；
+1. DBOS 整仓因 48 个绝对路径文件保持 private；public-safe wheel 已验证但 `DQ-016` 尚未授权公开，AI agent 仍没有匿名下载 URL；
 2. `OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY`；GitHub 新描述已命中，但规范名称尚未命中或获得显式限制接受；
 3. `DQ-009` 尚无 Human Release Decision 与 `released_by_ref`；正式说明须披露 `R-015` 残余。
 
