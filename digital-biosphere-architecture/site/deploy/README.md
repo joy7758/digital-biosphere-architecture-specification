@@ -25,6 +25,10 @@ The checked-in Nginx configuration references only the certificate and private
 key that exist under `/etc/letsencrypt/live/redcrag.cn/`; it does not assume
 Certbot helper files that are absent on the current Baidu Cloud host.
 
+Location blocks use `expires` for cache behavior without redefining
+`add_header`, so the server-level security headers remain inherited by HTML,
+JSON, text, XML, and hashed assets.
+
 Deployment truth:
 
 ```text
