@@ -44,18 +44,18 @@ DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
 | DBOS ↔ SAEE Contract | `PASS_CORE_ROLE` | `PARTIAL_UNCOMMITTED` | `SPECIFICATION_DEFINED` | `PASS_SCOPED_LOCAL` | `PASS_SCOPED_LOCAL` | `G6_RECORD_CHAIN_G7_RECOMMENDATION_ONLY` | 只可称为本地合成契约符合性；不得称为生产集成或受治理演化闭环 |
 | Research Agent Pilot ↔ DBOS / SAEE | `PASS_PILOT_ROLE` | `PARTIAL` | `SPECIFICATION_DEFINED` | `PREPARED_ONLY` | `NOT_ASSESSED` | `BLOCKED_NOT_READY` | 不得创建 Prototype、Agent、Runtime 或实验 |
 | Adjacent components | `NOT_PASSED` | `NOT_ASSESSED` | `REVIEW_REQUIRED` | `NOT_ASSESSED` | `NOT_ASSESSED` | `NOT_ASSESSED` | 仅保留候选映射 |
-| Trusted Multi-Agent Infrastructure Developer Preview | `PASS_CORE_SCOPE` | `PARTIAL_UNCOMMITTED` | `PASS` | `PASS_SCOPED_LOCAL` | `PASS_SCOPED_LOCAL` | `G6_SYNTHETIC_G7_PASS_G8_TRIAL_PREPARED_NOT_AUTHORIZED` | 本地候选与试用计划已验证；试用执行、source release 和 Human Release Decision 未完成 |
+| Trusted Multi-Agent Infrastructure Developer Preview | `PASS_CORE_SCOPE` | `PARTIAL_REMOTE_BASELINE` | `PASS` | `PASS_SCOPED_LOCAL` | `FAIL_CLEAN_CLONE_SAEE_ADAPTER_MISSING` | `G6_SYNTHETIC_G7_PASS_G8_TRIAL_PREPARED_NOT_AUTHORIZED` | DBOS clean clone 通过；SAEE public source 缺少 Adapter；试用和发布不可开始 |
 
 ### Developer Preview Gate Detail（开发者预览闸门明细）
 
 | preview milestone | required gate | 当前结果 | 直接证据 | 下一状态条件 |
 |---|---|---|---|---|
-| `DP-1` | `G1/G2` | `PASS_WORKTREE` | Public Overview、Plan、Release Plan、ADR-017；本地链接与非声明检查 | 形成 source commit |
-| `DP-2` | `G3/G4` | `PASS_WORKTREE` | local editable install；331/331 tests；34/34 validators；历史 Evidence 未改写 | clean-clone 复验 |
+| `DP-1` | `G1/G2` | `PASS_REMOTE_BASELINE_ROOT_REMEDIATION_PENDING` | DBA `36e8527` 已推送；302 links 通过；根 README 修正待复验 | 推送根入口修正并重验 |
+| `DP-2` | `G3/G4` | `PASS_CLEAN_CLONE` | DBOS `b4e3cbe` fresh install；331/331 tests；34/34 validators | 保持同一冻结 commit |
 | `DP-3` | `G4/G6` | `PASS_SYNTHETIC_SCOPE` | 11/11 tests；3 角色、3 execution records、3 Evidence References、9 Validation results | 不外推为真实 Agent/Execution |
-| `DP-4` | `G3/G4/G7` | `PASS_WORKTREE` | 8/8 adapter tests；DBOS 同一 envelope；`NOT_ASSESSED/HOLD` fail-closed 输出 | 隔离并提交受限 SAEE 变更 |
+| `DP-4` | `G3/G4/G7` | `FAIL_CLEAN_CLONE_ADAPTER_MISSING` | 内部 8/8 adapter tests 通过，但 SAEE public `main` 不含 Adapter | `DQ-011` 决定安全分发边界并重验 |
 | `DP-5A` | `G8_PREPARATION` | `PASS_PLAN_ONLY` | Trial Plan、Guide、Feedback Template、ADR-018、预冻结成功标准 | 不表示试用执行授权 |
-| `DP-5B` | `G1/G4/G8_TRIAL` | `BLOCKED_B-007_DQ-010` | 参与者 0；缺冻结 source package、clean clone 和外部联系授权 | 3–5 人完成并形成 Trial Result Report |
+| `DP-5B` | `G1/G4/G8_TRIAL` | `BLOCKED_CLEAN_CLONE_DQ-010` | 参与者 0；跨项目 clean clone 未通过，无外部联系授权 | 修复 DP-4 后再处理 `DQ-010` |
 | `DP-R` | `G8` | `BLOCKED_DP-5B_DQ-009` | 本地候选与 Trial Plan 齐备；没有外部 Trial Result 或 `released_by_ref` | 人工发布决定和完整 release record |
 
 ## 4. Gate Evidence Record（闸门证据记录）

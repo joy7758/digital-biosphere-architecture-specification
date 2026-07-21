@@ -6,7 +6,7 @@ status: observed-governance-snapshot
 observed_at: 2026-07-21
 freshness: point-in-time
 release_status: not-released
-developer_preview_status: external-trial-preparation-defined-not-authorized
+developer_preview_status: clean-clone-remediation-required
 source_policy: direct-read-only-observation
 ---
 
@@ -16,9 +16,9 @@ source_policy: direct-read-only-observation
 
 ```text
 PROGRAM_ID=DIGITAL_BIOSPHERE
-PROGRAM_PHASE=TRUSTED_MULTI_AGENT_INFRASTRUCTURE_EXTERNAL_TRIAL_PREPARATION
+PROGRAM_PHASE=TRUSTED_MULTI_AGENT_INFRASTRUCTURE_CLEAN_CLONE_REMEDIATION
 PROGRAM_HEALTH=ATTENTION_REQUIRED
-CURRENT_MILESTONE=DP-5B
+CURRENT_MILESTONE=DP-CCV
 CORE_PROJECTS=3
 PILOT_PROJECTS=1
 PROGRAM_AUTHORITY_ASSIGNED=false
@@ -33,6 +33,12 @@ EXTERNAL_DEVELOPER_TRIAL_PLAN_DEFINED=true
 EXTERNAL_DEVELOPER_TRIAL_EXECUTION_AUTHORIZED=false
 EXTERNAL_DEVELOPER_VALIDATION_COMPLETE=false
 EXTERNAL_DEVELOPER_PARTICIPANTS=0
+DBA_REMOTE_BASELINE_CREATED=true
+DBOS_REMOTE_BASELINE_CREATED=true
+DBOS_CLEAN_CLONE_PASS=true
+SAEE_PUBLIC_CLEAN_CLONE_PASS=true
+SAEE_DBOS_ADAPTER_CLEAN_CLONE_PASS=false
+CROSS_PROJECT_CLEAN_CLONE_PASS=false
 ```
 
 `ATTENTION_REQUIRED` 表示存在需要人工决定、状态来源对齐和仓库拓扑处理的事项，不表示任何子项目失败或不可用。
@@ -43,9 +49,9 @@ EXTERNAL_DEVELOPER_PARTICIPANTS=0
 
 | project_id | branch | observed commit | worktree observation | remote observation | 规范状态摘要 |
 |---|---|---|---|---|---|
-| `DBA` | `main` | `8b7db768fab272e7004705ae4db59cc22f47e942` | `dirty_count=26`；尚未 commit | `origin` 指向 `joy7758/digital-biosphere-architecture-specification` | Developer Preview 本地符合性与试用准备材料已形成；试用未授权，版本未发布 |
-| `DBOS` | `main` | `ed73f43de736d4e5cbf1deb58227b7cb46ee52df` | `dirty_count=86`；包含大量本阶段前既有变化 | `origin` 已配置 | 331/331 tests、34/34 validators、三角色 Demo 本地通过；不是已发布 SDK 或 Agent Runtime |
-| `SAEE` | `feat/canonical-capability-inventory-routing-v1` | `0c416f70c56caabe1e24d183a0cfb5af3b0ce8d8` | `dirty_count=556`；大型既有脏工作树 | `origin` 已配置 | 只读 DBOS preview adapter 与相关 8/8 tests 通过；复用现有评价器；未改变 canonical capability truth |
+| `DBA` | `main` | `36e85271c65771bbd4d9511d2e0b8f36601dfb50` | source commit 已推送；根入口修正待后续 commit | `origin/main` 已包含 Developer Preview 治理材料 | 文档与 302 links 通过；被验证 commit 的 GitHub 根 README 缺失 |
+| `DBOS` | `main` | `b4e3cbe2af442be861dbab3f7b2ffd2567443077` | source commit 已推送 | `origin/main` 可干净检出；仓库当前为 private | fresh install、331/331 tests、34/34 validators、两个 Demo 通过；不是 Agent Runtime |
+| `SAEE` | public `main` | `e503c22109bdb7c83dc465d66e2a22760a3c8d90` | public source 可干净检出；内部工作树另有未发布变化 | `origin/main` 是裁剪公共产品层 | public smoke/demo 通过；DBOS Developer Preview Adapter 不在公共 source，跨项目 gate 失败 |
 | `RESEARCH-AGENT-PILOT` | `main` | `8445fe5d13cd889032c3786ba527d801f56d5351` | `dirty_count=30` | 未发现 `origin` | `V1_0_STATUS=INCOMPLETE_NOT_READY`；Agent、Runtime、Entity、Execution 均为 0 |
 
 ## 3. Architecture and Integration Status（架构与集成状态）
@@ -66,6 +72,7 @@ EXTERNAL_DEVELOPER_PARTICIPANTS=0
 | Multi-Agent Trust Demo | `LOCAL_DETERMINISTIC_PASS` | 3 个角色模拟、3 个执行记录、3 个证据引用、9 个结构 Validation；无 Agent/Runtime |
 | SAEE Evaluation Layer v0.1 | `LOCAL_READ_ONLY_PASS` | 8/8 adapter tests；Reliability/Stability fail closed；Risk/Recommendation 复用现有 evaluator |
 | External Developer Trial Preparation | `PLAN_DEFINED_TRIAL_NOT_AUTHORIZED` | Trial Plan、Guide、Feedback Template、Conformance Report 与 ADR-018 已形成；参与者 0、无外部试用 |
+| Clean Clone Validation | `FAIL_REQUIRED_SAEE_ADAPTER_MISSING` | DBOS 全通过；DBA 根入口待复验；SAEE public source 缺少必需 Adapter；见 `CLEAN-CLONE-VALIDATION-REPORT.md` |
 
 ## 4. Active Decisions and Blockers（当前决策与阻塞）
 
@@ -75,22 +82,23 @@ EXTERNAL_DEVELOPER_PARTICIPANTS=0
 - `DQ-004`：选择第一个跨项目 conformance（符合性）里程碑；
 - `DQ-008`：决定当前驾驶舱与既有 DBA public meaning layer 的规范关系和单一前门；
 - `DQ-010`：决定是否允许冻结试用包、联系 3–5 名外部 Agent Developer 并执行试用；
+- `DQ-011`：决定 SAEE DBOS Preview Adapter 如何在不公开 private core、不复制 evaluator 的前提下向外部开发者提供；
 - `B-001`：没有已记录的 Program Authority assignment（项目群权力指派），阻止高影响项目群决策闭环；
 - `B-002`：DBA Git 根目录不是 DBA 目录本身，影响仓库边界和远端展示；
 - `B-003`：核心项目状态入口尚未统一，阻止可靠自动汇总。
 - `B-005`：两个 DBA 语义表面尚未完成 canonical reconciliation（规范对齐），阻止对外声明唯一入口。
 - `B-006` 已在当前本地工作树中通过 version-aware historical binding（版本感知历史绑定）处理，34/34 validators 通过；历史 Evidence 未改写。该缓解尚未形成发布版本。
-- `B-007`：Developer Preview 相关变化分布在三个未提交且部分高度脏的工作树中，阻塞可引用 source release、clean-clone 验证和人工发布决定。
+- `B-007`：DBA 与 DBOS source commits 已形成；SAEE Adapter 仍仅存在于内部工程历史，public `main` 无该入口，因此跨项目 source freeze 尚未完成。
 
 详细信息见 [`DECISION-QUEUE.md`](DECISION-QUEUE.md) 和 [`RISK-AND-BLOCKER-REGISTER.md`](RISK-AND-BLOCKER-REGISTER.md)。
 
 ## 5. Next Program Actions（下一步项目群行动）
 
-1. 隔离并审查 DBA、DBOS、SAEE 本阶段精确变更，不混入既有脏工作树；
-2. 形成可引用 source commits 后执行 clean-clone 验证；
-3. 为 [`EXTERNAL-DEVELOPER-TRIAL-PLAN.md`](EXTERNAL-DEVELOPER-TRIAL-PLAN.md) 准备冻结 `trial_package_id`、试用协调者与隐私说明；
-4. 处理 `DQ-010`；获得授权后再联系 3–5 名外部 Agent Developer 并执行试用；
-5. 形成 Trial Result Report 后，将结果与已知限制提交 `DQ-009` 的 Human Release Decision；
+1. 推送并复验 DBA GitHub 根入口修正；
+2. 处理 `DQ-011`，冻结不暴露 private core、不复制 evaluator 的 SAEE Adapter 分发方式；
+3. 使用三个最终远端 commit 重跑完整 clean-clone；
+4. 整体通过后再准备 `trial_package_id`、试用协调者、隐私说明并处理 `DQ-010`；
+5. 获得授权后联系 3–5 名外部 Agent Developer；Trial Result 完成后再处理 `DQ-009`；
 6. 在 Pilot 自身 gate 通过前保持 Research Agent Prototype 为 `NOT_READY`。
 
 ## 6. Refresh Protocol（刷新协议）

@@ -91,8 +91,11 @@ SAEE_EVALUATION_LAYER_LOCAL=true
 CROSS_PROJECT_CONFORMANCE_LOCAL=PASS
 EXTERNAL_TRIAL_GUIDE_READY=true
 EXTERNAL_TRIAL_PLAN_READY=true
-SOURCE_COMMITS_READY=false
+DBA_SOURCE_COMMIT_READY=true
+DBOS_SOURCE_COMMIT_READY=true
+SAEE_PUBLIC_ADAPTER_SOURCE_READY=false
 CLEAN_CLONE_VALIDATED=false
+CLEAN_CLONE_RESULT=FAIL_REQUIRED_SAEE_ADAPTER_MISSING
 TRIAL_PACKAGE_READY=false
 TRIAL_EXECUTION_AUTHORIZED=false
 EXTERNAL_CONTACT_AUTHORIZED=false
@@ -104,11 +107,12 @@ RELEASE_AUTHORIZED=false
 
 阻塞原因：
 
-1. DBA、DBOS 与 SAEE 的本阶段变化尚未形成可引用的 source commits；
-2. 尚未从 clean clone 按冻结版本复验；
-3. `DQ-010` 尚未授权试用执行、参与者联系或反馈收集；
-4. 3–5 名外部开发者试用和 Trial Result Report 尚未发生；
-5. `DQ-009` 尚无 Human Release Decision 与 `released_by_ref`。
+1. DBA 与 DBOS source commits 已形成，但 SAEE public `main` 不含必需 DBOS Adapter；
+2. Clean Clone 中 DBOS 通过、DBA 根入口待复验、SAEE Adapter 失败；
+3. `DQ-011` 尚未决定安全的 SAEE Adapter 公开／分发边界；
+4. `DQ-010` 尚未授权试用执行、参与者联系或反馈收集；
+5. 3–5 名外部开发者试用和 Trial Result Report 尚未发生；
+6. `DQ-009` 尚无 Human Release Decision 与 `released_by_ref`。
 
 ## 6. Rollback and Preservation（回退与保留）
 

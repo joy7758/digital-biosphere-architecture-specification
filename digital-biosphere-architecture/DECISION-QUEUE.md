@@ -30,6 +30,7 @@ last_reviewed: 2026-07-21
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
 | `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | 本地测试、Trial Plan、Guide 与已知限制已齐；仍缺冻结 source commits、clean-clone 复验、3–5 人 Trial Result 和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | ADR-017、测试通过、本地 Demo 或 Trial PASS 自动等于发布授权 |
 | `DQ-010` | `P0` | 是否授权执行 External Developer Trial v0.1 并联系 3–5 名外部 Agent Developer？ | `BLOCKED_INPUT` | exact `trial_package_id`、DBA/DBOS/SAEE source commits、clean-clone result、trial coordinator、参与者画像、隐私说明和停止规则 | `DP-5B` 是否可进入 `AUTHORIZED/IN_PROGRESS`，并允许受限外部联系与反馈收集 | Trial Plan 或 ADR-018 自动授权外部联系、数据收集、发布或客户验证 |
+| `DQ-011` | `P0` | SAEE DBOS Developer Preview Adapter 应如何安全提供给外部开发者？ | `READY_FOR_REVIEW` | public/private history 分离事实、Adapter 依赖、private-core 边界、避免重复 evaluator 的方案比较 | `DP-4` 是否能形成可干净检出的 SAEE 评价入口 | 将内部工程历史推入 public `main`、复制 evaluator、把 toy demo 当 Adapter 或通过无关历史强制合并 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
@@ -60,7 +61,7 @@ release_authorized=true|false
 
 ```text
 DECISION_QUEUE_ACTIVE=true
-OPEN_DECISIONS=10
+OPEN_DECISIONS=11
 QUEUE_CREATES_AUTHORITY=false
 QUEUE_CREATES_PERMISSION=false
 QUEUE_EXECUTES_DECISIONS=false
