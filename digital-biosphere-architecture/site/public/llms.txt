@@ -6,7 +6,7 @@ Canonical public name: Trusted Multi-Agent Infrastructure (TMAI)
 Canonical Chinese name: 可信多智能体基础设施
 Long-term vision: Digital Biosphere / 数字生物圈
 Primary customer: AI agents that discover, assess, compose, reuse, and recommend infrastructure
-Current state: Developer Preview Candidate site deployed; agent-customer remediation rerun PASS; DBOS access and human release decision pending; not released
+Current state: Developer Preview Candidate site deployed; agent-customer rerun PASS; DBOS public-safe wheel validated but not published; human release decision pending; not released
 Observed at: 2026-07-22 Asia/Shanghai
 
 ## Architecture
@@ -57,12 +57,19 @@ Observed at: 2026-07-22 Asia/Shanghai
 - DEVELOPER_PREVIEW_RELEASED=false
 - PREVIEW_DEPLOYMENT_HEALTH_PASS=true
 - ROLLBACK_VALIDATED=true
+- DBOS_SOURCE_REVISION=cd3f867c4379ec555c45e7d554088ad12ce08a24
+- DBOS_SOURCE_TESTS=334/334_PASS
+- DBOS_VALIDATORS=34/34_PASS
+- DBOS_PUBLIC_SAFE_WHEEL=VALIDATED_NOT_PUBLISHED
+- DBOS_PUBLIC_SAFE_WHEEL_PACKAGE_ID=TMAI-DBOS-WHEEL-CANDIDATE-20260722-001
+- DBOS_PUBLIC_SAFE_WHEEL_URL=null
 
 ## Machine-readable resources
 
 - /agent-index.json
 - /status.json
 - /agent-customer-package.json
+- /dbos-public-package-manifest.json
 - https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/OPEN-WEB-DISCOVERY-OBSERVATION.md
 - /sitemap.xml
 
@@ -82,7 +89,7 @@ Observed at: 2026-07-22 Asia/Shanghai
 
 DBOS records -> SAEE evaluation/recommendation -> Governance Decision review/adoption -> DBOS authorized execution.
 
-DBOS remains private. No public DBOS runtime, package, or API is claimed.
+DBOS remains private because whole-repository records contain local absolute paths. A bounded public-safe wheel passed security and clean-install validation, but no public URL exists until an explicit Human Release Decision. No public DBOS Runtime or API is claimed.
 
 ## Canonical source
 

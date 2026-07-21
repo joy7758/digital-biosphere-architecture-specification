@@ -51,14 +51,14 @@ DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
 | preview milestone | required gate | 当前结果 | 直接证据 | 下一状态条件 |
 |---|---|---|---|---|
 | `DP-1` | `G1/G2` | `PASS_CLEAN_CLONE` | DBA `91928e3` 已推送；99 个 Markdown 文件、317 个本地链接、0 缺失 | 保持同一公开入口 |
-| `DP-2` | `G3/G4` | `PASS_CLEAN_CLONE` | DBOS `0caa2c4` fresh install；331/331 tests；34/34 validators | 保持同一冻结 commit |
+| `DP-2` | `G3/G4` | `PASS_CLEAN_CLONE_WHEEL_CANDIDATE` | DBOS `cd3f867` fresh install；334/334 tests；34/34 validators；public-safe wheel clean install PASS | 保持 exact commit；未获准前不得上传 wheel |
 | `DP-3` | `G4/G6` | `PASS_SYNTHETIC_SCOPE` | 11/11 tests；3 角色、3 execution records、3 Evidence References、9 Validation results | 不外推为真实 Agent/Execution |
 | `DP-4` | `G3/G4/G7` | `PASS_CLEAN_CLONE_ADVISORY_ONLY` | SAEE `2173c25` public main；8/8 adapter tests；pipeline 输出 `HOLD` 且无 Authority | 不外推为 SAEE 决策权或生产集成 |
 | `DP-5A` | `G8_PREPARATION` | `PASS_AGENT_PROTOCOL_FROZEN` | `TMAI-ACV-20260721-001`、Protocol、12-session plan、ADR-021 | 不表示 Agent instance、客户采用或发布 |
 | `DP-5B` | `G1/G4/G8_AGENT_VALIDATION` | `CONDITIONAL` | 2 Providers、4 models、12/12 parsed；公开识别 6/6；权限错误 0；4 个阈值失败 | 修复 agent-readable package，并以相同阈值复测 |
 | `DP-5C` | `G1/G4/G8_AGENT_RERUN` | `PASS` | `TMAI-ACV-20260722-002`：2 Providers、4 models、12/12 parsed、全部阈值通过、权限错误 0 | 保留原 `001=CONDITIONAL`；开放网络由独立观察处理 |
 | `DP-5D` | `G1/G8_OPEN_WEB_OBSERVATION` | `PARTIAL_METADATA_ONLY` | `TMAI-OWD-20260722-001`：GitHub 完整新 description 已命中；规范英文名、中文名和 4 个公开搜索仍无命中 | 规范名称索引刷新后复查，或 Human Owner 显式接受限制 |
-| `DP-R` | `G8` | `BLOCKED_DBOS_ACCESS_OPEN_WEB_DQ-009` | Agent customer validation 已通过；`R-015` 依赖复核完成；DBOS 仍 private；open-web 只有 metadata description 部分命中；没有 `released_by_ref` | DBOS access decision、发现限制处理、人工发布决定和完整 release record |
+| `DP-R` | `G8` | `BLOCKED_DQ-016_OPEN_WEB_DQ-009` | Agent customer validation 已通过；`R-015` 依赖复核完成；public-safe wheel 已验证但未发布；open-web 只有 metadata description 部分命中；没有 `released_by_ref` | `DQ-016` 分发决定、发现限制处理、人工发布决定和完整 release record |
 
 ## 4. Gate Evidence Record（闸门证据记录）
 

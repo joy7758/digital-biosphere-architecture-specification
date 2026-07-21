@@ -2,7 +2,7 @@
 document_id: DBA-FINAL-RELEASE-DECISION-PACKET-0.1
 title: Trusted Multi-Agent Infrastructure Developer Preview v0.1 Final Release Decision Packet
 title_zh: 可信多智能体基础设施开发者预览版 v0.1 最终发布决策包
-status: clean-clone-agent-validation-and-dependency-review-pass-dbos-access-and-release-decision-pending
+status: clean-clone-agent-validation-dependency-and-wheel-review-pass-distribution-and-release-decision-pending
 release_authorized: false
 developer_preview_cloud_release_authorized: false
 website_candidate_deployment_authorized: true
@@ -21,8 +21,8 @@ last_reviewed: 2026-07-22
 
 | Surface（表面） | Current evidence（当前证据） | 状态 |
 |---|---|---|
-| DBA GitHub | `origin/main@ac5374ad`；Agent Customer Validation、发现边界、依赖复核和公开网站 | `REMOTE_CLEAN_CLONE_PASS` |
-| DBOS GitHub | `origin/main@0caa2c4`；fresh install、331 tests、34 validators、两个 Demo | `REMOTE_CLEAN_CLONE_PASS_PRIVATE_REPO` |
+| DBA GitHub | `origin/main@48237da`；Agent Customer Validation、发现边界、依赖复核和 website candidate 6 记录 | `REMOTE_CLEAN_CLONE_PASS` |
+| DBOS GitHub | `origin/main@cd3f867`；fresh install、334 tests、34 validators、两个 Demo | `REMOTE_CLEAN_CLONE_PASS_PRIVATE_REPO` |
 | SAEE GitHub public layer | `origin/main@2173c25`；19/19 blobs、public smoke/demo、8 tests | `PUBLIC_SAFE_ADAPTER_PASS` |
 | Cross-project Clean Clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `PASS_FROZEN_REMOTE_SOURCES` |
 | Baidu website | `https://redcrag.cn/` 中英文候选网站；健康、安全头和回滚通过 | `CANDIDATE_DEPLOYED_NOT_RELEASED` |
@@ -120,24 +120,31 @@ DBOS 公开、SAEE Adapter 迁移、许可证选择或外部试用。
 
 只读预检见
 [`DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md`](DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md)。
-当前 457 个 tracked files（已跟踪文件）中未发现高置信度密钥模式、敏感文件名或
-超过 5 MiB 的历史 blob；官方 `gitleaks/gitleaks@v8.30.1` 对 2 个可达历史提交的
-独立扫描也为 0 findings。但 GitHub Secret Scanning 与 Dependabot Alerts 均禁用，
-根许可证现已采用；人工隐私抽样和 GitHub 平台侧持续安全能力仍未完成。
+当前 `main@cd3f867` 的 460 个 tracked files（已跟踪文件）中未发现高置信度密钥模式、
+敏感文件名、私网地址或超过 5 MiB 的历史 blob；官方
+`gitleaks/gitleaks@v8.30.1` 的历史和工作树扫描均为 0 findings。但 48 个跟踪文件包含
+本机绝对路径，`registry/agents.yaml` 还列出未纳入发布的本地项目资产。因此整仓公开
+失败关闭，不能把“无密钥命中”扩大为“适合公开”。
 
-DBOS `0caa2c4` 的 clean clone 使用当前 GitHub 凭据完成；这不是 anonymous clone
-（匿名检出）证据。仓库当前为 `PRIVATE`，因此 3–5 名陌生开发者和正式公开用户默认
-无法获取 SDK、Quick Start 或 Demo。
+DBOS `cd3f867` 的 clean clone 使用当前 GitHub 凭据完成；这不是 anonymous clone
+（匿名检出）证据。仓库当前为 `PRIVATE`。独立的 public-safe wheel（公开安全分发包）
+已从该精确提交构建，排除 registry、evidence、reports、tests、tools 和本机路径；它在
+隔离环境安装后返回 `PASS`，但尚无公开 URL。
 
-`ADR-020` 已选择 `PRIVATE_COLLABORATOR_TRIAL`。DBOS 在 v0.1 外部试用期间保持 private；
-只有冻结试用包中的已确认参与者才可获得受控 collaborator access（协作者访问），且
-不能据此声称 public release（公开发布）。未来如需转为 public，必须建立新的可见性决定。
+`ADR-020` 的 `PRIVATE_COLLABORATOR_TRIAL` 继续有效。`DQ-016` 现在提供更适合 AI agent
+客户的后继选项：DBOS 整仓继续 private，只将 exact wheel 作为 Developer Preview
+GitHub Release asset（开发者预览 GitHub 发布资产）公开。该选项需要 Human Decision，
+且不授权 PyPI、Runtime、Permission 或整仓 visibility 变化。
 
 ```text
 DBOS_REPOSITORY_VISIBILITY=PRIVATE
 ANONYMOUS_CLONE_VALIDATED=false
 DBOS_PUBLICATION_AUTHORIZED=false
 PRIVATE_COLLABORATOR_TRIAL_SELECTED=true
+WHOLE_DBOS_REPOSITORY_PUBLIC_RECOMMENDED=false
+DBOS_PUBLIC_SAFE_WHEEL_VALIDATED=true
+DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED=false
+DBOS_PUBLIC_SAFE_WHEEL_PACKAGE_ID=TMAI-DBOS-WHEEL-CANDIDATE-20260722-001
 ```
 
 ## 6. Recorded Human Decision（已记录人工决定）
@@ -151,6 +158,7 @@ dq_012_license=Apache-2.0
 dq_013_baidu_isolated_path=superseded_by_ADR-019
 dq_014_dbos_visibility=PRIVATE_COLLABORATOR_TRIAL
 dq_015_primary_customer_validation=ADOPT_AGENT_NATIVE_CUSTOMER_VALIDATION
+dq_016_dbos_agent_distribution=PENDING_HUMAN_DECISION
 trial_coordinator=zhangbin
 participant_source=PENDING_REAL_INPUT
 decision_timestamp=2026-07-21T22:48:39+08:00
@@ -158,7 +166,7 @@ decision_timestamp=2026-07-21T22:48:39+08:00
 
 `ADR-021` 已把上面的人类参与者路线取代为可选次级研究；它没有把未发生的人类试用
 改写成通过。首要验证修复已完成并通过，`R-015` 依赖复核也已完成并保留有界残余披露。
-仍需决定 DBOS 的 agent access／distribution（智能体访问／分发）方式，再由 `DQ-009` 以
+仍需由 `DQ-016` 决定 DBOS 的 agent access／distribution（智能体访问／分发）方式，再由 `DQ-009` 以
 明确处理开放网络发现限制并记录 `released_by_ref`，再决定 tag、GitHub Release 和百度正式部署。
 
 本决策包记录 release preparation decisions（发布准备决定），但不是正式 Release、

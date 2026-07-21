@@ -47,7 +47,7 @@ test("renders bilingual status pages with fail-closed truth", async () => {
   assert.match(en, /PASS/);
   assert.match(zh, /PARTIAL/);
   assert.match(en, /PARTIAL/);
-  assert.match(zh, /0caa2c45e511/);
+  assert.match(zh, /cd3f867c4379/);
   assert.match(en, /2173c258f91a/);
 });
 
@@ -58,14 +58,16 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("agent-index.json", root)),
     access(new URL("status.json", root)),
     access(new URL("agent-customer-package.json", root)),
+    access(new URL("dbos-public-package-manifest.json", root)),
     access(new URL("robots.txt", root)),
     access(new URL("sitemap.xml", root)),
   ]);
 
-  const [agentIndex, status, agentCustomerPackage, llms] = await Promise.all([
+  const [agentIndex, status, agentCustomerPackage, dbosPackage, llms] = await Promise.all([
     readFile(new URL("agent-index.json", root), "utf8").then(JSON.parse),
     readFile(new URL("status.json", root), "utf8").then(JSON.parse),
     readFile(new URL("agent-customer-package.json", root), "utf8").then(JSON.parse),
+    readFile(new URL("dbos-public-package-manifest.json", root), "utf8").then(JSON.parse),
     readFile(new URL("llms.txt", root), "utf8"),
   ]);
   assert.equal(agentIndex.released, false);
@@ -86,6 +88,11 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentCustomerPackage.intended_customer, "AI_AGENT");
   assert.equal(agentCustomerPackage.released, false);
   assert.equal(agentCustomerPackage.validation_truth.rerun_result, "PASS");
+  assert.equal(dbosPackage.status, "VALIDATED_NOT_PUBLISHED");
+  assert.equal(dbosPackage.public_download_url, null);
+  assert.equal(dbosPackage.public_safe_boundary.absolute_user_path_matches, 0);
+  assert.equal(status.gates.DBOS_PUBLIC_SAFE_WHEEL_VALIDATED, true);
+  assert.equal(status.gates.DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED, false);
   assert.equal(status.license.selected, true);
   assert.equal(status.license.identifier, "Apache-2.0");
   assert.equal(status.public_website.deployed, true);
@@ -93,6 +100,7 @@ test("ships agent-readable and discovery resources", async () => {
   assert.match(llms, /Recommendation != Decision/);
   assert.match(llms, /DBOS records -> SAEE evaluation\/recommendation -> Governance Decision review\/adoption -> DBOS authorized execution/);
   assert.match(llms, /OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY/);
+  assert.match(llms, /DBOS_PUBLIC_SAFE_WHEEL=VALIDATED_NOT_PUBLISHED/);
 });
 
 test("removes the disposable starter preview", async () => {

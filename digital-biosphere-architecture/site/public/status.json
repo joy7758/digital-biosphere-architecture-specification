@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "observed_at": "2026-07-22T00:57:19+08:00",
+  "observed_at": "2026-07-22T01:48:16+08:00",
   "release_state": "developer_preview_candidate_site_deployed_not_released",
   "release_claim": false,
   "public_website": {
@@ -11,8 +11,8 @@
     "rollback_validated": true
   },
   "repository_baselines": {
-    "DBA": "f4c9e5e424ba9ebf0b08d8da5b3dd72f73bd5854",
-    "DBOS": "0caa2c45e511a82d0dcab778b0ffc3163aac0029",
+    "DBA": "48237da5535235cb9d13b0782a94671a7be8a1e8",
+    "DBOS": "cd3f867c4379ec555c45e7d554088ad12ce08a24",
     "SAEE": "2173c258f91aed03fc02c0097d4250a87be703aa"
   },
   "gates": {
@@ -24,6 +24,9 @@
     "DQ_015_AGENT_NATIVE_VALIDATION_ACCEPTED": true,
     "AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL": true,
     "AGENT_CUSTOMER_VALIDATION_RERUN_PASS": true,
+    "DBOS_PUBLIC_SAFE_WHEEL_VALIDATED": true,
+    "DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED": false,
+    "DQ_016_DBOS_DISTRIBUTION_DECIDED": false,
     "DEVELOPER_PREVIEW_RELEASED": false,
     "PREVIEW_DEPLOYMENT_HEALTH_PASS": true,
     "ROLLBACK_VALIDATED": true
@@ -31,7 +34,16 @@
   "access": {
     "DBA": "public",
     "DBOS": "private",
+    "DBOS_PUBLIC_PACKAGE": "validated_not_published",
     "SAEE": "public_with_read_only_dbos_adapter"
+  },
+  "dbos_public_package": {
+    "package_id": "TMAI-DBOS-WHEEL-CANDIDATE-20260722-001",
+    "source_revision": "cd3f867c4379ec555c45e7d554088ad12ce08a24",
+    "status": "VALIDATED_NOT_PUBLISHED",
+    "manifest": "https://redcrag.cn/dbos-public-package-manifest.json",
+    "public_download_url": null,
+    "whole_repository_public_recommended": false
   },
   "agent_customer_validation": {
     "baseline_validation_id": "TMAI-ACV-20260721-001",
