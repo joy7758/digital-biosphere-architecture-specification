@@ -3,14 +3,14 @@ report_id: DBA-WEB-DEPLOY-002
 title: Trusted Multi-Agent Infrastructure Public Website Deployment Report
 title_zh: 可信多智能体基础设施公开网站部署报告
 status: pass-candidate-deployed-not-released
-observed_at: 2026-07-22T00:40:34+08:00
+observed_at: 2026-07-22T00:53:45+08:00
 public_url: https://redcrag.cn/
-github_prerelease_url: https://github.com/joy7758/digital-biosphere-architecture-specification/releases/tag/v0.1-public-website-candidate.3
-github_prerelease_tag: v0.1-public-website-candidate.3
+github_prerelease_url: https://github.com/joy7758/digital-biosphere-architecture-specification/releases/tag/v0.1-public-website-candidate.4
+github_prerelease_tag: v0.1-public-website-candidate.4
 github_prerelease_published: true
 host: 180.76.115.193
 initial_validated_source_revision: 6e05f8d383f409ed5790390da440890fd9603c48
-current_validated_source_revision: f217831c287b9b09f0a56f54374ec16d91fa5070
+current_validated_source_revision: 6fd94a62f5eea26b7edd9d2f66a9dde99ab7832f
 deployment_state: candidate-deployed-not-released
 developer_preview_released: false
 production_ready: false
@@ -56,9 +56,10 @@ PRODUCTION_READY=false
 ## Artifact integrity
 
 The current validated deployment was generated from source revision
-`f217831c287b9b09f0a56f54374ec16d91fa5070`. The initial validated deployment
-`6e05f8d383f409ed5790390da440890fd9603c48`, the preceding public candidate
-`bc7ba49a357ebc007e2a4c9dc01178a37e74d2d8`, and the pre-rerun remediation candidate
+`6fd94a62f5eea26b7edd9d2f66a9dde99ab7832f`. The initial validated deployment
+`6e05f8d383f409ed5790390da440890fd9603c48`, the preceding public candidates
+`bc7ba49a357ebc007e2a4c9dc01178a37e74d2d8` and
+`f217831c287b9b09f0a56f54374ec16d91fa5070`, and the pre-rerun remediation candidate
 `a0f014d4bb0454f7612c6bd899e9f0b83fb0be2f` remain preserved. The authoritative
 active revision is the value returned by `https://redcrag.cn/release.json`.
 
@@ -67,9 +68,14 @@ manifest verifier before Nginx activation.
 
 For the current artifact, all 20 manifest entries passed byte-size and SHA-256
 verification before the atomic switch. All ten public health routes returned
-HTTP 200 under bounded retry. `/agent-index.json` required a second health-check
-attempt; the other nine routes passed on the first attempt. This transient event
-is retained and is not rewritten as an uninterrupted first-attempt pass.
+HTTP 200 on the first health-check attempt. The prior `f217831…` deployment's
+second-attempt `/agent-index.json` event remains recorded in history and is not
+rewritten by the current pass.
+
+GNU tar reported ignored `LIBARCHIVE.xattr.com.apple.provenance` extended-header
+keywords while extracting the macOS-created archive. All declared bytes and
+SHA-256 values still passed. The warning is retained as a packaging-portability
+signal and is not treated as content corruption or silently rewritten as absent.
 
 ## Transport and security
 
@@ -85,7 +91,7 @@ is retained and is not rewritten as an uninterrupted first-attempt pass.
 
 The rollback mechanism was previously validated by an actual atomic switch and
 restore. The current update used the same immutable release-directory and atomic
-symlink mechanism, preserving `a0f014d…`, `bc7ba49…` and older verified artifacts.
+symlink mechanism, preserving `a0f014d…`, `bc7ba49…`, `f217831…` and older verified artifacts.
 
 ```text
 ROLLBACK_VALIDATED=true
@@ -113,12 +119,12 @@ was created by this deployment.
 The same source revision is tagged and published as an explicit GitHub
 prerelease:
 
-- Tag: `v0.1-public-website-candidate.3`
-- Release title: `TMAI Public Website Candidate v0.1.3`
-- Source revision: `f217831c287b9b09f0a56f54374ec16d91fa5070`
-- Asset: `tmai-public-website-candidate-f217831.tar.gz`
+- Tag: `v0.1-public-website-candidate.4`
+- Release title: `TMAI Public Website Candidate v0.1.4`
+- Source revision: `6fd94a62f5eea26b7edd9d2f66a9dde99ab7832f`
+- Asset: `tmai-public-website-candidate-6fd94a62.tar.gz`
 - Asset SHA-256:
-  `f97db75a72dfd7ce129cbd10745752cd7bbea12e330f8914e586b2de82fced47`
+  `db9120c92cab6df97db1ff9931e7b740d0a2cb4ac263effaa78b303e6f3f120a`
 - GitHub state: `prerelease=true`, `draft=false`
 
 This GitHub prerelease distributes the website candidate artifact. It is not a
