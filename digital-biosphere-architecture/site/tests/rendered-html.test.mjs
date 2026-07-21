@@ -65,6 +65,8 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.released, false);
   assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, false);
   assert.equal(status.license.selected, false);
+  assert.equal(status.public_website.deployed, true);
+  assert.equal(status.public_website.rollback_validated, true);
   assert.match(llms, /Recommendation != Decision/);
 });
 

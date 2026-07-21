@@ -10,7 +10,10 @@ SITE_IMPLEMENTED=true
 STATIC_SITE_BUILD_PASS=true
 ZH_EN_CONTENT_PARITY_PASS=true
 AGENT_READABLE_ENTRY_PASS=true
-SITE_DEPLOYED=false
+SITE_DEPLOYED=true
+SITE_URL=https://redcrag.cn/
+SITE_HEALTH_PASS=true
+SITE_ROLLBACK_VALIDATED=true
 DEVELOPER_PREVIEW_RELEASED=false
 ```
 
@@ -55,5 +58,6 @@ npm run release:static
 
 ## Deployment boundary
 
-本地构建通过不等于外部部署。部署到 `redcrag.cn` 必须保留独立人工授权、
-健康检查和回滚验证。
+网站候选已部署到 `https://redcrag.cn/`，并完成健康检查和回滚验证。
+网站部署不等于 Developer Preview（开发者预览）发布；正式发布仍保留独立
+人工决定与跨项目闸门。

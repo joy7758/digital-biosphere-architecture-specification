@@ -1,8 +1,15 @@
 {
   "schema_version": "0.1",
   "observed_at": "2026-07-21T19:00:00+08:00",
-  "release_state": "developer_preview_candidate_in_preparation",
+  "release_state": "developer_preview_candidate_site_deployed_not_released",
   "release_claim": false,
+  "public_website": {
+    "url": "https://redcrag.cn/",
+    "deployed": true,
+    "health_pass": true,
+    "security_headers_pass": true,
+    "rollback_validated": true
+  },
   "repository_baselines": {
     "DBA": "dd57af17b40bcdf4d74681053e24b76e0f589b3e",
     "DBOS": "b4e3cbe2af442be861dbab3f7b2ffd2567443077",
@@ -14,7 +21,9 @@
     "SAEE_DBOS_ADAPTER_PASS": false,
     "CROSS_PROJECT_CLEAN_CLONE_PASS": false,
     "DQ_010_READY": false,
-    "DEVELOPER_PREVIEW_RELEASED": false
+    "DEVELOPER_PREVIEW_RELEASED": false,
+    "PREVIEW_DEPLOYMENT_HEALTH_PASS": true,
+    "ROLLBACK_VALIDATED": true
   },
   "access": {
     "DBA": "public",

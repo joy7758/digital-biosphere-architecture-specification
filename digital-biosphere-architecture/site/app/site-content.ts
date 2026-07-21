@@ -52,6 +52,18 @@ export const gateRows = [
     zh: "外部开发者试用尚未启动，参与者为 0。",
     en: "The external developer trial has not started; participant count is 0.",
   },
+  {
+    id: "PREVIEW_DEPLOYMENT_HEALTH_PASS",
+    state: "PASS",
+    zh: "中英文候选网站已在 redcrag.cn 通过公开健康检查和安全头验证。",
+    en: "The bilingual candidate site passed public health and security-header checks on redcrag.cn.",
+  },
+  {
+    id: "ROLLBACK_VALIDATED",
+    state: "PASS",
+    zh: "百度云发布指针已完成真实回滚与恢复验证。",
+    en: "The Baidu Cloud release pointer passed an actual rollback-and-restore check.",
+  },
 ] as const;
 
 export const content = {
@@ -66,7 +78,7 @@ export const content = {
       github: "GitHub",
       language: "English",
     },
-    badge: "Developer Preview Candidate · 准备中",
+    badge: "Developer Preview Candidate · 验证中",
     eyebrow: "DIGITAL BIOSPHERE / 数字生物圈",
     title: "面向多智能体系统的可信基础设施",
     lead:
@@ -151,7 +163,7 @@ export const content = {
       github: "GitHub",
       language: "中文",
     },
-    badge: "Developer Preview Candidate · In preparation",
+    badge: "Developer Preview Candidate · Validation in progress",
     eyebrow: "DIGITAL BIOSPHERE",
     title: "Trust infrastructure for multi-agent systems",
     lead:
