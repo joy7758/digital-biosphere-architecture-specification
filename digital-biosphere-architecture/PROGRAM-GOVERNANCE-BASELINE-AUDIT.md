@@ -86,3 +86,10 @@ ADOPTION_BY_CHILD_PROJECTS_NOT_ASSESSED=true
 ```
 
 DBA 已在工作树中形成可用的项目群治理与架构规范驾驶舱基线。下一步应由人工处理 Decision Queue，而不是继续无序增加子项目实现。
+
+## 6. Post-audit Decision Addendum（审计后决定补充）
+
+本报告保留 2026-07-21 基线审计时的开放事项。其后的 `ADR-020` 已关闭 `DQ-001`；
+[`architecture/ADR-021-program-source-and-public-entry-authority.md`](architecture/ADR-021-program-source-and-public-entry-authority.md)
+已关闭 `DQ-003`、`DQ-007`、`DQ-008`。当前仍开放 `DQ-002`、`DQ-004`、`DQ-005`、
+`DQ-006`、`DQ-009`；本补充不把审计 PASS 升级为 Runtime、试用执行或 Release。

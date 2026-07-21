@@ -4,6 +4,8 @@ title: Initial Project Role Mapping v0.1
 status: declared-architecture-role-registry
 source_basis: user-provided-initial-mapping-and-read-only-local-discovery
 program_governance_hub_defined: true
+program_governance_source_confirmed: true
+program_governance_source_decision_ref: ADR-021
 changes_project_facts: false
 changes_repository_ownership: false
 creates_project_relationships: false
@@ -15,13 +17,16 @@ creates_project_relationships: false
 
 本文件只登记 architecture role（架构角色），不改变项目事实、仓库归属、依赖关系、实现状态、能力状态、证据状态或权限。`mapped` 只表示“在 v0.1 中按此角色理解”，不表示“已集成”“已验证”“已采用”或“属于某仓库”。
 
-现有 Digital Biosphere Architecture public meaning layer（公共语义层）与本规范的 canonical authority（规范权威）关系尚未完成人工对齐；因此本表不得被用来覆盖既有项目的 canonical terminology（规范术语）或 repository map（仓库映射）。
+`ADR-021` 已确认本 cockpit 的 canonical Program Governance / Architecture Specification 角色，
+并保留现有 Digital Biosphere Architecture public meaning layer（公共语义层）的 public meaning、
+history 与 discovery reference 角色。跨仓库交叉引用仍未实施，因此本表不得被用来覆盖既有
+项目的 canonical terminology（规范术语）或 repository map（仓库映射）。
 
 ## 2. 初始映射
 
 | project_id | 项目 | v0.1 架构角色 | 最近责任域 | 事实边界 | 待澄清的重复建设风险 |
 |---|---|---|---|---|---|
-| `PROJECT-DIGITAL-BIOSPHERE-ARCHITECTURE` | Digital Biosphere Architecture | Program Governance Hub（项目群治理中心）+ Architecture Specification Hub（架构规范中心）+ Architecture Authority Layer（架构权力层） | Program Governance / Architecture Governance / Rules | 驾驶舱管理组合、路线图、状态引用、依赖、决策、gate 与风险；`ADR-020` 指派 `zhangbin` 为 Human Program Owner，但 DBA 仍不是 Runtime、Entity、最终授权主体或执行权来源 | 与既有 public meaning layer 的 canonical reconciliation、其余角色任命、Git topology 和版本发布机制仍待定义 |
+| `PROJECT-DIGITAL-BIOSPHERE-ARCHITECTURE` | Digital Biosphere Architecture | Program Governance Hub（项目群治理中心）+ Architecture Specification Hub（架构规范中心）+ Architecture Authority Layer（架构权力层） | Program Governance / Architecture Governance / Rules | 驾驶舱管理组合、路线图、状态引用、依赖、决策、gate 与风险；`ADR-020` 指派 `zhangbin` 为 Human Program Owner，`ADR-021` 确认 canonical cockpit，但 DBA 仍不是 Runtime、Entity、最终授权主体或执行权来源 | public meaning layer 跨仓库引用、其余角色任命、Git topology 和版本发布机制仍待完成 |
 | `PROJECT-DBOS` | DBOS | Open Digital Entity Infrastructure（开放数字实体基础设施）；Digital Biosphere Operating System；Operational Authority（运行权力）；Infrastructure Entity（基础设施实体）的架构角色示例 | Existence Governance / DBOS | DBOS repository 不是 Entity；DBOS 不是 Agent Application 或 Foundation Model；Operational Authority 不等于最终授权权，也不证明 Identity、Execution、Federation 或实体实例已存在 | 与 POP、Token Governor、证据组件的实现边界及未来实体资格需逐项契约化 |
 | `PROJECT-SAEE` | SAEE | Evolution Intelligence Layer（演化智能层）；Evolution Engine；Evolution Authority（演化权力）；Evolution Entity（演化实体）的架构角色示例 | Evolution Governance / SAEE | SAEE repository 不是 Entity；Evolution Authority 只覆盖评价，不授予 DBOS 写权、执行权或架构修改权 | Governance Evolution 与 DBOS/Token Governor 的策略生效及未来实体资格需澄清 |
 | `ARCH-LAYER-GOVERNANCE-DECISION` | Governance Decision Layer | Decision Authority（决策权力）的 record and state boundary（记录与状态边界） | SAEE 与 DBOS 之间的独立治理边界 | 不是项目实现、DBOS 模块、SAEE 模块、Runtime、Entity 或自动授权主体；`Decision Authority` 标签不定义最终授权者 | 最终 reviewer、decision authority、adoption authority 与职责分离规则尚需定义 |

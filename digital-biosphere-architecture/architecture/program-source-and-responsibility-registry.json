@@ -1,0 +1,352 @@
+{
+  "$schema": "./program-source-and-responsibility-registry.schema.json",
+  "registry_id": "DBA-PROGRAM-SOURCE-RESPONSIBILITY-REGISTRY-0.1",
+  "schema_version": "0.1.0",
+  "status": "HUMAN_CONFIRMED_REFERENCE_ROUTING",
+  "observed_at": "2026-07-22T00:39:09+08:00",
+  "observation_state": "REFRESHED_AFTER_CONCURRENT_EXTERNAL_DRIFT",
+  "external_drift": {
+    "detected": true,
+    "previous_observed_at": "2026-07-22T00:24:02+08:00",
+    "affected_projects": [
+      {
+        "project_id": "PROJECT-DBOS",
+        "previous_worktree_changes": 1,
+        "current_worktree_changes": 2,
+        "head_changed": false
+      },
+      {
+        "project_id": "PROJECT-SAEE",
+        "previous_worktree_changes": 688,
+        "current_worktree_changes": 0,
+        "head_changed": true
+      },
+      {
+        "project_id": "RESEARCH-AGENT-PILOT",
+        "previous_worktree_changes": 30,
+        "current_worktree_changes": 87,
+        "head_changed": false
+      },
+      {
+        "project_id": "PROJECT-AGENT-EVIDENCE",
+        "previous_worktree_changes": 87,
+        "current_worktree_changes": 166,
+        "head_changed": false
+      },
+      {
+        "project_id": "PROJECT-ARO",
+        "previous_worktree_changes": 19,
+        "current_worktree_changes": 21,
+        "head_changed": false
+      }
+    ],
+    "attribution": "NOT_INFERRED"
+  },
+  "decision_ref": "ADR-021",
+  "human_confirmation": {
+    "decided_by_ref": "zhangbin",
+    "decided_at": "2026-07-22T00:24:02+08:00",
+    "confirmation_scope": ["DQ-003", "DQ-007", "DQ-008", "DBA_GOVERNANCE_GIT_DELIVERY"]
+  },
+  "primary_repository": "digital-biosphere-architecture",
+  "governance_record_effect": "DBA_GOVERNANCE_ALIGNMENT_ONLY",
+  "child_project_truth_changed": false,
+  "recommendation_gate": {
+    "current_recommendation": "RECOMMENDED",
+    "recommended_scope": [
+      "architecture_boundary",
+      "program_governance",
+      "bounded_local_evidence_evaluation"
+    ],
+    "not_recommended_scope": [
+      "end_to_end_production_trust",
+      "automatic_authorized_execution",
+      "production_release_claim"
+    ],
+    "governance_implementation_authorized": true,
+    "runtime_implementation_authorized": false
+  },
+  "projects": [
+    {
+      "project_id": "PROJECT-DBA-COCKPIT",
+      "repository_path": "/Users/zhangbin/Documents/New project/digital-biosphere-architecture",
+      "architecture_role": "PROGRAM_GOVERNANCE_AND_ARCHITECTURE_SPECIFICATION_HUB",
+      "portfolio_status": "CORE_CANONICAL_PROGRAM_GOVERNANCE_COCKPIT",
+      "observation": {
+        "branch": "codex/program-source-authority",
+        "commit": "2cc20b4060d680c5451bdd82bfb0d88258258159",
+        "worktree_changes": 13,
+        "worktree_changes_are_maturity_evidence": false
+      },
+      "status_source": {
+        "state": "DBA_PROGRAM_GOVERNANCE_CANONICAL",
+        "refs": [
+          {
+            "path": "PROGRAM-STATUS.md",
+            "scope": "program status snapshot",
+            "authority": "DBA_COCKPIT_SOURCE"
+          },
+          {
+            "path": "PROGRAM-SOURCE-AND-RESPONSIBILITY-DECISION-PACKET.md",
+            "scope": "candidate source and responsibility decision",
+            "authority": "DBA_COCKPIT_SOURCE"
+          }
+        ],
+        "domain_confirmation_required": false,
+        "freshness_policy": "MANUAL_REFRESH_BEFORE_CONSEQUENTIAL_GATE_24H_STALE",
+        "conflict_policy": "PRESERVE_CONFLICT_AND_REQUEST_DOMAIN_OWNER"
+      }
+    },
+    {
+      "project_id": "PROJECT-DBOS",
+      "repository_path": "/Users/zhangbin/GitHub/digital-biosphere-os",
+      "architecture_role": "OPEN_DIGITAL_ENTITY_INFRASTRUCTURE",
+      "portfolio_status": "CORE",
+      "observation": {
+        "branch": "main",
+        "commit": "0caa2c45e511a82d0dcab778b0ffc3163aac0029",
+        "worktree_changes": 2,
+        "worktree_changes_are_maturity_evidence": false
+      },
+      "status_source": {
+        "state": "HUMAN_CONFIRMED",
+        "refs": [
+          {
+            "path": "README.md",
+            "scope": "project status context and entry routing",
+            "authority": "HUMAN_CONFIRMED_PROGRAM_STATUS_SOURCE"
+          },
+          {
+            "path": "registry/entities.yaml",
+            "scope": "canonical entity identity facts only",
+            "authority": "REPOSITORY_DECLARED_CANONICAL"
+          },
+          {
+            "path": "evidence/README.md",
+            "scope": "evidence and verification maturity context only",
+            "authority": "SUPPORTING_SOURCE"
+          }
+        ],
+        "domain_confirmation_required": false,
+        "freshness_policy": "MANUAL_REFRESH_BEFORE_CONSEQUENTIAL_GATE_24H_STALE",
+        "conflict_policy": "PRESERVE_CONFLICT_AND_REQUEST_DOMAIN_OWNER"
+      }
+    },
+    {
+      "project_id": "PROJECT-SAEE",
+      "repository_path": "/Users/zhangbin/GitHub/SAEE",
+      "architecture_role": "EVOLUTION_INTELLIGENCE_LAYER",
+      "portfolio_status": "CORE",
+      "observation": {
+        "branch": "feat/canonical-capability-inventory-routing-v1",
+        "commit": "697ae2080f11b7905b20c39079914eb98169783b",
+        "worktree_changes": 0,
+        "worktree_changes_are_maturity_evidence": false
+      },
+      "status_source": {
+        "state": "HUMAN_CONFIRMED_SPLIT_SCOPE",
+        "refs": [
+          {
+            "path": "capability-package/manifest.json",
+            "fragment": "canonical_inventory",
+            "scope": "sole canonical capability fact source",
+            "authority": "REPOSITORY_DECLARED_CANONICAL"
+          },
+          {
+            "path": "PROJECT_STATUS.md",
+            "scope": "multi-topic project activity and status context",
+            "authority": "HUMAN_CONFIRMED_PROGRAM_STATUS_SOURCE"
+          },
+          {
+            "path": "docs/architecture/SAEE_DEVELOPMENT_CONSTITUTION_V1_1.md",
+            "scope": "development constitution and truth boundaries",
+            "authority": "SUPPORTING_SOURCE"
+          }
+        ],
+        "domain_confirmation_required": false,
+        "freshness_policy": "MANUAL_REFRESH_BEFORE_CONSEQUENTIAL_GATE_24H_STALE",
+        "conflict_policy": "PRESERVE_CONFLICT_AND_REQUEST_DOMAIN_OWNER"
+      }
+    },
+    {
+      "project_id": "RESEARCH-AGENT-PILOT",
+      "repository_path": "/Users/zhangbin/GitHub/digital-biosphere-research-agent-pilot",
+      "architecture_role": "APPLICATION_LAYER_RESEARCH_PILOT_SPECIFICATION",
+      "portfolio_status": "PILOT_SPECIFICATION_ONLY_NOT_READY",
+      "observation": {
+        "branch": "main",
+        "commit": "8445fe5d13cd889032c3786ba527d801f56d5351",
+        "worktree_changes": 87,
+        "worktree_changes_are_maturity_evidence": false
+      },
+      "status_source": {
+        "state": "HUMAN_CONFIRMED",
+        "refs": [
+          {
+            "path": "README.md",
+            "fragment": "Current Status",
+            "scope": "current readiness and zero-instance status",
+            "authority": "HUMAN_CONFIRMED_PROGRAM_STATUS_SOURCE"
+          },
+          {
+            "path": "CONSTITUTION.md",
+            "scope": "communication and truth boundary authority",
+            "authority": "SUPPORTING_SOURCE"
+          },
+          {
+            "path": "AGENTS.md",
+            "scope": "agent routing and mandatory status preservation",
+            "authority": "SUPPORTING_SOURCE"
+          }
+        ],
+        "domain_confirmation_required": false,
+        "freshness_policy": "MANUAL_REFRESH_BEFORE_CONSEQUENTIAL_GATE_24H_STALE",
+        "conflict_policy": "PRESERVE_CONFLICT_AND_REQUEST_DOMAIN_OWNER"
+      }
+    },
+    {
+      "project_id": "PROJECT-AGENT-EVIDENCE",
+      "repository_path": "/Users/zhangbin/GitHub/agent-evidence",
+      "architecture_role": "PORTABLE_EVIDENCE_REFERENCE_IMPLEMENTATION",
+      "portfolio_status": "ADJACENT_REFERENCE_PENDING_DQ_006",
+      "observation": {
+        "branch": "revision/softwarex-v2-grounding-fix",
+        "commit": "1b692de391aa04bcfe2666ccc3ddce652ce5c3df",
+        "worktree_changes": 166,
+        "worktree_changes_are_maturity_evidence": false
+      },
+      "status_source": {
+        "state": "REPOSITORY_DECLARED",
+        "refs": [
+          {
+            "path": "docs/project-facts.md",
+            "scope": "canonical factual source declared by repository",
+            "authority": "REPOSITORY_DECLARED_CANONICAL"
+          }
+        ],
+        "domain_confirmation_required": true,
+        "freshness_policy": "OBSERVATION_ONLY_NO_CADENCE",
+        "conflict_policy": "PRESERVE_CONFLICT_AND_REQUEST_DOMAIN_OWNER"
+      }
+    },
+    {
+      "project_id": "PROJECT-ARO",
+      "repository_path": "/Users/zhangbin/GitHub/aro-audit",
+      "architecture_role": "TAMPER_EVIDENT_AUDIT_PROJECTION_REFERENCE",
+      "portfolio_status": "ADJACENT_REFERENCE_PENDING_DQ_006",
+      "observation": {
+        "branch": "audit-scope-alignment-v1",
+        "commit": "74a7f584b8cb18ca2655a0dac30e77e41e582c43",
+        "worktree_changes": 21,
+        "worktree_changes_are_maturity_evidence": false
+      },
+      "status_source": {
+        "state": "UNCONFIRMED",
+        "refs": [
+          {
+            "path": "README.md",
+            "scope": "project entry and locally callable verification context",
+            "authority": "CANDIDATE"
+          },
+          {
+            "path": "docs/evidence-boundary.md",
+            "scope": "portable bounded verification surface",
+            "authority": "SUPPORTING_SOURCE"
+          },
+          {
+            "path": "docs/threat-model.md",
+            "scope": "current threat coverage and gaps",
+            "authority": "SUPPORTING_SOURCE"
+          }
+        ],
+        "domain_confirmation_required": true,
+        "freshness_policy": "OBSERVATION_ONLY_NO_CADENCE",
+        "conflict_policy": "PRESERVE_CONFLICT_AND_REQUEST_DOMAIN_OWNER"
+      }
+    }
+  ],
+  "responsibility_chain": [
+    {
+      "stage_id": "runtime_record",
+      "canonical_architecture_owner": "PROJECT-DBOS",
+      "supporting_or_reference_roles": ["EXTERNAL_RUNTIME_SOURCE"],
+      "does_not_create": ["TRUTH", "EVIDENCE_SUFFICIENCY", "AUTHORIZATION"]
+    },
+    {
+      "stage_id": "evidence_material_reference",
+      "canonical_architecture_owner": "PROJECT-DBOS",
+      "supporting_or_reference_roles": ["EXTERNAL_SIGNATURE", "ATTESTATION", "VERSIONED_TELEMETRY"],
+      "does_not_create": ["CANONICAL_VERIFICATION", "EVALUATION", "PERMISSION"]
+    },
+    {
+      "stage_id": "portable_evidence_package",
+      "canonical_architecture_owner": "PROJECT-DBOS",
+      "supporting_or_reference_roles": ["PROJECT-AGENT-EVIDENCE"],
+      "does_not_create": ["EVENT_TRUTH", "GLOBAL_SUFFICIENCY", "LEGAL_NON_REPUDIATION"]
+    },
+    {
+      "stage_id": "audit_projection_integrity_check",
+      "canonical_architecture_owner": "PROJECT-DBOS",
+      "supporting_or_reference_roles": ["PROJECT-ARO"],
+      "does_not_create": ["GLOBAL_FRESHNESS", "SEMANTIC_TRUTH", "IDENTITY_AUTHORIZATION"]
+    },
+    {
+      "stage_id": "canonical_verification",
+      "canonical_architecture_owner": "PROJECT-DBOS",
+      "supporting_or_reference_roles": ["EXTERNAL_VERIFIER_RESULT_WITH_PROVENANCE"],
+      "does_not_create": ["FITNESS", "RECOMMENDATION", "DECISION"]
+    },
+    {
+      "stage_id": "evidence_adequacy_evaluation",
+      "canonical_architecture_owner": "PROJECT-SAEE",
+      "supporting_or_reference_roles": ["PROJECT-DBOS_VERIFIED_INPUT"],
+      "does_not_create": ["TRUTH", "PERMISSION", "EXECUTION"]
+    },
+    {
+      "stage_id": "governance_decision",
+      "canonical_architecture_owner": "HUMAN_DECISION_AUTHORIZATION_BOUNDARY",
+      "supporting_or_reference_roles": ["PROJECT-DBA-COCKPIT", "PROJECT-SAEE", "PROJECT-DBOS"],
+      "does_not_create": ["AUTOMATIC_EXECUTION", "AUTOMATIC_RELEASE"]
+    },
+    {
+      "stage_id": "authorized_execution",
+      "canonical_architecture_owner": "PROJECT-DBOS_AND_AUTHORIZED_DIGITAL_ENTITY",
+      "supporting_or_reference_roles": ["EXPLICIT_AUTHORIZATION_RECORD"],
+      "does_not_create": ["RELEASE", "ADOPTION", "CERTIFICATION"]
+    },
+    {
+      "stage_id": "release",
+      "canonical_architecture_owner": "HUMAN_RELEASE_AUTHORITY",
+      "supporting_or_reference_roles": ["SOURCE_COMMITS", "VALIDATION", "LIMITATIONS", "TRIAL_RESULT", "RELEASED_BY_REF"],
+      "does_not_create": ["PRODUCTION_READINESS", "CUSTOMER_ADOPTION"]
+    }
+  ],
+  "external_inputs": [
+    {
+      "input_id": "DAPR_HISTORY_SIGNING",
+      "role": "VERSION_PINNED_RUNTIME_EVIDENCE_SOURCE_CANDIDATE",
+      "adoption_status": "NO_ADAPTER_AUTHORIZED"
+    },
+    {
+      "input_id": "MICROSOFT_AGT_AUDIT_EXPORT",
+      "role": "COMPETITOR_AND_INTEROPERABILITY_REFERENCE",
+      "adoption_status": "REFERENCE_ONLY"
+    },
+    {
+      "input_id": "OPENTELEMETRY_GENAI",
+      "role": "VERSIONED_TELEMETRY_MAPPING_SOURCE",
+      "adoption_status": "VERSION_PIN_REQUIRED"
+    }
+  ],
+  "open_decisions": ["DQ-006"],
+  "truth_boundaries": [
+    "RECOMMENDATION_NE_DECISION",
+    "DECISION_NE_EXECUTION",
+    "EVIDENCE_NE_TRUTH",
+    "VERIFICATION_NE_EVALUATION",
+    "LOCAL_VALIDATION_NE_INDEPENDENT_VALIDATION",
+    "REFERENCE_NE_ADOPTION",
+    "SPECIFICATION_NE_IMPLEMENTATION",
+    "RELEASE_NE_PRODUCTION_READINESS"
+  ]
+}
