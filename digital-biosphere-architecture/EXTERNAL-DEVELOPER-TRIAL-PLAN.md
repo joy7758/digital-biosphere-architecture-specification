@@ -2,7 +2,7 @@
 document_id: DBA-EXTERNAL-DEVELOPER-TRIAL-PLAN-0.1
 title: Trusted Multi-Agent Infrastructure External Developer Trial Plan v0.1
 title_zh: 可信多智能体基础设施外部开发者试用计划 v0.1
-status: accepted-preparation-plan-trial-not-authorized
+status: technical-package-frozen-participant-source-pending
 program_artifact: External Developer Trial Preparation v0.1
 target_participant_count: 3-5
 trial_execution_authorized: false
@@ -56,8 +56,8 @@ NOT_RECOMMENDED_AS=RELEASE_OR_CUSTOMER_VALIDATION
 | 现有指南没有参与者合格条件 | 定义 3–5 名独立 Agent Developer 画像 | 仍需招募与试用负责人 |
 | 反馈字段不能判断理解是否正确 | 增加自由回答、评分 rubric（量表）和关键概念门 | 仍需真实回答 |
 | 没有预先冻结成功阈值 | 在看到试用结果前冻结数量、时间、理解和价值信号标准 | 标准变更必须升版本 |
-| 本地工作树不是可分发来源 | 要求 source manifest（来源清单）与 clean-clone 复验 | `B-007` |
-| 计划可能被误写成外部验证开始 | 单独设置 `DQ-010` 和 `trial_execution_authorized=false` | 人工授权缺失 |
+| 本地工作树不是可分发来源 | 冻结三个远端 commits，并由 `CLEAN-CLONE-VALIDATION-REPORT.md` 完成后继复验 | 已解决 |
+| 计划可能被误写成外部验证开始 | `DQ-010` 采用条件授权；执行状态继续独立 | 真实 `participant_source` 仍缺失 |
 
 只有准备条件全部通过后，智能体才推荐启动 3–5 人的受控试用；即便试用通过，也只推荐进入人工 Release Review（发布审查）。
 
@@ -83,7 +83,8 @@ NOT_RECOMMENDED_AS=RELEASE_OR_CUSTOMER_VALIDATION
 
 ## 5. Trial Package and Entry Conditions（试用包与进入条件）
 
-试用只能基于一个冻结的 `trial_package_id`，至少包含：
+试用只能基于一个冻结的 `trial_package_id`。当前技术包为
+[`TMAI-DP-v0.1-TRIAL-20260721-001`](EXTERNAL-DEVELOPER-TRIAL-PACKAGE-v0.1.json)，包含：
 
 - DBA [`PUBLIC-PROJECT-OVERVIEW.md`](PUBLIC-PROJECT-OVERVIEW.md)；
 - 本计划；
@@ -105,10 +106,18 @@ DQ_010_TRIAL_EXECUTION_AUTHORIZED=true
 EXTERNAL_CONTACT_AUTHORIZED=true
 ```
 
-当前这些条件尚未全部满足，因此：
+当前 source、Clean Clone、technical package、协调者、隐私和停止规则已经冻结；真实
+`participant_source` 尚未提供，因此 `DQ-010` 条件授权仍未生效：
 
 ```text
-TRIAL_PACKAGE_READY=false
+TRIAL_PACKAGE_ID=TMAI-DP-v0.1-TRIAL-20260721-001
+TRIAL_PACKAGE_TECHNICAL_FREEZE=true
+TRIAL_PACKAGE_DISTRIBUTION_READY=false
+SOURCE_COMMITS_FROZEN=true
+CLEAN_CLONE_VALIDATED=true
+TRIAL_COORDINATOR_REF=zhangbin
+PRIVACY_NOTICE_READY=true
+PARTICIPANT_SOURCE_CONFIRMED=false
 TRIAL_EXECUTION_AUTHORIZED=false
 EXTERNAL_CONTACT_AUTHORIZED=false
 PARTICIPANTS_INVITED=0
@@ -273,7 +282,12 @@ Preview name: Trusted Multi-Agent Infrastructure Developer Preview v0.1
 TRIAL_PLAN_DEFINED=true
 TRIAL_GUIDE_PREPARED=true
 FEEDBACK_TEMPLATE_PREPARED=true
-TRIAL_PACKAGE_READY=false
+TRIAL_PACKAGE_ID=TMAI-DP-v0.1-TRIAL-20260721-001
+TRIAL_PACKAGE_TECHNICAL_FREEZE=true
+TRIAL_PACKAGE_DISTRIBUTION_READY=false
+SOURCE_COMMITS_FROZEN=true
+CLEAN_CLONE_VALIDATED=true
+PARTICIPANT_SOURCE_CONFIRMED=false
 TRIAL_EXECUTION_AUTHORIZED=false
 EXTERNAL_CONTACT_AUTHORIZED=false
 PARTICIPANTS_RECRUITED=0

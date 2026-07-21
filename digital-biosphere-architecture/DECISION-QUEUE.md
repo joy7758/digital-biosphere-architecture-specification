@@ -27,7 +27,7 @@ last_reviewed: 2026-07-21
 | `DQ-006` | `P2` | POP、ARO、Agent Evidence、Token Governor、ACP 哪些进入正式 Portfolio？ | `OPEN` | 每个项目的目的、Owner、canonical source、重复能力和接口边界 | 项目组合与依赖范围 | 本地发现、历史关联或相邻角色等于正式准入 |
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
-| `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | 本地测试、Trial Plan、Guide 与已知限制已齐；仍缺冻结 source commits、clean-clone 复验、3–5 人 Trial Result 和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | ADR-017、测试通过、本地 Demo 或 Trial PASS 自动等于发布授权 |
+| `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | 冻结 source commits、Clean Clone、Trial Plan、Guide 与已知限制已齐；仍缺真实 `participant_source`、3–5 人 Trial Result、试用后 DBOS 分发决定和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | ADR-017、测试通过、本地 Demo、Clean Clone 或 Trial PASS 自动等于发布授权 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
@@ -38,7 +38,7 @@ last_reviewed: 2026-07-21
 | `ADR-018` | `ACCEPTED`：在发布前建立 3–5 人 External Developer Trial Gate | 2026-07-21 用户明确目标 | 允许建立试用计划、测量与 gate；不授权招募、外部联系、试用执行、客户验证或发布 |
 | `ADR-019` | `ACCEPTED_AND_EXECUTED`：清理过期云端应用资产并在 `redcrag.cn` 根入口部署双语 TMAI 网站候选 | 2026-07-21 用户明确清理与网站要求 | 只授权公开网站候选及其 GitHub prerelease；不授权 Developer Preview Release、DBOS 公开、SAEE 边界变更或外部试用 |
 | `ADR-020 / DQ-001` | `ACCEPTED`：指派 `zhangbin` 为 Human Program Owner | `decided_by_ref=zhangbin`，2026-07-21T22:48:39+08:00 | 项目群决定来源生效，重大 release 时复核；不产生 DBOS 运行权、SAEE 演化权或自动发布权 |
-| `ADR-020 / DQ-010` | `DECIDED_CONDITIONAL`：`AUTHORIZE_AFTER_CLEAN_CLONE_PASS`，协调者 `zhangbin` | `decided_by_ref=zhangbin`，2026-07-21T22:48:39+08:00 | 条件未满足前外部联系与试用执行仍为 `false`；真实 `participant_source` 仍缺失 |
+| `ADR-020 / DQ-010` | `DECIDED_CONDITIONAL`：`AUTHORIZE_AFTER_CLEAN_CLONE_PASS`，协调者 `zhangbin` | Clean Clone 与 `TMAI-DP-v0.1-TRIAL-20260721-001` 已冻结 | 真实 `participant_source` 仍缺失，因此外部联系、协作者添加与试用执行仍为 `false` |
 | `ADR-020 / DQ-011` | `ACCEPTED`：`A_PUBLIC_SAFE_EXTRACTION_EXACT_19_FILES` | `decided_by_ref=zhangbin`、`saee_domain_owner_ref=zhangbin` | 只允许冻结 19 文件及精确 blob；不允许 private core、第二套 evaluator 或正式发布 |
 | `ADR-020 / DQ-012` | `ACCEPTED`：DBA、DBOS、SAEE Owner-created public surfaces 采用 `Apache-2.0` | `decided_by_ref=zhangbin` | 允许发布根 `LICENSE`；不重许可第三方材料、数据或依赖 |
 | `ADR-019 / DQ-013` | `SUPERSEDED`：不再采用独立子路径问题 | 2026-07-21 Human Owner 清理和网站决定 | `redcrag.cn` 根入口网站候选已执行；不等于 Developer Preview Release |
