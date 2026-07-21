@@ -2,9 +2,10 @@
 document_id: DBA-PROGRAM-CHARTER-0.1
 title: Digital Biosphere Program Governance Charter v0.1
 title_zh: 数字生物圈项目群治理章程 v0.1
-status: accepted-documentation-baseline
-decision_reference: architecture/ADR-016-program-governance-cockpit.md
-program_authority_assigned: false
+status: accepted-owner-assigned
+decision_reference: architecture/ADR-020-release-preparation-owner-decisions.md
+program_authority_assigned: true
+program_owner_ref: zhangbin
 runtime_authority_created: false
 source_of_truth_policy: reference-only-aggregation
 last_reviewed: 2026-07-21
@@ -80,7 +81,10 @@ PROGRAM_DECISION_NE_EXECUTION=true
 PROGRAM_STATUS_NE_PROJECT_TRUTH=true
 ```
 
-本章程定义角色，不在 v0.1 中把 Program Owner（项目群负责人）指派给具体个人或账号。角色指派是 [`DECISION-QUEUE.md`](DECISION-QUEUE.md) 中的显式待决事项。
+`ADR-020` 已指派 `zhangbin` 为 Human Program Owner（人工项目群负责人）。该指派负责
+项目群优先级、准入和跨项目 gate 的人工关闭，直到被显式撤销或取代，并在每次重大
+release（发布）决定时复核。它不自动产生 DBOS Operational Authority（运行权力）、
+SAEE Evolution Authority（演化权力）、仓库账号权限或 Release Authorization（发布授权）。
 
 ## 5. Truth Source Policy（事实来源策略）
 
@@ -158,7 +162,7 @@ NOT_RECOMMENDED_AS=RUNTIME_OR_AUTOMATIC_PROJECT_CONTROL
 |---|---|---|
 | 只写规范，不能回答当前推进位置 | 增加 Portfolio、Roadmap、Status、Decision、Gate 与 Risk 台账 | 建立稳定刷新节奏 |
 | 驾驶舱可能复制或覆盖子项目事实 | 采用 reference-only aggregation 和 source precedence | 为每个核心项目确认 canonical status source |
-| 管理权可能被误读为执行权 | 明确 Program、Architecture、Operational、Evolution 与 Human Decision 分离 | 指派具体 Program Owner 前必须显式决定 |
+| 管理权可能被误读为执行权 | 明确 Program、Architecture、Operational、Evolution 与 Human Decision 分离；`ADR-020` 记录具体 Program Owner | 重大发布时复核角色，且每次执行仍需独立授权 |
 | 静态文档可能过期 | 所有状态快照带日期、branch、commit 与 freshness | 后续决定是否需要只读自动同步 |
 
 ## 9. Cockpit Entry（驾驶舱入口）
@@ -177,7 +181,9 @@ NOT_RECOMMENDED_AS=RUNTIME_OR_AUTOMATIC_PROJECT_CONTROL
 
 ```text
 PROGRAM_GOVERNANCE_BASELINE_DEFINED=true
-PROGRAM_AUTHORITY_ASSIGNED=false
+PROGRAM_AUTHORITY_ASSIGNED=true
+PROGRAM_OWNER_REF=zhangbin
+PROGRAM_OWNER_ASSIGNMENT_REFERENCE=ADR-020
 CHILD_REPOSITORIES_MODIFIED=false
 INTEGRATION_IMPLEMENTED=false
 RUNTIME_CREATED=false

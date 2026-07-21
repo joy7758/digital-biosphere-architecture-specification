@@ -2,7 +2,7 @@
 report_id: DBA-FORMAL-RELEASE-READINESS-AUDIT-2026-07-21
 title: Trusted Multi-Agent Infrastructure Formal Release Readiness Audit
 title_zh: 可信多智能体基础设施正式发布就绪审计
-status: website-candidate-published-formal-release-blocked
+status: owner-decisions-recorded-technical-and-trial-evidence-blocked
 observed_at: 2026-07-21T19:28:00+08:00
 formal_release_ready: false
 developer_preview_released: false
@@ -31,12 +31,12 @@ is not ready for formal release.
 | DBOS clean clone | 331 tests, 34 validators, two demos | `PASS_PRIVATE_ACCESS` |
 | SAEE public clean clone | public smoke/demo | `PASS_ADAPTER_MISSING` |
 | SAEE ↔ DBOS public adapter | public `main` lacks required adapter | `FAIL` |
-| SAEE adapter extraction preflight | `SAEE-PUBLIC-SAFE-EXTRACTION-REVIEW.md`; isolated 8/8 tests and exact 19-file closure | `PASS_TECHNICAL_SCOPE_DECISION_REQUIRED` |
+| SAEE adapter extraction preflight | `SAEE-PUBLIC-SAFE-EXTRACTION-REVIEW.md`; isolated 8/8 tests, exact 19-file closure and `ADR-020` authorization | `PASS_AUTHORIZED_IMPLEMENTATION_PENDING` |
 | Cross-project clean clone | `CROSS_PROJECT_CLEAN_CLONE_PASS=false` | `FAIL` |
-| Public license | no root `LICENSE` in DBA, DBOS, or SAEE | `MISSING_DECISION` |
+| Public license decision | `ADR-020`; `Apache-2.0` selected for Owner-created public surfaces | `PASS_DECISION_IMPLEMENTATION_IN_PROGRESS` |
 | DBOS anonymous access | GitHub visibility is `PRIVATE` | `FAIL` |
-| DBOS public visibility preflight | `DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md`; Gitleaks reachable-history scan 0 findings, GitHub security alerts disabled | `INDEPENDENT_SCAN_PASS_LICENSE_AND_OWNER_DECISION_REQUIRED` |
-| External developer trial | 0 participants; DQ-010 not authorized | `NOT_STARTED` |
+| DBOS trial access decision | `DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md`; `PRIVATE_COLLABORATOR_TRIAL` selected; repository remains private | `PASS_DECISION_NO_COLLABORATORS_ADDED` |
+| External developer trial | 0 participants; `DQ-010=AUTHORIZE_AFTER_CLEAN_CLONE_PASS`; real `participant_source` missing | `CONDITIONALLY_AUTHORIZED_NOT_EFFECTIVE` |
 | Human Developer Preview release decision | DQ-009 `BLOCKED_INPUT` | `MISSING` |
 
 ## Release classification
@@ -49,18 +49,16 @@ TRUSTED_MULTI_AGENT_INFRASTRUCTURE_DEVELOPER_PREVIEW_RELEASED=false
 FORMAL_RELEASE_READY=false
 ```
 
-## Required decisions and external evidence
+## Remaining implementation and external evidence
 
-1. `DQ-011`: approve or reject the exact 19-file `A_PUBLIC_SAFE_EXTRACTION`
-   candidate in `SAEE-PUBLIC-SAFE-EXTRACTION-REVIEW.md`.
-2. `DQ-012`: select `Apache-2.0`, another license, or withhold a license.
-3. `DQ-014`: use `DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md` to choose DBOS public
-   timing or controlled collaborator trial access; preliminary scanning is not
-   a complete security audit.
-4. Repair the chosen public adapter/access path and rerun full clean-clone
+1. Adopt `Apache-2.0` in DBA, DBOS and SAEE while preserving third-party licenses.
+2. Implement and verify only the authorized 19-file SAEE public-safe extraction.
+3. Keep DBOS private and freeze the exact collaborator-trial source commit.
+4. Rerun full clean-clone
    validation.
-5. `DQ-010`: authorize a named coordinator and 3–5 real external Agent
-   Developers, then execute and record the trial.
+5. Freeze `trial_package_id`, privacy notice and stop rules; replace the
+   `participant_source` placeholder with 3–5 real external Agent Developers or
+   an explicit recruitment channel, then make the conditional `DQ-010` effective.
 6. `DQ-009`: record an explicit Human Release Decision with `released_by_ref`.
 
 No local test, website deployment, prerelease tag, or synthetic demo can replace

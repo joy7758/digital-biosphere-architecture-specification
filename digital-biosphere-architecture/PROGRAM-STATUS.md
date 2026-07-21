@@ -2,7 +2,7 @@
 document_id: DBA-PROGRAM-STATUS-2026-07-21
 title: Digital Biosphere Program Status Snapshot
 title_zh: 数字生物圈项目群状态快照
-status: observed-governance-snapshot
+status: observed-governance-snapshot-owner-decisions-recorded
 observed_at: 2026-07-21
 freshness: point-in-time
 release_status: website-candidate-published-developer-preview-not-released
@@ -21,7 +21,8 @@ PROGRAM_HEALTH=ATTENTION_REQUIRED
 CURRENT_MILESTONE=DP-CCV
 CORE_PROJECTS=3
 PILOT_PROJECTS=1
-PROGRAM_AUTHORITY_ASSIGNED=false
+PROGRAM_AUTHORITY_ASSIGNED=true
+PROGRAM_OWNER_REF=zhangbin
 SCOPED_LOCAL_DBOS_SAEE_CONFORMANCE_PASS=true
 FULL_END_TO_END_INTEGRATION_VERIFIED=false
 ACTIVE_DIGITAL_ENTITY_VERIFIED_BY_DBA=false
@@ -30,7 +31,10 @@ DBOS_TESTS_PASS=331
 DBOS_VALIDATORS_PASS=34
 DEVELOPER_PREVIEW_LOCAL_CANDIDATE_VALIDATED=true
 EXTERNAL_DEVELOPER_TRIAL_PLAN_DEFINED=true
+EXTERNAL_DEVELOPER_TRIAL_CONDITIONALLY_AUTHORIZED=true
 EXTERNAL_DEVELOPER_TRIAL_EXECUTION_AUTHORIZED=false
+EXTERNAL_CONTACT_AUTHORIZED=false
+PARTICIPANT_SOURCE_CONFIRMED=false
 EXTERNAL_DEVELOPER_VALIDATION_COMPLETE=false
 EXTERNAL_DEVELOPER_PARTICIPANTS=0
 DBA_REMOTE_BASELINE_CREATED=true
@@ -44,6 +48,9 @@ PUBLIC_WEBSITE_DEPLOYED=true
 PUBLIC_WEBSITE_HEALTH_PASS=true
 PUBLIC_WEBSITE_ROLLBACK_VALIDATED=true
 GITHUB_WEBSITE_PRERELEASE_PUBLISHED=true
+SAEE_PUBLIC_SAFE_EXTRACTION_AUTHORIZED=true
+PUBLIC_LICENSE_SELECTED=Apache-2.0
+DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 ```
 
 `ATTENTION_REQUIRED` 表示存在需要人工决定、状态来源对齐和仓库拓扑处理的事项，不表示任何子项目失败或不可用。
@@ -54,7 +61,7 @@ GITHUB_WEBSITE_PRERELEASE_PUBLISHED=true
 
 | project_id | branch | observed commit | worktree observation | remote observation | 规范状态摘要 |
 |---|---|---|---|---|---|
-| `DBA` | `main` | `67933205e3c4fa91c038c5fa961727abbf6d2af4` | source commit 已推送 | `origin/main` 包含双语网站、部署报告和网站候选 prerelease | `redcrag.cn` 候选网站已部署；Developer Preview 未发布 |
+| `DBA` | `main` | `366a312f91a3efe173732e18d3f8d9436e5c102d` | source commit 已推送；`ADR-020` 当前在隔离 release-preparation branch 中 | `origin/main` 包含双语网站、部署报告和网站候选 prerelease | Owner 决策已记录但尚未形成新远端基线；Developer Preview 未发布 |
 | `DBOS` | `main` | `b4e3cbe2af442be861dbab3f7b2ffd2567443077` | source commit 已推送 | `origin/main` 可干净检出；仓库当前为 private | fresh install、331/331 tests、34/34 validators、两个 Demo 通过；不是 Agent Runtime |
 | `SAEE` | public `main` | `e503c22109bdb7c83dc465d66e2a22760a3c8d90` | public source 可干净检出；内部工作树另有未发布变化 | `origin/main` 是裁剪公共产品层 | public smoke/demo 通过；DBOS Developer Preview Adapter 不在公共 source，跨项目 gate 失败 |
 | `RESEARCH-AGENT-PILOT` | `main` | `8445fe5d13cd889032c3786ba527d801f56d5351` | `dirty_count=30` | 未发现 `origin` | `V1_0_STATUS=INCOMPLETE_NOT_READY`；Agent、Runtime、Entity、Execution 均为 0 |
@@ -81,17 +88,15 @@ GITHUB_WEBSITE_PRERELEASE_PUBLISHED=true
 
 ## 4. Active Decisions and Blockers（当前决策与阻塞）
 
-- `DQ-001`：指派或确认 Program Owner（项目群负责人）与决策引用；
 - `DQ-002`：决定 DBA 独立仓库根目录与当前父级 Git 根目录之间的拓扑；
 - `DQ-003`：确认 DBOS、SAEE、Research Agent Pilot 的 canonical status source；
 - `DQ-004`：选择第一个跨项目 conformance（符合性）里程碑；
 - `DQ-008`：决定当前驾驶舱与既有 DBA public meaning layer 的规范关系和单一前门；
-- `DQ-010`：决定是否允许冻结试用包、联系 3–5 名外部 Agent Developer 并执行试用；
-- `DQ-011`：决定 SAEE DBOS Preview Adapter 如何在不公开 private core、不复制 evaluator 的前提下向外部开发者提供；
-- `DQ-012`：选择 Developer Preview 的公开许可证；当前推荐 `Apache-2.0`，尚未批准；
-- `DQ-013` 已由 `ADR-019` 标记为 `SUPERSEDED`：过期应用资产已按授权清理，双语网站候选使用 `https://redcrag.cn/` 根入口；
-- `DQ-014`：决定 DBOS 从 private 转为 public 的时点和公开前审计要求；
-- `B-001`：没有已记录的 Program Authority assignment（项目群权力指派），阻止高影响项目群决策闭环；
+- `DQ-009`：最终 Developer Preview Release（开发者预览版发布）仍需 Trial Result 和 `released_by_ref`；
+- `DQ-001`、`DQ-011`、`DQ-012`、`DQ-014` 已由 `ADR-020` 关闭；
+- `DQ-010` 已形成条件决定：Clean Clone、试用包、真实参与者来源、隐私和停止规则全部满足后才生效；
+- `DQ-013` 已由 `ADR-019` 标记为 `SUPERSEDED`；
+- `B-001` 已由 `ADR-020` 解除；Program Owner 是 `zhangbin`，不产生运行、演化或发布权；
 - `B-002`：DBA Git 根目录不是 DBA 目录本身，影响仓库边界和远端展示；
 - `B-003`：核心项目状态入口尚未统一，阻止可靠自动汇总。
 - `B-005`：两个 DBA 语义表面尚未完成 canonical reconciliation（规范对齐），阻止对外声明唯一入口。
@@ -102,12 +107,13 @@ GITHUB_WEBSITE_PRERELEASE_PUBLISHED=true
 
 ## 5. Next Program Actions（下一步项目群行动）
 
-1. 处理 `DQ-011`，冻结不暴露 private core、不复制 evaluator 的 SAEE Adapter 分发方式；
-2. 处理 `DQ-012` 与 `DQ-014`，明确许可证和 DBOS 试用访问方式；
-3. 使用三个最终远端 commit 重跑完整 clean-clone；
-4. 整体通过后准备 `trial_package_id`、试用协调者、隐私说明并处理 `DQ-010`；
-5. 获得授权后联系 3–5 名外部 Agent Developer；Trial Result 完成后再处理 `DQ-009`；
-6. 在 Pilot 自身 gate 通过前保持 Research Agent Prototype 为 `NOT_READY`。
+1. 在三个仓库采用 `Apache-2.0`，保留第三方许可边界；
+2. 按冻结 blob ID 在隔离分支实现 SAEE 精确 19 文件 public-safe extraction；
+3. 保持 DBOS private，并冻结 private collaborator trial 的远端 source commit；
+4. 使用三个最终远端 commit 重跑完整 Clean Clone；
+5. 整体通过后冻结 `trial_package_id`、隐私说明和停止规则；
+6. 等待真实 `participant_source`，再使 `DQ-010` 条件授权生效并联系 3–5 名开发者；
+7. Trial Result 完成后再处理 `DQ-009`；Pilot 自身 gate 通过前保持 Research Agent Prototype 为 `NOT_READY`。
 
 ## 6. Refresh Protocol（刷新协议）
 

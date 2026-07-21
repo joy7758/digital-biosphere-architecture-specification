@@ -6,7 +6,9 @@ governance_authority_created: false
 architecture_governance_defined: true
 architecture_authority_assigned: false
 program_governance_defined: true
-program_authority_assigned: false
+program_authority_assigned: true
+program_owner_ref: zhangbin
+program_owner_assignment_reference: ADR-020
 policy_effect: none
 ---
 
@@ -146,7 +148,9 @@ ARCHITECTURE_AUTHORITY_ASSIGNED=false
 PROGRAM_GOVERNANCE_IS_RUNTIME_GOVERNANCE=false
 PROGRAM_AUTHORITY_IS_OPERATIONAL_AUTHORITY=false
 PROGRAM_AUTHORITY_IS_EVOLUTION_AUTHORITY=false
-PROGRAM_AUTHORITY_ASSIGNED=false
+PROGRAM_AUTHORITY_ASSIGNED=true
+PROGRAM_OWNER_REF=zhangbin
+PROGRAM_OWNER_ASSIGNMENT_REFERENCE=ADR-020
 PROGRAM_STATUS_CHANGES_PROJECT_TRUTH=false
 RECOMMENDATION_IS_DECISION=false
 DECISION_IS_EXECUTION=false

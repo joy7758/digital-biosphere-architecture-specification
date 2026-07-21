@@ -2,13 +2,16 @@
 document_id: DBA-FINAL-RELEASE-DECISION-PACKET-0.1
 title: Trusted Multi-Agent Infrastructure Developer Preview v0.1 Final Release Decision Packet
 title_zh: 可信多智能体基础设施开发者预览版 v0.1 最终发布决策包
-status: ready-for-human-decisions-not-release-authorized
+status: owner-decisions-recorded-release-preparation-authorized
 release_authorized: false
 developer_preview_cloud_release_authorized: false
 website_candidate_deployment_authorized: true
 website_candidate_deployed: true
 website_candidate_github_prerelease_published: true
-license_selected: false
+license_selected: true
+license_id: Apache-2.0
+release_preparation_authorized: true
+trial_execution_authorized: false
 last_reviewed: 2026-07-21
 ---
 
@@ -23,7 +26,7 @@ last_reviewed: 2026-07-21
 | SAEE GitHub public layer | `origin/main@e503c22`；public smoke/demo 通过 | `PUBLIC_LAYER_PASS_ADAPTER_MISSING` |
 | Cross-project Clean Clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `FAIL_REQUIRED_SAEE_ADAPTER_MISSING` |
 | Baidu website | `https://redcrag.cn/` 中英文候选网站；健康、安全头和回滚通过 | `CANDIDATE_DEPLOYED_NOT_RELEASED` |
-| External trial | 参与者 0，`DQ-010` 未授权 | `NOT_STARTED` |
+| External trial | 参与者 0；`DQ-010=AUTHORIZE_AFTER_CLEAN_CLONE_PASS`；`participant_source` 仍是占位符 | `CONDITIONALLY_AUTHORIZED_NOT_EFFECTIVE` |
 | GitHub website artifact | `v0.1-public-website-candidate`；`prerelease=true` | `WEBSITE_CANDIDATE_PRERELEASED` |
 | DBOS repository visibility | GitHub API 返回 `PRIVATE` | `PUBLIC_ACCESS_NOT_ESTABLISHED` |
 
@@ -56,33 +59,35 @@ claim profiles 和 Resource Resolution Receipt schema。SAEE public `main` 的
 
 | Option | 说明 | 结论 |
 |---|---|---|
-| `A_PUBLIC_SAFE_EXTRACTION` | 以有来源、hash-bound（哈希绑定）的 public abstraction package（公共抽象包）迁移上述最小闭包；保留负向测试与非声明，不携带 kernel/selection/mutation/lineage/private backend | `CONDITIONALLY_RECOMMENDED` |
+| `A_PUBLIC_SAFE_EXTRACTION` | 以有来源、hash-bound（哈希绑定）的 public abstraction package（公共抽象包）迁移上述最小闭包；保留负向测试与非声明，不携带 kernel/selection/mutation/lineage/private backend | `APPROVED_EXACT_19_FILES_BY_ADR-020` |
 | `B_HOSTED_EVALUATION_API` | 在百度部署远程 SAEE service（服务），开发者只调用接口 | `NOT_RECOMMENDED_V0_1`：会新增 Runtime/API/Auth/运营边界 |
 | `C_REMOVE_EXECUTABLE_SAEE_ADAPTER` | v0.1 只发布 SAEE 文档和 toy demo | `NOT_RECOMMENDED`：无法满足已冻结跨项目试用目标 |
 
-推荐 `A_PUBLIC_SAFE_EXTRACTION`，但必须先由 Human Architecture Authority（人工架构权力）
-明确批准 public boundary amendment（公开边界修订）和 exact manifest（精确清单）。
-迁移必须是同一 evaluator 的可验证投影，不得手工重写为第二套算法。
+`ADR-020` 已由 Human Program Owner 和 SAEE Domain Owner `zhangbin` 明确批准
+`A_PUBLIC_SAFE_EXTRACTION_EXACT_19_FILES`。迁移必须是同一 evaluator 的可验证投影，
+不得手工重写为第二套算法；完成前仍不是公共可用能力。
 
 ```text
-AGENT_RECOMMENDATION=CONDITIONALLY_RECOMMENDED
-SAEE_PUBLICATION_BOUNDARY_AMENDMENT_REQUIRED=true
+AGENT_RECOMMENDATION=RECOMMENDED_FOR_RELEASE_PREPARATION_IMPLEMENTATION
+SAEE_PUBLICATION_BOUNDARY_AMENDMENT_REQUIRED=false
 PRIVATE_CORE_PUBLICATION_AUTHORIZED=false
-PUBLIC_ADAPTER_MIGRATION_AUTHORIZED=false
+PUBLIC_ADAPTER_MIGRATION_AUTHORIZED=true
+PUBLIC_SAFE_EXTRACTION_IMPLEMENTED=false
 ```
 
 ## 3. DQ-012 — Public License（公开许可证）
 
-GitHub 当前识别结果：DBA、DBOS、SAEE 均无根 `LICENSE`。正式开发者预览如果没有
-许可证，外部开发者没有明确复制、修改或分发权利。
+在 `ADR-020` 记录决定时，DBA、DBOS、SAEE 均无根 `LICENSE`。Human Owner 已选择
+`Apache-2.0` 并授权三个仓库采用；文件落地和远端验证仍需在各仓库完成。
 
-推荐统一使用 `Apache-2.0`：它适合基础设施与 SDK，包含明确 patent grant（专利授权）
-和贡献边界。选择许可证是法律／Owner 决策，不能由 Codex 自动作出。
+该决定只覆盖 Owner-created public surfaces（负责人创作的公开表面），不自动重许可
+第三方资产、依赖、数据、Evidence 或独立许可材料。
 
 ```text
 RECOMMENDED_LICENSE=Apache-2.0
-LICENSE_SELECTED=false
-LICENSE_PUBLICATION_AUTHORIZED=false
+LICENSE_SELECTED=true
+LICENSE_PUBLICATION_AUTHORIZED=true
+LICENSE_ADOPTION_IMPLEMENTED_IN_ALL_REPOSITORIES=false
 ```
 
 ## 4. DQ-013 — Baidu Deployment Target（百度部署目标）
@@ -118,29 +123,35 @@ DBOS `b4e3cbe` 的 clean clone 使用当前 GitHub 凭据完成；这不是 anon
 （匿名检出）证据。仓库当前为 `PRIVATE`，因此 3–5 名陌生开发者和正式公开用户默认
 无法获取 SDK、Quick Start 或 Demo。
 
-推荐在许可证、SAEE public-safe extraction、最终 clean clone 和外部试用修正完成后，
-由 Owner 将 DBOS 切换为 `PUBLIC`；切换前必须再次扫描 secret、private material 和
-历史 Evidence 边界。试用阶段可以用受控 collaborator access（协作者访问），但不能
-据此声称 public release（公开发布）。
+`ADR-020` 已选择 `PRIVATE_COLLABORATOR_TRIAL`。DBOS 在 v0.1 外部试用期间保持 private；
+只有冻结试用包中的已确认参与者才可获得受控 collaborator access（协作者访问），且
+不能据此声称 public release（公开发布）。未来如需转为 public，必须建立新的可见性决定。
 
 ```text
 DBOS_REPOSITORY_VISIBILITY=PRIVATE
 ANONYMOUS_CLONE_VALIDATED=false
 DBOS_PUBLICATION_AUTHORIZED=false
+PRIVATE_COLLABORATOR_TRIAL_SELECTED=true
 ```
 
-## 6. Required Human Decision Record（所需人工决定记录）
+## 6. Recorded Human Decision（已记录人工决定）
 
 ```text
-decided_by_ref=
-dq_011_saee_public_safe_extraction=approved|rejected
-dq_012_license=Apache-2.0|other|withheld
+decided_by_ref=zhangbin
+dq_001_program_owner=zhangbin
+dq_010_trial=AUTHORIZE_AFTER_CLEAN_CLONE_PASS
+dq_011_saee_public_safe_extraction=A_PUBLIC_SAFE_EXTRACTION_EXACT_19_FILES
+dq_012_license=Apache-2.0
 dq_013_baidu_isolated_path=superseded_by_ADR-019
-dq_014_dbos_visibility=public_after_trial|private_collaborator_trial|rejected
-decision_timestamp=
+dq_014_dbos_visibility=PRIVATE_COLLABORATOR_TRIAL
+trial_coordinator=zhangbin
+participant_source=PENDING_REAL_INPUT
+decision_timestamp=2026-07-21T22:48:39+08:00
 ```
 
-其余决定完成后仍需：实现/审计 SAEE public-safe extraction、重跑 Clean Clone、处理
-`DQ-010`、完成 3–5 人试用，再由 `DQ-009` 决定 tag、GitHub Release 和百度正式部署。
+仍需：采用许可证、实现/审计 SAEE public-safe extraction、冻结 DBOS private trial
+source、重跑 Clean Clone、冻结试用包、补充真实 `participant_source`、完成 3–5 人试用，
+再由 `DQ-009` 决定 tag、GitHub Release 和百度正式部署。
 
-本决策包不是 Decision、Authorization、Release 或 Deployment。
+本决策包记录 release preparation decisions（发布准备决定），但不是正式 Release、
+Deployment（部署）、有效的外部联系授权或 Trial Result（试用结果）。

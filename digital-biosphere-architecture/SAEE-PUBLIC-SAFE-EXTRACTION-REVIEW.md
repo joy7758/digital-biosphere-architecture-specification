@@ -2,11 +2,13 @@
 document_id: DBA-SAEE-PUBLIC-SAFE-EXTRACTION-REVIEW-2026-07-21
 title: SAEE DBOS Developer Preview Public-safe Extraction Review
 title_zh: SAEE DBOS 开发者预览适配器公共安全提取审查
-status: review-ready-decision-required
-review_result: technically-reproducible-publication-boundary-not-authorized
+status: approved-for-exact-extraction-not-yet-implemented
+review_result: exact-19-file-public-safe-extraction-authorized
 source_commit: 2da5b0065
 public_base_commit: e503c22109bdb7c83dc465d66e2a22760a3c8d90
-public_boundary_amendment_authorized: false
+public_boundary_amendment_authorized: true
+authorization_reference: architecture/ADR-020-release-preparation-owner-decisions.md
+saee_domain_owner_ref: zhangbin
 child_repository_modified: false
 last_reviewed: 2026-07-21
 ---
@@ -15,17 +17,19 @@ last_reviewed: 2026-07-21
 
 ## 1. Decision Purpose（决策目的）
 
-本报告为 `DQ-011` 提供精确技术输入。它审查现有只读 DBOS Developer Preview
-Adapter（开发者预览适配器）能否形成有来源、可复验的公共提取候选，不修改 SAEE，
-不修改 capability truth（能力事实），也不批准 public/private boundary amendment
-（公开／私有边界修订）。
+本报告最初为 `DQ-011` 提供精确技术输入。`ADR-020` 已批准现有只读 DBOS Developer
+Preview Adapter（开发者预览适配器）的 `A_PUBLIC_SAFE_EXTRACTION_EXACT_19_FILES`，
+但该提取尚未实现。本报告仍不修改 capability truth（能力事实），且不允许超出清单的
+public/private boundary amendment（公开／私有边界修订）。
 
 开发前智能体推荐结论沿用 SAEE 已记录的 Recommendation Gate：
 
 ```text
 AGENT_RECOMMENDATION=CONDITIONALLY_RECOMMENDED
 RECOMMENDED_FOR=LOCAL_SYNTHETIC_CONFORMANCE_ONLY
-PUBLICATION_RECOMMENDED_WITHOUT_HUMAN_DECISION=false
+HUMAN_DECISION_REFERENCE=ADR-020
+RECOMMENDED_FOR_RELEASE_PREPARATION_IMPLEMENTATION=true
+RECOMMENDED_FOR_FORMAL_RELEASE=false
 ```
 
 ## 2. Isolated Reproduction（隔离复验）
@@ -55,8 +59,8 @@ AUTHORITY_GRANTED=false
 
 ## 3. Exact Minimum Closure（精确最小闭包）
 
-以下 Git blob ID（Git 内容对象标识）均解析自 `2da5b0065`。清单是审查输入，不是
-发布 manifest（发布清单）或复制授权。
+以下 Git blob ID（Git 内容对象标识）均解析自 `2da5b0065`。清单现由 `ADR-020` 作为
+唯一允许的提取 manifest（提取清单）；它不是正式 release manifest（发布清单）。
 
 | 类别 | 路径 | Git blob ID |
 |---|---|---|
@@ -91,9 +95,9 @@ evaluation implementation（评价实现）及其 schema/profile 闭包。
 
 允许的未来提取必须同时满足：
 
-1. Human Architecture Authority 明确批准 `DQ-011` 和精确 19 文件清单；
-2. SAEE Domain Owner 确认这些 evaluator 文件允许进入公共边界；
-3. `DQ-012` 先确定适用于所提取文件及依赖的许可证；
+1. `ADR-020` 已批准 `DQ-011` 和精确 19 文件清单；
+2. `saee_domain_owner_ref=zhangbin` 已确认列明 evaluator 文件允许进入公共边界；
+3. `DQ-012` 已选择 `Apache-2.0`，采用时仍须保留第三方依赖许可；
 4. 保持来源 commit、blob ID、负向测试和 capability inventory 一致；
 5. 不携带 kernel、selection、mutation、lineage、private backend 或未列明文件；
 6. 从最终公共 remote commit 重跑完整 Clean Clone。
@@ -103,11 +107,13 @@ evaluation implementation（评价实现）及其 schema/profile 闭包。
 ```text
 DQ_011_TECHNICAL_INPUT_COMPLETE=true
 PUBLIC_SAFE_EXTRACTION_IMPLEMENTED=false
-PUBLIC_BOUNDARY_AMENDMENT_AUTHORIZED=false
+PUBLIC_BOUNDARY_AMENDMENT_AUTHORIZED=true
+PUBLIC_ADAPTER_MIGRATION_AUTHORIZED=true
 PRIVATE_CORE_PUBLICATION_AUTHORIZED=false
 SAEE_PUBLIC_REPOSITORY_CHANGED=false
 CROSS_PROJECT_CLEAN_CLONE_PASS=false
 DEVELOPER_PREVIEW_RELEASED=false
 ```
 
-结论：技术候选可复验，但公开边界决策仍不可由测试结果替代。
+结论：技术候选可复验且精确提取已获人工授权；实现、远端合并、Clean Clone 和正式发布
+仍是不同阶段，不能由本决定或测试结果自动替代。
