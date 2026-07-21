@@ -2,6 +2,7 @@ import { createHash } from "node:crypto";
 import { cp, mkdir, readdir, readFile, rm, stat, writeFile } from "node:fs/promises";
 import { dirname, join, relative, resolve } from "node:path";
 import { fileURLToPath, pathToFileURL } from "node:url";
+import { resolveReleaseContext, routeMarkers } from "./release-mode.mjs";
 
 const siteRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputRoot = join(siteRoot, "out");
@@ -10,11 +11,25 @@ const serverEntry = join(siteRoot, "dist", "server", "index.js");
 const sourceRevision = process.env.SOURCE_REVISION || "working-tree";
 const generatedAt = new Date().toISOString();
 
+const [status, agentIndex, agentCustomerPackage, dbosPackage] = await Promise.all([
+  readFile(join(siteRoot, "public", "status.json"), "utf8").then(JSON.parse),
+  readFile(join(siteRoot, "public", "agent-index.json"), "utf8").then(JSON.parse),
+  readFile(join(siteRoot, "public", "agent-customer-package.json"), "utf8").then(JSON.parse),
+  readFile(join(siteRoot, "public", "dbos-public-package-manifest.json"), "utf8").then(JSON.parse),
+]);
+const releaseContext = resolveReleaseContext(process.env, {
+  status,
+  agentIndex,
+  agentCustomerPackage,
+  dbosPackage,
+});
+const markers = routeMarkers(releaseContext.mode);
+
 const routes = [
-  { request: "/", output: "index.html", marker: "面向多智能体系统的可信基础设施" },
-  { request: "/en", output: "en/index.html", marker: "Trust infrastructure for multi-agent systems" },
-  { request: "/status", output: "status/index.html", marker: "当前不是正式发布" },
-  { request: "/en/status", output: "en/status/index.html", marker: "This is not a release" },
+  { request: "/", output: "index.html", markers: markers.zhHome },
+  { request: "/en", output: "en/index.html", markers: markers.enHome },
+  { request: "/status", output: "status/index.html", markers: markers.zhStatus },
+  { request: "/en/status", output: "en/status/index.html", markers: markers.enStatus },
 ];
 
 await rm(outputRoot, { recursive: true, force: true });
@@ -39,8 +54,10 @@ for (const route of routes) {
   }
 
   const html = await response.text();
-  if (!html.includes(route.marker)) {
-    throw new Error(`Cannot export ${route.request}: expected marker is absent`);
+  for (const marker of route.markers) {
+    if (!html.includes(marker)) {
+      throw new Error(`Cannot export ${route.request}: expected marker is absent: ${marker}`);
+    }
   }
 
   const target = join(outputRoot, route.output);
@@ -56,8 +73,13 @@ await writeFile(
       artifact: "trusted-multi-agent-infrastructure-website",
       source_revision: sourceRevision,
       generated_at: generatedAt,
-      deployment_state: "candidate_not_released",
-      developer_preview_released: false,
+      release_mode: releaseContext.mode,
+      deployment_state: releaseContext.deploymentState,
+      developer_preview_released: releaseContext.developerPreviewReleased,
+      release_decision_reference: releaseContext.releaseDecisionReference,
+      released_by_ref: releaseContext.releasedByRef,
+      public_release_tag: releaseContext.publicReleaseTag,
+      dbos_public_package_url: releaseContext.dbosWheelUrl,
       routes: routes.map((route) => route.request),
     },
     null,

@@ -14,7 +14,7 @@
     "export": "npm run build && node scripts/export-static.mjs",
     "verify:static": "node scripts/verify-static.mjs",
     "release:static": "npm run export && npm run verify:static",
-    "test": "npm run build && node --test tests/rendered-html.test.mjs",
+    "test": "npm run build && node --test tests/*.test.mjs",
     "lint": "eslint . --ignore-pattern dist --ignore-pattern .next"
   },
   "dependencies": {
