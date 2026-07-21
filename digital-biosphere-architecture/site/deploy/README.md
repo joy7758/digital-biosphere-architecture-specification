@@ -21,6 +21,10 @@ directory. The `current` symlink changes only after manifest verification and
 `nginx -t` pass. Rollback repoints `current` to the previous release and reloads
 Nginx.
 
+The checked-in Nginx configuration references only the certificate and private
+key that exist under `/etc/letsencrypt/live/redcrag.cn/`; it does not assume
+Certbot helper files that are absent on the current Baidu Cloud host.
+
 Deployment truth:
 
 ```text
