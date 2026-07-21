@@ -2,7 +2,7 @@
 document_id: DBA-DBOS-PUBLIC-VISIBILITY-PREFLIGHT-2026-07-21
 title: DBOS Repository Public Visibility Preflight
 title_zh: DBOS 仓库公开可见性预检
-status: preliminary-pass-full-security-and-license-gates-open
+status: independent-history-scan-pass-license-and-owner-decision-open
 source_commit: b4e3cbe2af442be861dbab3f7b2ffd2567443077
 repository_visibility: private
 repository_visibility_changed: false
@@ -41,6 +41,9 @@ GITHUB_VISIBILITY_CHANGED=false
 | Generic credential assignment patterns | 0 个命中 |
 | Sensitive filenames in reachable Git history | 0 个命中 |
 | Reachable Git blobs over 5 MiB | 0 个命中 |
+| Independent scanner | `gitleaks/gitleaks@v8.30.1`；官方 checksum（校验和）通过 |
+| Reachable Git history scanned | 2 commits；约 3.87 MB |
+| Gitleaks findings | 0 |
 | GitHub Secret Scanning | `DISABLED` |
 | GitHub Dependabot Alerts | `DISABLED` |
 
@@ -48,10 +51,11 @@ GITHUB_VISIBILITY_CHANGED=false
 
 ## 3. Interpretation（解释）
 
-当前快照没有发现常见高置信度明文密钥或明显敏感文件名，是 `DQ-014` 的正向信号，
+当前快照与独立 Gitleaks 历史扫描均未发现密钥，是 `DQ-014` 的正向信号，
 但不足以证明仓库可以立即公开：
 
-- 扫描模式不是完整 secret detector（密钥检测器），也没有覆盖所有编码、压缩或未知格式；
+- Gitleaks 覆盖当前可达 Git 历史，但任何规则型 scanner（扫描器）都不能证明不存在
+  未知格式、外部存储、运行时 secret 或未纳入 Git 的私有材料；
 - GitHub Secret Scanning 当前禁用，没有平台侧 alert evidence（告警证据）；
 - Dependabot Alerts 当前禁用，没有平台侧依赖漏洞告警面；
 - 根许可证缺失，外部复制、修改和分发权利不明确；
@@ -61,7 +65,7 @@ GITHUB_VISIBILITY_CHANGED=false
 ## 4. Required Gate Before Public（公开前必须闸门）
 
 1. `DQ-012` 选择许可证，并由各 Repository Owner 采用；
-2. 对最终 remote commit 执行独立 secret scanner 或等价的完整历史审查；
+2. 在未来最终 remote commit 与 tag 上重跑相同 Gitleaks 版本；
 3. 明确 GitHub Secret Scanning / Dependabot 的启用策略；
 4. 对个人数据、私有域名、内部地址、凭据占位符和第三方资产做人工抽样复核；
 5. 决定先进行 private collaborator trial（私有协作者试用）还是直接 public；
@@ -73,6 +77,8 @@ GITHUB_VISIBILITY_CHANGED=false
 ```text
 DQ_014_PRELIMINARY_TECHNICAL_INPUT_COMPLETE=true
 HIGH_CONFIDENCE_SECRET_PATTERN_HITS=0
+GITLEAKS_FULL_REACHABLE_HISTORY_SCAN_PASS=true
+GITLEAKS_FINDINGS=0
 FULL_SECRET_HISTORY_AUDIT_COMPLETE=false
 LICENSE_SELECTED=false
 DBOS_PUBLIC=false

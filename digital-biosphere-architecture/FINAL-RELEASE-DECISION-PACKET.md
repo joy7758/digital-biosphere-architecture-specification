@@ -110,8 +110,9 @@ DBOS 公开、SAEE Adapter 迁移、许可证选择或外部试用。
 只读预检见
 [`DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md`](DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md)。
 当前 457 个 tracked files（已跟踪文件）中未发现高置信度密钥模式、敏感文件名或
-超过 5 MiB 的历史 blob；但 GitHub Secret Scanning 与 Dependabot Alerts 均禁用，
-根许可证缺失，完整历史安全审查仍未完成。
+超过 5 MiB 的历史 blob；官方 `gitleaks/gitleaks@v8.30.1` 对 2 个可达历史提交的
+独立扫描也为 0 findings。但 GitHub Secret Scanning 与 Dependabot Alerts 均禁用，
+根许可证缺失，人工隐私抽样仍未完成。
 
 DBOS `b4e3cbe` 的 clean clone 使用当前 GitHub 凭据完成；这不是 anonymous clone
 （匿名检出）证据。仓库当前为 `PRIVATE`，因此 3–5 名陌生开发者和正式公开用户默认

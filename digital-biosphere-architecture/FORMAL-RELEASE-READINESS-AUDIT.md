@@ -35,7 +35,7 @@ is not ready for formal release.
 | Cross-project clean clone | `CROSS_PROJECT_CLEAN_CLONE_PASS=false` | `FAIL` |
 | Public license | no root `LICENSE` in DBA, DBOS, or SAEE | `MISSING_DECISION` |
 | DBOS anonymous access | GitHub visibility is `PRIVATE` | `FAIL` |
-| DBOS public visibility preflight | `DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md`; no high-confidence pattern hits, GitHub security alerts disabled | `PRELIMINARY_PASS_FULL_AUDIT_REQUIRED` |
+| DBOS public visibility preflight | `DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md`; Gitleaks reachable-history scan 0 findings, GitHub security alerts disabled | `INDEPENDENT_SCAN_PASS_LICENSE_AND_OWNER_DECISION_REQUIRED` |
 | External developer trial | 0 participants; DQ-010 not authorized | `NOT_STARTED` |
 | Human Developer Preview release decision | DQ-009 `BLOCKED_INPUT` | `MISSING` |
 

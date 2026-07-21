@@ -33,7 +33,7 @@ last_reviewed: 2026-07-21
 | `DQ-011` | `P0` | SAEE DBOS Developer Preview Adapter 应如何安全提供给外部开发者？ | `READY_FOR_REVIEW` | `SAEE-PUBLIC-SAFE-EXTRACTION-REVIEW.md` 已冻结 19 文件闭包、blob ID 和隔离 8/8 复验；仍需 public boundary amendment 与 SAEE Domain Owner 决定 | `DP-4` 是否能形成可干净检出的 SAEE 评价入口 | 将内部工程历史推入 public `main`、复制 evaluator、把 toy demo 当 Adapter 或通过无关历史强制合并 |
 | `DQ-012` | `P0` | Developer Preview 的 DBA、DBOS、SAEE 公开表面采用什么许可证？ | `READY_FOR_REVIEW` | 当前无根 LICENSE、目标复用方式、专利与贡献边界；推荐 `Apache-2.0` | 外部复制、修改、分发与 GitHub Release 的法律边界 | Open Infrastructure 自动等于 Apache/MIT，或 public repo 自动授予复用权 |
 | `DQ-013` | `P0` | 百度正式发布是否采用 `redcrag.cn/trusted-multi-agent-infrastructure/` 独立路径？ | `SUPERSEDED` | Human Owner 明确旧应用资产已过期并授权清理；见 `ADR-019` | 网站候选改用 `https://redcrag.cn/` 根入口；不授权 Developer Preview Release | 网站上线或健康检查自动等于正式发布 |
-| `DQ-014` | `P0` | DBOS 何时从 private repository 转为 public repository？ | `READY_FOR_REVIEW` | `DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md` 初步扫描无高置信度命中；根许可证缺失，GitHub Secret Scanning/Dependabot 禁用，完整历史审查与外部试用方式仍待决定 | 匿名开发者能否获取 SDK、Quick Start 和 Demo | authenticated clone 自动等于 public availability，或 trial collaborator access 自动等于公开发布 |
+| `DQ-014` | `P0` | DBOS 何时从 private repository 转为 public repository？ | `READY_FOR_REVIEW` | `DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md` 的 Gitleaks 全可达历史扫描为 0 findings；根许可证缺失，GitHub Secret Scanning/Dependabot 禁用，人工隐私抽样与外部试用方式仍待决定 | 匿名开发者能否获取 SDK、Quick Start 和 Demo | authenticated clone 自动等于 public availability，或 trial collaborator access 自动等于公开发布 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
