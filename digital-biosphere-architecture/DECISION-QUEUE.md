@@ -31,6 +31,8 @@ last_reviewed: 2026-07-21
 | `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | 本地测试、Trial Plan、Guide 与已知限制已齐；仍缺冻结 source commits、clean-clone 复验、3–5 人 Trial Result 和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | ADR-017、测试通过、本地 Demo 或 Trial PASS 自动等于发布授权 |
 | `DQ-010` | `P0` | 是否授权执行 External Developer Trial v0.1 并联系 3–5 名外部 Agent Developer？ | `BLOCKED_INPUT` | exact `trial_package_id`、DBA/DBOS/SAEE source commits、clean-clone result、trial coordinator、参与者画像、隐私说明和停止规则 | `DP-5B` 是否可进入 `AUTHORIZED/IN_PROGRESS`，并允许受限外部联系与反馈收集 | Trial Plan 或 ADR-018 自动授权外部联系、数据收集、发布或客户验证 |
 | `DQ-011` | `P0` | SAEE DBOS Developer Preview Adapter 应如何安全提供给外部开发者？ | `READY_FOR_REVIEW` | public/private history 分离事实、Adapter 依赖、private-core 边界、避免重复 evaluator 的方案比较 | `DP-4` 是否能形成可干净检出的 SAEE 评价入口 | 将内部工程历史推入 public `main`、复制 evaluator、把 toy demo 当 Adapter 或通过无关历史强制合并 |
+| `DQ-012` | `P0` | Developer Preview 的 DBA、DBOS、SAEE 公开表面采用什么许可证？ | `READY_FOR_REVIEW` | 当前无根 LICENSE、目标复用方式、专利与贡献边界；推荐 `Apache-2.0` | 外部复制、修改、分发与 GitHub Release 的法律边界 | Open Infrastructure 自动等于 Apache/MIT，或 public repo 自动授予复用权 |
+| `DQ-013` | `P0` | 百度正式发布是否采用 `redcrag.cn/trusted-multi-agent-infrastructure/` 独立路径？ | `READY_FOR_REVIEW` | 当前 HTTPS/证书、Nginx、历史 releases、非破坏部署与回退方案 | 是否允许准备独立 release directory、Nginx route 和最终部署 | 清空或覆盖现有 `/saee/`，或把服务器健康自动等于部署授权 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
@@ -61,7 +63,7 @@ release_authorized=true|false
 
 ```text
 DECISION_QUEUE_ACTIVE=true
-OPEN_DECISIONS=11
+OPEN_DECISIONS=13
 QUEUE_CREATES_AUTHORITY=false
 QUEUE_CREATES_PERMISSION=false
 QUEUE_EXECUTES_DECISIONS=false
