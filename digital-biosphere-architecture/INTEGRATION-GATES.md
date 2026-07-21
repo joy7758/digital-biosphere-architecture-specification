@@ -58,7 +58,7 @@ DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
 | `DP-5B` | `G1/G4/G8_AGENT_VALIDATION` | `CONDITIONAL` | 2 Providers、4 models、12/12 parsed；公开识别 6/6；权限错误 0；4 个阈值失败 | 修复 agent-readable package，并以相同阈值复测 |
 | `DP-5C` | `G1/G4/G8_AGENT_RERUN` | `PASS` | `TMAI-ACV-20260722-002`：2 Providers、4 models、12/12 parsed、全部阈值通过、权限错误 0 | 保留原 `001=CONDITIONAL`；开放网络由独立观察处理 |
 | `DP-5D` | `G1/G8_OPEN_WEB_OBSERVATION` | `PARTIAL_METADATA_ONLY` | `TMAI-OWD-20260722-001`：GitHub 完整新 description 已命中；规范英文名、中文名和 4 个公开搜索仍无命中 | 规范名称索引刷新后复查，或 Human Owner 显式接受限制 |
-| `DP-R` | `G8` | `BLOCKED_DBOS_ACCESS_OPEN_WEB_R015_DQ-009` | Agent customer validation 已通过；DBOS 仍 private；open-web 只有 metadata description 部分命中；`R-015` 未复核；没有 `released_by_ref` | DBOS access decision、发现限制处理、风险复核、人工发布决定和完整 release record |
+| `DP-R` | `G8` | `BLOCKED_DBOS_ACCESS_OPEN_WEB_DQ-009` | Agent customer validation 已通过；`R-015` 依赖复核完成；DBOS 仍 private；open-web 只有 metadata description 部分命中；没有 `released_by_ref` | DBOS access decision、发现限制处理、人工发布决定和完整 release record |
 
 ## 4. Gate Evidence Record（闸门证据记录）
 

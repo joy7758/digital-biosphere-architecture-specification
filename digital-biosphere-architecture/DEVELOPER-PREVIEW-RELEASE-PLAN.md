@@ -73,6 +73,7 @@ DRAFT
 - [x] 四项 agent-readable 失败阈值已修复并用 `TMAI-ACV-20260722-002` 复测；
 - [x] Agent Customer Validation Result 达到 `PASS`；12/12 overall verdict 保持边界正确的 `CONDITIONAL`；
 - [x] 使用真实公开搜索与 GitHub repository search 单独观察自然发现，结果保留为 `PARTIAL_METADATA_ONLY`；
+- [x] `R-015` 依赖复核完成：0 critical、0 high、2 moderate；静态部署边界和残余披露已记录；
 - [ ] 元数据修复后观察到外部索引刷新，或 Human Owner 显式接受 Developer Preview 的发现限制；
 - [ ] DBOS agent access／distribution 路线已有明确 Human Decision；
 - [ ] Human Release Decision（人工发布决策）包含明确 `released_by_ref`；
@@ -119,8 +120,7 @@ RELEASE_AUTHORIZED=false
 
 1. DBOS 仍为 private，AI agent 没有公开 package、API 或自主获取路径；
 2. `OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY`；GitHub 新描述已命中，但规范名称尚未命中或获得显式限制接受；
-3. `R-015` 仍需正式发布风险复核；
-4. `DQ-009` 尚无 Human Release Decision 与 `released_by_ref`。
+3. `DQ-009` 尚无 Human Release Decision 与 `released_by_ref`；正式说明须披露 `R-015` 残余。
 
 ## 6. Rollback and Preservation（回退与保留）
 

@@ -2,8 +2,8 @@
 report_id: DBA-FORMAL-RELEASE-READINESS-AUDIT-2026-07-21
 title: Trusted Multi-Agent Infrastructure Formal Release Readiness Audit
 title_zh: 可信多智能体基础设施正式发布就绪审计
-status: clean-clone-and-agent-validation-pass-dbos-access-risk-review-and-release-decision-blocked
-observed_at: 2026-07-21T23:17:11+08:00
+status: clean-clone-agent-validation-and-dependency-review-pass-dbos-access-and-release-decision-blocked
+observed_at: 2026-07-22T01:13:06+08:00
 formal_release_ready: false
 developer_preview_released: false
 ---
@@ -38,7 +38,7 @@ is not ready for formal release.
 | SAEE adapter extraction | `SAEE-PUBLIC-SAFE-EXTRACTION-REVIEW.md`；exact 19/19 blobs | `PASS_IMPLEMENTED_PUBLIC_SAFE_PROJECTION` |
 | Cross-project clean clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `PASS` |
 | Public license | 三仓库根 `LICENSE`；与 Apache 官方 `LICENSE-2.0.txt` 一致 | `PASS_OWNER_CREATED_SURFACES` |
-| Website dependency audit | `npm audit`：12 total；production tree 2 moderate；服务器只部署静态 `out/` | `REVIEW_REQUIRED_BEFORE_FORMAL_RELEASE` |
+| Website dependency audit | `TMAI-WEB-DEPENDENCY-REVIEW-20260722-001`：0 critical、0 high、2 moderate；5/5 tests、lint、静态导出通过；服务器只部署静态 `out/` | `PASS_WITH_BOUNDED_RESIDUAL_DISCLOSED` |
 | DBOS anonymous access | GitHub visibility is `PRIVATE` | `FAIL` |
 | DBOS trial access decision | `PRIVATE_COLLABORATOR_TRIAL` selected；repository remains private | `PASS_FOR_TRIAL_NO_COLLABORATORS_ADDED` |
 | Trial package | `TMAI-DP-v0.1-TRIAL-20260721-001` | `TECHNICAL_FREEZE_PASS_DISTRIBUTION_BLOCKED` |
@@ -62,9 +62,8 @@ FORMAL_RELEASE_READY=false
 2. Recheck `TMAI-OWD-20260722-001` after external indexing, or record explicit
    Human acceptance of the Developer Preview discovery limitation; metadata repair
    is not discovery evidence.
-3. Resolve or explicitly review `R-015` against a non-breaking upstream dependency
-   update; do not use `npm audit fix --force` as an unreviewed release action.
-4. `DQ-009`: record an explicit Human Release Decision with `released_by_ref`.
+3. `DQ-009`: record an explicit Human Release Decision with `released_by_ref`;
+   the decision must preserve disclosure of the bounded `R-015` residual.
 
 No local test, model recommendation, website deployment, prerelease tag, or
 synthetic demo can replace these decisions or Human Release Authorization.

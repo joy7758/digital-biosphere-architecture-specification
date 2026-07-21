@@ -2,7 +2,7 @@
 document_id: DBA-FINAL-RELEASE-DECISION-PACKET-0.1
 title: Trusted Multi-Agent Infrastructure Developer Preview v0.1 Final Release Decision Packet
 title_zh: 可信多智能体基础设施开发者预览版 v0.1 最终发布决策包
-status: clean-clone-and-agent-validation-pass-dbos-access-risk-review-and-release-decision-pending
+status: clean-clone-agent-validation-and-dependency-review-pass-dbos-access-and-release-decision-pending
 release_authorized: false
 developer_preview_cloud_release_authorized: false
 website_candidate_deployment_authorized: true
@@ -157,8 +157,8 @@ decision_timestamp=2026-07-21T22:48:39+08:00
 ```
 
 `ADR-021` 已把上面的人类参与者路线取代为可选次级研究；它没有把未发生的人类试用
-改写成通过。首要验证修复已完成并通过。仍需决定 DBOS 的 agent access／distribution
-（智能体访问／分发）方式、复核 `R-015`，再由 `DQ-009` 以
+改写成通过。首要验证修复已完成并通过，`R-015` 依赖复核也已完成并保留有界残余披露。
+仍需决定 DBOS 的 agent access／distribution（智能体访问／分发）方式，再由 `DQ-009` 以
 明确处理开放网络发现限制并记录 `released_by_ref`，再决定 tag、GitHub Release 和百度正式部署。
 
 本决策包记录 release preparation decisions（发布准备决定），但不是正式 Release、

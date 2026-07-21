@@ -110,7 +110,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 - `DQ-003`：确认 DBOS、SAEE、Research Agent Pilot 的 canonical status source；
 - `DQ-004`：选择第一个跨项目 conformance（符合性）里程碑；
 - `DQ-008`：决定当前驾驶舱与既有 DBA public meaning layer 的规范关系和单一前门；
-- `DQ-009`：最终 Developer Preview Release（开发者预览版发布）仍需 DBOS access/distribution 决定、开放网络发现限制的处理决定、`R-015` 复核和 `released_by_ref`；
+- `DQ-009`：`R-015` 依赖复核已完成；最终 Developer Preview Release（开发者预览版发布）仍需 DBOS access/distribution 决定、开放网络发现限制的处理决定和 `released_by_ref`；
 - `DQ-001`、`DQ-011`、`DQ-012`、`DQ-014` 已由 `ADR-020` 关闭；
 - `DQ-010` 的人类参与者路径已由 `ADR-021` 标记为 `SUPERSEDED_FOR_PRIMARY_ROUTE`，没有被改写成执行通过；
 - `DQ-015` 已接受 agent-native customer validation，并完成 12/12 会话基线；
@@ -131,8 +131,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 1. 保留基线 `001=CONDITIONAL` 与复测 `002=PASS` 的全部原始回答、评分和失败历史；
 2. 由 Human Owner 单独决定 DBOS 的 agent access／distribution 路线；
 3. 在外部索引刷新窗口后用规范英文名／中文名复查 `TMAI-OWD-20260722-001`，或由 Human Owner 显式接受 Developer Preview 的发现限制；
-4. 复核网站依赖风险 `R-015`；
-5. 以上输入完成后，把 `DQ-009` 提交明确 `released_by_ref` 的人工发布决定。
+4. 以上输入完成后，把 `DQ-009` 提交明确 `released_by_ref` 的人工发布决定，并在 release notes 中披露 `R-015` 的 2 项 moderate 残余。
 
 ## 6. Refresh Protocol（刷新协议）
 
