@@ -27,8 +27,6 @@ last_reviewed: 2026-07-22
 | `DQ-006` | `P2` | POP、ARO、Agent Evidence、Token Governor、ACP 哪些进入正式 Portfolio？ | `OPEN` | 每个项目的目的、Owner、canonical source、重复能力和接口边界 | 项目组合与依赖范围 | 本地发现、历史关联或相邻角色等于正式准入 |
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
-| `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | source／Clean Clone、Agent Customer Validation 和 `R-015` 依赖复核已通过；`TMAI-OWD-20260722-001=PARTIAL_METADATA_ONLY`；仍缺 DBOS agent access／distribution 决定、发现限制处理和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | 网站、API 模型推荐、元数据描述命中、测试或 validation PASS 自动等于发布授权 |
-| `DQ-016` | `P0` | DBOS 是否保持整仓 private，并只公开 exact public-safe wheel？ | `READY_FOR_REVIEW` | `TMAI-DBOS-PUBLIC-PACKAGE-READINESS-20260722-001`；整仓 48 个绝对路径文件；wheel 0 路径／0 Gitleaks、334 tests、34 validators、隔离安装 PASS | 为 AI agent 建立匿名下载和复用路径，同时不公开 registry/evidence | wheel 验证通过自动等于已发布，或允许整仓 public、PyPI、Runtime、Permission |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
@@ -46,6 +44,9 @@ last_reviewed: 2026-07-22
 | `ADR-020 / DQ-014` | `ACCEPTED`：`PRIVATE_COLLABORATOR_TRIAL` | `decided_by_ref=zhangbin` | DBOS 保持 private；不授权 public visibility、具体协作者、Permission 或发布 |
 | `ADR-021 / DQ-010` | `SUPERSEDED_FOR_PRIMARY_ROUTE`：人类参与者招募不再是首要客户验证路径 | 2026-07-21 Human Owner 明确核心客户是 AI agent | 不把未执行的人类试用改写成通过；可作为未来次级可用性研究保留 |
 | `ADR-021 / DQ-015` | `ACCEPTED_AND_EXECUTED_PASS`：`ADOPT_AGENT_NATIVE_CUSTOMER_VALIDATION` | `decided_by_ref=zhangbin`；`001=CONDITIONAL`、`002=PASS` | 两轮各 12 次会话全部保留；不创建 Agent／Runtime，不授权发布、DBOS 公开或客户采用 |
+| `ADR-022 / DQ-016` | `ACCEPTED_EXECUTION_AUTHORIZED`：只公开 exact public-safe wheel，DBOS 整仓保持 private | `decided_by_ref=zhangbin`；`DQ-016=PUBLISH_PUBLIC_SAFE_DBOS_WHEEL`；`WHOLE_DBOS_REPOSITORY_VISIBILITY=KEEP_PRIVATE` | 只授权精确 hash/bytes/source 的 GitHub Release asset；不授权整仓公开、PyPI、Runtime、Permission 或扩大 package 内容 |
+| `ADR-022 / B-011` | `ACCEPTED_LIMITATION_FOR_V0_1`：接受 `PARTIAL_METADATA_ONLY` 作为 Developer Preview v0.1 的已披露发现限制 | `OPEN_WEB_LIMITATION=ACCEPT_PARTIAL_METADATA_ONLY_FOR_V0_1`；`decided_by_ref=zhangbin` | 不再阻塞 v0.1；不得写成规范名称或公开网络自然发现已经通过，后续仍可复查 |
+| `ADR-022 / DQ-009` | `ACCEPTED_EXECUTION_AUTHORIZED`：批准 `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 正式发布 | `released_by_ref=zhangbin`；2026-07-22T02:59:31+08:00 | 授权 GitHub Release、exact wheel 和百度云 formal deployment；只有执行和外部复验全部通过后才可记录为 `RELEASED` |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 
@@ -68,7 +69,7 @@ release_authorized=true|false
 
 ```text
 DECISION_QUEUE_ACTIVE=true
-OPEN_DECISIONS=9
+OPEN_DECISIONS=7
 CONDITIONALLY_DECIDED_NOT_EFFECTIVE=0
 QUEUE_CREATES_AUTHORITY=false
 QUEUE_CREATES_PERMISSION=false
