@@ -3,7 +3,7 @@ report_id: DBA-FORMAL-RELEASE-READINESS-AUDIT-2026-07-21
 title: Trusted Multi-Agent Infrastructure Formal Release Readiness Audit
 title_zh: 可信多智能体基础设施正式发布就绪审计
 status: clean-clone-agent-validation-and-dependency-review-pass-dbos-access-and-release-decision-blocked
-observed_at: 2026-07-22T01:13:06+08:00
+observed_at: 2026-07-22T01:17:50+08:00
 formal_release_ready: false
 developer_preview_released: false
 ---
@@ -30,7 +30,7 @@ is not ready for formal release.
 | Website artifact integrity | `/release-manifest.json`; remote `sha256sum -c` | `PASS` |
 | HTTPS and security headers | Public response and origin checks | `PASS` |
 | Website rollback | Atomic switch to previous artifact and restore | `PASS` |
-| GitHub website artifact | `v0.1-public-website-candidate.5`; `7fe88e8b`; prerelease | `PASS_CANDIDATE_ONLY` |
+| GitHub website artifact | `v0.1-public-website-candidate.6`; `ac5374ad`; prerelease | `PASS_CANDIDATE_ONLY` |
 | DBA clean clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `PASS` |
 | DBOS clean clone | 331 tests, 34 validators, two demos | `PASS_PRIVATE_ACCESS` |
 | SAEE public clean clone | public smoke/demo、8/8 Adapter tests | `PASS` |
