@@ -2,10 +2,11 @@
 document_id: DBA-DEVELOPER-PREVIEW-RELEASE-PLAN-0.1
 title: Trusted Multi-Agent Infrastructure Developer Preview Release Plan v0.1
 title_zh: 可信多智能体基础设施开发者预览发布计划 v0.1
-status: release-authorized-execution-in-progress
+status: released-v0.1
 target_release: trusted-multi-agent-infrastructure-developer-preview-v0.1
 release_authorized: true
 deployment_authorized: true
+release_executed: true
 decision_reference: architecture/ADR-022-developer-preview-release.md
 released_by_ref: zhangbin
 last_reviewed: 2026-07-22
@@ -82,12 +83,12 @@ DRAFT
 - [x] `DQ-009` Human Release Decision 包含 `released_by_ref=zhangbin`；
 - [x] [`DEVELOPER-PREVIEW-v0.1-RELEASE-NOTES.md`](DEVELOPER-PREVIEW-v0.1-RELEASE-NOTES.md) 区分本地预览、发布、部署和采用。
 
-以上勾选仅表示当前本地工作树的 release candidate（候选发布）材料满足对应检查，不表示 source commits、干净 clone、外部试用或发布已经完成。
+以上勾选由冻结源码、GitHub Release、匿名安装和百度云正式部署的发布后证据闭环；不表示生产就绪、客户采用或未来实现已获授权。
 
 ## 5. Current Release Assessment（当前发布判断）
 
 ```text
-RELEASE_STATUS=AUTHORIZED_EXECUTION_IN_PROGRESS
+RELEASE_STATUS=RELEASED_NOT_PRODUCTION_READY
 PUBLIC_ENTRY_DRAFTED=true
 DBOS_EXAMPLES_LOCALLY_RUN=true
 DBOS_TESTS=334_PASS
@@ -122,10 +123,14 @@ RELEASE_AUTHORIZED=true
 RELEASE_DECISION_REF=architecture/ADR-022-developer-preview-release.md
 RELEASED_BY_REF=zhangbin
 WHOLE_DBOS_REPOSITORY_VISIBILITY=PRIVATE
+GITHUB_RELEASE_PUBLISHED=true
+ANONYMOUS_WHEEL_INSTALL_PASS=true
+BAIDU_FORMAL_DEPLOYMENT_PASS=true
 ```
 
-`ADR-022` 已关闭原发布输入。执行仍必须逐项证明 GitHub Release、匿名下载 hash、
-隔离安装、百度云 formal artifact、线上健康与 DBOS 私有可见性；部分执行不得写成完成。
+`ADR-022` 的完成条件已逐项通过，证据见
+[`DEVELOPER-PREVIEW-v0.1-RELEASE-REPORT.md`](DEVELOPER-PREVIEW-v0.1-RELEASE-REPORT.md)。
+该完成只适用于 Developer Preview v0.1；任何生产、Runtime、Permission 或新功能仍需独立决策。
 
 ## 6. Rollback and Preservation（回退与保留）
 

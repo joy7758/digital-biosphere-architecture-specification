@@ -2,12 +2,12 @@
 document_id: DBA-PUBLIC-OVERVIEW-0.1
 title: Digital Biosphere Public Project Overview v0.1
 title_zh: 数字生物圈公开项目总览 v0.1
-status: developer-preview-agent-native-entry-candidate
-release_status: not-released
+status: developer-preview-v0.1-public-entry
+release_status: released-not-production-ready
 public_positioning: Trusted Multi-Agent Infrastructure
 implementation_authorized: false
 runtime_effect: none
-last_reviewed: 2026-07-21
+last_reviewed: 2026-07-22
 ---
 
 # Digital Biosphere Public Project Overview v0.1（数字生物圈公开项目总览 v0.1）
@@ -16,7 +16,7 @@ last_reviewed: 2026-07-21
 
 Digital Biosphere（数字生物圈）是总项目；Trusted Multi-Agent Infrastructure（可信多智能体基础设施）是统一对外定位。它不是新的 Agent Framework（智能体框架），而是把身份、生命周期、执行记录、证据引用、验证、评价和受控演化连接起来的基础设施方向。
 
-本页是 `Trusted Multi-Agent Infrastructure Developer Preview v0.1`（可信多智能体基础设施开发者预览版 v0.1）的单一理解入口。AI agent 是首要客户；人类仍保留发布、权限和重大外部动作的最终权力。当前状态是 `CANDIDATE_NOT_RELEASED`：它介绍目标和进入路径，不声称三项目已经完成生产端到端集成、客户采用或正式发布。
+本页是 `Trusted Multi-Agent Infrastructure Developer Preview v0.1`（可信多智能体基础设施开发者预览版 v0.1）的单一理解入口。AI agent 是首要客户；人类仍保留发布、权限和重大外部动作的最终权力。当前状态是 `RELEASED_NOT_PRODUCTION_READY`：Developer Preview 已正式发布，但不声称三项目已经完成生产端到端集成、客户采用或生产部署。
 
 Developer Preview 也是 DBOS 与 SAEE 的跨项目测试工程：同一个受控协作场景既用于展示，也用于发现记录、验证、接口和评价缺口。测试发现的缺口经过 DBA 归属与重复建设审查后，可以在 DBOS 或 SAEE 中补最小功能；这不允许 Demo 自己成为新的基础设施权威。
 
@@ -74,7 +74,7 @@ Governance Decision（治理决策，保留人工权力）
 截至 2026-07-22：
 
 - DBA 已建立项目群驾驶舱、路线图、项目组合和集成闸门；Developer Preview v0.1 已按 `ADR-022` 发布，但不构成生产就绪或客户采用；
-- DBOS 已形成 local editable install（本地可编辑安装）、单一测试入口、Quick Start（快速入门）和三角色 synthetic demo（合成演示）；331/331 tests 与 34/34 validators 在当前工作树通过；
+- DBOS 已形成 local editable install（本地可编辑安装）、单一测试入口、Quick Start（快速入门）和三角色 synthetic demo（合成演示）；334/334 tests 与 34/34 validators 在冻结源码通过；
 - `DBOS-EXP-0001` 历史 Evidence 没有被改写；版本感知校验能保留旧 binding 并显式警告当前文档漂移；
 - SAEE 已形成只读 DBOS Developer Preview adapter（开发者预览适配器），复用现有 Reliability Framework 与 `saee.evaluate_agent_run`；
 - DBOS → SAEE 本地合成链路已通过 scoped conformance（限定范围符合性），但结果诚实保持 `Reliability=NOT_ASSESSED`、`Stability=NOT_ASSESSED`、`EvolutionRecommendation=HOLD`；
@@ -83,7 +83,7 @@ Governance Decision（治理决策，保留人工权力）
 - 旧的 3–5 名人类开发者试用路线已由 `ADR-021` 取代为可选次级研究，不再是本次首要发布前置条件；
 - DBOS 整仓继续为 private（私有）；exact public-safe wheel 已作为 v0.1 GitHub Release asset 公开，但没有 public Runtime、托管 API、Permission 或生产兼容声明。
 
-时间点事实以 [`PROGRAM-STATUS.md`](PROGRAM-STATUS.md) 为准；本页不把计划升级为实现或发布。
+时间点事实以 [`PROGRAM-STATUS.md`](PROGRAM-STATUS.md) 为准；本页不把 Developer Preview 发布升级为生产实现、客户采用或运行授权。
 
 ## 4. Developer Navigation（开发者导航）
 
@@ -98,6 +98,7 @@ Governance Decision（治理决策，保留人工权力）
 | 开放网络自然发现观察 | [`OPEN-WEB-DISCOVERY-OBSERVATION.md`](OPEN-WEB-DISCOVERY-OBSERVATION.md) | `PARTIAL_METADATA_ONLY`；描述命中不等于规范名称自然发现 |
 | Developer Preview 如何完成 | [`DEVELOPER-PREVIEW-PLAN.md`](DEVELOPER-PREVIEW-PLAN.md) | 交付与 gate 计划 |
 | 如何发布 | [`DEVELOPER-PREVIEW-RELEASE-PLAN.md`](DEVELOPER-PREVIEW-RELEASE-PLAN.md) | 发布治理计划 |
+| 正式发布证据 | [`DEVELOPER-PREVIEW-v0.1-RELEASE-REPORT.md`](DEVELOPER-PREVIEW-v0.1-RELEASE-REPORT.md) | GitHub、匿名安装与百度云外部复验 |
 | 本地符合性结果 | [`DEVELOPER-PREVIEW-CONFORMANCE-REPORT.md`](DEVELOPER-PREVIEW-CONFORMANCE-REPORT.md) | 当前工作树本地通过；不是 release |
 | 可选人类可用性研究 | [`EXTERNAL-DEVELOPER-TRIAL-PLAN.md`](EXTERNAL-DEVELOPER-TRIAL-PLAN.md) | 已由 `ADR-021` 取代为非阻塞次级路线 |
 | 可选人类试用操作 | [`EXTERNAL-DEVELOPER-TRIAL-GUIDE.md`](EXTERNAL-DEVELOPER-TRIAL-GUIDE.md) | 历史／可选手册，不是首要 gate |
@@ -109,22 +110,22 @@ Governance Decision（治理决策，保留人工权力）
 
 ## 5. Public Claim Boundary（对外声明边界）
 
-在 Release Gate（发布闸门）通过前，只允许使用：
+Release Gate（发布闸门）已经通过。当前允许使用：
 
-> Developer Preview in progress（开发者预览正在形成）。
+> Trusted Multi-Agent Infrastructure Developer Preview v0.1 is released（可信多智能体基础设施开发者预览版 v0.1 已发布）。
 
-不得使用：
+仍不得使用：
 
 - production-ready（生产就绪）；
 - end-to-end integration verified（端到端集成已验证）；
 - autonomous evolution（自主演化）；
 - Agent platform（智能体平台）；
-- published SDK（已发布 SDK）；
+- production SDK（生产 SDK）；
 - evidence proves truth（证据证明真相）。
 
 ```text
 PUBLIC_ENTRY_DEFINED=true
-DEVELOPER_PREVIEW_RELEASED=false
+DEVELOPER_PREVIEW_RELEASED=true
 SCOPED_LOCAL_DEMO_CONFORMANCE_PASS=true
 FULL_END_TO_END_INTEGRATION_VERIFIED=false
 PRIMARY_CUSTOMER=AI_AGENT

@@ -2,11 +2,11 @@
 adr_id: ADR-022
 title: Trusted Multi-Agent Infrastructure Developer Preview v0.1 Release Authorization
 title_zh: 可信多智能体基础设施开发者预览版 v0.1 发布授权
-status: accepted-execution-authorized
+status: accepted-executed
 decided_at: 2026-07-22T02:59:31+08:00
 decided_by_ref: zhangbin
 release_authorized: true
-release_executed: false
+release_executed: true
 ---
 
 # ADR-022: Developer Preview v0.1 Release Authorization（开发者预览版 v0.1 发布授权）
@@ -91,3 +91,16 @@ public_release_tag=v0.1-developer-preview
 - `B-011` 不再阻塞 v0.1，但 `PARTIAL_METADATA_ONLY` 继续作为已接受限制；
 - `B-010` 只有在匿名 wheel 下载和隔离安装复验通过后才能解除；
 - 发布仍不证明生产就绪、客户采用、开放网络规范名称发现或运行授权。
+
+## Completion Record（完成记录）
+
+`2026-07-22T03:21:54+08:00`，上述六项完成条件全部通过：
+
+- GitHub `v0.1-developer-preview` 为公开、非 draft、非 prerelease；
+- tag 指向 `1113130ca4213b70fcebd6247fec794854295e8c`；
+- exact wheel 匿名下载、bytes、SHA-256、全新环境安装和 `dbos-validate` 入口通过；
+- 百度云 21 个 manifest entries（清单条目）、Nginx、13 个公开入口和安全头通过；
+- 线上 `release.json`、`status.json`、agent surfaces 和 release notes 一致；
+- `joy7758/digital-biosphere-os` 可见性仍为 `PRIVATE`。
+
+精确证据见 [`DEVELOPER-PREVIEW-v0.1-RELEASE-REPORT.md`](../DEVELOPER-PREVIEW-v0.1-RELEASE-REPORT.md)。
