@@ -1,8 +1,8 @@
 {
   "schema_version": "0.1",
-  "observed_at": "2026-07-22T01:48:16+08:00",
-  "release_state": "developer_preview_candidate_site_deployed_not_released",
-  "release_claim": false,
+  "observed_at": "2026-07-22T02:59:31+08:00",
+  "release_state": "developer_preview_released",
+  "release_claim": true,
   "public_website": {
     "url": "https://redcrag.cn/",
     "deployed": true,
@@ -11,7 +11,7 @@
     "rollback_validated": true
   },
   "repository_baselines": {
-    "DBA": "48237da5535235cb9d13b0782a94671a7be8a1e8",
+    "DBA": "4fb98898d08fd4a98f971f74356e0078493910a8",
     "DBOS": "cd3f867c4379ec555c45e7d554088ad12ce08a24",
     "SAEE": "2173c258f91aed03fc02c0097d4250a87be703aa"
   },
@@ -25,24 +25,24 @@
     "AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL": true,
     "AGENT_CUSTOMER_VALIDATION_RERUN_PASS": true,
     "DBOS_PUBLIC_SAFE_WHEEL_VALIDATED": true,
-    "DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED": false,
-    "DQ_016_DBOS_DISTRIBUTION_DECIDED": false,
-    "DEVELOPER_PREVIEW_RELEASED": false,
+    "DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED": true,
+    "DQ_016_DBOS_DISTRIBUTION_DECIDED": true,
+    "DEVELOPER_PREVIEW_RELEASED": true,
     "PREVIEW_DEPLOYMENT_HEALTH_PASS": true,
     "ROLLBACK_VALIDATED": true
   },
   "access": {
     "DBA": "public",
     "DBOS": "private",
-    "DBOS_PUBLIC_PACKAGE": "validated_not_published",
+    "DBOS_PUBLIC_PACKAGE": "published_github_release_asset",
     "SAEE": "public_with_read_only_dbos_adapter"
   },
   "dbos_public_package": {
     "package_id": "TMAI-DBOS-WHEEL-CANDIDATE-20260722-001",
     "source_revision": "cd3f867c4379ec555c45e7d554088ad12ce08a24",
-    "status": "VALIDATED_NOT_PUBLISHED",
+    "status": "PUBLISHED",
     "manifest": "https://redcrag.cn/dbos-public-package-manifest.json",
-    "public_download_url": null,
+    "public_download_url": "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
     "whole_repository_public_recommended": false
   },
   "agent_customer_validation": {
@@ -63,6 +63,8 @@
   "open_web_discovery": {
     "observation_id": "TMAI-OWD-20260722-001",
     "result": "PARTIAL_METADATA_ONLY",
+    "accepted_limitation_for_v0_1": true,
+    "decision_reference": "architecture/ADR-022-developer-preview-release.md",
     "observed_at": "2026-07-22T00:45:20+08:00",
     "rechecked_at": "2026-07-22T00:57:19+08:00",
     "public_web_queries": 4,
@@ -79,6 +81,14 @@
     "required_for_primary_route": false,
     "status": "SUPERSEDED_AS_PRIMARY_GATE_RETAINED_OPTIONAL",
     "participants": 0
+  },
+  "release": {
+    "tag": "v0.1-developer-preview",
+    "decision_reference": "architecture/ADR-022-developer-preview-release.md",
+    "released_by_ref": "zhangbin",
+    "release_url": "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/tag/v0.1-developer-preview",
+    "production_ready": false,
+    "customer_adoption_claimed": false
   },
   "license": {
     "selected": true,

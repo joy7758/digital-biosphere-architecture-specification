@@ -2,10 +2,16 @@
   "schema_version": "0.1",
   "package_id": "TMAI-DBOS-WHEEL-CANDIDATE-20260722-001",
   "package_name": "digital-biosphere-os-preview",
-  "display_name": "DBOS Developer Preview v0.1 public-safe wheel candidate",
-  "status": "VALIDATED_NOT_PUBLISHED",
-  "release_authorized": false,
-  "public_download_url": null,
+  "display_name": "DBOS Developer Preview v0.1 public-safe wheel",
+  "status": "PUBLISHED",
+  "release_authorized": true,
+  "public_download_url": "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
+  "release": {
+    "tag": "v0.1-developer-preview",
+    "decision_reference": "architecture/ADR-022-developer-preview-release.md",
+    "released_by_ref": "zhangbin",
+    "whole_repository_visibility": "PRIVATE"
+  },
   "source": {
     "repository": "https://github.com/joy7758/digital-biosphere-os",
     "repository_visibility": "PRIVATE",
@@ -53,8 +59,9 @@
   },
   "installation": {
     "requires_python": ">=3.11",
-    "public_install_command": null,
-    "reason": "No public download URL exists until an explicit Human Release Decision publishes the exact artifact."
+    "public_install_command": "python3 -m pip install https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
+    "sha256_verification_required": true,
+    "warning": "Developer Preview only; installation does not create an Agent, Runtime, Entity, Permission, or authority."
   },
   "boundaries": {
     "package_is_agent": false,

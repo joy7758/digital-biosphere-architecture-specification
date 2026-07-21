@@ -6,26 +6,26 @@ export function StatusPage({ locale }: { locale: Locale }) {
   const copy = locale === "zh"
     ? {
         eyebrow: "VERIFIABLE STATUS / 可验证状态",
-        title: "当前不是正式发布",
-        lead: "本页只记录已经观察到的事实、失败关闭结果和下一道人工闸门。",
+        title: "可信多智能体基础设施开发者预览版 v0.1 已发布",
+        lead: "本页记录正式发布、已验证范围、保留限制和后续观察；Developer Preview 不等于生产就绪。",
         observed: "观察时间",
         baselines: "远程基线",
         gates: "验证闸门",
         visibility: "可见性",
         next: "下一步",
-        nextBody: "智能体客户验证已通过，GitHub 描述已部分可发现，但规范名称仍未命中。下一步是复查索引、决定 DBOS 智能体访问路线、复核剩余风险并决定正式发布。",
+        nextBody: "继续观察匿名安装和智能体复用结果，并在索引刷新后复查规范名称发现。DBOS 整仓保持 private，开放网络状态继续是 PARTIAL_METADATA_ONLY。",
         back: "返回首页",
       }
     : {
         eyebrow: "VERIFIABLE STATUS",
-        title: "This is not a release",
-        lead: "This page records observed facts, fail-closed results, and the next human gate—nothing more.",
+        title: "Trusted Multi-Agent Infrastructure Developer Preview v0.1 is released",
+        lead: "This page records the formal release, validated scope, retained limitations, and follow-up observations. Developer Preview does not mean production-ready.",
         observed: "Observed at",
         baselines: "Remote baselines",
         gates: "Validation gates",
         visibility: "Visibility",
         next: "Next step",
-        nextBody: "Agent customer validation passed and the GitHub description is partially discoverable, but canonical names still do not match. Next, recheck indexing and make explicit human decisions on DBOS agent access, remaining risk, and formal release.",
+        nextBody: "Continue observing anonymous installation and agent reuse, then recheck canonical-name discovery after indexing refreshes. The full DBOS repository stays private and open-web status remains PARTIAL_METADATA_ONLY.",
         back: "Back to home",
       };
 
@@ -72,7 +72,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         </section>
         <section className="section next-gate-section">
           <div className="section-shell next-gate-card">
-            <span>DQ-009</span>
+            <span>ADR-022 / G8</span>
             <div><h2>{copy.next}</h2><p>{copy.nextBody}</p></div>
             <a className="button button-secondary" href={locale === "zh" ? "/" : "/en/"}>{copy.back}</a>
           </div>

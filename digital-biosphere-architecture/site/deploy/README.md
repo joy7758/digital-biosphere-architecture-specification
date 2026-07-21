@@ -10,21 +10,28 @@ Target layout:
 └── current -> releases/<source_revision>/
 ```
 
-The website candidate is exported with:
+Historical website candidates were exported with:
 
 ```bash
 RELEASE_MODE=candidate SOURCE_REVISION="$(git rev-parse HEAD)" npm run release:static
 ```
 
-`candidate` is the default and fails if any checked-in public truth surface claims
-that the Developer Preview or DBOS wheel is released. `formal` mode is available
-only after an explicit Human Release Decision. It requires
+The authorized Developer Preview v0.1 formal artifact is exported with:
+
+```bash
+SOURCE_REVISION="$(git rev-parse HEAD)" npm run release:formal
+```
+
+`candidate` remains a historical fail-closed mode and rejects checked-in released
+truth surfaces. `formal` mode is available only after the explicit Human Release
+Decision in `ADR-022`. It requires
 `RELEASE_DECISION_REF`, `RELEASED_BY_REF`, `PUBLIC_RELEASE_TAG`, and an HTTPS
 `DBOS_WHEEL_URL`, and it fails unless the rendered bilingual pages plus all four
 machine-readable truth surfaces already agree on the released state.
 
-Do not run `RELEASE_MODE=formal` during release preparation. The mode is an
-execution guard, not Release Authorization（发布授权）.
+`release:formal` is now bound to `ADR-022`, `released_by_ref=zhangbin`,
+`v0.1-developer-preview`, and the exact DBOS wheel URL. It remains an execution
+guard; the prior candidate workflow did not itself create Release Authorization（发布授权）.
 
 Deployment copies only the generated `out/` directory to a new immutable release
 directory. The `current` symlink changes only after manifest verification and

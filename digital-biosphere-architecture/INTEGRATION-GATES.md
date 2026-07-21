@@ -44,7 +44,7 @@ DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
 | DBOS ↔ SAEE Contract | `PASS_CORE_ROLE` | `PASS_FROZEN_REMOTE_SOURCES` | `SPECIFICATION_DEFINED` | `PASS_SCOPED_CLEAN_CLONE` | `PASS_SCOPED_CLEAN_CLONE` | `G6_SYNTHETIC_RECORD_CHAIN_G7_RECOMMENDATION_ONLY` | 只可称为冻结源码上的合成契约符合性；不得称为生产集成或受治理演化闭环 |
 | Research Agent Pilot ↔ DBOS / SAEE | `PASS_PILOT_ROLE` | `PARTIAL` | `SPECIFICATION_DEFINED` | `PREPARED_ONLY` | `NOT_ASSESSED` | `BLOCKED_NOT_READY` | 不得创建 Prototype、Agent、Runtime 或实验 |
 | Adjacent components | `NOT_PASSED` | `NOT_ASSESSED` | `REVIEW_REQUIRED` | `NOT_ASSESSED` | `NOT_ASSESSED` | `NOT_ASSESSED` | 仅保留候选映射 |
-| Trusted Multi-Agent Infrastructure Developer Preview | `PASS_CORE_SCOPE` | `PASS_FROZEN_REMOTE_BASELINE` | `PASS` | `PASS_SCOPED_CLEAN_CLONE` | `AGENT_CUSTOMER_RERUN_PASS` | `G6_SYNTHETIC_G7_PASS_G8_DBOS_ACCESS_AND_HUMAN_RELEASE_BLOCKED` | 修复后 12/12 会话和全部阈值通过；DBOS access 与人工发布决定仍缺失 |
+| Trusted Multi-Agent Infrastructure Developer Preview | `PASS_CORE_SCOPE` | `PASS_FROZEN_REMOTE_BASELINE` | `PASS` | `PASS_SCOPED_CLEAN_CLONE` | `AGENT_CUSTOMER_RERUN_PASS` | `G6_SYNTHETIC_G7_PASS_G8_RELEASED_BY_ADR_022` | exact wheel 匿名分发、GitHub Release、百度云 formal deployment 和人工发布决定通过；不是生产采用 |
 
 ### Developer Preview Gate Detail（开发者预览闸门明细）
 
@@ -58,7 +58,7 @@ DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
 | `DP-5B` | `G1/G4/G8_AGENT_VALIDATION` | `CONDITIONAL` | 2 Providers、4 models、12/12 parsed；公开识别 6/6；权限错误 0；4 个阈值失败 | 修复 agent-readable package，并以相同阈值复测 |
 | `DP-5C` | `G1/G4/G8_AGENT_RERUN` | `PASS` | `TMAI-ACV-20260722-002`：2 Providers、4 models、12/12 parsed、全部阈值通过、权限错误 0 | 保留原 `001=CONDITIONAL`；开放网络由独立观察处理 |
 | `DP-5D` | `G1/G8_OPEN_WEB_OBSERVATION` | `PARTIAL_METADATA_ONLY` | `TMAI-OWD-20260722-001`：GitHub 完整新 description 已命中；规范英文名、中文名和 4 个公开搜索仍无命中 | 规范名称索引刷新后复查，或 Human Owner 显式接受限制 |
-| `DP-R` | `G8` | `BLOCKED_DQ-016_OPEN_WEB_DQ-009` | Agent customer validation 已通过；`R-015` 依赖复核完成；public-safe wheel 已验证但未发布；open-web 只有 metadata description 部分命中；没有 `released_by_ref` | `DQ-016` 分发决定、发现限制处理、人工发布决定和完整 release record |
+| `DP-R` | `G8` | `PASS_RELEASED_WITH_DISCLOSED_LIMITATIONS` | `ADR-022`；exact wheel URL/hash/clean install；GitHub `v0.1-developer-preview`；百度云 formal artifact；`R-015` 与 `PARTIAL_METADATA_ONLY` 继续披露 | 发布后观察；任何生产、Runtime、Permission 或新实现需独立 gate |
 
 ## 4. Gate Evidence Record（闸门证据记录）
 
@@ -96,4 +96,6 @@ INTEGRATION_GATES_DEFINED=true
 AUTOMATIC_GATE_APPROVAL=false
 IMPLEMENTATION_AUTHORIZED=FROZEN_PUBLIC_SAFE_SOURCES_ONLY
 EXECUTION_AUTHORIZED=false
+RELEASE_AUTHORIZED=true
+DEVELOPER_PREVIEW_RELEASED=true
 ```

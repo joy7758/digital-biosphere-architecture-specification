@@ -4,7 +4,7 @@ title: Digital Biosphere Program Risk and Blocker Register v0.1
 title_zh: 数字生物圈项目群风险与阻塞台账 v0.1
 status: active-risk-register
 as_of_date: 2026-07-22
-risk_acceptance_authority_assigned: false
+risk_acceptance_authority_assigned: true
 ---
 
 # Digital Biosphere Program Risk and Blocker Register v0.1（数字生物圈项目群风险与阻塞台账 v0.1）
@@ -36,8 +36,8 @@ risk_acceptance_authority_assigned: false
 | `R-014` | `HIGH` | 3–5 人小样本、个别正面反馈或试用 PASS 可能被过度解释为客户验证、市场采用或发布授权 | External Developer Trial Plan 明确样本仅验证 onboarding、理解、使用和问题相关性信号 | 预冻结成功阈值；保留失败；Trial Result、Customer Validation、Release、Adoption 分开；发布仍需 `DQ-009` | `MITIGATED_BY_PLAN_NOT_YET_TESTED` |
 | `R-015` | `MEDIUM` | 站点构建树仍含 2 项 Next 内置 PostCSS moderate advisories（中等级通告） | `TMAI-WEB-DEPENDENCY-REVIEW-20260722-001`：同主版本升级后完整树为 0 critical、0 high、2 moderate；5/5 tests、lint 和静态导出通过；服务器不部署 Node.js 或构建依赖 | 保持静态部署边界和 release-note 披露；等待 Next 的非破坏性上游修复；禁止 `npm audit fix --force` 降级到 Next 9 | `MITIGATED_REVIEW_COMPLETE_RESIDUAL_DISCLOSED` |
 | `R-016` | `HIGH` | Agent API 模型的推荐或 `PASS` 被误写成真实客户采用、market fit（市场匹配）或发布授权 | `TMAI-ACV-20260721-001` 是 12 个受控、给定材料的模型会话，不含真实生产调用 | 固定 `Agent Recommendation ≠ Customer Adoption ≠ Release`；保留 Human `released_by_ref` | `MITIGATED_BY_PROTOCOL` |
-| `R-017` | `MEDIUM` | 给定 URL 后的机器理解或元数据 description 命中被误写成 open-web discovery（开放网络自然发现） | `TMAI-OWD-20260722-001` 首轮 6 查询无命中；修复后 GitHub 完整新 description 已命中，但规范英文名、中文名和 4 个公开搜索仍无精确命中 | 保留 `OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY`；等待规范名称索引后复查，或由 Human Owner 显式接受 Developer Preview 的发现限制 | `PARTIAL_METADATA_ONLY_CANONICAL_RECHECK_REQUIRED` |
-| `R-018` | `HIGH` | DBOS 保持 private，使 AI agent 能理解 TMAI 但不能自主获取、运行或复用核心存在基础设施 | 12/12 模型把 private／未发布列为 blocker；`TMAI-DBOS-WHEEL-CANDIDATE-20260722-001` 已通过安全、安装和验证复核但未发布 | 由 Human Owner 决定只公开 exact public-safe wheel；整仓保持 private | `PUBLIC_SAFE_WHEEL_READY_DQ-016_DECISION_REQUIRED` |
+| `R-017` | `MEDIUM` | 给定 URL 后的机器理解或元数据 description 命中被误写成 open-web discovery（开放网络自然发现） | `TMAI-OWD-20260722-001` 首轮 6 查询无命中；修复后 GitHub 完整新 description 已命中，但规范英文名、中文名和 4 个公开搜索仍无精确命中 | 保留 `OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY`；`ADR-022` 仅为 v0.1 接受该限制，后续继续复查 | `ACCEPTED_LIMITATION_FOR_V0_1_RECHECK_OPEN` |
+| `R-018` | `HIGH` | DBOS 保持 private，使 AI agent 能理解 TMAI 但不能自主获取、运行或复用核心存在基础设施 | exact public-safe wheel 已作为 GitHub Release asset 公开并通过匿名 hash 和隔离安装复验 | 整仓继续 private；只使用有界包并保持 Runtime/Permission 非声明 | `MITIGATED_BY_PUBLIC_SAFE_WHEEL_RELEASE_DBOS_PRIVATE` |
 | `R-019` | `HIGH` | 直接公开 DBOS 整仓会披露本机路径和未纳入发布的项目资产清单 | `main@cd3f867` 有 48 个跟踪文件包含 `/Users/...`；0 Gitleaks findings 不能消除该 metadata exposure（元数据暴露） | 禁止整仓公开；使用不含 registry/evidence/reports/paths 的 39-file public-safe wheel | `WHOLE_REPOSITORY_PUBLIC_FAIL_CLOSED` |
 
 ## 3. Active Blockers（当前阻塞）
@@ -48,8 +48,6 @@ risk_acceptance_authority_assigned: false
 | `B-003` | canonical status source 未确认 | 自动或周期性可信状态汇总 | DBOS、SAEE、Pilot 各自提供 source + freshness + conflict policy | 当前时间点只读 snapshot |
 | `B-004` | Research Agent Human Review 与 approved source 不完整 | Prototype Authorization Review 和实验 | Pilot 自己的 readiness gate 达到可审查状态并获得人工决定 | Pilot 规范改进和 DBA 项目群规划 |
 | `B-005` | 两个 DBA 语义表面未完成 canonical reconciliation | 对外唯一入口、规范优先级和自动检索路由 | `DQ-008` 形成决定并完成引用/迁移验证 | 当前仓库作为 Program Governance Cockpit 的工作树基线 |
-| `B-010` | DBOS 没有已发布的公开 package、API 或面向 AI agent 的受控可调用路径 | 真实 operational use/reuse（运行使用／复用）与无协作者人工介入的智能体客户路径 | `DQ-016` 明确发布 `TMAI-DBOS-WHEEL-CANDIDATE-20260722-001`，GitHub Release 提供匿名 URL，下载 hash 和隔离安装复验通过 | DBA／SAEE 公开规范的发现和架构复用；已验证但未发布的 wheel candidate |
-| `B-011` | GitHub 只有完整元数据描述查询可命中；规范名称与公开网络仍未命中 TMAI | 无给定 URL 的 canonical-name agent discovery（规范名称智能体自然发现）和不加限定的 discoverable claim（可发现声明） | 外部索引刷新后规范英文名或中文名得到可验证命中，或 Human Owner 明确接受 Developer Preview 的发现限制并继续保留 `PARTIAL_METADATA_ONLY` | 直接 URL、GitHub URL、完整 metadata query、`llms.txt` 和 Agent Customer Package 的给定入口使用 |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
 
@@ -61,6 +59,8 @@ risk_acceptance_authority_assigned: false
 | `B-007` | 三仓库 source commits 未冻结且跨仓库 Clean Clone 未通过 | `CLEAN-CLONE-VALIDATION-REPORT.md` 后继结果 `PASS` | DBOS 是 authenticated private clone；外部试用仍受 `B-008` 阻塞 |
 | `B-008` | 缺少 3–5 名人类开发者或招募渠道 | `ADR-021` 采用 AI agent 为首要客户并完成 12/12 受控模型基线 | 人类试用没有执行、没有被改写成通过；未来仍可作为次级可用性研究 |
 | `B-009` | Agent Customer Validation 基线的 exact invocation、composition、positive fit 和 simple-task negative control 未达阈值 | `TMAI-ACV-20260722-002` 用相同阈值复测：12/12 sessions、全部阈值通过；原 `001=CONDITIONAL` 保留 | 只解除 agent-readable packaging blocker；不产生 DBOS 公开、客户采用或发布授权 |
+| `B-010` | DBOS 没有已发布的公开 package、API 或面向 AI agent 的受控可调用路径 | `ADR-022`、exact GitHub Release asset、匿名 SHA-256 和隔离安装复验 | 只解除有界 package 获取阻塞；没有公共 Runtime、托管 API、Permission 或整仓公开 |
+| `B-011` | 规范名称与公开网络仍未命中 TMAI | `ADR-022` 为 Developer Preview v0.1 显式接受并继续披露 `PARTIAL_METADATA_ONLY` | 只解除 v0.1 发布阻塞；发现事实没有升级，索引刷新后仍需复查 |
 
 | blocker_id | 原阻塞 | 解除证据 | 保留边界 |
 |---|---|---|---|
@@ -79,9 +79,9 @@ risk_acceptance_authority_assigned: false
 TRACKED_RISKS=19
 ACTIVE_RISKS=17
 RESOLVED_RISKS=2
-ACTIVE_BLOCKERS=6
-BLOCKERS_CLEARED=5
+ACTIVE_BLOCKERS=4
+BLOCKERS_CLEARED=7
 LOCAL_BLOCKERS_CLEARED_NOT_RELEASED=1
-RISKS_ACCEPTED=0
+RISKS_ACCEPTED=1
 RISK_REGISTER_GRANTS_AUTHORITY=false
 ```

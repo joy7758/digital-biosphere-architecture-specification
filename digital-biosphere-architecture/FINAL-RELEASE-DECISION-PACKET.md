@@ -2,9 +2,9 @@
 document_id: DBA-FINAL-RELEASE-DECISION-PACKET-0.1
 title: Trusted Multi-Agent Infrastructure Developer Preview v0.1 Final Release Decision Packet
 title_zh: 可信多智能体基础设施开发者预览版 v0.1 最终发布决策包
-status: clean-clone-agent-validation-dependency-and-wheel-review-pass-distribution-and-release-decision-pending
-release_authorized: false
-developer_preview_cloud_release_authorized: false
+status: release-authorized-execution-in-progress
+release_authorized: true
+developer_preview_cloud_release_authorized: true
 website_candidate_deployment_authorized: true
 website_candidate_deployed: true
 website_candidate_github_prerelease_published: true
@@ -31,7 +31,7 @@ last_reviewed: 2026-07-22
 | Agent customer validation rerun | `TMAI-ACV-20260722-002`；相同阈值；12/12 sessions；全部阈值通过 | `PASS_NOT_RELEASE_AUTHORIZATION` |
 | Open-web discovery | `TMAI-OWD-20260722-001`；GitHub 完整新 description 已命中；规范英文名、中文名与公开搜索未命中 | `PARTIAL_METADATA_ONLY_CANONICAL_RECHECK_OR_LIMIT_ACCEPTANCE_PENDING` |
 | GitHub website artifact | `v0.1-public-website-candidate.7`；`1c4bf032`；`prerelease=true`；anonymous download hash PASS | `WEBSITE_CANDIDATE_PRERELEASED_NOT_DEVELOPER_PREVIEW` |
-| DBOS repository visibility | GitHub API 返回 `PRIVATE` | `PUBLIC_ACCESS_NOT_ESTABLISHED` |
+| DBOS repository visibility | GitHub API 返回 `PRIVATE`；`ADR-022` 要求保持 | `WHOLE_REPOSITORY_PRIVATE_EXACT_WHEEL_RELEASE_AUTHORIZED` |
 
 ## 2. DQ-011 — SAEE Adapter Publication Boundary（SAEE 适配器公开边界）
 
@@ -131,19 +131,18 @@ DBOS `cd3f867` 的 clean clone 使用当前 GitHub 凭据完成；这不是 anon
 已从该精确提交构建，排除 registry、evidence、reports、tests、tools 和本机路径；它在
 隔离环境安装后返回 `PASS`，但尚无公开 URL。
 
-`ADR-020` 的 `PRIVATE_COLLABORATOR_TRIAL` 继续有效。`DQ-016` 现在提供更适合 AI agent
-客户的后继选项：DBOS 整仓继续 private，只将 exact wheel 作为 Developer Preview
-GitHub Release asset（开发者预览 GitHub 发布资产）公开。该选项需要 Human Decision，
-且不授权 PyPI、Runtime、Permission 或整仓 visibility 变化。
+`ADR-022` 已选择更适合 AI agent 客户的后继路线：DBOS 整仓继续 private，只将 exact
+wheel 作为 Developer Preview GitHub Release asset（开发者预览 GitHub 发布资产）公开。
+该决定不授权 PyPI、Runtime、Permission 或整仓 visibility 变化。
 
 ```text
 DBOS_REPOSITORY_VISIBILITY=PRIVATE
 ANONYMOUS_CLONE_VALIDATED=false
-DBOS_PUBLICATION_AUTHORIZED=false
+DBOS_PUBLICATION_AUTHORIZED=true
 PRIVATE_COLLABORATOR_TRIAL_SELECTED=true
 WHOLE_DBOS_REPOSITORY_PUBLIC_RECOMMENDED=false
 DBOS_PUBLIC_SAFE_WHEEL_VALIDATED=true
-DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED=false
+DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED=true
 DBOS_PUBLIC_SAFE_WHEEL_PACKAGE_ID=TMAI-DBOS-WHEEL-CANDIDATE-20260722-001
 ```
 
@@ -158,7 +157,11 @@ dq_012_license=Apache-2.0
 dq_013_baidu_isolated_path=superseded_by_ADR-019
 dq_014_dbos_visibility=PRIVATE_COLLABORATOR_TRIAL
 dq_015_primary_customer_validation=ADOPT_AGENT_NATIVE_CUSTOMER_VALIDATION
-dq_016_dbos_agent_distribution=PENDING_HUMAN_DECISION
+dq_016_dbos_agent_distribution=PUBLISH_PUBLIC_SAFE_DBOS_WHEEL
+whole_dbos_repository_visibility=KEEP_PRIVATE
+open_web_limitation=ACCEPT_PARTIAL_METADATA_ONLY_FOR_V0_1
+dq_009_release=AUTHORIZE_TRUSTED_MULTI_AGENT_INFRASTRUCTURE_DEVELOPER_PREVIEW_V0_1
+released_by_ref=zhangbin
 trial_coordinator=zhangbin
 participant_source=PENDING_REAL_INPUT
 decision_timestamp=2026-07-21T22:48:39+08:00
@@ -166,8 +169,10 @@ decision_timestamp=2026-07-21T22:48:39+08:00
 
 `ADR-021` 已把上面的人类参与者路线取代为可选次级研究；它没有把未发生的人类试用
 改写成通过。首要验证修复已完成并通过，`R-015` 依赖复核也已完成并保留有界残余披露。
-仍需由 `DQ-016` 决定 DBOS 的 agent access／distribution（智能体访问／分发）方式，再由 `DQ-009` 以
-明确处理开放网络发现限制并记录 `released_by_ref`，再决定 tag、GitHub Release 和百度正式部署。
+`ADR-022` 已处理 DBOS agent access／distribution（智能体访问／分发）、开放网络发现
+限制、`released_by_ref` 和正式发布授权。执行仍须通过 tag、GitHub Release、匿名 wheel
+校验、隔离安装和百度 formal deployment 的外部复验。
 
-本决策包记录 release preparation decisions（发布准备决定），但不是正式 Release、
-Deployment（部署）、有效的外部联系授权或 Trial Result（试用结果）。
+本决策包与 `ADR-022` 构成 release execution authorization（发布执行授权）。Decision
+仍不等于 Execution；完成状态以正式 GitHub Release、百度云 `release.json` 和发布后
+审计为准。

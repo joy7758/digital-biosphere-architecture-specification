@@ -2,11 +2,13 @@
 document_id: DBA-DEVELOPER-PREVIEW-RELEASE-PLAN-0.1
 title: Trusted Multi-Agent Infrastructure Developer Preview Release Plan v0.1
 title_zh: 可信多智能体基础设施开发者预览发布计划 v0.1
-status: release-plan-not-release
+status: release-authorized-execution-in-progress
 target_release: trusted-multi-agent-infrastructure-developer-preview-v0.1
-release_authorized: false
-deployment_authorized: false
-last_reviewed: 2026-07-21
+release_authorized: true
+deployment_authorized: true
+decision_reference: architecture/ADR-022-developer-preview-release.md
+released_by_ref: zhangbin
+last_reviewed: 2026-07-22
 ---
 
 # Trusted Multi-Agent Infrastructure Developer Preview Release Plan v0.1（可信多智能体基础设施开发者预览发布计划 v0.1）
@@ -75,17 +77,17 @@ DRAFT
 - [x] 使用真实公开搜索与 GitHub repository search 单独观察自然发现，结果保留为 `PARTIAL_METADATA_ONLY`；
 - [x] `R-015` 依赖复核完成：0 critical、0 high、2 moderate；静态部署边界和残余披露已记录；
 - [x] DBOS `main@cd3f867` 的 public-safe wheel 通过 334 tests、34 validators、Gitleaks、隔离安装和路径排除复核；
-- [ ] 元数据修复后观察到外部索引刷新，或 Human Owner 显式接受 Developer Preview 的发现限制；
-- [ ] DBOS agent access／distribution 路线已有明确 Human Decision；
-- [ ] Human Release Decision（人工发布决策）包含明确 `released_by_ref`；
-- [ ] release notes（发布说明）区分本地预览、发布、部署和采用。
+- [x] Human Owner 通过 `ADR-022` 显式接受 Developer Preview v0.1 的 `PARTIAL_METADATA_ONLY` 发现限制；
+- [x] `DQ-016` 决定只公开 exact DBOS public-safe wheel，整仓继续 private；
+- [x] `DQ-009` Human Release Decision 包含 `released_by_ref=zhangbin`；
+- [x] [`DEVELOPER-PREVIEW-v0.1-RELEASE-NOTES.md`](DEVELOPER-PREVIEW-v0.1-RELEASE-NOTES.md) 区分本地预览、发布、部署和采用。
 
 以上勾选仅表示当前本地工作树的 release candidate（候选发布）材料满足对应检查，不表示 source commits、干净 clone、外部试用或发布已经完成。
 
 ## 5. Current Release Assessment（当前发布判断）
 
 ```text
-RELEASE_STATUS=NOT_READY
+RELEASE_STATUS=AUTHORIZED_EXECUTION_IN_PROGRESS
 PUBLIC_ENTRY_DRAFTED=true
 DBOS_EXAMPLES_LOCALLY_RUN=true
 DBOS_TESTS=334_PASS
@@ -113,17 +115,17 @@ GITHUB_DISCOVERY_METADATA_REMEDIATED=true
 GITHUB_METADATA_DESCRIPTION_MATCH=true
 OPEN_WEB_CANONICAL_NAME_MATCH=false
 HUMAN_DEVELOPER_TRIAL_REQUIRED=false
-DBOS_AGENT_ACCESS_DECIDED=false
+DBOS_AGENT_ACCESS_DECIDED=true
 DBOS_PUBLIC_SAFE_WHEEL_VALIDATED=true
-DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED=false
-RELEASE_AUTHORIZED=false
+DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED=true
+RELEASE_AUTHORIZED=true
+RELEASE_DECISION_REF=architecture/ADR-022-developer-preview-release.md
+RELEASED_BY_REF=zhangbin
+WHOLE_DBOS_REPOSITORY_VISIBILITY=PRIVATE
 ```
 
-阻塞原因：
-
-1. DBOS 整仓因 48 个绝对路径文件保持 private；public-safe wheel 已验证但 `DQ-016` 尚未授权公开，AI agent 仍没有匿名下载 URL；
-2. `OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY`；GitHub 新描述已命中，但规范名称尚未命中或获得显式限制接受；
-3. `DQ-009` 尚无 Human Release Decision 与 `released_by_ref`；正式说明须披露 `R-015` 残余。
+`ADR-022` 已关闭原发布输入。执行仍必须逐项证明 GitHub Release、匿名下载 hash、
+隔离安装、百度云 formal artifact、线上健康与 DBOS 私有可见性；部分执行不得写成完成。
 
 ## 6. Rollback and Preservation（回退与保留）
 

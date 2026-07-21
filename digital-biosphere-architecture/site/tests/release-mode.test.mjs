@@ -14,8 +14,22 @@ async function currentResources() {
   return { status, agentIndex, agentCustomerPackage, dbosPackage };
 }
 
-test("defaults to the fail-closed candidate release context", async () => {
-  const context = resolveReleaseContext({}, await currentResources());
+async function candidateResources() {
+  const resources = structuredClone(await currentResources());
+  resources.status.release_claim = false;
+  resources.status.gates.DEVELOPER_PREVIEW_RELEASED = false;
+  resources.status.gates.DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED = false;
+  resources.status.gates.DQ_016_DBOS_DISTRIBUTION_DECIDED = false;
+  resources.agentIndex.released = false;
+  resources.agentCustomerPackage.released = false;
+  resources.dbosPackage.release_authorized = false;
+  resources.dbosPackage.status = "VALIDATED_NOT_PUBLISHED";
+  resources.dbosPackage.public_download_url = null;
+  return resources;
+}
+
+test("keeps the historical candidate mode fail closed", async () => {
+  const context = resolveReleaseContext({}, await candidateResources());
   assert.deepEqual(context, {
     mode: "candidate",
     deploymentState: "candidate_not_released",
@@ -45,7 +59,7 @@ test("rejects formal release mode without explicit decision inputs", async () =>
 });
 
 test("rejects formal release mode while public truth surfaces remain candidates", async () => {
-  const resources = await currentResources();
+  const resources = await candidateResources();
   assert.throws(
     () =>
       resolveReleaseContext(
@@ -63,23 +77,14 @@ test("rejects formal release mode while public truth surfaces remain candidates"
 });
 
 test("accepts formal mode only when every machine truth surface and input agree", async () => {
-  const resources = structuredClone(await currentResources());
-  const wheelUrl = "https://github.com/example/releases/download/v0.1/dbos.whl";
-  resources.status.release_claim = true;
-  resources.status.gates.DEVELOPER_PREVIEW_RELEASED = true;
-  resources.status.gates.DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED = true;
-  resources.status.gates.DQ_016_DBOS_DISTRIBUTION_DECIDED = true;
-  resources.agentIndex.released = true;
-  resources.agentCustomerPackage.released = true;
-  resources.dbosPackage.release_authorized = true;
-  resources.dbosPackage.status = "PUBLISHED";
-  resources.dbosPackage.public_download_url = wheelUrl;
+  const resources = await currentResources();
+  const wheelUrl = "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl";
 
   const context = resolveReleaseContext(
     {
       RELEASE_MODE: "formal",
       RELEASE_DECISION_REF: "architecture/ADR-022-developer-preview-release.md",
-      RELEASED_BY_REF: "release-owner",
+      RELEASED_BY_REF: "zhangbin",
       PUBLIC_RELEASE_TAG: "v0.1-developer-preview",
       DBOS_WHEEL_URL: wheelUrl,
     },
@@ -89,5 +94,25 @@ test("accepts formal mode only when every machine truth surface and input agree"
   assert.equal(context.deploymentState, "developer_preview_released");
   assert.equal(context.developerPreviewReleased, true);
   assert.equal(context.dbosWheelUrl, wheelUrl);
+  assert.equal(context.releasedByRef, "zhangbin");
   assert.match(routeMarkers(context.mode).enStatus[0], /is released/);
+});
+
+test("rejects formal mode when the release identity drifts across truth surfaces", async () => {
+  const resources = structuredClone(await currentResources());
+  resources.agentIndex.release.released_by_ref = "different-owner";
+
+  assert.throws(
+    () => resolveReleaseContext(
+      {
+        RELEASE_MODE: "formal",
+        RELEASE_DECISION_REF: "architecture/ADR-022-developer-preview-release.md",
+        RELEASED_BY_REF: "zhangbin",
+        PUBLIC_RELEASE_TAG: "v0.1-developer-preview",
+        DBOS_WHEEL_URL: "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
+      },
+      resources,
+    ),
+    /RELEASED_BY_REF must match agent-index/,
+  );
 });
