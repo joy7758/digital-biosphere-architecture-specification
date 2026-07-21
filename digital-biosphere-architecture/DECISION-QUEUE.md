@@ -32,7 +32,7 @@ last_reviewed: 2026-07-21
 | `DQ-010` | `P0` | 是否授权执行 External Developer Trial v0.1 并联系 3–5 名外部 Agent Developer？ | `BLOCKED_INPUT` | exact `trial_package_id`、DBA/DBOS/SAEE source commits、clean-clone result、trial coordinator、参与者画像、隐私说明和停止规则 | `DP-5B` 是否可进入 `AUTHORIZED/IN_PROGRESS`，并允许受限外部联系与反馈收集 | Trial Plan 或 ADR-018 自动授权外部联系、数据收集、发布或客户验证 |
 | `DQ-011` | `P0` | SAEE DBOS Developer Preview Adapter 应如何安全提供给外部开发者？ | `READY_FOR_REVIEW` | public/private history 分离事实、Adapter 依赖、private-core 边界、避免重复 evaluator 的方案比较 | `DP-4` 是否能形成可干净检出的 SAEE 评价入口 | 将内部工程历史推入 public `main`、复制 evaluator、把 toy demo 当 Adapter 或通过无关历史强制合并 |
 | `DQ-012` | `P0` | Developer Preview 的 DBA、DBOS、SAEE 公开表面采用什么许可证？ | `READY_FOR_REVIEW` | 当前无根 LICENSE、目标复用方式、专利与贡献边界；推荐 `Apache-2.0` | 外部复制、修改、分发与 GitHub Release 的法律边界 | Open Infrastructure 自动等于 Apache/MIT，或 public repo 自动授予复用权 |
-| `DQ-013` | `P0` | 百度正式发布是否采用 `redcrag.cn/trusted-multi-agent-infrastructure/` 独立路径？ | `READY_FOR_REVIEW` | 当前 HTTPS/证书、Nginx、历史 releases、非破坏部署与回退方案 | 是否允许准备独立 release directory、Nginx route 和最终部署 | 清空或覆盖现有 `/saee/`，或把服务器健康自动等于部署授权 |
+| `DQ-013` | `P0` | 百度正式发布是否采用 `redcrag.cn/trusted-multi-agent-infrastructure/` 独立路径？ | `SUPERSEDED` | Human Owner 明确旧应用资产已过期并授权清理；见 `ADR-019` | 网站候选改用 `https://redcrag.cn/` 根入口；不授权 Developer Preview Release | 网站上线或健康检查自动等于正式发布 |
 | `DQ-014` | `P0` | DBOS 何时从 private repository 转为 public repository？ | `READY_FOR_REVIEW` | clean clone、许可证、secret/private-material audit、外部试用方式与 rollback | 匿名开发者能否获取 SDK、Quick Start 和 Demo | authenticated clone 自动等于 public availability，或 trial collaborator access 自动等于公开发布 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
@@ -42,6 +42,7 @@ last_reviewed: 2026-07-21
 | `ADR-016` | `ACCEPTED`：DBA 升级为 Program Governance + Architecture Specification cockpit | 2026-07-21 用户明确目标 | 允许更新 DBA 文档和治理入口；不授权修改 DBOS、SAEE、Pilot、Runtime 或外部状态 |
 | `ADR-017` | `ACCEPTED`：进入 Trusted Multi-Agent Infrastructure Developer Preview v0.1 阶段 | 2026-07-21 用户明确目标 | 允许按 DBA / DBOS / Demo / SAEE 责任域推进受限实现；不授权发布、生产 Runtime、自动 Permission 或 Evidence 改写 |
 | `ADR-018` | `ACCEPTED`：在发布前建立 3–5 人 External Developer Trial Gate | 2026-07-21 用户明确目标 | 允许建立试用计划、测量与 gate；不授权招募、外部联系、试用执行、客户验证或发布 |
+| `ADR-019` | `ACCEPTED_AND_EXECUTED`：清理过期云端应用资产并在 `redcrag.cn` 根入口部署双语 TMAI 网站候选 | 2026-07-21 用户明确清理与网站要求 | 只授权公开网站候选及其 GitHub prerelease；不授权 Developer Preview Release、DBOS 公开、SAEE 边界变更或外部试用 |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 
@@ -64,7 +65,7 @@ release_authorized=true|false
 
 ```text
 DECISION_QUEUE_ACTIVE=true
-OPEN_DECISIONS=14
+OPEN_DECISIONS=13
 QUEUE_CREATES_AUTHORITY=false
 QUEUE_CREATES_PERMISSION=false
 QUEUE_EXECUTES_DECISIONS=false

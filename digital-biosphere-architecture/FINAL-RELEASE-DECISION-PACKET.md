@@ -4,7 +4,10 @@ title: Trusted Multi-Agent Infrastructure Developer Preview v0.1 Final Release D
 title_zh: 可信多智能体基础设施开发者预览版 v0.1 最终发布决策包
 status: ready-for-human-decisions-not-release-authorized
 release_authorized: false
-cloud_deployment_authorized: false
+developer_preview_cloud_release_authorized: false
+website_candidate_deployment_authorized: true
+website_candidate_deployed: true
+website_candidate_github_prerelease_published: true
 license_selected: false
 last_reviewed: 2026-07-21
 ---
@@ -15,13 +18,13 @@ last_reviewed: 2026-07-21
 
 | Surface（表面） | Current evidence（当前证据） | 状态 |
 |---|---|---|
-| DBA GitHub | `origin/main@738a01d`；root README、root AGENTS、307 links | `REMOTE_CLEAN_CLONE_PASS` |
+| DBA GitHub | `origin/main@6793320`；公开网站源码、部署报告与治理入口 | `REMOTE_WEBSITE_CANDIDATE_BASELINE_PASS` |
 | DBOS GitHub | `origin/main@b4e3cbe`；fresh install、331 tests、34 validators、两个 Demo | `REMOTE_CLEAN_CLONE_PASS_PRIVATE_REPO` |
 | SAEE GitHub public layer | `origin/main@e503c22`；public smoke/demo 通过 | `PUBLIC_LAYER_PASS_ADAPTER_MISSING` |
 | Cross-project Clean Clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `FAIL_REQUIRED_SAEE_ADAPTER_MISSING` |
-| Baidu mirror | `https://redcrag.cn/` HTTP/2 200；证书有效至 2026-10-09 | `EXISTING_SAEE_SITE_HEALTHY_NO_TMAI_PATH` |
+| Baidu website | `https://redcrag.cn/` 中英文候选网站；健康、安全头和回滚通过 | `CANDIDATE_DEPLOYED_NOT_RELEASED` |
 | External trial | 参与者 0，`DQ-010` 未授权 | `NOT_STARTED` |
-| GitHub Release | 没有本版本 tag / release | `NOT_CREATED` |
+| GitHub website artifact | `v0.1-public-website-candidate`；`prerelease=true` | `WEBSITE_CANDIDATE_PRERELEASED` |
 | DBOS repository visibility | GitHub API 返回 `PRIVATE` | `PUBLIC_ACCESS_NOT_ESTABLISHED` |
 
 ## 2. DQ-011 — SAEE Adapter Publication Boundary（SAEE 适配器公开边界）
@@ -78,21 +81,23 @@ LICENSE_PUBLICATION_AUTHORIZED=false
 
 ## 4. DQ-013 — Baidu Deployment Target（百度部署目标）
 
-已验证的正式域名是 `https://redcrag.cn/`，不是 `deep-evo.org`。现有 SAEE 页面与
-历史 release directories（发布目录）必须保留。
+Human Owner 随后明确旧 SAEE 与 Agent Evidence Receipt 应用资产已经过期，授权在
+保留系统、证书和安全配置的前提下完整清理，并要求建立中英文新网站。原独立路径问题
+因此由 `ADR-019` 标记为 `SUPERSEDED`。
 
-推荐采用非破坏路径：
+当前已执行：
 
 ```text
-release_directory=/srv/saee/releases/tmai-developer-preview-v0.1-<source-hash>
-public_path=https://redcrag.cn/trusted-multi-agent-infrastructure/
-replace_existing_saee=false
-cloud_clear_required=false
+release_directory=/srv/tmai/releases/<source-revision>
+public_path=https://redcrag.cn/
+website_candidate_deployed=true
 atomic_rollback_required=true
+atomic_rollback_validated=true
+developer_preview_released=false
 ```
 
-该方案在独立目录部署，不清空 `/srv/saee/public/saee`，不修改历史 Evidence，且保留
-原子回退。仍需 Human Deployment Authorization（人工部署授权）后才能修改 Nginx 或上传。
+网站候选与相同工件的 GitHub prerelease 已完成。该动作不授权正式 Developer Preview、
+DBOS 公开、SAEE Adapter 迁移、许可证选择或外部试用。
 
 ## 5. DQ-014 — DBOS Repository Visibility（DBOS 仓库可见性）
 
@@ -117,12 +122,12 @@ DBOS_PUBLICATION_AUTHORIZED=false
 decided_by_ref=
 dq_011_saee_public_safe_extraction=approved|rejected
 dq_012_license=Apache-2.0|other|withheld
-dq_013_baidu_isolated_path=approved|rejected
+dq_013_baidu_isolated_path=superseded_by_ADR-019
 dq_014_dbos_visibility=public_after_trial|private_collaborator_trial|rejected
 decision_timestamp=
 ```
 
-三个决定完成后仍需：实现/审计 SAEE public-safe extraction、重跑 Clean Clone、处理
+其余决定完成后仍需：实现/审计 SAEE public-safe extraction、重跑 Clean Clone、处理
 `DQ-010`、完成 3–5 人试用，再由 `DQ-009` 决定 tag、GitHub Release 和百度正式部署。
 
 本决策包不是 Decision、Authorization、Release 或 Deployment。

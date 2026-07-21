@@ -5,8 +5,8 @@ title_zh: 数字生物圈项目群状态快照
 status: observed-governance-snapshot
 observed_at: 2026-07-21
 freshness: point-in-time
-release_status: not-released
-developer_preview_status: clean-clone-remediation-required
+release_status: website-candidate-published-developer-preview-not-released
+developer_preview_status: website-live-clean-clone-remediation-required
 source_policy: direct-read-only-observation
 ---
 
@@ -16,7 +16,7 @@ source_policy: direct-read-only-observation
 
 ```text
 PROGRAM_ID=DIGITAL_BIOSPHERE
-PROGRAM_PHASE=TRUSTED_MULTI_AGENT_INFRASTRUCTURE_CLEAN_CLONE_REMEDIATION
+PROGRAM_PHASE=TRUSTED_MULTI_AGENT_INFRASTRUCTURE_WEBSITE_CANDIDATE_AND_RELEASE_GATING
 PROGRAM_HEALTH=ATTENTION_REQUIRED
 CURRENT_MILESTONE=DP-CCV
 CORE_PROJECTS=3
@@ -40,6 +40,10 @@ DBOS_CLEAN_CLONE_PASS=true
 SAEE_PUBLIC_CLEAN_CLONE_PASS=true
 SAEE_DBOS_ADAPTER_CLEAN_CLONE_PASS=false
 CROSS_PROJECT_CLEAN_CLONE_PASS=false
+PUBLIC_WEBSITE_DEPLOYED=true
+PUBLIC_WEBSITE_HEALTH_PASS=true
+PUBLIC_WEBSITE_ROLLBACK_VALIDATED=true
+GITHUB_WEBSITE_PRERELEASE_PUBLISHED=true
 ```
 
 `ATTENTION_REQUIRED` 表示存在需要人工决定、状态来源对齐和仓库拓扑处理的事项，不表示任何子项目失败或不可用。
@@ -50,7 +54,7 @@ CROSS_PROJECT_CLEAN_CLONE_PASS=false
 
 | project_id | branch | observed commit | worktree observation | remote observation | 规范状态摘要 |
 |---|---|---|---|---|---|
-| `DBA` | `main` | `8974e8a957a3002c0f4cd1e64390a8f1f962d153` | source commit 已推送 | `origin/main` 可干净检出并包含 GitHub 根入口 | root README、root AGENTS 与 307 links 通过；版本未发布 |
+| `DBA` | `main` | `67933205e3c4fa91c038c5fa961727abbf6d2af4` | source commit 已推送 | `origin/main` 包含双语网站、部署报告和网站候选 prerelease | `redcrag.cn` 候选网站已部署；Developer Preview 未发布 |
 | `DBOS` | `main` | `b4e3cbe2af442be861dbab3f7b2ffd2567443077` | source commit 已推送 | `origin/main` 可干净检出；仓库当前为 private | fresh install、331/331 tests、34/34 validators、两个 Demo 通过；不是 Agent Runtime |
 | `SAEE` | public `main` | `e503c22109bdb7c83dc465d66e2a22760a3c8d90` | public source 可干净检出；内部工作树另有未发布变化 | `origin/main` 是裁剪公共产品层 | public smoke/demo 通过；DBOS Developer Preview Adapter 不在公共 source，跨项目 gate 失败 |
 | `RESEARCH-AGENT-PILOT` | `main` | `8445fe5d13cd889032c3786ba527d801f56d5351` | `dirty_count=30` | 未发现 `origin` | `V1_0_STATUS=INCOMPLETE_NOT_READY`；Agent、Runtime、Entity、Execution 均为 0 |
@@ -68,7 +72,7 @@ CROSS_PROJECT_CLEAN_CLONE_PASS=false
 | Research Agent DBOS connection | `PREPARED_ONLY` | Pilot README 的当前状态 |
 | Research Agent SAEE connection | `PREPARED_ONLY` | Pilot README 的当前状态 |
 | End-to-end governed evolution loop | `NOT_VERIFIED` | 本阶段只验证 synthetic record-to-evaluation 链；没有真实 Execution、Verified Evidence、Decision 或 Adoption 闭环 |
-| Developer Preview public entry | `DRAFT_DEFINED_IN_WORKTREE` | Public Overview、Plan、Release Plan 与 ADR-017；未发布 |
+| Developer Preview public entry | `WEBSITE_CANDIDATE_DEPLOYED_NOT_RELEASED` | `redcrag.cn`、`PUBLIC-WEBSITE-DEPLOYMENT-REPORT.md`、ADR-019 与 GitHub website prerelease |
 | DBOS local developer path | `SCOPED_LOCAL_CONFORMANCE_PASS` | local editable install、单一 runner、331/331 tests、34/34 validators |
 | Multi-Agent Trust Demo | `LOCAL_DETERMINISTIC_PASS` | 3 个角色模拟、3 个执行记录、3 个证据引用、9 个结构 Validation；无 Agent/Runtime |
 | SAEE Evaluation Layer v0.1 | `LOCAL_READ_ONLY_PASS` | 8/8 adapter tests；Reliability/Stability fail closed；Risk/Recommendation 复用现有 evaluator |
@@ -85,7 +89,7 @@ CROSS_PROJECT_CLEAN_CLONE_PASS=false
 - `DQ-010`：决定是否允许冻结试用包、联系 3–5 名外部 Agent Developer 并执行试用；
 - `DQ-011`：决定 SAEE DBOS Preview Adapter 如何在不公开 private core、不复制 evaluator 的前提下向外部开发者提供；
 - `DQ-012`：选择 Developer Preview 的公开许可证；当前推荐 `Apache-2.0`，尚未批准；
-- `DQ-013`：决定是否使用 `https://redcrag.cn/trusted-multi-agent-infrastructure/` 独立、非破坏部署路径；
+- `DQ-013` 已由 `ADR-019` 标记为 `SUPERSEDED`：过期应用资产已按授权清理，双语网站候选使用 `https://redcrag.cn/` 根入口；
 - `DQ-014`：决定 DBOS 从 private 转为 public 的时点和公开前审计要求；
 - `B-001`：没有已记录的 Program Authority assignment（项目群权力指派），阻止高影响项目群决策闭环；
 - `B-002`：DBA Git 根目录不是 DBA 目录本身，影响仓库边界和远端展示；
@@ -99,10 +103,11 @@ CROSS_PROJECT_CLEAN_CLONE_PASS=false
 ## 5. Next Program Actions（下一步项目群行动）
 
 1. 处理 `DQ-011`，冻结不暴露 private core、不复制 evaluator 的 SAEE Adapter 分发方式；
-2. 使用三个最终远端 commit 重跑完整 clean-clone；
-3. 整体通过后再准备 `trial_package_id`、试用协调者、隐私说明并处理 `DQ-010`；
-4. 获得授权后联系 3–5 名外部 Agent Developer；Trial Result 完成后再处理 `DQ-009`；
-5. 在 Pilot 自身 gate 通过前保持 Research Agent Prototype 为 `NOT_READY`。
+2. 处理 `DQ-012` 与 `DQ-014`，明确许可证和 DBOS 试用访问方式；
+3. 使用三个最终远端 commit 重跑完整 clean-clone；
+4. 整体通过后准备 `trial_package_id`、试用协调者、隐私说明并处理 `DQ-010`；
+5. 获得授权后联系 3–5 名外部 Agent Developer；Trial Result 完成后再处理 `DQ-009`；
+6. 在 Pilot 自身 gate 通过前保持 Research Agent Prototype 为 `NOT_READY`。
 
 ## 6. Refresh Protocol（刷新协议）
 
