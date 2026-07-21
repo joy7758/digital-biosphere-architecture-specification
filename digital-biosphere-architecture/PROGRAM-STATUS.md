@@ -5,6 +5,7 @@ title_zh: 数字生物圈项目群状态快照
 status: observed-governance-snapshot-owner-decisions-recorded
 observed_at: 2026-07-21
 freshness: point-in-time
+last_governance_addendum_at: 2026-07-22T00:08:43+08:00
 release_status: website-candidate-published-developer-preview-not-released
 developer_preview_status: website-live-clean-clone-pass-trial-participant-source-pending
 source_policy: direct-read-only-observation
@@ -87,13 +88,14 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 | DBOS local developer path | `SCOPED_LOCAL_CONFORMANCE_PASS` | local editable install、单一 runner、331/331 tests、34/34 validators |
 | Multi-Agent Trust Demo | `LOCAL_DETERMINISTIC_PASS` | 3 个角色模拟、3 个执行记录、3 个证据引用、9 个结构 Validation；无 Agent/Runtime |
 | SAEE Evaluation Layer v0.1 | `LOCAL_READ_ONLY_PASS` | 8/8 adapter tests；Reliability/Stability fail closed；Risk/Recommendation 复用现有 evaluator |
+| Program source and responsibility registry | `PASS_LOCAL_GOVERNANCE_ARTIFACT_VALIDATION_EXTERNAL_DRIFT_RECORDED_DOMAIN_CONFIRMATION_PENDING` | 2026-07-21/22 只读 branch/commit/source 候选、JSON Schema、本地验证报告、冲突规则和 Evidence-to-Decision 责任链；DBOS/SAEE 并发 worktree drift 已保留且未归因；不关闭 `DQ-003` / `DQ-006` / `DQ-008` |
 | External Developer Trial Preparation | `TECHNICAL_PACKAGE_FROZEN_PARTICIPANT_SOURCE_PENDING` | `TMAI-DP-v0.1-TRIAL-20260721-001` 已冻结；参与者 0、无外部联系或试用 |
 | Clean Clone Validation | `PASS_FROZEN_REMOTE_SOURCES` | DBA、DBOS、SAEE 与只读 Adapter 全通过；见 `CLEAN-CLONE-VALIDATION-REPORT.md` |
 
 ## 4. Active Decisions and Blockers（当前决策与阻塞）
 
 - `DQ-002`：决定 DBA 独立仓库根目录与当前父级 Git 根目录之间的拓扑；
-- `DQ-003`：确认 DBOS、SAEE、Research Agent Pilot 的 canonical status source；
+- `DQ-003`：候选 source registry 与决策包已形成，状态为 `READY_FOR_REVIEW`；仍需 DBOS、SAEE、Research Agent Pilot 的 Domain Owner 确认 canonical status source；
 - `DQ-004`：选择第一个跨项目 conformance（符合性）里程碑；
 - `DQ-008`：决定当前驾驶舱与既有 DBA public meaning layer 的规范关系和单一前门；
 - `DQ-009`：最终 Developer Preview Release（开发者预览版发布）仍需 Trial Result 和 `released_by_ref`；

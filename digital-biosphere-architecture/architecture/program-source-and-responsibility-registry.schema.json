@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:digital-biosphere:dba:program-source-and-responsibility-registry:0.1",
+  "title": "Digital Biosphere Program Source and Responsibility Registry Schema",
+  "description": "Agent-readable schema for candidate project status sources and non-collapsing responsibility stages. Validation does not confirm child-project truth or authorize implementation.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "registry_id",
+    "schema_version",
+    "status",
+    "observed_at",
+    "observation_state",
+    "external_drift",
+    "primary_repository",
+    "implementation_effect",
+    "recommendation_gate",
+    "projects",
+    "responsibility_chain",
+    "open_decisions",
+    "truth_boundaries"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "registry_id": { "const": "DBA-PROGRAM-SOURCE-RESPONSIBILITY-REGISTRY-0.1" },
+    "schema_version": { "const": "0.1.0" },
+    "status": { "const": "CANDIDATE_FOR_DOMAIN_CONFIRMATION" },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "observation_state": {
+      "enum": ["CURRENT_AT_LAST_REFRESH", "REFRESHED_AFTER_CONCURRENT_EXTERNAL_DRIFT"]
+    },
+    "external_drift": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["detected", "previous_observed_at", "affected_projects", "attribution"],
+      "properties": {
+        "detected": { "type": "boolean" },
+        "previous_observed_at": { "type": "string", "format": "date-time" },
+        "affected_projects": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["project_id", "previous_worktree_changes", "current_worktree_changes", "head_changed"],
+            "properties": {
+              "project_id": { "type": "string" },
+              "previous_worktree_changes": { "type": "integer", "minimum": 0 },
+              "current_worktree_changes": { "type": "integer", "minimum": 0 },
+              "head_changed": { "type": "boolean" }
+            }
+          }
+        },
+        "attribution": { "const": "NOT_INFERRED" }
+      }
+    },
+    "primary_repository": { "const": "digital-biosphere-architecture" },
+    "implementation_effect": { "const": "NONE" },
+    "child_project_truth_changed": { "const": false },
+    "recommendation_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["current_recommendation", "recommended_scope", "not_recommended_scope", "implementation_authorized"],
+      "properties": {
+        "current_recommendation": { "enum": ["RECOMMENDED", "CONDITIONALLY_RECOMMENDED", "NOT_RECOMMENDED"] },
+        "recommended_scope": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true },
+        "not_recommended_scope": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true },
+        "implementation_authorized": { "const": false }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "minItems": 3,
+      "items": { "$ref": "#/$defs/project" }
+    },
+    "responsibility_chain": {
+      "type": "array",
+      "minItems": 6,
+      "items": { "$ref": "#/$defs/responsibilityStage" }
+    },
+    "external_inputs": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/externalInput" }
+    },
+    "open_decisions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "enum": ["DQ-003", "DQ-006", "DQ-007", "DQ-008"] },
+      "uniqueItems": true
+    },
+    "truth_boundaries": {
+      "type": "array",
+      "minItems": 5,
+      "items": { "type": "string" },
+      "uniqueItems": true
+    }
+  },
+  "$defs": {
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["branch", "commit", "worktree_changes", "worktree_changes_are_maturity_evidence"],
+      "properties": {
+        "branch": { "type": "string", "minLength": 1 },
+        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "worktree_changes": { "type": "integer", "minimum": 0 },
+        "worktree_changes_are_maturity_evidence": { "const": false }
+      }
+    },
+    "sourceRef": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "scope", "authority"],
+      "properties": {
+        "path": { "type": "string", "minLength": 1 },
+        "fragment": { "type": "string" },
+        "scope": { "type": "string", "minLength": 1 },
+        "authority": {
+          "enum": [
+            "DBA_COCKPIT_SOURCE",
+            "REPOSITORY_DECLARED_CANONICAL",
+            "CANDIDATE",
+            "SUPPORTING_SOURCE",
+            "REFERENCE_ONLY"
+          ]
+        }
+      }
+    },
+    "statusSource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "refs", "domain_confirmation_required", "freshness_policy", "conflict_policy"],
+      "properties": {
+        "state": {
+          "enum": [
+            "CANDIDATE_PENDING_DQ_008",
+            "PARTIALLY_REPOSITORY_DECLARED",
+            "REPOSITORY_DECLARED",
+            "CANDIDATE",
+            "UNCONFIRMED"
+          ]
+        },
+        "refs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceRef" } },
+        "domain_confirmation_required": { "type": "boolean" },
+        "freshness_policy": { "enum": ["UNRESOLVED_DQ_007", "OBSERVATION_ONLY_NO_CADENCE"] },
+        "conflict_policy": { "const": "PRESERVE_CONFLICT_AND_REQUEST_DOMAIN_OWNER" }
+      }
+    },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["project_id", "repository_path", "architecture_role", "observation", "status_source"],
+      "properties": {
+        "project_id": { "type": "string", "pattern": "^[A-Z0-9-]+$" },
+        "repository_path": { "type": "string", "minLength": 1 },
+        "architecture_role": { "type": "string", "minLength": 1 },
+        "portfolio_status": { "type": "string" },
+        "observation": { "$ref": "#/$defs/observation" },
+        "status_source": { "$ref": "#/$defs/statusSource" }
+      }
+    },
+    "responsibilityStage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stage_id", "canonical_architecture_owner", "supporting_or_reference_roles", "does_not_create"],
+      "properties": {
+        "stage_id": { "type": "string", "pattern": "^[a-z][a-z0-9_]*$" },
+        "canonical_architecture_owner": { "type": "string", "minLength": 1 },
+        "supporting_or_reference_roles": { "type": "array", "items": { "type": "string" }, "uniqueItems": true },
+        "does_not_create": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true }
+      }
+    },
+    "externalInput": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input_id", "role", "adoption_status"],
+      "properties": {
+        "input_id": { "type": "string", "minLength": 1 },
+        "role": { "type": "string", "minLength": 1 },
+        "adoption_status": { "enum": ["REFERENCE_ONLY", "VERSION_PIN_REQUIRED", "NO_ADAPTER_AUTHORIZED"] }
+      }
+    }
+  }
+}

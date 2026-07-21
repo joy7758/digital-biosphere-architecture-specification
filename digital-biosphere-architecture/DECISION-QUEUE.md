@@ -21,10 +21,10 @@ last_reviewed: 2026-07-21
 | decision_id | Priority | 决策问题 | 当前状态 | 所需输入 | 决策影响 | 禁止自动推断 |
 |---|---|---|---|---|---|---|
 | `DQ-002` | `P0` | DBA 是否应成为独立 Git root（Git 根目录），而不是父目录仓库中的子目录？ | `READY_FOR_REVIEW` | 当前本地/远端拓扑、历史保留方案、迁移风险 | 仓库边界、GitHub 根展示、后续自动化和发布 | 允许重写历史、删除父仓库或强制推送 |
-| `DQ-003` | `P0` | DBOS、SAEE、Research Agent Pilot 各自哪个文件/manifest 是 canonical status source？ | `OPEN` | 各 Domain Owner 的来源确认、刷新频率、冲突规则 | 驾驶舱状态可信度和后续只读同步 | README、测试数量或 Git dirty 自动等于项目状态 |
+| `DQ-003` | `P0` | DBOS、SAEE、Research Agent Pilot 各自哪个文件/manifest 是 canonical status source？ | `READY_FOR_REVIEW` | [`PROGRAM-SOURCE-AND-RESPONSIBILITY-DECISION-PACKET.md`](PROGRAM-SOURCE-AND-RESPONSIBILITY-DECISION-PACKET.md) 与机器可读 registry 已给出候选；仍需各 Domain Owner 确认、刷新频率和冲突规则 | 驾驶舱状态可信度和后续只读同步 | 候选来源自动成为 canonical；README、测试数量或 Git dirty 自动等于项目状态 |
 | `DQ-004` | `P1` | 第一个跨项目里程碑是否选择 DBOS ↔ SAEE data contract conformance？ | `OPEN` | 字段映射、版本、现有实现审计、正负用例范围 | `M3` 的正式启动与 Owner 分派 | 已存在接口实现或允许直接调用 SAEE |
 | `DQ-005` | `P1` | Research Agent Pilot 何时可以进入 Prototype Authorization Review（原型授权审查）？ | `BLOCKED_INPUT` | Human Review、approved sources、independent reviewer decision、protocol freeze | `M5` 是否进入人工授权 | `NOT_READY` 自动升级，或由 DBA 创建 Agent/Runtime |
-| `DQ-006` | `P2` | POP、ARO、Agent Evidence、Token Governor、ACP 哪些进入正式 Portfolio？ | `OPEN` | 每个项目的目的、Owner、canonical source、重复能力和接口边界 | 项目组合与依赖范围 | 本地发现、历史关联或相邻角色等于正式准入 |
+| `DQ-006` | `P2` | POP、ARO、Agent Evidence、Token Governor、ACP 哪些进入正式 Portfolio？ | `OPEN` | [`architecture/responsibility-matrix.md`](architecture/responsibility-matrix.md) 已澄清 ARO / Agent Evidence 责任链；仍需逐项目 purpose、Owner、canonical source、license 和准入审查 | 项目组合与依赖范围 | 责任澄清、本地发现、历史关联或相邻角色等于正式准入 |
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
 | `DQ-009` | `P0` | `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 何时允许发布？ | `BLOCKED_INPUT` | 冻结 source commits、Clean Clone、Trial Plan、Guide 与已知限制已齐；仍缺真实 `participant_source`、3–5 人 Trial Result、试用后 DBOS 分发决定和 `released_by_ref` | `DP-R` 是否进入 `RELEASED` | ADR-017、测试通过、本地 Demo、Clean Clone 或 Trial PASS 自动等于发布授权 |

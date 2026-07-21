@@ -23,12 +23,12 @@ risk_acceptance_authority_assigned: false
 | risk_id | level | 风险 | 当前证据 | 缓解措施 | Owner 状态 |
 |---|---|---|---|---|---|
 | `R-002` | `HIGH` | DBA 本地 Git root 是 `/Users/zhangbin/Documents/New project`，不是 DBA 目录；远端树保留额外目录层 | 2026-07-21 `git rev-parse --show-toplevel` 与已发布远端结构 | 处理 `DQ-002`；在决定前禁止历史重写、删除或 force push | `DECISION_REQUIRED` |
-| `R-003` | `HIGH` | 核心项目没有经 DBA 确认的统一 canonical status source | DBOS、SAEE 有多个 README、status、manifest 和证据表面；Pilot 有独立 readiness 状态 | 处理 `DQ-003`，为每项目记录一个规范入口及冲突规则 | `DOMAIN_CONFIRMATION_REQUIRED` |
+| `R-003` | `HIGH` | 核心项目没有经 DBA 确认的统一 canonical status source | DBOS、SAEE 有多个 README、status、manifest 和证据表面；Pilot 有独立 readiness 状态 | 候选来源、branch、commit、freshness 和冲突规则已进入 [`PROGRAM-SOURCE-AND-RESPONSIBILITY-DECISION-PACKET.md`](PROGRAM-SOURCE-AND-RESPONSIBILITY-DECISION-PACKET.md)；仍需 Domain Owner 处理 `DQ-003` | `CANDIDATE_REGISTERED_DOMAIN_CONFIRMATION_REQUIRED` |
 | `R-004` | `MEDIUM` | 核心项目工作树存在大量当前变化，静态快照容易过期或误读 | 2026-07-21 只读 Git observation | 驾驶舱只记录 commit、branch、时间和状态来源；dirty count 不作为成熟度 | `MITIGATED_BY_POLICY` |
 | `R-005` | `HIGH` | DBOS ↔ SAEE 接口曾只有 Specification，容易被误写成已集成 | 2026-07-21 已完成同一 synthetic envelope 的 scoped local conformance；没有生产 Runtime、写回或真实 Evidence | 保留 `SCOPED_LOCAL` 限定；clean clone 与 source release 后再评审更高状态 | `LOCAL_MITIGATION_VALIDATED_NOT_RELEASED` |
 | `R-006` | `MEDIUM` | Research Agent Pilot 没有发现 `origin`，且当前 `NOT_READY` | Pilot README、Git observation | 先完成 Human Review 和 source approval；远端决策独立处理 | `PILOT_OWNER_INPUT_REQUIRED` |
-| `R-007` | `MEDIUM` | POP、ARO、Agent Evidence、Token Governor 与 DBOS/SAEE 存在潜在重复责任 | DBA project mapping 与本地候选发现 | 逐项目执行 Portfolio Admission 和 duplicate capability review | `REVIEW_REQUIRED` |
-| `R-008` | `MEDIUM` | 静态驾驶舱可能把旧观察继续展示为当前事实 | 当前没有 refresh cadence 或只读 adapter | 每个快照必须带 `observed_at`；过期标记 `STALE`；处理 `DQ-007` | `POLICY_DEFINED_IMPLEMENTATION_PENDING` |
+| `R-007` | `MEDIUM` | POP、ARO、Agent Evidence、Token Governor 与 DBOS/SAEE 存在潜在重复责任 | DBA project mapping、本地候选发现与只读能力对账 | `architecture/responsibility-matrix.md` 已明确 Agent Evidence portable evidence、ARO audit projection、DBOS canonical Verification、SAEE Evaluation 的非合并责任；仍需逐项目 Portfolio Admission | `BOUNDARY_CLARIFIED_PORTFOLIO_DECISION_REQUIRED` |
+| `R-008` | `MEDIUM` | 静态驾驶舱可能把旧观察继续展示为当前事实 | 当前没有 refresh cadence 或只读 adapter | 机器可读 registry 已强制 `observed_at`、branch、commit 和保留冲突；过期阈值与同步频率仍由 `DQ-007` 决定 | `POLICY_AND_CANDIDATE_REGISTRY_DEFINED_IMPLEMENTATION_PENDING` |
 | `R-009` | `HIGH` | Program Governance 被误读为 DBOS/SAEE 执行或代码控制权 | 用户原始管理意图与现有 authority model 的语义张力 | 在 Charter、Program Governance Spec 和 AGENTS 中固定权力分离 | `MITIGATED_BY_SPECIFICATION` |
 | `R-010` | `HIGH` | 当前 Program Governance Cockpit 与既有 DBA public meaning layer 可能形成双重 DBA 入口和规范漂移 | README canonicality、project mapping 与既有独立公开仓库 | 处理 `DQ-008`；决定单一前门、交叉引用、迁移或长期分工，决定前不得声称已完成 canonical reconciliation | `DECISION_REQUIRED` |
 | `R-011` | `HIGH` | DBOS 当前文档演化与 `DBOS-EXP-0001` 冻结 identity evidence 的校验语义冲突 | Version-aware historical binding 已实现；旧 digest 未改写；34/34 validators 通过并对当前漂移发 warning | source 隔离与 clean-clone 回归后再决定是否正式关闭 | `LOCAL_MITIGATION_VALIDATED_NOT_RELEASED` |
@@ -41,7 +41,7 @@ risk_acceptance_authority_assigned: false
 | blocker_id | 阻塞事项 | 阻塞范围 | 解除条件 | 不阻塞 |
 |---|---|---|---|---|
 | `B-002` | DBA Git topology（Git 拓扑）未决定 | 独立仓库根、干净发布结构和后续自动化 | `DQ-002` 选择并执行单独授权的迁移方案 | 当前工作树内的非破坏性文档更新 |
-| `B-003` | canonical status source 未确认 | 自动或周期性可信状态汇总 | DBOS、SAEE、Pilot 各自提供 source + freshness + conflict policy | 当前时间点只读 snapshot |
+| `B-003` | canonical status source 未确认 | 自动或周期性可信状态汇总 | 候选 registry 已完成；DBOS、SAEE、Pilot 各自确认 source + freshness + conflict policy 后由人类关闭 `DQ-003` | 当前时间点只读 snapshot 与 `READY_FOR_REVIEW` 决策准备 |
 | `B-004` | Research Agent Human Review 与 approved source 不完整 | Prototype Authorization Review 和实验 | Pilot 自己的 readiness gate 达到可审查状态并获得人工决定 | Pilot 规范改进和 DBA 项目群规划 |
 | `B-005` | 两个 DBA 语义表面未完成 canonical reconciliation | 对外唯一入口、规范优先级和自动检索路由 | `DQ-008` 形成决定并完成引用/迁移验证 | 当前仓库作为 Program Governance Cockpit 的工作树基线 |
 | `B-008` | `participant_source` 仍是占位符，没有 3–5 名真实开发者或明确招募渠道 | `DQ-010` 条件授权生效、外部联系、DBOS collaborator 添加和 Trial Execution | Human Owner 提供可执行的真实参与者引用或明确招募渠道 | 技术试用包冻结、内部 Clean Clone 和发布前文档改进 |

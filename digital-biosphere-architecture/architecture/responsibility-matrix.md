@@ -38,7 +38,8 @@ implementation_claims: none
 
 ```text
 Identity:      DBOS负责；SAEE读取
-Evidence:      DBOS产生或管理材料；SAEE评价
+Evidence:      DBOS保留规范责任；Agent Evidence可提供可移植参考实现；SAEE评价
+Audit:         ARO可提供审计投影与有界完整性验证；不取代DBOS规范Verification
 Verification:  DBOS负责；SAEE使用
 Fitness:       DBOS提供数据；SAEE负责
 Evolution:     DBOS仅落实另行授权的运行/生命周期约束；SAEE负责建模与建议
@@ -55,3 +56,40 @@ POP、ARO、Agent Evidence、Token Governor 等相邻组件可以承担某个责
 - authorization source（授权来源）；
 - failure and unknown semantics（失败与未知语义）；
 - 与既有能力的重复建设结论。
+
+## 5. Evidence-to-Decision Chain Clarification（证据到决定责任链澄清）
+
+本节只澄清 v0.1 已有责任，不创建新权力或实现。其 agent-readable（智能体可读）镜像见
+[`program-source-and-responsibility-registry.json`](program-source-and-responsibility-registry.json)。
+
+| stage | 规范架构 Owner | 支持或参考角色 | 明确不产生 |
+|---|---|---|---|
+| Version-pinned Runtime Record（版本固定运行记录） | DBOS 负责规范登记与引用 | 来源 Runtime 只发出有 provenance（来源）的记录；Dapr、Microsoft 等是外部来源候选 | Truth、充分性、授权 |
+| Evidence Material / Reference（证据材料／引用） | DBOS | 外部 signature、attestation、telemetry | Verification、Evaluation、Permission |
+| Portable Evidence Package（可移植证据包） | DBOS 保留规范 Evidence 责任 | Agent Evidence 独立参考实现 | 事件真实性、全局充分性、法律不可否认性 |
+| Audit Projection / Integrity Check（审计投影／完整性检查） | DBOS 保留规范 Verification 责任 | ARO tamper-evident journal、receipt 与 bounded verifier | 全局 freshness、语义真相、身份授权 |
+| Canonical Verification（规范验证） | DBOS | 可消费带 provenance（来源）的外部 verifier result | Fitness、Recommendation、Decision |
+| Evidence Adequacy / Evaluation（证据充分性／评价） | SAEE | 消费有界 Evidence 与 Verification | Truth、Permission、Execution |
+| Governance Decision（治理决定） | 独立 Human Decision / Authorization boundary | DBA 定义流程；SAEE 提供建议；DBOS 提供事实 | 自动执行、自动发布 |
+| Authorized Execution（获授权执行） | DBOS + 具体 Digital Entity | 显式 Authorization Record | Release、Adoption、Certification |
+| Release（发布） | Human Release Authority | source commits、验证、限制、试用结果和 `released_by_ref` | Production Readiness、Customer Adoption 的自动推导 |
+
+### 5.1 Duplicate-build stop rule（重复建设停止规则）
+
+出现以下任一情况时必须输出 `REVIEW_REQUIRED` 并停止实现：
+
+- 为同一 fact type（事实类型）创建第二个 canonical owner；
+- 在未审计 Agent Evidence 或 ARO 现有能力前新增 receipt、hash chain、Merkle 或 export stack；
+- 把 ARO audit result 写成 DBOS Canonical Verification；
+- 把 DBOS Verification 写成 SAEE Fitness / Recommendation；
+- 把 SAEE Recommendation 写成 Human Decision、Permission、Execution 或 Release；
+- 把外部 Runtime signature 写成事件真实性、证据充分性或身份授权。
+
+```text
+RESPONSIBILITY_CHAIN_CLARIFIED=true
+CANONICAL_OWNER_CHANGED=false
+ADJACENT_PROJECT_ADMITTED=false
+NEW_RECEIPT_STACK_AUTHORIZED=false
+NEW_HASH_CHAIN_AUTHORIZED=false
+NEW_RUNTIME_AUTHORIZED=false
+```
