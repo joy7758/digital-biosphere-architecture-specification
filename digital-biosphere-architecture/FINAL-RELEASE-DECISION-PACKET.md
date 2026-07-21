@@ -2,7 +2,7 @@
 document_id: DBA-FINAL-RELEASE-DECISION-PACKET-0.1
 title: Trusted Multi-Agent Infrastructure Developer Preview v0.1 Final Release Decision Packet
 title_zh: 可信多智能体基础设施开发者预览版 v0.1 最终发布决策包
-status: owner-decisions-recorded-release-preparation-authorized
+status: clean-clone-pass-trial-evidence-pending
 release_authorized: false
 developer_preview_cloud_release_authorized: false
 website_candidate_deployment_authorized: true
@@ -21,12 +21,12 @@ last_reviewed: 2026-07-21
 
 | Surface（表面） | Current evidence（当前证据） | 状态 |
 |---|---|---|
-| DBA GitHub | `origin/main@6793320`；公开网站源码、部署报告与治理入口 | `REMOTE_WEBSITE_CANDIDATE_BASELINE_PASS` |
-| DBOS GitHub | `origin/main@b4e3cbe`；fresh install、331 tests、34 validators、两个 Demo | `REMOTE_CLEAN_CLONE_PASS_PRIVATE_REPO` |
-| SAEE GitHub public layer | `origin/main@e503c22`；public smoke/demo 通过 | `PUBLIC_LAYER_PASS_ADAPTER_MISSING` |
-| Cross-project Clean Clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `FAIL_REQUIRED_SAEE_ADAPTER_MISSING` |
+| DBA GitHub | `origin/main@91928e3`；Owner 决策、Apache-2.0、公开网站与治理入口 | `REMOTE_BASELINE_PASS` |
+| DBOS GitHub | `origin/main@0caa2c4`；fresh install、331 tests、34 validators、两个 Demo | `REMOTE_CLEAN_CLONE_PASS_PRIVATE_REPO` |
+| SAEE GitHub public layer | `origin/main@2173c25`；19/19 blobs、public smoke/demo、8 tests | `PUBLIC_SAFE_ADAPTER_PASS` |
+| Cross-project Clean Clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `PASS_FROZEN_REMOTE_SOURCES` |
 | Baidu website | `https://redcrag.cn/` 中英文候选网站；健康、安全头和回滚通过 | `CANDIDATE_DEPLOYED_NOT_RELEASED` |
-| External trial | 参与者 0；`DQ-010=AUTHORIZE_AFTER_CLEAN_CLONE_PASS`；`participant_source` 仍是占位符 | `CONDITIONALLY_AUTHORIZED_NOT_EFFECTIVE` |
+| External trial | 技术包 `TMAI-DP-v0.1-TRIAL-20260721-001` 已冻结；参与者 0；`participant_source` 仍是占位符 | `CONDITIONALLY_AUTHORIZED_NOT_EFFECTIVE` |
 | GitHub website artifact | `v0.1-public-website-candidate`；`prerelease=true` | `WEBSITE_CANDIDATE_PRERELEASED` |
 | DBOS repository visibility | GitHub API 返回 `PRIVATE` | `PUBLIC_ACCESS_NOT_ESTABLISHED` |
 
@@ -52,8 +52,8 @@ last_reviewed: 2026-07-21
 
 它还需要 5 个 Qianfan request/response schemas、Evidence Adequacy schema、4 个
 claim profiles 和 Resource Resolution Receipt schema。SAEE public `main` 的
-`PUBLICATION_BOUNDARY.md` 当前排除 runtime implementation 和 scoring internals；
-因此这些文件不能未经显式边界修订直接进入公开主线。
+`PUBLICATION_BOUNDARY.md` 已对精确 19 文件投影形成有界例外；general runtime、private
+scoring、kernel、selection、mutation 和 lineage 仍被排除。
 
 ### Options（选项）
 
@@ -65,20 +65,23 @@ claim profiles 和 Resource Resolution Receipt schema。SAEE public `main` 的
 
 `ADR-020` 已由 Human Program Owner 和 SAEE Domain Owner `zhangbin` 明确批准
 `A_PUBLIC_SAFE_EXTRACTION_EXACT_19_FILES`。迁移必须是同一 evaluator 的可验证投影，
-不得手工重写为第二套算法；完成前仍不是公共可用能力。
+不得手工重写为第二套算法。当前公共投影已通过 Clean Clone，但仍只是 read-only
+Developer Preview evaluation entry（只读开发者预览评价入口）。
 
 ```text
 AGENT_RECOMMENDATION=RECOMMENDED_FOR_RELEASE_PREPARATION_IMPLEMENTATION
 SAEE_PUBLICATION_BOUNDARY_AMENDMENT_REQUIRED=false
 PRIVATE_CORE_PUBLICATION_AUTHORIZED=false
 PUBLIC_ADAPTER_MIGRATION_AUTHORIZED=true
-PUBLIC_SAFE_EXTRACTION_IMPLEMENTED=false
+PUBLIC_SAFE_EXTRACTION_IMPLEMENTED=true
+PUBLIC_SAFE_EXTRACTION_REMOTE_COMMIT=2173c258f91aed03fc02c0097d4250a87be703aa
+PUBLIC_SAFE_EXTRACTION_BLOB_MATCH=19/19
 ```
 
 ## 3. DQ-012 — Public License（公开许可证）
 
-在 `ADR-020` 记录决定时，DBA、DBOS、SAEE 均无根 `LICENSE`。Human Owner 已选择
-`Apache-2.0` 并授权三个仓库采用；文件落地和远端验证仍需在各仓库完成。
+在 `ADR-020` 记录决定时，DBA、DBOS、SAEE 均无根 `LICENSE`。Human Owner 随后已在
+三个最终远端基线采用 `Apache-2.0`，并由 Clean Clone 逐字节核验官方许可证全文。
 
 该决定只覆盖 Owner-created public surfaces（负责人创作的公开表面），不自动重许可
 第三方资产、依赖、数据、Evidence 或独立许可材料。
@@ -87,7 +90,7 @@ PUBLIC_SAFE_EXTRACTION_IMPLEMENTED=false
 RECOMMENDED_LICENSE=Apache-2.0
 LICENSE_SELECTED=true
 LICENSE_PUBLICATION_AUTHORIZED=true
-LICENSE_ADOPTION_IMPLEMENTED_IN_ALL_REPOSITORIES=false
+LICENSE_ADOPTION_IMPLEMENTED_IN_ALL_REPOSITORIES=true
 ```
 
 ## 4. DQ-013 — Baidu Deployment Target（百度部署目标）
@@ -117,9 +120,9 @@ DBOS 公开、SAEE Adapter 迁移、许可证选择或外部试用。
 当前 457 个 tracked files（已跟踪文件）中未发现高置信度密钥模式、敏感文件名或
 超过 5 MiB 的历史 blob；官方 `gitleaks/gitleaks@v8.30.1` 对 2 个可达历史提交的
 独立扫描也为 0 findings。但 GitHub Secret Scanning 与 Dependabot Alerts 均禁用，
-根许可证缺失，人工隐私抽样仍未完成。
+根许可证现已采用；人工隐私抽样和 GitHub 平台侧持续安全能力仍未完成。
 
-DBOS `b4e3cbe` 的 clean clone 使用当前 GitHub 凭据完成；这不是 anonymous clone
+DBOS `0caa2c4` 的 clean clone 使用当前 GitHub 凭据完成；这不是 anonymous clone
 （匿名检出）证据。仓库当前为 `PRIVATE`，因此 3–5 名陌生开发者和正式公开用户默认
 无法获取 SDK、Quick Start 或 Demo。
 
@@ -149,9 +152,8 @@ participant_source=PENDING_REAL_INPUT
 decision_timestamp=2026-07-21T22:48:39+08:00
 ```
 
-仍需：采用许可证、实现/审计 SAEE public-safe extraction、冻结 DBOS private trial
-source、重跑 Clean Clone、冻结试用包、补充真实 `participant_source`、完成 3–5 人试用，
-再由 `DQ-009` 决定 tag、GitHub Release 和百度正式部署。
+仍需：补充真实 `participant_source`、完成 3–5 人试用、记录 Trial Result、决定试用后
+DBOS 分发方式，再由 `DQ-009` 决定 tag、GitHub Release 和百度正式部署。
 
 本决策包记录 release preparation decisions（发布准备决定），但不是正式 Release、
 Deployment（部署）、有效的外部联系授权或 Trial Result（试用结果）。

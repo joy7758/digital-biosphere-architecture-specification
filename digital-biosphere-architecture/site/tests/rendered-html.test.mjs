@@ -43,8 +43,8 @@ test("renders bilingual status pages with fail-closed truth", async () => {
   assert.match(en, /This is not a release/);
   assert.match(zh, /BLOCKED/);
   assert.match(en, /BLOCKED/);
-  assert.match(zh, /b4e3cbe2af44/);
-  assert.match(en, /e503c22109bd/);
+  assert.match(zh, /0caa2c45e511/);
+  assert.match(en, /2173c258f91a/);
 });
 
 test("ships agent-readable and discovery resources", async () => {
@@ -63,8 +63,11 @@ test("ships agent-readable and discovery resources", async () => {
     readFile(new URL("llms.txt", root), "utf8"),
   ]);
   assert.equal(agentIndex.released, false);
-  assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, false);
-  assert.equal(status.license.selected, false);
+  assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
+  assert.equal(status.gates.DQ_010_EFFECTIVE, false);
+  assert.equal(status.external_trial.participant_source_confirmed, false);
+  assert.equal(status.license.selected, true);
+  assert.equal(status.license.identifier, "Apache-2.0");
   assert.equal(status.public_website.deployed, true);
   assert.equal(status.public_website.rollback_validated, true);
   assert.match(llms, /Recommendation != Decision/);

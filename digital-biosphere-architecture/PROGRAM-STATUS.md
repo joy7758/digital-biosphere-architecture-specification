@@ -6,7 +6,7 @@ status: observed-governance-snapshot-owner-decisions-recorded
 observed_at: 2026-07-21
 freshness: point-in-time
 release_status: website-candidate-published-developer-preview-not-released
-developer_preview_status: website-live-clean-clone-remediation-required
+developer_preview_status: website-live-clean-clone-pass-trial-participant-source-pending
 source_policy: direct-read-only-observation
 ---
 
@@ -18,7 +18,7 @@ source_policy: direct-read-only-observation
 PROGRAM_ID=DIGITAL_BIOSPHERE
 PROGRAM_PHASE=TRUSTED_MULTI_AGENT_INFRASTRUCTURE_WEBSITE_CANDIDATE_AND_RELEASE_GATING
 PROGRAM_HEALTH=ATTENTION_REQUIRED
-CURRENT_MILESTONE=DP-CCV
+CURRENT_MILESTONE=DP-5B-ENTRY
 CORE_PROJECTS=3
 PILOT_PROJECTS=1
 PROGRAM_AUTHORITY_ASSIGNED=true
@@ -35,6 +35,8 @@ EXTERNAL_DEVELOPER_TRIAL_CONDITIONALLY_AUTHORIZED=true
 EXTERNAL_DEVELOPER_TRIAL_EXECUTION_AUTHORIZED=false
 EXTERNAL_CONTACT_AUTHORIZED=false
 PARTICIPANT_SOURCE_CONFIRMED=false
+TRIAL_PACKAGE_ID=TMAI-DP-v0.1-TRIAL-20260721-001
+TRIAL_PACKAGE_TECHNICAL_FREEZE=true
 EXTERNAL_DEVELOPER_VALIDATION_COMPLETE=false
 EXTERNAL_DEVELOPER_PARTICIPANTS=0
 DBA_REMOTE_BASELINE_CREATED=true
@@ -42,8 +44,8 @@ DBOS_REMOTE_BASELINE_CREATED=true
 DBA_CLEAN_CLONE_PASS=true
 DBOS_CLEAN_CLONE_PASS=true
 SAEE_PUBLIC_CLEAN_CLONE_PASS=true
-SAEE_DBOS_ADAPTER_CLEAN_CLONE_PASS=false
-CROSS_PROJECT_CLEAN_CLONE_PASS=false
+SAEE_DBOS_ADAPTER_CLEAN_CLONE_PASS=true
+CROSS_PROJECT_CLEAN_CLONE_PASS=true
 PUBLIC_WEBSITE_DEPLOYED=true
 PUBLIC_WEBSITE_HEALTH_PASS=true
 PUBLIC_WEBSITE_ROLLBACK_VALIDATED=true
@@ -61,9 +63,9 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 
 | project_id | branch | observed commit | worktree observation | remote observation | 规范状态摘要 |
 |---|---|---|---|---|---|
-| `DBA` | `main` | `366a312f91a3efe173732e18d3f8d9436e5c102d` | source commit 已推送；`ADR-020` 当前在隔离 release-preparation branch 中 | `origin/main` 包含双语网站、部署报告和网站候选 prerelease | Owner 决策已记录但尚未形成新远端基线；Developer Preview 未发布 |
-| `DBOS` | `main` | `b4e3cbe2af442be861dbab3f7b2ffd2567443077` | source commit 已推送 | `origin/main` 可干净检出；仓库当前为 private | fresh install、331/331 tests、34/34 validators、两个 Demo 通过；不是 Agent Runtime |
-| `SAEE` | public `main` | `e503c22109bdb7c83dc465d66e2a22760a3c8d90` | public source 可干净检出；内部工作树另有未发布变化 | `origin/main` 是裁剪公共产品层 | public smoke/demo 通过；DBOS Developer Preview Adapter 不在公共 source，跨项目 gate 失败 |
+| `DBA` | `main` | `91928e3b1096566aad5568124707e3a6cb3a40ca` | Owner 决策与 Apache-2.0 已推送 | public remote 可干净检出 | 317 个本地链接通过；Developer Preview 未发布 |
+| `DBOS` | `main` | `0caa2c45e511a82d0dcab778b0ffc3163aac0029` | Apache-2.0 和 private trial boundary 已推送 | authenticated clean clone 通过；仓库保持 private | fresh install、331/331 tests、34/34 validators、两个 Demo 通过；不是 Agent Runtime |
+| `SAEE` | public `main` | `2173c258f91aed03fc02c0097d4250a87be703aa` | exact 19-file public-safe extraction 与 Apache-2.0 已合并 | public remote 可干净检出；内部工作树另有未发布变化且未被使用 | 19/19 blob、public smoke/demo、8/8 tests 和 DBOS 只读 Adapter 通过；无写回或 authority |
 | `RESEARCH-AGENT-PILOT` | `main` | `8445fe5d13cd889032c3786ba527d801f56d5351` | `dirty_count=30` | 未发现 `origin` | `V1_0_STATUS=INCOMPLETE_NOT_READY`；Agent、Runtime、Entity、Execution 均为 0 |
 
 ## 3. Architecture and Integration Status（架构与集成状态）
@@ -83,8 +85,8 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 | DBOS local developer path | `SCOPED_LOCAL_CONFORMANCE_PASS` | local editable install、单一 runner、331/331 tests、34/34 validators |
 | Multi-Agent Trust Demo | `LOCAL_DETERMINISTIC_PASS` | 3 个角色模拟、3 个执行记录、3 个证据引用、9 个结构 Validation；无 Agent/Runtime |
 | SAEE Evaluation Layer v0.1 | `LOCAL_READ_ONLY_PASS` | 8/8 adapter tests；Reliability/Stability fail closed；Risk/Recommendation 复用现有 evaluator |
-| External Developer Trial Preparation | `PLAN_DEFINED_TRIAL_NOT_AUTHORIZED` | Trial Plan、Guide、Feedback Template、Conformance Report 与 ADR-018 已形成；参与者 0、无外部试用 |
-| Clean Clone Validation | `FAIL_REQUIRED_SAEE_ADAPTER_MISSING` | DBA 与 DBOS 全通过；SAEE public source 缺少必需 Adapter；见 `CLEAN-CLONE-VALIDATION-REPORT.md` |
+| External Developer Trial Preparation | `TECHNICAL_PACKAGE_FROZEN_PARTICIPANT_SOURCE_PENDING` | `TMAI-DP-v0.1-TRIAL-20260721-001` 已冻结；参与者 0、无外部联系或试用 |
+| Clean Clone Validation | `PASS_FROZEN_REMOTE_SOURCES` | DBA、DBOS、SAEE 与只读 Adapter 全通过；见 `CLEAN-CLONE-VALIDATION-REPORT.md` |
 
 ## 4. Active Decisions and Blockers（当前决策与阻塞）
 
@@ -101,19 +103,18 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 - `B-003`：核心项目状态入口尚未统一，阻止可靠自动汇总。
 - `B-005`：两个 DBA 语义表面尚未完成 canonical reconciliation（规范对齐），阻止对外声明唯一入口。
 - `B-006` 已在当前本地工作树中通过 version-aware historical binding（版本感知历史绑定）处理，34/34 validators 通过；历史 Evidence 未改写。该缓解尚未形成发布版本。
-- `B-007`：DBA 与 DBOS source commits 已形成；SAEE Adapter 仍仅存在于内部工程历史，public `main` 无该入口，因此跨项目 source freeze 尚未完成。
+- `B-007` 已解除：三个远端 source commits 已冻结，SAEE 19/19 blob 与完整 Clean Clone 已通过。
+- 当前试用执行唯一外部输入阻塞是 `participant_source` 仍为占位符；具体 DBOS collaborator 尚未添加。
 
 详细信息见 [`DECISION-QUEUE.md`](DECISION-QUEUE.md) 和 [`RISK-AND-BLOCKER-REGISTER.md`](RISK-AND-BLOCKER-REGISTER.md)。
 
 ## 5. Next Program Actions（下一步项目群行动）
 
-1. 在三个仓库采用 `Apache-2.0`，保留第三方许可边界；
-2. 按冻结 blob ID 在隔离分支实现 SAEE 精确 19 文件 public-safe extraction；
-3. 保持 DBOS private，并冻结 private collaborator trial 的远端 source commit；
-4. 使用三个最终远端 commit 重跑完整 Clean Clone；
-5. 整体通过后冻结 `trial_package_id`、隐私说明和停止规则；
-6. 等待真实 `participant_source`，再使 `DQ-010` 条件授权生效并联系 3–5 名开发者；
-7. Trial Result 完成后再处理 `DQ-009`；Pilot 自身 gate 通过前保持 Research Agent Prototype 为 `NOT_READY`。
+1. 保持 `TMAI-DP-v0.1-TRIAL-20260721-001` 的 source commits、指标、隐私和停止规则不变；
+2. 等待真实 `participant_source`，再使 `DQ-010` 条件授权生效；
+3. 逐名确认 3–5 位合格开发者并授予最小 DBOS private collaborator access；
+4. 保留失败和干预等级，完成 Trial Result 后再处理 `DQ-009`；
+5. Pilot 自身 gate 通过前保持 Research Agent Prototype 为 `NOT_READY`。
 
 ## 6. Refresh Protocol（刷新协议）
 

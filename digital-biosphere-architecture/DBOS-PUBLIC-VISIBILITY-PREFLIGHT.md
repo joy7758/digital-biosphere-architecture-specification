@@ -3,11 +3,12 @@ document_id: DBA-DBOS-PUBLIC-VISIBILITY-PREFLIGHT-2026-07-21
 title: DBOS Repository Public Visibility Preflight
 title_zh: DBOS 仓库公开可见性预检
 status: private-collaborator-trial-selected-public-visibility-not-authorized
-source_commit: b4e3cbe2af442be861dbab3f7b2ffd2567443077
+source_commit: 0caa2c45e511a82d0dcab778b0ffc3163aac0029
+history_scan_commit: b4e3cbe2af442be861dbab3f7b2ffd2567443077
 repository_visibility: private
 repository_visibility_changed: false
 decision_reference: architecture/ADR-020-release-preparation-owner-decisions.md
-child_repository_modified: false
+child_repository_modified: true
 last_reviewed: 2026-07-21
 ---
 
@@ -23,7 +24,7 @@ last_reviewed: 2026-07-21
 ```text
 PRIMARY_REPOSITORY=DBA
 OBSERVED_CHILD_REPOSITORY=DBOS
-DBOS_MODIFIED=false
+DBOS_MODIFIED_FOR_LICENSE_AND_TRIAL_BOUNDARY=true
 GITHUB_VISIBILITY_CHANGED=false
 ```
 
@@ -32,10 +33,11 @@ GITHUB_VISIBILITY_CHANGED=false
 | 项目 | 结果 |
 |---|---|
 | GitHub repository | `joy7758/digital-biosphere-os` |
-| Commit | `b4e3cbe2af442be861dbab3f7b2ffd2567443077` |
+| Current trial commit | `0caa2c45e511a82d0dcab778b0ffc3163aac0029` |
+| Gitleaks scanned commit | `b4e3cbe2af442be861dbab3f7b2ffd2567443077` |
 | Visibility | `PRIVATE` |
-| Tracked files | 457 |
-| Root `LICENSE` | 缺失 |
+| Tracked files | 458 |
+| Root `LICENSE` | `Apache-2.0`；官方全文匹配 |
 | Sensitive filename patterns | 0 个命中 |
 | Private-key PEM markers | 0 个命中 |
 | High-confidence AWS/GitHub/OpenAI/Google token patterns | 0 个命中 |

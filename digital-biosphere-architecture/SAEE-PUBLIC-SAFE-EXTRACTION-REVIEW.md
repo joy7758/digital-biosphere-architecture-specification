@@ -2,14 +2,15 @@
 document_id: DBA-SAEE-PUBLIC-SAFE-EXTRACTION-REVIEW-2026-07-21
 title: SAEE DBOS Developer Preview Public-safe Extraction Review
 title_zh: SAEE DBOS 开发者预览适配器公共安全提取审查
-status: approved-for-exact-extraction-not-yet-implemented
-review_result: exact-19-file-public-safe-extraction-authorized
+status: implemented-and-clean-clone-validated
+review_result: exact-19-file-public-safe-extraction-pass
 source_commit: 2da5b0065
 public_base_commit: e503c22109bdb7c83dc465d66e2a22760a3c8d90
+public_implementation_commit: 2173c258f91aed03fc02c0097d4250a87be703aa
 public_boundary_amendment_authorized: true
 authorization_reference: architecture/ADR-020-release-preparation-owner-decisions.md
 saee_domain_owner_ref: zhangbin
-child_repository_modified: false
+child_repository_modified: true
 last_reviewed: 2026-07-21
 ---
 
@@ -19,7 +20,8 @@ last_reviewed: 2026-07-21
 
 本报告最初为 `DQ-011` 提供精确技术输入。`ADR-020` 已批准现有只读 DBOS Developer
 Preview Adapter（开发者预览适配器）的 `A_PUBLIC_SAFE_EXTRACTION_EXACT_19_FILES`，
-但该提取尚未实现。本报告仍不修改 capability truth（能力事实），且不允许超出清单的
+公共 `main@2173c25` 已完成提取和 Clean Clone。本报告仍不扩大 capability truth
+（能力事实），且不允许超出清单的
 public/private boundary amendment（公开／私有边界修订）。
 
 开发前智能体推荐结论沿用 SAEE 已记录的 Recommendation Gate：
@@ -106,14 +108,15 @@ evaluation implementation（评价实现）及其 schema/profile 闭包。
 
 ```text
 DQ_011_TECHNICAL_INPUT_COMPLETE=true
-PUBLIC_SAFE_EXTRACTION_IMPLEMENTED=false
+PUBLIC_SAFE_EXTRACTION_IMPLEMENTED=true
+PUBLIC_SAFE_EXTRACTION_REMOTE_COMMIT=2173c258f91aed03fc02c0097d4250a87be703aa
 PUBLIC_BOUNDARY_AMENDMENT_AUTHORIZED=true
 PUBLIC_ADAPTER_MIGRATION_AUTHORIZED=true
 PRIVATE_CORE_PUBLICATION_AUTHORIZED=false
-SAEE_PUBLIC_REPOSITORY_CHANGED=false
-CROSS_PROJECT_CLEAN_CLONE_PASS=false
+SAEE_PUBLIC_REPOSITORY_CHANGED=true
+CROSS_PROJECT_CLEAN_CLONE_PASS=true
 DEVELOPER_PREVIEW_RELEASED=false
 ```
 
-结论：技术候选可复验且精确提取已获人工授权；实现、远端合并、Clean Clone 和正式发布
-仍是不同阶段，不能由本决定或测试结果自动替代。
+结论：技术候选、精确来源、公共合并和 Clean Clone 均已通过；正式外部试用、客户验证
+和 Developer Preview Release 仍是不同阶段，不能由本结果自动替代。

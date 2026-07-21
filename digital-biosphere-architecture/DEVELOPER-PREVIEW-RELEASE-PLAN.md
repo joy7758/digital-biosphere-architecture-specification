@@ -68,8 +68,9 @@ DRAFT
 - [x] 无 Agent、Runtime、Entity、Permission、Digital Organism 生产实例；
 - [x] 外部试用指南和反馈入口已准备；
 - [x] External Developer Trial Plan、预先冻结成功标准和 ADR-018 已准备；
-- [ ] DBA、DBOS、SAEE source commits 已冻结并分配 `trial_package_id`；
-- [ ] clean-clone validation 通过且参与者可获得同一版本；
+- [x] DBA、DBOS、SAEE source commits 已冻结并分配 `trial_package_id`；
+- [x] clean-clone validation 已对同一冻结版本通过；
+- [ ] 已提供真实 `participant_source`，并确认参与者能够获得冻结版本；
 - [ ] `DQ-010` 已授权试用执行和外部联系；
 - [ ] 3–5 名合格外部 Agent Developer 已完成试用并保留失败记录；
 - [ ] Trial Result Report 已按 `PASS|CONDITIONAL|FAIL|INCOMPLETE` 完成复核；
@@ -93,10 +94,13 @@ EXTERNAL_TRIAL_GUIDE_READY=true
 EXTERNAL_TRIAL_PLAN_READY=true
 DBA_SOURCE_COMMIT_READY=true
 DBOS_SOURCE_COMMIT_READY=true
-SAEE_PUBLIC_ADAPTER_SOURCE_READY=false
-CLEAN_CLONE_VALIDATED=false
-CLEAN_CLONE_RESULT=FAIL_REQUIRED_SAEE_ADAPTER_MISSING
-TRIAL_PACKAGE_READY=false
+SAEE_PUBLIC_ADAPTER_SOURCE_READY=true
+CLEAN_CLONE_VALIDATED=true
+CLEAN_CLONE_RESULT=PASS_FROZEN_REMOTE_SOURCES
+TRIAL_PACKAGE_ID=TMAI-DP-v0.1-TRIAL-20260721-001
+TRIAL_PACKAGE_TECHNICAL_FREEZE=true
+TRIAL_PACKAGE_DISTRIBUTION_READY=false
+PARTICIPANT_SOURCE_CONFIRMED=false
 TRIAL_EXECUTION_AUTHORIZED=false
 EXTERNAL_CONTACT_AUTHORIZED=false
 EXTERNAL_TRIAL_PARTICIPANTS=0
@@ -107,12 +111,10 @@ RELEASE_AUTHORIZED=false
 
 阻塞原因：
 
-1. DBA 与 DBOS source commits 已形成，但 SAEE public `main` 不含必需 DBOS Adapter；
-2. Clean Clone 中 DBA、DBOS 通过，SAEE Adapter 失败；
-3. `DQ-011` 尚未决定安全的 SAEE Adapter 公开／分发边界；
-4. `DQ-010` 尚未授权试用执行、参与者联系或反馈收集；
-5. 3–5 名外部开发者试用和 Trial Result Report 尚未发生；
-6. `DQ-009` 尚无 Human Release Decision 与 `released_by_ref`。
+1. 真实 `participant_source` 尚未提供，因此 `DQ-010` 的条件授权尚未生效；
+2. 3–5 名外部开发者试用和 Trial Result Report 尚未发生；
+3. 试用后的 DBOS 分发／可见性安排仍需按 `PRIVATE_COLLABORATOR_TRIAL` 逐人受控实施；
+4. `DQ-009` 尚无 Human Release Decision 与 `released_by_ref`。
 
 ## 6. Rollback and Preservation（回退与保留）
 

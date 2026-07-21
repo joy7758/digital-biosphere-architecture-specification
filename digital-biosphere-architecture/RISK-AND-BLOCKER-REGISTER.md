@@ -33,8 +33,8 @@ risk_acceptance_authority_assigned: false
 | `R-010` | `HIGH` | 当前 Program Governance Cockpit 与既有 DBA public meaning layer 可能形成双重 DBA 入口和规范漂移 | README canonicality、project mapping 与既有独立公开仓库 | 处理 `DQ-008`；决定单一前门、交叉引用、迁移或长期分工，决定前不得声称已完成 canonical reconciliation | `DECISION_REQUIRED` |
 | `R-011` | `HIGH` | DBOS 当前文档演化与 `DBOS-EXP-0001` 冻结 identity evidence 的校验语义冲突 | Version-aware historical binding 已实现；旧 digest 未改写；34/34 validators 通过并对当前漂移发 warning | source 隔离与 clean-clone 回归后再决定是否正式关闭 | `LOCAL_MITIGATION_VALIDATED_NOT_RELEASED` |
 | `R-012` | `MEDIUM` | DBOS 默认顶层测试曾发现 0 tests，开发者可能误读结果 | `tools/run_tests.py` 现在逐目录运行且零测试失败；331/331 tests | 发布时只推荐单一 runner，并保留其自测 | `LOCAL_MITIGATION_VALIDATED_NOT_RELEASED` |
-| `R-013` | `HIGH` | Developer Preview 尚未形成三个包含当前 Owner 决定、许可证和公共 Adapter 的最终远端 source commits | DBA/DBOS 已有前一远端基线；SAEE 精确提取已授权但未实现；原 SAEE 内部工作树仍高度脏且不可作为发布源 | 各仓库使用隔离分支；SAEE 从 public `origin/main` 提取精确 blob；合并后从最终远端复验 | `BLOCKING_RELEASE` |
 | `R-014` | `HIGH` | 3–5 人小样本、个别正面反馈或试用 PASS 可能被过度解释为客户验证、市场采用或发布授权 | External Developer Trial Plan 明确样本仅验证 onboarding、理解、使用和问题相关性信号 | 预冻结成功阈值；保留失败；Trial Result、Customer Validation、Release、Adoption 分开；发布仍需 `DQ-009` | `MITIGATED_BY_PLAN_NOT_YET_TESTED` |
+| `R-015` | `MEDIUM` | 站点依赖审计报告 12 项已知问题，其中 production dependency tree（生产依赖树）有 2 项 PostCSS moderate advisories（中等级通告） | 2026-07-21 `npm audit --omit=dev --audit-level=high` 返回 0，但列出 2 项 moderate；当前部署只复制静态 `out/`，不部署 Node.js 或构建依赖 | 禁止 `npm audit fix --force` 造成未审查破坏性升级；在正式发布决策前复核上游修复版本或记录有界风险决定 | `DEPENDENCY_REVIEW_REQUIRED_BEFORE_FORMAL_RELEASE` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -44,14 +44,16 @@ risk_acceptance_authority_assigned: false
 | `B-003` | canonical status source 未确认 | 自动或周期性可信状态汇总 | DBOS、SAEE、Pilot 各自提供 source + freshness + conflict policy | 当前时间点只读 snapshot |
 | `B-004` | Research Agent Human Review 与 approved source 不完整 | Prototype Authorization Review 和实验 | Pilot 自己的 readiness gate 达到可审查状态并获得人工决定 | Pilot 规范改进和 DBA 项目群规划 |
 | `B-005` | 两个 DBA 语义表面未完成 canonical reconciliation | 对外唯一入口、规范优先级和自动检索路由 | `DQ-008` 形成决定并完成引用/迁移验证 | 当前仓库作为 Program Governance Cockpit 的工作树基线 |
-| `B-007` | 三仓库本阶段变化尚未形成隔离、可引用的 source commits，且未做 clean-clone 复验 | Developer Preview release、真实外部开发者试用和 `DQ-009` | 精确变更隔离、审查、commit 与 clean-clone validation | 当前本地候选演示、测试和文档审查 |
+| `B-008` | `participant_source` 仍是占位符，没有 3–5 名真实开发者或明确招募渠道 | `DQ-010` 条件授权生效、外部联系、DBOS collaborator 添加和 Trial Execution | Human Owner 提供可执行的真实参与者引用或明确招募渠道 | 技术试用包冻结、内部 Clean Clone 和发布前文档改进 |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
 
 | item_id | 原问题 | 解除证据 | 保留边界 |
 |---|---|---|---|
 | `R-001` | Program Authority 未指派 | `ADR-020` 指派 `zhangbin` 并记录复核、替代和权力边界 | 不产生运行、演化、账号或发布权；重大 release 时复核 |
+| `R-013` | 三仓库没有冻结、可引用、可复验的最终远端 source commits | DBA `91928e3`、DBOS `0caa2c4`、SAEE `2173c25`；完整 Clean Clone、331 tests、34 validators、8 Adapter tests 和 19/19 blobs 通过 | 只关闭 source/clean-clone 风险；不产生外部验证或发布授权 |
 | `B-001` | 没有已记录的 Program Owner / decision source | `DQ-001` / `ADR-020`，`decided_by_ref=zhangbin` | 每个执行、外部联系和发布动作仍遵循各自 gate |
+| `B-007` | 三仓库 source commits 未冻结且跨仓库 Clean Clone 未通过 | `CLEAN-CLONE-VALIDATION-REPORT.md` 后继结果 `PASS` | DBOS 是 authenticated private clone；外部试用仍受 `B-008` 阻塞 |
 
 | blocker_id | 原阻塞 | 解除证据 | 保留边界 |
 |---|---|---|---|
@@ -67,11 +69,11 @@ risk_acceptance_authority_assigned: false
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=14
+TRACKED_RISKS=15
 ACTIVE_RISKS=13
-RESOLVED_RISKS=1
+RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=5
-BLOCKERS_CLEARED=2
+BLOCKERS_CLEARED=3
 LOCAL_BLOCKERS_CLEARED_NOT_RELEASED=1
 RISKS_ACCEPTED=0
 RISK_REGISTER_GRANTS_AUTHORITY=false
