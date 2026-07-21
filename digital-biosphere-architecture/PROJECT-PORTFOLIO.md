@@ -2,9 +2,9 @@
 document_id: DBA-PROJECT-PORTFOLIO-0.1
 title: Digital Biosphere Project Portfolio v0.1
 title_zh: 数字生物圈项目组合 v0.1
-status: initial-observed-portfolio-baseline
-as_of_date: 2026-07-21
-source_policy: reference-only
+status: observed-portfolio-baseline-source-routing-confirmed
+as_of_date: 2026-07-22
+source_policy: human-confirmed-reference-only-routing
 changes_project_ownership: false
 changes_project_status: false
 ---
@@ -25,9 +25,9 @@ changes_project_status: false
 
 | project_id | tier | 项目 | DBA 中的职责 | canonical project source（项目规范来源） | 当前组合状态 | 下一 gate |
 |---|---|---|---|---|---|---|
-| `DBA` | `CORE` | Digital Biosphere Architecture | Program Governance Hub（项目群治理中心）+ Architecture Specification Hub（架构规范中心）+ Public Entry Governance（公开入口治理） | 本仓库 `README.md`、`PUBLIC-PROJECT-OVERVIEW.md`、`PROGRAM-CHARTER.md`、`architecture/`、ADR | `EXTERNAL_TRIAL_PLAN_DEFINED_NOT_AUTHORIZED` | 处理 `B-007` 与 `DQ-010`；试用计划不等于试用执行或发布 |
-| `DBOS` | `CORE` | Digital Biosphere Operating System | Existence Infrastructure（存在基础设施）和 Developer Infrastructure（开发者基础设施） | `/Users/zhangbin/GitHub/digital-biosphere-os/README.md`、`STRATEGIC_ALIGNMENT.md`、`docs/developer-quickstart.md`、registry 与证据文件 | `LOCAL_PREVIEW_CONFORMANCE_PASS_NOT_RELEASED` | 隔离 source changes 并做 clean-clone 复验 |
-| `SAEE` | `CORE` | Digital Biosphere Evolution Engine | Evolution Intelligence Layer（演化智能层） | `/Users/zhangbin/GitHub/SAEE/STRATEGIC_ALIGNMENT.md`、`PROJECT_STATUS.md`、Capability inventory（能力清单）及其证据文件 | `LOCAL_READ_ONLY_DBOS_PREVIEW_ADAPTER_PASS_NOT_RELEASED` | 隔离受限 adapter 变更；保持 canonical capability truth 不变 |
+| `DBA` | `CORE` | Digital Biosphere Architecture | Program Governance Hub（项目群治理中心）+ Architecture Specification Hub（架构规范中心）+ Public Entry Governance（公开入口治理） | 本仓库 Mandatory Cockpit 文件、`PUBLIC-PROJECT-OVERVIEW.md`、`architecture/` 与 ADR | `TRIAL_PACKAGE_FROZEN_PARTICIPANT_SOURCE_PENDING` | 处理 `B-008`；技术包冻结不等于试用执行或发布 |
+| `DBOS` | `CORE` | Digital Biosphere Operating System | Existence Infrastructure（存在基础设施）和 Developer Infrastructure（开发者基础设施） | `/Users/zhangbin/GitHub/digital-biosphere-os/README.md`；对象事实由相应 `registry/*` 约束 | `CLEAN_CLONE_PASS_PRIVATE_TRIAL_NOT_EXECUTED` | 等待真实 participant source；不因 Clean Clone 产生外部执行授权 |
+| `SAEE` | `CORE` | Digital Biosphere Evolution Engine | Evolution Intelligence Layer（演化智能层） | `/Users/zhangbin/GitHub/SAEE/PROJECT_STATUS.md`；`capability-package/manifest.json#canonical_inventory` 是 sole canonical capability fact source | `PUBLIC_SAFE_EXTRACTION_CLEAN_CLONE_PASS_NOT_RELEASED` | 保持只读与 canonical capability truth；不增加试用期功能 |
 | `GOVERNANCE-DECISION` | `LOGICAL_LAYER` | Governance Decision Layer（治理决策层） | Recommendation 到 Decision、Adoption 的记录边界 | DBA 的 `governance-decision-model.md`、状态机与 ADR | `MODEL_DEFINED_IMPLEMENTATION_NOT_ASSESSED` | 指定 deployment-specific decision authority（部署特定决策责任） |
 | `RESEARCH-AGENT-PILOT` | `PILOT` | Research Agent Pilot（科研智能体试验） | 第一个 Operational Digital Entity（运行型数字主体）参考试验 | `/Users/zhangbin/GitHub/digital-biosphere-research-agent-pilot/README.md`、`CONSTITUTION.md`、readiness gate（就绪闸门） | `SPECIFICATION_ONLY_NOT_READY` | 完成人工复核、来源批准和原型授权前置条件 |
 
@@ -60,7 +60,7 @@ changes_project_status: false
 
 Repository discovery（仓库发现）不等于 Portfolio Admission（项目组合准入）。
 
-当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的长期 canonical relationship 尚未决定；本仓库是本次明确目标下的项目群驾驶舱基线，但不会据此静默覆盖、删除或合并另一仓库。该问题登记为 `DQ-008`。
+`ADR-021` 已决定：当前 Program Governance Cockpit 是 canonical Program Governance / Architecture Specification source；既有 Digital Biosphere public meaning layer 保留 public meaning、history 与 discovery reference 角色；`PUBLIC-PROJECT-OVERVIEW.md` 是单一公开信息前门。跨仓库交叉引用尚未实施，因此不得声称 public discovery reconciliation 已完成，也不得静默覆盖、删除或合并另一仓库。
 
 ## 5. Portfolio Truth Boundary（项目组合事实边界）
 

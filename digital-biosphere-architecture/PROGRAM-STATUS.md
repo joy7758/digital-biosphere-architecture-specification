@@ -5,10 +5,10 @@ title_zh: 数字生物圈项目群状态快照
 status: observed-governance-snapshot-owner-decisions-recorded
 observed_at: 2026-07-21
 freshness: point-in-time
-last_governance_addendum_at: 2026-07-22T00:08:43+08:00
+last_governance_addendum_at: 2026-07-22T00:24:02+08:00
 release_status: website-candidate-published-developer-preview-not-released
 developer_preview_status: website-live-clean-clone-pass-trial-participant-source-pending
-source_policy: direct-read-only-observation
+source_policy: human-confirmed-read-only-routing-manual-refresh
 ---
 
 # Digital Biosphere Program Status Snapshot（数字生物圈项目群状态快照）
@@ -24,6 +24,10 @@ CORE_PROJECTS=3
 PILOT_PROJECTS=1
 PROGRAM_AUTHORITY_ASSIGNED=true
 PROGRAM_OWNER_REF=zhangbin
+CORE_STATUS_SOURCE_ROUTING_CONFIRMED=true
+STATUS_REFRESH_MODE=MANUAL_BEFORE_CONSEQUENTIAL_GATE
+STATUS_SNAPSHOT_STALE_AFTER_HOURS=24
+CANONICAL_PROGRAM_GOVERNANCE_SOURCE=DBA_PROGRAM_GOVERNANCE_COCKPIT
 SCOPED_LOCAL_DBOS_SAEE_CONFORMANCE_PASS=true
 FULL_END_TO_END_INTEGRATION_VERIFIED=false
 ACTIVE_DIGITAL_ENTITY_VERIFIED_BY_DBA=false
@@ -76,7 +80,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 | surface | 状态 | 证据边界 |
 |---|---|---|
 | DBA / DBOS / SAEE responsibility boundary | `SPECIFICATION_DEFINED` | DBA Stack、Governance、Interface 和 ADR 文档 |
-| DBA Program Governance cockpit | `BASELINE_VALIDATED_IN_WORKTREE` | 驾驶舱工件与 `PROGRAM-GOVERNANCE-BASELINE-AUDIT.md`；未 commit、未发布 |
+| DBA Program Governance cockpit | `CANONICAL_GOVERNANCE_SOURCE_CONFIRMED_IN_DELIVERY_BRANCH` | `ADR-021`、驾驶舱工件与本地验证；不是 Runtime、外部验证或 Release |
 | DBOS → SAEE data contract | `SCOPED_LOCAL_CONFORMANCE_PASS` | DBOS 同一 synthetic envelope 被 SAEE 只读消费；不是生产集成 |
 | SAEE → DBOS recommendation contract | `SCOPED_LOCAL_RECOMMENDATION_PASS_NO_WRITEBACK` | `HOLD` / `STOP` 是建议上下文；没有 DBOS 写回、Decision 或 Command |
 | Governance Decision implementation | `NOT_ASSESSED` | DBA 仅定义逻辑层和对象边界 |
@@ -88,24 +92,23 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 | DBOS local developer path | `SCOPED_LOCAL_CONFORMANCE_PASS` | local editable install、单一 runner、331/331 tests、34/34 validators |
 | Multi-Agent Trust Demo | `LOCAL_DETERMINISTIC_PASS` | 3 个角色模拟、3 个执行记录、3 个证据引用、9 个结构 Validation；无 Agent/Runtime |
 | SAEE Evaluation Layer v0.1 | `LOCAL_READ_ONLY_PASS` | 8/8 adapter tests；Reliability/Stability fail closed；Risk/Recommendation 复用现有 evaluator |
-| Program source and responsibility registry | `PASS_LOCAL_GOVERNANCE_ARTIFACT_VALIDATION_EXTERNAL_DRIFT_RECORDED_DOMAIN_CONFIRMATION_PENDING` | 2026-07-21/22 只读 branch/commit/source 候选、JSON Schema、本地验证报告、冲突规则和 Evidence-to-Decision 责任链；DBOS/SAEE 并发 worktree drift 已保留且未归因；不关闭 `DQ-003` / `DQ-006` / `DQ-008` |
+| Program source and responsibility registry | `HUMAN_CONFIRMED_REFERENCE_ROUTING_MANUAL_REFRESH_ACTIVE` | `ADR-021` 确认 DBOS、SAEE 与 Pilot 来源路由、24 小时 `STALE` 阈值、冲突规则和 Evidence-to-Decision 责任链；外部并发 worktree drift 已保留且未归因；`DQ-006` 仍开放 |
 | External Developer Trial Preparation | `TECHNICAL_PACKAGE_FROZEN_PARTICIPANT_SOURCE_PENDING` | `TMAI-DP-v0.1-TRIAL-20260721-001` 已冻结；参与者 0、无外部联系或试用 |
 | Clean Clone Validation | `PASS_FROZEN_REMOTE_SOURCES` | DBA、DBOS、SAEE 与只读 Adapter 全通过；见 `CLEAN-CLONE-VALIDATION-REPORT.md` |
 
 ## 4. Active Decisions and Blockers（当前决策与阻塞）
 
 - `DQ-002`：决定 DBA 独立仓库根目录与当前父级 Git 根目录之间的拓扑；
-- `DQ-003`：候选 source registry 与决策包已形成，状态为 `READY_FOR_REVIEW`；仍需 DBOS、SAEE、Research Agent Pilot 的 Domain Owner 确认 canonical status source；
 - `DQ-004`：选择第一个跨项目 conformance（符合性）里程碑；
-- `DQ-008`：决定当前驾驶舱与既有 DBA public meaning layer 的规范关系和单一前门；
 - `DQ-009`：最终 Developer Preview Release（开发者预览版发布）仍需 Trial Result 和 `released_by_ref`；
+- `DQ-003`、`DQ-007`、`DQ-008` 已由 `ADR-021` 关闭；来源路由、人工刷新与公开入口关系生效，但跨仓库引用仍待实施；
 - `DQ-001`、`DQ-011`、`DQ-012`、`DQ-014` 已由 `ADR-020` 关闭；
 - `DQ-010` 已形成条件决定：Clean Clone、试用包、真实参与者来源、隐私和停止规则全部满足后才生效；
 - `DQ-013` 已由 `ADR-019` 标记为 `SUPERSEDED`；
 - `B-001` 已由 `ADR-020` 解除；Program Owner 是 `zhangbin`，不产生运行、演化或发布权；
 - `B-002`：DBA Git 根目录不是 DBA 目录本身，影响仓库边界和远端展示；
-- `B-003`：核心项目状态入口尚未统一，阻止可靠自动汇总。
-- `B-005`：两个 DBA 语义表面尚未完成 canonical reconciliation（规范对齐），阻止对外声明唯一入口。
+- `B-003` 已由 `ADR-021` 解除；当前只允许人工只读汇总，不创建自动 Adapter（适配器）或子仓库写回；
+- `B-005`：两个 DBA 语义表面的角色已决定，但跨仓库交叉引用尚未实施，阻止声明 public discovery reconciliation（公开发现路由对齐）完成；
 - `B-006` 已在当前本地工作树中通过 version-aware historical binding（版本感知历史绑定）处理，34/34 validators 通过；历史 Evidence 未改写。该缓解尚未形成发布版本。
 - `B-007` 已解除：三个远端 source commits 已冻结，SAEE 19/19 blob 与完整 Clean Clone 已通过。
 - 当前试用执行唯一外部输入阻塞是 `participant_source` 仍为占位符；具体 DBOS collaborator 尚未添加。
@@ -129,11 +132,15 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 - 读取项目明确声明的 canonical status source；
 - 保留冲突和未知，不根据文件数量或测试数量推断成熟度；
 - 不在 DBA 中修改子仓库状态；
-- 将过期快照标记为 `STALE`，不得静默覆盖历史。
+- 每次发布、试用、跨项目 gate、Portfolio Admission 或对外状态同步前人工刷新；
+- 普通快照超过 24 小时标记为 `STALE`，不得静默覆盖历史。
 
 ```text
 SNAPSHOT_IS_CURRENT_TRUTH=false
 SNAPSHOT_IS_POINT_IN_TIME=true
+MANUAL_REFRESH_BEFORE_CONSEQUENTIAL_GATE=true
+SNAPSHOT_STALE_AFTER_HOURS=24
+READ_ONLY_ADAPTER_AUTHORIZED=false
 DIRTY_COUNT_IS_QUALITY_SCORE=false
 STATUS_AGGREGATION_CHANGES_CHILD_TRUTH=false
 ```

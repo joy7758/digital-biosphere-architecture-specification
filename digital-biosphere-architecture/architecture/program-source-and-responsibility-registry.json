@@ -2,33 +2,57 @@
   "$schema": "./program-source-and-responsibility-registry.schema.json",
   "registry_id": "DBA-PROGRAM-SOURCE-RESPONSIBILITY-REGISTRY-0.1",
   "schema_version": "0.1.0",
-  "status": "CANDIDATE_FOR_DOMAIN_CONFIRMATION",
-  "observed_at": "2026-07-22T00:08:43+08:00",
+  "status": "HUMAN_CONFIRMED_REFERENCE_ROUTING",
+  "observed_at": "2026-07-22T00:39:09+08:00",
   "observation_state": "REFRESHED_AFTER_CONCURRENT_EXTERNAL_DRIFT",
   "external_drift": {
     "detected": true,
-    "previous_observed_at": "2026-07-21T23:57:45+08:00",
+    "previous_observed_at": "2026-07-22T00:24:02+08:00",
     "affected_projects": [
       {
         "project_id": "PROJECT-DBOS",
-        "previous_worktree_changes": 0,
-        "current_worktree_changes": 1,
+        "previous_worktree_changes": 1,
+        "current_worktree_changes": 2,
         "head_changed": false
       },
       {
         "project_id": "PROJECT-SAEE",
-        "previous_worktree_changes": 667,
-        "current_worktree_changes": 668,
+        "previous_worktree_changes": 688,
+        "current_worktree_changes": 0,
+        "head_changed": true
+      },
+      {
+        "project_id": "RESEARCH-AGENT-PILOT",
+        "previous_worktree_changes": 30,
+        "current_worktree_changes": 87,
+        "head_changed": false
+      },
+      {
+        "project_id": "PROJECT-AGENT-EVIDENCE",
+        "previous_worktree_changes": 87,
+        "current_worktree_changes": 166,
+        "head_changed": false
+      },
+      {
+        "project_id": "PROJECT-ARO",
+        "previous_worktree_changes": 19,
+        "current_worktree_changes": 21,
         "head_changed": false
       }
     ],
     "attribution": "NOT_INFERRED"
   },
+  "decision_ref": "ADR-021",
+  "human_confirmation": {
+    "decided_by_ref": "zhangbin",
+    "decided_at": "2026-07-22T00:24:02+08:00",
+    "confirmation_scope": ["DQ-003", "DQ-007", "DQ-008", "DBA_GOVERNANCE_GIT_DELIVERY"]
+  },
   "primary_repository": "digital-biosphere-architecture",
-  "implementation_effect": "NONE",
+  "governance_record_effect": "DBA_GOVERNANCE_ALIGNMENT_ONLY",
   "child_project_truth_changed": false,
   "recommendation_gate": {
-    "current_recommendation": "CONDITIONALLY_RECOMMENDED",
+    "current_recommendation": "RECOMMENDED",
     "recommended_scope": [
       "architecture_boundary",
       "program_governance",
@@ -39,22 +63,23 @@
       "automatic_authorized_execution",
       "production_release_claim"
     ],
-    "implementation_authorized": false
+    "governance_implementation_authorized": true,
+    "runtime_implementation_authorized": false
   },
   "projects": [
     {
       "project_id": "PROJECT-DBA-COCKPIT",
       "repository_path": "/Users/zhangbin/Documents/New project/digital-biosphere-architecture",
       "architecture_role": "PROGRAM_GOVERNANCE_AND_ARCHITECTURE_SPECIFICATION_HUB",
-      "portfolio_status": "CORE_COCKPIT_CANDIDATE_PENDING_DQ_008",
+      "portfolio_status": "CORE_CANONICAL_PROGRAM_GOVERNANCE_COCKPIT",
       "observation": {
-        "branch": "main",
-        "commit": "91928e3b1096566aad5568124707e3a6cb3a40ca",
-        "worktree_changes": 2,
+        "branch": "codex/program-source-authority",
+        "commit": "2cc20b4060d680c5451bdd82bfb0d88258258159",
+        "worktree_changes": 13,
         "worktree_changes_are_maturity_evidence": false
       },
       "status_source": {
-        "state": "CANDIDATE_PENDING_DQ_008",
+        "state": "DBA_PROGRAM_GOVERNANCE_CANONICAL",
         "refs": [
           {
             "path": "PROGRAM-STATUS.md",
@@ -67,8 +92,8 @@
             "authority": "DBA_COCKPIT_SOURCE"
           }
         ],
-        "domain_confirmation_required": true,
-        "freshness_policy": "UNRESOLVED_DQ_007",
+        "domain_confirmation_required": false,
+        "freshness_policy": "MANUAL_REFRESH_BEFORE_CONSEQUENTIAL_GATE_24H_STALE",
         "conflict_policy": "PRESERVE_CONFLICT_AND_REQUEST_DOMAIN_OWNER"
       }
     },
@@ -80,16 +105,16 @@
       "observation": {
         "branch": "main",
         "commit": "0caa2c45e511a82d0dcab778b0ffc3163aac0029",
-        "worktree_changes": 1,
+        "worktree_changes": 2,
         "worktree_changes_are_maturity_evidence": false
       },
       "status_source": {
-        "state": "UNCONFIRMED",
+        "state": "HUMAN_CONFIRMED",
         "refs": [
           {
             "path": "README.md",
             "scope": "project status context and entry routing",
-            "authority": "CANDIDATE"
+            "authority": "HUMAN_CONFIRMED_PROGRAM_STATUS_SOURCE"
           },
           {
             "path": "registry/entities.yaml",
@@ -102,8 +127,8 @@
             "authority": "SUPPORTING_SOURCE"
           }
         ],
-        "domain_confirmation_required": true,
-        "freshness_policy": "UNRESOLVED_DQ_007",
+        "domain_confirmation_required": false,
+        "freshness_policy": "MANUAL_REFRESH_BEFORE_CONSEQUENTIAL_GATE_24H_STALE",
         "conflict_policy": "PRESERVE_CONFLICT_AND_REQUEST_DOMAIN_OWNER"
       }
     },
@@ -114,12 +139,12 @@
       "portfolio_status": "CORE",
       "observation": {
         "branch": "feat/canonical-capability-inventory-routing-v1",
-        "commit": "0c416f70c56caabe1e24d183a0cfb5af3b0ce8d8",
-        "worktree_changes": 668,
+        "commit": "697ae2080f11b7905b20c39079914eb98169783b",
+        "worktree_changes": 0,
         "worktree_changes_are_maturity_evidence": false
       },
       "status_source": {
-        "state": "PARTIALLY_REPOSITORY_DECLARED",
+        "state": "HUMAN_CONFIRMED_SPLIT_SCOPE",
         "refs": [
           {
             "path": "capability-package/manifest.json",
@@ -130,7 +155,7 @@
           {
             "path": "PROJECT_STATUS.md",
             "scope": "multi-topic project activity and status context",
-            "authority": "CANDIDATE"
+            "authority": "HUMAN_CONFIRMED_PROGRAM_STATUS_SOURCE"
           },
           {
             "path": "docs/architecture/SAEE_DEVELOPMENT_CONSTITUTION_V1_1.md",
@@ -138,8 +163,8 @@
             "authority": "SUPPORTING_SOURCE"
           }
         ],
-        "domain_confirmation_required": true,
-        "freshness_policy": "UNRESOLVED_DQ_007",
+        "domain_confirmation_required": false,
+        "freshness_policy": "MANUAL_REFRESH_BEFORE_CONSEQUENTIAL_GATE_24H_STALE",
         "conflict_policy": "PRESERVE_CONFLICT_AND_REQUEST_DOMAIN_OWNER"
       }
     },
@@ -151,17 +176,17 @@
       "observation": {
         "branch": "main",
         "commit": "8445fe5d13cd889032c3786ba527d801f56d5351",
-        "worktree_changes": 30,
+        "worktree_changes": 87,
         "worktree_changes_are_maturity_evidence": false
       },
       "status_source": {
-        "state": "CANDIDATE",
+        "state": "HUMAN_CONFIRMED",
         "refs": [
           {
             "path": "README.md",
             "fragment": "Current Status",
             "scope": "current readiness and zero-instance status",
-            "authority": "CANDIDATE"
+            "authority": "HUMAN_CONFIRMED_PROGRAM_STATUS_SOURCE"
           },
           {
             "path": "CONSTITUTION.md",
@@ -174,8 +199,8 @@
             "authority": "SUPPORTING_SOURCE"
           }
         ],
-        "domain_confirmation_required": true,
-        "freshness_policy": "UNRESOLVED_DQ_007",
+        "domain_confirmation_required": false,
+        "freshness_policy": "MANUAL_REFRESH_BEFORE_CONSEQUENTIAL_GATE_24H_STALE",
         "conflict_policy": "PRESERVE_CONFLICT_AND_REQUEST_DOMAIN_OWNER"
       }
     },
@@ -187,7 +212,7 @@
       "observation": {
         "branch": "revision/softwarex-v2-grounding-fix",
         "commit": "1b692de391aa04bcfe2666ccc3ddce652ce5c3df",
-        "worktree_changes": 87,
+        "worktree_changes": 166,
         "worktree_changes_are_maturity_evidence": false
       },
       "status_source": {
@@ -212,7 +237,7 @@
       "observation": {
         "branch": "audit-scope-alignment-v1",
         "commit": "74a7f584b8cb18ca2655a0dac30e77e41e582c43",
-        "worktree_changes": 19,
+        "worktree_changes": 21,
         "worktree_changes_are_maturity_evidence": false
       },
       "status_source": {
@@ -313,7 +338,7 @@
       "adoption_status": "VERSION_PIN_REQUIRED"
     }
   ],
-  "open_decisions": ["DQ-003", "DQ-006", "DQ-007", "DQ-008"],
+  "open_decisions": ["DQ-006"],
   "truth_boundaries": [
     "RECOMMENDATION_NE_DECISION",
     "DECISION_NE_EXECUTION",

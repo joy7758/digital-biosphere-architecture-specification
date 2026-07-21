@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "urn:digital-biosphere:dba:program-source-and-responsibility-registry:0.1",
   "title": "Digital Biosphere Program Source and Responsibility Registry Schema",
-  "description": "Agent-readable schema for candidate project status sources and non-collapsing responsibility stages. Validation does not confirm child-project truth or authorize implementation.",
+  "description": "Agent-readable schema for candidate or human-confirmed project status routing and non-collapsing responsibility stages. Validation does not confirm child-project content truth or authorize runtime implementation.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -12,8 +12,11 @@
     "observed_at",
     "observation_state",
     "external_drift",
+    "decision_ref",
+    "human_confirmation",
     "primary_repository",
-    "implementation_effect",
+    "governance_record_effect",
+    "child_project_truth_changed",
     "recommendation_gate",
     "projects",
     "responsibility_chain",
@@ -24,7 +27,7 @@
     "$schema": { "type": "string" },
     "registry_id": { "const": "DBA-PROGRAM-SOURCE-RESPONSIBILITY-REGISTRY-0.1" },
     "schema_version": { "const": "0.1.0" },
-    "status": { "const": "CANDIDATE_FOR_DOMAIN_CONFIRMATION" },
+    "status": { "enum": ["CANDIDATE_FOR_DOMAIN_CONFIRMATION", "HUMAN_CONFIRMED_REFERENCE_ROUTING"] },
     "observed_at": { "type": "string", "format": "date-time" },
     "observation_state": {
       "enum": ["CURRENT_AT_LAST_REFRESH", "REFRESHED_AFTER_CONCURRENT_EXTERNAL_DRIFT"]
@@ -53,18 +56,35 @@
         "attribution": { "const": "NOT_INFERRED" }
       }
     },
+    "decision_ref": { "const": "ADR-021" },
+    "human_confirmation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decided_by_ref", "decided_at", "confirmation_scope"],
+      "properties": {
+        "decided_by_ref": { "const": "zhangbin" },
+        "decided_at": { "type": "string", "format": "date-time" },
+        "confirmation_scope": {
+          "type": "array",
+          "minItems": 3,
+          "items": { "enum": ["DQ-003", "DQ-007", "DQ-008", "DBA_GOVERNANCE_GIT_DELIVERY"] },
+          "uniqueItems": true
+        }
+      }
+    },
     "primary_repository": { "const": "digital-biosphere-architecture" },
-    "implementation_effect": { "const": "NONE" },
+    "governance_record_effect": { "const": "DBA_GOVERNANCE_ALIGNMENT_ONLY" },
     "child_project_truth_changed": { "const": false },
     "recommendation_gate": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["current_recommendation", "recommended_scope", "not_recommended_scope", "implementation_authorized"],
+      "required": ["current_recommendation", "recommended_scope", "not_recommended_scope", "governance_implementation_authorized", "runtime_implementation_authorized"],
       "properties": {
         "current_recommendation": { "enum": ["RECOMMENDED", "CONDITIONALLY_RECOMMENDED", "NOT_RECOMMENDED"] },
         "recommended_scope": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true },
         "not_recommended_scope": { "type": "array", "minItems": 1, "items": { "type": "string" }, "uniqueItems": true },
-        "implementation_authorized": { "const": false }
+        "governance_implementation_authorized": { "const": true },
+        "runtime_implementation_authorized": { "const": false }
       }
     },
     "projects": {
@@ -117,6 +137,7 @@
         "authority": {
           "enum": [
             "DBA_COCKPIT_SOURCE",
+            "HUMAN_CONFIRMED_PROGRAM_STATUS_SOURCE",
             "REPOSITORY_DECLARED_CANONICAL",
             "CANDIDATE",
             "SUPPORTING_SOURCE",
@@ -133,6 +154,9 @@
         "state": {
           "enum": [
             "CANDIDATE_PENDING_DQ_008",
+            "DBA_PROGRAM_GOVERNANCE_CANONICAL",
+            "HUMAN_CONFIRMED",
+            "HUMAN_CONFIRMED_SPLIT_SCOPE",
             "PARTIALLY_REPOSITORY_DECLARED",
             "REPOSITORY_DECLARED",
             "CANDIDATE",
@@ -141,7 +165,7 @@
         },
         "refs": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/sourceRef" } },
         "domain_confirmation_required": { "type": "boolean" },
-        "freshness_policy": { "enum": ["UNRESOLVED_DQ_007", "OBSERVATION_ONLY_NO_CADENCE"] },
+        "freshness_policy": { "enum": ["UNRESOLVED_DQ_007", "OBSERVATION_ONLY_NO_CADENCE", "MANUAL_REFRESH_BEFORE_CONSEQUENTIAL_GATE_24H_STALE"] },
         "conflict_policy": { "const": "PRESERVE_CONFLICT_AND_REQUEST_DOMAIN_OWNER" }
       }
     },
