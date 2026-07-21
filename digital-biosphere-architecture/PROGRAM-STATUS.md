@@ -60,8 +60,8 @@ SAEE_PUBLIC_CLEAN_CLONE_PASS=true
 SAEE_DBOS_ADAPTER_CLEAN_CLONE_PASS=true
 CROSS_PROJECT_CLEAN_CLONE_PASS=true
 PUBLIC_WEBSITE_DEPLOYED=true
-PUBLIC_WEBSITE_SOURCE_REVISION=ac5374ad326e95a71a326da4b2d9ec74880c608f
-PUBLIC_WEBSITE_GITHUB_PRERELEASE_TAG=v0.1-public-website-candidate.6
+PUBLIC_WEBSITE_SOURCE_REVISION=1c4bf032878193609e8f55f0ebd5606b8ebe2c1c
+PUBLIC_WEBSITE_GITHUB_PRERELEASE_TAG=v0.1-public-website-candidate.7
 PUBLIC_WEBSITE_HEALTH_PASS=true
 PUBLIC_WEBSITE_ROLLBACK_VALIDATED=true
 GITHUB_WEBSITE_PRERELEASE_PUBLISHED=true
@@ -77,11 +77,11 @@ DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED=false
 
 ## 2. Observed Core Project Snapshot（核心项目观察快照）
 
-以下 Git observation（Git 观察）来自 2026-07-21 的只读本地检查。`dirty_count` 只表示工作树条目数，不表示质量、完成度、发布状态或错误数量。
+以下 Git observation（Git 观察）汇总截至 2026-07-22 的只读检查。`dirty_count` 只表示工作树条目数，不表示质量、完成度、发布状态或错误数量。
 
 | project_id | branch | observed commit | worktree observation | remote observation | 规范状态摘要 |
 |---|---|---|---|---|---|
-| `DBA` | `main` | `48237da5535235cb9d13b0782a94671a7be8a1e8` | website candidate 6 的远端记录已合并；当前 public-safe wheel 决策工件仍在候选分支 | public remote 可干净检出 | 网站候选健康、依赖复核和驾驶舱验证通过；Developer Preview 未发布 |
+| `DBA` | `main` | `1c4bf032878193609e8f55f0ebd5606b8ebe2c1c` | public-safe wheel 决策工件已合并并生成 website candidate 7 | public remote 匿名干净检出；GitHub prerelease 和百度云候选指向同一 source | 104 个 Markdown、345 个本地链接、5/5 site tests、21/21 manifest 和 12/12 public routes 通过；Developer Preview 未发布 |
 | `DBOS` | `main` | `cd3f867c4379ec555c45e7d554088ad12ce08a24` | 自包含 wheel candidate、Apache-2.0 和 private repository boundary 已推送 | authenticated clean clone 通过；仓库保持 private；整仓因 48 个本机路径文件不公开 | fresh install、334/334 tests、34/34 validators、两个 Demo 和 public-safe wheel 隔离安装通过；不是 Agent Runtime |
 | `SAEE` | public `main` | `2173c258f91aed03fc02c0097d4250a87be703aa` | exact 19-file public-safe extraction 与 Apache-2.0 已合并 | public remote 可干净检出；内部工作树另有未发布变化且未被使用 | 19/19 blob、public smoke/demo、8/8 tests 和 DBOS 只读 Adapter 通过；无写回或 authority |
 | `RESEARCH-AGENT-PILOT` | `main` | `8445fe5d13cd889032c3786ba527d801f56d5351` | `dirty_count=30` | 未发现 `origin` | `V1_0_STATUS=INCOMPLETE_NOT_READY`；Agent、Runtime、Entity、Execution 均为 0 |
