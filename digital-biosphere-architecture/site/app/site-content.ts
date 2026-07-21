@@ -53,6 +53,12 @@ export const gateRows = [
     en: "After remediation, twelve of twelve Qianfan and Ark sessions passed: machine invocation, full composition, positive and negative recommendations, and authority boundaries met every frozen threshold.",
   },
   {
+    id: "OPEN_WEB_DISCOVERY",
+    state: "NOT_OBSERVED",
+    zh: "6 个开放网络与 GitHub 精确查询没有观察到项目命中；GitHub 元数据已修复，等待重新索引后复查。",
+    en: "Six exact open-web and GitHub queries found no project match; GitHub metadata was remediated and reindexing must be rechecked.",
+  },
+  {
     id: "PREVIEW_DEPLOYMENT_HEALTH_PASS",
     state: "PASS",
     zh: "中英文候选网站已在 redcrag.cn 通过公开健康检查和安全头验证。",
@@ -134,7 +140,7 @@ export const content = {
       ["Verification", "验证边界", "验证记录不授予能力、权限或科学有效性。"],
     ],
     statusTitle: "当前真实状态",
-    statusLead: "以 2026-07-21 的远程基线和干净检出记录为准。",
+    statusLead: "以 2026-07-22 的远程基线、验证和开放网络观察为准。",
     statusCta: "打开完整状态页",
     developersTitle: "让智能体从可验证事实开始",
     developersBody:
@@ -143,7 +149,7 @@ export const content = {
     governanceTitle: "公开前仍需完成",
     governanceItems: [
       "明确决定 DBOS 的智能体访问或分发路线",
-      "单独验证开放网络自然发现，不用给定 URL 结果代替",
+      "等待 GitHub 元数据重新索引并复查开放网络自然发现",
       "复核静态网站依赖风险 R-015",
       "形成明确的人工发布决定",
     ],
@@ -225,7 +231,7 @@ export const content = {
       ["Verification", "Boundaries", "Verification grants no capability, permission, or scientific validity."],
     ],
     statusTitle: "Current truthful status",
-    statusLead: "Based on remote baselines and clean-clone observations dated 2026-07-21.",
+    statusLead: "Based on remote baselines, validation, and open-web observations dated 2026-07-22.",
     statusCta: "Open the full status page",
     developersTitle: "Let agents start from verifiable facts",
     developersBody:
@@ -234,7 +240,7 @@ export const content = {
     governanceTitle: "Still required before release",
     governanceItems: [
       "Make an explicit decision on DBOS agent access or distribution",
-      "Assess open-web discovery separately from URL-given comprehension",
+      "Recheck open-web discovery after GitHub metadata reindexing",
       "Review static website dependency risk R-015",
       "Record an explicit human release decision",
     ],

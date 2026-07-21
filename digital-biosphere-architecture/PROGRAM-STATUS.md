@@ -40,7 +40,11 @@ AGENT_CUSTOMER_API_SESSIONS_COMPLETED=12
 AGENT_CUSTOMER_PROVIDERS_WITH_SUCCESS=2
 AGENT_CUSTOMER_MODEL_IDENTITIES_WITH_SUCCESS=4
 AGENT_CUSTOMER_AUTHORITY_SAFETY_FAILURES=0
-OPEN_WEB_DISCOVERY=NOT_ASSESSED
+OPEN_WEB_DISCOVERY=NOT_OBSERVED
+OPEN_WEB_DISCOVERY_OBSERVATION_ID=TMAI-OWD-20260722-001
+OPEN_WEB_EXACT_PROJECT_MATCH=false
+GITHUB_DISCOVERY_METADATA_REMEDIATED=true
+OPEN_WEB_REINDEX_OBSERVED=false
 HUMAN_DEVELOPER_TRIAL_REQUIRED_FOR_PRIMARY_ROUTE=false
 TRIAL_PACKAGE_ID=TMAI-DP-v0.1-TRIAL-20260721-001
 TRIAL_PACKAGE_TECHNICAL_FREEZE=true
@@ -54,8 +58,8 @@ SAEE_PUBLIC_CLEAN_CLONE_PASS=true
 SAEE_DBOS_ADAPTER_CLEAN_CLONE_PASS=true
 CROSS_PROJECT_CLEAN_CLONE_PASS=true
 PUBLIC_WEBSITE_DEPLOYED=true
-PUBLIC_WEBSITE_SOURCE_REVISION=bc7ba49a357ebc007e2a4c9dc01178a37e74d2d8
-PUBLIC_WEBSITE_GITHUB_PRERELEASE_TAG=v0.1-public-website-candidate.2
+PUBLIC_WEBSITE_SOURCE_REVISION=f217831c287b9b09f0a56f54374ec16d91fa5070
+PUBLIC_WEBSITE_GITHUB_PRERELEASE_TAG=v0.1-public-website-candidate.3
 PUBLIC_WEBSITE_HEALTH_PASS=true
 PUBLIC_WEBSITE_ROLLBACK_VALIDATED=true
 GITHUB_WEBSITE_PRERELEASE_PUBLISHED=true
@@ -104,7 +108,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 - `DQ-003`：确认 DBOS、SAEE、Research Agent Pilot 的 canonical status source；
 - `DQ-004`：选择第一个跨项目 conformance（符合性）里程碑；
 - `DQ-008`：决定当前驾驶舱与既有 DBA public meaning layer 的规范关系和单一前门；
-- `DQ-009`：最终 Developer Preview Release（开发者预览版发布）仍需 DBOS access/distribution 决定、`R-015` 复核和 `released_by_ref`；
+- `DQ-009`：最终 Developer Preview Release（开发者预览版发布）仍需 DBOS access/distribution 决定、开放网络发现限制的处理决定、`R-015` 复核和 `released_by_ref`；
 - `DQ-001`、`DQ-011`、`DQ-012`、`DQ-014` 已由 `ADR-020` 关闭；
 - `DQ-010` 的人类参与者路径已由 `ADR-021` 标记为 `SUPERSEDED_FOR_PRIMARY_ROUTE`，没有被改写成执行通过；
 - `DQ-015` 已接受 agent-native customer validation，并完成 12/12 会话基线；
@@ -116,6 +120,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 - `B-006` 已在当前本地工作树中通过 version-aware historical binding（版本感知历史绑定）处理，34/34 validators 通过；历史 Evidence 未改写。该缓解尚未形成发布版本。
 - `B-007` 已解除：三个远端 source commits 已冻结，SAEE 19/19 blob 与完整 Clean Clone 已通过。
 - `B-009` 已由 `TMAI-ACV-20260722-002` 解除；真实运行使用仍受 `B-010`（DBOS private、无公开调用路径）阻塞。
+- `B-011`：`TMAI-OWD-20260722-001` 没有观察到开放网络或 GitHub 精确项目命中；GitHub 元数据已修复，但重新索引尚未观察到。
 
 详细信息见 [`DECISION-QUEUE.md`](DECISION-QUEUE.md) 和 [`RISK-AND-BLOCKER-REGISTER.md`](RISK-AND-BLOCKER-REGISTER.md)。
 
@@ -123,7 +128,7 @@ DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
 
 1. 保留基线 `001=CONDITIONAL` 与复测 `002=PASS` 的全部原始回答、评分和失败历史；
 2. 由 Human Owner 单独决定 DBOS 的 agent access／distribution 路线；
-3. 单独评估 `OPEN_WEB_DISCOVERY`，不把给定 URL 的理解结果升级为自然发现；
+3. 在外部索引刷新窗口后复查 `TMAI-OWD-20260722-001`，或由 Human Owner 显式接受 Developer Preview 的发现限制；
 4. 复核网站依赖风险 `R-015`；
 5. 以上输入完成后，把 `DQ-009` 提交明确 `released_by_ref` 的人工发布决定。
 

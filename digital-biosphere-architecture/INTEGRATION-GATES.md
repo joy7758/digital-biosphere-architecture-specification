@@ -56,8 +56,9 @@ DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
 | `DP-4` | `G3/G4/G7` | `PASS_CLEAN_CLONE_ADVISORY_ONLY` | SAEE `2173c25` public main；8/8 adapter tests；pipeline 输出 `HOLD` 且无 Authority | 不外推为 SAEE 决策权或生产集成 |
 | `DP-5A` | `G8_PREPARATION` | `PASS_AGENT_PROTOCOL_FROZEN` | `TMAI-ACV-20260721-001`、Protocol、12-session plan、ADR-021 | 不表示 Agent instance、客户采用或发布 |
 | `DP-5B` | `G1/G4/G8_AGENT_VALIDATION` | `CONDITIONAL` | 2 Providers、4 models、12/12 parsed；公开识别 6/6；权限错误 0；4 个阈值失败 | 修复 agent-readable package，并以相同阈值复测 |
-| `DP-5C` | `G1/G4/G8_AGENT_RERUN` | `PASS` | `TMAI-ACV-20260722-002`：2 Providers、4 models、12/12 parsed、全部阈值通过、权限错误 0 | 保留原 `001=CONDITIONAL` 与 `OPEN_WEB_DISCOVERY=NOT_ASSESSED` |
-| `DP-R` | `G8` | `BLOCKED_DBOS_ACCESS_R015_DQ-009` | Agent customer validation 已通过；DBOS 仍 private；`R-015` 未复核；没有 `released_by_ref` | DBOS access decision、风险复核、人工发布决定和完整 release record |
+| `DP-5C` | `G1/G4/G8_AGENT_RERUN` | `PASS` | `TMAI-ACV-20260722-002`：2 Providers、4 models、12/12 parsed、全部阈值通过、权限错误 0 | 保留原 `001=CONDITIONAL`；开放网络由独立观察处理 |
+| `DP-5D` | `G1/G8_OPEN_WEB_OBSERVATION` | `NOT_OBSERVED_REMEDIATION_PENDING` | `TMAI-OWD-20260722-001`：4 个公开搜索 + 2 个 GitHub 查询，0 个精确项目命中；GitHub 元数据已修复 | 索引刷新后复查，或 Human Owner 显式接受限制 |
+| `DP-R` | `G8` | `BLOCKED_DBOS_ACCESS_OPEN_WEB_R015_DQ-009` | Agent customer validation 已通过；DBOS 仍 private；open-web exact match 未观察到；`R-015` 未复核；没有 `released_by_ref` | DBOS access decision、发现限制处理、风险复核、人工发布决定和完整 release record |
 
 ## 4. Gate Evidence Record（闸门证据记录）
 

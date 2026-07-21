@@ -13,7 +13,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         gates: "验证闸门",
         visibility: "可见性",
         next: "下一步",
-        nextBody: "智能体客户验证已通过；下一步由人工决定 DBOS 智能体访问路线、复核剩余风险并决定正式发布。",
+        nextBody: "智能体客户验证已通过，但开放网络精确命中尚未观察到。下一步是复查索引、决定 DBOS 智能体访问路线、复核剩余风险并决定正式发布。",
         back: "返回首页",
       }
     : {
@@ -25,7 +25,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         gates: "Validation gates",
         visibility: "Visibility",
         next: "Next step",
-        nextBody: "Agent customer validation passed. Next, make explicit human decisions on DBOS agent access, remaining risk review, and formal release.",
+        nextBody: "Agent customer validation passed, but no exact open-web project match has been observed. Next, recheck indexing and make explicit human decisions on DBOS agent access, remaining risk, and formal release.",
         back: "Back to home",
       };
 
@@ -38,7 +38,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
             <p className="section-kicker">{copy.eyebrow}</p>
             <h1>{copy.title}</h1>
             <p>{copy.lead}</p>
-            <div className="observed-chip"><span>{copy.observed}</span><strong>2026-07-21 · Asia/Shanghai</strong></div>
+            <div className="observed-chip"><span>{copy.observed}</span><strong>2026-07-22 · Asia/Shanghai</strong></div>
           </div>
         </section>
         <section className="section status-detail-section">

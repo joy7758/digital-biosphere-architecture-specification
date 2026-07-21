@@ -72,6 +72,8 @@ DRAFT
 - [x] clean-clone validation 已对同一冻结版本通过；
 - [x] 四项 agent-readable 失败阈值已修复并用 `TMAI-ACV-20260722-002` 复测；
 - [x] Agent Customer Validation Result 达到 `PASS`；12/12 overall verdict 保持边界正确的 `CONDITIONAL`；
+- [x] 使用真实公开搜索与 GitHub repository search 单独观察自然发现，结果保留为 `NOT_OBSERVED`；
+- [ ] 元数据修复后观察到外部索引刷新，或 Human Owner 显式接受 Developer Preview 的发现限制；
 - [ ] DBOS agent access／distribution 路线已有明确 Human Decision；
 - [ ] Human Release Decision（人工发布决策）包含明确 `released_by_ref`；
 - [ ] release notes（发布说明）区分本地预览、发布、部署和采用。
@@ -103,6 +105,10 @@ AGENT_CUSTOMER_RERUN_ID=TMAI-ACV-20260722-002
 AGENT_CUSTOMER_VALIDATION_RESULT=PASS
 AGENT_CUSTOMER_REMEDIATION_REQUIRED=false
 AGENT_CUSTOMER_RERUN_COMPLETE=true
+OPEN_WEB_DISCOVERY_OBSERVATION_ID=TMAI-OWD-20260722-001
+OPEN_WEB_DISCOVERY_RESULT=NOT_OBSERVED
+GITHUB_DISCOVERY_METADATA_REMEDIATED=true
+OPEN_WEB_REINDEX_OBSERVED=false
 HUMAN_DEVELOPER_TRIAL_REQUIRED=false
 DBOS_AGENT_ACCESS_DECIDED=false
 RELEASE_AUTHORIZED=false
@@ -111,7 +117,7 @@ RELEASE_AUTHORIZED=false
 阻塞原因：
 
 1. DBOS 仍为 private，AI agent 没有公开 package、API 或自主获取路径；
-2. `OPEN_WEB_DISCOVERY` 尚未评估，不能用给定 URL 测试替代；
+2. `OPEN_WEB_DISCOVERY=NOT_OBSERVED`；GitHub 元数据已修复，但尚未观察到重新索引或显式限制接受；
 3. `R-015` 仍需正式发布风险复核；
 4. `DQ-009` 尚无 Human Release Decision 与 `released_by_ref`。
 

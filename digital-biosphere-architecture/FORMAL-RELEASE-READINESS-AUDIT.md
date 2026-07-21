@@ -26,10 +26,11 @@ is not ready for formal release.
 | Agent customer package | `/agent-customer-package.json` | `PUBLIC_CANDIDATE_DEPLOYED_PASS_NOT_RUNTIME` |
 | Agent customer validation baseline | `TMAI-ACV-20260721-001`；12/12 sessions；2 providers；4 models | `CONDITIONAL_REMEDIATION_REQUIRED` |
 | Agent customer validation rerun | `TMAI-ACV-20260722-002`；same thresholds；12/12 sessions；0 failed thresholds | `PASS_NOT_RELEASE_AUTHORIZATION` |
+| Open-web discovery observation | `TMAI-OWD-20260722-001`；4 public-web + 2 GitHub queries；no exact project match | `NOT_OBSERVED_METADATA_REMEDIATED_RECHECK_REQUIRED` |
 | Website artifact integrity | `/release-manifest.json`; remote `sha256sum -c` | `PASS` |
 | HTTPS and security headers | Public response and origin checks | `PASS` |
 | Website rollback | Atomic switch to previous artifact and restore | `PASS` |
-| GitHub website artifact | `v0.1-public-website-candidate.2`; `bc7ba49`; prerelease | `PASS_CANDIDATE_ONLY` |
+| GitHub website artifact | `v0.1-public-website-candidate.3`; `f217831`; prerelease | `PASS_CANDIDATE_ONLY` |
 | DBA clean clone | `CLEAN-CLONE-VALIDATION-REPORT.md` | `PASS` |
 | DBOS clean clone | 331 tests, 34 validators, two demos | `PASS_PRIVATE_ACCESS` |
 | SAEE public clean clone | public smoke/demo、8/8 Adapter tests | `PASS` |
@@ -58,7 +59,9 @@ FORMAL_RELEASE_READY=false
 
 1. Make an explicit Human Owner decision on DBOS agent access or distribution;
    private access is not autonomous AI-agent usability.
-2. Assess `OPEN_WEB_DISCOVERY` separately; URL-given comprehension is not natural discovery.
+2. Recheck `TMAI-OWD-20260722-001` after external indexing, or record explicit
+   Human acceptance of the Developer Preview discovery limitation; metadata repair
+   is not discovery evidence.
 3. Resolve or explicitly review `R-015` against a non-breaking upstream dependency
    update; do not use `npm audit fix --force` as an unreviewed release action.
 4. `DQ-009`: record an explicit Human Release Decision with `released_by_ref`.

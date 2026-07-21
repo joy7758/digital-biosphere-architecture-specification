@@ -45,6 +45,8 @@ test("renders bilingual status pages with fail-closed truth", async () => {
   assert.match(en, /AGENT_CUSTOMER_VALIDATION_BASELINE/);
   assert.match(zh, /PASS/);
   assert.match(en, /PASS/);
+  assert.match(zh, /NOT_OBSERVED/);
+  assert.match(en, /NOT_OBSERVED/);
   assert.match(zh, /0caa2c45e511/);
   assert.match(en, /2173c258f91a/);
 });
@@ -74,6 +76,11 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.agent_customer_validation.api_sessions_completed, 12);
   assert.equal(status.agent_customer_validation.result, "PASS");
   assert.equal(status.agent_customer_validation.open_web_discovery, "NOT_ASSESSED");
+  assert.equal(status.open_web_discovery.observation_id, "TMAI-OWD-20260722-001");
+  assert.equal(status.open_web_discovery.result, "NOT_OBSERVED");
+  assert.equal(status.open_web_discovery.exact_project_match_observed, false);
+  assert.equal(status.open_web_discovery.github_metadata_remediated, true);
+  assert.equal(status.open_web_discovery.reindex_observed, false);
   assert.equal(agentCustomerPackage.intended_customer, "AI_AGENT");
   assert.equal(agentCustomerPackage.released, false);
   assert.equal(agentCustomerPackage.validation_truth.rerun_result, "PASS");
@@ -83,6 +90,7 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.public_website.rollback_validated, true);
   assert.match(llms, /Recommendation != Decision/);
   assert.match(llms, /DBOS records -> SAEE evaluation\/recommendation -> Governance Decision review\/adoption -> DBOS authorized execution/);
+  assert.match(llms, /OPEN_WEB_DISCOVERY=NOT_OBSERVED/);
 });
 
 test("removes the disposable starter preview", async () => {

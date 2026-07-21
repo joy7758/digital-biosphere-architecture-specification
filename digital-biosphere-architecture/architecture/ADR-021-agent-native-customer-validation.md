@@ -37,6 +37,11 @@ runtime_effect: none
 8. `OPEN_WEB_DISCOVERY` 只有在未来提供真实搜索／索引观察时才可评估；给定 URL 的测试必须称为 `URL_GIVEN_SEMANTIC_DISCOVERY`。
 9. `DQ-014=PRIVATE_COLLABORATOR_TRIAL` 暂不自动撤销。是否公开 DBOS、发布 package 或建立 agent-callable service（智能体可调用服务）需要新的明确决定。
 
+后继观察 [`../OPEN-WEB-DISCOVERY-OBSERVATION.md`](../OPEN-WEB-DISCOVERY-OBSERVATION.md)
+已经满足第 8 项“使用真实搜索／索引观察”的证据要求，但结果是
+`TMAI-OWD-20260722-001=NOT_OBSERVED`，不是 `PASS`。GitHub 元数据修复不等于索引刷新，
+因此该结果进入 `DP-5D` 复查闸门，不改写两轮 API 会话中的 `NOT_ASSESSED` 历史字段。
+
 ## Baseline Result（基线结果）
 
 首轮受控验证已执行，见 [`../AGENT-CUSTOMER-VALIDATION-REPORT.md`](../AGENT-CUSTOMER-VALIDATION-REPORT.md)：
