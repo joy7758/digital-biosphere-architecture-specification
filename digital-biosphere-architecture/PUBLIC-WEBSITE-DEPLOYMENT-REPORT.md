@@ -5,6 +5,9 @@ title_zh: 可信多智能体基础设施公开网站部署报告
 status: pass-candidate-deployed-not-released
 observed_at: 2026-07-21T19:23:00+08:00
 public_url: https://redcrag.cn/
+github_prerelease_url: https://github.com/joy7758/digital-biosphere-architecture-specification/releases/tag/v0.1-public-website-candidate
+github_prerelease_tag: v0.1-public-website-candidate
+github_prerelease_published: true
 host: 180.76.115.193
 initial_validated_source_revision: 6e05f8d383f409ed5790390da440890fd9603c48
 deployment_state: candidate-deployed-not-released
@@ -92,3 +95,20 @@ gates. In particular:
 
 No Agent, Runtime, Permission, Digital Entity instance, or scientific Evidence
 was created by this deployment.
+
+## GitHub website candidate
+
+The same source revision is tagged and published as an explicit GitHub
+prerelease:
+
+- Tag: `v0.1-public-website-candidate`
+- Release title: `TMAI Public Website Candidate v0.1`
+- Source revision: `ec2fd06cabc36de5422019103cf8d6f092600fc8`
+- Asset: `tmai-public-website-candidate-ec2fd06.tar.gz`
+- Asset SHA-256:
+  `ae01c978d9d1940121d27a9c566b87f89d837219c5f1c2b703fcaeaad9326142`
+- GitHub state: `prerelease=true`, `draft=false`
+
+This GitHub prerelease distributes the website candidate artifact. It is not a
+Developer Preview release and does not resolve the outstanding license,
+adapter, access, or external-trial gates.

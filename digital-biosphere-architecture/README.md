@@ -45,6 +45,8 @@ public_website_url: https://redcrag.cn/
 public_website_deployment_state: candidate-deployed-not-released
 public_website_health_pass: true
 public_website_rollback_validated: true
+public_website_github_prerelease_published: true
+public_website_github_prerelease_tag: v0.1-public-website-candidate
 developer_preview_stage_accepted: true
 developer_preview_release_status: website-candidate-deployed-cross-project-clean-clone-blocked-not-released
 developer_preview_release_authorized: false
