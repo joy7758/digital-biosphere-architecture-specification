@@ -60,11 +60,12 @@ SAEE_PUBLIC_CLEAN_CLONE_PASS=true
 SAEE_DBOS_ADAPTER_CLEAN_CLONE_PASS=true
 CROSS_PROJECT_CLEAN_CLONE_PASS=true
 PUBLIC_WEBSITE_DEPLOYED=true
-PUBLIC_WEBSITE_SOURCE_REVISION=v0.1-developer-preview
+PUBLIC_WEBSITE_SOURCE_REVISION=1113130ca4213b70fcebd6247fec794854295e8c
 PUBLIC_WEBSITE_GITHUB_PRERELEASE_TAG=v0.1-public-website-candidate.7
 PUBLIC_WEBSITE_HEALTH_PASS=true
 PUBLIC_WEBSITE_ROLLBACK_VALIDATED=true
 GITHUB_WEBSITE_PRERELEASE_PUBLISHED=true
+GITHUB_FORMAL_RELEASE_PUBLISHED=true
 SAEE_PUBLIC_SAFE_EXTRACTION_AUTHORIZED=true
 PUBLIC_LICENSE_SELECTED=Apache-2.0
 DBOS_TRIAL_ACCESS_MODEL=PRIVATE_COLLABORATOR_TRIAL
@@ -75,9 +76,10 @@ DBOS_PUBLIC_SAFE_WHEEL_URL=https://github.com/joy7758/digital-biosphere-architec
 DEVELOPER_PREVIEW_RELEASE_TAG=v0.1-developer-preview
 RELEASE_DECISION_REF=architecture/ADR-022-developer-preview-release.md
 RELEASED_BY_REF=zhangbin
+RELEASE_EXECUTED=true
 ```
 
-`ATTENTION_REQUIRED` 表示存在需要人工决定、状态来源对齐和仓库拓扑处理的事项，不表示任何子项目失败或不可用。
+`PASS_WITH_DISCLOSED_LIMITATIONS` 只表示 Developer Preview v0.1 的发布闸门通过；不表示生产就绪、客户采用、完整端到端集成或开放网络自然发现通过。
 
 ## 2. Observed Core Project Snapshot（核心项目观察快照）
 
@@ -95,7 +97,7 @@ RELEASED_BY_REF=zhangbin
 | surface | 状态 | 证据边界 |
 |---|---|---|
 | DBA / DBOS / SAEE responsibility boundary | `SPECIFICATION_DEFINED` | DBA Stack、Governance、Interface 和 ADR 文档 |
-| DBA Program Governance cockpit | `BASELINE_VALIDATED_IN_WORKTREE` | 驾驶舱工件与 `PROGRAM-GOVERNANCE-BASELINE-AUDIT.md`；未 commit、未发布 |
+| DBA Program Governance cockpit | `PUBLISHED_PROGRAM_GOVERNANCE_COCKPIT` | 驾驶舱工件、ADR-022 和发布报告已进入 public `main`；不产生运行 Authority |
 | DBOS → SAEE data contract | `SCOPED_LOCAL_CONFORMANCE_PASS` | DBOS 同一 synthetic envelope 被 SAEE 只读消费；不是生产集成 |
 | SAEE → DBOS recommendation contract | `SCOPED_LOCAL_RECOMMENDATION_PASS_NO_WRITEBACK` | `HOLD` / `STOP` 是建议上下文；没有 DBOS 写回、Decision 或 Command |
 | Governance Decision implementation | `NOT_ASSESSED` | DBA 仅定义逻辑层和对象边界 |

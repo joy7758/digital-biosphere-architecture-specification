@@ -1,18 +1,16 @@
 ---
-report_id: DBA-WEB-DEPLOY-002
+report_id: DBA-WEB-DEPLOY-003
 title: Trusted Multi-Agent Infrastructure Public Website Deployment Report
 title_zh: 可信多智能体基础设施公开网站部署报告
-status: pass-candidate-deployed-not-released
-observed_at: 2026-07-22T01:54:00+08:00
+status: pass-developer-preview-v0.1-released-not-production-ready
+observed_at: 2026-07-22T03:21:54+08:00
 public_url: https://redcrag.cn/
-github_prerelease_url: https://github.com/joy7758/digital-biosphere-architecture-specification/releases/tag/v0.1-public-website-candidate.7
-github_prerelease_tag: v0.1-public-website-candidate.7
-github_prerelease_published: true
+github_release_url: https://github.com/joy7758/digital-biosphere-architecture-specification/releases/tag/v0.1-developer-preview
+github_release_tag: v0.1-developer-preview
 host: 180.76.115.193
-initial_validated_source_revision: 6e05f8d383f409ed5790390da440890fd9603c48
-current_validated_source_revision: 1c4bf032878193609e8f55f0ebd5606b8ebe2c1c
-deployment_state: candidate-deployed-not-released
-developer_preview_released: false
+current_validated_source_revision: 1113130ca4213b70fcebd6247fec794854295e8c
+deployment_state: developer-preview-v0.1-released
+developer_preview_released: true
 production_ready: false
 agent_created: false
 runtime_created: false
@@ -21,120 +19,98 @@ permission_created: false
 
 # Trusted Multi-Agent Infrastructure Public Website Deployment Report
 
-## Conclusion
+## Conclusion（结论）
 
-`https://redcrag.cn/` now serves the bilingual, agent-readable TMAI public
-website from an immutable Baidu Cloud release directory. This is a deployed
-website candidate, not the Trusted Multi-Agent Infrastructure Developer Preview
-release.
+`https://redcrag.cn/` 已从 immutable Baidu Cloud release directory（百度云不可变
+发布目录）提供 TMAI Developer Preview v0.1 的中英文、agent-readable（智能体可读）
+正式静态站点。
 
 ```text
 PUBLIC_WEBSITE_DEPLOYED=true
 PUBLIC_WEBSITE_HEALTH_PASS=true
 PUBLIC_WEBSITE_SECURITY_HEADERS_PASS=true
-PUBLIC_WEBSITE_ROLLBACK_VALIDATED=true
-DEVELOPER_PREVIEW_RELEASED=false
+PUBLIC_WEBSITE_ROLLBACK_TARGET_PRESERVED=true
+DEVELOPER_PREVIEW_RELEASED=true
 PRODUCTION_READY=false
 ```
 
-## Published routes
+正式发布不等于生产 Runtime、客户采用、Permission、Agent 或 Digital Entity 实例。
 
-| Route | Role | Result |
-|---|---|---|
-| `/` | 中文首页 | `200` |
-| `/en/` | English home | `200` |
-| `/status/` | 中文状态页 | `200` |
-| `/en/status/` | English status | `200` |
-| `/llms.txt` | LLM-readable project entry | `200` |
-| `/agent-index.json` | Agent discovery index | `200` |
-| `/status.json` | Machine-readable program status | `200` |
-| `/agent-customer-package.json` | Agent recommendation, composition and boundary package | `200` |
-| `/dbos-public-package-manifest.json` | Exact DBOS wheel validation and publication boundary | `200` |
-| `/release.json` | Active artifact source and state | `200` |
-| `/release-manifest.json` | SHA-256 artifact inventory | `200` |
-| `/og.png` | Social preview asset | `200` |
+## Published routes（公开入口）
 
-## Artifact integrity
+以下 14 个入口在正式切换后返回 HTTP `200`：
 
-The current validated deployment was generated from source revision
-`1c4bf032878193609e8f55f0ebd5606b8ebe2c1c`. The initial validated deployment
-`6e05f8d383f409ed5790390da440890fd9603c48`, the preceding public candidates
-`bc7ba49a357ebc007e2a4c9dc01178a37e74d2d8` and
-`f217831c287b9b09f0a56f54374ec16d91fa5070` and
-`6fd94a62f5eea26b7edd9d2f66a9dde99ab7832f` and
-`7fe88e8bb267b141c43f3132155714c1e110e172`, and the pre-rerun remediation candidate
-`a0f014d4bb0454f7612c6bd899e9f0b83fb0be2f` and
-`ac5374ad326e95a71a326da4b2d9ec74880c608f` remain preserved. The authoritative
-active revision is the value returned by `https://redcrag.cn/release.json`.
+| Route | Role |
+|---|---|
+| `/` | 中文首页 |
+| `/en/` | English home |
+| `/status/` | 中文状态页 |
+| `/en/status/` | English status |
+| `/llms.txt` | LLM-readable project entry |
+| `/agent-index.json` | Agent discovery index |
+| `/status.json` | Machine-readable program status |
+| `/agent-customer-package.json` | Agent recommendation and boundary package |
+| `/dbos-public-package-manifest.json` | Exact DBOS wheel manifest |
+| `/release.json` | Active release source and state |
+| `/release-manifest.json` | SHA-256 artifact inventory |
+| `/robots.txt` | Crawler policy |
+| `/sitemap.xml` | Public route index |
+| `/og.png` | Social preview asset |
 
-Every file listed in `release-manifest.json` passed an on-host SHA-256 and byte-size
-manifest verifier before Nginx activation.
+中英文页面包含各自的正式发布标识。`release.json`、`status.json`、Agent Index 和 DBOS
+manifest 的 tag、decision reference、release state 与 package URL 一致。
 
-For the current artifact, all 21 manifest entries passed byte-size and SHA-256
-verification before the atomic switch. All 12 public health routes returned
-HTTP 200 in the bounded-retry public check. One TLS connection transient was
-retried successfully and remains an operational observation rather than being
-rewritten as absent.
-
-GNU tar reported ignored `LIBARCHIVE.xattr.com.apple.provenance` extended-header
-keywords while extracting the macOS-created archive. All declared bytes and
-SHA-256 values still passed. The warning is retained as a packaging-portability
-signal and is not treated as content corruption or silently rewritten as absent.
-
-## Transport and security
-
-- HTTP redirects to `https://redcrag.cn/`.
-- The Let's Encrypt certificate is valid from `2026-07-11` to `2026-10-09`.
-- Nginx accepts TLS 1.2 and TLS 1.3.
-- HSTS, CSP, `nosniff`, frame denial, referrer policy, and permissions policy
-  headers were observed on the public HTML response.
-- SSH, Docker, fail2ban, Certbot, firewall, and certificate material were
-  preserved during the old-site cleanup.
-
-## Rollback validation
-
-The rollback mechanism was previously validated by an actual atomic switch and
-restore. The current update used the same immutable release-directory and atomic
-symlink mechanism, preserving `a0f014d…`, `bc7ba49…`, `f217831…`, `6fd94a62…`,
-`7fe88e8…`, `ac5374a…` and older verified artifacts.
+## Artifact integrity（工件完整性）
 
 ```text
-ROLLBACK_VALIDATED=true
-ROLLBACK_MECHANISM=ATOMIC_SYMLINK_SWITCH
+SOURCE_REVISION=1113130ca4213b70fcebd6247fec794854295e8c
+ACTIVE_RELEASE_DIRECTORY=/srv/tmai/releases/1113130ca4213b70fcebd6247fec794854295e8c
+SITE_ARCHIVE_BYTES=1714734
+SITE_ARCHIVE_SHA256=c85dc4eb84ceb6e5210f2ecb57ebbff696eb3dad6b508184f36894aab176bb55
+MANIFEST_FILES=21
+ON_HOST_MANIFEST_PASS=true
 ```
 
-## Truth boundary
+正式 archive（压缩包）使用 `--no-xattrs` 构建，不包含候选包曾出现的 macOS provenance
+扩展属性头。服务器逐一验证 21 个清单文件的 byte size 和 SHA-256，随后才执行原子切换。
 
-Website deployment does not satisfy the remaining Developer Preview release
-gates. In particular:
+## Transport and security（传输与安全）
 
-- `SAEE_DBOS_ADAPTER_PASS=true` only for the frozen read-only advisory path
-- `AGENT_CUSTOMER_VALIDATION_RERUN_RESULT=PASS` does not equal customer adoption or release authorization
-- all 12 rerun verdicts are boundary-aware `CONDITIONAL`, not unconditional production recommendations
-- `DBOS` remains private; the public-safe wheel is `VALIDATED_NOT_PUBLISHED`,
-  with no public download URL, Runtime or API claimed
-- `OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY`; GitHub's full new description finds the project, while canonical English／Chinese names and public-search queries still do not
-- dependency risk `R-015` review is complete with 0 high／critical and 2 disclosed moderate residuals
-- no GitHub Developer Preview Release exists
+- HTTP 重定向至 `https://redcrag.cn/`；
+- Nginx 配置检查通过且服务为 `active`；
+- HSTS、CSP、`nosniff`、frame denial、referrer policy 和 permissions policy 保留；
+- 系统、SSH、证书、防火墙和安全配置未修改；
+- 公网多路检查观察到多次瞬时 `SSL_ERROR_SYSCALL`，有界重试后全部通过。
 
-No Agent, Runtime, Permission, Digital Entity instance, or scientific Evidence
-was created by this deployment.
+## Rollback（回滚）
 
-## GitHub website candidate
+正式站点通过 atomic symlink switch（原子符号链接切换）激活。前一候选版本仍保留：
 
-The same source revision is tagged and published as an explicit GitHub
-prerelease:
+```text
+PREVIOUS_RELEASE=/srv/tmai/releases/1c4bf032878193609e8f55f0ebd5606b8ebe2c1c
+ROLLBACK_MECHANISM=ATOMIC_SYMLINK_SWITCH
+PRIOR_ACTUAL_ROLLBACK_VALIDATION=true
+```
 
-- Tag: `v0.1-public-website-candidate.7`
-- Release title: `Trusted Multi-Agent Infrastructure public website candidate 7`
-- Source revision: `1c4bf032878193609e8f55f0ebd5606b8ebe2c1c`
-- Asset: `tmai-public-website-candidate-1c4bf032878193609e8f55f0ebd5606b8ebe2c1c.tar.gz`
-- Asset bytes: `1714270`
-- Asset SHA-256:
-  `6649e47e9850905b83fbf5e1a405aa2691991813cee0bc41c35e3b86b0376aba`
-- GitHub state: `prerelease=true`, `draft=false`
+既有候选部署曾完成实际切回和恢复；本次复用相同机制并保留精确旧目标，没有为了报告
+再次制造线上回滚。
 
-This GitHub prerelease distributes the website candidate artifact. It is not a
-Developer Preview release and does not resolve `DQ-016`, open-web
-discovery or Human Release Decision gates. Previous website
-candidate prereleases remain historical and have not been retagged.
+## GitHub release binding（GitHub 发布绑定）
+
+- Release：<https://github.com/joy7758/digital-biosphere-architecture-specification/releases/tag/v0.1-developer-preview>
+- `draft=false`
+- `prerelease=false`
+- Tag commit：`1113130ca4213b70fcebd6247fec794854295e8c`
+- DBOS wheel SHA-256：`edf92e548860384b1416a612a7e319e0d994bb324f8621847d0d154624ae8f09`
+- DBOS repository visibility：`PRIVATE`
+
+候选 tag `v0.1-public-website-candidate.7` 及更早候选版本继续作为历史记录，不被改写成
+正式 Developer Preview。
+
+## Truth boundary（事实边界）
+
+- `OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY`；
+- `R-015` 为 0 critical、0 high、2 disclosed moderate advisories；
+- DBOS 整仓不公开，只公开 exact public-safe wheel；
+- 没有公共 Runtime、托管 API、Permission grant 或生产 SLA；
+- 没有创建 Agent、Runtime、Entity、Capability instance、Permission 或科研 Evidence。
