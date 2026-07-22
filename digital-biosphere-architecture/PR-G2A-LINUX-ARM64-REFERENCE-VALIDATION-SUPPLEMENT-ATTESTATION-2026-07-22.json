@@ -1,0 +1,84 @@
+{
+  "schema_version": "0.1",
+  "attestation_id": "TMAI-PR-G2A-LINUX-ARM64-SUPPLEMENT-ATTESTATION-20260722-004",
+  "observed_at": "2026-07-23T01:20:00+08:00",
+  "remote_binding": {
+    "repository": "https://github.com/joy7758/digital-biosphere-architecture-specification.git",
+    "branch": "codex/production-observability-baseline",
+    "attested_predecessor_commit": "90b3966a5603b6db3c04e581af4a3063822c3250",
+    "attested_predecessor_tree": "ae66a97da8f4172f375241370c404319cdecc5be",
+    "remote_head_matched": true,
+    "clean_before_and_after": true
+  },
+  "supplement_bindings": {
+    "markdown": {
+      "path": "PR-G2A-LINUX-ARM64-REFERENCE-VALIDATION-SUPPLEMENT-2026-07-22.md",
+      "bytes": 3047,
+      "sha256": "3dfc5bb279d4db885ab5ff73fa1c36949283a51a99924452a63422daf5d3b6ad"
+    },
+    "json": {
+      "path": "PR-G2A-LINUX-ARM64-REFERENCE-VALIDATION-SUPPLEMENT-2026-07-22.json",
+      "bytes": 3904,
+      "sha256": "6560b33b81063cae574acbc9828c921bc978910ea4a2570701fd1609989a8a6d"
+    }
+  },
+  "site_supply_chain_binding": {
+    "package_json_sha256": "e78a322a1580090e4dab22458d4e1df9572d5ae66557793a4cd0d04efd0ae136",
+    "package_lock_json_sha256": "4f179b1107a3a3f18aa906ebd19f952a9a4d190b1ad7123cba0a6884e3a312fd",
+    "npm_ci": "PASS",
+    "npm_audit": {
+      "critical": 0,
+      "high": 0,
+      "moderate": 0,
+      "low": 0,
+      "total": 0
+    },
+    "build": "PASS",
+    "tests": "11/11 PASS",
+    "lint": "PASS",
+    "environment": {
+      "node": "v26.0.0",
+      "npm": "11.12.1",
+      "platform": "Darwin 25.5.0 arm64"
+    }
+  },
+  "documentation_validation": {
+    "json_files_parsed": 68,
+    "markdown_files": 169,
+    "local_links": 869,
+    "missing_links": 0
+  },
+  "binding_model": {
+    "type": "NON_CYCLIC_SUCCESSOR_ATTESTATION",
+    "attests_predecessor_commit_only": true,
+    "self_hash_included": false
+  },
+  "decision_state": {
+    "selected_token": null,
+    "decided_by_ref": null,
+    "supplement_remote_attested": true,
+    "pr_g2a_approved": false,
+    "dq_019_status": "BLOCKED_INPUT",
+    "dq_020_status": "BLOCKED_INPUT",
+    "dq_021_status": "BLOCKED_INPUT",
+    "full_pr_g2_ready": false,
+    "production_ready": false
+  },
+  "effects": {
+    "pr_created": false,
+    "merge_performed": false,
+    "main_modified": false,
+    "release_created": false,
+    "deployment_performed": false,
+    "collector_built": false,
+    "listener_created": false,
+    "database_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "saee_output_created": false,
+    "gate_state_changed": false
+  }
+}
