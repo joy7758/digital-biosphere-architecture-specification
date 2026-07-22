@@ -3,7 +3,7 @@ document_id: DBA-RISK-BLOCKER-REGISTER-0.1
 title: Digital Biosphere Program Risk and Blocker Register v0.1
 title_zh: 数字生物圈项目群风险与阻塞台账 v0.1
 status: active-risk-register
-as_of_date: 2026-07-22
+as_of_date: 2026-07-23
 risk_acceptance_authority_assigned: true
 ---
 
@@ -61,7 +61,7 @@ risk_acceptance_authority_assigned: true
 | `R-039` | `CRITICAL` | Collector internal metric/log 缺失、改名、stale、counter reset、mixed version 或共享失败路径被解释成“零失败／健康”，dashboard、health 或 hop-local `sent` 进而被用来关闭生产闸门 | Collector internal telemetry 的配置 schema、metric projection 和 log 格式存在稳定性边界；WAL、listener、config drift 与端到端交付还需要独立来源；当前没有 query/threshold/alert/route/runbook 或直接测量 | strict operational-evidence profile 强制 12 observation/6 SLI、OTLP↔Prometheus naming/stability、UNKNOWN/no-zero-fill、counter lifecycle split、独立 self-observation/blackbox/storage/drift、composite readiness、no-data alert 与 delivery reconciliation；45/45 negatives 通过但实现和测量仍阻塞 | `CONTROL_DEFINED_DQ_020_BLOCKED_NO_MEASUREMENT` |
 | `R-040` | `CRITICAL` | 已记录 reference adoption、Git freeze、bounded implementation authorization 和未来 blanket wording 互相替代 | 六项 exact token、Authority 和效果已独立记录；DBA/DBOS remote receipts 已验证；未来版本、部署和外部资源仍没有 decision | registry 与 gate records 分开 recommendation、review、approval、execution；PR-G2A 保持未批准 | `MITIGATED_CURRENT_GATES_REMAIN_EXPLICIT` |
 | `R-041` | `HIGH` | 公共 validation result / DTO 被未来 persistence adapter 当作 authority token，绕过 canonical revalidation | DQ-018 独立审查曾复现 forged accepted decision；SQLite store 已改为重新验证 normalized envelope，并增加负例 | PR-G2B 适配器合同必须规定 validation object 不是 capability/permission/authority token，并复用同一负例 | `MITIGATED_CURRENT_SLICE_RECHECK_REQUIRED_AT_PR_G2B` |
-| `R-042` | `HIGH` | 周期 integrity scan 一次性 materialize 全部 admission records，使长期运行内存随记录量增长并形成可用性风险 | predecessor `fdda745c…` 一小时 run 峰值 RSS 192,724,992；`3a63161…` 改为 cursor streaming；`57c7b9e…` 在固定 Linux arm64 环境完成 3600.033s、17,410 ops、59/59 周期检查和最终检查 PASS，Linux `ru_maxrss` 归一化 50,409,472 bytes，errors `{}` | 保留 macOS 与 Linux arm64 精确 artifact；只缓解两个固定 SQLite reference 环境；Linux x86_64、Windows、production backend 和 SLO 仍须独立 failure/memory revalidation | `MITIGATED_MACOS_AND_LINUX_ARM64_REFERENCE_OTHER_PLATFORMS_REQUIRED` |
+| `R-042` | `HIGH` | 周期 integrity scan 一次性 materialize 全部 admission records，使长期运行内存随记录量增长并形成可用性风险 | `57c7b9e…` 在固定 Linux arm64 原生环境 3600.033s / 59/59 + final PASS；`d62b411…` 的 amd64 模拟环境 3600.144s / 13,171 ops / 59/59 + final PASS / errors `{}`，但 32-worker `TA-P003` 有 426 个 `TA_STORAGE_UNAVAILABLE` | 保留 macOS、Linux arm64 原生和 amd64 模拟精确 artifact；模拟材料不缓解原生 x86_64；须在原生 Linux x86_64 复核并发错误，并继续 Windows、production backend、SLO failure/memory revalidation | `MITIGATED_MACOS_AND_LINUX_ARM64_NATIVE_X86_64_EMULATED_PARTIAL_NATIVE_X86_64_REQUIRED` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -91,7 +91,7 @@ risk_acceptance_authority_assigned: true
 | `B-010` | DBOS 没有已发布的公开 package、API 或面向 AI agent 的受控可调用路径 | `ADR-022`、exact GitHub Release asset、匿名 SHA-256 和隔离安装复验 | 只解除有界 package 获取阻塞；没有公共 Runtime、托管 API、Permission 或整仓公开 |
 | `B-011` | 规范名称与公开网络仍未命中 TMAI | `ADR-022` 为 Developer Preview v0.1 显式接受并继续披露 `PARTIAL_METADATA_ONLY` | 只解除 v0.1 发布阻塞；发现事实没有升级，索引刷新后仍需复查 |
 | `B-012` | TMAP、OTel Profile 和 Production SLO 未映射到 DBOS/SAEE 当前实现 | `PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`：remote source、development observation、supported/partial/missing、duplicate authority 和 exact slice 候选已记录；`PR-G1=PASS_READ_ONLY_MAPPING` | 只解除 mapping blocker；`B-013`、`B-014` 继续阻止实现符合性、Pilot 和生产声明 |
-| `B-019` | production architecture baseline 和 DQ-018 起点尚未远端复验 | DBA predecessor 与 hardened successor packet 均有非循环 remote attestation；DBOS current source `57c7b9e…` / receipt `1c8f3d9…` / manifest `d0951d6c…` 已完成 Linux arm64 reference validation 与 receipt remote clean clone | 只关闭 remote provenance blocker 并局部缓解跨平台未知；不产生 PR-G2A approval 或 production authorization |
+| `B-019` | production architecture baseline 和 DQ-018 起点尚未远端复验 | DBA predecessor 与 Linux arm64 supplement 已有非循环 remote attestation；DBOS current source `d62b411…` / receipt `8c6ddd7…` / manifest `6d1bcbbf…` 的 x86_64 模拟 `PARTIAL` 回执完成 remote clean clone | 只关闭 remote provenance blocker，并保留模拟限制；不证明原生 x86_64，不产生 PR-G2A approval 或 production authorization |
 
 | blocker_id | 原阻塞 | 解除证据 | 保留边界 |
 |---|---|---|---|

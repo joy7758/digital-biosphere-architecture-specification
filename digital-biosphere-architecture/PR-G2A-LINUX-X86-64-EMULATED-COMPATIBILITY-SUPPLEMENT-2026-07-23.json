@@ -1,0 +1,111 @@
+{
+  "schema_version": "0.1",
+  "supplement_id": "TMAI-PR-G2A-LINUX-X86-64-EMULATED-SUPPLEMENT-20260723-005",
+  "observed_at": "2026-07-23T03:25:44+08:00",
+  "decision_reference": "DQ-018",
+  "review_gate": "PR-G2A",
+  "result_semantics": "REFERENCE_ONLY_EMULATED_COMPATIBILITY_SUPPLEMENT_NOT_NATIVE_NOT_DECISION_NOT_GATE_APPROVAL_NOT_PRODUCTION_READY",
+  "predecessor_review_packet": {
+    "markdown": "PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.md",
+    "json": "PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.json",
+    "linux_arm64_supplement": "PR-G2A-LINUX-ARM64-REFERENCE-VALIDATION-SUPPLEMENT-2026-07-22.json",
+    "linux_arm64_attestation": "PR-G2A-LINUX-ARM64-REFERENCE-VALIDATION-SUPPLEMENT-ATTESTATION-2026-07-22.json",
+    "history_preserved": true
+  },
+  "dbos_remote_binding": {
+    "repository": "https://github.com/joy7758/digital-biosphere-os.git",
+    "branch": "codex/telemetry-admission-foundation",
+    "implementation_source_commit": "d62b411845b18af3ec79af67622666e96d1baed3",
+    "implementation_tree": "109b2a9dcad86d1ff882ac472394a140f0dc5169",
+    "implementation_manifest_sha256": "6d1bcbbfc2cba1add823d390e013d4c755047f1147e338a0a59bf8e4bac0d6e4",
+    "implementation_manifest_file_count": 58,
+    "implementation_manifest_bytes": 723949,
+    "receipt_commit": "8c6ddd7b5c790214cea9a42a34ed9f4df44fda2b",
+    "receipt_tree": "cfc1919bec82ea65159cf8997b0e96aff4c3c0be",
+    "fresh_remote_clean_clone": true,
+    "remote_head_matched_receipt_commit": true,
+    "clean_before_and_after": true,
+    "report_markdown": {
+      "path": "reports/telemetry-admission-foundation/DBOS-PR-2A-LINUX-X86-64-EMULATED-COMPATIBILITY-VALIDATION-2026-07-23.md",
+      "bytes": 7646,
+      "sha256": "ee645cec2fda7d1ad708dcf67cb823ea20ec520e8d871ea5e23cd63d7f8ed118"
+    },
+    "report_json": {
+      "path": "reports/telemetry-admission-foundation/DBOS-PR-2A-LINUX-X86-64-EMULATED-COMPATIBILITY-VALIDATION-2026-07-23.json",
+      "bytes": 9075,
+      "sha256": "5f987f119fa2ae2b9601cb63563c893d68c2759770b2b23de176d53f9c33cc9c"
+    },
+    "public_safe_raw_artifact_file_count": 25
+  },
+  "validation": {
+    "execution_mode": "EMULATED_LINUX_AMD64_ON_ARM64_HOST",
+    "native_linux_x86_64_validated": false,
+    "all_tests": "534/534 PASS",
+    "focused_telemetry_tests": "200/200 PASS",
+    "validators": {
+      "total": 35,
+      "passed": 30,
+      "external_source_fail_closed": 5,
+      "unexpected_failures": 0
+    },
+    "ruff_findings": 0,
+    "ruff_format": "PASS",
+    "bandit_scanned_loc": 5363,
+    "bandit_findings": 0,
+    "pip_audit_runtime_dependencies": 7,
+    "pip_audit_known_vulnerabilities": 0,
+    "characterization_overall_status": "PARTIAL",
+    "ta_p003_errors": {"TA_STORAGE_UNAVAILABLE": 426},
+    "ta_p005_wall_seconds": 3600.143806,
+    "ta_p005_operations": 13171,
+    "ta_p005_periodic_integrity_checks": "59/59 PASS",
+    "ta_p005_final_integrity": "PASS",
+    "ta_p005_errors": {},
+    "authority_effects_all_false": true
+  },
+  "agent_recommendation": {
+    "status": "CONDITIONALLY_RECOMMENDED",
+    "recommended_as": "OFFLINE_EMULATED_AMD64_COMPATIBILITY_AND_FAILURE_DISCOVERY_MATERIAL",
+    "not_recommended_as": "NATIVE_X86_64_OR_PRODUCTION_READINESS_EVIDENCE"
+  },
+  "risk_effect": {
+    "risk_reference": "R-042",
+    "effect": "ADDITIONAL_EMULATED_AMD64_COMPATIBILITY_MATERIAL_ONLY",
+    "risk_closed": false,
+    "native_linux_x86_64_mitigated": false,
+    "remaining": [
+      "native Linux x86_64",
+      "Windows",
+      "production backend environments",
+      "independent human security review",
+      "human rollback switch exercise"
+    ]
+  },
+  "decision_state": {
+    "selected_token": null,
+    "decided_by_ref": null,
+    "pr_g2a_approved": false,
+    "dq_019_status": "BLOCKED_INPUT",
+    "dq_020_status": "BLOCKED_INPUT",
+    "dq_021_status": "BLOCKED_INPUT",
+    "full_pr_g2_ready": false,
+    "production_ready": false
+  },
+  "effects": {
+    "pr_created": false,
+    "merge_performed": false,
+    "main_modified": false,
+    "release_created": false,
+    "deployment_performed": false,
+    "collector_built": false,
+    "listener_created": false,
+    "database_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "saee_output_created": false,
+    "gate_state_changed": false
+  }
+}
