@@ -1,0 +1,86 @@
+{
+  "schema_version": "0.1",
+  "attestation_id": "TMAI-PR-G2A-PACKET-ATTESTATION-20260722-001",
+  "observed_at": "2026-07-22T20:38:36+08:00",
+  "remote_binding": {
+    "repository": "https://github.com/joy7758/digital-biosphere-architecture-specification.git",
+    "branch": "codex/production-observability-baseline",
+    "attested_predecessor_commit": "7eea3d0e49e0ef2ab15170a3b5dcf83fd67e5f35",
+    "attested_predecessor_tree": "f21c0b5018da37439b2a76d6c68e579c427b0a19",
+    "remote_head_matched": true,
+    "clean_before_and_after": true
+  },
+  "packet_bindings": {
+    "markdown": {
+      "path": "PR-G2A-TELEMETRY-ADMISSION-HUMAN-REVIEW-PACKET.md",
+      "bytes": 5533,
+      "sha256": "cb0cbdb544f38731dd40307114572828ce72b06f37917d43d6a34a4aa496a0ce"
+    },
+    "json": {
+      "path": "PR-G2A-TELEMETRY-ADMISSION-HUMAN-REVIEW-PACKET.json",
+      "bytes": 2913,
+      "sha256": "3979eccd2d20d246b42308ecdd9718083a959a29bff28f9451aa58fd5d63c2a9"
+    }
+  },
+  "site_supply_chain_binding": {
+    "package_json_sha256": "e78a322a1580090e4dab22458d4e1df9572d5ae66557793a4cd0d04efd0ae136",
+    "package_lock_json_sha256": "4f179b1107a3a3f18aa906ebd19f952a9a4d190b1ad7123cba0a6884e3a312fd",
+    "npm_audit": {"critical": 0, "high": 0, "moderate": 0, "low": 0, "total": 0},
+    "npm_ci": "PASS",
+    "build": "PASS",
+    "tests": "11/11 PASS",
+    "lint": "PASS",
+    "environment": {"node": "v26.0.0", "npm": "11.12.1", "platform": "Darwin-arm64"}
+  },
+  "documentation_validation": {
+    "json_files_parsed": 64,
+    "markdown_files": 163,
+    "local_links": 856,
+    "missing_links": 0
+  },
+  "dbos_bindings": {
+    "source_commit": "5c52c1c2f44767c0b13b4ac9670425721b9ea0dd",
+    "receipt_commit": "aa6440e83f35cc63483f487367ccb573bba7681a",
+    "implementation_manifest_sha256": "fdda745c3907e35ac92769740f07afc81483be674568879a3c0314c2a09baa51",
+    "implementation_manifest_file_count": 56,
+    "implementation_manifest_bytes": 714335,
+    "reproducible_wheel_sha256": "240828497ab265d3703f60ce5d71c2d49bc623c092ad607d8b2f8762ffc42e41",
+    "tests": "531/531 PASS",
+    "telemetry_tests": "197/197 PASS",
+    "validators": "35/35 PASS",
+    "authorized_otel_cases": "68/68 PASS",
+    "dq_020_cases_blocked": 23
+  },
+  "decision_state": {
+    "agent_recommendation": "APPROVE_DQ_018_OFFLINE_TELEMETRY_ADMISSION_REFERENCE_SLICE",
+    "selected_token": null,
+    "decided_by_ref": null,
+    "packet_attested_remote": true,
+    "pr_g2a_ready_for_human_decision": true,
+    "pr_g2a_approved": false,
+    "dq_019_status": "BLOCKED_INPUT",
+    "full_pr_g2_ready": false,
+    "production_ready": false
+  },
+  "binding_model": {
+    "type": "NON_CYCLIC_SUCCESSOR_ATTESTATION",
+    "attests_predecessor_commit_only": true,
+    "self_hash_included": false
+  },
+  "effects": {
+    "pr_created": false,
+    "merge_performed": false,
+    "main_modified": false,
+    "release_created": false,
+    "deployment_performed": false,
+    "collector_built": false,
+    "listener_created": false,
+    "database_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "saee_output_created": false
+  }
+}

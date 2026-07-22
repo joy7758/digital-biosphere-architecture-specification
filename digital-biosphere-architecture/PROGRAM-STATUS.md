@@ -2,12 +2,12 @@
 document_id: DBA-PROGRAM-STATUS-2026-07-22
 title: Digital Biosphere Program Status Snapshot
 title_zh: 数字生物圈项目群状态快照
-status: observed-governance-snapshot-dq-018-implemented-pr-g2a-review-ready
+status: observed-governance-snapshot-dq-018-implemented-pr-g2a-packet-remote-attested
 observed_at: 2026-07-22
 freshness: point-in-time
 release_status: developer-preview-v0.1-released-not-production-ready
 developer_preview_status: released-exact-public-safe-wheel-open-web-partial-metadata-only
-production_readiness_status: dq-018-offline-slice-implemented-pr-g2a-review-ready-full-pr-g2-blocked-not-production-ready
+production_readiness_status: dq-018-offline-slice-implemented-pr-g2a-packet-remote-attested-full-pr-g2-blocked-not-production-ready
 source_policy: direct-read-only-observation
 ---
 
@@ -20,7 +20,7 @@ PROGRAM_ID=DIGITAL_BIOSPHERE
 PROGRAM_PHASE=TRUSTED_MULTI_AGENT_INFRASTRUCTURE_PRODUCTION_BASELINE_FREEZE
 PROGRAM_HEALTH=PASS_WITH_PRODUCTION_GATES_OPEN
 CURRENT_MILESTONE=DBOS-PR-G2A-HUMAN-REVIEW
-CURRENT_ARCHITECTURE_MILESTONE=DQ-018-OFFLINE-ADMISSION-SLICE-REMOTE-VALIDATED
+CURRENT_ARCHITECTURE_MILESTONE=DQ-018-OFFLINE-ADMISSION-SLICE-REMOTE-ATTESTED
 CURRENT_GOVERNANCE_GATE=PR-G2A-HUMAN-REVIEW
 CORE_PROJECTS=3
 PILOT_PROJECTS=1
@@ -234,6 +234,7 @@ DQ_018_EXACT_SOURCE_COMMIT=5c52c1c2f44767c0b13b4ac9670425721b9ea0dd
 DQ_018_RECEIPT_COMMIT=aa6440e83f35cc63483f487367ccb573bba7681a
 DQ_018_IMPLEMENTATION_MANIFEST=sha256:fdda745c3907e35ac92769740f07afc81483be674568879a3c0314c2a09baa51
 PR_G2A_READY_FOR_HUMAN_REVIEW=true
+PR_G2A_PACKET_REMOTE_ATTESTED=true
 PR_G2A_HUMAN_REVIEW_APPROVED=false
 FULL_PR_G2_READY=false
 PRODUCTION_IMPLEMENTATION_SEQUENCE_DEFINED=true
