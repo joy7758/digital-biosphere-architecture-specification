@@ -1,0 +1,103 @@
+{
+  "schema_version": "0.1",
+  "supplement_id": "TMAI-PR-G2A-LINUX-ARM64-SUPPLEMENT-20260722-003",
+  "observed_at": "2026-07-23T01:12:34+08:00",
+  "decision_reference": "DQ-018",
+  "review_gate": "PR-G2A",
+  "result_semantics": "REFERENCE_VALIDATION_SUPPLEMENT_NOT_DECISION_NOT_GATE_APPROVAL_NOT_PRODUCTION_READY",
+  "predecessor_review_packet": {
+    "markdown": "PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.md",
+    "json": "PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.json",
+    "remote_attestation": "PR-G2A-HARDENED-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.json",
+    "history_preserved": true
+  },
+  "dbos_remote_binding": {
+    "repository": "https://github.com/joy7758/digital-biosphere-os.git",
+    "branch": "codex/telemetry-admission-foundation",
+    "implementation_source_commit": "57c7b9e55dfcab84e81e7c5f61e9d8ea61045dbe",
+    "implementation_tree": "a044e54841f856df49e682f8a7a07d9b64a0db8b",
+    "implementation_manifest_sha256": "d0951d6c6252109261f7d2806082b850741df3d1decc4ff5c6418602dff69710",
+    "implementation_manifest_file_count": 57,
+    "implementation_manifest_bytes": 720322,
+    "receipt_commit": "1c8f3d949f7b9686567b43bc8ebc316597ce9cfc",
+    "receipt_tree": "11ee76e503db9046c5bc28d58ec16c0e08ab32f1",
+    "fresh_remote_clean_clone": true,
+    "remote_head_matched_receipt_commit": true,
+    "clean_before_and_after": true,
+    "report_markdown": {
+      "path": "reports/telemetry-admission-foundation/DBOS-PR-2A-LINUX-ARM64-CROSS-PLATFORM-VALIDATION-2026-07-22.md",
+      "bytes": 6330,
+      "sha256": "e9143932313851e654ec8207a4400f8a63c5e90b2d9f9437929bd34dbc6485c6"
+    },
+    "report_json": {
+      "path": "reports/telemetry-admission-foundation/DBOS-PR-2A-LINUX-ARM64-CROSS-PLATFORM-VALIDATION-2026-07-22.json",
+      "bytes": 8570,
+      "sha256": "bd352df7986bd6197a9d387950c4c0f8c7004aed3850ddbe89af985bf1c6e54c"
+    },
+    "public_safe_raw_artifact_file_count": 25
+  },
+  "validation": {
+    "environment": "CPython 3.12.13 Linux glibc arm64",
+    "all_tests": "533/533 PASS",
+    "focused_telemetry_tests": "199/199 PASS",
+    "validators": {
+      "total": 35,
+      "passed": 30,
+      "external_source_fail_closed": 5,
+      "unexpected_failures": 0
+    },
+    "ruff_findings": 0,
+    "ruff_format": "PASS",
+    "bandit_scanned_loc": 5360,
+    "bandit_findings": 0,
+    "pip_audit_runtime_dependencies": 7,
+    "pip_audit_known_vulnerabilities": 0,
+    "characterization_cases": "TA-P001_TO_TA-P005_PASS",
+    "characterization_result_semantics": "CHARACTERIZATION_NOT_SLO",
+    "ta_p005_wall_seconds": 3600.032738,
+    "ta_p005_operations": 17410,
+    "ta_p005_periodic_integrity_checks": "59/59 PASS",
+    "ta_p005_final_integrity": "PASS",
+    "ta_p005_errors": {},
+    "authority_effects_all_false": true
+  },
+  "risk_effect": {
+    "risk_reference": "R-042",
+    "effect": "PARTIAL_MITIGATION_LINUX_ARM64_FIXED_REFERENCE_ONLY",
+    "risk_closed": false,
+    "remaining": [
+      "Linux x86_64",
+      "Windows",
+      "production backend environments",
+      "independent human security review",
+      "human rollback switch exercise"
+    ]
+  },
+  "decision_state": {
+    "selected_token": null,
+    "decided_by_ref": null,
+    "pr_g2a_approved": false,
+    "dq_019_status": "BLOCKED_INPUT",
+    "dq_020_status": "BLOCKED_INPUT",
+    "dq_021_status": "BLOCKED_INPUT",
+    "full_pr_g2_ready": false,
+    "production_ready": false
+  },
+  "effects": {
+    "pr_created": false,
+    "merge_performed": false,
+    "main_modified": false,
+    "release_created": false,
+    "deployment_performed": false,
+    "collector_built": false,
+    "listener_created": false,
+    "database_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "saee_output_created": false,
+    "gate_state_changed": false
+  }
+}

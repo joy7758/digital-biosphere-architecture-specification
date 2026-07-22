@@ -71,7 +71,7 @@ Developer Preview 发布历史保持不变。当前新增的 Production Readines
 |---|---|---|---|---|---|
 | `PR-0` | 冻结 Trusted Multi-Agent Protocol（可信多智能体协议）与生产可观测性架构基线 | DBA | `GATE_PASSED_REMOTE_BASELINE_VERIFIED` | content commit `264f317...` / tree `b83f25d...`、OpenTelemetry profiles、56/46/45/48-case contracts、`ADR-023`–`ADR-028`、六项 exact decision 与远端 freeze receipt | 保持基线；不授权 Collector build/config/deploy 或 production claim |
 | `PR-1` | 建立 DBOS/SAEE production implementation mapping（生产实现映射） | 子项目提供事实；DBA 审查边界 | `GATE_PASSED_READ_ONLY_MAPPING` | `PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`：remote commits、334 tests、34 validators、8 adapter tests、OTel capability inventory、缺口与重复权威审查 | `DQ-018` decision packet 和两路 next-step recommendation 已就绪，等待人类决策 |
-| `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `PR_G2A_HARDENED_PACKET_READY_G2B_G2T_G2I_G2C_BLOCKED` | DQ-018 exact source `3a63161…`、receipt `bf1b3b6…`、532/532 tests、198/198 telemetry tests、35/35 validators、OTel authorized 68/68、TA-P001—P005 PASS、streaming integrity hardening | 审查 PR-G2A；未批准前不进入 DQ-019/PR-G2B；完整 PR-G2=false |
+| `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `PR_G2A_LINUX_ARM64_SUPPLEMENT_READY_G2B_G2T_G2I_G2C_BLOCKED` | DQ-018 exact source `57c7b9e…`、receipt `1c8f3d9…`、533/533 tests、199/199 telemetry tests、30 validators PASS + 5 external-source fail closed、OTel authorized 68/68、TA-P001—P005 PASS、Linux arm64 remote receipt | 审查 PR-G2A；未批准前不进入 DQ-019/PR-G2B；完整 PR-G2=false |
 | `PR-3` | 建立 OpenTelemetry conformance and operations（符合性与运维） | DBOS + deployment infrastructure | `NOT_STARTED` | 版本锁定、exact custom-minimal Collector build/config/runtime/topology 绑定、deployment + operational-evidence profiles 的 synthetic-input/immutable-rollout/metric-stability/self-observation/no-data-alert/composite-readiness/delivery-reconciliation obligations、56/56 OTLP、46/46 semantic、45/45 Schema/Resource/Entity provenance 与 48/48 Collector distribution cases 的四个独立结果绑定 | 不得创建第五套重复目录；不得把 Telemetry 自动升级为 Evidence/Truth，也不得把 profile/schema/health/dashboard/binary startup 当实现、测量或生产证据 |
 | `PR-4` | 验证 SAEE production adapter isolation（生产适配隔离） | SAEE | `NOT_STARTED` | 只读消费、版本兼容、失败关闭、无 DBOS 写回、无 Decision/Permission | 不调用未获准算法或生成 Authority |
 | `PR-5` | 通过 Security / Recovery / Capacity gates（安全、恢复与容量闸门） | DBOS + DBA review | `NOT_STARTED` | threat model、secret handling、data minimization、backup/restore、灾难恢复、容量与队列压力证据 | 所有 critical gap 关闭后才可进入 Pilot |
@@ -156,11 +156,13 @@ DQ_018_IMPLEMENTATION_AUTHORIZED=true
 DQ_018_IMPLEMENTATION_MAY_START=false
 DQ_018_IMPLEMENTATION_MAY_START_REASON=ALREADY_COMPLETED_EXACT_SLICE_NO_NEW_SCOPE_AUTHORIZED
 DQ_018_IMPLEMENTATION_COMPLETE=true
-DQ_018_SOURCE_COMMIT=3a63161d3e04d785b4b04feadd4a0712bf6314fc
-DQ_018_RECEIPT_COMMIT=bf1b3b6ebf2c905f94c8f4ddaf447964a07dd183
-DQ_018_IMPLEMENTATION_MANIFEST=sha256:b6c03faf50bfab4ce25edaeb39b7ae36d2525df32519f82a8108c164162bd9fc
+DQ_018_SOURCE_COMMIT=57c7b9e55dfcab84e81e7c5f61e9d8ea61045dbe
+DQ_018_RECEIPT_COMMIT=1c8f3d949f7b9686567b43bc8ebc316597ce9cfc
+DQ_018_IMPLEMENTATION_MANIFEST=sha256:d0951d6c6252109261f7d2806082b850741df3d1decc4ff5c6418602dff69710
 DQ_018_STREAMING_INTEGRITY_HARDENED=true
 DQ_018_TA_P001_TO_TA_P005_PASS=true
+DQ_018_LINUX_ARM64_REFERENCE_VALIDATED=true
+DQ_018_LINUX_ARM64_REMOTE_RECEIPT_VERIFIED=true
 PR_G2A_READY_FOR_HUMAN_REVIEW=true
 PR_G2A_HUMAN_REVIEW_APPROVED=false
 FULL_PR_G2_READY=false
@@ -196,7 +198,8 @@ PRODUCTION_READY=false
 `PR-G2A` exact offline slice，并在明确批准后收敛 `DQ-019` 的真实候选输入。
 
 Developer Preview 已发布，`PR-G1` 已完成，DQ-022–025 与 ADR-024 已采纳，DQ-018
-离线实现切片也已远端验证。当前 gate 是 `PR-G2A Human Review`。后继 production
+离线实现切片也已在固定 Linux arm64 参考环境完成远端绑定验证。当前 gate 是
+`PR-G2A Human Review`。后继 production
 persistence、OTLP/Collector staging、Identity/Evidence integration 和 SAEE/Pilot 仍按
 [`architecture/production-implementation-sequence.md`](architecture/production-implementation-sequence.md)
 分阶段独立决定；任何 build、configuration、deployment、真实 Pilot 或生产声明都不能由
