@@ -90,18 +90,20 @@
     "existing_resource_designated_for_production": false
   },
   "dq_018_input": {
-    "source_state": "UNCOMMITTED_LOCAL_WORKTREE",
+    "source_state": "COMMITTED_REMOTE_BRANCH_CLEAN_CLONE_VALIDATED",
     "base_commit": "cd3f867c4379ec555c45e7d554088ad12ce08a24",
-    "exact_source_commit": null,
-    "implementation_manifest_sha256": "f09e99b95a3332d40abc933eaee35ea8a646b11d330ffaa5213ee0bb28f339b4",
+    "exact_source_commit": "a3e491c954e911d84baa09fd6d9466fb80280941",
+    "receipt_commit": "5f437b0719936470535211b796af3e9722e8f11b",
+    "implementation_manifest_sha256": "9a8c3546a925812f0da86dad6cd09aa4680b2b29b734cd07dcfa9bc51f8dfe95",
     "tests": "523/523",
     "telemetry_tests": "189/189",
     "validators": "35/35",
-    "pr_g2_criteria": "9/10",
+    "pr_g2_criteria": "10/10_READY_FOR_HUMAN_REVIEW_NOT_APPROVED",
+    "exact_source_and_clean_clone_input_complete": true,
     "satisfies_dq_019_implementation_precondition": false
   },
   "required_inputs": [
-    "exact DBOS source commit and clean-clone receipts",
+    "PR-G2 Human Review approval for the exact DBOS source and receipts",
     "managed-cloud hosting and data-residency policy",
     "exact topology and failure-domain design",
     "exact engine, version and SKU candidate profiles",

@@ -101,20 +101,23 @@ production claim。供应商 SLA 也不能代替 DBOS 自己的 SLO 测量。
 
 ## 6. DQ-018 Direct Evidence Binding（DQ-018 直接证据绑定）
 
-DBOS 隔离工作树的当前本地 review packet（审查包）记录：
+DBOS 远端精确源码与 clean-clone review packet（干净检出审查包）记录：
 
 ```text
-implementation_manifest_sha256=f09e99b95a3332d40abc933eaee35ea8a646b11d330ffaa5213ee0bb28f339b4
-implementation_files=53
+source_commit=a3e491c954e911d84baa09fd6d9466fb80280941
+receipt_commit=5f437b0719936470535211b796af3e9722e8f11b
+implementation_manifest_sha256=9a8c3546a925812f0da86dad6cd09aa4680b2b29b734cd07dcfa9bc51f8dfe95
+implementation_files=56
 tests=523/523
 telemetry_tests=189/189
 validators=35/35
-pr_g2_criteria=9/10
-exact_source_commit=MISSING_NOT_AUTHORIZED
+pr_g2_criteria=10/10_READY_FOR_HUMAN_REVIEW
+pr_g2_human_review_approved=false
 ```
 
-该结果只说明 SQLite reference slice 的本地直接回执已形成；它没有 exact source commit，不能作为
-DQ-019 implementation authorization（实施授权）的完整前置证据，更不能证明任一 `P2` 后端。
+这关闭了 DQ-019 所需的 exact source + clean-clone input（精确源码与干净检出输入），但没有自动
+关闭 PR-G2 Human Review，也没有提供任一 `P2` 候选的直接后端证据。因此它仍不能形成 DQ-019
+implementation authorization（实施授权），更不能证明任一 `P2` 后端。
 
 ## 7. Remaining Decision Inputs（剩余决策输入）
 

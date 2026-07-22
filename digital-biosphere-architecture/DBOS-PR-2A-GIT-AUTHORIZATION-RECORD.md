@@ -2,11 +2,12 @@
 document_id: TMAI-DBOS-PR-2A-GIT-AUTHORIZATION-20260722
 title: DBOS PR-2A Git Authorization Record
 title_zh: DBOS PR-2A Git 操作授权记录
-status: authorized-manifest-scope-corrected-not-yet-executed
+status: authorized-and-executed
 decision_reference: DQ-018
 authorization_token: DBOS_PR_2A_GIT=AUTHORIZE_COMMIT_AND_PUSH
 decided_by_ref: zhangbin
 authorized_at: 2026-07-22T19:14:31+08:00
+executed_at: 2026-07-22T19:35:08+08:00
 target_repository: digital-biosphere-os
 target_branch: codex/telemetry-admission-foundation
 pull_request_authorized: false
@@ -104,13 +105,35 @@ corrected_bytes=704010
 该修正不扩大 DQ-018 功能，只修复 source provenance completeness（源码来源完整性）。Human Owner 的
 commit/push 授权继续适用于同一 exact slice；不产生新的运行或生产权限。
 
-## 6. Current Effect（当前效果）
+## 6. Execution Receipt（执行回执）
+
+```text
+DBA_AUTHORIZATION_COMMIT=7f2d3a0e39f65a92b7a96ea899ca12e3c050a0db
+DBOS_SOURCE_COMMIT=a3e491c954e911d84baa09fd6d9466fb80280941
+DBOS_RECEIPT_COMMIT=5f437b0719936470535211b796af3e9722e8f11b
+REMOTE_BRANCH=codex/telemetry-admission-foundation
+CLEAN_CLONE_RESULT=PASS
+PR_G2_READY_FOR_HUMAN_REVIEW=true
+PR_G2_APPROVED=false
+```
+
+源码 commit 与 receipt-only commit 已分别以非强制 push 推送到远端同名分支。远端精确源码
+干净检出结果包括：523/523 tests、189/189 telemetry tests、35/35 validators、25/25
+telemetry validator checks、OTel authorized subset 32/32 + 36/36、rollback PASS，以及两个
+独立远端检出的 byte-identical wheel。
+
+对应 DBOS review packet 位于
+`reports/telemetry-admission-foundation/DBOS-PR-2A-PR-G2-REVIEW-PACKET-2026-07-22.json`
+并明确保持 `production_ready=false`。
+
+## 7. Current Effect（当前效果）
 
 ```text
 DBOS_COMMIT_AUTHORIZED=true
 DBOS_PUSH_AUTHORIZED=true
-DBOS_COMMIT_EXECUTED=false
-DBOS_PUSH_EXECUTED=false
+DBOS_COMMIT_EXECUTED=true
+DBOS_PUSH_EXECUTED=true
+PR_G2_READY_FOR_HUMAN_REVIEW=true
 PR_G2_APPROVED=false
 PRODUCTION_READY=false
 ```

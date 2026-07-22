@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1.0",
   "document_id": "TMAI-DBOS-PR-2A-GIT-AUTHORIZATION-20260722",
-  "status": "AUTHORIZED_MANIFEST_SCOPE_CORRECTED_NOT_YET_EXECUTED",
+  "status": "AUTHORIZED_AND_EXECUTED",
   "decision_reference": "DQ-018",
   "authorization": {
     "selected_token": "DBOS_PR_2A_GIT=AUTHORIZE_COMMIT_AND_PUSH",
@@ -36,13 +36,25 @@
     "missing_from_stage": [],
     "extra_in_stage": [],
     "old_receipts_are_current_exact_source_evidence": false,
-    "clean_clone_revalidation_required": true
+    "clean_clone_revalidation_required": false,
+    "clean_clone_revalidation_completed": true
+  },
+  "execution_receipt": {
+    "executed_at": "2026-07-22T19:35:08+08:00",
+    "dba_authorization_commit": "7f2d3a0e39f65a92b7a96ea899ca12e3c050a0db",
+    "dbos_source_commit": "a3e491c954e911d84baa09fd6d9466fb80280941",
+    "dbos_receipt_commit": "5f437b0719936470535211b796af3e9722e8f11b",
+    "remote_branch": "codex/telemetry-admission-foundation",
+    "remote_receipt_commit_matches_local": true,
+    "clean_clone_validation": "PASS",
+    "pr_g2_readiness": "READY_FOR_HUMAN_REVIEW_NOT_APPROVED",
+    "review_packet": "reports/telemetry-admission-foundation/DBOS-PR-2A-PR-G2-REVIEW-PACKET-2026-07-22.json"
   },
   "effects": {
     "dbos_commit_authorized": true,
     "dbos_push_authorized": true,
-    "dbos_commit_executed": false,
-    "dbos_push_executed": false,
+    "dbos_commit_executed": true,
+    "dbos_push_executed": true,
     "pull_request_authorized": false,
     "merge_authorized": false,
     "main_branch_mutation_authorized": false,
@@ -60,6 +72,7 @@
     "evidence_created": false,
     "verification_created": false,
     "saee_called": false,
+    "pr_g2_ready_for_human_review": true,
     "pr_g2_approved": false,
     "production_ready": false
   }
