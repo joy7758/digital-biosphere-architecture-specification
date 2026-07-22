@@ -1,0 +1,95 @@
+{
+  "schema_version": "0.1",
+  "attestation_id": "TMAI-PR-G2A-LINUX-X86-64-EMULATED-SUPPLEMENT-ATTESTATION-20260723-006",
+  "observed_at": "2026-07-23T03:36:48+08:00",
+  "remote_binding": {
+    "repository": "https://github.com/joy7758/digital-biosphere-architecture-specification.git",
+    "branch": "codex/production-observability-baseline",
+    "attested_predecessor_commit": "ca694720481f91bdd36a109a11a480f0616a4029",
+    "attested_predecessor_tree": "37ac78750aaa3c3d7815f49aab9420993e72715f",
+    "remote_head_matched": true,
+    "clean_before_and_after": true
+  },
+  "supplement_bindings": {
+    "markdown": {
+      "path": "PR-G2A-LINUX-X86-64-EMULATED-COMPATIBILITY-SUPPLEMENT-2026-07-23.md",
+      "bytes": 4030,
+      "sha256": "132a0835962f8cd378f66aa167a83ee02e941101f18c7a480a67c333e0b7222a"
+    },
+    "json": {
+      "path": "PR-G2A-LINUX-X86-64-EMULATED-COMPATIBILITY-SUPPLEMENT-2026-07-23.json",
+      "bytes": 4404,
+      "sha256": "3d39314fa9b9a5ff366ed1b4d250c634756c9f5f9ea49566a7d56c58ded81898"
+    }
+  },
+  "site_supply_chain_binding": {
+    "package_json_sha256": "e78a322a1580090e4dab22458d4e1df9572d5ae66557793a4cd0d04efd0ae136",
+    "package_lock_json_sha256": "4f179b1107a3a3f18aa906ebd19f952a9a4d190b1ad7123cba0a6884e3a312fd",
+    "npm_ci": "PASS",
+    "npm_audit": {
+      "critical": 0,
+      "high": 0,
+      "moderate": 0,
+      "low": 0,
+      "total": 0
+    },
+    "build": "PASS",
+    "tests": "11/11 PASS",
+    "lint": "PASS",
+    "environment": {
+      "node": "v26.0.0",
+      "npm": "11.12.1",
+      "platform": "Darwin 25.5.0 arm64"
+    }
+  },
+  "documentation_validation": {
+    "json_files_parsed": 70,
+    "markdown_files": 169,
+    "local_links": 865,
+    "missing_links": 0
+  },
+  "validated_subject": {
+    "execution_mode": "EMULATED_LINUX_AMD64_ON_ARM64_HOST",
+    "compatibility_result": "PARTIAL",
+    "native_linux_x86_64_validated": false,
+    "ta_p003_errors": {
+      "TA_STORAGE_UNAVAILABLE": 426
+    },
+    "agent_recommendation": "CONDITIONALLY_RECOMMENDED",
+    "recommended_as": "OFFLINE_EMULATED_AMD64_COMPATIBILITY_AND_FAILURE_DISCOVERY_MATERIAL",
+    "not_recommended_as": "NATIVE_X86_64_OR_PRODUCTION_READINESS_EVIDENCE"
+  },
+  "binding_model": {
+    "type": "NON_CYCLIC_SUCCESSOR_ATTESTATION",
+    "attests_predecessor_commit_only": true,
+    "self_hash_included": false
+  },
+  "decision_state": {
+    "selected_token": null,
+    "decided_by_ref": null,
+    "supplement_remote_attested": true,
+    "pr_g2a_approved": false,
+    "dq_019_status": "BLOCKED_INPUT",
+    "dq_020_status": "BLOCKED_INPUT",
+    "dq_021_status": "BLOCKED_INPUT",
+    "full_pr_g2_ready": false,
+    "production_ready": false
+  },
+  "effects": {
+    "pr_created": false,
+    "merge_performed": false,
+    "main_modified": false,
+    "release_created": false,
+    "deployment_performed": false,
+    "collector_built": false,
+    "listener_created": false,
+    "database_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "saee_output_created": false,
+    "gate_state_changed": false
+  }
+}
