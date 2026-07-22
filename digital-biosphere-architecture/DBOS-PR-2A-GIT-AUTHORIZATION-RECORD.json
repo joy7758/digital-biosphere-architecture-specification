@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1.0",
   "document_id": "TMAI-DBOS-PR-2A-GIT-AUTHORIZATION-20260722",
-  "status": "AUTHORIZED_NOT_YET_EXECUTED",
+  "status": "AUTHORIZED_MANIFEST_SCOPE_CORRECTED_NOT_YET_EXECUTED",
   "decision_reference": "DQ-018",
   "authorization": {
     "selected_token": "DBOS_PR_2A_GIT=AUTHORIZE_COMMIT_AND_PUSH",
@@ -11,7 +11,11 @@
     "target_repository": "digital-biosphere-os",
     "target_branch": "codex/telemetry-admission-foundation",
     "base_commit": "cd3f867c4379ec555c45e7d554088ad12ce08a24",
-    "implementation_manifest_sha256": "f09e99b95a3332d40abc933eaee35ea8a646b11d330ffaa5213ee0bb28f339b4"
+    "implementation_manifest_sha256": "9a8c3546a925812f0da86dad6cd09aa4680b2b29b734cd07dcfa9bc51f8dfe95",
+    "implementation_file_count": 56,
+    "implementation_bytes": 704010,
+    "previous_incomplete_scope_manifest_sha256": "f09e99b95a3332d40abc933eaee35ea8a646b11d330ffaa5213ee0bb28f339b4",
+    "manifest_scope_correction": "ADD_THREE_SQL_MIGRATION_FILES_TO_SOURCE_MANIFEST"
   },
   "authorized_actions": [
     "commit exact DQ-018 source/test/report scope",
@@ -20,10 +24,19 @@
     "commit and push receipt-only PR-G2 review-packet updates"
   ],
   "preconditions": {
-    "dba_authorization_record_committed_and_pushed": false,
-    "dbos_manifest_still_matches": false,
-    "dbos_remote_ref_checked": false,
+    "dba_authorization_record_committed_and_pushed": true,
+    "dbos_manifest_still_matches": true,
+    "dbos_remote_ref_checked": true,
     "non_fast_forward_or_force_push_allowed": false
+  },
+  "manifest_reconciliation": {
+    "result": "PASS_AFTER_SCOPE_CORRECTION",
+    "expected_file_count": 56,
+    "staged_file_count": 56,
+    "missing_from_stage": [],
+    "extra_in_stage": [],
+    "old_receipts_are_current_exact_source_evidence": false,
+    "clean_clone_revalidation_required": true
   },
   "effects": {
     "dbos_commit_authorized": true,
