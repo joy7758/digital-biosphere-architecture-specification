@@ -1,0 +1,122 @@
+{
+  "schema_version": "0.1",
+  "supplement_id": "TMAI-PR-G2A-P003-OBSERVER-EFFECT-SUPPLEMENT-20260723-007",
+  "observed_at": "2026-07-23T04:47:38+08:00",
+  "decision_reference": "DQ-018",
+  "review_gate": "PR-G2A",
+  "result_semantics": "REFERENCE_ONLY_P003_OBSERVER_EFFECT_HARDENING_SUPPLEMENT_NOT_FULL_REBASE_NOT_NATIVE_NOT_DECISION_NOT_GATE_APPROVAL_NOT_PRODUCTION_READY",
+  "predecessor_history": {
+    "source_commit": "d62b411845b18af3ec79af67622666e96d1baed3",
+    "receipt_commit": "8c6ddd7b5c790214cea9a42a34ed9f4df44fda2b",
+    "full_emulated_characterization": "PARTIAL",
+    "ta_p003_storage_unavailable": 426,
+    "history_preserved": true
+  },
+  "dbos_remote_binding": {
+    "repository": "https://github.com/joy7758/digital-biosphere-os.git",
+    "branch": "codex/telemetry-admission-foundation",
+    "implementation_source_commit": "23c8f0878058f29e733b6f164572ac157c6c7d1c",
+    "implementation_tree": "27703ed64d6e885a2933a5a39139a59bab83c3c1",
+    "implementation_manifest_sha256": "43382e4274c19ef6b10ee6e76f36ddddc18f05b7dfaedfdca43ddd8d3f2abc8c",
+    "implementation_manifest_file_count": 58,
+    "implementation_manifest_bytes": 726068,
+    "receipt_commit": "759b69c900368fdf15e319b4503d83fb15374f67",
+    "receipt_tree": "149138f26b208f65571cde91c5f0919e9e999dea",
+    "fresh_remote_clean_clone": true,
+    "remote_head_matched_receipt_commit": true,
+    "clean_before_and_after": true,
+    "report_markdown": {
+      "path": "reports/telemetry-admission-foundation/DBOS-PR-2A-P003-OBSERVER-EFFECT-HARDENING-2026-07-23.md",
+      "bytes": 7123,
+      "sha256": "a73225c5e4f8d06293fcfeae8f6517a499a700db8ff75c801e28843eedbe6e6b"
+    },
+    "report_json": {
+      "path": "reports/telemetry-admission-foundation/DBOS-PR-2A-P003-OBSERVER-EFFECT-HARDENING-2026-07-23.json",
+      "bytes": 6954,
+      "sha256": "229a03e479bb7e772a459517184abff3fe84bc7ba6e7b709db1fd4520e8a190a"
+    },
+    "raw_result": {
+      "path": "reports/telemetry-admission-foundation/raw/p003-observer-effect-43382e4274c1/TA-P003.tmpfs.json",
+      "bytes": 29092,
+      "sha256": "da031f6446fa9041e354ab7458a0f65197b88ca3b2c631a4d3eff52533ec9142"
+    }
+  },
+  "root_cause": {
+    "classification": "MEASUREMENT_OBSERVER_EFFECT",
+    "underlying_exception": "sqlite3.OperationalError: database is locked",
+    "failure_location": "SQLiteTelemetryAdmissionStore.record_decision BEGIN IMMEDIATE",
+    "storage_integrity_failure": false,
+    "storage_semantics_changed": false,
+    "busy_timeout_expanded": false,
+    "failure_retry_added": false
+  },
+  "validation": {
+    "execution_mode": "EMULATED_LINUX_AMD64_ON_ARM64_HOST",
+    "native_linux_x86_64_validated": false,
+    "full_tests": "534/534 PASS",
+    "focused_telemetry_tests": "200/200 PASS",
+    "validators": {
+      "passed": 30,
+      "external_source_fail_closed": 5,
+      "unexpected_failures": 0
+    },
+    "telemetry_admission_validator": "25/25 PASS",
+    "ruff_findings": 0,
+    "bandit_findings": 0,
+    "pip_audit_known_vulnerabilities": 0,
+    "p003_tmpfs": {
+      "workers": 32,
+      "duration_seconds": 300,
+      "operations": 18953,
+      "errors": {},
+      "observed_operations_per_second": 63.076226186627956,
+      "p95_ms": 276.034217,
+      "integrity_status": "PASS",
+      "source_binding_result": "PASS"
+    },
+    "authority_effects_all_false": true
+  },
+  "current_source_scope": {
+    "p003_reexecuted": true,
+    "p003_result": "PASS_EMULATED_AMD64",
+    "p001_reexecuted": false,
+    "p002_reexecuted": false,
+    "p004_reexecuted": false,
+    "p005_one_hour_reexecuted": false,
+    "full_ta_p001_to_ta_p005_rebase_complete": false
+  },
+  "agent_recommendation": {
+    "status": "CONDITIONALLY_RECOMMENDED",
+    "recommended_as": "OBSERVER_EFFECT_HARDENED_OFFLINE_EMULATED_CONCURRENCY_CHARACTERIZATION",
+    "not_recommended_as": "NATIVE_X86_64_CAPACITY_SLO_OR_PRODUCTION_READINESS_EVIDENCE"
+  },
+  "decision_state": {
+    "selected_token": null,
+    "decided_by_ref": null,
+    "pr_g2a_current_source_packet_refresh_required": true,
+    "pr_g2a_ready_for_human_review": false,
+    "pr_g2a_approved": false,
+    "dq_019_status": "BLOCKED_INPUT",
+    "dq_020_status": "BLOCKED_INPUT",
+    "dq_021_status": "BLOCKED_INPUT",
+    "full_pr_g2_ready": false,
+    "production_ready": false
+  },
+  "effects": {
+    "pr_created": false,
+    "merge_performed": false,
+    "main_modified": false,
+    "release_created": false,
+    "deployment_performed": false,
+    "collector_built": false,
+    "listener_created": false,
+    "database_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "saee_output_created": false,
+    "gate_state_changed": false
+  }
+}
