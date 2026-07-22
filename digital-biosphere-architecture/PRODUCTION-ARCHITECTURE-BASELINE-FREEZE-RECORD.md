@@ -2,7 +2,7 @@
 document_id: TMAI-PRODUCTION-ARCHITECTURE-BASELINE-FREEZE-RECORD-0.1
 title: TMAI Production Architecture Baseline Freeze Record v0.1
 title_zh: TMAI 生产架构基线冻结记录 v0.1
-status: immutable-content-baseline-created-remote-verification-pending
+status: immutable-content-baseline-remote-verified
 recorded_at: 2026-07-22T12:05:04+08:00
 decided_by_ref: zhangbin
 primary_repository: digital-biosphere-architecture
@@ -54,16 +54,28 @@ dbos_domain_owner_ref=zhangbin
 
 ## Authority Boundary（权力边界）
 
-该冻结只关闭 DBA `PR-G0` 的内容身份前置。它不证明 DBOS 已实现，不授权 DBOS commit/push，不选择
+该冻结关闭 DBA `PR-G0` 的内容身份前置。后继 DQ-018 的实现事实由独立 DBOS receipts 证明，
+不能反向改写本冻结记录。它不选择
 production backend，不构建 Collector，不创建 listener、Agent、Runtime、Entity、Evidence 或 Permission，
 也不形成 deployment 或 `PRODUCTION_READY`。
 
+## Remote Verification Update（远端复验更新）
+
+```text
+DBA_REMOTE_BRANCH=codex/production-observability-baseline
+DBA_REMOTE_RECEIPT_COMMIT=05589af948a788f38982b5b197427a6e1c357fa8
+DBA_CONTENT_COMMIT_REACHABLE=true
+DBOS_DQ018_SOURCE_COMMIT=5c52c1c2f44767c0b13b4ac9670425721b9ea0dd
+DBOS_DQ018_RECEIPT_COMMIT=aa6440e83f35cc63483f487367ccb573bba7681a
+REMOTE_BRANCH_VERIFICATION_PENDING=false
+```
+
 ```text
 ARCHITECTURE_CONTENT_FROZEN=true
-REMOTE_BRANCH_VERIFICATION_PENDING=true
+REMOTE_BRANCH_VERIFICATION_PENDING=false
 DQ_018_IMPLEMENTATION_AUTHORIZED=true
 DQ_018_IMPLEMENTATION_MAY_START=false
-FRESH_DBOS_BEFORE_STATE_REQUIRED=true
+FRESH_DBOS_BEFORE_STATE_REQUIRED=false
 COLLECTOR_SELECTED=false
 BACKEND_SELECTED=false
 RUNTIME_CREATED=false

@@ -69,9 +69,9 @@ Developer Preview 发布历史保持不变。当前新增的 Production Readines
 
 | production milestone | 目标 | primary repository | 当前状态 | 完成证据 | 下一步 |
 |---|---|---|---|---|---|
-| `PR-0` | 冻结 Trusted Multi-Agent Protocol（可信多智能体协议）与生产可观测性架构基线 | DBA | `CONTENT_FROZEN_ATTESTATION_RECORDED_REMOTE_VERIFICATION_PENDING` | content commit `264f317...` / tree `b83f25d...`、OpenTelemetry profiles、56/46/45/48-case contracts、`ADR-023`–`ADR-028`、六项 exact decision 与 [freeze record](PRODUCTION-ARCHITECTURE-BASELINE-FREEZE-RECORD.md) | 推送并远端复验 content + attestation；仍不授权 Collector build/config/deploy 或 production claim |
+| `PR-0` | 冻结 Trusted Multi-Agent Protocol（可信多智能体协议）与生产可观测性架构基线 | DBA | `GATE_PASSED_REMOTE_BASELINE_VERIFIED` | content commit `264f317...` / tree `b83f25d...`、OpenTelemetry profiles、56/46/45/48-case contracts、`ADR-023`–`ADR-028`、六项 exact decision 与远端 freeze receipt | 保持基线；不授权 Collector build/config/deploy 或 production claim |
 | `PR-1` | 建立 DBOS/SAEE production implementation mapping（生产实现映射） | 子项目提供事实；DBA 审查边界 | `GATE_PASSED_READ_ONLY_MAPPING` | `PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`：remote commits、334 tests、34 validators、8 adapter tests、OTel capability inventory、缺口与重复权威审查 | `DQ-018` decision packet 和两路 next-step recommendation 已就绪，等待人类决策 |
-| `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `DQ_018_AUTHORIZED_PRECONDITIONS_PENDING` | 经授权的 Telemetry Admission reference conformance，继之 production persistence selection/HA/PITR，再进入 Evidence admission；每步持久化一致性、幂等、重放保护、故障保留、升级与回滚证据 | immutable DBA baseline + fresh DBOS before-state 后只实施 DQ-018；`DQ-019/021` 仍 `BLOCKED_INPUT` |
+| `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `PR_G2A_READY_FOR_HUMAN_REVIEW_G2B_G2T_G2I_G2C_BLOCKED` | DQ-018 exact source `5c52c1c…`、receipt `aa6440e…`、531/531 tests、197/197 telemetry tests、35/35 validators、OTel authorized 68/68、独立加固 7 项已修复 | 审查 PR-G2A；未批准前不进入 DQ-019/PR-G2B；完整 PR-G2=false |
 | `PR-3` | 建立 OpenTelemetry conformance and operations（符合性与运维） | DBOS + deployment infrastructure | `NOT_STARTED` | 版本锁定、exact custom-minimal Collector build/config/runtime/topology 绑定、deployment + operational-evidence profiles 的 synthetic-input/immutable-rollout/metric-stability/self-observation/no-data-alert/composite-readiness/delivery-reconciliation obligations、56/56 OTLP、46/46 semantic、45/45 Schema/Resource/Entity provenance 与 48/48 Collector distribution cases 的四个独立结果绑定 | 不得创建第五套重复目录；不得把 Telemetry 自动升级为 Evidence/Truth，也不得把 profile/schema/health/dashboard/binary startup 当实现、测量或生产证据 |
 | `PR-4` | 验证 SAEE production adapter isolation（生产适配隔离） | SAEE | `NOT_STARTED` | 只读消费、版本兼容、失败关闭、无 DBOS 写回、无 Decision/Permission | 不调用未获准算法或生成 Authority |
 | `PR-5` | 通过 Security / Recovery / Capacity gates（安全、恢复与容量闸门） | DBOS + DBA review | `NOT_STARTED` | threat model、secret handling、data minimization、backup/restore、灾难恢复、容量与队列压力证据 | 所有 critical gap 关闭后才可进入 Pilot |
@@ -154,6 +154,13 @@ DQ_018_NEXT_SLICE_RECOMMENDED_BY_TWO_AGENTS=true
 DQ_018_HUMAN_DECISION_RECORDED=true
 DQ_018_IMPLEMENTATION_AUTHORIZED=true
 DQ_018_IMPLEMENTATION_MAY_START=false
+DQ_018_IMPLEMENTATION_MAY_START_REASON=ALREADY_COMPLETED_EXACT_SLICE_NO_NEW_SCOPE_AUTHORIZED
+DQ_018_IMPLEMENTATION_COMPLETE=true
+DQ_018_SOURCE_COMMIT=5c52c1c2f44767c0b13b4ac9670425721b9ea0dd
+DQ_018_RECEIPT_COMMIT=aa6440e83f35cc63483f487367ccb573bba7681a
+PR_G2A_READY_FOR_HUMAN_REVIEW=true
+PR_G2A_HUMAN_REVIEW_APPROVED=false
+FULL_PR_G2_READY=false
 PRODUCTION_IMPLEMENTATION_SEQUENCE_DEFINED=true
 PRODUCTION_PATH_AGENT_REVIEW_COMPLETE=true
 PRODUCTION_IMPLEMENTATION_SEQUENCE_RECOMMENDED_BY_TWO_AGENTS=true
@@ -182,9 +189,15 @@ PRODUCTION_PILOT_AUTHORIZED=false
 PRODUCTION_READY=false
 ```
 
-当前不应继续增加新的技术规范、Entity、生产 Runtime 或无验证接口承诺。优先任务已经从 contract expansion（合同扩张）切换为 human decision convergence（人工决策收敛）：让驾驶舱精确回答现在在哪里、谁负责、缺什么输入、哪个决定阻塞下一步。
+当前不应继续增加新的技术规范、Entity、生产 Runtime 或无验证接口承诺。优先任务是审查
+`PR-G2A` exact offline slice，并在明确批准后收敛 `DQ-019` 的真实候选输入。
 
-Developer Preview 的公开链路已经发布，DBOS/SAEE 的 `PR-G1` 只读 implementation mapping 也已完成。当前需要并行但分权审查：Human Architecture Version Authority 审查 `DQ-022` OTLP、`DQ-023` semantic mapping、`DQ-024` Schema/Resource/Entity provenance 和 `DQ-025` Collector distribution 四个独立 external reference bundles；Human Program Owner 审查 `DQ-018` 的精确 DBOS 生产路径参考符合性切片。后继 production persistence、OTLP/Collector staging、Evidence admission 和 SAEE/Pilot 已通过 [`architecture/production-implementation-sequence.md`](architecture/production-implementation-sequence.md) 排序，但 `ADR-024`–`ADR-028` 均未因模型推荐而自动采纳，`DQ-019`–`DQ-021` 仍是 `BLOCKED_INPUT`。任何版本采纳、build、configuration、代码、Collector 部署、真实 Pilot 或生产声明都必须经过各自独立决策，不能由 `PR-0`、`PR-G1`、`DQ-025` 或 Agent recommendation 自动授权。
+Developer Preview 已发布，`PR-G1` 已完成，DQ-022–025 与 ADR-024 已采纳，DQ-018
+离线实现切片也已远端验证。当前 gate 是 `PR-G2A Human Review`。后继 production
+persistence、OTLP/Collector staging、Identity/Evidence integration 和 SAEE/Pilot 仍按
+[`architecture/production-implementation-sequence.md`](architecture/production-implementation-sequence.md)
+分阶段独立决定；任何 build、configuration、deployment、真实 Pilot 或生产声明都不能由
+Agent recommendation 或单个切片 PASS 自动授权。
 
 ## 5. Roadmap Non-claims（路线图非声明）
 

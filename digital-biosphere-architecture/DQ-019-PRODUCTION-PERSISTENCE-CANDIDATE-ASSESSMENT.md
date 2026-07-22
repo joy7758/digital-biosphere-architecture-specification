@@ -104,26 +104,28 @@ production claim。供应商 SLA 也不能代替 DBOS 自己的 SLO 测量。
 DBOS 远端精确源码与 clean-clone review packet（干净检出审查包）记录：
 
 ```text
-source_commit=a3e491c954e911d84baa09fd6d9466fb80280941
-receipt_commit=5f437b0719936470535211b796af3e9722e8f11b
-implementation_manifest_sha256=9a8c3546a925812f0da86dad6cd09aa4680b2b29b734cd07dcfa9bc51f8dfe95
+source_commit=5c52c1c2f44767c0b13b4ac9670425721b9ea0dd
+receipt_commit=aa6440e83f35cc63483f487367ccb573bba7681a
+implementation_manifest_sha256=fdda745c3907e35ac92769740f07afc81483be674568879a3c0314c2a09baa51
 implementation_files=56
-tests=523/523
-telemetry_tests=189/189
+tests=531/531
+telemetry_tests=197/197
 validators=35/35
-pr_g2_criteria=10/10_READY_FOR_HUMAN_REVIEW
-pr_g2_human_review_approved=false
+pr_g2a_status=READY_FOR_HUMAN_REVIEW
+pr_g2a_human_review_approved=false
+full_pr_g2_ready=false
 ```
 
 这关闭了 DQ-019 所需的 exact source + clean-clone input（精确源码与干净检出输入），但没有自动
-关闭 PR-G2 Human Review，也没有提供任一 `P2` 候选的直接后端证据。因此它仍不能形成 DQ-019
+关闭 PR-G2A Human Review，也没有提供任一 `P2` 候选的直接后端证据。因此它仍不能形成 DQ-019
 implementation authorization（实施授权），更不能证明任一 `P2` 后端。
 
 ## 7. Remaining Decision Inputs（剩余决策输入）
 
 | input | status | required output |
 |---|---|---|
-| exact DBOS source commit + clean-clone receipts | `BLOCKED` | immutable DQ-018 source/evidence binding |
+| exact DBOS source commit + clean-clone receipts | `PASS` | immutable DQ-018 source/evidence binding；不等于 gate approval |
+| PR-G2A Human Review | `BLOCKED` | 审查 exact source、独立加固和 clean-clone receipts |
 | hosting policy | `MISSING` | managed external cloud allowed/denied；data residency |
 | topology and failure domain | `MISSING` | region/AZ/node/quorum/fencing/connection topology |
 | exact candidate profile | `MISSING` | engine/version/SKU/replication/failover/backup/encryption |

@@ -4,6 +4,7 @@ title: TMAI Production Implementation Mapping Report
 title_zh: TMAI 生产实现映射报告
 status: pr-g1-pass-read-only-mapping-critical-implementation-gaps-open
 observed_at: 2026-07-22
+freshness: historical-pr-g1-snapshot-current-state-in-program-status
 primary_repository: digital-biosphere-architecture
 dbos_remote_main_commit: cd3f867c4379ec555c45e7d554088ad12ce08a24
 saee_remote_main_commit: 2173c258f91aed03fc02c0097d4250a87be703aa
@@ -17,6 +18,9 @@ production_ready: false
 # TMAI Production Implementation Mapping Report
 
 中文：TMAI 生产实现映射报告。
+
+> 本报告冻结 `PR-G1` 决策前的只读映射。其 `DQ-018` 和 remote-baseline 状态是历史观察，
+> 当前状态以 `PROGRAM-STATUS.md`、`DECISION-QUEUE.md` 和 DBOS PR-G2A receipts 为准。
 
 ## 1. Gate Result（闸门结果）
 
@@ -231,4 +235,5 @@ PR_G7_PRODUCTION_DECISION=NOT_ASSESSED
 PRODUCTION_READY=false
 ```
 
-下一动作必须是 Human Program Owner 对 `DQ-018` 的 scope、Owner 和实施授权作显式决定。未决定前，本报告不允许自动触发 DBOS/SAEE 修改。
+上述 block 是 `PR-G1` 观察时状态，不静默改写。当前 DQ-018 已完成 exact offline slice，
+下一动作是 `PR-G2A Human Review`；本报告仍不允许自动触发 DBOS/SAEE 新范围修改。

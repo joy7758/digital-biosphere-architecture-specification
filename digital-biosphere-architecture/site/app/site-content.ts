@@ -41,6 +41,12 @@ export const gateRows = [
     en: "DBOS main@cd3f867 passed 334 tests, 34/34 validators, and demos in an isolated environment.",
   },
   {
+    id: "DBOS_DQ_018_PR_G2A",
+    state: "REVIEW_READY",
+    zh: "DQ-018 离线遥测准入切片已在远端精确源码上通过 531 项测试、197 项遥测测试、35/35 Validator 和 68/68 个授权 OTel 用例；PR-G2A 尚待人工审查，完整 PR-G2 未通过。",
+    en: "The DQ-018 offline telemetry-admission slice passed 531 tests, 197 telemetry tests, 35/35 validators, and 68/68 authorized OTel cases on exact remote source; PR-G2A awaits human review and the full PR-G2 gate has not passed.",
+  },
+  {
     id: "DBOS_PUBLIC_SAFE_WHEEL",
     state: "PASS",
     zh: "exact public-safe wheel 已通过密钥、路径、内容边界和隔离安装验证，并作为 v0.1 GitHub Release 资产公开。",
@@ -78,21 +84,21 @@ export const gateRows = [
   },
   {
     id: "DQ_022_OTLP_REFERENCE",
-    state: "REVIEW",
-    zh: "OTLP v1.11.0 精确版本、56 项符合性合同和结果 Schema 已完成双智能体审查；仍待人工版本决定，0 项测试已执行。",
-    en: "The exact OTLP v1.11.0 reference, 56-case conformance contract, and result schema completed two-agent review; human version decision is pending and zero cases have executed.",
+    state: "REFERENCE_ADOPTED",
+    zh: "DQ-022 已采纳 OTLP v1.11.0 精确架构参考；这不等于 Runtime 兼容性或 Collector 部署。",
+    en: "DQ-022 adopts the exact OTLP v1.11.0 architecture reference; this is not Runtime interoperability or Collector deployment.",
   },
   {
     id: "DQ_023_OTEL_SEMANTICS",
-    state: "REVIEW",
-    zh: "47 项非权威映射已补充为 8 组、46 项语义符合性合同并覆盖 47/47 mappings；两路智能体推荐进入有界人工审查，但 0 项已执行。",
-    en: "The 47-field non-authoritative mapping now has an 8-group, 46-case semantic conformance contract covering 47/47 mappings; two agents recommend bounded human review, but zero cases have executed.",
+    state: "REFERENCE_ADOPTED_OFFLINE_SUBSET_PASS",
+    zh: "DQ-023 已采纳 core v1.43.0 与 pinned GenAI Development mapping；DQ-018 授权的 32/32 离线语义用例通过，14 个部署用例保持阻塞。",
+    en: "DQ-023 adopts core v1.43.0 and the pinned GenAI Development mapping; 32/32 DQ-018-authorized offline semantic cases pass while 14 deployment cases remain blocked.",
   },
   {
     id: "DQ_024_OTEL_SCHEMA_RESOURCE_ENTITY",
     state: "REFERENCE_ADOPTED",
-    zh: "DQ-024 已采纳 Schema／Resource v1.59 参考和 Development Entity 隔离；45 项合同仍有 0 项执行，未授权 Runtime。",
-    en: "DQ-024 adopts the Schema/Resource v1.59 reference and quarantines Development Entity semantics; zero of 45 cases have executed and no Runtime is authorized.",
+    zh: "DQ-024 已采纳 Schema／Resource v1.59 参考和 Development Entity 隔离；DQ-018 授权的 36/36 离线用例通过，9 个部署用例保持阻塞。",
+    en: "DQ-024 adopts the Schema/Resource v1.59 reference and quarantines Development Entity semantics; 36/36 DQ-018-authorized offline cases pass while 9 deployment cases remain blocked.",
   },
   {
     id: "DQ_025_OTEL_COLLECTOR_DISTRIBUTION",
@@ -114,15 +120,15 @@ export const gateRows = [
   },
   {
     id: "PRODUCTION_HUMAN_DECISION_READINESS",
-    state: "CONTENT_FROZEN_REMOTE_VERIFICATION_PENDING",
-    zh: "DQ-022 至 DQ-025、ADR-024 和 DQ-018 的精确决定已记录；DBA content commit/tree 已冻结，当前等待远端分支复验。",
-    en: "Exact decisions for DQ-022 through DQ-025, ADR-024, and DQ-018 are recorded; the DBA content commit and tree are frozen, with remote-branch verification pending.",
+    state: "PR_G2A_HUMAN_REVIEW_PENDING",
+    zh: "DQ-022 至 DQ-025、ADR-024 和 DQ-018 已记录并远端追溯；当前唯一状态提升是 PR-G2A 人工审查。",
+    en: "DQ-022 through DQ-025, ADR-024, and DQ-018 are recorded and remotely traceable; the only current state elevation is PR-G2A human review.",
   },
   {
     id: "PRODUCTION_READY",
     state: "NOT_READY",
-    zh: "仅 DQ-018 有界基础切片获授权，且尚未满足启动前置；Collector、endpoint、生产持久化证据和受控 Pilot 均不存在。",
-    en: "Only the bounded DQ-018 foundation slice is authorized and its start prerequisites remain unmet; no Collector, endpoint, production durability evidence, or bounded pilot exists.",
+    zh: "DQ-018 有界离线切片已实施但未获 PR-G2A 批准；Collector、endpoint、生产持久化证据和受控 Pilot 均不存在。",
+    en: "The bounded DQ-018 offline slice is implemented but not PR-G2A-approved; no Collector, endpoint, production durability evidence, or bounded pilot exists.",
   },
 ] as const;
 

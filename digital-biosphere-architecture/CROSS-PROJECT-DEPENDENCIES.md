@@ -39,14 +39,14 @@ last_reviewed: 2026-07-22
 | `DEP-008` | Research Agent Pilot | DBOS | `APPLICATION_SERVICE` | 未来只读/记录接口准备 | `PREPARED_ONLY` | Research Agent 已注册、已连接或已运行 |
 | `DEP-009` | Research Agent Pilot | SAEE | `EVALUATION_INPUT` | 未来 Evaluation Profile（评价配置）准备 | `PREPARED_ONLY` | 已形成 Fitness、Risk 或 Recommendation |
 | `DEP-010` | Core projects | DBA | `STATUS_REFERENCE` | 项目提供带来源的状态，DBA 只读汇总 | `SOURCE_ALIGNMENT_PENDING` | DBA 状态摘要覆盖子项目事实 |
-| `DEP-011` | OpenTelemetry SDK / Collector / OTLP | DBOS | `OBSERVATION_INPUT` | Trace、Metric、Log、Resource 与 Context 未来通过 Telemetry Observation Envelope（遥测观察信封）进入受控准入；`DQ-022` 已决定 exact external reference，`DQ-018` 首切片只实现无 listener 的 reference-conformance boundary | `DQ_022_REFERENCE_ADOPTED_DQ_018_AUTHORIZED_PRECONDITIONS_PENDING_IMPLEMENTATION_MISSING` | Version reference 自动等于 SDK/Collector/runtime adoption；Telemetry 自动成为 Evidence、Verification、Truth、Permission 或 SAEE 评价结论，也不表示 Collector 已部署 |
+| `DEP-011` | OpenTelemetry SDK / Collector / OTLP | DBOS | `OBSERVATION_INPUT` | Trace、Metric、Log、Resource 与 Context 未来通过 Telemetry Observation Envelope（遥测观察信封）进入受控准入；DQ-018 已实现无 listener、metadata-only reference boundary | `DQ_018_OFFLINE_ADMISSION_IMPLEMENTED_PR_G2A_REVIEW_READY_NETWORK_AND_PRODUCTION_BLOCKED` | Version reference 或 offline PASS 自动等于 SDK/Collector/runtime adoption；Telemetry 自动成为 Evidence、Verification、Truth、Permission 或 SAEE 评价结论 |
 | `DEP-012` | Collector transport storage | DBOS production persistence | `NORMATIVE` | DSN、identity、network、volume、key、backup 强制隔离；delivery outcome 通过记录引用交接 | `SPECIFICATION_DEFINED_BOTH_IMPLEMENTATIONS_MISSING` | Collector WAL/message queue 是 DBOS canonical store、backup 或 RPO proof |
 | `DEP-013` | Telemetry Admission | Evidence Admission | `DATA_CONTRACT` | accepted material 只能通过 EvidenceAdmissionRequest/Record、Identity Continuity、Data Governance、P0–P3 provenance 和独立 Verification 交接 | `SPECIFICATION_DEFINED_DQ_021_BLOCKED_INPUT` | `ACCEPTED_AS_MATERIAL`、Collector ack、signature 或 Human Review 自动等于 Evidence/Truth/Permission |
 | `DEP-014` | Canonical Evidence / Verification | SAEE production adapter | `EVALUATION_INPUT` | SAEE 只读消费 exact objects、policy/model versions 和 delivery/privacy/completeness limitations | `SPECIFICATION_DEFINED_PR_G4_NOT_STARTED` | SAEE 自行提升 raw telemetry、回写 DBOS 或执行 Recommendation |
 | `DEP-015` | DBA Collector distribution contract | future deployment infrastructure | `NORMATIVE` | `DQ-025` 已采纳 exact source/component/provider/stability inventory 和 48-case conformance boundary；仍需 `DQ-020` 绑定 build/config/runtime/Owner | `DQ_025_REFERENCE_ADOPTED_NOT_BUILT_NOT_CONFIGURED_NOT_DEPLOYED` | DBA 是 Collector operator，inventory 是 binary/image/config，或 distribution adoption 自动授权 listener、deployment、Evidence、Permission 与 production gate |
 | `DEP-016` | DBA Collector deployment profile | future deployment infrastructure | `NORMATIVE` | `DQ-020` input profile 只定义 single-tenant synthetic staging 的 topology/config/security/durability/readiness 空位和现有 56/46/45/48 case reuse；真实配置必须在独立 deployment repository 产生 | `PROFILE_SCHEMA_DEFINED_DQ_020_BLOCKED_INPUT_NO_CONFIGURATION` | profile 是 Collector YAML、deployment manifest、Runtime、Owner 指派或 deployment authorization；Collector edge tier 是 AI Agent |
 | `DEP-017` | DBA Collector operational evidence contract | future deployment and operations infrastructure | `NORMATIVE` | `DQ-020` input profile 定义 internal metrics/logs、命名稳定性、12 类 observation、6 类 SLI、复合 readiness、no-data/alert/runbook 与 delivery reconciliation 的失败关闭绑定；复用现有 Collector cases | `PROFILE_SCHEMA_45_NEGATIVES_TWO_MODEL_REVIEW_COMPLETE_EXACT_BINDINGS_NULL_NO_MEASUREMENT` | profile 创建 query/alert/runbook/endpoint/measurement/Evidence，或 health/dashboard/self-report 自动关闭 `PR-G3` |
-| `DEP-018` | DBA human-decision readiness registry | ADR-024 / DQ-018 / DQ-022–DQ-025 / DQ-019–DQ-021 | `GOVERNANCE_GATE` | 汇总现有 ADR/DQ status、packet readiness、13 个 decision-input digest、human token、依赖与零效果；完成后停止新增 production technical contract，等待现有决定输入 | `REGISTRY_SCHEMA_VALID_DECISIONS_NOT_RECORDED_BASELINE_NOT_FROZEN` | 注册表创建 Decision、采用 reference、冻结 Git、授权 DBOS/SAEE/Collector、选择 backend 或关闭 production gate |
+| `DEP-018` | DBA human-decision readiness registry | ADR-024 / DQ-018 / DQ-022–DQ-025 / DQ-019–DQ-021 | `GOVERNANCE_GATE` | 汇总 ADR/DQ status、human token、依赖与零效果；DQ-022–025、ADR-024、DQ-018 已记录，当前等待 PR-G2A review | `DECISIONS_RECORDED_REMOTE_BASELINES_VERIFIED_PR_G2A_REVIEW_PENDING` | 注册表或 Agent recommendation 自动关闭 review gate、选择 backend 或授权生产 |
 
 ## 3. Adjacent Dependency Candidates（相邻依赖候选）
 
@@ -86,7 +86,10 @@ HUMAN_DECISIONS_RECORDED_BY_REGISTRY=true
 REFERENCE_DECISIONS_ADOPTED=true
 STAGED_SEQUENCE_ADOPTED=true
 DQ_018_IMPLEMENTATION_AUTHORIZED=true
-DQ_018_IMPLEMENTATION_MAY_START=false
+DQ_018_IMPLEMENTATION_COMPLETE=true
+PR_G2A_READY_FOR_HUMAN_REVIEW=true
+PR_G2A_HUMAN_REVIEW_APPROVED=false
+FULL_PR_G2_READY=false
 IMMUTABLE_DBA_BASELINE_CREATED=true
 IMMUTABLE_DBA_CONTENT_COMMIT=264f3171c3dfa8a9f614c7d0c835e4be26870d01
 TELEMETRY_NE_EVIDENCE=true

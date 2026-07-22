@@ -3,7 +3,7 @@
   "sequence_id": "TMAI-PRODUCTION-IMPLEMENTATION-SEQUENCE-0.1",
   "name": "TMAI Staged Production Implementation Sequence v0.1",
   "name_zh": "TMAI 分阶段生产实施序列 v0.1",
-  "status": "ADOPTED_STAGE_GATED_NOT_EXECUTED",
+  "status": "ADOPTED_S1_IMPLEMENTED_PR_G2A_REVIEW_READY_LATER_STAGES_BLOCKED",
   "architecture_owner": "digital-biosphere-architecture",
   "normative_specification": "architecture/production-implementation-sequence.md",
   "proposed_adr": "architecture/ADR-024-staged-telemetry-production-path.md",
@@ -40,11 +40,13 @@
     "recommendation_is_authorization": false
   },
   "current_gate": {
-    "step_id": "S0",
-    "decision_id": "DQ-018",
-    "state": "AUTHORIZED_PRECONDITIONS_PENDING",
-    "human_decision_recorded": true,
-    "implementation_authorized": true
+    "step_id": "S1",
+    "decision_id": "PR-G2A",
+    "state": "READY_FOR_HUMAN_REVIEW_NOT_APPROVED",
+    "human_decision_recorded": false,
+    "implementation_authorized": true,
+    "implementation_complete": true,
+    "full_pr_g2_ready": false
   },
   "architecture_prerequisites": {
     "dq_022_external_reference_decision_recorded": true,
@@ -52,7 +54,7 @@
     "dq_024_schema_resource_entity_reference_decision_recorded": true,
     "dq_025_collector_inventory_reference_decision_recorded": true,
     "adr_024_staged_sequence_adopted": true,
-    "immutable_dba_baseline_created": false,
+    "immutable_dba_baseline_created": true,
     "these_prerequisites_authorize_implementation": false
   },
   "stages": [
@@ -61,7 +63,7 @@
       "name": "Immutable DBA architecture baseline",
       "primary_domain": "DBA",
       "decision_or_gate": "DQ-018_INPUT_BASELINE",
-      "status": "LOCAL_UNCOMMITTED",
+      "status": "REMOTE_BASELINE_VERIFIED",
       "advance_requires": [
         "immutable_pushed_architecture_commit",
         "decision_packet_digest_match",
@@ -74,7 +76,23 @@
       "name": "Pinned offline OTLP decoder and Telemetry Admission reference conformance",
       "primary_domain": "DBOS",
       "decision_or_gate": "DQ-018/PR-G2A",
-      "status": "AUTHORIZED_PRECONDITIONS_PENDING_NOT_STARTED",
+      "status": "IMPLEMENTED_REMOTE_VALIDATED_PR_G2A_REVIEW_READY_NOT_APPROVED",
+      "source_binding": {
+        "repository": "digital-biosphere-os",
+        "branch": "codex/telemetry-admission-foundation",
+        "source_commit": "5c52c1c2f44767c0b13b4ac9670425721b9ea0dd",
+        "receipt_commit": "aa6440e83f35cc63483f487367ccb573bba7681a",
+        "manifest_sha256": "fdda745c3907e35ac92769740f07afc81483be674568879a3c0314c2a09baa51"
+      },
+      "validation": {
+        "tests": "531/531 PASS",
+        "telemetry_tests": "197/197 PASS",
+        "validators": "35/35 PASS",
+        "otel_authorized_cases": "68/68 PASS",
+        "otel_blocked_cases": 23,
+        "independent_findings_fixed": 7,
+        "pr_g2a_human_review_approved": false
+      },
       "required_case_groups": ["OTLP-CG-SIGNAL_SCHEMA", "OTLP-CG-AUTHORITY_BOUNDARY"],
       "forbidden_inference": "Telemetry admission does not create Evidence, Verification, Identity, Capability, Permission, Runtime, or production readiness"
     },
@@ -179,10 +197,10 @@
     "DQ-019": "BLOCKED_INPUT",
     "DQ-020": "BLOCKED_INPUT",
     "DQ-021": "BLOCKED_INPUT",
-    "DQ-022": "READY_FOR_REVIEW",
-    "DQ-023": "READY_FOR_REVIEW",
-    "DQ-024": "READY_FOR_REVIEW",
-    "DQ-025": "READY_FOR_REVIEW"
+    "DQ-022": "DECIDED_REFERENCE_ADOPTED",
+    "DQ-023": "DECIDED_REFERENCE_ADOPTED",
+    "DQ-024": "DECIDED_REFERENCE_AND_QUARANTINE_ADOPTED",
+    "DQ-025": "DECIDED_REFERENCE_INVENTORY_ADOPTED"
   },
   "mandatory_truth_boundaries": [
     "DBA != DBOS",

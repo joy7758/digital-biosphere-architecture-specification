@@ -68,7 +68,7 @@ DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
 
 | production gate | 必须证明 | 最小证据 | 未通过时 |
 |---|---|---|---|
-| `PR-G0` Architecture Baseline | TMAP 对象、四边界、DBA/DBOS/SAEE 权责、OTLP wire、OTel semantic mapping、Schema/Resource provenance、Development Entity quarantine 与 Collector distribution rules 稳定 | specs、ADR、link/consistency validation；六项 exact decisions；content commit `264f317...` / tree `b83f25d...` + [freeze record](PRODUCTION-ARCHITECTURE-BASELINE-FREEZE-RECORD.md) | local content identity 与 attestation 已形成；在 remote branch 复验前保持 remote gate pending，且不得外推为 Collector/Runtime/production 授权 |
+| `PR-G0` Architecture Baseline | TMAP 对象、四边界、DBA/DBOS/SAEE 权责、OTLP wire、OTel semantic mapping、Schema/Resource provenance、Development Entity quarantine 与 Collector distribution rules 稳定 | specs、ADR、link/consistency validation；六项 exact decisions；content commit `264f317...` / tree `b83f25d...` + [freeze record](PRODUCTION-ARCHITECTURE-BASELINE-FREEZE-RECORD.md) + remote receipt | `PASS` 只冻结架构；不得外推为 Collector/Runtime/production 授权 |
 | `PR-G1` Implementation Mapping | 规范对象和 OTel 信号逐项映射到现有 DBOS/SAEE 实现，无第二权威 | source paths、versions、owner、unsupported list、duplicate review | 不得创建生产实现任务 |
 | `PR-G2` DBOS Core Conformance | `G2A` Telemetry Admission reference、`G2B` production persistence、`G2T` transport/storage integration、`G2I` Identity Continuity、`G2C` Evidence Admission 以及 Identity/Capability/Execution/Evidence/Verification、OTel semantic trusted binding、Schema/Resource/Entity quarantine、授权、失败保留和版本迁移正负例通过 | schemas、fixtures、validators、HA/PITR/migration、idempotency/unknown commit、storage separation、47-field mapping/source digests、required semantic case groups、required 45-case Schema/Resource/Entity groups 与各自独立 result set、identity/execution/capability elevation negatives、provenance/data-governance/verification | 不得宣称 DBOS production core、Evidence Truth 或协议兼容 |
 | `PR-G3` OTel Observability Conformance | `G3A` exact profile/catalog binding + `PR-G2` offline decoder result reuse、`G3B/C` admission/persistence staging、`G3D` authenticated loopback listener、`G3E` >=2 gateway staging、`G3F` delivery reconciliation；OTLP、Resource、Context、Trace/Metric/Log、Collector exact build/config/runtime/HA/failure、synthetic-input gate、immutable config rollout、metric naming/stability、12 类 observation、6 类 SLI、composite readiness、no-data/alert delivery、semantic mapping、Schema acquisition/cache/transform、Resource detector provenance、Entity quarantine、敏感数据、Baggage、基数、重复、丢弃与 single-writer 边界通过 | proposed deployment + operational-evidence profiles/schemas/readiness matrix 的 exact digests + 56/56 OTLP + 46/46 semantic + 45/45 Schema/Resource/Entity + 48/48 Collector distribution results，四个 catalog/result/digest 独立绑定；exact inventory、binary/image/SBOM/license/provenance/signature/vulnerability/config/runtime/topology、metric/query/alert/route/runbook digests、fault/scale/drift injection、independent self-observation/blackbox/storage、counter reset/no-data/mixed-version、queue/WAL、alert drill、delivery accounting、readiness truth table | 不得新建第五套重复 catalog，不得把四个 catalog 混为自报汇总，不得把 profile/schema/health/dashboard/startup 写成 gate pass，也不得宣称生产可观测性、完整 Telemetry chain 或 canonical RPO |
@@ -114,7 +114,7 @@ unknowns=PRODUCTION_SECURITY_CAPACITY_RECOVERY_PILOT
 result=PASS
 reviewed_by_ref=codex_read_only_mapping
 reviewed_at=2026-07-22
-next_gate=DQ-018_THEN_PR-G2_IF_EXPLICITLY_AUTHORIZED
+next_gate=PR-G2A_HUMAN_REVIEW
 ```
 
 这里的 `PASS` 只表示 mapping completeness（映射完整性），不是 implementation conformance（实现符合性）。
@@ -132,14 +132,37 @@ agent_review_ref=DQ-018-TELEMETRY-ADMISSION-AGENT-RECOMMENDATION.md
 decision_packet_ref=DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.json
 agent_next_step_recommendation=TWO_PROVIDER_RECOMMENDED_OPTION_A
 production_customer_recommendable_now=false
-human_decision_recorded=false
-immutable_dba_baseline_created=false
-implementation_authorized=false
-result=READY_FOR_HUMAN_DECISION
-next_gate=HUMAN_DQ_018_DECISION
+human_decision_recorded=true
+immutable_dba_baseline_created=true
+implementation_authorized=true
+implementation_complete=true
+result=IMPLEMENTED_PR_G2A_REVIEW_READY_NOT_APPROVED
+next_gate=PR_G2A_HUMAN_REVIEW
 ```
 
-`READY_FOR_HUMAN_DECISION` 不是 gate pass、Authorization、Implementation 或 Production Readiness。
+该记录已从 decision readiness 演进为 implementation receipt 路由；它仍不是 PR-G2A Human
+Approval、完整 PR-G2 或 Production Readiness。
+
+### PR-G2A Evidence Record（PR-G2A 证据记录）
+
+```text
+gate_record_id=TMAI-PR-G2A-20260722-001
+gate_id=PR-G2A
+integration_track=DBOS_OFFLINE_TELEMETRY_ADMISSION_REFERENCE
+scope=DQ_018_METADATA_ONLY_NO_LISTENER_SQLITE_REFERENCE
+evidence_refs=DBOS_PR_2A_GIT_AUTHORIZATION_RECORD_AND_DBOS_REMOTE_RECEIPTS
+observed_version_or_commit=SOURCE_5c52c1c_RECEIPT_aa6440e_MANIFEST_fdda745c
+positive_checks=531_TESTS_197_TELEMETRY_TESTS_35_VALIDATORS_68_OTEL_CASES_7_FINDINGS_FIXED_REPRODUCIBLE_WHEEL_ROLLBACK_PASS
+negative_checks=23_DQ020_CASES_BLOCKED_ZERO_AUTHORITY_EFFECTS_NO_LISTENER_NO_COLLECTOR_NO_SAEE
+unknowns=HUMAN_SECURITY_REVIEW_CROSS_PLATFORM_TA_P005_ONE_HOUR_PR_G2B_PR_G2T_PR_G2I_PR_G2C
+result=READY_FOR_HUMAN_REVIEW_NOT_APPROVED
+reviewed_by_ref=codex_independent_technical_review
+reviewed_at=2026-07-22
+next_gate=HUMAN_PR_G2A_DECISION
+```
+
+`READY_FOR_HUMAN_REVIEW_NOT_APPROVED` 是审查输入，不是 gate `PASS`。完整 `PR-G2` 仍为
+`BLOCKED`。
 
 ### Proposed Staged Production Path Record（拟议分阶段生产路径）
 

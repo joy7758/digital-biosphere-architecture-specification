@@ -1,54 +1,42 @@
 {
-  "schema_version": "0.1.0",
+  "schema_version": "0.2.0",
   "document_id": "TMAI-DBOS-PR-2A-GIT-AUTHORIZATION-20260722",
-  "status": "AUTHORIZED_AND_EXECUTED",
+  "status": "AUTHORIZED_AND_EXECUTED_PR_G2A_REVIEW_READY",
   "decision_reference": "DQ-018",
   "authorization": {
     "selected_token": "DBOS_PR_2A_GIT=AUTHORIZE_COMMIT_AND_PUSH",
     "decided_by_ref": "zhangbin",
     "authorized_at": "2026-07-22T19:14:31+08:00",
-    "basis": "EXPLICIT_FULL_PERMISSION_AND_FUTURE_RECOMMENDED_AUTHORIZATION_DIRECTIVE",
     "target_repository": "digital-biosphere-os",
     "target_branch": "codex/telemetry-admission-foundation",
-    "base_commit": "cd3f867c4379ec555c45e7d554088ad12ce08a24",
-    "implementation_manifest_sha256": "9a8c3546a925812f0da86dad6cd09aa4680b2b29b734cd07dcfa9bc51f8dfe95",
-    "implementation_file_count": 56,
-    "implementation_bytes": 704010,
-    "previous_incomplete_scope_manifest_sha256": "f09e99b95a3332d40abc933eaee35ea8a646b11d330ffaa5213ee0bb28f339b4",
-    "manifest_scope_correction": "ADD_THREE_SQL_MIGRATION_FILES_TO_SOURCE_MANIFEST"
+    "base_commit": "cd3f867c4379ec555c45e7d554088ad12ce08a24"
   },
-  "authorized_actions": [
-    "commit exact DQ-018 source/test/report scope",
-    "push codex/telemetry-admission-foundation without force",
-    "clean-clone and validate the pushed commit",
-    "commit and push receipt-only PR-G2 review-packet updates"
-  ],
-  "preconditions": {
-    "dba_authorization_record_committed_and_pushed": true,
-    "dbos_manifest_still_matches": true,
-    "dbos_remote_ref_checked": true,
-    "non_fast_forward_or_force_push_allowed": false
-  },
-  "manifest_reconciliation": {
-    "result": "PASS_AFTER_SCOPE_CORRECTION",
-    "expected_file_count": 56,
-    "staged_file_count": 56,
-    "missing_from_stage": [],
-    "extra_in_stage": [],
-    "old_receipts_are_current_exact_source_evidence": false,
-    "clean_clone_revalidation_required": false,
-    "clean_clone_revalidation_completed": true
-  },
-  "execution_receipt": {
-    "executed_at": "2026-07-22T19:35:08+08:00",
-    "dba_authorization_commit": "7f2d3a0e39f65a92b7a96ea899ca12e3c050a0db",
-    "dbos_source_commit": "a3e491c954e911d84baa09fd6d9466fb80280941",
-    "dbos_receipt_commit": "5f437b0719936470535211b796af3e9722e8f11b",
+  "source_binding": {
+    "historical_source_commit": "a3e491c954e911d84baa09fd6d9466fb80280941",
+    "hardened_exact_source_commit": "5c52c1c2f44767c0b13b4ac9670425721b9ea0dd",
+    "receipt_commit": "aa6440e83f35cc63483f487367ccb573bba7681a",
     "remote_branch": "codex/telemetry-admission-foundation",
     "remote_receipt_commit_matches_local": true,
+    "implementation_manifest_sha256": "fdda745c3907e35ac92769740f07afc81483be674568879a3c0314c2a09baa51",
+    "implementation_file_count": 56,
+    "implementation_bytes": 714335,
+    "historical_manifest_sha256": "9a8c3546a925812f0da86dad6cd09aa4680b2b29b734cd07dcfa9bc51f8dfe95"
+  },
+  "execution_receipt": {
+    "dba_authorization_commit": "7f2d3a0e39f65a92b7a96ea899ca12e3c050a0db",
+    "dba_governance_receipt_commit": "05589af948a788f38982b5b197427a6e1c357fa8",
     "clean_clone_validation": "PASS",
-    "pr_g2_readiness": "READY_FOR_HUMAN_REVIEW_NOT_APPROVED",
-    "review_packet": "reports/telemetry-admission-foundation/DBOS-PR-2A-PR-G2-REVIEW-PACKET-2026-07-22.json"
+    "full_tests": "531/531 PASS",
+    "telemetry_tests": "197/197 PASS",
+    "validators": "35/35 PASS",
+    "otel_authorized_cases": "68/68 PASS",
+    "independent_findings_fixed": 7,
+    "new_negative_or_recovery_tests": 8,
+    "reproducible_wheel_sha256": "240828497ab265d3703f60ce5d71c2d49bc623c092ad607d8b2f8762ffc42e41",
+    "pr_g2a_readiness": "READY_FOR_HUMAN_REVIEW_NOT_APPROVED",
+    "full_pr_g2_ready": false,
+    "full_pr_g2_blocked_by": ["PR-G2B", "PR-G2T", "PR-G2I", "PR-G2C"],
+    "review_packet": "reports/telemetry-admission-foundation/DBOS-PR-2A-PR-G2A-REVIEW-PACKET-2026-07-22.json"
   },
   "effects": {
     "dbos_commit_authorized": true,
@@ -72,8 +60,9 @@
     "evidence_created": false,
     "verification_created": false,
     "saee_called": false,
-    "pr_g2_ready_for_human_review": true,
-    "pr_g2_approved": false,
+    "pr_g2a_ready_for_human_review": true,
+    "pr_g2a_approved": false,
+    "full_pr_g2_ready": false,
     "production_ready": false
   }
 }
