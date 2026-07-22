@@ -36,8 +36,8 @@ test("renders equivalent Chinese and English public entry points", async () => {
   assert.equal(enResponse.status, 200);
 
   const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
-  assert.match(zh, /面向多智能体系统的可信基础设施/);
-  assert.match(en, /Trust infrastructure for multi-agent systems/);
+  assert.match(zh, /面向长期、协作和可验证数字主体的基础设施|面向长期运行、协作和可验证数字主体的基础设施/);
+  assert.match(en, /Infrastructure for long-running, collaborative, and verifiable digital entities/);
   for (const marker of expectedMarkers.zhHome) assert.match(zh, new RegExp(marker));
   for (const marker of expectedMarkers.enHome) assert.match(en, new RegExp(marker));
   assert.match(zh, /Evidence/);
@@ -116,7 +116,34 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.license.identifier, "Apache-2.0");
   assert.equal(status.public_website.deployed, true);
   assert.equal(status.public_website.rollback_validated, true);
+  assert.equal(status.production_path.otlp_reference_candidate_version, "1.11.0");
+  assert.equal(status.production_path.otlp_reference_version_status, "ADOPTED_REFERENCE_NOT_RUNTIME_PROOF");
+  assert.equal(status.production_path.dq_022_status, "DECIDED_REFERENCE_ADOPTED");
+  assert.equal(status.production_path.dq_022_human_decision_recorded, true);
+  assert.equal(status.production_path.otlp_reference_adoption_recommended_by_two_agents, true);
+  assert.equal(status.production_path.opentelemetry_production_alignment_matrix_defined, true);
+  assert.equal(status.production_path.production_gate_evidence_manifest_contract_defined, true);
+  assert.equal(status.production_path.production_gate_evidence_profile_registry_status, "PROPOSED_NOT_ADOPTED");
+  assert.equal(status.production_path.production_gate_evidence_validator_implemented, false);
+  assert.equal(status.production_path.any_production_gate_pass_created, false);
+  assert.equal(status.production_path.production_evidence_contract_agent_review_complete, true);
+  assert.equal(status.production_path.s0_architecture_contract_freeze_recommended_by_two_agents, true);
+  assert.equal(status.production_path.s0_architecture_freeze_design_blockers, 0);
+  assert.equal(
+    agentIndex.production_path.otlp_reference_candidate_version,
+    status.production_path.otlp_reference_candidate_version,
+  );
+  assert.equal(agentIndex.production_path.otlp_reference_version_adopted, true);
+  assert.equal(agentIndex.production_path.dq_022_status, "DECIDED_REFERENCE_ADOPTED");
+  assert.equal(agentIndex.production_path.production_gate_evidence_manifest_contract_defined, true);
+  assert.equal(agentIndex.production_path.production_gate_evidence_validator_implemented, false);
+  assert.equal(agentIndex.production_path.any_production_gate_pass_created, false);
+  assert.equal(agentIndex.production_path.s0_architecture_contract_freeze_recommended_by_two_agents, true);
   assert.match(llms, /Recommendation != Decision/);
+  assert.match(llms, /production-gate-evidence-manifest-specification/);
+  assert.match(llms, /production-gate-evidence-manifest\.schema\.v0\.1\.json/);
+  assert.match(llms, /DQ_022_STATUS=DECIDED_REFERENCE_ADOPTED/);
+  assert.match(llms, /OTLP_REFERENCE_VERSION_ADOPTED=true/);
   assert.match(llms, /DBOS records -> SAEE evaluation\/recommendation -> Governance Decision review\/adoption -> DBOS authorized execution/);
   assert.match(llms, /OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY/);
   assert.match(

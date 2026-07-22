@@ -21,9 +21,10 @@ implementation_claims: none
 | Execution（执行） | 负责受约束的执行面语义和执行记录 | 不负责执行；读取历史 | 执行具体任务 | 本规范不声明执行能力已实现 |
 | Execution History（执行历史） | 产生或登记有来源的记录 | 使用 | 是记录来源之一 | 记录存在不等于执行正确 |
 | Evidence（证据） | 采集、登记或引用 Evidence Bundle | 评价 | 产生行为与任务结果材料 | DBOS 产生/管理证据材料，SAEE 评价证据；证据不自动等于真相 |
-| Verification（验证） | 负责有界验证结果 | 使用并纳入评价 | 提供被验证对象或材料 | 验证结果不自动等于适应度 |
+| Verification（验证） | 负责独立 Verification Object 与有界验证结果 | 使用并纳入评价 | 提供被验证对象或材料 | Verification 引用 Evidence，但不修改 Evidence；结果不自动等于 Truth、适应度或 Permission |
 | Resource Usage（资源使用） | 记录或提供数据 | 解释为适应度/风险输入 | 在执行中消耗资源 | 用量本身不带价值判断 |
 | Behavior Trace（行为轨迹） | 记录或引用 | 评价模式与风险 | 产生行为 | 轨迹不自动证明意图或因果 |
+| Observability Telemetry（可观测性遥测） | 接纳或引用经版本标识的 Trace、Metric、Log、Resource 与 Context；决定是否进入 DBOS 记录 | 只读取 DBOS 已接纳且契约允许的材料 | 通过 SDK/adapter 产生 observation material（观察材料） | OpenTelemetry SDK/Collector 是传输与处理基础设施，不是 Evidence、Verification、Truth、Permission 或评价权威 |
 | Fitness（适应度） | 提供身份、运行、资源与验证数据 | 负责 Fitness Assessment | 被评价 | DBOS 不定义 SAEE 适应度算法 |
 | Risk（风险） | 提供运行约束与历史输入 | 负责 Risk Assessment | 暴露任务情境与影响 | 风险评估不自动执行限制 |
 | Ecological Stability（生态稳定性） | 提供群体与运行侧材料 | 负责分析 | 作为生态成员被观察 | 局部验证不能替代生态分析 |

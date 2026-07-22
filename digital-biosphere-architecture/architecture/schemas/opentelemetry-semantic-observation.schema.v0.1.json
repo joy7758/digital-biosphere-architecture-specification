@@ -1,0 +1,409 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/opentelemetry-semantic-observation.schema.v0.1.json",
+  "title": "TMAI OpenTelemetry Semantic Observation Envelope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "observation_id",
+    "status",
+    "synthetic",
+    "source_binding",
+    "mapping_binding",
+    "data_governance_binding",
+    "trusted_bindings",
+    "resource",
+    "instrumentation_scope",
+    "signal",
+    "mapping_result",
+    "effects"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "observation_id": {"type": "string", "minLength": 1, "maxLength": 256},
+    "status": {"enum": ["NOT_ASSESSED", "REJECTED", "PARTIAL", "ACCEPTED_MATERIAL_ONLY"]},
+    "synthetic": {"type": "boolean"},
+    "source_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["otel_specification", "core_semconv", "genai_semconv_commit", "genai_schema_url", "otlp"],
+      "properties": {
+        "otel_specification": {"const": "v1.59.0@a824fb4eba795c5c65dd397b3d22e7c28e934de3"},
+        "core_semconv": {"const": "v1.43.0@89aae438b3b3b0a8dd33003c9d70592baf7dbd0d"},
+        "genai_semconv_commit": {"const": "2e994c6d59a93bb4fc1752c5378eedb9b8e14d6b"},
+        "genai_schema_url": {"type": "null"},
+        "otlp": {"const": "v1.11.0@790608c4d51e6ffc12210b541e8514cbed9e91a4"}
+      }
+    },
+    "mapping_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["catalog_id", "catalog_status", "catalog_digest", "profile_id", "profile_digest"],
+      "properties": {
+        "catalog_id": {"const": "TMAI-OTEL-SEMANTIC-MAPPING-0.1"},
+        "catalog_status": {"const": "ADOPTED_CONTRACT_NOT_IMPLEMENTED"},
+        "catalog_digest": {"$ref": "#/$defs/digest_or_synthetic"},
+        "profile_id": {"const": "TMAI-OTEL-SEMANTIC-CONVENTIONS-PROFILE-0.1"},
+        "profile_digest": {"$ref": "#/$defs/digest_or_synthetic"}
+      }
+    },
+    "data_governance_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "decision_reference",
+        "policy_digest",
+        "field_allowlist",
+        "retention_reference",
+        "residency_reference",
+        "access_policy_reference",
+        "redaction_policy_reference"
+      ],
+      "properties": {
+        "status": {"enum": ["NOT_APPLICABLE_DISABLED", "AUTHORIZED", "REJECTED_MISSING_OR_INVALID"]},
+        "decision_reference": {"type": ["string", "null"], "maxLength": 512},
+        "policy_digest": {"type": ["string", "null"], "pattern": "^sha256:[0-9a-f]{64}$"},
+        "field_allowlist": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^gen_ai\\.[a-z0-9_.]+$"}},
+        "retention_reference": {"type": ["string", "null"], "maxLength": 512},
+        "residency_reference": {"type": ["string", "null"], "maxLength": 512},
+        "access_policy_reference": {"type": ["string", "null"], "maxLength": 512},
+        "redaction_policy_reference": {"type": ["string", "null"], "maxLength": 512}
+      }
+    },
+    "trusted_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["binding_source", "entity_reference", "execution_reference", "capability_reference", "binding_record_digest"],
+      "properties": {
+        "binding_source": {"enum": ["NONE", "DBOS_CONTEXT"]},
+        "entity_reference": {"type": ["string", "null"], "maxLength": 512},
+        "execution_reference": {"type": ["string", "null"], "maxLength": 512},
+        "capability_reference": {"type": ["string", "null"], "maxLength": 512},
+        "binding_record_digest": {"type": ["string", "null"], "pattern": "^sha256:[0-9a-f]{64}$"}
+      }
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["service_namespace", "service_name", "service_instance_id", "service_version", "deployment_environment_name"],
+      "properties": {
+        "service_namespace": {"type": ["string", "null"], "maxLength": 256},
+        "service_name": {"type": "string", "minLength": 1, "maxLength": 256},
+        "service_instance_id": {"type": ["string", "null"], "maxLength": 512},
+        "service_version": {"type": ["string", "null"], "maxLength": 256},
+        "deployment_environment_name": {"type": ["string", "null"], "maxLength": 128}
+      }
+    },
+    "instrumentation_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "version", "schema_url", "sdk_name", "sdk_language", "sdk_version"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1, "maxLength": 256},
+        "version": {"type": ["string", "null"], "maxLength": 256},
+        "schema_url": {"type": ["string", "null"], "format": "uri-reference", "maxLength": 2048},
+        "sdk_name": {"type": "string", "minLength": 1, "maxLength": 256},
+        "sdk_language": {"type": "string", "minLength": 1, "maxLength": 128},
+        "sdk_version": {"type": "string", "minLength": 1, "maxLength": 256}
+      }
+    },
+    "signal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["signal_type", "trace_id", "span_id", "parent_span_id", "span_name", "span_kind", "span_status", "attributes"],
+      "properties": {
+        "signal_type": {"enum": ["TRACE", "METRIC", "LOG"]},
+        "trace_id": {"type": ["string", "null"], "pattern": "^[0-9a-f]{32}$"},
+        "span_id": {"type": ["string", "null"], "pattern": "^[0-9a-f]{16}$"},
+        "parent_span_id": {"type": ["string", "null"], "pattern": "^[0-9a-f]{16}$"},
+        "span_name": {"type": ["string", "null"], "maxLength": 512},
+        "span_kind": {"enum": ["UNSPECIFIED", "INTERNAL", "SERVER", "CLIENT", "PRODUCER", "CONSUMER", null]},
+        "span_status": {"enum": ["UNSET", "OK", "ERROR", null]},
+        "attributes": {
+          "type": "object",
+          "propertyNames": {
+            "allOf": [
+              {"pattern": "^[a-z][a-z0-9_.]*$"},
+              {"not": {"pattern": "^(tmai|dbos|saee)\\."}},
+              {"not": {"enum": ["entity_id", "execution_id", "permission", "authorization", "evidence_status", "verification_status", "verified"]}}
+            ]
+          },
+          "additionalProperties": {
+            "anyOf": [
+              {"type": "string", "maxLength": 4096},
+              {"type": "number"},
+              {"type": "integer"},
+              {"type": "boolean"},
+              {"type": "array", "maxItems": 64, "items": {"type": ["string", "number", "integer", "boolean"]}}
+            ]
+          }
+        }
+      }
+    },
+    "mapping_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "matched_mapping_ids",
+        "identity_binding_status",
+        "execution_binding_status",
+        "capability_binding_status",
+        "content_capture_state",
+        "deprecated_fields",
+        "unknown_fields",
+        "limitations"
+      ],
+      "properties": {
+        "matched_mapping_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^OTEL-SM-[0-9]{3}$"}
+        },
+        "identity_binding_status": {"enum": ["NOT_ASSESSED", "UNBOUND", "REJECTED", "BOUND_BY_INDEPENDENT_DBOS_CONTEXT"]},
+        "execution_binding_status": {"enum": ["NOT_ASSESSED", "UNBOUND", "REJECTED", "BOUND_BY_INDEPENDENT_DBOS_CONTEXT"]},
+        "capability_binding_status": {"enum": ["NOT_ASSESSED", "UNBOUND", "REJECTED", "BOUND_BY_INDEPENDENT_DBOS_CONTEXT"]},
+        "content_capture_state": {"enum": ["DISABLED", "METADATA_ONLY", "OPT_IN_REDACTED", "REJECTED"]},
+        "deprecated_fields": {"type": "array", "uniqueItems": true, "items": {"type": "string", "maxLength": 256}},
+        "unknown_fields": {"type": "array", "uniqueItems": true, "items": {"type": "string", "maxLength": 256}},
+        "limitations": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 1024}}
+      }
+    },
+    "effects": {"$ref": "#/$defs/no_effects"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "NOT_ASSESSED"}}, "required": ["status"]},
+      "then": {
+        "properties": {
+          "mapping_result": {
+            "properties": {
+              "identity_binding_status": {"const": "NOT_ASSESSED"},
+              "execution_binding_status": {"const": "NOT_ASSESSED"},
+              "capability_binding_status": {"const": "NOT_ASSESSED"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"synthetic": {"const": true}}, "required": ["synthetic"]},
+      "then": {"properties": {"status": {"const": "NOT_ASSESSED"}}}
+    },
+    {
+      "if": {
+        "properties": {
+          "mapping_result": {"properties": {"content_capture_state": {"const": "DISABLED"}}, "required": ["content_capture_state"]}
+        },
+        "required": ["mapping_result"]
+      },
+      "then": {
+        "properties": {
+          "signal": {
+            "properties": {
+              "attributes": {
+                "propertyNames": {
+                  "not": {
+                    "enum": [
+                      "gen_ai.system_instructions",
+                      "gen_ai.input.messages",
+                      "gen_ai.output.messages",
+                      "gen_ai.tool.call.arguments",
+                      "gen_ai.tool.call.result",
+                      "gen_ai.retrieval.query.text",
+                      "gen_ai.retrieval.documents",
+                      "gen_ai.evaluation.explanation"
+                    ]
+                  }
+                }
+              }
+            }
+          },
+          "data_governance_binding": {
+            "properties": {
+              "status": {"const": "NOT_APPLICABLE_DISABLED"},
+              "decision_reference": {"type": "null"},
+              "policy_digest": {"type": "null"},
+              "field_allowlist": {"maxItems": 0},
+              "retention_reference": {"type": "null"},
+              "residency_reference": {"type": "null"},
+              "access_policy_reference": {"type": "null"},
+              "redaction_policy_reference": {"type": "null"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "signal": {"properties": {"signal_type": {"const": "METRIC"}}, "required": ["signal_type"]}
+        },
+        "required": ["signal"]
+      },
+      "then": {
+        "properties": {
+          "signal": {
+            "properties": {
+              "attributes": {
+                "propertyNames": {
+                  "not": {
+                    "enum": ["service.instance.id", "trace_id", "span_id", "parent_span_id", "gen_ai.agent.id", "gen_ai.conversation.id", "gen_ai.tool.call.id"]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mapping_result": {"properties": {"content_capture_state": {"const": "OPT_IN_REDACTED"}}, "required": ["content_capture_state"]}
+        },
+        "required": ["mapping_result"]
+      },
+      "then": {
+        "properties": {
+          "data_governance_binding": {
+            "properties": {
+              "status": {"const": "AUTHORIZED"},
+              "decision_reference": {"type": "string", "minLength": 1},
+              "policy_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+              "field_allowlist": {"minItems": 1},
+              "retention_reference": {"type": "string", "minLength": 1},
+              "residency_reference": {"type": "string", "minLength": 1},
+              "access_policy_reference": {"type": "string", "minLength": 1},
+              "redaction_policy_reference": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mapping_result": {"properties": {"identity_binding_status": {"const": "BOUND_BY_INDEPENDENT_DBOS_CONTEXT"}}, "required": ["identity_binding_status"]}
+        },
+        "required": ["mapping_result"]
+      },
+      "then": {
+        "properties": {
+          "trusted_bindings": {
+            "properties": {
+              "binding_source": {"const": "DBOS_CONTEXT"},
+              "entity_reference": {"type": "string", "minLength": 1},
+              "binding_record_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mapping_result": {"properties": {"execution_binding_status": {"const": "BOUND_BY_INDEPENDENT_DBOS_CONTEXT"}}, "required": ["execution_binding_status"]}
+        },
+        "required": ["mapping_result"]
+      },
+      "then": {
+        "properties": {
+          "trusted_bindings": {
+            "properties": {
+              "binding_source": {"const": "DBOS_CONTEXT"},
+              "execution_reference": {"type": "string", "minLength": 1},
+              "binding_record_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mapping_result": {"properties": {"capability_binding_status": {"const": "BOUND_BY_INDEPENDENT_DBOS_CONTEXT"}}, "required": ["capability_binding_status"]}
+        },
+        "required": ["mapping_result"]
+      },
+      "then": {
+        "properties": {
+          "trusted_bindings": {
+            "properties": {
+              "binding_source": {"const": "DBOS_CONTEXT"},
+              "capability_reference": {"type": "string", "minLength": 1},
+              "binding_record_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "mapping_result": {
+            "properties": {
+              "identity_binding_status": {"const": "NOT_ASSESSED"},
+              "execution_binding_status": {"const": "NOT_ASSESSED"},
+              "capability_binding_status": {"const": "NOT_ASSESSED"}
+            },
+            "required": ["identity_binding_status", "execution_binding_status", "capability_binding_status"]
+          }
+        },
+        "required": ["mapping_result"]
+      },
+      "then": {
+        "properties": {
+          "trusted_bindings": {
+            "properties": {
+              "binding_source": {"const": "NONE"},
+              "entity_reference": {"type": "null"},
+              "execution_reference": {"type": "null"},
+              "capability_reference": {"type": "null"},
+              "binding_record_digest": {"type": "null"}
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "digest_or_synthetic": {
+      "type": "string",
+      "pattern": "^(sha256:[0-9a-f]{64}|NOT_COMPUTED_SYNTHETIC)$"
+    },
+    "no_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "creates_entity",
+        "creates_identity",
+        "creates_capability",
+        "grants_permission",
+        "creates_execution",
+        "creates_evidence",
+        "creates_verification",
+        "creates_saee_evaluation",
+        "creates_governance_decision",
+        "authorizes_implementation",
+        "authorizes_deployment",
+        "production_ready"
+      ],
+      "properties": {
+        "creates_entity": {"const": false},
+        "creates_identity": {"const": false},
+        "creates_capability": {"const": false},
+        "grants_permission": {"const": false},
+        "creates_execution": {"const": false},
+        "creates_evidence": {"const": false},
+        "creates_verification": {"const": false},
+        "creates_saee_evaluation": {"const": false},
+        "creates_governance_decision": {"const": false},
+        "authorizes_implementation": {"const": false},
+        "authorizes_deployment": {"const": false},
+        "production_ready": {"const": false}
+      }
+    }
+  }
+}

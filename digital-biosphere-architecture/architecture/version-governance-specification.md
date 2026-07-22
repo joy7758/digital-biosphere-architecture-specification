@@ -44,10 +44,12 @@ VERSION_NUMBER_GRANTS_AUTHORITY=false
 | Interface Version（接口版本） | SAEE ↔ DBOS 的字段、方向、状态和权限边界 | 指定接口 profile（接口配置） | API、endpoint 或 runtime handshake 已存在 |
 | Data Contract Version（数据契约版本） | Entity、Execution、Evidence、Evaluation、Recommendation、Decision 等对象语义与 Owner | 指定对象集合和字段语义 | schema 已序列化或数据库已迁移 |
 | Lifecycle Model Version（生命周期模型版本） | Entity、Decision 及其他已规范生命周期的状态与转换 | 指定状态机、转换 gate 和 Owner | Runtime 状态已迁移或实例已改变 |
+| External Normative Reference Version（外部规范参考版本） | OpenTelemetry、OTLP、W3C 或其他被 TMAI 引用的外部协议/标准 exact version | upstream repository/tag/commit、selected scope、delta、compatibility 和 exclusion | 任何 SDK、Collector、Runtime 或 implementation 已升级、互操作或通过符合性 |
 
 ### 2.1 组合规则
 
 - Architecture Version 可以引用一个或多个 Interface、Data Contract 和 Lifecycle Model Version；
+- Architecture / Interface Version 可以引用 External Normative Reference Version，但必须记录 upstream drift 和 selected profile scope；
 - 引用表示规范依赖，不表示实现依赖已经满足；
 - 每个引用必须保留版本类型、版本号、范围和兼容性状态；
 - 若组合中存在 `unknown` 或 `incompatible`，Release Proposal 必须显式记录限制，不能默认兼容；
@@ -70,7 +72,7 @@ VERSION_NUMBER_GRANTS_AUTHORITY=false
 | 字段 | 语义 |
 |---|---|
 | `version_id` | 版本记录的稳定引用 |
-| `version_type` | architecture、interface、data_contract 或 lifecycle_model |
+| `version_type` | architecture、interface、data_contract、lifecycle_model 或 external_normative_reference |
 | `version_number` | `vMAJOR.MINOR[.PATCH]` 标识 |
 | `scope` | 该版本覆盖的规范对象和边界 |
 | `status` | Draft、Reviewed、Accepted、Current、Deprecated 或 Archived |

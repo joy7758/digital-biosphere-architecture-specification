@@ -1,0 +1,4110 @@
+{
+  "catalog_schema_version": "0.1",
+  "catalog_id": "TMAI-OTLP-CONFORMANCE-V1.11-0.1",
+  "status": "ADOPTED_CONTRACT_NOT_EXECUTED",
+  "architecture_owner": "digital-biosphere-architecture",
+  "reference": {
+    "decision_id": "DQ-022",
+    "adoption_status": "ADOPTED_REFERENCE",
+    "repository": "https://github.com/open-telemetry/opentelemetry-proto",
+    "previous_tag": "v1.10.0",
+    "previous_commit": "ca839c51f706f5d53bfb46f06c3e90c3af3a52c6",
+    "candidate_tag": "v1.11.0",
+    "candidate_commit": "790608c4d51e6ffc12210b541e8514cbed9e91a4",
+    "observed_at": "2026-07-22",
+    "source_urls": [
+      "https://github.com/open-telemetry/opentelemetry-proto/releases/tag/v1.11.0",
+      "https://github.com/open-telemetry/opentelemetry-proto/compare/v1.10.0...v1.11.0",
+      "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+      "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/README.md#maturity-level"
+    ]
+  },
+  "profiles": {
+    "selected_stable_signals": [
+      "TRACES",
+      "METRICS",
+      "LOGS"
+    ],
+    "excluded_signals": [
+      "PROFILES",
+      "PROCESS_CONTEXT"
+    ],
+    "reference_request_limit_bytes": 67108864,
+    "reference_response_limit_bytes": 4194304,
+    "limit_policy": "RECOMMENDED_REFERENCE_MAXIMUM_DEPLOYMENT_MUST_FREEZE_EXACT_VALUES",
+    "unknown_acceptance_retained": true
+  },
+  "case_groups": [
+    {
+      "group_id": "OTLP-CG-SIGNAL_SCHEMA",
+      "title": "Stable signal and schema boundary",
+      "layers": [
+        "REFERENCE_DECODER"
+      ],
+      "required_for_gates": [
+        "DQ-018",
+        "DQ-022",
+        "PR-G2"
+      ],
+      "required_case_ids": [
+        "OTLP-CF-SIG-001",
+        "OTLP-CF-SIG-002",
+        "OTLP-CF-SIG-003",
+        "OTLP-CF-SIG-004",
+        "OTLP-CF-SIG-005",
+        "OTLP-CF-SIG-006",
+        "OTLP-CF-SIG-007",
+        "OTLP-CF-SIG-008",
+        "OTLP-CF-SIG-009"
+      ]
+    },
+    {
+      "group_id": "OTLP-CG-GRPC_SIZE",
+      "title": "gRPC request and response size boundary",
+      "layers": [
+        "DEPLOYMENT_TRANSPORT"
+      ],
+      "required_for_gates": [
+        "DQ-020",
+        "DQ-022",
+        "PR-G3A",
+        "PR-G5"
+      ],
+      "required_case_ids": [
+        "OTLP-CF-GRPC-001",
+        "OTLP-CF-GRPC-002",
+        "OTLP-CF-GRPC-003",
+        "OTLP-CF-GRPC-004",
+        "OTLP-CF-GRPC-005",
+        "OTLP-CF-GRPC-006",
+        "OTLP-CF-GRPC-007",
+        "OTLP-CF-GRPC-008",
+        "OTLP-CF-GRPC-009"
+      ]
+    },
+    {
+      "group_id": "OTLP-CG-HTTP_SIZE",
+      "title": "HTTP request and response size boundary",
+      "layers": [
+        "DEPLOYMENT_TRANSPORT"
+      ],
+      "required_for_gates": [
+        "DQ-020",
+        "DQ-022",
+        "PR-G3A",
+        "PR-G5"
+      ],
+      "required_case_ids": [
+        "OTLP-CF-HTTP-001",
+        "OTLP-CF-HTTP-002",
+        "OTLP-CF-HTTP-003",
+        "OTLP-CF-HTTP-004",
+        "OTLP-CF-HTTP-005",
+        "OTLP-CF-HTTP-006",
+        "OTLP-CF-HTTP-007",
+        "OTLP-CF-HTTP-008",
+        "OTLP-CF-HTTP-009"
+      ]
+    },
+    {
+      "group_id": "OTLP-CG-RETRY_PARTIAL",
+      "title": "Success, partial, retry and disconnect behavior",
+      "layers": [
+        "DEPLOYMENT_TRANSPORT"
+      ],
+      "required_for_gates": [
+        "DQ-020",
+        "PR-G3A",
+        "PR-G3D",
+        "PR-G5"
+      ],
+      "required_case_ids": [
+        "OTLP-CF-RETRY-001",
+        "OTLP-CF-RETRY-002",
+        "OTLP-CF-RETRY-003",
+        "OTLP-CF-RETRY-004",
+        "OTLP-CF-RETRY-005",
+        "OTLP-CF-RETRY-006",
+        "OTLP-CF-RETRY-007",
+        "OTLP-CF-RETRY-008",
+        "OTLP-CF-RETRY-009",
+        "OTLP-CF-RETRY-010",
+        "OTLP-CF-RETRY-011",
+        "OTLP-CF-RETRY-012",
+        "OTLP-CF-RETRY-013",
+        "OTLP-CF-RETRY-014",
+        "OTLP-CF-RETRY-015",
+        "OTLP-CF-RETRY-016"
+      ]
+    },
+    {
+      "group_id": "OTLP-CG-DELIVERY_RECONCILIATION",
+      "title": "Per-hop delivery reconciliation",
+      "layers": [
+        "END_TO_END_RECONCILIATION"
+      ],
+      "required_for_gates": [
+        "PR-G3",
+        "PR-G5",
+        "PR-G6"
+      ],
+      "required_case_ids": [
+        "OTLP-CF-DELIV-001",
+        "OTLP-CF-DELIV-002",
+        "OTLP-CF-DELIV-003",
+        "OTLP-CF-DELIV-004",
+        "OTLP-CF-DELIV-005"
+      ]
+    },
+    {
+      "group_id": "OTLP-CG-AUTHORITY_BOUNDARY",
+      "title": "Identity, evidence and permission non-elevation",
+      "layers": [
+        "AUTHORITY_BOUNDARY"
+      ],
+      "required_for_gates": [
+        "DQ-018",
+        "PR-G2",
+        "PR-G3"
+      ],
+      "required_case_ids": [
+        "OTLP-CF-AUTH-001",
+        "OTLP-CF-AUTH-002",
+        "OTLP-CF-AUTH-003"
+      ]
+    },
+    {
+      "group_id": "OTLP-CG-DEPLOYMENT_SECURITY_CAPACITY",
+      "title": "Deployment authentication, data and resource boundary",
+      "layers": [
+        "DEPLOYMENT_TRANSPORT"
+      ],
+      "required_for_gates": [
+        "DQ-020",
+        "PR-G3",
+        "PR-G5"
+      ],
+      "required_case_ids": [
+        "OTLP-CF-AUTH-004",
+        "OTLP-CF-AUTH-005",
+        "OTLP-CF-AUTH-006",
+        "OTLP-CF-AUTH-007",
+        "OTLP-CF-AUTH-008"
+      ]
+    }
+  ],
+  "cases": [
+    {
+      "case_id": "OTLP-CF-SIG-001",
+      "title": "Stable Trace request",
+      "objective": "Decode a minimum valid OTLP Trace request in the selected stable scope.",
+      "layer": "REFERENCE_DECODER",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-018",
+        "PR-G2"
+      ],
+      "control_refs": [
+        "OTEL-C005",
+        "TA-C001"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Maturity levels and OTLP/Protobuf Trace request",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES"
+      ],
+      "transport": "NOT_APPLICABLE",
+      "coverage_domains": [
+        "positive"
+      ],
+      "preconditions": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "stimulus": "Decode a deterministic minimum valid ExportTraceServiceRequest fixture.",
+      "expected_outcome": {
+        "protocol_result": "Decode selected stable fields and emit metadata-only admission material.",
+        "retry_class": "NOT_APPLICABLE",
+        "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+        "required_state": "No Evidence ID, identity, permission or execution result is created."
+      },
+      "required_observations": [
+        "decoder result",
+        "selected field inventory",
+        "output allowlist",
+        "zero network access"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture digest",
+        "decoder implementation commit and artifact digest",
+        "decoded field inventory",
+        "network-denial observation"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-SIG-002",
+      "title": "Stable Metric request",
+      "objective": "Decode a minimum valid OTLP Metric request in the selected stable scope.",
+      "layer": "REFERENCE_DECODER",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-018",
+        "PR-G2"
+      ],
+      "control_refs": [
+        "OTEL-C005",
+        "TA-C002"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Maturity levels and OTLP/Protobuf Metrics request",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "METRICS"
+      ],
+      "transport": "NOT_APPLICABLE",
+      "coverage_domains": [
+        "positive"
+      ],
+      "preconditions": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "stimulus": "Decode a deterministic minimum valid ExportMetricsServiceRequest fixture.",
+      "expected_outcome": {
+        "protocol_result": "Decode selected stable fields and emit metadata-only admission material.",
+        "retry_class": "NOT_APPLICABLE",
+        "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+        "required_state": "Metric temporality and schema limitations remain explicit; no Evidence is created."
+      },
+      "required_observations": [
+        "decoder result",
+        "metric field inventory",
+        "temporality and schema limitation",
+        "zero network access"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture digest",
+        "decoder implementation commit and artifact digest",
+        "decoded field inventory",
+        "network-denial observation"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-SIG-003",
+      "title": "Stable Log request",
+      "objective": "Decode a minimum valid OTLP Log request in the selected stable scope.",
+      "layer": "REFERENCE_DECODER",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-018",
+        "PR-G2"
+      ],
+      "control_refs": [
+        "OTEL-C005",
+        "TA-C003"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Maturity levels and OTLP/Protobuf Logs request",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "LOGS"
+      ],
+      "transport": "NOT_APPLICABLE",
+      "coverage_domains": [
+        "positive",
+        "data_governance"
+      ],
+      "preconditions": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "stimulus": "Decode a deterministic minimum valid ExportLogsServiceRequest fixture without retaining raw log body content.",
+      "expected_outcome": {
+        "protocol_result": "Decode selected metadata fields; content capture remains disabled.",
+        "retry_class": "NOT_APPLICABLE",
+        "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+        "required_state": "No raw log content or Evidence Object is persisted."
+      },
+      "required_observations": [
+        "decoder result",
+        "metadata allowlist",
+        "content capture disabled",
+        "zero network access"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture digest",
+        "decoder implementation commit and artifact digest",
+        "content-canary scan",
+        "network-denial observation"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-SIG-004",
+      "title": "Profiles excluded",
+      "objective": "Fail closed on the Development Profiles signal in the TMAI v0.1 selected scope.",
+      "layer": "REFERENCE_DECODER",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-018",
+        "PR-G2"
+      ],
+      "control_refs": [
+        "OTEL-C005",
+        "TA-C004"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Maturity levels: Profiles Development",
+          "requirement_class": "UPSTREAM_INFORMATIONAL"
+        }
+      ],
+      "signals": [
+        "PROFILES"
+      ],
+      "transport": "NOT_APPLICABLE",
+      "coverage_domains": [
+        "negative",
+        "authority_separation"
+      ],
+      "preconditions": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "stimulus": "Present a syntactically valid Profiles request to the offline selected-scope decoder.",
+      "expected_outcome": {
+        "protocol_result": "Reject as unsupported selected-scope signal with a stable bounded reason.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_ACCEPTED",
+        "required_state": "No fallback mapping to Trace, Metric, Log, Evidence or Execution is allowed."
+      },
+      "required_observations": [
+        "stable unsupported-signal reason",
+        "no admission row",
+        "no dynamic schema fetch"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION",
+        "MUST_NOT_CLAIM_PROFILES_CONFORMANCE"
+      ],
+      "evidence_requirements": [
+        "fixture digest",
+        "rejection result",
+        "absence-of-admission query",
+        "network-denial observation"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-SIG-005",
+      "title": "Process Context excluded from OTLP transport",
+      "objective": "Prevent Development Process Context messages from being treated as OTLP transport payloads.",
+      "layer": "REFERENCE_DECODER",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-018",
+        "PR-G2"
+      ],
+      "control_refs": [
+        "OTEL-C005",
+        "TA-C008"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Process Context is Development and is not part of OTLP transport",
+          "requirement_class": "UPSTREAM_INFORMATIONAL"
+        }
+      ],
+      "signals": [
+        "PROCESS_CONTEXT"
+      ],
+      "transport": "NOT_APPLICABLE",
+      "coverage_domains": [
+        "negative",
+        "authority_separation"
+      ],
+      "preconditions": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "stimulus": "Present a ProcessContext message or descriptor as though it were an OTLP export request.",
+      "expected_outcome": {
+        "protocol_result": "Reject as outside the selected OTLP transport scope.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_ACCEPTED",
+        "required_state": "No entity, execution, evidence or capability context is inferred."
+      },
+      "required_observations": [
+        "stable out-of-scope reason",
+        "no decoder routing to OTLP signal services",
+        "no admission row"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION",
+        "MUST_NOT_CLAIM_PROCESS_CONTEXT_IS_OTLP"
+      ],
+      "evidence_requirements": [
+        "fixture digest",
+        "routing table snapshot",
+        "rejection result"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-SIG-006",
+      "title": "Additive unknown protobuf field compatibility",
+      "objective": "Verify wire compatibility without promoting unknown protobuf fields into TMAI semantics.",
+      "layer": "REFERENCE_DECODER",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-018",
+        "PR-G2"
+      ],
+      "control_refs": [
+        "OTEL-C006",
+        "TA-C005"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP versioning and backward compatibility",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "NOT_APPLICABLE",
+      "coverage_domains": [
+        "positive",
+        "migration",
+        "authority_separation"
+      ],
+      "preconditions": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "stimulus": "Decode old-to-new and new-to-old selected-stable fixtures containing additive unknown protobuf fields.",
+      "expected_outcome": {
+        "protocol_result": "Known fields are processed and additive unknown wire fields do not alone cause rejection; mapped TMAI output remains exact-allowlist and records compatibility limitations.",
+        "retry_class": "NOT_APPLICABLE",
+        "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+        "required_state": "Unknown fields never gain identity, authority, evidence or evaluation meaning."
+      },
+      "required_observations": [
+        "old/new fixture matrix",
+        "known-field equivalence",
+        "unknown-field handling",
+        "mapped output allowlist"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "producer and receiver version digests",
+        "fixture digests",
+        "field-level comparison",
+        "limitation record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-SIG-007",
+      "title": "Malformed protobuf",
+      "objective": "Reject malformed or truncated protobuf deterministically and within resource bounds.",
+      "layer": "REFERENCE_DECODER",
+      "gate_refs": [
+        "DQ-018",
+        "PR-G2"
+      ],
+      "control_refs": [
+        "TA-C005",
+        "TA-S003"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/Protobuf request decoding",
+          "requirement_class": "UPSTREAM_MUST"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "Bounded parser policy",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "NOT_APPLICABLE",
+      "coverage_domains": [
+        "negative",
+        "security"
+      ],
+      "preconditions": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "stimulus": "Decode malformed, truncated, invalid-wire-type and bounded nesting-depth fixtures.",
+      "expected_outcome": {
+        "protocol_result": "Reject before admission with bounded stable error; do not crash or expose payload content.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_ACCEPTED",
+        "required_state": "No partial admission or false success is retained."
+      },
+      "required_observations": [
+        "bounded rejection reason",
+        "CPU and memory ceiling",
+        "no crash",
+        "no payload content in diagnostics"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture digests",
+        "resource observations",
+        "captured diagnostics scan",
+        "absence-of-admission query"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-SIG-008",
+      "title": "Empty export request",
+      "objective": "Preserve OTLP empty-message validity without inventing telemetry items.",
+      "layer": "REFERENCE_DECODER",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-018",
+        "PR-G2"
+      ],
+      "control_refs": [
+        "OTEL-C001",
+        "TA-C001"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Empty request and response messages",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "NOT_APPLICABLE",
+      "coverage_domains": [
+        "positive",
+        "authority_separation"
+      ],
+      "preconditions": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "stimulus": "Decode valid empty Trace, Metric and Log export requests.",
+      "expected_outcome": {
+        "protocol_result": "Return valid no-item outcome; create no Telemetry Admission material and no Evidence.",
+        "retry_class": "NOT_APPLICABLE",
+        "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+        "required_state": "Protocol validity is not an execution or evidence fact."
+      },
+      "required_observations": [
+        "zero decoded items",
+        "no admission row",
+        "stable no-item result"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "three fixture digests",
+        "decoder result",
+        "absence-of-admission query"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-GRPC-001",
+      "title": "gRPC inbound request below 64 MiB",
+      "objective": "Exercise post-decompression server request handling below the reference maximum.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/gRPC request size limitations",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "GRPC",
+      "coverage_domains": [
+        "positive",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Send a valid request one byte below the frozen 64 MiB post-decompression reference boundary.",
+      "expected_outcome": {
+        "protocol_result": "Request is eligible for normal processing subject to all other validation.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+        "required_state": "Size acceptance alone does not prove semantic admission."
+      },
+      "required_observations": [
+        "compressed and decompressed byte counts",
+        "gRPC status",
+        "accepted/refused item counts"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "wire capture metadata",
+        "receiver counters",
+        "resource observations"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-GRPC-002",
+      "title": "gRPC inbound request exactly 64 MiB",
+      "objective": "Prove deterministic inclusive/exclusive behavior at the frozen request boundary.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/gRPC request size limitations",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "GRPC",
+      "coverage_domains": [
+        "positive",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Send a valid request exactly equal to the frozen 64 MiB post-decompression boundary.",
+      "expected_outcome": {
+        "protocol_result": "When the frozen maximum is 64 MiB, the request is not rejected solely for size; all other validation still applies.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+        "required_state": "Boundary acceptance is hop-local only."
+      },
+      "required_observations": [
+        "exact decompressed byte count",
+        "configured comparison operator",
+        "gRPC status",
+        "receiver counters"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "exact byte-count proof",
+        "receiver result"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-GRPC-003",
+      "title": "gRPC inbound request above 64 MiB",
+      "objective": "Reject an oversized post-decompression request without processing it.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/gRPC server request limit",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "GRPC",
+      "coverage_domains": [
+        "negative",
+        "security",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Send a valid request one byte above the frozen 64 MiB post-decompression boundary.",
+      "expected_outcome": {
+        "protocol_result": "Return non-retryable RESOURCE_EXHAUSTED and do not process telemetry items.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_ACCEPTED",
+        "required_state": "No whole-request retry, partial admission or Evidence is allowed."
+      },
+      "required_observations": [
+        "post-decompression byte count",
+        "RESOURCE_EXHAUSTED",
+        "zero processed items",
+        "bounded diagnostic"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "receiver status",
+        "zero-processing counter",
+        "resource observations"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-GRPC-004",
+      "title": "gRPC client request above 64 MiB pre-compression",
+      "objective": "Prevent an oversized outbound request from being transmitted.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/gRPC client request limit",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "GRPC",
+      "coverage_domains": [
+        "negative",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Construct a request one byte above the frozen 64 MiB pre-compression boundary.",
+      "expected_outcome": {
+        "protocol_result": "Client does not send the request and records a terminal local oversize outcome.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_ACCEPTED",
+        "required_state": "No receiver acceptance or network delivery is inferred."
+      },
+      "required_observations": [
+        "pre-compression byte count",
+        "zero outbound request count",
+        "local discard/failure counter"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "sender network observation",
+        "local terminal record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-GRPC-005",
+      "title": "gRPC client response at or below 4 MiB",
+      "objective": "Exercise post-decompression response handling within the frozen response limit.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/gRPC client response limit",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "GRPC",
+      "coverage_domains": [
+        "positive",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return valid responses one byte below and exactly equal to the frozen 4 MiB post-decompression boundary.",
+      "expected_outcome": {
+        "protocol_result": "Client parses the response subject to normal protocol validation.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+        "required_state": "Response parsing proves only the current hop outcome."
+      },
+      "required_observations": [
+        "post-decompression response bytes",
+        "client parse result",
+        "gRPC status"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "response fixture and config digests",
+        "exact byte-count proof",
+        "client result"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-GRPC-006",
+      "title": "gRPC client response above 4 MiB",
+      "objective": "Fail safely on an oversized post-decompression response and retain unknown request acceptance.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C016",
+        "OTEL-C001"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/gRPC client response limit",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "GRPC",
+      "coverage_domains": [
+        "negative",
+        "fault",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return a response one byte above the frozen 4 MiB post-decompression boundary after the server may have processed the request.",
+      "expected_outcome": {
+        "protocol_result": "Client terminates without retrying solely due to the oversize response, records that the response was discarded, and records UNKNOWN acceptance for reconciliation.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Request may have been processed even though its response was discarded."
+      },
+      "required_observations": [
+        "post-decompression response bytes",
+        "non-retry outcome",
+        "unknown-delivery counter",
+        "reconciliation reference"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION",
+        "MUST_NOT_INFER_REQUEST_REJECTED_FROM_RESPONSE_LIMIT"
+      ],
+      "evidence_requirements": [
+        "response fixture and config digests",
+        "client terminal result",
+        "unknown acceptance record",
+        "per-hop reconciliation"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-GRPC-007",
+      "title": "gRPC server response above 4 MiB",
+      "objective": "Bound server response diagnostics and retain unspecified request acceptance.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/gRPC server response limit",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "GRPC",
+      "coverage_domains": [
+        "negative",
+        "fault",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Cause the server to construct a response above the frozen 4 MiB pre-compression boundary.",
+      "expected_outcome": {
+        "protocol_result": "Trim optional diagnostic data when possible; otherwise return RESOURCE_EXHAUSTED. Record acceptance as UNKNOWN unless independently known.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "A response-size error does not prove request rejection."
+      },
+      "required_observations": [
+        "pre-compression response bytes",
+        "diagnostic truncation decision",
+        "gRPC status",
+        "acceptance-state source"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "server response construction trace",
+        "bounded diagnostic",
+        "acceptance limitation record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-GRPC-008",
+      "title": "gRPC decompression bomb",
+      "objective": "Enforce post-decompression request and response budgets under extreme compression ratios.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/gRPC post-decompression limits",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "GRPC",
+      "coverage_domains": [
+        "negative",
+        "security",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Send bounded compressed fixtures that expand above request or response limits.",
+      "expected_outcome": {
+        "protocol_result": "Abort at the decompressed byte budget with bounded CPU/memory and the direction-appropriate non-retryable outcome.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Compressed byte size must not be used as proof of safe decoded size."
+      },
+      "required_observations": [
+        "compressed/decompressed byte counters",
+        "peak CPU and memory",
+        "abort point",
+        "protocol status"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "resource profile",
+        "status and counter capture",
+        "no-crash observation"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-HTTP-001",
+      "title": "HTTP inbound request below 64 MiB",
+      "objective": "Exercise post-decompression HTTP server request handling below the reference maximum.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/HTTP request size limitations",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "positive",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "POST a valid request one byte below the frozen 64 MiB post-decompression boundary.",
+      "expected_outcome": {
+        "protocol_result": "Request is eligible for normal processing subject to all other validation.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+        "required_state": "HTTP acceptance is hop-local only."
+      },
+      "required_observations": [
+        "compressed and decompressed byte counts",
+        "HTTP status",
+        "accepted/refused counters"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "request metadata",
+        "receiver counters"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-HTTP-002",
+      "title": "HTTP inbound request exactly 64 MiB",
+      "objective": "Prove deterministic HTTP behavior at the frozen request boundary.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/HTTP request size limitations",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "positive",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "POST a valid request exactly equal to the frozen 64 MiB post-decompression boundary.",
+      "expected_outcome": {
+        "protocol_result": "When the frozen maximum is 64 MiB, the request is not rejected solely for size.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+        "required_state": "Other schema, auth and policy checks remain required."
+      },
+      "required_observations": [
+        "exact decompressed byte count",
+        "configured comparison operator",
+        "HTTP status"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "exact byte-count proof",
+        "receiver result"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-HTTP-003",
+      "title": "HTTP inbound request above 64 MiB",
+      "objective": "Reject an oversized post-decompression HTTP request before telemetry processing.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/HTTP server request limit",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "negative",
+        "security",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "POST a valid request one byte above the frozen 64 MiB post-decompression boundary.",
+      "expected_outcome": {
+        "protocol_result": "Return HTTP 413 and do not process telemetry items.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_ACCEPTED",
+        "required_state": "No retry or partial admission is allowed."
+      },
+      "required_observations": [
+        "post-decompression bytes",
+        "HTTP 413",
+        "zero processed items",
+        "bounded response"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "HTTP exchange metadata",
+        "zero-processing counter"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-HTTP-004",
+      "title": "HTTP client request above 64 MiB pre-compression",
+      "objective": "Prevent an oversized outbound HTTP request from being transmitted.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/HTTP client request limit",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "negative",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Construct an HTTP request one byte above the frozen 64 MiB pre-compression boundary.",
+      "expected_outcome": {
+        "protocol_result": "Client does not send and records a terminal local oversize outcome.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_ACCEPTED",
+        "required_state": "No HTTP status or receiver acceptance is fabricated."
+      },
+      "required_observations": [
+        "pre-compression byte count",
+        "zero outbound POST count",
+        "local failure counter"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "sender network observation",
+        "local terminal record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-HTTP-005",
+      "title": "HTTP client response at or below 4 MiB",
+      "objective": "Exercise post-decompression HTTP response handling within the frozen response limit.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/HTTP client response limit",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "positive",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return valid HTTP responses one byte below and exactly equal to the frozen 4 MiB post-decompression boundary.",
+      "expected_outcome": {
+        "protocol_result": "Client parses the response subject to content-type and protocol validation.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+        "required_state": "Response parsing is not end-to-end delivery."
+      },
+      "required_observations": [
+        "post-decompression response bytes",
+        "HTTP status",
+        "client parse result"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "response fixture and config digests",
+        "exact byte-count proof",
+        "client result"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-HTTP-006",
+      "title": "HTTP client response above 4 MiB",
+      "objective": "Fail safely on an oversized HTTP response and retain unknown request acceptance.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C016",
+        "OTEL-C001"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/HTTP client response limit",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "negative",
+        "fault",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return a response one byte above the frozen 4 MiB post-decompression boundary after possible request processing.",
+      "expected_outcome": {
+        "protocol_result": "Client terminates without size-triggered retry, records that the response was discarded, and records UNKNOWN acceptance.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Oversized response does not prove that the server rejected the request."
+      },
+      "required_observations": [
+        "post-decompression response bytes",
+        "non-retry outcome",
+        "unknown-delivery counter"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION",
+        "MUST_NOT_INFER_REQUEST_REJECTED_FROM_RESPONSE_LIMIT"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "client terminal result",
+        "unknown acceptance record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-HTTP-007",
+      "title": "HTTP server response above 4 MiB",
+      "objective": "Bound HTTP response diagnostics while preserving unspecified acceptance.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/HTTP server response limit",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "negative",
+        "fault",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Cause the server to construct an HTTP response above the frozen 4 MiB pre-compression boundary.",
+      "expected_outcome": {
+        "protocol_result": "Trim optional diagnostics when possible; otherwise return HTTP 500. Acceptance remains UNKNOWN unless independently known.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "HTTP 500 caused by response size is not proof of request rejection."
+      },
+      "required_observations": [
+        "pre-compression bytes",
+        "diagnostic truncation",
+        "HTTP status",
+        "acceptance-state source"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "server trace",
+        "bounded diagnostic",
+        "acceptance limitation"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-HTTP-008",
+      "title": "HTTP decompression bomb",
+      "objective": "Enforce HTTP post-decompression budgets under extreme compression ratios.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3A",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/HTTP post-decompression limits",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "negative",
+        "security",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "POST compressed fixtures that expand above the frozen request boundary and return compressed responses that expand above the response boundary.",
+      "expected_outcome": {
+        "protocol_result": "Abort at the decompressed byte budget with HTTP 413 for request oversize or a non-retryable client failure for response oversize.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Compressed size must not bypass decompressed limits."
+      },
+      "required_observations": [
+        "compressed/decompressed byte counters",
+        "peak CPU and memory",
+        "abort point",
+        "HTTP outcome"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture and config digests",
+        "resource profile",
+        "HTTP metadata",
+        "no-crash observation"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-RETRY-001",
+      "title": "Full success no retry",
+      "objective": "Ensure a successful hop response is dequeued only for that destination.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-020",
+        "PR-G3A",
+        "PR-G3D"
+      ],
+      "control_refs": [
+        "OTEL-C001",
+        "OTEL-C003"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Full success response",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "positive"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return a valid full-success OTLP response.",
+      "expected_outcome": {
+        "protocol_result": "No retry is scheduled for that destination.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+        "required_state": "Other destinations and DBOS admission remain independent."
+      },
+      "required_observations": [
+        "response status",
+        "retry count zero",
+        "destination queue delta"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture/config digests",
+        "protocol exchange metadata",
+        "retry and queue counters"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-RETRY-002",
+      "title": "Partial success no whole-request retry",
+      "objective": "Preserve accepted/rejected counts and prevent automatic whole-request retry.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-020",
+        "PR-G3A",
+        "PR-G3D"
+      ],
+      "control_refs": [
+        "OTEL-C002",
+        "TA-D007"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Partial success",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "positive",
+        "negative"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return a populated partial-success response with rejected item count and bounded diagnostic.",
+      "expected_outcome": {
+        "protocol_result": "Do not retry the whole request; retain accepted/rejected counts and diagnostic.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "PARTIAL_AT_HOP",
+        "required_state": "Rejected subset is not silently converted to accepted or retried."
+      },
+      "required_observations": [
+        "accepted and rejected counts",
+        "retry count zero",
+        "bounded diagnostic"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture/config digests",
+        "response metadata",
+        "retry counter",
+        "partial-result record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-RETRY-003",
+      "title": "HTTP designated retryable statuses",
+      "objective": "Apply bounded retry only to the designated HTTP retryable set.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-020",
+        "PR-G3D",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C003"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/HTTP retryable response codes",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "fault",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return HTTP 429, 502, 503 and 504 in separate deterministic fixtures.",
+      "expected_outcome": {
+        "protocol_result": "Schedule exponential backoff with jitter within frozen attempt and elapsed-time budgets.",
+        "retry_class": "BOUNDED_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Retryability does not imply eventual delivery."
+      },
+      "required_observations": [
+        "status sequence",
+        "retry schedule",
+        "attempt count",
+        "terminal outcome"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture/config digests",
+        "clock source",
+        "retry log/counters",
+        "terminal record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-RETRY-004",
+      "title": "HTTP 400 permanent bad data",
+      "objective": "Prevent retry storms for permanent bad-data responses.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-020",
+        "PR-G3D"
+      ],
+      "control_refs": [
+        "OTEL-C003"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/HTTP 400 bad data response",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "negative",
+        "fault"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return a valid OTLP HTTP 400 permanent-bad-data response.",
+      "expected_outcome": {
+        "protocol_result": "Do not retry; retain a permanent rejection outcome.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_ACCEPTED",
+        "required_state": "No transient classification is invented."
+      },
+      "required_observations": [
+        "HTTP 400",
+        "retry count zero",
+        "permanent drop/rejection counter"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture/config digests",
+        "HTTP metadata",
+        "retry counter",
+        "terminal record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-RETRY-005",
+      "title": "HTTP non-designated error statuses",
+      "objective": "Fail closed on HTTP errors outside the designated retryable set.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-020",
+        "PR-G3D"
+      ],
+      "control_refs": [
+        "OTEL-C003"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/HTTP non-retryable response codes",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "negative",
+        "fault"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return representative non-designated 4xx and 5xx statuses.",
+      "expected_outcome": {
+        "protocol_result": "Do not retry solely because the response is 4xx/5xx; retain terminal status.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Error class does not establish whether processing occurred unless the protocol defines it."
+      },
+      "required_observations": [
+        "HTTP status",
+        "retry count zero",
+        "terminal classification"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture/config digests",
+        "HTTP metadata",
+        "retry counter",
+        "terminal record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-RETRY-006",
+      "title": "gRPC retryable and permanent classification",
+      "objective": "Separate declared retryable gRPC statuses from permanent statuses.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-020",
+        "PR-G3D"
+      ],
+      "control_refs": [
+        "OTEL-C003"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP/gRPC retryable responses",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "GRPC",
+      "coverage_domains": [
+        "negative",
+        "fault"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return each frozen retryable gRPC status and representative permanent statuses.",
+      "expected_outcome": {
+        "protocol_result": "Retry only the adopted retryable set with bounded backoff; permanent statuses terminate.",
+        "retry_class": "BOUNDED_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "A retry schedule is not delivery proof."
+      },
+      "required_observations": [
+        "status-to-class mapping",
+        "retry schedule",
+        "terminal outcome"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "frozen status matrix",
+        "fixture/config digests",
+        "retry counters",
+        "terminal records"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-RETRY-007",
+      "title": "Retry-After delay-seconds",
+      "objective": "Honor a valid delay-seconds Retry-After value within frozen budgets.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3D"
+      ],
+      "control_refs": [
+        "OTEL-C003",
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Retry-After delay-seconds",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "positive",
+        "fault"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return a retryable status with a valid bounded integer Retry-After value.",
+      "expected_outcome": {
+        "protocol_result": "Do not retry before the specified delay; apply total retry budget and jitter policy without shortening the server delay.",
+        "retry_class": "BOUNDED_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Waiting does not imply future acceptance."
+      },
+      "required_observations": [
+        "monotonic clock",
+        "parsed delay",
+        "actual retry timestamp",
+        "terminal outcome"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture/config digests",
+        "clock and schedule record",
+        "retry counters"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-RETRY-008",
+      "title": "Retry-After future HTTP-date",
+      "objective": "Honor the v1.11 HTTP-date form with explicit wall-clock and skew handling.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3D"
+      ],
+      "control_refs": [
+        "OTEL-C003",
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Retry-After HTTP-date",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "positive",
+        "fault"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return a retryable status with a valid future IMF-fixdate Retry-After value.",
+      "expected_outcome": {
+        "protocol_result": "Parse the date, compute a non-negative delay from the recorded wall clock, and do not retry early.",
+        "retry_class": "BOUNDED_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Clock correctness and server acceptance remain limitations."
+      },
+      "required_observations": [
+        "raw date",
+        "wall and monotonic clocks",
+        "clock-skew policy",
+        "actual retry timestamp"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture/config digests",
+        "clock source/version",
+        "parse result",
+        "retry schedule"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-RETRY-009",
+      "title": "Retry-After invalid or past value",
+      "objective": "Prevent negative sleep, infinite retry or permissive parsing.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3D",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C003",
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Retry-After parsing",
+          "requirement_class": "UPSTREAM_MUST"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "Invalid and past Retry-After fail-closed policy",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "negative",
+        "fault",
+        "security"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return malformed, overflow, ambiguous and past HTTP-date Retry-After values.",
+      "expected_outcome": {
+        "protocol_result": "Record parse limitation; never sleep a negative/unbounded duration; use only the frozen bounded fallback for an otherwise retryable status.",
+        "retry_class": "BOUNDED_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Invalid metadata cannot expand retry authority."
+      },
+      "required_observations": [
+        "parse classification",
+        "bounded fallback schedule",
+        "no negative or overflow duration",
+        "terminal outcome"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture/config digests",
+        "parser version",
+        "schedule trace",
+        "terminal record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-RETRY-010",
+      "title": "Retry-After exceeds local total budget",
+      "objective": "Respect server delay without violating the local terminal retry budget.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-022",
+        "DQ-020",
+        "PR-G3D",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C003",
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Retry-After and retry policy",
+          "requirement_class": "UPSTREAM_MUST"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "Bounded retry budget policy",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "HTTP",
+      "coverage_domains": [
+        "negative",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Return a valid Retry-After later than the frozen maximum total retry elapsed time.",
+      "expected_outcome": {
+        "protocol_result": "Do not retry earlier than instructed; terminate as retry-budget-exhausted and retain undelivered outcome.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Local abandonment is not server rejection."
+      },
+      "required_observations": [
+        "server delay",
+        "local total budget",
+        "zero early retry",
+        "terminal drop/unknown counter"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture/config digests",
+        "clock trace",
+        "retry budget config",
+        "terminal record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-RETRY-011",
+      "title": "Disconnect before acknowledgement",
+      "objective": "Represent delivery uncertainty and possible duplicate on retry.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-020",
+        "PR-G3D",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C001",
+        "OTEL-C003"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP retry and acknowledgement boundary",
+          "requirement_class": "UPSTREAM_MUST"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "Unknown delivery retention",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "fault",
+        "recovery"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Drop the connection after request transmission and before any acknowledgement is observed.",
+      "expected_outcome": {
+        "protocol_result": "Record UNKNOWN_DELIVERY; bounded retry may occur and duplicate remains possible.",
+        "retry_class": "UNKNOWN_UNTIL_ACK_RECONCILIATION",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "No rejection or acceptance is assumed."
+      },
+      "required_observations": [
+        "sender transmission",
+        "absence of acknowledgement",
+        "retry attempt",
+        "duplicate counters"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fault injection ref",
+        "wire metadata",
+        "sender counters",
+        "reconciliation record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-RETRY-012",
+      "title": "Disconnect after server processing before response receipt",
+      "objective": "Preserve unknown acceptance when processing may have completed.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-020",
+        "PR-G3D",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C001",
+        "OTEL-C003"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP client/server hop semantics",
+          "requirement_class": "UPSTREAM_MUST"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "Unknown acceptance retention",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "fault",
+        "recovery"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Commit server-side processing then sever the connection before the client receives the response.",
+      "expected_outcome": {
+        "protocol_result": "Client records UNKNOWN acceptance; any retry is bounded and duplicate-aware.",
+        "retry_class": "UNKNOWN_UNTIL_ACK_RECONCILIATION",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Server processing and client observation remain separate facts."
+      },
+      "required_observations": [
+        "server processing marker",
+        "client missing response",
+        "retry and duplicate outcomes",
+        "reconciliation"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fault injection ref",
+        "server and client observations",
+        "duplicate assessment",
+        "per-hop reconciliation"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-DELIV-001",
+      "title": "Sampling filtering and dropped-item limitation",
+      "objective": "Ensure omitted telemetry is not represented as complete execution history.",
+      "layer": "END_TO_END_RECONCILIATION",
+      "gate_refs": [
+        "PR-G3",
+        "PR-G6"
+      ],
+      "control_refs": [
+        "OTEL-C001",
+        "TA-D008"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "End-to-end delivery outside OTLP scope",
+          "requirement_class": "UPSTREAM_INFORMATIONAL"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "TMAI completeness boundary",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "negative",
+        "data_governance",
+        "authority_separation"
+      ],
+      "preconditions": [
+        "DQ-020 deployment prerequisites and authorization must be satisfied",
+        "PR-G3 evidence manifest scope and exact catalog digest must be frozen",
+        "Per-hop delivery accounting and DBOS admission observations must be independently available"
+      ],
+      "stimulus": "Apply declared sampling/filtering and induce dropped items across a bounded window.",
+      "expected_outcome": {
+        "protocol_result": "Reconciliation records policy omissions and dropped/unknown counts; result is not complete execution history.",
+        "retry_class": "NOT_APPLICABLE",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Sampling cannot prove absence of an action."
+      },
+      "required_observations": [
+        "emitted/received/filtered/dropped counts",
+        "sampling policy digest",
+        "unknown upper bound"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "per-hop counters",
+        "policy/config digest",
+        "window and workload binding",
+        "limitation record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-020 deployment prerequisites and authorization must be satisfied",
+        "PR-G3 evidence manifest scope and exact catalog digest must be frozen",
+        "Per-hop delivery accounting and DBOS admission observations must be independently available"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-DELIV-002",
+      "title": "Duplicate replay reconciliation",
+      "objective": "Retain duplicate possibility across retries, WAL replay and multi-hop delivery.",
+      "layer": "END_TO_END_RECONCILIATION",
+      "gate_refs": [
+        "PR-G3",
+        "PR-G5",
+        "PR-G6"
+      ],
+      "control_refs": [
+        "OTEL-C001",
+        "OTEL-C011",
+        "TA-D003"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP retry semantics",
+          "requirement_class": "UPSTREAM_MUST"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "TMAI duplicate boundary",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "fault",
+        "recovery",
+        "authority_separation"
+      ],
+      "preconditions": [
+        "DQ-020 deployment prerequisites and authorization must be satisfied",
+        "PR-G3 evidence manifest scope and exact catalog digest must be frozen",
+        "Per-hop delivery accounting and DBOS admission observations must be independently available"
+      ],
+      "stimulus": "Replay the same transport payload through retry and WAL recovery paths.",
+      "expected_outcome": {
+        "protocol_result": "Preserve emitted/received/retried/duplicate-confirmed/duplicate-suspected counts and DBOS idempotency result separately.",
+        "retry_class": "NOT_APPLICABLE",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Transport fingerprint alone is not canonical identity or DBOS duplicate proof."
+      },
+      "required_observations": [
+        "per-hop counts",
+        "WAL replay count",
+        "DBOS receipt/idempotency result",
+        "duplicate classes"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "payload and config digests",
+        "WAL/fault refs",
+        "per-hop accounting",
+        "DBOS admission query"
+      ],
+      "authorization_prerequisites": [
+        "DQ-020 deployment prerequisites and authorization must be satisfied",
+        "PR-G3 evidence manifest scope and exact catalog digest must be frozen",
+        "Per-hop delivery accounting and DBOS admission observations must be independently available"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-DELIV-003",
+      "title": "Queue overflow and retry exhaustion",
+      "objective": "Expose bounded loss instead of claiming reliable delivery.",
+      "layer": "END_TO_END_RECONCILIATION",
+      "gate_refs": [
+        "PR-G3",
+        "PR-G5",
+        "PR-G6"
+      ],
+      "control_refs": [
+        "OTEL-C010",
+        "OTEL-C011"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP retry semantics",
+          "requirement_class": "UPSTREAM_MUST"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "Collector queue loss boundary",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "fault",
+        "capacity",
+        "recovery"
+      ],
+      "preconditions": [
+        "DQ-020 deployment prerequisites and authorization must be satisfied",
+        "PR-G3 evidence manifest scope and exact catalog digest must be frozen",
+        "Per-hop delivery accounting and DBOS admission observations must be independently available"
+      ],
+      "stimulus": "Saturate the frozen queue and exceed the frozen retry elapsed-time budget.",
+      "expected_outcome": {
+        "protocol_result": "Record queue-full and retry-exhausted drops with an explicit loss upper bound.",
+        "retry_class": "NOT_APPLICABLE",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "Queue/WAL presence is not zero-loss proof."
+      },
+      "required_observations": [
+        "queue start/end/capacity",
+        "refused/dropped/retried counts",
+        "first drop point",
+        "loss upper bound"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "load profile",
+        "queue/config digest",
+        "internal telemetry",
+        "terminal records"
+      ],
+      "authorization_prerequisites": [
+        "DQ-020 deployment prerequisites and authorization must be satisfied",
+        "PR-G3 evidence manifest scope and exact catalog digest must be frozen",
+        "Per-hop delivery accounting and DBOS admission observations must be independently available"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-DELIV-004",
+      "title": "Multi-hop end-to-end accounting",
+      "objective": "Reconcile each hop without forcing equality or hiding unknowns.",
+      "layer": "END_TO_END_RECONCILIATION",
+      "gate_refs": [
+        "PR-G3",
+        "PR-G6"
+      ],
+      "control_refs": [
+        "OTEL-C001",
+        "OTEL-C013"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP client/server hop scope",
+          "requirement_class": "UPSTREAM_INFORMATIONAL"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "TMAI delivery accounting",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "positive",
+        "fault",
+        "data_governance"
+      ],
+      "preconditions": [
+        "DQ-020 deployment prerequisites and authorization must be satisfied",
+        "PR-G3 evidence manifest scope and exact catalog digest must be frozen",
+        "Per-hop delivery accounting and DBOS admission observations must be independently available"
+      ],
+      "stimulus": "Run a bounded window across producer, local collector, gateway, backend and DBOS Telemetry Admission.",
+      "expected_outcome": {
+        "protocol_result": "Produce per-signal, per-hop accounting with declared transformations, duplicates, drops and unknowns.",
+        "retry_class": "NOT_APPLICABLE",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "One hop success cannot fill another hop or Evidence admission."
+      },
+      "required_observations": [
+        "all mandatory accounting fields",
+        "window alignment",
+        "transformation policy",
+        "unknown inventory"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "exact topology/config digests",
+        "per-hop raw counters",
+        "DBOS admission query",
+        "reconciliation computation"
+      ],
+      "authorization_prerequisites": [
+        "DQ-020 deployment prerequisites and authorization must be satisfied",
+        "PR-G3 evidence manifest scope and exact catalog digest must be frozen",
+        "Per-hop delivery accounting and DBOS admission observations must be independently available"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-DELIV-005",
+      "title": "Partial success reconciliation",
+      "objective": "Ensure partial-success counts survive every transformation and gate manifest.",
+      "layer": "END_TO_END_RECONCILIATION",
+      "gate_refs": [
+        "PR-G3",
+        "PR-G6"
+      ],
+      "control_refs": [
+        "OTEL-C002",
+        "TA-D007"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Partial success",
+          "requirement_class": "UPSTREAM_MUST"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "positive",
+        "negative",
+        "data_governance"
+      ],
+      "preconditions": [
+        "DQ-020 deployment prerequisites and authorization must be satisfied",
+        "PR-G3 evidence manifest scope and exact catalog digest must be frozen",
+        "Per-hop delivery accounting and DBOS admission observations must be independently available"
+      ],
+      "stimulus": "Generate mixed accepted/rejected items and propagate the response through sender accounting and DBOS material admission.",
+      "expected_outcome": {
+        "protocol_result": "The same accepted/rejected limitation remains traceable; no whole-request retry or count erasure occurs.",
+        "retry_class": "NOT_APPLICABLE",
+        "acceptance_state": "PARTIAL_AT_HOP",
+        "required_state": "Partial is never promoted to complete."
+      },
+      "required_observations": [
+        "server rejected count",
+        "client retained count",
+        "per-hop partial count",
+        "DBOS limitation"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture/config digests",
+        "response metadata",
+        "per-hop accounting",
+        "DBOS admission material query"
+      ],
+      "authorization_prerequisites": [
+        "DQ-020 deployment prerequisites and authorization must be satisfied",
+        "PR-G3 evidence manifest scope and exact catalog digest must be frozen",
+        "Per-hop delivery accounting and DBOS admission observations must be independently available"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-AUTH-001",
+      "title": "Resource attributes do not create DBOS identity",
+      "objective": "Prevent Resource and Instrumentation Scope from becoming canonical DBOS identity.",
+      "layer": "AUTHORITY_BOUNDARY",
+      "gate_refs": [
+        "DQ-018",
+        "PR-G2",
+        "PR-G3"
+      ],
+      "control_refs": [
+        "OTEL-C019",
+        "TA-N001"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "Resource and Instrumentation Scope semantics",
+          "requirement_class": "UPSTREAM_INFORMATIONAL"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "DBOS identity continuity boundary",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "NOT_APPLICABLE",
+      "coverage_domains": [
+        "negative",
+        "authority_separation"
+      ],
+      "preconditions": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "stimulus": "Submit forged entity_id, service.name and owner-like attributes in a valid selected-signal fixture.",
+      "expected_outcome": {
+        "protocol_result": "Retain attributes only as untrusted observation metadata or reject them; create no Entity or identity verification.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_APPLICABLE",
+        "required_state": "Attribute presence is not identity proof."
+      },
+      "required_observations": [
+        "mapped metadata",
+        "canonical identity registry unchanged",
+        "stable limitation/rejection"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION",
+        "MUST_NOT_CREATE_DBOS_IDENTITY"
+      ],
+      "evidence_requirements": [
+        "fixture digest",
+        "before/after identity inventory",
+        "mapping output",
+        "decision trace"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-AUTH-002",
+      "title": "Telemetry verification claims do not create Evidence or Truth",
+      "objective": "Reject authority elevation through verified/evidence/truth-like attributes.",
+      "layer": "AUTHORITY_BOUNDARY",
+      "gate_refs": [
+        "DQ-018",
+        "PR-G2",
+        "PR-G3"
+      ],
+      "control_refs": [
+        "OTEL-C020",
+        "TA-N003",
+        "TA-N005"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP data model semantics",
+          "requirement_class": "UPSTREAM_INFORMATIONAL"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "Telemetry-to-Evidence separation",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "NOT_APPLICABLE",
+      "coverage_domains": [
+        "negative",
+        "authority_separation"
+      ],
+      "preconditions": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "stimulus": "Include verified=true, evidence_status=VALID, evidence_id and truth-like attributes.",
+      "expected_outcome": {
+        "protocol_result": "Reject or strip prohibited claims before Telemetry Admission; create no Evidence or Verification object.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_APPLICABLE",
+        "required_state": "Transport or attribute integrity is not Evidence Truth."
+      },
+      "required_observations": [
+        "prohibited-claim handling",
+        "Evidence registry unchanged",
+        "Verification registry unchanged"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION",
+        "MUST_NOT_CREATE_VERIFICATION",
+        "MUST_NOT_CLAIM_TRUTH"
+      ],
+      "evidence_requirements": [
+        "fixture digest",
+        "before/after Evidence and Verification inventories",
+        "rejection/strip result"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-AUTH-003",
+      "title": "Telemetry capability and permission claims have zero authority",
+      "objective": "Prevent Capability, Authorization, Permission or Decision creation from telemetry.",
+      "layer": "AUTHORITY_BOUNDARY",
+      "gate_refs": [
+        "DQ-018",
+        "PR-G2",
+        "PR-G3"
+      ],
+      "control_refs": [
+        "OTEL-C020",
+        "TA-N002",
+        "TA-N004"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP data model semantics",
+          "requirement_class": "UPSTREAM_INFORMATIONAL"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "TMAI authority separation",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "NOT_APPLICABLE",
+      "coverage_domains": [
+        "negative",
+        "authority_separation"
+      ],
+      "preconditions": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "stimulus": "Include capability, authorization, permission, fitness, recommendation and decision-like fields.",
+      "expected_outcome": {
+        "protocol_result": "Reject prohibited authority fields and leave all governed registries unchanged.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_APPLICABLE",
+        "required_state": "Observed claims cannot create governance authority."
+      },
+      "required_observations": [
+        "stable rejection",
+        "Capability/Permission/Decision inventories unchanged",
+        "no SAEE call"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION",
+        "MUST_NOT_GRANT_CAPABILITY",
+        "MUST_NOT_CREATE_DECISION",
+        "MUST_NOT_CALL_SAEE"
+      ],
+      "evidence_requirements": [
+        "fixture digest",
+        "before/after governed inventories",
+        "call-boundary observation"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+        "DQ-018 must explicitly authorize implementation before this case is executed",
+        "Execution must use offline synthetic fixtures and must not create a network listener"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-AUTH-004",
+      "title": "Unauthenticated transport",
+      "objective": "Prove deployment-layer TLS and workload authentication fail closed independently of authorization policy.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-020",
+        "PR-G3D",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C014",
+        "OTEL-C015"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP transport security",
+          "requirement_class": "UPSTREAM_INFORMATIONAL"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "TMAI deployment auth/TLS boundary",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "negative",
+        "security",
+        "authority_separation"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Attempt no-certificate, invalid-certificate, expired/revoked credential and wrong-audience connections.",
+      "expected_outcome": {
+        "protocol_result": "Reject before telemetry processing; retain bounded security audit without payload secrets.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_ACCEPTED",
+        "required_state": "Authentication failure is distinct from authorization denial and from DBOS Permission."
+      },
+      "required_observations": [
+        "TLS and workload authentication result",
+        "zero processed items",
+        "secret-free audit"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "certificate/policy/config digests",
+        "connection outcome",
+        "receiver zero-processing counter",
+        "secret canary scan"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-AUTH-005",
+      "title": "Sensitive content denied or redacted",
+      "objective": "Prevent prompt, response, tool arguments, credentials and regulated content from leaking through the OTLP path.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-020",
+        "PR-G3D",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C017",
+        "TA-S001",
+        "TA-S002"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP data transport",
+          "requirement_class": "UPSTREAM_INFORMATIONAL"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "TMAI default content-capture-off policy",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "negative",
+        "security",
+        "data_governance"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Send temporary canaries in sensitive attribute, body, baggage and exception paths.",
+      "expected_outcome": {
+        "protocol_result": "Deny or redact before persistence/export according to the frozen allowlist; no canary appears in retained stores, logs, metrics or errors.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_APPLICABLE",
+        "required_state": "Redaction does not prove source data was correct or lawful."
+      },
+      "required_observations": [
+        "redaction/deny lineage",
+        "all sink scans",
+        "bounded diagnostics",
+        "retention action"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "policy/config digests",
+        "irreversible canary reference",
+        "sink scan results",
+        "lineage record"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-AUTH-006",
+      "title": "High-cardinality and log-injection bounds",
+      "objective": "Bound attribute cardinality and diagnostic injection across protocol and internal telemetry.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-020",
+        "PR-G3D",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C013",
+        "OTEL-C017",
+        "TA-S005",
+        "TA-S007"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP attributes",
+          "requirement_class": "UPSTREAM_INFORMATIONAL"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "TMAI bounded diagnostics policy",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "negative",
+        "security",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Generate unique identifiers, long keys/values and control-character/log-injection payloads at frozen limits and beyond.",
+      "expected_outcome": {
+        "protocol_result": "Apply deterministic reject/truncate policy; internal metric labels remain bounded and diagnostics escaped.",
+        "retry_class": "NO_RETRY",
+        "acceptance_state": "NOT_APPLICABLE",
+        "required_state": "Truncation cannot be represented as complete content."
+      },
+      "required_observations": [
+        "cardinality counts",
+        "rejection/truncation counters",
+        "escaped diagnostic",
+        "resource profile"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "fixture/config digests",
+        "metric label inventory",
+        "diagnostic capture",
+        "resource observations"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "OTLP-CF-AUTH-007",
+      "title": "Concurrent and 5x burst resource envelope",
+      "objective": "Find the first refusal/drop point without allowing unbounded resource exhaustion.",
+      "layer": "DEPLOYMENT_TRANSPORT",
+      "gate_refs": [
+        "DQ-020",
+        "PR-G3F",
+        "PR-G5"
+      ],
+      "control_refs": [
+        "OTEL-C013",
+        "OTEL-C016"
+      ],
+      "source_requirement_refs": [
+        {
+          "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+          "section": "OTLP size limitations",
+          "requirement_class": "UPSTREAM_MUST"
+        },
+        {
+          "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+          "section": "TMAI capacity envelope",
+          "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+        }
+      ],
+      "signals": [
+        "TRACES",
+        "METRICS",
+        "LOGS"
+      ],
+      "transport": "BOTH",
+      "coverage_domains": [
+        "fault",
+        "security",
+        "capacity"
+      ],
+      "preconditions": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "stimulus": "Run frozen concurrent-request and 5x bounded burst profiles with mixed valid, malformed and near-limit payloads.",
+      "expected_outcome": {
+        "protocol_result": "Stay within CPU/memory/disk/network budgets or fail closed with explicit refused/dropped/unknown counts and no crash.",
+        "retry_class": "NOT_APPLICABLE",
+        "acceptance_state": "UNKNOWN",
+        "required_state": "A bounded characterization run is not a production capacity claim."
+      },
+      "required_observations": [
+        "throughput/latency",
+        "CPU/memory/disk/network",
+        "refused/dropped/unknown",
+        "first saturation point",
+        "recovery time"
+      ],
+      "forbidden_inferences": [
+        "MUST_NOT_INFER_END_TO_END_DELIVERY",
+        "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+        "MUST_NOT_GRANT_PERMISSION"
+      ],
+      "evidence_requirements": [
+        "workload/environment/config digests",
+        "raw resource telemetry",
+        "protocol counters",
+        "post-run integrity result"
+      ],
+      "authorization_prerequisites": [
+        "DQ-022 must adopt the exact reference or an explicit superseding reference",
+        "DQ-020 must explicitly authorize the exact staging scope before execution",
+        "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+      ],
+      "implementation_required": true,
+      "current_execution_status": "NOT_EXECUTED"
+    },
+{
+    "case_id": "OTLP-CF-SIG-009",
+    "title": "Additive unknown protobuf field in response",
+    "objective": "Verify forward-compatible response decoding without promoting unknown fields into TMAI semantics.",
+    "layer": "REFERENCE_DECODER",
+    "gate_refs": [
+      "DQ-022",
+      "DQ-018",
+      "PR-G2"
+    ],
+    "control_refs": [
+      "OTEL-C006",
+      "TA-C005"
+    ],
+    "source_requirement_refs": [
+      {
+        "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+        "section": "OTLP versioning and backward compatibility",
+        "requirement_class": "UPSTREAM_MUST"
+      }
+    ],
+    "signals": [
+      "TRACES",
+      "METRICS",
+      "LOGS"
+    ],
+    "transport": "NOT_APPLICABLE",
+    "coverage_domains": [
+      "positive",
+      "migration",
+      "authority_separation"
+    ],
+    "preconditions": [
+      "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+      "DQ-018 must explicitly authorize implementation before this case is executed",
+      "Execution must use offline synthetic fixtures and must not create a network listener"
+    ],
+    "stimulus": "Decode selected-stable success and partial-success responses containing additive unknown protobuf fields.",
+    "expected_outcome": {
+      "protocol_result": "Process known fields; an additive unknown wire field alone does not cause rejection; mapped output remains exact-allowlist.",
+      "retry_class": "NOT_APPLICABLE",
+      "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+      "required_state": "Unknown response fields gain no authority or TMAI semantic meaning."
+    },
+    "required_observations": [
+      "known-field equivalence",
+      "unknown-field handling",
+      "mapped output allowlist",
+      "compatibility limitation"
+    ],
+    "forbidden_inferences": [
+      "MUST_NOT_INFER_END_TO_END_DELIVERY",
+      "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+      "MUST_NOT_GRANT_PERMISSION"
+    ],
+    "evidence_requirements": [
+      "producer/receiver version digests",
+      "response fixture digests",
+      "field-level comparison",
+      "limitation record"
+    ],
+    "authorization_prerequisites": [
+      "DQ-022 must be human-decided before the candidate becomes a normative adopted reference",
+      "DQ-018 must explicitly authorize implementation before this case is executed",
+      "Execution must use offline synthetic fixtures and must not create a network listener"
+    ],
+    "implementation_required": true,
+    "current_execution_status": "NOT_EXECUTED"
+  },
+  {
+    "case_id": "OTLP-CF-GRPC-009",
+    "title": "Malformed gRPC success response protobuf",
+    "objective": "Reject a malformed or truncated gRPC success response without crash, partial parse or blind retry.",
+    "layer": "DEPLOYMENT_TRANSPORT",
+    "gate_refs": [
+      "DQ-020",
+      "PR-G3A",
+      "PR-G5"
+    ],
+    "control_refs": [
+      "OTEL-C003",
+      "OTEL-C016"
+    ],
+    "source_requirement_refs": [
+      {
+        "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+        "section": "OTLP/gRPC response protobuf and non-retryable errors",
+        "requirement_class": "UPSTREAM_MUST"
+      },
+      {
+        "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+        "section": "Malformed response fail-closed policy",
+        "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+      }
+    ],
+    "signals": [
+      "TRACES",
+      "METRICS",
+      "LOGS"
+    ],
+    "transport": "GRPC",
+    "coverage_domains": [
+      "negative",
+      "fault",
+      "security"
+    ],
+    "preconditions": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "stimulus": "Return gRPC OK with malformed, truncated or invalid-wire response protobuf.",
+    "expected_outcome": {
+      "protocol_result": "Client rejects the response, records a bounded decode failure, does not retry solely for malformed success payload, and retains request acceptance as UNKNOWN.",
+      "retry_class": "NO_RETRY",
+      "acceptance_state": "UNKNOWN",
+      "required_state": "Malformed response does not prove that the request was rejected."
+    },
+    "required_observations": [
+      "gRPC status",
+      "decode failure class",
+      "retry count zero",
+      "discarded-response record",
+      "unknown acceptance"
+    ],
+    "forbidden_inferences": [
+      "MUST_NOT_INFER_END_TO_END_DELIVERY",
+      "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+      "MUST_NOT_GRANT_PERMISSION",
+      "MUST_NOT_ACCEPT_PARTIALLY_PARSED_RESPONSE"
+    ],
+    "evidence_requirements": [
+      "response fixture/config digests",
+      "client result",
+      "diagnostic scan",
+      "unknown acceptance record"
+    ],
+    "authorization_prerequisites": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "implementation_required": true,
+    "current_execution_status": "NOT_EXECUTED"
+  },
+  {
+    "case_id": "OTLP-CF-HTTP-009",
+    "title": "Malformed HTTP success response protobuf",
+    "objective": "Reject a malformed or truncated HTTP 200 response without crash, partial parse or blind retry.",
+    "layer": "DEPLOYMENT_TRANSPORT",
+    "gate_refs": [
+      "DQ-020",
+      "PR-G3A",
+      "PR-G5"
+    ],
+    "control_refs": [
+      "OTEL-C003",
+      "OTEL-C016"
+    ],
+    "source_requirement_refs": [
+      {
+        "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+        "section": "OTLP/HTTP success response protobuf",
+        "requirement_class": "UPSTREAM_MUST"
+      },
+      {
+        "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+        "section": "Malformed response fail-closed policy",
+        "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+      }
+    ],
+    "signals": [
+      "TRACES",
+      "METRICS",
+      "LOGS"
+    ],
+    "transport": "HTTP",
+    "coverage_domains": [
+      "negative",
+      "fault",
+      "security"
+    ],
+    "preconditions": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "stimulus": "Return HTTP 200 with correct content type but malformed, truncated or invalid-wire response protobuf.",
+    "expected_outcome": {
+      "protocol_result": "Client rejects the response, records a bounded decode failure, does not retry solely for malformed success payload, and retains request acceptance as UNKNOWN.",
+      "retry_class": "NO_RETRY",
+      "acceptance_state": "UNKNOWN",
+      "required_state": "Malformed HTTP response does not prove request rejection."
+    },
+    "required_observations": [
+      "HTTP status/content type",
+      "decode failure class",
+      "retry count zero",
+      "discarded-response record",
+      "unknown acceptance"
+    ],
+    "forbidden_inferences": [
+      "MUST_NOT_INFER_END_TO_END_DELIVERY",
+      "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+      "MUST_NOT_GRANT_PERMISSION",
+      "MUST_NOT_ACCEPT_PARTIALLY_PARSED_RESPONSE"
+    ],
+    "evidence_requirements": [
+      "response fixture/config digests",
+      "client result",
+      "diagnostic scan",
+      "unknown acceptance record"
+    ],
+    "authorization_prerequisites": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "implementation_required": true,
+    "current_execution_status": "NOT_EXECUTED"
+  },
+  {
+    "case_id": "OTLP-CF-RETRY-013",
+    "title": "gRPC RetryInfo throttling delay",
+    "objective": "Honor a positive gRPC RetryInfo delay for retryable throttling within frozen budgets.",
+    "layer": "DEPLOYMENT_TRANSPORT",
+    "gate_refs": [
+      "DQ-020",
+      "PR-G3D",
+      "PR-G5"
+    ],
+    "control_refs": [
+      "OTEL-C003"
+    ],
+    "source_requirement_refs": [
+      {
+        "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+        "section": "OTLP/gRPC Throttling and RetryInfo",
+        "requirement_class": "UPSTREAM_MUST"
+      }
+    ],
+    "signals": [
+      "TRACES",
+      "METRICS",
+      "LOGS"
+    ],
+    "transport": "GRPC",
+    "coverage_domains": [
+      "positive",
+      "fault",
+      "capacity"
+    ],
+    "preconditions": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "stimulus": "Return UNAVAILABLE and recoverable RESOURCE_EXHAUSTED fixtures with positive RetryInfo retry_delay.",
+    "expected_outcome": {
+      "protocol_result": "Classify as retryable, wait at least the instructed delay, then use bounded exponential backoff until terminal budget.",
+      "retry_class": "BOUNDED_RETRY",
+      "acceptance_state": "UNKNOWN",
+      "required_state": "RetryInfo does not prove future acceptance; RESOURCE_EXHAUSTED without RetryInfo remains non-retryable."
+    },
+    "required_observations": [
+      "gRPC status/details",
+      "parsed retry_delay",
+      "monotonic schedule",
+      "attempt count",
+      "terminal outcome"
+    ],
+    "forbidden_inferences": [
+      "MUST_NOT_INFER_END_TO_END_DELIVERY",
+      "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+      "MUST_NOT_GRANT_PERMISSION"
+    ],
+    "evidence_requirements": [
+      "fixture/config digests",
+      "status-detail capture",
+      "clock/schedule record",
+      "terminal record"
+    ],
+    "authorization_prerequisites": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "implementation_required": true,
+    "current_execution_status": "NOT_EXECUTED"
+  },
+  {
+    "case_id": "OTLP-CF-RETRY-014",
+    "title": "gRPC permanent InvalidArgument with BadRequest detail",
+    "objective": "Honor a non-retryable gRPC bad-data response while retaining bounded developer diagnostics.",
+    "layer": "DEPLOYMENT_TRANSPORT",
+    "gate_refs": [
+      "DQ-020",
+      "PR-G3D"
+    ],
+    "control_refs": [
+      "OTEL-C003"
+    ],
+    "source_requirement_refs": [
+      {
+        "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+        "section": "OTLP/gRPC non-retryable errors and BadRequest details",
+        "requirement_class": "UPSTREAM_MUST"
+      }
+    ],
+    "signals": [
+      "TRACES",
+      "METRICS",
+      "LOGS"
+    ],
+    "transport": "GRPC",
+    "coverage_domains": [
+      "negative",
+      "fault"
+    ],
+    "preconditions": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "stimulus": "Return INVALID_ARGUMENT with bounded status message and BadRequest detail.",
+    "expected_outcome": {
+      "protocol_result": "Do not retry; drop the telemetry for that destination and increment the permanent-drop counter while recording bounded diagnostic metadata.",
+      "retry_class": "NO_RETRY",
+      "acceptance_state": "NOT_ACCEPTED",
+      "required_state": "Diagnostic details are not Evidence and cannot grant authority."
+    },
+    "required_observations": [
+      "gRPC status/details",
+      "retry count zero",
+      "permanent-drop counter",
+      "bounded diagnostic"
+    ],
+    "forbidden_inferences": [
+      "MUST_NOT_INFER_END_TO_END_DELIVERY",
+      "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+      "MUST_NOT_GRANT_PERMISSION"
+    ],
+    "evidence_requirements": [
+      "fixture/config digests",
+      "status-detail capture",
+      "retry/drop counters",
+      "diagnostic scan"
+    ],
+    "authorization_prerequisites": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "implementation_required": true,
+    "current_execution_status": "NOT_EXECUTED"
+  },
+  {
+    "case_id": "OTLP-CF-RETRY-015",
+    "title": "Partial-success rejected count exceeds sent items",
+    "objective": "Fail closed on an internally inconsistent partial-success response.",
+    "layer": "DEPLOYMENT_TRANSPORT",
+    "gate_refs": [
+      "DQ-020",
+      "PR-G3A",
+      "PR-G3D"
+    ],
+    "control_refs": [
+      "OTEL-C002"
+    ],
+    "source_requirement_refs": [
+      {
+        "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+        "section": "Partial success rejected count",
+        "requirement_class": "UPSTREAM_MUST"
+      },
+      {
+        "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+        "section": "TMAI inconsistent response policy",
+        "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+      }
+    ],
+    "signals": [
+      "TRACES",
+      "METRICS",
+      "LOGS"
+    ],
+    "transport": "BOTH",
+    "coverage_domains": [
+      "negative",
+      "fault",
+      "authority_separation"
+    ],
+    "preconditions": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "stimulus": "Return populated partial_success where rejected item count is greater than the number of corresponding items sent.",
+    "expected_outcome": {
+      "protocol_result": "Classify the response as inconsistent, do not coerce counts, do not whole-request retry solely from partial_success, and retain UNKNOWN acceptance for reconciliation.",
+      "retry_class": "NO_RETRY",
+      "acceptance_state": "UNKNOWN",
+      "required_state": "Invalid counts cannot be normalized into a complete or valid partial result."
+    },
+    "required_observations": [
+      "sent and rejected counts",
+      "inconsistent-response reason",
+      "retry count zero",
+      "unknown acceptance"
+    ],
+    "forbidden_inferences": [
+      "MUST_NOT_INFER_END_TO_END_DELIVERY",
+      "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+      "MUST_NOT_GRANT_PERMISSION"
+    ],
+    "evidence_requirements": [
+      "fixture/config digests",
+      "request/response count capture",
+      "client result",
+      "reconciliation record"
+    ],
+    "authorization_prerequisites": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "implementation_required": true,
+    "current_execution_status": "NOT_EXECUTED"
+  },
+  {
+    "case_id": "OTLP-CF-RETRY-016",
+    "title": "Partial-success warning with zero rejected items",
+    "objective": "Support the normative warning form without converting it to rejection or full unqualified success.",
+    "layer": "DEPLOYMENT_TRANSPORT",
+    "gate_refs": [
+      "DQ-020",
+      "PR-G3A",
+      "PR-G3D"
+    ],
+    "control_refs": [
+      "OTEL-C002"
+    ],
+    "source_requirement_refs": [
+      {
+        "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+        "section": "Partial success warnings and suggestions",
+        "requirement_class": "UPSTREAM_MUST"
+      }
+    ],
+    "signals": [
+      "TRACES",
+      "METRICS",
+      "LOGS"
+    ],
+    "transport": "BOTH",
+    "coverage_domains": [
+      "positive",
+      "authority_separation"
+    ],
+    "preconditions": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "stimulus": "Return populated partial_success with rejected count zero and non-empty bounded error_message.",
+    "expected_outcome": {
+      "protocol_result": "Do not retry; record hop acceptance plus the warning/limitation without incrementing rejected count.",
+      "retry_class": "NO_RETRY",
+      "acceptance_state": "ACCEPTED_AT_HOP_ONLY",
+      "required_state": "A warning is not Verification, Truth or a Governance Decision."
+    },
+    "required_observations": [
+      "partial_success presence",
+      "zero rejected count",
+      "non-empty bounded warning",
+      "retry count zero"
+    ],
+    "forbidden_inferences": [
+      "MUST_NOT_INFER_END_TO_END_DELIVERY",
+      "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+      "MUST_NOT_GRANT_PERMISSION"
+    ],
+    "evidence_requirements": [
+      "fixture/config digests",
+      "response capture",
+      "client warning record",
+      "retry counter"
+    ],
+    "authorization_prerequisites": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "implementation_required": true,
+    "current_execution_status": "NOT_EXECUTED"
+  },
+  {
+    "case_id": "OTLP-CF-AUTH-008",
+    "title": "Authenticated but forbidden transport source",
+    "objective": "Separate transport authentication success from deployment authorization and network policy.",
+    "layer": "DEPLOYMENT_TRANSPORT",
+    "gate_refs": [
+      "DQ-020",
+      "PR-G3D",
+      "PR-G5"
+    ],
+    "control_refs": [
+      "OTEL-C014",
+      "OTEL-C015"
+    ],
+    "source_requirement_refs": [
+      {
+        "source_url": "https://github.com/open-telemetry/opentelemetry-proto/blob/v1.11.0/docs/specification.md",
+        "section": "OTLP transport security",
+        "requirement_class": "UPSTREAM_INFORMATIONAL"
+      },
+      {
+        "source_url": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+        "section": "TMAI deployment authorization and network policy",
+        "requirement_class": "TMAI_FAIL_CLOSED_POLICY"
+      }
+    ],
+    "signals": [
+      "TRACES",
+      "METRICS",
+      "LOGS"
+    ],
+    "transport": "BOTH",
+    "coverage_domains": [
+      "negative",
+      "security",
+      "authority_separation"
+    ],
+    "preconditions": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "stimulus": "Use a cryptographically valid workload credential from a source, namespace, audience or route not allowed by the frozen deployment policy.",
+    "expected_outcome": {
+      "protocol_result": "Authentication may succeed, but policy authorization rejects before telemetry processing and records a bounded security audit.",
+      "retry_class": "NO_RETRY",
+      "acceptance_state": "NOT_ACCEPTED",
+      "required_state": "Transport policy authorization is not DBOS Permission."
+    },
+    "required_observations": [
+      "authentication result success",
+      "policy authorization result denied",
+      "zero processed items",
+      "secret-free audit"
+    ],
+    "forbidden_inferences": [
+      "MUST_NOT_INFER_END_TO_END_DELIVERY",
+      "MUST_NOT_CREATE_EVIDENCE_TRUTH",
+      "MUST_NOT_GRANT_PERMISSION",
+      "MUST_NOT_EQUATE_TRANSPORT_AUTHORIZATION_WITH_DBOS_PERMISSION"
+    ],
+    "evidence_requirements": [
+      "credential/policy/config digests",
+      "authn/authz observations",
+      "receiver zero-processing counter",
+      "audit scan"
+    ],
+    "authorization_prerequisites": [
+      "DQ-022 must adopt the exact reference or an explicit superseding reference",
+      "DQ-020 must explicitly authorize the exact staging scope before execution",
+      "Exact distribution, component, artifact, configuration, TLS/authentication, topology and environment digests must be frozen"
+    ],
+    "implementation_required": true,
+    "current_execution_status": "NOT_EXECUTED"
+  }
+  ],
+  "semantic_rules": [
+    "CASE_IDS_AND_GROUP_IDS_MUST_BE_UNIQUE",
+    "EVERY_REQUIRED_CASE_ID_MUST_RESOLVE_AND_EVERY_CASE_MUST_BELONG_TO_A_GROUP",
+    "REFERENCE_DECODER_CASES_MUST_NOT_REQUIRE_OR_CREATE_A_LISTENER_COLLECTOR_OR_NETWORK_TRAFFIC",
+    "DEPLOYMENT_TRANSPORT_CASES_REQUIRE_DQ_020_AND_EXACT_AUTH_TLS_ARTIFACT_CONFIG_TOPOLOGY_BINDING",
+    "END_TO_END_RECONCILIATION_CASES_REQUIRE_PR_G3_AND_PER_HOP_DELIVERY_ACCOUNTING",
+    "PROFILES_AND_PROCESS_CONTEXT_ARE_EXCLUSION_CASES_ONLY",
+    "UNKNOWN_ACCEPTANCE_MUST_BE_RETAINED_AND_MUST_NOT_BE_COERCED_TO_SUCCESS_OR_REJECTION",
+    "CASE_PASS_MUST_NOT_CREATE_IDENTITY_CAPABILITY_PERMISSION_EVIDENCE_TRUTH_DECISION_OR_PRODUCTION_AUTHORITY",
+    "REFERENCE_ADOPTION_IMPLEMENTATION_DEPLOYMENT_AND_PRODUCTION_READINESS_REMAIN_SEPARATE_HUMAN_DECISIONS"
+  ],
+  "effects": {
+    "adopts_reference_version": false,
+    "implements_test_harness": false,
+    "executes_tests": false,
+    "changes_child_repositories": false,
+    "creates_listener": false,
+    "creates_collector": false,
+    "creates_evidence": false,
+    "grants_permission": false,
+    "authorizes_implementation": false,
+    "authorizes_deployment": false,
+    "declares_conformance": false,
+    "declares_production_ready": false
+  }
+}

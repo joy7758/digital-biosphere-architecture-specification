@@ -76,6 +76,54 @@ export const gateRows = [
     zh: "百度云发布指针已完成真实回滚与恢复验证。",
     en: "The Baidu Cloud release pointer passed an actual rollback-and-restore check.",
   },
+  {
+    id: "DQ_022_OTLP_REFERENCE",
+    state: "REVIEW",
+    zh: "OTLP v1.11.0 精确版本、56 项符合性合同和结果 Schema 已完成双智能体审查；仍待人工版本决定，0 项测试已执行。",
+    en: "The exact OTLP v1.11.0 reference, 56-case conformance contract, and result schema completed two-agent review; human version decision is pending and zero cases have executed.",
+  },
+  {
+    id: "DQ_023_OTEL_SEMANTICS",
+    state: "REVIEW",
+    zh: "47 项非权威映射已补充为 8 组、46 项语义符合性合同并覆盖 47/47 mappings；两路智能体推荐进入有界人工审查，但 0 项已执行。",
+    en: "The 47-field non-authoritative mapping now has an 8-group, 46-case semantic conformance contract covering 47/47 mappings; two agents recommend bounded human review, but zero cases have executed.",
+  },
+  {
+    id: "DQ_024_OTEL_SCHEMA_RESOURCE_ENTITY",
+    state: "REFERENCE_ADOPTED",
+    zh: "DQ-024 已采纳 Schema／Resource v1.59 参考和 Development Entity 隔离；45 项合同仍有 0 项执行，未授权 Runtime。",
+    en: "DQ-024 adopts the Schema/Resource v1.59 reference and quarantines Development Entity semantics; zero of 45 cases have executed and no Runtime is authorized.",
+  },
+  {
+    id: "DQ_025_OTEL_COLLECTOR_DISTRIBUTION",
+    state: "REFERENCE_ADOPTED",
+    zh: "DQ-025 已采纳 Collector v0.156.0 custom-minimal 8+2 架构清单；未构建 binary/image/config/listener，48 项合同仍有 0 项执行。",
+    en: "DQ-025 adopts the Collector v0.156.0 custom-minimal 8+2 architecture inventory; no binary, image, configuration, or listener exists and zero of 48 cases have executed.",
+  },
+  {
+    id: "DQ_020_OTEL_COLLECTOR_DEPLOYMENT",
+    state: "BLOCKED_INPUT",
+    zh: "Collector deployment profile 已机器化并通过 35/35 本地负例；双模型只推荐有界人工架构审查，不推荐 Runtime。配置、listener、部署和直接证据均不存在。",
+    en: "The Collector deployment profile is machine-readable and rejects 35/35 local negatives; two models recommend bounded human architecture review only, not Runtime use. No configuration, listener, deployment, or direct evidence exists.",
+  },
+  {
+    id: "DQ_020_OTEL_COLLECTOR_OPERATIONAL_EVIDENCE",
+    state: "BLOCKED_INPUT",
+    zh: "Collector 运维证据画像通过 45/45 失败关闭负例；两模型推荐有限架构审查并拒绝当前 Runtime。查询、阈值、告警、运行手册、测量和真实证据均不存在。",
+    en: "The Collector operational-evidence profile rejects 45/45 fail-closed negatives; two models recommend bounded architecture review and reject current Runtime use. No queries, thresholds, alerts, runbooks, measurements, or real evidence exist.",
+  },
+  {
+    id: "PRODUCTION_HUMAN_DECISION_READINESS",
+    state: "DECISIONS_RECORDED_FREEZE_PENDING",
+    zh: "DQ-022 至 DQ-025、ADR-024 和 DQ-018 的精确决定已记录；DBA commit/push 已授权，但在 exact commit/tree 形成前仍不是不可变基线。",
+    en: "Exact decisions for DQ-022 through DQ-025, ADR-024, and DQ-018 are recorded; DBA commit and push are authorized, but no immutable baseline exists until exact commits and trees are created.",
+  },
+  {
+    id: "PRODUCTION_READY",
+    state: "NOT_READY",
+    zh: "仅 DQ-018 有界基础切片获授权，且尚未满足启动前置；Collector、endpoint、生产持久化证据和受控 Pilot 均不存在。",
+    en: "Only the bounded DQ-018 foundation slice is authorized and its start prerequisites remain unmet; no Collector, endpoint, production durability evidence, or bounded pilot exists.",
+  },
 ] as const;
 
 export const content = {
@@ -92,9 +140,9 @@ export const content = {
     },
     badge: "正式发布：可信多智能体基础设施开发者预览版 v0.1",
     eyebrow: "DIGITAL BIOSPHERE / 数字生物圈",
-    title: "面向多智能体系统的可信基础设施",
+    title: "可信多智能体基础设施",
     lead:
-      "让 AI 智能体在长期运行与协作中拥有可追溯身份、受控生命周期、可验证证据和明确治理边界。",
+      "面向长期运行、协作和可验证数字主体的基础设施。",
     primaryCta: "理解架构",
     secondaryCta: "查看当前状态",
     notice:
@@ -150,7 +198,7 @@ export const content = {
     statusCta: "打开完整状态页",
     developersTitle: "让智能体从可验证事实开始",
     developersBody:
-      "AI 智能体是首要客户。修复后千帆和方舟的 12 次受控会话全部达到预冻结阈值。exact DBOS public-safe wheel 已通过 334 项源码测试、34/34 Validator、密钥扫描和隔离安装，并提供匿名下载；可用于架构复用和受限 Developer Preview 评价，但不是生产 Runtime。",
+      "AI 智能体是首要客户。修复后千帆和方舟的 12 次受控会话全部达到预冻结阈值；两路智能体推荐 47 项 OpenTelemetry 语义映射／46-case 合同、Schema／Resource／Entity 45-case 合同、custom-minimal Collector 48-case 合同，以及 DQ-020 deployment／operational-evidence profiles 进入有界人工审查。Collector 相关材料只被推荐为设计输入，明确不推荐当前 Runtime。exact DBOS public-safe wheel 可匿名下载，但 Validator、Collector binary/config/query/alert 和生产 Runtime 尚未实现。",
     developerLinks: ["阅读架构规范", "读取机器状态", "读取智能体入口", "读取智能体客户包"],
     governanceTitle: "发布后仍然有效的边界",
     governanceItems: [
@@ -175,9 +223,9 @@ export const content = {
     },
     badge: "Released: Trusted Multi-Agent Infrastructure Developer Preview v0.1",
     eyebrow: "DIGITAL BIOSPHERE",
-    title: "Trust infrastructure for multi-agent systems",
+    title: "Trusted Multi-Agent Infrastructure",
     lead:
-      "Give long-running, collaborative AI agents traceable identity, governed lifecycles, verifiable evidence, and explicit authority boundaries.",
+      "Infrastructure for long-running, collaborative, and verifiable digital entities.",
     primaryCta: "Understand the architecture",
     secondaryCta: "View current status",
     notice:
@@ -240,7 +288,7 @@ export const content = {
     statusCta: "Open the full status page",
     developersTitle: "Let agents start from verifiable facts",
     developersBody:
-      "AI agents are the primary customers. All twelve controlled Qianfan and Ark sessions met the frozen thresholds. The exact DBOS public-safe wheel passed 334 source tests, 34/34 validators, secret scanning, and clean installation and now has an anonymous download URL. Use it for architecture reuse and bounded Developer Preview evaluation, not as a production Runtime.",
+      "AI agents are the primary customers. All twelve controlled Qianfan and Ark sessions met the frozen thresholds. Two agents recommend the 47-field OpenTelemetry semantic mapping and its 46-case contract, the 45-case Schema/Resource/Entity provenance contract, the 48-case custom-minimal Collector contract, and the DQ-020 deployment and operational-evidence profiles for bounded human review. Collector materials are design inputs only and are not recommended for current Runtime use. The exact DBOS public-safe wheel is anonymously downloadable, but validators, Collector binary/configuration/query/alert artifacts, and the production Runtime are not implemented.",
     developerLinks: ["Read architecture", "Read machine status", "Read agent entry", "Read agent customer package"],
     governanceTitle: "Boundaries that remain after release",
     governanceItems: [

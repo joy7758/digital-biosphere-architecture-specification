@@ -1,0 +1,103 @@
+{
+  "packet_schema_version": "0.1",
+  "packet_id": "TMAI-OTEL-SEMANTIC-CONVENTIONS-ADOPTION-PACKET-20260722-001",
+  "decision_id": "DQ-023",
+  "status": "READY_FOR_HUMAN_DECISION_AGENT_REVIEW_COMPLETE_NOT_AUTHORIZED",
+  "question": "Adopt core semantic-conventions v1.43.0 selected stable mappings and pinned GenAI development mappings as the TMAI v0.1 architecture mapping reference?",
+  "recommended_option": "OPTION_A_SPLIT_STABILITY_REFERENCE",
+  "options": [
+    "OPTION_A_SPLIT_STABILITY_REFERENCE",
+    "OPTION_B_CORE_STABLE_ONLY",
+    "OPTION_C_RETURN_FOR_REVISION"
+  ],
+  "source_references": {
+    "otel_specification": "v1.59.0@a824fb4eba795c5c65dd397b3d22e7c28e934de3",
+    "otel_specification_observed_head_not_adopted": "2b04e8b639d2a1baf2e1eaab68ee254cdc6100f0",
+    "core_semconv": "v1.43.0@89aae438b3b3b0a8dd33003c9d70592baf7dbd0d",
+    "genai_semconv": "2e994c6d59a93bb4fc1752c5378eedb9b8e14d6b",
+    "genai_release_tag": null,
+    "genai_schema_url": null,
+    "genai_schema_url_observation": "EXACT_COMMIT_README_TODO",
+    "otlp": "v1.11.0@790608c4d51e6ffc12210b541e8514cbed9e91a4"
+  },
+  "contract_references": [
+    "architecture/opentelemetry-semantic-conventions-profile.md",
+    "architecture/opentelemetry-semantic-mapping.v0.1.json",
+    "architecture/schemas/opentelemetry-semantic-mapping.schema.v0.1.json",
+    "architecture/schemas/opentelemetry-semantic-observation.schema.v0.1.json",
+    "architecture/examples/opentelemetry-semantic-observation.not-assessed.example.json",
+    "architecture/opentelemetry-semantic-conformance-profile.md",
+    "architecture/opentelemetry-semantic-conformance-cases.v0.1.json",
+    "architecture/schemas/opentelemetry-semantic-conformance-case-catalog.schema.v0.1.json",
+    "architecture/schemas/opentelemetry-semantic-conformance-result-set.schema.v0.1.json",
+    "architecture/examples/opentelemetry-semantic-conformance-result-set.not-assessed.example.json",
+    "OTEL-SEMANTIC-CONFORMANCE-AGENT-RECOMMENDATION.md",
+    "architecture/ADR-026-opentelemetry-semantic-conventions-boundary.md"
+  ],
+  "accepted_scope_if_option_a": [
+    "CORE_1_43_SELECTED_STABLE_METADATA",
+    "GENAI_EXACT_COMMIT_DEVELOPMENT_MAPPING",
+    "RAW_UPSTREAM_FIELD_PRESERVATION",
+    "TRUSTED_BINDING_OUTSIDE_RAW_TELEMETRY",
+    "SENSITIVE_CONTENT_DISABLED_BY_DEFAULT",
+    "DEPRECATED_INPUT_REJECT_AND_DIAGNOSE",
+    "FAIL_CLOSED_VERSION_DRIFT"
+  ],
+  "rejected_scope": [
+    "SDK_OR_COLLECTOR_ADOPTION",
+    "CUSTOM_TMAI_OTEL_NAMESPACE",
+    "TELEMETRY_ID_TO_DBOS_IDENTITY_ELEVATION",
+    "TRACE_ID_TO_EXECUTION_ID_ELEVATION",
+    "TOOL_METADATA_TO_CAPABILITY_OR_PERMISSION_ELEVATION",
+    "GENAI_EVALUATION_TO_SAEE_OR_DECISION_ELEVATION",
+    "DEFAULT_SENSITIVE_CONTENT_CAPTURE",
+    "IMPLEMENTATION_OR_DEPLOYMENT_AUTHORIZATION",
+    "PRODUCTION_READINESS_CLAIM"
+  ],
+  "human_tokens": {
+    "adopt_split_stability": "DQ-023=ADOPT_OTEL_SEMCONV_1_43_CORE_AND_PINNED_GENAI_MAPPING",
+    "adopt_core_only": "DQ-023=ADOPT_OTEL_SEMCONV_1_43_CORE_ONLY",
+    "return_for_revision": "DQ-023=RETURN_OTEL_SEMANTIC_MAPPING_FOR_REVISION",
+    "decider_required": "decided_by_ref=<human-reference>"
+  },
+  "current_truth": {
+    "agent_review_complete": true,
+    "contract_freeze_recommended_by_two_agents": true,
+    "recommended_to_agent_developer_by_two_agents": true,
+    "open_required_design_corrections": 0,
+    "decision_recorded": false,
+    "core_semconv_reference_adopted": false,
+    "genai_mapping_reference_adopted": false,
+    "mapping_catalog_count": 47,
+    "mapping_source_registry_count": 9,
+    "mapping_schema_valid": true,
+    "observation_schema_valid": true,
+    "semantic_conformance_profile_defined": true,
+    "semantic_conformance_case_group_count": 8,
+    "semantic_conformance_case_count": 46,
+    "semantic_conformance_mapping_coverage": "47/47",
+    "semantic_conformance_catalog_schema_negatives_rejected": "12/12",
+    "semantic_conformance_result_schema_negatives_rejected": "23/23",
+    "semantic_conformance_result_set_schema_defined": true,
+    "semantic_conformance_not_assessed_example_valid": true,
+    "semantic_conformance_agent_review_complete": true,
+    "semantic_conformance_freeze_recommended_by_two_agents": true,
+    "semantic_validator_implemented": false,
+    "conformance_tests_executed": 0
+  },
+  "effects": {
+    "creates_entity": false,
+    "creates_identity": false,
+    "creates_capability": false,
+    "grants_permission": false,
+    "creates_execution": false,
+    "creates_telemetry": false,
+    "creates_evidence": false,
+    "creates_verification": false,
+    "creates_saee_evaluation": false,
+    "creates_governance_decision": false,
+    "authorizes_implementation": false,
+    "authorizes_deployment": false,
+    "production_ready": false
+  }
+}

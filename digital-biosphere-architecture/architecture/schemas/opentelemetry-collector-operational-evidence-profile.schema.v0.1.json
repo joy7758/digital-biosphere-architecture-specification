@@ -1,0 +1,361 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tmai:schema:opentelemetry-collector-operational-evidence-profile:0.1",
+  "title": "TMAI OpenTelemetry Collector Operational Evidence Profile v0.1",
+  "description": "Fail-closed architecture contract for future Collector operational evidence. It creates no configuration, query, alert, runbook, measurement, evidence, runtime, deployment, or authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "profile_schema_version",
+    "profile_id",
+    "status",
+    "observed_at",
+    "primary_repository",
+    "scope",
+    "exact_binding_resolution_contract",
+    "reference_bindings",
+    "telemetry_channel_contract",
+    "naming_and_stability_contract",
+    "identity_and_resource_contract",
+    "required_observation_classes",
+    "derived_sli_contracts",
+    "composite_readiness_contract",
+    "alert_and_runbook_contract",
+    "evidence_binding_contract",
+    "validation_reuse",
+    "unresolved_inputs",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "schemas/opentelemetry-collector-operational-evidence-profile.schema.v0.1.json"},
+    "profile_schema_version": {"const": "0.1"},
+    "profile_id": {"const": "TMAI-OTEL-COLLECTOR-OPERATIONAL-EVIDENCE-PROFILE-0.1"},
+    "status": {"const": "PROPOSED_DQ_020_INPUT_NOT_MEASURED_NOT_AUTHORIZED_NOT_DEPLOYED"},
+    "observed_at": {"const": "2026-07-22"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "scope": {"$ref": "#/$defs/scope"},
+    "exact_binding_resolution_contract": {"$ref": "#/$defs/exactBindingResolution"},
+    "reference_bindings": {"$ref": "#/$defs/referenceBindings"},
+    "telemetry_channel_contract": {"$ref": "#/$defs/telemetryChannels"},
+    "naming_and_stability_contract": {"$ref": "#/$defs/namingStability"},
+    "identity_and_resource_contract": {"$ref": "#/$defs/identityResource"},
+    "required_observation_classes": {"$ref": "#/$defs/observations"},
+    "derived_sli_contracts": {"$ref": "#/$defs/slis"},
+    "composite_readiness_contract": {"$ref": "#/$defs/readiness"},
+    "alert_and_runbook_contract": {"$ref": "#/$defs/alertRunbook"},
+    "evidence_binding_contract": {"$ref": "#/$defs/evidenceBinding"},
+    "validation_reuse": {"$ref": "#/$defs/validationReuse"},
+    "unresolved_inputs": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[A-Z0-9_]+$"},
+      "contains": {"const": "COLLECTOR_PLATFORM_OWNER"}
+    },
+    "effects": {"$ref": "#/$defs/noEffects"}
+  },
+  "$defs": {
+    "emptyArray": {"type": "array", "maxItems": 0},
+    "nullOnly": {"type": "null"},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deployment_profile_id", "deployment_profile_ref", "decision_reference", "decision_status", "evidence_purpose", "new_conformance_catalog_created", "measurement_started", "real_operational_evidence_created", "production_traffic_allowed", "null_exact_inputs_block_runtime_or_gate", "null_exact_inputs_block_bounded_human_architecture_review"],
+      "properties": {
+        "deployment_profile_id": {"const": "TMAI-SELF-HOSTED-SINGLE-TENANT-1"},
+        "deployment_profile_ref": {"const": "opentelemetry-collector-deployment-profile.v0.1.json"},
+        "decision_reference": {"const": "DQ-020"},
+        "decision_status": {"const": "BLOCKED_INPUT"},
+        "evidence_purpose": {"const": "FUTURE_PR_G3_OPERATIONAL_EVIDENCE_BINDING"},
+        "new_conformance_catalog_created": {"const": false},
+        "measurement_started": {"const": false},
+        "real_operational_evidence_created": {"const": false},
+        "production_traffic_allowed": {"const": false},
+        "null_exact_inputs_block_runtime_or_gate": {"const": true},
+        "null_exact_inputs_block_bounded_human_architecture_review": {"const": false}
+      }
+    },
+    "exactBindingResolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["current_state", "null_value_meaning", "replacement_with_invented_value_allowed", "bounded_human_architecture_review_allowed", "implementation_authorization_allowed", "measurement_allowed", "deployment_authorization_allowed", "production_gate_closure_allowed", "resolution_owner", "required_resolution_sequence"],
+      "properties": {
+        "current_state": {"const": "INTENTIONALLY_UNRESOLVED_FAIL_CLOSED"},
+        "null_value_meaning": {"const": "FUTURE_DEPLOYMENT_INPUT_NOT_AVAILABLE"},
+        "replacement_with_invented_value_allowed": {"const": false},
+        "bounded_human_architecture_review_allowed": {"const": true},
+        "implementation_authorization_allowed": {"const": false},
+        "measurement_allowed": {"const": false},
+        "deployment_authorization_allowed": {"const": false},
+        "production_gate_closure_allowed": {"const": false},
+        "resolution_owner": {"const": "FUTURE_COLLECTOR_PLATFORM_OWNER_AFTER_DQ_020"},
+        "required_resolution_sequence": {"const": ["HUMAN_DQ_020_DECISION", "PLATFORM_OWNER_AND_DEPLOYMENT_REPOSITORY_BINDING", "EXACT_CONFIG_QUERY_ALERT_ROUTE_RUNBOOK_AND_RESOURCE_DIGESTS", "DIRECT_FAILURE_CAPACITY_DURABILITY_AND_ROLLBACK_RESULTS", "INDEPENDENT_TECHNICAL_AND_SECURITY_REVIEW"]}
+      }
+    },
+    "referenceBindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collector_release_reference", "collector_inventory_ref", "official_internal_telemetry_url", "official_scaling_url", "official_resiliency_url", "official_hosting_security_url", "official_configuration_security_url", "official_documents_observed_not_adopted", "exact_document_source_digests", "exact_runtime_metric_inventory_digest", "exact_query_bundle_digest", "unresolved_exact_bindings_action"],
+      "properties": {
+        "collector_release_reference": {"const": "v0.156.0@aa158b23c8f89d795b21a05a49b3978565dfebd4"},
+        "collector_inventory_ref": {"const": "opentelemetry-collector-component-inventory.v0.1.json"},
+        "official_internal_telemetry_url": {"const": "https://opentelemetry.io/docs/collector/internal-telemetry/"},
+        "official_scaling_url": {"const": "https://opentelemetry.io/docs/collector/scaling/"},
+        "official_resiliency_url": {"const": "https://opentelemetry.io/docs/collector/resiliency/"},
+        "official_hosting_security_url": {"const": "https://opentelemetry.io/docs/security/hosting-best-practices/"},
+        "official_configuration_security_url": {"const": "https://opentelemetry.io/docs/security/config-best-practices/"},
+        "official_documents_observed_not_adopted": {"const": true},
+        "exact_document_source_digests": {"$ref": "#/$defs/emptyArray"},
+        "exact_runtime_metric_inventory_digest": {"$ref": "#/$defs/nullOnly"},
+        "exact_query_bundle_digest": {"$ref": "#/$defs/nullOnly"},
+        "unresolved_exact_bindings_action": {"const": "BLOCK_IMPLEMENTATION_MEASUREMENT_DEPLOYMENT_AND_GATE_NOT_ARCHITECTURE_REVIEW"}
+      }
+    },
+    "telemetryChannels": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["internal_metrics", "internal_logs", "internal_traces", "health_extension"],
+      "properties": {
+        "internal_metrics": {
+          "type": "object", "additionalProperties": false,
+          "required": ["required", "candidate_verbosity", "transport", "public_listener_allowed", "exact_endpoint_reference", "independent_failure_path_required"],
+          "properties": {
+            "required": {"const": true},
+            "candidate_verbosity": {"const": "NORMAL_NOT_CONFIGURED"},
+            "transport": {"const": "NOT_SELECTED_RESTRICTED_INTERFACE_OR_INDEPENDENT_OTLP_REQUIRED"},
+            "public_listener_allowed": {"const": false},
+            "exact_endpoint_reference": {"$ref": "#/$defs/nullOnly"},
+            "independent_failure_path_required": {"const": true}
+          }
+        },
+        "internal_logs": {
+          "type": "object", "additionalProperties": false,
+          "required": ["required", "candidate_encoding", "sampling_policy_must_be_bound", "dropped_log_accounting_required", "secret_or_payload_logging_allowed", "exact_destination_reference"],
+          "properties": {
+            "required": {"const": true},
+            "candidate_encoding": {"const": "JSON_NOT_CONFIGURED"},
+            "sampling_policy_must_be_bound": {"const": true},
+            "dropped_log_accounting_required": {"const": true},
+            "secret_or_payload_logging_allowed": {"const": false},
+            "exact_destination_reference": {"$ref": "#/$defs/nullOnly"}
+          }
+        },
+        "internal_traces": {
+          "type": "object", "additionalProperties": false,
+          "required": ["allowed", "reason", "cannot_close_evidence_gap"],
+          "properties": {
+            "allowed": {"const": false},
+            "reason": {"const": "EXPERIMENTAL_NOT_REQUIRED_FOR_V0_1_READINESS"},
+            "cannot_close_evidence_gap": {"const": true}
+          }
+        },
+        "health_extension": {
+          "type": "object", "additionalProperties": false,
+          "required": ["role", "can_establish_readiness_alone", "can_close_production_gate"],
+          "properties": {
+            "role": {"const": "LIVENESS_INPUT_ONLY"},
+            "can_establish_readiness_alone": {"const": false},
+            "can_close_production_gate": {"const": false}
+          }
+        }
+      }
+    },
+    "namingStability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["canonical_instrument_namespace", "prometheus_suffix_and_unit_normalization_must_be_recorded", "dots_to_underscores_normalization_must_be_recorded", "metric_views_digest_required", "metric_verbosity_digest_required", "first_party_metric_stability_must_be_resolved_per_instrument", "third_party_http_rpc_metrics_treated_as_collector_stable", "internal_log_format_treated_as_stable", "missing_or_renamed_instrument_action", "counter_reset_action", "mixed_version_aggregation_allowed", "exact_stability_inventory"],
+      "properties": {
+        "canonical_instrument_namespace": {"const": "OTLP_INSTRUMENT_NAMES"},
+        "prometheus_suffix_and_unit_normalization_must_be_recorded": {"const": true},
+        "dots_to_underscores_normalization_must_be_recorded": {"const": true},
+        "metric_views_digest_required": {"const": true},
+        "metric_verbosity_digest_required": {"const": true},
+        "first_party_metric_stability_must_be_resolved_per_instrument": {"const": true},
+        "third_party_http_rpc_metrics_treated_as_collector_stable": {"const": false},
+        "internal_log_format_treated_as_stable": {"const": false},
+        "missing_or_renamed_instrument_action": {"const": "UNKNOWN_AND_BLOCK_READINESS_NO_ZERO_FILL"},
+        "counter_reset_action": {"const": "SPLIT_WINDOW_AND_RECONCILE_WITH_RUNTIME_LIFECYCLE"},
+        "mixed_version_aggregation_allowed": {"const": false},
+        "exact_stability_inventory": {"$ref": "#/$defs/emptyArray"}
+      }
+    },
+    "identityResource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_resource_attributes", "deployment_environment_binding_required", "failure_domain_binding_required", "desired_configuration_digest_binding_required", "running_configuration_digest_binding_required", "runtime_image_digest_binding_required", "service_instance_id_is_dbos_entity_id", "resource_attributes_grant_authority", "exact_resource_binding_digest", "unresolved_exact_bindings_action"],
+      "properties": {
+        "required_resource_attributes": {"const": ["service.name", "service.version", "service.instance.id"]},
+        "deployment_environment_binding_required": {"const": true},
+        "failure_domain_binding_required": {"const": true},
+        "desired_configuration_digest_binding_required": {"const": true},
+        "running_configuration_digest_binding_required": {"const": true},
+        "runtime_image_digest_binding_required": {"const": true},
+        "service_instance_id_is_dbos_entity_id": {"const": false},
+        "resource_attributes_grant_authority": {"const": false},
+        "exact_resource_binding_digest": {"$ref": "#/$defs/nullOnly"},
+        "unresolved_exact_bindings_action": {"const": "BLOCK_IMPLEMENTATION_MEASUREMENT_DEPLOYMENT_AND_GATE_NOT_ARCHITECTURE_REVIEW"}
+      }
+    },
+    "observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["observation_id", "name", "source_class", "candidate_instruments", "required_dimensions", "required_semantics", "exact_query_ref", "thresholds_selected"],
+      "properties": {
+        "observation_id": {"pattern": "^OEO-0(0[1-9]|1[0-2])$"},
+        "name": {"type": "string", "pattern": "^[A-Z0-9_]+$"},
+        "source_class": {"type": "string", "pattern": "^[A-Z0-9_]+$"},
+        "candidate_instruments": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9_.]+$"}},
+        "required_dimensions": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"type": "string", "pattern": "^[a-z0-9_]+$"}},
+        "required_semantics": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"type": "string", "pattern": "^[A-Z0-9_]+$"}},
+        "exact_query_ref": {"$ref": "#/$defs/nullOnly"},
+        "thresholds_selected": {"const": false}
+      }
+    },
+    "observations": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/observation"},
+      "allOf": [
+        {"contains": {"properties": {"observation_id": {"const": "OEO-001"}}, "required": ["observation_id"]}},
+        {"contains": {"properties": {"observation_id": {"const": "OEO-002"}}, "required": ["observation_id"]}},
+        {"contains": {"properties": {"observation_id": {"const": "OEO-003"}}, "required": ["observation_id"]}},
+        {"contains": {"properties": {"observation_id": {"const": "OEO-004"}}, "required": ["observation_id"]}},
+        {"contains": {"properties": {"observation_id": {"const": "OEO-005"}}, "required": ["observation_id"]}},
+        {"contains": {"properties": {"observation_id": {"const": "OEO-006"}}, "required": ["observation_id"]}},
+        {"contains": {"properties": {"observation_id": {"const": "OEO-007"}}, "required": ["observation_id"]}},
+        {"contains": {"properties": {"observation_id": {"const": "OEO-008"}}, "required": ["observation_id"]}},
+        {"contains": {"properties": {"observation_id": {"const": "OEO-009"}}, "required": ["observation_id"]}},
+        {"contains": {"properties": {"observation_id": {"const": "OEO-010"}}, "required": ["observation_id"]}},
+        {"contains": {"properties": {"observation_id": {"const": "OEO-011"}}, "required": ["observation_id"]}},
+        {"contains": {"properties": {"observation_id": {"const": "OEO-012"}}, "required": ["observation_id"]}}
+      ]
+    },
+    "sli": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sli_id", "name", "formula_semantics", "required_inputs", "counter_reset_handling_required", "no_data_action", "warning_threshold", "critical_threshold", "window"],
+      "properties": {
+        "sli_id": {"pattern": "^OESLI-00[1-6]$"},
+        "name": {"type": "string", "pattern": "^[A-Z0-9_]+$"},
+        "formula_semantics": {"type": "string", "pattern": "^[A-Z0-9_]+$"},
+        "required_inputs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"pattern": "^OEO-0(0[1-9]|1[0-2])$"}},
+        "counter_reset_handling_required": {"type": "boolean"},
+        "no_data_action": {"enum": ["UNKNOWN_BLOCK_READINESS", "UNKNOWN_BLOCK_GATE"]},
+        "warning_threshold": {"$ref": "#/$defs/nullOnly"},
+        "critical_threshold": {"$ref": "#/$defs/nullOnly"},
+        "window": {"$ref": "#/$defs/nullOnly"}
+      }
+    },
+    "slis": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/sli"},
+      "allOf": [
+        {"contains": {"properties": {"sli_id": {"const": "OESLI-001"}}, "required": ["sli_id"]}},
+        {"contains": {"properties": {"sli_id": {"const": "OESLI-002"}}, "required": ["sli_id"]}},
+        {"contains": {"properties": {"sli_id": {"const": "OESLI-003"}}, "required": ["sli_id"]}},
+        {"contains": {"properties": {"sli_id": {"const": "OESLI-004"}}, "required": ["sli_id"]}},
+        {"contains": {"properties": {"sli_id": {"const": "OESLI-005"}}, "required": ["sli_id"]}},
+        {"contains": {"properties": {"sli_id": {"const": "OESLI-006"}}, "required": ["sli_id"]}}
+      ]
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evaluation_mode", "predicates", "any_unknown_action", "any_critical_action", "health_ok_override_allowed", "manual_override_allowed", "exact_predicate_queries", "exact_threshold_profile_ref", "truth_table_evidence_ref"],
+      "properties": {
+        "evaluation_mode": {"const": "ALL_REQUIRED_PREDICATES_TRUE_AND_FRESH"},
+        "predicates": {"const": ["PROCESS_RUNNING", "APPROVED_CONFIG_DIGEST_MATCH", "AUTHENTICATED_LISTENER_ACCEPTING_WITHIN_SCOPE", "QUEUE_UTILIZATION_BELOW_CRITICAL_THRESHOLD", "WAL_WRITABLE_WITHIN_QUOTA", "REQUIRED_EXPORTER_REACHABLE_WITHIN_OUTAGE_BUDGET", "SELF_TELEMETRY_FRESH", "NO_BLOCKING_CONFIG_OR_SECURITY_DRIFT"]},
+        "any_unknown_action": {"const": "NOT_READY"},
+        "any_critical_action": {"const": "NOT_READY_AND_RUNBOOK_REQUIRED"},
+        "health_ok_override_allowed": {"const": false},
+        "manual_override_allowed": {"const": false},
+        "exact_predicate_queries": {"$ref": "#/$defs/emptyArray"},
+        "exact_threshold_profile_ref": {"$ref": "#/$defs/nullOnly"},
+        "truth_table_evidence_ref": {"$ref": "#/$defs/nullOnly"}
+      }
+    },
+    "alertRunbook": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["warning_and_critical_separation_required", "multi_window_burn_rate_required_for_slo_alerts", "no_data_alert_required", "alert_rule_digest_required", "alert_delivery_test_required", "clock_skew_bound_required", "runbook_per_critical_alert_required", "automatic_remediation_may_expand_authority", "exact_alert_rule_digest", "exact_runbook_bundle_digest", "exact_alert_route_reference", "unresolved_exact_bindings_action"],
+      "properties": {
+        "warning_and_critical_separation_required": {"const": true},
+        "multi_window_burn_rate_required_for_slo_alerts": {"const": true},
+        "no_data_alert_required": {"const": true},
+        "alert_rule_digest_required": {"const": true},
+        "alert_delivery_test_required": {"const": true},
+        "clock_skew_bound_required": {"const": true},
+        "runbook_per_critical_alert_required": {"const": true},
+        "automatic_remediation_may_expand_authority": {"const": false},
+        "exact_alert_rule_digest": {"$ref": "#/$defs/nullOnly"},
+        "exact_runbook_bundle_digest": {"$ref": "#/$defs/nullOnly"},
+        "exact_alert_route_reference": {"$ref": "#/$defs/nullOnly"},
+        "unresolved_exact_bindings_action": {"const": "BLOCK_IMPLEMENTATION_MEASUREMENT_DEPLOYMENT_AND_GATE_NOT_ARCHITECTURE_REVIEW"}
+      }
+    },
+    "evidenceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["required_bindings", "self_reported_summary_can_close_gate", "dashboard_screenshot_can_close_gate", "health_ok_can_close_gate", "missing_series_may_be_zero_filled", "telemetry_creates_dbos_evidence", "operational_evidence_creates_truth", "result_manifest_ref", "real_result_reference"],
+      "properties": {
+        "required_bindings": {
+          "type": "array", "minItems": 13, "maxItems": 13, "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^[a-z0-9_]+$"}
+        },
+        "self_reported_summary_can_close_gate": {"const": false},
+        "dashboard_screenshot_can_close_gate": {"const": false},
+        "health_ok_can_close_gate": {"const": false},
+        "missing_series_may_be_zero_filled": {"const": false},
+        "telemetry_creates_dbos_evidence": {"const": false},
+        "operational_evidence_creates_truth": {"const": false},
+        "result_manifest_ref": {"const": "production-gate-evidence-manifest-specification.md"},
+        "real_result_reference": {"$ref": "#/$defs/nullOnly"}
+      }
+    },
+    "validationReuse": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["new_conformance_catalog_created", "collector_distribution_operability_cases", "collector_distribution_capacity_cases", "collector_distribution_durability_cases", "existing_case_results_executed", "production_gate_profile_ref"],
+      "properties": {
+        "new_conformance_catalog_created": {"const": false},
+        "collector_distribution_operability_cases": {"const": ["ODC-CF-OPS-001", "ODC-CF-OPS-002", "ODC-CF-OPS-003", "ODC-CF-OPS-004", "ODC-CF-OPS-005"]},
+        "collector_distribution_capacity_cases": {"const": ["ODC-CF-CAP-001", "ODC-CF-CAP-002", "ODC-CF-CAP-003", "ODC-CF-CAP-004"]},
+        "collector_distribution_durability_cases": {"const": ["ODC-CF-DUR-001", "ODC-CF-DUR-002", "ODC-CF-DUR-003", "ODC-CF-DUR-004", "ODC-CF-DUR-005", "ODC-CF-DUR-006"]},
+        "existing_case_results_executed": {"const": 0},
+        "production_gate_profile_ref": {"const": "production-gate-evidence-profiles.v0.1.json"}
+      }
+    },
+    "noEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["creates_configuration", "creates_metric_endpoint", "creates_query", "creates_alert", "creates_runbook", "starts_measurement", "creates_operational_evidence", "opens_listener", "deploys_collector", "creates_runtime", "creates_agent", "creates_entity", "creates_evidence", "grants_permission", "authorizes_implementation", "authorizes_deployment", "closes_production_gate", "declares_production_ready"],
+      "properties": {
+        "creates_configuration": {"const": false},
+        "creates_metric_endpoint": {"const": false},
+        "creates_query": {"const": false},
+        "creates_alert": {"const": false},
+        "creates_runbook": {"const": false},
+        "starts_measurement": {"const": false},
+        "creates_operational_evidence": {"const": false},
+        "opens_listener": {"const": false},
+        "deploys_collector": {"const": false},
+        "creates_runtime": {"const": false},
+        "creates_agent": {"const": false},
+        "creates_entity": {"const": false},
+        "creates_evidence": {"const": false},
+        "grants_permission": {"const": false},
+        "authorizes_implementation": {"const": false},
+        "authorizes_deployment": {"const": false},
+        "closes_production_gate": {"const": false},
+        "declares_production_ready": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1",
+  "packet_id": "TMAI-OTLP-1.11-ADOPTION-PACKET-20260722-001",
+  "decision_id": "DQ-022",
+  "status": "READY_FOR_HUMAN_DECISION_AGENT_REVIEW_COMPLETE_NOT_AUTHORIZED",
+  "source": {
+    "repository": "https://github.com/open-telemetry/opentelemetry-proto",
+    "source_tag": "v1.10.0",
+    "source_commit": "ca839c51f706f5d53bfb46f06c3e90c3af3a52c6",
+    "target_tag": "v1.11.0",
+    "target_commit": "790608c4d51e6ffc12210b541e8514cbed9e91a4",
+    "target_published_at": "2026-07-21T13:54:02Z",
+    "target_is_draft": false,
+    "target_is_prerelease": false,
+    "compare_url": "https://github.com/open-telemetry/opentelemetry-proto/compare/v1.10.0...v1.11.0",
+    "commits_ahead": 42,
+    "files_changed": 29
+  },
+  "scope": {
+    "included": [
+      "trace",
+      "metric",
+      "log",
+      "otlp_transport_behavior",
+      "request_response_size_limits",
+      "retry_after_http_date_or_delay_seconds"
+    ],
+    "excluded": [
+      "profiles_v1development",
+      "process_context_sharing_v1development",
+      "sdk_selection",
+      "collector_selection",
+      "endpoint_creation",
+      "runtime_implementation"
+    ]
+  },
+  "compatibility": {
+    "backward": "CONDITIONAL",
+    "forward": "CONDITIONAL",
+    "breaking_change_in_selected_stable_wire_scope": false,
+    "runtime_interoperability": "NOT_ASSESSED",
+    "migration_requirement": "REFERENCE_AND_CONTROL_UPDATE_ONLY"
+  },
+  "conformance_contract": {
+    "profile_ref": "architecture/otlp-v1.11-conformance-profile.md",
+    "catalog_ref": "architecture/otlp-v1.11-conformance-cases.v0.1.json",
+    "catalog_schema_ref": "architecture/schemas/otlp-conformance-case-catalog.schema.v0.1.json",
+    "result_schema_ref": "architecture/schemas/otlp-conformance-result-set.schema.v0.1.json",
+    "not_assessed_result_example_ref": "architecture/examples/otlp-conformance-result-set.not-assessed.example.json",
+    "case_count": 56,
+    "case_group_count": 7,
+    "catalog_status": "PROPOSED_NOT_ADOPTED_NOT_EXECUTED",
+    "validator_implemented": false,
+    "tests_executed": false,
+    "conformance_claimed": false,
+    "agent_review_ref": "OTLP-1.11-CONFORMANCE-PROFILE-AGENT-RECOMMENDATION.md",
+    "agent_review_complete": true,
+    "catalog_freeze_recommended_by_two_agents": true,
+    "result_schema_freeze_recommended_by_two_agents": true,
+    "open_required_design_corrections": 0,
+    "production_customer_recommendable_now": false
+  },
+  "recommended_option": "OPTION_A_ADOPT_REFERENCE_ONLY",
+  "agent_review": {
+    "review_ref": "OTLP-1.11-VERSION-ADOPTION-AGENT-RECOMMENDATION.md",
+    "sessions_completed": 2,
+    "providers_with_success": 2,
+    "reference_adoption_recommended_by_two_agents": true,
+    "selected_stable_scope_breaking_issues": 0,
+    "source_or_delta_errors": 0,
+    "required_design_corrections": 0,
+    "production_customer_recommendable_now": false
+  },
+  "human_decision_tokens": {
+    "adopt": "DQ-022=ADOPT_OTLP_1_11_0_REFERENCE_BASELINE",
+    "hold": "DQ-022=HOLD_OTLP_1_10_0_REFERENCE_BASELINE",
+    "revise": "DQ-022=RETURN_OTLP_1_11_0_ADOPTION_FOR_REVISION"
+  },
+  "effects": {
+    "decision_recorded": false,
+    "reference_adopted": false,
+    "implementation_authorized": false,
+    "deployment_authorized": false,
+    "collector_selected": false,
+    "endpoint_created": false,
+    "production_ready": false
+  }
+}

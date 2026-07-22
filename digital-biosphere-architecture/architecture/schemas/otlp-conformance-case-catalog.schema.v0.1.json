@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tmai:schema:otlp-conformance-case-catalog:0.1",
+  "title": "TMAI OTLP Conformance Case Catalog v0.1",
+  "description": "Machine-readable preregistration contract for OTLP reference, deployment, reconciliation, and authority-boundary conformance cases. Schema validity does not adopt an OTLP version, execute a test, authorize implementation or deployment, or prove production readiness.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "catalog_schema_version",
+    "catalog_id",
+    "status",
+    "architecture_owner",
+    "reference",
+    "profiles",
+    "case_groups",
+    "cases",
+    "semantic_rules",
+    "effects"
+  ],
+  "properties": {
+    "catalog_schema_version": {"const": "0.1"},
+    "catalog_id": {
+      "type": "string",
+      "pattern": "^TMAI-OTLP-CONFORMANCE-[A-Z0-9._-]{4,96}$"
+    },
+    "status": {"const": "ADOPTED_CONTRACT_NOT_EXECUTED"},
+    "architecture_owner": {"const": "digital-biosphere-architecture"},
+    "reference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "adoption_status",
+        "repository",
+        "previous_tag",
+        "previous_commit",
+        "candidate_tag",
+        "candidate_commit",
+        "observed_at",
+        "source_urls"
+      ],
+      "properties": {
+        "decision_id": {"const": "DQ-022"},
+        "adoption_status": {"const": "ADOPTED_REFERENCE"},
+        "repository": {"const": "https://github.com/open-telemetry/opentelemetry-proto"},
+        "previous_tag": {"const": "v1.10.0"},
+        "previous_commit": {"const": "ca839c51f706f5d53bfb46f06c3e90c3af3a52c6"},
+        "candidate_tag": {"const": "v1.11.0"},
+        "candidate_commit": {"const": "790608c4d51e6ffc12210b541e8514cbed9e91a4"},
+        "observed_at": {"type": "string", "format": "date"},
+        "source_urls": {
+          "type": "array",
+          "minItems": 3,
+          "items": {"type": "string", "format": "uri"},
+          "uniqueItems": true
+        }
+      }
+    },
+    "profiles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selected_stable_signals",
+        "excluded_signals",
+        "reference_request_limit_bytes",
+        "reference_response_limit_bytes",
+        "limit_policy",
+        "unknown_acceptance_retained"
+      ],
+      "properties": {
+        "selected_stable_signals": {
+          "const": ["TRACES", "METRICS", "LOGS"]
+        },
+        "excluded_signals": {
+          "const": ["PROFILES", "PROCESS_CONTEXT"]
+        },
+        "reference_request_limit_bytes": {"const": 67108864},
+        "reference_response_limit_bytes": {"const": 4194304},
+        "limit_policy": {"const": "RECOMMENDED_REFERENCE_MAXIMUM_DEPLOYMENT_MUST_FREEZE_EXACT_VALUES"},
+        "unknown_acceptance_retained": {"const": true}
+      }
+    },
+    "case_groups": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/caseGroup"},
+      "uniqueItems": true
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/conformanceCase"}
+    },
+    "semantic_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adopts_reference_version",
+        "implements_test_harness",
+        "executes_tests",
+        "changes_child_repositories",
+        "creates_listener",
+        "creates_collector",
+        "creates_evidence",
+        "grants_permission",
+        "authorizes_implementation",
+        "authorizes_deployment",
+        "declares_conformance",
+        "declares_production_ready"
+      ],
+      "properties": {
+        "adopts_reference_version": {"const": false},
+        "implements_test_harness": {"const": false},
+        "executes_tests": {"const": false},
+        "changes_child_repositories": {"const": false},
+        "creates_listener": {"const": false},
+        "creates_collector": {"const": false},
+        "creates_evidence": {"const": false},
+        "grants_permission": {"const": false},
+        "authorizes_implementation": {"const": false},
+        "authorizes_deployment": {"const": false},
+        "declares_conformance": {"const": false},
+        "declares_production_ready": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "caseGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["group_id", "title", "layers", "required_for_gates", "required_case_ids"],
+      "properties": {
+        "group_id": {"type": "string", "pattern": "^OTLP-CG-[A-Z0-9_-]{3,64}$"},
+        "title": {"type": "string", "minLength": 1, "maxLength": 256},
+        "layers": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/layer"},
+          "uniqueItems": true
+        },
+        "required_for_gates": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "pattern": "^(DQ-0(?:18|20|22)|PR-G[2356](?:[A-F])?)$"},
+          "uniqueItems": true
+        },
+        "required_case_ids": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/caseId"},
+          "uniqueItems": true
+        }
+      }
+    },
+    "caseId": {
+      "type": "string",
+      "pattern": "^OTLP-CF-[A-Z]{2,8}-[0-9]{3}$"
+    },
+    "layer": {
+      "enum": [
+        "REFERENCE_DECODER",
+        "DEPLOYMENT_TRANSPORT",
+        "END_TO_END_RECONCILIATION",
+        "AUTHORITY_BOUNDARY"
+      ]
+    },
+    "sourceRequirement": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_url", "section", "requirement_class"],
+      "properties": {
+        "source_url": {"type": "string", "format": "uri"},
+        "section": {"type": "string", "minLength": 1, "maxLength": 512},
+        "requirement_class": {"enum": ["UPSTREAM_MUST", "UPSTREAM_SHOULD", "UPSTREAM_INFORMATIONAL", "TMAI_FAIL_CLOSED_POLICY"]}
+      }
+    },
+    "expectedOutcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["protocol_result", "retry_class", "acceptance_state", "required_state"],
+      "properties": {
+        "protocol_result": {"type": "string", "minLength": 1, "maxLength": 1024},
+        "retry_class": {"enum": ["NOT_APPLICABLE", "NO_RETRY", "BOUNDED_RETRY", "UNKNOWN_UNTIL_ACK_RECONCILIATION"]},
+        "acceptance_state": {"enum": ["NOT_ACCEPTED", "ACCEPTED_AT_HOP_ONLY", "PARTIAL_AT_HOP", "UNKNOWN", "NOT_APPLICABLE"]},
+        "required_state": {"type": "string", "minLength": 1, "maxLength": 2048}
+      }
+    },
+    "conformanceCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "title",
+        "objective",
+        "layer",
+        "gate_refs",
+        "control_refs",
+        "source_requirement_refs",
+        "signals",
+        "transport",
+        "coverage_domains",
+        "preconditions",
+        "stimulus",
+        "expected_outcome",
+        "required_observations",
+        "forbidden_inferences",
+        "evidence_requirements",
+        "authorization_prerequisites",
+        "implementation_required",
+        "current_execution_status"
+      ],
+      "properties": {
+        "case_id": {"$ref": "#/$defs/caseId"},
+        "title": {"type": "string", "minLength": 1, "maxLength": 256},
+        "objective": {"type": "string", "minLength": 1, "maxLength": 2048},
+        "layer": {"$ref": "#/$defs/layer"},
+        "gate_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "pattern": "^(DQ-0(?:18|20|22)|PR-G[2356](?:[A-F])?)$"},
+          "uniqueItems": true
+        },
+        "control_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string", "pattern": "^(OTEL-C0[0-2][0-9]|TA-[CDNSFMRP][0-9]{3})$"},
+          "uniqueItems": true
+        },
+        "source_requirement_refs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"$ref": "#/$defs/sourceRequirement"},
+          "uniqueItems": true
+        },
+        "signals": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"enum": ["TRACES", "METRICS", "LOGS", "PROFILES", "PROCESS_CONTEXT", "ANY"]},
+          "uniqueItems": true
+        },
+        "transport": {"enum": ["GRPC", "HTTP", "BOTH", "NOT_APPLICABLE"]},
+        "coverage_domains": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"enum": ["positive", "negative", "fault", "security", "recovery", "rollback", "migration", "capacity", "data_governance", "authority_separation"]},
+          "uniqueItems": true
+        },
+        "preconditions": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "stimulus": {"type": "string", "minLength": 1, "maxLength": 4096},
+        "expected_outcome": {"$ref": "#/$defs/expectedOutcome"},
+        "required_observations": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "forbidden_inferences": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "evidence_requirements": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "authorization_prerequisites": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "implementation_required": {"const": true},
+        "current_execution_status": {"const": "NOT_EXECUTED"}
+      }
+    }
+  }
+}

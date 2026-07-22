@@ -1,0 +1,122 @@
+{
+  "result_schema_version": "0.1",
+  "result_set_id": "TMAI-OTLP-RESULT-NOT-ASSESSED-EXAMPLE-001",
+  "status": "DRAFT",
+  "synthetic_example": true,
+  "catalog_binding": {
+    "catalog_id": "TMAI-OTLP-CONFORMANCE-V1.11-0.1",
+    "catalog_path": "architecture/otlp-v1.11-conformance-cases.v0.1.json",
+    "catalog_digest": null,
+    "catalog_status": "ADOPTED_CONTRACT",
+    "reference_tag": "v1.11.0",
+    "reference_commit": "790608c4d51e6ffc12210b541e8514cbed9e91a4"
+  },
+  "decision_bindings": [
+    {
+      "decision_id": "DQ-022",
+      "status": "PENDING",
+      "reference": "OTLP-1.11-VERSION-ADOPTION-DECISION-PACKET.md",
+      "decision_record_digest": null,
+      "scope_digest": null,
+      "authority_registry_ref": null,
+      "decided_by_ref": null,
+      "decided_at": null
+    },
+    {
+      "decision_id": "DQ-018",
+      "status": "PENDING",
+      "reference": "DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md",
+      "decision_record_digest": null,
+      "scope_digest": null,
+      "authority_registry_ref": null,
+      "decided_by_ref": null,
+      "decided_at": null
+    }
+  ],
+  "claim_scope": {
+    "gate_id": "PR-G2",
+    "step_id": "S1",
+    "environment_id": "SYNTHETIC-NOT-EXECUTED",
+    "environment_class": "SYNTHETIC_REFERENCE",
+    "topology_digest": null,
+    "workload_ref": null,
+    "window_started_at": null,
+    "window_ended_at": null
+  },
+  "implementation_binding": {
+    "repository": null,
+    "source_commit": null,
+    "artifact_digest": null,
+    "distribution_version": null,
+    "component_manifest_digest": null,
+    "configuration_digest": null,
+    "runtime_environment_digest": null
+  },
+  "validation_binding": {
+    "validator_implementation_status": "NOT_IMPLEMENTED",
+    "validator_id": null,
+    "validator_version": null,
+    "validator_artifact_digest": null,
+    "schema_validation": "NOT_ASSESSED",
+    "semantic_validation": "NOT_ASSESSED",
+    "case_set_reconciliation": "NOT_ASSESSED",
+    "summary_reconciliation": "NOT_ASSESSED",
+    "catalog_digest_verified": false,
+    "decision_bindings_verified": false,
+    "implementation_digests_verified": false,
+    "environment_binding_verified": false,
+    "validation_report_ref": null,
+    "validation_completed_at": null,
+    "limitations": [
+      "No validator implementation or execution exists; this is a shape-only synthetic example."
+    ]
+  },
+  "authority_boundary": {
+    "result_set_is_gate_decision": false,
+    "result_set_is_human_authorization": false,
+    "result_set_can_change_runtime_state": false,
+    "independent_gate_evaluator_required": true,
+    "independent_reviewer_required": true,
+    "human_decision_required_for_gate_closure": true
+  },
+  "required_case_ids": [
+    "OTLP-CF-SIG-001",
+    "OTLP-CF-SIG-002",
+    "OTLP-CF-SIG-003",
+    "OTLP-CF-SIG-004",
+    "OTLP-CF-SIG-005",
+    "OTLP-CF-SIG-006",
+    "OTLP-CF-SIG-007",
+    "OTLP-CF-SIG-008",
+    "OTLP-CF-SIG-009",
+    "OTLP-CF-AUTH-001",
+    "OTLP-CF-AUTH-002",
+    "OTLP-CF-AUTH-003"
+  ],
+  "case_results": [],
+  "summary": {
+    "required": 12,
+    "executed": 0,
+    "passed": 0,
+    "failed": 0,
+    "blocked": 0,
+    "not_assessed": 12,
+    "required_case_pass_rate": 0,
+    "unknown_acceptance_count": 0
+  },
+  "reviews": [],
+  "result": "NOT_ASSESSED",
+  "result_reason": "Synthetic shape example only. DQ-022 and DQ-018 are pending; no implementation, environment, test execution, observation, evidence, or review exists.",
+  "frozen_at": null,
+  "result_set_digest": null,
+  "revocation": null,
+  "effects": {
+    "adopts_reference_version": false,
+    "changes_evidence_truth": false,
+    "grants_permission": false,
+    "authorizes_implementation": false,
+    "authorizes_deployment": false,
+    "closes_production_gate": false,
+    "declares_production_ready": false
+  }
+}

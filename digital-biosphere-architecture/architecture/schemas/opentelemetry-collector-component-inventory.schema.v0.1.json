@@ -1,0 +1,306 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tmai:schema:opentelemetry-collector-component-inventory:0.1",
+  "title": "TMAI OpenTelemetry Collector Component Inventory v0.1",
+  "description": "Fail-closed architecture contract for a proposed minimal OpenTelemetry Collector distribution. It is not a build manifest, deployment configuration, or implementation authorization.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "inventory_schema_version",
+    "inventory_id",
+    "status",
+    "decision_reference",
+    "observed_at",
+    "primary_repository",
+    "reference_release",
+    "candidate_distribution",
+    "signal_policy",
+    "components",
+    "config_providers",
+    "excluded_surfaces",
+    "validation_requirements",
+    "effects"
+  ],
+  "properties": {
+    "inventory_schema_version": {"const": "0.1"},
+    "inventory_id": {"const": "TMAI-OTEL-COLLECTOR-MINIMAL-INVENTORY-0.1"},
+    "status": {"const": "ADOPTED_REFERENCE_NOT_BUILT_NOT_DEPLOYED"},
+    "decision_reference": {"const": "DQ-025"},
+    "observed_at": {"const": "2026-07-22"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "reference_release": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "release_tag",
+        "release_repository_commit",
+        "core_repository_commit",
+        "contrib_repository_commit",
+        "release_status",
+        "prebuilt_manifests"
+      ],
+      "properties": {
+        "release_tag": {"const": "v0.156.0"},
+        "release_repository_commit": {"const": "aa158b23c8f89d795b21a05a49b3978565dfebd4"},
+        "core_repository_commit": {"const": "0a6056f97e2e5fe8f3a52a45bc26d3fb64b731d4"},
+        "contrib_repository_commit": {"const": "41e24cd516dd69a5b4277465cdb2ff4ef0676f49"},
+        "release_status": {"const": "ADOPTED_EXACT_REFERENCE"},
+        "prebuilt_manifests": {
+          "type": "array",
+          "minItems": 3,
+          "maxItems": 3,
+          "uniqueItems": true,
+          "items": {"$ref": "#/$defs/prebuiltManifest"}
+        }
+      }
+    },
+    "candidate_distribution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_type",
+        "builder_module",
+        "builder_version",
+        "compiled_component_count",
+        "config_provider_count",
+        "build_manifest_digest",
+        "binary_digest",
+        "image_digest",
+        "sbom_digest",
+        "signature_verification",
+        "reproducible_build_verification"
+      ],
+      "properties": {
+        "candidate_type": {"const": "CUSTOM_MINIMAL_FROM_PINNED_UPSTREAM_COMPONENTS"},
+        "builder_module": {"const": "go.opentelemetry.io/collector/cmd/builder"},
+        "builder_version": {"const": "v0.156.0"},
+        "compiled_component_count": {"const": 8},
+        "config_provider_count": {"const": 2},
+        "build_manifest_digest": {"type": "null"},
+        "binary_digest": {"type": "null"},
+        "image_digest": {"type": "null"},
+        "sbom_digest": {"type": "null"},
+        "signature_verification": {"const": "NOT_ASSESSED_NO_ARTIFACT"},
+        "reproducible_build_verification": {"const": "NOT_ASSESSED_NO_ARTIFACT"}
+      }
+    },
+    "signal_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed_signals",
+        "profiles_allowed",
+        "content_capture_default",
+        "runtime_remote_schema_fetch",
+        "runtime_remote_config_fetch",
+        "evidence_critical_path_allowed"
+      ],
+      "properties": {
+        "allowed_signals": {
+          "const": ["traces", "metrics", "logs"]
+        },
+        "profiles_allowed": {"const": false},
+        "content_capture_default": {"const": "DISABLED"},
+        "runtime_remote_schema_fetch": {"const": false},
+        "runtime_remote_config_fetch": {"const": false},
+        "evidence_critical_path_allowed": {"const": false}
+      }
+    },
+    "components": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/component"},
+      "allOf": [
+        {"contains": {"properties": {"component_id": {"const": "receiver/otlp"}}, "required": ["component_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"component_id": {"const": "processor/memory_limiter"}}, "required": ["component_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"component_id": {"const": "processor/batch"}}, "required": ["component_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"component_id": {"const": "processor/transform"}}, "required": ["component_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"component_id": {"const": "exporter/otlp"}}, "required": ["component_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"component_id": {"const": "exporter/otlphttp"}}, "required": ["component_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"component_id": {"const": "extension/health_check"}}, "required": ["component_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"component_id": {"const": "extension/file_storage"}}, "required": ["component_id"]}, "minContains": 1, "maxContains": 1}
+      ]
+    },
+    "config_providers": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/configProvider"},
+      "allOf": [
+        {"contains": {"properties": {"provider_id": {"const": "env"}}, "required": ["provider_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"provider_id": {"const": "file"}}, "required": ["provider_id"]}, "minContains": 1, "maxContains": 1}
+      ]
+    },
+    "excluded_surfaces": {
+      "type": "array",
+      "minItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "ALL_UNLISTED_COMPONENTS",
+          "PROFILES_SIGNAL",
+          "HTTP_CONFIG_PROVIDER",
+          "HTTPS_CONFIG_PROVIDER",
+          "YAML_INLINE_CONFIG_PROVIDER",
+          "DEBUG_EXPORTER",
+          "FILE_EXPORTER",
+          "KAFKA_RECEIVER_OR_EXPORTER",
+          "JAEGER_OR_ZIPKIN_RECEIVER_OR_EXPORTER",
+          "PROMETHEUS_RECEIVER_OR_EXPORTER",
+          "PPROF_EXTENSION",
+          "ZPAGES_EXTENSION",
+          "OPAMP_EXTENSION",
+          "TAIL_SAMPLING_PROCESSOR",
+          "ROUTING_OR_FAILOVER_CONNECTOR",
+          "HOST_OR_KUBERNETES_DISCOVERY_RECEIVER",
+          "RUNTIME_DYNAMIC_COMPONENT_LOADING"
+        ]
+      }
+    },
+    "validation_requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exact_source_digest",
+        "component_allowlist",
+        "dependency_lock",
+        "sbom",
+        "signature_and_provenance",
+        "vulnerability_review",
+        "reproducible_build",
+        "normalized_config_digest",
+        "negative_surface_scan",
+        "runtime_conformance",
+        "independent_review",
+        "human_decision"
+      ],
+      "properties": {
+        "exact_source_digest": {"const": "REQUIRED"},
+        "component_allowlist": {"const": "REQUIRED"},
+        "dependency_lock": {"const": "REQUIRED"},
+        "sbom": {"const": "REQUIRED"},
+        "signature_and_provenance": {"const": "REQUIRED"},
+        "vulnerability_review": {"const": "REQUIRED"},
+        "reproducible_build": {"const": "REQUIRED"},
+        "normalized_config_digest": {"const": "REQUIRED"},
+        "negative_surface_scan": {"const": "REQUIRED"},
+        "runtime_conformance": {"const": "REQUIRED"},
+        "independent_review": {"const": "REQUIRED"},
+        "human_decision": {"const": "REQUIRED"}
+      }
+    },
+    "effects": {"$ref": "#/$defs/noEffects"}
+  },
+  "$defs": {
+    "digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "prebuiltManifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["distribution", "manifest_url", "manifest_digest", "component_unit_count", "selection_result", "reason"],
+      "properties": {
+        "distribution": {"enum": ["otelcol-otlp", "otelcol", "otelcol-k8s"]},
+        "manifest_url": {"type": "string", "format": "uri"},
+        "manifest_digest": {"$ref": "#/$defs/digest"},
+        "component_unit_count": {"type": "integer", "minimum": 1, "maximum": 200},
+        "selection_result": {"const": "NOT_SELECTED"},
+        "reason": {"type": "string", "minLength": 1, "maxLength": 1024}
+      }
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "component_id",
+        "class",
+        "module",
+        "module_version",
+        "source_repository",
+        "source_commit",
+        "metadata_url",
+        "metadata_digest",
+        "stability",
+        "profiles_status",
+        "candidate_inclusion",
+        "runtime_activation",
+        "inclusion_reason",
+        "known_warning_boundary"
+      ],
+      "properties": {
+        "component_id": {"enum": ["receiver/otlp", "processor/memory_limiter", "processor/batch", "processor/transform", "exporter/otlp", "exporter/otlphttp", "extension/health_check", "extension/file_storage"]},
+        "class": {"enum": ["receiver", "processor", "exporter", "extension"]},
+        "module": {"type": "string", "minLength": 1},
+        "module_version": {"const": "v0.156.0"},
+        "source_repository": {"enum": ["opentelemetry-collector", "opentelemetry-collector-contrib"]},
+        "source_commit": {"enum": ["0a6056f97e2e5fe8f3a52a45bc26d3fb64b731d4", "41e24cd516dd69a5b4277465cdb2ff4ef0676f49"]},
+        "metadata_url": {"type": "string", "format": "uri"},
+        "metadata_digest": {"$ref": "#/$defs/digest"},
+        "stability": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["traces", "metrics", "logs", "extension"],
+          "properties": {
+            "traces": {"enum": ["STABLE", "BETA", "ALPHA", "NOT_APPLICABLE"]},
+            "metrics": {"enum": ["STABLE", "BETA", "ALPHA", "NOT_APPLICABLE"]},
+            "logs": {"enum": ["STABLE", "BETA", "ALPHA", "NOT_APPLICABLE"]},
+            "extension": {"enum": ["BETA", "ALPHA", "NOT_APPLICABLE"]}
+          }
+        },
+        "profiles_status": {"enum": ["ALPHA_EXCLUDED", "DEVELOPMENT_EXCLUDED", "NOT_LISTED_EXCLUDED", "NOT_APPLICABLE"]},
+        "candidate_inclusion": {"const": "REQUIRED_IN_PROPOSED_BUILD"},
+        "runtime_activation": {"const": "NOT_DEFINED_NOT_ENABLED"},
+        "inclusion_reason": {"type": "string", "minLength": 1, "maxLength": 1024},
+        "known_warning_boundary": {"type": "string", "minLength": 1, "maxLength": 1024}
+      }
+    },
+    "configProvider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider_id", "module", "module_version", "purpose", "remote_fetch", "runtime_activation"],
+      "properties": {
+        "provider_id": {"enum": ["env", "file"]},
+        "module": {"type": "string", "minLength": 1},
+        "module_version": {"const": "v1.62.0"},
+        "purpose": {"type": "string", "minLength": 1, "maxLength": 512},
+        "remote_fetch": {"const": false},
+        "runtime_activation": {"const": "NOT_DEFINED_NOT_ENABLED"}
+      }
+    },
+    "noEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "adopts_distribution",
+        "creates_build_manifest",
+        "builds_binary",
+        "builds_image",
+        "creates_configuration",
+        "opens_listener",
+        "deploys_collector",
+        "collects_telemetry",
+        "creates_evidence",
+        "grants_permission",
+        "authorizes_implementation",
+        "authorizes_deployment",
+        "declares_production_ready"
+      ],
+      "properties": {
+        "adopts_distribution": {"const": false},
+        "creates_build_manifest": {"const": false},
+        "builds_binary": {"const": false},
+        "builds_image": {"const": false},
+        "creates_configuration": {"const": false},
+        "opens_listener": {"const": false},
+        "deploys_collector": {"const": false},
+        "collects_telemetry": {"const": false},
+        "creates_evidence": {"const": false},
+        "grants_permission": {"const": false},
+        "authorizes_implementation": {"const": false},
+        "authorizes_deployment": {"const": false},
+        "declares_production_ready": {"const": false}
+      }
+    }
+  }
+}

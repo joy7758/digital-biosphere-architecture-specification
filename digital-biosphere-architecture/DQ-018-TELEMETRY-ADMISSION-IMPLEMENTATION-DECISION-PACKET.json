@@ -1,0 +1,85 @@
+{
+  "schema_version": "0.1.0",
+  "document_id": "TMAI-DQ-018-DECISION-PACKET-20260722",
+  "decision_id": "DQ-018",
+  "status": "READY_FOR_HUMAN_DECISION_AGENT_REVIEW_COMPLETE",
+  "candidate_slice": {
+    "slice_id": "DBOS-PR-2A-TELEMETRY-ADMISSION-FOUNDATION",
+    "primary_repository": "digital-biosphere-os",
+    "owner_role": "DBOS_DOMAIN_OWNER",
+    "implementation_authorized": false
+  },
+  "normative_inputs": [
+    "architecture/trusted-multi-agent-protocol-specification.md",
+    "architecture/opentelemetry-observability-profile.md",
+    "PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md",
+    "architecture/telemetry-admission-foundation-specification.md",
+    "architecture/telemetry-admission-threat-model.md",
+    "architecture/telemetry-admission-conformance-recovery-plan.md",
+    "DQ-018-TELEMETRY-ADMISSION-AGENT-RECOMMENDATION.md"
+  ],
+  "included": [
+    "closed_telemetry_observation_envelope_schema",
+    "append_only_telemetry_admission_record_state_machine",
+    "deterministic_validation_and_reason_codes",
+    "resource_scope_context_version_sampling_redaction_delivery_boundaries",
+    "dbos_committed_receipt_replay_and_external_suspected_duplicate_separation",
+    "closed_input_exact_persistence_allowlist_and_bounded_opaque_references",
+    "sqlite_single_host_transactional_reference_conformance_backend",
+    "async_concurrency_crash_corruption_cross_version_migration_backup_restore_integrity_and_rollback",
+    "bounded_custom_self_observation",
+    "preregistered_conformance_negative_fault_recovery_concurrency_tests",
+    "agent_readable_documentation"
+  ],
+  "excluded": {
+    "otlp_network_listener": false,
+    "otel_sdk_instrumentation": false,
+    "collector_deployment": false,
+    "public_api": false,
+    "raw_telemetry_storage": false,
+    "evidence_object_creation": false,
+    "verification_object_creation": false,
+    "identity_or_entity_creation": false,
+    "capability_or_permission_grant": false,
+    "saee_invocation": false,
+    "agent_or_runtime_creation": false,
+    "multi_tenant_or_high_availability": false,
+    "production_deployment": false,
+    "dbos_exp_0001_mutation": false
+  },
+  "preconditions": {
+    "agent_recommendation_complete": true,
+    "human_dq_018_decision_recorded": false,
+    "dbos_domain_owner_assigned": false,
+    "immutable_dba_baseline_commit_created": false,
+    "dbos_remote_main_base_reconfirmed": false,
+    "dbos_before_tests_pass": false,
+    "dbos_before_validators_pass": false
+  },
+  "agent_recommendation": {
+    "providers": [
+      "VOLCENGINE_ARK_DEEPSEEK_V4_FLASH_260425",
+      "BAIDU_QIANFAN_ERNIE_4_5_TURBO_128K"
+    ],
+    "recommended_next_option": "A_CONTROLLED_TELEMETRY_ADMISSION_FOUNDATION",
+    "exact_slice_recommended_as_next_step": true,
+    "production_customer_recommendable_now": false,
+    "human_authorization_still_required": true
+  },
+  "decision_tokens": {
+    "authorize": "DQ-018=AUTHORIZE_DBOS_PR_2A_TELEMETRY_ADMISSION_FOUNDATION",
+    "defer": "DQ-018=DEFER_DBOS_PR_2A_TELEMETRY_ADMISSION_FOUNDATION",
+    "reject": "DQ-018=REJECT_DBOS_PR_2A_TELEMETRY_ADMISSION_FOUNDATION",
+    "dba_git_authorization": "AUTHORIZE_DBA_PRODUCTION_BASELINE_COMMIT_AND_PUSH=true"
+  },
+  "truth_boundary": {
+    "packet_is_decision": false,
+    "agent_recommendation_is_authorization": false,
+    "human_decision_is_execution": false,
+    "admission_is_evidence": false,
+    "telemetry_is_truth": false,
+    "implementation_started": false,
+    "production_customer_recommendable_now": false,
+    "production_ready": false
+  }
+}

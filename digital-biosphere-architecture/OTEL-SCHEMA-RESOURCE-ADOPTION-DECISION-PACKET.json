@@ -1,0 +1,104 @@
+{
+  "packet_schema_version": "0.1",
+  "packet_id": "TMAI-OTEL-SCHEMA-RESOURCE-ADOPTION-PACKET-20260722-001",
+  "decision_id": "DQ-024",
+  "status": "READY_FOR_HUMAN_REVIEW_NOT_DECIDED",
+  "question": "Adopt the exact OpenTelemetry v1.59.0 Stable Telemetry Schema and Resource SDK subset, core schema 1.43.0 artifact binding, and Development OTel Entity quarantine as the TMAI v0.1 provenance boundary?",
+  "recommended_option": "OPTION_A_STABLE_SCHEMA_RESOURCE_AND_ENTITY_QUARANTINE",
+  "options": [
+    "OPTION_A_STABLE_SCHEMA_RESOURCE_AND_ENTITY_QUARANTINE",
+    "OPTION_B_STABLE_SCHEMA_RESOURCE_REJECT_ALL_ENTITY_INPUTS",
+    "OPTION_C_RETURN_FOR_REVISION"
+  ],
+  "source_references": {
+    "otel_specification": "v1.59.0@a824fb4eba795c5c65dd397b3d22e7c28e934de3",
+    "telemetry_schema_spec_digest": "sha256:e2004aec29dbe833bd61039b69ec8e08449daf97842a9fcef42d598b49456412",
+    "core_semconv": "v1.43.0@89aae438b3b3b0a8dd33003c9d70592baf7dbd0d",
+    "core_schema_url": "https://opentelemetry.io/schemas/1.43.0",
+    "core_schema_observed_digest": "sha256:6ac5dd367ff707dbcdcb1e5b459d4ac2fd676fb44eb17a21f9494a9fee4233df",
+    "core_schema_file_format": "1.1.0",
+    "resource_sdk_status": "STABLE_EXCEPT_WHERE_OTHERWISE_SPECIFIED",
+    "resource_data_model_status": "DEVELOPMENT",
+    "entity_data_model_status": "DEVELOPMENT",
+    "entity_propagation_status": "DEVELOPMENT"
+  },
+  "contract_references": [
+    "architecture/opentelemetry-schema-resource-entity-provenance-profile.md",
+    "architecture/opentelemetry-schema-resource-conformance-cases.v0.1.json",
+    "architecture/schemas/opentelemetry-schema-resource-conformance-case-catalog.schema.v0.1.json",
+    "architecture/schemas/opentelemetry-schema-resource-conformance-result-set.schema.v0.1.json",
+    "architecture/examples/opentelemetry-schema-resource-conformance-result-set.not-assessed.example.json",
+    "architecture/ADR-027-opentelemetry-schema-resource-entity-boundary.md",
+    "OTEL-SCHEMA-RESOURCE-AGENT-RECOMMENDATION.md"
+  ],
+  "accepted_scope_if_option_a": [
+    "PINNED_SCHEMA_ARTIFACT_AND_SOURCE_REGISTRY",
+    "RUNTIME_NETWORK_SCHEMA_FETCH_DISABLED_BY_DEFAULT",
+    "RESOURCE_AND_SCOPE_SCHEMA_PRECEDENCE_WITH_LINEAGE",
+    "APPEND_ONLY_SCHEMA_TRANSFORMATION_RECORD",
+    "RESOURCE_DETECTOR_SOURCE_ORDER_CONFIG_PROVENANCE",
+    "CONFLICTING_NON_EMPTY_RESOURCE_SCHEMA_URL_FAIL_CLOSED",
+    "OTEL_ENTITY_DEVELOPMENT_QUARANTINE",
+    "OTEL_ENTITY_NE_TMAI_DIGITAL_ENTITY",
+    "45_CASE_FAIL_CLOSED_CONFORMANCE_CONTRACT"
+  ],
+  "rejected_scope": [
+    "ARBITRARY_RUNTIME_SCHEMA_FETCH",
+    "UNPINNED_REDIRECT_OR_REMOTE_CONTENT_TRUST",
+    "GUESSED_OR_UNSUPPORTED_TRANSFORMATION",
+    "IMPLEMENTATION_SPECIFIC_RESOURCE_CONFLICT_RESULT",
+    "RESOURCE_PRECEDENCE_AS_TRUST_AUTHORITY",
+    "OTEL_ENTITY_TO_DBOS_ENTITY_ELEVATION",
+    "OTEL_ENTITIES_TO_REGISTRATION_AUTHORIZATION",
+    "IMPLEMENTATION_OR_DEPLOYMENT_AUTHORIZATION",
+    "PRODUCTION_READINESS_CLAIM"
+  ],
+  "human_tokens": {
+    "adopt_option_a": "DQ-024=ADOPT_OTEL_SCHEMA_RESOURCE_1_59_AND_QUARANTINE_DEVELOPMENT_ENTITY",
+    "adopt_option_b": "DQ-024=ADOPT_OTEL_SCHEMA_RESOURCE_1_59_AND_REJECT_ALL_ENTITY_INPUTS",
+    "return_for_revision": "DQ-024=RETURN_OTEL_SCHEMA_RESOURCE_ENTITY_BOUNDARY_FOR_REVISION",
+    "decider_required": "decided_by_ref=<human-reference>"
+  },
+  "prerequisites": [
+    "DQ-024 human decision",
+    "DQ-023 semantic reference decision",
+    "DQ-022 OTLP reference decision",
+    "DQ-018 separate implementation decision",
+    "DQ-020 required only for authenticated Collector or deployment path"
+  ],
+  "current_truth": {
+    "agent_review_complete": true,
+    "human_review_recommended_by_two_models": true,
+    "bounded_design_reference_recommended_by_two_models": true,
+    "runtime_recommended_by_models": false,
+    "contract_freeze_recommended_by_two_agents": false,
+    "open_required_design_corrections": 0,
+    "decision_recorded": false,
+    "schema_resource_reference_adopted": false,
+    "entity_quarantine_policy_adopted": false,
+    "case_group_count": 7,
+    "case_count": 45,
+    "source_count": 6,
+    "catalog_schema_valid": true,
+    "result_schema_valid": true,
+    "catalog_negative_controls_passed": 14,
+    "result_negative_controls_passed": 37,
+    "validator_implemented": false,
+    "conformance_tests_executed": 0
+  },
+  "effects": {
+    "creates_entity": false,
+    "creates_identity": false,
+    "creates_capability": false,
+    "grants_permission": false,
+    "creates_execution": false,
+    "creates_telemetry": false,
+    "creates_evidence": false,
+    "creates_verification": false,
+    "creates_saee_evaluation": false,
+    "creates_governance_decision": false,
+    "authorizes_implementation": false,
+    "authorizes_deployment": false,
+    "production_ready": false
+  }
+}

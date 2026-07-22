@@ -13,7 +13,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         gates: "验证闸门",
         visibility: "可见性",
         next: "下一步",
-        nextBody: "继续观察匿名安装和智能体复用结果，并在索引刷新后复查规范名称发现。DBOS 整仓保持 private，开放网络状态继续是 PARTIAL_METADATA_ONLY。",
+        nextBody: "下一生产架构闸门不是继续新增规范，而是通过统一决策就绪注册表分别人工处理 DQ-022 OTLP、DQ-023 OTel 语义、DQ-024 Schema／Resource／Entity、DQ-025 Collector inventory、ADR-024 分阶段生产路径和 DQ-018 DBOS 精确切片。每项必须独立 token；注册表、参考采纳和模型推荐均不自动授权实现。DBOS 整仓保持 private。",
         back: "返回首页",
       }
     : {
@@ -25,7 +25,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         gates: "Validation gates",
         visibility: "Visibility",
         next: "Next step",
-        nextBody: "Continue observing anonymous installation and agent reuse, then recheck canonical-name discovery after indexing refreshes. The full DBOS repository stays private and open-web status remains PARTIAL_METADATA_ONLY.",
+        nextBody: "The next production-architecture gate is not another specification. The unified decision-readiness registry separates human action for DQ-022 OTLP, DQ-023 OTel semantics, DQ-024 Schema/Resource/Entity, DQ-025 Collector inventory, the ADR-024 staged production path, and the exact DQ-018 DBOS slice. Each requires its own token; the registry, reference adoption, and model recommendations authorize no implementation. The full DBOS repository remains private.",
         back: "Back to home",
       };
 
@@ -72,7 +72,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         </section>
         <section className="section next-gate-section">
           <div className="section-shell next-gate-card">
-            <span>ADR-022 / G8</span>
+            <span>DQ-022 / DQ-023 / DQ-024 / DQ-025 / ADR-024 / DQ-018</span>
             <div><h2>{copy.next}</h2><p>{copy.nextBody}</p></div>
             <a className="button button-secondary" href={locale === "zh" ? "/" : "/en/"}>{copy.back}</a>
           </div>

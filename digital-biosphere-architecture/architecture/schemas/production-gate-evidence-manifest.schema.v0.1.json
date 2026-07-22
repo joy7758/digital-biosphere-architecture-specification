@@ -1,0 +1,563 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tmai:schema:production-gate-evidence-manifest:0.1",
+  "title": "TMAI Production Gate Evidence Manifest v0.1",
+  "description": "Shape contract for a scoped production-gate evidence manifest. Schema validity does not mean gate PASS, implementation authorization, deployment authorization, or production readiness.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "manifest_schema_version",
+    "manifest_id",
+    "manifest_status",
+    "synthetic_example",
+    "gate_id",
+    "step_id",
+    "gate_profile_ref",
+    "claim_scope",
+    "architecture_binding",
+    "decision_binding",
+    "implementation_binding",
+    "ownership",
+    "coverage",
+    "test_runs",
+    "slo_evidence",
+    "otel_delivery_accounting",
+    "security_findings",
+    "recovery_evidence",
+    "open_unknowns",
+    "reviews",
+    "result",
+    "result_reason",
+    "effects"
+  ],
+  "properties": {
+    "manifest_schema_version": {
+      "const": "0.1"
+    },
+    "manifest_id": {
+      "type": "string",
+      "pattern": "^TMAI-[A-Z0-9][A-Z0-9._-]{7,127}$"
+    },
+    "manifest_status": {
+      "enum": ["DRAFT", "FROZEN", "REVOKED", "ARCHIVED"]
+    },
+    "synthetic_example": {
+      "type": "boolean"
+    },
+    "gate_id": {
+      "type": "string",
+      "pattern": "^PR-G[0-7](?:[A-Z0-9.-]+)?$"
+    },
+    "step_id": {
+      "type": "string",
+      "pattern": "^S(?:[0-9](?:[A-Z])?|2\\.5)$"
+    },
+    "gate_profile_ref": {
+      "$ref": "#/$defs/fileReference"
+    },
+    "claim_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "production_profile_id",
+        "environment_id",
+        "environment_class",
+        "topology_digest",
+        "workload_scope",
+        "window_started_at",
+        "window_ended_at",
+        "observation_seconds"
+      ],
+      "properties": {
+        "production_profile_id": {"type": "string", "minLength": 1, "maxLength": 128},
+        "environment_id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "environment_class": {
+          "enum": [
+            "LOCAL_REFERENCE",
+            "SYNTHETIC_REFERENCE",
+            "STAGING",
+            "BOUNDED_PRODUCTION_PILOT",
+            "PRODUCTION_CANDIDATE"
+          ]
+        },
+        "topology_digest": {"$ref": "#/$defs/nullableDigest"},
+        "workload_scope": {"type": "string", "minLength": 1, "maxLength": 2048},
+        "window_started_at": {"$ref": "#/$defs/nullableDateTime"},
+        "window_ended_at": {"$ref": "#/$defs/nullableDateTime"},
+        "observation_seconds": {"type": "integer", "minimum": 0}
+      }
+    },
+    "architecture_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "commit",
+        "tree_digest",
+        "decision_packet_ref",
+        "decision_packet_digest",
+        "normative_files"
+      ],
+      "properties": {
+        "repository": {"type": "string", "format": "uri"},
+        "commit": {"$ref": "#/$defs/nullableCommit"},
+        "tree_digest": {"$ref": "#/$defs/nullableDigest"},
+        "decision_packet_ref": {"$ref": "#/$defs/nullableString"},
+        "decision_packet_digest": {"$ref": "#/$defs/nullableDigest"},
+        "normative_files": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/fileReference"},
+          "uniqueItems": true
+        }
+      }
+    },
+    "decision_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "decision_status",
+        "decision_ref",
+        "scope_digest",
+        "decided_by_ref",
+        "decided_at",
+        "expires_at",
+        "conditions",
+        "accepted_risks"
+      ],
+      "properties": {
+        "decision_id": {"type": "string", "minLength": 1, "maxLength": 128},
+        "decision_status": {
+          "enum": ["AUTHORIZED", "NOT_REQUIRED", "PENDING", "REJECTED", "REVOKED", "SUPERSEDED"]
+        },
+        "decision_ref": {"type": "string", "minLength": 1, "maxLength": 2048},
+        "scope_digest": {"$ref": "#/$defs/nullableDigest"},
+        "decided_by_ref": {"$ref": "#/$defs/nullableString"},
+        "decided_at": {"$ref": "#/$defs/nullableDateTime"},
+        "expires_at": {"$ref": "#/$defs/nullableDateTime"},
+        "conditions": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "accepted_risks": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "implementation_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "source_commit",
+        "artifact_digest",
+        "distribution_version",
+        "configuration_digest",
+        "sbom_digest",
+        "dependency_lock_digest",
+        "runtime_environment_digest"
+      ],
+      "properties": {
+        "repository": {"$ref": "#/$defs/nullableUri"},
+        "source_commit": {"$ref": "#/$defs/nullableCommit"},
+        "artifact_digest": {"$ref": "#/$defs/nullableDigest"},
+        "distribution_version": {"$ref": "#/$defs/nullableString"},
+        "configuration_digest": {"$ref": "#/$defs/nullableDigest"},
+        "sbom_digest": {"$ref": "#/$defs/nullableDigest"},
+        "dependency_lock_digest": {"$ref": "#/$defs/nullableDigest"},
+        "runtime_environment_digest": {"$ref": "#/$defs/nullableDigest"}
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "architecture_owner_ref",
+        "human_program_owner_ref",
+        "human_production_authority_ref",
+        "dbos_service_owner_ref",
+        "database_owner_ref",
+        "collector_platform_owner_ref",
+        "saee_domain_owner_ref",
+        "security_reviewer_ref",
+        "data_steward_ref",
+        "incident_commander_ref",
+        "independent_reviewer_ref",
+        "on_call_ref",
+        "runbook_refs"
+      ],
+      "properties": {
+        "architecture_owner_ref": {"$ref": "#/$defs/nullableString"},
+        "human_program_owner_ref": {"$ref": "#/$defs/nullableString"},
+        "human_production_authority_ref": {"$ref": "#/$defs/nullableString"},
+        "dbos_service_owner_ref": {"$ref": "#/$defs/nullableString"},
+        "database_owner_ref": {"$ref": "#/$defs/nullableString"},
+        "collector_platform_owner_ref": {"$ref": "#/$defs/nullableString"},
+        "saee_domain_owner_ref": {"$ref": "#/$defs/nullableString"},
+        "security_reviewer_ref": {"$ref": "#/$defs/nullableString"},
+        "data_steward_ref": {"$ref": "#/$defs/nullableString"},
+        "incident_commander_ref": {"$ref": "#/$defs/nullableString"},
+        "independent_reviewer_ref": {"$ref": "#/$defs/nullableString"},
+        "on_call_ref": {"$ref": "#/$defs/nullableString"},
+        "runbook_refs": {"type": "array", "items": {"$ref": "#/$defs/fileReference"}, "uniqueItems": true}
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "positive",
+        "negative",
+        "fault",
+        "security",
+        "recovery",
+        "rollback",
+        "migration",
+        "capacity",
+        "data_governance",
+        "authority_separation"
+      ],
+      "properties": {
+        "positive": {"$ref": "#/$defs/coverageResult"},
+        "negative": {"$ref": "#/$defs/coverageResult"},
+        "fault": {"$ref": "#/$defs/coverageResult"},
+        "security": {"$ref": "#/$defs/coverageResult"},
+        "recovery": {"$ref": "#/$defs/coverageResult"},
+        "rollback": {"$ref": "#/$defs/coverageResult"},
+        "migration": {"$ref": "#/$defs/coverageResult"},
+        "capacity": {"$ref": "#/$defs/coverageResult"},
+        "data_governance": {"$ref": "#/$defs/coverageResult"},
+        "authority_separation": {"$ref": "#/$defs/coverageResult"}
+      }
+    },
+    "test_runs": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/testRun"},
+      "uniqueItems": true
+    },
+    "slo_evidence": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/sloEvidence"},
+      "uniqueItems": true
+    },
+    "otel_delivery_accounting": {
+      "oneOf": [
+        {"type": "null"},
+        {"$ref": "#/$defs/otelDeliveryAccounting"}
+      ]
+    },
+    "security_findings": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/securityFinding"},
+      "uniqueItems": true
+    },
+    "recovery_evidence": {
+      "$ref": "#/$defs/recoveryEvidence"
+    },
+    "open_unknowns": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/openUnknown"},
+      "uniqueItems": true
+    },
+    "reviews": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/review"},
+      "uniqueItems": true
+    },
+    "result": {
+      "enum": ["PASS", "FAIL", "BLOCKED", "NOT_ASSESSED"]
+    },
+    "result_reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "frozen_at": {"$ref": "#/$defs/nullableDateTime"},
+    "manifest_digest": {"$ref": "#/$defs/nullableDigest"},
+    "revocation": {
+      "oneOf": [
+        {"type": "null"},
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["reason", "reference", "revoked_at"],
+          "properties": {
+            "reason": {"type": "string", "minLength": 1},
+            "reference": {"type": "string", "minLength": 1},
+            "revoked_at": {"type": "string", "format": "date-time"}
+          }
+        }
+      ]
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "creates_agent",
+        "creates_runtime",
+        "creates_entity",
+        "grants_capability",
+        "grants_permission",
+        "changes_evidence_truth",
+        "authorizes_implementation",
+        "authorizes_deployment",
+        "declares_production_ready"
+      ],
+      "properties": {
+        "creates_agent": {"const": false},
+        "creates_runtime": {"const": false},
+        "creates_entity": {"const": false},
+        "grants_capability": {"const": false},
+        "grants_permission": {"const": false},
+        "changes_evidence_truth": {"const": false},
+        "authorizes_implementation": {"const": false},
+        "authorizes_deployment": {"const": false},
+        "declares_production_ready": {"const": false}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"manifest_status": {"const": "FROZEN"}}, "required": ["manifest_status"]},
+      "then": {
+        "required": ["frozen_at", "manifest_digest"],
+        "properties": {
+          "frozen_at": {"type": "string", "format": "date-time"},
+          "manifest_digest": {"$ref": "#/$defs/digest"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"manifest_status": {"const": "REVOKED"}}, "required": ["manifest_status"]},
+      "then": {
+        "required": ["revocation"],
+        "properties": {"revocation": {"type": "object"}}
+      }
+    },
+    {
+      "if": {"properties": {"result": {"const": "PASS"}}, "required": ["result"]},
+      "then": {
+        "properties": {
+          "manifest_status": {"const": "FROZEN"},
+          "synthetic_example": {"const": false},
+          "decision_binding": {
+            "properties": {
+              "decision_status": {"enum": ["AUTHORIZED", "NOT_REQUIRED"]}
+            }
+          },
+          "reviews": {"minItems": 1},
+          "open_unknowns": {
+            "not": {
+              "contains": {
+                "type": "object",
+                "properties": {"blocking": {"const": true}},
+                "required": ["blocking"]
+              }
+            }
+          },
+          "security_findings": {
+            "not": {
+              "contains": {
+                "type": "object",
+                "properties": {
+                  "severity": {"enum": ["CRITICAL", "HIGH"]},
+                  "status": {"const": "OPEN"}
+                },
+                "required": ["severity", "status"]
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "digest": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "nullableDigest": {
+      "oneOf": [{"type": "null"}, {"$ref": "#/$defs/digest"}]
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "nullableCommit": {
+      "oneOf": [{"type": "null"}, {"$ref": "#/$defs/commit"}]
+    },
+    "nullableString": {
+      "oneOf": [{"type": "null"}, {"type": "string", "minLength": 1, "maxLength": 4096}]
+    },
+    "nullableUri": {
+      "oneOf": [{"type": "null"}, {"type": "string", "format": "uri"}]
+    },
+    "nullableDateTime": {
+      "oneOf": [{"type": "null"}, {"type": "string", "format": "date-time"}]
+    },
+    "coverageResult": {
+      "enum": ["PASS", "FAIL", "BLOCKED", "NOT_ASSESSED", "NOT_APPLICABLE_WITH_APPROVAL"]
+    },
+    "fileReference": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "digest"],
+      "properties": {
+        "path": {"type": "string", "minLength": 1, "maxLength": 2048},
+        "digest": {"$ref": "#/$defs/nullableDigest"}
+      }
+    },
+    "testRun": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "test_run_id",
+        "coverage_domain",
+        "result",
+        "started_at",
+        "ended_at",
+        "environment_digest",
+        "workload_ref",
+        "seed_ref",
+        "command_ref",
+        "conformance_catalog_ref",
+        "conformance_case_ids",
+        "case_results_ref",
+        "evidence_refs",
+        "failed_case_refs",
+        "limitations"
+      ],
+      "properties": {
+        "test_run_id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "coverage_domain": {
+          "enum": ["positive", "negative", "fault", "security", "recovery", "rollback", "migration", "capacity", "data_governance", "authority_separation"]
+        },
+        "result": {"enum": ["PASS", "FAIL", "BLOCKED", "NOT_ASSESSED"]},
+        "started_at": {"$ref": "#/$defs/nullableDateTime"},
+        "ended_at": {"$ref": "#/$defs/nullableDateTime"},
+        "environment_digest": {"$ref": "#/$defs/nullableDigest"},
+        "workload_ref": {"$ref": "#/$defs/nullableString"},
+        "seed_ref": {"$ref": "#/$defs/nullableString"},
+        "command_ref": {"$ref": "#/$defs/nullableString"},
+        "conformance_catalog_ref": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/fileReference"}
+          ]
+        },
+        "conformance_case_ids": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {"type": "string", "pattern": "^OTLP-CF-[A-Z]{2,8}-[0-9]{3}$"},
+              {"type": "string", "pattern": "^SEM-CF-[A-Z]{3,6}-[0-9]{3}$"},
+              {"type": "string", "pattern": "^OSR-CF-[A-Z]{3,8}-[0-9]{3}$"},
+              {"type": "string", "pattern": "^ODC-CF-[A-Z]{3,8}-[0-9]{3}$"}
+            ]
+          },
+          "uniqueItems": true
+        },
+        "case_results_ref": {
+          "oneOf": [
+            {"type": "null"},
+            {"$ref": "#/$defs/fileReference"}
+          ]
+        },
+        "evidence_refs": {"type": "array", "items": {"$ref": "#/$defs/fileReference"}, "uniqueItems": true},
+        "failed_case_refs": {"type": "array", "items": {"$ref": "#/$defs/fileReference"}, "uniqueItems": true},
+        "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "sloEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["slo_id", "threshold", "observed_value", "window_started_at", "window_ended_at", "query_ref", "raw_evidence_refs", "result", "limitations"],
+      "properties": {
+        "slo_id": {"type": "string", "pattern": "^SLO-[0-9]{3}$"},
+        "threshold": {"type": "string", "minLength": 1, "maxLength": 256},
+        "observed_value": {"type": ["null", "number", "boolean", "string"]},
+        "window_started_at": {"$ref": "#/$defs/nullableDateTime"},
+        "window_ended_at": {"$ref": "#/$defs/nullableDateTime"},
+        "query_ref": {"$ref": "#/$defs/nullableString"},
+        "raw_evidence_refs": {"type": "array", "items": {"$ref": "#/$defs/fileReference"}, "uniqueItems": true},
+        "result": {"enum": ["PASS", "FAIL", "BLOCKED", "NOT_ASSESSED"]},
+        "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "otelDeliveryAccounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["signal", "hop", "window_started_at", "window_ended_at", "emitted", "received", "accepted", "rejected", "partial", "dropped", "retried", "duplicate_confirmed", "duplicate_suspected", "unknown_delivery", "queue_start", "queue_end", "reconciliation_result", "limitations", "evidence_refs"],
+      "properties": {
+        "signal": {"enum": ["TRACES", "METRICS", "LOGS", "MIXED"]},
+        "hop": {"type": "string", "minLength": 1, "maxLength": 512},
+        "window_started_at": {"$ref": "#/$defs/nullableDateTime"},
+        "window_ended_at": {"$ref": "#/$defs/nullableDateTime"},
+        "emitted": {"type": "integer", "minimum": 0},
+        "received": {"type": "integer", "minimum": 0},
+        "accepted": {"type": "integer", "minimum": 0},
+        "rejected": {"type": "integer", "minimum": 0},
+        "partial": {"type": "integer", "minimum": 0},
+        "dropped": {"type": "integer", "minimum": 0},
+        "retried": {"type": "integer", "minimum": 0},
+        "duplicate_confirmed": {"type": "integer", "minimum": 0},
+        "duplicate_suspected": {"type": "integer", "minimum": 0},
+        "unknown_delivery": {"type": "integer", "minimum": 0},
+        "queue_start": {"type": "integer", "minimum": 0},
+        "queue_end": {"type": "integer", "minimum": 0},
+        "reconciliation_result": {"enum": ["PASS_WITHIN_DECLARED_BOUND", "FAIL", "BLOCKED", "NOT_ASSESSED"]},
+        "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true},
+        "evidence_refs": {"type": "array", "items": {"$ref": "#/$defs/fileReference"}, "uniqueItems": true}
+      }
+    },
+    "securityFinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finding_id", "severity", "status", "finding_ref", "disposition_ref"],
+      "properties": {
+        "finding_id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "severity": {"enum": ["CRITICAL", "HIGH", "MEDIUM", "LOW", "INFORMATIONAL"]},
+        "status": {"enum": ["OPEN", "REMEDIATED", "ACCEPTED_BY_HUMAN_DECISION", "FALSE_POSITIVE_REVIEWED"]},
+        "finding_ref": {"type": "string", "minLength": 1, "maxLength": 2048},
+        "disposition_ref": {"$ref": "#/$defs/nullableString"}
+      }
+    },
+    "recoveryEvidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["backup", "restore", "pitr", "fencing", "rollback", "rpo", "rto", "failure_domain_coverage", "evidence_refs", "limitations"],
+      "properties": {
+        "backup": {"$ref": "#/$defs/coverageResult"},
+        "restore": {"$ref": "#/$defs/coverageResult"},
+        "pitr": {"$ref": "#/$defs/coverageResult"},
+        "fencing": {"$ref": "#/$defs/coverageResult"},
+        "rollback": {"$ref": "#/$defs/coverageResult"},
+        "rpo": {"$ref": "#/$defs/coverageResult"},
+        "rto": {"$ref": "#/$defs/coverageResult"},
+        "failure_domain_coverage": {"$ref": "#/$defs/coverageResult"},
+        "evidence_refs": {"type": "array", "items": {"$ref": "#/$defs/fileReference"}, "uniqueItems": true},
+        "limitations": {"type": "array", "items": {"type": "string", "minLength": 1}, "uniqueItems": true}
+      }
+    },
+    "openUnknown": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unknown_id", "description", "blocking", "owner_ref", "resolution_gate"],
+      "properties": {
+        "unknown_id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "description": {"type": "string", "minLength": 1, "maxLength": 4096},
+        "blocking": {"type": "boolean"},
+        "owner_ref": {"$ref": "#/$defs/nullableString"},
+        "resolution_gate": {"$ref": "#/$defs/nullableString"}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["review_id", "reviewer_ref", "reviewer_role", "reviewed_at", "result", "review_ref"],
+      "properties": {
+        "review_id": {"type": "string", "minLength": 1, "maxLength": 256},
+        "reviewer_ref": {"type": "string", "minLength": 1, "maxLength": 256},
+        "reviewer_role": {"type": "string", "minLength": 1, "maxLength": 256},
+        "reviewed_at": {"type": "string", "format": "date-time"},
+        "result": {"enum": ["APPROVED", "CONDITIONAL", "REJECTED", "NOT_ASSESSED"]},
+        "review_ref": {"type": "string", "minLength": 1, "maxLength": 2048}
+      }
+    }
+  }
+}

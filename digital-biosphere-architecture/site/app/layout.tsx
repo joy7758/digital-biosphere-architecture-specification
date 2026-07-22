@@ -8,13 +8,13 @@ export const metadata: Metadata = {
     template: "%s · TMAI",
   },
   description:
-    "面向长期运行、多智能体协作和可验证演化的可信基础设施。",
+    "面向长期运行、协作和可验证数字主体的基础设施。",
   openGraph: {
     type: "website",
     siteName: "Trusted Multi-Agent Infrastructure",
     title: "可信多智能体基础设施",
     description:
-      "让 AI 智能体基于可验证证据长期运行、协作和演化。",
+      "面向长期运行、协作和可验证数字主体的基础设施。",
     images: [
       {
         url: "/og.png",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Trusted Multi-Agent Infrastructure",
     description:
-      "Trust infrastructure for long-running, collaborative AI agents.",
+      "Infrastructure for long-running, collaborative, and verifiable digital entities.",
     images: ["/og.png"],
   },
 };

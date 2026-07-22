@@ -1,0 +1,335 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/opentelemetry-semantic-mapping.schema.v0.1.json",
+  "title": "TMAI OpenTelemetry Semantic Mapping Catalog v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "catalog_schema_version",
+    "catalog_id",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "primary_repository",
+    "reference_baselines",
+    "profile_policy",
+    "stability_source_registry",
+    "sensitive_content_policy",
+    "cardinality_policy",
+    "mapping_groups",
+    "mappings",
+    "effects"
+  ],
+  "properties": {
+    "catalog_schema_version": {"const": "0.1"},
+    "catalog_id": {"const": "TMAI-OTEL-SEMANTIC-MAPPING-0.1"},
+    "status": {"const": "ADOPTED_CONTRACT_NOT_IMPLEMENTED"},
+    "observed_at": {"type": "string", "format": "date"},
+    "decision_reference": {"const": "DQ-023"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "reference_baselines": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["otel_specification", "core_semantic_conventions", "genai_semantic_conventions", "otlp"],
+      "properties": {
+        "otel_specification": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "tag", "commit", "observed_head_not_adopted", "adoption_status"],
+          "properties": {
+            "repository": {"const": "https://github.com/open-telemetry/opentelemetry-specification"},
+            "tag": {"const": "v1.59.0"},
+            "commit": {"const": "a824fb4eba795c5c65dd397b3d22e7c28e934de3"},
+            "observed_head_not_adopted": {"const": "2b04e8b639d2a1baf2e1eaab68ee254cdc6100f0"},
+            "adoption_status": {"const": "ADOPTED_REFERENCE"}
+          }
+        },
+        "core_semantic_conventions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "tag", "commit", "adoption_status"],
+          "properties": {
+            "repository": {"const": "https://github.com/open-telemetry/semantic-conventions"},
+            "tag": {"const": "v1.43.0"},
+            "commit": {"const": "89aae438b3b3b0a8dd33003c9d70592baf7dbd0d"},
+            "adoption_status": {"const": "ADOPTED_REFERENCE"}
+          }
+        },
+        "genai_semantic_conventions": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "tag", "commit", "schema_url", "schema_url_observation", "adoption_status"],
+          "properties": {
+            "repository": {"const": "https://github.com/open-telemetry/semantic-conventions-genai"},
+            "tag": {"type": "null"},
+            "commit": {"const": "2e994c6d59a93bb4fc1752c5378eedb9b8e14d6b"},
+            "schema_url": {"type": "null"},
+            "schema_url_observation": {"const": "EXACT_COMMIT_README_TODO"},
+            "adoption_status": {"const": "PINNED_DEVELOPMENT_REFERENCE_ADOPTED"}
+          }
+        },
+        "otlp": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["repository", "tag", "commit", "adoption_status"],
+          "properties": {
+            "repository": {"const": "https://github.com/open-telemetry/opentelemetry-proto"},
+            "tag": {"const": "v1.11.0"},
+            "commit": {"const": "790608c4d51e6ffc12210b541e8514cbed9e91a4"},
+            "adoption_status": {"const": "DQ_023_DECIDED_REFERENCE_ADOPTED"}
+          }
+        }
+      }
+    },
+    "profile_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "defines_custom_otel_namespace",
+        "raw_upstream_fields_preserved",
+        "trusted_binding_occurs_outside_raw_telemetry",
+        "development_fields_isolated",
+        "sensitive_content_default",
+        "deprecated_input_policy",
+        "unknown_or_drift_policy"
+      ],
+      "properties": {
+        "defines_custom_otel_namespace": {"const": false},
+        "raw_upstream_fields_preserved": {"const": true},
+        "trusted_binding_occurs_outside_raw_telemetry": {"const": true},
+        "development_fields_isolated": {"const": true},
+        "sensitive_content_default": {"const": "DISABLED"},
+        "deprecated_input_policy": {"const": "REJECT_AND_RETAIN_DIAGNOSTIC"},
+        "unknown_or_drift_policy": {"const": "FAIL_CLOSED"}
+      }
+    },
+    "stability_source_registry": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "exact_url", "exact_reference", "applicable_mapping_ids", "verification_status"],
+        "properties": {
+          "source_id": {"type": "string", "pattern": "^SRC-OTEL-[A-Z0-9_.-]+$"},
+          "exact_url": {"type": "string", "format": "uri", "pattern": "^https://github\\.com/open-telemetry/"},
+          "exact_reference": {"type": "string", "minLength": 40, "maxLength": 128},
+          "applicable_mapping_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "pattern": "^OTEL-SM-[0-9]{3}$"}},
+          "verification_status": {"const": "SOURCE_PINNED_FIELD_STABILITY_INVENTORIED_VALIDATOR_NOT_IMPLEMENTED"}
+        }
+      }
+    },
+    "sensitive_content_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["default_state", "raw_content_in_baggage_allowed", "baggage_violation_policy", "opt_in_required_bindings", "partial_opt_in_policy"],
+      "properties": {
+        "default_state": {"const": "DISABLED"},
+        "raw_content_in_baggage_allowed": {"const": false},
+        "baggage_violation_policy": {"const": "REJECT_OR_STRIP_WITH_AUDITABLE_LIMITATION"},
+        "opt_in_required_bindings": {
+          "const": ["decision_reference", "policy_digest", "field_allowlist", "retention_reference", "residency_reference", "access_policy_reference", "redaction_policy_reference"]
+        },
+        "partial_opt_in_policy": {"const": "EXACT_FIELD_ALLOWLIST_AND_PER_RECORD_REDACTION_OUTCOME_REQUIRED"}
+      }
+    },
+    "cardinality_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metric_label_prohibited_fields", "deployment_budget_required_for_fields", "budget_scope", "overflow_policy", "silent_drop_allowed"],
+      "properties": {
+        "metric_label_prohibited_fields": {
+          "const": ["service.instance.id", "trace_id", "span_id", "parent_span_id", "gen_ai.agent.id", "gen_ai.conversation.id", "gen_ai.tool.call.id"]
+        },
+        "deployment_budget_required_for_fields": {
+          "const": ["service.name", "service.namespace", "gen_ai.operation.name", "gen_ai.provider.name", "gen_ai.workflow.name", "gen_ai.request.model", "gen_ai.response.model", "gen_ai.tool.name", "error.type"]
+        },
+        "budget_scope": {"const": "PER_TENANT_PER_SERVICE_PER_WINDOW"},
+        "overflow_policy": {"const": "REMOVE_DIMENSION_RETAIN_AGGREGATE_AND_AUDITABLE_LIMITATION"},
+        "silent_drop_allowed": {"const": false}
+      }
+    },
+    "mapping_groups": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/mapping_group"}
+    },
+    "mappings": {
+      "type": "array",
+      "minItems": 47,
+      "maxItems": 47,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/mapping"}
+    },
+    "effects": {"$ref": "#/$defs/no_effects"}
+  },
+  "$defs": {
+    "mapping_group": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["group_id", "required_mapping_ids"],
+      "properties": {
+        "group_id": {
+          "enum": [
+            "OTEL-SM-RESOURCE",
+            "OTEL-SM-SCOPE_CONTEXT",
+            "OTEL-SM-GENAI_OPERATION",
+            "OTEL-SM-GENAI_TOOL",
+            "OTEL-SM-GENAI_EVALUATION",
+            "OTEL-SM-SENSITIVE_CONTENT",
+            "OTEL-SM-DEPRECATED"
+          ]
+        },
+        "required_mapping_ids": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^OTEL-SM-[0-9]{3}$"}
+        }
+      }
+    },
+    "mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mapping_id",
+        "upstream_field",
+        "source",
+        "stability",
+        "signal_surfaces",
+        "capture_class",
+        "profile_handling",
+        "target",
+        "target_field",
+        "canonical_effect",
+        "authority_rule"
+      ],
+      "properties": {
+        "mapping_id": {"type": "string", "pattern": "^OTEL-SM-[0-9]{3}$"},
+        "upstream_field": {"type": "string", "pattern": "^[a-z][a-z0-9_.]*$"},
+        "source": {"enum": ["CORE_SEMCONV", "GENAI_SEMCONV", "OTLP_STRUCTURE", "OTEL_SPEC"]},
+        "stability": {"enum": ["STABLE", "DEVELOPMENT", "DEPRECATED"]},
+        "signal_surfaces": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"enum": ["RESOURCE", "TRACE", "METRIC", "LOG", "EVENT"]}
+        },
+        "capture_class": {
+          "enum": [
+            "DEFAULT_METADATA",
+            "CONDITIONAL_METADATA",
+            "HIGH_CARDINALITY_METADATA",
+            "OPT_IN_SENSITIVE_DISABLED_BY_DEFAULT",
+            "PROHIBITED_DEPRECATED"
+          ]
+        },
+        "profile_handling": {
+          "enum": ["ALLOW_METADATA", "ALLOW_WITH_BINDING", "ALLOW_ONLY_AFTER_DATA_GOVERNANCE", "REJECT_DEPRECATED"]
+        },
+        "target": {"enum": ["OBSERVATION_ENVELOPE", "ADMISSION_LIMITATION", "REJECT_INPUT"]},
+        "target_field": {
+          "type": ["string", "null"],
+          "enum": [
+            "resource_ref",
+            "instrumentation_scope",
+            "trace_id",
+            "span_id",
+            "parent_span_id",
+            "observed_operation",
+            "limitations",
+            "error_class",
+            "provider_ref",
+            "provider_agent_hint",
+            "workflow_ref",
+            "conversation_ref",
+            "model_ref",
+            "resource_usage",
+            "tool_ref",
+            "evaluation_material_ref",
+            "content_capture_state",
+            null
+          ]
+        },
+        "canonical_effect": {"const": "NONE"},
+        "authority_rule": {
+          "enum": [
+            "RESOURCE_HINT_ONLY",
+            "IDENTITY_HINT_ONLY",
+            "INSTRUMENTATION_DESCRIPTION_ONLY",
+            "CORRELATION_ONLY",
+            "OPERATION_HINT_ONLY",
+            "DIAGNOSTIC_ONLY",
+            "USAGE_MATERIAL_ONLY",
+            "CAPABILITY_HINT_ONLY",
+            "EVALUATION_MATERIAL_ONLY",
+            "SENSITIVE_CONTENT_NOT_DEFAULT",
+            "DEPRECATED_REJECTED"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"stability": {"const": "DEPRECATED"}}, "required": ["stability"]},
+          "then": {
+            "properties": {
+              "capture_class": {"const": "PROHIBITED_DEPRECATED"},
+              "profile_handling": {"const": "REJECT_DEPRECATED"},
+              "target": {"const": "REJECT_INPUT"},
+              "target_field": {"type": "null"},
+              "authority_rule": {"const": "DEPRECATED_REJECTED"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"capture_class": {"const": "OPT_IN_SENSITIVE_DISABLED_BY_DEFAULT"}}, "required": ["capture_class"]},
+          "then": {
+            "properties": {
+              "stability": {"const": "DEVELOPMENT"},
+              "profile_handling": {"const": "ALLOW_ONLY_AFTER_DATA_GOVERNANCE"},
+              "target": {"const": "ADMISSION_LIMITATION"},
+              "target_field": {"const": "content_capture_state"},
+              "authority_rule": {"const": "SENSITIVE_CONTENT_NOT_DEFAULT"}
+            }
+          }
+        }
+      ]
+    },
+    "no_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "creates_entity",
+        "creates_identity",
+        "creates_capability",
+        "grants_permission",
+        "creates_execution",
+        "creates_evidence",
+        "creates_verification",
+        "creates_saee_evaluation",
+        "creates_governance_decision",
+        "authorizes_implementation",
+        "authorizes_deployment",
+        "production_ready"
+      ],
+      "properties": {
+        "creates_entity": {"const": false},
+        "creates_identity": {"const": false},
+        "creates_capability": {"const": false},
+        "grants_permission": {"const": false},
+        "creates_execution": {"const": false},
+        "creates_evidence": {"const": false},
+        "creates_verification": {"const": false},
+        "creates_saee_evaluation": {"const": false},
+        "creates_governance_decision": {"const": false},
+        "authorizes_implementation": {"const": false},
+        "authorizes_deployment": {"const": false},
+        "production_ready": {"const": false}
+      }
+    }
+  }
+}

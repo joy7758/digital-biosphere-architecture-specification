@@ -1,12 +1,15 @@
 # Trusted Multi-Agent Infrastructure
 
-> Trust infrastructure for long-running, collaborative, and verifiably evolving AI agents.
+> Infrastructure for long-running, collaborative, and verifiable digital entities.
 
 Canonical public name: Trusted Multi-Agent Infrastructure (TMAI)
 Canonical Chinese name: 可信多智能体基础设施
 Long-term vision: Digital Biosphere / 数字生物圈
 Primary customer: AI agents that discover, assess, compose, reuse, and recommend infrastructure
-Current state: Developer Preview v0.1 released; agent-customer rerun PASS; exact DBOS public-safe wheel published; DBOS repository remains private; open-web discovery remains PARTIAL_METADATA_ONLY; not production-ready
+Current state: Developer Preview v0.1 released; TMAP and OpenTelemetry-aligned production architecture baseline defined; PR-G1 read-only DBOS/SAEE implementation mapping passed; DQ-018 Telemetry Admission Foundation is ready for human decision; OTLP v1.11.0 exact source/delta review is complete and two AI reviewers recommend reference adoption, but DQ-022 remains READY_FOR_REVIEW and the reference is not adopted; an exact 56-case, 7-group OTLP conformance catalog is schema-valid and semantically checked but all cases remain NOT_EXECUTED and no validator exists; OpenTelemetry Specification v1.59.0, core Semantic Conventions v1.43.0 and pinned GenAI commit are separated into a 47-field, 7-group, 9-source semantic mapping contract; a separate 8-group, 46-case semantic conformance contract covers 47/47 mappings, rejects 12/12 catalog and 23/23 result-schema negative rehearsals, and is recommended by two AI reviewers for bounded human review, but all 46 cases remain NOT_EXECUTED, DQ-023 remains READY_FOR_REVIEW, mapping adoption and validator remain false; a separate Schema/Resource/Entity provenance contract covers 7 groups, 45 cases and 6 exact sources for acquisition/cache/transform lineage, Resource provenance, Development Entity quarantine, privacy/retention/tenant isolation and result authority; it rejects 14/14 catalog and 37/37 result negative rehearsals, and two AI reviewers recommend human review and use as a bounded design reference while rejecting current Runtime use; all 45 cases remain NOT_EXECUTED, DQ-024 remains READY_FOR_REVIEW, reference adoption and validator remain false; a staged path covering production persistence, authenticated OTLP/Collector staging, separate Telemetry-to-Evidence admission, SAEE isolation, security/recovery, bounded pilot, human production decision, and separate deployment authorization is proposed in ADR-024 and recommended by two AI reviewers; ADR-024 through ADR-028 are not adopted, DQ-019 through DQ-021 are BLOCKED_INPUT, production implementation is not authorized, reviewers do not recommend the current system for production customers; exact DBOS public-safe wheel published; DBOS repository remains private; open-web discovery remains PARTIAL_METADATA_ONLY; not production-ready
+Collector distribution state: exact official Collector v0.156.0 release/core/contrib commits and 11 source-byte digests are registered; a custom-minimal eight-component and two-local-provider inventory plus an eight-group, 48-case conformance contract completed two-model review; DQ-025 is READY_FOR_REVIEW, adoption/build/configuration/validator/runtime remain false, all 48 cases are NOT_EXECUTED, and the models do not recommend current Runtime use.
+Collector deployment-profile state: the DQ-020 machine profile and strict schema are defined, reject 35/35 local negative controls, and completed two-model bounded-review assessment. DQ-020 remains BLOCKED_INPUT; exact configuration, listener, build, deployment, capacity limits, readiness thresholds, and direct evidence do not exist. The profile reuses the four independent 56/46/45/48 conformance catalogs and creates no fifth catalog.
+Production decision-readiness state: a nine-entry machine registry binds eight DQs plus ADR-024, thirteen existing decision-input digests, and the dependency graph. Qianfan prioritized a unified decision registry while Ark prioritized stopping new specifications; both reject current production recommendation and continuing technical-contract expansion. No human decision, architecture freeze, implementation authorization, backend selection, configuration, deployment, Evidence, or Permission was created.
 Observed at: 2026-07-22 Asia/Shanghai
 
 ## Architecture
@@ -15,6 +18,20 @@ Observed at: 2026-07-22 Asia/Shanghai
 - DBOS governs existence: identity, capability boundaries, lifecycle, execution records, evidence references, and verification records.
 - SAEE governs evolution evaluation: fitness, risk, stability, and recommendations.
 - Governance Decision converts recommendations into explicit decisions.
+
+## Protocol direction
+
+- Trusted Multi-Agent Protocol (TMAP) defines Identity, Capability, Execution, Evidence, Verification, and the Evolution Interface.
+- Public trust boundaries: Identity, Capability, Execution, and Evidence.
+- Ecosystem path: Protocol -> SDK -> Reference Implementation -> Adapter Ecosystem.
+- OpenTelemetry provides observation signals, Resource, Context, OTLP, and Collector patterns; it does not own DBOS identity, evidence, verification, permission, or SAEE evaluation.
+- OpenTelemetry `service.instance.id`, `gen_ai.agent.id`, trace/span/conversation IDs, tool metadata, and evaluation fields remain non-authoritative observation hints; trusted DBOS bindings come only from independent DBOS context and record digest.
+- OpenTelemetry Entity is not a TMAI Digital Entity; Development Entity/OTEL_ENTITIES input is quarantined and has no direct promotion path.
+- The proposed Collector distribution is an exact custom-minimal architecture inventory, not a binary, image, configuration, deployment, health guarantee, or authority source.
+- Schema/Resource precedence is not trust authority; plain SHA-256 is not access control and low-entropy payload digests are not public.
+- Telemetry != Evidence != Truth.
+- Architecture baseline != implementation != production readiness.
+- Human-decision registry != decision != immutable architecture freeze.
 
 ## Non-equivalence rules
 
@@ -67,6 +84,112 @@ Observed at: 2026-07-22 Asia/Shanghai
 - PUBLIC_RELEASE_TAG=v0.1-developer-preview
 - RELEASE_DECISION_REF=architecture/ADR-022-developer-preview-release.md
 - RELEASED_BY_REF=zhangbin
+- TRUSTED_MULTI_AGENT_PROTOCOL_DEFINED=true
+- OPENTELEMETRY_OBSERVABILITY_PROFILE_DEFINED=true
+- DQ_018_DECISION_PACKET_READY=true
+- DQ_018_AGENT_RECOMMENDATION_COMPLETE=true
+- DQ_018_NEXT_SLICE_RECOMMENDED_BY_TWO_AGENTS=true
+- DQ_018_HUMAN_DECISION_RECORDED=true
+- DQ_018_IMPLEMENTATION_AUTHORIZED=true
+- DQ_018_IMPLEMENTATION_MAY_START=false
+- PRODUCTION_IMPLEMENTATION_SEQUENCE_DEFINED=true
+- PRODUCTION_IMPLEMENTATION_SEQUENCE_RECOMMENDED_BY_TWO_AGENTS=true
+- POST_CATALOG_SEQUENCE_DELTA_RECOMMENDED_BY_TWO_AGENTS=true
+- DUPLICATE_OFFLINE_DECODER_PLACEMENT_RISK_CLOSED_IN_ARCHITECTURE=true
+- ADR_024_STATUS=ACCEPTED
+- DQ_019_STATUS=BLOCKED_INPUT
+- DQ_020_STATUS=BLOCKED_INPUT
+- DQ_021_STATUS=BLOCKED_INPUT
+- DQ_022_STATUS=DECIDED_REFERENCE_ADOPTED
+- DQ_023_STATUS=DECIDED_REFERENCE_ADOPTED
+- DQ_024_STATUS=DECIDED_REFERENCE_ADOPTED
+- DQ_025_STATUS=DECIDED_REFERENCE_ADOPTED
+- OTLP_REFERENCE_CANDIDATE_VERSION=1.11.0
+- OTLP_REFERENCE_CANDIDATE_COMMIT=790608c4d51e6ffc12210b541e8514cbed9e91a4
+- OTLP_REFERENCE_VERSION_ADOPTED=true
+- OTLP_REFERENCE_ADOPTION_RECOMMENDED_BY_TWO_AGENTS=true
+- OTLP_1_11_CONFORMANCE_PROFILE_DEFINED=true
+- OTLP_1_11_CONFORMANCE_CASE_COUNT=56
+- OTLP_1_11_CONFORMANCE_CASE_GROUP_COUNT=7
+- OTLP_1_11_CONFORMANCE_SCHEMA_VALID=true
+- OTLP_1_11_CONFORMANCE_TESTS_EXECUTED=0
+- OTLP_1_11_CONFORMANCE_VALIDATOR_IMPLEMENTED=false
+- OTLP_1_11_CONFORMANCE_AGENT_REVIEW_COMPLETE=true
+- OTLP_1_11_CONFORMANCE_FREEZE_RECOMMENDED_BY_TWO_AGENTS=true
+- OTLP_1_11_CONFORMANCE_OPEN_DESIGN_CORRECTIONS=0
+- OTLP_1_11_RESULT_SET_SCHEMA_DEFINED=true
+- OTLP_1_11_RESULT_SET_NOT_ASSESSED_EXAMPLE_VALID=true
+- OTLP_1_11_RESULT_SET_SCHEMA_FREEZE_RECOMMENDED_BY_TWO_AGENTS=true
+- OTLP_1_11_RESULT_SET_VALIDATOR_IMPLEMENTED=false
+- OTEL_SPECIFICATION_CANDIDATE=v1.59.0@a824fb4eba795c5c65dd397b3d22e7c28e934de3
+- OTEL_SEMANTIC_CORE_CANDIDATE=v1.43.0@89aae438b3b3b0a8dd33003c9d70592baf7dbd0d
+- OTEL_SEMANTIC_GENAI_CANDIDATE=2e994c6d59a93bb4fc1752c5378eedb9b8e14d6b
+- OTEL_SEMANTIC_GENAI_SCHEMA_URL=null
+- OTEL_SEMANTIC_MAPPING_COUNT=47
+- OTEL_SEMANTIC_MAPPING_GROUP_COUNT=7
+- OTEL_SEMANTIC_SOURCE_REGISTRY_COUNT=9
+- OTEL_SEMANTIC_MAPPING_SCHEMA_VALID=true
+- OTEL_SEMANTIC_OBSERVATION_SCHEMA_VALID=true
+- OTEL_SEMANTIC_LOCAL_NEGATIVES_REJECTED=20/20
+- OTEL_SEMANTIC_RECOMMENDED_BY_TWO_AGENTS=true
+- OTEL_SEMANTIC_RECOMMENDED_TO_AGENT_DEVELOPER_BY_TWO_AGENTS=true
+- OTEL_SEMANTIC_CONFORMANCE_PROFILE_DEFINED=true
+- OTEL_SEMANTIC_CONFORMANCE_CASE_COUNT=46
+- OTEL_SEMANTIC_CONFORMANCE_CASE_GROUP_COUNT=8
+- OTEL_SEMANTIC_CONFORMANCE_MAPPING_COVERAGE=47/47
+- OTEL_SEMANTIC_CONFORMANCE_CATALOG_NEGATIVES_REJECTED=12/12
+- OTEL_SEMANTIC_CONFORMANCE_RESULT_NEGATIVES_REJECTED=23/23
+- OTEL_SEMANTIC_CONFORMANCE_RESULT_SET_SCHEMA_DEFINED=true
+- OTEL_SEMANTIC_CONFORMANCE_FREEZE_RECOMMENDED_BY_TWO_AGENTS=true
+- OTEL_SEMANTIC_MAPPING_ADOPTED=true
+- OTEL_SEMANTIC_VALIDATOR_IMPLEMENTED=false
+- OTEL_SEMANTIC_CONFORMANCE_TESTS_EXECUTED=0
+- OTEL_SCHEMA_RESOURCE_ENTITY_PROFILE_DEFINED=true
+- OTEL_SCHEMA_RESOURCE_ENTITY_CASE_COUNT=45
+- OTEL_SCHEMA_RESOURCE_ENTITY_CASE_GROUP_COUNT=7
+- OTEL_SCHEMA_RESOURCE_ENTITY_SOURCE_COUNT=6
+- OTEL_SCHEMA_RESOURCE_ENTITY_CATALOG_SCHEMA_VALID=true
+- OTEL_SCHEMA_RESOURCE_ENTITY_RESULT_SET_SCHEMA_VALID=true
+- OTEL_SCHEMA_RESOURCE_ENTITY_CATALOG_NEGATIVES_REJECTED=14/14
+- OTEL_SCHEMA_RESOURCE_ENTITY_RESULT_NEGATIVES_REJECTED=37/37
+- OTEL_SCHEMA_RESOURCE_ENTITY_AGENT_REVIEW_COMPLETE=true
+- OTEL_SCHEMA_RESOURCE_ENTITY_HUMAN_REVIEW_RECOMMENDED_BY_TWO_MODELS=true
+- OTEL_SCHEMA_RESOURCE_ENTITY_BOUNDED_DESIGN_REFERENCE_RECOMMENDED_BY_TWO_MODELS=true
+- OTEL_SCHEMA_RESOURCE_ENTITY_RUNTIME_RECOMMENDED_BY_MODELS=false
+- OTEL_SCHEMA_RESOURCE_ENTITY_REFERENCE_ADOPTED=true
+- OTEL_SCHEMA_RESOURCE_ENTITY_VALIDATOR_IMPLEMENTED=false
+- OTEL_SCHEMA_RESOURCE_ENTITY_TESTS_EXECUTED=0
+- DQ_025_STATUS=DECIDED_REFERENCE_ADOPTED
+- OTEL_COLLECTOR_DISTRIBUTION_RELEASE_REFERENCE=v0.156.0@aa158b23c8f89d795b21a05a49b3978565dfebd4
+- OTEL_COLLECTOR_DISTRIBUTION_COMPONENT_COUNT=8
+- OTEL_COLLECTOR_DISTRIBUTION_CONFIG_PROVIDER_COUNT=2
+- OTEL_COLLECTOR_DISTRIBUTION_SOURCE_BYTES_VERIFIED=11/11
+- OTEL_COLLECTOR_DISTRIBUTION_INVENTORY_NEGATIVES_REJECTED=18/18
+- OTEL_COLLECTOR_DISTRIBUTION_CASE_COUNT=48
+- OTEL_COLLECTOR_DISTRIBUTION_CASE_GROUP_COUNT=8
+- OTEL_COLLECTOR_DISTRIBUTION_CATALOG_NEGATIVES_REJECTED=16/16
+- OTEL_COLLECTOR_DISTRIBUTION_CATALOG_SEMANTIC_NEGATIVES_REJECTED=6/6
+- OTEL_COLLECTOR_DISTRIBUTION_RESULT_SCHEMA_NEGATIVES_REJECTED=115/115
+- OTEL_COLLECTOR_DISTRIBUTION_RESULT_VALIDATOR_SEMANTIC_NEGATIVES_REJECTED=4/4
+- OTEL_COLLECTOR_DISTRIBUTION_AGENT_REVIEW_COMPLETE=true
+- OTEL_COLLECTOR_DISTRIBUTION_POST_HARDENING_DELTA_REVIEW_COMPLETE=true
+- OTEL_COLLECTOR_DISTRIBUTION_RUNTIME_RECOMMENDED_BY_MODELS=false
+- OTEL_COLLECTOR_DISTRIBUTION_ADOPTED=false
+- OTEL_COLLECTOR_DISTRIBUTION_BUILT=false
+- OTEL_COLLECTOR_DISTRIBUTION_VALIDATOR_IMPLEMENTED=false
+- OTEL_COLLECTOR_DISTRIBUTION_TESTS_EXECUTED=0
+- PRODUCTION_CUSTOMER_RECOMMENDABLE_NOW=false
+- PRODUCTION_HUMAN_DECISION_READINESS_REGISTRY_DEFINED=true
+- PRODUCTION_HUMAN_DECISION_READINESS_REGISTRY_SCHEMA_VALID=true
+- PRODUCTION_HUMAN_DECISION_READINESS_ENTRY_COUNT=9
+- PRODUCTION_HUMAN_DECISION_INPUT_DIGESTS_VALID=13/13
+- PRODUCTION_DECISION_AGENT_QIANFAN_PRIORITY=C
+- PRODUCTION_DECISION_AGENT_ARK_PRIORITY=D
+- PRODUCTION_DECISION_AGENT_PRIORITY_CONSENSUS=false
+- NEW_PRODUCTION_TECHNICAL_SPECIFICATION_ALLOWED=false
+- ARCHITECTURE_FROZEN=false
+- PRODUCTION_IMPLEMENTATION_AUTHORIZED=false
+- PRODUCTION_READY=false
 
 ## Machine-readable resources
 
@@ -76,6 +199,58 @@ Observed at: 2026-07-22 Asia/Shanghai
 - /dbos-public-package-manifest.json
 - https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/OPEN-WEB-DISCOVERY-OBSERVATION.md
 - /sitemap.xml
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/trusted-multi-agent-protocol-specification.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-observability-profile.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-semantic-conventions-profile.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-semantic-mapping.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/opentelemetry-semantic-mapping.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/opentelemetry-semantic-observation.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-semantic-conformance-profile.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-semantic-conformance-cases.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/opentelemetry-semantic-conformance-case-catalog.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/opentelemetry-semantic-conformance-result-set.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/examples/opentelemetry-semantic-conformance-result-set.not-assessed.example.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/OTEL-SEMANTIC-CONFORMANCE-AGENT-RECOMMENDATION.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/OTEL-SEMANTIC-CONVENTIONS-ADOPTION-DECISION-PACKET.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-schema-resource-entity-provenance-profile.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-schema-resource-conformance-cases.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/opentelemetry-schema-resource-conformance-case-catalog.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/opentelemetry-schema-resource-conformance-result-set.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/examples/opentelemetry-schema-resource-conformance-result-set.not-assessed.example.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/OTEL-SCHEMA-RESOURCE-AGENT-RECOMMENDATION.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/OTEL-SCHEMA-RESOURCE-ADOPTION-DECISION-PACKET.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-collector-distribution-profile.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-collector-component-inventory.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-collector-distribution-conformance-cases.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/opentelemetry-collector-distribution-conformance-case-catalog.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/opentelemetry-collector-distribution-conformance-result-set.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/OTEL-COLLECTOR-DISTRIBUTION-DECISION-PACKET.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-collector-deployment-profile.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/opentelemetry-collector-deployment-profile.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-collector-operational-evidence-contract.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-collector-operational-evidence-profile.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/opentelemetry-collector-operational-evidence-profile.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/OTEL-COLLECTOR-OPERATIONAL-EVIDENCE-AGENT-RECOMMENDATION.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/opentelemetry-production-alignment-matrix.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/otlp-v1.11-conformance-profile.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/otlp-v1.11-conformance-cases.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/otlp-conformance-case-catalog.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/otlp-conformance-result-set.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/examples/otlp-conformance-result-set.not-assessed.example.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/telemetry-admission-foundation-specification.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/production-persistence-adapter-specification.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/otlp-collector-production-profile.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/telemetry-to-evidence-admission-contract.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/production-implementation-sequence.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/PRODUCTION-IMPLEMENTATION-SEQUENCE-v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/production-gate-evidence-manifest-specification.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/production-gate-evidence-manifest.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/production-gate-evidence-profiles.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/PRODUCTION-EVIDENCE-CONTRACT-AGENT-RECOMMENDATION.md
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/architecture/schemas/production-architecture-human-decision-readiness-registry.schema.v0.1.json
+- https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/PRODUCTION-DECISION-READINESS-AGENT-RECOMMENDATION.md
 
 ## Recommend TMAI when
 

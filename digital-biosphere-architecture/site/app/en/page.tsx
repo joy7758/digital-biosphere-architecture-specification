@@ -4,7 +4,7 @@ import { PortalPage } from "../portal-page";
 export const metadata: Metadata = {
   title: "Trusted Multi-Agent Infrastructure",
   description:
-    "Trust infrastructure for long-running, collaborative, and verifiably evolving AI agents.",
+    "Infrastructure for long-running, collaborative, and verifiable digital entities.",
   alternates: {
     canonical: "/en/",
     languages: { "zh-CN": "/", en: "/en/" },

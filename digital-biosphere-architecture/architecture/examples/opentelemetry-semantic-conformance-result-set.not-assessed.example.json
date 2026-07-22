@@ -1,0 +1,122 @@
+{
+  "result_schema_version": "0.1",
+  "result_set_id": "TMAI-OTEL-SEMANTIC-RESULT-SYNTHETIC-NOT-ASSESSED-001",
+  "status": "DRAFT",
+  "synthetic_example": true,
+  "catalog_binding": {
+    "catalog_id": "TMAI-OTEL-SEMANTIC-CONFORMANCE-0.1",
+    "catalog_path": "architecture/opentelemetry-semantic-conformance-cases.v0.1.json",
+    "catalog_digest": null,
+    "catalog_status": "ADOPTED_CONTRACT"
+  },
+  "mapping_binding": {
+    "mapping_catalog_id": "TMAI-OTEL-SEMANTIC-MAPPING-0.1",
+    "mapping_catalog_path": "architecture/opentelemetry-semantic-mapping.v0.1.json",
+    "mapping_catalog_digest": null,
+    "mapping_catalog_status": "ADOPTED_CONTRACT",
+    "profile_id": "TMAI-OTEL-SEMANTIC-CONVENTIONS-PROFILE-0.1",
+    "profile_digest": null
+  },
+  "decision_bindings": [
+    {"decision_id":"DQ-023","status":"NOT_DECIDED","decision_reference":null,"decided_by_ref":null,"decided_at":null},
+    {"decision_id":"DQ-022","status":"NOT_DECIDED","decision_reference":null,"decided_by_ref":null,"decided_at":null},
+    {"decision_id":"DQ-018","status":"NOT_DECIDED","decision_reference":null,"decided_by_ref":null,"decided_at":null}
+  ],
+  "claim_scope": {
+    "gate_id": "PR-G2",
+    "step_id": "S1",
+    "environment_id": "SYNTHETIC-NOT-AN-ENVIRONMENT",
+    "environment_class": "SYNTHETIC_REFERENCE",
+    "topology_digest": null,
+    "configuration_digest": null,
+    "workload_ref": null,
+    "window_started_at": null,
+    "window_ended_at": null
+  },
+  "implementation_binding": {
+    "repository": null,
+    "source_commit": null,
+    "artifact_digest": null,
+    "adapter_id": null,
+    "adapter_version": null,
+    "runtime_environment_digest": null
+  },
+  "validation_binding": {
+    "validator_implementation_status": "NOT_IMPLEMENTED",
+    "validator_id": null,
+    "validator_version": null,
+    "validator_artifact_digest": null,
+    "schema_validation": "NOT_ASSESSED",
+    "semantic_validation": "NOT_ASSESSED",
+    "case_set_reconciliation": "NOT_ASSESSED",
+    "mapping_coverage_reconciliation": "NOT_ASSESSED",
+    "summary_reconciliation": "NOT_ASSESSED",
+    "catalog_digest_verified": false,
+    "mapping_digest_verified": false,
+    "implementation_digests_verified": false,
+    "environment_binding_verified": false,
+    "validation_report_ref": null,
+    "validation_completed_at": null,
+    "limitations": [
+      "Synthetic shape example only",
+      "No validator is implemented",
+      "No conformance case was executed",
+      "No DBOS or SAEE repository was changed",
+      "No gate can be closed by this document"
+    ]
+  },
+  "authority_boundary": {
+    "result_set_is_gate_decision": false,
+    "result_set_is_human_authorization": false,
+    "result_set_can_change_runtime_state": false,
+    "result_set_is_evidence_truth": false,
+    "independent_gate_evaluator_required": true,
+    "independent_reviewer_required": true,
+    "human_decision_required_for_gate_closure": true
+  },
+  "required_case_ids": [
+    "SEM-CF-VSN-001", "SEM-CF-VSN-002", "SEM-CF-VSN-003", "SEM-CF-VSN-004", "SEM-CF-VSN-005",
+    "SEM-CF-CORE-001", "SEM-CF-CORE-002", "SEM-CF-CORE-003", "SEM-CF-CORE-004", "SEM-CF-CORE-005",
+    "SEM-CF-GENAI-001", "SEM-CF-GENAI-002", "SEM-CF-GENAI-003", "SEM-CF-GENAI-004", "SEM-CF-GENAI-005", "SEM-CF-GENAI-006",
+    "SEM-CF-SENS-001", "SEM-CF-SENS-002", "SEM-CF-SENS-003", "SEM-CF-SENS-004", "SEM-CF-SENS-005", "SEM-CF-SENS-006", "SEM-CF-SENS-007", "SEM-CF-SENS-008", "SEM-CF-SENS-009", "SEM-CF-SENS-010",
+    "SEM-CF-DRIFT-001", "SEM-CF-DRIFT-002", "SEM-CF-DRIFT-003", "SEM-CF-DRIFT-004", "SEM-CF-DRIFT-005",
+    "SEM-CF-AUTH-001", "SEM-CF-AUTH-002", "SEM-CF-AUTH-003", "SEM-CF-AUTH-004", "SEM-CF-AUTH-005", "SEM-CF-AUTH-006", "SEM-CF-AUTH-007",
+    "SEM-CF-CARD-001", "SEM-CF-CARD-002", "SEM-CF-CARD-003", "SEM-CF-CARD-004",
+    "SEM-CF-RESULT-001", "SEM-CF-RESULT-002", "SEM-CF-RESULT-003", "SEM-CF-RESULT-004"
+  ],
+  "case_results": [],
+  "summary": {
+    "required": 46,
+    "executed": 0,
+    "passed": 0,
+    "failed": 0,
+    "blocked": 0,
+    "not_assessed": 46,
+    "required_case_pass_rate": 0,
+    "mapping_ids_required": 47,
+    "mapping_ids_covered": 0
+  },
+  "reviews": [],
+  "result": "NOT_ASSESSED",
+  "result_reason": "Synthetic schema example only; no implementation, validator, fixture execution, review, or gate decision exists.",
+  "frozen_at": null,
+  "result_set_digest": null,
+  "revocation": null,
+  "effects": {
+    "adopts_reference": false,
+    "changes_evidence_truth": false,
+    "creates_entity": false,
+    "creates_identity": false,
+    "creates_capability": false,
+    "grants_permission": false,
+    "creates_execution": false,
+    "creates_evidence": false,
+    "creates_verification": false,
+    "creates_saee_evaluation": false,
+    "creates_governance_decision": false,
+    "authorizes_implementation": false,
+    "authorizes_deployment": false,
+    "closes_production_gate": false,
+    "declares_production_ready": false
+  }
+}

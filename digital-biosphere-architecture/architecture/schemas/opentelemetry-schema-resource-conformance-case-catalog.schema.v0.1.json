@@ -1,0 +1,147 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tmai:schema:opentelemetry-schema-resource-conformance-case-catalog:0.1",
+  "title": "TMAI OpenTelemetry Schema and Resource Conformance Case Catalog v0.1",
+  "description": "Fail-closed preregistration for OpenTelemetry schema acquisition/transformation, Resource provenance/merge, Development Entity quarantine, telemetry data governance, and result-authority boundaries.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["catalog_schema_version", "catalog_id", "status", "primary_repository", "decision_reference", "contract_binding", "source_registry", "case_groups", "cases", "semantic_rules", "effects"],
+  "properties": {
+    "catalog_schema_version": {"const": "0.1"},
+    "catalog_id": {"const": "TMAI-OTEL-SCHEMA-RESOURCE-CONFORMANCE-0.1"},
+    "status": {"const": "ADOPTED_CONTRACT_NOT_EXECUTED"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "decision_reference": {"const": "DQ-024"},
+    "contract_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["otel_specification", "core_semconv", "core_schema_url", "core_schema_observed_digest", "core_schema_file_format", "profile_id", "profile_path", "profile_digest", "adoption_status"],
+      "properties": {
+        "otel_specification": {"const": "v1.59.0@a824fb4eba795c5c65dd397b3d22e7c28e934de3"},
+        "core_semconv": {"const": "v1.43.0@89aae438b3b3b0a8dd33003c9d70592baf7dbd0d"},
+        "core_schema_url": {"const": "https://opentelemetry.io/schemas/1.43.0"},
+        "core_schema_observed_digest": {"const": "sha256:6ac5dd367ff707dbcdcb1e5b459d4ac2fd676fb44eb17a21f9494a9fee4233df"},
+        "core_schema_file_format": {"const": "1.1.0"},
+        "profile_id": {"const": "TMAI-OTEL-SCHEMA-RESOURCE-ENTITY-PROVENANCE-PROFILE-0.1"},
+        "profile_path": {"const": "architecture/opentelemetry-schema-resource-entity-provenance-profile.md"},
+        "profile_digest": {"type": "null"},
+        "adoption_status": {"const": "ADOPTED_REFERENCE"}
+      }
+    },
+    "source_registry": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/source"}
+    },
+    "case_groups": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/caseGroup"}
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 45,
+      "maxItems": 45,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/conformanceCase"}
+    },
+    "semantic_rules": {
+      "const": [
+        "ALL_45_CASE_IDS_MUST_BE_UNIQUE_AND_GROUPED_EXACTLY_ONCE",
+        "ALL_6_SOURCE_IDS_MUST_RESOLVE_EXACTLY_ONCE",
+        "RUNTIME_NETWORK_SCHEMA_FETCH_IS_DISABLED_BY_DEFAULT",
+        "ORIGINAL_INPUT_AND_ALL_TRANSFORMATION_LINEAGE_MUST_BE_RETAINED",
+        "CONFLICTING_NON_EMPTY_RESOURCE_SCHEMA_URLS_FAIL_CLOSED",
+        "RESOURCE_MERGE_PRECEDENCE_IS_NOT_TRUST_AUTHORITY",
+        "OTEL_ENTITY_DEVELOPMENT_INPUT_IS_QUARANTINED",
+        "OTEL_ENTITY_IS_NOT_TMAI_DIGITAL_ENTITY",
+        "TELEMETRY_DATA_IS_MINIMIZED_POLICY_BOUND_AND_TENANT_ISOLATED",
+        "ORIGINAL_RETENTION_IS_POLICY_BOUND_NOT_INDEFINITE",
+        "ALL_EFFECTS_REMAIN_FALSE",
+        "RESULT_SET_CANNOT_CLOSE_A_GATE"
+      ]
+    },
+    "effects": {"$ref": "#/$defs/noEffects"}
+  },
+  "$defs": {
+    "caseId": {"type": "string", "pattern": "^OSR-CF-[A-Z]{3,8}-[0-9]{3}$"},
+    "sourceId": {"enum": ["OTEL-SRC-SCHEMA-SPEC", "OTEL-SRC-SCHEMA-1-43", "OTEL-SRC-RESOURCE-SDK", "OTEL-SRC-RESOURCE-DM", "OTEL-SRC-ENTITY-DM", "OTEL-SRC-ENTITY-PROP"]},
+    "groupId": {"enum": ["OSR-CG-SCHEMA_SOURCE", "OSR-CG-SCHEMA_PRECEDENCE", "OSR-CG-TRANSFORMATION", "OSR-CG-RESOURCE_PROVENANCE", "OSR-CG-ENTITY_QUARANTINE", "OSR-CG-DATA_GOVERNANCE", "OSR-CG-RESULT_AUTHORITY"]},
+    "gateRef": {"enum": ["DQ-018", "DQ-020", "DQ-022", "DQ-023", "DQ-024", "PR-G2", "PR-G3", "PR-G5", "PR-G6"]},
+    "digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "url", "exact_version", "stability", "observed_digest", "observed_at", "adoption_status"],
+      "properties": {
+        "source_id": {"$ref": "#/$defs/sourceId"},
+        "url": {"type": "string", "format": "uri"},
+        "exact_version": {"type": "string", "minLength": 1},
+        "stability": {"enum": ["STABLE", "DEVELOPMENT", "PUBLISHED_ARTIFACT_CANDIDATE"]},
+        "observed_digest": {"$ref": "#/$defs/digest"},
+        "observed_at": {"const": "2026-07-22"},
+        "adoption_status": {"enum": ["ADOPTED_REFERENCE", "ADOPTED_REFERENCE_QUARANTINED_DEVELOPMENT"]}
+      }
+    },
+    "caseGroup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["group_id", "title", "purpose", "required_for_gates", "required_case_ids"],
+      "properties": {
+        "group_id": {"$ref": "#/$defs/groupId"},
+        "title": {"type": "string", "minLength": 1, "maxLength": 256},
+        "purpose": {"type": "string", "minLength": 1, "maxLength": 1024},
+        "required_for_gates": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/gateRef"}},
+        "required_case_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/caseId"}}
+      }
+    },
+    "conformanceCase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case_id", "group_id", "title", "case_class", "source_ids", "fixture_class", "stimulus", "expected_outcome", "required_assertions", "required_evidence", "forbidden_effects", "gate_refs", "authorization_prerequisites", "implementation_required", "current_execution_status"],
+      "properties": {
+        "case_id": {"$ref": "#/$defs/caseId"},
+        "group_id": {"$ref": "#/$defs/groupId"},
+        "title": {"type": "string", "minLength": 1, "maxLength": 256},
+        "case_class": {"enum": ["SCHEMA_SOURCE", "SCHEMA_PRECEDENCE", "TRANSFORMATION", "RESOURCE_PROVENANCE", "ENTITY_QUARANTINE", "DATA_GOVERNANCE", "RESULT_AUTHORITY"]},
+        "source_ids": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/sourceId"}},
+        "fixture_class": {"enum": ["VALID_PINNED_SCHEMA", "INVALID_OR_DRIFTED_SCHEMA", "REDIRECT_OR_NETWORK", "SCHEMA_CACHE", "RESOURCE_AND_SCOPE_SCHEMA", "SUPPORTED_TRANSFORMATION", "UNSUPPORTED_TRANSFORMATION", "RESOURCE_DETECTOR", "RESOURCE_MERGE", "OTEL_ENTITY_INPUT", "TELEMETRY_DATA_GOVERNANCE", "RESULT_DOCUMENT"]},
+        "stimulus": {"type": "string", "minLength": 1, "maxLength": 2048},
+        "expected_outcome": {"enum": ["ACCEPT_PINNED_SOURCE", "UNCHANGED_WITH_LINEAGE", "TRANSFORMED_WITH_LINEAGE", "REJECTED_WITH_DIAGNOSTIC", "BLOCKED_RETAIN_ORIGINAL", "QUARANTINED_OBSERVATION_ONLY", "RESULT_NOT_ASSESSED"]},
+        "required_assertions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 512}},
+        "required_evidence": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 512}},
+        "forbidden_effects": {"const": "ALL_CANONICAL_AND_AUTHORITY_EFFECTS"},
+        "gate_refs": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"$ref": "#/$defs/gateRef"}},
+        "authorization_prerequisites": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 512}},
+        "implementation_required": {"const": true},
+        "current_execution_status": {"const": "NOT_EXECUTED"}
+      }
+    },
+    "noEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adopts_reference", "changes_evidence_truth", "creates_entity", "creates_identity", "creates_capability", "grants_permission", "creates_execution", "creates_evidence", "creates_verification", "creates_saee_evaluation", "creates_governance_decision", "authorizes_implementation", "authorizes_deployment", "closes_production_gate", "declares_production_ready"],
+      "properties": {
+        "adopts_reference": {"const": false},
+        "changes_evidence_truth": {"const": false},
+        "creates_entity": {"const": false},
+        "creates_identity": {"const": false},
+        "creates_capability": {"const": false},
+        "grants_permission": {"const": false},
+        "creates_execution": {"const": false},
+        "creates_evidence": {"const": false},
+        "creates_verification": {"const": false},
+        "creates_saee_evaluation": {"const": false},
+        "creates_governance_decision": {"const": false},
+        "authorizes_implementation": {"const": false},
+        "authorizes_deployment": {"const": false},
+        "closes_production_gate": {"const": false},
+        "declares_production_ready": {"const": false}
+      }
+    }
+  }
+}

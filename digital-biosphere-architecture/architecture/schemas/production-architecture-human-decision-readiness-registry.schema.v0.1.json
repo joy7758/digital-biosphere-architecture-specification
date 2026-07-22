@@ -1,0 +1,492 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://digital-biosphere.example/schemas/production-architecture-human-decision-readiness-registry.schema.v0.1.json",
+  "title": "TMAI Production Architecture Human Decision Readiness Registry Schema v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "registry_schema_version",
+    "registry_id",
+    "status",
+    "observed_at",
+    "primary_repository",
+    "agent_review",
+    "baseline_candidate",
+    "decision_entries",
+    "dependency_edges",
+    "collision_rules",
+    "deferred_production_questions",
+    "current_effects",
+    "stop_rule"
+  ],
+  "properties": {
+    "$schema": {"type": "string", "const": "architecture/schemas/production-architecture-human-decision-readiness-registry.schema.v0.1.json"},
+    "registry_schema_version": {"type": "string", "const": "0.1"},
+    "registry_id": {"type": "string", "const": "TMAI-PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY-0.1"},
+    "status": {"type": "string", "const": "HUMAN_DECISIONS_RECORDED_FREEZE_AUTHORIZED_IMMUTABLE_BASELINE_PENDING"},
+    "observed_at": {"type": "string", "format": "date"},
+    "primary_repository": {"type": "string", "const": "digital-biosphere-architecture"},
+    "agent_review": {"$ref": "#/$defs/agentReview"},
+    "baseline_candidate": {"$ref": "#/$defs/baselineCandidate"},
+    "decision_entries": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {"$ref": "#/$defs/decisionEntry"},
+      "allOf": [
+        {"contains": {"properties": {"decision_id": {"const": "ADR-024"}}, "required": ["decision_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"decision_id": {"const": "DQ-018"}}, "required": ["decision_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"decision_id": {"const": "DQ-019"}}, "required": ["decision_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"decision_id": {"const": "DQ-020"}}, "required": ["decision_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"decision_id": {"const": "DQ-021"}}, "required": ["decision_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"decision_id": {"const": "DQ-022"}}, "required": ["decision_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"decision_id": {"const": "DQ-023"}}, "required": ["decision_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"decision_id": {"const": "DQ-024"}}, "required": ["decision_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"decision_id": {"const": "DQ-025"}}, "required": ["decision_id"]}, "minContains": 1, "maxContains": 1}
+      ]
+    },
+    "dependency_edges": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/dependencyEdge"}
+    },
+    "collision_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/nonEmptyString"},
+      "uniqueItems": true
+    },
+    "deferred_production_questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/deferredQuestion"}
+    },
+    "current_effects": {"$ref": "#/$defs/currentEffects"},
+    "stop_rule": {"$ref": "#/$defs/stopRule"}
+  },
+  "$defs": {
+    "nonEmptyString": {"type": "string", "minLength": 1},
+    "nullableString": {"type": ["string", "null"]},
+    "sha256": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "artifactBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"$ref": "#/$defs/nonEmptyString"},
+        "sha256": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "agentReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_ref",
+        "qianfan_priority",
+        "ark_priority",
+        "priority_consensus",
+        "production_recommendation_now",
+        "new_technical_contract_recommended",
+        "bounded_registry_disposition"
+      ],
+      "properties": {
+        "review_ref": {"type": "string", "const": "PRODUCTION-DECISION-READINESS-AGENT-RECOMMENDATION.md"},
+        "qianfan_priority": {"type": "string", "const": "C"},
+        "ark_priority": {"type": "string", "const": "D"},
+        "priority_consensus": {"type": "boolean", "const": false},
+        "production_recommendation_now": {"type": "boolean", "const": false},
+        "new_technical_contract_recommended": {"type": "boolean", "const": false},
+        "bounded_registry_disposition": {"type": "string", "const": "CREATE_REGISTRY_THEN_STOP_FOR_HUMAN_INPUT"}
+      }
+    },
+    "baselineCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "branch",
+        "base_head",
+        "worktree_entry_count",
+        "staged_entry_count",
+        "candidate_commit",
+        "immutable_baseline_created",
+        "commit_authorized",
+        "push_authorized",
+        "production_freeze_complete"
+      ],
+      "properties": {
+        "branch": {"type": "string", "const": "codex/production-observability-baseline"},
+        "base_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+        "worktree_entry_count": {"type": "integer", "minimum": 1},
+        "staged_entry_count": {"type": "integer", "const": 0},
+        "candidate_commit": {"type": "null"},
+        "immutable_baseline_created": {"type": "boolean", "const": false},
+        "commit_authorized": {"type": "boolean", "const": true},
+        "push_authorized": {"type": "boolean", "const": true},
+        "production_freeze_complete": {"type": "boolean", "const": false}
+      }
+    },
+    "decisionEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "decision_class",
+        "status",
+        "packet_status",
+        "question",
+        "next_human_action",
+        "human_action_ready",
+        "recommended_option",
+        "decision_tokens",
+        "artifact_bindings",
+        "required_before_execution",
+        "missing_inputs",
+        "decision_recorded",
+        "selected_token",
+        "decided_by_ref",
+        "decided_at",
+        "implementation_may_start",
+        "effects"
+      ],
+      "properties": {
+        "decision_id": {"type": "string", "enum": ["ADR-024", "DQ-018", "DQ-019", "DQ-020", "DQ-021", "DQ-022", "DQ-023", "DQ-024", "DQ-025"]},
+        "decision_class": {
+          "type": "string",
+          "enum": [
+            "REFERENCE_ADOPTION",
+            "ARCHITECTURE_SEQUENCE_ADOPTION",
+            "IMPLEMENTATION_AUTHORIZATION",
+            "PERSISTENCE_SELECTION_AND_IMPLEMENTATION",
+            "COLLECTOR_STAGING_AUTHORIZATION",
+            "EVIDENCE_ADMISSION_IMPLEMENTATION"
+          ]
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "READY_FOR_HUMAN_DECISION_AGENT_REVIEW_COMPLETE",
+            "READY_FOR_REVIEW",
+            "PROPOSED_PENDING_HUMAN_ARCHITECTURE_DECISION",
+            "DECIDED_REFERENCE_ADOPTED",
+            "ACCEPTED_ARCHITECTURE_SEQUENCE",
+            "DECIDED_IMPLEMENTATION_AUTHORIZED_PRECONDITIONS_PENDING",
+            "BLOCKED_INPUT"
+          ]
+        },
+        "packet_status": {"$ref": "#/$defs/nullableString"},
+        "question": {"$ref": "#/$defs/nonEmptyString"},
+        "next_human_action": {"type": "string", "enum": ["DECIDE", "REVIEW_THEN_DECIDE", "PROVIDE_INPUTS", "NONE_DECIDED"]},
+        "human_action_ready": {"type": "boolean"},
+        "recommended_option": {"$ref": "#/$defs/nullableString"},
+        "decision_tokens": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/nonEmptyString"},
+          "uniqueItems": true
+        },
+        "artifact_bindings": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/artifactBinding"},
+          "uniqueItems": true
+        },
+        "required_before_execution": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/nonEmptyString"},
+          "uniqueItems": true
+        },
+        "missing_inputs": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/nonEmptyString"},
+          "uniqueItems": true
+        },
+        "decision_recorded": {"type": "boolean"},
+        "selected_token": {"$ref": "#/$defs/nullableString"},
+        "decided_by_ref": {"$ref": "#/$defs/nullableString"},
+        "decided_at": {"type": ["string", "null"], "format": "date-time"},
+        "implementation_may_start": {"type": "boolean", "const": false},
+        "effects": {"$ref": "#/$defs/effects"}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"decision_recorded": {"const": true}}, "required": ["decision_recorded"]},
+          "then": {
+            "properties": {
+              "selected_token": {"$ref": "#/$defs/nonEmptyString"},
+              "decided_by_ref": {"$ref": "#/$defs/nonEmptyString"},
+              "decided_at": {"type": "string", "format": "date-time"}
+            }
+          },
+          "else": {
+            "properties": {
+              "selected_token": {"type": "null"},
+              "decided_by_ref": {"type": "null"},
+              "decided_at": {"type": "null"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"decision_id": {"enum": ["DQ-022", "DQ-023", "DQ-024", "DQ-025"]}}, "required": ["decision_id"]},
+          "then": {
+            "properties": {
+              "status": {"const": "DECIDED_REFERENCE_ADOPTED"},
+              "next_human_action": {"const": "NONE_DECIDED"},
+              "human_action_ready": {"const": false},
+              "decision_recorded": {"const": true},
+              "decided_by_ref": {"const": "zhangbin"},
+              "decided_at": {"const": "2026-07-22T12:05:04+08:00"},
+              "implementation_may_start": {"const": false},
+              "effects": {"$ref": "#/$defs/referenceAdoptionEffects"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"decision_id": {"const": "DQ-022"}}, "required": ["decision_id"]},
+          "then": {"properties": {"selected_token": {"const": "DQ-022=ADOPT_OTLP_1_11_0_REFERENCE_BASELINE"}}}
+        },
+        {
+          "if": {"properties": {"decision_id": {"const": "DQ-023"}}, "required": ["decision_id"]},
+          "then": {"properties": {"selected_token": {"const": "DQ-023=ADOPT_OTEL_SEMCONV_1_43_CORE_AND_PINNED_GENAI_MAPPING"}}}
+        },
+        {
+          "if": {"properties": {"decision_id": {"const": "DQ-024"}}, "required": ["decision_id"]},
+          "then": {"properties": {"selected_token": {"const": "DQ-024=ADOPT_OTEL_SCHEMA_RESOURCE_1_59_AND_QUARANTINE_DEVELOPMENT_ENTITY"}}}
+        },
+        {
+          "if": {"properties": {"decision_id": {"const": "DQ-025"}}, "required": ["decision_id"]},
+          "then": {"properties": {"selected_token": {"const": "DQ-025=ADOPT_OTEL_COLLECTOR_V0_156_CUSTOM_MINIMAL_INVENTORY"}}}
+        },
+        {
+          "if": {"properties": {"decision_id": {"const": "ADR-024"}}, "required": ["decision_id"]},
+          "then": {
+            "properties": {
+              "status": {"const": "ACCEPTED_ARCHITECTURE_SEQUENCE"},
+              "next_human_action": {"const": "NONE_DECIDED"},
+              "human_action_ready": {"const": false},
+              "decision_recorded": {"const": true},
+              "selected_token": {"const": "ADR-024=ACCEPT_STAGED_TELEMETRY_PRODUCTION_PATH"},
+              "decided_by_ref": {"const": "zhangbin"},
+              "decided_at": {"const": "2026-07-22T12:05:04+08:00"},
+              "implementation_may_start": {"const": false},
+              "effects": {"$ref": "#/$defs/zeroEffects"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"decision_id": {"const": "DQ-018"}}, "required": ["decision_id"]},
+          "then": {
+            "properties": {
+              "status": {"const": "DECIDED_IMPLEMENTATION_AUTHORIZED_PRECONDITIONS_PENDING"},
+              "next_human_action": {"const": "NONE_DECIDED"},
+              "human_action_ready": {"const": false},
+              "decision_recorded": {"const": true},
+              "selected_token": {"const": "DQ-018=AUTHORIZE_DBOS_PR_2A_TELEMETRY_ADMISSION_FOUNDATION"},
+              "decided_by_ref": {"const": "zhangbin"},
+              "decided_at": {"const": "2026-07-22T12:05:04+08:00"},
+              "implementation_may_start": {"const": false},
+              "effects": {"$ref": "#/$defs/implementationAuthorizationEffects"}
+            }
+          }
+        },
+        {
+          "if": {"properties": {"decision_id": {"enum": ["DQ-019", "DQ-020", "DQ-021"]}}, "required": ["decision_id"]},
+          "then": {
+            "properties": {
+              "status": {"const": "BLOCKED_INPUT"},
+              "decision_recorded": {"const": false},
+              "implementation_may_start": {"const": false},
+              "effects": {"$ref": "#/$defs/zeroEffects"}
+            }
+          }
+        }
+      ]
+    },
+    "dependencyEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from", "to", "kind", "reason"],
+      "properties": {
+        "from": {"type": "string", "enum": ["ADR-024", "DQ-018", "DQ-019", "DQ-020", "DQ-022", "DQ-023", "DQ-024", "DQ-025", "IMMUTABLE_DBA_BASELINE", "PR-G2I", "DATA_GOVERNANCE_GATE"]},
+        "to": {"type": "string", "enum": ["DQ-018", "DQ-019", "DQ-020", "DQ-021", "DQ-024"]},
+        "kind": {"type": "string", "enum": ["REQUIRED_BEFORE_IMPLEMENTATION", "REQUIRED_BEFORE_DEPLOYMENT", "REQUIRED_BEFORE_EVIDENCE_ADMISSION", "REFERENCE_PRECEDENCE"]},
+        "reason": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
+    "deferredQuestion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question_id", "status", "reason_deferred", "required_decision_binding"],
+      "properties": {
+        "question_id": {"type": "string", "enum": ["OBSERVABILITY_BACKEND_LIFECYCLE_BOUNDARY", "QUERY_ALERT_RUNBOOK_BINDING", "PRODUCTION_DATA_RETENTION_ACCESS_DELETION_MIGRATION"]},
+        "status": {"type": "string", "const": "DEFERRED_NO_ARTIFACT_NO_SELECTION"},
+        "reason_deferred": {"$ref": "#/$defs/nonEmptyString"},
+        "required_decision_binding": {"type": "string", "enum": ["DQ-019", "DQ-020", "DQ-021"]}
+      }
+    },
+    "zeroEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_adopted",
+        "architecture_frozen",
+        "implementation_authorized",
+        "commit_authorized",
+        "push_authorized",
+        "collector_selected",
+        "backend_selected",
+        "configuration_created",
+        "endpoint_created",
+        "runtime_created",
+        "entity_created",
+        "evidence_created",
+        "permission_granted",
+        "tests_executed",
+        "deployment_authorized",
+        "production_ready"
+      ],
+      "properties": {
+        "reference_adopted": {"type": "boolean", "const": false},
+        "architecture_frozen": {"type": "boolean", "const": false},
+        "implementation_authorized": {"type": "boolean", "const": false},
+        "commit_authorized": {"type": "boolean", "const": false},
+        "push_authorized": {"type": "boolean", "const": false},
+        "collector_selected": {"type": "boolean", "const": false},
+        "backend_selected": {"type": "boolean", "const": false},
+        "configuration_created": {"type": "boolean", "const": false},
+        "endpoint_created": {"type": "boolean", "const": false},
+        "runtime_created": {"type": "boolean", "const": false},
+        "entity_created": {"type": "boolean", "const": false},
+        "evidence_created": {"type": "boolean", "const": false},
+        "permission_granted": {"type": "boolean", "const": false},
+        "tests_executed": {"type": "boolean", "const": false},
+        "deployment_authorized": {"type": "boolean", "const": false},
+        "production_ready": {"type": "boolean", "const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference_adopted",
+        "architecture_frozen",
+        "implementation_authorized",
+        "commit_authorized",
+        "push_authorized",
+        "collector_selected",
+        "backend_selected",
+        "configuration_created",
+        "endpoint_created",
+        "runtime_created",
+        "entity_created",
+        "evidence_created",
+        "permission_granted",
+        "tests_executed",
+        "deployment_authorized",
+        "production_ready"
+      ],
+      "properties": {
+        "reference_adopted": {"type": "boolean"},
+        "architecture_frozen": {"type": "boolean"},
+        "implementation_authorized": {"type": "boolean"},
+        "commit_authorized": {"type": "boolean"},
+        "push_authorized": {"type": "boolean"},
+        "collector_selected": {"type": "boolean"},
+        "backend_selected": {"type": "boolean"},
+        "configuration_created": {"type": "boolean"},
+        "endpoint_created": {"type": "boolean"},
+        "runtime_created": {"type": "boolean"},
+        "entity_created": {"type": "boolean"},
+        "evidence_created": {"type": "boolean"},
+        "permission_granted": {"type": "boolean"},
+        "tests_executed": {"type": "boolean"},
+        "deployment_authorized": {"type": "boolean"},
+        "production_ready": {"type": "boolean"}
+      }
+    },
+    "currentEffects": {
+      "allOf": [
+        {"$ref": "#/$defs/effects"},
+        {
+          "properties": {
+            "reference_adopted": {"const": true},
+            "architecture_frozen": {"const": false},
+            "implementation_authorized": {"const": true},
+            "commit_authorized": {"const": true},
+            "push_authorized": {"const": true},
+            "collector_selected": {"const": false},
+            "backend_selected": {"const": false},
+            "configuration_created": {"const": false},
+            "endpoint_created": {"const": false},
+            "runtime_created": {"const": false},
+            "entity_created": {"const": false},
+            "evidence_created": {"const": false},
+            "permission_granted": {"const": false},
+            "tests_executed": {"const": false},
+            "deployment_authorized": {"const": false},
+            "production_ready": {"const": false}
+          }
+        }
+      ]
+    },
+    "referenceAdoptionEffects": {
+      "allOf": [
+        {"$ref": "#/$defs/effects"},
+        {
+          "properties": {
+            "reference_adopted": {"const": true},
+            "architecture_frozen": {"const": false},
+            "implementation_authorized": {"const": false},
+            "commit_authorized": {"const": false},
+            "push_authorized": {"const": false},
+            "collector_selected": {"const": false},
+            "backend_selected": {"const": false},
+            "configuration_created": {"const": false},
+            "endpoint_created": {"const": false},
+            "runtime_created": {"const": false},
+            "entity_created": {"const": false},
+            "evidence_created": {"const": false},
+            "permission_granted": {"const": false},
+            "tests_executed": {"const": false},
+            "deployment_authorized": {"const": false},
+            "production_ready": {"const": false}
+          }
+        }
+      ]
+    },
+    "implementationAuthorizationEffects": {
+      "allOf": [
+        {"$ref": "#/$defs/effects"},
+        {
+          "properties": {
+            "reference_adopted": {"const": false},
+            "architecture_frozen": {"const": false},
+            "implementation_authorized": {"const": true},
+            "commit_authorized": {"const": false},
+            "push_authorized": {"const": false},
+            "collector_selected": {"const": false},
+            "backend_selected": {"const": false},
+            "configuration_created": {"const": false},
+            "endpoint_created": {"const": false},
+            "runtime_created": {"const": false},
+            "entity_created": {"const": false},
+            "evidence_created": {"const": false},
+            "permission_granted": {"const": false},
+            "tests_executed": {"const": false},
+            "deployment_authorized": {"const": false},
+            "production_ready": {"const": false}
+          }
+        }
+      ]
+    },
+    "stopRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["new_technical_specification_allowed", "next_allowed_input", "automatic_state_transition_allowed", "reason"],
+      "properties": {
+        "new_technical_specification_allowed": {"type": "boolean", "const": false},
+        "next_allowed_input": {"type": "string", "const": "IMMUTABLE_DBA_BASELINE_THEN_FRESH_DBOS_BEFORE_STATE_AND_EXACT_DQ018_IMPLEMENTATION"},
+        "automatic_state_transition_allowed": {"type": "boolean", "const": false},
+        "reason": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    }
+  }
+}

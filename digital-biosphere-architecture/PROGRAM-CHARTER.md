@@ -15,7 +15,9 @@ last_reviewed: 2026-07-21
 
 ## 1. Program Mission（项目群使命）
 
-Digital Biosphere（数字生物圈）是面向长期运行、多智能体协作和可验证演化的数字主体基础设施项目群。
+Digital Biosphere（数字生物圈）是一个总项目，面向长期运行、多智能体协作和可验证演化的数字主体基础设施项目群。它的统一对外定位是 Trusted Multi-Agent Infrastructure（可信多智能体基础设施），不是 DBA、DBOS、SAEE 三个互不相关的产品，也不是 Agent Platform、Agent Framework、Workflow Tool 或 AI Cloud Platform。
+
+> Infrastructure for long-running, collaborative, and verifiable digital entities.
 
 Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是该项目群的 Program Governance and Architecture Specification Hub（项目群治理与架构规范中心），也是整体推进所使用的 cockpit（驾驶舱）。它统一维护方向、项目组合、跨项目边界、路线图、依赖、决策、集成 gate（闸门）、风险和状态索引。
 

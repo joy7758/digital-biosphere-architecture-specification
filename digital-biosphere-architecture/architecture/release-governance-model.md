@@ -61,7 +61,7 @@ Release Proposal 至少包含：
 | `release_proposal_id` | 发布提案的稳定引用 |
 | `version_ref` | 必须指向 Accepted Version |
 | `release_scope` | 发布覆盖的规范范围和 compatibility line |
-| `manifest` | Architecture、Interface、Data Contract、Lifecycle Model Version 的组合 |
+| `manifest` | Architecture、Interface、Data Contract、Lifecycle Model 和 External Normative Reference Version 的组合 |
 | `frozen_content_refs` | 供审查和决定的稳定内容引用 |
 | `change_refs` / `adr_refs` | 变更与重大决策来源 |
 | `compatibility_declaration` | Backward、Forward、Breaking 和 Migration 状态 |

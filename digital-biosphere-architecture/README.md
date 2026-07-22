@@ -41,6 +41,18 @@ research_agent_implementation_contract_adopted: false
 research_agent_implementation_authorized: false
 public_positioning_defined: true
 public_positioning: Trusted Multi-Agent Infrastructure
+trusted_multi_agent_protocol_defined: true
+opentelemetry_observability_profile_defined: true
+opentelemetry_semantic_conventions_profile_defined: true
+opentelemetry_semantic_mapping_count: 47
+opentelemetry_semantic_source_registry_count: 9
+opentelemetry_semantic_mapping_agent_review_complete: true
+opentelemetry_semantic_mapping_adopted: false
+production_readiness_specification_defined: true
+production_slo_targets_defined: true
+production_implementation_mapping_complete: true
+production_ready: false
+production_implementation_authorized: false
 public_website_local_build_created: true
 public_website_local_build_validated: true
 public_website_deployed: true
@@ -108,9 +120,25 @@ Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是整个 
 
 ## Public Entry（统一对外入口）
 
-> 我们提供可信多智能体基础设施，让 AI Agent（人工智能智能体）能够长期运行、协作并产生可验证证据。
+> 我们提供面向长期运行、协作和可验证数字主体的可信多智能体基础设施。
+
+English: Infrastructure for long-running, collaborative, and verifiable digital entities.
 
 Digital Biosphere 是总项目；`Trusted Multi-Agent Infrastructure`（可信多智能体基础设施）是统一对外定位。AI agent 是首要客户，人类保留正式发布、权限和重大外部动作的决策权。智能体和开发者都应先从 [`PUBLIC-PROJECT-OVERVIEW.md`](PUBLIC-PROJECT-OVERVIEW.md) 理解整个项目，而不是把 DBA、DBOS 和 SAEE 当作三个互不相关的产品。
+
+```text
+Digital Biosphere
+  ├─ DBA: Program Governance and Architecture
+  ├─ DBOS: Trusted Multi-Agent Existence Infrastructure
+  ├─ SAEE: Evolution Intelligence Layer
+  └─ Digital Entities: task-specific ecosystem members
+```
+
+这是一个项目、多个责任域。对外不定位为 Agent Platform（智能体平台）、Agent
+Framework（智能体框架）、Workflow Tool（工作流工具）或 AI Cloud Platform
+（人工智能云平台）；当前开发优先把 Identity、Capability、Execution、Evidence、
+Verification 和 Evolution Interface 形成可版本化 Protocol、Schema、SDK contract
+和 Adapter contract，而不是继续堆叠 Agent 功能。
 
 `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 已按
 [`ADR-022`](architecture/ADR-022-developer-preview-release.md) 获得明确人工授权并发布。
@@ -319,9 +347,9 @@ PROGRAM_OWNER_REF=zhangbin
 
 ## Strategic Positioning（战略定位）
 
-> Digital Biosphere provides trusted multi-agent infrastructure for AI agents to operate over time, collaborate, and produce verifiable evidence.
+> Infrastructure for long-running, collaborative, and verifiable digital entities.
 
-中文：数字生物圈提供可信多智能体基础设施，使 AI 智能体能够长期运行、协作并产生可验证证据。
+中文：面向长期运行、协作和可验证数字主体的基础设施。
 
 该句是总项目的 external entry（对外入口），不把 Evidence（证据）等同 Truth（事实），也不声称当前已有生产 Runtime。DBOS 定位为 Existence Infrastructure（存在基础设施），不是 Agent Application 或 Foundation Model。SAEE 定位为 Evolution Intelligence Layer（演化智能层）。长期边界保持：
 
@@ -350,6 +378,194 @@ DEVELOPER_ECOSYSTEM_FIRST=true
 OPEN_INFRASTRUCTURE_NE_FREE_PRODUCT=true
 STRATEGY_NE_COMMERCIAL_COMMITMENT=true
 OPEN_INFRASTRUCTURE_STRATEGY_IMPLEMENTED=false
+```
+
+## Trusted Multi-Agent Protocol and Production Readiness（可信多智能体协议与生产就绪）
+
+Digital Biosphere 不发展为普通 Agent Platform、Agent Framework、Workflow Tool 或 AI Cloud Platform。生产化主线是 Protocolization（协议化）：
+
+```text
+Protocol
+  → SDK
+    → Reference Implementation
+      → Adapter Ecosystem
+        → Agent and Developer Adoption
+```
+
+核心对象是 Identity、Capability、Execution、Evidence、Verification 和 Evolution Interface；公开表达使用 Identity、Capability、Execution、Evidence 四个可信边界。
+
+观察平面重度参考 OpenTelemetry（开放遥测）：采用 OTLP、Resource、Context Propagation、Trace/Metric/Log 和 Collector agent/gateway patterns，同时保持：
+
+```text
+OTel Resource != DBOS Entity Identity
+OTel Entity != TMAI Digital Entity
+Trace != Execution Object
+Span != Evidence Object
+Metric != Fitness Assessment
+Collector != Verification Authority
+Telemetry != Evidence != Truth
+Schema/Resource precedence != Trust Authority
+```
+
+首个生产目标为 self-hosted、single-tenant、human-governed profile。当前已完成 `PR-G1` read-only implementation mapping（只读实现映射）；尚未完成生产实现、协议符合性、安全恢复、真实 pilot 或生产授权。
+
+| 文档 | 职责 | 当前状态 |
+|---|---|---|
+| [`architecture/trusted-multi-agent-protocol-specification.md`](architecture/trusted-multi-agent-protocol-specification.md) | TMAP 对象、四边界、协议平面、版本与生态路线 | `SPECIFICATION_DEFINED_NOT_IMPLEMENTED` |
+| [`architecture/opentelemetry-observability-profile.md`](architecture/opentelemetry-observability-profile.md) | OTel 参考基线、信号映射、Collector、Telemetry→Evidence 与安全边界 | `PROFILE_DEFINED_NOT_IMPLEMENTED` |
+| [`architecture/opentelemetry-semantic-conventions-profile.md`](architecture/opentelemetry-semantic-conventions-profile.md) | core Stable 与 GenAI Development 字段的双层映射、身份/执行/评价/内容/基数边界 | `REFERENCE_ADOPTED_NOT_IMPLEMENTED` |
+| [`architecture/opentelemetry-semantic-mapping.v0.1.json`](architecture/opentelemetry-semantic-mapping.v0.1.json) / [mapping schema](architecture/schemas/opentelemetry-semantic-mapping.schema.v0.1.json) / [observation schema](architecture/schemas/opentelemetry-semantic-observation.schema.v0.1.json) | 47 项字段、7 个分组、9 个 exact source、trusted binding 和 fail-closed observation contract | `SCHEMA_VALID_NOT_IMPLEMENTED_NOT_ADOPTED` |
+| [`OTEL-SEMANTIC-CONVENTIONS-AGENT-RECOMMENDATION.md`](OTEL-SEMANTIC-CONVENTIONS-AGENT-RECOMMENDATION.md) | 两路初评问题、机器约束修正及两路最终 developer recommendation | `TWO_PROVIDER_RECOMMENDED_FOR_HUMAN_FREEZE_PRODUCTION_FALSE` |
+| [`architecture/opentelemetry-schema-resource-entity-provenance-profile.md`](architecture/opentelemetry-schema-resource-entity-provenance-profile.md) | exact Schema source/cache/transform、Resource detector/merge provenance、Development Entity quarantine、privacy/retention/tenant boundary | `REFERENCE_AND_QUARANTINE_ADOPTED_NOT_IMPLEMENTED` |
+| [`architecture/opentelemetry-schema-resource-conformance-cases.v0.1.json`](architecture/opentelemetry-schema-resource-conformance-cases.v0.1.json) / [catalog schema](architecture/schemas/opentelemetry-schema-resource-conformance-case-catalog.schema.v0.1.json) / [result schema](architecture/schemas/opentelemetry-schema-resource-conformance-result-set.schema.v0.1.json) | 7 组、45 个预登记用例、6 个 exact source、data-governance binding 与 fail-closed result contract | `SCHEMA_VALID_45_NOT_EXECUTED_VALIDATOR_NOT_IMPLEMENTED` |
+| [`OTEL-SCHEMA-RESOURCE-AGENT-RECOMMENDATION.md`](OTEL-SCHEMA-RESOURCE-AGENT-RECOMMENDATION.md) | 三轮双 provider challenge、官方 precedence 核验、修正与最终推荐 | `HUMAN_REVIEW_AND_BOUNDED_DESIGN_REFERENCE_RECOMMENDED_RUNTIME_FALSE` |
+| [`OTEL-SCHEMA-RESOURCE-ADOPTION-DECISION-PACKET.md`](OTEL-SCHEMA-RESOURCE-ADOPTION-DECISION-PACKET.md) / [JSON](OTEL-SCHEMA-RESOURCE-ADOPTION-DECISION-PACKET.json) | `DQ-024` exact Human Architecture Decision input | `HISTORICAL_INPUT_DECISION_RECORDED_REFERENCE_ADOPTED` |
+| [`architecture/opentelemetry-collector-distribution-profile.md`](architecture/opentelemetry-collector-distribution-profile.md) / [8-component inventory](architecture/opentelemetry-collector-component-inventory.v0.1.json) | Collector `v0.156.0` exact releases/core/contrib commits、11 source-byte digests、8 components、2 local providers、stability 与 build/config/runtime boundary | `REFERENCE_ADOPTED_NOT_BUILT_NOT_CONFIGURED_NOT_DEPLOYED` |
+| [`architecture/opentelemetry-collector-distribution-conformance-cases.v0.1.json`](architecture/opentelemetry-collector-distribution-conformance-cases.v0.1.json) / [catalog schema](architecture/schemas/opentelemetry-collector-distribution-conformance-case-catalog.schema.v0.1.json) / [result schema](architecture/schemas/opentelemetry-collector-distribution-conformance-result-set.schema.v0.1.json) | 8 组、48 个 source/allowlist/config/security/durability/operability/capacity/authority cases 与 strict result binding | `SCHEMA_VALID_48_NOT_EXECUTED_VALIDATOR_NOT_IMPLEMENTED` |
+| [`OTEL-COLLECTOR-DISTRIBUTION-AGENT-RECOMMENDATION.md`](OTEL-COLLECTOR-DISTRIBUTION-AGENT-RECOMMENDATION.md) | 两路双轮 challenge、官方 source/stability 核验、修正与最终推荐 | `HUMAN_REVIEW_AND_BOUNDED_DESIGN_REFERENCE_RECOMMENDED_RUNTIME_FALSE` |
+| [`OTEL-COLLECTOR-DISTRIBUTION-DECISION-PACKET.md`](OTEL-COLLECTOR-DISTRIBUTION-DECISION-PACKET.md) / [JSON](OTEL-COLLECTOR-DISTRIBUTION-DECISION-PACKET.json) | `DQ-025` exact Human Architecture Decision input | `HISTORICAL_INPUT_DECISION_RECORDED_REFERENCE_ADOPTED` |
+| [`architecture/opentelemetry-collector-deployment-profile.v0.1.json`](architecture/opentelemetry-collector-deployment-profile.v0.1.json) / [Schema](architecture/schemas/opentelemetry-collector-deployment-profile.schema.v0.1.json) | `DQ-020` single-tenant synthetic-staging 的 topology/config/security/WAL/capacity/readiness 空位、fail-closed defaults 和永久零效果 | `PROPOSED_SCHEMA_VALID_DQ_020_BLOCKED_INPUT_NO_CONFIG_NO_RUNTIME` |
+| [`architecture/opentelemetry-collector-deployment-readiness-matrix.md`](architecture/opentelemetry-collector-deployment-readiness-matrix.md) / [agent review](OTEL-COLLECTOR-DEPLOYMENT-PROFILE-AGENT-RECOMMENDATION.md) | profile 到现有 56/46/45/48 cases 的复用、阶段冻结和两路 bounded human-review recommendation | `NO_NEW_CATALOG_RUNTIME_RECOMMENDATION_FALSE` |
+| [`architecture/opentelemetry-collector-operational-evidence-profile.v0.1.json`](architecture/opentelemetry-collector-operational-evidence-profile.v0.1.json) / [Schema](architecture/schemas/opentelemetry-collector-operational-evidence-profile.schema.v0.1.json) / [contract](architecture/opentelemetry-collector-operational-evidence-contract.md) | internal metrics/logs、metric naming/stability、12 observation、6 SLI、独立 self-observation/blackbox/storage/drift、readiness、no-data/alert/runbook 和 delivery reconciliation 的失败关闭绑定 | `PROPOSED_SCHEMA_VALID_45_NEGATIVES_TWO_MODEL_RECOMMENDED_NO_MEASUREMENT_NO_RUNTIME` |
+| [`OTEL-COLLECTOR-OPERATIONAL-EVIDENCE-AGENT-RECOMMENDATION.md`](OTEL-COLLECTOR-OPERATIONAL-EVIDENCE-AGENT-RECOMMENDATION.md) | 两路模型审查、有意 `null` 输入加固与最终 bounded architecture recommendation | `TWO_PROVIDER_RECOMMENDED_RUNTIME_FALSE_PRODUCTION_FALSE` |
+| [`PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY.md`](PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY.md) / [JSON](PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY.v0.1.json) / [Schema](architecture/schemas/production-architecture-human-decision-readiness-registry.schema.v0.1.json) | 8 个 production DQ + `ADR-024`、13 个 decision-input digest、六项 exact decision、依赖与非效果边界 | `DECISIONS_RECORDED_FREEZE_AUTHORIZED_IMMUTABLE_COMMIT_PENDING` |
+| [`PRODUCTION-DECISION-READINESS-AGENT-RECOMMENDATION.md`](PRODUCTION-DECISION-READINESS-AGENT-RECOMMENDATION.md) | 千帆优先 `C`、方舟优先 `D` 的 split result；共同拒绝当前 production recommendation 和新增技术合同 | `SPLIT_PRIORITY_COMMON_STOP_RULE_NO_AUTHORIZATION` |
+| [`architecture/opentelemetry-production-alignment-matrix.md`](architecture/opentelemetry-production-alignment-matrix.md) | OTLP/Collector 官方行为到 TMAI control、gate、test 与 direct evidence 的映射 | `CONTROL_CROSSWALK_DEFINED_NOT_IMPLEMENTED` |
+| [`architecture/otlp-v1.11-conformance-profile.md`](architecture/otlp-v1.11-conformance-profile.md) | OTLP `v1.11.0` selected scope、四层符合性、size/retry/acceptance 和 gate binding | `REFERENCE_ADOPTED_NOT_IMPLEMENTED_NOT_EXECUTED` |
+| [`architecture/otlp-v1.11-conformance-cases.v0.1.json`](architecture/otlp-v1.11-conformance-cases.v0.1.json) / [schema](architecture/schemas/otlp-conformance-case-catalog.schema.v0.1.json) | 56 个 exact cases、7 个 groups 与 fail-closed effects | `SCHEMA_VALID_56_NOT_EXECUTED` |
+| [`architecture/schemas/otlp-conformance-result-set.schema.v0.1.json`](architecture/schemas/otlp-conformance-result-set.schema.v0.1.json) / [example](architecture/examples/otlp-conformance-result-set.not-assessed.example.json) | catalog/Decision/implementation/environment/validator binding、逐 case 结果和 authority boundary | `SCHEMA_VALID_NOT_ASSESSED_VALIDATOR_NOT_IMPLEMENTED` |
+| [`OTLP-1.11-CONFORMANCE-PROFILE-AGENT-RECOMMENDATION.md`](OTLP-1.11-CONFORMANCE-PROFILE-AGENT-RECOMMENDATION.md) | 两路初评缺口、official source 取舍、修正和两路最终推荐 | `TWO_PROVIDER_RECOMMENDED_FOR_HUMAN_FREEZE_PRODUCTION_FALSE` |
+| [`architecture/production-readiness-specification.md`](architecture/production-readiness-specification.md) | 首个生产画像、责任路由和 `PR-G0` 至 `PR-G7` | `ARCHITECTURE_BASELINE_DEFINED` |
+| [`architecture/production-slo-and-evidence-gates.md`](architecture/production-slo-and-evidence-gates.md) | KPI、SLO、故障负例、7/30 天观察和证据包 | `TARGETS_DEFINED_NOT_MEASURED` |
+| [`PRODUCTION-READINESS-AGENT-RECOMMENDATION.md`](PRODUCTION-READINESS-AGENT-RECOMMENDATION.md) | 两家模型的 `CONDITIONALLY_RECOMMENDED`、不推荐原因与修正分解 | `COMPLETE_NOT_AUTHORIZATION` |
+| [`PRODUCTION-ARCHITECTURE-BASELINE-VALIDATION-REPORT.md`](PRODUCTION-ARCHITECTURE-BASELINE-VALIDATION-REPORT.md) | `PR-G0` 本地链接、站点构建、测试、lint、非声明和范围验证 | `PASS_LOCAL_WORKTREE_NOT_REMOTE_BASELINE` |
+| [`PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`](PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md) | DBOS/SAEE 当前实现到 TMAP、OTel 与生产闸门的精确只读映射 | `PR_G1_PASS_CRITICAL_IMPLEMENTATION_GAPS_OPEN` |
+| [`PRODUCTION-IMPLEMENTATION-MAPPING-v0.1.json`](PRODUCTION-IMPLEMENTATION-MAPPING-v0.1.json) | `PR-G1` 来源、验证、能力分类、阻塞与下一决策的机器可读投影 | `AGENT_READABLE_NOT_SECOND_AUTHORITY` |
+| [`architecture/telemetry-admission-foundation-specification.md`](architecture/telemetry-admission-foundation-specification.md) | `DQ-018` exact Telemetry Admission reference-conformance 合同 | `PROPOSED_NOT_IMPLEMENTED` |
+| [`architecture/telemetry-admission-threat-model.md`](architecture/telemetry-admission-threat-model.md) | 准入威胁、控制、证明与残余风险 | `DEFINED_SECURITY_REVIEW_NOT_COMPLETE` |
+| [`architecture/telemetry-admission-conformance-recovery-plan.md`](architecture/telemetry-admission-conformance-recovery-plan.md) | 实施后的预注册符合性、恢复和回退证据 | `PLAN_DEFINED_TESTS_NOT_EXECUTED` |
+| [`DQ-018-TELEMETRY-ADMISSION-AGENT-RECOMMENDATION.md`](DQ-018-TELEMETRY-ADMISSION-AGENT-RECOMMENDATION.md) | 两路 next-step 推荐与 current-production 不推荐的分离记录 | `COMPLETE_NOT_AUTHORIZATION` |
+| [`DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md`](DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md) / [JSON](DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.json) | exact 人工决策输入与机器可读投影 | `DECIDED_AUTHORIZED_PRECONDITIONS_PENDING` |
+| [`architecture/production-persistence-adapter-specification.md`](architecture/production-persistence-adapter-specification.md) | DBOS canonical store 的事务、幂等、HA、PITR、迁移、安全和 OTel 自观测合同 | `PROPOSED_DQ_019_BLOCKED_INPUT` |
+| [`architecture/otlp-collector-production-profile.md`](architecture/otlp-collector-production-profile.md) | OTel agent-to-gateway、OTLP 结果、Collector HA、queue/WAL、single-writer、漂移和安全配置 | `PROPOSED_DQ_020_BLOCKED_INPUT` |
+| [`architecture/telemetry-to-evidence-admission-contract.md`](architecture/telemetry-to-evidence-admission-contract.md) | 两阶段 Telemetry→Evidence、Identity Continuity、P0–P3 provenance、Data Governance 和 Verification 分离 | `PROPOSED_DQ_021_BLOCKED_INPUT` |
+| [`architecture/production-implementation-sequence.md`](architecture/production-implementation-sequence.md) | S0–S9 生产关键路径、Owner、逐阶段 rollback、SLO 和至少 37 天 Pilot | `ADOPTED_STAGE_GATED_NOT_EXECUTED` |
+| [`PRODUCTION-IMPLEMENTATION-SEQUENCE-v0.1.json`](PRODUCTION-IMPLEMENTATION-SEQUENCE-v0.1.json) | 面向编码／检索智能体的同一生产序列、逐阶段状态和禁止推断 | `MACHINE_READABLE_ADOPTED_STAGE_GATED_NOT_EXECUTED` |
+| [`architecture/production-gate-evidence-manifest-specification.md`](architecture/production-gate-evidence-manifest-specification.md) | gate PASS 的 exact scope、immutable binding、coverage、SLO、OTel accounting、review 和 Human Decision 规则 | `CONTRACT_DEFINED_VALIDATOR_NOT_IMPLEMENTED` |
+| [`architecture/schemas/production-gate-evidence-manifest.schema.v0.1.json`](architecture/schemas/production-gate-evidence-manifest.schema.v0.1.json) | Production Gate Evidence Manifest 的 JSON Schema 2020-12 形状与基础不变量 | `SCHEMA_DEFINED_NO_GATE_PASS` |
+| [`architecture/production-gate-evidence-profiles.v0.1.json`](architecture/production-gate-evidence-profiles.v0.1.json) | `PR-G0`–`PR-G7` required coverage、SLO、Owner、drill 和 observation profile | `PROPOSED_NOT_ADOPTED` |
+| [`PRODUCTION-EVIDENCE-CONTRACT-AGENT-RECOMMENDATION.md`](PRODUCTION-EVIDENCE-CONTRACT-AGENT-RECOMMENDATION.md) | OTLP 1.11 refresh、OTel matrix、Evidence Contract 和双 freeze 的双 provider delta review | `TWO_PROVIDER_RECOMMENDED_S0_PRODUCTION_FALSE` |
+| [`OTLP-1.11-VERSION-DELTA-ASSESSMENT.md`](OTLP-1.11-VERSION-DELTA-ASSESSMENT.md) | official `v1.10.0`→`v1.11.0` exact source、42 commits / 29 files delta、稳定 wire scope、size-limit / `Retry-After` 和兼容声明 | `REVIEWED_CANDIDATE_NOT_ADOPTED` |
+| [`OTLP-1.11-VERSION-ADOPTION-DECISION-PACKET.md`](OTLP-1.11-VERSION-ADOPTION-DECISION-PACKET.md) / [JSON](OTLP-1.11-VERSION-ADOPTION-DECISION-PACKET.json) | `DQ-022` exact Human Version Decision input | `READY_FOR_REVIEW_NOT_AUTHORIZED` |
+| [`OTLP-1.11-VERSION-ADOPTION-AGENT-RECOMMENDATION.md`](OTLP-1.11-VERSION-ADOPTION-AGENT-RECOMMENDATION.md) | 两路 provider 均建议 reference adoption、无 design corrections、均拒绝当前 production recommendation | `TWO_PROVIDER_CONDITIONAL_ADOPTION_RECOMMENDED_PRODUCTION_FALSE` |
+| [`PRODUCTION-PATH-AGENT-RECOMMENDATION.md`](PRODUCTION-PATH-AGENT-RECOMMENDATION.md) | 两路 Agent 的反对、修正与最终序列推荐 | `SEQUENCE_RECOMMENDED_PRODUCTION_NOT_READY` |
+| [`architecture/ADR-024-staged-telemetry-production-path.md`](architecture/ADR-024-staged-telemetry-production-path.md) | 遥测到生产的 staged architecture decision 候选 | `PROPOSED_PENDING_HUMAN_DECISION` |
+| [`architecture/ADR-025-adopt-otlp-1.11-reference-baseline.md`](architecture/ADR-025-adopt-otlp-1.11-reference-baseline.md) | OTLP `v1.11.0` external reference adoption 候选 | `PROPOSED_PENDING_HUMAN_VERSION_DECISION` |
+| [`architecture/ADR-026-opentelemetry-semantic-conventions-boundary.md`](architecture/ADR-026-opentelemetry-semantic-conventions-boundary.md) | core/GenAI semantic mapping、trusted binding 和内容治理边界候选 | `PROPOSED_PENDING_HUMAN_VERSION_DECISION` |
+| [`architecture/ADR-027-opentelemetry-schema-resource-entity-boundary.md`](architecture/ADR-027-opentelemetry-schema-resource-entity-boundary.md) | Schema acquisition/transform、Resource provenance、Development Entity quarantine 与数据治理边界候选 | `PROPOSED_READY_FOR_HUMAN_REVIEW_NOT_DECIDED` |
+| [`architecture/ADR-028-opentelemetry-collector-minimal-distribution.md`](architecture/ADR-028-opentelemetry-collector-minimal-distribution.md) | exact custom-minimal Collector inventory、supply-chain、runtime conformance 与权力边界候选 | `PROPOSED_READY_FOR_HUMAN_REVIEW_NOT_DECIDED` |
+| [`architecture/ADR-023-trusted-multi-agent-protocol-and-production-observability.md`](architecture/ADR-023-trusted-multi-agent-protocol-and-production-observability.md) | 战略更新、OpenTelemetry 对齐和生产声明边界 | `ACCEPTED_ARCHITECTURE_BASELINE` |
+
+```text
+DEVELOPER_PREVIEW_RELEASED=true
+PRODUCTION_READINESS_SPECIFICATION_DEFINED=true
+DQ_018_AGENT_RECOMMENDATION_COMPLETE=true
+DQ_018_HUMAN_DECISION_RECORDED=true
+DQ_018_IMPLEMENTATION_AUTHORIZED=true
+DQ_018_IMPLEMENTATION_MAY_START=false
+PRODUCTION_IMPLEMENTATION_SEQUENCE_DEFINED=true
+PRODUCTION_IMPLEMENTATION_SEQUENCE_RECOMMENDED_BY_TWO_AGENTS=true
+OTEL_PRODUCTION_ALIGNMENT_MATRIX_DEFINED=true
+PRODUCTION_GATE_EVIDENCE_MANIFEST_CONTRACT_DEFINED=true
+PRODUCTION_GATE_EVIDENCE_VALIDATOR_IMPLEMENTED=false
+ANY_PRODUCTION_GATE_PASS_CREATED=false
+S0_ARCHITECTURE_CONTRACT_FREEZE_RECOMMENDED_BY_TWO_AGENTS=true
+PRODUCTION_CUSTOMER_RECOMMENDABLE_NOW=false
+ADR_024_STATUS=ACCEPTED
+DQ_019_STATUS=BLOCKED_INPUT
+DQ_020_STATUS=BLOCKED_INPUT
+DQ_021_STATUS=BLOCKED_INPUT
+DQ_022_STATUS=DECIDED_REFERENCE_ADOPTED
+DQ_023_STATUS=DECIDED_REFERENCE_ADOPTED
+DQ_024_STATUS=DECIDED_REFERENCE_ADOPTED
+DQ_025_STATUS=DECIDED_REFERENCE_ADOPTED
+OTLP_REFERENCE_CANDIDATE_VERSION=1.11.0
+OTLP_REFERENCE_VERSION_ADOPTED=true
+OTLP_1_11_CONFORMANCE_CASES_DEFINED=56
+OTLP_1_11_CONFORMANCE_CASE_GROUPS_DEFINED=7
+OTLP_1_11_CONFORMANCE_TESTS_EXECUTED=0
+OTLP_1_11_CONFORMANCE_FREEZE_RECOMMENDED_BY_TWO_AGENTS=true
+OTLP_1_11_CONFORMANCE_OPEN_DESIGN_CORRECTIONS=0
+OTLP_1_11_RESULT_SET_SCHEMA_DEFINED=true
+OTLP_1_11_RESULT_SET_SCHEMA_FREEZE_RECOMMENDED_BY_TWO_AGENTS=true
+OTLP_1_11_RESULT_SET_VALIDATOR_IMPLEMENTED=false
+OTEL_SEMANTIC_MAPPING_COUNT=47
+OTEL_SEMANTIC_MAPPING_SOURCE_REGISTRY_COUNT=9
+OTEL_SEMANTIC_MAPPING_SCHEMA_VALID=true
+OTEL_SEMANTIC_OBSERVATION_SCHEMA_VALID=true
+OTEL_SEMANTIC_MAPPING_RECOMMENDED_BY_TWO_AGENTS=true
+OTEL_SEMANTIC_CONFORMANCE_CASES_DEFINED=46
+OTEL_SEMANTIC_CONFORMANCE_CASE_GROUPS_DEFINED=8
+OTEL_SEMANTIC_CONFORMANCE_MAPPING_COVERAGE=47/47
+OTEL_SEMANTIC_CONFORMANCE_RESULT_SET_SCHEMA_DEFINED=true
+OTEL_SEMANTIC_CONFORMANCE_FREEZE_RECOMMENDED_BY_TWO_AGENTS=true
+OTEL_SEMANTIC_CONFORMANCE_TESTS_EXECUTED=0
+OTEL_SEMANTIC_MAPPING_ADOPTED=true
+OTEL_SEMANTIC_VALIDATOR_IMPLEMENTED=false
+OTEL_SCHEMA_RESOURCE_ENTITY_CASES_DEFINED=45
+OTEL_SCHEMA_RESOURCE_ENTITY_CASE_GROUPS_DEFINED=7
+OTEL_SCHEMA_RESOURCE_ENTITY_SOURCES_DEFINED=6
+OTEL_SCHEMA_RESOURCE_ENTITY_AGENT_REVIEW_COMPLETE=true
+OTEL_SCHEMA_RESOURCE_ENTITY_HUMAN_REVIEW_RECOMMENDED_BY_TWO_MODELS=true
+OTEL_SCHEMA_RESOURCE_ENTITY_BOUNDED_DESIGN_REFERENCE_RECOMMENDED_BY_TWO_MODELS=true
+OTEL_SCHEMA_RESOURCE_ENTITY_RUNTIME_RECOMMENDED_BY_MODELS=false
+OTEL_SCHEMA_RESOURCE_ENTITY_REFERENCE_ADOPTED=true
+OTEL_SCHEMA_RESOURCE_ENTITY_VALIDATOR_IMPLEMENTED=false
+OTEL_SCHEMA_RESOURCE_ENTITY_TESTS_EXECUTED=0
+OTEL_COLLECTOR_DISTRIBUTION_RELEASE_REFERENCE=v0.156.0@aa158b23c8f89d795b21a05a49b3978565dfebd4
+OTEL_COLLECTOR_DISTRIBUTION_COMPONENTS_DEFINED=8
+OTEL_COLLECTOR_DISTRIBUTION_CONFIG_PROVIDERS_DEFINED=2
+OTEL_COLLECTOR_DISTRIBUTION_SOURCE_BYTES_VERIFIED=11/11
+OTEL_COLLECTOR_DISTRIBUTION_INVENTORY_NEGATIVES_REJECTED=18/18
+OTEL_COLLECTOR_DISTRIBUTION_CASES_DEFINED=48
+OTEL_COLLECTOR_DISTRIBUTION_CASE_GROUPS_DEFINED=8
+OTEL_COLLECTOR_DISTRIBUTION_CATALOG_NEGATIVES_REJECTED=16/16
+OTEL_COLLECTOR_DISTRIBUTION_CATALOG_SEMANTIC_NEGATIVES_REJECTED=6/6
+OTEL_COLLECTOR_DISTRIBUTION_RESULT_SCHEMA_NEGATIVES_REJECTED=115/115
+OTEL_COLLECTOR_DISTRIBUTION_RESULT_VALIDATOR_SEMANTIC_NEGATIVES_REJECTED=4/4
+OTEL_COLLECTOR_DISTRIBUTION_AGENT_REVIEW_COMPLETE=true
+OTEL_COLLECTOR_DISTRIBUTION_POST_HARDENING_DELTA_REVIEW_COMPLETE=true
+OTEL_COLLECTOR_DISTRIBUTION_RUNTIME_RECOMMENDED_BY_MODELS=false
+OTEL_COLLECTOR_DISTRIBUTION_ADOPTED=false
+OTEL_COLLECTOR_DISTRIBUTION_BUILT=false
+OTEL_COLLECTOR_DISTRIBUTION_VALIDATOR_IMPLEMENTED=false
+OTEL_COLLECTOR_DISTRIBUTION_TESTS_EXECUTED=0
+OTEL_COLLECTOR_DEPLOYMENT_PROFILE_DEFINED=true
+OTEL_COLLECTOR_DEPLOYMENT_PROFILE_SCHEMA_VALID=true
+OTEL_COLLECTOR_DEPLOYMENT_PROFILE_NEGATIVE_CONTROLS_REJECTED=35/35
+OTEL_COLLECTOR_DEPLOYMENT_PROFILE_AGENT_REVIEW_COMPLETE=true
+OTEL_COLLECTOR_DEPLOYMENT_PROFILE_HUMAN_REVIEW_RECOMMENDED_BY_TWO_MODELS=true
+OTEL_COLLECTOR_DEPLOYMENT_PROFILE_RUNTIME_RECOMMENDED_BY_MODELS=false
+OTEL_COLLECTOR_DEPLOYMENT_PROFILE_OPEN_REQUIRED_DOCUMENT_CORRECTIONS=0
+OTEL_COLLECTOR_DEPLOYMENT_PROFILE_NEW_CONFORMANCE_CATALOG_CREATED=false
+OTEL_COLLECTOR_CONFIGURATION_CREATED=false
+OTEL_COLLECTOR_OPERATIONAL_EVIDENCE_PROFILE_DEFINED=true
+OTEL_COLLECTOR_OPERATIONAL_EVIDENCE_PROFILE_SCHEMA_VALID=true
+OTEL_COLLECTOR_OPERATIONAL_EVIDENCE_NEGATIVE_CONTROLS_REJECTED=45/45
+OTEL_COLLECTOR_OPERATIONAL_EVIDENCE_AGENT_REVIEW_COMPLETE=true
+OTEL_COLLECTOR_OPERATIONAL_EVIDENCE_HUMAN_REVIEW_RECOMMENDED_BY_TWO_MODELS=true
+OTEL_COLLECTOR_OPERATIONAL_EVIDENCE_RUNTIME_RECOMMENDED_BY_MODELS=false
+OTEL_COLLECTOR_OPERATIONAL_MEASUREMENT_STARTED=false
+OTEL_COLLECTOR_OPERATIONAL_EVIDENCE_CREATED=false
+OTEL_PRODUCTION_ALIGNMENT_CONTROL_COUNT=60
+PRODUCTION_HUMAN_DECISION_READINESS_REGISTRY_DEFINED=true
+PRODUCTION_HUMAN_DECISION_READINESS_REGISTRY_SCHEMA_VALID=true
+PRODUCTION_HUMAN_DECISION_READINESS_ENTRY_COUNT=9
+PRODUCTION_HUMAN_DECISION_INPUT_DIGESTS_VALID=13/13
+PRODUCTION_DECISION_AGENT_PRIORITY_CONSENSUS=false
+NEW_PRODUCTION_TECHNICAL_SPECIFICATION_ALLOWED=false
+PRODUCTION_IMPLEMENTATION_AUTHORIZED=false
+PRODUCTION_READY=false
 ```
 
 ## 三层定位
@@ -814,6 +1030,51 @@ Evidence Reference ≠ Canonical Evidence Object ≠ Truth
 | 文档 | 稳定职责 | 首选检索问题 |
 |---|---|---|
 | [`architecture/stack-specification.md`](architecture/stack-specification.md) | 三层技术栈与事实/评价分离 | “SAEE、DBOS、Digital Entity 各负责什么？” |
+| [`architecture/trusted-multi-agent-protocol-specification.md`](architecture/trusted-multi-agent-protocol-specification.md) | TMAP 核心对象、四个可信边界和协议化路线 | “可信多智能体基础设施定义哪些共同协议对象？” |
+| [`architecture/opentelemetry-observability-profile.md`](architecture/opentelemetry-observability-profile.md) | OTel Signal、Resource、Context、Collector 与 DBOS Evidence 边界 | “Trace、Metric、Log 如何进入 DBOS 而不自动成为 Evidence？” |
+| [`architecture/opentelemetry-semantic-conventions-profile.md`](architecture/opentelemetry-semantic-conventions-profile.md) | core/GenAI 字段稳定性、trusted binding、内容和基数策略 | “`gen_ai.agent.id`、`invoke_agent` 和评价字段为什么不是 DBOS/SAEE 事实？” |
+| [`architecture/opentelemetry-semantic-mapping.v0.1.json`](architecture/opentelemetry-semantic-mapping.v0.1.json) / [schemas](architecture/schemas/opentelemetry-semantic-mapping.schema.v0.1.json) | 47 项可机读字段映射与 exact stability source | “编码智能体应怎样处理每个 OTel/GenAI 字段，又禁止产生什么效果？” |
+| [`architecture/opentelemetry-semantic-conformance-profile.md`](architecture/opentelemetry-semantic-conformance-profile.md) | semantic mapping 实现的执行层、证据、Decision 和 gate 规则 | “何时可以执行语义一致性测试，哪些结果仍不能授权生产？” |
+| [`architecture/opentelemetry-semantic-conformance-cases.v0.1.json`](architecture/opentelemetry-semantic-conformance-cases.v0.1.json) / [catalog schema](architecture/schemas/opentelemetry-semantic-conformance-case-catalog.schema.v0.1.json) / [result schema](architecture/schemas/opentelemetry-semantic-conformance-result-set.schema.v0.1.json) | 8 组、46 个预登记用例、47/47 mapping coverage 和 fail-closed result binding | “实现智能体必须运行哪些语义、权力、隐私、基数与结果边界负例？” |
+| [`OTEL-SEMANTIC-CONFORMANCE-AGENT-RECOMMENDATION.md`](OTEL-SEMANTIC-CONFORMANCE-AGENT-RECOMMENDATION.md) | 两路模型对候选冻结、治理顺序和 upstream GenAI 限制的独立复核 | “智能体是否推荐该契约进入人工审查，为什么仍不是生产证据？” |
+| [`architecture/opentelemetry-schema-resource-entity-provenance-profile.md`](architecture/opentelemetry-schema-resource-entity-provenance-profile.md) | Schema source/cache/transform、Resource provenance、OTel Entity quarantine 与 data-governance boundary | “Schema 和 Resource 如何有来源地演化，为什么 OTel Entity 不能成为 DBOS Entity？” |
+| [`architecture/opentelemetry-schema-resource-conformance-cases.v0.1.json`](architecture/opentelemetry-schema-resource-conformance-cases.v0.1.json) / [catalog schema](architecture/schemas/opentelemetry-schema-resource-conformance-case-catalog.schema.v0.1.json) / [result schema](architecture/schemas/opentelemetry-schema-resource-conformance-result-set.schema.v0.1.json) | 7 组 45-case 的 source、precedence、transform、Resource、Entity、data-governance 与 result contract | “实现智能体必须运行哪些 SSRF/cache/privacy/identity/authority 负例，什么仍不能形成 PASS？” |
+| [`OTEL-SCHEMA-RESOURCE-AGENT-RECOMMENDATION.md`](OTEL-SCHEMA-RESOURCE-AGENT-RECOMMENDATION.md) | 双 provider 三轮 challenge、官方原文核验、修正与 bounded recommendation | “智能体为何推荐设计参考和人工审查，却拒绝推荐当前 Runtime？” |
+| [`OTEL-SCHEMA-RESOURCE-ADOPTION-DECISION-PACKET.md`](OTEL-SCHEMA-RESOURCE-ADOPTION-DECISION-PACKET.md) | `DQ-024` exact scope、选项、后续义务与人工 token | “谁决定采纳 Schema/Resource/Entity reference，为什么采纳仍不授权实现？” |
+| [`architecture/opentelemetry-collector-distribution-profile.md`](architecture/opentelemetry-collector-distribution-profile.md) / [inventory](architecture/opentelemetry-collector-component-inventory.v0.1.json) | exact Collector source、minimal allowlist、component stability 与 build/config/runtime boundary | “为什么不能直接使用 `latest` 或最大预构建发行版，哪些组件才允许进入候选？” |
+| [`architecture/opentelemetry-collector-distribution-conformance-cases.v0.1.json`](architecture/opentelemetry-collector-distribution-conformance-cases.v0.1.json) / [schemas](architecture/schemas/opentelemetry-collector-distribution-conformance-case-catalog.schema.v0.1.json) | 48-case source/supply-chain/config/security/WAL/health/capacity/authority contract | “实现智能体必须证明什么，为什么 health 或启动成功仍不能形成 gate PASS？” |
+| [`OTEL-COLLECTOR-DISTRIBUTION-DECISION-PACKET.md`](OTEL-COLLECTOR-DISTRIBUTION-DECISION-PACKET.md) | `DQ-025` exact scope、选项、采纳后义务与人工 token | “谁能采纳 Collector inventory，为什么采纳仍不授权 build 或 deployment？” |
+| [`architecture/opentelemetry-collector-deployment-profile.v0.1.json`](architecture/opentelemetry-collector-deployment-profile.v0.1.json) / [Schema](architecture/schemas/opentelemetry-collector-deployment-profile.schema.v0.1.json) | `DQ-020` 候选部署的机器可读 topology/config/security/durability/readiness 空位和永久零效果 | “哪些部署输入仍为空，为什么 profile valid 仍不能创建 config、listener 或 Runtime？” |
+| [`architecture/opentelemetry-collector-deployment-readiness-matrix.md`](architecture/opentelemetry-collector-deployment-readiness-matrix.md) / [agent review](OTEL-COLLECTOR-DEPLOYMENT-PROFILE-AGENT-RECOMMENDATION.md) | existing case reuse、synthetic input gate、immutable rollout、composite readiness、阶段冻结与模型边界复核 | “为什么不新建第五套 catalog，DQ-020 还缺哪些直接输入？” |
+| [`architecture/opentelemetry-collector-operational-evidence-profile.v0.1.json`](architecture/opentelemetry-collector-operational-evidence-profile.v0.1.json) / [Schema](architecture/schemas/opentelemetry-collector-operational-evidence-profile.schema.v0.1.json) / [contract](architecture/opentelemetry-collector-operational-evidence-contract.md) | 12 类运行观察、6 类 SLI、metric stability/naming、no-data、复合 readiness、alert/runbook 与 delivery reconciliation | “如何证明 Collector 真正可运维，同时避免把 health、dashboard 或 `sent` 当成端到端健康？” |
+| [`OTEL-COLLECTOR-OPERATIONAL-EVIDENCE-AGENT-RECOMMENDATION.md`](OTEL-COLLECTOR-OPERATIONAL-EVIDENCE-AGENT-RECOMMENDATION.md) | 两路模型最终认可有限架构审查，并拒绝当前 Runtime／production recommendation | “为什么有意为 `null` 的未来摘要不是文档错误，又为什么必须阻止部署？” |
+| [`PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY.md`](PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY.md) / [JSON](PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY.v0.1.json) | production DQ、packet digest、依赖和零效果的单一审查表面 | “现在究竟需要人决定哪些事项，哪些仍缺输入，为什么注册表不是授权或 freeze？” |
+| [`PRODUCTION-DECISION-READINESS-AGENT-RECOMMENDATION.md`](PRODUCTION-DECISION-READINESS-AGENT-RECOMMENDATION.md) | 两路模型对继续写规范还是停在人工闸门的分歧和共同 stop rule | “潜在生产客户会被推荐当前版本吗，下一步为什么不是继续加合同？” |
+| [`architecture/opentelemetry-production-alignment-matrix.md`](architecture/opentelemetry-production-alignment-matrix.md) | OTel 官方协议、部署、弹性、扩展、自观测与安全要求到 TMAI gate/evidence 的逐项映射 | “每条 OpenTelemetry 要求在哪个 gate、用什么直接证据证明？” |
+| [`architecture/otlp-v1.11-conformance-profile.md`](architecture/otlp-v1.11-conformance-profile.md) | selected stable scope、四层符合性与 size/retry/unknown semantics | “哪些测试属于离线 decoder，哪些必须等待真实 Collector staging？” |
+| [`architecture/otlp-v1.11-conformance-cases.v0.1.json`](architecture/otlp-v1.11-conformance-cases.v0.1.json) / [schema](architecture/schemas/otlp-conformance-case-catalog.schema.v0.1.json) | 56 个可机读预注册用例与 7 个闸门分组 | “实施智能体应逐项运行哪些 case，并保留什么观察和禁止推断？” |
+| [`architecture/production-readiness-specification.md`](architecture/production-readiness-specification.md) | 首个生产画像、责任路由与生产闸门 | “什么证据才允许声明某个部署生产就绪？” |
+| [`architecture/production-slo-and-evidence-gates.md`](architecture/production-slo-and-evidence-gates.md) | KPI、SLO、负例和观察周期 | “生产就绪需要达到哪些可测量目标？” |
+| [`PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`](PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md) | DBOS/SAEE 远程主线、开发观察面、实现缺口和 `DQ-018` 切片候选 | “当前到底实现了什么，离生产还缺什么？” |
+| [`PRODUCTION-IMPLEMENTATION-MAPPING-v0.1.json`](PRODUCTION-IMPLEMENTATION-MAPPING-v0.1.json) | `PR-G1` 确定性机器清单 | “智能体如何读取当前生产映射而不误认成实现？” |
+| [`architecture/telemetry-admission-foundation-specification.md`](architecture/telemetry-admission-foundation-specification.md) | DBOS Telemetry Observation→Admission material 的 schema、状态、敏感数据、重复和参考存储合同 | “遥测材料如何失败关闭地进入 DBOS，又不自动成为 Evidence？” |
+| [`architecture/telemetry-admission-threat-model.md`](architecture/telemetry-admission-threat-model.md) | 准入边界的 authority、隐私、重放、持久化、恢复和供应链威胁 | “首切片哪些失败必须直接停止？” |
+| [`architecture/telemetry-admission-conformance-recovery-plan.md`](architecture/telemetry-admission-conformance-recovery-plan.md) | 预注册 schema、负例、并发、崩溃、损坏、迁移、备份恢复和回退测试 | “实施后需要什么直接证据才能进入 PR-G2？” |
+| [`DQ-018-TELEMETRY-ADMISSION-AGENT-RECOMMENDATION.md`](DQ-018-TELEMETRY-ADMISSION-AGENT-RECOMMENDATION.md) | 两路智能体的拒绝、修正与最终分离推荐 | “为什么推荐该切片作为 next step，却仍不推荐当前生产使用？” |
+| [`DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md`](DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md) | 人类实施决策的 exact scope、preconditions、stop conditions 和决策 token | “当前等待谁授权，授权后又不允许做什么？” |
+| [`architecture/production-persistence-adapter-specification.md`](architecture/production-persistence-adapter-specification.md) | DBOS production persistence port、部署等级、HA/PITR/RPO/RTO 与 OTel 自观测 | “SQLite 之后要什么直接证据才能形成 production canonical store？” |
+| [`architecture/otlp-collector-production-profile.md`](architecture/otlp-collector-production-profile.md) | OTLP/Collector 拓扑、交付、HA、queue/WAL、安全、容量和漂移治理 | “如何重度使用 OpenTelemetry 而不把 Collector 变成 DBOS Authority？” |
+| [`architecture/telemetry-to-evidence-admission-contract.md`](architecture/telemetry-to-evidence-admission-contract.md) | Accepted Material 到 canonical Evidence 的独立准入、签名/身份/数据治理/验证边界 | “什么时候 Telemetry 才能成为 Evidence，为什么仍不是 Truth？” |
+| [`architecture/production-implementation-sequence.md`](architecture/production-implementation-sequence.md) | DQ-018 到 production authorization 的强制顺序、Owner、SLO、rollback 和 Pilot | “为什么不能一次性把 Collector、Evidence、SAEE 全部做进 DBOS？” |
+| [`PRODUCTION-IMPLEMENTATION-SEQUENCE-v0.1.json`](PRODUCTION-IMPLEMENTATION-SEQUENCE-v0.1.json) | 同一序列的机器可读状态、闸门、禁止推断和零副作用声明 | “当前智能体可以做哪一步，哪些动作尚未获权？” |
+| [`architecture/production-gate-evidence-manifest-specification.md`](architecture/production-gate-evidence-manifest-specification.md) | 生产 gate evidence 的 scope、digest、coverage、SLO、review、Decision 和 fail-closed 计算 | “为什么 schema valid 或 tests green 仍不能自动得到 gate PASS？” |
+| [`architecture/schemas/production-gate-evidence-manifest.schema.v0.1.json`](architecture/schemas/production-gate-evidence-manifest.schema.v0.1.json) | 智能体可读的 Evidence Manifest JSON Schema 2020-12 | “未来 validator 应接收什么精确对象？” |
+| [`architecture/production-gate-evidence-profiles.v0.1.json`](architecture/production-gate-evidence-profiles.v0.1.json) | 各 gate 的 required coverage/SLO/roles/drills/window | “PR-G3、PR-G6、PR-G7 分别缺哪类证据？” |
+| [`PRODUCTION-EVIDENCE-CONTRACT-AGENT-RECOMMENDATION.md`](PRODUCTION-EVIDENCE-CONTRACT-AGENT-RECOMMENDATION.md) | 两路模型对 OTLP 1.11、OTel alignment、Evidence Contract 和 freeze 分离的反对／闭环／最终推荐 | “智能体是否认可现在冻结架构合同，为什么仍不推荐生产使用？” |
+| [`OTLP-1.11-VERSION-DELTA-ASSESSMENT.md`](OTLP-1.11-VERSION-DELTA-ASSESSMENT.md) | OTLP `v1.10.0`→`v1.11.0` exact delta、selected scope 和 compatibility | “上游到底变了什么，哪些变化会进入 TMAI，哪些 Development 内容被排除？” |
+| [`OTLP-1.11-VERSION-ADOPTION-DECISION-PACKET.md`](OTLP-1.11-VERSION-ADOPTION-DECISION-PACKET.md) | `DQ-022` exact version adoption scope/token | “谁决定采纳参考版本，为什么采纳仍不等于升级 Runtime？” |
+| [`OTLP-1.11-VERSION-ADOPTION-AGENT-RECOMMENDATION.md`](OTLP-1.11-VERSION-ADOPTION-AGENT-RECOMMENDATION.md) | 两路模型的 reference adoption 与 production-use 分离结论 | “智能体会推荐这个版本治理吗，当前又能否推荐给生产客户？” |
+| [`PRODUCTION-PATH-AGENT-RECOMMENDATION.md`](PRODUCTION-PATH-AGENT-RECOMMENDATION.md) | 两路智能体对完整生产路径的反对、改进和最终推荐 | “智能体是否推荐这个生产序列，当前又是否可生产使用？” |
 | [`architecture/saee-dbos-contract.md`](architecture/saee-dbos-contract.md) | 双向概念契约与非授权边界 | “双方交换什么，谁不能修改谁？” |
 | [`architecture/interface-specification.md`](architecture/interface-specification.md) | 字段级接口、权限边界与版本协商 | “DBOS 输入和 SAEE 输出包含哪些字段？” |
 | [`architecture/data-contracts.md`](architecture/data-contracts.md) | 核心对象及其 Owner | “Entity、Evidence、Evaluation 等对象归谁？” |
@@ -874,6 +1135,7 @@ Evidence Reference ≠ Canonical Evidence Object ≠ Truth
 | [`architecture/ADR-012-versioned-schema-governance.md`](architecture/ADR-012-versioned-schema-governance.md) | Versioned Schema Mapping Governance 决策 | “为什么代码字段不能反向成为规范字段，Mapping 为什么不是 Migration？” |
 | [`architecture/ADR-013-entity-admission.md`](architecture/ADR-013-entity-admission.md) | Digital Entity Admission Boundary 决策 | “为什么 Candidate、Approved、Authorized 与 Registered 必须分离？” |
 | [`architecture/ADR-014-registration-authorization.md`](architecture/ADR-014-registration-authorization.md) | Registration Authorization Boundary 决策 | “为什么 Admission Approval 不能直接触发 DBOS Registration？” |
+| [`architecture/ADR-023-trusted-multi-agent-protocol-and-production-observability.md`](architecture/ADR-023-trusted-multi-agent-protocol-and-production-observability.md) | TMAP 协议化、OTel 观察平面和生产就绪方向 | “为什么不做 Agent 平台，Telemetry 为什么不能直接成为 Evidence？” |
 
 ## 需求用语
 

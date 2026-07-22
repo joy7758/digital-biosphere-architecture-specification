@@ -1,0 +1,131 @@
+{
+  "manifest_schema_version": "0.1",
+  "manifest_id": "TMAI-EXAMPLE-PR-G3-NOT-ASSESSED-0001",
+  "manifest_status": "DRAFT",
+  "synthetic_example": true,
+  "gate_id": "PR-G3",
+  "step_id": "S3B",
+  "gate_profile_ref": {
+    "path": "architecture/production-gate-evidence-profiles.v0.1.json#/profiles/PR-G3",
+    "digest": null
+  },
+  "claim_scope": {
+    "production_profile_id": "TMAI-SELF-HOSTED-SINGLE-TENANT-1",
+    "environment_id": "SYNTHETIC-NOT-DEPLOYED",
+    "environment_class": "SYNTHETIC_REFERENCE",
+    "topology_digest": null,
+    "workload_scope": "Schema example only; no workload, Collector, endpoint, Runtime, Agent, Entity, Permission, or Evidence exists.",
+    "window_started_at": null,
+    "window_ended_at": null,
+    "observation_seconds": 0
+  },
+  "architecture_binding": {
+    "repository": "https://github.com/joy7758/digital-biosphere-architecture-specification",
+    "commit": null,
+    "tree_digest": null,
+    "decision_packet_ref": "DECISION-QUEUE.md#dq-020",
+    "decision_packet_digest": null,
+    "normative_files": [
+      {
+        "path": "architecture/otlp-collector-production-profile.md",
+        "digest": null
+      },
+      {
+        "path": "architecture/opentelemetry-production-alignment-matrix.md",
+        "digest": null
+      }
+    ]
+  },
+  "decision_binding": {
+    "decision_id": "DQ-020",
+    "decision_status": "PENDING",
+    "decision_ref": "DECISION-QUEUE.md#dq-020",
+    "scope_digest": null,
+    "decided_by_ref": null,
+    "decided_at": null,
+    "expires_at": null,
+    "conditions": [],
+    "accepted_risks": []
+  },
+  "implementation_binding": {
+    "repository": null,
+    "source_commit": null,
+    "artifact_digest": null,
+    "distribution_version": null,
+    "configuration_digest": null,
+    "sbom_digest": null,
+    "dependency_lock_digest": null,
+    "runtime_environment_digest": null
+  },
+  "ownership": {
+    "architecture_owner_ref": "digital-biosphere-architecture",
+    "human_program_owner_ref": "zhangbin",
+    "human_production_authority_ref": null,
+    "dbos_service_owner_ref": null,
+    "database_owner_ref": null,
+    "collector_platform_owner_ref": null,
+    "saee_domain_owner_ref": null,
+    "security_reviewer_ref": null,
+    "data_steward_ref": null,
+    "incident_commander_ref": null,
+    "independent_reviewer_ref": null,
+    "on_call_ref": null,
+    "runbook_refs": []
+  },
+  "coverage": {
+    "positive": "NOT_ASSESSED",
+    "negative": "NOT_ASSESSED",
+    "fault": "NOT_ASSESSED",
+    "security": "NOT_ASSESSED",
+    "recovery": "NOT_ASSESSED",
+    "rollback": "NOT_ASSESSED",
+    "migration": "NOT_ASSESSED",
+    "capacity": "NOT_ASSESSED",
+    "data_governance": "NOT_ASSESSED",
+    "authority_separation": "NOT_ASSESSED"
+  },
+  "test_runs": [],
+  "slo_evidence": [],
+  "otel_delivery_accounting": null,
+  "security_findings": [],
+  "recovery_evidence": {
+    "backup": "NOT_ASSESSED",
+    "restore": "NOT_ASSESSED",
+    "pitr": "NOT_ASSESSED",
+    "fencing": "NOT_ASSESSED",
+    "rollback": "NOT_ASSESSED",
+    "rpo": "NOT_ASSESSED",
+    "rto": "NOT_ASSESSED",
+    "failure_domain_coverage": "NOT_ASSESSED",
+    "evidence_refs": [],
+    "limitations": [
+      "Synthetic shape example only; it must never be counted as conformance, implementation, deployment, or production evidence."
+    ]
+  },
+  "open_unknowns": [
+    {
+      "unknown_id": "EXAMPLE-DQ-020-NOT-AUTHORIZED",
+      "description": "Collector distribution, deployment owner, configuration, environment, security review, and DQ-020 authorization do not exist in this example.",
+      "blocking": true,
+      "owner_ref": null,
+      "resolution_gate": "DQ-020"
+    }
+  ],
+  "reviews": [],
+  "result": "NOT_ASSESSED",
+  "result_reason": "This file demonstrates fail-closed manifest shape. It contains no runtime evidence and cannot close PR-G3.",
+  "frozen_at": null,
+  "manifest_digest": null,
+  "revocation": null,
+  "effects": {
+    "creates_agent": false,
+    "creates_runtime": false,
+    "creates_entity": false,
+    "grants_capability": false,
+    "grants_permission": false,
+    "changes_evidence_truth": false,
+    "authorizes_implementation": false,
+    "authorizes_deployment": false,
+    "declares_production_ready": false
+  }
+}

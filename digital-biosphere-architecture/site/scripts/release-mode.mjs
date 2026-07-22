@@ -91,16 +91,16 @@ export function resolveReleaseContext(environment, resources) {
 export function routeMarkers(mode) {
   if (mode === "formal") {
     return {
-      zhHome: ["面向多智能体系统的可信基础设施", "正式发布：可信多智能体基础设施开发者预览版 v0.1"],
-      enHome: ["Trust infrastructure for multi-agent systems", "Released: Trusted Multi-Agent Infrastructure Developer Preview v0.1"],
+      zhHome: ["可信多智能体基础设施", "面向长期运行、协作和可验证数字主体的基础设施", "正式发布：可信多智能体基础设施开发者预览版 v0.1"],
+      enHome: ["Trusted Multi-Agent Infrastructure", "Infrastructure for long-running, collaborative, and verifiable digital entities", "Released: Trusted Multi-Agent Infrastructure Developer Preview v0.1"],
       zhStatus: ["可信多智能体基础设施开发者预览版 v0.1 已发布"],
       enStatus: ["Trusted Multi-Agent Infrastructure Developer Preview v0.1 is released"],
     };
   }
 
   return {
-    zhHome: ["面向多智能体系统的可信基础设施", "不是正式发布"],
-    enHome: ["Trust infrastructure for multi-agent systems", "not a release"],
+    zhHome: ["可信多智能体基础设施", "面向长期运行、协作和可验证数字主体的基础设施", "不是正式发布"],
+    enHome: ["Trusted Multi-Agent Infrastructure", "Infrastructure for long-running, collaborative, and verifiable digital entities", "not a release"],
     zhStatus: ["当前不是正式发布"],
     enStatus: ["This is not a release"],
   };

@@ -1,0 +1,404 @@
+{
+  "$schema": "schemas/opentelemetry-collector-operational-evidence-profile.schema.v0.1.json",
+  "profile_schema_version": "0.1",
+  "profile_id": "TMAI-OTEL-COLLECTOR-OPERATIONAL-EVIDENCE-PROFILE-0.1",
+  "status": "PROPOSED_DQ_020_INPUT_NOT_MEASURED_NOT_AUTHORIZED_NOT_DEPLOYED",
+  "observed_at": "2026-07-22",
+  "primary_repository": "digital-biosphere-architecture",
+  "scope": {
+    "deployment_profile_id": "TMAI-SELF-HOSTED-SINGLE-TENANT-1",
+    "deployment_profile_ref": "opentelemetry-collector-deployment-profile.v0.1.json",
+    "decision_reference": "DQ-020",
+    "decision_status": "BLOCKED_INPUT",
+    "evidence_purpose": "FUTURE_PR_G3_OPERATIONAL_EVIDENCE_BINDING",
+    "new_conformance_catalog_created": false,
+    "measurement_started": false,
+    "real_operational_evidence_created": false,
+    "production_traffic_allowed": false,
+    "null_exact_inputs_block_runtime_or_gate": true,
+    "null_exact_inputs_block_bounded_human_architecture_review": false
+  },
+  "exact_binding_resolution_contract": {
+    "current_state": "INTENTIONALLY_UNRESOLVED_FAIL_CLOSED",
+    "null_value_meaning": "FUTURE_DEPLOYMENT_INPUT_NOT_AVAILABLE",
+    "replacement_with_invented_value_allowed": false,
+    "bounded_human_architecture_review_allowed": true,
+    "implementation_authorization_allowed": false,
+    "measurement_allowed": false,
+    "deployment_authorization_allowed": false,
+    "production_gate_closure_allowed": false,
+    "resolution_owner": "FUTURE_COLLECTOR_PLATFORM_OWNER_AFTER_DQ_020",
+    "required_resolution_sequence": [
+      "HUMAN_DQ_020_DECISION",
+      "PLATFORM_OWNER_AND_DEPLOYMENT_REPOSITORY_BINDING",
+      "EXACT_CONFIG_QUERY_ALERT_ROUTE_RUNBOOK_AND_RESOURCE_DIGESTS",
+      "DIRECT_FAILURE_CAPACITY_DURABILITY_AND_ROLLBACK_RESULTS",
+      "INDEPENDENT_TECHNICAL_AND_SECURITY_REVIEW"
+    ]
+  },
+  "reference_bindings": {
+    "collector_release_reference": "v0.156.0@aa158b23c8f89d795b21a05a49b3978565dfebd4",
+    "collector_inventory_ref": "opentelemetry-collector-component-inventory.v0.1.json",
+    "official_internal_telemetry_url": "https://opentelemetry.io/docs/collector/internal-telemetry/",
+    "official_scaling_url": "https://opentelemetry.io/docs/collector/scaling/",
+    "official_resiliency_url": "https://opentelemetry.io/docs/collector/resiliency/",
+    "official_hosting_security_url": "https://opentelemetry.io/docs/security/hosting-best-practices/",
+    "official_configuration_security_url": "https://opentelemetry.io/docs/security/config-best-practices/",
+    "official_documents_observed_not_adopted": true,
+    "exact_document_source_digests": [],
+    "exact_runtime_metric_inventory_digest": null,
+    "exact_query_bundle_digest": null,
+    "unresolved_exact_bindings_action": "BLOCK_IMPLEMENTATION_MEASUREMENT_DEPLOYMENT_AND_GATE_NOT_ARCHITECTURE_REVIEW"
+  },
+  "telemetry_channel_contract": {
+    "internal_metrics": {
+      "required": true,
+      "candidate_verbosity": "NORMAL_NOT_CONFIGURED",
+      "transport": "NOT_SELECTED_RESTRICTED_INTERFACE_OR_INDEPENDENT_OTLP_REQUIRED",
+      "public_listener_allowed": false,
+      "exact_endpoint_reference": null,
+      "independent_failure_path_required": true
+    },
+    "internal_logs": {
+      "required": true,
+      "candidate_encoding": "JSON_NOT_CONFIGURED",
+      "sampling_policy_must_be_bound": true,
+      "dropped_log_accounting_required": true,
+      "secret_or_payload_logging_allowed": false,
+      "exact_destination_reference": null
+    },
+    "internal_traces": {
+      "allowed": false,
+      "reason": "EXPERIMENTAL_NOT_REQUIRED_FOR_V0_1_READINESS",
+      "cannot_close_evidence_gap": true
+    },
+    "health_extension": {
+      "role": "LIVENESS_INPUT_ONLY",
+      "can_establish_readiness_alone": false,
+      "can_close_production_gate": false
+    }
+  },
+  "naming_and_stability_contract": {
+    "canonical_instrument_namespace": "OTLP_INSTRUMENT_NAMES",
+    "prometheus_suffix_and_unit_normalization_must_be_recorded": true,
+    "dots_to_underscores_normalization_must_be_recorded": true,
+    "metric_views_digest_required": true,
+    "metric_verbosity_digest_required": true,
+    "first_party_metric_stability_must_be_resolved_per_instrument": true,
+    "third_party_http_rpc_metrics_treated_as_collector_stable": false,
+    "internal_log_format_treated_as_stable": false,
+    "missing_or_renamed_instrument_action": "UNKNOWN_AND_BLOCK_READINESS_NO_ZERO_FILL",
+    "counter_reset_action": "SPLIT_WINDOW_AND_RECONCILE_WITH_RUNTIME_LIFECYCLE",
+    "mixed_version_aggregation_allowed": false,
+    "exact_stability_inventory": []
+  },
+  "identity_and_resource_contract": {
+    "required_resource_attributes": [
+      "service.name",
+      "service.version",
+      "service.instance.id"
+    ],
+    "deployment_environment_binding_required": true,
+    "failure_domain_binding_required": true,
+    "desired_configuration_digest_binding_required": true,
+    "running_configuration_digest_binding_required": true,
+    "runtime_image_digest_binding_required": true,
+    "service_instance_id_is_dbos_entity_id": false,
+    "resource_attributes_grant_authority": false,
+    "exact_resource_binding_digest": null,
+    "unresolved_exact_bindings_action": "BLOCK_IMPLEMENTATION_MEASUREMENT_DEPLOYMENT_AND_GATE_NOT_ARCHITECTURE_REVIEW"
+  },
+  "required_observation_classes": [
+    {
+      "observation_id": "OEO-001",
+      "name": "PROCESS_LIFECYCLE_AND_RESOURCE",
+      "source_class": "COLLECTOR_INTERNAL_METRIC_PLUS_RUNTIME_CONTROLLER",
+      "candidate_instruments": ["otelcol_process_uptime", "otelcol_process_cpu_seconds", "otelcol_process_memory_rss"],
+      "required_dimensions": ["collector_instance", "runtime_image_digest", "configuration_digest", "failure_domain"],
+      "required_semantics": ["UPTIME_RESET_IS_NOT_ZERO_DOWNTIME", "PROCESS_METRIC_ABSENCE_IS_UNKNOWN", "CPU_AND_MEMORY_ARE_CAPACITY_SIGNALS_NOT_READINESS_ALONE"],
+      "exact_query_ref": null,
+      "thresholds_selected": false
+    },
+    {
+      "observation_id": "OEO-002",
+      "name": "RECEIVER_ACCEPTANCE_AND_REFUSAL",
+      "source_class": "COLLECTOR_INTERNAL_METRIC",
+      "candidate_instruments": ["otelcol_receiver_accepted_spans", "otelcol_receiver_accepted_metric_points", "otelcol_receiver_accepted_log_records", "otelcol_receiver_refused_spans", "otelcol_receiver_refused_metric_points", "otelcol_receiver_refused_log_records"],
+      "required_dimensions": ["collector_instance", "receiver", "signal", "tenant_scope"],
+      "required_semantics": ["ACCEPTED_IS_HOP_LOCAL", "REFUSED_MUST_NOT_BE_ZERO_FILLED", "SAMPLING_CANNOT_HIDE_ELIGIBLE_INPUT"],
+      "exact_query_ref": null,
+      "thresholds_selected": false
+    },
+    {
+      "observation_id": "OEO-003",
+      "name": "PROCESSOR_FLOW_AND_TRANSFORMATION",
+      "source_class": "COLLECTOR_INTERNAL_METRIC_PLUS_TRANSFORM_LINEAGE",
+      "candidate_instruments": ["otelcol_processor_incoming_items", "otelcol_processor_outgoing_items"],
+      "required_dimensions": ["collector_instance", "processor", "signal", "configuration_digest"],
+      "required_semantics": ["FLOW_DELTA_REQUIRES_PIPELINE_GRAPH", "TRANSFORMED_COUNT_IS_NOT_TRUTH", "AUTHORITY_NAMESPACE_MUTATION_REMAINS_FORBIDDEN"],
+      "exact_query_ref": null,
+      "thresholds_selected": false
+    },
+    {
+      "observation_id": "OEO-004",
+      "name": "EXPORTER_ENQUEUE_OUTCOME",
+      "source_class": "COLLECTOR_INTERNAL_METRIC",
+      "candidate_instruments": ["otelcol_exporter_enqueue_failed_spans", "otelcol_exporter_enqueue_failed_metric_points", "otelcol_exporter_enqueue_failed_log_records", "otelcol_exporter_in_flight_requests"],
+      "required_dimensions": ["collector_instance", "exporter", "destination", "signal"],
+      "required_semantics": ["ENQUEUE_FAILURE_IS_EXPLICIT_LOSS_OR_REFUSAL", "IN_FLIGHT_INCLUDES_RETRY_BACKOFF", "DESTINATIONS_MUST_NOT_BE_MERGED"],
+      "exact_query_ref": null,
+      "thresholds_selected": false
+    },
+    {
+      "observation_id": "OEO-005",
+      "name": "EXPORTER_SEND_OUTCOME",
+      "source_class": "COLLECTOR_INTERNAL_METRIC_PLUS_DESTINATION_RECEIPT",
+      "candidate_instruments": ["otelcol_exporter_sent_spans", "otelcol_exporter_sent_metric_points", "otelcol_exporter_sent_log_records", "otelcol_exporter_send_failed_spans", "otelcol_exporter_send_failed_metric_points", "otelcol_exporter_send_failed_log_records"],
+      "required_dimensions": ["collector_instance", "exporter", "destination", "signal"],
+      "required_semantics": ["SENT_IS_HOP_LOCAL", "SEND_FAILURE_MAY_BE_RETRYABLE_OR_TERMINAL", "DESTINATION_RECEIPT_DOES_NOT_CREATE_DBOS_EVIDENCE"],
+      "exact_query_ref": null,
+      "thresholds_selected": false
+    },
+    {
+      "observation_id": "OEO-006",
+      "name": "QUEUE_SATURATION",
+      "source_class": "COLLECTOR_INTERNAL_METRIC_PLUS_CONFIGURATION",
+      "candidate_instruments": ["otelcol_exporter_queue_size", "otelcol_exporter_queue_capacity"],
+      "required_dimensions": ["collector_instance", "exporter", "destination", "queue_storage_identity"],
+      "required_semantics": ["UTILIZATION_REQUIRES_MATCHED_SIZE_AND_CAPACITY", "MISSING_CAPACITY_BLOCKS_RATIO", "SCALING_CANNOT_HIDE_BACKEND_SATURATION"],
+      "exact_query_ref": null,
+      "thresholds_selected": false
+    },
+    {
+      "observation_id": "OEO-007",
+      "name": "WAL_DISK_AND_REPLAY",
+      "source_class": "EXTERNAL_STORAGE_MONITOR_PLUS_COLLECTOR_EVENT_PLUS_RECONCILIATION",
+      "candidate_instruments": [],
+      "required_dimensions": ["collector_instance", "wal_identity", "volume_identity", "failure_domain"],
+      "required_semantics": ["WAL_HEALTH_IS_NOT_GUARANTEED_BY_INTERNAL_METRICS", "DISK_FREE_AND_WRITE_PROBE_REQUIRED", "REPLAY_RETAINS_DUPLICATE_AND_LOSS_POSSIBILITY"],
+      "exact_query_ref": null,
+      "thresholds_selected": false
+    },
+    {
+      "observation_id": "OEO-008",
+      "name": "AUTHENTICATED_LISTENER_BLACKBOX",
+      "source_class": "EXTERNAL_SCOPED_BLACKBOX_PROBE_PLUS_SECURITY_AUDIT",
+      "candidate_instruments": [],
+      "required_dimensions": ["listener_reference", "source_identity", "network_policy_digest", "certificate_reference"],
+      "required_semantics": ["PROCESS_HEALTH_DOES_NOT_PROVE_LISTENER_SCOPE", "UNAUTHORIZED_SOURCE_MUST_FAIL", "PROBE_MUST_USE_APPROVED_SYNTHETIC_FIXTURE"],
+      "exact_query_ref": null,
+      "thresholds_selected": false
+    },
+    {
+      "observation_id": "OEO-009",
+      "name": "CONFIGURATION_AND_COMPONENT_DRIFT",
+      "source_class": "EXTERNAL_IMMUTABLE_RECONCILER",
+      "candidate_instruments": [],
+      "required_dimensions": ["collector_instance", "desired_digest", "running_digest", "component_inventory_digest"],
+      "required_semantics": ["DESIRED_AND_RUNNING_MUST_MATCH", "UNKNOWN_FIELD_OR_COMPONENT_IS_BLOCKING", "DRIFT_DEGRADES_WITHOUT_AUTO_PROMOTION"],
+      "exact_query_ref": null,
+      "thresholds_selected": false
+    },
+    {
+      "observation_id": "OEO-010",
+      "name": "SELF_TELEMETRY_FRESHNESS_AND_INDEPENDENCE",
+      "source_class": "INDEPENDENT_MONITORING_PATH",
+      "candidate_instruments": ["otelcol_process_uptime"],
+      "required_dimensions": ["collector_instance", "self_telemetry_destination", "scrape_or_export_path"],
+      "required_semantics": ["NO_DATA_IS_UNKNOWN_NOT_HEALTHY", "PRIMARY_EXPORTER_FAILURE_MUST_NOT_ERASE_SELF_OBSERVATION", "STALE_SERIES_BLOCKS_READINESS"],
+      "exact_query_ref": null,
+      "thresholds_selected": false
+    },
+    {
+      "observation_id": "OEO-011",
+      "name": "LIFECYCLE_DROP_AND_CRASH_EVENTS",
+      "source_class": "COLLECTOR_INTERNAL_LOG_PLUS_RUNTIME_CONTROLLER",
+      "candidate_instruments": [],
+      "required_dimensions": ["collector_instance", "event_type", "reason_class", "configuration_digest"],
+      "required_semantics": ["START_STOP_CRASH_MUST_BE_DISTINGUISHED", "THROTTLING_AND_INVALID_DATA_DROPS_MUST_BE_DISTINGUISHED", "LOG_SAMPLING_MUST_NOT_HIDE_REQUIRED_EVENT_CLASS"],
+      "exact_query_ref": null,
+      "thresholds_selected": false
+    },
+    {
+      "observation_id": "OEO-012",
+      "name": "END_TO_END_DELIVERY_RECONCILIATION",
+      "source_class": "EMITTER_PLUS_COLLECTOR_HOPS_PLUS_DESTINATION_PLUS_DBOS_ADMISSION",
+      "candidate_instruments": [],
+      "required_dimensions": ["signal", "route", "destination", "window", "payload_or_batch_reference"],
+      "required_semantics": ["HOP_COUNTERS_DO_NOT_PROVE_END_TO_END_DELIVERY", "UNKNOWN_AND_DUPLICATE_POSSIBLE_RETAINED", "DBOS_EVIDENCE_REQUIRES_SEPARATE_ADMISSION"],
+      "exact_query_ref": null,
+      "thresholds_selected": false
+    }
+  ],
+  "derived_sli_contracts": [
+    {
+      "sli_id": "OESLI-001",
+      "name": "RECEIVER_REFUSAL_RATIO",
+      "formula_semantics": "REFUSED_DELTA_DIVIDED_BY_ACCEPTED_PLUS_REFUSED_DELTA_PER_SIGNAL_RECEIVER_INSTANCE",
+      "required_inputs": ["OEO-002"],
+      "counter_reset_handling_required": true,
+      "no_data_action": "UNKNOWN_BLOCK_READINESS",
+      "warning_threshold": null,
+      "critical_threshold": null,
+      "window": null
+    },
+    {
+      "sli_id": "OESLI-002",
+      "name": "EXPORTER_ENQUEUE_FAILURE_RATIO",
+      "formula_semantics": "ENQUEUE_FAILED_DELTA_DIVIDED_BY_ENQUEUE_ATTEMPT_BOUND_PER_DESTINATION_SIGNAL",
+      "required_inputs": ["OEO-004", "OEO-006"],
+      "counter_reset_handling_required": true,
+      "no_data_action": "UNKNOWN_BLOCK_READINESS",
+      "warning_threshold": null,
+      "critical_threshold": null,
+      "window": null
+    },
+    {
+      "sli_id": "OESLI-003",
+      "name": "EXPORTER_SEND_FAILURE_RATIO",
+      "formula_semantics": "SEND_FAILED_DELTA_DIVIDED_BY_SENT_PLUS_SEND_FAILED_DELTA_PER_DESTINATION_SIGNAL_WITH_RETRY_STATE",
+      "required_inputs": ["OEO-005"],
+      "counter_reset_handling_required": true,
+      "no_data_action": "UNKNOWN_BLOCK_READINESS",
+      "warning_threshold": null,
+      "critical_threshold": null,
+      "window": null
+    },
+    {
+      "sli_id": "OESLI-004",
+      "name": "QUEUE_UTILIZATION",
+      "formula_semantics": "MATCHED_QUEUE_SIZE_DIVIDED_BY_MATCHED_QUEUE_CAPACITY_PER_INSTANCE_DESTINATION",
+      "required_inputs": ["OEO-006"],
+      "counter_reset_handling_required": false,
+      "no_data_action": "UNKNOWN_BLOCK_READINESS",
+      "warning_threshold": null,
+      "critical_threshold": null,
+      "window": null
+    },
+    {
+      "sli_id": "OESLI-005",
+      "name": "SELF_TELEMETRY_FRESHNESS",
+      "formula_semantics": "EVALUATION_TIME_MINUS_LAST_SUCCESSFUL_INDEPENDENT_OBSERVATION_TIME_PER_INSTANCE",
+      "required_inputs": ["OEO-010"],
+      "counter_reset_handling_required": false,
+      "no_data_action": "UNKNOWN_BLOCK_READINESS",
+      "warning_threshold": null,
+      "critical_threshold": null,
+      "window": null
+    },
+    {
+      "sli_id": "OESLI-006",
+      "name": "DELIVERY_ACCOUNTING_CLOSURE",
+      "formula_semantics": "EMITTED_EQUALS_EXPLICIT_TERMINAL_PLUS_BUFFERED_PLUS_RETRYING_PLUS_UNKNOWN_PLUS_DUPLICATE_SUSPECTED_AFTER_ROUTE_TRANSFORM_ACCOUNTING",
+      "required_inputs": ["OEO-002", "OEO-003", "OEO-004", "OEO-005", "OEO-006", "OEO-007", "OEO-012"],
+      "counter_reset_handling_required": true,
+      "no_data_action": "UNKNOWN_BLOCK_GATE",
+      "warning_threshold": null,
+      "critical_threshold": null,
+      "window": null
+    }
+  ],
+  "composite_readiness_contract": {
+    "evaluation_mode": "ALL_REQUIRED_PREDICATES_TRUE_AND_FRESH",
+    "predicates": [
+      "PROCESS_RUNNING",
+      "APPROVED_CONFIG_DIGEST_MATCH",
+      "AUTHENTICATED_LISTENER_ACCEPTING_WITHIN_SCOPE",
+      "QUEUE_UTILIZATION_BELOW_CRITICAL_THRESHOLD",
+      "WAL_WRITABLE_WITHIN_QUOTA",
+      "REQUIRED_EXPORTER_REACHABLE_WITHIN_OUTAGE_BUDGET",
+      "SELF_TELEMETRY_FRESH",
+      "NO_BLOCKING_CONFIG_OR_SECURITY_DRIFT"
+    ],
+    "any_unknown_action": "NOT_READY",
+    "any_critical_action": "NOT_READY_AND_RUNBOOK_REQUIRED",
+    "health_ok_override_allowed": false,
+    "manual_override_allowed": false,
+    "exact_predicate_queries": [],
+    "exact_threshold_profile_ref": null,
+    "truth_table_evidence_ref": null
+  },
+  "alert_and_runbook_contract": {
+    "warning_and_critical_separation_required": true,
+    "multi_window_burn_rate_required_for_slo_alerts": true,
+    "no_data_alert_required": true,
+    "alert_rule_digest_required": true,
+    "alert_delivery_test_required": true,
+    "clock_skew_bound_required": true,
+    "runbook_per_critical_alert_required": true,
+    "automatic_remediation_may_expand_authority": false,
+    "exact_alert_rule_digest": null,
+    "exact_runbook_bundle_digest": null,
+    "exact_alert_route_reference": null,
+    "unresolved_exact_bindings_action": "BLOCK_IMPLEMENTATION_MEASUREMENT_DEPLOYMENT_AND_GATE_NOT_ARCHITECTURE_REVIEW"
+  },
+  "evidence_binding_contract": {
+    "required_bindings": [
+      "deployment_profile_digest",
+      "collector_release_core_contrib_commits",
+      "component_inventory_digest",
+      "binary_image_sbom_provenance_signature_digests",
+      "desired_and_running_configuration_digests",
+      "runtime_environment_and_topology_digests",
+      "metric_stability_and_naming_inventory_digest",
+      "query_and_alert_bundle_digests",
+      "measurement_window_and_clock_source",
+      "workload_and_failure_injection_references",
+      "raw_series_or_log_references",
+      "failure_unknown_and_counter_reset_inventory",
+      "independent_reviewer_reference"
+    ],
+    "self_reported_summary_can_close_gate": false,
+    "dashboard_screenshot_can_close_gate": false,
+    "health_ok_can_close_gate": false,
+    "missing_series_may_be_zero_filled": false,
+    "telemetry_creates_dbos_evidence": false,
+    "operational_evidence_creates_truth": false,
+    "result_manifest_ref": "production-gate-evidence-manifest-specification.md",
+    "real_result_reference": null
+  },
+  "validation_reuse": {
+    "new_conformance_catalog_created": false,
+    "collector_distribution_operability_cases": ["ODC-CF-OPS-001", "ODC-CF-OPS-002", "ODC-CF-OPS-003", "ODC-CF-OPS-004", "ODC-CF-OPS-005"],
+    "collector_distribution_capacity_cases": ["ODC-CF-CAP-001", "ODC-CF-CAP-002", "ODC-CF-CAP-003", "ODC-CF-CAP-004"],
+    "collector_distribution_durability_cases": ["ODC-CF-DUR-001", "ODC-CF-DUR-002", "ODC-CF-DUR-003", "ODC-CF-DUR-004", "ODC-CF-DUR-005", "ODC-CF-DUR-006"],
+    "existing_case_results_executed": 0,
+    "production_gate_profile_ref": "production-gate-evidence-profiles.v0.1.json"
+  },
+  "unresolved_inputs": [
+    "HUMAN_DQ_020_DECISION",
+    "COLLECTOR_PLATFORM_OWNER",
+    "DEPLOYMENT_REPOSITORY",
+    "EXACT_INTERNAL_TELEMETRY_CONFIGURATION_AND_ENDPOINT",
+    "EXACT_METRIC_STABILITY_AND_NAMING_INVENTORY",
+    "EXACT_RESOURCE_FAILURE_DOMAIN_AND_CONFIG_BINDINGS",
+    "EXACT_QUERY_BUNDLE",
+    "EXACT_WARNING_CRITICAL_AND_FRESHNESS_THRESHOLDS",
+    "EXACT_ALERT_RULES_ROUTES_AND_RUNBOOKS",
+    "EXACT_WAL_DISK_AND_REPLAY_OBSERVATION_PATH",
+    "EXACT_BLACKBOX_PROBE_IDENTITY_AND_SCOPE",
+    "EXACT_WORKLOAD_WINDOWS_AND_CLOCK_SOURCE",
+    "DIRECT_FAILURE_CAPACITY_AND_ROLLBACK_RESULTS",
+    "INDEPENDENT_TECHNICAL_AND_SECURITY_REVIEWS"
+  ],
+  "effects": {
+    "creates_configuration": false,
+    "creates_metric_endpoint": false,
+    "creates_query": false,
+    "creates_alert": false,
+    "creates_runbook": false,
+    "starts_measurement": false,
+    "creates_operational_evidence": false,
+    "opens_listener": false,
+    "deploys_collector": false,
+    "creates_runtime": false,
+    "creates_agent": false,
+    "creates_entity": false,
+    "creates_evidence": false,
+    "grants_permission": false,
+    "authorizes_implementation": false,
+    "authorizes_deployment": false,
+    "closes_production_gate": false,
+    "declares_production_ready": false
+  }
+}

@@ -1,0 +1,99 @@
+{
+  "schema_version": "0.1.0",
+  "document_id": "TMAI-PRODUCTION-IMPLEMENTATION-MAPPING-20260722",
+  "observed_at": "2026-07-22",
+  "gate": {
+    "gate_id": "PR-G1",
+    "result": "PASS_READ_ONLY_MAPPING",
+    "mapping_complete": true,
+    "remote_baseline_created": false,
+    "implementation_authorized": false,
+    "production_ready": false
+  },
+  "source_surfaces": {
+    "dbos_remote_main": {
+      "commit": "cd3f867c4379ec555c45e7d554088ad12ce08a24",
+      "role": "remote_main_and_developer_preview_wheel_source"
+    },
+    "dbos_local_observation": {
+      "commit": "0caa2c45e511a82d0dcab778b0ffc3163aac0029",
+      "role": "stale_local_worktree_observation_not_mapping_baseline"
+    },
+    "saee_remote_public_main": {
+      "commit": "2173c258f91aed03fc02c0097d4250a87be703aa",
+      "role": "public_read_only_preview_adapter_source"
+    },
+    "saee_development_observation": {
+      "branch": "feat/canonical-capability-inventory-routing-v1",
+      "commit": "697ae2080f11b7905b20c39079914eb98169783b",
+      "role": "development_capability_and_gap_observation_not_public_production_truth"
+    }
+  },
+  "validation": {
+    "dbos_tests": {
+      "passed": 334,
+      "failed": 0,
+      "source": "dbos_remote_main"
+    },
+    "dbos_validators": {
+      "passed": 34,
+      "failed": 0,
+      "source": "dbos_remote_main"
+    },
+    "saee_public_adapter_tests": {
+      "passed": 8,
+      "failed": 0,
+      "source": "saee_remote_public_main"
+    },
+    "saee_development_otel_candidate_smoke": {
+      "result": "PASS",
+      "trace_auto_accepted_as_evidence": 0,
+      "source": "saee_development_observation"
+    }
+  },
+  "mapping": {
+    "identity": "PARTIAL",
+    "lifecycle": "PARTIAL_SAFE_RECORD_ONLY",
+    "capability": "PARTIAL_SAFE_RECORD_ONLY",
+    "execution": "PARTIAL_SAFE_RECORD_ONLY",
+    "evidence": "REFERENCE_ONLY",
+    "verification": "REFERENCE_ONLY_SCHEMA_MISMATCH",
+    "evolution_interface": "PARTIAL_SAFE_EXPORT_PREPARATION",
+    "dbos_local_persistence": "LOCAL_ATOMIC_FILE_RECORDING_IMPLEMENTED",
+    "dbos_production_durability": "MISSING",
+    "otel_sdk_or_otlp_intake": "MISSING",
+    "telemetry_admission_ledger": "MISSING",
+    "saee_public_preview_adapter": "IMPLEMENTED_READ_ONLY",
+    "saee_production_adapter_isolation": "MISSING"
+  },
+  "open_blockers": [
+    "B-013_DBOS_PRODUCTION_ADMISSION_DURABILITY",
+    "B-014_SAEE_PRODUCTION_ADAPTER_ISOLATION"
+  ],
+  "next_decision": {
+    "decision_id": "DQ-018",
+    "status": "READY_FOR_REVIEW",
+    "candidate_slice_id": "DBOS-PR-2A-TELEMETRY-ADMISSION-FOUNDATION",
+    "primary_repository": "digital-biosphere-os",
+    "owner_role": "DBOS_DOMAIN_OWNER",
+    "decision_authority": "HUMAN_PROGRAM_OWNER",
+    "decision_packet": "DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.json",
+    "agent_recommendation": "COMPLETE_NEXT_SLICE_RECOMMENDED_PRODUCTION_NOT_RECOMMENDED",
+    "execution_precondition": "IMMUTABLE_DBA_PRODUCTION_BASELINE_COMMIT",
+    "implementation_authorized": false
+  },
+  "truth_boundary": {
+    "specification_is_implementation": false,
+    "mapping_pass_is_conformance_pass": false,
+    "telemetry_is_evidence": false,
+    "evidence_is_truth": false,
+    "verification_is_permission": false,
+    "saee_has_dbos_write_authority": false,
+    "collector_deployed": false,
+    "otlp_endpoint_created": false,
+    "runtime_created": false,
+    "agent_created": false,
+    "permission_granted": false,
+    "production_ready": false
+  }
+}

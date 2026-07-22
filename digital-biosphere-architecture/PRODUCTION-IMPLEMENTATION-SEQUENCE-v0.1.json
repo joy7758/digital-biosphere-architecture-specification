@@ -1,0 +1,211 @@
+{
+  "schema_version": "0.1",
+  "sequence_id": "TMAI-PRODUCTION-IMPLEMENTATION-SEQUENCE-0.1",
+  "name": "TMAI Staged Production Implementation Sequence v0.1",
+  "name_zh": "TMAI 分阶段生产实施序列 v0.1",
+  "status": "ADOPTED_STAGE_GATED_NOT_EXECUTED",
+  "architecture_owner": "digital-biosphere-architecture",
+  "normative_specification": "architecture/production-implementation-sequence.md",
+  "proposed_adr": "architecture/ADR-024-staged-telemetry-production-path.md",
+  "evidence_contract": {
+    "specification": "architecture/production-gate-evidence-manifest-specification.md",
+    "schema": "architecture/schemas/production-gate-evidence-manifest.schema.v0.1.json",
+    "profile_registry": "architecture/production-gate-evidence-profiles.v0.1.json",
+    "profile_registry_status": "PROPOSED_NOT_ADOPTED",
+    "validator_implemented": false,
+    "any_production_gate_pass_created": false
+  },
+  "opentelemetry_reference": {
+    "otel_specification": "1.59.0",
+    "otlp_candidate_version": "1.11.0",
+    "otlp_candidate_commit": "790608c4d51e6ffc12210b541e8514cbed9e91a4",
+    "otlp_reference_status": "ADOPTED_REFERENCE_NOT_RUNTIME_PROOF",
+    "otlp_version_decision": "DQ-022_DECIDED_REFERENCE_ADOPTED",
+    "otlp_conformance_profile": "architecture/otlp-v1.11-conformance-profile.md",
+    "otlp_conformance_catalog": "architecture/otlp-v1.11-conformance-cases.v0.1.json",
+    "otlp_conformance_catalog_schema": "architecture/schemas/otlp-conformance-case-catalog.schema.v0.1.json",
+    "otlp_conformance_case_count": 56,
+    "otlp_conformance_case_group_count": 7,
+    "otlp_conformance_tests_executed": 0,
+    "otlp_conformance_validator_implemented": false,
+    "otlp_conformance_freeze_recommended_by_two_agents": true,
+    "semantic_conventions": "1.43.0",
+    "collector_distribution_selected": false,
+    "automatic_latest_adoption_allowed": false
+  },
+  "agent_review": {
+    "record": "PRODUCTION-PATH-AGENT-RECOMMENDATION.md",
+    "sequence_recommended_by_two_agents": true,
+    "production_customer_recommendable_now": false,
+    "recommendation_is_authorization": false
+  },
+  "current_gate": {
+    "step_id": "S0",
+    "decision_id": "DQ-018",
+    "state": "AUTHORIZED_PRECONDITIONS_PENDING",
+    "human_decision_recorded": true,
+    "implementation_authorized": true
+  },
+  "architecture_prerequisites": {
+    "dq_022_external_reference_decision_recorded": true,
+    "dq_023_semantic_reference_decision_recorded": true,
+    "dq_024_schema_resource_entity_reference_decision_recorded": true,
+    "dq_025_collector_inventory_reference_decision_recorded": true,
+    "adr_024_staged_sequence_adopted": true,
+    "immutable_dba_baseline_created": false,
+    "these_prerequisites_authorize_implementation": false
+  },
+  "stages": [
+    {
+      "step_id": "S0",
+      "name": "Immutable DBA architecture baseline",
+      "primary_domain": "DBA",
+      "decision_or_gate": "DQ-018_INPUT_BASELINE",
+      "status": "LOCAL_UNCOMMITTED",
+      "advance_requires": [
+        "immutable_pushed_architecture_commit",
+        "decision_packet_digest_match",
+        "external_reference_version_decision_recorded",
+        "explicit_human_decision"
+      ]
+    },
+    {
+      "step_id": "S1",
+      "name": "Pinned offline OTLP decoder and Telemetry Admission reference conformance",
+      "primary_domain": "DBOS",
+      "decision_or_gate": "DQ-018/PR-G2A",
+      "status": "AUTHORIZED_PRECONDITIONS_PENDING_NOT_STARTED",
+      "required_case_groups": ["OTLP-CG-SIGNAL_SCHEMA", "OTLP-CG-AUTHORITY_BOUNDARY"],
+      "forbidden_inference": "Telemetry admission does not create Evidence, Verification, Identity, Capability, Permission, Runtime, or production readiness"
+    },
+    {
+      "step_id": "S2",
+      "name": "Production persistence selection and proof",
+      "primary_domain": "DBOS_AND_DEPLOYMENT_INFRASTRUCTURE",
+      "decision_or_gate": "DQ-019/PR-G2B/PR-G5A",
+      "status": "BLOCKED_INPUT",
+      "forbidden_inference": "Reference SQLite conformance does not establish production durability"
+    },
+    {
+      "step_id": "S2.5",
+      "name": "Admission and production store integration",
+      "primary_domain": "DBOS_AND_DEPLOYMENT_INFRASTRUCTURE",
+      "decision_or_gate": "PR-G2T",
+      "status": "BLOCKED_BY_S1_S2",
+      "forbidden_inference": "Collector storage and DBOS canonical storage must remain separately configured and validated"
+    },
+    {
+      "step_id": "S3A",
+      "name": "Pinned authenticated loopback OTLP listener conformance",
+      "primary_domain": "DEPLOYMENT_INFRASTRUCTURE_AND_DBOS_ADAPTER",
+      "decision_or_gate": "DQ-020/PR-G3A-C",
+      "status": "BLOCKED_INPUT",
+      "required_case_groups": ["OTLP-CG-GRPC_SIZE", "OTLP-CG-HTTP_SIZE", "OTLP-CG-RETRY_PARTIAL", "OTLP-CG-DEPLOYMENT_SECURITY_CAPACITY"],
+      "required_collector_distribution_case_groups": ["ODC-CG-SOURCE", "ODC-CG-ALLOWLIST", "ODC-CG-CONFIG", "ODC-CG-SECURITY", "ODC-CG-DURABILITY", "ODC-CG-OPERABILITY", "ODC-CG-CAPACITY_HA", "ODC-CG-AUTHORITY"],
+      "deployment_profile_ref": "architecture/opentelemetry-collector-deployment-profile.v0.1.json",
+      "deployment_profile_schema_ref": "architecture/schemas/opentelemetry-collector-deployment-profile.schema.v0.1.json",
+      "operational_evidence_profile_ref": "architecture/opentelemetry-collector-operational-evidence-profile.v0.1.json",
+      "operational_evidence_profile_schema_ref": "architecture/schemas/opentelemetry-collector-operational-evidence-profile.schema.v0.1.json",
+      "input_scope": "APPROVED_SYNTHETIC_FIXTURES_ONLY",
+      "required_profile_evidence": ["exact_deployment_and_operational_evidence_profile_digests", "all_required_exact_values_non_null", "synthetic_input_gate_results"],
+      "forbidden_inference": "Listener conformance does not authorize Collector deployment, production traffic, Evidence, or end-to-end delivery claims; a profile with unresolved null values is fail-closed"
+    },
+    {
+      "step_id": "S3B",
+      "name": "Multi-replica Collector staging and delivery reconciliation",
+      "primary_domain": "DEPLOYMENT_INFRASTRUCTURE_AND_DBOS_ADAPTER",
+      "decision_or_gate": "PR-G3D-F",
+      "status": "BLOCKED_BY_S3A",
+      "required_case_groups": ["OTLP-CG-DELIVERY_RECONCILIATION"],
+      "required_collector_distribution_case_groups": ["ODC-CG-SOURCE", "ODC-CG-ALLOWLIST", "ODC-CG-CONFIG", "ODC-CG-SECURITY", "ODC-CG-DURABILITY", "ODC-CG-OPERABILITY", "ODC-CG-CAPACITY_HA", "ODC-CG-AUTHORITY"],
+      "operational_evidence_profile_ref": "architecture/opentelemetry-collector-operational-evidence-profile.v0.1.json",
+      "operational_evidence_profile_schema_ref": "architecture/schemas/opentelemetry-collector-operational-evidence-profile.schema.v0.1.json",
+      "configuration_update_mechanism": "IMMUTABLE_VERSIONED_CONFIG_CANARY_ROLLOUT_RESTART_ONLY",
+      "remote_configuration_selected": false,
+      "required_profile_evidence": ["immutable_configuration_rollout_and_rollback", "exact_metric_naming_stability_resource_query_alert_route_runbook_bindings", "independent_self_observation_blackbox_storage_and_drift_results", "counter_reset_no_data_stale_mixed_version_and_alert_delivery_results", "composite_readiness_truth_table", "queue_wal_failure_and_end_to_end_delivery_reconciliation"],
+      "forbidden_inference": "OTLP acknowledgement is hop-by-hop and does not prove canonical persistence or Evidence; configuration rollout is not deployment authorization"
+    },
+    {
+      "step_id": "S4",
+      "name": "Telemetry-to-Evidence admission",
+      "primary_domain": "DBOS",
+      "decision_or_gate": "DQ-021/PR-G2C/PR-G5B",
+      "status": "BLOCKED_INPUT",
+      "forbidden_inference": "Telemetry, signatures, provenance, and integrity do not prove truth"
+    },
+    {
+      "step_id": "S5",
+      "name": "Read-only SAEE production evaluation adapter",
+      "primary_domain": "SAEE",
+      "decision_or_gate": "FUTURE_SAEE_DECISION/PR-G4",
+      "status": "NOT_PLANNED_UNTIL_INPUTS_EXIST",
+      "forbidden_inference": "Evaluation and recommendation do not grant decision, writeback, or execution authority"
+    },
+    {
+      "step_id": "S6",
+      "name": "Security, recovery, rollback, and capacity gate",
+      "primary_domain": "DBOS_DEPLOYMENT_AND_DBA_REVIEW",
+      "decision_or_gate": "PR-G5",
+      "status": "NOT_STARTED",
+      "forbidden_inference": "A plan or synthetic test is not direct production recovery evidence"
+    },
+    {
+      "step_id": "S7",
+      "name": "Bounded production pilot",
+      "primary_domain": "DEPLOYMENT_SPECIFIC",
+      "decision_or_gate": "EXPLICIT_PILOT_AUTHORIZATION/PR-G6",
+      "status": "NOT_AUTHORIZED",
+      "minimum_observation": "7_day_staging_plus_30_day_bounded_production_and_required_failure_drills",
+      "forbidden_inference": "Pilot completion does not itself authorize production"
+    },
+    {
+      "step_id": "S8",
+      "name": "Human production decision",
+      "primary_domain": "DBA_GOVERNANCE",
+      "decision_or_gate": "HUMAN_PRODUCTION_DECISION/PR-G7",
+      "status": "NOT_READY",
+      "forbidden_inference": "A production decision is not deployment execution"
+    },
+    {
+      "step_id": "S9",
+      "name": "Separately authorized canary deployment",
+      "primary_domain": "DEPLOYMENT_SPECIFIC",
+      "decision_or_gate": "SEPARATE_DEPLOYMENT_AUTHORIZATION",
+      "status": "NOT_AUTHORIZED",
+      "forbidden_inference": "Deployment does not permit unscoped capability, permission, or authority expansion"
+    }
+  ],
+  "future_decisions": {
+    "DQ-019": "BLOCKED_INPUT",
+    "DQ-020": "BLOCKED_INPUT",
+    "DQ-021": "BLOCKED_INPUT",
+    "DQ-022": "READY_FOR_REVIEW",
+    "DQ-023": "READY_FOR_REVIEW",
+    "DQ-024": "READY_FOR_REVIEW",
+    "DQ-025": "READY_FOR_REVIEW"
+  },
+  "mandatory_truth_boundaries": [
+    "DBA != DBOS",
+    "DBA != SAEE",
+    "DBOS != SAEE",
+    "Telemetry != Evidence",
+    "Evidence != Truth",
+    "Verification != Permission",
+    "Evaluation != Authority",
+    "Recommendation != Decision",
+    "Decision != Execution",
+    "Reference conformance != Production readiness",
+    "Release != Deployment"
+  ],
+  "effects": {
+    "changes_child_repositories": false,
+    "creates_endpoint": false,
+    "deploys_collector": false,
+    "creates_runtime": false,
+    "creates_agent": false,
+    "grants_permission": false,
+    "authorizes_implementation": false,
+    "authorizes_deployment": false,
+    "declares_production_ready": false
+  }
+}

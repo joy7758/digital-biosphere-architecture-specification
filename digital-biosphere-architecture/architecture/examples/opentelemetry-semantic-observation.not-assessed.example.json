@@ -1,0 +1,121 @@
+{
+  "schema_version": "0.1",
+  "observation_id": "SYNTHETIC-OTEL-SEMANTIC-OBSERVATION-NOT-AN-ENTITY",
+  "status": "NOT_ASSESSED",
+  "synthetic": true,
+  "source_binding": {
+    "otel_specification": "v1.59.0@a824fb4eba795c5c65dd397b3d22e7c28e934de3",
+    "core_semconv": "v1.43.0@89aae438b3b3b0a8dd33003c9d70592baf7dbd0d",
+    "genai_semconv_commit": "2e994c6d59a93bb4fc1752c5378eedb9b8e14d6b",
+    "genai_schema_url": null,
+    "otlp": "v1.11.0@790608c4d51e6ffc12210b541e8514cbed9e91a4"
+  },
+  "mapping_binding": {
+    "catalog_id": "TMAI-OTEL-SEMANTIC-MAPPING-0.1",
+    "catalog_status": "ADOPTED_CONTRACT_NOT_IMPLEMENTED",
+    "catalog_digest": "NOT_COMPUTED_SYNTHETIC",
+    "profile_id": "TMAI-OTEL-SEMANTIC-CONVENTIONS-PROFILE-0.1",
+    "profile_digest": "NOT_COMPUTED_SYNTHETIC"
+  },
+  "data_governance_binding": {
+    "status": "NOT_APPLICABLE_DISABLED",
+    "decision_reference": null,
+    "policy_digest": null,
+    "field_allowlist": [],
+    "retention_reference": null,
+    "residency_reference": null,
+    "access_policy_reference": null,
+    "redaction_policy_reference": null
+  },
+  "trusted_bindings": {
+    "binding_source": "NONE",
+    "entity_reference": null,
+    "execution_reference": null,
+    "capability_reference": null,
+    "binding_record_digest": null
+  },
+  "resource": {
+    "service_namespace": "synthetic.example",
+    "service_name": "not-a-dbos-entity",
+    "service_instance_id": "synthetic-service-instance-not-an-entity-id",
+    "service_version": "0.0.0-synthetic",
+    "deployment_environment_name": "test"
+  },
+  "instrumentation_scope": {
+    "name": "synthetic.instrumentation.not-implemented",
+    "version": "0.0.0",
+    "schema_url": null,
+    "sdk_name": "synthetic-sdk",
+    "sdk_language": "unknown",
+    "sdk_version": "0.0.0"
+  },
+  "signal": {
+    "signal_type": "TRACE",
+    "trace_id": "0123456789abcdef0123456789abcdef",
+    "span_id": "0123456789abcdef",
+    "parent_span_id": null,
+    "span_name": "invoke_agent synthetic-not-executed",
+    "span_kind": "INTERNAL",
+    "span_status": "UNSET",
+    "attributes": {
+      "gen_ai.operation.name": "invoke_agent",
+      "gen_ai.provider.name": "synthetic",
+      "gen_ai.agent.id": "synthetic-provider-hint-not-an-entity-id",
+      "gen_ai.workflow.name": "synthetic_low_cardinality_workflow",
+      "gen_ai.request.model": "synthetic-model",
+      "gen_ai.usage.input_tokens": 0,
+      "gen_ai.usage.output_tokens": 0
+    }
+  },
+  "mapping_result": {
+    "matched_mapping_ids": [
+      "OTEL-SM-001",
+      "OTEL-SM-002",
+      "OTEL-SM-003",
+      "OTEL-SM-004",
+      "OTEL-SM-005",
+      "OTEL-SM-011",
+      "OTEL-SM-012",
+      "OTEL-SM-013",
+      "OTEL-SM-014",
+      "OTEL-SM-015",
+      "OTEL-SM-017",
+      "OTEL-SM-018",
+      "OTEL-SM-019",
+      "OTEL-SM-021",
+      "OTEL-SM-022",
+      "OTEL-SM-023",
+      "OTEL-SM-026",
+      "OTEL-SM-028",
+      "OTEL-SM-030",
+      "OTEL-SM-031"
+    ],
+    "identity_binding_status": "NOT_ASSESSED",
+    "execution_binding_status": "NOT_ASSESSED",
+    "capability_binding_status": "NOT_ASSESSED",
+    "content_capture_state": "DISABLED",
+    "deprecated_fields": [],
+    "unknown_fields": [],
+    "limitations": [
+      "Synthetic shape example only",
+      "No telemetry was collected",
+      "No DBOS binding was attempted",
+      "No semantic validator exists",
+      "No Evidence or Verification was created"
+    ]
+  },
+  "effects": {
+    "creates_entity": false,
+    "creates_identity": false,
+    "creates_capability": false,
+    "grants_permission": false,
+    "creates_execution": false,
+    "creates_evidence": false,
+    "creates_verification": false,
+    "creates_saee_evaluation": false,
+    "creates_governance_decision": false,
+    "authorizes_implementation": false,
+    "authorizes_deployment": false,
+    "production_ready": false
+  }
+}

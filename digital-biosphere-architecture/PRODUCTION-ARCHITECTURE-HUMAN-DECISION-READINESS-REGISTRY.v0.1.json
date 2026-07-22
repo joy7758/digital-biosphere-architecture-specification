@@ -1,0 +1,291 @@
+{
+  "$schema": "architecture/schemas/production-architecture-human-decision-readiness-registry.schema.v0.1.json",
+  "registry_schema_version": "0.1",
+  "registry_id": "TMAI-PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY-0.1",
+  "status": "HUMAN_DECISIONS_RECORDED_FREEZE_AUTHORIZED_IMMUTABLE_BASELINE_PENDING",
+  "observed_at": "2026-07-22",
+  "primary_repository": "digital-biosphere-architecture",
+  "agent_review": {
+    "review_ref": "PRODUCTION-DECISION-READINESS-AGENT-RECOMMENDATION.md",
+    "qianfan_priority": "C",
+    "ark_priority": "D",
+    "priority_consensus": false,
+    "production_recommendation_now": false,
+    "new_technical_contract_recommended": false,
+    "bounded_registry_disposition": "CREATE_REGISTRY_THEN_STOP_FOR_HUMAN_INPUT"
+  },
+  "baseline_candidate": {
+    "branch": "codex/production-observability-baseline",
+    "base_head": "769b5589d07eb9bc9efbaf0930039c3d49632372",
+    "worktree_entry_count": 98,
+    "staged_entry_count": 0,
+    "candidate_commit": null,
+    "immutable_baseline_created": false,
+    "commit_authorized": true,
+    "push_authorized": true,
+    "production_freeze_complete": false
+  },
+  "decision_entries": [
+    {
+      "decision_id": "DQ-022",
+      "decision_class": "REFERENCE_ADOPTION",
+      "status": "DECIDED_REFERENCE_ADOPTED",
+      "packet_status": "DECIDED_REFERENCE_ADOPTED_IMPLEMENTATION_NOT_AUTHORIZED",
+      "question": "Adopt OTLP v1.11.0 exact tag and commit as the TMAI v0.1 Trace, Metric, and Log architecture reference baseline?",
+      "next_human_action": "NONE_DECIDED",
+      "human_action_ready": false,
+      "recommended_option": "DQ-022=ADOPT_OTLP_1_11_0_REFERENCE_BASELINE",
+      "decision_tokens": [
+        "DQ-022=ADOPT_OTLP_1_11_0_REFERENCE_BASELINE",
+        "DQ-022=HOLD_OTLP_1_10_0_REFERENCE_BASELINE",
+        "DQ-022=RETURN_OTLP_1_11_0_ADOPTION_FOR_REVISION"
+      ],
+      "artifact_bindings": [
+        {"path": "OTLP-1.11-VERSION-ADOPTION-DECISION-PACKET.md", "sha256": "sha256:dbd6dd914b232d2ca2541dee40bf1a483c477127661801b98e6753a8e0b6450d"},
+        {"path": "OTLP-1.11-VERSION-ADOPTION-DECISION-PACKET.json", "sha256": "sha256:8df73099348292d0fd19da4bfb2653a0278775707b84c423658a25a14e938ede"}
+      ],
+      "required_before_execution": ["Separate implementation repository and authorization", "Exact runtime interoperability evidence"],
+      "missing_inputs": [],
+      "decision_recorded": true,
+      "selected_token": "DQ-022=ADOPT_OTLP_1_11_0_REFERENCE_BASELINE",
+      "decided_by_ref": "zhangbin",
+      "decided_at": "2026-07-22T12:05:04+08:00",
+      "implementation_may_start": false,
+      "effects": {"reference_adopted": true, "architecture_frozen": false, "implementation_authorized": false, "commit_authorized": false, "push_authorized": false, "collector_selected": false, "backend_selected": false, "configuration_created": false, "endpoint_created": false, "runtime_created": false, "entity_created": false, "evidence_created": false, "permission_granted": false, "tests_executed": false, "deployment_authorized": false, "production_ready": false}
+    },
+    {
+      "decision_id": "DQ-023",
+      "decision_class": "REFERENCE_ADOPTION",
+      "status": "DECIDED_REFERENCE_ADOPTED",
+      "packet_status": "DECIDED_REFERENCE_ADOPTED_IMPLEMENTATION_NOT_AUTHORIZED",
+      "question": "Adopt OpenTelemetry Semantic Conventions core v1.43.0 selected Stable mappings plus an isolated exact-commit GenAI Development mapping?",
+      "next_human_action": "NONE_DECIDED",
+      "human_action_ready": false,
+      "recommended_option": "DQ-023=ADOPT_OTEL_SEMCONV_1_43_CORE_AND_PINNED_GENAI_MAPPING",
+      "decision_tokens": [
+        "DQ-023=ADOPT_OTEL_SEMCONV_1_43_CORE_AND_PINNED_GENAI_MAPPING",
+        "DQ-023=ADOPT_OTEL_SEMCONV_1_43_CORE_ONLY",
+        "DQ-023=RETURN_OTEL_SEMANTIC_MAPPING_FOR_REVISION"
+      ],
+      "artifact_bindings": [
+        {"path": "OTEL-SEMANTIC-CONVENTIONS-ADOPTION-DECISION-PACKET.md", "sha256": "sha256:252dbed6787951e5bf70c3955a05e2e0696d09eb5a1686fe3fad208c79843cb9"},
+        {"path": "OTEL-SEMANTIC-CONVENTIONS-ADOPTION-DECISION-PACKET.json", "sha256": "sha256:9fbbf570af46ff0c654bead14807b8b1f0a927cf6a56bdcdbb5b4d7c17374926"}
+      ],
+      "required_before_execution": ["DQ-022 reference decision", "Semantic validator implementation authorization", "46-case direct conformance results"],
+      "missing_inputs": [],
+      "decision_recorded": true,
+      "selected_token": "DQ-023=ADOPT_OTEL_SEMCONV_1_43_CORE_AND_PINNED_GENAI_MAPPING",
+      "decided_by_ref": "zhangbin",
+      "decided_at": "2026-07-22T12:05:04+08:00",
+      "implementation_may_start": false,
+      "effects": {"reference_adopted": true, "architecture_frozen": false, "implementation_authorized": false, "commit_authorized": false, "push_authorized": false, "collector_selected": false, "backend_selected": false, "configuration_created": false, "endpoint_created": false, "runtime_created": false, "entity_created": false, "evidence_created": false, "permission_granted": false, "tests_executed": false, "deployment_authorized": false, "production_ready": false}
+    },
+    {
+      "decision_id": "DQ-024",
+      "decision_class": "REFERENCE_ADOPTION",
+      "status": "DECIDED_REFERENCE_ADOPTED",
+      "packet_status": "DECIDED_REFERENCE_ADOPTED_IMPLEMENTATION_NOT_AUTHORIZED",
+      "question": "Adopt the exact OpenTelemetry v1.59.0 Stable Schema and Resource subset, core schema 1.43.0 binding, and Development Entity quarantine?",
+      "next_human_action": "NONE_DECIDED",
+      "human_action_ready": false,
+      "recommended_option": "DQ-024=ADOPT_OTEL_SCHEMA_RESOURCE_1_59_AND_QUARANTINE_DEVELOPMENT_ENTITY",
+      "decision_tokens": [
+        "DQ-024=ADOPT_OTEL_SCHEMA_RESOURCE_1_59_AND_QUARANTINE_DEVELOPMENT_ENTITY",
+        "DQ-024=ADOPT_OTEL_SCHEMA_RESOURCE_1_59_AND_REJECT_ALL_ENTITY_INPUTS",
+        "DQ-024=RETURN_OTEL_SCHEMA_RESOURCE_ENTITY_BOUNDARY_FOR_REVISION"
+      ],
+      "artifact_bindings": [
+        {"path": "OTEL-SCHEMA-RESOURCE-ADOPTION-DECISION-PACKET.md", "sha256": "sha256:cc7fd3f72cd778344edb0d245b90cda6989a9e110f08658751d9ced1a9349f2f"},
+        {"path": "OTEL-SCHEMA-RESOURCE-ADOPTION-DECISION-PACKET.json", "sha256": "sha256:6cc8037ce9862aaa65d450035a4c905b334c0f40010ed30b209a53629a937b47"}
+      ],
+      "required_before_execution": ["DQ-022 reference decision", "DQ-023 semantic reference decision", "Schema acquisition and transformation implementation authorization", "45-case direct conformance results"],
+      "missing_inputs": [],
+      "decision_recorded": true,
+      "selected_token": "DQ-024=ADOPT_OTEL_SCHEMA_RESOURCE_1_59_AND_QUARANTINE_DEVELOPMENT_ENTITY",
+      "decided_by_ref": "zhangbin",
+      "decided_at": "2026-07-22T12:05:04+08:00",
+      "implementation_may_start": false,
+      "effects": {"reference_adopted": true, "architecture_frozen": false, "implementation_authorized": false, "commit_authorized": false, "push_authorized": false, "collector_selected": false, "backend_selected": false, "configuration_created": false, "endpoint_created": false, "runtime_created": false, "entity_created": false, "evidence_created": false, "permission_granted": false, "tests_executed": false, "deployment_authorized": false, "production_ready": false}
+    },
+    {
+      "decision_id": "DQ-025",
+      "decision_class": "REFERENCE_ADOPTION",
+      "status": "DECIDED_REFERENCE_ADOPTED",
+      "packet_status": "DECIDED_REFERENCE_ADOPTED_IMPLEMENTATION_NOT_AUTHORIZED",
+      "question": "Adopt OpenTelemetry Collector v0.156.0 exact source commits and the proposed 8-component plus 2-provider custom minimal inventory as an architecture reference?",
+      "next_human_action": "NONE_DECIDED",
+      "human_action_ready": false,
+      "recommended_option": "DQ-025=ADOPT_OTEL_COLLECTOR_V0_156_CUSTOM_MINIMAL_INVENTORY",
+      "decision_tokens": [
+        "DQ-025=ADOPT_OTEL_COLLECTOR_V0_156_CUSTOM_MINIMAL_INVENTORY",
+        "DQ-025=ADOPT_OTEL_COLLECTOR_V0_156_PREBUILT_ALTERNATIVE",
+        "DQ-025=RETURN_OTEL_COLLECTOR_DISTRIBUTION_FOR_REVISION"
+      ],
+      "artifact_bindings": [
+        {"path": "OTEL-COLLECTOR-DISTRIBUTION-DECISION-PACKET.md", "sha256": "sha256:8b061fee4c2bd9359b3dd7ac832c7295fd651580235ece48e974fb47e8eea75a"},
+        {"path": "OTEL-COLLECTOR-DISTRIBUTION-DECISION-PACKET.json", "sha256": "sha256:1315851a179e5b084127c00a01c0727fecc8ccd79606e60ce03957f8598f028d"}
+      ],
+      "required_before_execution": ["Separate DQ-020 decision", "Deployment repository and platform owner", "Build/image/SBOM/provenance/signature evidence", "48-case direct conformance results"],
+      "missing_inputs": [],
+      "decision_recorded": true,
+      "selected_token": "DQ-025=ADOPT_OTEL_COLLECTOR_V0_156_CUSTOM_MINIMAL_INVENTORY",
+      "decided_by_ref": "zhangbin",
+      "decided_at": "2026-07-22T12:05:04+08:00",
+      "implementation_may_start": false,
+      "effects": {"reference_adopted": true, "architecture_frozen": false, "implementation_authorized": false, "commit_authorized": false, "push_authorized": false, "collector_selected": false, "backend_selected": false, "configuration_created": false, "endpoint_created": false, "runtime_created": false, "entity_created": false, "evidence_created": false, "permission_granted": false, "tests_executed": false, "deployment_authorized": false, "production_ready": false}
+    },
+    {
+      "decision_id": "ADR-024",
+      "decision_class": "ARCHITECTURE_SEQUENCE_ADOPTION",
+      "status": "ACCEPTED_ARCHITECTURE_SEQUENCE",
+      "packet_status": "ACCEPTED_ARCHITECTURE_SEQUENCE_IMPLEMENTATION_STAGE_GATED",
+      "question": "Accept the staged Telemetry production path as the governing architecture sequence after the bounded Admission Foundation?",
+      "next_human_action": "NONE_DECIDED",
+      "human_action_ready": false,
+      "recommended_option": "ADR-024=ACCEPT_STAGED_TELEMETRY_PRODUCTION_PATH",
+      "decision_tokens": [
+        "ADR-024=ACCEPT_STAGED_TELEMETRY_PRODUCTION_PATH",
+        "ADR-024=RETURN_FOR_REVISION",
+        "ADR-024=REJECT_STAGED_TELEMETRY_PRODUCTION_PATH"
+      ],
+      "artifact_bindings": [
+        {"path": "architecture/ADR-024-staged-telemetry-production-path.md", "sha256": "sha256:078abdca00203f8c2e7cf96df5624bb1b2401faa6ab47eee6ed0399ec9574f40"},
+        {"path": "architecture/production-implementation-sequence.md", "sha256": "sha256:2408a789feeef39118e512d50a39b977935e2e6de60f33b86048022cc7e51717"},
+        {"path": "PRODUCTION-IMPLEMENTATION-SEQUENCE-v0.1.json", "sha256": "sha256:3044eb7cd7ff010547f928246df570d7e6947bfbff83ad04b75e48e80c108acd"}
+      ],
+      "required_before_execution": ["Separate decision and evidence at every S0 through S9 stage", "DQ-018 exact slice decision", "DQ-022 through DQ-025 reference decisions", "Immutable DBA baseline", "No automatic transition to DQ-019 through DQ-021"],
+      "missing_inputs": [],
+      "decision_recorded": true,
+      "selected_token": "ADR-024=ACCEPT_STAGED_TELEMETRY_PRODUCTION_PATH",
+      "decided_by_ref": "zhangbin",
+      "decided_at": "2026-07-22T12:05:04+08:00",
+      "implementation_may_start": false,
+      "effects": {"reference_adopted": false, "architecture_frozen": false, "implementation_authorized": false, "commit_authorized": false, "push_authorized": false, "collector_selected": false, "backend_selected": false, "configuration_created": false, "endpoint_created": false, "runtime_created": false, "entity_created": false, "evidence_created": false, "permission_granted": false, "tests_executed": false, "deployment_authorized": false, "production_ready": false}
+    },
+    {
+      "decision_id": "DQ-018",
+      "decision_class": "IMPLEMENTATION_AUTHORIZATION",
+      "status": "DECIDED_IMPLEMENTATION_AUTHORIZED_PRECONDITIONS_PENDING",
+      "packet_status": "DECIDED_IMPLEMENTATION_AUTHORIZED_IMMUTABLE_BASELINE_AND_BEFORE_STATE_PENDING",
+      "question": "Authorize only DBOS-PR-2A Telemetry Admission Foundation after an immutable DBA baseline, without a network listener, Collector, Evidence, Agent, Runtime, or Permission?",
+      "next_human_action": "NONE_DECIDED",
+      "human_action_ready": false,
+      "recommended_option": "DQ-018=AUTHORIZE_DBOS_PR_2A_TELEMETRY_ADMISSION_FOUNDATION",
+      "decision_tokens": [
+        "DQ-018=AUTHORIZE_DBOS_PR_2A_TELEMETRY_ADMISSION_FOUNDATION",
+        "DQ-018=DEFER_DBOS_PR_2A_TELEMETRY_ADMISSION_FOUNDATION",
+        "DQ-018=REJECT_DBOS_PR_2A_TELEMETRY_ADMISSION_FOUNDATION"
+      ],
+      "artifact_bindings": [
+        {"path": "DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md", "sha256": "sha256:bbf207f1d8c9284f5c96328a856f0e76ec1a696ba9f134e2f3ba1510216c2c75"},
+        {"path": "DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.json", "sha256": "sha256:2fa13566a11bfbac05213f65a7b2ad1fa649a59b8ddfd98697a475595140f381"}
+      ],
+      "required_before_execution": ["Explicit DQ-018 human token and dbos_domain_owner_ref", "Immutable DBA baseline commit and exact tree", "Fresh DBOS base commit", "334 DBOS tests and 34 validators pass", "Exact implementation plan bound to DBA commit"],
+      "missing_inputs": ["IMMUTABLE_DBA_BASELINE", "FRESH_DBOS_BEFORE_STATE"],
+      "decision_recorded": true,
+      "selected_token": "DQ-018=AUTHORIZE_DBOS_PR_2A_TELEMETRY_ADMISSION_FOUNDATION",
+      "decided_by_ref": "zhangbin",
+      "decided_at": "2026-07-22T12:05:04+08:00",
+      "implementation_may_start": false,
+      "effects": {"reference_adopted": false, "architecture_frozen": false, "implementation_authorized": true, "commit_authorized": false, "push_authorized": false, "collector_selected": false, "backend_selected": false, "configuration_created": false, "endpoint_created": false, "runtime_created": false, "entity_created": false, "evidence_created": false, "permission_granted": false, "tests_executed": false, "deployment_authorized": false, "production_ready": false}
+    },
+    {
+      "decision_id": "DQ-019",
+      "decision_class": "PERSISTENCE_SELECTION_AND_IMPLEMENTATION",
+      "status": "BLOCKED_INPUT",
+      "packet_status": null,
+      "question": "Select a production persistence backend/profile and authorize an exact DBOS production persistence adapter scope?",
+      "next_human_action": "PROVIDE_INPUTS",
+      "human_action_ready": false,
+      "recommended_option": null,
+      "decision_tokens": [],
+      "artifact_bindings": [],
+      "required_before_execution": ["DQ-018 implementation and direct conformance evidence", "Backend candidate comparison", "RPO/RTO and security review", "Separate implementation authorization"],
+      "missing_inputs": ["BACKEND_CANDIDATES", "OWNER_AND_TOPOLOGY", "COST_AND_SECURITY_REVIEW", "RPO_RTO", "DQ_018_DIRECT_EVIDENCE"],
+      "decision_recorded": false,
+      "selected_token": null,
+      "decided_by_ref": null,
+      "decided_at": null,
+      "implementation_may_start": false,
+      "effects": {"reference_adopted": false, "architecture_frozen": false, "implementation_authorized": false, "commit_authorized": false, "push_authorized": false, "collector_selected": false, "backend_selected": false, "configuration_created": false, "endpoint_created": false, "runtime_created": false, "entity_created": false, "evidence_created": false, "permission_granted": false, "tests_executed": false, "deployment_authorized": false, "production_ready": false}
+    },
+    {
+      "decision_id": "DQ-020",
+      "decision_class": "COLLECTOR_STAGING_AUTHORIZATION",
+      "status": "BLOCKED_INPUT",
+      "packet_status": null,
+      "question": "Allow the pinned offline OTLP decoder to progress through authenticated loopback and Collector edge-to-gateway synthetic staging gates?",
+      "next_human_action": "PROVIDE_INPUTS",
+      "human_action_ready": false,
+      "recommended_option": null,
+      "decision_tokens": [],
+      "artifact_bindings": [],
+      "required_before_execution": ["DQ-018 and DQ-019 decisions and direct evidence", "DQ-022 through DQ-025 recorded decisions", "Exact deployment owner/repository/build/config/runtime/topology/security/capacity", "Exact metric/query/alert/route/runbook/rollback bindings", "Independent technical and security review"],
+      "missing_inputs": ["DQ_019_DECISION_AND_DIRECT_EVIDENCE", "COLLECTOR_PLATFORM_OWNER", "DEPLOYMENT_REPOSITORY", "EXACT_BUILD_CONFIG_RUNTIME_TOPOLOGY", "EXACT_OPERATIONAL_BINDINGS", "DIRECT_CONFORMANCE_RESULTS"],
+      "decision_recorded": false,
+      "selected_token": null,
+      "decided_by_ref": null,
+      "decided_at": null,
+      "implementation_may_start": false,
+      "effects": {"reference_adopted": false, "architecture_frozen": false, "implementation_authorized": false, "commit_authorized": false, "push_authorized": false, "collector_selected": false, "backend_selected": false, "configuration_created": false, "endpoint_created": false, "runtime_created": false, "entity_created": false, "evidence_created": false, "permission_granted": false, "tests_executed": false, "deployment_authorized": false, "production_ready": false}
+    },
+    {
+      "decision_id": "DQ-021",
+      "decision_class": "EVIDENCE_ADMISSION_IMPLEMENTATION",
+      "status": "BLOCKED_INPUT",
+      "packet_status": null,
+      "question": "Implement separate Telemetry-to-Evidence Admission after Identity Continuity, data governance, provenance, and Collector direct evidence gates?",
+      "next_human_action": "PROVIDE_INPUTS",
+      "human_action_ready": false,
+      "recommended_option": null,
+      "decision_tokens": [],
+      "artifact_bindings": [],
+      "required_before_execution": ["PR-G2I Identity Continuity", "Data Governance Gate", "P0 through P3 provenance policy", "DQ-018 and DQ-020 direct evidence", "Separate Evidence policy/schema/security/retention decision"],
+      "missing_inputs": ["IDENTITY_CONTINUITY_EVIDENCE", "DATA_GOVERNANCE_DECISION", "PROVENANCE_POLICY", "EVIDENCE_POLICY_SCHEMA_SECURITY_RETENTION", "DQ_018_AND_DQ_020_DIRECT_EVIDENCE"],
+      "decision_recorded": false,
+      "selected_token": null,
+      "decided_by_ref": null,
+      "decided_at": null,
+      "implementation_may_start": false,
+      "effects": {"reference_adopted": false, "architecture_frozen": false, "implementation_authorized": false, "commit_authorized": false, "push_authorized": false, "collector_selected": false, "backend_selected": false, "configuration_created": false, "endpoint_created": false, "runtime_created": false, "entity_created": false, "evidence_created": false, "permission_granted": false, "tests_executed": false, "deployment_authorized": false, "production_ready": false}
+    }
+  ],
+  "dependency_edges": [
+    {"from": "DQ-022", "to": "DQ-024", "kind": "REFERENCE_PRECEDENCE", "reason": "Schema and Resource transport bindings must use the adopted OTLP reference lane."},
+    {"from": "DQ-023", "to": "DQ-024", "kind": "REFERENCE_PRECEDENCE", "reason": "Schema transformation and Resource provenance must use the adopted semantic mapping lane."},
+    {"from": "IMMUTABLE_DBA_BASELINE", "to": "DQ-018", "kind": "REQUIRED_BEFORE_IMPLEMENTATION", "reason": "DBOS implementation must bind to an immutable reviewed DBA tree."},
+    {"from": "ADR-024", "to": "DQ-019", "kind": "REQUIRED_BEFORE_IMPLEMENTATION", "reason": "The production persistence stage may not start until the staged production architecture sequence is explicitly accepted."},
+    {"from": "DQ-018", "to": "DQ-019", "kind": "REQUIRED_BEFORE_IMPLEMENTATION", "reason": "Production persistence selection requires direct reference-conformance evidence from the bounded foundation."},
+    {"from": "DQ-018", "to": "DQ-020", "kind": "REQUIRED_BEFORE_DEPLOYMENT", "reason": "Authenticated listener and Collector staging reuse the admitted offline decoder and authority boundary."},
+    {"from": "DQ-019", "to": "DQ-020", "kind": "REQUIRED_BEFORE_DEPLOYMENT", "reason": "Collector staging cannot claim production durability without the selected canonical persistence boundary."},
+    {"from": "DQ-022", "to": "DQ-020", "kind": "REQUIRED_BEFORE_DEPLOYMENT", "reason": "Collector transport cases require the adopted OTLP reference."},
+    {"from": "DQ-023", "to": "DQ-020", "kind": "REQUIRED_BEFORE_DEPLOYMENT", "reason": "Collector transformation and observation cases require the adopted semantic mapping."},
+    {"from": "DQ-024", "to": "DQ-020", "kind": "REQUIRED_BEFORE_DEPLOYMENT", "reason": "Collector Resource and Schema handling require the adopted provenance boundary."},
+    {"from": "DQ-025", "to": "DQ-020", "kind": "REQUIRED_BEFORE_DEPLOYMENT", "reason": "A concrete Collector build cannot exist without a separately adopted architecture inventory."},
+    {"from": "PR-G2I", "to": "DQ-021", "kind": "REQUIRED_BEFORE_EVIDENCE_ADMISSION", "reason": "Telemetry material cannot become Evidence without proven DBOS Identity Continuity."},
+    {"from": "DATA_GOVERNANCE_GATE", "to": "DQ-021", "kind": "REQUIRED_BEFORE_EVIDENCE_ADMISSION", "reason": "Purpose, classification, retention, access, residency, and deletion policy must precede Evidence admission."},
+    {"from": "DQ-020", "to": "DQ-021", "kind": "REQUIRED_BEFORE_EVIDENCE_ADMISSION", "reason": "Evidence admission requires direct Collector delivery and provenance evidence, not a proposed profile."}
+  ],
+  "collision_rules": [
+    "Exactly one human decision token may be recorded per decision_id or ADR decision reference.",
+    "Every selected token requires decided_by_ref and decided_at; all six recorded decisions preserve those fields.",
+    "Reference adoption never authorizes implementation, build, configuration, deployment, or production use.",
+    "DQ-018 implementation authorization never authorizes DBA commit or push; Git authorization is separate.",
+    "DQ-025 architecture inventory adoption never selects, builds, or deploys a Collector distribution.",
+    "DQ-020 may not bypass DQ-018, DQ-019, or DQ-022 through DQ-025 with a health check or model recommendation.",
+    "Telemetry and observability backend records never become DBOS Evidence, Truth, Permission, or canonical facts by transport success.",
+    "A registry artifact is not an immutable baseline and cannot change a Decision Queue status automatically."
+  ],
+  "deferred_production_questions": [
+    {"question_id": "OBSERVABILITY_BACKEND_LIFECYCLE_BOUNDARY", "status": "DEFERRED_NO_ARTIFACT_NO_SELECTION", "reason_deferred": "OpenTelemetry is backend-neutral and no production backend owner, candidate, topology, or authorization exists.", "required_decision_binding": "DQ-020"},
+    {"question_id": "QUERY_ALERT_RUNBOOK_BINDING", "status": "DEFERRED_NO_ARTIFACT_NO_SELECTION", "reason_deferred": "Exact query, alert, route, and runbook artifacts must come from a selected deployment and measured workload.", "required_decision_binding": "DQ-020"},
+    {"question_id": "PRODUCTION_DATA_RETENTION_ACCESS_DELETION_MIGRATION", "status": "DEFERRED_NO_ARTIFACT_NO_SELECTION", "reason_deferred": "Retention, access, deletion, and migration require data classification, backend choice, and Evidence policy decisions.", "required_decision_binding": "DQ-021"}
+  ],
+  "current_effects": {"reference_adopted": true, "architecture_frozen": false, "implementation_authorized": true, "commit_authorized": true, "push_authorized": true, "collector_selected": false, "backend_selected": false, "configuration_created": false, "endpoint_created": false, "runtime_created": false, "entity_created": false, "evidence_created": false, "permission_granted": false, "tests_executed": false, "deployment_authorized": false, "production_ready": false},
+  "stop_rule": {
+    "new_technical_specification_allowed": false,
+    "next_allowed_input": "IMMUTABLE_DBA_BASELINE_THEN_FRESH_DBOS_BEFORE_STATE_AND_EXACT_DQ018_IMPLEMENTATION",
+    "automatic_state_transition_allowed": false,
+    "reason": "The exact human decisions and DBA commit/push authorization are recorded. The next legal transition is an immutable DBA baseline, followed by fresh DBOS before-state evidence and only the bounded DQ-018 implementation slice."
+  }
+}

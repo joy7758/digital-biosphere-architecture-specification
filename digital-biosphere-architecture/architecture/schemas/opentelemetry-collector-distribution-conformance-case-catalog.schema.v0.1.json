@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tmai:schema:opentelemetry-collector-distribution-conformance-case-catalog:0.1",
+  "title": "TMAI OpenTelemetry Collector Distribution Conformance Case Catalog v0.1",
+  "description": "Pre-registered fail-closed cases for source, component, configuration, runtime, resilience, and authority boundaries of the proposed minimal Collector distribution.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["catalog_schema_version", "catalog_id", "status", "decision_reference", "inventory_binding", "case_groups", "cases", "semantic_rules", "effects"],
+  "properties": {
+    "catalog_schema_version": {"const": "0.1"},
+    "catalog_id": {"const": "TMAI-OTEL-COLLECTOR-DISTRIBUTION-CONFORMANCE-0.1"},
+    "status": {"const": "ADOPTED_CONTRACT_NOT_EXECUTED"},
+    "decision_reference": {"const": "DQ-025"},
+    "inventory_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inventory_id", "inventory_path", "inventory_digest", "reference_release", "adoption_status"],
+      "properties": {
+        "inventory_id": {"const": "TMAI-OTEL-COLLECTOR-MINIMAL-INVENTORY-0.1"},
+        "inventory_path": {"const": "architecture/opentelemetry-collector-component-inventory.v0.1.json"},
+        "inventory_digest": {"type": "null"},
+        "reference_release": {"const": "v0.156.0@aa158b23c8f89d795b21a05a49b3978565dfebd4"},
+        "adoption_status": {"const": "ADOPTED_REFERENCE"}
+      }
+    },
+    "case_groups": {
+      "type": "array", "minItems": 8, "maxItems": 8, "uniqueItems": true,
+      "items": {"$ref": "#/$defs/caseGroup"}
+    },
+    "cases": {
+      "type": "array", "minItems": 48, "maxItems": 48, "uniqueItems": true,
+      "items": {"$ref": "#/$defs/case"}
+    },
+    "semantic_rules": {
+      "const": [
+        "Every required_case_id appears exactly once in cases and every case belongs to exactly one group.",
+        "PASS requires an adopted inventory plus exact build, configuration, environment, test, and reviewer bindings.",
+        "A component compiled into a binary is not enabled unless the approved configuration references it.",
+        "Unknown, failed, dropped, duplicate, partial, revoked, and not-assessed results remain visible.",
+        "No catalog or result object can adopt a distribution, build an artifact, open a listener, deploy a Collector, create Evidence, grant Permission, or close a production gate."
+      ]
+    },
+    "effects": {"$ref": "#/$defs/noEffects"}
+  },
+  "$defs": {
+    "caseId": {"type": "string", "pattern": "^ODC-CF-[A-Z]{3,8}-[0-9]{3}$"},
+    "groupId": {"enum": ["ODC-CG-SOURCE", "ODC-CG-ALLOWLIST", "ODC-CG-CONFIG", "ODC-CG-SECURITY", "ODC-CG-DURABILITY", "ODC-CG-OPERABILITY", "ODC-CG-CAPACITY_HA", "ODC-CG-AUTHORITY"]},
+    "caseGroup": {
+      "type": "object", "additionalProperties": false,
+      "required": ["group_id", "title", "purpose", "required_case_ids", "required_for_gates"],
+      "properties": {
+        "group_id": {"$ref": "#/$defs/groupId"},
+        "title": {"type": "string", "minLength": 1},
+        "purpose": {"type": "string", "minLength": 1},
+        "required_case_ids": {"type": "array", "minItems": 4, "maxItems": 8, "uniqueItems": true, "items": {"$ref": "#/$defs/caseId"}},
+        "required_for_gates": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["DQ-025", "DQ-020", "PR-G3", "PR-G5", "PR-G6"]}}
+      }
+    },
+    "case": {
+      "type": "object", "additionalProperties": false,
+      "required": ["case_id", "group_id", "title", "case_class", "stimulus", "expected_outcome", "required_assertions", "required_evidence", "decision_prerequisites", "current_execution_status"],
+      "properties": {
+        "case_id": {"$ref": "#/$defs/caseId"},
+        "group_id": {"$ref": "#/$defs/groupId"},
+        "title": {"type": "string", "minLength": 1},
+        "case_class": {"enum": ["POSITIVE", "NEGATIVE", "FAULT", "SECURITY", "RECOVERY", "CAPACITY", "AUTHORITY"]},
+        "stimulus": {"type": "string", "minLength": 1, "maxLength": 2048},
+        "expected_outcome": {"enum": ["ACCEPT_WITH_BINDING", "REJECT_WITH_DIAGNOSTIC", "BLOCK_AND_RETAIN", "RECOVER_WITH_ACCOUNTING", "DEGRADE_WITH_ACCOUNTING", "NO_AUTHORITY_EFFECT"]},
+        "required_assertions": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "required_evidence": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "decision_prerequisites": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"enum": ["DQ-025", "DQ-022", "DQ-023", "DQ-024", "DQ-018", "DQ-020"]}},
+        "current_execution_status": {"const": "NOT_EXECUTED"}
+      }
+    },
+    "noEffects": {
+      "type": "object", "additionalProperties": false,
+      "required": ["adopts_distribution", "builds_artifact", "creates_configuration", "opens_listener", "deploys_collector", "collects_telemetry", "creates_evidence", "grants_permission", "authorizes_implementation", "authorizes_deployment", "closes_production_gate", "declares_production_ready"],
+      "properties": {
+        "adopts_distribution": {"const": false}, "builds_artifact": {"const": false}, "creates_configuration": {"const": false}, "opens_listener": {"const": false}, "deploys_collector": {"const": false}, "collects_telemetry": {"const": false}, "creates_evidence": {"const": false}, "grants_permission": {"const": false}, "authorizes_implementation": {"const": false}, "authorizes_deployment": {"const": false}, "closes_production_gate": {"const": false}, "declares_production_ready": {"const": false}
+      }
+    }
+  }
+}

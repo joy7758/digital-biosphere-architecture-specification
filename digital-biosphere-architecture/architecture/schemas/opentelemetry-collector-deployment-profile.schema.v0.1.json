@@ -1,0 +1,354 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:tmai:schema:opentelemetry-collector-deployment-profile:0.1",
+  "title": "TMAI OpenTelemetry Collector Deployment Profile v0.1",
+  "description": "Fail-closed architecture contract for one proposed staging deployment profile. It is not Collector configuration, implementation authorization, deployment authorization, or production evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "profile_schema_version",
+    "profile_id",
+    "status",
+    "observed_at",
+    "primary_repository",
+    "decision_binding",
+    "scope",
+    "reference_bindings",
+    "topology",
+    "network_and_identity",
+    "configuration_contract",
+    "pipeline_contract",
+    "transport_limits",
+    "durability_and_delivery",
+    "runtime_security",
+    "self_observation",
+    "capacity_and_ha",
+    "change_and_rollback",
+    "validation_reuse",
+    "unresolved_inputs",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "schemas/opentelemetry-collector-deployment-profile.schema.v0.1.json"},
+    "profile_schema_version": {"const": "0.1"},
+    "profile_id": {"const": "TMAI-OTEL-COLLECTOR-DEPLOYMENT-PROFILE-0.1"},
+    "status": {"const": "PROPOSED_DQ_020_INPUT_NOT_AUTHORIZED_NOT_CONFIGURED_NOT_DEPLOYED"},
+    "observed_at": {"const": "2026-07-22"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "decision_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deployment_decision", "deployment_decision_status", "required_architecture_decisions", "required_implementation_decisions", "decided_by_ref", "decided_at", "implementation_authorized", "deployment_authorized"],
+      "properties": {
+        "deployment_decision": {"const": "DQ-020"},
+        "deployment_decision_status": {"const": "BLOCKED_INPUT"},
+        "required_architecture_decisions": {"const": ["DQ-022", "DQ-023", "DQ-024", "DQ-025"]},
+        "required_implementation_decisions": {"const": ["DQ-018", "DQ-019"]},
+        "decided_by_ref": {"type": "null"},
+        "decided_at": {"type": "null"},
+        "implementation_authorized": {"const": false},
+        "deployment_authorized": {"const": false}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["production_profile_id", "environment_class", "tenant_model", "public_ingress_allowed", "production_traffic_allowed", "real_customer_data_allowed", "staging_input_policy", "unlabeled_or_unapproved_input_action", "evidence_critical_sole_path_allowed"],
+      "properties": {
+        "production_profile_id": {"const": "TMAI-SELF-HOSTED-SINGLE-TENANT-1"},
+        "environment_class": {"const": "STAGING_CANDIDATE_ONLY"},
+        "tenant_model": {"const": "SINGLE_TENANT"},
+        "public_ingress_allowed": {"const": false},
+        "production_traffic_allowed": {"const": false},
+        "real_customer_data_allowed": {"const": false},
+        "staging_input_policy": {"const": "APPROVED_SYNTHETIC_FIXTURES_ONLY"},
+        "unlabeled_or_unapproved_input_action": {"const": "REJECT_AND_RETAIN_BOUNDED_DIAGNOSTIC"},
+        "evidence_critical_sole_path_allowed": {"const": false}
+      }
+    },
+    "reference_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["collector_distribution_profile_ref", "collector_inventory_ref", "collector_release_reference", "otlp_reference", "semantic_reference", "schema_resource_entity_reference", "distribution_adopted", "otlp_reference_adopted", "semantic_reference_adopted", "schema_resource_entity_reference_adopted"],
+      "properties": {
+        "collector_distribution_profile_ref": {"const": "opentelemetry-collector-distribution-profile.md"},
+        "collector_inventory_ref": {"const": "opentelemetry-collector-component-inventory.v0.1.json"},
+        "collector_release_reference": {"const": "v0.156.0@aa158b23c8f89d795b21a05a49b3978565dfebd4"},
+        "otlp_reference": {"const": "v1.11.0@790608c4d51e6ffc12210b541e8514cbed9e91a4"},
+        "semantic_reference": {"const": "core-v1.43.0-and-pinned-development-genai-2e994c6d"},
+        "schema_resource_entity_reference": {"const": "otel-spec-v1.59.0-and-core-schema-1.43.0-candidate"},
+        "distribution_adopted": {"const": false},
+        "otlp_reference_adopted": {"const": false},
+        "semantic_reference_adopted": {"const": false},
+        "schema_resource_entity_reference_adopted": {"const": false}
+      }
+    },
+    "topology": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_pattern", "edge_collector_tier", "gateway_tier", "load_balancer", "topology_digest"],
+      "properties": {
+        "candidate_pattern": {"const": "OPTIONAL_EDGE_COLLECTOR_TO_GATEWAY"},
+        "edge_collector_tier": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["selection", "horizontal_scaling", "remote_management_allowed", "opamp_allowed"],
+          "properties": {
+            "selection": {"const": "OPTIONAL_NOT_SELECTED"},
+            "horizontal_scaling": {"const": "NOT_APPLICABLE_PER_WORKLOAD_LOCALITY"},
+            "remote_management_allowed": {"const": false},
+            "opamp_allowed": {"const": false}
+          }
+        },
+        "gateway_tier": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["selection", "minimum_candidate_replicas", "declared_failure_domains", "anti_affinity_or_equivalent_required", "stateful_processors_allowed", "only_local_state_exception", "per_replica_wal_required", "shared_wal_allowed"],
+          "properties": {
+            "selection": {"const": "REQUIRED_ONLY_AT_G3E_AFTER_PRIOR_GATES"},
+            "minimum_candidate_replicas": {"const": 2},
+            "declared_failure_domains": {"type": "null"},
+            "anti_affinity_or_equivalent_required": {"const": true},
+            "stateful_processors_allowed": {"const": false},
+            "only_local_state_exception": {"const": "PER_EXPORTER_QUEUE_AND_PER_REPLICA_WAL"},
+            "per_replica_wal_required": {"const": true},
+            "shared_wal_allowed": {"const": false}
+          }
+        },
+        "load_balancer": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["selected", "implementation_reference", "public_address_allowed", "readiness_source", "startup_predicate", "minimum_readiness_predicates", "readiness_thresholds_selected", "health_check_extension_is_sufficient"],
+          "properties": {
+            "selected": {"const": false},
+            "implementation_reference": {"type": "null"},
+            "public_address_allowed": {"const": false},
+            "readiness_source": {"const": "EXTERNAL_COMPOSITE_POLICY_REQUIRED"},
+            "startup_predicate": {"const": "PROCESS_STARTED_AND_APPROVED_CONFIG_LOADED_ONLY"},
+            "minimum_readiness_predicates": {"const": ["PROCESS_RUNNING", "APPROVED_CONFIG_DIGEST_MATCH", "AUTHENTICATED_LISTENER_ACCEPTING_WITHIN_SCOPE", "QUEUE_UTILIZATION_BELOW_CRITICAL_THRESHOLD", "WAL_WRITABLE_WITHIN_QUOTA", "REQUIRED_EXPORTER_REACHABLE_WITHIN_OUTAGE_BUDGET", "SELF_TELEMETRY_FRESH", "NO_BLOCKING_CONFIG_OR_SECURITY_DRIFT"]},
+            "readiness_thresholds_selected": {"const": false},
+            "health_check_extension_is_sufficient": {"const": false}
+          }
+        },
+        "topology_digest": {"type": "null"}
+      }
+    },
+    "network_and_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["first_listener_stage", "loopback_binding_required_at_g3d", "unspecified_address_allowed", "gateway_network_binding", "protocol_candidates", "transport_encryption", "mutual_authentication", "native_mtls_without_auth_extension_candidate", "authentication_extension_compiled", "source_network_allowlist_required", "tenant_identity_binding_required", "certificate_rotation_and_revocation_test_required", "listener_endpoint_references", "certificate_references", "network_policy_references"],
+      "properties": {
+        "first_listener_stage": {"const": "G3D_AUTHENTICATED_EXPLICIT_LOOPBACK_ONLY"},
+        "loopback_binding_required_at_g3d": {"const": true},
+        "unspecified_address_allowed": {"const": false},
+        "gateway_network_binding": {"const": "NOT_SELECTED_REQUIRES_EXPLICIT_INTERFACE_AND_NETWORK_POLICY"},
+        "protocol_candidates": {"const": ["OTLP_GRPC", "OTLP_HTTP_PROTOBUF"]},
+        "transport_encryption": {"const": "TLS_REQUIRED"},
+        "mutual_authentication": {"const": "MTLS_OR_EQUIVALENT_WORKLOAD_IDENTITY_REQUIRED"},
+        "native_mtls_without_auth_extension_candidate": {"const": true},
+        "authentication_extension_compiled": {"const": false},
+        "source_network_allowlist_required": {"const": true},
+        "tenant_identity_binding_required": {"const": true},
+        "certificate_rotation_and_revocation_test_required": {"const": true},
+        "listener_endpoint_references": {"$ref": "#/$defs/emptyArray"},
+        "certificate_references": {"$ref": "#/$defs/emptyArray"},
+        "network_policy_references": {"$ref": "#/$defs/emptyArray"}
+      }
+    },
+    "configuration_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["configuration_created", "desired_configuration_digest", "running_configuration_digest", "allowed_config_providers", "remote_config_provider_allowed", "opamp_remote_configuration_allowed", "update_mechanism", "single_reviewed_local_root_required", "unknown_or_ignored_fields_allowed", "secret_values_in_source_allowed", "secret_references_required", "environment_may_change_component_graph", "environment_may_change_listener_scope", "environment_may_change_processor_order", "environment_may_change_authority_policy", "normalized_redacted_digest_required", "desired_running_drift_action"],
+      "properties": {
+        "configuration_created": {"const": false},
+        "desired_configuration_digest": {"type": "null"},
+        "running_configuration_digest": {"type": "null"},
+        "allowed_config_providers": {"const": ["file", "env"]},
+        "remote_config_provider_allowed": {"const": false},
+        "opamp_remote_configuration_allowed": {"const": false},
+        "update_mechanism": {"const": "IMMUTABLE_VERSIONED_CONFIG_CANARY_ROLLOUT_AND_RESTART_ONLY"},
+        "single_reviewed_local_root_required": {"const": true},
+        "unknown_or_ignored_fields_allowed": {"const": false},
+        "secret_values_in_source_allowed": {"const": false},
+        "secret_references_required": {"const": true},
+        "environment_may_change_component_graph": {"const": false},
+        "environment_may_change_listener_scope": {"const": false},
+        "environment_may_change_processor_order": {"const": false},
+        "environment_may_change_authority_policy": {"const": false},
+        "normalized_redacted_digest_required": {"const": true},
+        "desired_running_drift_action": {"const": "DEGRADE_AND_REVIEW_NO_AUTO_PROMOTION"}
+      }
+    },
+    "pipeline_contract": {"$ref": "#/$defs/pipelineContract"},
+    "transport_limits": {"$ref": "#/$defs/transportLimits"},
+    "durability_and_delivery": {"$ref": "#/$defs/durability"},
+    "runtime_security": {"$ref": "#/$defs/runtimeSecurity"},
+    "self_observation": {"$ref": "#/$defs/selfObservation"},
+    "capacity_and_ha": {"$ref": "#/$defs/capacity"},
+    "change_and_rollback": {"$ref": "#/$defs/changeRollback"},
+    "validation_reuse": {"$ref": "#/$defs/validationReuse"},
+    "unresolved_inputs": {
+      "type": "array",
+      "minItems": 16,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[A-Z0-9_]+$"},
+      "contains": {"const": "COLLECTOR_PLATFORM_OWNER"}
+    },
+    "effects": {"$ref": "#/$defs/noEffects"}
+  },
+  "$defs": {
+    "emptyArray": {"type": "array", "maxItems": 0},
+    "nullableBudget": {"type": ["number", "integer", "string", "null"]},
+    "pipelineContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["signals", "profiles_signal_allowed", "content_capture_default", "processor_order", "memory_limiter", "transform", "batch", "destination_isolation_required", "unused_compiled_components_must_remain_inactive"],
+      "properties": {
+        "signals": {"const": ["traces", "metrics", "logs"]},
+        "profiles_signal_allowed": {"const": false},
+        "content_capture_default": {"const": "DISABLED"},
+        "processor_order": {"const": ["memory_limiter", "transform", "batch"]},
+        "memory_limiter": {
+          "type": "object", "additionalProperties": false,
+          "required": ["required_first", "soft_limit", "hard_limit", "refusal_must_be_accounted"],
+          "properties": {"required_first": {"const": true}, "soft_limit": {"type": "null"}, "hard_limit": {"type": "null"}, "refusal_must_be_accounted": {"const": true}}
+        },
+        "transform": {
+          "type": "object", "additionalProperties": false,
+          "required": ["compiled", "g3d_activation", "g3e_activation", "activation_authority", "error_mode_if_enabled", "program_digest", "authority_namespace_mutation_allowed", "untrusted_ingress_allowed_before_conformance"],
+          "properties": {
+            "compiled": {"const": true},
+            "g3d_activation": {"const": "DISABLED_SYNTHETIC_TRANSPORT_ONLY_UNTIL_CFG_CASES_PASS"},
+            "g3e_activation": {"const": "REQUIRED_ONLY_AFTER_CFG_004_CFG_005_CFG_006_PASS"},
+            "activation_authority": {"const": "HUMAN_APPROVED_VERSIONED_CONFIG_AFTER_STATIC_SECURITY_AND_SYNTHETIC_REPLAY_GATES"},
+            "error_mode_if_enabled": {"const": "propagate"},
+            "program_digest": {"type": "null"},
+            "authority_namespace_mutation_allowed": {"const": false},
+            "untrusted_ingress_allowed_before_conformance": {"const": false}
+          }
+        },
+        "batch": {
+          "type": "object", "additionalProperties": false,
+          "required": ["required_after_transform", "cross_tenant_batching_allowed", "size_budget", "timeout_budget"],
+          "properties": {"required_after_transform": {"const": true}, "cross_tenant_batching_allowed": {"const": false}, "size_budget": {"type": "null"}, "timeout_budget": {"type": "null"}}
+        },
+        "destination_isolation_required": {"const": true},
+        "unused_compiled_components_must_remain_inactive": {"const": true}
+      }
+    },
+    "transportLimits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["all_limits_must_be_explicit", "grpc_request_bytes", "grpc_response_bytes", "http_request_bytes", "http_response_bytes", "decompressed_bytes", "items_per_request", "concurrent_requests", "connections", "request_rate", "request_timeout", "recommended_request_baseline_bytes", "recommended_response_baseline_bytes", "deviation_requires_capacity_and_security_rationale"],
+      "properties": {
+        "all_limits_must_be_explicit": {"const": true},
+        "grpc_request_bytes": {"type": "null"}, "grpc_response_bytes": {"type": "null"},
+        "http_request_bytes": {"type": "null"}, "http_response_bytes": {"type": "null"},
+        "decompressed_bytes": {"type": "null"}, "items_per_request": {"type": "null"},
+        "concurrent_requests": {"type": "null"}, "connections": {"type": "null"},
+        "request_rate": {"type": "null"}, "request_timeout": {"type": "null"},
+        "recommended_request_baseline_bytes": {"const": 67108864},
+        "recommended_response_baseline_bytes": {"const": 4194304},
+        "deviation_requires_capacity_and_security_rationale": {"const": true}
+      }
+    },
+    "durability": {
+      "type": "object", "additionalProperties": false,
+      "required": ["default_candidate_class", "message_queue_selected", "per_destination_sending_queue_required", "per_destination_retry_budget_required", "per_replica_file_storage_namespace_required", "exclusive_wal_writer_required", "wal_directory_references", "queue_capacity", "maximum_retry_elapsed", "maximum_downstream_outage_budget", "disk_budget", "retention_budget", "unknown_delivery_must_be_retained", "duplicate_possible_must_be_retained", "exactly_once_claim_allowed", "collector_wal_is_dbos_canonical_store", "collector_wal_proves_rpo_zero"],
+      "properties": {
+        "default_candidate_class": {"const": "Q1_FILE_WAL"}, "message_queue_selected": {"const": false},
+        "per_destination_sending_queue_required": {"const": true}, "per_destination_retry_budget_required": {"const": true},
+        "per_replica_file_storage_namespace_required": {"const": true}, "exclusive_wal_writer_required": {"const": true},
+        "wal_directory_references": {"$ref": "#/$defs/emptyArray"},
+        "queue_capacity": {"type": "null"}, "maximum_retry_elapsed": {"type": "null"},
+        "maximum_downstream_outage_budget": {"type": "null"}, "disk_budget": {"type": "null"}, "retention_budget": {"type": "null"},
+        "unknown_delivery_must_be_retained": {"const": true}, "duplicate_possible_must_be_retained": {"const": true},
+        "exactly_once_claim_allowed": {"const": false}, "collector_wal_is_dbos_canonical_store": {"const": false}, "collector_wal_proves_rpo_zero": {"const": false}
+      }
+    },
+    "runtimeSecurity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["runtime_selected", "run_as_non_root_required", "read_only_root_filesystem_required", "drop_os_capabilities_required", "confinement_profile_required", "only_wal_path_writable", "privileged_host_access_allowed", "synthetic_fixture_source_allowlist_required", "secret_canary_test_required", "sensitive_content_negative_test_required", "decompression_bomb_test_required", "image_digest", "runtime_environment_digest"],
+      "properties": {
+        "runtime_selected": {"const": false}, "run_as_non_root_required": {"const": true}, "read_only_root_filesystem_required": {"const": true},
+        "drop_os_capabilities_required": {"const": true}, "confinement_profile_required": {"const": true}, "only_wal_path_writable": {"const": true},
+        "privileged_host_access_allowed": {"const": false}, "secret_canary_test_required": {"const": true},
+        "synthetic_fixture_source_allowlist_required": {"const": true},
+        "sensitive_content_negative_test_required": {"const": true}, "decompression_bomb_test_required": {"const": true},
+        "image_digest": {"type": "null"}, "runtime_environment_digest": {"type": "null"}
+      }
+    },
+    "selfObservation": {
+      "type": "object", "additionalProperties": false,
+      "required": ["independent_failure_path_required", "internal_metrics", "internal_logs", "internal_traces", "internal_telemetry_schema_status", "high_cardinality_labels_allowed", "health_extension_role", "health_extension_can_drive_readiness_alone", "profile_effects_may_transition_to_true", "health_endpoint_reference", "self_telemetry_destination_reference"],
+      "properties": {
+        "independent_failure_path_required": {"const": true},
+        "internal_metrics": {"const": "REQUIRED_RESTRICTED_INTERFACE_EXACT_ENDPOINT_NOT_SELECTED"},
+        "internal_logs": {"const": "REQUIRED_BOUNDED_NO_SECRET_OUTPUT"},
+        "internal_traces": {"const": "DISABLED_EXPERIMENTAL_NOT_IN_BASELINE"},
+        "internal_telemetry_schema_status": {"const": "DEVELOPMENT_MUST_BE_VERSION_BOUND"},
+        "high_cardinality_labels_allowed": {"const": false},
+        "health_extension_role": {"const": "ALPHA_LIVENESS_SIGNAL_ONLY"},
+        "health_extension_can_drive_readiness_alone": {"const": false},
+        "profile_effects_may_transition_to_true": {"const": false},
+        "health_endpoint_reference": {"type": "null"}, "self_telemetry_destination_reference": {"type": "null"}
+      }
+    },
+    "capacity": {
+      "type": "object", "additionalProperties": false,
+      "required": ["workload_profile_selected", "expected_items_per_second", "peak_items_per_second", "expected_bytes_per_second", "peak_bytes_per_second", "cpu_budget", "memory_budget", "disk_budget", "network_budget", "high_cardinality_budget", "required_load_multipliers", "first_refusal_or_drop_point_must_be_measured", "automatic_scaling_selected", "cpu_only_scaling_allowed", "queue_refusal_memory_and_backend_signals_required", "metric_single_writer_required", "scale_in_requires_drain_and_residue_accounting"],
+      "properties": {
+        "workload_profile_selected": {"const": false},
+        "expected_items_per_second": {"type": "null"}, "peak_items_per_second": {"type": "null"},
+        "expected_bytes_per_second": {"type": "null"}, "peak_bytes_per_second": {"type": "null"},
+        "cpu_budget": {"type": "null"}, "memory_budget": {"type": "null"}, "disk_budget": {"type": "null"},
+        "network_budget": {"type": "null"}, "high_cardinality_budget": {"type": "null"},
+        "required_load_multipliers": {"const": [1, 2, 5]},
+        "first_refusal_or_drop_point_must_be_measured": {"const": true}, "automatic_scaling_selected": {"const": false},
+        "cpu_only_scaling_allowed": {"const": false}, "queue_refusal_memory_and_backend_signals_required": {"const": true},
+        "metric_single_writer_required": {"const": true}, "scale_in_requires_drain_and_residue_accounting": {"const": true}
+      }
+    },
+    "changeRollback": {
+      "type": "object", "additionalProperties": false,
+      "required": ["configuration_lifecycle", "direct_production_edit_allowed", "hot_reload_may_bypass_review", "canary_required", "drain_before_scale_in_or_upgrade_required", "exact_prior_digest_rollback_required", "failure_history_must_be_retained", "rollback_artifact_references"],
+      "properties": {
+        "configuration_lifecycle": {"const": ["PROPOSED", "STATIC_VALIDATED", "SECURITY_REVIEWED", "SYNTHETIC_REPLAY_PASS", "STAGING_CANARY", "STAGING_SOAK_PASS", "HUMAN_APPROVED"]},
+        "direct_production_edit_allowed": {"const": false}, "hot_reload_may_bypass_review": {"const": false},
+        "canary_required": {"const": true}, "drain_before_scale_in_or_upgrade_required": {"const": true},
+        "exact_prior_digest_rollback_required": {"const": true}, "failure_history_must_be_retained": {"const": true},
+        "rollback_artifact_references": {"$ref": "#/$defs/emptyArray"}
+      }
+    },
+    "validationReuse": {
+      "type": "object", "additionalProperties": false,
+      "required": ["new_conformance_catalog_created", "collector_distribution_catalog_ref", "collector_distribution_required_case_count", "collector_distribution_cases_executed", "otlp_catalog_ref", "otlp_required_case_count", "otlp_cases_executed", "semantic_catalog_ref", "semantic_required_case_count", "semantic_cases_executed", "schema_resource_entity_catalog_ref", "schema_resource_entity_required_case_count", "schema_resource_entity_cases_executed", "production_gate_profile_ref", "readiness_matrix_ref"],
+      "properties": {
+        "new_conformance_catalog_created": {"const": false},
+        "collector_distribution_catalog_ref": {"const": "opentelemetry-collector-distribution-conformance-cases.v0.1.json"},
+        "collector_distribution_required_case_count": {"const": 48}, "collector_distribution_cases_executed": {"const": 0},
+        "otlp_catalog_ref": {"const": "otlp-v1.11-conformance-cases.v0.1.json"},
+        "otlp_required_case_count": {"const": 56}, "otlp_cases_executed": {"const": 0},
+        "semantic_catalog_ref": {"const": "opentelemetry-semantic-conformance-cases.v0.1.json"},
+        "semantic_required_case_count": {"const": 46}, "semantic_cases_executed": {"const": 0},
+        "schema_resource_entity_catalog_ref": {"const": "opentelemetry-schema-resource-conformance-cases.v0.1.json"},
+        "schema_resource_entity_required_case_count": {"const": 45}, "schema_resource_entity_cases_executed": {"const": 0},
+        "production_gate_profile_ref": {"const": "production-gate-evidence-profiles.v0.1.json"},
+        "readiness_matrix_ref": {"const": "opentelemetry-collector-deployment-readiness-matrix.md"}
+      }
+    },
+    "noEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["creates_configuration", "builds_artifact", "opens_listener", "deploys_collector", "collects_telemetry", "creates_runtime", "creates_agent", "creates_entity", "creates_evidence", "grants_permission", "authorizes_implementation", "authorizes_deployment", "closes_production_gate", "declares_production_ready"],
+      "properties": {
+        "creates_configuration": {"const": false}, "builds_artifact": {"const": false}, "opens_listener": {"const": false},
+        "deploys_collector": {"const": false}, "collects_telemetry": {"const": false}, "creates_runtime": {"const": false},
+        "creates_agent": {"const": false}, "creates_entity": {"const": false}, "creates_evidence": {"const": false},
+        "grants_permission": {"const": false}, "authorizes_implementation": {"const": false}, "authorizes_deployment": {"const": false},
+        "closes_production_gate": {"const": false}, "declares_production_ready": {"const": false}
+      }
+    }
+  }
+}
