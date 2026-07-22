@@ -1,0 +1,40 @@
+{
+  "schema_version": "0.1",
+  "receipt_id": "TMAI-DBA-SITE-SUPPLY-CHAIN-HARDENING-20260722-001",
+  "observed_at": "2026-07-22",
+  "trigger_commit": "cddd0c7600bf3615cef4f9be381e16c98a701c2b",
+  "initial_audit": {"critical": 0, "high": 6, "moderate": 1, "total": 7},
+  "resolution": {
+    "strategy": "EXACT_TRANSITIVE_OVERRIDES_NO_FORCE_DOWNGRADE",
+    "overrides": {
+      "fast-uri": "3.1.4",
+      "postcss": "8.5.22",
+      "sharp": "0.35.3"
+    },
+    "npm_audit_fix_force_used": false
+  },
+  "file_bindings": {
+    "site_package_json_sha256": "e78a322a1580090e4dab22458d4e1df9572d5ae66557793a4cd0d04efd0ae136",
+    "site_package_lock_json_sha256": "4f179b1107a3a3f18aa906ebd19f952a9a4d190b1ad7123cba0a6884e3a312fd"
+  },
+  "environment": {"node": "v26.0.0", "npm": "11.12.1", "platform": "Darwin-arm64"},
+  "validation": {
+    "npm_ci": "PASS",
+    "npm_audit": {"critical": 0, "high": 0, "moderate": 0, "total": 0},
+    "site_build": "PASS",
+    "site_tests": "11/11 PASS",
+    "site_lint": "PASS"
+  },
+  "effects": {
+    "site_deployed": false,
+    "release_created": false,
+    "dbos_modified": false,
+    "saee_modified": false,
+    "runtime_created": false,
+    "agent_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "evidence_created": false,
+    "production_ready": false
+  }
+}
