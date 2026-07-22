@@ -1,0 +1,81 @@
+{
+  "schema_version": "0.1",
+  "supplement_id": "TMAI-PR-G2A-CURRENT-SOURCE-LOAD-REBASE-SUPPLEMENT-20260723-009",
+  "observed_at": "2026-07-23T06:25:00+08:00",
+  "decision_reference": "DQ-018",
+  "review_gate": "PR-G2A",
+  "result_semantics": "REFERENCE_ONLY_CURRENT_SOURCE_FULL_EMULATED_LOAD_REBASE_NOT_NATIVE_NOT_SLO_NOT_DECISION_NOT_GATE_APPROVAL_NOT_PRODUCTION_READY",
+  "dbos_remote_binding": {
+    "repository": "https://github.com/joy7758/digital-biosphere-os.git",
+    "branch": "codex/telemetry-admission-foundation",
+    "implementation_source_commit": "23c8f0878058f29e733b6f164572ac157c6c7d1c",
+    "implementation_tree": "27703ed64d6e885a2933a5a39139a59bab83c3c1",
+    "implementation_manifest_sha256": "43382e4274c19ef6b10ee6e76f36ddddc18f05b7dfaedfdca43ddd8d3f2abc8c",
+    "implementation_manifest_file_count": 58,
+    "implementation_manifest_bytes": 726068,
+    "receipt_commit": "3f5b848fa42a4e35770d5534f36f509f02eb7bf7",
+    "receipt_tree": "81321436a1619ee6fdad7edd16df11fc4c649fb5",
+    "fresh_remote_clean_clone": true,
+    "remote_head_matched_receipt_commit": true,
+    "clean_before_and_after": true,
+    "report_markdown": {"path": "reports/telemetry-admission-foundation/DBOS-PR-2A-CURRENT-SOURCE-LOAD-REBASE-2026-07-23.md", "bytes": 6239, "sha256": "f48856a2f47a80ab2b16f1af8ccaa89e24f4edb81eaefef36610d5728a5dc793"},
+    "report_json": {"path": "reports/telemetry-admission-foundation/DBOS-PR-2A-CURRENT-SOURCE-LOAD-REBASE-2026-07-23.json", "bytes": 8127, "sha256": "49fe1b84d09c4ebb3c2ff88bbb1b1d485044317b4f5f1ebb47e73a4c4204695a"},
+    "remote_clone_local_links": 75,
+    "report_artifact_bindings": "PASS"
+  },
+  "measurement_contract": {
+    "revision": "0.1.1",
+    "digest": "sha256:80f37f4ec370b84f71da2615f43d170ecbb76f2fc296df93078be18941bf9fe6",
+    "result_semantics": "CHARACTERIZATION_NOT_SLO"
+  },
+  "validation": {
+    "execution_mode": "EMULATED_LINUX_AMD64_ON_ARM64_HOST",
+    "native_linux_x86_64_validated": false,
+    "all_five_cases_integrity": "PASS",
+    "all_five_cases_source_binding": "PASS",
+    "all_case_authority_effects_false": true,
+    "ta_p001": {"operations": 10000, "wall_seconds": 301.217194, "p95_ms": 35.769773},
+    "ta_p002": {"confirmed_retries": 10000, "duplicate_accuracy": 1.0, "lifecycle_growth": 0},
+    "ta_p003": {"operations": 18953, "errors": {}, "observed_operations_per_second": 63.076226186627956, "p95_ms": 276.034217},
+    "ta_p004": {"restore_passes": 10, "restore_pass_rate": 1.0, "writer_errors": []},
+    "ta_p005": {"operations": 13532, "wall_seconds": 3600.19434, "derived_operations_per_second": 3.7586859824906007, "periodic_integrity_checks": 59, "periodic_integrity_passes": 59, "final_integrity": "PASS", "errors": {}, "p95_ms": 70.085335}
+  },
+  "current_source_scope": {
+    "full_ta_p001_to_ta_p005_rebase_complete": true,
+    "native_linux_x86_64_validated": false,
+    "pr_g2a_current_source_packet_refresh_required": true,
+    "pr_g2a_ready_for_human_review": false
+  },
+  "agent_recommendation": {
+    "status": "CONDITIONALLY_RECOMMENDED",
+    "recommended_as": "CURRENT_EXACT_SOURCE_OFFLINE_OBSERVER_EFFECT_HARDENED_EMULATED_AMD64_LOAD_CHARACTERIZATION",
+    "not_recommended_as": "NATIVE_X86_64_CAPACITY_SLO_PRODUCTION_DURABILITY_OR_PRODUCTION_READINESS_EVIDENCE"
+  },
+  "decision_state": {
+    "selected_token": null,
+    "decided_by_ref": null,
+    "pr_g2a_human_review_approved": false,
+    "dq_019_status": "BLOCKED_INPUT",
+    "dq_020_status": "BLOCKED_INPUT",
+    "dq_021_status": "BLOCKED_INPUT",
+    "full_pr_g2_ready": false,
+    "production_ready": false
+  },
+  "effects": {
+    "pr_created": false,
+    "merge_performed": false,
+    "main_modified": false,
+    "release_created": false,
+    "deployment_performed": false,
+    "collector_built": false,
+    "listener_created": false,
+    "database_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "saee_output_created": false,
+    "gate_state_changed": false
+  }
+}
