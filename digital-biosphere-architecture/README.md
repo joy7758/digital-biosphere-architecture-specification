@@ -449,9 +449,10 @@ Schema/Resource precedence != Trust Authority
 | [`DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md`](DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md) / [JSON](DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.json) | exact 人工决策输入与机器可读投影 | `DECIDED_IMPLEMENTED_PR_G2A_REVIEW_READY` |
 | [`DBOS-PR-2A-GIT-AUTHORIZATION-RECORD.md`](DBOS-PR-2A-GIT-AUTHORIZATION-RECORD.md) / [JSON](DBOS-PR-2A-GIT-AUTHORIZATION-RECORD.json) | predecessor exact Git 回执；source `5c52c1c…`、receipt `aa6440e…`、manifest `fdda745c…`、531/531 tests 与 197/197 telemetry tests 保留历史；当前 successor 见 hardened packet | `HISTORICAL_AUTHORIZED_AND_EXECUTED_NO_PR_NO_MERGE_NO_DEPLOYMENT` |
 | [`PR-G2A-TELEMETRY-ADMISSION-HUMAN-REVIEW-PACKET.md`](PR-G2A-TELEMETRY-ADMISSION-HUMAN-REVIEW-PACKET.md) / [JSON](PR-G2A-TELEMETRY-ADMISSION-HUMAN-REVIEW-PACKET.json) | exact source、独立加固、clean clone、剩余风险、三选一 token 与批准非效果 | `READY_FOR_HUMAN_DECISION_AGENT_RECOMMENDS_APPROVE_NOT_APPROVED` |
-| [`PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.md`](PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.md) / [JSON](PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.json) | successor source `3a63161…`、receipt `bf1b3b6…`、manifest `b6c03faf…`、532/532 tests、TA-P001—P005、streaming memory hardening、精确 wheel 与剩余风险 | `READY_FOR_HUMAN_DECISION_SUCCESSOR_PACKET_PREPARED_NOT_APPROVED` |
+| [`PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.md`](PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.md) / [JSON](PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.json) | successor source `3a63161…`、receipt `bf1b3b6…`、manifest `b6c03faf…`、532/532 tests、TA-P001—P005、streaming memory hardening、精确 wheel 与剩余风险 | `READY_FOR_HUMAN_DECISION_SUCCESSOR_PACKET_REMOTE_ATTESTED_NOT_APPROVED` |
 | [`DBA-SITE-SUPPLY-CHAIN-HARDENING-2026-07-22.md`](DBA-SITE-SUPPLY-CHAIN-HARDENING-2026-07-22.md) / [JSON](DBA-SITE-SUPPLY-CHAIN-HARDENING-2026-07-22.json) | PR-G2A packet clean clone 发现的 7 项 advisory、精确 transitive overrides 与 0-vulnerability 复验 | `PASS_SOURCE_ONLY_NOT_DEPLOYED_RECHECK_EACH_BUILD` |
 | [`PR-G2A-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.md`](PR-G2A-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.md) / [JSON](PR-G2A-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.json) | 绑定远端前驱提交 `7eea3d0…`、packet hashes、供应链 0-vulnerability 与 clean-clone 复验的非循环后继证明 | `REMOTE_ATTESTED_READY_FOR_HUMAN_DECISION_NOT_APPROVED` |
+| [`PR-G2A-HARDENED-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.md`](PR-G2A-HARDENED-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.md) / [JSON](PR-G2A-HARDENED-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.json) | 绑定 successor packet commit `07e9c49…`、packet hashes、DBOS `3a63161…` / `bf1b3b6…`、0-vulnerability 与 clean-clone 复验的非循环证明 | `HARDENED_PACKET_REMOTE_ATTESTED_READY_FOR_HUMAN_DECISION_NOT_APPROVED` |
 | [`architecture/production-persistence-adapter-specification.md`](architecture/production-persistence-adapter-specification.md) | DBOS canonical store 的事务、幂等、HA、PITR、迁移、安全和 OTel 自观测合同 | `PROPOSED_DQ_019_BLOCKED_INPUT` |
 | [`architecture/production-persistence-candidate-due-diligence-contract.md`](architecture/production-persistence-candidate-due-diligence-contract.md) | 候选证据层、exact profile、OTel database SemConv、provider 尽调和直接演练合同 | `DEFINED_NOT_ASSESSED_NO_SELECTION` |
 | [`architecture/production-persistence-candidate-profiles.v0.1.json`](architecture/production-persistence-candidate-profiles.v0.1.json) / [Schema](architecture/schemas/production-persistence-candidate-profiles.schema.v0.1.json) | 4 个候选、12 类 gate、稳定 DB client signals、敏感字段禁用和永久零效果 | `SCHEMA_VALID_P2_DECISION_ELIGIBLE_0` |
@@ -490,7 +491,7 @@ PR_G2A_READY_FOR_HUMAN_REVIEW=true
 PR_G2A_PACKET_REMOTE_ATTESTED=true
 PR_G2A_PACKET_REMOTE_ATTESTED_SCOPE=PREDECESSOR_PACKET
 PR_G2A_HARDENED_PACKET_PREPARED=true
-PR_G2A_HARDENED_PACKET_REMOTE_ATTESTED=false
+PR_G2A_HARDENED_PACKET_REMOTE_ATTESTED=true
 PR_G2A_HUMAN_REVIEW_APPROVED=false
 FULL_PR_G2_READY=false
 PRODUCTION_IMPLEMENTATION_SEQUENCE_DEFINED=true

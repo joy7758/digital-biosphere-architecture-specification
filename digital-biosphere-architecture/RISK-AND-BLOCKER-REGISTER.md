@@ -91,7 +91,7 @@ risk_acceptance_authority_assigned: true
 | `B-010` | DBOS 没有已发布的公开 package、API 或面向 AI agent 的受控可调用路径 | `ADR-022`、exact GitHub Release asset、匿名 SHA-256 和隔离安装复验 | 只解除有界 package 获取阻塞；没有公共 Runtime、托管 API、Permission 或整仓公开 |
 | `B-011` | 规范名称与公开网络仍未命中 TMAI | `ADR-022` 为 Developer Preview v0.1 显式接受并继续披露 `PARTIAL_METADATA_ONLY` | 只解除 v0.1 发布阻塞；发现事实没有升级，索引刷新后仍需复查 |
 | `B-012` | TMAP、OTel Profile 和 Production SLO 未映射到 DBOS/SAEE 当前实现 | `PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`：remote source、development observation、supported/partial/missing、duplicate authority 和 exact slice 候选已记录；`PR-G1=PASS_READ_ONLY_MAPPING` | 只解除 mapping blocker；`B-013`、`B-014` 继续阻止实现符合性、Pilot 和生产声明 |
-| `B-019` | production architecture baseline 和 DQ-018 起点尚未远端复验 | DBA predecessor remote attestation、DBOS predecessor `5c52c1c…` / `aa6440e…` 及 hardened source `3a63161…` / receipt `bf1b3b6…` 均完成 remote clean clone；当前 successor packet 等待独立 DBA attestation | 只关闭 remote provenance blocker；不产生 PR-G2A approval 或 production authorization |
+| `B-019` | production architecture baseline 和 DQ-018 起点尚未远端复验 | DBA predecessor 与 hardened successor packet 均有非循环 remote attestation；DBOS predecessor `5c52c1c…` / `aa6440e…` 及 hardened source `3a63161…` / receipt `bf1b3b6…` 均完成 remote clean clone | 只关闭 remote provenance blocker；不产生 PR-G2A approval 或 production authorization |
 
 | blocker_id | 原阻塞 | 解除证据 | 保留边界 |
 |---|---|---|---|

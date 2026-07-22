@@ -2,12 +2,12 @@
 document_id: DBA-PROGRAM-STATUS-2026-07-22
 title: Digital Biosphere Program Status Snapshot
 title_zh: 数字生物圈项目群状态快照
-status: observed-governance-snapshot-dq-018-streaming-hardened-pr-g2a-successor-packet-prepared
+status: observed-governance-snapshot-dq-018-streaming-hardened-pr-g2a-successor-packet-remote-attested
 observed_at: 2026-07-22
 freshness: point-in-time
 release_status: developer-preview-v0.1-released-not-production-ready
 developer_preview_status: released-exact-public-safe-wheel-open-web-partial-metadata-only
-production_readiness_status: dq-018-offline-slice-streaming-hardened-successor-packet-prepared-full-pr-g2-blocked-not-production-ready
+production_readiness_status: dq-018-offline-slice-streaming-hardened-successor-packet-remote-attested-full-pr-g2-blocked-not-production-ready
 source_policy: direct-read-only-observation
 ---
 
@@ -20,7 +20,7 @@ PROGRAM_ID=DIGITAL_BIOSPHERE
 PROGRAM_PHASE=TRUSTED_MULTI_AGENT_INFRASTRUCTURE_PRODUCTION_BASELINE_FREEZE
 PROGRAM_HEALTH=PASS_WITH_PRODUCTION_GATES_OPEN
 CURRENT_MILESTONE=DBOS-PR-G2A-HUMAN-REVIEW
-CURRENT_ARCHITECTURE_MILESTONE=DQ-018-OFFLINE-ADMISSION-SLICE-STREAMING-HARDENED
+CURRENT_ARCHITECTURE_MILESTONE=DQ-018-OFFLINE-ADMISSION-SLICE-STREAMING-HARDENED-REMOTE-ATTESTED
 CURRENT_GOVERNANCE_GATE=PR-G2A-HUMAN-REVIEW
 CORE_PROJECTS=3
 PILOT_PROJECTS=1
@@ -242,7 +242,7 @@ PR_G2A_READY_FOR_HUMAN_REVIEW=true
 PR_G2A_PACKET_REMOTE_ATTESTED=true
 PR_G2A_PACKET_REMOTE_ATTESTED_SCOPE=PREDECESSOR_PACKET
 PR_G2A_HARDENED_PACKET_PREPARED=true
-PR_G2A_HARDENED_PACKET_REMOTE_ATTESTED=false
+PR_G2A_HARDENED_PACKET_REMOTE_ATTESTED=true
 PR_G2A_HUMAN_REVIEW_APPROVED=false
 FULL_PR_G2_READY=false
 PRODUCTION_IMPLEMENTATION_SEQUENCE_DEFINED=true
