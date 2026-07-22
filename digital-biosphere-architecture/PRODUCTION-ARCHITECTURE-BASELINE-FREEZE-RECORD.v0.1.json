@@ -1,0 +1,55 @@
+{
+  "schema_version": "0.1",
+  "record_id": "TMAI-PRODUCTION-ARCHITECTURE-BASELINE-FREEZE-RECORD-0.1",
+  "status": "IMMUTABLE_CONTENT_BASELINE_CREATED_REMOTE_VERIFICATION_PENDING",
+  "recorded_at": "2026-07-22T12:05:04+08:00",
+  "decided_by_ref": "zhangbin",
+  "primary_repository": "digital-biosphere-architecture",
+  "git_binding": {
+    "branch": "codex/production-observability-baseline",
+    "base_commit": "769b5589d07eb9bc9efbaf0930039c3d49632372",
+    "content_commit": "264f3171c3dfa8a9f614c7d0c835e4be26870d01",
+    "content_tree": "b83f25d9f5e6b47f7d6717320026cc242c817b03",
+    "content_commit_subject": "feat(architecture): adopt production observability baseline",
+    "remote_branch_verification_pending": true
+  },
+  "decision_bindings": {
+    "DQ-022": "ADOPT_OTLP_1_11_0_REFERENCE_BASELINE",
+    "DQ-023": "ADOPT_OTEL_SEMCONV_1_43_CORE_AND_PINNED_GENAI_MAPPING",
+    "DQ-024": "ADOPT_OTEL_SCHEMA_RESOURCE_1_59_AND_QUARANTINE_DEVELOPMENT_ENTITY",
+    "DQ-025": "ADOPT_OTEL_COLLECTOR_V0_156_CUSTOM_MINIMAL_INVENTORY",
+    "ADR-024": "ACCEPT_STAGED_TELEMETRY_PRODUCTION_PATH",
+    "DQ-018": "AUTHORIZE_DBOS_PR_2A_TELEMETRY_ADMISSION_FOUNDATION",
+    "dbos_domain_owner_ref": "zhangbin"
+  },
+  "validation": {
+    "site_build_pass": true,
+    "site_tests": "11/11",
+    "site_lint_pass": true,
+    "schema_meta_validation": "15/15",
+    "canonical_schema_pairs": "15/15",
+    "decision_registry_negatives_rejected": "15/15",
+    "decision_input_digests_valid": "13/13",
+    "markdown_local_links": "816/816",
+    "catalog_case_counts": "56/46/45/48",
+    "catalog_tests_executed": "0/0/0/0"
+  },
+  "effects": {
+    "architecture_content_frozen": true,
+    "dq_018_implementation_authorized": true,
+    "dq_018_implementation_may_start": false,
+    "fresh_dbos_before_state_required": true,
+    "dbos_commit_authorized": false,
+    "dbos_push_authorized": false,
+    "collector_selected": false,
+    "backend_selected": false,
+    "configuration_created": false,
+    "endpoint_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "evidence_created": false,
+    "permission_granted": false,
+    "deployment_authorized": false,
+    "production_ready": false
+  }
+}

@@ -2,7 +2,7 @@
   "$schema": "architecture/schemas/production-architecture-human-decision-readiness-registry.schema.v0.1.json",
   "registry_schema_version": "0.1",
   "registry_id": "TMAI-PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY-0.1",
-  "status": "HUMAN_DECISIONS_RECORDED_FREEZE_AUTHORIZED_IMMUTABLE_BASELINE_PENDING",
+  "status": "IMMUTABLE_DBA_CONTENT_BASELINE_CREATED_DQ018_FRESH_BEFORE_STATE_PENDING",
   "observed_at": "2026-07-22",
   "primary_repository": "digital-biosphere-architecture",
   "agent_review": {
@@ -19,11 +19,12 @@
     "base_head": "769b5589d07eb9bc9efbaf0930039c3d49632372",
     "worktree_entry_count": 98,
     "staged_entry_count": 0,
-    "candidate_commit": null,
-    "immutable_baseline_created": false,
+    "candidate_commit": "264f3171c3dfa8a9f614c7d0c835e4be26870d01",
+    "candidate_tree": "b83f25d9f5e6b47f7d6717320026cc242c817b03",
+    "immutable_baseline_created": true,
     "commit_authorized": true,
     "push_authorized": true,
-    "production_freeze_complete": false
+    "production_freeze_complete": true
   },
   "decision_entries": [
     {
@@ -181,7 +182,7 @@
         {"path": "DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.json", "sha256": "sha256:2fa13566a11bfbac05213f65a7b2ad1fa649a59b8ddfd98697a475595140f381"}
       ],
       "required_before_execution": ["Explicit DQ-018 human token and dbos_domain_owner_ref", "Immutable DBA baseline commit and exact tree", "Fresh DBOS base commit", "334 DBOS tests and 34 validators pass", "Exact implementation plan bound to DBA commit"],
-      "missing_inputs": ["IMMUTABLE_DBA_BASELINE", "FRESH_DBOS_BEFORE_STATE"],
+      "missing_inputs": ["FRESH_DBOS_BEFORE_STATE"],
       "decision_recorded": true,
       "selected_token": "DQ-018=AUTHORIZE_DBOS_PR_2A_TELEMETRY_ADMISSION_FOUNDATION",
       "decided_by_ref": "zhangbin",
@@ -274,18 +275,18 @@
     "DQ-025 architecture inventory adoption never selects, builds, or deploys a Collector distribution.",
     "DQ-020 may not bypass DQ-018, DQ-019, or DQ-022 through DQ-025 with a health check or model recommendation.",
     "Telemetry and observability backend records never become DBOS Evidence, Truth, Permission, or canonical facts by transport success.",
-    "A registry artifact is not an immutable baseline and cannot change a Decision Queue status automatically."
+    "Only the exact content commit and tree named by the freeze record form the immutable architecture content baseline; the registry cannot change a Decision Queue status automatically."
   ],
   "deferred_production_questions": [
     {"question_id": "OBSERVABILITY_BACKEND_LIFECYCLE_BOUNDARY", "status": "DEFERRED_NO_ARTIFACT_NO_SELECTION", "reason_deferred": "OpenTelemetry is backend-neutral and no production backend owner, candidate, topology, or authorization exists.", "required_decision_binding": "DQ-020"},
     {"question_id": "QUERY_ALERT_RUNBOOK_BINDING", "status": "DEFERRED_NO_ARTIFACT_NO_SELECTION", "reason_deferred": "Exact query, alert, route, and runbook artifacts must come from a selected deployment and measured workload.", "required_decision_binding": "DQ-020"},
     {"question_id": "PRODUCTION_DATA_RETENTION_ACCESS_DELETION_MIGRATION", "status": "DEFERRED_NO_ARTIFACT_NO_SELECTION", "reason_deferred": "Retention, access, deletion, and migration require data classification, backend choice, and Evidence policy decisions.", "required_decision_binding": "DQ-021"}
   ],
-  "current_effects": {"reference_adopted": true, "architecture_frozen": false, "implementation_authorized": true, "commit_authorized": true, "push_authorized": true, "collector_selected": false, "backend_selected": false, "configuration_created": false, "endpoint_created": false, "runtime_created": false, "entity_created": false, "evidence_created": false, "permission_granted": false, "tests_executed": false, "deployment_authorized": false, "production_ready": false},
+  "current_effects": {"reference_adopted": true, "architecture_frozen": true, "implementation_authorized": true, "commit_authorized": true, "push_authorized": true, "collector_selected": false, "backend_selected": false, "configuration_created": false, "endpoint_created": false, "runtime_created": false, "entity_created": false, "evidence_created": false, "permission_granted": false, "tests_executed": false, "deployment_authorized": false, "production_ready": false},
   "stop_rule": {
     "new_technical_specification_allowed": false,
-    "next_allowed_input": "IMMUTABLE_DBA_BASELINE_THEN_FRESH_DBOS_BEFORE_STATE_AND_EXACT_DQ018_IMPLEMENTATION",
+    "next_allowed_input": "FRESH_DBOS_BEFORE_STATE_THEN_EXACT_DQ018_IMPLEMENTATION",
     "automatic_state_transition_allowed": false,
-    "reason": "The exact human decisions and DBA commit/push authorization are recorded. The next legal transition is an immutable DBA baseline, followed by fresh DBOS before-state evidence and only the bounded DQ-018 implementation slice."
+    "reason": "The immutable DBA content commit and tree are recorded. The next legal transition is fresh DBOS before-state evidence and then only the bounded DQ-018 implementation slice."
   }
 }

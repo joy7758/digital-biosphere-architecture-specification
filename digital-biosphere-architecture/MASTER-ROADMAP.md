@@ -69,7 +69,7 @@ Developer Preview 发布历史保持不变。当前新增的 Production Readines
 
 | production milestone | 目标 | primary repository | 当前状态 | 完成证据 | 下一步 |
 |---|---|---|---|---|---|
-| `PR-0` | 冻结 Trusted Multi-Agent Protocol（可信多智能体协议）与生产可观测性架构基线 | DBA | `DECISIONS_RECORDED_FREEZE_AUTHORIZED_IMMUTABLE_COMMIT_PENDING` | TMAP v0.1、OpenTelemetry Observability/Semantic/Schema-Resource-Entity/Collector Distribution Profiles、56/46/45/48-case contracts、`ADR-023`–`ADR-028`、六项 exact human decision 与 [decision registry](PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY.md) | 创建并推送 immutable content commit + freeze attestation；仍不授权 Collector build/config/deploy 或 production claim |
+| `PR-0` | 冻结 Trusted Multi-Agent Protocol（可信多智能体协议）与生产可观测性架构基线 | DBA | `CONTENT_FROZEN_ATTESTATION_RECORDED_REMOTE_VERIFICATION_PENDING` | content commit `264f317...` / tree `b83f25d...`、OpenTelemetry profiles、56/46/45/48-case contracts、`ADR-023`–`ADR-028`、六项 exact decision 与 [freeze record](PRODUCTION-ARCHITECTURE-BASELINE-FREEZE-RECORD.md) | 推送并远端复验 content + attestation；仍不授权 Collector build/config/deploy 或 production claim |
 | `PR-1` | 建立 DBOS/SAEE production implementation mapping（生产实现映射） | 子项目提供事实；DBA 审查边界 | `GATE_PASSED_READ_ONLY_MAPPING` | `PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`：remote commits、334 tests、34 validators、8 adapter tests、OTel capability inventory、缺口与重复权威审查 | `DQ-018` decision packet 和两路 next-step recommendation 已就绪，等待人类决策 |
 | `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `DQ_018_AUTHORIZED_PRECONDITIONS_PENDING` | 经授权的 Telemetry Admission reference conformance，继之 production persistence selection/HA/PITR，再进入 Evidence admission；每步持久化一致性、幂等、重放保护、故障保留、升级与回滚证据 | immutable DBA baseline + fresh DBOS before-state 后只实施 DQ-018；`DQ-019/021` 仍 `BLOCKED_INPUT` |
 | `PR-3` | 建立 OpenTelemetry conformance and operations（符合性与运维） | DBOS + deployment infrastructure | `NOT_STARTED` | 版本锁定、exact custom-minimal Collector build/config/runtime/topology 绑定、deployment + operational-evidence profiles 的 synthetic-input/immutable-rollout/metric-stability/self-observation/no-data-alert/composite-readiness/delivery-reconciliation obligations、56/56 OTLP、46/46 semantic、45/45 Schema/Resource/Entity provenance 与 48/48 Collector distribution cases 的四个独立结果绑定 | 不得创建第五套重复目录；不得把 Telemetry 自动升级为 Evidence/Truth，也不得把 profile/schema/health/dashboard/binary startup 当实现、测量或生产证据 |
@@ -177,7 +177,7 @@ PRODUCTION_DECISION_AGENT_PRIORITY_CONSENSUS=false
 NEW_PRODUCTION_TECHNICAL_SPECIFICATION_ALLOWED=false
 PRODUCTION_IMPLEMENTATION_AUTHORIZED=false
 BOUNDED_DQ_018_IMPLEMENTATION_AUTHORIZED=true
-IMMUTABLE_DBA_BASELINE_CREATED=false
+IMMUTABLE_DBA_BASELINE_CREATED=true
 PRODUCTION_PILOT_AUTHORIZED=false
 PRODUCTION_READY=false
 ```

@@ -24,7 +24,7 @@
     "$schema": {"type": "string", "const": "architecture/schemas/production-architecture-human-decision-readiness-registry.schema.v0.1.json"},
     "registry_schema_version": {"type": "string", "const": "0.1"},
     "registry_id": {"type": "string", "const": "TMAI-PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY-0.1"},
-    "status": {"type": "string", "const": "HUMAN_DECISIONS_RECORDED_FREEZE_AUTHORIZED_IMMUTABLE_BASELINE_PENDING"},
+    "status": {"type": "string", "const": "IMMUTABLE_DBA_CONTENT_BASELINE_CREATED_DQ018_FRESH_BEFORE_STATE_PENDING"},
     "observed_at": {"type": "string", "format": "date"},
     "primary_repository": {"type": "string", "const": "digital-biosphere-architecture"},
     "agent_review": {"$ref": "#/$defs/agentReview"},
@@ -109,6 +109,7 @@
         "worktree_entry_count",
         "staged_entry_count",
         "candidate_commit",
+        "candidate_tree",
         "immutable_baseline_created",
         "commit_authorized",
         "push_authorized",
@@ -119,11 +120,12 @@
         "base_head": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
         "worktree_entry_count": {"type": "integer", "minimum": 1},
         "staged_entry_count": {"type": "integer", "const": 0},
-        "candidate_commit": {"type": "null"},
-        "immutable_baseline_created": {"type": "boolean", "const": false},
+        "candidate_commit": {"type": "string", "const": "264f3171c3dfa8a9f614c7d0c835e4be26870d01"},
+        "candidate_tree": {"type": "string", "const": "b83f25d9f5e6b47f7d6717320026cc242c817b03"},
+        "immutable_baseline_created": {"type": "boolean", "const": true},
         "commit_authorized": {"type": "boolean", "const": true},
         "push_authorized": {"type": "boolean", "const": true},
-        "production_freeze_complete": {"type": "boolean", "const": false}
+        "production_freeze_complete": {"type": "boolean", "const": true}
       }
     },
     "decisionEntry": {
@@ -282,6 +284,7 @@
               "selected_token": {"const": "DQ-018=AUTHORIZE_DBOS_PR_2A_TELEMETRY_ADMISSION_FOUNDATION"},
               "decided_by_ref": {"const": "zhangbin"},
               "decided_at": {"const": "2026-07-22T12:05:04+08:00"},
+              "missing_inputs": {"const": ["FRESH_DBOS_BEFORE_STATE"]},
               "implementation_may_start": {"const": false},
               "effects": {"$ref": "#/$defs/implementationAuthorizationEffects"}
             }
@@ -408,7 +411,7 @@
         {
           "properties": {
             "reference_adopted": {"const": true},
-            "architecture_frozen": {"const": false},
+            "architecture_frozen": {"const": true},
             "implementation_authorized": {"const": true},
             "commit_authorized": {"const": true},
             "push_authorized": {"const": true},
@@ -483,7 +486,7 @@
       "required": ["new_technical_specification_allowed", "next_allowed_input", "automatic_state_transition_allowed", "reason"],
       "properties": {
         "new_technical_specification_allowed": {"type": "boolean", "const": false},
-        "next_allowed_input": {"type": "string", "const": "IMMUTABLE_DBA_BASELINE_THEN_FRESH_DBOS_BEFORE_STATE_AND_EXACT_DQ018_IMPLEMENTATION"},
+        "next_allowed_input": {"type": "string", "const": "FRESH_DBOS_BEFORE_STATE_THEN_EXACT_DQ018_IMPLEMENTATION"},
         "automatic_state_transition_allowed": {"type": "boolean", "const": false},
         "reason": {"$ref": "#/$defs/nonEmptyString"}
       }

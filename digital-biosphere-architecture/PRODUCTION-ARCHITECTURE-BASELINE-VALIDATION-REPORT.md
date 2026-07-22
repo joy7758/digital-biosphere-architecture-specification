@@ -138,14 +138,14 @@ PRODUCTION_DECISION_AGENT_QIANFAN_PRIORITY=C
 PRODUCTION_DECISION_AGENT_ARK_PRIORITY=D
 PRODUCTION_DECISION_AGENT_PRIORITY_CONSENSUS=false
 NEW_PRODUCTION_TECHNICAL_SPECIFICATION_ALLOWED=false
-ARCHITECTURE_FROZEN=false
+ARCHITECTURE_FROZEN=true
 IMPLEMENTATION_AUTHORIZED=false
 BOUNDED_DQ_018_IMPLEMENTATION_AUTHORIZED=true
 BOUNDED_DQ_018_IMPLEMENTATION_MAY_START=false
 PRODUCTION_READY=false
 ```
 
-该结果证明当前 DBA 工作树中的 TMAP、OpenTelemetry Observability Profile、Production Readiness、SLO/Evidence Gates、ADR、六项人工决定和治理驾驶舱在声明范围内一致。它不证明 DBOS/SAEE 已实现规范，不创建远端基线；`DQ-018` 的有界实现授权仍不能在 immutable DBA baseline 与 fresh DBOS before-state 前启动，也不授权 Collector、endpoint、Runtime、Pilot 或生产声明。
+该结果证明内容提交 `264f3171c3dfa8a9f614c7d0c835e4be26870d01` / tree `b83f25d9f5e6b47f7d6717320026cc242c817b03` 中的 TMAP、OpenTelemetry profiles、六项人工决定和治理驾驶舱在声明范围内一致。它不证明 DBOS/SAEE 已实现规范；`DQ-018` 仍需 remote baseline verification 与 fresh DBOS before-state 才可启动，也不授权 Collector、endpoint、Runtime、Pilot 或生产声明。
 
 ## 2. Validated Scope（验证范围）
 
@@ -181,7 +181,7 @@ PRODUCTION_READY=false
 | check | result | evidence |
 |---|---|---|
 | Git whitespace / patch integrity | `PASS` | `git diff --check` 无输出 |
-| DBA local Markdown links | `PASS` | 155 个 Markdown 文件、813 个本地链接、0 缺失 |
+| DBA local Markdown links | `PASS` | 156 个 Markdown 文件、816 个本地链接、0 缺失 |
 | JSON parse | `PASS` | 78 个非 `node_modules/.next` JSON（含生成站点 dist）解析错误为 0；source-only 为 66 |
 | JSON Schema meta-validation | `PASS` | 15 个 Draft 2020-12 Schema 全部 meta-valid；15 组 canonical data/example pair 通过 |
 | Gate Evidence JSON Schema | `PASS_LOCAL_CONTRACT_ONLY` | Draft 2020-12 meta-schema valid；`NOT_ASSESSED` 示例 valid；7/7 伪 PASS/越权/unknown/digest/security 负例被拒绝；validator 尚未实现 |
@@ -238,7 +238,7 @@ PRODUCTION_HUMAN_DECISION_READINESS_REGISTRY_DEFINED=true
 PRODUCTION_HUMAN_DECISIONS_RECORDED=6
 PRODUCTION_DECISION_AGENT_PRIORITY_CONSENSUS=false
 NEW_PRODUCTION_TECHNICAL_SPECIFICATION_ALLOWED=false
-ARCHITECTURE_FROZEN=false
+ARCHITECTURE_FROZEN=true
 COMMIT_AUTHORIZED=true
 PUSH_AUTHORIZED=true
 DQ_019_STATUS=BLOCKED_INPUT
@@ -354,6 +354,6 @@ OTEL_CONFORMANCE_CASES_EXECUTED=0_0_0_0
 40. Qianfan 初审对故意留空输入的误分类推动机器边界加固；加固后 Qianfan 与 Ark 最终均 `RECOMMENDED`、允许 bounded human architecture review、required document corrections=0、boundary errors=0，同时保持 Runtime/deployment=false 和 production=false。
 41. 最新 customer/recommendation preflight 中 Qianfan 选择 `C`（建立统一决策注册表），Ark 选择 `D`（停止新增规范）；两路没有 priority consensus，但都拒绝当前 production recommendation 和继续新增配置／后端技术合同。
 42. 9-entry machine registry + strict Schema 绑定 8 个 DQ、`ADR-024`、13 个 decision-input digest、14 条 dependency edge 和 single-token rule；六项人工决定与 DBA Git authorization 已记录，未创建 backend/Collector/Runtime/Permission/production effect。
-43. registry 通过 15/15 fail-closed negatives、9/9 entry closure、13/13 digest reconciliation，并同步到 Gate、Risk、Roadmap、Status、README、双语站点和公开 machine truth；下一合法输入已收窄为 immutable DBA baseline → fresh DBOS before-state → exact DQ-018 implementation。
+43. registry 通过 15/15 fail-closed negatives、9/9 entry closure、13/13 digest reconciliation，并同步到 Gate、Risk、Roadmap、Status、README、双语站点和公开 machine truth；下一合法输入已收窄为 remote DBA baseline verification → fresh DBOS before-state → exact DQ-018 implementation。
 
 当前后继闸门由 [`PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY.md`](PRODUCTION-ARCHITECTURE-HUMAN-DECISION-READINESS-REGISTRY.md) 集中呈现。四项 Version Decision、`ADR-024`、`DQ-018`、DBOS Owner 和 DBA commit/push authorization 均已记录；现在只缺 immutable content commit/tree、freeze attestation 和 fresh DBOS before-state。`DQ-020` 仍缺 exact Owner、deployment repository、build/image/config/runtime digests、failure domains/load balancer、identity/secret references、capacity/queue/WAL/outage budgets、metric stability/naming/Resource/query/threshold/alert/route/runbook bindings、独立 self-observation/blackbox/storage/drift、alert delivery、rollback 和端到端对账直接证据。任何当前采纳都不能自动授权 `DQ-019`–`DQ-021`、Collector build/configuration/query/alert/listener/measurement 或 deployment。

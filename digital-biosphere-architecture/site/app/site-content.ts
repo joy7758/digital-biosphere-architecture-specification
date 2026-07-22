@@ -114,9 +114,9 @@ export const gateRows = [
   },
   {
     id: "PRODUCTION_HUMAN_DECISION_READINESS",
-    state: "DECISIONS_RECORDED_FREEZE_PENDING",
-    zh: "DQ-022 至 DQ-025、ADR-024 和 DQ-018 的精确决定已记录；DBA commit/push 已授权，但在 exact commit/tree 形成前仍不是不可变基线。",
-    en: "Exact decisions for DQ-022 through DQ-025, ADR-024, and DQ-018 are recorded; DBA commit and push are authorized, but no immutable baseline exists until exact commits and trees are created.",
+    state: "CONTENT_FROZEN_REMOTE_VERIFICATION_PENDING",
+    zh: "DQ-022 至 DQ-025、ADR-024 和 DQ-018 的精确决定已记录；DBA content commit/tree 已冻结，当前等待远端分支复验。",
+    en: "Exact decisions for DQ-022 through DQ-025, ADR-024, and DQ-018 are recorded; the DBA content commit and tree are frozen, with remote-branch verification pending.",
   },
   {
     id: "PRODUCTION_READY",
