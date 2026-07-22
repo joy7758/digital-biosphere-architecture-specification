@@ -1,0 +1,310 @@
+{
+  "$schema": "schemas/production-persistence-candidate-profiles.schema.v0.1.json",
+  "profile_schema_version": "0.1",
+  "profile_set_id": "TMAI-DQ019-PRODUCTION-PERSISTENCE-CANDIDATES-0.1",
+  "status": "BLOCKED_INPUT_CANDIDATE_PROFILES_NOT_ASSESSED",
+  "observed_at": "2026-07-22",
+  "primary_repository": "digital-biosphere-architecture",
+  "decision_binding": {
+    "decision_id": "DQ-019",
+    "decision_status": "BLOCKED_INPUT",
+    "decided_by_ref": null,
+    "decided_at": null,
+    "backend_selected": false,
+    "implementation_authorized": false,
+    "cloud_resource_authorized": false,
+    "deployment_authorized": false
+  },
+  "reference_bindings": {
+    "persistence_contract_ref": "production-persistence-adapter-specification.md",
+    "due_diligence_contract_ref": "production-persistence-candidate-due-diligence-contract.md",
+    "candidate_assessment_ref": "../DQ-019-PRODUCTION-PERSISTENCE-CANDIDATE-ASSESSMENT.json",
+    "slo_contract_ref": "production-slo-and-evidence-gates.md",
+    "otel_semconv_reference": "v1.43.0",
+    "postgresql_upstream_version_selected": false,
+    "managed_provider_product_selected": false
+  },
+  "otel_observation_contract": {
+    "database_semconv_reference": "v1.43.0",
+    "standard_signals": [
+      {"name": "database client span", "signal": "SPAN", "stability": "STABLE", "required_if_supported": true},
+      {"name": "db.client.operation.duration", "signal": "METRIC", "stability": "STABLE", "required_if_supported": true},
+      {"name": "db.system.name", "signal": "ATTRIBUTE", "stability": "STABLE", "required_if_supported": true},
+      {"name": "db.operation.name", "signal": "ATTRIBUTE", "stability": "STABLE", "required_if_supported": true},
+      {"name": "error.type", "signal": "ATTRIBUTE", "stability": "STABLE", "required_if_supported": true}
+    ],
+    "prohibited_by_default": [
+      "db.query.text",
+      "db.query.summary",
+      "db.query.parameter.*",
+      "db.operation.parameter.*",
+      "db.namespace",
+      "db.collection.name",
+      "server.address",
+      "server.port",
+      "network.peer.address",
+      "network.peer.port"
+    ],
+    "development_signals_in_stable_baseline_allowed": false,
+    "standard_client_success_is_canonical_commit_success": false,
+    "custom_metrics": [
+      "tmai.dbos.persistence.operations",
+      "tmai.dbos.persistence.duration",
+      "tmai.dbos.persistence.conflicts",
+      "tmai.dbos.persistence.unknown_commit_outcomes",
+      "tmai.dbos.persistence.replication_lag",
+      "tmai.dbos.persistence.backup_age",
+      "tmai.dbos.persistence.restore_verification_failures",
+      "tmai.dbos.persistence.migration_state"
+    ],
+    "standard_and_custom_instrumentation_scope_separation_required": true,
+    "double_counting_allowed": false,
+    "canonical_evidence_authority_created": false
+  },
+  "candidates": [
+    {
+      "candidate_id": "SELF_MANAGED_POSTGRESQL_COMPATIBLE_HA",
+      "candidate_class": "SELF_MANAGED_POSTGRESQL_COMPATIBLE",
+      "tier": "P2_SINGLE_REGION_PRODUCTION_CANDIDATE",
+      "disposition": "CONDITIONALLY_ELIGIBLE_DUE_DILIGENCE_REQUIRED",
+      "assessment_status": "NOT_ASSESSED",
+      "decision_eligible": false,
+      "official_source_refs": [
+        "https://www.postgresql.org/docs/current/transaction-iso.html",
+        "https://www.postgresql.org/docs/current/runtime-config-replication.html",
+        "https://www.postgresql.org/docs/current/continuous-archiving.html"
+      ],
+      "exact_profile": {
+        "distribution_or_product": null,
+        "engine_version": null,
+        "provider": null,
+        "region": null,
+        "sku": null,
+        "topology_digest": null,
+        "configuration_digest": null,
+        "artifact_digest": null,
+        "service_terms_digest": null,
+        "pricing_snapshot_digest": null
+      },
+      "declared_requirements": {
+        "transaction_isolation": "SERIALIZABLE_OR_PROVEN_EQUIVALENT",
+        "commit_acknowledgement": "COMMIT_BEFORE_ACK",
+        "replication": "SYNCHRONOUS_WITH_DECLARED_FAILURE_DOMAIN",
+        "failover": "AUTOMATIC_AND_MANUAL_WITH_FENCING",
+        "backup_recovery": "BASE_OR_FULL_BACKUP_PLUS_CONTINUOUS_WAL_PITR_NEW_TARGET_RESTORE",
+        "rpo_target": "0_ACKNOWLEDGED_CANONICAL_RECORDS_WITHIN_TESTED_FAILURE_DOMAIN",
+        "rto_target": "PT30M",
+        "tenant_model": "SINGLE_TENANT"
+      },
+      "gates": {
+        "source_binding": "PARTIAL_REFERENCE_ONLY",
+        "exact_profile": "BLOCKED",
+        "transaction_and_unknown_commit": "NOT_ASSESSED",
+        "replication_and_fencing": "NOT_ASSESSED",
+        "backup_pitr_and_restore": "NOT_ASSESSED",
+        "security_and_role_separation": "NOT_ASSESSED",
+        "migration_and_rollback": "NOT_ASSESSED",
+        "capacity_and_slo": "NOT_ASSESSED",
+        "otel_observation": "PARTIAL_REFERENCE_ONLY",
+        "owner_and_on_call": "BLOCKED",
+        "cost_license_and_portability": "NOT_ASSESSED",
+        "independent_review": "NOT_ASSESSED"
+      },
+      "direct_evidence_refs": [],
+      "unresolved_inputs": [
+        "EXACT_DISTRIBUTION_AND_VERSION",
+        "FAILURE_DOMAIN_AND_TOPOLOGY",
+        "REPLICATION_FAILOVER_AND_FENCING",
+        "BACKUP_WAL_PITR_AND_NEW_TARGET_RESTORE",
+        "OWNER_AND_ON_CALL",
+        "SECURITY_AND_COST_REVIEW",
+        "RPO_RTO_DIRECT_DRILLS"
+      ]
+    },
+    {
+      "candidate_id": "BAIDU_RDS_POSTGRESQL_DUAL_NODE_HA",
+      "candidate_class": "MANAGED_POSTGRESQL_COMPATIBLE_SERVICE",
+      "tier": "P2_SINGLE_REGION_PRODUCTION_CANDIDATE",
+      "disposition": "CONDITIONALLY_ELIGIBLE_PROVIDER_EVIDENCE_REQUIRED",
+      "assessment_status": "NOT_ASSESSED",
+      "decision_eligible": false,
+      "official_source_refs": [
+        "https://cloud.baidu.com/doc/RDS/s/rjzz9p3n4",
+        "https://cloud.baidu.com/doc/RDS/s/vkaz2cvyz",
+        "https://intl.cloud.baidu.com/zh/doc/RDS/s/Hk941vehq-intl",
+        "https://cloud.baidu.com/doc/RDS/s/vjwvyzgds",
+        "https://cloud.baidu.com/doc/RDS/s/0jwvz0cps",
+        "https://cloud.baidu.com/doc/RDS/s/ajwvz0x1m"
+      ],
+      "exact_profile": {
+        "distribution_or_product": "BAIDU_CLOUD_RDS_POSTGRESQL_DUAL_NODE_HA",
+        "engine_version": null,
+        "provider": "BAIDU_CLOUD",
+        "region": null,
+        "sku": null,
+        "topology_digest": null,
+        "configuration_digest": null,
+        "artifact_digest": null,
+        "service_terms_digest": null,
+        "pricing_snapshot_digest": null
+      },
+      "declared_requirements": {
+        "transaction_isolation": "SERIALIZABLE_OR_PROVEN_EQUIVALENT",
+        "commit_acknowledgement": "COMMIT_BEFORE_ACK_AND_PROVIDER_REPLICATION_SEMANTICS_PROVEN",
+        "replication": "SYNCHRONOUS_WITH_DECLARED_FAILURE_DOMAIN",
+        "failover": "AUTOMATIC_AND_MANUAL_WITH_FENCING",
+        "backup_recovery": "FULL_BACKUP_PLUS_CONTINUOUS_RECOVERY_CHAIN_AND_NEW_TARGET_RESTORE",
+        "rpo_target": "0_ACKNOWLEDGED_CANONICAL_RECORDS_WITHIN_TESTED_FAILURE_DOMAIN",
+        "rto_target": "PT30M",
+        "tenant_model": "SINGLE_TENANT"
+      },
+      "gates": {
+        "source_binding": "PARTIAL_REFERENCE_ONLY",
+        "exact_profile": "BLOCKED",
+        "transaction_and_unknown_commit": "NOT_ASSESSED",
+        "replication_and_fencing": "BLOCKED",
+        "backup_pitr_and_restore": "BLOCKED",
+        "security_and_role_separation": "NOT_ASSESSED",
+        "migration_and_rollback": "NOT_ASSESSED",
+        "capacity_and_slo": "NOT_ASSESSED",
+        "otel_observation": "PARTIAL_REFERENCE_ONLY",
+        "owner_and_on_call": "BLOCKED",
+        "cost_license_and_portability": "BLOCKED",
+        "independent_review": "NOT_ASSESSED"
+      },
+      "direct_evidence_refs": [],
+      "unresolved_inputs": [
+        "MANAGED_CLOUD_AND_DATA_RESIDENCY_POLICY",
+        "EXACT_REGION_ENGINE_VERSION_AND_SKU",
+        "CURRENT_SLA_TERMS_AND_PRICING_DIGESTS",
+        "COMMIT_ACK_REPLICATION_DEGRADED_MODE_AND_FENCING",
+        "POSTGRESQL_BACKUP_PITR_RETENTION_AND_NEW_TARGET_RESTORE",
+        "PROVIDER_DOCUMENTATION_CONFLICT_RESOLUTION",
+        "API_RECEIPT_AND_OBSERVABILITY_EXPORT",
+        "OWNER_SECURITY_COST_AND_EXIT_REVIEW",
+        "RPO_RTO_DIRECT_DRILLS"
+      ]
+    },
+    {
+      "candidate_id": "SQLITE_REFERENCE_BACKEND",
+      "candidate_class": "SQLITE_SINGLE_HOST",
+      "tier": "P0_REFERENCE",
+      "disposition": "REJECTED_FOR_PRODUCTION",
+      "assessment_status": "REJECTED_FOR_PRODUCTION",
+      "decision_eligible": false,
+      "official_source_refs": [],
+      "exact_profile": {
+        "distribution_or_product": "DBOS_DQ018_SQLITE_REFERENCE",
+        "engine_version": null,
+        "provider": null,
+        "region": null,
+        "sku": null,
+        "topology_digest": null,
+        "configuration_digest": null,
+        "artifact_digest": null,
+        "service_terms_digest": null,
+        "pricing_snapshot_digest": null
+      },
+      "declared_requirements": {
+        "transaction_isolation": "REFERENCE_ONLY",
+        "commit_acknowledgement": "REFERENCE_ONLY",
+        "replication": "NOT_AVAILABLE_FOR_P2",
+        "failover": "NOT_AVAILABLE_FOR_P2",
+        "backup_recovery": "REFERENCE_ONLY_NOT_PRODUCTION_PITR",
+        "rpo_target": "NOT_APPLICABLE_FOR_PRODUCTION",
+        "rto_target": "NOT_APPLICABLE_FOR_PRODUCTION",
+        "tenant_model": "REFERENCE_TEST_ONLY"
+      },
+      "gates": {
+        "source_binding": "PARTIAL_REFERENCE_ONLY",
+        "exact_profile": "NOT_APPLICABLE",
+        "transaction_and_unknown_commit": "PARTIAL_REFERENCE_ONLY",
+        "replication_and_fencing": "FAIL",
+        "backup_pitr_and_restore": "FAIL",
+        "security_and_role_separation": "NOT_APPLICABLE",
+        "migration_and_rollback": "PARTIAL_REFERENCE_ONLY",
+        "capacity_and_slo": "NOT_APPLICABLE",
+        "otel_observation": "PARTIAL_REFERENCE_ONLY",
+        "owner_and_on_call": "NOT_APPLICABLE",
+        "cost_license_and_portability": "NOT_APPLICABLE",
+        "independent_review": "PARTIAL_REFERENCE_ONLY"
+      },
+      "direct_evidence_refs": [],
+      "unresolved_inputs": []
+    },
+    {
+      "candidate_id": "DISTRIBUTED_SQL",
+      "candidate_class": "DISTRIBUTED_SQL_UNSELECTED",
+      "tier": "P3_MULTI_REGION",
+      "disposition": "DEFERRED_NO_MULTI_REGION_REQUIREMENT",
+      "assessment_status": "DEFERRED",
+      "decision_eligible": false,
+      "official_source_refs": [],
+      "exact_profile": {
+        "distribution_or_product": null,
+        "engine_version": null,
+        "provider": null,
+        "region": null,
+        "sku": null,
+        "topology_digest": null,
+        "configuration_digest": null,
+        "artifact_digest": null,
+        "service_terms_digest": null,
+        "pricing_snapshot_digest": null
+      },
+      "declared_requirements": {
+        "transaction_isolation": "NOT_ASSESSED",
+        "commit_acknowledgement": "NOT_ASSESSED",
+        "replication": "NOT_ASSESSED",
+        "failover": "NOT_ASSESSED",
+        "backup_recovery": "NOT_ASSESSED",
+        "rpo_target": "NOT_ADOPTED",
+        "rto_target": "NOT_ADOPTED",
+        "tenant_model": "NOT_SELECTED"
+      },
+      "gates": {
+        "source_binding": "NOT_ASSESSED",
+        "exact_profile": "NOT_ASSESSED",
+        "transaction_and_unknown_commit": "NOT_ASSESSED",
+        "replication_and_fencing": "NOT_ASSESSED",
+        "backup_pitr_and_restore": "NOT_ASSESSED",
+        "security_and_role_separation": "NOT_ASSESSED",
+        "migration_and_rollback": "NOT_ASSESSED",
+        "capacity_and_slo": "NOT_ASSESSED",
+        "otel_observation": "NOT_ASSESSED",
+        "owner_and_on_call": "NOT_ASSESSED",
+        "cost_license_and_portability": "NOT_ASSESSED",
+        "independent_review": "NOT_ASSESSED"
+      },
+      "direct_evidence_refs": [],
+      "unresolved_inputs": ["EXPLICIT_MULTI_REGION_REQUIREMENT_AND_NEW_DQ019_ASSESSMENT"]
+    }
+  ],
+  "unresolved_inputs": [
+    "DQ018_EXACT_SOURCE_COMMIT_AND_CLEAN_CLONE_RECEIPTS",
+    "MANAGED_CLOUD_AND_DATA_RESIDENCY_POLICY",
+    "EXACT_P2_CANDIDATE_PROFILES",
+    "PRODUCTION_OWNER_AND_ON_CALL",
+    "SECURITY_AND_COST_REVIEW",
+    "RPO_RTO_HUMAN_ACCEPTANCE",
+    "DIRECT_FAILOVER_PITR_RESTORE_AND_LOAD_DRILLS"
+  ],
+  "effects": {
+    "backend_selected": false,
+    "implementation_authorized": false,
+    "cloud_resource_created": false,
+    "database_created": false,
+    "configuration_created": false,
+    "endpoint_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "capability_created": false,
+    "permission_created": false,
+    "execution_created": false,
+    "evidence_created": false,
+    "verification_created": false,
+    "saee_called": false,
+    "deployment_authorized": false,
+    "production_ready": false
+  }
+}

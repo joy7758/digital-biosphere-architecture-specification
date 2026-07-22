@@ -1,0 +1,141 @@
+{
+  "schema_version": "0.1.0",
+  "document_id": "TMAI-DQ-019-PERSISTENCE-CANDIDATE-ASSESSMENT-20260722",
+  "decision_id": "DQ-019",
+  "observed_at": "2026-07-22",
+  "primary_repository": "digital-biosphere-architecture",
+  "status": "BLOCKED_INPUT_SHORTLIST_READY_PROVIDER_DUE_DILIGENCE_PENDING",
+  "decision_effects": {
+    "backend_selected": false,
+    "implementation_authorized": false,
+    "cloud_resource_authorized": false,
+    "deployment_authorized": false,
+    "production_ready": false
+  },
+  "reliability_domain_separation": {
+    "otel_telemetry_storage_is_dbos_canonical_store": false,
+    "collector_queue_or_wal_is_dbos_canonical_durability": false,
+    "telemetry_is_evidence": false,
+    "evidence_is_truth": false,
+    "shared_database_schema_service_account_backup_path_volume_secret_key_or_network_policy_allowed": false
+  },
+  "candidates": [
+    {
+      "candidate_id": "SELF_MANAGED_POSTGRESQL_COMPATIBLE_HA",
+      "tier": "P2_CANDIDATE",
+      "disposition": "CONDITIONALLY_ELIGIBLE_DUE_DILIGENCE_REQUIRED",
+      "exact_distribution": null,
+      "exact_version": null,
+      "hosting": "SELF_MANAGED",
+      "strengths": [
+        "Serializable transaction semantics are available in upstream PostgreSQL.",
+        "Synchronous commit and remote apply semantics are available in upstream PostgreSQL.",
+        "Base backup plus continuous WAL archiving can support PITR.",
+        "High portability and control over configuration."
+      ],
+      "unresolved": [
+        "exact distribution and version",
+        "independent failure domains",
+        "replication quorum and degraded behavior",
+        "automatic failover and fencing",
+        "backup archive and new-target restore design",
+        "owner and 24x7 operations",
+        "security and cost review",
+        "measured RPO and RTO"
+      ]
+    },
+    {
+      "candidate_id": "BAIDU_RDS_POSTGRESQL_DUAL_NODE_HA",
+      "tier": "P2_CANDIDATE",
+      "disposition": "CONDITIONALLY_ELIGIBLE_PROVIDER_EVIDENCE_REQUIRED",
+      "exact_region": null,
+      "exact_engine_version": null,
+      "exact_sku": null,
+      "hosting": "MANAGED_CLOUD",
+      "strengths": [
+        "Official product overview describes PostgreSQL dual-node high-availability topology with primary-standby synchronization.",
+        "Official materials describe backup and management APIs.",
+        "Potentially lower operational burden than self-managed HA."
+      ],
+      "unresolved": [
+        "exact region, engine version and SKU",
+        "commit acknowledgement and replication semantics",
+        "failure-domain and fencing evidence",
+        "SLA and measured RPO/RTO",
+        "PostgreSQL-specific backup, PITR and new-target restore evidence",
+        "API coverage for the target SKU",
+        "data residency, security, portability and cost review",
+        "documentation consistency across publication dates"
+      ]
+    },
+    {
+      "candidate_id": "SQLITE_REFERENCE_BACKEND",
+      "tier": "P0_ONLY",
+      "disposition": "REJECTED_FOR_PRODUCTION",
+      "reason": "Single-host reference conformance does not provide independent failure-domain HA or production PITR/SLA."
+    },
+    {
+      "candidate_id": "DISTRIBUTED_SQL",
+      "tier": "P3_DEFERRED",
+      "disposition": "DEFERRED_NO_MULTI_REGION_REQUIREMENT",
+      "reason": "No explicit multi-region requirement justifies the added consistency, operations and cost complexity in v0.1."
+    }
+  ],
+  "staging_lane": {
+    "tier": "P1",
+    "candidate": "SINGLE_NODE_POSTGRESQL_COMPATIBLE",
+    "production_allowed": false,
+    "implementation_authorized": false,
+    "single_node_topology_eligible_for_p2": false,
+    "existing_resource_designated_for_production": false
+  },
+  "dq_018_input": {
+    "source_state": "UNCOMMITTED_LOCAL_WORKTREE",
+    "base_commit": "cd3f867c4379ec555c45e7d554088ad12ce08a24",
+    "exact_source_commit": null,
+    "implementation_manifest_sha256": "f09e99b95a3332d40abc933eaee35ea8a646b11d330ffaa5213ee0bb28f339b4",
+    "tests": "523/523",
+    "telemetry_tests": "189/189",
+    "validators": "35/35",
+    "pr_g2_criteria": "9/10",
+    "satisfies_dq_019_implementation_precondition": false
+  },
+  "required_inputs": [
+    "exact DBOS source commit and clean-clone receipts",
+    "managed-cloud hosting and data-residency policy",
+    "exact topology and failure-domain design",
+    "exact engine, version and SKU candidate profiles",
+    "accountable owner and on-call model",
+    "security review",
+    "cost review and monthly cap",
+    "human acceptance or revision of RPO=0 and RTO<=30m targets",
+    "direct failover, unknown-commit, backup, PITR and new-target restore drills"
+  ],
+  "sources": [
+    {"authority": "OFFICIAL", "url": "https://opentelemetry.io/docs/what-is-opentelemetry/", "use": "OpenTelemetry is not an observability backend."},
+    {"authority": "OFFICIAL", "url": "https://opentelemetry.io/docs/collector/", "use": "Collector receives, processes and exports telemetry."},
+    {"authority": "OFFICIAL", "url": "https://www.postgresql.org/docs/current/runtime-config-replication.html", "use": "PostgreSQL replication and remote_apply semantics."},
+    {"authority": "OFFICIAL", "url": "https://www.postgresql.org/docs/current/transaction-iso.html", "use": "PostgreSQL transaction isolation and serialization failures."},
+    {"authority": "OFFICIAL", "url": "https://www.postgresql.org/docs/current/continuous-archiving.html", "use": "PostgreSQL WAL archiving and PITR."},
+    {"authority": "PROVIDER_OFFICIAL", "url": "https://cloud.baidu.com/doc/RDS/s/rjzz9p3n4", "use": "Baidu RDS product-series topology and engine support."},
+    {"authority": "PROVIDER_OFFICIAL", "url": "https://cloud.baidu.com/doc/RDS/s/vkaz2cvyz", "use": "Baidu RDS HA/DR description."},
+    {"authority": "PROVIDER_OFFICIAL", "url": "https://intl.cloud.baidu.com/zh/doc/RDS/s/Hk941vehq-intl", "use": "Baidu RDS automatic backup description."},
+    {"authority": "PROVIDER_OFFICIAL", "url": "https://cloud.baidu.com/doc/RDS/s/vjwvyzgds", "use": "Baidu RDS SLA for eligible dual-node high-availability products; provider claim only."},
+    {"authority": "PROVIDER_OFFICIAL", "url": "https://cloud.baidu.com/doc/RDS/s/0jwvz0cps", "use": "Baidu RDS PostgreSQL primary-standby switch behavior; exact RPO, fencing and timing remain unproven."},
+    {"authority": "PROVIDER_OFFICIAL", "url": "https://intl.cloud.baidu.com/zh/doc/RDS/s/Wjztjsvu5-intl", "use": "Baidu RDS PostgreSQL versions and instance-profile description observed in a 2025 page; current target availability remains unbound."},
+    {"authority": "PROVIDER_OFFICIAL", "url": "https://cloud.baidu.com/doc/RDS/s/ajwvz0x1m", "use": "Baidu RDS API directory."}
+  ],
+  "effects": {
+    "database_created": false,
+    "cloud_resource_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "capability_created": false,
+    "permission_created": false,
+    "execution_created": false,
+    "evidence_created": false,
+    "verification_created": false,
+    "saee_called": false
+  }
+}

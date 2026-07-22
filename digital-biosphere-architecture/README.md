@@ -447,7 +447,13 @@ Schema/Resource precedence != Trust Authority
 | [`architecture/telemetry-admission-conformance-recovery-plan.md`](architecture/telemetry-admission-conformance-recovery-plan.md) | 实施后的预注册符合性、恢复和回退证据 | `PLAN_DEFINED_TESTS_NOT_EXECUTED` |
 | [`DQ-018-TELEMETRY-ADMISSION-AGENT-RECOMMENDATION.md`](DQ-018-TELEMETRY-ADMISSION-AGENT-RECOMMENDATION.md) | 两路 next-step 推荐与 current-production 不推荐的分离记录 | `COMPLETE_NOT_AUTHORIZATION` |
 | [`DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md`](DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md) / [JSON](DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.json) | exact 人工决策输入与机器可读投影 | `DECIDED_AUTHORIZED_PRECONDITIONS_PENDING` |
+| [`DBOS-PR-2A-GIT-AUTHORIZATION-RECORD.md`](DBOS-PR-2A-GIT-AUTHORIZATION-RECORD.md) / [JSON](DBOS-PR-2A-GIT-AUTHORIZATION-RECORD.json) | Human Owner full-permission directive 对 exact DBOS PR-2A commit/push 推荐的受限授权、停止条件和非效果 | `AUTHORIZED_NOT_YET_EXECUTED_NO_PR_NO_MERGE_NO_DEPLOYMENT` |
 | [`architecture/production-persistence-adapter-specification.md`](architecture/production-persistence-adapter-specification.md) | DBOS canonical store 的事务、幂等、HA、PITR、迁移、安全和 OTel 自观测合同 | `PROPOSED_DQ_019_BLOCKED_INPUT` |
+| [`architecture/production-persistence-candidate-due-diligence-contract.md`](architecture/production-persistence-candidate-due-diligence-contract.md) | 候选证据层、exact profile、OTel database SemConv、provider 尽调和直接演练合同 | `DEFINED_NOT_ASSESSED_NO_SELECTION` |
+| [`architecture/production-persistence-candidate-profiles.v0.1.json`](architecture/production-persistence-candidate-profiles.v0.1.json) / [Schema](architecture/schemas/production-persistence-candidate-profiles.schema.v0.1.json) | 4 个候选、12 类 gate、稳定 DB client signals、敏感字段禁用和永久零效果 | `SCHEMA_VALID_P2_DECISION_ELIGIBLE_0` |
+| [`DQ-019-PRODUCTION-PERSISTENCE-CANDIDATE-ASSESSMENT.md`](DQ-019-PRODUCTION-PERSISTENCE-CANDIDATE-ASSESSMENT.md) / [JSON](DQ-019-PRODUCTION-PERSISTENCE-CANDIDATE-ASSESSMENT.json) | 自管 PostgreSQL-compatible HA、百度 RDS PostgreSQL HA、SQLite 和 deferred distributed SQL 的候选对比、官方来源与失败关闭输入 | `SHORTLIST_READY_BACKEND_NOT_SELECTED` |
+| [`DQ-019-PRODUCTION-PERSISTENCE-AGENT-RECOMMENDATION.md`](DQ-019-PRODUCTION-PERSISTENCE-AGENT-RECOMMENDATION.md) | 两路模型初评、单节点措辞修正与最终 blocked pre-decision recommendation | `TWO_PROVIDER_RECOMMENDED_SELECTION_FALSE_PRODUCTION_FALSE` |
+| [`DQ-019-PRODUCTION-PERSISTENCE-DECISION-PACKET.md`](DQ-019-PRODUCTION-PERSISTENCE-DECISION-PACKET.md) / [JSON](DQ-019-PRODUCTION-PERSISTENCE-DECISION-PACKET.json) | DQ-019 候选集、readiness matrix、人工输入与未来分离授权 | `BLOCKED_INPUT_NO_BACKEND_NO_AUTHORIZATION` |
 | [`architecture/otlp-collector-production-profile.md`](architecture/otlp-collector-production-profile.md) | OTel agent-to-gateway、OTLP 结果、Collector HA、queue/WAL、single-writer、漂移和安全配置 | `PROPOSED_DQ_020_BLOCKED_INPUT` |
 | [`architecture/telemetry-to-evidence-admission-contract.md`](architecture/telemetry-to-evidence-admission-contract.md) | 两阶段 Telemetry→Evidence、Identity Continuity、P0–P3 provenance、Data Governance 和 Verification 分离 | `PROPOSED_DQ_021_BLOCKED_INPUT` |
 | [`architecture/production-implementation-sequence.md`](architecture/production-implementation-sequence.md) | S0–S9 生产关键路径、Owner、逐阶段 rollback、SLO 和至少 37 天 Pilot | `ADOPTED_STAGE_GATED_NOT_EXECUTED` |
@@ -484,6 +490,10 @@ S0_ARCHITECTURE_CONTRACT_FREEZE_RECOMMENDED_BY_TWO_AGENTS=true
 PRODUCTION_CUSTOMER_RECOMMENDABLE_NOW=false
 ADR_024_STATUS=ACCEPTED
 DQ_019_STATUS=BLOCKED_INPUT
+DQ_019_CANDIDATE_PROFILE_SCHEMA_DEFINED=true
+DQ_019_CANDIDATES_ASSESSED=false
+DQ_019_P2_DECISION_ELIGIBLE=0
+DQ_019_BACKEND_SELECTED=false
 DQ_020_STATUS=BLOCKED_INPUT
 DQ_021_STATUS=BLOCKED_INPUT
 DQ_022_STATUS=DECIDED_REFERENCE_ADOPTED

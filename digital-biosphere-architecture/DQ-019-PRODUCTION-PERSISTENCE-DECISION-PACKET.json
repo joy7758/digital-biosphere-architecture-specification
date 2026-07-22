@@ -1,0 +1,104 @@
+{
+  "schema_version": "0.1.0",
+  "document_id": "TMAI-DQ-019-PERSISTENCE-DECISION-PACKET-20260722",
+  "decision_id": "DQ-019",
+  "status": "BLOCKED_INPUT_CANDIDATE_SHORTLIST_READY",
+  "primary_repository": "digital-biosphere-architecture",
+  "decision_question": "Select an exact production persistence backend/profile and authorize an exact DBOS production persistence adapter scope?",
+  "current_result": {
+    "decision_ready": false,
+    "candidate_shortlist_ready": true,
+    "agent_recommendation_complete": true,
+    "human_decision_recorded": false,
+    "backend_selected": false,
+    "implementation_authorized": false,
+    "implementation_started": false,
+    "cloud_resource_created": false,
+    "production_ready": false
+  },
+  "normative_inputs": [
+    "architecture/production-persistence-adapter-specification.md",
+    "architecture/production-persistence-candidate-due-diligence-contract.md",
+    "architecture/production-persistence-candidate-profiles.v0.1.json",
+    "architecture/schemas/production-persistence-candidate-profiles.schema.v0.1.json",
+    "architecture/production-slo-and-evidence-gates.md",
+    "DQ-019-PRODUCTION-PERSISTENCE-CANDIDATE-ASSESSMENT.md",
+    "DQ-019-PRODUCTION-PERSISTENCE-CANDIDATE-ASSESSMENT.json",
+    "DQ-019-PRODUCTION-PERSISTENCE-AGENT-RECOMMENDATION.md"
+  ],
+  "candidate_set": [
+    {"candidate_id": "SELF_MANAGED_POSTGRESQL_COMPATIBLE_HA", "tier": "P2", "selectable_now": false},
+    {"candidate_id": "BAIDU_RDS_POSTGRESQL_DUAL_NODE_HA", "tier": "P2", "selectable_now": false},
+    {"candidate_id": "SQLITE_REFERENCE_BACKEND", "tier": "P0", "production_disposition": "REJECTED"},
+    {"candidate_id": "DISTRIBUTED_SQL", "tier": "P3", "production_disposition": "DEFERRED"}
+  ],
+  "readiness_gates": [
+    {"gate": "CANDIDATE_SET_BOUNDED", "status": "PASS"},
+    {"gate": "BACKEND_NEUTRAL_ARCHITECTURE_CONTRACT", "status": "PASS"},
+    {"gate": "OFFICIAL_SOURCE_REGISTRY", "status": "PASS_WITH_GAPS"},
+    {"gate": "STRICT_CANDIDATE_PROFILE_SCHEMA", "status": "PASS_STRUCTURE_ONLY_P2_ELIGIBLE_0"},
+    {"gate": "DQ_018_EXACT_SOURCE_BINDING", "status": "BLOCKED"},
+    {"gate": "EXACT_BACKEND_PROFILE", "status": "BLOCKED"},
+    {"gate": "OWNER_AND_ON_CALL", "status": "BLOCKED"},
+    {"gate": "SECURITY_AND_COST_REVIEW", "status": "BLOCKED"},
+    {"gate": "RPO_RTO_HUMAN_ACCEPTANCE", "status": "BLOCKED"},
+    {"gate": "FAILOVER_BACKUP_PITR_RESTORE_DIRECT_EVIDENCE", "status": "BLOCKED"},
+    {"gate": "INDEPENDENT_AGENT_REVIEW", "status": "PASS_FOR_BLOCKED_INPUT_ONLY"}
+  ],
+  "required_human_inputs": {
+    "managed_cloud_allowed": null,
+    "data_residency": null,
+    "monthly_cost_cap": null,
+    "production_owner_ref": null,
+    "on_call_model": null,
+    "target_failure_domain": null,
+    "rpo_target": null,
+    "rto_target": null,
+    "preferred_due_diligence_lane": null
+  },
+  "future_options": [
+    {
+      "option": "SELECT_AND_AUTHORIZE_EXACT_BACKEND_SLICE",
+      "available_now": false,
+      "reason": "No exact backend profile or complete direct evidence exists."
+    },
+    {
+      "option": "HOLD_PRODUCTION_PERSISTENCE_AT_REFERENCE_AND_STAGING_ONLY",
+      "available_now": true
+    },
+    {
+      "option": "RETURN_PRODUCTION_PERSISTENCE_CANDIDATES_FOR_REVISION",
+      "available_now": true
+    }
+  ],
+  "separate_authorizations_required": [
+    "DBOS commit, push, pull request and merge",
+    "cloud account, resource creation and procurement",
+    "data migration",
+    "staging deployment",
+    "production deployment and traffic",
+    "release and public production claim"
+  ],
+  "truth_boundary": {
+    "packet_is_decision": false,
+    "candidate_assessment_is_backend_selection": false,
+    "agent_recommendation_is_authorization": false,
+    "decision_is_execution": false,
+    "persistence_is_activation": false,
+    "persistence_is_permission": false,
+    "otel_storage_is_dbos_canonical_store": false
+  },
+  "effects": {
+    "database_created": false,
+    "cloud_resource_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "capability_created": false,
+    "permission_created": false,
+    "execution_created": false,
+    "evidence_created": false,
+    "verification_created": false,
+    "saee_called": false
+  }
+}

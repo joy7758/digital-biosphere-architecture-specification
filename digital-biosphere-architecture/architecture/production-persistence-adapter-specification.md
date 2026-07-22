@@ -153,6 +153,20 @@ tmai.dbos.persistence.migration_state
 
 Attributes 只允许 operation class、outcome、backend profile/version、consistency mode 和 bounded error class。禁止 object ID、entity ID、payload、SQL、secret、path 和任意用户值。
 
+### 10.1 Standard Database SemConv Boundary（标准数据库语义边界）
+
+依照已采纳的 OpenTelemetry Semantic Conventions `v1.43.0`，支持时必须优先使用 Stable database
+client span、`db.client.operation.duration`、`db.system.name`、`db.operation.name` 和 bounded
+`error.type`。其中 PostgreSQL 的 `db.system.name` 使用 Stable 值 `postgresql`。
+
+标准 DB client telemetry 只描述调用方观察到的数据库调用；它不证明 DBOS canonical commit、
+idempotency binding、authorization chain 或 end-to-end durability。上列 TMAI custom metrics 必须位于
+不同 Instrumentation Scope，并有去重／关联规则。
+
+`db.query.text`、`db.query.parameter.*`、`db.operation.parameter.*` 在 v0.1 强制禁用；
+`db.query.summary` 默认禁用，只有独立 privacy/cardinality review 和 Human Data Decision 后才能启用。
+Development connection-pool metrics 不进入稳定基线，除非另行 pin exact source/version。
+
 ## 11. Required Conformance and Failure Matrix（必需符合性与故障矩阵）
 
 | group | minimum proof |
@@ -179,6 +193,12 @@ Attributes 只允许 operation class、outcome、backend profile/version、consi
 4. 任何 distributed SQL 候选（仅在有明确 multi-region requirement 时）。
 
 评审维度：consistency、failure domain、RPO/RTO、operations burden、backup/PITR、migration、security、cost、license、vendor portability 和 agent-readable operability。
+
+所有候选必须符合 [`production-persistence-candidate-due-diligence-contract.md`](production-persistence-candidate-due-diligence-contract.md)，
+并通过 [`production-persistence-candidate-profiles.v0.1.json`](production-persistence-candidate-profiles.v0.1.json)
+及其 [strict Schema](schemas/production-persistence-candidate-profiles.schema.v0.1.json) 表达。当前画像保持
+`BLOCKED_INPUT_CANDIDATE_PROFILES_NOT_ASSESSED`；Schema valid 不等于 due diligence、backend selection、
+implementation authorization 或 production proof。
 
 ## 13. Exit Gate（退出闸门）
 

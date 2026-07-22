@@ -1,0 +1,53 @@
+{
+  "schema_version": "0.1.0",
+  "document_id": "TMAI-DBOS-PR-2A-GIT-AUTHORIZATION-20260722",
+  "status": "AUTHORIZED_NOT_YET_EXECUTED",
+  "decision_reference": "DQ-018",
+  "authorization": {
+    "selected_token": "DBOS_PR_2A_GIT=AUTHORIZE_COMMIT_AND_PUSH",
+    "decided_by_ref": "zhangbin",
+    "authorized_at": "2026-07-22T19:14:31+08:00",
+    "basis": "EXPLICIT_FULL_PERMISSION_AND_FUTURE_RECOMMENDED_AUTHORIZATION_DIRECTIVE",
+    "target_repository": "digital-biosphere-os",
+    "target_branch": "codex/telemetry-admission-foundation",
+    "base_commit": "cd3f867c4379ec555c45e7d554088ad12ce08a24",
+    "implementation_manifest_sha256": "f09e99b95a3332d40abc933eaee35ea8a646b11d330ffaa5213ee0bb28f339b4"
+  },
+  "authorized_actions": [
+    "commit exact DQ-018 source/test/report scope",
+    "push codex/telemetry-admission-foundation without force",
+    "clean-clone and validate the pushed commit",
+    "commit and push receipt-only PR-G2 review-packet updates"
+  ],
+  "preconditions": {
+    "dba_authorization_record_committed_and_pushed": false,
+    "dbos_manifest_still_matches": false,
+    "dbos_remote_ref_checked": false,
+    "non_fast_forward_or_force_push_allowed": false
+  },
+  "effects": {
+    "dbos_commit_authorized": true,
+    "dbos_push_authorized": true,
+    "dbos_commit_executed": false,
+    "dbos_push_executed": false,
+    "pull_request_authorized": false,
+    "merge_authorized": false,
+    "main_branch_mutation_authorized": false,
+    "release_authorized": false,
+    "deployment_authorized": false,
+    "database_or_cloud_resource_created": false,
+    "collector_created": false,
+    "network_endpoint_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "capability_created": false,
+    "permission_created": false,
+    "execution_created": false,
+    "evidence_created": false,
+    "verification_created": false,
+    "saee_called": false,
+    "pr_g2_approved": false,
+    "production_ready": false
+  }
+}

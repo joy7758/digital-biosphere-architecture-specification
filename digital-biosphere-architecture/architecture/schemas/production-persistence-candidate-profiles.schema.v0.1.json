@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/production-persistence-candidate-profiles.schema.v0.1.json",
+  "title": "TMAI Production Persistence Candidate Profiles v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "profile_schema_version",
+    "profile_set_id",
+    "status",
+    "observed_at",
+    "primary_repository",
+    "decision_binding",
+    "reference_bindings",
+    "otel_observation_contract",
+    "candidates",
+    "unresolved_inputs",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "schemas/production-persistence-candidate-profiles.schema.v0.1.json"},
+    "profile_schema_version": {"const": "0.1"},
+    "profile_set_id": {"const": "TMAI-DQ019-PRODUCTION-PERSISTENCE-CANDIDATES-0.1"},
+    "status": {"const": "BLOCKED_INPUT_CANDIDATE_PROFILES_NOT_ASSESSED"},
+    "observed_at": {"type": "string", "format": "date"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "decision_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision_id", "decision_status", "decided_by_ref", "decided_at", "backend_selected", "implementation_authorized", "cloud_resource_authorized", "deployment_authorized"],
+      "properties": {
+        "decision_id": {"const": "DQ-019"},
+        "decision_status": {"const": "BLOCKED_INPUT"},
+        "decided_by_ref": {"type": "null"},
+        "decided_at": {"type": "null"},
+        "backend_selected": {"const": false},
+        "implementation_authorized": {"const": false},
+        "cloud_resource_authorized": {"const": false},
+        "deployment_authorized": {"const": false}
+      }
+    },
+    "reference_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["persistence_contract_ref", "due_diligence_contract_ref", "candidate_assessment_ref", "slo_contract_ref", "otel_semconv_reference", "postgresql_upstream_version_selected", "managed_provider_product_selected"],
+      "properties": {
+        "persistence_contract_ref": {"const": "production-persistence-adapter-specification.md"},
+        "due_diligence_contract_ref": {"const": "production-persistence-candidate-due-diligence-contract.md"},
+        "candidate_assessment_ref": {"const": "../DQ-019-PRODUCTION-PERSISTENCE-CANDIDATE-ASSESSMENT.json"},
+        "slo_contract_ref": {"const": "production-slo-and-evidence-gates.md"},
+        "otel_semconv_reference": {"const": "v1.43.0"},
+        "postgresql_upstream_version_selected": {"const": false},
+        "managed_provider_product_selected": {"const": false}
+      }
+    },
+    "otel_observation_contract": {"$ref": "#/$defs/otelObservation"},
+    "candidates": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "items": {"$ref": "#/$defs/candidate"},
+      "allOf": [
+        {"contains": {"properties": {"candidate_id": {"const": "SELF_MANAGED_POSTGRESQL_COMPATIBLE_HA"}}, "required": ["candidate_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"candidate_id": {"const": "BAIDU_RDS_POSTGRESQL_DUAL_NODE_HA"}}, "required": ["candidate_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"candidate_id": {"const": "SQLITE_REFERENCE_BACKEND"}}, "required": ["candidate_id"]}, "minContains": 1, "maxContains": 1},
+        {"contains": {"properties": {"candidate_id": {"const": "DISTRIBUTED_SQL"}}, "required": ["candidate_id"]}, "minContains": 1, "maxContains": 1}
+      ]
+    },
+    "unresolved_inputs": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[A-Z0-9_]+$"},
+      "contains": {"const": "EXACT_P2_CANDIDATE_PROFILES"}
+    },
+    "effects": {"$ref": "#/$defs/noEffects"}
+  },
+  "$defs": {
+    "gateStatus": {
+      "type": "string",
+      "enum": ["NOT_ASSESSED", "PARTIAL_REFERENCE_ONLY", "BLOCKED", "PASS_DIRECT", "FAIL", "NOT_APPLICABLE"]
+    },
+    "nullableExact": {"type": ["string", "null"]},
+    "exactProfile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["distribution_or_product", "engine_version", "provider", "region", "sku", "topology_digest", "configuration_digest", "artifact_digest", "service_terms_digest", "pricing_snapshot_digest"],
+      "properties": {
+        "distribution_or_product": {"$ref": "#/$defs/nullableExact"},
+        "engine_version": {"$ref": "#/$defs/nullableExact"},
+        "provider": {"$ref": "#/$defs/nullableExact"},
+        "region": {"$ref": "#/$defs/nullableExact"},
+        "sku": {"$ref": "#/$defs/nullableExact"},
+        "topology_digest": {"$ref": "#/$defs/nullableExact"},
+        "configuration_digest": {"$ref": "#/$defs/nullableExact"},
+        "artifact_digest": {"$ref": "#/$defs/nullableExact"},
+        "service_terms_digest": {"$ref": "#/$defs/nullableExact"},
+        "pricing_snapshot_digest": {"$ref": "#/$defs/nullableExact"}
+      }
+    },
+    "declaredRequirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["transaction_isolation", "commit_acknowledgement", "replication", "failover", "backup_recovery", "rpo_target", "rto_target", "tenant_model"],
+      "properties": {
+        "transaction_isolation": {"type": "string", "minLength": 1},
+        "commit_acknowledgement": {"type": "string", "minLength": 1},
+        "replication": {"type": "string", "minLength": 1},
+        "failover": {"type": "string", "minLength": 1},
+        "backup_recovery": {"type": "string", "minLength": 1},
+        "rpo_target": {"type": "string", "minLength": 1},
+        "rto_target": {"type": "string", "minLength": 1},
+        "tenant_model": {"type": "string", "minLength": 1}
+      }
+    },
+    "gates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_binding", "exact_profile", "transaction_and_unknown_commit", "replication_and_fencing", "backup_pitr_and_restore", "security_and_role_separation", "migration_and_rollback", "capacity_and_slo", "otel_observation", "owner_and_on_call", "cost_license_and_portability", "independent_review"],
+      "properties": {
+        "source_binding": {"$ref": "#/$defs/gateStatus"},
+        "exact_profile": {"$ref": "#/$defs/gateStatus"},
+        "transaction_and_unknown_commit": {"$ref": "#/$defs/gateStatus"},
+        "replication_and_fencing": {"$ref": "#/$defs/gateStatus"},
+        "backup_pitr_and_restore": {"$ref": "#/$defs/gateStatus"},
+        "security_and_role_separation": {"$ref": "#/$defs/gateStatus"},
+        "migration_and_rollback": {"$ref": "#/$defs/gateStatus"},
+        "capacity_and_slo": {"$ref": "#/$defs/gateStatus"},
+        "otel_observation": {"$ref": "#/$defs/gateStatus"},
+        "owner_and_on_call": {"$ref": "#/$defs/gateStatus"},
+        "cost_license_and_portability": {"$ref": "#/$defs/gateStatus"},
+        "independent_review": {"$ref": "#/$defs/gateStatus"}
+      }
+    },
+    "candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["candidate_id", "candidate_class", "tier", "disposition", "assessment_status", "decision_eligible", "official_source_refs", "exact_profile", "declared_requirements", "gates", "direct_evidence_refs", "unresolved_inputs"],
+      "properties": {
+        "candidate_id": {"type": "string", "enum": ["SELF_MANAGED_POSTGRESQL_COMPATIBLE_HA", "BAIDU_RDS_POSTGRESQL_DUAL_NODE_HA", "SQLITE_REFERENCE_BACKEND", "DISTRIBUTED_SQL"]},
+        "candidate_class": {"type": "string", "minLength": 1},
+        "tier": {"type": "string", "enum": ["P0_REFERENCE", "P2_SINGLE_REGION_PRODUCTION_CANDIDATE", "P3_MULTI_REGION"]},
+        "disposition": {"type": "string", "minLength": 1},
+        "assessment_status": {"type": "string", "enum": ["NOT_ASSESSED", "PARTIALLY_ASSESSED", "READY_FOR_DECISION_REVIEW", "REJECTED_FOR_PRODUCTION", "DEFERRED"]},
+        "decision_eligible": {"type": "boolean"},
+        "official_source_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "format": "uri"}},
+        "exact_profile": {"$ref": "#/$defs/exactProfile"},
+        "declared_requirements": {"$ref": "#/$defs/declaredRequirements"},
+        "gates": {"$ref": "#/$defs/gates"},
+        "direct_evidence_refs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+        "unresolved_inputs": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^[A-Z0-9_]+$"}}
+      },
+      "allOf": [
+        {
+          "if": {"properties": {"assessment_status": {"not": {"const": "READY_FOR_DECISION_REVIEW"}}}, "required": ["assessment_status"]},
+          "then": {"properties": {"decision_eligible": {"const": false}}}
+        },
+        {
+          "if": {"properties": {"assessment_status": {"const": "READY_FOR_DECISION_REVIEW"}}, "required": ["assessment_status"]},
+          "then": {
+            "properties": {
+              "decision_eligible": {"const": true},
+              "exact_profile": {
+                "properties": {
+                  "distribution_or_product": {"type": "string", "minLength": 1},
+                  "engine_version": {"type": "string", "minLength": 1},
+                  "region": {"type": "string", "minLength": 1},
+                  "sku": {"type": "string", "minLength": 1},
+                  "topology_digest": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"},
+                  "configuration_digest": {"type": "string", "pattern": "^sha256:[a-f0-9]{64}$"}
+                }
+              },
+              "direct_evidence_refs": {"minItems": 1},
+              "unresolved_inputs": {"maxItems": 0}
+            }
+          }
+        }
+      ]
+    },
+    "otelObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["database_semconv_reference", "standard_signals", "prohibited_by_default", "development_signals_in_stable_baseline_allowed", "standard_client_success_is_canonical_commit_success", "custom_metrics", "standard_and_custom_instrumentation_scope_separation_required", "double_counting_allowed", "canonical_evidence_authority_created"],
+      "properties": {
+        "database_semconv_reference": {"const": "v1.43.0"},
+        "standard_signals": {
+          "type": "array", "minItems": 5, "uniqueItems": true,
+          "items": {
+            "type": "object", "additionalProperties": false,
+            "required": ["name", "signal", "stability", "required_if_supported"],
+            "properties": {
+              "name": {"type": "string", "minLength": 1},
+              "signal": {"type": "string", "enum": ["SPAN", "METRIC", "ATTRIBUTE"]},
+              "stability": {"const": "STABLE"},
+              "required_if_supported": {"const": true}
+            }
+          },
+          "contains": {"properties": {"name": {"const": "db.client.operation.duration"}}, "required": ["name"]}
+        },
+        "prohibited_by_default": {
+          "type": "array", "minItems": 10, "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1},
+          "contains": {"const": "db.query.text"}
+        },
+        "development_signals_in_stable_baseline_allowed": {"const": false},
+        "standard_client_success_is_canonical_commit_success": {"const": false},
+        "custom_metrics": {
+          "type": "array", "minItems": 8, "maxItems": 8, "uniqueItems": true,
+          "items": {"type": "string", "pattern": "^tmai\\.dbos\\.persistence\\.[a-z_]+$"}
+        },
+        "standard_and_custom_instrumentation_scope_separation_required": {"const": true},
+        "double_counting_allowed": {"const": false},
+        "canonical_evidence_authority_created": {"const": false}
+      }
+    },
+    "noEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["backend_selected", "implementation_authorized", "cloud_resource_created", "database_created", "configuration_created", "endpoint_created", "runtime_created", "entity_created", "capability_created", "permission_created", "execution_created", "evidence_created", "verification_created", "saee_called", "deployment_authorized", "production_ready"],
+      "properties": {
+        "backend_selected": {"const": false},
+        "implementation_authorized": {"const": false},
+        "cloud_resource_created": {"const": false},
+        "database_created": {"const": false},
+        "configuration_created": {"const": false},
+        "endpoint_created": {"const": false},
+        "runtime_created": {"const": false},
+        "entity_created": {"const": false},
+        "capability_created": {"const": false},
+        "permission_created": {"const": false},
+        "execution_created": {"const": false},
+        "evidence_created": {"const": false},
+        "verification_created": {"const": false},
+        "saee_called": {"const": false},
+        "deployment_authorized": {"const": false},
+        "production_ready": {"const": false}
+      }
+    }
+  }
+}
