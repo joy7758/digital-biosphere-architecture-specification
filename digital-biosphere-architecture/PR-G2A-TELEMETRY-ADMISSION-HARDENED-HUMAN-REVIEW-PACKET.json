@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "packet_id": "TMAI-PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET-20260722",
+  "status": "READY_FOR_HUMAN_DECISION_NOT_APPROVED",
+  "decision_reference": "PR-G2A",
+  "implementation_decision_reference": "DQ-018",
+  "supersedes_packet": "TMAI-PR-G2A-TELEMETRY-ADMISSION-HUMAN-REVIEW-PACKET-20260722",
+  "question": "Approve the exact hardened DBOS DQ-018 offline Telemetry Admission reference slice at PR-G2A?",
+  "review_subject": {
+    "repository": "digital-biosphere-os",
+    "branch": "codex/telemetry-admission-foundation",
+    "base_commit": "cd3f867c4379ec555c45e7d554088ad12ce08a24",
+    "predecessor_source_commit": "5c52c1c2f44767c0b13b4ac9670425721b9ea0dd",
+    "predecessor_receipt_commit": "aa6440e83f35cc63483f487367ccb573bba7681a",
+    "exact_source_commit": "3a63161d3e04d785b4b04feadd4a0712bf6314fc",
+    "receipt_commit": "bf1b3b6ebf2c905f94c8f4ddaf447964a07dd183",
+    "implementation_manifest_sha256": "b6c03faf50bfab4ce25edaeb39b7ae36d2525df32519f82a8108c164162bd9fc",
+    "implementation_file_count": 56,
+    "implementation_bytes": 716453
+  },
+  "evidence": {
+    "full_tests": "532/532 PASS",
+    "focused_telemetry_tests": "198/198 PASS",
+    "validators": "35/35 PASS",
+    "telemetry_validator": "25/25 PASS",
+    "otel_authorized_cases": "68/68 PASS",
+    "otel_blocked_cases": 23,
+    "ruff_findings": 0,
+    "bandit": "5357 LOC / 0 findings / 0 nosec",
+    "locked_dependency_vulnerabilities": 0,
+    "reproducible_wheel_sha256": "0319007826990d53addee8392be257d68966565c2242cde71e66b01ade155af9",
+    "reproducible_wheel_bytes": 126088,
+    "reproducible_wheel_published": false,
+    "exact_source_load_profiles_completed": ["TA-P001", "TA-P002", "TA-P003", "TA-P004", "TA-P005"],
+    "ta_p005_one_hour_profile_reexecuted": true,
+    "ta_p005_artifact_sha256": "048db60c950a24123b1f56c7ca04631d399ed65db7ff71e16516dc256ccf3499",
+    "ta_p005_periodic_integrity_checks": 59,
+    "process_max_rss_reduction_percent": 80.166624,
+    "python_tracemalloc_peak_reduction_percent": 91.780068,
+    "authority_effects_all_false": true
+  },
+  "agent_recommendation": {
+    "recommended_option": "PR-G2A=APPROVE_DQ_018_OFFLINE_TELEMETRY_ADMISSION_REFERENCE_SLICE",
+    "confidence": "HIGH_WITH_EXPLICIT_SCOPE_LIMITS",
+    "recommended_as": "BOUNDED_OFFLINE_SQLITE_TELEMETRY_ADMISSION_REFERENCE_SLICE",
+    "not_recommended_as": "PRODUCTION_PERSISTENCE_OR_TELEMETRY_SERVICE",
+    "recommendation_is_decision": false,
+    "production_customer_recommendable_now": false
+  },
+  "remaining_gaps": [
+    "HUMAN_SECURITY_REVIEW",
+    "CROSS_PLATFORM_VALIDATION",
+    "HUMAN_ROLLBACK_SWITCH",
+    "PR-G2B",
+    "PR-G2T",
+    "PR-G2I",
+    "PR-G2C"
+  ],
+  "decision_options": [
+    "PR-G2A=APPROVE_DQ_018_OFFLINE_TELEMETRY_ADMISSION_REFERENCE_SLICE",
+    "PR-G2A=RETURN_DQ_018_OFFLINE_TELEMETRY_ADMISSION_FOR_REVISION",
+    "PR-G2A=REJECT_DQ_018_OFFLINE_TELEMETRY_ADMISSION_REFERENCE_SLICE"
+  ],
+  "required_human_fields": ["selected_token", "decided_by_ref"],
+  "selected_token": null,
+  "decided_by_ref": null,
+  "approval_effect": {
+    "pr_g2a_pass": true,
+    "dq_019_candidate_input_review_may_proceed": true,
+    "dq_019_implementation_authorized": false,
+    "full_pr_g2_ready": false,
+    "production_ready": false
+  },
+  "non_effects": {
+    "pull_request_created": false,
+    "merge_authorized": false,
+    "main_mutation_authorized": false,
+    "release_authorized": false,
+    "deployment_authorized": false,
+    "database_or_cloud_resource_created": false,
+    "collector_created": false,
+    "listener_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "evidence_created": false,
+    "saee_called": false
+  }
+}

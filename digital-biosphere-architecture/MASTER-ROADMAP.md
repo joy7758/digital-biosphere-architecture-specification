@@ -71,7 +71,7 @@ Developer Preview 发布历史保持不变。当前新增的 Production Readines
 |---|---|---|---|---|---|
 | `PR-0` | 冻结 Trusted Multi-Agent Protocol（可信多智能体协议）与生产可观测性架构基线 | DBA | `GATE_PASSED_REMOTE_BASELINE_VERIFIED` | content commit `264f317...` / tree `b83f25d...`、OpenTelemetry profiles、56/46/45/48-case contracts、`ADR-023`–`ADR-028`、六项 exact decision 与远端 freeze receipt | 保持基线；不授权 Collector build/config/deploy 或 production claim |
 | `PR-1` | 建立 DBOS/SAEE production implementation mapping（生产实现映射） | 子项目提供事实；DBA 审查边界 | `GATE_PASSED_READ_ONLY_MAPPING` | `PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`：remote commits、334 tests、34 validators、8 adapter tests、OTel capability inventory、缺口与重复权威审查 | `DQ-018` decision packet 和两路 next-step recommendation 已就绪，等待人类决策 |
-| `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `PR_G2A_READY_FOR_HUMAN_REVIEW_G2B_G2T_G2I_G2C_BLOCKED` | DQ-018 exact source `5c52c1c…`、receipt `aa6440e…`、531/531 tests、197/197 telemetry tests、35/35 validators、OTel authorized 68/68、独立加固 7 项已修复 | 审查 PR-G2A；未批准前不进入 DQ-019/PR-G2B；完整 PR-G2=false |
+| `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `PR_G2A_HARDENED_PACKET_READY_G2B_G2T_G2I_G2C_BLOCKED` | DQ-018 exact source `3a63161…`、receipt `bf1b3b6…`、532/532 tests、198/198 telemetry tests、35/35 validators、OTel authorized 68/68、TA-P001—P005 PASS、streaming integrity hardening | 审查 PR-G2A；未批准前不进入 DQ-019/PR-G2B；完整 PR-G2=false |
 | `PR-3` | 建立 OpenTelemetry conformance and operations（符合性与运维） | DBOS + deployment infrastructure | `NOT_STARTED` | 版本锁定、exact custom-minimal Collector build/config/runtime/topology 绑定、deployment + operational-evidence profiles 的 synthetic-input/immutable-rollout/metric-stability/self-observation/no-data-alert/composite-readiness/delivery-reconciliation obligations、56/56 OTLP、46/46 semantic、45/45 Schema/Resource/Entity provenance 与 48/48 Collector distribution cases 的四个独立结果绑定 | 不得创建第五套重复目录；不得把 Telemetry 自动升级为 Evidence/Truth，也不得把 profile/schema/health/dashboard/binary startup 当实现、测量或生产证据 |
 | `PR-4` | 验证 SAEE production adapter isolation（生产适配隔离） | SAEE | `NOT_STARTED` | 只读消费、版本兼容、失败关闭、无 DBOS 写回、无 Decision/Permission | 不调用未获准算法或生成 Authority |
 | `PR-5` | 通过 Security / Recovery / Capacity gates（安全、恢复与容量闸门） | DBOS + DBA review | `NOT_STARTED` | threat model、secret handling、data minimization、backup/restore、灾难恢复、容量与队列压力证据 | 所有 critical gap 关闭后才可进入 Pilot |
@@ -156,8 +156,11 @@ DQ_018_IMPLEMENTATION_AUTHORIZED=true
 DQ_018_IMPLEMENTATION_MAY_START=false
 DQ_018_IMPLEMENTATION_MAY_START_REASON=ALREADY_COMPLETED_EXACT_SLICE_NO_NEW_SCOPE_AUTHORIZED
 DQ_018_IMPLEMENTATION_COMPLETE=true
-DQ_018_SOURCE_COMMIT=5c52c1c2f44767c0b13b4ac9670425721b9ea0dd
-DQ_018_RECEIPT_COMMIT=aa6440e83f35cc63483f487367ccb573bba7681a
+DQ_018_SOURCE_COMMIT=3a63161d3e04d785b4b04feadd4a0712bf6314fc
+DQ_018_RECEIPT_COMMIT=bf1b3b6ebf2c905f94c8f4ddaf447964a07dd183
+DQ_018_IMPLEMENTATION_MANIFEST=sha256:b6c03faf50bfab4ce25edaeb39b7ae36d2525df32519f82a8108c164162bd9fc
+DQ_018_STREAMING_INTEGRITY_HARDENED=true
+DQ_018_TA_P001_TO_TA_P005_PASS=true
 PR_G2A_READY_FOR_HUMAN_REVIEW=true
 PR_G2A_HUMAN_REVIEW_APPROVED=false
 FULL_PR_G2_READY=false

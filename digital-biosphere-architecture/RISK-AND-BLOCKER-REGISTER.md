@@ -61,6 +61,7 @@ risk_acceptance_authority_assigned: true
 | `R-039` | `CRITICAL` | Collector internal metric/log 缺失、改名、stale、counter reset、mixed version 或共享失败路径被解释成“零失败／健康”，dashboard、health 或 hop-local `sent` 进而被用来关闭生产闸门 | Collector internal telemetry 的配置 schema、metric projection 和 log 格式存在稳定性边界；WAL、listener、config drift 与端到端交付还需要独立来源；当前没有 query/threshold/alert/route/runbook 或直接测量 | strict operational-evidence profile 强制 12 observation/6 SLI、OTLP↔Prometheus naming/stability、UNKNOWN/no-zero-fill、counter lifecycle split、独立 self-observation/blackbox/storage/drift、composite readiness、no-data alert 与 delivery reconciliation；45/45 negatives 通过但实现和测量仍阻塞 | `CONTROL_DEFINED_DQ_020_BLOCKED_NO_MEASUREMENT` |
 | `R-040` | `CRITICAL` | 已记录 reference adoption、Git freeze、bounded implementation authorization 和未来 blanket wording 互相替代 | 六项 exact token、Authority 和效果已独立记录；DBA/DBOS remote receipts 已验证；未来版本、部署和外部资源仍没有 decision | registry 与 gate records 分开 recommendation、review、approval、execution；PR-G2A 保持未批准 | `MITIGATED_CURRENT_GATES_REMAIN_EXPLICIT` |
 | `R-041` | `HIGH` | 公共 validation result / DTO 被未来 persistence adapter 当作 authority token，绕过 canonical revalidation | DQ-018 独立审查曾复现 forged accepted decision；SQLite store 已改为重新验证 normalized envelope，并增加负例 | PR-G2B 适配器合同必须规定 validation object 不是 capability/permission/authority token，并复用同一负例 | `MITIGATED_CURRENT_SLICE_RECHECK_REQUIRED_AT_PR_G2B` |
+| `R-042` | `HIGH` | 周期 integrity scan 一次性 materialize 全部 admission records，使长期运行内存随记录量增长并形成可用性风险 | predecessor `fdda745c…` 一小时 run 峰值 RSS 192,724,992；`3a63161…` 改为 cursor streaming 并新增禁止 record-cursor `fetchall()` 的回归测试；同环境一小时峰值降至 38,223,872，59 次周期检查与最终检查均 PASS | 保留精确新旧 artifact；只关闭当前 macOS arm64 SQLite reference 路径；生产 backend 和其他平台必须重跑相同 failure/memory controls，不能外推为 SLO | `MITIGATED_REFERENCE_SLICE_CROSS_PLATFORM_REVALIDATION_REQUIRED` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -90,7 +91,7 @@ risk_acceptance_authority_assigned: true
 | `B-010` | DBOS 没有已发布的公开 package、API 或面向 AI agent 的受控可调用路径 | `ADR-022`、exact GitHub Release asset、匿名 SHA-256 和隔离安装复验 | 只解除有界 package 获取阻塞；没有公共 Runtime、托管 API、Permission 或整仓公开 |
 | `B-011` | 规范名称与公开网络仍未命中 TMAI | `ADR-022` 为 Developer Preview v0.1 显式接受并继续披露 `PARTIAL_METADATA_ONLY` | 只解除 v0.1 发布阻塞；发现事实没有升级，索引刷新后仍需复查 |
 | `B-012` | TMAP、OTel Profile 和 Production SLO 未映射到 DBOS/SAEE 当前实现 | `PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`：remote source、development observation、supported/partial/missing、duplicate authority 和 exact slice 候选已记录；`PR-G1=PASS_READ_ONLY_MAPPING` | 只解除 mapping blocker；`B-013`、`B-014` 继续阻止实现符合性、Pilot 和生产声明 |
-| `B-019` | production architecture baseline 和 DQ-018 起点尚未远端复验 | DBA remote head `05589af…`、DBOS source `5c52c1c…`、receipt `aa6440e…` 与 clean clone `PASS` | 只关闭 remote provenance blocker；不产生 PR-G2A approval 或 production authorization |
+| `B-019` | production architecture baseline 和 DQ-018 起点尚未远端复验 | DBA predecessor remote attestation、DBOS predecessor `5c52c1c…` / `aa6440e…` 及 hardened source `3a63161…` / receipt `bf1b3b6…` 均完成 remote clean clone；当前 successor packet 等待独立 DBA attestation | 只关闭 remote provenance blocker；不产生 PR-G2A approval 或 production authorization |
 
 | blocker_id | 原阻塞 | 解除证据 | 保留边界 |
 |---|---|---|---|
@@ -106,8 +107,8 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=41
-ACTIVE_RISKS=39
+TRACKED_RISKS=42
+ACTIVE_RISKS=40
 RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=10
 BLOCKERS_CLEARED=8
