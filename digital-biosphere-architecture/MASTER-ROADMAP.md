@@ -71,7 +71,7 @@ Developer Preview 发布历史保持不变。当前新增的 Production Readines
 |---|---|---|---|---|---|
 | `PR-0` | 冻结 Trusted Multi-Agent Protocol（可信多智能体协议）与生产可观测性架构基线 | DBA | `GATE_PASSED_REMOTE_BASELINE_VERIFIED` | content commit `264f317...` / tree `b83f25d...`、OpenTelemetry profiles、56/46/45/48-case contracts、`ADR-023`–`ADR-028`、六项 exact decision 与远端 freeze receipt | 保持基线；不授权 Collector build/config/deploy 或 production claim |
 | `PR-1` | 建立 DBOS/SAEE production implementation mapping（生产实现映射） | 子项目提供事实；DBA 审查边界 | `GATE_PASSED_READ_ONLY_MAPPING` | `PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`：remote commits、334 tests、34 validators、8 adapter tests、OTel capability inventory、缺口与重复权威审查 | `DQ-018` decision packet 和两路 next-step recommendation 已就绪，等待人类决策 |
-| `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `PR_G2A_CURRENT_SOURCE_PACKET_REFRESHED_WAITING_NATIVE_X86_64_G2B_G2T_G2I_G2C_BLOCKED` | DQ-018 source `23c8f08…`、receipt `b2eac11…`、534/534 tests、200/200 telemetry、35/35 validators；packet、independent Agent review 和 P001—P005 模拟重基线已远端复验 | 先补原生 x86_64，再做 packet attestation 和 Human Security Review；未进入 Human Review，未批准前不进入 DQ-019/PR-G2B |
+| `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `PR_G2A_NATIVE_VALIDATED_HUMAN_SECURITY_REVIEW_REQUIRED_G2B_G2T_G2I_G2C_BLOCKED` | DQ-018 source `23c8f08…`、native receipt `ff1752c…`；原生 Linux x86_64 534/534 tests、200/200 telemetry、25/25 Telemetry validator、P001—P005、rollback 与 reproducible wheel PASS | 先完成 DBA supplement remote attestation，再做独立 Human Security Review；未批准前不进入 DQ-019/PR-G2B |
 | `PR-3` | 建立 OpenTelemetry conformance and operations（符合性与运维） | DBOS + deployment infrastructure | `NOT_STARTED` | 版本锁定、exact custom-minimal Collector build/config/runtime/topology 绑定、deployment + operational-evidence profiles 的 synthetic-input/immutable-rollout/metric-stability/self-observation/no-data-alert/composite-readiness/delivery-reconciliation obligations、56/56 OTLP、46/46 semantic、45/45 Schema/Resource/Entity provenance 与 48/48 Collector distribution cases 的四个独立结果绑定 | 不得创建第五套重复目录；不得把 Telemetry 自动升级为 Evidence/Truth，也不得把 profile/schema/health/dashboard/binary startup 当实现、测量或生产证据 |
 | `PR-4` | 验证 SAEE production adapter isolation（生产适配隔离） | SAEE | `NOT_STARTED` | 只读消费、版本兼容、失败关闭、无 DBOS 写回、无 Decision/Permission | 不调用未获准算法或生成 Authority |
 | `PR-5` | 通过 Security / Recovery / Capacity gates（安全、恢复与容量闸门） | DBOS + DBA review | `NOT_STARTED` | threat model、secret handling、data minimization、backup/restore、灾难恢复、容量与队列压力证据 | 所有 critical gap 关闭后才可进入 Pilot |
@@ -127,11 +127,11 @@ M2 Canonical Status Sources
 ## 4. Current Program Focus（当前项目群焦点）
 
 ```text
-CURRENT_FOCUS=DQ_018_NATIVE_LINUX_X86_64_CURRENT_SOURCE_VALIDATION
-NEXT_BLOCKER=NATIVE_X86_64_NOT_COMPLETE
-NEXT_DECISION=NONE_UNTIL_NATIVE_X86_64_PACKET_ATTESTATION_AND_HUMAN_SECURITY_REVIEW_COMPLETE
+CURRENT_FOCUS=PR_G2A_HUMAN_SECURITY_REVIEW_PREPARATION
+NEXT_BLOCKER=DBA_NATIVE_SUPPLEMENT_ATTESTATION_AND_HUMAN_SECURITY_REVIEW_INCOMPLETE
+NEXT_DECISION=NONE_UNTIL_DBA_NATIVE_SUPPLEMENT_ATTESTATION_AND_HUMAN_SECURITY_REVIEW_COMPLETE
 NEXT_ARCHITECTURE_VERSION_DECISIONS=DQ_022_OTLP_1_11_REFERENCE_ADOPTION,DQ_023_OTEL_SEMANTIC_MAPPING_ADOPTION,DQ_024_OTEL_SCHEMA_RESOURCE_ENTITY_PROVENANCE_ADOPTION,DQ_025_OTEL_COLLECTOR_DISTRIBUTION_ADOPTION
-NEXT_DELIVERY=NATIVE_LINUX_X86_64_CURRENT_SOURCE_VALIDATION
+NEXT_DELIVERY=DBA_NATIVE_VALIDATION_REMOTE_ATTESTATION_THEN_HUMAN_SECURITY_REVIEW
 NEXT_INTEGRATION=NONE_AUTHORIZED_UNTIL_PR_G2A_APPROVAL
 DQ_015_AGENT_NATIVE_VALIDATION_ACCEPTED=true
 BASELINE_VALIDATION_ID=TMAI-ACV-20260721-001
@@ -157,7 +157,7 @@ DQ_018_IMPLEMENTATION_MAY_START=false
 DQ_018_IMPLEMENTATION_MAY_START_REASON=ALREADY_COMPLETED_EXACT_SLICE_NO_NEW_SCOPE_AUTHORIZED
 DQ_018_IMPLEMENTATION_COMPLETE=true
 DQ_018_SOURCE_COMMIT=23c8f0878058f29e733b6f164572ac157c6c7d1c
-DQ_018_RECEIPT_COMMIT=b2eac110486e64c8a277d5dfba283a81758c9d99
+DQ_018_RECEIPT_COMMIT=ff1752cb3bb01ff67538bb04b3c7517fbcee3269
 DQ_018_IMPLEMENTATION_MANIFEST=sha256:43382e4274c19ef6b10ee6e76f36ddddc18f05b7dfaedfdca43ddd8d3f2abc8c
 DQ_018_STREAMING_INTEGRITY_HARDENED=true
 DQ_018_CURRENT_SOURCE_TA_P003=PASS_EMULATED_AMD64_OBSERVER_EFFECT_HARDENED
@@ -166,11 +166,11 @@ DQ_018_PREDECESSOR_LINUX_ARM64_TA_P001_TO_TA_P005_PASS=true
 DQ_018_LINUX_ARM64_REFERENCE_VALIDATED=true
 DQ_018_LINUX_ARM64_REMOTE_RECEIPT_VERIFIED=true
 DQ_018_LINUX_AMD64_EMULATED_P003=PASS_OBSERVER_EFFECT_HARDENED
-DQ_018_NATIVE_LINUX_X86_64_VALIDATED=false
+DQ_018_NATIVE_LINUX_X86_64_VALIDATED=true
 PR_G2A_READY_FOR_HUMAN_REVIEW=false
 PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_REQUIRED=false
 PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_COMPLETE=true
-PR_G2A_CURRENT_SOURCE_PACKET_STATUS=WAITING_NATIVE_LINUX_X86_64
+PR_G2A_CURRENT_SOURCE_PACKET_STATUS=NATIVE_VALIDATED_DBOS_RECEIPT_REMOTE_VERIFIED_DBA_ATTESTATION_AND_HUMAN_SECURITY_REVIEW_REQUIRED
 PR_G2A_CURRENT_SOURCE_INDEPENDENT_AGENT_REVIEW_COMPLETE=true
 PR_G2A_HUMAN_REVIEW_APPROVED=false
 FULL_PR_G2_READY=false
@@ -202,12 +202,11 @@ PRODUCTION_PILOT_AUTHORIZED=false
 PRODUCTION_READY=false
 ```
 
-当前不应继续增加新的技术规范、Entity、生产 Runtime 或无验证接口承诺。优先任务是在
-current source 上补齐 native Linux x86_64 直接证据，再完成 packet remote attestation 和 Human Security Review。
+当前不应继续增加新的技术规范、Entity、生产 Runtime 或无验证接口承诺。优先任务是完成
+native Linux x86_64 validation supplement 的 DBA remote attestation，再进行独立 Human Security Review。
 
 Developer Preview 已发布，`PR-G1` 已完成，DQ-022–025 与 ADR-024 已采纳，DQ-018
-离线实现切片的 current source 已完成 P001—P005 模拟重基线并远端复验，但原生 Linux
-x86_64 仍未验证。current-source packet 已刷新为 `WAITING_NATIVE_LINUX_X86_64`，当前 gate 仍不是 Human Review。后继 production
+离线实现切片的 current source 已在原生 Linux x86_64 完成 P001—P005、rollback、reproducible wheel 与全仓测试并通过 DBOS 远端回执复验。当前 packet 为 `NATIVE_VALIDATED_DBOS_RECEIPT_REMOTE_VERIFIED_DBA_ATTESTATION_AND_HUMAN_SECURITY_REVIEW_REQUIRED`，尚未进入 Human Decision。后继 production
 persistence、OTLP/Collector staging、Identity/Evidence integration 和 SAEE/Pilot 仍按
 [`architecture/production-implementation-sequence.md`](architecture/production-implementation-sequence.md)
 分阶段独立决定；任何 build、configuration、deployment、真实 Pilot 或生产声明都不能由
