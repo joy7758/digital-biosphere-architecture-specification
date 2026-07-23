@@ -1,0 +1,68 @@
+{
+  "schema_version": "0.1",
+  "supplement_id": "TMAI-PR-G2A-CURRENT-SOURCE-PACKET-REFRESH-SUPPLEMENT-20260723-011",
+  "observed_at": "2026-07-23T10:45:00+08:00",
+  "decision_reference": "DQ-018",
+  "review_gate": "PR-G2A",
+  "status": "CURRENT_SOURCE_PACKET_REFRESHED_WAITING_NATIVE_LINUX_X86_64",
+  "dbos_binding": {
+    "repository": "https://github.com/joy7758/digital-biosphere-os.git",
+    "branch": "codex/telemetry-admission-foundation",
+    "implementation_commit": "23c8f0878058f29e733b6f164572ac157c6c7d1c",
+    "implementation_tree": "27703ed64d6e885a2933a5a39139a59bab83c3c1",
+    "implementation_manifest_sha256": "43382e4274c19ef6b10ee6e76f36ddddc18f05b7dfaedfdca43ddd8d3f2abc8c",
+    "receipt_commit": "b2eac110486e64c8a277d5dfba283a81758c9d99",
+    "receipt_tree": "a26a515c26303f6f7966b49a5cfba676c5c2a7ea",
+    "remote_head_verified": true,
+    "remote_clean_clone_verified": true
+  },
+  "artifacts": {
+    "packet_markdown": {"bytes": 2964, "sha256": "5fc8bfe071bd7412d2d12c1d3ff6e2c7a4b80020bd4381b33bdc32afb349343f"},
+    "packet_json": {"bytes": 2842, "sha256": "bb986e5aca2be0158223b0232fe721ad632bf64722ca6b67112cb9b67480f5ea"},
+    "independent_review_markdown": {"bytes": 4520, "sha256": "c9b5960580add72795622d2c4c2865d9cd28e58fa060bc832d163b7cae9c2073"},
+    "independent_review_json": {"bytes": 4021, "sha256": "8a0ce55b3bf75ef12252cf0fa1c4cfc5e81bc8777c7badbbd8948c4e448d71c9"},
+    "raw_review_inventory": {"entry_count": 15, "bytes": 2587, "sha256": "e7ceb5aced0890b8243a442c02cb63dab2e5ce0ad7aca6e42a03b1e712fcfdf5"}
+  },
+  "remote_validation": {
+    "report_json_valid": true,
+    "packet_local_links_verified": 33,
+    "raw_inventory_bindings": "15/15 PASS",
+    "validators": "35/35 PASS",
+    "unexpected_failures": 0
+  },
+  "packet_state": {
+    "refresh_complete": true,
+    "independent_agent_review_complete": true,
+    "status": "WAITING_NATIVE_LINUX_X86_64",
+    "native_linux_x86_64_validated": false,
+    "human_security_review_complete": false,
+    "pr_g2a_ready_for_human_review": false,
+    "pr_g2a_human_review_approved": false,
+    "full_pr_g2_ready": false,
+    "production_ready": false
+  },
+  "agent_recommendation": {
+    "status": "CONDITIONALLY_RECOMMENDED",
+    "recommended_as": "CURRENT_SOURCE_OFFLINE_TELEMETRY_ADMISSION_REFERENCE_SLICE_PENDING_NATIVE_X86_64",
+    "not_recommended_as": "PR_G2A_HUMAN_REVIEW_READY_FULL_PR_G2_PRODUCTION_SERVICE_SLO_OR_DURABILITY_EVIDENCE"
+  },
+  "next_required_action": "NATIVE_LINUX_X86_64_CURRENT_SOURCE_VALIDATION",
+  "decision_state": {"dq_019_status": "BLOCKED_INPUT", "dq_020_status": "BLOCKED_INPUT", "dq_021_status": "BLOCKED_INPUT"},
+  "effects": {
+    "pr_created": false,
+    "merge_performed": false,
+    "main_modified": false,
+    "release_created": false,
+    "deployment_performed": false,
+    "collector_created": false,
+    "listener_created": false,
+    "production_database_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "saee_output_created": false,
+    "gate_approved": false
+  }
+}
