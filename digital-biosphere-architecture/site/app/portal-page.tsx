@@ -10,8 +10,8 @@ export function PortalPage({ locale }: { locale: Locale }) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Trusted Multi-Agent Infrastructure",
-    alternateName: "可信多智能体基础设施",
+    name: "TITMAS Infrastructure Developer Community",
+    alternateName: "TITMAS 可信多智能体基础设施开发者社区",
     url: locale === "zh" ? "https://redcrag.cn/" : "https://redcrag.cn/en/",
     inLanguage: c.lang,
     description: c.lead,
@@ -36,10 +36,53 @@ export function PortalPage({ locale }: { locale: Locale }) {
             <h1>{c.title}</h1>
             <p className="hero-lead">{c.lead}</p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#architecture">{c.primaryCta}</a>
+              <a className="button button-primary" href="#community">{c.primaryCta}</a>
               <a className="button button-secondary" href={statusPath}>{c.secondaryCta}</a>
             </div>
             <p className="truth-notice"><span>i</span>{c.notice}</p>
+          </div>
+        </section>
+
+        <section className="section community-section" id="community" data-section-id="community">
+          <div className="section-shell">
+            <div className="community-heading">
+              <div className="section-heading">
+                <p className="section-kicker">COMMUNITY / 开发者社区</p>
+                <h2>{c.communityTitle}</h2>
+                <p>{c.communityLead}</p>
+              </div>
+              <blockquote>{c.communityPromise}</blockquote>
+            </div>
+
+            <div className="community-surface-grid">
+              {c.communitySurfaces.map(([kind, title, description, state]) => (
+                <article className="community-surface-card" key={kind}>
+                  <div>
+                    <span>{kind}</span>
+                    <code>{state}</code>
+                  </div>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </article>
+              ))}
+            </div>
+
+            <div className="community-state-heading">
+              <h3>{c.communityStateTitle}</h3>
+              <p>{c.communityStateLead}</p>
+            </div>
+            <div className="community-state-grid">
+              {c.communityStates.map(([label, state, detail]) => (
+                <article key={label}>
+                  <span>{label}</span>
+                  <strong>{state}</strong>
+                  <p>{detail}</p>
+                </article>
+              ))}
+            </div>
+            <div className="community-boundaries">
+              {c.communityBoundaries.map((boundary) => <code key={boundary}>{boundary}</code>)}
+            </div>
           </div>
         </section>
 

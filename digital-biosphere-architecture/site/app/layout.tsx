@@ -4,31 +4,31 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://redcrag.cn"),
   title: {
-    default: "可信多智能体基础设施",
-    template: "%s · TMAI",
+    default: "TITMAS 可信多智能体基础设施开发者社区",
+    template: "%s · TITMAS",
   },
   description:
-    "面向长期运行、多智能体协作和可验证演化的可信基础设施。",
+    "围绕开放规范、适配器契约、符合性测试和参考实现边界建设可信多智能体基础设施。",
   openGraph: {
     type: "website",
-    siteName: "Trusted Multi-Agent Infrastructure",
-    title: "可信多智能体基础设施",
+    siteName: "TITMAS Infrastructure Developer Community",
+    title: "TITMAS 可信多智能体基础设施开发者社区",
     description:
-      "让 AI 智能体基于可验证证据长期运行、协作和演化。",
+      "Developer Community for Trusted Multi-Agent Infrastructure.",
     images: [
       {
         url: "/og.png",
         width: 1731,
         height: 909,
-        alt: "Trusted Multi-Agent Infrastructure / 可信多智能体基础设施",
+        alt: "TITMAS Infrastructure Developer Community / TITMAS 可信多智能体基础设施开发者社区",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trusted Multi-Agent Infrastructure",
+    title: "TITMAS Infrastructure Developer Community",
     description:
-      "Trust infrastructure for long-running, collaborative AI agents.",
+      "Open specifications, adapter contracts, conformance, and reference boundaries for trusted multi-agent infrastructure.",
     images: ["/og.png"],
   },
 };

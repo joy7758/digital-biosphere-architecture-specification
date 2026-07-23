@@ -44,8 +44,12 @@ const releaseContext = resolveReleaseContext(process.env, {
   dbosPackage,
 });
 
-assert.match(zh, /面向多智能体系统的可信基础设施/);
-assert.match(en, /Trust infrastructure for multi-agent systems/);
+assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
+assert.match(en, /TITMAS Infrastructure Developer Community/);
+assert.match(zh, /共同建设 Agent 时代的可信基础设施/);
+assert.match(en, /Build trustworthy infrastructure for the agent era/);
+assert.match(zh, /Community Review ≠ Architecture Decision/);
+assert.match(en, /Contribution ≠ Authority/);
 if (releaseContext.mode === "candidate") {
   assert.match(zhStatus, /当前不是正式发布/);
   assert.match(enStatus, /This is not a release/);
@@ -62,6 +66,18 @@ assert.match(en, /Evaluation ≠ Authorization/);
 assert.doesNotMatch(zh, /codex-preview|Your site is taking shape/);
 assert.doesNotMatch(en, /codex-preview|Your site is taking shape/);
 assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
+assert.equal(status.gates.TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY_DIRECTION_ADOPTED, true);
+assert.equal(status.gates.TITMAS_CONTRIBUTOR_ENTRY_PREPARED, true);
+assert.equal(status.gates.TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED, false);
+assert.equal(status.gates.TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED, false);
+assert.equal(status.gates.TITMAS_CODE_OF_CONDUCT_ADOPTED, false);
+assert.equal(status.gates.TITMAS_MAINTAINER_ASSIGNED, false);
+assert.equal(status.gates.TITMAS_FOUNDATION_IN_SCOPE, false);
+assert.equal(status.community.current_state, "CONTRIBUTOR_ENTRY_PREPARED");
+assert.equal(status.community.public_contribution_surface_authorized, false);
+assert.equal(agentIndex.name, "TITMAS Infrastructure Developer Community");
+assert.equal(agentIndex.abbreviation, "TITMAS");
+assert.equal(agentIndex.community.public_submission_invitation, false);
 assert.equal(status.gates.DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE, true);
 assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL, true);
 assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_RERUN_PASS, true);

@@ -3,7 +3,7 @@ import { content } from "./site-content";
 
 export function Brand() {
   return (
-    <span className="brand" aria-label="Trusted Multi-Agent Infrastructure">
+    <span className="brand" aria-label="TITMAS Infrastructure Developer Community">
       <span className="brand-mark" aria-hidden="true">
         <i />
         <i />
@@ -11,8 +11,8 @@ export function Brand() {
         <i />
       </span>
       <span className="brand-name">
-        <strong>TMAI</strong>
-        <small>Trustworthy Multi-Agent Infrastructure</small>
+        <strong>TITMAS</strong>
+        <small>Infrastructure Developer Community</small>
       </span>
     </span>
   );
@@ -33,6 +33,7 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
 
   const nav = (
     <>
+      <a href={`${root}#community`}>{c.nav.community}</a>
       <a href={`${root}#architecture`}>{c.nav.architecture}</a>
       <a href={`${root}#trust`}>{c.nav.trust}</a>
       <a href={`${root}#validation`}>{c.nav.validation}</a>
@@ -90,6 +91,9 @@ export function Footer({ locale }: { locale: Locale }) {
         </div>
         <div>
           <strong>{locale === "zh" ? "治理" : "Governance"}</strong>
+          <a href={locale === "zh" ? "/#community" : "/en/#community"}>
+            {locale === "zh" ? "社区方向" : "Community direction"}
+          </a>
           <a href="https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/PROGRAM-CHARTER.md">
             Program Charter
           </a>
