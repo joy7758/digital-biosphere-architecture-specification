@@ -177,6 +177,8 @@ p003_observer_effect_supplement_attested_at=2026-07-23T04:52:55+08:00
 current_source_load_rebase_supplement_created_at=2026-07-23T06:25:00+08:00
 current_source_load_rebase_supplement_attested_at=2026-07-23T06:30:42+08:00
 current_source_packet_refresh_supplement_created_at=2026-07-23T10:45:00+08:00
+current_source_packet_refresh_supplement_remote_attested=true
+current_source_packet_refresh_supplement_attested_at=2026-07-23T10:48:00+08:00
 next_gate=NATIVE_LINUX_X86_64_CURRENT_SOURCE_VALIDATION
 ```
 
