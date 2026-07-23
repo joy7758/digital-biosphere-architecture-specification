@@ -1,0 +1,265 @@
+{
+  "$schema": "schemas/external-agent-governance-signal-registry.schema.v0.1.json",
+  "schema_version": "0.1.0",
+  "registry_id": "DBA-EAGSI-20260722-001",
+  "status": "REFERENCE_ONLY_VALIDATED_PRIMARY_SOURCES",
+  "observed_at": "2026-07-22T23:33:32+08:00",
+  "primary_repository": "digital-biosphere-architecture",
+  "input_authority": {
+    "supplied_input": "/Users/zhangbin/.codex/attachments/8bad50dd-dfff-44fc-889f-bbaab82aa3e2/pasted-text.txt",
+    "supplied_input_class": "SECONDARY_INTELLIGENCE_BRIEF",
+    "claim_authority": "PRIMARY_SOURCES_ONLY",
+    "primary_source_required": true
+  },
+  "agent_recommendation_gate": {
+    "initial_recommendation": "CONDITIONALLY_RECOMMENDED",
+    "initial_non_recommendation_reasons": [
+      "The supplied brief mixed open proposals, an intent announcement, a preprint, and a changelog declaration with stronger maturity wording.",
+      "The proposed work could displace PR-G2A or be misread as authorization to create runtime capabilities.",
+      "Identity, access authorization, telemetry, receipts, evidence, verification, and truth were not yet separated by explicit non-promotion rules."
+    ],
+    "final_recommendation": "RECOMMENDED_FOR_GOVERNANCE_BOUNDARY_AND_GAP_ANALYSIS",
+    "recommended_for_runtime_implementation": false,
+    "current_program_priority_changed": false
+  },
+  "sources": [
+    {
+      "source_id": "SRC-01",
+      "publisher": "FINOS",
+      "source_type": "GITHUB_ISSUE",
+      "url": "https://github.com/finos/ai-governance-framework/issues/348",
+      "pin": "issue-348@updated-2026-07-21T11:24:46Z",
+      "observed_state": "OPEN_MEETING_TEMPLATE_WITH_BLANK_AGENDA_AND_MINUTES",
+      "verified_claim": "The issue is a meeting template; it does not itself record an adopted agenda, minutes, decision, or standard.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-02",
+      "publisher": "FINOS",
+      "source_type": "GITHUB_ISSUE",
+      "url": "https://github.com/finos/ai-governance-framework/issues/346",
+      "pin": "issue-346@updated-2026-07-20",
+      "observed_state": "OPEN_PROPOSAL",
+      "verified_claim": "The issue proposes a standardized telemetry schema and explicitly distinguishes telemetry from an authoritative durable audit record.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-03",
+      "publisher": "FINOS",
+      "source_type": "GITHUB_ISSUE",
+      "url": "https://github.com/finos/ai-governance-framework/issues/341",
+      "pin": "issue-341@observed-2026-07-22",
+      "observed_state": "OPEN_PROPOSAL",
+      "verified_claim": "The issue proposes independently and offline-verifiable decision evidence with decision-time signing, tamper evidence, justification binding, and human-authority context.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-04",
+      "publisher": "FINOS",
+      "source_type": "GITHUB_ISSUE",
+      "url": "https://github.com/finos/ai-governance-framework/issues/340",
+      "pin": "issue-340@observed-2026-07-22",
+      "observed_state": "OPEN_IDEA",
+      "verified_claim": "The issue discusses a runtime policy and evidence reference implementation; it is not a released reference implementation or adopted control.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-05",
+      "publisher": "Model Context Protocol",
+      "source_type": "OFFICIAL_DOCUMENTATION",
+      "url": "https://modelcontextprotocol.io/extensions/auth/enterprise-managed-authorization",
+      "pin": "stable-extension-observed-2026-07-22",
+      "observed_state": "STABLE_OPT_IN_EXTENSION",
+      "verified_claim": "Enterprise-Managed Authorization centralizes MCP server access through an enterprise identity provider; it does not prove agent-persona continuity, delegation scope, action reasonableness, or evidence sufficiency.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-06",
+      "publisher": "Linux Foundation",
+      "source_type": "OFFICIAL_PRESS_RELEASE",
+      "url": "https://www.linuxfoundation.org/press/linux-foundation-announces-intent-to-launch-agent-name-service-to-establish-trusted-identity-infrastructure-for-ai-agents",
+      "pin": "intent-announcement-2026-06-23",
+      "observed_state": "INTENT_TO_LAUNCH",
+      "verified_claim": "The announcement describes DNS-based identity, verification, and discovery goals; an intent announcement is not a stable standard or proof of adoption.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-07",
+      "publisher": "Agent Name Service",
+      "source_type": "GITHUB_REPOSITORY",
+      "url": "https://github.com/agentnameservice/ans",
+      "pin": "main@938388112a4e35007d9b5612f364258587dc8bd3",
+      "observed_state": "ACTIVE_IMPLEMENTATION_REPOSITORY",
+      "verified_claim": "A public implementation repository now exists and was active on 2026-07-21; this corrects an intent-only reading but does not establish a stable standard, deployment, or DBA adoption.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-08",
+      "publisher": "Microsoft",
+      "source_type": "GITHUB_CHANGELOG",
+      "url": "https://github.com/microsoft/agent-governance-toolkit/blob/main/CHANGELOG.md",
+      "pin": "main@7037d754451553e9efd05386c3db6395f959b74a",
+      "observed_state": "MAIN_CHANGELOG_DECLARES_5_0_0",
+      "verified_claim": "The main-branch changelog declares 5.0.0 features including ACS alignment, NonoSandbox, and denylist controls; no v5.0.0 release or tag was found.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-09",
+      "publisher": "Microsoft",
+      "source_type": "GITHUB_RELEASE",
+      "url": "https://github.com/microsoft/agent-governance-toolkit/releases/tag/v4.1.0",
+      "pin": "v4.1.0@0de71ca",
+      "observed_state": "LATEST_PUBLISHED_RELEASE_AS_OF_OBSERVATION",
+      "verified_claim": "The latest published GitHub Release observed on 2026-07-22 is v4.1.0, published 2026-06-09.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-10",
+      "publisher": "arXiv",
+      "source_type": "RESEARCH_PREPRINT",
+      "url": "https://arxiv.org/abs/2607.06195",
+      "pin": "arXiv:2607.06195v1@2026-07-07",
+      "observed_state": "AUTHOR_PREPRINT",
+      "verified_claim": "LogicHunter reports silent semantic failures and 40 bugs, with 30 confirmed and 26 fixed; the source is a preprint and does not establish peer review or independent replication.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-11",
+      "publisher": "Linux Foundation Events",
+      "source_type": "OFFICIAL_EVENT_PAGE",
+      "url": "https://events.linuxfoundation.org/agntcon-mcpcon-europe/program/cfp/",
+      "pin": "cfp-page-observed-2026-07-22",
+      "observed_state": "CFP_CLOSED_SCHEDULE_ANNOUNCEMENT_DUE_2026-07-23",
+      "verified_claim": "The Europe CFP is closed; notifications are dated 2026-07-21 and the schedule announcement is dated 2026-07-23, so no accepted-program claim is made on 2026-07-22.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    }
+  ],
+  "corrections": [
+    {
+      "correction_id": "COR-01",
+      "supplied_claim": "FINOS issue 348 already provides the substantive meeting agenda for telemetry and offline evidence.",
+      "verified_correction": "Issue 348 is an open meeting template with blank agenda and minutes. Issues 346, 341, and 340 are separate open proposals or ideas, not adopted framework controls.",
+      "evidence_source_ids": ["SRC-01", "SRC-02", "SRC-03", "SRC-04"]
+    },
+    {
+      "correction_id": "COR-02",
+      "supplied_claim": "Microsoft Agent Governance Toolkit v5.0 is a published release.",
+      "verified_correction": "Version 5.0.0 appears in the main-branch changelog, but no v5.0.0 tag or GitHub Release was found; v4.1.0 is the latest published release observed.",
+      "evidence_source_ids": ["SRC-08", "SRC-09"]
+    },
+    {
+      "correction_id": "COR-03",
+      "supplied_claim": "Agent Name Service remains only an intent announcement without a technical repository.",
+      "verified_correction": "The Linux Foundation source remains an intent announcement, but a public and active agentnameservice/ans implementation repository now exists. Neither fact proves a stable standard or adoption.",
+      "evidence_source_ids": ["SRC-06", "SRC-07"]
+    },
+    {
+      "correction_id": "COR-04",
+      "supplied_claim": "LogicHunter establishes a generally validated defect rate for agent frameworks.",
+      "verified_correction": "LogicHunter is an author preprint reporting results for its studied scope; peer review, independent replication, and generalization are not established by the source.",
+      "evidence_source_ids": ["SRC-10"]
+    }
+  ],
+  "boundary_mappings": [
+    {
+      "mapping_id": "MAP-01",
+      "external_signal": "FINOS standardized telemetry schema proposal",
+      "dba_route": "Existing OpenTelemetry profiles and observation plane",
+      "allowed_interpretation": "A comparison input for event fields, transport neutrality, and receipt linkage.",
+      "forbidden_promotion": "Telemetry must not be promoted to Evidence, durable audit authority, Verification, Truth, Capability, Permission, or gate closure.",
+      "status": "REFERENCE_MAPPING_ONLY"
+    },
+    {
+      "mapping_id": "MAP-02",
+      "external_signal": "FINOS independently offline-verifiable receipt proposal",
+      "dba_route": "DQ-006 Agent Evidence portfolio review and blocked DQ-021 Telemetry-to-Evidence admission",
+      "allowed_interpretation": "A gap-comparison input for decision-time signing, independent verification, justification binding, and human-authority context.",
+      "forbidden_promotion": "A receipt, signature, hash, or attestation must not be promoted to Truth, Permission, correct execution, evidence sufficiency, or PR-G2 approval.",
+      "status": "REFERENCE_MAPPING_ONLY"
+    },
+    {
+      "mapping_id": "MAP-03",
+      "external_signal": "MCP Enterprise-Managed Authorization",
+      "dba_route": "External access-authorization input adjacent to ARO and existing identity/permission boundaries",
+      "allowed_interpretation": "A reference for enterprise-controlled MCP server access and identity-provider policy.",
+      "forbidden_promotion": "Access authorization must not be promoted to agent-persona continuity, delegation authority, action reasonableness, Execution, Evidence, or production readiness.",
+      "status": "REFERENCE_MAPPING_ONLY"
+    },
+    {
+      "mapping_id": "MAP-04",
+      "external_signal": "Agent Name Service discovery and verification",
+      "dba_route": "External discovery and identity input adjacent to POP; DQ-006 remains open",
+      "allowed_interpretation": "A reference for DNS-based discovery, externally verifiable names, and identity metadata.",
+      "forbidden_promotion": "Discovery or external identity metadata must not be promoted to DBOS Digital Entity identity, POP persona continuity, Capability, Permission, registration, or admission.",
+      "status": "REFERENCE_MAPPING_ONLY"
+    },
+    {
+      "mapping_id": "MAP-05",
+      "external_signal": "Microsoft Agent Governance Toolkit controls",
+      "dba_route": "Competitive and design reference for policy, sandbox, registry, and audit surfaces",
+      "allowed_interpretation": "A source-pinned comparison input after release-state correction.",
+      "forbidden_promotion": "Main-branch feature declarations, audit logs, sandbox controls, or registry records must not be copied as adopted capability or used as DBA implementation, maturity, or production evidence.",
+      "status": "REFERENCE_MAPPING_ONLY"
+    },
+    {
+      "mapping_id": "MAP-06",
+      "external_signal": "LogicHunter silent semantic failure findings",
+      "dba_route": "Future PR-G2 and PR-G4 conformance review inputs",
+      "allowed_interpretation": "A research input supporting final-state, invariant, contract, and authority-effect assertions in addition to exception detection.",
+      "forbidden_promotion": "The preprint must not be promoted to a universal defect rate, an implemented validator, executed conformance, a gate result, or production evidence.",
+      "status": "REFERENCE_MAPPING_ONLY"
+    }
+  ],
+  "gap_actions": [
+    {
+      "action_id": "ACT-01",
+      "artifact": "FINOS telemetry versus offline-verifiable receipt comparison",
+      "status": "READY_AS_REVIEW_ARTIFACT",
+      "implementation_effect": false,
+      "external_effect": false
+    },
+    {
+      "action_id": "ACT-02",
+      "artifact": "ANS-POP-EMA-ARO responsibility and non-promotion matrix",
+      "status": "READY_AS_GOVERNANCE_MATRIX",
+      "implementation_effect": false,
+      "external_effect": false
+    },
+    {
+      "action_id": "ACT-03",
+      "artifact": "Silent semantic failure evidence-gap input",
+      "status": "REVIEW_REQUIRED_FUTURE_PR_G2_PR_G4",
+      "implementation_effect": false,
+      "external_effect": false
+    },
+    {
+      "action_id": "ACT-04",
+      "artifact": "One-page FINOS or conference discussion note",
+      "status": "PREPARED_NOT_SUBMITTED",
+      "implementation_effect": false,
+      "external_effect": false
+    }
+  ],
+  "truth_boundaries": [
+    "OPEN_ISSUE_NE_STANDARD",
+    "MEETING_TEMPLATE_NE_AGENDA_NE_DECISION",
+    "CHANGELOG_DECLARATION_NE_PUBLISHED_RELEASE",
+    "INTENT_ANNOUNCEMENT_NE_STABLE_STANDARD_NE_ADOPTION",
+    "ACTIVE_REPOSITORY_NE_STABLE_STANDARD_NE_DEPLOYMENT",
+    "PREPRINT_NE_PEER_REVIEW_NE_INDEPENDENT_REPLICATION",
+    "TELEMETRY_NE_EVIDENCE_NE_TRUTH",
+    "IDENTITY_DISCOVERY_NE_PERSONA_CONTINUITY_NE_CAPABILITY_NE_PERMISSION",
+    "ACCESS_AUTHORIZATION_NE_ACTION_AUTHORITY_NE_ACTION_REASONABLENESS",
+    "RECEIPT_NE_CORRECT_EXECUTION_NE_EVIDENCE_SUFFICIENCY_NE_GATE_PASS"
+  ],
+  "effects": {
+    "runtime_created": false,
+    "capability_adopted": false,
+    "technical_specification_authorized": false,
+    "dq_status_changed": false,
+    "pr_g2a_approved": false,
+    "production_ready": false,
+    "external_submission_sent": false,
+    "external_action_authorized": false
+  }
+}
