@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1",
+  "attestation_id": "TMAI-PR-G2A-SECURITY-REMEDIATION-READINESS-REMOTE-ATTESTATION-20260723-018",
+  "observed_at": "2026-07-23T14:55:46+08:00",
+  "decision_reference": "DQ-018",
+  "review_gate": "PR-G2A",
+  "status": "DBA_SECURITY_REMEDIATION_READINESS_PACKET_REMOTE_ATTESTED_HUMAN_REVIEW_READY_NOT_APPROVED",
+  "dba_binding": {
+    "repository": "https://github.com/joy7758/digital-biosphere-architecture-specification.git",
+    "branch": "codex/production-observability-baseline",
+    "predecessor_commit": "d4f2934f85f2ef3a509e9825df0ff9b7bc3e6e77",
+    "predecessor_tree": "66fdd0916fe045da9b51d95d7f0ded2772b2adf2"
+  },
+  "artifact_bindings": {
+    "security_remediation_attestation_markdown": {
+      "path": "digital-biosphere-architecture/PR-G2A-SECURITY-REMEDIATION-ATTESTATION-2026-07-23.md",
+      "bytes": 6180,
+      "sha256": "f97d5ebe7f7d31340c7bc49d8ed66bb9f002ca24842433d028ddfd7ed58941a6"
+    },
+    "security_remediation_attestation_json": {
+      "path": "digital-biosphere-architecture/PR-G2A-SECURITY-REMEDIATION-ATTESTATION-2026-07-23.json",
+      "bytes": 5026,
+      "sha256": "dfe7c961cfb1b8cdeacedff8a79e1d0b31f8a43890c9239eea6a7c1562404ca6"
+    },
+    "human_review_packet_markdown": {
+      "path": "digital-biosphere-architecture/PR-G2A-TELEMETRY-ADMISSION-SECURITY-REMEDIATED-HUMAN-REVIEW-PACKET-2026-07-23.md",
+      "bytes": 8078,
+      "sha256": "f24d5c26c7506afd20df1af7f74ec74a19908f28a3c9b7937a9eb09ba0b1871d"
+    },
+    "human_review_packet_json": {
+      "path": "digital-biosphere-architecture/PR-G2A-TELEMETRY-ADMISSION-SECURITY-REMEDIATED-HUMAN-REVIEW-PACKET-2026-07-23.json",
+      "bytes": 3775,
+      "sha256": "7d1aa3782985c9972a77eb49db4e59b97613e598b28842472bfd94b670b4d86e"
+    }
+  },
+  "dbos_binding": {
+    "source_commit": "ee90c0c84964f1f3e4dbeb8dffaf888f9822b6a5",
+    "receipt_commit": "901bf0dda66e46f8b1c0b5873f5c5f20e9d03920",
+    "implementation_manifest_sha256": "306435cd3c5fc65e46995f0e2a57b1322f950889af350f1b0bcbd13c35644fd9"
+  },
+  "remote_verification": {
+    "fresh_clone": "PASS",
+    "exact_predecessor_commit": "PASS",
+    "exact_predecessor_tree": "PASS",
+    "clean_worktree": "PASS",
+    "tracked_json_files_parsed": 82,
+    "markdown_files_checked": 183,
+    "markdown_links_checked": 978,
+    "missing_markdown_links": 0,
+    "governance_invariants": "PASS",
+    "authority_effects_true": 0
+  },
+  "agent_recommendation": {
+    "status": "CONDITIONALLY_RECOMMENDED_FOR_PR_G2A_HUMAN_SECURITY_REVIEW",
+    "recommended_as": "REMOTE_ATTESTED_CURRENT_HUMAN_REVIEW_INPUT",
+    "next_recommended_gate": "PR_G2A_HUMAN_SECURITY_REVIEW",
+    "not_recommended_as": "HUMAN_SECURITY_REVIEW_COMPLETE_PR_G2A_APPROVED_FULL_PR_G2_OR_PRODUCTION_READY"
+  },
+  "decision_state": {
+    "dba_security_readiness_packet_remote_attested": true,
+    "pr_g2a_ready_for_human_review": true,
+    "human_security_review_complete": false,
+    "pr_g2a_human_review_approved": false,
+    "dq_019_status": "BLOCKED_INPUT",
+    "dq_020_status": "BLOCKED_INPUT",
+    "dq_021_status": "BLOCKED_INPUT",
+    "full_pr_g2_ready": false,
+    "production_ready": false
+  },
+  "effects": {
+    "dbos_modified": false,
+    "pr_created": false,
+    "merge_performed": false,
+    "main_modified": false,
+    "release_created": false,
+    "deployment_performed": false,
+    "collector_created": false,
+    "listener_created": false,
+    "production_database_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "saee_output_created": false,
+    "gate_approved": false
+  }
+}

@@ -215,6 +215,8 @@ security_remediation_receipt_commit=901bf0dda66e46f8b1c0b5873f5c5f20e9d03920
 implementation_manifest=sha256:306435cd3c5fc65e46995f0e2a57b1322f950889af350f1b0bcbd13c35644fd9
 security_remediation_attestation_ref=PR-G2A-SECURITY-REMEDIATION-ATTESTATION-2026-07-23.json
 security_remediation_remote_attested=true
+dba_security_readiness_packet_remote_attestation_ref=PR-G2A-SECURITY-REMEDIATION-READINESS-REMOTE-ATTESTATION-2026-07-23.json
+dba_security_readiness_packet_remote_attested=true
 security_precheck_open_high_findings=0
 security_precheck_open_medium_residuals=2
 critical_high_findings_closed=true
@@ -230,6 +232,7 @@ result=READY_FOR_HUMAN_SECURITY_REVIEW_NOT_APPROVED
 reviewed_by_ref=codex_independent_technical_review
 attested_by_ref=codex_remote_clean_clone_validation
 reviewed_at=2026-07-23T14:46:01+08:00
+readiness_packet_remote_attested_at=2026-07-23T14:55:46+08:00
 next_gate=PR_G2A_HUMAN_SECURITY_REVIEW
 ```
 
