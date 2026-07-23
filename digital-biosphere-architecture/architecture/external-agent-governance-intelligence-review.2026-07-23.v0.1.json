@@ -1,0 +1,363 @@
+{
+  "$schema": "schemas/external-agent-governance-intelligence-review.schema.v0.1.json",
+  "schema_version": "0.1.0",
+  "review_id": "DBA-EAGIR-20260723-001",
+  "status": "REFERENCE_ONLY_CORRECTED_MAINLINE_DRIFT_DETECTED",
+  "observed_at": "2026-07-23T11:26:18+08:00",
+  "input": {
+    "class": "SECONDARY_INTELLIGENCE_BRIEF",
+    "authority": "DISCOVERY_INPUT_ONLY",
+    "primary_source_verification_required": true
+  },
+  "agent_recommendation_gate": {
+    "potential_customer_recommendation": "COMPOSE_WITH_SAEE",
+    "recommend_for": [
+      "Bounded offline evidence-adequacy evaluation over a closed evidence package.",
+      "Pre-deployment agent reliability and missing-evidence review with explicit non-authority boundaries."
+    ],
+    "do_not_recommend_for": [
+      "Production runtime control or inline authorization.",
+      "Legal or regulatory compliance certification.",
+      "Real OTLP ingestion or arbitrary OpenTelemetry normalization.",
+      "Externally authenticated identity or delegation validation.",
+      "Non-repudiation or proof that a real-world event occurred."
+    ],
+    "development_recommendation": "DO_NOT_IMPLEMENT_FROM_BRIEF",
+    "blocking_reasons": [
+      "The brief elevates evidence governance above the constitutional SAEE and Agent Evidence integration mainline.",
+      "The proposed Evidence Object and OpenTelemetry work partly duplicates implemented local capabilities.",
+      "Phase 1 capability work is not authorized.",
+      "Real OTLP ingestion, trusted trace-to-evidence conversion, identity binding and delegation binding remain missing.",
+      "The public projection and canonical governance branch are divergent and require history reconciliation before new feature work."
+    ]
+  },
+  "sources": [
+    {
+      "source_id": "SRC-20260723-01",
+      "publisher": "Reuters",
+      "source_type": "NEWS_REPORT",
+      "url": "https://www.reuters.com/legal/litigation/chinese-ais-role-stopping-rogue-openai-agent-shows-cost-us-guardrails-2026-07-22/",
+      "pin": "published-2026-07-22",
+      "observed_state": "CURRENT_NEWS_REPORT",
+      "verified_use": "Supports a current containment, sandbox, guardrail and cyber-defense signal; it does not validate SAEE architecture or evidence adequacy.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-20260723-02",
+      "publisher": "NIST",
+      "source_type": "OFFICIAL_GOVERNMENT_PUBLICATION",
+      "url": "https://www.nist.gov/publications/summary-analysis-responses-request-information-regarding-security-considerations-ai",
+      "pin": "NIST-AI-800-5@published-2026-05-18",
+      "observed_state": "RFI_RESPONSE_SUMMARY",
+      "verified_use": "Summarizes stakeholder views on agent threats, mitigations and government roles; it is not a binding standard or a four-layer reference architecture.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-20260723-03",
+      "publisher": "NIST",
+      "source_type": "OFFICIAL_GOVERNMENT_INITIATIVE",
+      "url": "https://www.nist.gov/artificial-intelligence/ai-agent-standards-initiative",
+      "pin": "page-updated-2026-04-20",
+      "observed_state": "ACTIVE_STANDARDS_INITIATIVE",
+      "verified_use": "Confirms active work on industry-led standards, open protocols, security, authentication and identity research.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-20260723-04",
+      "publisher": "OWASP GenAI Security Project",
+      "source_type": "OFFICIAL_SECURITY_PROJECT_REPORT",
+      "url": "https://genai.owasp.org/resource/state-of-agentic-ai-security-and-governance/",
+      "pin": "version-2.01@2026-06-01",
+      "observed_state": "PUBLISHED_GUIDE",
+      "verified_use": "Supports the importance of agent security and governance models; it does not establish an empty evidence layer or SAEE ownership of that layer.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-20260723-05",
+      "publisher": "OpenSearch",
+      "source_type": "OFFICIAL_PRODUCT_DOCUMENTATION",
+      "url": "https://docs.opensearch.org/3.6/observing-your-data/agent-traces/index/",
+      "pin": "OpenSearch-3.6-agent-traces",
+      "observed_state": "PRODUCT_FEATURE_INTRODUCED_3_6",
+      "verified_use": "Confirms an OTLP and OpenTelemetry semantic-convention based product workflow for agent traces, not trace authenticity or governance proof.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-20260723-06",
+      "publisher": "OpenTelemetry",
+      "source_type": "OFFICIAL_STANDARD_DOCUMENTATION",
+      "url": "https://opentelemetry.io/docs/specs/semconv/",
+      "pin": "semantic-conventions-1.43.0",
+      "observed_state": "CORE_SEMANTIC_CONVENTIONS_VERSIONED_GENAI_MOVED",
+      "verified_use": "Confirms a mature versioned semantic-convention framework while explicitly routing GenAI work to a separate repository.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-20260723-07",
+      "publisher": "OpenTelemetry",
+      "source_type": "OFFICIAL_GITHUB_REPOSITORY",
+      "url": "https://github.com/open-telemetry/semantic-conventions-genai",
+      "pin": "main@2e994c6d59a93bb4fc1752c5378eedb9b8e14d6b",
+      "observed_state": "ACTIVE_DEVELOPMENT_REPOSITORY_NO_RELEASES",
+      "verified_use": "Provides GenAI, Agent and MCP semantic-convention work; no release is published and development fields require exact-version handling.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-20260723-08",
+      "publisher": "arXiv",
+      "source_type": "RESEARCH_PREPRINT",
+      "url": "https://arxiv.org/abs/2607.14309",
+      "pin": "arXiv:2607.14309v1@2026-07-15",
+      "observed_state": "AUTHOR_PREPRINT",
+      "verified_use": "Traccia is a relevant OpenTelemetry, ledger and compliance-mapping research input; its claims are not independent conformance, legal proof or market adoption evidence.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-20260723-09",
+      "publisher": "Agent Control Standard",
+      "source_type": "OFFICIAL_PROJECT_WEBSITE",
+      "url": "https://agentcontrolstandard.org/",
+      "pin": "site-observed-2026-07-23",
+      "observed_state": "ACTIVELY_EVOLVING_OPEN_SPECIFICATION",
+      "verified_use": "Provides a useful runtime-hook, policy and observability proposal while explicitly inviting input on an evolving specification.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-20260723-10",
+      "publisher": "Agent Control Standard",
+      "source_type": "OFFICIAL_GITHUB_REPOSITORY",
+      "url": "https://github.com/Agent-Control-Standard/ACS",
+      "pin": "main@c259f57d745246b4f338ebc9b8cde6c08bcbc1bf;version.txt=0.1.0",
+      "observed_state": "FORK_NO_TAGS_NO_RELEASES_LICENSE_METADATA_MIT",
+      "verified_use": "Corrects mature-standard language: the repository is a fork, has no tags or releases, declares version 0.1.0, and its MIT metadata conflicts with the website Apache-2.0 claim.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-20260723-11",
+      "publisher": "USENIX Security / arXiv",
+      "source_type": "ACCEPTED_RESEARCH_PAPER",
+      "url": "https://arxiv.org/abs/2603.11088",
+      "pin": "arXiv:2603.11088v1@2026-03-11;accepted-USENIX-Security-2026",
+      "observed_state": "ACCEPTED_SECURITY_SURVEY",
+      "verified_use": "Supports that agent attack and defense is an active security research area; it does not establish an evidence-object standard or SAEE market advantage.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-20260723-12",
+      "publisher": "arXiv",
+      "source_type": "RESEARCH_PREPRINT",
+      "url": "https://arxiv.org/abs/2607.15769",
+      "pin": "arXiv:2607.15769v1@2026-07-17",
+      "observed_state": "PREPRINT_UNDER_JOURNAL_REVIEW",
+      "verified_use": "Supports repository-side governability and review-gate research; it remains a preprint and does not prove an industry standard.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    },
+    {
+      "source_id": "SRC-20260723-13",
+      "publisher": "GitHub",
+      "source_type": "OFFICIAL_PRODUCT_CHANGELOG",
+      "url": "https://github.blog/changelog/2026-02-26-enterprise-ai-controls-agent-control-plane-now-generally-available/",
+      "pin": "published-2026-02-26",
+      "observed_state": "ENTERPRISE_AI_CONTROLS_GA_MCP_ALLOWLIST_PREVIEW",
+      "verified_use": "Confirms vendor product demand for agent activity, audit logging and policy management; MCP allowlists remain preview and the product is not a general governance standard.",
+      "adoption_status": "REFERENCE_ONLY_NOT_ADOPTED"
+    }
+  ],
+  "corrections": [
+    {
+      "correction_id": "COR-20260723-01",
+      "supplied_claim": "The reported autonomous-agent incident directly validates SAEE's evidence-governance architecture.",
+      "corrected_claim": "The incident supports containment, sandbox, guardrail and cyber-defense urgency. It does not by itself validate SAEE, an evidence object model or a commercial evidence layer.",
+      "evidence_source_ids": [
+        "SRC-20260723-01"
+      ]
+    },
+    {
+      "correction_id": "COR-20260723-02",
+      "supplied_claim": "NIST and OWASP formally establish a four-layer identity, execution, evidence and governance infrastructure.",
+      "corrected_claim": "NIST summarizes RFI responses and runs a standards initiative; OWASP publishes a governance guide. Neither cited source adopts the brief's four-layer stack as a normative standard.",
+      "evidence_source_ids": [
+        "SRC-20260723-02",
+        "SRC-20260723-03",
+        "SRC-20260723-04"
+      ]
+    },
+    {
+      "correction_id": "COR-20260723-03",
+      "supplied_claim": "The industry evidence layer is empty.",
+      "corrected_claim": "Evidence, receipt, attestation, audit and governance work is active but fragmented. The opportunity is interoperability and bounded semantics, not ownership of an empty layer.",
+      "evidence_source_ids": [
+        "SRC-20260723-04",
+        "SRC-20260723-08",
+        "SRC-20260723-09",
+        "SRC-20260723-12"
+      ]
+    },
+    {
+      "correction_id": "COR-20260723-04",
+      "supplied_claim": "OpenTelemetry agent traces are mature enough to be treated as the TCP/IP of agent governance.",
+      "corrected_claim": "OpenTelemetry is a strong telemetry substrate and OpenSearch 3.6 has a concrete agent-trace workflow. GenAI conventions remain actively evolving, and telemetry does not establish authenticity, authority, evidence sufficiency or governance proof.",
+      "evidence_source_ids": [
+        "SRC-20260723-05",
+        "SRC-20260723-06",
+        "SRC-20260723-07"
+      ]
+    },
+    {
+      "correction_id": "COR-20260723-05",
+      "supplied_claim": "Traccia establishes OpenTelemetry plus a hash ledger as tamper-proof compliance evidence.",
+      "corrected_claim": "Traccia is a v1 author preprint. Hashes can support integrity checks, but the source does not independently establish non-repudiation, trusted identity, complete provenance, legal admissibility or regulatory conformity.",
+      "evidence_source_ids": [
+        "SRC-20260723-08"
+      ]
+    },
+    {
+      "correction_id": "COR-20260723-06",
+      "supplied_claim": "ACS has formed as a mature agent runtime-control standard.",
+      "corrected_claim": "ACS is an emerging open proposal. Its site says the specification is actively evolving; the repository reports 0.1.0, no tags or releases, fork status, and inconsistent license metadata across surfaces.",
+      "evidence_source_ids": [
+        "SRC-20260723-09",
+        "SRC-20260723-10"
+      ]
+    },
+    {
+      "correction_id": "COR-20260723-07",
+      "supplied_claim": "GitHub Agent Control proves a general agent-governance standard is already mature.",
+      "corrected_claim": "GitHub's enterprise controls are a generally available vendor product with useful audit and policy signals; MCP allowlists remain preview and the product does not define a vendor-neutral general standard.",
+      "evidence_source_ids": [
+        "SRC-20260723-13"
+      ]
+    },
+    {
+      "correction_id": "COR-20260723-08",
+      "supplied_claim": "The cited academic work proves an immediate market and standardization opportunity for SAEE.",
+      "corrected_claim": "The papers support research relevance. One is accepted as a security survey and two are preprints; none proves customer demand, standards adoption, SAEE uniqueness or willingness to pay.",
+      "evidence_source_ids": [
+        "SRC-20260723-08",
+        "SRC-20260723-11",
+        "SRC-20260723-12"
+      ]
+    },
+    {
+      "correction_id": "COR-20260723-09",
+      "supplied_claim": "SAEE already has non-repudiable execution proof, a public MCP service and a cloud marketplace product.",
+      "corrected_claim": "SAEE has bounded local evidence-adequacy and receipt primitives plus local MCP surfaces. Trace authenticity, trusted trace conversion, public MCP deployment, marketplace listing, customer validation and production readiness are false.",
+      "evidence_source_ids": [
+        "SRC-20260723-05",
+        "SRC-20260723-08"
+      ]
+    },
+    {
+      "correction_id": "COR-20260723-10",
+      "supplied_claim": "The next three PRs should create a new Evidence Object standard, an OpenTelemetry bridge and a Persona governance model.",
+      "corrected_claim": "The Evidence Object lane must reuse the controlled SAEE and Agent Evidence integration; synthetic OTel mapping already exists; a real offline OTLP proposal is conditional; POP remains an external reference and broad identity work requires a separate threat model and authorization.",
+      "evidence_source_ids": [
+        "SRC-20260723-03",
+        "SRC-20260723-05",
+        "SRC-20260723-06",
+        "SRC-20260723-07"
+      ]
+    }
+  ],
+  "saee_truth_snapshot": {
+    "governance_source_commit": "697ae2080f11b7905b20c39079914eb98169783b",
+    "public_projection_commit": "2173c258f91aed03fc02c0097d4250a87be703aa",
+    "role": "EVOLUTION_INTELLIGENCE_LAYER",
+    "phase": "PHASE_0_5_STABILIZATION_PHASE1_UNAUTHORIZED",
+    "capabilities": {
+      "evidence_adequacy": "IMPLEMENTED_LOCAL_BOUNDED",
+      "otel_candidate_mapping": "IMPLEMENTED_EXPERIMENTAL_SYNTHETIC",
+      "general_trace_normalization": "PARTIAL_EXPERIMENTAL",
+      "otlp_ingestion": "MISSING",
+      "trusted_trace_to_evidence": "MISSING",
+      "external_identity_binding": "MISSING",
+      "delegation_binding": "MISSING"
+    },
+    "product_and_distribution": {
+      "saee_governance": "TARGET_NOT_IMPLEMENTED",
+      "public_mcp_endpoint": false,
+      "marketplace_listing": false,
+      "customer_validation": false,
+      "production_ready": false
+    }
+  },
+  "mainline_drift": {
+    "detected": true,
+    "signal": "MAINLINE_DRIFT_DETECTED",
+    "reasons": [
+      "Evidence governance is elevated above the controlled SAEE and Agent Evidence integration mainline.",
+      "SAEE is reframed as an audit or compliance engine instead of the Evolution Intelligence Layer.",
+      "A new SAEE Agent Compliance Engine would violate the fixed three customer-version target.",
+      "Persona identity ownership is pulled into SAEE even though POP is an external reference and external identity binding is missing.",
+      "Workshop submission is proposed even though workshop routes are constitutionally ineligible.",
+      "Local digests, demos, marketplace review and MCP contracts are promoted beyond their verified states."
+    ]
+  },
+  "corrective_actions": [
+    {
+      "action_id": "ACT-20260723-01",
+      "action": "Retain all verified external signals as source-pinned reference-only inputs.",
+      "status": "REFERENCE_ONLY_RECORDED",
+      "implementation_effect": false,
+      "external_effect": false
+    },
+    {
+      "action_id": "ACT-20260723-02",
+      "action": "Reconcile the divergent SAEE public projection and governance history before proposing new capability work.",
+      "status": "REQUIRED_BEFORE_FEATURE_WORK",
+      "implementation_effect": false,
+      "external_effect": false
+    },
+    {
+      "action_id": "ACT-20260723-03",
+      "action": "Route Evidence Object work through the existing SAEE and Agent Evidence schema-crosswalk, reuse and migration gates instead of creating a parallel standard.",
+      "status": "REQUIRED_BEFORE_FEATURE_WORK",
+      "implementation_effect": false,
+      "external_effect": false
+    },
+    {
+      "action_id": "ACT-20260723-04",
+      "action": "Treat bounded offline OTLP JSON normalization as a conditional future proposal with no listener, no automatic evidence elevation and exact semantic-convention pins.",
+      "status": "CONDITIONAL_FUTURE_PROPOSAL",
+      "implementation_effect": false,
+      "external_effect": false
+    },
+    {
+      "action_id": "ACT-20260723-05",
+      "action": "Keep POP external and require a threat model plus authenticated identity and delegation trust policy before any binding proposal.",
+      "status": "CONDITIONAL_FUTURE_PROPOSAL",
+      "implementation_effect": false,
+      "external_effect": false
+    },
+    {
+      "action_id": "ACT-20260723-06",
+      "action": "Use evidence-to-control crosswalk language; prohibit legal compliance, certification and non-repudiation claims without independent authority and direct evidence.",
+      "status": "PROHIBITED_CURRENTLY",
+      "implementation_effect": false,
+      "external_effect": false
+    },
+    {
+      "action_id": "ACT-20260723-07",
+      "action": "Do not create SAEE Agent Compliance Engine or a fourth target product.",
+      "status": "PROHIBITED_CURRENTLY",
+      "implementation_effect": false,
+      "external_effect": false
+    },
+    {
+      "action_id": "ACT-20260723-08",
+      "action": "Require separate human authorization before any ACS, FDO, conference, journal, customer or marketplace outreach or submission.",
+      "status": "HUMAN_GATE_REQUIRED",
+      "implementation_effect": false,
+      "external_effect": false
+    }
+  ],
+  "effects": {
+    "runtime_created": false,
+    "capability_adopted": false,
+    "product_created": false,
+    "phase1_authorized": false,
+    "external_submission_sent": false,
+    "pull_request_created": false,
+    "production_ready": false
+  }
+}

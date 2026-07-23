@@ -65,6 +65,9 @@ risk_acceptance_authority_assigned: true
 | `R-043` | `HIGH` | 跨项目 validator 和文档链接依赖开发机绝对路径或相邻仓库布局，使 isolated checkout 无法完整复验并降低 agent-readable portability（智能体可读可移植性） | native isolated checkout 中 30 validators PASS，5 个外部来源 validator 按设计 fail closed；DBOS `STRATEGIC_ALIGNMENT.md` 另有 4 个相邻 DBA 相对链接在单仓检出中不可解析 | 定义显式 source resolver / mount contract 与 portable cross-repository URI；不得伪造外部来源或把 30+5 写成原生 35/35 PASS | `OPEN_PORTABILITY_CONTRACT_REQUIRED_NOT_PR_G2A_NATIVE_FAILURE` |
 | `R-044` | `HIGH` | SQLite reference store 接受 group/world-writable 直接父目录，且 path validation 与 `sqlite3.connect` 之间没有稳定 directory capability | historical source `23c8f08…` direct probe 在 `0777` parent 下成功 initialize | source `ee90c0c…` 强制 direct parent current-user ownership 和非 group/world writable，新增 negative；538/538 + native Linux x86_64 + receipt `901bf0d…` + independent remote attestation `PASS` | `CLOSED_HSR_PRE_001_EXACT_SOURCE_ONLY` |
 | `R-045` | `HIGH` | `id_factory` / `clock` callback 输出未经 reference、敏感 marker、timestamp 与长度复核即可持久化 | historical source `23c8f08…` direct probe 使 sensitive reference canary 和 invalid secret-bearing timestamp 进入 receipt/record/store | source `ee90c0c…` 在 persistence boundary 重验证 generated reference/timestamp，3 个 canary/exception negatives；538/538 + native Linux x86_64 + independent remote attestation `PASS` | `CLOSED_HSR_PRE_002_EXACT_SOURCE_ONLY` |
+| `R-046` | `CRITICAL` | 外部 identity discovery、enterprise access authorization、telemetry、receipt、signature、attestation 或 audit log 被提升为 DBOS Identity／Capability／Permission、POP persona continuity、正确 Execution、Evidence、Verification 或 Truth | FINOS #346/#341、MCP EMA、ANS 与 Microsoft Toolkit 提供不同层次的参考信号；它们都没有授予 DBA 内部 authority 或证明 evidence sufficiency | 注册表固定 6 项 route 与 forbidden promotion；所有来源保持 `REFERENCE_ONLY_NOT_ADOPTED`；未来分别走 `DQ-006`、`DQ-021` 与既有 admission／human-decision gate | `CONTROL_DEFINED_REFERENCE_ONLY_NO_ADOPTION` |
+| `R-047` | `HIGH` | 只检查异常、退出码、schema shape 或字段存在，会漏掉 final state、invariant、contract 与 authority effect 已错误但流程“成功”的 silent semantic failure | LogicHunter `arXiv:2607.06195v1` 报告其研究范围内的静默语义失败；该来源是预印本，当前项目也没有由此产生的直接缺陷证据 | 作为未来 `PR-G2`／`PR-G4` review input；要求 exact implementation 下的 final-state、invariant、contract、authority-effect assertions 和直接证据；当前不创建 validator 或 gate PASS | `REVIEW_INPUT_DEFINED_IMPLEMENTATION_AND_DIRECT_EVIDENCE_OPEN` |
+| `R-048` | `CRITICAL` | 外部治理趋势把 SAEE 从 `EVOLUTION_INTELLIGENCE_LAYER` 推成 audit／compliance engine，Evidence 副线覆盖受控 SAEE／Agent Evidence 合并主线，并把 local digest、MCP、demo 或 marketplace review 提升为 proof、service 或商业验证 | 2026-07-23 简报提出 Evidence Governance 定义权、`SAEE Agent Compliance Engine`、Persona identity ownership、三个直接 PR 与 workshop 路线；现有规范事实仍为 Phase 0.5、Phase 1 未授权、OTLP／trusted conversion／identity／delegation 缺失、public MCP／marketplace／customer／production false | 固定 `MAINLINE_DRIFT_DETECTED`；保留三客户版本；Evidence 走既有 crosswalk／reuse／migration gate；OTLP 与 identity 只保留 conditional proposal；workshop 与 compliance claim 禁止；外部动作保持 Human gate | `CONTROL_DEFINED_MAINLINE_CORRECTION_REQUIRED_NO_IMPLEMENTATION` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -110,8 +113,8 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=42
-ACTIVE_RISKS=40
+TRACKED_RISKS=48
+ACTIVE_RISKS=46
 RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=10
 BLOCKERS_CLEARED=8

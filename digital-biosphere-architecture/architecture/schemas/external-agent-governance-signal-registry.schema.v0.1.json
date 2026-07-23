@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/external-agent-governance-signal-registry.schema.v0.1.json",
+  "title": "External Agent Governance Signal Registry v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "registry_id",
+    "status",
+    "observed_at",
+    "primary_repository",
+    "input_authority",
+    "agent_recommendation_gate",
+    "sources",
+    "corrections",
+    "boundary_mappings",
+    "gap_actions",
+    "truth_boundaries",
+    "effects"
+  ],
+  "properties": {
+    "$schema": { "type": "string", "minLength": 1 },
+    "schema_version": { "const": "0.1.0" },
+    "registry_id": { "const": "DBA-EAGSI-20260722-001" },
+    "status": { "const": "REFERENCE_ONLY_VALIDATED_PRIMARY_SOURCES" },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "primary_repository": { "const": "digital-biosphere-architecture" },
+    "input_authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["supplied_input", "supplied_input_class", "claim_authority", "primary_source_required"],
+      "properties": {
+        "supplied_input": { "type": "string", "minLength": 1 },
+        "supplied_input_class": { "const": "SECONDARY_INTELLIGENCE_BRIEF" },
+        "claim_authority": { "const": "PRIMARY_SOURCES_ONLY" },
+        "primary_source_required": { "const": true }
+      }
+    },
+    "agent_recommendation_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "initial_recommendation",
+        "initial_non_recommendation_reasons",
+        "final_recommendation",
+        "recommended_for_runtime_implementation",
+        "current_program_priority_changed"
+      ],
+      "properties": {
+        "initial_recommendation": { "const": "CONDITIONALLY_RECOMMENDED" },
+        "initial_non_recommendation_reasons": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "final_recommendation": { "const": "RECOMMENDED_FOR_GOVERNANCE_BOUNDARY_AND_GAP_ANALYSIS" },
+        "recommended_for_runtime_implementation": { "const": false },
+        "current_program_priority_changed": { "const": false }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 9,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/source" }
+    },
+    "corrections": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/correction" }
+    },
+    "boundary_mappings": {
+      "type": "array",
+      "minItems": 6,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/boundary_mapping" }
+    },
+    "gap_actions": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": { "$ref": "#/$defs/gap_action" }
+    },
+    "truth_boundaries": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runtime_created",
+        "capability_adopted",
+        "technical_specification_authorized",
+        "dq_status_changed",
+        "pr_g2a_approved",
+        "production_ready",
+        "external_submission_sent",
+        "external_action_authorized"
+      ],
+      "properties": {
+        "runtime_created": { "const": false },
+        "capability_adopted": { "const": false },
+        "technical_specification_authorized": { "const": false },
+        "dq_status_changed": { "const": false },
+        "pr_g2a_approved": { "const": false },
+        "production_ready": { "const": false },
+        "external_submission_sent": { "const": false },
+        "external_action_authorized": { "const": false }
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_id",
+        "publisher",
+        "source_type",
+        "url",
+        "pin",
+        "observed_state",
+        "verified_claim",
+        "adoption_status"
+      ],
+      "properties": {
+        "source_id": { "type": "string", "pattern": "^SRC-[0-9]{2}$" },
+        "publisher": { "type": "string", "minLength": 1 },
+        "source_type": {
+          "enum": ["GITHUB_ISSUE", "GITHUB_CHANGELOG", "GITHUB_RELEASE", "GITHUB_REPOSITORY", "OFFICIAL_BLOG", "OFFICIAL_DOCUMENTATION", "OFFICIAL_PRESS_RELEASE", "RESEARCH_PREPRINT", "OFFICIAL_EVENT_PAGE"]
+        },
+        "url": { "type": "string", "format": "uri" },
+        "pin": { "type": "string", "minLength": 1 },
+        "observed_state": { "type": "string", "minLength": 1 },
+        "verified_claim": { "type": "string", "minLength": 1 },
+        "adoption_status": { "const": "REFERENCE_ONLY_NOT_ADOPTED" }
+      }
+    },
+    "correction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["correction_id", "supplied_claim", "verified_correction", "evidence_source_ids"],
+      "properties": {
+        "correction_id": { "type": "string", "pattern": "^COR-[0-9]{2}$" },
+        "supplied_claim": { "type": "string", "minLength": 1 },
+        "verified_correction": { "type": "string", "minLength": 1 },
+        "evidence_source_ids": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "type": "string", "pattern": "^SRC-[0-9]{2}$" }
+        }
+      }
+    },
+    "boundary_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mapping_id", "external_signal", "dba_route", "allowed_interpretation", "forbidden_promotion", "status"],
+      "properties": {
+        "mapping_id": { "type": "string", "pattern": "^MAP-[0-9]{2}$" },
+        "external_signal": { "type": "string", "minLength": 1 },
+        "dba_route": { "type": "string", "minLength": 1 },
+        "allowed_interpretation": { "type": "string", "minLength": 1 },
+        "forbidden_promotion": { "type": "string", "minLength": 1 },
+        "status": { "const": "REFERENCE_MAPPING_ONLY" }
+      }
+    },
+    "gap_action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action_id", "artifact", "status", "implementation_effect", "external_effect"],
+      "properties": {
+        "action_id": { "type": "string", "pattern": "^ACT-[0-9]{2}$" },
+        "artifact": { "type": "string", "minLength": 1 },
+        "status": {
+          "enum": ["READY_AS_REVIEW_ARTIFACT", "READY_AS_GOVERNANCE_MATRIX", "REVIEW_REQUIRED_FUTURE_PR_G2_PR_G4", "PREPARED_NOT_SUBMITTED"]
+        },
+        "implementation_effect": { "const": false },
+        "external_effect": { "const": false }
+      }
+    }
+  }
+}
