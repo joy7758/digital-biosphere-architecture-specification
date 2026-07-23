@@ -20,6 +20,7 @@ const requiredFiles = [
   "release-manifest.json",
   "robots.txt",
   "sitemap.xml",
+  "favicon.svg",
   "og.png",
 ];
 

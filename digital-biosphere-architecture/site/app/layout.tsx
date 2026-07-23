@@ -3,6 +3,9 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://redcrag.cn"),
+  icons: {
+    icon: "/favicon.svg",
+  },
   title: {
     default: "TITMAS 可信多智能体基础设施开发者社区",
     template: "%s · TITMAS",
