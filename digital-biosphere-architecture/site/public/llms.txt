@@ -7,7 +7,7 @@ Canonical Chinese name: 可信多智能体基础设施
 Long-term vision: Digital Biosphere / 数字生物圈
 Primary customer: AI agents that discover, assess, compose, reuse, and recommend infrastructure
 Current state: Developer Preview v0.1 released; agent-customer rerun PASS; exact DBOS public-safe wheel published; DBOS repository remains private; open-web discovery remains PARTIAL_METADATA_ONLY; not production-ready
-Observed at: 2026-07-22 Asia/Shanghai
+Observed at: 2026-07-23 Asia/Shanghai
 
 ## Architecture
 
@@ -67,6 +67,58 @@ Observed at: 2026-07-22 Asia/Shanghai
 - PUBLIC_RELEASE_TAG=v0.1-developer-preview
 - RELEASE_DECISION_REF=architecture/ADR-022-developer-preview-release.md
 - RELEASED_BY_REF=zhangbin
+
+## Current technical validation milestone
+
+TITMAS Technical Validation Pilot Framework v0.1 is design-complete but not
+authorized for execution. No Pilot, Demo, Runtime, real Evidence Admission,
+community, product, customer adoption, or upstream endorsement is created by
+this status.
+
+- TITMAS_ADOPTION_VALIDATION_FRAMEWORK_DEFINED=true
+- TITMAS_ADOPTION_VALIDATION_READY=false
+- TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE=true
+- TITMAS_PILOT_EXECUTION_AUTHORIZED=false
+- COMPLETE_VERTICAL_SLICE_EXECUTED=false
+- CONFORMANCE_CASES_DEFINED=14
+- CONFORMANCE_CASES_EXECUTED=0
+- FIRST_EXTERNAL_ROLE=REVIEWER
+- DEMO_CREATED=false
+- COMMUNITY_ESTABLISHED=false
+- PRODUCT_CREATED=false
+
+Target vertical slice:
+
+Microsoft AGT v4.1.0 source candidate
+-> Observation
+-> TITMAS mapping
+-> EEOAP statement and profile validation
+-> DBOS Evidence Admission
+-> DBOS Evidence and Verification references
+-> SAEE read-only evaluation
+-> Validation Report
+
+Required interpretation:
+
+- Observation != Evidence
+- Evidence != Truth
+- EEOAP profile validation != DBOS Evidence Admission
+- Verification != scientific validity
+- Evaluation != Authorization
+- Recommendation != Execution
+- A valid Pilot result may be NOT_ASSESSED or HOLD
+
+Pre-execution blockers:
+
+- audit the exact AGT release-tag AuditEntry/GovernanceEvent contract;
+- resolve EEOAP owner, version, and claim authority;
+- separately authorize, implement, and prove DBOS Evidence Admission (DQ-021);
+- define a versioned, read-only, zero-writeback SAEE handoff;
+- assign Pilot Owner, Test Owner, Reviewer, security, and retention paths.
+
+The first external participant should be a Reviewer who assesses value,
+reproducibility, and boundary correctness. Contributor recruitment follows
+technical evidence; it does not precede it.
 
 ## Machine-readable resources
 

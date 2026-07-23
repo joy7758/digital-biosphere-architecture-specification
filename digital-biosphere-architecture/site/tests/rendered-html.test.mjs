@@ -42,6 +42,12 @@ test("renders equivalent Chinese and English public entry points", async () => {
   for (const marker of expectedMarkers.enHome) assert.match(en, new RegExp(marker));
   assert.match(zh, /Evidence/);
   assert.match(en, /Evidence/);
+  assert.match(zh, /第一个可信闭环：设计完成，尚未执行/);
+  assert.match(en, /The first trustworthy loop is designed—not executed/);
+  assert.match(zh, /Observation ≠ Evidence/);
+  assert.match(en, /Evaluation ≠ Authorization/);
+  assert.match(zh, /TITMAS_PILOT_EXECUTION/);
+  assert.match(en, /TITMAS_PILOT_EXECUTION/);
   assert.match(zh, /SAEE_DBOS_ADAPTER_PASS/);
   assert.match(en, /SAEE_DBOS_ADAPTER_PASS/);
   if (releaseContext.mode === "candidate") {
@@ -116,7 +122,25 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.license.identifier, "Apache-2.0");
   assert.equal(status.public_website.deployed, true);
   assert.equal(status.public_website.rollback_validated, true);
+  assert.equal(status.gates.TITMAS_ADOPTION_VALIDATION_FRAMEWORK_DEFINED, true);
+  assert.equal(status.gates.TITMAS_ADOPTION_VALIDATION_READY, false);
+  assert.equal(status.gates.TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE, true);
+  assert.equal(status.gates.TITMAS_PILOT_EXECUTION_AUTHORIZED, false);
+  assert.equal(status.gates.COMPLETE_VERTICAL_SLICE_EXECUTED, false);
+  assert.equal(status.technical_validation.conformance_cases_defined, 14);
+  assert.equal(status.technical_validation.conformance_cases_executed, 0);
+  assert.equal(status.technical_validation.first_external_role, "REVIEWER");
+  assert.equal(status.technical_validation.public_materials.demo, "NOT_CREATED");
+  assert.equal(status.technical_validation.adoption_claimed, false);
+  assert.equal(agentIndex.technical_validation.design_complete, true);
+  assert.equal(agentIndex.technical_validation.execution_authorized, false);
+  assert.equal(agentIndex.technical_validation.vertical_slice_executed, false);
+  assert.equal(agentIndex.technical_validation.first_external_role, "REVIEWER");
   assert.match(llms, /Recommendation != Decision/);
+  assert.match(llms, /TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE=true/);
+  assert.match(llms, /TITMAS_PILOT_EXECUTION_AUTHORIZED=false/);
+  assert.match(llms, /Observation != Evidence/);
+  assert.match(llms, /FIRST_EXTERNAL_ROLE=REVIEWER/);
   assert.match(llms, /DBOS records -> SAEE evaluation\/recommendation -> Governance Decision review\/adoption -> DBOS authorized execution/);
   assert.match(llms, /OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY/);
   assert.match(
