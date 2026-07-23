@@ -1,0 +1,107 @@
+{
+  "schema_version": "0.1",
+  "review_preparation_id": "TMAI-PR-G2A-HUMAN-SECURITY-REVIEW-PREPARATION-20260723-015",
+  "observed_at": "2026-07-23T12:51:00+08:00",
+  "decision_reference": "DQ-018",
+  "review_gate": "PR-G2A",
+  "status": "BLOCKED_REMEDIATION_OR_SCOPED_RISK_ACCEPTANCE_REQUIRED",
+  "bindings": {
+    "dbos_source_commit": "23c8f0878058f29e733b6f164572ac157c6c7d1c",
+    "dbos_source_tree": "27703ed64d6e885a2933a5a39139a59bab83c3c1",
+    "dbos_native_receipt_commit": "ff1752cb3bb01ff67538bb04b3c7517fbcee3269",
+    "dbos_implementation_manifest_sha256": "43382e4274c19ef6b10ee6e76f36ddddc18f05b7dfaedfdca43ddd8d3f2abc8c",
+    "dba_native_attestation_commit": "b8b69419a0abfc21ca05217f68d20e8de0254795"
+  },
+  "positive_controls": {
+    "no_listener_or_runtime_schema_fetch": "PASS_SCOPED_OFFLINE_ONLY",
+    "authority_negative_controls": "PASS",
+    "otel_authorized_subsets": "32/32 + 36/36 PASS",
+    "append_only_fault_recovery": "PASS",
+    "native_linux_x86_64": "PASS",
+    "bandit": "5374 LOC 0 FINDINGS",
+    "pip_audit": "7 LOCKED DEPENDENCIES 0 KNOWN VULNERABILITIES",
+    "remote_provenance": "PASS"
+  },
+  "findings": [
+    {
+      "finding_id": "HSR-PRE-001",
+      "severity": "HIGH",
+      "threat_refs": ["TA-T20"],
+      "title": "Direct parent ownership and mode are not enforced",
+      "source_refs": [
+        "digital-biosphere-os@23c8f0878058f29e733b6f164572ac157c6c7d1c:dbos/telemetry_admission/store.py:221",
+        "digital-biosphere-os@23c8f0878058f29e733b6f164572ac157c6c7d1c:dbos/telemetry_admission/store.py:332"
+      ],
+      "direct_probe": "WORLD_WRITABLE_DIRECT_PARENT_0777_ACCEPTED_TRUE",
+      "status": "OPEN",
+      "required_disposition": "ENFORCE_TRUSTED_DIRECT_PARENT_CONTRACT_AND_TESTS_OR_EXPLICIT_SCOPED_HUMAN_RISK_ACCEPTANCE"
+    },
+    {
+      "finding_id": "HSR-PRE-002",
+      "severity": "HIGH",
+      "threat_refs": ["TA-T07", "TA-T18"],
+      "title": "Generated references and timestamps bypass persistence validation",
+      "source_refs": [
+        "digital-biosphere-os@23c8f0878058f29e733b6f164572ac157c6c7d1c:dbos/telemetry_admission/store.py:795",
+        "digital-biosphere-os@23c8f0878058f29e733b6f164572ac157c6c7d1c:dbos/telemetry_admission/store.py:807",
+        "digital-biosphere-os@23c8f0878058f29e733b6f164572ac157c6c7d1c:dbos/telemetry_admission/store.py:852",
+        "digital-biosphere-os@23c8f0878058f29e733b6f164572ac157c6c7d1c:dbos/telemetry_admission/store.py:1022"
+      ],
+      "direct_probe": "INJECTED_REFERENCE_AND_CLOCK_CANARIES_PERSISTED_TRUE",
+      "status": "OPEN",
+      "required_disposition": "VALIDATE_ALL_GENERATED_REFERENCES_AND_TIMESTAMPS_WITH_CANARY_NEGATIVE_TESTS_OR_EXPLICIT_SCOPED_HUMAN_RISK_ACCEPTANCE"
+    },
+    {
+      "finding_id": "HSR-PRE-003",
+      "severity": "MEDIUM",
+      "title": "Unkeyed backup and record digests provide integrity but not authenticity",
+      "status": "SCOPED_RESIDUAL",
+      "required_disposition": "KEEP_DIGEST_NE_SIGNATURE_AND_ROUTE_PRODUCTION_AUTHENTICITY_TO_DQ_019_PR_G2B"
+    },
+    {
+      "finding_id": "HSR-PRE-004",
+      "severity": "MEDIUM",
+      "title": "Pre-parse and decompression budgets are outside the offline mapping slice",
+      "status": "SCOPED_RESIDUAL",
+      "required_disposition": "ROUTE_PRE_AND_POST_DECODE_BUDGETS_TO_DQ_020_BEFORE_ANY_LISTENER"
+    }
+  ],
+  "agent_recommendation": {
+    "status": "NOT_RECOMMENDED_FOR_PR_G2A_HUMAN_DECISION_YET",
+    "recommended_as": "SECURITY_REMEDIATION_INPUT_FOR_THE_EXISTING_DQ_018_OFFLINE_SLICE",
+    "required_before_reassessment": "CLOSE_HSR_PRE_001_AND_HSR_PRE_002_OR_EXPLICIT_SCOPED_HUMAN_RISK_ACCEPTANCE",
+    "not_recommended_as": "SECURITY_APPROVED_PR_G2A_APPROVED_FULL_PR_G2_PRODUCTION_SERVICE_OR_DURABILITY_EVIDENCE"
+  },
+  "decision_state": {
+    "security_precheck_complete": true,
+    "open_high_findings": 2,
+    "open_medium_residuals": 2,
+    "human_security_review_complete": false,
+    "pr_g2a_ready_for_human_review": false,
+    "pr_g2a_human_review_approved": false,
+    "dq_019_status": "BLOCKED_INPUT",
+    "dq_020_status": "BLOCKED_INPUT",
+    "dq_021_status": "BLOCKED_INPUT",
+    "full_pr_g2_ready": false,
+    "production_ready": false
+  },
+  "effects": {
+    "dbos_modified": false,
+    "pr_created": false,
+    "merge_performed": false,
+    "main_modified": false,
+    "release_created": false,
+    "deployment_performed": false,
+    "collector_created": false,
+    "listener_created": false,
+    "production_database_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "saee_output_created": false,
+    "risk_accepted": false,
+    "gate_approved": false
+  }
+}
