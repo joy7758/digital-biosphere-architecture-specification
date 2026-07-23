@@ -136,12 +136,14 @@ human_decision_recorded=true
 immutable_dba_baseline_created=true
 implementation_authorized=true
 implementation_complete=true
-result=IMPLEMENTED_NATIVE_VALIDATED_SECURITY_PRECHECK_OPEN_HIGH_FINDINGS_PR_G2A_NOT_READY_NOT_APPROVED
-next_gate=SECURITY_REMEDIATION_OR_EXPLICIT_SCOPED_HUMAN_RISK_ACCEPTANCE
+result=IMPLEMENTED_SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_PR_G2A_HUMAN_REVIEW_READY_NOT_APPROVED
+next_gate=PR_G2A_HUMAN_SECURITY_REVIEW
 ```
 
 该记录已从 decision readiness 演进为 implementation receipt 路由；current source 的五项
-workload 已在原生 Linux x86_64 形成直接证据，并通过 DBOS remote receipt 和 DBA supplement attestation 复验；安全预审发现 2 个 High findings，Human Security Review 尚未完成。
+workload 已在原生 Linux x86_64 形成直接证据，并通过 DBOS remote receipt 和 DBA independent
+attestation 复验；安全预审的 2 个 High findings 已由 exact source 修复和远端独立证明关闭，
+Human Security Review 尚未完成。
 它仍不是 PR-G2A Human Approval、完整 PR-G2 或 Production Readiness。
 
 ### PR-G2A Evidence Record（PR-G2A 证据记录）
@@ -193,10 +195,47 @@ native_linux_x86_64_supplement_attested_at=2026-07-23T12:43:00+08:00
 next_gate=SECURITY_REMEDIATION_OR_EXPLICIT_SCOPED_HUMAN_RISK_ACCEPTANCE
 ```
 
-`NOT_READY_SECURITY_REMEDIATION_OR_SCOPED_RISK_ACCEPTANCE_REQUIRED_NOT_APPROVED` 表示当前 source
-虽已通过原生 Linux x86_64、DBOS receipt 和 DBA attestation，但安全预审存在两个 open High
-finding；Human Security Review 仍未完成，尚不能进入 Human Decision；predecessor
-review packet 只保留为历史输入。完整 `PR-G2` 仍为 `BLOCKED`。
+以上 `TMAI-PR-G2A-20260723-004` 保留修复前历史状态。它已由下方
+`TMAI-PR-G2A-20260723-005` successor record（后继记录）取代；不能再作为 current gate 状态。
+
+### PR-G2A Security-Remediated Evidence Record（PR-G2A 安全修复版证据记录）
+
+```text
+gate_record_id=TMAI-PR-G2A-20260723-005
+gate_id=PR-G2A
+integration_track=DBOS_OFFLINE_TELEMETRY_ADMISSION_REFERENCE
+scope=DQ_018_METADATA_ONLY_NO_LISTENER_SQLITE_REFERENCE
+evidence_refs=PR-G2A-SECURITY-REMEDIATION-ATTESTATION-2026-07-23.json_AND_PR-G2A-TELEMETRY-ADMISSION-SECURITY-REMEDIATED-HUMAN-REVIEW-PACKET-2026-07-23.json_AND_DBOS_901bf0d_REMOTE_RECEIPT
+observed_version_or_commit=SOURCE_ee90c0c_RECEIPT_901bf0d_MANIFEST_306435cd
+positive_checks=NATIVE_LINUX_X86_64_538_TESTS_204_TELEMETRY_TESTS_25_TELEMETRY_VALIDATOR_30_VALIDATORS_PASS_5_EXPECTED_EXTERNAL_SOURCE_FAIL_CLOSED_0_UNEXPECTED_P001_TO_P005_ROLLBACK_REPRODUCIBLE_WHEEL_HSR_PRE_001_002_CLOSED_ZERO_AUTHORITY_EFFECTS
+negative_checks=2_SCOPED_MEDIUM_RESIDUALS_HUMAN_SECURITY_REVIEW_INCOMPLETE_23_DQ020_CASES_BLOCKED_NO_LISTENER_NO_COLLECTOR_NO_SAEE_NO_GATE_APPROVAL
+unknowns=HUMAN_SECURITY_REVIEW_DECISION_PRODUCTION_BACKEND_HUMAN_ROLLBACK_SWITCH_PR_G2B_PR_G2T_PR_G2I_PR_G2C
+security_remediated_source_commit=ee90c0c84964f1f3e4dbeb8dffaf888f9822b6a5
+security_remediation_receipt_commit=901bf0dda66e46f8b1c0b5873f5c5f20e9d03920
+implementation_manifest=sha256:306435cd3c5fc65e46995f0e2a57b1322f950889af350f1b0bcbd13c35644fd9
+security_remediation_attestation_ref=PR-G2A-SECURITY-REMEDIATION-ATTESTATION-2026-07-23.json
+security_remediation_remote_attested=true
+security_precheck_open_high_findings=0
+security_precheck_open_medium_residuals=2
+critical_high_findings_closed=true
+pr_g2a_ready_for_human_review=true
+human_security_review_complete=false
+pr_g2a_human_review_approved=false
+dq_019_status=BLOCKED_INPUT
+dq_020_status=BLOCKED_INPUT
+dq_021_status=BLOCKED_INPUT
+full_pr_g2_ready=false
+production_ready=false
+result=READY_FOR_HUMAN_SECURITY_REVIEW_NOT_APPROVED
+reviewed_by_ref=codex_independent_technical_review
+attested_by_ref=codex_remote_clean_clone_validation
+reviewed_at=2026-07-23T14:46:01+08:00
+next_gate=PR_G2A_HUMAN_SECURITY_REVIEW
+```
+
+`READY_FOR_HUMAN_SECURITY_REVIEW_NOT_APPROVED` 只表示 current exact source 不再触发
+Critical/High stop condition。它不表示 Human Security Review 已完成、Medium residual 已接受、
+`PR-G2A` 已批准、DQ-019 已授权、完整 `PR-G2` 已就绪或生产已就绪。
 
 ### Proposed Staged Production Path Record（拟议分阶段生产路径）
 

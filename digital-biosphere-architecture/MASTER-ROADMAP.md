@@ -71,7 +71,7 @@ Developer Preview 发布历史保持不变。当前新增的 Production Readines
 |---|---|---|---|---|---|
 | `PR-0` | 冻结 Trusted Multi-Agent Protocol（可信多智能体协议）与生产可观测性架构基线 | DBA | `GATE_PASSED_REMOTE_BASELINE_VERIFIED` | content commit `264f317...` / tree `b83f25d...`、OpenTelemetry profiles、56/46/45/48-case contracts、`ADR-023`–`ADR-028`、六项 exact decision 与远端 freeze receipt | 保持基线；不授权 Collector build/config/deploy 或 production claim |
 | `PR-1` | 建立 DBOS/SAEE production implementation mapping（生产实现映射） | 子项目提供事实；DBA 审查边界 | `GATE_PASSED_READ_ONLY_MAPPING` | `PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`：remote commits、334 tests、34 validators、8 adapter tests、OTel capability inventory、缺口与重复权威审查 | `DQ-018` decision packet 和两路 next-step recommendation 已就绪，等待人类决策 |
-| `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `PR_G2A_SECURITY_PRECHECK_BLOCKED_REMEDIATION_REQUIRED_G2B_G2T_G2I_G2C_BLOCKED` | native validation/attestation 已完成；security preparation 发现 2 个 open High findings 和 2 个 scoped Medium residuals | 修复 `HSR-PRE-001/002` 或显式限域 Risk Acceptance，重跑 exact-source validation 后再做 Human Security Review；未批准前不进入 DQ-019/PR-G2B |
+| `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `PR_G2A_SECURITY_REMEDIATED_HUMAN_REVIEW_READY_NOT_APPROVED_G2B_G2T_G2I_G2C_BLOCKED` | source `ee90c0c…` / receipt `901bf0d…` 已完成原生 Linux x86_64 与远端独立复验；`HSR-PRE-001/002` closed，2 个 scoped Medium residuals 保留 | 执行 Human Security Review；未收到精确 `PR-G2A` 决策 token 前不进入 DQ-019/PR-G2B |
 | `PR-3` | 建立 OpenTelemetry conformance and operations（符合性与运维） | DBOS + deployment infrastructure | `NOT_STARTED` | 版本锁定、exact custom-minimal Collector build/config/runtime/topology 绑定、deployment + operational-evidence profiles 的 synthetic-input/immutable-rollout/metric-stability/self-observation/no-data-alert/composite-readiness/delivery-reconciliation obligations、56/56 OTLP、46/46 semantic、45/45 Schema/Resource/Entity provenance 与 48/48 Collector distribution cases 的四个独立结果绑定 | 不得创建第五套重复目录；不得把 Telemetry 自动升级为 Evidence/Truth，也不得把 profile/schema/health/dashboard/binary startup 当实现、测量或生产证据 |
 | `PR-4` | 验证 SAEE production adapter isolation（生产适配隔离） | SAEE | `NOT_STARTED` | 只读消费、版本兼容、失败关闭、无 DBOS 写回、无 Decision/Permission | 不调用未获准算法或生成 Authority |
 | `PR-5` | 通过 Security / Recovery / Capacity gates（安全、恢复与容量闸门） | DBOS + DBA review | `NOT_STARTED` | threat model、secret handling、data minimization、backup/restore、灾难恢复、容量与队列压力证据 | 所有 critical gap 关闭后才可进入 Pilot |
@@ -127,11 +127,11 @@ M2 Canonical Status Sources
 ## 4. Current Program Focus（当前项目群焦点）
 
 ```text
-CURRENT_FOCUS=DQ_018_SECURITY_REMEDIATION_PREPARATION
-NEXT_BLOCKER=HSR_PRE_001_AND_HSR_PRE_002_OPEN_HIGH_FINDINGS
-NEXT_DECISION=SECURITY_REMEDIATION_OR_EXPLICIT_SCOPED_HUMAN_RISK_ACCEPTANCE
+CURRENT_FOCUS=PR_G2A_HUMAN_SECURITY_REVIEW
+NEXT_BLOCKER=PR_G2A_HUMAN_SECURITY_REVIEW_AND_DECISION_NOT_COMPLETED
+NEXT_DECISION=PR_G2A_APPROVE_RETURN_OR_REJECT_EXACT_SECURITY_REMEDIATED_SLICE
 NEXT_ARCHITECTURE_VERSION_DECISIONS=DQ_022_OTLP_1_11_REFERENCE_ADOPTION,DQ_023_OTEL_SEMANTIC_MAPPING_ADOPTION,DQ_024_OTEL_SCHEMA_RESOURCE_ENTITY_PROVENANCE_ADOPTION,DQ_025_OTEL_COLLECTOR_DISTRIBUTION_ADOPTION
-NEXT_DELIVERY=DBOS_DQ_018_MINIMAL_SECURITY_HARDENING_AND_EXACT_SOURCE_REVALIDATION
+NEXT_DELIVERY=DBA_PR_G2A_HUMAN_SECURITY_REVIEW_DECISION_RECORD
 NEXT_INTEGRATION=NONE_AUTHORIZED_UNTIL_PR_G2A_APPROVAL
 DQ_015_AGENT_NATIVE_VALIDATION_ACCEPTED=true
 BASELINE_VALIDATION_ID=TMAI-ACV-20260721-001
@@ -156,9 +156,9 @@ DQ_018_IMPLEMENTATION_AUTHORIZED=true
 DQ_018_IMPLEMENTATION_MAY_START=false
 DQ_018_IMPLEMENTATION_MAY_START_REASON=ALREADY_COMPLETED_EXACT_SLICE_NO_NEW_SCOPE_AUTHORIZED
 DQ_018_IMPLEMENTATION_COMPLETE=true
-DQ_018_SOURCE_COMMIT=23c8f0878058f29e733b6f164572ac157c6c7d1c
-DQ_018_RECEIPT_COMMIT=ff1752cb3bb01ff67538bb04b3c7517fbcee3269
-DQ_018_IMPLEMENTATION_MANIFEST=sha256:43382e4274c19ef6b10ee6e76f36ddddc18f05b7dfaedfdca43ddd8d3f2abc8c
+DQ_018_SOURCE_COMMIT=ee90c0c84964f1f3e4dbeb8dffaf888f9822b6a5
+DQ_018_RECEIPT_COMMIT=901bf0dda66e46f8b1c0b5873f5c5f20e9d03920
+DQ_018_IMPLEMENTATION_MANIFEST=sha256:306435cd3c5fc65e46995f0e2a57b1322f950889af350f1b0bcbd13c35644fd9
 DQ_018_STREAMING_INTEGRITY_HARDENED=true
 DQ_018_CURRENT_SOURCE_TA_P003=PASS_EMULATED_AMD64_OBSERVER_EFFECT_HARDENED
 DQ_018_CURRENT_SOURCE_TA_P001_TO_TA_P005_REBASE_COMPLETE=true
@@ -167,10 +167,10 @@ DQ_018_LINUX_ARM64_REFERENCE_VALIDATED=true
 DQ_018_LINUX_ARM64_REMOTE_RECEIPT_VERIFIED=true
 DQ_018_LINUX_AMD64_EMULATED_P003=PASS_OBSERVER_EFFECT_HARDENED
 DQ_018_NATIVE_LINUX_X86_64_VALIDATED=true
-PR_G2A_READY_FOR_HUMAN_REVIEW=false
+PR_G2A_READY_FOR_HUMAN_REVIEW=true
 PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_REQUIRED=false
 PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_COMPLETE=true
-PR_G2A_CURRENT_SOURCE_PACKET_STATUS=SECURITY_PRECHECK_BLOCKED_REMEDIATION_OR_SCOPED_RISK_ACCEPTANCE_REQUIRED
+PR_G2A_CURRENT_SOURCE_PACKET_STATUS=SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_READY_FOR_HUMAN_SECURITY_REVIEW_NOT_APPROVED
 PR_G2A_CURRENT_SOURCE_INDEPENDENT_AGENT_REVIEW_COMPLETE=true
 PR_G2A_HUMAN_REVIEW_APPROVED=false
 FULL_PR_G2_READY=false
@@ -203,10 +203,14 @@ PRODUCTION_READY=false
 ```
 
 当前不应继续增加新的技术规范、Entity、生产 Runtime 或无验证接口承诺。优先任务是完成
-在已远端证明的 native source 上关闭 `HSR-PRE-001/002`，再重做 exact-source validation 和 Human Security Review。
+对已远端证明的 security-remediated exact source 执行 Human Security Review，并保持 review-ready、
+review-complete、gate-approved 和 production-ready 四个状态分离。
 
 Developer Preview 已发布，`PR-G1` 已完成，DQ-022–025 与 ADR-024 已采纳，DQ-018
-离线实现切片的 current source 已通过 native validation 与 remote attestation，但 security precheck 发现两个 open High findings。当前 packet 为 `SECURITY_PRECHECK_BLOCKED_REMEDIATION_OR_SCOPED_RISK_ACCEPTANCE_REQUIRED`，尚未进入 Human Decision。后继 production
+离线实现切片的 current source 已关闭 security precheck 的两个 High findings，并通过 native
+validation 与 remote attestation。当前 packet 为
+`SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_READY_FOR_HUMAN_SECURITY_REVIEW_NOT_APPROVED`；
+尚未完成 Human Security Review 或 Human Decision。后继 production
 persistence、OTLP/Collector staging、Identity/Evidence integration 和 SAEE/Pilot 仍按
 [`architecture/production-implementation-sequence.md`](architecture/production-implementation-sequence.md)
 分阶段独立决定；任何 build、configuration、deployment、真实 Pilot 或生产声明都不能由

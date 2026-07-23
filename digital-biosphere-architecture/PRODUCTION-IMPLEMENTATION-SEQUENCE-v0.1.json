@@ -3,7 +3,7 @@
   "sequence_id": "TMAI-PRODUCTION-IMPLEMENTATION-SEQUENCE-0.1",
   "name": "TMAI Staged Production Implementation Sequence v0.1",
   "name_zh": "TMAI 分阶段生产实施序列 v0.1",
-  "status": "ADOPTED_S1_IMPLEMENTED_PR_G2A_REVIEW_READY_LATER_STAGES_BLOCKED",
+  "status": "ADOPTED_S1_SECURITY_REMEDIATED_PR_G2A_HUMAN_REVIEW_READY_LATER_STAGES_BLOCKED",
   "architecture_owner": "digital-biosphere-architecture",
   "normative_specification": "architecture/production-implementation-sequence.md",
   "proposed_adr": "architecture/ADR-024-staged-telemetry-production-path.md",
@@ -42,7 +42,7 @@
   "current_gate": {
     "step_id": "S1",
     "decision_id": "PR-G2A",
-    "state": "READY_FOR_HUMAN_REVIEW_NOT_APPROVED",
+    "state": "READY_FOR_HUMAN_SECURITY_REVIEW_NOT_APPROVED",
     "human_decision_recorded": false,
     "implementation_authorized": true,
     "implementation_complete": true,
@@ -76,21 +76,23 @@
       "name": "Pinned offline OTLP decoder and Telemetry Admission reference conformance",
       "primary_domain": "DBOS",
       "decision_or_gate": "DQ-018/PR-G2A",
-      "status": "IMPLEMENTED_REMOTE_VALIDATED_PR_G2A_REVIEW_READY_NOT_APPROVED",
+      "status": "IMPLEMENTED_SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_PR_G2A_HUMAN_REVIEW_READY_NOT_APPROVED",
       "source_binding": {
         "repository": "digital-biosphere-os",
         "branch": "codex/telemetry-admission-foundation",
-        "source_commit": "5c52c1c2f44767c0b13b4ac9670425721b9ea0dd",
-        "receipt_commit": "aa6440e83f35cc63483f487367ccb573bba7681a",
-        "manifest_sha256": "fdda745c3907e35ac92769740f07afc81483be674568879a3c0314c2a09baa51"
+        "source_commit": "ee90c0c84964f1f3e4dbeb8dffaf888f9822b6a5",
+        "receipt_commit": "901bf0dda66e46f8b1c0b5873f5c5f20e9d03920",
+        "manifest_sha256": "306435cd3c5fc65e46995f0e2a57b1322f950889af350f1b0bcbd13c35644fd9"
       },
       "validation": {
-        "tests": "531/531 PASS",
-        "telemetry_tests": "197/197 PASS",
-        "validators": "35/35 PASS",
+        "tests": "538/538 PASS",
+        "telemetry_tests": "204/204 PASS",
+        "validators": "30 PASS + 5 EXPECTED_EXTERNAL_SOURCE_FAIL_CLOSED + 0 UNEXPECTED",
         "otel_authorized_cases": "68/68 PASS",
         "otel_blocked_cases": 23,
         "independent_findings_fixed": 7,
+        "security_precheck_high_findings_closed": 2,
+        "open_scoped_medium_residuals": 2,
         "pr_g2a_human_review_approved": false
       },
       "required_case_groups": ["OTLP-CG-SIGNAL_SCHEMA", "OTLP-CG-AUTHORITY_BOUNDARY"],
