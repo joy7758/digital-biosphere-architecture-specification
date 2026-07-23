@@ -46,7 +46,7 @@ last_reviewed: 2026-07-23
 | `DEP-015` | DBA Collector distribution contract | future deployment infrastructure | `NORMATIVE` | `DQ-025` 已采纳 exact source/component/provider/stability inventory 和 48-case conformance boundary；仍需 `DQ-020` 绑定 build/config/runtime/Owner | `DQ_025_REFERENCE_ADOPTED_NOT_BUILT_NOT_CONFIGURED_NOT_DEPLOYED` | DBA 是 Collector operator，inventory 是 binary/image/config，或 distribution adoption 自动授权 listener、deployment、Evidence、Permission 与 production gate |
 | `DEP-016` | DBA Collector deployment profile | future deployment infrastructure | `NORMATIVE` | `DQ-020` input profile 只定义 single-tenant synthetic staging 的 topology/config/security/durability/readiness 空位和现有 56/46/45/48 case reuse；真实配置必须在独立 deployment repository 产生 | `PROFILE_SCHEMA_DEFINED_DQ_020_BLOCKED_INPUT_NO_CONFIGURATION` | profile 是 Collector YAML、deployment manifest、Runtime、Owner 指派或 deployment authorization；Collector edge tier 是 AI Agent |
 | `DEP-017` | DBA Collector operational evidence contract | future deployment and operations infrastructure | `NORMATIVE` | `DQ-020` input profile 定义 internal metrics/logs、命名稳定性、12 类 observation、6 类 SLI、复合 readiness、no-data/alert/runbook 与 delivery reconciliation 的失败关闭绑定；复用现有 Collector cases | `PROFILE_SCHEMA_45_NEGATIVES_TWO_MODEL_REVIEW_COMPLETE_EXACT_BINDINGS_NULL_NO_MEASUREMENT` | profile 创建 query/alert/runbook/endpoint/measurement/Evidence，或 health/dashboard/self-report 自动关闭 `PR-G3` |
-| `DEP-018` | DBA human-decision readiness registry | ADR-024 / DQ-018 / DQ-022–DQ-025 / DQ-019–DQ-021 | `GOVERNANCE_GATE` | DQ-022–025、ADR-024 与 DQ-018 已记录；native Linux x86_64 direct validation 和 DBOS receipt `ff1752c…` 已远端验证，DBA attestation 与 Human Security Review 未完成 | `NATIVE_VALIDATED_DBOS_RECEIPT_REMOTE_VERIFIED_DBA_ATTESTATION_AND_HUMAN_SECURITY_REVIEW_REQUIRED_PR_G2A_NOT_READY_NOT_APPROVED` | 注册表、supplement/attestation、native load PASS 或 Agent recommendation 自动关闭 review gate、选择 backend 或授权生产 |
+| `DEP-018` | DBA human-decision readiness registry | ADR-024 / DQ-018 / DQ-022–DQ-025 / DQ-019–DQ-021 | `GOVERNANCE_GATE` | DQ-022–025、ADR-024 与 DQ-018 已记录；native Linux x86_64 direct validation、DBOS receipt `ff1752c…` 与 DBA supplement 已远端验证，Human Security Review 未完成 | `NATIVE_VALIDATED_DBA_SUPPLEMENT_REMOTE_ATTESTED_HUMAN_SECURITY_REVIEW_REQUIRED_PR_G2A_NOT_READY_NOT_APPROVED` | 注册表、supplement/attestation、native load PASS 或 Agent recommendation 自动关闭 review gate、选择 backend 或授权生产 |
 
 ## 3. Adjacent Dependency Candidates（相邻依赖候选）
 
@@ -90,7 +90,7 @@ DQ_018_IMPLEMENTATION_COMPLETE=true
 PR_G2A_READY_FOR_HUMAN_REVIEW=false
 PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_REQUIRED=false
 PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_COMPLETE=true
-PR_G2A_CURRENT_SOURCE_PACKET_STATUS=NATIVE_VALIDATED_DBOS_RECEIPT_REMOTE_VERIFIED_DBA_ATTESTATION_AND_HUMAN_SECURITY_REVIEW_REQUIRED
+PR_G2A_CURRENT_SOURCE_PACKET_STATUS=NATIVE_VALIDATED_DBA_SUPPLEMENT_REMOTE_ATTESTED_HUMAN_SECURITY_REVIEW_REQUIRED
 PR_G2A_HUMAN_REVIEW_APPROVED=false
 FULL_PR_G2_READY=false
 IMMUTABLE_DBA_BASELINE_CREATED=true
