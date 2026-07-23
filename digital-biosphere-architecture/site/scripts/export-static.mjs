@@ -26,10 +26,10 @@ const releaseContext = resolveReleaseContext(process.env, {
 const markers = routeMarkers(releaseContext.mode);
 
 const routes = [
-  { request: "/", output: "index.html", markers: markers.zhHome },
-  { request: "/en", output: "en/index.html", markers: markers.enHome },
-  { request: "/status", output: "status/index.html", markers: markers.zhStatus },
-  { request: "/en/status", output: "en/status/index.html", markers: markers.enStatus },
+  { request: "/", output: "index.html", markers: markers.zhHome, lang: "zh-CN" },
+  { request: "/en", output: "en/index.html", markers: markers.enHome, lang: "en" },
+  { request: "/status", output: "status/index.html", markers: markers.zhStatus, lang: "zh-CN" },
+  { request: "/en/status", output: "en/status/index.html", markers: markers.enStatus, lang: "en" },
 ];
 
 await rm(outputRoot, { recursive: true, force: true });
@@ -53,7 +53,14 @@ for (const route of routes) {
     throw new Error(`Cannot export ${route.request}: HTTP ${response.status}`);
   }
 
-  const html = await response.text();
+  const renderedHtml = await response.text();
+  const html = renderedHtml.replace(
+    /<html lang="[^"]+">/,
+    `<html lang="${route.lang}">`,
+  );
+  if (!html.includes(`<html lang="${route.lang}">`)) {
+    throw new Error(`Cannot export ${route.request}: document language was not set to ${route.lang}`);
+  }
   for (const marker of route.markers) {
     if (!html.includes(marker)) {
       throw new Error(`Cannot export ${route.request}: expected marker is absent: ${marker}`);

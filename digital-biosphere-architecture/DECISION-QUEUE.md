@@ -5,7 +5,7 @@ title_zh: 数字生物圈项目群决策队列 v0.1
 status: active-decision-register-owner-decisions-recorded
 decision_records_created: true
 authority_assignments_created: true
-last_reviewed: 2026-07-22
+last_reviewed: 2026-07-23
 ---
 
 # Digital Biosphere Program Decision Queue v0.1（数字生物圈项目群决策队列 v0.1）
@@ -47,6 +47,7 @@ last_reviewed: 2026-07-22
 | `ADR-022 / DQ-016` | `ACCEPTED_EXECUTION_AUTHORIZED`：只公开 exact public-safe wheel，DBOS 整仓保持 private | `decided_by_ref=zhangbin`；`DQ-016=PUBLISH_PUBLIC_SAFE_DBOS_WHEEL`；`WHOLE_DBOS_REPOSITORY_VISIBILITY=KEEP_PRIVATE` | 只授权精确 hash/bytes/source 的 GitHub Release asset；不授权整仓公开、PyPI、Runtime、Permission 或扩大 package 内容 |
 | `ADR-022 / B-011` | `ACCEPTED_LIMITATION_FOR_V0_1`：接受 `PARTIAL_METADATA_ONLY` 作为 Developer Preview v0.1 的已披露发现限制 | `OPEN_WEB_LIMITATION=ACCEPT_PARTIAL_METADATA_ONLY_FOR_V0_1`；`decided_by_ref=zhangbin` | 不再阻塞 v0.1；不得写成规范名称或公开网络自然发现已经通过，后续仍可复查 |
 | `ADR-022 / DQ-009` | `ACCEPTED_EXECUTION_AUTHORIZED`：批准 `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 正式发布 | `released_by_ref=zhangbin`；2026-07-22T02:59:31+08:00 | 授权 GitHub Release、exact wheel 和百度云 formal deployment；只有执行和外部复验全部通过后才可记录为 `RELEASED` |
+| `ADR-023` | `ACCEPTED_EXECUTION_AUTHORIZED`：批准 TITMAS 明亮版公开网站源文件推送和现有承载环境发布 | `decided_by_ref=zhangbin`；2026-07-23 用户明确授权 | 允许发布同一已验证网站版本并保留回滚点；不授权 `titmas.cn` 提前切换、GitHub 组织变更、公开贡献、Agent、Runtime 或 Permission |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 

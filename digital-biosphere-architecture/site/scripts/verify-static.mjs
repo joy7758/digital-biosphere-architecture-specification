@@ -46,6 +46,10 @@ const releaseContext = resolveReleaseContext(process.env, {
 
 assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
 assert.match(en, /TITMAS Infrastructure Developer Community/);
+assert.match(zh, /<html lang="zh-CN">/);
+assert.match(zhStatus, /<html lang="zh-CN">/);
+assert.match(en, /<html lang="en">/);
+assert.match(enStatus, /<html lang="en">/);
 assert.match(zh, /共同建设 Agent 时代的可信基础设施/);
 assert.match(en, /Build trustworthy infrastructure for the agent era/);
 assert.match(zh, /Community Review ≠ Architecture Decision/);
