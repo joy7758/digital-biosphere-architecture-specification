@@ -35,7 +35,7 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
     <>
       <a href={`${root}#architecture`}>{c.nav.architecture}</a>
       <a href={`${root}#trust`}>{c.nav.trust}</a>
-      <a href={`${root}#workflow`}>{c.nav.workflow}</a>
+      <a href={`${root}#validation`}>{c.nav.validation}</a>
       <a href={status}>{c.nav.status}</a>
       <a href={`${root}#developers`}>{c.nav.developers}</a>
       <a

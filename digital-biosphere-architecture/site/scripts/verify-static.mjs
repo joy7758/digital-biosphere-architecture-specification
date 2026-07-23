@@ -55,6 +55,10 @@ if (releaseContext.mode === "candidate") {
 }
 assert.match(zh, /SAEE_DBOS_ADAPTER_PASS/);
 assert.match(en, /SAEE_DBOS_ADAPTER_PASS/);
+assert.match(zh, /第一个可信闭环：设计完成，尚未执行/);
+assert.match(en, /The first trustworthy loop is designed—not executed/);
+assert.match(zh, /Observation ≠ Evidence/);
+assert.match(en, /Evaluation ≠ Authorization/);
 assert.doesNotMatch(zh, /codex-preview|Your site is taking shape/);
 assert.doesNotMatch(en, /codex-preview|Your site is taking shape/);
 assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
@@ -79,6 +83,20 @@ assert.equal(dbosPackage.source.source_revision, "cd3f867c4379ec555c45e7d554088a
 assert.equal(dbosPackage.public_safe_boundary.absolute_user_path_matches, 0);
 assert.equal(dbosPackage.public_safe_boundary.gitleaks_findings, 0);
 assert.equal(status.gates.DBOS_PUBLIC_SAFE_WHEEL_VALIDATED, true);
+assert.equal(status.gates.TITMAS_ADOPTION_VALIDATION_FRAMEWORK_DEFINED, true);
+assert.equal(status.gates.TITMAS_ADOPTION_VALIDATION_READY, false);
+assert.equal(status.gates.TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE, true);
+assert.equal(status.gates.TITMAS_PILOT_EXECUTION_AUTHORIZED, false);
+assert.equal(status.gates.COMPLETE_VERTICAL_SLICE_EXECUTED, false);
+assert.equal(status.technical_validation.conformance_cases_defined, 14);
+assert.equal(status.technical_validation.conformance_cases_executed, 0);
+assert.equal(status.technical_validation.first_external_role, "REVIEWER");
+assert.equal(status.technical_validation.public_materials.demo, "NOT_CREATED");
+assert.equal(status.technical_validation.adoption_claimed, false);
+assert.equal(agentIndex.technical_validation.design_complete, true);
+assert.equal(agentIndex.technical_validation.execution_authorized, false);
+assert.equal(agentIndex.technical_validation.vertical_slice_executed, false);
+assert.equal(agentIndex.technical_validation.first_external_role, "REVIEWER");
 assert.equal(release.release_mode, releaseContext.mode);
 assert.equal(release.developer_preview_released, releaseContext.developerPreviewReleased);
 assert.equal(release.deployment_state, releaseContext.deploymentState);

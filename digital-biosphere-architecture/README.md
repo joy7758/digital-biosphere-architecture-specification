@@ -93,6 +93,11 @@ open_infrastructure_strategy_constitution_defined: true
 open_infrastructure_strategy_implemented: false
 commercial_offering_created: false
 developer_ecosystem_created: false
+titmas_adoption_validation_framework_defined: true
+titmas_adoption_validation_ready: false
+titmas_technical_validation_design_complete: true
+titmas_pilot_execution_authorized: false
+titmas_complete_vertical_slice_executed: false
 versioned_schema_mapping_defined: true
 schema_mapping_applied: false
 data_migration_authorized: false
@@ -111,6 +116,49 @@ Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是整个 
 > 我们提供可信多智能体基础设施，让 AI Agent（人工智能智能体）能够长期运行、协作并产生可验证证据。
 
 Digital Biosphere 是总项目；`Trusted Multi-Agent Infrastructure`（可信多智能体基础设施）是统一对外定位。AI agent 是首要客户，人类保留正式发布、权限和重大外部动作的决策权。智能体和开发者都应先从 [`PUBLIC-PROJECT-OVERVIEW.md`](PUBLIC-PROJECT-OVERVIEW.md) 理解整个项目，而不是把 DBA、DBOS 和 SAEE 当作三个互不相关的产品。
+
+网站 [`https://redcrag.cn/`](https://redcrag.cn/) 提供完整的中文、英文和机器可读说明。
+核心架构、当前验证链路、成功标准、阻塞项和权力边界均直接在网站呈现，不以访问
+GitHub 为理解前提。
+
+### Current Validation Milestone（当前验证里程碑）
+
+TITMAS 已从生态制度设计进入 Technical Validation Pilot（技术验证试点）设计阶段。
+当前选择一个有界垂直切片来验证 Runtime Governance（运行治理）和 Evolution
+Evaluation（演化评价）能否通过证据边界解耦协作：
+
+```text
+Microsoft AGT observation candidate
+  → TITMAS mapping
+  → EEOAP statement and profile validation
+  → DBOS Evidence Admission
+  → Evidence and Verification references
+  → SAEE read-only evaluation
+  → Validation Report
+```
+
+| 入口 | 作用 | 当前状态 |
+|---|---|---|
+| [`architecture/titmas-adoption-validation-framework-v0.1.md`](architecture/titmas-adoption-validation-framework-v0.1.md) | 开发者、技术、生态和市场采用验证框架 | `PREPARATION_READY_EXECUTION_NOT_AUTHORIZED` |
+| [`architecture/titmas-technical-validation-pilot-framework-v0.1.md`](architecture/titmas-technical-validation-pilot-framework-v0.1.md) | 单一垂直切片、来源、步骤、14 项负例、成功标准、公开材料和外部角色 | `DESIGN_COMPLETE_EXECUTION_NOT_AUTHORIZED` |
+| [`architecture/telemetry-to-evidence-admission-contract.md`](architecture/telemetry-to-evidence-admission-contract.md) | Observation 到 canonical Evidence 之间的独立失败关闭准入边界 | `PROPOSED_DQ_021_BLOCKED_INPUT` |
+| [`architecture/titmas-contributor-pilot-program-v0.1.md`](architecture/titmas-contributor-pilot-program-v0.1.md) | 未来有限贡献者试点边界 | `DESIGN_ONLY_NO_PARTICIPANTS` |
+| [`architecture/titmas-ecosystem-expansion-strategy-v0.1.md`](architecture/titmas-ecosystem-expansion-strategy-v0.1.md) | AGT、OpenTelemetry、LangChain、CrewAI、MCP 的 reference/candidate 分类 | `REFERENCE_ONLY_NO_ADOPTION` |
+
+```text
+TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE=true
+TITMAS_PILOT_EXECUTION_AUTHORIZED=false
+COMPLETE_VERTICAL_SLICE_EXECUTED=false
+CONFORMANCE_CASES_EXECUTED=0
+DEMO_CREATED=false
+COMMUNITY_ESTABLISHED=false
+PRODUCT_CREATED=false
+```
+
+第一位外部参与者应是 `Reviewer`（审查者），不是 Contributor（贡献者）。在
+AGT exact source、EEOAP authority、DBOS Evidence Admission、SAEE read-only
+handoff 和 Pilot Owner/Reviewer 均被明确前，不执行 Pilot、不发布 Demo，也不宣布
+生态采用。
 
 `Trusted Multi-Agent Infrastructure Developer Preview v0.1` 已按
 [`ADR-022`](architecture/ADR-022-developer-preview-release.md) 获得明确人工授权并发布。

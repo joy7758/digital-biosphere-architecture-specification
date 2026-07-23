@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "observed_at": "2026-07-22T02:59:31+08:00",
+  "observed_at": "2026-07-23T21:28:24+08:00",
   "release_state": "developer_preview_released",
   "release_claim": true,
   "public_website": {
@@ -29,7 +29,12 @@
     "DQ_016_DBOS_DISTRIBUTION_DECIDED": true,
     "DEVELOPER_PREVIEW_RELEASED": true,
     "PREVIEW_DEPLOYMENT_HEALTH_PASS": true,
-    "ROLLBACK_VALIDATED": true
+    "ROLLBACK_VALIDATED": true,
+    "TITMAS_ADOPTION_VALIDATION_FRAMEWORK_DEFINED": true,
+    "TITMAS_ADOPTION_VALIDATION_READY": false,
+    "TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE": true,
+    "TITMAS_PILOT_EXECUTION_AUTHORIZED": false,
+    "COMPLETE_VERTICAL_SLICE_EXECUTED": false
   },
   "access": {
     "DBA": "public",
@@ -81,6 +86,53 @@
     "required_for_primary_route": false,
     "status": "SUPERSEDED_AS_PRIMARY_GATE_RETAINED_OPTIONAL",
     "participants": 0
+  },
+  "technical_validation": {
+    "framework_version": "0.1",
+    "design_complete": true,
+    "execution_authorized": false,
+    "complete_vertical_slice_executed": false,
+    "conformance_cases_defined": 14,
+    "conformance_cases_executed": 0,
+    "runtime_source": {
+      "name": "Microsoft Agent Governance Toolkit",
+      "role": "PRIORITY_RUNTIME_SOURCE_CANDIDATE",
+      "version": "v4.1.0",
+      "commit": "0de71ca6c95cf8b9b975ac96f48eaa7826bbe258",
+      "selected_by_decision": false
+    },
+    "vertical_slice": [
+      "AGT_OBSERVATION",
+      "TITMAS_MAPPING",
+      "EEOAP_STATEMENT_AND_PROFILE_VALIDATION",
+      "DBOS_EVIDENCE_ADMISSION",
+      "DBOS_EVIDENCE_AND_VERIFICATION_REFERENCES",
+      "SAEE_READ_ONLY_EVALUATION",
+      "VALIDATION_REPORT"
+    ],
+    "hard_boundaries": [
+      "Observation != Evidence",
+      "Evidence != Truth",
+      "Evaluation != Authorization",
+      "Recommendation != Execution"
+    ],
+    "first_external_role": "REVIEWER",
+    "public_materials": {
+      "demo": "NOT_CREATED",
+      "architecture_diagram": "DESIGN_IN_SPECIFICATION_ONLY",
+      "reproduction_guide": "NOT_CREATED",
+      "validation_report": "NOT_CREATED"
+    },
+    "blockers": [
+      "AGT_EXACT_TAG_CONTRACT_AUDIT",
+      "EEOAP_AUTHORITY_AND_VERSION",
+      "DBOS_EVIDENCE_ADMISSION_DQ_021",
+      "SAEE_VERSIONED_READ_ONLY_HANDOFF",
+      "PILOT_OWNER_TEST_OWNER_REVIEWER_AND_SECURITY_PATH"
+    ],
+    "community_established": false,
+    "product_created": false,
+    "adoption_claimed": false
   },
   "release": {
     "tag": "v0.1-developer-preview",

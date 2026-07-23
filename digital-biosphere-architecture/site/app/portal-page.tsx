@@ -134,6 +134,82 @@ export function PortalPage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
+        <section className="section validation-section" id="validation" data-section-id="validation">
+          <div className="section-shell">
+            <div className="validation-heading">
+              <div className="section-heading">
+                <p className="section-kicker">TECHNICAL VALIDATION / 技术验证</p>
+                <h2>{c.validationTitle}</h2>
+                <p>{c.validationLead}</p>
+              </div>
+              <div className="validation-question">
+                <span>PILOT QUESTION</span>
+                <p>{c.validationQuestion}</p>
+              </div>
+            </div>
+
+            <div className="validation-state-grid">
+              {c.validationState.map(([label, state, detail]) => (
+                <article key={label}>
+                  <span>{label}</span>
+                  <strong>{state}</strong>
+                  <p>{detail}</p>
+                </article>
+              ))}
+            </div>
+
+            <ol className="validation-flow" aria-label={c.validationTitle}>
+              {c.validationFlow.map(([index, owner, title, boundary]) => (
+                <li key={index}>
+                  <span>{index}</span>
+                  <div>
+                    <small>{owner}</small>
+                    <h3>{title}</h3>
+                    <p>{boundary}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+
+            <div className="validation-boundaries">
+              {c.validationBoundaries.map((boundary) => <code key={boundary}>{boundary}</code>)}
+            </div>
+
+            <div className="validation-detail-grid">
+              <article className="validation-detail">
+                <span className="validation-label">SUCCESS CRITERIA</span>
+                <h3>{c.validationCriteriaTitle}</h3>
+                <ul>
+                  {c.validationCriteria.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </article>
+              <article className="validation-detail blocker-detail">
+                <span className="validation-label">PRE-EXECUTION GATE</span>
+                <h3>{c.validationBlockersTitle}</h3>
+                <ul>
+                  {c.validationBlockers.map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </article>
+            </div>
+
+            <div className="validation-materials">
+              <div className="validation-materials-title">
+                <span className="validation-label">DISCLOSURE</span>
+                <h3>{c.validationMaterialsTitle}</h3>
+              </div>
+              <div>
+                {c.validationMaterials.map(([artifact, state, detail]) => (
+                  <article key={artifact}>
+                    <strong>{artifact}</strong>
+                    <span>{state}</span>
+                    <p>{detail}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section className="section status-section" id="status" data-section-id="status">
           <div className="section-shell">
             <div className="section-heading light">
