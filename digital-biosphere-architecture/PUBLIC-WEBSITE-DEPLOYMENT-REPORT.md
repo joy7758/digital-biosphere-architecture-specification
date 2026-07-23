@@ -1,34 +1,39 @@
 ---
-report_id: DBA-WEB-DEPLOY-003
-title: Trusted Multi-Agent Infrastructure Public Website Deployment Report
-title_zh: 可信多智能体基础设施公开网站部署报告
-status: pass-technical-validation-homepage-synchronized-not-pilot-executed
-observed_at: 2026-07-23T21:35:24+08:00
+report_id: DBA-WEB-DEPLOY-004
+title: TITMAS Infrastructure Developer Community Public Website Deployment Report
+title_zh: TITMAS 可信多智能体基础设施开发者社区公开网站部署报告
+status: pass-titmas-community-homepage-synchronized-community-not-established
+observed_at: 2026-07-23T22:02:46+08:00
 public_url: https://redcrag.cn/
 github_release_url: https://github.com/joy7758/digital-biosphere-architecture-specification/releases/tag/v0.1-developer-preview
 github_release_tag: v0.1-developer-preview
 host: 180.76.115.193
-current_validated_source_revision: e087fa8f2ebc7c6fca0cbc094bf45f03e3d32d46
+current_validated_source_revision: 2d3fa4bea19cd64b4ff4656dfdba5f01922397e0
 deployment_state: developer-preview-v0.1-released
 developer_preview_released: true
 technical_validation_design_complete: true
 technical_validation_pilot_execution_authorized: false
 complete_vertical_slice_executed: false
+titmas_community_direction_adopted: true
+titmas_contributor_entry_prepared: true
+titmas_public_contribution_surface_authorized: false
+titmas_developer_community_established: false
+titmas_foundation_in_scope: false
 production_ready: false
 agent_created: false
 runtime_created: false
 permission_created: false
 ---
 
-# Trusted Multi-Agent Infrastructure Public Website Deployment Report
+# TITMAS Infrastructure Developer Community Public Website Deployment Report
 
 ## Conclusion（结论）
 
 `https://redcrag.cn/` 已从 immutable Baidu Cloud release directory（百度云不可变
-发布目录）提供 TMAI Developer Preview v0.1 的中英文、agent-readable（智能体可读）
-正式静态站点。2026-07-23 的首页同步增加了完整 Technical Validation Pilot 说明，
-包括目标垂直切片、阶段 Owner、成功标准、阻塞项、公开材料和 Reviewer-first 边界；
-理解这些信息不依赖访问 GitHub。
+发布目录）提供以 TITMAS Infrastructure Developer Community 为第一身份的中英文、
+agent-readable（智能体可读）正式静态站点。首页首先解释社区使命、共同建设表面、
+目标参与者和当前治理状态，再呈现 DBA／DBOS／SAEE 架构及 Technical Validation
+Pilot。国内访问者不依赖 GitHub 即可获得同等核心信息。
 
 ```text
 PUBLIC_WEBSITE_DEPLOYED=true
@@ -36,6 +41,11 @@ PUBLIC_WEBSITE_HEALTH_PASS=true
 PUBLIC_WEBSITE_SECURITY_HEADERS_PASS=true
 PUBLIC_WEBSITE_ROLLBACK_TARGET_PRESERVED=true
 DEVELOPER_PREVIEW_RELEASED=true
+TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY_DIRECTION_ADOPTED=true
+TITMAS_CONTRIBUTOR_ENTRY_PREPARED=true
+TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
+TITMAS_FOUNDATION_IN_SCOPE=false
 TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE=true
 TITMAS_PILOT_EXECUTION_AUTHORIZED=false
 COMPLETE_VERTICAL_SLICE_EXECUTED=false
@@ -71,10 +81,10 @@ manifest 的 tag、decision reference、release state 与 package URL 一致。
 ## Artifact integrity（工件完整性）
 
 ```text
-SOURCE_REVISION=e087fa8f2ebc7c6fca0cbc094bf45f03e3d32d46
-ACTIVE_RELEASE_DIRECTORY=/srv/tmai/releases/e087fa8f2ebc7c6fca0cbc094bf45f03e3d32d46
-SITE_ARCHIVE_BYTES=1723055
-SITE_ARCHIVE_SHA256=bdc7e69bb54e70c094f4e7a8b804d2d021ffb45b5ee3b807cf7793d01a0f959a
+SOURCE_REVISION=2d3fa4bea19cd64b4ff4656dfdba5f01922397e0
+ACTIVE_RELEASE_DIRECTORY=/srv/tmai/releases/2d3fa4bea19cd64b4ff4656dfdba5f01922397e0
+SITE_ARCHIVE_BYTES=1467693
+SITE_ARCHIVE_SHA256=14ac298b3d96d5d46c100f2487c68acd06b6e0816da79c089d28186d83d481dd
 MANIFEST_FILES=21
 ON_HOST_MANIFEST_PASS=true
 ```
@@ -95,7 +105,7 @@ ON_HOST_MANIFEST_PASS=true
 正式站点通过 atomic symlink switch（原子符号链接切换）激活。前一候选版本仍保留：
 
 ```text
-PREVIOUS_RELEASE=/srv/tmai/releases/1113130ca4213b70fcebd6247fec794854295e8c
+PREVIOUS_RELEASE=/srv/tmai/releases/e087fa8f2ebc7c6fca0cbc094bf45f03e3d32d46
 ROLLBACK_MECHANISM=ATOMIC_SYMLINK_SWITCH
 PRIOR_ACTUAL_ROLLBACK_VALIDATION=true
 ```
@@ -105,8 +115,8 @@ PRIOR_ACTUAL_ROLLBACK_VALIDATION=true
 
 ## GitHub source and release binding（GitHub 来源与发布绑定）
 
-- Homepage source merge：`e087fa8f2ebc7c6fca0cbc094bf45f03e3d32d46`
-- Pull request：<https://github.com/joy7758/digital-biosphere-architecture-specification/pull/14>
+- Homepage source merge：`2d3fa4bea19cd64b4ff4656dfdba5f01922397e0`
+- Pull request：<https://github.com/joy7758/digital-biosphere-architecture-specification/pull/16>
 - 网站内容同步不创建新产品版本；Developer Preview v0.1 的既有 release identity 保持不变。
 
 - Release：<https://github.com/joy7758/digital-biosphere-architecture-specification/releases/tag/v0.1-developer-preview>
@@ -126,5 +136,7 @@ PRIOR_ACTUAL_ROLLBACK_VALIDATION=true
 - DBOS 整仓不公开，只公开 exact public-safe wheel；
 - 没有公共 Runtime、托管 API、Permission grant 或生产 SLA；
 - Technical Validation Pilot 只完成设计，尚未获执行授权，14 项符合性负例执行数仍为 0；
-- 第一位外部角色定义为 Reviewer；没有成立社区、招募 Contributor 或声明上游采用；
+- TITMAS 开发者社区方向已采纳，贡献入口已准备，但公共贡献面未授权；
+- 没有成立正式社区、建立 SIG、指派 Maintainer、采纳 Code of Conduct 或创建 Foundation；
+- 第一位外部角色定义为 Reviewer；没有招募 Contributor 或声明上游采用；
 - 没有创建 Agent、Runtime、Entity、Capability instance、Permission 或科研 Evidence。
