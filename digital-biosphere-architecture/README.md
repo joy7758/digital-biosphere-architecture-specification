@@ -93,6 +93,13 @@ open_infrastructure_strategy_constitution_defined: true
 open_infrastructure_strategy_implemented: false
 commercial_offering_created: false
 developer_ecosystem_created: false
+titmas_infrastructure_developer_community_direction_adopted: true
+titmas_contributor_entry_prepared: true
+titmas_public_contribution_surface_authorized: false
+titmas_developer_community_established: false
+titmas_code_of_conduct_adopted: false
+titmas_maintainer_assigned: false
+titmas_foundation_in_scope: false
 titmas_adoption_validation_framework_defined: true
 titmas_adoption_validation_ready: false
 titmas_technical_validation_design_complete: true
@@ -113,13 +120,49 @@ Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是整个 
 
 ## Public Entry（统一对外入口）
 
-> 我们提供可信多智能体基础设施，让 AI Agent（人工智能智能体）能够长期运行、协作并产生可验证证据。
+> **TITMAS Infrastructure Developer Community**
+>
+> 中文：**TITMAS 可信多智能体基础设施开发者社区**
+>
+> Developer Community for Trusted Multi-Agent Infrastructure
 
-Digital Biosphere 是总项目；`Trusted Multi-Agent Infrastructure`（可信多智能体基础设施）是统一对外定位。AI agent 是首要客户，人类保留正式发布、权限和重大外部动作的决策权。智能体和开发者都应先从 [`PUBLIC-PROJECT-OVERVIEW.md`](PUBLIC-PROJECT-OVERVIEW.md) 理解整个项目，而不是把 DBA、DBOS 和 SAEE 当作三个互不相关的产品。
+开发者负责构建 Agent；TITMAS 共同推进开放规范、Adapter contract、Conformance 和
+reference implementation boundary，帮助不同 Agent 通过易理解、可实现、可验证的
+基础设施规则可信协作。
 
-网站 [`https://redcrag.cn/`](https://redcrag.cn/) 提供完整的中文、英文和机器可读说明。
-核心架构、当前验证链路、成功标准、阻塞项和权力边界均直接在网站呈现，不以访问
-GitHub 为理解前提。
+Digital Biosphere 是总项目；`Trusted Multi-Agent Infrastructure`（可信多智能体基础设施）
+是技术定位；TITMAS Infrastructure Developer Community 是当前统一公开工作重心。
+DBA、DBOS、SAEE 和 Digital Entities 仍是同一项目群内相互分离的责任域，社区不替代
+任何责任域，也不创建第二套 Architecture Authority。
+
+网站 [`https://redcrag.cn/`](https://redcrag.cn/) 提供完整中英文与机器可读入口，国内
+访问者不需要依赖 GitHub 才能理解社区使命、共同建设范围、当前状态、底层架构和技术
+验证计划。
+
+### TITMAS Community Focus（TITMAS 社区重心）
+
+| 共同建设表面 | 当前事实 |
+|---|---|
+| Open Specification | Identity、Capability、Execution、Evidence、Verification 和 Evaluation 的开放边界 |
+| Semantic Mapping | 外部框架／协议的来源固定与版本化映射候选 |
+| Adapter Contract | 被动采集、交接、失败语义和禁止 writeback 的契约候选 |
+| Conformance | 正例、负例、unknown、unsupported 和失败保留的设计 |
+| Documentation | 面向人类与智能体的首次接触、示例、本地化和机器入口 |
+| Reference Boundary | 可替换参考实现边界；当前未授权创建 Runtime 或唯一实现 |
+
+```text
+TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY_DIRECTION_ADOPTED=true
+TITMAS_CONTRIBUTOR_ENTRY_PREPARED=true
+TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
+TITMAS_CODE_OF_CONDUCT_ADOPTED=false
+TITMAS_MAINTAINER_ASSIGNED=false
+TITMAS_FOUNDATION_IN_SCOPE=false
+```
+
+`CONTRIBUTOR_ENTRY_PREPARED` 只表示贡献流程和机器入口已准备。当前不开放公共 Issue、
+Pull Request、SIG、Maintainer 招募或 Foundation；社区意见和智能体推荐只是 Review
+input，不是 Architecture Decision、Implementation Authorization 或 Permission。
 
 ### Current Validation Milestone（当前验证里程碑）
 

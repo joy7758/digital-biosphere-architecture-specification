@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { PortalPage } from "../portal-page";
 
 export const metadata: Metadata = {
-  title: "Trusted Multi-Agent Infrastructure",
+  title: "TITMAS Infrastructure Developer Community",
   description:
-    "Trust infrastructure for long-running, collaborative, and verifiably evolving AI agents.",
+    "A developer community for open specifications, adapter contracts, conformance tests, and reference boundaries for trusted multi-agent infrastructure.",
   alternates: {
     canonical: "/en/",
     languages: { "zh-CN": "/", en: "/en/" },

@@ -29,6 +29,30 @@ export const repositoryBaselines = [
 
 export const gateRows = [
   {
+    id: "TITMAS_COMMUNITY_DIRECTION",
+    state: "ADOPTED",
+    zh: "TITMAS 可信多智能体基础设施开发者社区已成为当前统一公开工作重心。",
+    en: "TITMAS Infrastructure Developer Community is the adopted focus of the public work.",
+  },
+  {
+    id: "TITMAS_CONTRIBUTOR_ENTRY",
+    state: "PREPARED",
+    zh: "贡献流程、共同建设表面和机器可读入口已准备；这不是公共贡献授权。",
+    en: "Contribution workflows, shared work surfaces, and machine-readable entry points are prepared; this is not public-contribution authorization.",
+  },
+  {
+    id: "TITMAS_PUBLIC_CONTRIBUTION_SURFACE",
+    state: "NOT_AUTHORIZED",
+    zh: "公共 Issue、Pull Request、SIG、Maintainer 招募和外部贡献渠道尚未授权。",
+    en: "Public issues, pull requests, SIGs, maintainer recruitment, and external contribution channels are not authorized.",
+  },
+  {
+    id: "TITMAS_DEVELOPER_COMMUNITY",
+    state: "NOT_ESTABLISHED",
+    zh: "社区方向已经采纳，但正式社区、Code of Conduct、安全接收路径和 Maintainer 尚未建立。",
+    en: "The community direction is adopted, but the operating community, Code of Conduct, security intake, and maintainers are not established.",
+  },
+  {
     id: "DBA_CLEAN_CLONE_PASS",
     state: "PASS",
     zh: "DBA 文档入口与内部链接已通过干净检出验证。",
@@ -94,27 +118,56 @@ export const content = {
   zh: {
     lang: "zh-CN",
     nav: {
+      community: "社区",
       architecture: "架构",
       trust: "可信边界",
       workflow: "工作流",
       validation: "技术验证",
       status: "状态",
-      developers: "智能体",
+      developers: "参与入口",
       github: "GitHub",
       language: "English",
     },
-    badge: "正式发布：可信多智能体基础设施开发者预览版 v0.1",
+    badge: "当前重心：开发者社区方向已采纳",
     eyebrow: "DIGITAL BIOSPHERE / 数字生物圈",
-    title: "面向多智能体系统的可信基础设施",
+    title: "TITMAS 可信多智能体基础设施开发者社区",
     lead:
-      "让 AI 智能体在长期运行与协作中拥有可追溯身份、受控生命周期、可验证证据和明确治理边界。",
-    primaryCta: "理解架构",
+      "开发者负责构建 Agent；TITMAS 共同推进开放规范、适配器契约、符合性测试和参考实现边界，帮助不同 Agent 可信协作。",
+    primaryCta: "了解社区方向",
     secondaryCta: "查看当前状态",
     notice:
-      "Developer Preview v0.1 已发布；这是受限开发者预览，不构成生产可用性、自动权限或客户采用声明。",
-    introTitle: "不是另一个 Agent Framework",
+      "社区方向已采纳，贡献入口已准备；公共贡献尚未授权，正式社区、SIG、Maintainer 和 Foundation 均未建立。",
+    communityTitle: "共同建设 Agent 时代的可信基础设施",
+    communityLead:
+      "TITMAS 不是普通 Agent 讨论群。它面向人类开发者和受治理智能体，共同维护跨框架可复用、可测试、可追溯的基础设施规则。",
+    communityPromise:
+      "You build agents. TITMAS helps them collaborate through understandable, implementable, and verifiable infrastructure rules.",
+    communitySurfaces: [
+      ["Specification", "开放规范", "定义 Identity、Capability、Execution、Evidence、Verification 与 Evaluation 的共享语义。", "PREPARED"],
+      ["Semantic Mapping", "语义映射", "把 AGT、OpenTelemetry、LangChain、CrewAI、MCP 等外部表面映射到版本化边界。", "CANDIDATE"],
+      ["Adapter Contract", "适配器契约", "定义被动采集、交接、失败语义和禁止 writeback 的接口边界。", "PROPOSAL"],
+      ["Conformance", "符合性", "建立正例、负例、unknown、unsupported、失败保留和独立结果契约。", "DESIGN"],
+      ["Documentation", "文档与本地化", "让开发者和智能体快速发现、理解、引用和复用当前真实能力。", "PUBLIC"],
+      ["Reference Boundary", "参考实现边界", "说明规范如何被可替换地实现，而不制造唯一 Runtime 权威。", "NOT AUTHORIZED"],
+    ],
+    communityStateTitle: "准备建设，不虚构已经成立",
+    communityStateLead:
+      "方向、入口和工作表面已经明确；正式运营状态必须等待可验证的公共渠道、行为规范、安全路径、角色和真实贡献。",
+    communityStates: [
+      ["DIRECTION", "ADOPTED", "TITMAS 开发者社区是当前统一公开工作重心。"],
+      ["CONTRIBUTOR ENTRY", "PREPARED", "贡献流程和机器入口已准备，但尚未公开启用。"],
+      ["PUBLIC SURFACE", "NOT AUTHORIZED", "没有公共 Issue、PR、SIG 或招募权限。"],
+      ["COMMUNITY", "NOT ESTABLISHED", "没有 Maintainer、正式 Code of Conduct 或 Foundation。"],
+    ],
+    communityBoundaries: [
+      "Community Review ≠ Architecture Decision",
+      "Contribution ≠ Authority",
+      "Conformance ≠ Adoption",
+      "Specification ≠ Implementation",
+    ],
+    introTitle: "社区建设基础设施，不制造 Agent",
     introBody:
-      "普通框架回答“如何创建智能体”。我们关注智能体数量增加、长期运行并互相协作后，如何保持身份连续、行为可追溯、证据可验证，以及演化建议不能越权执行。",
+      "普通 Agent Framework 回答“如何创建和编排智能体”。TITMAS 关注智能体数量增加、长期运行并跨框架协作后，如何保持身份连续、行为可追溯、证据可验证，以及评价和演化建议不能越权执行。",
     layersTitle: "三层协作，一个可信栈",
     layersLead: "规则、存在和演化相互协作，但不能相互替代。",
     layers: [
@@ -167,7 +220,7 @@ export const content = {
       ["DESIGN", "COMPLETE", "验证问题、步骤、来源、负例和成功标准已经定义。"],
       ["EXECUTION", "NOT AUTHORIZED", "没有运行 Pilot、Demo 或真实 Evidence Admission。"],
       ["EXTERNAL ROLE", "REVIEWER FIRST", "第一位外部参与者应审查价值与边界，不要求先贡献代码。"],
-      ["ADOPTION", "NOT CLAIMED", "没有社区、产品、客户采用或上游项目认可声明。"],
+      ["ADOPTION", "NOT CLAIMED", "没有产品、客户采用或上游项目认可声明；社区仍处于准备状态。"],
     ],
     validationFlow: [
       ["01", "Microsoft AGT", "观察来源候选", "固定 release/source 后只导出 Observation，不产生 DBOS 身份或权限。"],
@@ -210,44 +263,73 @@ export const content = {
     statusTitle: "当前真实状态",
     statusLead: "发布基线以 2026-07-22 记录为准；Technical Validation Pilot 设计状态更新于 2026-07-23。",
     statusCta: "打开完整状态页",
-    developersTitle: "让智能体从可验证事实开始",
+    developersTitle: "面向人类开发者与智能体的共同入口",
     developersBody:
-      "AI 智能体是首要客户。修复后千帆和方舟的 12 次受控会话全部达到预冻结阈值。exact DBOS public-safe wheel 已通过 334 项源码测试、34/34 Validator、密钥扫描和隔离安装，并提供匿名下载；可用于架构复用和受限 Developer Preview 评价，但不是生产 Runtime。",
-    developerLinks: ["阅读架构规范", "读取机器状态", "读取智能体入口", "读取智能体客户包"],
-    governanceTitle: "发布后仍然有效的边界",
+      "当前入口支持阅读社区方向、核对机器状态、复核技术验证设计和准备有来源的 Proposal。AI 智能体是首要机器客户；公共贡献启用仍需单独决策，当前页面不构成提交邀请。",
+    developerLinks: ["打开 GitHub 首页", "读取机器状态", "读取智能体入口", "读取智能体客户包"],
+    governanceTitle: "参与前必须知道的边界",
     governanceItems: [
-      "DBOS 整仓继续 private；只公开 exact public-safe wheel",
-      "开放网络发现保持 PARTIAL_METADATA_ONLY，规范英文／中文名称尚未命中",
-      "Developer Preview 不创建 Runtime、Permission，也不证明生产就绪或客户采用",
+      "当前可以阅读、复核和准备 Proposal，但公共 Issue／PR 尚未授权",
+      "社区意见、模型推荐和 Conformance PASS 都不能自动改变 DBA／DBOS／SAEE 权力",
+      "TITMAS 不是 Agent Framework、Agent Platform、Foundation 或第二个 DBA",
     ],
     legal:
       "公开自有材料采用 Apache-2.0。网站不采集登录信息、不设置分析 Cookie，也不提供运行时权限。",
-    footer: "Digital Biosphere 是长期愿景；TMAI 是对外技术入口。",
+    footer: "Digital Biosphere 是总项目；TITMAS 是当前可信多智能体基础设施开发者社区入口。",
   },
   en: {
     lang: "en",
     nav: {
+      community: "Community",
       architecture: "Architecture",
       trust: "Trust boundaries",
       workflow: "Workflow",
       validation: "Technical validation",
       status: "Status",
-      developers: "Agents",
+      developers: "Participate",
       github: "GitHub",
       language: "中文",
     },
-    badge: "Released: Trusted Multi-Agent Infrastructure Developer Preview v0.1",
+    badge: "Current focus: developer community direction adopted",
     eyebrow: "DIGITAL BIOSPHERE",
-    title: "Trust infrastructure for multi-agent systems",
+    title: "TITMAS Infrastructure Developer Community",
     lead:
-      "Give long-running, collaborative AI agents traceable identity, governed lifecycles, verifiable evidence, and explicit authority boundaries.",
-    primaryCta: "Understand the architecture",
+      "Developers build agents. TITMAS advances open specifications, adapter contracts, conformance tests, and reference implementation boundaries that help different agents collaborate with trust.",
+    primaryCta: "Explore the community direction",
     secondaryCta: "View current status",
     notice:
-      "Developer Preview v0.1 is released. It is a bounded developer preview—not a production-readiness, automatic-authority, or customer-adoption claim.",
-    introTitle: "Not another agent framework",
+      "The direction is adopted and the contributor entry is prepared. Public contribution is not authorized; no operating community, SIG, maintainer, or foundation is established.",
+    communityTitle: "Build trustworthy infrastructure for the agent era",
+    communityLead:
+      "TITMAS is not a general agent forum. Human developers and governed agents work on framework-neutral infrastructure rules that are reusable, testable, and traceable.",
+    communityPromise:
+      "You build agents. TITMAS helps them collaborate through understandable, implementable, and verifiable infrastructure rules.",
+    communitySurfaces: [
+      ["Specification", "Open specifications", "Shared semantics for Identity, Capability, Execution, Evidence, Verification, and Evaluation.", "PREPARED"],
+      ["Semantic Mapping", "Semantic mappings", "Version-pinned mappings from AGT, OpenTelemetry, LangChain, CrewAI, MCP, and other external surfaces.", "CANDIDATE"],
+      ["Adapter Contract", "Adapter contracts", "Passive capture, handoff, failure semantics, and no-writeback interface boundaries.", "PROPOSAL"],
+      ["Conformance", "Conformance", "Positive, negative, unknown, unsupported, failure-retention, and independent result contracts.", "DESIGN"],
+      ["Documentation", "Docs and localization", "Help developers and agents discover, understand, cite, and reuse current truth quickly.", "PUBLIC"],
+      ["Reference Boundary", "Reference boundaries", "Show replaceable implementation patterns without creating a single Runtime authority.", "NOT AUTHORIZED"],
+    ],
+    communityStateTitle: "Preparing the work without pretending the community already exists",
+    communityStateLead:
+      "The direction, entry points, and work surfaces are clear. Operating status still requires verifiable public channels, conduct, security intake, roles, and real contributions.",
+    communityStates: [
+      ["DIRECTION", "ADOPTED", "The TITMAS developer community is the current public work focus."],
+      ["CONTRIBUTOR ENTRY", "PREPARED", "Workflows and machine entry points are prepared, not publicly enabled."],
+      ["PUBLIC SURFACE", "NOT AUTHORIZED", "No public issues, PRs, SIGs, or recruitment authority exists."],
+      ["COMMUNITY", "NOT ESTABLISHED", "There are no maintainers, adopted Code of Conduct, or foundation."],
+    ],
+    communityBoundaries: [
+      "Community Review ≠ Architecture Decision",
+      "Contribution ≠ Authority",
+      "Conformance ≠ Adoption",
+      "Specification ≠ Implementation",
+    ],
+    introTitle: "A community for infrastructure—not an agent factory",
     introBody:
-      "Most frameworks answer how to create an agent. We focus on what happens when agents multiply, run for a long time, and collaborate: identity continuity, traceable behavior, verifiable evidence, and evolution recommendations that cannot execute themselves.",
+      "Agent frameworks answer how to create and orchestrate agents. TITMAS focuses on identity continuity, traceable behavior, verifiable evidence, and evaluation or evolution recommendations that cannot execute themselves when agents multiply, run for a long time, and collaborate across frameworks.",
     layersTitle: "Three layers, one trustworthy stack",
     layersLead: "Rules, existence, and evolution cooperate without replacing one another.",
     layers: [
@@ -307,7 +389,7 @@ export const content = {
       ["DESIGN", "COMPLETE", "The question, procedure, sources, negative cases, and success criteria are defined."],
       ["EXECUTION", "NOT AUTHORIZED", "No Pilot, Demo, or real Evidence Admission has run."],
       ["EXTERNAL ROLE", "REVIEWER FIRST", "The first external participant should assess value and boundaries, not contribute code first."],
-      ["ADOPTION", "NOT CLAIMED", "No community, product, customer adoption, or upstream endorsement is claimed."],
+      ["ADOPTION", "NOT CLAIMED", "No product, customer adoption, or upstream endorsement is claimed; the community remains in preparation."],
     ],
     validationFlow: [
       ["01", "Microsoft AGT", "Observation source candidate", "After pinning release/source, export Observation only; create no DBOS identity or permission."],
@@ -350,18 +432,18 @@ export const content = {
     statusTitle: "Current truthful status",
     statusLead: "Release baselines remain dated 2026-07-22; the Technical Validation Pilot design status is updated on 2026-07-23.",
     statusCta: "Open the full status page",
-    developersTitle: "Let agents start from verifiable facts",
+    developersTitle: "One entry point for human developers and agents",
     developersBody:
-      "AI agents are the primary customers. All twelve controlled Qianfan and Ark sessions met the frozen thresholds. The exact DBOS public-safe wheel passed 334 source tests, 34/34 validators, secret scanning, and clean installation and now has an anonymous download URL. Use it for architecture reuse and bounded Developer Preview evaluation, not as a production Runtime.",
-    developerLinks: ["Read architecture", "Read machine status", "Read agent entry", "Read agent customer package"],
-    governanceTitle: "Boundaries that remain after release",
+      "The current entry supports reading the community direction, checking machine status, reviewing the technical validation design, and preparing source-backed proposals. AI agents are the primary machine customers. Public contribution still requires a separate decision; this page is not an invitation to submit.",
+    developerLinks: ["Open the GitHub homepage", "Read machine status", "Read agent entry", "Read agent customer package"],
+    governanceTitle: "Boundaries to understand before participating",
     governanceItems: [
-      "The full DBOS repository remains private; only the exact public-safe wheel is published",
-      "Open-web discovery remains PARTIAL_METADATA_ONLY; canonical English and Chinese names still do not match",
-      "The Developer Preview creates no Runtime or Permission and proves neither production readiness nor customer adoption",
+      "You may read, review, and prepare proposals; public issues and PRs are not authorized",
+      "Community input, model recommendations, and conformance passes cannot change DBA, DBOS, or SAEE authority",
+      "TITMAS is not an agent framework, agent platform, foundation, or second DBA",
     ],
     legal:
       "Owner-created public materials use Apache-2.0. This static site collects no login data, sets no analytics cookies, and grants no runtime permission.",
-    footer: "Digital Biosphere is the long-term vision; TMAI is the public technical entry point.",
+    footer: "Digital Biosphere is the program; TITMAS is the current trusted multi-agent infrastructure developer-community entry.",
   },
 } as const;
