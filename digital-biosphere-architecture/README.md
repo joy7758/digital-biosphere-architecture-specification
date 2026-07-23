@@ -47,7 +47,7 @@ opentelemetry_semantic_conventions_profile_defined: true
 opentelemetry_semantic_mapping_count: 47
 opentelemetry_semantic_source_registry_count: 9
 opentelemetry_semantic_mapping_agent_review_complete: true
-opentelemetry_semantic_mapping_adopted: false
+opentelemetry_semantic_mapping_adopted: true
 production_readiness_specification_defined: true
 production_slo_targets_defined: true
 production_implementation_mapping_complete: true
@@ -442,17 +442,19 @@ Schema/Resource precedence != Trust Authority
 | [`PRODUCTION-ARCHITECTURE-BASELINE-VALIDATION-REPORT.md`](PRODUCTION-ARCHITECTURE-BASELINE-VALIDATION-REPORT.md) | `PR-G0` 本地链接、站点构建、测试、lint、非声明和范围验证 | `PASS_LOCAL_WORKTREE_NOT_REMOTE_BASELINE` |
 | [`PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`](PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md) | DBOS/SAEE 当前实现到 TMAP、OTel 与生产闸门的精确只读映射 | `PR_G1_PASS_CRITICAL_IMPLEMENTATION_GAPS_OPEN` |
 | [`PRODUCTION-IMPLEMENTATION-MAPPING-v0.1.json`](PRODUCTION-IMPLEMENTATION-MAPPING-v0.1.json) | `PR-G1` 来源、验证、能力分类、阻塞与下一决策的机器可读投影 | `AGENT_READABLE_NOT_SECOND_AUTHORITY` |
-| [`architecture/telemetry-admission-foundation-specification.md`](architecture/telemetry-admission-foundation-specification.md) | `DQ-018` exact Telemetry Admission reference-conformance 合同 | `IMPLEMENTED_EXACT_OFFLINE_SLICE_PR_G2A_REVIEW_READY` |
+| [`architecture/telemetry-admission-foundation-specification.md`](architecture/telemetry-admission-foundation-specification.md) | `DQ-018` exact Telemetry Admission reference-conformance 合同 | `IMPLEMENTED_EXACT_OFFLINE_CURRENT_SOURCE_WAITING_NATIVE_X86_64` |
 | [`architecture/telemetry-admission-threat-model.md`](architecture/telemetry-admission-threat-model.md) | 准入威胁、控制、证明与残余风险 | `INDEPENDENT_AGENT_REVIEW_COMPLETE_HUMAN_SECURITY_REVIEW_OPEN` |
 | [`architecture/telemetry-admission-conformance-recovery-plan.md`](architecture/telemetry-admission-conformance-recovery-plan.md) | 预注册符合性、恢复和回退证据 | `DQ_018_AUTHORIZED_SCOPE_EXECUTED_PASS` |
 | [`DQ-018-TELEMETRY-ADMISSION-AGENT-RECOMMENDATION.md`](DQ-018-TELEMETRY-ADMISSION-AGENT-RECOMMENDATION.md) | 两路 next-step 推荐与 current-production 不推荐的分离记录 | `COMPLETE_NOT_AUTHORIZATION` |
-| [`DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md`](DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md) / [JSON](DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.json) | exact 人工决策输入与机器可读投影 | `DECIDED_IMPLEMENTED_PR_G2A_REVIEW_READY` |
+| [`DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md`](DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.md) / [JSON](DQ-018-TELEMETRY-ADMISSION-IMPLEMENTATION-DECISION-PACKET.json) | exact 人工决策输入与机器可读投影；当前 gate 状态以驾驶舱和 current-source packet 为准 | `DECIDED_IMPLEMENTED_CURRENT_GATE_WAITING_NATIVE_X86_64` |
 | [`DBOS-PR-2A-GIT-AUTHORIZATION-RECORD.md`](DBOS-PR-2A-GIT-AUTHORIZATION-RECORD.md) / [JSON](DBOS-PR-2A-GIT-AUTHORIZATION-RECORD.json) | predecessor exact Git 回执；source `5c52c1c…`、receipt `aa6440e…`、manifest `fdda745c…`、531/531 tests 与 197/197 telemetry tests 保留历史；当前 successor 见 hardened packet | `HISTORICAL_AUTHORIZED_AND_EXECUTED_NO_PR_NO_MERGE_NO_DEPLOYMENT` |
-| [`PR-G2A-TELEMETRY-ADMISSION-HUMAN-REVIEW-PACKET.md`](PR-G2A-TELEMETRY-ADMISSION-HUMAN-REVIEW-PACKET.md) / [JSON](PR-G2A-TELEMETRY-ADMISSION-HUMAN-REVIEW-PACKET.json) | exact source、独立加固、clean clone、剩余风险、三选一 token 与批准非效果 | `READY_FOR_HUMAN_DECISION_AGENT_RECOMMENDS_APPROVE_NOT_APPROVED` |
-| [`PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.md`](PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.md) / [JSON](PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.json) | successor source `3a63161…`、receipt `bf1b3b6…`、manifest `b6c03faf…`、532/532 tests、TA-P001—P005、streaming memory hardening、精确 wheel 与剩余风险 | `READY_FOR_HUMAN_DECISION_SUCCESSOR_PACKET_REMOTE_ATTESTED_NOT_APPROVED` |
+| [`PR-G2A-TELEMETRY-ADMISSION-HUMAN-REVIEW-PACKET.md`](PR-G2A-TELEMETRY-ADMISSION-HUMAN-REVIEW-PACKET.md) / [JSON](PR-G2A-TELEMETRY-ADMISSION-HUMAN-REVIEW-PACKET.json) | predecessor source 的历史审查输入；不代表当前 source 或当前 gate | `HISTORICAL_PREDECESSOR_PACKET_NOT_CURRENT_NOT_APPROVED` |
+| [`PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.md`](PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.md) / [JSON](PR-G2A-TELEMETRY-ADMISSION-HARDENED-HUMAN-REVIEW-PACKET.json) | predecessor successor source `3a63161…` 的历史审查输入；当前 source 已后移 | `HISTORICAL_HARDENED_PACKET_NOT_CURRENT_NOT_APPROVED` |
 | [`DBA-SITE-SUPPLY-CHAIN-HARDENING-2026-07-22.md`](DBA-SITE-SUPPLY-CHAIN-HARDENING-2026-07-22.md) / [JSON](DBA-SITE-SUPPLY-CHAIN-HARDENING-2026-07-22.json) | PR-G2A packet clean clone 发现的 7 项 advisory、精确 transitive overrides 与 0-vulnerability 复验 | `PASS_SOURCE_ONLY_NOT_DEPLOYED_RECHECK_EACH_BUILD` |
-| [`PR-G2A-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.md`](PR-G2A-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.md) / [JSON](PR-G2A-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.json) | 绑定远端前驱提交 `7eea3d0…`、packet hashes、供应链 0-vulnerability 与 clean-clone 复验的非循环后继证明 | `REMOTE_ATTESTED_READY_FOR_HUMAN_DECISION_NOT_APPROVED` |
-| [`PR-G2A-HARDENED-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.md`](PR-G2A-HARDENED-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.md) / [JSON](PR-G2A-HARDENED-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.json) | 绑定 successor packet commit `07e9c49…`、packet hashes、DBOS `3a63161…` / `bf1b3b6…`、0-vulnerability 与 clean-clone 复验的非循环证明 | `HARDENED_PACKET_REMOTE_ATTESTED_READY_FOR_HUMAN_DECISION_NOT_APPROVED` |
+| [`PR-G2A-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.md`](PR-G2A-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.md) / [JSON](PR-G2A-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.json) | 绑定远端 predecessor packet 的历史非循环证明 | `HISTORICAL_PREDECESSOR_ATTESTATION_NOT_CURRENT_NOT_APPROVED` |
+| [`PR-G2A-HARDENED-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.md`](PR-G2A-HARDENED-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.md) / [JSON](PR-G2A-HARDENED-HUMAN-REVIEW-PACKET-ATTESTATION-2026-07-22.json) | 绑定 predecessor hardened packet 的历史非循环证明 | `HISTORICAL_HARDENED_ATTESTATION_NOT_CURRENT_NOT_APPROVED` |
+| [`PR-G2A-CURRENT-SOURCE-PACKET-REFRESH-SUPPLEMENT-2026-07-23.md`](PR-G2A-CURRENT-SOURCE-PACKET-REFRESH-SUPPLEMENT-2026-07-23.md) / [JSON](PR-G2A-CURRENT-SOURCE-PACKET-REFRESH-SUPPLEMENT-2026-07-23.json) | DBOS current source `23c8f08…`、receipt `b2eac11…`、534/534 tests、15-entry raw inventory 和 independent Agent review | `CURRENT_SOURCE_PACKET_REFRESHED_WAITING_NATIVE_LINUX_X86_64_NOT_READY_NOT_APPROVED` |
+| [`PR-G2A-CURRENT-SOURCE-PACKET-REFRESH-SUPPLEMENT-ATTESTATION-2026-07-23.md`](PR-G2A-CURRENT-SOURCE-PACKET-REFRESH-SUPPLEMENT-ATTESTATION-2026-07-23.md) / [JSON](PR-G2A-CURRENT-SOURCE-PACKET-REFRESH-SUPPLEMENT-ATTESTATION-2026-07-23.json) | 绑定 DBA predecessor commit `354c92d…`、current-source supplement hashes 与 clean-clone 结果的非循环证明 | `CURRENT_SOURCE_PACKET_REMOTE_ATTESTED_WAITING_NATIVE_LINUX_X86_64_NOT_READY_NOT_APPROVED` |
 | [`architecture/production-persistence-adapter-specification.md`](architecture/production-persistence-adapter-specification.md) | DBOS canonical store 的事务、幂等、HA、PITR、迁移、安全和 OTel 自观测合同 | `PROPOSED_DQ_019_BLOCKED_INPUT` |
 | [`architecture/production-persistence-candidate-due-diligence-contract.md`](architecture/production-persistence-candidate-due-diligence-contract.md) | 候选证据层、exact profile、OTel database SemConv、provider 尽调和直接演练合同 | `DEFINED_NOT_ASSESSED_NO_SELECTION` |
 | [`architecture/production-persistence-candidate-profiles.v0.1.json`](architecture/production-persistence-candidate-profiles.v0.1.json) / [Schema](architecture/schemas/production-persistence-candidate-profiles.schema.v0.1.json) | 4 个候选、12 类 gate、稳定 DB client signals、敏感字段禁用和永久零效果 | `SCHEMA_VALID_P2_DECISION_ELIGIBLE_0` |
@@ -487,7 +489,11 @@ DQ_018_IMPLEMENTATION_AUTHORIZED=true
 DQ_018_IMPLEMENTATION_MAY_START=false
 DQ_018_IMPLEMENTATION_MAY_START_REASON=ALREADY_COMPLETED_EXACT_SLICE_NO_NEW_SCOPE_AUTHORIZED
 DQ_018_IMPLEMENTATION_COMPLETE=true
-PR_G2A_READY_FOR_HUMAN_REVIEW=true
+PR_G2A_READY_FOR_HUMAN_REVIEW=false
+PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_COMPLETE=true
+PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_SUPPLEMENT_REMOTE_ATTESTED=true
+PR_G2A_CURRENT_SOURCE_PACKET_STATUS=WAITING_NATIVE_LINUX_X86_64
+PR_G2A_NATIVE_LINUX_X86_64_VALIDATED=false
 PR_G2A_PACKET_REMOTE_ATTESTED=true
 PR_G2A_PACKET_REMOTE_ATTESTED_SCOPE=PREDECESSOR_PACKET
 PR_G2A_HARDENED_PACKET_PREPARED=true
