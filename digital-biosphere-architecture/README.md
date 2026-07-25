@@ -511,6 +511,7 @@ DBOS != SAEE.
 | [`architecture/titmas-infrastructure-developer-community-strategy-v0.1.md`](architecture/titmas-infrastructure-developer-community-strategy-v0.1.md) | TITMAS 可信多智能体基础设施开发者社区的首次接触简介、OpenTelemetry 参考机制、贡献表面、成熟度、路线与防跑偏检查 |
 | [`architecture/ADR-029-titmas-infrastructure-developer-community-direction.md`](architecture/ADR-029-titmas-infrastructure-developer-community-direction.md) | 采纳基础设施开发者社区方向；不宣布社区、基金会、SIG、仓库或独立 Authority 已建立 |
 | [`architecture/ADR-030-titmas-public-front-door-and-github-slug.md`](architecture/ADR-030-titmas-public-front-door-and-github-slug.md) | 选择 `titmas.cn` 与 `titmas-cn`；只授权备案期内的源码和信息架构准备 |
+| [`architecture/ADR-032-compositional-scale-over-unbounded-center.md`](architecture/ADR-032-compositional-scale-over-unbounded-center.md) | 采纳组合式规模原则：以大量简单、受限、可组合主体形成覆盖能力，同时禁止隐式权力聚合和无限强中心 |
 | [`architecture/titmas-public-front-door-migration-plan-v0.1.md`](architecture/titmas-public-front-door-migration-plan-v0.1.md) | 网站、DNS/TLS、canonical cutover、redirect 与 GitHub 的分阶段迁移闸门 |
 | [`architecture/titmas-github-organization-information-architecture-v0.1.md`](architecture/titmas-github-organization-information-architecture-v0.1.md) | `titmas-cn` profile、仓库导航、准入、角色与创建前检查单 |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | 本地已准备、尚未对外授权的贡献者入口；区分人类、受治理智能体、Review、Decision 与 Implementation |
@@ -1253,6 +1254,7 @@ Evidence Reference ≠ Canonical Evidence Object ≠ Truth
 | [`architecture/titmas-architecture-charter-v0.1.md`](architecture/titmas-architecture-charter-v0.1.md) | TITMAS 互操作职责、非目标、组件 Owner、SAEE 核心保护、GitHub 组织候选和开发前推荐闸门 | “TITMAS 可以连接哪些生态、不能拥有或公开哪些能力，何时才能进入实现？” |
 | [`architecture/titmas-infrastructure-developer-community-strategy-v0.1.md`](architecture/titmas-infrastructure-developer-community-strategy-v0.1.md) | TITMAS Infrastructure Developer Community 的名称、首次接触说明、OpenTelemetry 参考、贡献路径、成熟度和防跑偏检查 | “第一次接触 TITMAS 时它解决什么问题，我能贡献什么，当前社区和实现真实状态是什么？” |
 | [`architecture/ADR-029-titmas-infrastructure-developer-community-direction.md`](architecture/ADR-029-titmas-infrastructure-developer-community-direction.md) | 基础设施开发者社区方向的采纳范围与非授权 | “开发者社区方向是否已采纳？它是否意味着社区、基金会、SIG 或仓库已经成立？” |
+| [`architecture/ADR-032-compositional-scale-over-unbounded-center.md`](architecture/ADR-032-compositional-scale-over-unbounded-center.md) | 组合式规模、有限治理、组合级风险和非权力聚合边界 | “为什么不建设无限强中心，简单主体如何组合而不自动获得权力或 Truth？” |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | 人类和受治理智能体的首次贡献路径、披露、审查、行为和安全边界 | “我现在可以准备什么，谁负责审查，哪些结果不能自动产生？” |
 | [`TITMAS-CONTRIBUTOR-ENTRY-v0.1.json`](TITMAS-CONTRIBUTOR-ENTRY-v0.1.json) | 机器可读名称、目的、状态、贡献表面、文档引用、限制和 false effects | “智能体如何在不猜测当前状态的情况下发现 TITMAS 贡献入口？” |
 | [`TITMAS-CONTRIBUTOR-ENTRY-PREPARATION-REPORT.md`](TITMAS-CONTRIBUTOR-ENTRY-PREPARATION-REPORT.md) | C1 文件、Schema/链接/边界验证与下一闸门 | “贡献入口准备到了什么程度，哪些权限抬升负例已被拒绝？” |

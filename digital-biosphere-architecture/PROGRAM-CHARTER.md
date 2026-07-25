@@ -4,11 +4,12 @@ title: Digital Biosphere Program Governance Charter v0.1
 title_zh: 数字生物圈项目群治理章程 v0.1
 status: accepted-owner-assigned
 decision_reference: architecture/ADR-020-release-preparation-owner-decisions.md
+strategic_amendment_reference: architecture/ADR-032-compositional-scale-over-unbounded-center.md
 program_authority_assigned: true
 program_owner_ref: zhangbin
 runtime_authority_created: false
 source_of_truth_policy: reference-only-aggregation
-last_reviewed: 2026-07-23
+last_reviewed: 2026-07-26
 ---
 
 # Digital Biosphere Program Governance Charter v0.1（数字生物圈项目群治理章程 v0.1）
@@ -59,6 +60,23 @@ TITMAS 社区方向的规范名称是 `TITMAS Infrastructure Developer Community
 Organization slug。当前 `titmas.cn` 仍在备案，`redcrag.cn` 继续作为已验证在线入口；
 GitHub Organization 未创建，仓库未迁移，公共贡献未开放。名称选择只允许准备网站源码、
 双语／智能体入口和组织信息架构，不改变任何运行或领域 Authority。
+
+## 2A. Compositional Scale Principle（组合式规模原则）
+
+Digital Biosphere 不以制造单一、无限强的中心作为扩展路线。项目群通过大量职责简单、
+边界受限、可替换的数字主体与服务，借助显式接口和可审计交互形成系统级覆盖能力。
+
+有限治理仍由 DBA、DBOS、SAEE 和 Human Decision Authority 按既有职责分别承担。
+组合不能自动产生 Authority、Permission、Decision、Truth Ownership 或全局控制，
+覆盖能力也不等于正确性或 Truth。完整决策见
+[`ADR-032`](architecture/ADR-032-compositional-scale-over-unbounded-center.md)。
+
+```text
+UNBOUNDED_CENTRAL_INTELLIGENCE_IS_NOT_TARGET=true
+COMPOSITIONAL_SCALE_IS_STRATEGIC_DEFAULT=true
+COMPOSITION_NE_AUTHORITY_AGGREGATION=true
+COVERAGE_NE_CORRECTNESS_OR_TRUTH=true
+```
 
 ## 3. DBA Program Governance Scope（DBA 项目群治理范围）
 

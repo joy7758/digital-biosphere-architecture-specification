@@ -1,6 +1,6 @@
-# Digital Biosphere Open Infrastructure Strategy Constitution v0.2
+# Digital Biosphere Open Infrastructure Strategy Constitution v0.3
 
-中文：数字生物圈开放基础设施战略宪法 v0.2
+中文：数字生物圈开放基础设施战略宪法 v0.3
 
 Status: `ADOPTED_STRATEGIC_CONSTITUTION`
 
@@ -8,8 +8,10 @@ Authority: Architecture governance and strategic interpretation only
 
 Implementation effect: `NONE`
 
-Amendment reference:
-[`ADR-029`](ADR-029-titmas-infrastructure-developer-community-direction.md)
+Amendment references:
+
+- [`ADR-029`](ADR-029-titmas-infrastructure-developer-community-direction.md)
+- [`ADR-032`](ADR-032-compositional-scale-over-unbounded-center.md)
 
 ## Constitutional Position
 
@@ -168,6 +170,39 @@ DBOS 不与 Foundation Model 在模型规模、推理能力、训练能力或 Ag
 
 DBOS 解决模型之外的可治理问题：信任边界、身份、责任、生命周期、协作、证据和验证引用。
 
+## Principle 5A: Compositional Scale, Not an Unbounded Center
+
+Digital Biosphere 不追求制造单一、无限强的中心，而通过大量职责简单、边界受限、
+接口可组合的数字主体与服务，在可审计、可追溯、可隔离、可降级的结构组合中形成
+系统级覆盖能力。
+
+```text
+many simple and bounded entities
+  + explicit contracts
+  + observable interactions
+  + fail-closed coordination
+  -> broad system coverage
+```
+
+这里的“简单”表示职责有限、边界清楚、可替换，不表示不受治理；“组合”表示通过
+显式接口协作，不表示权力聚合；“覆盖”表示结构能够处理更多场景，不表示结果必然
+正确、已经验证或成为 Truth。
+
+有限的 Architecture Governance、Operational Governance 和 Evolution Evaluation
+继续存在，但任何单体或组合都不得因规模、连接或涌现而自动获得超出显式范围的
+Authority、Permission、Decision、Truth Ownership 或全局控制权。协调组件可以存在，
+但必须边界有限、可替换、可撤销并可审计，不能演变为隐藏的无限强中心。
+
+架构和实现提案应优先选择：
+
+- 职责小、可替换、可单独验证的主体与服务；
+- 开放 Protocol、Schema、Adapter contract 和可追溯 lineage；
+- 可观察、可隔离、可降级且失败尽量局部化的交互；
+- 对组合级行为、耦合、级联失败和涌现风险的独立审查。
+
+详细决策和替代方案见
+[`ADR-032`](ADR-032-compositional-scale-over-unbounded-center.md)。
+
 ## Principle 6: Applications Grow on DBOS
 
 生态关系为：
@@ -259,6 +294,9 @@ DBOS 不得被重新定位为：
 7. 它是否有明确 Human Governance 和 Architecture Decision Record？
 8. 它是否应形成 Protocol、Schema、SDK 或 Adapter，而不是封闭平台功能？
 9. 它如何复用 OpenTelemetry 等开放标准，并保持 Telemetry、Evidence、Verification 与 Truth 分离？
+10. 它是否试图把智能、控制、数据、执行或治理集中到一个无限强中心？
+11. 它能否拆分为边界受限、可替换、可审计的简单主体与显式组合契约？
+12. 组合是否会隐式产生 Authority、Permission、Decision、Truth Ownership 或全局控制？
 
 任一关键问题无法回答时，提案保持 `REVIEW_REQUIRED`，不得进入 DBOS 核心或被宣称为已采用战略。
 
@@ -311,6 +349,13 @@ TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
 TITMAS_FOUNDATION_IN_SCOPE=false
 TELEMETRY_NE_EVIDENCE=true
 EVIDENCE_NE_TRUTH=true
+UNBOUNDED_CENTRAL_INTELLIGENCE_IS_NOT_TARGET=true
+COMPOSITIONAL_SCALE_IS_STRATEGIC_DEFAULT=true
+SIMPLE_ENTITY_NE_UNGOVERNED_ENTITY=true
+COMPOSITION_NE_AUTHORITY_AGGREGATION=true
+COORDINATION_NE_UNBOUNDED_CENTER=true
+COVERAGE_NE_CORRECTNESS_OR_TRUTH=true
+EMERGENT_CAPABILITY_NE_AUTOMATIC_PERMISSION=true
 AUTOMATIC_AUTHORITY_EFFECT=NONE
 ```
 

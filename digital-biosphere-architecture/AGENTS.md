@@ -156,7 +156,19 @@ TITMAS_MAINTAINER_ASSIGNED=false
 TITMAS_FOUNDATION_IN_SCOPE=false
 TELEMETRY_NE_EVIDENCE=true
 EVIDENCE_NE_TRUTH=true
+UNBOUNDED_CENTRAL_INTELLIGENCE_IS_NOT_TARGET=true
+COMPOSITIONAL_SCALE_IS_STRATEGIC_DEFAULT=true
+SIMPLE_ENTITY_NE_UNGOVERNED_ENTITY=true
+COMPOSITION_NE_AUTHORITY_AGGREGATION=true
+COORDINATION_NE_UNBOUNDED_CENTER=true
+COVERAGE_NE_CORRECTNESS_OR_TRUTH=true
+EMERGENT_CAPABILITY_NE_AUTOMATIC_PERMISSION=true
 ```
+
+任何智能体提出架构或实现方向时，必须优先检查能否由职责简单、边界受限、可替换的
+主体或服务通过显式契约组合完成。不得以“能力更强”作为建设无限强中心的理由，也不得
+把组合规模、连接数量或涌现行为升级为 Authority、Permission、Decision、Truth 或
+全局控制。有限治理和协调必须保留，但协调组件本身必须可审计、可撤销且边界有限。
 
 ## Architecture Truth Boundaries（架构事实边界）
 
