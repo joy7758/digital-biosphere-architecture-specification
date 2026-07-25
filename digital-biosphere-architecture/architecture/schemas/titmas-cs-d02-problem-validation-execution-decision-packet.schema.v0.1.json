@@ -1,0 +1,583 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-problem-validation-execution-decision-packet:0.1",
+  "title": "TITMAS CS-D02 VEAP Problem Validation Execution Decision Packet v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "decision_id",
+    "status",
+    "prepared_at",
+    "decision_owner_ref",
+    "question",
+    "source_references",
+    "objective",
+    "success_thresholds",
+    "options",
+    "role_readiness",
+    "data_execution_readiness",
+    "allowed_data_policy",
+    "required_before_option_a_decision",
+    "stop_conditions",
+    "standing_directive_assessment",
+    "current_facts",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-problem-validation-execution-decision-packet.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "decision_id": {
+      "const": "CS-D02"
+    },
+    "status": {
+      "const": "PACKET_PREPARED_BLOCKED_INPUT_NOT_DECISION_READY"
+    },
+    "prepared_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "decision_owner_ref": {
+      "const": "zhangbin"
+    },
+    "question": {
+      "type": "string",
+      "minLength": 80
+    },
+    "source_references": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 12
+      }
+    },
+    "objective": {
+      "const": "VALIDATE_REAL_ATTRIBUTABLE_RECENT_HIGH_PRIORITY_AGENT_EXECUTION_ACCOUNTABILITY_PROBLEMS"
+    },
+    "success_thresholds": {
+      "const": {
+        "valid_independent_problem_records_min": 5,
+        "independent_organization_or_contexts_min": 3,
+        "high_priority_records_min": 3,
+        "continue_review_interest_min": 2,
+        "thresholds_auto_pass_cs_g0": false
+      }
+    },
+    "options": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/optionA"
+        },
+        {
+          "$ref": "#/$defs/optionB"
+        },
+        {
+          "$ref": "#/$defs/optionC"
+        },
+        {
+          "$ref": "#/$defs/optionD"
+        }
+      ],
+      "items": false
+    },
+    "role_readiness": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/role"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "role_id": {
+                "const": "HUMAN_DECISION_OWNER"
+              },
+              "state": {
+                "const": "ASSIGNED_EXISTING"
+              }
+            },
+            "required": [
+              "role_id",
+              "state"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "role_id": {
+                "const": "PROBLEM_VALIDATION_OWNER"
+              },
+              "state": {
+                "const": "CANDIDATE_NOT_ACCEPTED"
+              }
+            },
+            "required": [
+              "role_id",
+              "state"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "role_id": {
+                "const": "PRIVACY_DATA_STEWARD"
+              },
+              "state": {
+                "const": "CANDIDATE_NOT_ACCEPTED"
+              }
+            },
+            "required": [
+              "role_id",
+              "state"
+            ]
+          }
+        }
+      ]
+    },
+    "data_execution_readiness": {
+      "$ref": "#/$defs/dataReadiness"
+    },
+    "allowed_data_policy": {
+      "$ref": "#/$defs/dataPolicy"
+    },
+    "required_before_option_a_decision": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 16
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 16
+      }
+    },
+    "standing_directive_assessment": {
+      "const": {
+        "directive_id": "TITMAS-CS-STANDING-001",
+        "applicable_now": false,
+        "reason": "EXACT_OWNER_REVIEWER_PARTICIPANT_DATA_BUDGET_AND_EXPIRY_PRECONDITIONS_NOT_PROVEN",
+        "may_override_explicit_false": false
+      }
+    },
+    "current_facts": {
+      "$ref": "#/$defs/currentFacts"
+    },
+    "effects": {
+      "$ref": "#/$defs/allFalseEffects"
+    }
+  },
+  "$defs": {
+    "optionBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "current_recommendation",
+        "decision_ready",
+        "reason"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 20
+        },
+        "current_recommendation": {
+          "type": "boolean"
+        },
+        "decision_ready": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 20
+        }
+      }
+    },
+    "optionA": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/optionBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "A"
+            },
+            "name": {
+              "const": "AUTHORIZE_BOUNDED_DIRECT_VALIDATION_EXECUTION"
+            },
+            "current_recommendation": {
+              "const": false
+            },
+            "decision_ready": {
+              "const": false
+            }
+          }
+        }
+      ]
+    },
+    "optionB": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/optionBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "B"
+            },
+            "name": {
+              "const": "AUTHORIZE_PUBLIC_FIRST_PARTY_REPORT_DESK_RESEARCH_ONLY"
+            },
+            "current_recommendation": {
+              "const": false
+            },
+            "decision_ready": {
+              "const": false
+            }
+          }
+        }
+      ]
+    },
+    "optionC": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/optionBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "C"
+            },
+            "name": {
+              "const": "CONTINUE_INTERNAL_PREPARATION_AND_FILL_PREREQUISITES"
+            },
+            "current_recommendation": {
+              "const": true
+            },
+            "decision_ready": {
+              "const": true
+            }
+          }
+        }
+      ]
+    },
+    "optionD": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/optionBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "D"
+            },
+            "name": {
+              "const": "DEFER_OR_STOP_PROBLEM_VALIDATION"
+            },
+            "current_recommendation": {
+              "const": false
+            },
+            "decision_ready": {
+              "const": true
+            }
+          }
+        }
+      ]
+    },
+    "role": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role_id",
+        "state",
+        "candidate_or_owner_ref"
+      ],
+      "properties": {
+        "role_id": {
+          "enum": [
+            "HUMAN_DECISION_OWNER",
+            "PROBLEM_VALIDATION_OWNER",
+            "PRIVACY_DATA_STEWARD",
+            "METHOD_REVIEWER",
+            "SECURITY_REVIEWER",
+            "CLAIM_REVIEWER"
+          ]
+        },
+        "state": {
+          "enum": [
+            "ASSIGNED_EXISTING",
+            "CANDIDATE_NOT_ACCEPTED",
+            "UNASSIGNED_REQUIRED"
+          ]
+        },
+        "candidate_or_owner_ref": {
+          "type": "string",
+          "minLength": 4
+        }
+      }
+    },
+    "dataReadiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "participant_source",
+        "validation_channel",
+        "storage_reference",
+        "access_control_evidence",
+        "retention_days",
+        "withdrawal_path_reference",
+        "deletion_path_reference",
+        "incident_route_reference",
+        "max_problem_records",
+        "budget_currency",
+        "budget_cap",
+        "starts_at",
+        "expires_at",
+        "required_roles_ready",
+        "data_handling_ready",
+        "execution_scope_ready"
+      ],
+      "properties": {
+        "participant_source": {
+          "const": "NOT_SELECTED"
+        },
+        "validation_channel": {
+          "const": "NOT_SELECTED"
+        },
+        "storage_reference": {
+          "const": "NOT_SELECTED"
+        },
+        "access_control_evidence": {
+          "const": "NOT_AVAILABLE"
+        },
+        "retention_days": {
+          "type": "null"
+        },
+        "withdrawal_path_reference": {
+          "const": "REQUIRED_NOT_CREATED"
+        },
+        "deletion_path_reference": {
+          "const": "REQUIRED_NOT_CREATED"
+        },
+        "incident_route_reference": {
+          "const": "REQUIRED_NOT_ASSIGNED"
+        },
+        "max_problem_records": {
+          "type": "null"
+        },
+        "budget_currency": {
+          "const": "NOT_DECIDED"
+        },
+        "budget_cap": {
+          "type": "null"
+        },
+        "starts_at": {
+          "type": "null"
+        },
+        "expires_at": {
+          "type": "null"
+        },
+        "required_roles_ready": {
+          "const": false
+        },
+        "data_handling_ready": {
+          "const": false
+        },
+        "execution_scope_ready": {
+          "const": false
+        }
+      }
+    },
+    "dataPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "purpose",
+        "collection_mode",
+        "raw_transcript_authorized",
+        "direct_identifier_collection_authorized",
+        "secret_or_credential_processing_authorized",
+        "regulated_data_processing_authorized",
+        "public_output"
+      ],
+      "properties": {
+        "purpose": {
+          "const": "VEAP_PROBLEM_VALIDATION_ONLY"
+        },
+        "collection_mode": {
+          "const": "STRUCTURED_FIELDS_AND_PUBLIC_SAFE_PARAPHRASE"
+        },
+        "raw_transcript_authorized": {
+          "const": false
+        },
+        "direct_identifier_collection_authorized": {
+          "const": false
+        },
+        "secret_or_credential_processing_authorized": {
+          "const": false
+        },
+        "regulated_data_processing_authorized": {
+          "const": false
+        },
+        "public_output": {
+          "const": "AGGREGATED_COUNTS_AND_PUBLIC_SAFE_PARAPHRASE_ONLY"
+        }
+      }
+    },
+    "currentFacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packet_prepared",
+        "decision_ready",
+        "decision_recorded",
+        "current_recommended_option",
+        "validation_execution_authorized",
+        "external_outreach_authorized",
+        "participant_enrollment_authorized",
+        "network_processing_authorized",
+        "data_collection_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "cs_g1_pass"
+      ],
+      "properties": {
+        "packet_prepared": {
+          "const": true
+        },
+        "decision_ready": {
+          "const": false
+        },
+        "decision_recorded": {
+          "const": false
+        },
+        "current_recommended_option": {
+          "const": "C"
+        },
+        "validation_execution_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "participant_enrollment_authorized": {
+          "const": false
+        },
+        "network_processing_authorized": {
+          "const": false
+        },
+        "data_collection_authorized": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "cs_g1_pass": {
+          "const": false
+        }
+      }
+    },
+    "allFalseEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "ownership",
+        "implementation",
+        "runtime",
+        "agent",
+        "entity",
+        "permission",
+        "evidence_truth",
+        "external_action",
+        "customer",
+        "commercial_offer",
+        "certification",
+        "release"
+      ],
+      "properties": {
+        "authority": {
+          "const": false
+        },
+        "ownership": {
+          "const": false
+        },
+        "implementation": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "evidence_truth": {
+          "const": false
+        },
+        "external_action": {
+          "const": false
+        },
+        "customer": {
+          "const": false
+        },
+        "commercial_offer": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "release": {
+          "const": false
+        }
+      }
+    }
+  }
+}

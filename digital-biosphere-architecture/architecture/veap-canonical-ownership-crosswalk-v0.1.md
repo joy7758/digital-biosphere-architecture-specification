@@ -3,11 +3,11 @@ document_id: DBA-TITMAS-VEAP-CANONICAL-OWNERSHIP-CROSSWALK-0.1
 title: VEAP Canonical Ownership Crosswalk v0.1
 title_zh: VEAP 规范权属交叉表 v0.1
 version: 0.1.0
-status: predecision-candidate-ownership-not-frozen
+status: bounded-internal-crosswalk-authorized-ownership-not-frozen
 maturity: Development
 maturity_scope: entire-document
 owner_ref: NOT_ASSIGNED
-decision_reference: CS-D01_NOT_DECIDED
+decision_reference: CS-D01
 supersedes: NONE
 superseded_by: NONE
 compatibility_statement: "Pre-decision ownership review only; no normative, implementation, conformance, certification, commercial, or production compatibility claim."
@@ -39,7 +39,8 @@ authority_effect: none
 VEAP_CANONICAL_OWNERSHIP_CROSSWALK_DEFINED=true
 VEAP_OWNERSHIP_FROZEN=false
 VEAP_SPECIFICATION_AUTHORITY_ASSIGNED=false
-CS_D01_DECIDED=false
+CS_D01_DECIDED=true
+BOUNDED_INTERNAL_CROSSWALK_AUTHORIZED=true
 ```
 
 VEAP 只能成为一个 future bounded exchange/profile specification candidate（未来有界交换
@@ -116,8 +117,9 @@ verifier result 和 SAEE evaluation 必须带 exact source/version/issuer/limita
 
 ## 4. VEAP-Owned Candidate Surface（VEAP 可拥有的候选表面）
 
-只有 Human Decision 接受 `CS-D01`、`AF-D15` 和 `AF-D16` 的 exact scope 后，VEAP 才可能
-进入以下 bounded Specification candidate：
+`CS-D01` 已接受有界内部 crosswalk 工作；只有 `AF-D15`、`AF-D16`、对应 Domain Owner
+acceptance 和后继 exact scope decision 完成后，VEAP 才可能进入以下 bounded
+Specification candidate：
 
 ```text
 VEAP_PROFILE_CANDIDATE_SCOPE=
@@ -182,23 +184,23 @@ COMMERCIAL_IMPLEMENTATION_WINS=false
 
 | Decision | Required resolution | Why it blocks |
 |---|---|---|
-| `CS-D01` | 接受/退回/拒绝 bounded problem-and-scope freeze | 当前连范围冻结都未获准 |
 | `AF-D04` / `AF-D14` | EEOAP canonical document/version/issuer/claim vocabulary | VEAP 不能引用模糊 EEOAP Authority |
 | `AF-D13` | SAEE public read-only contract | 防止 VEAP 伪造 Fitness 或越过 DBOS |
 | `AF-D15` | TITMAS bounded Specification Authority | 确认谁能维护 VEAP profile |
 | `AF-D16` | object ownership crosswalk | 禁止同名第二 canonical object |
 | `DQ-003` | DBOS project-local source/status boundary | source/status/release/runtime truth 需分离 |
 
-## 8. Pre-decision Recommendation（决定前建议）
+## 8. Current Recommendation（当前建议）
 
 ```text
 AGENT_RECOMMENDATION=CONDITIONALLY_RECOMMENDED
-RECOMMENDED_AS=PREDECISION_OWNER_BOUNDARY_REVIEW_INPUT
+RECOMMENDED_AS=AUTHORIZED_INTERNAL_OWNER_BOUNDARY_REVIEW_INPUT
 NOT_RECOMMENDED_AS=FROZEN_OWNER_ASSIGNMENT_OR_NORMATIVE_PROFILE
 ```
 
 当前交叉表已经足以说明 VEAP 可拥有的最小候选表面和不可拥有的对象，但不足以授权规范
-起草。下一步应由 Human Owner 决定 `CS-D01`，并由对应 Domain Owner 接受或修订自己的行。
+起草。下一步应由对应 Domain Owner 接受或修订自己的行，并准备 Owner/Reviewer
+assignment candidate；不得把 `CS-D01` 的内部工作授权写成 ownership freeze。
 
 ## 9. Final State（最终状态）
 
@@ -209,7 +211,8 @@ VEAP_OWNERSHIP_FROZEN=false
 VEAP_SPECIFICATION_AUTHORITY_ASSIGNED=false
 VEAP_DOMAIN_OWNER_ACCEPTANCES=0
 
-CS_D01_DECIDED=false
+CS_D01_DECIDED=true
+BOUNDED_INTERNAL_CROSSWALK_AUTHORIZED=true
 AF_D15_DECIDED=false
 AF_D16_DECIDED=false
 EEOAP_CANONICAL_VERSION_OWNER_FROZEN=false

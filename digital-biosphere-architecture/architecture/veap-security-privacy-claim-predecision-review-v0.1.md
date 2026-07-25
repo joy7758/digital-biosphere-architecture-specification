@@ -3,12 +3,12 @@ document_id: DBA-TITMAS-VEAP-SECURITY-PRIVACY-CLAIM-PREDECISION-REVIEW-0.1
 title: VEAP Security, Privacy and Claim Pre-decision Review v0.1
 title_zh: VEAP 安全、隐私与声明决定前审查 v0.1
 version: 0.1.0
-status: review-input-prepared-formal-review-not-complete
+status: bounded-internal-review-input-authorized-formal-review-not-complete
 maturity: Development
 maturity_scope: entire-document
 owner_ref: NOT_ASSIGNED
 reviewer_ref: NOT_ASSIGNED
-decision_reference: CS-D01_NOT_DECIDED
+decision_reference: CS-D01
 supersedes: NONE
 superseded_by: NONE
 compatibility_statement: "AI-assisted pre-decision risk review input only; no formal security/privacy review, implementation, certification, compliance, production safety, commercial availability, or customer compatibility claim."
@@ -58,6 +58,7 @@ Data Protection review、legal opinion、Certification 或生产安全证明。
 - [VEAP Pre-decision Conformance Design](veap-predecision-conformance-design-v0.1.md)；
 - [VEAP Problem Validation Protocol](veap-problem-validation-protocol-v0.1.md)；
 - [Commercialization Standards Roadmap](titmas-commercialization-standards-roadmap-v0.1.md)。
+- [CS-D01 Human Decision Record](../TITMAS-CS-D01-HUMAN-DECISION-RECORD.md)。
 
 这些来源只提供当前边界和审查输入；它们不证明 control 已实现或风险已关闭。
 
@@ -252,7 +253,8 @@ FORMAL_CLAIM_REVIEW_COMPLETE=false
 OPEN_RISKS=16
 CLOSED_RISKS=0
 
-CS_D01_HUMAN_DECISION_RECORDED=false
+CS_D01_HUMAN_DECISION_RECORDED=true
+BOUNDED_INTERNAL_RISK_REVIEW_INPUT_AUTHORIZED=true
 CS_G1_SCOPE_AUTHORITY_FREEZE_PASS=false
 NORMATIVE_PROFILE_AUTHORIZED=false
 IMPLEMENTATION_AUTHORIZED=false

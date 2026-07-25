@@ -38,7 +38,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "BOUNDED_INTERNAL_SCOPE_AUTHORIZED_STANDARD_NOT_READY"
+      "const": "CS_D02_PACKET_PREPARED_BLOCKED_INPUT_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -567,7 +567,12 @@
       "required": [
         "id",
         "question",
-        "status"
+        "status",
+        "packet_reference",
+        "governance_contract_reference",
+        "current_recommended_option",
+        "decision_ready",
+        "external_execution_authorized"
       ],
       "properties": {
         "id": {
@@ -578,7 +583,22 @@
           "minLength": 20
         },
         "status": {
-          "const": "NOT_READY_MISSING_OWNER_REVIEWER_AND_DATA_CONTROLS"
+          "const": "PACKET_PREPARED_BLOCKED_INPUT_NOT_DECISION_READY"
+        },
+        "packet_reference": {
+          "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
+        },
+        "governance_contract_reference": {
+          "const": "architecture/veap-problem-validation-governance-contract.v0.1.json"
+        },
+        "current_recommended_option": {
+          "const": "C"
+        },
+        "decision_ready": {
+          "const": false
+        },
+        "external_execution_authorized": {
+          "const": false
         }
       }
     },

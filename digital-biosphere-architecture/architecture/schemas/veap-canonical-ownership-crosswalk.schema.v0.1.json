@@ -29,14 +29,14 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "PREDECISION_CANDIDATE_OWNERSHIP_NOT_FROZEN"
+      "const": "BOUNDED_INTERNAL_CROSSWALK_AUTHORIZED_OWNERSHIP_NOT_FROZEN"
     },
     "observed_at": {
       "type": "string",
       "format": "date"
     },
     "decision_reference": {
-      "const": "CS-D01_NOT_DECIDED"
+      "const": "CS-D01"
     },
     "canonical_document": {
       "const": "veap-canonical-ownership-crosswalk-v0.1.md"
@@ -55,14 +55,11 @@
     },
     "unresolved_decisions": {
       "type": "array",
-      "minItems": 8,
+      "minItems": 7,
       "uniqueItems": true,
       "items": {
         "type": "string",
         "minLength": 4
-      },
-      "contains": {
-        "const": "CS-D01"
       }
     },
     "current_facts": {

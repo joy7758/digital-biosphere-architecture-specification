@@ -3,11 +3,11 @@ document_id: DBA-TITMAS-VEAP-PROBLEM-VALIDATION-PROTOCOL-0.1
 title: VEAP Problem Validation Protocol v0.1
 title_zh: VEAP 问题验证协议 v0.1
 version: 0.1.0
-status: protocol-defined-execution-not-authorized
+status: bounded-internal-preparation-authorized-execution-not-authorized
 maturity: Development
 maturity_scope: entire-document
 owner_ref: NOT_ASSIGNED
-decision_reference: CS-D01_NOT_DECIDED
+decision_reference: CS-D01
 supersedes: NONE
 superseded_by: NONE
 compatibility_statement: "Pre-decision validation protocol only; no outreach, participant enrollment, market validation, product, implementation, commercial availability, or customer compatibility claim."
@@ -19,6 +19,7 @@ architecture_domain: TITMAS
 primary_repository: digital-biosphere-architecture
 defined_at: 2026-07-25
 protocol_defined: true
+bounded_internal_preparation_authorized: true
 validation_execution_authorized: false
 external_outreach_authorized: false
 valid_problem_records: 0
@@ -35,6 +36,8 @@ authority_effect: none
 
 ```text
 VEAP_PROBLEM_VALIDATION_PROTOCOL_DEFINED=true
+CS_D01_DECIDED=true
+VEAP_BOUNDED_INTERNAL_PREPARATION_AUTHORIZED=true
 VEAP_PROBLEM_VALIDATION_EXECUTION_AUTHORIZED=false
 VEAP_EXTERNAL_OUTREACH_AUTHORIZED=false
 VEAP_VALID_PROBLEM_RECORDS=0
@@ -56,6 +59,7 @@ CS_G0_PROBLEM_FREEZE_PASS=false
 - [CS-D01 Agent Customer Review](../TITMAS-CS-D01-AGENT-CUSTOMER-REVIEW.md)；
 - [VEAP Canonical Ownership Crosswalk](veap-canonical-ownership-crosswalk-v0.1.md)；
 - [VEAP Pre-decision Conformance Design](veap-predecision-conformance-design-v0.1.md)。
+- [CS-D01 Human Decision Record](../TITMAS-CS-D01-HUMAN-DECISION-RECORD.md)。
 
 本协议细化这些来源，不改变其 Authority、状态或执行授权。
 
@@ -220,6 +224,9 @@ COMMERCIALIZATION_STANDARD_READY=false
 
 ## 8. Privacy and Data Handling（隐私与数据处理）
 
+角色、渠道、数据类别、生命周期和失败关闭输入见
+[VEAP Problem Validation Governance Contract](veap-problem-validation-governance-contract-v0.1.md)。
+
 执行前必须另行建立：
 
 - validation Owner、Reviewer 和 Data Steward；
@@ -249,7 +256,7 @@ COMMERCIALIZATION_STANDARD_READY=false
 
 ## 10. Authorization Boundary（授权边界）
 
-当前允许：
+`CS-D01` 当前允许：
 
 - 内部协议审查；
 - synthetic empty ledger / record example 设计；
@@ -271,6 +278,8 @@ COMMERCIALIZATION_STANDARD_READY=false
 ```text
 VEAP_PROBLEM_VALIDATION_PROTOCOL_DEFINED=true
 VEAP_PROBLEM_VALIDATION_CONTRACT_CREATED=true
+CS_D01_DECIDED=true
+VEAP_BOUNDED_INTERNAL_PREPARATION_AUTHORIZED=true
 VEAP_PROBLEM_VALIDATION_EXECUTION_AUTHORIZED=false
 VEAP_EXTERNAL_OUTREACH_AUTHORIZED=false
 

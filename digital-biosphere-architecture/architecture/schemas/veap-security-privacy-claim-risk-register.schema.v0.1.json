@@ -34,14 +34,14 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "PREDECISION_REVIEW_INPUT_FORMAL_REVIEW_NOT_COMPLETE"
+      "const": "BOUNDED_INTERNAL_REVIEW_INPUT_AUTHORIZED_FORMAL_REVIEW_NOT_COMPLETE"
     },
     "review_input_prepared_at": {
       "type": "string",
       "format": "date"
     },
     "decision_reference": {
-      "const": "CS-D01_NOT_DECIDED"
+      "const": "CS-D01"
     },
     "canonical_document": {
       "const": "veap-security-privacy-claim-predecision-review-v0.1.md"
@@ -231,13 +231,13 @@
       ],
       "properties": {
         "cs_d01_effect": {
-          "const": false
+          "const": true
         },
         "cs_g1_effect": {
           "const": false
         },
         "human_decision_effect": {
-          "const": false
+          "const": true
         },
         "formal_review_effect": {
           "const": false

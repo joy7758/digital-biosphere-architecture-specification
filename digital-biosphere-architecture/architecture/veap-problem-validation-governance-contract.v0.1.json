@@ -1,0 +1,166 @@
+{
+  "$schema": "./schemas/veap-problem-validation-governance-contract.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-VEAP-PROBLEM-VALIDATION-GOVERNANCE-CONTRACT-0.1",
+  "version": "0.1.0",
+  "status": "CONTRACT_DEFINED_ROLES_UNASSIGNED_EXECUTION_NOT_AUTHORIZED",
+  "defined_at": "2026-07-25",
+  "decision_reference": "CS-D01",
+  "canonical_document": "veap-problem-validation-governance-contract-v0.1.md",
+  "source_references": [
+    "veap-problem-validation-protocol-v0.1.md",
+    "veap-security-privacy-claim-predecision-review-v0.1.md",
+    "../TITMAS-CS-D01-HUMAN-DECISION-RECORD.v0.1.json"
+  ],
+  "role_slots": [
+    {
+      "role_id": "HUMAN_DECISION_OWNER",
+      "state": "ASSIGNED_EXISTING",
+      "candidate_or_owner_ref": "zhangbin",
+      "acceptance_reference": "../PROGRAM-CHARTER.md",
+      "required_before_execution": true,
+      "creates_operational_authority": false
+    },
+    {
+      "role_id": "PROBLEM_VALIDATION_OWNER",
+      "state": "CANDIDATE_NOT_ACCEPTED",
+      "candidate_or_owner_ref": "zhangbin",
+      "acceptance_reference": "NOT_RECORDED",
+      "required_before_execution": true,
+      "creates_operational_authority": false
+    },
+    {
+      "role_id": "PRIVACY_DATA_STEWARD",
+      "state": "CANDIDATE_NOT_ACCEPTED",
+      "candidate_or_owner_ref": "zhangbin",
+      "acceptance_reference": "NOT_RECORDED",
+      "required_before_execution": true,
+      "creates_operational_authority": false
+    },
+    {
+      "role_id": "METHOD_REVIEWER",
+      "state": "UNASSIGNED_REQUIRED",
+      "candidate_or_owner_ref": "NONE",
+      "acceptance_reference": "NOT_RECORDED",
+      "required_before_execution": true,
+      "creates_operational_authority": false
+    },
+    {
+      "role_id": "SECURITY_REVIEWER",
+      "state": "UNASSIGNED_REQUIRED",
+      "candidate_or_owner_ref": "NONE",
+      "acceptance_reference": "NOT_RECORDED",
+      "required_before_execution": true,
+      "creates_operational_authority": false
+    },
+    {
+      "role_id": "CLAIM_REVIEWER",
+      "state": "UNASSIGNED_REQUIRED",
+      "candidate_or_owner_ref": "NONE",
+      "acceptance_reference": "NOT_RECORDED",
+      "required_before_execution": true,
+      "creates_operational_authority": false
+    }
+  ],
+  "separation_rules": [
+    "RECORD_CREATOR_CANNOT_SOLELY_MARK_OWN_RECORD_VALID",
+    "ROLE_CONFLICTS_MUST_BE_DISCLOSED",
+    "METHOD_OR_CLAIM_REVIEW_INPUT_MUST_BE_EXTERNAL_TO_RECORD_CREATOR",
+    "GOVERNED_AGENT_MAY_ADVISE_BUT_CANNOT_CLOSE_GATE_OR_SELF_APPROVE"
+  ],
+  "validation_channels": [
+    {
+      "channel_id": "DIRECT_RESPONSIBILITY_OWNER_INTERVIEW",
+      "status": "NOT_AUTHORIZED",
+      "cs_g0_counting_eligibility": "ELIGIBLE_ONLY_IF_FULL_CONTRACT_PASSES"
+    },
+    {
+      "channel_id": "PUBLIC_FIRST_PARTY_PROBLEM_REPORT_REVIEW",
+      "status": "DESIGN_ONLY_NOT_AUTHORIZED",
+      "cs_g0_counting_eligibility": "NOT_ELIGIBLE_UNTIL_METHOD_AMENDMENT_AND_REVIEW"
+    },
+    {
+      "channel_id": "GOVERNED_AGENT_ADVISORY_SESSION",
+      "status": "INTERNAL_ADVISORY_ALLOWED",
+      "cs_g0_counting_eligibility": "NOT_ELIGIBLE_WITHOUT_REAL_INDEPENDENT_CONTEXT_AND_HUMAN_ACCOUNTABILITY"
+    }
+  ],
+  "data_policy_candidate": {
+    "purpose": "VEAP_PROBLEM_VALIDATION_ONLY",
+    "collection_mode": "STRUCTURED_FIELDS_AND_PUBLIC_SAFE_PARAPHRASE",
+    "raw_transcript_capture_allowed": false,
+    "direct_identifier_collection_allowed": false,
+    "secret_or_credential_collection_allowed": false,
+    "regulated_data_collection_allowed": false,
+    "default_public_output": "AGGREGATED_COUNTS_AND_PUBLIC_SAFE_PARAPHRASE_ONLY",
+    "private_record_access": "ASSIGNED_OWNER_DATA_STEWARD_AND_REVIEWER_ONLY",
+    "storage_location": "NOT_SELECTED",
+    "access_control_evidence": "NOT_AVAILABLE",
+    "retention_period": "NOT_DECIDED",
+    "withdrawal_path": "REQUIRED_NOT_CREATED",
+    "deletion_path": "REQUIRED_NOT_CREATED",
+    "incident_route": "REQUIRED_NOT_ASSIGNED"
+  },
+  "record_lifecycle": [
+    "DRAFT",
+    "SOURCE_AND_CONSENT_CHECK",
+    "PRIVACY_AND_PROHIBITED_DATA_CHECK",
+    "INDEPENDENCE_AND_METHOD_REVIEW",
+    "VALID_OR_PARTIAL_OR_INVALID",
+    "COUNTED_OR_NOT_COUNTED",
+    "WITHDRAWN_OR_RETAINED_UNDER_APPROVED_POLICY"
+  ],
+  "stop_conditions": [
+    "REQUIRED_ROLE_NOT_ACCEPTED",
+    "STORAGE_RETENTION_WITHDRAWAL_DELETION_OR_INCIDENT_ROUTE_NOT_APPROVED",
+    "CONSENT_OR_SOURCE_BASIS_MISSING",
+    "INDEPENDENCE_NOT_PROVEN",
+    "PROHIBITED_DATA_PRESENT",
+    "OBSERVER_WITHDRAWN",
+    "NEGATIVE_FEEDBACK_ELEVATED_TO_TESTIMONIAL",
+    "AGENT_SESSION_ELEVATED_TO_INDEPENDENT_ORGANIZATION",
+    "RECORD_OR_THRESHOLD_ELEVATED_TO_GATE_PASS"
+  ],
+  "decision_readiness": {
+    "cs_d02_packet_may_be_prepared": true,
+    "cs_d02_decision_ready": false,
+    "missing_inputs": [
+      "ACCEPTED_PROBLEM_VALIDATION_OWNER",
+      "ACCEPTED_PRIVACY_DATA_STEWARD",
+      "METHOD_AND_CLAIM_REVIEWERS",
+      "EXACT_PARTICIPANT_SOURCE_AND_CHANNEL",
+      "STORAGE_ACCESS_RETENTION_WITHDRAWAL_DELETION_AND_INCIDENT_ROUTE",
+      "EXACT_OUTREACH_NETWORK_DATA_BUDGET_SCOPE",
+      "STOP_ROLLBACK_AND_BREACH_HANDLING",
+      "DECISION_EXPIRY_AND_REVOCATION"
+    ]
+  },
+  "current_facts": {
+    "contract_defined": true,
+    "roles_assigned": false,
+    "data_handling_approved": false,
+    "validation_execution_authorized": false,
+    "external_outreach_authorized": false,
+    "participant_enrollment_authorized": false,
+    "network_processing_authorized": false,
+    "data_collection_authorized": false,
+    "public_claim_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "cs_g1_pass": false
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "evidence_truth": false,
+    "external_action": false,
+    "customer": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false
+  }
+}

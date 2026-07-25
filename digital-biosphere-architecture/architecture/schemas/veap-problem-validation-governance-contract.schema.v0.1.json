@@ -1,0 +1,561 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:veap-problem-validation-governance-contract:0.1",
+  "title": "VEAP Problem Validation Governance Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "defined_at",
+    "decision_reference",
+    "canonical_document",
+    "source_references",
+    "role_slots",
+    "separation_rules",
+    "validation_channels",
+    "data_policy_candidate",
+    "record_lifecycle",
+    "stop_conditions",
+    "decision_readiness",
+    "current_facts",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/veap-problem-validation-governance-contract.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-VEAP-PROBLEM-VALIDATION-GOVERNANCE-CONTRACT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "CONTRACT_DEFINED_ROLES_UNASSIGNED_EXECUTION_NOT_AUTHORIZED"
+    },
+    "defined_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "decision_reference": {
+      "const": "CS-D01"
+    },
+    "canonical_document": {
+      "const": "veap-problem-validation-governance-contract-v0.1.md"
+    },
+    "source_references": {
+      "const": [
+        "veap-problem-validation-protocol-v0.1.md",
+        "veap-security-privacy-claim-predecision-review-v0.1.md",
+        "../TITMAS-CS-D01-HUMAN-DECISION-RECORD.v0.1.json"
+      ]
+    },
+    "role_slots": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/roleSlot"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "role_id": {
+                "const": "HUMAN_DECISION_OWNER"
+              },
+              "state": {
+                "const": "ASSIGNED_EXISTING"
+              }
+            },
+            "required": [
+              "role_id",
+              "state"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "role_id": {
+                "const": "PROBLEM_VALIDATION_OWNER"
+              },
+              "state": {
+                "const": "CANDIDATE_NOT_ACCEPTED"
+              }
+            },
+            "required": [
+              "role_id",
+              "state"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "role_id": {
+                "const": "PRIVACY_DATA_STEWARD"
+              },
+              "state": {
+                "const": "CANDIDATE_NOT_ACCEPTED"
+              }
+            },
+            "required": [
+              "role_id",
+              "state"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "role_id": {
+                "const": "METHOD_REVIEWER"
+              },
+              "state": {
+                "const": "UNASSIGNED_REQUIRED"
+              }
+            },
+            "required": [
+              "role_id",
+              "state"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "role_id": {
+                "const": "SECURITY_REVIEWER"
+              },
+              "state": {
+                "const": "UNASSIGNED_REQUIRED"
+              }
+            },
+            "required": [
+              "role_id",
+              "state"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "role_id": {
+                "const": "CLAIM_REVIEWER"
+              },
+              "state": {
+                "const": "UNASSIGNED_REQUIRED"
+              }
+            },
+            "required": [
+              "role_id",
+              "state"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    },
+    "separation_rules": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 20
+      }
+    },
+    "validation_channels": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/channel"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "channel_id": {
+                "const": "DIRECT_RESPONSIBILITY_OWNER_INTERVIEW"
+              },
+              "status": {
+                "const": "NOT_AUTHORIZED"
+              }
+            },
+            "required": [
+              "channel_id",
+              "status"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "channel_id": {
+                "const": "PUBLIC_FIRST_PARTY_PROBLEM_REPORT_REVIEW"
+              },
+              "status": {
+                "const": "DESIGN_ONLY_NOT_AUTHORIZED"
+              }
+            },
+            "required": [
+              "channel_id",
+              "status"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "channel_id": {
+                "const": "GOVERNED_AGENT_ADVISORY_SESSION"
+              },
+              "status": {
+                "const": "INTERNAL_ADVISORY_ALLOWED"
+              }
+            },
+            "required": [
+              "channel_id",
+              "status"
+            ]
+          }
+        }
+      ]
+    },
+    "data_policy_candidate": {
+      "$ref": "#/$defs/dataPolicy"
+    },
+    "record_lifecycle": {
+      "const": [
+        "DRAFT",
+        "SOURCE_AND_CONSENT_CHECK",
+        "PRIVACY_AND_PROHIBITED_DATA_CHECK",
+        "INDEPENDENCE_AND_METHOD_REVIEW",
+        "VALID_OR_PARTIAL_OR_INVALID",
+        "COUNTED_OR_NOT_COUNTED",
+        "WITHDRAWN_OR_RETAINED_UNDER_APPROVED_POLICY"
+      ]
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 16
+      }
+    },
+    "decision_readiness": {
+      "$ref": "#/$defs/decisionReadiness"
+    },
+    "current_facts": {
+      "$ref": "#/$defs/currentFacts"
+    },
+    "effects": {
+      "$ref": "#/$defs/allFalseEffects"
+    }
+  },
+  "$defs": {
+    "roleSlot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role_id",
+        "state",
+        "candidate_or_owner_ref",
+        "acceptance_reference",
+        "required_before_execution",
+        "creates_operational_authority"
+      ],
+      "properties": {
+        "role_id": {
+          "enum": [
+            "HUMAN_DECISION_OWNER",
+            "PROBLEM_VALIDATION_OWNER",
+            "PRIVACY_DATA_STEWARD",
+            "METHOD_REVIEWER",
+            "SECURITY_REVIEWER",
+            "CLAIM_REVIEWER"
+          ]
+        },
+        "state": {
+          "enum": [
+            "ASSIGNED_EXISTING",
+            "CANDIDATE_NOT_ACCEPTED",
+            "UNASSIGNED_REQUIRED"
+          ]
+        },
+        "candidate_or_owner_ref": {
+          "type": "string",
+          "minLength": 4
+        },
+        "acceptance_reference": {
+          "type": "string",
+          "minLength": 4
+        },
+        "required_before_execution": {
+          "const": true
+        },
+        "creates_operational_authority": {
+          "const": false
+        }
+      }
+    },
+    "channel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "channel_id",
+        "status",
+        "cs_g0_counting_eligibility"
+      ],
+      "properties": {
+        "channel_id": {
+          "enum": [
+            "DIRECT_RESPONSIBILITY_OWNER_INTERVIEW",
+            "PUBLIC_FIRST_PARTY_PROBLEM_REPORT_REVIEW",
+            "GOVERNED_AGENT_ADVISORY_SESSION"
+          ]
+        },
+        "status": {
+          "enum": [
+            "NOT_AUTHORIZED",
+            "DESIGN_ONLY_NOT_AUTHORIZED",
+            "INTERNAL_ADVISORY_ALLOWED"
+          ]
+        },
+        "cs_g0_counting_eligibility": {
+          "type": "string",
+          "minLength": 20
+        }
+      }
+    },
+    "dataPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "purpose",
+        "collection_mode",
+        "raw_transcript_capture_allowed",
+        "direct_identifier_collection_allowed",
+        "secret_or_credential_collection_allowed",
+        "regulated_data_collection_allowed",
+        "default_public_output",
+        "private_record_access",
+        "storage_location",
+        "access_control_evidence",
+        "retention_period",
+        "withdrawal_path",
+        "deletion_path",
+        "incident_route"
+      ],
+      "properties": {
+        "purpose": {
+          "const": "VEAP_PROBLEM_VALIDATION_ONLY"
+        },
+        "collection_mode": {
+          "const": "STRUCTURED_FIELDS_AND_PUBLIC_SAFE_PARAPHRASE"
+        },
+        "raw_transcript_capture_allowed": {
+          "const": false
+        },
+        "direct_identifier_collection_allowed": {
+          "const": false
+        },
+        "secret_or_credential_collection_allowed": {
+          "const": false
+        },
+        "regulated_data_collection_allowed": {
+          "const": false
+        },
+        "default_public_output": {
+          "const": "AGGREGATED_COUNTS_AND_PUBLIC_SAFE_PARAPHRASE_ONLY"
+        },
+        "private_record_access": {
+          "const": "ASSIGNED_OWNER_DATA_STEWARD_AND_REVIEWER_ONLY"
+        },
+        "storage_location": {
+          "const": "NOT_SELECTED"
+        },
+        "access_control_evidence": {
+          "const": "NOT_AVAILABLE"
+        },
+        "retention_period": {
+          "const": "NOT_DECIDED"
+        },
+        "withdrawal_path": {
+          "const": "REQUIRED_NOT_CREATED"
+        },
+        "deletion_path": {
+          "const": "REQUIRED_NOT_CREATED"
+        },
+        "incident_route": {
+          "const": "REQUIRED_NOT_ASSIGNED"
+        }
+      }
+    },
+    "decisionReadiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cs_d02_packet_may_be_prepared",
+        "cs_d02_decision_ready",
+        "missing_inputs"
+      ],
+      "properties": {
+        "cs_d02_packet_may_be_prepared": {
+          "const": true
+        },
+        "cs_d02_decision_ready": {
+          "const": false
+        },
+        "missing_inputs": {
+          "type": "array",
+          "minItems": 8,
+          "maxItems": 8,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 16
+          }
+        }
+      }
+    },
+    "currentFacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_defined",
+        "roles_assigned",
+        "data_handling_approved",
+        "validation_execution_authorized",
+        "external_outreach_authorized",
+        "participant_enrollment_authorized",
+        "network_processing_authorized",
+        "data_collection_authorized",
+        "public_claim_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "cs_g1_pass"
+      ],
+      "properties": {
+        "contract_defined": {
+          "const": true
+        },
+        "roles_assigned": {
+          "const": false
+        },
+        "data_handling_approved": {
+          "const": false
+        },
+        "validation_execution_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "participant_enrollment_authorized": {
+          "const": false
+        },
+        "network_processing_authorized": {
+          "const": false
+        },
+        "data_collection_authorized": {
+          "const": false
+        },
+        "public_claim_authorized": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "cs_g1_pass": {
+          "const": false
+        }
+      }
+    },
+    "allFalseEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "ownership",
+        "implementation",
+        "runtime",
+        "agent",
+        "entity",
+        "permission",
+        "evidence_truth",
+        "external_action",
+        "customer",
+        "commercial_offer",
+        "certification",
+        "release"
+      ],
+      "properties": {
+        "authority": {
+          "const": false
+        },
+        "ownership": {
+          "const": false
+        },
+        "implementation": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "evidence_truth": {
+          "const": false
+        },
+        "external_action": {
+          "const": false
+        },
+        "customer": {
+          "const": false
+        },
+        "commercial_offer": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "release": {
+          "const": false
+        }
+      }
+    }
+  }
+}

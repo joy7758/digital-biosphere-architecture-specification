@@ -246,6 +246,28 @@ CERTIFICATION_AUTHORIZED=false
 RELEASE_AUTHORIZED=false
 ```
 
+### 4.7 CS-D02 Preparation Update
+
+[Problem Validation Governance Contract](veap-problem-validation-governance-contract-v0.1.md)
+已定义六个责任槽位、三种验证渠道、数据最小化、记录生命周期和停止条件；
+[CS-D02 Decision Packet](../TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.md)
+已把直接验证、公开一手报告 desk research、内部准备和 defer 四个选项分开。
+
+当前推荐只允许 Option C：
+
+```text
+CS_D02_PACKET_PREPARED=true
+CS_D02_DECISION_READY=false
+CS_D02_CURRENT_RECOMMENDATION=OPTION_C_CONTINUE_INTERNAL_PREPARATION
+REQUIRED_ROLES_READY=false
+DATA_HANDLING_READY=false
+EXTERNAL_EXECUTION_AUTHORIZED=false
+```
+
+Problem Validation Owner 和 Privacy/Data Steward 只有候选，Method/Security/Claim Reviewer
+未指派；participant source、storage、retention、withdrawal、deletion、incident route、
+预算和 expiry 未决定。因此常设指令当前不适用于 Option A 外联执行。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -481,7 +503,7 @@ known_limitations: []
 ```yaml
 decision_id: CS-D02
 question: Prepare an exact VEAP problem-validation execution and data-handling decision package?
-current_recommendation: PREPARE_PACKET_ONLY
+current_recommendation: OPTION_C_CONTINUE_INTERNAL_PREPARATION
 allowed_now:
   - internal_document_review
   - source_and_owner_crosswalk
@@ -503,7 +525,9 @@ required_before_packet_is_decidable:
   - security_and_claim_review_route
   - exact outreach_and_data_scope
   - stop_and_rollback_conditions
-decision_status: NOT_READY_MISSING_OWNER_REVIEWER_AND_DATA_CONTROLS
+decision_packet: ../TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.md
+governance_contract: veap-problem-validation-governance-contract-v0.1.md
+decision_status: PACKET_PREPARED_BLOCKED_INPUT_NOT_DECISION_READY
 ```
 
 `CS-D02` 当前只允许准备 exact packet。由于 Owner、Reviewer、参与者来源和数据处理控制
@@ -536,6 +560,9 @@ TITMAS_CS_D01_BOUNDED_INTERNAL_SCOPE_AUTHORIZED=true
 TITMAS_CS_STANDING_RECOMMENDATION_DIRECTIVE_ACTIVE=true
 TITMAS_NEXT_DECISION_CANDIDATE=CS-D02
 TITMAS_CS_D02_DECISION_READY=false
+TITMAS_CS_D02_PACKET_PREPARED=true
+TITMAS_CS_D02_CURRENT_RECOMMENDATION=OPTION_C
+TITMAS_PROBLEM_VALIDATION_GOVERNANCE_CONTRACT_DEFINED=true
 TITMAS_VEAP_OWNERSHIP_CROSSWALK_DEFINED=true
 TITMAS_VEAP_OWNERSHIP_RECORDS=14
 TITMAS_VEAP_OWNERSHIP_FROZEN=false
