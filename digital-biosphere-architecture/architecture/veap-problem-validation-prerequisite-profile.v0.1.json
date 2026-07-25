@@ -1,0 +1,124 @@
+{
+  "$schema": "./schemas/veap-problem-validation-prerequisite-profile.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-VEAP-PROBLEM-VALIDATION-PREREQUISITE-PROFILE-0.1",
+  "version": "0.1.0",
+  "status": "PREREQUISITE_PROFILE_DEFINED_REVIEWERS_AND_STORE_UNSELECTED",
+  "defined_at": "2026-07-25",
+  "decision_reference": "CS-D02",
+  "canonical_document": "veap-problem-validation-prerequisite-profile-v0.1.md",
+  "source_references": [
+    "../TITMAS-CS-D02-INPUT-ASSIGNMENT-PACKET.v0.1.json",
+    "../TITMAS-CS-D02-INPUT-RECOMMENDATION-CANDIDATE.v0.1.json",
+    "veap-problem-validation-governance-contract.v0.1.json"
+  ],
+  "reviewer_baseline": {
+    "natural_person_required": true,
+    "identity_acceptance_scope_contact_and_conflict_references_required": true,
+    "negative_failure_objection_and_unknown_retention_required": true,
+    "agent_or_model_may_be_formal_reviewer": false,
+    "anonymous_unaccountable_reviewer_allowed": false,
+    "record_creator_may_review_own_method_or_claim": false
+  },
+  "role_qualification": {
+    "method_reviewer_required_competence": [
+      "SAMPLING_AND_SOURCE_SELECTION",
+      "INDEPENDENCE_AND_DOUBLE_COUNTING",
+      "CONFIRMATION_BIAS",
+      "THRESHOLD_AND_REJECTION_REVIEW"
+    ],
+    "security_reviewer_required_competence": [
+      "STORAGE_ACCESS_ENCRYPTION_AND_CREDENTIAL_BOUNDARY",
+      "PII_SECRET_REGULATED_DATA_AND_EXTERNAL_FETCH_RISK",
+      "RETENTION_WITHDRAWAL_DELETION_AND_INCIDENT_RESPONSE"
+    ],
+    "claim_reviewer_required_competence": [
+      "PROBLEM_RECORD_CUSTOMER_EVIDENCE_AND_ADOPTION_SEPARATION",
+      "CONFORMANCE_CERTIFICATION_AND_TRUTH_SEPARATION",
+      "PUBLIC_CLAIM_SOURCE_SCOPE_TIME_AND_LIMITATION_REVIEW"
+    ],
+    "independent_human_reviewers_min": 2,
+    "method_reviewer_distinct_from_record_creator": true,
+    "claim_reviewer_distinct_from_record_creator": true,
+    "security_and_claim_role_combination_allowed": true,
+    "combination_requires_conflict_disclosure_and_scope_record": true,
+    "agent_counts_toward_human_minimum": false
+  },
+  "reviewer_acceptance_required_fields": [
+    "REVIEWER_REF",
+    "ROLE_ID",
+    "ACCEPTED_AT",
+    "SCOPE",
+    "COMPETENCE_BASIS_REFERENCE",
+    "INDEPENDENCE_BASIS_REFERENCE",
+    "CONFLICT_DISCLOSURE_REFERENCE",
+    "CONFIDENTIAL_CONTACT_ROUTE_REFERENCE",
+    "ACCEPTANCE_REFERENCE",
+    "MAY_CLOSE_GATE_FALSE",
+    "CREATES_OPERATIONAL_AUTHORITY_FALSE"
+  ],
+  "store_profile": {
+    "store_class": "PRIVATE_ACCESS_CONTROLLED_NON_GIT_VALIDATION_STORE",
+    "exact_backend_path_or_service_reference_required": true,
+    "public_git_location_allowed": false,
+    "runtime_or_dbos_canonical_evidence_store_equivalence_allowed": false,
+    "purpose": "VEAP_PROBLEM_VALIDATION_ONLY",
+    "default_deny_access": true,
+    "shared_credentials_allowed": false,
+    "structured_fields_and_public_safe_paraphrase_only": true,
+    "raw_transcript_attachment_direct_identifier_secret_or_regulated_data_allowed": false,
+    "silent_overwrite_allowed": false,
+    "supersession_and_failure_retention_required": true,
+    "working_retention_days_candidate": 90,
+    "content_free_tombstone_after_deletion_required": true,
+    "legal_hold_default": false,
+    "human_owned_confidential_incident_route_required": true,
+    "incident_open_allows_collection_to_continue": false
+  },
+  "store_readiness_evidence_required": [
+    "EXACT_STORAGE_REFERENCE",
+    "OWNER_AND_DATA_STEWARD_ACCEPTANCE",
+    "ACCESS_CONTROL_POLICY_REFERENCE",
+    "ENCRYPTION_APPLICABILITY_RECORD",
+    "BACKUP_RESTORE_OR_EXPLICIT_NO_BACKUP_DECISION",
+    "RETENTION_POLICY",
+    "WITHDRAWAL_AND_DELETION_PROCEDURE",
+    "INCIDENT_ROUTE",
+    "PROHIBITED_DATA_NEGATIVE_TEST",
+    "UNAUTHORIZED_ACCESS_NEGATIVE_TEST",
+    "OVERWRITE_SUPERSESSION_NEGATIVE_TEST",
+    "DELETION_TOMBSTONE_TEST",
+    "EXPIRY_STOP_TEST"
+  ],
+  "current_facts": {
+    "prerequisite_profile_defined": true,
+    "reviewer_qualification_defined": true,
+    "store_control_requirements_defined": true,
+    "reviewer_identities_selected": false,
+    "reviewer_acceptances_recorded": 0,
+    "independent_human_reviewers_assigned": 0,
+    "exact_store_reference_available": false,
+    "store_implemented": false,
+    "store_control_tests_executed": 0,
+    "data_handling_approved": false,
+    "cs_d02_decision_ready": false,
+    "external_action_authorized": false,
+    "public_web_review_authorized": false,
+    "agent_api_call_authorized": false,
+    "data_collection_authorized": false
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "evidence_truth": false,
+    "external_action": false,
+    "customer": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false
+  }
+}

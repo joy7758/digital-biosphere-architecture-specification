@@ -315,6 +315,29 @@ Stream A 未来可降低直接招募参与者的依赖，但必须通过 Method/
 Stream B 回应“智能体是核心使用者和推荐者”，但模型评价永远不能自动成为客户、组织、
 市场采用或 `CS-G0 PASS`。
 
+### 4.10 Reviewer and Store Prerequisite Profile
+
+[VEAP Problem Validation Prerequisite Profile](veap-problem-validation-prerequisite-profile-v0.1.md) /
+[machine record](veap-problem-validation-prerequisite-profile.v0.1.json) 已定义：
+
+- Method、Security、Claim Reviewer 的最低资格、独立性和接受记录；
+- 至少两名可追责自然人的独立 Review；
+- Agent 可以提供建议，但不能计入 human Reviewer minimum；
+- `PRIVATE_ACCESS_CONTROLLED_NON_GIT_VALIDATION_STORE` 的访问、内容、历史、retention、
+  deletion、incident 和负向测试要求。
+
+```text
+REVIEWER_QUALIFICATION_DEFINED=true
+STORE_CONTROL_REQUIREMENTS_DEFINED=true
+REVIEWER_IDENTITIES_SELECTED=false
+REVIEWER_ACCEPTANCES_RECORDED=0
+STORE_BACKEND_SELECTED=false
+STORE_IMPLEMENTED=false
+DATA_HANDLING_APPROVED=false
+```
+
+该 Profile 只定义准入标准，不选择人员、backend、path 或 service。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -616,6 +639,9 @@ TITMAS_CS_D02_INPUT_ASSIGNMENT_PACKET_DEFINED=true
 TITMAS_CS_D02_INPUTS_COMPLETE=false
 TITMAS_CS_D02_INPUT_RECOMMENDATION_CANDIDATE_PREPARED=true
 TITMAS_CS_D02_RECOMMENDED_METHOD=BOUNDED_TWO_STREAM_PROBLEM_VALIDATION
+TITMAS_CS_D02_PREREQUISITE_PROFILE_DEFINED=true
+TITMAS_CS_D02_REVIEWER_IDENTITIES_SELECTED=false
+TITMAS_CS_D02_STORE_BACKEND_SELECTED=false
 TITMAS_VEAP_OWNERSHIP_CROSSWALK_DEFINED=true
 TITMAS_VEAP_OWNERSHIP_RECORDS=14
 TITMAS_VEAP_OWNERSHIP_FROZEN=false
