@@ -274,6 +274,26 @@ Problem Validation Owner 和 Privacy/Data Steward 只有候选，Method/Security
 数据处理、预算、timebox 和 expiry 的精确输入；它不执行验证、不接触参与者、不收集数据，
 也不构成 CS-D02 决定或 Gate PASS。
 
+### 4.8 CS-D02 Input Assignment Packet
+
+[CS-D02 Input Assignment Packet](../TITMAS-CS-D02-INPUT-ASSIGNMENT-PACKET.md) /
+[machine packet](../TITMAS-CS-D02-INPUT-ASSIGNMENT-PACKET.v0.1.json) 已把角色接受、
+participant/channel、数据处理、record cap、预算、timebox、expiry、revocation、stop 和
+rollback 输入集中到一个失败关闭契约：
+
+```text
+CS_D02_INPUT_ASSIGNMENT_PACKET_DEFINED=true
+CS_D02_INPUTS_COMPLETE=false
+ROLE_ACCEPTANCES_RECORDED=0
+REQUIRED_REVIEWERS_ASSIGNED=0
+DATA_HANDLING_APPROVED=false
+EXECUTION_ENVELOPE_COMPLETE=false
+CS_D02_DECISION_READY=false
+```
+
+该包没有自动接受 `zhangbin` 的候选角色，也没有指派 Reviewer。它只允许后续人工提供
+可验证输入；输入完整仍需单独 CS-D02 Human Decision。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -571,6 +591,8 @@ TITMAS_CS_D02_CURRENT_RECOMMENDATION=OPTION_C
 TITMAS_PROBLEM_VALIDATION_GOVERNANCE_CONTRACT_DEFINED=true
 TITMAS_CS_D02_PREPARATION_READINESS_AUDIT_COMPLETE=true
 TITMAS_CS_D02_NEXT_ALLOWED_ARTIFACT=CS-D02-INPUT-ASSIGNMENT-PACKET
+TITMAS_CS_D02_INPUT_ASSIGNMENT_PACKET_DEFINED=true
+TITMAS_CS_D02_INPUTS_COMPLETE=false
 TITMAS_VEAP_OWNERSHIP_CROSSWALK_DEFINED=true
 TITMAS_VEAP_OWNERSHIP_RECORDS=14
 TITMAS_VEAP_OWNERSHIP_FROZEN=false

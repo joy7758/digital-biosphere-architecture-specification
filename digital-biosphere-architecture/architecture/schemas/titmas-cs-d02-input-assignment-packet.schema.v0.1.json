@@ -1,0 +1,558 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-input-assignment-packet:0.1",
+  "title": "TITMAS CS-D02 Input Assignment Packet v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "decision_id",
+    "status",
+    "prepared_at",
+    "decision_owner_ref",
+    "source_references",
+    "role_inputs",
+    "role_acceptance_contract",
+    "participant_and_channel_inputs",
+    "data_handling_inputs",
+    "execution_envelope_inputs",
+    "completion_contract",
+    "standing_directive_assessment",
+    "current_facts",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-input-assignment-packet.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-INPUT-ASSIGNMENT-PACKET-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "decision_id": {
+      "const": "CS-D02"
+    },
+    "status": {
+      "const": "PACKET_DEFINED_INPUTS_NOT_PROVIDED_NOT_DECISION_READY"
+    },
+    "prepared_at": {
+      "const": "2026-07-25"
+    },
+    "decision_owner_ref": {
+      "const": "zhangbin"
+    },
+    "source_references": {
+      "const": [
+        "TITMAS-CS-D01-HUMAN-DECISION-RECORD.v0.1.json",
+        "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json",
+        "architecture/veap-problem-validation-governance-contract.v0.1.json",
+        "architecture/veap-commercialization-standard-readiness.v0.3.json"
+      ]
+    },
+    "role_inputs": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/existingDecisionOwner"
+        },
+        {
+          "$ref": "#/$defs/candidateProblemOwner"
+        },
+        {
+          "$ref": "#/$defs/candidateDataSteward"
+        },
+        {
+          "$ref": "#/$defs/unassignedMethodReviewer"
+        },
+        {
+          "$ref": "#/$defs/unassignedSecurityReviewer"
+        },
+        {
+          "$ref": "#/$defs/unassignedClaimReviewer"
+        }
+      ],
+      "items": false
+    },
+    "role_acceptance_contract": {
+      "const": {
+        "required_future_fields": [
+          "ACCEPTED_BY_REF",
+          "ACCEPTED_AT",
+          "SCOPE_ACKNOWLEDGED",
+          "CONFLICTS_DISCLOSED",
+          "INDEPENDENCE_BASIS",
+          "ACCEPTANCE_REFERENCE"
+        ],
+        "candidate_implies_acceptance": false,
+        "acceptance_implies_operational_authority": false,
+        "record_creator_may_solely_validate_own_record": false,
+        "agent_may_accept_role_or_close_gate": false
+      }
+    },
+    "participant_and_channel_inputs": {
+      "const": {
+        "participant_source": "NOT_SELECTED",
+        "validation_channel": "NOT_SELECTED",
+        "independence_rule": "NOT_APPROVED",
+        "consent_or_source_basis": "NOT_APPROVED",
+        "allowed_channel_candidates": [
+          "DIRECT_RESPONSIBILITY_OWNER_INTERVIEW",
+          "PUBLIC_FIRST_PARTY_PROBLEM_REPORT_REVIEW_AFTER_METHOD_PRIVACY_CLAIM_SOURCE_USE_APPROVAL"
+        ],
+        "agent_advisory_counts_as_independent_context": false,
+        "participant_contact_authorized": false
+      }
+    },
+    "data_handling_inputs": {
+      "$ref": "#/$defs/dataHandlingInputs"
+    },
+    "execution_envelope_inputs": {
+      "$ref": "#/$defs/executionEnvelopeInputs"
+    },
+    "completion_contract": {
+      "const": {
+        "required_role_acceptances": [
+          "PROBLEM_VALIDATION_OWNER",
+          "PRIVACY_DATA_STEWARD"
+        ],
+        "required_independent_review_roles": [
+          "METHOD_REVIEWER",
+          "SECURITY_REVIEWER",
+          "CLAIM_REVIEWER"
+        ],
+        "required_input_groups": [
+          "PARTICIPANT_SOURCE_CHANNEL_INDEPENDENCE_AND_SOURCE_BASIS",
+          "STORAGE_ACCESS_RETENTION_WITHDRAWAL_DELETION_AND_INCIDENT",
+          "RECORD_CAP_BUDGET_TIMEBOX_EXPIRY_REVOCATION_STOP_ROLLBACK",
+          "FORMAL_METHOD_SECURITY_PRIVACY_AND_CLAIM_REVIEW"
+        ],
+        "inputs_complete": false,
+        "input_completion_creates_cs_d02_decision": false,
+        "input_completion_creates_execution_authority": false,
+        "input_completion_creates_gate_pass": false
+      }
+    },
+    "standing_directive_assessment": {
+      "const": {
+        "directive_id": "TITMAS-CS-STANDING-001",
+        "applicable_now": false,
+        "reason": "ROLE_ACCEPTANCE_REVIEWER_DATA_HANDLING_BUDGET_TIMEBOX_AND_EXPIRY_INPUTS_NOT_PROVEN",
+        "may_override_explicit_false": false
+      }
+    },
+    "current_facts": {
+      "const": {
+        "packet_defined": true,
+        "inputs_complete": false,
+        "role_acceptances_recorded": 0,
+        "required_reviewers_assigned": 0,
+        "data_handling_approved": false,
+        "execution_envelope_complete": false,
+        "cs_d02_decision_ready": false,
+        "cs_d02_decision_recorded": false,
+        "current_recommended_option": "C",
+        "validation_execution_authorized": false,
+        "external_outreach_authorized": false,
+        "participant_enrollment_authorized": false,
+        "network_processing_authorized": false,
+        "data_collection_authorized": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false,
+        "cs_g1_pass": false
+      }
+    },
+    "effects": {
+      "const": {
+        "authority": false,
+        "ownership": false,
+        "implementation": false,
+        "runtime": false,
+        "agent": false,
+        "entity": false,
+        "permission": false,
+        "evidence_truth": false,
+        "external_action": false,
+        "customer": false,
+        "commercial_offer": false,
+        "certification": false,
+        "release": false
+      }
+    }
+  },
+  "$defs": {
+    "roleBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role_id",
+        "candidate_or_owner_ref",
+        "state",
+        "acceptance_recorded",
+        "acceptance_reference",
+        "conflict_disclosure_reference",
+        "independence_basis",
+        "creates_operational_authority"
+      ],
+      "properties": {
+        "role_id": {
+          "type": "string",
+          "minLength": 8
+        },
+        "candidate_or_owner_ref": {
+          "type": "string",
+          "minLength": 4
+        },
+        "state": {
+          "enum": [
+            "ASSIGNED_EXISTING",
+            "CANDIDATE_NOT_ACCEPTED",
+            "UNASSIGNED_REQUIRED"
+          ]
+        },
+        "acceptance_recorded": {
+          "type": "boolean"
+        },
+        "acceptance_reference": {
+          "type": "string",
+          "minLength": 8
+        },
+        "conflict_disclosure_reference": {
+          "type": "string",
+          "minLength": 8
+        },
+        "independence_basis": {
+          "type": "string",
+          "minLength": 8
+        },
+        "creates_operational_authority": {
+          "const": false
+        }
+      }
+    },
+    "existingDecisionOwner": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/roleBase"
+        },
+        {
+          "properties": {
+            "role_id": {
+              "const": "HUMAN_DECISION_OWNER"
+            },
+            "candidate_or_owner_ref": {
+              "const": "zhangbin"
+            },
+            "state": {
+              "const": "ASSIGNED_EXISTING"
+            },
+            "acceptance_recorded": {
+              "const": true
+            },
+            "acceptance_reference": {
+              "const": "PROGRAM-CHARTER.md"
+            },
+            "conflict_disclosure_reference": {
+              "const": "NOT_REQUIRED_EXISTING_PROGRAM_ROLE"
+            },
+            "independence_basis": {
+              "const": "HUMAN_PROGRAM_DECISION_AUTHORITY"
+            }
+          }
+        }
+      ]
+    },
+    "candidateProblemOwner": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/roleBase"
+        },
+        {
+          "properties": {
+            "role_id": {
+              "const": "PROBLEM_VALIDATION_OWNER"
+            },
+            "candidate_or_owner_ref": {
+              "const": "zhangbin"
+            },
+            "state": {
+              "const": "CANDIDATE_NOT_ACCEPTED"
+            },
+            "acceptance_recorded": {
+              "const": false
+            },
+            "acceptance_reference": {
+              "const": "NOT_RECORDED"
+            },
+            "conflict_disclosure_reference": {
+              "const": "NOT_RECORDED"
+            },
+            "independence_basis": {
+              "const": "NOT_ASSESSED"
+            }
+          }
+        }
+      ]
+    },
+    "candidateDataSteward": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/roleBase"
+        },
+        {
+          "properties": {
+            "role_id": {
+              "const": "PRIVACY_DATA_STEWARD"
+            },
+            "candidate_or_owner_ref": {
+              "const": "zhangbin"
+            },
+            "state": {
+              "const": "CANDIDATE_NOT_ACCEPTED"
+            },
+            "acceptance_recorded": {
+              "const": false
+            },
+            "acceptance_reference": {
+              "const": "NOT_RECORDED"
+            },
+            "conflict_disclosure_reference": {
+              "const": "NOT_RECORDED"
+            },
+            "independence_basis": {
+              "const": "NOT_ASSESSED"
+            }
+          }
+        }
+      ]
+    },
+    "unassignedMethodReviewer": {
+      "$ref": "#/$defs/unassignedMethodReviewerExact"
+    },
+    "unassignedMethodReviewerExact": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/roleBase"
+        },
+        {
+          "properties": {
+            "role_id": {
+              "const": "METHOD_REVIEWER"
+            },
+            "candidate_or_owner_ref": {
+              "const": "NONE"
+            },
+            "state": {
+              "const": "UNASSIGNED_REQUIRED"
+            },
+            "acceptance_recorded": {
+              "const": false
+            },
+            "acceptance_reference": {
+              "const": "NOT_RECORDED"
+            },
+            "conflict_disclosure_reference": {
+              "const": "NOT_RECORDED"
+            },
+            "independence_basis": {
+              "const": "NOT_PROVEN"
+            }
+          }
+        }
+      ]
+    },
+    "unassignedSecurityReviewer": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/roleBase"
+        },
+        {
+          "properties": {
+            "role_id": {
+              "const": "SECURITY_REVIEWER"
+            },
+            "candidate_or_owner_ref": {
+              "const": "NONE"
+            },
+            "state": {
+              "const": "UNASSIGNED_REQUIRED"
+            },
+            "acceptance_recorded": {
+              "const": false
+            },
+            "acceptance_reference": {
+              "const": "NOT_RECORDED"
+            },
+            "conflict_disclosure_reference": {
+              "const": "NOT_RECORDED"
+            },
+            "independence_basis": {
+              "const": "NOT_PROVEN"
+            }
+          }
+        }
+      ]
+    },
+    "unassignedClaimReviewer": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/roleBase"
+        },
+        {
+          "properties": {
+            "role_id": {
+              "const": "CLAIM_REVIEWER"
+            },
+            "candidate_or_owner_ref": {
+              "const": "NONE"
+            },
+            "state": {
+              "const": "UNASSIGNED_REQUIRED"
+            },
+            "acceptance_recorded": {
+              "const": false
+            },
+            "acceptance_reference": {
+              "const": "NOT_RECORDED"
+            },
+            "conflict_disclosure_reference": {
+              "const": "NOT_RECORDED"
+            },
+            "independence_basis": {
+              "const": "NOT_PROVEN"
+            }
+          }
+        }
+      ]
+    },
+    "dataHandlingInputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "purpose",
+        "collection_mode",
+        "storage_reference",
+        "access_control_evidence",
+        "retention_days",
+        "withdrawal_path_reference",
+        "deletion_path_reference",
+        "incident_route_reference",
+        "privacy_review_reference",
+        "security_review_reference",
+        "claim_review_reference",
+        "raw_transcript_authorized",
+        "direct_identifier_collection_authorized",
+        "secret_or_credential_processing_authorized",
+        "regulated_data_processing_authorized",
+        "public_output",
+        "data_handling_approved"
+      ],
+      "properties": {
+        "purpose": {
+          "const": "VEAP_PROBLEM_VALIDATION_ONLY"
+        },
+        "collection_mode": {
+          "const": "STRUCTURED_FIELDS_AND_PUBLIC_SAFE_PARAPHRASE"
+        },
+        "storage_reference": {
+          "const": "NOT_SELECTED"
+        },
+        "access_control_evidence": {
+          "const": "NOT_AVAILABLE"
+        },
+        "retention_days": {
+          "type": "null"
+        },
+        "withdrawal_path_reference": {
+          "const": "REQUIRED_NOT_CREATED"
+        },
+        "deletion_path_reference": {
+          "const": "REQUIRED_NOT_CREATED"
+        },
+        "incident_route_reference": {
+          "const": "REQUIRED_NOT_ASSIGNED"
+        },
+        "privacy_review_reference": {
+          "const": "NOT_RECORDED"
+        },
+        "security_review_reference": {
+          "const": "NOT_RECORDED"
+        },
+        "claim_review_reference": {
+          "const": "NOT_RECORDED"
+        },
+        "raw_transcript_authorized": {
+          "const": false
+        },
+        "direct_identifier_collection_authorized": {
+          "const": false
+        },
+        "secret_or_credential_processing_authorized": {
+          "const": false
+        },
+        "regulated_data_processing_authorized": {
+          "const": false
+        },
+        "public_output": {
+          "const": "AGGREGATED_COUNTS_AND_PUBLIC_SAFE_PARAPHRASE_ONLY"
+        },
+        "data_handling_approved": {
+          "const": false
+        }
+      }
+    },
+    "executionEnvelopeInputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_problem_records",
+        "budget_currency",
+        "budget_cap",
+        "starts_at",
+        "expires_at",
+        "revocation_route_reference",
+        "stop_owner_ref",
+        "rollback_or_containment_reference",
+        "breach_handling_reference",
+        "execution_envelope_complete"
+      ],
+      "properties": {
+        "max_problem_records": {
+          "type": "null"
+        },
+        "budget_currency": {
+          "const": "NOT_DECIDED"
+        },
+        "budget_cap": {
+          "type": "null"
+        },
+        "starts_at": {
+          "type": "null"
+        },
+        "expires_at": {
+          "type": "null"
+        },
+        "revocation_route_reference": {
+          "const": "REQUIRED_NOT_CREATED"
+        },
+        "stop_owner_ref": {
+          "const": "NOT_ASSIGNED"
+        },
+        "rollback_or_containment_reference": {
+          "const": "REQUIRED_NOT_CREATED"
+        },
+        "breach_handling_reference": {
+          "const": "REQUIRED_NOT_CREATED"
+        },
+        "execution_envelope_complete": {
+          "const": false
+        }
+      }
+    }
+  }
+}
