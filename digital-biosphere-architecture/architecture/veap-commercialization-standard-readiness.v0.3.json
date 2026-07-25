@@ -1,0 +1,264 @@
+{
+  "$schema": "./schemas/veap-commercialization-standard-readiness.schema.v0.3.json",
+  "document_id": "DBA-TITMAS-VEAP-COMMERCIALIZATION-STANDARD-READINESS-0.3",
+  "version": "0.3.0",
+  "status": "CS_D02_PREPARATION_AUDIT_COMPLETE_COMMERCIALIZATION_STANDARD_NOT_READY",
+  "audited_at": "2026-07-25",
+  "source_baseline_commit": "fd898e7ed4a373360679c8616e413f8cb0491537",
+  "source_baseline_remote_pushed": true,
+  "canonical_document": "veap-commercialization-standard-readiness-audit-v0.3.md",
+  "supersedes": "veap-commercialization-standard-readiness.v0.2.json",
+  "audit_scope": "CS-G0_THROUGH_CS-G7_AND_CS-D02_PREPARATION",
+  "audit_method": "DIRECT_MACHINE_AND_DOCUMENT_EVIDENCE_ONLY_NO_INFERENCE_TO_PASS",
+  "decision_state": {
+    "cs_d01": {
+      "decision_record_reference": "../TITMAS-CS-D01-HUMAN-DECISION-RECORD.v0.1.json",
+      "decision_recorded": true,
+      "decision_result": "AUTHORIZE_BOUNDED_VEAP_PROBLEM_AND_SCOPE_FREEZE",
+      "accepted_scope": "INTERNAL_PROBLEM_VALIDATION_OWNER_CROSSWALK_CONCEPTUAL_CONFORMANCE_DESIGN",
+      "bounded_internal_scope_authorized": true
+    },
+    "cs_d02": {
+      "packet_reference": "../TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json",
+      "governance_contract_reference": "veap-problem-validation-governance-contract.v0.1.json",
+      "packet_prepared": true,
+      "packet_status": "PACKET_PREPARED_BLOCKED_INPUT_NOT_DECISION_READY",
+      "current_recommended_option": "C",
+      "execution_decision_ready": false,
+      "decision_recorded": false
+    },
+    "standing_directive": {
+      "reference": "../TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.json",
+      "active": true,
+      "applicable_now": false,
+      "automatic_gate_approval": false,
+      "explicit_false_override": false
+    }
+  },
+  "preparation_readiness": {
+    "role_slots_defined": true,
+    "roles_assigned": false,
+    "required_roles_ready": false,
+    "data_handling_contract_defined": true,
+    "data_handling_approved": false,
+    "participant_source_selected": false,
+    "validation_channel_selected": false,
+    "storage_selected": false,
+    "access_control_evidence_available": false,
+    "retention_decided": false,
+    "withdrawal_path_ready": false,
+    "deletion_path_ready": false,
+    "incident_route_assigned": false,
+    "record_cap_defined": false,
+    "budget_defined": false,
+    "timebox_and_expiry_defined": false,
+    "next_allowed_artifact": "CS-D02-INPUT-ASSIGNMENT-PACKET",
+    "next_allowed_artifact_creates_execution_authority": false
+  },
+  "gates": [
+    {
+      "id": "CS-G0",
+      "name": "PROBLEM_FREEZE",
+      "status": "NOT_MET",
+      "evidence_references": [
+        "veap-problem-validation-contract.v0.1.json",
+        "veap-problem-validation-governance-contract.v0.1.json",
+        "../TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
+      ],
+      "observed_facts": [
+        "CS_D02_PACKET_PREPARED_TRUE",
+        "PROBLEM_VALIDATION_GOVERNANCE_CONTRACT_DEFINED_TRUE",
+        "VALID_PROBLEM_RECORDS_0"
+      ],
+      "missing_requirements": [
+        "VALID_INDEPENDENT_PROBLEM_RECORDS_MIN_5",
+        "INDEPENDENT_ORGANIZATION_OR_CONTEXTS_MIN_3",
+        "HIGH_PRIORITY_RECORDS_MIN_3",
+        "CONTINUE_REVIEW_INTEREST_MIN_2"
+      ],
+      "next_action": "PREPARE_CS_D02_INPUT_ASSIGNMENT_PACKET_WITHOUT_EXTERNAL_EXECUTION"
+    },
+    {
+      "id": "CS-G1",
+      "name": "SCOPE_AUTHORITY_FREEZE",
+      "status": "NOT_MET",
+      "evidence_references": [
+        "veap-canonical-ownership-crosswalk.v0.1.json",
+        "veap-problem-validation-governance-contract.v0.1.json",
+        "veap-security-privacy-claim-risk-register.v0.1.json"
+      ],
+      "observed_facts": [
+        "ROLE_SLOTS_DEFINED_TRUE",
+        "OWNER_ACCEPTANCES_0",
+        "OPEN_RISKS_16",
+        "FORMAL_REVIEW_COMPLETE_FALSE"
+      ],
+      "missing_requirements": [
+        "ACCEPTED_PROBLEM_VALIDATION_OWNER_AND_DATA_STEWARD",
+        "METHOD_SECURITY_AND_CLAIM_REVIEWERS",
+        "DOMAIN_OWNER_ACCEPTANCES",
+        "FORMAL_SECURITY_PRIVACY_CLAIM_REVIEW"
+      ],
+      "next_action": "PREPARE_EXACT_ROLE_ACCEPTANCE_AND_DATA_HANDLING_INPUTS"
+    },
+    {
+      "id": "CS-G2",
+      "name": "DRAFT_CONTRACT",
+      "status": "BLOCKED",
+      "evidence_references": [
+        "titmas-commercialization-standards-roadmap-v0.1.md",
+        "../TITMAS-CS-D01-HUMAN-DECISION-RECORD.v0.1.json"
+      ],
+      "observed_facts": [
+        "VEAP_NORMATIVE_PROFILE_CREATED_FALSE",
+        "VEAP_SCHEMA_CREATED_FALSE"
+      ],
+      "missing_requirements": [
+        "CS_G0_AND_CS_G1_PASS",
+        "SEPARATE_NORMATIVE_DRAFT_AUTHORIZATION"
+      ],
+      "next_action": "WAIT_FOR_CS_G0_AND_CS_G1_PASS"
+    },
+    {
+      "id": "CS-G3",
+      "name": "EXPERIMENTAL_CONFORMANCE",
+      "status": "BLOCKED",
+      "evidence_references": [
+        "veap-predecision-conformance-cases.v0.1.json",
+        "veap-predecision-conformance-design-v0.1.md"
+      ],
+      "observed_facts": [
+        "CONCEPTUAL_CASES_20",
+        "CASES_EXECUTED_0"
+      ],
+      "missing_requirements": [
+        "REFERENCE_IMPLEMENTATION_AND_TEST_IMPLEMENTATION",
+        "EXECUTED_RESULT_SET_AND_REPRODUCTION_GUIDE"
+      ],
+      "next_action": "WAIT_FOR_CS_G2_DRAFT_REVIEW_COMPLETE"
+    },
+    {
+      "id": "CS-G4",
+      "name": "INDEPENDENT_IMPLEMENTATION",
+      "status": "BLOCKED",
+      "evidence_references": [
+        "titmas-commercialization-standards-roadmap-v0.1.md",
+        "titmas-adoption-validation-framework-v0.1.md"
+      ],
+      "observed_facts": [
+        "INDEPENDENT_IMPLEMENTATIONS_0",
+        "INDEPENDENT_REVIEWERS_0"
+      ],
+      "missing_requirements": [
+        "NON_AUTHOR_IMPLEMENTATION_AND_INDEPENDENT_REVIEW",
+        "DIFFERENCE_AND_FAILURE_LEDGER"
+      ],
+      "next_action": "WAIT_FOR_CS_G3_EXPERIMENTAL_EVIDENCE_PACKAGE"
+    },
+    {
+      "id": "CS-G5",
+      "name": "BOUNDED_COMMERCIAL_PILOT",
+      "status": "BLOCKED",
+      "evidence_references": [
+        "titmas-commercial-ecosystem-strategy-v0.1.md",
+        "titmas-adoption-validation-framework-v0.1.md"
+      ],
+      "observed_facts": [
+        "BOUNDED_COMMERCIAL_PILOTS_0",
+        "DESIGN_PARTNERS_0"
+      ],
+      "missing_requirements": [
+        "TWO_BOUNDED_PILOTS",
+        "PILOT_GOVERNANCE_AND_SERVICE_EVIDENCE"
+      ],
+      "next_action": "WAIT_FOR_INDEPENDENT_IMPLEMENTATION_AND_SEPARATE_PILOT_DECISION"
+    },
+    {
+      "id": "CS-G6",
+      "name": "AVAILABLE_OFFERING_DECISION",
+      "status": "BLOCKED",
+      "evidence_references": [
+        "titmas-commercial-ecosystem-strategy-v0.1.md",
+        "titmas-commercialization-standards-roadmap-v0.1.md"
+      ],
+      "observed_facts": [
+        "AVAILABLE_OFFERINGS_0",
+        "CONTRACTS_CREATED_0"
+      ],
+      "missing_requirements": [
+        "LEGAL_SERVICE_PRICE_TERMS_SLA_SUPPORT_SECURITY_ROLLBACK",
+        "AVAILABLE_OFFERING_HUMAN_DECISION"
+      ],
+      "next_action": "WAIT_FOR_REPEATABLE_SERVICE_EVIDENCE"
+    },
+    {
+      "id": "CS-G7",
+      "name": "CUSTOMER_ADOPTION_EVIDENCE",
+      "status": "BLOCKED",
+      "evidence_references": [
+        "titmas-adoption-validation-framework-v0.1.md",
+        "titmas-commercialization-standards-roadmap-v0.1.md"
+      ],
+      "observed_facts": [
+        "CUSTOMERS_VERIFIED_0",
+        "CUSTOMER_ADOPTION_FALSE"
+      ],
+      "missing_requirements": [
+        "ATTRIBUTABLE_USE_AND_CONTINUED_USE",
+        "OUTCOME_AND_LIMITATION_EVIDENCE"
+      ],
+      "next_action": "WAIT_FOR_AVAILABLE_OFFERING_AND_ATTRIBUTABLE_USE"
+    }
+  ],
+  "gate_summary": {
+    "gate_count": 8,
+    "pass_count": 0,
+    "not_met_count": 2,
+    "blocked_count": 6
+  },
+  "readiness_facts": {
+    "commercialization_standard_ready": false,
+    "generation_ready": false,
+    "valid_problem_records": 0,
+    "owner_acceptances": 0,
+    "open_risks": 16,
+    "formal_review_complete": false,
+    "conceptual_cases_defined": 20,
+    "conformance_cases_executed": 0,
+    "conformance_cases_passed": 0,
+    "normative_profile_created": false,
+    "veap_schema_created": false,
+    "reference_implementation_created": false,
+    "independent_implementations": 0,
+    "bounded_commercial_pilots": 0,
+    "available_offerings": 0,
+    "customers_verified": 0,
+    "certificates_issued": 0
+  },
+  "next_action": {
+    "artifact_id": "CS-D02-INPUT-ASSIGNMENT-PACKET",
+    "purpose": "FILL_EXACT_ROLE_ACCEPTANCE_REVIEWER_DATA_HANDLING_BUDGET_TIMEBOX_AND_EXPIRY_INPUTS",
+    "status": "PREPARATION_ALLOWED_NOT_CREATED",
+    "external_execution_authorized": false,
+    "creates_cs_d02_decision": false,
+    "creates_gate_pass": false
+  },
+  "effects": {
+    "program_preparation_recorded": true,
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "evidence_truth": false,
+    "external_outreach": false,
+    "participant_enrollment": false,
+    "data_collection": false,
+    "commercial_offer": false,
+    "customer_adoption": false,
+    "certification": false,
+    "release": false
+  }
+}

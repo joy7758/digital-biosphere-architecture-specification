@@ -205,9 +205,9 @@ PREDECISION_EVIDENCE_NE_HUMAN_DECISION=true
 
 ### 4.5 Commercialization Standard Readiness Audit
 
-[VEAP Commercialization Standard Post-decision Readiness Audit](veap-commercialization-standard-readiness-audit-v0.2.md) /
-[machine record](veap-commercialization-standard-readiness.v0.2.json) 已在 `CS-D01` 决定后按
-`CS-G0`–`CS-G7` 逐项核对直接证据：
+[VEAP Commercialization Standard CS-D02 Preparation Readiness Audit](veap-commercialization-standard-readiness-audit-v0.3.md) /
+[machine record](veap-commercialization-standard-readiness.v0.3.json) 已在 `CS-D02` 阻塞态
+packet 准备并推送后，按 `CS-G0`–`CS-G7` 逐项核对直接证据：
 
 ```text
 STANDARDIZATION_GATES=8
@@ -217,11 +217,13 @@ GATES_BLOCKED=6
 VEAP_COMMERCIALIZATION_STANDARD_READY=false
 VEAP_GENERATION_READY=false
 NEXT_DECISION_CANDIDATE=CS-D02
+CS_D02_PACKET_PREPARED=true
 CS_D02_DECISION_READY=false
+CS_D02_CURRENT_RECOMMENDATION=OPTION_C
 ```
 
-该审计确认有界内部工作已获授权，但决定本身没有关闭真实问题证据、Owner/Authority、
-正式 Review、实现或客户证据缺口。
+该审计确认有界内部工作已获授权，且 CS-D02 缺失输入已经结构化；但 packet 本身没有
+补齐角色接受、数据处理、真实问题证据、正式 Review、实现或客户证据缺口。
 
 ### 4.6 CS-D01 Human Decision and Standing Directive
 
@@ -267,6 +269,10 @@ EXTERNAL_EXECUTION_AUTHORIZED=false
 Problem Validation Owner 和 Privacy/Data Steward 只有候选，Method/Security/Claim Reviewer
 未指派；participant source、storage、retention、withdrawal、deletion、incident route、
 预算和 expiry 未决定。因此常设指令当前不适用于 Option A 外联执行。
+
+下一治理产物应为 `CS-D02-INPUT-ASSIGNMENT-PACKET`，只收敛角色接受、Reviewer、
+数据处理、预算、timebox 和 expiry 的精确输入；它不执行验证、不接触参与者、不收集数据，
+也不构成 CS-D02 决定或 Gate PASS。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -563,6 +569,8 @@ TITMAS_CS_D02_DECISION_READY=false
 TITMAS_CS_D02_PACKET_PREPARED=true
 TITMAS_CS_D02_CURRENT_RECOMMENDATION=OPTION_C
 TITMAS_PROBLEM_VALIDATION_GOVERNANCE_CONTRACT_DEFINED=true
+TITMAS_CS_D02_PREPARATION_READINESS_AUDIT_COMPLETE=true
+TITMAS_CS_D02_NEXT_ALLOWED_ARTIFACT=CS-D02-INPUT-ASSIGNMENT-PACKET
 TITMAS_VEAP_OWNERSHIP_CROSSWALK_DEFINED=true
 TITMAS_VEAP_OWNERSHIP_RECORDS=14
 TITMAS_VEAP_OWNERSHIP_FROZEN=false

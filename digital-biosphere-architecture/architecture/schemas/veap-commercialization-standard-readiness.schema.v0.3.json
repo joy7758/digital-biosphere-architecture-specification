@@ -1,0 +1,478 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:veap-commercialization-standard-readiness:0.3",
+  "title": "VEAP Commercialization Standard CS-D02 Preparation Readiness v0.3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "audited_at",
+    "source_baseline_commit",
+    "source_baseline_remote_pushed",
+    "canonical_document",
+    "supersedes",
+    "audit_scope",
+    "audit_method",
+    "decision_state",
+    "preparation_readiness",
+    "gates",
+    "gate_summary",
+    "readiness_facts",
+    "next_action",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/veap-commercialization-standard-readiness.schema.v0.3.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-VEAP-COMMERCIALIZATION-STANDARD-READINESS-0.3"
+    },
+    "version": {
+      "const": "0.3.0"
+    },
+    "status": {
+      "const": "CS_D02_PREPARATION_AUDIT_COMPLETE_COMMERCIALIZATION_STANDARD_NOT_READY"
+    },
+    "audited_at": {
+      "const": "2026-07-25"
+    },
+    "source_baseline_commit": {
+      "const": "fd898e7ed4a373360679c8616e413f8cb0491537"
+    },
+    "source_baseline_remote_pushed": {
+      "const": true
+    },
+    "canonical_document": {
+      "const": "veap-commercialization-standard-readiness-audit-v0.3.md"
+    },
+    "supersedes": {
+      "const": "veap-commercialization-standard-readiness.v0.2.json"
+    },
+    "audit_scope": {
+      "const": "CS-G0_THROUGH_CS-G7_AND_CS-D02_PREPARATION"
+    },
+    "audit_method": {
+      "const": "DIRECT_MACHINE_AND_DOCUMENT_EVIDENCE_ONLY_NO_INFERENCE_TO_PASS"
+    },
+    "decision_state": {
+      "$ref": "#/$defs/decisionState"
+    },
+    "preparation_readiness": {
+      "$ref": "#/$defs/preparationReadiness"
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/gate"
+      },
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "CS-G0"
+              },
+              "status": {
+                "const": "NOT_MET"
+              }
+            },
+            "required": [
+              "id",
+              "status"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "CS-G1"
+              },
+              "status": {
+                "const": "NOT_MET"
+              }
+            },
+            "required": [
+              "id",
+              "status"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "CS-G2"
+              },
+              "status": {
+                "const": "BLOCKED"
+              }
+            },
+            "required": [
+              "id",
+              "status"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "CS-G3"
+              },
+              "status": {
+                "const": "BLOCKED"
+              }
+            },
+            "required": [
+              "id",
+              "status"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "CS-G4"
+              },
+              "status": {
+                "const": "BLOCKED"
+              }
+            },
+            "required": [
+              "id",
+              "status"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "CS-G5"
+              },
+              "status": {
+                "const": "BLOCKED"
+              }
+            },
+            "required": [
+              "id",
+              "status"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "CS-G6"
+              },
+              "status": {
+                "const": "BLOCKED"
+              }
+            },
+            "required": [
+              "id",
+              "status"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        },
+        {
+          "contains": {
+            "properties": {
+              "id": {
+                "const": "CS-G7"
+              },
+              "status": {
+                "const": "BLOCKED"
+              }
+            },
+            "required": [
+              "id",
+              "status"
+            ]
+          },
+          "minContains": 1,
+          "maxContains": 1
+        }
+      ]
+    },
+    "gate_summary": {
+      "const": {
+        "gate_count": 8,
+        "pass_count": 0,
+        "not_met_count": 2,
+        "blocked_count": 6
+      }
+    },
+    "readiness_facts": {
+      "$ref": "#/$defs/readinessFacts"
+    },
+    "next_action": {
+      "const": {
+        "artifact_id": "CS-D02-INPUT-ASSIGNMENT-PACKET",
+        "purpose": "FILL_EXACT_ROLE_ACCEPTANCE_REVIEWER_DATA_HANDLING_BUDGET_TIMEBOX_AND_EXPIRY_INPUTS",
+        "status": "PREPARATION_ALLOWED_NOT_CREATED",
+        "external_execution_authorized": false,
+        "creates_cs_d02_decision": false,
+        "creates_gate_pass": false
+      }
+    },
+    "effects": {
+      "$ref": "#/$defs/effects"
+    }
+  },
+  "$defs": {
+    "decisionState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cs_d01",
+        "cs_d02",
+        "standing_directive"
+      ],
+      "properties": {
+        "cs_d01": {
+          "const": {
+            "decision_record_reference": "../TITMAS-CS-D01-HUMAN-DECISION-RECORD.v0.1.json",
+            "decision_recorded": true,
+            "decision_result": "AUTHORIZE_BOUNDED_VEAP_PROBLEM_AND_SCOPE_FREEZE",
+            "accepted_scope": "INTERNAL_PROBLEM_VALIDATION_OWNER_CROSSWALK_CONCEPTUAL_CONFORMANCE_DESIGN",
+            "bounded_internal_scope_authorized": true
+          }
+        },
+        "cs_d02": {
+          "const": {
+            "packet_reference": "../TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json",
+            "governance_contract_reference": "veap-problem-validation-governance-contract.v0.1.json",
+            "packet_prepared": true,
+            "packet_status": "PACKET_PREPARED_BLOCKED_INPUT_NOT_DECISION_READY",
+            "current_recommended_option": "C",
+            "execution_decision_ready": false,
+            "decision_recorded": false
+          }
+        },
+        "standing_directive": {
+          "const": {
+            "reference": "../TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.json",
+            "active": true,
+            "applicable_now": false,
+            "automatic_gate_approval": false,
+            "explicit_false_override": false
+          }
+        }
+      }
+    },
+    "preparationReadiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "role_slots_defined",
+        "roles_assigned",
+        "required_roles_ready",
+        "data_handling_contract_defined",
+        "data_handling_approved",
+        "participant_source_selected",
+        "validation_channel_selected",
+        "storage_selected",
+        "access_control_evidence_available",
+        "retention_decided",
+        "withdrawal_path_ready",
+        "deletion_path_ready",
+        "incident_route_assigned",
+        "record_cap_defined",
+        "budget_defined",
+        "timebox_and_expiry_defined",
+        "next_allowed_artifact",
+        "next_allowed_artifact_creates_execution_authority"
+      ],
+      "properties": {
+        "role_slots_defined": {
+          "const": true
+        },
+        "roles_assigned": {
+          "const": false
+        },
+        "required_roles_ready": {
+          "const": false
+        },
+        "data_handling_contract_defined": {
+          "const": true
+        },
+        "data_handling_approved": {
+          "const": false
+        },
+        "participant_source_selected": {
+          "const": false
+        },
+        "validation_channel_selected": {
+          "const": false
+        },
+        "storage_selected": {
+          "const": false
+        },
+        "access_control_evidence_available": {
+          "const": false
+        },
+        "retention_decided": {
+          "const": false
+        },
+        "withdrawal_path_ready": {
+          "const": false
+        },
+        "deletion_path_ready": {
+          "const": false
+        },
+        "incident_route_assigned": {
+          "const": false
+        },
+        "record_cap_defined": {
+          "const": false
+        },
+        "budget_defined": {
+          "const": false
+        },
+        "timebox_and_expiry_defined": {
+          "const": false
+        },
+        "next_allowed_artifact": {
+          "const": "CS-D02-INPUT-ASSIGNMENT-PACKET"
+        },
+        "next_allowed_artifact_creates_execution_authority": {
+          "const": false
+        }
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "status",
+        "evidence_references",
+        "observed_facts",
+        "missing_requirements",
+        "next_action"
+      ],
+      "properties": {
+        "id": {
+          "enum": [
+            "CS-G0",
+            "CS-G1",
+            "CS-G2",
+            "CS-G3",
+            "CS-G4",
+            "CS-G5",
+            "CS-G6",
+            "CS-G7"
+          ]
+        },
+        "name": {
+          "type": "string",
+          "minLength": 6
+        },
+        "status": {
+          "enum": [
+            "NOT_MET",
+            "BLOCKED"
+          ]
+        },
+        "evidence_references": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "observed_facts": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "missing_requirements": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "next_action": {
+          "type": "string",
+          "minLength": 12
+        }
+      }
+    },
+    "readinessFacts": {
+      "const": {
+        "commercialization_standard_ready": false,
+        "generation_ready": false,
+        "valid_problem_records": 0,
+        "owner_acceptances": 0,
+        "open_risks": 16,
+        "formal_review_complete": false,
+        "conceptual_cases_defined": 20,
+        "conformance_cases_executed": 0,
+        "conformance_cases_passed": 0,
+        "normative_profile_created": false,
+        "veap_schema_created": false,
+        "reference_implementation_created": false,
+        "independent_implementations": 0,
+        "bounded_commercial_pilots": 0,
+        "available_offerings": 0,
+        "customers_verified": 0,
+        "certificates_issued": 0
+      }
+    },
+    "effects": {
+      "const": {
+        "program_preparation_recorded": true,
+        "authority": false,
+        "ownership": false,
+        "implementation": false,
+        "runtime": false,
+        "agent": false,
+        "entity": false,
+        "permission": false,
+        "evidence_truth": false,
+        "external_outreach": false,
+        "participant_enrollment": false,
+        "data_collection": false,
+        "commercial_offer": false,
+        "customer_adoption": false,
+        "certification": false,
+        "release": false
+      }
+    }
+  }
+}
