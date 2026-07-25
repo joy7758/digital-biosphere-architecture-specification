@@ -1,0 +1,181 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-prerequisite-selection-decision-packet.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PREREQUISITE-SELECTION-DECISION-PACKET-0.1",
+  "version": "0.1.0",
+  "decision_candidate_id": "CS-D02-PRE-01",
+  "parent_decision_id": "CS-D02",
+  "status": "PACKET_PREPARED_BLOCKED_HUMAN_INPUT_NO_SELECTION_NO_OUTREACH",
+  "prepared_at": "2026-07-25",
+  "decision_owner_ref": "zhangbin",
+  "source_references": [
+    "TITMAS-CS-D02-INPUT-ASSIGNMENT-PACKET.v0.1.json",
+    "TITMAS-CS-D02-INPUT-RECOMMENDATION-CANDIDATE.v0.1.json",
+    "architecture/veap-problem-validation-prerequisite-profile.v0.1.json"
+  ],
+  "owner_options": [
+    {
+      "id": "O1",
+      "name": "ACCEPT_ZHANGBIN_AS_BOUNDED_PROBLEM_OWNER_AND_DATA_STEWARD",
+      "recommendation": "RECOMMENDED",
+      "decision_ready": true,
+      "accepted_now": false,
+      "role_overlap_disclosure_required": true,
+      "creates_operational_authority": false
+    },
+    {
+      "id": "O2",
+      "name": "NOMINATE_DIFFERENT_HUMANS",
+      "recommendation": "VALID_NO_IDENTITIES_AVAILABLE",
+      "decision_ready": false,
+      "accepted_now": false,
+      "role_overlap_disclosure_required": true,
+      "creates_operational_authority": false
+    },
+    {
+      "id": "O3",
+      "name": "DEFER_OWNER_ACCEPTANCE",
+      "recommendation": "VALID_STOP_OPTION",
+      "decision_ready": true,
+      "accepted_now": false,
+      "role_overlap_disclosure_required": false,
+      "creates_operational_authority": false
+    }
+  ],
+  "reviewer_options": [
+    {
+      "id": "R1",
+      "name": "BOUNDED_EXTERNAL_HUMAN_REVIEWER_RECRUITMENT",
+      "recommendation": "CONDITIONALLY_RECOMMENDED",
+      "decision_ready": false,
+      "reason": "EXACT_CHANNEL_BUDGET_EXPIRY_MESSAGE_TERMS_AND_CONTACT_ROUTE_MISSING",
+      "reviewer_pattern": "ONE_METHOD_PLUS_ONE_SECURITY_CLAIM_HUMAN",
+      "human_reviewer_min": 2,
+      "outreach_authorized_now": false
+    },
+    {
+      "id": "R2",
+      "name": "KNOWN_TRUSTED_HUMAN_NOMINATION",
+      "recommendation": "PREFERRED_IF_IDENTITIES_EXIST",
+      "decision_ready": false,
+      "reason": "KNOWN_ELIGIBLE_IDENTITIES_0",
+      "reviewer_pattern": "ONE_METHOD_PLUS_ONE_SECURITY_CLAIM_HUMAN",
+      "human_reviewer_min": 2,
+      "outreach_authorized_now": false
+    },
+    {
+      "id": "R3",
+      "name": "AGENT_ONLY_FORMAL_REVIEW",
+      "recommendation": "NOT_ALLOWED",
+      "decision_ready": false,
+      "reason": "AGENT_CANNOT_REPLACE_ACCOUNTABLE_HUMAN_REVIEW",
+      "reviewer_pattern": "INVALID",
+      "human_reviewer_min": 2,
+      "outreach_authorized_now": false
+    },
+    {
+      "id": "R4",
+      "name": "DEFER_REVIEWER_SELECTION",
+      "recommendation": "VALID_STOP_OPTION",
+      "decision_ready": true,
+      "reason": "PRESERVES_FAIL_CLOSED_STATE",
+      "reviewer_pattern": "NONE",
+      "human_reviewer_min": 2,
+      "outreach_authorized_now": false
+    }
+  ],
+  "store_options": [
+    {
+      "id": "S1",
+      "name": "LOCAL_ENCRYPTED_PRIVATE_NON_GIT_VALIDATION_STORE",
+      "recommendation": "CONDITIONALLY_RECOMMENDED",
+      "decision_ready": false,
+      "reason": "EXACT_PATH_ENCRYPTION_ACCESS_BACKUP_DELETION_AND_INCIDENT_REFERENCES_MISSING",
+      "selected_now": false,
+      "implementation_authorized": false
+    },
+    {
+      "id": "S2",
+      "name": "ISOLATED_BAIDU_SERVER_PRIVATE_STORE",
+      "recommendation": "NOT_RECOMMENDED_FOR_FIRST_BOUNDED_RUN",
+      "decision_ready": false,
+      "reason": "NETWORK_HOST_ACCESS_BACKUP_INCIDENT_AND_TRANSFER_CONTROLS_MISSING",
+      "selected_now": false,
+      "implementation_authorized": false
+    },
+    {
+      "id": "S3",
+      "name": "MANAGED_PRIVATE_CLOUD_STORE",
+      "recommendation": "NOT_RECOMMENDED_FOR_FIRST_BOUNDED_RUN",
+      "decision_ready": false,
+      "reason": "PROVIDER_COST_RESIDENCY_CONTRACT_AND_ACCESS_COMPLEXITY",
+      "selected_now": false,
+      "implementation_authorized": false
+    },
+    {
+      "id": "S4",
+      "name": "DEFER_STORE_SELECTION",
+      "recommendation": "VALID_STOP_OPTION",
+      "decision_ready": true,
+      "reason": "PRESERVES_FAIL_CLOSED_STATE",
+      "selected_now": false,
+      "implementation_authorized": false
+    }
+  ],
+  "combined_recommendation": {
+    "owner_option": "O1",
+    "reviewer_option": "R1",
+    "store_option": "S1",
+    "result": "CONDITIONALLY_RECOMMENDED",
+    "decision_ready": false,
+    "missing_inputs": [
+      "ROLE_OVERLAP_CONFLICT_DISCLOSURE_REFERENCE",
+      "REVIEWER_RECRUITMENT_CHANNEL",
+      "REVIEWER_BUDGET_CAP",
+      "REVIEWER_OUTREACH_EXPIRY",
+      "EXACT_LOCAL_ENCRYPTED_STORE_REFERENCE",
+      "ENCRYPTION_AND_ACCESS_APPLICABILITY_REFERENCES",
+      "CONFIDENTIAL_INCIDENT_ROUTE"
+    ]
+  },
+  "standing_directive_assessment": {
+    "directive_id": "TITMAS-CS-STANDING-001",
+    "active": true,
+    "applicable_now": false,
+    "reason": "EXACT_HUMAN_ROLE_RECRUITMENT_BUDGET_EXPIRY_STORE_AND_INCIDENT_INPUTS_NOT_PROVEN_AND_EXTERNAL_OUTREACH_EXPLICITLY_FALSE",
+    "may_override_explicit_false": false
+  },
+  "current_facts": {
+    "packet_prepared": true,
+    "decision_ready": false,
+    "decision_recorded": false,
+    "problem_validation_owner_accepted": false,
+    "privacy_data_steward_accepted": false,
+    "independent_human_reviewers_selected": 0,
+    "reviewer_recruitment_authorized": false,
+    "reviewer_outreach_executed": false,
+    "store_option_selected": false,
+    "store_implemented": false,
+    "participant_outreach_authorized": false,
+    "public_web_review_authorized": false,
+    "agent_api_call_authorized": false,
+    "data_collection_authorized": false,
+    "problem_validation_execution_authorized": false,
+    "cs_g0_pass": false,
+    "cs_g1_pass": false
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "evidence_truth": false,
+    "external_action": false,
+    "customer": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false
+  }
+}
