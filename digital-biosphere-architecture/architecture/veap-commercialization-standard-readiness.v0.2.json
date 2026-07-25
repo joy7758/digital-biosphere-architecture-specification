@@ -1,0 +1,300 @@
+{
+  "$schema": "./schemas/veap-commercialization-standard-readiness.schema.v0.2.json",
+  "document_id": "DBA-TITMAS-VEAP-COMMERCIALIZATION-STANDARD-READINESS-0.2",
+  "version": "0.2.0",
+  "status": "POST_DECISION_AUDIT_COMPLETE_COMMERCIALIZATION_STANDARD_NOT_READY",
+  "audited_at": "2026-07-25",
+  "source_baseline_commit": "2b29e0856fe6eda1326e5f7079b11a81abffd86e",
+  "source_baseline_remote_pushed": true,
+  "canonical_document": "veap-commercialization-standard-readiness-audit-v0.2.md",
+  "supersedes": "veap-commercialization-standard-readiness.v0.1.json",
+  "audit_scope": "CS-G0_THROUGH_CS-G7",
+  "audit_method": "DIRECT_MACHINE_AND_DOCUMENT_EVIDENCE_ONLY_NO_INFERENCE_TO_PASS",
+  "decision_state": {
+    "decision_id": "CS-D01",
+    "decision_record_reference": "../TITMAS-CS-D01-HUMAN-DECISION-RECORD.v0.1.json",
+    "decision_recorded": true,
+    "decision_result": "AUTHORIZE_BOUNDED_VEAP_PROBLEM_AND_SCOPE_FREEZE",
+    "accepted_scope": "INTERNAL_PROBLEM_VALIDATION_OWNER_CROSSWALK_CONCEPTUAL_CONFORMANCE_DESIGN",
+    "bounded_internal_scope_authorized": true,
+    "standing_directive_reference": "../TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.json",
+    "standing_directive_active": true,
+    "automatic_gate_approval": false,
+    "explicit_false_override": false
+  },
+  "gates": [
+    {
+      "id": "CS-G0",
+      "name": "PROBLEM_FREEZE",
+      "status": "NOT_MET",
+      "evidence_references": [
+        "veap-problem-validation-contract.v0.1.json",
+        "../TITMAS-CS-D01-HUMAN-DECISION-RECORD.v0.1.json"
+      ],
+      "observed_facts": [
+        "CS_D01_DECIDED_TRUE",
+        "PROBLEM_VALIDATION_PROTOCOL_DEFINED",
+        "VALID_PROBLEM_RECORDS_0"
+      ],
+      "missing_requirements": [
+        "VALID_INDEPENDENT_PROBLEM_RECORDS_MIN_5",
+        "INDEPENDENT_ORGANIZATION_OR_CONTEXTS_MIN_3",
+        "HIGH_PRIORITY_RECORDS_MIN_3",
+        "CONTINUE_REVIEW_INTEREST_MIN_2"
+      ],
+      "blocker_classes": [
+        "REAL_EXTERNAL_EVIDENCE_REQUIRED",
+        "EXTERNAL_VALIDATION_DECISION_REQUIRED"
+      ],
+      "next_action": "PREPARE_EXACT_CS_D02_PACKET_WITHOUT_EXTERNAL_EXECUTION"
+    },
+    {
+      "id": "CS-G1",
+      "name": "SCOPE_AUTHORITY_FREEZE",
+      "status": "NOT_MET",
+      "evidence_references": [
+        "veap-canonical-ownership-crosswalk.v0.1.json",
+        "../TITMAS-CS-D01-HUMAN-DECISION-RECORD.v0.1.json",
+        "veap-security-privacy-claim-risk-register.v0.1.json"
+      ],
+      "observed_facts": [
+        "CS_D01_DECIDED_TRUE",
+        "BOUNDED_INTERNAL_SCOPE_AUTHORIZED_TRUE",
+        "OWNERSHIP_RECORDS_14",
+        "OWNER_ACCEPTANCES_0",
+        "OPEN_RISKS_16",
+        "FORMAL_REVIEW_COMPLETE_FALSE"
+      ],
+      "missing_requirements": [
+        "BOUNDED_SPECIFICATION_OWNER",
+        "DOMAIN_OWNER_ACCEPTANCES",
+        "FORMAL_SECURITY_PRIVACY_CLAIM_REVIEW"
+      ],
+      "blocker_classes": [
+        "OWNER_ASSIGNMENT_AND_ACCEPTANCE_REQUIRED",
+        "FORMAL_REVIEW_REQUIRED"
+      ],
+      "next_action": "PREPARE_OWNER_AND_REVIEWER_ASSIGNMENT_CANDIDATES"
+    },
+    {
+      "id": "CS-G2",
+      "name": "DRAFT_CONTRACT",
+      "status": "BLOCKED",
+      "evidence_references": [
+        "titmas-commercialization-standards-roadmap-v0.1.md",
+        "../TITMAS-CS-D01-HUMAN-DECISION-RECORD.v0.1.json"
+      ],
+      "observed_facts": [
+        "VEAP_NORMATIVE_PROFILE_CREATED_FALSE",
+        "VEAP_SCHEMA_CREATED_FALSE",
+        "IMPLEMENTATION_AUTHORIZED_FALSE"
+      ],
+      "missing_requirements": [
+        "CS_G0_AND_CS_G1_PASS",
+        "NORMATIVE_PROFILE",
+        "VEAP_SCHEMA",
+        "FIXTURES",
+        "CLAIM_GUARD",
+        "REVIEW_RECORD"
+      ],
+      "blocker_classes": [
+        "UPSTREAM_GATE_REQUIRED",
+        "NORMATIVE_DRAFT_AUTHORIZATION_REQUIRED"
+      ],
+      "next_action": "WAIT_FOR_CS_G0_AND_CS_G1_PASS"
+    },
+    {
+      "id": "CS-G3",
+      "name": "EXPERIMENTAL_CONFORMANCE",
+      "status": "BLOCKED",
+      "evidence_references": [
+        "veap-predecision-conformance-cases.v0.1.json",
+        "veap-predecision-conformance-design-v0.1.md"
+      ],
+      "observed_facts": [
+        "CONCEPTUAL_CASES_20",
+        "CASES_EXECUTED_0",
+        "CASES_PASSED_0",
+        "REFERENCE_IMPLEMENTATION_CREATED_FALSE"
+      ],
+      "missing_requirements": [
+        "REFERENCE_IMPLEMENTATION",
+        "TEST_IMPLEMENTATION",
+        "EXECUTED_RESULT_SET",
+        "REPRODUCTION_GUIDE"
+      ],
+      "blocker_classes": [
+        "UPSTREAM_GATE_REQUIRED",
+        "IMPLEMENTATION_AND_EXECUTION_AUTHORIZATION_REQUIRED"
+      ],
+      "next_action": "WAIT_FOR_CS_G2_DRAFT_REVIEW_COMPLETE"
+    },
+    {
+      "id": "CS-G4",
+      "name": "INDEPENDENT_IMPLEMENTATION",
+      "status": "BLOCKED",
+      "evidence_references": [
+        "titmas-commercialization-standards-roadmap-v0.1.md",
+        "titmas-adoption-validation-framework-v0.1.md"
+      ],
+      "observed_facts": [
+        "INDEPENDENT_IMPLEMENTATIONS_0",
+        "INDEPENDENT_REVIEWERS_0"
+      ],
+      "missing_requirements": [
+        "NON_AUTHOR_IMPLEMENTATION",
+        "INDEPENDENT_REVIEW",
+        "DIFFERENCE_AND_FAILURE_LEDGER"
+      ],
+      "blocker_classes": [
+        "UPSTREAM_GATE_REQUIRED",
+        "INDEPENDENT_PARTICIPATION_REQUIRED"
+      ],
+      "next_action": "WAIT_FOR_CS_G3_EXPERIMENTAL_EVIDENCE_PACKAGE"
+    },
+    {
+      "id": "CS-G5",
+      "name": "BOUNDED_COMMERCIAL_PILOT",
+      "status": "BLOCKED",
+      "evidence_references": [
+        "titmas-commercial-ecosystem-strategy-v0.1.md",
+        "titmas-adoption-validation-framework-v0.1.md"
+      ],
+      "observed_facts": [
+        "BOUNDED_COMMERCIAL_PILOTS_0",
+        "DESIGN_PARTNERS_0"
+      ],
+      "missing_requirements": [
+        "TWO_BOUNDED_PILOTS",
+        "PILOT_OWNER_AND_SCOPE",
+        "DATA_SECURITY_COST_AND_FAILURE_CONTRACT",
+        "REPEATABILITY_EVIDENCE"
+      ],
+      "blocker_classes": [
+        "UPSTREAM_GATE_REQUIRED",
+        "EXTERNAL_PARTNER_AND_SERVICE_EVIDENCE_REQUIRED"
+      ],
+      "next_action": "WAIT_FOR_INDEPENDENT_IMPLEMENTATION_AND_SEPARATE_PILOT_DECISION"
+    },
+    {
+      "id": "CS-G6",
+      "name": "AVAILABLE_OFFERING_DECISION",
+      "status": "BLOCKED",
+      "evidence_references": [
+        "titmas-commercial-ecosystem-strategy-v0.1.md",
+        "titmas-commercialization-standards-roadmap-v0.1.md"
+      ],
+      "observed_facts": [
+        "AVAILABLE_OFFERINGS_0",
+        "CONTRACTS_CREATED_0"
+      ],
+      "missing_requirements": [
+        "LEGAL_AND_SERVICE_OWNER",
+        "PRICE_AND_TERMS",
+        "SLA_AND_SUPPORT",
+        "SECURITY_AND_ROLLBACK",
+        "AVAILABLE_OFFERING_HUMAN_DECISION"
+      ],
+      "blocker_classes": [
+        "UPSTREAM_GATE_REQUIRED",
+        "LEGAL_SERVICE_AND_COMMERCIAL_DECISION_REQUIRED"
+      ],
+      "next_action": "WAIT_FOR_REPEATABLE_SERVICE_EVIDENCE"
+    },
+    {
+      "id": "CS-G7",
+      "name": "CUSTOMER_ADOPTION_EVIDENCE",
+      "status": "BLOCKED",
+      "evidence_references": [
+        "titmas-adoption-validation-framework-v0.1.md",
+        "titmas-commercialization-standards-roadmap-v0.1.md"
+      ],
+      "observed_facts": [
+        "CUSTOMERS_VERIFIED_0",
+        "CUSTOMER_ADOPTION_FALSE",
+        "COMMERCIAL_COMMITMENTS_0"
+      ],
+      "missing_requirements": [
+        "ATTRIBUTABLE_USE",
+        "RENEWAL_OR_CONTINUED_USE",
+        "OUTCOME_AND_LIMITATION_EVIDENCE"
+      ],
+      "blocker_classes": [
+        "UPSTREAM_GATE_REQUIRED",
+        "REAL_CUSTOMER_EVIDENCE_REQUIRED"
+      ],
+      "next_action": "WAIT_FOR_AVAILABLE_OFFERING_AND_ATTRIBUTABLE_USE"
+    }
+  ],
+  "gate_summary": {
+    "gate_count": 8,
+    "pass_count": 0,
+    "not_met_count": 2,
+    "blocked_count": 6
+  },
+  "readiness_facts": {
+    "commercialization_standard_ready": false,
+    "generation_ready": false,
+    "cs_d01_decided": true,
+    "bounded_internal_scope_authorized": true,
+    "valid_problem_records": 0,
+    "owner_acceptances": 0,
+    "open_risks": 16,
+    "formal_review_complete": false,
+    "normative_profile_created": false,
+    "veap_schema_created": false,
+    "reference_implementation_created": false,
+    "conformance_cases_executed": 0,
+    "conformance_cases_passed": 0,
+    "independent_implementations": 0,
+    "bounded_commercial_pilots": 0,
+    "available_offerings": 0,
+    "customers_verified": 0,
+    "certificates_issued": 0
+  },
+  "next_decision_candidate": {
+    "id": "CS-D02",
+    "question": "Prepare an exact VEAP problem-validation execution and data-handling decision package?",
+    "status": "NOT_READY_MISSING_OWNER_REVIEWER_AND_DATA_CONTROLS",
+    "packet_preparation_allowed": true,
+    "decision_authorized": false,
+    "external_outreach_authorized": false,
+    "participant_enrollment_authorized": false,
+    "customer_data_collection_authorized": false,
+    "standing_directive_applicable_now": false,
+    "missing_preconditions": [
+      "PROBLEM_VALIDATION_OWNER",
+      "REVIEWER_AND_ESCALATION_OWNER",
+      "PARTICIPANT_SOURCE_AND_INDEPENDENCE_RULE",
+      "CONSENT_PRIVACY_RETENTION_DELETION_CONTRACT",
+      "SECURITY_PRIVACY_CLAIM_REVIEW_ROUTE",
+      "EXACT_OUTREACH_DATA_SCOPE_STOP_AND_ROLLBACK"
+    ]
+  },
+  "critical_path": [
+    "ASSIGN_BOUNDED_OWNER_AND_REVIEWER_CANDIDATES",
+    "PREPARE_EXACT_CS_D02_PACKET",
+    "RECORD_SEPARATE_CS_D02_DECISION",
+    "IF_AUTHORIZED_COLLECT_BOUNDED_PROBLEM_EVIDENCE",
+    "VALIDATE_5_3_3_2_THRESHOLDS",
+    "RECORD_SEPARATE_CS_G0_AND_CS_G1_DECISIONS",
+    "ONLY_THEN_CONSIDER_NORMATIVE_DRAFT_AUTHORIZATION"
+  ],
+  "effects": {
+    "program_decision_recorded": true,
+    "bounded_internal_work_authorization": true,
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "evidence_truth": false,
+    "external_action": false,
+    "commercial_offer": false,
+    "customer_adoption": false,
+    "certification": false,
+    "release": false
+  }
+}

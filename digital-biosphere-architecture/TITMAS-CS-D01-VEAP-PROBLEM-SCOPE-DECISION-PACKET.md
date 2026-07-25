@@ -261,8 +261,8 @@ Human Security/Privacy/Claim Review。两者均不产生 Decision 或 Authority�
 
 ## 8.3 Commercialization Standard Readiness Audit（商业化标准就绪审计）
 
-[VEAP readiness audit](architecture/veap-commercialization-standard-readiness-audit-v0.1.md) /
-[machine record](architecture/veap-commercialization-standard-readiness.v0.1.json) 已核对完整
+[VEAP post-decision readiness audit](architecture/veap-commercialization-standard-readiness-audit-v0.2.md) /
+[machine record](architecture/veap-commercialization-standard-readiness.v0.2.json) 已在决定后重新核对完整
 `CS-G0`–`CS-G7` 关键路径：
 
 ```text
@@ -273,8 +273,8 @@ VEAP_COMMERCIALIZATION_STANDARD_READY=false
 VEAP_GENERATION_READY=false
 ```
 
-审计确认 `CS-D01` 是当前第一个必须记录的 Human Decision。接受 Option A 仍不会使
-`CS-G0`、`CS-G1` 或任何下游 gate 自动 PASS。
+审计确认 `CS-D01` 已记录，但接受 Option A 没有使 `CS-G0`、`CS-G1` 或任何下游 gate
+自动 PASS；下一候选是尚未满足 Owner、Reviewer 和数据控制前置条件的 `CS-D02`。
 
 ## 8.4 Human Decision Result（人工决定结果）
 

@@ -205,9 +205,9 @@ PREDECISION_EVIDENCE_NE_HUMAN_DECISION=true
 
 ### 4.5 Commercialization Standard Readiness Audit
 
-[VEAP Commercialization Standard Readiness Audit](veap-commercialization-standard-readiness-audit-v0.1.md) /
-[machine record](veap-commercialization-standard-readiness.v0.1.json) 已按 `CS-G0`–`CS-G7`
-逐项核对直接证据：
+[VEAP Commercialization Standard Post-decision Readiness Audit](veap-commercialization-standard-readiness-audit-v0.2.md) /
+[machine record](veap-commercialization-standard-readiness.v0.2.json) 已在 `CS-D01` 决定后按
+`CS-G0`–`CS-G7` 逐项核对直接证据：
 
 ```text
 STANDARDIZATION_GATES=8
@@ -216,11 +216,12 @@ GATES_NOT_MET=2
 GATES_BLOCKED=6
 VEAP_COMMERCIALIZATION_STANDARD_READY=false
 VEAP_GENERATION_READY=false
-NEXT_REQUIRED_HUMAN_DECISION=CS-D01
+NEXT_DECISION_CANDIDATE=CS-D02
+CS_D02_DECISION_READY=false
 ```
 
-该审计确认当前内部准备材料已足够支持 Human document review；继续增加同类决定前文档
-不能关闭真实问题证据、Owner/Authority、正式 Review、实现或客户证据缺口。
+该审计确认有界内部工作已获授权，但决定本身没有关闭真实问题证据、Owner/Authority、
+正式 Review、实现或客户证据缺口。
 
 ### 4.6 CS-D01 Human Decision and Standing Directive
 
