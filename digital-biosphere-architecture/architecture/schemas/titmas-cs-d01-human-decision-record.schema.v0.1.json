@@ -1,0 +1,246 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d01-human-decision-record:0.1",
+  "title": "TITMAS CS-D01 Human Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "decided_by_ref",
+    "decided_at",
+    "source_baseline_commit",
+    "decision_result",
+    "accepted_scope",
+    "authorized_workstreams",
+    "source_references",
+    "decision_effect",
+    "predecision_artifact_effect",
+    "standing_directive_reference",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d01-human-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D01-HUMAN-DECISION-RECORD-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DECIDED_BOUNDED_INTERNAL_SCOPE_AUTHORIZED"
+    },
+    "decision_id": {
+      "const": "CS-D01"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_baseline_commit": {
+      "const": "07f7865623c5b9721315644c017d13a3a733b2ea"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_BOUNDED_VEAP_PROBLEM_AND_SCOPE_FREEZE"
+    },
+    "accepted_scope": {
+      "const": "INTERNAL_PROBLEM_VALIDATION_OWNER_CROSSWALK_CONCEPTUAL_CONFORMANCE_DESIGN"
+    },
+    "authorized_workstreams": {
+      "const": [
+        "INTERNAL_PROBLEM_VALIDATION",
+        "OWNER_CROSSWALK",
+        "CONCEPTUAL_CONFORMANCE_DESIGN"
+      ]
+    },
+    "source_references": {
+      "const": [
+        "TITMAS-CS-D01-VEAP-PROBLEM-SCOPE-DECISION-PACKET.md",
+        "TITMAS-CS-D01-AGENT-CUSTOMER-REVIEW.md",
+        "architecture/veap-commercialization-standard-readiness-audit-v0.1.md"
+      ]
+    },
+    "decision_effect": {
+      "$ref": "#/$defs/decisionEffect"
+    },
+    "predecision_artifact_effect": {
+      "$ref": "#/$defs/predecisionArtifactEffect"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.json"
+    },
+    "effects": {
+      "$ref": "#/$defs/effects"
+    }
+  },
+  "$defs": {
+    "decisionEffect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_recorded",
+        "bounded_internal_scope_authorized",
+        "cs_g0_problem_freeze_pass",
+        "cs_g1_scope_authority_freeze_pass",
+        "normative_profile_authorized",
+        "normative_schema_authorized",
+        "implementation_authorized",
+        "conformance_execution_authorized",
+        "external_outreach_authorized",
+        "participant_enrollment_authorized",
+        "customer_data_collection_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "decision_recorded": {
+          "const": true
+        },
+        "bounded_internal_scope_authorized": {
+          "const": true
+        },
+        "cs_g0_problem_freeze_pass": {
+          "const": false
+        },
+        "cs_g1_scope_authority_freeze_pass": {
+          "const": false
+        },
+        "normative_profile_authorized": {
+          "const": false
+        },
+        "normative_schema_authorized": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "conformance_execution_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "participant_enrollment_authorized": {
+          "const": false
+        },
+        "customer_data_collection_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    },
+    "predecisionArtifactEffect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorized_as_internal_inputs",
+        "retroactively_adopted",
+        "normative",
+        "implemented",
+        "executed",
+        "risk_closed"
+      ],
+      "properties": {
+        "authorized_as_internal_inputs": {
+          "const": true
+        },
+        "retroactively_adopted": {
+          "const": false
+        },
+        "normative": {
+          "const": false
+        },
+        "implemented": {
+          "const": false
+        },
+        "executed": {
+          "const": false
+        },
+        "risk_closed": {
+          "const": false
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "program_decision",
+        "bounded_internal_work_authorization",
+        "ownership",
+        "implementation",
+        "runtime",
+        "agent",
+        "entity",
+        "permission",
+        "evidence_truth",
+        "external_action",
+        "commercial_offer",
+        "customer_adoption",
+        "certification",
+        "release"
+      ],
+      "properties": {
+        "program_decision": {
+          "const": true
+        },
+        "bounded_internal_work_authorization": {
+          "const": true
+        },
+        "ownership": {
+          "const": false
+        },
+        "implementation": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "evidence_truth": {
+          "const": false
+        },
+        "external_action": {
+          "const": false
+        },
+        "commercial_offer": {
+          "const": false
+        },
+        "customer_adoption": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "release": {
+          "const": false
+        }
+      }
+    }
+  }
+}

@@ -3,10 +3,10 @@ document_id: DBA-TITMAS-CS-D01-VEAP-PROBLEM-SCOPE-DECISION-PACKET-0.1
 title: TITMAS CS-D01 VEAP Problem and Scope Freeze Decision Packet v0.1
 title_zh: TITMAS CS-D01 VEAP 问题与范围冻结决策包 v0.1
 version: 0.1.0
-status: ready-for-document-review-not-approved
+status: decided-bounded-internal-scope-authorized
 maturity: Development
 maturity_scope: entire-document
-owner_ref: NOT_ASSIGNED
+owner_ref: zhangbin
 decision_owner_ref: zhangbin
 decision_reference: CS-D01
 supersedes: NONE
@@ -19,7 +19,8 @@ document_type: non-executable-human-decision-packet
 architecture_domain: TITMAS
 primary_repository: digital-biosphere-architecture
 prepared_at: 2026-07-25
-decision_recorded: false
+decision_recorded: true
+bounded_internal_scope_authorized: true
 execution_authorized: false
 external_action_authorized: false
 authority_effect: none
@@ -35,8 +36,8 @@ Verifiable Execution Attestation Package（VEAP，可验证执行证明包）
 
 ```text
 DECISION_ID=CS-D01
-DECISION_STATUS=READY_FOR_DOCUMENT_REVIEW_NOT_APPROVED
-DECISION_RECORDED=false
+DECISION_STATUS=DECIDED_BOUNDED_INTERNAL_SCOPE_AUTHORIZED
+DECISION_RECORDED=true
 ```
 
 本决定只回答“要解决什么问题、首个开放 Profile 的边界是什么”。它不批准 Schema、
@@ -275,6 +276,29 @@ VEAP_GENERATION_READY=false
 审计确认 `CS-D01` 是当前第一个必须记录的 Human Decision。接受 Option A 仍不会使
 `CS-G0`、`CS-G1` 或任何下游 gate 自动 PASS。
 
+## 8.4 Human Decision Result（人工决定结果）
+
+Human Program Owner `zhangbin` 已于 `2026-07-25` 接受 Option A：
+
+```text
+CS-D01=AUTHORIZE_BOUNDED_VEAP_PROBLEM_AND_SCOPE_FREEZE
+accepted_scope=INTERNAL_PROBLEM_VALIDATION_OWNER_CROSSWALK_CONCEPTUAL_CONFORMANCE_DESIGN
+implementation_authorized=false
+external_outreach_authorized=false
+commercial_offer_authorized=false
+certification_authorized=false
+```
+
+规范记录：
+
+- [Human Decision Record](TITMAS-CS-D01-HUMAN-DECISION-RECORD.md)；
+- [machine decision](TITMAS-CS-D01-HUMAN-DECISION-RECORD.v0.1.json)；
+- [standing recommendation authorization](TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.md)。
+
+该结果只把既有材料纳入有界内部工作包，不追溯采纳决定前材料，不冻结 Owner／Authority，
+也不授权 normative Profile、Schema、实现、符合性执行、外联、数据收集、商业服务、
+Certificate、Certification 或发布。
+
 ## 9. Decision Preconditions（决定前置条件）
 
 Option A 可被 Human Owner 接受前至少需要：
@@ -325,7 +349,8 @@ reason=<explicit-reason>
 
 ```text
 CS_D01_PACKET_CREATED=true
-CS_D01_DECISION_RECORDED=false
+CS_D01_DECISION_RECORDED=true
+CS_D01_BOUNDED_INTERNAL_SCOPE_AUTHORIZED=true
 CS_D01_OPTION_A_RECOMMENDED_BEFORE_AGENT_REVIEW=true
 CS_D01_AGENT_CUSTOMER_REVIEW_COMPLETE=true
 CS_D01_AGENT_ADVISORY_RESULT=PASS_FOR_BOUNDED_SCOPE_FREEZE_ONLY

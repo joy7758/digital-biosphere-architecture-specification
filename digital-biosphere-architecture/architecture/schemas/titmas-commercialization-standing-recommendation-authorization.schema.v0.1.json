@@ -1,0 +1,276 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:commercialization-standing-recommendation-authorization:0.1",
+  "title": "TITMAS Commercialization Standing Recommendation Authorization v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "directive_id",
+    "decided_by_ref",
+    "authorized_at",
+    "scope",
+    "validity",
+    "source_decision_reference",
+    "directive_text",
+    "eligible_action_classes",
+    "eligibility_requirements",
+    "current_explicit_false_boundary",
+    "material_actions_require_future_exact_packet",
+    "permanent_guards",
+    "conflict_rule",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-commercialization-standing-recommendation-authorization.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "ACTIVE_BOUNDED_FAIL_CLOSED"
+    },
+    "directive_id": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "authorized_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scope": {
+      "const": "TITMAS_COMMERCIALIZATION_STANDARD_TRACK"
+    },
+    "validity": {
+      "const": "UNTIL_REVOKED"
+    },
+    "source_decision_reference": {
+      "const": "CS-D01"
+    },
+    "directive_text": {
+      "const": "并给予完全授权，再次遇到按照推荐执行"
+    },
+    "eligible_action_classes": {
+      "const": [
+        "ARCHITECTURE_AND_SPECIFICATION_GOVERNANCE",
+        "PROBLEM_VALIDATION_AND_OWNERSHIP_REVIEW_CONTRACTS",
+        "CONFORMANCE_AND_READINESS_DESIGN",
+        "DECISION_PACKET_MACHINE_RECORD_SCHEMA_AND_AUDIT",
+        "AUTHORIZED_INTERNAL_VALIDATION",
+        "PATH_SCOPED_COMMIT_AND_PUSH",
+        "FUTURE_EXACT_RECOMMENDED_BOUNDED_ACTION"
+      ]
+    },
+    "eligibility_requirements": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 12
+      }
+    },
+    "current_explicit_false_boundary": {
+      "$ref": "#/$defs/currentExplicitFalseBoundary"
+    },
+    "material_actions_require_future_exact_packet": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 12
+      }
+    },
+    "permanent_guards": {
+      "$ref": "#/$defs/permanentGuards"
+    },
+    "conflict_rule": {
+      "$ref": "#/$defs/conflictRule"
+    },
+    "effects": {
+      "$ref": "#/$defs/effects"
+    }
+  },
+  "$defs": {
+    "currentExplicitFalseBoundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "implementation_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    },
+    "permanentGuards": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_record_required",
+        "automatic_gate_approval",
+        "agent_self_approval",
+        "explicit_false_override",
+        "recommendation_is_unrecorded_decision",
+        "specification_is_implementation",
+        "schema_valid_is_conformance_pass",
+        "conformance_pass_is_certification",
+        "commercial_interest_is_customer_adoption",
+        "evidence_is_truth",
+        "evaluation_is_authority"
+      ],
+      "properties": {
+        "decision_record_required": {
+          "const": true
+        },
+        "automatic_gate_approval": {
+          "const": false
+        },
+        "agent_self_approval": {
+          "const": false
+        },
+        "explicit_false_override": {
+          "const": false
+        },
+        "recommendation_is_unrecorded_decision": {
+          "const": false
+        },
+        "specification_is_implementation": {
+          "const": false
+        },
+        "schema_valid_is_conformance_pass": {
+          "const": false
+        },
+        "conformance_pass_is_certification": {
+          "const": false
+        },
+        "commercial_interest_is_customer_adoption": {
+          "const": false
+        },
+        "evidence_is_truth": {
+          "const": false
+        },
+        "evaluation_is_authority": {
+          "const": false
+        }
+      }
+    },
+    "conflictRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "later_more_specific_human_decision_wins",
+        "conflicting_recommendations_auto_resolved",
+        "missing_precondition_fails_closed",
+        "history_preserved_after_revocation"
+      ],
+      "properties": {
+        "later_more_specific_human_decision_wins": {
+          "const": true
+        },
+        "conflicting_recommendations_auto_resolved": {
+          "const": false
+        },
+        "missing_precondition_fails_closed": {
+          "const": true
+        },
+        "history_preserved_after_revocation": {
+          "const": true
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "standing_human_delegation",
+        "automatic_authority",
+        "ownership",
+        "implementation",
+        "runtime",
+        "agent",
+        "entity",
+        "permission",
+        "evidence_truth",
+        "external_action",
+        "commercial_offer",
+        "customer_adoption",
+        "certification",
+        "release"
+      ],
+      "properties": {
+        "standing_human_delegation": {
+          "const": true
+        },
+        "automatic_authority": {
+          "const": false
+        },
+        "ownership": {
+          "const": false
+        },
+        "implementation": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "evidence_truth": {
+          "const": false
+        },
+        "external_action": {
+          "const": false
+        },
+        "commercial_offer": {
+          "const": false
+        },
+        "customer_adoption": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "release": {
+          "const": false
+        }
+      }
+    }
+  }
+}

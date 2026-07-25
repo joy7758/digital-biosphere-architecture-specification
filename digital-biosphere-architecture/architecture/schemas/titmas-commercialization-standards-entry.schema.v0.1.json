@@ -17,6 +17,8 @@
     "priority_open_artifact",
     "agent_recommendation",
     "agent_advisory_review",
+    "human_decision",
+    "standing_directive",
     "predecision_evidence",
     "readiness_audit",
     "standardization_gates",
@@ -36,7 +38,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "ROADMAP_DEFINED_EXECUTION_NOT_AUTHORIZED"
+      "const": "BOUNDED_INTERNAL_SCOPE_AUTHORIZED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -185,6 +187,103 @@
           "const": false
         },
         "human_decision_effect": {
+          "const": false
+        }
+      }
+    },
+    "human_decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "decision_result",
+        "accepted_scope",
+        "decision_record_reference",
+        "decided_by_ref",
+        "decided_at",
+        "decision_recorded",
+        "bounded_internal_scope_authorized",
+        "cs_g0_problem_freeze_pass",
+        "cs_g1_scope_authority_freeze_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized"
+      ],
+      "properties": {
+        "decision_id": {
+          "const": "CS-D01"
+        },
+        "decision_result": {
+          "const": "AUTHORIZE_BOUNDED_VEAP_PROBLEM_AND_SCOPE_FREEZE"
+        },
+        "accepted_scope": {
+          "const": "INTERNAL_PROBLEM_VALIDATION_OWNER_CROSSWALK_CONCEPTUAL_CONFORMANCE_DESIGN"
+        },
+        "decision_record_reference": {
+          "const": "TITMAS-CS-D01-HUMAN-DECISION-RECORD.v0.1.json"
+        },
+        "decided_by_ref": {
+          "const": "zhangbin"
+        },
+        "decided_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "decision_recorded": {
+          "const": true
+        },
+        "bounded_internal_scope_authorized": {
+          "const": true
+        },
+        "cs_g0_problem_freeze_pass": {
+          "const": false
+        },
+        "cs_g1_scope_authority_freeze_pass": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        }
+      }
+    },
+    "standing_directive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "directive_id",
+        "reference",
+        "active",
+        "automatic_gate_approval",
+        "agent_self_approval",
+        "explicit_false_override"
+      ],
+      "properties": {
+        "directive_id": {
+          "const": "TITMAS-CS-STANDING-001"
+        },
+        "reference": {
+          "const": "TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.json"
+        },
+        "active": {
+          "const": true
+        },
+        "automatic_gate_approval": {
+          "const": false
+        },
+        "agent_self_approval": {
+          "const": false
+        },
+        "explicit_false_override": {
           "const": false
         }
       }
@@ -472,14 +571,14 @@
       ],
       "properties": {
         "id": {
-          "const": "CS-D01"
+          "const": "CS-D02"
         },
         "question": {
           "type": "string",
           "minLength": 20
         },
         "status": {
-          "const": "READY_FOR_DOCUMENT_REVIEW_NOT_APPROVED"
+          "const": "NOT_READY_MISSING_OWNER_REVIEWER_AND_DATA_CONTROLS"
         }
       }
     },

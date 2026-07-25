@@ -3,11 +3,11 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: roadmap-defined-execution-not-authorized
+status: bounded-internal-scope-authorized-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
-owner_ref: NOT_ASSIGNED
-decision_reference: NOT_DECIDED
+owner_ref: zhangbin
+decision_reference: CS-D01
 supersedes: NONE
 superseded_by: NONE
 compatibility_statement: "Development governance document; no implementation, conformance, certification, or commercial compatibility claim."
@@ -19,6 +19,7 @@ architecture_domain: TITMAS
 primary_repository: digital-biosphere-architecture
 observed_at: 2026-07-25
 roadmap_defined: true
+bounded_internal_scope_authorized: true
 standardization_execution_authorized: false
 commercial_validation_authorized: false
 available_offerings: 0
@@ -165,9 +166,10 @@ AUTHORITY_SAFETY_FAILURES=0
 结论只支持 bounded problem-and-scope freeze（有界问题与范围冻结）。它明确反对当前采购、
 实施或 Certificate 声明，不满足 `CS-G0` 的真实外部组织问题证据。
 
-### 4.4 Pre-decision Ownership and Case Evidence
+### 4.4 Authorized Internal Ownership and Case Inputs
 
-在 `CS-D01` 尚未由 Human Owner 决定的边界内，已补充两类可审查材料：
+`CS-D01` 已由 Human Owner 决定。下列决定前材料现在属于有界内部工作包的输入，但没有
+被追溯采纳为 normative specification、实现、符合性结果或已关闭风险：
 
 - [VEAP Canonical Ownership Crosswalk](veap-canonical-ownership-crosswalk-v0.1.md) /
   [machine record](veap-canonical-ownership-crosswalk.v0.1.json)：14 个责任表面已登记，
@@ -219,6 +221,29 @@ NEXT_REQUIRED_HUMAN_DECISION=CS-D01
 
 该审计确认当前内部准备材料已足够支持 Human document review；继续增加同类决定前文档
 不能关闭真实问题证据、Owner/Authority、正式 Review、实现或客户证据缺口。
+
+### 4.6 CS-D01 Human Decision and Standing Directive
+
+[CS-D01 Human Decision Record](../TITMAS-CS-D01-HUMAN-DECISION-RECORD.md) 已记录：
+
+```text
+CS_D01_HUMAN_DECISION_RECORDED=true
+CS_D01_BOUNDED_INTERNAL_SCOPE_AUTHORIZED=true
+ACCEPTED_SCOPE=INTERNAL_PROBLEM_VALIDATION_OWNER_CROSSWALK_CONCEPTUAL_CONFORMANCE_DESIGN
+```
+
+同时，
+[standing recommendation authorization](../TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.md)
+允许未来在本路线内对满足 exact target、scope、preconditions、effects 和 stop rules 的推荐
+直接形成独立有界决定记录。它不允许自动 Gate approval、自我批准或覆盖本次明确的 false：
+
+```text
+IMPLEMENTATION_AUTHORIZED=false
+EXTERNAL_OUTREACH_AUTHORIZED=false
+COMMERCIAL_OFFER_AUTHORIZED=false
+CERTIFICATION_AUTHORIZED=false
+RELEASE_AUTHORIZED=false
+```
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -362,7 +387,7 @@ Strategy
 | Gate | Required evidence | Exit result | Current |
 |---|---|---|---|
 | `CS-G0` Problem Freeze | 5 个独立问题记录；至少 3 个 HIGH；明确现有替代方案 | 单一首要问题和受众 | `NOT_MET` |
-| `CS-G1` Scope/Authority Freeze | exact VEAP scope、canonical ownership crosswalk、Owner、Human Decision | Draft work authorized | `NOT_MET`：crosswalk candidate 已定义，Owner/Decision 未冻结 |
+| `CS-G1` Scope/Authority Freeze | exact VEAP scope、canonical ownership crosswalk、Owner、Human Decision | Draft work authorized | `NOT_MET`：CS-D01 已记录，但 crosswalk acceptance、Specification Owner 和正式 Review 未冻结 |
 | `CS-G2` Draft Contract | normative profile、Schema、fixtures、claim guard、security review | Draft review complete | `NOT_MET` |
 | `CS-G3` Experimental Conformance | reference implementation、全部 mandatory negative cases、结果集和复现指南 | Experimental evidence package | `NOT_MET` |
 | `CS-G4` Independent Implementation | 至少一个非原作者实现和 reviewer；差异/失败保留 | Candidate consideration | `NOT_MET` |
@@ -453,9 +478,9 @@ known_limitations: []
 ## 12. Next Decision Candidate（下一人工决定候选）
 
 ```yaml
-decision_id: CS-D01
-question: Authorize a bounded VEAP problem-and-scope freeze package?
-current_recommendation: PREPARE_FOR_HUMAN_REVIEW
+decision_id: CS-D02
+question: Prepare an exact VEAP problem-validation execution and data-handling decision package?
+current_recommendation: PREPARE_PACKET_ONLY
 allowed_now:
   - internal_document_review
   - source_and_owner_crosswalk
@@ -466,16 +491,22 @@ not_allowed_now:
   - implementation
   - external_outreach
   - participant_enrollment
+  - customer_data_collection
   - commercial_offer
   - certificate_issue
-required_before_approval:
-  - specification_authority_and_owner
-  - exact canonical_source_crosswalk
-  - security_privacy_and_claim_review
-  - adoption_validation_owner
-  - explicit_standardization_scope
-decision_status: READY_FOR_DOCUMENT_REVIEW_NOT_APPROVED
+required_before_packet_is_decidable:
+  - problem_validation_owner
+  - reviewer_and_escalation_owner
+  - participant_source_and_independence_rule
+  - consent_privacy_retention_deletion_contract
+  - security_and_claim_review_route
+  - exact outreach_and_data_scope
+  - stop_and_rollback_conditions
+decision_status: NOT_READY_MISSING_OWNER_REVIEWER_AND_DATA_CONTROLS
 ```
+
+`CS-D02` 当前只允许准备 exact packet。由于 Owner、Reviewer、参与者来源和数据处理控制
+尚未直接证明，常设指令的 prerequisites 不满足，因此不会自动授权外联或数据收集。
 
 ## 13. Immediate Work Order（近期工作顺序）
 
@@ -483,7 +514,8 @@ decision_status: READY_FOR_DOCUMENT_REVIEW_NOT_APPROVED
    execution-accountability 问题证据；
 2. **Freeze ownership**：明确 TITMAS exchange profile、DBOS canonical record、EEOAP
    accountability 和 SAEE evaluation 的各自权属；
-3. **Draft the package contract**：只在 `CS-D01` 批准后创建 normative/schema work item；
+3. **Draft the package contract**：只在 `CS-G0`、`CS-G1` 都有直接证据并经后继决定后创建
+   normative/schema work item；
 4. **Build conformance before product UI**：先定义失败与结果集，再设计平台；
 5. **Run one vertical slice**：AGT/OTel observation → DBOS admission → VEAP → verification →
    SAEE read-only input；
@@ -498,7 +530,11 @@ TITMAS_PRIORITY_VALUE_PROBLEM=AGENT_EXECUTION_ACCOUNTABILITY
 TITMAS_PRIORITY_OPEN_ARTIFACT=VERIFIABLE_EXECUTION_ATTESTATION_PACKAGE_PROFILE_CANDIDATE
 TITMAS_CS_D01_PACKET_CREATED=true
 TITMAS_CS_D01_AGENT_ADVISORY_REVIEW=PASS_FOR_BOUNDED_SCOPE_FREEZE_ONLY
-TITMAS_CS_D01_HUMAN_DECISION_RECORDED=false
+TITMAS_CS_D01_HUMAN_DECISION_RECORDED=true
+TITMAS_CS_D01_BOUNDED_INTERNAL_SCOPE_AUTHORIZED=true
+TITMAS_CS_STANDING_RECOMMENDATION_DIRECTIVE_ACTIVE=true
+TITMAS_NEXT_DECISION_CANDIDATE=CS-D02
+TITMAS_CS_D02_DECISION_READY=false
 TITMAS_VEAP_OWNERSHIP_CROSSWALK_DEFINED=true
 TITMAS_VEAP_OWNERSHIP_RECORDS=14
 TITMAS_VEAP_OWNERSHIP_FROZEN=false
