@@ -17,6 +17,7 @@
     "priority_open_artifact",
     "agent_recommendation",
     "agent_advisory_review",
+    "predecision_evidence",
     "standardization_gates",
     "current_facts",
     "authority_boundaries",
@@ -181,6 +182,58 @@
         },
         "cs_g0_effect": {
           "const": false
+        },
+        "human_decision_effect": {
+          "const": false
+        }
+      }
+    },
+    "predecision_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ownership_crosswalk_reference",
+        "ownership_crosswalk_defined",
+        "ownership_record_count",
+        "ownership_frozen",
+        "specification_authority_assigned",
+        "conformance_design_reference",
+        "conformance_catalog_reference",
+        "conceptual_case_count",
+        "executed_case_count",
+        "passed_case_count",
+        "human_decision_effect"
+      ],
+      "properties": {
+        "ownership_crosswalk_reference": {
+          "const": "architecture/veap-canonical-ownership-crosswalk.v0.1.json"
+        },
+        "ownership_crosswalk_defined": {
+          "const": true
+        },
+        "ownership_record_count": {
+          "const": 14
+        },
+        "ownership_frozen": {
+          "const": false
+        },
+        "specification_authority_assigned": {
+          "const": false
+        },
+        "conformance_design_reference": {
+          "const": "architecture/veap-predecision-conformance-design-v0.1.md"
+        },
+        "conformance_catalog_reference": {
+          "const": "architecture/veap-predecision-conformance-cases.v0.1.json"
+        },
+        "conceptual_case_count": {
+          "const": 20
+        },
+        "executed_case_count": {
+          "const": 0
+        },
+        "passed_case_count": {
+          "const": 0
         },
         "human_decision_effect": {
           "const": false

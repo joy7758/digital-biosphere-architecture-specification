@@ -88,6 +88,12 @@ VEAP Profile candidate 只定义可携带的执行证明 envelope（封装）和
 
 ## 4. Canonical Ownership Crosswalk（规范权属交叉表）
 
+详细审查材料：
+
+- [VEAP Canonical Ownership Crosswalk](architecture/veap-canonical-ownership-crosswalk-v0.1.md)；
+- [machine-readable ownership record](architecture/veap-canonical-ownership-crosswalk.v0.1.json)；
+- [ownership record Schema](architecture/schemas/veap-canonical-ownership-crosswalk.schema.v0.1.json)。
+
 | Surface | Canonical Owner boundary | VEAP may carry | VEAP must not do |
 |---|---|---|---|
 | Identity / lifecycle | DBOS | identity/version/reference | create or activate identity |
@@ -99,7 +105,9 @@ VEAP Profile candidate 只定义可携带的执行证明 envelope（封装）和
 | Architecture decision | DBA / Human Architecture Authority | Decision reference | self-adopt scope |
 | Commercial service | future legal/service Owner | service reference if separately created | sell standard Authority |
 
-该表仍需各 Domain Owner 接受后才能进入 `CS-G1 PASS`。
+该表已登记 14 个责任表面，但仍需各 Domain Owner 接受并由 Human Decision 冻结后才能进入
+`CS-G1 PASS`。当前 `VEAP_OWNERSHIP_FROZEN=false`，
+`VEAP_SPECIFICATION_AUTHORITY_ASSIGNED=false`。
 
 ## 5. Options（备选方案）
 
@@ -205,6 +213,27 @@ CS_G0_PROBLEM_FREEZE_PASS=false
 评审支持 Option A，但不支持当前实现、采购、Offering 或 Certificate。`3/6` overall verdict
 为 `NOT_RECOMMENDED`，`5/6` 对当前 enterprise buyer 给出 `NO`，这些负面结果已保留。
 
+## 8.1 Pre-decision Conformance Case Design（决定前符合性用例设计）
+
+为把智能体评审中的主要反对意见转化为可审查失败语义，已建立：
+
+- [VEAP Pre-decision Conformance Design](architecture/veap-predecision-conformance-design-v0.1.md)；
+- [20-case machine catalog](architecture/veap-predecision-conformance-cases.v0.1.json)；
+- [catalog Schema](architecture/schemas/veap-predecision-conformance-case-catalog.schema.v0.1.json)。
+
+20 个 case 覆盖 Ownership、Provenance、Semantic Non-elevation、Lifecycle Failure 和
+Bounded Positive。它们全部是设计输入：
+
+```text
+VEAP_CONCEPTUAL_CASES_DEFINED=20
+VEAP_CONFORMANCE_TESTS_IMPLEMENTED=0
+VEAP_CONFORMANCE_CASES_EXECUTED=0
+VEAP_CONFORMANCE_CASES_PASSED=0
+```
+
+case catalog 合法不等于测试已实现、已执行或已通过，也不产生 Profile、Schema、
+Certification 或 Human Decision。
+
 ## 9. Decision Preconditions（决定前置条件）
 
 Option A 可被 Human Owner 接受前至少需要：
@@ -265,7 +294,12 @@ CS_G1_SCOPE_AUTHORITY_FREEZE_PASS=false
 VEAP_NORMATIVE_PROFILE_CREATED=false
 VEAP_SCHEMA_CREATED=false
 VEAP_IMPLEMENTATION_CREATED=false
+VEAP_OWNERSHIP_CROSSWALK_DEFINED=true
+VEAP_OWNERSHIP_FROZEN=false
+VEAP_SPECIFICATION_AUTHORITY_ASSIGNED=false
+VEAP_CONCEPTUAL_CASES_DEFINED=20
 VEAP_CONFORMANCE_CASES_EXECUTED=0
+VEAP_CONFORMANCE_CASES_PASSED=0
 VEAP_CERTIFICATES_ISSUED=0
 
 AUTHORITY_CHANGED=false

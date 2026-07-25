@@ -1,0 +1,229 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:veap-predecision-conformance-case-catalog:0.1",
+  "title": "VEAP Pre-decision Conformance Case Catalog v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "designed_at",
+    "profile_reference",
+    "ownership_crosswalk_reference",
+    "case_count",
+    "group_count",
+    "executed_case_count",
+    "passed_case_count",
+    "cases",
+    "gate_effect",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/veap-predecision-conformance-case-catalog.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-VEAP-PREDECISION-CONFORMANCE-CASES-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DESIGN_ONLY_ALL_CASES_NOT_EXECUTED"
+    },
+    "decision_reference": {
+      "const": "CS-D01_NOT_DECIDED"
+    },
+    "designed_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "profile_reference": {
+      "const": "NOT_CREATED"
+    },
+    "ownership_crosswalk_reference": {
+      "const": "veap-canonical-ownership-crosswalk.v0.1.json"
+    },
+    "case_count": {
+      "const": 20
+    },
+    "group_count": {
+      "const": 5
+    },
+    "executed_case_count": {
+      "const": 0
+    },
+    "passed_case_count": {
+      "const": 0
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "$ref": "#/$defs/case"
+      }
+    },
+    "gate_effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog_defined",
+        "profile_authorized",
+        "schema_authorized",
+        "test_implementation_authorized",
+        "execution_authorized",
+        "conformance_pass_created",
+        "certification_created"
+      ],
+      "properties": {
+        "catalog_defined": {
+          "const": true
+        },
+        "profile_authorized": {
+          "const": false
+        },
+        "schema_authorized": {
+          "const": false
+        },
+        "test_implementation_authorized": {
+          "const": false
+        },
+        "execution_authorized": {
+          "const": false
+        },
+        "conformance_pass_created": {
+          "const": false
+        },
+        "certification_created": {
+          "const": false
+        }
+      }
+    },
+    "effects": {
+      "$ref": "#/$defs/allFalseEffects"
+    }
+  },
+  "$defs": {
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "group",
+        "title",
+        "input_condition",
+        "expected_result",
+        "mandatory_assertions",
+        "prohibited_inferences",
+        "execution_status"
+      ],
+      "properties": {
+        "case_id": {
+          "type": "string",
+          "pattern": "^VEAP-(OWN|PROV|SEM|LIFE|POS)-[0-9]{3}$"
+        },
+        "group": {
+          "enum": [
+            "OWNERSHIP",
+            "PROVENANCE",
+            "SEMANTIC_NON_ELEVATION",
+            "LIFECYCLE_FAILURE",
+            "BOUNDED_POSITIVE"
+          ]
+        },
+        "title": {
+          "type": "string",
+          "minLength": 8
+        },
+        "input_condition": {
+          "type": "string",
+          "minLength": 20
+        },
+        "expected_result": {
+          "enum": [
+            "REJECT",
+            "BLOCKED",
+            "CONFLICTED",
+            "NOT_ASSESSED",
+            "UNSUPPORTED",
+            "ACCEPT_CANDIDATE",
+            "ACCEPT_PARTIAL_CANDIDATE"
+          ]
+        },
+        "mandatory_assertions": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 4
+          }
+        },
+        "prohibited_inferences": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 4
+          }
+        },
+        "execution_status": {
+          "const": "NOT_EXECUTED"
+        }
+      }
+    },
+    "allFalseEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "ownership",
+        "runtime",
+        "agent",
+        "entity",
+        "permission",
+        "evidence_truth",
+        "evaluation",
+        "implementation",
+        "release"
+      ],
+      "properties": {
+        "authority": {
+          "const": false
+        },
+        "ownership": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "evidence_truth": {
+          "const": false
+        },
+        "evaluation": {
+          "const": false
+        },
+        "implementation": {
+          "const": false
+        },
+        "release": {
+          "const": false
+        }
+      }
+    }
+  }
+}

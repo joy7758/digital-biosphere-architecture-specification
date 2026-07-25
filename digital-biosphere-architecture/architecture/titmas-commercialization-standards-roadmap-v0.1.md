@@ -165,6 +165,30 @@ AUTHORITY_SAFETY_FAILURES=0
 结论只支持 bounded problem-and-scope freeze（有界问题与范围冻结）。它明确反对当前采购、
 实施或 Certificate 声明，不满足 `CS-G0` 的真实外部组织问题证据。
 
+### 4.4 Pre-decision Ownership and Case Evidence
+
+在 `CS-D01` 尚未由 Human Owner 决定的边界内，已补充两类可审查材料：
+
+- [VEAP Canonical Ownership Crosswalk](veap-canonical-ownership-crosswalk-v0.1.md) /
+  [machine record](veap-canonical-ownership-crosswalk.v0.1.json)：14 个责任表面已登记，
+  但 Owner acceptance 为 0，Ownership 与 Specification Authority 均未冻结；
+- [VEAP Pre-decision Conformance Design](veap-predecision-conformance-design-v0.1.md) /
+  [20-case catalog](veap-predecision-conformance-cases.v0.1.json)：覆盖 ownership、
+  provenance、semantic non-elevation、lifecycle failure 和 bounded positive；全部
+  `NOT_EXECUTED`，PASS 为 0。
+
+```text
+VEAP_OWNERSHIP_CROSSWALK_DEFINED=true
+VEAP_OWNERSHIP_RECORDS=14
+VEAP_OWNERSHIP_FROZEN=false
+VEAP_SPECIFICATION_AUTHORITY_ASSIGNED=false
+
+VEAP_CONCEPTUAL_CASES_DEFINED=20
+VEAP_CONFORMANCE_CASES_EXECUTED=0
+VEAP_CONFORMANCE_CASES_PASSED=0
+PREDECISION_EVIDENCE_NE_HUMAN_DECISION=true
+```
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -307,7 +331,7 @@ Strategy
 | Gate | Required evidence | Exit result | Current |
 |---|---|---|---|
 | `CS-G0` Problem Freeze | 5 个独立问题记录；至少 3 个 HIGH；明确现有替代方案 | 单一首要问题和受众 | `NOT_MET` |
-| `CS-G1` Scope/Authority Freeze | exact VEAP scope、canonical ownership crosswalk、Owner、Human Decision | Draft work authorized | `NOT_MET` |
+| `CS-G1` Scope/Authority Freeze | exact VEAP scope、canonical ownership crosswalk、Owner、Human Decision | Draft work authorized | `NOT_MET`：crosswalk candidate 已定义，Owner/Decision 未冻结 |
 | `CS-G2` Draft Contract | normative profile、Schema、fixtures、claim guard、security review | Draft review complete | `NOT_MET` |
 | `CS-G3` Experimental Conformance | reference implementation、全部 mandatory negative cases、结果集和复现指南 | Experimental evidence package | `NOT_MET` |
 | `CS-G4` Independent Implementation | 至少一个非原作者实现和 reviewer；差异/失败保留 | Candidate consideration | `NOT_MET` |
@@ -444,12 +468,18 @@ TITMAS_PRIORITY_OPEN_ARTIFACT=VERIFIABLE_EXECUTION_ATTESTATION_PACKAGE_PROFILE_C
 TITMAS_CS_D01_PACKET_CREATED=true
 TITMAS_CS_D01_AGENT_ADVISORY_REVIEW=PASS_FOR_BOUNDED_SCOPE_FREEZE_ONLY
 TITMAS_CS_D01_HUMAN_DECISION_RECORDED=false
+TITMAS_VEAP_OWNERSHIP_CROSSWALK_DEFINED=true
+TITMAS_VEAP_OWNERSHIP_RECORDS=14
+TITMAS_VEAP_OWNERSHIP_FROZEN=false
+TITMAS_VEAP_SPECIFICATION_AUTHORITY_ASSIGNED=false
+TITMAS_VEAP_CONCEPTUAL_CASES_DEFINED=20
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false
 TITMAS_VEAP_NORMATIVE_PROFILE_CREATED=false
 TITMAS_VEAP_SCHEMA_CREATED=false
 TITMAS_VEAP_REFERENCE_IMPLEMENTATION_CREATED=false
 TITMAS_VEAP_CONFORMANCE_CASES_EXECUTED=0
+TITMAS_VEAP_CONFORMANCE_CASES_PASSED=0
 TITMAS_VEAP_INDEPENDENT_IMPLEMENTATIONS=0
 
 TITMAS_COMMERCIAL_VALIDATION_READY=false

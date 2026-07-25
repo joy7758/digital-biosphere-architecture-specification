@@ -1,0 +1,238 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:veap-canonical-ownership-crosswalk:0.1",
+  "title": "VEAP Canonical Ownership Crosswalk v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "canonical_document",
+    "record_count",
+    "records",
+    "unresolved_decisions",
+    "current_facts",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/veap-canonical-ownership-crosswalk.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-VEAP-CANONICAL-OWNERSHIP-CROSSWALK-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PREDECISION_CANDIDATE_OWNERSHIP_NOT_FROZEN"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "decision_reference": {
+      "const": "CS-D01_NOT_DECIDED"
+    },
+    "canonical_document": {
+      "const": "veap-canonical-ownership-crosswalk-v0.1.md"
+    },
+    "record_count": {
+      "const": 14
+    },
+    "records": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/record"
+      }
+    },
+    "unresolved_decisions": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 4
+      },
+      "contains": {
+        "const": "CS-D01"
+      }
+    },
+    "current_facts": {
+      "$ref": "#/$defs/allFalseFacts"
+    },
+    "effects": {
+      "$ref": "#/$defs/allFalseEffects"
+    }
+  },
+  "$defs": {
+    "record": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "surface_id",
+        "candidate_owner",
+        "authority_status",
+        "canonical_source_status",
+        "veap_allowed_effect",
+        "prohibited_effects",
+        "blocking_decisions"
+      ],
+      "properties": {
+        "surface_id": {
+          "enum": [
+            "PROGRAM_ARCHITECTURE_RULE",
+            "VEAP_EXCHANGE_PROFILE",
+            "ENTITY_IDENTITY_LIFECYCLE",
+            "CAPABILITY_PERMISSION",
+            "EXECUTION_RECORD",
+            "RUNTIME_OBSERVATION",
+            "EVIDENCE_MATERIAL_PACKAGE",
+            "EVIDENCE_ADMISSION_CANONICAL_EVIDENCE",
+            "ACCOUNTABILITY_STATEMENT",
+            "VERIFICATION_RESULT",
+            "EVOLUTION_EVALUATION",
+            "GOVERNANCE_DECISION",
+            "COMMERCIAL_SERVICE",
+            "CERTIFICATION"
+          ]
+        },
+        "candidate_owner": {
+          "type": "string",
+          "minLength": 4
+        },
+        "authority_status": {
+          "enum": [
+            "RESPONSIBILITY_DOMAIN_CONFIRMED",
+            "UNASSIGNED",
+            "EXTERNAL_SOURCE_SPECIFIC",
+            "SOURCE_SURFACES_UNRESOLVED",
+            "SOURCE_SPECIFIC_PLUS_DBOS_BOUNDARY",
+            "EXPLICIT_DECISION_REQUIRED",
+            "NOT_APPLICABLE"
+          ]
+        },
+        "canonical_source_status": {
+          "type": "string",
+          "minLength": 4
+        },
+        "veap_allowed_effect": {
+          "type": "string",
+          "minLength": 4
+        },
+        "prohibited_effects": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 4
+          }
+        },
+        "blocking_decisions": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 4
+          }
+        }
+      }
+    },
+    "allFalseFacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ownership_frozen",
+        "specification_authority_assigned",
+        "domain_owner_acceptances",
+        "normative_profile_authorized",
+        "implementation_authorized",
+        "external_action_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized"
+      ],
+      "properties": {
+        "ownership_frozen": {
+          "const": false
+        },
+        "specification_authority_assigned": {
+          "const": false
+        },
+        "domain_owner_acceptances": {
+          "const": 0
+        },
+        "normative_profile_authorized": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "external_action_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        }
+      }
+    },
+    "allFalseEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "ownership",
+        "runtime",
+        "agent",
+        "entity",
+        "permission",
+        "evidence_truth",
+        "evaluation",
+        "implementation",
+        "release"
+      ],
+      "properties": {
+        "authority": {
+          "const": false
+        },
+        "ownership": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "evidence_truth": {
+          "const": false
+        },
+        "evaluation": {
+          "const": false
+        },
+        "implementation": {
+          "const": false
+        },
+        "release": {
+          "const": false
+        }
+      }
+    }
+  }
+}

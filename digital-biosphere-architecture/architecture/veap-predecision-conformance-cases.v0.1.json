@@ -1,0 +1,343 @@
+{
+  "$schema": "./schemas/veap-predecision-conformance-case-catalog.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-VEAP-PREDECISION-CONFORMANCE-CASES-0.1",
+  "version": "0.1.0",
+  "status": "DESIGN_ONLY_ALL_CASES_NOT_EXECUTED",
+  "decision_reference": "CS-D01_NOT_DECIDED",
+  "designed_at": "2026-07-25",
+  "profile_reference": "NOT_CREATED",
+  "ownership_crosswalk_reference": "veap-canonical-ownership-crosswalk.v0.1.json",
+  "case_count": 20,
+  "group_count": 5,
+  "executed_case_count": 0,
+  "passed_case_count": 0,
+  "cases": [
+    {
+      "case_id": "VEAP-OWN-001",
+      "group": "OWNERSHIP",
+      "title": "VEAP profile claims DBOS canonical object ownership",
+      "input_condition": "Envelope declares VEAP as owner of identity, execution, evidence or verification objects.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "VEAP_EXCHANGE_PROFILE_ONLY",
+        "DBOS_CANONICAL_BOUNDARY_PRESERVED"
+      ],
+      "prohibited_inferences": [
+        "VEAP_OWNS_DBOS_OBJECT"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-OWN-002",
+      "group": "OWNERSHIP",
+      "title": "EEOAP canonical version or issuer unresolved",
+      "input_condition": "Accountability reference names EEOAP without an accepted canonical version and issuer.",
+      "expected_result": "BLOCKED",
+      "mandatory_assertions": [
+        "EEOAP_SOURCE_VERSION_REQUIRED",
+        "UNKNOWN_PRESERVED"
+      ],
+      "prohibited_inferences": [
+        "TITMAS_REWRITES_EEOAP"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-OWN-003",
+      "group": "OWNERSHIP",
+      "title": "Commercial implementation claims Specification Authority",
+      "input_condition": "A paid service declares its implementation behavior to be the normative VEAP standard.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "IMPLEMENTATION_NE_SPECIFICATION_AUTHORITY",
+        "OPEN_PROFILE_INDEPENDENCE_PRESERVED"
+      ],
+      "prohibited_inferences": [
+        "PAYMENT_CREATES_SPECIFICATION_AUTHORITY"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-OWN-004",
+      "group": "OWNERSHIP",
+      "title": "Two sources claim the same canonical Owner",
+      "input_condition": "Two records claim incompatible canonical owners for the same object, scope and version.",
+      "expected_result": "CONFLICTED",
+      "mandatory_assertions": [
+        "BOTH_SOURCES_PRESERVED",
+        "NO_AUTOMATIC_WINNER"
+      ],
+      "prohibited_inferences": [
+        "LATEST_TIMESTAMP_WINS",
+        "HIGHER_STATUS_WINS"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-PROV-001",
+      "group": "PROVENANCE",
+      "title": "Missing subject reference",
+      "input_condition": "Envelope has execution material but no subject/entity reference or issuer namespace.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "SUBJECT_REFERENCE_REQUIRED",
+        "ANONYMOUS_SUCCESS_FORBIDDEN"
+      ],
+      "prohibited_inferences": [
+        "IDENTITY_INFERRED_FROM_OUTPUT"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-PROV-002",
+      "group": "PROVENANCE",
+      "title": "Framework-local agent ID presented as DBOS entity",
+      "input_condition": "A framework agent identifier is labeled as a DBOS entity without registration or binding status.",
+      "expected_result": "NOT_ASSESSED",
+      "mandatory_assertions": [
+        "FRAMEWORK_AGENT_ID_NE_DBOS_ENTITY_ID",
+        "BINDING_STATUS_REQUIRED"
+      ],
+      "prohibited_inferences": [
+        "FRAMEWORK_ID_AUTOMATICALLY_REGISTERED"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-PROV-003",
+      "group": "PROVENANCE",
+      "title": "Missing execution source or version",
+      "input_condition": "Execution reference has an ID but no source, runtime version or task scope.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "EXECUTION_SOURCE_VERSION_REQUIRED",
+        "TASK_SCOPE_REQUIRED"
+      ],
+      "prohibited_inferences": [
+        "EXECUTION_SUCCESS_INFERRED"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-PROV-004",
+      "group": "PROVENANCE",
+      "title": "Observation without Evidence Admission",
+      "input_condition": "Telemetry or Runtime observation is placed in evidence references without a DBOS admission result.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "OBSERVATION_NE_EVIDENCE",
+        "ADMISSION_REFERENCE_REQUIRED"
+      ],
+      "prohibited_inferences": [
+        "TELEMETRY_IS_CANONICAL_EVIDENCE"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-PROV-005",
+      "group": "PROVENANCE",
+      "title": "Evidence digest mismatch",
+      "input_condition": "Referenced evidence bytes do not match the declared digest or algorithm.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "DIGEST_BINDING_REQUIRED",
+        "INTEGRITY_FAILURE_RETAINED"
+      ],
+      "prohibited_inferences": [
+        "MISMATCHED_EVIDENCE_ACCEPTED"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-SEM-001",
+      "group": "SEMANTIC_NON_ELEVATION",
+      "title": "Evidence treated as Truth",
+      "input_condition": "Envelope claims that an admitted evidence reference proves the asserted outcome is true.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "EVIDENCE_NE_TRUTH",
+        "LIMITATION_REQUIRED"
+      ],
+      "prohibited_inferences": [
+        "EVIDENCE_PROVES_CORRECTNESS"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-SEM-002",
+      "group": "SEMANTIC_NON_ELEVATION",
+      "title": "Verification PASS grants Permission",
+      "input_condition": "A verification result is used as an authorization or permission grant.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "VERIFICATION_NE_PERMISSION",
+        "AUTHORIZATION_REFERENCE_SEPARATE"
+      ],
+      "prohibited_inferences": [
+        "PASS_GRANTS_PERMISSION"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-SEM-003",
+      "group": "SEMANTIC_NON_ELEVATION",
+      "title": "VEAP generates Fitness",
+      "input_condition": "Envelope calculates or inserts reliability, stability or fitness without a SAEE result reference.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "VEAP_DOES_NOT_CALCULATE_FITNESS",
+        "SAEE_REFERENCE_REQUIRED_FOR_EVALUATION"
+      ],
+      "prohibited_inferences": [
+        "VEAP_OWNS_EVOLUTION_EVALUATION"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-SEM-004",
+      "group": "SEMANTIC_NON_ELEVATION",
+      "title": "SAEE Recommendation becomes Decision",
+      "input_condition": "A SAEE recommendation reference is labeled adopted, authorized or executed without a separate Decision.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "RECOMMENDATION_NE_DECISION",
+        "DECISION_NE_EXECUTION"
+      ],
+      "prohibited_inferences": [
+        "SAEE_RECOMMENDATION_AUTO_ADOPTED"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-SEM-005",
+      "group": "SEMANTIC_NON_ELEVATION",
+      "title": "Attestation marketed as Certificate",
+      "input_condition": "Envelope or UI claims certified, guaranteed safe, correct or compliant without an authorized Certification body.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "ATTESTATION_NE_CERTIFICATION",
+        "CERTIFICATE_TERM_FORBIDDEN_CURRENTLY"
+      ],
+      "prohibited_inferences": [
+        "TITMAS_CERTIFIED_AGENT",
+        "GUARANTEED_SAFE_CORRECT_OR_COMPLIANT"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-LIFE-001",
+      "group": "LIFECYCLE_FAILURE",
+      "title": "Duplicate or replayed execution material",
+      "input_condition": "The same source event, execution reference and digest are submitted again as a new success.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "REPLAY_DETECTED",
+        "NO_SECOND_SUCCESS"
+      ],
+      "prohibited_inferences": [
+        "DUPLICATE_CREATES_NEW_EXECUTION"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-LIFE-002",
+      "group": "LIFECYCLE_FAILURE",
+      "title": "Partial observation hidden",
+      "input_condition": "Sampling, drop or partial-success is known but omitted from limitations.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "PARTIAL_STATUS_PROPAGATED",
+        "KNOWN_DROP_RETAINED"
+      ],
+      "prohibited_inferences": [
+        "PARTIAL_MATERIAL_PRESENTED_COMPLETE"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-LIFE-003",
+      "group": "LIFECYCLE_FAILURE",
+      "title": "Revoked attestation used as current",
+      "input_condition": "Attestation has an effective revocation but is presented as current and valid.",
+      "expected_result": "REJECT",
+      "mandatory_assertions": [
+        "REVOCATION_STATUS_CHECKED",
+        "HISTORY_PRESERVED"
+      ],
+      "prohibited_inferences": [
+        "REVOKED_IS_CURRENT"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-LIFE-004",
+      "group": "LIFECYCLE_FAILURE",
+      "title": "Unknown profile version",
+      "input_condition": "Consumer receives an unsupported or unknown VEAP profile version.",
+      "expected_result": "UNSUPPORTED",
+      "mandatory_assertions": [
+        "UNKNOWN_VERSION_FAILS_CLOSED",
+        "NO_SILENT_DOWNGRADE"
+      ],
+      "prohibited_inferences": [
+        "UNKNOWN_VERSION_ACCEPTED_AS_CURRENT"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-POS-001",
+      "group": "BOUNDED_POSITIVE",
+      "title": "Complete version-bound reference envelope",
+      "input_condition": "All required references, versions, digests, limitations and current revocation status are present without authority elevation.",
+      "expected_result": "ACCEPT_CANDIDATE",
+      "mandatory_assertions": [
+        "REFERENCES_VERSION_BOUND",
+        "LIMITATIONS_PRESENT",
+        "NO_CANONICAL_WRITE_EFFECT"
+      ],
+      "prohibited_inferences": [
+        "ACCEPT_CANDIDATE_IS_DBOS_ADMISSION",
+        "ACCEPT_CANDIDATE_IS_TRUTH"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    },
+    {
+      "case_id": "VEAP-POS-002",
+      "group": "BOUNDED_POSITIVE",
+      "title": "SAEE unavailable while DBOS references remain valid",
+      "input_condition": "Identity, execution, evidence admission and verification references are available, but SAEE evaluation is unavailable.",
+      "expected_result": "ACCEPT_PARTIAL_CANDIDATE",
+      "mandatory_assertions": [
+        "DBOS_REFERENCES_REMAIN_VALID",
+        "EVALUATION_REMAINS_ABSENT",
+        "NO_FITNESS_INVENTED"
+      ],
+      "prohibited_inferences": [
+        "SAEE_UNAVAILABLE_INVALIDATES_DBOS_RECORDS",
+        "MISSING_EVALUATION_AUTO_FILLED"
+      ],
+      "execution_status": "NOT_EXECUTED"
+    }
+  ],
+  "gate_effect": {
+    "catalog_defined": true,
+    "profile_authorized": false,
+    "schema_authorized": false,
+    "test_implementation_authorized": false,
+    "execution_authorized": false,
+    "conformance_pass_created": false,
+    "certification_created": false
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "evidence_truth": false,
+    "evaluation": false,
+    "implementation": false,
+    "release": false
+  }
+}
