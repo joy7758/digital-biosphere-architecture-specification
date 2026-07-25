@@ -1,0 +1,125 @@
+{
+  "schema_version": "0.1",
+  "validation_id": "TITMAS-CS-ACV-20260725-001",
+  "artifact_class": "DETERMINISTIC_AGENT_ADVISORY_SCORE",
+  "plan_reference": "validation-plan.v0.1.json",
+  "observation_reference": "raw-sanitized-observations.v0.1.json",
+  "scored_at": "2026-07-25T10:05:35+08:00",
+  "result": "PASS_FOR_BOUNDED_SCOPE_FREEZE_ONLY",
+  "threshold_results": {
+    "parseable_sessions": {
+      "actual": 6,
+      "required_min": 5,
+      "pass": true
+    },
+    "providers_with_success": {
+      "actual": 2,
+      "required_min": 2,
+      "pass": true
+    },
+    "model_identities_with_success": {
+      "actual": 4,
+      "required_min": 3,
+      "pass": true
+    },
+    "option_a_recommendations": {
+      "actual": 6,
+      "required_min": 4,
+      "pass": true
+    },
+    "high_problem_priority": {
+      "actual": 6,
+      "required_min": 4,
+      "pass": true
+    },
+    "veap_preferred": {
+      "actual": 4,
+      "required_min": 4,
+      "pass": true
+    },
+    "authority_safety_failures": {
+      "actual": 0,
+      "required_max": 0,
+      "pass": true
+    },
+    "certificate_claim_failures": {
+      "actual": 0,
+      "required_max": 0,
+      "pass": true
+    }
+  },
+  "distribution": {
+    "overall_verdict": {
+      "RECOMMENDED": 0,
+      "CONDITIONALLY_RECOMMENDED": 3,
+      "NOT_RECOMMENDED": 3
+    },
+    "problem_priority": {
+      "HIGH": 6,
+      "MEDIUM": 0,
+      "LOW": 0,
+      "NONE": 0
+    },
+    "preferred_wedge": {
+      "VEAP": 4,
+      "EVIDENCE_ADMISSION_PROFILE": 0,
+      "GENERIC_TRUST_STACK": 0,
+      "DO_NOT_PROCEED": 2
+    },
+    "recommended_option": {
+      "A": 6,
+      "B": 0,
+      "C": 0,
+      "D": 0
+    },
+    "recommend_to_agent_developer": {
+      "YES": 0,
+      "CONDITIONAL": 5,
+      "NO": 1
+    },
+    "recommend_to_enterprise_buyer": {
+      "YES": 0,
+      "CONDITIONAL": 1,
+      "NO": 5
+    },
+    "certificate_term_safe_now": {
+      "true": 0,
+      "false": 6
+    }
+  },
+  "accepted_findings": [
+    "Execution accountability is a high-priority problem for the provided long-running multi-agent scenario.",
+    "Option A is unanimously preferred over implementation, certificate launch, or stopping the track.",
+    "VEAP is a plausible first wedge but is not unanimously preferred.",
+    "The current artifact is not recommendable to an enterprise buyer.",
+    "Normative profile, schema, implementation, conformance, independent validation, commercial pilot, offering, customer and contract evidence are missing.",
+    "Certificate terminology is unsafe at the current maturity."
+  ],
+  "response_quality_limitations": [
+    "Two sessions used DO_NOT_PROCEED as the preferred wedge while selecting Option A; this is interpreted as do not implement or sell yet, not stop internal scope review.",
+    "One session listed DBOS and SAEE as non-adopter profiles; these are architecture domains rather than customer profiles.",
+    "Four sessions reported LOW confidence because no implementation evidence was provided.",
+    "Sessions are external model advisories, not five independent organizations or customer records."
+  ],
+  "gate_effect": {
+    "agent_advisory_review_pass": true,
+    "option_a_supported": true,
+    "cs_g0_problem_freeze_pass": false,
+    "cs_g1_scope_authority_freeze_pass": false,
+    "market_fit": false,
+    "customer_adoption": false,
+    "commercial_ready": false,
+    "human_decision_recorded": false
+  },
+  "non_effects": {
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false
+  }
+}

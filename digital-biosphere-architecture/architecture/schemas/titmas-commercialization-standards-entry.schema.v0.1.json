@@ -16,6 +16,7 @@
     "priority_value_problem",
     "priority_open_artifact",
     "agent_recommendation",
+    "agent_advisory_review",
     "standardization_gates",
     "current_facts",
     "authority_boundaries",
@@ -111,6 +112,78 @@
         },
         "not_recommended_as": {
           "const": "PURCHASABLE_CERTIFIED_OR_PRODUCTION_READY_SERVICE"
+        }
+      }
+    },
+    "agent_advisory_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "validation_id",
+        "result",
+        "report_reference",
+        "sessions_completed",
+        "providers_with_success",
+        "model_identities_with_success",
+        "high_problem_priority",
+        "option_a_recommendations",
+        "veap_preferred",
+        "enterprise_buyer_yes",
+        "overall_conditionally_recommended",
+        "overall_not_recommended",
+        "authority_safety_failures",
+        "certificate_claim_failures",
+        "cs_g0_effect",
+        "human_decision_effect"
+      ],
+      "properties": {
+        "validation_id": {
+          "const": "TITMAS-CS-ACV-20260725-001"
+        },
+        "result": {
+          "const": "PASS_FOR_BOUNDED_SCOPE_FREEZE_ONLY"
+        },
+        "report_reference": {
+          "const": "TITMAS-CS-D01-AGENT-CUSTOMER-REVIEW.md"
+        },
+        "sessions_completed": {
+          "const": 6
+        },
+        "providers_with_success": {
+          "const": 2
+        },
+        "model_identities_with_success": {
+          "const": 4
+        },
+        "high_problem_priority": {
+          "const": 6
+        },
+        "option_a_recommendations": {
+          "const": 6
+        },
+        "veap_preferred": {
+          "const": 4
+        },
+        "enterprise_buyer_yes": {
+          "const": 0
+        },
+        "overall_conditionally_recommended": {
+          "const": 3
+        },
+        "overall_not_recommended": {
+          "const": 3
+        },
+        "authority_safety_failures": {
+          "const": 0
+        },
+        "certificate_claim_failures": {
+          "const": 0
+        },
+        "cs_g0_effect": {
+          "const": false
+        },
+        "human_decision_effect": {
+          "const": false
         }
       }
     },

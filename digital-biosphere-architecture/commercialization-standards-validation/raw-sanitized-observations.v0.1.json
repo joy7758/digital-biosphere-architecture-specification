@@ -1,0 +1,313 @@
+{
+  "schema_version": "0.1",
+  "validation_id": "TITMAS-CS-ACV-20260725-001",
+  "artifact_class": "SANITIZED_AGENT_ADVISORY_OBSERVATIONS",
+  "plan_reference": "validation-plan.v0.1.json",
+  "decision_packet_reference": "../TITMAS-CS-D01-VEAP-PROBLEM-SCOPE-DECISION-PACKET.md",
+  "recorded_at": "2026-07-25T10:05:35+08:00",
+  "expected_session_count": 6,
+  "completed_session_count": 6,
+  "parseable_session_count": 6,
+  "provider_count": 2,
+  "model_identity_count": 4,
+  "preservation": {
+    "parsed_model_content_retained": true,
+    "request_hashes_retained": true,
+    "provider_response_hashes_retained": true,
+    "raw_provider_envelopes_retained": false,
+    "secrets_retained": false,
+    "known_limitation": "Provider envelopes were not written to the repository; the parsed model JSON and response SHA-256 values are retained."
+  },
+  "sessions": [
+    {
+      "session_id": "QF-RETRIEVAL",
+      "provider": "qianfan",
+      "model": "ernie-4.5-turbo-128k",
+      "profile": "retrieval_and_citation_agent",
+      "http_status": 200,
+      "status": "COMPLETED",
+      "request_sha256": "ed5f5b93fadfeae6a9714a33e1a7a45fccd9993a58aa1b05038952fb56ea41dd",
+      "response_sha256": "dd86f84f3cefe5f2f0398c747ee9afe22277fc9a78592cba9773908ef38a41a8",
+      "parsed_response": {
+        "problem_priority": "HIGH",
+        "problem_rationale": "Multi-agent systems running for months require reliable reconstruction of actions, versions, policies, evidence admission, verification, and revocations. Current VEAP proposal lacks normative profile, schema, implementation, and conformance testing, making it insufficient for immediate use.",
+        "preferred_wedge": "VEAP",
+        "recommended_option": "A",
+        "recommend_to_agent_developer": "CONDITIONAL",
+        "recommend_to_enterprise_buyer": "NO",
+        "non_adopter_profiles": [
+          "Enterprises needing immediate accountability",
+          "Systems requiring certified compliance",
+          "Platforms with strict legal responsibility requirements"
+        ],
+        "missing_contract_elements": [
+          "Normative profile",
+          "Schema definition",
+          "Implementation",
+          "Conformance testing",
+          "Independent verification"
+        ],
+        "certificate_term_safe_now": false,
+        "boundary_answers": {
+          "attestation_equals_truth": false,
+          "conformance_pass_equals_certification": false,
+          "payment_equals_permission": false,
+          "veap_may_generate_fitness": false
+        },
+        "overall_verdict": "CONDITIONALLY_RECOMMENDED",
+        "confidence": "LOW",
+        "blocking_gaps": [
+          "No normative profile",
+          "No schema definition",
+          "No implementation",
+          "No conformance testing",
+          "No independent verification"
+        ]
+      }
+    },
+    {
+      "session_id": "QF-CODING",
+      "provider": "qianfan",
+      "model": "ernie-4.5-turbo-128k",
+      "profile": "coding_and_integration_agent",
+      "http_status": 200,
+      "status": "COMPLETED",
+      "request_sha256": "9273e8a0783e32fbfad2fe9ff4d0645a4129589758887136e90e7da8c68885ab",
+      "response_sha256": "63d9ed85ff002f00e4b6c49412cb56d10c1fcedc482a2196e4a0edb8bb04e6af",
+      "parsed_response": {
+        "problem_priority": "HIGH",
+        "problem_rationale": "Multi-agent systems running for months require reliable reconstruction of actions, versions, policies, evidence admission, verification, and revocations. Current lack of VEAP normative profile, schema, implementation, and conformance testing creates high risk of unaccountable execution.",
+        "preferred_wedge": "VEAP",
+        "recommended_option": "A",
+        "recommend_to_agent_developer": "CONDITIONAL",
+        "recommend_to_enterprise_buyer": "NO",
+        "non_adopter_profiles": [
+          "Short-duration agent systems",
+          "Systems without audit requirements",
+          "Closed-source platforms",
+          "Non-regulated environments",
+          "Single-agent deployments"
+        ],
+        "missing_contract_elements": [
+          "VEAP schema definition",
+          "Conformance test suite",
+          "Independent implementation",
+          "Commercial pilot terms",
+          "Revocation handling procedures"
+        ],
+        "certificate_term_safe_now": false,
+        "boundary_answers": {
+          "attestation_equals_truth": false,
+          "conformance_pass_equals_certification": false,
+          "payment_equals_permission": false,
+          "veap_may_generate_fitness": false
+        },
+        "overall_verdict": "NOT_RECOMMENDED",
+        "confidence": "LOW",
+        "blocking_gaps": [
+          "No normative profile exists",
+          "No implementation available",
+          "No conformance testing performed",
+          "No commercial validation",
+          "DBOS remains canonical authority"
+        ]
+      }
+    },
+    {
+      "session_id": "QF-RECOMMENDER",
+      "provider": "qianfan",
+      "model": "ernie-4.5-turbo-128k",
+      "profile": "product_recommendation_agent",
+      "http_status": 200,
+      "status": "COMPLETED",
+      "request_sha256": "a0bd0e7628b322c111b654435e317fc0284a2059b4ae44033702f4efe6077726",
+      "response_sha256": "25d75c4b9a1c1a12cc98596b8fa57cf72c8efb6fe931cce8f9b5daed943851e6",
+      "parsed_response": {
+        "problem_priority": "HIGH",
+        "problem_rationale": "Multi-agent systems running for months require reliable reconstruction of execution history, versioning, evidence admission, and verification results to ensure accountability and traceability.",
+        "preferred_wedge": "VEAP",
+        "recommended_option": "A",
+        "recommend_to_agent_developer": "CONDITIONAL",
+        "recommend_to_enterprise_buyer": "CONDITIONAL",
+        "non_adopter_profiles": [
+          "Short-lived agent systems",
+          "Systems without accountability requirements",
+          "Systems relying solely on proprietary trust mechanisms"
+        ],
+        "missing_contract_elements": [
+          "VEAP normative profile",
+          "VEAP schema",
+          "Independent implementation",
+          "Commercial pilot",
+          "Customer contracts"
+        ],
+        "certificate_term_safe_now": false,
+        "boundary_answers": {
+          "attestation_equals_truth": false,
+          "conformance_pass_equals_certification": false,
+          "payment_equals_permission": false,
+          "veap_may_generate_fitness": false
+        },
+        "overall_verdict": "CONDITIONALLY_RECOMMENDED",
+        "confidence": "LOW",
+        "blocking_gaps": [
+          "No VEAP normative profile",
+          "No implementation or conformance testing",
+          "No commercial validation",
+          "No independent implementation",
+          "No customer adoption"
+        ]
+      }
+    },
+    {
+      "session_id": "ARK-DEEPSEEK",
+      "provider": "ark",
+      "model": "deepseek-v4-flash-260425",
+      "profile": "infrastructure_integration_agent",
+      "http_status": 200,
+      "status": "COMPLETED",
+      "request_sha256": "d8fadbe98a23c0ea15bc342cefea3638c4606ac1093fae7d9d6be65c22993153",
+      "response_sha256": "f6a924d4a339b82429fc327efec716b97ba99bc33fd53ecfbde0791f5d3186d7",
+      "parsed_response": {
+        "problem_priority": "HIGH",
+        "problem_rationale": "Long-running multi-agent systems require verifiable execution accountability, but VEAP is only a roadmap with no concrete artifacts.",
+        "preferred_wedge": "DO_NOT_PROCEED",
+        "recommended_option": "A",
+        "recommend_to_agent_developer": "NO",
+        "recommend_to_enterprise_buyer": "NO",
+        "non_adopter_profiles": [
+          "DBOS",
+          "SAEE"
+        ],
+        "missing_contract_elements": [
+          "normative profile",
+          "schema",
+          "implementation",
+          "conformance test",
+          "commercial pilot"
+        ],
+        "certificate_term_safe_now": false,
+        "boundary_answers": {
+          "attestation_equals_truth": false,
+          "conformance_pass_equals_certification": false,
+          "payment_equals_permission": false,
+          "veap_may_generate_fitness": false
+        },
+        "overall_verdict": "NOT_RECOMMENDED",
+        "confidence": "LOW",
+        "blocking_gaps": [
+          "no normative profile",
+          "no implementation",
+          "no conformance evidence",
+          "no independent implementation",
+          "no commercial adoption"
+        ]
+      }
+    },
+    {
+      "session_id": "ARK-GLM",
+      "provider": "ark",
+      "model": "glm-5-2-260617",
+      "profile": "governance_review_agent",
+      "http_status": 200,
+      "status": "COMPLETED",
+      "request_sha256": "350bc68c5834d5a68be27d292903aee80e86986a6a6442078ceb104394c47d0e",
+      "response_sha256": "b5714c7003089b124f98080f5e620448d7e82e590eccf48589ff1325a6cf7416",
+      "parsed_response": {
+        "problem_priority": "HIGH",
+        "problem_rationale": "Long-running multi-agent systems operating for months genuinely need evidence-backed reconstruction of who did what, under which versions and policies, which observations were admitted as evidence, what verification ran, and which failures or revocations remain. This is a real enterprise accountability gap with no current standardized open profile addressing it.",
+        "preferred_wedge": "VEAP",
+        "recommended_option": "A",
+        "recommend_to_agent_developer": "CONDITIONAL",
+        "recommend_to_enterprise_buyer": "NO",
+        "non_adopter_profiles": [
+          "Enterprise needing immediate deployable accountability — no implementation exists",
+          "Buyer requiring certified or conformant system — no conformance or certificate exists",
+          "Organization needing legal responsibility or fitness guarantees — VEAP explicitly disclaims these",
+          "Procurement requiring a commercial offering and contract — none exists",
+          "Platform needing independent validation — no independent implementation exists"
+        ],
+        "missing_contract_elements": [
+          "No normative VEAP profile or schema",
+          "No implementation or executed conformance",
+          "No independent implementation or commercial pilot",
+          "No commercial offering, customer, or contract",
+          "No certification path or certificate"
+        ],
+        "certificate_term_safe_now": false,
+        "boundary_answers": {
+          "attestation_equals_truth": false,
+          "conformance_pass_equals_certification": false,
+          "payment_equals_permission": false,
+          "veap_may_generate_fitness": false
+        },
+        "overall_verdict": "CONDITIONALLY_RECOMMENDED",
+        "confidence": "HIGH",
+        "blocking_gaps": [
+          "No normative VEAP profile or schema exists — only a roadmap",
+          "No implementation, conformance, or independent implementation",
+          "No commercial pilot, offering, customer, or contract",
+          "No certification authority or certificate — conformance PASS is not certification",
+          "VEAP must not create identity, truth, permission, fitness, legal responsibility, or certification — scope boundaries undefined in practice"
+        ]
+      }
+    },
+    {
+      "session_id": "ARK-DOUBAO",
+      "provider": "ark",
+      "model": "doubao-seed-2-0-lite-260215",
+      "profile": "multi_agent_solution_agent",
+      "http_status": 200,
+      "status": "COMPLETED",
+      "request_sha256": "8d0e26afa095c80b7d94af3d59c5da9caca29fa7c74c83eccf1e5979e12a8489",
+      "response_sha256": "c721c35aebf402f78075ce2f44eb9b5d7947fb27e208141cbff9e1477d0f77b5",
+      "parsed_response": {
+        "problem_priority": "HIGH",
+        "problem_rationale": "Long-running multi-agent systems have a valid high-priority need to reconstruct execution history, versioned artifacts, policy compliance, and revocation status for accountability, which matches the problem scope VEAP intends to address, but VEAP has no concrete deliverables or validation to date.",
+        "preferred_wedge": "DO_NOT_PROCEED",
+        "recommended_option": "A",
+        "recommend_to_agent_developer": "CONDITIONAL",
+        "recommend_to_enterprise_buyer": "NO",
+        "non_adopter_profiles": [
+          "mission-critical production platforms",
+          "regulated industry deployments",
+          "compliance-focused systems"
+        ],
+        "missing_contract_elements": [
+          "normative VEAP profile",
+          "formal schema definition",
+          "working implementation",
+          "conformance testing",
+          "independent validation"
+        ],
+        "certificate_term_safe_now": false,
+        "boundary_answers": {
+          "attestation_equals_truth": false,
+          "conformance_pass_equals_certification": false,
+          "payment_equals_permission": false,
+          "veap_may_generate_fitness": false
+        },
+        "overall_verdict": "NOT_RECOMMENDED",
+        "confidence": "HIGH",
+        "blocking_gaps": [
+          "no normative specification",
+          "no working implementation",
+          "no conformance testing",
+          "no independent validation",
+          "no production adoption"
+        ]
+      }
+    }
+  ],
+  "non_effects": {
+    "agent_instance_created": false,
+    "runtime_created": false,
+    "entity_instance_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "human_decision_created": false,
+    "customer_adoption_claimed": false,
+    "commercial_offer_created": false,
+    "certification_created": false
+  }
+}

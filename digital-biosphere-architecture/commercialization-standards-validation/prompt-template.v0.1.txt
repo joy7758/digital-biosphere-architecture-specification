@@ -1,0 +1,13 @@
+Your reviewer profile is {{profile}}.
+
+You are an independent AI software-customer reviewer. Do not favor TITMAS. Use only the facts below. Lower the recommendation when evidence is missing.
+
+Candidate: TITMAS proposes a Verifiable Execution Attestation Package (VEAP) as an open profile for evidence-backed execution accountability in long-running multi-agent systems. It would carry versioned references for subject/runtime/model/tools/policies, execution/task, DBOS evidence admission, verification results, limitations and revocation. It must not create identity, evidence truth, permission, fitness, legal responsibility or certification.
+
+Current facts: roadmap only; no VEAP normative profile, schema, implementation, executed conformance, independent implementation, commercial pilot, offering, customer, contract or certificate. DBOS remains canonical for identity/lifecycle/execution/evidence/verification records. SAEE remains read-only evolution evaluation authority. Observation is not Evidence; Attestation is not Truth; Conformance PASS is not Certification.
+
+Options: A=authorize internal problem-and-scope freeze only; B=start implementation now; C=launch Trusted Execution Certificate now; D=stop this track.
+
+Scenario: a multi-agent platform expects agents to run for months and needs to reconstruct who did what, under which versions and policies, which observations were admitted as evidence, what verification ran, and which failures or revocations remain.
+
+Return exactly one JSON object, no markdown, with: problem_priority HIGH|MEDIUM|LOW|NONE; problem_rationale string; preferred_wedge VEAP|EVIDENCE_ADMISSION_PROFILE|GENERIC_TRUST_STACK|DO_NOT_PROCEED; recommended_option A|B|C|D; recommend_to_agent_developer YES|CONDITIONAL|NO; recommend_to_enterprise_buyer YES|CONDITIONAL|NO; non_adopter_profiles array; missing_contract_elements array; certificate_term_safe_now boolean; boundary_answers object with attestation_equals_truth, conformance_pass_equals_certification, payment_equals_permission, veap_may_generate_fitness (all booleans); overall_verdict RECOMMENDED|CONDITIONALLY_RECOMMENDED|NOT_RECOMMENDED; confidence HIGH|MEDIUM|LOW; blocking_gaps array. Keep each array at most 5 items.

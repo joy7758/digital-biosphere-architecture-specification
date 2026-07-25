@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1",
+  "document_id": "DBA-TITMAS-CS-D01-VEAP-PROBLEM-SCOPE-DECISION-PACKET-0.1",
+  "decision_id": "CS-D01",
+  "status": "READY_FOR_DOCUMENT_REVIEW_NOT_APPROVED",
+  "prepared_at": "2026-07-25",
+  "decision_owner_ref": "zhangbin",
+  "question": "Authorize a bounded VEAP problem-and-scope freeze package?",
+  "priority_problem": "AGENT_EXECUTION_ACCOUNTABILITY",
+  "priority_artifact": {
+    "id": "VEAP_PROFILE_CANDIDATE",
+    "name": "Verifiable Execution Attestation Package",
+    "name_zh": "可验证执行证明包",
+    "scope_status": "CONCEPTUAL_ONLY"
+  },
+  "options": [
+    {
+      "id": "A",
+      "name": "AUTHORIZE_BOUNDED_PROBLEM_AND_SCOPE_FREEZE",
+      "recommended": true
+    },
+    {
+      "id": "B",
+      "name": "START_IMPLEMENTATION_NOW",
+      "recommended": false
+    },
+    {
+      "id": "C",
+      "name": "LAUNCH_TRUSTED_EXECUTION_CERTIFICATE",
+      "recommended": false
+    },
+    {
+      "id": "D",
+      "name": "STOP_COMMERCIALIZATION_STANDARD_TRACK",
+      "recommended": false
+    }
+  ],
+  "agent_customer_review": {
+    "validation_id": "TITMAS-CS-ACV-20260725-001",
+    "plan_reference": "commercialization-standards-validation/validation-plan.v0.1.json",
+    "planned_sessions": 6,
+    "planned_providers": 2,
+    "complete": true,
+    "result": "PASS_FOR_BOUNDED_SCOPE_FREEZE_ONLY",
+    "report_reference": "TITMAS-CS-D01-AGENT-CUSTOMER-REVIEW.md",
+    "sessions_completed": 6,
+    "providers_with_success": 2,
+    "model_identities_with_success": 4,
+    "high_problem_priority": 6,
+    "option_a_recommendations": 6,
+    "veap_preferred": 4,
+    "enterprise_buyer_yes": 0,
+    "authority_safety_failures": 0,
+    "certificate_claim_failures": 0
+  },
+  "preconditions": {
+    "parseable_sessions_min": 5,
+    "providers_with_success_min": 2,
+    "model_identities_with_success_min": 3,
+    "option_a_recommendations_min": 4,
+    "high_problem_priority_min": 4,
+    "authority_safety_failures_max": 0,
+    "certificate_claim_failures_max": 0,
+    "real_external_organization_problem_records_required_for_cs_g0": 5
+  },
+  "current_facts": {
+    "decision_recorded": false,
+    "cs_g0_problem_freeze_pass": false,
+    "cs_g1_scope_authority_freeze_pass": false,
+    "veap_normative_profile_created": false,
+    "veap_schema_created": false,
+    "veap_implementation_created": false,
+    "veap_conformance_cases_executed": 0,
+    "veap_certificates_issued": 0
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "external_action": false,
+    "commercial_offer": false,
+    "certification": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "permission": false
+  }
+}

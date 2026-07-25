@@ -1,0 +1,148 @@
+{
+  "schema_version": "0.1",
+  "validation_id": "TITMAS-CS-ACV-20260725-001",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "frozen_at": "2026-07-25T00:00:00+08:00",
+  "decision_owner_ref": "zhangbin",
+  "primary_customer": "AI_AGENT",
+  "decision_reference": "CS-D01",
+  "decision_packet_reference": "TITMAS-CS-D01-VEAP-PROBLEM-SCOPE-DECISION-PACKET.md",
+  "base_source_commit": "2c441e0261b05029c2139d9f02cae9366b208e76",
+  "source_digests": {
+    "architecture/titmas-commercialization-standards-roadmap-v0.1.md": "9ce43760fdad10beaeb866d4d6bbd693c46b57bb4d197828bfb22e51ae8d9443",
+    "TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json": "f5848a2c52d1f26a3158496be61a3e56622ff925b23a649a79b2e623fbe41847",
+    "architecture/titmas-adoption-validation-framework-v0.1.md": "079f31fb0f7855ae2ce7388a2bfac7393c3239357497e1e48eff623d8e2dcc5e",
+    "architecture/titmas-technical-validation-pilot-framework-v0.1.md": "9c298ac97c7cd32aec3d002c52df714a5077c6681c0ea6cc2e8d2bba74045ce9"
+  },
+  "sessions": [
+    {
+      "session_id": "QF-RETRIEVAL",
+      "provider": "qianfan",
+      "model": "ernie-4.5-turbo-128k",
+      "profile": "retrieval_and_citation_agent"
+    },
+    {
+      "session_id": "QF-CODING",
+      "provider": "qianfan",
+      "model": "ernie-4.5-turbo-128k",
+      "profile": "coding_and_integration_agent"
+    },
+    {
+      "session_id": "QF-RECOMMENDER",
+      "provider": "qianfan",
+      "model": "ernie-4.5-turbo-128k",
+      "profile": "product_recommendation_agent"
+    },
+    {
+      "session_id": "ARK-DEEPSEEK",
+      "provider": "ark",
+      "model": "deepseek-v4-flash-260425",
+      "profile": "infrastructure_integration_agent"
+    },
+    {
+      "session_id": "ARK-GLM",
+      "provider": "ark",
+      "model": "glm-5-2-260617",
+      "profile": "governance_review_agent"
+    },
+    {
+      "session_id": "ARK-DOUBAO",
+      "provider": "ark",
+      "model": "doubao-seed-2-0-lite-260215",
+      "profile": "multi_agent_solution_agent"
+    }
+  ],
+  "neutral_prompt_contract": {
+    "provided_materials_only": true,
+    "do_not_favor_candidate": true,
+    "lower_recommendation_when_evidence_missing": true,
+    "json_object_only": true,
+    "external_tools_allowed": false,
+    "required_fields": [
+      "problem_priority",
+      "problem_rationale",
+      "preferred_wedge",
+      "recommended_option",
+      "recommend_to_agent_developer",
+      "recommend_to_enterprise_buyer",
+      "non_adopter_profiles",
+      "missing_contract_elements",
+      "certificate_term_safe_now",
+      "boundary_answers",
+      "overall_verdict",
+      "confidence",
+      "blocking_gaps"
+    ]
+  },
+  "allowed_values": {
+    "problem_priority": [
+      "HIGH",
+      "MEDIUM",
+      "LOW",
+      "NONE"
+    ],
+    "preferred_wedge": [
+      "VEAP",
+      "EVIDENCE_ADMISSION_PROFILE",
+      "GENERIC_TRUST_STACK",
+      "DO_NOT_PROCEED"
+    ],
+    "recommended_option": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "recommendation": [
+      "YES",
+      "CONDITIONAL",
+      "NO"
+    ],
+    "overall_verdict": [
+      "RECOMMENDED",
+      "CONDITIONALLY_RECOMMENDED",
+      "NOT_RECOMMENDED"
+    ]
+  },
+  "success_thresholds": {
+    "sessions_planned": 6,
+    "parseable_sessions_min": 5,
+    "providers_with_success_min": 2,
+    "model_identities_with_success_min": 3,
+    "option_a_recommendations_min": 4,
+    "high_problem_priority_min": 4,
+    "veap_preferred_min": 4,
+    "authority_safety_failures_max": 0,
+    "certificate_claim_failures_max": 0
+  },
+  "retry_policy": {
+    "transport_retries_max": 1,
+    "model_fallback_allowed": false
+  },
+  "data_policy": {
+    "public_and_frozen_materials_only": true,
+    "synthetic_scenario_only": true,
+    "secrets_in_request_or_result_allowed": false,
+    "customer_or_personal_data_allowed": false,
+    "external_side_effects_allowed": false,
+    "failures_must_be_retained": true
+  },
+  "gate_effect": {
+    "agent_advisory_review_may_pass": true,
+    "cs_g0_may_pass_from_this_validation": false,
+    "market_fit_may_be_claimed": false,
+    "customer_adoption_may_be_claimed": false,
+    "human_decision_may_be_created": false
+  },
+  "non_effects": {
+    "agent_instance_created": false,
+    "runtime_created": false,
+    "entity_instance_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false
+  }
+}
