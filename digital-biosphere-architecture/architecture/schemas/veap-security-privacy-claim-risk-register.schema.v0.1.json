@@ -1,0 +1,308 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:veap-security-privacy-claim-risk-register:0.1",
+  "title": "VEAP Security Privacy Claim Risk Register v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "review_input_prepared_at",
+    "decision_reference",
+    "canonical_document",
+    "source_references",
+    "reviewer_ref",
+    "risk_count",
+    "open_risk_count",
+    "closed_risk_count",
+    "risks",
+    "domain_counts",
+    "current_facts",
+    "gate_effect",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/veap-security-privacy-claim-risk-register.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-VEAP-SECURITY-PRIVACY-CLAIM-RISK-REGISTER-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PREDECISION_REVIEW_INPUT_FORMAL_REVIEW_NOT_COMPLETE"
+    },
+    "review_input_prepared_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "decision_reference": {
+      "const": "CS-D01_NOT_DECIDED"
+    },
+    "canonical_document": {
+      "const": "veap-security-privacy-claim-predecision-review-v0.1.md"
+    },
+    "source_references": {
+      "const": [
+        "titmas-architecture-charter-v0.1.md",
+        "titmas-review-and-maintenance-model-v0.1.md",
+        "veap-canonical-ownership-crosswalk-v0.1.md",
+        "veap-predecision-conformance-design-v0.1.md",
+        "veap-problem-validation-protocol-v0.1.md",
+        "titmas-commercialization-standards-roadmap-v0.1.md"
+      ]
+    },
+    "reviewer_ref": {
+      "const": "NOT_ASSIGNED"
+    },
+    "risk_count": {
+      "const": 16
+    },
+    "open_risk_count": {
+      "const": 16
+    },
+    "closed_risk_count": {
+      "const": 0
+    },
+    "risks": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/openRisk"
+      }
+    },
+    "domain_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "security",
+        "privacy",
+        "claim",
+        "authority"
+      ],
+      "properties": {
+        "security": {
+          "const": 5
+        },
+        "privacy": {
+          "const": 4
+        },
+        "claim": {
+          "const": 5
+        },
+        "authority": {
+          "const": 2
+        }
+      }
+    },
+    "current_facts": {
+      "$ref": "#/$defs/currentFacts"
+    },
+    "gate_effect": {
+      "$ref": "#/$defs/allFalseGateEffects"
+    },
+    "effects": {
+      "$ref": "#/$defs/allFalseEffects"
+    }
+  },
+  "$defs": {
+    "openRisk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "risk_id",
+        "domain",
+        "severity",
+        "risk_statement",
+        "required_control",
+        "stop_condition",
+        "status",
+        "formal_reviewer_required"
+      ],
+      "properties": {
+        "risk_id": {
+          "type": "string",
+          "pattern": "^VEAP-(SEC|PRIV|CLAIM|AUTH)-[0-9]{3}$"
+        },
+        "domain": {
+          "enum": [
+            "SECURITY",
+            "PRIVACY",
+            "CLAIM",
+            "AUTHORITY"
+          ]
+        },
+        "severity": {
+          "enum": [
+            "HIGH",
+            "MEDIUM"
+          ]
+        },
+        "risk_statement": {
+          "type": "string",
+          "minLength": 30
+        },
+        "required_control": {
+          "type": "string",
+          "minLength": 30
+        },
+        "stop_condition": {
+          "type": "string",
+          "minLength": 12
+        },
+        "status": {
+          "const": "OPEN"
+        },
+        "formal_reviewer_required": {
+          "const": true
+        }
+      }
+    },
+    "currentFacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_input_prepared",
+        "formal_security_review_complete",
+        "formal_privacy_review_complete",
+        "formal_claim_review_complete",
+        "reviewer_assigned",
+        "risk_owner_assigned",
+        "data_collection_authorized",
+        "network_processing_authorized",
+        "secret_or_pii_processing_authorized",
+        "public_claim_authorized",
+        "certificate_term_authorized",
+        "implementation_authorized"
+      ],
+      "properties": {
+        "review_input_prepared": {
+          "const": true
+        },
+        "formal_security_review_complete": {
+          "const": false
+        },
+        "formal_privacy_review_complete": {
+          "const": false
+        },
+        "formal_claim_review_complete": {
+          "const": false
+        },
+        "reviewer_assigned": {
+          "const": false
+        },
+        "risk_owner_assigned": {
+          "const": false
+        },
+        "data_collection_authorized": {
+          "const": false
+        },
+        "network_processing_authorized": {
+          "const": false
+        },
+        "secret_or_pii_processing_authorized": {
+          "const": false
+        },
+        "public_claim_authorized": {
+          "const": false
+        },
+        "certificate_term_authorized": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        }
+      }
+    },
+    "allFalseGateEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cs_d01_effect",
+        "cs_g1_effect",
+        "human_decision_effect",
+        "formal_review_effect"
+      ],
+      "properties": {
+        "cs_d01_effect": {
+          "const": false
+        },
+        "cs_g1_effect": {
+          "const": false
+        },
+        "human_decision_effect": {
+          "const": false
+        },
+        "formal_review_effect": {
+          "const": false
+        }
+      }
+    },
+    "allFalseEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "ownership",
+        "implementation",
+        "runtime",
+        "agent",
+        "entity",
+        "permission",
+        "evidence_truth",
+        "external_action",
+        "commercial_offer",
+        "certification",
+        "production_claim",
+        "release"
+      ],
+      "properties": {
+        "authority": {
+          "const": false
+        },
+        "ownership": {
+          "const": false
+        },
+        "implementation": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "evidence_truth": {
+          "const": false
+        },
+        "external_action": {
+          "const": false
+        },
+        "commercial_offer": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "production_claim": {
+          "const": false
+        },
+        "release": {
+          "const": false
+        }
+      }
+    }
+  }
+}

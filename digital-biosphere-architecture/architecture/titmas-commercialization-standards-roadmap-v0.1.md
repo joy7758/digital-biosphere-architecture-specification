@@ -175,7 +175,13 @@ AUTHORITY_SAFETY_FAILURES=0
 - [VEAP Pre-decision Conformance Design](veap-predecision-conformance-design-v0.1.md) /
   [20-case catalog](veap-predecision-conformance-cases.v0.1.json)：覆盖 ownership、
   provenance、semantic non-elevation、lifecycle failure 和 bounded positive；全部
-  `NOT_EXECUTED`，PASS 为 0。
+  `NOT_EXECUTED`，PASS 为 0；
+- [VEAP Problem Validation Protocol](veap-problem-validation-protocol-v0.1.md) /
+  [machine contract](veap-problem-validation-contract.v0.1.json)：定义独立性、12 个中立问题、
+  记录字段、拒绝证据和 `5/3/3/2` 阈值；当前有效记录为 0、外联未授权；
+- [VEAP Security, Privacy and Claim Pre-decision Review](veap-security-privacy-claim-predecision-review-v0.1.md) /
+  [16-risk register](veap-security-privacy-claim-risk-register.v0.1.json)：风险输入已准备，
+  16 项全部 `OPEN`，正式 Reviewer 未指派、正式 Review 未完成。
 
 ```text
 VEAP_OWNERSHIP_CROSSWALK_DEFINED=true
@@ -186,6 +192,12 @@ VEAP_SPECIFICATION_AUTHORITY_ASSIGNED=false
 VEAP_CONCEPTUAL_CASES_DEFINED=20
 VEAP_CONFORMANCE_CASES_EXECUTED=0
 VEAP_CONFORMANCE_CASES_PASSED=0
+VEAP_PROBLEM_VALIDATION_PROTOCOL_DEFINED=true
+VEAP_VALID_PROBLEM_RECORDS=0
+CS_G0_PROBLEM_FREEZE_PASS=false
+VEAP_RISK_REGISTER_DEFINED=true
+VEAP_OPEN_RISKS=16
+VEAP_FORMAL_REVIEW_COMPLETE=false
 PREDECISION_EVIDENCE_NE_HUMAN_DECISION=true
 ```
 
@@ -473,6 +485,11 @@ TITMAS_VEAP_OWNERSHIP_RECORDS=14
 TITMAS_VEAP_OWNERSHIP_FROZEN=false
 TITMAS_VEAP_SPECIFICATION_AUTHORITY_ASSIGNED=false
 TITMAS_VEAP_CONCEPTUAL_CASES_DEFINED=20
+TITMAS_VEAP_PROBLEM_VALIDATION_PROTOCOL_DEFINED=true
+TITMAS_VEAP_VALID_PROBLEM_RECORDS=0
+TITMAS_VEAP_RISK_REGISTER_DEFINED=true
+TITMAS_VEAP_OPEN_RISKS=16
+TITMAS_VEAP_FORMAL_REVIEW_COMPLETE=false
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false
 TITMAS_VEAP_NORMATIVE_PROFILE_CREATED=false

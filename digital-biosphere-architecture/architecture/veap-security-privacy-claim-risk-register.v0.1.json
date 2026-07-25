@@ -1,0 +1,224 @@
+{
+  "$schema": "./schemas/veap-security-privacy-claim-risk-register.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-VEAP-SECURITY-PRIVACY-CLAIM-RISK-REGISTER-0.1",
+  "version": "0.1.0",
+  "status": "PREDECISION_REVIEW_INPUT_FORMAL_REVIEW_NOT_COMPLETE",
+  "review_input_prepared_at": "2026-07-25",
+  "decision_reference": "CS-D01_NOT_DECIDED",
+  "canonical_document": "veap-security-privacy-claim-predecision-review-v0.1.md",
+  "source_references": [
+    "titmas-architecture-charter-v0.1.md",
+    "titmas-review-and-maintenance-model-v0.1.md",
+    "veap-canonical-ownership-crosswalk-v0.1.md",
+    "veap-predecision-conformance-design-v0.1.md",
+    "veap-problem-validation-protocol-v0.1.md",
+    "titmas-commercialization-standards-roadmap-v0.1.md"
+  ],
+  "reviewer_ref": "NOT_ASSIGNED",
+  "risk_count": 16,
+  "open_risk_count": 16,
+  "closed_risk_count": 0,
+  "risks": [
+    {
+      "risk_id": "VEAP-SEC-001",
+      "domain": "SECURITY",
+      "severity": "HIGH",
+      "risk_statement": "A digest or reference could be replaced, or a canonical source could be impersonated.",
+      "required_control": "Bind algorithm, version, source and subject; reject tamper and never silently repair.",
+      "stop_condition": "SOURCE_OR_INTEGRITY_BINDING_MISSING",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-SEC-002",
+      "domain": "SECURITY",
+      "severity": "HIGH",
+      "risk_statement": "A replayed or duplicate package could be presented as a new successful execution.",
+      "required_control": "Use unique package identity, time policy, deduplication and immutable replay status.",
+      "stop_condition": "REPLAY_OR_DUPLICATE_STATUS_UNKNOWN",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-SEC-003",
+      "domain": "SECURITY",
+      "severity": "HIGH",
+      "risk_statement": "Cross-tenant or cross-entity binding could disclose data or misattribute identity.",
+      "required_control": "Require tenant and subject binding, authorization checks and correlation conflict rejection.",
+      "stop_condition": "TENANT_OR_SUBJECT_BINDING_CONFLICTED",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-SEC-004",
+      "domain": "SECURITY",
+      "severity": "HIGH",
+      "risk_statement": "A compromised or expired issuer or verifier identity could remain trusted.",
+      "required_control": "Bind issuer status, validity interval, revocation reference and incident response path.",
+      "stop_condition": "ISSUER_OR_VERIFIER_STATUS_NOT_CURRENT",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-SEC-005",
+      "domain": "SECURITY",
+      "severity": "HIGH",
+      "risk_statement": "Raw payloads, credentials, secrets or sensitive content could enter a portable package.",
+      "required_control": "Deny content by default and require allowlists, redaction, secret scans and stop conditions.",
+      "stop_condition": "SENSITIVE_CONTENT_POLICY_UNRESOLVED",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-PRIV-001",
+      "domain": "PRIVACY",
+      "severity": "HIGH",
+      "risk_statement": "Execution evidence could be reused for surveillance, profiling or unrelated decisions.",
+      "required_control": "Bind purpose and recipient scope and prohibit secondary use without a separate decision.",
+      "stop_condition": "PURPOSE_OR_RECIPIENT_SCOPE_MISSING",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-PRIV-002",
+      "domain": "PRIVACY",
+      "severity": "MEDIUM",
+      "risk_statement": "A completeness goal could cause collection of unnecessary prompt, response or tool content.",
+      "required_control": "Use reference-first minimization and require field-level purpose and authorization.",
+      "stop_condition": "FIELD_LEVEL_JUSTIFICATION_MISSING",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-PRIV-003",
+      "domain": "PRIVACY",
+      "severity": "HIGH",
+      "risk_statement": "Retention, withdrawal and deletion duties could conflict with immutable history.",
+      "required_control": "Define class-based retention, tombstone or revocation, deletion proof and legal-hold boundary.",
+      "stop_condition": "RETENTION_OR_DELETION_PATH_UNRESOLVED",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-PRIV-004",
+      "domain": "PRIVACY",
+      "severity": "MEDIUM",
+      "risk_statement": "Multiple pseudonymous references could be linked to re-identify a person or organization.",
+      "required_control": "Perform linkability review, namespace separation, access control and public-safe extraction.",
+      "stop_condition": "LINKABILITY_RISK_NOT_ASSESSED",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-CLAIM-001",
+      "domain": "CLAIM",
+      "severity": "HIGH",
+      "risk_statement": "Evidence or an attestation could be represented as truth or proof of a correct outcome.",
+      "required_control": "Require limitations, forbidden-claim tests and review of every public wording surface.",
+      "stop_condition": "TRUTH_OR_CORRECTNESS_INFERENCE_PRESENT",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-CLAIM-002",
+      "domain": "CLAIM",
+      "severity": "HIGH",
+      "risk_statement": "A verification result could be represented as permission or operational authorization.",
+      "required_control": "Require non-elevation language, a separate decision reference and a negative case.",
+      "stop_condition": "VERIFICATION_TO_PERMISSION_INFERENCE_PRESENT",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-CLAIM-003",
+      "domain": "CLAIM",
+      "severity": "HIGH",
+      "risk_statement": "An attestation could be marketed as a certificate or as a certified Agent.",
+      "required_control": "Ban certificate claims until an independent authorized certification system exists.",
+      "stop_condition": "CERTIFICATE_OR_CERTIFIED_AGENT_CLAIM_PRESENT",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-CLAIM-004",
+      "domain": "CLAIM",
+      "severity": "MEDIUM",
+      "risk_statement": "Schema validity or a conformance result could be presented as production proof.",
+      "required_control": "Publish exact maturity, scope, executed count, limitations and a production-claim prohibition.",
+      "stop_condition": "PRODUCTION_PROOF_INFERENCE_PRESENT",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-CLAIM-005",
+      "domain": "CLAIM",
+      "severity": "HIGH",
+      "risk_statement": "Partial or sampled observations could be presented as a complete execution history.",
+      "required_control": "Propagate completeness, sampling, drop, partial and unknown status without silent fill.",
+      "stop_condition": "COMPLETENESS_STATUS_MISSING_OR_ELEVATED",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-AUTH-001",
+      "domain": "AUTHORITY",
+      "severity": "HIGH",
+      "risk_statement": "VEAP could become a second canonical owner for DBOS, EEOAP or verifier objects.",
+      "required_control": "Enforce the ownership crosswalk, opaque references and conflict fail-closed semantics.",
+      "stop_condition": "SECOND_CANONICAL_OWNER_CLAIM_PRESENT",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    },
+    {
+      "risk_id": "VEAP-AUTH-002",
+      "domain": "AUTHORITY",
+      "severity": "HIGH",
+      "risk_statement": "A SAEE evaluation or recommendation could be converted into decision or execution.",
+      "required_control": "Keep advisory labels, require separate decision and authorization, and prohibit writeback.",
+      "stop_condition": "EVALUATION_TO_DECISION_OR_EXECUTION_INFERENCE_PRESENT",
+      "status": "OPEN",
+      "formal_reviewer_required": true
+    }
+  ],
+  "domain_counts": {
+    "security": 5,
+    "privacy": 4,
+    "claim": 5,
+    "authority": 2
+  },
+  "current_facts": {
+    "review_input_prepared": true,
+    "formal_security_review_complete": false,
+    "formal_privacy_review_complete": false,
+    "formal_claim_review_complete": false,
+    "reviewer_assigned": false,
+    "risk_owner_assigned": false,
+    "data_collection_authorized": false,
+    "network_processing_authorized": false,
+    "secret_or_pii_processing_authorized": false,
+    "public_claim_authorized": false,
+    "certificate_term_authorized": false,
+    "implementation_authorized": false
+  },
+  "gate_effect": {
+    "cs_d01_effect": false,
+    "cs_g1_effect": false,
+    "human_decision_effect": false,
+    "formal_review_effect": false
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "evidence_truth": false,
+    "external_action": false,
+    "commercial_offer": false,
+    "certification": false,
+    "production_claim": false,
+    "release": false
+  }
+}

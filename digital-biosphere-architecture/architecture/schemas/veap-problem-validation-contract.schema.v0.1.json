@@ -1,0 +1,461 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:veap-problem-validation-contract:0.1",
+  "title": "VEAP Problem Validation Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "defined_at",
+    "decision_reference",
+    "canonical_document",
+    "source_references",
+    "validation_question",
+    "observer_classes",
+    "independence_rules",
+    "question_phases",
+    "record_contract",
+    "invalid_evidence_types",
+    "success_thresholds",
+    "current_facts",
+    "gate_effect",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/veap-problem-validation-contract.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-VEAP-PROBLEM-VALIDATION-CONTRACT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PROTOCOL_DEFINED_EXECUTION_NOT_AUTHORIZED"
+    },
+    "defined_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "decision_reference": {
+      "const": "CS-D01_NOT_DECIDED"
+    },
+    "canonical_document": {
+      "const": "veap-problem-validation-protocol-v0.1.md"
+    },
+    "source_references": {
+      "const": [
+        "titmas-adoption-validation-framework-v0.1.md",
+        "titmas-commercialization-standards-roadmap-v0.1.md",
+        "../TITMAS-CS-D01-AGENT-CUSTOMER-REVIEW.md",
+        "veap-canonical-ownership-crosswalk-v0.1.md",
+        "veap-predecision-conformance-design-v0.1.md"
+      ]
+    },
+    "validation_question": {
+      "const": "DO_REAL_LONG_RUNNING_MULTI_AGENT_RESPONSIBILITY_OWNERS_HAVE_A_HIGH_PRIORITY_EXECUTION_ACCOUNTABILITY_PROBLEM"
+    },
+    "observer_classes": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "ENTERPRISE_AI_INFRA_OWNER",
+          "AGENT_FRAMEWORK_OPERATOR",
+          "SECURITY_RISK_AUDIT_PRACTITIONER",
+          "REGULATED_DOMAIN_TECH_OWNER",
+          "FRAMEWORK_OR_TOOL_PROVIDER",
+          "GOVERNED_AI_AGENT"
+        ]
+      }
+    },
+    "independence_rules": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 12
+      }
+    },
+    "question_phases": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/contextPhase"
+        },
+        {
+          "$ref": "#/$defs/workaroundPhase"
+        },
+        {
+          "$ref": "#/$defs/priorityPhase"
+        },
+        {
+          "$ref": "#/$defs/conceptPhase"
+        }
+      ],
+      "items": false
+    },
+    "record_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_fields",
+        "valid_statuses",
+        "priorities",
+        "interest_values",
+        "commercial_commitment_must_be",
+        "customer_adoption_must_be"
+      ],
+      "properties": {
+        "required_fields": {
+          "type": "array",
+          "minItems": 26,
+          "maxItems": 26,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "valid_statuses": {
+          "const": [
+            "VALID",
+            "PARTIAL",
+            "INVALID",
+            "WITHDRAWN"
+          ]
+        },
+        "priorities": {
+          "const": [
+            "HIGH",
+            "MEDIUM",
+            "LOW",
+            "NONE"
+          ]
+        },
+        "interest_values": {
+          "const": [
+            "YES",
+            "CONDITIONAL",
+            "NO",
+            "NOT_ASKED"
+          ]
+        },
+        "commercial_commitment_must_be": {
+          "const": false
+        },
+        "customer_adoption_must_be": {
+          "const": false
+        }
+      }
+    },
+    "invalid_evidence_types": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 10
+      }
+    },
+    "success_thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "valid_independent_problem_records_min",
+        "independent_organization_or_contexts_min",
+        "high_priority_records_min",
+        "recent_example_required_for_all_valid",
+        "current_workaround_required_for_all_valid",
+        "continue_review_interest_min",
+        "negative_and_withdrawn_records_preserved"
+      ],
+      "properties": {
+        "valid_independent_problem_records_min": {
+          "const": 5
+        },
+        "independent_organization_or_contexts_min": {
+          "const": 3
+        },
+        "high_priority_records_min": {
+          "const": 3
+        },
+        "recent_example_required_for_all_valid": {
+          "const": true
+        },
+        "current_workaround_required_for_all_valid": {
+          "const": true
+        },
+        "continue_review_interest_min": {
+          "const": 2
+        },
+        "negative_and_withdrawn_records_preserved": {
+          "const": true
+        }
+      }
+    },
+    "current_facts": {
+      "$ref": "#/$defs/currentFacts"
+    },
+    "gate_effect": {
+      "$ref": "#/$defs/allFalseGateEffects"
+    },
+    "effects": {
+      "$ref": "#/$defs/allFalseEffects"
+    }
+  },
+  "$defs": {
+    "phaseBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase",
+        "question_ids"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string"
+        },
+        "question_ids": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^PV-Q(0[1-9]|1[0-2])$"
+          }
+        }
+      }
+    },
+    "contextPhase": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/phaseBase"
+        },
+        {
+          "properties": {
+            "phase": {
+              "const": "CONTEXT_BEFORE_SOLUTION"
+            },
+            "question_ids": {
+              "const": [
+                "PV-Q01",
+                "PV-Q02",
+                "PV-Q03",
+                "PV-Q04"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "workaroundPhase": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/phaseBase"
+        },
+        {
+          "properties": {
+            "phase": {
+              "const": "CURRENT_WORKAROUND"
+            },
+            "question_ids": {
+              "const": [
+                "PV-Q05",
+                "PV-Q06",
+                "PV-Q07"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "priorityPhase": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/phaseBase"
+        },
+        {
+          "properties": {
+            "phase": {
+              "const": "PRIORITY_WITHOUT_SELLING"
+            },
+            "question_ids": {
+              "const": [
+                "PV-Q08",
+                "PV-Q09",
+                "PV-Q10"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "conceptPhase": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/phaseBase"
+        },
+        {
+          "properties": {
+            "phase": {
+              "const": "OPTIONAL_CONCEPT_REACTION"
+            },
+            "question_ids": {
+              "const": [
+                "PV-Q11",
+                "PV-Q12"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "currentFacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocol_defined",
+        "validation_execution_authorized",
+        "external_outreach_authorized",
+        "valid_problem_records",
+        "independent_organization_or_contexts",
+        "high_priority_records",
+        "continue_review_interest",
+        "cs_g0_problem_freeze_pass",
+        "market_validation_pass",
+        "customers_verified",
+        "commercial_commitments"
+      ],
+      "properties": {
+        "protocol_defined": {
+          "const": true
+        },
+        "validation_execution_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "independent_organization_or_contexts": {
+          "const": 0
+        },
+        "high_priority_records": {
+          "const": 0
+        },
+        "continue_review_interest": {
+          "const": 0
+        },
+        "cs_g0_problem_freeze_pass": {
+          "const": false
+        },
+        "market_validation_pass": {
+          "const": false
+        },
+        "customers_verified": {
+          "const": 0
+        },
+        "commercial_commitments": {
+          "const": 0
+        }
+      }
+    },
+    "allFalseGateEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cs_g0_effect",
+        "human_decision_effect",
+        "adoption_effect",
+        "offering_effect"
+      ],
+      "properties": {
+        "cs_g0_effect": {
+          "const": false
+        },
+        "human_decision_effect": {
+          "const": false
+        },
+        "adoption_effect": {
+          "const": false
+        },
+        "offering_effect": {
+          "const": false
+        }
+      }
+    },
+    "allFalseEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "ownership",
+        "implementation",
+        "runtime",
+        "agent",
+        "entity",
+        "permission",
+        "external_outreach",
+        "participant_enrollment",
+        "customer",
+        "commercial_offer",
+        "certification",
+        "release"
+      ],
+      "properties": {
+        "authority": {
+          "const": false
+        },
+        "ownership": {
+          "const": false
+        },
+        "implementation": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "external_outreach": {
+          "const": false
+        },
+        "participant_enrollment": {
+          "const": false
+        },
+        "customer": {
+          "const": false
+        },
+        "commercial_offer": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "release": {
+          "const": false
+        }
+      }
+    }
+  }
+}

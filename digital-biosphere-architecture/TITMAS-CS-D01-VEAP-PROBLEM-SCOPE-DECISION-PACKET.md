@@ -234,6 +234,30 @@ VEAP_CONFORMANCE_CASES_PASSED=0
 case catalog 合法不等于测试已实现、已执行或已通过，也不产生 Profile、Schema、
 Certification 或 Human Decision。
 
+## 8.2 Problem Validation and Risk Review Inputs（问题验证与风险审查输入）
+
+为避免把智能体建议误写为 Market Validation，已建立：
+
+- [VEAP Problem Validation Protocol](architecture/veap-problem-validation-protocol-v0.1.md)；
+- [machine problem-validation contract](architecture/veap-problem-validation-contract.v0.1.json)；
+- [VEAP Security, Privacy and Claim Pre-decision Review](architecture/veap-security-privacy-claim-predecision-review-v0.1.md)；
+- [16-risk machine register](architecture/veap-security-privacy-claim-risk-register.v0.1.json)。
+
+当前事实：
+
+```text
+VEAP_PROBLEM_VALIDATION_PROTOCOL_DEFINED=true
+VEAP_VALID_PROBLEM_RECORDS=0
+CS_G0_PROBLEM_FREEZE_PASS=false
+
+VEAP_SECURITY_PRIVACY_CLAIM_REVIEW_INPUT_PREPARED=true
+VEAP_OPEN_RISKS=16
+VEAP_FORMAL_REVIEW_COMPLETE=false
+```
+
+问题验证协议不发送邀请或收集客户数据；风险台账是 AI-assisted review input，不是正式
+Human Security/Privacy/Claim Review。两者均不产生 Decision 或 Authority。
+
 ## 9. Decision Preconditions（决定前置条件）
 
 Option A 可被 Human Owner 接受前至少需要：
@@ -300,6 +324,11 @@ VEAP_SPECIFICATION_AUTHORITY_ASSIGNED=false
 VEAP_CONCEPTUAL_CASES_DEFINED=20
 VEAP_CONFORMANCE_CASES_EXECUTED=0
 VEAP_CONFORMANCE_CASES_PASSED=0
+VEAP_PROBLEM_VALIDATION_PROTOCOL_DEFINED=true
+VEAP_VALID_PROBLEM_RECORDS=0
+VEAP_SECURITY_PRIVACY_CLAIM_REVIEW_INPUT_PREPARED=true
+VEAP_OPEN_RISKS=16
+VEAP_FORMAL_REVIEW_COMPLETE=false
 VEAP_CERTIFICATES_ISSUED=0
 
 AUTHORITY_CHANGED=false

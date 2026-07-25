@@ -1,0 +1,171 @@
+{
+  "$schema": "./schemas/veap-problem-validation-contract.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-VEAP-PROBLEM-VALIDATION-CONTRACT-0.1",
+  "version": "0.1.0",
+  "status": "PROTOCOL_DEFINED_EXECUTION_NOT_AUTHORIZED",
+  "defined_at": "2026-07-25",
+  "decision_reference": "CS-D01_NOT_DECIDED",
+  "canonical_document": "veap-problem-validation-protocol-v0.1.md",
+  "source_references": [
+    "titmas-adoption-validation-framework-v0.1.md",
+    "titmas-commercialization-standards-roadmap-v0.1.md",
+    "../TITMAS-CS-D01-AGENT-CUSTOMER-REVIEW.md",
+    "veap-canonical-ownership-crosswalk-v0.1.md",
+    "veap-predecision-conformance-design-v0.1.md"
+  ],
+  "validation_question": "DO_REAL_LONG_RUNNING_MULTI_AGENT_RESPONSIBILITY_OWNERS_HAVE_A_HIGH_PRIORITY_EXECUTION_ACCOUNTABILITY_PROBLEM",
+  "observer_classes": [
+    "ENTERPRISE_AI_INFRA_OWNER",
+    "AGENT_FRAMEWORK_OPERATOR",
+    "SECURITY_RISK_AUDIT_PRACTITIONER",
+    "REGULATED_DOMAIN_TECH_OWNER",
+    "FRAMEWORK_OR_TOOL_PROVIDER",
+    "GOVERNED_AI_AGENT"
+  ],
+  "independence_rules": [
+    "ATTRIBUTABLE_OBSERVER_OR_PSEUDONYMOUS_BINDING_REQUIRED",
+    "ORGANIZATION_OR_CONTEXT_REFERENCE_REQUIRED",
+    "INDEPENDENCE_BASIS_REQUIRED",
+    "SAME_ORGANIZATION_DEFAULTS_TO_ONE_RECORD",
+    "MODEL_PROMPT_OR_PERSONA_SWITCH_DOES_NOT_CREATE_ORGANIZATION_INDEPENDENCE",
+    "AUTHOR_LED_ANSWER_OR_RETROFITTED_EXAMPLE_INVALID",
+    "AGENT_ASSISTANCE_AND_HUMAN_ACCOUNTABILITY_MUST_BE_DISCLOSED"
+  ],
+  "question_phases": [
+    {
+      "phase": "CONTEXT_BEFORE_SOLUTION",
+      "question_ids": [
+        "PV-Q01",
+        "PV-Q02",
+        "PV-Q03",
+        "PV-Q04"
+      ]
+    },
+    {
+      "phase": "CURRENT_WORKAROUND",
+      "question_ids": [
+        "PV-Q05",
+        "PV-Q06",
+        "PV-Q07"
+      ]
+    },
+    {
+      "phase": "PRIORITY_WITHOUT_SELLING",
+      "question_ids": [
+        "PV-Q08",
+        "PV-Q09",
+        "PV-Q10"
+      ]
+    },
+    {
+      "phase": "OPTIONAL_CONCEPT_REACTION",
+      "question_ids": [
+        "PV-Q11",
+        "PV-Q12"
+      ]
+    }
+  ],
+  "record_contract": {
+    "required_fields": [
+      "record_id",
+      "observed_at",
+      "observer_class",
+      "observer_ref",
+      "organization_or_context_ref",
+      "independence_basis",
+      "human_accountability_ref",
+      "agent_assistance",
+      "recent_example",
+      "problem_area",
+      "current_workaround",
+      "workaround_limitations",
+      "measurable_cost_or_risk",
+      "priority",
+      "existing_alternatives",
+      "contract_review_interest",
+      "private_demo_review_interest",
+      "negative_or_rejection_reasons",
+      "consent_reference",
+      "privacy_classification",
+      "source_record_reference",
+      "validation_status",
+      "invalid_reason",
+      "commercial_commitment",
+      "customer_adoption",
+      "known_limitations"
+    ],
+    "valid_statuses": [
+      "VALID",
+      "PARTIAL",
+      "INVALID",
+      "WITHDRAWN"
+    ],
+    "priorities": [
+      "HIGH",
+      "MEDIUM",
+      "LOW",
+      "NONE"
+    ],
+    "interest_values": [
+      "YES",
+      "CONDITIONAL",
+      "NO",
+      "NOT_ASKED"
+    ],
+    "commercial_commitment_must_be": false,
+    "customer_adoption_must_be": false
+  },
+  "invalid_evidence_types": [
+    "MODEL_PRAISE_ONLY",
+    "POLITE_INTEREST_ONLY",
+    "HYPOTHETICAL_OPINION_WITHOUT_RECENT_EXAMPLE",
+    "PUBLIC_ARTICLE_INFERENCE",
+    "MULTIPLE_PROMPTS_AS_MULTIPLE_ORGANIZATIONS",
+    "AUTHOR_SELF_ASSESSMENT",
+    "SALES_LIST_EMAIL_OPEN_OR_PAGE_VIEW",
+    "UNCONSENTED_TRANSCRIPT_PII_CREDENTIAL_OR_CUSTOMER_MATERIAL"
+  ],
+  "success_thresholds": {
+    "valid_independent_problem_records_min": 5,
+    "independent_organization_or_contexts_min": 3,
+    "high_priority_records_min": 3,
+    "recent_example_required_for_all_valid": true,
+    "current_workaround_required_for_all_valid": true,
+    "continue_review_interest_min": 2,
+    "negative_and_withdrawn_records_preserved": true
+  },
+  "current_facts": {
+    "protocol_defined": true,
+    "validation_execution_authorized": false,
+    "external_outreach_authorized": false,
+    "valid_problem_records": 0,
+    "independent_organization_or_contexts": 0,
+    "high_priority_records": 0,
+    "continue_review_interest": 0,
+    "cs_g0_problem_freeze_pass": false,
+    "market_validation_pass": false,
+    "customers_verified": 0,
+    "commercial_commitments": 0
+  },
+  "gate_effect": {
+    "cs_g0_effect": false,
+    "human_decision_effect": false,
+    "adoption_effect": false,
+    "offering_effect": false
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "external_outreach": false,
+    "participant_enrollment": false,
+    "customer": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false
+  }
+}
