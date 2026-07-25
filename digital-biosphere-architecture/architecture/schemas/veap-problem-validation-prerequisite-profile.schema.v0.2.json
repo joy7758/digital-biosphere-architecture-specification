@@ -1,0 +1,159 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:veap-problem-validation-prerequisite-profile:0.2",
+  "title": "VEAP Agent-First Problem Validation and Review Prerequisite Profile v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "defined_at",
+    "decision_reference",
+    "canonical_document",
+    "supersedes",
+    "source_references",
+    "reviewer_model",
+    "cohort",
+    "roles",
+    "thresholds",
+    "data_policy",
+    "scope_limits",
+    "current_facts",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/veap-problem-validation-prerequisite-profile.schema.v0.2.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-VEAP-PROBLEM-VALIDATION-PREREQUISITE-PROFILE-0.2"
+    },
+    "version": {
+      "const": "0.2.0"
+    },
+    "status": {
+      "const": "AGENT_FIRST_PREREQUISITE_PROFILE_DEFINED_REVIEW_NOT_YET_EXECUTED"
+    },
+    "defined_at": {
+      "const": "2026-07-25"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-02"
+    },
+    "canonical_document": {
+      "const": "veap-problem-validation-prerequisite-profile-v0.2.md"
+    },
+    "supersedes": {
+      "const": "veap-problem-validation-prerequisite-profile-v0.1"
+    },
+    "source_references": {
+      "const": [
+        "../TITMAS-CS-D02-AGENT-FIRST-REVIEW-DECISION-RECORD.v0.1.json",
+        "ADR-021-agent-native-customer-validation.md",
+        "ADR-031-agent-first-review-governance.md"
+      ]
+    },
+    "reviewer_model": {
+      "const": {
+        "primary_reviewer_class": "AI_AGENT_MODEL_SESSION",
+        "human_reviewer_hard_gate": false,
+        "human_reference_allowed": true,
+        "final_governance_decision_owner_ref": "zhangbin",
+        "agent_may_close_governance_gate": false,
+        "agent_may_self_authorize": false
+      }
+    },
+    "cohort": {
+      "const": {
+        "sessions_planned": 6,
+        "parseable_sessions_min": 5,
+        "provider_gateways_planned": 3,
+        "providers_with_success_min": 2,
+        "model_identities_planned": 5,
+        "model_identities_with_success_min": 4,
+        "review_roles_planned": 6,
+        "review_roles_with_success_min": 5,
+        "statistical_independence_claimed": false
+      }
+    },
+    "roles": {
+      "const": [
+        "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+        "CODING_AND_REUSE_REVIEWER",
+        "RECOMMENDATION_REVIEWER",
+        "METHOD_REVIEWER",
+        "SECURITY_AND_CLAIM_REVIEWER",
+        "ARCHITECTURE_BOUNDARY_REVIEWER"
+      ]
+    },
+    "thresholds": {
+      "const": {
+        "correct_positioning_min": 4,
+        "conditional_or_yes_recommendations_min": 4,
+        "boundary_safety_failures_max": 0,
+        "mean_given_material_discoverability_min": 2.5,
+        "mean_positioning_comprehension_min": 3.0,
+        "mean_use_reuse_path_clarity_min": 2.5,
+        "mean_recommendation_fitness_min": 2.5,
+        "mean_method_claim_discipline_min": 3.0
+      }
+    },
+    "data_policy": {
+      "const": {
+        "public_safe_frozen_materials_only": true,
+        "customer_or_personal_data_allowed": false,
+        "secret_in_request_or_artifact_allowed": false,
+        "provider_raw_envelope_persisted": false,
+        "parsed_response_and_hashes_may_be_persisted": true,
+        "model_tools_allowed": false,
+        "external_side_effects_allowed": false,
+        "failures_and_dissent_retained": true,
+        "private_store_required_for_current_run": false,
+        "private_store_required_before_non_public_data": true
+      }
+    },
+    "scope_limits": {
+      "const": {
+        "given_material_discovery_may_be_assessed": true,
+        "open_web_discovery_may_be_claimed": false,
+        "agent_use_may_be_claimed": false,
+        "independent_reuse_may_be_claimed": false,
+        "market_validation_may_be_claimed": false,
+        "customer_adoption_may_be_claimed": false
+      }
+    },
+    "current_facts": {
+      "const": {
+        "agent_first_prerequisite_profile_defined": true,
+        "agent_api_review_authorized": true,
+        "agent_review_protocol_frozen": false,
+        "agent_review_executed": false,
+        "agent_review_result": "NOT_ASSESSED",
+        "human_reviewer_hard_gate": false,
+        "human_reference_allowed": true,
+        "implementation_authorized": false,
+        "customer_data_collection_authorized": false,
+        "human_or_organization_outreach_authorized": false
+      }
+    },
+    "effects": {
+      "const": {
+        "review_route": true,
+        "authority": false,
+        "ownership": false,
+        "implementation": false,
+        "runtime": false,
+        "agent_instance": false,
+        "entity_instance": false,
+        "permission": false,
+        "evidence_truth": false,
+        "customer": false,
+        "commercial_offer": false,
+        "certification": false,
+        "release": false
+      }
+    }
+  }
+}

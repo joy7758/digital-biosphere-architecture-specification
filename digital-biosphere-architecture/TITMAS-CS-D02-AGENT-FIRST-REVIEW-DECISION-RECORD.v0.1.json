@@ -1,0 +1,71 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-agent-first-review-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-AGENT-FIRST-REVIEW-DECISION-RECORD-0.1",
+  "version": "0.1.0",
+  "status": "DECIDED_AGENT_FIRST_REVIEW_AUTHORIZED",
+  "decision_id": "CS-D02-PRE-02",
+  "parent_decision_id": "CS-D02",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-25T16:21:10+08:00",
+  "source_baseline_commit": "40babb93522781c8b8800ad919cd4e57036d8f7d",
+  "decision_result": "ADOPT_AGENT_FIRST_MULTI_MODEL_REVIEW",
+  "primary_reviewer_class": "AI_AGENT_MODEL_SESSION",
+  "human_reviewer_role": "OPTIONAL_REFERENCE",
+  "final_governance_decision_owner_ref": "zhangbin",
+  "supersedes_reference": "CS-D02-PRE-01-REVIEWER-ROUTE",
+  "authorized_actions": [
+    "FREEZE_PUBLIC_SAFE_AGENT_REVIEW_PROTOCOL",
+    "CALL_EXISTING_QIANFAN_ARK_AND_DEEPSEEK_CREDENTIALS",
+    "RUN_TOOL_FREE_MULTI_MODEL_REVIEW",
+    "STORE_SANITIZED_PARSED_OUTPUTS_AND_HASHES",
+    "DETERMINISTICALLY_SCORE_RESULTS",
+    "UPDATE_SCOPED_DBA_GOVERNANCE_ARTIFACTS",
+    "PATH_SCOPED_COMMIT_AND_PUSH"
+  ],
+  "data_boundary": {
+    "public_safe_frozen_materials_only": true,
+    "customer_or_personal_data_allowed": false,
+    "secret_in_request_or_artifact_allowed": false,
+    "provider_raw_envelope_persisted": false,
+    "model_tools_allowed": false,
+    "external_side_effects_allowed": false,
+    "failures_and_dissent_retained": true
+  },
+  "decision_effect": {
+    "agent_review_route_decided": true,
+    "agent_api_review_authorized": true,
+    "human_reviewer_hard_gate": false,
+    "human_reference_allowed": true,
+    "agent_may_close_governance_gate": false,
+    "cs_g0_pass": false,
+    "cs_g1_pass": false,
+    "cs_d02_execution_authorized": false,
+    "problem_record_collection_authorized": false,
+    "implementation_authorized": false,
+    "human_or_organization_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  },
+  "source_references": [
+    "architecture/ADR-021-agent-native-customer-validation.md",
+    "architecture/ADR-031-agent-first-review-governance.md",
+    "architecture/veap-problem-validation-prerequisite-profile-v0.2.md"
+  ],
+  "effects": {
+    "program_decision": true,
+    "bounded_agent_review_authorization": true,
+    "ownership": false,
+    "implementation": false,
+    "runtime": false,
+    "agent_instance": false,
+    "entity_instance": false,
+    "permission": false,
+    "evidence_truth": false,
+    "human_or_organization_outreach": false,
+    "customer_adoption": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:agent-first-review-response:0.1",
+  "title": "TITMAS Agent-First Review Response v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "session_id",
+    "reviewer_role",
+    "positioning_answer",
+    "positioning_correct",
+    "given_material_discoverability_score",
+    "positioning_comprehension_score",
+    "use_reuse_path_clarity_score",
+    "recommendation_fitness_score",
+    "method_claim_discipline_score",
+    "recommendation",
+    "recommend_when",
+    "do_not_recommend_when",
+    "first_reuse_step",
+    "blocking_gaps",
+    "required_corrections",
+    "boundary_answers",
+    "confidence",
+    "rationale"
+  ],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer_role": {
+      "enum": [
+        "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+        "CODING_AND_REUSE_REVIEWER",
+        "RECOMMENDATION_REVIEWER",
+        "METHOD_REVIEWER",
+        "SECURITY_AND_CLAIM_REVIEWER",
+        "ARCHITECTURE_BOUNDARY_REVIEWER"
+      ]
+    },
+    "positioning_answer": {
+      "type": "string",
+      "minLength": 1
+    },
+    "positioning_correct": {
+      "type": "boolean"
+    },
+    "given_material_discoverability_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "positioning_comprehension_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "use_reuse_path_clarity_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "recommendation_fitness_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "method_claim_discipline_score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "recommendation": {
+      "enum": [
+        "YES",
+        "CONDITIONAL",
+        "NO"
+      ]
+    },
+    "recommend_when": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "do_not_recommend_when": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "first_reuse_step": {
+      "type": "string",
+      "minLength": 1
+    },
+    "blocking_gaps": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "required_corrections": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "boundary_answers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_review_equals_human_market_validation",
+        "evidence_equals_truth",
+        "recommendation_equals_authority",
+        "dbos_equals_saee",
+        "model_session_is_digital_entity",
+        "given_material_review_proves_open_web_discovery",
+        "text_review_proves_executed_use"
+      ],
+      "properties": {
+        "agent_review_equals_human_market_validation": {
+          "const": false
+        },
+        "evidence_equals_truth": {
+          "const": false
+        },
+        "recommendation_equals_authority": {
+          "const": false
+        },
+        "dbos_equals_saee": {
+          "const": false
+        },
+        "model_session_is_digital_entity": {
+          "const": false
+        },
+        "given_material_review_proves_open_web_discovery": {
+          "const": false
+        },
+        "text_review_proves_executed_use": {
+          "const": false
+        }
+      }
+    },
+    "confidence": {
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW"
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "./validation-plan.schema.v0.1.json",
+  "schema_version": "0.1",
+  "validation_id": "TITMAS-CS-ARV-20260725-001",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "frozen_at": "2026-07-25T16:25:34+08:00",
+  "decision_owner_ref": "zhangbin",
+  "decision_reference": "CS-D02-PRE-02",
+  "primary_customer": "AI_AGENT",
+  "base_source_commit": "40babb93522781c8b8800ad919cd4e57036d8f7d",
+  "source_digests": {
+    "source-pack.v0.1.md": "a0fb5f8224e34d88e63815adb2802bd79fd6264002ca69c3a1bbc76a50e7022e",
+    "prompt-template.v0.1.txt": "ce1b5b3367f87c89bae1d59c5828ba3b293a841ad6ef04ee4f6f3a7edc6c3f57",
+    "agent-review-response.schema.v0.1.json": "3e43eed8a2d76ea3c8478d266564b27c87a505b092cbf9963cb1854134c7feeb",
+    "../TITMAS-CS-D02-AGENT-FIRST-REVIEW-DECISION-RECORD.v0.1.json": "cc321ede26ff1c77723f07d843f9fcaab2a59ece95bdb32f224ca292a766b18a",
+    "../architecture/veap-problem-validation-prerequisite-profile.v0.2.json": "19d783d53e8f76bc40fb2a851830b993059dd347632bcf66abce8ade8cb73d68"
+  },
+  "sessions": [
+    {
+      "session_id": "QF-DISCOVERY",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "ernie-4.5-turbo-128k",
+      "reviewer_role": "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+      "role_focus": "Assess whether a retrieval or citation agent can identify the project positioning, boundaries, public entry value, and when it should or should not surface TITMAS."
+    },
+    {
+      "session_id": "QF-METHOD",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "ernie-4.5-turbo-128k",
+      "reviewer_role": "METHOD_REVIEWER",
+      "role_focus": "Assess review methodology, quorum, source limitations, correlated-model risk, scoring thresholds, and invalid inference risks."
+    },
+    {
+      "session_id": "ARK-DOUBAO-RECOMMEND",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "doubao-seed-2-0-lite-260215",
+      "reviewer_role": "RECOMMENDATION_REVIEWER",
+      "role_focus": "Decide when an AI solution agent should recommend TITMAS, when it should not, and which missing public artifacts most reduce recommendation confidence."
+    },
+    {
+      "session_id": "ARK-GLM-SECURITY",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "glm-5-2-260617",
+      "reviewer_role": "SECURITY_AND_CLAIM_REVIEWER",
+      "role_focus": "Review authority, evidence, truth, certification, privacy, security, and public-claim boundaries; fail closed on semantic elevation."
+    },
+    {
+      "session_id": "ARK-DEEPSEEK-ARCH",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "deepseek-v4-flash-260425",
+      "reviewer_role": "ARCHITECTURE_BOUNDARY_REVIEWER",
+      "role_focus": "Review DBA, DBOS, SAEE, Digital Entity, VEAP, observation, evidence, evaluation, decision, and execution separation."
+    },
+    {
+      "session_id": "DS-CODING-REUSE",
+      "provider_gateway": "deepseek",
+      "endpoint_host": "api.deepseek.com",
+      "model": "deepseek-chat",
+      "reviewer_role": "CODING_AND_REUSE_REVIEWER",
+      "role_focus": "Assess whether a coding or integration agent has a concrete first reuse path and identify missing schema, SDK, example, test, and machine-readable entry artifacts."
+    }
+  ],
+  "neutral_prompt_contract": {
+    "provided_materials_only": true,
+    "do_not_favor_candidate": true,
+    "lower_scores_when_direct_evidence_missing": true,
+    "json_object_only": true,
+    "external_tools_allowed": false,
+    "negative_findings_and_dissent_required": true
+  },
+  "success_thresholds": {
+    "sessions_planned": 6,
+    "parseable_sessions_min": 5,
+    "providers_with_success_min": 2,
+    "model_identities_with_success_min": 4,
+    "review_roles_with_success_min": 5,
+    "correct_positioning_min": 4,
+    "conditional_or_yes_recommendations_min": 4,
+    "boundary_safety_failures_max": 0,
+    "mean_given_material_discoverability_min": 2.5,
+    "mean_positioning_comprehension_min": 3.0,
+    "mean_use_reuse_path_clarity_min": 2.5,
+    "mean_recommendation_fitness_min": 2.5,
+    "mean_method_claim_discipline_min": 3.0
+  },
+  "retry_policy": {
+    "transport_retries_max": 1,
+    "model_fallback_allowed": false,
+    "invalid_json_repair_prompt_allowed": false
+  },
+  "data_policy": {
+    "public_safe_frozen_materials_only": true,
+    "secrets_in_request_or_result_allowed": false,
+    "customer_or_personal_data_allowed": false,
+    "provider_raw_envelope_persisted": false,
+    "external_side_effects_allowed": false,
+    "failures_and_dissent_must_be_retained": true
+  },
+  "gate_effect": {
+    "agent_review_gate_may_pass": true,
+    "open_web_discovery_may_pass_from_this_validation": false,
+    "agent_use_may_pass_from_this_validation": false,
+    "independent_reuse_may_pass_from_this_validation": false,
+    "cs_g0_may_pass_from_this_validation": false,
+    "market_validation_may_be_claimed": false,
+    "customer_adoption_may_be_claimed": false,
+    "governance_decision_may_be_created": false
+  },
+  "non_effects": {
+    "agent_instance_created": false,
+    "runtime_created": false,
+    "entity_instance_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "implementation_authorized": false,
+    "human_or_organization_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

@@ -17,6 +17,8 @@
     "priority_open_artifact",
     "agent_recommendation",
     "agent_advisory_review",
+    "agent_first_review_decision",
+    "kimi_lead_review",
     "human_decision",
     "standing_directive",
     "predecision_evidence",
@@ -38,7 +40,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PACKET_PREPARED_BLOCKED_INPUT_STANDARD_NOT_READY"
+      "const": "CS_D02_AGENT_FIRST_REVIEW_DECIDED_KIMI_NO_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -187,6 +189,114 @@
           "const": false
         },
         "human_decision_effect": {
+          "const": false
+        }
+      }
+    },
+    "agent_first_review_decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "decision_result",
+        "decision_record_reference",
+        "architecture_decision_reference",
+        "prerequisite_profile_reference",
+        "primary_reviewer_class",
+        "human_reviewer_hard_gate",
+        "human_reference_allowed",
+        "final_governance_decision_owner_ref",
+        "agent_api_review_authorized",
+        "agent_may_close_governance_gate"
+      ],
+      "properties": {
+        "decision_id": {
+          "const": "CS-D02-PRE-02"
+        },
+        "decision_result": {
+          "const": "ADOPT_AGENT_FIRST_MULTI_MODEL_REVIEW"
+        },
+        "decision_record_reference": {
+          "const": "TITMAS-CS-D02-AGENT-FIRST-REVIEW-DECISION-RECORD.v0.1.json"
+        },
+        "architecture_decision_reference": {
+          "const": "architecture/ADR-031-agent-first-review-governance.md"
+        },
+        "prerequisite_profile_reference": {
+          "const": "architecture/veap-problem-validation-prerequisite-profile.v0.2.json"
+        },
+        "primary_reviewer_class": {
+          "const": "AI_AGENT_MODEL_SESSION"
+        },
+        "human_reviewer_hard_gate": {
+          "const": false
+        },
+        "human_reference_allowed": {
+          "const": true
+        },
+        "final_governance_decision_owner_ref": {
+          "const": "zhangbin"
+        },
+        "agent_api_review_authorized": {
+          "const": true
+        },
+        "agent_may_close_governance_gate": {
+          "const": false
+        }
+      }
+    },
+    "kimi_lead_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "validation_id",
+        "report_reference",
+        "observation_reference",
+        "model",
+        "recommend_now",
+        "worth_continuing",
+        "highest_priority",
+        "human_governance_decision_required",
+        "multi_model_panel_executed",
+        "agent_review_gate_pass",
+        "cs_g0_effect",
+        "implementation_effect"
+      ],
+      "properties": {
+        "validation_id": {
+          "const": "TITMAS-CS-KIMI-20260725-001"
+        },
+        "report_reference": {
+          "const": "TITMAS-CS-D02-KIMI-LEAD-REVIEW.md"
+        },
+        "observation_reference": {
+          "const": "commercialization-standards-agent-review/kimi-lead-review-observation.v0.1.json"
+        },
+        "model": {
+          "const": "kimi-k2.6"
+        },
+        "recommend_now": {
+          "const": "NO"
+        },
+        "worth_continuing": {
+          "const": "CONDITIONAL"
+        },
+        "highest_priority": {
+          "const": "NORMATIVE_PROFILE_SCHEMA_PLUS_ONE_AUDITABLE_CASE"
+        },
+        "human_governance_decision_required": {
+          "const": true
+        },
+        "multi_model_panel_executed": {
+          "const": false
+        },
+        "agent_review_gate_pass": {
+          "const": false
+        },
+        "cs_g0_effect": {
+          "const": false
+        },
+        "implementation_effect": {
           "const": false
         }
       }
@@ -625,7 +735,7 @@
           "const": "BOUNDED_TWO_STREAM_PROBLEM_VALIDATION"
         },
         "prerequisite_profile_reference": {
-          "const": "architecture/veap-problem-validation-prerequisite-profile.v0.1.json"
+          "const": "architecture/veap-problem-validation-prerequisite-profile.v0.2.json"
         },
         "prerequisite_profile_defined": {
           "const": true

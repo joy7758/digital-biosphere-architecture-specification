@@ -315,10 +315,10 @@ Stream A 未来可降低直接招募参与者的依赖，但必须通过 Method/
 Stream B 回应“智能体是核心使用者和推荐者”，但模型评价永远不能自动成为客户、组织、
 市场采用或 `CS-G0 PASS`。
 
-### 4.10 Reviewer and Store Prerequisite Profile
+### 4.10 Historical Human Reviewer and Store Prerequisite Profile
 
 [VEAP Problem Validation Prerequisite Profile](veap-problem-validation-prerequisite-profile-v0.1.md) /
-[machine record](veap-problem-validation-prerequisite-profile.v0.1.json) 已定义：
+[machine record](veap-problem-validation-prerequisite-profile.v0.1.json) 曾定义：
 
 - Method、Security、Claim Reviewer 的最低资格、独立性和接受记录；
 - 至少两名可追责自然人的独立 Review；
@@ -336,9 +336,11 @@ STORE_IMPLEMENTED=false
 DATA_HANDLING_APPROVED=false
 ```
 
-该 Profile 只定义准入标准，不选择人员、backend、path 或 service。
+该 Profile 只定义准入标准，不选择人员、backend、path 或 service。其自然人 Reviewer
+硬门槛已被 `CS-D02-PRE-02` 和 `ADR-031` 替代；store controls 对未来非公开、客户或个人
+数据路线仍保留参考价值。
 
-### 4.11 Prerequisite Selection Decision Packet
+### 4.11 Historical Prerequisite Selection Decision Packet
 
 [CS-D02 Prerequisite Selection Decision Packet](../TITMAS-CS-D02-PREREQUISITE-SELECTION-DECISION-PACKET.md) /
 [machine packet](../TITMAS-CS-D02-PREREQUISITE-SELECTION-DECISION-PACKET.v0.1.json) 已把剩余
@@ -353,9 +355,38 @@ OVERALL_RECOMMENDATION=CONDITIONALLY_RECOMMENDED
 PREREQUISITE_SELECTION_DECISION_READY=false
 ```
 
-当前缺 exact recruitment channel、budget、expiry、store reference、encryption/access 和
-incident route。由于 `external_outreach_authorized=false` 仍是明确事实，常设指令不能自动
-批准 R1 或替用户填写这些输入。
+该 packet 的自然人招募路线已被 Agent-first 决定替代，不再等待 recruitment channel、
+budget 或 expiry。`external_outreach_authorized=false` 继续阻止真人／组织外联；未来如
+引入非公开数据，store reference、encryption/access 和 incident route 仍须单独决定。
+
+### 4.12 Agent-first Review Decision and Kimi Lead Review
+
+[`CS-D02-PRE-02`](../TITMAS-CS-D02-AGENT-FIRST-REVIEW-DECISION-RECORD.md) 和
+[`ADR-031`](ADR-031-agent-first-review-governance.md) 已决定：
+
+```text
+PRIMARY_REVIEWER_CLASS=AI_AGENT_MODEL_SESSION
+HUMAN_REVIEWER_HARD_GATE=false
+HUMAN_REFERENCE_ALLOWED=true
+FINAL_GOVERNANCE_DECISION_OWNER_REF=zhangbin
+```
+
+后继
+[`Prerequisite Profile v0.2`](veap-problem-validation-prerequisite-profile-v0.2.md)
+定义六角色、多 provider/model、失败保留和 semantic non-elevation（语义不升级）门槛。
+
+按 Human Owner 要求，`kimi-k2.6` 首先作为 Lead Reviewer：
+
+```text
+KIMI_RECOMMEND_NOW=NO
+KIMI_WORTH_CONTINUING=CONDITIONAL
+KIMI_HIGHEST_PRIORITY=NORMATIVE_PROFILE_SCHEMA_PLUS_ONE_AUDITABLE_CASE
+MULTI_MODEL_PANEL_EXECUTED=false
+```
+
+见 [Kimi Lead Review](../TITMAS-CS-D02-KIMI-LEAD-REVIEW.md)。Kimi 的建议与当前
+`normative_profile_authorized=false`、`conformance_execution_authorized=false` 冲突，
+因此返回 Human Governance Decision，不由模型或常设指令自动执行。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -498,7 +529,7 @@ Strategy
 
 | Gate | Required evidence | Exit result | Current |
 |---|---|---|---|
-| `CS-G0` Problem Freeze | 5 个独立问题记录；至少 3 个 HIGH；明确现有替代方案 | 单一首要问题和受众 | `NOT_MET` |
+| `CS-G0` Agent-native Problem Freeze | 按 v0.2 冻结至少 5 个可解析 Agent review session、至少 2 个 provider、4 个 model identity、0 个 boundary safety failure，并明确问题、非采用者和现有替代方案；真人仅作可选参考 | 单一首要问题和 Agent 受众 | `NOT_MET`：Kimi lead 为单模型且当前推荐 NO；完整 panel 未执行 |
 | `CS-G1` Scope/Authority Freeze | exact VEAP scope、canonical ownership crosswalk、Owner、Human Decision | Draft work authorized | `NOT_MET`：CS-D01 已记录，但 crosswalk acceptance、Specification Owner 和正式 Review 未冻结 |
 | `CS-G2` Draft Contract | normative profile、Schema、fixtures、claim guard、security review | Draft review complete | `NOT_MET` |
 | `CS-G3` Experimental Conformance | reference implementation、全部 mandatory negative cases、结果集和复现指南 | Experimental evidence package | `NOT_MET` |
@@ -608,24 +639,24 @@ not_allowed_now:
   - certificate_issue
 required_before_packet_is_decidable:
   - problem_validation_owner
-  - reviewer_and_escalation_owner
-  - participant_source_and_independence_rule
-  - consent_privacy_retention_deletion_contract
-  - security_and_claim_review_route
-  - exact outreach_and_data_scope
+  - agent_review_protocol_and_role_coverage
+  - provider_model_and_source_digest_record
+  - security_and_claim_boundary_review_route
+  - exact public_safe_data_scope
   - stop_and_rollback_conditions
 decision_packet: ../TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.md
 governance_contract: veap-problem-validation-governance-contract-v0.1.md
 decision_status: PACKET_PREPARED_BLOCKED_INPUT_NOT_DECISION_READY
 ```
 
-`CS-D02` 当前只允许准备 exact packet。由于 Owner、Reviewer、参与者来源和数据处理控制
-尚未直接证明，常设指令的 prerequisites 不满足，因此不会自动授权外联或数据收集。
+`CS-D02` 当前只允许准备 exact packet。Agent-first Reviewer 路线已经决定，但 Kimi 当前
+推荐 NO，完整多模型 panel、Owner 和 exact public-safe scope 尚未形成直接结果；因此常设
+指令不能自动授权 normative/schema、conformance execution、外联或数据收集。
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Freeze the problem, not the solution**：用既有 Market Validation contract 收集
-   execution-accountability 问题证据；
+1. **Freeze the problem, not the solution**：按 Agent-first v0.2 contract 收集并保留
+   execution-accountability 问题、拒绝和推荐证据；
 2. **Freeze ownership**：明确 TITMAS exchange profile、DBOS canonical record、EEOAP
    accountability 和 SAEE evaluation 的各自权属；
 3. **Draft the package contract**：只在 `CS-G0`、`CS-G1` 都有直接证据并经后继决定后创建
@@ -633,7 +664,8 @@ decision_status: PACKET_PREPARED_BLOCKED_INPUT_NOT_DECISION_READY
 4. **Build conformance before product UI**：先定义失败与结果集，再设计平台；
 5. **Run one vertical slice**：AGT/OTel observation → DBOS admission → VEAP → verification →
    SAEE read-only input；
-6. **Seek independent review before sales**：先证明陌生实现者能理解和复用；
+6. **Seek agent-native review before sales**：先用多 provider/model panel 证明智能体能
+   理解边界；再用独立 sandbox execution 证明实际使用和复用，真人只作可选参考；
 7. **Define repeatable service only after evidence**：再决定私有节点、报告、评价和支持。
 
 ## 14. Final State（最终状态）
@@ -659,10 +691,16 @@ TITMAS_CS_D02_INPUTS_COMPLETE=false
 TITMAS_CS_D02_INPUT_RECOMMENDATION_CANDIDATE_PREPARED=true
 TITMAS_CS_D02_RECOMMENDED_METHOD=BOUNDED_TWO_STREAM_PROBLEM_VALIDATION
 TITMAS_CS_D02_PREREQUISITE_PROFILE_DEFINED=true
-TITMAS_CS_D02_REVIEWER_IDENTITIES_SELECTED=false
+TITMAS_CS_D02_AGENT_FIRST_REVIEW_DECIDED=true
+TITMAS_CS_D02_HUMAN_REVIEWER_HARD_GATE=false
+TITMAS_CS_D02_HUMAN_REFERENCE_ALLOWED=true
+TITMAS_CS_D02_KIMI_LEAD_REVIEW_COMPLETE=true
+TITMAS_CS_D02_KIMI_RECOMMEND_NOW=NO
+TITMAS_CS_D02_KIMI_WORTH_CONTINUING=CONDITIONAL
+TITMAS_CS_D02_MULTI_MODEL_PANEL_EXECUTED=false
 TITMAS_CS_D02_STORE_BACKEND_SELECTED=false
 TITMAS_CS_D02_PREREQUISITE_SELECTION_PACKET_PREPARED=true
-TITMAS_CS_D02_PREREQUISITE_SELECTION_DECISION_READY=false
+TITMAS_CS_D02_PREREQUISITE_SELECTION_ROUTE=SUPERSEDED_BY_AGENT_FIRST
 TITMAS_VEAP_OWNERSHIP_CROSSWALK_DEFINED=true
 TITMAS_VEAP_OWNERSHIP_RECORDS=14
 TITMAS_VEAP_OWNERSHIP_FROZEN=false
