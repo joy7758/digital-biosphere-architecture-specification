@@ -1,0 +1,108 @@
+{
+  "$schema": "./architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-0.1",
+  "version": "0.1.0",
+  "status": "ROADMAP_DEFINED_EXECUTION_NOT_AUTHORIZED",
+  "observed_at": "2026-07-25",
+  "primary_repository": "digital-biosphere-architecture",
+  "canonical_roadmap": "architecture/titmas-commercialization-standards-roadmap-v0.1.md",
+  "objective": {
+    "en": "Advance TITMAS from commercial strategy toward an open, testable, and independently implementable standard before offering commercial services.",
+    "zh": "推动 TITMAS 从商业战略进入开放、可测试、可独立实现的标准阶段，再讨论商业服务。"
+  },
+  "priority_value_problem": "AGENT_EXECUTION_ACCOUNTABILITY",
+  "priority_open_artifact": {
+    "id": "VEAP_PROFILE_CANDIDATE",
+    "name": "Verifiable Execution Attestation Package",
+    "name_zh": "可验证执行证明包",
+    "status": "CONCEPTUAL_SCOPE_ONLY",
+    "certificate_claim_allowed": false
+  },
+  "agent_recommendation": {
+    "result": "CONDITIONALLY_RECOMMENDED",
+    "recommended_as": "OPEN_TRUST_INFRASTRUCTURE_AND_VALIDATION_DIRECTION",
+    "not_recommended_as": "PURCHASABLE_CERTIFIED_OR_PRODUCTION_READY_SERVICE"
+  },
+  "standardization_gates": [
+    {
+      "id": "CS-G0",
+      "name": "PROBLEM_FREEZE",
+      "status": "NOT_MET"
+    },
+    {
+      "id": "CS-G1",
+      "name": "SCOPE_AUTHORITY_FREEZE",
+      "status": "NOT_MET"
+    },
+    {
+      "id": "CS-G2",
+      "name": "DRAFT_CONTRACT",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CS-G3",
+      "name": "EXPERIMENTAL_CONFORMANCE",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CS-G4",
+      "name": "INDEPENDENT_IMPLEMENTATION",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CS-G5",
+      "name": "BOUNDED_COMMERCIAL_PILOT",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CS-G6",
+      "name": "AVAILABLE_OFFERING_DECISION",
+      "status": "BLOCKED"
+    },
+    {
+      "id": "CS-G7",
+      "name": "CUSTOMER_ADOPTION_EVIDENCE",
+      "status": "BLOCKED"
+    }
+  ],
+  "current_facts": {
+    "roadmap_defined": true,
+    "commercialization_standard_ready": false,
+    "veap_normative_profile_created": false,
+    "veap_schema_created": false,
+    "veap_reference_implementation_created": false,
+    "veap_conformance_cases_executed": 0,
+    "veap_independent_implementations": 0,
+    "bounded_commercial_pilots": 0,
+    "available_offerings": 0,
+    "customers_verified": 0,
+    "contracts_created": 0,
+    "certificates_issued": 0
+  },
+  "authority_boundaries": [
+    "STANDARD_DOES_NOT_CREATE_PRODUCT",
+    "ATTESTATION_DOES_NOT_CREATE_TRUTH",
+    "CONFORMANCE_PASS_DOES_NOT_CREATE_CERTIFICATION",
+    "PAYMENT_DOES_NOT_CREATE_PERMISSION",
+    "DBOS_REMAINS_CANONICAL_RECORD_BOUNDARY",
+    "SAEE_REMAINS_EVOLUTION_EVALUATION_AUTHORITY"
+  ],
+  "next_decision_candidate": {
+    "id": "CS-D01",
+    "question": "Authorize a bounded VEAP problem-and-scope freeze package?",
+    "status": "READY_FOR_DOCUMENT_REVIEW_NOT_APPROVED"
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "external_outreach": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false
+  }
+}

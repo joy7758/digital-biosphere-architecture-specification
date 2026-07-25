@@ -1,0 +1,502 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:commercialization-standards-entry:0.1",
+  "title": "TITMAS Commercialization Standards Entry v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "primary_repository",
+    "canonical_roadmap",
+    "objective",
+    "priority_value_problem",
+    "priority_open_artifact",
+    "agent_recommendation",
+    "standardization_gates",
+    "current_facts",
+    "authority_boundaries",
+    "next_decision_candidate",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "ROADMAP_DEFINED_EXECUTION_NOT_AUTHORIZED"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "canonical_roadmap": {
+      "const": "architecture/titmas-commercialization-standards-roadmap-v0.1.md"
+    },
+    "objective": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "en",
+        "zh"
+      ],
+      "properties": {
+        "en": {
+          "type": "string",
+          "minLength": 20
+        },
+        "zh": {
+          "type": "string",
+          "minLength": 10
+        }
+      }
+    },
+    "priority_value_problem": {
+      "const": "AGENT_EXECUTION_ACCOUNTABILITY"
+    },
+    "priority_open_artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "name_zh",
+        "status",
+        "certificate_claim_allowed"
+      ],
+      "properties": {
+        "id": {
+          "const": "VEAP_PROFILE_CANDIDATE"
+        },
+        "name": {
+          "const": "Verifiable Execution Attestation Package"
+        },
+        "name_zh": {
+          "const": "可验证执行证明包"
+        },
+        "status": {
+          "const": "CONCEPTUAL_SCOPE_ONLY"
+        },
+        "certificate_claim_allowed": {
+          "const": false
+        }
+      }
+    },
+    "agent_recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "result",
+        "recommended_as",
+        "not_recommended_as"
+      ],
+      "properties": {
+        "result": {
+          "const": "CONDITIONALLY_RECOMMENDED"
+        },
+        "recommended_as": {
+          "const": "OPEN_TRUST_INFRASTRUCTURE_AND_VALIDATION_DIRECTION"
+        },
+        "not_recommended_as": {
+          "const": "PURCHASABLE_CERTIFIED_OR_PRODUCTION_READY_SERVICE"
+        }
+      }
+    },
+    "standardization_gates": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/g0"
+        },
+        {
+          "$ref": "#/$defs/g1"
+        },
+        {
+          "$ref": "#/$defs/g2"
+        },
+        {
+          "$ref": "#/$defs/g3"
+        },
+        {
+          "$ref": "#/$defs/g4"
+        },
+        {
+          "$ref": "#/$defs/g5"
+        },
+        {
+          "$ref": "#/$defs/g6"
+        },
+        {
+          "$ref": "#/$defs/g7"
+        }
+      ],
+      "items": false
+    },
+    "current_facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "roadmap_defined",
+        "commercialization_standard_ready",
+        "veap_normative_profile_created",
+        "veap_schema_created",
+        "veap_reference_implementation_created",
+        "veap_conformance_cases_executed",
+        "veap_independent_implementations",
+        "bounded_commercial_pilots",
+        "available_offerings",
+        "customers_verified",
+        "contracts_created",
+        "certificates_issued"
+      ],
+      "properties": {
+        "roadmap_defined": {
+          "const": true
+        },
+        "commercialization_standard_ready": {
+          "const": false
+        },
+        "veap_normative_profile_created": {
+          "const": false
+        },
+        "veap_schema_created": {
+          "const": false
+        },
+        "veap_reference_implementation_created": {
+          "const": false
+        },
+        "veap_conformance_cases_executed": {
+          "const": 0
+        },
+        "veap_independent_implementations": {
+          "const": 0
+        },
+        "bounded_commercial_pilots": {
+          "const": 0
+        },
+        "available_offerings": {
+          "const": 0
+        },
+        "customers_verified": {
+          "const": 0
+        },
+        "contracts_created": {
+          "const": 0
+        },
+        "certificates_issued": {
+          "const": 0
+        }
+      }
+    },
+    "authority_boundaries": {
+      "type": "array",
+      "minItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "STANDARD_DOES_NOT_CREATE_PRODUCT",
+          "ATTESTATION_DOES_NOT_CREATE_TRUTH",
+          "CONFORMANCE_PASS_DOES_NOT_CREATE_CERTIFICATION",
+          "PAYMENT_DOES_NOT_CREATE_PERMISSION",
+          "DBOS_REMAINS_CANONICAL_RECORD_BOUNDARY",
+          "SAEE_REMAINS_EVOLUTION_EVALUATION_AUTHORITY"
+        ]
+      },
+      "allOf": [
+        {
+          "contains": {
+            "const": "STANDARD_DOES_NOT_CREATE_PRODUCT"
+          }
+        },
+        {
+          "contains": {
+            "const": "CONFORMANCE_PASS_DOES_NOT_CREATE_CERTIFICATION"
+          }
+        },
+        {
+          "contains": {
+            "const": "DBOS_REMAINS_CANONICAL_RECORD_BOUNDARY"
+          }
+        },
+        {
+          "contains": {
+            "const": "SAEE_REMAINS_EVOLUTION_EVALUATION_AUTHORITY"
+          }
+        }
+      ]
+    },
+    "next_decision_candidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "question",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "const": "CS-D01"
+        },
+        "question": {
+          "type": "string",
+          "minLength": 20
+        },
+        "status": {
+          "const": "READY_FOR_DOCUMENT_REVIEW_NOT_APPROVED"
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "ownership",
+        "implementation",
+        "runtime",
+        "agent",
+        "entity",
+        "permission",
+        "external_outreach",
+        "commercial_offer",
+        "certification",
+        "release"
+      ],
+      "properties": {
+        "authority": {
+          "const": false
+        },
+        "ownership": {
+          "const": false
+        },
+        "implementation": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "external_outreach": {
+          "const": false
+        },
+        "commercial_offer": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "release": {
+          "const": false
+        }
+      }
+    }
+  },
+  "$defs": {
+    "gateBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "status"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "NOT_MET",
+            "BLOCKED",
+            "PASS"
+          ]
+        }
+      }
+    },
+    "g0": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G0"
+            },
+            "name": {
+              "const": "PROBLEM_FREEZE"
+            },
+            "status": {
+              "const": "NOT_MET"
+            }
+          }
+        }
+      ]
+    },
+    "g1": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G1"
+            },
+            "name": {
+              "const": "SCOPE_AUTHORITY_FREEZE"
+            },
+            "status": {
+              "const": "NOT_MET"
+            }
+          }
+        }
+      ]
+    },
+    "g2": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G2"
+            },
+            "name": {
+              "const": "DRAFT_CONTRACT"
+            },
+            "status": {
+              "const": "BLOCKED"
+            }
+          }
+        }
+      ]
+    },
+    "g3": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G3"
+            },
+            "name": {
+              "const": "EXPERIMENTAL_CONFORMANCE"
+            },
+            "status": {
+              "const": "BLOCKED"
+            }
+          }
+        }
+      ]
+    },
+    "g4": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G4"
+            },
+            "name": {
+              "const": "INDEPENDENT_IMPLEMENTATION"
+            },
+            "status": {
+              "const": "BLOCKED"
+            }
+          }
+        }
+      ]
+    },
+    "g5": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G5"
+            },
+            "name": {
+              "const": "BOUNDED_COMMERCIAL_PILOT"
+            },
+            "status": {
+              "const": "BLOCKED"
+            }
+          }
+        }
+      ]
+    },
+    "g6": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G6"
+            },
+            "name": {
+              "const": "AVAILABLE_OFFERING_DECISION"
+            },
+            "status": {
+              "const": "BLOCKED"
+            }
+          }
+        }
+      ]
+    },
+    "g7": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G7"
+            },
+            "name": {
+              "const": "CUSTOMER_ADOPTION_EVIDENCE"
+            },
+            "status": {
+              "const": "BLOCKED"
+            }
+          }
+        }
+      ]
+    }
+  }
+}
