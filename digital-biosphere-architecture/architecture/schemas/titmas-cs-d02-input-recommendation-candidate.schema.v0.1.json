@@ -1,0 +1,501 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-input-recommendation-candidate:0.1",
+  "title": "TITMAS CS-D02 Input Recommendation Candidate v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "decision_id",
+    "status",
+    "prepared_at",
+    "decision_owner_ref",
+    "source_references",
+    "recommendation",
+    "recommended_roles",
+    "stream_a_contract",
+    "stream_b_contract",
+    "recommended_data_controls",
+    "recommended_execution_envelope",
+    "required_human_inputs",
+    "required_reviews",
+    "current_facts",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-input-recommendation-candidate.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-INPUT-RECOMMENDATION-CANDIDATE-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "decision_id": {
+      "const": "CS-D02"
+    },
+    "status": {
+      "const": "RECOMMENDATION_CANDIDATE_PREPARED_HUMAN_INPUT_AND_REVIEW_REQUIRED"
+    },
+    "prepared_at": {
+      "const": "2026-07-25"
+    },
+    "decision_owner_ref": {
+      "const": "zhangbin"
+    },
+    "source_references": {
+      "const": [
+        "TITMAS-CS-D02-INPUT-ASSIGNMENT-PACKET.v0.1.json",
+        "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json",
+        "architecture/veap-problem-validation-governance-contract.v0.1.json",
+        "architecture/veap-commercialization-standard-readiness.v0.3.json"
+      ]
+    },
+    "recommendation": {
+      "const": {
+        "result": "CONDITIONALLY_RECOMMENDED",
+        "recommended_method": "BOUNDED_TWO_STREAM_PROBLEM_VALIDATION",
+        "stream_a": "PUBLIC_FIRST_PARTY_PROBLEM_REPORT_REVIEW_AFTER_FORMAL_APPROVAL",
+        "stream_b": "GOVERNED_AGENT_RECOMMENDATION_REVIEW_AFTER_SEPARATE_API_AUTHORIZATION",
+        "direct_participant_interview": "DEFERRED_NOT_RECOMMENDED_NOW",
+        "reason": "REDUCES_PARTICIPANT_DEPENDENCY_WHILE_PRESERVING_HUMAN_ACCOUNTABILITY_AND_SEPARATING_AGENT_ADVISORY_FROM_MARKET_EVIDENCE",
+        "creates_decision": false,
+        "creates_execution_authority": false
+      }
+    },
+    "recommended_roles": {
+      "$ref": "#/$defs/recommendedRoles"
+    },
+    "stream_a_contract": {
+      "$ref": "#/$defs/streamA"
+    },
+    "stream_b_contract": {
+      "$ref": "#/$defs/streamB"
+    },
+    "recommended_data_controls": {
+      "$ref": "#/$defs/dataControls"
+    },
+    "recommended_execution_envelope": {
+      "$ref": "#/$defs/executionEnvelope"
+    },
+    "required_human_inputs": {
+      "const": [
+        "PROBLEM_VALIDATION_OWNER_ACCEPTANCE_REFERENCE",
+        "PRIVACY_DATA_STEWARD_ACCEPTANCE_AND_ROLE_OVERLAP_DISCLOSURE",
+        "METHOD_REVIEWER_IDENTITY_ACCEPTANCE_AND_INDEPENDENCE_REFERENCE",
+        "SECURITY_REVIEWER_IDENTITY_AND_ACCEPTANCE_REFERENCE",
+        "CLAIM_REVIEWER_IDENTITY_ACCEPTANCE_AND_INDEPENDENCE_REFERENCE",
+        "EXACT_STORAGE_AND_ACCESS_CONTROL_EVIDENCE",
+        "WITHDRAWAL_DELETION_AND_INCIDENT_ROUTE_REFERENCES",
+        "START_EXPIRY_REVOCATION_AND_STOP_OWNER",
+        "EXACT_STREAM_AUTHORIZATION_CHOICES"
+      ]
+    },
+    "required_reviews": {
+      "const": [
+        "METHOD_AND_SOURCE_USE_REVIEW",
+        "SECURITY_AND_PRIVACY_REVIEW",
+        "CLAIM_REVIEW",
+        "HUMAN_DECISION_REVIEW"
+      ]
+    },
+    "current_facts": {
+      "const": {
+        "recommendation_candidate_prepared": true,
+        "human_input_accepted": false,
+        "role_acceptances_recorded": 0,
+        "independent_human_reviewers_assigned": 0,
+        "storage_implementation_selected": false,
+        "formal_review_complete": false,
+        "cs_d02_decision_ready": false,
+        "cs_d02_decision_recorded": false,
+        "external_outreach_authorized": false,
+        "public_web_review_authorized": false,
+        "agent_api_call_authorized": false,
+        "participant_enrollment_authorized": false,
+        "data_collection_authorized": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false,
+        "cs_g1_pass": false
+      }
+    },
+    "effects": {
+      "const": {
+        "authority": false,
+        "ownership": false,
+        "implementation": false,
+        "runtime": false,
+        "agent": false,
+        "entity": false,
+        "permission": false,
+        "evidence_truth": false,
+        "external_action": false,
+        "customer": false,
+        "commercial_offer": false,
+        "certification": false,
+        "release": false
+      }
+    }
+  },
+  "$defs": {
+    "roleCandidate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_ref",
+        "recommendation",
+        "accepted_now"
+      ],
+      "properties": {
+        "candidate_ref": {
+          "type": "string",
+          "minLength": 4
+        },
+        "recommendation": {
+          "type": "string",
+          "minLength": 10
+        },
+        "accepted_now": {
+          "type": "boolean"
+        }
+      }
+    },
+    "recommendedRoles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "human_decision_owner",
+        "problem_validation_owner",
+        "privacy_data_steward",
+        "method_reviewer",
+        "security_reviewer",
+        "claim_reviewer",
+        "independent_human_reviewers_min",
+        "security_and_claim_role_combination_allowed_only_with_disclosed_conflict",
+        "agent_reviewer_counts_toward_human_minimum"
+      ],
+      "properties": {
+        "human_decision_owner": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/roleCandidate"
+            },
+            {
+              "const": {
+                "candidate_ref": "zhangbin",
+                "recommendation": "KEEP_EXISTING_PROGRAM_ROLE",
+                "accepted_now": true
+              }
+            }
+          ]
+        },
+        "problem_validation_owner": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/roleCandidate"
+            },
+            {
+              "const": {
+                "candidate_ref": "zhangbin",
+                "recommendation": "RECOMMEND_BOUNDED_ACCEPTANCE",
+                "accepted_now": false
+              }
+            }
+          ]
+        },
+        "privacy_data_steward": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/roleCandidate"
+            },
+            {
+              "const": {
+                "candidate_ref": "zhangbin",
+                "recommendation": "RECOMMEND_BOUNDED_ACCEPTANCE_WITH_ROLE_OVERLAP_DISCLOSURE",
+                "accepted_now": false
+              }
+            }
+          ]
+        },
+        "method_reviewer": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/roleCandidate"
+            },
+            {
+              "const": {
+                "candidate_ref": "NONE",
+                "recommendation": "REQUIRE_INDEPENDENT_HUMAN_NOT_RECORD_CREATOR",
+                "accepted_now": false
+              }
+            }
+          ]
+        },
+        "security_reviewer": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/roleCandidate"
+            },
+            {
+              "const": {
+                "candidate_ref": "NONE",
+                "recommendation": "REQUIRE_HUMAN_REVIEWER",
+                "accepted_now": false
+              }
+            }
+          ]
+        },
+        "claim_reviewer": {
+          "allOf": [
+            {
+              "$ref": "#/$defs/roleCandidate"
+            },
+            {
+              "const": {
+                "candidate_ref": "NONE",
+                "recommendation": "REQUIRE_INDEPENDENT_HUMAN_NOT_RECORD_CREATOR",
+                "accepted_now": false
+              }
+            }
+          ]
+        },
+        "independent_human_reviewers_min": {
+          "const": 2
+        },
+        "security_and_claim_role_combination_allowed_only_with_disclosed_conflict": {
+          "const": true
+        },
+        "agent_reviewer_counts_toward_human_minimum": {
+          "const": false
+        }
+      }
+    },
+    "streamA": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_type",
+        "allowed_source_classes",
+        "source_must_be_public_attributable_dated_and_stable",
+        "third_party_summary_allowed",
+        "private_login_or_paywalled_source_allowed",
+        "full_body_or_attachment_copy_allowed",
+        "function_request_implies_purchase_intent",
+        "same_organization_multiple_records_default_context_count",
+        "continue_review_interest_may_be_inferred_from_open_issue",
+        "formal_method_source_privacy_and_claim_review_required",
+        "authorized_now"
+      ],
+      "properties": {
+        "source_type": {
+          "const": "PUBLIC_FIRST_PARTY_PROBLEM_REPORT"
+        },
+        "allowed_source_classes": {
+          "const": [
+            "OFFICIAL_PROJECT_OR_ORGANIZATION_ISSUE",
+            "OFFICIAL_INCIDENT_OR_POSTMORTEM",
+            "OFFICIAL_SECURITY_ADVISORY"
+          ]
+        },
+        "source_must_be_public_attributable_dated_and_stable": {
+          "const": true
+        },
+        "third_party_summary_allowed": {
+          "const": false
+        },
+        "private_login_or_paywalled_source_allowed": {
+          "const": false
+        },
+        "full_body_or_attachment_copy_allowed": {
+          "const": false
+        },
+        "function_request_implies_purchase_intent": {
+          "const": false
+        },
+        "same_organization_multiple_records_default_context_count": {
+          "const": 1
+        },
+        "continue_review_interest_may_be_inferred_from_open_issue": {
+          "const": false
+        },
+        "formal_method_source_privacy_and_claim_review_required": {
+          "const": true
+        },
+        "authorized_now": {
+          "const": false
+        }
+      }
+    },
+    "streamB": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "purpose",
+        "exact_provider_model_prompt_digest_timestamp_and_failure_reference_required",
+        "agent_advisory_is_customer_interview",
+        "agent_recommendation_is_market_adoption",
+        "model_count_is_organization_count",
+        "api_output_may_pass_cs_g0",
+        "agent_may_accept_human_review_role",
+        "separate_api_network_data_and_budget_decision_required",
+        "authorized_now"
+      ],
+      "properties": {
+        "purpose": {
+          "const": "AGENT_DISCOVERY_COMPREHENSION_RECOMMENDATION_AND_REUSE_ADVISORY"
+        },
+        "exact_provider_model_prompt_digest_timestamp_and_failure_reference_required": {
+          "const": true
+        },
+        "agent_advisory_is_customer_interview": {
+          "const": false
+        },
+        "agent_recommendation_is_market_adoption": {
+          "const": false
+        },
+        "model_count_is_organization_count": {
+          "const": false
+        },
+        "api_output_may_pass_cs_g0": {
+          "const": false
+        },
+        "agent_may_accept_human_review_role": {
+          "const": false
+        },
+        "separate_api_network_data_and_budget_decision_required": {
+          "const": true
+        },
+        "authorized_now": {
+          "const": false
+        }
+      }
+    },
+    "dataControls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "storage_class",
+        "exact_storage_selected",
+        "access_scope",
+        "max_problem_records",
+        "working_retention_days",
+        "public_output",
+        "raw_transcript_allowed",
+        "direct_identifier_allowed",
+        "secret_or_credential_allowed",
+        "regulated_data_allowed",
+        "source_removal_action",
+        "deletion_proof",
+        "incident_route_required_before_execution",
+        "approved_now"
+      ],
+      "properties": {
+        "storage_class": {
+          "const": "PRIVATE_ACCESS_CONTROLLED_NON_GIT_VALIDATION_STORE"
+        },
+        "exact_storage_selected": {
+          "const": false
+        },
+        "access_scope": {
+          "const": "OWNER_DATA_STEWARD_AND_ASSIGNED_REVIEWERS_ONLY"
+        },
+        "max_problem_records": {
+          "const": 20
+        },
+        "working_retention_days": {
+          "const": 90
+        },
+        "public_output": {
+          "const": "AGGREGATED_COUNTS_AND_PUBLIC_SAFE_PARAPHRASE_ONLY"
+        },
+        "raw_transcript_allowed": {
+          "const": false
+        },
+        "direct_identifier_allowed": {
+          "const": false
+        },
+        "secret_or_credential_allowed": {
+          "const": false
+        },
+        "regulated_data_allowed": {
+          "const": false
+        },
+        "source_removal_action": {
+          "const": "WITHDRAW_RECORD_AND_REMOVE_COPIED_PARAPHRASE_IF_REQUIRED"
+        },
+        "deletion_proof": {
+          "const": "CONTENT_FREE_TOMBSTONE_ONLY"
+        },
+        "incident_route_required_before_execution": {
+          "const": true
+        },
+        "approved_now": {
+          "const": false
+        }
+      }
+    },
+    "executionEnvelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_problem_records",
+        "max_agent_advisory_sessions",
+        "timebox_days",
+        "budget_currency",
+        "public_report_review_budget_cap",
+        "agent_api_budget",
+        "direct_participant_contact",
+        "exact_first_party_network_allowlist_required",
+        "starts_at",
+        "expires_at",
+        "revocation_route_reference",
+        "stop_owner_ref",
+        "complete_now"
+      ],
+      "properties": {
+        "max_problem_records": {
+          "const": 20
+        },
+        "max_agent_advisory_sessions": {
+          "const": 12
+        },
+        "timebox_days": {
+          "const": 14
+        },
+        "budget_currency": {
+          "const": "CNY"
+        },
+        "public_report_review_budget_cap": {
+          "const": 0
+        },
+        "agent_api_budget": {
+          "const": "SEPARATE_DECISION_REQUIRED"
+        },
+        "direct_participant_contact": {
+          "const": false
+        },
+        "exact_first_party_network_allowlist_required": {
+          "const": true
+        },
+        "starts_at": {
+          "type": "null"
+        },
+        "expires_at": {
+          "type": "null"
+        },
+        "revocation_route_reference": {
+          "const": "NOT_PROVIDED"
+        },
+        "stop_owner_ref": {
+          "const": "NOT_PROVIDED"
+        },
+        "complete_now": {
+          "const": false
+        }
+      }
+    }
+  }
+}

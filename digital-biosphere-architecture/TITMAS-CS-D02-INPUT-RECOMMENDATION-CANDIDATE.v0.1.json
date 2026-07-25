@@ -1,0 +1,169 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-input-recommendation-candidate.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-INPUT-RECOMMENDATION-CANDIDATE-0.1",
+  "version": "0.1.0",
+  "decision_id": "CS-D02",
+  "status": "RECOMMENDATION_CANDIDATE_PREPARED_HUMAN_INPUT_AND_REVIEW_REQUIRED",
+  "prepared_at": "2026-07-25",
+  "decision_owner_ref": "zhangbin",
+  "source_references": [
+    "TITMAS-CS-D02-INPUT-ASSIGNMENT-PACKET.v0.1.json",
+    "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json",
+    "architecture/veap-problem-validation-governance-contract.v0.1.json",
+    "architecture/veap-commercialization-standard-readiness.v0.3.json"
+  ],
+  "recommendation": {
+    "result": "CONDITIONALLY_RECOMMENDED",
+    "recommended_method": "BOUNDED_TWO_STREAM_PROBLEM_VALIDATION",
+    "stream_a": "PUBLIC_FIRST_PARTY_PROBLEM_REPORT_REVIEW_AFTER_FORMAL_APPROVAL",
+    "stream_b": "GOVERNED_AGENT_RECOMMENDATION_REVIEW_AFTER_SEPARATE_API_AUTHORIZATION",
+    "direct_participant_interview": "DEFERRED_NOT_RECOMMENDED_NOW",
+    "reason": "REDUCES_PARTICIPANT_DEPENDENCY_WHILE_PRESERVING_HUMAN_ACCOUNTABILITY_AND_SEPARATING_AGENT_ADVISORY_FROM_MARKET_EVIDENCE",
+    "creates_decision": false,
+    "creates_execution_authority": false
+  },
+  "recommended_roles": {
+    "human_decision_owner": {
+      "candidate_ref": "zhangbin",
+      "recommendation": "KEEP_EXISTING_PROGRAM_ROLE",
+      "accepted_now": true
+    },
+    "problem_validation_owner": {
+      "candidate_ref": "zhangbin",
+      "recommendation": "RECOMMEND_BOUNDED_ACCEPTANCE",
+      "accepted_now": false
+    },
+    "privacy_data_steward": {
+      "candidate_ref": "zhangbin",
+      "recommendation": "RECOMMEND_BOUNDED_ACCEPTANCE_WITH_ROLE_OVERLAP_DISCLOSURE",
+      "accepted_now": false
+    },
+    "method_reviewer": {
+      "candidate_ref": "NONE",
+      "recommendation": "REQUIRE_INDEPENDENT_HUMAN_NOT_RECORD_CREATOR",
+      "accepted_now": false
+    },
+    "security_reviewer": {
+      "candidate_ref": "NONE",
+      "recommendation": "REQUIRE_HUMAN_REVIEWER",
+      "accepted_now": false
+    },
+    "claim_reviewer": {
+      "candidate_ref": "NONE",
+      "recommendation": "REQUIRE_INDEPENDENT_HUMAN_NOT_RECORD_CREATOR",
+      "accepted_now": false
+    },
+    "independent_human_reviewers_min": 2,
+    "security_and_claim_role_combination_allowed_only_with_disclosed_conflict": true,
+    "agent_reviewer_counts_toward_human_minimum": false
+  },
+  "stream_a_contract": {
+    "source_type": "PUBLIC_FIRST_PARTY_PROBLEM_REPORT",
+    "allowed_source_classes": [
+      "OFFICIAL_PROJECT_OR_ORGANIZATION_ISSUE",
+      "OFFICIAL_INCIDENT_OR_POSTMORTEM",
+      "OFFICIAL_SECURITY_ADVISORY"
+    ],
+    "source_must_be_public_attributable_dated_and_stable": true,
+    "third_party_summary_allowed": false,
+    "private_login_or_paywalled_source_allowed": false,
+    "full_body_or_attachment_copy_allowed": false,
+    "function_request_implies_purchase_intent": false,
+    "same_organization_multiple_records_default_context_count": 1,
+    "continue_review_interest_may_be_inferred_from_open_issue": false,
+    "formal_method_source_privacy_and_claim_review_required": true,
+    "authorized_now": false
+  },
+  "stream_b_contract": {
+    "purpose": "AGENT_DISCOVERY_COMPREHENSION_RECOMMENDATION_AND_REUSE_ADVISORY",
+    "exact_provider_model_prompt_digest_timestamp_and_failure_reference_required": true,
+    "agent_advisory_is_customer_interview": false,
+    "agent_recommendation_is_market_adoption": false,
+    "model_count_is_organization_count": false,
+    "api_output_may_pass_cs_g0": false,
+    "agent_may_accept_human_review_role": false,
+    "separate_api_network_data_and_budget_decision_required": true,
+    "authorized_now": false
+  },
+  "recommended_data_controls": {
+    "storage_class": "PRIVATE_ACCESS_CONTROLLED_NON_GIT_VALIDATION_STORE",
+    "exact_storage_selected": false,
+    "access_scope": "OWNER_DATA_STEWARD_AND_ASSIGNED_REVIEWERS_ONLY",
+    "max_problem_records": 20,
+    "working_retention_days": 90,
+    "public_output": "AGGREGATED_COUNTS_AND_PUBLIC_SAFE_PARAPHRASE_ONLY",
+    "raw_transcript_allowed": false,
+    "direct_identifier_allowed": false,
+    "secret_or_credential_allowed": false,
+    "regulated_data_allowed": false,
+    "source_removal_action": "WITHDRAW_RECORD_AND_REMOVE_COPIED_PARAPHRASE_IF_REQUIRED",
+    "deletion_proof": "CONTENT_FREE_TOMBSTONE_ONLY",
+    "incident_route_required_before_execution": true,
+    "approved_now": false
+  },
+  "recommended_execution_envelope": {
+    "max_problem_records": 20,
+    "max_agent_advisory_sessions": 12,
+    "timebox_days": 14,
+    "budget_currency": "CNY",
+    "public_report_review_budget_cap": 0,
+    "agent_api_budget": "SEPARATE_DECISION_REQUIRED",
+    "direct_participant_contact": false,
+    "exact_first_party_network_allowlist_required": true,
+    "starts_at": null,
+    "expires_at": null,
+    "revocation_route_reference": "NOT_PROVIDED",
+    "stop_owner_ref": "NOT_PROVIDED",
+    "complete_now": false
+  },
+  "required_human_inputs": [
+    "PROBLEM_VALIDATION_OWNER_ACCEPTANCE_REFERENCE",
+    "PRIVACY_DATA_STEWARD_ACCEPTANCE_AND_ROLE_OVERLAP_DISCLOSURE",
+    "METHOD_REVIEWER_IDENTITY_ACCEPTANCE_AND_INDEPENDENCE_REFERENCE",
+    "SECURITY_REVIEWER_IDENTITY_AND_ACCEPTANCE_REFERENCE",
+    "CLAIM_REVIEWER_IDENTITY_ACCEPTANCE_AND_INDEPENDENCE_REFERENCE",
+    "EXACT_STORAGE_AND_ACCESS_CONTROL_EVIDENCE",
+    "WITHDRAWAL_DELETION_AND_INCIDENT_ROUTE_REFERENCES",
+    "START_EXPIRY_REVOCATION_AND_STOP_OWNER",
+    "EXACT_STREAM_AUTHORIZATION_CHOICES"
+  ],
+  "required_reviews": [
+    "METHOD_AND_SOURCE_USE_REVIEW",
+    "SECURITY_AND_PRIVACY_REVIEW",
+    "CLAIM_REVIEW",
+    "HUMAN_DECISION_REVIEW"
+  ],
+  "current_facts": {
+    "recommendation_candidate_prepared": true,
+    "human_input_accepted": false,
+    "role_acceptances_recorded": 0,
+    "independent_human_reviewers_assigned": 0,
+    "storage_implementation_selected": false,
+    "formal_review_complete": false,
+    "cs_d02_decision_ready": false,
+    "cs_d02_decision_recorded": false,
+    "external_outreach_authorized": false,
+    "public_web_review_authorized": false,
+    "agent_api_call_authorized": false,
+    "participant_enrollment_authorized": false,
+    "data_collection_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "cs_g1_pass": false
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "evidence_truth": false,
+    "external_action": false,
+    "customer": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false
+  }
+}
