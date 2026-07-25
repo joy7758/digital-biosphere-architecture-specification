@@ -3,7 +3,7 @@ document_id: DBA-RISK-BLOCKER-REGISTER-0.1
 title: Digital Biosphere Program Risk and Blocker Register v0.1
 title_zh: 数字生物圈项目群风险与阻塞台账 v0.1
 status: active-risk-register
-as_of_date: 2026-07-23
+as_of_date: 2026-07-25
 risk_acceptance_authority_assigned: true
 ---
 
@@ -68,6 +68,9 @@ risk_acceptance_authority_assigned: true
 | `R-046` | `CRITICAL` | 外部 identity discovery、enterprise access authorization、telemetry、receipt、signature、attestation 或 audit log 被提升为 DBOS Identity／Capability／Permission、POP persona continuity、正确 Execution、Evidence、Verification 或 Truth | FINOS #346/#341、MCP EMA、ANS 与 Microsoft Toolkit 提供不同层次的参考信号；它们都没有授予 DBA 内部 authority 或证明 evidence sufficiency | 注册表固定 6 项 route 与 forbidden promotion；所有来源保持 `REFERENCE_ONLY_NOT_ADOPTED`；未来分别走 `DQ-006`、`DQ-021` 与既有 admission／human-decision gate | `CONTROL_DEFINED_REFERENCE_ONLY_NO_ADOPTION` |
 | `R-047` | `HIGH` | 只检查异常、退出码、schema shape 或字段存在，会漏掉 final state、invariant、contract 与 authority effect 已错误但流程“成功”的 silent semantic failure | LogicHunter `arXiv:2607.06195v1` 报告其研究范围内的静默语义失败；该来源是预印本，当前项目也没有由此产生的直接缺陷证据 | 作为未来 `PR-G2`／`PR-G4` review input；要求 exact implementation 下的 final-state、invariant、contract、authority-effect assertions 和直接证据；当前不创建 validator 或 gate PASS | `REVIEW_INPUT_DEFINED_IMPLEMENTATION_AND_DIRECT_EVIDENCE_OPEN` |
 | `R-048` | `CRITICAL` | 外部治理趋势把 SAEE 从 `EVOLUTION_INTELLIGENCE_LAYER` 推成 audit／compliance engine，Evidence 副线覆盖受控 SAEE／Agent Evidence 合并主线，并把 local digest、MCP、demo 或 marketplace review 提升为 proof、service 或商业验证 | 2026-07-23 简报提出 Evidence Governance 定义权、`SAEE Agent Compliance Engine`、Persona identity ownership、三个直接 PR 与 workshop 路线；现有规范事实仍为 Phase 0.5、Phase 1 未授权、OTLP／trusted conversion／identity／delegation 缺失、public MCP／marketplace／customer／production false | 固定 `MAINLINE_DRIFT_DETECTED`；保留三客户版本；Evidence 走既有 crosswalk／reuse／migration gate；OTLP 与 identity 只保留 conditional proposal；workshop 与 compliance claim 禁止；外部动作保持 Human gate | `CONTROL_DEFINED_MAINLINE_CORRECTION_REQUIRED_NO_IMPLEMENTATION` |
+| `R-049` | `HIGH` | TITMAS 开发者社区在后续建设中漂移为普通 Agent 社区、Agent Platform、基金会、第二治理层，或把 OpenTelemetry 参考误写成组织／运行采用 | 当前已出现“Community 是否等于 Foundation”及首次接触名称不清的认知偏差；TITMAS Authority Freeze 与 Interface 仍未采纳 | `ADR-029` 固定 Infrastructure 名称；C1 Contributor Guide、机器入口、Proposal/成熟度/Workstream 模板和本地首次贡献候选把 Review/Decision/Implementation/External Action 分开；每个社区 gate 重跑防跑偏检查 | `MITIGATED_BY_C0_C1_GOVERNANCE_RECHECK_REQUIRED_AT_EACH_COMMUNITY_GATE` |
+| `R-050` | `HIGH` | 以智能体为首要客户和贡献参与者时，自动生成内容可能隐藏来源、形成低质量批量贡献，或被误写成 Member、Maintainer、Architecture Decision、Authority 或独立验证 | 当前 C1 只有本地贡献入口，没有真实贡献者、角色、安全接收路径或公开渠道；OpenTelemetry 的当前贡献资料也强调 AI 参与者应理解、审查并对生成内容负责 | `CONTRIBUTING.md` 强制 `contributor_type`、`human_accountability_ref`、agent/tool、source、verification 和 unknown 披露；角色模型禁止 agent self-approval；行为规范候选限制批量不可验证输出；重大变化保留人工 DBA Decision | `CONTROL_DEFINED_PUBLIC_ENFORCEMENT_NOT_ESTABLISHED` |
+| `R-051` | `HIGH` | 备案中域名、GitHub slug 或本地网站源码被提前写成 live domain、已创建 Organization、已迁移仓库或已建立社区 | `titmas.cn` 已选择但尚在备案；`titmas-cn` public API 只读检查为 404；当前 live site 仍为 `redcrag.cn` | `ADR-030` 分开 selected／live、slug／organization、source／deployment、organization／repository transfer；cutover 需要 filing、DNS、TLS、health、machine entry 和 rollback 直接证据 | `CONTROL_DEFINED_PRELAUNCH_SOURCE_PREPARATION_ONLY` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -83,6 +86,8 @@ risk_acceptance_authority_assigned: true
 | `B-016` | Collector exact distribution reference 已由 `DQ-025` 采纳，但 `DQ-020` 仍 `BLOCKED_INPUT`；binary/image/SBOM/config/runtime、deployment repository/Owner、exact failure domains/LB/security/capacity、metric stability/naming/Resource/query/threshold/alert/route/runbook bindings 和直接测量均不存在 | `DQ-020`、`PR-G3`、OTLP listener/Collector staging | DQ-018/019/022–025 prerequisites/direct evidence + exact build/config/runtime/topology/operational bindings + 56/46/45/48 四套独立 case-level result + self-observation/blackbox/storage/drift/no-data/alert-delivery/delivery-reconciliation results + independent technical/security review + Owner/repository + `G3A`–`G3F` | offline architecture/profile/Schema/matrix/decision review；不授权 build、configuration、query、alert、listener、measurement、deployment 或 real traffic |
 | `B-017` | Evidence admission 尚未授权，Identity Continuity、Data Governance、provenance assurance 和 Verification 无实施证据 | `DQ-021`、`PR-G2C/G2I`、`PR-G5B`、SAEE production input | DQ-018/020 证据 + exact Evidence policy/schema + Human DQ-021 + security/data-governance tests | Telemetry material 和 reference conformance |
 | `B-018` | Schema/Resource/Entity 的 36 个 DQ-018 authorized offline cases 已通过，但 acquisition/cache/transform、真实 detector provenance 和 9 个 DQ-020 deployment cases 仍未执行 | `PR-G2T`、`PR-G3`、`PR-G5`、`PR-G6` | DQ-020 authorization + exact deployment source/policy/environment + 剩余 9 cases + 独立 review | 当前 36-case offline subset 与 DBA reference review |
+| `B-020` | TITMAS C1 Contributor Entry 已本地准备，但 Authority Freeze、正式 Code of Conduct、安全接收路径、Owner/review roles、license/CLA 输入和公共外部动作授权不完整 | `DQ-026`、公共贡献表面、真实贡献者接收、SIG/Workstream 激活 | 补齐全部输入并由 Human Architecture Authority 对 exact public surface 作独立 Decision；启用后仍按贡献/角色/Workstream gate 分阶段 | 本地文档、模板、JSON/Schema、Good First candidate 和 fail-closed 验证；不阻塞 DBA 内继续改进贡献入口 |
+| `B-021` | `titmas.cn` 备案未完成，DNS/TLS/canonical cutover 与 `redcrag.cn` redirect 没有直接验证；`titmas-cn` Organization 尚未创建 | 公共域名切换、Organization 创建、仓库迁移 | 备案证据 + 独立 DNS/TLS/health/security-header/machine-entry/rollback gate；Organization 创建与每个仓库迁移分别授权 | 网站源码、双语／机器入口、GitHub profile copy 和迁移清单的本地准备 |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
 
@@ -113,8 +118,8 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=48
-ACTIVE_RISKS=46
+TRACKED_RISKS=51
+ACTIVE_RISKS=49
 RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=10
 BLOCKERS_CLEARED=8

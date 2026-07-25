@@ -41,6 +41,8 @@ Developer Preview 是当前执行主线；原 `M0` 至 `M8` 继续保留为长�
 | `SP-1` | 完成 Developer Preview 发布 | `GATE_PASSED` | 保留 release history 和已披露限制；不写成 production release |
 | `SP-2` | 形成公开 Protocol 和 SDK | TMAP protocol 已定义；exact public-safe DBOS wheel 已发布；稳定 SDK adoption 未证明 | 优先 schema/SDK contract/conformance，不扩建封闭平台 |
 | `SP-3` | 吸引外部 Agent developer / machine customer | agent-native validation 12/12 rerun pass；open-web discovery 仍 partial | 改善 agent-readable discovery、复用和第三方 adapter entry；不写成 customer adoption |
+| `SP-3A` | 建立 TITMAS 可信多智能体基础设施开发者社区路线 | `C0` 战略基线与 `C1` Contributor Entry 已在 DBA 准备；公共贡献表面、正式 Code of Conduct、安全接收路径、真实贡献者、SIG、Maintainer 和仓库均未建立 | 先完成 Authority Freeze、Owner/security/license 输入和 C2 独立决策；不得把本地 Guide/JSON/模板变成公开招募或角色授权 |
+| `SP-3B` | 建立 TITMAS 统一公开入口 | `titmas.cn` 已选择但备案中；`titmas-cn` slug 已选择但 Organization 未创建；`redcrag.cn` 继续在线 | 先完成双语／机器入口源码验证；备案后独立执行 DNS/TLS/health/rollback；Organization 创建与仓库迁移另行授权 |
 | `SP-4` | 建立 Adapter ecosystem | DBOS→SAEE read-only preview adapter 存在；production adapter isolation 未验证 | 先定义版本、失败关闭、zero-writeback 和 conformance profile |
 | `SP-5` | 积累真实多智能体长期运行数据 | 未授权、未执行 | 必须先通过 DBOS production core、安全/恢复和 bounded pilot authorization |
 | `SP-6` | 推动 SAEE 长期评价能力 | public preview evaluation 为 advisory-only；长期生产评价未验证 | 只读、版本钉住、evidence-bound、no-execution 的长期评价 gate |
@@ -88,7 +90,7 @@ Developer Preview 发布历史保持不变。当前新增的 Production Readines
 | `M5` | 决定 Research Agent Prototype（科研智能体原型）是否获准创建 | Research Agent Pilot；DBA 协调 | `NOT_STARTED` | Human Review、approved sources、protocol freeze、prototype authorization | 当前保持 `NOT_READY` |
 | `M6` | 执行第一个受控 Digital Entity research loop（数字主体研究闭环） | Research Agent Pilot + DBOS + SAEE | `NOT_STARTED` | 显式实验授权、执行记录、Evidence、Verification、Evaluation、Human Decision | 不得由路线图自动启动 |
 | `M7` | 建立可重复的多主体接入和联邦符合性 | DBOS + future Digital Entities | `NOT_STARTED` | 至少一个已验证 Pilot 后的通用接入契约和负例 | 不能从单一 Pilot 直接外推 |
-| `M8` | 推进开发者生态、认证与商业服务 | 各相应项目 | `DEFERRED` | 实现、采用和商业状态分别有独立证据 | 不得用战略文档声称已提供 |
+| `M8` | 推进 TITMAS 基础设施开发者社区及后续生态 | DBA/TITMAS architecture domain；具体实现由未来 Owner 负责 | `PUBLIC_FRONT_DOOR_SOURCE_PREPARATION_ACTIVE_COMMUNITY_NOT_ESTABLISHED` | `ADR-029`、`ADR-030`、社区战略、Contributor Entry、`titmas.cn` 迁移计划、`titmas-cn` 信息架构和防跑偏 gate | 备案完成前不切 canonical domain；Organization、仓库、公共 Issue/PR、SIG、角色、实现、认证和商业服务分别需要独立授权 |
 
 ## 3. Critical Path（关键路径）
 
@@ -123,6 +125,15 @@ M2 Canonical Status Sources
 ```
 
 `M8` 不是 `M6` 或 `M7` 的自动结果。Commercial Offering（商业服务）、Certification（认证）和 Marketplace（市场）需要独立决策与证据。
+
+`M8` 的 `BASELINE_DEFINED_CONTRIBUTOR_ENTRY_PREPARED_COMMUNITY_NOT_ESTABLISHED` 只表示
+开发者社区路线和本地 Contributor Entry 已经进入 DBA 主框架。它不授权公开招募、
+GitHub Organization、仓库、Issue、PR、SIG、Maintainer、Adapter、Reference
+Implementation 或外部发布。
+
+`ADR-030` 选择 `titmas.cn` 和 `titmas-cn` 后，`M8` 可在备案期间完成本地网站源码、
+中英文与 machine-readable（机器可读）入口以及 GitHub profile／repository
+information architecture。该准备不表示新域名已上线、Organization 已创建或仓库已迁移。
 
 ## 4. Current Program Focus（当前项目群焦点）
 

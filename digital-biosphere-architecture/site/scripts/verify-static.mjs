@@ -9,28 +9,33 @@ const outputRoot = join(siteRoot, "out");
 const requiredFiles = [
   "index.html",
   "en/index.html",
+  "community/index.html",
+  "en/community/index.html",
   "status/index.html",
   "en/status/index.html",
   "llms.txt",
   "agent-index.json",
   "status.json",
+  "titmas-community.json",
   "agent-customer-package.json",
   "dbos-public-package-manifest.json",
   "release.json",
   "release-manifest.json",
   "robots.txt",
   "sitemap.xml",
-  "og.png",
 ];
 
 await Promise.all(requiredFiles.map((file) => access(join(outputRoot, file))));
 
-const [zh, en, zhStatus, enStatus, status, agentCustomerPackage, dbosPackage, release, manifest] = await Promise.all([
+const [zh, en, zhCommunity, enCommunity, zhStatus, enStatus, status, titmasCommunity, agentCustomerPackage, dbosPackage, release, manifest] = await Promise.all([
   readFile(join(outputRoot, "index.html"), "utf8"),
   readFile(join(outputRoot, "en/index.html"), "utf8"),
+  readFile(join(outputRoot, "community/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/community/index.html"), "utf8"),
   readFile(join(outputRoot, "status/index.html"), "utf8"),
   readFile(join(outputRoot, "en/status/index.html"), "utf8"),
   readFile(join(outputRoot, "status.json"), "utf8").then(JSON.parse),
+  readFile(join(outputRoot, "titmas-community.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "agent-customer-package.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "dbos-public-package-manifest.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release.json"), "utf8").then(JSON.parse),
@@ -44,8 +49,10 @@ const releaseContext = resolveReleaseContext(process.env, {
   dbosPackage,
 });
 
-assert.match(zh, /面向多智能体系统的可信基础设施/);
-assert.match(en, /Trust infrastructure for multi-agent systems/);
+assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
+assert.match(en, /infrastructure developer community for trustworthy multi-agent systems/i);
+assert.match(zhCommunity, /共同建设可信多智能体基础设施/);
+assert.match(enCommunity, /Build trustworthy multi-agent infrastructure together/);
 if (releaseContext.mode === "candidate") {
   assert.match(zhStatus, /当前不是正式发布/);
   assert.match(enStatus, /This is not a release/);
@@ -53,11 +60,17 @@ if (releaseContext.mode === "candidate") {
   assert.match(zhStatus, /可信多智能体基础设施开发者预览版 v0\.1 已发布/);
   assert.match(enStatus, /Trusted Multi-Agent Infrastructure Developer Preview v0\.1 is released/);
 }
-assert.match(zh, /SAEE_DBOS_ADAPTER_PASS/);
-assert.match(en, /SAEE_DBOS_ADAPTER_PASS/);
+assert.match(zh, /TITMAS_PUBLIC_DOMAIN/);
+assert.match(en, /TITMAS_GITHUB_SLUG/);
 assert.doesNotMatch(zh, /codex-preview|Your site is taking shape/);
 assert.doesNotMatch(en, /codex-preview|Your site is taking shape/);
 assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
+assert.equal(status.public_front_door.future_domain_live, false);
+assert.equal(status.public_front_door.github_organization_created, false);
+assert.equal(titmasCommunity.github.selected_organization_slug, "titmas-cn");
+assert.equal(titmasCommunity.github.organization_created, false);
+assert.equal(titmasCommunity.community_state.community_established, false);
+assert.equal(titmasCommunity.effects.public_contribution, false);
 assert.equal(status.gates.DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE, true);
 assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL, true);
 assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_RERUN_PASS, true);

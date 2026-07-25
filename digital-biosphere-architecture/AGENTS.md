@@ -32,6 +32,13 @@ PROTOCOLIZATION_BEFORE_PLATFORM_EXPANSION=true
 11. `architecture/project-mapping.md`（项目角色映射）；
 12. 相关 specification（规范）、strategy（战略）和 ADR。
 
+处理 TITMAS 或开发者社区工作时，还必须读取：
+
+13. `CONTRIBUTING.md`（贡献入口与智能体披露）；
+14. `TITMAS-CONTRIBUTOR-ENTRY-v0.1.json`（机器可读当前状态）；
+15. `architecture/titmas-document-maturity-policy-v0.1.md`（文档级成熟度）；
+16. `architecture/titmas-contribution-proposal-template-v0.1.md`（重大变化 Proposal）。
+
 ## Work Routing（工作路由）
 
 每项工作必须声明一个且只有一个 primary repository（主责任仓库）：
@@ -83,6 +90,43 @@ PROTOCOLIZATION_BEFORE_PLATFORM_EXPANSION=true
 
 未解决时保持 `REVIEW_REQUIRED`，不得视为实现授权。
 
+## TITMAS Infrastructure Developer Community Guard（TITMAS 基础设施开发者社区护栏）
+
+TITMAS 社区方向的规范名称是：
+
+```text
+English: TITMAS Infrastructure Developer Community
+Chinese: TITMAS 可信多智能体基础设施开发者社区
+Subtitle: Developer Community for Trusted Multi-Agent Infrastructure
+```
+
+首次接触说明必须让开发者理解：开发者负责构建 Agent；TITMAS 围绕开放规范、Adapter
+contract、Conformance 和参考实现边界，帮助不同 Agent 通过易理解、可实现、可验证的
+基础设施规则协作。
+
+后续智能体必须读取
+[`architecture/titmas-infrastructure-developer-community-strategy-v0.1.md`](architecture/titmas-infrastructure-developer-community-strategy-v0.1.md)
+、[`CONTRIBUTING.md`](CONTRIBUTING.md)、
+[`TITMAS-CONTRIBUTOR-ENTRY-v0.1.json`](TITMAS-CONTRIBUTOR-ENTRY-v0.1.json)
+和 [`ADR-029`](architecture/ADR-029-titmas-infrastructure-developer-community-direction.md)，并保持：
+
+- 重度参考 OpenTelemetry 的规范／实现／Contrib 分离、文档级成熟度、版本声明、公开贡献
+  路径和符合性矩阵；
+- Reference Adoption 不等于 TITMAS 获得 OpenTelemetry 品牌、组织地位、运行兼容或认可；
+- 先有真实工作、参与者、Maintainer/Reviewer 和公开流程，才可提议正式 SIG；
+- Community Review 不等于 Architecture Decision；
+- 社区角色不自动取得 DBA、DBOS、SAEE 或连接项目 Authority；
+- 智能体贡献必须披露模型／工具、来源、验证者和人工责任方；智能体不能自我批准或成为
+  自动 Member、Maintainer 或 Architecture Authority；
+- 成熟度属于单个文档；Document Stable 不传播为 Implementation、Community、Release、
+  Adoption 或 Production Stable；
+- TITMAS 不是普通 Agent 社区、Agent Framework、Agent Platform、基金会或第二个 DBA；
+- 当前 `TITMAS_CURRENT_COMMUNITY_STATE=CONTRIBUTOR_ENTRY_PREPARED`，只表示本地贡献入口、
+  模板、候选清单和机器可读文件已经准备；
+- 当前 `TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false`，不得从战略文档升级状态；
+- 正式 Code of Conduct、安全接收路径、角色、公开贡献表面、组织账号、仓库、Issue、PR、
+  实现和发布仍需分别授权。
+
 ## Strategic and Authority Invariants（战略与权力不变量）
 
 ```text
@@ -103,6 +147,13 @@ DEVELOPER_ECOSYSTEM_FIRST=true
 OPEN_INFRASTRUCTURE_NE_FREE_PRODUCT=true
 SPECIFICATION_NE_IMPLEMENTATION=true
 STRATEGY_NE_COMMERCIAL_COMMITMENT=true
+TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY_DIRECTION_ADOPTED=true
+TITMAS_CONTRIBUTOR_ENTRY_PREPARED=true
+TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
+TITMAS_CODE_OF_CONDUCT_ADOPTED=false
+TITMAS_MAINTAINER_ASSIGNED=false
+TITMAS_FOUNDATION_IN_SCOPE=false
 TELEMETRY_NE_EVIDENCE=true
 EVIDENCE_NE_TRUTH=true
 ```

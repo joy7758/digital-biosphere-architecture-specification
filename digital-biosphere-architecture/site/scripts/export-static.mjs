@@ -28,6 +28,8 @@ const markers = routeMarkers(releaseContext.mode);
 const routes = [
   { request: "/", output: "index.html", markers: markers.zhHome },
   { request: "/en", output: "en/index.html", markers: markers.enHome },
+  { request: "/community", output: "community/index.html", markers: ["共同建设可信多智能体基础设施", "COMMUNITY_ESTABLISHED=false"] },
+  { request: "/en/community", output: "en/community/index.html", markers: ["Build trustworthy multi-agent infrastructure together", "COMMUNITY_ESTABLISHED=false"] },
   { request: "/status", output: "status/index.html", markers: markers.zhStatus },
   { request: "/en/status", output: "en/status/index.html", markers: markers.enStatus },
 ];
@@ -70,7 +72,7 @@ await writeFile(
   `${JSON.stringify(
     {
       schema_version: "0.1",
-      artifact: "trusted-multi-agent-infrastructure-website",
+      artifact: "titmas-infrastructure-developer-community-website",
       source_revision: sourceRevision,
       generated_at: generatedAt,
       release_mode: releaseContext.mode,

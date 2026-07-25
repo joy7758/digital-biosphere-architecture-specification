@@ -1,4 +1,4 @@
-import { content, gateRows, type Locale } from "./site-content";
+import { communityGateRows, content, type Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
 
 export function PortalPage({ locale }: { locale: Locale }) {
@@ -10,8 +10,8 @@ export function PortalPage({ locale }: { locale: Locale }) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    name: "Trusted Multi-Agent Infrastructure",
-    alternateName: "可信多智能体基础设施",
+    name: "TITMAS Infrastructure Developer Community",
+    alternateName: "TITMAS 可信多智能体基础设施开发者社区",
     url: locale === "zh" ? "https://redcrag.cn/" : "https://redcrag.cn/en/",
     inLanguage: c.lang,
     description: c.lead,
@@ -36,7 +36,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
             <h1>{c.title}</h1>
             <p className="hero-lead">{c.lead}</p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#architecture">{c.primaryCta}</a>
+              <a className="button button-primary" href={locale === "zh" ? "/community/" : "/en/community/"}>{c.primaryCta}</a>
               <a className="button button-secondary" href={statusPath}>{c.secondaryCta}</a>
             </div>
             <p className="truth-notice"><span>i</span>{c.notice}</p>
@@ -142,7 +142,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
               <p>{c.statusLead}</p>
             </div>
             <div className="gate-grid">
-              {gateRows.map((gate) => (
+              {communityGateRows.map((gate) => (
                 <article className="gate-card" key={gate.id}>
                   <div>
                     <span className={`state state-${gate.state.toLowerCase()}`}>{gate.state}</span>
@@ -163,10 +163,10 @@ export function PortalPage({ locale }: { locale: Locale }) {
               <h2>{c.developersTitle}</h2>
               <p>{c.developersBody}</p>
               <div className="developer-links">
-                <a href={architectureHref}>{c.developerLinks[0]}<span>↗</span></a>
+                <a href={locale === "zh" ? "/community/" : "/en/community/"}>{c.developerLinks[0]}<span>↗</span></a>
                 <a href="/status.json">{c.developerLinks[1]}<span>↗</span></a>
                 <a href="/llms.txt">{c.developerLinks[2]}<span>↗</span></a>
-                <a href="/agent-customer-package.json">{c.developerLinks[3]}<span>↗</span></a>
+                <a href="/titmas-community.json">{c.developerLinks[3]}<span>↗</span></a>
               </div>
             </div>
             <aside className="governance-card">

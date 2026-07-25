@@ -60,6 +60,13 @@ public_website_url: https://redcrag.cn/
 public_website_deployment_state: developer-preview-v0.1-released
 public_website_health_pass: true
 public_website_rollback_validated: true
+titmas_public_domain_selected: true
+titmas_public_domain: https://titmas.cn/
+titmas_public_domain_filing_status: pending
+titmas_public_domain_live: false
+titmas_github_organization_slug_selected: true
+titmas_github_organization_slug: titmas-cn
+titmas_github_organization_created: false
 public_website_github_prerelease_published: true
 public_website_github_prerelease_tag: v0.1-public-website-candidate.7
 developer_preview_stage_accepted: true
@@ -105,6 +112,16 @@ open_infrastructure_strategy_constitution_defined: true
 open_infrastructure_strategy_implemented: false
 commercial_offering_created: false
 developer_ecosystem_created: false
+titmas_infrastructure_developer_community_strategy_defined: true
+titmas_infrastructure_developer_community_direction_adopted: true
+titmas_developer_community_established: false
+titmas_community_state: contributor-entry-prepared
+titmas_contributor_entry_prepared: true
+titmas_c1_validation_result: pass-prepared-not-publicly-authorized
+titmas_public_contribution_surface_authorized: false
+titmas_code_of_conduct_adopted: false
+titmas_maintainer_assigned: false
+titmas_foundation_in_scope: false
 versioned_schema_mapping_defined: true
 schema_mapping_applied: false
 data_migration_authorized: false
@@ -112,7 +129,28 @@ data_migration_executed: false
 canonicality: canonical-program-governance-cockpit-does-not-supersede-existing-public-meaning-layer
 ---
 
-# Digital Biosphere Program Governance and Architecture Specification v0.1
+# TITMAS Infrastructure Developer Community
+
+中文：**TITMAS 可信多智能体基础设施开发者社区**。
+
+> Build the shared trust layer for long-running multi-agent systems.
+>
+> 为长期运行的多智能体系统共同建设可信基础层。
+
+当前公开网站仍是 [`redcrag.cn`](https://redcrag.cn/)；未来主域名
+`titmas.cn` 正在备案，尚未上线。GitHub Organization slug 已选择 `titmas-cn`，但
+Organization、公共贡献渠道和仓库迁移尚未创建或授权。
+
+```text
+TITMAS_CN_FILING_STATUS=PENDING
+TITMAS_CN_LIVE=false
+TITMAS_GITHUB_ORGANIZATION_SLUG_SELECTED=true
+TITMAS_GITHUB_ORGANIZATION_CREATED=false
+TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
+TITMAS_PUBLIC_CONTRIBUTION_ENABLED=false
+```
+
+## Digital Biosphere Program Governance and Architecture Specification v0.1
 
 Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是整个 Digital Biosphere（数字生物圈）项目群的 Program Governance and Architecture Specification Hub（项目群治理与架构规范中心）。它既维护 SAEE、DBOS 与未来 Digital Entity（数字主体）的总架构规范，也作为整体推进所使用的 cockpit（驾驶舱），统一呈现项目组合、路线图、状态、依赖、决策、集成 gate（闸门）、风险和阻塞。
 
@@ -132,6 +170,104 @@ Digital Biosphere
   ├─ DBOS: Trusted Multi-Agent Existence Infrastructure
   ├─ SAEE: Evolution Intelligence Layer
   └─ Digital Entities: task-specific ecosystem members
+```
+
+开发者社区方向：
+
+> **TITMAS Infrastructure Developer Community** — Developer Community for
+> Trusted Multi-Agent Infrastructure.
+
+中文：**TITMAS 可信多智能体基础设施开发者社区**。开发者负责构建 Agent；TITMAS
+帮助不同 Agent 通过开放规范、Adapter contract 和 Conformance 形成易理解、可实现、
+可验证的基础设施协作边界。Contributor Guide、Proposal/Maturity/Workstream 模板、
+首次贡献候选和机器可读入口已经在 DBA 内准备；但社区、SIG、Maintainer、仓库和公共
+贡献渠道尚未建立。
+
+统一入口迁移：
+
+| Surface | 选定目标 | 当前事实 |
+|---|---|---|
+| Public domain | `https://titmas.cn/` | 备案中，`LIVE=false`；当前继续使用 `https://redcrag.cn/` |
+| GitHub Organization | `github.com/titmas-cn` | slug selected；Organization 未创建 |
+| Website focus | TITMAS Infrastructure Developer Community | 本地源码迁移与验证进行中；未自动部署 |
+| Repository migration | future gated action | 0 个仓库已转移 |
+
+详细计划见
+[`ADR-030`](architecture/ADR-030-titmas-public-front-door-and-github-slug.md)、
+[`TITMAS Public Front Door Migration Plan`](architecture/titmas-public-front-door-migration-plan-v0.1.md)
+和
+[`TITMAS GitHub Organization Information Architecture`](architecture/titmas-github-organization-information-architecture-v0.1.md)。
+
+贡献入口：
+
+| 入口 | 用途 | 当前状态 |
+|---|---|---|
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | 人类开发者和受治理智能体的贡献流程、披露、审查和 Authority 边界 | `PREPARED_NOT_PUBLICLY_AUTHORIZED` |
+| [`TITMAS-CONTRIBUTOR-ENTRY-v0.1.json`](TITMAS-CONTRIBUTOR-ENTRY-v0.1.json) | 智能体可检索的静态贡献入口、状态、文档引用、非目标和 false effects | `SCHEMA_BOUND_STATIC_DISCOVERY` |
+| [`architecture/titmas-good-first-contribution-catalog-v0.1.md`](architecture/titmas-good-first-contribution-catalog-v0.1.md) | 10 项低风险本地首次贡献候选 | `NOT_PUBLIC_ISSUES_NOT_ASSIGNED` |
+| [`TITMAS-CONTRIBUTOR-ENTRY-PREPARATION-REPORT.md`](TITMAS-CONTRIBUTOR-ENTRY-PREPARATION-REPORT.md) | C1 产物、Schema 负例、边界审计与 C2 阻塞输入 | `PASS_PREPARED_NOT_PUBLICLY_AUTHORIZED` |
+
+### TITMAS Community Preparation（TITMAS 社区准备）
+
+这是 Specification Community Preparation（规范社区准备），不是 Established Community
+（已成立社区）。C2 已把贡献类型、Stage 0–6 提案生命周期、内部 RFC 编号、审查、AI
+参与和贡献者成熟度写成可供 Human Architecture Decision（人工架构决定）审查的候选规则。
+这些文件没有开放公共贡献、分配角色、建立 SIG、创建实现或激活 TITMAS Specification
+Authority。
+
+| C2 智能体入口 | 首选检索问题 | 当前状态 |
+|---|---|---|
+| [`architecture/titmas-specification-contribution-framework-v0.1.md`](architecture/titmas-specification-contribution-framework-v0.1.md) | “可以贡献哪五类工件，谁审查，什么不能由贡献自动产生？” | `FRAMEWORK_CANDIDATE` |
+| [`architecture/titmas-proposal-lifecycle-v0.1.md`](architecture/titmas-proposal-lifecycle-v0.1.md) | “Idea 如何经过 Draft、Review、Experimental、Reference 和 Stable？” | `PROCESS_DEFINED_NOT_PUBLICLY_ENABLED` |
+| [`architecture/titmas-rfc-numbering-and-document-model-v0.1.md`](architecture/titmas-rfc-numbering-and-document-model-v0.1.md) | “TITMAS 编号和文档状态表示什么，为什么不是 IETF RFC？” | `MODEL_CANDIDATE_NO_IDS_ASSIGNED` |
+| [`architecture/titmas-review-and-maintenance-model-v0.1.md`](architecture/titmas-review-and-maintenance-model-v0.1.md) | “Proposal、Architecture、Security、Compatibility 和 Breaking Change 由谁审？” | `NO_REVIEWER_OR_MAINTAINER_ASSIGNED` |
+| [`architecture/titmas-ai-agent-contribution-policy-v0.1.md`](architecture/titmas-ai-agent-contribution-policy-v0.1.md) | “AI 可以辅助什么，谁承担责任，如何禁止自我批准和伪造社区活动？” | `HUMAN_ACCOUNTABILITY_REQUIRED` |
+| [`architecture/titmas-contributor-maturity-model-v0.1.md`](architecture/titmas-contributor-maturity-model-v0.1.md) | “Explorer 到 Maintainer 需要什么证据，为什么成熟度不等于权限？” | `NO_LEVELS_OR_ROLES_ASSIGNED` |
+| [`architecture/titmas-community-readiness-assessment-v0.1.md`](architecture/titmas-community-readiness-assessment-v0.1.md) | “当前能否开放社区，具体被哪些条件阻塞？” | `COMMUNITY_READY=false` |
+| [`architecture/titmas-c2-completion-report-v0.1.md`](architecture/titmas-c2-completion-report-v0.1.md) | “C2 完成了什么，哪些决定仍必须由人类作出？” | `SPECIFICATION_COMMUNITY_READY_CANDIDATE` |
+
+```text
+TITMAS_CONTRIBUTION_FRAMEWORK_DEFINED=true
+TITMAS_SPECIFICATION_PROCESS_DEFINED=true
+TITMAS_SPECIFICATION_COMMUNITY_READY_CANDIDATE=true
+TITMAS_PUBLIC_CONTRIBUTION_ENABLED=false
+TITMAS_COMMUNITY_ESTABLISHED=false
+TITMAS_MAINTAINER_ASSIGNED=false
+TITMAS_SIG_CREATED=false
+COMMUNITY_READY=false
+```
+
+### TITMAS Community and Commercial Ecosystem Candidate（社区与商业生态候选）
+
+C2.5–C8 已把治理激活、开放规范、参考实现、有限贡献者试点、社区启动、生态连接、商业
+模式和 Foundation 必要性整理成一套可供 Human Architecture Decision 审查的候选体系。
+这是 Architecture Program Office（架构推进办公室）材料，不是实际社区运营、产品上线、
+客户采用、商业承诺或 Foundation 成立。
+
+| 阶段 | 智能体入口 | 当前事实 |
+|---|---|---|
+| `C2.5` | [`architecture/titmas-governance-activation-review-v0.1.md`](architecture/titmas-governance-activation-review-v0.1.md) | Authority/Registry/Owner/Security/Conduct/Public Gate 已设计，`GOVERNANCE_ACTIVATION_READY=false` |
+| `C3` | [`architecture/titmas-open-specification-framework-v0.1.md`](architecture/titmas-open-specification-framework-v0.1.md) | `E/A/V/I/R` 首批候选已定义，编号和 Standard 数量均为 0 |
+| `C3.5` | [`architecture/titmas-reference-implementation-strategy-v0.1.md`](architecture/titmas-reference-implementation-strategy-v0.1.md) | Example/SDK/Adapter/Validator/Test Suite 与商业实现边界已定义；实现为 0 |
+| `C4` | [`architecture/titmas-contributor-pilot-program-v0.1.md`](architecture/titmas-contributor-pilot-program-v0.1.md) | private pilot 设计完成，参与者/角色为 0，`PUBLIC_COMMUNITY=false` |
+| `C5` | [`architecture/titmas-community-launch-readiness-v0.1.md`](architecture/titmas-community-launch-readiness-v0.1.md) | 八维 launch gate 已评估，`TITMAS_COMMUNITY_READY=false` |
+| `C6` | [`architecture/titmas-ecosystem-expansion-strategy-v0.1.md`](architecture/titmas-ecosystem-expansion-strategy-v0.1.md) | AGT/OTel/LangChain/CrewAI/MCP/Data Space 路线已定义，active adapter/adoption 为 0 |
+| `C7` | [`architecture/titmas-commercial-ecosystem-strategy-v0.1.md`](architecture/titmas-commercial-ecosystem-strategy-v0.1.md) | 开放层/商业层与产品化 gate 已定义，offering/customer/contract 为 0 |
+| `C8` | [`architecture/titmas-foundation-evaluation-report-v0.1.md`](architecture/titmas-foundation-evaluation-report-v0.1.md) | 当前无成立 Foundation 的证据，继续 DBA-governed domain |
+| `Master` | [`architecture/titmas-community-commercial-ecosystem-master-report-v1.0.md`](architecture/titmas-community-commercial-ecosystem-master-report-v1.0.md) | 全阶段事实、false readiness、人工决定和永久不变量 |
+
+```text
+TITMAS_ARCHITECTURE_FROZEN=false
+TITMAS_GOVERNANCE_READY=false
+TITMAS_SPECIFICATION_READY=false
+TITMAS_CONTRIBUTOR_PROGRAM_READY=false
+TITMAS_COMMUNITY_READY=false
+TITMAS_ECOSYSTEM_READY=false
+TITMAS_COMMERCIAL_READY=false
+TITMAS_FOUNDATION_REQUIRED=false
+
+TITMAS_ECOSYSTEM_CANDIDATE_FRAMEWORK_COMPLETE=true
+TITMAS_COMMUNITY_COMMERCIAL_ECOSYSTEM_READY_CANDIDATE=true
 ```
 
 这是一个项目、多个责任域。对外不定位为 Agent Platform（智能体平台）、Agent
@@ -368,8 +504,34 @@ DBOS != SAEE.
 | [`architecture/commercialization-strategy.md`](architecture/commercialization-strategy.md) | Open Core、Enterprise Edition、Industry Solutions 与 Certification 边界 |
 | [`architecture/ADR-015-open-infrastructure-strategy.md`](architecture/ADR-015-open-infrastructure-strategy.md) | 选择开放基础设施路线的架构决策 |
 | [`architecture/project-mapping.md`](architecture/project-mapping.md) | DBOS、SAEE、应用与服务生态的战略角色映射 |
+| [`architecture/titmas-dba-relationship.md`](architecture/titmas-dba-relationship.md) | TITMAS 与 DBA、DBOS、TMAP、TMAI、SAEE、EEOAP 和 Agent Evidence Layer 的拟议概念边界 |
+| [`architecture/titmas-architecture-charter-v0.1.md`](architecture/titmas-architecture-charter-v0.1.md) | TITMAS 技术基础设施架构域章程、互操作职责、SAEE 核心保护和未来 GitHub 组织候选；`REVIEW_REQUIRED` |
+| [`architecture/titmas-infrastructure-developer-community-strategy-v0.1.md`](architecture/titmas-infrastructure-developer-community-strategy-v0.1.md) | TITMAS 可信多智能体基础设施开发者社区的首次接触简介、OpenTelemetry 参考机制、贡献表面、成熟度、路线与防跑偏检查 |
+| [`architecture/ADR-029-titmas-infrastructure-developer-community-direction.md`](architecture/ADR-029-titmas-infrastructure-developer-community-direction.md) | 采纳基础设施开发者社区方向；不宣布社区、基金会、SIG、仓库或独立 Authority 已建立 |
+| [`architecture/ADR-030-titmas-public-front-door-and-github-slug.md`](architecture/ADR-030-titmas-public-front-door-and-github-slug.md) | 选择 `titmas.cn` 与 `titmas-cn`；只授权备案期内的源码和信息架构准备 |
+| [`architecture/titmas-public-front-door-migration-plan-v0.1.md`](architecture/titmas-public-front-door-migration-plan-v0.1.md) | 网站、DNS/TLS、canonical cutover、redirect 与 GitHub 的分阶段迁移闸门 |
+| [`architecture/titmas-github-organization-information-architecture-v0.1.md`](architecture/titmas-github-organization-information-architecture-v0.1.md) | `titmas-cn` profile、仓库导航、准入、角色与创建前检查单 |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | 本地已准备、尚未对外授权的贡献者入口；区分人类、受治理智能体、Review、Decision 与 Implementation |
+| [`architecture/titmas-contributor-role-model-v0.1.md`](architecture/titmas-contributor-role-model-v0.1.md) | 参考 OpenTelemetry 角色阶梯定义 Participant/Contributor/Triager/Reviewer/Maintainer 候选，但不指派任何角色 |
+| [`architecture/titmas-contribution-proposal-template-v0.1.md`](architecture/titmas-contribution-proposal-template-v0.1.md) | 规范、mapping、contract、conformance、文档和安全提案的来源、范围、兼容、负例与 Decision 模板 |
+| [`architecture/titmas-document-maturity-policy-v0.1.md`](architecture/titmas-document-maturity-policy-v0.1.md) | 文档级 Development 到 Stable/Deprecated/Unmaintained/Archived 的独立成熟度规则 |
+| [`architecture/titmas-workstream-charter-template-v0.1.md`](architecture/titmas-workstream-charter-template-v0.1.md) | 只有真实工作、Owner、行为和安全路径及 DBA Decision 完整后才能激活的 Workstream 候选模板 |
+| [`architecture/titmas-community-conduct-candidate-v0.1.md`](architecture/titmas-community-conduct-candidate-v0.1.md) | 尚未采纳、尚无报告或执行机构的社区行为规范候选 |
+| [`TITMAS-CONTRIBUTOR-ENTRY-v0.1.json`](TITMAS-CONTRIBUTOR-ENTRY-v0.1.json) | Schema-bound、无运行效果的智能体可读贡献入口 |
+| [`TITMAS-CONTRIBUTOR-ENTRY-PREPARATION-REPORT.md`](TITMAS-CONTRIBUTOR-ENTRY-PREPARATION-REPORT.md) | C1 Contributor Entry 的同步、验证、false effects 和 C2 fail-closed 结果 |
 
 这些文件只定义 strategy and architecture governance（战略与架构治理），不创建 SDK、Marketplace、Enterprise Edition、Certification program、Agent、Runtime、Entity、Capability、Permission、商业产品或客户承诺。
+
+面向首次接触者，TITMAS 社区方向统一使用：
+
+> TITMAS Infrastructure Developer Community — Developer Community for Trusted
+> Multi-Agent Infrastructure.
+
+中文：TITMAS 可信多智能体基础设施开发者社区。开发者负责构建 Agent；TITMAS 帮助不同
+Agent 通过易理解、可实现、可验证的基础设施规则进行协作。当前只采纳该战略方向，
+Contributor entry 已在本地准备，但
+`TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false`、
+`TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false`。
 
 ```text
 DBOS_NE_AGENT_APPLICATION=true
@@ -378,6 +540,18 @@ DEVELOPER_ECOSYSTEM_FIRST=true
 OPEN_INFRASTRUCTURE_NE_FREE_PRODUCT=true
 STRATEGY_NE_COMMERCIAL_COMMITMENT=true
 OPEN_INFRASTRUCTURE_STRATEGY_IMPLEMENTED=false
+TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY_DIRECTION_ADOPTED=true
+TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
+TITMAS_CONTRIBUTOR_ENTRY_PREPARED=true
+TITMAS_CONTRIBUTION_FRAMEWORK_DEFINED=true
+TITMAS_SPECIFICATION_PROCESS_DEFINED=true
+TITMAS_SPECIFICATION_COMMUNITY_READY_CANDIDATE=true
+TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+TITMAS_PUBLIC_CONTRIBUTION_ENABLED=false
+TITMAS_CODE_OF_CONDUCT_ADOPTED=false
+TITMAS_MAINTAINER_ASSIGNED=false
+TITMAS_FOUNDATION_IN_SCOPE=false
+COMMUNITY_READY=false
 ```
 
 ## Trusted Multi-Agent Protocol and Production Readiness（可信多智能体协议与生产就绪）
@@ -1073,6 +1247,15 @@ Evidence Reference ≠ Canonical Evidence Object ≠ Truth
 |---|---|---|
 | [`architecture/stack-specification.md`](architecture/stack-specification.md) | 三层技术栈与事实/评价分离 | “SAEE、DBOS、Digital Entity 各负责什么？” |
 | [`architecture/trusted-multi-agent-protocol-specification.md`](architecture/trusted-multi-agent-protocol-specification.md) | TMAP 核心对象、四个可信边界和协议化路线 | “可信多智能体基础设施定义哪些共同协议对象？” |
+| [`architecture/titmas-dba-relationship.md`](architecture/titmas-dba-relationship.md) | TITMAS 与 DBA/DBOS/TMAP/TMAI 的命名、层级、权力和事实边界 | “TITMAS 为什么是技术基础设施架构域，而不是新治理层或 DBOS replacement？” |
+| [`architecture/titmas-architecture-charter-v0.1.md`](architecture/titmas-architecture-charter-v0.1.md) | TITMAS 互操作职责、非目标、组件 Owner、SAEE 核心保护、GitHub 组织候选和开发前推荐闸门 | “TITMAS 可以连接哪些生态、不能拥有或公开哪些能力，何时才能进入实现？” |
+| [`architecture/titmas-infrastructure-developer-community-strategy-v0.1.md`](architecture/titmas-infrastructure-developer-community-strategy-v0.1.md) | TITMAS Infrastructure Developer Community 的名称、首次接触说明、OpenTelemetry 参考、贡献路径、成熟度和防跑偏检查 | “第一次接触 TITMAS 时它解决什么问题，我能贡献什么，当前社区和实现真实状态是什么？” |
+| [`architecture/ADR-029-titmas-infrastructure-developer-community-direction.md`](architecture/ADR-029-titmas-infrastructure-developer-community-direction.md) | 基础设施开发者社区方向的采纳范围与非授权 | “开发者社区方向是否已采纳？它是否意味着社区、基金会、SIG 或仓库已经成立？” |
+| [`CONTRIBUTING.md`](CONTRIBUTING.md) | 人类和受治理智能体的首次贡献路径、披露、审查、行为和安全边界 | “我现在可以准备什么，谁负责审查，哪些结果不能自动产生？” |
+| [`TITMAS-CONTRIBUTOR-ENTRY-v0.1.json`](TITMAS-CONTRIBUTOR-ENTRY-v0.1.json) | 机器可读名称、目的、状态、贡献表面、文档引用、限制和 false effects | “智能体如何在不猜测当前状态的情况下发现 TITMAS 贡献入口？” |
+| [`TITMAS-CONTRIBUTOR-ENTRY-PREPARATION-REPORT.md`](TITMAS-CONTRIBUTOR-ENTRY-PREPARATION-REPORT.md) | C1 文件、Schema/链接/边界验证与下一闸门 | “贡献入口准备到了什么程度，哪些权限抬升负例已被拒绝？” |
+| [`architecture/titmas-document-maturity-policy-v0.1.md`](architecture/titmas-document-maturity-policy-v0.1.md) | 每个规范文档独立成熟，不传播到实现、社区、发布、采用和生产 | “Development、Beta 或 Stable 到底证明了什么？” |
+| [`architecture/titmas-contribution-proposal-template-v0.1.md`](architecture/titmas-contribution-proposal-template-v0.1.md) | 重大变化先 Proposal 后 Review/Decision 的标准字段 | “如何提出变化而不把提案误写成授权或实现？” |
 | [`architecture/opentelemetry-observability-profile.md`](architecture/opentelemetry-observability-profile.md) | OTel Signal、Resource、Context、Collector 与 DBOS Evidence 边界 | “Trace、Metric、Log 如何进入 DBOS 而不自动成为 Evidence？” |
 | [`architecture/opentelemetry-semantic-conventions-profile.md`](architecture/opentelemetry-semantic-conventions-profile.md) | core/GenAI 字段稳定性、trusted binding、内容和基数策略 | “`gen_ai.agent.id`、`invoke_agent` 和评价字段为什么不是 DBOS/SAEE 事实？” |
 | [`architecture/opentelemetry-semantic-mapping.v0.1.json`](architecture/opentelemetry-semantic-mapping.v0.1.json) / [schemas](architecture/schemas/opentelemetry-semantic-mapping.schema.v0.1.json) | 47 项可机读字段映射与 exact stability source | “编码智能体应怎样处理每个 OTel/GenAI 字段，又禁止产生什么效果？” |

@@ -1,7 +1,7 @@
-# Trusted Multi-Agent Infrastructure Website
+# TITMAS Infrastructure Developer Community Website
 
-中英文双语、agent-readable（智能体可读）的 Trusted Multi-Agent
-Infrastructure（可信多智能体基础设施）公开门户。
+中英文双语、agent-readable（智能体可读）的 TITMAS Infrastructure Developer
+Community（TITMAS 可信多智能体基础设施开发者社区）公开门户。
 
 ## Truth status
 
@@ -15,6 +15,13 @@ SITE_URL=https://redcrag.cn/
 SITE_HEALTH_PASS=true
 SITE_ROLLBACK_VALIDATED=true
 DEVELOPER_PREVIEW_RELEASED=true
+TITMAS_FUTURE_DOMAIN=titmas.cn
+TITMAS_FUTURE_DOMAIN_FILING_STATUS=PENDING
+TITMAS_FUTURE_DOMAIN_LIVE=false
+TITMAS_GITHUB_ORGANIZATION_SLUG=titmas-cn
+TITMAS_GITHUB_ORGANIZATION_CREATED=false
+TITMAS_REDESIGN_SOURCE_PREPARED=true
+TITMAS_REDESIGN_DEPLOYED=false
 ```
 
 这个目录是网站实现，不是 DBOS Runtime（运行时）、SAEE Evaluation
@@ -30,9 +37,12 @@ Runtime（评价运行时）或 Agent（智能体）实现。页面将当前项�
 | `/en` | English home |
 | `/status` | 中文状态页 |
 | `/en/status` | English status page |
+| `/community` | 完整中文社区／开发者入口 |
+| `/en/community` | Complete English community/developer entry |
 | `/llms.txt` | LLM-readable（大模型可读）项目入口 |
 | `/agent-index.json` | Agent discovery（智能体发现）索引 |
 | `/status.json` | 机器可读验证状态 |
+| `/titmas-community.json` | TITMAS 名称、域名、GitHub、贡献表面、边界和 false effects |
 | `/agent-customer-package.json` | AI agent 的适用／不适用、精确验证命令、组合流和当前阻塞 |
 | `/dbos-public-package-manifest.json` | DBOS exact wheel 的验证、匿名下载、公开边界和已发布状态 |
 
@@ -57,11 +67,14 @@ exact wheel URL 执行失败关闭的正式导出，并生成带 SHA-256 清单�
 
 ## Design boundary
 
-视觉系统参考 OpenTelemetry 官网的清晰导航、深色 Hero（首屏）、亮色强调、
-模块化能力卡片和多语言入口，但不复制其 Logo、插图、文案或项目事实。
+视觉系统重度参考 OpenTelemetry 官网的明亮信息架构：白色与浅灰页面、紫色主色、
+琥珀色与青色强调、清晰导航、模块化能力卡片、有限的高饱和状态区和多语言入口。
+不复制其 Logo、插图、文案或项目事实。
 
 ## Deployment boundary
 
-Developer Preview v0.1 已部署到 `https://redcrag.cn/`。正式部署必须继续通过
+Developer Preview v0.1 的现有版本已部署到 `https://redcrag.cn/`；本轮 TITMAS
+明亮版仍是本地预发布源码，尚未替换线上版本。`titmas.cn` 正在备案且尚未
+上线，因此当前 metadata base、sitemap 和机器资源继续使用 `redcrag.cn`。新域名正式部署必须继续通过
 manifest hash、Nginx、健康、安全头和回滚边界验证。Deployment（部署）不等于
 Production Readiness（生产就绪）或 Adoption（采用）。

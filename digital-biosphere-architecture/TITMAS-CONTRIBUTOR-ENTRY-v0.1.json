@@ -1,0 +1,168 @@
+{
+  "$schema": "./architecture/schemas/titmas-contributor-entry.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CONTRIBUTOR-ENTRY-0.1",
+  "version": "0.1.0",
+  "status": "CONTRIBUTOR_ENTRY_PREPARED_NOT_PUBLICLY_AUTHORIZED",
+  "observed_at": "2026-07-23",
+  "canonical_name": {
+    "en": "TITMAS Infrastructure Developer Community",
+    "zh": "TITMAS 可信多智能体基础设施开发者社区",
+    "subtitle_en": "Developer Community for Trusted Multi-Agent Infrastructure"
+  },
+  "one_sentence_purpose": {
+    "en": "You build agents. TITMAS helps them collaborate through understandable, implementable, and verifiable infrastructure rules.",
+    "zh": "开发者负责构建 Agent；TITMAS 提供易理解、可实现、可验证的基础设施规则，帮助不同 Agent 可信协作。"
+  },
+  "community_state": "CONTRIBUTOR_ENTRY_PREPARED",
+  "public_contribution_surface_authorized": false,
+  "community_established": false,
+  "target_contributors": [
+    "HUMAN_DEVELOPER",
+    "GOVERNED_CODING_AGENT",
+    "GOVERNED_RETRIEVAL_AGENT",
+    "GOVERNED_TEST_AGENT",
+    "GOVERNED_CITATION_AGENT"
+  ],
+  "contribution_surfaces": [
+    {
+      "id": "SPECIFICATION",
+      "current_state": "LOCAL_PREPARATION_ALLOWED",
+      "decision_required_for_adoption": true
+    },
+    {
+      "id": "SEMANTIC_MAPPING",
+      "current_state": "CANDIDATE_ONLY",
+      "decision_required_for_adoption": true
+    },
+    {
+      "id": "ADAPTER_CONTRACT",
+      "current_state": "PROPOSAL_ONLY",
+      "decision_required_for_adoption": true
+    },
+    {
+      "id": "CONFORMANCE",
+      "current_state": "DESIGN_ONLY",
+      "decision_required_for_adoption": true
+    },
+    {
+      "id": "DOCUMENTATION",
+      "current_state": "LOCAL_PREPARATION_ALLOWED",
+      "decision_required_for_adoption": false
+    },
+    {
+      "id": "SECURITY_PRIVACY",
+      "current_state": "LOCAL_ANALYSIS_ALLOWED",
+      "decision_required_for_adoption": true
+    }
+  ],
+  "workflow": [
+    "READ_PROGRAM_GOVERNANCE_COCKPIT",
+    "SELECT_BOUNDED_CONTRIBUTION_SURFACE",
+    "CREATE_PROPOSAL_CANDIDATE",
+    "REVIEW_SOURCE_SCOPE_AND_AUTHORITY",
+    "CREATE_VERSIONED_DRAFT",
+    "DOMAIN_AND_ARCHITECTURE_REVIEW",
+    "EXPLICIT_DECISION_WHEN_REQUIRED",
+    "SEPARATE_IMPLEMENTATION_AUTHORIZATION",
+    "INDEPENDENT_CONFORMANCE_IF_IMPLEMENTED"
+  ],
+  "required_disclosure_fields": [
+    "contributor_type",
+    "human_accountability_ref",
+    "agent_or_tool_ref",
+    "source_refs",
+    "verification_performed_by_ref",
+    "known_unknowns"
+  ],
+  "document_refs": {
+    "contributor_guide": "CONTRIBUTING.md",
+    "community_strategy": "architecture/titmas-infrastructure-developer-community-strategy-v0.1.md",
+    "role_model": "architecture/titmas-contributor-role-model-v0.1.md",
+    "proposal_template": "architecture/titmas-contribution-proposal-template-v0.1.md",
+    "maturity_policy": "architecture/titmas-document-maturity-policy-v0.1.md",
+    "workstream_template": "architecture/titmas-workstream-charter-template-v0.1.md",
+    "good_first_contribution_catalog": "architecture/titmas-good-first-contribution-catalog-v0.1.md",
+    "conduct_candidate": "architecture/titmas-community-conduct-candidate-v0.1.md",
+    "validation_report": "TITMAS-CONTRIBUTOR-ENTRY-PREPARATION-REPORT.md",
+    "c2_completion_report": "architecture/titmas-c2-completion-report-v0.1.md",
+    "governance_activation_review": "architecture/titmas-governance-activation-review-v0.1.md",
+    "open_specification_framework": "architecture/titmas-open-specification-framework-v0.1.md",
+    "reference_implementation_strategy": "architecture/titmas-reference-implementation-strategy-v0.1.md",
+    "contributor_pilot_program": "architecture/titmas-contributor-pilot-program-v0.1.md",
+    "community_launch_readiness": "architecture/titmas-community-launch-readiness-v0.1.md",
+    "ecosystem_expansion_strategy": "architecture/titmas-ecosystem-expansion-strategy-v0.1.md",
+    "commercial_ecosystem_strategy": "architecture/titmas-commercial-ecosystem-strategy-v0.1.md",
+    "foundation_evaluation_report": "architecture/titmas-foundation-evaluation-report-v0.1.md",
+    "ecosystem_master_report": "architecture/titmas-community-commercial-ecosystem-master-report-v1.0.md"
+  },
+  "current_roles": {
+    "maintainers": [],
+    "reviewers": [],
+    "triagers": [],
+    "sig_or_workstreams": []
+  },
+  "authority_boundaries": [
+    "COMMUNITY_REVIEW_DOES_NOT_CREATE_ARCHITECTURE_DECISION",
+    "AGENT_CONTRIBUTION_DOES_NOT_CREATE_MEMBERSHIP_OR_AUTHORITY",
+    "DBA_ARCHITECTURE_AUTHORITY_REMAINS_SEPARATE",
+    "DBOS_OPERATIONAL_AUTHORITY_REMAINS_SEPARATE",
+    "SAEE_EVOLUTION_AUTHORITY_REMAINS_SEPARATE",
+    "CONFORMANCE_PASS_DOES_NOT_CREATE_PERMISSION_TRUTH_ADOPTION_OR_RELEASE"
+  ],
+  "non_goals": [
+    "AGENT_FRAMEWORK",
+    "AGENT_PLATFORM",
+    "FOUNDATION",
+    "SECOND_DBA",
+    "AUTOMATIC_AUTHORIZATION",
+    "AUTOMATIC_ROLE_ASSIGNMENT",
+    "AUTOMATIC_IMPLEMENTATION",
+    "PUBLIC_COMMUNITY_LAUNCH"
+  ],
+  "reference_inputs": [
+    {
+      "name": "OpenTelemetry Community",
+      "url": "https://github.com/open-telemetry/community",
+      "reference": "main@d3d7cb3c1bc1104d8df7cf26dba9bf86cf354f26",
+      "authority": "REFERENCE_ONLY"
+    },
+    {
+      "name": "OpenTelemetry Specification",
+      "url": "https://github.com/open-telemetry/opentelemetry-specification",
+      "reference": "main@2e90a4df976ba2609577f3308ad27188a2619853",
+      "authority": "REFERENCE_ONLY"
+    },
+    {
+      "name": "OpenTelemetry Document Statuses",
+      "url": "https://opentelemetry.io/docs/specs/otel/document-status/",
+      "reference": "observed@2026-07-23",
+      "authority": "REFERENCE_ONLY"
+    },
+    {
+      "name": "OpenTelemetry Contribution Entry",
+      "url": "https://opentelemetry.io/docs/contributing/",
+      "reference": "observed@2026-07-23",
+      "authority": "REFERENCE_ONLY"
+    }
+  ],
+  "known_limitations": [
+    "NO_PUBLIC_CONTRIBUTION_CHANNEL",
+    "NO_FORMAL_CODE_OF_CONDUCT_ADOPTION",
+    "NO_SECURITY_DISCLOSURE_PATH",
+    "NO_MAINTAINER_OR_REVIEWER_ASSIGNMENT",
+    "NO_REAL_CONTRIBUTOR_OBSERVED",
+    "NO_WORKSTREAM_OR_SIG",
+    "AUTHORITY_FREEZE_NOT_ADOPTED",
+    "INTERFACE_V0_1_NOT_AUTHORIZED"
+  ],
+  "effects": {
+    "authority": false,
+    "permission": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "implementation": false,
+    "release": false,
+    "external_action": false
+  }
+}

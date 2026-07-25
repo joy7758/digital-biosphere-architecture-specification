@@ -1,0 +1,150 @@
+{
+  "schema_version": "0.1",
+  "document_id": "TITMAS-COMMUNITY-PUBLIC-ENTRY-0.1",
+  "observed_at": "2026-07-23",
+  "brand": "TITMAS",
+  "canonical_name": {
+    "en": "TITMAS Infrastructure Developer Community",
+    "zh": "TITMAS 可信多智能体基础设施开发者社区",
+    "subtitle_en": "Developer Community for Trusted Multi-Agent Infrastructure"
+  },
+  "technical_positioning": {
+    "en": "Trusted Multi-Agent Infrastructure",
+    "zh": "可信多智能体基础设施"
+  },
+  "one_sentence_purpose": {
+    "en": "You build agents. TITMAS helps them collaborate through understandable, implementable, and verifiable infrastructure rules.",
+    "zh": "开发者负责构建 Agent；TITMAS 提供易理解、可实现、可验证的基础设施规则，帮助不同 Agent 可信协作。"
+  },
+  "public_front_door": {
+    "current_live_site": "https://redcrag.cn/",
+    "future_primary_domain": "https://titmas.cn/",
+    "future_domain_selected": true,
+    "future_domain_filing_status": "PENDING",
+    "future_domain_live": false,
+    "canonical_cutover_completed": false,
+    "redcrag_redirect_configured": false
+  },
+  "github": {
+    "selected_organization_slug": "titmas-cn",
+    "slug_selected": true,
+    "public_namespace_check": {
+      "observed_at": "2026-07-23",
+      "result": "NO_PUBLIC_USER_OR_ORGANIZATION_OBSERVED",
+      "reservation_proven": false
+    },
+    "organization_created": false,
+    "organization_url": null,
+    "repositories_created": 0,
+    "repositories_transferred": 0,
+    "public_issues_enabled": false,
+    "public_discussions_enabled": false,
+    "public_pull_requests_enabled": false
+  },
+  "community_state": {
+    "direction_adopted": true,
+    "contributor_entry_prepared": true,
+    "technical_validation_design_complete": true,
+    "community_established": false,
+    "public_contribution_surface_authorized": false,
+    "public_contribution_enabled": false,
+    "maintainers_assigned": 0,
+    "reviewers_assigned": 0,
+    "contributors_observed": 0,
+    "workstreams_active": 0,
+    "foundation_in_scope": false
+  },
+  "contribution_surfaces": [
+    {
+      "id": "SPECIFICATION",
+      "purpose": "Versioned infrastructure objects, fields, ownership, compatibility, and boundaries.",
+      "current_state": "PREPARED_FOR_REVIEW_NOT_PUBLICLY_ENABLED"
+    },
+    {
+      "id": "ADAPTER_CONTRACT",
+      "purpose": "Bounded mappings from external agent runtimes into TITMAS objects without semantic or authority elevation.",
+      "current_state": "PROPOSAL_ONLY"
+    },
+    {
+      "id": "CONFORMANCE",
+      "purpose": "Positive, negative, fail-closed, and result contracts for implementation claims.",
+      "current_state": "DESIGN_ONLY"
+    },
+    {
+      "id": "REFERENCE_IMPLEMENTATION",
+      "purpose": "Replaceable, reproducible teaching and validation paths that do not become the only runtime.",
+      "current_state": "STRATEGY_ONLY"
+    }
+  ],
+  "developer_path": [
+    "DISCOVER_PUBLIC_ENTRY",
+    "READ_SCOPE_AND_NON_GOALS",
+    "SELECT_A_BOUNDED_SURFACE",
+    "DECLARE_SOURCES_AND_VERSIONS",
+    "PREPARE_LOCAL_PROPOSAL_CANDIDATE",
+    "DOMAIN_REVIEW",
+    "ARCHITECTURE_DECISION_WHEN_REQUIRED",
+    "SEPARATE_IMPLEMENTATION_AUTHORIZATION",
+    "INDEPENDENT_CONFORMANCE_IF_IMPLEMENTED"
+  ],
+  "participant_profiles": [
+    "HUMAN_DEVELOPER",
+    "GOVERNED_CODING_AGENT",
+    "GOVERNED_RETRIEVAL_AGENT",
+    "GOVERNED_TEST_AGENT",
+    "GOVERNED_CITATION_AGENT",
+    "REVIEWER_CANDIDATE"
+  ],
+  "architecture_roles": {
+    "DBA": "program_and_architecture_governance",
+    "DBOS": "existence_governance",
+    "SAEE": "evolution_evaluation",
+    "Governance Decision": "explicit_adoption_decision",
+    "TITMAS Community": "developer_entry_and_interoperability_collaboration_without_runtime_authority"
+  },
+  "hard_boundaries": [
+    "Observation != Evidence",
+    "Evidence != Truth",
+    "Verification != Authorization",
+    "Evaluation != Authority",
+    "Recommendation != Decision",
+    "Decision != Execution",
+    "Capability != Permission",
+    "Community Review != Architecture Decision",
+    "GitHub Role != Domain Authority"
+  ],
+  "non_goals": [
+    "AGENT_FRAMEWORK",
+    "AGENT_PLATFORM",
+    "HOSTED_RUNTIME",
+    "FOUNDATION",
+    "MARKETPLACE",
+    "CERTIFICATION_PROGRAM",
+    "AUTOMATIC_AUTHORIZATION",
+    "AUTOMATIC_ROLE_ASSIGNMENT"
+  ],
+  "site_entrypoints": {
+    "community_zh": "/community/",
+    "community_en": "/en/community/",
+    "llms": "/llms.txt",
+    "agent_index": "/agent-index.json",
+    "status": "/status.json",
+    "agent_customer_package": "/agent-customer-package.json"
+  },
+  "decision_references": [
+    "architecture/ADR-029-titmas-infrastructure-developer-community-direction.md",
+    "architecture/ADR-030-titmas-public-front-door-and-github-slug.md"
+  ],
+  "effects": {
+    "authority": false,
+    "permission": false,
+    "runtime": false,
+    "agent": false,
+    "entity": false,
+    "organization_creation": false,
+    "repository_transfer": false,
+    "public_contribution": false,
+    "production_readiness": false,
+    "customer_adoption": false
+  }
+}

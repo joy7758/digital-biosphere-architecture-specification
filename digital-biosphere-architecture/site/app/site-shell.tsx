@@ -3,7 +3,7 @@ import { content } from "./site-content";
 
 export function Brand() {
   return (
-    <span className="brand" aria-label="Trusted Multi-Agent Infrastructure">
+    <span className="brand" aria-label="TITMAS Infrastructure Developer Community">
       <span className="brand-mark" aria-hidden="true">
         <i />
         <i />
@@ -11,33 +11,38 @@ export function Brand() {
         <i />
       </span>
       <span className="brand-name">
-        <strong>TMAI</strong>
-        <small>Trustworthy Multi-Agent Infrastructure</small>
+        <strong>TITMAS</strong>
+        <small>Infrastructure Developer Community</small>
       </span>
     </span>
   );
 }
 
-export function Header({ locale, section = "home" }: { locale: Locale; section?: "home" | "status" }) {
+export function Header({ locale, section = "home" }: { locale: Locale; section?: "home" | "status" | "community" }) {
   const c = content[locale];
   const root = locale === "zh" ? "/" : "/en/";
   const status = locale === "zh" ? "/status/" : "/en/status/";
+  const community = locale === "zh" ? "/community/" : "/en/community/";
   const language =
     section === "status"
       ? locale === "zh"
         ? "/en/status/"
         : "/status/"
+      : section === "community"
+        ? locale === "zh"
+          ? "/en/community/"
+          : "/community/"
       : locale === "zh"
         ? "/en/"
         : "/";
 
   const nav = (
     <>
+      <a href={community}>{c.nav.developers}</a>
       <a href={`${root}#architecture`}>{c.nav.architecture}</a>
       <a href={`${root}#trust`}>{c.nav.trust}</a>
       <a href={`${root}#workflow`}>{c.nav.workflow}</a>
       <a href={status}>{c.nav.status}</a>
-      <a href={`${root}#developers`}>{c.nav.developers}</a>
       <a
         href="https://github.com/joy7758/digital-biosphere-architecture-specification"
         target="_blank"
@@ -87,6 +92,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <a href="/llms.txt">llms.txt</a>
           <a href="/agent-index.json">agent-index.json</a>
           <a href="/status.json">status.json</a>
+          <a href="/titmas-community.json">titmas-community.json</a>
         </div>
         <div>
           <strong>{locale === "zh" ? "治理" : "Governance"}</strong>

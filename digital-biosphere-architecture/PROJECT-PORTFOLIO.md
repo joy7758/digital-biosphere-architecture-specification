@@ -3,7 +3,7 @@ document_id: DBA-PROJECT-PORTFOLIO-0.1
 title: Digital Biosphere Project Portfolio v0.1
 title_zh: 数字生物圈项目组合 v0.1
 status: developer-preview-released-production-implementation-mapping-complete
-as_of_date: 2026-07-22
+as_of_date: 2026-07-23
 source_policy: reference-only
 changes_project_ownership: false
 changes_project_status: false
@@ -31,6 +31,23 @@ changes_project_status: false
 | `GOVERNANCE-DECISION` | `LOGICAL_LAYER` | Governance Decision Layer（治理决策层） | Recommendation 到 Decision、Adoption 的记录边界 | DBA 的 `governance-decision-model.md`、状态机与 ADR | `MODEL_DEFINED_IMPLEMENTATION_NOT_ASSESSED` | 指定 deployment-specific decision authority（部署特定决策责任） |
 | `TMAP` | `LOGICAL_LAYER` | Trusted Multi-Agent Protocol（可信多智能体协议） | Identity、Capability、Execution、Evidence、Verification 与 Evolution Interface 的开放互操作契约 | DBA 的 `trusted-multi-agent-protocol-specification.md`、`PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`、版本治理与 ADR-023 | `PR_G1_MAPPING_COMPLETE_DQ_018_OBSERVATION_SLICE_IMPLEMENTED` | 审查 `PR-G2A`；其他 schema/version 只能按独立 gate 落地 |
 | `RESEARCH-AGENT-PILOT` | `PILOT` | Research Agent Pilot（科研智能体试验） | 第一个 Operational Digital Entity（运行型数字主体）参考试验 | `/Users/zhangbin/GitHub/digital-biosphere-research-agent-pilot/README.md`、`CONSTITUTION.md`、readiness gate（就绪闸门） | `SPECIFICATION_ONLY_NOT_READY` | 完成人工复核、来源批准和原型授权前置条件 |
+
+### 2.1 Non-portfolio Architecture Domain（非项目组合架构域）
+
+TITMAS 当前不是 `CORE`、`PILOT`、独立软件项目或仓库。它是 DBA 下的 proposed
+interoperability architecture domain（拟议互操作架构域）；其
+`TITMAS Infrastructure Developer Community` 方向已由 `ADR-029` 采纳，但社区、
+公共贡献表面、正式 Code of Conduct、安全接收路径、SIG、Maintainer、Authority、
+Interface 和实现均未建立。Contributor Guide、机器可读入口和治理模板只是 DBA 内的
+`CONTRIBUTOR_ENTRY_PREPARED`，不把 TITMAS 升级为 Portfolio project。
+
+```text
+TITMAS_PORTFOLIO_ADMITTED=false
+TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY_DIRECTION_ADOPTED=true
+TITMAS_CONTRIBUTOR_ENTRY_PREPARED=true
+TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
+```
 
 ## 3. Adjacent Candidate Portfolio（相邻候选项目组合）
 

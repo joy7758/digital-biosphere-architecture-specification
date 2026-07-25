@@ -9,6 +9,16 @@ release_status: developer-preview-v0.1-released-not-production-ready
 developer_preview_status: released-exact-public-safe-wheel-open-web-partial-metadata-only
 production_readiness_status: dq-018-security-remediated-native-remote-attested-pr-g2a-human-review-ready-not-approved-full-pr-g2-blocked-not-production-ready
 source_policy: direct-read-only-observation
+titmas_governance_overlay_observed_at: 2026-07-23
+titmas_community_direction_adopted: true
+titmas_contributor_entry_prepared: true
+titmas_public_contribution_surface_authorized: false
+titmas_community_established: false
+titmas_public_domain: https://titmas.cn/
+titmas_public_domain_filing_status: pending
+titmas_public_domain_live: false
+titmas_github_organization_slug: titmas-cn
+titmas_github_organization_created: false
 ---
 
 # Digital Biosphere Program Status Snapshot（数字生物圈项目群状态快照）
@@ -26,6 +36,24 @@ CORE_PROJECTS=3
 PILOT_PROJECTS=1
 PROGRAM_AUTHORITY_ASSIGNED=true
 PROGRAM_OWNER_REF=zhangbin
+TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY_DIRECTION_ADOPTED=true
+TITMAS_CURRENT_COMMUNITY_STATE=CONTRIBUTOR_ENTRY_PREPARED
+TITMAS_CONTRIBUTOR_ENTRY_PREPARED=true
+TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+TITMAS_CODE_OF_CONDUCT_ADOPTED=false
+TITMAS_SECURITY_DISCLOSURE_PATH_ASSIGNED=false
+TITMAS_MAINTAINER_ASSIGNED=false
+TITMAS_SIG_CREATED=false
+TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
+TITMAS_PUBLIC_DOMAIN_SELECTED=true
+TITMAS_PUBLIC_DOMAIN=titmas.cn
+TITMAS_PUBLIC_DOMAIN_FILING_STATUS=PENDING
+TITMAS_PUBLIC_DOMAIN_LIVE=false
+TITMAS_CURRENT_PUBLIC_SITE=https://redcrag.cn/
+TITMAS_GITHUB_ORGANIZATION_SLUG_SELECTED=true
+TITMAS_GITHUB_ORGANIZATION_SLUG=titmas-cn
+TITMAS_GITHUB_ORGANIZATION_CREATED=false
+TITMAS_REPOSITORIES_TRANSFERRED=0
 SCOPED_LOCAL_DBOS_SAEE_CONFORMANCE_PASS=true
 FULL_END_TO_END_INTEGRATION_VERIFIED=false
 ACTIVE_DIGITAL_ENTITY_VERIFIED_BY_DBA=false

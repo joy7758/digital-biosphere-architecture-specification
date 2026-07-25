@@ -1,0 +1,385 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/titmas-contributor-entry.schema.v0.1.json",
+  "title": "TITMAS Contributor Entry v0.1",
+  "description": "Static, non-executable discovery contract for the prepared TITMAS contributor entry. Schema validity does not authorize public contribution, implementation, authority, permission, release, or external action.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "canonical_name",
+    "one_sentence_purpose",
+    "community_state",
+    "public_contribution_surface_authorized",
+    "community_established",
+    "target_contributors",
+    "contribution_surfaces",
+    "workflow",
+    "required_disclosure_fields",
+    "document_refs",
+    "current_roles",
+    "authority_boundaries",
+    "non_goals",
+    "reference_inputs",
+    "known_limitations",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-contributor-entry.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CONTRIBUTOR-ENTRY-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "CONTRIBUTOR_ENTRY_PREPARED_NOT_PUBLICLY_AUTHORIZED"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "canonical_name": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "en",
+        "zh",
+        "subtitle_en"
+      ],
+      "properties": {
+        "en": {
+          "const": "TITMAS Infrastructure Developer Community"
+        },
+        "zh": {
+          "const": "TITMAS 可信多智能体基础设施开发者社区"
+        },
+        "subtitle_en": {
+          "const": "Developer Community for Trusted Multi-Agent Infrastructure"
+        }
+      }
+    },
+    "one_sentence_purpose": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "en",
+        "zh"
+      ],
+      "properties": {
+        "en": {
+          "type": "string",
+          "minLength": 40
+        },
+        "zh": {
+          "type": "string",
+          "minLength": 20
+        }
+      }
+    },
+    "community_state": {
+      "const": "CONTRIBUTOR_ENTRY_PREPARED"
+    },
+    "public_contribution_surface_authorized": {
+      "const": false
+    },
+    "community_established": {
+      "const": false
+    },
+    "target_contributors": {
+      "type": "array",
+      "minItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "HUMAN_DEVELOPER",
+          "GOVERNED_CODING_AGENT",
+          "GOVERNED_RETRIEVAL_AGENT",
+          "GOVERNED_TEST_AGENT",
+          "GOVERNED_CITATION_AGENT"
+        ]
+      }
+    },
+    "contribution_surfaces": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "current_state",
+          "decision_required_for_adoption"
+        ],
+        "properties": {
+          "id": {
+            "enum": [
+              "SPECIFICATION",
+              "SEMANTIC_MAPPING",
+              "ADAPTER_CONTRACT",
+              "CONFORMANCE",
+              "DOCUMENTATION",
+              "SECURITY_PRIVACY"
+            ]
+          },
+          "current_state": {
+            "type": "string",
+            "minLength": 1
+          },
+          "decision_required_for_adoption": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "workflow": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "required_disclosure_fields": {
+      "type": "array",
+      "minItems": 6,
+      "uniqueItems": true,
+      "contains": {
+        "const": "human_accountability_ref"
+      },
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "document_refs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contributor_guide",
+        "community_strategy",
+        "role_model",
+        "proposal_template",
+        "maturity_policy",
+        "workstream_template",
+        "good_first_contribution_catalog",
+        "conduct_candidate",
+        "validation_report"
+      ],
+      "properties": {
+        "contributor_guide": {
+          "type": "string",
+          "minLength": 1
+        },
+        "community_strategy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "role_model": {
+          "type": "string",
+          "minLength": 1
+        },
+        "proposal_template": {
+          "type": "string",
+          "minLength": 1
+        },
+        "maturity_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "workstream_template": {
+          "type": "string",
+          "minLength": 1
+        },
+        "good_first_contribution_catalog": {
+          "type": "string",
+          "minLength": 1
+        },
+        "conduct_candidate": {
+          "type": "string",
+          "minLength": 1
+        },
+        "validation_report": {
+          "type": "string",
+          "minLength": 1
+        },
+        "c2_completion_report": {
+          "type": "string",
+          "minLength": 1
+        },
+        "governance_activation_review": {
+          "type": "string",
+          "minLength": 1
+        },
+        "open_specification_framework": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reference_implementation_strategy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "contributor_pilot_program": {
+          "type": "string",
+          "minLength": 1
+        },
+        "community_launch_readiness": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ecosystem_expansion_strategy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commercial_ecosystem_strategy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "foundation_evaluation_report": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ecosystem_master_report": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "current_roles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maintainers",
+        "reviewers",
+        "triagers",
+        "sig_or_workstreams"
+      ],
+      "properties": {
+        "maintainers": {
+          "maxItems": 0,
+          "type": "array"
+        },
+        "reviewers": {
+          "maxItems": 0,
+          "type": "array"
+        },
+        "triagers": {
+          "maxItems": 0,
+          "type": "array"
+        },
+        "sig_or_workstreams": {
+          "maxItems": 0,
+          "type": "array"
+        }
+      }
+    },
+    "authority_boundaries": {
+      "type": "array",
+      "minItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "non_goals": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "contains": {
+        "const": "FOUNDATION"
+      },
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "reference_inputs": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "url",
+          "reference",
+          "authority"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "authority": {
+            "const": "REFERENCE_ONLY"
+          }
+        }
+      }
+    },
+    "known_limitations": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "permission",
+        "runtime",
+        "agent",
+        "entity",
+        "implementation",
+        "release",
+        "external_action"
+      ],
+      "properties": {
+        "authority": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "implementation": {
+          "const": false
+        },
+        "release": {
+          "const": false
+        },
+        "external_action": {
+          "const": false
+        }
+      }
+    }
+  }
+}

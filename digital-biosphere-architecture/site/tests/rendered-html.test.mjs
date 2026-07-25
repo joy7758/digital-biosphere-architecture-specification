@@ -4,11 +4,12 @@ import test from "node:test";
 import { resolveReleaseContext, routeMarkers } from "../scripts/release-mode.mjs";
 
 const publicRoot = new URL("../public/", import.meta.url);
-const [publicStatus, publicAgentIndex, publicAgentCustomerPackage, publicDbosPackage] = await Promise.all([
+const [publicStatus, publicAgentIndex, publicAgentCustomerPackage, publicDbosPackage, publicTitmasCommunity] = await Promise.all([
   readFile(new URL("status.json", publicRoot), "utf8").then(JSON.parse),
   readFile(new URL("agent-index.json", publicRoot), "utf8").then(JSON.parse),
   readFile(new URL("agent-customer-package.json", publicRoot), "utf8").then(JSON.parse),
   readFile(new URL("dbos-public-package-manifest.json", publicRoot), "utf8").then(JSON.parse),
+  readFile(new URL("titmas-community.json", publicRoot), "utf8").then(JSON.parse),
 ]);
 const releaseContext = resolveReleaseContext(process.env, {
   status: publicStatus,
@@ -17,6 +18,10 @@ const releaseContext = resolveReleaseContext(process.env, {
   dbosPackage: publicDbosPackage,
 });
 const expectedMarkers = routeMarkers(releaseContext.mode);
+
+assert.equal(publicTitmasCommunity.brand, "TITMAS");
+assert.equal(publicTitmasCommunity.community_state.community_established, false);
+assert.equal(publicTitmasCommunity.community_state.public_contribution_enabled, false);
 
 async function render(pathname = "/") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
@@ -36,14 +41,14 @@ test("renders equivalent Chinese and English public entry points", async () => {
   assert.equal(enResponse.status, 200);
 
   const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
-  assert.match(zh, /面向长期、协作和可验证数字主体的基础设施|面向长期运行、协作和可验证数字主体的基础设施/);
-  assert.match(en, /Infrastructure for long-running, collaborative, and verifiable digital entities/);
+  assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
+  assert.match(en, /infrastructure developer community for trustworthy multi-agent systems/i);
   for (const marker of expectedMarkers.zhHome) assert.match(zh, new RegExp(marker));
   for (const marker of expectedMarkers.enHome) assert.match(en, new RegExp(marker));
   assert.match(zh, /Evidence/);
   assert.match(en, /Evidence/);
-  assert.match(zh, /SAEE_DBOS_ADAPTER_PASS/);
-  assert.match(en, /SAEE_DBOS_ADAPTER_PASS/);
+  assert.match(zh, /TITMAS_PUBLIC_DOMAIN/);
+  assert.match(en, /TITMAS_GITHUB_SLUG/);
   if (releaseContext.mode === "candidate") {
     assert.match(zh, /Developer Preview Candidate/);
     assert.match(en, /Developer Preview Candidate/);
@@ -53,6 +58,23 @@ test("renders equivalent Chinese and English public entry points", async () => {
     assert.doesNotMatch(zh, /Developer Preview Candidate/);
     assert.doesNotMatch(en, /Developer Preview Candidate/);
   }
+});
+
+test("renders complete bilingual TITMAS community entry points", async () => {
+  const [zhResponse, enResponse] = await Promise.all([
+    render("/community"),
+    render("/en/community"),
+  ]);
+  assert.equal(zhResponse.status, 200);
+  assert.equal(enResponse.status, 200);
+
+  const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
+  assert.match(zh, /共同建设可信多智能体基础设施/);
+  assert.match(en, /Build trustworthy multi-agent infrastructure together/);
+  assert.match(zh, /Organization 未创建/);
+  assert.match(en, /organization that does not exist/i);
+  assert.match(zh, /COMMUNITY_ESTABLISHED=false/);
+  assert.match(en, /PUBLIC_CONTRIBUTION_ENABLED=false/);
 });
 
 test("renders bilingual status pages with fail-closed truth", async () => {
@@ -81,19 +103,32 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("status.json", root)),
     access(new URL("agent-customer-package.json", root)),
     access(new URL("dbos-public-package-manifest.json", root)),
+    access(new URL("titmas-community.json", root)),
     access(new URL("robots.txt", root)),
     access(new URL("sitemap.xml", root)),
   ]);
 
-  const [agentIndex, status, agentCustomerPackage, dbosPackage, llms] = await Promise.all([
+  const [agentIndex, status, agentCustomerPackage, dbosPackage, titmasCommunity, llms] = await Promise.all([
     readFile(new URL("agent-index.json", root), "utf8").then(JSON.parse),
     readFile(new URL("status.json", root), "utf8").then(JSON.parse),
     readFile(new URL("agent-customer-package.json", root), "utf8").then(JSON.parse),
     readFile(new URL("dbos-public-package-manifest.json", root), "utf8").then(JSON.parse),
+    readFile(new URL("titmas-community.json", root), "utf8").then(JSON.parse),
     readFile(new URL("llms.txt", root), "utf8"),
   ]);
   assert.equal(agentIndex.released, releaseContext.developerPreviewReleased);
   assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
+  assert.equal(status.public_front_door.future_primary_domain, "https://titmas.cn/");
+  assert.equal(status.public_front_door.future_domain_live, false);
+  assert.equal(status.public_front_door.selected_github_organization_slug, "titmas-cn");
+  assert.equal(status.public_front_door.github_organization_created, false);
+  assert.equal(agentIndex.public_brand, "TITMAS");
+  assert.equal(agentIndex.developer_community.community_established, false);
+  assert.equal(agentIndex.entrypoints.titmas_community, "/titmas-community.json");
+  assert.equal(titmasCommunity.public_front_door.future_domain_filing_status, "PENDING");
+  assert.equal(titmasCommunity.github.organization_created, false);
+  assert.equal(titmasCommunity.community_state.public_contribution_enabled, false);
+  assert.equal(titmasCommunity.effects.authority, false);
   assert.equal(status.gates.DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE, true);
   assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL, true);
   assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_RERUN_PASS, true);
@@ -140,6 +175,8 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.production_path.any_production_gate_pass_created, false);
   assert.equal(agentIndex.production_path.s0_architecture_contract_freeze_recommended_by_two_agents, true);
   assert.match(llms, /Recommendation != Decision/);
+  assert.match(llms, /Future domain status: SELECTED, FILING_PENDING, NOT_LIVE/);
+  assert.match(llms, /Selected GitHub organization slug: titmas-cn/);
   assert.match(llms, /production-gate-evidence-manifest-specification/);
   assert.match(llms, /production-gate-evidence-manifest\.schema\.v0\.1\.json/);
   assert.match(llms, /DQ_022_STATUS=DECIDED_REFERENCE_ADOPTED/);

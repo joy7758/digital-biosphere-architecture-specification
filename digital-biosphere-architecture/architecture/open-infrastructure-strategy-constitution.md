@@ -1,12 +1,15 @@
-# Digital Biosphere Open Infrastructure Strategy Constitution v0.1
+# Digital Biosphere Open Infrastructure Strategy Constitution v0.2
 
-中文：数字生物圈开放基础设施战略宪法 v0.1
+中文：数字生物圈开放基础设施战略宪法 v0.2
 
 Status: `ADOPTED_STRATEGIC_CONSTITUTION`
 
 Authority: Architecture governance and strategic interpretation only
 
 Implementation effect: `NONE`
+
+Amendment reference:
+[`ADR-029`](ADR-029-titmas-infrastructure-developer-community-direction.md)
 
 ## Constitutional Position
 
@@ -89,6 +92,37 @@ DBOS 不制造最终 Agent 应用，不以 Chatbot 或单一行业软件作为�
 - Reference Implementation。
 
 这些术语表示发展方向，不表示相应产品、SDK、Marketplace 或稳定版本已经实现或发布。
+
+## Principle 2A: Infrastructure Developer Community Direction
+
+TITMAS 的社区方向统一命名为：
+
+```text
+English: TITMAS Infrastructure Developer Community
+Chinese: TITMAS 可信多智能体基础设施开发者社区
+Subtitle: Developer Community for Trusted Multi-Agent Infrastructure
+```
+
+名称必须包含 `Infrastructure` 或“基础设施”，使首次接触者能够立即判断：该社区围绕
+可信多智能体的开放规范、Adapter contract、Conformance 和 reference implementation
+boundary 展开，不是普通 Agent 讨论社区、Agent Framework、Agent Platform 或基金会。
+
+社区方向重度参考 OpenTelemetry 的 specification/implementation/contrib separation（规范／
+实现／生态集成分离）、document-level maturity（文档级成熟度）、实现版本声明、公开贡献
+入口、符合性矩阵，以及“先有真实工作和参与者，再建立 SIG”的组织方式。但 Reference
+Adoption 不复制 OpenTelemetry 的品牌、组织权力、CNCF 身份、社区规模或成熟度。
+
+本宪法只采纳 community direction（社区方向）。当前保持：
+
+```text
+TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY_DIRECTION_ADOPTED=true
+TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
+TITMAS_FOUNDATION_IN_SCOPE=false
+TITMAS_INDEPENDENT_AUTHORITY_CREATED=false
+```
+
+完整贡献表面、成熟度模型、Workstream activation、Roadmap 和防跑偏检查见
+[`titmas-infrastructure-developer-community-strategy-v0.1.md`](titmas-infrastructure-developer-community-strategy-v0.1.md)。
 
 ## Principle 3: Protocolization Before Platform Expansion
 
@@ -272,6 +306,9 @@ DIGITAL_BIOSPHERE_IS_ONE_PROGRAM=true
 OPEN_INFRASTRUCTURE_NE_FREE_PRODUCT=true
 SPECIFICATION_NE_IMPLEMENTATION=true
 STRATEGY_NE_COMMERCIAL_COMMITMENT=true
+TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY_DIRECTION_ADOPTED=true
+TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
+TITMAS_FOUNDATION_IN_SCOPE=false
 TELEMETRY_NE_EVIDENCE=true
 EVIDENCE_NE_TRUTH=true
 AUTOMATIC_AUTHORITY_EFFECT=NONE
@@ -283,5 +320,7 @@ AUTOMATIC_AUTHORITY_EFFECT=NONE
 
 - DBOS、SAEE、SDK、Marketplace、Enterprise Edition 或认证体系已经实现或发布；
 - 已经形成开发者采用、社区增长、企业客户或商业收入；
+- TITMAS Infrastructure Developer Community 已经建立，或已存在 SIG、Maintainer、
+  公开贡献渠道、组织账号、基金会或独立 Authority；
 - 开放基础设施自动满足安全、合规、审计或认证要求；
 - 任何 Agent、Runtime、Entity、Capability、Permission 或 Digital Organism 已被创建。

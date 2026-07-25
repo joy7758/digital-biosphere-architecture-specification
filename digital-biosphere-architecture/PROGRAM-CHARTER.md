@@ -8,7 +8,7 @@ program_authority_assigned: true
 program_owner_ref: zhangbin
 runtime_authority_created: false
 source_of_truth_policy: reference-only-aggregation
-last_reviewed: 2026-07-21
+last_reviewed: 2026-07-23
 ---
 
 # Digital Biosphere Program Governance Charter v0.1（数字生物圈项目群治理章程 v0.1）
@@ -38,10 +38,27 @@ Digital Biosphere Program
        ├─ DBOS: existence and operational infrastructure
        ├─ SAEE: evaluation and evolution intelligence
        ├─ Digital Entity pilots: task-specific application workstreams
+       ├─ TITMAS: proposed interoperability architecture domain +
+       │    adopted infrastructure developer community direction
        └─ Adjacent components: admitted only after boundary review
 ```
 
 这里的层级表示 program coordination（项目协调）和 responsibility routing（责任路由），不是仓库所有权、代码依赖、Runtime 控制或权限继承。DBOS、SAEE 和各应用仓库继续维护自己的实现与事实表面。
+
+TITMAS 社区方向的规范名称是 `TITMAS Infrastructure Developer Community`
+（TITMAS 可信多智能体基础设施开发者社区）。它重度参考 OpenTelemetry 的开放规范、
+贡献路径、文档级成熟度和符合性机制；当前战略方向和本地 Contributor Entry 已准备，
+不表示社区、基金会、正式 Code of Conduct、安全接收路径、SIG、Maintainer、仓库、
+公共贡献渠道、实现或独立 Authority 已经建立。详细约束见
+[`architecture/titmas-infrastructure-developer-community-strategy-v0.1.md`](architecture/titmas-infrastructure-developer-community-strategy-v0.1.md)
+、[`CONTRIBUTING.md`](CONTRIBUTING.md)、
+[`TITMAS-CONTRIBUTOR-ENTRY-v0.1.json`](TITMAS-CONTRIBUTOR-ENTRY-v0.1.json)
+和 [`ADR-029`](architecture/ADR-029-titmas-infrastructure-developer-community-direction.md)。
+
+`ADR-030` 进一步选择 `titmas.cn` 为未来公开主域名、`titmas-cn` 为 GitHub
+Organization slug。当前 `titmas.cn` 仍在备案，`redcrag.cn` 继续作为已验证在线入口；
+GitHub Organization 未创建，仓库未迁移，公共贡献未开放。名称选择只允许准备网站源码、
+双语／智能体入口和组织信息架构，不改变任何运行或领域 Authority。
 
 ## 3. DBA Program Governance Scope（DBA 项目群治理范围）
 
