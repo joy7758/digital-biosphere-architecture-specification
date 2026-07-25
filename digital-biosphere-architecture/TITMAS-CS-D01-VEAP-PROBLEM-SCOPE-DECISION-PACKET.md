@@ -258,6 +258,23 @@ VEAP_FORMAL_REVIEW_COMPLETE=false
 问题验证协议不发送邀请或收集客户数据；风险台账是 AI-assisted review input，不是正式
 Human Security/Privacy/Claim Review。两者均不产生 Decision 或 Authority。
 
+## 8.3 Commercialization Standard Readiness Audit（商业化标准就绪审计）
+
+[VEAP readiness audit](architecture/veap-commercialization-standard-readiness-audit-v0.1.md) /
+[machine record](architecture/veap-commercialization-standard-readiness.v0.1.json) 已核对完整
+`CS-G0`–`CS-G7` 关键路径：
+
+```text
+GATES_PASS=0
+GATES_NOT_MET=2
+GATES_BLOCKED=6
+VEAP_COMMERCIALIZATION_STANDARD_READY=false
+VEAP_GENERATION_READY=false
+```
+
+审计确认 `CS-D01` 是当前第一个必须记录的 Human Decision。接受 Option A 仍不会使
+`CS-G0`、`CS-G1` 或任何下游 gate 自动 PASS。
+
 ## 9. Decision Preconditions（决定前置条件）
 
 Option A 可被 Human Owner 接受前至少需要：
@@ -329,6 +346,9 @@ VEAP_VALID_PROBLEM_RECORDS=0
 VEAP_SECURITY_PRIVACY_CLAIM_REVIEW_INPUT_PREPARED=true
 VEAP_OPEN_RISKS=16
 VEAP_FORMAL_REVIEW_COMPLETE=false
+VEAP_READINESS_AUDIT_COMPLETE=true
+VEAP_STANDARDIZATION_GATES_PASSED=0
+VEAP_GENERATION_READY=false
 VEAP_CERTIFICATES_ISSUED=0
 
 AUTHORITY_CHANGED=false

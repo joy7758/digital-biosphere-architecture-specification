@@ -1,0 +1,526 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:veap-commercialization-standard-readiness:0.1",
+  "title": "VEAP Commercialization Standard Readiness v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "audited_at",
+    "source_baseline_commit",
+    "canonical_document",
+    "audit_scope",
+    "audit_method",
+    "gates",
+    "gate_summary",
+    "readiness_facts",
+    "next_required_decision",
+    "critical_path",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/veap-commercialization-standard-readiness.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-VEAP-COMMERCIALIZATION-STANDARD-READINESS-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "AUDIT_COMPLETE_COMMERCIALIZATION_STANDARD_NOT_READY"
+    },
+    "audited_at": {
+      "type": "string",
+      "format": "date"
+    },
+    "source_baseline_commit": {
+      "const": "c757e06c22155841a5c59054cbec0d329f5e9d8f"
+    },
+    "canonical_document": {
+      "const": "veap-commercialization-standard-readiness-audit-v0.1.md"
+    },
+    "audit_scope": {
+      "const": "CS-G0_THROUGH_CS-G7"
+    },
+    "audit_method": {
+      "const": "DIRECT_MACHINE_AND_DOCUMENT_EVIDENCE_ONLY_NO_INFERENCE_TO_PASS"
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/g0"
+        },
+        {
+          "$ref": "#/$defs/g1"
+        },
+        {
+          "$ref": "#/$defs/g2"
+        },
+        {
+          "$ref": "#/$defs/g3"
+        },
+        {
+          "$ref": "#/$defs/g4"
+        },
+        {
+          "$ref": "#/$defs/g5"
+        },
+        {
+          "$ref": "#/$defs/g6"
+        },
+        {
+          "$ref": "#/$defs/g7"
+        }
+      ],
+      "items": false
+    },
+    "gate_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate_count",
+        "pass_count",
+        "not_met_count",
+        "blocked_count"
+      ],
+      "properties": {
+        "gate_count": {
+          "const": 8
+        },
+        "pass_count": {
+          "const": 0
+        },
+        "not_met_count": {
+          "const": 2
+        },
+        "blocked_count": {
+          "const": 6
+        }
+      }
+    },
+    "readiness_facts": {
+      "$ref": "#/$defs/readinessFacts"
+    },
+    "next_required_decision": {
+      "$ref": "#/$defs/nextDecision"
+    },
+    "critical_path": {
+      "const": [
+        "HUMAN_DECIDES_CS_D01",
+        "ASSIGN_BOUNDED_OWNERS_AND_FORMAL_REVIEWERS",
+        "AUTHORIZE_EXACT_PROBLEM_VALIDATION_EXECUTION_AND_DATA_HANDLING",
+        "COLLECT_AND_VALIDATE_5_3_3_2_PROBLEM_EVIDENCE",
+        "RECORD_CS_G0_AND_CS_G1_HUMAN_GATE_DECISIONS",
+        "AUTHORIZE_AND_CREATE_DRAFT_PROFILE_SCHEMA_AND_FIXTURES",
+        "BUILD_AND_EXECUTE_REFERENCE_CONFORMANCE",
+        "OBTAIN_INDEPENDENT_IMPLEMENTATION_AND_REVIEW",
+        "RUN_BOUNDED_COMMERCIAL_PILOTS",
+        "DECIDE_AVAILABLE_OFFERING",
+        "ACCUMULATE_CUSTOMER_ADOPTION_EVIDENCE"
+      ]
+    },
+    "effects": {
+      "$ref": "#/$defs/allFalseEffects"
+    }
+  },
+  "$defs": {
+    "gateBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "name",
+        "status",
+        "evidence_references",
+        "observed_facts",
+        "missing_requirements",
+        "blocker_classes",
+        "next_action"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^CS-G[0-7]$"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 6
+        },
+        "status": {
+          "enum": [
+            "NOT_MET",
+            "BLOCKED"
+          ]
+        },
+        "evidence_references": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "observed_facts": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "missing_requirements": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "blocker_classes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 8
+          }
+        },
+        "next_action": {
+          "type": "string",
+          "minLength": 12
+        }
+      }
+    },
+    "g0": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G0"
+            },
+            "name": {
+              "const": "PROBLEM_FREEZE"
+            },
+            "status": {
+              "const": "NOT_MET"
+            }
+          }
+        }
+      ]
+    },
+    "g1": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G1"
+            },
+            "name": {
+              "const": "SCOPE_AUTHORITY_FREEZE"
+            },
+            "status": {
+              "const": "NOT_MET"
+            }
+          }
+        }
+      ]
+    },
+    "g2": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G2"
+            },
+            "name": {
+              "const": "DRAFT_CONTRACT"
+            },
+            "status": {
+              "const": "BLOCKED"
+            }
+          }
+        }
+      ]
+    },
+    "g3": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G3"
+            },
+            "name": {
+              "const": "EXPERIMENTAL_CONFORMANCE"
+            },
+            "status": {
+              "const": "BLOCKED"
+            }
+          }
+        }
+      ]
+    },
+    "g4": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G4"
+            },
+            "name": {
+              "const": "INDEPENDENT_IMPLEMENTATION"
+            },
+            "status": {
+              "const": "BLOCKED"
+            }
+          }
+        }
+      ]
+    },
+    "g5": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G5"
+            },
+            "name": {
+              "const": "BOUNDED_COMMERCIAL_PILOT"
+            },
+            "status": {
+              "const": "BLOCKED"
+            }
+          }
+        }
+      ]
+    },
+    "g6": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G6"
+            },
+            "name": {
+              "const": "AVAILABLE_OFFERING_DECISION"
+            },
+            "status": {
+              "const": "BLOCKED"
+            }
+          }
+        }
+      ]
+    },
+    "g7": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/gateBase"
+        },
+        {
+          "properties": {
+            "id": {
+              "const": "CS-G7"
+            },
+            "name": {
+              "const": "CUSTOMER_ADOPTION_EVIDENCE"
+            },
+            "status": {
+              "const": "BLOCKED"
+            }
+          }
+        }
+      ]
+    },
+    "readinessFacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "commercialization_standard_ready",
+        "generation_ready",
+        "cs_d01_decided",
+        "valid_problem_records",
+        "owner_acceptances",
+        "open_risks",
+        "formal_review_complete",
+        "normative_profile_created",
+        "veap_schema_created",
+        "reference_implementation_created",
+        "conformance_cases_executed",
+        "independent_implementations",
+        "bounded_commercial_pilots",
+        "available_offerings",
+        "customers_verified"
+      ],
+      "properties": {
+        "commercialization_standard_ready": {
+          "const": false
+        },
+        "generation_ready": {
+          "const": false
+        },
+        "cs_d01_decided": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "owner_acceptances": {
+          "const": 0
+        },
+        "open_risks": {
+          "const": 16
+        },
+        "formal_review_complete": {
+          "const": false
+        },
+        "normative_profile_created": {
+          "const": false
+        },
+        "veap_schema_created": {
+          "const": false
+        },
+        "reference_implementation_created": {
+          "const": false
+        },
+        "conformance_cases_executed": {
+          "const": 0
+        },
+        "independent_implementations": {
+          "const": 0
+        },
+        "bounded_commercial_pilots": {
+          "const": 0
+        },
+        "available_offerings": {
+          "const": 0
+        },
+        "customers_verified": {
+          "const": 0
+        }
+      }
+    },
+    "nextDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "status",
+        "recommended_result",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized"
+      ],
+      "properties": {
+        "id": {
+          "const": "CS-D01"
+        },
+        "status": {
+          "const": "NOT_RECORDED"
+        },
+        "recommended_result": {
+          "const": "AUTHORIZE_BOUNDED_VEAP_PROBLEM_AND_SCOPE_FREEZE"
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        }
+      }
+    },
+    "allFalseEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "ownership",
+        "implementation",
+        "runtime",
+        "agent",
+        "entity",
+        "permission",
+        "external_action",
+        "commercial_offer",
+        "customer_adoption",
+        "certification",
+        "release"
+      ],
+      "properties": {
+        "authority": {
+          "const": false
+        },
+        "ownership": {
+          "const": false
+        },
+        "implementation": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "external_action": {
+          "const": false
+        },
+        "commercial_offer": {
+          "const": false
+        },
+        "customer_adoption": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "release": {
+          "const": false
+        }
+      }
+    }
+  }
+}
