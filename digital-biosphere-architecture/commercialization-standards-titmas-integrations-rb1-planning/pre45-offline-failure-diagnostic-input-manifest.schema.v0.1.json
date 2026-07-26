@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre45-offline-failure-diagnostic-input-manifest.schema.v0.1.json",
+  "title": "TITMAS Integrations PRE-45 Offline Failure Diagnostic Input Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "source_commit",
+    "pre44_decision_commit",
+    "pre44_result_commit",
+    "inputs",
+    "diagnostic_questions",
+    "allowed_conclusions",
+    "forbidden_conclusions",
+    "execution_boundary"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre45-offline-failure-diagnostic-input-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-INTEGRATIONS-PRE45-OFFLINE-FAILURE-DIAGNOSTIC-INPUT-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_AUTHORIZED_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-45"},
+    "source_commit": {"$ref": "#/$defs/gitsha"},
+    "pre44_decision_commit": {"$ref": "#/$defs/gitsha"},
+    "pre44_result_commit": {"$ref": "#/$defs/gitsha"},
+    "inputs": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reference", "sha256", "role"],
+        "properties": {
+          "reference": {"type": "string", "minLength": 10},
+          "sha256": {"$ref": "#/$defs/sha256"},
+          "role": {"type": "string", "minLength": 10}
+        }
+      }
+    },
+    "diagnostic_questions": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 10}
+    },
+    "allowed_conclusions": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 10}
+    },
+    "forbidden_conclusions": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 10}
+    },
+    "execution_boundary": {
+      "const": {
+        "network_requests_allowed": false,
+        "model_requests_allowed": false,
+        "credential_reads_allowed": false,
+        "raw_provider_envelope_access_allowed": false,
+        "provider_error_body_access_allowed": false,
+        "retry_allowed": false,
+        "fallback_allowed": false,
+        "model_substitution_allowed": false,
+        "json_repair_allowed": false,
+        "target_repository_modification_allowed": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gitsha": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+  }
+}

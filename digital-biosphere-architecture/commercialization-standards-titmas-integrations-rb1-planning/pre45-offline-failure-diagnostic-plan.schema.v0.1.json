@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre45-offline-failure-diagnostic-plan.schema.v0.1.json",
+  "title": "TITMAS Integrations PRE-45 Offline Failure Diagnostic Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "execution_mode",
+    "input_manifest_reference",
+    "input_manifest_sha256",
+    "result_schema_reference",
+    "result_schema_sha256",
+    "execution_receipt_schema_reference",
+    "execution_receipt_schema_sha256",
+    "steps",
+    "outputs_exact",
+    "pass_meaning",
+    "stop_conditions",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre45-offline-failure-diagnostic-plan.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-INTEGRATIONS-PRE45-OFFLINE-FAILURE-DIAGNOSTIC-PLAN-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_AUTHORIZED_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-45"},
+    "execution_mode": {"const": "ZERO_NETWORK_ZERO_CREDENTIAL_SANITIZED_METADATA_ONLY_DIAGNOSTIC"},
+    "input_manifest_reference": {"const": "pre45-offline-failure-diagnostic-input-manifest.v0.1.json"},
+    "input_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "result_schema_reference": {"const": "pre45-offline-failure-diagnostic-result.schema.v0.1.json"},
+    "result_schema_sha256": {"$ref": "#/$defs/sha256"},
+    "execution_receipt_schema_reference": {"const": "pre45-offline-failure-diagnostic-execution-receipt.schema.v0.1.json"},
+    "execution_receipt_schema_sha256": {"$ref": "#/$defs/sha256"},
+    "steps": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 10}
+    },
+    "outputs_exact": {
+      "const": [
+        "pre45-offline-failure-diagnostic-result.v0.1.json",
+        "PRE-45-OFFLINE-FAILURE-AND-RESPONSE-SHAPE-DIAGNOSTIC-RESULT-v0.1.md",
+        "pre45-offline-failure-diagnostic-execution-receipt.v0.1.json"
+      ]
+    },
+    "pass_meaning": {"type": "string", "minLength": 80},
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 10}
+    },
+    "effects": {
+      "const": {
+        "offline_diagnostic_authorized": false,
+        "network_requests_authorized": false,
+        "model_requests_authorized": false,
+        "credential_reads_authorized": false,
+        "pre44_gate_pass_changed": false,
+        "rb1_implementation_recommendation_allowed": false,
+        "rb1_implementation_authorized": false,
+        "target_repository_modification_authorized": false,
+        "package_created": false,
+        "source_created": false,
+        "tests_created": false,
+        "provider_supported": false,
+        "conformance_executed": false,
+        "runtime_created": false,
+        "release_authorized": false,
+        "commercial_offer_authorized": false,
+        "certification_authorized": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

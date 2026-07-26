@@ -1,0 +1,58 @@
+{
+  "$schema": "./pre45-offline-failure-diagnostic-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-INTEGRATIONS-PRE45-OFFLINE-FAILURE-DIAGNOSTIC-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_AUTHORIZED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-45",
+  "execution_mode": "ZERO_NETWORK_ZERO_CREDENTIAL_SANITIZED_METADATA_ONLY_DIAGNOSTIC",
+  "input_manifest_reference": "pre45-offline-failure-diagnostic-input-manifest.v0.1.json",
+  "input_manifest_sha256": "3f9798a2bb75832f58cd6dbe2c84f66b507bd43bbff232b996d5c3a7fdedbcbe",
+  "result_schema_reference": "pre45-offline-failure-diagnostic-result.schema.v0.1.json",
+  "result_schema_sha256": "534af368129a6e78bd36769c6aacbfa36d6548f8e184f0f9c8ae723cfdbaa12b",
+  "execution_receipt_schema_reference": "pre45-offline-failure-diagnostic-execution-receipt.schema.v0.1.json",
+  "execution_receipt_schema_sha256": "0212a90c42bce25a8ef8a16a914b65148a9abb3bc0b9e9f836d778df8b68544f",
+  "steps": [
+    "VERIFY_EIGHT_INPUT_HASHES",
+    "META_VALIDATE_ALL_PRE45_SCHEMAS_AND_INSTANCES",
+    "RECONCILE_FOUR_SESSION_STATUS_TRANSPORT_MODEL_PARSE_SCHEMA_BOUNDARY_AND_QUALIFICATION_FIELDS",
+    "SEPARATE_DIRECT_OBSERVATION_FROM_CAUSAL_ATTRIBUTION",
+    "RECORD_CONCURRENCY_QUERY_LENGTH_PROFILE_AND_PROVIDER_CONFOUNDS_AS_NOT_MEASURED",
+    "PROPOSE_ONLY_CANDIDATE_NEXT_REVIEW_DESIGN_CORRECTIONS",
+    "VALIDATE_ZERO_NETWORK_ZERO_MODEL_ZERO_CREDENTIAL_ZERO_RAW_ENVELOPE_EFFECTS",
+    "COMMIT_RESULT_REPORT_AND_RECEIPT",
+    "REMOTE_CLEAN_CLONE_VERIFY_AND_SYNCHRONIZE_COCKPIT"
+  ],
+  "outputs_exact": [
+    "pre45-offline-failure-diagnostic-result.v0.1.json",
+    "PRE-45-OFFLINE-FAILURE-AND-RESPONSE-SHAPE-DIAGNOSTIC-RESULT-v0.1.md",
+    "pre45-offline-failure-diagnostic-execution-receipt.v0.1.json"
+  ],
+  "pass_meaning": "The PRE-44 observations and unknown causes are separated without network access; a separate next-review contract recommendation may be formed.",
+  "stop_conditions": [
+    "ANY_INPUT_DIGEST_DRIFTS",
+    "RAW_PROVIDER_ENVELOPE_OR_PROVIDER_ERROR_BODY_IS_REQUIRED",
+    "NETWORK_MODEL_OR_CREDENTIAL_ACCESS_IS_REQUIRED",
+    "CAUSAL_PROVIDER_MODEL_PROMPT_OR_CONCURRENCY_CLAIM_CANNOT_BE_DIRECTLY_PROVEN",
+    "PRE44_HISTORY_OR_GATE_RESULT_WOULD_BE_REWRITTEN",
+    "TARGET_REPOSITORY_IMPLEMENTATION_PACKAGE_SOURCE_TEST_OR_RUNTIME_ACTION_IS_REQUIRED"
+  ],
+  "effects": {
+    "offline_diagnostic_authorized": false,
+    "network_requests_authorized": false,
+    "model_requests_authorized": false,
+    "credential_reads_authorized": false,
+    "pre44_gate_pass_changed": false,
+    "rb1_implementation_recommendation_allowed": false,
+    "rb1_implementation_authorized": false,
+    "target_repository_modification_authorized": false,
+    "package_created": false,
+    "source_created": false,
+    "tests_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "runtime_created": false,
+    "release_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false
+  }
+}

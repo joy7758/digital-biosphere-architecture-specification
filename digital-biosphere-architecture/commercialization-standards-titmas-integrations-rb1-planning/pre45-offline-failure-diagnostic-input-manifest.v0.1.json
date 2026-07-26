@@ -1,0 +1,88 @@
+{
+  "$schema": "./pre45-offline-failure-diagnostic-input-manifest.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-INTEGRATIONS-PRE45-OFFLINE-FAILURE-DIAGNOSTIC-INPUT-MANIFEST-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_AUTHORIZED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-45",
+  "source_commit": "08278611473d0746bdfbd6fb56150c77cca67562",
+  "pre44_decision_commit": "1bfaa2b65c887623da0feee3f624850872bd8368",
+  "pre44_result_commit": "e0fea011665891bca9e92272d648b90effe789b3",
+  "inputs": [
+    {
+      "reference": "pre44-kimi-agent-developer-session-result.v0.1.json",
+      "sha256": "cd467f2cbda6f9c5500b7fde06fea21f051a6fcb73f14effbd06b7dccb961d50",
+      "role": "KIMI_TIMEOUT_OBSERVATION"
+    },
+    {
+      "reference": "pre44-glm-recommender-agent-session-result.v0.1.json",
+      "sha256": "ad3c83be8b37ca70399a9c48196147da368190745ade797c5b9d180406e4a5c2",
+      "role": "GLM_DIRECT_JSON_FAILURE_OBSERVATION"
+    },
+    {
+      "reference": "pre44-kimi-integration-maintainer-session-result.v0.1.json",
+      "sha256": "fb78de297a362e91cb1461040a791d01a8b1febbffb17f969b6dbfd483d10f07",
+      "role": "KIMI_TIMEOUT_OBSERVATION"
+    },
+    {
+      "reference": "pre44-glm-security-boundary-reviewer-session-result.v0.1.json",
+      "sha256": "6563aad931601ca67a6170846f6258d7b2418e91149962b3f52757176ac84847",
+      "role": "GLM_QUALIFYING_REVIEW_OBSERVATION"
+    },
+    {
+      "reference": "pre44-agent-customer-review-request-manifest.v0.1.json",
+      "sha256": "2b8505351802d476908e54f6ca55713ec3c41ca0a22f2fd6fd8e1e78db09a715",
+      "role": "FROZEN_REQUEST_BINDING"
+    },
+    {
+      "reference": "pre44-agent-customer-review-query-template.v0.1.txt",
+      "sha256": "82507d420dd22825c948f2b2c38ad67c609e20f31405fbafe78115136120afc9",
+      "role": "FROZEN_QUERY_SHAPE"
+    },
+    {
+      "reference": "pre44-agent-customer-review-validation-result.v0.1.json",
+      "sha256": "9c846ddeb50440befada8358b974554193b320c63319dad4926778a1addabfa1",
+      "role": "FROZEN_THRESHOLD_RESULT"
+    },
+    {
+      "reference": "pre44-agent-customer-review-execution-receipt.v0.1.json",
+      "sha256": "54136216b73c641af1749a9c4705f423114cea5762fb3f37997485cf506de584",
+      "role": "FROZEN_EXECUTION_ACCOUNTING"
+    }
+  ],
+  "diagnostic_questions": [
+    "WHAT_FAILURES_ARE_DIRECTLY_OBSERVED",
+    "WHAT_CAUSES_REMAIN_UNKNOWN",
+    "WHETHER_CONCURRENT_EXECUTION_IS_A_CONFOUND",
+    "WHETHER_QUERY_OR_RESPONSE_SHAPE_COMPLEXITY_IS_PROVEN_CAUSAL",
+    "WHAT_CAN_BE_CHANGED_OFFLINE_WITHOUT_REWRITING_PRE44_HISTORY",
+    "WHAT_EXACT_GATE_IS_REQUIRED_BEFORE_ANY_NEW_NETWORK_REVIEW"
+  ],
+  "allowed_conclusions": [
+    "TWO_KIMI_SESSIONS_ENDED_WITH_NETWORK_ERROR_TIMEOUT",
+    "ONE_GLM_SESSION_RETURNED_HTTP_200_EXACT_MODEL_BUT_FAILED_DIRECT_JSON_PARSE",
+    "ONE_GLM_SESSION_QUALIFIED_AND_WAS_CONDITIONALLY_RECOMMENDED",
+    "PRE44_GATE_IS_BLOCKED_AT_ONE_OF_FOUR_QUALIFYING",
+    "PROVIDER_MODEL_PROMPT_AND_CONCURRENCY_CAUSALITY_REMAINS_UNKNOWN"
+  ],
+  "forbidden_conclusions": [
+    "KIMI_PROVIDER_OUTAGE_PROVEN",
+    "KIMI_MODEL_UNRELIABLE_PROVEN",
+    "GLM_MODEL_RELIABLE_PROVEN",
+    "LONG_QUERY_CAUSED_FAILURE_PROVEN",
+    "NON_JSON_CONTENT_SHAPE_IDENTIFIED_WITHOUT_RAW_CONTENT",
+    "AGENT_CUSTOMER_DEMAND_PROVEN",
+    "RB1_IMPLEMENTATION_AUTHORIZED"
+  ],
+  "execution_boundary": {
+    "network_requests_allowed": false,
+    "model_requests_allowed": false,
+    "credential_reads_allowed": false,
+    "raw_provider_envelope_access_allowed": false,
+    "provider_error_body_access_allowed": false,
+    "retry_allowed": false,
+    "fallback_allowed": false,
+    "model_substitution_allowed": false,
+    "json_repair_allowed": false,
+    "target_repository_modification_allowed": false
+  }
+}

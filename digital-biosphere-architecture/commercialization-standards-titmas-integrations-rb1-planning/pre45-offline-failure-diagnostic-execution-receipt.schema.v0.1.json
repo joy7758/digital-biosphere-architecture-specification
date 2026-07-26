@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre45-offline-failure-diagnostic-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS Integrations PRE-45 Offline Failure Diagnostic Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "recommendation_commit",
+    "decision_commit",
+    "input_manifest_sha256",
+    "result_reference",
+    "result_sha256",
+    "source_hashes_verified",
+    "network_requests",
+    "model_requests",
+    "credential_reads",
+    "raw_provider_envelopes_accessed",
+    "target_repository_modified",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre45-offline-failure-diagnostic-execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-INTEGRATIONS-PRE45-OFFLINE-FAILURE-DIAGNOSTIC-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"enum": ["EXECUTED_PASS", "EXECUTED_FAIL"]},
+    "decision_reference": {"const": "CS-D02-PRE-45"},
+    "recommendation_commit": {"$ref": "#/$defs/gitsha"},
+    "decision_commit": {"$ref": "#/$defs/gitsha"},
+    "input_manifest_sha256": {"$ref": "#/$defs/sha256"},
+    "result_reference": {"const": "pre45-offline-failure-diagnostic-result.v0.1.json"},
+    "result_sha256": {"$ref": "#/$defs/sha256"},
+    "source_hashes_verified": {"const": 8},
+    "network_requests": {"const": 0},
+    "model_requests": {"const": 0},
+    "credential_reads": {"const": 0},
+    "raw_provider_envelopes_accessed": {"const": 0},
+    "target_repository_modified": {"const": false},
+    "effects": {
+      "const": {
+        "pre44_gate_pass_changed": false,
+        "rb1_implementation_recommendation_allowed": false,
+        "rb1_implementation_authorized": false,
+        "package_created": false,
+        "source_created": false,
+        "tests_created": false,
+        "provider_supported": false,
+        "runtime_created": false,
+        "release_authorized": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gitsha": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+  }
+}
