@@ -741,13 +741,16 @@ AUTOMATIC_COUNTING_ALLOWED=false
 
 [Validation plan](../commercialization-standards-public-source-record-review/validation-plan.v0.1.json)
 冻结 source pack、prompt、response Schema、session identity、阈值和停止条件。API 调用前必须
-先 commit/push PRE-10 授权基线并建立 remote receipt；当前执行尚未开始。
+先 commit/push PRE-10 授权基线并建立
+[remote receipt](../commercialization-standards-public-source-record-review/authorization-baseline-receipt.v0.1.json)。
+该顺序条件已经满足；当前 Agent review 仍未开始。
 
 ```text
 PRE_10_DECIDED=true
 PRE_10_AGENT_RECORD_REVIEW_AUTHORIZED=true
-PRE_10_AUTHORIZATION_BASELINE_COMMITTED=false
-PRE_10_AUTHORIZATION_BASELINE_PUSHED=false
+PRE_10_AUTHORIZATION_BASELINE_COMMITTED=true
+PRE_10_AUTHORIZATION_BASELINE_PUSHED=true
+PRE_10_AUTHORIZATION_BASELINE_COMMIT=643ea663f8e519649101db2c4bf2740e2ec5acaf
 PRE_10_AGENT_RECORD_REVIEW_EXECUTED=false
 PUBLIC_SOURCE_RECORD_COUNTING_AUTHORIZED=false
 VALID_PROBLEM_RECORDS=0

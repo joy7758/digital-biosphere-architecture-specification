@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_10_AGENT_RECORD_REVIEW_AUTHORIZED_BASELINE_NOT_YET_VERIFIED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_10_REMOTE_BASELINE_VERIFIED_AGENT_RECORD_REVIEW_NOT_STARTED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -732,6 +732,8 @@
         "source_candidate_set_reference",
         "source_candidate_set_sha256",
         "validation_plan_reference",
+        "authorization_baseline_receipt_reference",
+        "authorization_baseline_commit",
         "sessions_max",
         "providers_required",
         "models_declared",
@@ -755,6 +757,8 @@
         "source_candidate_set_reference": {"const": "commercialization-standards-public-source-problem-validation/source-candidate-set.v0.1.json"},
         "source_candidate_set_sha256": {"const": "f7253e3e2545b1200f1a7eb27b9ce5d323e1eb090b2c1178e112707983ba6300"},
         "validation_plan_reference": {"const": "commercialization-standards-public-source-record-review/validation-plan.v0.1.json"},
+        "authorization_baseline_receipt_reference": {"const": "commercialization-standards-public-source-record-review/authorization-baseline-receipt.v0.1.json"},
+        "authorization_baseline_commit": {"const": "643ea663f8e519649101db2c4bf2740e2ec5acaf"},
         "sessions_max": {"const": 4},
         "providers_required": {"const": 2},
         "models_declared": {"const": 2},
@@ -762,8 +766,8 @@
         "tools_allowed": {"const": false},
         "fallback_allowed": {"const": false},
         "authorization_baseline_commit_required": {"const": true},
-        "authorization_baseline_committed": {"const": false},
-        "authorization_baseline_pushed": {"const": false},
+        "authorization_baseline_committed": {"const": true},
+        "authorization_baseline_pushed": {"const": true},
         "execution_started": {"const": false},
         "execution_completed": {"const": false},
         "public_source_record_counting_authorized": {"const": false},
@@ -1274,7 +1278,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE10_AUTHORIZED_REMOTE_BASELINE_REQUIRED_BEFORE_AGENT_REVIEW"
+          "const": "PRE10_REMOTE_BASELINE_VERIFIED_AGENT_REVIEW_NOT_STARTED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
