@@ -1,0 +1,125 @@
+{
+  "$schema": "./schemas/veap-development-agent-entry.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-VEAP-DEVELOPMENT-AGENT-ENTRY-0.1",
+  "version": "0.1.0",
+  "status": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED",
+  "canonical_name": {
+    "short": "VEAP",
+    "en": "Verifiable Execution Attestation Package",
+    "zh": "可验证执行证明包"
+  },
+  "one_sentence_purpose": "VEAP is a Development candidate for carrying version-bound references to agent execution, admitted Evidence, Verification, limitations and revocation without owning or elevating those referenced objects.",
+  "current_usable_surface": "DOCUMENT_AND_SCHEMA_REVIEW_WITH_SYNTHETIC_SCHEMA_REHEARSAL_ONLY",
+  "canonical_artifacts": {
+    "profile": "veap-draft-profile-v0.1.md",
+    "schema": "schemas/veap-envelope.schema.v0.1.json",
+    "positive_fixture": "examples/veap-envelope.valid.v0.1.json",
+    "negative_fixture": "examples/veap-envelope.invalid-observation-as-evidence.v0.1.json",
+    "ownership_crosswalk": "veap-canonical-ownership-crosswalk-v0.1.md",
+    "conceptual_case_design": "veap-predecision-conformance-design-v0.1.md",
+    "conceptual_case_catalog": "veap-predecision-conformance-cases.v0.1.json",
+    "draft_decision": "../TITMAS-CS-D02-PRE-03-VEAP-DRAFT-CONTRACT-DECISION-RECORD.md"
+  },
+  "bounded_first_reuse_path": {
+    "purpose": "REVIEW_THE_DEVELOPMENT_CONTRACT_AND_REHEARSE_SCHEMA_SHAPE",
+    "steps": [
+      "Read the Development Profile and preserve its non-ownership and non-claim boundaries.",
+      "Load the JSON Schema with a Draft 2020-12 validator and record the validator name and version.",
+      "Validate the positive synthetic fixture and retain the exact result.",
+      "Validate the negative synthetic fixture and require rejection because observation material lacks admission_reference.",
+      "Compare the needed use case with the ownership crosswalk and 20 conceptual cases, then record unsupported and unknown requirements."
+    ],
+    "expected_positive_result": "SCHEMA_VALID",
+    "expected_negative_result": "SCHEMA_REJECTS_OBSERVATION_PROMOTION_WITHOUT_ADMISSION_REFERENCE",
+    "record_with_result": [
+      "schema_digest",
+      "fixture_digest",
+      "validator_and_version",
+      "environment",
+      "actual_result",
+      "limitations"
+    ],
+    "does_not_prove": [
+      "SEMANTIC_CONFORMANCE",
+      "EXECUTED_USE",
+      "INDEPENDENT_REUSE",
+      "IMPLEMENTATION_AVAILABILITY",
+      "CORRECTNESS_OR_TRUTH",
+      "PERMISSION_OR_AUTHORITY",
+      "CERTIFICATION",
+      "PRODUCTION_READINESS"
+    ]
+  },
+  "recommendation_matrix": [
+    {
+      "need": "Review a portable execution-accountability contract candidate",
+      "recommendation": "CONDITIONAL",
+      "reason": "The Development Profile, Schema and synthetic fixtures are inspectable, but ownership and normative adoption are unresolved."
+    },
+    {
+      "need": "Rehearse JSON Schema shape and one observation-to-Evidence negative boundary",
+      "recommendation": "CONDITIONAL",
+      "reason": "A bounded synthetic rehearsal path exists; it is not semantic conformance."
+    },
+    {
+      "need": "Add a current implementation dependency or parser",
+      "recommendation": "NO",
+      "reason": "No reference implementation, parser or supported implementation contract exists."
+    },
+    {
+      "need": "Buy or deploy a commercial VEAP service",
+      "recommendation": "NO",
+      "reason": "No commercial Offering, customer contract, deployment or production evidence exists."
+    },
+    {
+      "need": "Obtain Certification, Truth, Permission or correctness proof",
+      "recommendation": "NO",
+      "reason": "VEAP explicitly cannot create those effects."
+    }
+  ],
+  "mandatory_boundaries": [
+    "OBSERVATION_NE_EVIDENCE",
+    "EVIDENCE_NE_TRUTH",
+    "VERIFICATION_NE_PERMISSION",
+    "ATTESTATION_NE_CERTIFICATION",
+    "EVALUATION_NE_AUTHORITY",
+    "RECOMMENDATION_NE_DECISION",
+    "DECISION_NE_EXECUTION"
+  ],
+  "known_missing_surfaces": [
+    "NORMATIVE_PROFILE_ADOPTION",
+    "SPECIFICATION_AUTHORITY_ASSIGNMENT",
+    "CANONICAL_SERIALIZATION",
+    "SIGNATURE_PROFILE",
+    "COMMON_NETWORK_RESOLUTION",
+    "REFERENCE_IMPLEMENTATION",
+    "PARSER",
+    "EXECUTED_CONFORMANCE_SUITE",
+    "INDEPENDENT_IMPLEMENTATION",
+    "EXECUTED_REUSE",
+    "COMMERCIAL_OFFERING",
+    "CERTIFICATION",
+    "PRODUCTION_EVIDENCE"
+  ],
+  "review_route": {
+    "current_route": "DBA_LOCAL_REVIEW_INPUT_ONLY",
+    "public_contribution_surface_authorized": false,
+    "review_equals_decision": false
+  },
+  "non_effects": {
+    "normative_profile_adopted": false,
+    "specification_authority_assigned": false,
+    "implementation_created": false,
+    "implementation_authorized": false,
+    "conformance_executed": false,
+    "independent_reuse_observed": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false
+  }
+}

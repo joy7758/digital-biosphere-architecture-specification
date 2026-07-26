@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/veap-development-agent-entry.schema.v0.1.json",
+  "title": "VEAP Development Agent Entry v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "canonical_name",
+    "one_sentence_purpose",
+    "current_usable_surface",
+    "canonical_artifacts",
+    "bounded_first_reuse_path",
+    "recommendation_matrix",
+    "mandatory_boundaries",
+    "known_missing_surfaces",
+    "review_route",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/veap-development-agent-entry.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-VEAP-DEVELOPMENT-AGENT-ENTRY-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED"
+    },
+    "canonical_name": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "short",
+        "en",
+        "zh"
+      ],
+      "properties": {
+        "short": {
+          "const": "VEAP"
+        },
+        "en": {
+          "const": "Verifiable Execution Attestation Package"
+        },
+        "zh": {
+          "const": "可验证执行证明包"
+        }
+      }
+    },
+    "one_sentence_purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "current_usable_surface": {
+      "const": "DOCUMENT_AND_SCHEMA_REVIEW_WITH_SYNTHETIC_SCHEMA_REHEARSAL_ONLY"
+    },
+    "canonical_artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile",
+        "schema",
+        "positive_fixture",
+        "negative_fixture",
+        "ownership_crosswalk",
+        "conceptual_case_design",
+        "conceptual_case_catalog",
+        "draft_decision"
+      ],
+      "properties": {
+        "profile": {
+          "const": "veap-draft-profile-v0.1.md"
+        },
+        "schema": {
+          "const": "schemas/veap-envelope.schema.v0.1.json"
+        },
+        "positive_fixture": {
+          "const": "examples/veap-envelope.valid.v0.1.json"
+        },
+        "negative_fixture": {
+          "const": "examples/veap-envelope.invalid-observation-as-evidence.v0.1.json"
+        },
+        "ownership_crosswalk": {
+          "const": "veap-canonical-ownership-crosswalk-v0.1.md"
+        },
+        "conceptual_case_design": {
+          "const": "veap-predecision-conformance-design-v0.1.md"
+        },
+        "conceptual_case_catalog": {
+          "const": "veap-predecision-conformance-cases.v0.1.json"
+        },
+        "draft_decision": {
+          "const": "../TITMAS-CS-D02-PRE-03-VEAP-DRAFT-CONTRACT-DECISION-RECORD.md"
+        }
+      }
+    },
+    "bounded_first_reuse_path": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "purpose",
+        "steps",
+        "expected_positive_result",
+        "expected_negative_result",
+        "record_with_result",
+        "does_not_prove"
+      ],
+      "properties": {
+        "purpose": {
+          "const": "REVIEW_THE_DEVELOPMENT_CONTRACT_AND_REHEARSE_SCHEMA_SHAPE"
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 5,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "expected_positive_result": {
+          "const": "SCHEMA_VALID"
+        },
+        "expected_negative_result": {
+          "const": "SCHEMA_REJECTS_OBSERVATION_PROMOTION_WITHOUT_ADMISSION_REFERENCE"
+        },
+        "record_with_result": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "does_not_prove": {
+          "type": "array",
+          "minItems": 6,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "recommendation_matrix": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "need",
+          "recommendation",
+          "reason"
+        ],
+        "properties": {
+          "need": {
+            "type": "string",
+            "minLength": 1
+          },
+          "recommendation": {
+            "enum": [
+              "YES",
+              "CONDITIONAL",
+              "NO"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "mandatory_boundaries": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "known_missing_surfaces": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "review_route": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "current_route",
+        "public_contribution_surface_authorized",
+        "review_equals_decision"
+      ],
+      "properties": {
+        "current_route": {
+          "const": "DBA_LOCAL_REVIEW_INPUT_ONLY"
+        },
+        "public_contribution_surface_authorized": {
+          "const": false
+        },
+        "review_equals_decision": {
+          "const": false
+        }
+      }
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": {
+        "const": false
+      }
+    }
+  }
+}

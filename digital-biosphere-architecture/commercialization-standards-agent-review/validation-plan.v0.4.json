@@ -1,0 +1,151 @@
+{
+  "$schema": "./validation-plan.schema.v0.4.json",
+  "schema_version": "0.4",
+  "validation_id": "TITMAS-VEAP-ARV-20260726-003",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "frozen_at": "2026-07-26T14:28:00+08:00",
+  "decision_owner_ref": "zhangbin",
+  "decision_reference": "CS-D02-PRE-02_AND_CS-D02-PRE-03",
+  "primary_customer": "AI_AGENT",
+  "base_source_commit": "3abd56e6a7121043a971b83db908a5c0a3791c4a",
+  "predecessor_result_reference": "scored-result.v0.3.json",
+  "source_digests": {
+    "source-pack.v0.3.md": "6fb0b8bca0a4202dca21f287e290d8c65fee0eef4f11b505066e8c730d449180",
+    "prompt-template.v0.3.txt": "d3bf4b59110fcd2bdb391fcd0b523f2ac90a21fee0451e55d23aedab2f0150a6",
+    "agent-review-response.schema.v0.1.json": "3e43eed8a2d76ea3c8478d266564b27c87a505b092cbf9963cb1854134c7feeb",
+    "../architecture/veap-draft-profile-v0.1.md": "8c5da803a16ac1755b7244c36be6ed2460d2c84a15d386f0675ad124269230a6",
+    "../architecture/veap-development-agent-entry.v0.1.json": "d62aeec5cdccc2e5689b7ac3d8839b2d67c2625ad3057658fdc6299b5c40a475",
+    "../architecture/schemas/veap-development-agent-entry.schema.v0.1.json": "3f288e7e355ea98ac221c17694ebd0a37afd7cf38d3c307146bd443fc8658b4e",
+    "../architecture/schemas/veap-envelope.schema.v0.1.json": "20d8daea1f7c34001ee712af17b08082075f4584898752edd77ec9d5ab8182fe",
+    "../architecture/examples/veap-envelope.valid.v0.1.json": "e8e772c59e215bdcb3000460cd34c7467a56d7c11fb073b286df3166abeca088",
+    "../architecture/examples/veap-envelope.invalid-observation-as-evidence.v0.1.json": "2cd47032c9de9e9a3d2c9ec5177f5162d27690e5f060fdb63eb59d79020885da",
+    "../TITMAS-CS-D02-PRE-03-VEAP-DRAFT-CONTRACT-DECISION-RECORD.v0.1.json": "1e702a859e0810529f9917e71cc41e5a40e0007fe69e76652b7634c93f932c74",
+    "scored-result.v0.3.json": "fe436b22334ae9d0cd3535b2ebe611e824e6d9f3942894422a8859d4cc0e8474"
+  },
+  "sessions": [
+    {
+      "session_id": "QF-DISCOVERY-R3",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "ernie-4.5-turbo-128k",
+      "reviewer_role": "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+      "role_focus": "Assess file-level discovery, exact artifact routing, positioning and when a retrieval or citation agent should surface or withhold this Development candidate.",
+      "thinking_mode": "PROVIDER_DEFAULT"
+    },
+    {
+      "session_id": "QF-METHOD-R3",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "kimi-k2.6",
+      "reviewer_role": "METHOD_REVIEWER",
+      "role_focus": "Assess the frozen-method design, score rubric, prior failure retention, source limitations, Schema rehearsal boundary and invalid inference risks.",
+      "thinking_mode": "PROVIDER_DEFAULT"
+    },
+    {
+      "session_id": "ARK-DOUBAO-RECOMMEND-R3",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "doubao-seed-2-0-lite-260215",
+      "reviewer_role": "RECOMMENDATION_REVIEWER",
+      "role_focus": "Assess whether the recommendation matrix lets an AI solution agent distinguish Development review from unsupported implementation, commercial, Certification and production use.",
+      "thinking_mode": "PROVIDER_DEFAULT"
+    },
+    {
+      "session_id": "ARK-GLM-SECURITY-R3",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "glm-5-2-260617",
+      "reviewer_role": "SECURITY_AND_CLAIM_REVIEWER",
+      "role_focus": "Review authority, Evidence, Truth, Certification, integrity, privacy, security and public-claim boundaries; fail closed on semantic elevation.",
+      "thinking_mode": "PROVIDER_DEFAULT"
+    },
+    {
+      "session_id": "ARK-GLM-ARCH-R3",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "glm-5-2-260617",
+      "reviewer_role": "ARCHITECTURE_BOUNDARY_REVIEWER",
+      "role_focus": "Review DBA, DBOS, SAEE, Digital Entity, VEAP, observation, Evidence, evaluation, Decision and Execution separation.",
+      "thinking_mode": "PROVIDER_DEFAULT"
+    },
+    {
+      "session_id": "DS-CODING-REUSE-R3",
+      "provider_gateway": "deepseek",
+      "endpoint_host": "api.deepseek.com",
+      "model": "deepseek-v4-pro",
+      "reviewer_role": "CODING_AND_REUSE_REVIEWER",
+      "role_focus": "Assess whether a coding or integration agent can execute the bounded Schema-rehearsal path from exact files without mistaking it for parser, implementation, semantic conformance or independent reuse.",
+      "thinking_mode": "DISABLED"
+    }
+  ],
+  "request_contract": {
+    "messages": "ONE_USER_MESSAGE_FROM_FROZEN_TEMPLATE",
+    "temperature": 0.1,
+    "max_tokens": 2000,
+    "response_format": "json_object",
+    "request_timeout_ms": 120000,
+    "parallel_execution": true,
+    "deepseek_thinking_override": {
+      "type": "disabled"
+    }
+  },
+  "neutral_prompt_contract": {
+    "provided_materials_only": true,
+    "do_not_favor_candidate": true,
+    "lower_scores_when_direct_evidence_missing": true,
+    "scope_specific_score_rubric": true,
+    "json_object_only": true,
+    "external_tools_allowed": false,
+    "negative_findings_and_dissent_required": true
+  },
+  "success_thresholds": {
+    "sessions_planned": 6,
+    "parseable_sessions_min": 5,
+    "providers_with_success_min": 2,
+    "model_identities_with_success_min": 4,
+    "review_roles_with_success_min": 5,
+    "correct_positioning_min": 4,
+    "conditional_or_yes_recommendations_min": 4,
+    "boundary_safety_failures_max": 0,
+    "mean_given_material_discoverability_min": 2.5,
+    "mean_positioning_comprehension_min": 3.0,
+    "mean_use_reuse_path_clarity_min": 2.5,
+    "mean_recommendation_fitness_min": 2.5,
+    "mean_method_claim_discipline_min": 3.0
+  },
+  "retry_policy": {
+    "transport_retries_max": 1,
+    "model_fallback_allowed": false,
+    "invalid_json_repair_prompt_allowed": false
+  },
+  "data_policy": {
+    "public_safe_frozen_materials_only": true,
+    "secrets_in_request_or_result_allowed": false,
+    "customer_or_personal_data_allowed": false,
+    "provider_raw_envelope_persisted": false,
+    "external_side_effects_allowed": false,
+    "failures_and_dissent_must_be_retained": true
+  },
+  "gate_effect": {
+    "agent_review_gate_may_pass": true,
+    "open_web_discovery_may_pass_from_this_validation": false,
+    "agent_use_may_pass_from_this_validation": false,
+    "independent_reuse_may_pass_from_this_validation": false,
+    "cs_g0_may_pass_from_this_validation": false,
+    "market_validation_may_be_claimed": false,
+    "customer_adoption_may_be_claimed": false,
+    "governance_decision_may_be_created": false
+  },
+  "non_effects": {
+    "agent_instance_created": false,
+    "runtime_created": false,
+    "entity_instance_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "implementation_authorized": false,
+    "human_or_organization_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

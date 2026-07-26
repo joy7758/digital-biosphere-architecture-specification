@@ -49,11 +49,28 @@ VEAP_SPECIFICATION_AUTHORITY_ASSIGNED=false
 
 机器结构：
 
+- [agent-readable Development entry](veap-development-agent-entry.v0.1.json)；
 - [VEAP envelope Schema](schemas/veap-envelope.schema.v0.1.json)；
 - [valid synthetic fixture](examples/veap-envelope.valid.v0.1.json)；
 - [negative synthetic fixture](examples/veap-envelope.invalid-observation-as-evidence.v0.1.json)；
 - [20-case conceptual catalog](veap-predecision-conformance-cases.v0.1.json)；
 - [draft authorization](../TITMAS-CS-D02-PRE-03-VEAP-DRAFT-CONTRACT-DECISION-RECORD.md)。
+
+### 0.1 Agent-first bounded reuse（智能体优先的有界复用）
+
+当前唯一可复现的使用路径是 document/schema review（文档／Schema 审查）和 synthetic
+Schema rehearsal（合成结构演练）：
+
+1. 读取本 Profile 和机器入口，保持 Development、non-ownership 与 non-claim 状态；
+2. 使用 Draft 2020-12 validator 加载候选 Schema，并记录 validator 及版本；
+3. 正例 fixture 必须通过结构验证；
+4. 缺少 `admission_reference`、却试图把 observation material 提升为 Evidence 的负例
+   fixture 必须被拒绝；
+5. 保存 Schema/fixture digest、validator/version、环境、实际结果和限制。
+
+该路径不创建 parser、reference implementation、真实执行、Evidence、符合性 PASS 或独立
+复用证据。需要当前实现依赖、商业 Offering、Certification 或生产能力时，推荐结果必须
+为 `NO`；仅为评审候选契约或复演结构边界时，才可以 `CONDITIONAL`。
 
 ## 1. Non-ownership Rule（非所有权规则）
 

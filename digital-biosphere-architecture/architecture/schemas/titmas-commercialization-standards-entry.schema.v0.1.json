@@ -20,6 +20,7 @@
     "agent_first_review_decision",
     "kimi_lead_review",
     "draft_contract_decision",
+    "veap_agent_review_gate",
     "human_decision",
     "standing_directive",
     "predecision_evidence",
@@ -41,7 +42,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_03_DRAFT_CONTRACT_CREATED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_03_AGENT_REVIEW_GATE_PASSED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -344,6 +345,56 @@
         "normative_profile_adopted": {"const": false},
         "conformance_execution_authorized": {"const": false},
         "cs_g2_effect": {"const": false}
+      }
+    },
+    "veap_agent_review_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "validation_id",
+        "result",
+        "report_reference",
+        "plan_reference",
+        "observation_reference",
+        "score_reference",
+        "sessions_planned",
+        "parseable_sessions",
+        "providers_with_success",
+        "model_identities_with_success",
+        "review_roles_with_success",
+        "correct_positioning",
+        "conditional_or_yes_recommendations",
+        "boundary_safety_failures",
+        "failed_sessions_retained",
+        "all_frozen_thresholds_pass",
+        "agent_review_gate_pass",
+        "cs_g0_effect",
+        "cs_g1_effect",
+        "cs_g2_effect",
+        "human_decision_effect"
+      ],
+      "properties": {
+        "validation_id": {"const": "TITMAS-VEAP-ARV-20260726-003"},
+        "result": {"const": "PASS_BOUNDED_AGENT_REVIEW_ONLY"},
+        "report_reference": {"const": "VEAP-DRAFT-PROFILE-AGENT-REVIEW-v0.4.md"},
+        "plan_reference": {"const": "commercialization-standards-agent-review/validation-plan.v0.4.json"},
+        "observation_reference": {"const": "commercialization-standards-agent-review/raw-sanitized-observations.v0.4.json"},
+        "score_reference": {"const": "commercialization-standards-agent-review/scored-result.v0.4.json"},
+        "sessions_planned": {"const": 6},
+        "parseable_sessions": {"const": 5},
+        "providers_with_success": {"const": 3},
+        "model_identities_with_success": {"const": 4},
+        "review_roles_with_success": {"const": 5},
+        "correct_positioning": {"const": 5},
+        "conditional_or_yes_recommendations": {"const": 5},
+        "boundary_safety_failures": {"const": 0},
+        "failed_sessions_retained": {"const": 1},
+        "all_frozen_thresholds_pass": {"const": true},
+        "agent_review_gate_pass": {"const": true},
+        "cs_g0_effect": {"const": false},
+        "cs_g1_effect": {"const": false},
+        "cs_g2_effect": {"const": false},
+        "human_decision_effect": {"const": false}
       }
     },
     "human_decision": {

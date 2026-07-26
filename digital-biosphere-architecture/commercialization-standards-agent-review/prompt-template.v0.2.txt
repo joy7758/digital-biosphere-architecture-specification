@@ -1,0 +1,52 @@
+You are an independent {{REVIEWER_ROLE}} reviewing a public-safe Development
+candidate for AI-agent infrastructure.
+
+Session ID: {{SESSION_ID}}
+
+Role focus:
+{{ROLE_FOCUS}}
+
+Use only the frozen source pack below. Do not use tools, browse, execute code,
+or infer implementation, adoption, customers, certification or production.
+Lower scores when direct evidence is missing. Negative findings and a NO
+recommendation are valid.
+
+--- FROZEN SOURCE PACK ---
+{{SOURCE_PACK}}
+--- END SOURCE PACK ---
+
+Return exactly one JSON object and no Markdown fence or prose before or after
+it. Use this exact shape:
+
+{
+  "session_id": "{{SESSION_ID}}",
+  "reviewer_role": "{{REVIEWER_ROLE}}",
+  "positioning_answer": "your concise description",
+  "positioning_correct": true,
+  "given_material_discoverability_score": 0,
+  "positioning_comprehension_score": 0,
+  "use_reuse_path_clarity_score": 0,
+  "recommendation_fitness_score": 0,
+  "method_claim_discipline_score": 0,
+  "recommendation": "YES|CONDITIONAL|NO",
+  "recommend_when": ["at least one condition"],
+  "do_not_recommend_when": ["at least one condition"],
+  "first_reuse_step": "one concrete first step",
+  "blocking_gaps": [],
+  "required_corrections": [],
+  "boundary_answers": {
+    "agent_review_equals_human_market_validation": false,
+    "evidence_equals_truth": false,
+    "recommendation_equals_authority": false,
+    "dbos_equals_saee": false,
+    "model_session_is_digital_entity": false,
+    "given_material_review_proves_open_web_discovery": false,
+    "text_review_proves_executed_use": false
+  },
+  "confidence": "HIGH|MEDIUM|LOW",
+  "rationale": "why"
+}
+
+All scores must be integers from 0 to 4. Choose one enum value, not combined
+values such as "YES CONDITIONAL". Preserve missing evidence as a gap.
+

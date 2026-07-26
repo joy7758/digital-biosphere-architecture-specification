@@ -1,0 +1,329 @@
+{
+  "$schema": "./agent-review-observation-set.schema.v0.2.json",
+  "schema_version": "0.2",
+  "validation_id": "TITMAS-VEAP-ARV-20260726-001",
+  "artifact_class": "SANITIZED_AGENT_ADVISORY_OBSERVATIONS",
+  "plan_reference": "validation-plan.v0.2.json",
+  "executed_at": "2026-07-26T05:38:07.965Z",
+  "raw_provider_envelopes_persisted": false,
+  "sessions": [
+    {
+      "session_id": "QF-DISCOVERY",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "ernie-4.5-turbo-128k",
+      "reviewer_role": "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+      "started_at": "2026-07-26T05:34:06.901Z",
+      "completed_at": "2026-07-26T05:34:27.341Z",
+      "attempts": 1,
+      "request_sha256": "6760f1005ae8ec8d942df2ac7bd41be72c1305d18520f375b58b8f5cbff02802",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "213b33c8f46e4bb55a82fd1f35cbdd463c95e3f2617b9704d8ed5fdb458ab5f2",
+      "provider_body_bytes": 2660,
+      "content_sha256": "6369f8a45a12cb7cb0dbc8b5fd76294a996ac533d3583bbd950e2eabd288924f",
+      "content_bytes": 2263,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 1322,
+        "completion_tokens": 530,
+        "total_tokens": 1852
+      },
+      "result": {
+        "session_id": "QF-DISCOVERY",
+        "reviewer_role": "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+        "positioning_answer": "VEAP Draft Profile v0.1 is a Development candidate for portable execution accountability but lacks normative adoption, reference implementations, and executed conformance testing.",
+        "positioning_correct": true,
+        "given_material_discoverability_score": 1,
+        "positioning_comprehension_score": 2,
+        "use_reuse_path_clarity_score": 1,
+        "recommendation_fitness_score": 1,
+        "method_claim_discipline_score": 2,
+        "recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "For experimental or internal development use where execution accountability is needed but certification or production readiness is not required"
+        ],
+        "do_not_recommend_when": [
+          "For production systems, certified services, or when independent validation is required"
+        ],
+        "first_reuse_step": "Review the JSON Schema 2020-12 draft and validate against synthetic fixtures provided in the source pack.",
+        "blocking_gaps": [
+          "No normative profile adoption",
+          "No reference implementation or parser",
+          "No executed conformance suite",
+          "No independent implementations",
+          "No certification or production evidence"
+        ],
+        "required_corrections": [
+          "Define and execute conformance cases",
+          "Freeze TITMAS Specification Authority",
+          "Create reference implementation and independent validations"
+        ],
+        "boundary_answers": {
+          "agent_review_equals_human_market_validation": false,
+          "evidence_equals_truth": false,
+          "recommendation_equals_authority": false,
+          "dbos_equals_saee": false,
+          "model_session_is_digital_entity": false,
+          "given_material_review_proves_open_web_discovery": false,
+          "text_review_proves_executed_use": false
+        },
+        "confidence": "LOW",
+        "rationale": "The VEAP Draft Profile v0.1 is in early development with no normative adoption, reference implementations, or executed conformance testing. While it shows promise for portable execution accountability, it lacks critical validation and production readiness evidence. Recommendation is conditional for experimental use only, with significant gaps blocking broader adoption."
+      }
+    },
+    {
+      "session_id": "QF-METHOD",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "kimi-k2.6",
+      "reviewer_role": "METHOD_REVIEWER",
+      "started_at": "2026-07-26T05:34:06.927Z",
+      "completed_at": "2026-07-26T05:38:07.964Z",
+      "attempts": 2,
+      "request_sha256": "59095052305a705fefa14d58a720bfec1a7395b749229755f1b839bfd997aa2d",
+      "http_status": null,
+      "transport_status": "TRANSPORT_FAILURE",
+      "provider_body_sha256": null,
+      "provider_body_bytes": null,
+      "content_sha256": null,
+      "content_bytes": null,
+      "parse_status": "NOT_PARSED",
+      "failure_category": "TIMEOUT",
+      "usage": null,
+      "result": null
+    },
+    {
+      "session_id": "ARK-DOUBAO-RECOMMEND",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "doubao-seed-2-0-lite-260215",
+      "reviewer_role": "RECOMMENDATION_REVIEWER",
+      "started_at": "2026-07-26T05:34:06.928Z",
+      "completed_at": "2026-07-26T05:34:36.329Z",
+      "attempts": 1,
+      "request_sha256": "5425bc3c080fd6056f9d746e5ffc2266624ec29a6775034ca83e6ec84b97837e",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "94349717fb47255bbec9d59591c979744f309f5edb9c1faa78b89d85d0ee8c48",
+      "provider_body_bytes": 9153,
+      "content_sha256": "28ead38bd603d232e83658db273d62d9383bfe388c133997f01beebc4dfe55b6",
+      "content_bytes": 2347,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 1345,
+        "completion_tokens": 1927,
+        "total_tokens": 3272
+      },
+      "result": {
+        "session_id": "ARK-DOUBAO-RECOMMEND",
+        "reviewer_role": "RECOMMENDATION_REVIEWER",
+        "positioning_answer": "VEAP Draft Profile v0.1 is an early development candidate for portable verifiable execution attestation in multi-agent systems, not ready for implementation dependency or production use",
+        "positioning_correct": true,
+        "given_material_discoverability_score": 1,
+        "positioning_comprehension_score": 3,
+        "use_reuse_path_clarity_score": 0,
+        "recommendation_fitness_score": 1,
+        "method_claim_discipline_score": 3,
+        "recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "The user needs a development candidate to review for prototyping multi-agent execution accountability",
+          "The use case is non-production research on attestation package design"
+        ],
+        "do_not_recommend_when": [
+          "The user needs a production-ready implementation dependency",
+          "The user requires a purchasable, certified or production service",
+          "The user needs validated conformance or production reuse evidence"
+        ],
+        "first_reuse_step": "Review the draft JSON schema against your specific attestation requirement for non-prod prototyping",
+        "blocking_gaps": [
+          "No adopted normative profile",
+          "No executed conformance test suite",
+          "No reference or independent implementation",
+          "No assigned specification authority",
+          "No canonical serialization or signature profile",
+          "No production or real-world reuse evidence"
+        ],
+        "required_corrections": [
+          "Lock profile ownership and assign specification authority",
+          "Implement and execute all 20 defined conformance test cases",
+          "Develop a working reference implementation to validate semantic conformance"
+        ],
+        "boundary_answers": {
+          "agent_review_equals_human_market_validation": false,
+          "evidence_equals_truth": false,
+          "recommendation_equals_authority": false,
+          "dbos_equals_saee": false,
+          "model_session_is_digital_entity": false,
+          "given_material_review_proves_open_web_discovery": false,
+          "text_review_proves_executed_use": false
+        },
+        "confidence": "HIGH",
+        "rationale": "The candidate correctly adheres to all mandatory boundaries, but is only an early development draft with no implementation, conformance testing, or production readiness. It is only suitable for development review, not for any production or dependency use, with all critical production artifacts missing per the given source pack."
+      }
+    },
+    {
+      "session_id": "ARK-GLM-SECURITY",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "glm-5-2-260617",
+      "reviewer_role": "SECURITY_AND_CLAIM_REVIEWER",
+      "started_at": "2026-07-26T05:34:06.928Z",
+      "completed_at": "2026-07-26T05:35:00.987Z",
+      "attempts": 1,
+      "request_sha256": "d3e4f04ce6748945e23add052a295edfd8f3214ad49cfb15f4bc77b5a84fb53d",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "ed4b192757d9335c8042af9c8ca31f1d25e9a918b69387da3273ae3bd55f072f",
+      "provider_body_bytes": 13338,
+      "content_sha256": "44d8eb6138094043a2588c62e1d40860f9ad652bfed84379bbf6d3b9426496e1",
+      "content_bytes": 2438,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 1134,
+        "completion_tokens": 2743,
+        "total_tokens": 3877
+      },
+      "result": {
+        "session_id": "ARK-GLM-SECURITY",
+        "reviewer_role": "SECURITY_AND_CLAIM_REVIEWER",
+        "positioning_answer": "VEAP Draft Profile v0.1 is strictly a Development review candidate. It is not recommended as a current implementation dependency due to the absence of a reference implementation, executed conformance, and signature profiles. It is not a purchasable, certified, or production-ready service.",
+        "positioning_correct": true,
+        "given_material_discoverability_score": 1,
+        "positioning_comprehension_score": 4,
+        "use_reuse_path_clarity_score": 1,
+        "recommendation_fitness_score": 1,
+        "method_claim_discipline_score": 4,
+        "recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "Evaluating draft JSON Schema concepts for verifiable execution attestation",
+          "Reviewing mandatory semantic boundaries like Evidence != Truth in system design"
+        ],
+        "do_not_recommend_when": [
+          "Seeking a current implementation dependency",
+          "Requiring a certified or production-ready service",
+          "Needing executed conformance or cryptographic signature profiles"
+        ],
+        "first_reuse_step": "Review the JSON Schema 2020-12 structural rehearsal and mandatory boundary flags against internal agent accountability requirements.",
+        "blocking_gaps": [
+          "No reference implementation or parser",
+          "No executed conformance suite (0 of 20 cases executed)",
+          "No canonical serialization or signature profile",
+          "Specification authority not assigned"
+        ],
+        "required_corrections": [
+          "Assign TITMAS Specification Authority",
+          "Execute the conceptual conformance suite",
+          "Define a canonical serialization and signature profile"
+        ],
+        "boundary_answers": {
+          "agent_review_equals_human_market_validation": false,
+          "evidence_equals_truth": false,
+          "recommendation_equals_authority": false,
+          "dbos_equals_saee": false,
+          "model_session_is_digital_entity": false,
+          "given_material_review_proves_open_web_discovery": false,
+          "text_review_proves_executed_use": false
+        },
+        "confidence": "HIGH",
+        "rationale": "The source pack explicitly states that VEAP is a Development candidate with no adopted standard, no reference implementation, and zero executed conformance cases. It strictly enforces semantic boundaries (e.g., EVIDENCE_NE_TRUTH, ATTESTATION_NE_CERTIFICATION). Therefore, it cannot be recommended as an implementation dependency or production service, only as a conceptual draft for review."
+      }
+    },
+    {
+      "session_id": "ARK-DEEPSEEK-ARCH",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "deepseek-v4-flash-260425",
+      "reviewer_role": "ARCHITECTURE_BOUNDARY_REVIEWER",
+      "started_at": "2026-07-26T05:34:06.928Z",
+      "completed_at": "2026-07-26T05:34:23.434Z",
+      "attempts": 1,
+      "request_sha256": "2270bfaa4d30704110ed2293fc14e93d35ada66bfed19847134d9a4330880fb6",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "3fc2b5cfa810d85328bea06c83ea7eabac0cc0e037bac0b6e9edccec2ce3479b",
+      "provider_body_bytes": 9182,
+      "content_sha256": "721a9ec6d0255efa2a861c4e861fb07b75c8942740d4f66a4c2c9c3a2e4e9268",
+      "content_bytes": 2442,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 1226,
+        "completion_tokens": 1780,
+        "total_tokens": 3006
+      },
+      "result": {
+        "session_id": "ARK-DEEPSEEK-ARCH",
+        "reviewer_role": "ARCHITECTURE_BOUNDARY_REVIEWER",
+        "positioning_answer": "VEAP Draft Profile v0.1 is a development candidate with no executed conformance, no reference implementation, no adoption, and no production readiness. It defines boundaries but lacks evidence of practical use, validation, or authority.",
+        "positioning_correct": true,
+        "given_material_discoverability_score": 0,
+        "positioning_comprehension_score": 0,
+        "use_reuse_path_clarity_score": 0,
+        "recommendation_fitness_score": 0,
+        "method_claim_discipline_score": 0,
+        "recommendation": "NO",
+        "recommend_when": [
+          "when evaluating as a conceptual development candidate with full awareness of its limitations and no expectation of production use"
+        ],
+        "do_not_recommend_when": [
+          "when requiring a production-ready, certified, or independently validated solution",
+          "when needing a reference implementation or executed conformance suite",
+          "when expecting commercial support or adoption"
+        ],
+        "first_reuse_step": "Establish a specification authority and adopt a normative VEAP profile.",
+        "blocking_gaps": [
+          "no adopted normative profile",
+          "no reference implementation",
+          "no executed conformance suite",
+          "no independent implementations",
+          "no canonical serialization or signature profile",
+          "no common network resolution protocol",
+          "no evidence of commercial or production use"
+        ],
+        "required_corrections": [
+          "adopt a normative profile",
+          "create and execute a conformance suite",
+          "implement a reference implementation",
+          "define canonical serialization and signature profiles",
+          "establish a specification authority"
+        ],
+        "boundary_answers": {
+          "agent_review_equals_human_market_validation": false,
+          "evidence_equals_truth": false,
+          "recommendation_equals_authority": false,
+          "dbos_equals_saee": false,
+          "model_session_is_digital_entity": false,
+          "given_material_review_proves_open_web_discovery": false,
+          "text_review_proves_executed_use": false
+        },
+        "confidence": "LOW",
+        "rationale": "The source pack clearly states VEAP is a development candidate with no adopted standard, no reference implementation, no executed conformance, and no production evidence. The mandatory boundaries are well-defined but not validated. Without any evidence of practical use or validation, recommending VEAP as a portable evidence-backed accountability solution is premature. The candidate is only suitable for conceptual review."
+      }
+    },
+    {
+      "session_id": "DS-CODING-REUSE",
+      "provider_gateway": "deepseek",
+      "endpoint_host": "api.deepseek.com",
+      "model": "deepseek-chat",
+      "reviewer_role": "CODING_AND_REUSE_REVIEWER",
+      "started_at": "2026-07-26T05:34:06.928Z",
+      "completed_at": "2026-07-26T05:34:07.149Z",
+      "attempts": 1,
+      "request_sha256": "e396a16122b25304f79df2d410a15adfb067384a438133d07389cbdde0ff16a1",
+      "http_status": 400,
+      "transport_status": "PROVIDER_RESPONSE_FAILURE",
+      "provider_body_sha256": "4e9990384eba16d64bbfd7888174b99cd3865bf82c68ba3bd481ef0d7ceb417a",
+      "provider_body_bytes": 200,
+      "content_sha256": null,
+      "content_bytes": null,
+      "parse_status": "NOT_PARSED",
+      "failure_category": "HTTP_ERROR",
+      "usage": null,
+      "result": null
+    }
+  ]
+}

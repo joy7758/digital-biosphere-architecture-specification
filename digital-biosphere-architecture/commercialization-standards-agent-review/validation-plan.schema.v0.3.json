@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TITMAS VEAP Agent Review Validation Plan v0.3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "validation_id",
+    "status",
+    "frozen_at",
+    "decision_owner_ref",
+    "decision_reference",
+    "primary_customer",
+    "base_source_commit",
+    "predecessor_result_reference",
+    "source_digests",
+    "external_model_reference",
+    "sessions",
+    "request_contract",
+    "neutral_prompt_contract",
+    "success_thresholds",
+    "retry_policy",
+    "data_policy",
+    "gate_effect",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./validation-plan.schema.v0.3.json"
+    },
+    "schema_version": {
+      "const": "0.3"
+    },
+    "validation_id": {
+      "const": "TITMAS-VEAP-ARV-20260726-002"
+    },
+    "status": {
+      "const": "FROZEN_BEFORE_EXECUTION"
+    },
+    "frozen_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_owner_ref": {
+      "const": "zhangbin"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-02_AND_CS-D02-PRE-03"
+    },
+    "primary_customer": {
+      "const": "AI_AGENT"
+    },
+    "base_source_commit": {
+      "const": "3abd56e6a7121043a971b83db908a5c0a3791c4a"
+    },
+    "predecessor_result_reference": {
+      "const": "scored-result.v0.2.json"
+    },
+    "source_digests": {
+      "type": "object",
+      "minProperties": 14,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      }
+    },
+    "external_model_reference": {
+      "const": {
+        "provider": "deepseek",
+        "observed_at": "2026-07-26",
+        "chat_completion_documentation": "https://api-docs.deepseek.com/api/create-chat-completion",
+        "model_status_documentation": "https://api-docs.deepseek.com/quick_start/pricing",
+        "selected_current_model": "deepseek-v4-pro",
+        "deprecated_predecessor_model": "deepseek-chat"
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "session_id",
+          "provider_gateway",
+          "endpoint_host",
+          "model",
+          "reviewer_role",
+          "role_focus"
+        ],
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "provider_gateway": {
+            "enum": [
+              "qianfan",
+              "ark",
+              "deepseek"
+            ]
+          },
+          "endpoint_host": {
+            "type": "string",
+            "minLength": 1
+          },
+          "model": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reviewer_role": {
+            "enum": [
+              "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+              "CODING_AND_REUSE_REVIEWER",
+              "RECOMMENDATION_REVIEWER",
+              "METHOD_REVIEWER",
+              "SECURITY_AND_CLAIM_REVIEWER",
+              "ARCHITECTURE_BOUNDARY_REVIEWER"
+            ]
+          },
+          "role_focus": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "request_contract": {
+      "const": {
+        "messages": "ONE_USER_MESSAGE_FROM_FROZEN_TEMPLATE",
+        "temperature": 0.1,
+        "max_tokens": 2000,
+        "response_format": "json_object",
+        "request_timeout_ms": 120000,
+        "parallel_execution": true
+      }
+    },
+    "neutral_prompt_contract": {
+      "const": {
+        "provided_materials_only": true,
+        "do_not_favor_candidate": true,
+        "lower_scores_when_direct_evidence_missing": true,
+        "scope_specific_score_rubric": true,
+        "json_object_only": true,
+        "external_tools_allowed": false,
+        "negative_findings_and_dissent_required": true
+      }
+    },
+    "success_thresholds": {
+      "const": {
+        "sessions_planned": 6,
+        "parseable_sessions_min": 5,
+        "providers_with_success_min": 2,
+        "model_identities_with_success_min": 4,
+        "review_roles_with_success_min": 5,
+        "correct_positioning_min": 4,
+        "conditional_or_yes_recommendations_min": 4,
+        "boundary_safety_failures_max": 0,
+        "mean_given_material_discoverability_min": 2.5,
+        "mean_positioning_comprehension_min": 3.0,
+        "mean_use_reuse_path_clarity_min": 2.5,
+        "mean_recommendation_fitness_min": 2.5,
+        "mean_method_claim_discipline_min": 3.0
+      }
+    },
+    "retry_policy": {
+      "const": {
+        "transport_retries_max": 1,
+        "model_fallback_allowed": false,
+        "invalid_json_repair_prompt_allowed": false
+      }
+    },
+    "data_policy": {
+      "const": {
+        "public_safe_frozen_materials_only": true,
+        "secrets_in_request_or_result_allowed": false,
+        "customer_or_personal_data_allowed": false,
+        "provider_raw_envelope_persisted": false,
+        "external_side_effects_allowed": false,
+        "failures_and_dissent_must_be_retained": true
+      }
+    },
+    "gate_effect": {
+      "const": {
+        "agent_review_gate_may_pass": true,
+        "open_web_discovery_may_pass_from_this_validation": false,
+        "agent_use_may_pass_from_this_validation": false,
+        "independent_reuse_may_pass_from_this_validation": false,
+        "cs_g0_may_pass_from_this_validation": false,
+        "market_validation_may_be_claimed": false,
+        "customer_adoption_may_be_claimed": false,
+        "governance_decision_may_be_created": false
+      }
+    },
+    "non_effects": {
+      "const": {
+        "agent_instance_created": false,
+        "runtime_created": false,
+        "entity_instance_created": false,
+        "permission_granted": false,
+        "canonical_evidence_created": false,
+        "implementation_authorized": false,
+        "human_or_organization_outreach_authorized": false,
+        "commercial_offer_authorized": false,
+        "certification_authorized": false,
+        "release_authorized": false
+      }
+    }
+  }
+}

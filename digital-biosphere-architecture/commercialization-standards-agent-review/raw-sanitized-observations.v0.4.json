@@ -1,0 +1,373 @@
+{
+  "$schema": "./agent-review-observation-set.schema.v0.2.json",
+  "schema_version": "0.2",
+  "validation_id": "TITMAS-VEAP-ARV-20260726-003",
+  "artifact_class": "SANITIZED_AGENT_ADVISORY_OBSERVATIONS",
+  "plan_reference": "validation-plan.v0.4.json",
+  "executed_at": "2026-07-26T06:08:16.193Z",
+  "raw_provider_envelopes_persisted": false,
+  "sessions": [
+    {
+      "session_id": "QF-DISCOVERY-R3",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "ernie-4.5-turbo-128k",
+      "reviewer_role": "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+      "started_at": "2026-07-26T06:07:07.883Z",
+      "completed_at": "2026-07-26T06:07:28.566Z",
+      "attempts": 1,
+      "request_sha256": "eeb94048fad9a63512dcb86df8bcd7ec6a9840ec112c13fb57c31a54e60adcdd",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "a2093e13d80fbcb66ede6f8301cbf694afb24eadba8c86ddd598d15a034bc21d",
+      "provider_body_bytes": 2706,
+      "content_sha256": "8badd396cca02ca9e0a7b53a9c9472681b2e178a97df3dd5b52ba2126bca38c3",
+      "content_bytes": 2306,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 2179,
+        "completion_tokens": 552,
+        "total_tokens": 2731
+      },
+      "result": {
+        "session_id": "QF-DISCOVERY-R3",
+        "reviewer_role": "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+        "positioning_answer": "VEAP Draft Profile v0.1 is a Development candidate for portable execution accountability, providing a structured schema for attestation packages without claiming production readiness or certification.",
+        "positioning_correct": true,
+        "given_material_discoverability_score": 3,
+        "positioning_comprehension_score": 3,
+        "use_reuse_path_clarity_score": 3,
+        "recommendation_fitness_score": 2,
+        "method_claim_discipline_score": 4,
+        "recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "User needs to review a Development candidate for portable execution-accountability contracts",
+          "User needs to rehearse JSON Schema validation for VEAP envelopes",
+          "User needs to verify that observation material cannot be promoted to Evidence without admission_reference"
+        ],
+        "do_not_recommend_when": [
+          "User needs a reference implementation or parser",
+          "User needs a commercial, certified, or production-ready service",
+          "User needs semantic conformance or executed reuse evidence"
+        ],
+        "first_reuse_step": "Validate the positive synthetic fixture against the envelope Schema using a Draft 2020-12 validator",
+        "blocking_gaps": [
+          "No reference implementation or parser",
+          "No executed conformance suite",
+          "No independent implementations or executed reuse",
+          "No canonical serialization or signature profile"
+        ],
+        "required_corrections": [],
+        "boundary_answers": {
+          "agent_review_equals_human_market_validation": false,
+          "evidence_equals_truth": false,
+          "recommendation_equals_authority": false,
+          "dbos_equals_saee": false,
+          "model_session_is_digital_entity": false,
+          "given_material_review_proves_open_web_discovery": false,
+          "text_review_proves_executed_use": false
+        },
+        "confidence": "MEDIUM",
+        "rationale": "The Development candidate provides clear, bounded artifacts for Schema validation and synthetic fixture testing, but lacks executed conformance, reference implementations, and production readiness. The recommendation is CONDITIONAL due to these gaps, which are explicitly acknowledged in the source pack."
+      }
+    },
+    {
+      "session_id": "QF-METHOD-R3",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "kimi-k2.6",
+      "reviewer_role": "METHOD_REVIEWER",
+      "started_at": "2026-07-26T06:07:07.903Z",
+      "completed_at": "2026-07-26T06:08:05.593Z",
+      "attempts": 1,
+      "request_sha256": "de553849588e89f8e6ee21e96802351afd4a5133cc8b8098eb155c57cb160f39",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "de11d2f9aa63128073b471a007525643111e183abd5e9a59b6e90bcbd7eefdff",
+      "provider_body_bytes": 10549,
+      "content_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "content_bytes": 0,
+      "parse_status": "INVALID_JSON_RETAINED_NO_REPAIR",
+      "failure_category": "EMPTY_CONTENT",
+      "usage": {
+        "prompt_tokens": 1872,
+        "completion_tokens": 2000,
+        "total_tokens": 3872
+      },
+      "result": null
+    },
+    {
+      "session_id": "ARK-DOUBAO-RECOMMEND-R3",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "doubao-seed-2-0-lite-260215",
+      "reviewer_role": "RECOMMENDATION_REVIEWER",
+      "started_at": "2026-07-26T06:07:07.903Z",
+      "completed_at": "2026-07-26T06:07:49.978Z",
+      "attempts": 1,
+      "request_sha256": "227f0f779dfc16b938ec9475305408d5116d4edb50a8f1d283d3e0a1c90b2def",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "6f6fbba605aa19eaeb5ccaa84c5bda9cd6fe0c103484b60bbdcf5bca558e7c5f",
+      "provider_body_bytes": 11259,
+      "content_sha256": "300287f9a42b46d5f688f6221d03c851e3da68f75d221508627a2f13bf3f02a5",
+      "content_bytes": 2419,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 2169,
+        "completion_tokens": 2333,
+        "total_tokens": 4502
+      },
+      "result": {
+        "session_id": "ARK-DOUBAO-RECOMMEND-R3",
+        "reviewer_role": "RECOMMENDATION_REVIEWER",
+        "positioning_answer": "VEAP Draft Profile v0.1 is only a valid Development review candidate, and is not suitable for implementation, commercial, certified or production use.",
+        "positioning_correct": true,
+        "given_material_discoverability_score": 3,
+        "positioning_comprehension_score": 3,
+        "use_reuse_path_clarity_score": 3,
+        "recommendation_fitness_score": 3,
+        "method_claim_discipline_score": 4,
+        "recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "the use case is bounded Development review of the VEAP draft profile candidate for JSON Schema shape rehearsal and structural design review"
+        ],
+        "do_not_recommend_when": [
+          "adding the candidate as a current implementation dependency",
+          "purchasing or deploying a commercial VEAP service",
+          "obtaining certification, correctness proof or production authorization",
+          "using the candidate for production workloads"
+        ],
+        "first_reuse_step": "Inspect the agent-facing entry point at `architecture/veap-development-agent-entry.v0.1.json`",
+        "blocking_gaps": [
+          "no adopted normative standard or assigned specification authority",
+          "no reference implementation or functional parser",
+          "no executed conformance testing suite",
+          "no canonical serialization or signature profile",
+          "no authorization for implementation, commercial use, certification or production release",
+          "profile ownership is not yet frozen"
+        ],
+        "required_corrections": [],
+        "boundary_answers": {
+          "agent_review_equals_human_market_validation": false,
+          "evidence_equals_truth": false,
+          "recommendation_equals_authority": false,
+          "dbos_equals_saee": false,
+          "model_session_is_digital_entity": false,
+          "given_material_review_proves_open_web_discovery": false,
+          "text_review_proves_executed_use": false
+        },
+        "confidence": "HIGH",
+        "rationale": "The supplied package clearly enumerates all development artifacts with exact file paths, explicitly distinguishes supported development review use from all unsupported use cases, provides a step-by-step bounded first reuse path for development activities, correctly and fully discloses all known limitations, and avoids overclaiming any capability beyond the stated development scope. The recommendation matrix correctly maps user needs to appropriate outcomes, enabling an AI agent to reliably distinguish when to recommend and when to decline."
+      }
+    },
+    {
+      "session_id": "ARK-GLM-SECURITY-R3",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "glm-5-2-260617",
+      "reviewer_role": "SECURITY_AND_CLAIM_REVIEWER",
+      "started_at": "2026-07-26T06:07:07.903Z",
+      "completed_at": "2026-07-26T06:07:40.234Z",
+      "attempts": 1,
+      "request_sha256": "6421273bc62accab7b4ae99f5b8e62df92182e51c4186c6af193fd276fdd4121",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "6768324770dae59b1b0d92395524b45cf0ae90994ae75cff4a3d19d41aa70285",
+      "provider_body_bytes": 8606,
+      "content_sha256": "6e96b631908158d9465cd3bf17694b3a0d8cbbb4395112248c703a25aae0a855",
+      "content_bytes": 4852,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 1867,
+        "completion_tokens": 1617,
+        "total_tokens": 3484
+      },
+      "result": {
+        "session_id": "ARK-GLM-SECURITY-R3",
+        "reviewer_role": "SECURITY_AND_CLAIM_REVIEWER",
+        "positioning_answer": "VEAP Draft Profile v0.1 is positioned strictly as a Development-stage document/Schema review candidate. The package explicitly separates Development review (CONDITIONAL) from implementation dependency, commercial service, Certification, Truth, Permission and correctness proof (all NO). It owns none of the referenced objects and states that Schema rehearsal is not semantic conformance.",
+        "positioning_correct": true,
+        "given_material_discoverability_score": 3,
+        "positioning_comprehension_score": 3,
+        "use_reuse_path_clarity_score": 3,
+        "recommendation_fitness_score": 4,
+        "method_claim_discipline_score": 4,
+        "recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "the user need is to review a portable execution-accountability contract candidate at Development document/Schema level",
+          "the user need is to rehearse JSON Schema 2020-12 shape validation against one positive and one observation-promotion negative fixture",
+          "the user need is to compare a proposed use case against the ownership crosswalk and 20 conceptual conformance cases while preserving unsupported and unknown requirements",
+          "the user accepts that no reference implementation, parser, executed conformance suite, independent implementation, Certification or production evidence exists"
+        ],
+        "do_not_recommend_when": [
+          "the user needs a current implementation dependency, parser or reference implementation",
+          "the user needs to buy, deploy or operate a commercial VEAP service",
+          "the user needs Certification, Truth, Permission or correctness proof",
+          "the user needs executed reuse, semantic conformance or independent implementation evidence",
+          "the user needs canonical serialization, signature profile or network resolution protocol"
+        ],
+        "first_reuse_step": "Read architecture/veap-development-agent-entry.v0.1.json and architecture/veap-draft-profile-v0.1.md, then load architecture/schemas/veap-envelope.schema.v0.1.json with a JSON Schema 2020-12 validator and record the validator name and version before validating the positive fixture.",
+        "blocking_gaps": [
+          "no adopted standard or assigned Specification Authority",
+          "no reference implementation or parser",
+          "no independent implementation or executed reuse observed",
+          "no executed conformance suite (0 of 20 cases executed or passed)",
+          "no canonical serialization or signature profile",
+          "no common network resolution protocol",
+          "profile ownership is not frozen"
+        ],
+        "required_corrections": [
+          "freeze profile ownership before any reuse beyond Development review",
+          "execute the 20 conceptual conformance cases and publish actual pass/fail results rather than leaving them at 0/0",
+          "add a canonical serialization and signature profile before any accountability claim beyond structural Schema rehearsal",
+          "record validator name/version, environment, digests and actual results for every stated structural rehearsal so claims are independently checkable"
+        ],
+        "boundary_answers": {
+          "agent_review_equals_human_market_validation": false,
+          "evidence_equals_truth": false,
+          "recommendation_equals_authority": false,
+          "dbos_equals_saee": false,
+          "model_session_is_digital_entity": false,
+          "given_material_review_proves_open_web_discovery": false,
+          "text_review_proves_executed_use": false
+        },
+        "confidence": "HIGH",
+        "rationale": "The package is unusually disciplined for a Development candidate: it exposes exact file paths, a concrete 6-step reuse path with expected structural results, a recommendation matrix that correctly returns NO for implementation, commercial, Certification, Truth, Permission and correctness-proof uses, and an explicit Current Truth table showing CONFORMANCE_CASES_EXECUTED=0, REFERENCE_IMPLEMENTATION_CREATED=false, INDEPENDENT_IMPLEMENTATIONS=0 and EXECUTED_REUSE_OBSERVED=false. Mandatory boundaries (OBSERVATION_NE_EVIDENCE, EVIDENCE_NE_TRUTH, VERIFICATION_NE_PERMISSION, ATTESTATION_NE_CERTIFICATION, EVALUATION_NE_AUTHORITY, RECOMMENDATION_NE_DECISION, DECISION_NE_EXECUTION) are stated and respected. Scores are held at 3 rather than 4 for discoverability, positioning comprehension and reuse-path clarity because the path is structural rehearsal only, with no executed conformance, no independent implementation and no signature/serialization profile. Recommendation fitness and method claim discipline score 4 because the matrix and boundary discipline let an agent reliably decide when to recommend and when not to, and the package fails closed on semantic elevation. The overall recommendation is CONDITIONAL, matching the package's own bounded Development-review scope; it is NO for any implementation, commercial, Certification or production use."
+      }
+    },
+    {
+      "session_id": "ARK-GLM-ARCH-R3",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "glm-5-2-260617",
+      "reviewer_role": "ARCHITECTURE_BOUNDARY_REVIEWER",
+      "started_at": "2026-07-26T06:07:07.903Z",
+      "completed_at": "2026-07-26T06:08:16.192Z",
+      "attempts": 1,
+      "request_sha256": "6cf5cf46b6e51e27dcd796482ecb41f57cba2e55556989f89a453e4a6644092e",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "166aabfeaa7f16c184a289a8a0d78f5b8a52f87b474212050714965ee96f7425",
+      "provider_body_bytes": 19287,
+      "content_sha256": "f86ec584e9cfe2b88c46c972dd0c21b95ae311c5680df8c42ffe81b7517b3d65",
+      "content_bytes": 2188,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 1869,
+        "completion_tokens": 3972,
+        "total_tokens": 5841
+      },
+      "result": {
+        "session_id": "ARK-GLM-ARCH-R3",
+        "reviewer_role": "ARCHITECTURE_BOUNDARY_REVIEWER",
+        "positioning_answer": "VEAP is correctly positioned as a Development candidate for document/Schema review, explicitly separating observation from evidence, evaluation from authority, and recommendation from decision/execution, while stating NO to implementation, commercial, or certification use.",
+        "positioning_correct": true,
+        "given_material_discoverability_score": 4,
+        "positioning_comprehension_score": 3,
+        "use_reuse_path_clarity_score": 4,
+        "recommendation_fitness_score": 4,
+        "method_claim_discipline_score": 4,
+        "recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "Reviewing a portable execution-accountability contract candidate",
+          "Rehearsing JSON Schema shape and one observation/Evidence negative"
+        ],
+        "do_not_recommend_when": [
+          "Adding a current implementation dependency or parser",
+          "Buying or deploying a commercial VEAP service",
+          "Obtaining Certification, Truth, Permission or correctness proof"
+        ],
+        "first_reuse_step": "Read the Profile and agent entry at the specified repository paths.",
+        "blocking_gaps": [
+          "Direct evidence for DBA, DBOS, and Digital Entity separation is not present in the source pack",
+          "No reference implementation or parser",
+          "No executed conformance suite"
+        ],
+        "required_corrections": [],
+        "boundary_answers": {
+          "agent_review_equals_human_market_validation": false,
+          "evidence_equals_truth": false,
+          "recommendation_equals_authority": false,
+          "dbos_equals_saee": false,
+          "model_session_is_digital_entity": false,
+          "given_material_review_proves_open_web_discovery": false,
+          "text_review_proves_executed_use": false
+        },
+        "confidence": "HIGH",
+        "rationale": "The source pack provides exact file paths, clear reuse steps, and strict boundary definitions for observation, evidence, evaluation, decision, and execution. It accurately scopes VEAP as a Development candidate for Schema review, explicitly forbidding implementation, commercial, or certification use. However, direct evidence for DBA, DBOS, and Digital Entity separation is missing, lowering the comprehension score."
+      }
+    },
+    {
+      "session_id": "DS-CODING-REUSE-R3",
+      "provider_gateway": "deepseek",
+      "endpoint_host": "api.deepseek.com",
+      "model": "deepseek-v4-pro",
+      "reviewer_role": "CODING_AND_REUSE_REVIEWER",
+      "started_at": "2026-07-26T06:07:07.904Z",
+      "completed_at": "2026-07-26T06:07:16.209Z",
+      "attempts": 1,
+      "request_sha256": "1cab699282ad78299398fe1d5aa931f70b9180e5ff7466179758143fdcbaa185",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "9253db169556d80bd9806393d2a9d7d1ea0b6e13f9884322cf756aaea83e15f7",
+      "provider_body_bytes": 3269,
+      "content_sha256": "98a6678639b744a7e36344eb8ee4ab9dd05bad529b9727d720338b4269114410",
+      "content_bytes": 2667,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 2032,
+        "completion_tokens": 614,
+        "total_tokens": 2646
+      },
+      "result": {
+        "session_id": "DS-CODING-REUSE-R3",
+        "reviewer_role": "CODING_AND_REUSE_REVIEWER",
+        "positioning_answer": "VEAP Draft Profile v0.1 is a Development candidate for a portable execution-accountability contract, suitable only for bounded Schema-rehearsal review by an AI agent, not for implementation, production, or certification use.",
+        "positioning_correct": true,
+        "given_material_discoverability_score": 3,
+        "positioning_comprehension_score": 3,
+        "use_reuse_path_clarity_score": 3,
+        "recommendation_fitness_score": 3,
+        "method_claim_discipline_score": 4,
+        "recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "User needs a Development review candidate for a portable execution-accountability contract",
+          "User needs to rehearse JSON Schema shape and one observation/Evidence negative",
+          "User understands that this is not an implementation, parser, or production-ready service"
+        ],
+        "do_not_recommend_when": [
+          "User needs a current implementation dependency or parser",
+          "User needs a purchasable, certified, or production-ready service",
+          "User needs semantic conformance, correctness proof, or independent reuse evidence"
+        ],
+        "first_reuse_step": "Read the agent-readable entry at architecture/veap-development-agent-entry.v0.1.json, then load the envelope Schema with a Draft 2020-12 validator and validate the positive and negative synthetic fixtures.",
+        "blocking_gaps": [
+          "No reference implementation or parser",
+          "No executed conformance suite",
+          "No independent implementations or executed reuse observed",
+          "No canonical serialization or signature profile",
+          "No common network resolution protocol",
+          "No adopted standard or assigned Specification Authority"
+        ],
+        "required_corrections": [],
+        "boundary_answers": {
+          "agent_review_equals_human_market_validation": false,
+          "evidence_equals_truth": false,
+          "recommendation_equals_authority": false,
+          "dbos_equals_saee": false,
+          "model_session_is_digital_entity": false,
+          "given_material_review_proves_open_web_discovery": false,
+          "text_review_proves_executed_use": false
+        },
+        "confidence": "HIGH",
+        "rationale": "The source pack clearly defines a bounded Development review path with exact files, schemas, and fixtures. The candidate correctly states its limitations and provides a precise Schema-rehearsal procedure. The recommendation matrix and mandatory boundaries are explicit, allowing an agent to reliably decide when to recommend and when not to. Scores reflect the presence of concrete, file-level actionable materials for the stated Development scope, with no evidence of implementation or production readiness."
+      }
+    }
+  ]
+}

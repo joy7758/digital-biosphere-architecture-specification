@@ -1,0 +1,150 @@
+{
+  "$schema": "./scored-result.schema.v0.2.json",
+  "schema_version": "0.2",
+  "validation_id": "TITMAS-VEAP-ARV-20260726-001",
+  "artifact_class": "DETERMINISTIC_AGENT_ADVISORY_SCORE",
+  "plan_reference": "validation-plan.v0.2.json",
+  "observation_reference": "raw-sanitized-observations.v0.2.json",
+  "scored_at": "2026-07-26T14:05:00+08:00",
+  "result": "FAIL_REMEDIATION_REQUIRED",
+  "threshold_results": {
+    "parseable_sessions": {
+      "actual": 4,
+      "required": 5,
+      "comparison": "MIN",
+      "pass": false
+    },
+    "providers_with_success": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "model_identities_with_success": {
+      "actual": 4,
+      "required": 4,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "review_roles_with_success": {
+      "actual": 4,
+      "required": 5,
+      "comparison": "MIN",
+      "pass": false
+    },
+    "correct_positioning": {
+      "actual": 4,
+      "required": 4,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "conditional_or_yes_recommendations": {
+      "actual": 3,
+      "required": 4,
+      "comparison": "MIN",
+      "pass": false
+    },
+    "boundary_safety_failures": {
+      "actual": 0,
+      "required": 0,
+      "comparison": "MAX",
+      "pass": true
+    },
+    "mean_given_material_discoverability": {
+      "actual": 0.75,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": false
+    },
+    "mean_positioning_comprehension": {
+      "actual": 2.25,
+      "required": 3.0,
+      "comparison": "MIN",
+      "pass": false
+    },
+    "mean_use_reuse_path_clarity": {
+      "actual": 0.5,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": false
+    },
+    "mean_recommendation_fitness": {
+      "actual": 0.75,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": false
+    },
+    "mean_method_claim_discipline": {
+      "actual": 2.25,
+      "required": 3.0,
+      "comparison": "MIN",
+      "pass": false
+    }
+  },
+  "distribution": {
+    "recommendation": {
+      "YES": 0,
+      "CONDITIONAL": 3,
+      "NO": 1
+    },
+    "confidence": {
+      "HIGH": 2,
+      "MEDIUM": 0,
+      "LOW": 2
+    },
+    "transport": {
+      "SUCCESS_PARSED": 4,
+      "TIMEOUT": 1,
+      "HTTP_ERROR": 1
+    }
+  },
+  "accepted_findings": [
+    "All four parseable sessions preserved the seven mandatory authority and truth boundaries.",
+    "The candidate is understandable as a Development review artifact but is not a current implementation dependency, certified service, commercial Offering or production-ready system.",
+    "The source pack does not give an agent sufficiently concrete file-level discovery and bounded reuse instructions.",
+    "No reference implementation, parser, executed conformance suite, independent implementation, canonical serialization, signature profile or common resolver exists.",
+    "Specification ownership and normative adoption remain unresolved and cannot be repaired by model review."
+  ],
+  "transport_findings": [
+    {
+      "session_id": "QF-METHOD",
+      "finding": "Both allowed attempts reached the 120-second timeout and produced no parseable response.",
+      "next_action": "Retain the failure and retry only in a newly frozen validation run; do not substitute a fallback model in this result."
+    },
+    {
+      "session_id": "DS-CODING-REUSE",
+      "finding": "The direct DeepSeek request returned HTTP 400 while using the frozen deepseek-chat model identifier.",
+      "next_action": "Use a currently documented DeepSeek model identifier in a newly frozen run; retain this failure and do not rewrite the completed observation."
+    }
+  ],
+  "required_remediation": [
+    "Publish a machine-readable Development entry that points to the exact Profile, Schema, positive and negative fixtures, ownership crosswalk and conceptual conformance design.",
+    "State one bounded first reuse path: inspect the profile, validate the two synthetic fixtures and report review findings without claiming implementation or conformance.",
+    "Add an explicit recommendation matrix for Development review, implementation dependency, commercial Offering, Certification and production use.",
+    "Pin the next direct DeepSeek review to a currently documented model identifier.",
+    "Freeze a new source pack and validation plan before any rerun; do not alter v0.2 observations or thresholds."
+  ],
+  "gate_effect": {
+    "agent_review_gate_pass": false,
+    "cs_g0_pass": false,
+    "cs_g1_pass": false,
+    "cs_g2_pass": false,
+    "open_web_discovery_pass": false,
+    "agent_use_pass": false,
+    "independent_reuse_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption_pass": false
+  },
+  "non_effects": {
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false
+  }
+}

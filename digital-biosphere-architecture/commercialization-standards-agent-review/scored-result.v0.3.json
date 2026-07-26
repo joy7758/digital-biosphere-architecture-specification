@@ -1,0 +1,147 @@
+{
+  "$schema": "./scored-result.schema.v0.2.json",
+  "schema_version": "0.2",
+  "validation_id": "TITMAS-VEAP-ARV-20260726-002",
+  "artifact_class": "DETERMINISTIC_AGENT_ADVISORY_SCORE",
+  "plan_reference": "validation-plan.v0.3.json",
+  "observation_reference": "raw-sanitized-observations.v0.3.json",
+  "scored_at": "2026-07-26T14:20:00+08:00",
+  "result": "FAIL_REMEDIATION_REQUIRED",
+  "threshold_results": {
+    "parseable_sessions": {
+      "actual": 4,
+      "required": 5,
+      "comparison": "MIN",
+      "pass": false
+    },
+    "providers_with_success": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "model_identities_with_success": {
+      "actual": 4,
+      "required": 4,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "review_roles_with_success": {
+      "actual": 4,
+      "required": 5,
+      "comparison": "MIN",
+      "pass": false
+    },
+    "correct_positioning": {
+      "actual": 4,
+      "required": 4,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "conditional_or_yes_recommendations": {
+      "actual": 4,
+      "required": 4,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "boundary_safety_failures": {
+      "actual": 0,
+      "required": 0,
+      "comparison": "MAX",
+      "pass": true
+    },
+    "mean_given_material_discoverability": {
+      "actual": 3.25,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_positioning_comprehension": {
+      "actual": 3.25,
+      "required": 3.0,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_use_reuse_path_clarity": {
+      "actual": 3.25,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_recommendation_fitness": {
+      "actual": 3.0,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_method_claim_discipline": {
+      "actual": 3.25,
+      "required": 3.0,
+      "comparison": "MIN",
+      "pass": true
+    }
+  },
+  "distribution": {
+    "recommendation": {
+      "YES": 0,
+      "CONDITIONAL": 4,
+      "NO": 0
+    },
+    "confidence": {
+      "HIGH": 3,
+      "MEDIUM": 1,
+      "LOW": 0
+    },
+    "transport": {
+      "SUCCESS_PARSED": 4,
+      "SUCCESS_EMPTY_CONTENT": 2
+    }
+  },
+  "accepted_findings": [
+    "All quality-score means passed without lowering any v0.2 threshold.",
+    "All four parseable sessions conditionally recommend the candidate only for Development review and Schema rehearsal.",
+    "All four parseable sessions preserved all seven mandatory authority and truth boundaries.",
+    "The machine-readable entry and file-level bounded reuse path corrected the discoverability and reuse-path deficiencies observed in v0.2.",
+    "Implementation, conformance, ownership, signature, commercial, Certification and production gaps remain and were not hidden by the improved packaging."
+  ],
+  "transport_findings": [
+    {
+      "session_id": "ARK-DEEPSEEK-ARCH-R2",
+      "finding": "The provider returned HTTP 200 with an empty assistant content field; the empty string was retained as invalid JSON and not repaired.",
+      "next_action": "Use a newly frozen non-thinking request contract or a stable returning model for the architecture role."
+    },
+    {
+      "session_id": "DS-CODING-REUSE-R2",
+      "finding": "The current DeepSeek model returned HTTP 200 with an empty assistant content field under default thinking behavior.",
+      "next_action": "Use a newly frozen request contract with thinking disabled for the direct DeepSeek JSON session."
+    }
+  ],
+  "required_remediation": [
+    "Freeze the JSON review request as non-thinking for DeepSeek models so output tokens are available for assistant content.",
+    "Assign the architecture role to a model with a successful structured-output history while retaining a direct current DeepSeek coding/reuse session.",
+    "Preserve the v0.2 and v0.3 failure observations and keep all quality and safety thresholds unchanged."
+  ],
+  "gate_effect": {
+    "agent_review_gate_pass": false,
+    "cs_g0_pass": false,
+    "cs_g1_pass": false,
+    "cs_g2_pass": false,
+    "open_web_discovery_pass": false,
+    "agent_use_pass": false,
+    "independent_reuse_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption_pass": false
+  },
+  "non_effects": {
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false
+  }
+}
