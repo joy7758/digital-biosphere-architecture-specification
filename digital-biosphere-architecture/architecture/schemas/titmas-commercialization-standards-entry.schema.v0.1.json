@@ -1166,6 +1166,14 @@
         "pre19_schema_conformant_reviews",
         "pre19_review_completed",
         "pre19_profile_adopted",
+        "pre20_review_bundle_remediation_recommendation_prepared",
+        "pre20_review_bundle_remediation_decision_recorded",
+        "pre20_authorization_baseline_remote_verified",
+        "pre20_offline_remediation_pass",
+        "pre20_maximum_compact_query_bytes",
+        "pre20_live_model_requests_executed",
+        "pre20_live_review_ready",
+        "pre20_compact_response_schema_required",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1405,6 +1413,30 @@
         },
         "pre19_profile_adopted": {
           "const": false
+        },
+        "pre20_review_bundle_remediation_recommendation_prepared": {
+          "const": true
+        },
+        "pre20_review_bundle_remediation_decision_recorded": {
+          "const": true
+        },
+        "pre20_authorization_baseline_remote_verified": {
+          "const": true
+        },
+        "pre20_offline_remediation_pass": {
+          "const": true
+        },
+        "pre20_maximum_compact_query_bytes": {
+          "const": 13995
+        },
+        "pre20_live_model_requests_executed": {
+          "const": 0
+        },
+        "pre20_live_review_ready": {
+          "const": false
+        },
+        "pre20_compact_response_schema_required": {
+          "const": true
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -1764,6 +1796,25 @@
         "provider_adapter_profile_review_schema_conformant_reviews",
         "provider_adapter_profile_review_completed",
         "provider_adapter_profile_review_composite_result",
+        "provider_adapter_profile_review_remediation_decision_candidate_id",
+        "provider_adapter_profile_review_remediation_recommendation_reference",
+        "provider_adapter_profile_review_remediation_decision_reference",
+        "provider_adapter_profile_review_remediation_plan_reference",
+        "provider_adapter_profile_review_remediation_authorization_receipt_reference",
+        "provider_adapter_profile_review_projection_reference",
+        "provider_adapter_profile_review_coverage_matrix_reference",
+        "provider_adapter_profile_compact_request_manifest_reference",
+        "provider_adapter_profile_review_remediation_result_reference",
+        "provider_adapter_profile_review_remediation_execution_receipt_reference",
+        "provider_adapter_profile_review_remediation_report_reference",
+        "provider_adapter_profile_review_remediation_offline_pass",
+        "provider_adapter_profile_review_remediation_source_hashes_matched",
+        "provider_adapter_profile_review_remediation_pointers_resolved",
+        "provider_adapter_profile_review_remediation_criteria_covered",
+        "provider_adapter_profile_review_remediation_maximum_query_bytes",
+        "provider_adapter_profile_review_remediation_live_model_requests_executed",
+        "provider_adapter_profile_review_remediation_live_review_ready",
+        "provider_adapter_profile_compact_response_schema_required",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -1782,7 +1833,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE19_PROFILE_REVIEW_INCOMPLETE_FAIL_CLOSED_PROVIDER_QUERY_TOO_LARGE"
+          "const": "PRE20_OFFLINE_BUNDLE_REMEDIATION_PASS_COMPACT_RESPONSE_SCHEMA_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -2576,6 +2627,63 @@
         "provider_adapter_profile_review_composite_result": {
           "const": "INCOMPLETE_FAIL_CLOSED"
         },
+        "provider_adapter_profile_review_remediation_decision_candidate_id": {
+          "const": "CS-D02-PRE-20"
+        },
+        "provider_adapter_profile_review_remediation_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-20-REVIEW-BUNDLE-SIZE-REMEDIATION-RECOMMENDATION-v0.1.md"
+        },
+        "provider_adapter_profile_review_remediation_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-20-REVIEW-BUNDLE-SIZE-REMEDIATION-DECISION-RECORD.v0.1.json"
+        },
+        "provider_adapter_profile_review_remediation_plan_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-remediation-plan.v0.1.json"
+        },
+        "provider_adapter_profile_review_remediation_authorization_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/authorization-baseline-receipt.v0.1.json"
+        },
+        "provider_adapter_profile_review_projection_reference": {
+          "const": "architecture/provider-adapter-profile-review-projection.v0.1.json"
+        },
+        "provider_adapter_profile_review_coverage_matrix_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/review-coverage-matrix.v0.1.json"
+        },
+        "provider_adapter_profile_compact_request_manifest_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-review-request-manifest.v0.1.json"
+        },
+        "provider_adapter_profile_review_remediation_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-validation-result.v0.1.json"
+        },
+        "provider_adapter_profile_review_remediation_execution_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/execution-receipt.v0.1.json"
+        },
+        "provider_adapter_profile_review_remediation_report_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/PRE-20-REVIEW-BUNDLE-SIZE-REMEDIATION-RESULT-v0.1.md"
+        },
+        "provider_adapter_profile_review_remediation_offline_pass": {
+          "const": true
+        },
+        "provider_adapter_profile_review_remediation_source_hashes_matched": {
+          "const": 10
+        },
+        "provider_adapter_profile_review_remediation_pointers_resolved": {
+          "const": 40
+        },
+        "provider_adapter_profile_review_remediation_criteria_covered": {
+          "const": 7
+        },
+        "provider_adapter_profile_review_remediation_maximum_query_bytes": {
+          "const": 13995
+        },
+        "provider_adapter_profile_review_remediation_live_model_requests_executed": {
+          "const": 0
+        },
+        "provider_adapter_profile_review_remediation_live_review_ready": {
+          "const": false
+        },
+        "provider_adapter_profile_compact_response_schema_required": {
+          "const": true
+        },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
         },
@@ -2592,7 +2700,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_SEPARATE_EXACT_REVIEW_BUNDLE_SIZE_REMEDIATION_RECOMMENDATION_ONLY"
+          "const": "PREPARE_SEPARATE_COMPACT_REVIEW_RESPONSE_SCHEMA_AND_LIVE_REVIEW_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false

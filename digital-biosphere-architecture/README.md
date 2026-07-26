@@ -272,6 +272,13 @@ Adapter implementation、provider support、valid problem record 或 `CS-G0 PASS
 fallback 和 JSON repair 均为 0。因此 `REVIEW_COMPLETED=false`、`PROFILE_ADOPTED=false`，
 下一步仅允许准备独立的 exact review-bundle size remediation recommendation。
 
+`CS-D02-PRE-20` 已完成
+[offline review-bundle size remediation](commercialization-standards-provider-adapter-profile-review-remediation/PRE-20-REVIEW-BUNDLE-SIZE-REMEDIATION-RESULT-v0.1.md)：
+10/10 source hash、40/40 pointer、7/7 review criterion 和 6/6 semantic crosscheck 通过。
+最大候选请求由 50,962 bytes 降至 13,995 bytes，低于 TITMAS 内部 24,000-byte cap；
+live/provider request 仍为 0。该结果不证明 provider limit 或请求成功，并发现旧 reviewer
+response Schema 无法表达 `COMPACT_PROJECTION_ONLY`，所以 `LIVE_REVIEW_READY=false`。
+
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false
 TITMAS_GOVERNANCE_READY=false

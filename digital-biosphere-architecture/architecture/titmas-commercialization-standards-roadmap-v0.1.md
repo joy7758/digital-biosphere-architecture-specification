@@ -1272,6 +1272,45 @@ PREPARE_SEPARATE_EXACT_REVIEW_BUNDLE_SIZE_REMEDIATION_RECOMMENDATION_ONLY
 该结果不判断 Profile 内容正确性，不形成 provider support/adoption，也不授权重新发送、
 Profile adoption、Adapter implementation、conformance、record counting 或 `CS-G0`。
 
+### 4.32 PRE-20 Review Bundle Size Remediation
+
+[PRE-20 recommendation](../TITMAS-CS-D02-PRE-20-REVIEW-BUNDLE-SIZE-REMEDIATION-RECOMMENDATION-v0.1.md)
+依据 `TITMAS-CS-STANDING-001` 经独立
+[Decision](../TITMAS-CS-D02-PRE-20-REVIEW-BUNDLE-SIZE-REMEDIATION-DECISION-RECORD.md)、
+[offline plan](../commercialization-standards-provider-adapter-profile-review-remediation/offline-remediation-plan.v0.1.json)
+与远端授权回执执行。该阶段没有调用模型或 provider。
+
+[compact projection](provider-adapter-profile-review-projection-v0.1.md)、
+[coverage matrix](../commercialization-standards-provider-adapter-profile-review-remediation/review-coverage-matrix.v0.1.json)、
+[compact request manifest](../commercialization-standards-provider-adapter-profile-review-remediation/compact-review-request-manifest.v0.1.json)
+和 [offline result](../commercialization-standards-provider-adapter-profile-review-remediation/offline-validation-result.v0.1.json)
+验证：
+
+```text
+SOURCE_HASHES_MATCHED=10/10
+PROJECTION_AND_SOURCE_POINTERS_RESOLVED=40/40
+REVIEW_CRITERIA_COVERED=7/7
+SEMANTIC_PROJECTION_CROSSCHECKS_MATCHED=6/6
+OMITTED_MATERIAL_CLASSES_REGISTERED=5
+PRIOR_FAILED_QUERY_BYTES=50962
+MAX_COMPACT_QUERY_BYTES=13995
+INTERNAL_CAP_BYTES=24000
+OFFLINE_REMEDIATION_PASS=true
+LIVE_MODEL_REQUESTS_EXECUTED=0
+LIVE_REVIEW_READY=false
+```
+
+24,000 bytes 是 TITMAS 内部 cap，不是 provider limit 声明。投影不声称 lossless
+equivalence 或 full-source review。旧 full-profile reviewer response Schema 不能表达
+`COMPACT_PROJECTION_ONLY` 与 `FULL_SOURCE_ARTIFACTS_REVIEWED_BY_MODEL=false`，因此不得直接
+用于 live review。
+
+下一步只允许：
+
+```text
+PREPARE_SEPARATE_COMPACT_REVIEW_RESPONSE_SCHEMA_AND_LIVE_REVIEW_RECOMMENDATION_ONLY
+```
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -1695,7 +1734,14 @@ TITMAS_CS_D02_PRE_19_PROVIDER_SUCCESSES=0
 TITMAS_CS_D02_PRE_19_QUALIFYING_SESSIONS=0
 TITMAS_CS_D02_PRE_19_REVIEW_COMPLETED=false
 TITMAS_CS_D02_PRE_19_PROFILE_ADOPTED=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_SEPARATE_EXACT_REVIEW_BUNDLE_SIZE_REMEDIATION_RECOMMENDATION_ONLY
+TITMAS_CS_D02_PRE_20_OFFLINE_REMEDIATION_PASS=true
+TITMAS_CS_D02_PRE_20_SOURCE_HASHES_MATCHED=10
+TITMAS_CS_D02_PRE_20_POINTERS_RESOLVED=40
+TITMAS_CS_D02_PRE_20_REVIEW_CRITERIA_COVERED=7
+TITMAS_CS_D02_PRE_20_MAX_COMPACT_QUERY_BYTES=13995
+TITMAS_CS_D02_PRE_20_LIVE_MODEL_REQUESTS_EXECUTED=0
+TITMAS_CS_D02_PRE_20_LIVE_REVIEW_READY=false
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_SEPARATE_COMPACT_REVIEW_RESPONSE_SCHEMA_AND_LIVE_REVIEW_RECOMMENDATION_ONLY
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false
 TITMAS_VEAP_DRAFT_PROFILE_CANDIDATE_CREATED=true
