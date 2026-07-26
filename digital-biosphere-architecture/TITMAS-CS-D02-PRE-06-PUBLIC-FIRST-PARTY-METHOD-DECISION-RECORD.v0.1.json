@@ -1,0 +1,66 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-06-public-first-party-method-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-06-PUBLIC-FIRST-PARTY-METHOD-DECISION-RECORD-0.1",
+  "version": "0.1.0",
+  "status": "DECIDED_DESIGN_AND_TWO_AGENT_REVIEW_ONLY",
+  "decision_id": "CS-D02-PRE-06",
+  "parent_decision_id": "CS-D02",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PUBLIC-FIRST-PARTY-METHOD-RECOMMENDATION-v0.1.md",
+  "decision_result": "AUTHORIZE_METHOD_CANDIDATE_AND_TWO_AGENT_REVIEWS_ONLY",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-26T07:31:48Z",
+  "executed_by_ref": "codex",
+  "primary_repository": "digital-biosphere-architecture",
+  "authorized_artifacts": [
+    "architecture/veap-public-first-party-problem-report-method-amendment-v0.1.md",
+    "architecture/veap-public-first-party-problem-report-method-contract.v0.1.json",
+    "architecture/schemas/veap-public-first-party-problem-report-method-contract.schema.v0.1.json",
+    "commercialization-standards-public-source-method-review/"
+  ],
+  "review_envelope": {
+    "sessions_max": 2,
+    "provider_gateways": [
+      "qianfan",
+      "deepseek"
+    ],
+    "public_safe_local_materials_only": true,
+    "tools_allowed": false,
+    "browsing_allowed": false,
+    "external_writes_allowed": false,
+    "raw_provider_envelope_persisted": false,
+    "customer_or_personal_data_allowed": false,
+    "secrets_in_request_or_artifact_allowed": false,
+    "fallback_model_allowed": false,
+    "invalid_json_repair_allowed": false
+  },
+  "maximum_positive_effect": {
+    "method_candidate_defined": true,
+    "agent_review_complete": true,
+    "method_review_ready": true,
+    "method_adopted": false,
+    "public_source_collection_authorized": false,
+    "public_source_record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false
+  },
+  "non_effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "problem_validation_execution_authorized": false,
+    "public_source_collection_authorized": false,
+    "external_outreach_authorized": false,
+    "participant_enrollment_authorized": false,
+    "network_processing_authorized": false,
+    "data_collection_authorized": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false
+  }
+}

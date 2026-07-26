@@ -495,6 +495,64 @@ CUSTOMER_ADOPTION_PASS=false
 responsible owner 的 operational problem evidence。外联、参与者招募、客户／个人数据、
 实现和商业 Offering 继续为 `false`。
 
+### 4.15 Public First-party Problem Report Method Review
+
+在 Track A 关闭而 direct outreach、participant enrollment 和非公开数据继续被禁止的
+条件下，[CS-D02-PRE-06](../TITMAS-CS-D02-PRE-06-PUBLIC-FIRST-PARTY-METHOD-DECISION-RECORD.md)
+只授权：
+
+1. 建立公开第一方 operational problem report（运行问题报告）的方法候选和机器契约；
+2. 使用冻结、本地、public-safe 材料执行一个 Method Review 和一个 Claim／Privacy
+   Review；
+3. 最多两个会话，不浏览、不检索公开来源、不保存原始 provider envelope、不创建或计数
+   问题记录。
+
+[method amendment candidate](veap-public-first-party-problem-report-method-amendment-v0.1.md)
+把官方 Maintainer issue、incident report、project postmortem 和责任组织技术报告作为
+候选 first-party class；二手文章、宣传材料、搜索摘要、模型生成内容、不可归属或私有
+材料保持无资格。缺失的 problem、workaround、impact 和 priority 必须保持 `UNKNOWN`。
+
+[two-provider review](../commercialization-standards-public-source-method-review/VEAP-PUBLIC-FIRST-PARTY-METHOD-AGENT-REVIEW-v0.1.md)
+结果为：
+
+```text
+VALIDATION_ID=TITMAS-VEAP-PFPMR-20260726-001
+RESULT=PASS_REVIEW_COMPLETE_CHANGES_REQUIRED
+SESSIONS_EXECUTED=2
+PARSEABLE_SESSIONS=2
+PROVIDERS_WITH_SUCCESS=2
+REVIEW_ROLES_WITH_SUCCESS=2
+BOUNDARY_SAFETY_FAILURES=0
+ALL_FROZEN_THRESHOLDS_PASS=true
+```
+
+Qianfan 返回 `RETURN_FOR_REVISION`，DeepSeek 返回 `ACCEPT_WITH_CHANGES`；两者都保留
+`PUBLIC_SOURCE_VALID_RECORDS_MAX_TOWARD_CS_G0=2` 的候选上限，但要求先补足：
+
+- 复杂组织关系、母子组织、联盟和跨项目的 independence／deduplication；
+- accountable source role 的有记录核验；
+- 同一组织多个或冲突报告的处理；
+- 临时摘录／metadata 的保留与删除；
+- correction、removal 和 withdrawal；
+- 每条记录仍需 Human Decision Owner 独立计数决定。
+
+冻结候选没有在本轮被直接修改，避免审查输入 digest 漂移。下一动作是新的
+`CS-D02-PRE-07` method revision candidate；它尚未决定，也不能授权 source search、
+source collection、record counting 或 CS-D02 execution。
+
+```text
+PUBLIC_FIRST_PARTY_METHOD_CANDIDATE_DEFINED=true
+PUBLIC_FIRST_PARTY_METHOD_AGENT_REVIEW_COMPLETE=true
+PUBLIC_FIRST_PARTY_METHOD_REVIEW_RESULT=PASS_REVIEW_COMPLETE_CHANGES_REQUIRED
+PUBLIC_FIRST_PARTY_METHOD_REVISION_REQUIRED=true
+PUBLIC_FIRST_PARTY_METHOD_ADOPTED=false
+PUBLIC_SOURCE_SEARCH_AUTHORIZED=false
+PUBLIC_SOURCE_COLLECTION_AUTHORIZED=false
+PUBLIC_SOURCE_RECORD_COUNTING_AUTHORIZED=false
+VEAP_VALID_PROBLEM_RECORDS=0
+CS_G0_PASS=false
+```
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -836,6 +894,14 @@ TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_BOUNDARY_FAILURES=0
 TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_AUTHORIZATION_ENVELOPE_PASS=true
 TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_GATE_PASS=true
 TITMAS_CS_D02_AGENT_SIGNAL_RECORDS_COUNT_AS_VALID_PROBLEM_RECORDS=false
+TITMAS_CS_D02_PUBLIC_FIRST_PARTY_METHOD_CANDIDATE_DEFINED=true
+TITMAS_CS_D02_PUBLIC_FIRST_PARTY_METHOD_REVIEW_COMPLETE=true
+TITMAS_CS_D02_PUBLIC_FIRST_PARTY_METHOD_REVIEW_RESULT=PASS_REVIEW_COMPLETE_CHANGES_REQUIRED
+TITMAS_CS_D02_PUBLIC_FIRST_PARTY_METHOD_REVISION_REQUIRED=true
+TITMAS_CS_D02_PUBLIC_FIRST_PARTY_METHOD_ADOPTED=false
+TITMAS_CS_D02_PUBLIC_SOURCE_SEARCH_AUTHORIZED=false
+TITMAS_CS_D02_PUBLIC_SOURCE_COLLECTION_AUTHORIZED=false
+TITMAS_CS_D02_PUBLIC_SOURCE_RECORD_COUNTING_AUTHORIZED=false
 TITMAS_CS_D02_STORE_BACKEND_SELECTED=false
 TITMAS_CS_D02_PREREQUISITE_SELECTION_PACKET_PREPARED=true
 TITMAS_CS_D02_PREREQUISITE_SELECTION_ROUTE=SUPERSEDED_BY_AGENT_FIRST

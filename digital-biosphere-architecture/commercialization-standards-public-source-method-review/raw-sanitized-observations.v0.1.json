@@ -1,0 +1,145 @@
+{
+  "$schema": "./observation-set.schema.v0.1.json",
+  "schema_version": "0.1",
+  "validation_id": "TITMAS-VEAP-PFPMR-20260726-001",
+  "plan_reference": "validation-plan.v0.1.json",
+  "decision_reference": "CS-D02-PRE-06",
+  "executed_at": "2026-07-26T07:44:22.458Z",
+  "raw_provider_envelopes_persisted": false,
+  "sessions": [
+    {
+      "session_id": "QF-METHOD-PFPMR-S1",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "ernie-4.5-turbo-128k",
+      "reviewer_role": "METHOD_REVIEWER",
+      "started_at": "2026-07-26T07:44:01.006Z",
+      "completed_at": "2026-07-26T07:44:22.458Z",
+      "attempts": 1,
+      "request_sha256": "7fd5991b8adbcde63ac554f5b09411706850b0d031bd5cc3f69344b8238c4d21",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "30f44f5a762538d03758d74cad6de985b4fbcb978fb874f34d94282e13a432ac",
+      "provider_body_bytes": 3031,
+      "content_sha256": "0d2bc9312e8f098bfc3b30e555f2d1fe3a793a127f7ecc175f83c3a439522fb1",
+      "content_bytes": 2622,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 2185,
+        "completion_tokens": 613,
+        "total_tokens": 2798
+      },
+      "result": {
+        "session_id": "QF-METHOD-PFPMR-S1",
+        "reviewer_role": "METHOD_REVIEWER",
+        "recommendation": "RETURN_FOR_REVISION",
+        "method_problem_recognized": true,
+        "source_qualification_sufficient": true,
+        "missing_field_fail_closed": true,
+        "independence_deduplication_sufficient": false,
+        "privacy_copyright_claim_boundary_sufficient": true,
+        "counting_cap_assessment": "KEEP_MAX_2",
+        "strengths": [
+          "Clear source qualification criteria for first-party responsibility",
+          "Comprehensive required fields to prevent inferred data",
+          "Well-defined privacy, copyright, and claim boundaries"
+        ],
+        "required_changes": [
+          "Independence and deduplication rules need refinement to handle complex organizational relationships and cross-project dependencies",
+          "Clarify how to verify 'accountable source role' in practice",
+          "Add explicit guidance on handling sources from related but distinct organizations",
+          "Specify how to treat reports from parent/child organizations or consortiums"
+        ],
+        "blocking_findings": [
+          "Current independence rules may incorrectly disqualify valid reports from related organizations",
+          "Deduplication criteria could lead to false positives in complex project ecosystems",
+          "No clear process for resolving conflicts when multiple valid reports exist from same organization"
+        ],
+        "first_next_action": "Revise independence and deduplication rules with concrete examples",
+        "method_clarity_score": 3,
+        "boundary_safety_score": 4,
+        "decision_usefulness_score": 2,
+        "source_discipline_score": 3,
+        "boundary_answers": {
+          "public_report_is_titmas_consent": false,
+          "public_report_is_customer": false,
+          "public_report_is_adoption": false,
+          "source_problem_proves_veap_fit": false,
+          "model_review_is_independent_organization": false,
+          "method_candidate_is_execution_authorization": false,
+          "agent_review_is_method_adoption": false,
+          "method_review_is_cs_g0": false
+        },
+        "confidence": "MEDIUM",
+        "rationale": "The method demonstrates strong foundational elements in source qualification, field requirements, and privacy boundaries. However, the independence and deduplication rules require significant refinement to handle real-world organizational structures without introducing bias or false negatives. The counting cap appears appropriate for its intended purpose of preventing desk research substitution. With targeted revisions to the independence framework, this method could achieve Development review readiness."
+      }
+    },
+    {
+      "session_id": "DS-CLAIM-PRIVACY-PFPMR-S1",
+      "provider_gateway": "deepseek",
+      "endpoint_host": "api.deepseek.com",
+      "model": "deepseek-v4-pro",
+      "reviewer_role": "CLAIM_PRIVACY_REVIEWER",
+      "started_at": "2026-07-26T07:44:01.027Z",
+      "completed_at": "2026-07-26T07:44:10.617Z",
+      "attempts": 1,
+      "request_sha256": "f75a93c5edb5e71b4d6958debb1d34dd811b58510c3345d3d92c5c92827a2a1f",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "6d884cf65ea20c792b002d600009444638707e98ba4eb6c509947d5717e7c8c5",
+      "provider_body_bytes": 3484,
+      "content_sha256": "3a815f85632e2d895485fc57dd4d751c99c6fe1459254ec97e8621aa82c9d6d9",
+      "content_bytes": 2883,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 2068,
+        "completion_tokens": 646,
+        "total_tokens": 2714
+      },
+      "result": {
+        "session_id": "DS-CLAIM-PRIVACY-PFPMR-S1",
+        "reviewer_role": "CLAIM_PRIVACY_REVIEWER",
+        "recommendation": "ACCEPT_WITH_CHANGES",
+        "method_problem_recognized": true,
+        "source_qualification_sufficient": true,
+        "missing_field_fail_closed": true,
+        "independence_deduplication_sufficient": true,
+        "privacy_copyright_claim_boundary_sufficient": true,
+        "counting_cap_assessment": "KEEP_MAX_2",
+        "strengths": [
+          "Clear distinction between first-party accountable sources and secondary reporting",
+          "Explicit required fields with UNKNOWN preservation prevent inference",
+          "Strong independence and deduplication rules with conflict disclosure",
+          "Robust privacy, copyright, and removal boundaries with public-safe paraphrase and quote limits",
+          "Explicit claim boundaries prevent conflation of public reports with consent, customers, or adoption"
+        ],
+        "required_changes": [
+          "Add explicit retention and deletion policy for any temporarily stored source excerpts or metadata",
+          "Define a correction and removal path for public-source records if errors are identified post-review",
+          "Clarify that the maximum of two public-source records is a review candidate cap, not an adopted rule, and requires explicit Human Decision Owner approval before counting toward CS-G0",
+          "Strengthen the accountable source role verification by requiring a documented check (e.g., organizational affiliation on the source page) rather than relying solely on reviewer judgment"
+        ],
+        "blocking_findings": [],
+        "first_next_action": "Incorporate explicit retention, correction, and removal procedures into the method before human adoption decision",
+        "method_clarity_score": 3,
+        "boundary_safety_score": 3,
+        "decision_usefulness_score": 3,
+        "source_discipline_score": 3,
+        "boundary_answers": {
+          "public_report_is_titmas_consent": false,
+          "public_report_is_customer": false,
+          "public_report_is_adoption": false,
+          "source_problem_proves_veap_fit": false,
+          "model_review_is_independent_organization": false,
+          "method_candidate_is_execution_authorization": false,
+          "agent_review_is_method_adoption": false,
+          "method_review_is_cs_g0": false
+        },
+        "confidence": "HIGH",
+        "rationale": "The method clearly defines first-party source qualification, required fields with UNKNOWN fallback, and strong independence/deduplication rules. Privacy and copyright boundaries are well-specified with public-safe paraphrase and quote limits. Claim boundaries are explicitly stated to prevent misinterpretation. The counting cap of two is justified as a review candidate to avoid replacing direct responsibility contexts, but requires explicit human approval. Minor gaps exist in retention, correction, and removal procedures, which are necessary before execution. Overall, the method is clear, safe, and useful for Development review with the noted additions."
+      }
+    }
+  ]
+}

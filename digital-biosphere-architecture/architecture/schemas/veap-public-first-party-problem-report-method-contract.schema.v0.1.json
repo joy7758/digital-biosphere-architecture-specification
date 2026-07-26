@@ -1,0 +1,380 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:veap-public-first-party-problem-report-method-contract:0.1",
+  "title": "VEAP Public First-party Problem Report Method Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "method_reference",
+    "purpose",
+    "source_classes",
+    "required_qualification_fields",
+    "missing_field_policy",
+    "record_mapping",
+    "independence_rules",
+    "source_use_policy",
+    "candidate_counting_policy",
+    "review_requirements",
+    "current_effects",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/veap-public-first-party-problem-report-method-contract.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-VEAP-PUBLIC-FIRST-PARTY-PROBLEM-REPORT-METHOD-CONTRACT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DEVELOPMENT_METHOD_AMENDMENT_CANDIDATE_AGENT_REVIEW_REQUIRED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-06"
+    },
+    "method_reference": {
+      "const": "veap-public-first-party-problem-report-method-amendment-v0.1.md"
+    },
+    "purpose": {
+      "const": "QUALIFY_PUBLIC_FIRST_PARTY_OPERATIONAL_PROBLEM_REPORTS_WITHOUT_INFERRING_CUSTOMER_OR_MARKET_EVIDENCE"
+    },
+    "source_classes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "eligible",
+        "partial",
+        "ineligible"
+      ],
+      "properties": {
+        "eligible": {
+          "type": "array",
+          "minItems": 4,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 4
+          }
+        },
+        "partial": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 4
+          }
+        },
+        "ineligible": {
+          "type": "array",
+          "minItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 4
+          }
+        }
+      }
+    },
+    "required_qualification_fields": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    },
+    "missing_field_policy": {
+      "const": "PRESERVE_UNKNOWN_AND_MARK_PARTIAL_OR_INVALID"
+    },
+    "record_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observer_ref",
+        "organization_or_context_ref",
+        "human_accountability_ref",
+        "consent_reference",
+        "contract_review_interest",
+        "private_demo_review_interest",
+        "commercial_commitment",
+        "customer_adoption"
+      ],
+      "properties": {
+        "observer_ref": {
+          "const": "FIRST_PARTY_PUBLISHER_OR_ACCOUNTABLE_ROLE_REFERENCE"
+        },
+        "organization_or_context_ref": {
+          "const": "REPORTED_PROJECT_OR_OPERATIONAL_CONTEXT"
+        },
+        "human_accountability_ref": {
+          "const": "VERIFIABLE_SOURCE_ROLE_NOT_TITMAS_RESPONSIBILITY"
+        },
+        "consent_reference": {
+          "const": "NOT_APPLICABLE_PUBLIC_SOURCE_USE_BASIS"
+        },
+        "contract_review_interest": {
+          "const": "NOT_ASKED"
+        },
+        "private_demo_review_interest": {
+          "const": "NOT_ASKED"
+        },
+        "commercial_commitment": {
+          "const": false
+        },
+        "customer_adoption": {
+          "const": false
+        }
+      }
+    },
+    "independence_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "same_organization_project_or_incident_max_contexts",
+        "mirrors_forks_reposts_increase_independence",
+        "multiple_models_increase_independence",
+        "author_related_source_counts_as_independent",
+        "unverifiable_relationship_status"
+      ],
+      "properties": {
+        "same_organization_project_or_incident_max_contexts": {
+          "const": 1
+        },
+        "mirrors_forks_reposts_increase_independence": {
+          "const": false
+        },
+        "multiple_models_increase_independence": {
+          "const": false
+        },
+        "author_related_source_counts_as_independent": {
+          "const": false
+        },
+        "unverifiable_relationship_status": {
+          "const": "PARTIAL"
+        }
+      }
+    },
+    "source_use_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "public_access_only",
+        "access_control_bypass_allowed",
+        "public_safe_paraphrase_only",
+        "max_quoted_words_per_source",
+        "full_content_storage_allowed",
+        "direct_identifier_collection_allowed",
+        "contact_details_collection_allowed",
+        "credential_or_private_log_collection_allowed",
+        "publication_is_titmas_consent",
+        "publication_is_customer_testimonial",
+        "removal_and_correction_path_required"
+      ],
+      "properties": {
+        "public_access_only": {
+          "const": true
+        },
+        "access_control_bypass_allowed": {
+          "const": false
+        },
+        "public_safe_paraphrase_only": {
+          "const": true
+        },
+        "max_quoted_words_per_source": {
+          "const": 25
+        },
+        "full_content_storage_allowed": {
+          "const": false
+        },
+        "direct_identifier_collection_allowed": {
+          "const": false
+        },
+        "contact_details_collection_allowed": {
+          "const": false
+        },
+        "credential_or_private_log_collection_allowed": {
+          "const": false
+        },
+        "publication_is_titmas_consent": {
+          "const": false
+        },
+        "publication_is_customer_testimonial": {
+          "const": false
+        },
+        "removal_and_correction_path_required": {
+          "const": true
+        }
+      }
+    },
+    "candidate_counting_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "public_source_valid_records_max_toward_cs_g0",
+        "can_satisfy_continue_review_interest",
+        "direct_or_governed_responsibility_context_still_required",
+        "automatic_counting_allowed"
+      ],
+      "properties": {
+        "public_source_valid_records_max_toward_cs_g0": {
+          "const": 2
+        },
+        "can_satisfy_continue_review_interest": {
+          "const": false
+        },
+        "direct_or_governed_responsibility_context_still_required": {
+          "const": true
+        },
+        "automatic_counting_allowed": {
+          "const": false
+        }
+      }
+    },
+    "review_requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method_review_input_required",
+        "claim_privacy_review_input_required",
+        "human_counting_decision_required",
+        "record_creator_can_self_validate",
+        "agent_review_is_advisory_only"
+      ],
+      "properties": {
+        "method_review_input_required": {
+          "const": true
+        },
+        "claim_privacy_review_input_required": {
+          "const": true
+        },
+        "human_counting_decision_required": {
+          "const": true
+        },
+        "record_creator_can_self_validate": {
+          "const": false
+        },
+        "agent_review_is_advisory_only": {
+          "const": true
+        }
+      }
+    },
+    "current_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method_candidate_defined",
+        "method_adopted",
+        "desk_research_execution_authorized",
+        "public_source_collection_authorized",
+        "public_source_record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "customer_adoption"
+      ],
+      "properties": {
+        "method_candidate_defined": {
+          "const": true
+        },
+        "method_adopted": {
+          "const": false
+        },
+        "desk_research_execution_authorized": {
+          "const": false
+        },
+        "public_source_collection_authorized": {
+          "const": false
+        },
+        "public_source_record_counting_authorized": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "market_validation_pass": {
+          "const": false
+        },
+        "customer_adoption": {
+          "const": false
+        }
+      }
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_changed",
+        "ownership_changed",
+        "problem_validation_execution_authorized",
+        "external_outreach_authorized",
+        "data_collection_authorized",
+        "implementation_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized",
+        "agent_created",
+        "runtime_created",
+        "entity_created",
+        "permission_granted",
+        "canonical_evidence_created"
+      ],
+      "properties": {
+        "authority_changed": {
+          "const": false
+        },
+        "ownership_changed": {
+          "const": false
+        },
+        "problem_validation_execution_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "data_collection_authorized": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        },
+        "agent_created": {
+          "const": false
+        },
+        "runtime_created": {
+          "const": false
+        },
+        "entity_created": {
+          "const": false
+        },
+        "permission_granted": {
+          "const": false
+        },
+        "canonical_evidence_created": {
+          "const": false
+        }
+      }
+    }
+  }
+}

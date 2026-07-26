@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:public-first-party-method-agent-review-response:0.1",
+  "title": "Public First-party Problem Report Method Agent Review Response v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "session_id",
+    "reviewer_role",
+    "recommendation",
+    "method_problem_recognized",
+    "source_qualification_sufficient",
+    "missing_field_fail_closed",
+    "independence_deduplication_sufficient",
+    "privacy_copyright_claim_boundary_sufficient",
+    "counting_cap_assessment",
+    "strengths",
+    "required_changes",
+    "blocking_findings",
+    "first_next_action",
+    "method_clarity_score",
+    "boundary_safety_score",
+    "decision_usefulness_score",
+    "source_discipline_score",
+    "boundary_answers",
+    "confidence",
+    "rationale"
+  ],
+  "properties": {
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer_role": {
+      "enum": [
+        "METHOD_REVIEWER",
+        "CLAIM_PRIVACY_REVIEWER"
+      ]
+    },
+    "recommendation": {
+      "enum": [
+        "ACCEPT",
+        "ACCEPT_WITH_CHANGES",
+        "RETURN_FOR_REVISION",
+        "REJECT"
+      ]
+    },
+    "method_problem_recognized": {
+      "type": "boolean"
+    },
+    "source_qualification_sufficient": {
+      "type": "boolean"
+    },
+    "missing_field_fail_closed": {
+      "type": "boolean"
+    },
+    "independence_deduplication_sufficient": {
+      "type": "boolean"
+    },
+    "privacy_copyright_claim_boundary_sufficient": {
+      "type": "boolean"
+    },
+    "counting_cap_assessment": {
+      "enum": [
+        "KEEP_MAX_2",
+        "TIGHTEN",
+        "REMOVE_COUNTING",
+        "EXPAND_ONLY_WITH_EVIDENCE"
+      ]
+    },
+    "strengths": {
+      "$ref": "#/$defs/nonEmptyStringArray"
+    },
+    "required_changes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "blocking_findings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "first_next_action": {
+      "type": "string",
+      "minLength": 1
+    },
+    "method_clarity_score": {
+      "$ref": "#/$defs/score"
+    },
+    "boundary_safety_score": {
+      "$ref": "#/$defs/score"
+    },
+    "decision_usefulness_score": {
+      "$ref": "#/$defs/score"
+    },
+    "source_discipline_score": {
+      "$ref": "#/$defs/score"
+    },
+    "boundary_answers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "public_report_is_titmas_consent",
+        "public_report_is_customer",
+        "public_report_is_adoption",
+        "source_problem_proves_veap_fit",
+        "model_review_is_independent_organization",
+        "method_candidate_is_execution_authorization",
+        "agent_review_is_method_adoption",
+        "method_review_is_cs_g0"
+      ],
+      "properties": {
+        "public_report_is_titmas_consent": {
+          "const": false
+        },
+        "public_report_is_customer": {
+          "const": false
+        },
+        "public_report_is_adoption": {
+          "const": false
+        },
+        "source_problem_proves_veap_fit": {
+          "const": false
+        },
+        "model_review_is_independent_organization": {
+          "const": false
+        },
+        "method_candidate_is_execution_authorization": {
+          "const": false
+        },
+        "agent_review_is_method_adoption": {
+          "const": false
+        },
+        "method_review_is_cs_g0": {
+          "const": false
+        }
+      }
+    },
+    "confidence": {
+      "enum": [
+        "HIGH",
+        "MEDIUM",
+        "LOW"
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "$defs": {
+    "score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "nonEmptyStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

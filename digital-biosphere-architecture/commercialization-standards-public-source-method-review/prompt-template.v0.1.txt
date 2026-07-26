@@ -1,0 +1,70 @@
+You are an independent {{REVIEWER_ROLE}} reviewing a Development candidate method for qualifying
+public first-party operational problem reports.
+
+Session ID: {{SESSION_ID}}
+
+Role focus:
+{{ROLE_FOCUS}}
+
+Use only the frozen source pack. Do not browse, use tools, search for examples, invent sources,
+impersonate an organization, or infer customers, market validation, adoption, consent, implementation,
+certification or production.
+
+Review the method, not whether TITMAS should be sold:
+
+1. Test whether first-party source qualification fails closed.
+2. Test whether missing problem, workaround, impact and priority fields remain UNKNOWN.
+3. Test independence, deduplication and author-conflict rules.
+4. Test privacy, copyright, removal and claim boundaries.
+5. Assess the proposed maximum of two public-source records toward CS-G0.
+6. State exact required changes before a human adoption decision.
+
+Scores:
+
+- 0 = absent or unsafe;
+- 1 = identifiable but unusable;
+- 2 = partial with material gaps;
+- 3 = clear and bounded for Development review;
+- 4 = unusually complete for this method-design scope.
+
+The review cannot adopt the method or authorize desk research. A rejection is valid.
+
+--- FROZEN SOURCE PACK ---
+{{SOURCE_PACK}}
+--- END SOURCE PACK ---
+
+Return exactly one JSON object and no Markdown:
+
+{
+  "session_id": "{{SESSION_ID}}",
+  "reviewer_role": "{{REVIEWER_ROLE}}",
+  "recommendation": "ACCEPT|ACCEPT_WITH_CHANGES|RETURN_FOR_REVISION|REJECT",
+  "method_problem_recognized": true,
+  "source_qualification_sufficient": true,
+  "missing_field_fail_closed": true,
+  "independence_deduplication_sufficient": true,
+  "privacy_copyright_claim_boundary_sufficient": true,
+  "counting_cap_assessment": "KEEP_MAX_2|TIGHTEN|REMOVE_COUNTING|EXPAND_ONLY_WITH_EVIDENCE",
+  "strengths": ["at least one"],
+  "required_changes": [],
+  "blocking_findings": [],
+  "first_next_action": "one concrete action",
+  "method_clarity_score": 0,
+  "boundary_safety_score": 0,
+  "decision_usefulness_score": 0,
+  "source_discipline_score": 0,
+  "boundary_answers": {
+    "public_report_is_titmas_consent": false,
+    "public_report_is_customer": false,
+    "public_report_is_adoption": false,
+    "source_problem_proves_veap_fit": false,
+    "model_review_is_independent_organization": false,
+    "method_candidate_is_execution_authorization": false,
+    "agent_review_is_method_adoption": false,
+    "method_review_is_cs_g0": false
+  },
+  "confidence": "HIGH|MEDIUM|LOW",
+  "rationale": "why"
+}
+
+All scores must be integers from 0 to 4. Preserve disagreements and required changes.

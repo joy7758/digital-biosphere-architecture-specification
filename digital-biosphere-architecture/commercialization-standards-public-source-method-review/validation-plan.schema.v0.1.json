@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:public-first-party-method-review-plan:0.1",
+  "title": "Public First-party Problem Report Method Agent Review Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "validation_id",
+    "status",
+    "frozen_at",
+    "decision_reference",
+    "source_digests",
+    "sessions",
+    "request_contract",
+    "success_thresholds",
+    "retry_policy",
+    "data_policy",
+    "maximum_effect",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./validation-plan.schema.v0.1.json"
+    },
+    "schema_version": {
+      "const": "0.1"
+    },
+    "validation_id": {
+      "const": "TITMAS-VEAP-PFPMR-20260726-001"
+    },
+    "status": {
+      "const": "FROZEN_BEFORE_EXECUTION"
+    },
+    "frozen_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-06"
+    },
+    "source_digests": {
+      "type": "object",
+      "minProperties": 6,
+      "maxProperties": 6,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "session_id",
+          "provider_gateway",
+          "endpoint_host",
+          "model",
+          "reviewer_role",
+          "role_focus",
+          "thinking_mode"
+        ],
+        "properties": {
+          "session_id": {
+            "type": "string",
+            "minLength": 4
+          },
+          "provider_gateway": {
+            "enum": [
+              "qianfan",
+              "deepseek"
+            ]
+          },
+          "endpoint_host": {
+            "type": "string",
+            "minLength": 4
+          },
+          "model": {
+            "type": "string",
+            "minLength": 3
+          },
+          "reviewer_role": {
+            "enum": [
+              "METHOD_REVIEWER",
+              "CLAIM_PRIVACY_REVIEWER"
+            ]
+          },
+          "role_focus": {
+            "type": "string",
+            "minLength": 20
+          },
+          "thinking_mode": {
+            "enum": [
+              "PROVIDER_DEFAULT",
+              "DISABLED"
+            ]
+          }
+        }
+      }
+    },
+    "request_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "messages",
+        "temperature",
+        "max_tokens",
+        "response_format",
+        "request_timeout_ms",
+        "parallel_execution",
+        "deepseek_thinking_override"
+      ],
+      "properties": {
+        "messages": {
+          "const": "ONE_USER_MESSAGE_FROM_FROZEN_TEMPLATE"
+        },
+        "temperature": {
+          "const": 0.1
+        },
+        "max_tokens": {
+          "const": 2200
+        },
+        "response_format": {
+          "const": "json_object"
+        },
+        "request_timeout_ms": {
+          "const": 120000
+        },
+        "parallel_execution": {
+          "const": true
+        },
+        "deepseek_thinking_override": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "type"
+          ],
+          "properties": {
+            "type": {
+              "const": "disabled"
+            }
+          }
+        }
+      }
+    },
+    "success_thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sessions_planned",
+        "parseable_sessions_min",
+        "providers_with_success_min",
+        "review_roles_with_success_min",
+        "method_problem_recognized_min",
+        "non_reject_recommendations_min",
+        "boundary_safety_failures_max",
+        "mean_method_clarity_min",
+        "mean_boundary_safety_min",
+        "mean_decision_usefulness_min",
+        "mean_source_discipline_min"
+      ],
+      "properties": {
+        "sessions_planned": {
+          "const": 2
+        },
+        "parseable_sessions_min": {
+          "const": 2
+        },
+        "providers_with_success_min": {
+          "const": 2
+        },
+        "review_roles_with_success_min": {
+          "const": 2
+        },
+        "method_problem_recognized_min": {
+          "const": 2
+        },
+        "non_reject_recommendations_min": {
+          "const": 2
+        },
+        "boundary_safety_failures_max": {
+          "const": 0
+        },
+        "mean_method_clarity_min": {
+          "const": 2.5
+        },
+        "mean_boundary_safety_min": {
+          "const": 3.0
+        },
+        "mean_decision_usefulness_min": {
+          "const": 2.5
+        },
+        "mean_source_discipline_min": {
+          "const": 3.0
+        }
+      }
+    },
+    "retry_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "transport_retries_max",
+        "model_fallback_allowed",
+        "invalid_json_repair_prompt_allowed"
+      ],
+      "properties": {
+        "transport_retries_max": {
+          "const": 1
+        },
+        "model_fallback_allowed": {
+          "const": false
+        },
+        "invalid_json_repair_prompt_allowed": {
+          "const": false
+        }
+      }
+    },
+    "data_policy": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "minProperties": 7
+    },
+    "maximum_effect": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "minProperties": 6
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "boolean"
+      },
+      "minProperties": 12
+    }
+  }
+}

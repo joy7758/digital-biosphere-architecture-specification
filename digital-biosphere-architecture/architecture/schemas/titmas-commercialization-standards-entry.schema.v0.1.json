@@ -22,6 +22,7 @@
     "draft_contract_decision",
     "veap_agent_review_gate",
     "agent_native_problem_signal_gate",
+    "public_first_party_method_review",
     "human_decision",
     "standing_directive",
     "predecision_evidence",
@@ -43,7 +44,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_05_AGENT_NATIVE_PROBLEM_SIGNAL_GATE_PASSED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_06_PUBLIC_FIRST_PARTY_METHOD_REVIEW_COMPLETE_CHANGES_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -480,6 +481,68 @@
         "commercial_offer_effect": {"const": false}
       }
     },
+    "public_first_party_method_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "decision_result",
+        "decision_record_reference",
+        "recommendation_reference",
+        "method_amendment_reference",
+        "method_contract_reference",
+        "validation_id",
+        "result",
+        "report_reference",
+        "plan_reference",
+        "observation_reference",
+        "score_reference",
+        "sessions_planned",
+        "parseable_sessions",
+        "providers_with_success",
+        "review_roles_with_success",
+        "boundary_safety_failures",
+        "all_frozen_thresholds_pass",
+        "method_candidate_defined",
+        "method_agent_review_complete",
+        "method_review_ready",
+        "method_revision_required",
+        "method_adopted",
+        "public_source_collection_authorized",
+        "public_source_record_counting_authorized",
+        "valid_problem_records_created",
+        "cs_g0_effect"
+      ],
+      "properties": {
+        "decision_id": {"const": "CS-D02-PRE-06"},
+        "decision_result": {"const": "AUTHORIZE_METHOD_CANDIDATE_AND_TWO_AGENT_REVIEWS_ONLY"},
+        "decision_record_reference": {"const": "TITMAS-CS-D02-PRE-06-PUBLIC-FIRST-PARTY-METHOD-DECISION-RECORD.v0.1.json"},
+        "recommendation_reference": {"const": "TITMAS-CS-D02-PUBLIC-FIRST-PARTY-METHOD-RECOMMENDATION-v0.1.md"},
+        "method_amendment_reference": {"const": "architecture/veap-public-first-party-problem-report-method-amendment-v0.1.md"},
+        "method_contract_reference": {"const": "architecture/veap-public-first-party-problem-report-method-contract.v0.1.json"},
+        "validation_id": {"const": "TITMAS-VEAP-PFPMR-20260726-001"},
+        "result": {"const": "PASS_REVIEW_COMPLETE_CHANGES_REQUIRED"},
+        "report_reference": {"const": "commercialization-standards-public-source-method-review/VEAP-PUBLIC-FIRST-PARTY-METHOD-AGENT-REVIEW-v0.1.md"},
+        "plan_reference": {"const": "commercialization-standards-public-source-method-review/validation-plan.v0.1.json"},
+        "observation_reference": {"const": "commercialization-standards-public-source-method-review/raw-sanitized-observations.v0.1.json"},
+        "score_reference": {"const": "commercialization-standards-public-source-method-review/review-result.v0.1.json"},
+        "sessions_planned": {"const": 2},
+        "parseable_sessions": {"const": 2},
+        "providers_with_success": {"const": 2},
+        "review_roles_with_success": {"const": 2},
+        "boundary_safety_failures": {"const": 0},
+        "all_frozen_thresholds_pass": {"const": true},
+        "method_candidate_defined": {"const": true},
+        "method_agent_review_complete": {"const": true},
+        "method_review_ready": {"const": true},
+        "method_revision_required": {"const": true},
+        "method_adopted": {"const": false},
+        "public_source_collection_authorized": {"const": false},
+        "public_source_record_counting_authorized": {"const": false},
+        "valid_problem_records_created": {"const": 0},
+        "cs_g0_effect": {"const": false}
+      }
+    },
     "human_decision": {
       "type": "object",
       "additionalProperties": false,
@@ -772,6 +835,12 @@
         "roadmap_defined",
         "commercialization_standard_ready",
         "agent_native_problem_signal_gate_pass",
+        "public_first_party_method_candidate_defined",
+        "public_first_party_method_review_complete",
+        "public_first_party_method_revision_required",
+        "public_first_party_method_adopted",
+        "public_source_collection_authorized",
+        "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
         "veap_draft_profile_candidate_created",
@@ -797,6 +866,24 @@
         },
         "agent_native_problem_signal_gate_pass": {
           "const": true
+        },
+        "public_first_party_method_candidate_defined": {
+          "const": true
+        },
+        "public_first_party_method_review_complete": {
+          "const": true
+        },
+        "public_first_party_method_revision_required": {
+          "const": true
+        },
+        "public_first_party_method_adopted": {
+          "const": false
+        },
+        "public_source_collection_authorized": {
+          "const": false
+        },
+        "public_source_record_counting_authorized": {
+          "const": false
         },
         "veap_valid_problem_records": {
           "const": 0
@@ -903,6 +990,11 @@
         "prerequisite_selection_decision_ready",
         "draft_contract_decision_reference",
         "draft_contract_candidate_created",
+        "method_revision_decision_id",
+        "method_revision_required",
+        "method_revision_decision_recorded",
+        "public_source_method_adopted",
+        "public_source_execution_authorized",
         "current_recommended_option",
         "decision_ready",
         "external_execution_authorized"
@@ -916,7 +1008,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "AGENT_SIGNAL_PASS_OPERATIONAL_EVIDENCE_NOT_AUTHORIZED_DECISION_NOT_READY"
+          "const": "PUBLIC_FIRST_PARTY_METHOD_REVIEW_COMPLETE_REVISION_REQUIRED_DECISION_NOT_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -959,6 +1051,21 @@
         },
         "draft_contract_candidate_created": {
           "const": true
+        },
+        "method_revision_decision_id": {
+          "const": "CS-D02-PRE-07"
+        },
+        "method_revision_required": {
+          "const": true
+        },
+        "method_revision_decision_recorded": {
+          "const": false
+        },
+        "public_source_method_adopted": {
+          "const": false
+        },
+        "public_source_execution_authorized": {
+          "const": false
         },
         "current_recommended_option": {
           "const": "C"

@@ -1,0 +1,140 @@
+{
+  "$schema": "./review-result.schema.v0.1.json",
+  "schema_version": "0.1",
+  "validation_id": "TITMAS-VEAP-PFPMR-20260726-001",
+  "plan_reference": "validation-plan.v0.1.json",
+  "observation_reference": "raw-sanitized-observations.v0.1.json",
+  "scored_at": "2026-07-26T07:45:39Z",
+  "result": "PASS_REVIEW_COMPLETE_CHANGES_REQUIRED",
+  "threshold_results": {
+    "sessions_planned": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "parseable_sessions": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "providers_with_success": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "review_roles_with_success": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "method_problem_recognized": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "non_reject_recommendations": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "boundary_safety_failures": {
+      "actual": 0,
+      "required": 0,
+      "comparison": "MAX",
+      "pass": true
+    },
+    "mean_method_clarity": {
+      "actual": 3,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_boundary_safety": {
+      "actual": 3.5,
+      "required": 3,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_decision_usefulness": {
+      "actual": 2.5,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_source_discipline": {
+      "actual": 3,
+      "required": 3,
+      "comparison": "MIN",
+      "pass": true
+    }
+  },
+  "distribution": {
+    "recommendations": {
+      "ACCEPT": 0,
+      "ACCEPT_WITH_CHANGES": 1,
+      "RETURN_FOR_REVISION": 1,
+      "REJECT": 0
+    },
+    "counting_cap_assessments": {
+      "KEEP_MAX_2": 2,
+      "TIGHTEN": 0,
+      "REMOVE_COUNTING": 0,
+      "EXPAND_ONLY_WITH_EVIDENCE": 0
+    },
+    "confidence": {
+      "HIGH": 1,
+      "MEDIUM": 1,
+      "LOW": 0
+    }
+  },
+  "required_changes": [
+    "Refine independence and deduplication rules for complex organizational relationships, cross-project dependencies, parent or child organizations, consortiums and related but distinct organizations.",
+    "Define a documented verification procedure for the accountable source role instead of relying only on reviewer judgment.",
+    "Define how conflicting or multiple valid reports from the same organization are resolved without silent loss or false independence.",
+    "Add an explicit retention and deletion policy for temporarily stored source excerpts or metadata.",
+    "Define correction, removal and withdrawal handling for public-source records after review.",
+    "Keep the two-record CS-G0 cap explicitly candidate-only and require a Human Decision Owner decision before any record is counted."
+  ],
+  "applied_corrections": [],
+  "remaining_blockers": [
+    "The reviewed v0.1 candidate needs a separately reviewed revision before any method-adoption decision.",
+    "Independence and deduplication behavior is not yet sufficiently specified for complex organizational structures.",
+    "Retention, correction, removal and accountable-source-role verification procedures are incomplete.",
+    "Method adoption, desk research execution, public source collection and public source counting remain unauthorized."
+  ],
+  "authorization_audit": {
+    "decision_reference": "CS-D02-PRE-06",
+    "decision_created_before_execution": true,
+    "source_digests_match": true,
+    "authorized_sessions_max": 2,
+    "sessions_executed": 2,
+    "within_execution_envelope": true
+  },
+  "maximum_effect": {
+    "method_candidate_defined": true,
+    "agent_review_complete": true,
+    "method_review_ready": true
+  },
+  "non_effects": {
+    "method_adopted": false,
+    "problem_validation_execution_authorized": false,
+    "public_source_search_authorized": false,
+    "public_source_collection_authorized": false,
+    "public_source_record_counting_authorized": false,
+    "valid_problem_record_created": false,
+    "cs_g0_pass": false,
+    "external_outreach_authorized": false,
+    "data_collection_authorized": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "customer_adoption": false
+  }
+}

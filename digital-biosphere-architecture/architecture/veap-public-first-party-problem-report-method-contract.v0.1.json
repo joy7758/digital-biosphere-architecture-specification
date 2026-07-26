@@ -1,0 +1,116 @@
+{
+  "$schema": "./schemas/veap-public-first-party-problem-report-method-contract.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-VEAP-PUBLIC-FIRST-PARTY-PROBLEM-REPORT-METHOD-CONTRACT-0.1",
+  "version": "0.1.0",
+  "status": "DEVELOPMENT_METHOD_AMENDMENT_CANDIDATE_AGENT_REVIEW_REQUIRED",
+  "decision_reference": "CS-D02-PRE-06",
+  "method_reference": "veap-public-first-party-problem-report-method-amendment-v0.1.md",
+  "purpose": "QUALIFY_PUBLIC_FIRST_PARTY_OPERATIONAL_PROBLEM_REPORTS_WITHOUT_INFERRING_CUSTOMER_OR_MARKET_EVIDENCE",
+  "source_classes": {
+    "eligible": [
+      "OFFICIAL_MAINTAINER_ISSUE",
+      "OFFICIAL_INCIDENT_REPORT",
+      "OFFICIAL_PROJECT_POSTMORTEM",
+      "ACCOUNTABLE_ORGANIZATION_TECHNICAL_REPORT"
+    ],
+    "partial": [
+      "OFFICIAL_SOURCE_MISSING_REQUIRED_FIELDS"
+    ],
+    "ineligible": [
+      "SECONDARY_NEWS_OR_ARTICLE",
+      "PROMOTIONAL_CASE_STUDY",
+      "SEARCH_SNIPPET",
+      "MODEL_GENERATED_OR_SYNTHETIC_CONTENT",
+      "UNATTRIBUTED_OR_PRIVATE_MATERIAL"
+    ]
+  },
+  "required_qualification_fields": [
+    "canonical_public_source_ref",
+    "source_publisher_ref",
+    "accountable_source_role",
+    "published_at",
+    "observed_at",
+    "recent_example",
+    "problem_area",
+    "current_workaround",
+    "workaround_limitations",
+    "measurable_cost_or_risk",
+    "priority_basis",
+    "existing_alternatives",
+    "source_integrity",
+    "independence_basis",
+    "reviewer_refs",
+    "known_limitations"
+  ],
+  "missing_field_policy": "PRESERVE_UNKNOWN_AND_MARK_PARTIAL_OR_INVALID",
+  "record_mapping": {
+    "observer_ref": "FIRST_PARTY_PUBLISHER_OR_ACCOUNTABLE_ROLE_REFERENCE",
+    "organization_or_context_ref": "REPORTED_PROJECT_OR_OPERATIONAL_CONTEXT",
+    "human_accountability_ref": "VERIFIABLE_SOURCE_ROLE_NOT_TITMAS_RESPONSIBILITY",
+    "consent_reference": "NOT_APPLICABLE_PUBLIC_SOURCE_USE_BASIS",
+    "contract_review_interest": "NOT_ASKED",
+    "private_demo_review_interest": "NOT_ASKED",
+    "commercial_commitment": false,
+    "customer_adoption": false
+  },
+  "independence_rules": {
+    "same_organization_project_or_incident_max_contexts": 1,
+    "mirrors_forks_reposts_increase_independence": false,
+    "multiple_models_increase_independence": false,
+    "author_related_source_counts_as_independent": false,
+    "unverifiable_relationship_status": "PARTIAL"
+  },
+  "source_use_policy": {
+    "public_access_only": true,
+    "access_control_bypass_allowed": false,
+    "public_safe_paraphrase_only": true,
+    "max_quoted_words_per_source": 25,
+    "full_content_storage_allowed": false,
+    "direct_identifier_collection_allowed": false,
+    "contact_details_collection_allowed": false,
+    "credential_or_private_log_collection_allowed": false,
+    "publication_is_titmas_consent": false,
+    "publication_is_customer_testimonial": false,
+    "removal_and_correction_path_required": true
+  },
+  "candidate_counting_policy": {
+    "public_source_valid_records_max_toward_cs_g0": 2,
+    "can_satisfy_continue_review_interest": false,
+    "direct_or_governed_responsibility_context_still_required": true,
+    "automatic_counting_allowed": false
+  },
+  "review_requirements": {
+    "method_review_input_required": true,
+    "claim_privacy_review_input_required": true,
+    "human_counting_decision_required": true,
+    "record_creator_can_self_validate": false,
+    "agent_review_is_advisory_only": true
+  },
+  "current_effects": {
+    "method_candidate_defined": true,
+    "method_adopted": false,
+    "desk_research_execution_authorized": false,
+    "public_source_collection_authorized": false,
+    "public_source_record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption": false
+  },
+  "non_effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "problem_validation_execution_authorized": false,
+    "external_outreach_authorized": false,
+    "data_collection_authorized": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false
+  }
+}
