@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/desk-research-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-09 Desk Research Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "authorization_baseline_receipt_reference",
+    "authorization_baseline_commit",
+    "plan_reference",
+    "candidate_set_reference",
+    "result_report_reference",
+    "executed_at",
+    "plan_sha256",
+    "candidate_set_sha256",
+    "execution_metrics",
+    "candidate_status_counts",
+    "verification",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./desk-research-execution-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-09-DESK-RESEARCH-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "EXECUTED_PARTIAL_CANDIDATES_COUNTING_NOT_AUTHORIZED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-09"
+    },
+    "authorization_baseline_receipt_reference": {
+      "const": "authorization-baseline-receipt.v0.1.json"
+    },
+    "authorization_baseline_commit": {
+      "const": "d49428003dc994be033bb6d2c49b814aef9be489"
+    },
+    "plan_reference": {
+      "const": "desk-research-execution-plan.v0.1.json"
+    },
+    "candidate_set_reference": {
+      "const": "source-candidate-set.v0.1.json"
+    },
+    "result_report_reference": {
+      "const": "DESK-RESEARCH-RESULT-v0.1.md"
+    },
+    "executed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "plan_sha256": {
+      "const": "c2b749675f2f4d2330e57bf60518f83b6810db2bdb6b8f996662d6e69703a8be"
+    },
+    "candidate_set_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "execution_metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runs",
+        "queries_executed",
+        "public_pages_opened",
+        "candidate_records_created",
+        "cap_violations"
+      ],
+      "properties": {
+        "runs": {"const": 1},
+        "queries_executed": {"const": 8},
+        "public_pages_opened": {"const": 8},
+        "candidate_records_created": {"const": 4},
+        "cap_violations": {"const": 0}
+      }
+    },
+    "candidate_status_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_unreviewed",
+        "partial",
+        "invalid",
+        "conflicted",
+        "invalid_authorization_envelope",
+        "valid"
+      ],
+      "properties": {
+        "candidate_unreviewed": {"const": 0},
+        "partial": {"const": 4},
+        "invalid": {"const": 0},
+        "conflicted": {"const": 0},
+        "invalid_authorization_envelope": {"const": 0},
+        "valid": {"const": 0}
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "remote_authorization_baseline_verified_before_execution",
+        "frozen_queries_executed_at_most_once",
+        "allowed_surface_only",
+        "page_cap_honored",
+        "candidate_cap_honored",
+        "valid_status_prohibited",
+        "raw_content_persisted",
+        "direct_personal_identifiers_persisted",
+        "automatic_counting_performed"
+      ],
+      "properties": {
+        "remote_authorization_baseline_verified_before_execution": {"const": true},
+        "frozen_queries_executed_at_most_once": {"const": true},
+        "allowed_surface_only": {"const": true},
+        "page_cap_honored": {"const": true},
+        "candidate_cap_honored": {"const": true},
+        "valid_status_prohibited": {"const": true},
+        "raw_content_persisted": {"const": false},
+        "direct_personal_identifiers_persisted": {"const": false},
+        "automatic_counting_performed": {"const": false}
+      }
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "customer_adoption",
+        "implementation_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "market_validation_pass": {"const": false},
+        "customer_adoption": {"const": false},
+        "implementation_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

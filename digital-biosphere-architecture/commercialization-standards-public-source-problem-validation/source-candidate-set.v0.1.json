@@ -1,0 +1,290 @@
+{
+  "$schema": "./source-candidate-set.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-09-SOURCE-CANDIDATE-SET-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTED_CANDIDATES_UNREVIEWED",
+  "decision_reference": "CS-D02-PRE-09",
+  "plan_reference": "desk-research-execution-plan.v0.1.json",
+  "executed_at": "2026-07-26T08:50:33Z",
+  "execution_metrics": {
+    "runs": 1,
+    "queries_executed": 8,
+    "public_pages_opened": 8,
+    "candidate_records_created": 4,
+    "cap_violations": 0
+  },
+  "candidates": [
+    {
+      "candidate_id": "PFPC-001",
+      "candidate_status": "PARTIAL",
+      "source_class": "ACCOUNTABLE_ORGANIZATION_TECHNICAL_REPORT",
+      "canonical_public_source_ref": "https://opentelemetry.io/blog/2025/ai-agent-observability/",
+      "source_publisher_ref": "OpenTelemetry official website",
+      "accountable_source_role": "Publisher-controlled OpenTelemetry technical publication surface",
+      "accountable_role_verification": {
+        "status": "VERIFIED_FOR_CANDIDATE_REVIEW",
+        "publisher_controlled_role_reference": "https://opentelemetry.io/blog/2025/ai-agent-observability/",
+        "source_to_system_responsibility_binding": "The official project website publishes a project-level technical assessment of AI-agent observability standards and fragmentation.",
+        "reviewer_ref": "codex",
+        "known_conflicts": []
+      },
+      "published_or_updated_at": "2025-03-06T00:00:00Z",
+      "observed_at": "2026-07-26T08:50:33Z",
+      "recent_example": true,
+      "problem_area": "TRACE_OR_PROVENANCE_GAP",
+      "problem_summary": "The official project article describes agent observability as fragmented across framework-native and vendor-specific instrumentation and identifies the need for a standardized telemetry shape for diagnosis, evaluation input, reliability work, and reduced lock-in.",
+      "current_workaround": "Use framework-specific instrumentation, vendor observability products, or emerging OpenTelemetry GenAI conventions.",
+      "workaround_limitations": "Different formats increase integration and comparison cost, and telemetry remains incomplete or inconsistent across agent frameworks.",
+      "measurable_cost_or_risk": "The source identifies diagnosis, reliability, interoperability, and vendor-lock-in risk but does not quantify frequency, monetary impact, or affected deployment count.",
+      "priority_basis": "This is a publisher-controlled technical report from the referenced observability project and directly addresses cross-framework agent telemetry standardization.",
+      "existing_alternatives": [
+        "Framework-native instrumentation",
+        "Vendor-specific observability tooling",
+        "Emerging OpenTelemetry GenAI semantic conventions"
+      ],
+      "source_integrity": "PUBLIC_SOURCE_OBSERVED",
+      "relationship_classification": "UNKNOWN_RELATIONSHIP",
+      "independence_basis": "No ownership or control assessment between the publisher and TITMAS was performed in this bounded run; independence is therefore not inferred.",
+      "source_context_key": {
+        "controlling_organization_or_governance": "OpenTelemetry project governance",
+        "governed_project_system_or_workflow": "AI-agent observability standards and instrumentation",
+        "incident_event_or_problem_root": "Fragmented framework-specific and vendor-specific telemetry shapes",
+        "declared_time_window": "2025-03-06"
+      },
+      "report_lineage": [
+        "https://opentelemetry.io/blog/2025/ai-agent-observability/"
+      ],
+      "retention_disposition": {
+        "raw_content_stored": false,
+        "temporary_excerpt_deleted": true,
+        "deletion_tombstone": "NO_PERSISTED_EXCERPT; transient browsing material discarded at 2026-07-26T08:50:33Z.",
+        "minimal_metadata_retained": true
+      },
+      "reviewer_refs": [
+        "codex"
+      ],
+      "known_limitations": [
+        "The publisher warns that the post may be outdated and requires cross-verification.",
+        "No quantified operational cost, frequency, or affected deployment count is supplied.",
+        "Organization independence from TITMAS was not assessed.",
+        "A technical report is not a TITMAS customer testimonial, consent record, or VEAP-fit decision."
+      ],
+      "quoted_word_count": 0,
+      "raw_content_stored": false,
+      "direct_personal_identifiers_stored": false,
+      "metadata_sha256": "c33ec542dd131e12302e109651dcb03f307e3cdbb7ff7001b98874e44822d960",
+      "counting_effect": false
+    },
+    {
+      "candidate_id": "PFPC-002",
+      "candidate_status": "PARTIAL",
+      "source_class": "OFFICIAL_MAINTAINER_ISSUE",
+      "canonical_public_source_ref": "https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1391",
+      "source_publisher_ref": "Model Context Protocol official GitHub repository",
+      "accountable_source_role": "Standards-track proposal submitter in the official repository; maintainer sponsorship not verified",
+      "accountable_role_verification": {
+        "status": "PARTIAL",
+        "publisher_controlled_role_reference": "https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1391",
+        "source_to_system_responsibility_binding": "The official repository labels the item as a standards-track proposal, but also records it as a proposal without a sponsor; maintainer accountability is not established.",
+        "reviewer_ref": "codex",
+        "known_conflicts": [
+          "Official project surface and standards-track classification coexist with an explicit no-sponsor state."
+        ]
+      },
+      "published_or_updated_at": "2025-08-26T00:00:00Z",
+      "observed_at": "2026-07-26T08:50:33Z",
+      "recent_example": true,
+      "problem_area": "LONG_TERM_RELIABILITY",
+      "problem_summary": "The proposal reports that MCP's single request-response tool execution model is insufficient for operations lasting minutes to hours, leaving implementers to duplicate state tracking, timeout handling, polling, and recovery logic.",
+      "current_workaround": "Implement custom host-level long-running-operation handling or rely on external workflow systems and their native execution identifiers.",
+      "workaround_limitations": "Custom implementations are described as redundant and error-prone, while model-directed polling is inconsistent and ordinary request timeouts do not generalize across long-running tools.",
+      "measurable_cost_or_risk": "The source identifies duplicated implementation effort, timeout and resource-exhaustion risk, inconsistent recovery behavior, and blocked workflows; it does not provide independently verified cost or incident frequency.",
+      "priority_basis": "The problem directly concerns durable execution identity, lifecycle status, retries, result retrieval, and recovery across long-running agent-tool operations.",
+      "existing_alternatives": [
+        "Custom host-level polling and state tracking",
+        "External workflow systems",
+        "Protocol-level operation tokens proposed by the source"
+      ],
+      "source_integrity": "PUBLIC_SOURCE_OBSERVED",
+      "relationship_classification": "UNKNOWN_RELATIONSHIP",
+      "independence_basis": "No ownership or control assessment between the proposal participants, the MCP project, cited organizations, and TITMAS was performed.",
+      "source_context_key": {
+        "controlling_organization_or_governance": "Model Context Protocol project governance",
+        "governed_project_system_or_workflow": "MCP long-running tool execution",
+        "incident_event_or_problem_root": "Single request-response execution model lacks a standardized long-running operation lifecycle",
+        "declared_time_window": "2025-08-26"
+      },
+      "report_lineage": [
+        "https://github.com/modelcontextprotocol/modelcontextprotocol/issues/1391"
+      ],
+      "retention_disposition": {
+        "raw_content_stored": false,
+        "temporary_excerpt_deleted": true,
+        "deletion_tombstone": "NO_PERSISTED_EXCERPT; transient browsing material discarded at 2026-07-26T08:50:33Z.",
+        "minimal_metadata_retained": true
+      },
+      "reviewer_refs": [
+        "codex"
+      ],
+      "known_limitations": [
+        "The source is a closed proposal without a sponsor, not an accepted MCP standard.",
+        "Maintainer or accountable operational responsibility of the submitter was not verified.",
+        "Customer-use descriptions inside the proposal were not independently verified and are not customer evidence for TITMAS.",
+        "Organization independence and deduplication context remain unresolved."
+      ],
+      "quoted_word_count": 0,
+      "raw_content_stored": false,
+      "direct_personal_identifiers_stored": false,
+      "metadata_sha256": "0b6e45ae5b92baeeb80e9cf5358b1a64fd6ac638dd683c9e999a2f1d85bd3536",
+      "counting_effect": false
+    },
+    {
+      "candidate_id": "PFPC-003",
+      "candidate_status": "PARTIAL",
+      "source_class": "OFFICIAL_MAINTAINER_ISSUE",
+      "canonical_public_source_ref": "https://github.com/crewAIInc/crewAI/issues/3154",
+      "source_publisher_ref": "CrewAI official GitHub repository",
+      "accountable_source_role": "Public issue reporter; maintainer or governed deployment responsibility not verified",
+      "accountable_role_verification": {
+        "status": "PARTIAL",
+        "publisher_controlled_role_reference": "https://github.com/crewAIInc/crewAI/issues/3154",
+        "source_to_system_responsibility_binding": "The issue appears on the official project repository with a bug label, but the reporter's maintainer role and responsibility for a governed deployment are not established.",
+        "reviewer_ref": "codex",
+        "known_conflicts": []
+      },
+      "published_or_updated_at": "2025-07-14T00:00:00Z",
+      "observed_at": "2026-07-26T08:50:33Z",
+      "recent_example": true,
+      "problem_area": "AGENT_EXECUTION_ACCOUNTABILITY",
+      "problem_summary": "The issue reports an agent producing a plausible action-and-observation trace without invoking the declared tool, while logs and the tracing interface showed no corresponding tool execution.",
+      "current_workaround": "Inspect execution logs and tracing output manually and add validation that a declared tool action has a corresponding invocation record.",
+      "workaround_limitations": "A convincing generated trace can conceal the absence of execution, so manual review and framework-specific validation may miss silent failures or scale poorly.",
+      "measurable_cost_or_risk": "The reported risk is false execution appearance and unsupported downstream output; the source does not provide independent reproduction, frequency, affected-user count, or quantified loss.",
+      "priority_basis": "The scenario maps directly to the distinction between an agent claim, an execution record, an observation, and admitted evidence.",
+      "existing_alternatives": [
+        "Manual log inspection",
+        "Framework-specific tool invocation hooks",
+        "External tracing and invocation validation"
+      ],
+      "source_integrity": "PUBLIC_SOURCE_OBSERVED",
+      "relationship_classification": "UNKNOWN_RELATIONSHIP",
+      "independence_basis": "The reporter's organizational relationship, deployment responsibility, and relationship to TITMAS were not established.",
+      "source_context_key": {
+        "controlling_organization_or_governance": "CrewAI project issue governance",
+        "governed_project_system_or_workflow": "Custom-model agent tool invocation with tracing",
+        "incident_event_or_problem_root": "Generated observation represented tool use without a corresponding tool invocation",
+        "declared_time_window": "2025-07-14"
+      },
+      "report_lineage": [
+        "https://github.com/crewAIInc/crewAI/issues/3154"
+      ],
+      "retention_disposition": {
+        "raw_content_stored": false,
+        "temporary_excerpt_deleted": true,
+        "deletion_tombstone": "NO_PERSISTED_EXCERPT; transient browsing material discarded at 2026-07-26T08:50:33Z.",
+        "minimal_metadata_retained": true
+      },
+      "reviewer_refs": [
+        "codex"
+      ],
+      "known_limitations": [
+        "The issue reporter's maintainer role and governed operational responsibility are unverified.",
+        "The scenario uses a custom model and environment and was not independently reproduced in this run.",
+        "The issue is closed as not planned and does not establish a confirmed fix or root-cause decision.",
+        "Organization independence and duplicate-context status remain unresolved."
+      ],
+      "quoted_word_count": 0,
+      "raw_content_stored": false,
+      "direct_personal_identifiers_stored": false,
+      "metadata_sha256": "081c869628dc8ca9e661a3f4ea64bde5743cc2514d67ffa23e4cab38cb6f43a8",
+      "counting_effect": false
+    },
+    {
+      "candidate_id": "PFPC-004",
+      "candidate_status": "PARTIAL",
+      "source_class": "OFFICIAL_MAINTAINER_ISSUE",
+      "canonical_public_source_ref": "https://github.com/open-telemetry/opentelemetry-python/issues/4784",
+      "source_publisher_ref": "OpenTelemetry Python official GitHub repository",
+      "accountable_source_role": "Organization-affiliated public issue reporter; project maintainer responsibility not verified",
+      "accountable_role_verification": {
+        "status": "PARTIAL",
+        "publisher_controlled_role_reference": "https://github.com/open-telemetry/opentelemetry-python/issues/4784",
+        "source_to_system_responsibility_binding": "The official repository records an interaction between HTTP auto-instrumentation and an AI-agent SDK, but it does not establish the reporter as an OpenTelemetry maintainer or operational owner.",
+        "reviewer_ref": "codex",
+        "known_conflicts": []
+      },
+      "published_or_updated_at": "2025-10-23T00:00:00Z",
+      "observed_at": "2026-07-26T08:50:33Z",
+      "recent_example": true,
+      "problem_area": "LONG_TERM_RELIABILITY",
+      "problem_summary": "The issue reports that enabling HTTP auto-instrumentation altered a structured-response request path and caused an AI-agent creation operation to fail, showing that observability integration can interfere with the governed workload it observes.",
+      "current_workaround": "UNKNOWN; the issue does not document a confirmed workaround or resolved implementation path.",
+      "workaround_limitations": "Without a confirmed resolution, operators may have to choose between the affected instrumentation path and normal agent SDK behavior, but that mitigation was not validated by the source.",
+      "measurable_cost_or_risk": "The observed consequence is a failed agent creation API operation and potential telemetry-to-runtime interference; no failure rate, deployment count, or monetary cost is supplied.",
+      "priority_basis": "The scenario supports a non-interference and version-pinning requirement for trust infrastructure, while remaining separate from evidence or market-validation claims.",
+      "existing_alternatives": [
+        "Disable the affected auto-instrumentation path pending investigation",
+        "Use a different bounded instrumentation path",
+        "Pin and test compatible component versions"
+      ],
+      "source_integrity": "PUBLIC_SOURCE_OBSERVED",
+      "relationship_classification": "UNKNOWN_RELATIONSHIP",
+      "independence_basis": "The reporter's exact responsibility, the relationship between involved organizations, and any relationship to TITMAS were not established.",
+      "source_context_key": {
+        "controlling_organization_or_governance": "OpenTelemetry Python project issue governance",
+        "governed_project_system_or_workflow": "HTTP auto-instrumentation with an AI-agent SDK structured-response path",
+        "incident_event_or_problem_root": "Instrumentation changed request serialization and the agent creation operation failed",
+        "declared_time_window": "2025-10-23"
+      },
+      "report_lineage": [
+        "https://github.com/open-telemetry/opentelemetry-python/issues/4784"
+      ],
+      "retention_disposition": {
+        "raw_content_stored": false,
+        "temporary_excerpt_deleted": true,
+        "deletion_tombstone": "NO_PERSISTED_EXCERPT; transient browsing material discarded at 2026-07-26T08:50:33Z.",
+        "minimal_metadata_retained": true
+      },
+      "reviewer_refs": [
+        "codex"
+      ],
+      "known_limitations": [
+        "The reporter's OpenTelemetry maintainer role and operational accountability are unverified.",
+        "No independent reproduction or confirmed resolution was performed in this run.",
+        "The issue is closed with no linked development artifact visible in the reviewed page.",
+        "Organization relationship and independence remain unresolved."
+      ],
+      "quoted_word_count": 0,
+      "raw_content_stored": false,
+      "direct_personal_identifiers_stored": false,
+      "metadata_sha256": "80f6e2780ac6bb2924dcec875dca93bc2038cf3d68d87515326e8bdccdeb1634",
+      "counting_effect": false
+    }
+  ],
+  "failures": [
+    "Search-result snippets and repository index pages were used only for navigation and were not retained as source candidates.",
+    "A LangChain result outside the frozen source time window was excluded.",
+    "Educational walkthroughs without a sufficiently bounded operational problem report were excluded.",
+    "Additional MCP transport and session issues were excluded because the four-candidate cap was reached and accountable-role verification remained incomplete.",
+    "No source was assigned VALID status and no candidate was counted."
+  ],
+  "boundary_audit": {
+    "allowlist_violations": 0,
+    "authentication_attempts": 0,
+    "access_control_bypass_attempts": 0,
+    "raw_content_persisted": 0,
+    "direct_personal_identifiers_persisted": 0,
+    "automatic_valid_statuses": 0,
+    "automatic_counting_events": 0
+  },
+  "non_effects": {
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

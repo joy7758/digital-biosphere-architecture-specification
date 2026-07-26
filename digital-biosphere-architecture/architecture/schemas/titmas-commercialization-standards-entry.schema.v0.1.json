@@ -47,7 +47,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_09_REMOTE_BASELINE_VERIFIED_EXECUTION_NOT_STARTED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_09_DESK_RESEARCH_EXECUTED_PARTIAL_CANDIDATES_COUNTING_NOT_AUTHORIZED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -664,6 +664,9 @@
         "recommendation_reference",
         "execution_plan_reference",
         "authorization_baseline_receipt_reference",
+        "result_report_reference",
+        "source_candidate_set_reference",
+        "execution_receipt_reference",
         "authorization_baseline_commit",
         "queries_max",
         "public_pages_opened_max",
@@ -675,6 +678,12 @@
         "authorization_baseline_pushed",
         "execution_started",
         "execution_completed",
+        "queries_executed",
+        "public_pages_opened",
+        "candidate_records_created",
+        "partial_candidate_records",
+        "valid_candidate_records",
+        "execution_authorization_consumed",
         "public_source_record_counting_authorized",
         "valid_problem_records_created",
         "cs_g0_effect"
@@ -686,6 +695,9 @@
         "recommendation_reference": {"const": "TITMAS-CS-D02-PUBLIC-FIRST-PARTY-DESK-RESEARCH-RECOMMENDATION-v0.1.md"},
         "execution_plan_reference": {"const": "commercialization-standards-public-source-problem-validation/desk-research-execution-plan.v0.1.json"},
         "authorization_baseline_receipt_reference": {"const": "commercialization-standards-public-source-problem-validation/authorization-baseline-receipt.v0.1.json"},
+        "result_report_reference": {"const": "commercialization-standards-public-source-problem-validation/DESK-RESEARCH-RESULT-v0.1.md"},
+        "source_candidate_set_reference": {"const": "commercialization-standards-public-source-problem-validation/source-candidate-set.v0.1.json"},
+        "execution_receipt_reference": {"const": "commercialization-standards-public-source-problem-validation/desk-research-execution-receipt.v0.1.json"},
         "authorization_baseline_commit": {"const": "d49428003dc994be033bb6d2c49b814aef9be489"},
         "queries_max": {"const": 8},
         "public_pages_opened_max": {"const": 12},
@@ -695,8 +707,14 @@
         "public_source_candidate_creation_authorized": {"const": true},
         "authorization_baseline_committed": {"const": true},
         "authorization_baseline_pushed": {"const": true},
-        "execution_started": {"const": false},
-        "execution_completed": {"const": false},
+        "execution_started": {"const": true},
+        "execution_completed": {"const": true},
+        "queries_executed": {"const": 8},
+        "public_pages_opened": {"const": 8},
+        "candidate_records_created": {"const": 4},
+        "partial_candidate_records": {"const": 4},
+        "valid_candidate_records": {"const": 0},
+        "execution_authorization_consumed": {"const": true},
         "public_source_record_counting_authorized": {"const": false},
         "valid_problem_records_created": {"const": 0},
         "cs_g0_effect": {"const": false}
@@ -1063,7 +1081,7 @@
           "const": true
         },
         "public_source_desk_research_executed": {
-          "const": false
+          "const": true
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -1181,6 +1199,9 @@
         "method_adoption_decision_recorded",
         "public_source_method_adopted",
         "public_source_execution_authorized",
+        "public_source_execution_authorization_consumed",
+        "independent_record_review_required",
+        "per_record_human_counting_decision_required",
         "current_recommended_option",
         "decision_ready",
         "external_execution_authorized"
@@ -1194,7 +1215,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "METHOD_V0_2_ADOPTED_PRE09_BASELINE_PUSHED_EXECUTION_NOT_STARTED"
+          "const": "PRE09_EXECUTED_PARTIAL_CANDIDATES_HUMAN_COUNTING_DECISION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1260,6 +1281,15 @@
           "const": true
         },
         "public_source_execution_authorized": {
+          "const": true
+        },
+        "public_source_execution_authorization_consumed": {
+          "const": true
+        },
+        "independent_record_review_required": {
+          "const": true
+        },
+        "per_record_human_counting_decision_required": {
           "const": true
         },
         "current_recommended_option": {
