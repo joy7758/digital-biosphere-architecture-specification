@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_25_OFFLINE_CONTRACT_REVISION_PASS_V0_2_REVIEW_RECOMMENDATION_READY_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_26_V0_2_CONTRACT_REVIEW_RECOMMENDATION_PREPARED_DECISION_READY_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1246,6 +1246,14 @@
         "pre25_implementation_created",
         "pre25_live_rerun_ready",
         "pre25_v0_2_review_recommendation_ready",
+        "pre26_v0_2_review_recommendation_prepared",
+        "pre26_recommendation_remote_verified",
+        "pre26_decision_recorded",
+        "pre26_live_review_authorized",
+        "pre26_live_model_requests_executed",
+        "pre26_contract_candidates_adopted",
+        "pre26_implementation_created",
+        "pre26_formal_adoption_decision_review_ready",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1725,6 +1733,30 @@
         },
         "pre25_v0_2_review_recommendation_ready": {
           "const": true
+        },
+        "pre26_v0_2_review_recommendation_prepared": {
+          "const": true
+        },
+        "pre26_recommendation_remote_verified": {
+          "const": true
+        },
+        "pre26_decision_recorded": {
+          "const": false
+        },
+        "pre26_live_review_authorized": {
+          "const": false
+        },
+        "pre26_live_model_requests_executed": {
+          "const": 0
+        },
+        "pre26_contract_candidates_adopted": {
+          "const": false
+        },
+        "pre26_implementation_created": {
+          "const": false
+        },
+        "pre26_formal_adoption_decision_review_ready": {
+          "const": false
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -2230,6 +2262,21 @@
         "provider_adapter_contract_revision_implementation_created",
         "provider_adapter_contract_revision_live_rerun_ready",
         "provider_adapter_contract_revision_v0_2_review_recommendation_ready",
+        "provider_adapter_v0_2_review_decision_candidate_id",
+        "provider_adapter_v0_2_review_recommendation_reference",
+        "provider_adapter_v0_2_review_recommendation_sha256",
+        "provider_adapter_v0_2_review_recommendation_commit",
+        "provider_adapter_v0_2_review_exact_action",
+        "provider_adapter_v0_2_review_targets",
+        "provider_adapter_v0_2_review_sessions_max",
+        "provider_adapter_v0_2_review_kimi_k2_6_requests_max",
+        "provider_adapter_v0_2_review_glm_5_2_requests_max",
+        "provider_adapter_v0_2_review_decision_recorded",
+        "provider_adapter_v0_2_review_execution_authorized",
+        "provider_adapter_v0_2_review_live_model_requests_executed",
+        "provider_adapter_v0_2_review_contract_candidates_adopted",
+        "provider_adapter_v0_2_review_implementation_created",
+        "provider_adapter_v0_2_review_formal_adoption_decision_review_ready",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -2248,7 +2295,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE25_OFFLINE_REVISION_PASS_V0_2_REVIEW_RECOMMENDATION_READY_NOT_PREPARED"
+          "const": "PRE26_V0_2_CONTRACT_REVIEW_RECOMMENDATION_PREPARED_DECISION_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -3480,6 +3527,51 @@
         "provider_adapter_contract_revision_v0_2_review_recommendation_ready": {
           "const": true
         },
+        "provider_adapter_v0_2_review_decision_candidate_id": {
+          "const": "CS-D02-PRE-26"
+        },
+        "provider_adapter_v0_2_review_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md"
+        },
+        "provider_adapter_v0_2_review_recommendation_sha256": {
+          "const": "39fdc689e9942feec0f683de01a2490b1e042ddc273d5db450de7f68a44f9589"
+        },
+        "provider_adapter_v0_2_review_recommendation_commit": {
+          "const": "18bf87b044b879bd5da09bc6ed60b7a452a5943e"
+        },
+        "provider_adapter_v0_2_review_exact_action": {
+          "const": "AUTHORIZE_EXACT_TWO_SESSION_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_ONLY"
+        },
+        "provider_adapter_v0_2_review_targets": {
+          "const": 5
+        },
+        "provider_adapter_v0_2_review_sessions_max": {
+          "const": 2
+        },
+        "provider_adapter_v0_2_review_kimi_k2_6_requests_max": {
+          "const": 1
+        },
+        "provider_adapter_v0_2_review_glm_5_2_requests_max": {
+          "const": 1
+        },
+        "provider_adapter_v0_2_review_decision_recorded": {
+          "const": false
+        },
+        "provider_adapter_v0_2_review_execution_authorized": {
+          "const": false
+        },
+        "provider_adapter_v0_2_review_live_model_requests_executed": {
+          "const": 0
+        },
+        "provider_adapter_v0_2_review_contract_candidates_adopted": {
+          "const": false
+        },
+        "provider_adapter_v0_2_review_implementation_created": {
+          "const": false
+        },
+        "provider_adapter_v0_2_review_formal_adoption_decision_review_ready": {
+          "const": false
+        },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
         },
@@ -3496,10 +3588,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_SEPARATE_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_RECOMMENDATION_ONLY"
+          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE26_TWO_SESSION_REVIEW_DECISION_ONLY"
         },
         "decision_ready": {
-          "const": false
+          "const": true
         },
         "external_execution_authorized": {
           "const": false

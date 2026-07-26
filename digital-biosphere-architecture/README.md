@@ -319,6 +319,14 @@ v0.2 extraction/model-binding、alias lifecycle 和 cross-layer invariant 候选
 v0.1 历史保持不变。该结果没有采纳契约、创建实现或验证 provider，下一步只允许准备
 独立的 v0.2 candidate review recommendation。
 
+`CS-D02-PRE-26`
+[v0.2 contract candidate review recommendation](TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md)
+已在远端准备：建议 Kimi `kimi-k2.6` 与 GLM `glm-5.2` 各执行一次 exact-model、只读、
+结构化审查。两个 reviewer 必须使用同一 hash-bound bundle；任一 model binding、JSON、
+Schema、boundary 或 terminal extraction failure 都使对应 session non-qualifying，且不允许
+重试、fallback、模型替换或 JSON repair。当前尚未形成 PRE-26 Decision，也未执行模型
+请求、采纳契约或创建实现。
+
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false
 TITMAS_GOVERNANCE_READY=false
