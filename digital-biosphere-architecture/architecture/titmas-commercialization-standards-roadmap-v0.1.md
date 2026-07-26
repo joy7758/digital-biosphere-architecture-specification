@@ -778,6 +778,25 @@ CS_G0_PASS=false
 显式 Decision、冻结计划和远端基线获得单独重跑授权。不得降低 PRE-10 阈值，也不得覆盖
 本次失败历史。
 
+### 4.21 PRE-11 Offline Diagnostic Recommendation
+
+[PRE-11 recommendation](../TITMAS-CS-D02-PRE-11-PUBLIC-SOURCE-RECORD-REVIEW-REMEDIATION-RECOMMENDATION-v0.1.md)
+已把下一动作收敛为离线 provider path 和 request contract 诊断准备：
+
+```text
+PRE_11_RECOMMENDATION_PREPARED=true
+PRE_11_DECIDED=false
+OFFLINE_DIAGNOSTIC_AUTHORIZED=false
+LIVE_MODEL_REQUESTS_MAX=0
+PRE_10_RETRY_AUTHORIZED=false
+PRE_10_RERUN_AUTHORIZED=false
+```
+
+建议的诊断只允许核对公开工具 Schema、官方 request contract 和本地 placeholder fixture，
+不能发送真实模型请求、读取或持久化 API key、修改候选状态或产生 counting effect。它需先
+通过独立 Decision 才能执行；即使诊断完成，后续重跑仍需新的 recommendation、Decision、
+冻结计划和远端基线。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
