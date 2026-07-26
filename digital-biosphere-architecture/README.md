@@ -360,10 +360,28 @@ PRE27_LIVE_MODEL_REQUESTS_EXECUTED=0
 PRE27_SECRET_READS_EXECUTED=0
 ```
 
-[PRE-28 handoff-bound review recommendation](TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md)
-已在远端准备：建议另建 Decision，让两个固定 reviewer session 把 Schema-valid sanitized
-result 原子提交到独立临时 sink 后再由外层 consumer 读取。PRE-28 尚未授权或执行任何
-provider request；handoff contract 与 v0.2 contracts 仍未采纳，也没有实现。
+[PRE-28 handoff-bound review](commercialization-standards-provider-adapter-profile-review-remediation/PRE-28-HANDOFF-BOUND-CONTRACT-CANDIDATE-REVIEW-RESULT-v0.1.md)
+已经按独立 Decision、远端 authorization receipt 和冻结 handoff contract 执行。两个固定
+session 都把 Schema-valid sanitized failure result 原子提交到独立 sink，但两次 provider
+network request 均在收到 HTTP response 前出现 `TimeoutError`：
+
+```text
+PRE28_PROVIDER_NETWORK_REQUESTS_EXECUTED=2
+PRE28_SANITIZED_SESSION_RESULTS_COMMITTED=2
+PRE28_QUALIFYING_REVIEWS=0
+PRE28_KIMI_OUTCOME=NON_QUALIFYING_PROVIDER_FAILURE
+PRE28_GLM_OUTCOME=NON_QUALIFYING_PROVIDER_FAILURE
+PRE28_FAILURE_CATEGORY=NETWORK_ERROR
+PRE28_FORMAL_ADOPTION_DECISION_REVIEW_READY=false
+```
+
+该结果不表示 reviewer 拒绝候选，也不证明 provider 或 model 不可用；没有观察到任何
+审查内容。PRE-26 与 PRE-28 请求预算均保持关闭，不允许重试。
+
+[PRE-29 transport phase diagnostic recommendation](TITMAS-CS-D02-PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-RECOMMENDATION-v0.1.md)
+已远端准备。它只建议最多一次 DNS resolution、一次 TCP connect 和一次 TLS handshake，
+用于区分基础传输阶段；HTTP、provider API、model request、credential read 和 retry
+上限均为 0。PRE-29 尚未决定或执行。
 
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false

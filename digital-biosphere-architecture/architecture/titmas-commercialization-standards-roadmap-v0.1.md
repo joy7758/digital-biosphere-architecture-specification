@@ -1719,43 +1719,78 @@ PRE27_IMPLEMENTATION_CREATED=false
 该 PASS 只证明 synthetic offline handoff behavior，不恢复 PRE-26，不证明 provider
 correctness、production durability、DBOS Evidence、conformance 或 Adoption。
 
-### 4.42 PRE-28 Handoff-bound Contract Candidate Review Recommendation
+### 4.42 PRE-28 Handoff-bound Contract Candidate Review Result
 
 [PRE-28 recommendation](../TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md)
-已在远端准备。Agent 推荐闸门：
+随后经独立 Decision、远端 authorization receipt 和冻结的 handoff plan 执行。结果见：
+
+- [result report](../commercialization-standards-provider-adapter-profile-review-remediation/PRE-28-HANDOFF-BOUND-CONTRACT-CANDIDATE-REVIEW-RESULT-v0.1.md)；
+- [validation result](../commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-validation-result.v0.1.json)；
+- [execution receipt](../commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-execution-receipt.v0.1.json)。
+
+两个 session 均成功提交 Schema-valid sanitized failure result，但两个 provider network
+request 都在收到 HTTP response 前出现 `TimeoutError`：
 
 ```text
-RECOMMEND_CONTRACT_IMPLEMENTATION_OR_PRODUCTION_USE=NO
-REASON=ZERO_QUALIFYING_EXTERNAL_AGENT_REVIEWS
-RECOMMEND_EXACT_HANDOFF_BOUND_TWO_SESSION_REVIEW=YES
-RECOMMEND_FORMAL_ADOPTION_NOW=NO
+PRE28_SOURCE_HASHES_MATCH=9/9
+PRE28_PROVIDER_NETWORK_REQUESTS_EXECUTED=2
+PRE28_SANITIZED_SESSION_RESULTS_COMMITTED=2
+PRE28_QUALIFYING_REVIEWS=0
+PRE28_KIMI_OUTCOME=NON_QUALIFYING_PROVIDER_FAILURE
+PRE28_GLM_OUTCOME=NON_QUALIFYING_PROVIDER_FAILURE
+PRE28_FAILURE_CATEGORY=NETWORK_ERROR
+PRE28_HTTP_RESPONSES_OBSERVED=0
+PRE28_REVIEW_CONTENT_OBSERVED=0
+PRE28_RETRY_ATTEMPTS=0
+PRE28_FALLBACK_ATTEMPTS=0
+PRE28_MODEL_SUBSTITUTIONS=0
+PRE28_JSON_REPAIR_ATTEMPTS=0
+PRE28_FORMAL_ADOPTION_DECISION_REVIEW_READY=false
+```
+
+这不是 reviewer 对 candidate 的拒绝，也不证明 provider/model 不可用。没有观察到审查
+内容，因此 findings 没有被评价。PRE-26 与 PRE-28 request budget 均保持关闭；handoff
+contract、v0.2 contracts、provider support、conformance 和 implementation 仍为 false。
+
+### 4.43 PRE-29 Provider Transport Phase Diagnostic Recommendation
+
+[PRE-29 recommendation](../TITMAS-CS-D02-PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-RECOMMENDATION-v0.1.md)
+已远端准备。Agent 推荐闸门：
+
+```text
+RECOMMEND_MODEL_REQUEST_RETRY=NO
+REASON=TIMEOUT_PHASE_NOT_IDENTIFIED_AND_ZERO_REVIEW_CONTENT_OBSERVED
+RECOMMEND_BOUNDED_TRANSPORT_PHASE_DIAGNOSTIC=YES
+RECOMMEND_CONTRACT_ADOPTION_NOW=NO
 ```
 
 建议的 exact action：
 
 ```text
-AUTHORIZE_EXACT_TWO_SESSION_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_WITH_SANITIZED_SINK_HANDOFF_ONLY
+AUTHORIZE_BOUNDED_PRE28_PROVIDER_TRANSPORT_PHASE_DIAGNOSTIC_WITH_ZERO_HTTP_AND_MODEL_REQUESTS_ONLY
 ```
 
-仍只允许 `kimi-k2.6` 与 `glm-5.2` 各一次、同一 Qianfan endpoint、零 retry/fallback/
-substitution/alias inference/JSON repair。与 PRE-26 不同的是，每个 sanitized session result
-必须先通过 Schema，并原子提交到预先冻结的独立临时 sink。
+它只允许对 `qianfan.baidubce.com:443` 依序执行最多一次 DNS resolution、一次 TCP
+connect 和一次 TLS handshake。HTTP、provider API、live model request、credential read、
+Authorization header、retry、fallback 和 endpoint mutation 上限均为 0。
 
 当前：
 
 ```text
-PRE28_RECOMMENDATION_REMOTE_VERIFIED=true
-PRE28_DECISION_RECORDED=false
-PRE28_LIVE_REVIEW_AUTHORIZED=false
-PRE28_LIVE_MODEL_REQUESTS_EXECUTED=0
-PRE28_CONTRACT_CANDIDATES_ADOPTED=false
-PRE28_IMPLEMENTATION_CREATED=false
+PRE29_RECOMMENDATION_REMOTE_VERIFIED=true
+PRE29_DECISION_RECORDED=false
+PRE29_NETWORK_PROBE_AUTHORIZED=false
+PRE29_NETWORK_PROBES_EXECUTED=0
+PRE29_HTTP_REQUESTS_EXECUTED=0
+PRE29_LIVE_MODEL_REQUESTS_EXECUTED=0
+PRE29_CONTRACT_CANDIDATES_ADOPTED=false
+PRE29_IMPLEMENTATION_CREATED=false
 ```
 
 下一步只允许：
 
 ```text
-APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE28_HANDOFF_BOUND_TWO_SESSION_REVIEW_DECISION_ONLY
+APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE29_ZERO_HTTP_ZERO_MODEL_TRANSPORT_DIAGNOSTIC_DECISION_ONLY
 ```
 
 ## 5. First Standardization Wedge（第一个标准化切入口）

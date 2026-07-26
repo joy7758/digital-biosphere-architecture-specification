@@ -2529,10 +2529,55 @@
         "provider_adapter_handoff_bound_review_sessions_max",
         "provider_adapter_handoff_bound_review_total_network_requests_max",
         "provider_adapter_handoff_bound_review_decision_recorded",
+        "provider_adapter_handoff_bound_review_decision_reference",
+        "provider_adapter_handoff_bound_review_decision_sha256",
+        "provider_adapter_handoff_bound_review_decision_commit",
+        "provider_adapter_handoff_bound_review_authorization_receipt_reference",
+        "provider_adapter_handoff_bound_review_authorization_receipt_sha256",
+        "provider_adapter_handoff_bound_review_authorization_receipt_commit",
+        "provider_adapter_handoff_bound_review_result_reference",
+        "provider_adapter_handoff_bound_review_result_sha256",
+        "provider_adapter_handoff_bound_review_execution_receipt_reference",
+        "provider_adapter_handoff_bound_review_execution_receipt_sha256",
+        "provider_adapter_handoff_bound_review_report_reference",
+        "provider_adapter_handoff_bound_review_report_sha256",
+        "provider_adapter_handoff_bound_review_result_commit",
+        "provider_adapter_handoff_bound_review_execution_was_authorized",
         "provider_adapter_handoff_bound_review_execution_authorized",
+        "provider_adapter_handoff_bound_review_executed",
+        "provider_adapter_handoff_bound_review_provider_network_requests_executed",
         "provider_adapter_handoff_bound_review_live_model_requests_executed",
+        "provider_adapter_handoff_bound_review_sanitized_session_results_committed",
+        "provider_adapter_handoff_bound_review_qualifying_reviews",
+        "provider_adapter_handoff_bound_review_kimi_outcome",
+        "provider_adapter_handoff_bound_review_glm_outcome",
+        "provider_adapter_handoff_bound_review_failure_category",
+        "provider_adapter_handoff_bound_review_http_responses_observed",
+        "provider_adapter_handoff_bound_review_review_content_observed",
+        "provider_adapter_handoff_bound_review_formal_adoption_decision_review_ready",
         "provider_adapter_handoff_bound_review_contract_candidates_adopted",
         "provider_adapter_handoff_bound_review_implementation_created",
+        "provider_transport_diagnostic_decision_candidate_id",
+        "provider_transport_diagnostic_recommendation_reference",
+        "provider_transport_diagnostic_recommendation_sha256",
+        "provider_transport_diagnostic_recommendation_commit",
+        "provider_transport_diagnostic_exact_action",
+        "provider_transport_diagnostic_target_host",
+        "provider_transport_diagnostic_target_port",
+        "provider_transport_diagnostic_dns_attempts_max",
+        "provider_transport_diagnostic_tcp_attempts_max",
+        "provider_transport_diagnostic_tls_attempts_max",
+        "provider_transport_diagnostic_total_external_network_probes_max",
+        "provider_transport_diagnostic_http_requests_max",
+        "provider_transport_diagnostic_provider_api_requests_max",
+        "provider_transport_diagnostic_live_model_requests_max",
+        "provider_transport_diagnostic_credential_reads_max",
+        "provider_transport_diagnostic_decision_recorded",
+        "provider_transport_diagnostic_network_probe_authorized",
+        "provider_transport_diagnostic_executed",
+        "provider_transport_diagnostic_network_probes_executed",
+        "provider_transport_diagnostic_http_requests_executed",
+        "provider_transport_diagnostic_live_model_requests_executed",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -2551,7 +2596,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE28_HANDOFF_BOUND_REVIEW_RECOMMENDATION_PREPARED_DECISION_READY"
+          "const": "PRE28_FAIL_CLOSED_PRE29_TRANSPORT_DIAGNOSTIC_RECOMMENDATION_PREPARED_DECISION_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -4042,19 +4087,154 @@
           "const": 2
         },
         "provider_adapter_handoff_bound_review_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "provider_adapter_handoff_bound_review_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-CANDIDATE-REVIEW-DECISION-RECORD.v0.1.json"
+        },
+        "provider_adapter_handoff_bound_review_decision_sha256": {
+          "const": "7378df112e88fa2bd34ba5b95e72b23ce490ebd975036705580c64f0a5c3e1e1"
+        },
+        "provider_adapter_handoff_bound_review_decision_commit": {
+          "const": "22e799c2791e9dfcb2a3322f2c39642b00006914"
+        },
+        "provider_adapter_handoff_bound_review_authorization_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-authorization-receipt.v0.1.json"
+        },
+        "provider_adapter_handoff_bound_review_authorization_receipt_sha256": {
+          "const": "9499122d766c7308030556c913239e3246900819115bfa9fb109e6be5354ad16"
+        },
+        "provider_adapter_handoff_bound_review_authorization_receipt_commit": {
+          "const": "12bc6a092bd1c2a81414ab570597db9fc4a1ff5f"
+        },
+        "provider_adapter_handoff_bound_review_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-validation-result.v0.1.json"
+        },
+        "provider_adapter_handoff_bound_review_result_sha256": {
+          "const": "d48019d7572d58541bde5b7fcb8d0d668a68dd766364e48f5762b500b38095cc"
+        },
+        "provider_adapter_handoff_bound_review_execution_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-execution-receipt.v0.1.json"
+        },
+        "provider_adapter_handoff_bound_review_execution_receipt_sha256": {
+          "const": "c450930dbc94d0a2e03f5532a5d43e3d7bb840f51bc5a7abb3cc63660ac2f994"
+        },
+        "provider_adapter_handoff_bound_review_report_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/PRE-28-HANDOFF-BOUND-CONTRACT-CANDIDATE-REVIEW-RESULT-v0.1.md"
+        },
+        "provider_adapter_handoff_bound_review_report_sha256": {
+          "const": "65f722d13503d101f12b7da78db084267c88783c10ce38c6f27ef83cab884da3"
+        },
+        "provider_adapter_handoff_bound_review_result_commit": {
+          "const": "e2f2f1356900334276573641087759885a80b914"
+        },
+        "provider_adapter_handoff_bound_review_execution_was_authorized": {
+          "const": true
         },
         "provider_adapter_handoff_bound_review_execution_authorized": {
           "const": false
         },
+        "provider_adapter_handoff_bound_review_executed": {
+          "const": true
+        },
+        "provider_adapter_handoff_bound_review_provider_network_requests_executed": {
+          "const": 2
+        },
         "provider_adapter_handoff_bound_review_live_model_requests_executed": {
+          "const": 2
+        },
+        "provider_adapter_handoff_bound_review_sanitized_session_results_committed": {
+          "const": 2
+        },
+        "provider_adapter_handoff_bound_review_qualifying_reviews": {
           "const": 0
+        },
+        "provider_adapter_handoff_bound_review_kimi_outcome": {
+          "const": "NON_QUALIFYING_PROVIDER_FAILURE"
+        },
+        "provider_adapter_handoff_bound_review_glm_outcome": {
+          "const": "NON_QUALIFYING_PROVIDER_FAILURE"
+        },
+        "provider_adapter_handoff_bound_review_failure_category": {
+          "const": "NETWORK_ERROR"
+        },
+        "provider_adapter_handoff_bound_review_http_responses_observed": {
+          "const": 0
+        },
+        "provider_adapter_handoff_bound_review_review_content_observed": {
+          "const": 0
+        },
+        "provider_adapter_handoff_bound_review_formal_adoption_decision_review_ready": {
+          "const": false
         },
         "provider_adapter_handoff_bound_review_contract_candidates_adopted": {
           "const": false
         },
         "provider_adapter_handoff_bound_review_implementation_created": {
           "const": false
+        },
+        "provider_transport_diagnostic_decision_candidate_id": {
+          "const": "CS-D02-PRE-29"
+        },
+        "provider_transport_diagnostic_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-RECOMMENDATION-v0.1.md"
+        },
+        "provider_transport_diagnostic_recommendation_sha256": {
+          "const": "35f2c850472377e64aa474f2c3bf72d37b0e152c2761a3b06ccef96fa93758ec"
+        },
+        "provider_transport_diagnostic_recommendation_commit": {
+          "const": "d8733c42f1fc37458ed2fa666fdf5530a7f8a7c6"
+        },
+        "provider_transport_diagnostic_exact_action": {
+          "const": "AUTHORIZE_BOUNDED_PRE28_PROVIDER_TRANSPORT_PHASE_DIAGNOSTIC_WITH_ZERO_HTTP_AND_MODEL_REQUESTS_ONLY"
+        },
+        "provider_transport_diagnostic_target_host": {
+          "const": "qianfan.baidubce.com"
+        },
+        "provider_transport_diagnostic_target_port": {
+          "const": 443
+        },
+        "provider_transport_diagnostic_dns_attempts_max": {
+          "const": 1
+        },
+        "provider_transport_diagnostic_tcp_attempts_max": {
+          "const": 1
+        },
+        "provider_transport_diagnostic_tls_attempts_max": {
+          "const": 1
+        },
+        "provider_transport_diagnostic_total_external_network_probes_max": {
+          "const": 3
+        },
+        "provider_transport_diagnostic_http_requests_max": {
+          "const": 0
+        },
+        "provider_transport_diagnostic_provider_api_requests_max": {
+          "const": 0
+        },
+        "provider_transport_diagnostic_live_model_requests_max": {
+          "const": 0
+        },
+        "provider_transport_diagnostic_credential_reads_max": {
+          "const": 0
+        },
+        "provider_transport_diagnostic_decision_recorded": {
+          "const": false
+        },
+        "provider_transport_diagnostic_network_probe_authorized": {
+          "const": false
+        },
+        "provider_transport_diagnostic_executed": {
+          "const": false
+        },
+        "provider_transport_diagnostic_network_probes_executed": {
+          "const": 0
+        },
+        "provider_transport_diagnostic_http_requests_executed": {
+          "const": 0
+        },
+        "provider_transport_diagnostic_live_model_requests_executed": {
+          "const": 0
         },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
@@ -4072,7 +4252,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE28_HANDOFF_BOUND_TWO_SESSION_REVIEW_DECISION_ONLY"
+          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE29_ZERO_HTTP_ZERO_MODEL_TRANSPORT_DIAGNOSTIC_DECISION_ONLY"
         },
         "decision_ready": {
           "const": true
