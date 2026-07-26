@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-47-exact-sequential-agent-review-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-47 Exact Sequential Agent Review Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_id", "standing_directive_reference", "recommendation_reference", "recommendation_sha256", "recommendation_commit", "decision_result", "decided_by_ref", "decided_at", "executed_by", "standing_directive_eligibility", "preconditions", "scope", "adopted_thresholds", "effects_before_execution", "next_gate", "execution_receipt", "result"],
+  "properties": {
+    "$schema": {"const": "./architecture/schemas/titmas-cs-d02-pre-47-exact-sequential-agent-review-decision-record.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-47-EXACT-SEQUENTIAL-AGENT-REVIEW-DECISION-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "EXACT_FOUR_SESSION_SEQUENTIAL_AGENT_REVIEW_AUTHORIZED_NOT_EXECUTED"},
+    "decision_id": {"const": "CS-D02-PRE-47"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {"const": "TITMAS-CS-D02-PRE-47-EXACT-SEQUENTIAL-AGENT-REVIEW-RECOMMENDATION-v0.1.md"},
+    "recommendation_sha256": {"const": "17b6c6c66aa32dd813468296920f31b3caae8011d31a0db1f0bd0d6837c7e762"},
+    "recommendation_commit": {"const": "09a8f4f88730bf3a9348ed99814690c17a44e907"},
+    "decision_result": {"const": "AUTHORIZE_EXACT_FOUR_SESSION_SEQUENTIAL_QIANFAN_AGENT_REVIEW_WITH_FROZEN_PRE46_CONTRACT"},
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "Codex"},
+    "standing_directive_eligibility": {"const": {"canonical_recommendation_present": true, "single_exact_option": true, "repositories_target_and_scope_explicit": true, "preconditions_directly_evidenced": true, "all_effect_classes_declared": true, "stop_conditions_explicit": true, "later_conflict_present": false, "independent_decision_record_present": true, "result_validation_and_failure_retention_required": true, "material_actions_separately_recorded": true, "applicable": true}},
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recommendation_remote_verified", "recommendation_commit", "request_manifest_sha256", "plan_sha256", "schema_meta_validation_pass", "planning_instances_valid", "query_payload_bindings_match", "plan_references_match", "pre44_gate_pass", "target_head", "target_remote_branch_matched", "target_dirty_count"],
+      "properties": {
+        "recommendation_remote_verified": {"const": true},
+        "recommendation_commit": {"const": "09a8f4f88730bf3a9348ed99814690c17a44e907"},
+        "request_manifest_sha256": {"const": "c6af3cf2f6b7e4d57950271cc1ed028bad16b38db5016737035aa43ceef5c984"},
+        "plan_sha256": {"const": "0c14371dbc0484b0a96b4ecd585d3568f58ca9d2b42b27144c3188fb3a16e6be"},
+        "schema_meta_validation_pass": {"const": true},
+        "planning_instances_valid": {"const": "2/2"},
+        "query_payload_bindings_match": {"const": "4/4"},
+        "plan_references_match": {"const": "6/6"},
+        "pre44_gate_pass": {"const": false},
+        "target_head": {"const": "f80629364752c465316b9d1238fe5447a88565ca"},
+        "target_remote_branch_matched": {"const": true},
+        "target_dirty_count": {"const": 0}
+      }
+    },
+    "scope": {"const": {"primary_repository": "digital-biosphere-architecture", "reviewer_sessions_max": 4, "parallel_requests_max": 1, "kimi_k2_6_requests_max": 2, "glm_5_2_requests_max": 2, "network_requests_max": 4, "credential_reads_max": 1, "request_timeout_ms": 90000, "response_format_parameters_max": 0, "target_repository_files_modified_max": 0, "retry_attempts_max": 0, "fallback_attempts_max": 0, "model_substitutions_max": 0, "alias_inference_attempts_max": 0, "json_repair_attempts_max": 0}},
+    "adopted_thresholds": {"const": {"qualifying_sessions_min": 3, "recommended_or_conditional_min": 2, "would_recommend_min": 2, "would_reuse_min": 2, "authority_safety_failures_max": 0}},
+    "effects_before_execution": {"const": {"agent_review_authorized": true, "network_requests_authorized": true, "credential_reads_authorized": true, "thresholds_adopted": true, "pre44_history_changed": false, "pre44_gate_pass_changed": false, "rb1_implementation_authorized": false, "target_repository_modification_authorized": false, "package_created": false, "source_created": false, "tests_created": false, "provider_supported": false, "conformance_executed": false, "runtime_created": false, "merge_authorized": false, "pull_request_authorized": false, "release_authorized": false, "commercial_offer_authorized": false, "certification_authorized": false, "permission_granted": false, "evidence_truth_changed": false}},
+    "next_gate": {"const": {"gate_id": "CS-D02-PRE-47-EXECUTION", "action": "EXECUTE_EXACT_FOUR_SESSION_SEQUENTIAL_REVIEW_AND_COMPUTE_FROZEN_THRESHOLDS", "rb1_implementation_decision_allowed": false}},
+    "execution_receipt": {"const": "PENDING_PRE47_RESULT"},
+    "result": {"const": "EXACT_SEQUENTIAL_AGENT_REVIEW_NOT_EXECUTED"}
+  }
+}
