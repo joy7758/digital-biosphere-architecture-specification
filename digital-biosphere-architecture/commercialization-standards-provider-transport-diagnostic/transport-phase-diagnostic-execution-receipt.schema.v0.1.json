@@ -1,0 +1,115 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/transport-phase-diagnostic-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS PRE-29 Transport Phase Diagnostic Execution Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "authorization_receipt_reference",
+    "authorization_receipt_sha256",
+    "result_reference",
+    "result_sha256",
+    "temporary_target_consumed",
+    "temporary_root_removed",
+    "accounting",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./transport-phase-diagnostic-execution-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-29-TRANSPORT-PHASE-DIAGNOSTIC-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "enum": [
+        "EXECUTED_PASS_LOWER_LAYER_REACHABLE",
+        "EXECUTED_FAIL_CLOSED_DNS",
+        "EXECUTED_FAIL_CLOSED_TCP",
+        "EXECUTED_FAIL_CLOSED_TLS",
+        "EXECUTED_FAIL_CLOSED_BOUNDARY"
+      ]
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-29"
+    },
+    "authorization_receipt_reference": {
+      "const": "transport-phase-diagnostic-authorization-receipt.v0.1.json"
+    },
+    "authorization_receipt_sha256": {
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "result_reference": {
+      "const": "transport-phase-diagnostic-result.v0.1.json"
+    },
+    "result_sha256": {
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "temporary_target_consumed": {
+      "const": true
+    },
+    "temporary_root_removed": {
+      "const": true
+    },
+    "accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "external_network_probes_executed",
+        "http_requests_executed",
+        "provider_api_requests_executed",
+        "live_model_requests_executed",
+        "credential_reads_executed",
+        "retry_attempts"
+      ],
+      "properties": {
+        "external_network_probes_executed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "http_requests_executed": {
+          "const": 0
+        },
+        "provider_api_requests_executed": {
+          "const": 0
+        },
+        "live_model_requests_executed": {
+          "const": 0
+        },
+        "credential_reads_executed": {
+          "const": 0
+        },
+        "retry_attempts": {
+          "const": 0
+        }
+      }
+    },
+    "effects": {
+      "const": {
+        "model_retry_authorized": false,
+        "contract_candidates_adopted": false,
+        "implementation_created": false,
+        "provider_supported": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false,
+        "commercial_offer_authorized": false,
+        "certification_authorized": false,
+        "release_authorized": false
+      }
+    }
+  }
+}

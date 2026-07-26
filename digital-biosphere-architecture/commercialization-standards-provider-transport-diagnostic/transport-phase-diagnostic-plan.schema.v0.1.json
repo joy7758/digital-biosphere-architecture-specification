@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/transport-phase-diagnostic-plan.schema.v0.1.json",
+  "title": "TITMAS PRE-29 Transport Phase Diagnostic Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "execution_mode",
+    "target_host",
+    "target_port",
+    "temporary_result_target",
+    "result_schema_reference",
+    "authorization_receipt_schema_reference",
+    "execution_receipt_schema_reference",
+    "limits",
+    "phases",
+    "steps",
+    "success_conditions",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./transport-phase-diagnostic-plan.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-29-TRANSPORT-PHASE-DIAGNOSTIC-PLAN-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FROZEN_NOT_EXECUTED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-29"
+    },
+    "execution_mode": {
+      "const": "BOUNDED_DNS_TCP_TLS_DIAGNOSTIC_ZERO_HTTP_ZERO_MODEL"
+    },
+    "target_host": {
+      "const": "qianfan.baidubce.com"
+    },
+    "target_port": {
+      "const": 443
+    },
+    "temporary_result_target": {
+      "const": "/private/tmp/titmas-pre29.SrL1ar/transport-diagnostic-result.json"
+    },
+    "result_schema_reference": {
+      "const": "transport-phase-diagnostic-result.schema.v0.1.json"
+    },
+    "authorization_receipt_schema_reference": {
+      "const": "transport-phase-diagnostic-authorization-receipt.schema.v0.1.json"
+    },
+    "execution_receipt_schema_reference": {
+      "const": "transport-phase-diagnostic-execution-receipt.schema.v0.1.json"
+    },
+    "limits": {
+      "const": {
+        "dns_resolution_attempts_max": 1,
+        "tcp_connect_attempts_max": 1,
+        "tls_handshake_attempts_max": 1,
+        "total_external_network_probes_max": 3,
+        "connect_timeout_seconds": 10,
+        "tls_handshake_timeout_seconds": 10,
+        "http_requests_max": 0,
+        "provider_api_requests_max": 0,
+        "live_model_requests_max": 0,
+        "credential_reads_max": 0,
+        "authorization_headers_max": 0,
+        "retry_attempts_max": 0,
+        "fallback_attempts_max": 0,
+        "endpoint_mutations_max": 0
+      }
+    },
+    "phases": {
+      "const": [
+        "DNS_RESOLUTION_ONCE",
+        "TCP_CONNECT_ONCE_IF_DNS_PASS",
+        "TLS_HANDSHAKE_ONCE_IF_TCP_PASS"
+      ]
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 13,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 8
+      }
+    },
+    "success_conditions": {
+      "const": {
+        "source_hashes_match": 6,
+        "result_sink_committed": 1,
+        "http_requests_executed": 0,
+        "provider_api_requests_executed": 0,
+        "live_model_requests_executed": 0,
+        "credential_reads_executed": 0,
+        "retry_attempts": 0,
+        "contract_candidates_adopted": false,
+        "implementation_created": false,
+        "provider_supported": false
+      }
+    },
+    "effects": {
+      "const": {
+        "execution_started": false,
+        "model_retry_authorized": false,
+        "contract_candidates_adopted": false,
+        "implementation_created": false,
+        "provider_supported": false,
+        "release_authorized": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false
+      }
+    }
+  }
+}

@@ -1,0 +1,145 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/transport-phase-diagnostic-authorization-receipt.schema.v0.1.json",
+  "title": "TITMAS PRE-29 Transport Phase Diagnostic Authorization Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "decision_commit",
+    "decision_sha256",
+    "recommendation_reference",
+    "recommendation_commit",
+    "recommendation_sha256",
+    "source_bindings",
+    "frozen_artifact_bindings",
+    "temporary_target_preflight",
+    "limits",
+    "pre_execution_accounting",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./transport-phase-diagnostic-authorization-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-29-TRANSPORT-PHASE-DIAGNOSTIC-AUTHORIZATION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "AUTHORIZED_NOT_EXECUTED"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-29"
+    },
+    "decision_commit": {
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "decision_sha256": {
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_commit": {
+      "const": "d8733c42f1fc37458ed2fa666fdf5530a7f8a7c6"
+    },
+    "recommendation_sha256": {
+      "const": "35f2c850472377e64aa474f2c3bf72d37b0e152c2761a3b06ccef96fa93758ec"
+    },
+    "source_bindings": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "$ref": "#/$defs/binding"
+      }
+    },
+    "frozen_artifact_bindings": {
+      "type": "array",
+      "minItems": 5,
+      "items": {
+        "$ref": "#/$defs/binding"
+      }
+    },
+    "temporary_target_preflight": {
+      "const": {
+        "temporary_root": "/private/tmp/titmas-pre29.SrL1ar",
+        "result_target": "/private/tmp/titmas-pre29.SrL1ar/transport-diagnostic-result.json",
+        "root_device": 16777232,
+        "root_inode": 132554021,
+        "root_uid": 501,
+        "root_gid": 0,
+        "root_mode": "0700",
+        "target_preexisted": false,
+        "target_symlink": false
+      }
+    },
+    "limits": {
+      "const": {
+        "dns_resolution_attempts_max": 1,
+        "tcp_connect_attempts_max": 1,
+        "tls_handshake_attempts_max": 1,
+        "total_external_network_probes_max": 3,
+        "http_requests_max": 0,
+        "provider_api_requests_max": 0,
+        "live_model_requests_max": 0,
+        "credential_reads_max": 0,
+        "retry_attempts_max": 0
+      }
+    },
+    "pre_execution_accounting": {
+      "const": {
+        "network_probes_executed": 0,
+        "http_requests_executed": 0,
+        "provider_api_requests_executed": 0,
+        "live_model_requests_executed": 0,
+        "credential_reads_executed": 0,
+        "retry_attempts": 0
+      }
+    },
+    "effects": {
+      "const": {
+        "model_retry_authorized": false,
+        "contract_candidates_adopted": false,
+        "implementation_created": false,
+        "provider_supported": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false,
+        "commercial_offer_authorized": false,
+        "certification_authorized": false,
+        "release_authorized": false
+      }
+    }
+  },
+  "$defs": {
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference",
+        "sha256"
+      ],
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 5
+        },
+        "sha256": {
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  }
+}

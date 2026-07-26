@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-29-provider-transport-phase-diagnostic-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-29 Provider Transport Phase Diagnostic Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "primary_repository",
+    "target_branch",
+    "target_host",
+    "target_port",
+    "diagnostic_plan_reference",
+    "result_schema_reference",
+    "authorization_receipt_schema_reference",
+    "execution_receipt_schema_reference",
+    "phases",
+    "limits",
+    "preconditions",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-29-provider-transport-phase-diagnostic-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-DECISION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "AUTHORIZED_BOUNDED_ZERO_HTTP_ZERO_MODEL_TRANSPORT_DIAGNOSTIC_ONLY"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-29"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "35f2c850472377e64aa474f2c3bf72d37b0e152c2761a3b06ccef96fa93758ec"
+    },
+    "recommendation_commit": {
+      "const": "d8733c42f1fc37458ed2fa666fdf5530a7f8a7c6"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_BOUNDED_PRE28_PROVIDER_TRANSPORT_PHASE_DIAGNOSTIC_WITH_ZERO_HTTP_AND_MODEL_REQUESTS_ONLY"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "target_branch": {
+      "const": "codex/production-observability-baseline"
+    },
+    "target_host": {
+      "const": "qianfan.baidubce.com"
+    },
+    "target_port": {
+      "const": 443
+    },
+    "diagnostic_plan_reference": {
+      "const": "commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-plan.v0.1.json"
+    },
+    "result_schema_reference": {
+      "const": "commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-result.schema.v0.1.json"
+    },
+    "authorization_receipt_schema_reference": {
+      "const": "commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-authorization-receipt.schema.v0.1.json"
+    },
+    "execution_receipt_schema_reference": {
+      "const": "commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-execution-receipt.schema.v0.1.json"
+    },
+    "phases": {
+      "const": [
+        "DNS_RESOLUTION",
+        "TCP_CONNECT",
+        "TLS_HANDSHAKE"
+      ]
+    },
+    "limits": {
+      "const": {
+        "dns_resolution_attempts_max": 1,
+        "tcp_connect_attempts_max": 1,
+        "tls_handshake_attempts_max": 1,
+        "total_external_network_probes_max": 3,
+        "connect_timeout_seconds": 10,
+        "tls_handshake_timeout_seconds": 10,
+        "http_requests_max": 0,
+        "provider_api_requests_max": 0,
+        "live_model_requests_max": 0,
+        "credential_reads_max": 0,
+        "authorization_headers_max": 0,
+        "retry_attempts_max": 0,
+        "fallback_attempts_max": 0,
+        "endpoint_mutations_max": 0
+      }
+    },
+    "preconditions": {
+      "const": {
+        "source_hashes_match": 6,
+        "standing_directive_active": true,
+        "recommendation_remote_verified": true,
+        "remote_decision_baseline_required_before_execution": true,
+        "exact_temporary_target_required_before_execution": true,
+        "authorization_receipt_required_before_execution": true,
+        "network_probes_before_authorization": 0
+      }
+    },
+    "effects": {
+      "const": {
+        "authority_changed": false,
+        "ownership_changed": false,
+        "pre28_result_changed": false,
+        "pre28_request_budget_reopened": false,
+        "model_retry_authorized": false,
+        "handoff_contract_adopted": false,
+        "v0_2_contract_candidates_adopted": false,
+        "adapter_implementation_created": false,
+        "provider_supported": false,
+        "conformance_executed": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false,
+        "implementation_authorized": false,
+        "external_outreach_authorized": false,
+        "commercial_offer_authorized": false,
+        "certification_authorized": false,
+        "release_authorized": false
+      }
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "./transport-phase-diagnostic-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-29-TRANSPORT-PHASE-DIAGNOSTIC-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-29",
+  "execution_mode": "BOUNDED_DNS_TCP_TLS_DIAGNOSTIC_ZERO_HTTP_ZERO_MODEL",
+  "target_host": "qianfan.baidubce.com",
+  "target_port": 443,
+  "temporary_result_target": "/private/tmp/titmas-pre29.SrL1ar/transport-diagnostic-result.json",
+  "result_schema_reference": "transport-phase-diagnostic-result.schema.v0.1.json",
+  "authorization_receipt_schema_reference": "transport-phase-diagnostic-authorization-receipt.schema.v0.1.json",
+  "execution_receipt_schema_reference": "transport-phase-diagnostic-execution-receipt.schema.v0.1.json",
+  "limits": {
+    "dns_resolution_attempts_max": 1,
+    "tcp_connect_attempts_max": 1,
+    "tls_handshake_attempts_max": 1,
+    "total_external_network_probes_max": 3,
+    "connect_timeout_seconds": 10,
+    "tls_handshake_timeout_seconds": 10,
+    "http_requests_max": 0,
+    "provider_api_requests_max": 0,
+    "live_model_requests_max": 0,
+    "credential_reads_max": 0,
+    "authorization_headers_max": 0,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "endpoint_mutations_max": 0
+  },
+  "phases": [
+    "DNS_RESOLUTION_ONCE",
+    "TCP_CONNECT_ONCE_IF_DNS_PASS",
+    "TLS_HANDSHAKE_ONCE_IF_TCP_PASS"
+  ],
+  "steps": [
+    "VERIFY_SIX_SOURCE_HASHES",
+    "META_VALIDATE_NEW_SCHEMAS_AND_INSTANCES",
+    "VERIFY_DECISION_BASELINE_IS_REMOTE",
+    "VERIFY_FRESH_0700_TEMPORARY_ROOT_AND_ABSENT_RESULT_TARGET",
+    "CREATE_AND_REMOTE_VERIFY_AUTHORIZATION_RECEIPT",
+    "RESOLVE_TARGET_HOST_ONCE",
+    "CONNECT_FIRST_RESOLVED_ADDRESS_ONCE_IF_DNS_PASS_AND_CLOSE_WITH_ZERO_APPLICATION_BYTES",
+    "CONNECT_SAME_ADDRESS_AND_TLS_HANDSHAKE_ONCE_IF_TCP_PASS",
+    "CLOSE_TLS_WITH_ZERO_HTTP_BYTES",
+    "SANITIZE_VALIDATE_AND_ATOMICALLY_COMMIT_RESULT",
+    "READ_DIGEST_AND_REVALIDATE_COMMITTED_RESULT",
+    "CONSUME_AND_REMOVE_TEMPORARY_RESULT_AND_ROOT",
+    "RETAIN_SANITIZED_RESULT_FAILURES_UNKNOWNS_REPORT_AND_RECEIPT"
+  ],
+  "success_conditions": {
+    "source_hashes_match": 6,
+    "result_sink_committed": 1,
+    "http_requests_executed": 0,
+    "provider_api_requests_executed": 0,
+    "live_model_requests_executed": 0,
+    "credential_reads_executed": 0,
+    "retry_attempts": 0,
+    "contract_candidates_adopted": false,
+    "implementation_created": false,
+    "provider_supported": false
+  },
+  "effects": {
+    "execution_started": false,
+    "model_retry_authorized": false,
+    "contract_candidates_adopted": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "release_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false
+  }
+}

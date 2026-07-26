@@ -1,0 +1,347 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/transport-phase-diagnostic-result.schema.v0.1.json",
+  "title": "TITMAS PRE-29 Transport Phase Diagnostic Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "authorization_receipt_reference",
+    "target_host",
+    "target_port",
+    "phases",
+    "accounting",
+    "interpretation",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./transport-phase-diagnostic-result.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-29-TRANSPORT-PHASE-DIAGNOSTIC-RESULT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "enum": [
+        "PASS_LOWER_LAYER_REACHABLE",
+        "FAIL_CLOSED_DNS",
+        "FAIL_CLOSED_TCP",
+        "FAIL_CLOSED_TLS",
+        "FAIL_CLOSED_BOUNDARY"
+      ]
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-29"
+    },
+    "authorization_receipt_reference": {
+      "const": "transport-phase-diagnostic-authorization-receipt.v0.1.json"
+    },
+    "target_host": {
+      "const": "qianfan.baidubce.com"
+    },
+    "target_port": {
+      "const": 443
+    },
+    "phases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dns",
+        "tcp",
+        "tls"
+      ],
+      "properties": {
+        "dns": {
+          "$ref": "#/$defs/dns_phase"
+        },
+        "tcp": {
+          "$ref": "#/$defs/basic_phase"
+        },
+        "tls": {
+          "$ref": "#/$defs/tls_phase"
+        }
+      }
+    },
+    "accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dns_resolution_attempts_executed",
+        "tcp_connect_attempts_executed",
+        "tls_handshake_attempts_executed",
+        "total_external_network_probes_executed",
+        "application_bytes_sent",
+        "http_requests_executed",
+        "provider_api_requests_executed",
+        "live_model_requests_executed",
+        "credential_reads_executed",
+        "authorization_headers_created",
+        "retry_attempts",
+        "fallback_attempts",
+        "endpoint_mutations"
+      ],
+      "properties": {
+        "dns_resolution_attempts_executed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "tcp_connect_attempts_executed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "tls_handshake_attempts_executed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "total_external_network_probes_executed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        },
+        "application_bytes_sent": {
+          "const": 0
+        },
+        "http_requests_executed": {
+          "const": 0
+        },
+        "provider_api_requests_executed": {
+          "const": 0
+        },
+        "live_model_requests_executed": {
+          "const": 0
+        },
+        "credential_reads_executed": {
+          "const": 0
+        },
+        "authorization_headers_created": {
+          "const": 0
+        },
+        "retry_attempts": {
+          "const": 0
+        },
+        "fallback_attempts": {
+          "const": 0
+        },
+        "endpoint_mutations": {
+          "const": 0
+        }
+      }
+    },
+    "interpretation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lower_layer_reachability",
+        "pre28_timeout_phase",
+        "provider_availability_proven",
+        "model_availability_proven",
+        "request_contract_correctness_proven",
+        "model_retry_authorized"
+      ],
+      "properties": {
+        "lower_layer_reachability": {
+          "enum": [
+            "OBSERVED_DNS_TCP_TLS_PASS_THIS_RUN",
+            "NOT_ESTABLISHED"
+          ]
+        },
+        "pre28_timeout_phase": {
+          "enum": [
+            "NOT_RESOLVED_BY_LOWER_LAYER_PROBE",
+            "CONSISTENT_WITH_CURRENT_DNS_FAILURE_NOT_PROVEN_CAUSAL",
+            "CONSISTENT_WITH_CURRENT_TCP_FAILURE_NOT_PROVEN_CAUSAL",
+            "CONSISTENT_WITH_CURRENT_TLS_FAILURE_NOT_PROVEN_CAUSAL"
+          ]
+        },
+        "provider_availability_proven": {
+          "const": false
+        },
+        "model_availability_proven": {
+          "const": false
+        },
+        "request_contract_correctness_proven": {
+          "const": false
+        },
+        "model_retry_authorized": {
+          "const": false
+        }
+      }
+    },
+    "effects": {
+      "const": {
+        "pre28_result_changed": false,
+        "pre28_request_budget_reopened": false,
+        "handoff_contract_adopted": false,
+        "v0_2_contract_candidates_adopted": false,
+        "adapter_implementation_created": false,
+        "provider_supported": false,
+        "conformance_executed": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false,
+        "implementation_authorized": false,
+        "external_outreach_authorized": false,
+        "commercial_offer_authorized": false,
+        "certification_authorized": false,
+        "release_authorized": false
+      }
+    }
+  },
+  "$defs": {
+    "phase_status": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "NOT_EXECUTED_PREREQUISITE_FAILED"
+      ]
+    },
+    "failure_category": {
+      "enum": [
+        "NONE",
+        "DNS_ERROR",
+        "DNS_TIMEOUT",
+        "TCP_TIMEOUT",
+        "TCP_ERROR",
+        "TLS_TIMEOUT",
+        "TLS_CERTIFICATE_ERROR",
+        "TLS_ERROR",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "basic_phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "elapsed_ms",
+        "failure_category"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/phase_status"
+        },
+        "elapsed_ms": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "failure_category": {
+          "$ref": "#/$defs/failure_category"
+        }
+      }
+    },
+    "dns_phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "elapsed_ms",
+        "failure_category",
+        "resolved_address_count"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/phase_status"
+        },
+        "elapsed_ms": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "failure_category": {
+          "$ref": "#/$defs/failure_category"
+        },
+        "resolved_address_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "tls_phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "elapsed_ms",
+        "failure_category",
+        "tls_version",
+        "certificate_subject_sha256",
+        "certificate_issuer_sha256",
+        "certificate_not_before",
+        "certificate_not_after",
+        "hostname_verification"
+      ],
+      "properties": {
+        "status": {
+          "$ref": "#/$defs/phase_status"
+        },
+        "elapsed_ms": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "failure_category": {
+          "$ref": "#/$defs/failure_category"
+        },
+        "tls_version": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "certificate_subject_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "certificate_issuer_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "certificate_not_before": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "certificate_not_after": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "hostname_verification": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        }
+      }
+    }
+  }
+}
