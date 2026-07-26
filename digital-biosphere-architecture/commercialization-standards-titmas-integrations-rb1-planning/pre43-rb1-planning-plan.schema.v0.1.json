@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre43-rb1-planning-plan.schema.v0.1.json",
+  "title": "PRE-43 RB1 Planning Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "input_manifest_reference",
+    "problem",
+    "stage",
+    "scope",
+    "outputs",
+    "required_profile_content",
+    "negative_case_groups",
+    "next_gate",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre43-rb1-planning-plan.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-43-RB1-PLANNING-PLAN-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_PLAN_NOT_AUTHORIZED_NOT_EXECUTED"},
+    "input_manifest_reference": {"const": "pre43-rb1-planning-input-manifest.v0.1.json"},
+    "problem": {"const": "PROVIDER_REQUEST_FAILURE_PHASE_ATTRIBUTION_WITH_DATA_MINIMIZATION"},
+    "stage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stage_id", "name", "implementation_code_allowed_by_adopted_contract", "implementation_authorized_by_pre43", "runtime_effect_allowed"],
+      "properties": {
+        "stage_id": {"const": "RB1"},
+        "name": {"const": "PACKAGE_AND_CONTRACT_SKELETON"},
+        "implementation_code_allowed_by_adopted_contract": {"const": true},
+        "implementation_authorized_by_pre43": {"const": false},
+        "runtime_effect_allowed": {"const": false}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "target_repository",
+        "target_branch",
+        "target_commit",
+        "dba_planning_outputs_exact",
+        "target_files_modified_max",
+        "package_files_created_max",
+        "source_files_created_max",
+        "test_files_created_max",
+        "network_requests_max",
+        "model_requests_max",
+        "credential_reads_max"
+      ],
+      "properties": {
+        "primary_repository": {"const": "digital-biosphere-architecture"},
+        "target_repository": {"const": "https://github.com/joy7758/titmas-integrations.git"},
+        "target_branch": {"const": "codex/rb0-governance-baseline"},
+        "target_commit": {"const": "f80629364752c465316b9d1238fe5447a88565ca"},
+        "dba_planning_outputs_exact": {"const": 7},
+        "target_files_modified_max": {"const": 0},
+        "package_files_created_max": {"const": 0},
+        "source_files_created_max": {"const": 0},
+        "test_files_created_max": {"const": 0},
+        "network_requests_max": {"const": 0},
+        "model_requests_max": {"const": 0},
+        "credential_reads_max": {"const": 0}
+      }
+    },
+    "outputs": {
+      "const": [
+        "rb1-package-and-contract-skeleton-profile-v0.1.md",
+        "rb1-package-and-contract-skeleton-profile.v0.1.json",
+        "rb1-package-and-contract-skeleton-profile.schema.v0.1.json",
+        "rb1-negative-boundary-case-catalog.v0.1.json",
+        "rb1-negative-boundary-case-catalog.schema.v0.1.json",
+        "rb1-agent-customer-review-input.v0.1.json",
+        "rb1-agent-customer-review-input.schema.v0.1.json"
+      ]
+    },
+    "required_profile_content": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 5}
+    },
+    "negative_case_groups": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 5}
+    },
+    "next_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate_id", "action", "agent_review_required", "agent_review_authorized_by_pre43", "rb1_implementation_decision_allowed_before_agent_review"],
+      "properties": {
+        "gate_id": {"const": "CS-D02-PRE-44"},
+        "action": {"const": "FORM_BOUNDED_AGENT_CUSTOMER_REVIEW_RECOMMENDATION_FOR_EXACT_RB1_PLANNING_PACKET"},
+        "agent_review_required": {"const": true},
+        "agent_review_authorized_by_pre43": {"const": false},
+        "rb1_implementation_decision_allowed_before_agent_review": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_repository_modified",
+        "package_created",
+        "source_created",
+        "tests_created",
+        "implementation_authorized",
+        "implementation_created",
+        "provider_supported",
+        "conformance_executed",
+        "runtime_created",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "target_repository_modified": {"const": false},
+        "package_created": {"const": false},
+        "source_created": {"const": false},
+        "tests_created": {"const": false},
+        "implementation_authorized": {"const": false},
+        "implementation_created": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "runtime_created": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre43-rb1-planning-input-manifest.schema.v0.1.json",
+  "title": "PRE-43 RB1 Planning Input Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "target", "inputs", "required_facts"],
+  "properties": {
+    "$schema": {"const": "./pre43-rb1-planning-input-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-43-RB1-PLANNING-INPUT-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_INPUTS_NOT_AUTHORIZED_NOT_EXECUTED"},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "branch", "commit", "machine_entry_path", "machine_entry_sha256"],
+      "properties": {
+        "repository": {"const": "https://github.com/joy7758/titmas-integrations.git"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "commit": {"const": "f80629364752c465316b9d1238fe5447a88565ca"},
+        "machine_entry_path": {"const": "TITMAS-INTEGRATIONS-ENTRY.v0.1.json"},
+        "machine_entry_sha256": {"const": "dff625d385de22f2bb496cf2a99ae7400810a027be131e3eb63a3827ca27e9f4"}
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reference", "sha256", "role"],
+        "properties": {
+          "reference": {"type": "string", "minLength": 10},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "role": {"type": "string", "minLength": 5}
+        }
+      }
+    },
+    "required_facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rb0_adopted",
+        "rb0_target_truth_synchronized",
+        "target_branch_merged",
+        "target_package_created",
+        "target_source_files",
+        "target_tests",
+        "implementation_authorized",
+        "implementation_created",
+        "provider_supported",
+        "conformance_executed",
+        "runtime_created",
+        "valid_problem_records",
+        "cs_g0_pass"
+      ],
+      "properties": {
+        "rb0_adopted": {"const": true},
+        "rb0_target_truth_synchronized": {"const": true},
+        "target_branch_merged": {"const": false},
+        "target_package_created": {"const": false},
+        "target_source_files": {"const": 0},
+        "target_tests": {"const": 0},
+        "implementation_authorized": {"const": false},
+        "implementation_created": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "runtime_created": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false}
+      }
+    }
+  }
+}

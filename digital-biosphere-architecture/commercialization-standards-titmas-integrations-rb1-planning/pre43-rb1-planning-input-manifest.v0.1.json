@@ -1,0 +1,65 @@
+{
+  "$schema": "./pre43-rb1-planning-input-manifest.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-43-RB1-PLANNING-INPUT-MANIFEST-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_INPUTS_NOT_AUTHORIZED_NOT_EXECUTED",
+  "target": {
+    "repository": "https://github.com/joy7758/titmas-integrations.git",
+    "branch": "codex/rb0-governance-baseline",
+    "commit": "f80629364752c465316b9d1238fe5447a88565ca",
+    "machine_entry_path": "TITMAS-INTEGRATIONS-ENTRY.v0.1.json",
+    "machine_entry_sha256": "dff625d385de22f2bb496cf2a99ae7400810a027be131e3eb63a3827ca27e9f4"
+  },
+  "inputs": [
+    {
+      "reference": "commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-contract.v0.1.json",
+      "sha256": "f72eb33bdb5042514deed499fdabddbc74121bc9c22c16f79316eae2aeca9913",
+      "role": "ADOPTED_PHASE_CONTRACT_CONTENT"
+    },
+    {
+      "reference": "commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-contract.schema.v0.1.json",
+      "sha256": "9e97b2db7d16caf83a785c4ddcdcab0f847317f3308246985cd3c0fd8698649e",
+      "role": "ADOPTED_PHASE_CONTRACT_SCHEMA"
+    },
+    {
+      "reference": "architecture/http-phase-instrumentation-contract-adoption.v0.1.json",
+      "sha256": "c565c9da0b48c3eddc6e780805c1b33f79297e3d132926a3f248cf5286297e08",
+      "role": "DEVELOPMENT_ADOPTION_RECORD"
+    },
+    {
+      "reference": "commercialization-standards-titmas-integrations-repository-baseline/repository-baseline-contract.v0.1.json",
+      "sha256": "58920eb5b8c7ce1ecde66472743d408342f7fe7b418b323f48cf28c370c8537b",
+      "role": "RB1_STAGE_AND_BOUNDARY_CONTRACT"
+    },
+    {
+      "reference": "architecture/titmas-integrations-repository-baseline-contract-adoption.v0.1.json",
+      "sha256": "cdec6fb0e40b25037aa63ec777eb507fb7346932b46f3dc5067aab27da1d521f",
+      "role": "REPOSITORY_BASELINE_CONTRACT_ADOPTION_RECORD"
+    },
+    {
+      "reference": "commercialization-standards-titmas-integrations-repository-baseline/implementation-declaration-template.v0.1.json",
+      "sha256": "40de6b9975005b3e8a76a8f5326da815bff7c7d6ae22f488e8fc01d1fa815cc5",
+      "role": "FUTURE_IMPLEMENTATION_TRUTH_TEMPLATE"
+    },
+    {
+      "reference": "commercialization-standards-titmas-integrations-rb0-development-adoption-reference-remediation/pre42-target-truth-synchronization-validation-result.v0.1.json",
+      "sha256": "868aeaaa885f01d82bee78ebd37fd4023b9bcd59d1a4250e00743b12649628cd",
+      "role": "RB0_ADOPTION_AND_TARGET_TRUTH_GATE"
+    }
+  ],
+  "required_facts": {
+    "rb0_adopted": true,
+    "rb0_target_truth_synchronized": true,
+    "target_branch_merged": false,
+    "target_package_created": false,
+    "target_source_files": 0,
+    "target_tests": 0,
+    "implementation_authorized": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "runtime_created": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false
+  }
+}
