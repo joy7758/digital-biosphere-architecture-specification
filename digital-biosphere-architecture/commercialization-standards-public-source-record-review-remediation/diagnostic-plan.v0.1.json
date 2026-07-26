@@ -1,0 +1,57 @@
+{
+  "$schema": "./diagnostic-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-11-OFFLINE-PROVIDER-DIAGNOSTIC-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-11",
+  "pre10_failure_commit": "04a66365e62a8f9645ca33ece70926f51e8c07eb",
+  "pre11_recommendation_commit": "d38ff718af7c5ef59f5feaa3924a57527f085b62",
+  "source_classes": [
+    "INSTALLED_TOOL_PUBLIC_SCHEMA",
+    "QIANFAN_OR_BAIDU_CLOUD_OFFICIAL_PUBLIC_DOCUMENTATION",
+    "DEEPSEEK_OFFICIAL_PUBLIC_DOCUMENTATION"
+  ],
+  "checks": [
+    "TOOL_GATEWAY_INPUT_SHAPE",
+    "PROVIDER_ENDPOINT_AND_MODEL_CONTRACT",
+    "STRUCTURED_OUTPUT_CONTRACT",
+    "PLACEHOLDER_REQUEST_SHAPE",
+    "LAYERED_FAILURE_CLASSIFICATION",
+    "RERUN_PREREQUISITE"
+  ],
+  "controls": {
+    "live_model_request_allowed": false,
+    "real_api_key_access_allowed": false,
+    "raw_provider_response_persistence_allowed": false,
+    "retry_allowed": false,
+    "rerun_allowed": false,
+    "fallback_allowed": false,
+    "candidate_review_allowed": false,
+    "candidate_status_change_allowed": false,
+    "record_counting_allowed": false
+  },
+  "stop_conditions": [
+    "AUTHORIZATION_BASELINE_NOT_REMOTE",
+    "LIVE_PROVIDER_OR_MODEL_REQUEST_REQUIRED",
+    "SECRET_ACCESS_REQUIRED",
+    "RAW_PROVIDER_RESPONSE_PERSISTENCE_REQUIRED",
+    "OFFICIAL_CONTRACT_UNAVAILABLE_AND_UNKNOWN_CANNOT_BE_RETAINED",
+    "UNVERIFIED_HTTP_CAUSE_INFERENCE_ATTEMPTED",
+    "CANDIDATE_OR_GATE_EFFECT_ATTEMPTED",
+    "FROZEN_PLAN_OR_DIGEST_DRIFT"
+  ],
+  "execution_gate": {
+    "authorization_baseline_committed": false,
+    "authorization_baseline_pushed": false,
+    "execution_started": false
+  },
+  "non_effects": {
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

@@ -785,17 +785,19 @@ CS_G0_PASS=false
 
 ```text
 PRE_11_RECOMMENDATION_PREPARED=true
-PRE_11_DECIDED=false
-OFFLINE_DIAGNOSTIC_AUTHORIZED=false
+PRE_11_DECIDED=true
+PRE_11_DECISION_RESULT=AUTHORIZE_OFFLINE_PROVIDER_PATH_AND_REQUEST_CONTRACT_DIAGNOSTIC_ONLY
+OFFLINE_DIAGNOSTIC_AUTHORIZED=true
 LIVE_MODEL_REQUESTS_MAX=0
 PRE_10_RETRY_AUTHORIZED=false
 PRE_10_RERUN_AUTHORIZED=false
 ```
 
 建议的诊断只允许核对公开工具 Schema、官方 request contract 和本地 placeholder fixture，
-不能发送真实模型请求、读取或持久化 API key、修改候选状态或产生 counting effect。它需先
-通过独立 Decision 才能执行；即使诊断完成，后续重跑仍需新的 recommendation、Decision、
-冻结计划和远端基线。
+不能发送真实模型请求、读取或持久化 API key、修改候选状态或产生 counting effect。
+[PRE-11 Decision](../TITMAS-CS-D02-PRE-11-PUBLIC-SOURCE-RECORD-REVIEW-REMEDIATION-DECISION-RECORD.md)
+已依据 `TITMAS-CS-STANDING-001` 授权该 exact offline action；执行前仍须先 commit/push
+授权基线。即使诊断完成，后续重跑仍需新的 recommendation、Decision、冻结计划和远端基线。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
