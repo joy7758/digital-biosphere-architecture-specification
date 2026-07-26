@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_24_CONTRACT_ADOPTION_REVIEW_INCOMPLETE_FAIL_CLOSED_REVISION_RECOMMENDATION_READY_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_25_CONTRACT_REVISION_RECOMMENDATION_PREPARED_DECISION_READY_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1226,6 +1226,15 @@
         "pre24_implementation_created",
         "pre24_live_rerun_ready",
         "pre24_review_failure_revision_recommendation_ready",
+        "pre25_review_failure_revision_recommendation_prepared",
+        "pre25_recommendation_remote_verified",
+        "pre25_decision_recorded",
+        "pre25_offline_revision_authorized",
+        "pre25_offline_revision_executed",
+        "pre25_v0_2_candidates_created",
+        "pre25_contract_candidates_adopted",
+        "pre25_implementation_created",
+        "pre25_live_rerun_ready",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1645,6 +1654,33 @@
         },
         "pre24_review_failure_revision_recommendation_ready": {
           "const": true
+        },
+        "pre25_review_failure_revision_recommendation_prepared": {
+          "const": true
+        },
+        "pre25_recommendation_remote_verified": {
+          "const": true
+        },
+        "pre25_decision_recorded": {
+          "const": false
+        },
+        "pre25_offline_revision_authorized": {
+          "const": false
+        },
+        "pre25_offline_revision_executed": {
+          "const": false
+        },
+        "pre25_v0_2_candidates_created": {
+          "const": false
+        },
+        "pre25_contract_candidates_adopted": {
+          "const": false
+        },
+        "pre25_implementation_created": {
+          "const": false
+        },
+        "pre25_live_rerun_ready": {
+          "const": false
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -2111,6 +2147,18 @@
         "provider_adapter_contract_adoption_review_qualifying_reviews",
         "provider_adapter_contract_adoption_review_advisory_findings_retained",
         "provider_adapter_contract_adoption_review_completed",
+        "provider_adapter_contract_revision_decision_candidate_id",
+        "provider_adapter_contract_revision_recommendation_reference",
+        "provider_adapter_contract_revision_recommendation_sha256",
+        "provider_adapter_contract_revision_recommendation_commit",
+        "provider_adapter_contract_revision_exact_action",
+        "provider_adapter_contract_revision_decision_recorded",
+        "provider_adapter_contract_revision_offline_authorized",
+        "provider_adapter_contract_revision_executed",
+        "provider_adapter_contract_revision_v0_2_candidates_created",
+        "provider_adapter_contract_revision_contract_candidates_adopted",
+        "provider_adapter_contract_revision_implementation_created",
+        "provider_adapter_contract_revision_live_rerun_ready",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -2129,7 +2177,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE24_CONTRACT_ADOPTION_REVIEW_INCOMPLETE_FAIL_CLOSED_REVISION_RECOMMENDATION_READY"
+          "const": "PRE25_CONTRACT_REVISION_RECOMMENDATION_PREPARED_DECISION_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -3244,6 +3292,42 @@
         "provider_adapter_contract_adoption_review_completed": {
           "const": false
         },
+        "provider_adapter_contract_revision_decision_candidate_id": {
+          "const": "CS-D02-PRE-25"
+        },
+        "provider_adapter_contract_revision_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-25-REVIEW-FAILURE-AND-CONTRACT-REVISION-RECOMMENDATION-v0.1.md"
+        },
+        "provider_adapter_contract_revision_recommendation_sha256": {
+          "const": "0c48dd0014c0c5a742948f31b61d85e0ad051e550c12c0a65da50e19cc83d047"
+        },
+        "provider_adapter_contract_revision_recommendation_commit": {
+          "const": "876c979621de1fbf95496c3f8f4f8980cb3ff777"
+        },
+        "provider_adapter_contract_revision_exact_action": {
+          "const": "AUTHORIZE_OFFLINE_PRE24_FINDING_TRIAGE_AND_V0_2_CONTRACT_REVISION_CANDIDATES_ONLY"
+        },
+        "provider_adapter_contract_revision_decision_recorded": {
+          "const": false
+        },
+        "provider_adapter_contract_revision_offline_authorized": {
+          "const": false
+        },
+        "provider_adapter_contract_revision_executed": {
+          "const": false
+        },
+        "provider_adapter_contract_revision_v0_2_candidates_created": {
+          "const": false
+        },
+        "provider_adapter_contract_revision_contract_candidates_adopted": {
+          "const": false
+        },
+        "provider_adapter_contract_revision_implementation_created": {
+          "const": false
+        },
+        "provider_adapter_contract_revision_live_rerun_ready": {
+          "const": false
+        },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
         },
@@ -3260,10 +3344,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_SEPARATE_PRE24_REVIEW_FAILURE_AND_CONTRACT_REVISION_RECOMMENDATION_ONLY"
+          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE25_OFFLINE_CONTRACT_REVISION_DECISION_ONLY"
         },
         "decision_ready": {
-          "const": false
+          "const": true
         },
         "external_execution_authorized": {
           "const": false

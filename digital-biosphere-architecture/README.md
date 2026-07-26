@@ -309,6 +309,12 @@ model mismatch。结果为 [0 qualifying review 的失败关闭](commercializati
 3 个 advisory finding 已保留，但没有 adoption effect；候选契约、实现和 live rerun 继续为
 false。
 
+`CS-D02-PRE-25`
+[offline revision recommendation](TITMAS-CS-D02-PRE-25-REVIEW-FAILURE-AND-CONTRACT-REVISION-RECOMMENDATION-v0.1.md)
+已在远端准备：建议先离线分诊 PRE-24 的 3 个 advisory finding，再建立 v0.2 revision
+candidate。它明确区分 semantic extraction 与 model identity，补充 conflict terminal
+failure 和 alias lifecycle；当前尚未形成 PRE-25 Decision，也未修改 v0.1 或创建 v0.2。
+
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false
 TITMAS_GOVERNANCE_READY=false
