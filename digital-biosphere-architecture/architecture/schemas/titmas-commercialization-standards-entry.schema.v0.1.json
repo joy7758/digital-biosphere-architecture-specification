@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_18_PROVIDER_ADAPTER_CONFORMANCE_PROFILE_RECOMMENDATION_PREPARED_NOT_DECIDED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_22_COMPACT_LIVE_REVIEW_INCOMPLETE_FAIL_CLOSED_OFFLINE_DIAGNOSTIC_RECOMMENDATION_READY_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1183,6 +1183,19 @@
         "pre21_live_model_requests_executed",
         "pre21_live_review_recommendation_ready",
         "pre21_live_review_authorized",
+        "pre22_live_review_recommendation_prepared",
+        "pre22_live_review_decision_recorded",
+        "pre22_authorization_baseline_remote_verified",
+        "pre22_authorization_receipt_remote_verified",
+        "pre22_live_model_requests_executed",
+        "pre22_query_bindings_matched",
+        "pre22_schema_conformant_responses",
+        "pre22_model_bindings_matched",
+        "pre22_qualifying_sessions",
+        "pre22_composite_compact_review_pass",
+        "pre22_profile_review_completed",
+        "pre22_profile_adopted",
+        "pre22_offline_failure_diagnostic_recommendation_ready",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1473,6 +1486,45 @@
         },
         "pre21_live_review_authorized": {
           "const": false
+        },
+        "pre22_live_review_recommendation_prepared": {
+          "const": true
+        },
+        "pre22_live_review_decision_recorded": {
+          "const": true
+        },
+        "pre22_authorization_baseline_remote_verified": {
+          "const": true
+        },
+        "pre22_authorization_receipt_remote_verified": {
+          "const": true
+        },
+        "pre22_live_model_requests_executed": {
+          "const": 2
+        },
+        "pre22_query_bindings_matched": {
+          "const": 2
+        },
+        "pre22_schema_conformant_responses": {
+          "const": 1
+        },
+        "pre22_model_bindings_matched": {
+          "const": 0
+        },
+        "pre22_qualifying_sessions": {
+          "const": 0
+        },
+        "pre22_composite_compact_review_pass": {
+          "const": false
+        },
+        "pre22_profile_review_completed": {
+          "const": false
+        },
+        "pre22_profile_adopted": {
+          "const": false
+        },
+        "pre22_offline_failure_diagnostic_recommendation_ready": {
+          "const": true
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -1868,6 +1920,26 @@
         "provider_adapter_compact_response_contract_live_model_requests_executed",
         "provider_adapter_compact_response_contract_live_review_recommendation_ready",
         "provider_adapter_compact_response_contract_live_review_authorized",
+        "provider_adapter_compact_live_review_decision_candidate_id",
+        "provider_adapter_compact_live_review_recommendation_reference",
+        "provider_adapter_compact_live_review_decision_reference",
+        "provider_adapter_compact_live_review_plan_reference",
+        "provider_adapter_compact_live_review_input_manifest_reference",
+        "provider_adapter_compact_live_review_authorization_receipt_reference",
+        "provider_adapter_compact_live_review_session_schema_reference",
+        "provider_adapter_compact_live_review_kimi_result_reference",
+        "provider_adapter_compact_live_review_deepseek_result_reference",
+        "provider_adapter_compact_live_review_result_reference",
+        "provider_adapter_compact_live_review_execution_receipt_reference",
+        "provider_adapter_compact_live_review_report_reference",
+        "provider_adapter_compact_live_review_requests_executed",
+        "provider_adapter_compact_live_review_query_bindings_matched",
+        "provider_adapter_compact_live_review_schema_conformant_responses",
+        "provider_adapter_compact_live_review_model_bindings_matched",
+        "provider_adapter_compact_live_review_qualifying_sessions",
+        "provider_adapter_compact_live_review_pass",
+        "provider_adapter_compact_live_review_profile_review_completed",
+        "provider_adapter_compact_live_review_profile_adopted",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -1886,7 +1958,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE21_OFFLINE_RESPONSE_CONTRACT_PASS_LIVE_REVIEW_RECOMMENDATION_READY"
+          "const": "PRE22_COMPACT_LIVE_REVIEW_INCOMPLETE_FAIL_CLOSED_OFFLINE_DIAGNOSTIC_RECOMMENDATION_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -2788,6 +2860,66 @@
         "provider_adapter_compact_response_contract_live_review_authorized": {
           "const": false
         },
+        "provider_adapter_compact_live_review_decision_candidate_id": {
+          "const": "CS-D02-PRE-22"
+        },
+        "provider_adapter_compact_live_review_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-RECOMMENDATION-v0.1.md"
+        },
+        "provider_adapter_compact_live_review_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-DECISION-RECORD.v0.1.json"
+        },
+        "provider_adapter_compact_live_review_plan_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-live-review-plan.v0.1.json"
+        },
+        "provider_adapter_compact_live_review_input_manifest_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-live-review-input-manifest.v0.1.json"
+        },
+        "provider_adapter_compact_live_review_authorization_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-live-review-authorization-receipt.v0.1.json"
+        },
+        "provider_adapter_compact_live_review_session_schema_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-live-review-session-result.schema.v0.1.json"
+        },
+        "provider_adapter_compact_live_review_kimi_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-live-review-kimi-session-result.v0.1.json"
+        },
+        "provider_adapter_compact_live_review_deepseek_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-live-review-deepseek-session-result.v0.1.json"
+        },
+        "provider_adapter_compact_live_review_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-live-review-validation-result.v0.1.json"
+        },
+        "provider_adapter_compact_live_review_execution_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-live-review-execution-receipt.v0.1.json"
+        },
+        "provider_adapter_compact_live_review_report_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-RESULT-v0.1.md"
+        },
+        "provider_adapter_compact_live_review_requests_executed": {
+          "const": 2
+        },
+        "provider_adapter_compact_live_review_query_bindings_matched": {
+          "const": 2
+        },
+        "provider_adapter_compact_live_review_schema_conformant_responses": {
+          "const": 1
+        },
+        "provider_adapter_compact_live_review_model_bindings_matched": {
+          "const": 0
+        },
+        "provider_adapter_compact_live_review_qualifying_sessions": {
+          "const": 0
+        },
+        "provider_adapter_compact_live_review_pass": {
+          "const": false
+        },
+        "provider_adapter_compact_live_review_profile_review_completed": {
+          "const": false
+        },
+        "provider_adapter_compact_live_review_profile_adopted": {
+          "const": false
+        },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
         },
@@ -2804,7 +2936,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_SEPARATE_BOUNDED_COMPACT_PROJECTION_LIVE_REVIEW_RECOMMENDATION_ONLY"
+          "const": "PREPARE_SEPARATE_OFFLINE_PRE22_FAILURE_DIAGNOSTIC_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false

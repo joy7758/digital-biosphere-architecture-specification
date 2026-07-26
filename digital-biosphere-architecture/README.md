@@ -286,6 +286,14 @@ response Schema 无法表达 `COMPACT_PROJECTION_ONLY`，所以 `LIVE_REVIEW_REA
 包含 response Schema 的 v0.2 请求最大 21,010 bytes，仍低于内部 cap。该 PASS 只使独立
 live-review recommendation 可准备，`LIVE_REVIEW_AUTHORIZED=false`。
 
+`CS-D02-PRE-22` 按远端冻结授权执行了
+[bounded two-session compact review](commercialization-standards-provider-adapter-profile-review-remediation/PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-RESULT-v0.1.md)。
+两条 exact query 都只执行一次，retry/fallback/repair 为 0。Kimi response 因本地 extraction
+失败而不可恢复；DeepSeek compact JSON 通过 Schema，但 provider 返回
+`deepseek-v4-flash`，与冻结的 `deepseek-chat` model binding 不一致。合格 session 为 0/2，
+所以 `COMPOSITE_COMPACT_REVIEW_PASS=false`、`PROFILE_REVIEW_COMPLETED=false`；
+下一步只允许准备离线 failure diagnostic recommendation。
+
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false
 TITMAS_GOVERNANCE_READY=false
