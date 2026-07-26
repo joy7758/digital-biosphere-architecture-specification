@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: pre-11-offline-diagnostic-completed-rerun-redesign-required-standard-not-ready
+status: pre-12-two-stage-rerun-recommendation-prepared-not-decided-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -823,6 +823,28 @@ CS_G0_PASS=false
 与当前官方文档一致，但工具内部 transport/request envelope 不可见，确切失败原因保持
 `UNKNOWN`。下一步只能另行准备 provider-specific preflight 与 candidate review 重跑建议；
 本节不授权任何 live request。
+
+### 4.22 PRE-12 Two-stage Rerun Recommendation
+
+[PRE-12 exact recommendation](../TITMAS-CS-D02-PRE-12-PROVIDER-PREFLIGHT-AND-CANDIDATE-REVIEW-RERUN-RECOMMENDATION-v0.1.md)
+已准备。建议未来只授权一个两阶段执行：
+
+```text
+STAGE_A=2_PROVIDER_SPECIFIC_PREFLIGHT_REQUESTS
+STAGE_B=4_CANDIDATE_REVIEW_REQUESTS_ONLY_AFTER_STAGE_A_FULL_PASS
+TOTAL_LIVE_MODEL_REQUESTS_RECOMMENDED_MAX=6
+RETRY_MAX=0
+FALLBACK_MAX=0
+JSON_REPAIR_MAX=0
+PRE_12_DECIDED=false
+LIVE_MODEL_REQUESTS_AUTHORIZED=false
+```
+
+Stage A 不包含候选内容，不计入 Stage B 的审查阈值。任一 provider preflight 失败，Stage B
+必须保持 0 request。Stage B 继续保留 PRE-10 的 `3 parseable sessions / 2 providers /
+4 candidate IDs / 0 boundary failures` 阈值，且不能自动创建 `VALID`、counting 或
+`CS-G0 PASS`。本建议已具备 exact action、前置条件、false effects 和 stop rules，但在独立
+Decision、冻结 machine plan/Schema 和远端授权基线之前，不授权任何 live request。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 

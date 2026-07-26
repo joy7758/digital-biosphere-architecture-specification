@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_11_OFFLINE_DIAGNOSTIC_COMPLETED_RERUN_REDESIGN_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_12_RERUN_RECOMMENDATION_PREPARED_NOT_DECIDED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1116,6 +1116,9 @@
         "deepseek_http400_exact_cause_proven",
         "qianfan_exact_failure_cause_proven",
         "public_source_record_review_rerun_authorized",
+        "pre12_rerun_recommendation_prepared",
+        "pre12_rerun_decision_recorded",
+        "pre12_rerun_execution_authorized",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1204,6 +1207,15 @@
           "const": false
         },
         "public_source_record_review_rerun_authorized": {
+          "const": false
+        },
+        "pre12_rerun_recommendation_prepared": {
+          "const": true
+        },
+        "pre12_rerun_decision_recorded": {
+          "const": false
+        },
+        "pre12_rerun_execution_authorized": {
           "const": false
         },
         "public_source_record_counting_authorized": {
@@ -1345,6 +1357,21 @@
         "deepseek_http400_exact_cause_proven",
         "qianfan_exact_failure_cause_proven",
         "rerun_authorized",
+        "rerun_recommendation_decision_candidate_id",
+        "rerun_recommendation_reference",
+        "rerun_recommendation_prepared",
+        "rerun_decision_recorded",
+        "rerun_execution_plan_created",
+        "rerun_live_model_requests_recommended_max",
+        "rerun_live_model_requests_authorized",
+        "two_stage_preflight_required",
+        "stage_a_preflight_requests_max",
+        "stage_b_review_requests_max",
+        "preflight_success_required_before_stage_b",
+        "preflight_counts_toward_review_thresholds",
+        "rerun_retry_allowed",
+        "rerun_fallback_allowed",
+        "rerun_json_repair_allowed",
         "live_model_request_authorized",
         "current_recommended_option",
         "decision_ready",
@@ -1359,7 +1386,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE11_OFFLINE_DIAGNOSTIC_COMPLETED_RERUN_REDESIGN_REQUIRED_NOT_AUTHORIZED"
+          "const": "PRE12_TWO_STAGE_RERUN_RECOMMENDATION_PREPARED_NOT_DECIDED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1496,14 +1523,59 @@
         "rerun_authorized": {
           "const": false
         },
+        "rerun_recommendation_decision_candidate_id": {
+          "const": "CS-D02-PRE-12"
+        },
+        "rerun_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-12-PROVIDER-PREFLIGHT-AND-CANDIDATE-REVIEW-RERUN-RECOMMENDATION-v0.1.md"
+        },
+        "rerun_recommendation_prepared": {
+          "const": true
+        },
+        "rerun_decision_recorded": {
+          "const": false
+        },
+        "rerun_execution_plan_created": {
+          "const": false
+        },
+        "rerun_live_model_requests_recommended_max": {
+          "const": 6
+        },
+        "rerun_live_model_requests_authorized": {
+          "const": false
+        },
+        "two_stage_preflight_required": {
+          "const": true
+        },
+        "stage_a_preflight_requests_max": {
+          "const": 2
+        },
+        "stage_b_review_requests_max": {
+          "const": 4
+        },
+        "preflight_success_required_before_stage_b": {
+          "const": true
+        },
+        "preflight_counts_toward_review_thresholds": {
+          "const": false
+        },
+        "rerun_retry_allowed": {
+          "const": false
+        },
+        "rerun_fallback_allowed": {
+          "const": false
+        },
+        "rerun_json_repair_allowed": {
+          "const": false
+        },
         "live_model_request_authorized": {
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_PRE12_BOUNDED_RERUN_RECOMMENDATION_ONLY"
+          "const": "AUTHORIZE_TWO_PROVIDER_PREFLIGHT_THEN_CONDITIONAL_FOUR_SESSION_CANDIDATE_REVIEW_RERUN_ONLY"
         },
         "decision_ready": {
-          "const": false
+          "const": true
         },
         "external_execution_authorized": {
           "const": false
