@@ -1,0 +1,104 @@
+{
+  "$schema": "./response-contract-validator-fixtures.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-13-RESPONSE-CONTRACT-VALIDATOR-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_SYNTHETIC_VALIDATOR_FIXTURES",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-13",
+  "target_response_schema_reference": "../commercialization-standards-public-source-record-review/agent-record-review-response.schema.v0.1.json",
+  "base_payload": {
+    "reviewer_role": "SOURCE_QUALIFICATION_REVIEWER",
+    "records": [
+      {
+        "candidate_id": "PFPC-001",
+        "operational_problem_strength": "PARTIAL",
+        "accountable_role_evidence": "UNKNOWN",
+        "measurable_consequence": "PARTIAL",
+        "relationship_and_dedup_resolution": "UNKNOWN",
+        "execution_accountability_relevance": "HIGH",
+        "recommendation": "RETAIN_PARTIAL",
+        "rationale": "Synthetic fixture preserves all unknown role and relationship evidence without creating validity.",
+        "missing_evidence": ["accountable role verification", "quantified consequence"],
+        "counting_effect": false
+      },
+      {
+        "candidate_id": "PFPC-002",
+        "operational_problem_strength": "PARTIAL",
+        "accountable_role_evidence": "UNKNOWN",
+        "measurable_consequence": "PARTIAL",
+        "relationship_and_dedup_resolution": "UNKNOWN",
+        "execution_accountability_relevance": "HIGH",
+        "recommendation": "RETAIN_PARTIAL",
+        "rationale": "Synthetic fixture retains the proposal as partial and does not infer sponsor or organizational accountability.",
+        "missing_evidence": ["sponsor evidence", "organization relationship"],
+        "counting_effect": false
+      },
+      {
+        "candidate_id": "PFPC-003",
+        "operational_problem_strength": "PARTIAL",
+        "accountable_role_evidence": "UNKNOWN",
+        "measurable_consequence": "PARTIAL",
+        "relationship_and_dedup_resolution": "UNKNOWN",
+        "execution_accountability_relevance": "HIGH",
+        "recommendation": "RETAIN_PARTIAL",
+        "rationale": "Synthetic fixture preserves missing reproduction and reporter responsibility as unresolved evidence.",
+        "missing_evidence": ["independent reproduction", "reporter responsibility"],
+        "counting_effect": false
+      },
+      {
+        "candidate_id": "PFPC-004",
+        "operational_problem_strength": "PARTIAL",
+        "accountable_role_evidence": "UNKNOWN",
+        "measurable_consequence": "PARTIAL",
+        "relationship_and_dedup_resolution": "UNKNOWN",
+        "execution_accountability_relevance": "MEDIUM",
+        "recommendation": "RETAIN_PARTIAL",
+        "rationale": "Synthetic fixture keeps impact and resolution unknown and makes no provider or customer claim.",
+        "missing_evidence": ["confirmed resolution", "quantified impact"],
+        "counting_effect": false
+      }
+    ],
+    "overall_recommendation": "RETAIN_ALL_PARTIAL",
+    "blocking_gaps": ["accountable role evidence", "organization relationship", "quantified consequences"],
+    "boundary_answers": {
+      "model_review_is_independent_organization": false,
+      "candidate_is_valid_record": false,
+      "candidate_counts_toward_cs_g0": false,
+      "market_validation_proven": false,
+      "customer_adoption_proven": false,
+      "veap_fit_proven": false,
+      "implementation_authorized": false,
+      "commercial_offer_authorized": false,
+      "certification_authorized": false,
+      "release_authorized": false
+    }
+  },
+  "cases": [
+    {
+      "fixture_id": "COMPLIANT_ACCEPTED",
+      "mutation": {"operation": "NONE", "path": "", "value": null},
+      "expected_schema_valid": true
+    },
+    {
+      "fixture_id": "MISSING_BOUNDARY_FIELD_REJECTED",
+      "mutation": {"operation": "REMOVE", "path": "/boundary_answers/release_authorized", "value": null},
+      "expected_schema_valid": false
+    },
+    {
+      "fixture_id": "COUNTING_EFFECT_TRUE_REJECTED",
+      "mutation": {"operation": "REPLACE", "path": "/records/0/counting_effect", "value": true},
+      "expected_schema_valid": false
+    },
+    {
+      "fixture_id": "UNKNOWN_EXTRA_FIELD_REJECTED",
+      "mutation": {"operation": "ADD", "path": "/unexpected_field", "value": true},
+      "expected_schema_valid": false
+    }
+  ],
+  "effects": {
+    "synthetic_only": true,
+    "provider_evidence": false,
+    "candidate_review_completed": false,
+    "live_model_requests_executed": 0
+  }
+}

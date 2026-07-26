@@ -1,0 +1,231 @@
+You are one bounded TITMAS Agent Reviewer.
+
+Review only the supplied frozen public-safe candidate record pack.
+Do not browse, call tools, infer outside facts, or produce prose outside JSON.
+Do not include personal names, handles, contact details, secrets, or source quotations.
+
+Your assigned reviewer_role is:
+{{REVIEWER_ROLE}}
+
+Rules:
+1. Review all PFPC-001 through PFPC-004 exactly once.
+2. Preserve missing and unknown evidence.
+3. An official repository issue does not prove the reporter is a maintainer.
+4. A model session is not an independent organization.
+5. You cannot assign VALID or count any record.
+6. Public material is not TITMAS consent, customer testimony, market validation, or VEAP fit.
+7. Recommendation does not create Decision, Authority, Implementation, Offering, Certification, or Release.
+8. Return strict JSON matching agent-record-review-response.schema.v0.1.json.
+
+---
+document_id: DBA-TITMAS-CS-D02-PRE-10-PUBLIC-SOURCE-RECORD-REVIEW-PACK-0.1
+version: 0.1.0
+status: frozen-public-safe-candidate-review-input
+decision_reference: CS-D02-PRE-10
+source_candidate_set_sha256: f7253e3e2545b1200f1a7eb27b9ce5d323e1eb090b2c1178e112707983ba6300
+direct_personal_identifiers_included: false
+source_quotes_included: false
+---
+
+# PRE-10 Public-safe Candidate Record Review Pack
+
+## Review Boundary
+
+You are reviewing four `PARTIAL` candidate records. You may assess whether each record should remain
+partial, be invalidated, be marked conflicted, or be prepared for a separate human counting review.
+
+You may not:
+
+- assign `VALID`;
+- count a record;
+- close `CS-G0`;
+- infer TITMAS customer adoption, market fit, VEAP fit, implementation, certification, or release;
+- treat a model session as an independent organization;
+- use tools, browse, or rely on material outside this pack.
+
+## Method Rules
+
+An eligible public first-party problem record requires:
+
+- a canonical public source;
+- publisher and accountable source role;
+- publisher-controlled role evidence and responsibility binding;
+- a recent operational problem;
+- workaround and limitations;
+- measurable cost or risk;
+- priority basis and alternatives;
+- source integrity;
+- organization relationship and deduplication context;
+- retention and reviewer lineage.
+
+Missing accountable-role evidence or unresolved organization relationship remains `PARTIAL`.
+Agent judgment alone is not sufficient to verify the role. Public publication is not TITMAS consent,
+customer testimony, market validation, or VEAP fit. Per-record human counting decision is required.
+
+## Candidate `PFPC-001`
+
+- source: OpenTelemetry official website technical report, 2025-03-06;
+- area: cross-framework and vendor-specific AI-agent telemetry fragmentation;
+- consequence: diagnosis, reliability, interoperability and vendor-lock-in risk;
+- alternatives: framework-native instrumentation, vendor tooling, emerging OpenTelemetry GenAI conventions;
+- known gaps: publisher warns content may be outdated; no quantified cost or deployment count;
+  relationship to TITMAS not assessed; not a customer testimonial;
+- current status: `PARTIAL`.
+
+## Candidate `PFPC-002`
+
+- source: official Model Context Protocol repository standards-track proposal, 2025-08-26;
+- area: single request-response model for operations lasting minutes to hours;
+- consequence: duplicated state tracking, timeout, polling and recovery logic;
+- alternatives: custom host polling, external workflow systems, proposed operation tokens;
+- known gaps: closed proposal without sponsor; submitter accountability not verified; embedded customer-use
+  descriptions not independently verified; organization relationship unresolved;
+- current status: `PARTIAL`.
+
+## Candidate `PFPC-003`
+
+- source: official CrewAI repository bug issue, 2025-07-14;
+- area: plausible action-and-observation trace without corresponding tool invocation;
+- consequence: false appearance of execution and unsupported downstream output;
+- alternatives: manual logs, tool invocation hooks, external tracing;
+- known gaps: reporter responsibility unverified; custom environment; no independent reproduction;
+  closed as not planned; relationship unresolved;
+- current status: `PARTIAL`.
+
+## Candidate `PFPC-004`
+
+- source: official OpenTelemetry Python repository bug issue, 2025-10-23;
+- area: HTTP auto-instrumentation interfering with an AI-agent SDK structured-response path;
+- consequence: agent creation API failure and telemetry-to-runtime interference;
+- alternatives: disable or change the affected path, pin and test compatible versions;
+- known gaps: maintainer and operational responsibility unverified; no independent reproduction or confirmed
+  resolution; no quantified impact; organization relationship unresolved;
+- current status: `PARTIAL`.
+
+## Required Review Output
+
+Return strict JSON matching the supplied response contract. Review all four IDs. For every record:
+
+- assess operational-problem strength;
+- assess accountable-role evidence;
+- assess measurable consequence;
+- assess relationship/deduplication resolution;
+- assess relevance to execution accountability;
+- recommend only `RETAIN_PARTIAL`, `INVALIDATE`, `MARK_CONFLICTED`, or
+  `PREPARE_HUMAN_COUNTING_REVIEW`;
+- keep `counting_effect=false`.
+
+
+
+=== RESPONSE SCHEMA (NORMATIVE) ===
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/agent-record-review-response.schema.v0.1.json",
+  "title": "TITMAS PRE-10 Agent Record Review Response v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reviewer_role",
+    "records",
+    "overall_recommendation",
+    "blocking_gaps",
+    "boundary_answers"
+  ],
+  "properties": {
+    "reviewer_role": {
+      "enum": [
+        "SOURCE_QUALIFICATION_REVIEWER",
+        "ACCOUNTABILITY_RELEVANCE_REVIEWER",
+        "CLAIM_AND_PRIVACY_REVIEWER",
+        "ADVERSARIAL_RECORD_REVIEWER"
+      ]
+    },
+    "records": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate_id",
+          "operational_problem_strength",
+          "accountable_role_evidence",
+          "measurable_consequence",
+          "relationship_and_dedup_resolution",
+          "execution_accountability_relevance",
+          "recommendation",
+          "rationale",
+          "missing_evidence",
+          "counting_effect"
+        ],
+        "properties": {
+          "candidate_id": {"enum": ["PFPC-001", "PFPC-002", "PFPC-003", "PFPC-004"]},
+          "operational_problem_strength": {"enum": ["YES", "PARTIAL", "NO", "UNKNOWN"]},
+          "accountable_role_evidence": {"enum": ["YES", "PARTIAL", "NO", "UNKNOWN"]},
+          "measurable_consequence": {"enum": ["YES", "PARTIAL", "NO", "UNKNOWN"]},
+          "relationship_and_dedup_resolution": {"enum": ["YES", "PARTIAL", "NO", "UNKNOWN"]},
+          "execution_accountability_relevance": {"enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"]},
+          "recommendation": {
+            "enum": [
+              "RETAIN_PARTIAL",
+              "INVALIDATE",
+              "MARK_CONFLICTED",
+              "PREPARE_HUMAN_COUNTING_REVIEW"
+            ]
+          },
+          "rationale": {"type": "string", "minLength": 20, "maxLength": 800},
+          "missing_evidence": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 3},
+            "uniqueItems": true
+          },
+          "counting_effect": {"const": false}
+        }
+      }
+    },
+    "overall_recommendation": {
+      "enum": [
+        "RETAIN_ALL_PARTIAL",
+        "MIXED_RECORD_REMEDIATION",
+        "PREPARE_SEPARATE_HUMAN_COUNTING_REVIEW",
+        "FAIL_RECORD_SET"
+      ]
+    },
+    "blocking_gaps": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 3},
+      "uniqueItems": true
+    },
+    "boundary_answers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_review_is_independent_organization",
+        "candidate_is_valid_record",
+        "candidate_counts_toward_cs_g0",
+        "market_validation_proven",
+        "customer_adoption_proven",
+        "veap_fit_proven",
+        "implementation_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "model_review_is_independent_organization": {"const": false},
+        "candidate_is_valid_record": {"const": false},
+        "candidate_counts_toward_cs_g0": {"const": false},
+        "market_validation_proven": {"const": false},
+        "customer_adoption_proven": {"const": false},
+        "veap_fit_proven": {"const": false},
+        "implementation_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}
+
+=== END RESPONSE SCHEMA ===

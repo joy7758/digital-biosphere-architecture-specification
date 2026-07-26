@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-pre-13-rendered-request-contract:0.1",
+  "title": "TITMAS PRE-13 Rendered Request Contract Text",
+  "type": "string",
+  "minLength": 8000,
+  "allOf": [
+    {"pattern": "\\{\\{REVIEWER_ROLE\\}\\}"},
+    {"pattern": "PFPC-001"},
+    {"pattern": "PFPC-004"},
+    {"pattern": "=== RESPONSE SCHEMA \\(NORMATIVE\\) ==="},
+    {"pattern": "\"candidate_counts_toward_cs_g0\""},
+    {"pattern": "=== END RESPONSE SCHEMA ==="}
+  ]
+}

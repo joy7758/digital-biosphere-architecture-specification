@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-pre-13-provider-binding-fixtures:0.1",
+  "title": "TITMAS PRE-13 Provider Binding Fixtures",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "rendered_contract",
+    "role_specific_request_sha256",
+    "bindings",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./provider-binding-fixtures.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-13-PROVIDER-BINDING-FIXTURES-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "OFFLINE_SYNTHETIC_BINDINGS_NOT_PROVIDER_EVIDENCE"},
+    "observed_on": {"const": "2026-07-26"},
+    "decision_reference": {"const": "CS-D02-PRE-13"},
+    "rendered_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "sha256", "bytes", "response_schema_embedded", "reviewer_role_placeholder_preserved"],
+      "properties": {
+        "reference": {"const": "rendered-request-contract.v0.1.txt"},
+        "sha256": {"const": "3e3f454b395f4b6656571dfeef4929cf44cb685e85ef177f1d75b4ee2c696219"},
+        "bytes": {"const": 8960},
+        "response_schema_embedded": {"const": true},
+        "reviewer_role_placeholder_preserved": {"const": true}
+      }
+    },
+    "role_specific_request_sha256": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "SOURCE_QUALIFICATION_REVIEWER",
+        "ACCOUNTABILITY_RELEVANCE_REVIEWER",
+        "CLAIM_AND_PRIVACY_REVIEWER",
+        "ADVERSARIAL_RECORD_REVIEWER"
+      ],
+      "properties": {
+        "SOURCE_QUALIFICATION_REVIEWER": {"const": "1e0f4d0efbccf31a4fbbc1d4cffab9f1bc4308acee3e8cb8324c0769e5ed4638"},
+        "ACCOUNTABILITY_RELEVANCE_REVIEWER": {"const": "eb908db85c3109a8c994e20e40e4630e6c5f9ee8f3fee717c1a94bcffdfc1fcd"},
+        "CLAIM_AND_PRIVACY_REVIEWER": {"const": "549f2e57be0f863a1a6a6af465a8d5ae8ef66b956c67f43b6597f0ba85c01a52"},
+        "ADVERSARIAL_RECORD_REVIEWER": {"const": "a81e1c449ed969c997b92b4eab95abe6502283a0b36e77669614aa1dbb4eaebb"}
+      }
+    },
+    "bindings": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object"
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_success",
+        "candidate_review_completed",
+        "synthetic_fixture_counts_as_provider_evidence",
+        "live_model_requests_executed"
+      ],
+      "properties": {
+        "provider_success": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "synthetic_fixture_counts_as_provider_evidence": {"const": false},
+        "live_model_requests_executed": {"const": 0}
+      }
+    }
+  }
+}

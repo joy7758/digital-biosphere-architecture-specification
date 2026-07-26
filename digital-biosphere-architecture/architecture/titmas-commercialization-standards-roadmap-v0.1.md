@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: pre-13-remote-authorization-baseline-verified-offline-execution-not-started-standard-not-ready
+status: pre-13-offline-remediation-completed-provider-confirmation-recommendation-required-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -1016,6 +1016,25 @@ LIVE_MODEL_REQUESTS_EXECUTED=0
 
 该回执只打开冻结离线步骤，不授权 provider request、source change、candidate counting 或
 任何商业效果。
+
+PRE-13 离线执行现已完成，并形成
+[result report](../commercialization-standards-public-source-record-review-contract-remediation/PRE-13-OFFLINE-RESPONSE-CONTRACT-RESULT-v0.1.md)
+和
+[machine result](../commercialization-standards-public-source-record-review-contract-remediation/offline-validation-result.v0.1.json)：
+
+```text
+OFFLINE_RESPONSE_CONTRACT_REMEDIATION_PASS=true
+FULL_RESPONSE_SCHEMA_EMBEDDED=true
+ROLE_SOURCE_PACK_SCHEMA_BINDING_DETERMINISTIC=true
+COMPLIANT_SYNTHETIC_FIXTURE_ACCEPTED=true
+NONCOMPLIANT_SYNTHETIC_FIXTURES_REJECTED=3/3
+LIVE_MODEL_REQUESTS_EXECUTED=0
+PROVIDER_EXECUTION_VALIDATED=false
+```
+
+该结果只验证离线 request contract 与 validator，不是 provider success 或候选审查。PRE-13
+授权已消耗，下一步只能另行准备 bounded provider confirmation recommendation；当前仍
+不授权 live request。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 

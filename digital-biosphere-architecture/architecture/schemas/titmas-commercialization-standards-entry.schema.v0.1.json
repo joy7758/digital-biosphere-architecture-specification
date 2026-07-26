@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_13_REMOTE_AUTHORIZATION_BASELINE_VERIFIED_OFFLINE_EXECUTION_NOT_STARTED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_13_OFFLINE_REMEDIATION_COMPLETED_PROVIDER_CONFIRMATION_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1132,6 +1132,9 @@
         "pre13_authorization_baseline_remote_verified",
         "pre13_offline_execution_may_start",
         "pre13_offline_execution_started",
+        "pre13_offline_execution_completed",
+        "pre13_offline_remediation_pass",
+        "pre13_live_model_requests_executed",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1265,10 +1268,19 @@
           "const": true
         },
         "pre13_offline_execution_may_start": {
-          "const": true
+          "const": false
         },
         "pre13_offline_execution_started": {
-          "const": false
+          "const": true
+        },
+        "pre13_offline_execution_completed": {
+          "const": true
+        },
+        "pre13_offline_remediation_pass": {
+          "const": true
+        },
+        "pre13_live_model_requests_executed": {
+          "const": 0
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -1470,6 +1482,15 @@
         "response_contract_remediation_authorization_baseline_remote_verified",
         "response_contract_remediation_offline_execution_may_start",
         "response_contract_remediation_offline_execution_started",
+        "response_contract_remediation_offline_execution_completed",
+        "response_contract_remediation_offline_result_pass",
+        "response_contract_remediation_live_model_requests_executed",
+        "response_contract_remediation_rendered_contract_reference",
+        "response_contract_remediation_provider_bindings_reference",
+        "response_contract_remediation_validator_fixtures_reference",
+        "response_contract_remediation_result_reference",
+        "response_contract_remediation_report_reference",
+        "provider_execution_validated",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
         "rerun_json_repair_allowed",
@@ -1487,7 +1508,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE13_REMOTE_AUTHORIZATION_BASELINE_VERIFIED_OFFLINE_EXECUTION_NOT_STARTED"
+          "const": "PRE13_EXECUTED_OFFLINE_REMEDIATION_PASS_PROVIDER_CONFIRMATION_RECOMMENDATION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1802,9 +1823,36 @@
           "const": true
         },
         "response_contract_remediation_offline_execution_may_start": {
-          "const": true
+          "const": false
         },
         "response_contract_remediation_offline_execution_started": {
+          "const": true
+        },
+        "response_contract_remediation_offline_execution_completed": {
+          "const": true
+        },
+        "response_contract_remediation_offline_result_pass": {
+          "const": true
+        },
+        "response_contract_remediation_live_model_requests_executed": {
+          "const": 0
+        },
+        "response_contract_remediation_rendered_contract_reference": {
+          "const": "commercialization-standards-public-source-record-review-contract-remediation/rendered-request-contract.v0.1.txt"
+        },
+        "response_contract_remediation_provider_bindings_reference": {
+          "const": "commercialization-standards-public-source-record-review-contract-remediation/provider-binding-fixtures.v0.1.json"
+        },
+        "response_contract_remediation_validator_fixtures_reference": {
+          "const": "commercialization-standards-public-source-record-review-contract-remediation/response-contract-validator-fixtures.v0.1.json"
+        },
+        "response_contract_remediation_result_reference": {
+          "const": "commercialization-standards-public-source-record-review-contract-remediation/offline-validation-result.v0.1.json"
+        },
+        "response_contract_remediation_report_reference": {
+          "const": "commercialization-standards-public-source-record-review-contract-remediation/PRE-13-OFFLINE-RESPONSE-CONTRACT-RESULT-v0.1.md"
+        },
+        "provider_execution_validated": {
           "const": false
         },
         "rerun_retry_allowed": {
@@ -1820,7 +1868,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "EXECUTE_OFFLINE_RESPONSE_CONTRACT_REDESIGN_AFTER_REMOTE_BASELINE_ONLY"
+          "const": "PREPARE_SEPARATE_BOUNDED_PROVIDER_CONFIRMATION_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false

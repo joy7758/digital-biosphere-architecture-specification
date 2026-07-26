@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-pre-13-offline-validation-result:0.1",
+  "title": "TITMAS PRE-13 Offline Validation Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "authorization_baseline_commit",
+    "artifact_digests",
+    "contract_checks",
+    "synthetic_fixture_results",
+    "execution_accounting",
+    "result",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./offline-validation-result.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-13-OFFLINE-VALIDATION-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "OFFLINE_RESPONSE_CONTRACT_REMEDIATION_PASS"},
+    "observed_on": {"const": "2026-07-26"},
+    "decision_reference": {"const": "CS-D02-PRE-13"},
+    "authorization_baseline_commit": {"const": "0f7265c21f957d7d2609546e8bfa63dc426b8928"},
+    "artifact_digests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rendered_request_contract_sha256",
+        "provider_binding_fixtures_sha256",
+        "validator_fixtures_sha256"
+      ],
+      "properties": {
+        "rendered_request_contract_sha256": {"const": "3e3f454b395f4b6656571dfeef4929cf44cb685e85ef177f1d75b4ee2c696219"},
+        "provider_binding_fixtures_sha256": {"const": "8b05196212f1261d9b66c40808f6a2dc3d5decebcdc30fb07c4041422c8c17f2"},
+        "validator_fixtures_sha256": {"const": "82599c17e57a70ddc0601f13bfcfd02844b27cd68535edfc3977a83210895cf9"}
+      }
+    },
+    "contract_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "full_response_schema_embedded",
+        "source_pack_embedded",
+        "single_reviewer_role_placeholder_preserved",
+        "role_source_pack_schema_binding_deterministic",
+        "qianfan_single_field_binding_defined",
+        "deepseek_json_object_binding_defined",
+        "frozen_digests_match"
+      ],
+      "properties": {
+        "full_response_schema_embedded": {"const": true},
+        "source_pack_embedded": {"const": true},
+        "single_reviewer_role_placeholder_preserved": {"const": true},
+        "role_source_pack_schema_binding_deterministic": {"const": true},
+        "qianfan_single_field_binding_defined": {"const": true},
+        "deepseek_json_object_binding_defined": {"const": true},
+        "frozen_digests_match": {"const": true}
+      }
+    },
+    "synthetic_fixture_results": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fixture_id",
+          "observed_schema_valid",
+          "expected_schema_valid",
+          "matched_expectation"
+        ],
+        "properties": {
+          "fixture_id": {"type": "string"},
+          "observed_schema_valid": {"type": "boolean"},
+          "expected_schema_valid": {"type": "boolean"},
+          "matched_expectation": {"const": true}
+        }
+      }
+    },
+    "execution_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_validation_runs_completed",
+        "local_pre_validation_failures",
+        "live_model_requests_executed",
+        "new_source_searches",
+        "new_source_collections",
+        "retry_attempts",
+        "fallback_attempts",
+        "json_repair_attempts",
+        "secret_accessed_or_persisted",
+        "raw_provider_body_persisted"
+      ],
+      "properties": {
+        "offline_validation_runs_completed": {"const": 1},
+        "local_pre_validation_failures": {"const": 1},
+        "live_model_requests_executed": {"const": 0},
+        "new_source_searches": {"const": 0},
+        "new_source_collections": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "json_repair_attempts": {"const": 0},
+        "secret_accessed_or_persisted": {"const": false},
+        "raw_provider_body_persisted": {"const": false}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_remediation_pass",
+        "provider_execution_validated",
+        "candidate_review_completed",
+        "next_permitted_action"
+      ],
+      "properties": {
+        "offline_remediation_pass": {"const": true},
+        "provider_execution_validated": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "next_permitted_action": {"const": "PREPARE_SEPARATE_BOUNDED_PROVIDER_CONFIRMATION_RECOMMENDATION_ONLY"}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "synthetic_fixture_counts_as_provider_evidence",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "synthetic_fixture_counts_as_provider_evidence": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,78 @@
+{
+  "$schema": "./offline-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-13-OFFLINE-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_RESPONSE_CONTRACT_REMEDIATION_PASS",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-13",
+  "authorization_baseline_commit": "0f7265c21f957d7d2609546e8bfa63dc426b8928",
+  "artifact_digests": {
+    "rendered_request_contract_sha256": "3e3f454b395f4b6656571dfeef4929cf44cb685e85ef177f1d75b4ee2c696219",
+    "provider_binding_fixtures_sha256": "8b05196212f1261d9b66c40808f6a2dc3d5decebcdc30fb07c4041422c8c17f2",
+    "validator_fixtures_sha256": "82599c17e57a70ddc0601f13bfcfd02844b27cd68535edfc3977a83210895cf9"
+  },
+  "contract_checks": {
+    "full_response_schema_embedded": true,
+    "source_pack_embedded": true,
+    "single_reviewer_role_placeholder_preserved": true,
+    "role_source_pack_schema_binding_deterministic": true,
+    "qianfan_single_field_binding_defined": true,
+    "deepseek_json_object_binding_defined": true,
+    "frozen_digests_match": true
+  },
+  "synthetic_fixture_results": [
+    {
+      "fixture_id": "COMPLIANT_ACCEPTED",
+      "observed_schema_valid": true,
+      "expected_schema_valid": true,
+      "matched_expectation": true
+    },
+    {
+      "fixture_id": "MISSING_BOUNDARY_FIELD_REJECTED",
+      "observed_schema_valid": false,
+      "expected_schema_valid": false,
+      "matched_expectation": true
+    },
+    {
+      "fixture_id": "COUNTING_EFFECT_TRUE_REJECTED",
+      "observed_schema_valid": false,
+      "expected_schema_valid": false,
+      "matched_expectation": true
+    },
+    {
+      "fixture_id": "UNKNOWN_EXTRA_FIELD_REJECTED",
+      "observed_schema_valid": false,
+      "expected_schema_valid": false,
+      "matched_expectation": true
+    }
+  ],
+  "execution_accounting": {
+    "offline_validation_runs_completed": 1,
+    "local_pre_validation_failures": 1,
+    "live_model_requests_executed": 0,
+    "new_source_searches": 0,
+    "new_source_collections": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "json_repair_attempts": 0,
+    "secret_accessed_or_persisted": false,
+    "raw_provider_body_persisted": false
+  },
+  "result": {
+    "offline_remediation_pass": true,
+    "provider_execution_validated": false,
+    "candidate_review_completed": false,
+    "next_permitted_action": "PREPARE_SEPARATE_BOUNDED_PROVIDER_CONFIRMATION_RECOMMENDATION_ONLY"
+  },
+  "effects": {
+    "synthetic_fixture_counts_as_provider_evidence": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
