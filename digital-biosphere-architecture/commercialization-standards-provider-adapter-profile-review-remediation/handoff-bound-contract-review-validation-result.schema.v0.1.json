@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/handoff-bound-contract-review-validation-result.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema", "document_id", "version", "status", "decision_reference", "observed_at",
+    "authorization_receipt_reference", "source_hashes_matched", "query_bindings_matched",
+    "payload_bindings_matched", "authorized_sessions", "provider_network_requests_executed",
+    "sanitized_session_sinks_committed", "control_receipt_sink_committed",
+    "session_results", "qualifying_reviews", "blocking_findings", "major_findings",
+    "boundary_safety_failures", "formal_adoption_decision_review_ready",
+    "attempt_accounting", "temporary_sink_cleanup", "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./handoff-bound-contract-review-validation-result.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-REVIEW-VALIDATION-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"enum": ["PASS_FORMAL_ADOPTION_DECISION_REVIEW_READY", "FAIL_CLOSED_REVIEW_NOT_READY"]},
+    "decision_reference": {"const": "CS-D02-PRE-28"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "authorization_receipt_reference": {"const": "handoff-bound-contract-review-authorization-receipt.v0.1.json"},
+    "source_hashes_matched": {"const": 8},
+    "query_bindings_matched": {"const": 2},
+    "payload_bindings_matched": {"const": 2},
+    "authorized_sessions": {"const": 2},
+    "provider_network_requests_executed": {"type": "integer", "minimum": 0, "maximum": 2},
+    "sanitized_session_sinks_committed": {"type": "integer", "minimum": 0, "maximum": 2},
+    "control_receipt_sink_committed": {"type": "boolean"},
+    "session_results": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["session_id", "repository_reference", "sha256", "schema_pass", "response_schema_pass", "model_binding_pass", "boundary_acknowledgements_pass", "qualifying", "verdict"],
+        "properties": {
+          "session_id": {"enum": ["PRE28-KIMI-V0_2-CONTRACT-REVIEW", "PRE28-GLM-V0_2-CONTRACT-REVIEW"]},
+          "repository_reference": {"type": "string", "minLength": 1},
+          "sha256": {"$ref": "#/$defs/sha256"},
+          "schema_pass": {"type": "boolean"},
+          "response_schema_pass": {"type": "boolean"},
+          "model_binding_pass": {"type": "boolean"},
+          "boundary_acknowledgements_pass": {"type": "boolean"},
+          "qualifying": {"type": "boolean"},
+          "verdict": {"type": ["string", "null"], "maxLength": 120}
+        }
+      }
+    },
+    "qualifying_reviews": {"type": "integer", "minimum": 0, "maximum": 2},
+    "blocking_findings": {"type": "integer", "minimum": 0},
+    "major_findings": {"type": "integer", "minimum": 0},
+    "boundary_safety_failures": {"type": "integer", "minimum": 0},
+    "formal_adoption_decision_review_ready": {"type": "boolean"},
+    "attempt_accounting": {"const": {"retry_attempts": 0, "fallback_attempts": 0, "model_substitutions": 0, "alias_inference_attempts": 0, "json_repair_attempts": 0, "web_search_requests": 0, "reviewer_tool_calls": 0}},
+    "temporary_sink_cleanup": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["session_targets_consumed", "control_receipt_consumed", "temporary_root_removed", "cleanup_failures"],
+      "properties": {
+        "session_targets_consumed": {"type": "integer", "minimum": 0, "maximum": 2},
+        "control_receipt_consumed": {"type": "boolean"},
+        "temporary_root_removed": {"type": "boolean"},
+        "cleanup_failures": {"type": "integer", "minimum": 0}
+      }
+    },
+    "effects": {"const": {"pre26_result_changed": false, "pre26_request_budget_reopened": false, "handoff_contract_adopted": false, "contract_candidates_adopted": false, "alias_record_adopted": false, "implementation_created": false, "provider_supported": false, "conformance_executed": false, "valid_problem_records": 0, "cs_g0_pass": false, "commercial_offer_authorized": false, "certification_authorized": false, "release_authorized": false}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

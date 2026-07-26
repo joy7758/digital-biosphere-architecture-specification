@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/handoff-bound-contract-review-request-manifest.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema", "document_id", "version", "status", "decision_reference",
+    "source_request_manifest_reference", "source_request_manifest_sha256", "endpoint",
+    "credential_source", "system_prompt_sha256", "query_template_reference",
+    "query_template_sha256", "query_and_payload_bytes_reused_exactly",
+    "response_schema_reference", "response_schema_sha256", "handoff_contract_reference",
+    "handoff_contract_sha256", "sessions", "parsing_contract", "handoff_contract", "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./handoff-bound-contract-review-request-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-REVIEW-REQUEST-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-28"},
+    "source_request_manifest_reference": {"const": "contract-v0-2-candidate-review-request-manifest.v0.1.json"},
+    "source_request_manifest_sha256": {"const": "fc8a7e1d53224491829b04011a6d298576d25e8c8df2a5e0ab3f54c3f4d2f2ca"},
+    "endpoint": {"const": "https://qianfan.baidubce.com/v2/chat/completions"},
+    "credential_source": {"const": "QIANFAN_API_KEY_ENVIRONMENT_ONLY"},
+    "system_prompt_sha256": {"const": "89199e4a878dabdd6b7114a9f9c850acf021cb6c1ea05b5117394eafbd529fb9"},
+    "query_template_reference": {"const": "contract-v0-2-candidate-review-query-template.v0.1.txt"},
+    "query_template_sha256": {"const": "bb2540877ace361ed2236a50007211883da4ffb71eeddd98b00ee795e0ed759a"},
+    "query_and_payload_bytes_reused_exactly": {"const": true},
+    "response_schema_reference": {"const": "contract-v0-2-candidate-review-response.schema.v0.1.json"},
+    "response_schema_sha256": {"const": "de01e484b31a315ec6c46065a6937d38debaea1a9eafbf98a463c6eb69e94e72"},
+    "handoff_contract_reference": {"const": "sanitized-result-handoff-contract.v0.1.json"},
+    "handoff_contract_sha256": {"const": "0d30e8560dc2850e36d41004ebd059863337d2e242837139c58080662d989aa4"},
+    "sessions": {
+      "const": [
+        {"session_id": "PRE28-KIMI-V0_2-CONTRACT-REVIEW", "requested_model": "kimi-k2.6", "reviewer_role": "INTEROPERABILITY_AND_FAILURE_SEMANTICS_REVIEWER", "query_bytes": 10434, "query_sha256": "5d88ca793b158b8b3226262fcf0bf46ba11852a13876f377ad9105a6ca2f799a", "payload_bytes": 11051, "payload_sha256": "7151f6fb272737bcba93e64c5c999e74620d1cd049d337cfcfa7e1a5bb380cad", "requests_max": 1},
+        {"session_id": "PRE28-GLM-V0_2-CONTRACT-REVIEW", "requested_model": "glm-5.2", "reviewer_role": "GOVERNANCE_ALIAS_AND_VERSIONING_REVIEWER", "query_bytes": 10427, "query_sha256": "38376a9084461496785587b0c308a309032bc64ec8b11c14c2519cefe97f8304", "payload_bytes": 11042, "payload_sha256": "7bca3cfac37ae1cdf4c6c3586cd35c7957f39a808017eef2d64fb9fb17a7735c", "requests_max": 1}
+      ]
+    },
+    "parsing_contract": {"const": {"direct_json_parse_only": true, "response_schema_validation_required": true, "markdown_strip_allowed": false, "code_fence_strip_allowed": false, "json_repair_allowed": false, "semantic_rewrite_allowed": false}},
+    "handoff_contract": {"const": {"stdout_is_canonical": false, "sanitized_temporary_sink_is_canonical": true, "session_result_sinks_required": 2, "control_receipt_sink_required": 1, "raw_provider_envelope_sinks_allowed": 0}},
+    "effects": {"const": {"requests_executed": 0, "reviews_completed": 0, "contract_candidates_adopted": false, "implementation_created": false, "provider_supported": false}}
+  }
+}

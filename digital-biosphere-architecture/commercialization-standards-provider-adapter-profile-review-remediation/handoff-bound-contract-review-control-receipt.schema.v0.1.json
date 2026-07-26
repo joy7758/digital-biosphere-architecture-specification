@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/handoff-bound-contract-review-control-receipt.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "created_at", "session_handoffs", "request_accounting", "persistence_boundary"],
+  "properties": {
+    "$schema": {"const": "./handoff-bound-contract-review-control-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-REVIEW-CONTROL-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"enum": ["COMMITTED_TWO_SESSION_HANDOFFS", "COMMITTED_PARTIAL_OR_FAILED_HANDOFFS"]},
+    "decision_reference": {"const": "CS-D02-PRE-28"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "session_handoffs": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["session_id", "target_path", "payload_bytes", "payload_sha256", "schema_validation_pass", "forbidden_field_scan_pass", "lifecycle_state"],
+        "properties": {
+          "session_id": {"enum": ["PRE28-KIMI-V0_2-CONTRACT-REVIEW", "PRE28-GLM-V0_2-CONTRACT-REVIEW"]},
+          "target_path": {"type": "string", "pattern": "^/private/tmp/titmas-pre28\\.[^/]+/[^/]+\\.json$"},
+          "payload_bytes": {"type": "integer", "minimum": 1},
+          "payload_sha256": {"$ref": "#/$defs/sha256"},
+          "schema_validation_pass": {"const": true},
+          "forbidden_field_scan_pass": {"const": true},
+          "lifecycle_state": {"const": "COMMITTED"}
+        }
+      }
+    },
+    "request_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider_network_requests_executed", "retry_attempts", "fallback_attempts", "model_substitutions", "alias_inference_attempts", "json_repair_attempts"],
+      "properties": {
+        "provider_network_requests_executed": {"type": "integer", "minimum": 0, "maximum": 2},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "model_substitutions": {"const": 0},
+        "alias_inference_attempts": {"const": 0},
+        "json_repair_attempts": {"const": 0}
+      }
+    },
+    "persistence_boundary": {"const": {"credential_persisted": false, "raw_provider_envelope_persisted": false, "usage_persisted": false, "hidden_reasoning_persisted": false, "provider_error_body_persisted": false}}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

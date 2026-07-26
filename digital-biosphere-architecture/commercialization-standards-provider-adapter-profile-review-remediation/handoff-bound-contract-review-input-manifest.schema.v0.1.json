@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/handoff-bound-contract-review-input-manifest.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "source_bindings", "source_hashes_match_required", "effects"],
+  "properties": {
+    "$schema": {"const": "./handoff-bound-contract-review-input-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-REVIEW-INPUT-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-28"},
+    "source_bindings": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reference", "sha256"],
+        "properties": {
+          "reference": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "source_hashes_match_required": {"const": 8},
+    "effects": {
+      "const": {
+        "provider_requests_executed": 0,
+        "contract_candidates_adopted": false,
+        "implementation_created": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false
+      }
+    }
+  }
+}

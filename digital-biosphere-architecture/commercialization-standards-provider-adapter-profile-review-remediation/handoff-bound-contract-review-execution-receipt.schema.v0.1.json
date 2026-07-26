@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/handoff-bound-contract-review-execution-receipt.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema", "document_id", "version", "status", "decision_reference",
+    "authorization_receipt_reference", "authorization_receipt_commit",
+    "authorization_receipt_remote_verified", "executed_at", "provider_network_requests_executed",
+    "session_results_persisted", "control_receipt_sha256", "validation_result_reference",
+    "validation_result_sha256", "temporary_root_removed", "attempt_accounting", "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./handoff-bound-contract-review-execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-REVIEW-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"enum": ["EXECUTED_PASS_REVIEW_READY", "EXECUTED_FAIL_CLOSED_REVIEW_NOT_READY"]},
+    "decision_reference": {"const": "CS-D02-PRE-28"},
+    "authorization_receipt_reference": {"const": "handoff-bound-contract-review-authorization-receipt.v0.1.json"},
+    "authorization_receipt_commit": {"$ref": "#/$defs/commit"},
+    "authorization_receipt_remote_verified": {"const": true},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "provider_network_requests_executed": {"type": "integer", "minimum": 0, "maximum": 2},
+    "session_results_persisted": {"type": "integer", "minimum": 0, "maximum": 2},
+    "control_receipt_sha256": {"$ref": "#/$defs/sha256"},
+    "validation_result_reference": {"const": "handoff-bound-contract-review-validation-result.v0.1.json"},
+    "validation_result_sha256": {"$ref": "#/$defs/sha256"},
+    "temporary_root_removed": {"type": "boolean"},
+    "attempt_accounting": {"const": {"retry_attempts": 0, "fallback_attempts": 0, "model_substitutions": 0, "alias_inference_attempts": 0, "json_repair_attempts": 0, "web_search_requests": 0, "reviewer_tool_calls": 0}},
+    "effects": {"const": {"pre26_result_changed": false, "pre26_request_budget_reopened": false, "handoff_contract_adopted": false, "contract_candidates_adopted": false, "alias_record_adopted": false, "implementation_created": false, "provider_supported": false, "conformance_executed": false, "valid_problem_records": 0, "cs_g0_pass": false, "commercial_offer_authorized": false, "certification_authorized": false, "release_authorized": false}}
+  },
+  "$defs": {
+    "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

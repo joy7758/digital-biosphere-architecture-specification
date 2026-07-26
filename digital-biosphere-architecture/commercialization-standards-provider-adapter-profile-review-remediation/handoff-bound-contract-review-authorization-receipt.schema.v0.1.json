@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/handoff-bound-contract-review-authorization-receipt.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema", "document_id", "version", "status", "decision_reference",
+    "decision_baseline_commit", "decision_baseline_remote_verified", "target_branch",
+    "authorized_at", "credential_presence_check_pass", "source_hashes_matched",
+    "query_bindings_matched", "payload_bindings_matched", "provider_requests_before_authorization",
+    "temporary_root_preflight", "targets", "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./handoff-bound-contract-review-authorization-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-REVIEW-AUTHORIZATION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "AUTHORIZED_BASELINE_REMOTE_VERIFIED_TARGETS_FROZEN"},
+    "decision_reference": {"const": "CS-D02-PRE-28"},
+    "decision_baseline_commit": {"$ref": "#/$defs/commit"},
+    "decision_baseline_remote_verified": {"const": true},
+    "target_branch": {"const": "codex/production-observability-baseline"},
+    "authorized_at": {"type": "string", "format": "date-time"},
+    "credential_presence_check_pass": {"const": true},
+    "source_hashes_matched": {"const": 8},
+    "query_bindings_matched": {"const": 2},
+    "payload_bindings_matched": {"const": 2},
+    "provider_requests_before_authorization": {"const": 0},
+    "temporary_root_preflight": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "device", "inode", "uid", "mode", "is_directory", "is_symlink"],
+      "properties": {
+        "path": {"type": "string", "pattern": "^/private/tmp/titmas-pre28\\.[^/]+$"},
+        "device": {"type": "integer", "minimum": 0},
+        "inode": {"type": "integer", "minimum": 1},
+        "uid": {"type": "integer", "minimum": 0},
+        "mode": {"const": "0700"},
+        "is_directory": {"const": true},
+        "is_symlink": {"const": false}
+      }
+    },
+    "targets": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "path", "preexisting", "symlink", "parent_device", "parent_inode"],
+        "properties": {
+          "kind": {"enum": ["KIMI_SESSION_RESULT", "GLM_SESSION_RESULT", "CONTROL_RECEIPT"]},
+          "path": {"type": "string", "pattern": "^/private/tmp/titmas-pre28\\.[^/]+/[^/]+\\.json$"},
+          "preexisting": {"const": false},
+          "symlink": {"const": false},
+          "parent_device": {"type": "integer", "minimum": 0},
+          "parent_inode": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "effects": {"const": {"review_execution_authorized": true, "contract_candidates_adopted": false, "implementation_created": false, "provider_supported": false, "valid_problem_records": 0, "cs_g0_pass": false, "commercial_offer_authorized": false, "certification_authorized": false, "release_authorized": false}}
+  },
+  "$defs": {
+    "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+  }
+}

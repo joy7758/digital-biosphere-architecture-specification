@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-28-handoff-bound-contract-candidate-review-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-28 Handoff-bound Contract Candidate Review Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema", "document_id", "version", "status", "decision_id",
+    "standing_directive_reference", "recommendation_reference", "recommendation_sha256",
+    "recommendation_commit", "decision_result", "decided_by_ref", "decided_at",
+    "executed_by", "primary_repository", "target_branch", "endpoint", "credential_source",
+    "review_plan_reference", "input_manifest_reference", "request_manifest_reference",
+    "response_schema_reference", "session_result_schema_reference", "handoff_contract_reference",
+    "sessions", "limits", "preconditions", "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./architecture/schemas/titmas-cs-d02-pre-28-handoff-bound-contract-candidate-review-decision-record.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-CANDIDATE-REVIEW-DECISION-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "AUTHORIZED_EXACT_TWO_SESSION_HANDOFF_BOUND_REVIEW_ONLY"},
+    "decision_id": {"const": "CS-D02-PRE-28"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {"const": "TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md"},
+    "recommendation_sha256": {"const": "387bb1a7398971030c65acccfe62df4c23194a05af5a1f65f484308f8ee768d1"},
+    "recommendation_commit": {"const": "b7b9b62b0d5c3635f033c4bc449011c29b29984d"},
+    "decision_result": {"const": "AUTHORIZE_EXACT_TWO_SESSION_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_WITH_SANITIZED_SINK_HANDOFF_ONLY"},
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "Codex"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "target_branch": {"const": "codex/production-observability-baseline"},
+    "endpoint": {"const": "https://qianfan.baidubce.com/v2/chat/completions"},
+    "credential_source": {"const": "QIANFAN_API_KEY_ENVIRONMENT_ONLY"},
+    "review_plan_reference": {"const": "commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-plan.v0.1.json"},
+    "input_manifest_reference": {"const": "commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-input-manifest.v0.1.json"},
+    "request_manifest_reference": {"const": "commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-request-manifest.v0.1.json"},
+    "response_schema_reference": {"const": "commercialization-standards-provider-adapter-profile-review-remediation/contract-v0-2-candidate-review-response.schema.v0.1.json"},
+    "session_result_schema_reference": {"const": "commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-session-result.schema.v0.1.json"},
+    "handoff_contract_reference": {"const": "commercialization-standards-provider-adapter-profile-review-remediation/sanitized-result-handoff-contract.v0.1.json"},
+    "sessions": {
+      "const": [
+        {"session_id": "PRE28-KIMI-V0_2-CONTRACT-REVIEW", "provider_path": "QIANFAN_DIRECT_CHAT_COMPLETIONS", "requested_model": "kimi-k2.6", "role": "INTEROPERABILITY_AND_FAILURE_SEMANTICS_REVIEWER", "requests_max": 1},
+        {"session_id": "PRE28-GLM-V0_2-CONTRACT-REVIEW", "provider_path": "QIANFAN_DIRECT_CHAT_COMPLETIONS", "requested_model": "glm-5.2", "role": "GOVERNANCE_ALIAS_AND_VERSIONING_REVIEWER", "requests_max": 1}
+      ]
+    },
+    "limits": {
+      "const": {
+        "reviewer_sessions_max": 2,
+        "total_provider_network_requests_max": 2,
+        "retry_attempts_max": 0,
+        "fallback_attempts_max": 0,
+        "model_substitutions_max": 0,
+        "alias_inference_attempts_max": 0,
+        "repair_attempts_max": 0,
+        "web_search_requests_max": 0,
+        "reviewer_tool_calls_max": 0,
+        "sanitized_session_sinks_required": 2,
+        "raw_provider_envelope_sinks_allowed": 0
+      }
+    },
+    "preconditions": {
+      "const": {
+        "source_hashes_match": 8,
+        "standing_directive_active": true,
+        "recommendation_remote_verified": true,
+        "remote_decision_baseline_required_before_execution": true,
+        "exact_temporary_targets_required_before_execution": true,
+        "authorization_receipt_required_before_execution": true,
+        "provider_requests_before_authorization": 0
+      }
+    },
+    "effects": {
+      "const": {
+        "authority_changed": false,
+        "ownership_changed": false,
+        "pre26_result_changed": false,
+        "pre26_request_budget_reopened": false,
+        "handoff_contract_adopted": false,
+        "v0_2_contract_candidates_adopted": false,
+        "alias_record_adopted": false,
+        "adapter_implementation_created": false,
+        "provider_supported": false,
+        "conformance_executed": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false,
+        "implementation_authorized": false,
+        "external_outreach_authorized": false,
+        "commercial_offer_authorized": false,
+        "certification_authorized": false,
+        "release_authorized": false
+      }
+    }
+  }
+}
