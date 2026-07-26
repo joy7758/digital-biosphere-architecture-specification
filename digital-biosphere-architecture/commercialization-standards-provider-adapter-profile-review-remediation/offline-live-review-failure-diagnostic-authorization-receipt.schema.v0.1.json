@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:offline-live-review-failure-diagnostic-authorization-receipt:0.1",
+  "title": "TITMAS Offline Live Review Failure Diagnostic Authorization Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "observed_at", "decision_reference", "branch", "authorization_baseline_commit", "remote_commit", "local_equals_remote", "frozen_bindings", "execution_gate", "effects"],
+  "properties": {
+    "$schema": {"const": "./offline-live-review-failure-diagnostic-authorization-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-AUTHORIZATION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_OFFLINE_DIAGNOSTIC_NOT_STARTED"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-23"},
+    "branch": {"const": "codex/production-observability-baseline"},
+    "authorization_baseline_commit": {"const": "0e2054c49b28598d083dbdf54ab13764321f539e"},
+    "remote_commit": {"const": "0e2054c49b28598d083dbdf54ab13764321f539e"},
+    "local_equals_remote": {"const": true},
+    "frozen_bindings": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact", "sha256"],
+        "properties": {
+          "artifact": {"type": "string", "minLength": 8},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "execution_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["standing_directive_active", "remote_authorization_baseline_verified", "offline_diagnostic_may_start", "offline_diagnostic_started", "live_model_requests_authorized", "provider_network_requests_authorized"],
+      "properties": {
+        "standing_directive_active": {"const": true},
+        "remote_authorization_baseline_verified": {"const": true},
+        "offline_diagnostic_may_start": {"const": true},
+        "offline_diagnostic_started": {"const": false},
+        "live_model_requests_authorized": {"const": 0},
+        "provider_network_requests_authorized": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pre22_result_changed", "live_model_requests_executed", "provider_network_requests_executed", "profile_review_completed", "profile_adopted", "implementation_authorized", "release_authorized"],
+      "properties": {
+        "pre22_result_changed": {"const": false},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "implementation_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

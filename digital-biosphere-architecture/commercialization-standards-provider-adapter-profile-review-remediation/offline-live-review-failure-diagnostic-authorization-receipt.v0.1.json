@@ -1,0 +1,39 @@
+{
+  "$schema": "./offline-live-review-failure-diagnostic-authorization-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-AUTHORIZATION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_OFFLINE_DIAGNOSTIC_NOT_STARTED",
+  "observed_at": "2026-07-26T22:02:00+08:00",
+  "decision_reference": "CS-D02-PRE-23",
+  "branch": "codex/production-observability-baseline",
+  "authorization_baseline_commit": "0e2054c49b28598d083dbdf54ab13764321f539e",
+  "remote_commit": "0e2054c49b28598d083dbdf54ab13764321f539e",
+  "local_equals_remote": true,
+  "frozen_bindings": [
+    {"artifact": "../TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-RECOMMENDATION-v0.1.md", "sha256": "f560241d0aac4a6e0469fc70d490d7916af6edcad2387bfee7c48a6767afc754"},
+    {"artifact": "../TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-DECISION-RECORD.md", "sha256": "2c546e80b0cf14ad9a3382021f06c1b871ff0d104340415708b4eaf14399d552"},
+    {"artifact": "../TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-DECISION-RECORD.v0.1.json", "sha256": "b0a728c2a88216a88352be2f4b49a8cbbcc4a317fa1a6ba45ef7e2e2a8d76bbf"},
+    {"artifact": "../architecture/schemas/titmas-cs-d02-pre-23-offline-live-review-failure-diagnostic-decision-record.schema.v0.1.json", "sha256": "f0e475276f394d5ed9f102500e31b40bc8566306b1c59b4809b6129521b8454e"},
+    {"artifact": "offline-live-review-failure-diagnostic-plan.v0.1.json", "sha256": "9711dc2183dad25ff5341ee44d3c0c944310b6a40fcff311b685f0962d7de97c"},
+    {"artifact": "offline-live-review-failure-diagnostic-plan.schema.v0.1.json", "sha256": "1beb933db2eac3e075afc988201c42f6c9237697df7b2a4c0742e44c12256ea6"},
+    {"artifact": "offline-live-review-failure-diagnostic-input-manifest.v0.1.json", "sha256": "750d48303428370f5ce327c464d2175fd8eebbfa69b2f97999aba5087a3b34a1"},
+    {"artifact": "offline-live-review-failure-diagnostic-input-manifest.schema.v0.1.json", "sha256": "1adf13c95d37df71cf13e9b479b6ad96a2ad6abe56e6c8a39c85b916fcd0f374"}
+  ],
+  "execution_gate": {
+    "standing_directive_active": true,
+    "remote_authorization_baseline_verified": true,
+    "offline_diagnostic_may_start": true,
+    "offline_diagnostic_started": false,
+    "live_model_requests_authorized": 0,
+    "provider_network_requests_authorized": 0
+  },
+  "effects": {
+    "pre22_result_changed": false,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "implementation_authorized": false,
+    "release_authorized": false
+  }
+}
