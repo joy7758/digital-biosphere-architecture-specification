@@ -5148,6 +5148,29 @@
             "pre49_offline_builds_pass",
             "pre49_reproducible_build_proven",
             "pre49_provider_requests",
+            "pre50_recommendation_reference",
+            "pre50_recommendation_sha256",
+            "pre50_recommendation_commit",
+            "pre50_decision_reference",
+            "pre50_decision_sha256",
+            "pre50_decision_commit",
+            "pre50_result_reference",
+            "pre50_result_sha256",
+            "pre50_validation_result_sha256",
+            "pre50_execution_receipt_sha256",
+            "pre50_planning_commit",
+            "pre50_result",
+            "pre50_planning_files",
+            "pre50_machine_schema_pairs_valid",
+            "pre50_negative_cases_planned",
+            "pre50_agent_review_sessions_prepared",
+            "pre50_agent_review_sessions_executed",
+            "pre50_p0_direct_observability",
+            "pre50_p0_gap_retained",
+            "pre50_target_write_paths",
+            "pre50_provider_requests",
+            "pre50_credential_reads",
+            "pre50_dependency_installs",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5185,6 +5208,8 @@
             "rb1_local_reference_contract_rehearsal_pass",
             "rb1_third_party_independent_conformance",
             "rb1_provider_binding_scope_recommendation_required",
+            "rb1_provider_binding_scope_planning_complete",
+            "rb1_provider_binding_agent_review_recommendation_required",
             "rb1_provider_binding_implementation_authorized",
             "rb1_reproducible_build_proven",
             "provider_supported",
@@ -5887,6 +5912,75 @@
             "pre49_provider_requests": {
               "const": 0
             },
+            "pre50_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-50-RB1-DEEPSEEK-BINDING-SCOPE-AND-SECURITY-PLANNING-RECOMMENDATION-v0.1.md"
+            },
+            "pre50_recommendation_sha256": {
+              "const": "035e652882f03dc239babf32ccf3e49b0ed11bcc5cfc7d057fc0154cba0c4822"
+            },
+            "pre50_recommendation_commit": {
+              "const": "6690a62350f1879ef837fce78764f970760a0a22"
+            },
+            "pre50_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-50-RB1-DEEPSEEK-BINDING-SCOPE-AND-SECURITY-PLANNING-DECISION-RECORD.v0.1.json"
+            },
+            "pre50_decision_sha256": {
+              "const": "9b054b0111cbdb18444b6d672b7d14b113d0f25392c1e57e3e2869a8f2b278d1"
+            },
+            "pre50_decision_commit": {
+              "const": "d7bf97d8c1fe6aef3c26c6b32a285f7e73e2f15d"
+            },
+            "pre50_result_reference": {
+              "const": "commercialization-standards-titmas-integrations-rb1-provider-binding-planning/PRE-50-RB1-DEEPSEEK-BINDING-SCOPE-AND-SECURITY-PLANNING-RESULT-v0.1.md"
+            },
+            "pre50_result_sha256": {
+              "const": "4db36eb2e26e48824752bf3b54ccf1d26e05856e23576507c05e6a0e6486d3f1"
+            },
+            "pre50_validation_result_sha256": {
+              "const": "8a409e0f7399d0dfa2cf3a30443e012f5dec3d6a25f283364f694eb83bef112d"
+            },
+            "pre50_execution_receipt_sha256": {
+              "const": "d8f8e52eb171e2d01735d8619672d435245834c5c81e8209383683822d238e71"
+            },
+            "pre50_planning_commit": {
+              "const": "8c1faf434d0367ae5c5674ba178896c5c2141c4f"
+            },
+            "pre50_result": {
+              "const": "PASS_DBA_ONLY_PROVIDER_BINDING_PLANNING_PACKET_AGENT_REVIEW_RECOMMENDATION_REQUIRED"
+            },
+            "pre50_planning_files": {
+              "const": "12/12"
+            },
+            "pre50_machine_schema_pairs_valid": {
+              "const": "5/5"
+            },
+            "pre50_negative_cases_planned": {
+              "const": 24
+            },
+            "pre50_agent_review_sessions_prepared": {
+              "const": 4
+            },
+            "pre50_agent_review_sessions_executed": {
+              "const": 0
+            },
+            "pre50_p0_direct_observability": {
+              "const": false
+            },
+            "pre50_p0_gap_retained": {
+              "const": true
+            },
+            "pre50_target_write_paths": {
+              "const": 0
+            },
+            "pre50_provider_requests": {
+              "const": 0
+            },
+            "pre50_credential_reads": {
+              "const": 0
+            },
+            "pre50_dependency_installs": {
+              "const": 0
+            },
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -5996,6 +6090,12 @@
               "const": false
             },
             "rb1_provider_binding_scope_recommendation_required": {
+              "const": false
+            },
+            "rb1_provider_binding_scope_planning_complete": {
+              "const": true
+            },
+            "rb1_provider_binding_agent_review_recommendation_required": {
               "const": true
             },
             "rb1_provider_binding_implementation_authorized": {
@@ -6031,7 +6131,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_RB1_PROVIDER_BINDING_SCOPE_AND_SECURITY_REVIEW_RECOMMENDATION_ONLY"
+          "const": "FORM_EXACT_RB1_DEEPSEEK_BINDING_AGENT_REVIEW_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false
