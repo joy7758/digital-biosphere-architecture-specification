@@ -5189,6 +5189,30 @@
             "pre51_provider_timeout_or_network_errors",
             "pre51_authority_safety_failures",
             "pre51_retry_fallback_substitution_repair_attempts",
+            "pre52_recommendation_reference",
+            "pre52_recommendation_sha256",
+            "pre52_recommendation_commit",
+            "pre52_decision_reference",
+            "pre52_decision_sha256",
+            "pre52_decision_commit",
+            "pre52_result_reference",
+            "pre52_result_sha256",
+            "pre52_failure_evidence_matrix_sha256",
+            "pre52_preallocated_session_contract_sha256",
+            "pre52_negative_cases_sha256",
+            "pre52_execution_receipt_sha256",
+            "pre52_packet_commit",
+            "pre52_result",
+            "pre52_network_requests",
+            "pre52_model_requests",
+            "pre52_credential_reads",
+            "pre52_target_writes",
+            "pre52_observations_crosswalked",
+            "pre52_negative_cases_planned",
+            "pre52_bound_sessions",
+            "pre52_required_bound_sessions",
+            "pre52_execution_ready",
+            "pre52_root_cause_proven",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5231,6 +5255,11 @@
             "rb1_provider_binding_agent_review_executed",
             "rb1_provider_binding_agent_review_gate_pass",
             "rb1_provider_binding_agent_review_transport_remediation_recommendation_required",
+            "pre52_offline_remediation_executed",
+            "pre52_offline_remediation_pass",
+            "multi_provider_preflight_recommendation_allowed",
+            "qianfan_exact_model_binding_required",
+            "security_reviewer_exact_binding_required",
             "rb1_provider_binding_implementation_authorized",
             "rb1_reproducible_build_proven",
             "provider_supported",
@@ -6056,6 +6085,78 @@
             "pre51_retry_fallback_substitution_repair_attempts": {
               "const": 0
             },
+            "pre52_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-52-MULTI-PROVIDER-REVIEW-TRANSPORT-AND-REQUEST-CONTRACT-REMEDIATION-RECOMMENDATION-v0.1.md"
+            },
+            "pre52_recommendation_sha256": {
+              "const": "6dd45b960bc49adc84256834de6c12855d8635719ddeeb4bbdd4ae75560e01f2"
+            },
+            "pre52_recommendation_commit": {
+              "const": "7142f4732ab0dfe6166e002b30f3f15e639c305c"
+            },
+            "pre52_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-52-MULTI-PROVIDER-REVIEW-TRANSPORT-AND-REQUEST-CONTRACT-REMEDIATION-DECISION-RECORD.v0.1.json"
+            },
+            "pre52_decision_sha256": {
+              "const": "78d5b372deebf44bc21b3b1d83721d0e07eda4120deab94d7ce30dd62a9efb45"
+            },
+            "pre52_decision_commit": {
+              "const": "aa29ae64b0744a6244d68b0a5d17f034b8f5414b"
+            },
+            "pre52_result_reference": {
+              "const": "commercialization-standards-titmas-integrations-rb1-multi-provider-review-remediation/PRE-52-MULTI-PROVIDER-REVIEW-REMEDIATION-RESULT-v0.1.md"
+            },
+            "pre52_result_sha256": {
+              "const": "7fa360398b5e3c35614bb38862bb78622fced96b3281e5f60cc52b026a4194a7"
+            },
+            "pre52_failure_evidence_matrix_sha256": {
+              "const": "20ac5bd05a6827005e168a57ed45b4de6b9f1d6b3571fc0e6d45724730535c40"
+            },
+            "pre52_preallocated_session_contract_sha256": {
+              "const": "05e82256cf3c8ea42b1d50297824cc6f14a6b51c8a6242ccd1db0c060e76e09d"
+            },
+            "pre52_negative_cases_sha256": {
+              "const": "6d173f0bec33d98929736eb1b9927ec2b64b2d133b32f1d1078b89f344830b83"
+            },
+            "pre52_execution_receipt_sha256": {
+              "const": "4626c7d0bc08be8d3b86a707e48c490e4bfe3e2cb0ba3d54f4249c47a05d6ed8"
+            },
+            "pre52_packet_commit": {
+              "const": "0bb2a3e273179624db783ae6c20159d859049d9e"
+            },
+            "pre52_result": {
+              "const": "PASS_OFFLINE_REMEDIATION_CONTRACT_PARTIAL_MODEL_BINDINGS_REMAIN"
+            },
+            "pre52_network_requests": {
+              "const": 0
+            },
+            "pre52_model_requests": {
+              "const": 0
+            },
+            "pre52_credential_reads": {
+              "const": 0
+            },
+            "pre52_target_writes": {
+              "const": 0
+            },
+            "pre52_observations_crosswalked": {
+              "const": 9
+            },
+            "pre52_negative_cases_planned": {
+              "const": 12
+            },
+            "pre52_bound_sessions": {
+              "const": 2
+            },
+            "pre52_required_bound_sessions": {
+              "const": 4
+            },
+            "pre52_execution_ready": {
+              "const": false
+            },
+            "pre52_root_cause_proven": {
+              "const": false
+            },
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -6180,6 +6281,21 @@
               "const": false
             },
             "rb1_provider_binding_agent_review_transport_remediation_recommendation_required": {
+              "const": false
+            },
+            "pre52_offline_remediation_executed": {
+              "const": true
+            },
+            "pre52_offline_remediation_pass": {
+              "const": true
+            },
+            "multi_provider_preflight_recommendation_allowed": {
+              "const": false
+            },
+            "qianfan_exact_model_binding_required": {
+              "const": true
+            },
+            "security_reviewer_exact_binding_required": {
               "const": true
             },
             "rb1_provider_binding_implementation_authorized": {
@@ -6215,7 +6331,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_AGENT_REVIEW_TRANSPORT_AND_REQUEST_CONTRACT_REMEDIATION_RECOMMENDATION_ONLY"
+          "const": "RESOLVE_QIANFAN_AND_SECURITY_REVIEWER_EXACT_MODEL_BINDINGS_THEN_FORM_PREFLIGHT_RECOMMENDATION"
         },
         "decision_ready": {
           "const": false
