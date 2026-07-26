@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: pre-12-remote-authorization-baseline-verified-execution-not-started-standard-not-ready
+status: pre-13-response-contract-remediation-recommendation-prepared-not-decided-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -17,7 +17,7 @@ known_limitations: [SEE_DOCUMENT_BODY]
 document_type: non-executable-commercialization-standards-roadmap
 architecture_domain: TITMAS
 primary_repository: digital-biosphere-architecture
-observed_at: 2026-07-25
+observed_at: 2026-07-26
 roadmap_defined: true
 bounded_internal_scope_authorized: true
 standardization_execution_authorized: false
@@ -951,6 +951,38 @@ LIVE_MODEL_REQUEST_AUTHORIZED=false
 PRE-12 的 6 个 live request 上限已消耗。下一步只能建立独立的 response-contract
 remediation recommendation，说明如何在请求时明示并约束完整 Schema；不能执行后修复
 JSON，也不能沿用本次授权继续调用。
+
+### 4.25 PRE-13 Response Contract Remediation Recommendation
+
+[PRE-13 exact recommendation](../TITMAS-CS-D02-PRE-13-RESPONSE-CONTRACT-REMEDIATION-RECOMMENDATION-v0.1.md)
+已准备：
+
+```text
+RECOMMENDED_OPTION=AUTHORIZE_OFFLINE_RESPONSE_CONTRACT_REDESIGN_ONLY
+LIVE_MODEL_REQUESTS_MAX=0
+NEW_SOURCE_SEARCH_MAX=0
+NEW_SOURCE_COLLECTION_MAX=0
+AT_RECOMMENDATION_TIME_PRE_13_DECIDED=false
+AT_RECOMMENDATION_TIME_EXECUTION_AUTHORIZED=false
+```
+
+本建议把问题限定为 request-time schema binding（请求时 Schema 绑定）：现有 prompt 只引用
+Schema 文件名，没有把完整 Schema 明示给 provider；Qianfan single-field tool 和 DeepSeek
+JSON object mode 都需要形成完整、自包含、可计算摘要的 rendered request contract。
+
+该发现不能自动证明 PRE-12 失败的唯一原因，也不允许执行后修复 JSON。建议的下一阶段
+只有离线 rendered request、provider binding fixtures、validator fixtures 和 deterministic
+validation result；不发送任何模型请求。
+
+独立 Decision 前：
+
+```text
+PRE_13_DECIDED=false
+PRE_13_EXECUTION_AUTHORIZED=false
+LIVE_MODEL_REQUESTS_AUTHORIZED=false
+VALID_PROBLEM_RECORDS=0
+CS_G0_PASS=false
+```
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 

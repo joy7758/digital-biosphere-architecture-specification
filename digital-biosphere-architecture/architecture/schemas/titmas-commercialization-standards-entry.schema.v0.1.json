@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_12_REMOTE_AUTHORIZATION_BASELINE_VERIFIED_EXECUTION_NOT_STARTED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_13_RESPONSE_CONTRACT_REMEDIATION_RECOMMENDATION_PREPARED_NOT_DECIDED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1122,6 +1122,13 @@
         "pre12_authorization_baseline_remote_verified",
         "pre12_execution_may_start",
         "pre12_execution_started",
+        "pre12_stage_a_full_pass",
+        "pre12_stage_b_threshold_pass",
+        "pre12_execution_completed",
+        "pre12_request_cap_consumed",
+        "pre13_response_contract_remediation_recommendation_prepared",
+        "pre13_response_contract_remediation_decision_recorded",
+        "pre13_offline_execution_authorized",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1198,7 +1205,7 @@
           "const": true
         },
         "public_source_record_review_live_model_requests_executed": {
-          "const": 0
+          "const": 6
         },
         "deepseek_current_model_contract_drift_detected": {
           "const": true
@@ -1225,9 +1232,30 @@
           "const": true
         },
         "pre12_execution_may_start": {
-          "const": true
+          "const": false
         },
         "pre12_execution_started": {
+          "const": true
+        },
+        "pre12_stage_a_full_pass": {
+          "const": true
+        },
+        "pre12_stage_b_threshold_pass": {
+          "const": false
+        },
+        "pre12_execution_completed": {
+          "const": true
+        },
+        "pre12_request_cap_consumed": {
+          "const": true
+        },
+        "pre13_response_contract_remediation_recommendation_prepared": {
+          "const": true
+        },
+        "pre13_response_contract_remediation_decision_recorded": {
+          "const": false
+        },
+        "pre13_offline_execution_authorized": {
           "const": false
         },
         "public_source_record_counting_authorized": {
@@ -1415,6 +1443,13 @@
         "stage_b_threshold_result_reference",
         "rerun_execution_receipt_reference",
         "rerun_result_report_reference",
+        "response_contract_remediation_decision_candidate_id",
+        "response_contract_remediation_recommendation_reference",
+        "response_contract_remediation_recommendation_prepared",
+        "response_contract_remediation_decision_recorded",
+        "response_contract_remediation_offline_only",
+        "response_contract_remediation_live_model_requests_recommended_max",
+        "response_contract_remediation_execution_authorized",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
         "rerun_json_repair_allowed",
@@ -1432,7 +1467,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE12_EXECUTED_FAIL_CLOSED_RESPONSE_CONTRACT_REMEDIATION_REQUIRED"
+          "const": "PRE13_RESPONSE_CONTRACT_REMEDIATION_RECOMMENDATION_PREPARED_NOT_DECIDED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1707,6 +1742,27 @@
         "rerun_result_report_reference": {
           "const": "commercialization-standards-public-source-record-review-rerun/PRE-12-CANDIDATE-REVIEW-RERUN-RESULT-v0.1.md"
         },
+        "response_contract_remediation_decision_candidate_id": {
+          "const": "CS-D02-PRE-13"
+        },
+        "response_contract_remediation_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-13-RESPONSE-CONTRACT-REMEDIATION-RECOMMENDATION-v0.1.md"
+        },
+        "response_contract_remediation_recommendation_prepared": {
+          "const": true
+        },
+        "response_contract_remediation_decision_recorded": {
+          "const": false
+        },
+        "response_contract_remediation_offline_only": {
+          "const": true
+        },
+        "response_contract_remediation_live_model_requests_recommended_max": {
+          "const": 0
+        },
+        "response_contract_remediation_execution_authorized": {
+          "const": false
+        },
         "rerun_retry_allowed": {
           "const": false
         },
@@ -1720,10 +1776,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_SEPARATE_RESPONSE_CONTRACT_REMEDIATION_RECOMMENDATION_ONLY"
+          "const": "AUTHORIZE_OFFLINE_RESPONSE_CONTRACT_REDESIGN_ONLY"
         },
         "decision_ready": {
-          "const": false
+          "const": true
         },
         "external_execution_authorized": {
           "const": false
