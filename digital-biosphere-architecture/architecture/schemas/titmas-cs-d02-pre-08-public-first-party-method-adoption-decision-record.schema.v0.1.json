@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-08-public-first-party-method-adoption-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-08 Public First-party Method Adoption Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "parent_decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "predecessor_decision_reference",
+    "predecessor_review_reference",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by_ref",
+    "primary_repository",
+    "adoption_record_reference",
+    "adopted_inputs",
+    "maximum_positive_effect",
+    "execution_receipt",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-08-public-first-party-method-adoption-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-08-PUBLIC-FIRST-PARTY-METHOD-ADOPTION-DECISION-RECORD-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DECIDED_EXECUTED_METHOD_ADOPTED_ONLY"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-08"
+    },
+    "parent_decision_id": {
+      "const": "CS-D02"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PUBLIC-FIRST-PARTY-METHOD-ADOPTION-RECOMMENDATION-v0.1.md"
+    },
+    "predecessor_decision_reference": {
+      "const": "TITMAS-CS-D02-PRE-07-PUBLIC-FIRST-PARTY-METHOD-REVISION-DECISION-RECORD.v0.1.json"
+    },
+    "predecessor_review_reference": {
+      "const": "commercialization-standards-public-source-method-revision-review/review-result.v0.2.json"
+    },
+    "decision_result": {
+      "const": "ADOPT_REVIEWED_V0_2_AS_DEVELOPMENT_METHOD_ONLY"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "executed_by_ref": {
+      "const": "codex"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "adoption_record_reference": {
+      "const": "architecture/veap-public-first-party-problem-report-method-adoption.v0.2.json"
+    },
+    "adopted_inputs": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "prefixItems": [
+        {
+          "const": {
+            "reference": "architecture/veap-public-first-party-problem-report-method-amendment-v0.2.md",
+            "sha256": "83c0cdcd358c6e03e8250081706cd26fa7fc049c273a0f07f21af78611a66231"
+          }
+        },
+        {
+          "const": {
+            "reference": "architecture/veap-public-first-party-problem-report-method-contract.v0.2.json",
+            "sha256": "7d88c86430ce9b953e18402e6346350119e1a6a2addb64c5b5699299644c77f6"
+          }
+        },
+        {
+          "const": {
+            "reference": "architecture/schemas/veap-public-first-party-problem-report-method-contract.schema.v0.2.json",
+            "sha256": "e8adc103a4e43f827bbfe80695c0fce5d02978037d945c940e9bbdf4bd110b29"
+          }
+        },
+        {
+          "const": {
+            "reference": "commercialization-standards-public-source-method-revision-review/review-result.v0.2.json",
+            "sha256": "7512444f95968174fda6cd5d8d16be0ca21f1a317e08a484eae7ae255855aaf0"
+          }
+        }
+      ],
+      "items": false
+    },
+    "maximum_positive_effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "public_first_party_method_adopted_as_development_method",
+        "method_adoption_decision_recorded",
+        "public_source_execution_authorized",
+        "valid_problem_records",
+        "cs_g0_pass"
+      ],
+      "properties": {
+        "public_first_party_method_adopted_as_development_method": {
+          "const": true
+        },
+        "method_adoption_decision_recorded": {
+          "const": true
+        },
+        "public_source_execution_authorized": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        }
+      }
+    },
+    "execution_receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target",
+        "status"
+      ],
+      "properties": {
+        "target": {
+          "const": "ARCHITECTURE_METHOD_ADOPTION_RECORD_AND_GOVERNANCE_SYNC"
+        },
+        "status": {
+          "const": "EXECUTED_WITHIN_BOUNDED_SCOPE"
+        }
+      }
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_changed",
+        "ownership_changed",
+        "problem_validation_execution_authorized",
+        "public_source_search_authorized",
+        "public_source_collection_authorized",
+        "public_source_record_counting_authorized",
+        "external_outreach_authorized",
+        "participant_enrollment_authorized",
+        "network_processing_authorized",
+        "data_collection_authorized",
+        "implementation_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized",
+        "customer_adoption",
+        "agent_created",
+        "runtime_created",
+        "entity_created",
+        "permission_granted",
+        "canonical_evidence_created"
+      ],
+      "properties": {
+        "authority_changed": {"const": false},
+        "ownership_changed": {"const": false},
+        "problem_validation_execution_authorized": {"const": false},
+        "public_source_search_authorized": {"const": false},
+        "public_source_collection_authorized": {"const": false},
+        "public_source_record_counting_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "participant_enrollment_authorized": {"const": false},
+        "network_processing_authorized": {"const": false},
+        "data_collection_authorized": {"const": false},
+        "implementation_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false},
+        "customer_adoption": {"const": false},
+        "agent_created": {"const": false},
+        "runtime_created": {"const": false},
+        "entity_created": {"const": false},
+        "permission_granted": {"const": false},
+        "canonical_evidence_created": {"const": false}
+      }
+    }
+  }
+}

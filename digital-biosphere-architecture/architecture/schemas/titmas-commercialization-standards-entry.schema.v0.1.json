@@ -24,6 +24,7 @@
     "agent_native_problem_signal_gate",
     "public_first_party_method_review",
     "public_first_party_method_revision_review",
+    "public_first_party_method_adoption",
     "human_decision",
     "standing_directive",
     "predecision_evidence",
@@ -45,7 +46,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_07_METHOD_DELTA_REVIEW_PASSED_ADOPTION_REVIEW_READY_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_08_METHOD_ADOPTED_EXECUTION_NOT_AUTHORIZED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -612,6 +613,46 @@
         "cs_g0_effect": {"const": false}
       }
     },
+    "public_first_party_method_adoption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "decision_result",
+        "decision_record_reference",
+        "recommendation_reference",
+        "adoption_record_reference",
+        "method_amendment_reference",
+        "method_contract_reference",
+        "review_result_reference",
+        "decided_by_ref",
+        "adopted_at",
+        "method_adopted_as_development_method",
+        "public_source_search_authorized",
+        "public_source_collection_authorized",
+        "public_source_record_counting_authorized",
+        "valid_problem_records_created",
+        "cs_g0_effect"
+      ],
+      "properties": {
+        "decision_id": {"const": "CS-D02-PRE-08"},
+        "decision_result": {"const": "ADOPT_REVIEWED_V0_2_AS_DEVELOPMENT_METHOD_ONLY"},
+        "decision_record_reference": {"const": "TITMAS-CS-D02-PRE-08-PUBLIC-FIRST-PARTY-METHOD-ADOPTION-DECISION-RECORD.v0.1.json"},
+        "recommendation_reference": {"const": "TITMAS-CS-D02-PUBLIC-FIRST-PARTY-METHOD-ADOPTION-RECOMMENDATION-v0.1.md"},
+        "adoption_record_reference": {"const": "architecture/veap-public-first-party-problem-report-method-adoption.v0.2.json"},
+        "method_amendment_reference": {"const": "architecture/veap-public-first-party-problem-report-method-amendment-v0.2.md"},
+        "method_contract_reference": {"const": "architecture/veap-public-first-party-problem-report-method-contract.v0.2.json"},
+        "review_result_reference": {"const": "commercialization-standards-public-source-method-revision-review/review-result.v0.2.json"},
+        "decided_by_ref": {"const": "zhangbin"},
+        "adopted_at": {"type": "string", "format": "date-time"},
+        "method_adopted_as_development_method": {"const": true},
+        "public_source_search_authorized": {"const": false},
+        "public_source_collection_authorized": {"const": false},
+        "public_source_record_counting_authorized": {"const": false},
+        "valid_problem_records_created": {"const": 0},
+        "cs_g0_effect": {"const": false}
+      }
+    },
     "human_decision": {
       "type": "object",
       "additionalProperties": false,
@@ -958,7 +999,7 @@
           "const": true
         },
         "public_first_party_method_adopted": {
-          "const": false
+          "const": true
         },
         "public_source_collection_authorized": {
           "const": false
@@ -1092,7 +1133,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "METHOD_V0_2_DELTA_REVIEW_PASS_ADOPTION_DECISION_NOT_RECORDED"
+          "const": "METHOD_V0_2_ADOPTED_EXECUTION_DECISION_NOT_RECORDED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1152,10 +1193,10 @@
           "const": true
         },
         "method_adoption_decision_recorded": {
-          "const": false
+          "const": true
         },
         "public_source_method_adopted": {
-          "const": false
+          "const": true
         },
         "public_source_execution_authorized": {
           "const": false

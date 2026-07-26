@@ -1,0 +1,136 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/veap-public-first-party-problem-report-method-adoption.schema.v0.2.json",
+  "title": "VEAP Public First-party Problem Report Method Adoption v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "maturity",
+    "decision_reference",
+    "decision_record_reference",
+    "adopted_at",
+    "adopted_inputs",
+    "current_facts",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/veap-public-first-party-problem-report-method-adoption.schema.v0.2.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-VEAP-PUBLIC-FIRST-PARTY-PROBLEM-REPORT-METHOD-ADOPTION-0.2"
+    },
+    "version": {
+      "const": "0.2.0"
+    },
+    "status": {
+      "const": "ADOPTED_AS_DEVELOPMENT_METHOD"
+    },
+    "maturity": {
+      "const": "Development"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-08"
+    },
+    "decision_record_reference": {
+      "const": "../TITMAS-CS-D02-PRE-08-PUBLIC-FIRST-PARTY-METHOD-ADOPTION-DECISION-RECORD.v0.1.json"
+    },
+    "adopted_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "adopted_inputs": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "prefixItems": [
+        {
+          "const": {
+            "reference": "veap-public-first-party-problem-report-method-amendment-v0.2.md",
+            "sha256": "83c0cdcd358c6e03e8250081706cd26fa7fc049c273a0f07f21af78611a66231"
+          }
+        },
+        {
+          "const": {
+            "reference": "veap-public-first-party-problem-report-method-contract.v0.2.json",
+            "sha256": "7d88c86430ce9b953e18402e6346350119e1a6a2addb64c5b5699299644c77f6"
+          }
+        },
+        {
+          "const": {
+            "reference": "schemas/veap-public-first-party-problem-report-method-contract.schema.v0.2.json",
+            "sha256": "e8adc103a4e43f827bbfe80695c0fce5d02978037d945c940e9bbdf4bd110b29"
+          }
+        },
+        {
+          "const": {
+            "reference": "../commercialization-standards-public-source-method-revision-review/review-result.v0.2.json",
+            "sha256": "7512444f95968174fda6cd5d8d16be0ca21f1a317e08a484eae7ae255855aaf0"
+          }
+        }
+      ],
+      "items": false
+    },
+    "current_facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method_adopted_as_development_method",
+        "desk_research_execution_authorized",
+        "public_source_search_authorized",
+        "public_source_collection_authorized",
+        "public_source_record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "commercialization_standard_ready"
+      ],
+      "properties": {
+        "method_adopted_as_development_method": {"const": true},
+        "desk_research_execution_authorized": {"const": false},
+        "public_source_search_authorized": {"const": false},
+        "public_source_collection_authorized": {"const": false},
+        "public_source_record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "commercialization_standard_ready": {"const": false}
+      }
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_changed",
+        "ownership_changed",
+        "implementation_authorized",
+        "external_action_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized",
+        "agent_created",
+        "runtime_created",
+        "entity_created",
+        "permission_granted",
+        "canonical_evidence_created"
+      ],
+      "properties": {
+        "authority_changed": {"const": false},
+        "ownership_changed": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_action_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false},
+        "agent_created": {"const": false},
+        "runtime_created": {"const": false},
+        "entity_created": {"const": false},
+        "permission_granted": {"const": false},
+        "canonical_evidence_created": {"const": false}
+      }
+    }
+  }
+}

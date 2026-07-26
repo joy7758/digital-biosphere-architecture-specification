@@ -587,8 +587,9 @@ Qianfan 与 DeepSeek 均返回 `ACCEPT_FOR_HUMAN_ADOPTION_REVIEW`，四项评分
 就绪；它没有采纳方法，也没有授权公开来源 search、collection、record creation 或
 counting。
 
-下一动作候选为 `CS-D02-PRE-08`，只决定是否把 v0.2 采纳为 Development method。即使
-采纳，也必须用后续独立 decision 才能启动 desk research execution。
+该审查时点的下一动作候选为 `CS-D02-PRE-08`，只决定是否把 v0.2 采纳为 Development
+method。后续采纳状态见 4.17；即使采纳，也必须用新的独立 decision 才能启动 desk
+research execution。
 
 ```text
 PUBLIC_FIRST_PARTY_METHOD_V0_2_CANDIDATE_DEFINED=true
@@ -602,6 +603,37 @@ PUBLIC_SOURCE_RECORD_COUNTING_AUTHORIZED=false
 VEAP_VALID_PROBLEM_RECORDS=0
 CS_G0_PASS=false
 ```
+
+### 4.17 Public First-party Method v0.2 Development Adoption
+
+[CS-D02-PRE-08](../TITMAS-CS-D02-PRE-08-PUBLIC-FIRST-PARTY-METHOD-ADOPTION-DECISION-RECORD.md)
+依据 PRE-07 的 exact two-provider result 和
+[adoption recommendation](../TITMAS-CS-D02-PUBLIC-FIRST-PARTY-METHOD-ADOPTION-RECOMMENDATION-v0.1.md)，
+把经过审查的 v0.2 内容采纳为 Development method。
+
+[Adoption Record](veap-public-first-party-problem-report-method-adoption-v0.2.md) 通过四个
+SHA-256 digest 引用 frozen method、contract、Schema 和 review result。它没有修改 PRE-07
+冻结候选，因此审查时点的 `method_adopted=false` 历史和 source digests 均得到保留。
+
+```text
+DECISION_ID=CS-D02-PRE-08
+DECISION_RESULT=ADOPT_REVIEWED_V0_2_AS_DEVELOPMENT_METHOD_ONLY
+PUBLIC_FIRST_PARTY_METHOD_ADOPTED_AS_DEVELOPMENT_METHOD=true
+METHOD_ADOPTION_DECISION_RECORDED=true
+
+DESK_RESEARCH_EXECUTION_AUTHORIZED=false
+PUBLIC_SOURCE_SEARCH_AUTHORIZED=false
+PUBLIC_SOURCE_COLLECTION_AUTHORIZED=false
+PUBLIC_SOURCE_RECORD_COUNTING_AUTHORIZED=false
+VALID_PROBLEM_RECORDS=0
+CS_G0_PASS=false
+COMMERCIALIZATION_STANDARD_READY=false
+```
+
+Development adoption 只建立未来执行 decision 可引用的方法规则，不创建 Runtime、
+Implementation、Evidence、Customer、Offering、Certification 或 Release。若要开始
+public first-party desk research，下一决定必须精确冻结 source/domain、time window、
+record cap、retention、incident Owner、rollback、network/data handling 和停止条件。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -952,7 +984,11 @@ TITMAS_CS_D02_PUBLIC_FIRST_PARTY_METHOD_DELTA_REVIEW_COMPLETE=true
 TITMAS_CS_D02_PUBLIC_FIRST_PARTY_METHOD_DELTA_REVIEW_RESULT=PASS_DELTA_REVIEW_COMPLETE_HUMAN_ADOPTION_REVIEW_READY
 TITMAS_CS_D02_PUBLIC_FIRST_PARTY_METHOD_ADOPTION_REVIEW_READY=true
 TITMAS_CS_D02_PUBLIC_FIRST_PARTY_METHOD_REVISION_REQUIRED=false
-TITMAS_CS_D02_PUBLIC_FIRST_PARTY_METHOD_ADOPTED=false
+TITMAS_CS_D02_PRE_08_DECIDED=true
+TITMAS_CS_D02_PRE_08_RESULT=ADOPT_REVIEWED_V0_2_AS_DEVELOPMENT_METHOD_ONLY
+TITMAS_CS_D02_PUBLIC_FIRST_PARTY_METHOD_ADOPTED=true
+TITMAS_CS_D02_PUBLIC_FIRST_PARTY_METHOD_MATURITY=Development
+TITMAS_CS_D02_DESK_RESEARCH_EXECUTION_AUTHORIZED=false
 TITMAS_CS_D02_PUBLIC_SOURCE_SEARCH_AUTHORIZED=false
 TITMAS_CS_D02_PUBLIC_SOURCE_COLLECTION_AUTHORIZED=false
 TITMAS_CS_D02_PUBLIC_SOURCE_RECORD_COUNTING_AUTHORIZED=false
