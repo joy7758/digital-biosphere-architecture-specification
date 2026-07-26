@@ -1159,6 +1159,13 @@
         "pre17_provider_runtime_validation_pass",
         "pre17_synthetic_cases_matched",
         "pre18_provider_adapter_conformance_recommendation_prepared",
+        "pre19_profile_candidate_review_recommendation_prepared",
+        "pre19_profile_candidate_review_decision_recorded",
+        "pre19_authorization_baseline_remote_verified",
+        "pre19_review_requests_executed",
+        "pre19_schema_conformant_reviews",
+        "pre19_review_completed",
+        "pre19_profile_adopted",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1377,6 +1384,27 @@
         },
         "pre18_provider_adapter_conformance_recommendation_prepared": {
           "const": true
+        },
+        "pre19_profile_candidate_review_recommendation_prepared": {
+          "const": true
+        },
+        "pre19_profile_candidate_review_decision_recorded": {
+          "const": true
+        },
+        "pre19_authorization_baseline_remote_verified": {
+          "const": true
+        },
+        "pre19_review_requests_executed": {
+          "const": 1
+        },
+        "pre19_schema_conformant_reviews": {
+          "const": 0
+        },
+        "pre19_review_completed": {
+          "const": false
+        },
+        "pre19_profile_adopted": {
+          "const": false
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -1720,6 +1748,22 @@
         "provider_adapter_conformance_profile_adopted",
         "provider_adapter_conformance_profile_provider_adoption",
         "provider_adapter_implementation_authorized",
+        "provider_adapter_profile_review_decision_candidate_id",
+        "provider_adapter_profile_review_recommendation_reference",
+        "provider_adapter_profile_review_decision_reference",
+        "provider_adapter_profile_review_plan_reference",
+        "provider_adapter_profile_review_authorization_receipt_reference",
+        "provider_adapter_profile_review_authorization_receipt_commit",
+        "provider_adapter_profile_review_sanitized_observations_reference",
+        "provider_adapter_profile_review_composite_result_reference",
+        "provider_adapter_profile_review_execution_receipt_reference",
+        "provider_adapter_profile_review_result_report_reference",
+        "provider_adapter_profile_review_sessions_planned",
+        "provider_adapter_profile_review_requests_executed",
+        "provider_adapter_profile_review_provider_successes",
+        "provider_adapter_profile_review_schema_conformant_reviews",
+        "provider_adapter_profile_review_completed",
+        "provider_adapter_profile_review_composite_result",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -1738,7 +1782,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE18_PROVIDER_ADAPTER_CONFORMANCE_PROFILE_RECOMMENDATION_PREPARED_NOT_DECIDED"
+          "const": "PRE19_PROFILE_REVIEW_INCOMPLETE_FAIL_CLOSED_PROVIDER_QUERY_TOO_LARGE"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -2484,6 +2528,54 @@
         "provider_adapter_implementation_authorized": {
           "const": false
         },
+        "provider_adapter_profile_review_decision_candidate_id": {
+          "const": "CS-D02-PRE-19"
+        },
+        "provider_adapter_profile_review_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-19-PROVIDER-ADAPTER-PROFILE-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md"
+        },
+        "provider_adapter_profile_review_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-19-PROVIDER-ADAPTER-PROFILE-CANDIDATE-REVIEW-DECISION-RECORD.v0.1.json"
+        },
+        "provider_adapter_profile_review_plan_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review/review-plan.v0.1.json"
+        },
+        "provider_adapter_profile_review_authorization_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review/authorization-baseline-receipt.v0.1.json"
+        },
+        "provider_adapter_profile_review_authorization_receipt_commit": {
+          "const": "ca38b42453042e5f614755fe3be031a6b6d9216c"
+        },
+        "provider_adapter_profile_review_sanitized_observations_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review/sanitized-review-observations.v0.1.json"
+        },
+        "provider_adapter_profile_review_composite_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review/composite-review-result.v0.1.json"
+        },
+        "provider_adapter_profile_review_execution_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review/execution-receipt.v0.1.json"
+        },
+        "provider_adapter_profile_review_result_report_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review/PRE-19-PROVIDER-ADAPTER-PROFILE-CANDIDATE-REVIEW-RESULT-v0.1.md"
+        },
+        "provider_adapter_profile_review_sessions_planned": {
+          "const": 2
+        },
+        "provider_adapter_profile_review_requests_executed": {
+          "const": 1
+        },
+        "provider_adapter_profile_review_provider_successes": {
+          "const": 0
+        },
+        "provider_adapter_profile_review_schema_conformant_reviews": {
+          "const": 0
+        },
+        "provider_adapter_profile_review_completed": {
+          "const": false
+        },
+        "provider_adapter_profile_review_composite_result": {
+          "const": "INCOMPLETE_FAIL_CLOSED"
+        },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
         },
@@ -2500,7 +2592,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_PROVIDER_ADAPTER_PROFILE_CANDIDATE_REVIEW_RECOMMENDATION_ONLY"
+          "const": "PREPARE_SEPARATE_EXACT_REVIEW_BUNDLE_SIZE_REMEDIATION_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false
