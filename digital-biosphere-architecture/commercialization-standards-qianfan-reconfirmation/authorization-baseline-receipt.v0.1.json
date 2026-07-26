@@ -1,0 +1,40 @@
+{
+  "$schema": "./authorization-baseline-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-16-AUTHORIZATION-BASELINE-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_RECONFIRMATION_NOT_STARTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-16",
+  "branch": "codex/production-observability-baseline",
+  "authorization_baseline_commit": "a4053f092f24e472460808f69a3c716176f53031",
+  "remote_commit": "a4053f092f24e472460808f69a3c716176f53031",
+  "local_equals_remote": true,
+  "frozen_bindings": {
+    "recommendation_reference": "../TITMAS-CS-D02-PRE-16-QIANFAN-RECONFIRMATION-RECOMMENDATION-v0.1.md",
+    "recommendation_sha256": "7eebe4571fa6999924183115197661506295f724a18760e4cc216f4d5a26a7fb",
+    "decision_record_reference": "../TITMAS-CS-D02-PRE-16-QIANFAN-RECONFIRMATION-DECISION-RECORD.v0.1.json",
+    "decision_record_sha256": "a613560a4f7dbcf83782a24cfda47ed84f024c61ee91ddf03ec224a68ba0dca2",
+    "execution_plan_reference": "execution-plan.v0.1.json",
+    "execution_plan_sha256": "9ae2ae812a41e1e139212b1231f38ba4ea9512a821a77dba098af8e1017cff36"
+  },
+  "execution_gate": {
+    "authorization_baseline_remote_verified": true,
+    "qianfan_reconfirmation_may_start": true,
+    "qianfan_reconfirmation_started": false,
+    "new_live_model_requests_executed": 0,
+    "new_live_model_requests_remaining": 1
+  },
+  "effects": {
+    "qianfan_reconfirmation_completed": false,
+    "composite_provider_gate_pass": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
