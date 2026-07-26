@@ -411,9 +411,16 @@ declaration template；[PRE-35 Adoption Record](architecture/titmas-integrations
 只把三者按 exact digest 采纳为 `Development` planning input。
 
 [PRE-36 RB0 public-safe fileset recommendation](TITMAS-CS-D02-PRE-36-TITMAS-INTEGRATIONS-RB0-PUBLIC-SAFE-FILESET-RECOMMENDATION-v0.1.md)
-已远端准备。它只建议在 DBA staging directory 生成最多九个保留 `.candidate` 后缀的
-non-executable repository-governance 文件；`titmas-integrations` 不得在本阶段被修改，
-license、package、implementation、provider support、conformance 和 release 均保持 false。
+已经按独立 Decision 执行。[九文件候选集](commercialization-standards-titmas-integrations-rb0-fileset/)
+达到 `9/9`、source/package/tests=`0`、machine Schema/instance valid、public-safe pattern
+match=`0`，且 `titmas-integrations` 未修改。验证保留 `PRE36-GAP-001`：implementation
+declaration template 的相对 Schema 尚未进入 target manifest，因此 target application
+和 license adoption 仍未就绪。
+
+[PRE-37 target mapping and Schema gap review recommendation](TITMAS-CS-D02-PRE-37-RB0-TARGET-MAPPING-AND-TEMPLATE-SCHEMA-GAP-REVIEW-RECOMMENDATION-v0.1.md)
+已远端准备。它只建议离线冻结 candidate→target path、比较 exact tenth Schema 与 template
+revision 两条解决路线，并准备下一决策包；外部仓库、license、source、network、model 和
+credential effect 均为 0。
 
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false
