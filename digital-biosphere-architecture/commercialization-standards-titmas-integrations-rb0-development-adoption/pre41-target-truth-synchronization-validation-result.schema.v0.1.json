@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre41-target-truth-synchronization-validation-result.schema.v0.1.json",
+  "title": "PRE-41 Target Truth Synchronization Validation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_record_sha256",
+    "decision_commit",
+    "validated_at",
+    "adoption",
+    "failure",
+    "target",
+    "effects",
+    "next_gate"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre41-target-truth-synchronization-validation-result.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-41-TARGET-TRUTH-SYNCHRONIZATION-VALIDATION-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "ADOPTED_IN_DBA_TARGET_TRUTH_SYNC_CONFLICT_FAIL_CLOSED_PRE42_REQUIRED"},
+    "decision_reference": {"const": "CS-D02-PRE-41"},
+    "decision_record_sha256": {"const": "8c157d0003a5a806e103554befb814eeb39912233686e640f95ae2c551d83c14"},
+    "decision_commit": {"const": "8732feb0641c5a044909ec475db832a850bf52d6"},
+    "validated_at": {"type": "string", "format": "date-time"},
+    "adoption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["effective", "maturity", "adopted_baseline_commit"],
+      "properties": {
+        "effective": {"const": true},
+        "maturity": {"const": "Development"},
+        "adopted_baseline_commit": {"const": "9610748d4a72d81278df2bc296518a469ce2fd30"}
+      }
+    },
+    "failure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage",
+        "code",
+        "decision_present_on_governance_branch",
+        "decision_present_on_remote_main",
+        "candidate_declares_decision_branch",
+        "candidate_declares_decision_commit",
+        "target_mutation_started"
+      ],
+      "properties": {
+        "stage": {"const": "TARGET_SYNC_PREFLIGHT_REFERENCE_RESOLUTION"},
+        "code": {"const": "ADOPTION_DECISION_REFERENCE_REVISION_UNRESOLVED_ON_DEFAULT_BRANCH"},
+        "decision_present_on_governance_branch": {"const": true},
+        "decision_present_on_remote_main": {"const": false},
+        "candidate_declares_decision_branch": {"const": false},
+        "candidate_declares_decision_commit": {"const": false},
+        "target_mutation_started": {"const": false}
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "branch", "head", "head_unchanged", "dirty_count", "files_modified", "remote_main_unchanged"],
+      "properties": {
+        "repository": {"const": "https://github.com/joy7758/titmas-integrations.git"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "head": {"const": "9610748d4a72d81278df2bc296518a469ce2fd30"},
+        "head_unchanged": {"const": true},
+        "dirty_count": {"const": 0},
+        "files_modified": {"const": 0},
+        "remote_main_unchanged": {"const": true}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_truth_synchronized",
+        "implementation_authorized",
+        "implementation_created",
+        "provider_supported",
+        "conformance_executed",
+        "runtime_created",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "merge_authorized",
+        "pull_request_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "target_truth_synchronized": {"const": false},
+        "implementation_authorized": {"const": false},
+        "implementation_created": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "runtime_created": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "merge_authorized": {"const": false},
+        "pull_request_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    },
+    "next_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pre42_reference_remediation_required", "additional_target_action_authorized", "direct_rb1_entry_allowed"],
+      "properties": {
+        "pre42_reference_remediation_required": {"const": true},
+        "additional_target_action_authorized": {"const": false},
+        "direct_rb1_entry_allowed": {"const": false}
+      }
+    }
+  }
+}

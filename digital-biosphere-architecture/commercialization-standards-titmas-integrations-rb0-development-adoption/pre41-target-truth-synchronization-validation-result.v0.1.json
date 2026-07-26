@@ -1,0 +1,51 @@
+{
+  "$schema": "./pre41-target-truth-synchronization-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-41-TARGET-TRUTH-SYNCHRONIZATION-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "ADOPTED_IN_DBA_TARGET_TRUTH_SYNC_CONFLICT_FAIL_CLOSED_PRE42_REQUIRED",
+  "decision_reference": "CS-D02-PRE-41",
+  "decision_record_sha256": "8c157d0003a5a806e103554befb814eeb39912233686e640f95ae2c551d83c14",
+  "decision_commit": "8732feb0641c5a044909ec475db832a850bf52d6",
+  "validated_at": "2026-07-27T03:34:55+08:00",
+  "adoption": {
+    "effective": true,
+    "maturity": "Development",
+    "adopted_baseline_commit": "9610748d4a72d81278df2bc296518a469ce2fd30"
+  },
+  "failure": {
+    "stage": "TARGET_SYNC_PREFLIGHT_REFERENCE_RESOLUTION",
+    "code": "ADOPTION_DECISION_REFERENCE_REVISION_UNRESOLVED_ON_DEFAULT_BRANCH",
+    "decision_present_on_governance_branch": true,
+    "decision_present_on_remote_main": false,
+    "candidate_declares_decision_branch": false,
+    "candidate_declares_decision_commit": false,
+    "target_mutation_started": false
+  },
+  "target": {
+    "repository": "https://github.com/joy7758/titmas-integrations.git",
+    "branch": "codex/rb0-governance-baseline",
+    "head": "9610748d4a72d81278df2bc296518a469ce2fd30",
+    "head_unchanged": true,
+    "dirty_count": 0,
+    "files_modified": 0,
+    "remote_main_unchanged": true
+  },
+  "effects": {
+    "target_truth_synchronized": false,
+    "implementation_authorized": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "runtime_created": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "merge_authorized": false,
+    "pull_request_authorized": false,
+    "release_authorized": false
+  },
+  "next_gate": {
+    "pre42_reference_remediation_required": true,
+    "additional_target_action_authorized": false,
+    "direct_rb1_entry_allowed": false
+  }
+}

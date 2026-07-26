@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre41-execution-receipt.schema.v0.1.json",
+  "title": "PRE-41 Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "executed_by",
+    "completed_at",
+    "adopted_baseline_commit",
+    "counts",
+    "validation_result_reference",
+    "result",
+    "authorization_consumed",
+    "additional_execution_authorized",
+    "merge_authorized",
+    "release_authorized"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre41-execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-41-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "ADOPTION_EFFECTIVE_TARGET_SYNC_PREFLIGHT_FAILED_NO_TARGET_MUTATION"},
+    "decision_reference": {"const": "CS-D02-PRE-41"},
+    "executed_by": {"const": "Codex"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "adopted_baseline_commit": {"const": "9610748d4a72d81278df2bc296518a469ce2fd30"},
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_files_modified",
+        "target_files_created",
+        "target_files_deleted",
+        "target_commits_created",
+        "target_pushes_executed",
+        "provider_api_requests",
+        "model_requests",
+        "credential_reads",
+        "retained_failures"
+      ],
+      "properties": {
+        "target_files_modified": {"const": 0},
+        "target_files_created": {"const": 0},
+        "target_files_deleted": {"const": 0},
+        "target_commits_created": {"const": 0},
+        "target_pushes_executed": {"const": 0},
+        "provider_api_requests": {"const": 0},
+        "model_requests": {"const": 0},
+        "credential_reads": {"const": 0},
+        "retained_failures": {"const": 1}
+      }
+    },
+    "validation_result_reference": {"const": "pre41-target-truth-synchronization-validation-result.v0.1.json"},
+    "result": {"const": "ADOPTED_IN_DBA_TARGET_TRUTH_SYNC_CONFLICT_FAIL_CLOSED_PRE42_REQUIRED"},
+    "authorization_consumed": {"const": true},
+    "additional_execution_authorized": {"const": false},
+    "merge_authorized": {"const": false},
+    "release_authorized": {"const": false}
+  }
+}
