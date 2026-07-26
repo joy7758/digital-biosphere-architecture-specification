@@ -39,6 +39,7 @@ Runtime（评价运行时）或 Agent（智能体）实现。页面将当前项�
 | `/en/status` | English status page |
 | `/community` | 完整中文社区／开发者入口 |
 | `/en/community` | Complete English community/developer entry |
+| `/digital-cell` | TITMAS Digital Cell Demo v0.1 reference page |
 | `/llms.txt` | LLM-readable（大模型可读）项目入口 |
 | `/agent-index.json` | Agent discovery（智能体发现）索引 |
 | `/status.json` | 机器可读验证状态 |
