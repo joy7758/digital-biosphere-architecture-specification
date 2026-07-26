@@ -1307,6 +1307,9 @@
         "remediation_decision_reference",
         "remediation_decision_recorded",
         "diagnostic_plan_reference",
+        "diagnostic_authorization_baseline_receipt_reference",
+        "diagnostic_authorization_baseline_commit",
+        "diagnostic_authorization_baseline_remote_verified",
         "offline_diagnostic_authorized",
         "live_model_request_authorized",
         "current_recommended_option",
@@ -1322,7 +1325,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE11_DECIDED_OFFLINE_DIAGNOSTIC_AUTHORIZED_NOT_EXECUTED"
+          "const": "PRE11_REMOTE_AUTHORIZATION_BASELINE_VERIFIED_OFFLINE_DIAGNOSTIC_NOT_EXECUTED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1416,6 +1419,15 @@
         },
         "diagnostic_plan_reference": {
           "const": "commercialization-standards-public-source-record-review-remediation/diagnostic-plan.v0.1.json"
+        },
+        "diagnostic_authorization_baseline_receipt_reference": {
+          "const": "commercialization-standards-public-source-record-review-remediation/authorization-baseline-receipt.v0.1.json"
+        },
+        "diagnostic_authorization_baseline_commit": {
+          "const": "1685b43df67fc0a15265b15fcfcdeb7346340c09"
+        },
+        "diagnostic_authorization_baseline_remote_verified": {
+          "const": true
         },
         "offline_diagnostic_authorized": {
           "const": true
