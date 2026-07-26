@@ -1,0 +1,570 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/provider-request-instrumentation-handoff-readiness-packet.schema.v0.1.json",
+  "title": "TITMAS Provider Request Instrumentation Handoff Readiness Packet v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "standing_directive_reference",
+    "observed_at",
+    "observation_scope",
+    "frozen_inputs",
+    "governance_sources",
+    "external_source_digests",
+    "source_inventory",
+    "owner_target_matrix",
+    "duplication_audit",
+    "implementation_handoff_contract_candidate",
+    "test_conformance_handoff_checklist",
+    "decision_readiness",
+    "non_effects"
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_ref",
+        "sha256"
+      ],
+      "properties": {
+        "source_ref": {
+          "type": "string",
+          "minLength": 3
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "nullable_nonnegative_integer": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 0
+    },
+    "nullable_string": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "inventory_item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_id",
+        "repository_path",
+        "origin",
+        "branch_or_state",
+        "observed_commit",
+        "dirty_count_before",
+        "tracked_files",
+        "source_files",
+        "test_files",
+        "license_present",
+        "agents_entry_present",
+        "package_metadata_present",
+        "source_evidence_refs",
+        "disposition",
+        "reason"
+      ],
+      "properties": {
+        "candidate_id": {
+          "type": "string",
+          "minLength": 3
+        },
+        "repository_path": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "origin": {
+          "$ref": "#/$defs/nullable_string"
+        },
+        "branch_or_state": {
+          "type": "string",
+          "minLength": 2
+        },
+        "observed_commit": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{40}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "dirty_count_before": {
+          "$ref": "#/$defs/nullable_nonnegative_integer"
+        },
+        "tracked_files": {
+          "$ref": "#/$defs/nullable_nonnegative_integer"
+        },
+        "source_files": {
+          "$ref": "#/$defs/nullable_nonnegative_integer"
+        },
+        "test_files": {
+          "$ref": "#/$defs/nullable_nonnegative_integer"
+        },
+        "license_present": {
+          "type": "boolean"
+        },
+        "agents_entry_present": {
+          "type": "boolean"
+        },
+        "package_metadata_present": {
+          "type": "boolean"
+        },
+        "source_evidence_refs": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "disposition": {
+          "type": "string",
+          "minLength": 8
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 20
+        }
+      }
+    },
+    "string_array": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 3
+      }
+    }
+  },
+  "properties": {
+    "$schema": {
+      "const": "./handoff-readiness-packet.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-PACKET-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "OWNER_UNRESOLVED_NO_ELIGIBLE_EXISTING_TARGET"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-32"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "observation_scope": {
+      "const": "LOCAL_READ_ONLY_TRACKED_SOURCE_NO_PROVIDER_NETWORK_NO_CREDENTIAL_READ"
+    },
+    "frozen_inputs": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/source_digest"
+      }
+    },
+    "governance_sources": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/source_digest"
+      }
+    },
+    "external_source_digests": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/source_digest"
+      }
+    },
+    "source_inventory": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "$ref": "#/$defs/inventory_item"
+      }
+    },
+    "owner_target_matrix": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_owner_ref",
+        "specification_owner_ref",
+        "implementation_owner_ref",
+        "conformance_reviewer_ref",
+        "commercial_offering_owner_ref",
+        "primary_implementation_repository",
+        "directionally_aligned_candidate_repository",
+        "candidate_acceptance_status",
+        "eligible_existing_targets",
+        "candidate_targets_requiring_decision",
+        "owner_target_resolved"
+      ],
+      "properties": {
+        "decision_owner_ref": {
+          "const": "zhangbin"
+        },
+        "specification_owner_ref": {
+          "const": "NOT_ASSIGNED"
+        },
+        "implementation_owner_ref": {
+          "const": "NOT_ASSIGNED"
+        },
+        "conformance_reviewer_ref": {
+          "const": "NOT_ASSIGNED"
+        },
+        "commercial_offering_owner_ref": {
+          "const": "NOT_ASSIGNED"
+        },
+        "primary_implementation_repository": {
+          "const": "NOT_SELECTED"
+        },
+        "directionally_aligned_candidate_repository": {
+          "const": "https://github.com/joy7758/titmas-integrations.git"
+        },
+        "candidate_acceptance_status": {
+          "const": "NOT_ACCEPTED"
+        },
+        "eligible_existing_targets": {
+          "const": 0
+        },
+        "candidate_targets_requiring_decision": {
+          "const": 1
+        },
+        "owner_target_resolved": {
+          "const": false
+        }
+      }
+    },
+    "duplication_audit": {
+      "type": "object",
+      "required": [
+        "provider_neutral_runtime_implementation_found",
+        "provider_specific_request_clients_found",
+        "existing_adapter_scaffold_found",
+        "existing_adapter_scaffold_ref",
+        "duplication_risk",
+        "boundary_findings",
+        "audit_complete"
+      ],
+      "properties": {
+        "provider_neutral_runtime_implementation_found": {
+          "const": false
+        },
+        "provider_specific_request_clients_found": {
+          "type": "array",
+          "minItems": 2,
+          "items": {
+            "type": "object",
+            "required": [
+              "source_ref",
+              "classification",
+              "reuse_disposition"
+            ],
+            "properties": {
+              "source_ref": {
+                "type": "string"
+              },
+              "classification": {
+                "type": "string"
+              },
+              "reuse_disposition": {
+                "type": "string"
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "existing_adapter_scaffold_found": {
+          "const": true
+        },
+        "existing_adapter_scaffold_ref": {
+          "const": "https://github.com/joy7758/titmas-integrations.git"
+        },
+        "duplication_risk": {
+          "type": "string",
+          "minLength": 20
+        },
+        "boundary_findings": {
+          "$ref": "#/$defs/string_array"
+        },
+        "audit_complete": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "implementation_handoff_contract_candidate": {
+      "type": "object",
+      "required": [
+        "contract_status",
+        "implementation_class",
+        "implementation_owner_ref",
+        "canonical_source_repository",
+        "package_or_api_surface",
+        "consumed_specification",
+        "required_phase_events",
+        "provider_neutral_core_boundary",
+        "provider_binding_boundary",
+        "ownership_boundaries",
+        "credential_boundary",
+        "failure_retention",
+        "disable_and_rollback"
+      ],
+      "properties": {
+        "contract_status": {
+          "const": "CANDIDATE_BLOCKED_OWNER_AND_TARGET"
+        },
+        "implementation_class": {
+          "const": "REFERENCE_IMPLEMENTATION_CANDIDATE"
+        },
+        "implementation_owner_ref": {
+          "const": "NOT_ASSIGNED"
+        },
+        "canonical_source_repository": {
+          "const": "NOT_SELECTED"
+        },
+        "package_or_api_surface": {
+          "const": "NOT_DESIGNED"
+        },
+        "consumed_specification": {
+          "type": "object",
+          "required": [
+            "reference",
+            "version",
+            "sha256",
+            "maturity"
+          ],
+          "properties": {
+            "reference": {
+              "type": "string"
+            },
+            "version": {
+              "const": "0.1.0"
+            },
+            "sha256": {
+              "const": "f72eb33bdb5042514deed499fdabddbc74121bc9c22c16f79316eae2aeca9913"
+            },
+            "maturity": {
+              "const": "Development"
+            }
+          },
+          "additionalProperties": false
+        },
+        "required_phase_events": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "provider_neutral_core_boundary": {
+          "$ref": "#/$defs/string_array"
+        },
+        "provider_binding_boundary": {
+          "$ref": "#/$defs/string_array"
+        },
+        "ownership_boundaries": {
+          "type": "object"
+        },
+        "credential_boundary": {
+          "type": "object"
+        },
+        "failure_retention": {
+          "$ref": "#/$defs/string_array"
+        },
+        "disable_and_rollback": {
+          "$ref": "#/$defs/string_array"
+        }
+      },
+      "additionalProperties": false
+    },
+    "test_conformance_handoff_checklist": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "check_id",
+          "requirement",
+          "current_evidence",
+          "status"
+        ],
+        "properties": {
+          "check_id": {
+            "pattern": "^HC-[0-9]{3}$"
+          },
+          "requirement": {
+            "type": "string",
+            "minLength": 10
+          },
+          "current_evidence": {
+            "type": "string",
+            "minLength": 3
+          },
+          "status": {
+            "type": "string",
+            "minLength": 8
+          }
+        }
+      }
+    },
+    "decision_readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner_target_matrix_defined",
+        "duplication_audit_complete",
+        "handoff_contract_candidate_defined",
+        "test_conformance_checklist_defined",
+        "owner_target_resolved",
+        "implementation_decision_ready",
+        "blockers",
+        "next_required_decision",
+        "result"
+      ],
+      "properties": {
+        "owner_target_matrix_defined": {
+          "const": true
+        },
+        "duplication_audit_complete": {
+          "const": true
+        },
+        "handoff_contract_candidate_defined": {
+          "const": true
+        },
+        "test_conformance_checklist_defined": {
+          "const": true
+        },
+        "owner_target_resolved": {
+          "const": false
+        },
+        "implementation_decision_ready": {
+          "const": false
+        },
+        "blockers": {
+          "$ref": "#/$defs/string_array"
+        },
+        "next_required_decision": {
+          "const": "ASSIGN_IMPLEMENTATION_OWNER_AND_ACCEPT_OR_REJECT_TITMAS_INTEGRATIONS_AS_BOUNDED_CANDIDATE_TARGET"
+        },
+        "result": {
+          "const": "NO_ELIGIBLE_EXISTING_TARGET_OWNER_UNRESOLVED"
+        }
+      }
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "implementation_authorized",
+        "implementation_created",
+        "new_repository_created",
+        "external_repository_modified",
+        "dbos_modified",
+        "saee_modified",
+        "network_requests_executed_by_inventory",
+        "http_requests_executed",
+        "live_model_requests_executed",
+        "credential_reads_executed",
+        "provider_supported",
+        "conformance_executed",
+        "model_retry_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "implementation_authorized": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        },
+        "new_repository_created": {
+          "const": false
+        },
+        "external_repository_modified": {
+          "const": false
+        },
+        "dbos_modified": {
+          "const": false
+        },
+        "saee_modified": {
+          "const": false
+        },
+        "network_requests_executed_by_inventory": {
+          "const": 0
+        },
+        "http_requests_executed": {
+          "const": 0
+        },
+        "live_model_requests_executed": {
+          "const": 0
+        },
+        "credential_reads_executed": {
+          "const": 0
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "model_retry_authorized": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}
