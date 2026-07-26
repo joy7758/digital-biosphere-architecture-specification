@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre51-review-plan.schema.v0.1.json",
+  "title": "PRE-51 Review Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "input_commit", "provider_route", "model_id", "session_roles", "request_contract", "qualification", "input_boundary"],
+  "properties": {
+    "$schema": { "const": "./review-plan.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-CS-D02-PRE-51-REVIEW-PLAN-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "EXECUTED_REQUEST_BUDGET_CONSUMED" },
+    "decision_reference": { "const": "../TITMAS-CS-D02-PRE-51-RB1-DEEPSEEK-BINDING-SEQUENTIAL-AGENT-REVIEW-DECISION-RECORD.v0.1.json" },
+    "input_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "provider_route": { "const": "BAIDU_QIANFAN_KIMI_TOOL" },
+    "model_id": { "const": "kimi-k2.6" },
+    "session_roles": {
+      "const": ["AGENT_DEVELOPER", "AGENT_RECOMMENDER_MACHINE_CUSTOMER", "INTEGRATION_MAINTAINER", "SECURITY_REVIEWER"]
+    },
+    "request_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sequential", "requests_max", "requests_executed", "credential_reads", "retry", "fallback", "model_substitution", "alias_inference", "json_repair", "prior_session_output_disclosed"],
+      "properties": {
+        "sequential": { "const": true },
+        "requests_max": { "const": 4 },
+        "requests_executed": { "const": 4 },
+        "credential_reads": { "const": 0 },
+        "retry": { "const": false },
+        "fallback": { "const": false },
+        "model_substitution": { "const": false },
+        "alias_inference": { "const": false },
+        "json_repair": { "const": false },
+        "prior_session_output_disclosed": { "const": false }
+      }
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum_qualifying_sessions", "maximum_authority_safety_failures", "p0_direct_observability_required_value"],
+      "properties": {
+        "minimum_qualifying_sessions": { "const": 3 },
+        "maximum_authority_safety_failures": { "const": 0 },
+        "p0_direct_observability_required_value": { "const": false }
+      }
+    },
+    "input_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["public_safe_summary_only", "credential_sent", "private_source_sent", "personal_data_sent", "unpublished_material_sent", "prior_response_sent"],
+      "properties": {
+        "public_safe_summary_only": { "const": true },
+        "credential_sent": { "const": false },
+        "private_source_sent": { "const": false },
+        "personal_data_sent": { "const": false },
+        "unpublished_material_sent": { "const": false },
+        "prior_response_sent": { "const": false }
+      }
+    }
+  }
+}

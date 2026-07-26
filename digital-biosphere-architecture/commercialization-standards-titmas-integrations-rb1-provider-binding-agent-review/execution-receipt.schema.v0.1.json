@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre51-execution-receipt.schema.v0.1.json",
+  "title": "PRE-51 Execution Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "executed_at", "artifact_count_bound", "artifacts", "self_hash_policy", "request_result", "effects", "next_action"],
+  "properties": {
+    "$schema": { "const": "./execution-receipt.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-CS-D02-PRE-51-EXECUTION-RECEIPT-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "FAIL_CLOSED_INSUFFICIENT_QUALIFYING_SESSIONS" },
+    "executed_at": { "type": "string", "format": "date-time" },
+    "artifact_count_bound": { "const": 11 },
+    "artifacts": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    },
+    "self_hash_policy": { "const": "SELF_SHA256_NOT_EMBEDDED_REPORTED_BY_POST_WRITE_VALIDATION" },
+    "request_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requests", "qualifying", "provider_failures", "retries", "fallbacks", "substitutions", "repairs"],
+      "properties": {
+        "requests": { "const": 4 },
+        "qualifying": { "const": 1 },
+        "provider_failures": { "const": 3 },
+        "retries": { "const": 0 },
+        "fallbacks": { "const": 0 },
+        "substitutions": { "const": 0 },
+        "repairs": { "const": 0 }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": { "const": false }
+    },
+    "next_action": { "const": "FORM_AGENT_REVIEW_TRANSPORT_AND_REQUEST_CONTRACT_REMEDIATION_RECOMMENDATION_ONLY" }
+  }
+}

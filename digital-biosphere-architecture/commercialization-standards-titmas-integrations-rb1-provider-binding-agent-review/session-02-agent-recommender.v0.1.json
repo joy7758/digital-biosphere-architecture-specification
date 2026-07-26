@@ -1,0 +1,39 @@
+{
+  "$schema": "./session-result.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-51-SESSION-02-0.1",
+  "version": "0.1.0",
+  "session_id": "PRE51-S2",
+  "sequence": 2,
+  "role": "AGENT_RECOMMENDER_MACHINE_CUSTOMER",
+  "provider": "baidu-qianfan",
+  "model_expected": "kimi-k2.6",
+  "model_returned": null,
+  "request_status": "FAILURE",
+  "response_class": "PROVIDER_TIMEOUT_OR_NETWORK_ERROR",
+  "qualifying": false,
+  "recommendation": null,
+  "blocking_reasons": [],
+  "correctable_issues": [],
+  "residual_gaps": ["No advisory response was available because the exact request timed out or encountered a network error."],
+  "stop_conditions": ["The one-request session budget was consumed; retry, fallback and model substitution are forbidden."],
+  "authority_safety_acknowledged": false,
+  "usage": {
+    "prompt_tokens": null,
+    "completion_tokens": null,
+    "total_tokens": null
+  },
+  "retention": {
+    "raw_envelope_retained": false,
+    "credential_retained": false,
+    "structured_advisory_retained": false,
+    "failure_class_retained": true
+  },
+  "prohibited_recovery": {
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "model_substitutions": 0,
+    "alias_inferences": 0,
+    "json_repairs": 0
+  },
+  "failure_retained": true
+}

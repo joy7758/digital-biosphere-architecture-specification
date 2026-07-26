@@ -1,0 +1,58 @@
+{
+  "$schema": "./session-result.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-51-SESSION-01-0.1",
+  "version": "0.1.0",
+  "session_id": "PRE51-S1",
+  "sequence": 1,
+  "role": "AGENT_DEVELOPER",
+  "provider": "baidu-qianfan",
+  "model_expected": "kimi-k2.6",
+  "model_returned": "kimi-k2.6",
+  "request_status": "SUCCESS",
+  "response_class": "DIRECT_JSON_QUALIFIED",
+  "qualifying": true,
+  "recommendation": "NOT_RECOMMENDED",
+  "blocking_reasons": [
+    "HTTPCore has no separate DNS event, so P0 direct observability is false and implementation recommendation remains blocked.",
+    "The 24 planned negative cases have not been executed.",
+    "Provider support is UNKNOWN_NOT_ADOPTED and no Provider conformance or release exists.",
+    "Timeout and byte limits are planned but not implemented or enforced."
+  ],
+  "correctable_issues": [
+    "Resolve P0 through a separately reviewed bounded observation design rather than synthetic PASS.",
+    "Execute the frozen negative cases only after a separate implementation and test Decision.",
+    "Review and enforce bounded timeout and byte limits before implementation readiness.",
+    "Require separate Provider conformance, security and release gates."
+  ],
+  "residual_gaps": [
+    "No-retry and no-fallback constraints leave resilience responsibilities visible to integrators.",
+    "The provider-neutral phase model has not been verified against DeepSeek-specific behavior.",
+    "No validated exact model contract exists for deepseek-v4-pro with the candidate transport."
+  ],
+  "stop_conditions": [
+    "Stop if P0 cannot be resolved without synthetic evidence.",
+    "Stop if negative cases fail without an approved remediation path.",
+    "Stop if limits cannot be enforced.",
+    "Stop if required Provider, security or release gates are denied."
+  ],
+  "authority_safety_acknowledged": true,
+  "usage": {
+    "prompt_tokens": 336,
+    "completion_tokens": 2116,
+    "total_tokens": 2452
+  },
+  "retention": {
+    "raw_envelope_retained": false,
+    "credential_retained": false,
+    "structured_advisory_retained": true,
+    "failure_class_retained": true
+  },
+  "prohibited_recovery": {
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "model_substitutions": 0,
+    "alias_inferences": 0,
+    "json_repairs": 0
+  },
+  "failure_retained": true
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre51-composite-review-result.schema.v0.1.json",
+  "title": "PRE-51 Composite Review Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "requests_authorized", "requests_executed", "qualifying_sessions", "required_qualifying_sessions", "provider_timeout_or_network_errors", "authority_safety_failures", "recommendation_counts", "p0_direct_observability", "implementation_recommendation_allowed", "prohibited_recovery", "effects", "next_action"],
+  "properties": {
+    "$schema": { "const": "./composite-review-result.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-CS-D02-PRE-51-COMPOSITE-REVIEW-RESULT-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "FAIL_CLOSED_INSUFFICIENT_QUALIFYING_SESSIONS" },
+    "requests_authorized": { "const": 4 },
+    "requests_executed": { "const": 4 },
+    "qualifying_sessions": { "const": 1 },
+    "required_qualifying_sessions": { "const": 3 },
+    "provider_timeout_or_network_errors": { "const": 3 },
+    "authority_safety_failures": { "const": 0 },
+    "recommendation_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recommended", "conditionally_recommended", "not_recommended", "no_advisory_result"],
+      "properties": {
+        "recommended": { "const": 0 },
+        "conditionally_recommended": { "const": 0 },
+        "not_recommended": { "const": 1 },
+        "no_advisory_result": { "const": 3 }
+      }
+    },
+    "p0_direct_observability": { "const": false },
+    "implementation_recommendation_allowed": { "const": false },
+    "prohibited_recovery": {
+      "type": "object",
+      "minProperties": 5,
+      "additionalProperties": { "const": 0 }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 14,
+      "additionalProperties": { "const": false }
+    },
+    "next_action": { "const": "FORM_AGENT_REVIEW_TRANSPORT_AND_REQUEST_CONTRACT_REMEDIATION_RECOMMENDATION_ONLY" }
+  }
+}

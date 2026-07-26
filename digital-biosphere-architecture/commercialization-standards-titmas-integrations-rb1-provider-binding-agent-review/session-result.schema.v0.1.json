@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre51-session-result.schema.v0.1.json",
+  "title": "PRE-51 Session Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "session_id", "sequence", "role", "provider", "model_expected", "model_returned", "request_status", "response_class", "qualifying", "recommendation", "blocking_reasons", "correctable_issues", "residual_gaps", "stop_conditions", "authority_safety_acknowledged", "usage", "retention", "prohibited_recovery", "failure_retained"],
+  "properties": {
+    "$schema": { "const": "./session-result.schema.v0.1.json" },
+    "document_id": { "type": "string", "pattern": "^TITMAS-CS-D02-PRE-51-SESSION-[0-9]{2}-0.1$" },
+    "version": { "const": "0.1.0" },
+    "session_id": { "type": "string", "pattern": "^PRE51-S[1-4]$" },
+    "sequence": { "type": "integer", "minimum": 1, "maximum": 4 },
+    "role": { "enum": ["AGENT_DEVELOPER", "AGENT_RECOMMENDER_MACHINE_CUSTOMER", "INTEGRATION_MAINTAINER", "SECURITY_REVIEWER"] },
+    "provider": { "const": "baidu-qianfan" },
+    "model_expected": { "const": "kimi-k2.6" },
+    "model_returned": { "type": ["string", "null"] },
+    "request_status": { "enum": ["SUCCESS", "FAILURE"] },
+    "response_class": { "enum": ["DIRECT_JSON_QUALIFIED", "PROVIDER_TIMEOUT_OR_NETWORK_ERROR"] },
+    "qualifying": { "type": "boolean" },
+    "recommendation": { "type": ["string", "null"], "enum": ["RECOMMENDED", "CONDITIONALLY_RECOMMENDED", "NOT_RECOMMENDED", null] },
+    "blocking_reasons": { "type": "array", "items": { "type": "string" } },
+    "correctable_issues": { "type": "array", "items": { "type": "string" } },
+    "residual_gaps": { "type": "array", "items": { "type": "string" } },
+    "stop_conditions": { "type": "array", "items": { "type": "string" } },
+    "authority_safety_acknowledged": { "type": "boolean" },
+    "usage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["prompt_tokens", "completion_tokens", "total_tokens"],
+      "properties": {
+        "prompt_tokens": { "type": ["integer", "null"], "minimum": 0 },
+        "completion_tokens": { "type": ["integer", "null"], "minimum": 0 },
+        "total_tokens": { "type": ["integer", "null"], "minimum": 0 }
+      }
+    },
+    "retention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw_envelope_retained", "credential_retained", "structured_advisory_retained", "failure_class_retained"],
+      "properties": {
+        "raw_envelope_retained": { "const": false },
+        "credential_retained": { "const": false },
+        "structured_advisory_retained": { "type": "boolean" },
+        "failure_class_retained": { "const": true }
+      }
+    },
+    "prohibited_recovery": {
+      "type": "object",
+      "minProperties": 5,
+      "additionalProperties": { "const": 0 }
+    },
+    "failure_retained": { "const": true }
+  }
+}

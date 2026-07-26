@@ -1,0 +1,41 @@
+{
+  "$schema": "./review-plan.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-51-REVIEW-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTED_REQUEST_BUDGET_CONSUMED",
+  "decision_reference": "../TITMAS-CS-D02-PRE-51-RB1-DEEPSEEK-BINDING-SEQUENTIAL-AGENT-REVIEW-DECISION-RECORD.v0.1.json",
+  "input_commit": "b965b96f4b9edcd18b851da34fbba69a7a8c1a89",
+  "provider_route": "BAIDU_QIANFAN_KIMI_TOOL",
+  "model_id": "kimi-k2.6",
+  "session_roles": [
+    "AGENT_DEVELOPER",
+    "AGENT_RECOMMENDER_MACHINE_CUSTOMER",
+    "INTEGRATION_MAINTAINER",
+    "SECURITY_REVIEWER"
+  ],
+  "request_contract": {
+    "sequential": true,
+    "requests_max": 4,
+    "requests_executed": 4,
+    "credential_reads": 0,
+    "retry": false,
+    "fallback": false,
+    "model_substitution": false,
+    "alias_inference": false,
+    "json_repair": false,
+    "prior_session_output_disclosed": false
+  },
+  "qualification": {
+    "minimum_qualifying_sessions": 3,
+    "maximum_authority_safety_failures": 0,
+    "p0_direct_observability_required_value": false
+  },
+  "input_boundary": {
+    "public_safe_summary_only": true,
+    "credential_sent": false,
+    "private_source_sent": false,
+    "personal_data_sent": false,
+    "unpublished_material_sent": false,
+    "prior_response_sent": false
+  }
+}
