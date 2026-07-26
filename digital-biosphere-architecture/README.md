@@ -460,6 +460,11 @@ namespace、五个 contract type 和 Python 版本均未采纳；package/source/
 `3/4` 阈值，因此 gate 为 `BLOCKED`。没有重试、回退、模型替换或 JSON 修复；失败全部
 保留。当前不能形成 RB1 implementation recommendation。
 
+[PRE-45 offline failure diagnosis](commercialization-standards-titmas-integrations-rb1-planning/PRE-45-OFFLINE-FAILURE-AND-RESPONSE-SHAPE-DIAGNOSTIC-RESULT-v0.1.md)
+已用八个已提交摘要执行零网络、零模型、零凭据诊断。它确认当前 review procedure 不能
+稳定产生足够 machine-readable responses，但不能把失败归因于 Provider、model、prompt
+或 concurrency。下一步只能先形成 PRE-46 compact sequential review contract revision。
+
 ```text
 TITMAS_INTEGRATIONS_TARGET_BRANCH=codex/rb0-governance-baseline
 TITMAS_INTEGRATIONS_ADOPTED_RB0_COMMIT=9610748d4a72d81278df2bc296518a469ce2fd30
@@ -481,7 +486,9 @@ TITMAS_INTEGRATIONS_PRE44_AGENT_REVIEW_AUTHORIZED=true
 TITMAS_INTEGRATIONS_PRE44_AGENT_REVIEW_EXECUTED=true
 TITMAS_INTEGRATIONS_PRE44_AGENT_REVIEW_GATE_PASS=false
 TITMAS_INTEGRATIONS_PRE44_QUALIFYING_SESSIONS=1/4
-TITMAS_INTEGRATIONS_PRE45_OFFLINE_DIAGNOSTIC_RECOMMENDATION_REQUIRED=true
+TITMAS_INTEGRATIONS_PRE45_OFFLINE_DIAGNOSTIC_PASS=true
+TITMAS_INTEGRATIONS_PRE45_NETWORK_MODEL_CREDENTIAL_REQUESTS=0/0/0
+TITMAS_INTEGRATIONS_PRE46_COMPACT_SEQUENTIAL_CONTRACT_RECOMMENDATION_REQUIRED=true
 ```
 
 ```text

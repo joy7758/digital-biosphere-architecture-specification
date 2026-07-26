@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_44_AGENT_REVIEW_BLOCKED_INSUFFICIENT_QUALIFYING_RESPONSES_PRE45_OFFLINE_DIAGNOSTIC_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_45_OFFLINE_DIAGNOSTIC_PASS_PRE46_COMPACT_SEQUENTIAL_REVIEW_CONTRACT_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -5044,6 +5044,22 @@
             "pre44_qualifying_sessions",
             "pre44_authority_safety_failures",
             "pre44_retry_fallback_substitution_repair_attempts",
+            "pre45_recommendation_reference",
+            "pre45_recommendation_sha256",
+            "pre45_recommendation_commit",
+            "pre45_decision_reference",
+            "pre45_decision_sha256",
+            "pre45_decision_commit",
+            "pre45_input_manifest_sha256",
+            "pre45_plan_sha256",
+            "pre45_result_reference",
+            "pre45_result_sha256",
+            "pre45_machine_result_sha256",
+            "pre45_execution_receipt_sha256",
+            "pre45_result_commit",
+            "pre45_result",
+            "pre45_network_model_credential_requests",
+            "pre45_root_causes_proven",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5061,6 +5077,9 @@
             "pre44_agent_review_executed",
             "pre44_agent_review_gate_pass",
             "pre45_offline_diagnostic_recommendation_required",
+            "pre45_offline_diagnostic_executed",
+            "pre45_offline_diagnostic_pass",
+            "pre46_compact_sequential_contract_recommendation_required",
             "rb1_implementation_authorized"
           ],
           "properties": {
@@ -5442,6 +5461,54 @@
             "pre44_retry_fallback_substitution_repair_attempts": {
               "const": 0
             },
+            "pre45_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-45-OFFLINE-PROVIDER-FAILURE-AND-RESPONSE-SHAPE-DIAGNOSTIC-RECOMMENDATION-v0.1.md"
+            },
+            "pre45_recommendation_sha256": {
+              "const": "d3180a0b6b99d300af7a0ea99856458e6ed3121c8b1908b247831e410dc8d566"
+            },
+            "pre45_recommendation_commit": {
+              "const": "334896900070590b4b4c6d8003235233bc9414c2"
+            },
+            "pre45_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-45-OFFLINE-PROVIDER-FAILURE-AND-RESPONSE-SHAPE-DIAGNOSTIC-DECISION-RECORD.v0.1.json"
+            },
+            "pre45_decision_sha256": {
+              "const": "0f48493c39a107ad931f9ccd9fe32a8ccf24cec1cb5d603f3dc3c4e6f294d104"
+            },
+            "pre45_decision_commit": {
+              "const": "3edbdd92e245c895dd09592e7be8846efda52fe8"
+            },
+            "pre45_input_manifest_sha256": {
+              "const": "3f9798a2bb75832f58cd6dbe2c84f66b507bd43bbff232b996d5c3a7fdedbcbe"
+            },
+            "pre45_plan_sha256": {
+              "const": "037a8e3e7734a197ada71ecb499fa54e83d211ca0b180c48c2738e0f634bc73d"
+            },
+            "pre45_result_reference": {
+              "const": "commercialization-standards-titmas-integrations-rb1-planning/PRE-45-OFFLINE-FAILURE-AND-RESPONSE-SHAPE-DIAGNOSTIC-RESULT-v0.1.md"
+            },
+            "pre45_result_sha256": {
+              "const": "b191acac9bad3c9a1acda9e5b341dcd0c13772d564707d0cd895e78bcf060782"
+            },
+            "pre45_machine_result_sha256": {
+              "const": "f075f41744de944624e9e23cfd25e3e741bf926bd98e46b00c0542ba3eb39106"
+            },
+            "pre45_execution_receipt_sha256": {
+              "const": "13a0dc30b84df620f5b77845e50716bb27de3d5e5b5c4c75e210461f3bf777df"
+            },
+            "pre45_result_commit": {
+              "const": "dd9d8406b21053d309711ecd627bfe45656565e4"
+            },
+            "pre45_result": {
+              "const": "PASS_OFFLINE_DIAGNOSIS_NEXT_CONTRACT_RECOMMENDATION_ALLOWED"
+            },
+            "pre45_network_model_credential_requests": {
+              "const": 0
+            },
+            "pre45_root_causes_proven": {
+              "const": 0
+            },
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -5491,6 +5558,15 @@
               "const": false
             },
             "pre45_offline_diagnostic_recommendation_required": {
+              "const": false
+            },
+            "pre45_offline_diagnostic_executed": {
+              "const": true
+            },
+            "pre45_offline_diagnostic_pass": {
+              "const": true
+            },
+            "pre46_compact_sequential_contract_recommendation_required": {
               "const": true
             },
             "rb1_implementation_authorized": {
@@ -5514,7 +5590,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_PRE45_OFFLINE_PROVIDER_FAILURE_AND_RESPONSE_SHAPE_DIAGNOSTIC_RECOMMENDATION_ONLY"
+          "const": "FORM_PRE46_COMPACT_SEQUENTIAL_AGENT_REVIEW_CONTRACT_REVISION_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false

@@ -2144,12 +2144,40 @@ PRE44_AGENT_RECOMMENDATION_GATE_PASS=false
 PRE44_RESULT=BLOCKED_INSUFFICIENT_QUALIFYING_AGENT_RESPONSES
 PRE44_RETRY_FALLBACK_SUBSTITUTION_REPAIR=0
 PRE44_RB1_IMPLEMENTATION_AUTHORIZED=false
-PRE45_OFFLINE_DIAGNOSTIC_RECOMMENDATION_REQUIRED=true
+PRE45_OFFLINE_DIAGNOSTIC_RECOMMENDATION_REQUIRED=false
 ```
 
 [PRE-44 result](../commercialization-standards-titmas-integrations-rb1-planning/PRE-44-RB1-AGENT-CUSTOMER-REVIEW-RESULT-v0.1.md)
 只允许后继形成 offline provider-failure / response-shape diagnostic recommendation。
 新的模型请求仍需新的 exact Decision。
+
+### 4.59 PRE-45 Offline Failure and Response Shape Diagnosis
+
+[PRE-45 Decision](../TITMAS-CS-D02-PRE-45-OFFLINE-PROVIDER-FAILURE-AND-RESPONSE-SHAPE-DIAGNOSTIC-DECISION-RECORD.md)
+只授权使用八个已提交 sanitized inputs 做 deterministic offline diagnosis：
+
+```text
+PRE45_INPUT_HASHES_MATCH=8/8
+PRE45_NETWORK_REQUESTS=0
+PRE45_MODEL_REQUESTS=0
+PRE45_CREDENTIAL_READS=0
+PRE45_RAW_PROVIDER_ENVELOPES_ACCESSED=0
+PRE45_PRE44_HISTORY_REWRITTEN=false
+PRE45_PRE44_GATE_PASS_CHANGED=false
+PRE45_RB1_IMPLEMENTATION_RECOMMENDATION_ALLOWED=false
+```
+
+[Result](../commercialization-standards-titmas-integrations-rb1-planning/PRE-45-OFFLINE-FAILURE-AND-RESPONSE-SHAPE-DIAGNOSTIC-RESULT-v0.1.md)
+确认当前四会话程序不能稳定达到 machine-readable qualifying threshold；同时保留：
+
+- Kimi timeout root cause `UNKNOWN`；
+- GLM direct-JSON failure root cause `UNKNOWN`；
+- concurrency、query length 和 reviewer profile 均为可能混杂因素但未测量；
+- Provider availability 和 model reliability 未被证明。
+
+下一步只能形成 PRE-46 compact core response、shorter agent-readable query、
+sequential isolation 和 official structured-output source gate 的离线契约修订建议。
+新的网络请求、RB1 implementation recommendation 与 target repository write 仍未授权。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
