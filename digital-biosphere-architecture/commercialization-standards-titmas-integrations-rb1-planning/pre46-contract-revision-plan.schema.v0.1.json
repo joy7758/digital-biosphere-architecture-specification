@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre46-contract-revision-plan.schema.v0.1.json",
+  "title": "TITMAS PRE-46 Offline Contract Revision Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "execution_mode",
+    "source_dba_commit",
+    "input_manifest_reference",
+    "input_manifest_sha256",
+    "contract_reference",
+    "contract_sha256",
+    "result_schema_reference",
+    "result_schema_sha256",
+    "execution_receipt_schema_reference",
+    "execution_receipt_schema_sha256",
+    "limits",
+    "steps",
+    "exact_outputs_after_decision",
+    "pass_meaning",
+    "fail_meaning",
+    "stop_conditions",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre46-contract-revision-plan.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-PRE46-OFFLINE-CONTRACT-REVISION-PLAN-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_AUTHORIZED_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-46"},
+    "execution_mode": {"const": "ZERO_NETWORK_OFFLINE_COMPACT_SEQUENTIAL_CONTRACT_REVISION_AND_FIXTURE_VALIDATION"},
+    "source_dba_commit": {"pattern": "^[a-f0-9]{40}$"},
+    "input_manifest_reference": {"const": "pre46-contract-revision-input-manifest.v0.1.json"},
+    "input_manifest_sha256": {"pattern": "^[a-f0-9]{64}$"},
+    "contract_reference": {"const": "pre46-compact-sequential-review-contract.v0.2.json"},
+    "contract_sha256": {"pattern": "^[a-f0-9]{64}$"},
+    "result_schema_reference": {"const": "pre46-contract-revision-result.schema.v0.1.json"},
+    "result_schema_sha256": {"pattern": "^[a-f0-9]{64}$"},
+    "execution_receipt_schema_reference": {"const": "pre46-contract-revision-execution-receipt.schema.v0.1.json"},
+    "execution_receipt_schema_sha256": {"pattern": "^[a-f0-9]{64}$"},
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_requests_max",
+        "model_requests_max",
+        "credential_reads_max",
+        "raw_provider_envelope_accesses_max",
+        "provider_error_body_accesses_max",
+        "target_repository_files_modified_max",
+        "json_repair_attempts_max"
+      ],
+      "properties": {
+        "network_requests_max": {"const": 0},
+        "model_requests_max": {"const": 0},
+        "credential_reads_max": {"const": 0},
+        "raw_provider_envelope_accesses_max": {"const": 0},
+        "provider_error_body_accesses_max": {"const": 0},
+        "target_repository_files_modified_max": {"const": 0},
+        "json_repair_attempts_max": {"const": 0}
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 10,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "exact_outputs_after_decision": {
+      "const": [
+        "pre46-contract-revision-result.v0.1.json",
+        "PRE-46-COMPACT-SEQUENTIAL-AGENT-REVIEW-CONTRACT-REVISION-RESULT-v0.1.md",
+        "pre46-contract-revision-execution-receipt.v0.1.json"
+      ]
+    },
+    "pass_meaning": {"type": "string", "minLength": 1},
+    "fail_meaning": {"type": "string", "minLength": 1},
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 7,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_fixture_execution_authorized",
+        "network_review_authorized",
+        "credential_read_authorized",
+        "contract_adopted_for_network",
+        "pre47_network_review_authorized",
+        "rb1_implementation_recommendation_allowed",
+        "rb1_implementation_authorized",
+        "target_repository_modification_authorized",
+        "release_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized"
+      ],
+      "properties": {
+        "offline_fixture_execution_authorized": {"const": false},
+        "network_review_authorized": {"const": false},
+        "credential_read_authorized": {"const": false},
+        "contract_adopted_for_network": {"const": false},
+        "pre47_network_review_authorized": {"const": false},
+        "rb1_implementation_recommendation_allowed": {"const": false},
+        "rb1_implementation_authorized": {"const": false},
+        "target_repository_modification_authorized": {"const": false},
+        "release_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,140 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre46-contract-revision-result.schema.v0.1.json",
+  "title": "TITMAS PRE-46 Offline Contract Revision Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "decision_reference",
+    "source_commit",
+    "input_hashes",
+    "schema_validation",
+    "fixture_validation",
+    "contract_delta",
+    "structured_output_binding",
+    "result",
+    "next_action",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre46-contract-revision-result.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-PRE46-OFFLINE-CONTRACT-REVISION-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "decision_reference": {"const": "CS-D02-PRE-46"},
+    "source_commit": {"pattern": "^[a-f0-9]{40}$"},
+    "input_hashes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expected", "matched"],
+      "properties": {
+        "expected": {"const": 13},
+        "matched": {"const": 13}
+      }
+    },
+    "schema_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schemas_checked", "schemas_valid", "instances_checked", "instances_valid"],
+      "properties": {
+        "schemas_checked": {"type": "integer", "minimum": 1},
+        "schemas_valid": {"type": "integer", "minimum": 1},
+        "instances_checked": {"type": "integer", "minimum": 1},
+        "instances_valid": {"type": "integer", "minimum": 1}
+      }
+    },
+    "fixture_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["cases", "passed", "failed", "json_repair_attempts"],
+      "properties": {
+        "cases": {"const": 6},
+        "passed": {"const": 6},
+        "failed": {"const": 0},
+        "json_repair_attempts": {"const": 0}
+      }
+    },
+    "contract_delta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre44_query_bytes",
+        "pre46_query_bytes",
+        "query_reduced",
+        "pre44_top_level_required_fields",
+        "pre46_top_level_required_fields",
+        "required_fields_reduced",
+        "sequential_execution",
+        "thresholds_lowered"
+      ],
+      "properties": {
+        "pre44_query_bytes": {"type": "integer", "minimum": 1},
+        "pre46_query_bytes": {"type": "integer", "minimum": 1},
+        "query_reduced": {"const": true},
+        "pre44_top_level_required_fields": {"const": 15},
+        "pre46_top_level_required_fields": {"const": 13},
+        "required_fields_reduced": {"const": true},
+        "sequential_execution": {"const": true},
+        "thresholds_lowered": {"const": false}
+      }
+    },
+    "structured_output_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["glm-5.2", "kimi-k2.6", "response_format_parameter_included"],
+      "properties": {
+        "glm-5.2": {"const": "UNKNOWN_NOT_ADOPTED"},
+        "kimi-k2.6": {"const": "UNKNOWN_NOT_ADOPTED"},
+        "response_format_parameter_included": {"const": false}
+      }
+    },
+    "result": {"const": "PASS_OFFLINE_CONTRACT_REVISION_PRE47_RECOMMENDATION_ALLOWED"},
+    "next_action": {"const": "FORM_PRE47_EXACT_SEQUENTIAL_AGENT_REVIEW_RECOMMENDATION_ONLY"},
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_requests",
+        "model_requests",
+        "credential_reads",
+        "pre44_gate_changed",
+        "contract_adopted_for_network",
+        "pre47_network_review_authorized",
+        "rb1_implementation_recommendation_allowed",
+        "rb1_implementation_authorized",
+        "target_repository_modified",
+        "package_created",
+        "source_created",
+        "tests_created",
+        "provider_supported",
+        "conformance_executed",
+        "runtime_created",
+        "release_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized"
+      ],
+      "properties": {
+        "network_requests": {"const": 0},
+        "model_requests": {"const": 0},
+        "credential_reads": {"const": 0},
+        "pre44_gate_changed": {"const": false},
+        "contract_adopted_for_network": {"const": false},
+        "pre47_network_review_authorized": {"const": false},
+        "rb1_implementation_recommendation_allowed": {"const": false},
+        "rb1_implementation_authorized": {"const": false},
+        "target_repository_modified": {"const": false},
+        "package_created": {"const": false},
+        "source_created": {"const": false},
+        "tests_created": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "runtime_created": {"const": false},
+        "release_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false}
+      }
+    }
+  }
+}

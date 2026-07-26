@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre46-contract-revision-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS PRE-46 Offline Contract Revision Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "decision_reference",
+    "executed_at",
+    "input_manifest_reference",
+    "input_manifest_sha256",
+    "plan_reference",
+    "plan_sha256",
+    "result_reference",
+    "result_sha256",
+    "report_reference",
+    "report_sha256",
+    "validation_counts",
+    "result",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre46-contract-revision-execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-PRE46-OFFLINE-CONTRACT-REVISION-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "decision_reference": {"const": "CS-D02-PRE-46"},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "input_manifest_reference": {"const": "pre46-contract-revision-input-manifest.v0.1.json"},
+    "input_manifest_sha256": {"pattern": "^[a-f0-9]{64}$"},
+    "plan_reference": {"const": "pre46-contract-revision-plan.v0.1.json"},
+    "plan_sha256": {"pattern": "^[a-f0-9]{64}$"},
+    "result_reference": {"const": "pre46-contract-revision-result.v0.1.json"},
+    "result_sha256": {"pattern": "^[a-f0-9]{64}$"},
+    "report_reference": {"const": "PRE-46-COMPACT-SEQUENTIAL-AGENT-REVIEW-CONTRACT-REVISION-RESULT-v0.1.md"},
+    "report_sha256": {"pattern": "^[a-f0-9]{64}$"},
+    "validation_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_hashes_expected",
+        "input_hashes_matched",
+        "fixture_cases",
+        "fixture_cases_passed",
+        "network_requests",
+        "model_requests",
+        "credential_reads"
+      ],
+      "properties": {
+        "input_hashes_expected": {"const": 13},
+        "input_hashes_matched": {"const": 13},
+        "fixture_cases": {"const": 6},
+        "fixture_cases_passed": {"const": 6},
+        "network_requests": {"const": 0},
+        "model_requests": {"const": 0},
+        "credential_reads": {"const": 0}
+      }
+    },
+    "result": {"const": "PASS_OFFLINE_CONTRACT_REVISION_PRE47_RECOMMENDATION_ALLOWED"},
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre44_gate_changed",
+        "pre47_network_review_authorized",
+        "rb1_implementation_authorized",
+        "target_repository_modified",
+        "release_authorized"
+      ],
+      "properties": {
+        "pre44_gate_changed": {"const": false},
+        "pre47_network_review_authorized": {"const": false},
+        "rb1_implementation_authorized": {"const": false},
+        "target_repository_modified": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

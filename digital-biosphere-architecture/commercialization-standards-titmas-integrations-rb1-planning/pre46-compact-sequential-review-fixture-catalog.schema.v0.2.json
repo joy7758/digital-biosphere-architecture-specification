@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre46-compact-sequential-review-fixture-catalog.schema.v0.2.json",
+  "title": "TITMAS PRE-46 Compact Sequential Review Fixture Catalog v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "cases",
+    "fixture_execution_authorized",
+    "network_requests_authorized"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre46-compact-sequential-review-fixture-catalog.schema.v0.2.json"},
+    "document_id": {"const": "DBA-TITMAS-PRE46-COMPACT-SEQUENTIAL-REVIEW-FIXTURE-CATALOG-0.2"},
+    "version": {"const": "0.2.0"},
+    "cases": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "description",
+          "payload",
+          "expected_direct_json_parse",
+          "expected_schema_valid",
+          "expected_failure_code"
+        ],
+        "properties": {
+          "case_id": {"pattern": "^PRE46-FX-[0-9]{3}$"},
+          "description": {"type": "string", "minLength": 1, "maxLength": 300},
+          "payload": {"type": "string", "minLength": 1, "maxLength": 4000},
+          "expected_direct_json_parse": {"type": "boolean"},
+          "expected_schema_valid": {"type": "boolean"},
+          "expected_failure_code": {
+            "type": ["string", "null"],
+            "enum": [
+              null,
+              "DIRECT_JSON_PARSE_FAILURE",
+              "SCHEMA_VALIDATION_FAILURE",
+              "BOUNDARY_ACKNOWLEDGEMENT_FAILURE"
+            ]
+          }
+        }
+      }
+    },
+    "fixture_execution_authorized": {"const": false},
+    "network_requests_authorized": {"const": false}
+  }
+}

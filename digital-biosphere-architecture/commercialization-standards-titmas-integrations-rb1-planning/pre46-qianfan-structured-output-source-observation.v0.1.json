@@ -1,0 +1,41 @@
+{
+  "$schema": "./pre46-qianfan-structured-output-source-observation.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-PRE46-QIANFAN-STRUCTURED-OUTPUT-SOURCE-OBSERVATION-0.1",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27",
+  "source_authority": "OFFICIAL_PRIMARY_SOURCE",
+  "sources": [
+    {
+      "source_id": "QIANFAN_CHAT_COMPLETIONS_API",
+      "url": "https://cloud.baidu.com/doc/qianfan-api/s/3m7of64lb",
+      "observed_statement": "The chat completions API documents response_format values text, json_object, and json_schema, and warns that generated output may not satisfy the requested effect."
+    },
+    {
+      "source_id": "QIANFAN_STRUCTURED_OUTPUT_GUIDE",
+      "url": "https://cloud.baidu.com/doc/qianfan-docs/s/6m8r1x5hz",
+      "observed_statement": "The guide states that only some models support json_schema and lists DeepSeek-V4-Pro, DeepSeek-V4-Flash, DeepSeek-V3.2, GLM-5.1, GLM-5, and Qwen3-family open models."
+    },
+    {
+      "source_id": "QIANFAN_TEXT_MODEL_LIST",
+      "url": "https://cloud.baidu.com/doc/qianfan/s/rmh4stp0j",
+      "observed_statement": "The model list identifies exact model parameters glm-5.2 and kimi-k2.6."
+    }
+  ],
+  "exact_models_under_review": [
+    "glm-5.2",
+    "kimi-k2.6"
+  ],
+  "exact_model_json_schema_support": {
+    "glm-5.2": "UNKNOWN_NOT_LISTED_IN_OFFICIAL_STRUCTURED_OUTPUT_SUPPORT_SCOPE",
+    "kimi-k2.6": "UNKNOWN_NOT_LISTED_IN_OFFICIAL_STRUCTURED_OUTPUT_SUPPORT_SCOPE"
+  },
+  "adoption_result": "NOT_ADOPTED_FOR_PRE46_OR_ANY_FUTURE_REQUEST",
+  "request_parameter_effect": "NONE",
+  "network_requests_authorized_by_observation": false,
+  "implementation_authorized": false,
+  "known_limitations": [
+    "Official documentation can change after observed_at.",
+    "General endpoint support does not prove exact-model support.",
+    "Absence from the listed support scope does not prove permanent non-support."
+  ]
+}

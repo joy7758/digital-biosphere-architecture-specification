@@ -1,0 +1,51 @@
+TITMAS PRE-46 compact review. Reviewer profile: {{REVIEWER_PROFILE}}.
+
+Use only this message. Do not use tools, web, credentials, hidden reasoning, or external actions.
+
+Question:
+Would you recommend a provider-neutral TITMAS package contract that identifies the first P0-P9 failure phase of a model/provider request while prohibiting credential, raw payload, prompt, review-content, and hidden-reasoning persistence?
+
+Candidate:
+- package candidates: titmas-integrations / titmas_integrations;
+- provider-neutral core: titmas_integrations.instrumentation;
+- future provider namespace: titmas_integrations.providers;
+- contract candidates: PhaseId, PhaseStatus, FailureCategory, PhaseEvent, PhaseTrace;
+- P0-P9 first-failure record is immutable;
+- allowed persistence: timing, byte counts, sanitized failure category, HTTP status, returned model id, one-way digests;
+- forbidden persistence: credentials, authorization headers, raw request/response, prompts, review content, hidden reasoning, packet captures, private resolver/network configuration;
+- no provider SDK, network, DBOS Runtime, or SAEE dependency in the core.
+
+Current truth:
+- planning profile only; no package, source, tests, provider binding, Runtime, release, conformance, commercial offer, or certification;
+- Observation != Evidence or Truth;
+- Schema pass != provider correctness or conformance;
+- Recommendation != Authorization;
+- instrumentation grants no Permission.
+
+Assess relevance, discovery clarity, learning cost, duplication risk, recommendation/reuse willingness, one blocker, and one correction. Keep the security deep dive outside this core response.
+
+Return exactly one JSON object and nothing else. No Markdown or code fence. Use:
+{
+  "reviewer_profile": "{{REVIEWER_PROFILE}}",
+  "recommendation": "RECOMMENDED|CONDITIONALLY_RECOMMENDED|NOT_RECOMMENDED",
+  "reason": "max 400 characters",
+  "problem_relevance": "LOW|MEDIUM|HIGH",
+  "discovery_clarity": "LOW|MEDIUM|HIGH",
+  "interface_learning_cost": "LOW|MEDIUM|HIGH",
+  "duplication_risk": "LOW|MEDIUM|HIGH",
+  "would_recommend": true,
+  "would_reuse": true,
+  "top_blocker": null,
+  "required_correction": null,
+  "boundary_checks": {
+    "profile_not_implementation": true,
+    "observation_not_evidence": true,
+    "schema_pass_not_conformance": true,
+    "recommendation_not_authorization": true,
+    "no_provider_support": true,
+    "no_runtime_or_release": true
+  },
+  "confidence": 0.0
+}
+
+Use null when no blocker or correction exists. This response is advisory only.

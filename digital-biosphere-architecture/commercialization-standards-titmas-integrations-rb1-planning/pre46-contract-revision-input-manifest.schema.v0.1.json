@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre46-contract-revision-input-manifest.schema.v0.1.json",
+  "title": "TITMAS PRE-46 Contract Revision Input Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "source_dba_commit",
+    "inputs",
+    "input_count",
+    "network_inputs_required",
+    "credential_inputs_required",
+    "raw_provider_envelope_inputs_required",
+    "target_repository_inputs_required"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre46-contract-revision-input-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-PRE46-CONTRACT-REVISION-INPUT-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_FOR_OFFLINE_CONTRACT_REVISION_ONLY"},
+    "source_dba_commit": {"pattern": "^[a-f0-9]{40}$"},
+    "inputs": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    },
+    "input_count": {"const": 13},
+    "network_inputs_required": {"const": false},
+    "credential_inputs_required": {"const": false},
+    "raw_provider_envelope_inputs_required": {"const": false},
+    "target_repository_inputs_required": {"const": false}
+  }
+}

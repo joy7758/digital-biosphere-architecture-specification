@@ -1,0 +1,57 @@
+{
+  "$schema": "./pre46-compact-sequential-review-fixture-catalog.schema.v0.2.json",
+  "document_id": "DBA-TITMAS-PRE46-COMPACT-SEQUENTIAL-REVIEW-FIXTURE-CATALOG-0.2",
+  "version": "0.2.0",
+  "cases": [
+    {
+      "case_id": "PRE46-FX-001",
+      "description": "A direct JSON response with all required fields and acknowledged boundaries.",
+      "payload": "{\"reviewer_profile\":\"AGENT_DEVELOPER\",\"recommendation\":\"CONDITIONALLY_RECOMMENDED\",\"reason\":\"Useful if the package stays provider-neutral and preserves the first failure.\",\"problem_relevance\":\"HIGH\",\"discovery_clarity\":\"HIGH\",\"interface_learning_cost\":\"MEDIUM\",\"duplication_risk\":\"MEDIUM\",\"would_recommend\":true,\"would_reuse\":true,\"top_blocker\":\"No implemented package exists.\",\"required_correction\":\"Clarify the OpenTelemetry relationship before implementation.\",\"boundary_checks\":{\"profile_not_implementation\":true,\"observation_not_evidence\":true,\"schema_pass_not_conformance\":true,\"recommendation_not_authorization\":true,\"no_provider_support\":true,\"no_runtime_or_release\":true},\"confidence\":0.8}",
+      "expected_direct_json_parse": true,
+      "expected_schema_valid": true,
+      "expected_failure_code": null
+    },
+    {
+      "case_id": "PRE46-FX-002",
+      "description": "Markdown prose around an otherwise JSON-looking response.",
+      "payload": "Here is the result: {\"reviewer_profile\":\"AGENT_DEVELOPER\"}",
+      "expected_direct_json_parse": false,
+      "expected_schema_valid": false,
+      "expected_failure_code": "DIRECT_JSON_PARSE_FAILURE"
+    },
+    {
+      "case_id": "PRE46-FX-003",
+      "description": "A fenced JSON block must not be repaired or extracted.",
+      "payload": "```json\n{\"reviewer_profile\":\"AGENT_DEVELOPER\"}\n```",
+      "expected_direct_json_parse": false,
+      "expected_schema_valid": false,
+      "expected_failure_code": "DIRECT_JSON_PARSE_FAILURE"
+    },
+    {
+      "case_id": "PRE46-FX-004",
+      "description": "An additional property is rejected.",
+      "payload": "{\"reviewer_profile\":\"AGENT_DEVELOPER\",\"recommendation\":\"RECOMMENDED\",\"reason\":\"Clear.\",\"problem_relevance\":\"HIGH\",\"discovery_clarity\":\"HIGH\",\"interface_learning_cost\":\"LOW\",\"duplication_risk\":\"LOW\",\"would_recommend\":true,\"would_reuse\":true,\"top_blocker\":null,\"required_correction\":null,\"boundary_checks\":{\"profile_not_implementation\":true,\"observation_not_evidence\":true,\"schema_pass_not_conformance\":true,\"recommendation_not_authorization\":true,\"no_provider_support\":true,\"no_runtime_or_release\":true},\"confidence\":0.9,\"unexpected\":\"reject\"}",
+      "expected_direct_json_parse": true,
+      "expected_schema_valid": false,
+      "expected_failure_code": "SCHEMA_VALIDATION_FAILURE"
+    },
+    {
+      "case_id": "PRE46-FX-005",
+      "description": "A false authority boundary acknowledgement is rejected.",
+      "payload": "{\"reviewer_profile\":\"SECURITY_BOUNDARY_REVIEWER\",\"recommendation\":\"CONDITIONALLY_RECOMMENDED\",\"reason\":\"Boundary review.\",\"problem_relevance\":\"HIGH\",\"discovery_clarity\":\"HIGH\",\"interface_learning_cost\":\"MEDIUM\",\"duplication_risk\":\"MEDIUM\",\"would_recommend\":true,\"would_reuse\":true,\"top_blocker\":null,\"required_correction\":\"Retain fail closed behavior.\",\"boundary_checks\":{\"profile_not_implementation\":true,\"observation_not_evidence\":true,\"schema_pass_not_conformance\":true,\"recommendation_not_authorization\":false,\"no_provider_support\":true,\"no_runtime_or_release\":true},\"confidence\":0.7}",
+      "expected_direct_json_parse": true,
+      "expected_schema_valid": false,
+      "expected_failure_code": "BOUNDARY_ACKNOWLEDGEMENT_FAILURE"
+    },
+    {
+      "case_id": "PRE46-FX-006",
+      "description": "A required field omission is rejected.",
+      "payload": "{\"reviewer_profile\":\"RECOMMENDER_AGENT\",\"recommendation\":\"RECOMMENDED\",\"reason\":\"Relevant.\",\"problem_relevance\":\"HIGH\",\"discovery_clarity\":\"HIGH\",\"interface_learning_cost\":\"LOW\",\"duplication_risk\":\"LOW\",\"would_recommend\":true,\"would_reuse\":true,\"top_blocker\":null,\"required_correction\":null,\"boundary_checks\":{\"profile_not_implementation\":true,\"observation_not_evidence\":true,\"schema_pass_not_conformance\":true,\"recommendation_not_authorization\":true,\"no_provider_support\":true,\"no_runtime_or_release\":true}}",
+      "expected_direct_json_parse": true,
+      "expected_schema_valid": false,
+      "expected_failure_code": "SCHEMA_VALIDATION_FAILURE"
+    }
+  ],
+  "fixture_execution_authorized": false,
+  "network_requests_authorized": false
+}

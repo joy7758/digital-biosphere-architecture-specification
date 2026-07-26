@@ -1,0 +1,259 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre46-compact-sequential-review-contract.schema.v0.2.json",
+  "title": "TITMAS PRE-46 Compact Sequential Agent Review Contract v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "supersedes_for_future_review_only",
+    "pre44_history_changed",
+    "execution_mode",
+    "query_template_reference",
+    "query_template_sha256",
+    "response_schema_reference",
+    "response_schema_sha256",
+    "fixture_catalog_reference",
+    "fixture_catalog_sha256",
+    "structured_output_source_observation_reference",
+    "structured_output_source_observation_sha256",
+    "provider_native_structured_output",
+    "sessions",
+    "future_request_limits",
+    "parsing_contract",
+    "model_binding_contract",
+    "thresholds",
+    "separate_deep_security_review",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre46-compact-sequential-review-contract.schema.v0.2.json"},
+    "document_id": {"const": "DBA-TITMAS-PRE46-COMPACT-SEQUENTIAL-AGENT-REVIEW-CONTRACT-0.2"},
+    "version": {"const": "0.2.0"},
+    "status": {"const": "CANDIDATE_NOT_ADOPTED_NOT_AUTHORIZED_FOR_NETWORK_EXECUTION"},
+    "supersedes_for_future_review_only": {"type": "string", "minLength": 1},
+    "pre44_history_changed": {"const": false},
+    "execution_mode": {"const": "SEQUENTIAL_EXACT_FOUR_SESSION_NO_RETRY_NO_REPAIR"},
+    "query_template_reference": {"const": "pre46-compact-sequential-review-query-template.v0.2.txt"},
+    "query_template_sha256": {"pattern": "^[a-f0-9]{64}$"},
+    "response_schema_reference": {"const": "pre46-compact-sequential-review-response.schema.v0.2.json"},
+    "response_schema_sha256": {"pattern": "^[a-f0-9]{64}$"},
+    "fixture_catalog_reference": {"const": "pre46-compact-sequential-review-fixture-catalog.v0.2.json"},
+    "fixture_catalog_sha256": {"pattern": "^[a-f0-9]{64}$"},
+    "structured_output_source_observation_reference": {"const": "pre46-qianfan-structured-output-source-observation.v0.1.json"},
+    "structured_output_source_observation_sha256": {"pattern": "^[a-f0-9]{64}$"},
+    "provider_native_structured_output": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["glm-5.2", "kimi-k2.6", "response_format_parameter_included"],
+      "properties": {
+        "glm-5.2": {"const": "UNKNOWN_NOT_ADOPTED"},
+        "kimi-k2.6": {"const": "UNKNOWN_NOT_ADOPTED"},
+        "response_format_parameter_included": {"const": false}
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/session",
+          "properties": {
+            "sequence": {"const": 1},
+            "session_id": {"const": "PRE47-KIMI-AGENT-DEVELOPER"},
+            "requested_model": {"const": "kimi-k2.6"},
+            "reviewer_profile": {"const": "AGENT_DEVELOPER"}
+          }
+        },
+        {
+          "$ref": "#/$defs/session",
+          "properties": {
+            "sequence": {"const": 2},
+            "session_id": {"const": "PRE47-GLM-RECOMMENDER-AGENT"},
+            "requested_model": {"const": "glm-5.2"},
+            "reviewer_profile": {"const": "RECOMMENDER_AGENT"}
+          }
+        },
+        {
+          "$ref": "#/$defs/session",
+          "properties": {
+            "sequence": {"const": 3},
+            "session_id": {"const": "PRE47-KIMI-INTEGRATION-MAINTAINER"},
+            "requested_model": {"const": "kimi-k2.6"},
+            "reviewer_profile": {"const": "INTEGRATION_MAINTAINER"}
+          }
+        },
+        {
+          "$ref": "#/$defs/session",
+          "properties": {
+            "sequence": {"const": 4},
+            "session_id": {"const": "PRE47-GLM-SECURITY-BOUNDARY-REVIEWER"},
+            "requested_model": {"const": "glm-5.2"},
+            "reviewer_profile": {"const": "SECURITY_BOUNDARY_REVIEWER"}
+          }
+        }
+      ]
+    },
+    "future_request_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parallel_requests_max",
+        "total_provider_requests_max",
+        "credential_reads_max",
+        "request_timeout_ms",
+        "retry_attempts_max",
+        "fallback_attempts_max",
+        "model_substitutions_max",
+        "alias_inference_attempts_max",
+        "json_repair_attempts_max"
+      ],
+      "properties": {
+        "parallel_requests_max": {"const": 1},
+        "total_provider_requests_max": {"const": 4},
+        "credential_reads_max": {"const": 1},
+        "request_timeout_ms": {"const": 90000},
+        "retry_attempts_max": {"const": 0},
+        "fallback_attempts_max": {"const": 0},
+        "model_substitutions_max": {"const": 0},
+        "alias_inference_attempts_max": {"const": 0},
+        "json_repair_attempts_max": {"const": 0}
+      }
+    },
+    "parsing_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "direct_json_parse_only",
+        "schema_validation_required",
+        "markdown_strip_allowed",
+        "code_fence_strip_allowed",
+        "json_repair_allowed",
+        "semantic_rewrite_allowed"
+      ],
+      "properties": {
+        "direct_json_parse_only": {"const": true},
+        "schema_validation_required": {"const": true},
+        "markdown_strip_allowed": {"const": false},
+        "code_fence_strip_allowed": {"const": false},
+        "json_repair_allowed": {"const": false},
+        "semantic_rewrite_allowed": {"const": false}
+      }
+    },
+    "model_binding_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "returned_model_required",
+        "exact_requested_returned_match_required",
+        "model_substitution_allowed",
+        "alias_inference_allowed"
+      ],
+      "properties": {
+        "returned_model_required": {"const": true},
+        "exact_requested_returned_match_required": {"const": true},
+        "model_substitution_allowed": {"const": false},
+        "alias_inference_allowed": {"const": false}
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sessions_max",
+        "qualifying_sessions_min",
+        "recommended_or_conditional_min",
+        "would_recommend_min",
+        "would_reuse_min",
+        "authority_safety_failures_max"
+      ],
+      "properties": {
+        "sessions_max": {"const": 4},
+        "qualifying_sessions_min": {"const": 3},
+        "recommended_or_conditional_min": {"const": 2},
+        "would_recommend_min": {"const": 2},
+        "would_reuse_min": {"const": 2},
+        "authority_safety_failures_max": {"const": 0}
+      }
+    },
+    "separate_deep_security_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["included_in_core_response", "status", "may_change_core_gate"],
+      "properties": {
+        "included_in_core_response": {"const": false},
+        "status": {"const": "NOT_DESIGNED_NOT_AUTHORIZED"},
+        "may_change_core_gate": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_adopted",
+        "network_review_authorized",
+        "credential_read_authorized",
+        "rb1_implementation_recommendation_allowed",
+        "rb1_implementation_authorized",
+        "target_repository_modification_authorized",
+        "package_created",
+        "source_created",
+        "tests_created",
+        "provider_supported",
+        "conformance_executed",
+        "runtime_created",
+        "release_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized"
+      ],
+      "properties": {
+        "contract_adopted": {"const": false},
+        "network_review_authorized": {"const": false},
+        "credential_read_authorized": {"const": false},
+        "rb1_implementation_recommendation_allowed": {"const": false},
+        "rb1_implementation_authorized": {"const": false},
+        "target_repository_modification_authorized": {"const": false},
+        "package_created": {"const": false},
+        "source_created": {"const": false},
+        "tests_created": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "runtime_created": {"const": false},
+        "release_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequence",
+        "session_id",
+        "requested_model",
+        "reviewer_profile",
+        "requests_max"
+      ],
+      "properties": {
+        "sequence": {"type": "integer", "minimum": 1, "maximum": 4},
+        "session_id": {"type": "string", "minLength": 1},
+        "requested_model": {"enum": ["glm-5.2", "kimi-k2.6"]},
+        "reviewer_profile": {
+          "enum": [
+            "AGENT_DEVELOPER",
+            "RECOMMENDER_AGENT",
+            "INTEGRATION_MAINTAINER",
+            "SECURITY_BOUNDARY_REVIEWER"
+          ]
+        },
+        "requests_max": {"const": 1}
+      }
+    }
+  }
+}

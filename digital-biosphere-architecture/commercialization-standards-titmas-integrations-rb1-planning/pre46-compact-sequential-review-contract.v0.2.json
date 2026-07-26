@@ -1,0 +1,107 @@
+{
+  "$schema": "./pre46-compact-sequential-review-contract.schema.v0.2.json",
+  "document_id": "DBA-TITMAS-PRE46-COMPACT-SEQUENTIAL-AGENT-REVIEW-CONTRACT-0.2",
+  "version": "0.2.0",
+  "status": "CANDIDATE_NOT_ADOPTED_NOT_AUTHORIZED_FOR_NETWORK_EXECUTION",
+  "supersedes_for_future_review_only": "pre44-agent-customer-review-query-template.v0.1.txt_AND_pre44-agent-customer-review-response.schema.v0.1.json",
+  "pre44_history_changed": false,
+  "execution_mode": "SEQUENTIAL_EXACT_FOUR_SESSION_NO_RETRY_NO_REPAIR",
+  "query_template_reference": "pre46-compact-sequential-review-query-template.v0.2.txt",
+  "query_template_sha256": "27785e540a3d9c862cf0227ebaf20af556e4ab18edbf694b5a405a79c6fef671",
+  "response_schema_reference": "pre46-compact-sequential-review-response.schema.v0.2.json",
+  "response_schema_sha256": "5558f02c2204d5f278a8b283e5548cde58167b4a2323c2c5df2e76cdf6d8820e",
+  "fixture_catalog_reference": "pre46-compact-sequential-review-fixture-catalog.v0.2.json",
+  "fixture_catalog_sha256": "49d81b7933652976c63eac68e61cc630dd32d04a89748339dd281951c7df4026",
+  "structured_output_source_observation_reference": "pre46-qianfan-structured-output-source-observation.v0.1.json",
+  "structured_output_source_observation_sha256": "f50cfb128ee1dc11a6e7f6a24ac5e92c276528aefb7fe9dcd2d276d2013d0d8d",
+  "provider_native_structured_output": {
+    "glm-5.2": "UNKNOWN_NOT_ADOPTED",
+    "kimi-k2.6": "UNKNOWN_NOT_ADOPTED",
+    "response_format_parameter_included": false
+  },
+  "sessions": [
+    {
+      "sequence": 1,
+      "session_id": "PRE47-KIMI-AGENT-DEVELOPER",
+      "requested_model": "kimi-k2.6",
+      "reviewer_profile": "AGENT_DEVELOPER",
+      "requests_max": 1
+    },
+    {
+      "sequence": 2,
+      "session_id": "PRE47-GLM-RECOMMENDER-AGENT",
+      "requested_model": "glm-5.2",
+      "reviewer_profile": "RECOMMENDER_AGENT",
+      "requests_max": 1
+    },
+    {
+      "sequence": 3,
+      "session_id": "PRE47-KIMI-INTEGRATION-MAINTAINER",
+      "requested_model": "kimi-k2.6",
+      "reviewer_profile": "INTEGRATION_MAINTAINER",
+      "requests_max": 1
+    },
+    {
+      "sequence": 4,
+      "session_id": "PRE47-GLM-SECURITY-BOUNDARY-REVIEWER",
+      "requested_model": "glm-5.2",
+      "reviewer_profile": "SECURITY_BOUNDARY_REVIEWER",
+      "requests_max": 1
+    }
+  ],
+  "future_request_limits": {
+    "parallel_requests_max": 1,
+    "total_provider_requests_max": 4,
+    "credential_reads_max": 1,
+    "request_timeout_ms": 90000,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "model_substitutions_max": 0,
+    "alias_inference_attempts_max": 0,
+    "json_repair_attempts_max": 0
+  },
+  "parsing_contract": {
+    "direct_json_parse_only": true,
+    "schema_validation_required": true,
+    "markdown_strip_allowed": false,
+    "code_fence_strip_allowed": false,
+    "json_repair_allowed": false,
+    "semantic_rewrite_allowed": false
+  },
+  "model_binding_contract": {
+    "returned_model_required": true,
+    "exact_requested_returned_match_required": true,
+    "model_substitution_allowed": false,
+    "alias_inference_allowed": false
+  },
+  "thresholds": {
+    "sessions_max": 4,
+    "qualifying_sessions_min": 3,
+    "recommended_or_conditional_min": 2,
+    "would_recommend_min": 2,
+    "would_reuse_min": 2,
+    "authority_safety_failures_max": 0
+  },
+  "separate_deep_security_review": {
+    "included_in_core_response": false,
+    "status": "NOT_DESIGNED_NOT_AUTHORIZED",
+    "may_change_core_gate": false
+  },
+  "effects": {
+    "contract_adopted": false,
+    "network_review_authorized": false,
+    "credential_read_authorized": false,
+    "rb1_implementation_recommendation_allowed": false,
+    "rb1_implementation_authorized": false,
+    "target_repository_modification_authorized": false,
+    "package_created": false,
+    "source_created": false,
+    "tests_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "runtime_created": false,
+    "release_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre46-compact-sequential-review-response.schema.v0.2.json",
+  "title": "TITMAS Integrations PRE-46 Compact Agent Review Response v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reviewer_profile",
+    "recommendation",
+    "reason",
+    "problem_relevance",
+    "discovery_clarity",
+    "interface_learning_cost",
+    "duplication_risk",
+    "would_recommend",
+    "would_reuse",
+    "top_blocker",
+    "required_correction",
+    "boundary_checks",
+    "confidence"
+  ],
+  "properties": {
+    "reviewer_profile": {
+      "enum": [
+        "AGENT_DEVELOPER",
+        "RECOMMENDER_AGENT",
+        "INTEGRATION_MAINTAINER",
+        "SECURITY_BOUNDARY_REVIEWER"
+      ]
+    },
+    "recommendation": {
+      "enum": ["RECOMMENDED", "CONDITIONALLY_RECOMMENDED", "NOT_RECOMMENDED"]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 400
+    },
+    "problem_relevance": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+    "discovery_clarity": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+    "interface_learning_cost": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+    "duplication_risk": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+    "would_recommend": {"type": "boolean"},
+    "would_reuse": {"type": "boolean"},
+    "top_blocker": {
+      "type": ["string", "null"],
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "required_correction": {
+      "type": ["string", "null"],
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "boundary_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_not_implementation",
+        "observation_not_evidence",
+        "schema_pass_not_conformance",
+        "recommendation_not_authorization",
+        "no_provider_support",
+        "no_runtime_or_release"
+      ],
+      "properties": {
+        "profile_not_implementation": {"const": true},
+        "observation_not_evidence": {"const": true},
+        "schema_pass_not_conformance": {"const": true},
+        "recommendation_not_authorization": {"const": true},
+        "no_provider_support": {"const": true},
+        "no_runtime_or_release": {"const": true}
+      }
+    },
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+  }
+}
