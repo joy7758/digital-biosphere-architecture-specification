@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: pre-12-decided-frozen-authorization-baseline-not-remote-not-executed-standard-not-ready
+status: pre-12-remote-authorization-baseline-verified-execution-not-started-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -863,7 +863,23 @@ EXECUTION_STARTED=false
 ```
 
 这里的 `BOUNDED_LIVE_MODEL_REQUESTS_AUTHORIZED=true` 只有在 frozen authorization baseline
-commit/push 并形成远端回执后才可执行；当前执行闸门仍关闭。
+commit/push 并形成远端回执后才可执行；在下方回执形成前，执行闸门保持关闭。
+
+授权基线现已在
+`92ec62ea6a61b7148a6df263b17f149e4157d99b` 远端验证，并形成
+[authorization baseline receipt](../commercialization-standards-public-source-record-review-rerun/authorization-baseline-receipt.v0.1.json)：
+
+```text
+AUTHORIZATION_BASELINE_REMOTE_VERIFIED=true
+EXECUTION_MAY_START=true
+EXECUTION_STARTED=false
+STAGE_A_REQUESTS_EXECUTED=0
+STAGE_B_REQUESTS_EXECUTED=0
+TOTAL_LIVE_MODEL_REQUESTS_EXECUTED=0
+```
+
+这只打开冻结 Stage A 的执行入口；不允许跳过 Stage A，不增加请求上限，也不产生任何
+candidate、counting、Gate 或商业效果。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 

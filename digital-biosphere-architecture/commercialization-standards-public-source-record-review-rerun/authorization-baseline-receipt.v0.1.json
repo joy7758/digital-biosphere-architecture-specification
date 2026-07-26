@@ -1,0 +1,41 @@
+{
+  "$schema": "./authorization-baseline-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-12-AUTHORIZATION-BASELINE-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_EXECUTION_NOT_STARTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-12",
+  "branch": "codex/production-observability-baseline",
+  "authorization_baseline_commit": "92ec62ea6a61b7148a6df263b17f149e4157d99b",
+  "remote_commit": "92ec62ea6a61b7148a6df263b17f149e4157d99b",
+  "local_equals_remote": true,
+  "frozen_bindings": {
+    "recommendation_reference": "../TITMAS-CS-D02-PRE-12-PROVIDER-PREFLIGHT-AND-CANDIDATE-REVIEW-RERUN-RECOMMENDATION-v0.1.md",
+    "recommendation_sha256": "658e6e33cef80bd15ef35f7e300ef23101a1ab3036902c251716a3bd1616021b",
+    "decision_record_reference": "../TITMAS-CS-D02-PRE-12-PROVIDER-PREFLIGHT-AND-CANDIDATE-REVIEW-RERUN-DECISION-RECORD.v0.1.json",
+    "decision_record_sha256": "6b65456f18421af7f93b89c8da77e91dca739abd4f22966bc2994e621502af57",
+    "execution_plan_reference": "execution-plan.v0.1.json",
+    "execution_plan_sha256": "feaf7db5d0706894a88110382133f758aaf26eee40280a6b7dc58b0d132b2a33"
+  },
+  "execution_gate": {
+    "authorization_baseline_remote_verified": true,
+    "execution_may_start": true,
+    "execution_started": false,
+    "stage_a_requests_executed": 0,
+    "stage_b_requests_executed": 0,
+    "total_live_model_requests_executed": 0
+  },
+  "effects": {
+    "candidate_status_changed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

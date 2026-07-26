@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_12_DECIDED_FROZEN_AUTHORIZATION_BASELINE_NOT_REMOTE_NOT_EXECUTED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_12_REMOTE_AUTHORIZATION_BASELINE_VERIFIED_EXECUTION_NOT_STARTED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1222,10 +1222,10 @@
           "const": true
         },
         "pre12_authorization_baseline_remote_verified": {
-          "const": false
+          "const": true
         },
         "pre12_execution_may_start": {
-          "const": false
+          "const": true
         },
         "pre12_execution_started": {
           "const": false
@@ -1378,6 +1378,8 @@
         "rerun_execution_plan_created",
         "rerun_live_model_requests_recommended_max",
         "rerun_live_model_requests_authorized",
+        "rerun_authorization_baseline_receipt_reference",
+        "rerun_authorization_baseline_commit",
         "rerun_authorization_baseline_remote_verified",
         "rerun_execution_may_start",
         "rerun_execution_started",
@@ -1403,7 +1405,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE12_DECIDED_FROZEN_AUTHORIZATION_BASELINE_NOT_REMOTE_NOT_EXECUTED"
+          "const": "PRE12_REMOTE_AUTHORIZATION_BASELINE_VERIFIED_EXECUTION_NOT_STARTED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1567,11 +1569,17 @@
         "rerun_live_model_requests_authorized": {
           "const": true
         },
+        "rerun_authorization_baseline_receipt_reference": {
+          "const": "commercialization-standards-public-source-record-review-rerun/authorization-baseline-receipt.v0.1.json"
+        },
+        "rerun_authorization_baseline_commit": {
+          "const": "92ec62ea6a61b7148a6df263b17f149e4157d99b"
+        },
         "rerun_authorization_baseline_remote_verified": {
-          "const": false
+          "const": true
         },
         "rerun_execution_may_start": {
-          "const": false
+          "const": true
         },
         "rerun_execution_started": {
           "const": false
@@ -1601,7 +1609,7 @@
           "const": false
         },
         "live_model_request_authorized": {
-          "const": false
+          "const": true
         },
         "current_recommended_option": {
           "const": "AUTHORIZE_TWO_PROVIDER_PREFLIGHT_THEN_CONDITIONAL_FOUR_SESSION_CANDIDATE_REVIEW_RERUN_ONLY"
