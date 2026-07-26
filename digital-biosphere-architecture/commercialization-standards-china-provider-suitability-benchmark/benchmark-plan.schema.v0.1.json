@@ -1,0 +1,84 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre53-benchmark-plan.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "execution_policy", "prompts", "bindings", "sessions", "interpretation"],
+  "properties": {
+    "$schema": {"const": "./benchmark-plan.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE-53-BENCHMARK-PLAN-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_BEFORE_FIRST_REQUEST"},
+    "decision_reference": {"const": "../TITMAS-CS-D02-PRE-53-CHINA-PROVIDER-SUITABILITY-BENCHMARK-DECISION-RECORD.v0.1.json"},
+    "execution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sequential", "concurrency_max", "timeout_seconds", "retry_max", "fallback_max", "model_substitution_max", "alias_inference_max", "json_repair_max", "raw_hidden_reasoning_requested"],
+      "properties": {
+        "sequential": {"const": true},
+        "concurrency_max": {"const": 1},
+        "timeout_seconds": {"const": 45},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "model_substitution_max": {"const": 0},
+        "alias_inference_max": {"const": 0},
+        "json_repair_max": {"const": 0},
+        "raw_hidden_reasoning_requested": {"const": false}
+      }
+    },
+    "prompts": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["prompt_id", "purpose", "sha256", "utf8_bytes"],
+        "properties": {
+          "prompt_id": {"enum": ["CN-API-FIT-001", "CN-API-FIT-002"]},
+          "purpose": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "utf8_bytes": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "bindings": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["binding_id", "provider", "endpoint", "model", "credential_identifier"],
+        "properties": {
+          "binding_id": {"type": "string", "minLength": 1},
+          "provider": {"enum": ["DEEPSEEK", "QIANFAN", "ARK"]},
+          "endpoint": {"type": "string", "format": "uri"},
+          "model": {"type": "string", "minLength": 1},
+          "credential_identifier": {"enum": ["DEEPSEEK_API_KEY", "QIANFAN_API_KEY", "ARK_API_KEY"]}
+        }
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["sequence", "session_id", "binding_id", "prompt_id"],
+        "properties": {
+          "sequence": {"type": "integer", "minimum": 1, "maximum": 12},
+          "session_id": {"type": "string", "pattern": "^PRE53-"},
+          "binding_id": {"type": "string", "minLength": 1},
+          "prompt_id": {"enum": ["CN-API-FIT-001", "CN-API-FIT-002"]}
+        }
+      }
+    },
+    "interpretation": {
+      "type": "object",
+      "minProperties": 5,
+      "additionalProperties": {"const": false}
+    }
+  }
+}

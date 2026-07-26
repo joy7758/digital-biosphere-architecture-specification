@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre53-negative-cases.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "cases"],
+  "properties": {
+    "$schema": {"const": "./negative-cases.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE-53-NEGATIVE-CASES-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_EXECUTED"},
+    "cases": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "condition", "required_outcome"],
+        "properties": {
+          "case_id": {"type": "string", "pattern": "^PRE53-NEG-[0-9]{2}$"},
+          "condition": {"type": "string", "minLength": 1},
+          "required_outcome": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

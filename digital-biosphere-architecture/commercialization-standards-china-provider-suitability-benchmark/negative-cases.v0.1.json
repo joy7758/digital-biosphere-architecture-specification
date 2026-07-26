@@ -1,0 +1,23 @@
+{
+  "$schema": "./negative-cases.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-53-NEGATIVE-CASES-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "cases": [
+    {"case_id": "PRE53-NEG-01", "condition": "CREDENTIAL_IDENTIFIER_ABSENT", "required_outcome": "FAIL_SESSION_NO_REQUEST"},
+    {"case_id": "PRE53-NEG-02", "condition": "NETWORK_TIMEOUT", "required_outcome": "RETAIN_FAILURE_NO_RETRY"},
+    {"case_id": "PRE53-NEG-03", "condition": "HTTP_NON_2XX", "required_outcome": "RETAIN_FAILURE_NO_RETRY"},
+    {"case_id": "PRE53-NEG-04", "condition": "EMPTY_CONTENT", "required_outcome": "RETAIN_FAILURE_NO_REPAIR"},
+    {"case_id": "PRE53-NEG-05", "condition": "MARKDOWN_FENCED_JSON", "required_outcome": "DIRECT_JSON_FAIL"},
+    {"case_id": "PRE53-NEG-06", "condition": "NON_JSON_CONTENT", "required_outcome": "DIRECT_JSON_FAIL"},
+    {"case_id": "PRE53-NEG-07", "condition": "SCHEMA_INVALID_JSON", "required_outcome": "SCHEMA_FAIL_NO_REPAIR"},
+    {"case_id": "PRE53-NEG-08", "condition": "RETURNED_MODEL_MISMATCH", "required_outcome": "MODEL_IDENTITY_FAIL_NO_ALIAS_INFERENCE"},
+    {"case_id": "PRE53-NEG-09", "condition": "PROVIDER_FAILURE", "required_outcome": "NO_FALLBACK_OR_SUBSTITUTION"},
+    {"case_id": "PRE53-NEG-10", "condition": "AUTHORITY_ELEVATION", "required_outcome": "GOVERNANCE_BOUNDARY_FAIL"},
+    {"case_id": "PRE53-NEG-11", "condition": "EVIDENCE_TRUTH_ELEVATION", "required_outcome": "GOVERNANCE_BOUNDARY_FAIL"},
+    {"case_id": "PRE53-NEG-12", "condition": "SELF_RECOMMENDATION_PRESENT", "required_outcome": "ADVISORY_ONLY_NOT_CUSTOMER_EVIDENCE"},
+    {"case_id": "PRE53-NEG-13", "condition": "SECRET_OR_PRIVATE_CONTENT_DETECTED", "required_outcome": "STOP_BENCHMARK_DO_NOT_PERSIST_CONTENT"},
+    {"case_id": "PRE53-NEG-14", "condition": "THREE_REQUEST_SUCCESS", "required_outcome": "NO_SLA_OR_GENERAL_RANKING_CLAIM"},
+    {"case_id": "PRE53-NEG-15", "condition": "SHARED_PROVIDER_SECURITY_REVIEWER", "required_outcome": "INDEPENDENT_SECURITY_REVIEW_REMAINS_FALSE"}
+  ]
+}
