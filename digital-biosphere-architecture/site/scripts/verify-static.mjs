@@ -11,6 +11,12 @@ const requiredFiles = [
   "en/index.html",
   "community/index.html",
   "en/community/index.html",
+  "digital-cell/index.html",
+  "digital-cell.json",
+  "digital-cell/digital-cell-architecture.png",
+  "digital-cell/digital-cell-lifecycle.png",
+  "digital-cell/digital-cell-report.png",
+  "digital-cell/digital-cell-repository-structure.png",
   "status/index.html",
   "en/status/index.html",
   "llms.txt",
@@ -41,6 +47,8 @@ const [zh, en, zhCommunity, enCommunity, zhStatus, enStatus, status, titmasCommu
   readFile(join(outputRoot, "release.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release-manifest.json"), "utf8").then(JSON.parse),
 ]);
+const digitalCellPage = await readFile(join(outputRoot, "digital-cell/index.html"), "utf8");
+const digitalCell = await readFile(join(outputRoot, "digital-cell.json"), "utf8").then(JSON.parse);
 const agentIndex = await readFile(join(outputRoot, "agent-index.json"), "utf8").then(JSON.parse);
 const releaseContext = resolveReleaseContext(process.env, {
   status,
@@ -53,6 +61,11 @@ assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
 assert.match(en, /infrastructure developer community for trustworthy multi-agent systems/i);
 assert.match(zhCommunity, /共同建设可信多智能体基础设施/);
 assert.match(enCommunity, /Build trustworthy multi-agent infrastructure together/);
+assert.match(digitalCellPage, /TITMAS Digital Cell Demo/);
+assert.match(digitalCellPage, /NO DIGITAL LIFE CLAIM/);
+assert.equal(digitalCell.status, "REFERENCE_COMPLETE");
+assert.equal(digitalCell.boundaries.production_claim, false);
+assert.equal(agentIndex.entrypoints.digital_cell_demo, "/digital-cell/");
 if (releaseContext.mode === "candidate") {
   assert.match(zhStatus, /当前不是正式发布/);
   assert.match(enStatus, /This is not a release/);
