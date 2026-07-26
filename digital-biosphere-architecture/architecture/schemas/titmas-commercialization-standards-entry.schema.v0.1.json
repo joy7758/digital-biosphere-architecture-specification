@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_46_OFFLINE_CONTRACT_REVISION_PASS_PRE47_EXACT_SEQUENTIAL_AGENT_REVIEW_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_47_AGENT_REVIEW_GATE_PASS_RB1_IMPLEMENTATION_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -5084,6 +5084,25 @@
             "pre46_offline_fixtures_pass",
             "pre46_network_model_credential_requests",
             "pre46_exact_model_structured_output_support",
+            "pre47_recommendation_reference",
+            "pre47_recommendation_sha256",
+            "pre47_recommendation_commit",
+            "pre47_decision_reference",
+            "pre47_decision_sha256",
+            "pre47_decision_commit",
+            "pre47_request_manifest_sha256",
+            "pre47_plan_sha256",
+            "pre47_session_result_sha256",
+            "pre47_validation_result_sha256",
+            "pre47_execution_receipt_sha256",
+            "pre47_result_reference",
+            "pre47_result_sha256",
+            "pre47_result_commit",
+            "pre47_result",
+            "pre47_sessions_executed",
+            "pre47_qualifying_sessions",
+            "pre47_authority_safety_failures",
+            "pre47_retry_fallback_substitution_repair_attempts",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5107,6 +5126,10 @@
             "pre46_compact_sequential_contract_revision_executed",
             "pre46_compact_sequential_contract_revision_pass",
             "pre47_exact_sequential_agent_review_recommendation_required",
+            "pre47_exact_sequential_agent_review_authorized",
+            "pre47_exact_sequential_agent_review_executed",
+            "pre47_exact_sequential_agent_review_gate_pass",
+            "rb1_implementation_recommendation_allowed",
             "rb1_implementation_authorized"
           ],
           "properties": {
@@ -5608,6 +5631,68 @@
             "pre46_exact_model_structured_output_support": {
               "const": "UNKNOWN_NOT_ADOPTED"
             },
+            "pre47_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-47-EXACT-SEQUENTIAL-AGENT-REVIEW-RECOMMENDATION-v0.1.md"
+            },
+            "pre47_recommendation_sha256": {
+              "const": "17b6c6c66aa32dd813468296920f31b3caae8011d31a0db1f0bd0d6837c7e762"
+            },
+            "pre47_recommendation_commit": {
+              "const": "09a8f4f88730bf3a9348ed99814690c17a44e907"
+            },
+            "pre47_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-47-EXACT-SEQUENTIAL-AGENT-REVIEW-DECISION-RECORD.v0.1.json"
+            },
+            "pre47_decision_sha256": {
+              "const": "15faf7adff567638d9c9f606976c17d35d80be3934e0e2a68e66a56046922477"
+            },
+            "pre47_decision_commit": {
+              "const": "56f433f98def9d367fb9ba44aebefe712fd11a2d"
+            },
+            "pre47_request_manifest_sha256": {
+              "const": "c6af3cf2f6b7e4d57950271cc1ed028bad16b38db5016737035aa43ceef5c984"
+            },
+            "pre47_plan_sha256": {
+              "const": "0c14371dbc0484b0a96b4ecd585d3568f58ca9d2b42b27144c3188fb3a16e6be"
+            },
+            "pre47_session_result_sha256": {
+              "const": [
+                "d64ca22f2a7ddca7ec77dbfc09b1a5ed0107542fd49875822a4c940e3c691990",
+                "a6eaee3c0b5c6a5cbf2878dd5a6f425494b066c00e89bcc2fe0d39cc73d20f77",
+                "e56df5e440ba033bd06cd973a520d8d03699505bc71fdb0f198255a3e5d3adb5",
+                "8dd912d308032db8b50fbb3ee573d2439e21b73a85615151c6eed3e7f51acfdf"
+              ]
+            },
+            "pre47_validation_result_sha256": {
+              "const": "783437fb5494a6e7082ec4e4f3c9cefaee2e50e1117809d13f0bd86a1794db3c"
+            },
+            "pre47_execution_receipt_sha256": {
+              "const": "c4c248b8ebb8a479212434953cbd630a82e690a7fa8ac4be84c1faaa816c2aed"
+            },
+            "pre47_result_reference": {
+              "const": "commercialization-standards-titmas-integrations-rb1-planning/PRE-47-EXACT-SEQUENTIAL-AGENT-REVIEW-RESULT-v0.1.md"
+            },
+            "pre47_result_sha256": {
+              "const": "1cbea8faa07aa3c64520a3896428b8ee45e107e20fb9ba815245070907651da9"
+            },
+            "pre47_result_commit": {
+              "const": "558b947aae7f2ec8fbc01d6006cb81a2a50ee8a1"
+            },
+            "pre47_result": {
+              "const": "PASS_AGENT_RECOMMENDATION_GATE_RB1_IMPLEMENTATION_RECOMMENDATION_MAY_BE_FORMED"
+            },
+            "pre47_sessions_executed": {
+              "const": 4
+            },
+            "pre47_qualifying_sessions": {
+              "const": 3
+            },
+            "pre47_authority_safety_failures": {
+              "const": 0
+            },
+            "pre47_retry_fallback_substitution_repair_attempts": {
+              "const": 0
+            },
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -5675,6 +5760,18 @@
               "const": true
             },
             "pre47_exact_sequential_agent_review_recommendation_required": {
+              "const": false
+            },
+            "pre47_exact_sequential_agent_review_authorized": {
+              "const": true
+            },
+            "pre47_exact_sequential_agent_review_executed": {
+              "const": true
+            },
+            "pre47_exact_sequential_agent_review_gate_pass": {
+              "const": true
+            },
+            "rb1_implementation_recommendation_allowed": {
               "const": true
             },
             "rb1_implementation_authorized": {
@@ -5698,7 +5795,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_PRE47_EXACT_SEQUENTIAL_AGENT_REVIEW_RECOMMENDATION_ONLY"
+          "const": "FORM_RB1_IMPLEMENTATION_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false
