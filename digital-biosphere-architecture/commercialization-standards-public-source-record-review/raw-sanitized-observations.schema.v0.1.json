@@ -1,0 +1,385 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:public-source-record-review-observations:0.1",
+  "title": "TITMAS Public Source Record Review Sanitized Observations v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "validation_id",
+    "artifact_class",
+    "plan_reference",
+    "observed_on",
+    "raw_provider_envelopes_persisted",
+    "answer_content_persisted",
+    "preflight_events",
+    "sessions"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./raw-sanitized-observations.schema.v0.1.json"
+    },
+    "schema_version": {
+      "const": "0.1"
+    },
+    "validation_id": {
+      "const": "TITMAS-VEAP-PFPCR-20260726-001"
+    },
+    "artifact_class": {
+      "const": "SANITIZED_PUBLIC_SOURCE_RECORD_REVIEW_OBSERVATIONS"
+    },
+    "plan_reference": {
+      "const": "validation-plan.v0.1.json"
+    },
+    "observed_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "raw_provider_envelopes_persisted": {
+      "const": false
+    },
+    "answer_content_persisted": {
+      "const": false
+    },
+    "preflight_events": {
+      "type": "array",
+      "maxItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "session_id",
+          "event",
+          "network_request_sent",
+          "request_allowance_consumed",
+          "raw_error_persisted"
+        ],
+        "properties": {
+          "session_id": {
+            "const": "DS-CLAIM-PRIVACY-PFPC-S3"
+          },
+          "event": {
+            "const": "LOCAL_CLIENT_SYNTAX_ERROR_BEFORE_NETWORK"
+          },
+          "network_request_sent": {
+            "const": false
+          },
+          "request_allowance_consumed": {
+            "const": false
+          },
+          "raw_error_persisted": {
+            "const": false
+          }
+        }
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/kimiSource"
+        },
+        {
+          "$ref": "#/$defs/kimiAccountability"
+        },
+        {
+          "$ref": "#/$defs/deepseekClaim"
+        },
+        {
+          "$ref": "#/$defs/deepseekAdversarial"
+        }
+      ],
+      "items": false
+    }
+  },
+  "$defs": {
+    "baseFailure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "provider_gateway",
+        "endpoint_host",
+        "model",
+        "reviewer_role",
+        "attempts",
+        "request_allowance_consumed",
+        "http_status",
+        "transport_status",
+        "provider_body_sha256",
+        "provider_body_bytes",
+        "content_sha256",
+        "content_bytes",
+        "parse_status",
+        "failure_category",
+        "usage",
+        "result",
+        "retry_performed",
+        "fallback_performed",
+        "raw_provider_envelope_persisted"
+      ],
+      "properties": {
+        "session_id": {
+          "type": "string"
+        },
+        "provider_gateway": {
+          "enum": [
+            "qianfan",
+            "deepseek"
+          ]
+        },
+        "endpoint_host": {
+          "enum": [
+            "qianfan.baidubce.com",
+            "api.deepseek.com"
+          ]
+        },
+        "model": {
+          "enum": [
+            "kimi-k2.6",
+            "deepseek-chat"
+          ]
+        },
+        "reviewer_role": {
+          "enum": [
+            "SOURCE_QUALIFICATION_REVIEWER",
+            "ACCOUNTABILITY_RELEVANCE_REVIEWER",
+            "CLAIM_AND_PRIVACY_REVIEWER",
+            "ADVERSARIAL_RECORD_REVIEWER"
+          ]
+        },
+        "attempts": {
+          "const": 1
+        },
+        "request_allowance_consumed": {
+          "const": true
+        },
+        "http_status": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 100,
+          "maximum": 599
+        },
+        "transport_status": {
+          "enum": [
+            "PROVIDER_TIMEOUT_OR_NETWORK_ERROR",
+            "HTTP_ERROR"
+          ]
+        },
+        "provider_body_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "provider_body_bytes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "content_sha256": {
+          "const": null
+        },
+        "content_bytes": {
+          "const": null
+        },
+        "parse_status": {
+          "const": "NOT_PARSED"
+        },
+        "failure_category": {
+          "enum": [
+            "PROVIDER_TIMEOUT_OR_NETWORK_ERROR",
+            "HTTP_400_REQUEST_REJECTED_CAUSE_NOT_DETERMINED"
+          ]
+        },
+        "usage": {
+          "const": null
+        },
+        "result": {
+          "const": null
+        },
+        "retry_performed": {
+          "const": false
+        },
+        "fallback_performed": {
+          "const": false
+        },
+        "raw_provider_envelope_persisted": {
+          "const": false
+        }
+      }
+    },
+    "kimiSource": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseFailure"
+        },
+        {
+          "properties": {
+            "session_id": {
+              "const": "QF-KIMI-SOURCE-PFPC-S1"
+            },
+            "provider_gateway": {
+              "const": "qianfan"
+            },
+            "endpoint_host": {
+              "const": "qianfan.baidubce.com"
+            },
+            "model": {
+              "const": "kimi-k2.6"
+            },
+            "reviewer_role": {
+              "const": "SOURCE_QUALIFICATION_REVIEWER"
+            },
+            "http_status": {
+              "const": null
+            },
+            "transport_status": {
+              "const": "PROVIDER_TIMEOUT_OR_NETWORK_ERROR"
+            },
+            "provider_body_sha256": {
+              "const": null
+            },
+            "provider_body_bytes": {
+              "const": null
+            },
+            "failure_category": {
+              "const": "PROVIDER_TIMEOUT_OR_NETWORK_ERROR"
+            }
+          }
+        }
+      ]
+    },
+    "kimiAccountability": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseFailure"
+        },
+        {
+          "properties": {
+            "session_id": {
+              "const": "QF-KIMI-ACCOUNTABILITY-PFPC-S2"
+            },
+            "provider_gateway": {
+              "const": "qianfan"
+            },
+            "endpoint_host": {
+              "const": "qianfan.baidubce.com"
+            },
+            "model": {
+              "const": "kimi-k2.6"
+            },
+            "reviewer_role": {
+              "const": "ACCOUNTABILITY_RELEVANCE_REVIEWER"
+            },
+            "http_status": {
+              "const": null
+            },
+            "transport_status": {
+              "const": "PROVIDER_TIMEOUT_OR_NETWORK_ERROR"
+            },
+            "provider_body_sha256": {
+              "const": null
+            },
+            "provider_body_bytes": {
+              "const": null
+            },
+            "failure_category": {
+              "const": "PROVIDER_TIMEOUT_OR_NETWORK_ERROR"
+            }
+          }
+        }
+      ]
+    },
+    "deepseekClaim": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseFailure"
+        },
+        {
+          "properties": {
+            "session_id": {
+              "const": "DS-CLAIM-PRIVACY-PFPC-S3"
+            },
+            "provider_gateway": {
+              "const": "deepseek"
+            },
+            "endpoint_host": {
+              "const": "api.deepseek.com"
+            },
+            "model": {
+              "const": "deepseek-chat"
+            },
+            "reviewer_role": {
+              "const": "CLAIM_AND_PRIVACY_REVIEWER"
+            },
+            "http_status": {
+              "const": 400
+            },
+            "transport_status": {
+              "const": "HTTP_ERROR"
+            },
+            "provider_body_sha256": {
+              "const": "4e9990384eba16d64bbfd7888174b99cd3865bf82c68ba3bd481ef0d7ceb417a"
+            },
+            "provider_body_bytes": {
+              "const": 200
+            },
+            "failure_category": {
+              "const": "HTTP_400_REQUEST_REJECTED_CAUSE_NOT_DETERMINED"
+            }
+          }
+        }
+      ]
+    },
+    "deepseekAdversarial": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseFailure"
+        },
+        {
+          "properties": {
+            "session_id": {
+              "const": "DS-ADVERSARIAL-PFPC-S4"
+            },
+            "provider_gateway": {
+              "const": "deepseek"
+            },
+            "endpoint_host": {
+              "const": "api.deepseek.com"
+            },
+            "model": {
+              "const": "deepseek-chat"
+            },
+            "reviewer_role": {
+              "const": "ADVERSARIAL_RECORD_REVIEWER"
+            },
+            "http_status": {
+              "const": 400
+            },
+            "transport_status": {
+              "const": "HTTP_ERROR"
+            },
+            "provider_body_sha256": {
+              "const": "4e9990384eba16d64bbfd7888174b99cd3865bf82c68ba3bd481ef0d7ceb417a"
+            },
+            "provider_body_bytes": {
+              "const": 200
+            },
+            "failure_category": {
+              "const": "HTTP_400_REQUEST_REJECTED_CAUSE_NOT_DETERMINED"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

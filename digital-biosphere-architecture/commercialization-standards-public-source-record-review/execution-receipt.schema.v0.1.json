@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:public-source-record-review-execution-receipt:0.1",
+  "title": "TITMAS Public Source Record Review Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "authorization_baseline_commit",
+    "execution_source_commit",
+    "validation_plan_reference",
+    "source_pack_sha256",
+    "prompt_template_sha256",
+    "response_schema_sha256",
+    "observation_reference",
+    "result_reference",
+    "request_accounting",
+    "threshold_outcome",
+    "authorization_state",
+    "privacy_controls",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./execution-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-10-PUBLIC-SOURCE-RECORD-REVIEW-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "EXECUTED_FAIL_CLOSED_NO_PARSEABLE_SESSIONS"
+    },
+    "observed_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-10"
+    },
+    "authorization_baseline_commit": {
+      "const": "643ea663f8e519649101db2c4bf2740e2ec5acaf"
+    },
+    "execution_source_commit": {
+      "const": "8bc8f5af3faf7347c741a9439f8f6fab57aa3f8f"
+    },
+    "validation_plan_reference": {
+      "const": "validation-plan.v0.1.json"
+    },
+    "source_pack_sha256": {
+      "const": "3040ec61c4fae1d50151d07de2214625c371b36ccd9b418047cbee6f24e610ca"
+    },
+    "prompt_template_sha256": {
+      "const": "6caaf92907396a8e18dba44c1051183f2b000d06b4b72bb0ae5105b60b6d52df"
+    },
+    "response_schema_sha256": {
+      "const": "0f3df0688993fe300bae1f8d2c1cb67c0fd31fecbdabcbb89d5a1819c803ccd8"
+    },
+    "observation_reference": {
+      "const": "raw-sanitized-observations.v0.1.json"
+    },
+    "result_reference": {
+      "const": "review-result.v0.1.json"
+    },
+    "request_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sessions_planned",
+        "requests_allowed",
+        "requests_executed",
+        "request_allowances_consumed",
+        "retries",
+        "fallbacks",
+        "parseable_sessions"
+      ],
+      "properties": {
+        "sessions_planned": {
+          "const": 4
+        },
+        "requests_allowed": {
+          "const": 4
+        },
+        "requests_executed": {
+          "const": 4
+        },
+        "request_allowances_consumed": {
+          "const": 4
+        },
+        "retries": {
+          "const": 0
+        },
+        "fallbacks": {
+          "const": 0
+        },
+        "parseable_sessions": {
+          "const": 0
+        }
+      }
+    },
+    "threshold_outcome": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parseable_sessions_pass",
+        "providers_with_success_pass",
+        "candidate_ids_covered_pass",
+        "boundary_failures_pass",
+        "overall_pass"
+      ],
+      "properties": {
+        "parseable_sessions_pass": {
+          "const": false
+        },
+        "providers_with_success_pass": {
+          "const": false
+        },
+        "candidate_ids_covered_pass": {
+          "const": false
+        },
+        "boundary_failures_pass": {
+          "const": true
+        },
+        "overall_pass": {
+          "const": false
+        }
+      }
+    },
+    "authorization_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre_10_execution_authorization_consumed",
+        "retry_authorized",
+        "rerun_authorized",
+        "separate_remediation_decision_required"
+      ],
+      "properties": {
+        "pre_10_execution_authorization_consumed": {
+          "const": true
+        },
+        "retry_authorized": {
+          "const": false
+        },
+        "rerun_authorized": {
+          "const": false
+        },
+        "separate_remediation_decision_required": {
+          "const": true
+        }
+      }
+    },
+    "privacy_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_provider_envelopes_persisted",
+        "answer_content_persisted",
+        "secrets_persisted",
+        "direct_personal_identifiers_persisted",
+        "customer_data_used"
+      ],
+      "properties": {
+        "raw_provider_envelopes_persisted": {
+          "const": false
+        },
+        "answer_content_persisted": {
+          "const": false
+        },
+        "secrets_persisted": {
+          "const": false
+        },
+        "direct_personal_identifiers_persisted": {
+          "const": false
+        },
+        "customer_data_used": {
+          "const": false
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_status_changed",
+        "valid_problem_records_created",
+        "record_counting_authorized",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "customer_adoption",
+        "implementation_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "candidate_status_changed": {
+          "const": false
+        },
+        "valid_problem_records_created": {
+          "const": 0
+        },
+        "record_counting_authorized": {
+          "const": false
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "market_validation_pass": {
+          "const": false
+        },
+        "customer_adoption": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}

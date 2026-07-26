@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_10_REMOTE_BASELINE_VERIFIED_AGENT_RECORD_REVIEW_NOT_STARTED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_10_AGENT_RECORD_REVIEW_EXECUTED_FAIL_CLOSED_REMEDIATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -733,6 +733,10 @@
         "source_candidate_set_sha256",
         "validation_plan_reference",
         "authorization_baseline_receipt_reference",
+        "observation_reference",
+        "review_result_reference",
+        "execution_receipt_reference",
+        "result_report_reference",
         "authorization_baseline_commit",
         "sessions_max",
         "providers_required",
@@ -745,6 +749,16 @@
         "authorization_baseline_pushed",
         "execution_started",
         "execution_completed",
+        "requests_executed",
+        "request_allowances_consumed",
+        "parseable_sessions",
+        "providers_with_success",
+        "candidate_ids_covered",
+        "boundary_failures",
+        "execution_authorization_consumed",
+        "review_result",
+        "record_review_completed",
+        "rerun_authorized",
         "public_source_record_counting_authorized",
         "valid_problem_records_created",
         "cs_g0_effect"
@@ -758,6 +772,10 @@
         "source_candidate_set_sha256": {"const": "f7253e3e2545b1200f1a7eb27b9ce5d323e1eb090b2c1178e112707983ba6300"},
         "validation_plan_reference": {"const": "commercialization-standards-public-source-record-review/validation-plan.v0.1.json"},
         "authorization_baseline_receipt_reference": {"const": "commercialization-standards-public-source-record-review/authorization-baseline-receipt.v0.1.json"},
+        "observation_reference": {"const": "commercialization-standards-public-source-record-review/raw-sanitized-observations.v0.1.json"},
+        "review_result_reference": {"const": "commercialization-standards-public-source-record-review/review-result.v0.1.json"},
+        "execution_receipt_reference": {"const": "commercialization-standards-public-source-record-review/execution-receipt.v0.1.json"},
+        "result_report_reference": {"const": "commercialization-standards-public-source-record-review/PRE-10-AGENT-RECORD-REVIEW-RESULT-v0.1.md"},
         "authorization_baseline_commit": {"const": "643ea663f8e519649101db2c4bf2740e2ec5acaf"},
         "sessions_max": {"const": 4},
         "providers_required": {"const": 2},
@@ -768,8 +786,18 @@
         "authorization_baseline_commit_required": {"const": true},
         "authorization_baseline_committed": {"const": true},
         "authorization_baseline_pushed": {"const": true},
-        "execution_started": {"const": false},
-        "execution_completed": {"const": false},
+        "execution_started": {"const": true},
+        "execution_completed": {"const": true},
+        "requests_executed": {"const": 4},
+        "request_allowances_consumed": {"const": 4},
+        "parseable_sessions": {"const": 0},
+        "providers_with_success": {"const": 0},
+        "candidate_ids_covered": {"const": 0},
+        "boundary_failures": {"const": 0},
+        "execution_authorization_consumed": {"const": true},
+        "review_result": {"const": "FAIL_CLOSED_REMEDIATION_REQUIRED"},
+        "record_review_completed": {"const": false},
+        "rerun_authorized": {"const": false},
         "public_source_record_counting_authorized": {"const": false},
         "valid_problem_records_created": {"const": 0},
         "cs_g0_effect": {"const": false}
@@ -1080,6 +1108,8 @@
         "public_source_desk_research_executed",
         "public_source_candidate_review_authorized",
         "public_source_candidate_review_executed",
+        "public_source_candidate_review_completed",
+        "public_source_candidate_review_remediation_required",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1144,7 +1174,13 @@
           "const": true
         },
         "public_source_candidate_review_executed": {
+          "const": true
+        },
+        "public_source_candidate_review_completed": {
           "const": false
+        },
+        "public_source_candidate_review_remediation_required": {
+          "const": true
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -1278,7 +1314,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE10_REMOTE_BASELINE_VERIFIED_AGENT_REVIEW_NOT_STARTED"
+          "const": "PRE10_FAIL_CLOSED_REMEDIATION_REQUIRED_SEPARATE_RERUN_DECISION"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
