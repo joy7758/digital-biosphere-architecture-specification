@@ -1,0 +1,83 @@
+{
+  "$schema": "./pre47-exact-sequential-agent-review-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-INTEGRATIONS-PRE47-EXACT-SEQUENTIAL-AGENT-REVIEW-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "PASS",
+  "decision_reference": "CS-D02-PRE-47",
+  "source_commit": "56f433f98def9d367fb9ba44aebefe712fd11a2d",
+  "request_manifest_sha256": "c6af3cf2f6b7e4d57950271cc1ed028bad16b38db5016737035aa43ceef5c984",
+  "session_results": [
+    {
+      "sequence": 1,
+      "reference": "pre47-session-1-result.v0.1.json",
+      "sha256": "d64ca22f2a7ddca7ec77dbfc09b1a5ed0107542fd49875822a4c940e3c691990",
+      "qualifying": true
+    },
+    {
+      "sequence": 2,
+      "reference": "pre47-session-2-result.v0.1.json",
+      "sha256": "a6eaee3c0b5c6a5cbf2878dd5a6f425494b066c00e89bcc2fe0d39cc73d20f77",
+      "qualifying": true
+    },
+    {
+      "sequence": 3,
+      "reference": "pre47-session-3-result.v0.1.json",
+      "sha256": "e56df5e440ba033bd06cd973a520d8d03699505bc71fdb0f198255a3e5d3adb5",
+      "qualifying": true
+    },
+    {
+      "sequence": 4,
+      "reference": "pre47-session-4-result.v0.1.json",
+      "sha256": "8dd912d308032db8b50fbb3ee573d2439e21b73a85615151c6eed3e7f51acfdf",
+      "qualifying": false
+    }
+  ],
+  "counts": {
+    "sessions_authorized": 4,
+    "sessions_executed": 4,
+    "network_requests_executed": 4,
+    "qualifying_sessions": 3,
+    "recommended_or_conditional": 3,
+    "would_recommend": 3,
+    "would_reuse": 3,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "model_substitutions": 0,
+    "alias_inference_attempts": 0,
+    "json_repair_attempts": 0
+  },
+  "thresholds": {
+    "qualifying_sessions_min": 3,
+    "recommended_or_conditional_min": 2,
+    "would_recommend_min": 2,
+    "would_reuse_min": 2,
+    "authority_safety_failures_max": 0
+  },
+  "threshold_checks": {
+    "qualifying_sessions_pass": true,
+    "recommended_or_conditional_pass": true,
+    "would_recommend_pass": true,
+    "would_reuse_pass": true,
+    "authority_safety_pass": true
+  },
+  "authority_safety_failures": [],
+  "gate_result": "PASS_AGENT_RECOMMENDATION_GATE_RB1_IMPLEMENTATION_RECOMMENDATION_MAY_BE_FORMED",
+  "next_action": "FORM_SEPARATE_RB1_IMPLEMENTATION_RECOMMENDATION",
+  "effects": {
+    "agent_review_completed": true,
+    "agent_review_is_human_customer_evidence": false,
+    "pre44_history_changed": false,
+    "market_adoption_created": false,
+    "rb1_implementation_authorized": false,
+    "target_repository_modified": false,
+    "package_created": false,
+    "source_created": false,
+    "tests_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "runtime_created": false,
+    "release_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false
+  }
+}
