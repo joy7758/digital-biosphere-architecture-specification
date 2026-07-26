@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:sanitized-result-handoff-diagnostic-execution-receipt:0.1",
+  "title": "TITMAS Sanitized Result Handoff Diagnostic Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "authorization_baseline_commit",
+    "authorization_receipt_commit",
+    "artifact_bindings",
+    "execution_accounting",
+    "validation_summary",
+    "effects",
+    "next_permitted_action"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./sanitized-result-handoff-diagnostic-execution-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "OFFLINE_HANDOFF_DIAGNOSTIC_EXECUTED_PASS_CANDIDATE_NOT_ADOPTED_NOT_IMPLEMENTED"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-27"
+    },
+    "authorization_baseline_commit": {
+      "const": "706ca0171255e2e4af1a62f285c4a9b9a933b42b"
+    },
+    "authorization_receipt_commit": {
+      "const": "fa871947ce0aed24899c509dd4d8070e457ff9a9"
+    },
+    "artifact_bindings": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artifact",
+          "sha256"
+        ],
+        "properties": {
+          "artifact": {
+            "type": "string",
+            "minLength": 8
+          },
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      }
+    },
+    "execution_accounting": {
+      "const": {
+        "synthetic_fixtures_authorized": 11,
+        "synthetic_fixtures_executed": 11,
+        "temporary_fixture_directories_created": 11,
+        "temporary_fixture_directories_cleaned": 11,
+        "outer_result_handoff_directory_created": 1,
+        "outer_result_handoff_directory_cleaned": 1,
+        "provider_network_requests_executed": 0,
+        "live_model_requests_executed": 0,
+        "secret_reads_executed": 0,
+        "retry_attempts": 0,
+        "fallback_attempts": 0,
+        "model_substitutions": 0
+      }
+    },
+    "validation_summary": {
+      "const": {
+        "input_hashes_matched": 16,
+        "schemas_meta_valid": 7,
+        "frozen_instances_valid": 5,
+        "fixture_expectations_matched": 11,
+        "stdout_suppressed_valid_sink_recovered": true,
+        "raw_provider_fields_persisted": 0,
+        "credential_fields_persisted": 0,
+        "temporary_sink_files_remaining": 0,
+        "handoff_contract_candidate_ready": true,
+        "provider_review_rerun_ready": false,
+        "result": "PASS"
+      }
+    },
+    "effects": {
+      "const": {
+        "pre26_result_changed": false,
+        "pre26_request_budget_reopened": false,
+        "pre26_session_results_recovered": false,
+        "handoff_contract_adopted": false,
+        "implementation_created": false,
+        "runtime_created": false,
+        "provider_supported": false,
+        "conformance_executed": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false,
+        "external_outreach_authorized": false,
+        "commercial_offer_authorized": false,
+        "certification_authorized": false,
+        "release_authorized": false
+      }
+    },
+    "next_permitted_action": {
+      "const": "PREPARE_SEPARATE_PRE28_HANDOFF_BOUND_PROVIDER_REVIEW_RECOMMENDATION_ONLY"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

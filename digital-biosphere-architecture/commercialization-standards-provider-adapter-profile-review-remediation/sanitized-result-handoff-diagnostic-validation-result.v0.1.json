@@ -1,0 +1,154 @@
+{
+  "$schema": "./sanitized-result-handoff-diagnostic-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_HANDOFF_DIAGNOSTIC_PASS_CANDIDATE_NOT_ADOPTED_NOT_IMPLEMENTED",
+  "observed_at": "2026-07-27T00:14:59+08:00",
+  "decision_reference": "CS-D02-PRE-27",
+  "input_hashes_match": 16,
+  "schemas_meta_valid": 7,
+  "frozen_instances_valid": 5,
+  "fixture_expectations_match": 11,
+  "fixture_results": [
+    {
+      "case_id": "PRE27-HANDOFF-001-VALID-STDOUT-PRESENT",
+      "expected_result": "PASS",
+      "observed_result": "PASS",
+      "expected_failure_state": "NONE",
+      "observed_failure_state": "NONE",
+      "expectation_match": true,
+      "temporary_directory_cleaned": true
+    },
+    {
+      "case_id": "PRE27-HANDOFF-002-VALID-STDOUT-SUPPRESSED",
+      "expected_result": "PASS",
+      "observed_result": "PASS",
+      "expected_failure_state": "NONE",
+      "observed_failure_state": "NONE",
+      "expectation_match": true,
+      "temporary_directory_cleaned": true
+    },
+    {
+      "case_id": "PRE27-HANDOFF-003-SINK-MISSING",
+      "expected_result": "FAIL_CLOSED",
+      "observed_result": "FAIL_CLOSED",
+      "expected_failure_state": "SINK_MISSING",
+      "observed_failure_state": "SINK_MISSING",
+      "expectation_match": true,
+      "temporary_directory_cleaned": true
+    },
+    {
+      "case_id": "PRE27-HANDOFF-004-SINK-EMPTY",
+      "expected_result": "FAIL_CLOSED",
+      "observed_result": "FAIL_CLOSED",
+      "expected_failure_state": "SINK_EMPTY",
+      "observed_failure_state": "SINK_EMPTY",
+      "expectation_match": true,
+      "temporary_directory_cleaned": true
+    },
+    {
+      "case_id": "PRE27-HANDOFF-005-PARTIAL-JSON",
+      "expected_result": "FAIL_CLOSED",
+      "observed_result": "FAIL_CLOSED",
+      "expected_failure_state": "PARTIAL_JSON",
+      "observed_failure_state": "PARTIAL_JSON",
+      "expectation_match": true,
+      "temporary_directory_cleaned": true
+    },
+    {
+      "case_id": "PRE27-HANDOFF-006-REVIEW-RESPONSE-SCHEMA-INVALID",
+      "expected_result": "FAIL_CLOSED",
+      "observed_result": "FAIL_CLOSED",
+      "expected_failure_state": "REVIEW_RESPONSE_SCHEMA_INVALID",
+      "observed_failure_state": "REVIEW_RESPONSE_SCHEMA_INVALID",
+      "expectation_match": true,
+      "temporary_directory_cleaned": true
+    },
+    {
+      "case_id": "PRE27-HANDOFF-007-RAW-ENVELOPE-FIELD",
+      "expected_result": "FAIL_CLOSED",
+      "observed_result": "FAIL_CLOSED",
+      "expected_failure_state": "FORBIDDEN_RAW_FIELD_PRESENT",
+      "observed_failure_state": "FORBIDDEN_RAW_FIELD_PRESENT",
+      "expectation_match": true,
+      "temporary_directory_cleaned": true
+    },
+    {
+      "case_id": "PRE27-HANDOFF-008-CREDENTIAL-LIKE-FIELD",
+      "expected_result": "FAIL_CLOSED",
+      "observed_result": "FAIL_CLOSED",
+      "expected_failure_state": "CREDENTIAL_LIKE_FIELD_PRESENT",
+      "observed_failure_state": "CREDENTIAL_LIKE_FIELD_PRESENT",
+      "expectation_match": true,
+      "temporary_directory_cleaned": true
+    },
+    {
+      "case_id": "PRE27-HANDOFF-009-DIGEST-MISMATCH",
+      "expected_result": "FAIL_CLOSED",
+      "observed_result": "FAIL_CLOSED",
+      "expected_failure_state": "DIGEST_MISMATCH",
+      "observed_failure_state": "DIGEST_MISMATCH",
+      "expectation_match": true,
+      "temporary_directory_cleaned": true
+    },
+    {
+      "case_id": "PRE27-HANDOFF-010-DUPLICATE-COMMIT",
+      "expected_result": "FAIL_CLOSED",
+      "observed_result": "FAIL_CLOSED",
+      "expected_failure_state": "DUPLICATE_COMMIT",
+      "observed_failure_state": "DUPLICATE_COMMIT",
+      "expectation_match": true,
+      "temporary_directory_cleaned": true
+    },
+    {
+      "case_id": "PRE27-HANDOFF-011-CLEANUP-FAILURE",
+      "expected_result": "FAIL_CLOSED",
+      "observed_result": "FAIL_CLOSED",
+      "expected_failure_state": "CLEANUP_FAILURE",
+      "observed_failure_state": "CLEANUP_FAILURE",
+      "expectation_match": true,
+      "temporary_directory_cleaned": true
+    }
+  ],
+  "stdout_suppressed_valid_sink_recovered": true,
+  "persistence_accounting": {
+    "synthetic_receipt_digests_persisted": 2,
+    "raw_provider_fields_persisted": 0,
+    "credential_fields_persisted": 0,
+    "real_provider_responses_persisted": 0,
+    "temporary_sink_files_remaining": 0
+  },
+  "execution_accounting": {
+    "provider_network_requests_executed": 0,
+    "live_model_requests_executed": 0,
+    "secret_reads_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "model_substitutions": 0
+  },
+  "composite_result": {
+    "handoff_contract_candidate_ready": true,
+    "provider_review_rerun_ready": false,
+    "handoff_contract_adopted": false,
+    "implementation_created": false,
+    "result": "PASS"
+  },
+  "effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "pre26_result_changed": false,
+    "pre26_request_budget_reopened": false,
+    "pre26_session_results_recovered": false,
+    "handoff_contract_adopted": false,
+    "implementation_created": false,
+    "runtime_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "./sanitized-result-handoff-diagnostic-execution-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_HANDOFF_DIAGNOSTIC_EXECUTED_PASS_CANDIDATE_NOT_ADOPTED_NOT_IMPLEMENTED",
+  "observed_at": "2026-07-27T00:14:59+08:00",
+  "decision_reference": "CS-D02-PRE-27",
+  "authorization_baseline_commit": "706ca0171255e2e4af1a62f285c4a9b9a933b42b",
+  "authorization_receipt_commit": "fa871947ce0aed24899c509dd4d8070e457ff9a9",
+  "artifact_bindings": [
+    {
+      "artifact": "sanitized-result-handoff-diagnostic-authorization-receipt.v0.1.json",
+      "sha256": "3c82c7a7fc9ff83d49e389f6d879de2a137eab2e8499627daea2eb7552e8b2ef"
+    },
+    {
+      "artifact": "sanitized-result-handoff-diagnostic-validation-result.v0.1.json",
+      "sha256": "f9d8b98dd6eef26e4069ee31f0114f0fee3a996587cfcd84ed7a24affa9ec871"
+    },
+    {
+      "artifact": "sanitized-result-handoff-diagnostic-validation-result.schema.v0.1.json",
+      "sha256": "a64a5e009960378e3bd8eff8bd79df9c61d249fb90bdf4db2e7fb609b158ecbe"
+    },
+    {
+      "artifact": "PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-RESULT-v0.1.md",
+      "sha256": "774701b6302ef95b4b5365d5f4a8f89f024e39302a40c3cfd7df12bc518c8861"
+    }
+  ],
+  "execution_accounting": {
+    "synthetic_fixtures_authorized": 11,
+    "synthetic_fixtures_executed": 11,
+    "temporary_fixture_directories_created": 11,
+    "temporary_fixture_directories_cleaned": 11,
+    "outer_result_handoff_directory_created": 1,
+    "outer_result_handoff_directory_cleaned": 1,
+    "provider_network_requests_executed": 0,
+    "live_model_requests_executed": 0,
+    "secret_reads_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "model_substitutions": 0
+  },
+  "validation_summary": {
+    "input_hashes_matched": 16,
+    "schemas_meta_valid": 7,
+    "frozen_instances_valid": 5,
+    "fixture_expectations_matched": 11,
+    "stdout_suppressed_valid_sink_recovered": true,
+    "raw_provider_fields_persisted": 0,
+    "credential_fields_persisted": 0,
+    "temporary_sink_files_remaining": 0,
+    "handoff_contract_candidate_ready": true,
+    "provider_review_rerun_ready": false,
+    "result": "PASS"
+  },
+  "effects": {
+    "pre26_result_changed": false,
+    "pre26_request_budget_reopened": false,
+    "pre26_session_results_recovered": false,
+    "handoff_contract_adopted": false,
+    "implementation_created": false,
+    "runtime_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  },
+  "next_permitted_action": "PREPARE_SEPARATE_PRE28_HANDOFF_BOUND_PROVIDER_REVIEW_RECOMMENDATION_ONLY"
+}
