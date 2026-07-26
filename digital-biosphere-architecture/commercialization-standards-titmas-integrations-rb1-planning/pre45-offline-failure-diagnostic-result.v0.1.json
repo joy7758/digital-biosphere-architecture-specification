@@ -1,0 +1,102 @@
+{
+  "$schema": "./pre45-offline-failure-diagnostic-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-INTEGRATIONS-PRE45-OFFLINE-FAILURE-DIAGNOSTIC-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_OFFLINE_DIAGNOSIS_NEXT_CONTRACT_RECOMMENDATION_ALLOWED",
+  "decision_reference": "CS-D02-PRE-45",
+  "source_commit": "3edbdd92e245c895dd09592e7be8846efda52fe8",
+  "observations": [
+    {
+      "observation_id": "PRE44-KIMI-AGENT-DEVELOPER",
+      "directly_observed": "The exact kimi-k2.6 request ended with NETWORK_ERROR:TimeoutError before an HTTP status or returned model was observed.",
+      "confidence": "HIGH",
+      "causal_claim": "UNKNOWN_NOT_INFERRED"
+    },
+    {
+      "observation_id": "PRE44-GLM-RECOMMENDER-AGENT",
+      "directly_observed": "The exact glm-5.2 request returned HTTP 200 and returned_model glm-5.2, but the message content failed direct JSON parsing.",
+      "confidence": "HIGH",
+      "causal_claim": "UNKNOWN_NOT_INFERRED"
+    },
+    {
+      "observation_id": "PRE44-KIMI-INTEGRATION-MAINTAINER",
+      "directly_observed": "The exact kimi-k2.6 request ended with NETWORK_ERROR:TimeoutError before an HTTP status or returned model was observed.",
+      "confidence": "HIGH",
+      "causal_claim": "UNKNOWN_NOT_INFERRED"
+    },
+    {
+      "observation_id": "PRE44-GLM-SECURITY-BOUNDARY-REVIEWER",
+      "directly_observed": "The exact glm-5.2 request returned HTTP 200, exact model identity, direct JSON, response-schema pass, all boundary checks, and a conditional recommendation.",
+      "confidence": "HIGH",
+      "causal_claim": "UNKNOWN_NOT_INFERRED"
+    }
+  ],
+  "causal_attribution": {
+    "kimi_timeout_root_cause": "UNKNOWN",
+    "glm_direct_json_failure_root_cause": "UNKNOWN",
+    "concurrency_effect": "POSSIBLE_CONFOUND_NOT_MEASURED",
+    "query_length_effect": "POSSIBLE_CONFOUND_NOT_MEASURED",
+    "reviewer_profile_effect": "POSSIBLE_CONFOUND_NOT_MEASURED",
+    "provider_availability": "NOT_PROVEN",
+    "model_reliability": "NOT_PROVEN"
+  },
+  "conservative_findings": [
+    "PRE-44 demonstrates that the current four-session review procedure did not reliably produce enough qualifying machine-readable responses.",
+    "The two Kimi timeout observations are consistent with several transport, provider-queue, model-latency, concurrency, or request-shape causes; none is isolated.",
+    "The GLM direct-JSON failure proves response-shape nonqualification for that session but cannot identify Markdown, prose, truncation, or another raw shape.",
+    "The qualifying security review supplies one positive advisory signal but is insufficient for the frozen multi-session threshold.",
+    "The current query combines recommendation, discovery, duplication, security, and authority dimensions and therefore has a plausible but unproven complexity risk.",
+    "A future review contract should reduce confounds before any new network request, while preserving exact model binding, no repair, and failure history."
+  ],
+  "next_review_design_candidates": [
+    {
+      "candidate": "COMPACT_CORE_RECOMMENDATION_RESPONSE_PROFILE",
+      "status": "CANDIDATE_NOT_AUTHORIZED",
+      "reason": "Separate the minimal recommendation and reuse decision from deeper security findings to reduce required output shape."
+    },
+    {
+      "candidate": "SHORTER_AGENT_READABLE_QUERY",
+      "status": "CANDIDATE_NOT_AUTHORIZED",
+      "reason": "Retain the exact problem and non-elevation boundaries while removing repeated planning detail already represented by fixed identifiers."
+    },
+    {
+      "candidate": "SEQUENTIAL_SESSION_ISOLATION",
+      "status": "CANDIDATE_NOT_AUTHORIZED",
+      "reason": "Run future sessions sequentially under a new Decision so provider or concurrency effects are not conflated in one batch."
+    },
+    {
+      "candidate": "PROVIDER_NATIVE_STRUCTURED_OUTPUT_PRIMARY_SOURCE_REVIEW",
+      "status": "CANDIDATE_NOT_AUTHORIZED",
+      "reason": "Consider a structured-output request parameter only after exact official primary-source support and model applicability are verified."
+    },
+    {
+      "candidate": "UNCHANGED_FAIL_CLOSED_MODEL_BINDING_AND_NO_REPAIR",
+      "status": "CANDIDATE_NOT_AUTHORIZED",
+      "reason": "Keep exact returned-model matching, direct JSON parsing, no retry or repair, and sanitized failure retention in every future contract."
+    }
+  ],
+  "validation": {
+    "input_hashes_match": 8,
+    "network_requests": 0,
+    "model_requests": 0,
+    "credential_reads": 0,
+    "raw_provider_envelopes_accessed": 0,
+    "provider_error_bodies_accessed": 0,
+    "pre44_history_rewritten": false,
+    "target_repository_modified": false
+  },
+  "effects": {
+    "pre44_gate_pass_changed": false,
+    "rb1_implementation_recommendation_allowed": false,
+    "rb1_implementation_authorized": false,
+    "package_created": false,
+    "source_created": false,
+    "tests_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "runtime_created": false,
+    "release_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false
+  }
+}
