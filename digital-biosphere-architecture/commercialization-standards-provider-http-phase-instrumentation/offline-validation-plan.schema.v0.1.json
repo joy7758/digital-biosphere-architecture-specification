@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/offline-validation-plan.schema.v0.1.json",
+  "title": "TITMAS PRE-30 Offline Validation Plan",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","document_id","version","status","decision_reference",
+    "contract_reference","contract_schema_reference","fixture_catalog_reference",
+    "fixture_schema_reference","validation_result_schema_reference",
+    "authorization_receipt_schema_reference","execution_receipt_schema_reference",
+    "limits","steps","success_conditions","effects"
+  ],
+  "properties": {
+    "$schema": {"const":"./offline-validation-plan.schema.v0.1.json"},
+    "document_id": {"const":"DBA-TITMAS-CS-D02-PRE-30-OFFLINE-VALIDATION-PLAN-0.1"},
+    "version": {"const":"0.1.0"},
+    "status": {"const":"FROZEN_NOT_EXECUTED"},
+    "decision_reference": {"const":"CS-D02-PRE-30"},
+    "contract_reference": {"const":"http-phase-instrumentation-contract.v0.1.json"},
+    "contract_schema_reference": {"const":"http-phase-instrumentation-contract.schema.v0.1.json"},
+    "fixture_catalog_reference": {"const":"http-phase-instrumentation-fixtures.v0.1.json"},
+    "fixture_schema_reference": {"const":"http-phase-instrumentation-fixtures.schema.v0.1.json"},
+    "validation_result_schema_reference": {"const":"offline-validation-result.schema.v0.1.json"},
+    "authorization_receipt_schema_reference": {"const":"offline-validation-authorization-receipt.schema.v0.1.json"},
+    "execution_receipt_schema_reference": {"const":"offline-validation-execution-receipt.schema.v0.1.json"},
+    "limits": {
+      "const": {
+        "phase_count":10,"synthetic_fixtures":12,"network_probes_max":0,
+        "http_requests_max":0,"provider_api_requests_max":0,"live_model_requests_max":0,
+        "credential_reads_max":0,"raw_provider_envelopes_max":0,"packet_captures_max":0
+      }
+    },
+    "steps": {
+      "type":"array","minItems":11,"maxItems":11,"uniqueItems":true,
+      "items":{"type":"string","minLength":8}
+    },
+    "success_conditions": {
+      "const": {
+        "source_hashes_match":6,"schemas_meta_valid":7,"candidate_instances_valid":3,
+        "synthetic_fixtures_validated":12,"expected_outcomes_match":12,
+        "boundary_failures":0,"network_probes_executed":0,"http_requests_executed":0,
+        "live_model_requests_executed":0,"credential_reads_executed":0
+      }
+    },
+    "effects": {
+      "const": {
+        "contract_candidate_adopted":false,"implementation_created":false,
+        "provider_supported":false,"conformance_executed":false,
+        "model_retry_authorized":false,"valid_problem_records":0,"cs_g0_pass":false
+      }
+    }
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/offline-validation-result.schema.v0.1.json",
+  "title": "TITMAS PRE-30 Offline Validation Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","document_id","version","status","observed_at","decision_reference",
+    "authorization_receipt_reference","source_hashes_match","schemas_meta_valid",
+    "candidate_instances_valid","synthetic_fixtures_validated","expected_outcomes_match",
+    "boundary_failures","fixture_results","accounting","effects"
+  ],
+  "properties": {
+    "$schema": {"const":"./offline-validation-result.schema.v0.1.json"},
+    "document_id": {"const":"DBA-TITMAS-CS-D02-PRE-30-OFFLINE-VALIDATION-RESULT-0.1"},
+    "version": {"const":"0.1.0"},
+    "status": {"enum":["PASS_OFFLINE_CONTRACT_AND_FIXTURES","FAIL_CLOSED_OFFLINE_VALIDATION"]},
+    "observed_at": {"type":"string","format":"date-time"},
+    "decision_reference": {"const":"CS-D02-PRE-30"},
+    "authorization_receipt_reference": {"const":"offline-validation-authorization-receipt.v0.1.json"},
+    "source_hashes_match": {"type":"integer","minimum":0,"maximum":6},
+    "schemas_meta_valid": {"type":"integer","minimum":0,"maximum":7},
+    "candidate_instances_valid": {"type":"integer","minimum":0,"maximum":3},
+    "synthetic_fixtures_validated": {"type":"integer","minimum":0,"maximum":12},
+    "expected_outcomes_match": {"type":"integer","minimum":0,"maximum":12},
+    "boundary_failures": {"type":"integer","minimum":0},
+    "fixture_results": {
+      "type":"array","minItems":12,"maxItems":12,
+      "items": {
+        "type":"object","additionalProperties":false,
+        "required":["fixture_id","schema_valid","phase_order_valid","failure_closure_valid","data_minimization_valid","outcome_match"],
+        "properties": {
+          "fixture_id":{"pattern":"^PRE30-F(0[1-9]|1[0-2])-[A-Z0-9-]+$"},
+          "schema_valid":{"type":"boolean"},
+          "phase_order_valid":{"type":"boolean"},
+          "failure_closure_valid":{"type":"boolean"},
+          "data_minimization_valid":{"type":"boolean"},
+          "outcome_match":{"type":"boolean"}
+        }
+      }
+    },
+    "accounting": {
+      "const": {
+        "network_probes_executed":0,"http_requests_executed":0,
+        "provider_api_requests_executed":0,"live_model_requests_executed":0,
+        "credential_reads_executed":0,"raw_provider_envelopes_persisted":0,
+        "packet_captures_created":0
+      }
+    },
+    "effects": {
+      "type":"object",
+      "additionalProperties":false,
+      "required":[
+        "contract_candidate_ready_for_adoption_review","contract_candidate_adopted",
+        "implementation_created","provider_supported","conformance_executed",
+        "model_retry_authorized","valid_problem_records","cs_g0_pass",
+        "commercial_offer_authorized","certification_authorized","release_authorized"
+      ],
+      "properties":{
+        "contract_candidate_ready_for_adoption_review":{"type":"boolean"},
+        "contract_candidate_adopted":{"const":false},
+        "implementation_created":{"const":false},
+        "provider_supported":{"const":false},
+        "conformance_executed":{"const":false},
+        "model_retry_authorized":{"const":false},
+        "valid_problem_records":{"const":0},
+        "cs_g0_pass":{"const":false},
+        "commercial_offer_authorized":{"const":false},
+        "certification_authorized":{"const":false},
+        "release_authorized":{"const":false}
+      }
+    }
+  }
+}

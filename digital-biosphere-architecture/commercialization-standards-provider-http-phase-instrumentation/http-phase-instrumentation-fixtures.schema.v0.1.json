@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/http-phase-instrumentation-fixtures.schema.v0.1.json",
+  "title": "TITMAS PRE-30 HTTP Phase Instrumentation Synthetic Fixtures",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "phase_order",
+    "fixtures",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./http-phase-instrumentation-fixtures.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-FIXTURES-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "SYNTHETIC_NOT_EXECUTED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-30"
+    },
+    "phase_order": {
+      "const": ["P0","P1","P2","P3","P4","P5","P6","P7","P8","P9"]
+    },
+    "fixtures": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fixture_id",
+          "injected_failure",
+          "expected_terminal_phase",
+          "expected_overall_status",
+          "expected_phase_statuses",
+          "raw_payload_present",
+          "sensitive_fields_present"
+        ],
+        "properties": {
+          "fixture_id": {
+            "pattern": "^PRE30-F(0[1-9]|1[0-2])-[A-Z0-9-]+$"
+          },
+          "injected_failure": {
+            "enum": [
+              "NONE",
+              "DNS_TIMEOUT",
+              "TCP_CONNECT_TIMEOUT",
+              "TLS_HANDSHAKE_TIMEOUT",
+              "HTTP_HEADERS_WRITE_TIMEOUT",
+              "HTTP_BODY_WRITE_TIMEOUT",
+              "HTTP_RESPONSE_HEADERS_TIMEOUT",
+              "HTTP_RESPONSE_BODY_TIMEOUT",
+              "HTTP_RESPONSE_TRUNCATED",
+              "CONTENT_EXTRACTION_FAILURE",
+              "RESPONSE_SCHEMA_FAILURE",
+              "SANITIZED_HANDOFF_FAILURE"
+            ]
+          },
+          "expected_terminal_phase": {
+            "enum": ["P0","P1","P2","P3","P4","P5","P6","P7","P8","P9"]
+          },
+          "expected_overall_status": {
+            "enum": ["PASS","FAIL_CLOSED"]
+          },
+          "expected_phase_statuses": {
+            "type": "array",
+            "minItems": 10,
+            "maxItems": 10,
+            "items": {
+              "enum": ["PASS","FAIL","NOT_EXECUTED_PREREQUISITE_FAILED"]
+            }
+          },
+          "raw_payload_present": {
+            "const": false
+          },
+          "sensitive_fields_present": {
+            "const": false
+          }
+        }
+      }
+    },
+    "effects": {
+      "const": {
+        "provider_observation_created": false,
+        "runtime_execution_created": false,
+        "conformance_executed": false,
+        "model_retry_authorized": false
+      }
+    }
+  }
+}

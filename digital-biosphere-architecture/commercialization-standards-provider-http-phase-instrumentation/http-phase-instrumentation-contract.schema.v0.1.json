@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/http-phase-instrumentation-contract.schema.v0.1.json",
+  "title": "TITMAS PRE-30 HTTP Phase Instrumentation Contract Candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "phases",
+    "phase_event_required_fields",
+    "phase_statuses",
+    "failure_categories",
+    "transition_rules",
+    "data_minimization",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./http-phase-instrumentation-contract.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DEVELOPMENT_CANDIDATE_NOT_IMPLEMENTED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-30"
+    },
+    "phases": {
+      "const": [
+        {"phase_id":"P0","name":"DNS_RESOLUTION","predecessor_phase":null},
+        {"phase_id":"P1","name":"TCP_CONNECT","predecessor_phase":"P0"},
+        {"phase_id":"P2","name":"TLS_HANDSHAKE","predecessor_phase":"P1"},
+        {"phase_id":"P3","name":"HTTP_REQUEST_HEADERS_WRITE","predecessor_phase":"P2"},
+        {"phase_id":"P4","name":"HTTP_REQUEST_BODY_WRITE","predecessor_phase":"P3"},
+        {"phase_id":"P5","name":"HTTP_RESPONSE_STATUS_AND_HEADERS","predecessor_phase":"P4"},
+        {"phase_id":"P6","name":"HTTP_RESPONSE_BODY","predecessor_phase":"P5"},
+        {"phase_id":"P7","name":"RESPONSE_CONTENT_EXTRACTION","predecessor_phase":"P6"},
+        {"phase_id":"P8","name":"RESPONSE_SCHEMA_VALIDATION","predecessor_phase":"P7"},
+        {"phase_id":"P9","name":"SANITIZED_RESULT_HANDOFF_COMMIT","predecessor_phase":"P8"}
+      ]
+    },
+    "phase_event_required_fields": {
+      "const": [
+        "phase_id",
+        "status",
+        "started_at_monotonic_ref",
+        "elapsed_ms",
+        "timeout_budget_ms",
+        "bytes_in",
+        "bytes_out",
+        "failure_category",
+        "predecessor_phase",
+        "executed"
+      ]
+    },
+    "phase_statuses": {
+      "const": [
+        "PASS",
+        "FAIL",
+        "NOT_EXECUTED_PREREQUISITE_FAILED"
+      ]
+    },
+    "failure_categories": {
+      "const": [
+        "NONE",
+        "DNS_TIMEOUT",
+        "TCP_CONNECT_TIMEOUT",
+        "TLS_HANDSHAKE_TIMEOUT",
+        "HTTP_HEADERS_WRITE_TIMEOUT",
+        "HTTP_BODY_WRITE_TIMEOUT",
+        "HTTP_RESPONSE_HEADERS_TIMEOUT",
+        "HTTP_RESPONSE_BODY_TIMEOUT",
+        "HTTP_RESPONSE_TRUNCATED",
+        "CONTENT_EXTRACTION_FAILURE",
+        "RESPONSE_SCHEMA_FAILURE",
+        "SANITIZED_HANDOFF_FAILURE",
+        "BOUNDARY_VIOLATION"
+      ]
+    },
+    "transition_rules": {
+      "const": {
+        "first_phase_predecessor_must_be_null": true,
+        "later_phase_predecessor_must_be_previous_phase": true,
+        "failure_closes_all_dependent_phases": true,
+        "closed_phase_status": "NOT_EXECUTED_PREREQUISITE_FAILED",
+        "retry_may_rewrite_first_failure": false,
+        "fallback_may_rewrite_first_failure": false,
+        "repair_may_rewrite_first_failure": false
+      }
+    },
+    "data_minimization": {
+      "const": {
+        "allowed_persistent_fields": [
+          "phase timing",
+          "byte counts",
+          "sanitized failure category",
+          "observed HTTP status",
+          "observed returned model identifier",
+          "raw envelope one-way digest",
+          "sanitized result digest"
+        ],
+        "forbidden_persistent_fields": [
+          "credential",
+          "authorization header",
+          "raw request body",
+          "raw response body",
+          "prompt",
+          "review content",
+          "hidden reasoning",
+          "packet capture",
+          "resolver private configuration",
+          "local sensitive network identifiers"
+        ]
+      }
+    },
+    "effects": {
+      "const": {
+        "runtime_implementation_created": false,
+        "provider_supported": false,
+        "conformance_executed": false,
+        "model_retry_authorized": false,
+        "contract_adopted": false
+      }
+    }
+  }
+}

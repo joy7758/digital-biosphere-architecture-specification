@@ -1,0 +1,124 @@
+{
+  "$schema": "./http-phase-instrumentation-fixtures.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "SYNTHETIC_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-30",
+  "phase_order": ["P0","P1","P2","P3","P4","P5","P6","P7","P8","P9"],
+  "fixtures": [
+    {
+      "fixture_id": "PRE30-F01-ALL-PASS",
+      "injected_failure": "NONE",
+      "expected_terminal_phase": "P9",
+      "expected_overall_status": "PASS",
+      "expected_phase_statuses": ["PASS","PASS","PASS","PASS","PASS","PASS","PASS","PASS","PASS","PASS"],
+      "raw_payload_present": false,
+      "sensitive_fields_present": false
+    },
+    {
+      "fixture_id": "PRE30-F02-DNS-TIMEOUT",
+      "injected_failure": "DNS_TIMEOUT",
+      "expected_terminal_phase": "P0",
+      "expected_overall_status": "FAIL_CLOSED",
+      "expected_phase_statuses": ["FAIL","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED"],
+      "raw_payload_present": false,
+      "sensitive_fields_present": false
+    },
+    {
+      "fixture_id": "PRE30-F03-TCP-CONNECT-TIMEOUT",
+      "injected_failure": "TCP_CONNECT_TIMEOUT",
+      "expected_terminal_phase": "P1",
+      "expected_overall_status": "FAIL_CLOSED",
+      "expected_phase_statuses": ["PASS","FAIL","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED"],
+      "raw_payload_present": false,
+      "sensitive_fields_present": false
+    },
+    {
+      "fixture_id": "PRE30-F04-TLS-HANDSHAKE-TIMEOUT",
+      "injected_failure": "TLS_HANDSHAKE_TIMEOUT",
+      "expected_terminal_phase": "P2",
+      "expected_overall_status": "FAIL_CLOSED",
+      "expected_phase_statuses": ["PASS","PASS","FAIL","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED"],
+      "raw_payload_present": false,
+      "sensitive_fields_present": false
+    },
+    {
+      "fixture_id": "PRE30-F05-HEADERS-WRITE-TIMEOUT",
+      "injected_failure": "HTTP_HEADERS_WRITE_TIMEOUT",
+      "expected_terminal_phase": "P3",
+      "expected_overall_status": "FAIL_CLOSED",
+      "expected_phase_statuses": ["PASS","PASS","PASS","FAIL","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED"],
+      "raw_payload_present": false,
+      "sensitive_fields_present": false
+    },
+    {
+      "fixture_id": "PRE30-F06-BODY-WRITE-TIMEOUT",
+      "injected_failure": "HTTP_BODY_WRITE_TIMEOUT",
+      "expected_terminal_phase": "P4",
+      "expected_overall_status": "FAIL_CLOSED",
+      "expected_phase_statuses": ["PASS","PASS","PASS","PASS","FAIL","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED"],
+      "raw_payload_present": false,
+      "sensitive_fields_present": false
+    },
+    {
+      "fixture_id": "PRE30-F07-RESPONSE-HEADERS-TIMEOUT",
+      "injected_failure": "HTTP_RESPONSE_HEADERS_TIMEOUT",
+      "expected_terminal_phase": "P5",
+      "expected_overall_status": "FAIL_CLOSED",
+      "expected_phase_statuses": ["PASS","PASS","PASS","PASS","PASS","FAIL","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED"],
+      "raw_payload_present": false,
+      "sensitive_fields_present": false
+    },
+    {
+      "fixture_id": "PRE30-F08-RESPONSE-BODY-TIMEOUT",
+      "injected_failure": "HTTP_RESPONSE_BODY_TIMEOUT",
+      "expected_terminal_phase": "P6",
+      "expected_overall_status": "FAIL_CLOSED",
+      "expected_phase_statuses": ["PASS","PASS","PASS","PASS","PASS","PASS","FAIL","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED"],
+      "raw_payload_present": false,
+      "sensitive_fields_present": false
+    },
+    {
+      "fixture_id": "PRE30-F09-RESPONSE-TRUNCATED",
+      "injected_failure": "HTTP_RESPONSE_TRUNCATED",
+      "expected_terminal_phase": "P6",
+      "expected_overall_status": "FAIL_CLOSED",
+      "expected_phase_statuses": ["PASS","PASS","PASS","PASS","PASS","PASS","FAIL","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED"],
+      "raw_payload_present": false,
+      "sensitive_fields_present": false
+    },
+    {
+      "fixture_id": "PRE30-F10-CONTENT-EXTRACTION-FAILURE",
+      "injected_failure": "CONTENT_EXTRACTION_FAILURE",
+      "expected_terminal_phase": "P7",
+      "expected_overall_status": "FAIL_CLOSED",
+      "expected_phase_statuses": ["PASS","PASS","PASS","PASS","PASS","PASS","PASS","FAIL","NOT_EXECUTED_PREREQUISITE_FAILED","NOT_EXECUTED_PREREQUISITE_FAILED"],
+      "raw_payload_present": false,
+      "sensitive_fields_present": false
+    },
+    {
+      "fixture_id": "PRE30-F11-RESPONSE-SCHEMA-FAILURE",
+      "injected_failure": "RESPONSE_SCHEMA_FAILURE",
+      "expected_terminal_phase": "P8",
+      "expected_overall_status": "FAIL_CLOSED",
+      "expected_phase_statuses": ["PASS","PASS","PASS","PASS","PASS","PASS","PASS","PASS","FAIL","NOT_EXECUTED_PREREQUISITE_FAILED"],
+      "raw_payload_present": false,
+      "sensitive_fields_present": false
+    },
+    {
+      "fixture_id": "PRE30-F12-SANITIZED-HANDOFF-FAILURE",
+      "injected_failure": "SANITIZED_HANDOFF_FAILURE",
+      "expected_terminal_phase": "P9",
+      "expected_overall_status": "FAIL_CLOSED",
+      "expected_phase_statuses": ["PASS","PASS","PASS","PASS","PASS","PASS","PASS","PASS","PASS","FAIL"],
+      "raw_payload_present": false,
+      "sensitive_fields_present": false
+    }
+  ],
+  "effects": {
+    "provider_observation_created": false,
+    "runtime_execution_created": false,
+    "conformance_executed": false,
+    "model_retry_authorized": false
+  }
+}

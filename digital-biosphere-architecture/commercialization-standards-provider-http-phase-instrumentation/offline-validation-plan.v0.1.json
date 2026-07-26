@@ -1,0 +1,59 @@
+{
+  "$schema": "./offline-validation-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-30-OFFLINE-VALIDATION-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-30",
+  "contract_reference": "http-phase-instrumentation-contract.v0.1.json",
+  "contract_schema_reference": "http-phase-instrumentation-contract.schema.v0.1.json",
+  "fixture_catalog_reference": "http-phase-instrumentation-fixtures.v0.1.json",
+  "fixture_schema_reference": "http-phase-instrumentation-fixtures.schema.v0.1.json",
+  "validation_result_schema_reference": "offline-validation-result.schema.v0.1.json",
+  "authorization_receipt_schema_reference": "offline-validation-authorization-receipt.schema.v0.1.json",
+  "execution_receipt_schema_reference": "offline-validation-execution-receipt.schema.v0.1.json",
+  "limits": {
+    "phase_count": 10,
+    "synthetic_fixtures": 12,
+    "network_probes_max": 0,
+    "http_requests_max": 0,
+    "provider_api_requests_max": 0,
+    "live_model_requests_max": 0,
+    "credential_reads_max": 0,
+    "raw_provider_envelopes_max": 0,
+    "packet_captures_max": 0
+  },
+  "steps": [
+    "VERIFY_SIX_SOURCE_HASHES",
+    "META_VALIDATE_ALL_NEW_SCHEMAS",
+    "VALIDATE_CONTRACT_AND_FIXTURE_INSTANCES",
+    "VERIFY_TEN_PHASE_ORDER_AND_PREDECESSORS",
+    "VERIFY_TWELVE_FIXTURE_IDENTITIES_ARE_UNIQUE",
+    "VERIFY_ONE_PASS_AND_ELEVEN_FAIL_CLOSED_FIXTURES",
+    "VERIFY_FIRST_FAILURE_AND_DEPENDENT_PHASE_CLOSURE",
+    "VERIFY_FAILURE_CATEGORIES_ARE_CONTRACT_BOUND",
+    "VERIFY_RAW_PAYLOAD_AND_SENSITIVE_FIELDS_ABSENT",
+    "VERIFY_ZERO_EXTERNAL_ACTION_ACCOUNTING",
+    "RETAIN_RESULT_REPORT_AND_EXECUTION_RECEIPT"
+  ],
+  "success_conditions": {
+    "source_hashes_match": 6,
+    "schemas_meta_valid": 7,
+    "candidate_instances_valid": 3,
+    "synthetic_fixtures_validated": 12,
+    "expected_outcomes_match": 12,
+    "boundary_failures": 0,
+    "network_probes_executed": 0,
+    "http_requests_executed": 0,
+    "live_model_requests_executed": 0,
+    "credential_reads_executed": 0
+  },
+  "effects": {
+    "contract_candidate_adopted": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "model_retry_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false
+  }
+}

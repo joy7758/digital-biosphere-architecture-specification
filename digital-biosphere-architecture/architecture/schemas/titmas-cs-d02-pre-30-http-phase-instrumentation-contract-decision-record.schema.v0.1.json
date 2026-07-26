@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-30-http-phase-instrumentation-contract-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-30 HTTP Phase Instrumentation Contract Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "primary_repository",
+    "target_branch",
+    "contract_reference",
+    "fixture_catalog_reference",
+    "validation_plan_reference",
+    "limits",
+    "preconditions",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-30-http-phase-instrumentation-contract-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-DECISION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "AUTHORIZED_OFFLINE_CONTRACT_CANDIDATE_DESIGN_AND_VALIDATION_ONLY"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-30"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "8a225d2ad70573e5e12dd0df9d4fb0df9d0534d356c5fd02187ae22fd197babc"
+    },
+    "recommendation_commit": {
+      "const": "bb4c82a1a4b1dd4ded51cf62ff8a6c64e4b76840"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_OFFLINE_PRE28_HTTP_PHASE_INSTRUMENTATION_CONTRACT_CANDIDATE_DESIGN_ONLY"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "target_branch": {
+      "const": "codex/production-observability-baseline"
+    },
+    "contract_reference": {
+      "const": "commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-contract.v0.1.json"
+    },
+    "fixture_catalog_reference": {
+      "const": "commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-fixtures.v0.1.json"
+    },
+    "validation_plan_reference": {
+      "const": "commercialization-standards-provider-http-phase-instrumentation/offline-validation-plan.v0.1.json"
+    },
+    "limits": {
+      "const": {
+        "phase_count": 10,
+        "synthetic_fixtures": 12,
+        "network_probes_max": 0,
+        "http_requests_max": 0,
+        "provider_api_requests_max": 0,
+        "live_model_requests_max": 0,
+        "credential_reads_max": 0,
+        "raw_provider_envelopes_max": 0,
+        "packet_captures_max": 0
+      }
+    },
+    "preconditions": {
+      "const": {
+        "source_hashes_match": 6,
+        "standing_directive_active": true,
+        "recommendation_remote_verified": true,
+        "remote_decision_baseline_required_before_validation": true,
+        "authorization_receipt_required_before_validation": true,
+        "external_actions_before_authorization": 0
+      }
+    },
+    "effects": {
+      "const": {
+        "pre28_result_changed": false,
+        "pre29_result_changed": false,
+        "model_retry_authorized": false,
+        "instrumentation_implementation_created": false,
+        "handoff_contract_adopted": false,
+        "v0_2_contract_candidates_adopted": false,
+        "provider_supported": false,
+        "conformance_executed": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false,
+        "implementation_authorized": false,
+        "external_outreach_authorized": false,
+        "commercial_offer_authorized": false,
+        "certification_authorized": false,
+        "release_authorized": false
+      }
+    }
+  }
+}
