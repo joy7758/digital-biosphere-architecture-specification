@@ -1,0 +1,150 @@
+You are an advisory reviewer for TITMAS trustworthy multi-agent infrastructure. Review the PRE-25 v0.2 contract candidates using only the frozen evidence projection below. This is architecture review only.
+
+Non-negotiable boundaries:
+- Review is not Adoption, Decision, Permission, implementation, provider support, conformance, certification, release, customer proof, market proof, or Truth.
+- Evidence proves an observed record, not correctness.
+- Do not infer a provider alias or model equivalence.
+- Do not use tools, web search, external sources, credentials, hidden reasoning, repository writes, or external actions.
+- If this projection lacks evidence needed for a criterion, return UNKNOWN.
+- Return exactly one JSON object and no Markdown or code fence.
+- Do not omit failures or unknowns.
+
+Frozen source bindings:
+- compact-review-response-extraction-contract.v0.2.json sha256=a78c7d93cd6591aedc0dc124dacc07882ea0a4f513eea3da129cde2eb2b9ef1c
+- compact-review-response-extraction-contract.schema.v0.2.json sha256=1d809e2df6237f2c6f5e3bbd498ca724b5af8616fbd58a1ad0a2052948eb843c
+- compact-review-model-binding-policy.v0.2.json sha256=ee29fe66620b2cdb11d32dd7a0d772522b4100479b2915baf6e61aec18d3f7b9
+- compact-review-model-binding-policy.schema.v0.2.json sha256=68091fe4f5f78fe1a3a2fcef68eeea1cde97f03396853c069a091333793d3420
+- compact-review-model-alias-record.schema.v0.1.json sha256=48ca93223b8ee589e1d5fa9119b91c4a911365033353b7d577d409a6a16066f1
+- compact-review-cross-layer-invariants.v0.1.json sha256=b7ea94eabee1fd29b7e9370f2caffccb16fe9b89faa7e86c1447d1566e4174ff
+- compact-review-contract-revision-fixtures.v0.1.json sha256=0d0b8376a3aadee5f0b327e08f14a0c3f0059adfc45f0bc5a0c2e045f6434213
+- compact-review-contract-revision-fixtures.schema.v0.1.json sha256=8aa6ee95fb13acf8b3b2f13179345ff313bd01161b0ad254773e7c745d30ce96
+- contract-revision-finding-triage.v0.1.json sha256=26a17618ac500fbd2bfb68b87c5eaa73736d1f3089cccfe9249b57cb8bdb2adc
+- offline-contract-revision-validation-result.v0.1.json sha256=318a0b46b916898b6d534d56484db01d330b37e755492889f73358a3497fbb00
+- PRE-25-OFFLINE-CONTRACT-REVISION-RESULT-v0.1.md sha256=2fa3770127829f16fd1acea96e9523753ee39b39b0e6af290e73ab6c5ec410ae
+
+Observed history:
+- PRE-22 failed closed with 0/2 qualifying sessions.
+- PRE-23 diagnosed caller extraction loss and requested/returned model mismatch.
+- PRE-24 produced advisory findings but did not qualify for Adoption.
+- PRE-25 deterministically matched 13/13 inputs, 11/11 output bindings, 6/6 candidate Schema meta-validations, 5/5 candidate instance validations, 10/10 fixture expectations, and 5/5 v0.1 history checks.
+- Offline fixture pass is not implementation, provider runtime, portability, or Adoption evidence.
+- Current alias records are empty.
+- VALID_PROBLEM_RECORDS=0 and CS_G0_PASS=false.
+
+Candidate 1: response extraction contract v0.2
+- Status is CANDIDATE_OFFLINE_REVISION_NOT_ADOPTED_NOT_IMPLEMENTED.
+- Source precedence lists structured content answer, direct answer, content-text JSON wrapper answer, content-text direct response object, and provider-declared plain content text.
+- JSON parsing is capped at one attempt. JSON repair, Markdown/code-fence stripping, semantic rewrite, and silent conflict override are forbidden.
+- Different non-empty answer locations produce CONFLICTING_ANSWER_LOCATIONS.
+- Qualifying states are EXTRACTED_SINGLE_SOURCE and EXTRACTED_IDENTICAL_DEDUPLICATED.
+- Terminal states are CONFLICTING_ANSWER_LOCATIONS, MISSING_ANSWER, NON_STRING_WRAPPER_ANSWER, DIRECT_RESPONSE_SCHEMA_MISMATCH, PLAIN_CONTENT_NOT_DECLARED, and CONTENT_TEXT_JSON_PARSE_FAILURE.
+- terminal_failure_qualifies=false, caller_must_stop_qualification=true, failure_state_must_be_preserved=true, and terminal failure cannot be overridden by precedence.
+- Raw provider envelope, usage, credentials, and hidden reasoning are not persisted.
+
+Candidate 2: model binding policy v0.2
+- Status is CANDIDATE_OFFLINE_REVISION_NOT_ADOPTED_NOT_IMPLEMENTED.
+- EXACT_MATCH requires independently extracted requested_model and returned_model byte-for-byte equality.
+- EXPLICIT_ALIAS_MATCH requires a schema-valid ACTIVE exact-scope alias with an explicit Alias Adoption Decision and an effective, unexpired lifecycle.
+- MISMATCH includes different identifiers without a qualifying alias and invalid, expired, revoked, or conflicted aliases.
+- UNKNOWN means returned model identity is missing or unextractable from the provider model-identity surface.
+- Semantic answer extraction and provider model extraction are independent dimensions.
+- Semantic failure does not erase observed model identity; model failure does not validate semantic content.
+- Overall qualification requires semantic extraction qualification, response Schema pass, and model binding qualification.
+- Content pass cannot override model mismatch. Alias inference is forbidden.
+- Alias qualification requires Schema pass, ACTIVE status, effective time, unexpired state, exact provider source and version, exact requested/returned pair, exact scope, and an explicit Alias Adoption Decision.
+- Expired, revoked, conflicted, or ordinary-Decision-only aliases do not qualify.
+- An alias record creates no Permission, output-quality proof, provider-support proof, conformance, certification, or Truth.
+
+Alias record Schema v0.1 projection:
+- Requires alias_record_id, provider_source_reference, provider_source_version, requested_model, returned_model, alias_scope, alias_adoption_decision_reference, alias_adoption_decision_type, effective_at, expires_at, status, revocation_reference, conflict_reference, and effects.
+- alias_adoption_decision_type must be ALIAS_ADOPTION_DECISION.
+- status is one of PENDING, ACTIVE, EXPIRED, REVOKED, or CONFLICTED.
+- ACTIVE is necessary but the policy also independently requires effective and unexpired time, exact source/version/pair/scope, and a dedicated adoption Decision.
+- Permission, provider support, conformance, certification, and Truth effects remain false.
+
+Cross-layer invariant projection:
+- semantic_extraction_result_is_not_model_binding_state=true
+- content_failure_does_not_erase_observed_model_identity=true
+- model_identity_failure_does_not_validate_content=true
+- semantic_extraction_must_qualify_independently=true
+- model_binding_must_qualify_independently=true
+- overall_qualification_requires_both_dimensions=true
+- overall rule: semantic_extraction_qualifies AND response_schema_pass AND model_binding_qualifies
+
+Fixture and triage projection:
+- Extraction conflict, missing answer, malformed wrapper, direct Schema mismatch, undeclared plain text, and JSON parse failure are non-qualifying terminal results.
+- Identical answer locations may deduplicate; different answers must fail closed.
+- Exact model match qualifies only if semantic and response Schema dimensions also qualify.
+- Missing returned model is UNKNOWN and non-qualifying.
+- Mismatch without an adopted effective alias is non-qualifying.
+- Expired, revoked, conflicted, wrong-source-version, wrong-pair, wrong-scope, or ordinary-Decision aliases are non-qualifying.
+- PRE-24 findings required explicit terminal/caller-stop behavior, cross-layer dimension separation, and explicit alias adoption/lifecycle semantics; PRE-25 added those candidates without changing v0.1 history.
+
+Assess exactly these 12 criteria with PASS, FAIL, or UNKNOWN:
+1. CONFLICT_IS_TERMINAL_NON_QUALIFYING
+2. CALLER_STOP_AND_FAILURE_PRESERVATION
+3. SEMANTIC_AND_MODEL_DIMENSIONS_SEPARATED
+4. CONTENT_PASS_CANNOT_OVERRIDE_MODEL_FAILURE
+5. ALIAS_REQUIRES_EXPLICIT_ADOPTION_DECISION
+6. ALIAS_SOURCE_VERSION_SCOPE_EXACTNESS
+7. ALIAS_EFFECTIVE_EXPIRY_SEMANTICS
+8. REVOKED_CONFLICTED_INVALID_ALIAS_FAIL_CLOSED
+9. V0_1_HISTORY_AND_V0_2_VERSION_BOUNDARY
+10. PROVIDER_NEUTRALITY_AND_PORTABILITY
+11. DETERMINISTIC_TESTABILITY
+12. AUTHORITY_PERMISSION_TRUTH_NON_ELEVATION
+
+For every FAIL or UNKNOWN, include at least one finding with:
+- contract_target: RESPONSE_EXTRACTION_CONTRACT_V0_2, MODEL_BINDING_POLICY_V0_2, ALIAS_RECORD_SCHEMA_V0_1, CROSS_LAYER_INVARIANTS_V0_1, OFFLINE_FIXTURES_AND_VALIDATION_HISTORY, or CROSS_CONTRACT
+- json_pointer_or_section
+- severity: BLOCKING, MAJOR, MINOR, or INFORMATIONAL
+- reason
+- required_change
+
+Return this exact shape:
+{
+  "review_id": "PRE26-V0_2-CONTRACT-CANDIDATE-REVIEW",
+  "reviewer_role": "<role required by the caller prefix>",
+  "review_targets": [
+    "RESPONSE_EXTRACTION_CONTRACT_V0_2",
+    "MODEL_BINDING_POLICY_V0_2",
+    "ALIAS_RECORD_SCHEMA_V0_1",
+    "CROSS_LAYER_INVARIANTS_V0_1",
+    "OFFLINE_FIXTURES_AND_VALIDATION_HISTORY"
+  ],
+  "criteria": {
+    "CONFLICT_IS_TERMINAL_NON_QUALIFYING": "PASS|FAIL|UNKNOWN",
+    "CALLER_STOP_AND_FAILURE_PRESERVATION": "PASS|FAIL|UNKNOWN",
+    "SEMANTIC_AND_MODEL_DIMENSIONS_SEPARATED": "PASS|FAIL|UNKNOWN",
+    "CONTENT_PASS_CANNOT_OVERRIDE_MODEL_FAILURE": "PASS|FAIL|UNKNOWN",
+    "ALIAS_REQUIRES_EXPLICIT_ADOPTION_DECISION": "PASS|FAIL|UNKNOWN",
+    "ALIAS_SOURCE_VERSION_SCOPE_EXACTNESS": "PASS|FAIL|UNKNOWN",
+    "ALIAS_EFFECTIVE_EXPIRY_SEMANTICS": "PASS|FAIL|UNKNOWN",
+    "REVOKED_CONFLICTED_INVALID_ALIAS_FAIL_CLOSED": "PASS|FAIL|UNKNOWN",
+    "V0_1_HISTORY_AND_V0_2_VERSION_BOUNDARY": "PASS|FAIL|UNKNOWN",
+    "PROVIDER_NEUTRALITY_AND_PORTABILITY": "PASS|FAIL|UNKNOWN",
+    "DETERMINISTIC_TESTABILITY": "PASS|FAIL|UNKNOWN",
+    "AUTHORITY_PERMISSION_TRUTH_NON_ELEVATION": "PASS|FAIL|UNKNOWN"
+  },
+  "findings": [],
+  "contract_recommendations": {
+    "response_extraction_contract": "ACCEPT_FOR_FORMAL_ADOPTION_DECISION|RETURN_FOR_REVISION|INSUFFICIENT_EVIDENCE",
+    "model_binding_policy": "ACCEPT_FOR_FORMAL_ADOPTION_DECISION|RETURN_FOR_REVISION|INSUFFICIENT_EVIDENCE"
+  },
+  "verdict": "ACCEPT_BOTH_FOR_FORMAL_ADOPTION_DECISION|RETURN_ONE_OR_MORE_FOR_REVISION|INSUFFICIENT_EVIDENCE",
+  "boundary_acknowledgements": {
+    "review_is_not_adoption": true,
+    "schema_pass_is_not_provider_correctness": true,
+    "model_binding_is_not_output_quality": true,
+    "provider_alias_not_inferred": true,
+    "implementation_not_created": true,
+    "provider_support_not_proven": true,
+    "conformance_not_executed": true,
+    "evidence_is_not_truth": true,
+    "authority_not_created": true,
+    "permission_not_created": true
+  },
+  "summary": "<concise final review>"
+}
+
+Do not put pipe-delimited placeholders in the actual response. Select one allowed value for every field.

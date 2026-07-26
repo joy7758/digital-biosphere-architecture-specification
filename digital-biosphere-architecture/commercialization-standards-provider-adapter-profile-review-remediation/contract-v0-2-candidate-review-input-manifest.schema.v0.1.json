@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:contract-v0-2-candidate-review-input-manifest:0.1",
+  "title": "TITMAS PRE-26 v0.2 Contract Candidate Review Input Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "bindings",
+    "review_targets",
+    "accounting_before_execution",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./contract-v0-2-candidate-review-input-manifest.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-INPUT-MANIFEST-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FROZEN_NOT_EXECUTED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-26"
+    },
+    "bindings": {
+      "type": "array",
+      "minItems": 17,
+      "maxItems": 17,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artifact",
+          "sha256"
+        ],
+        "properties": {
+          "artifact": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      }
+    },
+    "review_targets": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "target",
+          "status",
+          "adopted"
+        ],
+        "properties": {
+          "target": {
+            "type": "string",
+            "minLength": 1
+          },
+          "status": {
+            "type": "string",
+            "minLength": 1
+          },
+          "adopted": {
+            "const": false
+          }
+        }
+      }
+    },
+    "accounting_before_execution": {
+      "const": {
+        "review_sessions_executed": 0,
+        "provider_network_requests_executed": 0,
+        "retry_attempts": 0,
+        "fallback_attempts": 0,
+        "model_substitutions": 0,
+        "alias_inference_attempts": 0,
+        "repair_attempts": 0
+      }
+    },
+    "effects": {
+      "const": {
+        "contract_candidates_adopted": false,
+        "alias_record_adopted": false,
+        "implementation_created": false,
+        "provider_supported": false,
+        "conformance_executed": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-26-v0-2-contract-candidate-review-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_EXACT_TWO_SESSION_QIANFAN_DIRECT_REVIEW_ONLY",
+  "decision_id": "CS-D02-PRE-26",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.2.md",
+  "recommendation_sha256": "53d5fa18454f75b3eb843797d3c85c083b6b56e2cbb229dba825faea8cdb961b",
+  "decision_result": "AUTHORIZE_EXACT_TWO_SESSION_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_VIA_QIANFAN_DIRECT_CHAT_ONLY",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-26T23:36:34+08:00",
+  "executed_by": "Codex",
+  "primary_repository": "digital-biosphere-architecture",
+  "target_branch": "codex/production-observability-baseline",
+  "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+  "credential_source": "QIANFAN_API_KEY_ENVIRONMENT_ONLY",
+  "review_plan_reference": "commercialization-standards-provider-adapter-profile-review-remediation/contract-v0-2-candidate-review-plan.v0.1.json",
+  "input_manifest_reference": "commercialization-standards-provider-adapter-profile-review-remediation/contract-v0-2-candidate-review-input-manifest.v0.1.json",
+  "request_manifest_reference": "commercialization-standards-provider-adapter-profile-review-remediation/contract-v0-2-candidate-review-request-manifest.v0.1.json",
+  "response_schema_reference": "commercialization-standards-provider-adapter-profile-review-remediation/contract-v0-2-candidate-review-response.schema.v0.1.json",
+  "sessions": [
+    {
+      "session_id": "PRE26-KIMI-V0_2-CONTRACT-REVIEW",
+      "provider_path": "QIANFAN_DIRECT_CHAT_COMPLETIONS",
+      "requested_model": "kimi-k2.6",
+      "role": "INTEROPERABILITY_AND_FAILURE_SEMANTICS_REVIEWER",
+      "requests_max": 1
+    },
+    {
+      "session_id": "PRE26-GLM-V0_2-CONTRACT-REVIEW",
+      "provider_path": "QIANFAN_DIRECT_CHAT_COMPLETIONS",
+      "requested_model": "glm-5.2",
+      "role": "GOVERNANCE_ALIAS_AND_VERSIONING_REVIEWER",
+      "requests_max": 1
+    }
+  ],
+  "limits": {
+    "reviewer_sessions_max": 2,
+    "total_provider_network_requests_max": 2,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "model_substitutions_max": 0,
+    "alias_inference_attempts_max": 0,
+    "repair_attempts_max": 0,
+    "web_search_requests_max": 0,
+    "reviewer_tool_calls_max": 0
+  },
+  "preconditions": {
+    "pre25_source_hashes_match": 11,
+    "standing_directive_active": true,
+    "recommendation_remote_verified": true,
+    "qianfan_api_key_present_nonempty": true,
+    "remote_decision_baseline_required_before_execution": true,
+    "authorization_receipt_required_before_execution": true,
+    "provider_requests_before_authorization": 0
+  },
+  "effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "pre24_result_changed": false,
+    "pre25_result_changed": false,
+    "pre26_v0_1_history_changed": false,
+    "v0_1_contracts_changed": false,
+    "v0_2_contract_candidates_adopted": false,
+    "alias_record_adopted": false,
+    "adapter_implementation_created": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

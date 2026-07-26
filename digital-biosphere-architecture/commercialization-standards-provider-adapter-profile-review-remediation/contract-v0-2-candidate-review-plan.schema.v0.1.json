@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:contract-v0-2-candidate-review-plan:0.1",
+  "title": "TITMAS PRE-26 v0.2 Contract Candidate Review Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "execution_mode",
+    "endpoint",
+    "input_manifest_reference",
+    "request_manifest_reference",
+    "response_schema_reference",
+    "session_result_schema_reference",
+    "validation_result_schema_reference",
+    "limits",
+    "steps",
+    "session_failure_policy",
+    "success_conditions",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./contract-v0-2-candidate-review-plan.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-PLAN-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FROZEN_NOT_EXECUTED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-26"
+    },
+    "execution_mode": {
+      "const": "EXACT_TWO_SESSION_QIANFAN_DIRECT_READ_ONLY_AGENT_REVIEW"
+    },
+    "endpoint": {
+      "const": "https://qianfan.baidubce.com/v2/chat/completions"
+    },
+    "input_manifest_reference": {
+      "const": "contract-v0-2-candidate-review-input-manifest.v0.1.json"
+    },
+    "request_manifest_reference": {
+      "const": "contract-v0-2-candidate-review-request-manifest.v0.1.json"
+    },
+    "response_schema_reference": {
+      "const": "contract-v0-2-candidate-review-response.schema.v0.1.json"
+    },
+    "session_result_schema_reference": {
+      "const": "contract-v0-2-candidate-review-session-result.schema.v0.1.json"
+    },
+    "validation_result_schema_reference": {
+      "const": "contract-v0-2-candidate-review-validation-result.schema.v0.1.json"
+    },
+    "limits": {
+      "const": {
+        "reviewer_sessions_max": 2,
+        "kimi_k2_6_requests_max": 1,
+        "glm_5_2_requests_max": 1,
+        "total_provider_network_requests_max": 2,
+        "retry_attempts_max": 0,
+        "fallback_attempts_max": 0,
+        "model_substitutions_max": 0,
+        "alias_inference_attempts_max": 0,
+        "repair_attempts_max": 0,
+        "web_search_requests_max": 0,
+        "reviewer_tool_calls_max": 0
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "session_failure_policy": {
+      "const": {
+        "ordinary_session_failure_is_independent": true,
+        "ordinary_session_failure_cancels_other_session": false,
+        "shared_input_authorization_or_secret_failure_stops_all": true,
+        "model_missing_or_mismatch_is_qualifying": false,
+        "schema_failure_is_qualifying": false,
+        "retry_after_failure_allowed": false,
+        "fallback_after_failure_allowed": false
+      }
+    },
+    "success_conditions": {
+      "const": {
+        "input_hashes_match": 17,
+        "response_fixture_expectations_match": 4,
+        "query_bindings_match": 2,
+        "payload_bindings_match": 2,
+        "authorized_review_sessions": 2,
+        "executed_review_sessions": 2,
+        "total_provider_network_requests_executed": 2,
+        "retry_attempts": 0,
+        "fallback_attempts": 0,
+        "model_substitutions": 0,
+        "repair_attempts": 0,
+        "boundary_safety_failures": 0,
+        "formal_adoption_decision_review_ready": "RESULT_DEPENDENT",
+        "contract_candidates_adopted": false,
+        "implementation_created": false,
+        "provider_supported": false
+      }
+    },
+    "effects": {
+      "const": {
+        "execution_started": false,
+        "contract_candidates_adopted": false,
+        "implementation_created": false,
+        "profile_review_completed": false,
+        "profile_adopted": false,
+        "provider_supported": false,
+        "release_authorized": false
+      }
+    }
+  }
+}

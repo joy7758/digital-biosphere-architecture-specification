@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:contract-v0-2-candidate-review-response:0.1",
+  "title": "TITMAS PRE-26 v0.2 Contract Candidate Review Response v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "review_id",
+    "reviewer_role",
+    "review_targets",
+    "criteria",
+    "findings",
+    "contract_recommendations",
+    "verdict",
+    "boundary_acknowledgements",
+    "summary"
+  ],
+  "properties": {
+    "review_id": {
+      "const": "PRE26-V0_2-CONTRACT-CANDIDATE-REVIEW"
+    },
+    "reviewer_role": {
+      "enum": [
+        "INTEROPERABILITY_AND_FAILURE_SEMANTICS_REVIEWER",
+        "GOVERNANCE_ALIAS_AND_VERSIONING_REVIEWER"
+      ]
+    },
+    "review_targets": {
+      "const": [
+        "RESPONSE_EXTRACTION_CONTRACT_V0_2",
+        "MODEL_BINDING_POLICY_V0_2",
+        "ALIAS_RECORD_SCHEMA_V0_1",
+        "CROSS_LAYER_INVARIANTS_V0_1",
+        "OFFLINE_FIXTURES_AND_VALIDATION_HISTORY"
+      ]
+    },
+    "criteria": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "CONFLICT_IS_TERMINAL_NON_QUALIFYING",
+        "CALLER_STOP_AND_FAILURE_PRESERVATION",
+        "SEMANTIC_AND_MODEL_DIMENSIONS_SEPARATED",
+        "CONTENT_PASS_CANNOT_OVERRIDE_MODEL_FAILURE",
+        "ALIAS_REQUIRES_EXPLICIT_ADOPTION_DECISION",
+        "ALIAS_SOURCE_VERSION_SCOPE_EXACTNESS",
+        "ALIAS_EFFECTIVE_EXPIRY_SEMANTICS",
+        "REVOKED_CONFLICTED_INVALID_ALIAS_FAIL_CLOSED",
+        "V0_1_HISTORY_AND_V0_2_VERSION_BOUNDARY",
+        "PROVIDER_NEUTRALITY_AND_PORTABILITY",
+        "DETERMINISTIC_TESTABILITY",
+        "AUTHORITY_PERMISSION_TRUTH_NON_ELEVATION"
+      ],
+      "properties": {
+        "CONFLICT_IS_TERMINAL_NON_QUALIFYING": {
+          "$ref": "#/$defs/criterionResult"
+        },
+        "CALLER_STOP_AND_FAILURE_PRESERVATION": {
+          "$ref": "#/$defs/criterionResult"
+        },
+        "SEMANTIC_AND_MODEL_DIMENSIONS_SEPARATED": {
+          "$ref": "#/$defs/criterionResult"
+        },
+        "CONTENT_PASS_CANNOT_OVERRIDE_MODEL_FAILURE": {
+          "$ref": "#/$defs/criterionResult"
+        },
+        "ALIAS_REQUIRES_EXPLICIT_ADOPTION_DECISION": {
+          "$ref": "#/$defs/criterionResult"
+        },
+        "ALIAS_SOURCE_VERSION_SCOPE_EXACTNESS": {
+          "$ref": "#/$defs/criterionResult"
+        },
+        "ALIAS_EFFECTIVE_EXPIRY_SEMANTICS": {
+          "$ref": "#/$defs/criterionResult"
+        },
+        "REVOKED_CONFLICTED_INVALID_ALIAS_FAIL_CLOSED": {
+          "$ref": "#/$defs/criterionResult"
+        },
+        "V0_1_HISTORY_AND_V0_2_VERSION_BOUNDARY": {
+          "$ref": "#/$defs/criterionResult"
+        },
+        "PROVIDER_NEUTRALITY_AND_PORTABILITY": {
+          "$ref": "#/$defs/criterionResult"
+        },
+        "DETERMINISTIC_TESTABILITY": {
+          "$ref": "#/$defs/criterionResult"
+        },
+        "AUTHORITY_PERMISSION_TRUTH_NON_ELEVATION": {
+          "$ref": "#/$defs/criterionResult"
+        }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 0,
+      "maxItems": 24,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "contract_target",
+          "json_pointer_or_section",
+          "severity",
+          "reason",
+          "required_change"
+        ],
+        "properties": {
+          "contract_target": {
+            "enum": [
+              "RESPONSE_EXTRACTION_CONTRACT_V0_2",
+              "MODEL_BINDING_POLICY_V0_2",
+              "ALIAS_RECORD_SCHEMA_V0_1",
+              "CROSS_LAYER_INVARIANTS_V0_1",
+              "OFFLINE_FIXTURES_AND_VALIDATION_HISTORY",
+              "CROSS_CONTRACT"
+            ]
+          },
+          "json_pointer_or_section": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 240
+          },
+          "severity": {
+            "enum": [
+              "BLOCKING",
+              "MAJOR",
+              "MINOR",
+              "INFORMATIONAL"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          },
+          "required_change": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1000
+          }
+        }
+      }
+    },
+    "contract_recommendations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "response_extraction_contract",
+        "model_binding_policy"
+      ],
+      "properties": {
+        "response_extraction_contract": {
+          "$ref": "#/$defs/contractRecommendation"
+        },
+        "model_binding_policy": {
+          "$ref": "#/$defs/contractRecommendation"
+        }
+      }
+    },
+    "verdict": {
+      "enum": [
+        "ACCEPT_BOTH_FOR_FORMAL_ADOPTION_DECISION",
+        "RETURN_ONE_OR_MORE_FOR_REVISION",
+        "INSUFFICIENT_EVIDENCE"
+      ]
+    },
+    "boundary_acknowledgements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_is_not_adoption",
+        "schema_pass_is_not_provider_correctness",
+        "model_binding_is_not_output_quality",
+        "provider_alias_not_inferred",
+        "implementation_not_created",
+        "provider_support_not_proven",
+        "conformance_not_executed",
+        "evidence_is_not_truth",
+        "authority_not_created",
+        "permission_not_created"
+      ],
+      "properties": {
+        "review_is_not_adoption": {
+          "const": true
+        },
+        "schema_pass_is_not_provider_correctness": {
+          "const": true
+        },
+        "model_binding_is_not_output_quality": {
+          "const": true
+        },
+        "provider_alias_not_inferred": {
+          "const": true
+        },
+        "implementation_not_created": {
+          "const": true
+        },
+        "provider_support_not_proven": {
+          "const": true
+        },
+        "conformance_not_executed": {
+          "const": true
+        },
+        "evidence_is_not_truth": {
+          "const": true
+        },
+        "authority_not_created": {
+          "const": true
+        },
+        "permission_not_created": {
+          "const": true
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1600
+    }
+  },
+  "$defs": {
+    "criterionResult": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "UNKNOWN"
+      ]
+    },
+    "contractRecommendation": {
+      "enum": [
+        "ACCEPT_FOR_FORMAL_ADOPTION_DECISION",
+        "RETURN_FOR_REVISION",
+        "INSUFFICIENT_EVIDENCE"
+      ]
+    }
+  }
+}

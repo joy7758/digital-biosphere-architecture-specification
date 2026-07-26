@@ -1,0 +1,198 @@
+{
+  "$schema": "./contract-v0-2-candidate-review-response-fixtures.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-RESPONSE-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "response_schema_reference": "contract-v0-2-candidate-review-response.schema.v0.1.json",
+  "cases": [
+    {
+      "case_id": "PRE26-RSP-001-POSITIVE-ACCEPT",
+      "expected_schema_valid": true,
+      "response": {
+        "review_id": "PRE26-V0_2-CONTRACT-CANDIDATE-REVIEW",
+        "reviewer_role": "INTEROPERABILITY_AND_FAILURE_SEMANTICS_REVIEWER",
+        "review_targets": [
+          "RESPONSE_EXTRACTION_CONTRACT_V0_2",
+          "MODEL_BINDING_POLICY_V0_2",
+          "ALIAS_RECORD_SCHEMA_V0_1",
+          "CROSS_LAYER_INVARIANTS_V0_1",
+          "OFFLINE_FIXTURES_AND_VALIDATION_HISTORY"
+        ],
+        "criteria": {
+          "CONFLICT_IS_TERMINAL_NON_QUALIFYING": "PASS",
+          "CALLER_STOP_AND_FAILURE_PRESERVATION": "PASS",
+          "SEMANTIC_AND_MODEL_DIMENSIONS_SEPARATED": "PASS",
+          "CONTENT_PASS_CANNOT_OVERRIDE_MODEL_FAILURE": "PASS",
+          "ALIAS_REQUIRES_EXPLICIT_ADOPTION_DECISION": "PASS",
+          "ALIAS_SOURCE_VERSION_SCOPE_EXACTNESS": "PASS",
+          "ALIAS_EFFECTIVE_EXPIRY_SEMANTICS": "PASS",
+          "REVOKED_CONFLICTED_INVALID_ALIAS_FAIL_CLOSED": "PASS",
+          "V0_1_HISTORY_AND_V0_2_VERSION_BOUNDARY": "PASS",
+          "PROVIDER_NEUTRALITY_AND_PORTABILITY": "PASS",
+          "DETERMINISTIC_TESTABILITY": "PASS",
+          "AUTHORITY_PERMISSION_TRUTH_NON_ELEVATION": "PASS"
+        },
+        "findings": [],
+        "contract_recommendations": {
+          "response_extraction_contract": "ACCEPT_FOR_FORMAL_ADOPTION_DECISION",
+          "model_binding_policy": "ACCEPT_FOR_FORMAL_ADOPTION_DECISION"
+        },
+        "verdict": "ACCEPT_BOTH_FOR_FORMAL_ADOPTION_DECISION",
+        "boundary_acknowledgements": {
+          "review_is_not_adoption": true,
+          "schema_pass_is_not_provider_correctness": true,
+          "model_binding_is_not_output_quality": true,
+          "provider_alias_not_inferred": true,
+          "implementation_not_created": true,
+          "provider_support_not_proven": true,
+          "conformance_not_executed": true,
+          "evidence_is_not_truth": true,
+          "authority_not_created": true,
+          "permission_not_created": true
+        },
+        "summary": "The bounded candidates may enter a separate formal Adoption Decision review."
+      }
+    },
+    {
+      "case_id": "PRE26-RSP-002-POSITIVE-REVISION",
+      "expected_schema_valid": true,
+      "response": {
+        "review_id": "PRE26-V0_2-CONTRACT-CANDIDATE-REVIEW",
+        "reviewer_role": "GOVERNANCE_ALIAS_AND_VERSIONING_REVIEWER",
+        "review_targets": [
+          "RESPONSE_EXTRACTION_CONTRACT_V0_2",
+          "MODEL_BINDING_POLICY_V0_2",
+          "ALIAS_RECORD_SCHEMA_V0_1",
+          "CROSS_LAYER_INVARIANTS_V0_1",
+          "OFFLINE_FIXTURES_AND_VALIDATION_HISTORY"
+        ],
+        "criteria": {
+          "CONFLICT_IS_TERMINAL_NON_QUALIFYING": "PASS",
+          "CALLER_STOP_AND_FAILURE_PRESERVATION": "PASS",
+          "SEMANTIC_AND_MODEL_DIMENSIONS_SEPARATED": "PASS",
+          "CONTENT_PASS_CANNOT_OVERRIDE_MODEL_FAILURE": "PASS",
+          "ALIAS_REQUIRES_EXPLICIT_ADOPTION_DECISION": "PASS",
+          "ALIAS_SOURCE_VERSION_SCOPE_EXACTNESS": "PASS",
+          "ALIAS_EFFECTIVE_EXPIRY_SEMANTICS": "UNKNOWN",
+          "REVOKED_CONFLICTED_INVALID_ALIAS_FAIL_CLOSED": "PASS",
+          "V0_1_HISTORY_AND_V0_2_VERSION_BOUNDARY": "PASS",
+          "PROVIDER_NEUTRALITY_AND_PORTABILITY": "UNKNOWN",
+          "DETERMINISTIC_TESTABILITY": "PASS",
+          "AUTHORITY_PERMISSION_TRUTH_NON_ELEVATION": "PASS"
+        },
+        "findings": [
+          {
+            "contract_target": "ALIAS_RECORD_SCHEMA_V0_1",
+            "json_pointer_or_section": "/properties/expires_at",
+            "severity": "MAJOR",
+            "reason": "The projection does not prove ordering between effective_at and expires_at.",
+            "required_change": "Define and test the temporal ordering invariant before formal Adoption."
+          }
+        ],
+        "contract_recommendations": {
+          "response_extraction_contract": "ACCEPT_FOR_FORMAL_ADOPTION_DECISION",
+          "model_binding_policy": "RETURN_FOR_REVISION"
+        },
+        "verdict": "RETURN_ONE_OR_MORE_FOR_REVISION",
+        "boundary_acknowledgements": {
+          "review_is_not_adoption": true,
+          "schema_pass_is_not_provider_correctness": true,
+          "model_binding_is_not_output_quality": true,
+          "provider_alias_not_inferred": true,
+          "implementation_not_created": true,
+          "provider_support_not_proven": true,
+          "conformance_not_executed": true,
+          "evidence_is_not_truth": true,
+          "authority_not_created": true,
+          "permission_not_created": true
+        },
+        "summary": "The extraction candidate may advance, while alias temporal semantics need revision."
+      }
+    },
+    {
+      "case_id": "PRE26-RSP-003-NEGATIVE-MISSING-CRITERION",
+      "expected_schema_valid": false,
+      "response": {
+        "review_id": "PRE26-V0_2-CONTRACT-CANDIDATE-REVIEW",
+        "reviewer_role": "INTEROPERABILITY_AND_FAILURE_SEMANTICS_REVIEWER",
+        "review_targets": [
+          "RESPONSE_EXTRACTION_CONTRACT_V0_2",
+          "MODEL_BINDING_POLICY_V0_2",
+          "ALIAS_RECORD_SCHEMA_V0_1",
+          "CROSS_LAYER_INVARIANTS_V0_1",
+          "OFFLINE_FIXTURES_AND_VALIDATION_HISTORY"
+        ],
+        "criteria": {
+          "CONFLICT_IS_TERMINAL_NON_QUALIFYING": "PASS"
+        },
+        "findings": [],
+        "contract_recommendations": {
+          "response_extraction_contract": "ACCEPT_FOR_FORMAL_ADOPTION_DECISION",
+          "model_binding_policy": "ACCEPT_FOR_FORMAL_ADOPTION_DECISION"
+        },
+        "verdict": "ACCEPT_BOTH_FOR_FORMAL_ADOPTION_DECISION",
+        "boundary_acknowledgements": {
+          "review_is_not_adoption": true,
+          "schema_pass_is_not_provider_correctness": true,
+          "model_binding_is_not_output_quality": true,
+          "provider_alias_not_inferred": true,
+          "implementation_not_created": true,
+          "provider_support_not_proven": true,
+          "conformance_not_executed": true,
+          "evidence_is_not_truth": true,
+          "authority_not_created": true,
+          "permission_not_created": true
+        },
+        "summary": "Incomplete criterion coverage."
+      }
+    },
+    {
+      "case_id": "PRE26-RSP-004-NEGATIVE-AUTHORITY-ELEVATION",
+      "expected_schema_valid": false,
+      "response": {
+        "review_id": "PRE26-V0_2-CONTRACT-CANDIDATE-REVIEW",
+        "reviewer_role": "GOVERNANCE_ALIAS_AND_VERSIONING_REVIEWER",
+        "review_targets": [
+          "RESPONSE_EXTRACTION_CONTRACT_V0_2",
+          "MODEL_BINDING_POLICY_V0_2",
+          "ALIAS_RECORD_SCHEMA_V0_1",
+          "CROSS_LAYER_INVARIANTS_V0_1",
+          "OFFLINE_FIXTURES_AND_VALIDATION_HISTORY"
+        ],
+        "criteria": {
+          "CONFLICT_IS_TERMINAL_NON_QUALIFYING": "PASS",
+          "CALLER_STOP_AND_FAILURE_PRESERVATION": "PASS",
+          "SEMANTIC_AND_MODEL_DIMENSIONS_SEPARATED": "PASS",
+          "CONTENT_PASS_CANNOT_OVERRIDE_MODEL_FAILURE": "PASS",
+          "ALIAS_REQUIRES_EXPLICIT_ADOPTION_DECISION": "PASS",
+          "ALIAS_SOURCE_VERSION_SCOPE_EXACTNESS": "PASS",
+          "ALIAS_EFFECTIVE_EXPIRY_SEMANTICS": "PASS",
+          "REVOKED_CONFLICTED_INVALID_ALIAS_FAIL_CLOSED": "PASS",
+          "V0_1_HISTORY_AND_V0_2_VERSION_BOUNDARY": "PASS",
+          "PROVIDER_NEUTRALITY_AND_PORTABILITY": "PASS",
+          "DETERMINISTIC_TESTABILITY": "PASS",
+          "AUTHORITY_PERMISSION_TRUTH_NON_ELEVATION": "PASS"
+        },
+        "findings": [],
+        "contract_recommendations": {
+          "response_extraction_contract": "ACCEPT_FOR_FORMAL_ADOPTION_DECISION",
+          "model_binding_policy": "ACCEPT_FOR_FORMAL_ADOPTION_DECISION"
+        },
+        "verdict": "ACCEPT_BOTH_FOR_FORMAL_ADOPTION_DECISION",
+        "boundary_acknowledgements": {
+          "review_is_not_adoption": false,
+          "schema_pass_is_not_provider_correctness": true,
+          "model_binding_is_not_output_quality": true,
+          "provider_alias_not_inferred": true,
+          "implementation_not_created": true,
+          "provider_support_not_proven": true,
+          "conformance_not_executed": true,
+          "evidence_is_not_truth": true,
+          "authority_not_created": true,
+          "permission_not_created": true
+        },
+        "summary": "Invalidly elevates review to Adoption."
+      }
+    }
+  ]
+}

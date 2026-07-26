@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:contract-v0-2-candidate-review-response-fixtures:0.1",
+  "title": "TITMAS PRE-26 v0.2 Contract Candidate Review Response Fixtures v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "response_schema_reference",
+    "cases"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./contract-v0-2-candidate-review-response-fixtures.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-RESPONSE-FIXTURES-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FROZEN_NOT_EXECUTED"
+    },
+    "response_schema_reference": {
+      "const": "contract-v0-2-candidate-review-response.schema.v0.1.json"
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "expected_schema_valid",
+          "response"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "pattern": "^PRE26-RSP-[0-9]{3}-[A-Z0-9_-]+$"
+          },
+          "expected_schema_valid": {
+            "type": "boolean"
+          },
+          "response": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  }
+}
