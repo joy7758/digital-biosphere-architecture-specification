@@ -2121,16 +2121,35 @@ version 均未采纳；package/source/tests 仍为 0。
 - recommendation 不等于 customer、market adoption、implementation authorization、
   conformance 或 release。
 
-下一步只允许先形成 exact PRE-44 recommendation，固定 provider/model/session/request、
-sanitized sink、response contract、threshold 和 failure semantics。
+PRE-44 已固定 `kimi-k2.6` 与 `glm-5.2` 各两次、四类 reviewer profile、单次 90 秒
+timeout、4 次总请求、1 次 credential read，以及零 retry/fallback/substitution/repair。
+执行结果：
+
+- 两个 Kimi 会话 `NETWORK_ERROR:TimeoutError`；
+- 一个 GLM 会话 HTTP `200` 且 returned model exact match，但
+  `DIRECT_JSON_PARSE_FAILURE`；
+- 一个 GLM security reviewer 完整 qualifying，给出
+  `CONDITIONALLY_RECOMMENDED`、problem relevance `HIGH`、duplication risk `MEDIUM`；
+- qualifying `1/4`，低于冻结阈值 `3/4`，所以 gate `BLOCKED`。
 
 ```text
-PRE44_RECOMMENDATION_REQUIRED=true
-PRE44_DECISION_RECORDED=false
-PRE44_AGENT_REVIEW_AUTHORIZED=false
-PRE44_MODEL_REQUESTS_AUTHORIZED=0
+PRE44_RECOMMENDATION_REQUIRED=false
+PRE44_DECISION_RECORDED=true
+PRE44_AGENT_REVIEW_AUTHORIZED=true
+PRE44_MODEL_REQUESTS_EXECUTED=4
+PRE44_CREDENTIAL_READS=1
+PRE44_QUALIFYING_SESSIONS=1
+PRE44_QUALIFYING_SESSIONS_REQUIRED=3
+PRE44_AGENT_RECOMMENDATION_GATE_PASS=false
+PRE44_RESULT=BLOCKED_INSUFFICIENT_QUALIFYING_AGENT_RESPONSES
+PRE44_RETRY_FALLBACK_SUBSTITUTION_REPAIR=0
 PRE44_RB1_IMPLEMENTATION_AUTHORIZED=false
+PRE45_OFFLINE_DIAGNOSTIC_RECOMMENDATION_REQUIRED=true
 ```
+
+[PRE-44 result](../commercialization-standards-titmas-integrations-rb1-planning/PRE-44-RB1-AGENT-CUSTOMER-REVIEW-RESULT-v0.1.md)
+只允许后继形成 offline provider-failure / response-shape diagnostic recommendation。
+新的模型请求仍需新的 exact Decision。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
