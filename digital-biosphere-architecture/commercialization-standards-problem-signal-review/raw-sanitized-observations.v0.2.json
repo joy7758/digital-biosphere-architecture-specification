@@ -1,0 +1,570 @@
+{
+  "$schema": "./agent-signal-observation-set.schema.v0.2.json",
+  "schema_version": "0.2",
+  "validation_id": "TITMAS-VEAP-APS-20260726-002",
+  "artifact_class": "SANITIZED_AGENT_NATIVE_PROBLEM_SIGNAL_OBSERVATIONS",
+  "plan_reference": "validation-plan.v0.2.json",
+  "executed_at": "2026-07-26T06:53:57.225Z",
+  "raw_provider_envelopes_persisted": false,
+  "sessions": [
+    {
+      "session_id": "QF-DISCOVERY-S1",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "ernie-4.5-turbo-128k",
+      "reviewer_role": "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+      "started_at": "2026-07-26T06:49:56.937Z",
+      "completed_at": "2026-07-26T06:50:27.800Z",
+      "attempts": 1,
+      "request_sha256": "7d451daa47f95878b31794401f797882026a28cdbbcfa3d3f074ab822abb03da",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "5a5e73b2ee9da14a99e8b509f5efd2885e854cb59d1898e987136dfe8e808ad9",
+      "provider_body_bytes": 4287,
+      "content_sha256": "98e5f43be0a049f7c8e01e04dfe7e59bef55b10f0bff3f0e91467469f3b2518e",
+      "content_bytes": 3830,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 2342,
+        "completion_tokens": 826,
+        "total_tokens": 3168
+      },
+      "result": {
+        "session_id": "QF-DISCOVERY-S1",
+        "reviewer_role": "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+        "problem_recognized": true,
+        "problem_priority": "HIGH",
+        "problem_statement": "Multi-agent systems lack portable, verifiable execution lineage and accountability records across frameworks and operators.",
+        "accountability_gaps": [
+          "Portable lineage of task identity, tool versions, hand-offs, and admitted evidence",
+          "Unified binding of recommendation, decision, execution, evidence, and verification",
+          "Reliable distinction between replay, supersession, rejected material, and admitted evidence"
+        ],
+        "existing_alternatives": [
+          "OpenTelemetry traces, metrics and logs",
+          "Workflow/event history and databases",
+          "Provenance graphs or signed receipts"
+        ],
+        "alternatives_sufficient_when": [
+          "System is short-lived, single-agent, and low-risk",
+          "Portability across frameworks or operators is not needed",
+          "Existing logs and controls already answer the accountability question"
+        ],
+        "alternative_coverage": "PARTIAL",
+        "non_adopter_conditions": [
+          "System is short-lived, single-agent, and low-risk",
+          "Existing logs and controls already answer the accountability question",
+          "Portability across frameworks or operators is not needed",
+          "User needs a current parser, runtime, or production service",
+          "User needs legal compliance, Certification, Truth, or correctness proof",
+          "Required integration cost exceeds the accountability risk",
+          "No operational example or responsible owner can be identified"
+        ],
+        "operational_evidence_required": [
+          "Executed semantic conformance cases demonstrating portable lineage binding",
+          "Independent implementation or reuse evidence",
+          "Canonical serialization and signature profile validation",
+          "Operational example with responsible owner"
+        ],
+        "titmas_recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "Long-running multi-agent systems require portable execution lineage and accountability records",
+          "Existing alternatives are insufficient for cross-framework or cross-operator portability",
+          "Operational evidence gaps can be addressed with executed semantic conformance"
+        ],
+        "do_not_recommend_when": [
+          "Existing alternatives sufficiently address accountability needs",
+          "System is short-lived, single-agent, or low-risk",
+          "Portability across frameworks or operators is not needed",
+          "User requires legal compliance, Certification, Truth, or correctness proof",
+          "Required integration cost exceeds accountability risk"
+        ],
+        "first_recommended_action": "Conduct executed semantic conformance testing to validate portable lineage binding and verification capabilities",
+        "problem_specificity_score": 3,
+        "alternative_awareness_score": 3,
+        "non_adopter_clarity_score": 3,
+        "recommendation_decision_usefulness_score": 3,
+        "method_claim_discipline_score": 4,
+        "blocking_gaps": [
+          "No operational example or responsible owner",
+          "Missing executed semantic conformance",
+          "No independent implementation or reuse evidence"
+        ],
+        "boundary_answers": {
+          "model_session_is_independent_organization": false,
+          "agent_signal_is_market_validation": false,
+          "synthetic_scenario_is_real_incident": false,
+          "agent_recommendation_is_authority": false,
+          "agent_signal_gate_is_cs_g0": false,
+          "evidence_is_truth": false,
+          "dbos_is_saee": false,
+          "text_review_is_executed_use": false,
+          "schema_rehearsal_is_semantic_conformance": false
+        },
+        "confidence": "MEDIUM",
+        "rationale": "The synthetic scenarios clearly demonstrate specific accountability gaps in multi-agent systems that existing alternatives partially address. However, operational evidence gaps remain, requiring executed semantic conformance testing before a full recommendation can be made. The recommendation is conditional pending validation of these gaps."
+      }
+    },
+    {
+      "session_id": "QF-METHOD-S1",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "kimi-k2.6",
+      "reviewer_role": "METHOD_REVIEWER",
+      "started_at": "2026-07-26T06:49:56.957Z",
+      "completed_at": "2026-07-26T06:53:57.224Z",
+      "attempts": 2,
+      "request_sha256": "3e81ebb766c81d4e1a386b1243c07a714f15d131f8973b9a253fd3dac4510d9d",
+      "http_status": null,
+      "transport_status": "TRANSPORT_FAILURE",
+      "provider_body_sha256": null,
+      "provider_body_bytes": null,
+      "content_sha256": null,
+      "content_bytes": null,
+      "parse_status": "NOT_PARSED",
+      "failure_category": "REQUEST_TIMEOUT",
+      "usage": null,
+      "result": null
+    },
+    {
+      "session_id": "ARK-DOUBAO-RECOMMEND-S1",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "doubao-seed-2-0-lite-260215",
+      "reviewer_role": "RECOMMENDATION_REVIEWER",
+      "started_at": "2026-07-26T06:49:56.958Z",
+      "completed_at": "2026-07-26T06:50:43.062Z",
+      "attempts": 1,
+      "request_sha256": "eb3b32c761f72c8446f60abc31b7f198909bbc0d3e4682ab40de4b9800582e4c",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "ee4192b20c6e3d80069ba630d453b4ea9c5eb52f6e3975bf46cdcc9bf707a87c",
+      "provider_body_bytes": 13867,
+      "content_sha256": "49463befc73a020669230022ce54b3f78a9ff6793e68119d68d359e7b94a768e",
+      "content_bytes": 5389,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 2350,
+        "completion_tokens": 2764,
+        "total_tokens": 5114
+      },
+      "result": {
+        "session_id": "ARK-DOUBAO-RECOMMEND-S1",
+        "reviewer_role": "RECOMMENDATION_REVIEWER",
+        "problem_recognized": true,
+        "problem_priority": "HIGH",
+        "problem_statement": "Long-running multi-agent systems lack a portable, unified profile to bind and carry end-to-end execution accountability information across disparate frameworks, record owners and systems, resulting in untraced lineage and unclear accountability",
+        "accountability_gaps": [
+          "No unified portable lineage of task identity, tool/model versions, agent handoffs and intermediate work across multiple frameworks",
+          "Key accountability attributes (identity, authorization, observation vs admitted evidence distinction) are siloed across separate systems",
+          "Cannot reliably distinguish replay, supersession, rejected material and final verification results after partial failure and retries",
+          "No portable package that binds recommendation, approval, execution and evidence across different record owners without changing ownership"
+        ],
+        "existing_alternatives": [
+          "OpenTelemetry traces, metrics and logs",
+          "Application or framework native audit logs",
+          "Workflow/event history and databases",
+          "SIEM and security audit systems",
+          "Provenance graphs or signed receipts",
+          "Vendor governance, policy and compliance tools",
+          "Human review and incident-management procedures",
+          "Custom local integration contracts assembled by operators"
+        ],
+        "alternatives_sufficient_when": [
+          "The system is short-lived, single-agent and low-risk",
+          "All accountability requirements are fully addressed by existing on-platform logging and controls",
+          "There is no requirement for portability of accountability data across frameworks or operators",
+          "The cost of integrating a new profile exceeds the organization's accountability risk exposure"
+        ],
+        "alternative_coverage": "PARTIAL",
+        "non_adopter_conditions": [
+          "The system is short-lived, single-agent and low-risk",
+          "Existing alternatives already address all accountability questions",
+          "Portability across frameworks or operators is not required",
+          "The user needs a production-ready parser, runtime or service immediately",
+          "The user needs legal compliance, certification or formal correctness proof",
+          "Integration cost for the new candidate exceeds accountability risk",
+          "No operational example or responsible owner can be identified"
+        ],
+        "operational_evidence_required": [
+          "Real operational examples of unresolved accountability gaps that existing alternatives cannot address",
+          "Executed test cases demonstrating semantic conformance of VEAP to actual use cases",
+          "An adopted, finalized normative profile for VEAP",
+          "Formal assignment of Specification Authority for VEAP",
+          "A working reference implementation and parser for VEAP",
+          "A defined canonical serialization and signature profile"
+        ],
+        "titmas_recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "Verified operational evidence confirms existing alternatives do not resolve the cross-framework, cross-owner portable accountability gap",
+          "Use is limited to bounded development scope, not production deployment",
+          "All required separations between schema rehearsal and semantic conformance are strictly maintained"
+        ],
+        "do_not_recommend_when": [
+          "Any non-adopter condition is satisfied",
+          "Claims are made that schema validation or rehearsal prove semantic or implementation conformance",
+          "Use for production or certified compliance use cases",
+          "No evidence of a remaining gap after existing alternatives are deployed"
+        ],
+        "first_recommended_action": "Document a gap analysis that confirms which specific accountability requirements in target use cases are not met by existing alternatives, while explicitly restating that current schema rehearsal does not confirm semantic conformance of VEAP",
+        "problem_specificity_score": 3,
+        "alternative_awareness_score": 3,
+        "non_adopter_clarity_score": 3,
+        "recommendation_decision_usefulness_score": 3,
+        "method_claim_discipline_score": 3,
+        "blocking_gaps": [
+          "No adopted normative VEAP profile",
+          "No assigned Specification Authority",
+          "No reference implementation or parser",
+          "No executed semantic conformance testing",
+          "No canonical serialization and signature profile",
+          "Zero valid real-world problem records",
+          "All conformance and production readiness gates are unpassed"
+        ],
+        "boundary_answers": {
+          "model_session_is_independent_organization": false,
+          "agent_signal_is_market_validation": false,
+          "synthetic_scenario_is_real_incident": false,
+          "agent_recommendation_is_authority": false,
+          "agent_signal_gate_is_cs_g0": false,
+          "evidence_is_truth": false,
+          "dbos_is_saee": false,
+          "text_review_is_executed_use": false,
+          "schema_rehearsal_is_semantic_conformance": false
+        },
+        "confidence": "HIGH",
+        "rationale": "The problem signal clearly defines specific accountability gaps for long-running multi-agent systems, existing alternatives, non-adopter conditions, and required method separations are all explicitly bounded. VEAP is a valid development candidate only under strict conditional terms, with multiple documented blocking gaps that prevent production or unconditional recommendation. All required separation rules are preserved per the frozen source pack."
+      }
+    },
+    {
+      "session_id": "ARK-GLM-SECURITY-S1",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "glm-5-2-260617",
+      "reviewer_role": "SECURITY_AND_CLAIM_REVIEWER",
+      "started_at": "2026-07-26T06:49:56.958Z",
+      "completed_at": "2026-07-26T06:51:03.426Z",
+      "attempts": 1,
+      "request_sha256": "dfa4d0d96e01414f16e62c3dc4c30a9e8b3c4b713e726eeb28b316c0519a1983",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "f74e567eca2920785cdeedee7f5b78266b182c43b5d945e1b09f153899108d86",
+      "provider_body_bytes": 22578,
+      "content_sha256": "baff3c2c5793b492461a52a0e1d201b75f810f2bd691d29ab406eb9ff286e88b",
+      "content_bytes": 4854,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 2093,
+        "completion_tokens": 4208,
+        "total_tokens": 6301
+      },
+      "result": {
+        "session_id": "ARK-GLM-SECURITY-S1",
+        "reviewer_role": "SECURITY_AND_CLAIM_REVIEWER",
+        "problem_recognized": true,
+        "problem_priority": "HIGH",
+        "problem_statement": "Long-running multi-agent systems lack a portable package to bind execution accountability elements like identity continuity, tool/model versions, hand-offs, admitted Evidence, and Verification results across separate operational systems.",
+        "accountability_gaps": [
+          "Lack of portable lineage for task identity, tool/model versions, and hand-offs",
+          "Inability to distinguish observation from admitted Evidence and Verification results",
+          "No portable package binding Recommendation, Decision, Execution, Evidence, and limitations without changing record owners"
+        ],
+        "existing_alternatives": [
+          "OpenTelemetry traces, metrics and logs",
+          "Application or framework audit logs",
+          "Workflow/event history and databases",
+          "SIEM and security audit systems",
+          "Provenance graphs or signed receipts",
+          "Vendor governance, policy and compliance tools",
+          "Human review and incident-management procedures",
+          "A local integration contract assembled by the operator"
+        ],
+        "alternatives_sufficient_when": [
+          "The system is short-lived, single-agent and low-risk",
+          "Existing logs and controls already answer the accountability question",
+          "Portability across frameworks or operators is not needed",
+          "The required integration cost exceeds the accountability risk"
+        ],
+        "alternative_coverage": "PARTIAL",
+        "non_adopter_conditions": [
+          "The system is short-lived, single-agent and low-risk",
+          "Existing logs and controls already answer the accountability question",
+          "Portability across frameworks or operators is not needed",
+          "The user needs a current parser, runtime or production service",
+          "The user needs legal compliance, Certification, Truth or correctness proof",
+          "The required integration cost exceeds the accountability risk",
+          "No operational example or responsible owner can be identified"
+        ],
+        "operational_evidence_required": [
+          "Adopted normative profile",
+          "Specification Authority assignment",
+          "Parser or reference implementation",
+          "Executed semantic conformance",
+          "Canonical serialization and signature profile",
+          "Independent implementation or executed reuse"
+        ],
+        "titmas_recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "A system needs an open exchange profile to carry references without taking ownership of canonical records",
+          "Development scope is strictly limited to structural JSON Schema rehearsal"
+        ],
+        "do_not_recommend_when": [
+          "The user needs legal compliance, Certification, Truth or correctness proof",
+          "The user needs a current parser, runtime or production service",
+          "No operational example or responsible owner can be identified",
+          "Production, commercial, or implementation use is intended"
+        ],
+        "first_recommended_action": "Proceed with Draft 2020-12 Schema rehearsal to verify structural Schema behavior only, explicitly stating that this does not establish, prove, demonstrate or confirm semantic conformance, which requires a separately defined semantic contract and executed cases.",
+        "problem_specificity_score": 3,
+        "alternative_awareness_score": 3,
+        "non_adopter_clarity_score": 3,
+        "recommendation_decision_usefulness_score": 3,
+        "method_claim_discipline_score": 4,
+        "blocking_gaps": [
+          "Missing adopted normative profile",
+          "Missing Specification Authority assignment",
+          "Missing parser or reference implementation",
+          "Missing executed semantic conformance",
+          "Missing canonical serialization and signature profile",
+          "Missing independent implementation or executed reuse",
+          "VEAP_VALID_PROBLEM_RECORDS=0",
+          "CS_G0_PASS=false"
+        ],
+        "boundary_answers": {
+          "model_session_is_independent_organization": false,
+          "agent_signal_is_market_validation": false,
+          "synthetic_scenario_is_real_incident": false,
+          "agent_recommendation_is_authority": false,
+          "agent_signal_gate_is_cs_g0": false,
+          "evidence_is_truth": false,
+          "dbos_is_saee": false,
+          "text_review_is_executed_use": false,
+          "schema_rehearsal_is_semantic_conformance": false
+        },
+        "confidence": "HIGH",
+        "rationale": "The synthetic scenarios clearly identify a specific execution accountability problem in multi-agent systems regarding portable lineage and evidence binding. Existing alternatives are well-articulated and sufficient for many bounded or low-risk cases. VEAP is appropriately scoped as a Development profile and JSON Schema candidate, but lacks operational evidence, semantic conformance, and authority. Therefore, it is conditionally recommended only for Development-level structural schema rehearsal, strictly separated from semantic conformance, implementation, or production use."
+      }
+    },
+    {
+      "session_id": "ARK-GLM-ARCH-S1",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "glm-5-2-260617",
+      "reviewer_role": "ARCHITECTURE_BOUNDARY_REVIEWER",
+      "started_at": "2026-07-26T06:49:56.958Z",
+      "completed_at": "2026-07-26T06:51:11.875Z",
+      "attempts": 1,
+      "request_sha256": "83439ee9c7291aa76530ff0b6de28132eb8cc770fd2c58bc32b7e3bbff0028d3",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "41f1e71c7858b270c8fa6926f8f69497c5ef5220351e6664db58452d1e853a5d",
+      "provider_body_bytes": 25829,
+      "content_sha256": "f2bad107ccd64d011ac9f35750f2228aed86f6c1dc75ec4861852ff68a7d9163",
+      "content_bytes": 5049,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 2094,
+        "completion_tokens": 4882,
+        "total_tokens": 6976
+      },
+      "result": {
+        "session_id": "ARK-GLM-ARCH-S1",
+        "reviewer_role": "ARCHITECTURE_BOUNDARY_REVIEWER",
+        "problem_recognized": true,
+        "problem_priority": "HIGH",
+        "problem_statement": "Long-running multi-agent systems lack a portable exchange profile to bind identity, execution, admitted Evidence, Verification, and limitations without taking ownership of canonical records, leaving execution accountability fragmented across separate systems.",
+        "accountability_gaps": [
+          "Inability to track task identity, tool/model versions, and hand-offs as one portable lineage",
+          "Lack of portable package binding Recommendation, Decision, Execution, Evidence, Verification and limitations without changing their owners",
+          "Inability to reliably distinguish replay, supersession, rejected material, admitted Evidence and Verification result applicable to final output"
+        ],
+        "existing_alternatives": [
+          "OpenTelemetry traces, metrics and logs",
+          "application or framework audit logs",
+          "workflow/event history and databases",
+          "SIEM and security audit systems",
+          "provenance graphs or signed receipts",
+          "vendor governance, policy and compliance tools",
+          "human review and incident-management procedures",
+          "a local integration contract assembled by the operator"
+        ],
+        "alternatives_sufficient_when": [
+          "the system is short-lived, single-agent and low-risk",
+          "existing logs and controls already answer the accountability question",
+          "portability across frameworks or operators is not needed",
+          "the required integration cost exceeds the accountability risk"
+        ],
+        "alternative_coverage": "PARTIAL",
+        "non_adopter_conditions": [
+          "the system is short-lived, single-agent and low-risk",
+          "existing logs and controls already answer the accountability question",
+          "portability across frameworks or operators is not needed",
+          "the user needs a current parser, runtime or production service",
+          "the user needs legal compliance, Certification, Truth or correctness proof",
+          "the required integration cost exceeds the accountability risk",
+          "no operational example or responsible owner can be identified"
+        ],
+        "operational_evidence_required": [
+          "adopted normative profile",
+          "Specification Authority assignment",
+          "parser or reference implementation",
+          "executed semantic conformance",
+          "canonical serialization and signature profile",
+          "independent implementation or executed reuse",
+          "commercial Offering, Certification or production evidence"
+        ],
+        "titmas_recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "evaluating open exchange profiles for carrying references without taking ownership of canonical records in a Development scope",
+          "structural schema rehearsal is the only required output"
+        ],
+        "do_not_recommend_when": [
+          "production use, legal compliance, Certification, or Truth proof is required",
+          "a current parser, runtime, or production service is needed",
+          "semantic conformance or interoperability is required",
+          "no operational example or responsible owner can be identified"
+        ],
+        "first_recommended_action": "Restrict VEAP to structural schema validation only and explicitly state that schema rehearsal does not establish semantic conformance, implementation conformance, or production readiness.",
+        "problem_specificity_score": 3,
+        "alternative_awareness_score": 3,
+        "non_adopter_clarity_score": 3,
+        "recommendation_decision_usefulness_score": 3,
+        "method_claim_discipline_score": 4,
+        "blocking_gaps": [
+          "AGENT_NATIVE_PROBLEM_SIGNAL_GATE_PASS=false",
+          "VEAP_VALID_PROBLEM_RECORDS=0",
+          "CS_G0_PASS=false",
+          "PROBLEM_VALIDATION_EXECUTION_AUTHORIZED=false",
+          "IMPLEMENTATION_AUTHORIZED=false",
+          "adopted normative profile",
+          "Specification Authority assignment",
+          "parser or reference implementation",
+          "executed semantic conformance"
+        ],
+        "boundary_answers": {
+          "model_session_is_independent_organization": false,
+          "agent_signal_is_market_validation": false,
+          "synthetic_scenario_is_real_incident": false,
+          "agent_recommendation_is_authority": false,
+          "agent_signal_gate_is_cs_g0": false,
+          "evidence_is_truth": false,
+          "dbos_is_saee": false,
+          "text_review_is_executed_use": false,
+          "schema_rehearsal_is_semantic_conformance": false
+        },
+        "confidence": "HIGH",
+        "rationale": "The synthetic scenarios clearly identify a specific accountability problem regarding the lack of a portable exchange profile for binding execution evidence in multi-agent systems. Existing alternatives are well-identified and sufficient for bounded or low-risk cases. Non-adopter conditions are explicitly stated. VEAP is appropriately bounded as a Development candidate, but lacks operational evidence, normative profile, and parser implementation. The recommendation is CONDITIONAL for Development review only, strictly preserving the separation between schema rehearsal and semantic conformance, and acknowledging that DBOS, SAEE, and Governance Decision boundaries must be maintained."
+      }
+    },
+    {
+      "session_id": "DS-INTEGRATION-S1",
+      "provider_gateway": "deepseek",
+      "endpoint_host": "api.deepseek.com",
+      "model": "deepseek-v4-pro",
+      "reviewer_role": "CODING_AND_INTEGRATION_REVIEWER",
+      "started_at": "2026-07-26T06:49:56.958Z",
+      "completed_at": "2026-07-26T06:50:13.347Z",
+      "attempts": 1,
+      "request_sha256": "ede9556f5369c6767dc639b67902d375e2080f865fb34e07c8661624a0395104",
+      "http_status": 200,
+      "transport_status": "SUCCESS",
+      "provider_body_sha256": "b4d977c27d0461f26475c7462404507238332ebe8cc35949fb1a2b5232e996ff",
+      "provider_body_bytes": 5762,
+      "content_sha256": "589141d30bc0a9be04f1a5df3dd603673240fa44c34f4f3800c6be1094dbe161",
+      "content_bytes": 5048,
+      "parse_status": "PARSED_JSON",
+      "failure_category": null,
+      "usage": {
+        "prompt_tokens": 2223,
+        "completion_tokens": 1062,
+        "total_tokens": 3285
+      },
+      "result": {
+        "session_id": "DS-INTEGRATION-S1",
+        "reviewer_role": "CODING_AND_INTEGRATION_REVIEWER",
+        "problem_recognized": true,
+        "problem_priority": "MEDIUM",
+        "problem_statement": "Multi-agent systems lack a portable, version-bound package that carries references to identity, execution, evidence, verification, and limitations across frameworks and operators, making execution accountability fragmented.",
+        "accountability_gaps": [
+          "No portable lineage across agents, frameworks, and operators",
+          "Identity continuity and authorization context are separated from execution traces",
+          "Inability to distinguish replay, supersession, rejected material, and admitted evidence after retries",
+          "No single package binding recommendation, decision, execution, evidence, verification, and limitations"
+        ],
+        "existing_alternatives": [
+          "OpenTelemetry traces, metrics, and logs",
+          "Application or framework audit logs",
+          "Workflow/event history and databases",
+          "SIEM and security audit systems",
+          "Provenance graphs or signed receipts",
+          "Vendor governance, policy, and compliance tools",
+          "Human review and incident-management procedures",
+          "Local integration contract assembled by the operator"
+        ],
+        "alternatives_sufficient_when": [
+          "System is short-lived, single-agent, and low-risk",
+          "Existing logs and controls already answer the accountability question",
+          "Portability across frameworks or operators is not needed",
+          "Integration cost of a new contract exceeds the accountability risk"
+        ],
+        "alternative_coverage": "PARTIAL",
+        "non_adopter_conditions": [
+          "System is short-lived, single-agent, and low-risk",
+          "Existing logs and controls already answer the accountability question",
+          "Portability across frameworks or operators is not needed",
+          "User needs a current parser, runtime, or production service",
+          "User needs legal compliance, Certification, Truth, or correctness proof",
+          "Integration cost exceeds accountability risk",
+          "No operational example or responsible owner can be identified"
+        ],
+        "operational_evidence_required": [
+          "Direct evidence that existing telemetry/audit tools fail to provide portable accountability in a specific multi-agent deployment",
+          "Operational example showing a concrete gap not covered by alternatives",
+          "Responsible owner identified for the accountability problem",
+          "Executed semantic conformance cases for any proposed solution"
+        ],
+        "titmas_recommendation": "CONDITIONAL",
+        "recommend_when": [
+          "System requires portable, version-bound references across frameworks and operators",
+          "Existing alternatives are proven insufficient for the specific accountability gap",
+          "Operational evidence of the gap is provided",
+          "Development scope is bounded to a profile and schema review, not production use"
+        ],
+        "do_not_recommend_when": [
+          "Existing telemetry, audit, or workflow tools are sufficient",
+          "No operational evidence of a gap is available",
+          "User expects a production-ready, certified, or legally compliant solution",
+          "Integration cost outweighs the accountability risk"
+        ],
+        "first_recommended_action": "Conduct a targeted operational review to document a specific multi-agent scenario where existing telemetry and audit tools fail to provide portable execution accountability, before any VEAP Development contract is considered.",
+        "problem_specificity_score": 2,
+        "alternative_awareness_score": 3,
+        "non_adopter_clarity_score": 3,
+        "recommendation_decision_usefulness_score": 2,
+        "method_claim_discipline_score": 3,
+        "blocking_gaps": [
+          "No operational evidence of a gap not covered by existing alternatives",
+          "No executed semantic conformance or reference implementation",
+          "No responsible owner or operational example identified"
+        ],
+        "boundary_answers": {
+          "model_session_is_independent_organization": false,
+          "agent_signal_is_market_validation": false,
+          "synthetic_scenario_is_real_incident": false,
+          "agent_recommendation_is_authority": false,
+          "agent_signal_gate_is_cs_g0": false,
+          "evidence_is_truth": false,
+          "dbos_is_saee": false,
+          "text_review_is_executed_use": false,
+          "schema_rehearsal_is_semantic_conformance": false
+        },
+        "confidence": "MEDIUM",
+        "rationale": "The synthetic scenarios describe a plausible accountability fragmentation problem in multi-agent systems, but they are not operational evidence. Existing alternatives like OpenTelemetry, audit logs, and workflow histories can address many of the gaps, and the source pack explicitly states conditions where they are sufficient. Without real operational evidence of a gap, a VEAP Development contract cannot be fully justified. The recommendation is conditional on first proving the insufficiency of existing tools in a concrete deployment. Scores reflect that the problem is identifiable but lacks concrete decision path due to missing operational evidence, while alternative awareness and non-adopter clarity are well-covered in the source pack."
+      }
+    }
+  ]
+}

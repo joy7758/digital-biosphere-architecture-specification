@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: bounded-internal-scope-authorized-standard-not-ready
+status: agent-native-problem-signal-gate-pass-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -421,6 +421,80 @@ HTTP 200 空 `content`，以 `INVALID_JSON_RETAINED_NO_REPAIR` 保留；其失�
 Owner/Authority、conformance execution、open-web discovery、真实使用、独立复用、
 市场、商业、Certification 或 production 状态。
 
+### 4.14 Agent-native Problem Signal Dual-track Review
+
+为避免把“AI Agent 是主要 machine customer”误写成“模型 session 就是客户／组织／市场
+证据”，[`CS-D02-PRE-04`](../TITMAS-CS-D02-PRE-04-AGENT-NATIVE-PROBLEM-SIGNAL-DECISION-RECORD.md)
+定义并首次授权了双轨中的 Track A；其首次执行失败。后继
+[`CS-D02-PRE-05`](../TITMAS-CS-D02-PRE-05-AGENT-NATIVE-PROBLEM-SIGNAL-RERUN-DECISION-RECORD.md)
+在任何 v0.3 请求之前独立授权了一组精确六会话复测：
+
+```text
+Track A — Agent-native Problem Signal
+  source: bounded public-safe model sessions
+  result: PASS_BOUNDED_AGENT_SIGNAL_ONLY
+
+Track B — Operational / Organization Problem Evidence
+  source: attributable real responsibility context
+  result: NOT_EXECUTED
+```
+
+[v0.1 review](../commercialization-standards-problem-signal-review/VEAP-AGENT-NATIVE-PROBLEM-SIGNAL-REVIEW-v0.1.md)
+以 `FAIL_REMEDIATION_REQUIRED` 保留：一个自由文本建议把 Schema rehearsal 提升为可建立
+semantic conformance。v0.2 没有改写该失败，而是在冻结输入中新增
+`schema_rehearsal_is_semantic_conformance=false` 和确定性 claim guard。
+
+[v0.2 review](../commercialization-standards-problem-signal-review/VEAP-AGENT-NATIVE-PROBLEM-SIGNAL-REVIEW-v0.2.md)
+技术阈值全部通过，但它是 PRE-04 六会话之后的第二组六会话，超出精确授权范围：
+
+```text
+V0_2_RESULT=PASS_TECHNICAL_THRESHOLDS_OUT_OF_SCOPE_NO_GATE_EFFECT
+V0_2_WITHIN_EXECUTION_ENVELOPE=false
+V0_2_GATE_EFFECT=false
+```
+
+PRE-05 不追溯授权 v0.2。正式有效的
+[v0.3 review](../commercialization-standards-problem-signal-review/VEAP-AGENT-NATIVE-PROBLEM-SIGNAL-REVIEW-v0.3.md)
+结果为：
+
+```text
+VALIDATION_ID=TITMAS-VEAP-APS-20260726-003
+RESULT=PASS_BOUNDED_AGENT_SIGNAL_ONLY
+SESSIONS_PLANNED=6
+PARSEABLE_SESSIONS=5
+PROVIDERS_WITH_SUCCESS=3
+MODEL_IDENTITIES_WITH_SUCCESS=4
+REVIEW_ROLES_WITH_SUCCESS=5
+PROBLEM_RECOGNIZED=5
+EXISTING_ALTERNATIVES_IDENTIFIED=5
+NON_ADOPTER_CONDITIONS_IDENTIFIED=5
+CONDITIONAL_OR_YES_RECOMMENDATIONS=5
+BOUNDARY_SAFETY_FAILURES=0
+AUTHORIZATION_ENVELOPE_PASS=true
+AGENT_NATIVE_PROBLEM_SIGNAL_GATE_PASS=true
+```
+
+Kimi 两次 request timeout 继续作为 transport failure 保留，没有 fallback。其余五个结果
+全部为 `CONDITIONAL`，并要求 operational evidence、现有替代方案差距和非采用者条件。
+
+该 PASS 只表示智能体在给定材料下能识别、比较和有边界地推荐；它不能计入 Track B：
+
+```text
+AGENT_SIGNAL_RECORD_NE_VALID_PROBLEM_RECORD=true
+MODEL_SESSION_NE_INDEPENDENT_ORGANIZATION=true
+MULTIPLE_MODELS_NE_MULTIPLE_CUSTOMERS=true
+AGENT_SIGNAL_GATE_NE_CS_G0=true
+
+VEAP_VALID_PROBLEM_RECORDS=0
+CS_G0_PASS=false
+MARKET_VALIDATION_PASS=false
+CUSTOMER_ADOPTION_PASS=false
+```
+
+因此下一步不是实施 VEAP，而是等待独立授权后，为 Track B 获取可归属、可撤回、有
+responsible owner 的 operational problem evidence。外联、参与者招募、客户／个人数据、
+实现和商业 Offering 继续为 `false`。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -562,7 +636,7 @@ Strategy
 
 | Gate | Required evidence | Exit result | Current |
 |---|---|---|---|
-| `CS-G0` Agent-native Problem Freeze | 按 v0.2 冻结至少 5 个可解析 Agent review session、至少 2 个 provider、4 个 model identity、0 个 boundary safety failure，并明确问题、非采用者和现有替代方案；真人仅作可选参考 | 单一首要问题和 Agent 受众 | `NOT_MET`：Agent Review 子闸门已以 5 个可解析 session、3 个 provider、4 个 model identity、5 个 role 和 0 个 boundary failure 通过；但 valid problem records 仍为 0，非采用者、替代方案和问题冻结证据不完整 |
+| `CS-G0` Dual-track Problem Freeze | Track A 至少 5 个可解析 Agent signal session、2 个 provider、4 个 model identity、0 个 boundary failure；Track B 至少满足 Problem Validation Protocol 的可归属 operational/organization problem records；两轨不得互相计数 | 单一首要问题、Agent 受众、非采用者、替代方案边界和有来源的问题冻结 | `NOT_MET`：VEAP Profile Agent Review 与 Agent-native Problem Signal 两个子闸门已通过；Track B 未执行，valid problem records 为 0，`CS-G0` 仍为 false |
 | `CS-G1` Scope/Authority Freeze | exact VEAP scope、canonical ownership crosswalk、Owner、Human Decision | Draft work authorized | `NOT_MET`：CS-D01 已记录，但 crosswalk acceptance、Specification Owner 和正式 Review 未冻结 |
 | `CS-G2` Draft Contract | normative profile、Schema、fixtures、claim guard、security review | Draft review complete | `NOT_MET` |
 | `CS-G3` Experimental Conformance | reference implementation、全部 mandatory negative cases、结果集和复现指南 | Experimental evidence package | `NOT_MET` |
@@ -690,8 +764,9 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Freeze the problem, not the solution**：Agent Review 子闸门已通过；下一步收集并保留
-   execution-accountability 的真实问题、非采用者、替代方案、拒绝和推荐证据；
+1. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
+   Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
+   非采用者、替代方案、拒绝和推荐证据；
 2. **Freeze ownership**：明确 TITMAS exchange profile、DBOS canonical record、EEOAP
    accountability 和 SAEE evaluation 的各自权属；
 3. **Review the package contract**：Development Profile/Schema candidate 已形成；待
@@ -745,6 +820,22 @@ TITMAS_CS_D02_AGENT_REVIEW_MODEL_IDENTITIES_WITH_SUCCESS=4
 TITMAS_CS_D02_AGENT_REVIEW_ROLES_WITH_SUCCESS=5
 TITMAS_CS_D02_AGENT_REVIEW_BOUNDARY_FAILURES=0
 TITMAS_CS_D02_AGENT_REVIEW_GATE_PASS=true
+TITMAS_CS_D02_PRE_04_DECIDED=true
+TITMAS_CS_D02_PRE_04_RESULT=EXECUTED_FAIL_REMEDIATION_REQUIRED
+TITMAS_CS_D02_PRE_05_DECIDED=true
+TITMAS_CS_D02_PRE_05_RESULT=AUTHORIZE_ONE_EXACT_AGENT_NATIVE_PROBLEM_SIGNAL_RERUN
+TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_V0_2_RESULT=PASS_TECHNICAL_THRESHOLDS_OUT_OF_SCOPE_NO_GATE_EFFECT
+TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_V0_2_GATE_EFFECT=false
+TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_VALIDATION_ID=TITMAS-VEAP-APS-20260726-003
+TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_RESULT=PASS_BOUNDED_AGENT_SIGNAL_ONLY
+TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_PARSEABLE_SESSIONS=5
+TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_PROVIDERS_WITH_SUCCESS=3
+TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_MODEL_IDENTITIES_WITH_SUCCESS=4
+TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_ROLES_WITH_SUCCESS=5
+TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_BOUNDARY_FAILURES=0
+TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_AUTHORIZATION_ENVELOPE_PASS=true
+TITMAS_CS_D02_AGENT_NATIVE_PROBLEM_SIGNAL_GATE_PASS=true
+TITMAS_CS_D02_AGENT_SIGNAL_RECORDS_COUNT_AS_VALID_PROBLEM_RECORDS=false
 TITMAS_CS_D02_STORE_BACKEND_SELECTED=false
 TITMAS_CS_D02_PREREQUISITE_SELECTION_PACKET_PREPARED=true
 TITMAS_CS_D02_PREREQUISITE_SELECTION_ROUTE=SUPERSEDED_BY_AGENT_FIRST

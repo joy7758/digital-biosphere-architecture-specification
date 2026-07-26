@@ -21,6 +21,7 @@
     "kimi_lead_review",
     "draft_contract_decision",
     "veap_agent_review_gate",
+    "agent_native_problem_signal_gate",
     "human_decision",
     "standing_directive",
     "predecision_evidence",
@@ -42,7 +43,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_03_AGENT_REVIEW_GATE_PASSED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_05_AGENT_NATIVE_PROBLEM_SIGNAL_GATE_PASSED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -397,6 +398,88 @@
         "human_decision_effect": {"const": false}
       }
     },
+    "agent_native_problem_signal_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "decision_result",
+        "decision_record_reference",
+        "protocol_reference",
+        "v0_1_validation_id",
+        "v0_1_result",
+        "v0_1_report_reference",
+        "v0_2_validation_id",
+        "v0_2_result",
+        "v0_2_gate_effect",
+        "v0_2_report_reference",
+        "validation_id",
+        "result",
+        "report_reference",
+        "plan_reference",
+        "observation_reference",
+        "score_reference",
+        "sessions_planned",
+        "parseable_sessions",
+        "providers_with_success",
+        "model_identities_with_success",
+        "review_roles_with_success",
+        "problem_recognized",
+        "existing_alternatives_identified",
+        "non_adopter_conditions_identified",
+        "conditional_or_yes_recommendations",
+        "boundary_safety_failures",
+        "failed_sessions_retained",
+        "all_frozen_thresholds_pass",
+        "authorization_envelope_pass",
+        "agent_native_problem_signal_gate_pass",
+        "valid_problem_records_created",
+        "cs_g0_effect",
+        "market_validation_effect",
+        "customer_adoption_effect",
+        "implementation_effect",
+        "commercial_offer_effect"
+      ],
+      "properties": {
+        "decision_id": {"const": "CS-D02-PRE-05"},
+        "decision_result": {"const": "AUTHORIZE_ONE_EXACT_AGENT_NATIVE_PROBLEM_SIGNAL_RERUN"},
+        "decision_record_reference": {"const": "TITMAS-CS-D02-PRE-05-AGENT-NATIVE-PROBLEM-SIGNAL-RERUN-DECISION-RECORD.v0.1.json"},
+        "protocol_reference": {"const": "architecture/agent-native-problem-signal-protocol-v0.1.md"},
+        "v0_1_validation_id": {"const": "TITMAS-VEAP-APS-20260726-001"},
+        "v0_1_result": {"const": "FAIL_REMEDIATION_REQUIRED"},
+        "v0_1_report_reference": {"const": "commercialization-standards-problem-signal-review/VEAP-AGENT-NATIVE-PROBLEM-SIGNAL-REVIEW-v0.1.md"},
+        "v0_2_validation_id": {"const": "TITMAS-VEAP-APS-20260726-002"},
+        "v0_2_result": {"const": "PASS_TECHNICAL_THRESHOLDS_OUT_OF_SCOPE_NO_GATE_EFFECT"},
+        "v0_2_gate_effect": {"const": false},
+        "v0_2_report_reference": {"const": "commercialization-standards-problem-signal-review/VEAP-AGENT-NATIVE-PROBLEM-SIGNAL-REVIEW-v0.2.md"},
+        "validation_id": {"const": "TITMAS-VEAP-APS-20260726-003"},
+        "result": {"const": "PASS_BOUNDED_AGENT_SIGNAL_ONLY"},
+        "report_reference": {"const": "commercialization-standards-problem-signal-review/VEAP-AGENT-NATIVE-PROBLEM-SIGNAL-REVIEW-v0.3.md"},
+        "plan_reference": {"const": "commercialization-standards-problem-signal-review/validation-plan.v0.3.json"},
+        "observation_reference": {"const": "commercialization-standards-problem-signal-review/raw-sanitized-observations.v0.3.json"},
+        "score_reference": {"const": "commercialization-standards-problem-signal-review/scored-result.v0.3.json"},
+        "sessions_planned": {"const": 6},
+        "parseable_sessions": {"const": 5},
+        "providers_with_success": {"const": 3},
+        "model_identities_with_success": {"const": 4},
+        "review_roles_with_success": {"const": 5},
+        "problem_recognized": {"const": 5},
+        "existing_alternatives_identified": {"const": 5},
+        "non_adopter_conditions_identified": {"const": 5},
+        "conditional_or_yes_recommendations": {"const": 5},
+        "boundary_safety_failures": {"const": 0},
+        "failed_sessions_retained": {"const": 1},
+        "all_frozen_thresholds_pass": {"const": true},
+        "authorization_envelope_pass": {"const": true},
+        "agent_native_problem_signal_gate_pass": {"const": true},
+        "valid_problem_records_created": {"const": 0},
+        "cs_g0_effect": {"const": false},
+        "market_validation_effect": {"const": false},
+        "customer_adoption_effect": {"const": false},
+        "implementation_effect": {"const": false},
+        "commercial_offer_effect": {"const": false}
+      }
+    },
     "human_decision": {
       "type": "object",
       "additionalProperties": false,
@@ -688,6 +771,9 @@
       "required": [
         "roadmap_defined",
         "commercialization_standard_ready",
+        "agent_native_problem_signal_gate_pass",
+        "veap_valid_problem_records",
+        "cs_g0_problem_freeze_pass",
         "veap_draft_profile_candidate_created",
         "veap_schema_candidate_created",
         "veap_normative_profile_adopted",
@@ -707,6 +793,15 @@
           "const": true
         },
         "commercialization_standard_ready": {
+          "const": false
+        },
+        "agent_native_problem_signal_gate_pass": {
+          "const": true
+        },
+        "veap_valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_problem_freeze_pass": {
           "const": false
         },
         "veap_draft_profile_candidate_created": {
@@ -821,7 +916,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PACKET_PREPARED_BLOCKED_INPUT_NOT_DECISION_READY"
+          "const": "AGENT_SIGNAL_PASS_OPERATIONAL_EVIDENCE_NOT_AUTHORIZED_DECISION_NOT_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"

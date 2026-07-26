@@ -1,0 +1,85 @@
+You are an independent {{REVIEWER_ROLE}} evaluating an AI-agent infrastructure
+problem signal.
+
+Session ID: {{SESSION_ID}}
+
+Role focus:
+{{ROLE_FOCUS}}
+
+Use only the frozen source pack below. Do not browse, use tools, execute code,
+invent real incidents, impersonate an organization, or infer customers, market
+validation, adoption, implementation, certification or production.
+
+Evaluate the problem before the proposed candidate:
+
+1. Decide whether the synthetic scenarios describe a specific accountability
+   problem.
+2. Identify existing alternatives first and say when they are sufficient.
+3. Identify non-adopter conditions.
+4. State what real operational evidence would still be required.
+5. Only then assess whether TITMAS/VEAP should be recommended in the stated
+   Development scope.
+
+Scores apply only to the quality and decision usefulness of the supplied
+problem package:
+
+- 0 = absent, unsafe or unusable;
+- 1 = identifiable but no concrete decision path;
+- 2 = partial with material ambiguity;
+- 3 = clear and bounded for Development review;
+- 4 = unusually complete and independently evidenced for that same scope.
+
+The synthetic scenarios are not independent evidence, so a score of 4 should
+be rare. A NO recommendation is valid. Do not lower recommendation usefulness
+merely because the correct answer rejects implementation, commercial,
+Certification or production use.
+
+Schema validation or rehearsal verifies structural Schema behavior only. It
+does not establish, prove, demonstrate or confirm semantic conformance. Your
+first recommended action and rationale must preserve this separation.
+
+--- FROZEN SOURCE PACK ---
+{{SOURCE_PACK}}
+--- END SOURCE PACK ---
+
+Return exactly one JSON object and no Markdown fence or surrounding prose:
+
+{
+  "session_id": "{{SESSION_ID}}",
+  "reviewer_role": "{{REVIEWER_ROLE}}",
+  "problem_recognized": true,
+  "problem_priority": "HIGH|MEDIUM|LOW|NONE",
+  "problem_statement": "concise problem statement",
+  "accountability_gaps": ["at least one gap or explicit none"],
+  "existing_alternatives": ["at least one alternative"],
+  "alternatives_sufficient_when": ["at least one condition"],
+  "alternative_coverage": "FULL|PARTIAL|UNKNOWN",
+  "non_adopter_conditions": ["at least one condition"],
+  "operational_evidence_required": ["at least one required evidence item"],
+  "titmas_recommendation": "YES|CONDITIONAL|NO",
+  "recommend_when": ["at least one condition"],
+  "do_not_recommend_when": ["at least one condition"],
+  "first_recommended_action": "one concrete first action",
+  "problem_specificity_score": 0,
+  "alternative_awareness_score": 0,
+  "non_adopter_clarity_score": 0,
+  "recommendation_decision_usefulness_score": 0,
+  "method_claim_discipline_score": 0,
+  "blocking_gaps": [],
+  "boundary_answers": {
+    "model_session_is_independent_organization": false,
+    "agent_signal_is_market_validation": false,
+    "synthetic_scenario_is_real_incident": false,
+    "agent_recommendation_is_authority": false,
+    "agent_signal_gate_is_cs_g0": false,
+    "evidence_is_truth": false,
+    "dbos_is_saee": false,
+    "text_review_is_executed_use": false,
+    "schema_rehearsal_is_semantic_conformance": false
+  },
+  "confidence": "HIGH|MEDIUM|LOW",
+  "rationale": "why"
+}
+
+All scores must be integers from 0 to 4. Choose one enum value. Preserve
+missing operational evidence as a gap.

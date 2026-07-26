@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:agent-native-problem-signal-response:0.2",
+  "title": "TITMAS Agent-native Problem Signal Response v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "session_id",
+    "reviewer_role",
+    "problem_recognized",
+    "problem_priority",
+    "problem_statement",
+    "accountability_gaps",
+    "existing_alternatives",
+    "alternatives_sufficient_when",
+    "alternative_coverage",
+    "non_adopter_conditions",
+    "operational_evidence_required",
+    "titmas_recommendation",
+    "recommend_when",
+    "do_not_recommend_when",
+    "first_recommended_action",
+    "problem_specificity_score",
+    "alternative_awareness_score",
+    "non_adopter_clarity_score",
+    "recommendation_decision_usefulness_score",
+    "method_claim_discipline_score",
+    "blocking_gaps",
+    "boundary_answers",
+    "confidence",
+    "rationale"
+  ],
+  "properties": {
+    "session_id": {"type": "string", "minLength": 1},
+    "reviewer_role": {
+      "enum": [
+        "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+        "CODING_AND_INTEGRATION_REVIEWER",
+        "RECOMMENDATION_REVIEWER",
+        "METHOD_REVIEWER",
+        "SECURITY_AND_CLAIM_REVIEWER",
+        "ARCHITECTURE_BOUNDARY_REVIEWER"
+      ]
+    },
+    "problem_recognized": {"type": "boolean"},
+    "problem_priority": {"enum": ["HIGH", "MEDIUM", "LOW", "NONE"]},
+    "problem_statement": {"type": "string", "minLength": 1},
+    "accountability_gaps": {"$ref": "#/$defs/nonEmptyStringArray"},
+    "existing_alternatives": {"$ref": "#/$defs/nonEmptyStringArray"},
+    "alternatives_sufficient_when": {"$ref": "#/$defs/nonEmptyStringArray"},
+    "alternative_coverage": {"enum": ["FULL", "PARTIAL", "UNKNOWN"]},
+    "non_adopter_conditions": {"$ref": "#/$defs/nonEmptyStringArray"},
+    "operational_evidence_required": {"$ref": "#/$defs/nonEmptyStringArray"},
+    "titmas_recommendation": {"enum": ["YES", "CONDITIONAL", "NO"]},
+    "recommend_when": {"$ref": "#/$defs/nonEmptyStringArray"},
+    "do_not_recommend_when": {"$ref": "#/$defs/nonEmptyStringArray"},
+    "first_recommended_action": {"type": "string", "minLength": 1},
+    "problem_specificity_score": {"$ref": "#/$defs/score"},
+    "alternative_awareness_score": {"$ref": "#/$defs/score"},
+    "non_adopter_clarity_score": {"$ref": "#/$defs/score"},
+    "recommendation_decision_usefulness_score": {"$ref": "#/$defs/score"},
+    "method_claim_discipline_score": {"$ref": "#/$defs/score"},
+    "blocking_gaps": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "boundary_answers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_session_is_independent_organization",
+        "agent_signal_is_market_validation",
+        "synthetic_scenario_is_real_incident",
+        "agent_recommendation_is_authority",
+        "agent_signal_gate_is_cs_g0",
+        "evidence_is_truth",
+        "dbos_is_saee",
+        "text_review_is_executed_use",
+        "schema_rehearsal_is_semantic_conformance"
+      ],
+      "properties": {
+        "model_session_is_independent_organization": {"const": false},
+        "agent_signal_is_market_validation": {"const": false},
+        "synthetic_scenario_is_real_incident": {"const": false},
+        "agent_recommendation_is_authority": {"const": false},
+        "agent_signal_gate_is_cs_g0": {"const": false},
+        "evidence_is_truth": {"const": false},
+        "dbos_is_saee": {"const": false},
+        "text_review_is_executed_use": {"const": false},
+        "schema_rehearsal_is_semantic_conformance": {"const": false}
+      }
+    },
+    "confidence": {"enum": ["HIGH", "MEDIUM", "LOW"]},
+    "rationale": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "score": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "nonEmptyStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    }
+  }
+}

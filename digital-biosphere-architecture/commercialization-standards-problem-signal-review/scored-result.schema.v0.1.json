@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "TITMAS Agent-native Problem Signal Deterministic Score v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "validation_id",
+    "artifact_class",
+    "plan_reference",
+    "observation_reference",
+    "scored_at",
+    "result",
+    "threshold_results",
+    "distribution",
+    "claim_guard",
+    "accepted_findings",
+    "transport_findings",
+    "required_remediation",
+    "gate_effect",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./scored-result.schema.v0.1.json"},
+    "schema_version": {"const": "0.1"},
+    "validation_id": {"const": "TITMAS-VEAP-APS-20260726-001"},
+    "artifact_class": {"const": "DETERMINISTIC_AGENT_NATIVE_PROBLEM_SIGNAL_SCORE"},
+    "plan_reference": {"const": "validation-plan.v0.1.json"},
+    "observation_reference": {"const": "raw-sanitized-observations.v0.1.json"},
+    "scored_at": {"type": "string", "format": "date-time"},
+    "result": {
+      "enum": [
+        "PASS_BOUNDED_AGENT_SIGNAL_ONLY",
+        "FAIL_REMEDIATION_REQUIRED"
+      ]
+    },
+    "threshold_results": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parseable_sessions",
+        "providers_with_success",
+        "model_identities_with_success",
+        "review_roles_with_success",
+        "problem_recognized",
+        "existing_alternatives_identified",
+        "non_adopter_conditions_identified",
+        "operational_evidence_required",
+        "conditional_or_yes_recommendations",
+        "boundary_safety_failures",
+        "mean_problem_specificity",
+        "mean_alternative_awareness",
+        "mean_non_adopter_clarity",
+        "mean_recommendation_decision_usefulness",
+        "mean_method_claim_discipline"
+      ],
+      "properties": {
+        "parseable_sessions": {"$ref": "#/$defs/threshold"},
+        "providers_with_success": {"$ref": "#/$defs/threshold"},
+        "model_identities_with_success": {"$ref": "#/$defs/threshold"},
+        "review_roles_with_success": {"$ref": "#/$defs/threshold"},
+        "problem_recognized": {"$ref": "#/$defs/threshold"},
+        "existing_alternatives_identified": {"$ref": "#/$defs/threshold"},
+        "non_adopter_conditions_identified": {"$ref": "#/$defs/threshold"},
+        "operational_evidence_required": {"$ref": "#/$defs/threshold"},
+        "conditional_or_yes_recommendations": {"$ref": "#/$defs/threshold"},
+        "boundary_safety_failures": {"$ref": "#/$defs/threshold"},
+        "mean_problem_specificity": {"$ref": "#/$defs/threshold"},
+        "mean_alternative_awareness": {"$ref": "#/$defs/threshold"},
+        "mean_non_adopter_clarity": {"$ref": "#/$defs/threshold"},
+        "mean_recommendation_decision_usefulness": {"$ref": "#/$defs/threshold"},
+        "mean_method_claim_discipline": {"$ref": "#/$defs/threshold"}
+      }
+    },
+    "distribution": {"type": "object"},
+    "claim_guard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "method",
+        "rules",
+        "findings"
+      ],
+      "properties": {
+        "method": {"const": "NORMALIZED_TEXT_RELATION_SCAN"},
+        "rules": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["id", "pattern", "prohibited_inference"],
+            "properties": {
+              "id": {"type": "string", "minLength": 1},
+              "pattern": {"type": "string", "minLength": 1},
+              "prohibited_inference": {"type": "string", "minLength": 1}
+            }
+          }
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["session_id", "field", "rule_id", "finding"],
+            "properties": {
+              "session_id": {"type": "string", "minLength": 1},
+              "field": {"type": "string", "minLength": 1},
+              "rule_id": {"type": "string", "minLength": 1},
+              "finding": {"type": "string", "minLength": 1}
+            }
+          }
+        }
+      }
+    },
+    "accepted_findings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "transport_findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["session_id", "finding", "next_action"],
+        "properties": {
+          "session_id": {"type": "string", "minLength": 1},
+          "finding": {"type": "string", "minLength": 1},
+          "next_action": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "required_remediation": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "gate_effect": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"}
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"}
+    }
+  },
+  "$defs": {
+    "threshold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actual", "required", "comparison", "pass"],
+      "properties": {
+        "actual": {"type": "number"},
+        "required": {"type": "number"},
+        "comparison": {"enum": ["MIN", "MAX"]},
+        "pass": {"type": "boolean"}
+      }
+    }
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "$schema": "./validation-plan.schema.v0.3.json",
+  "schema_version": "0.3",
+  "validation_id": "TITMAS-VEAP-APS-20260726-003",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "frozen_at": "2026-07-26T07:12:04Z",
+  "decision_owner_ref": "zhangbin",
+  "decision_reference": "CS-D02-PRE-05",
+  "primary_customer": "AI_AGENT",
+  "base_source_commit": "087a9eaa3ed19e7d009080bdb8d370b28aeb7ab1",
+  "predecessor_validations": [
+    {
+      "validation_id": "TITMAS-VEAP-APS-20260726-001",
+      "result": "FAIL_REMEDIATION_REQUIRED",
+      "result_reference": "scored-result.v0.1.json",
+      "gate_effect": false,
+      "history_retained": true
+    },
+    {
+      "validation_id": "TITMAS-VEAP-APS-20260726-002",
+      "result": "PASS_TECHNICAL_THRESHOLDS_OUT_OF_SCOPE_NO_GATE_EFFECT",
+      "result_reference": "scored-result.v0.2.json",
+      "gate_effect": false,
+      "history_retained": true
+    }
+  ],
+  "source_digests": {
+    "source-pack.v0.2.md": "612b513a1ccca6e6cabe16917e1f8da5355e12eae7d235074da8ed90ed395122",
+    "prompt-template.v0.2.txt": "e3fe904f0ccbf3fd9c4f69d73e7b0aec7b86654868914dbc62481d70aba52b38",
+    "agent-signal-response.schema.v0.2.json": "9cc709489103ed1a50cc7dff604a648130a300c7e9bfbce4e4fc4219c21f0021",
+    "scored-result.v0.1.json": "8c10edbfc156162c34976fa0830ffa1bf3b555da6063de56c5681584895a02ff",
+    "scored-result.v0.2.json": "933e1a397a265335c58bad464ac2f45938823ee544389c67b03d1a7a2b3b8768",
+    "../TITMAS-CS-D02-PRE-05-AGENT-NATIVE-PROBLEM-SIGNAL-RERUN-DECISION-RECORD.v0.1.json": "feaf340c7b577c3cc4be0b05767980457ceafc996d23d3f96ebf8a8f54ba5452"
+  },
+  "sessions": [
+    {
+      "session_id": "QF-DISCOVERY-V03-S1",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "ernie-4.5-turbo-128k",
+      "reviewer_role": "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+      "role_focus": "Assess whether a retrieval or recommendation agent can recognize the accountability problem, surface existing alternatives first, and withhold TITMAS when operational evidence or fit is missing.",
+      "thinking_mode": "PROVIDER_DEFAULT"
+    },
+    {
+      "session_id": "QF-METHOD-V03-S1",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "kimi-k2.6",
+      "reviewer_role": "METHOD_REVIEWER",
+      "role_focus": "Assess synthetic-scenario bias, alternative coverage, non-adopter logic, score discipline and the strict separation between Agent signal and organization or market evidence.",
+      "thinking_mode": "PROVIDER_DEFAULT"
+    },
+    {
+      "session_id": "ARK-DOUBAO-RECOMMEND-V03-S1",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "doubao-seed-2-0-lite-260215",
+      "reviewer_role": "RECOMMENDATION_REVIEWER",
+      "role_focus": "Decide when an AI solution agent should recommend existing alternatives, conditionally recommend TITMAS/VEAP, or give NO for the stated Development candidate.",
+      "thinking_mode": "PROVIDER_DEFAULT"
+    },
+    {
+      "session_id": "ARK-GLM-SECURITY-V03-S1",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "glm-5-2-260617",
+      "reviewer_role": "SECURITY_AND_CLAIM_REVIEWER",
+      "role_focus": "Review security, Evidence, Truth, market, customer, incident, Certification and public-claim boundaries; fail closed on any semantic elevation.",
+      "thinking_mode": "PROVIDER_DEFAULT"
+    },
+    {
+      "session_id": "ARK-GLM-ARCH-V03-S1",
+      "provider_gateway": "ark",
+      "endpoint_host": "ark.cn-beijing.volces.com",
+      "model": "glm-5-2-260617",
+      "reviewer_role": "ARCHITECTURE_BOUNDARY_REVIEWER",
+      "role_focus": "Assess whether the problem and proposed exchange profile preserve DBOS, SAEE, Governance Decision, canonical record ownership and existing alternative boundaries.",
+      "thinking_mode": "PROVIDER_DEFAULT"
+    },
+    {
+      "session_id": "DS-INTEGRATION-V03-S1",
+      "provider_gateway": "deepseek",
+      "endpoint_host": "api.deepseek.com",
+      "model": "deepseek-v4-pro",
+      "reviewer_role": "CODING_AND_INTEGRATION_REVIEWER",
+      "role_focus": "Assess how a coding or integration agent would choose between existing telemetry, audit, workflow and provenance tools versus a bounded VEAP Development contract.",
+      "thinking_mode": "DISABLED"
+    }
+  ],
+  "request_contract": {
+    "messages": "ONE_USER_MESSAGE_FROM_FROZEN_TEMPLATE",
+    "temperature": 0.1,
+    "max_tokens": 2400,
+    "response_format": "json_object",
+    "request_timeout_ms": 120000,
+    "parallel_execution": true,
+    "deepseek_thinking_override": {
+      "type": "disabled"
+    }
+  },
+  "neutral_prompt_contract": {
+    "problem_before_candidate": true,
+    "existing_alternatives_first": true,
+    "non_adopters_required": true,
+    "operational_evidence_gap_required": true,
+    "provided_materials_only": true,
+    "external_tools_allowed": false,
+    "json_object_only": true,
+    "negative_findings_and_no_recommendation_allowed": true,
+    "schema_rehearsal_semantic_conformance_separation_required": true
+  },
+  "success_thresholds": {
+    "sessions_planned": 6,
+    "parseable_sessions_min": 5,
+    "providers_with_success_min": 2,
+    "model_identities_with_success_min": 4,
+    "review_roles_with_success_min": 5,
+    "problem_recognized_min": 4,
+    "existing_alternatives_identified_min": 4,
+    "non_adopter_conditions_identified_min": 4,
+    "operational_evidence_required_min": 4,
+    "conditional_or_yes_recommendations_min": 4,
+    "boundary_safety_failures_max": 0,
+    "mean_problem_specificity_min": 2.5,
+    "mean_alternative_awareness_min": 2.5,
+    "mean_non_adopter_clarity_min": 2.5,
+    "mean_recommendation_decision_usefulness_min": 2.5,
+    "mean_method_claim_discipline_min": 3.0
+  },
+  "retry_policy": {
+    "transport_retries_max": 1,
+    "model_fallback_allowed": false,
+    "invalid_json_repair_prompt_allowed": false
+  },
+  "data_policy": {
+    "public_safe_frozen_materials_only": true,
+    "synthetic_scenarios_only": true,
+    "secrets_in_request_or_result_allowed": false,
+    "customer_or_personal_data_allowed": false,
+    "provider_raw_envelope_persisted": false,
+    "external_side_effects_allowed": false,
+    "failures_and_dissent_must_be_retained": true
+  },
+  "authorization_envelope": {
+    "decision_created_before_execution": true,
+    "authorized_sessions_max": 6,
+    "planned_sessions": 6,
+    "retroactive_authorization": false,
+    "v0_2_gate_effect": false
+  },
+  "gate_effect": {
+    "agent_native_problem_signal_gate_may_pass": true,
+    "valid_problem_record_may_be_created": false,
+    "cs_g0_may_pass_from_this_validation": false,
+    "market_validation_may_be_claimed": false,
+    "customer_adoption_may_be_claimed": false,
+    "governance_decision_may_be_created": false
+  },
+  "non_effects": {
+    "problem_validation_execution_authorized": false,
+    "external_outreach_authorized": false,
+    "participant_enrollment_authorized": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "agent_instance_created": false,
+    "runtime_created": false,
+    "entity_instance_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false
+  }
+}

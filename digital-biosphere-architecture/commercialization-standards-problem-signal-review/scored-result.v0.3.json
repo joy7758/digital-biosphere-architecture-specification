@@ -1,0 +1,190 @@
+{
+  "$schema": "./scored-result.schema.v0.3.json",
+  "schema_version": "0.3",
+  "validation_id": "TITMAS-VEAP-APS-20260726-003",
+  "artifact_class": "DETERMINISTIC_AGENT_NATIVE_PROBLEM_SIGNAL_SCORE",
+  "plan_reference": "validation-plan.v0.3.json",
+  "observation_reference": "raw-sanitized-observations.v0.3.json",
+  "predecessor_result_reference": "scored-result.v0.2.json",
+  "scored_at": "2026-07-26T07:21:23Z",
+  "result": "PASS_BOUNDED_AGENT_SIGNAL_ONLY",
+  "threshold_results": {
+    "parseable_sessions": {
+      "actual": 5,
+      "required": 5,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "providers_with_success": {
+      "actual": 3,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "model_identities_with_success": {
+      "actual": 4,
+      "required": 4,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "review_roles_with_success": {
+      "actual": 5,
+      "required": 5,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "problem_recognized": {
+      "actual": 5,
+      "required": 4,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "existing_alternatives_identified": {
+      "actual": 5,
+      "required": 4,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "non_adopter_conditions_identified": {
+      "actual": 5,
+      "required": 4,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "operational_evidence_required": {
+      "actual": 5,
+      "required": 4,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "conditional_or_yes_recommendations": {
+      "actual": 5,
+      "required": 4,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "boundary_safety_failures": {
+      "actual": 0,
+      "required": 0,
+      "comparison": "MAX",
+      "pass": true
+    },
+    "mean_problem_specificity": {
+      "actual": 2.8,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_alternative_awareness": {
+      "actual": 3.0,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_non_adopter_clarity": {
+      "actual": 3.0,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_recommendation_decision_usefulness": {
+      "actual": 2.6,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_method_claim_discipline": {
+      "actual": 3.2,
+      "required": 3.0,
+      "comparison": "MIN",
+      "pass": true
+    }
+  },
+  "distribution": {
+    "sessions_planned": 6,
+    "parseable_sessions": 5,
+    "transport_failures": 1,
+    "problem_priority": {
+      "HIGH": 2,
+      "MEDIUM": 3,
+      "LOW": 0,
+      "NONE": 0
+    },
+    "recommendation": {
+      "YES": 0,
+      "CONDITIONAL": 5,
+      "NO": 0
+    },
+    "alternative_coverage": {
+      "FULL": 0,
+      "PARTIAL": 5,
+      "UNKNOWN": 0
+    },
+    "transport_status": {
+      "SUCCESS": 5,
+      "REQUEST_TIMEOUT": 1
+    }
+  },
+  "claim_guard": {
+    "method": "NORMALIZED_TEXT_RELATION_SCAN",
+    "rules": [
+      {
+        "id": "APS-CG-001",
+        "pattern": "AFFIRMATIVE_ONLY: schema (validation|rehearsal).{0,160}(establish|prove|demonstrate|confirm).{0,80}semantic conformance; exclude not|cannot|does not|never|excluding|exclude in the relation window",
+        "prohibited_inference": "Schema validation or rehearsal cannot establish semantic conformance."
+      }
+    ],
+    "findings": []
+  },
+  "authorization_audit": {
+    "decision_reference": "CS-D02-PRE-05",
+    "decision_created_before_execution": true,
+    "authorized_inputs_digest_match": true,
+    "authorized_sessions_max": 6,
+    "current_sessions_executed": 6,
+    "within_execution_envelope": true,
+    "v0_2_gate_effect_retained_false": true,
+    "retroactive_authorization": false,
+    "finding": "CS-D02-PRE-05 was recorded before the v0.3 plan freeze and API requests; all six frozen input digests matched, exactly six planned sessions executed, and v0.2 remains an out-of-scope observation with no gate effect."
+  },
+  "accepted_findings": [
+    "Five parseable sessions across three providers, four model identities and five review roles recognized a bounded execution-accountability problem.",
+    "All five parseable sessions identified existing alternatives, non-adopter conditions and required operational evidence.",
+    "All five recommendations remained CONDITIONAL; none established current implementation, commercial Offering, Certification or production readiness.",
+    "All nine structured boundary answers were false in all five parseable sessions.",
+    "Negation-aware claim scanning found no affirmative Schema-rehearsal-to-semantic-conformance elevation.",
+    "The Kimi timeout was retained after the one allowed transport retry and was not replaced by a fallback model.",
+    "The v0.1 failure and v0.2 out-of-scope technical pass remain preserved as predecessor history.",
+    "The v0.3 technical thresholds and exact CS-D02-PRE-05 authorization envelope both passed."
+  ],
+  "transport_findings": [
+    {
+      "session_id": "QF-METHOD-V03-S1",
+      "finding": "Both allowed attempts ended in REQUEST_TIMEOUT and produced no parseable model result.",
+      "next_action": "Retain the timeout without fallback; do not reinterpret a transport failure as a model opinion."
+    }
+  ],
+  "required_remediation": [],
+  "gate_effect": {
+    "agent_native_problem_signal_gate_pass": true,
+    "valid_problem_record_created": false,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption_pass": false,
+    "governance_decision_created": false
+  },
+  "non_effects": {
+    "problem_validation_execution_authorized": false,
+    "external_outreach_authorized": false,
+    "participant_enrollment_authorized": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "agent_instance_created": false,
+    "runtime_created": false,
+    "entity_instance_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false
+  }
+}

@@ -1,0 +1,82 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-05-agent-native-problem-signal-rerun-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-05-AGENT-NATIVE-PROBLEM-SIGNAL-RERUN-DECISION-RECORD-0.1",
+  "version": "0.1.0",
+  "status": "DECIDED_EXACT_SIX_SESSION_RERUN_AUTHORIZED",
+  "decision_id": "CS-D02-PRE-05",
+  "parent_decision_id": "CS-D02",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-AGENT-NATIVE-PROBLEM-SIGNAL-RERUN-RECOMMENDATION-v0.1.md",
+  "decision_result": "AUTHORIZE_ONE_EXACT_AGENT_NATIVE_PROBLEM_SIGNAL_RERUN",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-26T07:07:00Z",
+  "executed_by_ref": "codex",
+  "primary_repository": "digital-biosphere-architecture",
+  "target_validation_id": "TITMAS-VEAP-APS-20260726-003",
+  "authorized_inputs": [
+    "commercialization-standards-problem-signal-review/source-pack.v0.2.md",
+    "commercialization-standards-problem-signal-review/prompt-template.v0.2.txt",
+    "commercialization-standards-problem-signal-review/agent-signal-response.schema.v0.2.json",
+    "commercialization-standards-problem-signal-review/scored-result.v0.1.json",
+    "commercialization-standards-problem-signal-review/scored-result.v0.2.json"
+  ],
+  "authorized_artifacts": [
+    "commercialization-standards-problem-signal-review/validation-plan.schema.v0.3.json",
+    "commercialization-standards-problem-signal-review/validation-plan.v0.3.json",
+    "commercialization-standards-problem-signal-review/agent-signal-observation-set.schema.v0.3.json",
+    "commercialization-standards-problem-signal-review/raw-sanitized-observations.v0.3.json",
+    "commercialization-standards-problem-signal-review/scored-result.schema.v0.3.json",
+    "commercialization-standards-problem-signal-review/scored-result.v0.3.json",
+    "commercialization-standards-problem-signal-review/VEAP-AGENT-NATIVE-PROBLEM-SIGNAL-REVIEW-v0.3.md"
+  ],
+  "predecessor_treatment": {
+    "v0_1_result": "FAIL_REMEDIATION_REQUIRED",
+    "v0_1_history_preserved": true,
+    "v0_2_result": "PASS_TECHNICAL_THRESHOLDS_OUT_OF_SCOPE_NO_GATE_EFFECT",
+    "v0_2_gate_effect": false,
+    "v0_2_history_preserved": true,
+    "retroactive_authorization": false
+  },
+  "execution_envelope": {
+    "sessions_max": 6,
+    "provider_gateways": [
+      "qianfan",
+      "ark",
+      "deepseek"
+    ],
+    "public_safe_materials_only": true,
+    "synthetic_scenarios_only": true,
+    "tools_allowed": false,
+    "browsing_allowed": false,
+    "external_writes_allowed": false,
+    "raw_provider_envelope_persisted": false,
+    "customer_or_personal_data_allowed": false,
+    "secrets_in_request_or_artifact_allowed": false,
+    "fallback_model_allowed": false,
+    "invalid_json_repair_allowed": false
+  },
+  "maximum_positive_effect": {
+    "agent_native_problem_signal_gate_may_pass": true,
+    "valid_problem_record_may_be_created": false,
+    "cs_g0_may_pass": false,
+    "market_validation_may_pass": false,
+    "customer_adoption_may_pass": false
+  },
+  "non_effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "problem_validation_execution_authorized": false,
+    "external_outreach_authorized": false,
+    "participant_enrollment_authorized": false,
+    "customer_data_collection_authorized": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false
+  }
+}

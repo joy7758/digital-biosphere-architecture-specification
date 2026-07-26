@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-pre-04-agent-native-problem-signal-decision:0.1",
+  "title": "TITMAS CS-D02-PRE-04 Agent-native Problem Signal Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "parent_decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "decision_result",
+    "decided_by_ref",
+    "executed_by_ref",
+    "primary_repository",
+    "authorized_artifacts",
+    "execution_envelope",
+    "maximum_positive_effect",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-04-agent-native-problem-signal-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-04-AGENT-NATIVE-PROBLEM-SIGNAL-DECISION-RECORD-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DECIDED_BOUNDED_AGENT_SIGNAL_REVIEW_AUTHORIZED"},
+    "decision_id": {"const": "CS-D02-PRE-04"},
+    "parent_decision_id": {"const": "CS-D02"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-AGENT-NATIVE-PROBLEM-SIGNAL-RECOMMENDATION-v0.1.md"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_BOUNDED_AGENT_NATIVE_PROBLEM_SIGNAL_REVIEW"
+    },
+    "decided_by_ref": {"const": "zhangbin"},
+    "executed_by_ref": {"const": "codex"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "authorized_artifacts": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 8}
+    },
+    "execution_envelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sessions_max",
+        "provider_gateways",
+        "public_safe_materials_only",
+        "synthetic_scenarios_only",
+        "tools_allowed",
+        "browsing_allowed",
+        "external_writes_allowed",
+        "raw_provider_envelope_persisted",
+        "customer_or_personal_data_allowed",
+        "secrets_in_request_or_artifact_allowed",
+        "fallback_model_allowed",
+        "invalid_json_repair_allowed"
+      ],
+      "properties": {
+        "sessions_max": {"const": 6},
+        "provider_gateways": {"const": ["qianfan", "ark", "deepseek"]},
+        "public_safe_materials_only": {"const": true},
+        "synthetic_scenarios_only": {"const": true},
+        "tools_allowed": {"const": false},
+        "browsing_allowed": {"const": false},
+        "external_writes_allowed": {"const": false},
+        "raw_provider_envelope_persisted": {"const": false},
+        "customer_or_personal_data_allowed": {"const": false},
+        "secrets_in_request_or_artifact_allowed": {"const": false},
+        "fallback_model_allowed": {"const": false},
+        "invalid_json_repair_allowed": {"const": false}
+      }
+    },
+    "maximum_positive_effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_native_problem_signal_gate_may_pass",
+        "agent_primary_customer_signal_may_be_observed",
+        "valid_problem_record_may_be_created",
+        "cs_g0_may_pass",
+        "market_validation_may_pass",
+        "customer_adoption_may_pass"
+      ],
+      "properties": {
+        "agent_native_problem_signal_gate_may_pass": {"const": true},
+        "agent_primary_customer_signal_may_be_observed": {"const": true},
+        "valid_problem_record_may_be_created": {"const": false},
+        "cs_g0_may_pass": {"const": false},
+        "market_validation_may_pass": {"const": false},
+        "customer_adoption_may_pass": {"const": false}
+      }
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_changed",
+        "ownership_changed",
+        "problem_validation_execution_authorized",
+        "external_outreach_authorized",
+        "participant_enrollment_authorized",
+        "customer_data_collection_authorized",
+        "implementation_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized",
+        "agent_created",
+        "runtime_created",
+        "entity_created",
+        "permission_granted",
+        "canonical_evidence_created"
+      ],
+      "properties": {
+        "authority_changed": {"const": false},
+        "ownership_changed": {"const": false},
+        "problem_validation_execution_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "participant_enrollment_authorized": {"const": false},
+        "customer_data_collection_authorized": {"const": false},
+        "implementation_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false},
+        "agent_created": {"const": false},
+        "runtime_created": {"const": false},
+        "entity_created": {"const": false},
+        "permission_granted": {"const": false},
+        "canonical_evidence_created": {"const": false}
+      }
+    }
+  }
+}

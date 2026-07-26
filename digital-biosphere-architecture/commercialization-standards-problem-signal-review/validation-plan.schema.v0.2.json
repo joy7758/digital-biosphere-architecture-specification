@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:agent-native-problem-signal-validation-plan:0.2",
+  "title": "TITMAS Agent-native Problem Signal Validation Plan v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "validation_id",
+    "status",
+    "frozen_at",
+    "decision_owner_ref",
+    "decision_reference",
+    "primary_customer",
+    "base_source_commit",
+    "predecessor_validation",
+    "source_digests",
+    "sessions",
+    "request_contract",
+    "neutral_prompt_contract",
+    "success_thresholds",
+    "retry_policy",
+    "data_policy",
+    "gate_effect",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./validation-plan.schema.v0.2.json"},
+    "schema_version": {"const": "0.2"},
+    "validation_id": {"const": "TITMAS-VEAP-APS-20260726-002"},
+    "status": {"const": "FROZEN_BEFORE_EXECUTION"},
+    "frozen_at": {"type": "string", "format": "date-time"},
+    "decision_owner_ref": {"const": "zhangbin"},
+    "decision_reference": {"const": "CS-D02-PRE-04"},
+    "primary_customer": {"const": "AI_AGENT"},
+    "base_source_commit": {
+      "const": "087a9eaa3ed19e7d009080bdb8d370b28aeb7ab1"
+    },
+    "predecessor_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["validation_id", "result", "result_reference", "failure_retained"],
+      "properties": {
+        "validation_id": {"const": "TITMAS-VEAP-APS-20260726-001"},
+        "result": {"const": "FAIL_REMEDIATION_REQUIRED"},
+        "result_reference": {"const": "scored-result.v0.1.json"},
+        "failure_retained": {"const": true}
+      }
+    },
+    "source_digests": {
+      "type": "object",
+      "minProperties": 9,
+      "maxProperties": 9,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "session_id",
+          "provider_gateway",
+          "endpoint_host",
+          "model",
+          "reviewer_role",
+          "role_focus",
+          "thinking_mode"
+        ],
+        "properties": {
+          "session_id": {"type": "string", "minLength": 4},
+          "provider_gateway": {"enum": ["qianfan", "ark", "deepseek"]},
+          "endpoint_host": {"type": "string", "minLength": 4},
+          "model": {"type": "string", "minLength": 3},
+          "reviewer_role": {
+            "enum": [
+              "DISCOVERY_AND_RETRIEVAL_REVIEWER",
+              "CODING_AND_INTEGRATION_REVIEWER",
+              "RECOMMENDATION_REVIEWER",
+              "METHOD_REVIEWER",
+              "SECURITY_AND_CLAIM_REVIEWER",
+              "ARCHITECTURE_BOUNDARY_REVIEWER"
+            ]
+          },
+          "role_focus": {"type": "string", "minLength": 20},
+          "thinking_mode": {"enum": ["PROVIDER_DEFAULT", "DISABLED"]}
+        }
+      }
+    },
+    "request_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "messages",
+        "temperature",
+        "max_tokens",
+        "response_format",
+        "request_timeout_ms",
+        "parallel_execution",
+        "deepseek_thinking_override"
+      ],
+      "properties": {
+        "messages": {"const": "ONE_USER_MESSAGE_FROM_FROZEN_TEMPLATE"},
+        "temperature": {"const": 0.1},
+        "max_tokens": {"const": 2400},
+        "response_format": {"const": "json_object"},
+        "request_timeout_ms": {"const": 120000},
+        "parallel_execution": {"const": true},
+        "deepseek_thinking_override": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": {"type": {"const": "disabled"}}
+        }
+      }
+    },
+    "neutral_prompt_contract": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"},
+      "minProperties": 9
+    },
+    "success_thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sessions_planned",
+        "parseable_sessions_min",
+        "providers_with_success_min",
+        "model_identities_with_success_min",
+        "review_roles_with_success_min",
+        "problem_recognized_min",
+        "existing_alternatives_identified_min",
+        "non_adopter_conditions_identified_min",
+        "operational_evidence_required_min",
+        "conditional_or_yes_recommendations_min",
+        "boundary_safety_failures_max",
+        "mean_problem_specificity_min",
+        "mean_alternative_awareness_min",
+        "mean_non_adopter_clarity_min",
+        "mean_recommendation_decision_usefulness_min",
+        "mean_method_claim_discipline_min"
+      ],
+      "properties": {
+        "sessions_planned": {"const": 6},
+        "parseable_sessions_min": {"const": 5},
+        "providers_with_success_min": {"const": 2},
+        "model_identities_with_success_min": {"const": 4},
+        "review_roles_with_success_min": {"const": 5},
+        "problem_recognized_min": {"const": 4},
+        "existing_alternatives_identified_min": {"const": 4},
+        "non_adopter_conditions_identified_min": {"const": 4},
+        "operational_evidence_required_min": {"const": 4},
+        "conditional_or_yes_recommendations_min": {"const": 4},
+        "boundary_safety_failures_max": {"const": 0},
+        "mean_problem_specificity_min": {"const": 2.5},
+        "mean_alternative_awareness_min": {"const": 2.5},
+        "mean_non_adopter_clarity_min": {"const": 2.5},
+        "mean_recommendation_decision_usefulness_min": {"const": 2.5},
+        "mean_method_claim_discipline_min": {"const": 3.0}
+      }
+    },
+    "retry_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "transport_retries_max",
+        "model_fallback_allowed",
+        "invalid_json_repair_prompt_allowed"
+      ],
+      "properties": {
+        "transport_retries_max": {"const": 1},
+        "model_fallback_allowed": {"const": false},
+        "invalid_json_repair_prompt_allowed": {"const": false}
+      }
+    },
+    "data_policy": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"},
+      "minProperties": 7
+    },
+    "gate_effect": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"},
+      "minProperties": 6
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"},
+      "minProperties": 12
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-pre-05-agent-native-problem-signal-rerun-decision:0.1",
+  "title": "TITMAS CS-D02-PRE-05 Agent-native Problem Signal Rerun Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "parent_decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by_ref",
+    "primary_repository",
+    "target_validation_id",
+    "authorized_inputs",
+    "authorized_artifacts",
+    "predecessor_treatment",
+    "execution_envelope",
+    "maximum_positive_effect",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./architecture/schemas/titmas-cs-d02-pre-05-agent-native-problem-signal-rerun-decision-record.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-05-AGENT-NATIVE-PROBLEM-SIGNAL-RERUN-DECISION-RECORD-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DECIDED_EXACT_SIX_SESSION_RERUN_AUTHORIZED"},
+    "decision_id": {"const": "CS-D02-PRE-05"},
+    "parent_decision_id": {"const": "CS-D02"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {"const": "TITMAS-CS-D02-AGENT-NATIVE-PROBLEM-SIGNAL-RERUN-RECOMMENDATION-v0.1.md"},
+    "decision_result": {"const": "AUTHORIZE_ONE_EXACT_AGENT_NATIVE_PROBLEM_SIGNAL_RERUN"},
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by_ref": {"const": "codex"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "target_validation_id": {"const": "TITMAS-VEAP-APS-20260726-003"},
+    "authorized_inputs": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 8}
+    },
+    "authorized_artifacts": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 8}
+    },
+    "predecessor_treatment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "v0_1_result",
+        "v0_1_history_preserved",
+        "v0_2_result",
+        "v0_2_gate_effect",
+        "v0_2_history_preserved",
+        "retroactive_authorization"
+      ],
+      "properties": {
+        "v0_1_result": {"const": "FAIL_REMEDIATION_REQUIRED"},
+        "v0_1_history_preserved": {"const": true},
+        "v0_2_result": {"const": "PASS_TECHNICAL_THRESHOLDS_OUT_OF_SCOPE_NO_GATE_EFFECT"},
+        "v0_2_gate_effect": {"const": false},
+        "v0_2_history_preserved": {"const": true},
+        "retroactive_authorization": {"const": false}
+      }
+    },
+    "execution_envelope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sessions_max",
+        "provider_gateways",
+        "public_safe_materials_only",
+        "synthetic_scenarios_only",
+        "tools_allowed",
+        "browsing_allowed",
+        "external_writes_allowed",
+        "raw_provider_envelope_persisted",
+        "customer_or_personal_data_allowed",
+        "secrets_in_request_or_artifact_allowed",
+        "fallback_model_allowed",
+        "invalid_json_repair_allowed"
+      ],
+      "properties": {
+        "sessions_max": {"const": 6},
+        "provider_gateways": {"const": ["qianfan", "ark", "deepseek"]},
+        "public_safe_materials_only": {"const": true},
+        "synthetic_scenarios_only": {"const": true},
+        "tools_allowed": {"const": false},
+        "browsing_allowed": {"const": false},
+        "external_writes_allowed": {"const": false},
+        "raw_provider_envelope_persisted": {"const": false},
+        "customer_or_personal_data_allowed": {"const": false},
+        "secrets_in_request_or_artifact_allowed": {"const": false},
+        "fallback_model_allowed": {"const": false},
+        "invalid_json_repair_allowed": {"const": false}
+      }
+    },
+    "maximum_positive_effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_native_problem_signal_gate_may_pass",
+        "valid_problem_record_may_be_created",
+        "cs_g0_may_pass",
+        "market_validation_may_pass",
+        "customer_adoption_may_pass"
+      ],
+      "properties": {
+        "agent_native_problem_signal_gate_may_pass": {"const": true},
+        "valid_problem_record_may_be_created": {"const": false},
+        "cs_g0_may_pass": {"const": false},
+        "market_validation_may_pass": {"const": false},
+        "customer_adoption_may_pass": {"const": false}
+      }
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_changed",
+        "ownership_changed",
+        "problem_validation_execution_authorized",
+        "external_outreach_authorized",
+        "participant_enrollment_authorized",
+        "customer_data_collection_authorized",
+        "implementation_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized",
+        "agent_created",
+        "runtime_created",
+        "entity_created",
+        "permission_granted",
+        "canonical_evidence_created"
+      ],
+      "properties": {
+        "authority_changed": {"const": false},
+        "ownership_changed": {"const": false},
+        "problem_validation_execution_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "participant_enrollment_authorized": {"const": false},
+        "customer_data_collection_authorized": {"const": false},
+        "implementation_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false},
+        "agent_created": {"const": false},
+        "runtime_created": {"const": false},
+        "entity_created": {"const": false},
+        "permission_granted": {"const": false},
+        "canonical_evidence_created": {"const": false}
+      }
+    }
+  }
+}
