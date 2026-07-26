@@ -325,8 +325,27 @@ v0.1 历史保持不变。该结果没有采纳契约、创建实现或验证 pr
 历史并改为同一 allowlisted Qianfan direct chat endpoint，Kimi `kimi-k2.6` 与 GLM
 `glm-5.2` 各一次。密钥只从环境读取；两个 reviewer 使用同一 hash-bound bundle。任一
 model binding、JSON、Schema、boundary 或 terminal extraction failure 都使 session
-non-qualifying，且禁止重试、fallback、模型替换、alias 推断和 JSON repair。当前尚未
-形成 PRE-26 Decision，也未执行模型请求、采纳契约或创建实现。
+non-qualifying，且禁止重试、fallback、模型替换、alias 推断和 JSON repair。该建议发布时
+尚未形成 PRE-26 Decision，也未执行模型请求、采纳契约或创建实现。
+
+随后依据常设授权形成并远端冻结 PRE-26 Decision 与 authorization receipt。唯一授权执行
+进程完成时，执行通道没有返回任何 sanitized stdout，因此没有可验证的 HTTP status、
+returned model、review JSON 或 session result。PRE-26 已按
+[fail-closed result](commercialization-standards-provider-adapter-profile-review-remediation/PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-RESULT-v0.1.md)
+保留：
+
+```text
+PRE26_SANITIZED_SESSION_RESULTS_RECOVERED=0
+PRE26_QUALIFYING_REVIEWS=0
+PRE26_FORMAL_ADOPTION_DECISION_REVIEW_READY=false
+PRE26_PROVIDER_REQUEST_BUDGET_CONSUMED=2
+PRE26_ADDITIONAL_REQUESTS_ALLOWED=0
+```
+
+该结果既不证明 provider failure，也不证明 provider success。独立的
+[PRE-27 offline handoff diagnostic recommendation](TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-RECOMMENDATION-v0.1.md)
+已在远端准备：下一步只建议用 synthetic fixtures 验证 sanitized-result temporary sink，
+network、model request、secret read 和 implementation 均保持为 0。
 
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false

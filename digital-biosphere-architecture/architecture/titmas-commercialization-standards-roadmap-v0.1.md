@@ -1616,6 +1616,78 @@ PRE26_FORMAL_ADOPTION_DECISION_REVIEW_READY=false
 APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE26_QIANFAN_DIRECT_TWO_SESSION_REVIEW_DECISION_ONLY
 ```
 
+### 4.39 PRE-26 v0.2 Contract Candidate Review Fail-closed Result
+
+PRE-26 已依次远端冻结：
+
+- [Decision record](../TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-DECISION-RECORD.md)；
+- [authorization receipt](../commercialization-standards-provider-adapter-profile-review-remediation/contract-v0-2-candidate-review-authorization-receipt.v0.1.json)；
+- [execution failure result](../commercialization-standards-provider-adapter-profile-review-remediation/contract-v0-2-candidate-review-execution-failure-result.v0.1.json)；
+- [execution receipt](../commercialization-standards-provider-adapter-profile-review-remediation/contract-v0-2-candidate-review-execution-receipt.v0.1.json)；
+- [result report](../commercialization-standards-provider-adapter-profile-review-remediation/PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-RESULT-v0.1.md)。
+
+唯一授权执行进程结束时 sanitized stdout 为空。没有可恢复的 session result，因此：
+
+```text
+PRE26_EXECUTION_PROCESS_COMPLETION_OBSERVED=true
+PRE26_SANITIZED_SESSION_RESULTS_RECOVERED=0
+PRE26_QUALIFYING_REVIEWS=0
+PRE26_CONTRACT_CANDIDATE_REVIEW_COMPLETED=false
+PRE26_FORMAL_ADOPTION_DECISION_REVIEW_READY=false
+
+PRE26_PROVIDER_REQUEST_BUDGET_CONSUMED=2
+PRE26_PROVIDER_NETWORK_REQUESTS_EXACT_COUNT=UNKNOWN_BOUNDED_0_TO_2
+PRE26_ADDITIONAL_REQUESTS_ALLOWED=0
+
+RETRY_ATTEMPTS=0
+FALLBACK_ATTEMPTS=0
+MODEL_SUBSTITUTIONS=0
+ALIAS_INFERENCE_ATTEMPTS=0
+JSON_REPAIR_ATTEMPTS=0
+```
+
+该失败不能归因给 Kimi、GLM 或 Qianfan，也不能被写成 provider success。PRE-26 不重开。
+
+### 4.40 PRE-27 Sanitized Result Handoff Diagnostic Recommendation
+
+[PRE-27 recommendation](../TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-RECOMMENDATION-v0.1.md)
+已在远端准备。Agent 推荐闸门：
+
+```text
+RECOMMEND_TITMAS_V0_2_CONTRACT_FOR_IMPLEMENTATION_OR_PRODUCTION_USE=NO
+REASON=NO_QUALIFYING_REVIEW_AND_SANITIZED_RESULT_HANDOFF_IS_NOT_OBSERVABLE
+RECOMMEND_OFFLINE_HANDOFF_DIAGNOSTIC=YES
+RECOMMEND_NEW_PROVIDER_REQUEST=NO
+```
+
+建议的 exact action：
+
+```text
+AUTHORIZE_OFFLINE_PRE26_SANITIZED_RESULT_HANDOFF_DIAGNOSTIC_ONLY
+```
+
+只允许 synthetic、network-free、secret-free offline diagnostic。目标是验证 Schema-valid
+sanitized result 即使 stdout 被抑制也能通过受限 temporary sink 被恢复，同时对 missing、
+empty、partial、invalid Schema、raw envelope field、credential-like field、digest mismatch、
+duplicate commit 和 cleanup failure 全部失败关闭。
+
+当前状态：
+
+```text
+PRE27_RECOMMENDATION_REMOTE_VERIFIED=true
+PRE27_DECISION_RECORDED=false
+PRE27_DIAGNOSTIC_EXECUTION_AUTHORIZED=false
+PRE27_NETWORK_REQUESTS_EXECUTED=0
+PRE27_LIVE_MODEL_REQUESTS_EXECUTED=0
+PRE27_IMPLEMENTATION_CREATED=false
+```
+
+下一步只允许：
+
+```text
+APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE27_OFFLINE_HANDOFF_DIAGNOSTIC_DECISION_ONLY
+```
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
