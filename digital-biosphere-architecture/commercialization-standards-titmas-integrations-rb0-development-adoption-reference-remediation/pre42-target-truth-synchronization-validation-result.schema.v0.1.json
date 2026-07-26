@@ -1,0 +1,200 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre42-target-truth-synchronization-validation-result.schema.v0.1.json",
+  "title": "PRE-42 Target Truth Synchronization Validation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_record_sha256",
+    "decision_commit",
+    "validated_at",
+    "adoption",
+    "target",
+    "checks",
+    "retained_events",
+    "truth_state",
+    "next_gate"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre42-target-truth-synchronization-validation-result.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-42-TARGET-TRUTH-SYNCHRONIZATION-VALIDATION-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_ADOPTED_RB0_TARGET_TRUTH_SYNCHRONIZED_RB1_PLANNING_GATE_REQUIRED"},
+    "decision_reference": {"const": "CS-D02-PRE-42"},
+    "decision_record_sha256": {"const": "d4a3259c8858343b8679526f2062c8f5cbf5ab24975e5cf1e6dee637583175d3"},
+    "decision_commit": {"const": "ed940e74527497c5ff65b1d0498ccd99e57a44e0"},
+    "validated_at": {"type": "string", "format": "date-time"},
+    "adoption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["effective", "changed_by_pre42", "maturity", "adopted_baseline_commit"],
+      "properties": {
+        "effective": {"const": true},
+        "changed_by_pre42": {"const": false},
+        "maturity": {"const": "Development"},
+        "adopted_baseline_commit": {"const": "9610748d4a72d81278df2bc296518a469ce2fd30"}
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "prior_commit",
+        "branch",
+        "commit",
+        "remote_branch_matches_commit",
+        "remote_main_commit",
+        "remote_main_unchanged",
+        "isolated_worktree_clean",
+        "original_checkout_commit",
+        "original_checkout_clean",
+        "clean_clone_path"
+      ],
+      "properties": {
+        "repository": {"const": "https://github.com/joy7758/titmas-integrations.git"},
+        "prior_commit": {"const": "9610748d4a72d81278df2bc296518a469ce2fd30"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "commit": {"const": "f80629364752c465316b9d1238fe5447a88565ca"},
+        "remote_branch_matches_commit": {"const": true},
+        "remote_main_commit": {"const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"},
+        "remote_main_unchanged": {"const": true},
+        "isolated_worktree_clean": {"const": true},
+        "original_checkout_commit": {"const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"},
+        "original_checkout_clean": {"const": true},
+        "clean_clone_path": {"const": "/tmp/titmas-pre42-clean-clone.Btgq59/repo"}
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "revision_bound_decision_resolvable",
+        "revision_bound_decision_schema_valid",
+        "prior_digests_match",
+        "candidate_digests_match",
+        "staged_paths_exact",
+        "updated_paths",
+        "created_paths",
+        "deleted_paths",
+        "machine_schema_meta_valid",
+        "machine_instance_valid",
+        "semantic_truth_consistent",
+        "target_secret_or_local_path_findings",
+        "source_files_modified",
+        "package_metadata_files_modified",
+        "test_files_modified",
+        "remote_clean_clone_validated",
+        "successor_paths_exact"
+      ],
+      "properties": {
+        "revision_bound_decision_resolvable": {"const": true},
+        "revision_bound_decision_schema_valid": {"const": true},
+        "prior_digests_match": {"const": 5},
+        "candidate_digests_match": {"const": 5},
+        "staged_paths_exact": {"const": 5},
+        "updated_paths": {"const": 5},
+        "created_paths": {"const": 0},
+        "deleted_paths": {"const": 0},
+        "machine_schema_meta_valid": {"const": true},
+        "machine_instance_valid": {"const": true},
+        "semantic_truth_consistent": {"const": true},
+        "target_secret_or_local_path_findings": {"const": 0},
+        "source_files_modified": {"const": 0},
+        "package_metadata_files_modified": {"const": 0},
+        "test_files_modified": {"const": 0},
+        "remote_clean_clone_validated": {"const": true},
+        "successor_paths_exact": {"const": true}
+      }
+    },
+    "retained_events": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["event", "command_executed", "repository_effect"],
+          "properties": {
+            "event": {"const": "READ_ONLY_VALIDATION_USED_WRONG_WORKING_DIRECTORY"},
+            "command_executed": {"const": true},
+            "repository_effect": {"const": false}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["event", "patch_tool_called", "repository_effect"],
+          "properties": {
+            "event": {"const": "FIRST_APPLY_PATCH_REJECTED_UNSUPPORTED_UNIFIED_DIFF_HEADER"},
+            "patch_tool_called": {"const": true},
+            "repository_effect": {"const": false}
+          }
+        }
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "truth_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rb0_files_applied_to_branch",
+        "repository_baseline_scope",
+        "repository_baseline_validated",
+        "repository_baseline_adopted",
+        "license_adopted",
+        "implementation_authorized",
+        "implementation_created",
+        "provider_supported",
+        "conformance_executed",
+        "runtime_created",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "merge_authorized",
+        "pull_request_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "rb0_files_applied_to_branch": {"const": true},
+        "repository_baseline_scope": {"const": "DEVELOPMENT_BRANCH_NOT_MERGED"},
+        "repository_baseline_validated": {"const": true},
+        "repository_baseline_adopted": {"const": true},
+        "license_adopted": {"const": true},
+        "implementation_authorized": {"const": false},
+        "implementation_created": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "runtime_created": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "merge_authorized": {"const": false},
+        "pull_request_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    },
+    "next_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rb1_planning_recommendation_required",
+        "rb1_implementation_authorized",
+        "additional_target_action_authorized"
+      ],
+      "properties": {
+        "rb1_planning_recommendation_required": {"const": true},
+        "rb1_implementation_authorized": {"const": false},
+        "additional_target_action_authorized": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "$schema": "./pre42-target-truth-synchronization-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-42-TARGET-TRUTH-SYNCHRONIZATION-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_ADOPTED_RB0_TARGET_TRUTH_SYNCHRONIZED_RB1_PLANNING_GATE_REQUIRED",
+  "decision_reference": "CS-D02-PRE-42",
+  "decision_record_sha256": "d4a3259c8858343b8679526f2062c8f5cbf5ab24975e5cf1e6dee637583175d3",
+  "decision_commit": "ed940e74527497c5ff65b1d0498ccd99e57a44e0",
+  "validated_at": "2026-07-27T03:46:46+08:00",
+  "adoption": {
+    "effective": true,
+    "changed_by_pre42": false,
+    "maturity": "Development",
+    "adopted_baseline_commit": "9610748d4a72d81278df2bc296518a469ce2fd30"
+  },
+  "target": {
+    "repository": "https://github.com/joy7758/titmas-integrations.git",
+    "prior_commit": "9610748d4a72d81278df2bc296518a469ce2fd30",
+    "branch": "codex/rb0-governance-baseline",
+    "commit": "f80629364752c465316b9d1238fe5447a88565ca",
+    "remote_branch_matches_commit": true,
+    "remote_main_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "remote_main_unchanged": true,
+    "isolated_worktree_clean": true,
+    "original_checkout_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "original_checkout_clean": true,
+    "clean_clone_path": "/tmp/titmas-pre42-clean-clone.Btgq59/repo"
+  },
+  "checks": {
+    "revision_bound_decision_resolvable": true,
+    "revision_bound_decision_schema_valid": true,
+    "prior_digests_match": 5,
+    "candidate_digests_match": 5,
+    "staged_paths_exact": 5,
+    "updated_paths": 5,
+    "created_paths": 0,
+    "deleted_paths": 0,
+    "machine_schema_meta_valid": true,
+    "machine_instance_valid": true,
+    "semantic_truth_consistent": true,
+    "target_secret_or_local_path_findings": 0,
+    "source_files_modified": 0,
+    "package_metadata_files_modified": 0,
+    "test_files_modified": 0,
+    "remote_clean_clone_validated": true,
+    "successor_paths_exact": true
+  },
+  "retained_events": [
+    {
+      "event": "READ_ONLY_VALIDATION_USED_WRONG_WORKING_DIRECTORY",
+      "command_executed": true,
+      "repository_effect": false
+    },
+    {
+      "event": "FIRST_APPLY_PATCH_REJECTED_UNSUPPORTED_UNIFIED_DIFF_HEADER",
+      "patch_tool_called": true,
+      "repository_effect": false
+    }
+  ],
+  "truth_state": {
+    "rb0_files_applied_to_branch": true,
+    "repository_baseline_scope": "DEVELOPMENT_BRANCH_NOT_MERGED",
+    "repository_baseline_validated": true,
+    "repository_baseline_adopted": true,
+    "license_adopted": true,
+    "implementation_authorized": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "runtime_created": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "merge_authorized": false,
+    "pull_request_authorized": false,
+    "release_authorized": false
+  },
+  "next_gate": {
+    "rb1_planning_recommendation_required": true,
+    "rb1_implementation_authorized": false,
+    "additional_target_action_authorized": false
+  }
+}
