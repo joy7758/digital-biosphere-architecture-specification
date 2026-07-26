@@ -1,0 +1,77 @@
+{
+  "$schema": "./pre44-agent-customer-review-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-INTEGRATIONS-PRE44-AGENT-CUSTOMER-REVIEW-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "BLOCKED",
+  "decision_reference": "CS-D02-PRE-44",
+  "source_commit": "1bfaa2b65c887623da0feee3f624850872bd8368",
+  "request_manifest_sha256": "2b8505351802d476908e54f6ca55713ec3c41ca0a22f2fd6fd8e1e78db09a715",
+  "session_results": [
+    {
+      "reference": "pre44-kimi-agent-developer-session-result.v0.1.json",
+      "sha256": "cd467f2cbda6f9c5500b7fde06fea21f051a6fcb73f14effbd06b7dccb961d50",
+      "qualifying": false
+    },
+    {
+      "reference": "pre44-glm-recommender-agent-session-result.v0.1.json",
+      "sha256": "ad3c83be8b37ca70399a9c48196147da368190745ade797c5b9d180406e4a5c2",
+      "qualifying": false
+    },
+    {
+      "reference": "pre44-kimi-integration-maintainer-session-result.v0.1.json",
+      "sha256": "fb78de297a362e91cb1461040a791d01a8b1febbffb17f969b6dbfd483d10f07",
+      "qualifying": false
+    },
+    {
+      "reference": "pre44-glm-security-boundary-reviewer-session-result.v0.1.json",
+      "sha256": "6563aad931601ca67a6170846f6258d7b2418e91149962b3f52757176ac84847",
+      "qualifying": true
+    }
+  ],
+  "counts": {
+    "sessions_authorized": 4,
+    "sessions_executed": 4,
+    "network_requests_executed": 4,
+    "qualifying_sessions": 1,
+    "recommended_or_conditional": 1,
+    "would_recommend": 1,
+    "would_call_or_reuse": 1,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "model_substitutions": 0,
+    "alias_inference_attempts": 0,
+    "json_repair_attempts": 0
+  },
+  "thresholds": {
+    "qualifying_sessions_min": 3,
+    "recommended_or_conditional_min": 2,
+    "would_recommend_min": 2,
+    "would_call_or_reuse_min": 2,
+    "authority_safety_failures_max": 0
+  },
+  "threshold_checks": {
+    "qualifying_sessions_pass": false,
+    "recommended_or_conditional_pass": false,
+    "would_recommend_pass": false,
+    "would_call_or_reuse_pass": false,
+    "authority_safety_pass": true
+  },
+  "authority_safety_failures": [],
+  "gate_result": "BLOCKED_INSUFFICIENT_QUALIFYING_AGENT_RESPONSES",
+  "next_action": "REVIEW_PROVIDER_FAILURES_WITHOUT_RETRY",
+  "effects": {
+    "agent_review_completed": true,
+    "agent_review_is_human_customer_evidence": false,
+    "market_adoption_created": false,
+    "rb1_implementation_authorized": false,
+    "package_created": false,
+    "source_created": false,
+    "tests_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "runtime_created": false,
+    "release_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false
+  }
+}
