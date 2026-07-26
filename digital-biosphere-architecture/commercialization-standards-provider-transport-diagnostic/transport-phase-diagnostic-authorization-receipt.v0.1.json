@@ -1,0 +1,106 @@
+{
+  "$schema": "./transport-phase-diagnostic-authorization-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-29-TRANSPORT-PHASE-DIAGNOSTIC-AUTHORIZATION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_NOT_EXECUTED",
+  "observed_at": "2026-07-27T01:08:42+08:00",
+  "decision_reference": "CS-D02-PRE-29",
+  "decision_commit": "7851e117dae4a0608eb6a38e27842aab79dc3fb5",
+  "decision_sha256": "721c7ee24c9d85fdbcd0c74d11bc46bf0bbdcfa8de704a9fa7ed36072021a0ce",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-RECOMMENDATION-v0.1.md",
+  "recommendation_commit": "d8733c42f1fc37458ed2fa666fdf5530a7f8a7c6",
+  "recommendation_sha256": "35f2c850472377e64aa474f2c3bf72d37b0e152c2761a3b06ccef96fa93758ec",
+  "source_bindings": [
+    {
+      "reference": "commercialization-standards-provider-adapter-profile-review-remediation/PRE-28-HANDOFF-BOUND-CONTRACT-CANDIDATE-REVIEW-RESULT-v0.1.md",
+      "sha256": "65f722d13503d101f12b7da78db084267c88783c10ce38c6f27ef83cab884da3"
+    },
+    {
+      "reference": "commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-validation-result.v0.1.json",
+      "sha256": "d48019d7572d58541bde5b7fcb8d0d668a68dd766364e48f5762b500b38095cc"
+    },
+    {
+      "reference": "commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-execution-receipt.v0.1.json",
+      "sha256": "c450930dbc94d0a2e03f5532a5d43e3d7bb840f51bc5a7abb3cc63660ac2f994"
+    },
+    {
+      "reference": "commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-control-receipt.v0.1.json",
+      "sha256": "9d97f6c5fd87083cc5ed1e043f92dea53c40c97375bf1dd07ce51b4801fdf58d"
+    },
+    {
+      "reference": "commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-kimi-session-result.v0.1.json",
+      "sha256": "d3f8c1af5c3fd27ed623f5bdd74de50a80d387ce85d589bf5f7acf4f2ea7e22e"
+    },
+    {
+      "reference": "commercialization-standards-provider-adapter-profile-review-remediation/handoff-bound-contract-review-glm-session-result.v0.1.json",
+      "sha256": "f9ef26916772633597e7c3716418ef51b4f560a6ed05c1f7140f8dcb6672b032"
+    }
+  ],
+  "frozen_artifact_bindings": [
+    {
+      "reference": "TITMAS-CS-D02-PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-DECISION-RECORD.v0.1.json",
+      "sha256": "721c7ee24c9d85fdbcd0c74d11bc46bf0bbdcfa8de704a9fa7ed36072021a0ce"
+    },
+    {
+      "reference": "commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-plan.v0.1.json",
+      "sha256": "5fbbccafb137185e9093f53a0aea0e071eebb6415520c7b691cd026443883ab4"
+    },
+    {
+      "reference": "commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-plan.schema.v0.1.json",
+      "sha256": "87a573dd078e463b423518fb6c7b1b6a2f520d8d65087424a319411b8b67d76f"
+    },
+    {
+      "reference": "commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-result.schema.v0.1.json",
+      "sha256": "6b1038357d3b356f69a0ab611678906081ea077835b56818fc626435ae422389"
+    },
+    {
+      "reference": "commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-authorization-receipt.schema.v0.1.json",
+      "sha256": "017b4258a1ed682d00162c43d949edcb3110e88dab3083004f05c8996f6e14d3"
+    },
+    {
+      "reference": "commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-execution-receipt.schema.v0.1.json",
+      "sha256": "e03a9c6d315ab2aab931dea7517d9f9ccba6b8f893d2c45e7a0336ebd1d11191"
+    }
+  ],
+  "temporary_target_preflight": {
+    "temporary_root": "/private/tmp/titmas-pre29.SrL1ar",
+    "result_target": "/private/tmp/titmas-pre29.SrL1ar/transport-diagnostic-result.json",
+    "root_device": 16777232,
+    "root_inode": 132554021,
+    "root_uid": 501,
+    "root_gid": 0,
+    "root_mode": "0700",
+    "target_preexisted": false,
+    "target_symlink": false
+  },
+  "limits": {
+    "dns_resolution_attempts_max": 1,
+    "tcp_connect_attempts_max": 1,
+    "tls_handshake_attempts_max": 1,
+    "total_external_network_probes_max": 3,
+    "http_requests_max": 0,
+    "provider_api_requests_max": 0,
+    "live_model_requests_max": 0,
+    "credential_reads_max": 0,
+    "retry_attempts_max": 0
+  },
+  "pre_execution_accounting": {
+    "network_probes_executed": 0,
+    "http_requests_executed": 0,
+    "provider_api_requests_executed": 0,
+    "live_model_requests_executed": 0,
+    "credential_reads_executed": 0,
+    "retry_attempts": 0
+  },
+  "effects": {
+    "model_retry_authorized": false,
+    "contract_candidates_adopted": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
