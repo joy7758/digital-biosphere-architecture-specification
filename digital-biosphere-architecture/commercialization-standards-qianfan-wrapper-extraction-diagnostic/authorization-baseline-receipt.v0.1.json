@@ -1,0 +1,41 @@
+{
+  "$schema": "./authorization-baseline-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-15-AUTHORIZATION-BASELINE-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_OFFLINE_EXECUTION_NOT_STARTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-15",
+  "branch": "codex/production-observability-baseline",
+  "authorization_baseline_commit": "7d8c8f48368207ed6209f6f661945b543be10ae6",
+  "remote_commit": "7d8c8f48368207ed6209f6f661945b543be10ae6",
+  "local_equals_remote": true,
+  "frozen_bindings": {
+    "recommendation_reference": "../TITMAS-CS-D02-PRE-15-QIANFAN-WRAPPER-EXTRACTION-DIAGNOSTIC-RECOMMENDATION-v0.1.md",
+    "recommendation_sha256": "9ebf16ac622f5bddaf92c99c1869974f9abe8e352f6819da046749d7772250f0",
+    "decision_record_reference": "../TITMAS-CS-D02-PRE-15-QIANFAN-WRAPPER-EXTRACTION-DIAGNOSTIC-DECISION-RECORD.v0.1.json",
+    "decision_record_sha256": "a397384245de17cb8ef131d97e19cbd4cb34346cfdd16491e622b0527b252131",
+    "offline_plan_reference": "offline-diagnostic-plan.v0.1.json",
+    "offline_plan_sha256": "5500172addd13d70d93b8b92fe26d5b7cfab65f6496bf24116f77123ef11cb2c"
+  },
+  "execution_gate": {
+    "authorization_baseline_remote_verified": true,
+    "offline_execution_may_start": true,
+    "offline_execution_started": false,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0
+  },
+  "effects": {
+    "pre14_qianfan_exact_failure_cause_proven": false,
+    "qianfan_provider_schema_confirmation_pass": false,
+    "provider_schema_confirmation_pass": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
