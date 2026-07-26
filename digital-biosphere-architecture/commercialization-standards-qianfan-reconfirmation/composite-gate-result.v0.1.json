@@ -1,0 +1,81 @@
+{
+  "$schema": "./composite-gate-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-16-COMPOSITE-GATE-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_QIANFAN_SCHEMA_RECONFIRMATION_FAILED",
+  "observed_at": "2026-07-26T19:38:29+08:00",
+  "decision_reference": "CS-D02-PRE-16",
+  "frozen_bindings": {
+    "qianfan_role_specific_request_sha256": "1e0f4d0efbccf31a4fbbc1d4cffab9f1bc4308acee3e8cb8324c0769e5ed4638",
+    "response_schema_sha256": "0f3df0688993fe300bae1f8d2c1cb67c0fd31fecbdabcbb89d5a1819c803ccd8",
+    "pre14_observations_sha256": "19faeb1c292953256d77b6f83c924921e6c0d2383b800c41c5087e16a699b660",
+    "pre14_deepseek_sanitized_response_canonical_sha256": "9fca2ee86499e5ad85b552cc2d17a2dda1fde4239a9ec39336ada1e11a1b97c1",
+    "pre15_diagnostic_result_sha256": "9d442d8b3ec6b6cd2bfbdba0c55ab3bd0336f9fe6799bdda480b007fca97a830",
+    "pre15_declared_tool_contract_sha256": "bc7a78ee54a633d46c586994fbfded293d1b05abbfc3d4773917d222ccb80ce9",
+    "all_frozen_input_digests_match": true
+  },
+  "counts": {
+    "new_live_model_requests_authorized_max": 1,
+    "new_live_model_requests_executed": 1,
+    "new_qianfan_requests_executed": 1,
+    "new_deepseek_requests_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "json_repair_attempts": 0,
+    "schema_conformant_responses": 1,
+    "providers_with_schema_conformant_response": 1,
+    "qianfan_candidate_ids_covered": 0,
+    "deepseek_candidate_ids_covered": 4,
+    "verified_boundary_failures": 0
+  },
+  "requirements": {
+    "new_qianfan_requests_executed_required": 1,
+    "qianfan_schema_conformant_required": true,
+    "frozen_deepseek_schema_conformant_required": true,
+    "providers_with_schema_conformant_response_required": 2,
+    "qianfan_candidate_ids_covered_required": 4,
+    "deepseek_candidate_ids_covered_required": 4,
+    "boundary_failures_max": 0,
+    "boundary_evaluation_complete_required": true,
+    "frozen_input_digests_match_required": true,
+    "all_conditions_required": true
+  },
+  "checks": {
+    "new_qianfan_request_count_exact": true,
+    "qianfan_schema_conformant": false,
+    "frozen_deepseek_schema_conformant": true,
+    "provider_threshold_met": false,
+    "qianfan_candidate_coverage_met": false,
+    "deepseek_candidate_coverage_met": true,
+    "boundary_threshold_met": false,
+    "boundary_evaluation_complete": false,
+    "frozen_input_digests_match": true,
+    "all_conditions_met": false
+  },
+  "result": {
+    "composite_provider_gate_pass": false,
+    "fail_closed": true,
+    "failure_classes": [
+      "QIANFAN_FULL_FROZEN_SCHEMA_VALIDATION_FAILED",
+      "QIANFAN_CANDIDATE_COVERAGE_REQUIRED",
+      "QIANFAN_BOUNDARY_EVALUATION_INCOMPLETE",
+      "PROVIDER_THRESHOLD_NOT_MET"
+    ],
+    "next_permitted_action": "PREPARE_SEPARATE_ZERO_LIVE_REQUEST_QIANFAN_EXTRACTION_CONTRACT_REVIEW_RECOMMENDATION_ONLY"
+  },
+  "effects": {
+    "full_candidate_review_rerun_authorized": false,
+    "candidate_review_completed": false,
+    "candidate_status_changed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

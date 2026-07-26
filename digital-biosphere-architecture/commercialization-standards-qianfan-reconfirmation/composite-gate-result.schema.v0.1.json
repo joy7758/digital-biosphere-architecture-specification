@@ -1,0 +1,225 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre16-composite-gate-result.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-16 Composite Gate Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "frozen_bindings",
+    "counts",
+    "requirements",
+    "checks",
+    "result",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./composite-gate-result.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-16-COMPOSITE-GATE-RESULT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FAIL_CLOSED_QIANFAN_SCHEMA_RECONFIRMATION_FAILED"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-16"
+    },
+    "frozen_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qianfan_role_specific_request_sha256",
+        "response_schema_sha256",
+        "pre14_observations_sha256",
+        "pre14_deepseek_sanitized_response_canonical_sha256",
+        "pre15_diagnostic_result_sha256",
+        "pre15_declared_tool_contract_sha256",
+        "all_frozen_input_digests_match"
+      ],
+      "properties": {
+        "qianfan_role_specific_request_sha256": {
+          "const": "1e0f4d0efbccf31a4fbbc1d4cffab9f1bc4308acee3e8cb8324c0769e5ed4638"
+        },
+        "response_schema_sha256": {
+          "const": "0f3df0688993fe300bae1f8d2c1cb67c0fd31fecbdabcbb89d5a1819c803ccd8"
+        },
+        "pre14_observations_sha256": {
+          "const": "19faeb1c292953256d77b6f83c924921e6c0d2383b800c41c5087e16a699b660"
+        },
+        "pre14_deepseek_sanitized_response_canonical_sha256": {
+          "const": "9fca2ee86499e5ad85b552cc2d17a2dda1fde4239a9ec39336ada1e11a1b97c1"
+        },
+        "pre15_diagnostic_result_sha256": {
+          "const": "9d442d8b3ec6b6cd2bfbdba0c55ab3bd0336f9fe6799bdda480b007fca97a830"
+        },
+        "pre15_declared_tool_contract_sha256": {
+          "const": "bc7a78ee54a633d46c586994fbfded293d1b05abbfc3d4773917d222ccb80ce9"
+        },
+        "all_frozen_input_digests_match": {
+          "const": true
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "new_live_model_requests_authorized_max",
+        "new_live_model_requests_executed",
+        "new_qianfan_requests_executed",
+        "new_deepseek_requests_executed",
+        "retry_attempts",
+        "fallback_attempts",
+        "json_repair_attempts",
+        "schema_conformant_responses",
+        "providers_with_schema_conformant_response",
+        "qianfan_candidate_ids_covered",
+        "deepseek_candidate_ids_covered",
+        "verified_boundary_failures"
+      ],
+      "properties": {
+        "new_live_model_requests_authorized_max": {"const": 1},
+        "new_live_model_requests_executed": {"const": 1},
+        "new_qianfan_requests_executed": {"const": 1},
+        "new_deepseek_requests_executed": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "json_repair_attempts": {"const": 0},
+        "schema_conformant_responses": {"const": 1},
+        "providers_with_schema_conformant_response": {"const": 1},
+        "qianfan_candidate_ids_covered": {"const": 0},
+        "deepseek_candidate_ids_covered": {"const": 4},
+        "verified_boundary_failures": {"const": 0}
+      }
+    },
+    "requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "new_qianfan_requests_executed_required",
+        "qianfan_schema_conformant_required",
+        "frozen_deepseek_schema_conformant_required",
+        "providers_with_schema_conformant_response_required",
+        "qianfan_candidate_ids_covered_required",
+        "deepseek_candidate_ids_covered_required",
+        "boundary_failures_max",
+        "boundary_evaluation_complete_required",
+        "frozen_input_digests_match_required",
+        "all_conditions_required"
+      ],
+      "properties": {
+        "new_qianfan_requests_executed_required": {"const": 1},
+        "qianfan_schema_conformant_required": {"const": true},
+        "frozen_deepseek_schema_conformant_required": {"const": true},
+        "providers_with_schema_conformant_response_required": {"const": 2},
+        "qianfan_candidate_ids_covered_required": {"const": 4},
+        "deepseek_candidate_ids_covered_required": {"const": 4},
+        "boundary_failures_max": {"const": 0},
+        "boundary_evaluation_complete_required": {"const": true},
+        "frozen_input_digests_match_required": {"const": true},
+        "all_conditions_required": {"const": true}
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "new_qianfan_request_count_exact",
+        "qianfan_schema_conformant",
+        "frozen_deepseek_schema_conformant",
+        "provider_threshold_met",
+        "qianfan_candidate_coverage_met",
+        "deepseek_candidate_coverage_met",
+        "boundary_threshold_met",
+        "boundary_evaluation_complete",
+        "frozen_input_digests_match",
+        "all_conditions_met"
+      ],
+      "properties": {
+        "new_qianfan_request_count_exact": {"const": true},
+        "qianfan_schema_conformant": {"const": false},
+        "frozen_deepseek_schema_conformant": {"const": true},
+        "provider_threshold_met": {"const": false},
+        "qianfan_candidate_coverage_met": {"const": false},
+        "deepseek_candidate_coverage_met": {"const": true},
+        "boundary_threshold_met": {"const": false},
+        "boundary_evaluation_complete": {"const": false},
+        "frozen_input_digests_match": {"const": true},
+        "all_conditions_met": {"const": false}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "composite_provider_gate_pass",
+        "fail_closed",
+        "failure_classes",
+        "next_permitted_action"
+      ],
+      "properties": {
+        "composite_provider_gate_pass": {"const": false},
+        "fail_closed": {"const": true},
+        "failure_classes": {
+          "const": [
+            "QIANFAN_FULL_FROZEN_SCHEMA_VALIDATION_FAILED",
+            "QIANFAN_CANDIDATE_COVERAGE_REQUIRED",
+            "QIANFAN_BOUNDARY_EVALUATION_INCOMPLETE",
+            "PROVIDER_THRESHOLD_NOT_MET"
+          ]
+        },
+        "next_permitted_action": {
+          "const": "PREPARE_SEPARATE_ZERO_LIVE_REQUEST_QIANFAN_EXTRACTION_CONTRACT_REVIEW_RECOMMENDATION_ONLY"
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "full_candidate_review_rerun_authorized",
+        "candidate_review_completed",
+        "candidate_status_changed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "customer_adoption",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "full_candidate_review_rerun_authorized": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "candidate_status_changed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "market_validation_pass": {"const": false},
+        "customer_adoption": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

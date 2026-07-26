@@ -1,0 +1,189 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre16-sanitized-qianfan-observation.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-16 Sanitized Qianfan Observation v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "authorization_baseline_commit",
+    "authorization_receipt_commit",
+    "session",
+    "interpretation_limits",
+    "data_controls"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./sanitized-qianfan-observation.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-16-SANITIZED-QIANFAN-OBSERVATION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "EXECUTED_DIRECT_JSON_PARSEABLE_FULL_SCHEMA_FAILED"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-16"
+    },
+    "authorization_baseline_commit": {
+      "const": "a4053f092f24e472460808f69a3c716176f53031"
+    },
+    "authorization_receipt_commit": {
+      "const": "59ecd000c003facfe00615f22a2f24007cd339d0"
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "provider",
+        "provider_gateway",
+        "tool",
+        "model",
+        "reviewer_role",
+        "role_specific_request_sha256",
+        "request_executed",
+        "extraction_path",
+        "distinct_answer_values_observed",
+        "direct_json_parseable",
+        "full_frozen_schema_conformant",
+        "schema_error_paths",
+        "candidate_ids_covered",
+        "boundary_evaluation_completed",
+        "boundary_failure_count",
+        "failure_class",
+        "sanitized_response"
+      ],
+      "properties": {
+        "session_id": {
+          "const": "QF-KIMI-SCHEMA-RECONFIRM-PRE16-P1"
+        },
+        "provider": {
+          "const": "baidu-qianfan"
+        },
+        "provider_gateway": {
+          "const": "qianfan_installed_tool"
+        },
+        "tool": {
+          "const": "mcp__kimi_qianfan__kimi_chat"
+        },
+        "model": {
+          "const": "kimi-k2.6"
+        },
+        "reviewer_role": {
+          "const": "SOURCE_QUALIFICATION_REVIEWER"
+        },
+        "role_specific_request_sha256": {
+          "const": "1e0f4d0efbccf31a4fbbc1d4cffab9f1bc4308acee3e8cb8324c0769e5ed4638"
+        },
+        "request_executed": {
+          "const": true
+        },
+        "extraction_path": {
+          "const": "content[0].text_plain_tool_specific"
+        },
+        "distinct_answer_values_observed": {
+          "const": 1
+        },
+        "direct_json_parseable": {
+          "const": true
+        },
+        "full_frozen_schema_conformant": {
+          "const": false
+        },
+        "schema_error_paths": {
+          "const": [
+            "$"
+          ]
+        },
+        "candidate_ids_covered": {
+          "const": []
+        },
+        "boundary_evaluation_completed": {
+          "const": false
+        },
+        "boundary_failure_count": {
+          "type": "null"
+        },
+        "failure_class": {
+          "const": "FULL_FROZEN_SCHEMA_VALIDATION_FAILED"
+        },
+        "sanitized_response": {
+          "type": "null"
+        }
+      }
+    },
+    "interpretation_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_answer_proven",
+        "provider_no_answer_proven",
+        "model_capability_failure_proven",
+        "exact_raw_wrapper_shape_proven",
+        "candidate_review_completed"
+      ],
+      "properties": {
+        "provider_answer_proven": {
+          "const": false
+        },
+        "provider_no_answer_proven": {
+          "const": false
+        },
+        "model_capability_failure_proven": {
+          "const": false
+        },
+        "exact_raw_wrapper_shape_proven": {
+          "const": false
+        },
+        "candidate_review_completed": {
+          "const": false
+        }
+      }
+    },
+    "data_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_provider_body_persisted",
+        "token_usage_persisted",
+        "hidden_reasoning_persisted",
+        "secret_accessed_for_transport_only",
+        "secret_persisted_or_displayed",
+        "customer_or_personal_data_sent"
+      ],
+      "properties": {
+        "raw_provider_body_persisted": {
+          "const": false
+        },
+        "token_usage_persisted": {
+          "const": false
+        },
+        "hidden_reasoning_persisted": {
+          "const": false
+        },
+        "secret_accessed_for_transport_only": {
+          "const": true
+        },
+        "secret_persisted_or_displayed": {
+          "const": false
+        },
+        "customer_or_personal_data_sent": {
+          "const": false
+        }
+      }
+    }
+  }
+}

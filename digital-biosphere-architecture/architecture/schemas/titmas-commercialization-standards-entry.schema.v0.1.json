@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_14_PROVIDER_CONFIRMATION_RECOMMENDATION_PREPARED_NOT_DECIDED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_16_EXECUTED_FAIL_CLOSED_QIANFAN_SCHEMA_RECONFIRMATION_FAILED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1138,6 +1138,17 @@
         "pre14_provider_confirmation_recommendation_prepared",
         "pre14_provider_confirmation_decision_recorded",
         "pre14_live_model_requests_authorized",
+        "pre16_qianfan_reconfirmation_recommendation_prepared",
+        "pre16_qianfan_reconfirmation_decision_recorded",
+        "pre16_qianfan_reconfirmation_execution_authorized",
+        "pre16_authorization_baseline_remote_verified",
+        "pre16_execution_completed",
+        "pre16_request_cap_consumed",
+        "pre16_live_model_requests_executed",
+        "pre16_qianfan_full_schema_pass",
+        "pre16_frozen_deepseek_full_schema_pass",
+        "pre16_composite_provider_gate_pass",
+        "pre16_candidate_review_completed",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1289,9 +1300,42 @@
           "const": true
         },
         "pre14_provider_confirmation_decision_recorded": {
-          "const": false
+          "const": true
         },
         "pre14_live_model_requests_authorized": {
+          "const": true
+        },
+        "pre16_qianfan_reconfirmation_recommendation_prepared": {
+          "const": true
+        },
+        "pre16_qianfan_reconfirmation_decision_recorded": {
+          "const": true
+        },
+        "pre16_qianfan_reconfirmation_execution_authorized": {
+          "const": true
+        },
+        "pre16_authorization_baseline_remote_verified": {
+          "const": true
+        },
+        "pre16_execution_completed": {
+          "const": true
+        },
+        "pre16_request_cap_consumed": {
+          "const": true
+        },
+        "pre16_live_model_requests_executed": {
+          "const": 1
+        },
+        "pre16_qianfan_full_schema_pass": {
+          "const": false
+        },
+        "pre16_frozen_deepseek_full_schema_pass": {
+          "const": true
+        },
+        "pre16_composite_provider_gate_pass": {
+          "const": false
+        },
+        "pre16_candidate_review_completed": {
           "const": false
         },
         "public_source_record_counting_authorized": {
@@ -1564,8 +1608,28 @@
         "qianfan_reconfirmation_recommendation_reference",
         "qianfan_reconfirmation_recommendation_prepared",
         "qianfan_reconfirmation_new_live_model_requests_recommended_max",
+        "qianfan_reconfirmation_decision_reference",
         "qianfan_reconfirmation_decision_recorded",
+        "qianfan_reconfirmation_execution_plan_reference",
+        "qianfan_reconfirmation_authorization_receipt_reference",
+        "qianfan_reconfirmation_authorization_baseline_commit",
+        "qianfan_reconfirmation_authorization_receipt_commit",
+        "qianfan_reconfirmation_authorization_baseline_remote_verified",
         "qianfan_reconfirmation_execution_authorized",
+        "qianfan_reconfirmation_execution_started",
+        "qianfan_reconfirmation_execution_completed",
+        "qianfan_reconfirmation_request_cap_consumed",
+        "qianfan_reconfirmation_live_model_requests_executed",
+        "qianfan_reconfirmation_direct_json_parse_pass",
+        "qianfan_reconfirmation_full_schema_pass",
+        "qianfan_reconfirmation_candidate_ids_covered",
+        "qianfan_reconfirmation_boundary_evaluation_completed",
+        "qianfan_reconfirmation_sanitized_observation_reference",
+        "qianfan_reconfirmation_composite_gate_result_reference",
+        "qianfan_reconfirmation_execution_receipt_reference",
+        "qianfan_reconfirmation_result_report_reference",
+        "qianfan_reconfirmation_exact_failure_cause_proven",
+        "composite_provider_gate_pass",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -1584,7 +1648,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE16_ONE_REQUEST_QIANFAN_RECONFIRMATION_RECOMMENDATION_PREPARED_NOT_DECIDED"
+          "const": "PRE16_EXECUTED_FAIL_CLOSED_PRE17_RECOMMENDATION_NOT_PREPARED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -2114,10 +2178,70 @@
         "qianfan_reconfirmation_new_live_model_requests_recommended_max": {
           "const": 1
         },
+        "qianfan_reconfirmation_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-16-QIANFAN-RECONFIRMATION-DECISION-RECORD.v0.1.json"
+        },
         "qianfan_reconfirmation_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "qianfan_reconfirmation_execution_plan_reference": {
+          "const": "commercialization-standards-qianfan-reconfirmation/execution-plan.v0.1.json"
+        },
+        "qianfan_reconfirmation_authorization_receipt_reference": {
+          "const": "commercialization-standards-qianfan-reconfirmation/authorization-baseline-receipt.v0.1.json"
+        },
+        "qianfan_reconfirmation_authorization_baseline_commit": {
+          "const": "a4053f092f24e472460808f69a3c716176f53031"
+        },
+        "qianfan_reconfirmation_authorization_receipt_commit": {
+          "const": "59ecd000c003facfe00615f22a2f24007cd339d0"
+        },
+        "qianfan_reconfirmation_authorization_baseline_remote_verified": {
+          "const": true
         },
         "qianfan_reconfirmation_execution_authorized": {
+          "const": true
+        },
+        "qianfan_reconfirmation_execution_started": {
+          "const": true
+        },
+        "qianfan_reconfirmation_execution_completed": {
+          "const": true
+        },
+        "qianfan_reconfirmation_request_cap_consumed": {
+          "const": true
+        },
+        "qianfan_reconfirmation_live_model_requests_executed": {
+          "const": 1
+        },
+        "qianfan_reconfirmation_direct_json_parse_pass": {
+          "const": true
+        },
+        "qianfan_reconfirmation_full_schema_pass": {
+          "const": false
+        },
+        "qianfan_reconfirmation_candidate_ids_covered": {
+          "const": 0
+        },
+        "qianfan_reconfirmation_boundary_evaluation_completed": {
+          "const": false
+        },
+        "qianfan_reconfirmation_sanitized_observation_reference": {
+          "const": "commercialization-standards-qianfan-reconfirmation/sanitized-qianfan-observation.v0.1.json"
+        },
+        "qianfan_reconfirmation_composite_gate_result_reference": {
+          "const": "commercialization-standards-qianfan-reconfirmation/composite-gate-result.v0.1.json"
+        },
+        "qianfan_reconfirmation_execution_receipt_reference": {
+          "const": "commercialization-standards-qianfan-reconfirmation/execution-receipt.v0.1.json"
+        },
+        "qianfan_reconfirmation_result_report_reference": {
+          "const": "commercialization-standards-qianfan-reconfirmation/PRE-16-QIANFAN-RECONFIRMATION-RESULT-v0.1.md"
+        },
+        "qianfan_reconfirmation_exact_failure_cause_proven": {
+          "const": false
+        },
+        "composite_provider_gate_pass": {
           "const": false
         },
         "composite_gate_reuses_frozen_pre14_deepseek": {
@@ -2136,10 +2260,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "AUTHORIZE_ONE_QIANFAN_RECONFIRMATION_AND_COMPOSITE_GATE_ONLY"
+          "const": "PREPARE_ZERO_LIVE_REQUEST_QIANFAN_EXTRACTION_CONTRACT_REVIEW_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
-          "const": true
+          "const": false
         },
         "external_execution_authorized": {
           "const": false

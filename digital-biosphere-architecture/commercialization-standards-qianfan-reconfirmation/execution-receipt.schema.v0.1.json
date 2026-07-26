@@ -1,0 +1,239 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre16-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-16 Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "branch",
+    "authorization",
+    "artifact_bindings",
+    "request_accounting",
+    "validation",
+    "data_controls",
+    "result",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./execution-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-16-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "EXECUTION_COMPLETE_FAIL_CLOSED_QIANFAN_SCHEMA_RECONFIRMATION_FAILED"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-16"
+    },
+    "branch": {
+      "const": "codex/production-observability-baseline"
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_commit",
+        "authorization_baseline_commit",
+        "authorization_receipt_commit",
+        "authorization_baseline_remote_verified_before_request"
+      ],
+      "properties": {
+        "recommendation_commit": {
+          "const": "12f10efa4eb0d2fe9bc86c2cb0eae111ee32affc"
+        },
+        "authorization_baseline_commit": {
+          "const": "a4053f092f24e472460808f69a3c716176f53031"
+        },
+        "authorization_receipt_commit": {
+          "const": "59ecd000c003facfe00615f22a2f24007cd339d0"
+        },
+        "authorization_baseline_remote_verified_before_request": {
+          "const": true
+        }
+      }
+    },
+    "artifact_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sanitized_qianfan_observation_reference",
+        "sanitized_qianfan_observation_sha256",
+        "composite_gate_result_reference",
+        "composite_gate_result_sha256"
+      ],
+      "properties": {
+        "sanitized_qianfan_observation_reference": {
+          "const": "sanitized-qianfan-observation.v0.1.json"
+        },
+        "sanitized_qianfan_observation_sha256": {
+          "const": "39e60eaa6e20233767cbfad2aa3ba4a21025ae471974a0eedd3f81561249e9e1"
+        },
+        "composite_gate_result_reference": {
+          "const": "composite-gate-result.v0.1.json"
+        },
+        "composite_gate_result_sha256": {
+          "const": "4e1b0f3d9adc4d64dff1129dcc973e5e29d43cab47a0ec9cdaf727361cf257a3"
+        }
+      }
+    },
+    "request_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "new_live_model_requests_authorized_max",
+        "new_live_model_requests_executed",
+        "requests_remaining",
+        "qianfan_requests_executed",
+        "deepseek_requests_executed",
+        "retry_attempts",
+        "fallback_attempts",
+        "json_repair_attempts",
+        "fence_stripping_attempts",
+        "substring_extraction_attempts",
+        "reviewer_tool_use",
+        "new_source_searches",
+        "new_source_collections"
+      ],
+      "properties": {
+        "new_live_model_requests_authorized_max": {"const": 1},
+        "new_live_model_requests_executed": {"const": 1},
+        "requests_remaining": {"const": 0},
+        "qianfan_requests_executed": {"const": 1},
+        "deepseek_requests_executed": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "json_repair_attempts": {"const": 0},
+        "fence_stripping_attempts": {"const": 0},
+        "substring_extraction_attempts": {"const": 0},
+        "reviewer_tool_use": {"const": 0},
+        "new_source_searches": {"const": 0},
+        "new_source_collections": {"const": 0}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "frozen_request_hash_match",
+        "single_distinct_answer_value_observed",
+        "direct_json_parse_pass",
+        "full_frozen_schema_validation_executed",
+        "qianfan_full_frozen_schema_pass",
+        "frozen_deepseek_full_schema_pass",
+        "frozen_input_digests_match",
+        "qianfan_candidate_ids_covered",
+        "deepseek_candidate_ids_covered",
+        "qianfan_boundary_evaluation_complete",
+        "composite_provider_gate_pass"
+      ],
+      "properties": {
+        "frozen_request_hash_match": {"const": true},
+        "single_distinct_answer_value_observed": {"const": true},
+        "direct_json_parse_pass": {"const": true},
+        "full_frozen_schema_validation_executed": {"const": true},
+        "qianfan_full_frozen_schema_pass": {"const": false},
+        "frozen_deepseek_full_schema_pass": {"const": true},
+        "frozen_input_digests_match": {"const": true},
+        "qianfan_candidate_ids_covered": {"const": 0},
+        "deepseek_candidate_ids_covered": {"const": 4},
+        "qianfan_boundary_evaluation_complete": {"const": false},
+        "composite_provider_gate_pass": {"const": false}
+      }
+    },
+    "data_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_provider_body_persisted",
+        "token_usage_persisted",
+        "hidden_reasoning_persisted",
+        "nonconformant_response_persisted",
+        "secret_persisted_or_displayed",
+        "customer_or_personal_data_sent"
+      ],
+      "properties": {
+        "raw_provider_body_persisted": {"const": false},
+        "token_usage_persisted": {"const": false},
+        "hidden_reasoning_persisted": {"const": false},
+        "nonconformant_response_persisted": {"const": false},
+        "secret_persisted_or_displayed": {"const": false},
+        "customer_or_personal_data_sent": {"const": false}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_completed",
+        "fail_closed",
+        "failure_class",
+        "provider_answer_proven",
+        "provider_no_answer_proven",
+        "model_capability_failure_proven",
+        "candidate_review_completed",
+        "next_permitted_action"
+      ],
+      "properties": {
+        "execution_completed": {"const": true},
+        "fail_closed": {"const": true},
+        "failure_class": {
+          "const": "FULL_FROZEN_SCHEMA_VALIDATION_FAILED"
+        },
+        "provider_answer_proven": {"const": false},
+        "provider_no_answer_proven": {"const": false},
+        "model_capability_failure_proven": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "next_permitted_action": {
+          "const": "PREPARE_SEPARATE_ZERO_LIVE_REQUEST_QIANFAN_EXTRACTION_CONTRACT_REVIEW_RECOMMENDATION_ONLY"
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "full_candidate_review_rerun_authorized",
+        "candidate_status_changed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "customer_adoption",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "full_candidate_review_rerun_authorized": {"const": false},
+        "candidate_status_changed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "market_validation_pass": {"const": false},
+        "customer_adoption": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

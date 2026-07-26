@@ -1,0 +1,47 @@
+{
+  "$schema": "./sanitized-qianfan-observation.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-16-SANITIZED-QIANFAN-OBSERVATION-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTED_DIRECT_JSON_PARSEABLE_FULL_SCHEMA_FAILED",
+  "observed_at": "2026-07-26T19:38:29+08:00",
+  "decision_reference": "CS-D02-PRE-16",
+  "authorization_baseline_commit": "a4053f092f24e472460808f69a3c716176f53031",
+  "authorization_receipt_commit": "59ecd000c003facfe00615f22a2f24007cd339d0",
+  "session": {
+    "session_id": "QF-KIMI-SCHEMA-RECONFIRM-PRE16-P1",
+    "provider": "baidu-qianfan",
+    "provider_gateway": "qianfan_installed_tool",
+    "tool": "mcp__kimi_qianfan__kimi_chat",
+    "model": "kimi-k2.6",
+    "reviewer_role": "SOURCE_QUALIFICATION_REVIEWER",
+    "role_specific_request_sha256": "1e0f4d0efbccf31a4fbbc1d4cffab9f1bc4308acee3e8cb8324c0769e5ed4638",
+    "request_executed": true,
+    "extraction_path": "content[0].text_plain_tool_specific",
+    "distinct_answer_values_observed": 1,
+    "direct_json_parseable": true,
+    "full_frozen_schema_conformant": false,
+    "schema_error_paths": [
+      "$"
+    ],
+    "candidate_ids_covered": [],
+    "boundary_evaluation_completed": false,
+    "boundary_failure_count": null,
+    "failure_class": "FULL_FROZEN_SCHEMA_VALIDATION_FAILED",
+    "sanitized_response": null
+  },
+  "interpretation_limits": {
+    "provider_answer_proven": false,
+    "provider_no_answer_proven": false,
+    "model_capability_failure_proven": false,
+    "exact_raw_wrapper_shape_proven": false,
+    "candidate_review_completed": false
+  },
+  "data_controls": {
+    "raw_provider_body_persisted": false,
+    "token_usage_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "secret_accessed_for_transport_only": true,
+    "secret_persisted_or_displayed": false,
+    "customer_or_personal_data_sent": false
+  }
+}
