@@ -5171,6 +5171,24 @@
             "pre50_provider_requests",
             "pre50_credential_reads",
             "pre50_dependency_installs",
+            "pre51_recommendation_reference",
+            "pre51_recommendation_sha256",
+            "pre51_recommendation_commit",
+            "pre51_decision_reference",
+            "pre51_decision_sha256",
+            "pre51_decision_commit",
+            "pre51_result_reference",
+            "pre51_result_sha256",
+            "pre51_composite_result_sha256",
+            "pre51_execution_receipt_sha256",
+            "pre51_result_commit",
+            "pre51_result",
+            "pre51_requests_executed",
+            "pre51_qualifying_sessions",
+            "pre51_required_qualifying_sessions",
+            "pre51_provider_timeout_or_network_errors",
+            "pre51_authority_safety_failures",
+            "pre51_retry_fallback_substitution_repair_attempts",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5210,6 +5228,9 @@
             "rb1_provider_binding_scope_recommendation_required",
             "rb1_provider_binding_scope_planning_complete",
             "rb1_provider_binding_agent_review_recommendation_required",
+            "rb1_provider_binding_agent_review_executed",
+            "rb1_provider_binding_agent_review_gate_pass",
+            "rb1_provider_binding_agent_review_transport_remediation_recommendation_required",
             "rb1_provider_binding_implementation_authorized",
             "rb1_reproducible_build_proven",
             "provider_supported",
@@ -5981,6 +6002,60 @@
             "pre50_dependency_installs": {
               "const": 0
             },
+            "pre51_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-51-RB1-DEEPSEEK-BINDING-SEQUENTIAL-AGENT-REVIEW-RECOMMENDATION-v0.1.md"
+            },
+            "pre51_recommendation_sha256": {
+              "const": "e098d671bba978803bb51cb271724f2be3fa2bc6cbd6bc90af262bc6989c7308"
+            },
+            "pre51_recommendation_commit": {
+              "const": "3b34d8bacbeb291fc5db719fb59660f65c08f84f"
+            },
+            "pre51_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-51-RB1-DEEPSEEK-BINDING-SEQUENTIAL-AGENT-REVIEW-DECISION-RECORD.v0.1.json"
+            },
+            "pre51_decision_sha256": {
+              "const": "6df1e8a7835a1193e9fc0cca23a4cd78d750ba667317d86871d75dcd73a189f9"
+            },
+            "pre51_decision_commit": {
+              "const": "454ae333ad92bb6adc6cb689dfe90db903342e99"
+            },
+            "pre51_result_reference": {
+              "const": "commercialization-standards-titmas-integrations-rb1-provider-binding-agent-review/PRE-51-RB1-DEEPSEEK-BINDING-SEQUENTIAL-AGENT-REVIEW-RESULT-v0.1.md"
+            },
+            "pre51_result_sha256": {
+              "const": "f56d26a6ec33fc409449e7353a9066350a9bcfc66bd0ef090c5866388c529b94"
+            },
+            "pre51_composite_result_sha256": {
+              "const": "477ef0c5226377b895219113a73e887531365aab9c0e5123a1913b075bbb7f25"
+            },
+            "pre51_execution_receipt_sha256": {
+              "const": "b3b5077257bc4aec56476a20c2e7194579d97c1a998bee78ce9908df0eedd6b7"
+            },
+            "pre51_result_commit": {
+              "const": "e84f39c2b181309c23c5faca7d10cbae4b4bf083"
+            },
+            "pre51_result": {
+              "const": "FAIL_CLOSED_INSUFFICIENT_QUALIFYING_SESSIONS"
+            },
+            "pre51_requests_executed": {
+              "const": 4
+            },
+            "pre51_qualifying_sessions": {
+              "const": 1
+            },
+            "pre51_required_qualifying_sessions": {
+              "const": 3
+            },
+            "pre51_provider_timeout_or_network_errors": {
+              "const": 3
+            },
+            "pre51_authority_safety_failures": {
+              "const": 0
+            },
+            "pre51_retry_fallback_substitution_repair_attempts": {
+              "const": 0
+            },
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -6096,6 +6171,15 @@
               "const": true
             },
             "rb1_provider_binding_agent_review_recommendation_required": {
+              "const": false
+            },
+            "rb1_provider_binding_agent_review_executed": {
+              "const": true
+            },
+            "rb1_provider_binding_agent_review_gate_pass": {
+              "const": false
+            },
+            "rb1_provider_binding_agent_review_transport_remediation_recommendation_required": {
               "const": true
             },
             "rb1_provider_binding_implementation_authorized": {
@@ -6131,7 +6215,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_EXACT_RB1_DEEPSEEK_BINDING_AGENT_REVIEW_RECOMMENDATION_ONLY"
+          "const": "FORM_AGENT_REVIEW_TRANSPORT_AND_REQUEST_CONTRACT_REMEDIATION_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false
