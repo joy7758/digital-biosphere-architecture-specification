@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:pre-20-authorization-baseline-receipt:0.1",
+  "title": "TITMAS PRE-20 Authorization Baseline Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "branch",
+    "authorization_baseline_commit",
+    "remote_commit",
+    "local_equals_remote",
+    "frozen_bindings",
+    "execution_gate",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./authorization-baseline-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-20-AUTHORIZATION-BASELINE-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_OFFLINE_EXECUTION_NOT_STARTED"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-20"
+    },
+    "branch": {
+      "const": "codex/production-observability-baseline"
+    },
+    "authorization_baseline_commit": {
+      "const": "1479605124348fc5a092fc31f0ba9aa13e747487"
+    },
+    "remote_commit": {
+      "const": "1479605124348fc5a092fc31f0ba9aa13e747487"
+    },
+    "local_equals_remote": {
+      "const": true
+    },
+    "frozen_bindings": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artifact",
+          "sha256"
+        ],
+        "properties": {
+          "artifact": {
+            "type": "string",
+            "minLength": 12
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "execution_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "standing_directive_active",
+        "remote_authorization_baseline_verified",
+        "offline_execution_may_start",
+        "offline_execution_started",
+        "live_model_requests_authorized",
+        "provider_network_requests_authorized"
+      ],
+      "properties": {
+        "standing_directive_active": {
+          "const": true
+        },
+        "remote_authorization_baseline_verified": {
+          "const": true
+        },
+        "offline_execution_may_start": {
+          "const": true
+        },
+        "offline_execution_started": {
+          "const": false
+        },
+        "live_model_requests_authorized": {
+          "const": false
+        },
+        "provider_network_requests_authorized": {
+          "const": false
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projection_created",
+        "review_completed",
+        "profile_adopted",
+        "adapter_implementation_created",
+        "conformance_executed",
+        "provider_supported",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "projection_created": {
+          "const": false
+        },
+        "review_completed": {
+          "const": false
+        },
+        "profile_adopted": {
+          "const": false
+        },
+        "adapter_implementation_created": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}
