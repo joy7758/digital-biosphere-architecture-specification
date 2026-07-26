@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-43-rb1-scope-contract-and-agent-gate-planning-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-43 RB1 Scope Contract and Agent Gate Planning Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "standing_directive_eligibility",
+    "preconditions",
+    "scope",
+    "effects_before_execution",
+    "next_gate",
+    "execution_receipt",
+    "result"
+  ],
+  "properties": {
+    "$schema": {"const": "./architecture/schemas/titmas-cs-d02-pre-43-rb1-scope-contract-and-agent-gate-planning-decision-record.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-43-RB1-SCOPE-CONTRACT-AND-AGENT-GATE-PLANNING-DECISION-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DBA_ONLY_RB1_PLANNING_AUTHORIZED_NOT_EXECUTED"},
+    "decision_id": {"const": "CS-D02-PRE-43"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {"const": "TITMAS-CS-D02-PRE-43-RB1-SCOPE-CONTRACT-AND-AGENT-GATE-PLANNING-RECOMMENDATION-v0.1.md"},
+    "recommendation_sha256": {"const": "fb0da26b18983a2d91ee887c23c2a3fccffb2adc350c94b1034ec05a1baa8924"},
+    "recommendation_commit": {"const": "7e9a386127aa0b95306677758627f535269869fa"},
+    "decision_result": {"const": "AUTHORIZE_EXACT_SEVEN_ARTIFACT_DBA_ONLY_RB1_PLANNING_PACKET_WITH_PRE44_AGENT_GATE_ONLY"},
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "Codex"},
+    "standing_directive_eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_present",
+        "single_exact_option",
+        "repositories_target_and_scope_explicit",
+        "preconditions_directly_evidenced",
+        "all_effect_classes_declared",
+        "stop_conditions_explicit",
+        "later_conflict_present",
+        "independent_decision_record_present",
+        "result_validation_and_failure_retention_required",
+        "material_actions_separately_recorded",
+        "applicable"
+      ],
+      "properties": {
+        "canonical_recommendation_present": {"const": true},
+        "single_exact_option": {"const": true},
+        "repositories_target_and_scope_explicit": {"const": true},
+        "preconditions_directly_evidenced": {"const": true},
+        "all_effect_classes_declared": {"const": true},
+        "stop_conditions_explicit": {"const": true},
+        "later_conflict_present": {"const": false},
+        "independent_decision_record_present": {"const": true},
+        "result_validation_and_failure_retention_required": {"const": true},
+        "material_actions_separately_recorded": {"const": true},
+        "applicable": {"const": true}
+      }
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "planning_input_manifest_sha256",
+        "planning_plan_sha256",
+        "frozen_input_digests_match",
+        "target_head",
+        "target_remote_branch_matched",
+        "target_remote_main_unchanged",
+        "target_dirty_count",
+        "rb0_adopted",
+        "rb0_target_truth_synchronized",
+        "implementation_authorized"
+      ],
+      "properties": {
+        "planning_input_manifest_sha256": {"const": "ca82f63e99cd536ebd5e68e1a395de73f474e3e8d6caf1e0487929cdedfb9656"},
+        "planning_plan_sha256": {"const": "eb4e1ca42ad8a421572d624edf5d6671433b80062f85c3a72fd9f3b0c13b75f5"},
+        "frozen_input_digests_match": {"const": 8},
+        "target_head": {"const": "f80629364752c465316b9d1238fe5447a88565ca"},
+        "target_remote_branch_matched": {"const": true},
+        "target_remote_main_unchanged": {"const": true},
+        "target_dirty_count": {"const": 0},
+        "rb0_adopted": {"const": true},
+        "rb0_target_truth_synchronized": {"const": true},
+        "implementation_authorized": {"const": false}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "planning_outputs_exact",
+        "target_files_modified_max",
+        "package_files_created_max",
+        "source_files_created_max",
+        "test_files_created_max",
+        "network_requests_max",
+        "model_requests_max",
+        "credential_reads_max"
+      ],
+      "properties": {
+        "primary_repository": {"const": "digital-biosphere-architecture"},
+        "planning_outputs_exact": {"const": 7},
+        "target_files_modified_max": {"const": 0},
+        "package_files_created_max": {"const": 0},
+        "source_files_created_max": {"const": 0},
+        "test_files_created_max": {"const": 0},
+        "network_requests_max": {"const": 0},
+        "model_requests_max": {"const": 0},
+        "credential_reads_max": {"const": 0}
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rb1_planning_authorized",
+        "rb1_implementation_authorized",
+        "target_repository_modification_authorized",
+        "package_created",
+        "source_created",
+        "tests_created",
+        "agent_review_authorized",
+        "provider_supported",
+        "conformance_executed",
+        "runtime_created",
+        "merge_authorized",
+        "pull_request_authorized",
+        "release_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "permission_granted",
+        "evidence_truth_changed"
+      ],
+      "properties": {
+        "rb1_planning_authorized": {"const": true},
+        "rb1_implementation_authorized": {"const": false},
+        "target_repository_modification_authorized": {"const": false},
+        "package_created": {"const": false},
+        "source_created": {"const": false},
+        "tests_created": {"const": false},
+        "agent_review_authorized": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "runtime_created": {"const": false},
+        "merge_authorized": {"const": false},
+        "pull_request_authorized": {"const": false},
+        "release_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "permission_granted": {"const": false},
+        "evidence_truth_changed": {"const": false}
+      }
+    },
+    "next_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate_id", "action", "agent_review_authorized", "rb1_implementation_decision_allowed"],
+      "properties": {
+        "gate_id": {"const": "CS-D02-PRE-44"},
+        "action": {"const": "FORM_BOUNDED_AGENT_CUSTOMER_REVIEW_RECOMMENDATION_FOR_EXACT_RB1_PLANNING_PACKET"},
+        "agent_review_authorized": {"const": false},
+        "rb1_implementation_decision_allowed": {"const": false}
+      }
+    },
+    "execution_receipt": {"const": "PENDING_PRE43_RESULT"},
+    "result": {"const": "RB1_PLANNING_NOT_EXECUTED"}
+  }
+}
