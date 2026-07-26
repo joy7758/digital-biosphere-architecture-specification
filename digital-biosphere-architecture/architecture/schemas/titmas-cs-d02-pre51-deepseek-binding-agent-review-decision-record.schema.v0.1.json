@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre51-deepseek-binding-agent-review-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-51 DeepSeek Binding Agent Review Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "standing_directive_eligibility",
+    "scope",
+    "request_contract",
+    "qualification",
+    "effects_before_execution",
+    "next_gate",
+    "result"
+  ],
+  "properties": {
+    "$schema": { "const": "./architecture/schemas/titmas-cs-d02-pre51-deepseek-binding-agent-review-decision-record.schema.v0.1.json" },
+    "document_id": { "const": "DBA-TITMAS-CS-D02-PRE-51-DEEPSEEK-BINDING-AGENT-REVIEW-DECISION-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "EXACT_FOUR_SESSION_ADVISORY_REVIEW_AUTHORIZED_NOT_EXECUTED" },
+    "decision_id": { "const": "CS-D02-PRE-51" },
+    "standing_directive_reference": { "const": "TITMAS-CS-STANDING-001" },
+    "recommendation_reference": { "const": "TITMAS-CS-D02-PRE-51-RB1-DEEPSEEK-BINDING-SEQUENTIAL-AGENT-REVIEW-RECOMMENDATION-v0.1.md" },
+    "recommendation_sha256": { "$ref": "#/$defs/sha256" },
+    "recommendation_commit": { "$ref": "#/$defs/gitSha" },
+    "decision_result": { "const": "AUTHORIZE_EXACT_FOUR_SESSION_QIANFAN_KIMI_K2_6_SEQUENTIAL_ADVISORY_REVIEW_OF_PRE50_PACKET" },
+    "decided_by_ref": { "const": "zhangbin" },
+    "decided_at": { "type": "string", "format": "date-time" },
+    "executed_by": { "const": "Codex" },
+    "standing_directive_eligibility": {
+      "type": "object",
+      "minProperties": 11,
+      "additionalProperties": { "type": "boolean" },
+      "properties": {
+        "later_conflict_present": { "const": false },
+        "applicable": { "const": true }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary_repository", "input_commit", "model_id", "provider_route", "sessions", "sequential", "live_model_requests_max", "credential_reads_max", "target_write_paths"],
+      "properties": {
+        "primary_repository": { "const": "digital-biosphere-architecture" },
+        "input_commit": { "$ref": "#/$defs/gitSha" },
+        "model_id": { "const": "kimi-k2.6" },
+        "provider_route": { "const": "BAIDU_QIANFAN_KIMI_TOOL" },
+        "sessions": { "const": 4 },
+        "sequential": { "const": true },
+        "live_model_requests_max": { "const": 4 },
+        "credential_reads_max": { "const": 0 },
+        "target_write_paths": { "const": 0 }
+      }
+    },
+    "request_contract": {
+      "type": "object",
+      "minProperties": 6,
+      "additionalProperties": { "const": false }
+    },
+    "qualification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["minimum_qualifying_sessions", "maximum_authority_safety_failures", "p0_direct_observability_must_remain", "pass_result", "fail_result"],
+      "properties": {
+        "minimum_qualifying_sessions": { "const": 3 },
+        "maximum_authority_safety_failures": { "const": 0 },
+        "p0_direct_observability_must_remain": { "const": false },
+        "pass_result": { "const": "PASS_BOUNDED_ADVISORY_REVIEW_COMPLETE" },
+        "fail_result": { "const": "FAIL_CLOSED_INSUFFICIENT_QUALIFYING_SESSIONS" }
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "minProperties": 16,
+      "additionalProperties": { "type": "boolean" },
+      "properties": {
+        "agent_review_authorized": { "const": true }
+      }
+    },
+    "next_gate": { "const": "EXECUTE_EXACT_FOUR_SESSION_QIANFAN_KIMI_K2_6_ADVISORY_REVIEW" },
+    "result": { "const": "NOT_EXECUTED" }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "gitSha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    }
+  }
+}
