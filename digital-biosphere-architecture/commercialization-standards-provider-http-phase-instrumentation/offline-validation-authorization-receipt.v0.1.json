@@ -1,0 +1,51 @@
+{
+  "$schema": "./offline-validation-authorization-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-30-OFFLINE-VALIDATION-AUTHORIZATION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_NOT_EXECUTED",
+  "observed_at": "2026-07-27T01:24:36+08:00",
+  "decision_reference": "CS-D02-PRE-30",
+  "decision_commit": "52c019bdfec423a0e66005d6bdda8bc4af5be175",
+  "decision_sha256": "fb28e3fc015169035ee7d1fd747374cc03ccf84a56e4fe033a30fd013002bd0b",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-RECOMMENDATION-v0.1.md",
+  "recommendation_commit": "bb4c82a1a4b1dd4ded51cf62ff8a6c64e4b76840",
+  "recommendation_sha256": "8a225d2ad70573e5e12dd0df9d4fb0df9d0534d356c5fd02187ae22fd197babc",
+  "source_bindings": [
+    {"reference":"commercialization-standards-provider-transport-diagnostic/PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-RESULT-v0.1.md","sha256":"80bb5388ed9d7e881ba9b09d3e71e651e280550115bf6c0e8bfb19b29e7bdb2b"},
+    {"reference":"commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-result.v0.1.json","sha256":"94de383d754fcbfb9bc78d2a0006e0a3016843c388349f36ed1804c1beeee391"},
+    {"reference":"commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-execution-receipt.v0.1.json","sha256":"686b2c7b3965a9a070a4a354d51ba98451b75040824d9a009dee581a7e985d6e"},
+    {"reference":"commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-authorization-receipt.v0.1.json","sha256":"f0070a97ed6d45041e646291ce8486930648d4a4de46d5afb9b5e76116a418fc"},
+    {"reference":"TITMAS-CS-D02-PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-DECISION-RECORD.v0.1.json","sha256":"721c7ee24c9d85fdbcd0c74d11bc46bf0bbdcfa8de704a9fa7ed36072021a0ce"},
+    {"reference":"commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-plan.v0.1.json","sha256":"5fbbccafb137185e9093f53a0aea0e071eebb6415520c7b691cd026443883ab4"}
+  ],
+  "frozen_artifact_bindings": [
+    {"reference":"TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-DECISION-RECORD.v0.1.json","sha256":"fb28e3fc015169035ee7d1fd747374cc03ccf84a56e4fe033a30fd013002bd0b"},
+    {"reference":"commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-contract.v0.1.json","sha256":"f72eb33bdb5042514deed499fdabddbc74121bc9c22c16f79316eae2aeca9913"},
+    {"reference":"commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-contract.schema.v0.1.json","sha256":"9e97b2db7d16caf83a785c4ddcdcab0f847317f3308246985cd3c0fd8698649e"},
+    {"reference":"commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-fixtures.v0.1.json","sha256":"a9cc72a333e3e00d7571a3deaa9b8a3894f889ed28937dd75922e28e14aa31d5"},
+    {"reference":"commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-fixtures.schema.v0.1.json","sha256":"868357c60e49ff577d5b424ca5eae4791fc1850af4bf06fb42e68e6d04634d74"},
+    {"reference":"commercialization-standards-provider-http-phase-instrumentation/offline-validation-plan.v0.1.json","sha256":"8e97bed4aca163cafe26a2cf6f6b9d93df4351b8ef234a9e1d36f2dbe7d4e3a0"},
+    {"reference":"commercialization-standards-provider-http-phase-instrumentation/offline-validation-plan.schema.v0.1.json","sha256":"88a078b23629e059856c63b03e914ba848e192b9ec47ff6a1b79ec99fcecb8e7"},
+    {"reference":"commercialization-standards-provider-http-phase-instrumentation/offline-validation-result.schema.v0.1.json","sha256":"56698608580877b7b296742b678f176f5c85527e6e0aaf43d941f5a85a1bbb65"},
+    {"reference":"commercialization-standards-provider-http-phase-instrumentation/offline-validation-authorization-receipt.schema.v0.1.json","sha256":"b41bd050b1b8ec7a3bf821acf030ff3bd4e904c43c4e573ec23a7ce3d76f2155"},
+    {"reference":"commercialization-standards-provider-http-phase-instrumentation/offline-validation-execution-receipt.schema.v0.1.json","sha256":"860f0a1ba31aa05f9a6268f4843b5cebee26cdf4d4be4e89ad8c32a5a2770537"}
+  ],
+  "pre_execution_accounting": {
+    "network_probes_executed": 0,
+    "http_requests_executed": 0,
+    "provider_api_requests_executed": 0,
+    "live_model_requests_executed": 0,
+    "credential_reads_executed": 0
+  },
+  "effects": {
+    "model_retry_authorized": false,
+    "contract_candidate_adopted": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
