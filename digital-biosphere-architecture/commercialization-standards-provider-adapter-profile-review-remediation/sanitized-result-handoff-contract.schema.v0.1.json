@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:sanitized-result-handoff-contract:0.1",
+  "title": "TITMAS Sanitized Result Handoff Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "payload_contract",
+    "canonicality",
+    "temporary_target_rules",
+    "commit_protocol",
+    "sink_lifecycle_states",
+    "terminal_failure_states",
+    "forbidden_field_names",
+    "receipt_fields",
+    "failure_rules",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./sanitized-result-handoff-contract.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-CONTRACT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "CANDIDATE_OFFLINE_DIAGNOSTIC_NOT_ADOPTED_NOT_IMPLEMENTED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-27"
+    },
+    "payload_contract": {
+      "const": {
+        "session_result_schema_reference": "contract-v0-2-candidate-review-session-result.schema.v0.1.json",
+        "review_response_schema_reference": "contract-v0-2-candidate-review-response.schema.v0.1.json",
+        "session_result_schema_pass_required": true,
+        "embedded_review_response_schema_pass_required_when_present": true,
+        "json_repair_allowed": false,
+        "semantic_rewrite_allowed": false
+      }
+    },
+    "canonicality": {
+      "const": {
+        "stdout_is_canonical_handoff": false,
+        "stderr_is_canonical_handoff": false,
+        "temporary_sink_is_canonical_handoff_for_diagnostic": true,
+        "sink_pass_creates_evidence_truth": false,
+        "sink_pass_creates_provider_success": false,
+        "sink_pass_creates_review_completion": false,
+        "sink_pass_creates_production_durability": false
+      }
+    },
+    "temporary_target_rules": {
+      "const": {
+        "fresh_temporary_directory_required": true,
+        "repository_or_user_path_allowed": false,
+        "single_exact_target_required": true,
+        "preexisting_target_allowed": false,
+        "unresolved_environment_target_allowed": false,
+        "glob_target_allowed": false,
+        "symlink_target_allowed": false
+      }
+    },
+    "commit_protocol": {
+      "const": [
+        "VALIDATE_SANITIZED_PAYLOAD",
+        "SERIALIZE_UTF8_JSON_WITHOUT_REPAIR",
+        "WRITE_EXCLUSIVE_STAGING_FILE",
+        "FLUSH_AND_FSYNC_STAGING_FILE",
+        "ATOMIC_RENAME_TO_COMMITTED_TARGET",
+        "FSYNC_PARENT_DIRECTORY",
+        "READ_COMMITTED_TARGET",
+        "VERIFY_BYTE_COUNT_AND_SHA256",
+        "REVALIDATE_JSON_AND_SCHEMAS",
+        "EMIT_SANITIZED_HANDOFF_RECEIPT",
+        "CONSUME_AND_CLEAN_TEMPORARY_TARGET"
+      ]
+    },
+    "sink_lifecycle_states": {
+      "const": [
+        "CREATED",
+        "WRITING",
+        "COMMITTED",
+        "CONSUMED",
+        "CLEANED",
+        "FAILED"
+      ]
+    },
+    "terminal_failure_states": {
+      "const": [
+        "SINK_MISSING",
+        "SINK_EMPTY",
+        "PARTIAL_JSON",
+        "SESSION_RESULT_SCHEMA_INVALID",
+        "REVIEW_RESPONSE_SCHEMA_INVALID",
+        "FORBIDDEN_RAW_FIELD_PRESENT",
+        "CREDENTIAL_LIKE_FIELD_PRESENT",
+        "DIGEST_MISMATCH",
+        "DUPLICATE_COMMIT",
+        "CLEANUP_FAILURE"
+      ]
+    },
+    "forbidden_field_names": {
+      "const": [
+        "raw_provider_envelope",
+        "usage",
+        "authorization",
+        "api_key",
+        "credential",
+        "hidden_reasoning",
+        "provider_error_body"
+      ]
+    },
+    "receipt_fields": {
+      "const": [
+        "handoff_id",
+        "payload_schema_reference",
+        "payload_bytes",
+        "payload_sha256",
+        "committed_at",
+        "lifecycle_state",
+        "schema_validation_pass",
+        "forbidden_field_scan_pass",
+        "cleanup_status"
+      ]
+    },
+    "failure_rules": {
+      "const": {
+        "terminal_failure_qualifies": false,
+        "failure_state_must_be_preserved": true,
+        "failure_may_be_repaired": false,
+        "duplicate_commit_may_overwrite": false,
+        "cleanup_failure_may_be_hidden": false
+      }
+    },
+    "effects": {
+      "const": {
+        "handoff_contract_adopted": false,
+        "implementation_created": false,
+        "runtime_created": false,
+        "database_created": false,
+        "evidence_truth_created": false,
+        "provider_supported": false,
+        "review_completed": false,
+        "conformance_executed": false
+      }
+    }
+  }
+}

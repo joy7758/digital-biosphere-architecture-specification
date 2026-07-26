@@ -1,0 +1,96 @@
+{
+  "$schema": "./sanitized-result-handoff-fixtures.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_SYNTHETIC_FIXTURES_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-27",
+  "base_review_response_fixture_reference": "contract-v0-2-candidate-review-response-fixtures.v0.1.json#PRE26-RSP-001-POSITIVE-ACCEPT",
+  "session_result_schema_reference": "contract-v0-2-candidate-review-session-result.schema.v0.1.json",
+  "review_response_schema_reference": "contract-v0-2-candidate-review-response.schema.v0.1.json",
+  "cases": [
+    {
+      "case_id": "PRE27-HANDOFF-001-VALID-STDOUT-PRESENT",
+      "operation": "VALID_COMMIT",
+      "stdout_suppressed": false,
+      "expected_result": "PASS",
+      "expected_failure_state": "NONE"
+    },
+    {
+      "case_id": "PRE27-HANDOFF-002-VALID-STDOUT-SUPPRESSED",
+      "operation": "VALID_COMMIT",
+      "stdout_suppressed": true,
+      "expected_result": "PASS",
+      "expected_failure_state": "NONE"
+    },
+    {
+      "case_id": "PRE27-HANDOFF-003-SINK-MISSING",
+      "operation": "OMIT_SINK",
+      "stdout_suppressed": true,
+      "expected_result": "FAIL_CLOSED",
+      "expected_failure_state": "SINK_MISSING"
+    },
+    {
+      "case_id": "PRE27-HANDOFF-004-SINK-EMPTY",
+      "operation": "WRITE_EMPTY",
+      "stdout_suppressed": true,
+      "expected_result": "FAIL_CLOSED",
+      "expected_failure_state": "SINK_EMPTY"
+    },
+    {
+      "case_id": "PRE27-HANDOFF-005-PARTIAL-JSON",
+      "operation": "WRITE_PARTIAL_JSON",
+      "stdout_suppressed": true,
+      "expected_result": "FAIL_CLOSED",
+      "expected_failure_state": "PARTIAL_JSON"
+    },
+    {
+      "case_id": "PRE27-HANDOFF-006-REVIEW-RESPONSE-SCHEMA-INVALID",
+      "operation": "INVALIDATE_EMBEDDED_REVIEW_RESPONSE",
+      "stdout_suppressed": true,
+      "expected_result": "FAIL_CLOSED",
+      "expected_failure_state": "REVIEW_RESPONSE_SCHEMA_INVALID"
+    },
+    {
+      "case_id": "PRE27-HANDOFF-007-RAW-ENVELOPE-FIELD",
+      "operation": "ADD_RAW_PROVIDER_ENVELOPE_FIELD",
+      "stdout_suppressed": true,
+      "expected_result": "FAIL_CLOSED",
+      "expected_failure_state": "FORBIDDEN_RAW_FIELD_PRESENT"
+    },
+    {
+      "case_id": "PRE27-HANDOFF-008-CREDENTIAL-LIKE-FIELD",
+      "operation": "ADD_CREDENTIAL_LIKE_FIELD",
+      "stdout_suppressed": true,
+      "expected_result": "FAIL_CLOSED",
+      "expected_failure_state": "CREDENTIAL_LIKE_FIELD_PRESENT"
+    },
+    {
+      "case_id": "PRE27-HANDOFF-009-DIGEST-MISMATCH",
+      "operation": "DECLARE_WRONG_DIGEST",
+      "stdout_suppressed": true,
+      "expected_result": "FAIL_CLOSED",
+      "expected_failure_state": "DIGEST_MISMATCH"
+    },
+    {
+      "case_id": "PRE27-HANDOFF-010-DUPLICATE-COMMIT",
+      "operation": "COMMIT_TWICE",
+      "stdout_suppressed": true,
+      "expected_result": "FAIL_CLOSED",
+      "expected_failure_state": "DUPLICATE_COMMIT"
+    },
+    {
+      "case_id": "PRE27-HANDOFF-011-CLEANUP-FAILURE",
+      "operation": "SIMULATE_CLEANUP_FAILURE",
+      "stdout_suppressed": true,
+      "expected_result": "FAIL_CLOSED",
+      "expected_failure_state": "CLEANUP_FAILURE"
+    }
+  ],
+  "effects": {
+    "real_provider_response_used": false,
+    "credential_used": false,
+    "network_request_executed": false,
+    "handoff_contract_adopted": false,
+    "implementation_created": false
+  }
+}

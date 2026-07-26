@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:sanitized-result-handoff-diagnostic-input-manifest:0.1",
+  "title": "TITMAS Sanitized Result Handoff Diagnostic Input Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "bindings",
+    "execution_environment",
+    "accounting_before_execution",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./sanitized-result-handoff-diagnostic-input-manifest.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-INPUT-MANIFEST-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FROZEN_NOT_EXECUTED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-27"
+    },
+    "bindings": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "artifact",
+          "sha256"
+        ],
+        "properties": {
+          "artifact": {
+            "type": "string",
+            "minLength": 8
+          },
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      }
+    },
+    "execution_environment": {
+      "const": {
+        "fresh_temporary_directory_required": true,
+        "repository_write_target_allowed": false,
+        "user_path_write_target_allowed": false,
+        "network_access_required": false,
+        "provider_access_required": false,
+        "model_access_required": false,
+        "secret_access_required": false,
+        "reusable_code_persisted": false
+      }
+    },
+    "accounting_before_execution": {
+      "const": {
+        "synthetic_fixtures_executed": 0,
+        "temporary_directories_created": 0,
+        "provider_network_requests_executed": 0,
+        "live_model_requests_executed": 0,
+        "secret_reads_executed": 0,
+        "pre26_request_budget_reopened": false
+      }
+    },
+    "effects": {
+      "const": {
+        "handoff_contract_adopted": false,
+        "implementation_created": false,
+        "runtime_created": false,
+        "provider_supported": false,
+        "conformance_executed": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

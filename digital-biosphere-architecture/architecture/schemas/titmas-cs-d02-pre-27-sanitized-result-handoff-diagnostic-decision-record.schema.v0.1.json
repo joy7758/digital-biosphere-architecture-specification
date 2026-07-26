@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-pre-27-sanitized-result-handoff-diagnostic-decision-record:0.1",
+  "title": "TITMAS PRE-27 Sanitized Result Handoff Diagnostic Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "primary_repository",
+    "target_branch",
+    "handoff_contract_reference",
+    "fixture_reference",
+    "diagnostic_plan_reference",
+    "input_manifest_reference",
+    "validation_result_schema_reference",
+    "limits",
+    "preconditions",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-27-sanitized-result-handoff-diagnostic-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-DECISION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "AUTHORIZED_EXACT_OFFLINE_SYNTHETIC_HANDOFF_DIAGNOSTIC_ONLY"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-27"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "2028dfbd178e3ee85ed712a7982677bb5fb5cb3ba9f35fdd32fe819067d3d90b"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_OFFLINE_PRE26_SANITIZED_RESULT_HANDOFF_DIAGNOSTIC_ONLY"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "target_branch": {
+      "const": "codex/production-observability-baseline"
+    },
+    "handoff_contract_reference": {
+      "const": "commercialization-standards-provider-adapter-profile-review-remediation/sanitized-result-handoff-contract.v0.1.json"
+    },
+    "fixture_reference": {
+      "const": "commercialization-standards-provider-adapter-profile-review-remediation/sanitized-result-handoff-fixtures.v0.1.json"
+    },
+    "diagnostic_plan_reference": {
+      "const": "commercialization-standards-provider-adapter-profile-review-remediation/sanitized-result-handoff-diagnostic-plan.v0.1.json"
+    },
+    "input_manifest_reference": {
+      "const": "commercialization-standards-provider-adapter-profile-review-remediation/sanitized-result-handoff-diagnostic-input-manifest.v0.1.json"
+    },
+    "validation_result_schema_reference": {
+      "const": "commercialization-standards-provider-adapter-profile-review-remediation/sanitized-result-handoff-diagnostic-validation-result.schema.v0.1.json"
+    },
+    "limits": {
+      "const": {
+        "source_bindings": 16,
+        "synthetic_fixture_expectations": 11,
+        "provider_network_requests_max": 0,
+        "live_model_requests_max": 0,
+        "secret_reads_max": 0,
+        "retry_attempts_max": 0,
+        "fallback_attempts_max": 0,
+        "model_substitutions_max": 0
+      }
+    },
+    "preconditions": {
+      "const": {
+        "pre26_result_remote_verified": true,
+        "standing_directive_active": true,
+        "recommendation_remote_verified": true,
+        "remote_decision_baseline_required_before_execution": true,
+        "authorization_receipt_required_before_execution": true,
+        "new_temporary_directory_required": true
+      }
+    },
+    "effects": {
+      "const": {
+        "authority_changed": false,
+        "ownership_changed": false,
+        "pre26_result_changed": false,
+        "pre26_request_budget_reopened": false,
+        "pre26_session_results_recovered": false,
+        "handoff_contract_adopted": false,
+        "adapter_implementation_created": false,
+        "runtime_created": false,
+        "provider_supported": false,
+        "conformance_executed": false,
+        "valid_problem_records": 0,
+        "cs_g0_pass": false,
+        "implementation_authorized": false,
+        "external_outreach_authorized": false,
+        "commercial_offer_authorized": false,
+        "certification_authorized": false,
+        "release_authorized": false
+      }
+    }
+  }
+}

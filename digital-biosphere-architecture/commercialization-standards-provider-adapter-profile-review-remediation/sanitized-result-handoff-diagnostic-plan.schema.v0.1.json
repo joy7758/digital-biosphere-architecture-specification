@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:sanitized-result-handoff-diagnostic-plan:0.1",
+  "title": "TITMAS Sanitized Result Handoff Diagnostic Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "execution_mode",
+    "input_manifest_reference",
+    "contract_reference",
+    "fixture_reference",
+    "validation_result_schema_reference",
+    "limits",
+    "steps",
+    "success_conditions",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./sanitized-result-handoff-diagnostic-plan.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-PLAN-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FROZEN_NOT_EXECUTED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-27"
+    },
+    "execution_mode": {
+      "const": "OFFLINE_EPHEMERAL_SYNTHETIC_HANDOFF_DIAGNOSTIC"
+    },
+    "input_manifest_reference": {
+      "const": "sanitized-result-handoff-diagnostic-input-manifest.v0.1.json"
+    },
+    "contract_reference": {
+      "const": "sanitized-result-handoff-contract.v0.1.json"
+    },
+    "fixture_reference": {
+      "const": "sanitized-result-handoff-fixtures.v0.1.json"
+    },
+    "validation_result_schema_reference": {
+      "const": "sanitized-result-handoff-diagnostic-validation-result.schema.v0.1.json"
+    },
+    "limits": {
+      "const": {
+        "source_bindings": 16,
+        "synthetic_fixture_expectations": 11,
+        "temporary_directories_max": 11,
+        "provider_network_requests_max": 0,
+        "live_model_requests_max": 0,
+        "secret_reads_max": 0,
+        "retry_attempts_max": 0,
+        "fallback_attempts_max": 0,
+        "model_substitutions_max": 0
+      }
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "success_conditions": {
+      "const": {
+        "input_hashes_match": 16,
+        "schemas_meta_valid": 7,
+        "frozen_instances_valid": 5,
+        "synthetic_fixture_expectations_match": 11,
+        "stdout_suppressed_valid_sink_recovered": true,
+        "raw_provider_fields_persisted": 0,
+        "credential_fields_persisted": 0,
+        "network_requests_executed": 0,
+        "live_model_requests_executed": 0,
+        "secret_reads_executed": 0,
+        "pre26_request_budget_reopened": false,
+        "handoff_contract_candidate_ready": true,
+        "provider_review_rerun_ready": false,
+        "handoff_contract_adopted": false,
+        "implementation_created": false
+      }
+    },
+    "effects": {
+      "const": {
+        "execution_started": false,
+        "pre26_result_changed": false,
+        "pre26_request_budget_reopened": false,
+        "handoff_contract_adopted": false,
+        "implementation_created": false,
+        "runtime_created": false,
+        "provider_supported": false
+      }
+    }
+  }
+}

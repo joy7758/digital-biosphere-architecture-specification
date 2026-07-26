@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:sanitized-result-handoff-fixtures:0.1",
+  "title": "TITMAS Sanitized Result Handoff Fixtures v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "base_review_response_fixture_reference",
+    "session_result_schema_reference",
+    "review_response_schema_reference",
+    "cases",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./sanitized-result-handoff-fixtures.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-FIXTURES-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FROZEN_SYNTHETIC_FIXTURES_NOT_EXECUTED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-27"
+    },
+    "base_review_response_fixture_reference": {
+      "const": "contract-v0-2-candidate-review-response-fixtures.v0.1.json#PRE26-RSP-001-POSITIVE-ACCEPT"
+    },
+    "session_result_schema_reference": {
+      "const": "contract-v0-2-candidate-review-session-result.schema.v0.1.json"
+    },
+    "review_response_schema_reference": {
+      "const": "contract-v0-2-candidate-review-response.schema.v0.1.json"
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "operation",
+          "stdout_suppressed",
+          "expected_result",
+          "expected_failure_state"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "pattern": "^PRE27-HANDOFF-[0-9]{3}-[A-Z0-9-]+$"
+          },
+          "operation": {
+            "enum": [
+              "VALID_COMMIT",
+              "OMIT_SINK",
+              "WRITE_EMPTY",
+              "WRITE_PARTIAL_JSON",
+              "INVALIDATE_EMBEDDED_REVIEW_RESPONSE",
+              "ADD_RAW_PROVIDER_ENVELOPE_FIELD",
+              "ADD_CREDENTIAL_LIKE_FIELD",
+              "DECLARE_WRONG_DIGEST",
+              "COMMIT_TWICE",
+              "SIMULATE_CLEANUP_FAILURE"
+            ]
+          },
+          "stdout_suppressed": {
+            "type": "boolean"
+          },
+          "expected_result": {
+            "enum": [
+              "PASS",
+              "FAIL_CLOSED"
+            ]
+          },
+          "expected_failure_state": {
+            "enum": [
+              "NONE",
+              "SINK_MISSING",
+              "SINK_EMPTY",
+              "PARTIAL_JSON",
+              "REVIEW_RESPONSE_SCHEMA_INVALID",
+              "FORBIDDEN_RAW_FIELD_PRESENT",
+              "CREDENTIAL_LIKE_FIELD_PRESENT",
+              "DIGEST_MISMATCH",
+              "DUPLICATE_COMMIT",
+              "CLEANUP_FAILURE"
+            ]
+          }
+        }
+      }
+    },
+    "effects": {
+      "const": {
+        "real_provider_response_used": false,
+        "credential_used": false,
+        "network_request_executed": false,
+        "handoff_contract_adopted": false,
+        "implementation_created": false
+      }
+    }
+  }
+}
