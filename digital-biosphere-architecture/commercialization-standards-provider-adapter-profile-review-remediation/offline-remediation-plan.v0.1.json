@@ -1,0 +1,66 @@
+{
+  "$schema": "./offline-remediation-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-20-OFFLINE-REMEDIATION-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-20",
+  "execution_mode": "DETERMINISTIC_OFFLINE_ONLY",
+  "source_manifest_reference": "source-binding-manifest.v0.1.json",
+  "limits": {
+    "live_model_requests_max": 0,
+    "provider_network_requests_max": 0,
+    "compact_request_cap_bytes": 24000,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "repair_attempts_max": 0
+  },
+  "steps": [
+    "VERIFY_ALL_SOURCE_HASHES",
+    "BUILD_SOURCE_BOUND_REVIEW_PROJECTION",
+    "BUILD_CRITERION_COVERAGE_MATRIX",
+    "REGISTER_OMITTED_MATERIAL",
+    "BUILD_COMPACT_REQUEST_MANIFEST",
+    "VALIDATE_ALL_JSON_SCHEMAS",
+    "VERIFY_ALL_SOURCE_POINTERS",
+    "VERIFY_SEVEN_OF_SEVEN_CRITERIA_COVERED",
+    "MEASURE_UTF8_COMPACT_REQUEST_BYTES",
+    "VERIFY_FALSE_EFFECTS_AND_SCOPE",
+    "RETAIN_RESULT_AND_EXECUTION_RECEIPT"
+  ],
+  "required_outputs": [
+    "architecture/provider-adapter-profile-review-projection-v0.1.md",
+    "architecture/provider-adapter-profile-review-projection.v0.1.json",
+    "architecture/schemas/provider-adapter-profile-review-projection.schema.v0.1.json",
+    "commercialization-standards-provider-adapter-profile-review-remediation/review-coverage-matrix.v0.1.json",
+    "commercialization-standards-provider-adapter-profile-review-remediation/review-coverage-matrix.schema.v0.1.json",
+    "commercialization-standards-provider-adapter-profile-review-remediation/compact-review-request-manifest.v0.1.json",
+    "commercialization-standards-provider-adapter-profile-review-remediation/compact-review-request-manifest.schema.v0.1.json",
+    "commercialization-standards-provider-adapter-profile-review-remediation/offline-validation-result.v0.1.json",
+    "commercialization-standards-provider-adapter-profile-review-remediation/offline-validation-result.schema.v0.1.json",
+    "commercialization-standards-provider-adapter-profile-review-remediation/PRE-20-REVIEW-BUNDLE-SIZE-REMEDIATION-RESULT-v0.1.md",
+    "commercialization-standards-provider-adapter-profile-review-remediation/execution-receipt.v0.1.json",
+    "commercialization-standards-provider-adapter-profile-review-remediation/execution-receipt.schema.v0.1.json"
+  ],
+  "success_conditions": {
+    "source_hashes_match": true,
+    "source_pointers_resolve": true,
+    "required_criteria_covered": 7,
+    "required_criteria_total": 7,
+    "omitted_material_register_present": true,
+    "compact_request_cap_met": true,
+    "summary_equivalence_claimed": false,
+    "full_profile_review_claimed": false
+  },
+  "effects": {
+    "execution_started": false,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false
+  }
+}

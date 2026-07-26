@@ -1,0 +1,222 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-pre-20-review-bundle-size-remediation-decision:0.1",
+  "title": "TITMAS CS-D02 PRE-20 Review Bundle Size Remediation Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "decision_result",
+    "decided_by_ref",
+    "executed_by",
+    "primary_repository",
+    "target_branch",
+    "offline_plan_reference",
+    "source_manifest_reference",
+    "limits",
+    "required_criteria",
+    "preconditions",
+    "stop_conditions",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-20-review-bundle-size-remediation-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-20-REVIEW-BUNDLE-SIZE-REMEDIATION-DECISION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "AUTHORIZED_OFFLINE_COMPACT_PROJECTION_CANDIDATE_ONLY"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-20"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-20-REVIEW-BUNDLE-SIZE-REMEDIATION-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "8fecb3d40fd9e4a5aece69e4e61a371a52079f7437a2ec373c4d1995a9106b90"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_OFFLINE_HASH_BOUND_COMPACT_REVIEW_PROJECTION_CANDIDATE_ONLY"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "target_branch": {
+      "const": "codex/production-observability-baseline"
+    },
+    "offline_plan_reference": {
+      "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-remediation-plan.v0.1.json"
+    },
+    "source_manifest_reference": {
+      "const": "commercialization-standards-provider-adapter-profile-review-remediation/source-binding-manifest.v0.1.json"
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "live_model_requests_max",
+        "provider_network_requests_max",
+        "compact_request_cap_bytes",
+        "retry_attempts_max",
+        "fallback_attempts_max",
+        "repair_attempts_max"
+      ],
+      "properties": {
+        "live_model_requests_max": {
+          "const": 0
+        },
+        "provider_network_requests_max": {
+          "const": 0
+        },
+        "compact_request_cap_bytes": {
+          "const": 24000
+        },
+        "retry_attempts_max": {
+          "const": 0
+        },
+        "fallback_attempts_max": {
+          "const": 0
+        },
+        "repair_attempts_max": {
+          "const": 0
+        }
+      }
+    },
+    "required_criteria": {
+      "const": [
+        "INTEROPERABILITY",
+        "DEVELOPER_IMPLEMENTABILITY",
+        "NORMALIZED_REQUEST_RESULT_BOUNDARY",
+        "FAILURE_TAXONOMY_COMPLETENESS",
+        "SEMANTIC_NON_ELEVATION",
+        "PRIVACY_AND_PERSISTENCE_BOUNDARY",
+        "CONFORMANCE_CASE_ADEQUACY"
+      ]
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre19_fail_closed_result_bound",
+        "pre18_sources_bound",
+        "standing_directive_active",
+        "remote_decision_baseline_required_before_execution"
+      ],
+      "properties": {
+        "pre19_fail_closed_result_bound": {
+          "const": true
+        },
+        "pre18_sources_bound": {
+          "const": true
+        },
+        "standing_directive_active": {
+          "const": true
+        },
+        "remote_decision_baseline_required_before_execution": {
+          "const": true
+        }
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 8
+      }
+    },
+    "effects": {
+      "$ref": "#/$defs/falseEffects"
+    }
+  },
+  "$defs": {
+    "falseEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_changed",
+        "ownership_changed",
+        "profile_review_completed",
+        "profile_adopted",
+        "adapter_implementation_created",
+        "conformance_executed",
+        "provider_supported",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "authority_changed": {
+          "const": false
+        },
+        "ownership_changed": {
+          "const": false
+        },
+        "profile_review_completed": {
+          "const": false
+        },
+        "profile_adopted": {
+          "const": false
+        },
+        "adapter_implementation_created": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}

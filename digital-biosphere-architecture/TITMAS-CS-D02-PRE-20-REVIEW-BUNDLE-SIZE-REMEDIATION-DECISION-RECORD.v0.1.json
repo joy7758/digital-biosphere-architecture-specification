@@ -1,0 +1,66 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-20-review-bundle-size-remediation-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-20-REVIEW-BUNDLE-SIZE-REMEDIATION-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_OFFLINE_COMPACT_PROJECTION_CANDIDATE_ONLY",
+  "decision_id": "CS-D02-PRE-20",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-20-REVIEW-BUNDLE-SIZE-REMEDIATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "8fecb3d40fd9e4a5aece69e4e61a371a52079f7437a2ec373c4d1995a9106b90",
+  "decision_result": "AUTHORIZE_OFFLINE_HASH_BOUND_COMPACT_REVIEW_PROJECTION_CANDIDATE_ONLY",
+  "decided_by_ref": "zhangbin",
+  "executed_by": "Codex",
+  "primary_repository": "digital-biosphere-architecture",
+  "target_branch": "codex/production-observability-baseline",
+  "offline_plan_reference": "commercialization-standards-provider-adapter-profile-review-remediation/offline-remediation-plan.v0.1.json",
+  "source_manifest_reference": "commercialization-standards-provider-adapter-profile-review-remediation/source-binding-manifest.v0.1.json",
+  "limits": {
+    "live_model_requests_max": 0,
+    "provider_network_requests_max": 0,
+    "compact_request_cap_bytes": 24000,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "repair_attempts_max": 0
+  },
+  "required_criteria": [
+    "INTEROPERABILITY",
+    "DEVELOPER_IMPLEMENTABILITY",
+    "NORMALIZED_REQUEST_RESULT_BOUNDARY",
+    "FAILURE_TAXONOMY_COMPLETENESS",
+    "SEMANTIC_NON_ELEVATION",
+    "PRIVACY_AND_PERSISTENCE_BOUNDARY",
+    "CONFORMANCE_CASE_ADEQUACY"
+  ],
+  "preconditions": {
+    "pre19_fail_closed_result_bound": true,
+    "pre18_sources_bound": true,
+    "standing_directive_active": true,
+    "remote_decision_baseline_required_before_execution": true
+  },
+  "stop_conditions": [
+    "SOURCE_HASH_MISMATCH",
+    "SOURCE_POINTER_UNRESOLVED",
+    "CRITERION_COVERAGE_MISSING",
+    "OMITTED_MATERIAL_REGISTER_MISSING",
+    "COMPACT_REQUEST_CAP_EXCEEDED",
+    "FULL_SOURCE_OR_LOSSLESS_EQUIVALENCE_CLAIMED",
+    "LIVE_OR_PROVIDER_REQUEST_ATTEMPTED",
+    "AUTOMATIC_DELETION_RETRY_FALLBACK_OR_REPAIR"
+  ],
+  "effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

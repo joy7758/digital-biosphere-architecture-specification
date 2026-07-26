@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:pre-20-source-binding-manifest:0.1",
+  "title": "TITMAS PRE-20 Source Binding Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "sources",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./source-binding-manifest.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-20-SOURCE-BINDING-MANIFEST-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FROZEN_SOURCE_BINDINGS_NOT_VALIDATED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-20"
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_id",
+          "reference",
+          "media_type",
+          "sha256"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "pattern": "^[A-Z0-9_]+$"
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 12
+          },
+          "media_type": {
+            "enum": [
+              "text/markdown",
+              "application/json",
+              "application/schema+json"
+            ]
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sources_validated",
+        "projection_created",
+        "review_completed",
+        "profile_adopted"
+      ],
+      "properties": {
+        "sources_validated": {
+          "const": false
+        },
+        "projection_created": {
+          "const": false
+        },
+        "review_completed": {
+          "const": false
+        },
+        "profile_adopted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
