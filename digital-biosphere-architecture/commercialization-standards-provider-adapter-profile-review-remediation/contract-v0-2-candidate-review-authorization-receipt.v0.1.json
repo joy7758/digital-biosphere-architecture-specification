@@ -1,0 +1,133 @@
+{
+  "$schema": "./contract-v0-2-candidate-review-authorization-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-AUTHORIZATION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-26",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "exact_action": "AUTHORIZE_EXACT_TWO_SESSION_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_VIA_QIANFAN_DIRECT_CHAT_ONLY",
+  "target_branch": "codex/production-observability-baseline",
+  "authorization_baseline_commit": "dfdba34ff2d8573764c26bba2223cb8183bdf6cc",
+  "remote_head_verified": "dfdba34ff2d8573764c26bba2223cb8183bdf6cc",
+  "remote_ancestor_check_pass": true,
+  "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+  "credential_source": "QIANFAN_API_KEY_ENVIRONMENT_ONLY",
+  "credential_present_nonempty": true,
+  "bindings": [
+    {
+      "artifact": "../TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-DECISION-RECORD.md",
+      "sha256": "bdd3310203c7b14f7fc44b59ffc367b7edfd8e4200423fc7d98b215fa732c204"
+    },
+    {
+      "artifact": "../TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-DECISION-RECORD.v0.1.json",
+      "sha256": "c99f1dbe1e6458258f49fe4e07d1931599b5c0128f63332c6aef2fd847d03a6b"
+    },
+    {
+      "artifact": "../architecture/schemas/titmas-cs-d02-pre-26-v0-2-contract-candidate-review-decision-record.schema.v0.1.json",
+      "sha256": "1d061051f6a929bce9ffda5cc9c09d047b3c2651f52becccd72110bc8404cc56"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-plan.v0.1.json",
+      "sha256": "bba255d74c068ffc9f6809c9f6e5f75dd43a9e2cce05b73d308a0c744c79f658"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-plan.schema.v0.1.json",
+      "sha256": "d07357972bd69829101f75b1e94d7545a4b15af4957358074f0ad07759ae1e01"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-input-manifest.v0.1.json",
+      "sha256": "f52d751a19f01df5472185c549846a26233670d9c38bc2d5faec4052e5d38c51"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-input-manifest.schema.v0.1.json",
+      "sha256": "96f4f5137aaeaaadaa0628822387bb706c307e68aa821f61c7542e8c122180ff"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-request-manifest.v0.1.json",
+      "sha256": "fc8a7e1d53224491829b04011a6d298576d25e8c8df2a5e0ab3f54c3f4d2f2ca"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-request-manifest.schema.v0.1.json",
+      "sha256": "07f0c1cad3a054b9d280ec4ad19030ab0e6f3d623f4fbb4c225ed01a4a30b0a7"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-response.schema.v0.1.json",
+      "sha256": "de01e484b31a315ec6c46065a6937d38debaea1a9eafbf98a463c6eb69e94e72"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-response-fixtures.v0.1.json",
+      "sha256": "e07360e2194bc0c8f6a2ce6583fb7b3ea8bc39d901d71f7ff2a587fe3a42875d"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-response-fixtures.schema.v0.1.json",
+      "sha256": "771aec75dd8438bdb8c1c3f459907287a27778b1df9c369639a2e621058e9add"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-query-template.v0.1.txt",
+      "sha256": "bb2540877ace361ed2236a50007211883da4ffb71eeddd98b00ee795e0ed759a"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-session-result.schema.v0.1.json",
+      "sha256": "dde73eb0c1a5fbacc1abb47375745cd5f881b9022416701f53c0a9de88b86116"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-validation-result.schema.v0.1.json",
+      "sha256": "e5c4cb431fcd770dac1c5ba40f6ee6604c8043ed8e561972cf8438722e9ae7b1"
+    }
+  ],
+  "preexecution_validation": {
+    "binding_hashes_matched": 15,
+    "binding_hashes_total": 15,
+    "input_manifest_hashes_matched": 17,
+    "input_manifest_hashes_total": 17,
+    "schema_meta_validated": 8,
+    "schema_meta_total": 8,
+    "schema_instances_validated": 5,
+    "schema_instances_total": 5,
+    "response_fixture_expectations_matched": 4,
+    "response_fixture_expectations_total": 4,
+    "query_bindings_matched": 2,
+    "query_bindings_total": 2,
+    "payload_bindings_matched": 2,
+    "payload_bindings_total": 2,
+    "query_source_bindings_matched": 11,
+    "query_source_bindings_total": 11
+  },
+  "execution_accounting": {
+    "review_sessions_authorized": 2,
+    "review_sessions_executed": 0,
+    "provider_network_requests_authorized": 2,
+    "provider_network_requests_executed": 0,
+    "kimi_k2_6_requests_authorized": 1,
+    "kimi_k2_6_requests_executed": 0,
+    "glm_5_2_requests_authorized": 1,
+    "glm_5_2_requests_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "model_substitutions": 0,
+    "alias_inference_attempts": 0,
+    "repair_attempts": 0
+  },
+  "persistence_boundary": {
+    "credential_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "usage_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "provider_error_body_persisted": false
+  },
+  "effects": {
+    "contract_candidates_adopted": false,
+    "alias_record_adopted": false,
+    "implementation_created": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
