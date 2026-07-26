@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/commercialization/stage-a-gate-result.schema.v0.1.json",
+  "title": "TITMAS PRE-12 Stage A Gate Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "gate",
+    "routing",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./stage-a-gate-result.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-12-STAGE-A-GATE-RESULT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "STAGE_A_FULL_PASS"
+    },
+    "observed_on": {
+      "const": "2026-07-26"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-12"
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requests_executed_required",
+        "requests_executed_observed",
+        "parseable_responses_required",
+        "parseable_responses_observed",
+        "providers_with_success_required",
+        "providers_with_success_observed",
+        "schema_failures_max",
+        "schema_failures_observed",
+        "boundary_failures_max",
+        "boundary_failures_observed",
+        "all_conditions_required",
+        "all_conditions_met"
+      ],
+      "properties": {
+        "requests_executed_required": {
+          "const": 2
+        },
+        "requests_executed_observed": {
+          "const": 2
+        },
+        "parseable_responses_required": {
+          "const": 2
+        },
+        "parseable_responses_observed": {
+          "const": 2
+        },
+        "providers_with_success_required": {
+          "const": 2
+        },
+        "providers_with_success_observed": {
+          "const": 2
+        },
+        "schema_failures_max": {
+          "const": 0
+        },
+        "schema_failures_observed": {
+          "const": 0
+        },
+        "boundary_failures_max": {
+          "const": 0
+        },
+        "boundary_failures_observed": {
+          "const": 0
+        },
+        "all_conditions_required": {
+          "const": true
+        },
+        "all_conditions_met": {
+          "const": true
+        }
+      }
+    },
+    "routing": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage_b_execution_condition_met",
+        "stage_b_authorized_by_frozen_plan",
+        "stage_b_requests_executed",
+        "stage_b_started"
+      ],
+      "properties": {
+        "stage_b_execution_condition_met": {
+          "const": true
+        },
+        "stage_b_authorized_by_frozen_plan": {
+          "const": true
+        },
+        "stage_b_requests_executed": {
+          "const": 0
+        },
+        "stage_b_started": {
+          "const": false
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_review_completed",
+        "candidate_status_changed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "commercial_effect"
+      ],
+      "properties": {
+        "candidate_review_completed": {
+          "const": false
+        },
+        "candidate_status_changed": {
+          "const": false
+        },
+        "record_counting_authorized": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "market_validation_pass": {
+          "const": false
+        },
+        "commercial_effect": {
+          "const": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "./stage-a-execution-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-12-STAGE-A-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "STAGE_A_FULL_PASS_STAGE_B_NOT_STARTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-12",
+  "execution_references": {
+    "execution_plan_reference": "execution-plan.v0.1.json",
+    "execution_plan_sha256": "feaf7db5d0706894a88110382133f758aaf26eee40280a6b7dc58b0d132b2a33",
+    "sanitized_observations_reference": "stage-a-sanitized-observations.v0.1.json",
+    "sanitized_observations_sha256": "1b3a5c83abc2f06b97bb3f1a00d4b933a6b138269e793b1fb8341456ddde899c",
+    "gate_result_reference": "stage-a-gate-result.v0.1.json",
+    "gate_result_sha256": "58a042d27de1e9672e10937fe463ffe6c7ea0bc32ca277792074350ace8be3b4"
+  },
+  "request_accounting": {
+    "stage_a_requests_authorized_max": 2,
+    "stage_a_requests_executed": 2,
+    "stage_b_requests_authorized_max": 4,
+    "stage_b_requests_executed": 0,
+    "total_live_model_requests_authorized_max": 6,
+    "total_live_model_requests_executed": 2
+  },
+  "gate_result": {
+    "stage_a_full_pass": true,
+    "stage_b_execution_condition_met": true,
+    "stage_b_started": false
+  },
+  "controls": {
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "json_repair_attempts": 0,
+    "raw_provider_body_persisted": false,
+    "secret_persisted": false,
+    "candidate_content_sent_in_stage_a": false
+  },
+  "effects": {
+    "candidate_review_completed": false,
+    "candidate_status_changed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

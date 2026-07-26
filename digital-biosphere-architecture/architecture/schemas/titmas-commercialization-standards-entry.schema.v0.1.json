@@ -1385,9 +1385,22 @@
         "rerun_execution_started",
         "two_stage_preflight_required",
         "stage_a_preflight_requests_max",
+        "stage_a_preflight_requests_executed",
+        "stage_a_parseable_responses",
+        "stage_a_providers_with_success",
+        "stage_a_schema_failures",
+        "stage_a_boundary_failures",
+        "stage_a_full_pass",
         "stage_b_review_requests_max",
+        "stage_b_review_requests_executed",
+        "stage_b_execution_condition_met",
+        "stage_b_started",
         "preflight_success_required_before_stage_b",
         "preflight_counts_toward_review_thresholds",
+        "stage_a_sanitized_observations_reference",
+        "stage_a_gate_result_reference",
+        "stage_a_execution_receipt_reference",
+        "stage_a_result_report_reference",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
         "rerun_json_repair_allowed",
@@ -1405,7 +1418,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE12_REMOTE_AUTHORIZATION_BASELINE_VERIFIED_EXECUTION_NOT_STARTED"
+          "const": "PRE12_STAGE_A_FULL_PASS_STAGE_B_NOT_STARTED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1528,7 +1541,7 @@
           "const": true
         },
         "live_model_requests_executed": {
-          "const": 0
+          "const": 2
         },
         "deepseek_current_model_contract_drift_detected": {
           "const": true
@@ -1582,7 +1595,7 @@
           "const": true
         },
         "rerun_execution_started": {
-          "const": false
+          "const": true
         },
         "two_stage_preflight_required": {
           "const": true
@@ -1590,14 +1603,53 @@
         "stage_a_preflight_requests_max": {
           "const": 2
         },
+        "stage_a_preflight_requests_executed": {
+          "const": 2
+        },
+        "stage_a_parseable_responses": {
+          "const": 2
+        },
+        "stage_a_providers_with_success": {
+          "const": 2
+        },
+        "stage_a_schema_failures": {
+          "const": 0
+        },
+        "stage_a_boundary_failures": {
+          "const": 0
+        },
+        "stage_a_full_pass": {
+          "const": true
+        },
         "stage_b_review_requests_max": {
           "const": 4
+        },
+        "stage_b_review_requests_executed": {
+          "const": 0
+        },
+        "stage_b_execution_condition_met": {
+          "const": true
+        },
+        "stage_b_started": {
+          "const": false
         },
         "preflight_success_required_before_stage_b": {
           "const": true
         },
         "preflight_counts_toward_review_thresholds": {
           "const": false
+        },
+        "stage_a_sanitized_observations_reference": {
+          "const": "commercialization-standards-public-source-record-review-rerun/stage-a-sanitized-observations.v0.1.json"
+        },
+        "stage_a_gate_result_reference": {
+          "const": "commercialization-standards-public-source-record-review-rerun/stage-a-gate-result.v0.1.json"
+        },
+        "stage_a_execution_receipt_reference": {
+          "const": "commercialization-standards-public-source-record-review-rerun/stage-a-execution-receipt.v0.1.json"
+        },
+        "stage_a_result_report_reference": {
+          "const": "commercialization-standards-public-source-record-review-rerun/PRE-12-STAGE-A-PREFLIGHT-RESULT-v0.1.md"
         },
         "rerun_retry_allowed": {
           "const": false

@@ -1,0 +1,208 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/commercialization/stage-a-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS PRE-12 Stage A Execution Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "execution_references",
+    "request_accounting",
+    "gate_result",
+    "controls",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./stage-a-execution-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-12-STAGE-A-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "STAGE_A_FULL_PASS_STAGE_B_NOT_STARTED"
+    },
+    "observed_on": {
+      "const": "2026-07-26"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-12"
+    },
+    "execution_references": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_plan_reference",
+        "execution_plan_sha256",
+        "sanitized_observations_reference",
+        "sanitized_observations_sha256",
+        "gate_result_reference",
+        "gate_result_sha256"
+      ],
+      "properties": {
+        "execution_plan_reference": {
+          "const": "execution-plan.v0.1.json"
+        },
+        "execution_plan_sha256": {
+          "const": "feaf7db5d0706894a88110382133f758aaf26eee40280a6b7dc58b0d132b2a33"
+        },
+        "sanitized_observations_reference": {
+          "const": "stage-a-sanitized-observations.v0.1.json"
+        },
+        "sanitized_observations_sha256": {
+          "const": "1b3a5c83abc2f06b97bb3f1a00d4b933a6b138269e793b1fb8341456ddde899c"
+        },
+        "gate_result_reference": {
+          "const": "stage-a-gate-result.v0.1.json"
+        },
+        "gate_result_sha256": {
+          "const": "58a042d27de1e9672e10937fe463ffe6c7ea0bc32ca277792074350ace8be3b4"
+        }
+      }
+    },
+    "request_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage_a_requests_authorized_max",
+        "stage_a_requests_executed",
+        "stage_b_requests_authorized_max",
+        "stage_b_requests_executed",
+        "total_live_model_requests_authorized_max",
+        "total_live_model_requests_executed"
+      ],
+      "properties": {
+        "stage_a_requests_authorized_max": {
+          "const": 2
+        },
+        "stage_a_requests_executed": {
+          "const": 2
+        },
+        "stage_b_requests_authorized_max": {
+          "const": 4
+        },
+        "stage_b_requests_executed": {
+          "const": 0
+        },
+        "total_live_model_requests_authorized_max": {
+          "const": 6
+        },
+        "total_live_model_requests_executed": {
+          "const": 2
+        }
+      }
+    },
+    "gate_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage_a_full_pass",
+        "stage_b_execution_condition_met",
+        "stage_b_started"
+      ],
+      "properties": {
+        "stage_a_full_pass": {
+          "const": true
+        },
+        "stage_b_execution_condition_met": {
+          "const": true
+        },
+        "stage_b_started": {
+          "const": false
+        }
+      }
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "retry_attempts",
+        "fallback_attempts",
+        "json_repair_attempts",
+        "raw_provider_body_persisted",
+        "secret_persisted",
+        "candidate_content_sent_in_stage_a"
+      ],
+      "properties": {
+        "retry_attempts": {
+          "const": 0
+        },
+        "fallback_attempts": {
+          "const": 0
+        },
+        "json_repair_attempts": {
+          "const": 0
+        },
+        "raw_provider_body_persisted": {
+          "const": false
+        },
+        "secret_persisted": {
+          "const": false
+        },
+        "candidate_content_sent_in_stage_a": {
+          "const": false
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_review_completed",
+        "candidate_status_changed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "customer_adoption",
+        "implementation_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "candidate_review_completed": {
+          "const": false
+        },
+        "candidate_status_changed": {
+          "const": false
+        },
+        "record_counting_authorized": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "market_validation_pass": {
+          "const": false
+        },
+        "customer_adoption": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}

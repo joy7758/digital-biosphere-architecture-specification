@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/commercialization/stage-a-sanitized-observations.schema.v0.1.json",
+  "title": "TITMAS PRE-12 Stage A Sanitized Observations",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "frozen_bindings",
+    "sessions",
+    "controls"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./stage-a-sanitized-observations.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-12-STAGE-A-SANITIZED-OBSERVATIONS-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "STAGE_A_EXECUTED_SANITIZED"
+    },
+    "observed_on": {
+      "const": "2026-07-26"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-12"
+    },
+    "frozen_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_plan_sha256",
+        "preflight_prompt_sha256",
+        "preflight_response_schema_sha256"
+      ],
+      "properties": {
+        "execution_plan_sha256": {
+          "const": "feaf7db5d0706894a88110382133f758aaf26eee40280a6b7dc58b0d132b2a33"
+        },
+        "preflight_prompt_sha256": {
+          "const": "5d0cd9b0a1418883cefded928fe540b09a44ee55c05e6e30308c2500c22bae1d"
+        },
+        "preflight_response_schema_sha256": {
+          "const": "17161d5ab32c35eb15c6c3885462f8dea219637098393c129a81dc88cc377915"
+        }
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/qianfan_session"
+        },
+        {
+          "$ref": "#/$defs/deepseek_session"
+        }
+      ],
+      "items": false
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_review_performed",
+        "retry_attempts",
+        "fallback_attempts",
+        "json_repair_attempts",
+        "raw_provider_body_persisted",
+        "secret_persisted",
+        "personal_or_customer_data_sent",
+        "counting_effect",
+        "cs_g0_effect"
+      ],
+      "properties": {
+        "candidate_review_performed": {
+          "const": false
+        },
+        "retry_attempts": {
+          "const": 0
+        },
+        "fallback_attempts": {
+          "const": 0
+        },
+        "json_repair_attempts": {
+          "const": 0
+        },
+        "raw_provider_body_persisted": {
+          "const": false
+        },
+        "secret_persisted": {
+          "const": false
+        },
+        "personal_or_customer_data_sent": {
+          "const": false
+        },
+        "counting_effect": {
+          "const": false
+        },
+        "cs_g0_effect": {
+          "const": false
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sanitized_answer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "preflight_contract_version",
+        "provider_path_status",
+        "json_contract_status",
+        "candidate_review_performed",
+        "counting_effect",
+        "cs_g0_effect"
+      ],
+      "properties": {
+        "preflight_contract_version": {
+          "const": "0.1"
+        },
+        "provider_path_status": {
+          "const": "RESPONDING"
+        },
+        "json_contract_status": {
+          "const": "PARSEABLE"
+        },
+        "candidate_review_performed": {
+          "const": false
+        },
+        "counting_effect": {
+          "const": false
+        },
+        "cs_g0_effect": {
+          "const": false
+        }
+      }
+    },
+    "qianfan_session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "provider_gateway",
+        "endpoint_host",
+        "model",
+        "request_executed",
+        "provider_request_status",
+        "http_status_observed",
+        "http_status",
+        "answer_parseable",
+        "schema_match",
+        "boundary_failure",
+        "sanitized_answer",
+        "error_class"
+      ],
+      "properties": {
+        "session_id": {
+          "const": "QF-KIMI-PREFLIGHT-PRE12-P1"
+        },
+        "provider_gateway": {
+          "const": "qianfan_installed_tool"
+        },
+        "endpoint_host": {
+          "const": "qianfan.baidubce.com"
+        },
+        "model": {
+          "const": "kimi-k2.6"
+        },
+        "request_executed": {
+          "const": true
+        },
+        "provider_request_status": {
+          "const": "SUCCESS"
+        },
+        "http_status_observed": {
+          "const": false
+        },
+        "http_status": {
+          "type": "null"
+        },
+        "answer_parseable": {
+          "const": true
+        },
+        "schema_match": {
+          "const": true
+        },
+        "boundary_failure": {
+          "const": false
+        },
+        "sanitized_answer": {
+          "$ref": "#/$defs/sanitized_answer"
+        },
+        "error_class": {
+          "type": "null"
+        }
+      }
+    },
+    "deepseek_session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "provider_gateway",
+        "endpoint_host",
+        "model",
+        "request_executed",
+        "provider_request_status",
+        "http_status_observed",
+        "http_status",
+        "provider_envelope_parseable",
+        "answer_parseable",
+        "schema_match",
+        "boundary_failure",
+        "sanitized_answer",
+        "error_class"
+      ],
+      "properties": {
+        "session_id": {
+          "const": "DS-V4PRO-PREFLIGHT-PRE12-P2"
+        },
+        "provider_gateway": {
+          "const": "deepseek_direct"
+        },
+        "endpoint_host": {
+          "const": "api.deepseek.com"
+        },
+        "model": {
+          "const": "deepseek-v4-pro"
+        },
+        "request_executed": {
+          "const": true
+        },
+        "provider_request_status": {
+          "const": "SUCCESS"
+        },
+        "http_status_observed": {
+          "const": true
+        },
+        "http_status": {
+          "const": 200
+        },
+        "provider_envelope_parseable": {
+          "const": true
+        },
+        "answer_parseable": {
+          "const": true
+        },
+        "schema_match": {
+          "const": true
+        },
+        "boundary_failure": {
+          "const": false
+        },
+        "sanitized_answer": {
+          "$ref": "#/$defs/sanitized_answer"
+        },
+        "error_class": {
+          "type": "null"
+        }
+      }
+    }
+  }
+}
