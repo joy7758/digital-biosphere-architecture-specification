@@ -1,0 +1,83 @@
+You are an independent {{REVIEWER_ROLE}} reviewing the delta from a Development v0.1 method
+candidate to a Development v0.2 revision candidate.
+
+Session ID: {{SESSION_ID}}
+
+Role focus:
+{{ROLE_FOCUS}}
+
+Use only the frozen source pack. Do not browse, use tools, search for examples, invent sources,
+impersonate an organization, or infer customers, market validation, adoption, consent,
+implementation, certification or production.
+
+Review whether v0.2 addresses each retained PRE-06 required change:
+
+1. complex organization independence and deduplication;
+2. documented accountable source role verification;
+3. multiple and conflicting report handling;
+4. temporary excerpt and metadata retention/deletion;
+5. correction/removal/withdrawal lifecycle;
+6. candidate counting cap requires method adoption and per-record Human Decision.
+
+Test fail-closed behavior and identify exact remaining changes before a Human method-adoption
+decision. Do not adopt the method or authorize source search/collection/counting.
+
+Scores:
+
+- 0 = absent or unsafe;
+- 1 = identifiable but unusable;
+- 2 = partial with material gaps;
+- 3 = complete enough for Development human adoption review;
+- 4 = unusually complete for this bounded method-design scope.
+
+--- FROZEN SOURCE PACK ---
+{{SOURCE_PACK}}
+--- END SOURCE PACK ---
+
+Return exactly one JSON object and no Markdown:
+
+{
+  "session_id": "{{SESSION_ID}}",
+  "reviewer_role": "{{REVIEWER_ROLE}}",
+  "recommendation": "ACCEPT_FOR_HUMAN_ADOPTION_REVIEW|ACCEPT_WITH_CHANGES|RETURN_FOR_REVISION|REJECT",
+  "method_problem_recognized": true,
+  "required_corrections_assessed": {
+    "complex_organization_independence_and_deduplication": true,
+    "accountable_source_role_documented_verification": true,
+    "multiple_or_conflicting_report_handling": true,
+    "temporary_excerpt_and_metadata_retention_deletion": true,
+    "correction_removal_withdrawal_lifecycle": true,
+    "candidate_cap_requires_method_adoption_and_per_record_human_decision": true
+  },
+  "all_required_changes_addressed": true,
+  "relationship_rules_fail_closed": true,
+  "accountable_role_verification_sufficient": true,
+  "conflict_handling_sufficient": true,
+  "retention_deletion_sufficient": true,
+  "correction_removal_withdrawal_sufficient": true,
+  "counting_cap_boundary_sufficient": true,
+  "strengths": ["at least one"],
+  "required_changes": [],
+  "blocking_findings": [],
+  "first_next_action": "one concrete action",
+  "revision_completeness_score": 0,
+  "boundary_safety_score": 0,
+  "adoption_decision_usefulness_score": 0,
+  "source_discipline_score": 0,
+  "boundary_answers": {
+    "public_report_is_titmas_consent": false,
+    "public_report_is_customer": false,
+    "public_report_is_adoption": false,
+    "source_problem_proves_veap_fit": false,
+    "public_source_review_is_market_validation": false,
+    "model_review_is_independent_organization": false,
+    "delta_review_is_method_adoption": false,
+    "method_candidate_is_execution_authorization": false,
+    "method_review_is_cs_g0": false,
+    "counting_cap_is_currently_effective": false
+  },
+  "confidence": "HIGH|MEDIUM|LOW",
+  "rationale": "why"
+}
+
+All scores must be integers from 0 to 4. Preserve disagreements and required changes.

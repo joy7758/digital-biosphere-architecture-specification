@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:public-first-party-method-delta-review-observation-set:0.2",
+  "title": "Public First-party Method Delta Review Observation Set v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "validation_id",
+    "plan_reference",
+    "decision_reference",
+    "executed_at",
+    "raw_provider_envelopes_persisted",
+    "sessions"
+  ],
+  "properties": {
+    "$schema": {"const": "./observation-set.schema.v0.2.json"},
+    "schema_version": {"const": "0.2"},
+    "validation_id": {"const": "TITMAS-VEAP-PFPMR-20260726-002"},
+    "plan_reference": {"const": "validation-plan.v0.2.json"},
+    "decision_reference": {"const": "CS-D02-PRE-07"},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "raw_provider_envelopes_persisted": {"const": false},
+    "sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "session_id",
+          "provider_gateway",
+          "endpoint_host",
+          "model",
+          "reviewer_role",
+          "started_at",
+          "completed_at",
+          "attempts",
+          "request_sha256",
+          "http_status",
+          "transport_status",
+          "provider_body_sha256",
+          "provider_body_bytes",
+          "content_sha256",
+          "content_bytes",
+          "parse_status",
+          "failure_category",
+          "usage",
+          "result"
+        ],
+        "properties": {
+          "session_id": {"type": "string"},
+          "provider_gateway": {"enum": ["qianfan", "deepseek"]},
+          "endpoint_host": {"type": "string"},
+          "model": {"type": "string"},
+          "reviewer_role": {"type": "string"},
+          "started_at": {"type": "string", "format": "date-time"},
+          "completed_at": {"type": "string", "format": "date-time"},
+          "attempts": {"type": "integer", "minimum": 1, "maximum": 2},
+          "request_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "http_status": {"type": ["integer", "null"]},
+          "transport_status": {
+            "enum": ["SUCCESS", "PROVIDER_RESPONSE_FAILURE", "TRANSPORT_FAILURE"]
+          },
+          "provider_body_sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "provider_body_bytes": {"type": ["integer", "null"], "minimum": 0},
+          "content_sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "content_bytes": {"type": ["integer", "null"], "minimum": 0},
+          "parse_status": {
+            "enum": ["PARSED_JSON", "INVALID_JSON_RETAINED_NO_REPAIR", "NOT_PARSED"]
+          },
+          "failure_category": {"type": ["string", "null"]},
+          "usage": {
+            "oneOf": [
+              {"type": "null"},
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": ["prompt_tokens", "completion_tokens", "total_tokens"],
+                "properties": {
+                  "prompt_tokens": {"type": ["integer", "null"]},
+                  "completion_tokens": {"type": ["integer", "null"]},
+                  "total_tokens": {"type": ["integer", "null"]}
+                }
+              }
+            ]
+          },
+          "result": {
+            "oneOf": [
+              {"type": "null"},
+              {"$ref": "./agent-delta-review-response.schema.v0.2.json"}
+            ]
+          }
+        }
+      }
+    }
+  }
+}

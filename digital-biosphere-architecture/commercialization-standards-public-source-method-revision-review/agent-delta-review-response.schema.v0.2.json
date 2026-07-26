@@ -1,0 +1,124 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:public-first-party-method-delta-review-response:0.2",
+  "title": "Public First-party Problem Report Method Delta Review Response v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "session_id",
+    "reviewer_role",
+    "recommendation",
+    "method_problem_recognized",
+    "required_corrections_assessed",
+    "all_required_changes_addressed",
+    "relationship_rules_fail_closed",
+    "accountable_role_verification_sufficient",
+    "conflict_handling_sufficient",
+    "retention_deletion_sufficient",
+    "correction_removal_withdrawal_sufficient",
+    "counting_cap_boundary_sufficient",
+    "strengths",
+    "required_changes",
+    "blocking_findings",
+    "first_next_action",
+    "revision_completeness_score",
+    "boundary_safety_score",
+    "adoption_decision_usefulness_score",
+    "source_discipline_score",
+    "boundary_answers",
+    "confidence",
+    "rationale"
+  ],
+  "properties": {
+    "session_id": {"type": "string", "minLength": 1},
+    "reviewer_role": {
+      "enum": ["METHOD_DELTA_REVIEWER", "CLAIM_PRIVACY_DELTA_REVIEWER"]
+    },
+    "recommendation": {
+      "enum": [
+        "ACCEPT_FOR_HUMAN_ADOPTION_REVIEW",
+        "ACCEPT_WITH_CHANGES",
+        "RETURN_FOR_REVISION",
+        "REJECT"
+      ]
+    },
+    "method_problem_recognized": {"type": "boolean"},
+    "required_corrections_assessed": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "complex_organization_independence_and_deduplication",
+        "accountable_source_role_documented_verification",
+        "multiple_or_conflicting_report_handling",
+        "temporary_excerpt_and_metadata_retention_deletion",
+        "correction_removal_withdrawal_lifecycle",
+        "candidate_cap_requires_method_adoption_and_per_record_human_decision"
+      ],
+      "properties": {
+        "complex_organization_independence_and_deduplication": {"type": "boolean"},
+        "accountable_source_role_documented_verification": {"type": "boolean"},
+        "multiple_or_conflicting_report_handling": {"type": "boolean"},
+        "temporary_excerpt_and_metadata_retention_deletion": {"type": "boolean"},
+        "correction_removal_withdrawal_lifecycle": {"type": "boolean"},
+        "candidate_cap_requires_method_adoption_and_per_record_human_decision": {"type": "boolean"}
+      }
+    },
+    "all_required_changes_addressed": {"type": "boolean"},
+    "relationship_rules_fail_closed": {"type": "boolean"},
+    "accountable_role_verification_sufficient": {"type": "boolean"},
+    "conflict_handling_sufficient": {"type": "boolean"},
+    "retention_deletion_sufficient": {"type": "boolean"},
+    "correction_removal_withdrawal_sufficient": {"type": "boolean"},
+    "counting_cap_boundary_sufficient": {"type": "boolean"},
+    "strengths": {"$ref": "#/$defs/nonEmptyStringArray"},
+    "required_changes": {"$ref": "#/$defs/stringArray"},
+    "blocking_findings": {"$ref": "#/$defs/stringArray"},
+    "first_next_action": {"type": "string", "minLength": 1},
+    "revision_completeness_score": {"$ref": "#/$defs/score"},
+    "boundary_safety_score": {"$ref": "#/$defs/score"},
+    "adoption_decision_usefulness_score": {"$ref": "#/$defs/score"},
+    "source_discipline_score": {"$ref": "#/$defs/score"},
+    "boundary_answers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "public_report_is_titmas_consent",
+        "public_report_is_customer",
+        "public_report_is_adoption",
+        "source_problem_proves_veap_fit",
+        "public_source_review_is_market_validation",
+        "model_review_is_independent_organization",
+        "delta_review_is_method_adoption",
+        "method_candidate_is_execution_authorization",
+        "method_review_is_cs_g0",
+        "counting_cap_is_currently_effective"
+      ],
+      "properties": {
+        "public_report_is_titmas_consent": {"const": false},
+        "public_report_is_customer": {"const": false},
+        "public_report_is_adoption": {"const": false},
+        "source_problem_proves_veap_fit": {"const": false},
+        "public_source_review_is_market_validation": {"const": false},
+        "model_review_is_independent_organization": {"const": false},
+        "delta_review_is_method_adoption": {"const": false},
+        "method_candidate_is_execution_authorization": {"const": false},
+        "method_review_is_cs_g0": {"const": false},
+        "counting_cap_is_currently_effective": {"const": false}
+      }
+    },
+    "confidence": {"enum": ["HIGH", "MEDIUM", "LOW"]},
+    "rationale": {"type": "string", "minLength": 1}
+  },
+  "$defs": {
+    "score": {"type": "integer", "minimum": 0, "maximum": 4},
+    "stringArray": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "nonEmptyStringArray": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}

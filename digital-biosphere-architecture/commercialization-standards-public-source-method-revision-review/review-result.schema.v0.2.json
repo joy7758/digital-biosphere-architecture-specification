@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:public-first-party-method-delta-review-result:0.2",
+  "title": "Public First-party Method Delta Review Result v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "schema_version",
+    "validation_id",
+    "plan_reference",
+    "observation_reference",
+    "scored_at",
+    "result",
+    "threshold_results",
+    "distribution",
+    "required_changes",
+    "blocking_findings",
+    "authorization_audit",
+    "maximum_effect",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./review-result.schema.v0.2.json"},
+    "schema_version": {"const": "0.2"},
+    "validation_id": {"const": "TITMAS-VEAP-PFPMR-20260726-002"},
+    "plan_reference": {"const": "validation-plan.v0.2.json"},
+    "observation_reference": {"const": "raw-sanitized-observations.v0.2.json"},
+    "scored_at": {"type": "string", "format": "date-time"},
+    "result": {
+      "enum": [
+        "PASS_DELTA_REVIEW_COMPLETE_HUMAN_ADOPTION_REVIEW_READY",
+        "PASS_DELTA_REVIEW_COMPLETE_CHANGES_REQUIRED",
+        "FAIL_DELTA_REVIEW_INCOMPLETE"
+      ]
+    },
+    "threshold_results": {
+      "type": "object",
+      "additionalProperties": {"$ref": "#/$defs/threshold"},
+      "minProperties": 11
+    },
+    "distribution": {"type": "object"},
+    "required_changes": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "blocking_findings": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "authorization_audit": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_reference",
+        "decision_created_before_execution",
+        "source_digests_match",
+        "authorized_sessions_max",
+        "sessions_executed",
+        "within_execution_envelope"
+      ],
+      "properties": {
+        "decision_reference": {"const": "CS-D02-PRE-07"},
+        "decision_created_before_execution": {"const": true},
+        "source_digests_match": {"const": true},
+        "authorized_sessions_max": {"const": 2},
+        "sessions_executed": {"const": 2},
+        "within_execution_envelope": {"const": true}
+      }
+    },
+    "maximum_effect": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"}
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": {"type": "boolean"}
+    }
+  },
+  "$defs": {
+    "threshold": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actual", "required", "comparison", "pass"],
+      "properties": {
+        "actual": {"type": "number"},
+        "required": {"type": "number"},
+        "comparison": {"enum": ["MIN", "MAX"]},
+        "pass": {"type": "boolean"}
+      }
+    }
+  }
+}

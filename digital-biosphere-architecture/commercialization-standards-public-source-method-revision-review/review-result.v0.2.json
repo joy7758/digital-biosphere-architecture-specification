@@ -1,0 +1,127 @@
+{
+  "$schema": "./review-result.schema.v0.2.json",
+  "schema_version": "0.2",
+  "validation_id": "TITMAS-VEAP-PFPMR-20260726-002",
+  "plan_reference": "validation-plan.v0.2.json",
+  "observation_reference": "raw-sanitized-observations.v0.2.json",
+  "scored_at": "2026-07-26T08:06:40Z",
+  "result": "PASS_DELTA_REVIEW_COMPLETE_HUMAN_ADOPTION_REVIEW_READY",
+  "threshold_results": {
+    "sessions_planned": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "parseable_sessions": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "providers_with_success": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "review_roles_with_success": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "method_problem_recognized": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "all_required_changes_addressed": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "non_reject_recommendations": {
+      "actual": 2,
+      "required": 2,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "boundary_safety_failures": {
+      "actual": 0,
+      "required": 0,
+      "comparison": "MAX",
+      "pass": true
+    },
+    "mean_revision_completeness": {
+      "actual": 4,
+      "required": 3,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_boundary_safety": {
+      "actual": 4,
+      "required": 3,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_adoption_decision_usefulness": {
+      "actual": 4,
+      "required": 2.5,
+      "comparison": "MIN",
+      "pass": true
+    },
+    "mean_source_discipline": {
+      "actual": 4,
+      "required": 3,
+      "comparison": "MIN",
+      "pass": true
+    }
+  },
+  "distribution": {
+    "recommendations": {
+      "ACCEPT_FOR_HUMAN_ADOPTION_REVIEW": 2,
+      "ACCEPT_WITH_CHANGES": 0,
+      "RETURN_FOR_REVISION": 0,
+      "REJECT": 0
+    },
+    "confidence": {
+      "HIGH": 2,
+      "MEDIUM": 0,
+      "LOW": 0
+    }
+  },
+  "required_changes": [],
+  "blocking_findings": [],
+  "authorization_audit": {
+    "decision_reference": "CS-D02-PRE-07",
+    "decision_created_before_execution": true,
+    "source_digests_match": true,
+    "authorized_sessions_max": 2,
+    "sessions_executed": 2,
+    "within_execution_envelope": true
+  },
+  "maximum_effect": {
+    "method_v0_2_candidate_defined": true,
+    "delta_review_complete": true,
+    "method_adoption_review_ready": true
+  },
+  "non_effects": {
+    "method_adopted": false,
+    "problem_validation_execution_authorized": false,
+    "public_source_search_authorized": false,
+    "public_source_collection_authorized": false,
+    "public_source_record_counting_authorized": false,
+    "valid_problem_record_created": false,
+    "cs_g0_pass": false,
+    "external_outreach_authorized": false,
+    "data_collection_authorized": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "customer_adoption": false
+  }
+}
