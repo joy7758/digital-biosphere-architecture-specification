@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre52-execution-receipt.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "executed_at", "artifact_count_bound", "artifacts", "self_hash_policy", "effects", "next_action"],
+  "properties": {
+    "$schema": { "const": "./execution-receipt.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-CS-D02-PRE-52-EXECUTION-RECEIPT-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "PASS_OFFLINE_REMEDIATION_CONTRACT_PARTIAL_MODEL_BINDINGS_REMAIN" },
+    "executed_at": { "type": "string", "format": "date-time" },
+    "artifact_count_bound": { "const": 8 },
+    "artifacts": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    },
+    "self_hash_policy": { "const": "SELF_SHA256_NOT_EMBEDDED_REPORTED_BY_POST_WRITE_VALIDATION" },
+    "effects": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": { "const": false }
+    },
+    "next_action": { "const": "RESOLVE_QIANFAN_AND_SECURITY_REVIEWER_EXACT_MODEL_BINDINGS_THEN_FORM_PREFLIGHT_RECOMMENDATION" }
+  }
+}

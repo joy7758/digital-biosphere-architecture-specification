@@ -1,0 +1,27 @@
+{
+  "$schema": "./remediation-negative-cases.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-52-REMEDIATION-NEGATIVE-CASES-0.1",
+  "version": "0.1.0",
+  "status": "PLANNED_NOT_EXECUTED",
+  "case_count": 12,
+  "cases": [
+    {"case_id": "PRE52-NEG-01", "condition": "Retry any PRE-51 failed session.", "expected": "REJECT"},
+    {"case_id": "PRE52-NEG-02", "condition": "Use another Provider to replace a failed assigned session.", "expected": "REJECT"},
+    {"case_id": "PRE52-NEG-03", "condition": "Infer timeout root cause from sanitized metadata.", "expected": "REJECT"},
+    {"case_id": "PRE52-NEG-04", "condition": "Infer current model availability from historical success.", "expected": "REJECT"},
+    {"case_id": "PRE52-NEG-05", "condition": "Infer account entitlement from public documentation.", "expected": "REJECT"},
+    {"case_id": "PRE52-NEG-06", "condition": "Select Qianfan without exact model and credential binding.", "expected": "REJECT"},
+    {"case_id": "PRE52-NEG-07", "condition": "Select a Security Reviewer without exact Provider and model.", "expected": "REJECT"},
+    {"case_id": "PRE52-NEG-08", "condition": "Persist raw Provider envelope or Authorization value.", "expected": "REJECT"},
+    {"case_id": "PRE52-NEG-09", "condition": "Repair invalid JSON or empty content.", "expected": "REJECT"},
+    {"case_id": "PRE52-NEG-10", "condition": "Treat lower-layer reachability as inference success.", "expected": "REJECT"},
+    {"case_id": "PRE52-NEG-11", "condition": "Treat planning allocation as live review authorization.", "expected": "REJECT"},
+    {"case_id": "PRE52-NEG-12", "condition": "Change P0 direct observability to PASS.", "expected": "REJECT"}
+  ],
+  "execution": {
+    "executed": false,
+    "pass_count": 0,
+    "fail_count": 0,
+    "unknown_count": 12
+  }
+}

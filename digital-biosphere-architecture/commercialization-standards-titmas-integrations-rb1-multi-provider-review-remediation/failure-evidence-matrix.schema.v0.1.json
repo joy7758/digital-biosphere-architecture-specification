@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre52-failure-evidence-matrix.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "observations", "conclusions"],
+  "properties": {
+    "$schema": { "const": "./failure-evidence-matrix.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-CS-D02-PRE-52-FAILURE-EVIDENCE-MATRIX-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "OFFLINE_CROSSWALK_COMPLETE_ROOT_CAUSE_UNKNOWN" },
+    "observations": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["observation_id", "route", "model", "result", "source_reference", "current_inference"],
+        "properties": {
+          "observation_id": { "type": "string", "minLength": 1 },
+          "route": { "type": "string", "minLength": 1 },
+          "model": { "type": "string", "minLength": 1 },
+          "result": { "type": "string", "minLength": 1 },
+          "source_reference": { "type": "string", "pattern": "^\\.\\./" },
+          "current_inference": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "conclusions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kimi_qianfan_route", "root_cause_proven", "all_qianfan_models_unavailable", "ark_current_availability_proven", "deepseek_current_availability_proven", "pre51_may_be_retried"],
+      "properties": {
+        "kimi_qianfan_route": { "const": "INTERMITTENT_NOT_SELECTED_FOR_NEXT_LIVE_REVIEW" },
+        "root_cause_proven": { "const": false },
+        "all_qianfan_models_unavailable": { "const": false },
+        "ark_current_availability_proven": { "const": false },
+        "deepseek_current_availability_proven": { "const": false },
+        "pre51_may_be_retried": { "const": false }
+      }
+    }
+  }
+}

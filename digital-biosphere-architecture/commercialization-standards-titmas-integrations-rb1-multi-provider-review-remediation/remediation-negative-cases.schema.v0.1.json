@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre52-remediation-negative-cases.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "case_count", "cases", "execution"],
+  "properties": {
+    "$schema": { "const": "./remediation-negative-cases.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-CS-D02-PRE-52-REMEDIATION-NEGATIVE-CASES-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "PLANNED_NOT_EXECUTED" },
+    "case_count": { "const": 12 },
+    "cases": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "condition", "expected"],
+        "properties": {
+          "case_id": { "type": "string", "pattern": "^PRE52-NEG-[0-9]{2}$" },
+          "condition": { "type": "string", "minLength": 1 },
+          "expected": { "const": "REJECT" }
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["executed", "pass_count", "fail_count", "unknown_count"],
+      "properties": {
+        "executed": { "const": false },
+        "pass_count": { "const": 0 },
+        "fail_count": { "const": 0 },
+        "unknown_count": { "const": 12 }
+      }
+    }
+  }
+}

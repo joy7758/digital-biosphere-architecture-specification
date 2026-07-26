@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre52-preallocated-session-contract.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "allocation_policy", "sessions", "execution_contract", "readiness"],
+  "properties": {
+    "$schema": { "const": "./preallocated-session-contract.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-CS-D02-PRE-52-PREALLOCATED-SESSION-CONTRACT-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "PARTIAL_BINDINGS_NOT_EXECUTION_READY" },
+    "allocation_policy": {
+      "type": "object",
+      "minProperties": 7,
+      "additionalProperties": { "type": "boolean" },
+      "properties": {
+        "allocation_is_fallback": { "const": false },
+        "cross_provider_replacement_allowed": { "const": false },
+        "retry_allowed": { "const": false },
+        "model_substitution_allowed": { "const": false },
+        "alias_inference_allowed": { "const": false },
+        "json_repair_allowed": { "const": false },
+        "failed_session_remains_failed": { "const": true }
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["sequence", "role", "provider_candidate", "endpoint_candidate", "model_candidate", "credential_identifier", "binding_status"],
+        "properties": {
+          "sequence": { "type": "integer", "minimum": 1, "maximum": 4 },
+          "role": { "type": "string", "minLength": 1 },
+          "provider_candidate": { "type": "string", "minLength": 1 },
+          "endpoint_candidate": { "type": "string", "minLength": 1 },
+          "model_candidate": { "type": "string", "minLength": 1 },
+          "credential_identifier": { "type": "string", "minLength": 1 },
+          "binding_status": { "type": "string", "minLength": 1 }
+        }
+      }
+    },
+    "execution_contract": {
+      "type": "object",
+      "minProperties": 8,
+      "additionalProperties": { "type": "boolean" }
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bound_sessions", "required_bound_sessions", "execution_ready", "live_review_authorized"],
+      "properties": {
+        "bound_sessions": { "const": 2 },
+        "required_bound_sessions": { "const": 4 },
+        "execution_ready": { "const": false },
+        "live_review_authorized": { "const": false }
+      }
+    }
+  }
+}

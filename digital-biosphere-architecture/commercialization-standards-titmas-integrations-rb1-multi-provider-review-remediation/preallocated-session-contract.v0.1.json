@@ -1,0 +1,69 @@
+{
+  "$schema": "./preallocated-session-contract.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-52-PREALLOCATED-SESSION-CONTRACT-0.1",
+  "version": "0.1.0",
+  "status": "PARTIAL_BINDINGS_NOT_EXECUTION_READY",
+  "allocation_policy": {
+    "allocation_is_fallback": false,
+    "cross_provider_replacement_allowed": false,
+    "retry_allowed": false,
+    "model_substitution_allowed": false,
+    "alias_inference_allowed": false,
+    "json_repair_allowed": false,
+    "failed_session_remains_failed": true
+  },
+  "sessions": [
+    {
+      "sequence": 1,
+      "role": "AGENT_DEVELOPER",
+      "provider_candidate": "DEEPSEEK_DIRECT",
+      "endpoint_candidate": "https://api.deepseek.com/chat/completions",
+      "model_candidate": "deepseek-v4-pro",
+      "credential_identifier": "DEEPSEEK_API_KEY",
+      "binding_status": "CANDIDATE_OFFICIAL_AND_HISTORICAL_REFERENCE_ONLY"
+    },
+    {
+      "sequence": 2,
+      "role": "AGENT_RECOMMENDER_MACHINE_CUSTOMER",
+      "provider_candidate": "QIANFAN",
+      "endpoint_candidate": "https://qianfan.baidubce.com/v2/chat/completions",
+      "model_candidate": "UNRESOLVED",
+      "credential_identifier": "TOOL_MANAGED_OR_FUTURE_EXACT_IDENTIFIER",
+      "binding_status": "BLOCKED_EXACT_MODEL_AND_ACCOUNT_BINDING_REQUIRED"
+    },
+    {
+      "sequence": 3,
+      "role": "INTEGRATION_MAINTAINER",
+      "provider_candidate": "ARK_DIRECT",
+      "endpoint_candidate": "https://ark.cn-beijing.volces.com/api/v3/chat/completions",
+      "model_candidate": "doubao-seed-2-0-lite-260215",
+      "credential_identifier": "ARK_API_KEY",
+      "binding_status": "CANDIDATE_OFFICIAL_AND_HISTORICAL_REFERENCE_ONLY"
+    },
+    {
+      "sequence": 4,
+      "role": "SECURITY_REVIEWER",
+      "provider_candidate": "UNRESOLVED",
+      "endpoint_candidate": "UNRESOLVED",
+      "model_candidate": "UNRESOLVED",
+      "credential_identifier": "UNRESOLVED",
+      "binding_status": "BLOCKED_INDEPENDENT_PROVIDER_MODEL_SELECTION_REQUIRED"
+    }
+  ],
+  "execution_contract": {
+    "public_safe_prompt_only": true,
+    "direct_json_only": true,
+    "raw_envelope_persisted": false,
+    "credential_persisted": false,
+    "prior_session_output_disclosed": false,
+    "request_hash_required": true,
+    "exact_returned_model_required": true,
+    "one_request_per_session": true
+  },
+  "readiness": {
+    "bound_sessions": 2,
+    "required_bound_sessions": 4,
+    "execution_ready": false,
+    "live_review_authorized": false
+  }
+}

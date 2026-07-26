@@ -1,0 +1,88 @@
+{
+  "$schema": "./failure-evidence-matrix.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-52-FAILURE-EVIDENCE-MATRIX-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_CROSSWALK_COMPLETE_ROOT_CAUSE_UNKNOWN",
+  "observations": [
+    {
+      "observation_id": "PRE51-S1",
+      "route": "QIANFAN_KIMI_TOOL",
+      "model": "kimi-k2.6",
+      "result": "DIRECT_JSON_SUCCESS",
+      "source_reference": "../commercialization-standards-titmas-integrations-rb1-provider-binding-agent-review/session-01-agent-developer.v0.1.json",
+      "current_inference": "ROUTE_SUCCEEDED_ONCE"
+    },
+    {
+      "observation_id": "PRE51-S2",
+      "route": "QIANFAN_KIMI_TOOL",
+      "model": "kimi-k2.6",
+      "result": "TIMEOUT_OR_NETWORK_ERROR",
+      "source_reference": "../commercialization-standards-titmas-integrations-rb1-provider-binding-agent-review/session-02-agent-recommender.v0.1.json",
+      "current_inference": "EXACT_CAUSE_UNKNOWN"
+    },
+    {
+      "observation_id": "PRE51-S3",
+      "route": "QIANFAN_KIMI_TOOL",
+      "model": "kimi-k2.6",
+      "result": "TIMEOUT_OR_NETWORK_ERROR",
+      "source_reference": "../commercialization-standards-titmas-integrations-rb1-provider-binding-agent-review/session-03-integration-maintainer.v0.1.json",
+      "current_inference": "EXACT_CAUSE_UNKNOWN"
+    },
+    {
+      "observation_id": "PRE51-S4",
+      "route": "QIANFAN_KIMI_TOOL",
+      "model": "kimi-k2.6",
+      "result": "TIMEOUT_OR_NETWORK_ERROR",
+      "source_reference": "../commercialization-standards-titmas-integrations-rb1-provider-binding-agent-review/session-04-security-reviewer.v0.1.json",
+      "current_inference": "EXACT_CAUSE_UNKNOWN"
+    },
+    {
+      "observation_id": "ARV-R3-QF-KIMI",
+      "route": "QIANFAN_DIRECT_HISTORY",
+      "model": "kimi-k2.6",
+      "result": "HTTP_200_EMPTY_CONTENT",
+      "source_reference": "../commercialization-standards-agent-review/raw-sanitized-observations.v0.4.json",
+      "current_inference": "MODEL_PATH_INTERMITTENT_HISTORY"
+    },
+    {
+      "observation_id": "ARV-R3-QF-ERNIE",
+      "route": "QIANFAN_DIRECT_HISTORY",
+      "model": "ernie-4.5-turbo-128k",
+      "result": "DIRECT_JSON_SUCCESS",
+      "source_reference": "../commercialization-standards-agent-review/raw-sanitized-observations.v0.4.json",
+      "current_inference": "HISTORICAL_SUCCESS_NOT_CURRENT_BINDING"
+    },
+    {
+      "observation_id": "ARV-R3-ARK",
+      "route": "ARK_DIRECT_HISTORY",
+      "model": "MULTIPLE_HISTORICAL_MODELS",
+      "result": "THREE_DIRECT_JSON_SUCCESSES",
+      "source_reference": "../commercialization-standards-agent-review/raw-sanitized-observations.v0.4.json",
+      "current_inference": "HISTORICAL_SUCCESS_NOT_CURRENT_ENTITLEMENT"
+    },
+    {
+      "observation_id": "ARV-R3-DEEPSEEK",
+      "route": "DEEPSEEK_DIRECT_HISTORY",
+      "model": "deepseek-v4-pro",
+      "result": "DIRECT_JSON_SUCCESS",
+      "source_reference": "../commercialization-standards-agent-review/raw-sanitized-observations.v0.4.json",
+      "current_inference": "HISTORICAL_SUCCESS_AND_CURRENT_OFFICIAL_REFERENCE_ONLY"
+    },
+    {
+      "observation_id": "PRE29-QF-LOWER-LAYER",
+      "route": "QIANFAN_DNS_TCP_TLS_PROBE",
+      "model": "NONE",
+      "result": "LOWER_LAYER_PASS",
+      "source_reference": "../commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-result.v0.1.json",
+      "current_inference": "DOES_NOT_PROVE_INFERENCE_PATH"
+    }
+  ],
+  "conclusions": {
+    "kimi_qianfan_route": "INTERMITTENT_NOT_SELECTED_FOR_NEXT_LIVE_REVIEW",
+    "root_cause_proven": false,
+    "all_qianfan_models_unavailable": false,
+    "ark_current_availability_proven": false,
+    "deepseek_current_availability_proven": false,
+    "pre51_may_be_retried": false
+  }
+}
