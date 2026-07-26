@@ -1,0 +1,242 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:provider-adapter-profile-review-execution-receipt:0.1",
+  "title": "TITMAS PRE-19 Provider Adapter Profile Review Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "branch",
+    "authorization",
+    "artifact_bindings",
+    "execution_accounting",
+    "result",
+    "data_controls",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./execution-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-19-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "EXECUTION_STOPPED_FAIL_CLOSED_PROVIDER_QUERY_TOO_LARGE"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-19"
+    },
+    "branch": {
+      "const": "codex/production-observability-baseline"
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_commit",
+        "decision_baseline_commit",
+        "authorization_receipt_commit",
+        "authorization_baseline_remote_verified_before_review"
+      ],
+      "properties": {
+        "recommendation_commit": {
+          "const": "81a65f850189dc109c91cbebd4af29c4fb89ce76"
+        },
+        "decision_baseline_commit": {
+          "const": "aa0df6238609627e9d2557801ca7cf2d14c52efa"
+        },
+        "authorization_receipt_commit": {
+          "const": "ca38b42453042e5f614755fe3be031a6b6d9216c"
+        },
+        "authorization_baseline_remote_verified_before_review": {
+          "const": true
+        }
+      }
+    },
+    "artifact_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sanitized_observations_reference",
+        "sanitized_observations_sha256",
+        "composite_result_reference",
+        "composite_result_sha256",
+        "result_report_reference",
+        "result_report_sha256"
+      ],
+      "properties": {
+        "sanitized_observations_reference": {
+          "const": "sanitized-review-observations.v0.1.json"
+        },
+        "sanitized_observations_sha256": {
+          "const": "b8dc129720a96bf057df2befeed0c8202b626cc7e6015a0a2a7643f9713c2364"
+        },
+        "composite_result_reference": {
+          "const": "composite-review-result.v0.1.json"
+        },
+        "composite_result_sha256": {
+          "const": "71a9b1070fddb9d64c505c45967d461c22f48f8a248b3155e93c118d518bf454"
+        },
+        "result_report_reference": {
+          "const": "PRE-19-PROVIDER-ADAPTER-PROFILE-CANDIDATE-REVIEW-RESULT-v0.1.md"
+        },
+        "result_report_sha256": {
+          "const": "18ce8f4ae8b62409ca08db5c6514c53861a07491e8a1f7a2a29c62da2aac41ba"
+        }
+      }
+    },
+    "execution_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sessions_planned",
+        "requests_executed",
+        "provider_successes",
+        "schema_conformant_reviews",
+        "retry_attempts",
+        "fallback_attempts",
+        "json_repair_attempts"
+      ],
+      "properties": {
+        "sessions_planned": {
+          "const": 2
+        },
+        "requests_executed": {
+          "const": 1
+        },
+        "provider_successes": {
+          "const": 0
+        },
+        "schema_conformant_reviews": {
+          "const": 0
+        },
+        "retry_attempts": {
+          "const": 0
+        },
+        "fallback_attempts": {
+          "const": 0
+        },
+        "json_repair_attempts": {
+          "const": 0
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_completed",
+        "review_completed",
+        "composite_result",
+        "stop_condition_triggered",
+        "next_permitted_action"
+      ],
+      "properties": {
+        "execution_completed": {
+          "const": false
+        },
+        "review_completed": {
+          "const": false
+        },
+        "composite_result": {
+          "const": "INCOMPLETE_FAIL_CLOSED"
+        },
+        "stop_condition_triggered": {
+          "const": "PROVIDER_QUERY_TOO_LARGE"
+        },
+        "next_permitted_action": {
+          "const": "PREPARE_SEPARATE_EXACT_REVIEW_BUNDLE_SIZE_REMEDIATION_RECOMMENDATION_ONLY"
+        }
+      }
+    },
+    "data_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_provider_envelope_persisted",
+        "usage_payload_persisted",
+        "hidden_reasoning_persisted",
+        "secret_accessed_or_persisted",
+        "customer_or_personal_data_accessed"
+      ],
+      "properties": {
+        "raw_provider_envelope_persisted": {
+          "const": false
+        },
+        "usage_payload_persisted": {
+          "const": false
+        },
+        "hidden_reasoning_persisted": {
+          "const": false
+        },
+        "secret_accessed_or_persisted": {
+          "const": false
+        },
+        "customer_or_personal_data_accessed": {
+          "const": false
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_adopted",
+        "adapter_implementation_created",
+        "provider_supported",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "profile_adopted": {
+          "const": false
+        },
+        "adapter_implementation_created": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}

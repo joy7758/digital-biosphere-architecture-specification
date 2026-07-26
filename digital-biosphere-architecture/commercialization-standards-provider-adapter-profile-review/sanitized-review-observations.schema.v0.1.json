@@ -1,0 +1,295 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:provider-adapter-profile-review-observations:0.1",
+  "title": "TITMAS PRE-19 Sanitized Provider Adapter Profile Review Observations v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "request_manifest_reference",
+    "sessions",
+    "execution_totals",
+    "data_controls",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./sanitized-review-observations.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-19-SANITIZED-REVIEW-OBSERVATIONS-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FAIL_CLOSED_PROVIDER_QUERY_TOO_LARGE_SECOND_SESSION_NOT_EXECUTED"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-19"
+    },
+    "request_manifest_reference": {
+      "const": "review-request-manifest.v0.1.json"
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/executedProviderErrorSession"
+        },
+        {
+          "$ref": "#/$defs/notExecutedSession"
+        }
+      ],
+      "items": false
+    },
+    "execution_totals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sessions_planned",
+        "requests_executed",
+        "provider_successes",
+        "schema_conformant_reviews",
+        "retry_attempts",
+        "fallback_attempts",
+        "json_repair_attempts"
+      ],
+      "properties": {
+        "sessions_planned": {
+          "const": 2
+        },
+        "requests_executed": {
+          "const": 1
+        },
+        "provider_successes": {
+          "const": 0
+        },
+        "schema_conformant_reviews": {
+          "const": 0
+        },
+        "retry_attempts": {
+          "const": 0
+        },
+        "fallback_attempts": {
+          "const": 0
+        },
+        "json_repair_attempts": {
+          "const": 0
+        }
+      }
+    },
+    "data_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_provider_envelope_persisted",
+        "usage_payload_persisted",
+        "hidden_reasoning_persisted",
+        "secret_accessed_or_persisted",
+        "customer_or_personal_data_accessed"
+      ],
+      "properties": {
+        "raw_provider_envelope_persisted": {
+          "const": false
+        },
+        "usage_payload_persisted": {
+          "const": false
+        },
+        "hidden_reasoning_persisted": {
+          "const": false
+        },
+        "secret_accessed_or_persisted": {
+          "const": false
+        },
+        "customer_or_personal_data_accessed": {
+          "const": false
+        }
+      }
+    },
+    "effects": {
+      "$ref": "#/$defs/falseEffects"
+    }
+  },
+  "$defs": {
+    "executedProviderErrorSession": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_id",
+        "provider",
+        "model",
+        "reviewer_role",
+        "query_sha256",
+        "query_bytes",
+        "request_executed",
+        "transport_status",
+        "provider_error_code",
+        "semantic_answer_extracted",
+        "direct_json_parse_pass",
+        "full_schema_validation_pass",
+        "failure_class",
+        "retry_executed"
+      ],
+      "properties": {
+        "review_id": {
+          "const": "PRE19-KIMI-INTEROP-001"
+        },
+        "provider": {
+          "const": "baidu-qianfan"
+        },
+        "model": {
+          "const": "kimi-k2.6"
+        },
+        "reviewer_role": {
+          "const": "INTEROPERABILITY_AND_DEVELOPER_IMPLEMENTABILITY_REVIEWER"
+        },
+        "query_sha256": {
+          "const": "90a84a4348e3b2499ed6dd3fb14a17b42e48066d1205d3ba445537b0e230d2ce"
+        },
+        "query_bytes": {
+          "const": 50962
+        },
+        "request_executed": {
+          "const": true
+        },
+        "transport_status": {
+          "const": "PROVIDER_REJECTED_QUERY_TOO_LARGE"
+        },
+        "provider_error_code": {
+          "const": "query_too_large"
+        },
+        "semantic_answer_extracted": {
+          "const": false
+        },
+        "direct_json_parse_pass": {
+          "const": false
+        },
+        "full_schema_validation_pass": {
+          "const": false
+        },
+        "failure_class": {
+          "const": "PROVIDER_ERROR"
+        },
+        "retry_executed": {
+          "const": false
+        }
+      }
+    },
+    "notExecutedSession": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_id",
+        "provider",
+        "model",
+        "reviewer_role",
+        "query_sha256",
+        "query_bytes",
+        "request_executed",
+        "execution_status",
+        "stop_reason"
+      ],
+      "properties": {
+        "review_id": {
+          "const": "PRE19-DEEPSEEK-BOUNDARY-002"
+        },
+        "provider": {
+          "const": "deepseek-direct"
+        },
+        "model": {
+          "const": "deepseek-chat"
+        },
+        "reviewer_role": {
+          "const": "SECURITY_FAILURE_AND_SEMANTIC_BOUNDARY_REVIEWER"
+        },
+        "query_sha256": {
+          "const": "035ac2b43d8775c57f8bbc736fcee5d8b4d19aa87afb0d472705e348065729e6"
+        },
+        "query_bytes": {
+          "const": 50958
+        },
+        "request_executed": {
+          "const": false
+        },
+        "execution_status": {
+          "const": "NOT_EXECUTED_FAIL_CLOSED_AFTER_PRIOR_PROVIDER_ERROR"
+        },
+        "stop_reason": {
+          "const": "PRE19_KIMI_PROVIDER_ERROR_REQUIRES_STOP_NO_RETRY_OR_FALLBACK"
+        }
+      }
+    },
+    "falseEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_completed",
+        "profile_adopted",
+        "profile_maturity_promoted",
+        "adapter_implementation_created",
+        "conformance_executed",
+        "provider_supported",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "review_completed": {
+          "const": false
+        },
+        "profile_adopted": {
+          "const": false
+        },
+        "profile_maturity_promoted": {
+          "const": false
+        },
+        "adapter_implementation_created": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}

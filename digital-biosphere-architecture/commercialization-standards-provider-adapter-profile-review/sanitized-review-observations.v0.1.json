@@ -1,0 +1,69 @@
+{
+  "$schema": "./sanitized-review-observations.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-19-SANITIZED-REVIEW-OBSERVATIONS-0.1",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_PROVIDER_QUERY_TOO_LARGE_SECOND_SESSION_NOT_EXECUTED",
+  "observed_at": "2026-07-26T20:45:00+08:00",
+  "decision_reference": "CS-D02-PRE-19",
+  "request_manifest_reference": "review-request-manifest.v0.1.json",
+  "sessions": [
+    {
+      "review_id": "PRE19-KIMI-INTEROP-001",
+      "provider": "baidu-qianfan",
+      "model": "kimi-k2.6",
+      "reviewer_role": "INTEROPERABILITY_AND_DEVELOPER_IMPLEMENTABILITY_REVIEWER",
+      "query_sha256": "90a84a4348e3b2499ed6dd3fb14a17b42e48066d1205d3ba445537b0e230d2ce",
+      "query_bytes": 50962,
+      "request_executed": true,
+      "transport_status": "PROVIDER_REJECTED_QUERY_TOO_LARGE",
+      "provider_error_code": "query_too_large",
+      "semantic_answer_extracted": false,
+      "direct_json_parse_pass": false,
+      "full_schema_validation_pass": false,
+      "failure_class": "PROVIDER_ERROR",
+      "retry_executed": false
+    },
+    {
+      "review_id": "PRE19-DEEPSEEK-BOUNDARY-002",
+      "provider": "deepseek-direct",
+      "model": "deepseek-chat",
+      "reviewer_role": "SECURITY_FAILURE_AND_SEMANTIC_BOUNDARY_REVIEWER",
+      "query_sha256": "035ac2b43d8775c57f8bbc736fcee5d8b4d19aa87afb0d472705e348065729e6",
+      "query_bytes": 50958,
+      "request_executed": false,
+      "execution_status": "NOT_EXECUTED_FAIL_CLOSED_AFTER_PRIOR_PROVIDER_ERROR",
+      "stop_reason": "PRE19_KIMI_PROVIDER_ERROR_REQUIRES_STOP_NO_RETRY_OR_FALLBACK"
+    }
+  ],
+  "execution_totals": {
+    "sessions_planned": 2,
+    "requests_executed": 1,
+    "provider_successes": 0,
+    "schema_conformant_reviews": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "json_repair_attempts": 0
+  },
+  "data_controls": {
+    "raw_provider_envelope_persisted": false,
+    "usage_payload_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "secret_accessed_or_persisted": false,
+    "customer_or_personal_data_accessed": false
+  },
+  "effects": {
+    "review_completed": false,
+    "profile_adopted": false,
+    "profile_maturity_promoted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

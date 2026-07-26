@@ -1,0 +1,58 @@
+{
+  "$schema": "./execution-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-19-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTION_STOPPED_FAIL_CLOSED_PROVIDER_QUERY_TOO_LARGE",
+  "observed_at": "2026-07-26T20:46:59+08:00",
+  "decision_reference": "CS-D02-PRE-19",
+  "branch": "codex/production-observability-baseline",
+  "authorization": {
+    "recommendation_commit": "81a65f850189dc109c91cbebd4af29c4fb89ce76",
+    "decision_baseline_commit": "aa0df6238609627e9d2557801ca7cf2d14c52efa",
+    "authorization_receipt_commit": "ca38b42453042e5f614755fe3be031a6b6d9216c",
+    "authorization_baseline_remote_verified_before_review": true
+  },
+  "artifact_bindings": {
+    "sanitized_observations_reference": "sanitized-review-observations.v0.1.json",
+    "sanitized_observations_sha256": "b8dc129720a96bf057df2befeed0c8202b626cc7e6015a0a2a7643f9713c2364",
+    "composite_result_reference": "composite-review-result.v0.1.json",
+    "composite_result_sha256": "71a9b1070fddb9d64c505c45967d461c22f48f8a248b3155e93c118d518bf454",
+    "result_report_reference": "PRE-19-PROVIDER-ADAPTER-PROFILE-CANDIDATE-REVIEW-RESULT-v0.1.md",
+    "result_report_sha256": "18ce8f4ae8b62409ca08db5c6514c53861a07491e8a1f7a2a29c62da2aac41ba"
+  },
+  "execution_accounting": {
+    "sessions_planned": 2,
+    "requests_executed": 1,
+    "provider_successes": 0,
+    "schema_conformant_reviews": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "json_repair_attempts": 0
+  },
+  "result": {
+    "execution_completed": false,
+    "review_completed": false,
+    "composite_result": "INCOMPLETE_FAIL_CLOSED",
+    "stop_condition_triggered": "PROVIDER_QUERY_TOO_LARGE",
+    "next_permitted_action": "PREPARE_SEPARATE_EXACT_REVIEW_BUNDLE_SIZE_REMEDIATION_RECOMMENDATION_ONLY"
+  },
+  "data_controls": {
+    "raw_provider_envelope_persisted": false,
+    "usage_payload_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "secret_accessed_or_persisted": false,
+    "customer_or_personal_data_accessed": false
+  },
+  "effects": {
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
