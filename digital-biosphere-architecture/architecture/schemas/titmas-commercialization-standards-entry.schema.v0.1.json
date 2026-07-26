@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_12_RERUN_RECOMMENDATION_PREPARED_NOT_DECIDED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_12_DECIDED_FROZEN_AUTHORIZATION_BASELINE_NOT_REMOTE_NOT_EXECUTED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1119,6 +1119,9 @@
         "pre12_rerun_recommendation_prepared",
         "pre12_rerun_decision_recorded",
         "pre12_rerun_execution_authorized",
+        "pre12_authorization_baseline_remote_verified",
+        "pre12_execution_may_start",
+        "pre12_execution_started",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1207,15 +1210,24 @@
           "const": false
         },
         "public_source_record_review_rerun_authorized": {
-          "const": false
+          "const": true
         },
         "pre12_rerun_recommendation_prepared": {
           "const": true
         },
         "pre12_rerun_decision_recorded": {
-          "const": false
+          "const": true
         },
         "pre12_rerun_execution_authorized": {
+          "const": true
+        },
+        "pre12_authorization_baseline_remote_verified": {
+          "const": false
+        },
+        "pre12_execution_may_start": {
+          "const": false
+        },
+        "pre12_execution_started": {
           "const": false
         },
         "public_source_record_counting_authorized": {
@@ -1360,10 +1372,15 @@
         "rerun_recommendation_decision_candidate_id",
         "rerun_recommendation_reference",
         "rerun_recommendation_prepared",
+        "rerun_decision_reference",
         "rerun_decision_recorded",
+        "rerun_execution_plan_reference",
         "rerun_execution_plan_created",
         "rerun_live_model_requests_recommended_max",
         "rerun_live_model_requests_authorized",
+        "rerun_authorization_baseline_remote_verified",
+        "rerun_execution_may_start",
+        "rerun_execution_started",
         "two_stage_preflight_required",
         "stage_a_preflight_requests_max",
         "stage_b_review_requests_max",
@@ -1386,7 +1403,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE12_TWO_STAGE_RERUN_RECOMMENDATION_PREPARED_NOT_DECIDED"
+          "const": "PRE12_DECIDED_FROZEN_AUTHORIZATION_BASELINE_NOT_REMOTE_NOT_EXECUTED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1521,7 +1538,7 @@
           "const": false
         },
         "rerun_authorized": {
-          "const": false
+          "const": true
         },
         "rerun_recommendation_decision_candidate_id": {
           "const": "CS-D02-PRE-12"
@@ -1532,16 +1549,31 @@
         "rerun_recommendation_prepared": {
           "const": true
         },
+        "rerun_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-12-PROVIDER-PREFLIGHT-AND-CANDIDATE-REVIEW-RERUN-DECISION-RECORD.v0.1.json"
+        },
         "rerun_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "rerun_execution_plan_reference": {
+          "const": "commercialization-standards-public-source-record-review-rerun/execution-plan.v0.1.json"
         },
         "rerun_execution_plan_created": {
-          "const": false
+          "const": true
         },
         "rerun_live_model_requests_recommended_max": {
           "const": 6
         },
         "rerun_live_model_requests_authorized": {
+          "const": true
+        },
+        "rerun_authorization_baseline_remote_verified": {
+          "const": false
+        },
+        "rerun_execution_may_start": {
+          "const": false
+        },
+        "rerun_execution_started": {
           "const": false
         },
         "two_stage_preflight_required": {
@@ -1575,7 +1607,7 @@
           "const": "AUTHORIZE_TWO_PROVIDER_PREFLIGHT_THEN_CONDITIONAL_FOUR_SESSION_CANDIDATE_REVIEW_RERUN_ONLY"
         },
         "decision_ready": {
-          "const": true
+          "const": false
         },
         "external_execution_authorized": {
           "const": false

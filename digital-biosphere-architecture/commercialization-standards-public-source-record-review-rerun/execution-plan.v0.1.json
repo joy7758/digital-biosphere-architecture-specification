@@ -1,0 +1,150 @@
+{
+  "$schema": "./execution-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-12-TWO-STAGE-RECORD-REVIEW-RERUN-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-12",
+  "decision_record_reference": "../TITMAS-CS-D02-PRE-12-PROVIDER-PREFLIGHT-AND-CANDIDATE-REVIEW-RERUN-DECISION-RECORD.v0.1.json",
+  "predecessor_commits": {
+    "pre10_failure_commit": "04a66365e62a8f9645ca33ece70926f51e8c07eb",
+    "pre11_result_commit": "5efabf72837d6fa57ab3666584c3816b110e1413",
+    "pre12_recommendation_commit": "42cd6984674bdaea6808db6d28f2f17eec96e5a6"
+  },
+  "frozen_artifacts": {
+    "source_candidate_set_reference": "../commercialization-standards-public-source-problem-validation/source-candidate-set.v0.1.json",
+    "source_candidate_set_sha256": "f7253e3e2545b1200f1a7eb27b9ce5d323e1eb090b2c1178e112707983ba6300",
+    "source_pack_reference": "../commercialization-standards-public-source-record-review/source-pack.v0.1.md",
+    "source_pack_sha256": "3040ec61c4fae1d50151d07de2214625c371b36ccd9b418047cbee6f24e610ca",
+    "preflight_prompt_reference": "preflight-prompt-template.v0.1.txt",
+    "preflight_prompt_sha256": "5d0cd9b0a1418883cefded928fe540b09a44ee55c05e6e30308c2500c22bae1d",
+    "preflight_response_schema_reference": "preflight-response.schema.v0.1.json",
+    "preflight_response_schema_sha256": "17161d5ab32c35eb15c6c3885462f8dea219637098393c129a81dc88cc377915",
+    "review_prompt_reference": "../commercialization-standards-public-source-record-review/prompt-template.v0.1.txt",
+    "review_prompt_sha256": "6caaf92907396a8e18dba44c1051183f2b000d06b4b72bb0ae5105b60b6d52df",
+    "review_response_schema_reference": "../commercialization-standards-public-source-record-review/agent-record-review-response.schema.v0.1.json",
+    "review_response_schema_sha256": "0f3df0688993fe300bae1f8d2c1cb67c0fd31fecbdabcbb89d5a1819c803ccd8"
+  },
+  "stages": {
+    "stage_a_preflight": {
+      "execution_condition": "AUTHORIZATION_BASELINE_REMOTE_VERIFIED",
+      "requests_max": 2,
+      "sessions": [
+        {
+          "session_id": "QF-KIMI-PREFLIGHT-PRE12-P1",
+          "provider_gateway": "qianfan_installed_tool",
+          "endpoint_host": "qianfan.baidubce.com",
+          "model": "kimi-k2.6",
+          "role": "PROVIDER_REQUEST_CONTRACT_PREFLIGHT",
+          "requests_max": 1
+        },
+        {
+          "session_id": "DS-V4PRO-PREFLIGHT-PRE12-P2",
+          "provider_gateway": "deepseek_direct",
+          "endpoint_host": "api.deepseek.com",
+          "model": "deepseek-v4-pro",
+          "role": "PROVIDER_REQUEST_CONTRACT_PREFLIGHT",
+          "requests_max": 1
+        }
+      ],
+      "gate": {
+        "requests_executed_required": 2,
+        "parseable_responses_required": 2,
+        "providers_with_success_required": 2,
+        "schema_failures_max": 0,
+        "boundary_failures_max": 0,
+        "all_conditions_required": true
+      },
+      "counts_toward_candidate_review_thresholds": false
+    },
+    "stage_b_candidate_review": {
+      "execution_condition": "STAGE_A_FULL_PASS",
+      "requests_max": 4,
+      "sessions": [
+        {
+          "session_id": "QF-KIMI-SOURCE-PFPC-R1",
+          "provider_gateway": "qianfan_installed_tool",
+          "endpoint_host": "qianfan.baidubce.com",
+          "model": "kimi-k2.6",
+          "role": "SOURCE_QUALIFICATION_REVIEWER",
+          "requests_max": 1
+        },
+        {
+          "session_id": "QF-KIMI-ACCOUNTABILITY-PFPC-R2",
+          "provider_gateway": "qianfan_installed_tool",
+          "endpoint_host": "qianfan.baidubce.com",
+          "model": "kimi-k2.6",
+          "role": "ACCOUNTABILITY_RELEVANCE_REVIEWER",
+          "requests_max": 1
+        },
+        {
+          "session_id": "DS-V4PRO-CLAIM-PRIVACY-PFPC-R3",
+          "provider_gateway": "deepseek_direct",
+          "endpoint_host": "api.deepseek.com",
+          "model": "deepseek-v4-pro",
+          "role": "CLAIM_AND_PRIVACY_REVIEWER",
+          "requests_max": 1
+        },
+        {
+          "session_id": "DS-V4PRO-ADVERSARIAL-PFPC-R4",
+          "provider_gateway": "deepseek_direct",
+          "endpoint_host": "api.deepseek.com",
+          "model": "deepseek-v4-pro",
+          "role": "ADVERSARIAL_RECORD_REVIEWER",
+          "requests_max": 1
+        }
+      ],
+      "thresholds": {
+        "parseable_sessions_min": 3,
+        "providers_with_success_min": 2,
+        "candidate_ids_covered_min": 4,
+        "boundary_failures_max": 0
+      }
+    }
+  },
+  "controls": {
+    "total_live_model_requests_max": 6,
+    "retry_allowed": false,
+    "fallback_model_allowed": false,
+    "json_repair_allowed": false,
+    "tools_allowed": false,
+    "new_source_search_allowed": false,
+    "new_source_collection_allowed": false,
+    "customer_or_personal_data_allowed": false,
+    "direct_personal_identifiers_allowed": false,
+    "raw_provider_body_persisted": false,
+    "secret_in_artifact_allowed": false,
+    "automatic_valid_status_allowed": false,
+    "automatic_counting_allowed": false,
+    "stage_b_without_stage_a_pass_allowed": false
+  },
+  "stop_conditions": [
+    "AUTHORIZATION_BASELINE_NOT_REMOTE",
+    "FROZEN_ARTIFACT_OR_DIGEST_MISMATCH",
+    "MODEL_ENDPOINT_PROMPT_SCHEMA_THRESHOLD_OR_CAP_DRIFT",
+    "ANY_STAGE_A_SESSION_FAILED_OR_UNPARSEABLE",
+    "STAGE_A_SCHEMA_OR_BOUNDARY_FAILURE",
+    "STAGE_B_START_ATTEMPTED_WITHOUT_STAGE_A_FULL_PASS",
+    "RETRY_FALLBACK_TOOL_OR_JSON_REPAIR_ATTEMPTED",
+    "SECRET_PERSONAL_CUSTOMER_OR_RAW_PROVIDER_DATA_DETECTED",
+    "AUTOMATIC_VALID_COUNTING_GATE_OR_COMMERCIAL_EFFECT_ATTEMPTED"
+  ],
+  "execution_gate": {
+    "authorization_baseline_committed": false,
+    "authorization_baseline_pushed": false,
+    "authorization_baseline_remote_verified": false,
+    "execution_started": false
+  },
+  "non_effects": {
+    "candidate_status_changed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

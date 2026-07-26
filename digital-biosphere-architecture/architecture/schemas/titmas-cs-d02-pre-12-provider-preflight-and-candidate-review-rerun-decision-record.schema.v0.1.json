@@ -1,0 +1,310 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-12-provider-preflight-and-candidate-review-rerun-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-12 Two-stage Rerun Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "decision_result",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_remote_commit",
+    "decided_by_ref",
+    "executed_by_ref",
+    "primary_repository",
+    "execution_plan_reference",
+    "scope",
+    "preconditions",
+    "stop_conditions",
+    "execution_started",
+    "execution_completed",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-12-provider-preflight-and-candidate-review-rerun-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-12-PROVIDER-PREFLIGHT-AND-CANDIDATE-REVIEW-RERUN-DECISION-RECORD-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DECIDED_TWO_STAGE_RERUN_AUTHORIZED_NOT_EXECUTED"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-12"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_TWO_PROVIDER_PREFLIGHT_THEN_CONDITIONAL_FOUR_SESSION_CANDIDATE_REVIEW_RERUN_ONLY"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-12-PROVIDER-PREFLIGHT-AND-CANDIDATE-REVIEW-RERUN-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "658e6e33cef80bd15ef35f7e300ef23101a1ab3036902c251716a3bd1616021b"
+    },
+    "recommendation_remote_commit": {
+      "const": "42cd6984674bdaea6808db6d28f2f17eec96e5a6"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "executed_by_ref": {
+      "const": "codex"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "execution_plan_reference": {
+      "const": "commercialization-standards-public-source-record-review-rerun/execution-plan.v0.1.json"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "preconditions": {
+      "$ref": "#/$defs/preconditions"
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 10
+      }
+    },
+    "execution_started": {
+      "const": false
+    },
+    "execution_completed": {
+      "const": false
+    },
+    "effects": {
+      "$ref": "#/$defs/effects"
+    }
+  },
+  "$defs": {
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage_a_preflight_requests_max",
+        "stage_b_candidate_review_requests_max",
+        "total_live_model_requests_max",
+        "provider_gateways",
+        "model_identities",
+        "stage_b_requires_stage_a_full_pass",
+        "retry_allowed",
+        "fallback_allowed",
+        "json_repair_allowed",
+        "tools_allowed",
+        "new_source_search_allowed",
+        "new_source_collection_allowed",
+        "raw_provider_body_persisted",
+        "direct_personal_identifiers_allowed"
+      ],
+      "properties": {
+        "stage_a_preflight_requests_max": {
+          "const": 2
+        },
+        "stage_b_candidate_review_requests_max": {
+          "const": 4
+        },
+        "total_live_model_requests_max": {
+          "const": 6
+        },
+        "provider_gateways": {
+          "const": [
+            "qianfan_installed_tool",
+            "deepseek_direct"
+          ]
+        },
+        "model_identities": {
+          "const": [
+            "kimi-k2.6",
+            "deepseek-v4-pro"
+          ]
+        },
+        "stage_b_requires_stage_a_full_pass": {
+          "const": true
+        },
+        "retry_allowed": {
+          "const": false
+        },
+        "fallback_allowed": {
+          "const": false
+        },
+        "json_repair_allowed": {
+          "const": false
+        },
+        "tools_allowed": {
+          "const": false
+        },
+        "new_source_search_allowed": {
+          "const": false
+        },
+        "new_source_collection_allowed": {
+          "const": false
+        },
+        "raw_provider_body_persisted": {
+          "const": false
+        },
+        "direct_personal_identifiers_allowed": {
+          "const": false
+        }
+      }
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_recorded",
+        "single_two_stage_exact_action",
+        "pre10_failure_remote_verified",
+        "pre11_result_remote_verified",
+        "pre12_recommendation_remote_verified",
+        "provider_contracts_offline_reviewed",
+        "public_safe_inputs_required",
+        "frozen_plan_and_schema_required",
+        "authorization_baseline_push_required_before_live_request",
+        "false_effects_defined",
+        "stop_conditions_defined",
+        "later_conflicting_decision_found",
+        "standing_directive_applicable"
+      ],
+      "properties": {
+        "canonical_recommendation_recorded": {
+          "const": true
+        },
+        "single_two_stage_exact_action": {
+          "const": true
+        },
+        "pre10_failure_remote_verified": {
+          "const": true
+        },
+        "pre11_result_remote_verified": {
+          "const": true
+        },
+        "pre12_recommendation_remote_verified": {
+          "const": true
+        },
+        "provider_contracts_offline_reviewed": {
+          "const": true
+        },
+        "public_safe_inputs_required": {
+          "const": true
+        },
+        "frozen_plan_and_schema_required": {
+          "const": true
+        },
+        "authorization_baseline_push_required_before_live_request": {
+          "const": true
+        },
+        "false_effects_defined": {
+          "const": true
+        },
+        "stop_conditions_defined": {
+          "const": true
+        },
+        "later_conflicting_decision_found": {
+          "const": false
+        },
+        "standing_directive_applicable": {
+          "const": true
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bounded_live_model_requests_authorized",
+        "authority",
+        "ownership",
+        "implementation",
+        "runtime",
+        "agent_instance",
+        "entity",
+        "permission",
+        "candidate_status_change",
+        "record_counting",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation",
+        "customer_adoption",
+        "external_outreach",
+        "commercial_offer",
+        "certification",
+        "release"
+      ],
+      "properties": {
+        "bounded_live_model_requests_authorized": {
+          "const": true
+        },
+        "authority": {
+          "const": false
+        },
+        "ownership": {
+          "const": false
+        },
+        "implementation": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "agent_instance": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "candidate_status_change": {
+          "const": false
+        },
+        "record_counting": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "market_validation": {
+          "const": false
+        },
+        "customer_adoption": {
+          "const": false
+        },
+        "external_outreach": {
+          "const": false
+        },
+        "commercial_offer": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "release": {
+          "const": false
+        }
+      }
+    }
+  }
+}

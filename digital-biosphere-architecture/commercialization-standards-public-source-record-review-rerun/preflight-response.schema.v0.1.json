@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/provider-preflight-response.schema.v0.1.json",
+  "title": "TITMAS PRE-12 Provider Preflight Response v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "preflight_contract_version",
+    "provider_path_status",
+    "json_contract_status",
+    "candidate_review_performed",
+    "counting_effect",
+    "cs_g0_effect"
+  ],
+  "properties": {
+    "preflight_contract_version": {
+      "const": "0.1"
+    },
+    "provider_path_status": {
+      "const": "RESPONDING"
+    },
+    "json_contract_status": {
+      "const": "PARSEABLE"
+    },
+    "candidate_review_performed": {
+      "const": false
+    },
+    "counting_effect": {
+      "const": false
+    },
+    "cs_g0_effect": {
+      "const": false
+    }
+  }
+}

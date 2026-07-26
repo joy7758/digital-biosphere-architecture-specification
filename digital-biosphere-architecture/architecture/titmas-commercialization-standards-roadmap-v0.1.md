@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: pre-12-two-stage-rerun-recommendation-prepared-not-decided-standard-not-ready
+status: pre-12-decided-frozen-authorization-baseline-not-remote-not-executed-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -836,8 +836,9 @@ TOTAL_LIVE_MODEL_REQUESTS_RECOMMENDED_MAX=6
 RETRY_MAX=0
 FALLBACK_MAX=0
 JSON_REPAIR_MAX=0
-PRE_12_DECIDED=false
-LIVE_MODEL_REQUESTS_AUTHORIZED=false
+RECOMMENDATION_SNAPSHOT_PRE_DECISION=true
+AT_RECOMMENDATION_TIME_PRE_12_DECIDED=false
+AT_RECOMMENDATION_TIME_LIVE_MODEL_REQUESTS_AUTHORIZED=false
 ```
 
 Stage A 不包含候选内容，不计入 Stage B 的审查阈值。任一 provider preflight 失败，Stage B
@@ -845,6 +846,24 @@ Stage A 不包含候选内容，不计入 Stage B 的审查阈值。任一 provi
 4 candidate IDs / 0 boundary failures` 阈值，且不能自动创建 `VALID`、counting 或
 `CS-G0 PASS`。本建议已具备 exact action、前置条件、false effects 和 stop rules，但在独立
 Decision、冻结 machine plan/Schema 和远端授权基线之前，不授权任何 live request。
+
+依据
+[`TITMAS-CS-STANDING-001`](../TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.md)，
+PRE-12 已建立独立
+[Decision](../TITMAS-CS-D02-PRE-12-PROVIDER-PREFLIGHT-AND-CANDIDATE-REVIEW-RERUN-DECISION-RECORD.md)
+与 [frozen execution plan](../commercialization-standards-public-source-record-review-rerun/execution-plan.v0.1.json)：
+
+```text
+PRE_12_DECIDED=true
+PRE_12_DECISION_RESULT=AUTHORIZE_TWO_PROVIDER_PREFLIGHT_THEN_CONDITIONAL_FOUR_SESSION_CANDIDATE_REVIEW_RERUN_ONLY
+BOUNDED_LIVE_MODEL_REQUESTS_AUTHORIZED=true
+AUTHORIZATION_BASELINE_REMOTE_VERIFIED=false
+EXECUTION_MAY_START=false
+EXECUTION_STARTED=false
+```
+
+这里的 `BOUNDED_LIVE_MODEL_REQUESTS_AUTHORIZED=true` 只有在 frozen authorization baseline
+commit/push 并形成远端回执后才可执行；当前执行闸门仍关闭。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
