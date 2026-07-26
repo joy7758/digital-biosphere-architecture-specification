@@ -418,9 +418,31 @@ declaration template 的相对 Schema 尚未进入 target manifest，因此 targ
 和 license adoption 仍未就绪。
 
 [PRE-37 target mapping and Schema gap review recommendation](TITMAS-CS-D02-PRE-37-RB0-TARGET-MAPPING-AND-TEMPLATE-SCHEMA-GAP-REVIEW-RECOMMENDATION-v0.1.md)
-已远端准备。它只建议离线冻结 candidate→target path、比较 exact tenth Schema 与 template
-revision 两条解决路线，并准备下一决策包；外部仓库、license、source、network、model 和
+已经按独立 Decision 完成离线审查。它选择 root-relative exact tenth Schema，形成 10-path
+revised manifest，并保持 adopted template bytes 不变；target、network、model 和
 credential effect 均为 0。
+
+[PRE-38 license adoption and target application](TITMAS-CS-D02-PRE-38-TITMAS-INTEGRATIONS-RB0-LICENSE-ADOPTION-AND-TARGET-APPLICATION-DECISION-RECORD.md)
+已采用 exact Apache-2.0，并把十个治理路径提交到
+`titmas-integrations/codex/rb0-governance-baseline`。技术路径和 digest 校验通过，但
+post-push audit 发现六个 truth surface 仍声明“candidate not applied”，因此 PRE-38 最终
+fail closed；失败分支和历史均被保留。
+
+[PRE-39 truth-surface remediation](TITMAS-CS-D02-PRE-39-RB0-POST-APPLICATION-TRUTH-SURFACE-REMEDIATION-DECISION-RECORD.md)
+只更新七个已存在的治理路径。远端 clean clone 已验证这些入口一致表达：
+RB0 files 已应用到分支、尚未 merge、baseline 尚未验证或采纳、license 已采纳；package、
+source、tests、实现、provider support、conformance、Runtime 和 Release 仍为 0/false。
+
+```text
+TITMAS_INTEGRATIONS_TARGET_BRANCH=codex/rb0-governance-baseline
+TITMAS_INTEGRATIONS_TARGET_COMMIT=9610748d4a72d81278df2bc296518a469ce2fd30
+TITMAS_INTEGRATIONS_REMOTE_MAIN_UNCHANGED=true
+TITMAS_INTEGRATIONS_RB0_FILES_APPLIED_TO_BRANCH=true
+TITMAS_INTEGRATIONS_RB0_TRUTH_SURFACE_CONSISTENT=true
+TITMAS_INTEGRATIONS_RB0_BASELINE_VALIDATED=false
+TITMAS_INTEGRATIONS_RB0_BASELINE_ADOPTED=false
+TITMAS_INTEGRATIONS_PRE40_CLEAN_CLONE_GATE_REQUIRED=true
+```
 
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false

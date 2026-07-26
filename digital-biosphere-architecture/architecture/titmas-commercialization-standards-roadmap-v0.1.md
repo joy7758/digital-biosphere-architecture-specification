@@ -1936,7 +1936,7 @@ PRE36_IMPLEMENTATION_CREATED=false
 [Result](../commercialization-standards-titmas-integrations-rb0-fileset/PRE-36-TITMAS-INTEGRATIONS-RB0-PUBLIC-SAFE-FILESET-RESULT-v0.1.md)
 只证明 DBA candidates public-safe 和内部一致，不证明 target application ready。
 
-### 4.51 PRE-37 Target Mapping and Template Schema Gap Review Recommendation
+### 4.51 PRE-37 Target Mapping and Template Schema Gap Review
 
 [PRE-37 recommendation](../TITMAS-CS-D02-PRE-37-RB0-TARGET-MAPPING-AND-TEMPLATE-SCHEMA-GAP-REVIEW-RECOMMENDATION-v0.1.md)
 保留了 PRE-36 发现的 manifest/template dependency gap。建议的 exact action：
@@ -1949,22 +1949,67 @@ AUTHORIZE_OFFLINE_PRE36_RB0_FILESET_TARGET_MAPPING_AND_TEMPLATE_SCHEMA_GAP_RESOL
 license decision input、target application/rollback plan 和 PRE-38 packet。target repo、
 source、package、tests、network、model 和 credential 上限均为 0。
 
-当前：
+结果：
 
 ```text
 PRE37_RECOMMENDATION_REMOTE_VERIFIED=true
-PRE37_DECISION_RECORDED=false
-PRE37_REVIEW_EXECUTED=false
+PRE37_DECISION_RECORDED=true
+PRE37_REVIEW_EXECUTED=true
+PRE37_VALIDATION_PASS=true
+PRE37_TARGET_PATHS_MAPPED=10
+PRE37_SCHEMA_REFERENCES_RESOLVED=2
 PRE37_TARGET_REPOSITORY_MODIFIED=false
 PRE37_LICENSE_ADOPTED=false
 PRE37_IMPLEMENTATION_CREATED=false
 ```
 
-下一步只允许：
+[Result](../commercialization-standards-titmas-integrations-rb0-target-mapping/PRE-37-RB0-TARGET-MAPPING-AND-TEMPLATE-SCHEMA-GAP-REVIEW-RESULT-v0.1.md)
+采用 corrected root-relative tenth Schema 作为后续 exact target manifest；template bytes 未
+改变。PRE-37 自身不采纳 license，也不修改 target。
+
+### 4.52 PRE-38 License Adoption and Target Application
+
+[PRE-38 Decision](../TITMAS-CS-D02-PRE-38-TITMAS-INTEGRATIONS-RB0-LICENSE-ADOPTION-AND-TARGET-APPLICATION-DECISION-RECORD.md)
+采用 exact Apache-2.0，并授权把 10-path manifest 写入隔离分支。结果：
 
 ```text
-APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE37_OFFLINE_TARGET_MAPPING_AND_SCHEMA_GAP_REVIEW_DECISION_ONLY
+PRE38_LICENSE_ADOPTION_DECIDED=true
+PRE38_LICENSE_FILE_APPLIED_TO_TARGET_BRANCH=true
+PRE38_TARGET_BRANCH_PUSHED=true
+PRE38_TARGET_COMMIT=d54bf17ea94ee614b83253cd6abd8cb51bfdd45b
+PRE38_REMOTE_MAIN_UNCHANGED=true
+PRE38_TECHNICAL_PATH_VALIDATION_PASS=true
+PRE38_SEMANTIC_TRUTH_CONSISTENT=false
+PRE38_RESULT=REMOTE_BRANCH_PUSHED_SEMANTIC_TRUTH_CONFLICT_FAIL_CLOSED_REMEDIATION_REQUIRED
 ```
+
+[Result](../commercialization-standards-titmas-integrations-rb0-application/PRE-38-TITMAS-INTEGRATIONS-RB0-APPLICATION-RESULT-v0.1.md)
+保留了第一次 path enumeration 失败、第二次技术验证 PASS 和 post-push semantic audit FAIL。
+不得删除或重写已推送历史。
+
+### 4.53 PRE-39 Post-application Truth Surface Remediation
+
+[PRE-39 Decision](../TITMAS-CS-D02-PRE-39-RB0-POST-APPLICATION-TRUTH-SURFACE-REMEDIATION-DECISION-RECORD.md)
+只允许更新七个现有 governance truth surface。远端 clean clone 验证：
+
+```text
+PRE39_TARGET_PATHS_UPDATED=7
+PRE39_TARGET_COMMIT=9610748d4a72d81278df2bc296518a469ce2fd30
+PRE39_REMOTE_TRUTH_SURFACE_CONSISTENT=true
+PRE39_REMOTE_MAIN_UNCHANGED=true
+PRE39_ORIGINAL_CHECKOUT_UNCHANGED=true
+PRE39_RB0_FILES_APPLIED_TO_BRANCH=true
+PRE39_REPOSITORY_BASELINE_VALIDATED=false
+PRE39_REPOSITORY_BASELINE_ADOPTED=false
+PRE39_IMPLEMENTATION_CREATED=false
+PRE39_PROVIDER_SUPPORTED=false
+PRE39_CONFORMANCE_EXECUTED=false
+PRE39_RELEASE_AUTHORIZED=false
+```
+
+[Result](../commercialization-standards-titmas-integrations-rb0-truth-remediation/PRE-39-RB0-POST-APPLICATION-TRUTH-SURFACE-REMEDIATION-RESULT-v0.1.md)
+只关闭 PRE-38 truth conflict。下一步必须是 PRE-40 clean-clone RB0 verification/adoption
+gate，不允许直接进入 RB1。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 

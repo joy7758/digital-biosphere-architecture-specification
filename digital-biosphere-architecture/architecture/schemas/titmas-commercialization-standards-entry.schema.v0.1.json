@@ -4931,10 +4931,54 @@
             "live_model_requests_max",
             "credential_reads_max",
             "decision_recorded",
+            "decision_reference",
+            "decision_sha256",
+            "decision_commit",
             "review_executed",
+            "planning_commit",
+            "result_reference",
+            "result_sha256",
+            "validation_result_sha256",
+            "execution_receipt_sha256",
+            "result_commit",
+            "revised_manifest_sha256",
+            "validation_pass",
+            "target_paths_mapped",
+            "schema_references_resolved",
+            "pre38_recommendation_reference",
+            "pre38_recommendation_sha256",
+            "pre38_recommendation_commit",
+            "pre38_decision_reference",
+            "pre38_decision_sha256",
+            "pre38_decision_commit",
+            "pre38_target_commit",
+            "pre38_result_reference",
+            "pre38_result_sha256",
+            "pre38_validation_result_sha256",
+            "pre38_execution_receipt_sha256",
+            "pre38_result_commit",
+            "pre38_result",
+            "pre39_recommendation_reference",
+            "pre39_recommendation_sha256",
+            "pre39_recommendation_commit",
+            "pre39_decision_reference",
+            "pre39_decision_sha256",
+            "pre39_decision_commit",
+            "pre39_target_commit",
+            "pre39_result_reference",
+            "pre39_result_sha256",
+            "pre39_validation_result_sha256",
+            "pre39_execution_receipt_sha256",
+            "pre39_result_commit",
+            "pre39_result",
+            "target_branch",
+            "target_remote_main_unchanged",
             "license_adopted",
             "target_repository_modified",
-            "repository_baseline_applied",
+            "rb0_files_applied_to_branch",
+            "truth_surface_consistent",
+            "repository_baseline_validated",
+            "repository_baseline_adopted",
             "implementation_created"
           ],
           "properties": {
@@ -4975,18 +5019,150 @@
               "const": 0
             },
             "decision_recorded": {
-              "const": false
+              "const": true
+            },
+            "decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-37-RB0-TARGET-MAPPING-AND-TEMPLATE-SCHEMA-GAP-REVIEW-DECISION-RECORD.v0.1.json"
+            },
+            "decision_sha256": {
+              "const": "fbb92fc9ed8e7983504835d22c864844c985f902e1511b91781df286cfef695c"
+            },
+            "decision_commit": {
+              "const": "1d34ae8c73bc0edf761264af9d9cfa20e8a90ef9"
             },
             "review_executed": {
-              "const": false
+              "const": true
+            },
+            "planning_commit": {
+              "const": "b29213e29f3a62749d35f65c243ae3abd21b9ddd"
+            },
+            "result_reference": {
+              "const": "commercialization-standards-titmas-integrations-rb0-target-mapping/PRE-37-RB0-TARGET-MAPPING-AND-TEMPLATE-SCHEMA-GAP-REVIEW-RESULT-v0.1.md"
+            },
+            "result_sha256": {
+              "const": "06dc2d2a374ec94ca50b51810a7c2f7134eac076d95d538a39406080600f4631"
+            },
+            "validation_result_sha256": {
+              "const": "684321375ec08a8f591544beb669d3345d050a4ca4298d0f07b314fa89eb2599"
+            },
+            "execution_receipt_sha256": {
+              "const": "06e0ec68451d3ae0baeefe37507288ac6867a5e19ccdac4855d3a6f9c73477aa"
+            },
+            "result_commit": {
+              "const": "4ff97084b1902e84552f8480e03f079c6d514378"
+            },
+            "revised_manifest_sha256": {
+              "const": "aa6828203d33f2a73e04cdb71b1807e9a022c4bf95541b2dd366fa207f1ce508"
+            },
+            "validation_pass": {
+              "const": true
+            },
+            "target_paths_mapped": {
+              "const": 10
+            },
+            "schema_references_resolved": {
+              "const": 2
+            },
+            "pre38_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-38-TITMAS-INTEGRATIONS-RB0-LICENSE-ADOPTION-AND-TARGET-APPLICATION-RECOMMENDATION-v0.1.md"
+            },
+            "pre38_recommendation_sha256": {
+              "const": "69b1b23ac20a5a3a50c0e06f0ff5e5f0905d92e9fb12ff8ed545d1cfaaf72f9c"
+            },
+            "pre38_recommendation_commit": {
+              "const": "4dde7b5bace4179de6a86a7c3be47bc4970a41b6"
+            },
+            "pre38_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-38-TITMAS-INTEGRATIONS-RB0-LICENSE-ADOPTION-AND-TARGET-APPLICATION-DECISION-RECORD.v0.1.json"
+            },
+            "pre38_decision_sha256": {
+              "const": "9970f464df86e202857486b1c462943191e9436307a125ad56bac79f973def3b"
+            },
+            "pre38_decision_commit": {
+              "const": "16a5282ab5dd551787529116fd02bb83921b5cf9"
+            },
+            "pre38_target_commit": {
+              "const": "d54bf17ea94ee614b83253cd6abd8cb51bfdd45b"
+            },
+            "pre38_result_reference": {
+              "const": "commercialization-standards-titmas-integrations-rb0-application/PRE-38-TITMAS-INTEGRATIONS-RB0-APPLICATION-RESULT-v0.1.md"
+            },
+            "pre38_result_sha256": {
+              "const": "6724c1897e68e4b88f6a55b68aefe5d57b0de3e8a08719639a6b8571de3caae1"
+            },
+            "pre38_validation_result_sha256": {
+              "const": "81469f61a392e166e5f8674f9373f9bb02e9a758fec7243dd17413ea6569dfb1"
+            },
+            "pre38_execution_receipt_sha256": {
+              "const": "1ea5bd88724a92c22dfd39be4cbbbd615a1b5226c61c229fe72f763ef7422628"
+            },
+            "pre38_result_commit": {
+              "const": "577ea56bcecd240060b7451450b82cb4c69d5263"
+            },
+            "pre38_result": {
+              "const": "REMOTE_BRANCH_PUSHED_SEMANTIC_TRUTH_CONFLICT_FAIL_CLOSED_REMEDIATION_REQUIRED"
+            },
+            "pre39_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-39-RB0-POST-APPLICATION-TRUTH-SURFACE-REMEDIATION-RECOMMENDATION-v0.1.md"
+            },
+            "pre39_recommendation_sha256": {
+              "const": "963e0683a7103777f4922b47454284b5076573e74b5522bc978a9ef128605891"
+            },
+            "pre39_recommendation_commit": {
+              "const": "095a5103d53b3fdb0694512b45f91e0b6acb0bba"
+            },
+            "pre39_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-39-RB0-POST-APPLICATION-TRUTH-SURFACE-REMEDIATION-DECISION-RECORD.v0.1.json"
+            },
+            "pre39_decision_sha256": {
+              "const": "42604cff023f0bf9495d56bb267f5ce323af5a784d25e4eee92afdf3a476fdcf"
+            },
+            "pre39_decision_commit": {
+              "const": "6f5fd6dd925cca325611f12279961da962fc9069"
+            },
+            "pre39_target_commit": {
+              "const": "9610748d4a72d81278df2bc296518a469ce2fd30"
+            },
+            "pre39_result_reference": {
+              "const": "commercialization-standards-titmas-integrations-rb0-truth-remediation/PRE-39-RB0-POST-APPLICATION-TRUTH-SURFACE-REMEDIATION-RESULT-v0.1.md"
+            },
+            "pre39_result_sha256": {
+              "const": "e2aa7ba37e7a8ef7c40d1976b1fe41fb7d1f97f256a5e3ac7dc6d96e3b0005e3"
+            },
+            "pre39_validation_result_sha256": {
+              "const": "3e0157fa794a0e25c37124535b4da834d3a6e2f0db7232b7ebc69c3a50b8d08d"
+            },
+            "pre39_execution_receipt_sha256": {
+              "const": "7ba187a62d7f737ff20ff665a5b37af1ee7283674ff56e0ce73306326f0a8e71"
+            },
+            "pre39_result_commit": {
+              "const": "85b64e6904b6b157e383238c6ef73a9c087d81e7"
+            },
+            "pre39_result": {
+              "const": "PASS_REMOTE_TRUTH_SURFACE_CONSISTENT_PRE40_CLEAN_CLONE_GATE_REQUIRED"
+            },
+            "target_branch": {
+              "const": "codex/rb0-governance-baseline"
+            },
+            "target_remote_main_unchanged": {
+              "const": true
             },
             "license_adopted": {
-              "const": false
+              "const": true
             },
             "target_repository_modified": {
+              "const": true
+            },
+            "rb0_files_applied_to_branch": {
+              "const": true
+            },
+            "truth_surface_consistent": {
+              "const": true
+            },
+            "repository_baseline_validated": {
               "const": false
             },
-            "repository_baseline_applied": {
+            "repository_baseline_adopted": {
               "const": false
             },
             "implementation_created": {
@@ -5010,10 +5186,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE37_OFFLINE_TARGET_MAPPING_AND_SCHEMA_GAP_REVIEW_DECISION_ONLY"
+          "const": "FORM_PRE40_CLEAN_CLONE_RB0_VERIFICATION_AND_ADOPTION_GATE_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
-          "const": true
+          "const": false
         },
         "external_execution_authorized": {
           "const": false
