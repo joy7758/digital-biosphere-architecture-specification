@@ -1,0 +1,30 @@
+{
+  "$schema": "./synthetic-extraction-fixtures.schema.v0.2.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-17-SYNTHETIC-EXTRACTION-FIXTURES-0.2",
+  "version": "0.2.0",
+  "status": "SYNTHETIC_ONLY_NOT_PROVIDER_EVIDENCE",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-17",
+  "fixtures": [
+    {"fixture_id": "TOP_STRUCTURED_ANSWER_VALID", "shape": "TOP_STRUCTURED_ANSWER", "expected": "EXTRACTED_SCHEMA_CONFORMANT"},
+    {"fixture_id": "TOP_DIRECT_ANSWER_VALID", "shape": "TOP_DIRECT_ANSWER", "expected": "EXTRACTED_SCHEMA_CONFORMANT"},
+    {"fixture_id": "TEXT_WRAPPER_DIRECT_ANSWER_VALID", "shape": "TEXT_WRAPPER_DIRECT_ANSWER", "expected": "EXTRACTED_SCHEMA_CONFORMANT"},
+    {"fixture_id": "TEXT_WRAPPER_STRUCTURED_ANSWER_VALID", "shape": "TEXT_WRAPPER_STRUCTURED_ANSWER", "expected": "EXTRACTED_SCHEMA_CONFORMANT"},
+    {"fixture_id": "TEXT_DIRECT_REVIEWER_OBJECT_VALID", "shape": "TEXT_DIRECT_REVIEWER_OBJECT", "expected": "EXTRACTED_SCHEMA_CONFORMANT"},
+    {"fixture_id": "TEXT_JSON_NON_REVIEW_OBJECT", "shape": "TEXT_JSON_NON_REVIEW_OBJECT", "expected": "UNKNOWN_RUNTIME_ENVELOPE"},
+    {"fixture_id": "TEXT_NON_JSON", "shape": "TEXT_NON_JSON", "expected": "DIRECT_JSON_PARSE_FAILED"},
+    {"fixture_id": "MULTIPLE_IDENTICAL_ACCEPTED", "shape": "MULTIPLE_IDENTICAL", "expected": "EXTRACTED_SCHEMA_CONFORMANT"},
+    {"fixture_id": "MULTIPLE_NON_IDENTICAL_ACCEPTED", "shape": "MULTIPLE_NON_IDENTICAL", "expected": "AMBIGUOUS_NON_IDENTICAL_ANSWERS"},
+    {"fixture_id": "SECOND_LEVEL_NESTED_ANSWER", "shape": "SECOND_LEVEL_NESTING", "expected": "UNDECLARED_NESTING"},
+    {"fixture_id": "MISSING_ANSWER", "shape": "MISSING", "expected": "NO_EXTRACTABLE_ANSWER"},
+    {"fixture_id": "WRONG_TYPE_ANSWER", "shape": "WRONG_TYPE", "expected": "NO_EXTRACTABLE_ANSWER"},
+    {"fixture_id": "ANSWER_JSON_SCHEMA_MISMATCH", "shape": "ANSWER_SCHEMA_MISMATCH", "expected": "FULL_FROZEN_SCHEMA_VALIDATION_FAILED"}
+  ],
+  "controls": {
+    "contains_provider_response": false,
+    "contains_personal_or_customer_data": false,
+    "contains_secret": false,
+    "counts_as_provider_evidence": false,
+    "counts_as_candidate_review": false
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "$schema": "./extraction-contract-candidate.schema.v0.2.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-17-EXTRACTION-CONTRACT-CANDIDATE-0.2",
+  "version": "0.2.0",
+  "status": "OFFLINE_CANDIDATE_NOT_PROVIDER_VALIDATED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-17",
+  "ordered_candidate_paths": [
+    {
+      "path_id": "TOP_STRUCTURED_ANSWER",
+      "source_path": "structuredContent.answer",
+      "acceptance": "STRING_THEN_DIRECT_JSON_AND_FULL_SCHEMA"
+    },
+    {
+      "path_id": "TOP_DIRECT_ANSWER",
+      "source_path": "answer",
+      "acceptance": "STRING_THEN_DIRECT_JSON_AND_FULL_SCHEMA"
+    },
+    {
+      "path_id": "TEXT_WRAPPER_DIRECT_ANSWER",
+      "source_path": "content[0].text -> JSON -> answer",
+      "acceptance": "ONE_LEVEL_WRAPPER_STRING_THEN_DIRECT_JSON_AND_FULL_SCHEMA"
+    },
+    {
+      "path_id": "TEXT_WRAPPER_STRUCTURED_ANSWER",
+      "source_path": "content[0].text -> JSON -> structuredContent.answer",
+      "acceptance": "ONE_LEVEL_WRAPPER_STRING_THEN_DIRECT_JSON_AND_FULL_SCHEMA"
+    },
+    {
+      "path_id": "TEXT_DIRECT_REVIEWER_OBJECT",
+      "source_path": "content[0].text -> JSON",
+      "acceptance": "PARSED_OBJECT_MUST_PASS_FULL_SCHEMA"
+    }
+  ],
+  "algorithm": {
+    "max_json_wrapper_unwrap_depth": 1,
+    "arbitrary_recursion_allowed": false,
+    "substring_extraction_allowed": false,
+    "fence_stripping_allowed": false,
+    "json_repair_allowed": false,
+    "plain_non_json_content_text_allowed": false,
+    "unknown_json_object_classification": "UNKNOWN_RUNTIME_ENVELOPE",
+    "multiple_non_identical_accepted_values_classification": "AMBIGUOUS_NON_IDENTICAL_ANSWERS",
+    "multiple_identical_accepted_values_deduplicated": true,
+    "accepted_result_requires_full_frozen_schema": true
+  },
+  "classifications": [
+    "EXTRACTED_SCHEMA_CONFORMANT",
+    "NO_EXTRACTABLE_ANSWER",
+    "DIRECT_JSON_PARSE_FAILED",
+    "FULL_FROZEN_SCHEMA_VALIDATION_FAILED",
+    "UNKNOWN_RUNTIME_ENVELOPE",
+    "UNDECLARED_NESTING",
+    "AMBIGUOUS_NON_IDENTICAL_ANSWERS"
+  ],
+  "effects": {
+    "provider_execution_validated": false,
+    "qianfan_confirmation_pass": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false
+  }
+}

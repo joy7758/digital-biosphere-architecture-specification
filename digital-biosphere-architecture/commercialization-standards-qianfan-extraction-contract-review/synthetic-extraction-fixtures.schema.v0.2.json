@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre17-synthetic-extraction-fixtures.schema.v0.2.json",
+  "title": "TITMAS PRE-17 Synthetic Extraction Fixtures v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "fixtures",
+    "controls"
+  ],
+  "properties": {
+    "$schema": {"const": "./synthetic-extraction-fixtures.schema.v0.2.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-17-SYNTHETIC-EXTRACTION-FIXTURES-0.2"},
+    "version": {"const": "0.2.0"},
+    "status": {"const": "SYNTHETIC_ONLY_NOT_PROVIDER_EVIDENCE"},
+    "observed_on": {"const": "2026-07-26"},
+    "decision_reference": {"const": "CS-D02-PRE-17"},
+    "fixtures": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["fixture_id", "shape", "expected"],
+        "properties": {
+          "fixture_id": {"type": "string", "minLength": 3},
+          "shape": {"type": "string", "minLength": 3},
+          "expected": {
+            "enum": [
+              "EXTRACTED_SCHEMA_CONFORMANT",
+              "NO_EXTRACTABLE_ANSWER",
+              "DIRECT_JSON_PARSE_FAILED",
+              "FULL_FROZEN_SCHEMA_VALIDATION_FAILED",
+              "UNKNOWN_RUNTIME_ENVELOPE",
+              "UNDECLARED_NESTING",
+              "AMBIGUOUS_NON_IDENTICAL_ANSWERS"
+            ]
+          }
+        }
+      }
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contains_provider_response",
+        "contains_personal_or_customer_data",
+        "contains_secret",
+        "counts_as_provider_evidence",
+        "counts_as_candidate_review"
+      ],
+      "properties": {
+        "contains_provider_response": {"const": false},
+        "contains_personal_or_customer_data": {"const": false},
+        "contains_secret": {"const": false},
+        "counts_as_provider_evidence": {"const": false},
+        "counts_as_candidate_review": {"const": false}
+      }
+    }
+  }
+}

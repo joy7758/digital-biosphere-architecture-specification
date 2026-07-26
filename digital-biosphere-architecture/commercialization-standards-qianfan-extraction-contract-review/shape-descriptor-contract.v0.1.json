@@ -1,0 +1,49 @@
+{
+  "$schema": "./shape-descriptor-contract.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-17-SHAPE-DESCRIPTOR-CONTRACT-0.1",
+  "version": "0.1.0",
+  "status": "PRIVACY_PRESERVING_DIAGNOSTIC_CANDIDATE_NOT_RUNTIME_VALIDATED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-17",
+  "allowed_fields": [
+    "descriptor_version",
+    "tool_name",
+    "predeclared_path_id",
+    "path_present",
+    "value_type",
+    "value_byte_length",
+    "value_sha256",
+    "direct_json_parse_status",
+    "parsed_shape_class",
+    "full_schema_status",
+    "distinct_candidate_count",
+    "ambiguity_status"
+  ],
+  "forbidden_fields": [
+    "raw_wrapper",
+    "raw_content_text",
+    "raw_answer",
+    "token_usage",
+    "hidden_reasoning",
+    "secret",
+    "personal_or_customer_data"
+  ],
+  "path_policy": {
+    "only_predeclared_paths_recorded": true,
+    "unknown_keys_recorded": false,
+    "unknown_key_names_recorded": false,
+    "value_digest_algorithm": "SHA-256",
+    "value_digest_is_evidence_of_meaning": false,
+    "descriptor_is_provider_evidence": false
+  },
+  "retention": {
+    "descriptor_may_be_persisted_if_separately_authorized": true,
+    "source_value_must_not_be_persisted": true,
+    "descriptor_must_bind_request_and_contract_digest": true
+  },
+  "effects": {
+    "future_live_request_authorized": false,
+    "provider_success_proven": false,
+    "candidate_review_completed": false
+  }
+}

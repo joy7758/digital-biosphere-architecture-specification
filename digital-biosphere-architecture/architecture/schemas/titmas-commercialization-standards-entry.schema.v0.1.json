@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_17_ZERO_REQUEST_EXTRACTION_CONTRACT_REVIEW_RECOMMENDATION_PREPARED_NOT_DECIDED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_17_EXECUTED_OFFLINE_STATIC_REVIEW_PASS_PROVIDER_RUNTIME_UNVALIDATED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1152,6 +1152,13 @@
         "pre17_extraction_contract_review_recommendation_prepared",
         "pre17_extraction_contract_review_decision_recorded",
         "pre17_live_model_requests_authorized",
+        "pre17_extraction_contract_review_execution_authorized",
+        "pre17_authorization_baseline_remote_verified",
+        "pre17_extraction_contract_review_completed",
+        "pre17_offline_static_review_pass",
+        "pre17_provider_runtime_validation_pass",
+        "pre17_synthetic_cases_matched",
+        "pre18_provider_adapter_conformance_recommendation_prepared",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1345,9 +1352,30 @@
           "const": true
         },
         "pre17_extraction_contract_review_decision_recorded": {
-          "const": false
+          "const": true
         },
         "pre17_live_model_requests_authorized": {
+          "const": false
+        },
+        "pre17_extraction_contract_review_execution_authorized": {
+          "const": true
+        },
+        "pre17_authorization_baseline_remote_verified": {
+          "const": true
+        },
+        "pre17_extraction_contract_review_completed": {
+          "const": true
+        },
+        "pre17_offline_static_review_pass": {
+          "const": true
+        },
+        "pre17_provider_runtime_validation_pass": {
+          "const": false
+        },
+        "pre17_synthetic_cases_matched": {
+          "const": 13
+        },
+        "pre18_provider_adapter_conformance_recommendation_prepared": {
           "const": false
         },
         "public_source_record_counting_authorized": {
@@ -1646,8 +1674,27 @@
         "qianfan_extraction_contract_review_recommendation_reference",
         "qianfan_extraction_contract_review_recommendation_prepared",
         "qianfan_extraction_contract_review_zero_live_requests_required",
+        "qianfan_extraction_contract_review_decision_reference",
         "qianfan_extraction_contract_review_decision_recorded",
+        "qianfan_extraction_contract_review_plan_reference",
+        "qianfan_extraction_contract_review_authorization_receipt_reference",
+        "qianfan_extraction_contract_review_authorization_baseline_commit",
+        "qianfan_extraction_contract_review_authorization_receipt_commit",
+        "qianfan_extraction_contract_review_authorization_baseline_remote_verified",
         "qianfan_extraction_contract_review_execution_authorized",
+        "qianfan_extraction_contract_review_execution_completed",
+        "qianfan_extraction_contract_review_live_model_requests_executed",
+        "qianfan_extraction_contract_review_provider_network_requests_executed",
+        "qianfan_extraction_contract_review_synthetic_cases_matched",
+        "qianfan_extraction_contract_review_offline_pass",
+        "qianfan_extraction_contract_review_provider_runtime_validation_pass",
+        "qianfan_extraction_contract_review_crosswalk_reference",
+        "qianfan_extraction_contract_candidate_reference",
+        "qianfan_shape_descriptor_contract_reference",
+        "qianfan_extraction_contract_review_result_reference",
+        "qianfan_extraction_contract_review_execution_receipt_reference",
+        "qianfan_extraction_contract_review_report_reference",
+        "provider_adapter_conformance_profile_recommendation_prepared",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -1666,7 +1713,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE17_ZERO_REQUEST_EXTRACTION_CONTRACT_REVIEW_RECOMMENDATION_PREPARED_NOT_DECIDED"
+          "const": "PRE17_EXECUTED_PASS_PRE18_RECOMMENDATION_NOT_PREPARED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -2274,10 +2321,67 @@
         "qianfan_extraction_contract_review_zero_live_requests_required": {
           "const": true
         },
+        "qianfan_extraction_contract_review_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-17-QIANFAN-EXTRACTION-CONTRACT-REVIEW-DECISION-RECORD.v0.1.json"
+        },
         "qianfan_extraction_contract_review_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "qianfan_extraction_contract_review_plan_reference": {
+          "const": "commercialization-standards-qianfan-extraction-contract-review/static-review-plan.v0.1.json"
+        },
+        "qianfan_extraction_contract_review_authorization_receipt_reference": {
+          "const": "commercialization-standards-qianfan-extraction-contract-review/authorization-baseline-receipt.v0.1.json"
+        },
+        "qianfan_extraction_contract_review_authorization_baseline_commit": {
+          "const": "ac119e3a612538805eeb41f2d6273df43f6860c6"
+        },
+        "qianfan_extraction_contract_review_authorization_receipt_commit": {
+          "const": "39faf6776fd7e48b29e43e36588f4e4d0f5e5a31"
+        },
+        "qianfan_extraction_contract_review_authorization_baseline_remote_verified": {
+          "const": true
         },
         "qianfan_extraction_contract_review_execution_authorized": {
+          "const": true
+        },
+        "qianfan_extraction_contract_review_execution_completed": {
+          "const": true
+        },
+        "qianfan_extraction_contract_review_live_model_requests_executed": {
+          "const": 0
+        },
+        "qianfan_extraction_contract_review_provider_network_requests_executed": {
+          "const": 0
+        },
+        "qianfan_extraction_contract_review_synthetic_cases_matched": {
+          "const": 13
+        },
+        "qianfan_extraction_contract_review_offline_pass": {
+          "const": true
+        },
+        "qianfan_extraction_contract_review_provider_runtime_validation_pass": {
+          "const": false
+        },
+        "qianfan_extraction_contract_review_crosswalk_reference": {
+          "const": "commercialization-standards-qianfan-extraction-contract-review/transport-semantic-crosswalk.v0.1.json"
+        },
+        "qianfan_extraction_contract_candidate_reference": {
+          "const": "commercialization-standards-qianfan-extraction-contract-review/extraction-contract-candidate.v0.2.json"
+        },
+        "qianfan_shape_descriptor_contract_reference": {
+          "const": "commercialization-standards-qianfan-extraction-contract-review/shape-descriptor-contract.v0.1.json"
+        },
+        "qianfan_extraction_contract_review_result_reference": {
+          "const": "commercialization-standards-qianfan-extraction-contract-review/offline-validation-result.v0.1.json"
+        },
+        "qianfan_extraction_contract_review_execution_receipt_reference": {
+          "const": "commercialization-standards-qianfan-extraction-contract-review/execution-receipt.v0.1.json"
+        },
+        "qianfan_extraction_contract_review_report_reference": {
+          "const": "commercialization-standards-qianfan-extraction-contract-review/PRE-17-OFFLINE-EXTRACTION-CONTRACT-REVIEW-RESULT-v0.1.md"
+        },
+        "provider_adapter_conformance_profile_recommendation_prepared": {
           "const": false
         },
         "composite_gate_reuses_frozen_pre14_deepseek": {
@@ -2296,10 +2400,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "AUTHORIZE_ZERO_LIVE_REQUEST_QIANFAN_EXTRACTION_CONTRACT_STATIC_REVIEW_ONLY"
+          "const": "PREPARE_PROVIDER_ADAPTER_CONFORMANCE_PROFILE_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
-          "const": true
+          "const": false
         },
         "external_execution_authorized": {
           "const": false

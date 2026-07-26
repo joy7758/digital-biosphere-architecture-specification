@@ -1,0 +1,79 @@
+{
+  "$schema": "./offline-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-17-OFFLINE-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_STATIC_REVIEW_PASS_PROVIDER_RUNTIME_UNVALIDATED",
+  "observed_at": "2026-07-26T19:59:47+08:00",
+  "decision_reference": "CS-D02-PRE-17",
+  "authorization_baseline_commit": "ac119e3a612538805eeb41f2d6273df43f6860c6",
+  "authorization_receipt_commit": "39faf6776fd7e48b29e43e36588f4e4d0f5e5a31",
+  "artifact_digests": {
+    "transport_semantic_crosswalk_sha256": "5a73332191c1a12e293bf64ca42bf2cb5e4d28fb6eff318f6af2ca487fde750a",
+    "extraction_contract_candidate_sha256": "6cffcecc3158ec462be1c0be69a4ed861ad05445782fef5f78a8107f32f27cef",
+    "shape_descriptor_contract_sha256": "ace5622502ab29f6f1635f2d2b1968706efa29f8cfdf060224ab76e5dcc138eb",
+    "synthetic_extraction_fixtures_sha256": "96d87074338cdf32b542ed6503b5d2654820e2d369e72b1bdcca0d676afb095a"
+  },
+  "findings": {
+    "transport_and_semantic_layers_distinguished": true,
+    "pre15_plain_content_text_acceptance_was_too_broad": true,
+    "plain_content_text_acceptance_rule_narrowed": true,
+    "bounded_unwrap_paths_explicit": true,
+    "max_json_wrapper_unwrap_depth": 1,
+    "arbitrary_recursive_unwrap_allowed": false,
+    "privacy_preserving_shape_descriptor_defined": true,
+    "pre16_historical_result_rewritten": false,
+    "pre16_observation_class_under_v0_2_contract": "UNKNOWN_RUNTIME_ENVELOPE",
+    "pre16_exact_provider_failure_cause_proven": false,
+    "current_qianfan_tool_path_provider_conformance_proven": false
+  },
+  "synthetic_case_results": [
+    {"fixture_id": "TOP_STRUCTURED_ANSWER_VALID", "observed_classification": "EXTRACTED_SCHEMA_CONFORMANT", "expected_classification": "EXTRACTED_SCHEMA_CONFORMANT", "matched_expectation": true},
+    {"fixture_id": "TOP_DIRECT_ANSWER_VALID", "observed_classification": "EXTRACTED_SCHEMA_CONFORMANT", "expected_classification": "EXTRACTED_SCHEMA_CONFORMANT", "matched_expectation": true},
+    {"fixture_id": "TEXT_WRAPPER_DIRECT_ANSWER_VALID", "observed_classification": "EXTRACTED_SCHEMA_CONFORMANT", "expected_classification": "EXTRACTED_SCHEMA_CONFORMANT", "matched_expectation": true},
+    {"fixture_id": "TEXT_WRAPPER_STRUCTURED_ANSWER_VALID", "observed_classification": "EXTRACTED_SCHEMA_CONFORMANT", "expected_classification": "EXTRACTED_SCHEMA_CONFORMANT", "matched_expectation": true},
+    {"fixture_id": "TEXT_DIRECT_REVIEWER_OBJECT_VALID", "observed_classification": "EXTRACTED_SCHEMA_CONFORMANT", "expected_classification": "EXTRACTED_SCHEMA_CONFORMANT", "matched_expectation": true},
+    {"fixture_id": "TEXT_JSON_NON_REVIEW_OBJECT", "observed_classification": "UNKNOWN_RUNTIME_ENVELOPE", "expected_classification": "UNKNOWN_RUNTIME_ENVELOPE", "matched_expectation": true},
+    {"fixture_id": "TEXT_NON_JSON", "observed_classification": "DIRECT_JSON_PARSE_FAILED", "expected_classification": "DIRECT_JSON_PARSE_FAILED", "matched_expectation": true},
+    {"fixture_id": "MULTIPLE_IDENTICAL_ACCEPTED", "observed_classification": "EXTRACTED_SCHEMA_CONFORMANT", "expected_classification": "EXTRACTED_SCHEMA_CONFORMANT", "matched_expectation": true},
+    {"fixture_id": "MULTIPLE_NON_IDENTICAL_ACCEPTED", "observed_classification": "AMBIGUOUS_NON_IDENTICAL_ANSWERS", "expected_classification": "AMBIGUOUS_NON_IDENTICAL_ANSWERS", "matched_expectation": true},
+    {"fixture_id": "SECOND_LEVEL_NESTED_ANSWER", "observed_classification": "UNDECLARED_NESTING", "expected_classification": "UNDECLARED_NESTING", "matched_expectation": true},
+    {"fixture_id": "MISSING_ANSWER", "observed_classification": "NO_EXTRACTABLE_ANSWER", "expected_classification": "NO_EXTRACTABLE_ANSWER", "matched_expectation": true},
+    {"fixture_id": "WRONG_TYPE_ANSWER", "observed_classification": "NO_EXTRACTABLE_ANSWER", "expected_classification": "NO_EXTRACTABLE_ANSWER", "matched_expectation": true},
+    {"fixture_id": "ANSWER_JSON_SCHEMA_MISMATCH", "observed_classification": "FULL_FROZEN_SCHEMA_VALIDATION_FAILED", "expected_classification": "FULL_FROZEN_SCHEMA_VALIDATION_FAILED", "matched_expectation": true}
+  ],
+  "diagnosis": {
+    "synthetic_cases_total": 13,
+    "synthetic_cases_matched": 13,
+    "offline_static_review_pass": true,
+    "provider_runtime_validation_pass": false,
+    "provider_confirmation_pass": false,
+    "future_live_request_authorized": false,
+    "next_permitted_action": "PREPARE_SEPARATE_PROVIDER_ADAPTER_CONFORMANCE_PROFILE_RECOMMENDATION_ONLY"
+  },
+  "execution_accounting": {
+    "offline_validation_runs_completed": 1,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "new_source_searches": 0,
+    "new_source_collections": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "json_repair_attempts": 0,
+    "raw_pre16_provider_body_accessed": false,
+    "secret_accessed_or_persisted": false
+  },
+  "effects": {
+    "synthetic_fixture_counts_as_provider_evidence": false,
+    "qianfan_provider_schema_confirmation_pass": false,
+    "composite_provider_gate_pass": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

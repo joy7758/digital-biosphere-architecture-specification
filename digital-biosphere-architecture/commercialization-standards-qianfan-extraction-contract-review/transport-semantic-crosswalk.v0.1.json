@@ -1,0 +1,88 @@
+{
+  "$schema": "./transport-semantic-crosswalk.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-17-TRANSPORT-SEMANTIC-CROSSWALK-0.1",
+  "version": "0.1.0",
+  "status": "STATIC_CROSSWALK_DEFINED_NOT_RUNTIME_EVIDENCE",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-17",
+  "layers": [
+    {
+      "layer_id": "MCP_CALL_TOOL_RESULT",
+      "role": "TRANSPORT_ENVELOPE",
+      "recognized_surfaces": [
+        "structuredContent",
+        "content"
+      ],
+      "semantic_answer_by_presence_alone": false
+    },
+    {
+      "layer_id": "DECLARED_STRUCTURED_RESULT",
+      "role": "TOOL_RESULT_PAYLOAD",
+      "recognized_surfaces": [
+        "answer",
+        "model",
+        "provider",
+        "untrusted_external_content",
+        "usage"
+      ],
+      "semantic_answer_by_presence_alone": false
+    },
+    {
+      "layer_id": "SERIALIZED_CONTENT_TEXT",
+      "role": "TRANSPORT_SERIALIZATION_CANDIDATE",
+      "recognized_surfaces": [
+        "content[0].text"
+      ],
+      "semantic_answer_by_presence_alone": false
+    },
+    {
+      "layer_id": "REVIEWER_RESPONSE",
+      "role": "NORMATIVE_SEMANTIC_OBJECT",
+      "recognized_surfaces": [
+        "reviewer_role",
+        "records",
+        "overall_recommendation",
+        "blocking_gaps",
+        "boundary_answers"
+      ],
+      "semantic_answer_by_presence_alone": false
+    }
+  ],
+  "rules": [
+    {
+      "rule_id": "TSR-001",
+      "statement": "A transport field is not a semantic reviewer answer merely because it contains text or JSON."
+    },
+    {
+      "rule_id": "TSR-002",
+      "statement": "A candidate becomes an accepted reviewer response only after direct JSON parse and full frozen reviewer Schema validation."
+    },
+    {
+      "rule_id": "TSR-003",
+      "statement": "A serialized wrapper may be unwrapped at most once and only through an explicitly listed path."
+    },
+    {
+      "rule_id": "TSR-004",
+      "statement": "A JSON object that is neither a reviewer response nor an approved one-level wrapper is UNKNOWN_RUNTIME_ENVELOPE."
+    },
+    {
+      "rule_id": "TSR-005",
+      "statement": "Multiple non-identical accepted candidates fail closed before any candidate review effect."
+    }
+  ],
+  "pre16_interpretation": {
+    "observed_extraction_path": "content[0].text_plain_tool_specific",
+    "direct_json_parse_pass": true,
+    "reviewer_schema_pass": false,
+    "corrected_classification": "UNKNOWN_RUNTIME_ENVELOPE",
+    "provider_answer_proven": false,
+    "provider_no_answer_proven": false,
+    "model_failure_proven": false
+  },
+  "effects": {
+    "runtime_envelope_proven": false,
+    "provider_success_proven": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false
+  }
+}

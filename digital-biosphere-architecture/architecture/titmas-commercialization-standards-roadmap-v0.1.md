@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: pre-17-zero-request-extraction-contract-review-recommendation-prepared-not-decided-standard-not-ready
+status: pre-17-executed-offline-static-review-pass-provider-runtime-unvalidated-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -1145,7 +1145,7 @@ PRE-16 已形成独立
 额度已消耗；不得重试、回退、JSON repair 或把结果归因为模型能力。下一步只能另行准备
 零 live request 的 Qianfan extraction-contract static review recommendation。
 
-### 4.29 PRE-17 Zero-request Extraction Contract Review Recommendation
+### 4.29 PRE-17 Zero-request Extraction Contract Review Result
 
 [PRE-17 exact recommendation](../TITMAS-CS-D02-PRE-17-QIANFAN-EXTRACTION-CONTRACT-REVIEW-RECOMMENDATION-v0.1.md)
 已准备：
@@ -1161,9 +1161,27 @@ PRIVACY_PRESERVING_SHAPE_DESCRIPTOR_REQUIRED=true
 AT_RECOMMENDATION_TIME_PRE_17_DECIDED=false
 ```
 
-该推荐只允许未来审查 declared `CallToolResult`、MCP transport envelope、semantic answer
-与 caller extraction 的分层，并使用 synthetic fixtures 验证 bounded unwrap 和失败语义。
-它不读取 PRE-16 raw response，不发送 provider 请求，不证明模型回答，也不授权再次确认。
+PRE-17 随后形成独立
+[Decision](../TITMAS-CS-D02-PRE-17-QIANFAN-EXTRACTION-CONTRACT-REVIEW-DECISION-RECORD.md)、
+[frozen plan](../commercialization-standards-qianfan-extraction-contract-review/static-review-plan.v0.1.json)
+和远端授权回执，并完成
+[offline result](../commercialization-standards-qianfan-extraction-contract-review/PRE-17-OFFLINE-EXTRACTION-CONTRACT-REVIEW-RESULT-v0.1.md)：
+
+```text
+LIVE_MODEL_REQUESTS_EXECUTED=0
+PROVIDER_NETWORK_REQUESTS_EXECUTED=0
+TRANSPORT_AND_SEMANTIC_LAYERS_DISTINGUISHED=true
+PLAIN_CONTENT_TEXT_ACCEPTANCE_RULE_NARROWED=true
+MAX_JSON_WRAPPER_UNWRAP_DEPTH=1
+PRIVACY_PRESERVING_SHAPE_DESCRIPTOR_DEFINED=true
+SYNTHETIC_CASES_MATCHED=13/13
+OFFLINE_STATIC_REVIEW_PASS=true
+PROVIDER_RUNTIME_VALIDATION_PASS=false
+```
+
+该结果没有读取 PRE-16 raw response，也不改写 PRE-16 历史失败。它确认下一步不应继续
+围绕 provider-specific wrapper 猜测，而应先准备 provider-neutral Adapter Conformance
+Profile recommendation；当前不授权实现或再次请求。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -1560,9 +1578,16 @@ TITMAS_CS_D02_PRE_16_FROZEN_DEEPSEEK_FULL_SCHEMA_PASS=true
 TITMAS_CS_D02_PRE_16_COMPOSITE_PROVIDER_GATE_PASS=false
 TITMAS_CS_D02_CANDIDATE_REVIEW_COMPLETED=false
 TITMAS_CS_D02_PRE_17_RECOMMENDATION_PREPARED=true
-TITMAS_CS_D02_PRE_17_DECIDED=false
+TITMAS_CS_D02_PRE_17_DECIDED=true
 TITMAS_CS_D02_PRE_17_LIVE_MODEL_REQUESTS_AUTHORIZED=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=DECIDE_ZERO_LIVE_REQUEST_QIANFAN_EXTRACTION_CONTRACT_STATIC_REVIEW_ONLY
+TITMAS_CS_D02_PRE_17_EXECUTION_COMPLETED=true
+TITMAS_CS_D02_PRE_17_LIVE_MODEL_REQUESTS_EXECUTED=0
+TITMAS_CS_D02_PRE_17_PROVIDER_NETWORK_REQUESTS_EXECUTED=0
+TITMAS_CS_D02_PRE_17_SYNTHETIC_CASES_MATCHED=13
+TITMAS_CS_D02_PRE_17_OFFLINE_STATIC_REVIEW_PASS=true
+TITMAS_CS_D02_PRE_17_PROVIDER_RUNTIME_VALIDATION_PASS=false
+TITMAS_CS_D02_PRE_18_RECOMMENDATION_PREPARED=false
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_PROVIDER_ADAPTER_CONFORMANCE_PROFILE_RECOMMENDATION_ONLY
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false
 TITMAS_VEAP_DRAFT_PROFILE_CANDIDATE_CREATED=true

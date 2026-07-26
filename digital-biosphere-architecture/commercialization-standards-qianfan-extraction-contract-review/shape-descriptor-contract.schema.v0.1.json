@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre17-shape-descriptor-contract.schema.v0.1.json",
+  "title": "TITMAS PRE-17 Shape Descriptor Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "allowed_fields",
+    "forbidden_fields",
+    "path_policy",
+    "retention",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./shape-descriptor-contract.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-17-SHAPE-DESCRIPTOR-CONTRACT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PRIVACY_PRESERVING_DIAGNOSTIC_CANDIDATE_NOT_RUNTIME_VALIDATED"},
+    "observed_on": {"const": "2026-07-26"},
+    "decision_reference": {"const": "CS-D02-PRE-17"},
+    "allowed_fields": {
+      "type": "array",
+      "minItems": 10,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 3}
+    },
+    "forbidden_fields": {
+      "const": [
+        "raw_wrapper",
+        "raw_content_text",
+        "raw_answer",
+        "token_usage",
+        "hidden_reasoning",
+        "secret",
+        "personal_or_customer_data"
+      ]
+    },
+    "path_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "only_predeclared_paths_recorded",
+        "unknown_keys_recorded",
+        "unknown_key_names_recorded",
+        "value_digest_algorithm",
+        "value_digest_is_evidence_of_meaning",
+        "descriptor_is_provider_evidence"
+      ],
+      "properties": {
+        "only_predeclared_paths_recorded": {"const": true},
+        "unknown_keys_recorded": {"const": false},
+        "unknown_key_names_recorded": {"const": false},
+        "value_digest_algorithm": {"const": "SHA-256"},
+        "value_digest_is_evidence_of_meaning": {"const": false},
+        "descriptor_is_provider_evidence": {"const": false}
+      }
+    },
+    "retention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "descriptor_may_be_persisted_if_separately_authorized",
+        "source_value_must_not_be_persisted",
+        "descriptor_must_bind_request_and_contract_digest"
+      ],
+      "properties": {
+        "descriptor_may_be_persisted_if_separately_authorized": {"const": true},
+        "source_value_must_not_be_persisted": {"const": true},
+        "descriptor_must_bind_request_and_contract_digest": {"const": true}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "future_live_request_authorized",
+        "provider_success_proven",
+        "candidate_review_completed"
+      ],
+      "properties": {
+        "future_live_request_authorized": {"const": false},
+        "provider_success_proven": {"const": false},
+        "candidate_review_completed": {"const": false}
+      }
+    }
+  }
+}

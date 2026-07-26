@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre17-transport-semantic-crosswalk.schema.v0.1.json",
+  "title": "TITMAS PRE-17 Transport Semantic Crosswalk v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "layers",
+    "rules",
+    "pre16_interpretation",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./transport-semantic-crosswalk.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-17-TRANSPORT-SEMANTIC-CROSSWALK-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "STATIC_CROSSWALK_DEFINED_NOT_RUNTIME_EVIDENCE"},
+    "observed_on": {"const": "2026-07-26"},
+    "decision_reference": {"const": "CS-D02-PRE-17"},
+    "layers": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["layer_id", "role", "recognized_surfaces", "semantic_answer_by_presence_alone"],
+        "properties": {
+          "layer_id": {"type": "string", "minLength": 3},
+          "role": {"type": "string", "minLength": 3},
+          "recognized_surfaces": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {"type": "string", "minLength": 3}
+          },
+          "semantic_answer_by_presence_alone": {"const": false}
+        }
+      }
+    },
+    "rules": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rule_id", "statement"],
+        "properties": {
+          "rule_id": {"pattern": "^TSR-[0-9]{3}$"},
+          "statement": {"type": "string", "minLength": 20}
+        }
+      }
+    },
+    "pre16_interpretation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "observed_extraction_path",
+        "direct_json_parse_pass",
+        "reviewer_schema_pass",
+        "corrected_classification",
+        "provider_answer_proven",
+        "provider_no_answer_proven",
+        "model_failure_proven"
+      ],
+      "properties": {
+        "observed_extraction_path": {"const": "content[0].text_plain_tool_specific"},
+        "direct_json_parse_pass": {"const": true},
+        "reviewer_schema_pass": {"const": false},
+        "corrected_classification": {"const": "UNKNOWN_RUNTIME_ENVELOPE"},
+        "provider_answer_proven": {"const": false},
+        "provider_no_answer_proven": {"const": false},
+        "model_failure_proven": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runtime_envelope_proven",
+        "provider_success_proven",
+        "candidate_review_completed",
+        "record_counting_authorized"
+      ],
+      "properties": {
+        "runtime_envelope_proven": {"const": false},
+        "provider_success_proven": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "record_counting_authorized": {"const": false}
+      }
+    }
+  }
+}

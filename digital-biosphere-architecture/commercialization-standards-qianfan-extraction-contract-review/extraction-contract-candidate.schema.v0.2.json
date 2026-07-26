@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre17-extraction-contract-candidate.schema.v0.2.json",
+  "title": "TITMAS PRE-17 Extraction Contract Candidate v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "ordered_candidate_paths",
+    "algorithm",
+    "classifications",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./extraction-contract-candidate.schema.v0.2.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-17-EXTRACTION-CONTRACT-CANDIDATE-0.2"},
+    "version": {"const": "0.2.0"},
+    "status": {"const": "OFFLINE_CANDIDATE_NOT_PROVIDER_VALIDATED"},
+    "observed_on": {"const": "2026-07-26"},
+    "decision_reference": {"const": "CS-D02-PRE-17"},
+    "ordered_candidate_paths": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path_id", "source_path", "acceptance"],
+        "properties": {
+          "path_id": {"type": "string", "minLength": 3},
+          "source_path": {"type": "string", "minLength": 3},
+          "acceptance": {"type": "string", "minLength": 10}
+        }
+      }
+    },
+    "algorithm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "max_json_wrapper_unwrap_depth",
+        "arbitrary_recursion_allowed",
+        "substring_extraction_allowed",
+        "fence_stripping_allowed",
+        "json_repair_allowed",
+        "plain_non_json_content_text_allowed",
+        "unknown_json_object_classification",
+        "multiple_non_identical_accepted_values_classification",
+        "multiple_identical_accepted_values_deduplicated",
+        "accepted_result_requires_full_frozen_schema"
+      ],
+      "properties": {
+        "max_json_wrapper_unwrap_depth": {"const": 1},
+        "arbitrary_recursion_allowed": {"const": false},
+        "substring_extraction_allowed": {"const": false},
+        "fence_stripping_allowed": {"const": false},
+        "json_repair_allowed": {"const": false},
+        "plain_non_json_content_text_allowed": {"const": false},
+        "unknown_json_object_classification": {"const": "UNKNOWN_RUNTIME_ENVELOPE"},
+        "multiple_non_identical_accepted_values_classification": {"const": "AMBIGUOUS_NON_IDENTICAL_ANSWERS"},
+        "multiple_identical_accepted_values_deduplicated": {"const": true},
+        "accepted_result_requires_full_frozen_schema": {"const": true}
+      }
+    },
+    "classifications": {
+      "const": [
+        "EXTRACTED_SCHEMA_CONFORMANT",
+        "NO_EXTRACTABLE_ANSWER",
+        "DIRECT_JSON_PARSE_FAILED",
+        "FULL_FROZEN_SCHEMA_VALIDATION_FAILED",
+        "UNKNOWN_RUNTIME_ENVELOPE",
+        "UNDECLARED_NESTING",
+        "AMBIGUOUS_NON_IDENTICAL_ANSWERS"
+      ]
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_execution_validated",
+        "qianfan_confirmation_pass",
+        "candidate_review_completed",
+        "record_counting_authorized"
+      ],
+      "properties": {
+        "provider_execution_validated": {"const": false},
+        "qianfan_confirmation_pass": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "record_counting_authorized": {"const": false}
+      }
+    }
+  }
+}
