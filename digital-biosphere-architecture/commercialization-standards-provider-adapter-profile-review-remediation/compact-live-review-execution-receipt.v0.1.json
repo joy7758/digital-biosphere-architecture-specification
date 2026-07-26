@@ -1,0 +1,89 @@
+{
+  "$schema": "./compact-live-review-execution-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-22-COMPACT-LIVE-REVIEW-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTED_INCOMPLETE_FAIL_CLOSED_NO_RETRY",
+  "observed_at": "2026-07-26T21:49:00+08:00",
+  "decision_reference": "CS-D02-PRE-22",
+  "authorization_baseline_commit": "1fb44b79c1a71a010854c308f25b45c726642063",
+  "authorization_receipt_commit": "7cc8bc4793f292553fab7231343b7923e96e52b0",
+  "artifact_bindings": [
+    {
+      "artifact": "compact-live-review-authorization-receipt.v0.1.json",
+      "sha256": "4d981ab901d5581d3a36eb0805f38997cccdff3cc2ba75f0b9c89386f677a1f3"
+    },
+    {
+      "artifact": "compact-live-review-session-result.schema.v0.1.json",
+      "sha256": "a25fab379c304b48ddc1bf06f28605328dcfe5e3fb29537110f50202fade5f81"
+    },
+    {
+      "artifact": "compact-live-review-kimi-session-result.v0.1.json",
+      "sha256": "13ce8736caf250756169f6b027781b31df5f5e2ab45f4bfa077922a24661ef6f"
+    },
+    {
+      "artifact": "compact-live-review-deepseek-session-result.v0.1.json",
+      "sha256": "eddaab82e3e69c4978a4a50620c0bacfdbf9a57296987ceb32413495dd5dddc6"
+    },
+    {
+      "artifact": "compact-live-review-validation-result.schema.v0.1.json",
+      "sha256": "3357b670dbaaad120fc4b919afecbe720918700afb7581a1a773baa5a6af61e4"
+    },
+    {
+      "artifact": "compact-live-review-validation-result.v0.1.json",
+      "sha256": "081a8f9d1c8213cf8ab5cdd068b96c65c9cabddfb895d6e7ae3597413fa54c77"
+    },
+    {
+      "artifact": "PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-RESULT-v0.1.md",
+      "sha256": "308ee6338c6e633050dc8c136b28231e59b841b9792fcccf278f2d459c4640b6"
+    }
+  ],
+  "execution_accounting": {
+    "authorized_sessions": 2,
+    "executed_sessions": 2,
+    "live_model_requests_executed": 2,
+    "provider_network_requests_executed": 2,
+    "maximum_requests_for_any_session": 1,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "validation_summary": {
+    "query_bindings_matched": 2,
+    "schema_conformant_responses": 1,
+    "model_bindings_matched": 0,
+    "qualifying_sessions": 0,
+    "compact_projection_review_pass": false,
+    "result": "INCOMPLETE_FAIL_CLOSED"
+  },
+  "failure_retention": {
+    "kimi_client_extraction_failure_retained": true,
+    "deepseek_returned_model_mismatch_retained": true,
+    "deepseek_schema_conformant_response_retained": true,
+    "failed_session_retried": false,
+    "one_session_substituted_other": false
+  },
+  "persistence_accounting": {
+    "raw_provider_envelopes_persisted": 0,
+    "usage_envelopes_persisted": 0,
+    "credentials_persisted": 0,
+    "hidden_reasoning_persisted": 0,
+    "invalid_responses_repaired": 0
+  },
+  "effects": {
+    "compact_projection_review_completed": false,
+    "full_source_human_review_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  },
+  "next_permitted_action": "PREPARE_SEPARATE_OFFLINE_PRE22_FAILURE_DIAGNOSTIC_RECOMMENDATION_ONLY"
+}

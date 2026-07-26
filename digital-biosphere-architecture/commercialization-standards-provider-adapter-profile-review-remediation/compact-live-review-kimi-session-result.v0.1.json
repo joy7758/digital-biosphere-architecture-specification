@@ -1,0 +1,67 @@
+{
+  "$schema": "./compact-live-review-session-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-22-KIMI-COMPACT-LIVE-REVIEW-SESSION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTED_CLIENT_RESPONSE_EXTRACTION_FAILURE",
+  "observed_at": "2026-07-26T21:39:00+08:00",
+  "decision_reference": "CS-D02-PRE-22",
+  "authorization_receipt_reference": "compact-live-review-authorization-receipt.v0.1.json",
+  "session_id": "PRE21-KIMI-INTEROP-CANDIDATE",
+  "provider": "baidu-qianfan",
+  "provider_gateway": "qianfan_installed_tool",
+  "requested_model": "kimi-k2.6",
+  "returned_model": null,
+  "reviewer_role": "INTEROPERABILITY_AND_DEVELOPER_IMPLEMENTABILITY_REVIEWER",
+  "query": {
+    "bytes": 21010,
+    "sha256": "a7d762d7bd22c762d2c7d479508c22624e28f51707eeedaf1945c4153fc7fed7",
+    "binding_valid": true
+  },
+  "request_accounting": {
+    "live_model_requests_executed": 1,
+    "provider_network_requests_executed": 1,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "transport": {
+    "http_status": null,
+    "response_body_bytes": null,
+    "response_body_sha256": null,
+    "raw_provider_envelope_persisted": false,
+    "usage_envelope_persisted": false,
+    "credentials_persisted": false
+  },
+  "extraction": {
+    "assistant_content_extracted": false,
+    "assistant_content_bytes": null,
+    "assistant_content_sha256": null,
+    "direct_json_parseable": false,
+    "json_repair_attempted": false,
+    "hidden_reasoning_persisted": false
+  },
+  "validation": {
+    "response_schema_validation_status": "NOT_EXECUTED_NO_EXTRACTED_RESPONSE",
+    "schema_conformant": false,
+    "session_binding_valid": null,
+    "model_binding_valid": null,
+    "qualifying_response": false
+  },
+  "verdict": null,
+  "failure_class": "CLIENT_RESPONSE_EXTRACTION_FAILURE",
+  "known_limitations": [
+    "The installed tool call completed, but the orchestration layer did not retain an extractable answer.",
+    "The discarded tool result cannot be recovered without a prohibited second provider request.",
+    "Provider answer presence, returned model identity, JSON validity and Schema conformance remain unknown."
+  ],
+  "sanitized_response": null,
+  "effects": {
+    "session_qualifies": false,
+    "compact_projection_review_completed": false,
+    "full_source_human_review_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "provider_supported": false,
+    "authority_or_permission_created": false
+  }
+}

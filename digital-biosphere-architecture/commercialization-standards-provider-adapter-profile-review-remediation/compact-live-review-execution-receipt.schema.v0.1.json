@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:compact-live-review-execution-receipt:0.1",
+  "title": "TITMAS Compact Live Review Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "observed_at", "decision_reference", "authorization_baseline_commit", "authorization_receipt_commit", "artifact_bindings", "execution_accounting", "validation_summary", "failure_retention", "persistence_accounting", "effects", "next_permitted_action"],
+  "properties": {
+    "$schema": {"const": "./compact-live-review-execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-22-COMPACT-LIVE-REVIEW-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "EXECUTED_INCOMPLETE_FAIL_CLOSED_NO_RETRY"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-22"},
+    "authorization_baseline_commit": {"const": "1fb44b79c1a71a010854c308f25b45c726642063"},
+    "authorization_receipt_commit": {"const": "7cc8bc4793f292553fab7231343b7923e96e52b0"},
+    "artifact_bindings": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact", "sha256"],
+        "properties": {
+          "artifact": {"type": "string", "minLength": 8},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "execution_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized_sessions", "executed_sessions", "live_model_requests_executed", "provider_network_requests_executed", "maximum_requests_for_any_session", "retry_attempts", "fallback_attempts", "repair_attempts"],
+      "properties": {
+        "authorized_sessions": {"const": 2},
+        "executed_sessions": {"const": 2},
+        "live_model_requests_executed": {"const": 2},
+        "provider_network_requests_executed": {"const": 2},
+        "maximum_requests_for_any_session": {"const": 1},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "repair_attempts": {"const": 0}
+      }
+    },
+    "validation_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["query_bindings_matched", "schema_conformant_responses", "model_bindings_matched", "qualifying_sessions", "compact_projection_review_pass", "result"],
+      "properties": {
+        "query_bindings_matched": {"const": 2},
+        "schema_conformant_responses": {"const": 1},
+        "model_bindings_matched": {"const": 0},
+        "qualifying_sessions": {"const": 0},
+        "compact_projection_review_pass": {"const": false},
+        "result": {"const": "INCOMPLETE_FAIL_CLOSED"}
+      }
+    },
+    "failure_retention": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kimi_client_extraction_failure_retained", "deepseek_returned_model_mismatch_retained", "deepseek_schema_conformant_response_retained", "failed_session_retried", "one_session_substituted_other"],
+      "properties": {
+        "kimi_client_extraction_failure_retained": {"const": true},
+        "deepseek_returned_model_mismatch_retained": {"const": true},
+        "deepseek_schema_conformant_response_retained": {"const": true},
+        "failed_session_retried": {"const": false},
+        "one_session_substituted_other": {"const": false}
+      }
+    },
+    "persistence_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw_provider_envelopes_persisted", "usage_envelopes_persisted", "credentials_persisted", "hidden_reasoning_persisted", "invalid_responses_repaired"],
+      "properties": {
+        "raw_provider_envelopes_persisted": {"const": 0},
+        "usage_envelopes_persisted": {"const": 0},
+        "credentials_persisted": {"const": 0},
+        "hidden_reasoning_persisted": {"const": 0},
+        "invalid_responses_repaired": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["compact_projection_review_completed", "full_source_human_review_executed", "profile_review_completed", "profile_adopted", "adapter_implementation_created", "conformance_executed", "provider_supported", "valid_problem_records", "cs_g0_pass", "implementation_authorized", "external_outreach_authorized", "commercial_offer_authorized", "certification_authorized", "release_authorized"],
+      "properties": {
+        "compact_projection_review_completed": {"const": false},
+        "full_source_human_review_executed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "adapter_implementation_created": {"const": false},
+        "conformance_executed": {"const": false},
+        "provider_supported": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    },
+    "next_permitted_action": {"const": "PREPARE_SEPARATE_OFFLINE_PRE22_FAILURE_DIAGNOSTIC_RECOMMENDATION_ONLY"}
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "$schema": "./compact-live-review-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-22-COMPACT-LIVE-REVIEW-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "INCOMPLETE_FAIL_CLOSED_TWO_SESSIONS_EXECUTED_ZERO_QUALIFY",
+  "observed_at": "2026-07-26T21:47:00+08:00",
+  "decision_reference": "CS-D02-PRE-22",
+  "authorization_receipt_reference": "compact-live-review-authorization-receipt.v0.1.json",
+  "session_result_references": [
+    {
+      "session_id": "PRE21-KIMI-INTEROP-CANDIDATE",
+      "reference": "compact-live-review-kimi-session-result.v0.1.json",
+      "sha256": "13ce8736caf250756169f6b027781b31df5f5e2ab45f4bfa077922a24661ef6f"
+    },
+    {
+      "session_id": "PRE21-DEEPSEEK-BOUNDARY-CANDIDATE",
+      "reference": "compact-live-review-deepseek-session-result.v0.1.json",
+      "sha256": "eddaab82e3e69c4978a4a50620c0bacfdbf9a57296987ceb32413495dd5dddc6"
+    }
+  ],
+  "validation_counts": {
+    "authorized_sessions": 2,
+    "executed_sessions": 2,
+    "query_bindings_matched": 2,
+    "assistant_contents_extracted": 1,
+    "direct_json_parseable_responses": 1,
+    "schema_conformant_responses": 1,
+    "session_bindings_matched": 1,
+    "model_bindings_matched": 0,
+    "qualifying_sessions": 0,
+    "accept_verdicts_observed": 1,
+    "client_extraction_failures": 1,
+    "returned_model_mismatches": 1
+  },
+  "session_outcomes": [
+    {
+      "session_id": "PRE21-KIMI-INTEROP-CANDIDATE",
+      "request_executed": true,
+      "response_schema_conformant": false,
+      "model_binding_valid": null,
+      "qualifying_session": false,
+      "outcome": "CLIENT_RESPONSE_EXTRACTION_FAILURE"
+    },
+    {
+      "session_id": "PRE21-DEEPSEEK-BOUNDARY-CANDIDATE",
+      "request_executed": true,
+      "response_schema_conformant": true,
+      "model_binding_valid": false,
+      "qualifying_session": false,
+      "outcome": "SCHEMA_CONFORMANT_RETURNED_MODEL_MISMATCH"
+    }
+  ],
+  "composite_result": {
+    "compact_projection_review_pass": false,
+    "failure_mode": "INCOMPLETE_FAIL_CLOSED",
+    "required_qualifying_sessions": 2,
+    "actual_qualifying_sessions": 0,
+    "one_session_may_substitute_other": false,
+    "full_source_human_review_ready": false,
+    "full_source_human_review_still_required": true,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "next_permitted_action": "PREPARE_SEPARATE_OFFLINE_PRE22_FAILURE_DIAGNOSTIC_RECOMMENDATION_ONLY"
+  },
+  "execution_accounting": {
+    "live_model_requests_executed": 2,
+    "provider_network_requests_executed": 2,
+    "requests_per_session_max_observed": 1,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "persistence_accounting": {
+    "valid_compact_response_objects_persisted": 1,
+    "raw_provider_envelopes_persisted": 0,
+    "usage_envelopes_persisted": 0,
+    "credentials_persisted": 0,
+    "hidden_reasoning_persisted": 0,
+    "invalid_responses_repaired": 0
+  },
+  "effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "compact_projection_review_completed": false,
+    "full_source_human_review_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_created": false,
+    "customer_evidence_created": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

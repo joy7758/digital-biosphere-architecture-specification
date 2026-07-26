@@ -1,0 +1,160 @@
+{
+  "$schema": "./compact-live-review-session-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-22-DEEPSEEK-COMPACT-LIVE-REVIEW-SESSION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTED_SCHEMA_CONFORMANT_RETURNED_MODEL_MISMATCH",
+  "observed_at": "2026-07-26T21:44:00+08:00",
+  "decision_reference": "CS-D02-PRE-22",
+  "authorization_receipt_reference": "compact-live-review-authorization-receipt.v0.1.json",
+  "session_id": "PRE21-DEEPSEEK-BOUNDARY-CANDIDATE",
+  "provider": "deepseek",
+  "provider_gateway": "deepseek_direct",
+  "requested_model": "deepseek-chat",
+  "returned_model": "deepseek-v4-flash",
+  "reviewer_role": "SECURITY_FAILURE_AND_SEMANTIC_BOUNDARY_REVIEWER",
+  "query": {
+    "bytes": 21006,
+    "sha256": "d2297316da3e20c750f16119610d1b06c2fae98b84f21ce911ff84c4a4572f6b",
+    "binding_valid": true
+  },
+  "request_accounting": {
+    "live_model_requests_executed": 1,
+    "provider_network_requests_executed": 1,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "transport": {
+    "http_status": 200,
+    "response_body_bytes": 5752,
+    "response_body_sha256": "c14fb6817e122905e59bdf270279f2b59bb773355a0589c4cb780a62795382ea",
+    "raw_provider_envelope_persisted": false,
+    "usage_envelope_persisted": false,
+    "credentials_persisted": false
+  },
+  "extraction": {
+    "assistant_content_extracted": true,
+    "assistant_content_bytes": 4930,
+    "assistant_content_sha256": "6c2a41d00116466ae602233776d9052125c51258b5279a8d0c172d97deedfb29",
+    "direct_json_parseable": true,
+    "json_repair_attempted": false,
+    "hidden_reasoning_persisted": false
+  },
+  "validation": {
+    "response_schema_validation_status": "PASS",
+    "schema_conformant": true,
+    "session_binding_valid": true,
+    "model_binding_valid": false,
+    "qualifying_response": false
+  },
+  "verdict": "ACCEPT_COMPACT_REVIEW_FOR_FULL_SOURCE_HUMAN_REVIEW",
+  "failure_class": "RETURNED_MODEL_MISMATCH",
+  "known_limitations": [
+    "The provider returned deepseek-v4-flash while the frozen request and authorization named deepseek-chat.",
+    "A Schema-conformant compact response does not override the failed model binding.",
+    "Only the compact projection was reviewed; full source artifacts and provider runtime conformance were not assessed."
+  ],
+  "sanitized_response": {
+    "$schema": "./provider-adapter-compact-review-response.schema.v0.1.json",
+    "review_id": "PRE21-DEEPSEEK-BOUNDARY-CANDIDATE",
+    "reviewer_role": "SECURITY_FAILURE_AND_SEMANTIC_BOUNDARY_REVIEWER",
+    "review_scope": "COMPACT_PROJECTION_ONLY",
+    "full_source_artifacts_reviewed_by_model": false,
+    "reviewed_projection": {
+      "projection_version": "0.1.0",
+      "projection_sha256": "afa323a757b3ae1316548c868ffb2e4d1a3aa01f511ec2c6564124d1c35dda65",
+      "projection_canonical_sha256": "59d8aa6867844ce80e89a5f49c92e569a1f5731e0c172c3aa82a22bb9f9a3069",
+      "coverage_matrix_sha256": "54b6fbeaf945730924d18e18372a09f654f28cfb875999422354d243c408bf2b",
+      "coverage_matrix_canonical_sha256": "f012a431849859b0e22ee4c7fe6421f628dc29dfa6e75255081251a76c7d783f",
+      "source_manifest_sha256": "85a390d447e946feefea251e8dc4b95e36dd5b3022cc2c8fb59146b483237a79"
+    },
+    "criteria": [
+      {
+        "criterion": "INTEROPERABILITY",
+        "status": "PASS",
+        "finding": "Profile claims provider_neutral and normalizes metadata without provider-specific logic.",
+        "projection_paths": ["/profile_core/provider_neutral", "/profile_core/purpose"],
+        "limitations": ["Cannot verify source pointer for reference_provider_history as omitted."]
+      },
+      {
+        "criterion": "DEVELOPER_IMPLEMENTABILITY",
+        "status": "PASS",
+        "finding": "Required fields for request and result descriptors are clearly defined.",
+        "projection_paths": ["/descriptor_projection/request_required_fields", "/descriptor_projection/result_required_fields"],
+        "limitations": ["Schema details omitted; cannot confirm all keyword constraints."]
+      },
+      {
+        "criterion": "NORMALIZED_REQUEST_RESULT_BOUNDARY",
+        "status": "PASS",
+        "finding": "State separation and wrapper depth limit boundary claims are explicit.",
+        "projection_paths": ["/descriptor_projection/state_separation", "/profile_core/maximum_wrapper_unwrap_depth"],
+        "limitations": ["Cannot assess full schema constraint; pointer to result_descriptor omitted."]
+      },
+      {
+        "criterion": "FAILURE_TAXONOMY_COMPLETENESS",
+        "status": "PASS",
+        "finding": "Failure contract covers all stages with distinct classes and retry dispositions.",
+        "projection_paths": ["/failure_contract"],
+        "limitations": ["Cannot verify failure_retention_required source pointer; omitted material."]
+      },
+      {
+        "criterion": "SEMANTIC_NON_ELEVATION",
+        "status": "PASS",
+        "finding": "Non-elevation contract clearly separates projection from adoption, conformance, etc.",
+        "projection_paths": ["/non_elevation_contract", "/review_boundary"],
+        "limitations": ["Cannot verify conformance case 19 source pointer; omitted material."]
+      },
+      {
+        "criterion": "PRIVACY_AND_PERSISTENCE_BOUNDARY",
+        "status": "PASS",
+        "finding": "Persistence flags explicitly set to false, aligning with privacy requirements.",
+        "projection_paths": ["/profile_core/raw_provider_body_persistence_allowed", "/profile_core/secret_persistence_allowed", "/profile_core/usage_payload_persistence_allowed"],
+        "limitations": ["Cannot verify conformance cases 17/18 source pointers; omitted material."]
+      },
+      {
+        "criterion": "CONFORMANCE_CASE_ADEQUACY",
+        "status": "PASS",
+        "finding": "Case catalog contains 20 cases (≥16 min), covering all required failure classes and stages.",
+        "projection_paths": ["/case_catalog_projection", "/conformance_entry_requirements"],
+        "limitations": ["Cannot verify full case text; only IDs, stages, and failure classes provided."]
+      }
+    ],
+    "verdict": "ACCEPT_COMPACT_REVIEW_FOR_FULL_SOURCE_HUMAN_REVIEW",
+    "required_changes": [],
+    "blockers": [],
+    "known_unknowns": [
+      "Full source artifacts not reviewed; claims are based solely on compact projection.",
+      "Omitted material includes human narrative, full schemas, case assertions, and historical reports.",
+      "Profile is not adopted; no conformance executed; no provider support confirmed."
+    ],
+    "non_elevation_confirmations": {
+      "compact_review_creates_profile_review_completion": false,
+      "compact_review_creates_profile_adoption": false,
+      "compact_review_creates_adapter_implementation": false,
+      "compact_review_creates_conformance_pass": false,
+      "compact_review_creates_provider_support": false,
+      "compact_review_creates_valid_problem_record": false,
+      "compact_review_creates_cs_g0": false,
+      "compact_review_creates_market_or_customer_evidence": false,
+      "compact_review_creates_authority_or_permission": false
+    },
+    "review_limits": {
+      "compact_projection_only": true,
+      "full_schema_constraints_reviewed": false,
+      "full_case_text_reviewed": false,
+      "full_historical_reports_reviewed": false,
+      "provider_runtime_conformance_assessed": false,
+      "adapter_implementation_assessed": false
+    },
+    "recommended_next_action": "PREPARE_FULL_SOURCE_HUMAN_REVIEW"
+  },
+  "effects": {
+    "session_qualifies": false,
+    "compact_projection_review_completed": false,
+    "full_source_human_review_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "provider_supported": false,
+    "authority_or_permission_created": false
+  }
+}
