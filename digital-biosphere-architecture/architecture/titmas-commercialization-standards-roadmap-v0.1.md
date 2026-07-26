@@ -2011,6 +2011,87 @@ PRE39_RELEASE_AUTHORIZED=false
 只关闭 PRE-38 truth conflict。下一步必须是 PRE-40 clean-clone RB0 verification/adoption
 gate，不允许直接进入 RB1。
 
+### 4.54 PRE-40 Clean-clone Verification and Adoption Readiness
+
+[PRE-40 Decision](../TITMAS-CS-D02-PRE-40-RB0-CLEAN-CLONE-VERIFICATION-AND-ADOPTION-READINESS-DECISION-RECORD.md)
+授权一次独立 fresh clone 验证。它复核 exact 16-file inventory、digest/mode、Apache-2.0、
+两个 machine Schema/instance、两个本地引用、agent-readable truth surface 和零实现状态。
+
+```text
+PRE40_VERIFIED_BASELINE_COMMIT=9610748d4a72d81278df2bc296518a469ce2fd30
+PRE40_CLEAN_CLONE_PASS=true
+PRE40_ADOPTION_REVIEW_READY=true
+PRE40_BASELINE_ADOPTED=false
+PRE40_IMPLEMENTATION_AUTHORIZED=false
+```
+
+[Result](../commercialization-standards-titmas-integrations-rb0-clean-clone-verification/PRE-40-RB0-CLEAN-CLONE-VERIFICATION-AND-ADOPTION-READINESS-RESULT-v0.1.md)
+只证明 Development adoption readiness，不产生 adoption、merge、RB1 或 release。
+
+### 4.55 PRE-41 Development RB0 Adoption
+
+[PRE-41 Decision](../TITMAS-CS-D02-PRE-41-TITMAS-INTEGRATIONS-RB0-DEVELOPMENT-ADOPTION-AND-TRUTH-SYNCHRONIZATION-DECISION-RECORD.md)
+采纳 exact `9610748…` 为 Development RB0 governance baseline。该采纳只覆盖治理基线，
+不覆盖未来 commit、source、package、implementation 或 provider binding。
+
+target truth sync 随后在 preflight fail closed：candidate 提供 Decision repository/path，
+但没有绑定 non-default governance branch 和 exact Decision commit。adoption 保持有效，
+target 未修改。
+
+```text
+PRE41_DEVELOPMENT_RB0_ADOPTED=true
+PRE41_TARGET_TRUTH_SYNCHRONIZED=false
+PRE41_TARGET_MUTATION_STARTED=false
+PRE41_REFERENCE_REMEDIATION_REQUIRED=true
+```
+
+### 4.56 PRE-42 Revision-bound Target Truth Synchronization
+
+[PRE-42 Decision](../TITMAS-CS-D02-PRE-42-ADOPTED-RB0-REVISION-BOUND-TARGET-TRUTH-SYNCHRONIZATION-DECISION-RECORD.md)
+只授权五个 metadata truth surface 引用：
+
+```text
+ADOPTION_DECISION_BRANCH=codex/production-observability-baseline
+ADOPTION_DECISION_COMMIT=8732feb0641c5a044909ec475db832a850bf52d6
+```
+
+目标提交 `f806293…` 已完成 fresh remote clone 复验，且相对 `9610748…` 只修改 exact
+five metadata paths。remote main 和原 checkout 未变化。
+
+```text
+PRE42_DEVELOPMENT_RB0_ADOPTION_CHANGED=false
+PRE42_TARGET_TRUTH_SYNCHRONIZED=true
+PRE42_TARGET_FILES_UPDATED=5
+PRE42_SOURCE_PACKAGE_TEST_FILES_MODIFIED=0
+PRE42_IMPLEMENTATION_CREATED=false
+PRE42_PROVIDER_SUPPORTED=false
+PRE42_CONFORMANCE_EXECUTED=false
+PRE42_RB1_IMPLEMENTATION_AUTHORIZED=false
+```
+
+[Result](../commercialization-standards-titmas-integrations-rb0-development-adoption-reference-remediation/PRE-42-ADOPTED-RB0-REVISION-BOUND-TARGET-TRUTH-SYNCHRONIZATION-RESULT-v0.1.md)
+关闭 PRE-41 reference gap，但不允许直接开发 RB1。
+
+### 4.57 PRE-43 RB1 Scope and Contract Planning Gate
+
+下一步只能形成独立 recommendation，回答：
+
+1. RB1 解决哪个已证实的问题，为什么 RB0 metadata baseline 不足；
+2. 最小 contract surface、offline fixture 和 negative-boundary case 是什么；
+3. Owner、target、path、request、credential 和 failure-retention 边界是什么；
+4. 如何保持 observation、evidence、evaluation、authorization 与 execution 分离；
+5. 哪些结果明确不构成 provider support、conformance、Runtime、release、customer proof
+   或商业可用性。
+
+```text
+PRE43_RECOMMENDATION_REQUIRED=true
+PRE43_DECISION_RECORDED=false
+PRE43_RB1_IMPLEMENTATION_AUTHORIZED=false
+PRE43_TARGET_SOURCE_MODIFICATION_AUTHORIZED=false
+VALID_PROBLEM_RECORDS=0
+CS_G0_PASS=false
+```
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name

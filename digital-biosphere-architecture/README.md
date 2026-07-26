@@ -433,15 +433,36 @@ fail closed；失败分支和历史均被保留。
 RB0 files 已应用到分支、尚未 merge、baseline 尚未验证或采纳、license 已采纳；package、
 source、tests、实现、provider support、conformance、Runtime 和 Release 仍为 0/false。
 
+[PRE-40 clean-clone verification](commercialization-standards-titmas-integrations-rb0-clean-clone-verification/PRE-40-RB0-CLEAN-CLONE-VERIFICATION-AND-ADOPTION-READINESS-RESULT-v0.1.md)
+从远端全新检出 `9610748…`，验证 exact 16-file inventory、Apache-2.0、Schema/instance、
+引用、边界和零实现状态，结论仅为 Development adoption review ready。
+
+[PRE-41 Development adoption](TITMAS-CS-D02-PRE-41-TITMAS-INTEGRATIONS-RB0-DEVELOPMENT-ADOPTION-AND-TRUTH-SYNCHRONIZATION-DECISION-RECORD.md)
+已采纳 exact `9610748…` 为 Development RB0 governance baseline。首次 target truth sync
+因 Decision reference 未绑定 non-default branch/commit 而在目标写入前 fail closed；
+adoption 保持有效，失败记录保留。
+
+[PRE-42 revision-bound target truth synchronization](commercialization-standards-titmas-integrations-rb0-development-adoption-reference-remediation/PRE-42-ADOPTED-RB0-REVISION-BOUND-TARGET-TRUTH-SYNCHRONIZATION-RESULT-v0.1.md)
+把 PRE-41 Decision reference 绑定到
+`codex/production-observability-baseline@8732feb…`，只更新五个 target metadata truth
+surfaces，并在 `f806293…` 上完成 fresh remote clone 复验。该动作不重新采纳 baseline，
+不创建实现，也不授权 RB1。
+
 ```text
 TITMAS_INTEGRATIONS_TARGET_BRANCH=codex/rb0-governance-baseline
-TITMAS_INTEGRATIONS_TARGET_COMMIT=9610748d4a72d81278df2bc296518a469ce2fd30
+TITMAS_INTEGRATIONS_ADOPTED_RB0_COMMIT=9610748d4a72d81278df2bc296518a469ce2fd30
+TITMAS_INTEGRATIONS_TARGET_TRUTH_SURFACE_COMMIT=f80629364752c465316b9d1238fe5447a88565ca
 TITMAS_INTEGRATIONS_REMOTE_MAIN_UNCHANGED=true
 TITMAS_INTEGRATIONS_RB0_FILES_APPLIED_TO_BRANCH=true
 TITMAS_INTEGRATIONS_RB0_TRUTH_SURFACE_CONSISTENT=true
-TITMAS_INTEGRATIONS_RB0_BASELINE_VALIDATED=false
-TITMAS_INTEGRATIONS_RB0_BASELINE_ADOPTED=false
-TITMAS_INTEGRATIONS_PRE40_CLEAN_CLONE_GATE_REQUIRED=true
+TITMAS_INTEGRATIONS_RB0_BASELINE_VALIDATED=true
+TITMAS_INTEGRATIONS_RB0_BASELINE_ADOPTED=true
+TITMAS_INTEGRATIONS_BRANCH_MERGED=false
+TITMAS_INTEGRATIONS_IMPLEMENTATION_CREATED=false
+TITMAS_INTEGRATIONS_PROVIDER_SUPPORTED=false
+TITMAS_INTEGRATIONS_CONFORMANCE_EXECUTED=false
+TITMAS_INTEGRATIONS_RB1_IMPLEMENTATION_AUTHORIZED=false
+TITMAS_INTEGRATIONS_PRE43_RB1_PLANNING_RECOMMENDATION_REQUIRED=true
 ```
 
 ```text
