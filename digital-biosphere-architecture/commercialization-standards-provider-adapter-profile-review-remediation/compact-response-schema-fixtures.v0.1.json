@@ -1,0 +1,99 @@
+{
+  "$schema": "./compact-response-schema-fixtures.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-21-COMPACT-RESPONSE-SCHEMA-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "FIXTURES_DEFINED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-21",
+  "response_schema_reference": "../architecture/schemas/provider-adapter-compact-review-response.schema.v0.1.json",
+  "base_instances": {
+    "ACCEPT": {
+      "$schema": "./provider-adapter-compact-review-response.schema.v0.1.json",
+      "review_id": "PRE21-FIXTURE-ACCEPT",
+      "reviewer_role": "INTEROPERABILITY_AND_DEVELOPER_IMPLEMENTABILITY_REVIEWER",
+      "review_scope": "COMPACT_PROJECTION_ONLY",
+      "full_source_artifacts_reviewed_by_model": false,
+      "reviewed_projection": {
+        "projection_version": "0.1.0",
+        "projection_sha256": "afa323a757b3ae1316548c868ffb2e4d1a3aa01f511ec2c6564124d1c35dda65",
+        "projection_canonical_sha256": "59d8aa6867844ce80e89a5f49c92e569a1f5731e0c172c3aa82a22bb9f9a3069",
+        "coverage_matrix_sha256": "54b6fbeaf945730924d18e18372a09f654f28cfb875999422354d243c408bf2b",
+        "coverage_matrix_canonical_sha256": "f012a431849859b0e22ee4c7fe6421f628dc29dfa6e75255081251a76c7d783f",
+        "source_manifest_sha256": "85a390d447e946feefea251e8dc4b95e36dd5b3022cc2c8fb59146b483237a79"
+      },
+      "criteria": [
+        {"criterion": "INTEROPERABILITY", "status": "PASS", "finding": "Projected boundary is provider neutral.", "projection_paths": ["/profile_core/provider_neutral"], "limitations": ["Full provider implementations were not assessed."]},
+        {"criterion": "DEVELOPER_IMPLEMENTABILITY", "status": "PASS", "finding": "Required descriptor fields are explicit.", "projection_paths": ["/descriptor_projection/request_required_fields"], "limitations": ["Full Schema keywords were not reviewed."]},
+        {"criterion": "NORMALIZED_REQUEST_RESULT_BOUNDARY", "status": "PASS", "finding": "Transport and semantic states remain distinct.", "projection_paths": ["/descriptor_projection/state_separation"], "limitations": []},
+        {"criterion": "FAILURE_TAXONOMY_COMPLETENESS", "status": "PASS", "finding": "Nine projected failure classes cover declared stages.", "projection_paths": ["/failure_contract"], "limitations": ["Provider-specific errors remain unknown."]},
+        {"criterion": "SEMANTIC_NON_ELEVATION", "status": "PASS", "finding": "Structural passes do not create authority or validity.", "projection_paths": ["/non_elevation_contract"], "limitations": []},
+        {"criterion": "PRIVACY_AND_PERSISTENCE_BOUNDARY", "status": "PASS", "finding": "Raw body, secret and usage persistence remain false.", "projection_paths": ["/profile_core/raw_provider_body_persistence_allowed"], "limitations": []},
+        {"criterion": "CONFORMANCE_CASE_ADEQUACY", "status": "PASS", "finding": "Twenty unexecuted projected cases cover declared stages.", "projection_paths": ["/case_catalog_projection"], "limitations": ["Full case text was not reviewed."]}
+      ],
+      "verdict": "ACCEPT_COMPACT_REVIEW_FOR_FULL_SOURCE_HUMAN_REVIEW",
+      "required_changes": [],
+      "blockers": [],
+      "known_unknowns": ["Provider runtime behavior was not assessed."],
+      "non_elevation_confirmations": {
+        "compact_review_creates_profile_review_completion": false,
+        "compact_review_creates_profile_adoption": false,
+        "compact_review_creates_adapter_implementation": false,
+        "compact_review_creates_conformance_pass": false,
+        "compact_review_creates_provider_support": false,
+        "compact_review_creates_valid_problem_record": false,
+        "compact_review_creates_cs_g0": false,
+        "compact_review_creates_market_or_customer_evidence": false,
+        "compact_review_creates_authority_or_permission": false
+      },
+      "review_limits": {
+        "compact_projection_only": true,
+        "full_schema_constraints_reviewed": false,
+        "full_case_text_reviewed": false,
+        "full_historical_reports_reviewed": false,
+        "provider_runtime_conformance_assessed": false,
+        "adapter_implementation_assessed": false
+      },
+      "recommended_next_action": "PREPARE_FULL_SOURCE_HUMAN_REVIEW"
+    },
+    "RETURN_FOR_REVISION": {
+      "$base": "ACCEPT",
+      "overrides": [
+        {"op": "SET", "path": "/review_id", "value": "PRE21-FIXTURE-RETURN"},
+        {"op": "SET", "path": "/criteria/0/status", "value": "CHANGES_REQUIRED"},
+        {"op": "SET", "path": "/verdict", "value": "RETURN_FOR_REVISION"},
+        {"op": "SET", "path": "/required_changes", "value": ["Clarify the projected interoperability boundary."]},
+        {"op": "SET", "path": "/recommended_next_action", "value": "REVISE_COMPACT_PROJECTION_OR_PROFILE"}
+      ]
+    },
+    "REJECT": {
+      "$base": "ACCEPT",
+      "overrides": [
+        {"op": "SET", "path": "/review_id", "value": "PRE21-FIXTURE-REJECT"},
+        {"op": "SET", "path": "/criteria/0/status", "value": "BLOCKER"},
+        {"op": "SET", "path": "/verdict", "value": "REJECT"},
+        {"op": "SET", "path": "/blockers", "value": ["Projected boundary contains a blocking contradiction."]},
+        {"op": "SET", "path": "/recommended_next_action", "value": "STOP_AND_REJECT_COMPACT_REVIEW_PATH"}
+      ]
+    }
+  },
+  "cases": [
+    {"case_id": "PCR-001", "fixture_class": "VALID_ACCEPT", "base_ref": "ACCEPT", "mutations": [], "expected_schema_valid": true},
+    {"case_id": "PCR-002", "fixture_class": "VALID_RETURN_FOR_REVISION", "base_ref": "RETURN_FOR_REVISION", "mutations": [], "expected_schema_valid": true},
+    {"case_id": "PCR-003", "fixture_class": "VALID_REJECT", "base_ref": "REJECT", "mutations": [], "expected_schema_valid": true},
+    {"case_id": "PCR-004", "fixture_class": "MISSING_COMPACT_SCOPE", "base_ref": "ACCEPT", "mutations": [{"op": "REMOVE", "path": "/review_scope"}], "expected_schema_valid": false},
+    {"case_id": "PCR-005", "fixture_class": "FULL_SOURCE_REVIEW_ELEVATION", "base_ref": "ACCEPT", "mutations": [{"op": "SET", "path": "/full_source_artifacts_reviewed_by_model", "value": true}], "expected_schema_valid": false},
+    {"case_id": "PCR-006", "fixture_class": "PROFILE_REVIEW_ELEVATION", "base_ref": "ACCEPT", "mutations": [{"op": "SET", "path": "/non_elevation_confirmations/compact_review_creates_profile_review_completion", "value": true}], "expected_schema_valid": false},
+    {"case_id": "PCR-007", "fixture_class": "PROFILE_ADOPTION_ELEVATION", "base_ref": "ACCEPT", "mutations": [{"op": "SET", "path": "/non_elevation_confirmations/compact_review_creates_profile_adoption", "value": true}], "expected_schema_valid": false},
+    {"case_id": "PCR-008", "fixture_class": "WRONG_PROJECTION_HASH", "base_ref": "ACCEPT", "mutations": [{"op": "SET", "path": "/reviewed_projection/projection_sha256", "value": "0000000000000000000000000000000000000000000000000000000000000000"}], "expected_schema_valid": false},
+    {"case_id": "PCR-009", "fixture_class": "DUPLICATE_CRITERION", "base_ref": "ACCEPT", "mutations": [{"op": "APPEND_COPY", "path": "/criteria", "source_path": "/criteria/0"}], "expected_schema_valid": false},
+    {"case_id": "PCR-010", "fixture_class": "MISSING_CRITERION", "base_ref": "ACCEPT", "mutations": [{"op": "REMOVE", "path": "/criteria/6"}], "expected_schema_valid": false},
+    {"case_id": "PCR-011", "fixture_class": "ACCEPT_WITH_REQUIRED_CHANGE", "base_ref": "ACCEPT", "mutations": [{"op": "SET", "path": "/required_changes", "value": ["This change is inconsistent with ACCEPT."]}], "expected_schema_valid": false},
+    {"case_id": "PCR-012", "fixture_class": "RETURN_WITHOUT_REQUIRED_CHANGE", "base_ref": "RETURN_FOR_REVISION", "mutations": [{"op": "SET", "path": "/required_changes", "value": []}], "expected_schema_valid": false},
+    {"case_id": "PCR-013", "fixture_class": "REJECT_WITHOUT_BLOCKER", "base_ref": "REJECT", "mutations": [{"op": "SET", "path": "/blockers", "value": []}], "expected_schema_valid": false}
+  ],
+  "effects": {
+    "fixtures_executed": 0,
+    "live_review_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false
+  }
+}

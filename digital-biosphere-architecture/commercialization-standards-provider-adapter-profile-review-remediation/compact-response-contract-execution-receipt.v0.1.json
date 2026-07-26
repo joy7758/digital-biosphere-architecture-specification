@@ -1,0 +1,66 @@
+{
+  "$schema": "./compact-response-contract-execution-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-21-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTION_COMPLETE_OFFLINE_RESPONSE_CONTRACT_PASS_LIVE_REVIEW_NOT_AUTHORIZED",
+  "observed_at": "2026-07-26T22:10:00+08:00",
+  "decision_reference": "CS-D02-PRE-21",
+  "branch": "codex/production-observability-baseline",
+  "authorization": {
+    "recommendation_commit": "1bb5956c7e09e9b818b587c372c72c597193534f",
+    "decision_baseline_commit": "4c3ba50a27e61b27fc3ead7040d721cb47b1e155",
+    "authorization_receipt_commit": "c6e78496b8dce485c038547da2818c32eef8bcf3",
+    "remote_authorization_baseline_verified_before_execution": true
+  },
+  "artifact_bindings": [
+    {"reference": "../architecture/schemas/provider-adapter-compact-review-response.schema.v0.1.json", "sha256": "9de052ed75bbb82f03bcd79f90e85bab71af1a91f31c9a33f383e49258c12487"},
+    {"reference": "compact-response-schema-fixtures.v0.1.json", "sha256": "29132571a25c5591a5bb5f8196c37a9b66d4a63e54440ded893d5863e1917e2c"},
+    {"reference": "compact-response-schema-fixtures.schema.v0.1.json", "sha256": "74a18fa8fc7ee0987bc68fd160af842e36a81b287370b86ab22533da99425d57"},
+    {"reference": "compact-review-request-manifest.v0.2.json", "sha256": "61c0f64632ae22791345d7e17bcfaaf0e0e64133a11af6d1f823c1cef142cc29"},
+    {"reference": "compact-review-request-manifest.schema.v0.2.json", "sha256": "46d87dd4f979f81d66d88ee710ee705a6e99290ba10634c12e39c798b178a26e"},
+    {"reference": "compact-response-contract-validation-result.v0.1.json", "sha256": "8827433ecdc19e22d318f96d3b8d2880c3c929e03b42b686c82454ea37003892"},
+    {"reference": "compact-response-contract-validation-result.schema.v0.1.json", "sha256": "85da907d5a0cfe80476ccef009e0f022463edfa0245fbb2669974c0ba9b5fa00"},
+    {"reference": "PRE-21-COMPACT-REVIEW-RESPONSE-CONTRACT-RESULT-v0.1.md", "sha256": "09bdf3b66c5118d7f09a3fbf1e17cbad7ef81ae2919c5e87441600c4dc9f18b0"}
+  ],
+  "execution_accounting": {
+    "offline_validation_runs_completed": 1,
+    "input_hashes_matched": 6,
+    "input_hashes_total": 6,
+    "fixture_cases_matched": 13,
+    "fixture_cases_total": 13,
+    "v0_2_component_bindings_matched": 4,
+    "v0_2_component_bindings_total": 4,
+    "maximum_candidate_query_bytes": 21010,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "result": {
+    "offline_response_contract_pass": true,
+    "live_review_recommendation_ready": true,
+    "live_review_authorized": false,
+    "live_review_executed": false,
+    "compact_projection_review_completed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "next_permitted_action": "PREPARE_SEPARATE_BOUNDED_COMPACT_PROJECTION_LIVE_REVIEW_RECOMMENDATION_ONLY"
+  },
+  "effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

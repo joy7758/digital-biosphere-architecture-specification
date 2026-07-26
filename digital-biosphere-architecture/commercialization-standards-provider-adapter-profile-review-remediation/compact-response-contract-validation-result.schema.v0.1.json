@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:pre-21-compact-response-contract-validation-result:0.1",
+  "title": "TITMAS PRE-21 Compact Response Contract Validation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "authorization_receipt_reference",
+    "validation_counts",
+    "size_result",
+    "response_boundary_result",
+    "result",
+    "execution_accounting",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./compact-response-contract-validation-result.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-21-COMPACT-RESPONSE-CONTRACT-VALIDATION-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "OFFLINE_RESPONSE_CONTRACT_PASS_LIVE_REVIEW_NOT_AUTHORIZED"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-21"},
+    "authorization_receipt_reference": {"const": "compact-response-contract-authorization-receipt.v0.1.json"},
+    "validation_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_hashes_matched",
+        "input_hashes_total",
+        "response_schema_meta_valid",
+        "fixture_cases_matched",
+        "fixture_cases_total",
+        "positive_fixtures_accepted",
+        "positive_fixtures_total",
+        "negative_fixtures_rejected",
+        "negative_fixtures_total",
+        "scope_and_elevation_fixtures_rejected",
+        "scope_and_elevation_fixtures_total",
+        "hash_binding_fixtures_rejected",
+        "hash_binding_fixtures_total",
+        "criterion_integrity_fixtures_rejected",
+        "criterion_integrity_fixtures_total",
+        "verdict_consistency_fixtures_rejected",
+        "verdict_consistency_fixtures_total",
+        "v0_2_component_bindings_matched",
+        "v0_2_component_bindings_total"
+      ],
+      "properties": {
+        "input_hashes_matched": {"const": 6},
+        "input_hashes_total": {"const": 6},
+        "response_schema_meta_valid": {"const": true},
+        "fixture_cases_matched": {"const": 13},
+        "fixture_cases_total": {"const": 13},
+        "positive_fixtures_accepted": {"const": 3},
+        "positive_fixtures_total": {"const": 3},
+        "negative_fixtures_rejected": {"const": 10},
+        "negative_fixtures_total": {"const": 10},
+        "scope_and_elevation_fixtures_rejected": {"const": 4},
+        "scope_and_elevation_fixtures_total": {"const": 4},
+        "hash_binding_fixtures_rejected": {"const": 1},
+        "hash_binding_fixtures_total": {"const": 1},
+        "criterion_integrity_fixtures_rejected": {"const": 2},
+        "criterion_integrity_fixtures_total": {"const": 2},
+        "verdict_consistency_fixtures_rejected": {"const": 3},
+        "verdict_consistency_fixtures_total": {"const": 3},
+        "v0_2_component_bindings_matched": {"const": 4},
+        "v0_2_component_bindings_total": {"const": 4}
+      }
+    },
+    "size_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "internal_cap_bytes",
+        "candidate_queries",
+        "maximum_candidate_query_bytes",
+        "provider_declared_limit_bytes",
+        "provider_limit_validated"
+      ],
+      "properties": {
+        "internal_cap_bytes": {"const": 24000},
+        "candidate_queries": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["review_id", "query_bytes", "query_sha256", "cap_met"],
+            "properties": {
+              "review_id": {"type": "string", "minLength": 20},
+              "query_bytes": {"type": "integer", "minimum": 1, "maximum": 24000},
+              "query_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+              "cap_met": {"const": true}
+            }
+          }
+        },
+        "maximum_candidate_query_bytes": {"const": 21010},
+        "provider_declared_limit_bytes": {"type": "null"},
+        "provider_limit_validated": {"const": false}
+      }
+    },
+    "response_boundary_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_scope_const",
+        "full_source_artifacts_reviewed_by_model_const",
+        "profile_review_completion_effect",
+        "profile_adoption_effect",
+        "accept_next_action",
+        "full_source_human_review_still_required"
+      ],
+      "properties": {
+        "review_scope_const": {"const": "COMPACT_PROJECTION_ONLY"},
+        "full_source_artifacts_reviewed_by_model_const": {"const": false},
+        "profile_review_completion_effect": {"const": false},
+        "profile_adoption_effect": {"const": false},
+        "accept_next_action": {"const": "PREPARE_FULL_SOURCE_HUMAN_REVIEW"},
+        "full_source_human_review_still_required": {"const": true}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_response_contract_pass",
+        "v0_2_request_cap_met",
+        "live_review_recommendation_ready",
+        "live_review_authorized",
+        "live_review_executed",
+        "compact_projection_review_completed",
+        "profile_review_completed",
+        "profile_adopted",
+        "next_permitted_action"
+      ],
+      "properties": {
+        "offline_response_contract_pass": {"const": true},
+        "v0_2_request_cap_met": {"const": true},
+        "live_review_recommendation_ready": {"const": true},
+        "live_review_authorized": {"const": false},
+        "live_review_executed": {"const": false},
+        "compact_projection_review_completed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "next_permitted_action": {"const": "PREPARE_SEPARATE_BOUNDED_COMPACT_PROJECTION_LIVE_REVIEW_RECOMMENDATION_ONLY"}
+      }
+    },
+    "execution_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_validation_runs_completed",
+        "live_model_requests_executed",
+        "provider_network_requests_executed",
+        "retry_attempts",
+        "fallback_attempts",
+        "repair_attempts"
+      ],
+      "properties": {
+        "offline_validation_runs_completed": {"const": 1},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "repair_attempts": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_changed",
+        "ownership_changed",
+        "profile_review_completed",
+        "profile_adopted",
+        "adapter_implementation_created",
+        "conformance_executed",
+        "provider_supported",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "authority_changed": {"const": false},
+        "ownership_changed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "adapter_implementation_created": {"const": false},
+        "conformance_executed": {"const": false},
+        "provider_supported": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

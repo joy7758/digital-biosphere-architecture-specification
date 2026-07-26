@@ -1,0 +1,98 @@
+{
+  "$schema": "./compact-review-request-manifest.schema.v0.2.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-21-COMPACT-REVIEW-REQUEST-MANIFEST-0.2",
+  "version": "0.2.0",
+  "status": "CANDIDATE_NOT_AUTHORIZED_NOT_SENT",
+  "decision_reference": "CS-D02-PRE-21",
+  "supersedes": "compact-review-request-manifest.v0.1.json",
+  "instruction_template": "You are conducting a bounded architecture review of a TITMAS Provider Adapter Profile Compact Review Projection.\nReview only the projection and coverage matrix below. Do not claim that full source artifacts were reviewed.\nReturn exactly one JSON object conforming to the compact response Schema included below.\nThe review scope is COMPACT_PROJECTION_ONLY and full_source_artifacts_reviewed_by_model is false.\nHashes and source pointers establish lineage only; they do not prove omitted source text was reviewed.\nDo not infer Profile review completion, adoption, implementation, provider support, conformance, record validity, CS-G0, market validation, certification, release, authority or permission.\nReview ID: {{REVIEW_ID}}\nReviewer role: {{REVIEWER_ROLE}}\nNo Markdown, code fences, hidden reasoning, JSON repair or additional text.",
+  "assembly_contract": {
+    "encoding": "UTF-8",
+    "json_serialization": "SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE",
+    "runtime_substitutions": ["{{REVIEW_ID}}", "{{REVIEWER_ROLE}}"],
+    "component_order": [
+      "INSTRUCTION",
+      "PROJECTION_CANONICAL_JSON",
+      "COVERAGE_CANONICAL_JSON",
+      "COMPACT_RESPONSE_SCHEMA_CANONICAL_JSON"
+    ],
+    "section_markers": {
+      "projection": ["===== BEGIN COMPACT PROJECTION =====", "===== END COMPACT PROJECTION ====="],
+      "coverage": ["===== BEGIN COVERAGE MATRIX =====", "===== END COVERAGE MATRIX ====="],
+      "response_schema": ["===== BEGIN COMPACT RESPONSE SCHEMA =====", "===== END COMPACT RESPONSE SCHEMA ====="]
+    }
+  },
+  "components": [
+    {
+      "component_id": "INSTRUCTION",
+      "reference": "INLINE_INSTRUCTION_TEMPLATE",
+      "file_sha256": null,
+      "canonical_sha256": "787d3ae6ff9988d65115c6c4bf667b8858644bb899b80c854b7ba8ce6bda04f7",
+      "canonical_bytes": 834
+    },
+    {
+      "component_id": "PROJECTION_CANONICAL_JSON",
+      "reference": "../architecture/provider-adapter-profile-review-projection.v0.1.json",
+      "file_sha256": "afa323a757b3ae1316548c868ffb2e4d1a3aa01f511ec2c6564124d1c35dda65",
+      "canonical_sha256": "59d8aa6867844ce80e89a5f49c92e569a1f5731e0c172c3aa82a22bb9f9a3069",
+      "canonical_bytes": 9289
+    },
+    {
+      "component_id": "COVERAGE_CANONICAL_JSON",
+      "reference": "review-coverage-matrix.v0.1.json",
+      "file_sha256": "54b6fbeaf945730924d18e18372a09f654f28cfb875999422354d243c408bf2b",
+      "canonical_sha256": "f012a431849859b0e22ee4c7fe6421f628dc29dfa6e75255081251a76c7d783f",
+      "canonical_bytes": 3690
+    },
+    {
+      "component_id": "COMPACT_RESPONSE_SCHEMA_CANONICAL_JSON",
+      "reference": "../architecture/schemas/provider-adapter-compact-review-response.schema.v0.1.json",
+      "file_sha256": "9de052ed75bbb82f03bcd79f90e85bab71af1a91f31c9a33f383e49258c12487",
+      "canonical_sha256": "453ca879cd44b895b3348c5e206811e5f8abb22fba4da7f1efcd76603cee8589",
+      "canonical_bytes": 6917
+    }
+  ],
+  "candidate_sessions": [
+    {
+      "review_id": "PRE21-KIMI-INTEROP-CANDIDATE",
+      "reviewer_role": "INTEROPERABILITY_AND_DEVELOPER_IMPLEMENTABILITY_REVIEWER",
+      "query_bytes": 21010,
+      "query_sha256": "a7d762d7bd22c762d2c7d479508c22624e28f51707eeedaf1945c4153fc7fed7",
+      "request_authorized": false,
+      "request_executed": false
+    },
+    {
+      "review_id": "PRE21-DEEPSEEK-BOUNDARY-CANDIDATE",
+      "reviewer_role": "SECURITY_FAILURE_AND_SEMANTIC_BOUNDARY_REVIEWER",
+      "query_bytes": 21006,
+      "query_sha256": "d2297316da3e20c750f16119610d1b06c2fae98b84f21ce911ff84c4a4572f6b",
+      "request_authorized": false,
+      "request_executed": false
+    }
+  ],
+  "size_boundary": {
+    "internal_cap_bytes": 24000,
+    "maximum_candidate_query_bytes": 21010,
+    "cap_met": true,
+    "provider_declared_limit_bytes": null,
+    "provider_limit_claimed": false
+  },
+  "response_contract_boundary": {
+    "compact_response_schema_embedded": true,
+    "review_scope_const": "COMPACT_PROJECTION_ONLY",
+    "full_source_artifacts_reviewed_by_model_const": false,
+    "profile_review_completion_effect": false,
+    "profile_adoption_effect": false,
+    "accept_next_action": "PREPARE_FULL_SOURCE_HUMAN_REVIEW"
+  },
+  "effects": {
+    "request_manifest_candidate_created": true,
+    "live_model_requests_authorized": false,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "compact_projection_review_completed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "provider_supported": false
+  }
+}

@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:pre-21-compact-review-request-manifest:0.2",
+  "title": "TITMAS PRE-21 Compact Review Request Manifest v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "supersedes",
+    "instruction_template",
+    "assembly_contract",
+    "components",
+    "candidate_sessions",
+    "size_boundary",
+    "response_contract_boundary",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./compact-review-request-manifest.schema.v0.2.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-21-COMPACT-REVIEW-REQUEST-MANIFEST-0.2"},
+    "version": {"const": "0.2.0"},
+    "status": {"const": "CANDIDATE_NOT_AUTHORIZED_NOT_SENT"},
+    "decision_reference": {"const": "CS-D02-PRE-21"},
+    "supersedes": {"const": "compact-review-request-manifest.v0.1.json"},
+    "instruction_template": {"type": "string", "minLength": 500, "maxLength": 1200},
+    "assembly_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "encoding",
+        "json_serialization",
+        "runtime_substitutions",
+        "component_order",
+        "section_markers"
+      ],
+      "properties": {
+        "encoding": {"const": "UTF-8"},
+        "json_serialization": {"const": "SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE"},
+        "runtime_substitutions": {"const": ["{{REVIEW_ID}}", "{{REVIEWER_ROLE}}"]},
+        "component_order": {
+          "const": [
+            "INSTRUCTION",
+            "PROJECTION_CANONICAL_JSON",
+            "COVERAGE_CANONICAL_JSON",
+            "COMPACT_RESPONSE_SCHEMA_CANONICAL_JSON"
+          ]
+        },
+        "section_markers": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["projection", "coverage", "response_schema"],
+          "properties": {
+            "projection": {"const": ["===== BEGIN COMPACT PROJECTION =====", "===== END COMPACT PROJECTION ====="]},
+            "coverage": {"const": ["===== BEGIN COVERAGE MATRIX =====", "===== END COVERAGE MATRIX ====="]},
+            "response_schema": {"const": ["===== BEGIN COMPACT RESPONSE SCHEMA =====", "===== END COMPACT RESPONSE SCHEMA ====="]}
+          }
+        }
+      }
+    },
+    "components": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["component_id", "reference", "file_sha256", "canonical_sha256", "canonical_bytes"],
+        "properties": {
+          "component_id": {
+            "enum": [
+              "INSTRUCTION",
+              "PROJECTION_CANONICAL_JSON",
+              "COVERAGE_CANONICAL_JSON",
+              "COMPACT_RESPONSE_SCHEMA_CANONICAL_JSON"
+            ]
+          },
+          "reference": {"type": "string", "minLength": 12},
+          "file_sha256": {
+            "oneOf": [
+              {"type": "null"},
+              {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+            ]
+          },
+          "canonical_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "canonical_bytes": {"type": "integer", "minimum": 1, "maximum": 12000}
+        }
+      }
+    },
+    "candidate_sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "review_id",
+          "reviewer_role",
+          "query_bytes",
+          "query_sha256",
+          "request_authorized",
+          "request_executed"
+        ],
+        "properties": {
+          "review_id": {"type": "string", "minLength": 20},
+          "reviewer_role": {"type": "string", "minLength": 20},
+          "query_bytes": {"type": "integer", "minimum": 1, "maximum": 24000},
+          "query_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "request_authorized": {"const": false},
+          "request_executed": {"const": false}
+        }
+      }
+    },
+    "size_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "internal_cap_bytes",
+        "maximum_candidate_query_bytes",
+        "cap_met",
+        "provider_declared_limit_bytes",
+        "provider_limit_claimed"
+      ],
+      "properties": {
+        "internal_cap_bytes": {"const": 24000},
+        "maximum_candidate_query_bytes": {"const": 21010},
+        "cap_met": {"const": true},
+        "provider_declared_limit_bytes": {"type": "null"},
+        "provider_limit_claimed": {"const": false}
+      }
+    },
+    "response_contract_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "compact_response_schema_embedded",
+        "review_scope_const",
+        "full_source_artifacts_reviewed_by_model_const",
+        "profile_review_completion_effect",
+        "profile_adoption_effect",
+        "accept_next_action"
+      ],
+      "properties": {
+        "compact_response_schema_embedded": {"const": true},
+        "review_scope_const": {"const": "COMPACT_PROJECTION_ONLY"},
+        "full_source_artifacts_reviewed_by_model_const": {"const": false},
+        "profile_review_completion_effect": {"const": false},
+        "profile_adoption_effect": {"const": false},
+        "accept_next_action": {"const": "PREPARE_FULL_SOURCE_HUMAN_REVIEW"}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_manifest_candidate_created",
+        "live_model_requests_authorized",
+        "live_model_requests_executed",
+        "provider_network_requests_executed",
+        "compact_projection_review_completed",
+        "profile_review_completed",
+        "profile_adopted",
+        "provider_supported"
+      ],
+      "properties": {
+        "request_manifest_candidate_created": {"const": true},
+        "live_model_requests_authorized": {"const": false},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "compact_projection_review_completed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "provider_supported": {"const": false}
+      }
+    }
+  }
+}
