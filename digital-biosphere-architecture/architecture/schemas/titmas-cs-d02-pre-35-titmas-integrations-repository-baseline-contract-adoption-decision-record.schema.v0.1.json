@@ -1,0 +1,217 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-35-titmas-integrations-repository-baseline-contract-adoption-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-35 Repository Baseline Contract Adoption Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "primary_repository",
+    "target_branch",
+    "target_repository",
+    "target_commit",
+    "implementation_owner_ref",
+    "adoption_maturity",
+    "adopted_artifacts",
+    "adopted_schemas",
+    "adoption_record_reference",
+    "effects",
+    "next_gate"
+  ],
+  "$defs": {
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference",
+        "sha256"
+      ],
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 8
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    }
+  },
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-35-titmas-integrations-repository-baseline-contract-adoption-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-35-TITMAS-INTEGRATIONS-REPOSITORY-BASELINE-CONTRACT-ADOPTION-DECISION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "ADOPTED_AS_DEVELOPMENT_PLANNING_INPUT_ONLY"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-35"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-35-TITMAS-INTEGRATIONS-REPOSITORY-BASELINE-CONTRACT-ADOPTION-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "0ede89c5a5a6eb475d23d0573c33345fe76bb92533fa95b02c6fc652072cf757"
+    },
+    "recommendation_commit": {
+      "const": "ec5f2183923f7afff6cc8a060bcbd5f02fca3d94"
+    },
+    "decision_result": {
+      "const": "ADOPT_PRE34_EXACT_TITMAS_INTEGRATIONS_REPOSITORY_BASELINE_CONTRACT_AS_DEVELOPMENT_INPUT_ONLY"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "target_branch": {
+      "const": "codex/production-observability-baseline"
+    },
+    "target_repository": {
+      "const": "https://github.com/joy7758/titmas-integrations.git"
+    },
+    "target_commit": {
+      "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+    },
+    "implementation_owner_ref": {
+      "const": "zhangbin"
+    },
+    "adoption_maturity": {
+      "const": "Development"
+    },
+    "adopted_artifacts": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/artifact"
+      }
+    },
+    "adopted_schemas": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/artifact"
+      }
+    },
+    "adoption_record_reference": {
+      "const": "architecture/titmas-integrations-repository-baseline-contract-adoption.v0.1.json"
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository_baseline_contract_adopted",
+        "required_target_file_manifest_adopted",
+        "implementation_declaration_template_adopted",
+        "license_adopted",
+        "target_repository_modified",
+        "repository_baseline_applied",
+        "implementation_authorized",
+        "implementation_created",
+        "package_created",
+        "api_created",
+        "tests_executed",
+        "provider_supported",
+        "conformance_executed",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "repository_baseline_contract_adopted": {
+          "const": true
+        },
+        "required_target_file_manifest_adopted": {
+          "const": true
+        },
+        "implementation_declaration_template_adopted": {
+          "const": true
+        },
+        "license_adopted": {
+          "const": false
+        },
+        "target_repository_modified": {
+          "const": false
+        },
+        "repository_baseline_applied": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        },
+        "package_created": {
+          "const": false
+        },
+        "api_created": {
+          "const": false
+        },
+        "tests_executed": {
+          "const": 0
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    },
+    "next_gate": {
+      "const": "TITMAS_INTEGRATIONS_RB0_NON_EXECUTABLE_REPOSITORY_GOVERNANCE_BASELINE"
+    }
+  }
+}

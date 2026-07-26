@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-integrations-repository-baseline-contract-adoption.schema.v0.1.json",
+  "title": "TITMAS Integrations Repository Baseline Contract Adoption v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decided_by_ref",
+    "adopted_at",
+    "maturity",
+    "target_repository",
+    "target_commit",
+    "implementation_owner_ref",
+    "adopted_artifact_digests",
+    "effects",
+    "next_gate"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/titmas-integrations-repository-baseline-contract-adoption.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-INTEGRATIONS-REPOSITORY-BASELINE-CONTRACT-ADOPTION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "ADOPTED_DEVELOPMENT_PLANNING_INPUT"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-35"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "adopted_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "maturity": {
+      "const": "Development"
+    },
+    "target_repository": {
+      "const": "https://github.com/joy7758/titmas-integrations.git"
+    },
+    "target_commit": {
+      "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+    },
+    "implementation_owner_ref": {
+      "const": "zhangbin"
+    },
+    "adopted_artifact_digests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository_baseline_contract",
+        "required_target_file_manifest",
+        "implementation_declaration_template"
+      ],
+      "properties": {
+        "repository_baseline_contract": {
+          "const": "58920eb5b8c7ce1ecde66472743d408342f7fe7b418b323f48cf28c370c8537b"
+        },
+        "required_target_file_manifest": {
+          "const": "6135526966bef14ef2d4b33ae55c7fa62266b338a086b30be86aee2f335db664"
+        },
+        "implementation_declaration_template": {
+          "const": "40de6b9975005b3e8a76a8f5326da815bff7c7d6ae22f488e8fc01d1fa815cc5"
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "license_adopted",
+        "target_repository_modified",
+        "repository_baseline_applied",
+        "implementation_authorized",
+        "implementation_created",
+        "provider_supported",
+        "conformance_executed",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "license_adopted": {
+          "const": false
+        },
+        "target_repository_modified": {
+          "const": false
+        },
+        "repository_baseline_applied": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    },
+    "next_gate": {
+      "const": "TITMAS_INTEGRATIONS_RB0_NON_EXECUTABLE_REPOSITORY_GOVERNANCE_BASELINE"
+    }
+  }
+}
