@@ -1,0 +1,85 @@
+{
+  "$schema": "./contract-v0-2-candidate-review-execution-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTED_INCOMPLETE_FAIL_CLOSED_SANITIZED_OUTPUT_CAPTURE_FAILURE_NO_RETRY",
+  "observed_at": "2026-07-26T23:53:16+08:00",
+  "decision_reference": "CS-D02-PRE-26",
+  "authorization_baseline_commit": "dfdba34ff2d8573764c26bba2223cb8183bdf6cc",
+  "authorization_receipt_commit": "ae3e3d017628ce21371e162bd97e20c4a706627f",
+  "artifact_bindings": [
+    {
+      "artifact": "contract-v0-2-candidate-review-authorization-receipt.v0.1.json",
+      "sha256": "62c1bcf7199dea1038bb64715d1f3fcb3afd22a0c8fac9e2fe7b0ece39530a39"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-execution-failure-result.v0.1.json",
+      "sha256": "0fd25dc98d5e5fe1c48b3c51ac0ab11d450bed8d043c933b11331e70d383e861"
+    },
+    {
+      "artifact": "contract-v0-2-candidate-review-execution-failure-result.schema.v0.1.json",
+      "sha256": "51a9bfb628a799dec218d11eb46f983b0443564d2c40f20b3e83b4fd172a3eab"
+    },
+    {
+      "artifact": "PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-RESULT-v0.1.md",
+      "sha256": "624fdda71acf96d8c76d390295bfaf73f786faba86b7304ee94790e0e4373852"
+    }
+  ],
+  "execution_accounting": {
+    "authorized_sessions": 2,
+    "execution_processes_started": 1,
+    "execution_processes_completed": 1,
+    "provider_request_budget_consumed": 2,
+    "provider_network_requests_exact_count": "UNKNOWN_BOUNDED_0_TO_2",
+    "sanitized_session_results_recovered": 0,
+    "qualifying_sessions": 0,
+    "additional_requests_allowed_under_pre26": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "model_substitutions": 0,
+    "alias_inference_attempts": 0,
+    "repair_attempts": 0
+  },
+  "validation_summary": {
+    "input_hashes_matched_before_process": 17,
+    "query_bindings_matched_before_process": 2,
+    "payload_bindings_matched_before_process": 2,
+    "response_fixture_expectations_matched_before_process": 4,
+    "sanitized_result_capture_pass": false,
+    "contract_candidate_review_completed": false,
+    "formal_adoption_decision_review_ready": false,
+    "result": "INCOMPLETE_FAIL_CLOSED"
+  },
+  "failure_retention": {
+    "caller_sanitized_output_capture_failure_retained": true,
+    "provider_failure_inferred": false,
+    "provider_success_inferred": false,
+    "model_result_inferred": false,
+    "failed_execution_retried": false,
+    "request_budget_reopened": false
+  },
+  "persistence_accounting": {
+    "sanitized_session_result_objects_persisted": 0,
+    "raw_provider_envelopes_persisted": 0,
+    "usage_envelopes_persisted": 0,
+    "credentials_persisted": 0,
+    "hidden_reasoning_persisted": 0,
+    "provider_error_bodies_persisted": 0,
+    "invalid_responses_repaired": 0
+  },
+  "effects": {
+    "contract_candidate_review_completed": false,
+    "contract_candidates_adopted": false,
+    "alias_record_adopted": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  },
+  "next_permitted_action": "PREPARE_SEPARATE_OFFLINE_PRE26_SANITIZED_OUTPUT_CAPTURE_FAILURE_DIAGNOSTIC_RECOMMENDATION_ONLY"
+}
