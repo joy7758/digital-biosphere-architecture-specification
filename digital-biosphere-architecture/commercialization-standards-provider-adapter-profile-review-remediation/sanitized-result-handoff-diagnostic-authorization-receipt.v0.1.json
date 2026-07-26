@@ -1,0 +1,103 @@
+{
+  "$schema": "./sanitized-result-handoff-diagnostic-authorization-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-AUTHORIZATION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-27",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "exact_action": "AUTHORIZE_OFFLINE_PRE26_SANITIZED_RESULT_HANDOFF_DIAGNOSTIC_ONLY",
+  "target_branch": "codex/production-observability-baseline",
+  "authorization_baseline_commit": "706ca0171255e2e4af1a62f285c4a9b9a933b42b",
+  "remote_head_verified": "706ca0171255e2e4af1a62f285c4a9b9a933b42b",
+  "remote_ancestor_check_pass": true,
+  "bindings": [
+    {
+      "artifact": "../TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-DECISION-RECORD.md",
+      "sha256": "4f67e21b8229bc38906d988097045647ecbb1b0deb823b367ac79a9b39cc90de"
+    },
+    {
+      "artifact": "../TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-DECISION-RECORD.v0.1.json",
+      "sha256": "b5fd51ac124c14d06840aa3acbb3047b66bfb230b506b822dbd2c23e9ffd1b09"
+    },
+    {
+      "artifact": "../architecture/schemas/titmas-cs-d02-pre-27-sanitized-result-handoff-diagnostic-decision-record.schema.v0.1.json",
+      "sha256": "df728a11638b07c2f42bff87d24f160fe614e2abd070485c6eb3b3e63269adb4"
+    },
+    {
+      "artifact": "sanitized-result-handoff-contract.v0.1.json",
+      "sha256": "0d30e8560dc2850e36d41004ebd059863337d2e242837139c58080662d989aa4"
+    },
+    {
+      "artifact": "sanitized-result-handoff-contract.schema.v0.1.json",
+      "sha256": "4e438ef3901aa2d25ca60120729bd7bbee00d7eadeca5f21e85555ec26687223"
+    },
+    {
+      "artifact": "sanitized-result-handoff-fixtures.v0.1.json",
+      "sha256": "9d1619237ecd6ad2139171d31b846e92bd21541eb17e02d26ca446357e935869"
+    },
+    {
+      "artifact": "sanitized-result-handoff-fixtures.schema.v0.1.json",
+      "sha256": "ed062fee98315a00aeee269813e24e6da68fb79122d18a9b04e2b7b28a6de524"
+    },
+    {
+      "artifact": "sanitized-result-handoff-diagnostic-plan.v0.1.json",
+      "sha256": "33c3d5542344ee2da0c742d89cda5031fcf67c4f9d18b6f2a28b12e6ef95431c"
+    },
+    {
+      "artifact": "sanitized-result-handoff-diagnostic-plan.schema.v0.1.json",
+      "sha256": "9dbab431a4c2d3e23145621a87f375ba78551722a951228d0b3076a7c7a554e1"
+    },
+    {
+      "artifact": "sanitized-result-handoff-diagnostic-input-manifest.v0.1.json",
+      "sha256": "adb4acc1da279c2b6e41e3649b684fe75b78e659b93629e86c01713d08c27009"
+    },
+    {
+      "artifact": "sanitized-result-handoff-diagnostic-input-manifest.schema.v0.1.json",
+      "sha256": "e68c277fbb3c11a0775c68e0dd5213821dd2f5ee1511e95541d8e35daaafbe20"
+    },
+    {
+      "artifact": "sanitized-result-handoff-diagnostic-validation-result.schema.v0.1.json",
+      "sha256": "a64a5e009960378e3bd8eff8bd79df9c61d249fb90bdf4db2e7fb609b158ecbe"
+    }
+  ],
+  "preexecution_validation": {
+    "binding_hashes_matched": 12,
+    "binding_hashes_total": 12,
+    "input_manifest_hashes_matched": 16,
+    "input_manifest_hashes_total": 16,
+    "schemas_meta_validated": 7,
+    "schemas_meta_total": 7,
+    "frozen_instances_validated": 5,
+    "frozen_instances_total": 5,
+    "synthetic_fixture_expectations": 11
+  },
+  "execution_accounting": {
+    "offline_diagnostic_authorized": true,
+    "synthetic_fixtures_authorized": 11,
+    "synthetic_fixtures_executed": 0,
+    "temporary_directories_authorized_max": 11,
+    "temporary_directories_created": 0,
+    "provider_network_requests_authorized": 0,
+    "provider_network_requests_executed": 0,
+    "live_model_requests_authorized": 0,
+    "live_model_requests_executed": 0,
+    "secret_reads_authorized": 0,
+    "secret_reads_executed": 0
+  },
+  "effects": {
+    "pre26_result_changed": false,
+    "pre26_request_budget_reopened": false,
+    "pre26_session_results_recovered": false,
+    "handoff_contract_adopted": false,
+    "implementation_created": false,
+    "runtime_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
