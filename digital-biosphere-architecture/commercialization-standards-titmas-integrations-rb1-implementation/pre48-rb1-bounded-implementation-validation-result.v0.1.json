@@ -1,0 +1,81 @@
+{
+  "$schema": "./pre48-rb1-bounded-implementation-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-INTEGRATIONS-PRE48-RB1-BOUNDED-IMPLEMENTATION-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "PASS",
+  "decision_reference": "CS-D02-PRE-48",
+  "recommendation_commit": "323a95926107911e13501877bf3db07a3961efaf",
+  "decision_commit": "91995fc07fa7ffc01adf4d3a875ee800e846f76a",
+  "target": {
+    "repository": "https://github.com/joy7758/titmas-integrations.git",
+    "branch": "codex/rb0-governance-baseline",
+    "parent_commit": "f80629364752c465316b9d1238fe5447a88565ca",
+    "implementation_commit": "001da006aa32a1eeeb058daa31dcab39197fa4de",
+    "remote_commit": "001da006aa32a1eeeb058daa31dcab39197fa4de",
+    "main_commit_before": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "main_commit_after": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+  },
+  "counts": {
+    "authorized_paths": 14,
+    "changed_paths": 14,
+    "new_files": 8,
+    "updated_files": 6,
+    "source_files": 2,
+    "test_files": 2,
+    "tests_run": 20,
+    "tests_pass": 20,
+    "machine_instances_valid": 2,
+    "machine_instances_total": 2,
+    "artifact_digests_valid": 6,
+    "artifact_digests_total": 6,
+    "phase_schema_meta_valid": 1,
+    "network_calls_from_implementation": 0,
+    "provider_bindings": 0
+  },
+  "artifacts": {
+    "implementation_declaration_reference": "IMPLEMENTATION-DECLARATION.v0.1.json",
+    "implementation_declaration_sha256": "c1e30c559c8beb6fa23b2f4e30607a43b415e702c2683f5fe631d84462908b58",
+    "target_entry_reference": "TITMAS-INTEGRATIONS-ENTRY.v0.1.json",
+    "target_entry_sha256": "c04b6658810d4ed1b3771a2e3a8bfded0412b496c863dd508a8e4fddf8000361",
+    "phase_schema_reference": "schemas/phase-trace.schema.v0.1.json",
+    "phase_schema_sha256": "39d5cb4d6ff907cbdbe30bce022eda1107d591e30e4072f0f92934810e82caee"
+  },
+  "test_result": "PASS_20_OF_20",
+  "build_result": {
+    "command": "python3 -m build --no-isolation",
+    "status": "NOT_EXECUTED_DEPENDENCY_UNAVAILABLE",
+    "failure_message": "No module named build",
+    "network_install_attempted": false,
+    "build_artifact_created": false
+  },
+  "clean_clone": {
+    "executed": true,
+    "source": "REMOTE_NON_DEFAULT_BRANCH",
+    "commit_verified": true,
+    "tests_pass": true,
+    "schemas_pass": true,
+    "digests_pass": true,
+    "working_tree_clean": true
+  },
+  "gate_result": "PASS_DEVELOPMENT_REFERENCE_IMPLEMENTATION_CREATED_TESTED_REMOTE_CLEAN_CLONE_VERIFIED",
+  "next_action": "FORM_SEPARATE_RB1_CONFORMANCE_VALIDATION_RECOMMENDATION",
+  "effects": {
+    "implementation_created": true,
+    "implementation_authorized": true,
+    "provider_binding_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "security_review_executed": false,
+    "runtime_created": false,
+    "agent_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "evidence_truth_changed": false,
+    "main_changed": false,
+    "merge_authorized": false,
+    "pull_request_authorized": false,
+    "release_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false
+  }
+}
