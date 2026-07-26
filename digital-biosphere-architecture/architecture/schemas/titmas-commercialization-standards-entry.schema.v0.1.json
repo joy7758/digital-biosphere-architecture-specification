@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_42_RB0_DEVELOPMENT_BASELINE_ADOPTED_TARGET_TRUTH_SYNCHRONIZED_RB1_PLANNING_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_43_RB1_PLANNING_PACKET_PASS_PRE44_AGENT_REVIEW_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -5008,6 +5008,24 @@
             "pre42_execution_receipt_sha256",
             "pre42_result_commit",
             "pre42_result",
+            "pre43_recommendation_reference",
+            "pre43_recommendation_sha256",
+            "pre43_recommendation_commit",
+            "pre43_decision_reference",
+            "pre43_decision_sha256",
+            "pre43_decision_commit",
+            "pre43_input_manifest_sha256",
+            "pre43_plan_sha256",
+            "pre43_planning_commit",
+            "pre43_profile_sha256",
+            "pre43_negative_catalog_sha256",
+            "pre43_agent_review_input_sha256",
+            "pre43_result_reference",
+            "pre43_result_sha256",
+            "pre43_validation_result_sha256",
+            "pre43_execution_receipt_sha256",
+            "pre43_result_commit",
+            "pre43_result",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5018,6 +5036,10 @@
             "repository_baseline_adopted",
             "implementation_created",
             "rb1_planning_recommendation_required",
+            "rb1_planning_packet_defined",
+            "rb1_profile_adopted",
+            "pre44_agent_review_recommendation_required",
+            "pre44_agent_review_authorized",
             "rb1_implementation_authorized"
           ],
           "properties": {
@@ -5291,6 +5313,60 @@
             "pre42_result": {
               "const": "PASS_ADOPTED_RB0_TARGET_TRUTH_SYNCHRONIZED_RB1_PLANNING_GATE_REQUIRED"
             },
+            "pre43_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-43-RB1-SCOPE-CONTRACT-AND-AGENT-GATE-PLANNING-RECOMMENDATION-v0.1.md"
+            },
+            "pre43_recommendation_sha256": {
+              "const": "fb0da26b18983a2d91ee887c23c2a3fccffb2adc350c94b1034ec05a1baa8924"
+            },
+            "pre43_recommendation_commit": {
+              "const": "7e9a386127aa0b95306677758627f535269869fa"
+            },
+            "pre43_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-43-RB1-SCOPE-CONTRACT-AND-AGENT-GATE-PLANNING-DECISION-RECORD.v0.1.json"
+            },
+            "pre43_decision_sha256": {
+              "const": "065773a20cb10754c986e207551da59ed46d34a59d699fae41c7029eb34da4a2"
+            },
+            "pre43_decision_commit": {
+              "const": "c3285247799a02337aa3fd5d0451d725fa963234"
+            },
+            "pre43_input_manifest_sha256": {
+              "const": "ca82f63e99cd536ebd5e68e1a395de73f474e3e8d6caf1e0487929cdedfb9656"
+            },
+            "pre43_plan_sha256": {
+              "const": "eb4e1ca42ad8a421572d624edf5d6671433b80062f85c3a72fd9f3b0c13b75f5"
+            },
+            "pre43_planning_commit": {
+              "const": "56b7c7c87d0fa69f414e446546ee8bca7f4b5fd0"
+            },
+            "pre43_profile_sha256": {
+              "const": "cb1d37c7f064581b4869dcb59a8d79c027537f560d47eea72850507dc2cd0afb"
+            },
+            "pre43_negative_catalog_sha256": {
+              "const": "3ae2608d586ab9bada045b2e7b987863d697ce08f5a7cf4c713d7a0fe5876721"
+            },
+            "pre43_agent_review_input_sha256": {
+              "const": "a2ada5aabbc0699234fe28082fcdee6420968f561b84e4e1347bc7e858becbaf"
+            },
+            "pre43_result_reference": {
+              "const": "commercialization-standards-titmas-integrations-rb1-planning/PRE-43-RB1-SCOPE-CONTRACT-AND-AGENT-GATE-PLANNING-RESULT-v0.1.md"
+            },
+            "pre43_result_sha256": {
+              "const": "c08226df04b1ae05bbcf75764c490ffcc750f2aacca66aeaf16ab527dacd3067"
+            },
+            "pre43_validation_result_sha256": {
+              "const": "e9a80651fdaf8cb3d1a2537f0333067be3c984ca1245a660466380fd71a0e705"
+            },
+            "pre43_execution_receipt_sha256": {
+              "const": "0ec10ac1b8885574202b26783ee1baa9556f7f57f3062d4d565f88cf05e6ccb1"
+            },
+            "pre43_result_commit": {
+              "const": "582af900fc74dcc09adb30ec98e54901555eda7f"
+            },
+            "pre43_result": {
+              "const": "PASS_DBA_ONLY_RB1_PLANNING_PACKET_PRE44_AGENT_REVIEW_RECOMMENDATION_REQUIRED"
+            },
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -5319,7 +5395,19 @@
               "const": false
             },
             "rb1_planning_recommendation_required": {
+              "const": false
+            },
+            "rb1_planning_packet_defined": {
               "const": true
+            },
+            "rb1_profile_adopted": {
+              "const": false
+            },
+            "pre44_agent_review_recommendation_required": {
+              "const": true
+            },
+            "pre44_agent_review_authorized": {
+              "const": false
             },
             "rb1_implementation_authorized": {
               "const": false
@@ -5342,7 +5430,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_PRE43_RB1_SCOPE_AND_CONTRACT_PLANNING_RECOMMENDATION_ONLY"
+          "const": "FORM_PRE44_BOUNDED_AGENT_CUSTOMER_REVIEW_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false

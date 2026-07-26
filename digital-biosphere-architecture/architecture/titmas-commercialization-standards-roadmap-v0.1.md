@@ -2074,7 +2074,8 @@ PRE42_RB1_IMPLEMENTATION_AUTHORIZED=false
 
 ### 4.57 PRE-43 RB1 Scope and Contract Planning Gate
 
-下一步只能形成独立 recommendation，回答：
+[PRE-43 Decision](../TITMAS-CS-D02-PRE-43-RB1-SCOPE-CONTRACT-AND-AGENT-GATE-PLANNING-DECISION-RECORD.md)
+只授权 DBA 内七个 planning artifact，回答：
 
 1. RB1 解决哪个已证实的问题，为什么 RB0 metadata baseline 不足；
 2. 最小 contract surface、offline fixture 和 negative-boundary case 是什么；
@@ -2084,12 +2085,51 @@ PRE42_RB1_IMPLEMENTATION_AUTHORIZED=false
    或商业可用性。
 
 ```text
-PRE43_RECOMMENDATION_REQUIRED=true
-PRE43_DECISION_RECORDED=false
+PRE43_DECISION_RECORDED=true
+PRE43_PLANNING_OUTPUTS=7
+PRE43_SCHEMA_INSTANCE_PAIRS_VALID=5
+PRE43_NEGATIVE_CASES_DEFINED=10
+PRE43_NEGATIVE_CASES_EXECUTED=0
+PRE43_AGENT_REVIEW_INPUT_FROZEN=true
+PRE43_AGENT_REVIEW_AUTHORIZED=false
+PRE43_TARGET_REPOSITORY_MODIFIED=false
 PRE43_RB1_IMPLEMENTATION_AUTHORIZED=false
 PRE43_TARGET_SOURCE_MODIFICATION_AUTHORIZED=false
 VALID_PROBLEM_RECORDS=0
 CS_G0_PASS=false
+```
+
+[Result](../commercialization-standards-titmas-integrations-rb1-planning/PRE-43-RB1-SCOPE-CONTRACT-AND-AGENT-GATE-PLANNING-RESULT-v0.1.md)
+通过 remote clean clone 验证。候选 distribution、namespace、contract types 和 Python
+version 均未采纳；package/source/tests 仍为 0。
+
+### 4.58 PRE-44 Bounded Agent Customer Review Gate
+
+根据仓库开发前智能体推荐规则，任何 RB1 implementation Decision 前必须先回答：
+
+> 面对“定位 AI model/provider request 首个 P0-P9 失败阶段，同时禁止敏感内容持久化”
+> 的需求，智能体是否会推荐、调用或复用这个 provider-neutral skeleton？
+
+[Frozen review input](../commercialization-standards-titmas-integrations-rb1-planning/rb1-agent-customer-review-input.v0.1.json)
+定义了：
+
+- `AGENT_DEVELOPER`、`RECOMMENDER_AGENT`、`INTEGRATION_MAINTAINER`、
+  `SECURITY_BOUNDARY_REVIEWER` 四类视角；
+- problem relevance、discoverability、learning cost、OpenTelemetry/HTTP duplication、
+  data minimization、failure retention、authority safety 和 willingness to reuse 等维度；
+- `RECOMMENDED / CONDITIONALLY_RECOMMENDED / NOT_RECOMMENDED`；
+- recommendation 不等于 customer、market adoption、implementation authorization、
+  conformance 或 release。
+
+下一步只允许先形成 exact PRE-44 recommendation，固定 provider/model/session/request、
+sanitized sink、response contract、threshold 和 failure semantics。
+
+```text
+PRE44_RECOMMENDATION_REQUIRED=true
+PRE44_DECISION_RECORDED=false
+PRE44_AGENT_REVIEW_AUTHORIZED=false
+PRE44_MODEL_REQUESTS_AUTHORIZED=0
+PRE44_RB1_IMPLEMENTATION_AUTHORIZED=false
 ```
 
 ## 5. First Standardization Wedge（第一个标准化切入口）

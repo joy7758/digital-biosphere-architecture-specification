@@ -448,6 +448,12 @@ adoption 保持有效，失败记录保留。
 surfaces，并在 `f806293…` 上完成 fresh remote clone 复验。该动作不重新采纳 baseline，
 不创建实现，也不授权 RB1。
 
+[PRE-43 RB1 planning packet](commercialization-standards-titmas-integrations-rb1-planning/PRE-43-RB1-SCOPE-CONTRACT-AND-AGENT-GATE-PLANNING-RESULT-v0.1.md)
+已在 DBA 中形成七个 planning artifacts：package/contract skeleton profile、十个 negative
+boundary case 和 Agent Customer Review input，以及各自 machine Schema。候选分发名、
+namespace、五个 contract type 和 Python 版本均未采纳；package/source/tests 仍为 0。
+任何 RB1 实现决定前，必须先通过独立 PRE-44 智能体客户审查。
+
 ```text
 TITMAS_INTEGRATIONS_TARGET_BRANCH=codex/rb0-governance-baseline
 TITMAS_INTEGRATIONS_ADOPTED_RB0_COMMIT=9610748d4a72d81278df2bc296518a469ce2fd30
@@ -461,8 +467,11 @@ TITMAS_INTEGRATIONS_BRANCH_MERGED=false
 TITMAS_INTEGRATIONS_IMPLEMENTATION_CREATED=false
 TITMAS_INTEGRATIONS_PROVIDER_SUPPORTED=false
 TITMAS_INTEGRATIONS_CONFORMANCE_EXECUTED=false
+TITMAS_INTEGRATIONS_RB1_PLANNING_PACKET_DEFINED=true
+TITMAS_INTEGRATIONS_RB1_PROFILE_ADOPTED=false
 TITMAS_INTEGRATIONS_RB1_IMPLEMENTATION_AUTHORIZED=false
-TITMAS_INTEGRATIONS_PRE43_RB1_PLANNING_RECOMMENDATION_REQUIRED=true
+TITMAS_INTEGRATIONS_PRE44_AGENT_REVIEW_RECOMMENDATION_REQUIRED=true
+TITMAS_INTEGRATIONS_PRE44_AGENT_REVIEW_AUTHORIZED=false
 ```
 
 ```text
