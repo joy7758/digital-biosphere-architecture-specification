@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:pre-21-compact-response-contract-input-manifest:0.1",
+  "title": "TITMAS PRE-21 Compact Response Contract Input Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "inputs", "effects"],
+  "properties": {
+    "$schema": {"const": "./compact-response-contract-input-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-21-COMPACT-RESPONSE-CONTRACT-INPUT-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_INPUTS_NOT_VALIDATED"},
+    "decision_reference": {"const": "CS-D02-PRE-21"},
+    "inputs": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "reference", "sha256"],
+        "properties": {
+          "source_id": {"type": "string", "pattern": "^[A-Z0-9_]+$"},
+          "reference": {"type": "string", "minLength": 12},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["inputs_validated", "response_schema_created", "live_review_executed"],
+      "properties": {
+        "inputs_validated": {"const": false},
+        "response_schema_created": {"const": false},
+        "live_review_executed": {"const": false}
+      }
+    }
+  }
+}

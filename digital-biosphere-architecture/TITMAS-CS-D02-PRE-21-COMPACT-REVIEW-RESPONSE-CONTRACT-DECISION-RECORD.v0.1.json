@@ -1,0 +1,62 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-21-compact-review-response-contract-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-21-COMPACT-REVIEW-RESPONSE-CONTRACT-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_OFFLINE_RESPONSE_CONTRACT_CANDIDATE_ONLY",
+  "decision_id": "CS-D02-PRE-21",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-21-COMPACT-REVIEW-RESPONSE-CONTRACT-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "cae13d2b0bd7e2c0e421776208f2369316237a8126cbfe4d395c7761255f1953",
+  "decision_result": "AUTHORIZE_OFFLINE_COMPACT_REVIEW_RESPONSE_CONTRACT_AND_V0_2_REQUEST_MANIFEST_CANDIDATE_ONLY",
+  "decided_by_ref": "zhangbin",
+  "executed_by": "Codex",
+  "primary_repository": "digital-biosphere-architecture",
+  "target_branch": "codex/production-observability-baseline",
+  "offline_plan_reference": "commercialization-standards-provider-adapter-profile-review-remediation/compact-response-contract-plan.v0.1.json",
+  "input_manifest_reference": "commercialization-standards-provider-adapter-profile-review-remediation/compact-response-contract-input-manifest.v0.1.json",
+  "limits": {
+    "live_model_requests_max": 0,
+    "provider_network_requests_max": 0,
+    "compact_request_cap_bytes": 24000,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "repair_attempts_max": 0
+  },
+  "required_fixture_classes": [
+    "VALID_ACCEPT",
+    "VALID_RETURN_FOR_REVISION",
+    "VALID_REJECT",
+    "MISSING_COMPACT_SCOPE",
+    "FULL_SOURCE_REVIEW_ELEVATION",
+    "PROFILE_REVIEW_ELEVATION",
+    "PROFILE_ADOPTION_ELEVATION",
+    "WRONG_PROJECTION_HASH",
+    "DUPLICATE_CRITERION",
+    "MISSING_CRITERION",
+    "ACCEPT_WITH_REQUIRED_CHANGE",
+    "RETURN_WITHOUT_REQUIRED_CHANGE",
+    "REJECT_WITHOUT_BLOCKER"
+  ],
+  "preconditions": {
+    "pre20_offline_remediation_pass": true,
+    "pre20_live_review_ready": false,
+    "standing_directive_active": true,
+    "remote_decision_baseline_required_before_execution": true
+  },
+  "effects": {
+    "live_review_executed": false,
+    "compact_projection_review_completed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

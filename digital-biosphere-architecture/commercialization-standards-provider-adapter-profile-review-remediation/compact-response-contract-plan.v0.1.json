@@ -1,0 +1,44 @@
+{
+  "$schema": "./compact-response-contract-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-21-COMPACT-RESPONSE-CONTRACT-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-21",
+  "execution_mode": "DETERMINISTIC_OFFLINE_ONLY",
+  "input_manifest_reference": "compact-response-contract-input-manifest.v0.1.json",
+  "limits": {
+    "live_model_requests_max": 0,
+    "provider_network_requests_max": 0,
+    "compact_request_cap_bytes": 24000,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "repair_attempts_max": 0
+  },
+  "steps": [
+    "VERIFY_PRE20_INPUT_HASHES",
+    "CREATE_COMPACT_SCOPE_RESPONSE_SCHEMA",
+    "CREATE_POSITIVE_AND_NEGATIVE_FIXTURES",
+    "RUN_DIRECT_SCHEMA_VALIDATION_WITHOUT_REPAIR",
+    "CREATE_V0_2_COMPACT_REQUEST_MANIFEST",
+    "RECONSTRUCT_AND_MEASURE_CANDIDATE_QUERIES",
+    "VERIFY_INTERNAL_BYTE_CAP",
+    "VERIFY_ZERO_NETWORK_ACCOUNTING",
+    "RETAIN_RESULT_REPORT_AND_RECEIPT"
+  ],
+  "success_conditions": {
+    "input_hashes_match": true,
+    "fixture_expectations_matched": 13,
+    "fixture_expectations_total": 13,
+    "scope_elevation_fixtures_rejected": true,
+    "verdict_inconsistency_fixtures_rejected": true,
+    "v0_2_request_cap_met": true,
+    "live_model_requests_executed": 0,
+    "profile_review_completed": false
+  },
+  "effects": {
+    "execution_started": false,
+    "live_review_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false
+  }
+}
