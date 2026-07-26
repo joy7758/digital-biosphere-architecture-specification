@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_16_EXECUTED_FAIL_CLOSED_QIANFAN_SCHEMA_RECONFIRMATION_FAILED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_17_ZERO_REQUEST_EXTRACTION_CONTRACT_REVIEW_RECOMMENDATION_PREPARED_NOT_DECIDED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1149,6 +1149,9 @@
         "pre16_frozen_deepseek_full_schema_pass",
         "pre16_composite_provider_gate_pass",
         "pre16_candidate_review_completed",
+        "pre17_extraction_contract_review_recommendation_prepared",
+        "pre17_extraction_contract_review_decision_recorded",
+        "pre17_live_model_requests_authorized",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1336,6 +1339,15 @@
           "const": false
         },
         "pre16_candidate_review_completed": {
+          "const": false
+        },
+        "pre17_extraction_contract_review_recommendation_prepared": {
+          "const": true
+        },
+        "pre17_extraction_contract_review_decision_recorded": {
+          "const": false
+        },
+        "pre17_live_model_requests_authorized": {
           "const": false
         },
         "public_source_record_counting_authorized": {
@@ -1630,6 +1642,12 @@
         "qianfan_reconfirmation_result_report_reference",
         "qianfan_reconfirmation_exact_failure_cause_proven",
         "composite_provider_gate_pass",
+        "qianfan_extraction_contract_review_decision_candidate_id",
+        "qianfan_extraction_contract_review_recommendation_reference",
+        "qianfan_extraction_contract_review_recommendation_prepared",
+        "qianfan_extraction_contract_review_zero_live_requests_required",
+        "qianfan_extraction_contract_review_decision_recorded",
+        "qianfan_extraction_contract_review_execution_authorized",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -1648,7 +1666,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE16_EXECUTED_FAIL_CLOSED_PRE17_RECOMMENDATION_NOT_PREPARED"
+          "const": "PRE17_ZERO_REQUEST_EXTRACTION_CONTRACT_REVIEW_RECOMMENDATION_PREPARED_NOT_DECIDED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -2244,6 +2262,24 @@
         "composite_provider_gate_pass": {
           "const": false
         },
+        "qianfan_extraction_contract_review_decision_candidate_id": {
+          "const": "CS-D02-PRE-17"
+        },
+        "qianfan_extraction_contract_review_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-17-QIANFAN-EXTRACTION-CONTRACT-REVIEW-RECOMMENDATION-v0.1.md"
+        },
+        "qianfan_extraction_contract_review_recommendation_prepared": {
+          "const": true
+        },
+        "qianfan_extraction_contract_review_zero_live_requests_required": {
+          "const": true
+        },
+        "qianfan_extraction_contract_review_decision_recorded": {
+          "const": false
+        },
+        "qianfan_extraction_contract_review_execution_authorized": {
+          "const": false
+        },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
         },
@@ -2260,10 +2296,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_ZERO_LIVE_REQUEST_QIANFAN_EXTRACTION_CONTRACT_REVIEW_RECOMMENDATION_ONLY"
+          "const": "AUTHORIZE_ZERO_LIVE_REQUEST_QIANFAN_EXTRACTION_CONTRACT_STATIC_REVIEW_ONLY"
         },
         "decision_ready": {
-          "const": false
+          "const": true
         },
         "external_execution_authorized": {
           "const": false

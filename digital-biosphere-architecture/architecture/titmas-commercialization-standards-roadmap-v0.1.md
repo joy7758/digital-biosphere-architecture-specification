@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: pre-16-executed-fail-closed-qianfan-schema-reconfirmation-failed-standard-not-ready
+status: pre-17-zero-request-extraction-contract-review-recommendation-prepared-not-decided-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -1145,6 +1145,26 @@ PRE-16 已形成独立
 额度已消耗；不得重试、回退、JSON repair 或把结果归因为模型能力。下一步只能另行准备
 零 live request 的 Qianfan extraction-contract static review recommendation。
 
+### 4.29 PRE-17 Zero-request Extraction Contract Review Recommendation
+
+[PRE-17 exact recommendation](../TITMAS-CS-D02-PRE-17-QIANFAN-EXTRACTION-CONTRACT-REVIEW-RECOMMENDATION-v0.1.md)
+已准备：
+
+```text
+RECOMMENDED_OPTION=AUTHORIZE_ZERO_LIVE_REQUEST_QIANFAN_EXTRACTION_CONTRACT_STATIC_REVIEW_ONLY
+LIVE_MODEL_REQUESTS_MAX=0
+PROVIDER_NETWORK_REQUESTS_MAX=0
+TRANSPORT_AND_SEMANTIC_LAYERS_MUST_BE_DISTINGUISHED=true
+PLAIN_CONTENT_TEXT_ACCEPTANCE_MUST_BE_NARROWED=true
+BOUNDED_UNWRAP_PATHS_MUST_BE_EXPLICIT=true
+PRIVACY_PRESERVING_SHAPE_DESCRIPTOR_REQUIRED=true
+AT_RECOMMENDATION_TIME_PRE_17_DECIDED=false
+```
+
+该推荐只允许未来审查 declared `CallToolResult`、MCP transport envelope、semantic answer
+与 caller extraction 的分层，并使用 synthetic fixtures 验证 bounded unwrap 和失败语义。
+它不读取 PRE-16 raw response，不发送 provider 请求，不证明模型回答，也不授权再次确认。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -1539,7 +1559,10 @@ TITMAS_CS_D02_PRE_16_QIANFAN_FULL_SCHEMA_PASS=false
 TITMAS_CS_D02_PRE_16_FROZEN_DEEPSEEK_FULL_SCHEMA_PASS=true
 TITMAS_CS_D02_PRE_16_COMPOSITE_PROVIDER_GATE_PASS=false
 TITMAS_CS_D02_CANDIDATE_REVIEW_COMPLETED=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_ZERO_LIVE_REQUEST_QIANFAN_EXTRACTION_CONTRACT_REVIEW_RECOMMENDATION_ONLY
+TITMAS_CS_D02_PRE_17_RECOMMENDATION_PREPARED=true
+TITMAS_CS_D02_PRE_17_DECIDED=false
+TITMAS_CS_D02_PRE_17_LIVE_MODEL_REQUESTS_AUTHORIZED=false
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=DECIDE_ZERO_LIVE_REQUEST_QIANFAN_EXTRACTION_CONTRACT_STATIC_REVIEW_ONLY
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false
 TITMAS_VEAP_DRAFT_PROFILE_CANDIDATE_CREATED=true
