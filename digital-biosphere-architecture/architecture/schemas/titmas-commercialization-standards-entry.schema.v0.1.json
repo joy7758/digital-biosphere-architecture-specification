@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_13_OFFLINE_REMEDIATION_AUTHORIZED_REMOTE_BASELINE_PENDING_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_13_REMOTE_AUTHORIZATION_BASELINE_VERIFIED_OFFLINE_EXECUTION_NOT_STARTED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1262,10 +1262,10 @@
           "const": true
         },
         "pre13_authorization_baseline_remote_verified": {
-          "const": false
+          "const": true
         },
         "pre13_offline_execution_may_start": {
-          "const": false
+          "const": true
         },
         "pre13_offline_execution_started": {
           "const": false
@@ -1462,6 +1462,8 @@
         "response_contract_remediation_decision_recorded",
         "response_contract_remediation_plan_reference",
         "response_contract_remediation_plan_created",
+        "response_contract_remediation_authorization_receipt_reference",
+        "response_contract_remediation_authorization_baseline_commit",
         "response_contract_remediation_offline_only",
         "response_contract_remediation_live_model_requests_recommended_max",
         "response_contract_remediation_execution_authorized",
@@ -1485,7 +1487,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE13_DECIDED_OFFLINE_REMEDIATION_AUTHORIZED_REMOTE_BASELINE_PENDING"
+          "const": "PRE13_REMOTE_AUTHORIZATION_BASELINE_VERIFIED_OFFLINE_EXECUTION_NOT_STARTED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1781,6 +1783,12 @@
         "response_contract_remediation_plan_created": {
           "const": true
         },
+        "response_contract_remediation_authorization_receipt_reference": {
+          "const": "commercialization-standards-public-source-record-review-contract-remediation/authorization-baseline-receipt.v0.1.json"
+        },
+        "response_contract_remediation_authorization_baseline_commit": {
+          "const": "0f7265c21f957d7d2609546e8bfa63dc426b8928"
+        },
         "response_contract_remediation_offline_only": {
           "const": true
         },
@@ -1791,10 +1799,10 @@
           "const": true
         },
         "response_contract_remediation_authorization_baseline_remote_verified": {
-          "const": false
+          "const": true
         },
         "response_contract_remediation_offline_execution_may_start": {
-          "const": false
+          "const": true
         },
         "response_contract_remediation_offline_execution_started": {
           "const": false

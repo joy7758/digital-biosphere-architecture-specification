@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: pre-13-offline-remediation-authorized-remote-baseline-pending-standard-not-ready
+status: pre-13-remote-authorization-baseline-verified-offline-execution-not-started-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -1002,6 +1002,20 @@ OFFLINE_EXECUTION_MAY_START=false
 
 只有该 Decision、plan、Schema 与 machine cockpit commit/push 并验证本地等于远端后，才可
 开始离线 rendered request 和 synthetic validator fixture。当前仍不执行。
+
+授权基线现已在
+`0f7265c21f957d7d2609546e8bfa63dc426b8928` 远端验证，并形成
+[authorization receipt](../commercialization-standards-public-source-record-review-contract-remediation/authorization-baseline-receipt.v0.1.json)：
+
+```text
+AUTHORIZATION_BASELINE_REMOTE_VERIFIED=true
+OFFLINE_EXECUTION_MAY_START=true
+OFFLINE_EXECUTION_STARTED=false
+LIVE_MODEL_REQUESTS_EXECUTED=0
+```
+
+该回执只打开冻结离线步骤，不授权 provider request、source change、candidate counting 或
+任何商业效果。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 

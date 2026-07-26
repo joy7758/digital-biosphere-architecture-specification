@@ -1,0 +1,37 @@
+{
+  "$schema": "./authorization-baseline-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-13-AUTHORIZATION-BASELINE-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_OFFLINE_EXECUTION_NOT_STARTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-13",
+  "branch": "codex/production-observability-baseline",
+  "authorization_baseline_commit": "0f7265c21f957d7d2609546e8bfa63dc426b8928",
+  "remote_commit": "0f7265c21f957d7d2609546e8bfa63dc426b8928",
+  "local_equals_remote": true,
+  "frozen_bindings": {
+    "recommendation_reference": "../TITMAS-CS-D02-PRE-13-RESPONSE-CONTRACT-REMEDIATION-RECOMMENDATION-v0.1.md",
+    "recommendation_sha256": "728a0074503ecaf7ce63763e7e78dae029698558e8b60a9b556f7f07ef4cb903",
+    "decision_record_reference": "../TITMAS-CS-D02-PRE-13-RESPONSE-CONTRACT-REMEDIATION-DECISION-RECORD.v0.1.json",
+    "decision_record_sha256": "ac7a4dcb37f8607dbfbef6064a055790e3ab9fb4fd3c1f11bfde02e22b9f8743",
+    "offline_plan_reference": "offline-remediation-plan.v0.1.json",
+    "offline_plan_sha256": "7cb8c9a46c95871af416ea9340e4097504ac667587bbd22fc25af53f7ced0723"
+  },
+  "execution_gate": {
+    "authorization_baseline_remote_verified": true,
+    "offline_execution_may_start": true,
+    "offline_execution_started": false,
+    "live_model_requests_executed": 0
+  },
+  "effects": {
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
