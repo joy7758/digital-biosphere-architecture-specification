@@ -1,0 +1,65 @@
+{
+  "$schema": "./pre40-clean-clone-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-40-CLEAN-CLONE-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "DEVELOPMENT_RB0_CLEAN_CLONE_VERIFICATION_PASS_ADOPTION_REVIEW_READY_NOT_ADOPTED",
+  "decision_reference": "CS-D02-PRE-40",
+  "decision_record_sha256": "22f7c1c20e69b0a33915a573c242b2cd98e88760324d2366abd5b48d74216964",
+  "decision_commit": "20c3bc70733c05bf1ed6988423a395b55a0118a3",
+  "validated_at": "2026-07-27T03:23:49+08:00",
+  "target": {
+    "repository": "https://github.com/joy7758/titmas-integrations.git",
+    "branch": "codex/rb0-governance-baseline",
+    "commit": "9610748d4a72d81278df2bc296518a469ce2fd30",
+    "remote_branch_matches": true,
+    "remote_main_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "remote_main_unchanged": true,
+    "fresh_clone_clean": true,
+    "original_checkout_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "original_checkout_clean": true
+  },
+  "checks": {
+    "fresh_clean_clones_executed": 1,
+    "expected_files_match": 16,
+    "expected_digests_match": 16,
+    "expected_sizes_match": 16,
+    "regular_non_executable_modes_match": 16,
+    "apache_2_0_license_exact": true,
+    "schemas_meta_valid": 2,
+    "instances_valid": 2,
+    "local_schema_references_resolved": 2,
+    "truth_surfaces_consistent": true,
+    "branch_only_not_merged_explicit": true,
+    "public_safe_findings": 0,
+    "source_files": 0,
+    "package_metadata_files": 0,
+    "test_files": 0
+  },
+  "truth_state": {
+    "rb0_files_applied_to_branch": true,
+    "repository_baseline_clean_clone_verified": true,
+    "repository_baseline_adoption_review_ready": true,
+    "repository_baseline_adopted": false,
+    "target_repository_modified_by_pre40": false,
+    "implementation_authorized": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "runtime_created": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "merge_authorized": false,
+    "pull_request_authorized": false,
+    "release_authorized": false
+  },
+  "known_limitations": [
+    "repository.target_commit is the PRE-38 application anchor, not a self-referential current-commit attestation"
+  ],
+  "next_gate": {
+    "pre41_adoption_and_truth_sync_recommendation_allowed": true,
+    "direct_rb1_entry_allowed": false,
+    "additional_target_action_authorized": false
+  }
+}
