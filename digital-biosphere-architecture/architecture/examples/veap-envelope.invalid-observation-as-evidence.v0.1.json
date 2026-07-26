@@ -1,0 +1,79 @@
+{
+  "$schema": "../schemas/veap-envelope.schema.v0.1.json",
+  "profile_version": "0.1.0-development",
+  "attestation_id": "veap:synthetic:invalid:001",
+  "issued_at": "2026-07-26T13:09:15+08:00",
+  "package_status": "CURRENT",
+  "subject": {
+    "entity_reference": {
+      "source": "synthetic-framework",
+      "namespace": "example.agent",
+      "identifier": "unbound-agent",
+      "version": "0.1"
+    },
+    "binding_status": "EXTERNAL_ONLY"
+  },
+  "execution": {
+    "source": "synthetic-runtime",
+    "namespace": "example.execution",
+    "execution_id": "exec-invalid-001",
+    "runtime_version": "0.1",
+    "task_reference": {
+      "source": "synthetic-task-registry",
+      "namespace": "example.task",
+      "identifier": "invalid-evidence-promotion",
+      "version": "1"
+    },
+    "started_at": "2026-07-26T05:00:00Z",
+    "status": "UNKNOWN"
+  },
+  "context": {
+    "model_references": [],
+    "tool_references": [],
+    "policy_references": []
+  },
+  "observation_references": [],
+  "evidence_bindings": [
+    {
+      "material_reference": {
+        "source": "synthetic-runtime",
+        "namespace": "example.observation",
+        "identifier": "obs-promoted-without-admission",
+        "version": "1",
+        "digest": {
+          "algorithm": "sha256",
+          "value": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc"
+        }
+      },
+      "canonical_evidence_reference": {
+        "source": "invented",
+        "namespace": "example.evidence",
+        "identifier": "invalid-evidence",
+        "version": "1",
+        "digest": {
+          "algorithm": "sha256",
+          "value": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd"
+        }
+      },
+      "admission_status": "ADMITTED",
+      "integrity_status": "UNKNOWN",
+      "limitations": []
+    }
+  ],
+  "verification_bindings": [],
+  "evaluation_bindings": [],
+  "decision_bindings": [],
+  "claims": {
+    "proves": ["EXECUTION_HISTORY_REFERENCE"],
+    "does_not_prove": ["CORRECTNESS", "TRUTH", "PERMISSION", "CERTIFICATION"]
+  },
+  "limitations": [
+    {
+      "code": "EXPECTED_SCHEMA_REJECTION",
+      "description": "The Evidence binding intentionally omits admission_reference."
+    }
+  ],
+  "revocation": {
+    "status": "UNKNOWN"
+  }
+}

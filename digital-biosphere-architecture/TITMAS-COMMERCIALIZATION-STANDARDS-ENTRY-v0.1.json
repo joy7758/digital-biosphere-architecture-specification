@@ -2,8 +2,8 @@
   "$schema": "./architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
   "document_id": "DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-0.1",
   "version": "0.1.0",
-  "status": "CS_D02_AGENT_FIRST_REVIEW_DECIDED_KIMI_NO_STANDARD_NOT_READY",
-  "observed_at": "2026-07-25",
+  "status": "CS_D02_PRE_03_DRAFT_CONTRACT_CREATED_STANDARD_NOT_READY",
+  "observed_at": "2026-07-26",
   "primary_repository": "digital-biosphere-architecture",
   "canonical_roadmap": "architecture/titmas-commercialization-standards-roadmap-v0.1.md",
   "objective": {
@@ -15,7 +15,7 @@
     "id": "VEAP_PROFILE_CANDIDATE",
     "name": "Verifiable Execution Attestation Package",
     "name_zh": "可验证执行证明包",
-    "status": "CONCEPTUAL_SCOPE_ONLY",
+    "status": "DEVELOPMENT_CANDIDATE_CREATED_NOT_ADOPTED",
     "certificate_claim_allowed": false
   },
   "agent_recommendation": {
@@ -67,6 +67,26 @@
     "agent_review_gate_pass": false,
     "cs_g0_effect": false,
     "implementation_effect": false
+  },
+  "draft_contract_decision": {
+    "decision_id": "CS-D02-PRE-03",
+    "decision_result": "AUTHORIZE_BOUNDED_VEAP_DRAFT_PROFILE_AND_SCHEMA",
+    "decision_record_reference": "TITMAS-CS-D02-PRE-03-VEAP-DRAFT-CONTRACT-DECISION-RECORD.v0.1.json",
+    "profile_reference": "architecture/veap-draft-profile-v0.1.md",
+    "schema_reference": "architecture/schemas/veap-envelope.schema.v0.1.json",
+    "valid_fixture_reference": "architecture/examples/veap-envelope.valid.v0.1.json",
+    "negative_fixture_reference": "architecture/examples/veap-envelope.invalid-observation-as-evidence.v0.1.json",
+    "agent_review_reference": "VEAP-DRAFT-PROFILE-AGENT-REVIEW.md",
+    "draft_profile_candidate_created": true,
+    "schema_candidate_created": true,
+    "schema_rehearsal_passed": true,
+    "agent_review_sessions": 3,
+    "agent_conditional_recommendations": 3,
+    "agent_boundary_safety_failures": 0,
+    "agent_review_gate_pass": false,
+    "normative_profile_adopted": false,
+    "conformance_execution_authorized": false,
+    "cs_g2_effect": false
   },
   "human_decision": {
     "decision_id": "CS-D01",
@@ -176,6 +196,9 @@
   "current_facts": {
     "roadmap_defined": true,
     "commercialization_standard_ready": false,
+    "veap_draft_profile_candidate_created": true,
+    "veap_schema_candidate_created": true,
+    "veap_normative_profile_adopted": false,
     "veap_normative_profile_created": false,
     "veap_schema_created": false,
     "veap_reference_implementation_created": false,
@@ -211,6 +234,8 @@
     "prerequisite_selection_decision_packet_reference": "TITMAS-CS-D02-PREREQUISITE-SELECTION-DECISION-PACKET.v0.1.json",
     "prerequisite_selection_decision_packet_prepared": true,
     "prerequisite_selection_decision_ready": false,
+    "draft_contract_decision_reference": "TITMAS-CS-D02-PRE-03-VEAP-DRAFT-CONTRACT-DECISION-RECORD.v0.1.json",
+    "draft_contract_candidate_created": true,
     "current_recommended_option": "C",
     "decision_ready": false,
     "external_execution_authorized": false

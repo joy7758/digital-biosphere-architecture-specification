@@ -1,0 +1,56 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-03-veap-draft-contract-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-03-VEAP-DRAFT-CONTRACT-DECISION-RECORD-0.1",
+  "version": "0.1.0",
+  "status": "DECIDED_BOUNDED_DRAFT_CONTRACT_AUTHORIZED",
+  "decision_id": "CS-D02-PRE-03",
+  "parent_decision_id": "CS-D02",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-KIMI-20260725-001",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-26T13:09:15+08:00",
+  "source_baseline_commit": "d9f7c8e9b693f39bfb662bd2e776a15d9b501d9d",
+  "decision_result": "AUTHORIZE_BOUNDED_VEAP_DRAFT_PROFILE_AND_SCHEMA",
+  "draft_steward_ref": "DBA_ZHANGBIN",
+  "authorized_targets": [
+    "architecture/veap-draft-profile-v0.1.md",
+    "architecture/schemas/veap-envelope.schema.v0.1.json",
+    "architecture/examples/veap-envelope.valid.v0.1.json",
+    "architecture/examples/veap-envelope.invalid-observation-as-evidence.v0.1.json",
+    "SCOPED_DISCOVERY_AND_GOVERNANCE_UPDATES",
+    "PATH_SCOPED_VALIDATION_COMMIT_AND_PUSH"
+  ],
+  "preconditions": {
+    "cs_d01_bounded_internal_scope_authorized": true,
+    "agent_first_review_route_adopted": true,
+    "kimi_profile_schema_recommendation_available": true,
+    "ownership_crosswalk_defined": true,
+    "public_safe_synthetic_materials_only": true
+  },
+  "decision_effect": {
+    "draft_profile_candidate_authorized": true,
+    "schema_candidate_authorized": true,
+    "synthetic_schema_rehearsal_authorized": true,
+    "titmas_specification_authority_assigned": false,
+    "veap_normative_profile_adopted": false,
+    "cs_g0_pass": false,
+    "cs_g1_pass": false,
+    "cs_g2_pass": false
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "conformance_execution": false,
+    "runtime": false,
+    "agent_instance": false,
+    "entity_instance": false,
+    "permission": false,
+    "canonical_evidence": false,
+    "external_outreach": false,
+    "data_collection": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false
+  }
+}

@@ -19,6 +19,7 @@
     "agent_advisory_review",
     "agent_first_review_decision",
     "kimi_lead_review",
+    "draft_contract_decision",
     "human_decision",
     "standing_directive",
     "predecision_evidence",
@@ -40,7 +41,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_AGENT_FIRST_REVIEW_DECIDED_KIMI_NO_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_03_DRAFT_CONTRACT_CREATED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -94,7 +95,7 @@
           "const": "可验证执行证明包"
         },
         "status": {
-          "const": "CONCEPTUAL_SCOPE_ONLY"
+          "const": "DEVELOPMENT_CANDIDATE_CREATED_NOT_ADOPTED"
         },
         "certificate_claim_allowed": {
           "const": false
@@ -299,6 +300,50 @@
         "implementation_effect": {
           "const": false
         }
+      }
+    },
+    "draft_contract_decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "decision_result",
+        "decision_record_reference",
+        "profile_reference",
+        "schema_reference",
+        "valid_fixture_reference",
+        "negative_fixture_reference",
+        "agent_review_reference",
+        "draft_profile_candidate_created",
+        "schema_candidate_created",
+        "schema_rehearsal_passed",
+        "agent_review_sessions",
+        "agent_conditional_recommendations",
+        "agent_boundary_safety_failures",
+        "agent_review_gate_pass",
+        "normative_profile_adopted",
+        "conformance_execution_authorized",
+        "cs_g2_effect"
+      ],
+      "properties": {
+        "decision_id": {"const": "CS-D02-PRE-03"},
+        "decision_result": {"const": "AUTHORIZE_BOUNDED_VEAP_DRAFT_PROFILE_AND_SCHEMA"},
+        "decision_record_reference": {"const": "TITMAS-CS-D02-PRE-03-VEAP-DRAFT-CONTRACT-DECISION-RECORD.v0.1.json"},
+        "profile_reference": {"const": "architecture/veap-draft-profile-v0.1.md"},
+        "schema_reference": {"const": "architecture/schemas/veap-envelope.schema.v0.1.json"},
+        "valid_fixture_reference": {"const": "architecture/examples/veap-envelope.valid.v0.1.json"},
+        "negative_fixture_reference": {"const": "architecture/examples/veap-envelope.invalid-observation-as-evidence.v0.1.json"},
+        "agent_review_reference": {"const": "VEAP-DRAFT-PROFILE-AGENT-REVIEW.md"},
+        "draft_profile_candidate_created": {"const": true},
+        "schema_candidate_created": {"const": true},
+        "schema_rehearsal_passed": {"const": true},
+        "agent_review_sessions": {"const": 3},
+        "agent_conditional_recommendations": {"const": 3},
+        "agent_boundary_safety_failures": {"const": 0},
+        "agent_review_gate_pass": {"const": false},
+        "normative_profile_adopted": {"const": false},
+        "conformance_execution_authorized": {"const": false},
+        "cs_g2_effect": {"const": false}
       }
     },
     "human_decision": {
@@ -592,6 +637,9 @@
       "required": [
         "roadmap_defined",
         "commercialization_standard_ready",
+        "veap_draft_profile_candidate_created",
+        "veap_schema_candidate_created",
+        "veap_normative_profile_adopted",
         "veap_normative_profile_created",
         "veap_schema_created",
         "veap_reference_implementation_created",
@@ -608,6 +656,15 @@
           "const": true
         },
         "commercialization_standard_ready": {
+          "const": false
+        },
+        "veap_draft_profile_candidate_created": {
+          "const": true
+        },
+        "veap_schema_candidate_created": {
+          "const": true
+        },
+        "veap_normative_profile_adopted": {
           "const": false
         },
         "veap_normative_profile_created": {
@@ -698,6 +755,8 @@
         "prerequisite_selection_decision_packet_reference",
         "prerequisite_selection_decision_packet_prepared",
         "prerequisite_selection_decision_ready",
+        "draft_contract_decision_reference",
+        "draft_contract_candidate_created",
         "current_recommended_option",
         "decision_ready",
         "external_execution_authorized"
@@ -748,6 +807,12 @@
         },
         "prerequisite_selection_decision_ready": {
           "const": false
+        },
+        "draft_contract_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-03-VEAP-DRAFT-CONTRACT-DECISION-RECORD.v0.1.json"
+        },
+        "draft_contract_candidate_created": {
+          "const": true
         },
         "current_recommended_option": {
           "const": "C"

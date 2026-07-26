@@ -385,8 +385,10 @@ MULTI_MODEL_PANEL_EXECUTED=false
 ```
 
 见 [Kimi Lead Review](../TITMAS-CS-D02-KIMI-LEAD-REVIEW.md)。Kimi 的建议与当前
-`normative_profile_authorized=false`、`conformance_execution_authorized=false` 冲突，
-因此返回 Human Governance Decision，不由模型或常设指令自动执行。
+`conformance_execution_authorized=false` 保持冲突。Human Program Owner 已通过
+[`CS-D02-PRE-03`](../TITMAS-CS-D02-PRE-03-VEAP-DRAFT-CONTRACT-DECISION-RECORD.md)
+把建议拆分，只授权 DBA 内的 Development Profile/Schema candidate 和 synthetic Schema
+rehearsal；未授权 conformance execution、实现、商业 Offering、认证或发布。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -650,8 +652,9 @@ decision_status: PACKET_PREPARED_BLOCKED_INPUT_NOT_DECISION_READY
 ```
 
 `CS-D02` 当前只允许准备 exact packet。Agent-first Reviewer 路线已经决定，但 Kimi 当前
-推荐 NO，完整多模型 panel、Owner 和 exact public-safe scope 尚未形成直接结果；因此常设
-指令不能自动授权 normative/schema、conformance execution、外联或数据收集。
+推荐 NO。`CS-D02-PRE-03` 已补充可审查的 Profile/Schema candidate，但完整多模型 panel、
+Owner/Authority freeze 和 exact public-safe validation scope 尚未形成直接结果；因此仍不能
+授权 adopted normative standard、conformance execution、外联或数据收集。
 
 ## 13. Immediate Work Order（近期工作顺序）
 
@@ -659,8 +662,8 @@ decision_status: PACKET_PREPARED_BLOCKED_INPUT_NOT_DECISION_READY
    execution-accountability 问题、拒绝和推荐证据；
 2. **Freeze ownership**：明确 TITMAS exchange profile、DBOS canonical record、EEOAP
    accountability 和 SAEE evaluation 的各自权属；
-3. **Draft the package contract**：只在 `CS-G0`、`CS-G1` 都有直接证据并经后继决定后创建
-   normative/schema work item；
+3. **Review the package contract**：Development Profile/Schema candidate 已形成；待
+   `CS-G0`、`CS-G1` 有直接证据后再决定是否采纳为 normative Draft；
 4. **Build conformance before product UI**：先定义失败与结果集，再设计平台；
 5. **Run one vertical slice**：AGT/OTel observation → DBOS admission → VEAP → verification →
    SAEE read-only input；
@@ -697,6 +700,8 @@ TITMAS_CS_D02_HUMAN_REFERENCE_ALLOWED=true
 TITMAS_CS_D02_KIMI_LEAD_REVIEW_COMPLETE=true
 TITMAS_CS_D02_KIMI_RECOMMEND_NOW=NO
 TITMAS_CS_D02_KIMI_WORTH_CONTINUING=CONDITIONAL
+TITMAS_CS_D02_PRE_03_DECIDED=true
+TITMAS_CS_D02_PRE_03_RESULT=AUTHORIZE_BOUNDED_VEAP_DRAFT_PROFILE_AND_SCHEMA
 TITMAS_CS_D02_MULTI_MODEL_PANEL_EXECUTED=false
 TITMAS_CS_D02_STORE_BACKEND_SELECTED=false
 TITMAS_CS_D02_PREREQUISITE_SELECTION_PACKET_PREPARED=true
@@ -716,6 +721,10 @@ TITMAS_VEAP_STANDARDIZATION_GATES_PASSED=0
 TITMAS_VEAP_GENERATION_READY=false
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false
+TITMAS_VEAP_DRAFT_PROFILE_CANDIDATE_CREATED=true
+TITMAS_VEAP_SCHEMA_CANDIDATE_CREATED=true
+TITMAS_VEAP_SCHEMA_REHEARSAL_PASS=true
+TITMAS_VEAP_NORMATIVE_PROFILE_ADOPTED=false
 TITMAS_VEAP_NORMATIVE_PROFILE_CREATED=false
 TITMAS_VEAP_SCHEMA_CREATED=false
 TITMAS_VEAP_REFERENCE_IMPLEMENTATION_CREATED=false

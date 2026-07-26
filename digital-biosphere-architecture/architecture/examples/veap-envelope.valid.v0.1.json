@@ -1,0 +1,166 @@
+{
+  "$schema": "../schemas/veap-envelope.schema.v0.1.json",
+  "profile_version": "0.1.0-development",
+  "attestation_id": "veap:synthetic:20260726:001",
+  "issued_at": "2026-07-26T13:09:15+08:00",
+  "package_status": "PARTIAL",
+  "subject": {
+    "entity_reference": {
+      "source": "synthetic-framework",
+      "namespace": "example.agent",
+      "identifier": "research-helper-candidate",
+      "version": "0.1"
+    },
+    "binding_status": "EXTERNAL_ONLY"
+  },
+  "execution": {
+    "source": "synthetic-runtime",
+    "namespace": "example.execution",
+    "execution_id": "exec-synthetic-001",
+    "runtime_version": "0.1",
+    "task_reference": {
+      "source": "synthetic-task-registry",
+      "namespace": "example.task",
+      "identifier": "summarize-public-document",
+      "version": "1"
+    },
+    "started_at": "2026-07-26T05:00:00Z",
+    "ended_at": "2026-07-26T05:00:01Z",
+    "status": "SUCCEEDED"
+  },
+  "context": {
+    "model_references": [
+      {
+        "source": "synthetic-provider",
+        "namespace": "example.model",
+        "identifier": "model-placeholder",
+        "version": "not-a-real-runtime"
+      }
+    ],
+    "tool_references": [],
+    "policy_references": [
+      {
+        "source": "dba",
+        "namespace": "titmas.profile",
+        "identifier": "veap-draft-profile",
+        "version": "0.1.0-development"
+      }
+    ]
+  },
+  "observation_references": [
+    {
+      "reference": {
+        "source": "synthetic-runtime",
+        "namespace": "example.observation",
+        "identifier": "obs-001",
+        "version": "1"
+      },
+      "producer": {
+        "source": "synthetic-runtime",
+        "namespace": "example.producer",
+        "identifier": "producer-001",
+        "version": "0.1"
+      },
+      "schema_version": "example-observation/1",
+      "delivery_status": "COMPLETE",
+      "limitations": []
+    }
+  ],
+  "evidence_bindings": [
+    {
+      "material_reference": {
+        "source": "synthetic-runtime",
+        "namespace": "example.material",
+        "identifier": "material-001",
+        "version": "1",
+        "digest": {
+          "algorithm": "sha256",
+          "value": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        }
+      },
+      "admission_reference": {
+        "source": "synthetic-dbos-boundary",
+        "namespace": "example.admission",
+        "identifier": "admission-001",
+        "version": "not-a-real-dbos-record"
+      },
+      "canonical_evidence_reference": {
+        "source": "synthetic-dbos-boundary",
+        "namespace": "example.evidence",
+        "identifier": "evidence-001",
+        "version": "not-a-real-dbos-record",
+        "digest": {
+          "algorithm": "sha256",
+          "value": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        }
+      },
+      "admission_status": "ADMITTED",
+      "integrity_status": "NOT_ASSESSED",
+      "limitations": [
+        {
+          "code": "SYNTHETIC_ONLY",
+          "description": "This fixture does not reference real DBOS evidence."
+        }
+      ]
+    }
+  ],
+  "verification_bindings": [
+    {
+      "result_reference": {
+        "source": "synthetic-verifier",
+        "namespace": "example.verification",
+        "identifier": "verification-001",
+        "version": "0.1"
+      },
+      "verifier_reference": {
+        "source": "synthetic-verifier",
+        "namespace": "example.verifier",
+        "identifier": "verifier-placeholder",
+        "version": "0.1"
+      },
+      "rule_reference": {
+        "source": "dba",
+        "namespace": "titmas.rule",
+        "identifier": "structural-fixture-only",
+        "version": "0.1"
+      },
+      "subject_reference": {
+        "source": "synthetic-runtime",
+        "namespace": "example.material",
+        "identifier": "material-001",
+        "version": "1"
+      },
+      "verification_status": "NOT_ASSESSED",
+      "limitations": [
+        {
+          "code": "NO_SEMANTIC_VERIFICATION",
+          "description": "Only JSON Schema structure is rehearsed."
+        }
+      ]
+    }
+  ],
+  "evaluation_bindings": [],
+  "decision_bindings": [],
+  "claims": {
+    "proves": [
+      "EXECUTION_HISTORY_REFERENCE",
+      "PROVENANCE_BINDING",
+      "VERIFICATION_RESULT_REFERENCE"
+    ],
+    "does_not_prove": [
+      "CORRECTNESS",
+      "TRUTH",
+      "PERMISSION",
+      "CERTIFICATION"
+    ]
+  },
+  "limitations": [
+    {
+      "code": "SYNTHETIC_FIXTURE",
+      "description": "This file validates candidate structure only and is not an execution, Evidence, Verification, or conformance result."
+    }
+  ],
+  "revocation": {
+    "status": "UNKNOWN"
+  }
+}

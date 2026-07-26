@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-03-veap-draft-contract-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02-PRE-03 VEAP Draft Contract Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "parent_decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "decided_by_ref",
+    "decided_at",
+    "source_baseline_commit",
+    "decision_result",
+    "draft_steward_ref",
+    "authorized_targets",
+    "preconditions",
+    "decision_effect",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"type": "string"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-03-VEAP-DRAFT-CONTRACT-DECISION-RECORD-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DECIDED_BOUNDED_DRAFT_CONTRACT_AUTHORIZED"},
+    "decision_id": {"const": "CS-D02-PRE-03"},
+    "parent_decision_id": {"const": "CS-D02"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {"const": "TITMAS-CS-KIMI-20260725-001"},
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "source_baseline_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "decision_result": {"const": "AUTHORIZE_BOUNDED_VEAP_DRAFT_PROFILE_AND_SCHEMA"},
+    "draft_steward_ref": {"const": "DBA_ZHANGBIN"},
+    "authorized_targets": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cs_d01_bounded_internal_scope_authorized",
+        "agent_first_review_route_adopted",
+        "kimi_profile_schema_recommendation_available",
+        "ownership_crosswalk_defined",
+        "public_safe_synthetic_materials_only"
+      ],
+      "properties": {
+        "cs_d01_bounded_internal_scope_authorized": {"const": true},
+        "agent_first_review_route_adopted": {"const": true},
+        "kimi_profile_schema_recommendation_available": {"const": true},
+        "ownership_crosswalk_defined": {"const": true},
+        "public_safe_synthetic_materials_only": {"const": true}
+      }
+    },
+    "decision_effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "draft_profile_candidate_authorized",
+        "schema_candidate_authorized",
+        "synthetic_schema_rehearsal_authorized",
+        "titmas_specification_authority_assigned",
+        "veap_normative_profile_adopted",
+        "cs_g0_pass",
+        "cs_g1_pass",
+        "cs_g2_pass"
+      ],
+      "properties": {
+        "draft_profile_candidate_authorized": {"const": true},
+        "schema_candidate_authorized": {"const": true},
+        "synthetic_schema_rehearsal_authorized": {"const": true},
+        "titmas_specification_authority_assigned": {"const": false},
+        "veap_normative_profile_adopted": {"const": false},
+        "cs_g0_pass": {"const": false},
+        "cs_g1_pass": {"const": false},
+        "cs_g2_pass": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "ownership",
+        "implementation",
+        "conformance_execution",
+        "runtime",
+        "agent_instance",
+        "entity_instance",
+        "permission",
+        "canonical_evidence",
+        "external_outreach",
+        "data_collection",
+        "commercial_offer",
+        "certification",
+        "release"
+      ],
+      "properties": {
+        "authority": {"const": false},
+        "ownership": {"const": false},
+        "implementation": {"const": false},
+        "conformance_execution": {"const": false},
+        "runtime": {"const": false},
+        "agent_instance": {"const": false},
+        "entity_instance": {"const": false},
+        "permission": {"const": false},
+        "canonical_evidence": {"const": false},
+        "external_outreach": {"const": false},
+        "data_collection": {"const": false},
+        "commercial_offer": {"const": false},
+        "certification": {"const": false},
+        "release": {"const": false}
+      }
+    }
+  }
+}
