@@ -26,6 +26,7 @@
     "public_first_party_method_revision_review",
     "public_first_party_method_adoption",
     "public_first_party_desk_research_authorization",
+    "public_first_party_candidate_review_authorization",
     "human_decision",
     "standing_directive",
     "predecision_evidence",
@@ -47,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_09_DESK_RESEARCH_EXECUTED_PARTIAL_CANDIDATES_COUNTING_NOT_AUTHORIZED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_10_AGENT_RECORD_REVIEW_AUTHORIZED_BASELINE_NOT_YET_VERIFIED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -720,6 +721,56 @@
         "cs_g0_effect": {"const": false}
       }
     },
+    "public_first_party_candidate_review_authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "decision_result",
+        "decision_record_reference",
+        "recommendation_reference",
+        "source_candidate_set_reference",
+        "source_candidate_set_sha256",
+        "validation_plan_reference",
+        "sessions_max",
+        "providers_required",
+        "models_declared",
+        "agent_api_review_authorized",
+        "tools_allowed",
+        "fallback_allowed",
+        "authorization_baseline_commit_required",
+        "authorization_baseline_committed",
+        "authorization_baseline_pushed",
+        "execution_started",
+        "execution_completed",
+        "public_source_record_counting_authorized",
+        "valid_problem_records_created",
+        "cs_g0_effect"
+      ],
+      "properties": {
+        "decision_id": {"const": "CS-D02-PRE-10"},
+        "decision_result": {"const": "AUTHORIZE_FOUR_SESSION_PUBLIC_SAFE_CANDIDATE_RECORD_REVIEW_ONLY"},
+        "decision_record_reference": {"const": "TITMAS-CS-D02-PRE-10-PUBLIC-FIRST-PARTY-CANDIDATE-REVIEW-DECISION-RECORD.v0.1.json"},
+        "recommendation_reference": {"const": "TITMAS-CS-D02-PUBLIC-FIRST-PARTY-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md"},
+        "source_candidate_set_reference": {"const": "commercialization-standards-public-source-problem-validation/source-candidate-set.v0.1.json"},
+        "source_candidate_set_sha256": {"const": "f7253e3e2545b1200f1a7eb27b9ce5d323e1eb090b2c1178e112707983ba6300"},
+        "validation_plan_reference": {"const": "commercialization-standards-public-source-record-review/validation-plan.v0.1.json"},
+        "sessions_max": {"const": 4},
+        "providers_required": {"const": 2},
+        "models_declared": {"const": 2},
+        "agent_api_review_authorized": {"const": true},
+        "tools_allowed": {"const": false},
+        "fallback_allowed": {"const": false},
+        "authorization_baseline_commit_required": {"const": true},
+        "authorization_baseline_committed": {"const": false},
+        "authorization_baseline_pushed": {"const": false},
+        "execution_started": {"const": false},
+        "execution_completed": {"const": false},
+        "public_source_record_counting_authorized": {"const": false},
+        "valid_problem_records_created": {"const": 0},
+        "cs_g0_effect": {"const": false}
+      }
+    },
     "human_decision": {
       "type": "object",
       "additionalProperties": false,
@@ -1023,6 +1074,8 @@
         "public_source_collection_authorized",
         "public_source_candidate_creation_authorized",
         "public_source_desk_research_executed",
+        "public_source_candidate_review_authorized",
+        "public_source_candidate_review_executed",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1082,6 +1135,12 @@
         },
         "public_source_desk_research_executed": {
           "const": true
+        },
+        "public_source_candidate_review_authorized": {
+          "const": true
+        },
+        "public_source_candidate_review_executed": {
+          "const": false
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -1215,7 +1274,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE09_EXECUTED_PARTIAL_CANDIDATES_HUMAN_COUNTING_DECISION_REQUIRED"
+          "const": "PRE10_AUTHORIZED_REMOTE_BASELINE_REQUIRED_BEFORE_AGENT_REVIEW"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"

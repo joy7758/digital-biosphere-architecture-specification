@@ -1,0 +1,84 @@
+{
+  "$schema": "./validation-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-10-PUBLIC-SOURCE-RECORD-REVIEW-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-10",
+  "decision_record_reference": "../TITMAS-CS-D02-PRE-10-PUBLIC-FIRST-PARTY-CANDIDATE-REVIEW-DECISION-RECORD.v0.1.json",
+  "source_candidate_set_reference": "../commercialization-standards-public-source-problem-validation/source-candidate-set.v0.1.json",
+  "source_candidate_set_sha256": "f7253e3e2545b1200f1a7eb27b9ce5d323e1eb090b2c1178e112707983ba6300",
+  "source_pack_reference": "source-pack.v0.1.md",
+  "source_pack_sha256": "3040ec61c4fae1d50151d07de2214625c371b36ccd9b418047cbee6f24e610ca",
+  "prompt_template_reference": "prompt-template.v0.1.txt",
+  "prompt_template_sha256": "6caaf92907396a8e18dba44c1051183f2b000d06b4b72bb0ae5105b60b6d52df",
+  "response_schema_reference": "agent-record-review-response.schema.v0.1.json",
+  "response_schema_sha256": "0f3df0688993fe300bae1f8d2c1cb67c0fd31fecbdabcbb89d5a1819c803ccd8",
+  "sessions": [
+    {
+      "session_id": "QF-KIMI-SOURCE-PFPC-S1",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "kimi-k2.6",
+      "reviewer_role": "SOURCE_QUALIFICATION_REVIEWER",
+      "requests_max": 1
+    },
+    {
+      "session_id": "QF-KIMI-ACCOUNTABILITY-PFPC-S2",
+      "provider_gateway": "qianfan",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "kimi-k2.6",
+      "reviewer_role": "ACCOUNTABILITY_RELEVANCE_REVIEWER",
+      "requests_max": 1
+    },
+    {
+      "session_id": "DS-CLAIM-PRIVACY-PFPC-S3",
+      "provider_gateway": "deepseek",
+      "endpoint_host": "api.deepseek.com",
+      "model": "deepseek-chat",
+      "reviewer_role": "CLAIM_AND_PRIVACY_REVIEWER",
+      "requests_max": 1
+    },
+    {
+      "session_id": "DS-ADVERSARIAL-PFPC-S4",
+      "provider_gateway": "deepseek",
+      "endpoint_host": "api.deepseek.com",
+      "model": "deepseek-chat",
+      "reviewer_role": "ADVERSARIAL_RECORD_REVIEWER",
+      "requests_max": 1
+    }
+  ],
+  "thresholds": {
+    "parseable_sessions_min": 3,
+    "providers_with_success_min": 2,
+    "candidate_ids_covered_min": 4,
+    "boundary_failures_max": 0
+  },
+  "controls": {
+    "tools_allowed": false,
+    "fallback_model_allowed": false,
+    "json_repair_allowed": false,
+    "raw_provider_envelope_persisted": false,
+    "secret_in_request_allowed": false,
+    "customer_or_personal_data_allowed": false,
+    "direct_personal_identifiers_allowed": false,
+    "new_source_search_allowed": false,
+    "new_source_collection_allowed": false,
+    "automatic_valid_status_allowed": false,
+    "automatic_counting_allowed": false
+  },
+  "execution_gate": {
+    "authorization_baseline_committed": false,
+    "authorization_baseline_pushed": false,
+    "execution_started": false
+  },
+  "non_effects": {
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

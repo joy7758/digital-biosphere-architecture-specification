@@ -720,6 +720,40 @@ MARKET_VALIDATION_PASS=false
 CUSTOMER_ADOPTION=false
 ```
 
+### 4.20 PRE-10 Candidate Record Agent Review Authorization
+
+四条 `PARTIAL` 记录不能自动进入 counting。根据
+[exact recommendation](../TITMAS-CS-D02-PUBLIC-FIRST-PARTY-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md)
+和 [PRE-10 Decision](../TITMAS-CS-D02-PRE-10-PUBLIC-FIRST-PARTY-CANDIDATE-REVIEW-DECISION-RECORD.md)，
+下一动作只允许一次冻结、public-safe、tool-free 的四会话 Agent record review：
+
+```text
+SESSIONS_MAX=4
+PROVIDER_GATEWAYS=QIANFAN_AND_DEEPSEEK
+MODEL_IDENTITIES=KIMI_K2_6_AND_DEEPSEEK_CHAT
+TOOLS_ALLOWED=false
+FALLBACK_ALLOWED=false
+NEW_SOURCE_SEARCH_ALLOWED=false
+NEW_SOURCE_COLLECTION_ALLOWED=false
+AUTOMATIC_VALID_STATUS_ALLOWED=false
+AUTOMATIC_COUNTING_ALLOWED=false
+```
+
+[Validation plan](../commercialization-standards-public-source-record-review/validation-plan.v0.1.json)
+冻结 source pack、prompt、response Schema、session identity、阈值和停止条件。API 调用前必须
+先 commit/push PRE-10 授权基线并建立 remote receipt；当前执行尚未开始。
+
+```text
+PRE_10_DECIDED=true
+PRE_10_AGENT_RECORD_REVIEW_AUTHORIZED=true
+PRE_10_AUTHORIZATION_BASELINE_COMMITTED=false
+PRE_10_AUTHORIZATION_BASELINE_PUSHED=false
+PRE_10_AGENT_RECORD_REVIEW_EXECUTED=false
+PUBLIC_SOURCE_RECORD_COUNTING_AUTHORIZED=false
+VALID_PROBLEM_RECORDS=0
+CS_G0_PASS=false
+```
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name

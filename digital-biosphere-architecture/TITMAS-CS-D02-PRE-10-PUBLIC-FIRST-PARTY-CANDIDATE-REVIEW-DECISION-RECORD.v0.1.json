@@ -1,0 +1,72 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-10-public-first-party-candidate-review-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-10-PUBLIC-FIRST-PARTY-CANDIDATE-REVIEW-DECISION-RECORD-0.1",
+  "version": "0.1.0",
+  "status": "DECIDED_BOUNDED_AGENT_RECORD_REVIEW_AUTHORIZED_NOT_EXECUTED",
+  "decision_id": "CS-D02-PRE-10",
+  "decision_result": "AUTHORIZE_FOUR_SESSION_PUBLIC_SAFE_CANDIDATE_RECORD_REVIEW_ONLY",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PUBLIC-FIRST-PARTY-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md",
+  "decided_by_ref": "zhangbin",
+  "executed_by_ref": "codex",
+  "primary_repository": "digital-biosphere-architecture",
+  "source_candidate_set_reference": "commercialization-standards-public-source-problem-validation/source-candidate-set.v0.1.json",
+  "source_candidate_set_sha256": "f7253e3e2545b1200f1a7eb27b9ce5d323e1eb090b2c1178e112707983ba6300",
+  "pre09_remote_commit": "142bd5fc2d4f4ab20617ae6fc271d294992e15c3",
+  "validation_plan_reference": "commercialization-standards-public-source-record-review/validation-plan.v0.1.json",
+  "scope": {
+    "sessions_max": 4,
+    "provider_gateways": [
+      "qianfan",
+      "deepseek"
+    ],
+    "model_identities": [
+      "kimi-k2.6",
+      "deepseek-chat"
+    ],
+    "tools_allowed": false,
+    "fallback_allowed": false,
+    "new_public_source_search_allowed": false,
+    "new_source_collection_allowed": false,
+    "raw_provider_envelope_persisted": false,
+    "direct_personal_identifiers_allowed": false
+  },
+  "preconditions": {
+    "recommendation_recorded": true,
+    "pre09_remote_baseline_verified": true,
+    "candidate_set_hash_verified": true,
+    "agent_first_review_route_authorized": true,
+    "public_safe_source_pack_required": true,
+    "authorization_baseline_push_required_before_api_call": true
+  },
+  "stop_conditions": [
+    "AUTHORIZATION_BASELINE_NOT_REMOTE",
+    "FROZEN_DIGEST_MISMATCH",
+    "SECRET_OR_NON_PUBLIC_DATA_DETECTED",
+    "TOOL_OR_EXTERNAL_WRITE_REQUIRED",
+    "UNSAFE_OUTPUT_DETECTED",
+    "NO_PROVIDER_WITH_PARSEABLE_RESULT",
+    "AUTOMATIC_COUNTING_OR_GATE_EFFECT_ATTEMPTED"
+  ],
+  "execution_started": false,
+  "execution_completed": false,
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "runtime": false,
+    "agent_instance": false,
+    "entity": false,
+    "permission": false,
+    "new_source_collection": false,
+    "record_counting": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation": false,
+    "customer_adoption": false,
+    "external_outreach": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false
+  }
+}

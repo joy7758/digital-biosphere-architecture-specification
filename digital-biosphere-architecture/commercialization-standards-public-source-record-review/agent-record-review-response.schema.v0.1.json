@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/agent-record-review-response.schema.v0.1.json",
+  "title": "TITMAS PRE-10 Agent Record Review Response v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reviewer_role",
+    "records",
+    "overall_recommendation",
+    "blocking_gaps",
+    "boundary_answers"
+  ],
+  "properties": {
+    "reviewer_role": {
+      "enum": [
+        "SOURCE_QUALIFICATION_REVIEWER",
+        "ACCOUNTABILITY_RELEVANCE_REVIEWER",
+        "CLAIM_AND_PRIVACY_REVIEWER",
+        "ADVERSARIAL_RECORD_REVIEWER"
+      ]
+    },
+    "records": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "candidate_id",
+          "operational_problem_strength",
+          "accountable_role_evidence",
+          "measurable_consequence",
+          "relationship_and_dedup_resolution",
+          "execution_accountability_relevance",
+          "recommendation",
+          "rationale",
+          "missing_evidence",
+          "counting_effect"
+        ],
+        "properties": {
+          "candidate_id": {"enum": ["PFPC-001", "PFPC-002", "PFPC-003", "PFPC-004"]},
+          "operational_problem_strength": {"enum": ["YES", "PARTIAL", "NO", "UNKNOWN"]},
+          "accountable_role_evidence": {"enum": ["YES", "PARTIAL", "NO", "UNKNOWN"]},
+          "measurable_consequence": {"enum": ["YES", "PARTIAL", "NO", "UNKNOWN"]},
+          "relationship_and_dedup_resolution": {"enum": ["YES", "PARTIAL", "NO", "UNKNOWN"]},
+          "execution_accountability_relevance": {"enum": ["HIGH", "MEDIUM", "LOW", "UNKNOWN"]},
+          "recommendation": {
+            "enum": [
+              "RETAIN_PARTIAL",
+              "INVALIDATE",
+              "MARK_CONFLICTED",
+              "PREPARE_HUMAN_COUNTING_REVIEW"
+            ]
+          },
+          "rationale": {"type": "string", "minLength": 20, "maxLength": 800},
+          "missing_evidence": {
+            "type": "array",
+            "items": {"type": "string", "minLength": 3},
+            "uniqueItems": true
+          },
+          "counting_effect": {"const": false}
+        }
+      }
+    },
+    "overall_recommendation": {
+      "enum": [
+        "RETAIN_ALL_PARTIAL",
+        "MIXED_RECORD_REMEDIATION",
+        "PREPARE_SEPARATE_HUMAN_COUNTING_REVIEW",
+        "FAIL_RECORD_SET"
+      ]
+    },
+    "blocking_gaps": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 3},
+      "uniqueItems": true
+    },
+    "boundary_answers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_review_is_independent_organization",
+        "candidate_is_valid_record",
+        "candidate_counts_toward_cs_g0",
+        "market_validation_proven",
+        "customer_adoption_proven",
+        "veap_fit_proven",
+        "implementation_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "model_review_is_independent_organization": {"const": false},
+        "candidate_is_valid_record": {"const": false},
+        "candidate_counts_toward_cs_g0": {"const": false},
+        "market_validation_proven": {"const": false},
+        "customer_adoption_proven": {"const": false},
+        "veap_fit_proven": {"const": false},
+        "implementation_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}
