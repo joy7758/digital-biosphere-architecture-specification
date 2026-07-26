@@ -1560,6 +1560,13 @@
         "qianfan_wrapper_diagnostic_result_reference",
         "qianfan_wrapper_diagnostic_execution_receipt_reference",
         "qianfan_wrapper_diagnostic_report_reference",
+        "qianfan_reconfirmation_decision_candidate_id",
+        "qianfan_reconfirmation_recommendation_reference",
+        "qianfan_reconfirmation_recommendation_prepared",
+        "qianfan_reconfirmation_new_live_model_requests_recommended_max",
+        "qianfan_reconfirmation_decision_recorded",
+        "qianfan_reconfirmation_execution_authorized",
+        "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
         "rerun_json_repair_allowed",
@@ -1577,7 +1584,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE15_EXECUTED_OFFLINE_DIAGNOSTIC_PASS_ONE_REQUEST_QIANFAN_RECOMMENDATION_REQUIRED"
+          "const": "PRE16_ONE_REQUEST_QIANFAN_RECONFIRMATION_RECOMMENDATION_PREPARED_NOT_DECIDED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -2095,6 +2102,27 @@
         "qianfan_wrapper_diagnostic_report_reference": {
           "const": "commercialization-standards-qianfan-wrapper-extraction-diagnostic/PRE-15-OFFLINE-QIANFAN-WRAPPER-DIAGNOSTIC-RESULT-v0.1.md"
         },
+        "qianfan_reconfirmation_decision_candidate_id": {
+          "const": "CS-D02-PRE-16"
+        },
+        "qianfan_reconfirmation_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-16-QIANFAN-RECONFIRMATION-RECOMMENDATION-v0.1.md"
+        },
+        "qianfan_reconfirmation_recommendation_prepared": {
+          "const": true
+        },
+        "qianfan_reconfirmation_new_live_model_requests_recommended_max": {
+          "const": 1
+        },
+        "qianfan_reconfirmation_decision_recorded": {
+          "const": false
+        },
+        "qianfan_reconfirmation_execution_authorized": {
+          "const": false
+        },
+        "composite_gate_reuses_frozen_pre14_deepseek": {
+          "const": true
+        },
         "rerun_retry_allowed": {
           "const": false
         },
@@ -2108,10 +2136,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_SEPARATE_ONE_REQUEST_QIANFAN_CONFIRMATION_RECOMMENDATION_ONLY"
+          "const": "AUTHORIZE_ONE_QIANFAN_RECONFIRMATION_AND_COMPOSITE_GATE_ONLY"
         },
         "decision_ready": {
-          "const": false
+          "const": true
         },
         "external_execution_authorized": {
           "const": false

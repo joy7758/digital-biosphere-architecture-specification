@@ -1109,6 +1109,24 @@ QIANFAN_PROVIDER_SCHEMA_CONFIRMATION_PASS=false
 raw envelope，不能证明 provider 实际返回。下一步只能另行准备一次 Qianfan confirmation
 请求建议；当前仍不授权请求。
 
+### 4.28 PRE-16 One-request Qianfan Reconfirmation Recommendation
+
+[PRE-16 exact recommendation](../TITMAS-CS-D02-PRE-16-QIANFAN-RECONFIRMATION-RECOMMENDATION-v0.1.md)
+已准备：
+
+```text
+QIANFAN_NEW_REQUESTS_MAX=1
+DEEPSEEK_NEW_REQUESTS_MAX=0
+TOTAL_NEW_LIVE_MODEL_REQUESTS_MAX=1
+ORDERED_EXTRACTION_CONTRACT_REQUIRED=true
+AMBIGUOUS_ANSWER_FAIL_CLOSED=true
+AT_RECOMMENDATION_TIME_PRE_16_DECIDED=false
+```
+
+PRE-16 建议使用一次新 Qianfan Schema confirmation 和 PRE-14 frozen DeepSeek PASS 建立
+新的 composite gate；它不改写 PRE-14 失败结果。即使 composite gate 通过，也只能准备
+完整候选审查重跑建议。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
