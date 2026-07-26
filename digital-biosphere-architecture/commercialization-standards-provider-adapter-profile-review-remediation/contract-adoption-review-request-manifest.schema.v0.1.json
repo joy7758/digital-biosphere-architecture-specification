@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:contract-adoption-review-request-manifest:0.1",
+  "title": "TITMAS Contract Adoption Review Request Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "query_template_reference", "query_template_bytes", "query_template_sha256", "composition_rule", "response_schema_reference", "response_schema_sha256", "sessions", "parsing_contract", "effects"],
+  "properties": {
+    "$schema": {"const": "./contract-adoption-review-request-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-REQUEST-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-24"},
+    "query_template_reference": {"const": "contract-adoption-review-query-template.v0.1.txt"},
+    "query_template_bytes": {"const": 6769},
+    "query_template_sha256": {"const": "eb1c8debd8c299d833eeb4329cf25889f00f5421b23f4e0a8f281811b4e3aae9"},
+    "composition_rule": {"const": "UTF8(role_prefix + LF + LF + exact_query_template_bytes)"},
+    "response_schema_reference": {"const": "contract-adoption-review-response.schema.v0.1.json"},
+    "response_schema_sha256": {"const": "808f1c8697a7445e14880bf125fd968324361197614e93238f21357d75706049"},
+    "sessions": {
+      "const": [
+        {
+          "session_id": "PRE24-KIMI-CONTRACT-REVIEW",
+          "provider_path": "BAIDU_QIANFAN_EXACT_MODEL_TOOL",
+          "requested_model": "kimi-k2.6",
+          "role_prefix": "Set reviewer_role exactly to INTEROPERABILITY_AND_EXTRACTION_REVIEWER.",
+          "query_bytes": 6841,
+          "query_sha256": "a307962c162d3bd6bf22282741085f8c1ff703b8e4685de24d09ce17cb79a558",
+          "requests_max": 1,
+          "model_binding_requirement": "EXACT_CONNECTOR_CONTRACT"
+        },
+        {
+          "session_id": "PRE24-DEEPSEEK-CONTRACT-REVIEW",
+          "provider_path": "DEEPSEEK_V1_CHAT_COMPLETIONS",
+          "requested_model": "deepseek-chat",
+          "role_prefix": "Set reviewer_role exactly to GOVERNANCE_AND_MODEL_BINDING_REVIEWER.",
+          "query_bytes": 6838,
+          "query_sha256": "13743960d9d28aa6ad784ff01dd838e4ffe0d71611244541dfac36f842e27c9c",
+          "requests_max": 1,
+          "model_binding_requirement": "RETURNED_MODEL_MUST_EQUAL_REQUESTED_MODEL"
+        }
+      ]
+    },
+    "parsing_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["direct_json_parse_only", "response_schema_validation_required", "markdown_strip_allowed", "code_fence_strip_allowed", "json_repair_allowed", "semantic_rewrite_allowed"],
+      "properties": {
+        "direct_json_parse_only": {"const": true},
+        "response_schema_validation_required": {"const": true},
+        "markdown_strip_allowed": {"const": false},
+        "code_fence_strip_allowed": {"const": false},
+        "json_repair_allowed": {"const": false},
+        "semantic_rewrite_allowed": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requests_executed", "reviews_completed", "contract_candidates_adopted", "implementation_created"],
+      "properties": {
+        "requests_executed": {"const": 0},
+        "reviews_completed": {"const": 0},
+        "contract_candidates_adopted": {"const": false},
+        "implementation_created": {"const": false}
+      }
+    }
+  }
+}

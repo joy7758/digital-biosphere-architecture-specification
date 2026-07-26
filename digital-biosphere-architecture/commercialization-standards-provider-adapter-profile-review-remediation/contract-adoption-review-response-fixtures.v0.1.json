@@ -1,0 +1,174 @@
+{
+  "$schema": "./contract-adoption-review-response-fixtures.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-RESPONSE-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "response_schema_reference": "contract-adoption-review-response.schema.v0.1.json",
+  "cases": [
+    {
+      "case_id": "PRE24-RSP-001-POSITIVE-ACCEPT",
+      "expected_schema_valid": true,
+      "response": {
+        "review_id": "PRE24-CONTRACT-ADOPTION-REVIEW",
+        "reviewer_role": "INTEROPERABILITY_AND_EXTRACTION_REVIEWER",
+        "review_targets": [
+          "compact-review-response-extraction-contract.v0.1.json",
+          "compact-review-model-binding-policy.v0.1.json"
+        ],
+        "criteria": {
+          "EXTRACTION_SOURCE_DISCRIMINATION": "PASS",
+          "CONFLICT_FAIL_CLOSED": "PASS",
+          "NO_REPAIR_OR_SEMANTIC_REWRITE": "PASS",
+          "DIRECT_RESPONSE_SCHEMA_BINDING": "PASS",
+          "PLAIN_CONTENT_DECLARATION_BOUNDARY": "PASS",
+          "MODEL_IDENTITY_SEPARATION_FROM_CONTENT_VALIDITY": "PASS",
+          "ALIAS_PROVENANCE_AND_DECISION_BINDING": "PASS",
+          "UNKNOWN_AND_MISMATCH_PRESERVATION": "PASS",
+          "VERSIONING_AND_BREAKING_CHANGE_SURFACE": "PASS",
+          "PROVIDER_NEUTRALITY_AND_PORTABILITY": "PASS",
+          "DETERMINISTIC_TESTABILITY": "PASS",
+          "AUTHORITY_AND_TRUTH_NON_ELEVATION": "PASS"
+        },
+        "findings": [],
+        "contract_recommendations": {
+          "response_extraction_contract": "ADOPT",
+          "model_binding_policy": "ADOPT"
+        },
+        "verdict": "ACCEPT_BOTH_FOR_FORMAL_ADOPTION_DECISION",
+        "boundary_acknowledgements": {
+          "review_is_not_adoption": true,
+          "schema_pass_is_not_provider_correctness": true,
+          "model_binding_is_not_output_quality": true,
+          "provider_alias_not_inferred": true,
+          "implementation_not_created": true,
+          "live_rerun_not_authorized": true,
+          "evidence_is_not_truth": true
+        },
+        "summary": "Both candidates are suitable inputs for a separate formal adoption decision."
+      }
+    },
+    {
+      "case_id": "PRE24-RSP-002-POSITIVE-REVISION",
+      "expected_schema_valid": true,
+      "response": {
+        "review_id": "PRE24-CONTRACT-ADOPTION-REVIEW",
+        "reviewer_role": "GOVERNANCE_AND_MODEL_BINDING_REVIEWER",
+        "review_targets": [
+          "compact-review-response-extraction-contract.v0.1.json",
+          "compact-review-model-binding-policy.v0.1.json"
+        ],
+        "criteria": {
+          "EXTRACTION_SOURCE_DISCRIMINATION": "PASS",
+          "CONFLICT_FAIL_CLOSED": "PASS",
+          "NO_REPAIR_OR_SEMANTIC_REWRITE": "PASS",
+          "DIRECT_RESPONSE_SCHEMA_BINDING": "PASS",
+          "PLAIN_CONTENT_DECLARATION_BOUNDARY": "PASS",
+          "MODEL_IDENTITY_SEPARATION_FROM_CONTENT_VALIDITY": "PASS",
+          "ALIAS_PROVENANCE_AND_DECISION_BINDING": "FAIL",
+          "UNKNOWN_AND_MISMATCH_PRESERVATION": "PASS",
+          "VERSIONING_AND_BREAKING_CHANGE_SURFACE": "UNKNOWN",
+          "PROVIDER_NEUTRALITY_AND_PORTABILITY": "PASS",
+          "DETERMINISTIC_TESTABILITY": "PASS",
+          "AUTHORITY_AND_TRUTH_NON_ELEVATION": "PASS"
+        },
+        "findings": [
+          {
+            "contract_target": "compact-review-model-binding-policy.v0.1.json",
+            "json_pointer_or_section": "/explicit_alias_requirements",
+            "severity": "MAJOR",
+            "reason": "Alias expiry and revocation behavior are not declared.",
+            "required_change": "Add expiry, revocation and conflict semantics before adoption."
+          }
+        ],
+        "contract_recommendations": {
+          "response_extraction_contract": "ADOPT",
+          "model_binding_policy": "REVISE"
+        },
+        "verdict": "ACCEPT_EXTRACTION_ONLY_RETURN_MODEL_POLICY_FOR_REVISION",
+        "boundary_acknowledgements": {
+          "review_is_not_adoption": true,
+          "schema_pass_is_not_provider_correctness": true,
+          "model_binding_is_not_output_quality": true,
+          "provider_alias_not_inferred": true,
+          "implementation_not_created": true,
+          "live_rerun_not_authorized": true,
+          "evidence_is_not_truth": true
+        },
+        "summary": "The extraction contract may advance; the model policy needs explicit alias lifecycle rules."
+      }
+    },
+    {
+      "case_id": "PRE24-RSP-003-NEGATIVE-MISSING-CRITERION",
+      "expected_schema_valid": false,
+      "response": {
+        "review_id": "PRE24-CONTRACT-ADOPTION-REVIEW",
+        "reviewer_role": "INTEROPERABILITY_AND_EXTRACTION_REVIEWER",
+        "review_targets": [
+          "compact-review-response-extraction-contract.v0.1.json",
+          "compact-review-model-binding-policy.v0.1.json"
+        ],
+        "criteria": {
+          "EXTRACTION_SOURCE_DISCRIMINATION": "PASS"
+        },
+        "findings": [],
+        "contract_recommendations": {
+          "response_extraction_contract": "ADOPT",
+          "model_binding_policy": "ADOPT"
+        },
+        "verdict": "ACCEPT_BOTH_FOR_FORMAL_ADOPTION_DECISION",
+        "boundary_acknowledgements": {
+          "review_is_not_adoption": true,
+          "schema_pass_is_not_provider_correctness": true,
+          "model_binding_is_not_output_quality": true,
+          "provider_alias_not_inferred": true,
+          "implementation_not_created": true,
+          "live_rerun_not_authorized": true,
+          "evidence_is_not_truth": true
+        },
+        "summary": "Incomplete criterion coverage."
+      }
+    },
+    {
+      "case_id": "PRE24-RSP-004-NEGATIVE-AUTHORITY-ELEVATION",
+      "expected_schema_valid": false,
+      "response": {
+        "review_id": "PRE24-CONTRACT-ADOPTION-REVIEW",
+        "reviewer_role": "GOVERNANCE_AND_MODEL_BINDING_REVIEWER",
+        "review_targets": [
+          "compact-review-response-extraction-contract.v0.1.json",
+          "compact-review-model-binding-policy.v0.1.json"
+        ],
+        "criteria": {
+          "EXTRACTION_SOURCE_DISCRIMINATION": "PASS",
+          "CONFLICT_FAIL_CLOSED": "PASS",
+          "NO_REPAIR_OR_SEMANTIC_REWRITE": "PASS",
+          "DIRECT_RESPONSE_SCHEMA_BINDING": "PASS",
+          "PLAIN_CONTENT_DECLARATION_BOUNDARY": "PASS",
+          "MODEL_IDENTITY_SEPARATION_FROM_CONTENT_VALIDITY": "PASS",
+          "ALIAS_PROVENANCE_AND_DECISION_BINDING": "PASS",
+          "UNKNOWN_AND_MISMATCH_PRESERVATION": "PASS",
+          "VERSIONING_AND_BREAKING_CHANGE_SURFACE": "PASS",
+          "PROVIDER_NEUTRALITY_AND_PORTABILITY": "PASS",
+          "DETERMINISTIC_TESTABILITY": "PASS",
+          "AUTHORITY_AND_TRUTH_NON_ELEVATION": "PASS"
+        },
+        "findings": [],
+        "contract_recommendations": {
+          "response_extraction_contract": "ADOPT",
+          "model_binding_policy": "ADOPT"
+        },
+        "verdict": "ACCEPT_BOTH_FOR_FORMAL_ADOPTION_DECISION",
+        "boundary_acknowledgements": {
+          "review_is_not_adoption": false,
+          "schema_pass_is_not_provider_correctness": true,
+          "model_binding_is_not_output_quality": true,
+          "provider_alias_not_inferred": true,
+          "implementation_not_created": true,
+          "live_rerun_not_authorized": true,
+          "evidence_is_not_truth": true
+        },
+        "summary": "Invalidly claims review can equal adoption."
+      }
+    }
+  ]
+}

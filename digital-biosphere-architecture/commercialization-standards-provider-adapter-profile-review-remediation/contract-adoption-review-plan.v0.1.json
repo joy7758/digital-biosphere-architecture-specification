@@ -1,0 +1,65 @@
+{
+  "$schema": "./contract-adoption-review-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-24",
+  "execution_mode": "EXACT_TWO_SESSION_READ_ONLY_AGENT_REVIEW",
+  "input_manifest_reference": "contract-adoption-review-input-manifest.v0.1.json",
+  "request_manifest_reference": "contract-adoption-review-request-manifest.v0.1.json",
+  "limits": {
+    "reviewer_sessions_max": 2,
+    "kimi_k2_6_requests_max": 1,
+    "deepseek_chat_requests_max": 1,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "repair_attempts_max": 0,
+    "web_search_requests_max": 0,
+    "reviewer_tool_calls_max": 0
+  },
+  "steps": [
+    "VERIFY_ALL_INPUT_HASHES",
+    "META_VALIDATE_ALL_NEW_SCHEMAS",
+    "EXECUTE_RESPONSE_SCHEMA_FIXTURES",
+    "RECONSTRUCT_AND_VERIFY_TWO_EXACT_QUERY_BINDINGS",
+    "VERIFY_DECISION_BASELINE_IS_REMOTE",
+    "CREATE_AND_REMOTE_VERIFY_AUTHORIZATION_RECEIPT",
+    "EXECUTE_KIMI_K2_6_REVIEW_ONCE",
+    "EXECUTE_DEEPSEEK_CHAT_REVIEW_ONCE",
+    "PARSE_WITHOUT_REPAIR_AND_VALIDATE_RESPONSES",
+    "VERIFY_PROVIDER_AND_MODEL_BINDINGS",
+    "COMPUTE_FAIL_CLOSED_COMPOSITE_RESULT",
+    "RETAIN_FAILURES_UNKNOWNS_REPORT_AND_RECEIPT"
+  ],
+  "session_failure_policy": {
+    "ordinary_session_failure_is_independent": true,
+    "ordinary_session_failure_cancels_other_session": false,
+    "shared_input_or_authorization_failure_stops_all": true,
+    "model_mismatch_is_qualifying": false,
+    "schema_failure_is_qualifying": false,
+    "retry_after_failure_allowed": false
+  },
+  "success_conditions": {
+    "input_hashes_match": 15,
+    "response_fixture_expectations_match": 4,
+    "query_bindings_match": 2,
+    "authorized_review_sessions": 2,
+    "executed_review_sessions": 2,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0,
+    "boundary_safety_failures": 0,
+    "formal_adoption_decision_ready": "RESULT_DEPENDENT",
+    "contract_candidates_adopted": false,
+    "implementation_created": false,
+    "live_rerun_ready": false
+  },
+  "effects": {
+    "execution_started": false,
+    "contract_candidates_adopted": false,
+    "implementation_created": false,
+    "live_review_rerun_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:contract-adoption-review-input-manifest:0.1",
+  "title": "TITMAS Contract Adoption Review Input Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "bindings", "review_targets", "accounting_before_execution", "effects"],
+  "properties": {
+    "$schema": {"const": "./contract-adoption-review-input-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-INPUT-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-24"},
+    "bindings": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact", "sha256"],
+        "properties": {
+          "artifact": {"type": "string", "minLength": 8},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "review_targets": {
+      "const": [
+        {
+          "artifact": "compact-review-response-extraction-contract.v0.1.json",
+          "status": "CANDIDATE_OFFLINE_VALIDATION_NOT_IMPLEMENTATION",
+          "adopted": false
+        },
+        {
+          "artifact": "compact-review-model-binding-policy.v0.1.json",
+          "status": "CANDIDATE_OFFLINE_VALIDATION_NOT_ADOPTED",
+          "adopted": false
+        }
+      ]
+    },
+    "accounting_before_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["review_sessions_executed", "live_model_requests_executed", "retry_attempts", "fallback_attempts", "repair_attempts"],
+      "properties": {
+        "review_sessions_executed": {"const": 0},
+        "live_model_requests_executed": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "repair_attempts": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_candidates_adopted", "implementation_created", "live_review_rerun_executed", "profile_review_completed", "profile_adopted"],
+      "properties": {
+        "contract_candidates_adopted": {"const": false},
+        "implementation_created": {"const": false},
+        "live_review_rerun_executed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false}
+      }
+    }
+  }
+}

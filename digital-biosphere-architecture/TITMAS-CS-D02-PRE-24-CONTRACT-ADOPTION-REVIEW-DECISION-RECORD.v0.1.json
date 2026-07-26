@@ -1,0 +1,75 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-24-contract-adoption-review-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_EXACT_TWO_SESSION_CONTRACT_ADOPTION_REVIEW_ONLY",
+  "decision_id": "CS-D02-PRE-24",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "8caea2b80f10d832714626ce8fdfce74f28644cb27cf50bdfa2232ef1a123775",
+  "decision_result": "AUTHORIZE_EXACT_TWO_SESSION_CONTRACT_ADOPTION_REVIEW_ONLY",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-26T22:25:22+08:00",
+  "executed_by": "Codex",
+  "primary_repository": "digital-biosphere-architecture",
+  "target_branch": "codex/production-observability-baseline",
+  "review_plan_reference": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-plan.v0.1.json",
+  "input_manifest_reference": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-input-manifest.v0.1.json",
+  "request_manifest_reference": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-request-manifest.v0.1.json",
+  "response_schema_reference": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-response.schema.v0.1.json",
+  "review_targets": [
+    "compact-review-response-extraction-contract.v0.1.json",
+    "compact-review-model-binding-policy.v0.1.json"
+  ],
+  "sessions": [
+    {
+      "session_id": "PRE24-KIMI-CONTRACT-REVIEW",
+      "provider_path": "BAIDU_QIANFAN_EXACT_MODEL_TOOL",
+      "requested_model": "kimi-k2.6",
+      "role": "INTEROPERABILITY_AND_EXTRACTION_REVIEWER",
+      "requests_max": 1
+    },
+    {
+      "session_id": "PRE24-DEEPSEEK-CONTRACT-REVIEW",
+      "provider_path": "DEEPSEEK_V1_CHAT_COMPLETIONS",
+      "requested_model": "deepseek-chat",
+      "role": "GOVERNANCE_AND_MODEL_BINDING_REVIEWER",
+      "requests_max": 1
+    }
+  ],
+  "limits": {
+    "reviewer_sessions_max": 2,
+    "live_model_requests_max": 2,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "repair_attempts_max": 0,
+    "web_search_requests_max": 0,
+    "reviewer_tool_calls_max": 0
+  },
+  "preconditions": {
+    "pre23_offline_failure_diagnostic_pass": true,
+    "pre23_contract_candidates_adopted": false,
+    "standing_directive_active": true,
+    "recommendation_remote_verified": true,
+    "remote_decision_baseline_required_before_execution": true,
+    "authorization_receipt_required_before_execution": true
+  },
+  "effects": {
+    "pre22_result_changed": false,
+    "pre23_result_changed": false,
+    "contract_candidates_adopted": false,
+    "adapter_implementation_created": false,
+    "live_review_rerun_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

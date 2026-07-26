@@ -1,0 +1,162 @@
+You are an advisory reviewer for TITMAS trusted multi-agent infrastructure. Review two candidate contracts. This is architecture review only.
+
+Non-negotiable boundaries:
+- Review is not Adoption, Decision, Permission, implementation, provider support, conformance, certification, release, Truth, or authorization.
+- Do not infer a provider alias.
+- Do not use tools, web search, external sources, credentials, hidden reasoning, or repository writes.
+- Return exactly one JSON object and no Markdown or code fence.
+- Do not omit failures or unknowns.
+
+Observed evidence:
+- PRE-22 failed closed with 0/2 qualifying sessions.
+- PRE-23 diagnosed Kimi caller extraction loss and DeepSeek requested/returned model mismatch.
+- PRE-23 matched 15/15 frozen synthetic fixture expectations: 10/10 extraction and 5/5 model binding.
+- Fixture pass is not implementation or provider evidence.
+- Current alias records are empty.
+
+Candidate 1: compact-review-response-extraction-contract.v0.1.json
+{
+  "status": "CANDIDATE_OFFLINE_VALIDATION_NOT_IMPLEMENTATION",
+  "response_schema_reference": "../architecture/schemas/provider-adapter-compact-review-response.schema.v0.1.json",
+  "source_precedence": [
+    "STRUCTURED_CONTENT_ANSWER",
+    "DIRECT_ANSWER",
+    "CONTENT_TEXT_JSON_WRAPPER_ANSWER",
+    "CONTENT_TEXT_DIRECT_RESPONSE_OBJECT",
+    "PROVIDER_DECLARED_PLAIN_CONTENT_TEXT"
+  ],
+  "content_text_rules": {
+    "json_parse_attempts_max": 1,
+    "json_repair_allowed": false,
+    "wrapper_discriminator": "OBJECT_HAS_ANSWER_MEMBER",
+    "wrapper_answer_must_be_string": true,
+    "direct_response_object_requires_frozen_schema_pass": true,
+    "plain_non_json_requires_declared_tool_contract": true,
+    "markdown_or_code_fence_strip_allowed": false,
+    "semantic_rewrite_allowed": false
+  },
+  "multiple_location_rules": {
+    "identical_non_empty_answers_may_deduplicate": true,
+    "different_non_empty_answers_result": "CONFLICTING_ANSWER_LOCATIONS",
+    "precedence_may_silently_override_conflict": false
+  },
+  "result_states": [
+    "EXTRACTED_SINGLE_SOURCE",
+    "EXTRACTED_IDENTICAL_DEDUPLICATED",
+    "CONFLICTING_ANSWER_LOCATIONS",
+    "MISSING_ANSWER",
+    "NON_STRING_WRAPPER_ANSWER",
+    "DIRECT_RESPONSE_SCHEMA_MISMATCH",
+    "PLAIN_CONTENT_NOT_DECLARED",
+    "CONTENT_TEXT_JSON_PARSE_FAILURE"
+  ],
+  "persistence_boundary": {
+    "semantic_answer_may_be_persisted_after_contract_pass": true,
+    "raw_provider_envelope_persisted": false,
+    "usage_envelope_persisted": false,
+    "credentials_persisted": false,
+    "hidden_reasoning_persisted": false
+  },
+  "effects": {
+    "implementation_created": false,
+    "provider_success_created": false,
+    "review_completion_created": false,
+    "profile_adoption_created": false
+  }
+}
+
+Candidate 2: compact-review-model-binding-policy.v0.1.json
+{
+  "status": "CANDIDATE_OFFLINE_VALIDATION_NOT_ADOPTED",
+  "binding_states": {
+    "EXACT_MATCH": "requested_model equals returned_model byte-for-byte",
+    "EXPLICIT_ALIAS_MATCH": "requested and returned differ, but an adopted exact provider alias record with source, version and Decision exists",
+    "MISMATCH": "requested and returned differ without an adopted alias record",
+    "UNKNOWN": "returned model is missing or unextractable"
+  },
+  "qualification_rule": {
+    "response_schema_pass_required": true,
+    "allowed_binding_states": ["EXACT_MATCH", "EXPLICIT_ALIAS_MATCH"],
+    "content_pass_may_override_model_mismatch": false,
+    "provider_alias_may_be_inferred": false
+  },
+  "explicit_alias_requirements": [
+    "EXACT_PROVIDER_SOURCE_REFERENCE",
+    "PROVIDER_SOURCE_VERSION_OR_OBSERVED_AT",
+    "REQUESTED_MODEL",
+    "RETURNED_MODEL",
+    "ALIAS_SCOPE",
+    "INDEPENDENT_DECISION_REFERENCE"
+  ],
+  "current_alias_records": [],
+  "non_elevation": {
+    "model_binding_proves_output_quality": false,
+    "model_binding_proves_provider_support": false,
+    "model_binding_proves_conformance": false,
+    "model_binding_creates_certification": false,
+    "model_binding_creates_truth": false
+  }
+}
+
+Assess all 12 criteria using only PASS, FAIL, or UNKNOWN:
+1. EXTRACTION_SOURCE_DISCRIMINATION
+2. CONFLICT_FAIL_CLOSED
+3. NO_REPAIR_OR_SEMANTIC_REWRITE
+4. DIRECT_RESPONSE_SCHEMA_BINDING
+5. PLAIN_CONTENT_DECLARATION_BOUNDARY
+6. MODEL_IDENTITY_SEPARATION_FROM_CONTENT_VALIDITY
+7. ALIAS_PROVENANCE_AND_DECISION_BINDING
+8. UNKNOWN_AND_MISMATCH_PRESERVATION
+9. VERSIONING_AND_BREAKING_CHANGE_SURFACE
+10. PROVIDER_NEUTRALITY_AND_PORTABILITY
+11. DETERMINISTIC_TESTABILITY
+12. AUTHORITY_AND_TRUTH_NON_ELEVATION
+
+For every FAIL or UNKNOWN, add a finding with:
+- contract_target: one of compact-review-response-extraction-contract.v0.1.json, compact-review-model-binding-policy.v0.1.json, CROSS_CONTRACT
+- json_pointer_or_section
+- severity: BLOCKING, MAJOR, MINOR, or INFORMATIONAL
+- reason
+- required_change
+
+Return this exact shape:
+{
+  "review_id": "PRE24-CONTRACT-ADOPTION-REVIEW",
+  "reviewer_role": "<the role required by the first line supplied before this template>",
+  "review_targets": [
+    "compact-review-response-extraction-contract.v0.1.json",
+    "compact-review-model-binding-policy.v0.1.json"
+  ],
+  "criteria": {
+    "EXTRACTION_SOURCE_DISCRIMINATION": "PASS|FAIL|UNKNOWN",
+    "CONFLICT_FAIL_CLOSED": "PASS|FAIL|UNKNOWN",
+    "NO_REPAIR_OR_SEMANTIC_REWRITE": "PASS|FAIL|UNKNOWN",
+    "DIRECT_RESPONSE_SCHEMA_BINDING": "PASS|FAIL|UNKNOWN",
+    "PLAIN_CONTENT_DECLARATION_BOUNDARY": "PASS|FAIL|UNKNOWN",
+    "MODEL_IDENTITY_SEPARATION_FROM_CONTENT_VALIDITY": "PASS|FAIL|UNKNOWN",
+    "ALIAS_PROVENANCE_AND_DECISION_BINDING": "PASS|FAIL|UNKNOWN",
+    "UNKNOWN_AND_MISMATCH_PRESERVATION": "PASS|FAIL|UNKNOWN",
+    "VERSIONING_AND_BREAKING_CHANGE_SURFACE": "PASS|FAIL|UNKNOWN",
+    "PROVIDER_NEUTRALITY_AND_PORTABILITY": "PASS|FAIL|UNKNOWN",
+    "DETERMINISTIC_TESTABILITY": "PASS|FAIL|UNKNOWN",
+    "AUTHORITY_AND_TRUTH_NON_ELEVATION": "PASS|FAIL|UNKNOWN"
+  },
+  "findings": [],
+  "contract_recommendations": {
+    "response_extraction_contract": "ADOPT|REVISE|INSUFFICIENT_EVIDENCE",
+    "model_binding_policy": "ADOPT|REVISE|INSUFFICIENT_EVIDENCE"
+  },
+  "verdict": "ACCEPT_BOTH_FOR_FORMAL_ADOPTION_DECISION|ACCEPT_EXTRACTION_ONLY_RETURN_MODEL_POLICY_FOR_REVISION|ACCEPT_MODEL_POLICY_ONLY_RETURN_EXTRACTION_FOR_REVISION|RETURN_BOTH_FOR_REVISION|INSUFFICIENT_EVIDENCE",
+  "boundary_acknowledgements": {
+    "review_is_not_adoption": true,
+    "schema_pass_is_not_provider_correctness": true,
+    "model_binding_is_not_output_quality": true,
+    "provider_alias_not_inferred": true,
+    "implementation_not_created": true,
+    "live_rerun_not_authorized": true,
+    "evidence_is_not_truth": true
+  },
+  "summary": "<concise final review>"
+}
+
+Do not put pipe-delimited placeholders in the actual response. Select one allowed value for every field.

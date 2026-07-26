@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:contract-adoption-review-response-fixtures:0.1",
+  "title": "TITMAS Contract Adoption Review Response Fixtures v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "response_schema_reference",
+    "cases"
+  ],
+  "properties": {
+    "$schema": {"const": "./contract-adoption-review-response-fixtures.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-RESPONSE-FIXTURES-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_EXECUTED"},
+    "response_schema_reference": {"const": "contract-adoption-review-response.schema.v0.1.json"},
+    "cases": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "expected_schema_valid", "response"],
+        "properties": {
+          "case_id": {"type": "string", "pattern": "^PRE24-RSP-[0-9]{3}-(POSITIVE|NEGATIVE)-[A-Z-]+$"},
+          "expected_schema_valid": {"type": "boolean"},
+          "response": {"type": "object"}
+        }
+      }
+    }
+  }
+}
