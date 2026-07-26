@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:offline-contract-revision-execution-receipt:0.1",
+  "title": "TITMAS Offline Contract Revision Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "observed_at", "decision_reference", "authorization_receipt_reference", "authorization_baseline_commit", "authorization_receipt_commit", "execution_accounting", "result_reference", "result", "v0_1_contracts_changed", "v0_2_candidates_created", "contract_candidates_adopted", "implementation_created", "live_rerun_ready", "next_permitted_action", "effects"],
+  "properties": {
+    "$schema": {"const": "./offline-contract-revision-execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-25-OFFLINE-CONTRACT-REVISION-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "EXECUTED_OFFLINE_REVISION_CANDIDATE_PASS_NOT_ADOPTED"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-25"},
+    "authorization_receipt_reference": {"const": "offline-contract-revision-authorization-receipt.v0.1.json"},
+    "authorization_baseline_commit": {"const": "52f8794bd5c8df38accbd5d3e414e5c16fd67a30"},
+    "authorization_receipt_commit": {"const": "59d5e9ca54291c3e835f2b29b5ca5d1fc0296876"},
+    "execution_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["offline_revision_runs_authorized", "offline_revision_runs_executed", "findings_triaged", "fixture_cases_executed", "live_model_requests_executed", "provider_network_requests_executed", "retry_attempts", "fallback_attempts", "repair_attempts"],
+      "properties": {
+        "offline_revision_runs_authorized": {"const": 1},
+        "offline_revision_runs_executed": {"const": 1},
+        "findings_triaged": {"const": 3},
+        "fixture_cases_executed": {"const": 10},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "repair_attempts": {"const": 0}
+      }
+    },
+    "result_reference": {"const": "offline-contract-revision-validation-result.v0.1.json"},
+    "result": {"const": "OFFLINE_REVISION_CANDIDATE_PASS"},
+    "v0_1_contracts_changed": {"const": false},
+    "v0_2_candidates_created": {"const": true},
+    "contract_candidates_adopted": {"const": false},
+    "implementation_created": {"const": false},
+    "live_rerun_ready": {"const": false},
+    "next_permitted_action": {"const": "PREPARE_SEPARATE_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_RECOMMENDATION_ONLY"},
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authority_changed", "ownership_changed", "profile_review_completed", "profile_adopted", "provider_supported", "conformance_executed", "valid_problem_records", "cs_g0_pass", "implementation_authorized", "external_outreach_authorized", "commercial_offer_authorized", "certification_authorized", "release_authorized"],
+      "properties": {
+        "authority_changed": {"const": false},
+        "ownership_changed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

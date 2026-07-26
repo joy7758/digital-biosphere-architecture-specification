@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:compact-review-contract-revision-fixtures:0.1",
+  "title": "TITMAS Compact Review Contract Revision Fixtures v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "evaluation_time", "cases", "effects"],
+  "properties": {
+    "$schema": {"const": "./compact-review-contract-revision-fixtures.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-25-COMPACT-REVIEW-CONTRACT-REVISION-FIXTURES-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "SYNTHETIC_FIXTURES_DEFINED_NOT_PROVIDER_EVIDENCE"},
+    "decision_reference": {"const": "CS-D02-PRE-25"},
+    "evaluation_time": {"const": "2026-07-26T22:55:00+08:00"},
+    "cases": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "fixture_class", "semantic_input", "model_input", "expected"],
+        "properties": {
+          "case_id": {"type": "string", "pattern": "^PRE25-REV-0(0[1-9]|10)$"},
+          "fixture_class": {"type": "string", "minLength": 10},
+          "semantic_input": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["answers", "response_schema_pass"],
+            "properties": {
+              "answers": {"type": "array", "maxItems": 2, "items": {"type": "string"}},
+              "response_schema_pass": {"type": "boolean"}
+            }
+          },
+          "model_input": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["requested_model", "returned_model", "alias_record"],
+            "properties": {
+              "requested_model": {"type": "string", "minLength": 1},
+              "returned_model": {"type": ["string", "null"]},
+              "alias_record": {"type": ["object", "null"]}
+            }
+          },
+          "expected": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["extraction_state", "extraction_qualifies", "model_binding_state", "model_binding_qualifies", "alias_schema_valid", "overall_qualifies"],
+            "properties": {
+              "extraction_state": {"enum": ["EXTRACTED_SINGLE_SOURCE", "EXTRACTED_IDENTICAL_DEDUPLICATED", "CONFLICTING_ANSWER_LOCATIONS", "MISSING_ANSWER"]},
+              "extraction_qualifies": {"type": "boolean"},
+              "model_binding_state": {"enum": ["EXACT_MATCH", "EXPLICIT_ALIAS_MATCH", "MISMATCH", "UNKNOWN"]},
+              "model_binding_qualifies": {"type": "boolean"},
+              "alias_schema_valid": {"type": ["boolean", "null"]},
+              "overall_qualifies": {"type": "boolean"}
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fixtures_executed", "live_model_requests_executed", "provider_network_requests_executed", "provider_success_created", "contract_adoption_created", "implementation_created"],
+      "properties": {
+        "fixtures_executed": {"const": 0},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "provider_success_created": {"const": false},
+        "contract_adoption_created": {"const": false},
+        "implementation_created": {"const": false}
+      }
+    }
+  }
+}

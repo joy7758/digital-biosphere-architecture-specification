@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:compact-review-cross-layer-invariants:0.1",
+  "title": "TITMAS Compact Review Cross-Layer Invariants v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "dimensions", "invariants", "overall_qualification_rule", "effects"],
+  "properties": {
+    "$schema": {"const": "./compact-review-cross-layer-invariants.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-25-COMPACT-REVIEW-CROSS-LAYER-INVARIANTS-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "CANDIDATE_OFFLINE_REVISION_NOT_ADOPTED_NOT_IMPLEMENTED"},
+    "decision_reference": {"const": "CS-D02-PRE-25"},
+    "dimensions": {"const": ["SEMANTIC_RESPONSE_EXTRACTION", "PROVIDER_MODEL_IDENTITY_BINDING"]},
+    "invariants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantic_extraction_result_is_not_model_binding_state", "content_failure_does_not_erase_observed_model_identity", "model_identity_failure_does_not_validate_content", "semantic_extraction_must_qualify_independently", "model_binding_must_qualify_independently", "overall_qualification_requires_both_dimensions"],
+      "properties": {
+        "semantic_extraction_result_is_not_model_binding_state": {"const": true},
+        "content_failure_does_not_erase_observed_model_identity": {"const": true},
+        "model_identity_failure_does_not_validate_content": {"const": true},
+        "semantic_extraction_must_qualify_independently": {"const": true},
+        "model_binding_must_qualify_independently": {"const": true},
+        "overall_qualification_requires_both_dimensions": {"const": true}
+      }
+    },
+    "overall_qualification_rule": {"const": "semantic_extraction_qualifies AND response_schema_pass AND model_binding_qualifies"},
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["new_authority_created", "alias_adopted", "contract_adopted", "implementation_created"],
+      "properties": {
+        "new_authority_created": {"const": false},
+        "alias_adopted": {"const": false},
+        "contract_adopted": {"const": false},
+        "implementation_created": {"const": false}
+      }
+    }
+  }
+}

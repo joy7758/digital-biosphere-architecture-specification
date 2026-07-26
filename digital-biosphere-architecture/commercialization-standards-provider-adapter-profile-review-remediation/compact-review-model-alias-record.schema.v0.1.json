@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:compact-review-model-alias-record:0.1",
+  "title": "TITMAS Compact Review Model Alias Record v0.1 Candidate",
+  "$comment": "CANDIDATE_OFFLINE_REVISION_NOT_ADOPTED_NOT_IMPLEMENTED; Decision CS-D02-PRE-25.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "alias_record_id",
+    "exact_provider_source_reference",
+    "provider_source_version",
+    "requested_model",
+    "returned_model",
+    "alias_scope",
+    "alias_adoption_decision_reference",
+    "alias_adoption_decision_type",
+    "effective_at",
+    "expires_at",
+    "status",
+    "revocation_reference",
+    "conflict_reference"
+  ],
+  "properties": {
+    "alias_record_id": {
+      "type": "string",
+      "pattern": "^ALIAS-[A-Z0-9][A-Z0-9._-]{2,79}$"
+    },
+    "exact_provider_source_reference": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 500
+    },
+    "provider_source_version": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "requested_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "returned_model": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160
+    },
+    "alias_scope": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 240
+    },
+    "alias_adoption_decision_reference": {
+      "type": "string",
+      "minLength": 8,
+      "maxLength": 240
+    },
+    "alias_adoption_decision_type": {
+      "const": "ALIAS_ADOPTION"
+    },
+    "effective_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "expires_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "status": {
+      "enum": ["ACTIVE", "EXPIRED", "REVOKED", "CONFLICTED"]
+    },
+    "revocation_reference": {
+      "type": ["string", "null"],
+      "minLength": 8,
+      "maxLength": 240
+    },
+    "conflict_reference": {
+      "type": ["string", "null"],
+      "minLength": 8,
+      "maxLength": 240
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "ACTIVE"}}},
+      "then": {
+        "properties": {
+          "revocation_reference": {"const": null},
+          "conflict_reference": {"const": null}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "EXPIRED"}}},
+      "then": {
+        "properties": {
+          "expires_at": {"type": "string", "format": "date-time"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "REVOKED"}}},
+      "then": {
+        "properties": {
+          "revocation_reference": {"type": "string", "minLength": 8}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "CONFLICTED"}}},
+      "then": {
+        "properties": {
+          "conflict_reference": {"type": "string", "minLength": 8}
+        }
+      }
+    }
+  ]
+}

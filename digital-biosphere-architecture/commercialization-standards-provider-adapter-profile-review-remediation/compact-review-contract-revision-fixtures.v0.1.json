@@ -1,0 +1,178 @@
+{
+  "$schema": "./compact-review-contract-revision-fixtures.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-25-COMPACT-REVIEW-CONTRACT-REVISION-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "SYNTHETIC_FIXTURES_DEFINED_NOT_PROVIDER_EVIDENCE",
+  "decision_reference": "CS-D02-PRE-25",
+  "evaluation_time": "2026-07-26T22:55:00+08:00",
+  "cases": [
+    {
+      "case_id": "PRE25-REV-001",
+      "fixture_class": "CONFLICT_TERMINAL_NON_QUALIFYING",
+      "semantic_input": {"answers": ["answer-a", "answer-b"], "response_schema_pass": true},
+      "model_input": {"requested_model": "model-a", "returned_model": "model-a", "alias_record": null},
+      "expected": {"extraction_state": "CONFLICTING_ANSWER_LOCATIONS", "extraction_qualifies": false, "model_binding_state": "EXACT_MATCH", "model_binding_qualifies": true, "alias_schema_valid": null, "overall_qualifies": false}
+    },
+    {
+      "case_id": "PRE25-REV-002",
+      "fixture_class": "IDENTICAL_DEDUP_QUALIFYING",
+      "semantic_input": {"answers": ["answer-a", "answer-a"], "response_schema_pass": true},
+      "model_input": {"requested_model": "model-a", "returned_model": "model-a", "alias_record": null},
+      "expected": {"extraction_state": "EXTRACTED_IDENTICAL_DEDUPLICATED", "extraction_qualifies": true, "model_binding_state": "EXACT_MATCH", "model_binding_qualifies": true, "alias_schema_valid": null, "overall_qualifies": true}
+    },
+    {
+      "case_id": "PRE25-REV-003",
+      "fixture_class": "MISSING_SEMANTIC_EXACT_MODEL_SEPARATE",
+      "semantic_input": {"answers": [], "response_schema_pass": false},
+      "model_input": {"requested_model": "model-a", "returned_model": "model-a", "alias_record": null},
+      "expected": {"extraction_state": "MISSING_ANSWER", "extraction_qualifies": false, "model_binding_state": "EXACT_MATCH", "model_binding_qualifies": true, "alias_schema_valid": null, "overall_qualifies": false}
+    },
+    {
+      "case_id": "PRE25-REV-004",
+      "fixture_class": "VALID_SEMANTIC_MISSING_MODEL_UNKNOWN",
+      "semantic_input": {"answers": ["answer-a"], "response_schema_pass": true},
+      "model_input": {"requested_model": "model-a", "returned_model": null, "alias_record": null},
+      "expected": {"extraction_state": "EXTRACTED_SINGLE_SOURCE", "extraction_qualifies": true, "model_binding_state": "UNKNOWN", "model_binding_qualifies": false, "alias_schema_valid": null, "overall_qualifies": false}
+    },
+    {
+      "case_id": "PRE25-REV-005",
+      "fixture_class": "ACTIVE_EXACT_VERSION_ALIAS_MATCH",
+      "semantic_input": {"answers": ["answer-a"], "response_schema_pass": true},
+      "model_input": {
+        "requested_model": "alias-a",
+        "returned_model": "model-a",
+        "alias_record": {
+          "alias_record_id": "ALIAS-PROVIDER-A-001",
+          "exact_provider_source_reference": "provider://source-a",
+          "provider_source_version": "2026-07-26",
+          "requested_model": "alias-a",
+          "returned_model": "model-a",
+          "alias_scope": "PRE25-REVIEW",
+          "alias_adoption_decision_reference": "ADR-ALIAS-001",
+          "alias_adoption_decision_type": "ALIAS_ADOPTION",
+          "effective_at": "2026-07-01T00:00:00Z",
+          "expires_at": "2027-07-01T00:00:00Z",
+          "status": "ACTIVE",
+          "revocation_reference": null,
+          "conflict_reference": null
+        }
+      },
+      "expected": {"extraction_state": "EXTRACTED_SINGLE_SOURCE", "extraction_qualifies": true, "model_binding_state": "EXPLICIT_ALIAS_MATCH", "model_binding_qualifies": true, "alias_schema_valid": true, "overall_qualifies": true}
+    },
+    {
+      "case_id": "PRE25-REV-006",
+      "fixture_class": "EXPIRED_ALIAS_FAIL_CLOSED",
+      "semantic_input": {"answers": ["answer-a"], "response_schema_pass": true},
+      "model_input": {
+        "requested_model": "alias-a",
+        "returned_model": "model-a",
+        "alias_record": {
+          "alias_record_id": "ALIAS-PROVIDER-A-002",
+          "exact_provider_source_reference": "provider://source-a",
+          "provider_source_version": "2026-01-01",
+          "requested_model": "alias-a",
+          "returned_model": "model-a",
+          "alias_scope": "PRE25-REVIEW",
+          "alias_adoption_decision_reference": "ADR-ALIAS-002",
+          "alias_adoption_decision_type": "ALIAS_ADOPTION",
+          "effective_at": "2026-01-01T00:00:00Z",
+          "expires_at": "2026-06-01T00:00:00Z",
+          "status": "EXPIRED",
+          "revocation_reference": null,
+          "conflict_reference": null
+        }
+      },
+      "expected": {"extraction_state": "EXTRACTED_SINGLE_SOURCE", "extraction_qualifies": true, "model_binding_state": "MISMATCH", "model_binding_qualifies": false, "alias_schema_valid": true, "overall_qualifies": false}
+    },
+    {
+      "case_id": "PRE25-REV-007",
+      "fixture_class": "REVOKED_ALIAS_FAIL_CLOSED",
+      "semantic_input": {"answers": ["answer-a"], "response_schema_pass": true},
+      "model_input": {
+        "requested_model": "alias-a",
+        "returned_model": "model-a",
+        "alias_record": {
+          "alias_record_id": "ALIAS-PROVIDER-A-003",
+          "exact_provider_source_reference": "provider://source-a",
+          "provider_source_version": "2026-07-01",
+          "requested_model": "alias-a",
+          "returned_model": "model-a",
+          "alias_scope": "PRE25-REVIEW",
+          "alias_adoption_decision_reference": "ADR-ALIAS-003",
+          "alias_adoption_decision_type": "ALIAS_ADOPTION",
+          "effective_at": "2026-07-01T00:00:00Z",
+          "expires_at": null,
+          "status": "REVOKED",
+          "revocation_reference": "REVOCATION-003",
+          "conflict_reference": null
+        }
+      },
+      "expected": {"extraction_state": "EXTRACTED_SINGLE_SOURCE", "extraction_qualifies": true, "model_binding_state": "MISMATCH", "model_binding_qualifies": false, "alias_schema_valid": true, "overall_qualifies": false}
+    },
+    {
+      "case_id": "PRE25-REV-008",
+      "fixture_class": "CONFLICTED_ALIAS_FAIL_CLOSED",
+      "semantic_input": {"answers": ["answer-a"], "response_schema_pass": true},
+      "model_input": {
+        "requested_model": "alias-a",
+        "returned_model": "model-a",
+        "alias_record": {
+          "alias_record_id": "ALIAS-PROVIDER-A-004",
+          "exact_provider_source_reference": "provider://source-a",
+          "provider_source_version": "2026-07-01",
+          "requested_model": "alias-a",
+          "returned_model": "model-a",
+          "alias_scope": "PRE25-REVIEW",
+          "alias_adoption_decision_reference": "ADR-ALIAS-004",
+          "alias_adoption_decision_type": "ALIAS_ADOPTION",
+          "effective_at": "2026-07-01T00:00:00Z",
+          "expires_at": null,
+          "status": "CONFLICTED",
+          "revocation_reference": null,
+          "conflict_reference": "ALIAS-CONFLICT-004"
+        }
+      },
+      "expected": {"extraction_state": "EXTRACTED_SINGLE_SOURCE", "extraction_qualifies": true, "model_binding_state": "MISMATCH", "model_binding_qualifies": false, "alias_schema_valid": true, "overall_qualifies": false}
+    },
+    {
+      "case_id": "PRE25-REV-009",
+      "fixture_class": "ORDINARY_DECISION_CANNOT_ACTIVATE_ALIAS",
+      "semantic_input": {"answers": ["answer-a"], "response_schema_pass": true},
+      "model_input": {
+        "requested_model": "alias-a",
+        "returned_model": "model-a",
+        "alias_record": {
+          "alias_record_id": "ALIAS-PROVIDER-A-005",
+          "exact_provider_source_reference": "provider://source-a",
+          "provider_source_version": "2026-07-01",
+          "requested_model": "alias-a",
+          "returned_model": "model-a",
+          "alias_scope": "PRE25-REVIEW",
+          "alias_adoption_decision_reference": "ADR-GENERAL-005",
+          "alias_adoption_decision_type": "GENERAL_DECISION",
+          "effective_at": "2026-07-01T00:00:00Z",
+          "expires_at": null,
+          "status": "ACTIVE",
+          "revocation_reference": null,
+          "conflict_reference": null
+        }
+      },
+      "expected": {"extraction_state": "EXTRACTED_SINGLE_SOURCE", "extraction_qualifies": true, "model_binding_state": "MISMATCH", "model_binding_qualifies": false, "alias_schema_valid": false, "overall_qualifies": false}
+    },
+    {
+      "case_id": "PRE25-REV-010",
+      "fixture_class": "CONTENT_PASS_MODEL_MISMATCH",
+      "semantic_input": {"answers": ["answer-a"], "response_schema_pass": true},
+      "model_input": {"requested_model": "deepseek-chat", "returned_model": "deepseek-v4-flash", "alias_record": null},
+      "expected": {"extraction_state": "EXTRACTED_SINGLE_SOURCE", "extraction_qualifies": true, "model_binding_state": "MISMATCH", "model_binding_qualifies": false, "alias_schema_valid": null, "overall_qualifies": false}
+    }
+  ],
+  "effects": {
+    "fixtures_executed": 0,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "provider_success_created": false,
+    "contract_adoption_created": false,
+    "implementation_created": false
+  }
+}

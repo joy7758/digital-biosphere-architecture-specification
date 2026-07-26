@@ -1,0 +1,74 @@
+{
+  "$schema": "./compact-review-response-extraction-contract.schema.v0.2.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-25-COMPACT-REVIEW-RESPONSE-EXTRACTION-CONTRACT-0.2",
+  "version": "0.2.0",
+  "status": "CANDIDATE_OFFLINE_REVISION_NOT_ADOPTED_NOT_IMPLEMENTED",
+  "decision_reference": "CS-D02-PRE-25",
+  "revises_candidate_reference": "compact-review-response-extraction-contract.v0.1.json",
+  "response_schema_reference": "../architecture/schemas/provider-adapter-compact-review-response.schema.v0.1.json",
+  "cross_layer_invariants_reference": "compact-review-cross-layer-invariants.v0.1.json",
+  "source_precedence": [
+    "STRUCTURED_CONTENT_ANSWER",
+    "DIRECT_ANSWER",
+    "CONTENT_TEXT_JSON_WRAPPER_ANSWER",
+    "CONTENT_TEXT_DIRECT_RESPONSE_OBJECT",
+    "PROVIDER_DECLARED_PLAIN_CONTENT_TEXT"
+  ],
+  "content_text_rules": {
+    "json_parse_attempts_max": 1,
+    "json_repair_allowed": false,
+    "wrapper_discriminator": "OBJECT_HAS_ANSWER_MEMBER",
+    "wrapper_answer_must_be_string": true,
+    "direct_response_object_requires_frozen_schema_pass": true,
+    "plain_non_json_requires_declared_tool_contract": true,
+    "markdown_or_code_fence_strip_allowed": false,
+    "semantic_rewrite_allowed": false
+  },
+  "multiple_location_rules": {
+    "identical_non_empty_answers_may_deduplicate": true,
+    "different_non_empty_answers_result": "CONFLICTING_ANSWER_LOCATIONS",
+    "precedence_may_silently_override_conflict": false
+  },
+  "result_states": [
+    "EXTRACTED_SINGLE_SOURCE",
+    "EXTRACTED_IDENTICAL_DEDUPLICATED",
+    "CONFLICTING_ANSWER_LOCATIONS",
+    "MISSING_ANSWER",
+    "NON_STRING_WRAPPER_ANSWER",
+    "DIRECT_RESPONSE_SCHEMA_MISMATCH",
+    "PLAIN_CONTENT_NOT_DECLARED",
+    "CONTENT_TEXT_JSON_PARSE_FAILURE"
+  ],
+  "qualification_rules": {
+    "qualifying_states": [
+      "EXTRACTED_SINGLE_SOURCE",
+      "EXTRACTED_IDENTICAL_DEDUPLICATED"
+    ],
+    "terminal_failure_states": [
+      "CONFLICTING_ANSWER_LOCATIONS",
+      "MISSING_ANSWER",
+      "NON_STRING_WRAPPER_ANSWER",
+      "DIRECT_RESPONSE_SCHEMA_MISMATCH",
+      "PLAIN_CONTENT_NOT_DECLARED",
+      "CONTENT_TEXT_JSON_PARSE_FAILURE"
+    ],
+    "terminal_failure_qualifies": false,
+    "caller_must_stop_qualification": true,
+    "failure_state_must_be_preserved": true,
+    "terminal_failure_may_be_overridden_by_source_precedence": false
+  },
+  "persistence_boundary": {
+    "semantic_answer_may_be_persisted_after_contract_pass": true,
+    "raw_provider_envelope_persisted": false,
+    "usage_envelope_persisted": false,
+    "credentials_persisted": false,
+    "hidden_reasoning_persisted": false
+  },
+  "effects": {
+    "implementation_created": false,
+    "provider_success_created": false,
+    "review_completion_created": false,
+    "profile_adoption_created": false,
+    "contract_adoption_created": false
+  }
+}

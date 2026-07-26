@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:contract-revision-finding-triage:0.1",
+  "title": "TITMAS Contract Revision Finding Triage v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "source_review_reference", "source_review_qualifying", "findings", "triage_result", "effects"],
+  "properties": {
+    "$schema": {"const": "./contract-revision-finding-triage.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-25-CONTRACT-REVISION-FINDING-TRIAGE-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DETERMINISTIC_TRIAGE_COMPLETE_NO_NORMATIVE_EFFECT"},
+    "decision_reference": {"const": "CS-D02-PRE-25"},
+    "source_review_reference": {"const": "contract-adoption-review-deepseek-session-result.v0.1.json"},
+    "source_review_qualifying": {"const": false},
+    "findings": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["finding_id", "subject", "source_pointer", "classification", "existing_rule_evidence", "accepted_gap", "rejected_inference", "required_revision", "normative_effect"],
+        "properties": {
+          "finding_id": {"enum": ["PRE24-F1", "PRE24-F2", "PRE24-F3"]},
+          "subject": {"type": "string", "minLength": 10},
+          "source_pointer": {"type": "string", "pattern": "^/review_response/findings/[0-2]$"},
+          "classification": {"enum": ["PARTIALLY_SUPPORTED", "REQUIRES_CORRECTION", "SUPPORTED_WITH_ADDITIONAL_SCOPE"]},
+          "existing_rule_evidence": {"type": "array", "minItems": 3, "uniqueItems": true, "items": {"type": "string", "minLength": 5}},
+          "accepted_gap": {"type": "string", "minLength": 40},
+          "rejected_inference": {"type": "string", "minLength": 40},
+          "required_revision": {"type": "string", "minLength": 40},
+          "normative_effect": {"const": false}
+        }
+      }
+    },
+    "triage_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["findings_triaged", "rule_justifications_recorded", "advisory_findings_automatically_adopted", "v0_2_revision_candidate_ready", "contract_adoption_ready"],
+      "properties": {
+        "findings_triaged": {"const": 3},
+        "rule_justifications_recorded": {"const": 3},
+        "advisory_findings_automatically_adopted": {"const": 0},
+        "v0_2_revision_candidate_ready": {"const": true},
+        "contract_adoption_ready": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["v0_1_contracts_changed", "contract_candidates_adopted", "implementation_created", "provider_supported"],
+      "properties": {
+        "v0_1_contracts_changed": {"const": false},
+        "contract_candidates_adopted": {"const": false},
+        "implementation_created": {"const": false},
+        "provider_supported": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "$schema": "./compact-review-model-binding-policy.schema.v0.2.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-25-COMPACT-REVIEW-MODEL-BINDING-POLICY-0.2",
+  "version": "0.2.0",
+  "status": "CANDIDATE_OFFLINE_REVISION_NOT_ADOPTED_NOT_IMPLEMENTED",
+  "decision_reference": "CS-D02-PRE-25",
+  "revises_candidate_reference": "compact-review-model-binding-policy.v0.1.json",
+  "alias_record_schema_reference": "compact-review-model-alias-record.schema.v0.1.json",
+  "cross_layer_invariants_reference": "compact-review-cross-layer-invariants.v0.1.json",
+  "binding_states": {
+    "EXACT_MATCH": "requested_model equals independently extracted returned_model byte-for-byte",
+    "EXPLICIT_ALIAS_MATCH": "requested and returned differ and a schema-valid ACTIVE exact-scope alias with explicit Alias Adoption Decision is effective",
+    "MISMATCH": "requested and returned differ without a currently qualifying alias, including invalid, expired, revoked or conflicted alias records",
+    "UNKNOWN": "returned model identifier is missing or unextractable from the provider model identity surface"
+  },
+  "dimension_separation": {
+    "provider_model_extraction_independent_of_semantic_answer_extraction": true,
+    "semantic_answer_failure_does_not_erase_observed_model_identity": true,
+    "model_identity_failure_does_not_validate_semantic_answer": true,
+    "semantic_extraction_state_is_not_a_model_binding_state": true
+  },
+  "qualification_rule": {
+    "semantic_extraction_qualifies_required": true,
+    "response_schema_pass_required": true,
+    "allowed_binding_states": [
+      "EXACT_MATCH",
+      "EXPLICIT_ALIAS_MATCH"
+    ],
+    "content_pass_may_override_model_mismatch": false,
+    "provider_alias_may_be_inferred": false
+  },
+  "alias_validation_rules": {
+    "alias_record_schema_pass_required": true,
+    "active_status_required": true,
+    "effective_time_required": true,
+    "unexpired_required": true,
+    "exact_provider_source_and_version_required": true,
+    "exact_requested_returned_pair_required": true,
+    "exact_scope_required": true,
+    "alias_adoption_decision_required": true,
+    "expired_alias_qualifies": false,
+    "revoked_alias_qualifies": false,
+    "conflicted_alias_qualifies": false,
+    "ordinary_decision_reference_qualifies": false
+  },
+  "explicit_alias_requirements": [
+    "ALIAS_RECORD_ID",
+    "EXACT_PROVIDER_SOURCE_REFERENCE",
+    "PROVIDER_SOURCE_VERSION",
+    "REQUESTED_MODEL",
+    "RETURNED_MODEL",
+    "ALIAS_SCOPE",
+    "ALIAS_ADOPTION_DECISION_REFERENCE",
+    "ALIAS_ADOPTION_DECISION_TYPE",
+    "EFFECTIVE_AT",
+    "EXPIRES_AT",
+    "STATUS",
+    "REVOCATION_REFERENCE",
+    "CONFLICT_REFERENCE"
+  ],
+  "current_alias_records": [],
+  "non_elevation": {
+    "alias_record_creates_permission": false,
+    "model_binding_proves_output_quality": false,
+    "model_binding_proves_provider_support": false,
+    "model_binding_proves_conformance": false,
+    "model_binding_creates_certification": false,
+    "model_binding_creates_truth": false
+  }
+}

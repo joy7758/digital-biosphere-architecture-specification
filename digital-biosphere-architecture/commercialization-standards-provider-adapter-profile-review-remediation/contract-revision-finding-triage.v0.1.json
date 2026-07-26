@@ -1,0 +1,71 @@
+{
+  "$schema": "./contract-revision-finding-triage.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-25-CONTRACT-REVISION-FINDING-TRIAGE-0.1",
+  "version": "0.1.0",
+  "status": "DETERMINISTIC_TRIAGE_COMPLETE_NO_NORMATIVE_EFFECT",
+  "decision_reference": "CS-D02-PRE-25",
+  "source_review_reference": "contract-adoption-review-deepseek-session-result.v0.1.json",
+  "source_review_qualifying": false,
+  "findings": [
+    {
+      "finding_id": "PRE24-F1",
+      "subject": "CONFLICT_TERMINAL_BEHAVIOR",
+      "source_pointer": "/review_response/findings/0",
+      "classification": "PARTIALLY_SUPPORTED",
+      "existing_rule_evidence": [
+        "/multiple_location_rules/different_non_empty_answers_result",
+        "/multiple_location_rules/precedence_may_silently_override_conflict",
+        "PRE23-EXT-007"
+      ],
+      "accepted_gap": "The conflict state is preserved and non-qualifying in fixtures, but the contract lacks an explicit terminal qualification table and caller stop obligation.",
+      "rejected_inference": "The existing contract does not silently choose an answer and PRE-22 does not prove that conflict handling is non-failing.",
+      "required_revision": "Declare qualifying_states, terminal_failure_states, terminal_failure_qualifies=false, caller_must_stop_qualification=true and failure_state_must_be_preserved=true.",
+      "normative_effect": false
+    },
+    {
+      "finding_id": "PRE24-F2",
+      "subject": "SEMANTIC_EXTRACTION_VERSUS_MODEL_BINDING",
+      "source_pointer": "/review_response/findings/1",
+      "classification": "REQUIRES_CORRECTION",
+      "existing_rule_evidence": [
+        "/binding_states/UNKNOWN",
+        "/qualification_rule/response_schema_pass_required",
+        "PRE23-MOD-004",
+        "PRE23-MOD-005"
+      ],
+      "accepted_gap": "The cross-layer independence rule is implicit rather than declared.",
+      "rejected_inference": "A semantic answer extraction failure should create a new model-binding state or erase an independently observed provider model identifier.",
+      "required_revision": "Declare semantic extraction and provider model extraction as independent dimensions and require both dimensions to qualify separately.",
+      "normative_effect": false
+    },
+    {
+      "finding_id": "PRE24-F3",
+      "subject": "ALIAS_ADOPTION_AND_LIFECYCLE",
+      "source_pointer": "/review_response/findings/2",
+      "classification": "SUPPORTED_WITH_ADDITIONAL_SCOPE",
+      "existing_rule_evidence": [
+        "/explicit_alias_requirements",
+        "/qualification_rule/provider_alias_may_be_inferred",
+        "PRE23-MOD-002",
+        "PRE23-MOD-003"
+      ],
+      "accepted_gap": "The candidate requires source, version and Decision but does not define an alias record lifecycle, explicit adoption Decision type, expiry, revocation or conflict behavior.",
+      "rejected_inference": "Any Decision reference or observed provider drift can activate an alias.",
+      "required_revision": "Add an alias record Schema and require ACTIVE status, exact source/version/scope, explicit alias Adoption Decision, effective time, expiry and revocation/conflict failure rules.",
+      "normative_effect": false
+    }
+  ],
+  "triage_result": {
+    "findings_triaged": 3,
+    "rule_justifications_recorded": 3,
+    "advisory_findings_automatically_adopted": 0,
+    "v0_2_revision_candidate_ready": true,
+    "contract_adoption_ready": false
+  },
+  "effects": {
+    "v0_1_contracts_changed": false,
+    "contract_candidates_adopted": false,
+    "implementation_created": false,
+    "provider_supported": false
+  }
+}

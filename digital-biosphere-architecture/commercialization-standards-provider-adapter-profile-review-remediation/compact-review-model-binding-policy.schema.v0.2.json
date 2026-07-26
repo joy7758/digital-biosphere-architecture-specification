@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:compact-review-model-binding-policy:0.2",
+  "title": "TITMAS Compact Review Model Binding Policy v0.2 Candidate",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "revises_candidate_reference", "alias_record_schema_reference", "cross_layer_invariants_reference", "binding_states", "dimension_separation", "qualification_rule", "alias_validation_rules", "explicit_alias_requirements", "current_alias_records", "non_elevation"],
+  "properties": {
+    "$schema": {"const": "./compact-review-model-binding-policy.schema.v0.2.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-25-COMPACT-REVIEW-MODEL-BINDING-POLICY-0.2"},
+    "version": {"const": "0.2.0"},
+    "status": {"const": "CANDIDATE_OFFLINE_REVISION_NOT_ADOPTED_NOT_IMPLEMENTED"},
+    "decision_reference": {"const": "CS-D02-PRE-25"},
+    "revises_candidate_reference": {"const": "compact-review-model-binding-policy.v0.1.json"},
+    "alias_record_schema_reference": {"const": "compact-review-model-alias-record.schema.v0.1.json"},
+    "cross_layer_invariants_reference": {"const": "compact-review-cross-layer-invariants.v0.1.json"},
+    "binding_states": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["EXACT_MATCH", "EXPLICIT_ALIAS_MATCH", "MISMATCH", "UNKNOWN"],
+      "properties": {
+        "EXACT_MATCH": {"type": "string", "minLength": 40},
+        "EXPLICIT_ALIAS_MATCH": {"type": "string", "minLength": 60},
+        "MISMATCH": {"type": "string", "minLength": 60},
+        "UNKNOWN": {"type": "string", "minLength": 40}
+      }
+    },
+    "dimension_separation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider_model_extraction_independent_of_semantic_answer_extraction", "semantic_answer_failure_does_not_erase_observed_model_identity", "model_identity_failure_does_not_validate_semantic_answer", "semantic_extraction_state_is_not_a_model_binding_state"],
+      "properties": {
+        "provider_model_extraction_independent_of_semantic_answer_extraction": {"const": true},
+        "semantic_answer_failure_does_not_erase_observed_model_identity": {"const": true},
+        "model_identity_failure_does_not_validate_semantic_answer": {"const": true},
+        "semantic_extraction_state_is_not_a_model_binding_state": {"const": true}
+      }
+    },
+    "qualification_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantic_extraction_qualifies_required", "response_schema_pass_required", "allowed_binding_states", "content_pass_may_override_model_mismatch", "provider_alias_may_be_inferred"],
+      "properties": {
+        "semantic_extraction_qualifies_required": {"const": true},
+        "response_schema_pass_required": {"const": true},
+        "allowed_binding_states": {"const": ["EXACT_MATCH", "EXPLICIT_ALIAS_MATCH"]},
+        "content_pass_may_override_model_mismatch": {"const": false},
+        "provider_alias_may_be_inferred": {"const": false}
+      }
+    },
+    "alias_validation_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["alias_record_schema_pass_required", "active_status_required", "effective_time_required", "unexpired_required", "exact_provider_source_and_version_required", "exact_requested_returned_pair_required", "exact_scope_required", "alias_adoption_decision_required", "expired_alias_qualifies", "revoked_alias_qualifies", "conflicted_alias_qualifies", "ordinary_decision_reference_qualifies"],
+      "properties": {
+        "alias_record_schema_pass_required": {"const": true},
+        "active_status_required": {"const": true},
+        "effective_time_required": {"const": true},
+        "unexpired_required": {"const": true},
+        "exact_provider_source_and_version_required": {"const": true},
+        "exact_requested_returned_pair_required": {"const": true},
+        "exact_scope_required": {"const": true},
+        "alias_adoption_decision_required": {"const": true},
+        "expired_alias_qualifies": {"const": false},
+        "revoked_alias_qualifies": {"const": false},
+        "conflicted_alias_qualifies": {"const": false},
+        "ordinary_decision_reference_qualifies": {"const": false}
+      }
+    },
+    "explicit_alias_requirements": {"const": ["ALIAS_RECORD_ID", "EXACT_PROVIDER_SOURCE_REFERENCE", "PROVIDER_SOURCE_VERSION", "REQUESTED_MODEL", "RETURNED_MODEL", "ALIAS_SCOPE", "ALIAS_ADOPTION_DECISION_REFERENCE", "ALIAS_ADOPTION_DECISION_TYPE", "EFFECTIVE_AT", "EXPIRES_AT", "STATUS", "REVOCATION_REFERENCE", "CONFLICT_REFERENCE"]},
+    "current_alias_records": {"const": []},
+    "non_elevation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["alias_record_creates_permission", "model_binding_proves_output_quality", "model_binding_proves_provider_support", "model_binding_proves_conformance", "model_binding_creates_certification", "model_binding_creates_truth"],
+      "properties": {
+        "alias_record_creates_permission": {"const": false},
+        "model_binding_proves_output_quality": {"const": false},
+        "model_binding_proves_provider_support": {"const": false},
+        "model_binding_proves_conformance": {"const": false},
+        "model_binding_creates_certification": {"const": false},
+        "model_binding_creates_truth": {"const": false}
+      }
+    }
+  }
+}
