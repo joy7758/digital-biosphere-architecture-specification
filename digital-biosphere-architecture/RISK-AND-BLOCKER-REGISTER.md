@@ -72,6 +72,7 @@ risk_acceptance_authority_assigned: true
 | `R-050` | `HIGH` | 以智能体为首要客户和贡献参与者时，自动生成内容可能隐藏来源、形成低质量批量贡献，或被误写成 Member、Maintainer、Architecture Decision、Authority 或独立验证 | 当前 C1 只有本地贡献入口，没有真实贡献者、角色、安全接收路径或公开渠道；OpenTelemetry 的当前贡献资料也强调 AI 参与者应理解、审查并对生成内容负责 | `CONTRIBUTING.md` 强制 `contributor_type`、`human_accountability_ref`、agent/tool、source、verification 和 unknown 披露；角色模型禁止 agent self-approval；行为规范候选限制批量不可验证输出；重大变化保留人工 DBA Decision | `CONTROL_DEFINED_PUBLIC_ENFORCEMENT_NOT_ESTABLISHED` |
 | `R-051` | `HIGH` | 备案中域名、GitHub slug 或本地网站源码被提前写成 live domain、已创建 Organization、已迁移仓库或已建立社区 | `titmas.cn` 已选择但尚在备案；`titmas-cn` public API 只读检查为 404；当前 live site 仍为 `redcrag.cn` | `ADR-030` 分开 selected／live、slug／organization、source／deployment、organization／repository transfer；cutover 需要 filing、DNS、TLS、health、machine entry 和 rollback 直接证据 | `CONTROL_DEFINED_PRELAUNCH_SOURCE_PREPARATION_ONLY` |
 | `R-052` | `HIGH` | Provider timeout、非直接 JSON 或单一 qualifying 回答被重试、修复、替代或提升为多模型客户认可，从而错误关闭 RB1 开发前智能体推荐闸门 | PRE-44 的 1/4 qualifying 与失败历史保留；PRE-47 使用新冻结契约顺序执行得到 3/4 qualifying，第四会话 direct-JSON failure 保留，所有原阈值通过；PRE-48 仅消费该 gate 的有界实现效果 | 精确模型 structured-output support 仍为 `UNKNOWN_NOT_ADOPTED`；PRE-48 implementation 与 20/20 tests 不能反向证明 Provider correctness、Human Customer Evidence、conformance 或 commercial proof | `MITIGATED_PRE48_IMPLEMENTATION_CREATED_PROVIDER_AND_CONFORMANCE_STILL_FALSE` |
+| `R-053` | `HIGH` | PRE-49 的 local independent-path validator、fixture PASS 或两次 offline build 被提升为第三方／Provider conformance、reproducible build、security approval、release 或 commercial proof | target `5ac891c…` 的本地与远端 clean clone 均通过 30/30 tests、7/7 fixture expectations、5/5 Schema 和所有声明 hash；但两次 build 的 sdist/wheel hash 均不同，且没有 Provider、第三方 reviewer 或 security review | truth surface 固定 `LOCAL_REFERENCE_CONTRACT_REHEARSAL=PASS`、`THIRD_PARTY_INDEPENDENT_CONFORMANCE=false`、`PROVIDER_CONFORMANCE_EXECUTED=false`、`REPRODUCIBLE_BUILD_PROVEN=false`；Provider binding/security/release 另走 Recommendation 和 Decision | `CONTROL_DEFINED_PRE49_LOCAL_REHEARSAL_ONLY_NEXT_GATE_REQUIRED` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -89,7 +90,7 @@ risk_acceptance_authority_assigned: true
 | `B-018` | Schema/Resource/Entity 的 36 个 DQ-018 authorized offline cases 已通过，但 acquisition/cache/transform、真实 detector provenance 和 9 个 DQ-020 deployment cases 仍未执行 | `PR-G2T`、`PR-G3`、`PR-G5`、`PR-G6` | DQ-020 authorization + exact deployment source/policy/environment + 剩余 9 cases + 独立 review | 当前 36-case offline subset 与 DBA reference review |
 | `B-020` | TITMAS C1 Contributor Entry 已本地准备，但 Authority Freeze、正式 Code of Conduct、安全接收路径、Owner/review roles、license/CLA 输入和公共外部动作授权不完整 | `DQ-026`、公共贡献表面、真实贡献者接收、SIG/Workstream 激活 | 补齐全部输入并由 Human Architecture Authority 对 exact public surface 作独立 Decision；启用后仍按贡献/角色/Workstream gate 分阶段 | 本地文档、模板、JSON/Schema、Good First candidate 和 fail-closed 验证；不阻塞 DBA 内继续改进贡献入口 |
 | `B-021` | `titmas.cn` 备案未完成，DNS/TLS/canonical cutover 与 `redcrag.cn` redirect 没有直接验证；`titmas-cn` Organization 尚未创建 | 公共域名切换、Organization 创建、仓库迁移 | 备案证据 + 独立 DNS/TLS/health/security-header/machine-entry/rollback gate；Organization 创建与每个仓库迁移分别授权 | 网站源码、双语／机器入口、GitHub profile copy 和迁移清单的本地准备 |
-| `B-024` | RB1 Development reference implementation 已创建并通过本地／远端 clean-clone 测试，但独立 conformance scope、version-bound fixture corpus、validator authority、security review、可复现 build 环境与结果分级尚未定义 | independent conformance execution、Provider support claim、merge、release 和 commercial availability | 先形成独立 conformance validation Recommendation，固定 exact target commit、contract digest、case catalog、environment、validator/non-authority boundary、success/failure/unknown 分级、build prerequisite、retention 和 stop rules；后续仍需独立 Decision | 当前分支可作为 Development phase-trace reference；不阻塞离线阅读、代码审查和继续维护失败记录 |
+| `B-025` | RB1 local contract rehearsal 已通过，但尚无单一 Provider binding scope、credential/network/security boundary、Provider-specific negative cases、独立 security review 或 reproducible build 证据 | Provider binding implementation、Provider support/conformance claim、merge、release 和 commercial availability | 先形成独立 Recommendation，固定一个 Provider candidate、exact target commit/fileset、credential/secret handling、network/timeout/error taxonomy、sanitization、security review、case catalog、result classes、retention、rollback 和 stop rules；后续仍需独立 Decision | 当前 Development reference 与 local rehearsal 可离线阅读和审查；不阻塞记录 build reproducibility gap |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
 
@@ -105,6 +106,7 @@ risk_acceptance_authority_assigned: true
 | `B-011` | 规范名称与公开网络仍未命中 TMAI | `ADR-022` 为 Developer Preview v0.1 显式接受并继续披露 `PARTIAL_METADATA_ONLY` | 只解除 v0.1 发布阻塞；发现事实没有升级，索引刷新后仍需复查 |
 | `B-022` | PRE-44 Agent Review 只有 `1/4` qualifying，阻塞 RB1 implementation Recommendation | PRE-46 离线修订契约后，PRE-47 按新 Decision 顺序执行 4/4，会话 `3/4` qualifying、五项冻结阈值全部通过 | 只解除“允许形成 implementation Recommendation”的阻塞；实现、target write、package、tests、provider support、conformance 和 release 仍由 `B-023` 阻塞 |
 | `B-023` | PRE-47 gate 通过后仍缺 RB1 implementation Recommendation、exact fileset、target write scope 和独立 Decision | PRE-48 固定 14 paths／6 public symbols／0 Provider binding，Decision 后在 target `001da006…` 完成 20/20 tests 与 remote clean clone PASS | 只解除有界 Development reference implementation 阻塞；Provider support、conformance、security review、merge、release 和商业状态由 `B-024` 继续阻塞 |
+| `B-024` | RB1 Development reference implementation 缺独立 conformance scope、version-bound fixture corpus、validator authority、build environment 与结果分级 | PRE-49 固定 24 paths、7 fixtures、independent-path validator、offline build 和结果分级；target `5ac891c…` 的本地及 remote clean clone rehearsal 均通过 | 只关闭 local contract rehearsal 缺口；Provider binding、third-party conformance、security review、reproducible build、merge、release 和商业状态由 `B-025` 继续阻塞 |
 | `B-012` | TMAP、OTel Profile 和 Production SLO 未映射到 DBOS/SAEE 当前实现 | `PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`：remote source、development observation、supported/partial/missing、duplicate authority 和 exact slice 候选已记录；`PR-G1=PASS_READ_ONLY_MAPPING` | 只解除 mapping blocker；`B-013`、`B-014` 继续阻止实现符合性、Pilot 和生产声明 |
 | `B-019` | production architecture baseline 和 DQ-018 起点尚未远端复验 | DBA predecessor 与 current security-remediation attestation 已形成非循环 remote proof；DBOS source `ee90c0c…` / receipt `901bf0d…` / manifest `306435cd…` 的 40-entry native inventory、538/538 tests、204/204 telemetry、P001—P005 和 `HSR-PRE-001/002` closure 已完成 native Linux x86_64 与 remote clean-clone verification | 关闭 current exact-source provenance 与两个 High finding；Human Security Review complete 和 PR-G2A approval 仍缺失，不产生 approval 或 production authorization |
 
@@ -122,11 +124,11 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=52
-ACTIVE_RISKS=50
+TRACKED_RISKS=53
+ACTIVE_RISKS=51
 RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=11
-BLOCKERS_CLEARED=8
+BLOCKERS_CLEARED=9
 LOCAL_BLOCKERS_CLEARED_NOT_RELEASED=1
 RISKS_ACCEPTED=1
 RISK_REGISTER_GRANTS_AUTHORITY=false

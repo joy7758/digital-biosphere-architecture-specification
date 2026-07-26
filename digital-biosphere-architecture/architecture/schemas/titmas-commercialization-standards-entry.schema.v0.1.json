@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_48_RB1_REFERENCE_IMPLEMENTATION_PASS_CONFORMANCE_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_49_RB1_LOCAL_CONTRACT_REHEARSAL_PASS_PROVIDER_BINDING_SCOPE_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -5124,6 +5124,30 @@
             "pre48_artifact_digests_valid",
             "pre48_build_result",
             "pre48_provider_requests",
+            "pre49_recommendation_reference",
+            "pre49_recommendation_sha256",
+            "pre49_recommendation_commit",
+            "pre49_decision_reference",
+            "pre49_decision_sha256",
+            "pre49_decision_commit",
+            "pre49_target_parent_commit",
+            "pre49_target_commit",
+            "pre49_target_main_commit",
+            "pre49_result_reference",
+            "pre49_result_sha256",
+            "pre49_validation_result_sha256",
+            "pre49_execution_receipt_sha256",
+            "pre49_result_commit",
+            "pre49_result",
+            "pre49_authorized_paths",
+            "pre49_tests_pass",
+            "pre49_fixture_expectations_matched",
+            "pre49_machine_schema_pairs_valid",
+            "pre49_fixture_digests_valid",
+            "pre49_declared_artifact_digests_valid",
+            "pre49_offline_builds_pass",
+            "pre49_reproducible_build_proven",
+            "pre49_provider_requests",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5157,6 +5181,12 @@
             "rb1_conformance_recommendation_required",
             "rb1_conformance_authorized",
             "rb1_conformance_executed",
+            "rb1_local_reference_contract_rehearsal_authorized",
+            "rb1_local_reference_contract_rehearsal_pass",
+            "rb1_third_party_independent_conformance",
+            "rb1_provider_binding_scope_recommendation_required",
+            "rb1_provider_binding_implementation_authorized",
+            "rb1_reproducible_build_proven",
             "provider_supported",
             "security_review_executed",
             "release_authorized"
@@ -5785,6 +5815,78 @@
             "pre48_provider_requests": {
               "const": 0
             },
+            "pre49_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-49-RB1-CONFORMANCE-HARNESS-AND-LOCAL-VERIFICATION-RECOMMENDATION-v0.1.md"
+            },
+            "pre49_recommendation_sha256": {
+              "const": "7e05ac56a451fb45ccdd8fc7c9851864528aa8231363cf0c48de0b25bf16f855"
+            },
+            "pre49_recommendation_commit": {
+              "const": "6542d6b6c896edb9d1306cd3877a1c6b8920875b"
+            },
+            "pre49_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-49-RB1-CONFORMANCE-HARNESS-AND-LOCAL-VERIFICATION-DECISION-RECORD.v0.1.json"
+            },
+            "pre49_decision_sha256": {
+              "const": "f332e6420d2f5baa08ef6310e29ef8af3aa7e391def2af79361828ae022a5a84"
+            },
+            "pre49_decision_commit": {
+              "const": "9f317aacdeec73dfaceff9b52df61953fb45c6fa"
+            },
+            "pre49_target_parent_commit": {
+              "const": "001da006aa32a1eeeb058daa31dcab39197fa4de"
+            },
+            "pre49_target_commit": {
+              "const": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6"
+            },
+            "pre49_target_main_commit": {
+              "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+            },
+            "pre49_result_reference": {
+              "const": "commercialization-standards-titmas-integrations-rb1-conformance/PRE-49-RB1-CONFORMANCE-HARNESS-AND-LOCAL-VERIFICATION-RESULT-v0.1.md"
+            },
+            "pre49_result_sha256": {
+              "const": "0ca09a063521eca7804cf9cbc29afecf66a3f78d63328c59efbdda84e86cf147"
+            },
+            "pre49_validation_result_sha256": {
+              "const": "ffd282fc1e3cdd5bde61e2e8b3d99f75fcfcd830bbc97dbd7914198660257384"
+            },
+            "pre49_execution_receipt_sha256": {
+              "const": "059b147b2f9aa8d58507b98b6d5d5c1ddb5fffcc0d917795deaada1fad71536b"
+            },
+            "pre49_result_commit": {
+              "const": "84cbc3e33b546365d0f1fadbf77bb128b00ce66b"
+            },
+            "pre49_result": {
+              "const": "PASS_LOCAL_REFERENCE_CONTRACT_REHEARSAL_REMOTE_CLEAN_CLONE_VERIFIED"
+            },
+            "pre49_authorized_paths": {
+              "const": "24/24"
+            },
+            "pre49_tests_pass": {
+              "const": "30/30"
+            },
+            "pre49_fixture_expectations_matched": {
+              "const": "7/7"
+            },
+            "pre49_machine_schema_pairs_valid": {
+              "const": "5/5"
+            },
+            "pre49_fixture_digests_valid": {
+              "const": "7/7"
+            },
+            "pre49_declared_artifact_digests_valid": {
+              "const": "11/11"
+            },
+            "pre49_offline_builds_pass": {
+              "const": "2/2"
+            },
+            "pre49_reproducible_build_proven": {
+              "const": false
+            },
+            "pre49_provider_requests": {
+              "const": 0
+            },
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -5876,12 +5978,30 @@
               "const": true
             },
             "rb1_conformance_recommendation_required": {
-              "const": true
+              "const": false
             },
             "rb1_conformance_authorized": {
               "const": false
             },
             "rb1_conformance_executed": {
+              "const": false
+            },
+            "rb1_local_reference_contract_rehearsal_authorized": {
+              "const": true
+            },
+            "rb1_local_reference_contract_rehearsal_pass": {
+              "const": true
+            },
+            "rb1_third_party_independent_conformance": {
+              "const": false
+            },
+            "rb1_provider_binding_scope_recommendation_required": {
+              "const": true
+            },
+            "rb1_provider_binding_implementation_authorized": {
+              "const": false
+            },
+            "rb1_reproducible_build_proven": {
               "const": false
             },
             "provider_supported": {
@@ -5911,7 +6031,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_RB1_CONFORMANCE_VALIDATION_RECOMMENDATION_ONLY"
+          "const": "FORM_RB1_PROVIDER_BINDING_SCOPE_AND_SECURITY_REVIEW_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false
