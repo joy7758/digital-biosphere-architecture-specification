@@ -1,0 +1,66 @@
+{
+  "$schema": "./pre43-rb1-planning-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-43-RB1-PLANNING-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_DBA_ONLY_RB1_PLANNING_PACKET_PRE44_AGENT_REVIEW_RECOMMENDATION_REQUIRED",
+  "decision_reference": "CS-D02-PRE-43",
+  "decision_record_sha256": "065773a20cb10754c986e207551da59ed46d34a59d699fae41c7029eb34da4a2",
+  "decision_commit": "c3285247799a02337aa3fd5d0451d725fa963234",
+  "planning_commit": "56b7c7c87d0fa69f414e446546ee8bca7f4b5fd0",
+  "validated_at": "2026-07-27T04:06:03+08:00",
+  "outputs": [
+    {"reference": "rb1-package-and-contract-skeleton-profile-v0.1.md", "sha256": "858a8835e126c27853fe639fec1feee01cd7297ca9715a11550848417f9510a6"},
+    {"reference": "rb1-package-and-contract-skeleton-profile.v0.1.json", "sha256": "cb1d37c7f064581b4869dcb59a8d79c027537f560d47eea72850507dc2cd0afb"},
+    {"reference": "rb1-package-and-contract-skeleton-profile.schema.v0.1.json", "sha256": "a61881b1bc8ed12d5bb3605b5af7e6c11b3d23cff8016725a7753d625d4353fb"},
+    {"reference": "rb1-negative-boundary-case-catalog.v0.1.json", "sha256": "3ae2608d586ab9bada045b2e7b987863d697ce08f5a7cf4c713d7a0fe5876721"},
+    {"reference": "rb1-negative-boundary-case-catalog.schema.v0.1.json", "sha256": "bab34adee6ef0a391436be52a58d64231b096e4d2e175345cf389ac3e631b67d"},
+    {"reference": "rb1-agent-customer-review-input.v0.1.json", "sha256": "a2ada5aabbc0699234fe28082fcdee6420968f561b84e4e1347bc7e858becbaf"},
+    {"reference": "rb1-agent-customer-review-input.schema.v0.1.json", "sha256": "9b6aa0c3551fc7f2c2614368c48449f46fd62690da760e74ff92df296616c85e"}
+  ],
+  "checks": {
+    "frozen_input_digests_match": 8,
+    "planning_outputs_exact": 7,
+    "schema_instance_pairs_valid": 5,
+    "agent_review_material_digests_match": 5,
+    "negative_cases_defined": 10,
+    "negative_cases_executed": 0,
+    "public_safe_findings": 0,
+    "target_repository_modified": false,
+    "target_remote_branch_unchanged": true,
+    "target_remote_main_unchanged": true,
+    "package_files_created": 0,
+    "source_files_created": 0,
+    "test_files_created": 0,
+    "network_requests_executed": 0,
+    "model_requests_executed": 0,
+    "credential_reads_executed": 0,
+    "remote_clean_clone_validated": true
+  },
+  "retained_events": [
+    {
+      "event": "AUDIT_RG_REFERENCED_NONEXISTENT_OPTIONAL_STRATEGY_PATH",
+      "command_executed": true,
+      "repository_effect": false
+    }
+  ],
+  "truth_state": {
+    "rb1_profile_adopted": false,
+    "rb1_public_api_adopted": false,
+    "rb1_implementation_authorized": false,
+    "rb1_implementation_created": false,
+    "agent_review_authorized": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "runtime_created": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  },
+  "next_gate": {
+    "pre44_agent_customer_review_recommendation_required": true,
+    "pre44_agent_customer_review_authorized": false,
+    "rb1_implementation_decision_allowed": false
+  }
+}

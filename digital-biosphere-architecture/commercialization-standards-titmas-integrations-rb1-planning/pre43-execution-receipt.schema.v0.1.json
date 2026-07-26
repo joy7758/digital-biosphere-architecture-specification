@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre43-execution-receipt.schema.v0.1.json",
+  "title": "PRE-43 Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "executed_by", "completed_at", "planning_commit", "counts", "validation_result_reference", "result", "authorization_consumed", "additional_execution_authorized", "agent_review_authorized", "rb1_implementation_authorized", "release_authorized"],
+  "properties": {
+    "$schema": {"const": "./pre43-execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-43-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "COMPLETED_REMOTE_VALIDATED_PRE44_RECOMMENDATION_REQUIRED"},
+    "decision_reference": {"const": "CS-D02-PRE-43"},
+    "executed_by": {"const": "Codex"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "planning_commit": {"const": "56b7c7c87d0fa69f414e446546ee8bca7f4b5fd0"},
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["planning_outputs_created", "target_files_modified", "package_files_created", "source_files_created", "test_files_created", "network_requests_executed", "model_requests_executed", "credential_reads_executed", "retained_non_mutating_events"],
+      "properties": {
+        "planning_outputs_created": {"const": 7},
+        "target_files_modified": {"const": 0},
+        "package_files_created": {"const": 0},
+        "source_files_created": {"const": 0},
+        "test_files_created": {"const": 0},
+        "network_requests_executed": {"const": 0},
+        "model_requests_executed": {"const": 0},
+        "credential_reads_executed": {"const": 0},
+        "retained_non_mutating_events": {"const": 1}
+      }
+    },
+    "validation_result_reference": {"const": "pre43-rb1-planning-validation-result.v0.1.json"},
+    "result": {"const": "PASS_DBA_ONLY_RB1_PLANNING_PACKET_PRE44_AGENT_REVIEW_RECOMMENDATION_REQUIRED"},
+    "authorization_consumed": {"const": true},
+    "additional_execution_authorized": {"const": false},
+    "agent_review_authorized": {"const": false},
+    "rb1_implementation_authorized": {"const": false},
+    "release_authorized": {"const": false}
+  }
+}
