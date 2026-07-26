@@ -1,0 +1,75 @@
+{
+  "$schema": "./execution-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-20-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTION_COMPLETE_OFFLINE_REMEDIATION_PASS_LIVE_REVIEW_NOT_READY",
+  "observed_at": "2026-07-26T21:30:00+08:00",
+  "decision_reference": "CS-D02-PRE-20",
+  "branch": "codex/production-observability-baseline",
+  "authorization": {
+    "recommendation_commit": "5f9f46208af724d6deb5614a583129b4d75b40b0",
+    "decision_baseline_commit": "1479605124348fc5a092fc31f0ba9aa13e747487",
+    "authorization_receipt_commit": "d5be21a7363fbeb6c74d1795536b974d1403e458",
+    "remote_authorization_baseline_verified_before_execution": true
+  },
+  "artifact_bindings": [
+    {"reference": "../architecture/provider-adapter-profile-review-projection-v0.1.md", "sha256": "ac24560df5f5c8012d7eadb7ff0751fd742b362855d3f96288bc3b4b9a551a3c"},
+    {"reference": "../architecture/provider-adapter-profile-review-projection.v0.1.json", "sha256": "afa323a757b3ae1316548c868ffb2e4d1a3aa01f511ec2c6564124d1c35dda65"},
+    {"reference": "../architecture/schemas/provider-adapter-profile-review-projection.schema.v0.1.json", "sha256": "8d260a0b92413e39b2588fd4f52d3a681181a87f1a014de5d781a2d0ab4e84d4"},
+    {"reference": "review-coverage-matrix.v0.1.json", "sha256": "54b6fbeaf945730924d18e18372a09f654f28cfb875999422354d243c408bf2b"},
+    {"reference": "review-coverage-matrix.schema.v0.1.json", "sha256": "e2a454a4fd32873a4b5744b1b1aa2ca5ff5878e6c6774256112dd5a2530336ad"},
+    {"reference": "compact-review-request-manifest.v0.1.json", "sha256": "bd587995d0e5818b19e9992214cc3986c0243df3ac841c44fe7401b3c5867c2c"},
+    {"reference": "compact-review-request-manifest.schema.v0.1.json", "sha256": "b9e4bd533c2d71b72e9acaec9748dd7faaffded8f5767417698afd45d5f70c67"},
+    {"reference": "offline-validation-result.v0.1.json", "sha256": "520d4e6c7fa95c09f37cbdba724cf57a736871d5ca73f4785f02af1e1541c425"},
+    {"reference": "offline-validation-result.schema.v0.1.json", "sha256": "3ee153d66c4cb847c2655930245e8a40ae906c31b17bb9db23e35fa95474e482"},
+    {"reference": "PRE-20-REVIEW-BUNDLE-SIZE-REMEDIATION-RESULT-v0.1.md", "sha256": "fdafbacd07b8ba89233277a81ac59cbde59e9299843a60c408acae0e22a09812"}
+  ],
+  "execution_accounting": {
+    "offline_validation_runs_completed": 1,
+    "source_hashes_matched": 10,
+    "source_hashes_total": 10,
+    "review_criteria_covered": 7,
+    "review_criteria_total": 7,
+    "pointers_resolved": 40,
+    "pointers_total": 40,
+    "semantic_crosschecks_matched": 6,
+    "semantic_crosschecks_total": 6,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "result": {
+    "offline_remediation_pass": true,
+    "maximum_candidate_query_bytes": 13995,
+    "internal_cap_bytes": 24000,
+    "live_review_ready": false,
+    "review_completed": false,
+    "profile_adopted": false,
+    "next_permitted_action": "PREPARE_SEPARATE_COMPACT_REVIEW_RESPONSE_SCHEMA_AND_LIVE_REVIEW_RECOMMENDATION_ONLY"
+  },
+  "data_controls": {
+    "raw_provider_envelope_accessed_or_persisted": false,
+    "usage_payload_accessed_or_persisted": false,
+    "hidden_reasoning_accessed_or_persisted": false,
+    "secret_accessed_or_persisted": false,
+    "customer_or_personal_data_accessed": false
+  },
+  "effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

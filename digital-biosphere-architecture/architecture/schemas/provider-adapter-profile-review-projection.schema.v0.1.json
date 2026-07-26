@@ -1,0 +1,254 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:provider-adapter-profile-review-projection:0.1",
+  "title": "TITMAS Provider Adapter Profile Compact Review Projection v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "source_manifest_reference",
+    "lineage",
+    "review_boundary",
+    "profile_core",
+    "descriptor_projection",
+    "failure_contract",
+    "case_catalog_projection",
+    "non_elevation_contract",
+    "conformance_entry_requirements",
+    "review_response_contract",
+    "omitted_material_register",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/provider-adapter-profile-review-projection.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-PROVIDER-ADAPTER-PROFILE-REVIEW-PROJECTION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "COMPACT_PROJECTION_CANDIDATE_NOT_REVIEWED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-20"
+    },
+    "source_manifest_reference": {
+      "const": "../commercialization-standards-provider-adapter-profile-review-remediation/source-binding-manifest.v0.1.json"
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_decision_reference",
+        "profile_status",
+        "prior_review_decision_reference",
+        "prior_review_result",
+        "prior_request_bytes",
+        "prior_failure_class",
+        "prior_provider_error_code"
+      ],
+      "properties": {
+        "profile_decision_reference": {"const": "CS-D02-PRE-18"},
+        "profile_status": {"const": "PROFILE_CANDIDATE_CREATED_NOT_ADOPTED"},
+        "prior_review_decision_reference": {"const": "CS-D02-PRE-19"},
+        "prior_review_result": {"const": "INCOMPLETE_FAIL_CLOSED"},
+        "prior_request_bytes": {"const": 50962},
+        "prior_failure_class": {"const": "PROVIDER_ERROR"},
+        "prior_provider_error_code": {"const": "query_too_large"}
+      }
+    },
+    "review_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_scope",
+        "full_source_artifacts_reviewed_by_model",
+        "lossless_source_equivalence_claimed",
+        "profile_review_completed",
+        "profile_adopted",
+        "provider_limit_claimed",
+        "provider_supported"
+      ],
+      "properties": {
+        "review_scope": {"const": "COMPACT_PROJECTION_ONLY"},
+        "full_source_artifacts_reviewed_by_model": {"const": false},
+        "lossless_source_equivalence_claimed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "provider_limit_claimed": {"const": false},
+        "provider_supported": {"const": false}
+      }
+    },
+    "profile_core": {
+      "type": "object",
+      "required": [
+        "provider_neutral",
+        "purpose",
+        "maximum_wrapper_unwrap_depth",
+        "direct_json_parse_required",
+        "full_frozen_reviewer_schema_required",
+        "failure_retention_required",
+        "automatic_retry_allowed",
+        "automatic_fallback_allowed",
+        "json_repair_allowed",
+        "semantic_rewrite_allowed",
+        "raw_provider_body_persistence_allowed",
+        "secret_persistence_allowed",
+        "usage_payload_persistence_allowed"
+      ]
+    },
+    "descriptor_projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_required_fields",
+        "result_required_fields",
+        "state_separation"
+      ],
+      "properties": {
+        "request_required_fields": {
+          "type": "array",
+          "minItems": 16,
+          "maxItems": 16,
+          "uniqueItems": true
+        },
+        "result_required_fields": {
+          "type": "array",
+          "minItems": 19,
+          "maxItems": 19,
+          "uniqueItems": true
+        },
+        "state_separation": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true
+        }
+      }
+    },
+    "failure_contract": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "failure_class",
+          "stage",
+          "retry_disposition",
+          "semantic_effect"
+        ]
+      }
+    },
+    "case_catalog_projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "minimum_required_case_count",
+        "case_count",
+        "cases_executed",
+        "cases"
+      ],
+      "properties": {
+        "minimum_required_case_count": {"const": 16},
+        "case_count": {"const": 20},
+        "cases_executed": {"const": 0},
+        "cases": {
+          "type": "array",
+          "minItems": 20,
+          "maxItems": 20,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "case_id",
+              "stage",
+              "expected_failure_class",
+              "status"
+            ],
+            "properties": {
+              "case_id": {"pattern": "^PAC-[0-9]{3}$"},
+              "stage": {"enum": ["TRANSPORT", "EXTRACTION", "PARSE", "SCHEMA", "POLICY"]},
+              "expected_failure_class": {"type": "string"},
+              "status": {"const": "NOT_EXECUTED"}
+            }
+          }
+        }
+      }
+    },
+    "non_elevation_contract": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "uniqueItems": true
+    },
+    "conformance_entry_requirements": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true
+    },
+    "review_response_contract": {
+      "type": "object",
+      "required": [
+        "required_criteria",
+        "criterion_statuses",
+        "verdicts",
+        "required_sections",
+        "review_scope_required",
+        "full_source_artifacts_reviewed_by_model_required"
+      ]
+    },
+    "omitted_material_register": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "omitted_class",
+          "reason",
+          "review_effect"
+        ]
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projection_created",
+        "live_model_requests_executed",
+        "provider_network_requests_executed",
+        "profile_review_completed",
+        "profile_adopted",
+        "adapter_implementation_created",
+        "conformance_executed",
+        "provider_supported",
+        "valid_problem_records",
+        "cs_g0_pass"
+      ],
+      "properties": {
+        "projection_created": {"const": true},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "adapter_implementation_created": {"const": false},
+        "conformance_executed": {"const": false},
+        "provider_supported": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false}
+      }
+    }
+  }
+}

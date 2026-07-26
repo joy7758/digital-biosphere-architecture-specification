@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:pre-20-execution-receipt:0.1",
+  "title": "TITMAS PRE-20 Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "branch",
+    "authorization",
+    "artifact_bindings",
+    "execution_accounting",
+    "result",
+    "data_controls",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-20-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "EXECUTION_COMPLETE_OFFLINE_REMEDIATION_PASS_LIVE_REVIEW_NOT_READY"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-20"},
+    "branch": {"const": "codex/production-observability-baseline"},
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_commit",
+        "decision_baseline_commit",
+        "authorization_receipt_commit",
+        "remote_authorization_baseline_verified_before_execution"
+      ],
+      "properties": {
+        "recommendation_commit": {"const": "5f9f46208af724d6deb5614a583129b4d75b40b0"},
+        "decision_baseline_commit": {"const": "1479605124348fc5a092fc31f0ba9aa13e747487"},
+        "authorization_receipt_commit": {"const": "d5be21a7363fbeb6c74d1795536b974d1403e458"},
+        "remote_authorization_baseline_verified_before_execution": {"const": true}
+      }
+    },
+    "artifact_bindings": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reference", "sha256"],
+        "properties": {
+          "reference": {"type": "string", "minLength": 12},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+        }
+      }
+    },
+    "execution_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_validation_runs_completed",
+        "source_hashes_matched",
+        "source_hashes_total",
+        "review_criteria_covered",
+        "review_criteria_total",
+        "pointers_resolved",
+        "pointers_total",
+        "semantic_crosschecks_matched",
+        "semantic_crosschecks_total",
+        "live_model_requests_executed",
+        "provider_network_requests_executed",
+        "retry_attempts",
+        "fallback_attempts",
+        "repair_attempts"
+      ],
+      "properties": {
+        "offline_validation_runs_completed": {"const": 1},
+        "source_hashes_matched": {"const": 10},
+        "source_hashes_total": {"const": 10},
+        "review_criteria_covered": {"const": 7},
+        "review_criteria_total": {"const": 7},
+        "pointers_resolved": {"const": 40},
+        "pointers_total": {"const": 40},
+        "semantic_crosschecks_matched": {"const": 6},
+        "semantic_crosschecks_total": {"const": 6},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "repair_attempts": {"const": 0}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_remediation_pass",
+        "maximum_candidate_query_bytes",
+        "internal_cap_bytes",
+        "live_review_ready",
+        "review_completed",
+        "profile_adopted",
+        "next_permitted_action"
+      ],
+      "properties": {
+        "offline_remediation_pass": {"const": true},
+        "maximum_candidate_query_bytes": {"const": 13995},
+        "internal_cap_bytes": {"const": 24000},
+        "live_review_ready": {"const": false},
+        "review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "next_permitted_action": {"const": "PREPARE_SEPARATE_COMPACT_REVIEW_RESPONSE_SCHEMA_AND_LIVE_REVIEW_RECOMMENDATION_ONLY"}
+      }
+    },
+    "data_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_provider_envelope_accessed_or_persisted",
+        "usage_payload_accessed_or_persisted",
+        "hidden_reasoning_accessed_or_persisted",
+        "secret_accessed_or_persisted",
+        "customer_or_personal_data_accessed"
+      ],
+      "properties": {
+        "raw_provider_envelope_accessed_or_persisted": {"const": false},
+        "usage_payload_accessed_or_persisted": {"const": false},
+        "hidden_reasoning_accessed_or_persisted": {"const": false},
+        "secret_accessed_or_persisted": {"const": false},
+        "customer_or_personal_data_accessed": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_changed",
+        "ownership_changed",
+        "profile_review_completed",
+        "profile_adopted",
+        "adapter_implementation_created",
+        "conformance_executed",
+        "provider_supported",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "authority_changed": {"const": false},
+        "ownership_changed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "adapter_implementation_created": {"const": false},
+        "conformance_executed": {"const": false},
+        "provider_supported": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

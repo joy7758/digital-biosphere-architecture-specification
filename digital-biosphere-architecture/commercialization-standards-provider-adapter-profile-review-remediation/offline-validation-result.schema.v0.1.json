@@ -1,0 +1,218 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:pre-20-offline-validation-result:0.1",
+  "title": "TITMAS PRE-20 Offline Validation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "authorization_receipt_reference",
+    "validation_counts",
+    "semantic_projection_crosschecks",
+    "size_result",
+    "boundary_result",
+    "result",
+    "execution_accounting",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./offline-validation-result.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-20-OFFLINE-VALIDATION-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "OFFLINE_SIZE_AND_COVERAGE_PASS_LIVE_REVIEW_NOT_READY"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-20"},
+    "authorization_receipt_reference": {"const": "authorization-baseline-receipt.v0.1.json"},
+    "validation_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_hashes_matched",
+        "source_hashes_total",
+        "json_instances_schema_valid",
+        "json_instances_schema_total",
+        "projection_pointers_resolved",
+        "projection_pointers_total",
+        "source_pointers_resolved",
+        "source_pointers_total",
+        "review_criteria_covered",
+        "review_criteria_total",
+        "semantic_projection_crosschecks_matched",
+        "semantic_projection_crosschecks_total",
+        "omitted_material_classes_registered"
+      ],
+      "properties": {
+        "source_hashes_matched": {"const": 10},
+        "source_hashes_total": {"const": 10},
+        "json_instances_schema_valid": {"const": 3},
+        "json_instances_schema_total": {"const": 3},
+        "projection_pointers_resolved": {"const": 14},
+        "projection_pointers_total": {"const": 14},
+        "source_pointers_resolved": {"const": 26},
+        "source_pointers_total": {"const": 26},
+        "review_criteria_covered": {"const": 7},
+        "review_criteria_total": {"const": 7},
+        "semantic_projection_crosschecks_matched": {"const": 6},
+        "semantic_projection_crosschecks_total": {"const": 6},
+        "omitted_material_classes_registered": {"const": 5}
+      }
+    },
+    "semantic_projection_crosschecks": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check", "status"],
+        "properties": {
+          "check": {"type": "string", "minLength": 12},
+          "status": {"const": "PASS"}
+        }
+      }
+    },
+    "size_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "prior_failed_query_bytes",
+        "internal_cap_bytes",
+        "candidate_queries",
+        "maximum_candidate_query_bytes",
+        "maximum_reduction_bytes_from_prior",
+        "maximum_reduction_percent",
+        "provider_declared_limit_bytes",
+        "provider_limit_validated"
+      ],
+      "properties": {
+        "prior_failed_query_bytes": {"const": 50962},
+        "internal_cap_bytes": {"const": 24000},
+        "candidate_queries": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["review_id", "query_bytes", "query_sha256", "cap_met"],
+            "properties": {
+              "review_id": {"type": "string", "minLength": 20},
+              "query_bytes": {"type": "integer", "minimum": 1, "maximum": 24000},
+              "query_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+              "cap_met": {"const": true}
+            }
+          }
+        },
+        "maximum_candidate_query_bytes": {"const": 13995},
+        "maximum_reduction_bytes_from_prior": {"const": 36967},
+        "maximum_reduction_percent": {"const": 72.54},
+        "provider_declared_limit_bytes": {"type": "null"},
+        "provider_limit_validated": {"const": false}
+      }
+    },
+    "boundary_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projection_scope_explicit",
+        "full_source_equivalence_claimed",
+        "full_source_review_claimed",
+        "provider_support_claimed",
+        "legacy_response_schema_direct_reuse_allowed",
+        "compact_response_schema_required_before_live_review"
+      ],
+      "properties": {
+        "projection_scope_explicit": {"const": true},
+        "full_source_equivalence_claimed": {"const": false},
+        "full_source_review_claimed": {"const": false},
+        "provider_support_claimed": {"const": false},
+        "legacy_response_schema_direct_reuse_allowed": {"const": false},
+        "compact_response_schema_required_before_live_review": {"const": true}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_remediation_pass",
+        "compact_request_cap_met",
+        "source_coverage_pass",
+        "live_review_ready",
+        "review_completed",
+        "profile_adopted",
+        "next_permitted_action"
+      ],
+      "properties": {
+        "offline_remediation_pass": {"const": true},
+        "compact_request_cap_met": {"const": true},
+        "source_coverage_pass": {"const": true},
+        "live_review_ready": {"const": false},
+        "review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "next_permitted_action": {"const": "PREPARE_SEPARATE_COMPACT_REVIEW_RESPONSE_SCHEMA_AND_LIVE_REVIEW_RECOMMENDATION_ONLY"}
+      }
+    },
+    "execution_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_validation_runs_completed",
+        "live_model_requests_executed",
+        "provider_network_requests_executed",
+        "retry_attempts",
+        "fallback_attempts",
+        "repair_attempts"
+      ],
+      "properties": {
+        "offline_validation_runs_completed": {"const": 1},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "repair_attempts": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_changed",
+        "ownership_changed",
+        "profile_review_completed",
+        "profile_adopted",
+        "adapter_implementation_created",
+        "conformance_executed",
+        "provider_supported",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "authority_changed": {"const": false},
+        "ownership_changed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "adapter_implementation_created": {"const": false},
+        "conformance_executed": {"const": false},
+        "provider_supported": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

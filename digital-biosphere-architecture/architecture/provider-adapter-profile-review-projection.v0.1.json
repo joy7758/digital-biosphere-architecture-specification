@@ -1,0 +1,255 @@
+{
+  "$schema": "./schemas/provider-adapter-profile-review-projection.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-PROVIDER-ADAPTER-PROFILE-REVIEW-PROJECTION-0.1",
+  "version": "0.1.0",
+  "status": "COMPACT_PROJECTION_CANDIDATE_NOT_REVIEWED",
+  "decision_reference": "CS-D02-PRE-20",
+  "source_manifest_reference": "../commercialization-standards-provider-adapter-profile-review-remediation/source-binding-manifest.v0.1.json",
+  "lineage": {
+    "profile_decision_reference": "CS-D02-PRE-18",
+    "profile_status": "PROFILE_CANDIDATE_CREATED_NOT_ADOPTED",
+    "prior_review_decision_reference": "CS-D02-PRE-19",
+    "prior_review_result": "INCOMPLETE_FAIL_CLOSED",
+    "prior_request_bytes": 50962,
+    "prior_failure_class": "PROVIDER_ERROR",
+    "prior_provider_error_code": "query_too_large"
+  },
+  "review_boundary": {
+    "review_scope": "COMPACT_PROJECTION_ONLY",
+    "full_source_artifacts_reviewed_by_model": false,
+    "lossless_source_equivalence_claimed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "provider_limit_claimed": false,
+    "provider_supported": false
+  },
+  "profile_core": {
+    "provider_neutral": true,
+    "purpose": "Normalize Agent Review request and result metadata without implementing or certifying any provider adapter.",
+    "maximum_wrapper_unwrap_depth": 1,
+    "direct_json_parse_required": true,
+    "full_frozen_reviewer_schema_required": true,
+    "failure_retention_required": true,
+    "automatic_retry_allowed": false,
+    "automatic_fallback_allowed": false,
+    "json_repair_allowed": false,
+    "semantic_rewrite_allowed": false,
+    "raw_provider_body_persistence_allowed": false,
+    "secret_persistence_allowed": false,
+    "usage_payload_persistence_allowed": false
+  },
+  "descriptor_projection": {
+    "request_required_fields": [
+      "$schema",
+      "descriptor_version",
+      "adapter_request_id",
+      "provider_ref",
+      "model_ref",
+      "reviewer_role",
+      "prompt_sha256",
+      "response_schema_sha256",
+      "request_started_at",
+      "retry_policy",
+      "fallback_policy",
+      "repair_policy",
+      "tool_policy",
+      "data_classification",
+      "secret_material_present",
+      "raw_provider_body_persistence_allowed"
+    ],
+    "result_required_fields": [
+      "$schema",
+      "descriptor_version",
+      "adapter_request_id",
+      "provider_ref",
+      "model_ref",
+      "transport_status",
+      "transport_status_code",
+      "semantic_answer_status",
+      "extraction_path_id",
+      "shape_descriptor",
+      "direct_json_parse_status",
+      "full_schema_status",
+      "sanitized_conformant_response_reference",
+      "failure_class",
+      "request_accounting",
+      "raw_provider_body_persisted",
+      "secret_material_persisted",
+      "usage_payload_persisted",
+      "semantic_non_elevation"
+    ],
+    "state_separation": [
+      "TRANSPORT_SUCCESS_NE_SEMANTIC_ANSWER_EXTRACTED",
+      "SEMANTIC_ANSWER_EXTRACTED_NE_DIRECT_JSON_PARSE_PASS",
+      "DIRECT_JSON_PARSE_PASS_NE_FULL_REVIEWER_SCHEMA_PASS",
+      "FULL_REVIEWER_SCHEMA_PASS_NE_CANDIDATE_VALIDITY",
+      "FULL_REVIEWER_SCHEMA_PASS_NE_RECORD_COUNTING_OR_CS_G0",
+      "PROFILE_SCHEMA_REHEARSAL_PASS_NE_ADAPTER_CONFORMANCE_OR_PROVIDER_ADOPTION"
+    ]
+  },
+  "failure_contract": [
+    {
+      "failure_class": "TRANSPORT_ERROR",
+      "stage": "TRANSPORT",
+      "retry_disposition": "STOP_REVIEW_REQUIRED",
+      "semantic_effect": "NO_SEMANTIC_ANSWER_AND_NO_SCHEMA_RESULT"
+    },
+    {
+      "failure_class": "PROVIDER_ERROR",
+      "stage": "TRANSPORT",
+      "retry_disposition": "STOP_REVIEW_REQUIRED",
+      "semantic_effect": "NO_SEMANTIC_ANSWER_AND_NO_SCHEMA_RESULT"
+    },
+    {
+      "failure_class": "NO_EXTRACTABLE_ANSWER",
+      "stage": "EXTRACTION",
+      "retry_disposition": "STOP_REVIEW_REQUIRED",
+      "semantic_effect": "SEMANTIC_ANSWER_FAILED"
+    },
+    {
+      "failure_class": "UNKNOWN_RUNTIME_ENVELOPE",
+      "stage": "EXTRACTION",
+      "retry_disposition": "STOP_CONTRACT_REVIEW_REQUIRED",
+      "semantic_effect": "SEMANTIC_ANSWER_FAILED"
+    },
+    {
+      "failure_class": "UNDECLARED_NESTING",
+      "stage": "EXTRACTION",
+      "retry_disposition": "STOP_CONTRACT_REVIEW_REQUIRED",
+      "semantic_effect": "SEMANTIC_ANSWER_FAILED"
+    },
+    {
+      "failure_class": "AMBIGUOUS_NON_IDENTICAL_ANSWERS",
+      "stage": "EXTRACTION",
+      "retry_disposition": "STOP_HUMAN_REVIEW_REQUIRED",
+      "semantic_effect": "SEMANTIC_ANSWER_FAILED"
+    },
+    {
+      "failure_class": "DIRECT_JSON_PARSE_FAILED",
+      "stage": "PARSE",
+      "retry_disposition": "STOP_NO_REPAIR",
+      "semantic_effect": "SCHEMA_NOT_ASSESSED"
+    },
+    {
+      "failure_class": "FULL_SCHEMA_VALIDATION_FAILED",
+      "stage": "SCHEMA",
+      "retry_disposition": "STOP_NO_REWRITE",
+      "semantic_effect": "CANDIDATE_NOT_CONFORMANT"
+    },
+    {
+      "failure_class": "POLICY_VIOLATION",
+      "stage": "POLICY",
+      "retry_disposition": "STOP_SECURITY_OR_GOVERNANCE_REVIEW_REQUIRED",
+      "semantic_effect": "RESULT_REJECTED"
+    }
+  ],
+  "case_catalog_projection": {
+    "minimum_required_case_count": 16,
+    "case_count": 20,
+    "cases_executed": 0,
+    "cases": [
+      {"case_id": "PAC-001", "stage": "EXTRACTION", "expected_failure_class": "NONE", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-002", "stage": "EXTRACTION", "expected_failure_class": "NONE", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-003", "stage": "EXTRACTION", "expected_failure_class": "NONE", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-004", "stage": "SCHEMA", "expected_failure_class": "NONE", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-005", "stage": "EXTRACTION", "expected_failure_class": "UNKNOWN_RUNTIME_ENVELOPE", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-006", "stage": "EXTRACTION", "expected_failure_class": "NO_EXTRACTABLE_ANSWER", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-007", "stage": "EXTRACTION", "expected_failure_class": "NO_EXTRACTABLE_ANSWER", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-008", "stage": "PARSE", "expected_failure_class": "DIRECT_JSON_PARSE_FAILED", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-009", "stage": "SCHEMA", "expected_failure_class": "FULL_SCHEMA_VALIDATION_FAILED", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-010", "stage": "EXTRACTION", "expected_failure_class": "NONE", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-011", "stage": "EXTRACTION", "expected_failure_class": "AMBIGUOUS_NON_IDENTICAL_ANSWERS", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-012", "stage": "EXTRACTION", "expected_failure_class": "UNDECLARED_NESTING", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-013", "stage": "TRANSPORT", "expected_failure_class": "TRANSPORT_ERROR", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-014", "stage": "TRANSPORT", "expected_failure_class": "PROVIDER_ERROR", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-015", "stage": "POLICY", "expected_failure_class": "POLICY_VIOLATION", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-016", "stage": "POLICY", "expected_failure_class": "POLICY_VIOLATION", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-017", "stage": "POLICY", "expected_failure_class": "POLICY_VIOLATION", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-018", "stage": "POLICY", "expected_failure_class": "POLICY_VIOLATION", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-019", "stage": "POLICY", "expected_failure_class": "POLICY_VIOLATION", "status": "NOT_EXECUTED"},
+      {"case_id": "PAC-020", "stage": "POLICY", "expected_failure_class": "POLICY_VIOLATION", "status": "NOT_EXECUTED"}
+    ]
+  },
+  "non_elevation_contract": [
+    "REQUEST_DESCRIPTOR_SCHEMA_VALID_NE_REQUEST_SENT_PROVIDER_SUPPORTED_OR_AUTHORIZATION_GRANTED",
+    "TRANSPORT_SUCCEEDED_NE_SEMANTIC_ANSWER_VALID_REVIEWER_SCHEMA_CONFORMANT_OR_CANDIDATE_VALID",
+    "FULL_REVIEWER_SCHEMA_PASS_NE_CANDIDATE_VALID_VALID_PROBLEM_RECORD_CS_G0_OR_MARKET_VALIDATION",
+    "PROFILE_SCHEMA_REHEARSAL_PASS_NE_ADAPTER_IMPLEMENTED_CONFORMANCE_EXECUTED_PROFILE_ADOPTED_OR_PROVIDER_CERTIFIED"
+  ],
+  "conformance_entry_requirements": [
+    "EXACT_ADAPTER_IMPLEMENTATION_REFERENCE_REQUIRED",
+    "EXACT_PROFILE_VERSION_REQUIRED",
+    "EXACT_PROVIDER_AND_MODEL_REFERENCE_REQUIRED",
+    "INDEPENDENT_EXECUTION_RECEIPT_REQUIRED",
+    "ALL_REQUIRED_CASES_EXECUTED_REQUIRED",
+    "FAILURE_AND_UNKNOWN_RETENTION_REQUIRED",
+    "SEPARATE_HUMAN_ADOPTION_DECISION_REQUIRED"
+  ],
+  "review_response_contract": {
+    "required_criteria": [
+      "INTEROPERABILITY",
+      "DEVELOPER_IMPLEMENTABILITY",
+      "NORMALIZED_REQUEST_RESULT_BOUNDARY",
+      "FAILURE_TAXONOMY_COMPLETENESS",
+      "SEMANTIC_NON_ELEVATION",
+      "PRIVACY_AND_PERSISTENCE_BOUNDARY",
+      "CONFORMANCE_CASE_ADEQUACY"
+    ],
+    "criterion_statuses": ["PASS", "CHANGES_REQUIRED", "BLOCKER"],
+    "verdicts": ["ACCEPT_FOR_HUMAN_ADOPTION_REVIEW", "RETURN_FOR_REVISION", "REJECT"],
+    "required_sections": [
+      "review_id",
+      "reviewer_role",
+      "reviewed_profile",
+      "criteria",
+      "verdict",
+      "required_changes",
+      "blockers",
+      "known_unknowns",
+      "non_elevation_confirmations",
+      "review_limits",
+      "recommended_next_action"
+    ],
+    "review_scope_required": "COMPACT_PROJECTION_ONLY",
+    "full_source_artifacts_reviewed_by_model_required": false
+  },
+  "omitted_material_register": [
+    {
+      "omitted_class": "HUMAN_NARRATIVE_AND_HISTORICAL_EXPLANATION",
+      "reason": "Repeated prose is not required for compact structural review.",
+      "review_effect": "MODEL_DOES_NOT_REVIEW_FULL_HUMAN_NARRATIVE"
+    },
+    {
+      "omitted_class": "FULL_JSON_SCHEMA_KEYWORDS_CONDITIONALS_AND_ERROR_TEXT",
+      "reason": "Projection retains required field sets and boundary claims, not every Schema keyword.",
+      "review_effect": "MODEL_CANNOT_CLAIM_FULL_SCHEMA_CONSTRAINT_REVIEW"
+    },
+    {
+      "omitted_class": "FULL_CASE_STIMULUS_ASSERTIONS_AND_TITLES",
+      "reason": "Projection retains all case IDs, stages, failure classes and execution states.",
+      "review_effect": "MODEL_CANNOT_CLAIM_FULL_CASE_TEXT_REVIEW"
+    },
+    {
+      "omitted_class": "PRE14_TO_PRE19_FULL_REPORT_BODIES",
+      "reason": "Lineage retains current failure classification and hashes without duplicating reports.",
+      "review_effect": "MODEL_CANNOT_REINTERPRET_HISTORICAL_PROVIDER_EVIDENCE"
+    },
+    {
+      "omitted_class": "RAW_PROVIDER_ENVELOPE_USAGE_AND_HIDDEN_REASONING",
+      "reason": "Persistence is prohibited by privacy and semantic boundary.",
+      "review_effect": "NO_RAW_PROVIDER_CONTENT_AVAILABLE_OR_REQUIRED"
+    }
+  ],
+  "effects": {
+    "projection_created": true,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false
+  }
+}

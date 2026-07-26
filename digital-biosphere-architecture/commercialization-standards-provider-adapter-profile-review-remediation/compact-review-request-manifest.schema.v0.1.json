@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:pre-20-compact-review-request-manifest:0.1",
+  "title": "TITMAS PRE-20 Compact Review Request Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "instruction_template",
+    "assembly_contract",
+    "components",
+    "candidate_sessions",
+    "size_boundary",
+    "response_contract_boundary",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./compact-review-request-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-20-COMPACT-REVIEW-REQUEST-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "CANDIDATE_NOT_AUTHORIZED_NOT_SENT"},
+    "decision_reference": {"const": "CS-D02-PRE-20"},
+    "instruction_template": {"type": "string", "minLength": 500, "maxLength": 1200},
+    "assembly_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "encoding",
+        "json_serialization",
+        "projection_begin",
+        "projection_end",
+        "coverage_begin",
+        "coverage_end",
+        "runtime_substitutions",
+        "component_order"
+      ],
+      "properties": {
+        "encoding": {"const": "UTF-8"},
+        "json_serialization": {"const": "SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE"},
+        "projection_begin": {"const": "===== BEGIN COMPACT PROJECTION ====="},
+        "projection_end": {"const": "===== END COMPACT PROJECTION ====="},
+        "coverage_begin": {"const": "===== BEGIN COVERAGE MATRIX ====="},
+        "coverage_end": {"const": "===== END COVERAGE MATRIX ====="},
+        "runtime_substitutions": {"const": ["{{REVIEW_ID}}", "{{REVIEWER_ROLE}}"]},
+        "component_order": {"const": ["INSTRUCTION", "PROJECTION_CANONICAL_JSON", "COVERAGE_CANONICAL_JSON"]}
+      }
+    },
+    "components": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "component_id",
+          "reference",
+          "file_sha256",
+          "canonical_sha256",
+          "canonical_bytes"
+        ],
+        "properties": {
+          "component_id": {"enum": ["INSTRUCTION", "PROJECTION_CANONICAL_JSON", "COVERAGE_CANONICAL_JSON"]},
+          "reference": {"type": "string", "minLength": 12},
+          "file_sha256": {
+            "oneOf": [
+              {"type": "null"},
+              {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+            ]
+          },
+          "canonical_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "canonical_bytes": {"type": "integer", "minimum": 1, "maximum": 12000}
+        }
+      }
+    },
+    "candidate_sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "review_id",
+          "reviewer_role",
+          "query_bytes",
+          "query_sha256",
+          "request_authorized",
+          "request_executed"
+        ],
+        "properties": {
+          "review_id": {"type": "string", "minLength": 20},
+          "reviewer_role": {"type": "string", "minLength": 20},
+          "query_bytes": {"type": "integer", "minimum": 1, "maximum": 24000},
+          "query_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "request_authorized": {"const": false},
+          "request_executed": {"const": false}
+        }
+      }
+    },
+    "size_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "internal_cap_bytes",
+        "maximum_candidate_query_bytes",
+        "cap_met",
+        "provider_declared_limit_bytes",
+        "provider_limit_claimed"
+      ],
+      "properties": {
+        "internal_cap_bytes": {"const": 24000},
+        "maximum_candidate_query_bytes": {"const": 13995},
+        "cap_met": {"const": true},
+        "provider_declared_limit_bytes": {"type": "null"},
+        "provider_limit_claimed": {"const": false}
+      }
+    },
+    "response_contract_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "projection_embedded_contract_present",
+        "legacy_full-profile_response_schema_reference",
+        "legacy_schema_direct_reuse_allowed",
+        "reason",
+        "separate_compact_response_schema_required_before_live_review"
+      ],
+      "properties": {
+        "projection_embedded_contract_present": {"const": true},
+        "legacy_full-profile_response_schema_reference": {"const": "../architecture/schemas/provider-adapter-profile-review-response.schema.v0.1.json"},
+        "legacy_schema_direct_reuse_allowed": {"const": false},
+        "reason": {"type": "string", "minLength": 40},
+        "separate_compact_response_schema_required_before_live_review": {"const": true}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_manifest_candidate_created",
+        "live_model_requests_authorized",
+        "live_model_requests_executed",
+        "provider_network_requests_executed",
+        "review_completed",
+        "profile_adopted",
+        "provider_supported"
+      ],
+      "properties": {
+        "request_manifest_candidate_created": {"const": true},
+        "live_model_requests_authorized": {"const": false},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "provider_supported": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "$schema": "./review-coverage-matrix.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-20-REVIEW-COVERAGE-MATRIX-0.1",
+  "version": "0.1.0",
+  "status": "CANDIDATE_NOT_OFFLINE_VALIDATED",
+  "decision_reference": "CS-D02-PRE-20",
+  "projection_reference": "../architecture/provider-adapter-profile-review-projection.v0.1.json",
+  "criteria_total": 7,
+  "criteria": [
+    {
+      "criterion": "INTEROPERABILITY",
+      "projection_paths": ["/profile_core/provider_neutral", "/profile_core/purpose"],
+      "source_pointers": [
+        {"source_id": "PRE18_PROFILE_MACHINE", "pointer": "/provider_neutral"},
+        {"source_id": "PRE18_PROFILE_MACHINE", "pointer": "/purpose"},
+        {"source_id": "PRE18_PROFILE_MACHINE", "pointer": "/reference_provider_history"}
+      ]
+    },
+    {
+      "criterion": "DEVELOPER_IMPLEMENTABILITY",
+      "projection_paths": ["/descriptor_projection/request_required_fields", "/descriptor_projection/result_required_fields"],
+      "source_pointers": [
+        {"source_id": "REQUEST_DESCRIPTOR_SCHEMA", "pointer": "/required"},
+        {"source_id": "REQUEST_DESCRIPTOR_SCHEMA", "pointer": "/properties"},
+        {"source_id": "RESULT_DESCRIPTOR_SCHEMA", "pointer": "/required"},
+        {"source_id": "RESULT_DESCRIPTOR_SCHEMA", "pointer": "/properties"}
+      ]
+    },
+    {
+      "criterion": "NORMALIZED_REQUEST_RESULT_BOUNDARY",
+      "projection_paths": ["/descriptor_projection/state_separation", "/profile_core/maximum_wrapper_unwrap_depth"],
+      "source_pointers": [
+        {"source_id": "PRE18_PROFILE_MACHINE", "pointer": "/state_separation"},
+        {"source_id": "PRE18_PROFILE_MACHINE", "pointer": "/normative_contract/maximum_wrapper_unwrap_depth"},
+        {"source_id": "RESULT_DESCRIPTOR_SCHEMA", "pointer": "/properties/semantic_answer_status"},
+        {"source_id": "RESULT_DESCRIPTOR_SCHEMA", "pointer": "/properties/full_schema_status"}
+      ]
+    },
+    {
+      "criterion": "FAILURE_TAXONOMY_COMPLETENESS",
+      "projection_paths": ["/failure_contract"],
+      "source_pointers": [
+        {"source_id": "FAILURE_TAXONOMY", "pointer": "/failure_classes"},
+        {"source_id": "FAILURE_TAXONOMY", "pointer": "/failure_retention_required"},
+        {"source_id": "RESULT_DESCRIPTOR_SCHEMA", "pointer": "/properties/failure_class"}
+      ]
+    },
+    {
+      "criterion": "SEMANTIC_NON_ELEVATION",
+      "projection_paths": ["/non_elevation_contract", "/review_boundary"],
+      "source_pointers": [
+        {"source_id": "PRE18_PROFILE_MACHINE", "pointer": "/claim_non_elevation_matrix"},
+        {"source_id": "PRE18_PROFILE_MACHINE", "pointer": "/effects"},
+        {"source_id": "CONFORMANCE_CASE_CATALOG", "pointer": "/cases/19"}
+      ]
+    },
+    {
+      "criterion": "PRIVACY_AND_PERSISTENCE_BOUNDARY",
+      "projection_paths": ["/profile_core/raw_provider_body_persistence_allowed", "/profile_core/secret_persistence_allowed", "/profile_core/usage_payload_persistence_allowed"],
+      "source_pointers": [
+        {"source_id": "PRE18_PROFILE_MACHINE", "pointer": "/normative_contract/raw_provider_body_persistence_allowed"},
+        {"source_id": "PRE18_PROFILE_MACHINE", "pointer": "/normative_contract/secret_persistence_allowed"},
+        {"source_id": "PRE18_PROFILE_MACHINE", "pointer": "/normative_contract/usage_payload_persistence_allowed"},
+        {"source_id": "CONFORMANCE_CASE_CATALOG", "pointer": "/cases/17"},
+        {"source_id": "CONFORMANCE_CASE_CATALOG", "pointer": "/cases/18"}
+      ]
+    },
+    {
+      "criterion": "CONFORMANCE_CASE_ADEQUACY",
+      "projection_paths": ["/case_catalog_projection", "/conformance_entry_requirements"],
+      "source_pointers": [
+        {"source_id": "CONFORMANCE_CASE_CATALOG", "pointer": "/minimum_required_case_count"},
+        {"source_id": "CONFORMANCE_CASE_CATALOG", "pointer": "/case_count"},
+        {"source_id": "CONFORMANCE_CASE_CATALOG", "pointer": "/cases"},
+        {"source_id": "PRE18_PROFILE_MACHINE", "pointer": "/conformance_entry_requirements"}
+      ]
+    }
+  ],
+  "coverage_claim": {
+    "criteria_with_source_coverage": 7,
+    "criteria_total": 7,
+    "all_projection_paths_resolve_required": true,
+    "all_source_pointers_resolve_required": true,
+    "full_source_equivalence_claimed": false
+  },
+  "effects": {
+    "offline_validation_completed": false,
+    "review_completed": false,
+    "profile_adopted": false
+  }
+}

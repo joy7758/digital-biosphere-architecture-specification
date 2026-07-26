@@ -1,0 +1,96 @@
+{
+  "$schema": "./offline-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-20-OFFLINE-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_SIZE_AND_COVERAGE_PASS_LIVE_REVIEW_NOT_READY",
+  "observed_at": "2026-07-26T21:25:00+08:00",
+  "decision_reference": "CS-D02-PRE-20",
+  "authorization_receipt_reference": "authorization-baseline-receipt.v0.1.json",
+  "validation_counts": {
+    "source_hashes_matched": 10,
+    "source_hashes_total": 10,
+    "json_instances_schema_valid": 3,
+    "json_instances_schema_total": 3,
+    "projection_pointers_resolved": 14,
+    "projection_pointers_total": 14,
+    "source_pointers_resolved": 26,
+    "source_pointers_total": 26,
+    "review_criteria_covered": 7,
+    "review_criteria_total": 7,
+    "semantic_projection_crosschecks_matched": 6,
+    "semantic_projection_crosschecks_total": 6,
+    "omitted_material_classes_registered": 5
+  },
+  "semantic_projection_crosschecks": [
+    {"check": "PROFILE_CORE_MATCHES_SOURCE", "status": "PASS"},
+    {"check": "REQUEST_REQUIRED_FIELDS_MATCH_SOURCE", "status": "PASS"},
+    {"check": "RESULT_REQUIRED_FIELDS_MATCH_SOURCE", "status": "PASS"},
+    {"check": "FAILURE_ROWS_MATCH_SOURCE", "status": "PASS"},
+    {"check": "CASE_ROWS_MATCH_SOURCE", "status": "PASS"},
+    {"check": "CASE_COUNTS_MATCH_SOURCE", "status": "PASS"}
+  ],
+  "size_result": {
+    "prior_failed_query_bytes": 50962,
+    "internal_cap_bytes": 24000,
+    "candidate_queries": [
+      {
+        "review_id": "PRE20-KIMI-INTEROP-CANDIDATE",
+        "query_bytes": 13995,
+        "query_sha256": "54f8bfefb9f54edf37faac9950cd59253a58cf566e4ebb3fc9093e45feff2126",
+        "cap_met": true
+      },
+      {
+        "review_id": "PRE20-DEEPSEEK-BOUNDARY-CANDIDATE",
+        "query_bytes": 13991,
+        "query_sha256": "4a41db7df57ad1eaadd4a5e9f2f55a2a5fc823378fd170f1e6f450d6ce18fb2f",
+        "cap_met": true
+      }
+    ],
+    "maximum_candidate_query_bytes": 13995,
+    "maximum_reduction_bytes_from_prior": 36967,
+    "maximum_reduction_percent": 72.54,
+    "provider_declared_limit_bytes": null,
+    "provider_limit_validated": false
+  },
+  "boundary_result": {
+    "projection_scope_explicit": true,
+    "full_source_equivalence_claimed": false,
+    "full_source_review_claimed": false,
+    "provider_support_claimed": false,
+    "legacy_response_schema_direct_reuse_allowed": false,
+    "compact_response_schema_required_before_live_review": true
+  },
+  "result": {
+    "offline_remediation_pass": true,
+    "compact_request_cap_met": true,
+    "source_coverage_pass": true,
+    "live_review_ready": false,
+    "review_completed": false,
+    "profile_adopted": false,
+    "next_permitted_action": "PREPARE_SEPARATE_COMPACT_REVIEW_RESPONSE_SCHEMA_AND_LIVE_REVIEW_RECOMMENDATION_ONLY"
+  },
+  "execution_accounting": {
+    "offline_validation_runs_completed": 1,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
