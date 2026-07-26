@@ -2673,6 +2673,7 @@
         "provider_request_instrumentation_handoff_owner_target_resolved",
         "provider_request_instrumentation_handoff_implementation_authorized",
         "provider_request_instrumentation_handoff_implementation_created",
+        "pre32_to_pre36_progress",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -4605,16 +4606,244 @@
           "const": 0
         },
         "provider_request_instrumentation_handoff_decision_recorded": {
-          "const": false
+          "const": true
         },
         "provider_request_instrumentation_handoff_owner_target_resolved": {
-          "const": false
+          "const": true
         },
         "provider_request_instrumentation_handoff_implementation_authorized": {
           "const": false
         },
         "provider_request_instrumentation_handoff_implementation_created": {
           "const": false
+        },
+        "pre32_to_pre36_progress": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "pre32_decision_reference",
+            "pre32_decision_sha256",
+            "pre32_decision_commit",
+            "pre32_packet_reference",
+            "pre32_packet_sha256",
+            "pre32_result_reference",
+            "pre32_result_sha256",
+            "pre32_result_commit",
+            "pre32_outcome",
+            "pre33_recommendation_reference",
+            "pre33_recommendation_sha256",
+            "pre33_recommendation_commit",
+            "pre33_decision_reference",
+            "pre33_decision_sha256",
+            "pre33_decision_commit",
+            "pre33_assignment_reference",
+            "pre33_assignment_sha256",
+            "implementation_owner_ref",
+            "candidate_target_repository",
+            "candidate_target_commit",
+            "pre34_recommendation_reference",
+            "pre34_recommendation_sha256",
+            "pre34_recommendation_commit",
+            "pre34_decision_reference",
+            "pre34_decision_sha256",
+            "pre34_decision_commit",
+            "pre34_result_reference",
+            "pre34_result_sha256",
+            "pre34_result_commit",
+            "repository_baseline_contract_sha256",
+            "required_target_file_manifest_sha256",
+            "implementation_declaration_template_sha256",
+            "pre35_recommendation_reference",
+            "pre35_recommendation_sha256",
+            "pre35_recommendation_commit",
+            "pre35_decision_reference",
+            "pre35_decision_sha256",
+            "pre35_decision_commit",
+            "pre35_adoption_reference",
+            "pre35_adoption_sha256",
+            "pre35_adoption_maturity",
+            "pre36_recommendation_reference",
+            "pre36_recommendation_sha256",
+            "pre36_recommendation_commit",
+            "pre36_exact_action",
+            "pre36_decision_recorded",
+            "pre36_candidate_files_created",
+            "license_adopted",
+            "target_repository_modified",
+            "repository_baseline_applied",
+            "implementation_authorized",
+            "implementation_created",
+            "provider_supported",
+            "conformance_executed",
+            "release_authorized"
+          ],
+          "properties": {
+            "pre32_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-DECISION-RECORD.v0.1.json"
+            },
+            "pre32_decision_sha256": {
+              "const": "7f87e5d043f9c29d2555482361c10510bf9d20c646722f50754e034d439d4f1c"
+            },
+            "pre32_decision_commit": {
+              "const": "42c3b574cda2829575fc83926b31d0980ef69170"
+            },
+            "pre32_packet_reference": {
+              "const": "commercialization-standards-provider-request-instrumentation-handoff/handoff-readiness-packet.v0.1.json"
+            },
+            "pre32_packet_sha256": {
+              "const": "71c1148627c3b7d9c7e67487b02b745121b4492c1d0de701d343bdb7acbd37ec"
+            },
+            "pre32_result_reference": {
+              "const": "commercialization-standards-provider-request-instrumentation-handoff/PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-RESULT-v0.1.md"
+            },
+            "pre32_result_sha256": {
+              "const": "38b63d3946c2f4d7ed54a3a44f1129c568c2a4c2e2d08882fdc3e6c621fa0cc8"
+            },
+            "pre32_result_commit": {
+              "const": "c1d6eb67bf7d439995541ab1f07e92211f418a04"
+            },
+            "pre32_outcome": {
+              "const": "NO_ELIGIBLE_EXISTING_TARGET_OWNER_UNRESOLVED"
+            },
+            "pre33_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-33-PROVIDER-REQUEST-INSTRUMENTATION-OWNER-TARGET-SELECTION-RECOMMENDATION-v0.1.md"
+            },
+            "pre33_recommendation_sha256": {
+              "const": "5ef122cb596cbc0d2b06257e5c6f41710dc5b8870c9e63693b8d9b8caaa2f399"
+            },
+            "pre33_recommendation_commit": {
+              "const": "1cdd83cc59506dc7dbddc9ffd3a2d8717e87c06c"
+            },
+            "pre33_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-33-PROVIDER-REQUEST-INSTRUMENTATION-OWNER-TARGET-SELECTION-DECISION-RECORD.v0.1.json"
+            },
+            "pre33_decision_sha256": {
+              "const": "b561daf8fade1f2febafe3499700e6ce5d07c9e4cf3b5e17c8c9707fbb3e2194"
+            },
+            "pre33_decision_commit": {
+              "const": "1ca850b5015b16e357aeeda12f315d9ee1a9e5e3"
+            },
+            "pre33_assignment_reference": {
+              "const": "architecture/provider-request-instrumentation-owner-target-assignment.v0.1.json"
+            },
+            "pre33_assignment_sha256": {
+              "const": "43e6225c2e7a71891858b394f8d89b789c2ac3303a269e2ca74a27166df37541"
+            },
+            "implementation_owner_ref": {
+              "const": "zhangbin"
+            },
+            "candidate_target_repository": {
+              "const": "https://github.com/joy7758/titmas-integrations.git"
+            },
+            "candidate_target_commit": {
+              "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+            },
+            "pre34_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-34-TITMAS-INTEGRATIONS-REPOSITORY-BASELINE-CONTRACT-RECOMMENDATION-v0.1.md"
+            },
+            "pre34_recommendation_sha256": {
+              "const": "0d2d894551f31899764f3d63c0042608079e6b38865e5653084f2f200e04df26"
+            },
+            "pre34_recommendation_commit": {
+              "const": "b1681812facb0eb94070d97ebb5cd7bc012e1ff8"
+            },
+            "pre34_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-34-TITMAS-INTEGRATIONS-REPOSITORY-BASELINE-CONTRACT-DECISION-RECORD.v0.1.json"
+            },
+            "pre34_decision_sha256": {
+              "const": "16156f5b720d5d7b63a3fae02dc500ba891557a39b626159f38a9663d9fca36b"
+            },
+            "pre34_decision_commit": {
+              "const": "07738993489846cb06040d99cbc725595954076f"
+            },
+            "pre34_result_reference": {
+              "const": "commercialization-standards-titmas-integrations-repository-baseline/PRE-34-TITMAS-INTEGRATIONS-REPOSITORY-BASELINE-CONTRACT-RESULT-v0.1.md"
+            },
+            "pre34_result_sha256": {
+              "const": "af76e8222f14fdf8290a8535e4f3889fa0fdc521cb07eef07383371dba5f47d0"
+            },
+            "pre34_result_commit": {
+              "const": "f0d4713fecb52a39d017e2f82be48b4ffe90444b"
+            },
+            "repository_baseline_contract_sha256": {
+              "const": "58920eb5b8c7ce1ecde66472743d408342f7fe7b418b323f48cf28c370c8537b"
+            },
+            "required_target_file_manifest_sha256": {
+              "const": "6135526966bef14ef2d4b33ae55c7fa62266b338a086b30be86aee2f335db664"
+            },
+            "implementation_declaration_template_sha256": {
+              "const": "40de6b9975005b3e8a76a8f5326da815bff7c7d6ae22f488e8fc01d1fa815cc5"
+            },
+            "pre35_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-35-TITMAS-INTEGRATIONS-REPOSITORY-BASELINE-CONTRACT-ADOPTION-RECOMMENDATION-v0.1.md"
+            },
+            "pre35_recommendation_sha256": {
+              "const": "0ede89c5a5a6eb475d23d0573c33345fe76bb92533fa95b02c6fc652072cf757"
+            },
+            "pre35_recommendation_commit": {
+              "const": "ec5f2183923f7afff6cc8a060bcbd5f02fca3d94"
+            },
+            "pre35_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-35-TITMAS-INTEGRATIONS-REPOSITORY-BASELINE-CONTRACT-ADOPTION-DECISION-RECORD.v0.1.json"
+            },
+            "pre35_decision_sha256": {
+              "const": "1bdfc03b826ed5f9b14c95e9217918816f2941f7ece0bc928c8c0fcba63fe8ee"
+            },
+            "pre35_decision_commit": {
+              "const": "47c97384b5106a806cad195af142871f2047a9a2"
+            },
+            "pre35_adoption_reference": {
+              "const": "architecture/titmas-integrations-repository-baseline-contract-adoption.v0.1.json"
+            },
+            "pre35_adoption_sha256": {
+              "const": "cdec6fb0e40b25037aa63ec777eb507fb7346932b46f3dc5067aab27da1d521f"
+            },
+            "pre35_adoption_maturity": {
+              "const": "Development"
+            },
+            "pre36_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-36-TITMAS-INTEGRATIONS-RB0-PUBLIC-SAFE-FILESET-RECOMMENDATION-v0.1.md"
+            },
+            "pre36_recommendation_sha256": {
+              "const": "23e9b5c2955b58616a17df058d2537801c8d89397dfb588eeb79f4a8fe849359"
+            },
+            "pre36_recommendation_commit": {
+              "const": "28031cd9e7d5b3c5fa5e38a60d74d03b007b614a"
+            },
+            "pre36_exact_action": {
+              "const": "AUTHORIZE_OFFLINE_TITMAS_INTEGRATIONS_RB0_PUBLIC_SAFE_FILESET_CANDIDATE_ONLY"
+            },
+            "pre36_decision_recorded": {
+              "const": false
+            },
+            "pre36_candidate_files_created": {
+              "const": 0
+            },
+            "license_adopted": {
+              "const": false
+            },
+            "target_repository_modified": {
+              "const": false
+            },
+            "repository_baseline_applied": {
+              "const": false
+            },
+            "implementation_authorized": {
+              "const": false
+            },
+            "implementation_created": {
+              "const": false
+            },
+            "provider_supported": {
+              "const": false
+            },
+            "conformance_executed": {
+              "const": false
+            },
+            "release_authorized": {
+              "const": false
+            }
+          }
         },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
@@ -4632,7 +4861,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE32_OFFLINE_OWNER_TARGET_HANDOFF_READINESS_DECISION_ONLY"
+          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE36_OFFLINE_RB0_PUBLIC_SAFE_FILESET_CANDIDATE_DECISION_ONLY"
         },
         "decision_ready": {
           "const": true

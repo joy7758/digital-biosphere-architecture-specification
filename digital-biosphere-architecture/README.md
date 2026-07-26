@@ -396,9 +396,24 @@ Development adoption review ready，尚未采纳或实现。
 规范输入。采纳没有 runtime effect，不重试模型，也不产生 provider support 或 conformance
 声明。
 
-[PRE-32 implementation handoff readiness recommendation](TITMAS-CS-D02-PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-RECOMMENDATION-v0.1.md)
-已远端准备。它只建议离线核验 implementation Owner、现有目标仓库、重复建设和 handoff
-contract；代码、API、新仓库和外部仓库修改上限均为 0。
+[PRE-32 implementation handoff readiness result](commercialization-standards-provider-request-instrumentation-handoff/PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-RESULT-v0.1.md)
+已 fail-closed 完成：read-only inventory 没有发现同时满足 Owner、license、package、
+source、tests 与边界前置条件的现有实现目标，未修改任何外部仓库。
+
+[PRE-33 Owner/target assignment](architecture/provider-request-instrumentation-owner-target-assignment-v0.1.md)
+已把 `zhangbin` 指派为 bounded implementation Owner，并仅把
+`joy7758/titmas-integrations@e8eeccbf...` 接受为 Development repository-baseline
+planning target；这不授予账号权限、license、实现、符合性或商业权力。
+
+[PRE-34 repository baseline result](commercialization-standards-titmas-integrations-repository-baseline/PRE-34-TITMAS-INTEGRATIONS-REPOSITORY-BASELINE-CONTRACT-RESULT-v0.1.md)
+已离线形成 repository baseline contract、required-target-file manifest 和 implementation
+declaration template；[PRE-35 Adoption Record](architecture/titmas-integrations-repository-baseline-contract-adoption-v0.1.md)
+只把三者按 exact digest 采纳为 `Development` planning input。
+
+[PRE-36 RB0 public-safe fileset recommendation](TITMAS-CS-D02-PRE-36-TITMAS-INTEGRATIONS-RB0-PUBLIC-SAFE-FILESET-RECOMMENDATION-v0.1.md)
+已远端准备。它只建议在 DBA staging directory 生成最多九个保留 `.candidate` 后缀的
+non-executable repository-governance 文件；`titmas-integrations` 不得在本阶段被修改，
+license、package、implementation、provider support、conformance 和 release 均保持 false。
 
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false

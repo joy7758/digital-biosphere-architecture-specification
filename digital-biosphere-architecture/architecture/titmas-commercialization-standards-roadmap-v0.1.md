@@ -1828,10 +1828,12 @@ PRE31_MODEL_RETRY_AUTHORIZED=false
 该采纳只约束未来 Proposal 的 phase order、first-failure preservation、dependent-phase
 closure 和 data minimization，不改变 PRE-28/PRE-29 历史或任何运行状态。
 
-### 4.46 PRE-32 Provider Request Instrumentation Handoff Readiness Recommendation
+### 4.46 PRE-32 Provider Request Instrumentation Handoff Readiness
 
 [PRE-32 recommendation](../TITMAS-CS-D02-PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-RECOMMENDATION-v0.1.md)
-已远端准备。开发前 Agent 推荐闸门：
+已经按独立
+[Decision](../TITMAS-CS-D02-PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-DECISION-RECORD.md)
+执行 read-only inventory。开发前 Agent 推荐闸门：
 
 ```text
 AGENT_RECOMMENDATION=CONDITIONALLY_RECOMMENDED
@@ -1845,15 +1847,18 @@ NOT_RECOMMENDED_AS=DROP_IN_LIBRARY_RUNTIME_ADAPTER_OR_PROVIDER_SUPPORT
 AUTHORIZE_OFFLINE_PROVIDER_REQUEST_INSTRUMENTATION_OWNER_TARGET_AND_HANDOFF_DECISION_PACKET_ONLY
 ```
 
-该工作只允许 read-only inventory、Owner/target matrix、duplication audit、handoff contract
-candidate 和 decision packet。代码、API、package、新仓库、外部仓库修改、network、
-model 与 credential 上限均为 0。
+该工作只允许 read-only inventory、Owner/target matrix、duplication audit 和 handoff
+readiness packet。代码、API、package、新仓库、外部仓库修改、network、model 与
+credential 上限均为 0。
 
-当前：
+[Result](../commercialization-standards-provider-request-instrumentation-handoff/PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-RESULT-v0.1.md)
+保留了没有合格既有目标的 fail-closed 结果：
 
 ```text
 PRE32_RECOMMENDATION_REMOTE_VERIFIED=true
-PRE32_DECISION_RECORDED=false
+PRE32_DECISION_RECORDED=true
+PRE32_EXECUTED=true
+PRE32_OUTCOME=NO_ELIGIBLE_EXISTING_TARGET_OWNER_UNRESOLVED
 PRE32_OWNER_TARGET_RESOLVED=false
 PRE32_IMPLEMENTATION_AUTHORIZED=false
 PRE32_IMPLEMENTATION_CREATED=false
@@ -1861,10 +1866,71 @@ PRE32_NEW_REPOSITORY_CREATED=false
 PRE32_EXTERNAL_REPOSITORY_MODIFIED=false
 ```
 
+### 4.47 PRE-33 Owner and Candidate Target Selection
+
+[PRE-33 Decision](../TITMAS-CS-D02-PRE-33-PROVIDER-REQUEST-INSTRUMENTATION-OWNER-TARGET-SELECTION-DECISION-RECORD.md)
+指派 `zhangbin` 为 bounded implementation Owner，并接受
+`https://github.com/joy7758/titmas-integrations.git@e8eeccbf...` 为 Development
+candidate target，仅用于 repository baseline planning。
+
+该决定不授予 repository account permission、Specification / Conformance / Commercial
+Authority，不采纳 license，不创建代码，也不修改 target。
+
+### 4.48 PRE-34 Repository Baseline Contract Candidate
+
+[PRE-34 result](../commercialization-standards-titmas-integrations-repository-baseline/PRE-34-TITMAS-INTEGRATIONS-REPOSITORY-BASELINE-CONTRACT-RESULT-v0.1.md)
+纯离线建立并验证：
+
+- repository baseline contract；
+- required target file manifest；
+- implementation declaration template；
+- 对应三个 Schema。
+
+target repo、network、model、credential、source、package、tests 和 runtime 均未发生。
+
+### 4.49 PRE-35 Development Adoption
+
+[PRE-35 Adoption Record](titmas-integrations-repository-baseline-contract-adoption-v0.1.md)
+把 PRE-34 的三个 exact artifact 按固定 digest 采纳为 `Development` planning input。
+
+```text
+PRE35_REPOSITORY_BASELINE_CONTRACT_ADOPTED=true
+PRE35_REQUIRED_TARGET_FILE_MANIFEST_ADOPTED=true
+PRE35_IMPLEMENTATION_DECLARATION_TEMPLATE_ADOPTED=true
+PRE35_LICENSE_ADOPTED=false
+PRE35_TARGET_REPOSITORY_MODIFIED=false
+PRE35_REPOSITORY_BASELINE_APPLIED=false
+PRE35_IMPLEMENTATION_AUTHORIZED=false
+```
+
+### 4.50 PRE-36 RB0 Public-safe Fileset Recommendation
+
+[PRE-36 recommendation](../TITMAS-CS-D02-PRE-36-TITMAS-INTEGRATIONS-RB0-PUBLIC-SAFE-FILESET-RECOMMENDATION-v0.1.md)
+建议的 exact action：
+
+```text
+AUTHORIZE_OFFLINE_TITMAS_INTEGRATIONS_RB0_PUBLIC_SAFE_FILESET_CANDIDATE_ONLY
+```
+
+只允许在 DBA staging directory 中生成最多九个保留 `.candidate` 后缀的 public-safe、
+non-executable governance files。implementation files、external repo modifications、
+network requests、model requests 和 credential reads 上限均为 0。
+
+当前：
+
+```text
+PRE36_RECOMMENDATION_REMOTE_VERIFIED=true
+PRE36_DECISION_RECORDED=false
+PRE36_CANDIDATE_FILES_CREATED=0
+PRE36_LICENSE_ADOPTED=false
+PRE36_TARGET_REPOSITORY_MODIFIED=false
+PRE36_IMPLEMENTATION_CREATED=false
+```
+
 下一步只允许：
 
 ```text
-APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE32_OFFLINE_OWNER_TARGET_HANDOFF_READINESS_DECISION_ONLY
+APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE36_OFFLINE_RB0_PUBLIC_SAFE_FILESET_CANDIDATE_DECISION_ONLY
 ```
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
