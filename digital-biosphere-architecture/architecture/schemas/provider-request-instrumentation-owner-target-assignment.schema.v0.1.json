@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/provider-request-instrumentation-owner-target-assignment.schema.v0.1.json",
+  "title": "Provider Request Instrumentation Owner and Target Assignment v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decided_by_ref",
+    "assigned_at",
+    "implementation_owner",
+    "candidate_target",
+    "separation",
+    "effects",
+    "next_gate"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/provider-request-instrumentation-owner-target-assignment.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-PROVIDER-REQUEST-INSTRUMENTATION-OWNER-TARGET-ASSIGNMENT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "BOUNDED_OWNER_ASSIGNED_DEVELOPMENT_CANDIDATE_TARGET_ACCEPTED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-33"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "assigned_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "implementation_owner": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner_ref",
+        "role_id",
+        "scope"
+      ],
+      "properties": {
+        "owner_ref": {
+          "const": "zhangbin"
+        },
+        "role_id": {
+          "const": "TITMAS_PROVIDER_REQUEST_INSTRUMENTATION_IMPLEMENTATION_OWNER"
+        },
+        "scope": {
+          "const": "FUTURE_EXACT_SOURCE_MAINTENANCE_AND_REPOSITORY_BASELINE_PROPOSAL_RESPONSIBILITY_ONLY"
+        }
+      }
+    },
+    "candidate_target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository_ref",
+        "observed_commit",
+        "readme_sha256",
+        "maturity",
+        "acceptance_scope"
+      ],
+      "properties": {
+        "repository_ref": {
+          "const": "https://github.com/joy7758/titmas-integrations.git"
+        },
+        "observed_commit": {
+          "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+        },
+        "readme_sha256": {
+          "const": "7c05c774f54535b52947168c76cd766ed0ede73d98c7ccf09d07727b488eb685"
+        },
+        "maturity": {
+          "const": "Development"
+        },
+        "acceptance_scope": {
+          "const": "REPOSITORY_BASELINE_PLANNING_ONLY"
+        }
+      }
+    },
+    "separation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "specification_owner_ref",
+        "implementation_owner_ref",
+        "conformance_reviewer_ref",
+        "commercial_offering_owner_ref"
+      ],
+      "properties": {
+        "specification_owner_ref": {
+          "const": "NOT_ASSIGNED"
+        },
+        "implementation_owner_ref": {
+          "const": "zhangbin"
+        },
+        "conformance_reviewer_ref": {
+          "const": "NOT_ASSIGNED"
+        },
+        "commercial_offering_owner_ref": {
+          "const": "NOT_ASSIGNED"
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository_account_permission_granted",
+        "license_adopted",
+        "repository_baseline_created",
+        "implementation_authorized",
+        "implementation_created",
+        "external_repository_modified",
+        "provider_supported",
+        "conformance_executed",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "repository_account_permission_granted": {
+          "const": false
+        },
+        "license_adopted": {
+          "const": false
+        },
+        "repository_baseline_created": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        },
+        "external_repository_modified": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    },
+    "next_gate": {
+      "const": "OFFLINE_TITMAS_INTEGRATIONS_REPOSITORY_BASELINE_REMEDIATION_CONTRACT_CANDIDATE"
+    }
+  }
+}
