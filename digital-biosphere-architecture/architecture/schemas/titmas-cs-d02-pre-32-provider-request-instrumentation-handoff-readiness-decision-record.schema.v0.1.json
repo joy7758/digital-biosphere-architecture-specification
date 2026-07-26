@@ -1,0 +1,257 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-32-provider-request-instrumentation-handoff-readiness-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-32 Provider Request Instrumentation Handoff Readiness Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "exact_action",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "primary_repository",
+    "target_branch",
+    "target_refs",
+    "preconditions",
+    "scope_limits",
+    "false_effects",
+    "stop_conditions",
+    "execution_receipt",
+    "result",
+    "known_limitations"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-32-provider-request-instrumentation-handoff-readiness-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-DECISION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "AUTHORIZED_OFFLINE_OWNER_TARGET_HANDOFF_READINESS_ONLY"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-32"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "86f75537c82c683cad8182d88d9915b0005e04e39eca22c1cfc15487d2529a34"
+    },
+    "recommendation_commit": {
+      "const": "9e77de4cfc28c901139842644815c58f43551e8f"
+    },
+    "exact_action": {
+      "const": "AUTHORIZE_OFFLINE_PROVIDER_REQUEST_INSTRUMENTATION_OWNER_TARGET_AND_HANDOFF_DECISION_PACKET_ONLY"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "target_branch": {
+      "const": "codex/production-observability-baseline"
+    },
+    "target_refs": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 8
+      }
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "standing_directive_active_bounded_fail_closed",
+        "pre31_decision_sha256",
+        "pre31_adoption_record_sha256",
+        "pre31_adoption_machine_record_sha256",
+        "adopted_contract_sha256",
+        "adopted_schema_sha256",
+        "recommendation_sha256_verified"
+      ],
+      "properties": {
+        "standing_directive_active_bounded_fail_closed": {
+          "const": true
+        },
+        "pre31_decision_sha256": {
+          "const": "6b2c8040adc7ede27d7c80319ae68dfa300712d9c00611d9b2065e54bc5fdb9b"
+        },
+        "pre31_adoption_record_sha256": {
+          "const": "b6e83a168d94e3b2a1119ca671afddc3abe6faa509eb34be9e43cb28c3c37237"
+        },
+        "pre31_adoption_machine_record_sha256": {
+          "const": "c565c9da0b48c3eddc6e780805c1b33f79297e3d132926a3f248cf5286297e08"
+        },
+        "adopted_contract_sha256": {
+          "const": "f72eb33bdb5042514deed499fdabddbc74121bc9c22c16f79316eae2aeca9913"
+        },
+        "adopted_schema_sha256": {
+          "const": "9e97b2db7d16caf83a785c4ddcdcab0f847317f3308246985cd3c0fd8698649e"
+        },
+        "recommendation_sha256_verified": {
+          "const": true
+        }
+      }
+    },
+    "scope_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "implementation_files_max",
+        "new_repositories_max",
+        "external_repository_modifications_max",
+        "network_requests_max",
+        "http_requests_max",
+        "live_model_requests_max",
+        "credential_reads_max"
+      ],
+      "properties": {
+        "implementation_files_max": {
+          "const": 0
+        },
+        "new_repositories_max": {
+          "const": 0
+        },
+        "external_repository_modifications_max": {
+          "const": 0
+        },
+        "network_requests_max": {
+          "const": 0
+        },
+        "http_requests_max": {
+          "const": 0
+        },
+        "live_model_requests_max": {
+          "const": 0
+        },
+        "credential_reads_max": {
+          "const": 0
+        }
+      }
+    },
+    "false_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "implementation_authorized",
+        "implementation_created",
+        "new_repository_authorized",
+        "new_repository_created",
+        "external_repository_modification_authorized",
+        "dbos_modified",
+        "saee_modified",
+        "network_authorized",
+        "model_retry_authorized",
+        "provider_supported",
+        "conformance_executed",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "implementation_authorized": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        },
+        "new_repository_authorized": {
+          "const": false
+        },
+        "new_repository_created": {
+          "const": false
+        },
+        "external_repository_modification_authorized": {
+          "const": false
+        },
+        "dbos_modified": {
+          "const": false
+        },
+        "saee_modified": {
+          "const": false
+        },
+        "network_authorized": {
+          "const": false
+        },
+        "model_retry_authorized": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 8
+      }
+    },
+    "execution_receipt": {
+      "const": "PENDING_PRE32_RESULT"
+    },
+    "result": {
+      "const": "AUTHORIZED_NOT_EXECUTED"
+    },
+    "known_limitations": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 8
+      }
+    }
+  }
+}

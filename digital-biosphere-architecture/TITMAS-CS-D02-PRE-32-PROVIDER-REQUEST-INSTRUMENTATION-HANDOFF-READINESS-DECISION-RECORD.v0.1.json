@@ -1,0 +1,77 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-32-provider-request-instrumentation-handoff-readiness-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_OFFLINE_OWNER_TARGET_HANDOFF_READINESS_ONLY",
+  "decision_id": "CS-D02-PRE-32",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "86f75537c82c683cad8182d88d9915b0005e04e39eca22c1cfc15487d2529a34",
+  "recommendation_commit": "9e77de4cfc28c901139842644815c58f43551e8f",
+  "exact_action": "AUTHORIZE_OFFLINE_PROVIDER_REQUEST_INSTRUMENTATION_OWNER_TARGET_AND_HANDOFF_DECISION_PACKET_ONLY",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-27T01:44:06+08:00",
+  "executed_by": "Codex",
+  "primary_repository": "digital-biosphere-architecture",
+  "target_branch": "codex/production-observability-baseline",
+  "target_refs": [
+    "OWNER_TARGET_CANDIDATE_MATRIX",
+    "EXISTING_REPOSITORY_DUPLICATION_AND_BOUNDARY_AUDIT",
+    "IMPLEMENTATION_HANDOFF_CONTRACT_CANDIDATE",
+    "TEST_AND_CONFORMANCE_HANDOFF_CHECKLIST",
+    "PRE32_READINESS_RESULT"
+  ],
+  "preconditions": {
+    "standing_directive_active_bounded_fail_closed": true,
+    "pre31_decision_sha256": "6b2c8040adc7ede27d7c80319ae68dfa300712d9c00611d9b2065e54bc5fdb9b",
+    "pre31_adoption_record_sha256": "b6e83a168d94e3b2a1119ca671afddc3abe6faa509eb34be9e43cb28c3c37237",
+    "pre31_adoption_machine_record_sha256": "c565c9da0b48c3eddc6e780805c1b33f79297e3d132926a3f248cf5286297e08",
+    "adopted_contract_sha256": "f72eb33bdb5042514deed499fdabddbc74121bc9c22c16f79316eae2aeca9913",
+    "adopted_schema_sha256": "9e97b2db7d16caf83a785c4ddcdcab0f847317f3308246985cd3c0fd8698649e",
+    "recommendation_sha256_verified": true
+  },
+  "scope_limits": {
+    "implementation_files_max": 0,
+    "new_repositories_max": 0,
+    "external_repository_modifications_max": 0,
+    "network_requests_max": 0,
+    "http_requests_max": 0,
+    "live_model_requests_max": 0,
+    "credential_reads_max": 0
+  },
+  "false_effects": {
+    "implementation_authorized": false,
+    "implementation_created": false,
+    "new_repository_authorized": false,
+    "new_repository_created": false,
+    "external_repository_modification_authorized": false,
+    "dbos_modified": false,
+    "saee_modified": false,
+    "network_authorized": false,
+    "model_retry_authorized": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  },
+  "stop_conditions": [
+    "IMPLEMENTATION_OR_RUNTIME_RESOURCE_REQUIRED",
+    "EXTERNAL_REPOSITORY_MODIFICATION_REQUIRED",
+    "NETWORK_MODEL_OR_CREDENTIAL_ACCESS_REQUIRED",
+    "OWNER_OR_TARGET_REQUIRES_INFERENCE_WITHOUT_CANONICAL_SOURCE",
+    "CONTRACT_ADOPTION_ELEVATED_TO_IMPLEMENTATION_AUTHORIZATION",
+    "OBSERVATION_ELEVATED_TO_EVIDENCE_TRUTH_PERMISSION_OR_DECISION",
+    "PROVIDER_SUPPORT_CONFORMANCE_RELEASE_OR_COMMERCIAL_CLAIM_CREATED"
+  ],
+  "execution_receipt": "PENDING_PRE32_RESULT",
+  "result": "AUTHORIZED_NOT_EXECUTED",
+  "known_limitations": [
+    "OWNER_NOT_SELECTED",
+    "TARGET_REPOSITORY_NOT_ACCEPTED",
+    "IMPLEMENTATION_NOT_AUTHORIZED",
+    "NO_PROVIDER_OR_RUNTIME_VALIDATION"
+  ]
+}
