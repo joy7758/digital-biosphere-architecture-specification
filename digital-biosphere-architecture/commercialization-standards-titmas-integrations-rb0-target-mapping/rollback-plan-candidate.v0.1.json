@@ -1,0 +1,47 @@
+{
+  "document_id": "DBA-TITMAS-CS-D02-PRE-37-ROLLBACK-PLAN-CANDIDATE-0.1",
+  "version": "0.1.0",
+  "status": "PLAN_CANDIDATE_NOT_AUTHORIZED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-37",
+  "target_repository": "https://github.com/joy7758/titmas-integrations.git",
+  "baseline_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+  "restore_existing_files": [
+    {
+      "path": "README.md",
+      "required_prior_sha256": "7c05c774f54535b52947168c76cd766ed0ede73d98c7ccf09d07727b488eb685"
+    }
+  ],
+  "remove_only_new_paths": [
+    "LICENSE",
+    "AGENTS.md",
+    "llms.txt",
+    "TITMAS-INTEGRATIONS-ENTRY.v0.1.json",
+    "schemas/titmas-integrations-entry.schema.v0.1.json",
+    "SECURITY.md",
+    "MAINTAINERS.md",
+    "IMPLEMENTATION-DECLARATION.template.v0.1.json",
+    "implementation-declaration-template.schema.v0.1.json"
+  ],
+  "preserve_paths": [
+    "crewai/.gitkeep",
+    "docs/.gitkeep",
+    "examples/.gitkeep",
+    "langchain/.gitkeep",
+    "mcp/.gitkeep",
+    "openai-agents/.gitkeep"
+  ],
+  "required_rollback_evidence": [
+    "README_RESTORED_EXACT_DIGEST",
+    "NINE_NEW_PATHS_ABSENT",
+    "SIX_EXISTING_GITKEEP_PATHS_UNCHANGED",
+    "FAILURE_AND_DECISION_HISTORY_RETAINED",
+    "TARGET_WORKTREE_CLEAN",
+    "TARGET_TREE_EQUALS_BASELINE_COMMIT"
+  ],
+  "effects": {
+    "rollback_plan_defined": true,
+    "rollback_executed": false,
+    "target_repository_modified": false,
+    "history_deletion_authorized": false
+  }
+}

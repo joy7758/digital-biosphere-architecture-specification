@@ -1,0 +1,127 @@
+{
+  "$schema": "./candidate-to-target-mapping.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-37-CANDIDATE-TO-TARGET-MAPPING-0.1",
+  "version": "0.1.0",
+  "status": "DEVELOPMENT_CANDIDATE_NOT_APPLIED",
+  "decision_reference": "CS-D02-PRE-37",
+  "source_candidate_commit": "3dbb37d95a2494d02af750b0fa4599d84581ede3",
+  "target_repository": "https://github.com/joy7758/titmas-integrations.git",
+  "target_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+  "mappings": [
+    {
+      "ordinal": 1,
+      "source_ref": "commercialization-standards-titmas-integrations-rb0-fileset/LICENSE.candidate",
+      "source_sha256": "2191d05c6ee7c145480916b745bd020484adb61653be943c43cff10bc22927a1",
+      "target_path": "LICENSE",
+      "operation": "CREATE_IF_LICENSE_ADOPTED",
+      "prior_state": "ABSENT",
+      "prior_sha256": "NOT_APPLICABLE",
+      "dependency_reason": "EXACT_APACHE_2_0_LICENSE_DECISION"
+    },
+    {
+      "ordinal": 2,
+      "source_ref": "commercialization-standards-titmas-integrations-rb0-fileset/AGENTS.md.candidate",
+      "source_sha256": "e8d562824d85f694f1fcbf9fd8e8fa34a711a8b2f4b700cde4aac5eeebd31679",
+      "target_path": "AGENTS.md",
+      "operation": "CREATE",
+      "prior_state": "ABSENT",
+      "prior_sha256": "NOT_APPLICABLE",
+      "dependency_reason": "RB0_AGENT_RULES_REVIEW"
+    },
+    {
+      "ordinal": 3,
+      "source_ref": "commercialization-standards-titmas-integrations-rb0-fileset/llms.txt.candidate",
+      "source_sha256": "12d78ad2772359a73b89c989bb55ded1c778933ea5b8f8d787cb2454215099a6",
+      "target_path": "llms.txt",
+      "operation": "CREATE",
+      "prior_state": "ABSENT",
+      "prior_sha256": "NOT_APPLICABLE",
+      "dependency_reason": "RB0_AGENT_DISCOVERY_REVIEW"
+    },
+    {
+      "ordinal": 4,
+      "source_ref": "commercialization-standards-titmas-integrations-rb0-fileset/TITMAS-INTEGRATIONS-ENTRY.v0.1.json.candidate",
+      "source_sha256": "30422f739c29780331b2a5d3551f59ffdd3087cd61a54912de72073e182fe641",
+      "target_path": "TITMAS-INTEGRATIONS-ENTRY.v0.1.json",
+      "operation": "CREATE",
+      "prior_state": "ABSENT",
+      "prior_sha256": "NOT_APPLICABLE",
+      "dependency_reason": "RB0_MACHINE_ENTRY_SCHEMA_VALID"
+    },
+    {
+      "ordinal": 5,
+      "source_ref": "commercialization-standards-titmas-integrations-rb0-fileset/titmas-integrations-entry.schema.v0.1.json.candidate",
+      "source_sha256": "875ccdd11fba3416d04df075eff8745434edbc9e5b858ae518a9571c5a146436",
+      "target_path": "schemas/titmas-integrations-entry.schema.v0.1.json",
+      "operation": "CREATE",
+      "prior_state": "ABSENT",
+      "prior_sha256": "NOT_APPLICABLE",
+      "dependency_reason": "RB0_SCHEMA_META_VALID"
+    },
+    {
+      "ordinal": 6,
+      "source_ref": "commercialization-standards-titmas-integrations-rb0-fileset/README.md.candidate",
+      "source_sha256": "3032edfdcb5929a91c212282db50a39b8db6269e1262193416d44d8ddd46b72e",
+      "target_path": "README.md",
+      "operation": "UPDATE",
+      "prior_state": "PRESENT",
+      "prior_sha256": "7c05c774f54535b52947168c76cd766ed0ede73d98c7ccf09d07727b488eb685",
+      "dependency_reason": "RB0_PUBLIC_CLAIM_REVIEW"
+    },
+    {
+      "ordinal": 7,
+      "source_ref": "commercialization-standards-titmas-integrations-rb0-fileset/SECURITY.md.candidate",
+      "source_sha256": "f0e3a53c62c3d6998c287807d1fd4e369cc1b82270fdc1142cd995664296adda",
+      "target_path": "SECURITY.md",
+      "operation": "CREATE",
+      "prior_state": "ABSENT",
+      "prior_sha256": "NOT_APPLICABLE",
+      "dependency_reason": "RB0_SECURITY_OWNER_OR_INTERIM_BOUNDARY"
+    },
+    {
+      "ordinal": 8,
+      "source_ref": "commercialization-standards-titmas-integrations-rb0-fileset/MAINTAINERS.md.candidate",
+      "source_sha256": "c8cf429294771ef1f7db4a51502aa792d83191205da0ec3b29766f02e5cab15b",
+      "target_path": "MAINTAINERS.md",
+      "operation": "CREATE",
+      "prior_state": "ABSENT",
+      "prior_sha256": "NOT_APPLICABLE",
+      "dependency_reason": "RB0_OWNER_SCOPE_REVIEW"
+    },
+    {
+      "ordinal": 9,
+      "source_ref": "commercialization-standards-titmas-integrations-rb0-fileset/IMPLEMENTATION-DECLARATION.template.v0.1.json.candidate",
+      "source_sha256": "40de6b9975005b3e8a76a8f5326da815bff7c7d6ae22f488e8fc01d1fa815cc5",
+      "target_path": "IMPLEMENTATION-DECLARATION.template.v0.1.json",
+      "operation": "CREATE",
+      "prior_state": "ABSENT",
+      "prior_sha256": "NOT_APPLICABLE",
+      "dependency_reason": "RB0_TEMPLATE_SCHEMA_VALID"
+    },
+    {
+      "ordinal": 10,
+      "source_ref": "commercialization-standards-titmas-integrations-repository-baseline/implementation-declaration-template.schema.v0.1.json",
+      "source_sha256": "1649414c13f28d364c5ce1b20b0a66067192b74c9f28b425118a789ccc109377",
+      "target_path": "implementation-declaration-template.schema.v0.1.json",
+      "operation": "CREATE_IF_PRE38_SCOPE_ADOPTED",
+      "prior_state": "ABSENT",
+      "prior_sha256": "NOT_APPLICABLE",
+      "dependency_reason": "PRE36_GAP_001_RELATIVE_SCHEMA_RESOLUTION"
+    }
+  ],
+  "checks": {
+    "target_paths_unique": true,
+    "path_traversal_present": false,
+    "undeclared_target_paths": 0,
+    "candidate_digests_match": true,
+    "readme_prior_digest_match": true,
+    "template_relative_schema_target_resolved": true
+  },
+  "effects": {
+    "mapping_defined": true,
+    "target_repository_modified": false,
+    "license_adopted": false,
+    "repository_baseline_applied": false,
+    "implementation_created": false
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "document_id": "DBA-TITMAS-CS-D02-PRE-38-DECISION-PACKET-0.1",
+  "version": "0.1.0",
+  "status": "DECISION_PACKET_CANDIDATE_NOT_READY_UNTIL_PRE37_VALIDATION",
+  "decision_candidate_id": "CS-D02-PRE-38",
+  "decision_question": "Adopt exact Apache-2.0 for the target repository and authorize exact ten-path RB0 target application, or reject?",
+  "recommended_option": "ADOPT_EXACT_APACHE_2_0_AND_AUTHORIZE_EXACT_TEN_PATH_RB0_APPLICATION_ONLY_AFTER_PRE37_VALIDATION_PASS",
+  "required_inputs": [
+    "candidate-to-target-mapping.v0.1.json",
+    "schema-gap-options-matrix.v0.1.json",
+    "revised-target-file-manifest.v0.2.json",
+    "license-adoption-decision-input.v0.1.json",
+    "target-application-plan-candidate.v0.1.json",
+    "rollback-plan-candidate.v0.1.json",
+    "PRE37_VALIDATION_RESULT",
+    "PRE37_EXECUTION_RECEIPT"
+  ],
+  "exact_effects_requiring_human_decision": [
+    "LICENSE_ADOPTION",
+    "EXTERNAL_REPOSITORY_MODIFICATION",
+    "TARGET_BRANCH_CREATION",
+    "TEN_TARGET_PATH_CREATE_OR_UPDATE",
+    "PATH_SCOPED_COMMIT",
+    "REMOTE_PUSH"
+  ],
+  "explicit_non_effects": [
+    "RB1_PACKAGE",
+    "RI0_IMPLEMENTATION",
+    "PROVIDER_SUPPORT",
+    "CONFORMANCE",
+    "CERTIFICATION",
+    "COMMERCIAL_OFFERING",
+    "RELEASE",
+    "PRODUCTION"
+  ],
+  "current_state": {
+    "decision_ready": false,
+    "license_adopted": false,
+    "target_modification_authorized": false,
+    "target_repository_modified": false,
+    "repository_baseline_applied": false
+  }
+}

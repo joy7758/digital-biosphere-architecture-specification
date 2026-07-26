@@ -1,0 +1,49 @@
+{
+  "$schema": "./schema-gap-options-matrix.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-37-SCHEMA-GAP-OPTIONS-MATRIX-0.1",
+  "version": "0.1.0",
+  "status": "REVIEW_COMPLETE_RECOMMENDATION_NOT_ADOPTED",
+  "decision_reference": "CS-D02-PRE-37",
+  "gap_id": "PRE36-GAP-001",
+  "template_reference": "commercialization-standards-titmas-integrations-rb0-fileset/IMPLEMENTATION-DECLARATION.template.v0.1.json.candidate",
+  "template_sha256": "40de6b9975005b3e8a76a8f5326da815bff7c7d6ae22f488e8fc01d1fa815cc5",
+  "template_schema_value": "./implementation-declaration-template.schema.v0.1.json",
+  "options": [
+    {
+      "option_id": "A_AS_WRITTEN_IN_PRE37_RECOMMENDATION",
+      "schema_target_path": "schemas/implementation-declaration-template.schema.v0.1.json",
+      "template_bytes_changed": false,
+      "manifest_file_count": 10,
+      "relative_reference_resolves": false,
+      "adopted_digest_preserved": true,
+      "outcome": "REJECT_UNRESOLVED_RELATIVE_REFERENCE"
+    },
+    {
+      "option_id": "A_CORRECTED_ROOT_RELATIVE_PATH",
+      "schema_target_path": "implementation-declaration-template.schema.v0.1.json",
+      "template_bytes_changed": false,
+      "manifest_file_count": 10,
+      "relative_reference_resolves": true,
+      "adopted_digest_preserved": true,
+      "outcome": "RECOMMENDED_FOR_PRE38_DECISION"
+    },
+    {
+      "option_id": "B_REVISE_TEMPLATE_REFERENCE_TO_SCHEMAS_DIRECTORY",
+      "schema_target_path": "schemas/implementation-declaration-template.schema.v0.1.json",
+      "template_bytes_changed": true,
+      "manifest_file_count": 10,
+      "relative_reference_resolves": true,
+      "adopted_digest_preserved": false,
+      "outcome": "VALID_ONLY_AFTER_NEW_TEMPLATE_REVISION_AND_ADOPTION"
+    }
+  ],
+  "recommended_option": "A_CORRECTED_ROOT_RELATIVE_PATH",
+  "recommendation_reason": "It resolves the exact relative reference while preserving the PRE-35 adopted template bytes and digest.",
+  "effects": {
+    "option_recommended": true,
+    "option_adopted": false,
+    "template_revised": false,
+    "target_repository_modified": false,
+    "license_adopted": false
+  }
+}

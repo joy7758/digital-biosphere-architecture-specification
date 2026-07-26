@@ -1,0 +1,60 @@
+{
+  "document_id": "DBA-TITMAS-CS-D02-PRE-37-TARGET-APPLICATION-PLAN-CANDIDATE-0.1",
+  "version": "0.1.0",
+  "status": "PLAN_CANDIDATE_NOT_AUTHORIZED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-37",
+  "target_repository": "https://github.com/joy7758/titmas-integrations.git",
+  "target_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+  "target_branch_candidate": "codex/rb0-governance-baseline",
+  "required_pre_write_checks": [
+    "REMOTE_AND_LOCAL_TARGET_HEAD_EQUAL",
+    "TARGET_DIRTY_COUNT_ZERO",
+    "EXACT_PRE38_DECISION_REMOTE_VERIFIED",
+    "EXACT_LICENSE_EFFECT_DECIDED",
+    "TEN_SOURCE_DIGESTS_MATCH",
+    "README_PRIOR_DIGEST_MATCH",
+    "NO_PATH_COLLISION_OR_TRAVERSAL"
+  ],
+  "planned_operations": {
+    "create_paths": [
+      "LICENSE",
+      "AGENTS.md",
+      "llms.txt",
+      "TITMAS-INTEGRATIONS-ENTRY.v0.1.json",
+      "schemas/titmas-integrations-entry.schema.v0.1.json",
+      "SECURITY.md",
+      "MAINTAINERS.md",
+      "IMPLEMENTATION-DECLARATION.template.v0.1.json",
+      "implementation-declaration-template.schema.v0.1.json"
+    ],
+    "update_paths": [
+      "README.md"
+    ],
+    "delete_paths": []
+  },
+  "required_post_write_checks": [
+    "EXACT_TARGET_PATH_COUNT_TEN",
+    "ALL_TARGET_DIGESTS_MATCH",
+    "ALL_LOCAL_SCHEMA_REFERENCES_RESOLVE",
+    "SCHEMAS_META_VALID",
+    "MACHINE_ENTRY_AND_TEMPLATE_INSTANCES_VALID",
+    "README_AGENTS_LLMS_MACHINE_STATUS_CONSISTENT",
+    "PUBLIC_SAFE_PATTERN_CHECK_ZERO",
+    "SOURCE_PACKAGE_TEST_RUNTIME_COUNT_ZERO",
+    "FAILURE_PRESERVATION_AND_NON_CLAIMS_PRESENT",
+    "ROLLBACK_DRY_RUN_PASS"
+  ],
+  "commit_and_push_boundary": {
+    "path_scoped_commit_required": true,
+    "force_push_allowed": false,
+    "push_authorized_by_pre37": false,
+    "pull_request_authorized_by_pre37": false
+  },
+  "effects": {
+    "plan_defined": true,
+    "plan_adopted": false,
+    "target_repository_modified": false,
+    "license_adopted": false,
+    "repository_baseline_applied": false
+  }
+}

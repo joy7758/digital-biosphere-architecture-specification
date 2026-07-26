@@ -1,0 +1,172 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/candidate-to-target-mapping.schema.v0.1.json",
+  "title": "TITMAS Integrations Candidate-to-target Mapping v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "source_candidate_commit",
+    "target_repository",
+    "target_commit",
+    "mappings",
+    "checks",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./candidate-to-target-mapping.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-37-CANDIDATE-TO-TARGET-MAPPING-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DEVELOPMENT_CANDIDATE_NOT_APPLIED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-37"
+    },
+    "source_candidate_commit": {
+      "const": "3dbb37d95a2494d02af750b0fa4599d84581ede3"
+    },
+    "target_repository": {
+      "const": "https://github.com/joy7758/titmas-integrations.git"
+    },
+    "target_commit": {
+      "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+    },
+    "mappings": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "ordinal",
+          "source_ref",
+          "source_sha256",
+          "target_path",
+          "operation",
+          "prior_state",
+          "prior_sha256",
+          "dependency_reason"
+        ],
+        "properties": {
+          "ordinal": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 10
+          },
+          "source_ref": {
+            "type": "string",
+            "minLength": 20
+          },
+          "source_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "target_path": {
+            "type": "string",
+            "pattern": "^(?!/)(?!.*\\.\\.)(?!.*//)[A-Za-z0-9._/-]+$"
+          },
+          "operation": {
+            "enum": [
+              "CREATE",
+              "UPDATE",
+              "CREATE_IF_LICENSE_ADOPTED",
+              "CREATE_IF_PRE38_SCOPE_ADOPTED"
+            ]
+          },
+          "prior_state": {
+            "enum": [
+              "ABSENT",
+              "PRESENT"
+            ]
+          },
+          "prior_sha256": {
+            "oneOf": [
+              {
+                "const": "NOT_APPLICABLE"
+              },
+              {
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            ]
+          },
+          "dependency_reason": {
+            "type": "string",
+            "minLength": 8
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_paths_unique",
+        "path_traversal_present",
+        "undeclared_target_paths",
+        "candidate_digests_match",
+        "readme_prior_digest_match",
+        "template_relative_schema_target_resolved"
+      ],
+      "properties": {
+        "target_paths_unique": {
+          "const": true
+        },
+        "path_traversal_present": {
+          "const": false
+        },
+        "undeclared_target_paths": {
+          "const": 0
+        },
+        "candidate_digests_match": {
+          "const": true
+        },
+        "readme_prior_digest_match": {
+          "const": true
+        },
+        "template_relative_schema_target_resolved": {
+          "const": true
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mapping_defined",
+        "target_repository_modified",
+        "license_adopted",
+        "repository_baseline_applied",
+        "implementation_created"
+      ],
+      "properties": {
+        "mapping_defined": {
+          "const": true
+        },
+        "target_repository_modified": {
+          "const": false
+        },
+        "license_adopted": {
+          "const": false
+        },
+        "repository_baseline_applied": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        }
+      }
+    }
+  }
+}

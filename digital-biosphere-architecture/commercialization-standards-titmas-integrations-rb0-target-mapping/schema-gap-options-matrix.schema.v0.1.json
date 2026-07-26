@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/schema-gap-options-matrix.schema.v0.1.json",
+  "title": "PRE-37 Schema Gap Options Matrix v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "gap_id",
+    "template_reference",
+    "template_sha256",
+    "template_schema_value",
+    "options",
+    "recommended_option",
+    "recommendation_reason",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schema-gap-options-matrix.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-37-SCHEMA-GAP-OPTIONS-MATRIX-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "REVIEW_COMPLETE_RECOMMENDATION_NOT_ADOPTED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-37"
+    },
+    "gap_id": {
+      "const": "PRE36-GAP-001"
+    },
+    "template_reference": {
+      "type": "string",
+      "minLength": 30
+    },
+    "template_sha256": {
+      "const": "40de6b9975005b3e8a76a8f5326da815bff7c7d6ae22f488e8fc01d1fa815cc5"
+    },
+    "template_schema_value": {
+      "const": "./implementation-declaration-template.schema.v0.1.json"
+    },
+    "options": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "option_id",
+          "schema_target_path",
+          "template_bytes_changed",
+          "manifest_file_count",
+          "relative_reference_resolves",
+          "adopted_digest_preserved",
+          "outcome"
+        ],
+        "properties": {
+          "option_id": {
+            "type": "string",
+            "minLength": 8
+          },
+          "schema_target_path": {
+            "type": "string",
+            "minLength": 20
+          },
+          "template_bytes_changed": {
+            "type": "boolean"
+          },
+          "manifest_file_count": {
+            "const": 10
+          },
+          "relative_reference_resolves": {
+            "type": "boolean"
+          },
+          "adopted_digest_preserved": {
+            "type": "boolean"
+          },
+          "outcome": {
+            "type": "string",
+            "minLength": 16
+          }
+        }
+      }
+    },
+    "recommended_option": {
+      "const": "A_CORRECTED_ROOT_RELATIVE_PATH"
+    },
+    "recommendation_reason": {
+      "type": "string",
+      "minLength": 40
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "option_recommended",
+        "option_adopted",
+        "template_revised",
+        "target_repository_modified",
+        "license_adopted"
+      ],
+      "properties": {
+        "option_recommended": {
+          "const": true
+        },
+        "option_adopted": {
+          "const": false
+        },
+        "template_revised": {
+          "const": false
+        },
+        "target_repository_modified": {
+          "const": false
+        },
+        "license_adopted": {
+          "const": false
+        }
+      }
+    }
+  }
+}
