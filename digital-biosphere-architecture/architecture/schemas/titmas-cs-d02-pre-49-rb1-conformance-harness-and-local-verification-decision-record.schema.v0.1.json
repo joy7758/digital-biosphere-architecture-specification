@@ -1,0 +1,134 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-49-rb1-conformance-harness-and-local-verification-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-49 RB1 Conformance Harness and Local Verification Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_id", "standing_directive_reference", "recommendation_reference", "recommendation_sha256", "recommendation_commit", "decision_result", "decided_by_ref", "decided_at", "executed_by", "standing_directive_eligibility", "preconditions", "scope", "authorized_paths", "validation_contract", "effects_before_execution", "rollback", "next_gate", "execution_receipt", "result"],
+  "properties": {
+    "$schema": {"const": "./architecture/schemas/titmas-cs-d02-pre-49-rb1-conformance-harness-and-local-verification-decision-record.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-49-RB1-CONFORMANCE-HARNESS-AND-LOCAL-VERIFICATION-DECISION-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "EXACT_RB1_CONFORMANCE_HARNESS_AND_LOCAL_REHEARSAL_AUTHORIZED_NOT_EXECUTED"},
+    "decision_id": {"const": "CS-D02-PRE-49"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {"const": "TITMAS-CS-D02-PRE-49-RB1-CONFORMANCE-HARNESS-AND-LOCAL-VERIFICATION-RECOMMENDATION-v0.1.md"},
+    "recommendation_sha256": {"$ref": "#/$defs/sha256"},
+    "recommendation_commit": {"$ref": "#/$defs/gitsha"},
+    "decision_result": {"const": "AUTHORIZE_EXACT_RB1_INDEPENDENT_PATH_CONFORMANCE_HARNESS_AND_LOCAL_CONTRACT_REHEARSAL"},
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "Codex"},
+    "standing_directive_eligibility": {
+      "const": {
+        "canonical_recommendation_present": true,
+        "single_exact_option": true,
+        "repositories_target_and_scope_explicit": true,
+        "preconditions_directly_evidenced": true,
+        "all_effect_classes_declared": true,
+        "stop_conditions_explicit": true,
+        "later_conflict_present": false,
+        "independent_decision_record_present": true,
+        "result_validation_and_failure_retention_required": true,
+        "material_actions_separately_recorded": true,
+        "applicable": true
+      }
+    },
+    "preconditions": {
+      "const": {
+        "recommendation_remote_verified": true,
+        "recommendation_commit": "6542d6b6c896edb9d1306cd3877a1c6b8920875b",
+        "pre48_gate_pass": true,
+        "pre48_tests_pass": 20,
+        "pre48_authorized_paths_valid": 14,
+        "target_head": "001da006aa32a1eeeb058daa31dcab39197fa4de",
+        "target_remote_branch_matched": true,
+        "target_dirty_count": 0,
+        "target_main_head": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+      }
+    },
+    "scope": {
+      "const": {
+        "primary_repository": "digital-biosphere-architecture",
+        "target_repository": "https://github.com/joy7758/titmas-integrations.git",
+        "target_branch": "codex/rb0-governance-baseline",
+        "new_files_max": 16,
+        "updated_files_max": 8,
+        "fixture_count": 7,
+        "conformance_source_files_max": 1,
+        "test_files_added_max": 1,
+        "runtime_dependencies_max": 0,
+        "provider_dependencies_max": 0,
+        "network_requests_max": 0,
+        "provider_bindings_max": 0
+      }
+    },
+    "authorized_paths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["new", "updated"],
+      "properties": {
+        "new": {"type": "array", "minItems": 16, "maxItems": 16, "uniqueItems": true, "items": {"type": "string", "minLength": 5}},
+        "updated": {"type": "array", "minItems": 8, "maxItems": 8, "uniqueItems": true, "items": {"type": "string", "minLength": 5}}
+      }
+    },
+    "validation_contract": {
+      "const": {
+        "validator_imports_target_implementation": false,
+        "validator_runtime_dependencies": 0,
+        "fixture_normalization_allowed": false,
+        "fixture_repair_allowed": false,
+        "network_allowed": false,
+        "build_command": "uv build --offline --out-dir <fresh-temporary-directory>",
+        "build_network_allowed": false,
+        "third_party_independence_claimed": false,
+        "provider_conformance_claimed": false
+      }
+    },
+    "effects_before_execution": {
+      "const": {
+        "target_write_authorized": true,
+        "conformance_harness_implementation_authorized": true,
+        "local_contract_rehearsal_authorized": true,
+        "clean_clone_validation_authorized": true,
+        "main_branch_write_authorized": false,
+        "provider_binding_authorized": false,
+        "provider_supported": false,
+        "provider_conformance_authorized": false,
+        "third_party_conformance_authorized": false,
+        "runtime_authorized": false,
+        "agent_authorized": false,
+        "entity_authorized": false,
+        "permission_granted": false,
+        "evidence_truth_changed": false,
+        "merge_authorized": false,
+        "pull_request_authorized": false,
+        "release_authorized": false,
+        "commercial_offer_authorized": false,
+        "certification_authorized": false
+      }
+    },
+    "rollback": {
+      "const": {
+        "target_parent": "001da006aa32a1eeeb058daa31dcab39197fa4de",
+        "history_rewrite_allowed": false,
+        "force_push_allowed": false,
+        "rollback_by_followup_commit_only": true
+      }
+    },
+    "next_gate": {
+      "const": {
+        "gate_id": "CS-D02-PRE-49-EXECUTION",
+        "action": "IMPLEMENT_EXACT_24_PATH_CONFORMANCE_HARNESS_AND_LOCAL_REHEARSAL",
+        "provider_support_decision_allowed": false,
+        "release_decision_allowed": false
+      }
+    },
+    "execution_receipt": {"const": "PENDING_PRE49_RESULT"},
+    "result": {"const": "RB1_CONFORMANCE_HARNESS_AND_LOCAL_REHEARSAL_NOT_EXECUTED"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gitsha": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+  }
+}
