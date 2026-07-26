@@ -170,6 +170,30 @@ EMERGENT_CAPABILITY_NE_AUTOMATIC_PERMISSION=true
 把组合规模、连接数量或涌现行为升级为 Authority、Permission、Decision、Truth 或
 全局控制。有限治理和协调必须保留，但协调组件本身必须可审计、可撤销且边界有限。
 
+## Digital Immune Design Guard（数字免疫设计护栏）
+
+处理 Digital Immune、Agent Health、Immune Memory、Reputation、graded response、
+Digital Immune Cell、AEO 或 VEC 工作时，必须读取：
+
+- [`TITMAS Digital Immune Constitution v1.0`](architecture/titmas-digital-immune-constitution-v1.0.md)；
+- [`ADR-033`](architecture/ADR-033-titmas-digital-immune-constitution-design-baseline.md)。
+
+当前该宪法是 `Development` 设计基线，不是 Stable 标准或 Runtime。必须保持：
+
+```text
+EVIDENCE_PROVES_PROCESS_NOT_INTELLIGENCE_CORRECTNESS=true
+IMMUNE_RESPONSE_NE_AUTOMATIC_EXECUTION=true
+FITNESS_NE_AUTHORITY=true
+REPUTATION_NE_PERMISSION=true
+SAEE_NE_CONTROLLER=true
+DIGITAL_IMMUNE_CELL_CREATED=false
+```
+
+SAEE 只能形成评价、风险和响应建议；Governance Decision 决定是否采纳；DBOS 只在
+有效 Authorization 和 Lifecycle control 下执行并记录。任何 crosswalk 都是候选映射，
+不能把 POP、Agent Evidence、ARO、Agent Health、TEK-Bench、DBL、AEO 或 VEC 写成
+已采纳能力、核心 Portfolio、证书、认证或实现事实。
+
 ## Architecture Truth Boundaries（架构事实边界）
 
 - Recommendation ≠ Decision；Decision ≠ Execution；

@@ -610,6 +610,8 @@ DBOS != SAEE.
 | 文档 | 作用 |
 |---|---|
 | [`architecture/open-infrastructure-strategy-constitution.md`](architecture/open-infrastructure-strategy-constitution.md) | 最高开放基础设施战略宪法与 proposal gate |
+| [`architecture/titmas-digital-immune-constitution-v1.0.md`](architecture/titmas-digital-immune-constitution-v1.0.md) | TITMAS 数字免疫宪法 v1.0 开发期设计基线：组合式规模、身份、边界、证据、稳态、分级响应、记忆与演化选择 |
+| [`architecture/ADR-033-titmas-digital-immune-constitution-design-baseline.md`](architecture/ADR-033-titmas-digital-immune-constitution-design-baseline.md) | 接受数字免疫设计基线但不升级为 Stable 规范、实现或自动控制权 |
 | [`architecture/developer-ecosystem-strategy.md`](architecture/developer-ecosystem-strategy.md) | Developer、SDK、Protocol、Community 与 Marketplace 路线 |
 | [`architecture/commercialization-strategy.md`](architecture/commercialization-strategy.md) | Open Core、Enterprise Edition、Industry Solutions 与 Certification 边界 |
 | [`architecture/ADR-015-open-infrastructure-strategy.md`](architecture/ADR-015-open-infrastructure-strategy.md) | 选择开放基础设施路线的架构决策 |

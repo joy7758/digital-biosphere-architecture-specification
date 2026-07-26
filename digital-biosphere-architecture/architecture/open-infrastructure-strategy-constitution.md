@@ -1,6 +1,6 @@
-# Digital Biosphere Open Infrastructure Strategy Constitution v0.3
+# Digital Biosphere Open Infrastructure Strategy Constitution v0.4
 
-中文：数字生物圈开放基础设施战略宪法 v0.3
+中文：数字生物圈开放基础设施战略宪法 v0.4
 
 Status: `ADOPTED_STRATEGIC_CONSTITUTION`
 
@@ -12,6 +12,11 @@ Amendment references:
 
 - [`ADR-029`](ADR-029-titmas-infrastructure-developer-community-direction.md)
 - [`ADR-032`](ADR-032-compositional-scale-over-unbounded-center.md)
+
+Development design overlay:
+
+- [`TITMAS Digital Immune Constitution v1.0`](titmas-digital-immune-constitution-v1.0.md)
+  / [`ADR-033`](ADR-033-titmas-digital-immune-constitution-design-baseline.md)
 
 ## Constitutional Position
 
@@ -203,6 +208,27 @@ Authority、Permission、Decision、Truth Ownership 或全局控制权。协调�
 详细决策和替代方案见
 [`ADR-032`](ADR-032-compositional-scale-over-unbounded-center.md)。
 
+### Digital Immune Constitutional Design Layer（数字免疫宪法设计层）
+
+TITMAS 使用 Digital Immune（数字免疫）作为连接 Identity、Boundary、Evidence、
+Health、Memory、Reputation input 和 Evolution Evaluation 的设计视角。该视角必须服从
+本宪法、组合式规模原则以及 DBA / DBOS / SAEE / Governance Decision 的既有责任分离。
+
+[`TITMAS Digital Immune Constitution v1.0`](titmas-digital-immune-constitution-v1.0.md)
+已由 [`ADR-033`](ADR-033-titmas-digital-immune-constitution-design-baseline.md)
+接受为 `Development` 级设计基线。它不是 Stable 规范，不创建新 Authority、Runtime、
+Entity、Evidence、Permission、Certificate 或自动免疫控制。
+
+其关键边界是：
+
+```text
+EVIDENCE_PROVES_BOUNDED_EXECUTION_HISTORY_NOT_INTELLIGENCE_CORRECTNESS=true
+IMMUNE_RESPONSE_IS_GRADED_GOVERNANCE_INPUT_NOT_AUTOMATIC_EXECUTION=true
+FITNESS_NE_AUTHORITY=true
+REPUTATION_NE_PERMISSION=true
+SAEE_NE_CONTROLLER=true
+```
+
 ## Principle 6: Applications Grow on DBOS
 
 生态关系为：
@@ -349,6 +375,11 @@ TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
 TITMAS_FOUNDATION_IN_SCOPE=false
 TELEMETRY_NE_EVIDENCE=true
 EVIDENCE_NE_TRUTH=true
+DIGITAL_IMMUNE_CONSTITUTION_DESIGN_BASELINE_DEFINED=true
+DIGITAL_IMMUNE_CONSTITUTION_STABLE_ADOPTED=false
+IMMUNE_METAPHOR_NE_RUNTIME_CONTROL=true
+FITNESS_NE_AUTHORITY=true
+REPUTATION_NE_PERMISSION=true
 UNBOUNDED_CENTRAL_INTELLIGENCE_IS_NOT_TARGET=true
 COMPOSITIONAL_SCALE_IS_STRATEGIC_DEFAULT=true
 SIMPLE_ENTITY_NE_UNGOVERNED_ENTITY=true

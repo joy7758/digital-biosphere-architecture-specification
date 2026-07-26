@@ -5,6 +5,7 @@ title_zh: 数字生物圈项目群治理章程 v0.1
 status: accepted-owner-assigned
 decision_reference: architecture/ADR-020-release-preparation-owner-decisions.md
 strategic_amendment_reference: architecture/ADR-032-compositional-scale-over-unbounded-center.md
+digital_immune_design_reference: architecture/titmas-digital-immune-constitution-v1.0.md
 program_authority_assigned: true
 program_owner_ref: zhangbin
 runtime_authority_created: false
@@ -76,6 +77,24 @@ UNBOUNDED_CENTRAL_INTELLIGENCE_IS_NOT_TARGET=true
 COMPOSITIONAL_SCALE_IS_STRATEGIC_DEFAULT=true
 COMPOSITION_NE_AUTHORITY_AGGREGATION=true
 COVERAGE_NE_CORRECTNESS_OR_TRUTH=true
+```
+
+## 2B. Digital Immune Design Baseline（数字免疫设计基线）
+
+[`TITMAS Digital Immune Constitution v1.0`](architecture/titmas-digital-immune-constitution-v1.0.md)
+已由 [`ADR-033`](architecture/ADR-033-titmas-digital-immune-constitution-design-baseline.md)
+接受为 `Development` 级设计基线。它用 Identity、Boundary、Evidence、Health、
+Memory、Reputation input 和 Evolution Evaluation 描述长期数字生态的免疫视角。
+
+该设计层不改变 DBA、DBOS、SAEE 或 Governance Decision 的 Authority，不创建自动控制器，
+也不把 Evidence、Fitness 或 Reputation 提升为 Truth、Permission 或执行权。
+
+```text
+DIGITAL_IMMUNE_CONSTITUTION_DESIGN_BASELINE_DEFINED=true
+DIGITAL_IMMUNE_CONSTITUTION_STABLE_ADOPTED=false
+IMMUNE_RESPONSE_NE_AUTOMATIC_EXECUTION=true
+FITNESS_NE_AUTHORITY=true
+REPUTATION_NE_PERMISSION=true
 ```
 
 ## 3. DBA Program Governance Scope（DBA 项目群治理范围）

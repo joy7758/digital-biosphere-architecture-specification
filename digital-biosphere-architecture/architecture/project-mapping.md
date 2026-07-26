@@ -22,7 +22,7 @@ creates_project_relationships: false
 | project_id | 项目 | v0.1 架构角色 | 最近责任域 | 事实边界 | 待澄清的重复建设风险 |
 |---|---|---|---|---|---|
 | `PROJECT-DIGITAL-BIOSPHERE-ARCHITECTURE` | Digital Biosphere Architecture | Program Governance Hub（项目群治理中心）+ Architecture Specification Hub（架构规范中心）+ Protocol Governance（协议治理）+ Architecture Authority Layer（架构权力层） | Program Governance / Architecture Governance / Protocol Rules | 驾驶舱管理组合、路线图、状态引用、依赖、决策、gate、风险与 TMAP 契约；`ADR-020` 指派 `zhangbin` 为 Human Program Owner，但 DBA 仍不是 Runtime、Entity、最终授权主体或执行权来源 | 与既有 public meaning layer 的 canonical reconciliation、其余角色任命、Git topology 和版本发布机制仍待定义 |
-| `ARCH-DOMAIN-TITMAS` | TITMAS | Proposed Interoperability Architecture Domain（拟议互操作架构域）+ adopted Infrastructure Developer Community direction（已采纳基础设施开发者社区方向） | DBA-governed interoperability architecture | 社区规范名称为 `TITMAS Infrastructure Developer Community`；`C1 CONTRIBUTOR_ENTRY_PREPARED` 只包含本地 Guide、机器入口和治理模板，Architecture Domain、Authority Freeze、Interface、公共贡献表面、正式行为／安全路径、SIG、Maintainer、仓库和实现均未据此自动采纳或建立 | 与 TMAI/TMAP 的公开命名、DBOS/EEOAP/SAEE 对象 Owner、OpenTelemetry reference/profile/runtime 三轴以及社区角色和 Architecture Authority 的分离仍须冻结 |
+| `ARCH-DOMAIN-TITMAS` | TITMAS | Proposed Interoperability Architecture Domain（拟议互操作架构域）+ adopted Infrastructure Developer Community direction（已采纳基础设施开发者社区方向）+ Digital Immune Constitution `Development` design layer（数字免疫宪法开发期设计层） | DBA-governed interoperability architecture | 社区规范名称为 `TITMAS Infrastructure Developer Community`；`C1 CONTRIBUTOR_ENTRY_PREPARED` 只包含本地 Guide、机器入口和治理模板；`ADR-033` 只接受数字免疫设计基线。Architecture Domain、Authority Freeze、Interface、Stable Digital Immune Constitution、公共贡献表面、正式行为／安全路径、SIG、Maintainer、仓库和实现均未据此自动采纳或建立 | 与 TMAI/TMAP 的公开命名、DBOS/EEOAP/SAEE 对象 Owner、OpenTelemetry reference/profile/runtime 三轴、Digital Immune crosswalk 以及社区角色和 Architecture Authority 的分离仍须冻结 |
 | `PROJECT-DBOS` | DBOS | Trusted Multi-Agent Existence Infrastructure（可信多智能体存在基础设施）；Digital Biosphere Operating System；Operational Authority（运行权力）；Infrastructure Entity（基础设施实体）的架构角色示例 | Existence Governance / DBOS | DBOS repository 不是 Entity；DBOS 不是 Agent Application、Agent Framework 或 Foundation Model；Operational Authority 不等于最终授权权，也不证明 Identity、Execution、Federation 或实体实例已存在 | 与 POP、Token Governor、证据组件及 OpenTelemetry intake 的实现边界需逐项契约化 |
 | `PROJECT-SAEE` | SAEE | Evolution Intelligence Layer（演化智能层）；Evolution Engine；Evolution Authority（演化权力）；Evolution Entity（演化实体）的架构角色示例 | Evolution Governance / SAEE | SAEE repository 不是 Entity；Evolution Authority 只覆盖评价，不授予 DBOS 写权、执行权或架构修改权 | Governance Evolution 与 DBOS/Token Governor 的策略生效及未来实体资格需澄清 |
 | `ARCH-LAYER-GOVERNANCE-DECISION` | Governance Decision Layer | Decision Authority（决策权力）的 record and state boundary（记录与状态边界） | SAEE 与 DBOS 之间的独立治理边界 | 不是项目实现、DBOS 模块、SAEE 模块、Runtime、Entity 或自动授权主体；`Decision Authority` 标签不定义最终授权者 | 最终 reviewer、decision authority、adoption authority 与职责分离规则尚需定义 |
@@ -58,6 +58,8 @@ TITMAS_CONTRIBUTOR_ENTRY_PREPARED=true
 TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
 TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
 TITMAS_FOUNDATION_IN_SCOPE=false
+DIGITAL_IMMUNE_CONSTITUTION_DESIGN_BASELINE_DEFINED=true
+DIGITAL_IMMUNE_CONSTITUTION_STABLE_ADOPTED=false
 ```
 
 Research Agent、Medical Agent、Enterprise Agent、Robot Agent 和其他 Industry Agent 默认属于 Application / Digital Entity 生态。只有跨应用复用、开放协议化且不引入领域 Authority 的能力，才可以申请进入 DBOS core roadmap。
