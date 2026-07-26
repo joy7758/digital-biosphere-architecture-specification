@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre53-execution-receipt.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "completed_at", "artifact_count_bound", "artifacts", "request_counts", "effects", "self_hash_policy", "next_action"],
+  "properties": {
+    "$schema": {"const": "./execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE-53-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_12_OF_12_BOUND_REQUESTS_PRIMARY_NEW_PROVIDER_QWEN"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "artifact_count_bound": {"const": 10},
+    "artifacts": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "request_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized", "executed", "passed", "failed", "retry", "fallback", "model_substitution", "json_repair"],
+      "properties": {
+        "authorized": {"const": 12},
+        "executed": {"const": 12},
+        "passed": {"const": 12},
+        "failed": {"const": 0},
+        "retry": {"const": 0},
+        "fallback": {"const": 0},
+        "model_substitution": {"const": 0},
+        "json_repair": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 10,
+      "additionalProperties": {"const": false}
+    },
+    "self_hash_policy": {"const": "SELF_SHA256_NOT_EMBEDDED_REPORTED_BY_POST_WRITE_VALIDATION"},
+    "next_action": {"const": "CONNECT_DASHSCOPE_API_KEY_THEN_FORM_QWEN_ONBOARDING_BENCHMARK_RECOMMENDATION"}
+  }
+}

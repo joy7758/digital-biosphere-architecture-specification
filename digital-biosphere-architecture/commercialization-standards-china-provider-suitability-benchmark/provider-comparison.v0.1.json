@@ -1,0 +1,166 @@
+{
+  "$schema": "./provider-comparison.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-53-PROVIDER-COMPARISON-0.1",
+  "version": "0.1.0",
+  "status": "DIRECT_TEST_COMPLETE_DESK_REVIEW_COMPLETE",
+  "direct_tested_models": [
+    {
+      "provider": "DEEPSEEK",
+      "model": "deepseek-v4-flash",
+      "requests_passed": "3/3",
+      "direct_json_passed": "3/3",
+      "schema_passed": "3/3",
+      "exact_model_match": "3/3",
+      "median_latency_ms": 1310,
+      "mean_latency_ms": 1388,
+      "observed_fit": "PRIMARY_CONNECTED_MACHINE_REVIEW_CANDIDATE"
+    },
+    {
+      "provider": "DEEPSEEK",
+      "model": "deepseek-v4-pro",
+      "requests_passed": "3/3",
+      "direct_json_passed": "3/3",
+      "schema_passed": "3/3",
+      "exact_model_match": "3/3",
+      "median_latency_ms": 2257,
+      "mean_latency_ms": 2242,
+      "observed_fit": "HIGHER_CAPABILITY_CONNECTED_REVIEW_CANDIDATE"
+    },
+    {
+      "provider": "QIANFAN",
+      "model": "ernie-4.5-turbo-20260402",
+      "requests_passed": "3/3",
+      "direct_json_passed": "3/3",
+      "schema_passed": "3/3",
+      "exact_model_match": "3/3",
+      "median_latency_ms": 3004,
+      "mean_latency_ms": 3123,
+      "observed_fit": "CONNECTED_PROVIDER_DIVERSITY_CANDIDATE"
+    },
+    {
+      "provider": "ARK",
+      "model": "doubao-seed-2-0-lite-260215",
+      "requests_passed": "3/3",
+      "direct_json_passed": "3/3",
+      "schema_passed": "3/3",
+      "exact_model_match": "3/3",
+      "median_latency_ms": 7997,
+      "mean_latency_ms": 8941,
+      "observed_fit": "CONNECTED_PROVIDER_DIVERSITY_CANDIDATE_HIGHER_OBSERVED_LATENCY"
+    }
+  ],
+  "official_documentation_only_candidates": [
+    {
+      "priority": 1,
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "model": "qwen3.7-plus-2026-05-26",
+      "credential_identifier": "DASHSCOPE_API_KEY",
+      "endpoint": "https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "openai_compatible": true,
+      "structured_json_documented": true,
+      "context_window": "1M",
+      "snapshot_pinned_model": true,
+      "direct_test_status": "NOT_TESTED_CREDENTIAL_NOT_CONNECTED",
+      "official_references": [
+        "https://help.aliyun.com/zh/model-studio/text-generation-model/",
+        "https://help.aliyun.com/en/model-studio/qwen-structured-output",
+        "https://help.aliyun.com/zh/model-studio/qwen-api-via-openai-chat-completions"
+      ],
+      "fit": "BEST_NEW_PROVIDER_CANDIDATE_FOR_INDEPENDENT_SECURITY_REVIEWER"
+    },
+    {
+      "priority": 2,
+      "provider": "ZHIPU_BIGMODEL",
+      "model": "glm-5.2",
+      "credential_identifier": "ZHIPUAI_API_KEY",
+      "endpoint": "https://open.bigmodel.cn/api/paas/v4/chat/completions",
+      "openai_compatible": true,
+      "structured_json_documented": true,
+      "context_window": "1M",
+      "snapshot_pinned_model": false,
+      "direct_test_status": "NOT_TESTED_CREDENTIAL_NOT_CONNECTED",
+      "official_references": [
+        "https://docs.bigmodel.cn/cn/guide/models/text/glm-5.2",
+        "https://docs.bigmodel.cn/cn/guide/develop/openai/introduction"
+      ],
+      "fit": "SECOND_NEW_PROVIDER_CANDIDATE_LONG_CONTEXT_ENGINEERING_REVIEW"
+    },
+    {
+      "priority": 3,
+      "provider": "MOONSHOT_KIMI_DIRECT",
+      "model": "kimi-k2.6",
+      "credential_identifier": "MOONSHOT_API_KEY",
+      "endpoint": "https://api.moonshot.cn/v1/chat/completions",
+      "openai_compatible": true,
+      "structured_json_documented": true,
+      "context_window": "DOCUMENTED_MODEL_DEPENDENT",
+      "snapshot_pinned_model": false,
+      "direct_test_status": "NOT_TESTED_DIRECT_MOONSHOT_CREDENTIAL_NOT_CONNECTED",
+      "official_references": [
+        "https://platform.kimi.com/docs/api/chat",
+        "https://www.kimi.com/help/kimi-api/api-overview"
+      ],
+      "fit": "CANDIDATE_BUT_QIANFAN_HOSTED_KIMI_FAILURE_HISTORY_DOES_NOT_PROVE_DIRECT_ROUTE"
+    },
+    {
+      "priority": 4,
+      "provider": "MINIMAX",
+      "model": "MiniMax-M2.7",
+      "credential_identifier": "MINIMAX_API_KEY",
+      "endpoint": "https://api.minimaxi.com/v1/chat/completions",
+      "openai_compatible": true,
+      "structured_json_documented": false,
+      "context_window": "204800",
+      "snapshot_pinned_model": false,
+      "direct_test_status": "NOT_TESTED_CREDENTIAL_NOT_CONNECTED",
+      "official_references": [
+        "https://platform.minimaxi.com/docs/api-reference/text-chat-openai",
+        "https://platform.minimaxi.com/docs/api-reference/text-openai-api"
+      ],
+      "fit": "LOWER_PRIORITY_STRICT_DIRECT_JSON_REQUIRES_REASONING_SEPARATION_VALIDATION"
+    },
+    {
+      "priority": 5,
+      "provider": "TENCENT_TOKENHUB_HUNYUAN",
+      "model": "hy3",
+      "credential_identifier": "HUNYUAN_API_KEY",
+      "endpoint": "ACCOUNT_AND_TOKENHUB_CONFIGURATION_REQUIRED",
+      "openai_compatible": true,
+      "structured_json_documented": false,
+      "context_window": "256K",
+      "snapshot_pinned_model": false,
+      "direct_test_status": "NOT_TESTED_CREDENTIAL_NOT_CONNECTED",
+      "official_references": [
+        "https://intl.cloud.tencent.com/zh/document/product/1300/80695",
+        "https://cloud.tencent.com/document/product/1729/111007"
+      ],
+      "fit": "CANDIDATE_WITH_PLATFORM_MIGRATION_AND_REQUEST_CONTRACT_UNCERTAINTY"
+    }
+  ],
+  "recommendation": {
+    "best_current_connected_model": "deepseek-v4-flash",
+    "best_current_connected_reason": "3/3 strict direct JSON and boundary correctness with lowest observed median latency",
+    "primary_new_provider_to_connect": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "primary_new_model_to_test": "qwen3.7-plus-2026-05-26",
+    "primary_new_credential_identifier": "DASHSCOPE_API_KEY",
+    "why": [
+      "distinct Provider from DeepSeek, Qianfan and Ark",
+      "official OpenAI-compatible Chat Completions",
+      "official structured JSON mode",
+      "1M context for architecture and governance review",
+      "snapshot-pinned exact model identifier"
+    ],
+    "second_new_provider": "ZHIPU_BIGMODEL",
+    "second_new_model": "glm-5.2",
+    "security_reviewer_provider_independence_after_qwen_connection": true,
+    "integration_authorized": false,
+    "live_security_review_authorized": false
+  },
+  "limitations": [
+    "three requests per model do not establish SLA or general reliability",
+    "all advisory outputs are model self-reports rather than human customer evidence",
+    "documentation-only candidates were not directly tested",
+    "latency observations are local single-flight samples",
+    "provider independence is not model correctness or security approval"
+  ]
+}

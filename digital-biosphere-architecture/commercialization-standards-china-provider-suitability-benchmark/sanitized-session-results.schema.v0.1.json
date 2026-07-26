@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre53-sanitized-session-results.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "executed_at", "requests_authorized", "requests_executed", "requests_passed", "retry_fallback_substitution_repair_attempts", "sessions", "effects"],
+  "properties": {
+    "$schema": {"const": "./sanitized-session-results.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE-53-SANITIZED-SESSION-RESULTS-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_ALL_12_BOUND_REQUESTS"},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "requests_authorized": {"const": 12},
+    "requests_executed": {"const": 12},
+    "requests_passed": {"const": 12},
+    "retry_fallback_substitution_repair_attempts": {"const": 0},
+    "sessions": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["session_id", "provider", "requested_model", "prompt_id", "status", "http_status", "latency_ms", "raw_body_sha256", "content_sha256", "returned_model_exact_match", "direct_json_pass", "schema_pass", "expected_boundary_values_pass", "total_tokens"],
+        "properties": {
+          "session_id": {"type": "string", "pattern": "^PRE53-"},
+          "provider": {"enum": ["DEEPSEEK", "QIANFAN", "ARK"]},
+          "requested_model": {"type": "string", "minLength": 1},
+          "prompt_id": {"enum": ["CN-API-FIT-001", "CN-API-FIT-002"]},
+          "status": {"const": "PASS"},
+          "http_status": {"const": 200},
+          "latency_ms": {"type": "integer", "minimum": 1, "maximum": 45000},
+          "raw_body_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "content_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "returned_model_exact_match": {"const": true},
+          "direct_json_pass": {"const": true},
+          "schema_pass": {"const": true},
+          "expected_boundary_values_pass": {"const": true},
+          "total_tokens": {"type": "integer", "minimum": 1},
+          "advisory_verdict": {"const": "CONDITIONAL"},
+          "would_recommend_to_agent_developer": {"const": true},
+          "authority_claimed": {"const": false},
+          "blocking_gap": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 6,
+      "additionalProperties": {"const": false}
+    }
+  }
+}

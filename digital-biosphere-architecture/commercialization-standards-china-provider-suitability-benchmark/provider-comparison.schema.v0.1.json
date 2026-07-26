@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre53-provider-comparison.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "direct_tested_models", "official_documentation_only_candidates", "recommendation", "limitations"],
+  "properties": {
+    "$schema": {"const": "./provider-comparison.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE-53-PROVIDER-COMPARISON-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DIRECT_TEST_COMPLETE_DESK_REVIEW_COMPLETE"},
+    "direct_tested_models": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["provider", "model", "requests_passed", "direct_json_passed", "schema_passed", "exact_model_match", "median_latency_ms", "mean_latency_ms", "observed_fit"],
+        "properties": {
+          "provider": {"enum": ["DEEPSEEK", "QIANFAN", "ARK"]},
+          "model": {"type": "string", "minLength": 1},
+          "requests_passed": {"const": "3/3"},
+          "direct_json_passed": {"const": "3/3"},
+          "schema_passed": {"const": "3/3"},
+          "exact_model_match": {"const": "3/3"},
+          "median_latency_ms": {"type": "integer", "minimum": 1},
+          "mean_latency_ms": {"type": "integer", "minimum": 1},
+          "observed_fit": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "official_documentation_only_candidates": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["priority", "provider", "model", "credential_identifier", "endpoint", "openai_compatible", "structured_json_documented", "context_window", "snapshot_pinned_model", "direct_test_status", "official_references", "fit"],
+        "properties": {
+          "priority": {"type": "integer", "minimum": 1, "maximum": 5},
+          "provider": {"type": "string", "minLength": 1},
+          "model": {"type": "string", "minLength": 1},
+          "credential_identifier": {"type": "string", "minLength": 1},
+          "endpoint": {"type": "string", "minLength": 1},
+          "openai_compatible": {"type": "boolean"},
+          "structured_json_documented": {"type": "boolean"},
+          "context_window": {"type": "string", "minLength": 1},
+          "snapshot_pinned_model": {"type": "boolean"},
+          "direct_test_status": {"type": "string", "pattern": "^NOT_TESTED_"},
+          "official_references": {
+            "type": "array",
+            "minItems": 2,
+            "items": {"type": "string", "format": "uri"}
+          },
+          "fit": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["best_current_connected_model", "best_current_connected_reason", "primary_new_provider_to_connect", "primary_new_model_to_test", "primary_new_credential_identifier", "why", "second_new_provider", "second_new_model", "security_reviewer_provider_independence_after_qwen_connection", "integration_authorized", "live_security_review_authorized"],
+      "properties": {
+        "best_current_connected_model": {"const": "deepseek-v4-flash"},
+        "best_current_connected_reason": {"type": "string", "minLength": 1},
+        "primary_new_provider_to_connect": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+        "primary_new_model_to_test": {"const": "qwen3.7-plus-2026-05-26"},
+        "primary_new_credential_identifier": {"const": "DASHSCOPE_API_KEY"},
+        "why": {"type": "array", "minItems": 5, "items": {"type": "string", "minLength": 1}},
+        "second_new_provider": {"const": "ZHIPU_BIGMODEL"},
+        "second_new_model": {"const": "glm-5.2"},
+        "security_reviewer_provider_independence_after_qwen_connection": {"const": true},
+        "integration_authorized": {"const": false},
+        "live_security_review_authorized": {"const": false}
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 5,
+      "items": {"type": "string", "minLength": 1}
+    }
+  }
+}
