@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre38-execution-receipt.schema.v0.1.json",
+  "title": "PRE-38 Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "executed_by",
+    "completed_at",
+    "target",
+    "counts",
+    "validation_result_reference",
+    "result",
+    "authorization_consumed",
+    "additional_execution_authorized",
+    "history_rewrite_authorized",
+    "remediation_decision_required"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre38-execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-38-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "EXECUTED_REMOTE_BRANCH_PUSHED_FINAL_VALIDATION_FAIL_CLOSED"},
+    "decision_reference": {"const": "CS-D02-PRE-38"},
+    "executed_by": {"const": "Codex"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "branch", "commit", "remote_branch_pushed", "remote_main_unchanged"],
+      "properties": {
+        "repository": {"const": "https://github.com/joy7758/titmas-integrations.git"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "commit": {"const": "d54bf17ea94ee614b83253cd6abd8cb51bfdd45b"},
+        "remote_branch_pushed": {"const": true},
+        "remote_main_unchanged": {"const": true}
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_paths_applied",
+        "target_files_created",
+        "target_files_updated",
+        "source_files_created",
+        "package_metadata_files_created",
+        "test_files_created",
+        "network_requests_for_validation",
+        "model_requests",
+        "credential_reads",
+        "validation_attempts",
+        "retained_failures"
+      ],
+      "properties": {
+        "target_paths_applied": {"const": 10},
+        "target_files_created": {"const": 9},
+        "target_files_updated": {"const": 1},
+        "source_files_created": {"const": 0},
+        "package_metadata_files_created": {"const": 0},
+        "test_files_created": {"const": 0},
+        "network_requests_for_validation": {"const": 0},
+        "model_requests": {"const": 0},
+        "credential_reads": {"const": 0},
+        "validation_attempts": {"const": 3},
+        "retained_failures": {"const": 2}
+      }
+    },
+    "validation_result_reference": {"const": "pre38-target-application-validation-result.v0.1.json"},
+    "result": {"const": "REMOTE_BRANCH_PUSHED_SEMANTIC_TRUTH_CONFLICT_FAIL_CLOSED_REMEDIATION_REQUIRED"},
+    "authorization_consumed": {"const": true},
+    "additional_execution_authorized": {"const": false},
+    "history_rewrite_authorized": {"const": false},
+    "remediation_decision_required": {"const": true}
+  }
+}

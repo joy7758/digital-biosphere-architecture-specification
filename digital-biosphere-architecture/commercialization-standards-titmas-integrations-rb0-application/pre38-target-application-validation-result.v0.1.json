@@ -1,0 +1,101 @@
+{
+  "$schema": "./pre38-target-application-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-38-TARGET-APPLICATION-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "REMOTE_BRANCH_PUSHED_SEMANTIC_TRUTH_CONFLICT_FAIL_CLOSED_REMEDIATION_REQUIRED",
+  "decision_reference": "CS-D02-PRE-38",
+  "decision_record_sha256": "9970f464df86e202857486b1c462943191e9436307a125ad56bac79f973def3b",
+  "decision_commit": "16a5282ab5dd551787529116fd02bb83921b5cf9",
+  "validated_at": "2026-07-27T03:01:19+08:00",
+  "target": {
+    "repository": "https://github.com/joy7758/titmas-integrations.git",
+    "baseline_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "branch": "codex/rb0-governance-baseline",
+    "commit": "d54bf17ea94ee614b83253cd6abd8cb51bfdd45b",
+    "remote_branch_matches_commit": true,
+    "remote_main_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "remote_main_unchanged": true,
+    "worktree_clean": true
+  },
+  "validation_attempts": [
+    {
+      "attempt": 1,
+      "stage": "PRE_COMMIT_PATH_ENUMERATION",
+      "result": "FAIL_RETAINED",
+      "failure_code": "GIT_STATUS_UNTRACKED_DIRECTORY_COLLAPSE",
+      "mutating_effect": false
+    },
+    {
+      "attempt": 2,
+      "stage": "PRE_COMMIT_TECHNICAL_VALIDATION",
+      "result": "PASS",
+      "failure_code": "NONE",
+      "mutating_effect": false
+    },
+    {
+      "attempt": 3,
+      "stage": "POST_PUSH_SEMANTIC_TRUTH_AUDIT",
+      "result": "FAIL_RETAINED",
+      "failure_code": "APPLIED_STATE_CONTRADICTS_CANDIDATE_NOT_APPLIED_DECLARATIONS",
+      "mutating_effect": false
+    }
+  ],
+  "technical_checks": {
+    "target_paths_exact": 10,
+    "target_path_digests_match": 10,
+    "schemas_meta_valid": 2,
+    "instances_valid": 2,
+    "local_schema_references_resolved": 2,
+    "secret_or_local_path_findings": 0,
+    "source_files_created": 0,
+    "package_metadata_files_created": 0,
+    "test_files_created": 0,
+    "rollback_restore_existing_paths": 1,
+    "rollback_remove_new_paths": 9,
+    "rollback_dry_run_pass": true
+  },
+  "semantic_conflict": {
+    "present": true,
+    "direct_truth_surfaces": [
+      "README.md",
+      "AGENTS.md",
+      "llms.txt",
+      "TITMAS-INTEGRATIONS-ENTRY.v0.1.json",
+      "SECURITY.md",
+      "MAINTAINERS.md"
+    ],
+    "schema_correction_required": "schemas/titmas-integrations-entry.schema.v0.1.json",
+    "conflicting_claims": [
+      "REPOSITORY_BASELINE_APPLIED=false",
+      "LICENSE_ADOPTED=false",
+      "candidate_applied_to_target=false",
+      "candidate text says not applied to target repository"
+    ],
+    "truth_consistent": false
+  },
+  "effects": {
+    "license_adoption_decided": true,
+    "license_file_applied_to_target_branch": true,
+    "target_repository_branch_modified": true,
+    "target_branch_pushed": true,
+    "repository_baseline_validated": false,
+    "repository_baseline_adopted": false,
+    "implementation_authorized": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "merge_authorized": false,
+    "pull_request_authorized": false,
+    "release_authorized": false
+  },
+  "next_gate": {
+    "remediation_required": true,
+    "required_decision": "CS-D02-PRE-39",
+    "allowed_action_without_new_decision": "NONE",
+    "preserve_pushed_branch_history": true
+  }
+}
