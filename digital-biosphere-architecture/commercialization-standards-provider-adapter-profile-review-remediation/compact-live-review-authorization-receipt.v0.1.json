@@ -1,0 +1,72 @@
+{
+  "$schema": "./compact-live-review-authorization-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-22-COMPACT-LIVE-REVIEW-AUTHORIZATION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_LIVE_REVIEW_NOT_STARTED",
+  "observed_at": "2026-07-26T21:34:19+08:00",
+  "decision_reference": "CS-D02-PRE-22",
+  "branch": "codex/production-observability-baseline",
+  "authorization_baseline_commit": "1fb44b79c1a71a010854c308f25b45c726642063",
+  "remote_commit": "1fb44b79c1a71a010854c308f25b45c726642063",
+  "local_equals_remote": true,
+  "frozen_bindings": [
+    {
+      "artifact": "../TITMAS-CS-D02-PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-RECOMMENDATION-v0.1.md",
+      "sha256": "80aa8fc8330d6fab4efd41a31ec52c18613a923f29b3bf2447bfc45066ba1ebc"
+    },
+    {
+      "artifact": "../TITMAS-CS-D02-PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-DECISION-RECORD.md",
+      "sha256": "57512503237c2118b39171390d7eb38093f8a92ca82fbf8a8b7306bdb5dd1f01"
+    },
+    {
+      "artifact": "../TITMAS-CS-D02-PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-DECISION-RECORD.v0.1.json",
+      "sha256": "1ec3314de633b20549bf2c0f765b321281444c8ed4bfa2b0d4a46c7a82b51abc"
+    },
+    {
+      "artifact": "../architecture/schemas/titmas-cs-d02-pre-22-bounded-compact-live-review-decision-record.schema.v0.1.json",
+      "sha256": "6fada3b8a4af244a57b2d6e1615e5476d2d1e8b953339e37c1aca6c2c71f075a"
+    },
+    {
+      "artifact": "compact-live-review-plan.v0.1.json",
+      "sha256": "d46059d1bda2dd1b9f22560b2e9955ee9435b92ba15b56ee73bd1536cfa00b0f"
+    },
+    {
+      "artifact": "compact-live-review-plan.schema.v0.1.json",
+      "sha256": "91fba177fafa78542474bdb68f56047227dce033696be826c32fd2c91d160b60"
+    },
+    {
+      "artifact": "compact-live-review-input-manifest.v0.1.json",
+      "sha256": "b69f2f757b93b88db477692bf5c0b8d332e1866d5550bf76f97a9a2323df14f9"
+    },
+    {
+      "artifact": "compact-live-review-input-manifest.schema.v0.1.json",
+      "sha256": "f2fc80d7e593e7cb972c75d4448cc26a99a491b039e40a1b3e8ff517e921116a"
+    }
+  ],
+  "execution_gate": {
+    "standing_directive_active": true,
+    "remote_authorization_baseline_verified": true,
+    "exact_queries_reconstructed_and_matched": 2,
+    "live_review_may_start": true,
+    "live_review_started": false,
+    "live_model_requests_authorized": 2,
+    "provider_network_requests_authorized": 2,
+    "requests_per_session_max": 1,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "repair_attempts_max": 0
+  },
+  "effects": {
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "compact_projection_review_completed": false,
+    "full_source_human_review_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

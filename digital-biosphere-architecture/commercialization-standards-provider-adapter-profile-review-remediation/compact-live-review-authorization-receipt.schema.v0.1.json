@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:compact-live-review-authorization-receipt:0.1",
+  "title": "TITMAS Compact Live Review Authorization Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "observed_at", "decision_reference", "branch", "authorization_baseline_commit", "remote_commit", "local_equals_remote", "frozen_bindings", "execution_gate", "effects"],
+  "properties": {
+    "$schema": {"const": "./compact-live-review-authorization-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-22-COMPACT-LIVE-REVIEW-AUTHORIZATION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_LIVE_REVIEW_NOT_STARTED"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-22"},
+    "branch": {"const": "codex/production-observability-baseline"},
+    "authorization_baseline_commit": {"const": "1fb44b79c1a71a010854c308f25b45c726642063"},
+    "remote_commit": {"const": "1fb44b79c1a71a010854c308f25b45c726642063"},
+    "local_equals_remote": {"const": true},
+    "frozen_bindings": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact", "sha256"],
+        "properties": {
+          "artifact": {"type": "string", "minLength": 8},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "execution_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["standing_directive_active", "remote_authorization_baseline_verified", "exact_queries_reconstructed_and_matched", "live_review_may_start", "live_review_started", "live_model_requests_authorized", "provider_network_requests_authorized", "requests_per_session_max", "retry_attempts_max", "fallback_attempts_max", "repair_attempts_max"],
+      "properties": {
+        "standing_directive_active": {"const": true},
+        "remote_authorization_baseline_verified": {"const": true},
+        "exact_queries_reconstructed_and_matched": {"const": 2},
+        "live_review_may_start": {"const": true},
+        "live_review_started": {"const": false},
+        "live_model_requests_authorized": {"const": 2},
+        "provider_network_requests_authorized": {"const": 2},
+        "requests_per_session_max": {"const": 1},
+        "retry_attempts_max": {"const": 0},
+        "fallback_attempts_max": {"const": 0},
+        "repair_attempts_max": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["live_model_requests_executed", "provider_network_requests_executed", "compact_projection_review_completed", "full_source_human_review_executed", "profile_review_completed", "profile_adopted", "implementation_authorized", "external_outreach_authorized", "commercial_offer_authorized", "certification_authorized", "release_authorized"],
+      "properties": {
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "compact_projection_review_completed": {"const": false},
+        "full_source_human_review_executed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}
