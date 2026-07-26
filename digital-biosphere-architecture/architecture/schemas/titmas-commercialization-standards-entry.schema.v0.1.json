@@ -47,7 +47,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_09_PUBLIC_DESK_RESEARCH_AUTHORIZED_NOT_EXECUTED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_09_REMOTE_BASELINE_VERIFIED_EXECUTION_NOT_STARTED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -663,6 +663,8 @@
         "decision_record_reference",
         "recommendation_reference",
         "execution_plan_reference",
+        "authorization_baseline_receipt_reference",
+        "authorization_baseline_commit",
         "queries_max",
         "public_pages_opened_max",
         "candidate_records_max",
@@ -683,14 +685,16 @@
         "decision_record_reference": {"const": "TITMAS-CS-D02-PRE-09-PUBLIC-FIRST-PARTY-DESK-RESEARCH-DECISION-RECORD.v0.1.json"},
         "recommendation_reference": {"const": "TITMAS-CS-D02-PUBLIC-FIRST-PARTY-DESK-RESEARCH-RECOMMENDATION-v0.1.md"},
         "execution_plan_reference": {"const": "commercialization-standards-public-source-problem-validation/desk-research-execution-plan.v0.1.json"},
+        "authorization_baseline_receipt_reference": {"const": "commercialization-standards-public-source-problem-validation/authorization-baseline-receipt.v0.1.json"},
+        "authorization_baseline_commit": {"const": "d49428003dc994be033bb6d2c49b814aef9be489"},
         "queries_max": {"const": 8},
         "public_pages_opened_max": {"const": 12},
         "candidate_records_max": {"const": 4},
         "minimal_public_metadata_collection_authorized": {"const": true},
         "public_source_search_authorized": {"const": true},
         "public_source_candidate_creation_authorized": {"const": true},
-        "authorization_baseline_committed": {"type": "boolean"},
-        "authorization_baseline_pushed": {"type": "boolean"},
+        "authorization_baseline_committed": {"const": true},
+        "authorization_baseline_pushed": {"const": true},
         "execution_started": {"const": false},
         "execution_completed": {"const": false},
         "public_source_record_counting_authorized": {"const": false},
@@ -1190,7 +1194,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "METHOD_V0_2_ADOPTED_PRE09_AUTHORIZED_NOT_EXECUTED"
+          "const": "METHOD_V0_2_ADOPTED_PRE09_BASELINE_PUSHED_EXECUTION_NOT_STARTED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
