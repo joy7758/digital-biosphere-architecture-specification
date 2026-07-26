@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_47_AGENT_REVIEW_GATE_PASS_RB1_IMPLEMENTATION_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_48_RB1_REFERENCE_IMPLEMENTATION_PASS_CONFORMANCE_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -5103,6 +5103,27 @@
             "pre47_qualifying_sessions",
             "pre47_authority_safety_failures",
             "pre47_retry_fallback_substitution_repair_attempts",
+            "pre48_recommendation_reference",
+            "pre48_recommendation_sha256",
+            "pre48_recommendation_commit",
+            "pre48_decision_reference",
+            "pre48_decision_sha256",
+            "pre48_decision_commit",
+            "pre48_target_parent_commit",
+            "pre48_target_commit",
+            "pre48_target_main_commit",
+            "pre48_result_reference",
+            "pre48_result_sha256",
+            "pre48_validation_result_sha256",
+            "pre48_execution_receipt_sha256",
+            "pre48_result_commit",
+            "pre48_result",
+            "pre48_authorized_paths",
+            "pre48_tests_pass",
+            "pre48_machine_instances_valid",
+            "pre48_artifact_digests_valid",
+            "pre48_build_result",
+            "pre48_provider_requests",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5130,7 +5151,15 @@
             "pre47_exact_sequential_agent_review_executed",
             "pre47_exact_sequential_agent_review_gate_pass",
             "rb1_implementation_recommendation_allowed",
-            "rb1_implementation_authorized"
+            "rb1_implementation_authorized",
+            "pre48_rb1_implementation_executed",
+            "pre48_rb1_implementation_gate_pass",
+            "rb1_conformance_recommendation_required",
+            "rb1_conformance_authorized",
+            "rb1_conformance_executed",
+            "provider_supported",
+            "security_review_executed",
+            "release_authorized"
           ],
           "properties": {
             "decision_candidate_id": {
@@ -5693,6 +5722,69 @@
             "pre47_retry_fallback_substitution_repair_attempts": {
               "const": 0
             },
+            "pre48_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-48-RB1-BOUNDED-IMPLEMENTATION-RECOMMENDATION-v0.1.md"
+            },
+            "pre48_recommendation_sha256": {
+              "const": "fb90a4c8b30035de0c32103cc8f4c08db6228f1734d8174820e681a5d8127d6f"
+            },
+            "pre48_recommendation_commit": {
+              "const": "323a95926107911e13501877bf3db07a3961efaf"
+            },
+            "pre48_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-48-RB1-BOUNDED-IMPLEMENTATION-DECISION-RECORD.v0.1.json"
+            },
+            "pre48_decision_sha256": {
+              "const": "9bb1b6c5a24ba4a87a2f1c2fb5760d2abe53d91f35e3187be5a3bb7c85684349"
+            },
+            "pre48_decision_commit": {
+              "const": "91995fc07fa7ffc01adf4d3a875ee800e846f76a"
+            },
+            "pre48_target_parent_commit": {
+              "const": "f80629364752c465316b9d1238fe5447a88565ca"
+            },
+            "pre48_target_commit": {
+              "const": "001da006aa32a1eeeb058daa31dcab39197fa4de"
+            },
+            "pre48_target_main_commit": {
+              "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+            },
+            "pre48_result_reference": {
+              "const": "commercialization-standards-titmas-integrations-rb1-implementation/PRE-48-RB1-BOUNDED-IMPLEMENTATION-RESULT-v0.1.md"
+            },
+            "pre48_result_sha256": {
+              "const": "d58a5ac23758ef46029eb051297b4b8cc4b4b279bc4241d6bf8218b5ddb5d3a1"
+            },
+            "pre48_validation_result_sha256": {
+              "const": "c4c892876dd39ccc6cc6b68f85eb92c5769fe18f913aca43857d5284b2855ec2"
+            },
+            "pre48_execution_receipt_sha256": {
+              "const": "bdabfa18f909870c51ad248f5b6d6729f79d90418e9e0b2f5f5c20eea475f1eb"
+            },
+            "pre48_result_commit": {
+              "const": "c241881d0117f1f96c9b00ea740b2bcbc45222f7"
+            },
+            "pre48_result": {
+              "const": "PASS_DEVELOPMENT_REFERENCE_IMPLEMENTATION_CREATED_TESTED_REMOTE_CLEAN_CLONE_VERIFIED"
+            },
+            "pre48_authorized_paths": {
+              "const": "14/14"
+            },
+            "pre48_tests_pass": {
+              "const": "20/20"
+            },
+            "pre48_machine_instances_valid": {
+              "const": "2/2"
+            },
+            "pre48_artifact_digests_valid": {
+              "const": "6/6"
+            },
+            "pre48_build_result": {
+              "const": "NOT_EXECUTED_DEPENDENCY_UNAVAILABLE"
+            },
+            "pre48_provider_requests": {
+              "const": 0
+            },
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -5718,7 +5810,7 @@
               "const": true
             },
             "implementation_created": {
-              "const": false
+              "const": true
             },
             "rb1_planning_recommendation_required": {
               "const": false
@@ -5775,6 +5867,30 @@
               "const": true
             },
             "rb1_implementation_authorized": {
+              "const": true
+            },
+            "pre48_rb1_implementation_executed": {
+              "const": true
+            },
+            "pre48_rb1_implementation_gate_pass": {
+              "const": true
+            },
+            "rb1_conformance_recommendation_required": {
+              "const": true
+            },
+            "rb1_conformance_authorized": {
+              "const": false
+            },
+            "rb1_conformance_executed": {
+              "const": false
+            },
+            "provider_supported": {
+              "const": false
+            },
+            "security_review_executed": {
+              "const": false
+            },
+            "release_authorized": {
               "const": false
             }
           }
@@ -5795,7 +5911,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_RB1_IMPLEMENTATION_RECOMMENDATION_ONLY"
+          "const": "FORM_RB1_CONFORMANCE_VALIDATION_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false
