@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:offline-live-review-failure-diagnostic-plan:0.1",
+  "title": "TITMAS Offline Live Review Failure Diagnostic Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "execution_mode", "input_manifest_reference", "limits", "steps", "success_conditions", "effects"],
+  "properties": {
+    "$schema": {"const": "./offline-live-review-failure-diagnostic-plan.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-PLAN-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-23"},
+    "execution_mode": {"const": "DETERMINISTIC_OFFLINE_SYNTHETIC_ONLY"},
+    "input_manifest_reference": {"const": "offline-live-review-failure-diagnostic-input-manifest.v0.1.json"},
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["live_model_requests_max", "provider_network_requests_max", "retry_attempts_max", "fallback_attempts_max", "repair_attempts_max"],
+      "properties": {
+        "live_model_requests_max": {"const": 0},
+        "provider_network_requests_max": {"const": 0},
+        "retry_attempts_max": {"const": 0},
+        "fallback_attempts_max": {"const": 0},
+        "repair_attempts_max": {"const": 0}
+      }
+    },
+    "steps": {
+      "const": [
+        "VERIFY_PRE22_INPUT_HASHES",
+        "CREATE_RESPONSE_EXTRACTION_CONTRACT_CANDIDATE",
+        "CREATE_MODEL_BINDING_POLICY_CANDIDATE",
+        "CREATE_SYNTHETIC_EXTRACTION_AND_MODEL_FIXTURES",
+        "RUN_DIRECT_EXTRACTION_FIXTURES_WITHOUT_REPAIR",
+        "RUN_MODEL_BINDING_FIXTURES",
+        "VERIFY_CONFLICT_AND_UNADOPTED_ALIAS_FAIL_CLOSED",
+        "VERIFY_ZERO_NETWORK_ACCOUNTING",
+        "RETAIN_RESULT_REPORT_AND_RECEIPT"
+      ]
+    },
+    "success_conditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input_hashes_match", "fixture_expectations_matched", "fixture_expectations_total", "conflicting_answers_fail_closed", "unadopted_alias_fails_closed", "content_pass_does_not_override_model_mismatch", "live_model_requests_executed", "provider_network_requests_executed", "pre22_result_changed"],
+      "properties": {
+        "input_hashes_match": {"const": 9},
+        "fixture_expectations_matched": {"const": 15},
+        "fixture_expectations_total": {"const": 15},
+        "conflicting_answers_fail_closed": {"const": true},
+        "unadopted_alias_fails_closed": {"const": true},
+        "content_pass_does_not_override_model_mismatch": {"const": true},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "pre22_result_changed": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["execution_started", "live_review_executed", "compact_projection_review_completed", "profile_review_completed", "profile_adopted"],
+      "properties": {
+        "execution_started": {"const": false},
+        "live_review_executed": {"const": false},
+        "compact_projection_review_completed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false}
+      }
+    }
+  }
+}

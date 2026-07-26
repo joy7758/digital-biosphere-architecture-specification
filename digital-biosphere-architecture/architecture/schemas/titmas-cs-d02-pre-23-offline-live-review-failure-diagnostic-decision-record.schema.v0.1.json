@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-pre-23-offline-live-review-failure-diagnostic-decision:0.1",
+  "title": "TITMAS CS-D02 PRE-23 Offline Live Review Failure Diagnostic Decision v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_id", "standing_directive_reference", "recommendation_reference", "recommendation_sha256", "decision_result", "decided_by_ref", "executed_by", "primary_repository", "target_branch", "diagnostic_plan_reference", "input_manifest_reference", "authorized_outputs", "limits", "required_fixture_classes", "preconditions", "effects"],
+  "properties": {
+    "$schema": {"const": "./architecture/schemas/titmas-cs-d02-pre-23-offline-live-review-failure-diagnostic-decision-record.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-DECISION-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "AUTHORIZED_OFFLINE_PRE22_EXTRACTION_AND_MODEL_BINDING_DIAGNOSTIC_ONLY"},
+    "decision_id": {"const": "CS-D02-PRE-23"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {"const": "TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-RECOMMENDATION-v0.1.md"},
+    "recommendation_sha256": {"const": "f560241d0aac4a6e0469fc70d490d7916af6edcad2387bfee7c48a6767afc754"},
+    "decision_result": {"const": "AUTHORIZE_OFFLINE_PRE22_EXTRACTION_AND_MODEL_BINDING_DIAGNOSTIC_ONLY"},
+    "decided_by_ref": {"const": "zhangbin"},
+    "executed_by": {"const": "Codex"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "target_branch": {"const": "codex/production-observability-baseline"},
+    "diagnostic_plan_reference": {"const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-live-review-failure-diagnostic-plan.v0.1.json"},
+    "input_manifest_reference": {"const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-live-review-failure-diagnostic-input-manifest.v0.1.json"},
+    "authorized_outputs": {
+      "const": [
+        "compact-review-response-extraction-contract.v0.1.json",
+        "compact-review-model-binding-policy.v0.1.json",
+        "compact-review-failure-diagnostic-fixtures.v0.1.json",
+        "offline-live-review-failure-diagnostic-result.v0.1.json",
+        "PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-RESULT-v0.1.md",
+        "offline-live-review-failure-diagnostic-execution-receipt.v0.1.json"
+      ]
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["live_model_requests_max", "provider_network_requests_max", "retry_attempts_max", "fallback_attempts_max", "repair_attempts_max"],
+      "properties": {
+        "live_model_requests_max": {"const": 0},
+        "provider_network_requests_max": {"const": 0},
+        "retry_attempts_max": {"const": 0},
+        "fallback_attempts_max": {"const": 0},
+        "repair_attempts_max": {"const": 0}
+      }
+    },
+    "required_fixture_classes": {
+      "const": [
+        "STRUCTURED_CONTENT_ANSWER",
+        "DIRECT_ANSWER",
+        "JSON_WRAPPER_TEXT_ANSWER",
+        "PLAIN_JSON_RESPONSE_OBJECT",
+        "PLAIN_NON_JSON_DECLARED_TEXT",
+        "DUPLICATE_IDENTICAL_ANSWERS",
+        "CONFLICTING_ANSWER_LOCATIONS",
+        "MISSING_ANSWER",
+        "NON_STRING_WRAPPER_ANSWER",
+        "DIRECT_OBJECT_SCHEMA_MISMATCH",
+        "MODEL_EXACT_MATCH",
+        "MODEL_EXPLICIT_ALIAS_MATCH",
+        "MODEL_UNADOPTED_ALIAS_MISMATCH",
+        "MODEL_RETURNED_MISSING_UNKNOWN",
+        "CONTENT_PASS_MODEL_MISMATCH"
+      ]
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pre22_composite_fail_closed", "pre22_qualifying_sessions", "standing_directive_active", "recommendation_remote_verified", "remote_decision_baseline_required_before_execution"],
+      "properties": {
+        "pre22_composite_fail_closed": {"const": true},
+        "pre22_qualifying_sessions": {"const": 0},
+        "standing_directive_active": {"const": true},
+        "recommendation_remote_verified": {"const": true},
+        "remote_decision_baseline_required_before_execution": {"const": true}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pre22_result_changed", "live_review_executed", "compact_projection_review_completed", "profile_review_completed", "profile_adopted", "adapter_implementation_created", "conformance_executed", "provider_supported", "valid_problem_records", "cs_g0_pass", "implementation_authorized", "external_outreach_authorized", "commercial_offer_authorized", "certification_authorized", "release_authorized"],
+      "properties": {
+        "pre22_result_changed": {"const": false},
+        "live_review_executed": {"const": false},
+        "compact_projection_review_completed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "adapter_implementation_created": {"const": false},
+        "conformance_executed": {"const": false},
+        "provider_supported": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

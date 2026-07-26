@@ -1,0 +1,43 @@
+{
+  "$schema": "./offline-live-review-failure-diagnostic-input-manifest.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-INPUT-MANIFEST-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-23",
+  "bindings": [
+    {"artifact": "../TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.md", "sha256": "99d6755ecea03f9779ccc914dca33e32065bd72c71927fbe032bd8075238a54b"},
+    {"artifact": "../TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-RECOMMENDATION-v0.1.md", "sha256": "f560241d0aac4a6e0469fc70d490d7916af6edcad2387bfee7c48a6767afc754"},
+    {"artifact": "compact-live-review-kimi-session-result.v0.1.json", "sha256": "13ce8736caf250756169f6b027781b31df5f5e2ab45f4bfa077922a24661ef6f"},
+    {"artifact": "compact-live-review-deepseek-session-result.v0.1.json", "sha256": "eddaab82e3e69c4978a4a50620c0bacfdbf9a57296987ceb32413495dd5dddc6"},
+    {"artifact": "compact-live-review-validation-result.v0.1.json", "sha256": "081a8f9d1c8213cf8ab5cdd068b96c65c9cabddfb895d6e7ae3597413fa54c77"},
+    {"artifact": "compact-live-review-execution-receipt.v0.1.json", "sha256": "878e088ae0a959afd90cf4cc3bdfd8e28c24eb51aaa5bb3354d10724f2a61858"},
+    {"artifact": "PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-RESULT-v0.1.md", "sha256": "308ee6338c6e633050dc8c136b28231e59b841b9792fcccf278f2d459c4640b6"},
+    {"artifact": "../commercialization-standards-qianfan-wrapper-extraction-diagnostic/PRE-15-OFFLINE-QIANFAN-WRAPPER-DIAGNOSTIC-RESULT-v0.1.md", "sha256": "62f23a274f56a2472b881282a8034bcc9d2e9afd9bddb01c49871909654e78ff"},
+    {"artifact": "../commercialization-standards-public-source-record-review-remediation/provider-path-diagnostic-result.v0.1.json", "sha256": "fc678cb62eee8437b4ceb9a04527de162680c3f638b9a23431e0c79a118b6741"}
+  ],
+  "diagnostic_subjects": [
+    {
+      "failure_class": "CLIENT_RESPONSE_EXTRACTION_FAILURE",
+      "session_reference": "compact-live-review-kimi-session-result.v0.1.json",
+      "real_response_recovery_allowed": false
+    },
+    {
+      "failure_class": "RETURNED_MODEL_MISMATCH",
+      "session_reference": "compact-live-review-deepseek-session-result.v0.1.json",
+      "automatic_alias_allowed": false
+    }
+  ],
+  "accounting_before_execution": {
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "effects": {
+    "pre22_result_changed": false,
+    "live_review_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false
+  }
+}

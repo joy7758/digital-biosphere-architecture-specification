@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:offline-live-review-failure-diagnostic-input-manifest:0.1",
+  "title": "TITMAS Offline Live Review Failure Diagnostic Input Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "bindings", "diagnostic_subjects", "accounting_before_execution", "effects"],
+  "properties": {
+    "$schema": {"const": "./offline-live-review-failure-diagnostic-input-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-INPUT-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-23"},
+    "bindings": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact", "sha256"],
+        "properties": {
+          "artifact": {"type": "string", "minLength": 8},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "diagnostic_subjects": {
+      "const": [
+        {
+          "failure_class": "CLIENT_RESPONSE_EXTRACTION_FAILURE",
+          "session_reference": "compact-live-review-kimi-session-result.v0.1.json",
+          "real_response_recovery_allowed": false
+        },
+        {
+          "failure_class": "RETURNED_MODEL_MISMATCH",
+          "session_reference": "compact-live-review-deepseek-session-result.v0.1.json",
+          "automatic_alias_allowed": false
+        }
+      ]
+    },
+    "accounting_before_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["live_model_requests_executed", "provider_network_requests_executed", "retry_attempts", "fallback_attempts", "repair_attempts"],
+      "properties": {
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "repair_attempts": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pre22_result_changed", "live_review_executed", "profile_review_completed", "profile_adopted"],
+      "properties": {
+        "pre22_result_changed": {"const": false},
+        "live_review_executed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false}
+      }
+    }
+  }
+}

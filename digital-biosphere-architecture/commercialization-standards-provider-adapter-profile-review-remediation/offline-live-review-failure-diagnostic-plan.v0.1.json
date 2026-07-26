@@ -1,0 +1,45 @@
+{
+  "$schema": "./offline-live-review-failure-diagnostic-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-23",
+  "execution_mode": "DETERMINISTIC_OFFLINE_SYNTHETIC_ONLY",
+  "input_manifest_reference": "offline-live-review-failure-diagnostic-input-manifest.v0.1.json",
+  "limits": {
+    "live_model_requests_max": 0,
+    "provider_network_requests_max": 0,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "repair_attempts_max": 0
+  },
+  "steps": [
+    "VERIFY_PRE22_INPUT_HASHES",
+    "CREATE_RESPONSE_EXTRACTION_CONTRACT_CANDIDATE",
+    "CREATE_MODEL_BINDING_POLICY_CANDIDATE",
+    "CREATE_SYNTHETIC_EXTRACTION_AND_MODEL_FIXTURES",
+    "RUN_DIRECT_EXTRACTION_FIXTURES_WITHOUT_REPAIR",
+    "RUN_MODEL_BINDING_FIXTURES",
+    "VERIFY_CONFLICT_AND_UNADOPTED_ALIAS_FAIL_CLOSED",
+    "VERIFY_ZERO_NETWORK_ACCOUNTING",
+    "RETAIN_RESULT_REPORT_AND_RECEIPT"
+  ],
+  "success_conditions": {
+    "input_hashes_match": 9,
+    "fixture_expectations_matched": 15,
+    "fixture_expectations_total": 15,
+    "conflicting_answers_fail_closed": true,
+    "unadopted_alias_fails_closed": true,
+    "content_pass_does_not_override_model_mismatch": true,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "pre22_result_changed": false
+  },
+  "effects": {
+    "execution_started": false,
+    "live_review_executed": false,
+    "compact_projection_review_completed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false
+  }
+}

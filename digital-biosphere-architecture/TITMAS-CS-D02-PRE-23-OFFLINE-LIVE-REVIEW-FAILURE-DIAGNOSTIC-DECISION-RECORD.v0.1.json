@@ -1,0 +1,73 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-23-offline-live-review-failure-diagnostic-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_OFFLINE_PRE22_EXTRACTION_AND_MODEL_BINDING_DIAGNOSTIC_ONLY",
+  "decision_id": "CS-D02-PRE-23",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "f560241d0aac4a6e0469fc70d490d7916af6edcad2387bfee7c48a6767afc754",
+  "decision_result": "AUTHORIZE_OFFLINE_PRE22_EXTRACTION_AND_MODEL_BINDING_DIAGNOSTIC_ONLY",
+  "decided_by_ref": "zhangbin",
+  "executed_by": "Codex",
+  "primary_repository": "digital-biosphere-architecture",
+  "target_branch": "codex/production-observability-baseline",
+  "diagnostic_plan_reference": "commercialization-standards-provider-adapter-profile-review-remediation/offline-live-review-failure-diagnostic-plan.v0.1.json",
+  "input_manifest_reference": "commercialization-standards-provider-adapter-profile-review-remediation/offline-live-review-failure-diagnostic-input-manifest.v0.1.json",
+  "authorized_outputs": [
+    "compact-review-response-extraction-contract.v0.1.json",
+    "compact-review-model-binding-policy.v0.1.json",
+    "compact-review-failure-diagnostic-fixtures.v0.1.json",
+    "offline-live-review-failure-diagnostic-result.v0.1.json",
+    "PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-RESULT-v0.1.md",
+    "offline-live-review-failure-diagnostic-execution-receipt.v0.1.json"
+  ],
+  "limits": {
+    "live_model_requests_max": 0,
+    "provider_network_requests_max": 0,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "repair_attempts_max": 0
+  },
+  "required_fixture_classes": [
+    "STRUCTURED_CONTENT_ANSWER",
+    "DIRECT_ANSWER",
+    "JSON_WRAPPER_TEXT_ANSWER",
+    "PLAIN_JSON_RESPONSE_OBJECT",
+    "PLAIN_NON_JSON_DECLARED_TEXT",
+    "DUPLICATE_IDENTICAL_ANSWERS",
+    "CONFLICTING_ANSWER_LOCATIONS",
+    "MISSING_ANSWER",
+    "NON_STRING_WRAPPER_ANSWER",
+    "DIRECT_OBJECT_SCHEMA_MISMATCH",
+    "MODEL_EXACT_MATCH",
+    "MODEL_EXPLICIT_ALIAS_MATCH",
+    "MODEL_UNADOPTED_ALIAS_MISMATCH",
+    "MODEL_RETURNED_MISSING_UNKNOWN",
+    "CONTENT_PASS_MODEL_MISMATCH"
+  ],
+  "preconditions": {
+    "pre22_composite_fail_closed": true,
+    "pre22_qualifying_sessions": 0,
+    "standing_directive_active": true,
+    "recommendation_remote_verified": true,
+    "remote_decision_baseline_required_before_execution": true
+  },
+  "effects": {
+    "pre22_result_changed": false,
+    "live_review_executed": false,
+    "compact_projection_review_completed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
