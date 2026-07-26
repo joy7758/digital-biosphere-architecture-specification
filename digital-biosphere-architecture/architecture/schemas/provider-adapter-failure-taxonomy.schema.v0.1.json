@@ -1,0 +1,264 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/provider-adapter-failure-taxonomy.schema.v0.1.json",
+  "title": "TITMAS Provider Adapter Failure Taxonomy v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "provider_neutral",
+    "failure_retention_required",
+    "silent_retry_fallback_or_repair_allowed",
+    "failure_classes",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/provider-adapter-failure-taxonomy.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-PROVIDER-ADAPTER-FAILURE-TAXONOMY-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "CANDIDATE_NOT_ADOPTED"
+    },
+    "provider_neutral": {
+      "const": true
+    },
+    "failure_retention_required": {
+      "const": true
+    },
+    "silent_retry_fallback_or_repair_allowed": {
+      "const": false
+    },
+    "failure_classes": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "failure_class",
+          "stage",
+          "meaning",
+          "record_required",
+          "retry_disposition",
+          "semantic_effect"
+        ],
+        "properties": {
+          "failure_class": {
+            "type": "string",
+            "enum": [
+              "TRANSPORT_ERROR",
+              "PROVIDER_ERROR",
+              "NO_EXTRACTABLE_ANSWER",
+              "UNKNOWN_RUNTIME_ENVELOPE",
+              "UNDECLARED_NESTING",
+              "AMBIGUOUS_NON_IDENTICAL_ANSWERS",
+              "DIRECT_JSON_PARSE_FAILED",
+              "FULL_SCHEMA_VALIDATION_FAILED",
+              "POLICY_VIOLATION"
+            ]
+          },
+          "stage": {
+            "type": "string",
+            "enum": [
+              "TRANSPORT",
+              "EXTRACTION",
+              "PARSE",
+              "SCHEMA",
+              "POLICY"
+            ]
+          },
+          "meaning": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "record_required": {
+            "const": true
+          },
+          "retry_disposition": {
+            "type": "string",
+            "enum": [
+              "STOP_REVIEW_REQUIRED",
+              "STOP_CONTRACT_REVIEW_REQUIRED",
+              "STOP_HUMAN_REVIEW_REQUIRED",
+              "STOP_NO_REPAIR",
+              "STOP_NO_REWRITE",
+              "STOP_SECURITY_OR_GOVERNANCE_REVIEW_REQUIRED"
+            ]
+          },
+          "semantic_effect": {
+            "type": "string",
+            "enum": [
+              "NO_SEMANTIC_ANSWER_AND_NO_SCHEMA_RESULT",
+              "SEMANTIC_ANSWER_FAILED",
+              "SCHEMA_NOT_ASSESSED",
+              "CANDIDATE_NOT_CONFORMANT",
+              "RESULT_REJECTED"
+            ]
+          }
+        }
+      },
+      "allOf": [
+        {
+          "contains": {
+            "properties": {
+              "failure_class": {
+                "const": "TRANSPORT_ERROR"
+              }
+            },
+            "required": [
+              "failure_class"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "failure_class": {
+                "const": "PROVIDER_ERROR"
+              }
+            },
+            "required": [
+              "failure_class"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "failure_class": {
+                "const": "NO_EXTRACTABLE_ANSWER"
+              }
+            },
+            "required": [
+              "failure_class"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "failure_class": {
+                "const": "UNKNOWN_RUNTIME_ENVELOPE"
+              }
+            },
+            "required": [
+              "failure_class"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "failure_class": {
+                "const": "UNDECLARED_NESTING"
+              }
+            },
+            "required": [
+              "failure_class"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "failure_class": {
+                "const": "AMBIGUOUS_NON_IDENTICAL_ANSWERS"
+              }
+            },
+            "required": [
+              "failure_class"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "failure_class": {
+                "const": "DIRECT_JSON_PARSE_FAILED"
+              }
+            },
+            "required": [
+              "failure_class"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "failure_class": {
+                "const": "FULL_SCHEMA_VALIDATION_FAILED"
+              }
+            },
+            "required": [
+              "failure_class"
+            ]
+          }
+        },
+        {
+          "contains": {
+            "properties": {
+              "failure_class": {
+                "const": "POLICY_VIOLATION"
+              }
+            },
+            "required": [
+              "failure_class"
+            ]
+          }
+        }
+      ]
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "taxonomy_defined",
+        "provider_supported",
+        "profile_adopted",
+        "implementation_created",
+        "conformance_executed",
+        "candidate_review_completed",
+        "valid_problem_records",
+        "cs_g0_pass"
+      ],
+      "properties": {
+        "taxonomy_defined": {
+          "const": true
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "profile_adopted": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "candidate_review_completed": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        }
+      }
+    }
+  }
+}

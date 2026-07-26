@@ -1,0 +1,326 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/provider-adapter-conformance-profile.schema.v0.1.json",
+  "title": "TITMAS Provider Adapter Conformance Profile Candidate v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "maturity",
+    "decision_reference",
+    "provider_neutral",
+    "purpose",
+    "normative_contract",
+    "state_separation",
+    "reference_provider_history",
+    "claim_non_elevation_matrix",
+    "conformance_entry_requirements",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/provider-adapter-conformance-profile.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-PROVIDER-ADAPTER-CONFORMANCE-PROFILE-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PROFILE_CANDIDATE_CREATED_NOT_ADOPTED"
+    },
+    "maturity": {
+      "const": "Development"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-18"
+    },
+    "provider_neutral": {
+      "const": true
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 512
+    },
+    "normative_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_descriptor_schema",
+        "result_descriptor_schema",
+        "failure_taxonomy",
+        "case_catalog",
+        "maximum_wrapper_unwrap_depth",
+        "direct_json_parse_required",
+        "full_frozen_reviewer_schema_required",
+        "failure_retention_required",
+        "automatic_retry_allowed",
+        "automatic_fallback_allowed",
+        "json_repair_allowed",
+        "semantic_rewrite_allowed",
+        "raw_provider_body_persistence_allowed",
+        "secret_persistence_allowed",
+        "usage_payload_persistence_allowed"
+      ],
+      "properties": {
+        "request_descriptor_schema": {
+          "const": "schemas/provider-adapter-request-descriptor.schema.v0.1.json"
+        },
+        "result_descriptor_schema": {
+          "const": "schemas/provider-adapter-result-descriptor.schema.v0.1.json"
+        },
+        "failure_taxonomy": {
+          "const": "provider-adapter-failure-taxonomy.v0.1.json"
+        },
+        "case_catalog": {
+          "const": "provider-adapter-conformance-cases.v0.1.json"
+        },
+        "maximum_wrapper_unwrap_depth": {
+          "const": 1
+        },
+        "direct_json_parse_required": {
+          "const": true
+        },
+        "full_frozen_reviewer_schema_required": {
+          "const": true
+        },
+        "failure_retention_required": {
+          "const": true
+        },
+        "automatic_retry_allowed": {
+          "const": false
+        },
+        "automatic_fallback_allowed": {
+          "const": false
+        },
+        "json_repair_allowed": {
+          "const": false
+        },
+        "semantic_rewrite_allowed": {
+          "const": false
+        },
+        "raw_provider_body_persistence_allowed": {
+          "const": false
+        },
+        "secret_persistence_allowed": {
+          "const": false
+        },
+        "usage_payload_persistence_allowed": {
+          "const": false
+        }
+      }
+    },
+    "state_separation": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "from",
+          "does_not_imply"
+        ],
+        "properties": {
+          "from": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "does_not_imply": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          }
+        }
+      }
+    },
+    "reference_provider_history": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "provider_ref",
+          "reference_state",
+          "evidence_reference",
+          "supported",
+          "adopted",
+          "certified"
+        ],
+        "properties": {
+          "provider_ref": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "reference_state": {
+            "const": "REFERENCE_ONLY_NOT_ADOPTED"
+          },
+          "evidence_reference": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "supported": {
+            "const": false
+          },
+          "adopted": {
+            "const": false
+          },
+          "certified": {
+            "const": false
+          }
+        }
+      }
+    },
+    "claim_non_elevation_matrix": {
+      "type": "array",
+      "minItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "observed_claim",
+          "allowed_interpretation",
+          "prohibited_interpretations"
+        ],
+        "properties": {
+          "observed_claim": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 128
+          },
+          "allowed_interpretation": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "prohibited_interpretations": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 128
+            }
+          }
+        }
+      }
+    },
+    "conformance_entry_requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "exact_adapter_implementation_reference_required",
+        "exact_profile_version_required",
+        "exact_provider_and_model_reference_required",
+        "independent_execution_receipt_required",
+        "all_required_cases_executed_required",
+        "failure_and_unknown_retention_required",
+        "separate_human_adoption_decision_required"
+      ],
+      "properties": {
+        "exact_adapter_implementation_reference_required": {
+          "const": true
+        },
+        "exact_profile_version_required": {
+          "const": true
+        },
+        "exact_provider_and_model_reference_required": {
+          "const": true
+        },
+        "independent_execution_receipt_required": {
+          "const": true
+        },
+        "all_required_cases_executed_required": {
+          "const": true
+        },
+        "failure_and_unknown_retention_required": {
+          "const": true
+        },
+        "separate_human_adoption_decision_required": {
+          "const": true
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_candidate_created",
+        "profile_adopted",
+        "adapter_implementation_created",
+        "adapter_implementation_authorized",
+        "conformance_execution_authorized",
+        "conformance_cases_executed",
+        "provider_supported",
+        "provider_adopted",
+        "candidate_review_completed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "profile_candidate_created": {
+          "const": true
+        },
+        "profile_adopted": {
+          "const": false
+        },
+        "adapter_implementation_created": {
+          "const": false
+        },
+        "adapter_implementation_authorized": {
+          "const": false
+        },
+        "conformance_execution_authorized": {
+          "const": false
+        },
+        "conformance_cases_executed": {
+          "const": 0
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "provider_adopted": {
+          "const": false
+        },
+        "candidate_review_completed": {
+          "const": false
+        },
+        "record_counting_authorized": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "market_validation_pass": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}

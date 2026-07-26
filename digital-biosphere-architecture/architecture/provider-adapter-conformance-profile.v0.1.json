@@ -1,0 +1,138 @@
+{
+  "$schema": "./schemas/provider-adapter-conformance-profile.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-PROVIDER-ADAPTER-CONFORMANCE-PROFILE-0.1",
+  "version": "0.1.0",
+  "status": "PROFILE_CANDIDATE_CREATED_NOT_ADOPTED",
+  "maturity": "Development",
+  "decision_reference": "CS-D02-PRE-18",
+  "provider_neutral": true,
+  "purpose": "Define a provider-neutral boundary for normalizing Agent Review request and result metadata without implementing or certifying any provider adapter.",
+  "normative_contract": {
+    "request_descriptor_schema": "schemas/provider-adapter-request-descriptor.schema.v0.1.json",
+    "result_descriptor_schema": "schemas/provider-adapter-result-descriptor.schema.v0.1.json",
+    "failure_taxonomy": "provider-adapter-failure-taxonomy.v0.1.json",
+    "case_catalog": "provider-adapter-conformance-cases.v0.1.json",
+    "maximum_wrapper_unwrap_depth": 1,
+    "direct_json_parse_required": true,
+    "full_frozen_reviewer_schema_required": true,
+    "failure_retention_required": true,
+    "automatic_retry_allowed": false,
+    "automatic_fallback_allowed": false,
+    "json_repair_allowed": false,
+    "semantic_rewrite_allowed": false,
+    "raw_provider_body_persistence_allowed": false,
+    "secret_persistence_allowed": false,
+    "usage_payload_persistence_allowed": false
+  },
+  "state_separation": [
+    {
+      "from": "TRANSPORT_SUCCESS",
+      "does_not_imply": "SEMANTIC_ANSWER_EXTRACTED"
+    },
+    {
+      "from": "SEMANTIC_ANSWER_EXTRACTED",
+      "does_not_imply": "DIRECT_JSON_PARSE_PASS"
+    },
+    {
+      "from": "DIRECT_JSON_PARSE_PASS",
+      "does_not_imply": "FULL_REVIEWER_SCHEMA_PASS"
+    },
+    {
+      "from": "FULL_REVIEWER_SCHEMA_PASS",
+      "does_not_imply": "CANDIDATE_VALIDITY"
+    },
+    {
+      "from": "FULL_REVIEWER_SCHEMA_PASS",
+      "does_not_imply": "RECORD_COUNTING_OR_CS_G0"
+    },
+    {
+      "from": "PROFILE_SCHEMA_REHEARSAL_PASS",
+      "does_not_imply": "ADAPTER_CONFORMANCE_OR_PROVIDER_ADOPTION"
+    }
+  ],
+  "reference_provider_history": [
+    {
+      "provider_ref": "QIANFAN_KIMI_HISTORICAL_REFERENCE",
+      "reference_state": "REFERENCE_ONLY_NOT_ADOPTED",
+      "evidence_reference": "../commercialization-standards-qianfan-reconfirmation/PRE-16-QIANFAN-RECONFIRMATION-RESULT-v0.1.md",
+      "supported": false,
+      "adopted": false,
+      "certified": false
+    },
+    {
+      "provider_ref": "DEEPSEEK_HISTORICAL_REFERENCE",
+      "reference_state": "REFERENCE_ONLY_NOT_ADOPTED",
+      "evidence_reference": "../commercialization-standards-public-source-record-review-rerun/PRE-14-PROVIDER-RERUN-RESULT-v0.1.md",
+      "supported": false,
+      "adopted": false,
+      "certified": false
+    }
+  ],
+  "claim_non_elevation_matrix": [
+    {
+      "observed_claim": "REQUEST_DESCRIPTOR_SCHEMA_VALID",
+      "allowed_interpretation": "Request metadata matches the descriptor Schema.",
+      "prohibited_interpretations": [
+        "REQUEST_SENT",
+        "PROVIDER_SUPPORTED",
+        "AUTHORIZATION_GRANTED"
+      ]
+    },
+    {
+      "observed_claim": "TRANSPORT_SUCCEEDED",
+      "allowed_interpretation": "The named transport boundary reported success.",
+      "prohibited_interpretations": [
+        "SEMANTIC_ANSWER_VALID",
+        "REVIEWER_SCHEMA_CONFORMANT",
+        "CANDIDATE_VALID"
+      ]
+    },
+    {
+      "observed_claim": "FULL_REVIEWER_SCHEMA_PASS",
+      "allowed_interpretation": "The sanitized reviewer object conforms to the frozen reviewer Schema.",
+      "prohibited_interpretations": [
+        "CANDIDATE_VALID",
+        "VALID_PROBLEM_RECORD",
+        "CS_G0_PASS",
+        "MARKET_VALIDATION_PASS"
+      ]
+    },
+    {
+      "observed_claim": "PROFILE_SCHEMA_REHEARSAL_PASS",
+      "allowed_interpretation": "The candidate documents and synthetic fixtures satisfy their local Schemas.",
+      "prohibited_interpretations": [
+        "ADAPTER_IMPLEMENTED",
+        "CONFORMANCE_EXECUTED",
+        "PROFILE_ADOPTED",
+        "PROVIDER_CERTIFIED"
+      ]
+    }
+  ],
+  "conformance_entry_requirements": {
+    "exact_adapter_implementation_reference_required": true,
+    "exact_profile_version_required": true,
+    "exact_provider_and_model_reference_required": true,
+    "independent_execution_receipt_required": true,
+    "all_required_cases_executed_required": true,
+    "failure_and_unknown_retention_required": true,
+    "separate_human_adoption_decision_required": true
+  },
+  "effects": {
+    "profile_candidate_created": true,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "adapter_implementation_authorized": false,
+    "conformance_execution_authorized": false,
+    "conformance_cases_executed": 0,
+    "provider_supported": false,
+    "provider_adopted": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

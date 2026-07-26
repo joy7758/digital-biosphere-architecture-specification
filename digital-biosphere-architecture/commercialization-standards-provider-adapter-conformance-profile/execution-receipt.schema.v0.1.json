@@ -1,0 +1,244 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre18-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-18 Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "authorization_baseline_commit",
+    "authorization_baseline_remote_verified",
+    "execution_accounting",
+    "output_bindings",
+    "validation_summary",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./execution-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-18-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "COMPLETE_PASS_PROFILE_CANDIDATE_NOT_ADOPTED"
+    },
+    "observed_on": {
+      "const": "2026-07-26"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-18"
+    },
+    "authorization_baseline_commit": {
+      "const": "c6d320db868f6cfdc6dde95ac261f93377626152"
+    },
+    "authorization_baseline_remote_verified": {
+      "const": true
+    },
+    "execution_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_schema_rehearsal_executed",
+        "live_model_requests_executed",
+        "provider_network_requests_executed",
+        "conformance_cases_executed",
+        "automatic_retries_executed",
+        "fallbacks_executed",
+        "repairs_executed"
+      ],
+      "properties": {
+        "offline_schema_rehearsal_executed": {
+          "const": true
+        },
+        "live_model_requests_executed": {
+          "const": 0
+        },
+        "provider_network_requests_executed": {
+          "const": 0
+        },
+        "conformance_cases_executed": {
+          "const": 0
+        },
+        "automatic_retries_executed": {
+          "const": 0
+        },
+        "fallbacks_executed": {
+          "const": 0
+        },
+        "repairs_executed": {
+          "const": 0
+        }
+      }
+    },
+    "output_bindings": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reference",
+          "sha256"
+        ],
+        "properties": {
+          "reference": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      }
+    },
+    "validation_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemas_meta_validated",
+        "schema_rehearsal_cases_total",
+        "schema_rehearsal_cases_matched",
+        "positive_cases_accepted",
+        "negative_cases_rejected",
+        "artifact_hash_bindings_matched",
+        "failure_classes_defined",
+        "conformance_cases_defined",
+        "conformance_case_ids_unique",
+        "all_conformance_case_statuses_not_executed",
+        "profile_provider_neutral"
+      ],
+      "properties": {
+        "schemas_meta_validated": {
+          "const": 5
+        },
+        "schema_rehearsal_cases_total": {
+          "const": 9
+        },
+        "schema_rehearsal_cases_matched": {
+          "const": 9
+        },
+        "positive_cases_accepted": {
+          "const": 5
+        },
+        "negative_cases_rejected": {
+          "const": 4
+        },
+        "artifact_hash_bindings_matched": {
+          "const": 13
+        },
+        "failure_classes_defined": {
+          "const": 9
+        },
+        "conformance_cases_defined": {
+          "const": 20
+        },
+        "conformance_case_ids_unique": {
+          "const": true
+        },
+        "all_conformance_case_statuses_not_executed": {
+          "const": true
+        },
+        "profile_provider_neutral": {
+          "const": true
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_candidate_created",
+        "profile_adopted",
+        "adapter_implementation_created",
+        "adapter_implementation_authorized",
+        "conformance_execution_authorized",
+        "conformance_executed",
+        "provider_supported",
+        "provider_adopted",
+        "candidate_review_completed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "profile_candidate_created": {
+          "const": true
+        },
+        "profile_adopted": {
+          "const": false
+        },
+        "adapter_implementation_created": {
+          "const": false
+        },
+        "adapter_implementation_authorized": {
+          "const": false
+        },
+        "conformance_execution_authorized": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "provider_adopted": {
+          "const": false
+        },
+        "candidate_review_completed": {
+          "const": false
+        },
+        "record_counting_authorized": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "market_validation_pass": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

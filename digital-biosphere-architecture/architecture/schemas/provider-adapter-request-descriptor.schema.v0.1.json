@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/provider-adapter-request-descriptor.schema.v0.1.json",
+  "title": "TITMAS Provider Adapter Request Descriptor v0.1",
+  "description": "Provider-neutral, secret-free request contract metadata. A valid descriptor does not prove that a request was sent.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "descriptor_version",
+    "adapter_request_id",
+    "provider_ref",
+    "model_ref",
+    "reviewer_role",
+    "prompt_sha256",
+    "response_schema_sha256",
+    "request_started_at",
+    "retry_policy",
+    "fallback_policy",
+    "repair_policy",
+    "tool_policy",
+    "data_classification",
+    "secret_material_present",
+    "raw_provider_body_persistence_allowed"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/provider-adapter-request-descriptor.schema.v0.1.json"
+    },
+    "descriptor_version": {
+      "const": "0.1.0"
+    },
+    "adapter_request_id": {
+      "type": "string",
+      "pattern": "^ARQ-[A-Z0-9][A-Z0-9._-]{2,127}$"
+    },
+    "provider_ref": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "model_ref": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "reviewer_role": {
+      "type": "string",
+      "enum": [
+        "LEAD_REVIEWER",
+        "INDEPENDENT_REVIEWER",
+        "ADVERSARIAL_REVIEWER"
+      ]
+    },
+    "prompt_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "response_schema_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "request_started_at": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "date-time"
+    },
+    "retry_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "automatic_retry_allowed",
+        "maximum_provider_attempts"
+      ],
+      "properties": {
+        "automatic_retry_allowed": {
+          "const": false
+        },
+        "maximum_provider_attempts": {
+          "const": 1
+        }
+      }
+    },
+    "fallback_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "automatic_fallback_allowed",
+        "fallback_target_count"
+      ],
+      "properties": {
+        "automatic_fallback_allowed": {
+          "const": false
+        },
+        "fallback_target_count": {
+          "const": 0
+        }
+      }
+    },
+    "repair_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "json_repair_allowed",
+        "semantic_rewrite_allowed"
+      ],
+      "properties": {
+        "json_repair_allowed": {
+          "const": false
+        },
+        "semantic_rewrite_allowed": {
+          "const": false
+        }
+      }
+    },
+    "tool_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_tool_calls_allowed",
+        "declared_tool_count"
+      ],
+      "properties": {
+        "provider_tool_calls_allowed": {
+          "const": false
+        },
+        "declared_tool_count": {
+          "const": 0
+        }
+      }
+    },
+    "data_classification": {
+      "type": "string",
+      "enum": [
+        "PUBLIC",
+        "SANITIZED_NON_SECRET"
+      ]
+    },
+    "secret_material_present": {
+      "const": false
+    },
+    "raw_provider_body_persistence_allowed": {
+      "const": false
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    }
+  }
+}

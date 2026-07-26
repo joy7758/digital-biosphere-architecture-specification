@@ -1,0 +1,106 @@
+{
+  "$schema": "./execution-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-18-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "COMPLETE_PASS_PROFILE_CANDIDATE_NOT_ADOPTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-18",
+  "authorization_baseline_commit": "c6d320db868f6cfdc6dde95ac261f93377626152",
+  "authorization_baseline_remote_verified": true,
+  "execution_accounting": {
+    "offline_schema_rehearsal_executed": true,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "conformance_cases_executed": 0,
+    "automatic_retries_executed": 0,
+    "fallbacks_executed": 0,
+    "repairs_executed": 0
+  },
+  "output_bindings": [
+    {
+      "reference": "../architecture/provider-adapter-conformance-profile-v0.1.md",
+      "sha256": "3bf2ac228f8270393ea3c6f5dbe649689074c541fab30e62d1ee6d07ef305276"
+    },
+    {
+      "reference": "../architecture/provider-adapter-conformance-profile.v0.1.json",
+      "sha256": "263b3134c44a762261cc9dc471c56db4ce65ab87caf777517c6d291d66dd23bc"
+    },
+    {
+      "reference": "../architecture/schemas/provider-adapter-conformance-profile.schema.v0.1.json",
+      "sha256": "4601bd641b946511372f6b14830fe54cec780c52baf3d568c18c9339d134fe9f"
+    },
+    {
+      "reference": "../architecture/schemas/provider-adapter-request-descriptor.schema.v0.1.json",
+      "sha256": "fa477c0f41eebb4e38a52d715e0cf1c7376fec5fd012548da6f4c0e849a7044c"
+    },
+    {
+      "reference": "../architecture/schemas/provider-adapter-result-descriptor.schema.v0.1.json",
+      "sha256": "63d43a69532719c9758ef07d007ef9ee438a49fbe4269d838c29e1c7f65c689f"
+    },
+    {
+      "reference": "../architecture/provider-adapter-failure-taxonomy.v0.1.json",
+      "sha256": "e01fc22589311edc7bbdd994483623b17aefda71f4351d65da4a88bc6de89a77"
+    },
+    {
+      "reference": "../architecture/schemas/provider-adapter-failure-taxonomy.schema.v0.1.json",
+      "sha256": "ec276f5bd92a54c966868d1dab31ff5f7bfc65b136c2e5ed96b4ac54065d389b"
+    },
+    {
+      "reference": "../architecture/provider-adapter-conformance-cases.v0.1.json",
+      "sha256": "d3cdcf59de8f9ee8af7907a2961984d75d2dc1d4acc4066383ff3756dff7ac05"
+    },
+    {
+      "reference": "../architecture/schemas/provider-adapter-conformance-cases.schema.v0.1.json",
+      "sha256": "79de294e09eee2cd3f0a9c3f6ca33f187316b0d525a8cf1eb602509fc7a13c3c"
+    },
+    {
+      "reference": "schema-rehearsal-fixtures.v0.1.json",
+      "sha256": "b9b37c34804a77250bb2aecd6e6f76b86fde069a1317bd587933168b933be462"
+    },
+    {
+      "reference": "schema-rehearsal-result.v0.1.json",
+      "sha256": "933fcca3821cb2b83345f604ab3a50d374e45c3d7579fc6b3f1bbdef06bd4dd7"
+    },
+    {
+      "reference": "schema-rehearsal-result.schema.v0.1.json",
+      "sha256": "ccaa1f831d17b6310e686953e7fa86af2795bc31665ba59c80f19ed381be5708"
+    },
+    {
+      "reference": "PRE-18-PROVIDER-ADAPTER-CONFORMANCE-PROFILE-RESULT-v0.1.md",
+      "sha256": "5988ae07484b12feea0d5453a8f42fd41f69888c0949c73433cd664abfd22bb8"
+    }
+  ],
+  "validation_summary": {
+    "schemas_meta_validated": 5,
+    "schema_rehearsal_cases_total": 9,
+    "schema_rehearsal_cases_matched": 9,
+    "positive_cases_accepted": 5,
+    "negative_cases_rejected": 4,
+    "artifact_hash_bindings_matched": 13,
+    "failure_classes_defined": 9,
+    "conformance_cases_defined": 20,
+    "conformance_case_ids_unique": true,
+    "all_conformance_case_statuses_not_executed": true,
+    "profile_provider_neutral": true
+  },
+  "effects": {
+    "profile_candidate_created": true,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "adapter_implementation_authorized": false,
+    "conformance_execution_authorized": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "provider_adopted": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

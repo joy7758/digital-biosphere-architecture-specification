@@ -1,0 +1,322 @@
+{
+  "$schema": "./schemas/provider-adapter-conformance-cases.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-PROVIDER-ADAPTER-CONFORMANCE-CASES-0.1",
+  "version": "0.1.0",
+  "status": "CATALOG_DEFINED_CASES_NOT_EXECUTED",
+  "provider_neutral": true,
+  "minimum_required_case_count": 16,
+  "case_count": 20,
+  "cases_executed": 0,
+  "cases": [
+    {
+      "case_id": "PAC-001",
+      "title": "Direct structured answer",
+      "stage": "EXTRACTION",
+      "stimulus": "A declared transport field contains one reviewer JSON object.",
+      "expected_disposition": "ACCEPT_FOR_DIRECT_PARSE_AND_FULL_SCHEMA_CHECK",
+      "expected_failure_class": "NONE",
+      "assertions": [
+        "transport success remains separate",
+        "full reviewer Schema validation is still required"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-002",
+      "title": "Direct semantic text containing JSON",
+      "stage": "EXTRACTION",
+      "stimulus": "A declared semantic answer field contains one JSON text candidate.",
+      "expected_disposition": "ACCEPT_FOR_DIRECT_PARSE_AND_FULL_SCHEMA_CHECK",
+      "expected_failure_class": "NONE",
+      "assertions": [
+        "field declaration is required",
+        "arbitrary plain text is not automatically semantic"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-003",
+      "title": "Approved one-level serialized wrapper",
+      "stage": "EXTRACTION",
+      "stimulus": "One declared wrapper contains one serialized semantic answer.",
+      "expected_disposition": "UNWRAP_ONCE_THEN_DIRECT_PARSE_AND_FULL_SCHEMA_CHECK",
+      "expected_failure_class": "NONE",
+      "assertions": [
+        "maximum wrapper unwrap depth is one",
+        "no recursive discovery is allowed"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-004",
+      "title": "Direct reviewer object",
+      "stage": "SCHEMA",
+      "stimulus": "The transport root is already the reviewer object.",
+      "expected_disposition": "DIRECT_FULL_SCHEMA_CHECK",
+      "expected_failure_class": "NONE",
+      "assertions": [
+        "no transport wrapper is inferred",
+        "Schema pass does not imply candidate validity"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-005",
+      "title": "Unknown JSON transport envelope",
+      "stage": "EXTRACTION",
+      "stimulus": "A JSON object has no extraction path declared by the active contract.",
+      "expected_disposition": "REJECT_AND_RETAIN_FAILURE",
+      "expected_failure_class": "UNKNOWN_RUNTIME_ENVELOPE",
+      "assertions": [
+        "shape alone cannot create a semantic answer",
+        "unknown envelope remains explicit"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-006",
+      "title": "Missing semantic answer",
+      "stage": "EXTRACTION",
+      "stimulus": "A declared envelope is present but the semantic answer field is missing.",
+      "expected_disposition": "REJECT_AND_RETAIN_FAILURE",
+      "expected_failure_class": "NO_EXTRACTABLE_ANSWER",
+      "assertions": [
+        "missing answer cannot be repaired",
+        "Schema validation is not attempted"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-007",
+      "title": "Wrong-type semantic answer",
+      "stage": "EXTRACTION",
+      "stimulus": "The declared semantic answer field has a type not accepted by its extraction path.",
+      "expected_disposition": "REJECT_AND_RETAIN_FAILURE",
+      "expected_failure_class": "NO_EXTRACTABLE_ANSWER",
+      "assertions": [
+        "wrong type cannot be coerced",
+        "provider success does not override extraction failure"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-008",
+      "title": "Non-JSON semantic answer",
+      "stage": "PARSE",
+      "stimulus": "The extracted semantic answer cannot be parsed directly as JSON.",
+      "expected_disposition": "REJECT_WITHOUT_JSON_REPAIR",
+      "expected_failure_class": "DIRECT_JSON_PARSE_FAILED",
+      "assertions": [
+        "no code-fence stripping or JSON repair",
+        "full Schema validation is not attempted"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-009",
+      "title": "Full reviewer Schema mismatch",
+      "stage": "SCHEMA",
+      "stimulus": "The semantic answer parses as JSON but fails the complete frozen reviewer Schema.",
+      "expected_disposition": "REJECT_AND_RETAIN_SCHEMA_FAILURE",
+      "expected_failure_class": "FULL_SCHEMA_VALIDATION_FAILED",
+      "assertions": [
+        "partial field presence is insufficient",
+        "no semantic rewrite is allowed"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-010",
+      "title": "Identical answer candidate deduplication",
+      "stage": "EXTRACTION",
+      "stimulus": "Two declared extraction paths yield byte-identical semantic candidates.",
+      "expected_disposition": "DEDUPLICATE_THEN_PARSE_ONCE",
+      "expected_failure_class": "NONE",
+      "assertions": [
+        "deduplication is deterministic",
+        "provider request accounting is unchanged"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-011",
+      "title": "Non-identical answer ambiguity",
+      "stage": "EXTRACTION",
+      "stimulus": "Two declared extraction paths yield non-identical semantic candidates.",
+      "expected_disposition": "REJECT_AND_RETAIN_AMBIGUITY",
+      "expected_failure_class": "AMBIGUOUS_NON_IDENTICAL_ANSWERS",
+      "assertions": [
+        "no candidate ranking is inferred",
+        "no hidden fallback selects one answer"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-012",
+      "title": "Undeclared second-level nesting",
+      "stage": "EXTRACTION",
+      "stimulus": "A semantic candidate can only be reached after two wrapper unwrapping steps.",
+      "expected_disposition": "REJECT_AND_RETAIN_NESTING_FAILURE",
+      "expected_failure_class": "UNDECLARED_NESTING",
+      "assertions": [
+        "maximum unwrap depth remains one",
+        "recursive search is prohibited"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-013",
+      "title": "Provider transport error",
+      "stage": "TRANSPORT",
+      "stimulus": "The provider request ends with a timeout, network or equivalent transport failure.",
+      "expected_disposition": "STOP_AND_RETAIN_TRANSPORT_FAILURE",
+      "expected_failure_class": "TRANSPORT_ERROR",
+      "assertions": [
+        "no automatic retry",
+        "semantic and Schema status remain not assessed"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-014",
+      "title": "Provider-declared error",
+      "stage": "TRANSPORT",
+      "stimulus": "The provider returns a declared provider-side error or refusal.",
+      "expected_disposition": "STOP_AND_RETAIN_PROVIDER_FAILURE",
+      "expected_failure_class": "PROVIDER_ERROR",
+      "assertions": [
+        "error envelope is not mined for reviewer content",
+        "no automatic retry or fallback"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-015",
+      "title": "Prohibited automatic retry",
+      "stage": "POLICY",
+      "stimulus": "An implementation attempts a second provider request without a new explicit authorization.",
+      "expected_disposition": "REJECT_POLICY_VIOLATION",
+      "expected_failure_class": "POLICY_VIOLATION",
+      "assertions": [
+        "maximum provider attempts is one",
+        "attempt accounting must preserve the violation"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-016",
+      "title": "Prohibited provider fallback",
+      "stage": "POLICY",
+      "stimulus": "An implementation switches provider or model after failure without a new explicit authorization.",
+      "expected_disposition": "REJECT_POLICY_VIOLATION",
+      "expected_failure_class": "POLICY_VIOLATION",
+      "assertions": [
+        "fallback target count remains zero",
+        "failure cannot be hidden by a later success"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-017",
+      "title": "Prohibited JSON repair or semantic rewrite",
+      "stage": "POLICY",
+      "stimulus": "An implementation repairs malformed JSON or rewrites content to satisfy Schema.",
+      "expected_disposition": "REJECT_POLICY_VIOLATION",
+      "expected_failure_class": "POLICY_VIOLATION",
+      "assertions": [
+        "direct parse is mandatory",
+        "repairs executed remains zero"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-018",
+      "title": "Raw provider body persistence",
+      "stage": "POLICY",
+      "stimulus": "An implementation attempts to persist the raw provider response body.",
+      "expected_disposition": "REJECT_POLICY_VIOLATION",
+      "expected_failure_class": "POLICY_VIOLATION",
+      "assertions": [
+        "only privacy-preserving shape metadata may be retained",
+        "raw response persistence remains false"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-019",
+      "title": "Secret or usage payload persistence",
+      "stage": "POLICY",
+      "stimulus": "An implementation attempts to persist a credential, secret-bearing field or provider usage payload.",
+      "expected_disposition": "REJECT_POLICY_VIOLATION",
+      "expected_failure_class": "POLICY_VIOLATION",
+      "assertions": [
+        "secret material is never part of a descriptor",
+        "usage payload persistence remains false"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    },
+    {
+      "case_id": "PAC-020",
+      "title": "Candidate validity and counting semantic non-elevation",
+      "stage": "POLICY",
+      "stimulus": "A full reviewer Schema PASS is presented as candidate validity, record counting, CS-G0, market validation or provider adoption.",
+      "expected_disposition": "REJECT_POLICY_VIOLATION",
+      "expected_failure_class": "POLICY_VIOLATION",
+      "assertions": [
+        "Schema conformance remains structural",
+        "all authority and commercial effects remain false"
+      ],
+      "status": "NOT_EXECUTED",
+      "provider_neutral": true,
+      "execution_authorized": false
+    }
+  ],
+  "effects": {
+    "catalog_defined": true,
+    "conformance_executed": false,
+    "profile_adopted": false,
+    "provider_supported": false,
+    "implementation_created": false,
+    "candidate_review_completed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false
+  }
+}

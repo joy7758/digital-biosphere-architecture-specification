@@ -1,0 +1,261 @@
+{
+  "document_id": "DBA-TITMAS-CS-D02-PRE-18-SCHEMA-REHEARSAL-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "SYNTHETIC_OFFLINE_FIXTURES_ONLY",
+  "provider_requests_represented": 0,
+  "fixtures": [
+    {
+      "fixture_id": "PRE18-FX-001",
+      "target_schema": "../architecture/schemas/provider-adapter-request-descriptor.schema.v0.1.json",
+      "expected_valid": true,
+      "purpose": "Minimal provider-neutral request descriptor with no execution.",
+      "instance": {
+        "$schema": "./architecture/schemas/provider-adapter-request-descriptor.schema.v0.1.json",
+        "descriptor_version": "0.1.0",
+        "adapter_request_id": "ARQ-SYNTHETIC-001",
+        "provider_ref": "SYNTHETIC_PROVIDER_NOT_ADOPTED",
+        "model_ref": "SYNTHETIC_MODEL_NOT_EXECUTED",
+        "reviewer_role": "INDEPENDENT_REVIEWER",
+        "prompt_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "response_schema_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "request_started_at": null,
+        "retry_policy": {
+          "automatic_retry_allowed": false,
+          "maximum_provider_attempts": 1
+        },
+        "fallback_policy": {
+          "automatic_fallback_allowed": false,
+          "fallback_target_count": 0
+        },
+        "repair_policy": {
+          "json_repair_allowed": false,
+          "semantic_rewrite_allowed": false
+        },
+        "tool_policy": {
+          "provider_tool_calls_allowed": false,
+          "declared_tool_count": 0
+        },
+        "data_classification": "SANITIZED_NON_SECRET",
+        "secret_material_present": false,
+        "raw_provider_body_persistence_allowed": false
+      }
+    },
+    {
+      "fixture_id": "PRE18-FX-002",
+      "target_schema": "../architecture/schemas/provider-adapter-result-descriptor.schema.v0.1.json",
+      "expected_valid": true,
+      "purpose": "Minimal provider-neutral result descriptor for a request that was not attempted.",
+      "instance": {
+        "$schema": "./architecture/schemas/provider-adapter-result-descriptor.schema.v0.1.json",
+        "descriptor_version": "0.1.0",
+        "adapter_request_id": "ARQ-SYNTHETIC-001",
+        "provider_ref": "SYNTHETIC_PROVIDER_NOT_ADOPTED",
+        "model_ref": "SYNTHETIC_MODEL_NOT_EXECUTED",
+        "transport_status": "NOT_ATTEMPTED",
+        "transport_status_code": null,
+        "semantic_answer_status": "NOT_ASSESSED",
+        "extraction_path_id": "NONE",
+        "shape_descriptor": {
+          "top_level_type": "NOT_OBSERVED",
+          "top_level_key_names": [],
+          "candidate_count": 0,
+          "maximum_observed_nesting_depth": 0,
+          "contains_secret_marker": false,
+          "contains_raw_body": false
+        },
+        "direct_json_parse_status": "NOT_ASSESSED",
+        "full_schema_status": "NOT_ASSESSED",
+        "sanitized_conformant_response_reference": null,
+        "failure_class": "NONE",
+        "request_accounting": {
+          "provider_requests_executed": 0,
+          "automatic_retries_executed": 0,
+          "fallbacks_executed": 0,
+          "repairs_executed": 0
+        },
+        "raw_provider_body_persisted": false,
+        "secret_material_persisted": false,
+        "usage_payload_persisted": false,
+        "semantic_non_elevation": {
+          "schema_pass_implies_candidate_validity": false,
+          "schema_pass_implies_record_counting": false,
+          "schema_pass_implies_cs_g0": false,
+          "schema_pass_implies_market_validation": false,
+          "schema_pass_implies_provider_adoption": false
+        }
+      }
+    },
+    {
+      "fixture_id": "PRE18-FX-N01",
+      "target_schema": "../architecture/schemas/provider-adapter-request-descriptor.schema.v0.1.json",
+      "expected_valid": false,
+      "purpose": "Reject automatic retry and more than one provider attempt.",
+      "instance": {
+        "$schema": "./architecture/schemas/provider-adapter-request-descriptor.schema.v0.1.json",
+        "descriptor_version": "0.1.0",
+        "adapter_request_id": "ARQ-NEGATIVE-RETRY",
+        "provider_ref": "SYNTHETIC_PROVIDER_NOT_ADOPTED",
+        "model_ref": "SYNTHETIC_MODEL_NOT_EXECUTED",
+        "reviewer_role": "LEAD_REVIEWER",
+        "prompt_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "response_schema_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "request_started_at": null,
+        "retry_policy": {
+          "automatic_retry_allowed": true,
+          "maximum_provider_attempts": 2
+        },
+        "fallback_policy": {
+          "automatic_fallback_allowed": false,
+          "fallback_target_count": 0
+        },
+        "repair_policy": {
+          "json_repair_allowed": false,
+          "semantic_rewrite_allowed": false
+        },
+        "tool_policy": {
+          "provider_tool_calls_allowed": false,
+          "declared_tool_count": 0
+        },
+        "data_classification": "PUBLIC",
+        "secret_material_present": false,
+        "raw_provider_body_persistence_allowed": false
+      }
+    },
+    {
+      "fixture_id": "PRE18-FX-N02",
+      "target_schema": "../architecture/schemas/provider-adapter-request-descriptor.schema.v0.1.json",
+      "expected_valid": false,
+      "purpose": "Reject any descriptor claiming secret material is present.",
+      "instance": {
+        "$schema": "./architecture/schemas/provider-adapter-request-descriptor.schema.v0.1.json",
+        "descriptor_version": "0.1.0",
+        "adapter_request_id": "ARQ-NEGATIVE-SECRET",
+        "provider_ref": "SYNTHETIC_PROVIDER_NOT_ADOPTED",
+        "model_ref": "SYNTHETIC_MODEL_NOT_EXECUTED",
+        "reviewer_role": "ADVERSARIAL_REVIEWER",
+        "prompt_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "response_schema_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "request_started_at": null,
+        "retry_policy": {
+          "automatic_retry_allowed": false,
+          "maximum_provider_attempts": 1
+        },
+        "fallback_policy": {
+          "automatic_fallback_allowed": false,
+          "fallback_target_count": 0
+        },
+        "repair_policy": {
+          "json_repair_allowed": false,
+          "semantic_rewrite_allowed": false
+        },
+        "tool_policy": {
+          "provider_tool_calls_allowed": false,
+          "declared_tool_count": 0
+        },
+        "data_classification": "SANITIZED_NON_SECRET",
+        "secret_material_present": true,
+        "raw_provider_body_persistence_allowed": false
+      }
+    },
+    {
+      "fixture_id": "PRE18-FX-N03",
+      "target_schema": "../architecture/schemas/provider-adapter-result-descriptor.schema.v0.1.json",
+      "expected_valid": false,
+      "purpose": "Reject an undeclared failure class.",
+      "instance": {
+        "$schema": "./architecture/schemas/provider-adapter-result-descriptor.schema.v0.1.json",
+        "descriptor_version": "0.1.0",
+        "adapter_request_id": "ARQ-NEGATIVE-FAILURE",
+        "provider_ref": "SYNTHETIC_PROVIDER_NOT_ADOPTED",
+        "model_ref": "SYNTHETIC_MODEL_NOT_EXECUTED",
+        "transport_status": "FAILED",
+        "transport_status_code": 503,
+        "semantic_answer_status": "FAILED",
+        "extraction_path_id": "NONE",
+        "shape_descriptor": {
+          "top_level_type": "OBJECT",
+          "top_level_key_names": [
+            "error"
+          ],
+          "candidate_count": 0,
+          "maximum_observed_nesting_depth": 1,
+          "contains_secret_marker": false,
+          "contains_raw_body": false
+        },
+        "direct_json_parse_status": "NOT_ASSESSED",
+        "full_schema_status": "NOT_ASSESSED",
+        "sanitized_conformant_response_reference": null,
+        "failure_class": "UNDECLARED_CUSTOM_FAILURE",
+        "request_accounting": {
+          "provider_requests_executed": 1,
+          "automatic_retries_executed": 0,
+          "fallbacks_executed": 0,
+          "repairs_executed": 0
+        },
+        "raw_provider_body_persisted": false,
+        "secret_material_persisted": false,
+        "usage_payload_persisted": false,
+        "semantic_non_elevation": {
+          "schema_pass_implies_candidate_validity": false,
+          "schema_pass_implies_record_counting": false,
+          "schema_pass_implies_cs_g0": false,
+          "schema_pass_implies_market_validation": false,
+          "schema_pass_implies_provider_adoption": false
+        }
+      }
+    },
+    {
+      "fixture_id": "PRE18-FX-N04",
+      "target_schema": "../architecture/schemas/provider-adapter-result-descriptor.schema.v0.1.json",
+      "expected_valid": false,
+      "purpose": "Reject semantic elevation from Schema pass to candidate validity.",
+      "instance": {
+        "$schema": "./architecture/schemas/provider-adapter-result-descriptor.schema.v0.1.json",
+        "descriptor_version": "0.1.0",
+        "adapter_request_id": "ARQ-NEGATIVE-ELEVATION",
+        "provider_ref": "SYNTHETIC_PROVIDER_NOT_ADOPTED",
+        "model_ref": "SYNTHETIC_MODEL_NOT_EXECUTED",
+        "transport_status": "SUCCEEDED",
+        "transport_status_code": 200,
+        "semantic_answer_status": "EXTRACTED",
+        "extraction_path_id": "DIRECT_JSON_OBJECT",
+        "shape_descriptor": {
+          "top_level_type": "OBJECT",
+          "top_level_key_names": [
+            "verdict"
+          ],
+          "candidate_count": 1,
+          "maximum_observed_nesting_depth": 1,
+          "contains_secret_marker": false,
+          "contains_raw_body": false
+        },
+        "direct_json_parse_status": "PASS",
+        "full_schema_status": "PASS",
+        "sanitized_conformant_response_reference": "synthetic/reviewer-response.json",
+        "failure_class": "NONE",
+        "request_accounting": {
+          "provider_requests_executed": 1,
+          "automatic_retries_executed": 0,
+          "fallbacks_executed": 0,
+          "repairs_executed": 0
+        },
+        "raw_provider_body_persisted": false,
+        "secret_material_persisted": false,
+        "usage_payload_persisted": false,
+        "semantic_non_elevation": {
+          "schema_pass_implies_candidate_validity": true,
+          "schema_pass_implies_record_counting": false,
+          "schema_pass_implies_cs_g0": false,
+          "schema_pass_implies_market_validation": false,
+          "schema_pass_implies_provider_adoption": false
+        }
+      }
+    }
+  ],
+  "effects": {
+    "provider_request_executed": false,
+    "adapter_implementation_created": false,
+    "conformance_case_executed": false,
+    "profile_adopted": false
+  }
+}

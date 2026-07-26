@@ -1697,8 +1697,28 @@
         "provider_adapter_conformance_profile_decision_candidate_id",
         "provider_adapter_conformance_profile_recommendation_reference",
         "provider_adapter_conformance_profile_recommendation_prepared",
+        "provider_adapter_conformance_profile_decision_reference",
         "provider_adapter_conformance_profile_decision_recorded",
         "provider_adapter_conformance_profile_candidate_authorized",
+        "provider_adapter_conformance_profile_execution_plan_reference",
+        "provider_adapter_conformance_profile_authorization_receipt_reference",
+        "provider_adapter_conformance_profile_authorization_baseline_commit",
+        "provider_adapter_conformance_profile_authorization_baseline_remote_verified",
+        "provider_adapter_conformance_profile_reference",
+        "provider_adapter_conformance_profile_machine_reference",
+        "provider_adapter_conformance_profile_failure_taxonomy_reference",
+        "provider_adapter_conformance_profile_case_catalog_reference",
+        "provider_adapter_conformance_profile_schema_rehearsal_result_reference",
+        "provider_adapter_conformance_profile_execution_receipt_reference",
+        "provider_adapter_conformance_profile_result_report_reference",
+        "provider_adapter_conformance_profile_candidate_created",
+        "provider_adapter_conformance_profile_offline_schema_rehearsal_pass",
+        "provider_adapter_conformance_profile_conformance_cases_defined",
+        "provider_adapter_conformance_profile_conformance_cases_executed",
+        "provider_adapter_conformance_profile_live_model_requests_executed",
+        "provider_adapter_conformance_profile_provider_network_requests_executed",
+        "provider_adapter_conformance_profile_adopted",
+        "provider_adapter_conformance_profile_provider_adoption",
         "provider_adapter_implementation_authorized",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
@@ -2395,10 +2415,70 @@
         "provider_adapter_conformance_profile_recommendation_prepared": {
           "const": true
         },
+        "provider_adapter_conformance_profile_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-18-PROVIDER-ADAPTER-CONFORMANCE-PROFILE-DECISION-RECORD.v0.1.json"
+        },
         "provider_adapter_conformance_profile_decision_recorded": {
-          "const": false
+          "const": true
         },
         "provider_adapter_conformance_profile_candidate_authorized": {
+          "const": true
+        },
+        "provider_adapter_conformance_profile_execution_plan_reference": {
+          "const": "commercialization-standards-provider-adapter-conformance-profile/execution-plan.v0.1.json"
+        },
+        "provider_adapter_conformance_profile_authorization_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-conformance-profile/authorization-baseline-receipt.v0.1.json"
+        },
+        "provider_adapter_conformance_profile_authorization_baseline_commit": {
+          "const": "c6d320db868f6cfdc6dde95ac261f93377626152"
+        },
+        "provider_adapter_conformance_profile_authorization_baseline_remote_verified": {
+          "const": true
+        },
+        "provider_adapter_conformance_profile_reference": {
+          "const": "architecture/provider-adapter-conformance-profile-v0.1.md"
+        },
+        "provider_adapter_conformance_profile_machine_reference": {
+          "const": "architecture/provider-adapter-conformance-profile.v0.1.json"
+        },
+        "provider_adapter_conformance_profile_failure_taxonomy_reference": {
+          "const": "architecture/provider-adapter-failure-taxonomy.v0.1.json"
+        },
+        "provider_adapter_conformance_profile_case_catalog_reference": {
+          "const": "architecture/provider-adapter-conformance-cases.v0.1.json"
+        },
+        "provider_adapter_conformance_profile_schema_rehearsal_result_reference": {
+          "const": "commercialization-standards-provider-adapter-conformance-profile/schema-rehearsal-result.v0.1.json"
+        },
+        "provider_adapter_conformance_profile_execution_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-conformance-profile/execution-receipt.v0.1.json"
+        },
+        "provider_adapter_conformance_profile_result_report_reference": {
+          "const": "commercialization-standards-provider-adapter-conformance-profile/PRE-18-PROVIDER-ADAPTER-CONFORMANCE-PROFILE-RESULT-v0.1.md"
+        },
+        "provider_adapter_conformance_profile_candidate_created": {
+          "const": true
+        },
+        "provider_adapter_conformance_profile_offline_schema_rehearsal_pass": {
+          "const": true
+        },
+        "provider_adapter_conformance_profile_conformance_cases_defined": {
+          "const": 20
+        },
+        "provider_adapter_conformance_profile_conformance_cases_executed": {
+          "const": 0
+        },
+        "provider_adapter_conformance_profile_live_model_requests_executed": {
+          "const": 0
+        },
+        "provider_adapter_conformance_profile_provider_network_requests_executed": {
+          "const": 0
+        },
+        "provider_adapter_conformance_profile_adopted": {
+          "const": false
+        },
+        "provider_adapter_conformance_profile_provider_adoption": {
           "const": false
         },
         "provider_adapter_implementation_authorized": {
@@ -2420,10 +2500,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "AUTHORIZE_PROVIDER_NEUTRAL_AGENT_REVIEW_ADAPTER_CONFORMANCE_PROFILE_CANDIDATE_ONLY"
+          "const": "PREPARE_PROVIDER_ADAPTER_PROFILE_CANDIDATE_REVIEW_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
-          "const": true
+          "const": false
         },
         "external_execution_authorized": {
           "const": false

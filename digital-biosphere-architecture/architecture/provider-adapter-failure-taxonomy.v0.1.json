@@ -1,0 +1,93 @@
+{
+  "$schema": "./schemas/provider-adapter-failure-taxonomy.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-PROVIDER-ADAPTER-FAILURE-TAXONOMY-0.1",
+  "version": "0.1.0",
+  "status": "CANDIDATE_NOT_ADOPTED",
+  "provider_neutral": true,
+  "failure_retention_required": true,
+  "silent_retry_fallback_or_repair_allowed": false,
+  "failure_classes": [
+    {
+      "failure_class": "TRANSPORT_ERROR",
+      "stage": "TRANSPORT",
+      "meaning": "The provider transport did not produce a successful response boundary.",
+      "record_required": true,
+      "retry_disposition": "STOP_REVIEW_REQUIRED",
+      "semantic_effect": "NO_SEMANTIC_ANSWER_AND_NO_SCHEMA_RESULT"
+    },
+    {
+      "failure_class": "PROVIDER_ERROR",
+      "stage": "TRANSPORT",
+      "meaning": "The provider returned an explicit provider-side error or refusal envelope.",
+      "record_required": true,
+      "retry_disposition": "STOP_REVIEW_REQUIRED",
+      "semantic_effect": "NO_SEMANTIC_ANSWER_AND_NO_SCHEMA_RESULT"
+    },
+    {
+      "failure_class": "NO_EXTRACTABLE_ANSWER",
+      "stage": "EXTRACTION",
+      "meaning": "No declared semantic answer candidate can be extracted.",
+      "record_required": true,
+      "retry_disposition": "STOP_REVIEW_REQUIRED",
+      "semantic_effect": "SEMANTIC_ANSWER_FAILED"
+    },
+    {
+      "failure_class": "UNKNOWN_RUNTIME_ENVELOPE",
+      "stage": "EXTRACTION",
+      "meaning": "The observed transport shape is not declared by the active extraction contract.",
+      "record_required": true,
+      "retry_disposition": "STOP_CONTRACT_REVIEW_REQUIRED",
+      "semantic_effect": "SEMANTIC_ANSWER_FAILED"
+    },
+    {
+      "failure_class": "UNDECLARED_NESTING",
+      "stage": "EXTRACTION",
+      "meaning": "A candidate requires more than the single explicitly allowed wrapper unwrap.",
+      "record_required": true,
+      "retry_disposition": "STOP_CONTRACT_REVIEW_REQUIRED",
+      "semantic_effect": "SEMANTIC_ANSWER_FAILED"
+    },
+    {
+      "failure_class": "AMBIGUOUS_NON_IDENTICAL_ANSWERS",
+      "stage": "EXTRACTION",
+      "meaning": "Multiple non-identical semantic answer candidates remain after deterministic deduplication.",
+      "record_required": true,
+      "retry_disposition": "STOP_HUMAN_REVIEW_REQUIRED",
+      "semantic_effect": "SEMANTIC_ANSWER_FAILED"
+    },
+    {
+      "failure_class": "DIRECT_JSON_PARSE_FAILED",
+      "stage": "PARSE",
+      "meaning": "The extracted candidate cannot be parsed directly as JSON without repair.",
+      "record_required": true,
+      "retry_disposition": "STOP_NO_REPAIR",
+      "semantic_effect": "SCHEMA_NOT_ASSESSED"
+    },
+    {
+      "failure_class": "FULL_SCHEMA_VALIDATION_FAILED",
+      "stage": "SCHEMA",
+      "meaning": "The directly parsed JSON does not conform to the complete frozen reviewer Schema.",
+      "record_required": true,
+      "retry_disposition": "STOP_NO_REWRITE",
+      "semantic_effect": "CANDIDATE_NOT_CONFORMANT"
+    },
+    {
+      "failure_class": "POLICY_VIOLATION",
+      "stage": "POLICY",
+      "meaning": "Execution, persistence or interpretation violates a declared retry, fallback, repair, privacy or semantic non-elevation rule.",
+      "record_required": true,
+      "retry_disposition": "STOP_SECURITY_OR_GOVERNANCE_REVIEW_REQUIRED",
+      "semantic_effect": "RESULT_REJECTED"
+    }
+  ],
+  "effects": {
+    "taxonomy_defined": true,
+    "provider_supported": false,
+    "profile_adopted": false,
+    "implementation_created": false,
+    "conformance_executed": false,
+    "candidate_review_completed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false
+  }
+}

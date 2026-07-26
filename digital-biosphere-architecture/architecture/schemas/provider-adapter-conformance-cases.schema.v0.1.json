@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/provider-adapter-conformance-cases.schema.v0.1.json",
+  "title": "TITMAS Provider Adapter Conformance Case Catalog v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "provider_neutral",
+    "minimum_required_case_count",
+    "case_count",
+    "cases_executed",
+    "cases",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./schemas/provider-adapter-conformance-cases.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-PROVIDER-ADAPTER-CONFORMANCE-CASES-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "CATALOG_DEFINED_CASES_NOT_EXECUTED"
+    },
+    "provider_neutral": {
+      "const": true
+    },
+    "minimum_required_case_count": {
+      "const": 16
+    },
+    "case_count": {
+      "type": "integer",
+      "minimum": 16
+    },
+    "cases_executed": {
+      "const": 0
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "title",
+          "stage",
+          "stimulus",
+          "expected_disposition",
+          "expected_failure_class",
+          "assertions",
+          "status",
+          "provider_neutral",
+          "execution_authorized"
+        ],
+        "properties": {
+          "case_id": {
+            "type": "string",
+            "pattern": "^PAC-[0-9]{3}$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 160
+          },
+          "stage": {
+            "type": "string",
+            "enum": [
+              "TRANSPORT",
+              "EXTRACTION",
+              "PARSE",
+              "SCHEMA",
+              "POLICY"
+            ]
+          },
+          "stimulus": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "expected_disposition": {
+            "type": "string",
+            "enum": [
+              "ACCEPT_FOR_DIRECT_PARSE_AND_FULL_SCHEMA_CHECK",
+              "UNWRAP_ONCE_THEN_DIRECT_PARSE_AND_FULL_SCHEMA_CHECK",
+              "DIRECT_FULL_SCHEMA_CHECK",
+              "DEDUPLICATE_THEN_PARSE_ONCE",
+              "REJECT_AND_RETAIN_FAILURE",
+              "REJECT_WITHOUT_JSON_REPAIR",
+              "REJECT_AND_RETAIN_SCHEMA_FAILURE",
+              "REJECT_AND_RETAIN_AMBIGUITY",
+              "REJECT_AND_RETAIN_NESTING_FAILURE",
+              "STOP_AND_RETAIN_TRANSPORT_FAILURE",
+              "STOP_AND_RETAIN_PROVIDER_FAILURE",
+              "REJECT_POLICY_VIOLATION"
+            ]
+          },
+          "expected_failure_class": {
+            "type": "string",
+            "enum": [
+              "NONE",
+              "TRANSPORT_ERROR",
+              "PROVIDER_ERROR",
+              "NO_EXTRACTABLE_ANSWER",
+              "UNKNOWN_RUNTIME_ENVELOPE",
+              "UNDECLARED_NESTING",
+              "AMBIGUOUS_NON_IDENTICAL_ANSWERS",
+              "DIRECT_JSON_PARSE_FAILED",
+              "FULL_SCHEMA_VALIDATION_FAILED",
+              "POLICY_VIOLATION"
+            ]
+          },
+          "assertions": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 8,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 256
+            }
+          },
+          "status": {
+            "const": "NOT_EXECUTED"
+          },
+          "provider_neutral": {
+            "const": true
+          },
+          "execution_authorized": {
+            "const": false
+          }
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "catalog_defined",
+        "conformance_executed",
+        "profile_adopted",
+        "provider_supported",
+        "implementation_created",
+        "candidate_review_completed",
+        "valid_problem_records",
+        "cs_g0_pass"
+      ],
+      "properties": {
+        "catalog_defined": {
+          "const": true
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "profile_adopted": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        },
+        "candidate_review_completed": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        }
+      }
+    }
+  }
+}

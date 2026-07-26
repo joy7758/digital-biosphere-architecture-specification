@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/provider-adapter-result-descriptor.schema.v0.1.json",
+  "title": "TITMAS Provider Adapter Result Descriptor v0.1",
+  "description": "Provider-neutral result metadata. Transport, extraction, parsing and full Schema validation remain independent states.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "descriptor_version",
+    "adapter_request_id",
+    "provider_ref",
+    "model_ref",
+    "transport_status",
+    "transport_status_code",
+    "semantic_answer_status",
+    "extraction_path_id",
+    "shape_descriptor",
+    "direct_json_parse_status",
+    "full_schema_status",
+    "sanitized_conformant_response_reference",
+    "failure_class",
+    "request_accounting",
+    "raw_provider_body_persisted",
+    "secret_material_persisted",
+    "usage_payload_persisted",
+    "semantic_non_elevation"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/provider-adapter-result-descriptor.schema.v0.1.json"
+    },
+    "descriptor_version": {
+      "const": "0.1.0"
+    },
+    "adapter_request_id": {
+      "type": "string",
+      "pattern": "^ARQ-[A-Z0-9][A-Z0-9._-]{2,127}$"
+    },
+    "provider_ref": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "model_ref": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 256
+    },
+    "transport_status": {
+      "type": "string",
+      "enum": [
+        "NOT_ATTEMPTED",
+        "SUCCEEDED",
+        "FAILED"
+      ]
+    },
+    "transport_status_code": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 100,
+      "maximum": 599
+    },
+    "semantic_answer_status": {
+      "type": "string",
+      "enum": [
+        "NOT_ASSESSED",
+        "EXTRACTED",
+        "FAILED"
+      ]
+    },
+    "extraction_path_id": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "DIRECT_JSON_OBJECT",
+        "DIRECT_SEMANTIC_TEXT",
+        "ONE_LEVEL_SERIALIZED_WRAPPER"
+      ]
+    },
+    "shape_descriptor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "top_level_type",
+        "top_level_key_names",
+        "candidate_count",
+        "maximum_observed_nesting_depth",
+        "contains_secret_marker",
+        "contains_raw_body"
+      ],
+      "properties": {
+        "top_level_type": {
+          "type": "string",
+          "enum": [
+            "NOT_OBSERVED",
+            "OBJECT",
+            "ARRAY",
+            "STRING",
+            "NUMBER",
+            "BOOLEAN",
+            "NULL"
+          ]
+        },
+        "top_level_key_names": {
+          "type": "array",
+          "maxItems": 32,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^[A-Za-z0-9._-]{1,64}$"
+          }
+        },
+        "candidate_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 32
+        },
+        "maximum_observed_nesting_depth": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 32
+        },
+        "contains_secret_marker": {
+          "const": false
+        },
+        "contains_raw_body": {
+          "const": false
+        }
+      }
+    },
+    "direct_json_parse_status": {
+      "type": "string",
+      "enum": [
+        "NOT_ASSESSED",
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "full_schema_status": {
+      "type": "string",
+      "enum": [
+        "NOT_ASSESSED",
+        "PASS",
+        "FAIL"
+      ]
+    },
+    "sanitized_conformant_response_reference": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._/:-]{0,511}$"
+    },
+    "failure_class": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "TRANSPORT_ERROR",
+        "PROVIDER_ERROR",
+        "NO_EXTRACTABLE_ANSWER",
+        "UNKNOWN_RUNTIME_ENVELOPE",
+        "UNDECLARED_NESTING",
+        "AMBIGUOUS_NON_IDENTICAL_ANSWERS",
+        "DIRECT_JSON_PARSE_FAILED",
+        "FULL_SCHEMA_VALIDATION_FAILED",
+        "POLICY_VIOLATION"
+      ]
+    },
+    "request_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_requests_executed",
+        "automatic_retries_executed",
+        "fallbacks_executed",
+        "repairs_executed"
+      ],
+      "properties": {
+        "provider_requests_executed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "automatic_retries_executed": {
+          "const": 0
+        },
+        "fallbacks_executed": {
+          "const": 0
+        },
+        "repairs_executed": {
+          "const": 0
+        }
+      }
+    },
+    "raw_provider_body_persisted": {
+      "const": false
+    },
+    "secret_material_persisted": {
+      "const": false
+    },
+    "usage_payload_persisted": {
+      "const": false
+    },
+    "semantic_non_elevation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_pass_implies_candidate_validity",
+        "schema_pass_implies_record_counting",
+        "schema_pass_implies_cs_g0",
+        "schema_pass_implies_market_validation",
+        "schema_pass_implies_provider_adoption"
+      ],
+      "properties": {
+        "schema_pass_implies_candidate_validity": {
+          "const": false
+        },
+        "schema_pass_implies_record_counting": {
+          "const": false
+        },
+        "schema_pass_implies_cs_g0": {
+          "const": false
+        },
+        "schema_pass_implies_market_validation": {
+          "const": false
+        },
+        "schema_pass_implies_provider_adoption": {
+          "const": false
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "transport_status": {
+            "const": "NOT_ATTEMPTED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "transport_status_code": {
+            "const": null
+          },
+          "semantic_answer_status": {
+            "const": "NOT_ASSESSED"
+          },
+          "extraction_path_id": {
+            "const": "NONE"
+          },
+          "direct_json_parse_status": {
+            "const": "NOT_ASSESSED"
+          },
+          "full_schema_status": {
+            "const": "NOT_ASSESSED"
+          },
+          "sanitized_conformant_response_reference": {
+            "const": null
+          },
+          "failure_class": {
+            "const": "NONE"
+          },
+          "request_accounting": {
+            "properties": {
+              "provider_requests_executed": {
+                "const": 0
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "full_schema_status": {
+            "const": "PASS"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "sanitized_conformant_response_reference"
+        ],
+        "properties": {
+          "direct_json_parse_status": {
+            "const": "PASS"
+          },
+          "sanitized_conformant_response_reference": {
+            "type": "string"
+          },
+          "failure_class": {
+            "const": "NONE"
+          }
+        }
+      }
+    }
+  ]
+}
