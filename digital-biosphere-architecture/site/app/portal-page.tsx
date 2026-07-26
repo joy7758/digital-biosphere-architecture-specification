@@ -43,6 +43,59 @@ export function PortalPage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
+        <section className="cell-feature" data-section-id="digital-cell-demo">
+          <div className="section-shell cell-feature-grid">
+            <div className="cell-feature-copy">
+              <div className="cell-feature-meta">
+                <span>REFERENCE DEMO</span>
+                <code>v0.1.0</code>
+                <code>REPLAY_PASS</code>
+              </div>
+              <p className="section-kicker">DIGITAL CELL / 数字细胞</p>
+              <h2>
+                {locale === "zh"
+                  ? "让 Agent 的身份、边界与执行历史被看见"
+                  : "Make agent identity, boundaries, and execution history visible"}
+              </h2>
+              <p>
+                {locale === "zh"
+                  ? "TITMAS Digital Cell Demo 是一个最小参考实现，展示 AI Agent 如何具备 Identity、Boundary、Evidence、Health、Memory 和 Reputation。"
+                  : "TITMAS Digital Cell Demo is a minimal reference implementation showing Identity, Boundary, Evidence, Health, Memory, and Reputation around an AI agent."}
+              </p>
+              <div className="cell-feature-actions">
+                <a className="button cell-feature-primary" href="/digital-cell/">
+                  {locale === "zh" ? "查看 Digital Cell Demo" : "Explore the Digital Cell Demo"}
+                  <span>→</span>
+                </a>
+                <a href="https://github.com/joy7758/titmas-demo/releases/tag/v0.1.0">
+                  GitHub Release <span>↗</span>
+                </a>
+              </div>
+              <p className="cell-feature-boundary">
+                {locale === "zh"
+                  ? "参考 Demo，不构成生产认证、数字生命或 AI 意识声明。"
+                  : "Reference demo only. No production certification, digital-life, or AI-consciousness claim."}
+              </p>
+            </div>
+            <a
+              className="cell-feature-visual"
+              href="/digital-cell/"
+              aria-label={locale === "zh" ? "打开 TITMAS Digital Cell Demo" : "Open TITMAS Digital Cell Demo"}
+            >
+              <img
+                src="/digital-cell/digital-cell-architecture.png"
+                alt={locale === "zh"
+                  ? "Digital Cell v0.1 架构图"
+                  : "Digital Cell v0.1 architecture diagram"}
+              />
+              <span>
+                <strong>Digital Cell v0.1</strong>
+                <small>Observable · Verifiable · Health-assessable</small>
+              </span>
+            </a>
+          </div>
+        </section>
+
         <section className="intro section" data-section-id="intro">
           <div className="section-shell intro-grid">
             <div>
