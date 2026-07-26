@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-46-compact-sequential-agent-review-contract-revision-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-46 Compact Sequential Contract Revision Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "preconditions",
+    "scope",
+    "effects_before_execution",
+    "execution_receipt",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-46-compact-sequential-agent-review-contract-revision-decision-record.schema.v0.1.json"
+    },
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-46-COMPACT-SEQUENTIAL-CONTRACT-REVISION-DECISION-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "ZERO_NETWORK_OFFLINE_CONTRACT_REVISION_AUTHORIZED_NOT_EXECUTED"},
+    "decision_id": {"const": "CS-D02-PRE-46"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-46-COMPACT-SEQUENTIAL-AGENT-REVIEW-CONTRACT-REVISION-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {"$ref": "#/$defs/sha256"},
+    "recommendation_commit": {"$ref": "#/$defs/gitsha"},
+    "decision_result": {
+      "const": "AUTHORIZE_ZERO_NETWORK_OFFLINE_COMPACT_SEQUENTIAL_AGENT_REVIEW_CONTRACT_REVISION_AND_FIXTURE_VALIDATION"
+    },
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "Codex"},
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_remote_verified",
+        "recommendation_commit",
+        "input_manifest_sha256",
+        "plan_sha256",
+        "input_hashes_match",
+        "pre44_gate_pass",
+        "target_head",
+        "target_dirty_count"
+      ],
+      "properties": {
+        "recommendation_remote_verified": {"const": true},
+        "recommendation_commit": {"$ref": "#/$defs/gitsha"},
+        "input_manifest_sha256": {"$ref": "#/$defs/sha256"},
+        "plan_sha256": {"$ref": "#/$defs/sha256"},
+        "input_hashes_match": {"const": 13},
+        "pre44_gate_pass": {"const": false},
+        "target_head": {"$ref": "#/$defs/gitsha"},
+        "target_dirty_count": {"const": 0}
+      }
+    },
+    "scope": {
+      "const": {
+        "primary_repository": "digital-biosphere-architecture",
+        "inputs_exact": 13,
+        "offline_fixtures_exact": 6,
+        "outputs_exact": 3,
+        "network_requests_max": 0,
+        "model_requests_max": 0,
+        "credential_reads_max": 0,
+        "raw_provider_envelope_accesses_max": 0,
+        "target_repository_files_modified_max": 0
+      }
+    },
+    "effects_before_execution": {
+      "const": {
+        "offline_contract_revision_authorized": true,
+        "pre44_gate_pass_changed": false,
+        "contract_adopted_for_network": false,
+        "pre47_network_review_authorized": false,
+        "rb1_implementation_recommendation_allowed": false,
+        "rb1_implementation_authorized": false,
+        "target_repository_modification_authorized": false,
+        "package_created": false,
+        "source_created": false,
+        "tests_created": false,
+        "provider_supported": false,
+        "runtime_created": false,
+        "release_authorized": false,
+        "commercial_offer_authorized": false,
+        "certification_authorized": false
+      }
+    },
+    "execution_receipt": {"const": "PENDING_PRE46_RESULT"},
+    "result": {"const": "OFFLINE_CONTRACT_REVISION_NOT_EXECUTED"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "gitsha": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+  }
+}
