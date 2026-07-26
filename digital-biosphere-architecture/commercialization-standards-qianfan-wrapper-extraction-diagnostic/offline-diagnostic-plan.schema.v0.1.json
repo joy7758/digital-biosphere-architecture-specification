@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre15-offline-qianfan-wrapper-diagnostic-plan.schema.v0.1.json",
+  "title": "TITMAS PRE-15 Offline Qianfan Wrapper Diagnostic Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "decision_record_reference",
+    "frozen_inputs",
+    "declared_tool_contract",
+    "synthetic_cases",
+    "required_classifications",
+    "controls",
+    "outputs",
+    "execution_gate",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./offline-diagnostic-plan.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-15-OFFLINE-QIANFAN-WRAPPER-DIAGNOSTIC-PLAN-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED"},
+    "observed_on": {"const": "2026-07-26"},
+    "decision_reference": {"const": "CS-D02-PRE-15"},
+    "decision_record_reference": {"const": "../TITMAS-CS-D02-PRE-15-QIANFAN-WRAPPER-EXTRACTION-DIAGNOSTIC-DECISION-RECORD.v0.1.json"},
+    "frozen_inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_reference",
+        "recommendation_sha256",
+        "pre14_observations_reference",
+        "pre14_observations_sha256",
+        "pre14_gate_result_reference",
+        "pre14_gate_result_sha256",
+        "pre14_execution_receipt_reference",
+        "pre14_execution_receipt_sha256",
+        "provider_bindings_reference",
+        "provider_bindings_sha256",
+        "response_schema_reference",
+        "response_schema_sha256"
+      ],
+      "properties": {
+        "recommendation_reference": {"const": "../TITMAS-CS-D02-PRE-15-QIANFAN-WRAPPER-EXTRACTION-DIAGNOSTIC-RECOMMENDATION-v0.1.md"},
+        "recommendation_sha256": {"const": "9ebf16ac622f5bddaf92c99c1869974f9abe8e352f6819da046749d7772250f0"},
+        "pre14_observations_reference": {"const": "../commercialization-standards-public-source-record-provider-confirmation/sanitized-provider-observations.v0.1.json"},
+        "pre14_observations_sha256": {"const": "19faeb1c292953256d77b6f83c924921e6c0d2383b800c41c5087e16a699b660"},
+        "pre14_gate_result_reference": {"const": "../commercialization-standards-public-source-record-provider-confirmation/confirmation-gate-result.v0.1.json"},
+        "pre14_gate_result_sha256": {"const": "e9c33fe9ff95539c99f87a4c4f62e013c634293d52901fb4989a8b1e1a4923cd"},
+        "pre14_execution_receipt_reference": {"const": "../commercialization-standards-public-source-record-provider-confirmation/execution-receipt.v0.1.json"},
+        "pre14_execution_receipt_sha256": {"const": "ca6d7b09e4d7d4805c347ba8df0b82fdb65e32a08cf8e3485655efd472c5b444"},
+        "provider_bindings_reference": {"const": "../commercialization-standards-public-source-record-review-contract-remediation/provider-binding-fixtures.v0.1.json"},
+        "provider_bindings_sha256": {"const": "8b05196212f1261d9b66c40808f6a2dc3d5decebcdc30fb07c4041422c8c17f2"},
+        "response_schema_reference": {"const": "../commercialization-standards-public-source-record-review/agent-record-review-response.schema.v0.1.json"},
+        "response_schema_sha256": {"const": "0f3df0688993fe300bae1f8d2c1cb67c0fd31fecbdabcbb89d5a1819c803ccd8"}
+      }
+    },
+    "declared_tool_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tool_name",
+        "input_field",
+        "declared_result_fields",
+        "answer_type",
+        "model_const",
+        "provider_const",
+        "source",
+        "provider_execution"
+      ],
+      "properties": {
+        "tool_name": {"const": "mcp__kimi_qianfan__kimi_chat"},
+        "input_field": {"const": "query"},
+        "declared_result_fields": {"const": ["answer","model","provider","untrusted_external_content","usage"]},
+        "answer_type": {"const": "string"},
+        "model_const": {"const": "kimi-k2.6"},
+        "provider_const": {"const": "baidu-qianfan"},
+        "source": {"const": "CURRENT_TOOL_METADATA"},
+        "provider_execution": {"const": false}
+      }
+    },
+    "synthetic_cases": {
+      "const": [
+        "STRUCTURED_CONTENT_ANSWER",
+        "DIRECT_ANSWER",
+        "CONTENT_TEXT_JSON_WRAPPED_ANSWER",
+        "CONTENT_TEXT_PLAIN_ANSWER",
+        "MISSING_ANSWER",
+        "ANSWER_NOT_STRING",
+        "ANSWER_DIRECT_JSON_PARSE_FAILURE",
+        "ANSWER_SCHEMA_MISMATCH"
+      ]
+    },
+    "required_classifications": {
+      "const": [
+        "EXTRACTED_SCHEMA_CONFORMANT",
+        "EXTRACTED_JSON_PARSE_FAILURE",
+        "EXTRACTED_SCHEMA_MISMATCH",
+        "ANSWER_NOT_EXTRACTABLE"
+      ]
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "live_model_requests_max",
+        "provider_network_requests_max",
+        "new_source_searches_max",
+        "new_source_collections_max",
+        "retry_max",
+        "fallback_max",
+        "json_repair_max",
+        "secret_access_allowed",
+        "pre14_raw_provider_body_access_allowed",
+        "synthetic_fixture_counts_as_provider_evidence",
+        "pre14_exact_failure_cause_may_be_inferred",
+        "automatic_provider_success_or_counting_allowed"
+      ],
+      "properties": {
+        "live_model_requests_max": {"const": 0},
+        "provider_network_requests_max": {"const": 0},
+        "new_source_searches_max": {"const": 0},
+        "new_source_collections_max": {"const": 0},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "json_repair_max": {"const": 0},
+        "secret_access_allowed": {"const": false},
+        "pre14_raw_provider_body_access_allowed": {"const": false},
+        "synthetic_fixture_counts_as_provider_evidence": {"const": false},
+        "pre14_exact_failure_cause_may_be_inferred": {"const": false},
+        "automatic_provider_success_or_counting_allowed": {"const": false}
+      }
+    },
+    "outputs": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {"type": "string"}
+    },
+    "execution_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorization_baseline_committed",
+        "authorization_baseline_pushed",
+        "authorization_baseline_remote_verified",
+        "offline_execution_started"
+      ],
+      "properties": {
+        "authorization_baseline_committed": {"const": false},
+        "authorization_baseline_pushed": {"const": false},
+        "authorization_baseline_remote_verified": {"const": false},
+        "offline_execution_started": {"const": false}
+      }
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre14_qianfan_exact_failure_cause_proven",
+        "qianfan_provider_schema_confirmation_pass",
+        "provider_schema_confirmation_pass",
+        "candidate_review_completed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "pre14_qianfan_exact_failure_cause_proven": {"const": false},
+        "qianfan_provider_schema_confirmation_pass": {"const": false},
+        "provider_schema_confirmation_pass": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

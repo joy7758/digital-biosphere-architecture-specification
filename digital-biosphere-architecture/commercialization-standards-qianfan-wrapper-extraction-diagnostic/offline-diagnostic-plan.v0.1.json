@@ -1,0 +1,99 @@
+{
+  "$schema": "./offline-diagnostic-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-15-OFFLINE-QIANFAN-WRAPPER-DIAGNOSTIC-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-15",
+  "decision_record_reference": "../TITMAS-CS-D02-PRE-15-QIANFAN-WRAPPER-EXTRACTION-DIAGNOSTIC-DECISION-RECORD.v0.1.json",
+  "frozen_inputs": {
+    "recommendation_reference": "../TITMAS-CS-D02-PRE-15-QIANFAN-WRAPPER-EXTRACTION-DIAGNOSTIC-RECOMMENDATION-v0.1.md",
+    "recommendation_sha256": "9ebf16ac622f5bddaf92c99c1869974f9abe8e352f6819da046749d7772250f0",
+    "pre14_observations_reference": "../commercialization-standards-public-source-record-provider-confirmation/sanitized-provider-observations.v0.1.json",
+    "pre14_observations_sha256": "19faeb1c292953256d77b6f83c924921e6c0d2383b800c41c5087e16a699b660",
+    "pre14_gate_result_reference": "../commercialization-standards-public-source-record-provider-confirmation/confirmation-gate-result.v0.1.json",
+    "pre14_gate_result_sha256": "e9c33fe9ff95539c99f87a4c4f62e013c634293d52901fb4989a8b1e1a4923cd",
+    "pre14_execution_receipt_reference": "../commercialization-standards-public-source-record-provider-confirmation/execution-receipt.v0.1.json",
+    "pre14_execution_receipt_sha256": "ca6d7b09e4d7d4805c347ba8df0b82fdb65e32a08cf8e3485655efd472c5b444",
+    "provider_bindings_reference": "../commercialization-standards-public-source-record-review-contract-remediation/provider-binding-fixtures.v0.1.json",
+    "provider_bindings_sha256": "8b05196212f1261d9b66c40808f6a2dc3d5decebcdc30fb07c4041422c8c17f2",
+    "response_schema_reference": "../commercialization-standards-public-source-record-review/agent-record-review-response.schema.v0.1.json",
+    "response_schema_sha256": "0f3df0688993fe300bae1f8d2c1cb67c0fd31fecbdabcbb89d5a1819c803ccd8"
+  },
+  "declared_tool_contract": {
+    "tool_name": "mcp__kimi_qianfan__kimi_chat",
+    "input_field": "query",
+    "declared_result_fields": [
+      "answer",
+      "model",
+      "provider",
+      "untrusted_external_content",
+      "usage"
+    ],
+    "answer_type": "string",
+    "model_const": "kimi-k2.6",
+    "provider_const": "baidu-qianfan",
+    "source": "CURRENT_TOOL_METADATA",
+    "provider_execution": false
+  },
+  "synthetic_cases": [
+    "STRUCTURED_CONTENT_ANSWER",
+    "DIRECT_ANSWER",
+    "CONTENT_TEXT_JSON_WRAPPED_ANSWER",
+    "CONTENT_TEXT_PLAIN_ANSWER",
+    "MISSING_ANSWER",
+    "ANSWER_NOT_STRING",
+    "ANSWER_DIRECT_JSON_PARSE_FAILURE",
+    "ANSWER_SCHEMA_MISMATCH"
+  ],
+  "required_classifications": [
+    "EXTRACTED_SCHEMA_CONFORMANT",
+    "EXTRACTED_JSON_PARSE_FAILURE",
+    "EXTRACTED_SCHEMA_MISMATCH",
+    "ANSWER_NOT_EXTRACTABLE"
+  ],
+  "controls": {
+    "live_model_requests_max": 0,
+    "provider_network_requests_max": 0,
+    "new_source_searches_max": 0,
+    "new_source_collections_max": 0,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "json_repair_max": 0,
+    "secret_access_allowed": false,
+    "pre14_raw_provider_body_access_allowed": false,
+    "synthetic_fixture_counts_as_provider_evidence": false,
+    "pre14_exact_failure_cause_may_be_inferred": false,
+    "automatic_provider_success_or_counting_allowed": false
+  },
+  "outputs": [
+    "declared-tool-contract.v0.1.json",
+    "declared-tool-contract.schema.v0.1.json",
+    "synthetic-wrapper-fixtures.v0.1.json",
+    "synthetic-wrapper-fixtures.schema.v0.1.json",
+    "offline-diagnostic-result.v0.1.json",
+    "offline-diagnostic-result.schema.v0.1.json",
+    "execution-receipt.v0.1.json",
+    "execution-receipt.schema.v0.1.json",
+    "PRE-15-OFFLINE-QIANFAN-WRAPPER-DIAGNOSTIC-RESULT-v0.1.md"
+  ],
+  "execution_gate": {
+    "authorization_baseline_committed": false,
+    "authorization_baseline_pushed": false,
+    "authorization_baseline_remote_verified": false,
+    "offline_execution_started": false
+  },
+  "non_effects": {
+    "pre14_qianfan_exact_failure_cause_proven": false,
+    "qianfan_provider_schema_confirmation_pass": false,
+    "provider_schema_confirmation_pass": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

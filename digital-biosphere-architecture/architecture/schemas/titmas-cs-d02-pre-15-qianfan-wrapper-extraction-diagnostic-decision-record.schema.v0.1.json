@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-15-qianfan-wrapper-extraction-diagnostic-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-15 Qianfan Wrapper Extraction Diagnostic Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_id",
+    "decision_result",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_remote_commit",
+    "decided_by_ref",
+    "executed_by_ref",
+    "primary_repository",
+    "offline_plan_reference",
+    "scope",
+    "preconditions",
+    "execution_gate",
+    "false_effects",
+    "stop_conditions"
+  ],
+  "properties": {
+    "$schema": {"const": "./architecture/schemas/titmas-cs-d02-pre-15-qianfan-wrapper-extraction-diagnostic-decision-record.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-15-QIANFAN-WRAPPER-EXTRACTION-DIAGNOSTIC-DECISION-RECORD-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DECIDED_OFFLINE_WRAPPER_DIAGNOSTIC_AUTHORIZED_NOT_EXECUTED"},
+    "observed_on": {"const": "2026-07-26"},
+    "decision_id": {"const": "CS-D02-PRE-15"},
+    "decision_result": {"const": "AUTHORIZE_OFFLINE_QIANFAN_WRAPPER_EXTRACTION_DIAGNOSTIC_ONLY"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {"const": "TITMAS-CS-D02-PRE-15-QIANFAN-WRAPPER-EXTRACTION-DIAGNOSTIC-RECOMMENDATION-v0.1.md"},
+    "recommendation_sha256": {"const": "9ebf16ac622f5bddaf92c99c1869974f9abe8e352f6819da046749d7772250f0"},
+    "recommendation_remote_commit": {"const": "5b564402b69448bf91c20d8f4c5ce17b5c48ac5b"},
+    "decided_by_ref": {"const": "zhangbin"},
+    "executed_by_ref": {"const": "codex"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "offline_plan_reference": {"const": "commercialization-standards-qianfan-wrapper-extraction-diagnostic/offline-diagnostic-plan.v0.1.json"},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_wrapper_contract_capture",
+        "synthetic_envelope_fixtures",
+        "deterministic_extraction_classification",
+        "direct_json_parse_validation",
+        "frozen_response_schema_validation",
+        "path_scoped_commit_and_push",
+        "live_model_requests_max",
+        "provider_network_requests_max",
+        "new_source_searches_max",
+        "new_source_collections_max"
+      ],
+      "properties": {
+        "offline_wrapper_contract_capture": {"const": true},
+        "synthetic_envelope_fixtures": {"const": true},
+        "deterministic_extraction_classification": {"const": true},
+        "direct_json_parse_validation": {"const": true},
+        "frozen_response_schema_validation": {"const": true},
+        "path_scoped_commit_and_push": {"const": true},
+        "live_model_requests_max": {"const": 0},
+        "provider_network_requests_max": {"const": 0},
+        "new_source_searches_max": {"const": 0},
+        "new_source_collections_max": {"const": 0}
+      }
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_remote_verified",
+        "pre14_result_remote_verified",
+        "pre14_request_cap_consumed",
+        "pre14_provider_confirmation_pass",
+        "pre14_qianfan_response_extractable",
+        "pre14_raw_provider_body_persisted",
+        "standing_directive_applicable",
+        "later_conflicting_decision_found"
+      ],
+      "properties": {
+        "recommendation_remote_verified": {"const": true},
+        "pre14_result_remote_verified": {"const": true},
+        "pre14_request_cap_consumed": {"const": true},
+        "pre14_provider_confirmation_pass": {"const": false},
+        "pre14_qianfan_response_extractable": {"const": false},
+        "pre14_raw_provider_body_persisted": {"const": false},
+        "standing_directive_applicable": {"const": true},
+        "later_conflicting_decision_found": {"const": false}
+      }
+    },
+    "execution_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorization_baseline_committed",
+        "authorization_baseline_pushed",
+        "authorization_baseline_remote_verified",
+        "offline_execution_may_start",
+        "offline_execution_started"
+      ],
+      "properties": {
+        "authorization_baseline_committed": {"const": false},
+        "authorization_baseline_pushed": {"const": false},
+        "authorization_baseline_remote_verified": {"const": false},
+        "offline_execution_may_start": {"const": false},
+        "offline_execution_started": {"const": false}
+      }
+    },
+    "false_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "live_model_requests_authorized",
+        "pre14_qianfan_exact_failure_cause_proven",
+        "qianfan_provider_schema_confirmation_pass",
+        "provider_schema_confirmation_pass",
+        "candidate_review_completed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "live_model_requests_authorized": {"const": false},
+        "pre14_qianfan_exact_failure_cause_proven": {"const": false},
+        "qianfan_provider_schema_confirmation_pass": {"const": false},
+        "provider_schema_confirmation_pass": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 10}
+    }
+  }
+}
