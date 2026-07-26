@@ -1,0 +1,40 @@
+{
+  "$schema": "./offline-contract-revision-input-manifest.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-25-OFFLINE-CONTRACT-REVISION-INPUT-MANIFEST-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-25",
+  "bindings": [
+    {"artifact": "../TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.md", "sha256": "99d6755ecea03f9779ccc914dca33e32065bd72c71927fbe032bd8075238a54b"},
+    {"artifact": "../TITMAS-CS-D02-PRE-25-REVIEW-FAILURE-AND-CONTRACT-REVISION-RECOMMENDATION-v0.1.md", "sha256": "0c48dd0014c0c5a742948f31b61d85e0ad051e550c12c0a65da50e19cc83d047"},
+    {"artifact": "compact-review-response-extraction-contract.v0.1.json", "sha256": "1ad48badb0767727fde354ca8ed3298261a2117813b8f41ad2f2cdf344286dc4"},
+    {"artifact": "compact-review-response-extraction-contract.schema.v0.1.json", "sha256": "669dd135951ab16eced4794ca23332505df3a36e7bd2f482e4f981b6dc8ecce2"},
+    {"artifact": "compact-review-model-binding-policy.v0.1.json", "sha256": "75eb8462b7124fe246889ea600ec52dcc99946d5f16bcc848717d5e39fb4adb2"},
+    {"artifact": "compact-review-model-binding-policy.schema.v0.1.json", "sha256": "77430ba7d53a6b8162000886dff44ec6c679d34e59cd8ea2dbe15d529f225378"},
+    {"artifact": "compact-review-failure-diagnostic-fixtures.v0.1.json", "sha256": "2612c33f3dfe3291509e973e12cee37fd3441a8432b83c694573f2feafa78b00"},
+    {"artifact": "compact-review-failure-diagnostic-fixtures.schema.v0.1.json", "sha256": "8dacd518908172626d015215e7827400023feff929c722d4717ff54f0dd5342f"},
+    {"artifact": "contract-adoption-review-validation-result.v0.1.json", "sha256": "1bef2ecdce8b7fd6765a0b6e927f7d4f4a6a8871b7a6801744345d71c6062e37"},
+    {"artifact": "contract-adoption-review-kimi-session-result.v0.1.json", "sha256": "545c98138e38db91d5e453c4c0eb89c19ddf54086fc36712aee678c8483b55be"},
+    {"artifact": "contract-adoption-review-deepseek-session-result.v0.1.json", "sha256": "f0a13da3c54a2e52f12d23e456ad1c6d0285a5bbec419739f51e6048c50dd750"},
+    {"artifact": "contract-adoption-review-execution-receipt.v0.1.json", "sha256": "bdfe857d16908724d5f466e03a8cbb5659e7f913cf64d7a924c0192791fb337e"},
+    {"artifact": "PRE-24-CONTRACT-ADOPTION-REVIEW-RESULT-v0.1.md", "sha256": "49f978784f32a76ecd483d054139482c8c9e9b93e4ef68a617fe4e5c8f0052d7"}
+  ],
+  "triage_subjects": [
+    {"finding_id": "PRE24-F1", "initial_classification": "PARTIALLY_SUPPORTED", "normative_effect": false},
+    {"finding_id": "PRE24-F2", "initial_classification": "REQUIRES_CORRECTION", "normative_effect": false},
+    {"finding_id": "PRE24-F3", "initial_classification": "SUPPORTED_WITH_ADDITIONAL_SCOPE", "normative_effect": false}
+  ],
+  "accounting_before_execution": {
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "effects": {
+    "v0_1_contracts_changed": false,
+    "v0_2_candidates_created": false,
+    "contract_candidates_adopted": false,
+    "implementation_created": false
+  }
+}

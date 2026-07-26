@@ -1,0 +1,52 @@
+{
+  "$schema": "./offline-contract-revision-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-25-OFFLINE-CONTRACT-REVISION-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-25",
+  "execution_mode": "DETERMINISTIC_OFFLINE_REVISION_CANDIDATE_ONLY",
+  "input_manifest_reference": "offline-contract-revision-input-manifest.v0.1.json",
+  "limits": {
+    "findings_to_triage": 3,
+    "required_fixture_classes": 10,
+    "live_model_requests_max": 0,
+    "provider_network_requests_max": 0,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "repair_attempts_max": 0
+  },
+  "steps": [
+    "VERIFY_INPUT_AND_V0_1_HISTORY_HASHES",
+    "TRIAGE_THREE_ADVISORY_FINDINGS_AGAINST_FROZEN_RULES",
+    "CREATE_EXTRACTION_CONTRACT_V0_2_CANDIDATE",
+    "CREATE_MODEL_BINDING_POLICY_V0_2_CANDIDATE",
+    "CREATE_MODEL_ALIAS_RECORD_SCHEMA_CANDIDATE",
+    "CREATE_CROSS_LAYER_INVARIANTS_CANDIDATE",
+    "CREATE_TEN_CLASS_POSITIVE_AND_NEGATIVE_FIXTURES",
+    "META_VALIDATE_ALL_CANDIDATE_SCHEMAS",
+    "EXECUTE_DETERMINISTIC_FIXTURE_EXPECTATIONS",
+    "VERIFY_ZERO_NETWORK_AND_V0_1_HISTORY_UNCHANGED",
+    "RETAIN_RESULT_REPORT_AND_RECEIPT"
+  ],
+  "success_conditions": {
+    "input_hashes_match": 13,
+    "findings_triaged": 3,
+    "triage_rule_justifications": 3,
+    "required_fixture_classes": 10,
+    "fixture_expectations_match": 10,
+    "v0_1_history_changed": false,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "offline_revision_candidate_pass": true,
+    "contract_candidates_adopted": false,
+    "implementation_created": false,
+    "live_rerun_ready": false
+  },
+  "effects": {
+    "execution_started": false,
+    "v0_1_contracts_changed": false,
+    "v0_2_candidates_created": false,
+    "contract_candidates_adopted": false,
+    "implementation_created": false
+  }
+}

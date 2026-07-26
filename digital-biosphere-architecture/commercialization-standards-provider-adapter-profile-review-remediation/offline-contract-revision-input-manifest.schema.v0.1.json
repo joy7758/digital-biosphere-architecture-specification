@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:offline-contract-revision-input-manifest:0.1",
+  "title": "TITMAS Offline Contract Revision Input Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "bindings", "triage_subjects", "accounting_before_execution", "effects"],
+  "properties": {
+    "$schema": {"const": "./offline-contract-revision-input-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-25-OFFLINE-CONTRACT-REVISION-INPUT-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-25"},
+    "bindings": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact", "sha256"],
+        "properties": {
+          "artifact": {"type": "string", "minLength": 8},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "triage_subjects": {
+      "const": [
+        {"finding_id": "PRE24-F1", "initial_classification": "PARTIALLY_SUPPORTED", "normative_effect": false},
+        {"finding_id": "PRE24-F2", "initial_classification": "REQUIRES_CORRECTION", "normative_effect": false},
+        {"finding_id": "PRE24-F3", "initial_classification": "SUPPORTED_WITH_ADDITIONAL_SCOPE", "normative_effect": false}
+      ]
+    },
+    "accounting_before_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["live_model_requests_executed", "provider_network_requests_executed", "retry_attempts", "fallback_attempts", "repair_attempts"],
+      "properties": {
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "repair_attempts": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["v0_1_contracts_changed", "v0_2_candidates_created", "contract_candidates_adopted", "implementation_created"],
+      "properties": {
+        "v0_1_contracts_changed": {"const": false},
+        "v0_2_candidates_created": {"const": false},
+        "contract_candidates_adopted": {"const": false},
+        "implementation_created": {"const": false}
+      }
+    }
+  }
+}
