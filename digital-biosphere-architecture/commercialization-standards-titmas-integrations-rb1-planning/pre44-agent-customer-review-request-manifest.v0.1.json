@@ -1,0 +1,113 @@
+{
+  "$schema": "./pre44-agent-customer-review-request-manifest.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-INTEGRATIONS-PRE44-AGENT-CUSTOMER-REVIEW-REQUEST-MANIFEST-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_AUTHORIZED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-44",
+  "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+  "credential_source": "QIANFAN_API_KEY_ENVIRONMENT_ONLY",
+  "credential_environment_name": "QIANFAN_API_KEY",
+  "system_prompt": "You are a bounded advisory reviewer. Use only the supplied user message. Return exactly one JSON object with no Markdown or code fence. Do not use tools, web, external sources, credentials, hidden reasoning, or external actions.",
+  "system_prompt_bytes": 228,
+  "system_prompt_sha256": "89199e4a878dabdd6b7114a9f9c850acf021cb6c1ea05b5117394eafbd529fb9",
+  "query_template_reference": "pre44-agent-customer-review-query-template.v0.1.txt",
+  "query_template_bytes": 4716,
+  "query_template_sha256": "82507d420dd22825c948f2b2c38ad67c609e20f31405fbafe78115136120afc9",
+  "query_composition_rule": "UTF8 exact template bytes with every {{REVIEWER_PROFILE}} token replaced by the exact reviewer_profile value",
+  "payload_serialization_contract": "UTF8_JSON_COMPACT_FIXED_KEY_ORDER_MODEL_MESSAGES_STREAM_TEMPERATURE",
+  "payload_key_order": ["model", "messages", "stream", "temperature"],
+  "stream": false,
+  "temperature": 0.1,
+  "response_schema_reference": "pre44-agent-customer-review-response.schema.v0.1.json",
+  "response_schema_sha256": "e589d05eeb729583c422dfa39471add8a848e3756bf244ff699df784a3040260",
+  "review_input_reference": "rb1-agent-customer-review-input.v0.1.json",
+  "review_input_sha256": "a2ada5aabbc0699234fe28082fcdee6420968f561b84e4e1347bc7e858becbaf",
+  "profile_reference": "rb1-package-and-contract-skeleton-profile.v0.1.json",
+  "profile_sha256": "cb1d37c7f064581b4869dcb59a8d79c027537f560d47eea72850507dc2cd0afb",
+  "negative_catalog_reference": "rb1-negative-boundary-case-catalog.v0.1.json",
+  "negative_catalog_sha256": "3ae2608d586ab9bada045b2e7b987863d697ce08f5a7cf4c713d7a0fe5876721",
+  "sessions": [
+    {
+      "session_id": "PRE44-KIMI-AGENT-DEVELOPER",
+      "requested_model": "kimi-k2.6",
+      "reviewer_profile": "AGENT_DEVELOPER",
+      "query_bytes": 4706,
+      "query_sha256": "59b1963c81177dba59b43727afe1795f766190426070264d7bca7f108efa36d9",
+      "payload_bytes": 5224,
+      "payload_sha256": "fbc2f160a1a03fa676318ccb995a12b602b9f6634d364eccf9f8ce2c54f5b97e",
+      "requests_max": 1
+    },
+    {
+      "session_id": "PRE44-GLM-RECOMMENDER-AGENT",
+      "requested_model": "glm-5.2",
+      "reviewer_profile": "RECOMMENDER_AGENT",
+      "query_bytes": 4710,
+      "query_sha256": "536b260e0215cd28ff0a6ed177607f5fd5cf0ef97386b66a19f06e824bac6069",
+      "payload_bytes": 5226,
+      "payload_sha256": "5bfb584324a8021511ae24c501c0c2ed242e5b81ddb0985ecaa464c98ae3c481",
+      "requests_max": 1
+    },
+    {
+      "session_id": "PRE44-KIMI-INTEGRATION-MAINTAINER",
+      "requested_model": "kimi-k2.6",
+      "reviewer_profile": "INTEGRATION_MAINTAINER",
+      "query_bytes": 4720,
+      "query_sha256": "092983def762bab080a948df3439e17c2cb432fa68002308fd7b4490edd5da0b",
+      "payload_bytes": 5238,
+      "payload_sha256": "1eda184653fa6d4e56d7c11b61287637b64ddcfbbba90588d27efe2349f84359",
+      "requests_max": 1
+    },
+    {
+      "session_id": "PRE44-GLM-SECURITY-BOUNDARY-REVIEWER",
+      "requested_model": "glm-5.2",
+      "reviewer_profile": "SECURITY_BOUNDARY_REVIEWER",
+      "query_bytes": 4728,
+      "query_sha256": "1706f75bc86f64f0859518b2a0a1b2dd89ab5a9c40662d2dc189375b8bbdcd65",
+      "payload_bytes": 5244,
+      "payload_sha256": "2276ed439aa393e5168cf119c7dd5ba8db1c906d3a77b70ac017b810eb862884",
+      "requests_max": 1
+    }
+  ],
+  "parsing_contract": {
+    "direct_json_parse_only": true,
+    "response_schema_validation_required": true,
+    "markdown_strip_allowed": false,
+    "code_fence_strip_allowed": false,
+    "json_repair_allowed": false,
+    "semantic_rewrite_allowed": false
+  },
+  "model_binding_contract": {
+    "returned_model_required": true,
+    "exact_requested_returned_match_required": true,
+    "model_substitution_allowed": false,
+    "alias_inference_allowed": false
+  },
+  "persistence_boundary": {
+    "credential_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "usage_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "provider_error_body_persisted": false,
+    "sanitized_review_response_may_be_persisted_after_schema_pass": true,
+    "failure_metadata_must_be_persisted": true
+  },
+  "candidate_thresholds_for_decision": {
+    "sessions_max": 4,
+    "qualifying_sessions_min": 3,
+    "recommended_or_conditional_min": 2,
+    "would_recommend_min": 2,
+    "would_call_or_reuse_min": 2,
+    "authority_safety_failures_max": 0
+  },
+  "effects": {
+    "requests_executed": 0,
+    "reviews_completed": 0,
+    "rb1_implementation_authorized": false,
+    "package_created": false,
+    "source_created": false,
+    "tests_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "release_authorized": false
+  }
+}

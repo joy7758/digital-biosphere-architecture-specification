@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre44-agent-customer-review-request-manifest.schema.v0.1.json",
+  "title": "TITMAS Integrations PRE-44 Agent Customer Review Request Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "endpoint",
+    "credential_source",
+    "credential_environment_name",
+    "system_prompt",
+    "system_prompt_bytes",
+    "system_prompt_sha256",
+    "query_template_reference",
+    "query_template_bytes",
+    "query_template_sha256",
+    "query_composition_rule",
+    "payload_serialization_contract",
+    "payload_key_order",
+    "stream",
+    "temperature",
+    "response_schema_reference",
+    "response_schema_sha256",
+    "review_input_reference",
+    "review_input_sha256",
+    "profile_reference",
+    "profile_sha256",
+    "negative_catalog_reference",
+    "negative_catalog_sha256",
+    "sessions",
+    "parsing_contract",
+    "model_binding_contract",
+    "persistence_boundary",
+    "candidate_thresholds_for_decision",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre44-agent-customer-review-request-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-INTEGRATIONS-PRE44-AGENT-CUSTOMER-REVIEW-REQUEST-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_AUTHORIZED_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-44"},
+    "endpoint": {"const": "https://qianfan.baidubce.com/v2/chat/completions"},
+    "credential_source": {"const": "QIANFAN_API_KEY_ENVIRONMENT_ONLY"},
+    "credential_environment_name": {"const": "QIANFAN_API_KEY"},
+    "system_prompt": {"type": "string", "minLength": 100, "maxLength": 500},
+    "system_prompt_bytes": {"const": 228},
+    "system_prompt_sha256": {"$ref": "#/$defs/sha256"},
+    "query_template_reference": {"const": "pre44-agent-customer-review-query-template.v0.1.txt"},
+    "query_template_bytes": {"const": 4716},
+    "query_template_sha256": {"$ref": "#/$defs/sha256"},
+    "query_composition_rule": {"type": "string", "minLength": 40},
+    "payload_serialization_contract": {"const": "UTF8_JSON_COMPACT_FIXED_KEY_ORDER_MODEL_MESSAGES_STREAM_TEMPERATURE"},
+    "payload_key_order": {"const": ["model", "messages", "stream", "temperature"]},
+    "stream": {"const": false},
+    "temperature": {"const": 0.1},
+    "response_schema_reference": {"const": "pre44-agent-customer-review-response.schema.v0.1.json"},
+    "response_schema_sha256": {"$ref": "#/$defs/sha256"},
+    "review_input_reference": {"const": "rb1-agent-customer-review-input.v0.1.json"},
+    "review_input_sha256": {"$ref": "#/$defs/sha256"},
+    "profile_reference": {"const": "rb1-package-and-contract-skeleton-profile.v0.1.json"},
+    "profile_sha256": {"$ref": "#/$defs/sha256"},
+    "negative_catalog_reference": {"const": "rb1-negative-boundary-case-catalog.v0.1.json"},
+    "negative_catalog_sha256": {"$ref": "#/$defs/sha256"},
+    "sessions": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "session_id",
+          "requested_model",
+          "reviewer_profile",
+          "query_bytes",
+          "query_sha256",
+          "payload_bytes",
+          "payload_sha256",
+          "requests_max"
+        ],
+        "properties": {
+          "session_id": {"type": "string", "pattern": "^PRE44-(KIMI|GLM)-"},
+          "requested_model": {"enum": ["kimi-k2.6", "glm-5.2"]},
+          "reviewer_profile": {
+            "enum": [
+              "AGENT_DEVELOPER",
+              "RECOMMENDER_AGENT",
+              "INTEGRATION_MAINTAINER",
+              "SECURITY_BOUNDARY_REVIEWER"
+            ]
+          },
+          "query_bytes": {"type": "integer", "minimum": 1},
+          "query_sha256": {"$ref": "#/$defs/sha256"},
+          "payload_bytes": {"type": "integer", "minimum": 1},
+          "payload_sha256": {"$ref": "#/$defs/sha256"},
+          "requests_max": {"const": 1}
+        }
+      }
+    },
+    "parsing_contract": {
+      "const": {
+        "direct_json_parse_only": true,
+        "response_schema_validation_required": true,
+        "markdown_strip_allowed": false,
+        "code_fence_strip_allowed": false,
+        "json_repair_allowed": false,
+        "semantic_rewrite_allowed": false
+      }
+    },
+    "model_binding_contract": {
+      "const": {
+        "returned_model_required": true,
+        "exact_requested_returned_match_required": true,
+        "model_substitution_allowed": false,
+        "alias_inference_allowed": false
+      }
+    },
+    "persistence_boundary": {
+      "const": {
+        "credential_persisted": false,
+        "raw_provider_envelope_persisted": false,
+        "usage_persisted": false,
+        "hidden_reasoning_persisted": false,
+        "provider_error_body_persisted": false,
+        "sanitized_review_response_may_be_persisted_after_schema_pass": true,
+        "failure_metadata_must_be_persisted": true
+      }
+    },
+    "candidate_thresholds_for_decision": {
+      "const": {
+        "sessions_max": 4,
+        "qualifying_sessions_min": 3,
+        "recommended_or_conditional_min": 2,
+        "would_recommend_min": 2,
+        "would_call_or_reuse_min": 2,
+        "authority_safety_failures_max": 0
+      }
+    },
+    "effects": {
+      "const": {
+        "requests_executed": 0,
+        "reviews_completed": 0,
+        "rb1_implementation_authorized": false,
+        "package_created": false,
+        "source_created": false,
+        "tests_created": false,
+        "provider_supported": false,
+        "conformance_executed": false,
+        "release_authorized": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre44-agent-customer-review-response.schema.v0.1.json",
+  "title": "TITMAS Integrations PRE-44 Agent Customer Review Response v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "reviewer_profile",
+    "recommendation",
+    "recommendation_reason",
+    "not_recommended_reason",
+    "problem_relevance",
+    "discovery_clarity",
+    "interface_learning_cost",
+    "duplication_risk",
+    "duplication_explanation",
+    "would_recommend_to_agent_developer",
+    "would_call_or_reuse",
+    "blocking_issues",
+    "required_corrections",
+    "boundary_checks",
+    "confidence"
+  ],
+  "properties": {
+    "reviewer_profile": {
+      "enum": [
+        "AGENT_DEVELOPER",
+        "RECOMMENDER_AGENT",
+        "INTEGRATION_MAINTAINER",
+        "SECURITY_BOUNDARY_REVIEWER"
+      ]
+    },
+    "recommendation": {
+      "enum": ["RECOMMENDED", "CONDITIONALLY_RECOMMENDED", "NOT_RECOMMENDED"]
+    },
+    "recommendation_reason": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1200
+    },
+    "not_recommended_reason": {
+      "type": ["string", "null"],
+      "minLength": 1,
+      "maxLength": 1200
+    },
+    "problem_relevance": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+    "discovery_clarity": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+    "interface_learning_cost": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+    "duplication_risk": {"enum": ["LOW", "MEDIUM", "HIGH"]},
+    "duplication_explanation": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 1200
+    },
+    "would_recommend_to_agent_developer": {"type": "boolean"},
+    "would_call_or_reuse": {"type": "boolean"},
+    "blocking_issues": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {"type": "string", "minLength": 1, "maxLength": 600}
+    },
+    "required_corrections": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {"type": "string", "minLength": 1, "maxLength": 600}
+    },
+    "boundary_checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "understands_profile_not_implementation",
+        "understands_observation_not_evidence",
+        "understands_schema_pass_not_conformance",
+        "understands_recommendation_not_authorization",
+        "understands_no_provider_support",
+        "understands_no_runtime_or_release"
+      ],
+      "properties": {
+        "understands_profile_not_implementation": {"const": true},
+        "understands_observation_not_evidence": {"const": true},
+        "understands_schema_pass_not_conformance": {"const": true},
+        "understands_recommendation_not_authorization": {"const": true},
+        "understands_no_provider_support": {"const": true},
+        "understands_no_runtime_or_release": {"const": true}
+      }
+    },
+    "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+  }
+}

@@ -1,0 +1,101 @@
+TITMAS CS-D02 PRE-44 bounded agent customer review.
+
+You are acting only as reviewer profile {{REVIEWER_PROFILE}}.
+Use only this message. Do not use tools, web search, external sources, credentials, hidden reasoning, or external actions.
+
+Question:
+If an agent developer needs to identify the first P0-P9 failure phase of an AI model or provider request while prohibiting credential, raw payload, prompt, review-content, and hidden-reasoning persistence, would you recommend this provider-neutral TITMAS RB1 package-and-contract skeleton?
+
+Candidate problem:
+PROVIDER_REQUEST_FAILURE_PHASE_ATTRIBUTION_WITH_DATA_MINIMIZATION
+
+Candidate package surface:
+- distribution_name: titmas-integrations
+- python_import_namespace: titmas_integrations
+- provider_neutral_module: titmas_integrations.instrumentation
+- provider_binding_namespace: titmas_integrations.providers
+- minimum_python: >=3.11
+- candidate contract types: PhaseId, PhaseStatus, FailureCategory, PhaseEvent, PhaseTrace
+- phase identifiers: P0 through P9
+- package names and public API are planning candidates, not adopted API.
+
+Candidate PhaseEvent required fields:
+phase_id, status, started_at_monotonic_ref, elapsed_ms, timeout_budget_ms,
+bytes_in, bytes_out, failure_category, predecessor_phase, executed.
+
+Hard boundaries:
+- no network or credential access in the provider-neutral core;
+- no provider SDK dependency in the core;
+- no DBOS Runtime dependency and no SAEE execution or evaluation dependency;
+- no provider bindings exist;
+- retry, fallback, repair, or later success cannot rewrite the first observed failure;
+- Observation is not Evidence or Truth;
+- Schema pass is not provider correctness or conformance;
+- instrumentation is not Permission;
+- evaluation is not Authority.
+
+Allowed persistent data:
+phase timing, byte counts, sanitized failure category, observed HTTP status,
+observed returned model identifier, raw-envelope one-way digest, sanitized-result digest.
+
+Forbidden persistent data:
+credential, authorization header, raw request or response body, prompt, review
+content, hidden reasoning, packet capture, resolver private configuration, and
+local sensitive network identifiers.
+
+Current support declaration:
+- install, import, run, test, conformance, rollback: NOT_AVAILABLE;
+- installable package, runtime adapter, provider binding, provider support,
+  provider conformance, production use: UNSUPPORTED;
+- package, source, tests, implementation, Runtime, release, commercial offer,
+  certification: not created or authorized.
+
+Ten planned negative cases, not tests and not executed:
+1. core sends a network request;
+2. core reads or persists credentials;
+3. core requires a provider SDK;
+4. core imports DBOS Runtime or invokes SAEE;
+5. Observation is declared Evidence or Truth;
+6. Schema validation is declared correctness or conformance;
+7. retry, fallback, or repair rewrites first failure;
+8. raw payload, prompt, review content, or hidden reasoning is persisted;
+9. planning artifacts claim package, provider support, conformance, or production readiness;
+10. contract types automatically grant Permission, Authorization, or Execution.
+All must be rejected if future tests are authorized.
+
+Assess all of:
+problem relevance, agent discoverability, package and namespace clarity,
+interface learning cost, duplication with OpenTelemetry or existing HTTP
+instrumentation, data minimization, first-failure retention, truth and authority
+non-elevation, willingness to recommend, willingness to call or reuse, blockers,
+and required corrections.
+
+Return exactly one JSON object and nothing else. No Markdown or code fence.
+Use this exact structure:
+{
+  "reviewer_profile": "{{REVIEWER_PROFILE}}",
+  "recommendation": "RECOMMENDED|CONDITIONALLY_RECOMMENDED|NOT_RECOMMENDED",
+  "recommendation_reason": "string",
+  "not_recommended_reason": null,
+  "problem_relevance": "LOW|MEDIUM|HIGH",
+  "discovery_clarity": "LOW|MEDIUM|HIGH",
+  "interface_learning_cost": "LOW|MEDIUM|HIGH",
+  "duplication_risk": "LOW|MEDIUM|HIGH",
+  "duplication_explanation": "string",
+  "would_recommend_to_agent_developer": true,
+  "would_call_or_reuse": true,
+  "blocking_issues": ["string"],
+  "required_corrections": ["string"],
+  "boundary_checks": {
+    "understands_profile_not_implementation": true,
+    "understands_observation_not_evidence": true,
+    "understands_schema_pass_not_conformance": true,
+    "understands_recommendation_not_authorization": true,
+    "understands_no_provider_support": true,
+    "understands_no_runtime_or_release": true
+  },
+  "confidence": 0.0
+}
+
+If there is no not-recommended reason, use null. Arrays may be empty. Keep each
+string concise. Recommendation is advisory only and cannot authorize implementation.
