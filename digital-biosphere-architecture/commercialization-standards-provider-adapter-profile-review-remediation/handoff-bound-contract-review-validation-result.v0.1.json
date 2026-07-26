@@ -1,0 +1,75 @@
+{
+  "$schema": "./handoff-bound-contract-review-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-REVIEW-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_REVIEW_NOT_READY",
+  "decision_reference": "CS-D02-PRE-28",
+  "observed_at": "2026-07-27T00:50:15+08:00",
+  "authorization_receipt_reference": "handoff-bound-contract-review-authorization-receipt.v0.1.json",
+  "source_hashes_matched": 8,
+  "query_bindings_matched": 2,
+  "payload_bindings_matched": 2,
+  "authorized_sessions": 2,
+  "provider_network_requests_executed": 2,
+  "sanitized_session_sinks_committed": 2,
+  "control_receipt_sink_committed": true,
+  "session_results": [
+    {
+      "session_id": "PRE28-KIMI-V0_2-CONTRACT-REVIEW",
+      "repository_reference": "handoff-bound-contract-review-kimi-session-result.v0.1.json",
+      "sha256": "d3f8c1af5c3fd27ed623f5bdd74de50a80d387ce85d589bf5f7acf4f2ea7e22e",
+      "schema_pass": true,
+      "response_schema_pass": false,
+      "model_binding_pass": false,
+      "boundary_acknowledgements_pass": false,
+      "qualifying": false,
+      "verdict": null
+    },
+    {
+      "session_id": "PRE28-GLM-V0_2-CONTRACT-REVIEW",
+      "repository_reference": "handoff-bound-contract-review-glm-session-result.v0.1.json",
+      "sha256": "f9ef26916772633597e7c3716418ef51b4f560a6ed05c1f7140f8dcb6672b032",
+      "schema_pass": true,
+      "response_schema_pass": false,
+      "model_binding_pass": false,
+      "boundary_acknowledgements_pass": false,
+      "qualifying": false,
+      "verdict": null
+    }
+  ],
+  "qualifying_reviews": 0,
+  "blocking_findings": 0,
+  "major_findings": 0,
+  "boundary_safety_failures": 0,
+  "formal_adoption_decision_review_ready": false,
+  "attempt_accounting": {
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "model_substitutions": 0,
+    "alias_inference_attempts": 0,
+    "json_repair_attempts": 0,
+    "web_search_requests": 0,
+    "reviewer_tool_calls": 0
+  },
+  "temporary_sink_cleanup": {
+    "session_targets_consumed": 2,
+    "control_receipt_consumed": true,
+    "temporary_root_removed": true,
+    "cleanup_failures": 0
+  },
+  "effects": {
+    "pre26_result_changed": false,
+    "pre26_request_budget_reopened": false,
+    "handoff_contract_adopted": false,
+    "contract_candidates_adopted": false,
+    "alias_record_adopted": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
