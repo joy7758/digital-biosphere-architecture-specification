@@ -1,0 +1,49 @@
+{
+  "$schema": "./pre40-clean-clone-verification-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-40-CLEAN-CLONE-VERIFICATION-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_PLAN_NOT_AUTHORIZED_NOT_EXECUTED",
+  "repository": "https://github.com/joy7758/titmas-integrations.git",
+  "branch": "codex/rb0-governance-baseline",
+  "commit": "9610748d4a72d81278df2bc296518a469ce2fd30",
+  "expected_inventory_reference": "pre40-expected-repository-inventory.v0.1.json",
+  "clone_policy": {
+    "fresh_isolated_directory_required": true,
+    "single_branch_required": true,
+    "exact_commit_required": true,
+    "existing_target_worktree_may_be_used_as_verification_source": false,
+    "provider_api_requests_max": 0,
+    "model_requests_max": 0,
+    "credential_reads_max": 0
+  },
+  "checks": [
+    "REMOTE_BRANCH_HEAD_EXACT",
+    "REMOTE_MAIN_UNCHANGED",
+    "FRESH_CLONE_CLEAN",
+    "EXACT_16_PATH_INVENTORY_AND_DIGESTS",
+    "FILE_MODES_REGULAR_NON_EXECUTABLE",
+    "APACHE_2_0_LICENSE_EXACT",
+    "TWO_SCHEMAS_META_VALID",
+    "TWO_INSTANCES_VALID",
+    "TWO_LOCAL_SCHEMA_REFERENCES_RESOLVED",
+    "HUMAN_AGENT_LLM_MACHINE_TRUTH_CONSISTENT",
+    "BRANCH_ONLY_NOT_MERGED_SCOPE_EXPLICIT",
+    "BASELINE_VALIDATED_AND_ADOPTED_REMAIN_FALSE_DURING_GATE",
+    "SOURCE_PACKAGE_TEST_COUNTS_ZERO",
+    "IMPLEMENTATION_PROVIDER_CONFORMANCE_RUNTIME_RELEASE_FALSE",
+    "PUBLIC_SAFE_SCAN_ZERO",
+    "ORIGINAL_CHECKOUT_UNCHANGED"
+  ],
+  "pass_outcome": "DEVELOPMENT_RB0_CLEAN_CLONE_VERIFICATION_PASS_ADOPTION_REVIEW_READY_NOT_ADOPTED",
+  "fail_outcome": "FAIL_CLOSED_RB0_ADOPTION_REVIEW_NOT_READY",
+  "effects": {
+    "target_repository_modification_authorized": false,
+    "repository_baseline_adoption_authorized": false,
+    "implementation_authorized": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "merge_authorized": false,
+    "pull_request_authorized": false,
+    "release_authorized": false
+  }
+}

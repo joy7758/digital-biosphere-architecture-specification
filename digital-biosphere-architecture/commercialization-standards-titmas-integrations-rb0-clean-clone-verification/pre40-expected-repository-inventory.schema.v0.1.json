@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre40-expected-repository-inventory.schema.v0.1.json",
+  "title": "PRE-40 Expected Repository Inventory v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "repository", "branch", "commit", "files", "counts"],
+  "properties": {
+    "$schema": {"const": "./pre40-expected-repository-inventory.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-40-EXPECTED-REPOSITORY-INVENTORY-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_EXPECTED_INVENTORY_NOT_YET_VERIFIED_BY_PRE40"},
+    "repository": {"const": "https://github.com/joy7758/titmas-integrations.git"},
+    "branch": {"const": "codex/rb0-governance-baseline"},
+    "commit": {"const": "9610748d4a72d81278df2bc296518a469ce2fd30"},
+    "files": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "size_bytes"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"pattern": "^[0-9a-f]{64}$"},
+          "size_bytes": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total_files", "rb0_governance_files", "preexisting_placeholder_files", "source_files", "package_metadata_files", "test_files"],
+      "properties": {
+        "total_files": {"const": 16},
+        "rb0_governance_files": {"const": 10},
+        "preexisting_placeholder_files": {"const": 6},
+        "source_files": {"const": 0},
+        "package_metadata_files": {"const": 0},
+        "test_files": {"const": 0}
+      }
+    }
+  }
+}

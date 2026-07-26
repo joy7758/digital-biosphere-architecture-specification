@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre40-clean-clone-verification-plan.schema.v0.1.json",
+  "title": "PRE-40 Clean-clone Verification Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "repository",
+    "branch",
+    "commit",
+    "expected_inventory_reference",
+    "clone_policy",
+    "checks",
+    "pass_outcome",
+    "fail_outcome",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre40-clean-clone-verification-plan.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-40-CLEAN-CLONE-VERIFICATION-PLAN-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_PLAN_NOT_AUTHORIZED_NOT_EXECUTED"},
+    "repository": {"const": "https://github.com/joy7758/titmas-integrations.git"},
+    "branch": {"const": "codex/rb0-governance-baseline"},
+    "commit": {"const": "9610748d4a72d81278df2bc296518a469ce2fd30"},
+    "expected_inventory_reference": {"const": "pre40-expected-repository-inventory.v0.1.json"},
+    "clone_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fresh_isolated_directory_required",
+        "single_branch_required",
+        "exact_commit_required",
+        "existing_target_worktree_may_be_used_as_verification_source",
+        "provider_api_requests_max",
+        "model_requests_max",
+        "credential_reads_max"
+      ],
+      "properties": {
+        "fresh_isolated_directory_required": {"const": true},
+        "single_branch_required": {"const": true},
+        "exact_commit_required": {"const": true},
+        "existing_target_worktree_may_be_used_as_verification_source": {"const": false},
+        "provider_api_requests_max": {"const": 0},
+        "model_requests_max": {"const": 0},
+        "credential_reads_max": {"const": 0}
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "pass_outcome": {"const": "DEVELOPMENT_RB0_CLEAN_CLONE_VERIFICATION_PASS_ADOPTION_REVIEW_READY_NOT_ADOPTED"},
+    "fail_outcome": {"const": "FAIL_CLOSED_RB0_ADOPTION_REVIEW_NOT_READY"},
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_repository_modification_authorized",
+        "repository_baseline_adoption_authorized",
+        "implementation_authorized",
+        "provider_supported",
+        "conformance_executed",
+        "merge_authorized",
+        "pull_request_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "target_repository_modification_authorized": {"const": false},
+        "repository_baseline_adoption_authorized": {"const": false},
+        "implementation_authorized": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "merge_authorized": {"const": false},
+        "pull_request_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}
