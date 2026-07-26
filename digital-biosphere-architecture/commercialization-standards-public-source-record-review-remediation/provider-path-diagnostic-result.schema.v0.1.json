@@ -1,0 +1,239 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:provider-path-diagnostic-result:0.1",
+  "title": "TITMAS Provider Path Diagnostic Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "authorization_baseline_commit",
+    "live_model_requests_executed",
+    "sources",
+    "checks",
+    "failure_classification",
+    "rerun_prerequisites",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./provider-path-diagnostic-result.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-11-PROVIDER-PATH-DIAGNOSTIC-RESULT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PASS_OFFLINE_DIAGNOSTIC_RERUN_REDESIGN_REQUIRED"
+    },
+    "observed_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-11"
+    },
+    "authorization_baseline_commit": {
+      "const": "1685b43df67fc0a15265b15fcfcdeb7346340c09"
+    },
+    "live_model_requests_executed": {
+      "const": 0
+    },
+    "sources": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_id",
+          "source_type",
+          "reference",
+          "authority",
+          "observed_on"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string",
+            "minLength": 4
+          },
+          "source_type": {
+            "enum": [
+              "INSTALLED_TOOL_SCHEMA",
+              "OFFICIAL_PUBLIC_DOCUMENTATION",
+              "PREDECESSOR_EXECUTION_RECORD"
+            ]
+          },
+          "reference": {
+            "type": "string",
+            "minLength": 10
+          },
+          "authority": {
+            "enum": [
+              "INSTALLED_TOOL_DECLARATION",
+              "PROVIDER_OFFICIAL",
+              "DBA_PREDECESSOR_RECORD"
+            ]
+          },
+          "observed_on": {
+            "type": "string",
+            "format": "date"
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "array",
+      "minItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "check_id",
+          "result",
+          "finding"
+        ],
+        "properties": {
+          "check_id": {
+            "type": "string",
+            "minLength": 5
+          },
+          "result": {
+            "enum": [
+              "PASS",
+              "DRIFT_DETECTED",
+              "UNKNOWN"
+            ]
+          },
+          "finding": {
+            "type": "string",
+            "minLength": 20
+          }
+        }
+      }
+    },
+    "failure_classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qianfan_kimi",
+        "deepseek"
+      ],
+      "properties": {
+        "qianfan_kimi": {
+          "$ref": "#/$defs/classification"
+        },
+        "deepseek": {
+          "$ref": "#/$defs/classification"
+        }
+      }
+    },
+    "rerun_prerequisites": {
+      "type": "array",
+      "minItems": 6,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 12
+      }
+    },
+    "effects": {
+      "$ref": "#/$defs/effects"
+    }
+  },
+  "$defs": {
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "layer",
+        "classification",
+        "exact_cause_proven",
+        "confidence"
+      ],
+      "properties": {
+        "layer": {
+          "enum": [
+            "TOOL_GATEWAY_OR_PROVIDER_TRANSPORT",
+            "PROVIDER_REQUEST_CONTRACT"
+          ]
+        },
+        "classification": {
+          "enum": [
+            "UNKNOWN_TRANSPORT_OR_WRAPPER_FAILURE",
+            "CURRENT_MODEL_IDENTIFIER_DRIFT_LIKELY_NOT_PROVEN_AS_HTTP400_CAUSE"
+          ]
+        },
+        "exact_cause_proven": {
+          "const": false
+        },
+        "confidence": {
+          "enum": [
+            "LOW",
+            "MEDIUM",
+            "HIGH"
+          ]
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_diagnostic_completed",
+        "live_model_request_authorized",
+        "rerun_authorized",
+        "candidate_status_changed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "offline_diagnostic_completed": {
+          "const": true
+        },
+        "live_model_request_authorized": {
+          "const": false
+        },
+        "rerun_authorized": {
+          "const": false
+        },
+        "candidate_status_changed": {
+          "const": false
+        },
+        "record_counting_authorized": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}

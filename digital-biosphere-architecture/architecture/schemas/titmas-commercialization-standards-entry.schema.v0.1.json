@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_10_AGENT_RECORD_REVIEW_EXECUTED_FAIL_CLOSED_REMEDIATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_11_OFFLINE_DIAGNOSTIC_COMPLETED_RERUN_REDESIGN_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1110,6 +1110,12 @@
         "public_source_candidate_review_executed",
         "public_source_candidate_review_completed",
         "public_source_candidate_review_remediation_required",
+        "public_source_record_review_offline_diagnostic_completed",
+        "public_source_record_review_live_model_requests_executed",
+        "deepseek_current_model_contract_drift_detected",
+        "deepseek_http400_exact_cause_proven",
+        "qianfan_exact_failure_cause_proven",
+        "public_source_record_review_rerun_authorized",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1181,6 +1187,24 @@
         },
         "public_source_candidate_review_remediation_required": {
           "const": true
+        },
+        "public_source_record_review_offline_diagnostic_completed": {
+          "const": true
+        },
+        "public_source_record_review_live_model_requests_executed": {
+          "const": 0
+        },
+        "deepseek_current_model_contract_drift_detected": {
+          "const": true
+        },
+        "deepseek_http400_exact_cause_proven": {
+          "const": false
+        },
+        "qianfan_exact_failure_cause_proven": {
+          "const": false
+        },
+        "public_source_record_review_rerun_authorized": {
+          "const": false
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -1311,6 +1335,16 @@
         "diagnostic_authorization_baseline_commit",
         "diagnostic_authorization_baseline_remote_verified",
         "offline_diagnostic_authorized",
+        "diagnostic_fixture_reference",
+        "diagnostic_result_reference",
+        "diagnostic_report_reference",
+        "offline_diagnostic_executed",
+        "offline_diagnostic_completed",
+        "live_model_requests_executed",
+        "deepseek_current_model_contract_drift_detected",
+        "deepseek_http400_exact_cause_proven",
+        "qianfan_exact_failure_cause_proven",
+        "rerun_authorized",
         "live_model_request_authorized",
         "current_recommended_option",
         "decision_ready",
@@ -1325,7 +1359,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE11_REMOTE_AUTHORIZATION_BASELINE_VERIFIED_OFFLINE_DIAGNOSTIC_NOT_EXECUTED"
+          "const": "PRE11_OFFLINE_DIAGNOSTIC_COMPLETED_RERUN_REDESIGN_REQUIRED_NOT_AUTHORIZED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1432,11 +1466,41 @@
         "offline_diagnostic_authorized": {
           "const": true
         },
+        "diagnostic_fixture_reference": {
+          "const": "commercialization-standards-public-source-record-review-remediation/provider-request-shape-fixtures.v0.1.json"
+        },
+        "diagnostic_result_reference": {
+          "const": "commercialization-standards-public-source-record-review-remediation/provider-path-diagnostic-result.v0.1.json"
+        },
+        "diagnostic_report_reference": {
+          "const": "commercialization-standards-public-source-record-review-remediation/PRE-11-OFFLINE-DIAGNOSTIC-RESULT-v0.1.md"
+        },
+        "offline_diagnostic_executed": {
+          "const": true
+        },
+        "offline_diagnostic_completed": {
+          "const": true
+        },
+        "live_model_requests_executed": {
+          "const": 0
+        },
+        "deepseek_current_model_contract_drift_detected": {
+          "const": true
+        },
+        "deepseek_http400_exact_cause_proven": {
+          "const": false
+        },
+        "qianfan_exact_failure_cause_proven": {
+          "const": false
+        },
+        "rerun_authorized": {
+          "const": false
+        },
         "live_model_request_authorized": {
           "const": false
         },
         "current_recommended_option": {
-          "const": "C"
+          "const": "PREPARE_PRE12_BOUNDED_RERUN_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false

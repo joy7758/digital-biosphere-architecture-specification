@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: pre-10-agent-record-review-executed-fail-closed-remediation-required-standard-not-ready
+status: pre-11-offline-diagnostic-completed-rerun-redesign-required-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -800,6 +800,29 @@ PRE_10_RERUN_AUTHORIZED=false
 [PRE-11 Decision](../TITMAS-CS-D02-PRE-11-PUBLIC-SOURCE-RECORD-REVIEW-REMEDIATION-DECISION-RECORD.md)
 已依据 `TITMAS-CS-STANDING-001` 授权该 exact offline action；执行前仍须先 commit/push
 授权基线。即使诊断完成，后续重跑仍需新的 recommendation、Decision、冻结计划和远端基线。
+
+PRE-11 已完成离线诊断，结果见
+[human-readable report](../commercialization-standards-public-source-record-review-remediation/PRE-11-OFFLINE-DIAGNOSTIC-RESULT-v0.1.md)、
+[machine result](../commercialization-standards-public-source-record-review-remediation/provider-path-diagnostic-result.v0.1.json)
+和 [placeholder fixtures](../commercialization-standards-public-source-record-review-remediation/provider-request-shape-fixtures.v0.1.json)：
+
+```text
+OFFLINE_DIAGNOSTIC_EXECUTED=true
+OFFLINE_DIAGNOSTIC_COMPLETED=true
+LIVE_MODEL_REQUESTS_EXECUTED=0
+DEEPSEEK_CURRENT_MODEL_CONTRACT_DRIFT_DETECTED=true
+DEEPSEEK_HTTP400_EXACT_CAUSE_PROVEN=false
+QIANFAN_EXACT_FAILURE_CAUSE_PROVEN=false
+PRE_10_RERUN_AUTHORIZED=false
+VALID_PROBLEM_RECORDS=0
+CS_G0_PASS=false
+```
+
+当前 DeepSeek 官方模型枚举与 PRE-10 的 `deepseek-chat` 存在漂移，但由于 PRE-10 未保留
+原始错误 body，不能把该漂移写成 HTTP 400 的已证明原因。Kimi/Qianfan 的公开模型标识仍
+与当前官方文档一致，但工具内部 transport/request envelope 不可见，确切失败原因保持
+`UNKNOWN`。下一步只能另行准备 provider-specific preflight 与 candidate review 重跑建议；
+本节不授权任何 live request。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 

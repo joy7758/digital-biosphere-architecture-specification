@@ -1,0 +1,260 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:provider-request-shape-fixtures:0.1",
+  "title": "TITMAS Provider Request Shape Fixtures v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "credentials",
+    "fixtures"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./provider-request-shape-fixtures.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-11-PROVIDER-REQUEST-SHAPE-FIXTURES-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "OFFLINE_PLACEHOLDER_FIXTURES_NOT_SENT"
+    },
+    "observed_on": {
+      "type": "string",
+      "format": "date"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-11"
+    },
+    "credentials": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "real_credentials_present",
+        "authorization_header_present",
+        "cookie_present"
+      ],
+      "properties": {
+        "real_credentials_present": {
+          "const": false
+        },
+        "authorization_header_present": {
+          "const": false
+        },
+        "cookie_present": {
+          "const": false
+        }
+      }
+    },
+    "fixtures": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/qianfanTool"
+        },
+        {
+          "$ref": "#/$defs/qianfanProvider"
+        },
+        {
+          "$ref": "#/$defs/deepseekCurrent"
+        },
+        {
+          "$ref": "#/$defs/deepseekPre10"
+        }
+      ],
+      "items": false
+    }
+  },
+  "$defs": {
+    "base": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fixture_id",
+        "layer",
+        "source_reference",
+        "endpoint",
+        "request_shape",
+        "expected_offline_result",
+        "sent"
+      ],
+      "properties": {
+        "fixture_id": {
+          "type": "string"
+        },
+        "layer": {
+          "enum": [
+            "INSTALLED_TOOL_GATEWAY",
+            "PROVIDER_OPENAI_COMPATIBLE_API"
+          ]
+        },
+        "source_reference": {
+          "type": "string",
+          "minLength": 10
+        },
+        "endpoint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "request_shape": {
+          "type": "object"
+        },
+        "expected_offline_result": {
+          "enum": [
+            "PASS_DECLARED_TOOL_INPUT_SHAPE",
+            "PASS_CURRENT_OFFICIAL_PROVIDER_SHAPE",
+            "REJECT_CURRENT_OFFICIAL_MODEL_ENUM"
+          ]
+        },
+        "sent": {
+          "const": false
+        }
+      }
+    },
+    "qianfanTool": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "fixture_id": {
+              "const": "QIANFAN_KIMI_INSTALLED_TOOL_INPUT"
+            },
+            "layer": {
+              "const": "INSTALLED_TOOL_GATEWAY"
+            },
+            "endpoint": {
+              "const": null
+            },
+            "request_shape": {
+              "const": {
+                "query": "<PUBLIC_SAFE_JSON_REVIEW_PROMPT>"
+              }
+            },
+            "expected_offline_result": {
+              "const": "PASS_DECLARED_TOOL_INPUT_SHAPE"
+            }
+          }
+        }
+      ]
+    },
+    "qianfanProvider": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "fixture_id": {
+              "const": "QIANFAN_KIMI_CURRENT_PROVIDER_SHAPE"
+            },
+            "layer": {
+              "const": "PROVIDER_OPENAI_COMPATIBLE_API"
+            },
+            "endpoint": {
+              "const": "https://qianfan.baidubce.com/v2/chat/completions"
+            },
+            "request_shape": {
+              "const": {
+                "model": "kimi-k2.6",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "<PUBLIC_SAFE_JSON_REVIEW_PROMPT>"
+                  }
+                ]
+              }
+            },
+            "expected_offline_result": {
+              "const": "PASS_CURRENT_OFFICIAL_PROVIDER_SHAPE"
+            }
+          }
+        }
+      ]
+    },
+    "deepseekCurrent": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "fixture_id": {
+              "const": "DEEPSEEK_CURRENT_JSON_PROVIDER_SHAPE"
+            },
+            "layer": {
+              "const": "PROVIDER_OPENAI_COMPATIBLE_API"
+            },
+            "endpoint": {
+              "const": "https://api.deepseek.com/chat/completions"
+            },
+            "request_shape": {
+              "const": {
+                "model": "deepseek-v4-pro",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "<PUBLIC_SAFE_PROMPT_INSTRUCTING_JSON_OUTPUT>"
+                  }
+                ],
+                "response_format": {
+                  "type": "json_object"
+                }
+              }
+            },
+            "expected_offline_result": {
+              "const": "PASS_CURRENT_OFFICIAL_PROVIDER_SHAPE"
+            }
+          }
+        }
+      ]
+    },
+    "deepseekPre10": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/base"
+        },
+        {
+          "properties": {
+            "fixture_id": {
+              "const": "DEEPSEEK_PRE10_MODEL_IDENTIFIER_SHAPE"
+            },
+            "layer": {
+              "const": "PROVIDER_OPENAI_COMPATIBLE_API"
+            },
+            "endpoint": {
+              "const": "https://api.deepseek.com/chat/completions"
+            },
+            "request_shape": {
+              "const": {
+                "model": "deepseek-chat",
+                "messages": [
+                  {
+                    "role": "user",
+                    "content": "<PUBLIC_SAFE_JSON_REVIEW_PROMPT>"
+                  }
+                ]
+              }
+            },
+            "expected_offline_result": {
+              "const": "REJECT_CURRENT_OFFICIAL_MODEL_ENUM"
+            }
+          }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,113 @@
+{
+  "$schema": "./provider-path-diagnostic-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-11-PROVIDER-PATH-DIAGNOSTIC-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_OFFLINE_DIAGNOSTIC_RERUN_REDESIGN_REQUIRED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-11",
+  "authorization_baseline_commit": "1685b43df67fc0a15265b15fcfcdeb7346340c09",
+  "live_model_requests_executed": 0,
+  "sources": [
+    {
+      "source_id": "SRC-TOOL-KIMI",
+      "source_type": "INSTALLED_TOOL_SCHEMA",
+      "reference": "installed:mcp__kimi_qianfan.kimi_chat",
+      "authority": "INSTALLED_TOOL_DECLARATION",
+      "observed_on": "2026-07-26"
+    },
+    {
+      "source_id": "SRC-QIANFAN-OFFICIAL",
+      "source_type": "OFFICIAL_PUBLIC_DOCUMENTATION",
+      "reference": "https://cloud.baidu.com/doc/qianfan/s/Smoghsq3g",
+      "authority": "PROVIDER_OFFICIAL",
+      "observed_on": "2026-07-26"
+    },
+    {
+      "source_id": "SRC-DEEPSEEK-OFFICIAL",
+      "source_type": "OFFICIAL_PUBLIC_DOCUMENTATION",
+      "reference": "https://api-docs.deepseek.com/api/create-chat-completion/",
+      "authority": "PROVIDER_OFFICIAL",
+      "observed_on": "2026-07-26"
+    },
+    {
+      "source_id": "SRC-PRE10-OBSERVATION",
+      "source_type": "PREDECESSOR_EXECUTION_RECORD",
+      "reference": "../commercialization-standards-public-source-record-review/raw-sanitized-observations.v0.1.json",
+      "authority": "DBA_PREDECESSOR_RECORD",
+      "observed_on": "2026-07-26"
+    }
+  ],
+  "checks": [
+    {
+      "check_id": "TOOL-GATEWAY-INPUT",
+      "result": "PASS",
+      "finding": "The installed Kimi tool exposes one required non-sensitive query string and fixes the model to kimi-k2.6 without fallback."
+    },
+    {
+      "check_id": "QIANFAN-ENDPOINT-MODEL",
+      "result": "PASS",
+      "finding": "Current official Qianfan documentation lists the v2 chat-completions endpoint and kimi-k2.6 model identifier."
+    },
+    {
+      "check_id": "QIANFAN-WRAPPER-INTERNALS",
+      "result": "UNKNOWN",
+      "finding": "The installed tool does not expose its internal provider envelope, timeout, retry or response-format behavior to the caller."
+    },
+    {
+      "check_id": "DEEPSEEK-ENDPOINT",
+      "result": "PASS",
+      "finding": "Current official DeepSeek documentation defines POST /chat/completions under the api.deepseek.com base URL."
+    },
+    {
+      "check_id": "DEEPSEEK-JSON-MODE",
+      "result": "PASS",
+      "finding": "Current official DeepSeek documentation supports response_format json_object when the prompt also instructs JSON output."
+    },
+    {
+      "check_id": "DEEPSEEK-MODEL-IDENTIFIER",
+      "result": "DRIFT_DETECTED",
+      "finding": "Current official DeepSeek Chat Completion documentation lists deepseek-v4-flash and deepseek-v4-pro, while PRE-10 declared deepseek-chat."
+    },
+    {
+      "check_id": "PLACEHOLDER-FIXTURES",
+      "result": "PASS",
+      "finding": "Four offline fixtures contain placeholders only, no credentials, and were not sent to any provider."
+    }
+  ],
+  "failure_classification": {
+    "qianfan_kimi": {
+      "layer": "TOOL_GATEWAY_OR_PROVIDER_TRANSPORT",
+      "classification": "UNKNOWN_TRANSPORT_OR_WRAPPER_FAILURE",
+      "exact_cause_proven": false,
+      "confidence": "LOW"
+    },
+    "deepseek": {
+      "layer": "PROVIDER_REQUEST_CONTRACT",
+      "classification": "CURRENT_MODEL_IDENTIFIER_DRIFT_LIKELY_NOT_PROVEN_AS_HTTP400_CAUSE",
+      "exact_cause_proven": false,
+      "confidence": "HIGH"
+    }
+  },
+  "rerun_prerequisites": [
+    "Use a currently documented DeepSeek model identifier rather than deepseek-chat.",
+    "Retain a prompt instruction that explicitly requests JSON when response_format json_object is used.",
+    "Keep Qianfan Kimi behind the installed one-field tool contract unless a separately reviewed direct API path is selected.",
+    "Add provider-specific preflight sessions with explicit request caps and stop before candidate review if either provider fails.",
+    "Freeze all session model identifiers, prompt hashes, response Schema and thresholds in a new plan.",
+    "Commit and push the new authorization baseline before any live provider request.",
+    "Preserve PRE-10 as immutable failed predecessor history and do not lower its thresholds."
+  ],
+  "effects": {
+    "offline_diagnostic_completed": true,
+    "live_model_request_authorized": false,
+    "rerun_authorized": false,
+    "candidate_status_changed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

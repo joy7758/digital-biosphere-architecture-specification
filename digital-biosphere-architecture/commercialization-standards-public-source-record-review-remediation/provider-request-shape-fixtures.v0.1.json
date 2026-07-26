@@ -1,0 +1,80 @@
+{
+  "$schema": "./provider-request-shape-fixtures.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-11-PROVIDER-REQUEST-SHAPE-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_PLACEHOLDER_FIXTURES_NOT_SENT",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-11",
+  "credentials": {
+    "real_credentials_present": false,
+    "authorization_header_present": false,
+    "cookie_present": false
+  },
+  "fixtures": [
+    {
+      "fixture_id": "QIANFAN_KIMI_INSTALLED_TOOL_INPUT",
+      "layer": "INSTALLED_TOOL_GATEWAY",
+      "source_reference": "installed:mcp__kimi_qianfan.kimi_chat",
+      "endpoint": null,
+      "request_shape": {
+        "query": "<PUBLIC_SAFE_JSON_REVIEW_PROMPT>"
+      },
+      "expected_offline_result": "PASS_DECLARED_TOOL_INPUT_SHAPE",
+      "sent": false
+    },
+    {
+      "fixture_id": "QIANFAN_KIMI_CURRENT_PROVIDER_SHAPE",
+      "layer": "PROVIDER_OPENAI_COMPATIBLE_API",
+      "source_reference": "https://cloud.baidu.com/doc/qianfan/s/Smoghsq3g",
+      "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+      "request_shape": {
+        "model": "kimi-k2.6",
+        "messages": [
+          {
+            "role": "user",
+            "content": "<PUBLIC_SAFE_JSON_REVIEW_PROMPT>"
+          }
+        ]
+      },
+      "expected_offline_result": "PASS_CURRENT_OFFICIAL_PROVIDER_SHAPE",
+      "sent": false
+    },
+    {
+      "fixture_id": "DEEPSEEK_CURRENT_JSON_PROVIDER_SHAPE",
+      "layer": "PROVIDER_OPENAI_COMPATIBLE_API",
+      "source_reference": "https://api-docs.deepseek.com/api/create-chat-completion/",
+      "endpoint": "https://api.deepseek.com/chat/completions",
+      "request_shape": {
+        "model": "deepseek-v4-pro",
+        "messages": [
+          {
+            "role": "user",
+            "content": "<PUBLIC_SAFE_PROMPT_INSTRUCTING_JSON_OUTPUT>"
+          }
+        ],
+        "response_format": {
+          "type": "json_object"
+        }
+      },
+      "expected_offline_result": "PASS_CURRENT_OFFICIAL_PROVIDER_SHAPE",
+      "sent": false
+    },
+    {
+      "fixture_id": "DEEPSEEK_PRE10_MODEL_IDENTIFIER_SHAPE",
+      "layer": "PROVIDER_OPENAI_COMPATIBLE_API",
+      "source_reference": "../commercialization-standards-public-source-record-review/validation-plan.v0.1.json",
+      "endpoint": "https://api.deepseek.com/chat/completions",
+      "request_shape": {
+        "model": "deepseek-chat",
+        "messages": [
+          {
+            "role": "user",
+            "content": "<PUBLIC_SAFE_JSON_REVIEW_PROMPT>"
+          }
+        ]
+      },
+      "expected_offline_result": "REJECT_CURRENT_OFFICIAL_MODEL_ENUM",
+      "sent": false
+    }
+  ]
+}
