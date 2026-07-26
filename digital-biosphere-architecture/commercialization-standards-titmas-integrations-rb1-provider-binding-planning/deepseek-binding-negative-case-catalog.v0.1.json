@@ -1,0 +1,207 @@
+{
+  "$schema": "./deepseek-binding-negative-case-catalog.schema.v0.1.json",
+  "document_id": "TITMAS-RB1-DEEPSEEK-BINDING-NEGATIVE-CASE-CATALOG-0.1",
+  "version": "0.1.0",
+  "status": "PLANNED_NOT_EXECUTED",
+  "case_count": 24,
+  "cases": [
+    {
+      "case_id": "NEG-CRED-001",
+      "group": "CREDENTIAL_SECRET",
+      "condition": "Credential identifier is absent.",
+      "expected_result": "REJECT_BEFORE_REQUEST_CONSTRUCTION",
+      "required_first_failure": "SANITIZATION_FAILURE",
+      "prohibited_effects": ["NETWORK_REQUEST", "CREDENTIAL_LOG", "FALLBACK"]
+    },
+    {
+      "case_id": "NEG-CRED-002",
+      "group": "CREDENTIAL_SECRET",
+      "condition": "Credential value is blank.",
+      "expected_result": "REJECT_BEFORE_NETWORK",
+      "required_first_failure": "SANITIZATION_FAILURE",
+      "prohibited_effects": ["NETWORK_REQUEST", "RETRY", "ALIAS_INFERENCE"]
+    },
+    {
+      "case_id": "NEG-CRED-003",
+      "group": "CREDENTIAL_SECRET",
+      "condition": "Credential or Authorization value appears in trace material.",
+      "expected_result": "FAIL_CLOSED_AND_REDACT",
+      "required_first_failure": "SANITIZATION_FAILURE",
+      "prohibited_effects": ["SECRET_RETENTION", "COMMIT", "CONTINUE"]
+    },
+    {
+      "case_id": "NEG-CRED-004",
+      "group": "CREDENTIAL_SECRET",
+      "condition": "Environment dump is requested for diagnosis.",
+      "expected_result": "REJECT_ENVIRONMENT_DUMP",
+      "required_first_failure": "SANITIZATION_FAILURE",
+      "prohibited_effects": ["ENVIRONMENT_RETENTION", "NETWORK_REQUEST", "COMMIT"]
+    },
+    {
+      "case_id": "NEG-NET-001",
+      "group": "ENDPOINT_NETWORK",
+      "condition": "Endpoint scheme is not HTTPS.",
+      "expected_result": "REJECT_ENDPOINT",
+      "required_first_failure": "TLS_HANDSHAKE_FAILURE",
+      "prohibited_effects": ["NETWORK_REQUEST", "REDIRECT", "FALLBACK"]
+    },
+    {
+      "case_id": "NEG-NET-002",
+      "group": "ENDPOINT_NETWORK",
+      "condition": "Endpoint host is not api.deepseek.com.",
+      "expected_result": "REJECT_HOST",
+      "required_first_failure": "TCP_CONNECT_FAILURE",
+      "prohibited_effects": ["NETWORK_REQUEST", "ALTERNATE_HOST", "IP_LITERAL"]
+    },
+    {
+      "case_id": "NEG-NET-003",
+      "group": "ENDPOINT_NETWORK",
+      "condition": "Endpoint port or path differs from 443 and /chat/completions.",
+      "expected_result": "REJECT_ENDPOINT",
+      "required_first_failure": "REQUEST_HEADERS_WRITE_FAILURE",
+      "prohibited_effects": ["NETWORK_REQUEST", "PATH_REWRITE", "REDIRECT"]
+    },
+    {
+      "case_id": "NEG-NET-004",
+      "group": "ENDPOINT_NETWORK",
+      "condition": "Proxy or redirect is required.",
+      "expected_result": "REJECT_NETWORK_MODE",
+      "required_first_failure": "TCP_CONNECT_FAILURE",
+      "prohibited_effects": ["PROXY_USE", "REDIRECT", "FALLBACK"]
+    },
+    {
+      "case_id": "NEG-NET-005",
+      "group": "ENDPOINT_NETWORK",
+      "condition": "Any timeout is absent, infinite or exceeds the candidate limit.",
+      "expected_result": "REJECT_LIMIT_CONFIGURATION",
+      "required_first_failure": "UNKNOWN_FAIL_CLOSED",
+      "prohibited_effects": ["NETWORK_REQUEST", "UNBOUNDED_WAIT", "RETRY"]
+    },
+    {
+      "case_id": "NEG-PHASE-001",
+      "group": "PHASE_OBSERVABILITY",
+      "condition": "P0 is declared PASS without a separate DNS observation.",
+      "expected_result": "REJECT_SYNTHETIC_P0",
+      "required_first_failure": "DNS_RESOLUTION_OR_P0_OBSERVABILITY_GAP",
+      "prohibited_effects": ["P0_PASS", "FULL_CONFORMANCE_CLAIM", "IMPLEMENTATION_RECOMMENDATION"]
+    },
+    {
+      "case_id": "NEG-PHASE-002",
+      "group": "PHASE_OBSERVABILITY",
+      "condition": "TCP connect duration is reused as DNS duration.",
+      "expected_result": "REJECT_PHASE_CONFLATION",
+      "required_first_failure": "DNS_RESOLUTION_OR_P0_OBSERVABILITY_GAP",
+      "prohibited_effects": ["P0_PASS", "P1_REWRITE", "FULL_CONFORMANCE_CLAIM"]
+    },
+    {
+      "case_id": "NEG-PHASE-003",
+      "group": "PHASE_OBSERVABILITY",
+      "condition": "TLS event is absent while HTTPS success is claimed.",
+      "expected_result": "REJECT_INCOMPLETE_TRACE",
+      "required_first_failure": "TLS_HANDSHAKE_FAILURE",
+      "prohibited_effects": ["SUCCESS", "SCHEMA_PASS_ELEVATION", "CONTINUE"]
+    },
+    {
+      "case_id": "NEG-PHASE-004",
+      "group": "PHASE_OBSERVABILITY",
+      "condition": "Observed HTTPCore event names drift from the pinned mapping.",
+      "expected_result": "STOP_FOR_TRANSPORT_REVIEW",
+      "required_first_failure": "UNKNOWN_FAIL_CLOSED",
+      "prohibited_effects": ["EVENT_ALIAS_INFERENCE", "AUTO_MAPPING", "CONTINUE"]
+    },
+    {
+      "case_id": "NEG-PROV-001",
+      "group": "PROVIDER_RESPONSE",
+      "condition": "Provider returns HTTP 401.",
+      "expected_result": "PRESERVE_STATUS_WITHOUT_RAW_BODY",
+      "required_first_failure": "HTTP_STATUS_FAILURE",
+      "prohibited_effects": ["RETRY", "FALLBACK", "RAW_ERROR_RETENTION"]
+    },
+    {
+      "case_id": "NEG-PROV-002",
+      "group": "PROVIDER_RESPONSE",
+      "condition": "Provider returns HTTP 429.",
+      "expected_result": "PRESERVE_STATUS_WITHOUT_RETRY",
+      "required_first_failure": "HTTP_STATUS_FAILURE",
+      "prohibited_effects": ["RETRY", "BACKOFF_REQUEST", "FALLBACK"]
+    },
+    {
+      "case_id": "NEG-PROV-003",
+      "group": "PROVIDER_RESPONSE",
+      "condition": "Provider returns HTTP 503.",
+      "expected_result": "PRESERVE_STATUS_WITHOUT_PROVIDER_SUBSTITUTION",
+      "required_first_failure": "HTTP_STATUS_FAILURE",
+      "prohibited_effects": ["RETRY", "MODEL_SUBSTITUTION", "FALLBACK"]
+    },
+    {
+      "case_id": "NEG-PROV-004",
+      "group": "PROVIDER_RESPONSE",
+      "condition": "Cumulative response body exceeds 1048576 bytes.",
+      "expected_result": "STOP_READING_AND_FAIL",
+      "required_first_failure": "RESPONSE_BODY_SIZE_EXCEEDED",
+      "prohibited_effects": ["FULL_BUFFERING", "JSON_PARSE", "RETRY"]
+    },
+    {
+      "case_id": "NEG-PROV-005",
+      "group": "PROVIDER_RESPONSE",
+      "condition": "Assistant content is empty or null.",
+      "expected_result": "FAIL_WITHOUT_JSON_REPAIR",
+      "required_first_failure": "PROVIDER_EMPTY_OR_NULL_CONTENT",
+      "prohibited_effects": ["JSON_REPAIR", "FALLBACK", "SCHEMA_PASS"]
+    },
+    {
+      "case_id": "NEG-PROV-006",
+      "group": "PROVIDER_RESPONSE",
+      "condition": "Finish reason is length, content_filter or insufficient_system_resource.",
+      "expected_result": "FAIL_WITH_EXACT_FIRST_REASON",
+      "required_first_failure": "UNKNOWN_FAIL_CLOSED",
+      "prohibited_effects": ["RETRY", "REPAIR", "SUCCESS"]
+    },
+    {
+      "case_id": "NEG-DATA-001",
+      "group": "SANITIZATION_RETENTION",
+      "condition": "Raw request or response body is selected for persistence.",
+      "expected_result": "REJECT_PERSISTENCE",
+      "required_first_failure": "SANITIZATION_FAILURE",
+      "prohibited_effects": ["RAW_BODY_RETENTION", "COMMIT", "EVIDENCE_TRUTH"]
+    },
+    {
+      "case_id": "NEG-DATA-002",
+      "group": "SANITIZATION_RETENTION",
+      "condition": "Prompt, review content or hidden reasoning is selected for a receipt.",
+      "expected_result": "REJECT_RECEIPT",
+      "required_first_failure": "SANITIZATION_FAILURE",
+      "prohibited_effects": ["SENSITIVE_RETENTION", "COMMIT", "CONTINUE"]
+    },
+    {
+      "case_id": "NEG-DATA-003",
+      "group": "SANITIZATION_RETENTION",
+      "condition": "A failed planning or review result is overwritten.",
+      "expected_result": "REJECT_OVERWRITE",
+      "required_first_failure": "UNKNOWN_FAIL_CLOSED",
+      "prohibited_effects": ["FAILURE_DELETION", "HISTORY_REWRITE", "SUCCESS"]
+    },
+    {
+      "case_id": "NEG-AUTH-001",
+      "group": "AUTHORITY_NON_ELEVATION",
+      "condition": "JSON Schema pass is presented as Provider conformance.",
+      "expected_result": "REJECT_SEMANTIC_ELEVATION",
+      "required_first_failure": "RESPONSE_SCHEMA_FAILURE",
+      "prohibited_effects": ["PROVIDER_CONFORMANCE", "PROVIDER_SUPPORT", "RELEASE"]
+    },
+    {
+      "case_id": "NEG-AUTH-002",
+      "group": "AUTHORITY_NON_ELEVATION",
+      "condition": "Prepared Agent Review input is presented as review or implementation authorization.",
+      "expected_result": "REJECT_AUTHORITY_ELEVATION",
+      "required_first_failure": "UNKNOWN_FAIL_CLOSED",
+      "prohibited_effects": ["AGENT_REVIEW_EXECUTED", "IMPLEMENTATION_AUTHORIZED", "TARGET_WRITE"]
+    }
+  ],
+  "execution": {
+    "executed": false,
+    "pass_count": 0,
+    "fail_count": 0,
+    "unknown_count": 24
+  }
+}

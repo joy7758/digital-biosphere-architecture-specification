@@ -1,0 +1,238 @@
+{
+  "$schema": "./deepseek-binding-scope-and-security-plan.schema.v0.1.json",
+  "document_id": "TITMAS-RB1-DEEPSEEK-BINDING-SCOPE-SECURITY-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "PREPARED_NOT_REVIEWED",
+  "observed_at": "2026-07-27",
+  "scope": {
+    "primary_repository": "digital-biosphere-architecture",
+    "target_repository": "https://github.com/joy7758/titmas-integrations.git",
+    "target_branch": "codex/rb0-governance-baseline",
+    "target_write_paths": 0,
+    "provider_requests": 0,
+    "credential_reads": 0
+  },
+  "frozen_inputs": {
+    "dba_decision_commit": "d7bf97d8c1fe6aef3c26c6b32a285f7e73e2f15d",
+    "target_commit": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6",
+    "target_main_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "pre49_result": "PASS",
+    "blocker": "B-025"
+  },
+  "provider_candidate": {
+    "candidate_id": "DEEPSEEK_OPENAI_COMPATIBLE_CHAT_COMPLETIONS",
+    "base_url": "https://api.deepseek.com",
+    "method": "POST",
+    "path": "/chat/completions",
+    "model": "deepseek-v4-pro",
+    "stream": false,
+    "thinking_type": "disabled",
+    "response_format": "json_object",
+    "credential_identifier": "DEEPSEEK_API_KEY",
+    "support_status": "UNKNOWN_NOT_ADOPTED"
+  },
+  "transport_candidate": {
+    "package": "httpcore",
+    "version": "1.0.9",
+    "mode": "SYNCHRONOUS_HTTP_1_1_DIRECT",
+    "http2": false,
+    "proxy": false,
+    "redirect": false,
+    "automatic_retry": false,
+    "tls_verification": true,
+    "sni_hostname": "api.deepseek.com",
+    "dependency_adopted": false
+  },
+  "phase_mapping": [
+    {
+      "phase": "P0",
+      "source_event": "NO_SEPARATE_HTTPCORE_DNS_EVENT",
+      "layer": "TRANSPORT",
+      "directly_observable": false,
+      "status": "BLOCKED_GAP"
+    },
+    {
+      "phase": "P1",
+      "source_event": "connection.connect_tcp",
+      "layer": "TRANSPORT",
+      "directly_observable": true,
+      "status": "CANDIDATE"
+    },
+    {
+      "phase": "P2",
+      "source_event": "connection.start_tls",
+      "layer": "TRANSPORT",
+      "directly_observable": true,
+      "status": "CANDIDATE"
+    },
+    {
+      "phase": "P3",
+      "source_event": "http11.send_request_headers",
+      "layer": "TRANSPORT",
+      "directly_observable": true,
+      "status": "CANDIDATE"
+    },
+    {
+      "phase": "P4",
+      "source_event": "http11.send_request_body",
+      "layer": "TRANSPORT",
+      "directly_observable": true,
+      "status": "CANDIDATE"
+    },
+    {
+      "phase": "P5",
+      "source_event": "http11.receive_response_headers",
+      "layer": "TRANSPORT",
+      "directly_observable": true,
+      "status": "CANDIDATE"
+    },
+    {
+      "phase": "P6",
+      "source_event": "http11.receive_response_body",
+      "layer": "TRANSPORT",
+      "directly_observable": true,
+      "status": "CANDIDATE"
+    },
+    {
+      "phase": "P7",
+      "source_event": "APPLICATION_DIRECT_JSON_PARSE",
+      "layer": "APPLICATION",
+      "directly_observable": true,
+      "status": "CANDIDATE"
+    },
+    {
+      "phase": "P8",
+      "source_event": "APPLICATION_RESPONSE_SCHEMA_VALIDATION",
+      "layer": "APPLICATION",
+      "directly_observable": true,
+      "status": "CANDIDATE"
+    },
+    {
+      "phase": "P9",
+      "source_event": "APPLICATION_GIT_HANDOFF_COMMIT",
+      "layer": "APPLICATION",
+      "directly_observable": true,
+      "status": "CANDIDATE"
+    }
+  ],
+  "network_boundary": {
+    "scheme": "https",
+    "host": "api.deepseek.com",
+    "port": 443,
+    "path": "/chat/completions",
+    "allowed_methods": ["POST"],
+    "redirect_allowed": false,
+    "proxy_allowed": false,
+    "alternate_host_allowed": false,
+    "ip_literal_allowed": false
+  },
+  "credential_and_data_boundary": {
+    "credential_identifier_only": "DEEPSEEK_API_KEY",
+    "credential_value_retention": false,
+    "authorization_header_retention": false,
+    "raw_request_body_retention": false,
+    "raw_response_body_retention": false,
+    "raw_provider_error_retention": false,
+    "prompt_retention": false,
+    "hidden_reasoning_retention": false,
+    "environment_dump_retention": false,
+    "allowed_retained_classes": [
+      "BOUNDED_BYTE_COUNT",
+      "APPROVED_ENUM",
+      "SHA256_DIGEST",
+      "SANITIZED_REFERENCE",
+      "SANITIZED_TIMESTAMP"
+    ]
+  },
+  "candidate_limits": {
+    "pool_timeout_seconds": 5,
+    "connect_timeout_seconds": 10,
+    "write_timeout_seconds": 30,
+    "read_timeout_seconds": 60,
+    "total_request_deadline_seconds": 90,
+    "max_serialized_request_bytes": 131072,
+    "max_response_body_bytes": 1048576,
+    "max_output_tokens": 4096,
+    "max_choices": 1,
+    "infinite_timeout_allowed": false
+  },
+  "failure_taxonomy": [
+    "DNS_RESOLUTION_OR_P0_OBSERVABILITY_GAP",
+    "TCP_CONNECT_FAILURE",
+    "TLS_HANDSHAKE_FAILURE",
+    "REQUEST_HEADERS_WRITE_FAILURE",
+    "REQUEST_BODY_WRITE_FAILURE",
+    "HTTP_STATUS_FAILURE",
+    "RESPONSE_HEADERS_INVALID",
+    "RESPONSE_BODY_TIMEOUT",
+    "RESPONSE_BODY_SIZE_EXCEEDED",
+    "RESPONSE_BODY_READ_FAILURE",
+    "PROVIDER_EMPTY_OR_NULL_CONTENT",
+    "PROVIDER_FINISH_REASON_LENGTH",
+    "PROVIDER_CONTENT_FILTERED",
+    "PROVIDER_INSUFFICIENT_SYSTEM_RESOURCE",
+    "DIRECT_JSON_PARSE_FAILURE",
+    "RESPONSE_SCHEMA_FAILURE",
+    "SANITIZATION_FAILURE",
+    "HANDOFF_COMMIT_FAILURE",
+    "UNKNOWN_FAIL_CLOSED"
+  ],
+  "prohibited_recovery": {
+    "retry": false,
+    "fallback": false,
+    "alias_inference": false,
+    "model_substitution": false,
+    "json_repair": false,
+    "fixture_repair": false
+  },
+  "retention": {
+    "first_failure_required": true,
+    "failure_overwrite_allowed": false,
+    "raw_body_retention_allowed": false,
+    "planning_history_retained": true
+  },
+  "rollback": {
+    "target_parent": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6",
+    "history_rewrite_allowed": false,
+    "force_push_allowed": false,
+    "followup_commit_only": true
+  },
+  "stop_conditions": [
+    "DBA_OR_TARGET_COMMIT_DRIFT",
+    "OFFICIAL_PROVIDER_FACT_CONFLICT",
+    "P0_SYNTHETIC_PASS",
+    "CREDENTIAL_OR_SENSITIVE_BODY_READ_OR_RETENTION",
+    "TARGET_WRITE_OR_NETWORK_OR_INSTALL_REQUIRED",
+    "SEMANTIC_ELEVATION_CLAIM",
+    "FILESET_OR_SCHEMA_VALIDATION_FAILURE",
+    "STANDING_DIRECTIVE_REVOKED_OR_CONTRADICTED"
+  ],
+  "next_agent_review": {
+    "status": "NOT_AUTHORIZED",
+    "sequence": [
+      "AGENT_DEVELOPER",
+      "AGENT_RECOMMENDER_MACHINE_CUSTOMER",
+      "INTEGRATION_MAINTAINER",
+      "SECURITY_REVIEWER"
+    ],
+    "implementation_decision_allowed": false
+  },
+  "effects": {
+    "target_changed": false,
+    "provider_binding_implemented": false,
+    "provider_request_executed": false,
+    "credential_read": false,
+    "dependency_installed": false,
+    "provider_supported": false,
+    "provider_conformance_executed": false,
+    "security_review_executed": false,
+    "agent_review_executed": false,
+    "runtime_created": false,
+    "agent_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "release_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false
+  }
+}

@@ -1,0 +1,85 @@
+{
+  "$schema": "./deepseek-binding-agent-review-input.schema.v0.1.json",
+  "document_id": "TITMAS-RB1-DEEPSEEK-BINDING-AGENT-REVIEW-INPUT-0.1",
+  "version": "0.1.0",
+  "status": "PREPARED_NOT_AUTHORIZED_NOT_EXECUTED",
+  "review_subject": {
+    "provider_candidate": "DEEPSEEK_OPENAI_COMPATIBLE_CHAT_COMPLETIONS",
+    "transport_candidate": "httpcore==1.0.9",
+    "p0_direct_observability": false,
+    "planning_reference": "deepseek-binding-scope-and-security-plan.v0.1.json",
+    "negative_case_reference": "deepseek-binding-negative-case-catalog.v0.1.json"
+  },
+  "session_contract": {
+    "sequential": true,
+    "session_count": 4,
+    "retry_allowed": false,
+    "fallback_allowed": false,
+    "model_substitution_allowed": false,
+    "alias_inference_allowed": false,
+    "json_repair_allowed": false,
+    "prior_session_output_disclosed": false
+  },
+  "sessions": [
+    {
+      "sequence": 1,
+      "role": "AGENT_DEVELOPER",
+      "question": "Would you recommend this bounded Provider binding plan to an agent developer, and what exact usability or integration gaps prevent recommendation?",
+      "required_output_fields": [
+        "recommendation",
+        "blocking_reasons",
+        "correctable_issues",
+        "residual_gaps",
+        "stop_conditions"
+      ],
+      "executed": false
+    },
+    {
+      "sequence": 2,
+      "role": "AGENT_RECOMMENDER_MACHINE_CUSTOMER",
+      "question": "Would you recommend TITMAS to a machine customer needing a trustworthy DeepSeek integration, given that P0 remains unobservable and no Provider request has run?",
+      "required_output_fields": [
+        "recommendation",
+        "discoverability_gaps",
+        "trust_claim_risks",
+        "reuse_requirements",
+        "stop_conditions"
+      ],
+      "executed": false
+    },
+    {
+      "sequence": 3,
+      "role": "INTEGRATION_MAINTAINER",
+      "question": "Is the exact Provider, transport, failure taxonomy and rollback scope maintainable without hidden fallback, semantic elevation or a second execution path?",
+      "required_output_fields": [
+        "recommendation",
+        "maintenance_risks",
+        "dependency_risks",
+        "rollback_gaps",
+        "stop_conditions"
+      ],
+      "executed": false
+    },
+    {
+      "sequence": 4,
+      "role": "SECURITY_REVIEWER",
+      "question": "Does the plan fail closed for credentials, endpoint restrictions, TLS, limits, sanitization, retention and supply-chain risks, and what must change before implementation review?",
+      "required_output_fields": [
+        "recommendation",
+        "security_findings",
+        "required_controls",
+        "residual_risks",
+        "stop_conditions"
+      ],
+      "executed": false
+    }
+  ],
+  "authority_boundary": {
+    "recommendation_is_decision": false,
+    "review_is_authorization": false,
+    "schema_pass_is_provider_conformance": false,
+    "implementation_authorized": false,
+    "provider_request_authorized": false
+  },
+  "next_action": "FORM_EXACT_RB1_DEEPSEEK_BINDING_AGENT_REVIEW_RECOMMENDATION_ONLY"
+}

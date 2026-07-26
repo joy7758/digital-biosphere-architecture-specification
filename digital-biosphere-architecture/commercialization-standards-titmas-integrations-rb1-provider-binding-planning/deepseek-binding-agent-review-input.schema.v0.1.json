@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/deepseek-binding-agent-review-input.schema.v0.1.json",
+  "title": "DeepSeek Binding Agent Review Input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "review_subject", "session_contract", "sessions", "authority_boundary", "next_action"],
+  "properties": {
+    "$schema": { "const": "./deepseek-binding-agent-review-input.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-RB1-DEEPSEEK-BINDING-AGENT-REVIEW-INPUT-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "PREPARED_NOT_AUTHORIZED_NOT_EXECUTED" },
+    "review_subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider_candidate", "transport_candidate", "p0_direct_observability", "planning_reference", "negative_case_reference"],
+      "properties": {
+        "provider_candidate": { "const": "DEEPSEEK_OPENAI_COMPATIBLE_CHAT_COMPLETIONS" },
+        "transport_candidate": { "const": "httpcore==1.0.9" },
+        "p0_direct_observability": { "const": false },
+        "planning_reference": { "const": "deepseek-binding-scope-and-security-plan.v0.1.json" },
+        "negative_case_reference": { "const": "deepseek-binding-negative-case-catalog.v0.1.json" }
+      }
+    },
+    "session_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["sequential", "session_count", "retry_allowed", "fallback_allowed", "model_substitution_allowed", "alias_inference_allowed", "json_repair_allowed", "prior_session_output_disclosed"],
+      "properties": {
+        "sequential": { "const": true },
+        "session_count": { "const": 4 },
+        "retry_allowed": { "const": false },
+        "fallback_allowed": { "const": false },
+        "model_substitution_allowed": { "const": false },
+        "alias_inference_allowed": { "const": false },
+        "json_repair_allowed": { "const": false },
+        "prior_session_output_disclosed": { "const": false }
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["sequence", "role", "question", "required_output_fields", "executed"],
+        "properties": {
+          "sequence": { "type": "integer", "minimum": 1, "maximum": 4 },
+          "role": {
+            "enum": [
+              "AGENT_DEVELOPER",
+              "AGENT_RECOMMENDER_MACHINE_CUSTOMER",
+              "INTEGRATION_MAINTAINER",
+              "SECURITY_REVIEWER"
+            ]
+          },
+          "question": { "type": "string", "minLength": 32 },
+          "required_output_fields": {
+            "type": "array",
+            "minItems": 5,
+            "maxItems": 5,
+            "uniqueItems": true,
+            "items": { "type": "string", "pattern": "^[a-z_]+$" }
+          },
+          "executed": { "const": false }
+        }
+      }
+    },
+    "authority_boundary": {
+      "type": "object",
+      "minProperties": 5,
+      "additionalProperties": { "const": false }
+    },
+    "next_action": {
+      "const": "FORM_EXACT_RB1_DEEPSEEK_BINDING_AGENT_REVIEW_RECOMMENDATION_ONLY"
+    }
+  }
+}

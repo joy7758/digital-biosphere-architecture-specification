@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre50-provider-binding-planning-validation-result.schema.v0.1.json",
+  "title": "PRE-50 Provider Binding Planning Validation Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "validated_at", "fileset", "schema_validation", "content_validation", "boundary_validation", "effects", "receipt_self_hash_policy"],
+  "properties": {
+    "$schema": { "const": "./pre50-provider-binding-planning-validation-result.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-CS-D02-PRE-50-PLANNING-VALIDATION-RESULT-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "PASS_PLANNING_PACKET_ONLY" },
+    "validated_at": { "type": "string", "format": "date-time" },
+    "fileset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["expected", "observed", "exact_match"],
+      "properties": {
+        "expected": { "const": 12 },
+        "observed": { "const": 12 },
+        "exact_match": { "const": true }
+      }
+    },
+    "schema_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_count", "instance_count", "valid_count", "invalid_count", "additional_properties_rejected"],
+      "properties": {
+        "schema_count": { "const": 5 },
+        "instance_count": { "const": 5 },
+        "valid_count": { "const": 5 },
+        "invalid_count": { "const": 0 },
+        "additional_properties_rejected": { "const": true }
+      }
+    },
+    "content_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["negative_cases", "review_sessions_prepared", "review_sessions_executed", "p0_direct_observability", "markdown_links_valid", "sensitive_value_hits"],
+      "properties": {
+        "negative_cases": { "const": 24 },
+        "review_sessions_prepared": { "const": 4 },
+        "review_sessions_executed": { "const": 0 },
+        "p0_direct_observability": { "const": false },
+        "markdown_links_valid": { "const": true },
+        "sensitive_value_hits": { "const": 0 }
+      }
+    },
+    "boundary_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target_commit_before", "target_commit_after", "target_changed", "provider_requests", "credential_reads", "dependency_installs"],
+      "properties": {
+        "target_commit_before": { "$ref": "#/$defs/gitSha" },
+        "target_commit_after": { "$ref": "#/$defs/gitSha" },
+        "target_changed": { "const": false },
+        "provider_requests": { "const": 0 },
+        "credential_reads": { "const": 0 },
+        "dependency_installs": { "const": 0 }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": { "const": false }
+    },
+    "receipt_self_hash_policy": {
+      "const": "RECEIPT_BINDS_OTHER_11_FILES_SELF_SHA_REPORTED_OUT_OF_BAND"
+    }
+  },
+  "$defs": {
+    "gitSha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    }
+  }
+}

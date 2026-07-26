@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre50-provider-binding-planning-execution-receipt.schema.v0.1.json",
+  "title": "PRE-50 Provider Binding Planning Execution Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "executed_at", "decision_reference", "recommendation_reference", "artifact_count_bound", "artifacts", "self_hash_policy", "boundary_result", "next_action"],
+  "properties": {
+    "$schema": { "const": "./pre50-provider-binding-planning-execution-receipt.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-CS-D02-PRE-50-PLANNING-EXECUTION-RECEIPT-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "PASS_PLANNING_PACKET_ONLY" },
+    "executed_at": { "type": "string", "format": "date-time" },
+    "decision_reference": { "const": "../TITMAS-CS-D02-PRE-50-RB1-DEEPSEEK-BINDING-SCOPE-AND-SECURITY-PLANNING-DECISION-RECORD.v0.1.json" },
+    "recommendation_reference": { "const": "../TITMAS-CS-D02-PRE-50-RB1-DEEPSEEK-BINDING-SCOPE-AND-SECURITY-PLANNING-RECOMMENDATION-v0.1.md" },
+    "artifact_count_bound": { "const": 11 },
+    "artifacts": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1 },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "self_hash_policy": {
+      "const": "SELF_SHA256_NOT_EMBEDDED_REPORTED_BY_POST_WRITE_VALIDATION"
+    },
+    "boundary_result": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": { "const": false }
+    },
+    "next_action": {
+      "const": "FORM_EXACT_RB1_DEEPSEEK_BINDING_AGENT_REVIEW_RECOMMENDATION_ONLY"
+    }
+  }
+}
