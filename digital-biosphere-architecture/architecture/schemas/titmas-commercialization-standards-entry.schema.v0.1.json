@@ -2647,9 +2647,32 @@
         "http_phase_instrumentation_adoption_schema_sha256",
         "http_phase_instrumentation_adoption_maturity",
         "http_phase_instrumentation_adoption_decision_recorded",
+        "http_phase_instrumentation_adoption_decision_reference",
+        "http_phase_instrumentation_adoption_decision_sha256",
+        "http_phase_instrumentation_adoption_decision_commit",
+        "http_phase_instrumentation_adoption_record_reference",
+        "http_phase_instrumentation_adoption_record_sha256",
+        "http_phase_instrumentation_adoption_machine_record_reference",
+        "http_phase_instrumentation_adoption_machine_record_sha256",
+        "http_phase_instrumentation_adoption_result_commit",
         "http_phase_instrumentation_adopted",
         "http_phase_instrumentation_runtime_active",
         "http_phase_instrumentation_model_retry_authorized",
+        "provider_request_instrumentation_handoff_decision_candidate_id",
+        "provider_request_instrumentation_handoff_recommendation_reference",
+        "provider_request_instrumentation_handoff_recommendation_sha256",
+        "provider_request_instrumentation_handoff_recommendation_commit",
+        "provider_request_instrumentation_handoff_exact_action",
+        "provider_request_instrumentation_handoff_implementation_files_max",
+        "provider_request_instrumentation_handoff_new_repositories_max",
+        "provider_request_instrumentation_handoff_external_repository_modifications_max",
+        "provider_request_instrumentation_handoff_network_requests_max",
+        "provider_request_instrumentation_handoff_live_model_requests_max",
+        "provider_request_instrumentation_handoff_credential_reads_max",
+        "provider_request_instrumentation_handoff_decision_recorded",
+        "provider_request_instrumentation_handoff_owner_target_resolved",
+        "provider_request_instrumentation_handoff_implementation_authorized",
+        "provider_request_instrumentation_handoff_implementation_created",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -2668,7 +2691,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE30_OFFLINE_PASS_PRE31_DEVELOPMENT_ADOPTION_RECOMMENDATION_PREPARED_DECISION_READY"
+          "const": "PRE31_DEVELOPMENT_ADOPTED_PRE32_IMPLEMENTATION_HANDOFF_READINESS_RECOMMENDATION_PREPARED_DECISION_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -4477,7 +4500,7 @@
           "const": true
         },
         "http_phase_instrumentation_contract_candidate_adopted": {
-          "const": false
+          "const": true
         },
         "http_phase_instrumentation_implementation_created": {
           "const": false
@@ -4513,15 +4536,84 @@
           "const": "Development"
         },
         "http_phase_instrumentation_adoption_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "http_phase_instrumentation_adoption_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-31-HTTP-PHASE-INSTRUMENTATION-CONTRACT-ADOPTION-DECISION-RECORD.v0.1.json"
+        },
+        "http_phase_instrumentation_adoption_decision_sha256": {
+          "const": "6b2c8040adc7ede27d7c80319ae68dfa300712d9c00611d9b2065e54bc5fdb9b"
+        },
+        "http_phase_instrumentation_adoption_decision_commit": {
+          "const": "555fa564287a69fa740c3f0f957d9ed428f124c3"
+        },
+        "http_phase_instrumentation_adoption_record_reference": {
+          "const": "architecture/http-phase-instrumentation-contract-adoption-v0.1.md"
+        },
+        "http_phase_instrumentation_adoption_record_sha256": {
+          "const": "b6e83a168d94e3b2a1119ca671afddc3abe6faa509eb34be9e43cb28c3c37237"
+        },
+        "http_phase_instrumentation_adoption_machine_record_reference": {
+          "const": "architecture/http-phase-instrumentation-contract-adoption.v0.1.json"
+        },
+        "http_phase_instrumentation_adoption_machine_record_sha256": {
+          "const": "c565c9da0b48c3eddc6e780805c1b33f79297e3d132926a3f248cf5286297e08"
+        },
+        "http_phase_instrumentation_adoption_result_commit": {
+          "const": "555fa564287a69fa740c3f0f957d9ed428f124c3"
         },
         "http_phase_instrumentation_adopted": {
-          "const": false
+          "const": true
         },
         "http_phase_instrumentation_runtime_active": {
           "const": false
         },
         "http_phase_instrumentation_model_retry_authorized": {
+          "const": false
+        },
+        "provider_request_instrumentation_handoff_decision_candidate_id": {
+          "const": "CS-D02-PRE-32"
+        },
+        "provider_request_instrumentation_handoff_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-RECOMMENDATION-v0.1.md"
+        },
+        "provider_request_instrumentation_handoff_recommendation_sha256": {
+          "const": "86f75537c82c683cad8182d88d9915b0005e04e39eca22c1cfc15487d2529a34"
+        },
+        "provider_request_instrumentation_handoff_recommendation_commit": {
+          "const": "9e77de4cfc28c901139842644815c58f43551e8f"
+        },
+        "provider_request_instrumentation_handoff_exact_action": {
+          "const": "AUTHORIZE_OFFLINE_PROVIDER_REQUEST_INSTRUMENTATION_OWNER_TARGET_AND_HANDOFF_DECISION_PACKET_ONLY"
+        },
+        "provider_request_instrumentation_handoff_implementation_files_max": {
+          "const": 0
+        },
+        "provider_request_instrumentation_handoff_new_repositories_max": {
+          "const": 0
+        },
+        "provider_request_instrumentation_handoff_external_repository_modifications_max": {
+          "const": 0
+        },
+        "provider_request_instrumentation_handoff_network_requests_max": {
+          "const": 0
+        },
+        "provider_request_instrumentation_handoff_live_model_requests_max": {
+          "const": 0
+        },
+        "provider_request_instrumentation_handoff_credential_reads_max": {
+          "const": 0
+        },
+        "provider_request_instrumentation_handoff_decision_recorded": {
+          "const": false
+        },
+        "provider_request_instrumentation_handoff_owner_target_resolved": {
+          "const": false
+        },
+        "provider_request_instrumentation_handoff_implementation_authorized": {
+          "const": false
+        },
+        "provider_request_instrumentation_handoff_implementation_created": {
           "const": false
         },
         "composite_gate_reuses_frozen_pre14_deepseek": {
@@ -4540,7 +4632,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE31_DEVELOPMENT_CONTRACT_ADOPTION_DECISION_ONLY"
+          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE32_OFFLINE_OWNER_TARGET_HANDOFF_READINESS_DECISION_ONLY"
         },
         "decision_ready": {
           "const": true

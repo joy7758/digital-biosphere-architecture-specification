@@ -391,10 +391,14 @@ PRE-28 timeout 阶段或授权重试。
 network、HTTP、provider API、model 与 credential 均为 0。candidate 只达到
 Development adoption review ready，尚未采纳或实现。
 
-[PRE-31 Development adoption recommendation](TITMAS-CS-D02-PRE-31-HTTP-PHASE-INSTRUMENTATION-CONTRACT-ADOPTION-RECOMMENDATION-v0.1.md)
-已远端准备。它只建议把 PRE-30 精确 contract/Schema 采纳为后续 instrumentation proposal
-的 Development 规范输入；不创建 runtime、不重试模型，也不产生 provider support 或
-conformance 声明。
+[PRE-31 Development adoption](architecture/http-phase-instrumentation-contract-adoption-v0.1.md)
+已将 PRE-30 精确 contract/Schema 采纳为后续 instrumentation proposal 的 Development
+规范输入。采纳没有 runtime effect，不重试模型，也不产生 provider support 或 conformance
+声明。
+
+[PRE-32 implementation handoff readiness recommendation](TITMAS-CS-D02-PRE-32-PROVIDER-REQUEST-INSTRUMENTATION-HANDOFF-READINESS-RECOMMENDATION-v0.1.md)
+已远端准备。它只建议离线核验 implementation Owner、现有目标仓库、重复建设和 handoff
+contract；代码、API、新仓库和外部仓库修改上限均为 0。
 
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false
