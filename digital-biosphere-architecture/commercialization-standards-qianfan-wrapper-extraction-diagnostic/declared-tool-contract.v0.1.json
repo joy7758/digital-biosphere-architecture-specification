@@ -1,0 +1,52 @@
+{
+  "$schema": "./declared-tool-contract.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-15-DECLARED-QIANFAN-TOOL-CONTRACT-0.1",
+  "version": "0.1.0",
+  "status": "CURRENT_TOOL_METADATA_CAPTURED_NOT_PROVIDER_EVIDENCE",
+  "observed_at": "2026-07-26T19:05:06+08:00",
+  "decision_reference": "CS-D02-PRE-15",
+  "tool": {
+    "tool_name": "mcp__kimi_qianfan__kimi_chat",
+    "input_contract": {
+      "required_fields": ["query"],
+      "query_type": "string"
+    },
+    "declared_result_contract": {
+      "result_wrapper": "CallToolResult",
+      "structured_fields": [
+        "answer",
+        "model",
+        "provider",
+        "untrusted_external_content",
+        "usage"
+      ],
+      "answer_type": "string",
+      "model_const": "kimi-k2.6",
+      "provider_const": "baidu-qianfan",
+      "untrusted_external_content_const": true,
+      "usage_type": "object"
+    }
+  },
+  "pre14_caller_extraction_assumptions": {
+    "checked_paths": [
+      "structuredContent.answer",
+      "content[0].text parsed as JSON wrapper then answer"
+    ],
+    "not_checked_paths": [
+      "answer",
+      "content[0].text used directly as answer"
+    ],
+    "coverage_complete_against_declared_contract": false
+  },
+  "limitations": [
+    "Tool metadata declares semantic result fields but does not prove the exact runtime envelope exposed in PRE-14.",
+    "PRE-14 raw tool envelope was not persisted and cannot be recovered by this diagnostic.",
+    "This record does not prove that the provider produced a model answer."
+  ],
+  "effects": {
+    "provider_request_executed": false,
+    "provider_success_proven": false,
+    "pre14_exact_failure_cause_proven": false,
+    "synthetic_only": false
+  }
+}

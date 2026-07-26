@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre15-offline-qianfan-wrapper-diagnostic-result.schema.v0.1.json",
+  "title": "TITMAS PRE-15 Offline Qianfan Wrapper Diagnostic Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "authorization_baseline_commit",
+    "authorization_receipt_commit",
+    "artifact_digests",
+    "contract_findings",
+    "synthetic_case_results",
+    "diagnosis",
+    "execution_accounting",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./offline-diagnostic-result.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-15-OFFLINE-QIANFAN-WRAPPER-DIAGNOSTIC-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "OFFLINE_DIAGNOSTIC_PASS_EXTRACTION_COVERAGE_GAP_CONFIRMED_EXACT_PRE14_CAUSE_UNKNOWN"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-15"},
+    "authorization_baseline_commit": {"const": "7d8c8f48368207ed6209f6f661945b543be10ae6"},
+    "authorization_receipt_commit": {"const": "42e0b885fe2aa428b7fd5bb7f2ded2f4da8354e8"},
+    "artifact_digests": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["declared_tool_contract_sha256","synthetic_wrapper_fixtures_sha256"],
+      "properties": {
+        "declared_tool_contract_sha256": {"const": "bc7a78ee54a633d46c586994fbfded293d1b05abbfc3d4773917d222ccb80ce9"},
+        "synthetic_wrapper_fixtures_sha256": {"const": "231e0592c99068ee9c500c29b6766bc800f049c5abe08f2062022d18fa3c0a05"}
+      }
+    },
+    "contract_findings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "declared_tool_contract_contains_answer_string",
+        "pre14_caller_checked_paths_count",
+        "declared_or_supported_extraction_paths_count",
+        "pre14_caller_extraction_coverage_complete",
+        "missing_direct_answer_path",
+        "missing_plain_content_text_path",
+        "ordered_future_extraction_contract_defined",
+        "ambiguity_fails_closed"
+      ],
+      "properties": {
+        "declared_tool_contract_contains_answer_string": {"const": true},
+        "pre14_caller_checked_paths_count": {"const": 2},
+        "declared_or_supported_extraction_paths_count": {"const": 4},
+        "pre14_caller_extraction_coverage_complete": {"const": false},
+        "missing_direct_answer_path": {"const": true},
+        "missing_plain_content_text_path": {"const": true},
+        "ordered_future_extraction_contract_defined": {"const": true},
+        "ambiguity_fails_closed": {"const": true}
+      }
+    },
+    "synthetic_case_results": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fixture_id",
+          "observed_extraction_path",
+          "observed_classification",
+          "expected_classification",
+          "matched_expectation"
+        ],
+        "properties": {
+          "fixture_id": {"type": "string"},
+          "observed_extraction_path": {"type": ["string","null"]},
+          "observed_classification": {"enum": ["EXTRACTED_SCHEMA_CONFORMANT","EXTRACTED_JSON_PARSE_FAILURE","EXTRACTED_SCHEMA_MISMATCH","ANSWER_NOT_EXTRACTABLE"]},
+          "expected_classification": {"enum": ["EXTRACTED_SCHEMA_CONFORMANT","EXTRACTED_JSON_PARSE_FAILURE","EXTRACTED_SCHEMA_MISMATCH","ANSWER_NOT_EXTRACTABLE"]},
+          "matched_expectation": {"const": true}
+        }
+      }
+    },
+    "diagnosis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "synthetic_cases_total",
+        "synthetic_cases_matched",
+        "offline_diagnostic_pass",
+        "pre14_exact_qianfan_failure_cause",
+        "pre14_failure_class_may_include_caller_extraction_gap",
+        "pre14_provider_answer_proven",
+        "pre14_provider_no_answer_proven",
+        "future_extraction_contract_candidate_ready",
+        "next_permitted_action"
+      ],
+      "properties": {
+        "synthetic_cases_total": {"const": 8},
+        "synthetic_cases_matched": {"const": 8},
+        "offline_diagnostic_pass": {"const": true},
+        "pre14_exact_qianfan_failure_cause": {"const": "UNKNOWN_RAW_ENVELOPE_NOT_PERSISTED"},
+        "pre14_failure_class_may_include_caller_extraction_gap": {"const": true},
+        "pre14_provider_answer_proven": {"const": false},
+        "pre14_provider_no_answer_proven": {"const": false},
+        "future_extraction_contract_candidate_ready": {"const": true},
+        "next_permitted_action": {"const": "PREPARE_SEPARATE_ONE_REQUEST_QIANFAN_CONFIRMATION_RECOMMENDATION_ONLY"}
+      }
+    },
+    "execution_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_validation_runs_completed",
+        "live_model_requests_executed",
+        "provider_network_requests_executed",
+        "new_source_searches",
+        "new_source_collections",
+        "retry_attempts",
+        "fallback_attempts",
+        "json_repair_attempts",
+        "secret_accessed_or_persisted",
+        "pre14_raw_provider_body_accessed"
+      ],
+      "properties": {
+        "offline_validation_runs_completed": {"const": 1},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "new_source_searches": {"const": 0},
+        "new_source_collections": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "json_repair_attempts": {"const": 0},
+        "secret_accessed_or_persisted": {"const": false},
+        "pre14_raw_provider_body_accessed": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "synthetic_fixture_counts_as_provider_evidence",
+        "qianfan_provider_schema_confirmation_pass",
+        "provider_schema_confirmation_pass",
+        "candidate_review_completed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "synthetic_fixture_counts_as_provider_evidence": {"const": false},
+        "qianfan_provider_schema_confirmation_pass": {"const": false},
+        "provider_schema_confirmation_pass": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "$schema": "./execution-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-15-OFFLINE-DIAGNOSTIC-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_EXECUTION_COMPLETE_DIAGNOSTIC_PASS_PROVIDER_EFFECT_NONE",
+  "observed_at": "2026-07-26T19:05:06+08:00",
+  "decision_reference": "CS-D02-PRE-15",
+  "branch": "codex/production-observability-baseline",
+  "authorization": {
+    "recommendation_commit": "5b564402b69448bf91c20d8f4c5ce17b5c48ac5b",
+    "authorization_baseline_commit": "7d8c8f48368207ed6209f6f661945b543be10ae6",
+    "authorization_receipt_commit": "42e0b885fe2aa428b7fd5bb7f2ded2f4da8354e8",
+    "authorization_baseline_remote_verified_before_execution": true
+  },
+  "artifact_bindings": {
+    "declared_tool_contract_reference": "declared-tool-contract.v0.1.json",
+    "declared_tool_contract_sha256": "bc7a78ee54a633d46c586994fbfded293d1b05abbfc3d4773917d222ccb80ce9",
+    "synthetic_wrapper_fixtures_reference": "synthetic-wrapper-fixtures.v0.1.json",
+    "synthetic_wrapper_fixtures_sha256": "231e0592c99068ee9c500c29b6766bc800f049c5abe08f2062022d18fa3c0a05",
+    "offline_diagnostic_result_reference": "offline-diagnostic-result.v0.1.json",
+    "offline_diagnostic_result_sha256": "9d442d8b3ec6b6cd2bfbdba0c55ab3bd0336f9fe6799bdda480b007fca97a830"
+  },
+  "execution_accounting": {
+    "offline_validation_runs_completed": 1,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "new_source_searches": 0,
+    "new_source_collections": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "json_repair_attempts": 0,
+    "synthetic_cases_executed": 8,
+    "synthetic_cases_matched": 8
+  },
+  "data_controls": {
+    "secret_accessed_or_persisted": false,
+    "pre14_raw_provider_body_accessed": false,
+    "raw_provider_body_persisted": false,
+    "token_usage_persisted": false,
+    "hidden_reasoning_persisted": false
+  },
+  "result": {
+    "execution_completed": true,
+    "offline_diagnostic_pass": true,
+    "caller_extraction_coverage_gap_confirmed": true,
+    "pre14_exact_qianfan_failure_cause": "UNKNOWN_RAW_ENVELOPE_NOT_PERSISTED",
+    "provider_success_proven": false,
+    "next_permitted_action": "PREPARE_SEPARATE_ONE_REQUEST_QIANFAN_CONFIRMATION_RECOMMENDATION_ONLY"
+  },
+  "effects": {
+    "qianfan_provider_schema_confirmation_pass": false,
+    "provider_schema_confirmation_pass": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre15-offline-diagnostic-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS PRE-15 Offline Diagnostic Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "branch",
+    "authorization",
+    "artifact_bindings",
+    "execution_accounting",
+    "data_controls",
+    "result",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-15-OFFLINE-DIAGNOSTIC-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "OFFLINE_EXECUTION_COMPLETE_DIAGNOSTIC_PASS_PROVIDER_EFFECT_NONE"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-15"},
+    "branch": {"const": "codex/production-observability-baseline"},
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_commit",
+        "authorization_baseline_commit",
+        "authorization_receipt_commit",
+        "authorization_baseline_remote_verified_before_execution"
+      ],
+      "properties": {
+        "recommendation_commit": {"const": "5b564402b69448bf91c20d8f4c5ce17b5c48ac5b"},
+        "authorization_baseline_commit": {"const": "7d8c8f48368207ed6209f6f661945b543be10ae6"},
+        "authorization_receipt_commit": {"const": "42e0b885fe2aa428b7fd5bb7f2ded2f4da8354e8"},
+        "authorization_baseline_remote_verified_before_execution": {"const": true}
+      }
+    },
+    "artifact_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "declared_tool_contract_reference",
+        "declared_tool_contract_sha256",
+        "synthetic_wrapper_fixtures_reference",
+        "synthetic_wrapper_fixtures_sha256",
+        "offline_diagnostic_result_reference",
+        "offline_diagnostic_result_sha256"
+      ],
+      "properties": {
+        "declared_tool_contract_reference": {"const": "declared-tool-contract.v0.1.json"},
+        "declared_tool_contract_sha256": {"const": "bc7a78ee54a633d46c586994fbfded293d1b05abbfc3d4773917d222ccb80ce9"},
+        "synthetic_wrapper_fixtures_reference": {"const": "synthetic-wrapper-fixtures.v0.1.json"},
+        "synthetic_wrapper_fixtures_sha256": {"const": "231e0592c99068ee9c500c29b6766bc800f049c5abe08f2062022d18fa3c0a05"},
+        "offline_diagnostic_result_reference": {"const": "offline-diagnostic-result.v0.1.json"},
+        "offline_diagnostic_result_sha256": {"const": "9d442d8b3ec6b6cd2bfbdba0c55ab3bd0336f9fe6799bdda480b007fca97a830"}
+      }
+    },
+    "execution_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_validation_runs_completed",
+        "live_model_requests_executed",
+        "provider_network_requests_executed",
+        "new_source_searches",
+        "new_source_collections",
+        "retry_attempts",
+        "fallback_attempts",
+        "json_repair_attempts",
+        "synthetic_cases_executed",
+        "synthetic_cases_matched"
+      ],
+      "properties": {
+        "offline_validation_runs_completed": {"const": 1},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "new_source_searches": {"const": 0},
+        "new_source_collections": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "json_repair_attempts": {"const": 0},
+        "synthetic_cases_executed": {"const": 8},
+        "synthetic_cases_matched": {"const": 8}
+      }
+    },
+    "data_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "secret_accessed_or_persisted",
+        "pre14_raw_provider_body_accessed",
+        "raw_provider_body_persisted",
+        "token_usage_persisted",
+        "hidden_reasoning_persisted"
+      ],
+      "properties": {
+        "secret_accessed_or_persisted": {"const": false},
+        "pre14_raw_provider_body_accessed": {"const": false},
+        "raw_provider_body_persisted": {"const": false},
+        "token_usage_persisted": {"const": false},
+        "hidden_reasoning_persisted": {"const": false}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_completed",
+        "offline_diagnostic_pass",
+        "caller_extraction_coverage_gap_confirmed",
+        "pre14_exact_qianfan_failure_cause",
+        "provider_success_proven",
+        "next_permitted_action"
+      ],
+      "properties": {
+        "execution_completed": {"const": true},
+        "offline_diagnostic_pass": {"const": true},
+        "caller_extraction_coverage_gap_confirmed": {"const": true},
+        "pre14_exact_qianfan_failure_cause": {"const": "UNKNOWN_RAW_ENVELOPE_NOT_PERSISTED"},
+        "provider_success_proven": {"const": false},
+        "next_permitted_action": {"const": "PREPARE_SEPARATE_ONE_REQUEST_QIANFAN_CONFIRMATION_RECOMMENDATION_ONLY"}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qianfan_provider_schema_confirmation_pass",
+        "provider_schema_confirmation_pass",
+        "candidate_review_completed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "qianfan_provider_schema_confirmation_pass": {"const": false},
+        "provider_schema_confirmation_pass": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre15-synthetic-wrapper-fixtures.schema.v0.1.json",
+  "title": "TITMAS PRE-15 Synthetic Wrapper Fixtures v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "answer_fixture",
+    "cases",
+    "ordered_extraction_contract",
+    "ambiguity_rule",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./synthetic-wrapper-fixtures.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-15-SYNTHETIC-WRAPPER-FIXTURES-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "OFFLINE_SYNTHETIC_FIXTURES_NOT_PROVIDER_EVIDENCE"},
+    "observed_on": {"const": "2026-07-26"},
+    "decision_reference": {"const": "CS-D02-PRE-15"},
+    "answer_fixture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference","source_file_sha256","payload_kind"],
+      "properties": {
+        "reference": {"const": "../commercialization-standards-public-source-record-review-contract-remediation/response-contract-validator-fixtures.v0.1.json#/base_payload"},
+        "source_file_sha256": {"const": "82599c17e57a70ddc0601f13bfcfd02844b27cd68535edfc3977a83210895cf9"},
+        "payload_kind": {"const": "SYNTHETIC_SCHEMA_CONFORMANT_JSON_STRING"}
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fixture_id",
+          "envelope_kind",
+          "answer_payload_kind",
+          "expected_extraction_path",
+          "expected_classification"
+        ],
+        "properties": {
+          "fixture_id": {
+            "enum": [
+              "STRUCTURED_CONTENT_ANSWER",
+              "DIRECT_ANSWER",
+              "CONTENT_TEXT_JSON_WRAPPED_ANSWER",
+              "CONTENT_TEXT_PLAIN_ANSWER",
+              "MISSING_ANSWER",
+              "ANSWER_NOT_STRING",
+              "ANSWER_DIRECT_JSON_PARSE_FAILURE",
+              "ANSWER_SCHEMA_MISMATCH"
+            ]
+          },
+          "envelope_kind": {
+            "enum": [
+              "STRUCTURED_CONTENT",
+              "DIRECT_RESULT_OBJECT",
+              "CONTENT_TEXT_JSON_WRAPPER",
+              "CONTENT_TEXT_PLAIN"
+            ]
+          },
+          "answer_payload_kind": {
+            "enum": [
+              "SCHEMA_CONFORMANT_JSON_STRING",
+              "MISSING",
+              "NON_STRING_OBJECT",
+              "INVALID_JSON_STRING",
+              "SCHEMA_MISMATCH_JSON_STRING"
+            ]
+          },
+          "expected_extraction_path": {"type": ["string","null"]},
+          "expected_classification": {
+            "enum": [
+              "EXTRACTED_SCHEMA_CONFORMANT",
+              "EXTRACTED_JSON_PARSE_FAILURE",
+              "EXTRACTED_SCHEMA_MISMATCH",
+              "ANSWER_NOT_EXTRACTABLE"
+            ]
+          }
+        }
+      }
+    },
+    "ordered_extraction_contract": {
+      "const": [
+        "structuredContent.answer",
+        "answer",
+        "content[0].text parsed as JSON wrapper then answer",
+        "content[0].text used directly as answer only for this declared tool"
+      ]
+    },
+    "ambiguity_rule": {"const": "FAIL_CLOSED_IF_MULTIPLE_NON_IDENTICAL_ANSWER_VALUES"},
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["synthetic_only","provider_evidence","pre14_response_recovered","live_model_requests_executed"],
+      "properties": {
+        "synthetic_only": {"const": true},
+        "provider_evidence": {"const": false},
+        "pre14_response_recovered": {"const": false},
+        "live_model_requests_executed": {"const": 0}
+      }
+    }
+  }
+}

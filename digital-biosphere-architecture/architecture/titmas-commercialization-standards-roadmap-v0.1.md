@@ -1093,6 +1093,22 @@ AT_RECOMMENDATION_TIME_PRE_15_DECIDED=false
 synthetic fixtures，区分 provider failure 与 caller extraction failure。它不能恢复
 PRE-14 response，也不能把 synthetic PASS 写成 Qianfan provider success。
 
+PRE-15 已形成独立 Decision、冻结计划、远端授权回执并完成离线诊断：
+
+```text
+LIVE_MODEL_REQUESTS_EXECUTED=0
+PROVIDER_NETWORK_REQUESTS_EXECUTED=0
+SYNTHETIC_CASES_MATCHED=8/8
+CALLER_EXTRACTION_COVERAGE_GAP_CONFIRMED=true
+PRE14_EXACT_QIANFAN_FAILURE_CAUSE=UNKNOWN_RAW_ENVELOPE_NOT_PERSISTED
+QIANFAN_PROVIDER_SCHEMA_CONFIRMATION_PASS=false
+```
+
+[Result report](../commercialization-standards-qianfan-wrapper-extraction-diagnostic/PRE-15-OFFLINE-QIANFAN-WRAPPER-DIAGNOSTIC-RESULT-v0.1.md)
+确认 PRE-14 caller 未覆盖 direct `answer` 和 tool-specific plain content text 路径，但没有
+raw envelope，不能证明 provider 实际返回。下一步只能另行准备一次 Qianfan confirmation
+请求建议；当前仍不授权请求。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name

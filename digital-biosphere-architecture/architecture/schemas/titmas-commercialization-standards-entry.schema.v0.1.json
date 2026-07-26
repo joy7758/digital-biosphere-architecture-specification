@@ -1538,8 +1538,28 @@
         "qianfan_wrapper_diagnostic_recommendation_prepared",
         "qianfan_wrapper_diagnostic_offline_only",
         "qianfan_wrapper_diagnostic_live_model_requests_recommended_max",
+        "qianfan_wrapper_diagnostic_decision_reference",
         "qianfan_wrapper_diagnostic_decision_recorded",
+        "qianfan_wrapper_diagnostic_plan_reference",
+        "qianfan_wrapper_diagnostic_authorization_receipt_reference",
+        "qianfan_wrapper_diagnostic_authorization_baseline_commit",
+        "qianfan_wrapper_diagnostic_authorization_receipt_commit",
+        "qianfan_wrapper_diagnostic_authorization_baseline_remote_verified",
         "qianfan_wrapper_diagnostic_execution_authorized",
+        "qianfan_wrapper_diagnostic_execution_started",
+        "qianfan_wrapper_diagnostic_execution_completed",
+        "qianfan_wrapper_diagnostic_live_model_requests_executed",
+        "qianfan_wrapper_diagnostic_provider_requests_executed",
+        "qianfan_wrapper_diagnostic_synthetic_cases_matched",
+        "qianfan_wrapper_diagnostic_pass",
+        "qianfan_wrapper_extraction_coverage_gap_confirmed",
+        "pre14_qianfan_exact_failure_cause_proven",
+        "future_qianfan_extraction_contract_candidate_ready",
+        "qianfan_wrapper_diagnostic_declared_contract_reference",
+        "qianfan_wrapper_diagnostic_fixtures_reference",
+        "qianfan_wrapper_diagnostic_result_reference",
+        "qianfan_wrapper_diagnostic_execution_receipt_reference",
+        "qianfan_wrapper_diagnostic_report_reference",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
         "rerun_json_repair_allowed",
@@ -1557,7 +1577,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE15_OFFLINE_QIANFAN_WRAPPER_DIAGNOSTIC_RECOMMENDATION_PREPARED_NOT_DECIDED"
+          "const": "PRE15_EXECUTED_OFFLINE_DIAGNOSTIC_PASS_ONE_REQUEST_QIANFAN_RECOMMENDATION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -2009,11 +2029,71 @@
         "qianfan_wrapper_diagnostic_live_model_requests_recommended_max": {
           "const": 0
         },
+        "qianfan_wrapper_diagnostic_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-15-QIANFAN-WRAPPER-EXTRACTION-DIAGNOSTIC-DECISION-RECORD.v0.1.json"
+        },
         "qianfan_wrapper_diagnostic_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "qianfan_wrapper_diagnostic_plan_reference": {
+          "const": "commercialization-standards-qianfan-wrapper-extraction-diagnostic/offline-diagnostic-plan.v0.1.json"
+        },
+        "qianfan_wrapper_diagnostic_authorization_receipt_reference": {
+          "const": "commercialization-standards-qianfan-wrapper-extraction-diagnostic/authorization-baseline-receipt.v0.1.json"
+        },
+        "qianfan_wrapper_diagnostic_authorization_baseline_commit": {
+          "const": "7d8c8f48368207ed6209f6f661945b543be10ae6"
+        },
+        "qianfan_wrapper_diagnostic_authorization_receipt_commit": {
+          "const": "42e0b885fe2aa428b7fd5bb7f2ded2f4da8354e8"
+        },
+        "qianfan_wrapper_diagnostic_authorization_baseline_remote_verified": {
+          "const": true
         },
         "qianfan_wrapper_diagnostic_execution_authorized": {
+          "const": true
+        },
+        "qianfan_wrapper_diagnostic_execution_started": {
+          "const": true
+        },
+        "qianfan_wrapper_diagnostic_execution_completed": {
+          "const": true
+        },
+        "qianfan_wrapper_diagnostic_live_model_requests_executed": {
+          "const": 0
+        },
+        "qianfan_wrapper_diagnostic_provider_requests_executed": {
+          "const": 0
+        },
+        "qianfan_wrapper_diagnostic_synthetic_cases_matched": {
+          "const": 8
+        },
+        "qianfan_wrapper_diagnostic_pass": {
+          "const": true
+        },
+        "qianfan_wrapper_extraction_coverage_gap_confirmed": {
+          "const": true
+        },
+        "pre14_qianfan_exact_failure_cause_proven": {
           "const": false
+        },
+        "future_qianfan_extraction_contract_candidate_ready": {
+          "const": true
+        },
+        "qianfan_wrapper_diagnostic_declared_contract_reference": {
+          "const": "commercialization-standards-qianfan-wrapper-extraction-diagnostic/declared-tool-contract.v0.1.json"
+        },
+        "qianfan_wrapper_diagnostic_fixtures_reference": {
+          "const": "commercialization-standards-qianfan-wrapper-extraction-diagnostic/synthetic-wrapper-fixtures.v0.1.json"
+        },
+        "qianfan_wrapper_diagnostic_result_reference": {
+          "const": "commercialization-standards-qianfan-wrapper-extraction-diagnostic/offline-diagnostic-result.v0.1.json"
+        },
+        "qianfan_wrapper_diagnostic_execution_receipt_reference": {
+          "const": "commercialization-standards-qianfan-wrapper-extraction-diagnostic/execution-receipt.v0.1.json"
+        },
+        "qianfan_wrapper_diagnostic_report_reference": {
+          "const": "commercialization-standards-qianfan-wrapper-extraction-diagnostic/PRE-15-OFFLINE-QIANFAN-WRAPPER-DIAGNOSTIC-RESULT-v0.1.md"
         },
         "rerun_retry_allowed": {
           "const": false
@@ -2028,10 +2108,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "AUTHORIZE_OFFLINE_QIANFAN_WRAPPER_EXTRACTION_DIAGNOSTIC_ONLY"
+          "const": "PREPARE_SEPARATE_ONE_REQUEST_QIANFAN_CONFIRMATION_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
-          "const": true
+          "const": false
         },
         "external_execution_authorized": {
           "const": false

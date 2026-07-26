@@ -1,0 +1,84 @@
+{
+  "$schema": "./synthetic-wrapper-fixtures.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-15-SYNTHETIC-WRAPPER-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_SYNTHETIC_FIXTURES_NOT_PROVIDER_EVIDENCE",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-15",
+  "answer_fixture": {
+    "reference": "../commercialization-standards-public-source-record-review-contract-remediation/response-contract-validator-fixtures.v0.1.json#/base_payload",
+    "source_file_sha256": "82599c17e57a70ddc0601f13bfcfd02844b27cd68535edfc3977a83210895cf9",
+    "payload_kind": "SYNTHETIC_SCHEMA_CONFORMANT_JSON_STRING"
+  },
+  "cases": [
+    {
+      "fixture_id": "STRUCTURED_CONTENT_ANSWER",
+      "envelope_kind": "STRUCTURED_CONTENT",
+      "answer_payload_kind": "SCHEMA_CONFORMANT_JSON_STRING",
+      "expected_extraction_path": "structuredContent.answer",
+      "expected_classification": "EXTRACTED_SCHEMA_CONFORMANT"
+    },
+    {
+      "fixture_id": "DIRECT_ANSWER",
+      "envelope_kind": "DIRECT_RESULT_OBJECT",
+      "answer_payload_kind": "SCHEMA_CONFORMANT_JSON_STRING",
+      "expected_extraction_path": "answer",
+      "expected_classification": "EXTRACTED_SCHEMA_CONFORMANT"
+    },
+    {
+      "fixture_id": "CONTENT_TEXT_JSON_WRAPPED_ANSWER",
+      "envelope_kind": "CONTENT_TEXT_JSON_WRAPPER",
+      "answer_payload_kind": "SCHEMA_CONFORMANT_JSON_STRING",
+      "expected_extraction_path": "content[0].text.answer",
+      "expected_classification": "EXTRACTED_SCHEMA_CONFORMANT"
+    },
+    {
+      "fixture_id": "CONTENT_TEXT_PLAIN_ANSWER",
+      "envelope_kind": "CONTENT_TEXT_PLAIN",
+      "answer_payload_kind": "SCHEMA_CONFORMANT_JSON_STRING",
+      "expected_extraction_path": "content[0].text",
+      "expected_classification": "EXTRACTED_SCHEMA_CONFORMANT"
+    },
+    {
+      "fixture_id": "MISSING_ANSWER",
+      "envelope_kind": "DIRECT_RESULT_OBJECT",
+      "answer_payload_kind": "MISSING",
+      "expected_extraction_path": null,
+      "expected_classification": "ANSWER_NOT_EXTRACTABLE"
+    },
+    {
+      "fixture_id": "ANSWER_NOT_STRING",
+      "envelope_kind": "DIRECT_RESULT_OBJECT",
+      "answer_payload_kind": "NON_STRING_OBJECT",
+      "expected_extraction_path": null,
+      "expected_classification": "ANSWER_NOT_EXTRACTABLE"
+    },
+    {
+      "fixture_id": "ANSWER_DIRECT_JSON_PARSE_FAILURE",
+      "envelope_kind": "DIRECT_RESULT_OBJECT",
+      "answer_payload_kind": "INVALID_JSON_STRING",
+      "expected_extraction_path": "answer",
+      "expected_classification": "EXTRACTED_JSON_PARSE_FAILURE"
+    },
+    {
+      "fixture_id": "ANSWER_SCHEMA_MISMATCH",
+      "envelope_kind": "DIRECT_RESULT_OBJECT",
+      "answer_payload_kind": "SCHEMA_MISMATCH_JSON_STRING",
+      "expected_extraction_path": "answer",
+      "expected_classification": "EXTRACTED_SCHEMA_MISMATCH"
+    }
+  ],
+  "ordered_extraction_contract": [
+    "structuredContent.answer",
+    "answer",
+    "content[0].text parsed as JSON wrapper then answer",
+    "content[0].text used directly as answer only for this declared tool"
+  ],
+  "ambiguity_rule": "FAIL_CLOSED_IF_MULTIPLE_NON_IDENTICAL_ANSWER_VALUES",
+  "effects": {
+    "synthetic_only": true,
+    "provider_evidence": false,
+    "pre14_response_recovered": false,
+    "live_model_requests_executed": 0
+  }
+}

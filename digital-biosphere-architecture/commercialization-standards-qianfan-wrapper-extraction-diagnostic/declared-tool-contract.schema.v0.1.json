@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre15-declared-qianfan-tool-contract.schema.v0.1.json",
+  "title": "TITMAS PRE-15 Declared Qianfan Tool Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "tool",
+    "pre14_caller_extraction_assumptions",
+    "limitations",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./declared-tool-contract.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-15-DECLARED-QIANFAN-TOOL-CONTRACT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "CURRENT_TOOL_METADATA_CAPTURED_NOT_PROVIDER_EVIDENCE"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-15"},
+    "tool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tool_name","input_contract","declared_result_contract"],
+      "properties": {
+        "tool_name": {"const": "mcp__kimi_qianfan__kimi_chat"},
+        "input_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["required_fields","query_type"],
+          "properties": {
+            "required_fields": {"const": ["query"]},
+            "query_type": {"const": "string"}
+          }
+        },
+        "declared_result_contract": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "result_wrapper",
+            "structured_fields",
+            "answer_type",
+            "model_const",
+            "provider_const",
+            "untrusted_external_content_const",
+            "usage_type"
+          ],
+          "properties": {
+            "result_wrapper": {"const": "CallToolResult"},
+            "structured_fields": {"const": ["answer","model","provider","untrusted_external_content","usage"]},
+            "answer_type": {"const": "string"},
+            "model_const": {"const": "kimi-k2.6"},
+            "provider_const": {"const": "baidu-qianfan"},
+            "untrusted_external_content_const": {"const": true},
+            "usage_type": {"const": "object"}
+          }
+        }
+      }
+    },
+    "pre14_caller_extraction_assumptions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["checked_paths","not_checked_paths","coverage_complete_against_declared_contract"],
+      "properties": {
+        "checked_paths": {"const": ["structuredContent.answer","content[0].text parsed as JSON wrapper then answer"]},
+        "not_checked_paths": {"const": ["answer","content[0].text used directly as answer"]},
+        "coverage_complete_against_declared_contract": {"const": false}
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"type": "string", "minLength": 20}
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_request_executed",
+        "provider_success_proven",
+        "pre14_exact_failure_cause_proven",
+        "synthetic_only"
+      ],
+      "properties": {
+        "provider_request_executed": {"const": false},
+        "provider_success_proven": {"const": false},
+        "pre14_exact_failure_cause_proven": {"const": false},
+        "synthetic_only": {"const": false}
+      }
+    }
+  }
+}
