@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/commercialization/stage-b-threshold-result.schema.v0.1.json",
+  "title": "TITMAS PRE-12 Stage B Threshold Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "observed_diagnostics",
+    "thresholds",
+    "result",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./stage-b-threshold-result.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-12-STAGE-B-THRESHOLD-RESULT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "STAGE_B_THRESHOLD_FAIL_CLOSED"
+    },
+    "observed_on": {
+      "const": "2026-07-26"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-12"
+    },
+    "observed_diagnostics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requests_executed",
+        "provider_transport_successes",
+        "json_parseable_sessions",
+        "schema_conformant_sessions",
+        "providers_with_schema_conformant_review",
+        "candidate_ids_covered_by_schema_conformant_review",
+        "boundary_failures"
+      ],
+      "properties": {
+        "requests_executed": {
+          "const": 4
+        },
+        "provider_transport_successes": {
+          "const": 2
+        },
+        "json_parseable_sessions": {
+          "const": 2
+        },
+        "schema_conformant_sessions": {
+          "const": 0
+        },
+        "providers_with_schema_conformant_review": {
+          "const": 0
+        },
+        "candidate_ids_covered_by_schema_conformant_review": {
+          "const": 0
+        },
+        "boundary_failures": {
+          "const": 0
+        }
+      }
+    },
+    "thresholds": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parseable_sessions_min",
+        "parseable_sessions_observed",
+        "providers_with_success_min",
+        "providers_with_success_observed",
+        "candidate_ids_covered_min",
+        "candidate_ids_covered_observed",
+        "boundary_failures_max",
+        "boundary_failures_observed",
+        "all_conditions_required",
+        "all_conditions_met"
+      ],
+      "properties": {
+        "parseable_sessions_min": {
+          "const": 3
+        },
+        "parseable_sessions_observed": {
+          "const": 0
+        },
+        "providers_with_success_min": {
+          "const": 2
+        },
+        "providers_with_success_observed": {
+          "const": 0
+        },
+        "candidate_ids_covered_min": {
+          "const": 4
+        },
+        "candidate_ids_covered_observed": {
+          "const": 0
+        },
+        "boundary_failures_max": {
+          "const": 0
+        },
+        "boundary_failures_observed": {
+          "const": 0
+        },
+        "all_conditions_required": {
+          "const": true
+        },
+        "all_conditions_met": {
+          "const": false
+        }
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage_b_pass",
+        "fail_closed",
+        "request_cap_consumed",
+        "next_permitted_action"
+      ],
+      "properties": {
+        "stage_b_pass": {
+          "const": false
+        },
+        "fail_closed": {
+          "const": true
+        },
+        "request_cap_consumed": {
+          "const": true
+        },
+        "next_permitted_action": {
+          "const": "PREPARE_SEPARATE_RESPONSE_CONTRACT_REMEDIATION_RECOMMENDATION_ONLY"
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_review_completed",
+        "candidate_status_changed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "commercial_effect"
+      ],
+      "properties": {
+        "candidate_review_completed": {
+          "const": false
+        },
+        "candidate_status_changed": {
+          "const": false
+        },
+        "record_counting_authorized": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "market_validation_pass": {
+          "const": false
+        },
+        "commercial_effect": {
+          "const": false
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "$schema": "./stage-b-threshold-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-12-STAGE-B-THRESHOLD-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "STAGE_B_THRESHOLD_FAIL_CLOSED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-12",
+  "observed_diagnostics": {
+    "requests_executed": 4,
+    "provider_transport_successes": 2,
+    "json_parseable_sessions": 2,
+    "schema_conformant_sessions": 0,
+    "providers_with_schema_conformant_review": 0,
+    "candidate_ids_covered_by_schema_conformant_review": 0,
+    "boundary_failures": 0
+  },
+  "thresholds": {
+    "parseable_sessions_min": 3,
+    "parseable_sessions_observed": 0,
+    "providers_with_success_min": 2,
+    "providers_with_success_observed": 0,
+    "candidate_ids_covered_min": 4,
+    "candidate_ids_covered_observed": 0,
+    "boundary_failures_max": 0,
+    "boundary_failures_observed": 0,
+    "all_conditions_required": true,
+    "all_conditions_met": false
+  },
+  "result": {
+    "stage_b_pass": false,
+    "fail_closed": true,
+    "request_cap_consumed": true,
+    "next_permitted_action": "PREPARE_SEPARATE_RESPONSE_CONTRACT_REMEDIATION_RECOMMENDATION_ONLY"
+  },
+  "effects": {
+    "candidate_review_completed": false,
+    "candidate_status_changed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "commercial_effect": false
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/commercialization/stage-b-sanitized-observations.schema.v0.1.json",
+  "title": "TITMAS PRE-12 Stage B Sanitized Observations",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "frozen_bindings",
+    "sessions",
+    "controls"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./stage-b-sanitized-observations.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-12-STAGE-B-SANITIZED-OBSERVATIONS-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "STAGE_B_EXECUTED_SANITIZED_FAIL_CLOSED"
+    },
+    "observed_on": {
+      "const": "2026-07-26"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-12"
+    },
+    "frozen_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_plan_sha256",
+        "source_candidate_set_sha256",
+        "source_pack_sha256",
+        "review_prompt_sha256",
+        "review_response_schema_sha256"
+      ],
+      "properties": {
+        "execution_plan_sha256": {
+          "const": "feaf7db5d0706894a88110382133f758aaf26eee40280a6b7dc58b0d132b2a33"
+        },
+        "source_candidate_set_sha256": {
+          "const": "f7253e3e2545b1200f1a7eb27b9ce5d323e1eb090b2c1178e112707983ba6300"
+        },
+        "source_pack_sha256": {
+          "const": "3040ec61c4fae1d50151d07de2214625c371b36ccd9b418047cbee6f24e610ca"
+        },
+        "review_prompt_sha256": {
+          "const": "6caaf92907396a8e18dba44c1051183f2b000d06b4b72bb0ae5105b60b6d52df"
+        },
+        "review_response_schema_sha256": {
+          "const": "0f3df0688993fe300bae1f8d2c1cb67c0fd31fecbdabcbb89d5a1819c803ccd8"
+        }
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "$ref": "#/$defs/session"
+      }
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "live_requests_executed",
+        "provider_retry_attempts",
+        "fallback_attempts",
+        "json_repair_attempts",
+        "local_pre_request_failures",
+        "new_source_searches",
+        "new_source_collections",
+        "raw_provider_body_persisted",
+        "secret_persisted",
+        "personal_or_customer_data_sent",
+        "automatic_counting_effect",
+        "automatic_cs_g0_effect"
+      ],
+      "properties": {
+        "live_requests_executed": {
+          "const": 4
+        },
+        "provider_retry_attempts": {
+          "const": 0
+        },
+        "fallback_attempts": {
+          "const": 0
+        },
+        "json_repair_attempts": {
+          "const": 0
+        },
+        "local_pre_request_failures": {
+          "const": 1
+        },
+        "new_source_searches": {
+          "const": 0
+        },
+        "new_source_collections": {
+          "const": 0
+        },
+        "raw_provider_body_persisted": {
+          "const": false
+        },
+        "secret_persisted": {
+          "const": false
+        },
+        "personal_or_customer_data_sent": {
+          "const": false
+        },
+        "automatic_counting_effect": {
+          "const": false
+        },
+        "automatic_cs_g0_effect": {
+          "const": false
+        }
+      }
+    }
+  },
+  "$defs": {
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "provider_gateway",
+        "endpoint_host",
+        "model",
+        "reviewer_role",
+        "request_executed",
+        "provider_request_status",
+        "http_status_observed",
+        "http_status",
+        "provider_envelope_parseable",
+        "answer_json_parseable",
+        "review_schema_match",
+        "candidate_ids_covered",
+        "boundary_failure",
+        "sanitized_answer",
+        "error_class"
+      ],
+      "properties": {
+        "session_id": {
+          "enum": [
+            "QF-KIMI-SOURCE-PFPC-R1",
+            "QF-KIMI-ACCOUNTABILITY-PFPC-R2",
+            "DS-V4PRO-CLAIM-PRIVACY-PFPC-R3",
+            "DS-V4PRO-ADVERSARIAL-PFPC-R4"
+          ]
+        },
+        "provider_gateway": {
+          "enum": [
+            "qianfan_installed_tool",
+            "deepseek_direct"
+          ]
+        },
+        "endpoint_host": {
+          "enum": [
+            "qianfan.baidubce.com",
+            "api.deepseek.com"
+          ]
+        },
+        "model": {
+          "enum": [
+            "kimi-k2.6",
+            "deepseek-v4-pro"
+          ]
+        },
+        "reviewer_role": {
+          "enum": [
+            "SOURCE_QUALIFICATION_REVIEWER",
+            "ACCOUNTABILITY_RELEVANCE_REVIEWER",
+            "CLAIM_AND_PRIVACY_REVIEWER",
+            "ADVERSARIAL_RECORD_REVIEWER"
+          ]
+        },
+        "request_executed": {
+          "const": true
+        },
+        "provider_request_status": {
+          "const": "SUCCESS"
+        },
+        "http_status_observed": {
+          "type": "boolean"
+        },
+        "http_status": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "provider_envelope_parseable": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "answer_json_parseable": {
+          "type": "boolean"
+        },
+        "review_schema_match": {
+          "const": false
+        },
+        "candidate_ids_covered": {
+          "type": "array",
+          "maxItems": 0
+        },
+        "boundary_failure": {
+          "const": false
+        },
+        "sanitized_answer": {
+          "type": "null"
+        },
+        "error_class": {
+          "enum": [
+            "ANSWER_CONTENT_MISSING",
+            "REVIEW_SCHEMA_MISMATCH"
+          ]
+        }
+      }
+    }
+  }
+}

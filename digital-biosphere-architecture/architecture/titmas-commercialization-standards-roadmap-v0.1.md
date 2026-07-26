@@ -914,6 +914,44 @@ CS_G0_PASS=false
 下一步只能执行 frozen Stage B 的四个限定 session；不得扩大候选集、模型、角色、请求
 上限或把 Agent 输出自动升级为 Human Counting Decision。
 
+### 4.24 PRE-12 Stage B Candidate Review Rerun Result
+
+[PRE-12 final rerun result](../commercialization-standards-public-source-record-review-rerun/PRE-12-CANDIDATE-REVIEW-RERUN-RESULT-v0.1.md)
+已形成：
+
+```text
+STAGE_B_REQUESTS_EXECUTED=4
+STAGE_B_JSON_PARSEABLE_SESSIONS=2
+STAGE_B_SCHEMA_CONFORMANT_SESSIONS=0
+STAGE_B_PARSEABLE_SESSIONS_FOR_THRESHOLD=0
+STAGE_B_PROVIDERS_WITH_SUCCESS_FOR_THRESHOLD=0
+STAGE_B_CANDIDATE_IDS_COVERED=0
+STAGE_B_BOUNDARY_FAILURES=0
+STAGE_B_THRESHOLD_PASS=false
+PRE12_TOTAL_LIVE_MODEL_REQUESTS_EXECUTED=6
+PRE12_REQUEST_CAP_CONSUMED=true
+```
+
+两个 Qianfan/Kimi installed-tool 会话成功完成 provider 调用，但本次有界观察没有得到
+可提取的 review object。两个 DeepSeek `deepseek-v4-pro` 会话均为 HTTP 200 且回答 JSON
+可解析，但都不符合冻结 review response Schema。执行没有 retry、fallback 或 JSON
+repair，也没有保存 raw provider body。
+
+冻结阈值要求至少 3 个 Schema-conformant session、2 个具有合格 review 的 provider、覆盖
+4 个 candidate ID，并保持 0 boundary failure。本次只有最后一项满足，所以 PRE-12
+失败关闭。四条候选仍为 `PARTIAL`：
+
+```text
+CANDIDATE_REVIEW_COMPLETED=false
+VALID_PROBLEM_RECORDS=0
+CS_G0_PASS=false
+LIVE_MODEL_REQUEST_AUTHORIZED=false
+```
+
+PRE-12 的 6 个 live request 上限已消耗。下一步只能建立独立的 response-contract
+remediation recommendation，说明如何在请求时明示并约束完整 Schema；不能执行后修复
+JSON，也不能沿用本次授权继续调用。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
