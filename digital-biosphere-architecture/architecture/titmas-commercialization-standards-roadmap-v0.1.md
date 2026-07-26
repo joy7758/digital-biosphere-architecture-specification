@@ -1388,6 +1388,49 @@ model binding。
 PREPARE_SEPARATE_OFFLINE_PRE22_FAILURE_DIAGNOSTIC_RECOMMENDATION_ONLY
 ```
 
+### 4.35 PRE-23 Offline Live Review Failure Diagnostic
+
+[PRE-23 recommendation](../TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-RECOMMENDATION-v0.1.md)
+经独立
+[Decision](../TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-DECISION-RECORD.md)、
+[offline plan](../commercialization-standards-provider-adapter-profile-review-remediation/offline-live-review-failure-diagnostic-plan.v0.1.json)
+和远端授权回执执行，形成：
+
+- [response extraction contract candidate](../commercialization-standards-provider-adapter-profile-review-remediation/compact-review-response-extraction-contract.v0.1.json)；
+- [model-binding policy candidate](../commercialization-standards-provider-adapter-profile-review-remediation/compact-review-model-binding-policy.v0.1.json)；
+- [15-case fixtures](../commercialization-standards-provider-adapter-profile-review-remediation/compact-review-failure-diagnostic-fixtures.v0.1.json)。
+
+结果：
+
+```text
+INPUT_HASHES_MATCHED=9/9
+CANDIDATE_SCHEMAS_META_VALID=3/3
+FIXTURE_EXPECTATIONS_MATCHED=15/15
+EXTRACTION_CASES_MATCHED=10/10
+MODEL_BINDING_CASES_MATCHED=5/5
+POSITIVE_CASES_MATCHED=8/8
+NEGATIVE_CASES_MATCHED=7/7
+LIVE_MODEL_REQUESTS_EXECUTED=0
+PROVIDER_NETWORK_REQUESTS_EXECUTED=0
+OFFLINE_FAILURE_DIAGNOSTIC_PASS=true
+CONTRACT_CANDIDATES_ADOPTED=false
+IMPLEMENTATION_CREATED=false
+LIVE_RERUN_READY=false
+```
+
+诊断保留：
+
+- Kimi exact answer 没有恢复，provider no-answer 也没有被证明；
+- DeepSeek `deepseek-chat` / `deepseek-v4-flash` 没有 alias record，继续为 `MISMATCH`；
+- content Schema PASS 不覆盖 model mismatch；
+- fixture PASS 不产生 provider success、review completion 或 Profile adoption。
+
+下一步只允许：
+
+```text
+PREPARE_SEPARATE_PRE22_FAILURE_CONTRACT_ADOPTION_REVIEW_RECOMMENDATION_ONLY
+```
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -1832,7 +1875,15 @@ TITMAS_CS_D02_PRE_22_QUALIFYING_SESSIONS=0
 TITMAS_CS_D02_PRE_22_COMPOSITE_COMPACT_REVIEW_PASS=false
 TITMAS_CS_D02_PRE_22_PROFILE_REVIEW_COMPLETED=false
 TITMAS_CS_D02_PRE_22_PROFILE_ADOPTED=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_SEPARATE_OFFLINE_PRE22_FAILURE_DIAGNOSTIC_RECOMMENDATION_ONLY
+TITMAS_CS_D02_PRE_23_OFFLINE_FAILURE_DIAGNOSTIC_PASS=true
+TITMAS_CS_D02_PRE_23_FIXTURE_EXPECTATIONS_MATCHED=15
+TITMAS_CS_D02_PRE_23_EXTRACTION_CASES_MATCHED=10
+TITMAS_CS_D02_PRE_23_MODEL_BINDING_CASES_MATCHED=5
+TITMAS_CS_D02_PRE_23_LIVE_MODEL_REQUESTS_EXECUTED=0
+TITMAS_CS_D02_PRE_23_CONTRACT_CANDIDATES_ADOPTED=false
+TITMAS_CS_D02_PRE_23_IMPLEMENTATION_CREATED=false
+TITMAS_CS_D02_PRE_23_LIVE_RERUN_READY=false
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_SEPARATE_PRE22_FAILURE_CONTRACT_ADOPTION_REVIEW_RECOMMENDATION_ONLY
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false
 TITMAS_VEAP_DRAFT_PROFILE_CANDIDATE_CREATED=true

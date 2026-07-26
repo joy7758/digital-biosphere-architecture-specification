@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_22_COMPACT_LIVE_REVIEW_INCOMPLETE_FAIL_CLOSED_OFFLINE_DIAGNOSTIC_RECOMMENDATION_READY_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_23_OFFLINE_FAILURE_DIAGNOSTIC_PASS_CONTRACT_ADOPTION_REVIEW_RECOMMENDATION_READY_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1196,6 +1196,19 @@
         "pre22_profile_review_completed",
         "pre22_profile_adopted",
         "pre22_offline_failure_diagnostic_recommendation_ready",
+        "pre23_failure_diagnostic_recommendation_prepared",
+        "pre23_failure_diagnostic_decision_recorded",
+        "pre23_authorization_baseline_remote_verified",
+        "pre23_authorization_receipt_remote_verified",
+        "pre23_offline_failure_diagnostic_pass",
+        "pre23_fixture_expectations_matched",
+        "pre23_extraction_cases_matched",
+        "pre23_model_binding_cases_matched",
+        "pre23_live_model_requests_executed",
+        "pre23_contract_candidates_adopted",
+        "pre23_implementation_created",
+        "pre23_live_rerun_ready",
+        "pre23_contract_adoption_review_recommendation_ready",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1524,6 +1537,45 @@
           "const": false
         },
         "pre22_offline_failure_diagnostic_recommendation_ready": {
+          "const": true
+        },
+        "pre23_failure_diagnostic_recommendation_prepared": {
+          "const": true
+        },
+        "pre23_failure_diagnostic_decision_recorded": {
+          "const": true
+        },
+        "pre23_authorization_baseline_remote_verified": {
+          "const": true
+        },
+        "pre23_authorization_receipt_remote_verified": {
+          "const": true
+        },
+        "pre23_offline_failure_diagnostic_pass": {
+          "const": true
+        },
+        "pre23_fixture_expectations_matched": {
+          "const": 15
+        },
+        "pre23_extraction_cases_matched": {
+          "const": 10
+        },
+        "pre23_model_binding_cases_matched": {
+          "const": 5
+        },
+        "pre23_live_model_requests_executed": {
+          "const": 0
+        },
+        "pre23_contract_candidates_adopted": {
+          "const": false
+        },
+        "pre23_implementation_created": {
+          "const": false
+        },
+        "pre23_live_rerun_ready": {
+          "const": false
+        },
+        "pre23_contract_adoption_review_recommendation_ready": {
           "const": true
         },
         "public_source_record_counting_authorized": {
@@ -1940,6 +1992,26 @@
         "provider_adapter_compact_live_review_pass",
         "provider_adapter_compact_live_review_profile_review_completed",
         "provider_adapter_compact_live_review_profile_adopted",
+        "provider_adapter_failure_diagnostic_decision_candidate_id",
+        "provider_adapter_failure_diagnostic_recommendation_reference",
+        "provider_adapter_failure_diagnostic_decision_reference",
+        "provider_adapter_failure_diagnostic_plan_reference",
+        "provider_adapter_failure_diagnostic_input_manifest_reference",
+        "provider_adapter_failure_diagnostic_authorization_receipt_reference",
+        "provider_adapter_response_extraction_contract_reference",
+        "provider_adapter_model_binding_policy_reference",
+        "provider_adapter_failure_diagnostic_fixtures_reference",
+        "provider_adapter_failure_diagnostic_result_reference",
+        "provider_adapter_failure_diagnostic_execution_receipt_reference",
+        "provider_adapter_failure_diagnostic_report_reference",
+        "provider_adapter_failure_diagnostic_offline_pass",
+        "provider_adapter_failure_diagnostic_fixture_expectations_matched",
+        "provider_adapter_failure_diagnostic_extraction_cases_matched",
+        "provider_adapter_failure_diagnostic_model_binding_cases_matched",
+        "provider_adapter_failure_diagnostic_live_model_requests_executed",
+        "provider_adapter_failure_diagnostic_contract_candidates_adopted",
+        "provider_adapter_failure_diagnostic_implementation_created",
+        "provider_adapter_failure_diagnostic_live_rerun_ready",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -1958,7 +2030,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE22_COMPACT_LIVE_REVIEW_INCOMPLETE_FAIL_CLOSED_OFFLINE_DIAGNOSTIC_RECOMMENDATION_READY"
+          "const": "PRE23_OFFLINE_FAILURE_DIAGNOSTIC_PASS_CONTRACT_ADOPTION_REVIEW_RECOMMENDATION_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -2920,6 +2992,66 @@
         "provider_adapter_compact_live_review_profile_adopted": {
           "const": false
         },
+        "provider_adapter_failure_diagnostic_decision_candidate_id": {
+          "const": "CS-D02-PRE-23"
+        },
+        "provider_adapter_failure_diagnostic_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-RECOMMENDATION-v0.1.md"
+        },
+        "provider_adapter_failure_diagnostic_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-DECISION-RECORD.v0.1.json"
+        },
+        "provider_adapter_failure_diagnostic_plan_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-live-review-failure-diagnostic-plan.v0.1.json"
+        },
+        "provider_adapter_failure_diagnostic_input_manifest_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-live-review-failure-diagnostic-input-manifest.v0.1.json"
+        },
+        "provider_adapter_failure_diagnostic_authorization_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-live-review-failure-diagnostic-authorization-receipt.v0.1.json"
+        },
+        "provider_adapter_response_extraction_contract_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-review-response-extraction-contract.v0.1.json"
+        },
+        "provider_adapter_model_binding_policy_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-review-model-binding-policy.v0.1.json"
+        },
+        "provider_adapter_failure_diagnostic_fixtures_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-review-failure-diagnostic-fixtures.v0.1.json"
+        },
+        "provider_adapter_failure_diagnostic_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-live-review-failure-diagnostic-result.v0.1.json"
+        },
+        "provider_adapter_failure_diagnostic_execution_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-live-review-failure-diagnostic-execution-receipt.v0.1.json"
+        },
+        "provider_adapter_failure_diagnostic_report_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-RESULT-v0.1.md"
+        },
+        "provider_adapter_failure_diagnostic_offline_pass": {
+          "const": true
+        },
+        "provider_adapter_failure_diagnostic_fixture_expectations_matched": {
+          "const": 15
+        },
+        "provider_adapter_failure_diagnostic_extraction_cases_matched": {
+          "const": 10
+        },
+        "provider_adapter_failure_diagnostic_model_binding_cases_matched": {
+          "const": 5
+        },
+        "provider_adapter_failure_diagnostic_live_model_requests_executed": {
+          "const": 0
+        },
+        "provider_adapter_failure_diagnostic_contract_candidates_adopted": {
+          "const": false
+        },
+        "provider_adapter_failure_diagnostic_implementation_created": {
+          "const": false
+        },
+        "provider_adapter_failure_diagnostic_live_rerun_ready": {
+          "const": false
+        },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
         },
@@ -2936,7 +3068,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_SEPARATE_OFFLINE_PRE22_FAILURE_DIAGNOSTIC_RECOMMENDATION_ONLY"
+          "const": "PREPARE_SEPARATE_PRE22_FAILURE_CONTRACT_ADOPTION_REVIEW_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false
