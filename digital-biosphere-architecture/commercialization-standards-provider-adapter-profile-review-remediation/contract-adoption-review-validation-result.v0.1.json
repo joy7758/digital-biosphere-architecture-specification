@@ -1,0 +1,85 @@
+{
+  "$schema": "./contract-adoption-review-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "INCOMPLETE_FAIL_CLOSED_ZERO_QUALIFYING_REVIEWS",
+  "observed_at": "2026-07-26T22:38:31+08:00",
+  "decision_reference": "CS-D02-PRE-24",
+  "authorization_receipt_reference": "contract-adoption-review-authorization-receipt.v0.1.json",
+  "session_result_references": [
+    "contract-adoption-review-kimi-session-result.v0.1.json",
+    "contract-adoption-review-deepseek-session-result.v0.1.json"
+  ],
+  "counts": {
+    "input_hashes_matched": 15,
+    "input_hashes_total": 15,
+    "response_fixture_expectations_matched": 4,
+    "response_fixture_expectations_total": 4,
+    "query_bindings_matched": 2,
+    "query_bindings_total": 2,
+    "authorized_review_sessions": 2,
+    "executed_review_sessions": 2,
+    "direct_json_parse_pass": 1,
+    "response_schema_pass": 1,
+    "qualifying_reviews": 0,
+    "advisory_findings_retained": 3,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0,
+    "boundary_safety_failures": 0
+  },
+  "session_outcomes": [
+    {
+      "session_id": "PRE24-KIMI-CONTRACT-REVIEW",
+      "outcome": "PROVIDER_TIMEOUT_OR_NETWORK_ERROR",
+      "requested_model": "kimi-k2.6",
+      "returned_model": null,
+      "qualifying_review": false
+    },
+    {
+      "session_id": "PRE24-DEEPSEEK-CONTRACT-REVIEW",
+      "outcome": "RESPONSE_SCHEMA_PASS_MODEL_BINDING_MISMATCH",
+      "requested_model": "deepseek-chat",
+      "returned_model": "deepseek-v4-flash",
+      "qualifying_review": false
+    }
+  ],
+  "advisory_review": {
+    "source_session": "PRE24-DEEPSEEK-CONTRACT-REVIEW",
+    "response_schema_pass": true,
+    "model_binding_match": false,
+    "verdict": "RETURN_BOTH_FOR_REVISION",
+    "blocking_findings": 2,
+    "major_findings": 1,
+    "adoption_evidence_effect": false
+  },
+  "composite_result": {
+    "contract_adoption_review_completed": false,
+    "formal_adoption_decision_ready": false,
+    "contract_candidates_adopted": false,
+    "implementation_created": false,
+    "live_rerun_ready": false,
+    "result": "INCOMPLETE_FAIL_CLOSED",
+    "next_permitted_action": "PREPARE_SEPARATE_PRE24_REVIEW_FAILURE_AND_CONTRACT_REVISION_RECOMMENDATION_ONLY"
+  },
+  "effects": {
+    "pre22_result_changed": false,
+    "pre23_result_changed": false,
+    "authority_changed": false,
+    "ownership_changed": false,
+    "contract_candidates_adopted": false,
+    "adapter_implementation_created": false,
+    "live_review_rerun_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
