@@ -1,0 +1,138 @@
+{
+  "$schema": "./rb1-package-and-contract-skeleton-profile.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-INTEGRATIONS-RB1-PACKAGE-AND-CONTRACT-SKELETON-PROFILE-0.1",
+  "version": "0.1.0",
+  "status": "DEVELOPMENT_PLANNING_CANDIDATE_NOT_ADOPTED_NOT_IMPLEMENTED",
+  "decision_reference": "CS-D02-PRE-43",
+  "problem": "PROVIDER_REQUEST_FAILURE_PHASE_ATTRIBUTION_WITH_DATA_MINIMIZATION",
+  "consumed_specification": {
+    "reference": "commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-contract.v0.1.json",
+    "version": "0.1.0",
+    "sha256": "f72eb33bdb5042514deed499fdabddbc74121bc9c22c16f79316eae2aeca9913",
+    "maturity": "Development"
+  },
+  "package_candidates": {
+    "distribution_name": "titmas-integrations",
+    "python_import_namespace": "titmas_integrations",
+    "provider_neutral_module": "titmas_integrations.instrumentation",
+    "provider_binding_namespace": "titmas_integrations.providers",
+    "minimum_python": ">=3.11",
+    "candidate_values_adopted": false,
+    "package_created": false
+  },
+  "contract_type_candidates": [
+    "PhaseId",
+    "PhaseStatus",
+    "FailureCategory",
+    "PhaseEvent",
+    "PhaseTrace"
+  ],
+  "phase_event_required_fields": [
+    "phase_id",
+    "status",
+    "started_at_monotonic_ref",
+    "elapsed_ms",
+    "timeout_budget_ms",
+    "bytes_in",
+    "bytes_out",
+    "failure_category",
+    "predecessor_phase",
+    "executed"
+  ],
+  "phase_ids": ["P0", "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9"],
+  "boundaries": {
+    "network_access_allowed": false,
+    "credential_access_allowed": false,
+    "provider_sdk_required_by_core": false,
+    "dbos_runtime_dependency_allowed": false,
+    "saee_execution_or_evaluation_dependency_allowed": false,
+    "provider_bindings_created": false,
+    "observation_is_evidence": false,
+    "evidence_is_truth": false,
+    "schema_pass_is_provider_correctness": false,
+    "schema_pass_is_conformance": false,
+    "instrumentation_is_permission": false,
+    "evaluation_is_authority": false,
+    "retry_may_rewrite_first_failure": false,
+    "fallback_may_rewrite_first_failure": false,
+    "repair_may_rewrite_first_failure": false
+  },
+  "persistent_data": {
+    "allowed": [
+      "phase timing",
+      "byte counts",
+      "sanitized failure category",
+      "observed HTTP status",
+      "observed returned model identifier",
+      "raw envelope one-way digest",
+      "sanitized result digest"
+    ],
+    "forbidden": [
+      "credential",
+      "authorization header",
+      "raw request body",
+      "raw response body",
+      "prompt",
+      "review content",
+      "hidden reasoning",
+      "packet capture",
+      "resolver private configuration",
+      "local sensitive network identifiers"
+    ]
+  },
+  "support_declaration": {
+    "supported": [],
+    "partial": [],
+    "unsupported": [
+      "INSTALLABLE_PACKAGE",
+      "RUNTIME_ADAPTER",
+      "PROVIDER_BINDING",
+      "PROVIDER_SUPPORT",
+      "PROVIDER_CONFORMANCE",
+      "PRODUCTION_USE"
+    ],
+    "unknown": [
+      "FINAL_DISTRIBUTION_NAME",
+      "FINAL_PUBLIC_API",
+      "FINAL_MINIMUM_PYTHON",
+      "SECURITY_REVIEW",
+      "CONFORMANCE",
+      "RELEASE"
+    ]
+  },
+  "commands": {
+    "install": "NOT_AVAILABLE",
+    "import": "NOT_AVAILABLE",
+    "run": "NOT_AVAILABLE",
+    "test": "NOT_AVAILABLE",
+    "conformance": "NOT_AVAILABLE",
+    "rollback": "NOT_AVAILABLE"
+  },
+  "agent_recommendation": {
+    "recommended_as": "REVIEWABLE_PROVIDER_NEUTRAL_PHASE_ATTRIBUTION_CONTRACT_PLANNING_CANDIDATE",
+    "not_recommended_as": "INSTALLABLE_RUNTIME_PROVIDER_INTEGRATION_CONFORMANT_OR_PRODUCTION_READY_SOFTWARE",
+    "pre_implementation_agent_review_required": true,
+    "agent_recommendation_is_implementation_authorization": false
+  },
+  "next_gate": {
+    "gate_id": "CS-D02-PRE-44",
+    "agent_customer_review_required": true,
+    "agent_customer_review_authorized": false,
+    "rb1_implementation_decision_allowed": false
+  },
+  "effects": {
+    "profile_adopted": false,
+    "public_api_adopted": false,
+    "package_created": false,
+    "source_created": false,
+    "tests_created": false,
+    "implementation_authorized": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "runtime_created": false,
+    "release_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false
+  }
+}

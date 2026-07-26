@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/rb1-negative-boundary-case-catalog.schema.v0.1.json",
+  "title": "TITMAS Integrations RB1 Negative Boundary Case Catalog v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "cases", "counts", "effects"],
+  "properties": {
+    "$schema": {"const": "./rb1-negative-boundary-case-catalog.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-INTEGRATIONS-RB1-NEGATIVE-BOUNDARY-CASE-CATALOG-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PLANNING_CATALOG_NOT_TESTS_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-43"},
+    "cases": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "category", "attempt", "expected", "execution_status"],
+        "properties": {
+          "case_id": {"pattern": "^RB1-NEG-0(0[1-9]|10)$"},
+          "category": {"type": "string", "minLength": 5},
+          "attempt": {"type": "string", "minLength": 20},
+          "expected": {"const": "REJECT"},
+          "execution_status": {"const": "NOT_EXECUTED"}
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["defined", "executed", "passed", "failed"],
+      "properties": {
+        "defined": {"const": 10},
+        "executed": {"const": 0},
+        "passed": {"const": 0},
+        "failed": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tests_created", "tests_executed", "conformance_executed", "implementation_authorized"],
+      "properties": {
+        "tests_created": {"const": false},
+        "tests_executed": {"const": false},
+        "conformance_executed": {"const": false},
+        "implementation_authorized": {"const": false}
+      }
+    }
+  }
+}

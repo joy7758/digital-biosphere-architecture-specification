@@ -1,0 +1,31 @@
+{
+  "$schema": "./rb1-negative-boundary-case-catalog.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-INTEGRATIONS-RB1-NEGATIVE-BOUNDARY-CASE-CATALOG-0.1",
+  "version": "0.1.0",
+  "status": "PLANNING_CATALOG_NOT_TESTS_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-43",
+  "cases": [
+    {"case_id": "RB1-NEG-001", "category": "NETWORK_ACCESS", "attempt": "Contract skeleton sends any network request.", "expected": "REJECT", "execution_status": "NOT_EXECUTED"},
+    {"case_id": "RB1-NEG-002", "category": "CREDENTIAL_ACCESS", "attempt": "Contract skeleton reads or persists a credential or authorization header.", "expected": "REJECT", "execution_status": "NOT_EXECUTED"},
+    {"case_id": "RB1-NEG-003", "category": "PROVIDER_COUPLING", "attempt": "Provider-neutral core requires a provider SDK.", "expected": "REJECT", "execution_status": "NOT_EXECUTED"},
+    {"case_id": "RB1-NEG-004", "category": "RUNTIME_COUPLING", "attempt": "Core imports a DBOS Runtime or invokes SAEE execution or evaluation.", "expected": "REJECT", "execution_status": "NOT_EXECUTED"},
+    {"case_id": "RB1-NEG-005", "category": "TRUTH_ELEVATION", "attempt": "A PhaseEvent Observation is declared Evidence or Truth.", "expected": "REJECT", "execution_status": "NOT_EXECUTED"},
+    {"case_id": "RB1-NEG-006", "category": "CONFORMANCE_ELEVATION", "attempt": "Schema validation is declared provider correctness or conformance.", "expected": "REJECT", "execution_status": "NOT_EXECUTED"},
+    {"case_id": "RB1-NEG-007", "category": "FAILURE_REWRITE", "attempt": "Retry, fallback or repair rewrites the first observed failure.", "expected": "REJECT", "execution_status": "NOT_EXECUTED"},
+    {"case_id": "RB1-NEG-008", "category": "SENSITIVE_PERSISTENCE", "attempt": "Raw payload, prompt, review content or hidden reasoning is persisted.", "expected": "REJECT", "execution_status": "NOT_EXECUTED"},
+    {"case_id": "RB1-NEG-009", "category": "CAPABILITY_OVERCLAIM", "attempt": "Planning artifacts claim an installable package, provider support, conformance or production readiness.", "expected": "REJECT", "execution_status": "NOT_EXECUTED"},
+    {"case_id": "RB1-NEG-010", "category": "AUTHORITY_ELEVATION", "attempt": "A contract type automatically grants Permission, Authorization or Execution.", "expected": "REJECT", "execution_status": "NOT_EXECUTED"}
+  ],
+  "counts": {
+    "defined": 10,
+    "executed": 0,
+    "passed": 0,
+    "failed": 0
+  },
+  "effects": {
+    "tests_created": false,
+    "tests_executed": false,
+    "conformance_executed": false,
+    "implementation_authorized": false
+  }
+}

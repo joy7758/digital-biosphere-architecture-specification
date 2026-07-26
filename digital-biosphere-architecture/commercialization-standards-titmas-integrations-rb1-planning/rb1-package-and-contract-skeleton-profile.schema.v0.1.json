@@ -1,0 +1,176 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/rb1-package-and-contract-skeleton-profile.schema.v0.1.json",
+  "title": "TITMAS Integrations RB1 Package and Contract Skeleton Profile v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "problem",
+    "consumed_specification",
+    "package_candidates",
+    "contract_type_candidates",
+    "phase_event_required_fields",
+    "phase_ids",
+    "boundaries",
+    "persistent_data",
+    "support_declaration",
+    "commands",
+    "agent_recommendation",
+    "next_gate",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./rb1-package-and-contract-skeleton-profile.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-INTEGRATIONS-RB1-PACKAGE-AND-CONTRACT-SKELETON-PROFILE-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DEVELOPMENT_PLANNING_CANDIDATE_NOT_ADOPTED_NOT_IMPLEMENTED"},
+    "decision_reference": {"const": "CS-D02-PRE-43"},
+    "problem": {"const": "PROVIDER_REQUEST_FAILURE_PHASE_ATTRIBUTION_WITH_DATA_MINIMIZATION"},
+    "consumed_specification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "version", "sha256", "maturity"],
+      "properties": {
+        "reference": {"const": "commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-contract.v0.1.json"},
+        "version": {"const": "0.1.0"},
+        "sha256": {"const": "f72eb33bdb5042514deed499fdabddbc74121bc9c22c16f79316eae2aeca9913"},
+        "maturity": {"const": "Development"}
+      }
+    },
+    "package_candidates": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["distribution_name", "python_import_namespace", "provider_neutral_module", "provider_binding_namespace", "minimum_python", "candidate_values_adopted", "package_created"],
+      "properties": {
+        "distribution_name": {"const": "titmas-integrations"},
+        "python_import_namespace": {"const": "titmas_integrations"},
+        "provider_neutral_module": {"const": "titmas_integrations.instrumentation"},
+        "provider_binding_namespace": {"const": "titmas_integrations.providers"},
+        "minimum_python": {"const": ">=3.11"},
+        "candidate_values_adopted": {"const": false},
+        "package_created": {"const": false}
+      }
+    },
+    "contract_type_candidates": {"const": ["PhaseId", "PhaseStatus", "FailureCategory", "PhaseEvent", "PhaseTrace"]},
+    "phase_event_required_fields": {"const": ["phase_id", "status", "started_at_monotonic_ref", "elapsed_ms", "timeout_budget_ms", "bytes_in", "bytes_out", "failure_category", "predecessor_phase", "executed"]},
+    "phase_ids": {"const": ["P0", "P1", "P2", "P3", "P4", "P5", "P6", "P7", "P8", "P9"]},
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_access_allowed",
+        "credential_access_allowed",
+        "provider_sdk_required_by_core",
+        "dbos_runtime_dependency_allowed",
+        "saee_execution_or_evaluation_dependency_allowed",
+        "provider_bindings_created",
+        "observation_is_evidence",
+        "evidence_is_truth",
+        "schema_pass_is_provider_correctness",
+        "schema_pass_is_conformance",
+        "instrumentation_is_permission",
+        "evaluation_is_authority",
+        "retry_may_rewrite_first_failure",
+        "fallback_may_rewrite_first_failure",
+        "repair_may_rewrite_first_failure"
+      ],
+      "properties": {
+        "network_access_allowed": {"const": false},
+        "credential_access_allowed": {"const": false},
+        "provider_sdk_required_by_core": {"const": false},
+        "dbos_runtime_dependency_allowed": {"const": false},
+        "saee_execution_or_evaluation_dependency_allowed": {"const": false},
+        "provider_bindings_created": {"const": false},
+        "observation_is_evidence": {"const": false},
+        "evidence_is_truth": {"const": false},
+        "schema_pass_is_provider_correctness": {"const": false},
+        "schema_pass_is_conformance": {"const": false},
+        "instrumentation_is_permission": {"const": false},
+        "evaluation_is_authority": {"const": false},
+        "retry_may_rewrite_first_failure": {"const": false},
+        "fallback_may_rewrite_first_failure": {"const": false},
+        "repair_may_rewrite_first_failure": {"const": false}
+      }
+    },
+    "persistent_data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed", "forbidden"],
+      "properties": {
+        "allowed": {"type": "array", "minItems": 7, "maxItems": 7, "uniqueItems": true, "items": {"type": "string"}},
+        "forbidden": {"type": "array", "minItems": 10, "maxItems": 10, "uniqueItems": true, "items": {"type": "string"}}
+      }
+    },
+    "support_declaration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["supported", "partial", "unsupported", "unknown"],
+      "properties": {
+        "supported": {"const": []},
+        "partial": {"const": []},
+        "unsupported": {"type": "array", "minItems": 6, "uniqueItems": true, "items": {"type": "string"}},
+        "unknown": {"type": "array", "minItems": 6, "uniqueItems": true, "items": {"type": "string"}}
+      }
+    },
+    "commands": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["install", "import", "run", "test", "conformance", "rollback"],
+      "properties": {
+        "install": {"const": "NOT_AVAILABLE"},
+        "import": {"const": "NOT_AVAILABLE"},
+        "run": {"const": "NOT_AVAILABLE"},
+        "test": {"const": "NOT_AVAILABLE"},
+        "conformance": {"const": "NOT_AVAILABLE"},
+        "rollback": {"const": "NOT_AVAILABLE"}
+      }
+    },
+    "agent_recommendation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["recommended_as", "not_recommended_as", "pre_implementation_agent_review_required", "agent_recommendation_is_implementation_authorization"],
+      "properties": {
+        "recommended_as": {"const": "REVIEWABLE_PROVIDER_NEUTRAL_PHASE_ATTRIBUTION_CONTRACT_PLANNING_CANDIDATE"},
+        "not_recommended_as": {"const": "INSTALLABLE_RUNTIME_PROVIDER_INTEGRATION_CONFORMANT_OR_PRODUCTION_READY_SOFTWARE"},
+        "pre_implementation_agent_review_required": {"const": true},
+        "agent_recommendation_is_implementation_authorization": {"const": false}
+      }
+    },
+    "next_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gate_id", "agent_customer_review_required", "agent_customer_review_authorized", "rb1_implementation_decision_allowed"],
+      "properties": {
+        "gate_id": {"const": "CS-D02-PRE-44"},
+        "agent_customer_review_required": {"const": true},
+        "agent_customer_review_authorized": {"const": false},
+        "rb1_implementation_decision_allowed": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profile_adopted", "public_api_adopted", "package_created", "source_created", "tests_created", "implementation_authorized", "implementation_created", "provider_supported", "conformance_executed", "runtime_created", "release_authorized", "commercial_offer_authorized", "certification_authorized"],
+      "properties": {
+        "profile_adopted": {"const": false},
+        "public_api_adopted": {"const": false},
+        "package_created": {"const": false},
+        "source_created": {"const": false},
+        "tests_created": {"const": false},
+        "implementation_authorized": {"const": false},
+        "implementation_created": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "runtime_created": {"const": false},
+        "release_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "$schema": "./rb1-agent-customer-review-input.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-INTEGRATIONS-RB1-AGENT-CUSTOMER-REVIEW-INPUT-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_REVIEW_INPUT_NOT_AUTHORIZED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-43",
+  "review_gate": "CS-D02-PRE-44",
+  "review_objective": "Determine whether agent developers and recommender agents would recommend, call, or reuse the bounded RB1 package-and-contract skeleton before any implementation decision.",
+  "primary_question": "If an agent developer needs to identify the first P0-P9 failure phase of an AI model or provider request while prohibiting credential, raw payload, prompt, review-content, and hidden-reasoning persistence, would you recommend this provider-neutral TITMAS RB1 package-and-contract skeleton?",
+  "reviewer_profiles": [
+    "AGENT_DEVELOPER",
+    "RECOMMENDER_AGENT",
+    "INTEGRATION_MAINTAINER",
+    "SECURITY_BOUNDARY_REVIEWER"
+  ],
+  "materials": [
+    {
+      "reference": "rb1-package-and-contract-skeleton-profile-v0.1.md",
+      "sha256": "858a8835e126c27853fe639fec1feee01cd7297ca9715a11550848417f9510a6",
+      "role": "HUMAN_AND_AGENT_READABLE_PROFILE"
+    },
+    {
+      "reference": "rb1-package-and-contract-skeleton-profile.v0.1.json",
+      "sha256": "cb1d37c7f064581b4869dcb59a8d79c027537f560d47eea72850507dc2cd0afb",
+      "role": "MACHINE_READABLE_PROFILE"
+    },
+    {
+      "reference": "rb1-package-and-contract-skeleton-profile.schema.v0.1.json",
+      "sha256": "a61881b1bc8ed12d5bb3605b5af7e6c11b3d23cff8016725a7753d625d4353fb",
+      "role": "PROFILE_SCHEMA"
+    },
+    {
+      "reference": "rb1-negative-boundary-case-catalog.v0.1.json",
+      "sha256": "3ae2608d586ab9bada045b2e7b987863d697ce08f5a7cf4c713d7a0fe5876721",
+      "role": "NEGATIVE_BOUNDARY_CATALOG"
+    },
+    {
+      "reference": "rb1-negative-boundary-case-catalog.schema.v0.1.json",
+      "sha256": "bab34adee6ef0a391436be52a58d64231b096e4d2e175345cf389ac3e631b67d",
+      "role": "NEGATIVE_BOUNDARY_SCHEMA"
+    }
+  ],
+  "required_review_dimensions": [
+    "PROBLEM_RELEVANCE",
+    "AGENT_DISCOVERABILITY",
+    "PACKAGE_AND_NAMESPACE_CLARITY",
+    "INTERFACE_LEARNING_COST",
+    "DUPLICATION_WITH_OPENTELEMETRY_OR_EXISTING_HTTP_INSTRUMENTATION",
+    "DATA_MINIMIZATION",
+    "FIRST_FAILURE_RETENTION",
+    "TRUTH_AND_AUTHORITY_NON_ELEVATION",
+    "WILLINGNESS_TO_RECOMMEND",
+    "WILLINGNESS_TO_CALL_OR_REUSE",
+    "BLOCKERS_AND_CORRECTIONS"
+  ],
+  "response_contract": {
+    "required_fields": [
+      "reviewer_profile",
+      "recommendation",
+      "recommendation_reason",
+      "not_recommended_reason",
+      "problem_relevance",
+      "discovery_clarity",
+      "interface_learning_cost",
+      "duplication_risk",
+      "duplication_explanation",
+      "would_recommend_to_agent_developer",
+      "would_call_or_reuse",
+      "blocking_issues",
+      "required_corrections",
+      "boundary_checks",
+      "confidence"
+    ],
+    "recommendation_values": [
+      "RECOMMENDED",
+      "CONDITIONALLY_RECOMMENDED",
+      "NOT_RECOMMENDED"
+    ],
+    "ordinal_values": ["LOW", "MEDIUM", "HIGH"],
+    "confidence_range": {
+      "minimum": 0,
+      "maximum": 1
+    },
+    "boundary_check_fields": [
+      "understands_profile_not_implementation",
+      "understands_observation_not_evidence",
+      "understands_schema_pass_not_conformance",
+      "understands_recommendation_not_authorization",
+      "understands_no_provider_support",
+      "understands_no_runtime_or_release"
+    ],
+    "hidden_reasoning_requested": false
+  },
+  "candidate_thresholds_not_adopted": {
+    "sessions_max": 4,
+    "qualifying_sessions_min": 3,
+    "recommended_or_conditional_min": 2,
+    "would_recommend_min": 2,
+    "would_call_or_reuse_min": 2,
+    "authority_safety_failures_max": 0,
+    "provider_bindings": "NOT_DECIDED"
+  },
+  "non_claims": [
+    "AGENT_REVIEW_IS_NOT_HUMAN_CUSTOMER_EVIDENCE",
+    "AGENT_REVIEW_IS_NOT_MARKET_ADOPTION",
+    "AGENT_RECOMMENDATION_IS_NOT_IMPLEMENTATION_AUTHORIZATION",
+    "SCHEMA_VALID_RESPONSE_IS_NOT_PROVIDER_CORRECTNESS",
+    "REVIEW_PASS_IS_NOT_CONFORMANCE",
+    "REVIEW_PASS_IS_NOT_RELEASE_OR_COMMERCIAL_AVAILABILITY"
+  ],
+  "execution_boundary": {
+    "agent_review_authorized": false,
+    "network_requests_authorized": false,
+    "model_requests_authorized": false,
+    "credential_reads_authorized": false,
+    "retry_allowed": false,
+    "fallback_allowed": false,
+    "model_substitution_allowed": false,
+    "alias_inference_allowed": false,
+    "json_repair_allowed": false,
+    "raw_response_persistence_allowed": false,
+    "sanitized_result_sink_required": true,
+    "failure_retention_required": true
+  },
+  "next_action": "FORM_EXACT_PRE44_AGENT_CUSTOMER_REVIEW_RECOMMENDATION_AND_DECISION"
+}
