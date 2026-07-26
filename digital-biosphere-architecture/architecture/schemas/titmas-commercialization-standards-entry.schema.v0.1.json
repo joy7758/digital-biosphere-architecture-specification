@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_24_CONTRACT_ADOPTION_REVIEW_RECOMMENDATION_PREPARED_DECISION_READY_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_24_CONTRACT_ADOPTION_REVIEW_INCOMPLETE_FAIL_CLOSED_REVISION_RECOMMENDATION_READY_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1212,12 +1212,20 @@
         "pre24_contract_adoption_review_recommendation_prepared",
         "pre24_recommendation_remote_verified",
         "pre24_decision_recorded",
+        "pre24_authorization_baseline_remote_verified",
+        "pre24_authorization_receipt_remote_verified",
         "pre24_review_execution_authorized",
         "pre24_review_sessions_executed",
+        "pre24_query_bindings_matched",
+        "pre24_response_schema_pass",
+        "pre24_qualifying_reviews",
+        "pre24_advisory_findings_retained",
+        "pre24_contract_adoption_review_completed",
         "pre24_formal_adoption_decision_ready",
         "pre24_contract_candidates_adopted",
         "pre24_implementation_created",
         "pre24_live_rerun_ready",
+        "pre24_review_failure_revision_recommendation_ready",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1594,13 +1602,34 @@
           "const": true
         },
         "pre24_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "pre24_authorization_baseline_remote_verified": {
+          "const": true
+        },
+        "pre24_authorization_receipt_remote_verified": {
+          "const": true
         },
         "pre24_review_execution_authorized": {
-          "const": false
+          "const": true
         },
         "pre24_review_sessions_executed": {
+          "const": 2
+        },
+        "pre24_query_bindings_matched": {
+          "const": 2
+        },
+        "pre24_response_schema_pass": {
+          "const": 1
+        },
+        "pre24_qualifying_reviews": {
           "const": 0
+        },
+        "pre24_advisory_findings_retained": {
+          "const": 3
+        },
+        "pre24_contract_adoption_review_completed": {
+          "const": false
         },
         "pre24_formal_adoption_decision_ready": {
           "const": false
@@ -1613,6 +1642,9 @@
         },
         "pre24_live_rerun_ready": {
           "const": false
+        },
+        "pre24_review_failure_revision_recommendation_ready": {
+          "const": true
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -2062,6 +2094,23 @@
         "provider_adapter_contract_adoption_review_contract_candidates_adopted",
         "provider_adapter_contract_adoption_review_implementation_created",
         "provider_adapter_contract_adoption_review_live_rerun_ready",
+        "provider_adapter_contract_adoption_review_decision_reference",
+        "provider_adapter_contract_adoption_review_plan_reference",
+        "provider_adapter_contract_adoption_review_input_manifest_reference",
+        "provider_adapter_contract_adoption_review_request_manifest_reference",
+        "provider_adapter_contract_adoption_review_response_schema_reference",
+        "provider_adapter_contract_adoption_review_authorization_receipt_reference",
+        "provider_adapter_contract_adoption_review_session_schema_reference",
+        "provider_adapter_contract_adoption_review_kimi_result_reference",
+        "provider_adapter_contract_adoption_review_deepseek_result_reference",
+        "provider_adapter_contract_adoption_review_validation_result_reference",
+        "provider_adapter_contract_adoption_review_execution_receipt_reference",
+        "provider_adapter_contract_adoption_review_report_reference",
+        "provider_adapter_contract_adoption_review_query_bindings_matched",
+        "provider_adapter_contract_adoption_review_response_schema_pass",
+        "provider_adapter_contract_adoption_review_qualifying_reviews",
+        "provider_adapter_contract_adoption_review_advisory_findings_retained",
+        "provider_adapter_contract_adoption_review_completed",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -2080,7 +2129,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE24_CONTRACT_ADOPTION_REVIEW_RECOMMENDATION_PREPARED_DECISION_READY"
+          "const": "PRE24_CONTRACT_ADOPTION_REVIEW_INCOMPLETE_FAIL_CLOSED_REVISION_RECOMMENDATION_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -3144,6 +3193,57 @@
         "provider_adapter_contract_adoption_review_live_rerun_ready": {
           "const": false
         },
+        "provider_adapter_contract_adoption_review_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-DECISION-RECORD.v0.1.json"
+        },
+        "provider_adapter_contract_adoption_review_plan_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-plan.v0.1.json"
+        },
+        "provider_adapter_contract_adoption_review_input_manifest_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-input-manifest.v0.1.json"
+        },
+        "provider_adapter_contract_adoption_review_request_manifest_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-request-manifest.v0.1.json"
+        },
+        "provider_adapter_contract_adoption_review_response_schema_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-response.schema.v0.1.json"
+        },
+        "provider_adapter_contract_adoption_review_authorization_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-authorization-receipt.v0.1.json"
+        },
+        "provider_adapter_contract_adoption_review_session_schema_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-session-result.schema.v0.1.json"
+        },
+        "provider_adapter_contract_adoption_review_kimi_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-kimi-session-result.v0.1.json"
+        },
+        "provider_adapter_contract_adoption_review_deepseek_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-deepseek-session-result.v0.1.json"
+        },
+        "provider_adapter_contract_adoption_review_validation_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-validation-result.v0.1.json"
+        },
+        "provider_adapter_contract_adoption_review_execution_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/contract-adoption-review-execution-receipt.v0.1.json"
+        },
+        "provider_adapter_contract_adoption_review_report_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/PRE-24-CONTRACT-ADOPTION-REVIEW-RESULT-v0.1.md"
+        },
+        "provider_adapter_contract_adoption_review_query_bindings_matched": {
+          "const": 2
+        },
+        "provider_adapter_contract_adoption_review_response_schema_pass": {
+          "const": 1
+        },
+        "provider_adapter_contract_adoption_review_qualifying_reviews": {
+          "const": 0
+        },
+        "provider_adapter_contract_adoption_review_advisory_findings_retained": {
+          "const": 3
+        },
+        "provider_adapter_contract_adoption_review_completed": {
+          "const": false
+        },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
         },
@@ -3160,10 +3260,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE24_CONTRACT_ADOPTION_REVIEW_DECISION_ONLY"
+          "const": "PREPARE_SEPARATE_PRE24_REVIEW_FAILURE_AND_CONTRACT_REVISION_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
-          "const": true
+          "const": false
         },
         "external_execution_authorized": {
           "const": false

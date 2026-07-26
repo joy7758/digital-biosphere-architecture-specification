@@ -303,9 +303,11 @@ answer 失败关闭；model policy candidate 禁止自动接受未记录 alias�
 
 `CS-D02-PRE-24`
 [contract adoption review recommendation](TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-RECOMMENDATION-v0.1.md)
-已在远端准备：建议只允许 `kimi-k2.6` 与 `deepseek-chat` 各一次只读、结构化契约审查，
-零 retry、零 fallback、零 JSON repair。当前尚未形成 PRE-24 Decision，review session
-执行数为 0；Review 不等于 Adoption，候选契约、实现和 live rerun 继续为 false。
+随后经独立 Decision 和远端 authorization receipt 执行两个只读 session：Kimi timeout；
+DeepSeek HTTP 200 且 response Schema PASS，但 `deepseek-chat` / `deepseek-v4-flash`
+model mismatch。结果为 [0 qualifying review 的失败关闭](commercialization-standards-provider-adapter-profile-review-remediation/PRE-24-CONTRACT-ADOPTION-REVIEW-RESULT-v0.1.md)。
+3 个 advisory finding 已保留，但没有 adoption effect；候选契约、实现和 live rerun 继续为
+false。
 
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false
