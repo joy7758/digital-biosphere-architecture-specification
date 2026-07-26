@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre14-bounded-provider-confirmation-plan.schema.v0.1.json",
+  "title": "TITMAS PRE-14 Bounded Provider Confirmation Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "decision_record_reference",
+    "predecessor_commits",
+    "frozen_artifacts",
+    "sessions",
+    "confirmation_gate",
+    "controls",
+    "stop_conditions",
+    "execution_gate",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./execution-plan.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-14-BOUNDED-PROVIDER-CONFIRMATION-PLAN-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED"
+    },
+    "observed_on": {
+      "const": "2026-07-26"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-14"
+    },
+    "decision_record_reference": {
+      "const": "../TITMAS-CS-D02-PRE-14-BOUNDED-PROVIDER-CONFIRMATION-DECISION-RECORD.v0.1.json"
+    },
+    "predecessor_commits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre13_result_commit",
+        "pre14_recommendation_commit"
+      ],
+      "properties": {
+        "pre13_result_commit": {
+          "const": "48a11669cbe8cddfad06153a772f4d4cb8c1c67b"
+        },
+        "pre14_recommendation_commit": {
+          "const": "116b59476a9b833e21d330bb1d8ac07a84bf114e"
+        }
+      }
+    },
+    "frozen_artifacts": {
+      "$ref": "#/$defs/frozenArtifacts"
+    },
+    "sessions": {
+      "type": "array",
+      "prefixItems": [
+        {"$ref": "#/$defs/qianfanSession"},
+        {"$ref": "#/$defs/deepseekSession"}
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "confirmation_gate": {
+      "$ref": "#/$defs/confirmationGate"
+    },
+    "controls": {
+      "$ref": "#/$defs/controls"
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 10
+      }
+    },
+    "execution_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorization_baseline_committed",
+        "authorization_baseline_pushed",
+        "authorization_baseline_remote_verified",
+        "execution_started"
+      ],
+      "properties": {
+        "authorization_baseline_committed": {"const": false},
+        "authorization_baseline_pushed": {"const": false},
+        "authorization_baseline_remote_verified": {"const": false},
+        "execution_started": {"const": false}
+      }
+    },
+    "non_effects": {
+      "$ref": "#/$defs/nonEffects"
+    }
+  },
+  "$defs": {
+    "frozenArtifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_reference",
+        "recommendation_sha256",
+        "rendered_request_contract_reference",
+        "rendered_request_contract_sha256",
+        "provider_binding_fixtures_reference",
+        "provider_binding_fixtures_sha256",
+        "pre13_offline_result_reference",
+        "pre13_offline_result_sha256",
+        "response_schema_reference",
+        "response_schema_sha256",
+        "candidate_set_reference",
+        "candidate_set_sha256"
+      ],
+      "properties": {
+        "recommendation_reference": {"const": "../TITMAS-CS-D02-PRE-14-BOUNDED-PROVIDER-CONFIRMATION-RECOMMENDATION-v0.1.md"},
+        "recommendation_sha256": {"const": "a089dfc118d8f3afb1d8d1a728a3bb55999cf7ee5d56dab6c596ddff1c518f8d"},
+        "rendered_request_contract_reference": {"const": "../commercialization-standards-public-source-record-review-contract-remediation/rendered-request-contract.v0.1.txt"},
+        "rendered_request_contract_sha256": {"const": "3e3f454b395f4b6656571dfeef4929cf44cb685e85ef177f1d75b4ee2c696219"},
+        "provider_binding_fixtures_reference": {"const": "../commercialization-standards-public-source-record-review-contract-remediation/provider-binding-fixtures.v0.1.json"},
+        "provider_binding_fixtures_sha256": {"const": "8b05196212f1261d9b66c40808f6a2dc3d5decebcdc30fb07c4041422c8c17f2"},
+        "pre13_offline_result_reference": {"const": "../commercialization-standards-public-source-record-review-contract-remediation/offline-validation-result.v0.1.json"},
+        "pre13_offline_result_sha256": {"const": "a8ecbf6c8b9061ff03a9f23b0d2a37c7e65092e51fa15e842cb23f3c5b53289b"},
+        "response_schema_reference": {"const": "../commercialization-standards-public-source-record-review/agent-record-review-response.schema.v0.1.json"},
+        "response_schema_sha256": {"const": "0f3df0688993fe300bae1f8d2c1cb67c0fd31fecbdabcbb89d5a1819c803ccd8"},
+        "candidate_set_reference": {"const": "../commercialization-standards-public-source-problem-validation/source-candidate-set.v0.1.json"},
+        "candidate_set_sha256": {"const": "f7253e3e2545b1200f1a7eb27b9ce5d323e1eb090b2c1178e112707983ba6300"}
+      }
+    },
+    "sessionBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "provider_gateway",
+        "endpoint_host",
+        "model",
+        "role",
+        "request_field",
+        "response_format",
+        "role_specific_request_sha256",
+        "requests_max"
+      ],
+      "properties": {
+        "session_id": {"type": "string", "minLength": 10},
+        "provider_gateway": {"enum": ["qianfan_installed_tool", "deepseek_direct"]},
+        "endpoint_host": {"enum": ["qianfan.baidubce.com", "api.deepseek.com"]},
+        "model": {"enum": ["kimi-k2.6", "deepseek-v4-pro"]},
+        "role": {"enum": ["SOURCE_QUALIFICATION_REVIEWER", "CLAIM_AND_PRIVACY_REVIEWER"]},
+        "request_field": {"enum": ["query", "messages[0].content"]},
+        "response_format": {"enum": ["PROVIDER_DEFAULT_JSON_TEXT", "JSON_OBJECT"]},
+        "role_specific_request_sha256": {
+          "enum": [
+            "1e0f4d0efbccf31a4fbbc1d4cffab9f1bc4308acee3e8cb8324c0769e5ed4638",
+            "549f2e57be0f863a1a6a6af465a8d5ae8ef66b956c67f43b6597f0ba85c01a52"
+          ]
+        },
+        "requests_max": {"const": 1}
+      }
+    },
+    "qianfanSession": {
+      "allOf": [
+        {"$ref": "#/$defs/sessionBase"},
+        {
+          "properties": {
+            "session_id": {"const": "QF-KIMI-SCHEMA-CONFIRM-PRE14-P1"},
+            "provider_gateway": {"const": "qianfan_installed_tool"},
+            "endpoint_host": {"const": "qianfan.baidubce.com"},
+            "model": {"const": "kimi-k2.6"},
+            "role": {"const": "SOURCE_QUALIFICATION_REVIEWER"},
+            "request_field": {"const": "query"},
+            "response_format": {"const": "PROVIDER_DEFAULT_JSON_TEXT"},
+            "role_specific_request_sha256": {"const": "1e0f4d0efbccf31a4fbbc1d4cffab9f1bc4308acee3e8cb8324c0769e5ed4638"}
+          }
+        }
+      ]
+    },
+    "deepseekSession": {
+      "allOf": [
+        {"$ref": "#/$defs/sessionBase"},
+        {
+          "properties": {
+            "session_id": {"const": "DS-V4PRO-SCHEMA-CONFIRM-PRE14-P2"},
+            "provider_gateway": {"const": "deepseek_direct"},
+            "endpoint_host": {"const": "api.deepseek.com"},
+            "model": {"const": "deepseek-v4-pro"},
+            "role": {"const": "CLAIM_AND_PRIVACY_REVIEWER"},
+            "request_field": {"const": "messages[0].content"},
+            "response_format": {"const": "JSON_OBJECT"},
+            "role_specific_request_sha256": {"const": "549f2e57be0f863a1a6a6af465a8d5ae8ef66b956c67f43b6597f0ba85c01a52"}
+          }
+        }
+      ]
+    },
+    "confirmationGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requests_executed_required",
+        "schema_conformant_responses_required",
+        "providers_with_schema_conformant_response_required",
+        "candidate_ids_covered_required",
+        "boundary_failures_max",
+        "all_conditions_required"
+      ],
+      "properties": {
+        "requests_executed_required": {"const": 2},
+        "schema_conformant_responses_required": {"const": 2},
+        "providers_with_schema_conformant_response_required": {"const": 2},
+        "candidate_ids_covered_required": {"const": 4},
+        "boundary_failures_max": {"const": 0},
+        "all_conditions_required": {"const": true}
+      }
+    },
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total_live_model_requests_max",
+        "retry_allowed",
+        "fallback_model_allowed",
+        "json_repair_allowed",
+        "tools_allowed",
+        "new_source_search_allowed",
+        "new_source_collection_allowed",
+        "customer_or_personal_data_allowed",
+        "direct_personal_identifiers_allowed",
+        "raw_provider_body_persisted",
+        "token_usage_persisted",
+        "hidden_reasoning_persisted",
+        "secret_in_artifact_allowed",
+        "automatic_valid_status_allowed",
+        "automatic_counting_allowed",
+        "full_candidate_review_rerun_allowed"
+      ],
+      "properties": {
+        "total_live_model_requests_max": {"const": 2},
+        "retry_allowed": {"const": false},
+        "fallback_model_allowed": {"const": false},
+        "json_repair_allowed": {"const": false},
+        "tools_allowed": {"const": false},
+        "new_source_search_allowed": {"const": false},
+        "new_source_collection_allowed": {"const": false},
+        "customer_or_personal_data_allowed": {"const": false},
+        "direct_personal_identifiers_allowed": {"const": false},
+        "raw_provider_body_persisted": {"const": false},
+        "token_usage_persisted": {"const": false},
+        "hidden_reasoning_persisted": {"const": false},
+        "secret_in_artifact_allowed": {"const": false},
+        "automatic_valid_status_allowed": {"const": false},
+        "automatic_counting_allowed": {"const": false},
+        "full_candidate_review_rerun_allowed": {"const": false}
+      }
+    },
+    "nonEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_schema_confirmation_completed",
+        "candidate_review_completed",
+        "candidate_status_changed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "customer_adoption",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "provider_schema_confirmation_completed": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "candidate_status_changed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "market_validation_pass": {"const": false},
+        "customer_adoption": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,281 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-14-bounded-provider-confirmation-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-14 Bounded Provider Confirmation Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_id",
+    "decision_result",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_remote_commit",
+    "decided_by_ref",
+    "executed_by_ref",
+    "primary_repository",
+    "execution_plan_reference",
+    "scope",
+    "preconditions",
+    "confirmation_gate",
+    "stop_conditions",
+    "execution_started",
+    "execution_completed",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-14-bounded-provider-confirmation-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-14-BOUNDED-PROVIDER-CONFIRMATION-DECISION-RECORD-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DECIDED_TWO_PROVIDER_SCHEMA_CONFIRMATION_AUTHORIZED_NOT_EXECUTED"
+    },
+    "observed_on": {
+      "const": "2026-07-26"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-14"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_TWO_PROVIDER_SCHEMA_CONFIRMATION_REQUESTS_ONLY"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-14-BOUNDED-PROVIDER-CONFIRMATION-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "a089dfc118d8f3afb1d8d1a728a3bb55999cf7ee5d56dab6c596ddff1c518f8d"
+    },
+    "recommendation_remote_commit": {
+      "const": "116b59476a9b833e21d330bb1d8ac07a84bf114e"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "executed_by_ref": {
+      "const": "codex"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "execution_plan_reference": {
+      "const": "commercialization-standards-public-source-record-provider-confirmation/execution-plan.v0.1.json"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "preconditions": {
+      "$ref": "#/$defs/preconditions"
+    },
+    "confirmation_gate": {
+      "$ref": "#/$defs/confirmationGate"
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 10
+      }
+    },
+    "execution_started": {
+      "const": false
+    },
+    "execution_completed": {
+      "const": false
+    },
+    "effects": {
+      "$ref": "#/$defs/effects"
+    }
+  },
+  "$defs": {
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qianfan_requests_max",
+        "deepseek_requests_max",
+        "total_live_model_requests_max",
+        "provider_gateways",
+        "model_identities",
+        "reviewer_roles",
+        "retry_allowed",
+        "fallback_allowed",
+        "json_repair_allowed",
+        "tools_allowed",
+        "new_source_search_allowed",
+        "new_source_collection_allowed",
+        "raw_provider_body_persisted",
+        "direct_personal_identifiers_allowed"
+      ],
+      "properties": {
+        "qianfan_requests_max": {
+          "const": 1
+        },
+        "deepseek_requests_max": {
+          "const": 1
+        },
+        "total_live_model_requests_max": {
+          "const": 2
+        },
+        "provider_gateways": {
+          "const": [
+            "qianfan_installed_tool",
+            "deepseek_direct"
+          ]
+        },
+        "model_identities": {
+          "const": [
+            "kimi-k2.6",
+            "deepseek-v4-pro"
+          ]
+        },
+        "reviewer_roles": {
+          "const": [
+            "SOURCE_QUALIFICATION_REVIEWER",
+            "CLAIM_AND_PRIVACY_REVIEWER"
+          ]
+        },
+        "retry_allowed": {
+          "const": false
+        },
+        "fallback_allowed": {
+          "const": false
+        },
+        "json_repair_allowed": {
+          "const": false
+        },
+        "tools_allowed": {
+          "const": false
+        },
+        "new_source_search_allowed": {
+          "const": false
+        },
+        "new_source_collection_allowed": {
+          "const": false
+        },
+        "raw_provider_body_persisted": {
+          "const": false
+        },
+        "direct_personal_identifiers_allowed": {
+          "const": false
+        }
+      }
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_recorded",
+        "single_exact_action",
+        "pre13_offline_remediation_remote_verified",
+        "pre14_recommendation_remote_verified",
+        "provider_bindings_offline_validated",
+        "public_safe_inputs_required",
+        "frozen_plan_and_schema_required",
+        "authorization_baseline_push_required_before_live_request",
+        "false_effects_defined",
+        "stop_conditions_defined",
+        "later_conflicting_decision_found",
+        "standing_directive_applicable"
+      ],
+      "properties": {
+        "canonical_recommendation_recorded": {"const": true},
+        "single_exact_action": {"const": true},
+        "pre13_offline_remediation_remote_verified": {"const": true},
+        "pre14_recommendation_remote_verified": {"const": true},
+        "provider_bindings_offline_validated": {"const": true},
+        "public_safe_inputs_required": {"const": true},
+        "frozen_plan_and_schema_required": {"const": true},
+        "authorization_baseline_push_required_before_live_request": {"const": true},
+        "false_effects_defined": {"const": true},
+        "stop_conditions_defined": {"const": true},
+        "later_conflicting_decision_found": {"const": false},
+        "standing_directive_applicable": {"const": true}
+      }
+    },
+    "confirmationGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requests_executed_required",
+        "schema_conformant_responses_required",
+        "providers_with_schema_conformant_response_required",
+        "candidate_ids_covered_required",
+        "boundary_failures_max",
+        "all_conditions_required"
+      ],
+      "properties": {
+        "requests_executed_required": {"const": 2},
+        "schema_conformant_responses_required": {"const": 2},
+        "providers_with_schema_conformant_response_required": {"const": 2},
+        "candidate_ids_covered_required": {"const": 4},
+        "boundary_failures_max": {"const": 0},
+        "all_conditions_required": {"const": true}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bounded_live_model_requests_authorized",
+        "authority",
+        "ownership",
+        "implementation",
+        "runtime",
+        "agent_instance",
+        "entity",
+        "permission",
+        "provider_schema_confirmation_completed",
+        "candidate_review_completed",
+        "candidate_status_change",
+        "record_counting",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation",
+        "customer_adoption",
+        "external_outreach",
+        "commercial_offer",
+        "certification",
+        "release"
+      ],
+      "properties": {
+        "bounded_live_model_requests_authorized": {"const": true},
+        "authority": {"const": false},
+        "ownership": {"const": false},
+        "implementation": {"const": false},
+        "runtime": {"const": false},
+        "agent_instance": {"const": false},
+        "entity": {"const": false},
+        "permission": {"const": false},
+        "provider_schema_confirmation_completed": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "candidate_status_change": {"const": false},
+        "record_counting": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "market_validation": {"const": false},
+        "customer_adoption": {"const": false},
+        "external_outreach": {"const": false},
+        "commercial_offer": {"const": false},
+        "certification": {"const": false},
+        "release": {"const": false}
+      }
+    }
+  }
+}

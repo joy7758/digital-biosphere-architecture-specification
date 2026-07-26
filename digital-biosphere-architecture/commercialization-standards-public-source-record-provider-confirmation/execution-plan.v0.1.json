@@ -1,0 +1,107 @@
+{
+  "$schema": "./execution-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-14-BOUNDED-PROVIDER-CONFIRMATION-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-14",
+  "decision_record_reference": "../TITMAS-CS-D02-PRE-14-BOUNDED-PROVIDER-CONFIRMATION-DECISION-RECORD.v0.1.json",
+  "predecessor_commits": {
+    "pre13_result_commit": "48a11669cbe8cddfad06153a772f4d4cb8c1c67b",
+    "pre14_recommendation_commit": "116b59476a9b833e21d330bb1d8ac07a84bf114e"
+  },
+  "frozen_artifacts": {
+    "recommendation_reference": "../TITMAS-CS-D02-PRE-14-BOUNDED-PROVIDER-CONFIRMATION-RECOMMENDATION-v0.1.md",
+    "recommendation_sha256": "a089dfc118d8f3afb1d8d1a728a3bb55999cf7ee5d56dab6c596ddff1c518f8d",
+    "rendered_request_contract_reference": "../commercialization-standards-public-source-record-review-contract-remediation/rendered-request-contract.v0.1.txt",
+    "rendered_request_contract_sha256": "3e3f454b395f4b6656571dfeef4929cf44cb685e85ef177f1d75b4ee2c696219",
+    "provider_binding_fixtures_reference": "../commercialization-standards-public-source-record-review-contract-remediation/provider-binding-fixtures.v0.1.json",
+    "provider_binding_fixtures_sha256": "8b05196212f1261d9b66c40808f6a2dc3d5decebcdc30fb07c4041422c8c17f2",
+    "pre13_offline_result_reference": "../commercialization-standards-public-source-record-review-contract-remediation/offline-validation-result.v0.1.json",
+    "pre13_offline_result_sha256": "a8ecbf6c8b9061ff03a9f23b0d2a37c7e65092e51fa15e842cb23f3c5b53289b",
+    "response_schema_reference": "../commercialization-standards-public-source-record-review/agent-record-review-response.schema.v0.1.json",
+    "response_schema_sha256": "0f3df0688993fe300bae1f8d2c1cb67c0fd31fecbdabcbb89d5a1819c803ccd8",
+    "candidate_set_reference": "../commercialization-standards-public-source-problem-validation/source-candidate-set.v0.1.json",
+    "candidate_set_sha256": "f7253e3e2545b1200f1a7eb27b9ce5d323e1eb090b2c1178e112707983ba6300"
+  },
+  "sessions": [
+    {
+      "session_id": "QF-KIMI-SCHEMA-CONFIRM-PRE14-P1",
+      "provider_gateway": "qianfan_installed_tool",
+      "endpoint_host": "qianfan.baidubce.com",
+      "model": "kimi-k2.6",
+      "role": "SOURCE_QUALIFICATION_REVIEWER",
+      "request_field": "query",
+      "response_format": "PROVIDER_DEFAULT_JSON_TEXT",
+      "role_specific_request_sha256": "1e0f4d0efbccf31a4fbbc1d4cffab9f1bc4308acee3e8cb8324c0769e5ed4638",
+      "requests_max": 1
+    },
+    {
+      "session_id": "DS-V4PRO-SCHEMA-CONFIRM-PRE14-P2",
+      "provider_gateway": "deepseek_direct",
+      "endpoint_host": "api.deepseek.com",
+      "model": "deepseek-v4-pro",
+      "role": "CLAIM_AND_PRIVACY_REVIEWER",
+      "request_field": "messages[0].content",
+      "response_format": "JSON_OBJECT",
+      "role_specific_request_sha256": "549f2e57be0f863a1a6a6af465a8d5ae8ef66b956c67f43b6597f0ba85c01a52",
+      "requests_max": 1
+    }
+  ],
+  "confirmation_gate": {
+    "requests_executed_required": 2,
+    "schema_conformant_responses_required": 2,
+    "providers_with_schema_conformant_response_required": 2,
+    "candidate_ids_covered_required": 4,
+    "boundary_failures_max": 0,
+    "all_conditions_required": true
+  },
+  "controls": {
+    "total_live_model_requests_max": 2,
+    "retry_allowed": false,
+    "fallback_model_allowed": false,
+    "json_repair_allowed": false,
+    "tools_allowed": false,
+    "new_source_search_allowed": false,
+    "new_source_collection_allowed": false,
+    "customer_or_personal_data_allowed": false,
+    "direct_personal_identifiers_allowed": false,
+    "raw_provider_body_persisted": false,
+    "token_usage_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "secret_in_artifact_allowed": false,
+    "automatic_valid_status_allowed": false,
+    "automatic_counting_allowed": false,
+    "full_candidate_review_rerun_allowed": false
+  },
+  "stop_conditions": [
+    "AUTHORIZATION_BASELINE_NOT_REMOTE",
+    "FROZEN_ARTIFACT_OR_DIGEST_MISMATCH",
+    "MODEL_ENDPOINT_ROLE_RENDERED_BYTES_SCHEMA_THRESHOLD_OR_CAP_DRIFT",
+    "RETRY_OR_FALLBACK_ATTEMPTED",
+    "TOOL_USE_OR_JSON_REPAIR_ATTEMPTED",
+    "SECRET_PERSONAL_CUSTOMER_RAW_BODY_USAGE_OR_REASONING_DATA_DETECTED",
+    "AUTOMATIC_VALID_COUNTING_GATE_CUSTOMER_MARKET_OR_COMMERCIAL_EFFECT_ATTEMPTED"
+  ],
+  "execution_gate": {
+    "authorization_baseline_committed": false,
+    "authorization_baseline_pushed": false,
+    "authorization_baseline_remote_verified": false,
+    "execution_started": false
+  },
+  "non_effects": {
+    "provider_schema_confirmation_completed": false,
+    "candidate_review_completed": false,
+    "candidate_status_changed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
