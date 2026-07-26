@@ -1,0 +1,63 @@
+{
+  "$schema": "./contract-adoption-review-authorization-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-AUTHORIZATION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-24",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "target_branch": "codex/production-observability-baseline",
+  "authorization_baseline_commit": "0302e0bf41911b08469d149bea3b0058131cd17f",
+  "remote_head_verified": "0302e0bf41911b08469d149bea3b0058131cd17f",
+  "remote_ancestor_check_pass": true,
+  "bindings": [
+    {"artifact": "../TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-DECISION-RECORD.md", "sha256": "705da38afb4824afe539ac8b67a66131a2f92df85415497216ba20ab029dc909"},
+    {"artifact": "../TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-DECISION-RECORD.v0.1.json", "sha256": "8289f8c8b5e0af0d6066bf0a8902ebe91ca772bdb49863489b1c55258c07377b"},
+    {"artifact": "../architecture/schemas/titmas-cs-d02-pre-24-contract-adoption-review-decision-record.schema.v0.1.json", "sha256": "eea6183f927514f4cf51cec98e0de0f12a802f932659d68e6619edc6255e62eb"},
+    {"artifact": "contract-adoption-review-plan.v0.1.json", "sha256": "6c471effacdac0f6124a403949b193c7785bb47be8c4bd7247335120ae9970cf"},
+    {"artifact": "contract-adoption-review-plan.schema.v0.1.json", "sha256": "a72f8bcdf3b98ef608f42821fb0f80783cfcd82a41b7f9e89090bf376ec611f4"},
+    {"artifact": "contract-adoption-review-input-manifest.v0.1.json", "sha256": "d1ef168ef7267a9b99f67e8893e593984ae40629092599e6a38fd60fbdce572e"},
+    {"artifact": "contract-adoption-review-input-manifest.schema.v0.1.json", "sha256": "6cac8cd6c09e94554c68fa8751bec2913fbd3fe1e64bfe0d48dd6a5947c9db0a"},
+    {"artifact": "contract-adoption-review-request-manifest.v0.1.json", "sha256": "4adb42ed57f9c0da909a6161d4b69972e944243ae24b300b93fac3927b0e57ee"},
+    {"artifact": "contract-adoption-review-request-manifest.schema.v0.1.json", "sha256": "7b18c174189efcaf92d4a537710286567dff678cf746021a0375058726ff8c0b"},
+    {"artifact": "contract-adoption-review-response.schema.v0.1.json", "sha256": "808f1c8697a7445e14880bf125fd968324361197614e93238f21357d75706049"},
+    {"artifact": "contract-adoption-review-response-fixtures.v0.1.json", "sha256": "b68994b3af1d356dac5f1150f34c11ced9f56654acd2d86fdf9d94b4f8214a2d"},
+    {"artifact": "contract-adoption-review-response-fixtures.schema.v0.1.json", "sha256": "c22b4d14ef90bf61a95d2fcbf7cbf0716da9b4682fa07a3179d87857156abc80"},
+    {"artifact": "contract-adoption-review-query-template.v0.1.txt", "sha256": "eb1c8debd8c299d833eeb4329cf25889f00f5421b23f4e0a8f281811b4e3aae9"}
+  ],
+  "preexecution_validation": {
+    "binding_hashes_matched": 13,
+    "binding_hashes_total": 13,
+    "input_manifest_hashes_matched": 15,
+    "input_manifest_hashes_total": 15,
+    "schema_instances_validated": 5,
+    "schema_instances_total": 5,
+    "response_schema_meta_valid": true,
+    "response_fixture_expectations_matched": 4,
+    "response_fixture_expectations_total": 4,
+    "query_bindings_matched": 2,
+    "query_bindings_total": 2
+  },
+  "execution_accounting": {
+    "review_sessions_authorized": 2,
+    "review_sessions_executed": 0,
+    "live_model_requests_authorized": 2,
+    "live_model_requests_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "effects": {
+    "contract_candidates_adopted": false,
+    "implementation_created": false,
+    "live_review_rerun_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

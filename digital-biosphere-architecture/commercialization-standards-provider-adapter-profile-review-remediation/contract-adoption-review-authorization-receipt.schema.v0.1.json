@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:contract-adoption-review-authorization-receipt:0.1",
+  "title": "TITMAS Contract Adoption Review Authorization Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "standing_directive_reference", "target_branch", "authorization_baseline_commit", "remote_head_verified", "remote_ancestor_check_pass", "bindings", "preexecution_validation", "execution_accounting", "effects"],
+  "properties": {
+    "$schema": {"const": "./contract-adoption-review-authorization-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-AUTHORIZATION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-24"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "target_branch": {"const": "codex/production-observability-baseline"},
+    "authorization_baseline_commit": {"const": "0302e0bf41911b08469d149bea3b0058131cd17f"},
+    "remote_head_verified": {"const": "0302e0bf41911b08469d149bea3b0058131cd17f"},
+    "remote_ancestor_check_pass": {"const": true},
+    "bindings": {
+      "type": "array",
+      "minItems": 13,
+      "maxItems": 13,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact", "sha256"],
+        "properties": {
+          "artifact": {"type": "string", "minLength": 8},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "preexecution_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["binding_hashes_matched", "binding_hashes_total", "input_manifest_hashes_matched", "input_manifest_hashes_total", "schema_instances_validated", "schema_instances_total", "response_schema_meta_valid", "response_fixture_expectations_matched", "response_fixture_expectations_total", "query_bindings_matched", "query_bindings_total"],
+      "properties": {
+        "binding_hashes_matched": {"const": 13},
+        "binding_hashes_total": {"const": 13},
+        "input_manifest_hashes_matched": {"const": 15},
+        "input_manifest_hashes_total": {"const": 15},
+        "schema_instances_validated": {"const": 5},
+        "schema_instances_total": {"const": 5},
+        "response_schema_meta_valid": {"const": true},
+        "response_fixture_expectations_matched": {"const": 4},
+        "response_fixture_expectations_total": {"const": 4},
+        "query_bindings_matched": {"const": 2},
+        "query_bindings_total": {"const": 2}
+      }
+    },
+    "execution_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["review_sessions_authorized", "review_sessions_executed", "live_model_requests_authorized", "live_model_requests_executed", "retry_attempts", "fallback_attempts", "repair_attempts"],
+      "properties": {
+        "review_sessions_authorized": {"const": 2},
+        "review_sessions_executed": {"const": 0},
+        "live_model_requests_authorized": {"const": 2},
+        "live_model_requests_executed": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "repair_attempts": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_candidates_adopted", "implementation_created", "live_review_rerun_executed", "profile_review_completed", "profile_adopted", "provider_supported", "conformance_executed", "valid_problem_records", "cs_g0_pass", "commercial_offer_authorized", "certification_authorized", "release_authorized"],
+      "properties": {
+        "contract_candidates_adopted": {"const": false},
+        "implementation_created": {"const": false},
+        "live_review_rerun_executed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}
