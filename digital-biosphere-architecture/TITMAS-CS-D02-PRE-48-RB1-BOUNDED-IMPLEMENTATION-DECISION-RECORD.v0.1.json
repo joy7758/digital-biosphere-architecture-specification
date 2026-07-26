@@ -1,0 +1,107 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-48-rb1-bounded-implementation-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-48-RB1-BOUNDED-IMPLEMENTATION-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "EXACT_RB1_BOUNDED_IMPLEMENTATION_AUTHORIZED_NOT_EXECUTED",
+  "decision_id": "CS-D02-PRE-48",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-48-RB1-BOUNDED-IMPLEMENTATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "fb90a4c8b30035de0c32103cc8f4c08db6228f1734d8174820e681a5d8127d6f",
+  "recommendation_commit": "323a95926107911e13501877bf3db07a3961efaf",
+  "decision_result": "AUTHORIZE_EXACT_RB1_PROVIDER_NEUTRAL_PHASE_CONTRACT_REFERENCE_IMPLEMENTATION_AND_TESTS",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-27T05:33:21+08:00",
+  "executed_by": "Codex",
+  "standing_directive_eligibility": {
+    "canonical_recommendation_present": true,
+    "single_exact_option": true,
+    "repositories_target_and_scope_explicit": true,
+    "preconditions_directly_evidenced": true,
+    "all_effect_classes_declared": true,
+    "stop_conditions_explicit": true,
+    "later_conflict_present": false,
+    "independent_decision_record_present": true,
+    "result_validation_and_failure_retention_required": true,
+    "material_actions_separately_recorded": true,
+    "applicable": true
+  },
+  "preconditions": {
+    "recommendation_remote_verified": true,
+    "recommendation_commit": "323a95926107911e13501877bf3db07a3961efaf",
+    "pre47_gate_pass": true,
+    "pre47_qualifying_sessions": 3,
+    "pre47_authority_safety_failures": 0,
+    "target_head": "f80629364752c465316b9d1238fe5447a88565ca",
+    "target_remote_branch_matched": true,
+    "target_dirty_count": 0,
+    "target_main_head": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+  },
+  "scope": {
+    "primary_repository": "digital-biosphere-architecture",
+    "target_repository": "https://github.com/joy7758/titmas-integrations.git",
+    "target_branch": "codex/rb0-governance-baseline",
+    "new_files_max": 8,
+    "updated_files_max": 6,
+    "source_files_max": 2,
+    "test_files_max": 2,
+    "public_symbols_max": 6,
+    "runtime_dependencies_max": 0,
+    "provider_dependencies_max": 0,
+    "implementation_network_calls_max": 0,
+    "provider_bindings_max": 0
+  },
+  "authorized_paths": {
+    "new": [
+      "pyproject.toml",
+      "src/titmas_integrations/__init__.py",
+      "src/titmas_integrations/instrumentation.py",
+      "schemas/phase-trace.schema.v0.1.json",
+      "tests/test_instrumentation_contract.py",
+      "tests/test_negative_boundaries.py",
+      "IMPLEMENTATION-DECLARATION.v0.1.json",
+      "schemas/implementation-declaration.schema.v0.1.json"
+    ],
+    "updated": [
+      "README.md",
+      "AGENTS.md",
+      "SECURITY.md",
+      "llms.txt",
+      "TITMAS-INTEGRATIONS-ENTRY.v0.1.json",
+      "schemas/titmas-integrations-entry.schema.v0.1.json"
+    ]
+  },
+  "effects_before_execution": {
+    "target_write_authorized": true,
+    "bounded_implementation_authorized": true,
+    "tests_authorized": true,
+    "clean_clone_validation_authorized": true,
+    "main_branch_write_authorized": false,
+    "provider_binding_authorized": false,
+    "provider_supported": false,
+    "conformance_authorized": false,
+    "runtime_authorized": false,
+    "agent_authorized": false,
+    "entity_authorized": false,
+    "permission_granted": false,
+    "evidence_truth_changed": false,
+    "merge_authorized": false,
+    "pull_request_authorized": false,
+    "release_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false
+  },
+  "rollback": {
+    "target_parent": "f80629364752c465316b9d1238fe5447a88565ca",
+    "history_rewrite_allowed": false,
+    "force_push_allowed": false,
+    "rollback_by_followup_commit_only": true
+  },
+  "next_gate": {
+    "gate_id": "CS-D02-PRE-48-EXECUTION",
+    "action": "IMPLEMENT_EXACT_14_PATH_RB1_FILESET_TEST_AND_CLEAN_CLONE_VALIDATE",
+    "provider_support_decision_allowed": false,
+    "release_decision_allowed": false
+  },
+  "execution_receipt": "PENDING_PRE48_RESULT",
+  "result": "RB1_BOUNDED_IMPLEMENTATION_NOT_EXECUTED"
+}
