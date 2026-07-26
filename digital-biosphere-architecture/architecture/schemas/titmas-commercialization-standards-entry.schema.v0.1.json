@@ -2614,9 +2614,42 @@
         "http_phase_instrumentation_live_model_requests_max",
         "http_phase_instrumentation_credential_reads_max",
         "http_phase_instrumentation_decision_recorded",
+        "http_phase_instrumentation_decision_reference",
+        "http_phase_instrumentation_decision_sha256",
+        "http_phase_instrumentation_decision_commit",
+        "http_phase_instrumentation_authorization_receipt_reference",
+        "http_phase_instrumentation_authorization_receipt_sha256",
+        "http_phase_instrumentation_authorization_receipt_commit",
+        "http_phase_instrumentation_validation_result_reference",
+        "http_phase_instrumentation_validation_result_sha256",
+        "http_phase_instrumentation_execution_receipt_reference",
+        "http_phase_instrumentation_execution_receipt_sha256",
+        "http_phase_instrumentation_report_reference",
+        "http_phase_instrumentation_report_sha256",
+        "http_phase_instrumentation_result_commit",
+        "http_phase_instrumentation_execution_was_authorized",
         "http_phase_instrumentation_offline_validation_authorized",
+        "http_phase_instrumentation_executed",
         "http_phase_instrumentation_synthetic_fixtures_validated",
+        "http_phase_instrumentation_expected_outcomes_match",
+        "http_phase_instrumentation_boundary_failures",
+        "http_phase_instrumentation_contract_candidate_ready_for_adoption_review",
+        "http_phase_instrumentation_contract_candidate_adopted",
         "http_phase_instrumentation_implementation_created",
+        "http_phase_instrumentation_adoption_decision_candidate_id",
+        "http_phase_instrumentation_adoption_recommendation_reference",
+        "http_phase_instrumentation_adoption_recommendation_sha256",
+        "http_phase_instrumentation_adoption_recommendation_commit",
+        "http_phase_instrumentation_adoption_exact_action",
+        "http_phase_instrumentation_adoption_contract_reference",
+        "http_phase_instrumentation_adoption_contract_sha256",
+        "http_phase_instrumentation_adoption_schema_reference",
+        "http_phase_instrumentation_adoption_schema_sha256",
+        "http_phase_instrumentation_adoption_maturity",
+        "http_phase_instrumentation_adoption_decision_recorded",
+        "http_phase_instrumentation_adopted",
+        "http_phase_instrumentation_runtime_active",
+        "http_phase_instrumentation_model_retry_authorized",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -2635,7 +2668,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE29_LOWER_LAYER_PASS_PRE30_OFFLINE_INSTRUMENTATION_CONTRACT_RECOMMENDATION_PREPARED_DECISION_READY"
+          "const": "PRE30_OFFLINE_PASS_PRE31_DEVELOPMENT_ADOPTION_RECOMMENDATION_PREPARED_DECISION_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -4381,15 +4414,114 @@
           "const": 0
         },
         "http_phase_instrumentation_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "http_phase_instrumentation_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-DECISION-RECORD.v0.1.json"
+        },
+        "http_phase_instrumentation_decision_sha256": {
+          "const": "fb28e3fc015169035ee7d1fd747374cc03ccf84a56e4fe033a30fd013002bd0b"
+        },
+        "http_phase_instrumentation_decision_commit": {
+          "const": "52c019bdfec423a0e66005d6bdda8bc4af5be175"
+        },
+        "http_phase_instrumentation_authorization_receipt_reference": {
+          "const": "commercialization-standards-provider-http-phase-instrumentation/offline-validation-authorization-receipt.v0.1.json"
+        },
+        "http_phase_instrumentation_authorization_receipt_sha256": {
+          "const": "e35d9d2115611640a6dad2e651621def2a6869c7e243eb5181dd2cb61db14b00"
+        },
+        "http_phase_instrumentation_authorization_receipt_commit": {
+          "const": "836e51ff5f257c21a8e959a1b74fc5ceda5a6067"
+        },
+        "http_phase_instrumentation_validation_result_reference": {
+          "const": "commercialization-standards-provider-http-phase-instrumentation/offline-validation-result.v0.1.json"
+        },
+        "http_phase_instrumentation_validation_result_sha256": {
+          "const": "f8224d6148c888a6cbb5631f5bffd3d5c549a1530f00fa704ee2a53123531b78"
+        },
+        "http_phase_instrumentation_execution_receipt_reference": {
+          "const": "commercialization-standards-provider-http-phase-instrumentation/offline-validation-execution-receipt.v0.1.json"
+        },
+        "http_phase_instrumentation_execution_receipt_sha256": {
+          "const": "9a827bba1809f0d7a343e457322c9a9dc061834d910680f286cd17ce7d3c2b03"
+        },
+        "http_phase_instrumentation_report_reference": {
+          "const": "commercialization-standards-provider-http-phase-instrumentation/PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-RESULT-v0.1.md"
+        },
+        "http_phase_instrumentation_report_sha256": {
+          "const": "94a4a77ae972c482fd3cbb9f0b26315228cfb7daac366dcd7f2836e4eff05cdd"
+        },
+        "http_phase_instrumentation_result_commit": {
+          "const": "650944f8fa017e94ba8daa4220bcf0c903a7a39c"
+        },
+        "http_phase_instrumentation_execution_was_authorized": {
+          "const": true
         },
         "http_phase_instrumentation_offline_validation_authorized": {
           "const": false
         },
+        "http_phase_instrumentation_executed": {
+          "const": true
+        },
         "http_phase_instrumentation_synthetic_fixtures_validated": {
+          "const": 12
+        },
+        "http_phase_instrumentation_expected_outcomes_match": {
+          "const": 12
+        },
+        "http_phase_instrumentation_boundary_failures": {
           "const": 0
         },
+        "http_phase_instrumentation_contract_candidate_ready_for_adoption_review": {
+          "const": true
+        },
+        "http_phase_instrumentation_contract_candidate_adopted": {
+          "const": false
+        },
         "http_phase_instrumentation_implementation_created": {
+          "const": false
+        },
+        "http_phase_instrumentation_adoption_decision_candidate_id": {
+          "const": "CS-D02-PRE-31"
+        },
+        "http_phase_instrumentation_adoption_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-31-HTTP-PHASE-INSTRUMENTATION-CONTRACT-ADOPTION-RECOMMENDATION-v0.1.md"
+        },
+        "http_phase_instrumentation_adoption_recommendation_sha256": {
+          "const": "47f17118dc18b15e4bf36d669ad287480ff71226069f97910a24bb99248bd7f3"
+        },
+        "http_phase_instrumentation_adoption_recommendation_commit": {
+          "const": "292bb8ec7b691c45f372b715298c6519ae49d4da"
+        },
+        "http_phase_instrumentation_adoption_exact_action": {
+          "const": "ADOPT_PRE30_HTTP_PHASE_INSTRUMENTATION_CONTRACT_AS_DEVELOPMENT_STANDARD_INPUT_ONLY"
+        },
+        "http_phase_instrumentation_adoption_contract_reference": {
+          "const": "commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-contract.v0.1.json"
+        },
+        "http_phase_instrumentation_adoption_contract_sha256": {
+          "const": "f72eb33bdb5042514deed499fdabddbc74121bc9c22c16f79316eae2aeca9913"
+        },
+        "http_phase_instrumentation_adoption_schema_reference": {
+          "const": "commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-contract.schema.v0.1.json"
+        },
+        "http_phase_instrumentation_adoption_schema_sha256": {
+          "const": "9e97b2db7d16caf83a785c4ddcdcab0f847317f3308246985cd3c0fd8698649e"
+        },
+        "http_phase_instrumentation_adoption_maturity": {
+          "const": "Development"
+        },
+        "http_phase_instrumentation_adoption_decision_recorded": {
+          "const": false
+        },
+        "http_phase_instrumentation_adopted": {
+          "const": false
+        },
+        "http_phase_instrumentation_runtime_active": {
+          "const": false
+        },
+        "http_phase_instrumentation_model_retry_authorized": {
           "const": false
         },
         "composite_gate_reuses_frozen_pre14_deepseek": {
@@ -4408,7 +4540,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE30_OFFLINE_HTTP_PHASE_INSTRUMENTATION_CONTRACT_DECISION_ONLY"
+          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE31_DEVELOPMENT_CONTRACT_ADOPTION_DECISION_ONLY"
         },
         "decision_ready": {
           "const": true

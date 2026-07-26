@@ -386,10 +386,15 @@ model request、credential read 和 retry 均为 0。
 该结果只证明当次基础传输可达，不证明 provider、API 或 model 可用，也不能回溯确认
 PRE-28 timeout 阶段或授权重试。
 
-[PRE-30 HTTP phase instrumentation contract recommendation](TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-RECOMMENDATION-v0.1.md)
-已远端准备。它只建议离线定义从 DNS 到 sanitized handoff 的十阶段计时／失败契约和
-12 个 synthetic fixtures；network、HTTP、provider API、model request 与 credential read
-上限均为 0。PRE-30 尚未决定或执行。
+[PRE-30 HTTP phase instrumentation contract](commercialization-standards-provider-http-phase-instrumentation/PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-RESULT-v0.1.md)
+已完成纯离线验证：十阶段契约、`12/12` synthetic fixtures、`0` boundary failure，
+network、HTTP、provider API、model 与 credential 均为 0。candidate 只达到
+Development adoption review ready，尚未采纳或实现。
+
+[PRE-31 Development adoption recommendation](TITMAS-CS-D02-PRE-31-HTTP-PHASE-INSTRUMENTATION-CONTRACT-ADOPTION-RECOMMENDATION-v0.1.md)
+已远端准备。它只建议把 PRE-30 精确 contract/Schema 采纳为后续 instrumentation proposal
+的 Development 规范输入；不创建 runtime、不重试模型，也不产生 provider support 或
+conformance 声明。
 
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false

@@ -1779,46 +1779,67 @@ PRE29_RETRY_ATTEMPTS=0
 availability、request contract correctness 或 PRE-28 timeout 的确切阶段。model retry、
 contract adoption、provider support、implementation 和 `CS-G0` 仍为 false。
 
-### 4.44 PRE-30 HTTP Phase Instrumentation Contract Recommendation
+### 4.44 PRE-30 HTTP Phase Instrumentation Contract Result
 
 [PRE-30 recommendation](../TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-RECOMMENDATION-v0.1.md)
-已远端准备。Agent 推荐闸门：
+随后经独立 Decision 与远端 authorization receipt 完成纯离线验证。结果见：
+
+- [result report](../commercialization-standards-provider-http-phase-instrumentation/PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-RESULT-v0.1.md)；
+- [contract candidate](../commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-contract.v0.1.json)；
+- [fixture catalog](../commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-fixtures.v0.1.json)；
+- [validation result](../commercialization-standards-provider-http-phase-instrumentation/offline-validation-result.v0.1.json)。
 
 ```text
-RECOMMEND_MODEL_REQUEST_RETRY=NO
-REASON=HTTP_PHASE_ACCOUNTING_NOT_DEFINED
-RECOMMEND_OFFLINE_INSTRUMENTATION_CONTRACT_DESIGN=YES
-RECOMMEND_PROVIDER_OR_CONTRACT_ADOPTION_NOW=NO
+PRE30_SOURCE_HASHES_MATCH=6/6
+PRE30_SCHEMAS_META_VALID=7/7
+PRE30_CANDIDATE_INSTANCES_VALID=3/3
+PRE30_SYNTHETIC_FIXTURES_VALIDATED=12/12
+PRE30_EXPECTED_OUTCOMES_MATCH=12/12
+PRE30_BOUNDARY_FAILURES=0
+PRE30_NETWORK_PROBES_EXECUTED=0
+PRE30_HTTP_REQUESTS_EXECUTED=0
+PRE30_PROVIDER_API_REQUESTS_EXECUTED=0
+PRE30_LIVE_MODEL_REQUESTS_EXECUTED=0
+PRE30_CREDENTIAL_READS_EXECUTED=0
+```
+
+该 PASS 只证明 candidate 的 phase order、first-failure preservation、dependent-phase
+closure 和 data minimization 通过 synthetic offline validation。candidate 已达到
+Development adoption review ready，但尚未采纳、实现或形成 provider conformance。
+
+### 4.45 PRE-31 HTTP Phase Instrumentation Contract Adoption Recommendation
+
+[PRE-31 recommendation](../TITMAS-CS-D02-PRE-31-HTTP-PHASE-INSTRUMENTATION-CONTRACT-ADOPTION-RECOMMENDATION-v0.1.md)
+已远端准备。Agent 推荐：
+
+```text
+AGENT_RECOMMENDATION=CONDITIONALLY_RECOMMENDED
+RECOMMENDED_AS=DEVELOPMENT_STANDARD_INPUT_FOR_FUTURE_PROVIDER_REQUEST_INSTRUMENTATION
+NOT_RECOMMENDED_AS=RUNTIME_IMPLEMENTATION_PROVIDER_CONFORMANCE_OR_PRODUCTION_CONTROL
 ```
 
 建议的 exact action：
 
 ```text
-AUTHORIZE_OFFLINE_PRE28_HTTP_PHASE_INSTRUMENTATION_CONTRACT_CANDIDATE_DESIGN_ONLY
+ADOPT_PRE30_HTTP_PHASE_INSTRUMENTATION_CONTRACT_AS_DEVELOPMENT_STANDARD_INPUT_ONLY
 ```
-
-PRE-30 只建议离线定义从 DNS 到 sanitized handoff 的十阶段状态／计时／失败分类、
-machine-readable Schema、12 个 synthetic fixtures 和 deterministic validation。network、
-HTTP、provider API、model request、credential read、raw envelope 和 packet capture 上限
-均为 0。
 
 当前：
 
 ```text
-PRE30_RECOMMENDATION_REMOTE_VERIFIED=true
-PRE30_DECISION_RECORDED=false
-PRE30_OFFLINE_VALIDATION_AUTHORIZED=false
-PRE30_SYNTHETIC_FIXTURES_VALIDATED=0
-PRE30_NETWORK_PROBES_EXECUTED=0
-PRE30_HTTP_REQUESTS_EXECUTED=0
-PRE30_LIVE_MODEL_REQUESTS_EXECUTED=0
-PRE30_INSTRUMENTATION_IMPLEMENTATION_CREATED=false
+PRE31_RECOMMENDATION_REMOTE_VERIFIED=true
+PRE31_DECISION_RECORDED=false
+PRE31_CONTRACT_ADOPTED=false
+PRE31_ADOPTION_MATURITY=Development
+PRE31_IMPLEMENTATION_CREATED=false
+PRE31_NETWORK_REQUESTS_EXECUTED=0
+PRE31_MODEL_RETRY_AUTHORIZED=false
 ```
 
 下一步只允许：
 
 ```text
-APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE30_OFFLINE_HTTP_PHASE_INSTRUMENTATION_CONTRACT_DECISION_ONLY
+APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE31_DEVELOPMENT_CONTRACT_ADOPTION_DECISION_ONLY
 ```
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
