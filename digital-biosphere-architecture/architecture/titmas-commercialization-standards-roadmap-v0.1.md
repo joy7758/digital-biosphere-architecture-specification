@@ -1076,6 +1076,23 @@ Schema，但不能替代第二 provider 或完整四角色审查。PRE-14 请求
 回退或 JSON repair。下一步只能另行准备零 live request 的 Qianfan wrapper extraction
 离线诊断建议。
 
+### 4.27 PRE-15 Qianfan Wrapper Extraction Diagnostic Recommendation
+
+[PRE-15 exact recommendation](../TITMAS-CS-D02-PRE-15-QIANFAN-WRAPPER-EXTRACTION-DIAGNOSTIC-RECOMMENDATION-v0.1.md)
+已准备：
+
+```text
+LIVE_MODEL_REQUESTS_MAX=0
+PROVIDER_NETWORK_REQUESTS_MAX=0
+RAW_PRE14_PROVIDER_BODY_ACCESS_ALLOWED=false
+SYNTHETIC_WRAPPER_FIXTURES_ONLY=true
+AT_RECOMMENDATION_TIME_PRE_15_DECIDED=false
+```
+
+该建议只允许未来通过独立 Decision 建立 wrapper contract、extraction classification 和
+synthetic fixtures，区分 provider failure 与 caller extraction failure。它不能恢复
+PRE-14 response，也不能把 synthetic PASS 写成 Qianfan provider success。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
