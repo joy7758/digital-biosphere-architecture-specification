@@ -1,0 +1,126 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-16-qianfan-reconfirmation-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-16 Qianfan Reconfirmation Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema","document_id","version","status","observed_on","decision_id",
+    "decision_result","standing_directive_reference","recommendation_reference",
+    "recommendation_sha256","recommendation_remote_commit","decided_by_ref",
+    "executed_by_ref","primary_repository","execution_plan_reference","scope",
+    "preconditions","execution_gate","effects","stop_conditions"
+  ],
+  "properties": {
+    "$schema": {"const": "./architecture/schemas/titmas-cs-d02-pre-16-qianfan-reconfirmation-decision-record.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-16-QIANFAN-RECONFIRMATION-DECISION-RECORD-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DECIDED_ONE_REQUEST_QIANFAN_RECONFIRMATION_AUTHORIZED_NOT_EXECUTED"},
+    "observed_on": {"const": "2026-07-26"},
+    "decision_id": {"const": "CS-D02-PRE-16"},
+    "decision_result": {"const": "AUTHORIZE_ONE_QIANFAN_RECONFIRMATION_AND_COMPOSITE_GATE_ONLY"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {"const": "TITMAS-CS-D02-PRE-16-QIANFAN-RECONFIRMATION-RECOMMENDATION-v0.1.md"},
+    "recommendation_sha256": {"const": "7eebe4571fa6999924183115197661506295f724a18760e4cc216f4d5a26a7fb"},
+    "recommendation_remote_commit": {"const": "12f10efa4eb0d2fe9bc86c2cb0eae111ee32affc"},
+    "decided_by_ref": {"const": "zhangbin"},
+    "executed_by_ref": {"const": "codex"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "execution_plan_reference": {"const": "commercialization-standards-qianfan-reconfirmation/execution-plan.v0.1.json"},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qianfan_new_requests_max","deepseek_new_requests_max",
+        "total_new_live_model_requests_max","provider_gateway","model","reviewer_role",
+        "composite_reuses_frozen_pre14_deepseek","retry_allowed","fallback_allowed",
+        "json_repair_allowed","tools_allowed","new_source_search_allowed",
+        "new_source_collection_allowed"
+      ],
+      "properties": {
+        "qianfan_new_requests_max": {"const": 1},
+        "deepseek_new_requests_max": {"const": 0},
+        "total_new_live_model_requests_max": {"const": 1},
+        "provider_gateway": {"const": "qianfan_installed_tool"},
+        "model": {"const": "kimi-k2.6"},
+        "reviewer_role": {"const": "SOURCE_QUALIFICATION_REVIEWER"},
+        "composite_reuses_frozen_pre14_deepseek": {"const": true},
+        "retry_allowed": {"const": false},
+        "fallback_allowed": {"const": false},
+        "json_repair_allowed": {"const": false},
+        "tools_allowed": {"const": false},
+        "new_source_search_allowed": {"const": false},
+        "new_source_collection_allowed": {"const": false}
+      }
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_remote_verified","pre14_deepseek_full_schema_pass",
+        "pre14_deepseek_digest_frozen","pre15_offline_diagnostic_pass",
+        "pre15_ordered_extraction_contract_ready",
+        "authorization_baseline_push_required_before_request",
+        "standing_directive_applicable","later_conflicting_decision_found"
+      ],
+      "properties": {
+        "recommendation_remote_verified": {"const": true},
+        "pre14_deepseek_full_schema_pass": {"const": true},
+        "pre14_deepseek_digest_frozen": {"const": true},
+        "pre15_offline_diagnostic_pass": {"const": true},
+        "pre15_ordered_extraction_contract_ready": {"const": true},
+        "authorization_baseline_push_required_before_request": {"const": true},
+        "standing_directive_applicable": {"const": true},
+        "later_conflicting_decision_found": {"const": false}
+      }
+    },
+    "execution_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorization_baseline_committed","authorization_baseline_pushed",
+        "authorization_baseline_remote_verified","execution_started"
+      ],
+      "properties": {
+        "authorization_baseline_committed": {"const": false},
+        "authorization_baseline_pushed": {"const": false},
+        "authorization_baseline_remote_verified": {"const": false},
+        "execution_started": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bounded_new_live_model_request_authorized","qianfan_reconfirmation_completed",
+        "composite_provider_gate_pass","candidate_review_completed",
+        "record_counting_authorized","valid_problem_records","cs_g0_pass",
+        "authority","implementation","runtime","agent_instance","entity","permission",
+        "external_outreach","commercial_offer","certification","release"
+      ],
+      "properties": {
+        "bounded_new_live_model_request_authorized": {"const": true},
+        "qianfan_reconfirmation_completed": {"const": false},
+        "composite_provider_gate_pass": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "authority": {"const": false},
+        "implementation": {"const": false},
+        "runtime": {"const": false},
+        "agent_instance": {"const": false},
+        "entity": {"const": false},
+        "permission": {"const": false},
+        "external_outreach": {"const": false},
+        "commercial_offer": {"const": false},
+        "certification": {"const": false},
+        "release": {"const": false}
+      }
+    },
+    "stop_conditions": {
+      "type": "array","minItems": 6,"maxItems": 6,"uniqueItems": true,
+      "items": {"type": "string","minLength": 10}
+    }
+  }
+}

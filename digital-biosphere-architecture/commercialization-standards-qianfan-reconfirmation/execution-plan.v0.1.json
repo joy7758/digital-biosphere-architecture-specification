@@ -1,0 +1,89 @@
+{
+  "$schema": "./execution-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-16-QIANFAN-RECONFIRMATION-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-16",
+  "decision_record_reference": "../TITMAS-CS-D02-PRE-16-QIANFAN-RECONFIRMATION-DECISION-RECORD.v0.1.json",
+  "frozen_artifacts": {
+    "recommendation_reference": "../TITMAS-CS-D02-PRE-16-QIANFAN-RECONFIRMATION-RECOMMENDATION-v0.1.md",
+    "recommendation_sha256": "7eebe4571fa6999924183115197661506295f724a18760e4cc216f4d5a26a7fb",
+    "rendered_request_contract_reference": "../commercialization-standards-public-source-record-review-contract-remediation/rendered-request-contract.v0.1.txt",
+    "rendered_request_contract_sha256": "3e3f454b395f4b6656571dfeef4929cf44cb685e85ef177f1d75b4ee2c696219",
+    "qianfan_role_specific_request_sha256": "1e0f4d0efbccf31a4fbbc1d4cffab9f1bc4308acee3e8cb8324c0769e5ed4638",
+    "response_schema_reference": "../commercialization-standards-public-source-record-review/agent-record-review-response.schema.v0.1.json",
+    "response_schema_sha256": "0f3df0688993fe300bae1f8d2c1cb67c0fd31fecbdabcbb89d5a1819c803ccd8",
+    "pre14_observations_reference": "../commercialization-standards-public-source-record-provider-confirmation/sanitized-provider-observations.v0.1.json",
+    "pre14_observations_sha256": "19faeb1c292953256d77b6f83c924921e6c0d2383b800c41c5087e16a699b660",
+    "pre14_deepseek_sanitized_response_canonical_sha256": "9fca2ee86499e5ad85b552cc2d17a2dda1fde4239a9ec39336ada1e11a1b97c1",
+    "pre15_diagnostic_result_reference": "../commercialization-standards-qianfan-wrapper-extraction-diagnostic/offline-diagnostic-result.v0.1.json",
+    "pre15_diagnostic_result_sha256": "9d442d8b3ec6b6cd2bfbdba0c55ab3bd0336f9fe6799bdda480b007fca97a830",
+    "pre15_declared_tool_contract_reference": "../commercialization-standards-qianfan-wrapper-extraction-diagnostic/declared-tool-contract.v0.1.json",
+    "pre15_declared_tool_contract_sha256": "bc7a78ee54a633d46c586994fbfded293d1b05abbfc3d4773917d222ccb80ce9"
+  },
+  "session": {
+    "session_id": "QF-KIMI-SCHEMA-RECONFIRM-PRE16-P1",
+    "provider_gateway": "qianfan_installed_tool",
+    "endpoint_host": "qianfan.baidubce.com",
+    "model": "kimi-k2.6",
+    "role": "SOURCE_QUALIFICATION_REVIEWER",
+    "request_field": "query",
+    "requests_max": 1
+  },
+  "ordered_extraction_contract": [
+    "structuredContent.answer",
+    "answer",
+    "content[0].text parsed as JSON wrapper then answer",
+    "content[0].text used directly as answer only for mcp__kimi_qianfan__kimi_chat"
+  ],
+  "ambiguity_rule": "FAIL_CLOSED_IF_MULTIPLE_NON_IDENTICAL_ANSWER_VALUES",
+  "composite_gate": {
+    "new_qianfan_requests_executed_required": 1,
+    "qianfan_schema_conformant_required": true,
+    "frozen_deepseek_schema_conformant_required": true,
+    "providers_with_schema_conformant_response_required": 2,
+    "qianfan_candidate_ids_covered_required": 4,
+    "deepseek_candidate_ids_covered_required": 4,
+    "boundary_failures_max": 0,
+    "frozen_input_digests_match_required": true,
+    "all_conditions_required": true
+  },
+  "controls": {
+    "total_new_live_model_requests_max": 1,
+    "deepseek_new_requests_max": 0,
+    "retry_allowed": false,
+    "fallback_allowed": false,
+    "json_repair_allowed": false,
+    "fence_stripping_allowed": false,
+    "substring_extraction_allowed": false,
+    "tools_allowed": false,
+    "new_source_search_allowed": false,
+    "new_source_collection_allowed": false,
+    "raw_provider_body_persisted": false,
+    "token_usage_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "secret_in_artifact_allowed": false,
+    "automatic_valid_status_or_counting_allowed": false,
+    "full_candidate_review_rerun_allowed": false
+  },
+  "execution_gate": {
+    "authorization_baseline_committed": false,
+    "authorization_baseline_pushed": false,
+    "authorization_baseline_remote_verified": false,
+    "execution_started": false
+  },
+  "non_effects": {
+    "qianfan_reconfirmation_completed": false,
+    "composite_provider_gate_pass": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
