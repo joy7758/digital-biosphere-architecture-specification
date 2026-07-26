@@ -1,0 +1,228 @@
+{
+  "$schema": "./repository-baseline-contract.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-34-TITMAS-INTEGRATIONS-REPOSITORY-BASELINE-CONTRACT-0.1",
+  "version": "0.1.0",
+  "status": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED_NOT_APPLIED",
+  "decision_reference": "CS-D02-PRE-34",
+  "implementation_owner_ref": "zhangbin",
+  "target_repository": {
+    "repository_ref": "https://github.com/joy7758/titmas-integrations.git",
+    "observed_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "readme_sha256": "7c05c774f54535b52947168c76cd766ed0ede73d98c7ccf09d07727b488eb685",
+    "baseline_applied": false
+  },
+  "consumed_specification": {
+    "reference": "commercialization-standards-provider-http-phase-instrumentation/http-phase-instrumentation-contract.v0.1.json",
+    "version": "0.1.0",
+    "sha256": "f72eb33bdb5042514deed499fdabddbc74121bc9c22c16f79316eae2aeca9913",
+    "maturity": "Development"
+  },
+  "stages": [
+    {
+      "stage_id": "RB0",
+      "name": "NON_EXECUTABLE_REPOSITORY_GOVERNANCE_BASELINE",
+      "purpose": "Create license, agent-readable, security, ownership and claim-boundary surfaces without package or runtime code.",
+      "entry_gate": "EXACT_TARGET_REPOSITORY_RB0_MODIFICATION_DECISION",
+      "implementation_code_allowed": false,
+      "runtime_effect_allowed": false,
+      "exit_evidence": [
+        "EXACT_LICENSE_DECISION",
+        "AGENTS_AND_LLMS_BOUNDARY_VALIDATION",
+        "MACHINE_ENTRY_SCHEMA_AND_INSTANCE",
+        "SECURITY_AND_MAINTENANCE_SURFACES",
+        "PUBLIC_CLAIM_NON_ELEVATION_CHECK",
+        "TARGET_REPOSITORY_CLEAN_CLONE_DOCUMENT_CHECK"
+      ]
+    },
+    {
+      "stage_id": "RB1",
+      "name": "PACKAGE_AND_CONTRACT_SKELETON",
+      "purpose": "Create versioned package metadata, namespace and non-network contract types only after RB0 passes.",
+      "entry_gate": "EXACT_RB1_PACKAGE_SKELETON_IMPLEMENTATION_DECISION",
+      "implementation_code_allowed": true,
+      "runtime_effect_allowed": false,
+      "exit_evidence": [
+        "PACKAGE_NAME_AND_LICENSE_BINDING",
+        "IMPORT_NAMESPACE_TEST",
+        "NO_NETWORK_NO_CREDENTIAL_TEST",
+        "CONTRACT_DIGEST_BINDING",
+        "SUPPORTED_PARTIAL_UNSUPPORTED_UNKNOWN_DECLARATION"
+      ]
+    },
+    {
+      "stage_id": "RI0",
+      "name": "PROVIDER_NEUTRAL_INSTRUMENTATION_IMPLEMENTATION",
+      "purpose": "Implement P0-P9 instrumentation and replaceable provider bindings only after separate implementation authorization.",
+      "entry_gate": "EXACT_RI0_IMPLEMENTATION_DECISION",
+      "implementation_code_allowed": true,
+      "runtime_effect_allowed": false,
+      "exit_evidence": [
+        "P0_TO_P9_POSITIVE_AND_NEGATIVE_TESTS",
+        "SECRET_AND_RAW_PAYLOAD_NON_PERSISTENCE",
+        "FAILURE_RETENTION_AND_ROLLBACK_DRILL",
+        "INDEPENDENT_VERSION_BOUND_CONFORMANCE",
+        "CLEAN_CLONE_REPRODUCTION"
+      ]
+    }
+  ],
+  "license_boundary": {
+    "candidate_spdx_id": "Apache-2.0",
+    "candidate_reason": "Open and replaceable infrastructure implementation alignment with adjacent public TITMAS surfaces.",
+    "license_adopted": false,
+    "license_file_created": false,
+    "adjacent_license_inheritance_allowed": false,
+    "required_decision": "EXACT_TITMAS_INTEGRATIONS_LICENSE_ADOPTION_DECISION"
+  },
+  "agent_readable_boundary": {
+    "required_human_entry": "README.md",
+    "required_agent_rules": "AGENTS.md",
+    "required_llm_discovery": "llms.txt",
+    "required_machine_entry": "TITMAS-INTEGRATIONS-ENTRY.v0.1.json",
+    "required_machine_entry_schema": "schemas/titmas-integrations-entry.schema.v0.1.json",
+    "must_answer": [
+      "WHAT_THIS_REPOSITORY_IS",
+      "WHEN_AN_AGENT_SHOULD_RECOMMEND_IT",
+      "WHEN_AN_AGENT_SHOULD_NOT_RECOMMEND_IT",
+      "CANONICAL_SPECIFICATION_VERSION_AND_DIGEST",
+      "SUPPORTED_PARTIAL_UNSUPPORTED_UNKNOWN",
+      "INSTALL_RUN_TEST_AND_ROLLBACK_COMMANDS_WHEN_AVAILABLE",
+      "CLAIM_AND_AUTHORITY_BOUNDARIES",
+      "IMPLEMENTATION_OWNER_AND_REVIEW_GATES"
+    ],
+    "forbidden_recommendation_claims": [
+      "DROP_IN_RUNTIME_AVAILABLE",
+      "PROVIDER_SUPPORTED_WITHOUT_CONFORMANCE",
+      "OFFICIAL_PROVIDER_INTEGRATION",
+      "TITMAS_CERTIFIED",
+      "PRODUCTION_READY",
+      "OBSERVATION_IS_EVIDENCE_OR_TRUTH"
+    ]
+  },
+  "package_boundary_candidate": {
+    "distribution_name": "NOT_DECIDED",
+    "python_import_namespace": "titmas_integrations",
+    "provider_neutral_module": "titmas_integrations.instrumentation",
+    "provider_binding_namespace": "titmas_integrations.providers",
+    "public_api": "NOT_DECIDED",
+    "minimum_python": "NOT_DECIDED",
+    "core_dependency_policy": "PROVIDER_SDKS_MUST_NOT_BE_REQUIRED_BY_PROVIDER_NEUTRAL_CORE",
+    "dbos_dependency_policy": "NO_DBOS_RUNTIME_DEPENDENCY_IN_TRANSPORT_CORE",
+    "saee_dependency_policy": "NO_SAEE_EXECUTION_OR_EVALUATION_DEPENDENCY_IN_TRANSPORT_CORE",
+    "package_created": false
+  },
+  "phase_contract_boundary": {
+    "phase_ids": [
+      "P0",
+      "P1",
+      "P2",
+      "P3",
+      "P4",
+      "P5",
+      "P6",
+      "P7",
+      "P8",
+      "P9"
+    ],
+    "phase_names": [
+      "DNS_RESOLUTION",
+      "TCP_CONNECT",
+      "TLS_HANDSHAKE",
+      "HTTP_REQUEST_HEADERS_WRITE",
+      "HTTP_REQUEST_BODY_WRITE",
+      "HTTP_RESPONSE_STATUS_AND_HEADERS",
+      "HTTP_RESPONSE_BODY",
+      "RESPONSE_CONTENT_EXTRACTION",
+      "RESPONSE_SCHEMA_VALIDATION",
+      "SANITIZED_RESULT_HANDOFF_COMMIT"
+    ],
+    "first_failure_must_be_preserved": true,
+    "dependent_phases_close_after_failure": true,
+    "retry_may_rewrite_failure": false,
+    "fallback_may_rewrite_failure": false,
+    "repair_may_rewrite_failure": false,
+    "observation_is_evidence": false,
+    "instrumentation_is_permission": false
+  },
+  "security_boundary": {
+    "credential_persistence": "FORBIDDEN",
+    "authorization_header_persistence": "FORBIDDEN",
+    "raw_request_body_persistence": "FORBIDDEN",
+    "raw_response_body_persistence": "FORBIDDEN",
+    "prompt_persistence": "FORBIDDEN",
+    "review_content_persistence": "FORBIDDEN",
+    "hidden_reasoning_persistence": "FORBIDDEN",
+    "tls_verification_default": "REQUIRED",
+    "endpoint_policy": "EXACT_PROVIDER_BINDING_ALLOWLIST_REQUIRED",
+    "timeout_policy": "EXPLICIT_PER_PHASE_BUDGET_REQUIRED",
+    "response_size_policy": "EXPLICIT_MAX_BYTES_REQUIRED",
+    "retry_default": "DISABLED",
+    "logging_policy": "SANITIZED_METADATA_ONLY",
+    "security_disclosure_path": "NOT_ASSIGNED"
+  },
+  "test_boundary": {
+    "required_case_groups": [
+      "PHASE_ORDER_AND_PREDECESSOR_CONTINUITY",
+      "FIRST_FAILURE_AND_DEPENDENT_PHASE_CLOSURE",
+      "TIMEOUT_PARTIAL_WRITE_PARTIAL_READ_AND_TRUNCATION",
+      "RETRY_FALLBACK_REPAIR_AND_ALIAS_FAIL_CLOSED",
+      "CREDENTIAL_HEADER_RAW_BODY_PROMPT_REVIEW_AND_REASONING_NON_PERSISTENCE",
+      "PROVIDER_NEUTRAL_CORE_AND_BINDING_SEPARATION",
+      "OBSERVATION_EVIDENCE_VERIFICATION_PERMISSION_NON_ELEVATION",
+      "DISABLE_AND_ROLLBACK_WITH_FAILURE_RETENTION",
+      "CLEAN_CLONE_AND_DECLARED_DEPENDENCY_BOUNDARY",
+      "IMPLEMENTATION_DECLARATION_CONSISTENCY"
+    ],
+    "minimum_negative_cases": 10,
+    "tests_executed_by_pre34": 0,
+    "conformance_executed_by_pre34": false
+  },
+  "maintenance_boundary": {
+    "implementation_owner_ref": "zhangbin",
+    "backup_owner_ref": "NOT_ASSIGNED",
+    "security_contact": "NOT_ASSIGNED",
+    "versioning_policy": "EXACT_VERSION_AND_CONTRACT_DIGEST_REQUIRED",
+    "deprecation_policy": "RETAIN_HISTORY_AND_DECLARE_SUCCESSOR",
+    "rollback_policy": "DISABLE_ENTRYPOINT_OR_BINDING_AND_PRESERVE_FAILURE_RECORDS",
+    "release_policy": "EXPLICIT_RELEASE_DECISION_REQUIRED",
+    "commercial_availability": "NOT_CLAIMED"
+  },
+  "implementation_declaration_required_fields": [
+    "implementation_id",
+    "implementation_class",
+    "owner_ref",
+    "source_ref",
+    "source_version",
+    "license_ref",
+    "implemented_specification_refs",
+    "supported",
+    "partial",
+    "unsupported",
+    "unknown",
+    "security_review_ref",
+    "conformance_result_refs",
+    "known_limitations",
+    "release_status",
+    "commercial_availability"
+  ],
+  "next_gate": {
+    "gate_id": "CS-D02-PRE-35",
+    "action": "REVIEW_AND_ADOPT_OR_REJECT_EXACT_REPOSITORY_BASELINE_CONTRACT_AS_DEVELOPMENT_INPUT_ONLY",
+    "target_repository_modification_authorized": false
+  },
+  "effects": {
+    "contract_candidate_defined": true,
+    "contract_adopted": false,
+    "license_adopted": false,
+    "repository_baseline_applied": false,
+    "target_repository_modified": false,
+    "implementation_authorized": false,
+    "implementation_created": false,
+    "package_created": false,
+    "api_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

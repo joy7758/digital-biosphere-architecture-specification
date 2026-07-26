@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre34-repository-baseline-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS PRE-34 Repository Baseline Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_record_sha256",
+    "decision_commit",
+    "executed_by",
+    "executed_at",
+    "contract_reference",
+    "contract_sha256",
+    "manifest_reference",
+    "manifest_sha256",
+    "declaration_template_reference",
+    "declaration_template_sha256",
+    "validation",
+    "scope_accounting",
+    "result",
+    "next_gate",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./pre34-repository-baseline-execution-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-34-REPOSITORY-BASELINE-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PASS_CANDIDATE_DEFINED_TARGET_UNCHANGED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-34"
+    },
+    "decision_record_sha256": {
+      "const": "16156f5b720d5d7b63a3fae02dc500ba891557a39b626159f38a9663d9fca36b"
+    },
+    "decision_commit": {
+      "const": "07738993489846cb06040d99cbc725595954076f"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "executed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "contract_reference": {
+      "type": "string"
+    },
+    "contract_sha256": {
+      "const": "58920eb5b8c7ce1ecde66472743d408342f7fe7b418b323f48cf28c370c8537b"
+    },
+    "manifest_reference": {
+      "type": "string"
+    },
+    "manifest_sha256": {
+      "const": "6135526966bef14ef2d4b33ae55c7fa62266b338a086b30be86aee2f335db664"
+    },
+    "declaration_template_reference": {
+      "type": "string"
+    },
+    "declaration_template_sha256": {
+      "const": "40de6b9975005b3e8a76a8f5326da815bff7c7d6ae22f488e8fc01d1fa815cc5"
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schemas_meta_valid",
+        "instances_valid",
+        "stages_defined",
+        "rb0_files_defined",
+        "rb1_files_defined",
+        "ri0_surfaces_defined",
+        "test_case_groups_defined",
+        "boundary_failures",
+        "target_head_unchanged",
+        "target_dirty_count_unchanged"
+      ],
+      "properties": {
+        "schemas_meta_valid": {
+          "const": 3
+        },
+        "instances_valid": {
+          "const": 3
+        },
+        "stages_defined": {
+          "const": 3
+        },
+        "rb0_files_defined": {
+          "const": 9
+        },
+        "rb1_files_defined": {
+          "const": 5
+        },
+        "ri0_surfaces_defined": {
+          "const": 3
+        },
+        "test_case_groups_defined": {
+          "const": 10
+        },
+        "boundary_failures": {
+          "const": 0
+        },
+        "target_head_unchanged": {
+          "const": true
+        },
+        "target_dirty_count_unchanged": {
+          "const": true
+        }
+      }
+    },
+    "scope_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "implementation_files_created",
+        "external_repository_modifications",
+        "new_repositories_created",
+        "inventory_network_requests",
+        "http_requests",
+        "live_model_requests",
+        "credential_reads",
+        "tests_executed"
+      ],
+      "properties": {
+        "implementation_files_created": {
+          "const": 0
+        },
+        "external_repository_modifications": {
+          "const": 0
+        },
+        "new_repositories_created": {
+          "const": 0
+        },
+        "inventory_network_requests": {
+          "const": 0
+        },
+        "http_requests": {
+          "const": 0
+        },
+        "live_model_requests": {
+          "const": 0
+        },
+        "credential_reads": {
+          "const": 0
+        },
+        "tests_executed": {
+          "const": 0
+        }
+      }
+    },
+    "result": {
+      "const": "REPOSITORY_BASELINE_CONTRACT_CANDIDATE_READY_FOR_DEVELOPMENT_ADOPTION_REVIEW"
+    },
+    "next_gate": {
+      "const": "CS-D02-PRE-35"
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_adopted",
+        "license_adopted",
+        "target_repository_modified",
+        "implementation_authorized",
+        "provider_supported",
+        "conformance_executed",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "contract_adopted": {
+          "const": false
+        },
+        "license_adopted": {
+          "const": false
+        },
+        "target_repository_modified": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}

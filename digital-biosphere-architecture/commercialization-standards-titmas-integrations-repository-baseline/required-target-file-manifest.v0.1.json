@@ -1,0 +1,154 @@
+{
+  "$schema": "./required-target-file-manifest.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-34-REQUIRED-TARGET-FILE-MANIFEST-0.1",
+  "version": "0.1.0",
+  "status": "CANDIDATE_NOT_APPLIED",
+  "decision_reference": "CS-D02-PRE-34",
+  "target_repository": "https://github.com/joy7758/titmas-integrations.git",
+  "target_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+  "stages": [
+    {
+      "stage_id": "RB0",
+      "external_modification_decision_required": true,
+      "files": [
+        {
+          "path": "LICENSE",
+          "action": "CREATE_IF_LICENSE_ADOPTED",
+          "purpose": "Exact repository license text.",
+          "current_state": "ABSENT",
+          "content_gate": "EXACT_APACHE_2_0_LICENSE_DECISION"
+        },
+        {
+          "path": "AGENTS.md",
+          "action": "CREATE",
+          "purpose": "Agent scope, recommendation, command and claim-boundary rules.",
+          "current_state": "ABSENT",
+          "content_gate": "RB0_AGENT_RULES_REVIEW"
+        },
+        {
+          "path": "llms.txt",
+          "action": "CREATE",
+          "purpose": "Concise model-readable discovery and canonical links.",
+          "current_state": "ABSENT",
+          "content_gate": "RB0_AGENT_DISCOVERY_REVIEW"
+        },
+        {
+          "path": "TITMAS-INTEGRATIONS-ENTRY.v0.1.json",
+          "action": "CREATE",
+          "purpose": "Machine-readable repository truth surface.",
+          "current_state": "ABSENT",
+          "content_gate": "RB0_MACHINE_ENTRY_SCHEMA_VALID"
+        },
+        {
+          "path": "schemas/titmas-integrations-entry.schema.v0.1.json",
+          "action": "CREATE",
+          "purpose": "Schema for the repository truth surface.",
+          "current_state": "ABSENT",
+          "content_gate": "RB0_SCHEMA_META_VALID"
+        },
+        {
+          "path": "README.md",
+          "action": "UPDATE",
+          "purpose": "Human entry with non-claims and current zero-implementation state.",
+          "current_state": "PRESENT",
+          "content_gate": "RB0_PUBLIC_CLAIM_REVIEW"
+        },
+        {
+          "path": "SECURITY.md",
+          "action": "CREATE",
+          "purpose": "Secret handling and disclosure boundary.",
+          "current_state": "ABSENT",
+          "content_gate": "RB0_SECURITY_OWNER_OR_INTERIM_BOUNDARY"
+        },
+        {
+          "path": "MAINTAINERS.md",
+          "action": "CREATE",
+          "purpose": "Implementation Owner scope and review separation.",
+          "current_state": "ABSENT",
+          "content_gate": "RB0_OWNER_SCOPE_REVIEW"
+        },
+        {
+          "path": "IMPLEMENTATION-DECLARATION.template.v0.1.json",
+          "action": "CREATE",
+          "purpose": "Future version-bound implementation declaration template.",
+          "current_state": "ABSENT",
+          "content_gate": "RB0_TEMPLATE_SCHEMA_VALID"
+        }
+      ]
+    },
+    {
+      "stage_id": "RB1",
+      "external_modification_decision_required": true,
+      "files": [
+        {
+          "path": "pyproject.toml",
+          "action": "CREATE_AFTER_PACKAGE_DECISION",
+          "purpose": "Package metadata and dependency boundary.",
+          "current_state": "ABSENT",
+          "content_gate": "EXACT_PACKAGE_NAME_VERSION_LICENSE_AND_DEPENDENCY_DECISION"
+        },
+        {
+          "path": "src/titmas_integrations/__init__.py",
+          "action": "CREATE_AFTER_RB1_AUTHORIZATION",
+          "purpose": "Versioned import namespace.",
+          "current_state": "ABSENT",
+          "content_gate": "RB1_PACKAGE_SKELETON_DECISION"
+        },
+        {
+          "path": "src/titmas_integrations/instrumentation/__init__.py",
+          "action": "CREATE_AFTER_RB1_AUTHORIZATION",
+          "purpose": "Provider-neutral contract namespace.",
+          "current_state": "ABSENT",
+          "content_gate": "RB1_PACKAGE_SKELETON_DECISION"
+        },
+        {
+          "path": "src/titmas_integrations/providers/__init__.py",
+          "action": "CREATE_AFTER_RB1_AUTHORIZATION",
+          "purpose": "Replaceable provider binding namespace.",
+          "current_state": "ABSENT",
+          "content_gate": "RB1_PACKAGE_SKELETON_DECISION"
+        },
+        {
+          "path": "tests/test_package_boundary.py",
+          "action": "CREATE_AFTER_RB1_AUTHORIZATION",
+          "purpose": "No-network, no-credential and namespace boundary tests.",
+          "current_state": "ABSENT",
+          "content_gate": "RB1_TEST_PLAN_ADOPTED"
+        }
+      ]
+    },
+    {
+      "stage_id": "RI0",
+      "external_modification_decision_required": true,
+      "files": [
+        {
+          "path": "src/titmas_integrations/instrumentation/",
+          "action": "IMPLEMENT_ONLY_AFTER_RI0_AUTHORIZATION",
+          "purpose": "P0-P9 provider-neutral phase instrumentation.",
+          "current_state": "ABSENT",
+          "content_gate": "RI0_IMPLEMENTATION_DECISION"
+        },
+        {
+          "path": "src/titmas_integrations/providers/",
+          "action": "IMPLEMENT_BINDINGS_SEPARATELY_AFTER_RI0_AUTHORIZATION",
+          "purpose": "Exact provider-specific bindings.",
+          "current_state": "ABSENT",
+          "content_gate": "EXACT_PROVIDER_BINDING_DECISION"
+        },
+        {
+          "path": "tests/",
+          "action": "IMPLEMENT_POSITIVE_NEGATIVE_SECURITY_AND_ROLLBACK_CASES",
+          "purpose": "Version-bound implementation evidence.",
+          "current_state": "ABSENT",
+          "content_gate": "RI0_CONFORMANCE_PLAN_ADOPTED"
+        }
+      ]
+    }
+  ],
+  "effects": {
+    "files_created_in_target": 0,
+    "files_modified_in_target": 0,
+    "manifest_adopted": false,
+    "external_repository_modification_authorized": false
+  }
+}

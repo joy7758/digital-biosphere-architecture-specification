@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-integrations-required-target-file-manifest.schema.v0.1.json",
+  "title": "TITMAS Integrations Required Target File Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "target_repository",
+    "target_commit",
+    "stages",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./required-target-file-manifest.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-34-REQUIRED-TARGET-FILE-MANIFEST-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "CANDIDATE_NOT_APPLIED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-34"
+    },
+    "target_repository": {
+      "const": "https://github.com/joy7758/titmas-integrations.git"
+    },
+    "target_commit": {
+      "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "stage_id",
+          "external_modification_decision_required",
+          "files"
+        ],
+        "properties": {
+          "stage_id": {
+            "enum": [
+              "RB0",
+              "RB1",
+              "RI0"
+            ]
+          },
+          "external_modification_decision_required": {
+            "const": true
+          },
+          "files": {
+            "type": "array",
+            "minItems": 3,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "action",
+                "purpose",
+                "current_state",
+                "content_gate"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 3
+                },
+                "action": {
+                  "type": "string",
+                  "minLength": 6
+                },
+                "purpose": {
+                  "type": "string",
+                  "minLength": 12
+                },
+                "current_state": {
+                  "enum": [
+                    "ABSENT",
+                    "PRESENT"
+                  ]
+                },
+                "content_gate": {
+                  "type": "string",
+                  "minLength": 8
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "files_created_in_target",
+        "files_modified_in_target",
+        "manifest_adopted",
+        "external_repository_modification_authorized"
+      ],
+      "properties": {
+        "files_created_in_target": {
+          "const": 0
+        },
+        "files_modified_in_target": {
+          "const": 0
+        },
+        "manifest_adopted": {
+          "const": false
+        },
+        "external_repository_modification_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}

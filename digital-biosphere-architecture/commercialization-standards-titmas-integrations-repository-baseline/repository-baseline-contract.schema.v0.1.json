@@ -1,0 +1,365 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-integrations-repository-baseline-contract.schema.v0.1.json",
+  "title": "TITMAS Integrations Repository Baseline Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "implementation_owner_ref",
+    "target_repository",
+    "consumed_specification",
+    "stages",
+    "license_boundary",
+    "agent_readable_boundary",
+    "package_boundary_candidate",
+    "phase_contract_boundary",
+    "security_boundary",
+    "test_boundary",
+    "maintenance_boundary",
+    "implementation_declaration_required_fields",
+    "next_gate",
+    "effects"
+  ],
+  "$defs": {
+    "nonempty_string_array": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 2
+      }
+    }
+  },
+  "properties": {
+    "$schema": {
+      "const": "./repository-baseline-contract.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-34-TITMAS-INTEGRATIONS-REPOSITORY-BASELINE-CONTRACT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED_NOT_APPLIED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-34"
+    },
+    "implementation_owner_ref": {
+      "const": "zhangbin"
+    },
+    "target_repository": {
+      "type": "object",
+      "required": [
+        "repository_ref",
+        "observed_commit",
+        "readme_sha256",
+        "baseline_applied"
+      ],
+      "properties": {
+        "repository_ref": {
+          "const": "https://github.com/joy7758/titmas-integrations.git"
+        },
+        "observed_commit": {
+          "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+        },
+        "readme_sha256": {
+          "const": "7c05c774f54535b52947168c76cd766ed0ede73d98c7ccf09d07727b488eb685"
+        },
+        "baseline_applied": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "consumed_specification": {
+      "type": "object",
+      "required": [
+        "reference",
+        "version",
+        "sha256",
+        "maturity"
+      ],
+      "properties": {
+        "reference": {
+          "type": "string"
+        },
+        "version": {
+          "const": "0.1.0"
+        },
+        "sha256": {
+          "const": "f72eb33bdb5042514deed499fdabddbc74121bc9c22c16f79316eae2aeca9913"
+        },
+        "maturity": {
+          "const": "Development"
+        }
+      },
+      "additionalProperties": false
+    },
+    "stages": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "required": [
+          "stage_id",
+          "name",
+          "purpose",
+          "entry_gate",
+          "implementation_code_allowed",
+          "runtime_effect_allowed",
+          "exit_evidence"
+        ],
+        "properties": {
+          "stage_id": {
+            "enum": [
+              "RB0",
+              "RB1",
+              "RI0"
+            ]
+          },
+          "name": {
+            "type": "string"
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 20
+          },
+          "entry_gate": {
+            "type": "string"
+          },
+          "implementation_code_allowed": {
+            "type": "boolean"
+          },
+          "runtime_effect_allowed": {
+            "const": false
+          },
+          "exit_evidence": {
+            "$ref": "#/$defs/nonempty_string_array"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "license_boundary": {
+      "type": "object",
+      "required": [
+        "candidate_spdx_id",
+        "candidate_reason",
+        "license_adopted",
+        "license_file_created",
+        "adjacent_license_inheritance_allowed",
+        "required_decision"
+      ],
+      "properties": {
+        "candidate_spdx_id": {
+          "const": "Apache-2.0"
+        },
+        "candidate_reason": {
+          "type": "string"
+        },
+        "license_adopted": {
+          "const": false
+        },
+        "license_file_created": {
+          "const": false
+        },
+        "adjacent_license_inheritance_allowed": {
+          "const": false
+        },
+        "required_decision": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "agent_readable_boundary": {
+      "type": "object"
+    },
+    "package_boundary_candidate": {
+      "type": "object"
+    },
+    "phase_contract_boundary": {
+      "type": "object",
+      "required": [
+        "phase_ids",
+        "phase_names",
+        "first_failure_must_be_preserved",
+        "dependent_phases_close_after_failure",
+        "retry_may_rewrite_failure",
+        "fallback_may_rewrite_failure",
+        "repair_may_rewrite_failure",
+        "observation_is_evidence",
+        "instrumentation_is_permission"
+      ],
+      "properties": {
+        "phase_ids": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "uniqueItems": true
+        },
+        "phase_names": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "uniqueItems": true
+        },
+        "first_failure_must_be_preserved": {
+          "const": true
+        },
+        "dependent_phases_close_after_failure": {
+          "const": true
+        },
+        "retry_may_rewrite_failure": {
+          "const": false
+        },
+        "fallback_may_rewrite_failure": {
+          "const": false
+        },
+        "repair_may_rewrite_failure": {
+          "const": false
+        },
+        "observation_is_evidence": {
+          "const": false
+        },
+        "instrumentation_is_permission": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "security_boundary": {
+      "type": "object"
+    },
+    "test_boundary": {
+      "type": "object",
+      "required": [
+        "required_case_groups",
+        "minimum_negative_cases",
+        "tests_executed_by_pre34",
+        "conformance_executed_by_pre34"
+      ],
+      "properties": {
+        "required_case_groups": {
+          "type": "array",
+          "minItems": 10,
+          "maxItems": 10,
+          "uniqueItems": true
+        },
+        "minimum_negative_cases": {
+          "minimum": 10,
+          "type": "integer"
+        },
+        "tests_executed_by_pre34": {
+          "const": 0
+        },
+        "conformance_executed_by_pre34": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "maintenance_boundary": {
+      "type": "object"
+    },
+    "implementation_declaration_required_fields": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "uniqueItems": true
+    },
+    "next_gate": {
+      "type": "object",
+      "required": [
+        "gate_id",
+        "action",
+        "target_repository_modification_authorized"
+      ],
+      "properties": {
+        "gate_id": {
+          "const": "CS-D02-PRE-35"
+        },
+        "action": {
+          "const": "REVIEW_AND_ADOPT_OR_REJECT_EXACT_REPOSITORY_BASELINE_CONTRACT_AS_DEVELOPMENT_INPUT_ONLY"
+        },
+        "target_repository_modification_authorized": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "effects": {
+      "type": "object",
+      "required": [
+        "contract_candidate_defined",
+        "contract_adopted",
+        "license_adopted",
+        "repository_baseline_applied",
+        "target_repository_modified",
+        "implementation_authorized",
+        "implementation_created",
+        "package_created",
+        "api_created",
+        "provider_supported",
+        "conformance_executed",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "contract_candidate_defined": {
+          "const": true
+        },
+        "contract_adopted": {
+          "const": false
+        },
+        "license_adopted": {
+          "const": false
+        },
+        "repository_baseline_applied": {
+          "const": false
+        },
+        "target_repository_modified": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        },
+        "package_created": {
+          "const": false
+        },
+        "api_created": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}
