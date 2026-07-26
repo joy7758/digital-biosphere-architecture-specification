@@ -1,0 +1,263 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-37-rb0-target-mapping-and-template-schema-gap-review-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-37 RB0 Target Mapping and Template Schema Gap Review Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "primary_repository",
+    "target_branch",
+    "target_repository",
+    "target_commit",
+    "implementation_owner_ref",
+    "preconditions",
+    "scope_limits",
+    "authorized_output_ids",
+    "effects",
+    "execution_receipt",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-37-rb0-target-mapping-and-template-schema-gap-review-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-37-RB0-TARGET-MAPPING-AND-TEMPLATE-SCHEMA-GAP-REVIEW-DECISION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "AUTHORIZED_OFFLINE_TARGET_MAPPING_AND_SCHEMA_GAP_RESOLUTION_PACKET_ONLY"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-37"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-37-RB0-TARGET-MAPPING-AND-TEMPLATE-SCHEMA-GAP-REVIEW-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "9770b323aee480cbc79386f0f356bd420a31c596090b2c7be99f7f23d86e5e58"
+    },
+    "recommendation_commit": {
+      "const": "d2559be49407e19b9f9e5b78f2cd29f27fcc754e"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_OFFLINE_PRE36_RB0_FILESET_TARGET_MAPPING_AND_TEMPLATE_SCHEMA_GAP_RESOLUTION_PACKET_ONLY"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "target_branch": {
+      "const": "codex/production-observability-baseline"
+    },
+    "target_repository": {
+      "const": "https://github.com/joy7758/titmas-integrations.git"
+    },
+    "target_commit": {
+      "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+    },
+    "implementation_owner_ref": {
+      "const": "zhangbin"
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre36_decision_commit",
+        "pre36_candidate_commit",
+        "pre36_result_commit",
+        "pre36_result_sha256",
+        "pre36_validation_result_sha256",
+        "pre36_execution_receipt_sha256",
+        "target_head_matched",
+        "target_dirty_count",
+        "standing_directive_active_bounded_fail_closed"
+      ],
+      "properties": {
+        "pre36_decision_commit": {
+          "const": "95a9cef87ed8a4a82b476c0836e1d58d2c8cba61"
+        },
+        "pre36_candidate_commit": {
+          "const": "3dbb37d95a2494d02af750b0fa4599d84581ede3"
+        },
+        "pre36_result_commit": {
+          "const": "2925c3a53326195f7598ec1021b3b54ed0e5b2f6"
+        },
+        "pre36_result_sha256": {
+          "const": "e270b64c7f368fc48f7b8a676327c0413b2caaf548f21708c4eb78e0f15fc0ea"
+        },
+        "pre36_validation_result_sha256": {
+          "const": "c98fd094ec125325465b8f26b92283bd26dea964ca8c870eb72d2a411f3bb5a1"
+        },
+        "pre36_execution_receipt_sha256": {
+          "const": "9f7ca51b7cadefcbc8bce1d0d79c3723a0aea2a733569fa0b5496167b3f5b0a2"
+        },
+        "target_head_matched": {
+          "const": true
+        },
+        "target_dirty_count": {
+          "const": 0
+        },
+        "standing_directive_active_bounded_fail_closed": {
+          "const": true
+        }
+      }
+    },
+    "scope_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "external_repository_modifications_max",
+        "target_files_created_max",
+        "target_files_modified_max",
+        "implementation_files_max",
+        "new_repositories_max",
+        "network_requests_max",
+        "live_model_requests_max",
+        "credential_reads_max"
+      ],
+      "properties": {
+        "external_repository_modifications_max": {
+          "const": 0
+        },
+        "target_files_created_max": {
+          "const": 0
+        },
+        "target_files_modified_max": {
+          "const": 0
+        },
+        "implementation_files_max": {
+          "const": 0
+        },
+        "new_repositories_max": {
+          "const": 0
+        },
+        "network_requests_max": {
+          "const": 0
+        },
+        "live_model_requests_max": {
+          "const": 0
+        },
+        "credential_reads_max": {
+          "const": 0
+        }
+      }
+    },
+    "authorized_output_ids": {
+      "type": "array",
+      "const": [
+        "CANDIDATE_TO_TARGET_MAPPING",
+        "NINE_CANDIDATE_DIGEST_BINDING",
+        "SCHEMA_GAP_OPTION_MATRIX",
+        "RECOMMENDED_GAP_RESOLUTION",
+        "REVISED_TARGET_FILE_MANIFEST_CANDIDATE",
+        "LICENSE_ADOPTION_DECISION_INPUT",
+        "TARGET_APPLICATION_PLAN_CANDIDATE",
+        "ROLLBACK_PLAN_CANDIDATE",
+        "PRE38_DECISION_PACKET",
+        "OFFLINE_VALIDATION_AND_RECEIPT"
+      ]
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "license_adopted",
+        "target_repository_modified",
+        "repository_baseline_applied",
+        "package_created",
+        "implementation_authorized",
+        "implementation_created",
+        "api_created",
+        "tests_executed",
+        "provider_supported",
+        "conformance_executed",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "license_adopted": {
+          "const": false
+        },
+        "target_repository_modified": {
+          "const": false
+        },
+        "repository_baseline_applied": {
+          "const": false
+        },
+        "package_created": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        },
+        "api_created": {
+          "const": false
+        },
+        "tests_executed": {
+          "const": 0
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    },
+    "execution_receipt": {
+      "const": "PENDING_PRE37_RESULT"
+    },
+    "result": {
+      "const": "AUTHORIZED_NOT_EXECUTED"
+    }
+  }
+}
