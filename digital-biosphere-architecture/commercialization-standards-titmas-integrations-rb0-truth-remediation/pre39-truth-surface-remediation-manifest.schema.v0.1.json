@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre39-truth-surface-remediation-manifest.schema.v0.1.json",
+  "title": "PRE-39 Truth Surface Remediation Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "target_repository",
+    "target_branch",
+    "target_commit",
+    "files",
+    "required_truth",
+    "scope"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre39-truth-surface-remediation-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-39-TRUTH-SURFACE-REMEDIATION-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "EXACT_SEVEN_PATH_REMEDIATION_CANDIDATE_NOT_APPLIED"},
+    "target_repository": {"const": "https://github.com/joy7758/titmas-integrations.git"},
+    "target_branch": {"const": "codex/rb0-governance-baseline"},
+    "target_commit": {"const": "d54bf17ea94ee614b83253cd6abd8cb51bfdd45b"},
+    "files": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["target_path", "candidate_file", "operation", "prior_sha256", "candidate_sha256"],
+        "properties": {
+          "target_path": {"type": "string", "minLength": 1},
+          "candidate_file": {"type": "string", "pattern": "\\.candidate$"},
+          "operation": {"const": "UPDATE"},
+          "prior_sha256": {"pattern": "^[0-9a-f]{64}$"},
+          "candidate_sha256": {"pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "required_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "rb0_files_applied_to_branch",
+        "repository_baseline_scope",
+        "repository_baseline_validated",
+        "repository_baseline_adopted",
+        "license_adopted",
+        "implementation_authorized",
+        "implementation_created",
+        "provider_supported",
+        "conformance_executed",
+        "runtime_created",
+        "release_authorized",
+        "commercial_availability"
+      ],
+      "properties": {
+        "rb0_files_applied_to_branch": {"const": true},
+        "repository_baseline_scope": {"const": "BRANCH_ONLY_NOT_MERGED"},
+        "repository_baseline_validated": {"const": false},
+        "repository_baseline_adopted": {"const": false},
+        "license_adopted": {"const": true},
+        "implementation_authorized": {"const": false},
+        "implementation_created": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "runtime_created": {"const": false},
+        "release_authorized": {"const": false},
+        "commercial_availability": {"const": "NOT_CLAIMED"}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paths_updated",
+        "paths_created",
+        "paths_deleted",
+        "source_files_modified",
+        "package_metadata_files_modified",
+        "test_files_modified"
+      ],
+      "properties": {
+        "paths_updated": {"const": 7},
+        "paths_created": {"const": 0},
+        "paths_deleted": {"const": 0},
+        "source_files_modified": {"const": 0},
+        "package_metadata_files_modified": {"const": 0},
+        "test_files_modified": {"const": 0}
+      }
+    }
+  }
+}
