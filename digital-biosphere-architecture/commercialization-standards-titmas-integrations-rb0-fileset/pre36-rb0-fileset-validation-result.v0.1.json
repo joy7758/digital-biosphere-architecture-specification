@@ -1,0 +1,119 @@
+{
+  "$schema": "./pre36-rb0-fileset-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-36-RB0-FILESET-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_WITH_PRE37_MANIFEST_SCHEMA_GAP_RETAINED",
+  "decision_reference": "CS-D02-PRE-36",
+  "decision_record_sha256": "c5a54ee29ff0619b65be54741db22c393049482d4eafbfc87f424d25d16467be",
+  "candidate_commit": "3dbb37d95a2494d02af750b0fa4599d84581ede3",
+  "validated_at": "2026-07-27T02:32:44+08:00",
+  "target_repository": {
+    "repository_ref": "https://github.com/joy7758/titmas-integrations.git",
+    "head_before": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "head_after": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "dirty_count_before": 0,
+    "dirty_count_after": 0,
+    "modified": false
+  },
+  "candidate_artifacts": [
+    {
+      "path": "AGENTS.md.candidate",
+      "sha256": "e8d562824d85f694f1fcbf9fd8e8fa34a711a8b2f4b700cde4aac5eeebd31679",
+      "bytes": 3703
+    },
+    {
+      "path": "IMPLEMENTATION-DECLARATION.template.v0.1.json.candidate",
+      "sha256": "40de6b9975005b3e8a76a8f5326da815bff7c7d6ae22f488e8fc01d1fa815cc5",
+      "bytes": 1489
+    },
+    {
+      "path": "LICENSE.candidate",
+      "sha256": "2191d05c6ee7c145480916b745bd020484adb61653be943c43cff10bc22927a1",
+      "bytes": 10774
+    },
+    {
+      "path": "MAINTAINERS.md.candidate",
+      "sha256": "c8cf429294771ef1f7db4a51502aa792d83191205da0ec3b29766f02e5cab15b",
+      "bytes": 1191
+    },
+    {
+      "path": "README.md.candidate",
+      "sha256": "3032edfdcb5929a91c212282db50a39b8db6269e1262193416d44d8ddd46b72e",
+      "bytes": 4056
+    },
+    {
+      "path": "SECURITY.md.candidate",
+      "sha256": "f0e3a53c62c3d6998c287807d1fd4e369cc1b82270fdc1142cd995664296adda",
+      "bytes": 1638
+    },
+    {
+      "path": "TITMAS-INTEGRATIONS-ENTRY.v0.1.json.candidate",
+      "sha256": "30422f739c29780331b2a5d3551f59ffdd3087cd61a54912de72073e182fe641",
+      "bytes": 3757
+    },
+    {
+      "path": "llms.txt.candidate",
+      "sha256": "12d78ad2772359a73b89c989bb55ded1c778933ea5b8f8d787cb2454215099a6",
+      "bytes": 1805
+    },
+    {
+      "path": "titmas-integrations-entry.schema.v0.1.json.candidate",
+      "sha256": "875ccdd11fba3416d04df075eff8745434edbc9e5b858ae518a9571c5a146436",
+      "bytes": 10418
+    }
+  ],
+  "checks": {
+    "candidate_files_expected": 9,
+    "candidate_files_actual": 9,
+    "candidate_fileset_exact": true,
+    "executable_source_files": 0,
+    "package_metadata_files": 0,
+    "test_files": 0,
+    "apache_text_exact_local_reference": true,
+    "apache_candidate_sha256": "2191d05c6ee7c145480916b745bd020484adb61653be943c43cff10bc22927a1",
+    "entry_schema_meta_valid": true,
+    "entry_instance_valid": true,
+    "implementation_template_valid_against_adopted_dba_schema": true,
+    "readme_truth_constants_match": true,
+    "agents_truth_constants_match": true,
+    "llms_zero_state_match": true,
+    "local_absolute_path_matches": 0,
+    "openai_key_pattern_matches": 0,
+    "aws_key_pattern_matches": 0,
+    "jwt_pattern_matches": 0,
+    "bearer_value_pattern_matches": 0,
+    "target_head_unchanged": true,
+    "target_dirty_count_unchanged": true
+  },
+  "known_gaps": [
+    {
+      "gap_id": "PRE36-GAP-001",
+      "status": "OPEN_FOR_PRE37",
+      "description": "The adopted implementation declaration template uses a relative schema reference, while the PRE-34 target file manifest does not include that schema as a target file.",
+      "required_resolution": "PRE37 must either add the exact schema to the target application scope or adopt a self-contained stable schema reference before target modification."
+    }
+  ],
+  "readiness": {
+    "pre36_validation_pass": true,
+    "pre37_exact_fileset_review_ready": true,
+    "target_application_ready": false,
+    "license_adoption_ready": false
+  },
+  "effects": {
+    "candidate_files_created_in_dba": 9,
+    "target_files_created": 0,
+    "target_files_modified": 0,
+    "license_adopted": false,
+    "repository_baseline_applied": false,
+    "package_created": false,
+    "implementation_authorized": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

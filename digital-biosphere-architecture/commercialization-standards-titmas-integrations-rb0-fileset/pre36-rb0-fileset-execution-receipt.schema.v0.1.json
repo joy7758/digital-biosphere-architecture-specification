@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre36-rb0-fileset-execution-receipt.schema.v0.1.json",
+  "title": "PRE-36 RB0 Fileset Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_record_sha256",
+    "executed_by",
+    "completed_at",
+    "candidate_commit",
+    "counts",
+    "target_state",
+    "validation_result_reference",
+    "result",
+    "authorization_consumed",
+    "additional_execution_authorized"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./pre36-rb0-fileset-execution-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-36-RB0-FILESET-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "COMPLETED_BOUNDED_DBA_ONLY"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-36"
+    },
+    "decision_record_sha256": {
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "completed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "candidate_commit": {
+      "const": "3dbb37d95a2494d02af750b0fa4599d84581ede3"
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_files_created_in_dba",
+        "implementation_files_created",
+        "target_files_created",
+        "target_files_modified",
+        "new_repositories_created",
+        "network_requests_executed",
+        "live_model_requests_executed",
+        "credential_reads_executed",
+        "tests_executed"
+      ],
+      "properties": {
+        "candidate_files_created_in_dba": {
+          "const": 9
+        },
+        "implementation_files_created": {
+          "const": 0
+        },
+        "target_files_created": {
+          "const": 0
+        },
+        "target_files_modified": {
+          "const": 0
+        },
+        "new_repositories_created": {
+          "const": 0
+        },
+        "network_requests_executed": {
+          "const": 0
+        },
+        "live_model_requests_executed": {
+          "const": 0
+        },
+        "credential_reads_executed": {
+          "const": 0
+        },
+        "tests_executed": {
+          "const": 0
+        }
+      }
+    },
+    "target_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "head",
+        "dirty_count",
+        "unchanged"
+      ],
+      "properties": {
+        "head": {
+          "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+        },
+        "dirty_count": {
+          "const": 0
+        },
+        "unchanged": {
+          "const": true
+        }
+      }
+    },
+    "validation_result_reference": {
+      "const": "pre36-rb0-fileset-validation-result.v0.1.json"
+    },
+    "result": {
+      "const": "PASS_WITH_PRE37_MANIFEST_SCHEMA_GAP_RETAINED"
+    },
+    "authorization_consumed": {
+      "const": true
+    },
+    "additional_execution_authorized": {
+      "const": false
+    }
+  }
+}

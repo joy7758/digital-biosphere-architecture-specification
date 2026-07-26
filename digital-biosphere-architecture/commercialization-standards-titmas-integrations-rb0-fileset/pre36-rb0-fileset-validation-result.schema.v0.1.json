@@ -1,0 +1,324 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre36-rb0-fileset-validation-result.schema.v0.1.json",
+  "title": "PRE-36 RB0 Fileset Validation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_record_sha256",
+    "candidate_commit",
+    "validated_at",
+    "target_repository",
+    "candidate_artifacts",
+    "checks",
+    "known_gaps",
+    "readiness",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./pre36-rb0-fileset-validation-result.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-36-RB0-FILESET-VALIDATION-RESULT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PASS_WITH_PRE37_MANIFEST_SCHEMA_GAP_RETAINED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-36"
+    },
+    "decision_record_sha256": {
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "candidate_commit": {
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "validated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "target_repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository_ref",
+        "head_before",
+        "head_after",
+        "dirty_count_before",
+        "dirty_count_after",
+        "modified"
+      ],
+      "properties": {
+        "repository_ref": {
+          "const": "https://github.com/joy7758/titmas-integrations.git"
+        },
+        "head_before": {
+          "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+        },
+        "head_after": {
+          "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+        },
+        "dirty_count_before": {
+          "const": 0
+        },
+        "dirty_count_after": {
+          "const": 0
+        },
+        "modified": {
+          "const": false
+        }
+      }
+    },
+    "candidate_artifacts": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "bytes"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "pattern": "\\.candidate$"
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 1
+          }
+        }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_files_expected",
+        "candidate_files_actual",
+        "candidate_fileset_exact",
+        "executable_source_files",
+        "package_metadata_files",
+        "test_files",
+        "apache_text_exact_local_reference",
+        "apache_candidate_sha256",
+        "entry_schema_meta_valid",
+        "entry_instance_valid",
+        "implementation_template_valid_against_adopted_dba_schema",
+        "readme_truth_constants_match",
+        "agents_truth_constants_match",
+        "llms_zero_state_match",
+        "local_absolute_path_matches",
+        "openai_key_pattern_matches",
+        "aws_key_pattern_matches",
+        "jwt_pattern_matches",
+        "bearer_value_pattern_matches",
+        "target_head_unchanged",
+        "target_dirty_count_unchanged"
+      ],
+      "properties": {
+        "candidate_files_expected": {
+          "const": 9
+        },
+        "candidate_files_actual": {
+          "const": 9
+        },
+        "candidate_fileset_exact": {
+          "const": true
+        },
+        "executable_source_files": {
+          "const": 0
+        },
+        "package_metadata_files": {
+          "const": 0
+        },
+        "test_files": {
+          "const": 0
+        },
+        "apache_text_exact_local_reference": {
+          "const": true
+        },
+        "apache_candidate_sha256": {
+          "const": "2191d05c6ee7c145480916b745bd020484adb61653be943c43cff10bc22927a1"
+        },
+        "entry_schema_meta_valid": {
+          "const": true
+        },
+        "entry_instance_valid": {
+          "const": true
+        },
+        "implementation_template_valid_against_adopted_dba_schema": {
+          "const": true
+        },
+        "readme_truth_constants_match": {
+          "const": true
+        },
+        "agents_truth_constants_match": {
+          "const": true
+        },
+        "llms_zero_state_match": {
+          "const": true
+        },
+        "local_absolute_path_matches": {
+          "const": 0
+        },
+        "openai_key_pattern_matches": {
+          "const": 0
+        },
+        "aws_key_pattern_matches": {
+          "const": 0
+        },
+        "jwt_pattern_matches": {
+          "const": 0
+        },
+        "bearer_value_pattern_matches": {
+          "const": 0
+        },
+        "target_head_unchanged": {
+          "const": true
+        },
+        "target_dirty_count_unchanged": {
+          "const": true
+        }
+      }
+    },
+    "known_gaps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "gap_id",
+          "status",
+          "description",
+          "required_resolution"
+        ],
+        "properties": {
+          "gap_id": {
+            "const": "PRE36-GAP-001"
+          },
+          "status": {
+            "const": "OPEN_FOR_PRE37"
+          },
+          "description": {
+            "type": "string",
+            "minLength": 40
+          },
+          "required_resolution": {
+            "type": "string",
+            "minLength": 40
+          }
+        }
+      }
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre36_validation_pass",
+        "pre37_exact_fileset_review_ready",
+        "target_application_ready",
+        "license_adoption_ready"
+      ],
+      "properties": {
+        "pre36_validation_pass": {
+          "const": true
+        },
+        "pre37_exact_fileset_review_ready": {
+          "const": true
+        },
+        "target_application_ready": {
+          "const": false
+        },
+        "license_adoption_ready": {
+          "const": false
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "candidate_files_created_in_dba",
+        "target_files_created",
+        "target_files_modified",
+        "license_adopted",
+        "repository_baseline_applied",
+        "package_created",
+        "implementation_authorized",
+        "implementation_created",
+        "provider_supported",
+        "conformance_executed",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "candidate_files_created_in_dba": {
+          "const": 9
+        },
+        "target_files_created": {
+          "const": 0
+        },
+        "target_files_modified": {
+          "const": 0
+        },
+        "license_adopted": {
+          "const": false
+        },
+        "repository_baseline_applied": {
+          "const": false
+        },
+        "package_created": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}
