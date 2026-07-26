@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_13_OFFLINE_REMEDIATION_COMPLETED_PROVIDER_CONFIRMATION_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_14_PROVIDER_CONFIRMATION_RECOMMENDATION_PREPARED_NOT_DECIDED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1135,6 +1135,9 @@
         "pre13_offline_execution_completed",
         "pre13_offline_remediation_pass",
         "pre13_live_model_requests_executed",
+        "pre14_provider_confirmation_recommendation_prepared",
+        "pre14_provider_confirmation_decision_recorded",
+        "pre14_live_model_requests_authorized",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1281,6 +1284,15 @@
         },
         "pre13_live_model_requests_executed": {
           "const": 0
+        },
+        "pre14_provider_confirmation_recommendation_prepared": {
+          "const": true
+        },
+        "pre14_provider_confirmation_decision_recorded": {
+          "const": false
+        },
+        "pre14_live_model_requests_authorized": {
+          "const": false
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -1491,6 +1503,12 @@
         "response_contract_remediation_result_reference",
         "response_contract_remediation_report_reference",
         "provider_execution_validated",
+        "provider_confirmation_decision_candidate_id",
+        "provider_confirmation_recommendation_reference",
+        "provider_confirmation_recommendation_prepared",
+        "provider_confirmation_decision_recorded",
+        "provider_confirmation_live_model_requests_recommended_max",
+        "provider_confirmation_execution_authorized",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
         "rerun_json_repair_allowed",
@@ -1508,7 +1526,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE13_EXECUTED_OFFLINE_REMEDIATION_PASS_PROVIDER_CONFIRMATION_RECOMMENDATION_REQUIRED"
+          "const": "PRE14_PROVIDER_CONFIRMATION_RECOMMENDATION_PREPARED_NOT_DECIDED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1855,6 +1873,24 @@
         "provider_execution_validated": {
           "const": false
         },
+        "provider_confirmation_decision_candidate_id": {
+          "const": "CS-D02-PRE-14"
+        },
+        "provider_confirmation_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-14-BOUNDED-PROVIDER-CONFIRMATION-RECOMMENDATION-v0.1.md"
+        },
+        "provider_confirmation_recommendation_prepared": {
+          "const": true
+        },
+        "provider_confirmation_decision_recorded": {
+          "const": false
+        },
+        "provider_confirmation_live_model_requests_recommended_max": {
+          "const": 2
+        },
+        "provider_confirmation_execution_authorized": {
+          "const": false
+        },
         "rerun_retry_allowed": {
           "const": false
         },
@@ -1868,10 +1904,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_SEPARATE_BOUNDED_PROVIDER_CONFIRMATION_RECOMMENDATION_ONLY"
+          "const": "AUTHORIZE_TWO_PROVIDER_SCHEMA_CONFIRMATION_REQUESTS_ONLY"
         },
         "decision_ready": {
-          "const": false
+          "const": true
         },
         "external_execution_authorized": {
           "const": false
