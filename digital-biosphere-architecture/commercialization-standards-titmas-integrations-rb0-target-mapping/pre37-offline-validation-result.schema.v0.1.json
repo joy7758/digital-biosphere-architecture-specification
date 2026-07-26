@@ -1,0 +1,266 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre37-offline-validation-result.schema.v0.1.json",
+  "title": "PRE-37 Offline Validation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_record_sha256",
+    "planning_commit",
+    "validated_at",
+    "artifact_digests",
+    "checks",
+    "gap_resolution",
+    "readiness",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./pre37-offline-validation-result.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-37-OFFLINE-VALIDATION-RESULT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PASS_PRE38_HUMAN_DECISION_REVIEW_READY_NOT_AUTHORIZED"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-37"
+    },
+    "decision_record_sha256": {
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "planning_commit": {
+      "const": "b29213e29f3a62749d35f65c243ae3abd21b9ddd"
+    },
+    "validated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "artifact_digests": {
+      "type": "object",
+      "minProperties": 7,
+      "maxProperties": 7,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "json_artifacts_parsed",
+        "schemas_meta_and_instances_valid",
+        "manifest_source_digests_match",
+        "target_paths_unique",
+        "path_traversal_present",
+        "machine_entry_local_schema_resolved",
+        "implementation_template_local_schema_resolved",
+        "plan_manifest_paths_match",
+        "rollback_create_paths_match",
+        "rollback_preserve_existing_paths_match",
+        "license_input_digest_match",
+        "readme_prior_digest_match",
+        "target_head_unchanged",
+        "target_dirty_count_unchanged",
+        "external_repository_modifications",
+        "network_requests",
+        "live_model_requests",
+        "credential_reads"
+      ],
+      "properties": {
+        "json_artifacts_parsed": {
+          "const": 10
+        },
+        "schemas_meta_and_instances_valid": {
+          "const": 3
+        },
+        "manifest_source_digests_match": {
+          "const": 10
+        },
+        "target_paths_unique": {
+          "const": 10
+        },
+        "path_traversal_present": {
+          "const": false
+        },
+        "machine_entry_local_schema_resolved": {
+          "const": true
+        },
+        "implementation_template_local_schema_resolved": {
+          "const": true
+        },
+        "plan_manifest_paths_match": {
+          "const": 10
+        },
+        "rollback_create_paths_match": {
+          "const": 9
+        },
+        "rollback_preserve_existing_paths_match": {
+          "const": 6
+        },
+        "license_input_digest_match": {
+          "const": true
+        },
+        "readme_prior_digest_match": {
+          "const": true
+        },
+        "target_head_unchanged": {
+          "const": true
+        },
+        "target_dirty_count_unchanged": {
+          "const": true
+        },
+        "external_repository_modifications": {
+          "const": 0
+        },
+        "network_requests": {
+          "const": 0
+        },
+        "live_model_requests": {
+          "const": 0
+        },
+        "credential_reads": {
+          "const": 0
+        }
+      }
+    },
+    "gap_resolution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gap_id",
+        "original_option_a_outcome",
+        "recommended_option",
+        "recommended_schema_target_path",
+        "template_bytes_changed",
+        "adopted_template_digest_preserved",
+        "manifest_target_file_count",
+        "resolution_adopted"
+      ],
+      "properties": {
+        "gap_id": {
+          "const": "PRE36-GAP-001"
+        },
+        "original_option_a_outcome": {
+          "const": "REJECT_UNRESOLVED_RELATIVE_REFERENCE"
+        },
+        "recommended_option": {
+          "const": "A_CORRECTED_ROOT_RELATIVE_PATH"
+        },
+        "recommended_schema_target_path": {
+          "const": "implementation-declaration-template.schema.v0.1.json"
+        },
+        "template_bytes_changed": {
+          "const": false
+        },
+        "adopted_template_digest_preserved": {
+          "const": true
+        },
+        "manifest_target_file_count": {
+          "const": 10
+        },
+        "resolution_adopted": {
+          "const": false
+        }
+      }
+    },
+    "readiness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre37_validation_pass",
+        "pre38_human_decision_review_ready",
+        "pre38_decision_recorded",
+        "license_adopted",
+        "target_modification_authorized",
+        "target_application_executed"
+      ],
+      "properties": {
+        "pre37_validation_pass": {
+          "const": true
+        },
+        "pre38_human_decision_review_ready": {
+          "const": true
+        },
+        "pre38_decision_recorded": {
+          "const": false
+        },
+        "license_adopted": {
+          "const": false
+        },
+        "target_modification_authorized": {
+          "const": false
+        },
+        "target_application_executed": {
+          "const": false
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_repository_modified",
+        "repository_baseline_applied",
+        "package_created",
+        "implementation_authorized",
+        "implementation_created",
+        "provider_supported",
+        "conformance_executed",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "target_repository_modified": {
+          "const": false
+        },
+        "repository_baseline_applied": {
+          "const": false
+        },
+        "package_created": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "conformance_executed": {
+          "const": false
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}
