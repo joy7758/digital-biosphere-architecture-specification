@@ -1174,6 +1174,15 @@
         "pre20_live_model_requests_executed",
         "pre20_live_review_ready",
         "pre20_compact_response_schema_required",
+        "pre21_compact_response_contract_recommendation_prepared",
+        "pre21_compact_response_contract_decision_recorded",
+        "pre21_authorization_baseline_remote_verified",
+        "pre21_offline_response_contract_pass",
+        "pre21_fixture_cases_matched",
+        "pre21_maximum_compact_query_bytes",
+        "pre21_live_model_requests_executed",
+        "pre21_live_review_recommendation_ready",
+        "pre21_live_review_authorized",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1437,6 +1446,33 @@
         },
         "pre20_compact_response_schema_required": {
           "const": true
+        },
+        "pre21_compact_response_contract_recommendation_prepared": {
+          "const": true
+        },
+        "pre21_compact_response_contract_decision_recorded": {
+          "const": true
+        },
+        "pre21_authorization_baseline_remote_verified": {
+          "const": true
+        },
+        "pre21_offline_response_contract_pass": {
+          "const": true
+        },
+        "pre21_fixture_cases_matched": {
+          "const": 13
+        },
+        "pre21_maximum_compact_query_bytes": {
+          "const": 21010
+        },
+        "pre21_live_model_requests_executed": {
+          "const": 0
+        },
+        "pre21_live_review_recommendation_ready": {
+          "const": true
+        },
+        "pre21_live_review_authorized": {
+          "const": false
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -1815,6 +1851,23 @@
         "provider_adapter_profile_review_remediation_live_model_requests_executed",
         "provider_adapter_profile_review_remediation_live_review_ready",
         "provider_adapter_profile_compact_response_schema_required",
+        "provider_adapter_compact_response_contract_decision_candidate_id",
+        "provider_adapter_compact_response_contract_recommendation_reference",
+        "provider_adapter_compact_response_contract_decision_reference",
+        "provider_adapter_compact_response_contract_plan_reference",
+        "provider_adapter_compact_response_contract_authorization_receipt_reference",
+        "provider_adapter_compact_response_schema_reference",
+        "provider_adapter_compact_response_fixtures_reference",
+        "provider_adapter_compact_request_manifest_v0_2_reference",
+        "provider_adapter_compact_response_contract_result_reference",
+        "provider_adapter_compact_response_contract_execution_receipt_reference",
+        "provider_adapter_compact_response_contract_report_reference",
+        "provider_adapter_compact_response_contract_offline_pass",
+        "provider_adapter_compact_response_contract_fixtures_matched",
+        "provider_adapter_compact_response_contract_maximum_query_bytes",
+        "provider_adapter_compact_response_contract_live_model_requests_executed",
+        "provider_adapter_compact_response_contract_live_review_recommendation_ready",
+        "provider_adapter_compact_response_contract_live_review_authorized",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -1833,7 +1886,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE20_OFFLINE_BUNDLE_REMEDIATION_PASS_COMPACT_RESPONSE_SCHEMA_REQUIRED"
+          "const": "PRE21_OFFLINE_RESPONSE_CONTRACT_PASS_LIVE_REVIEW_RECOMMENDATION_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -2684,6 +2737,57 @@
         "provider_adapter_profile_compact_response_schema_required": {
           "const": true
         },
+        "provider_adapter_compact_response_contract_decision_candidate_id": {
+          "const": "CS-D02-PRE-21"
+        },
+        "provider_adapter_compact_response_contract_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-21-COMPACT-REVIEW-RESPONSE-CONTRACT-RECOMMENDATION-v0.1.md"
+        },
+        "provider_adapter_compact_response_contract_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-21-COMPACT-REVIEW-RESPONSE-CONTRACT-DECISION-RECORD.v0.1.json"
+        },
+        "provider_adapter_compact_response_contract_plan_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-response-contract-plan.v0.1.json"
+        },
+        "provider_adapter_compact_response_contract_authorization_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-response-contract-authorization-receipt.v0.1.json"
+        },
+        "provider_adapter_compact_response_schema_reference": {
+          "const": "architecture/schemas/provider-adapter-compact-review-response.schema.v0.1.json"
+        },
+        "provider_adapter_compact_response_fixtures_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-response-schema-fixtures.v0.1.json"
+        },
+        "provider_adapter_compact_request_manifest_v0_2_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-review-request-manifest.v0.2.json"
+        },
+        "provider_adapter_compact_response_contract_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-response-contract-validation-result.v0.1.json"
+        },
+        "provider_adapter_compact_response_contract_execution_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-response-contract-execution-receipt.v0.1.json"
+        },
+        "provider_adapter_compact_response_contract_report_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/PRE-21-COMPACT-REVIEW-RESPONSE-CONTRACT-RESULT-v0.1.md"
+        },
+        "provider_adapter_compact_response_contract_offline_pass": {
+          "const": true
+        },
+        "provider_adapter_compact_response_contract_fixtures_matched": {
+          "const": 13
+        },
+        "provider_adapter_compact_response_contract_maximum_query_bytes": {
+          "const": 21010
+        },
+        "provider_adapter_compact_response_contract_live_model_requests_executed": {
+          "const": 0
+        },
+        "provider_adapter_compact_response_contract_live_review_recommendation_ready": {
+          "const": true
+        },
+        "provider_adapter_compact_response_contract_live_review_authorized": {
+          "const": false
+        },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
         },
@@ -2700,7 +2804,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_SEPARATE_COMPACT_REVIEW_RESPONSE_SCHEMA_AND_LIVE_REVIEW_RECOMMENDATION_ONLY"
+          "const": "PREPARE_SEPARATE_BOUNDED_COMPACT_PROJECTION_LIVE_REVIEW_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false

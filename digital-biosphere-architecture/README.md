@@ -279,6 +279,13 @@ fallback 和 JSON repair 均为 0。因此 `REVIEW_COMPLETED=false`、`PROFILE_A
 live/provider request 仍为 0。该结果不证明 provider limit 或请求成功，并发现旧 reviewer
 response Schema 无法表达 `COMPACT_PROJECTION_ONLY`，所以 `LIVE_REVIEW_READY=false`。
 
+`CS-D02-PRE-21` 已建立
+[compact-scope response contract](architecture/schemas/provider-adapter-compact-review-response.schema.v0.1.json)
+并完成 [13-case offline validation](commercialization-standards-provider-adapter-profile-review-remediation/PRE-21-COMPACT-REVIEW-RESPONSE-CONTRACT-RESULT-v0.1.md)。
+3/3 正向 fixture 接受、10/10 scope/elevation/hash/criterion/verdict 负向 fixture 拒绝；
+包含 response Schema 的 v0.2 请求最大 21,010 bytes，仍低于内部 cap。该 PASS 只使独立
+live-review recommendation 可准备，`LIVE_REVIEW_AUTHORIZED=false`。
+
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false
 TITMAS_GOVERNANCE_READY=false
