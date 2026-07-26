@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-38-titmas-integrations-rb0-license-adoption-and-target-application-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-38 RB0 License Adoption and Target Application Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "governance_repository",
+    "execution_primary_repository",
+    "target_repository",
+    "target_baseline_commit",
+    "target_branch",
+    "commit_message",
+    "license",
+    "standing_directive_eligibility",
+    "preconditions",
+    "scope",
+    "effects_before_execution",
+    "execution_receipt",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-38-titmas-integrations-rb0-license-adoption-and-target-application-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-38-TITMAS-INTEGRATIONS-RB0-LICENSE-ADOPTION-AND-TARGET-APPLICATION-DECISION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "AUTHORIZED_EXACT_LICENSE_AND_TEN_PATH_RB0_APPLICATION_PENDING_VALIDATION"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-38"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-38-TITMAS-INTEGRATIONS-RB0-LICENSE-ADOPTION-AND-TARGET-APPLICATION-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "69b1b23ac20a5a3a50c0e06f0ff5e5f0905d92e9fb12ff8ed545d1cfaaf72f9c"
+    },
+    "recommendation_commit": {
+      "const": "4dde7b5bace4179de6a86a7c3be47bc4970a41b6"
+    },
+    "decision_result": {
+      "const": "ADOPT_EXACT_APACHE_2_0_AND_AUTHORIZE_EXACT_TEN_PATH_TITMAS_INTEGRATIONS_RB0_APPLICATION_COMMIT_AND_PUSH_ONLY"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "governance_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "execution_primary_repository": {
+      "const": "titmas-integrations"
+    },
+    "target_repository": {
+      "const": "https://github.com/joy7758/titmas-integrations.git"
+    },
+    "target_baseline_commit": {
+      "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+    },
+    "target_branch": {
+      "const": "codex/rb0-governance-baseline"
+    },
+    "commit_message": {
+      "const": "chore: establish TITMAS integrations RB0 governance baseline"
+    },
+    "license": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "spdx_id",
+        "sha256",
+        "adoption_decided",
+        "file_applied"
+      ],
+      "properties": {
+        "spdx_id": {
+          "const": "Apache-2.0"
+        },
+        "sha256": {
+          "const": "2191d05c6ee7c145480916b745bd020484adb61653be943c43cff10bc22927a1"
+        },
+        "adoption_decided": {
+          "const": true
+        },
+        "file_applied": {
+          "const": false
+        }
+      }
+    },
+    "standing_directive_eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_present",
+        "single_exact_option",
+        "repositories_target_and_scope_explicit",
+        "preconditions_directly_evidenced",
+        "all_effect_classes_declared",
+        "stop_conditions_explicit",
+        "later_conflict_present",
+        "independent_decision_record_present",
+        "result_validation_and_failure_retention_required",
+        "material_actions_separately_recorded",
+        "applicable"
+      ],
+      "properties": {
+        "canonical_recommendation_present": {
+          "const": true
+        },
+        "single_exact_option": {
+          "const": true
+        },
+        "repositories_target_and_scope_explicit": {
+          "const": true
+        },
+        "preconditions_directly_evidenced": {
+          "const": true
+        },
+        "all_effect_classes_declared": {
+          "const": true
+        },
+        "stop_conditions_explicit": {
+          "const": true
+        },
+        "later_conflict_present": {
+          "const": false
+        },
+        "independent_decision_record_present": {
+          "const": true
+        },
+        "result_validation_and_failure_retention_required": {
+          "const": true
+        },
+        "material_actions_separately_recorded": {
+          "const": true
+        },
+        "applicable": {
+          "const": true
+        }
+      }
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre37_decision_commit",
+        "pre37_planning_commit",
+        "pre37_result_commit",
+        "pre37_validation_result_sha256",
+        "revised_manifest_sha256",
+        "target_head_matched",
+        "target_dirty_count",
+        "target_branch_conflict_absent"
+      ],
+      "properties": {
+        "pre37_decision_commit": {
+          "const": "1d34ae8c73bc0edf761264af9d9cfa20e8a90ef9"
+        },
+        "pre37_planning_commit": {
+          "const": "b29213e29f3a62749d35f65c243ae3abd21b9ddd"
+        },
+        "pre37_result_commit": {
+          "const": "4ff97084b1902e84552f8480e03f079c6d514378"
+        },
+        "pre37_validation_result_sha256": {
+          "const": "684321375ec08a8f591544beb669d3345d050a4ca4298d0f07b314fa89eb2599"
+        },
+        "revised_manifest_sha256": {
+          "const": "aa6828203d33f2a73e04cdb71b1807e9a022c4bf95541b2dd366fa207f1ce508"
+        },
+        "target_head_matched": {
+          "const": true
+        },
+        "target_dirty_count": {
+          "const": 0
+        },
+        "target_branch_conflict_absent": {
+          "const": true
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_paths_exact",
+        "target_files_created",
+        "target_files_updated",
+        "source_files_created",
+        "package_metadata_files_created",
+        "test_files_created",
+        "network_requests_for_validation_max",
+        "model_requests_max",
+        "credential_reads_max",
+        "force_push_allowed",
+        "merge_authorized",
+        "pull_request_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "target_paths_exact": {
+          "const": 10
+        },
+        "target_files_created": {
+          "const": 9
+        },
+        "target_files_updated": {
+          "const": 1
+        },
+        "source_files_created": {
+          "const": 0
+        },
+        "package_metadata_files_created": {
+          "const": 0
+        },
+        "test_files_created": {
+          "const": 0
+        },
+        "network_requests_for_validation_max": {
+          "const": 0
+        },
+        "model_requests_max": {
+          "const": 0
+        },
+        "credential_reads_max": {
+          "const": 0
+        },
+        "force_push_allowed": {
+          "const": false
+        },
+        "merge_authorized": {
+          "const": false
+        },
+        "pull_request_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "license_adoption_decided",
+        "license_file_applied",
+        "external_repository_modification_authorized",
+        "target_repository_modified",
+        "target_branch_push_authorized",
+        "architecture_authority_changed",
+        "ownership_changed",
+        "implementation_authorized",
+        "implementation_created",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "license_adoption_decided": {
+          "const": true
+        },
+        "license_file_applied": {
+          "const": false
+        },
+        "external_repository_modification_authorized": {
+          "const": true
+        },
+        "target_repository_modified": {
+          "const": false
+        },
+        "target_branch_push_authorized": {
+          "const": true
+        },
+        "architecture_authority_changed": {
+          "const": false
+        },
+        "ownership_changed": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "implementation_created": {
+          "const": false
+        },
+        "commercial_offer_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        }
+      }
+    },
+    "execution_receipt": {
+      "const": "PENDING_PRE38_RESULT"
+    },
+    "result": {
+      "const": "AUTHORIZED_NOT_EXECUTED"
+    }
+  }
+}
