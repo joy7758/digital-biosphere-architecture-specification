@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre52-multi-provider-review-remediation-decision-record.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_id", "standing_directive_reference", "recommendation_reference", "recommendation_sha256", "recommendation_commit", "decision_result", "decided_by_ref", "decided_at", "executed_by", "standing_directive_eligibility", "scope", "effects_before_execution", "next_gate", "result"],
+  "properties": {
+    "$schema": { "const": "./architecture/schemas/titmas-cs-d02-pre52-multi-provider-review-remediation-decision-record.schema.v0.1.json" },
+    "document_id": { "const": "DBA-TITMAS-CS-D02-PRE-52-MULTI-PROVIDER-REVIEW-REMEDIATION-DECISION-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "DBA_ONLY_OFFLINE_REMEDIATION_AUTHORIZED_NOT_EXECUTED" },
+    "decision_id": { "const": "CS-D02-PRE-52" },
+    "standing_directive_reference": { "const": "TITMAS-CS-STANDING-001" },
+    "recommendation_reference": { "const": "TITMAS-CS-D02-PRE-52-MULTI-PROVIDER-REVIEW-TRANSPORT-AND-REQUEST-CONTRACT-REMEDIATION-RECOMMENDATION-v0.1.md" },
+    "recommendation_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "recommendation_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "decision_result": { "const": "AUTHORIZE_DBA_ONLY_OFFLINE_MULTI_PROVIDER_REVIEW_FAILURE_DIAGNOSIS_AND_PREALLOCATED_SESSION_CONTRACT_PACKET" },
+    "decided_by_ref": { "const": "zhangbin" },
+    "decided_at": { "type": "string", "format": "date-time" },
+    "executed_by": { "const": "Codex" },
+    "standing_directive_eligibility": {
+      "type": "object",
+      "minProperties": 11,
+      "additionalProperties": { "type": "boolean" },
+      "properties": {
+        "later_conflict_present": { "const": false },
+        "applicable": { "const": true }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["primary_repository", "input_commit", "output_files", "network_requests_max", "model_requests_max", "credential_reads_max", "target_write_paths"],
+      "properties": {
+        "primary_repository": { "const": "digital-biosphere-architecture" },
+        "input_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "output_files": { "const": 9 },
+        "network_requests_max": { "const": 0 },
+        "model_requests_max": { "const": 0 },
+        "credential_reads_max": { "const": 0 },
+        "target_write_paths": { "const": 0 }
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "minProperties": 17,
+      "additionalProperties": { "type": "boolean" },
+      "properties": {
+        "offline_remediation_authorized": { "const": true }
+      }
+    },
+    "next_gate": { "const": "CREATE_EXACT_NINE_FILE_PRE52_OFFLINE_REMEDIATION_PACKET" },
+    "result": { "const": "NOT_EXECUTED" }
+  }
+}
