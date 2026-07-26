@@ -1,0 +1,52 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-45-offline-failure-diagnostic-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-45-OFFLINE-FAILURE-DIAGNOSTIC-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "ZERO_NETWORK_OFFLINE_DIAGNOSTIC_AUTHORIZED_NOT_EXECUTED",
+  "decision_id": "CS-D02-PRE-45",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-45-OFFLINE-PROVIDER-FAILURE-AND-RESPONSE-SHAPE-DIAGNOSTIC-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "d3180a0b6b99d300af7a0ea99856458e6ed3121c8b1908b247831e410dc8d566",
+  "recommendation_commit": "334896900070590b4b4c6d8003235233bc9414c2",
+  "decision_result": "AUTHORIZE_ZERO_NETWORK_OFFLINE_PRE44_PROVIDER_FAILURE_AND_RESPONSE_SHAPE_DIAGNOSTIC",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-27T04:40:20+08:00",
+  "executed_by": "Codex",
+  "preconditions": {
+    "recommendation_remote_verified": true,
+    "recommendation_commit": "334896900070590b4b4c6d8003235233bc9414c2",
+    "input_manifest_sha256": "3f9798a2bb75832f58cd6dbe2c84f66b507bd43bbff232b996d5c3a7fdedbcbe",
+    "plan_sha256": "037a8e3e7734a197ada71ecb499fa54e83d211ca0b180c48c2738e0f634bc73d",
+    "input_hashes_match": 8,
+    "pre44_gate_pass": false,
+    "target_head": "f80629364752c465316b9d1238fe5447a88565ca",
+    "target_dirty_count": 0
+  },
+  "scope": {
+    "primary_repository": "digital-biosphere-architecture",
+    "inputs_exact": 8,
+    "outputs_exact": 3,
+    "network_requests_max": 0,
+    "model_requests_max": 0,
+    "credential_reads_max": 0,
+    "raw_provider_envelope_accesses_max": 0,
+    "target_repository_files_modified_max": 0
+  },
+  "effects_before_execution": {
+    "offline_diagnostic_authorized": true,
+    "pre44_gate_pass_changed": false,
+    "rb1_implementation_recommendation_allowed": false,
+    "rb1_implementation_authorized": false,
+    "target_repository_modification_authorized": false,
+    "package_created": false,
+    "source_created": false,
+    "tests_created": false,
+    "provider_supported": false,
+    "runtime_created": false,
+    "release_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false
+  },
+  "execution_receipt": "PENDING_PRE45_RESULT",
+  "result": "OFFLINE_DIAGNOSTIC_NOT_EXECUTED"
+}
