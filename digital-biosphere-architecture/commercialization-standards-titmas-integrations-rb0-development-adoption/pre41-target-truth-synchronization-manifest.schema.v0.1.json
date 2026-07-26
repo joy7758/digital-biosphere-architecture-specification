@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre41-target-truth-synchronization-manifest.schema.v0.1.json",
+  "title": "PRE-41 Target Truth Synchronization Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "target_repository",
+    "target_branch",
+    "target_commit",
+    "adopted_baseline_commit",
+    "files",
+    "required_truth",
+    "scope"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre41-target-truth-synchronization-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-41-TARGET-TRUTH-SYNCHRONIZATION-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "EXACT_FIVE_PATH_CANDIDATE_NOT_APPLIED"},
+    "target_repository": {"const": "https://github.com/joy7758/titmas-integrations.git"},
+    "target_branch": {"const": "codex/rb0-governance-baseline"},
+    "target_commit": {"const": "9610748d4a72d81278df2bc296518a469ce2fd30"},
+    "adopted_baseline_commit": {"const": "9610748d4a72d81278df2bc296518a469ce2fd30"},
+    "files": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["target_path", "candidate_file", "operation", "prior_sha256", "candidate_sha256"],
+        "properties": {
+          "target_path": {"type": "string", "minLength": 1},
+          "candidate_file": {"type": "string", "pattern": "\\.candidate$"},
+          "operation": {"const": "UPDATE"},
+          "prior_sha256": {"pattern": "^[0-9a-f]{64}$"},
+          "candidate_sha256": {"pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "required_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "maturity",
+        "adopted_baseline_commit",
+        "repository_baseline_validated",
+        "repository_baseline_adopted",
+        "target_branch_merged",
+        "implementation_authorized",
+        "implementation_created",
+        "provider_supported",
+        "conformance_executed",
+        "runtime_created",
+        "release_authorized"
+      ],
+      "properties": {
+        "maturity": {"const": "Development"},
+        "adopted_baseline_commit": {"const": "9610748d4a72d81278df2bc296518a469ce2fd30"},
+        "repository_baseline_validated": {"const": true},
+        "repository_baseline_adopted": {"const": true},
+        "target_branch_merged": {"const": false},
+        "implementation_authorized": {"const": false},
+        "implementation_created": {"const": false},
+        "provider_supported": {"const": false},
+        "conformance_executed": {"const": false},
+        "runtime_created": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "paths_updated",
+        "paths_created",
+        "paths_deleted",
+        "source_files_modified",
+        "package_metadata_files_modified",
+        "test_files_modified"
+      ],
+      "properties": {
+        "paths_updated": {"const": 5},
+        "paths_created": {"const": 0},
+        "paths_deleted": {"const": 0},
+        "source_files_modified": {"const": 0},
+        "package_metadata_files_modified": {"const": 0},
+        "test_files_modified": {"const": 0}
+      }
+    }
+  }
+}
