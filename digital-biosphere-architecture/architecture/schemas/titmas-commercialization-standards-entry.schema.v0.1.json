@@ -2573,11 +2573,50 @@
         "provider_transport_diagnostic_live_model_requests_max",
         "provider_transport_diagnostic_credential_reads_max",
         "provider_transport_diagnostic_decision_recorded",
+        "provider_transport_diagnostic_decision_reference",
+        "provider_transport_diagnostic_decision_sha256",
+        "provider_transport_diagnostic_decision_commit",
+        "provider_transport_diagnostic_authorization_receipt_reference",
+        "provider_transport_diagnostic_authorization_receipt_sha256",
+        "provider_transport_diagnostic_authorization_receipt_commit",
+        "provider_transport_diagnostic_result_reference",
+        "provider_transport_diagnostic_result_sha256",
+        "provider_transport_diagnostic_execution_receipt_reference",
+        "provider_transport_diagnostic_execution_receipt_sha256",
+        "provider_transport_diagnostic_report_reference",
+        "provider_transport_diagnostic_report_sha256",
+        "provider_transport_diagnostic_result_commit",
+        "provider_transport_diagnostic_execution_was_authorized",
         "provider_transport_diagnostic_network_probe_authorized",
         "provider_transport_diagnostic_executed",
         "provider_transport_diagnostic_network_probes_executed",
+        "provider_transport_diagnostic_dns_status",
+        "provider_transport_diagnostic_tcp_status",
+        "provider_transport_diagnostic_tls_status",
+        "provider_transport_diagnostic_lower_layer_reachability",
+        "provider_transport_diagnostic_pre28_timeout_phase",
+        "provider_transport_diagnostic_provider_availability_proven",
+        "provider_transport_diagnostic_model_availability_proven",
+        "provider_transport_diagnostic_model_retry_authorized",
         "provider_transport_diagnostic_http_requests_executed",
         "provider_transport_diagnostic_live_model_requests_executed",
+        "provider_transport_diagnostic_credential_reads_executed",
+        "http_phase_instrumentation_decision_candidate_id",
+        "http_phase_instrumentation_recommendation_reference",
+        "http_phase_instrumentation_recommendation_sha256",
+        "http_phase_instrumentation_recommendation_commit",
+        "http_phase_instrumentation_exact_action",
+        "http_phase_instrumentation_phase_count",
+        "http_phase_instrumentation_synthetic_fixtures",
+        "http_phase_instrumentation_network_probes_max",
+        "http_phase_instrumentation_http_requests_max",
+        "http_phase_instrumentation_provider_api_requests_max",
+        "http_phase_instrumentation_live_model_requests_max",
+        "http_phase_instrumentation_credential_reads_max",
+        "http_phase_instrumentation_decision_recorded",
+        "http_phase_instrumentation_offline_validation_authorized",
+        "http_phase_instrumentation_synthetic_fixtures_validated",
+        "http_phase_instrumentation_implementation_created",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -2596,7 +2635,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE28_FAIL_CLOSED_PRE29_TRANSPORT_DIAGNOSTIC_RECOMMENDATION_PREPARED_DECISION_READY"
+          "const": "PRE29_LOWER_LAYER_PASS_PRE30_OFFLINE_INSTRUMENTATION_CONTRACT_RECOMMENDATION_PREPARED_DECISION_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -4219,22 +4258,139 @@
           "const": 0
         },
         "provider_transport_diagnostic_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "provider_transport_diagnostic_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-DECISION-RECORD.v0.1.json"
+        },
+        "provider_transport_diagnostic_decision_sha256": {
+          "const": "721c7ee24c9d85fdbcd0c74d11bc46bf0bbdcfa8de704a9fa7ed36072021a0ce"
+        },
+        "provider_transport_diagnostic_decision_commit": {
+          "const": "7851e117dae4a0608eb6a38e27842aab79dc3fb5"
+        },
+        "provider_transport_diagnostic_authorization_receipt_reference": {
+          "const": "commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-authorization-receipt.v0.1.json"
+        },
+        "provider_transport_diagnostic_authorization_receipt_sha256": {
+          "const": "f0070a97ed6d45041e646291ce8486930648d4a4de46d5afb9b5e76116a418fc"
+        },
+        "provider_transport_diagnostic_authorization_receipt_commit": {
+          "const": "0ab736f5ea7df39392b1cc73e8bd85fb166fec41"
+        },
+        "provider_transport_diagnostic_result_reference": {
+          "const": "commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-result.v0.1.json"
+        },
+        "provider_transport_diagnostic_result_sha256": {
+          "const": "94de383d754fcbfb9bc78d2a0006e0a3016843c388349f36ed1804c1beeee391"
+        },
+        "provider_transport_diagnostic_execution_receipt_reference": {
+          "const": "commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-execution-receipt.v0.1.json"
+        },
+        "provider_transport_diagnostic_execution_receipt_sha256": {
+          "const": "686b2c7b3965a9a070a4a354d51ba98451b75040824d9a009dee581a7e985d6e"
+        },
+        "provider_transport_diagnostic_report_reference": {
+          "const": "commercialization-standards-provider-transport-diagnostic/PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-RESULT-v0.1.md"
+        },
+        "provider_transport_diagnostic_report_sha256": {
+          "const": "80bb5388ed9d7e881ba9b09d3e71e651e280550115bf6c0e8bfb19b29e7bdb2b"
+        },
+        "provider_transport_diagnostic_result_commit": {
+          "const": "8e50b734e8e7e86f267da7a3a8557ae38a73d206"
+        },
+        "provider_transport_diagnostic_execution_was_authorized": {
+          "const": true
         },
         "provider_transport_diagnostic_network_probe_authorized": {
           "const": false
         },
         "provider_transport_diagnostic_executed": {
-          "const": false
+          "const": true
         },
         "provider_transport_diagnostic_network_probes_executed": {
-          "const": 0
+          "const": 3
+        },
+        "provider_transport_diagnostic_dns_status": {
+          "const": "PASS"
+        },
+        "provider_transport_diagnostic_tcp_status": {
+          "const": "PASS"
+        },
+        "provider_transport_diagnostic_tls_status": {
+          "const": "PASS"
+        },
+        "provider_transport_diagnostic_lower_layer_reachability": {
+          "const": "OBSERVED_DNS_TCP_TLS_PASS_THIS_RUN"
+        },
+        "provider_transport_diagnostic_pre28_timeout_phase": {
+          "const": "NOT_RESOLVED_BY_LOWER_LAYER_PROBE"
+        },
+        "provider_transport_diagnostic_provider_availability_proven": {
+          "const": false
+        },
+        "provider_transport_diagnostic_model_availability_proven": {
+          "const": false
+        },
+        "provider_transport_diagnostic_model_retry_authorized": {
+          "const": false
         },
         "provider_transport_diagnostic_http_requests_executed": {
           "const": 0
         },
         "provider_transport_diagnostic_live_model_requests_executed": {
           "const": 0
+        },
+        "provider_transport_diagnostic_credential_reads_executed": {
+          "const": 0
+        },
+        "http_phase_instrumentation_decision_candidate_id": {
+          "const": "CS-D02-PRE-30"
+        },
+        "http_phase_instrumentation_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-RECOMMENDATION-v0.1.md"
+        },
+        "http_phase_instrumentation_recommendation_sha256": {
+          "const": "8a225d2ad70573e5e12dd0df9d4fb0df9d0534d356c5fd02187ae22fd197babc"
+        },
+        "http_phase_instrumentation_recommendation_commit": {
+          "const": "bb4c82a1a4b1dd4ded51cf62ff8a6c64e4b76840"
+        },
+        "http_phase_instrumentation_exact_action": {
+          "const": "AUTHORIZE_OFFLINE_PRE28_HTTP_PHASE_INSTRUMENTATION_CONTRACT_CANDIDATE_DESIGN_ONLY"
+        },
+        "http_phase_instrumentation_phase_count": {
+          "const": 10
+        },
+        "http_phase_instrumentation_synthetic_fixtures": {
+          "const": 12
+        },
+        "http_phase_instrumentation_network_probes_max": {
+          "const": 0
+        },
+        "http_phase_instrumentation_http_requests_max": {
+          "const": 0
+        },
+        "http_phase_instrumentation_provider_api_requests_max": {
+          "const": 0
+        },
+        "http_phase_instrumentation_live_model_requests_max": {
+          "const": 0
+        },
+        "http_phase_instrumentation_credential_reads_max": {
+          "const": 0
+        },
+        "http_phase_instrumentation_decision_recorded": {
+          "const": false
+        },
+        "http_phase_instrumentation_offline_validation_authorized": {
+          "const": false
+        },
+        "http_phase_instrumentation_synthetic_fixtures_validated": {
+          "const": 0
+        },
+        "http_phase_instrumentation_implementation_created": {
+          "const": false
         },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
@@ -4252,7 +4408,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE29_ZERO_HTTP_ZERO_MODEL_TRANSPORT_DIAGNOSTIC_DECISION_ONLY"
+          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE30_OFFLINE_HTTP_PHASE_INSTRUMENTATION_CONTRACT_DECISION_ONLY"
         },
         "decision_ready": {
           "const": true

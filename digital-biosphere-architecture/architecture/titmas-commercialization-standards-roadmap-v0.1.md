@@ -1752,45 +1752,73 @@ PRE28_FORMAL_ADOPTION_DECISION_REVIEW_READY=false
 内容，因此 findings 没有被评价。PRE-26 与 PRE-28 request budget 均保持关闭；handoff
 contract、v0.2 contracts、provider support、conformance 和 implementation 仍为 false。
 
-### 4.43 PRE-29 Provider Transport Phase Diagnostic Recommendation
+### 4.43 PRE-29 Provider Transport Phase Diagnostic Result
 
 [PRE-29 recommendation](../TITMAS-CS-D02-PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-RECOMMENDATION-v0.1.md)
+随后经独立 Decision、远端 authorization receipt 和冻结计划执行。结果见：
+
+- [result report](../commercialization-standards-provider-transport-diagnostic/PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-RESULT-v0.1.md)；
+- [sanitized result](../commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-result.v0.1.json)；
+- [execution receipt](../commercialization-standards-provider-transport-diagnostic/transport-phase-diagnostic-execution-receipt.v0.1.json)。
+
+```text
+PRE29_STATUS=PASS_LOWER_LAYER_REACHABLE
+PRE29_DNS_STATUS=PASS
+PRE29_TCP_STATUS=PASS
+PRE29_TLS_STATUS=PASS
+PRE29_TOTAL_EXTERNAL_NETWORK_PROBES_EXECUTED=3
+PRE29_APPLICATION_BYTES_SENT=0
+PRE29_HTTP_REQUESTS_EXECUTED=0
+PRE29_PROVIDER_API_REQUESTS_EXECUTED=0
+PRE29_LIVE_MODEL_REQUESTS_EXECUTED=0
+PRE29_CREDENTIAL_READS_EXECUTED=0
+PRE29_RETRY_ATTEMPTS=0
+```
+
+本结果只证明该次 DNS/TCP/TLS lower-layer reachability；不证明 provider/API/model
+availability、request contract correctness 或 PRE-28 timeout 的确切阶段。model retry、
+contract adoption、provider support、implementation 和 `CS-G0` 仍为 false。
+
+### 4.44 PRE-30 HTTP Phase Instrumentation Contract Recommendation
+
+[PRE-30 recommendation](../TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-RECOMMENDATION-v0.1.md)
 已远端准备。Agent 推荐闸门：
 
 ```text
 RECOMMEND_MODEL_REQUEST_RETRY=NO
-REASON=TIMEOUT_PHASE_NOT_IDENTIFIED_AND_ZERO_REVIEW_CONTENT_OBSERVED
-RECOMMEND_BOUNDED_TRANSPORT_PHASE_DIAGNOSTIC=YES
-RECOMMEND_CONTRACT_ADOPTION_NOW=NO
+REASON=HTTP_PHASE_ACCOUNTING_NOT_DEFINED
+RECOMMEND_OFFLINE_INSTRUMENTATION_CONTRACT_DESIGN=YES
+RECOMMEND_PROVIDER_OR_CONTRACT_ADOPTION_NOW=NO
 ```
 
 建议的 exact action：
 
 ```text
-AUTHORIZE_BOUNDED_PRE28_PROVIDER_TRANSPORT_PHASE_DIAGNOSTIC_WITH_ZERO_HTTP_AND_MODEL_REQUESTS_ONLY
+AUTHORIZE_OFFLINE_PRE28_HTTP_PHASE_INSTRUMENTATION_CONTRACT_CANDIDATE_DESIGN_ONLY
 ```
 
-它只允许对 `qianfan.baidubce.com:443` 依序执行最多一次 DNS resolution、一次 TCP
-connect 和一次 TLS handshake。HTTP、provider API、live model request、credential read、
-Authorization header、retry、fallback 和 endpoint mutation 上限均为 0。
+PRE-30 只建议离线定义从 DNS 到 sanitized handoff 的十阶段状态／计时／失败分类、
+machine-readable Schema、12 个 synthetic fixtures 和 deterministic validation。network、
+HTTP、provider API、model request、credential read、raw envelope 和 packet capture 上限
+均为 0。
 
 当前：
 
 ```text
-PRE29_RECOMMENDATION_REMOTE_VERIFIED=true
-PRE29_DECISION_RECORDED=false
-PRE29_NETWORK_PROBE_AUTHORIZED=false
-PRE29_NETWORK_PROBES_EXECUTED=0
-PRE29_HTTP_REQUESTS_EXECUTED=0
-PRE29_LIVE_MODEL_REQUESTS_EXECUTED=0
-PRE29_CONTRACT_CANDIDATES_ADOPTED=false
-PRE29_IMPLEMENTATION_CREATED=false
+PRE30_RECOMMENDATION_REMOTE_VERIFIED=true
+PRE30_DECISION_RECORDED=false
+PRE30_OFFLINE_VALIDATION_AUTHORIZED=false
+PRE30_SYNTHETIC_FIXTURES_VALIDATED=0
+PRE30_NETWORK_PROBES_EXECUTED=0
+PRE30_HTTP_REQUESTS_EXECUTED=0
+PRE30_LIVE_MODEL_REQUESTS_EXECUTED=0
+PRE30_INSTRUMENTATION_IMPLEMENTATION_CREATED=false
 ```
 
 下一步只允许：
 
 ```text
-APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE29_ZERO_HTTP_ZERO_MODEL_TRANSPORT_DIAGNOSTIC_DECISION_ONLY
+APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE30_OFFLINE_HTTP_PHASE_INSTRUMENTATION_CONTRACT_DECISION_ONLY
 ```
 
 ## 5. First Standardization Wedge（第一个标准化切入口）

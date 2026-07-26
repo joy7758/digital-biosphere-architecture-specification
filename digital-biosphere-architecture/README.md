@@ -378,10 +378,18 @@ PRE28_FORMAL_ADOPTION_DECISION_REVIEW_READY=false
 该结果不表示 reviewer 拒绝候选，也不证明 provider 或 model 不可用；没有观察到任何
 审查内容。PRE-26 与 PRE-28 请求预算均保持关闭，不允许重试。
 
-[PRE-29 transport phase diagnostic recommendation](TITMAS-CS-D02-PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-RECOMMENDATION-v0.1.md)
-已远端准备。它只建议最多一次 DNS resolution、一次 TCP connect 和一次 TLS handshake，
-用于区分基础传输阶段；HTTP、provider API、model request、credential read 和 retry
-上限均为 0。PRE-29 尚未决定或执行。
+[PRE-29 transport phase diagnostic](commercialization-standards-provider-transport-diagnostic/PRE-29-PROVIDER-TRANSPORT-PHASE-DIAGNOSTIC-RESULT-v0.1.md)
+已经按独立 Decision 和远端 authorization receipt 执行。当前环境对冻结 host/port 的
+DNS、TCP、TLS 三阶段均通过；总 external network probes 为 3，HTTP、provider API、
+model request、credential read 和 retry 均为 0。
+
+该结果只证明当次基础传输可达，不证明 provider、API 或 model 可用，也不能回溯确认
+PRE-28 timeout 阶段或授权重试。
+
+[PRE-30 HTTP phase instrumentation contract recommendation](TITMAS-CS-D02-PRE-30-HTTP-PHASE-INSTRUMENTATION-CONTRACT-RECOMMENDATION-v0.1.md)
+已远端准备。它只建议离线定义从 DNS 到 sanitized handoff 的十阶段计时／失败契约和
+12 个 synthetic fixtures；network、HTTP、provider API、model request 与 credential read
+上限均为 0。PRE-30 尚未决定或执行。
 
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false
