@@ -320,12 +320,13 @@ v0.1 历史保持不变。该结果没有采纳契约、创建实现或验证 pr
 独立的 v0.2 candidate review recommendation。
 
 `CS-D02-PRE-26`
-[v0.2 contract candidate review recommendation](TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md)
-已在远端准备：建议 Kimi `kimi-k2.6` 与 GLM `glm-5.2` 各执行一次 exact-model、只读、
-结构化审查。两个 reviewer 必须使用同一 hash-bound bundle；任一 model binding、JSON、
-Schema、boundary 或 terminal extraction failure 都使对应 session non-qualifying，且不允许
-重试、fallback、模型替换或 JSON repair。当前尚未形成 PRE-26 Decision，也未执行模型
-请求、采纳契约或创建实现。
+[v0.2 contract candidate review recommendation revision](TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.2.md)
+已在远端准备。v0.1 因未发现 `glm-5.2` exact-model tool 而不能适用常设授权；v0.2 保留
+历史并改为同一 allowlisted Qianfan direct chat endpoint，Kimi `kimi-k2.6` 与 GLM
+`glm-5.2` 各一次。密钥只从环境读取；两个 reviewer 使用同一 hash-bound bundle。任一
+model binding、JSON、Schema、boundary 或 terminal extraction failure 都使 session
+non-qualifying，且禁止重试、fallback、模型替换、alias 推断和 JSON repair。当前尚未
+形成 PRE-26 Decision，也未执行模型请求、采纳契约或创建实现。
 
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false

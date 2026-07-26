@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_26_V0_2_CONTRACT_REVIEW_RECOMMENDATION_PREPARED_DECISION_READY_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_26_V0_2_PROVIDER_PATH_REVISION_RECOMMENDATION_PREPARED_DECISION_READY_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1248,6 +1248,12 @@
         "pre25_v0_2_review_recommendation_ready",
         "pre26_v0_2_review_recommendation_prepared",
         "pre26_recommendation_remote_verified",
+        "pre26_v0_1_recommendation_superseded",
+        "pre26_v0_1_exact_kimi_tool_discovered",
+        "pre26_v0_1_exact_glm_tool_discovered",
+        "pre26_v0_1_standing_directive_applicable",
+        "pre26_v0_2_provider_path_revision_prepared",
+        "pre26_v0_2_provider_path_revision_remote_verified",
         "pre26_decision_recorded",
         "pre26_live_review_authorized",
         "pre26_live_model_requests_executed",
@@ -1738,6 +1744,24 @@
           "const": true
         },
         "pre26_recommendation_remote_verified": {
+          "const": true
+        },
+        "pre26_v0_1_recommendation_superseded": {
+          "const": true
+        },
+        "pre26_v0_1_exact_kimi_tool_discovered": {
+          "const": true
+        },
+        "pre26_v0_1_exact_glm_tool_discovered": {
+          "const": false
+        },
+        "pre26_v0_1_standing_directive_applicable": {
+          "const": false
+        },
+        "pre26_v0_2_provider_path_revision_prepared": {
+          "const": true
+        },
+        "pre26_v0_2_provider_path_revision_remote_verified": {
           "const": true
         },
         "pre26_decision_recorded": {
@@ -2263,14 +2287,21 @@
         "provider_adapter_contract_revision_live_rerun_ready",
         "provider_adapter_contract_revision_v0_2_review_recommendation_ready",
         "provider_adapter_v0_2_review_decision_candidate_id",
+        "provider_adapter_v0_2_review_recommendation_v0_1_reference",
+        "provider_adapter_v0_2_review_recommendation_v0_1_sha256",
+        "provider_adapter_v0_2_review_recommendation_v0_1_commit",
+        "provider_adapter_v0_2_review_recommendation_v0_1_superseded",
         "provider_adapter_v0_2_review_recommendation_reference",
         "provider_adapter_v0_2_review_recommendation_sha256",
         "provider_adapter_v0_2_review_recommendation_commit",
         "provider_adapter_v0_2_review_exact_action",
+        "provider_adapter_v0_2_review_endpoint",
+        "provider_adapter_v0_2_review_credential_source",
         "provider_adapter_v0_2_review_targets",
         "provider_adapter_v0_2_review_sessions_max",
         "provider_adapter_v0_2_review_kimi_k2_6_requests_max",
         "provider_adapter_v0_2_review_glm_5_2_requests_max",
+        "provider_adapter_v0_2_review_total_network_requests_max",
         "provider_adapter_v0_2_review_decision_recorded",
         "provider_adapter_v0_2_review_execution_authorized",
         "provider_adapter_v0_2_review_live_model_requests_executed",
@@ -3530,17 +3561,35 @@
         "provider_adapter_v0_2_review_decision_candidate_id": {
           "const": "CS-D02-PRE-26"
         },
-        "provider_adapter_v0_2_review_recommendation_reference": {
+        "provider_adapter_v0_2_review_recommendation_v0_1_reference": {
           "const": "TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md"
         },
-        "provider_adapter_v0_2_review_recommendation_sha256": {
+        "provider_adapter_v0_2_review_recommendation_v0_1_sha256": {
           "const": "39fdc689e9942feec0f683de01a2490b1e042ddc273d5db450de7f68a44f9589"
         },
-        "provider_adapter_v0_2_review_recommendation_commit": {
+        "provider_adapter_v0_2_review_recommendation_v0_1_commit": {
           "const": "18bf87b044b879bd5da09bc6ed60b7a452a5943e"
         },
+        "provider_adapter_v0_2_review_recommendation_v0_1_superseded": {
+          "const": true
+        },
+        "provider_adapter_v0_2_review_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-26-V0-2-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.2.md"
+        },
+        "provider_adapter_v0_2_review_recommendation_sha256": {
+          "const": "53d5fa18454f75b3eb843797d3c85c083b6b56e2cbb229dba825faea8cdb961b"
+        },
+        "provider_adapter_v0_2_review_recommendation_commit": {
+          "const": "01f5ddcb9063c40afaf3670fce4d447c53bafbc4"
+        },
         "provider_adapter_v0_2_review_exact_action": {
-          "const": "AUTHORIZE_EXACT_TWO_SESSION_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_ONLY"
+          "const": "AUTHORIZE_EXACT_TWO_SESSION_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_VIA_QIANFAN_DIRECT_CHAT_ONLY"
+        },
+        "provider_adapter_v0_2_review_endpoint": {
+          "const": "https://qianfan.baidubce.com/v2/chat/completions"
+        },
+        "provider_adapter_v0_2_review_credential_source": {
+          "const": "QIANFAN_API_KEY_ENVIRONMENT_ONLY"
         },
         "provider_adapter_v0_2_review_targets": {
           "const": 5
@@ -3553,6 +3602,9 @@
         },
         "provider_adapter_v0_2_review_glm_5_2_requests_max": {
           "const": 1
+        },
+        "provider_adapter_v0_2_review_total_network_requests_max": {
+          "const": 2
         },
         "provider_adapter_v0_2_review_decision_recorded": {
           "const": false
@@ -3588,7 +3640,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE26_TWO_SESSION_REVIEW_DECISION_ONLY"
+          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE26_QIANFAN_DIRECT_TWO_SESSION_REVIEW_DECISION_ONLY"
         },
         "decision_ready": {
           "const": true
