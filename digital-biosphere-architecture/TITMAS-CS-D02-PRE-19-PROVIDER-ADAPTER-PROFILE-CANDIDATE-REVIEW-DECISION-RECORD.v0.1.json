@@ -1,0 +1,70 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-19-provider-adapter-profile-candidate-review-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-19-PROVIDER-ADAPTER-PROFILE-CANDIDATE-REVIEW-DECISION-RECORD-0.1",
+  "version": "0.1.0",
+  "status": "DECIDED_TWO_AGENT_REVIEW_AUTHORIZED_NOT_EXECUTED",
+  "observed_on": "2026-07-26",
+  "decision_id": "CS-D02-PRE-19",
+  "decision_result": "AUTHORIZE_EXACT_PROVIDER_ADAPTER_PROFILE_CANDIDATE_TWO_AGENT_REVIEW_ONLY",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-19-PROVIDER-ADAPTER-PROFILE-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "ee36c13628489d14aeaadd63fbd2b21a6443a8b824062df128d03023fef40e2d",
+  "recommendation_remote_commit": "81a65f850189dc109c91cbebd4af29c4fb89ce76",
+  "decided_by_ref": "zhangbin",
+  "executed_by_ref": "codex",
+  "primary_repository": "digital-biosphere-architecture",
+  "review_plan_reference": "commercialization-standards-provider-adapter-profile-review/review-plan.v0.1.json",
+  "scope": {
+    "review_execution_authorized": true,
+    "review_sessions_max": 2,
+    "qianfan_kimi_requests_max": 1,
+    "deepseek_requests_max": 1,
+    "retry_fallback_repair_max": 0,
+    "profile_adoption_authorized": false,
+    "adapter_implementation_authorized": false,
+    "conformance_execution_authorized": false
+  },
+  "preconditions": {
+    "recommendation_remote_verified": true,
+    "pre18_result_remote_verified": true,
+    "pre18_frozen_artifacts_bound": true,
+    "request_manifest_schema_valid": true,
+    "response_schema_meta_valid": true,
+    "standing_directive_applicable": true,
+    "authorization_baseline_push_required_before_execution": true,
+    "later_conflicting_decision_found": false
+  },
+  "execution_gate": {
+    "authorization_baseline_committed": false,
+    "authorization_baseline_pushed": false,
+    "authorization_baseline_remote_verified": false,
+    "execution_started": false
+  },
+  "effects": {
+    "review_execution_completed": false,
+    "profile_adopted": false,
+    "profile_maturity_promoted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "provider_adopted": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "external_outreach": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false
+  },
+  "stop_conditions": [
+    "AUTHORIZATION_BASELINE_NOT_REMOTE",
+    "PRE18_OR_REQUEST_COMPONENT_DIGEST_DRIFT",
+    "PROVIDER_OR_MODEL_BINDING_UNRELIABLE",
+    "SECRET_RAW_ENVELOPE_USAGE_OR_HIDDEN_REASONING_PERSISTENCE",
+    "DIRECT_JSON_OR_FULL_SCHEMA_FAILURE",
+    "REQUEST_CAP_WOULD_EXCEED_TWO",
+    "REVIEW_EFFECT_ELEVATED_TO_ADOPTION_IMPLEMENTATION_PROVIDER_VALIDITY_COUNTING_CS_G0_OR_COMMERCIAL"
+  ]
+}

@@ -1,0 +1,425 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/provider-adapter-profile-review-response.schema.v0.1.json",
+  "title": "TITMAS Provider Adapter Profile Candidate Review Response v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "review_id",
+    "reviewer_role",
+    "reviewed_profile",
+    "criteria",
+    "verdict",
+    "required_changes",
+    "blockers",
+    "known_unknowns",
+    "non_elevation_confirmations",
+    "review_limits",
+    "recommended_next_action"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/provider-adapter-profile-review-response.schema.v0.1.json"
+    },
+    "review_id": {
+      "type": "string",
+      "pattern": "^PRE19-[A-Z0-9][A-Z0-9._-]{2,127}$"
+    },
+    "reviewer_role": {
+      "type": "string",
+      "enum": [
+        "INTEROPERABILITY_AND_DEVELOPER_IMPLEMENTABILITY_REVIEWER",
+        "SECURITY_FAILURE_AND_SEMANTIC_BOUNDARY_REVIEWER"
+      ]
+    },
+    "reviewed_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "version",
+        "profile_markdown_sha256",
+        "profile_json_sha256",
+        "profile_schema_sha256",
+        "request_descriptor_schema_sha256",
+        "result_descriptor_schema_sha256",
+        "failure_taxonomy_sha256",
+        "case_catalog_sha256"
+      ],
+      "properties": {
+        "version": {
+          "const": "0.1.0"
+        },
+        "profile_markdown_sha256": {
+          "const": "3bf2ac228f8270393ea3c6f5dbe649689074c541fab30e62d1ee6d07ef305276"
+        },
+        "profile_json_sha256": {
+          "const": "263b3134c44a762261cc9dc471c56db4ce65ab87caf777517c6d291d66dd23bc"
+        },
+        "profile_schema_sha256": {
+          "const": "4601bd641b946511372f6b14830fe54cec780c52baf3d568c18c9339d134fe9f"
+        },
+        "request_descriptor_schema_sha256": {
+          "const": "fa477c0f41eebb4e38a52d715e0cf1c7376fec5fd012548da6f4c0e849a7044c"
+        },
+        "result_descriptor_schema_sha256": {
+          "const": "63d43a69532719c9758ef07d007ef9ee438a49fbe4269d838c29e1c7f65c689f"
+        },
+        "failure_taxonomy_sha256": {
+          "const": "e01fc22589311edc7bbdd994483623b17aefda71f4351d65da4a88bc6de89a77"
+        },
+        "case_catalog_sha256": {
+          "const": "d3cdcf59de8f9ee8af7907a2961984d75d2dc1d4acc4066383ff3756dff7ac05"
+        }
+      }
+    },
+    "criteria": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_neutrality",
+        "state_separation",
+        "failure_taxonomy",
+        "privacy_and_security",
+        "case_coverage",
+        "semantic_non_elevation",
+        "implementability"
+      ],
+      "properties": {
+        "provider_neutrality": {
+          "$ref": "#/$defs/criterion"
+        },
+        "state_separation": {
+          "$ref": "#/$defs/criterion"
+        },
+        "failure_taxonomy": {
+          "$ref": "#/$defs/criterion"
+        },
+        "privacy_and_security": {
+          "$ref": "#/$defs/criterion"
+        },
+        "case_coverage": {
+          "$ref": "#/$defs/criterion"
+        },
+        "semantic_non_elevation": {
+          "$ref": "#/$defs/criterion"
+        },
+        "implementability": {
+          "$ref": "#/$defs/criterion"
+        }
+      }
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "ACCEPT_FOR_HUMAN_ADOPTION_REVIEW",
+        "RETURN_FOR_REVISION",
+        "REJECT"
+      ]
+    },
+    "required_changes": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "change_id",
+          "target",
+          "severity",
+          "requirement"
+        ],
+        "properties": {
+          "change_id": {
+            "type": "string",
+            "pattern": "^CHG-[0-9]{3}$"
+          },
+          "target": {
+            "type": "string",
+            "enum": [
+              "PROFILE",
+              "REQUEST_DESCRIPTOR",
+              "RESULT_DESCRIPTOR",
+              "FAILURE_TAXONOMY",
+              "CASE_CATALOG",
+              "DOCUMENTATION"
+            ]
+          },
+          "severity": {
+            "type": "string",
+            "enum": [
+              "REQUIRED",
+              "RECOMMENDED"
+            ]
+          },
+          "requirement": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          }
+        }
+      }
+    },
+    "blockers": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "blocker_id",
+          "target",
+          "reason"
+        ],
+        "properties": {
+          "blocker_id": {
+            "type": "string",
+            "pattern": "^BLK-[0-9]{3}$"
+          },
+          "target": {
+            "type": "string",
+            "enum": [
+              "PROFILE",
+              "REQUEST_DESCRIPTOR",
+              "RESULT_DESCRIPTOR",
+              "FAILURE_TAXONOMY",
+              "CASE_CATALOG",
+              "REVIEW_BOUNDARY"
+            ]
+          },
+          "reason": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 1024
+          }
+        }
+      }
+    },
+    "known_unknowns": {
+      "type": "array",
+      "maxItems": 20,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 1024
+      }
+    },
+    "non_elevation_confirmations": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_creates_profile_adoption",
+        "review_creates_adapter_implementation",
+        "review_creates_conformance_pass",
+        "review_creates_provider_support",
+        "review_creates_candidate_validity",
+        "review_creates_record_counting",
+        "review_creates_cs_g0",
+        "review_creates_market_or_customer_evidence"
+      ],
+      "properties": {
+        "review_creates_profile_adoption": {
+          "const": false
+        },
+        "review_creates_adapter_implementation": {
+          "const": false
+        },
+        "review_creates_conformance_pass": {
+          "const": false
+        },
+        "review_creates_provider_support": {
+          "const": false
+        },
+        "review_creates_candidate_validity": {
+          "const": false
+        },
+        "review_creates_record_counting": {
+          "const": false
+        },
+        "review_creates_cs_g0": {
+          "const": false
+        },
+        "review_creates_market_or_customer_evidence": {
+          "const": false
+        }
+      }
+    },
+    "review_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_runtime_conformance_assessed",
+        "adapter_implementation_assessed",
+        "external_adoption_assessed"
+      ],
+      "properties": {
+        "provider_runtime_conformance_assessed": {
+          "const": false
+        },
+        "adapter_implementation_assessed": {
+          "const": false
+        },
+        "external_adoption_assessed": {
+          "const": false
+        }
+      }
+    },
+    "recommended_next_action": {
+      "type": "string",
+      "enum": [
+        "PREPARE_HUMAN_ADOPTION_DECISION",
+        "REVISE_PROFILE_CANDIDATE",
+        "STOP_AND_REJECT_PROFILE"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "verdict": {
+            "const": "ACCEPT_FOR_HUMAN_ADOPTION_REVIEW"
+          }
+        },
+        "required": [
+          "verdict"
+        ]
+      },
+      "then": {
+        "properties": {
+          "criteria": {
+            "properties": {
+              "provider_neutrality": {
+                "properties": {
+                  "status": {
+                    "const": "PASS"
+                  }
+                }
+              },
+              "state_separation": {
+                "properties": {
+                  "status": {
+                    "const": "PASS"
+                  }
+                }
+              },
+              "failure_taxonomy": {
+                "properties": {
+                  "status": {
+                    "const": "PASS"
+                  }
+                }
+              },
+              "privacy_and_security": {
+                "properties": {
+                  "status": {
+                    "const": "PASS"
+                  }
+                }
+              },
+              "case_coverage": {
+                "properties": {
+                  "status": {
+                    "const": "PASS"
+                  }
+                }
+              },
+              "semantic_non_elevation": {
+                "properties": {
+                  "status": {
+                    "const": "PASS"
+                  }
+                }
+              },
+              "implementability": {
+                "properties": {
+                  "status": {
+                    "const": "PASS"
+                  }
+                }
+              }
+            }
+          },
+          "required_changes": {
+            "maxItems": 0
+          },
+          "blockers": {
+            "maxItems": 0
+          },
+          "recommended_next_action": {
+            "const": "PREPARE_HUMAN_ADOPTION_DECISION"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "verdict": {
+            "const": "RETURN_FOR_REVISION"
+          }
+        },
+        "required": [
+          "verdict"
+        ]
+      },
+      "then": {
+        "properties": {
+          "required_changes": {
+            "minItems": 1
+          },
+          "recommended_next_action": {
+            "const": "REVISE_PROFILE_CANDIDATE"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "verdict": {
+            "const": "REJECT"
+          }
+        },
+        "required": [
+          "verdict"
+        ]
+      },
+      "then": {
+        "properties": {
+          "blockers": {
+            "minItems": 1
+          },
+          "recommended_next_action": {
+            "const": "STOP_AND_REJECT_PROFILE"
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "criterion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "rationale"
+      ],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "CHANGES_REQUIRED",
+            "BLOCKER"
+          ]
+        },
+        "rationale": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1024
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,232 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre19-review-request-manifest.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-19 Review Request Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "public_safe",
+    "join_contract",
+    "components",
+    "sessions",
+    "persistence_policy",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./review-request-manifest.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-19-REVIEW-REQUEST-MANIFEST-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FROZEN_REQUEST_COMPONENTS_NOT_SENT"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-19"
+    },
+    "public_safe": {
+      "const": true
+    },
+    "join_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "encoding",
+        "separator_template",
+        "runtime_substitutions",
+        "component_order_is_normative"
+      ],
+      "properties": {
+        "encoding": {
+          "const": "UTF-8"
+        },
+        "separator_template": {
+          "const": "===== BEGIN {reference} =====\\n{content}\\n===== END {reference} ====="
+        },
+        "runtime_substitutions": {
+          "const": [
+            "{{REVIEW_ID}}",
+            "{{REVIEWER_ROLE}}"
+          ]
+        },
+        "component_order_is_normative": {
+          "const": true
+        }
+      }
+    },
+    "components": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "reference",
+          "role",
+          "sha256"
+        ],
+        "properties": {
+          "reference": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 512
+          },
+          "role": {
+            "type": "string",
+            "enum": [
+              "INSTRUCTIONS",
+              "PROFILE_HUMAN",
+              "PROFILE_MACHINE",
+              "REQUEST_DESCRIPTOR_SCHEMA",
+              "RESULT_DESCRIPTOR_SCHEMA",
+              "FAILURE_TAXONOMY",
+              "CASE_CATALOG",
+              "RESPONSE_SCHEMA"
+            ]
+          },
+          "sha256": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/kimiSession"
+        },
+        {
+          "$ref": "#/$defs/deepseekSession"
+        }
+      ],
+      "items": false
+    },
+    "persistence_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_provider_envelope_allowed",
+        "usage_payload_allowed",
+        "hidden_reasoning_allowed",
+        "sanitized_semantic_json_only"
+      ],
+      "properties": {
+        "raw_provider_envelope_allowed": {
+          "const": false
+        },
+        "usage_payload_allowed": {
+          "const": false
+        },
+        "hidden_reasoning_allowed": {
+          "const": false
+        },
+        "sanitized_semantic_json_only": {
+          "const": true
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requests_sent",
+        "review_completed",
+        "profile_adopted",
+        "adapter_implemented",
+        "provider_supported"
+      ],
+      "properties": {
+        "requests_sent": {
+          "const": 0
+        },
+        "review_completed": {
+          "const": false
+        },
+        "profile_adopted": {
+          "const": false
+        },
+        "adapter_implemented": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "kimiSession": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_id",
+        "reviewer_role",
+        "provider",
+        "model",
+        "requests_max"
+      ],
+      "properties": {
+        "review_id": {
+          "const": "PRE19-KIMI-INTEROP-001"
+        },
+        "reviewer_role": {
+          "const": "INTEROPERABILITY_AND_DEVELOPER_IMPLEMENTABILITY_REVIEWER"
+        },
+        "provider": {
+          "const": "baidu-qianfan"
+        },
+        "model": {
+          "const": "kimi-k2.6"
+        },
+        "requests_max": {
+          "const": 1
+        }
+      }
+    },
+    "deepseekSession": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_id",
+        "reviewer_role",
+        "provider",
+        "model",
+        "requests_max"
+      ],
+      "properties": {
+        "review_id": {
+          "const": "PRE19-DEEPSEEK-BOUNDARY-002"
+        },
+        "reviewer_role": {
+          "const": "SECURITY_FAILURE_AND_SEMANTIC_BOUNDARY_REVIEWER"
+        },
+        "provider": {
+          "const": "deepseek-direct"
+        },
+        "model": {
+          "const": "deepseek-chat"
+        },
+        "requests_max": {
+          "const": 1
+        }
+      }
+    }
+  }
+}

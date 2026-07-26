@@ -1,0 +1,88 @@
+{
+  "$schema": "./review-request-manifest.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-19-REVIEW-REQUEST-MANIFEST-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_REQUEST_COMPONENTS_NOT_SENT",
+  "decision_reference": "CS-D02-PRE-19",
+  "public_safe": true,
+  "join_contract": {
+    "encoding": "UTF-8",
+    "separator_template": "===== BEGIN {reference} =====\\n{content}\\n===== END {reference} =====",
+    "runtime_substitutions": [
+      "{{REVIEW_ID}}",
+      "{{REVIEWER_ROLE}}"
+    ],
+    "component_order_is_normative": true
+  },
+  "components": [
+    {
+      "reference": "review-request-instructions.v0.1.md",
+      "role": "INSTRUCTIONS",
+      "sha256": "6d50f8180ba54d5bb16e3a1532a89025b72975e6dc0fd99aaf093cef87e7eb9d"
+    },
+    {
+      "reference": "../architecture/provider-adapter-conformance-profile-v0.1.md",
+      "role": "PROFILE_HUMAN",
+      "sha256": "3bf2ac228f8270393ea3c6f5dbe649689074c541fab30e62d1ee6d07ef305276"
+    },
+    {
+      "reference": "../architecture/provider-adapter-conformance-profile.v0.1.json",
+      "role": "PROFILE_MACHINE",
+      "sha256": "263b3134c44a762261cc9dc471c56db4ce65ab87caf777517c6d291d66dd23bc"
+    },
+    {
+      "reference": "../architecture/schemas/provider-adapter-request-descriptor.schema.v0.1.json",
+      "role": "REQUEST_DESCRIPTOR_SCHEMA",
+      "sha256": "fa477c0f41eebb4e38a52d715e0cf1c7376fec5fd012548da6f4c0e849a7044c"
+    },
+    {
+      "reference": "../architecture/schemas/provider-adapter-result-descriptor.schema.v0.1.json",
+      "role": "RESULT_DESCRIPTOR_SCHEMA",
+      "sha256": "63d43a69532719c9758ef07d007ef9ee438a49fbe4269d838c29e1c7f65c689f"
+    },
+    {
+      "reference": "../architecture/provider-adapter-failure-taxonomy.v0.1.json",
+      "role": "FAILURE_TAXONOMY",
+      "sha256": "e01fc22589311edc7bbdd994483623b17aefda71f4351d65da4a88bc6de89a77"
+    },
+    {
+      "reference": "../architecture/provider-adapter-conformance-cases.v0.1.json",
+      "role": "CASE_CATALOG",
+      "sha256": "d3cdcf59de8f9ee8af7907a2961984d75d2dc1d4acc4066383ff3756dff7ac05"
+    },
+    {
+      "reference": "../architecture/schemas/provider-adapter-profile-review-response.schema.v0.1.json",
+      "role": "RESPONSE_SCHEMA",
+      "sha256": "7670fc63f7651864f1e09a4d11ff2e8beb0444e2195d84077d82ccbb32542cd4"
+    }
+  ],
+  "sessions": [
+    {
+      "review_id": "PRE19-KIMI-INTEROP-001",
+      "reviewer_role": "INTEROPERABILITY_AND_DEVELOPER_IMPLEMENTABILITY_REVIEWER",
+      "provider": "baidu-qianfan",
+      "model": "kimi-k2.6",
+      "requests_max": 1
+    },
+    {
+      "review_id": "PRE19-DEEPSEEK-BOUNDARY-002",
+      "reviewer_role": "SECURITY_FAILURE_AND_SEMANTIC_BOUNDARY_REVIEWER",
+      "provider": "deepseek-direct",
+      "model": "deepseek-chat",
+      "requests_max": 1
+    }
+  ],
+  "persistence_policy": {
+    "raw_provider_envelope_allowed": false,
+    "usage_payload_allowed": false,
+    "hidden_reasoning_allowed": false,
+    "sanitized_semantic_json_only": true
+  },
+  "effects": {
+    "requests_sent": 0,
+    "review_completed": false,
+    "profile_adopted": false,
+    "adapter_implemented": false,
+    "provider_supported": false
+  }
+}

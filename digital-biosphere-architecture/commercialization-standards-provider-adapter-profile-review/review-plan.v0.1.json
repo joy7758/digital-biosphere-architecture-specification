@@ -1,0 +1,79 @@
+{
+  "$schema": "./review-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-19-REVIEW-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-19",
+  "decision_record_reference": "../TITMAS-CS-D02-PRE-19-PROVIDER-ADAPTER-PROFILE-CANDIDATE-REVIEW-DECISION-RECORD.v0.1.json",
+  "frozen_inputs": {
+    "recommendation_reference": "../TITMAS-CS-D02-PRE-19-PROVIDER-ADAPTER-PROFILE-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md",
+    "recommendation_sha256": "ee36c13628489d14aeaadd63fbd2b21a6443a8b824062df128d03023fef40e2d",
+    "review_request_manifest_reference": "review-request-manifest.v0.1.json",
+    "review_request_manifest_sha256": "265104a8c6c4d61c6b1787c076607db63482b40a7268de02e8296ac3a13e9942",
+    "review_response_schema_reference": "../architecture/schemas/provider-adapter-profile-review-response.schema.v0.1.json",
+    "review_response_schema_sha256": "7670fc63f7651864f1e09a4d11ff2e8beb0444e2195d84077d82ccbb32542cd4",
+    "pre18_profile_json_sha256": "263b3134c44a762261cc9dc471c56db4ce65ab87caf777517c6d291d66dd23bc",
+    "pre18_failure_taxonomy_sha256": "e01fc22589311edc7bbdd994483623b17aefda71f4351d65da4a88bc6de89a77",
+    "pre18_case_catalog_sha256": "d3cdcf59de8f9ee8af7907a2961984d75d2dc1d4acc4066383ff3756dff7ac05"
+  },
+  "sessions": [
+    {
+      "review_id": "PRE19-KIMI-INTEROP-001",
+      "provider": "baidu-qianfan",
+      "model": "kimi-k2.6",
+      "role": "INTEROPERABILITY_AND_DEVELOPER_IMPLEMENTABILITY_REVIEWER",
+      "requests_max": 1
+    },
+    {
+      "review_id": "PRE19-DEEPSEEK-BOUNDARY-002",
+      "provider": "deepseek-direct",
+      "model": "deepseek-chat",
+      "role": "SECURITY_FAILURE_AND_SEMANTIC_BOUNDARY_REVIEWER",
+      "requests_max": 1
+    }
+  ],
+  "composite_rule": {
+    "qualifying_sessions_required": 2,
+    "incomplete_result": "INCOMPLETE_FAIL_CLOSED",
+    "blocker_result": "REJECTED",
+    "changes_required_result": "CHANGES_REQUIRED",
+    "all_pass_result": "PASS_REVIEW_COMPLETE_HUMAN_ADOPTION_REVIEW_READY",
+    "all_pass_creates_adoption": false
+  },
+  "controls": {
+    "review_sessions_max": 2,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "repair_max": 0,
+    "raw_provider_envelope_persistence_allowed": false,
+    "usage_payload_persistence_allowed": false,
+    "hidden_reasoning_persistence_allowed": false,
+    "profile_adoption_allowed": false,
+    "adapter_implementation_allowed": false,
+    "conformance_execution_allowed": false,
+    "provider_adoption_allowed": false
+  },
+  "required_outputs": [
+    "authorization-baseline-receipt.v0.1.json",
+    "sanitized-review-observations.v0.1.json",
+    "composite-review-result.v0.1.json",
+    "PRE-19-PROVIDER-ADAPTER-PROFILE-CANDIDATE-REVIEW-RESULT-v0.1.md",
+    "execution-receipt.v0.1.json"
+  ],
+  "execution_gate": {
+    "authorization_baseline_committed": false,
+    "authorization_baseline_pushed": false,
+    "authorization_baseline_remote_verified": false,
+    "execution_started": false
+  },
+  "effects": {
+    "review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false
+  }
+}
