@@ -301,6 +301,12 @@ live-review recommendation 可准备，`LIVE_REVIEW_AUTHORIZED=false`。
 answer 失败关闭；model policy candidate 禁止自动接受未记录 alias。两个 candidate 均未
 采纳、未实现，`LIVE_RERUN_READY=false`。
 
+`CS-D02-PRE-24`
+[contract adoption review recommendation](TITMAS-CS-D02-PRE-24-CONTRACT-ADOPTION-REVIEW-RECOMMENDATION-v0.1.md)
+已在远端准备：建议只允许 `kimi-k2.6` 与 `deepseek-chat` 各一次只读、结构化契约审查，
+零 retry、零 fallback、零 JSON repair。当前尚未形成 PRE-24 Decision，review session
+执行数为 0；Review 不等于 Adoption，候选契约、实现和 live rerun 继续为 false。
+
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false
 TITMAS_GOVERNANCE_READY=false
