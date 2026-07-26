@@ -1,0 +1,107 @@
+{
+  "$schema": "./pre47-exact-sequential-agent-review-request-manifest.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-INTEGRATIONS-PRE47-EXACT-SEQUENTIAL-AGENT-REVIEW-REQUEST-MANIFEST-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_AUTHORIZED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-47",
+  "source_dba_commit": "95f771d45b318152a5fda868f7bbd4f6d3218f2d",
+  "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+  "credential_source": "QIANFAN_API_KEY_ENVIRONMENT_ONLY",
+  "credential_environment_name": "QIANFAN_API_KEY",
+  "system_prompt": "You are a bounded advisory reviewer. Use only the supplied user message. Return exactly one JSON object with no Markdown or code fence. Do not use tools, web, external sources, credentials, hidden reasoning, or external actions.",
+  "system_prompt_bytes": 228,
+  "system_prompt_sha256": "89199e4a878dabdd6b7114a9f9c850acf021cb6c1ea05b5117394eafbd529fb9",
+  "query_template_reference": "pre46-compact-sequential-review-query-template.v0.2.txt",
+  "query_template_bytes": 2516,
+  "query_template_sha256": "27785e540a3d9c862cf0227ebaf20af556e4ab18edbf694b5a405a79c6fef671",
+  "query_composition_rule": "UTF8 exact template bytes with every {{REVIEWER_PROFILE}} token replaced by the exact reviewer_profile value",
+  "payload_serialization_contract": "UTF8_JSON_COMPACT_FIXED_KEY_ORDER_MODEL_MESSAGES_STREAM_TEMPERATURE",
+  "payload_key_order": ["model", "messages", "stream", "temperature"],
+  "stream": false,
+  "temperature": 0.1,
+  "response_format_parameter_included": false,
+  "response_schema_reference": "pre46-compact-sequential-review-response.schema.v0.2.json",
+  "response_schema_sha256": "5558f02c2204d5f278a8b283e5548cde58167b4a2323c2c5df2e76cdf6d8820e",
+  "contract_reference": "pre46-compact-sequential-review-contract.v0.2.json",
+  "contract_sha256": "2618d19972992a9522b4e8ca0ce443dbb4c4871efeb8132f279bc8a7cc9d3e12",
+  "sessions": [
+    {
+      "sequence": 1,
+      "session_id": "PRE47-KIMI-AGENT-DEVELOPER",
+      "requested_model": "kimi-k2.6",
+      "reviewer_profile": "AGENT_DEVELOPER",
+      "query_bytes": 2506,
+      "query_sha256": "0d5b581db23f40583750d87254fbaecafa49961f827dba9bc27d811bb94375a4",
+      "payload_bytes": 2964,
+      "payload_sha256": "783ce1bfd71c275bb49db372b0080e14517f88277841920a83a70df56a09ea70",
+      "requests_max": 1
+    },
+    {
+      "sequence": 2,
+      "session_id": "PRE47-GLM-RECOMMENDER-AGENT",
+      "requested_model": "glm-5.2",
+      "reviewer_profile": "RECOMMENDER_AGENT",
+      "query_bytes": 2510,
+      "query_sha256": "c98d92742debe58dab613f05db27c6d914a2ae433b4a4bb4f9780df919112215",
+      "payload_bytes": 2966,
+      "payload_sha256": "092b579d2d13da6a08371ca6c82d9159f8f67ccc04a11e06d595fc1d39bcd54b",
+      "requests_max": 1
+    },
+    {
+      "sequence": 3,
+      "session_id": "PRE47-KIMI-INTEGRATION-MAINTAINER",
+      "requested_model": "kimi-k2.6",
+      "reviewer_profile": "INTEGRATION_MAINTAINER",
+      "query_bytes": 2520,
+      "query_sha256": "50c3864a2d5089eca17aaa181c09c79b056fb0986d6218370d3a26b4b9c6be1d",
+      "payload_bytes": 2978,
+      "payload_sha256": "b2af968e62b99c5e3297954f7052d6b6be71ba45b2200431402fee80f73c937b",
+      "requests_max": 1
+    },
+    {
+      "sequence": 4,
+      "session_id": "PRE47-GLM-SECURITY-BOUNDARY-REVIEWER",
+      "requested_model": "glm-5.2",
+      "reviewer_profile": "SECURITY_BOUNDARY_REVIEWER",
+      "query_bytes": 2528,
+      "query_sha256": "4c63c80b28acf1a9019b57cd72ec7aa3a8d050f3629de0682936ec87cf1edc35",
+      "payload_bytes": 2984,
+      "payload_sha256": "53e224ec297a115f8eab69781a334534411c3bf4cf37ad697847266865781f41",
+      "requests_max": 1
+    }
+  ],
+  "execution_contract": {
+    "mode": "SEQUENTIAL",
+    "parallel_requests_max": 1,
+    "request_timeout_ms": 90000,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "model_substitutions_max": 0,
+    "alias_inference_attempts_max": 0,
+    "json_repair_attempts_max": 0
+  },
+  "persistence_boundary": {
+    "credential_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "usage_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "provider_error_body_persisted": false,
+    "sanitized_review_response_may_be_persisted_after_schema_pass": true,
+    "failure_metadata_must_be_persisted": true
+  },
+  "thresholds": {
+    "sessions_max": 4,
+    "qualifying_sessions_min": 3,
+    "recommended_or_conditional_min": 2,
+    "would_recommend_min": 2,
+    "would_reuse_min": 2,
+    "authority_safety_failures_max": 0
+  },
+  "effects": {
+    "requests_executed": 0,
+    "credential_reads": 0,
+    "pre44_gate_changed": false,
+    "rb1_implementation_authorized": false,
+    "target_repository_modified": false
+  }
+}
