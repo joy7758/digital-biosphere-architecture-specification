@@ -1,0 +1,168 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-pre-13-response-contract-remediation-decision-record:0.1",
+  "title": "TITMAS CS-D02 PRE-13 Response Contract Remediation Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "decision_result",
+    "decided_by_ref",
+    "executed_by_ref",
+    "primary_repository",
+    "authorized_scope",
+    "preconditions",
+    "execution_gate",
+    "false_effects",
+    "stop_conditions"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre-13-response-contract-remediation-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-13-RESPONSE-CONTRACT-REMEDIATION-DECISION-RECORD-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DECIDED_OFFLINE_REMEDIATION_AUTHORIZED_NOT_EXECUTED"
+    },
+    "observed_on": {
+      "const": "2026-07-26"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-13"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-13-RESPONSE-CONTRACT-REMEDIATION-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "728a0074503ecaf7ce63763e7e78dae029698558e8b60a9b556f7f07ef4cb903"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_OFFLINE_RESPONSE_CONTRACT_REDESIGN_ONLY"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "executed_by_ref": {
+      "const": "codex"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "authorized_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_response_contract_redesign",
+        "deterministic_rendering",
+        "provider_binding_fixtures",
+        "synthetic_validator_fixtures",
+        "path_scoped_commit_and_push",
+        "live_model_requests_max",
+        "new_source_searches_max",
+        "new_source_collections_max"
+      ],
+      "properties": {
+        "offline_response_contract_redesign": {"const": true},
+        "deterministic_rendering": {"const": true},
+        "provider_binding_fixtures": {"const": true},
+        "synthetic_validator_fixtures": {"const": true},
+        "path_scoped_commit_and_push": {"const": true},
+        "live_model_requests_max": {"const": 0},
+        "new_source_searches_max": {"const": 0},
+        "new_source_collections_max": {"const": 0}
+      }
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_remote_verified",
+        "pre12_execution_completed",
+        "pre12_request_cap_consumed",
+        "pre12_stage_b_threshold_pass",
+        "standing_directive_applicable",
+        "later_conflicting_decision_found"
+      ],
+      "properties": {
+        "recommendation_remote_verified": {"const": true},
+        "pre12_execution_completed": {"const": true},
+        "pre12_request_cap_consumed": {"const": true},
+        "pre12_stage_b_threshold_pass": {"const": false},
+        "standing_directive_applicable": {"const": true},
+        "later_conflicting_decision_found": {"const": false}
+      }
+    },
+    "execution_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorization_baseline_committed",
+        "authorization_baseline_pushed",
+        "authorization_baseline_remote_verified",
+        "offline_execution_may_start",
+        "offline_execution_started"
+      ],
+      "properties": {
+        "authorization_baseline_committed": {"const": false},
+        "authorization_baseline_pushed": {"const": false},
+        "authorization_baseline_remote_verified": {"const": false},
+        "offline_execution_may_start": {"const": false},
+        "offline_execution_started": {"const": false}
+      }
+    },
+    "false_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "live_model_requests_authorized",
+        "candidate_review_completed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "live_model_requests_authorized": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 10
+      }
+    }
+  }
+}

@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: pre-13-response-contract-remediation-recommendation-prepared-not-decided-standard-not-ready
+status: pre-13-offline-remediation-authorized-remote-baseline-pending-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -983,6 +983,25 @@ LIVE_MODEL_REQUESTS_AUTHORIZED=false
 VALID_PROBLEM_RECORDS=0
 CS_G0_PASS=false
 ```
+
+依据
+[`TITMAS-CS-STANDING-001`](../TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.md)，
+PRE-13 已建立独立
+[Decision](../TITMAS-CS-D02-PRE-13-RESPONSE-CONTRACT-REMEDIATION-DECISION-RECORD.md)
+和
+[frozen offline plan](../commercialization-standards-public-source-record-review-contract-remediation/offline-remediation-plan.v0.1.json)：
+
+```text
+PRE_13_DECIDED=true
+PRE_13_DECISION_RESULT=AUTHORIZE_OFFLINE_RESPONSE_CONTRACT_REDESIGN_ONLY
+OFFLINE_REMEDIATION_AUTHORIZED=true
+LIVE_MODEL_REQUESTS_AUTHORIZED=false
+AUTHORIZATION_BASELINE_REMOTE_VERIFIED=false
+OFFLINE_EXECUTION_MAY_START=false
+```
+
+只有该 Decision、plan、Schema 与 machine cockpit commit/push 并验证本地等于远端后，才可
+开始离线 rendered request 和 synthetic validator fixture。当前仍不执行。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
