@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre14-sanitized-provider-observations.schema.v0.1.json",
+  "title": "TITMAS PRE-14 Sanitized Provider Observations v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "authorization_baseline_commit",
+    "authorization_receipt_commit",
+    "sessions",
+    "data_controls"
+  ],
+  "properties": {
+    "$schema": {"const": "./sanitized-provider-observations.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-14-SANITIZED-PROVIDER-OBSERVATIONS-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "EXECUTED_ONE_SCHEMA_CONFORMANT_ONE_NOT_EXTRACTABLE"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-14"},
+    "authorization_baseline_commit": {"const": "ef92359967d3c7477a65859bca0b988d35055f8d"},
+    "authorization_receipt_commit": {"const": "4ed098fabde3034aa921155b0875229e1e5bd12d"},
+    "sessions": {
+      "type": "array",
+      "prefixItems": [
+        {"$ref": "#/$defs/qianfanObservation"},
+        {"$ref": "#/$defs/deepseekObservation"}
+      ],
+      "items": false,
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "data_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_provider_body_persisted",
+        "token_usage_persisted",
+        "hidden_reasoning_persisted",
+        "secret_accessed_for_transport_only",
+        "secret_persisted_or_displayed",
+        "customer_or_personal_data_sent"
+      ],
+      "properties": {
+        "raw_provider_body_persisted": {"const": false},
+        "token_usage_persisted": {"const": false},
+        "hidden_reasoning_persisted": {"const": false},
+        "secret_accessed_for_transport_only": {"const": true},
+        "secret_persisted_or_displayed": {"const": false},
+        "customer_or_personal_data_sent": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "observationBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "provider",
+        "provider_gateway",
+        "model",
+        "reviewer_role",
+        "role_specific_request_sha256",
+        "request_executed",
+        "response_extractable",
+        "direct_json_parseable",
+        "schema_conformant",
+        "schema_error_paths",
+        "candidate_ids_covered",
+        "boundary_failure_count",
+        "failure_class",
+        "sanitized_response"
+      ],
+      "properties": {
+        "session_id": {"type": "string"},
+        "provider": {"enum": ["baidu-qianfan", "deepseek"]},
+        "provider_gateway": {"enum": ["qianfan_installed_tool", "deepseek_direct"]},
+        "model": {"enum": ["kimi-k2.6", "deepseek-v4-pro"]},
+        "reviewer_role": {"enum": ["SOURCE_QUALIFICATION_REVIEWER", "CLAIM_AND_PRIVACY_REVIEWER"]},
+        "role_specific_request_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "request_executed": {"const": true},
+        "http_status": {"type": "integer", "minimum": 100, "maximum": 599},
+        "response_extractable": {"type": "boolean"},
+        "direct_json_parseable": {"type": "boolean"},
+        "schema_conformant": {"type": "boolean"},
+        "schema_error_paths": {"type": "array", "items": {"type": "string"}},
+        "candidate_ids_covered": {
+          "type": "array",
+          "items": {"enum": ["PFPC-001", "PFPC-002", "PFPC-003", "PFPC-004"]},
+          "uniqueItems": true
+        },
+        "boundary_failure_count": {"const": 0},
+        "failure_class": {"type": ["string", "null"]},
+        "sanitized_response": {"type": ["object", "null"]}
+      }
+    },
+    "qianfanObservation": {
+      "allOf": [
+        {"$ref": "#/$defs/observationBase"},
+        {
+          "properties": {
+            "session_id": {"const": "QF-KIMI-SCHEMA-CONFIRM-PRE14-P1"},
+            "provider": {"const": "baidu-qianfan"},
+            "provider_gateway": {"const": "qianfan_installed_tool"},
+            "model": {"const": "kimi-k2.6"},
+            "reviewer_role": {"const": "SOURCE_QUALIFICATION_REVIEWER"},
+            "role_specific_request_sha256": {"const": "1e0f4d0efbccf31a4fbbc1d4cffab9f1bc4308acee3e8cb8324c0769e5ed4638"},
+            "response_extractable": {"const": false},
+            "direct_json_parseable": {"const": false},
+            "schema_conformant": {"const": false},
+            "candidate_ids_covered": {"const": []},
+            "failure_class": {"const": "PROVIDER_RESPONSE_NOT_EXTRACTABLE"},
+            "sanitized_response": {"const": null}
+          }
+        }
+      ]
+    },
+    "deepseekObservation": {
+      "allOf": [
+        {"$ref": "#/$defs/observationBase"},
+        {
+          "required": ["http_status"],
+          "properties": {
+            "session_id": {"const": "DS-V4PRO-SCHEMA-CONFIRM-PRE14-P2"},
+            "provider": {"const": "deepseek"},
+            "provider_gateway": {"const": "deepseek_direct"},
+            "model": {"const": "deepseek-v4-pro"},
+            "reviewer_role": {"const": "CLAIM_AND_PRIVACY_REVIEWER"},
+            "role_specific_request_sha256": {"const": "549f2e57be0f863a1a6a6af465a8d5ae8ef66b956c67f43b6597f0ba85c01a52"},
+            "http_status": {"const": 200},
+            "response_extractable": {"const": true},
+            "direct_json_parseable": {"const": true},
+            "schema_conformant": {"const": true},
+            "candidate_ids_covered": {"const": ["PFPC-001", "PFPC-002", "PFPC-003", "PFPC-004"]},
+            "failure_class": {"const": null},
+            "sanitized_response": {"type": "object"}
+          }
+        }
+      ]
+    }
+  }
+}

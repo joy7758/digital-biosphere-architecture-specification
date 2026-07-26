@@ -1,0 +1,153 @@
+{
+  "$schema": "./sanitized-provider-observations.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-14-SANITIZED-PROVIDER-OBSERVATIONS-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTED_ONE_SCHEMA_CONFORMANT_ONE_NOT_EXTRACTABLE",
+  "observed_at": "2026-07-26T19:05:06+08:00",
+  "decision_reference": "CS-D02-PRE-14",
+  "authorization_baseline_commit": "ef92359967d3c7477a65859bca0b988d35055f8d",
+  "authorization_receipt_commit": "4ed098fabde3034aa921155b0875229e1e5bd12d",
+  "sessions": [
+    {
+      "session_id": "QF-KIMI-SCHEMA-CONFIRM-PRE14-P1",
+      "provider": "baidu-qianfan",
+      "provider_gateway": "qianfan_installed_tool",
+      "model": "kimi-k2.6",
+      "reviewer_role": "SOURCE_QUALIFICATION_REVIEWER",
+      "role_specific_request_sha256": "1e0f4d0efbccf31a4fbbc1d4cffab9f1bc4308acee3e8cb8324c0769e5ed4638",
+      "request_executed": true,
+      "response_extractable": false,
+      "direct_json_parseable": false,
+      "schema_conformant": false,
+      "schema_error_paths": [],
+      "candidate_ids_covered": [],
+      "boundary_failure_count": 0,
+      "failure_class": "PROVIDER_RESPONSE_NOT_EXTRACTABLE",
+      "sanitized_response": null
+    },
+    {
+      "session_id": "DS-V4PRO-SCHEMA-CONFIRM-PRE14-P2",
+      "provider": "deepseek",
+      "provider_gateway": "deepseek_direct",
+      "model": "deepseek-v4-pro",
+      "reviewer_role": "CLAIM_AND_PRIVACY_REVIEWER",
+      "role_specific_request_sha256": "549f2e57be0f863a1a6a6af465a8d5ae8ef66b956c67f43b6597f0ba85c01a52",
+      "request_executed": true,
+      "http_status": 200,
+      "response_extractable": true,
+      "direct_json_parseable": true,
+      "schema_conformant": true,
+      "schema_error_paths": [],
+      "candidate_ids_covered": [
+        "PFPC-001",
+        "PFPC-002",
+        "PFPC-003",
+        "PFPC-004"
+      ],
+      "boundary_failure_count": 0,
+      "failure_class": null,
+      "sanitized_response": {
+        "reviewer_role": "CLAIM_AND_PRIVACY_REVIEWER",
+        "records": [
+          {
+            "candidate_id": "PFPC-001",
+            "operational_problem_strength": "PARTIAL",
+            "accountable_role_evidence": "PARTIAL",
+            "measurable_consequence": "PARTIAL",
+            "relationship_and_dedup_resolution": "PARTIAL",
+            "execution_accountability_relevance": "MEDIUM",
+            "recommendation": "RETAIN_PARTIAL",
+            "rationale": "Problem described but lacks quantified cost, recent operational data, and publisher warns content may be outdated. Accountable role binding not explicitly evidenced. No TITMAS relationship assessment. Telemetry relevance to execution accountability is medium without direct TITMAS tying.",
+            "missing_evidence": [
+              "quantified cost or deployment count",
+              "verified recent operational problem instance",
+              "publisher accountable role binding evidence",
+              "organization relationship to TITMAS"
+            ],
+            "counting_effect": false
+          },
+          {
+            "candidate_id": "PFPC-002",
+            "operational_problem_strength": "PARTIAL",
+            "accountable_role_evidence": "PARTIAL",
+            "measurable_consequence": "PARTIAL",
+            "relationship_and_dedup_resolution": "PARTIAL",
+            "execution_accountability_relevance": "HIGH",
+            "recommendation": "RETAIN_PARTIAL",
+            "rationale": "Long-operation state tracking issue is relevant, but source is a closed proposal without sponsor accountability. Embedded customer-use claims unverified, no quantified impact, and organization relationship unresolved.",
+            "missing_evidence": [
+              "submitter accountability verification",
+              "independent verification of customer-use descriptions",
+              "quantified cost or impact",
+              "organization relationship to TITMAS"
+            ],
+            "counting_effect": false
+          },
+          {
+            "candidate_id": "PFPC-003",
+            "operational_problem_strength": "PARTIAL",
+            "accountable_role_evidence": "PARTIAL",
+            "measurable_consequence": "PARTIAL",
+            "relationship_and_dedup_resolution": "PARTIAL",
+            "execution_accountability_relevance": "HIGH",
+            "recommendation": "RETAIN_PARTIAL",
+            "rationale": "False execution trace is directly relevant to execution accountability, but reporter responsibility unverified, no independent reproduction, closed as not planned, and no quantified impact or TITMAS relationship.",
+            "missing_evidence": [
+              "reporter responsibility evidence",
+              "independent reproduction of issue",
+              "quantified impact",
+              "organization relationship to TITMAS"
+            ],
+            "counting_effect": false
+          },
+          {
+            "candidate_id": "PFPC-004",
+            "operational_problem_strength": "PARTIAL",
+            "accountable_role_evidence": "PARTIAL",
+            "measurable_consequence": "PARTIAL",
+            "relationship_and_dedup_resolution": "PARTIAL",
+            "execution_accountability_relevance": "HIGH",
+            "recommendation": "RETAIN_PARTIAL",
+            "rationale": "Instrumentation interference with agent API is highly relevant to execution accountability. However, maintainer responsibility unverified, no independent reproduction, no quantified impact, and organization relationship unresolved.",
+            "missing_evidence": [
+              "maintainer role verification",
+              "independent reproduction",
+              "quantified impact",
+              "confirmed resolution",
+              "organization relationship to TITMAS"
+            ],
+            "counting_effect": false
+          }
+        ],
+        "overall_recommendation": "RETAIN_ALL_PARTIAL",
+        "blocking_gaps": [
+          "missing accountable role evidence in all records",
+          "missing measurable consequence in all records",
+          "unresolved organization relationship to TITMAS in all records",
+          "lack of independent verification or reproduction",
+          "no TITMAS consent or customer testimony"
+        ],
+        "boundary_answers": {
+          "model_review_is_independent_organization": false,
+          "candidate_is_valid_record": false,
+          "candidate_counts_toward_cs_g0": false,
+          "market_validation_proven": false,
+          "customer_adoption_proven": false,
+          "veap_fit_proven": false,
+          "implementation_authorized": false,
+          "commercial_offer_authorized": false,
+          "certification_authorized": false,
+          "release_authorized": false
+        }
+      }
+    }
+  ],
+  "data_controls": {
+    "raw_provider_body_persisted": false,
+    "token_usage_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "secret_accessed_for_transport_only": true,
+    "secret_persisted_or_displayed": false,
+    "customer_or_personal_data_sent": false
+  }
+}

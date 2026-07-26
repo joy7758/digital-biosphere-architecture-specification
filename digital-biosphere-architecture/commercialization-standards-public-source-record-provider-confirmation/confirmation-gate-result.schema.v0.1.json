@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre14-confirmation-gate-result.schema.v0.1.json",
+  "title": "TITMAS PRE-14 Confirmation Gate Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "counts",
+    "requirements",
+    "checks",
+    "result",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./confirmation-gate-result.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-14-CONFIRMATION-GATE-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FAIL_CLOSED_PROVIDER_CONFIRMATION_THRESHOLD_NOT_MET"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-14"},
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requests_authorized_max",
+        "requests_executed",
+        "retry_attempts",
+        "fallback_attempts",
+        "json_repair_attempts",
+        "schema_conformant_responses",
+        "providers_with_schema_conformant_response",
+        "unique_candidate_ids_covered",
+        "boundary_failures"
+      ],
+      "properties": {
+        "requests_authorized_max": {"const": 2},
+        "requests_executed": {"const": 2},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "json_repair_attempts": {"const": 0},
+        "schema_conformant_responses": {"const": 1},
+        "providers_with_schema_conformant_response": {"const": 1},
+        "unique_candidate_ids_covered": {"const": 4},
+        "boundary_failures": {"const": 0}
+      }
+    },
+    "requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requests_executed_required",
+        "schema_conformant_responses_required",
+        "providers_with_schema_conformant_response_required",
+        "candidate_ids_covered_required",
+        "boundary_failures_max",
+        "all_conditions_required"
+      ],
+      "properties": {
+        "requests_executed_required": {"const": 2},
+        "schema_conformant_responses_required": {"const": 2},
+        "providers_with_schema_conformant_response_required": {"const": 2},
+        "candidate_ids_covered_required": {"const": 4},
+        "boundary_failures_max": {"const": 0},
+        "all_conditions_required": {"const": true}
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_count_exact",
+        "schema_conformant_response_threshold_met",
+        "provider_threshold_met",
+        "candidate_coverage_threshold_met",
+        "boundary_threshold_met",
+        "all_conditions_met"
+      ],
+      "properties": {
+        "request_count_exact": {"const": true},
+        "schema_conformant_response_threshold_met": {"const": false},
+        "provider_threshold_met": {"const": false},
+        "candidate_coverage_threshold_met": {"const": true},
+        "boundary_threshold_met": {"const": true},
+        "all_conditions_met": {"const": false}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_schema_confirmation_pass",
+        "fail_closed",
+        "failure_classes",
+        "next_permitted_action"
+      ],
+      "properties": {
+        "provider_schema_confirmation_pass": {"const": false},
+        "fail_closed": {"const": true},
+        "failure_classes": {
+          "const": [
+            "QIANFAN_PROVIDER_RESPONSE_NOT_EXTRACTABLE",
+            "SCHEMA_CONFORMANT_RESPONSE_THRESHOLD_NOT_MET",
+            "PROVIDER_THRESHOLD_NOT_MET"
+          ]
+        },
+        "next_permitted_action": {"const": "PREPARE_SEPARATE_OFFLINE_QIANFAN_WRAPPER_EXTRACTION_DIAGNOSTIC_RECOMMENDATION_ONLY"}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "full_candidate_review_rerun_authorized",
+        "candidate_review_completed",
+        "candidate_status_changed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "customer_adoption",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "full_candidate_review_rerun_authorized": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "candidate_status_changed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "market_validation_pass": {"const": false},
+        "customer_adoption": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

@@ -1506,9 +1506,33 @@
         "provider_confirmation_decision_candidate_id",
         "provider_confirmation_recommendation_reference",
         "provider_confirmation_recommendation_prepared",
+        "provider_confirmation_decision_reference",
         "provider_confirmation_decision_recorded",
+        "provider_confirmation_execution_plan_reference",
+        "provider_confirmation_authorization_receipt_reference",
+        "provider_confirmation_authorization_baseline_commit",
+        "provider_confirmation_authorization_receipt_commit",
+        "provider_confirmation_authorization_baseline_remote_verified",
         "provider_confirmation_live_model_requests_recommended_max",
+        "provider_confirmation_live_model_requests_authorized_max",
         "provider_confirmation_execution_authorized",
+        "provider_confirmation_execution_started",
+        "provider_confirmation_execution_completed",
+        "provider_confirmation_request_cap_consumed",
+        "provider_confirmation_requests_executed",
+        "provider_confirmation_qianfan_requests_executed",
+        "provider_confirmation_deepseek_requests_executed",
+        "provider_confirmation_schema_conformant_responses",
+        "provider_confirmation_providers_with_schema_conformant_response",
+        "provider_confirmation_candidate_ids_covered",
+        "provider_confirmation_boundary_failures",
+        "provider_confirmation_pass",
+        "provider_confirmation_sanitized_observations_reference",
+        "provider_confirmation_gate_result_reference",
+        "provider_confirmation_execution_receipt_reference",
+        "provider_confirmation_result_report_reference",
+        "qianfan_wrapper_response_extractable",
+        "deepseek_schema_confirmation_pass",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
         "rerun_json_repair_allowed",
@@ -1526,7 +1550,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE14_PROVIDER_CONFIRMATION_RECOMMENDATION_PREPARED_NOT_DECIDED"
+          "const": "PRE14_EXECUTED_FAIL_CLOSED_OFFLINE_QIANFAN_WRAPPER_DIAGNOSTIC_RECOMMENDATION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1882,14 +1906,86 @@
         "provider_confirmation_recommendation_prepared": {
           "const": true
         },
+        "provider_confirmation_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-14-BOUNDED-PROVIDER-CONFIRMATION-DECISION-RECORD.v0.1.json"
+        },
         "provider_confirmation_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "provider_confirmation_execution_plan_reference": {
+          "const": "commercialization-standards-public-source-record-provider-confirmation/execution-plan.v0.1.json"
+        },
+        "provider_confirmation_authorization_receipt_reference": {
+          "const": "commercialization-standards-public-source-record-provider-confirmation/authorization-baseline-receipt.v0.1.json"
+        },
+        "provider_confirmation_authorization_baseline_commit": {
+          "const": "ef92359967d3c7477a65859bca0b988d35055f8d"
+        },
+        "provider_confirmation_authorization_receipt_commit": {
+          "const": "4ed098fabde3034aa921155b0875229e1e5bd12d"
+        },
+        "provider_confirmation_authorization_baseline_remote_verified": {
+          "const": true
         },
         "provider_confirmation_live_model_requests_recommended_max": {
           "const": 2
         },
+        "provider_confirmation_live_model_requests_authorized_max": {
+          "const": 2
+        },
         "provider_confirmation_execution_authorized": {
+          "const": true
+        },
+        "provider_confirmation_execution_started": {
+          "const": true
+        },
+        "provider_confirmation_execution_completed": {
+          "const": true
+        },
+        "provider_confirmation_request_cap_consumed": {
+          "const": true
+        },
+        "provider_confirmation_requests_executed": {
+          "const": 2
+        },
+        "provider_confirmation_qianfan_requests_executed": {
+          "const": 1
+        },
+        "provider_confirmation_deepseek_requests_executed": {
+          "const": 1
+        },
+        "provider_confirmation_schema_conformant_responses": {
+          "const": 1
+        },
+        "provider_confirmation_providers_with_schema_conformant_response": {
+          "const": 1
+        },
+        "provider_confirmation_candidate_ids_covered": {
+          "const": 4
+        },
+        "provider_confirmation_boundary_failures": {
+          "const": 0
+        },
+        "provider_confirmation_pass": {
           "const": false
+        },
+        "provider_confirmation_sanitized_observations_reference": {
+          "const": "commercialization-standards-public-source-record-provider-confirmation/sanitized-provider-observations.v0.1.json"
+        },
+        "provider_confirmation_gate_result_reference": {
+          "const": "commercialization-standards-public-source-record-provider-confirmation/confirmation-gate-result.v0.1.json"
+        },
+        "provider_confirmation_execution_receipt_reference": {
+          "const": "commercialization-standards-public-source-record-provider-confirmation/execution-receipt.v0.1.json"
+        },
+        "provider_confirmation_result_report_reference": {
+          "const": "commercialization-standards-public-source-record-provider-confirmation/PRE-14-BOUNDED-PROVIDER-CONFIRMATION-RESULT-v0.1.md"
+        },
+        "qianfan_wrapper_response_extractable": {
+          "const": false
+        },
+        "deepseek_schema_confirmation_pass": {
+          "const": true
         },
         "rerun_retry_allowed": {
           "const": false
@@ -1904,10 +2000,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "AUTHORIZE_TWO_PROVIDER_SCHEMA_CONFIRMATION_REQUESTS_ONLY"
+          "const": "PREPARE_OFFLINE_QIANFAN_WRAPPER_EXTRACTION_DIAGNOSTIC_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
-          "const": true
+          "const": false
         },
         "external_execution_authorized": {
           "const": false

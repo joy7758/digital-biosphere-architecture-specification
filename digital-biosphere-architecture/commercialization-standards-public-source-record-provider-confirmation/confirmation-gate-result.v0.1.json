@@ -1,0 +1,60 @@
+{
+  "$schema": "./confirmation-gate-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-14-CONFIRMATION-GATE-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_PROVIDER_CONFIRMATION_THRESHOLD_NOT_MET",
+  "observed_at": "2026-07-26T19:05:06+08:00",
+  "decision_reference": "CS-D02-PRE-14",
+  "counts": {
+    "requests_authorized_max": 2,
+    "requests_executed": 2,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "json_repair_attempts": 0,
+    "schema_conformant_responses": 1,
+    "providers_with_schema_conformant_response": 1,
+    "unique_candidate_ids_covered": 4,
+    "boundary_failures": 0
+  },
+  "requirements": {
+    "requests_executed_required": 2,
+    "schema_conformant_responses_required": 2,
+    "providers_with_schema_conformant_response_required": 2,
+    "candidate_ids_covered_required": 4,
+    "boundary_failures_max": 0,
+    "all_conditions_required": true
+  },
+  "checks": {
+    "request_count_exact": true,
+    "schema_conformant_response_threshold_met": false,
+    "provider_threshold_met": false,
+    "candidate_coverage_threshold_met": true,
+    "boundary_threshold_met": true,
+    "all_conditions_met": false
+  },
+  "result": {
+    "provider_schema_confirmation_pass": false,
+    "fail_closed": true,
+    "failure_classes": [
+      "QIANFAN_PROVIDER_RESPONSE_NOT_EXTRACTABLE",
+      "SCHEMA_CONFORMANT_RESPONSE_THRESHOLD_NOT_MET",
+      "PROVIDER_THRESHOLD_NOT_MET"
+    ],
+    "next_permitted_action": "PREPARE_SEPARATE_OFFLINE_QIANFAN_WRAPPER_EXTRACTION_DIAGNOSTIC_RECOMMENDATION_ONLY"
+  },
+  "effects": {
+    "full_candidate_review_rerun_authorized": false,
+    "candidate_review_completed": false,
+    "candidate_status_changed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

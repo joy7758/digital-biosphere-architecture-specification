@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre14-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS PRE-14 Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "branch",
+    "authorization",
+    "artifact_bindings",
+    "request_accounting",
+    "validation",
+    "data_controls",
+    "result",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-14-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "EXECUTION_COMPLETE_FAIL_CLOSED_PROVIDER_THRESHOLD_NOT_MET"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-14"},
+    "branch": {"const": "codex/production-observability-baseline"},
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_commit",
+        "authorization_baseline_commit",
+        "authorization_receipt_commit",
+        "authorization_baseline_remote_verified_before_request"
+      ],
+      "properties": {
+        "recommendation_commit": {"const": "116b59476a9b833e21d330bb1d8ac07a84bf114e"},
+        "authorization_baseline_commit": {"const": "ef92359967d3c7477a65859bca0b988d35055f8d"},
+        "authorization_receipt_commit": {"const": "4ed098fabde3034aa921155b0875229e1e5bd12d"},
+        "authorization_baseline_remote_verified_before_request": {"const": true}
+      }
+    },
+    "artifact_bindings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sanitized_observations_reference",
+        "sanitized_observations_sha256",
+        "confirmation_gate_result_reference",
+        "confirmation_gate_result_sha256"
+      ],
+      "properties": {
+        "sanitized_observations_reference": {"const": "sanitized-provider-observations.v0.1.json"},
+        "sanitized_observations_sha256": {"const": "19faeb1c292953256d77b6f83c924921e6c0d2383b800c41c5087e16a699b660"},
+        "confirmation_gate_result_reference": {"const": "confirmation-gate-result.v0.1.json"},
+        "confirmation_gate_result_sha256": {"const": "e9c33fe9ff95539c99f87a4c4f62e013c634293d52901fb4989a8b1e1a4923cd"}
+      }
+    },
+    "request_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requests_authorized_max",
+        "requests_executed",
+        "requests_remaining",
+        "qianfan_requests_executed",
+        "deepseek_requests_executed",
+        "retry_attempts",
+        "fallback_attempts",
+        "json_repair_attempts",
+        "tool_use_by_reviewers",
+        "new_source_searches",
+        "new_source_collections"
+      ],
+      "properties": {
+        "requests_authorized_max": {"const": 2},
+        "requests_executed": {"const": 2},
+        "requests_remaining": {"const": 0},
+        "qianfan_requests_executed": {"const": 1},
+        "deepseek_requests_executed": {"const": 1},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "json_repair_attempts": {"const": 0},
+        "tool_use_by_reviewers": {"const": 0},
+        "new_source_searches": {"const": 0},
+        "new_source_collections": {"const": 0}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_conformant_responses",
+        "providers_with_schema_conformant_response",
+        "unique_candidate_ids_covered",
+        "boundary_failures",
+        "nested_deepseek_response_full_schema_pass",
+        "deterministic_gate_replay_pass",
+        "provider_schema_confirmation_pass"
+      ],
+      "properties": {
+        "schema_conformant_responses": {"const": 1},
+        "providers_with_schema_conformant_response": {"const": 1},
+        "unique_candidate_ids_covered": {"const": 4},
+        "boundary_failures": {"const": 0},
+        "nested_deepseek_response_full_schema_pass": {"const": true},
+        "deterministic_gate_replay_pass": {"const": true},
+        "provider_schema_confirmation_pass": {"const": false}
+      }
+    },
+    "data_controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_provider_body_persisted",
+        "token_usage_persisted",
+        "hidden_reasoning_persisted",
+        "secret_persisted_or_displayed",
+        "customer_or_personal_data_sent"
+      ],
+      "properties": {
+        "raw_provider_body_persisted": {"const": false},
+        "token_usage_persisted": {"const": false},
+        "hidden_reasoning_persisted": {"const": false},
+        "secret_persisted_or_displayed": {"const": false},
+        "customer_or_personal_data_sent": {"const": false}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_completed",
+        "fail_closed",
+        "candidate_review_completed",
+        "next_permitted_action"
+      ],
+      "properties": {
+        "execution_completed": {"const": true},
+        "fail_closed": {"const": true},
+        "candidate_review_completed": {"const": false},
+        "next_permitted_action": {"const": "PREPARE_SEPARATE_OFFLINE_QIANFAN_WRAPPER_EXTRACTION_DIAGNOSTIC_RECOMMENDATION_ONLY"}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "full_candidate_review_rerun_authorized",
+        "candidate_status_changed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "market_validation_pass",
+        "customer_adoption",
+        "implementation_authorized",
+        "external_outreach_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "full_candidate_review_rerun_authorized": {"const": false},
+        "candidate_status_changed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "market_validation_pass": {"const": false},
+        "customer_adoption": {"const": false},
+        "implementation_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

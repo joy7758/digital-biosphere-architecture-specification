@@ -1,0 +1,70 @@
+{
+  "$schema": "./execution-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-14-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTION_COMPLETE_FAIL_CLOSED_PROVIDER_THRESHOLD_NOT_MET",
+  "observed_at": "2026-07-26T19:05:06+08:00",
+  "decision_reference": "CS-D02-PRE-14",
+  "branch": "codex/production-observability-baseline",
+  "authorization": {
+    "recommendation_commit": "116b59476a9b833e21d330bb1d8ac07a84bf114e",
+    "authorization_baseline_commit": "ef92359967d3c7477a65859bca0b988d35055f8d",
+    "authorization_receipt_commit": "4ed098fabde3034aa921155b0875229e1e5bd12d",
+    "authorization_baseline_remote_verified_before_request": true
+  },
+  "artifact_bindings": {
+    "sanitized_observations_reference": "sanitized-provider-observations.v0.1.json",
+    "sanitized_observations_sha256": "19faeb1c292953256d77b6f83c924921e6c0d2383b800c41c5087e16a699b660",
+    "confirmation_gate_result_reference": "confirmation-gate-result.v0.1.json",
+    "confirmation_gate_result_sha256": "e9c33fe9ff95539c99f87a4c4f62e013c634293d52901fb4989a8b1e1a4923cd"
+  },
+  "request_accounting": {
+    "requests_authorized_max": 2,
+    "requests_executed": 2,
+    "requests_remaining": 0,
+    "qianfan_requests_executed": 1,
+    "deepseek_requests_executed": 1,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "json_repair_attempts": 0,
+    "tool_use_by_reviewers": 0,
+    "new_source_searches": 0,
+    "new_source_collections": 0
+  },
+  "validation": {
+    "schema_conformant_responses": 1,
+    "providers_with_schema_conformant_response": 1,
+    "unique_candidate_ids_covered": 4,
+    "boundary_failures": 0,
+    "nested_deepseek_response_full_schema_pass": true,
+    "deterministic_gate_replay_pass": true,
+    "provider_schema_confirmation_pass": false
+  },
+  "data_controls": {
+    "raw_provider_body_persisted": false,
+    "token_usage_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "secret_persisted_or_displayed": false,
+    "customer_or_personal_data_sent": false
+  },
+  "result": {
+    "execution_completed": true,
+    "fail_closed": true,
+    "candidate_review_completed": false,
+    "next_permitted_action": "PREPARE_SEPARATE_OFFLINE_QIANFAN_WRAPPER_EXTRACTION_DIAGNOSTIC_RECOMMENDATION_ONLY"
+  },
+  "effects": {
+    "full_candidate_review_rerun_authorized": false,
+    "candidate_status_changed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "customer_adoption": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
