@@ -1,0 +1,84 @@
+{
+  "$schema": "./static-review-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-17-STATIC-REVIEW-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-17",
+  "decision_record_reference": "../TITMAS-CS-D02-PRE-17-QIANFAN-EXTRACTION-CONTRACT-REVIEW-DECISION-RECORD.v0.1.json",
+  "frozen_artifacts": {
+    "recommendation_reference": "../TITMAS-CS-D02-PRE-17-QIANFAN-EXTRACTION-CONTRACT-REVIEW-RECOMMENDATION-v0.1.md",
+    "recommendation_sha256": "3333017988fdcc065922be7cbf270721b74b79746c7cb1af541f10315c69e299",
+    "pre15_declared_tool_contract_reference": "../commercialization-standards-qianfan-wrapper-extraction-diagnostic/declared-tool-contract.v0.1.json",
+    "pre15_declared_tool_contract_sha256": "bc7a78ee54a633d46c586994fbfded293d1b05abbfc3d4773917d222ccb80ce9",
+    "pre15_diagnostic_result_reference": "../commercialization-standards-qianfan-wrapper-extraction-diagnostic/offline-diagnostic-result.v0.1.json",
+    "pre15_diagnostic_result_sha256": "9d442d8b3ec6b6cd2bfbdba0c55ab3bd0336f9fe6799bdda480b007fca97a830",
+    "pre16_sanitized_observation_reference": "../commercialization-standards-qianfan-reconfirmation/sanitized-qianfan-observation.v0.1.json",
+    "pre16_sanitized_observation_sha256": "39e60eaa6e20233767cbfad2aa3ba4a21025ae471974a0eedd3f81561249e9e1",
+    "pre16_composite_gate_result_reference": "../commercialization-standards-qianfan-reconfirmation/composite-gate-result.v0.1.json",
+    "pre16_composite_gate_result_sha256": "4e1b0f3d9adc4d64dff1129dcc973e5e29d43cab47a0ec9cdaf727361cf257a3",
+    "pre16_execution_receipt_reference": "../commercialization-standards-qianfan-reconfirmation/execution-receipt.v0.1.json",
+    "pre16_execution_receipt_sha256": "04c5dcb8f31e8005624ee8bf5545d47c6c294e9e490e1855ed6235d3658f5f19"
+  },
+  "review_scope": [
+    "TRANSPORT_SEMANTIC_LAYER_CROSSWALK",
+    "PLAIN_CONTENT_TEXT_ACCEPTANCE_RULE",
+    "BOUNDED_EXPLICIT_UNWRAP_PATHS",
+    "AMBIGUITY_AND_FAILURE_SEMANTICS",
+    "PRIVACY_PRESERVING_SHAPE_DESCRIPTOR",
+    "SYNTHETIC_POSITIVE_AND_NEGATIVE_VALIDATION"
+  ],
+  "required_outputs": [
+    "transport-semantic-crosswalk.v0.1.json",
+    "extraction-contract-candidate.v0.2.json",
+    "shape-descriptor-contract.v0.1.json",
+    "synthetic-extraction-fixtures.v0.2.json",
+    "offline-validation-result.v0.1.json",
+    "PRE-17-OFFLINE-EXTRACTION-CONTRACT-REVIEW-RESULT-v0.1.md",
+    "execution-receipt.v0.1.json"
+  ],
+  "success_criteria": {
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "raw_pre16_provider_body_accessed": false,
+    "transport_and_semantic_layers_distinguished": true,
+    "plain_content_text_acceptance_rule_narrowed": true,
+    "bounded_unwrap_paths_explicit": true,
+    "privacy_preserving_shape_descriptor_defined": true,
+    "synthetic_positive_and_negative_cases_validated": true,
+    "pre16_exact_provider_failure_cause_overspecified": false
+  },
+  "controls": {
+    "arbitrary_recursive_unwrap_allowed": false,
+    "substring_extraction_allowed": false,
+    "fence_stripping_allowed": false,
+    "json_repair_allowed": false,
+    "live_model_requests_max": 0,
+    "provider_network_requests_max": 0,
+    "raw_provider_body_access_allowed": false,
+    "secret_access_allowed": false,
+    "new_source_search_allowed": false,
+    "new_source_collection_allowed": false,
+    "automatic_valid_status_or_counting_allowed": false
+  },
+  "execution_gate": {
+    "authorization_baseline_committed": false,
+    "authorization_baseline_pushed": false,
+    "authorization_baseline_remote_verified": false,
+    "execution_started": false
+  },
+  "non_effects": {
+    "static_review_completed": false,
+    "qianfan_provider_schema_confirmation_pass": false,
+    "composite_provider_gate_pass": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
