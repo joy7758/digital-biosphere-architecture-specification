@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_45_OFFLINE_DIAGNOSTIC_PASS_PRE46_COMPACT_SEQUENTIAL_REVIEW_CONTRACT_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_46_OFFLINE_CONTRACT_REVISION_PASS_PRE47_EXACT_SEQUENTIAL_AGENT_REVIEW_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -5060,6 +5060,30 @@
             "pre45_result",
             "pre45_network_model_credential_requests",
             "pre45_root_causes_proven",
+            "pre46_recommendation_reference",
+            "pre46_recommendation_sha256",
+            "pre46_recommendation_commit",
+            "pre46_decision_reference",
+            "pre46_decision_sha256",
+            "pre46_decision_commit",
+            "pre46_input_manifest_sha256",
+            "pre46_plan_sha256",
+            "pre46_contract_sha256",
+            "pre46_query_template_sha256",
+            "pre46_response_schema_sha256",
+            "pre46_source_observation_sha256",
+            "pre46_result_reference",
+            "pre46_result_sha256",
+            "pre46_machine_result_sha256",
+            "pre46_execution_receipt_sha256",
+            "pre46_result_commit",
+            "pre46_result",
+            "pre46_input_hashes_valid",
+            "pre46_schemas_valid",
+            "pre46_instances_valid",
+            "pre46_offline_fixtures_pass",
+            "pre46_network_model_credential_requests",
+            "pre46_exact_model_structured_output_support",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5080,6 +5104,9 @@
             "pre45_offline_diagnostic_executed",
             "pre45_offline_diagnostic_pass",
             "pre46_compact_sequential_contract_recommendation_required",
+            "pre46_compact_sequential_contract_revision_executed",
+            "pre46_compact_sequential_contract_revision_pass",
+            "pre47_exact_sequential_agent_review_recommendation_required",
             "rb1_implementation_authorized"
           ],
           "properties": {
@@ -5509,6 +5536,78 @@
             "pre45_root_causes_proven": {
               "const": 0
             },
+            "pre46_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-46-COMPACT-SEQUENTIAL-AGENT-REVIEW-CONTRACT-REVISION-RECOMMENDATION-v0.1.md"
+            },
+            "pre46_recommendation_sha256": {
+              "const": "b27279e90e94f1feb6b88574f79d88da4f2ccf3c4693de4768db661a80a2316f"
+            },
+            "pre46_recommendation_commit": {
+              "const": "89fb260574fda4bd0a44267f6b5b8d4e0694d961"
+            },
+            "pre46_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-46-COMPACT-SEQUENTIAL-AGENT-REVIEW-CONTRACT-REVISION-DECISION-RECORD.v0.1.json"
+            },
+            "pre46_decision_sha256": {
+              "const": "a45c02734881d4ed47622c039d5e64cd6642ff56f017d3edee363ad68b576c3d"
+            },
+            "pre46_decision_commit": {
+              "const": "032c8e5b83d75496bfd4eeb60edaaea37e780f56"
+            },
+            "pre46_input_manifest_sha256": {
+              "const": "99b86dcbd6a99865d832f44099ce9a4e3869733e38f79b6c7cb77eb6a6ada5b4"
+            },
+            "pre46_plan_sha256": {
+              "const": "7ef8a03c85ef607a4945d34660c91f0cfea7376cf591b07cca5cc87c3ca9288f"
+            },
+            "pre46_contract_sha256": {
+              "const": "2618d19972992a9522b4e8ca0ce443dbb4c4871efeb8132f279bc8a7cc9d3e12"
+            },
+            "pre46_query_template_sha256": {
+              "const": "27785e540a3d9c862cf0227ebaf20af556e4ab18edbf694b5a405a79c6fef671"
+            },
+            "pre46_response_schema_sha256": {
+              "const": "5558f02c2204d5f278a8b283e5548cde58167b4a2323c2c5df2e76cdf6d8820e"
+            },
+            "pre46_source_observation_sha256": {
+              "const": "f50cfb128ee1dc11a6e7f6a24ac5e92c276528aefb7fe9dcd2d276d2013d0d8d"
+            },
+            "pre46_result_reference": {
+              "const": "commercialization-standards-titmas-integrations-rb1-planning/PRE-46-COMPACT-SEQUENTIAL-AGENT-REVIEW-CONTRACT-REVISION-RESULT-v0.1.md"
+            },
+            "pre46_result_sha256": {
+              "const": "6a9ec57f4e4ea6fd154d0eae5a63701d75b43cbdf0598b55954f76118681ebba"
+            },
+            "pre46_machine_result_sha256": {
+              "const": "74cc1f337dc76b30de6db243df147b30a8078ad97f7acc819bc6b1a713538766"
+            },
+            "pre46_execution_receipt_sha256": {
+              "const": "c61e544934531ec0d754a785011b559a8e7244c1711d732abbd46bc0ea043811"
+            },
+            "pre46_result_commit": {
+              "const": "2d4774c983d507fe899f19b5277881a4fb7b94a2"
+            },
+            "pre46_result": {
+              "const": "PASS_OFFLINE_CONTRACT_REVISION_PRE47_RECOMMENDATION_ALLOWED"
+            },
+            "pre46_input_hashes_valid": {
+              "const": "13/13"
+            },
+            "pre46_schemas_valid": {
+              "const": "9/9"
+            },
+            "pre46_instances_valid": {
+              "const": "8/8"
+            },
+            "pre46_offline_fixtures_pass": {
+              "const": "6/6"
+            },
+            "pre46_network_model_credential_requests": {
+              "const": 0
+            },
+            "pre46_exact_model_structured_output_support": {
+              "const": "UNKNOWN_NOT_ADOPTED"
+            },
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -5567,6 +5666,15 @@
               "const": true
             },
             "pre46_compact_sequential_contract_recommendation_required": {
+              "const": false
+            },
+            "pre46_compact_sequential_contract_revision_executed": {
+              "const": true
+            },
+            "pre46_compact_sequential_contract_revision_pass": {
+              "const": true
+            },
+            "pre47_exact_sequential_agent_review_recommendation_required": {
               "const": true
             },
             "rb1_implementation_authorized": {
@@ -5590,7 +5698,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_PRE46_COMPACT_SEQUENTIAL_AGENT_REVIEW_CONTRACT_REVISION_RECOMMENDATION_ONLY"
+          "const": "FORM_PRE47_EXACT_SEQUENTIAL_AGENT_REVIEW_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false

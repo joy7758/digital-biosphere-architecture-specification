@@ -396,6 +396,7 @@ Developer Preview v0.1 的历史发布结果 `PASS_WITH_DISCLOSED_LIMITATIONS` �
 | Optional Human Developer Trial | `SUPERSEDED_AS_PRIMARY_GATE_NOT_EXECUTED` | 历史技术包仍保留；参与者 0；不再阻塞首要 agent-native 路线 |
 | Clean Clone Validation | `PASS_FROZEN_REMOTE_SOURCES` | DBA、DBOS、SAEE 与只读 Adapter 全通过；见 `CLEAN-CLONE-VALIDATION-REPORT.md` |
 | Agent Customer Validation | `PASS_BOUNDARY_AWARE_CONDITIONAL_RECOMMENDATION` | 修复后千帆／方舟 12/12 会话和全部预冻结阈值通过；12/12 overall verdict 为边界正确的 `CONDITIONAL`；不是客户采用或发布 |
+| TITMAS RB1 Agent Review Gate | `PRE44_BLOCKED_PRE46_OFFLINE_CONTRACT_VALIDATED_PRE47_RECOMMENDATION_REQUIRED` | PRE-44 仅 1/4 qualifying；PRE-46 以 13/13 hashes、9/9 schemas、8/8 instances、6/6 fixtures 和 0 network/model/credential 验证 compact/sequential contract；PRE-44 gate、RB1 implementation authorization 与商业就绪均未改变 |
 | Trusted Multi-Agent Protocol | `ARCHITECTURE_BASELINE_DEFINED_NOT_IMPLEMENTED` | 六类协议对象、四个可信边界和 Protocol→SDK→Reference Implementation→Adapter 路线已定义；未创建 API、SDK 或 Runtime |
 | OpenTelemetry Observability Profile | `DQ_018_SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_HUMAN_SECURITY_REVIEW_READY_NOT_APPROVED` | DQ-022–025 exact references 已采纳；当前 DBOS source 的 P001—P005、`HSR-PRE-001/002` 负例与供应链检查已在原生 Linux x86_64 完成并远端复验；未部署 Collector 或 endpoint |
 | OpenTelemetry Semantic Mapping and Conformance | `DQ_023_REFERENCE_ADOPTED_DQ_018_AUTHORIZED_SUBSET_32_OF_32_PASS` | pinned mapping 已进入 DBOS 离线参考实现；32/32 authorized cases 通过，14 个 DQ-020 cases blocked；不产生 Runtime compatibility 声明 |
