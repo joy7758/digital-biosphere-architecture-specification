@@ -1,0 +1,70 @@
+{
+  "$schema": "./pre39-truth-surface-validation-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-39-TRUTH-SURFACE-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_REMOTE_TRUTH_SURFACE_CONSISTENT_PRE40_CLEAN_CLONE_GATE_REQUIRED",
+  "decision_reference": "CS-D02-PRE-39",
+  "decision_record_sha256": "42604cff023f0bf9495d56bb267f5ce323af5a784d25e4eee92afdf3a476fdcf",
+  "decision_commit": "6f5fd6dd925cca325611f12279961da962fc9069",
+  "validated_at": "2026-07-27T03:11:46+08:00",
+  "target": {
+    "repository": "https://github.com/joy7758/titmas-integrations.git",
+    "prior_commit": "d54bf17ea94ee614b83253cd6abd8cb51bfdd45b",
+    "branch": "codex/rb0-governance-baseline",
+    "commit": "9610748d4a72d81278df2bc296518a469ce2fd30",
+    "remote_branch_matches_commit": true,
+    "remote_main_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "remote_main_unchanged": true,
+    "isolated_worktree_clean": true,
+    "original_checkout_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "original_checkout_clean": true
+  },
+  "checks": {
+    "prior_digests_match": 7,
+    "candidate_digests_match": 7,
+    "staged_paths_exact": 7,
+    "updated_paths": 7,
+    "created_paths": 0,
+    "deleted_paths": 0,
+    "machine_schema_meta_valid": true,
+    "machine_instance_valid": true,
+    "stale_not_applied_claims": 0,
+    "semantic_truth_consistent": true,
+    "secret_or_local_path_findings": 0,
+    "source_files_modified": 0,
+    "package_metadata_files_modified": 0,
+    "test_files_modified": 0,
+    "remote_clean_clone_validated": true
+  },
+  "retained_events": [
+    {
+      "event": "PRE_EXECUTION_TOOL_GUARD_REJECTED_TEMP_CLEANUP_COMMAND",
+      "command_executed": false,
+      "repository_effect": false
+    }
+  ],
+  "truth_state": {
+    "rb0_files_applied_to_branch": true,
+    "repository_baseline_scope": "BRANCH_ONLY_NOT_MERGED",
+    "repository_baseline_validated": false,
+    "repository_baseline_adopted": false,
+    "license_adopted": true,
+    "implementation_authorized": false,
+    "implementation_created": false,
+    "provider_supported": false,
+    "conformance_executed": false,
+    "runtime_created": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "merge_authorized": false,
+    "pull_request_authorized": false,
+    "release_authorized": false
+  },
+  "next_gate": {
+    "pre40_clean_clone_gate_required": true,
+    "direct_rb1_entry_allowed": false,
+    "additional_target_action_authorized": false
+  }
+}

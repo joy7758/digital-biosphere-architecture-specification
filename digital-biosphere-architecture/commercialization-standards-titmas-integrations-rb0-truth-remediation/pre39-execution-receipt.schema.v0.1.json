@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre39-execution-receipt.schema.v0.1.json",
+  "title": "PRE-39 Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "executed_by",
+    "completed_at",
+    "target",
+    "counts",
+    "validation_result_reference",
+    "result",
+    "authorization_consumed",
+    "additional_execution_authorized",
+    "merge_authorized",
+    "release_authorized"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre39-execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-39-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "COMPLETED_REMOTE_VALIDATED_PRE40_GATE_REQUIRED"},
+    "decision_reference": {"const": "CS-D02-PRE-39"},
+    "executed_by": {"const": "Codex"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "branch",
+        "prior_commit",
+        "commit",
+        "remote_branch_pushed",
+        "remote_clean_clone_validated",
+        "remote_main_unchanged"
+      ],
+      "properties": {
+        "repository": {"const": "https://github.com/joy7758/titmas-integrations.git"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "prior_commit": {"const": "d54bf17ea94ee614b83253cd6abd8cb51bfdd45b"},
+        "commit": {"const": "9610748d4a72d81278df2bc296518a469ce2fd30"},
+        "remote_branch_pushed": {"const": true},
+        "remote_clean_clone_validated": {"const": true},
+        "remote_main_unchanged": {"const": true}
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_paths_updated",
+        "target_files_created",
+        "target_files_deleted",
+        "source_files_modified",
+        "package_metadata_files_modified",
+        "test_files_modified",
+        "provider_network_requests",
+        "model_requests",
+        "credential_reads",
+        "pre_execution_tool_guard_events"
+      ],
+      "properties": {
+        "target_paths_updated": {"const": 7},
+        "target_files_created": {"const": 0},
+        "target_files_deleted": {"const": 0},
+        "source_files_modified": {"const": 0},
+        "package_metadata_files_modified": {"const": 0},
+        "test_files_modified": {"const": 0},
+        "provider_network_requests": {"const": 0},
+        "model_requests": {"const": 0},
+        "credential_reads": {"const": 0},
+        "pre_execution_tool_guard_events": {"const": 1}
+      }
+    },
+    "validation_result_reference": {"const": "pre39-truth-surface-validation-result.v0.1.json"},
+    "result": {"const": "PASS_REMOTE_TRUTH_SURFACE_CONSISTENT_PRE40_CLEAN_CLONE_GATE_REQUIRED"},
+    "authorization_consumed": {"const": true},
+    "additional_execution_authorized": {"const": false},
+    "merge_authorized": {"const": false},
+    "release_authorized": {"const": false}
+  }
+}
