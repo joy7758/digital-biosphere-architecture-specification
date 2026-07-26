@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:offline-contract-revision-authorization-receipt:0.1",
+  "title": "TITMAS Offline Contract Revision Authorization Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "standing_directive_reference", "target_branch", "authorization_baseline_commit", "remote_head_verified", "remote_ancestor_check_pass", "bindings", "preexecution_validation", "execution_accounting", "effects"],
+  "properties": {
+    "$schema": {"const": "./offline-contract-revision-authorization-receipt.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-25-OFFLINE-CONTRACT-REVISION-AUTHORIZATION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-25"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "target_branch": {"const": "codex/production-observability-baseline"},
+    "authorization_baseline_commit": {"const": "52f8794bd5c8df38accbd5d3e414e5c16fd67a30"},
+    "remote_head_verified": {"const": "52f8794bd5c8df38accbd5d3e414e5c16fd67a30"},
+    "remote_ancestor_check_pass": {"const": true},
+    "bindings": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact", "sha256"],
+        "properties": {
+          "artifact": {"type": "string", "minLength": 8},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "preexecution_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorization_bindings_matched", "authorization_bindings_total", "input_hashes_matched", "input_hashes_total", "schema_instances_validated", "schema_instances_total", "v0_1_history_hashes_matched", "v0_1_history_hashes_total"],
+      "properties": {
+        "authorization_bindings_matched": {"const": 7},
+        "authorization_bindings_total": {"const": 7},
+        "input_hashes_matched": {"const": 13},
+        "input_hashes_total": {"const": 13},
+        "schema_instances_validated": {"const": 3},
+        "schema_instances_total": {"const": 3},
+        "v0_1_history_hashes_matched": {"const": 5},
+        "v0_1_history_hashes_total": {"const": 5}
+      }
+    },
+    "execution_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["offline_revision_runs_authorized", "offline_revision_runs_executed", "live_model_requests_authorized", "live_model_requests_executed", "provider_network_requests_executed", "retry_attempts", "fallback_attempts", "repair_attempts"],
+      "properties": {
+        "offline_revision_runs_authorized": {"const": 1},
+        "offline_revision_runs_executed": {"const": 0},
+        "live_model_requests_authorized": {"const": 0},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "repair_attempts": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["v0_1_contracts_changed", "v0_2_candidates_created", "contract_candidates_adopted", "implementation_created", "live_rerun_ready", "profile_adopted", "provider_supported", "valid_problem_records", "cs_g0_pass"],
+      "properties": {
+        "v0_1_contracts_changed": {"const": false},
+        "v0_2_candidates_created": {"const": false},
+        "contract_candidates_adopted": {"const": false},
+        "implementation_created": {"const": false},
+        "live_rerun_ready": {"const": false},
+        "profile_adopted": {"const": false},
+        "provider_supported": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false}
+      }
+    }
+  }
+}

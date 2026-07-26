@@ -1,0 +1,52 @@
+{
+  "$schema": "./offline-contract-revision-authorization-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-25-OFFLINE-CONTRACT-REVISION-AUTHORIZATION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "REMOTE_AUTHORIZATION_BASELINE_VERIFIED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-25",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "target_branch": "codex/production-observability-baseline",
+  "authorization_baseline_commit": "52f8794bd5c8df38accbd5d3e414e5c16fd67a30",
+  "remote_head_verified": "52f8794bd5c8df38accbd5d3e414e5c16fd67a30",
+  "remote_ancestor_check_pass": true,
+  "bindings": [
+    {"artifact": "../TITMAS-CS-D02-PRE-25-OFFLINE-CONTRACT-REVISION-DECISION-RECORD.md", "sha256": "915b8eec07113a64163471911dd142eedf7d6033b165e9ae93076e2d8dec121d"},
+    {"artifact": "../TITMAS-CS-D02-PRE-25-OFFLINE-CONTRACT-REVISION-DECISION-RECORD.v0.1.json", "sha256": "f2c1b19a08757da57287a78e4153a49c3da794d925be3030cf09f79ba487d4f1"},
+    {"artifact": "../architecture/schemas/titmas-cs-d02-pre-25-offline-contract-revision-decision-record.schema.v0.1.json", "sha256": "1bbced0fef7e00db5f6246197276b8703d267320e34b79f7b6c012ab2638483c"},
+    {"artifact": "offline-contract-revision-plan.v0.1.json", "sha256": "291c06b6e4d1e244ed3d4de1064ef0a1503333df12361c04905327ae3ddfc65c"},
+    {"artifact": "offline-contract-revision-plan.schema.v0.1.json", "sha256": "7ba6aebd27c13d33e1dadc8b16fe872310d12748b1d64a58ffbdc91c8f8e54d9"},
+    {"artifact": "offline-contract-revision-input-manifest.v0.1.json", "sha256": "0608a7145bdef230f74f178eca5ab31723033496a3ef168177e81612cf2ae9b8"},
+    {"artifact": "offline-contract-revision-input-manifest.schema.v0.1.json", "sha256": "6003872d2bc76a3b513021af490e907f0c834f4888b48f3828c13c7cd3b0e33d"}
+  ],
+  "preexecution_validation": {
+    "authorization_bindings_matched": 7,
+    "authorization_bindings_total": 7,
+    "input_hashes_matched": 13,
+    "input_hashes_total": 13,
+    "schema_instances_validated": 3,
+    "schema_instances_total": 3,
+    "v0_1_history_hashes_matched": 5,
+    "v0_1_history_hashes_total": 5
+  },
+  "execution_accounting": {
+    "offline_revision_runs_authorized": 1,
+    "offline_revision_runs_executed": 0,
+    "live_model_requests_authorized": 0,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "effects": {
+    "v0_1_contracts_changed": false,
+    "v0_2_candidates_created": false,
+    "contract_candidates_adopted": false,
+    "implementation_created": false,
+    "live_rerun_ready": false,
+    "profile_adopted": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false
+  }
+}
