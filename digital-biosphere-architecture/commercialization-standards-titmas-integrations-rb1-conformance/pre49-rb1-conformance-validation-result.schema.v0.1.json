@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre49-rb1-conformance-validation-result.schema.v0.1.json",
+  "title": "TITMAS PRE-49 RB1 Conformance Validation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "recommendation_commit", "decision_commit", "target", "counts", "artifacts", "test_history", "build_result", "clean_clone", "gate_result", "next_action", "effects"],
+  "properties": {
+    "$schema": {"const": "./pre49-rb1-conformance-validation-result.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-INTEGRATIONS-PRE49-RB1-CONFORMANCE-VALIDATION-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_LOCAL_REFERENCE_CONTRACT_REHEARSAL"},
+    "decision_reference": {"const": "CS-D02-PRE-49"},
+    "recommendation_commit": {"$ref": "#/$defs/gitsha"},
+    "decision_commit": {"$ref": "#/$defs/gitsha"},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "branch", "parent_commit", "implementation_commit", "remote_commit", "main_commit_before", "main_commit_after"],
+      "properties": {
+        "repository": {"const": "https://github.com/joy7758/titmas-integrations.git"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "parent_commit": {"const": "001da006aa32a1eeeb058daa31dcab39197fa4de"},
+        "implementation_commit": {"$ref": "#/$defs/gitsha"},
+        "remote_commit": {"$ref": "#/$defs/gitsha"},
+        "main_commit_before": {"const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"},
+        "main_commit_after": {"const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"}
+      }
+    },
+    "counts": {"type": "object"},
+    "artifacts": {"type": "object"},
+    "test_history": {"type": "object"},
+    "build_result": {
+      "type": "object",
+      "required": ["command", "network_install_attempted", "local_status", "clean_clone_status", "reproducible_build_proven", "published"],
+      "properties": {
+        "command": {"const": "uv build --offline --out-dir <fresh-temporary-directory>"},
+        "network_install_attempted": {"const": false},
+        "local_status": {"const": "PASS_OFFLINE_TEMPORARY_ARTIFACTS_NOT_PUBLISHED"},
+        "clean_clone_status": {"const": "PASS_OFFLINE_TEMPORARY_ARTIFACTS_NOT_PUBLISHED"},
+        "reproducible_build_proven": {"const": false},
+        "published": {"const": false}
+      }
+    },
+    "clean_clone": {"type": "object"},
+    "gate_result": {"const": "PASS_LOCAL_REFERENCE_CONTRACT_REHEARSAL_REMOTE_CLEAN_CLONE_VERIFIED"},
+    "next_action": {"const": "FORM_SEPARATE_RB1_PROVIDER_BINDING_SCOPE_AND_SECURITY_REVIEW_RECOMMENDATION"},
+    "effects": {
+      "type": "object",
+      "required": ["local_reference_contract_rehearsal_executed", "third_party_independent_conformance", "provider_conformance_executed", "reproducible_build_proven", "release_authorized"],
+      "properties": {
+        "local_reference_contract_rehearsal_executed": {"const": true},
+        "third_party_independent_conformance": {"const": false},
+        "provider_conformance_executed": {"const": false},
+        "reproducible_build_proven": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "gitsha": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+  }
+}
