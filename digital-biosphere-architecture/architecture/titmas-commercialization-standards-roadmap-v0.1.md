@@ -1688,6 +1688,76 @@ PRE27_IMPLEMENTATION_CREATED=false
 APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE27_OFFLINE_HANDOFF_DIAGNOSTIC_DECISION_ONLY
 ```
 
+### 4.41 PRE-27 Offline Sanitized Result Handoff Diagnostic Result
+
+PRE-27 已按独立 Decision、远端授权基线和
+[authorization receipt](../commercialization-standards-provider-adapter-profile-review-remediation/sanitized-result-handoff-diagnostic-authorization-receipt.v0.1.json)
+执行。结果：
+
+- [validation result](../commercialization-standards-provider-adapter-profile-review-remediation/sanitized-result-handoff-diagnostic-validation-result.v0.1.json)；
+- [execution receipt](../commercialization-standards-provider-adapter-profile-review-remediation/sanitized-result-handoff-diagnostic-execution-receipt.v0.1.json)；
+- [result report](../commercialization-standards-provider-adapter-profile-review-remediation/PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-RESULT-v0.1.md)。
+
+```text
+PRE27_INPUT_HASHES_MATCH=16/16
+PRE27_SCHEMAS_META_VALID=7/7
+PRE27_FROZEN_INSTANCES_VALID=5/5
+PRE27_FIXTURE_EXPECTATIONS_MATCH=11/11
+PRE27_STDOUT_SUPPRESSED_VALID_SINK_RECOVERED=true
+
+PRE27_NETWORK_REQUESTS_EXECUTED=0
+PRE27_LIVE_MODEL_REQUESTS_EXECUTED=0
+PRE27_SECRET_READS_EXECUTED=0
+PRE27_TEMPORARY_SINK_FILES_REMAINING=0
+
+PRE27_HANDOFF_CONTRACT_CANDIDATE_READY=true
+PRE27_PROVIDER_REVIEW_RERUN_READY=false
+PRE27_HANDOFF_CONTRACT_ADOPTED=false
+PRE27_IMPLEMENTATION_CREATED=false
+```
+
+该 PASS 只证明 synthetic offline handoff behavior，不恢复 PRE-26，不证明 provider
+correctness、production durability、DBOS Evidence、conformance 或 Adoption。
+
+### 4.42 PRE-28 Handoff-bound Contract Candidate Review Recommendation
+
+[PRE-28 recommendation](../TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md)
+已在远端准备。Agent 推荐闸门：
+
+```text
+RECOMMEND_CONTRACT_IMPLEMENTATION_OR_PRODUCTION_USE=NO
+REASON=ZERO_QUALIFYING_EXTERNAL_AGENT_REVIEWS
+RECOMMEND_EXACT_HANDOFF_BOUND_TWO_SESSION_REVIEW=YES
+RECOMMEND_FORMAL_ADOPTION_NOW=NO
+```
+
+建议的 exact action：
+
+```text
+AUTHORIZE_EXACT_TWO_SESSION_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_WITH_SANITIZED_SINK_HANDOFF_ONLY
+```
+
+仍只允许 `kimi-k2.6` 与 `glm-5.2` 各一次、同一 Qianfan endpoint、零 retry/fallback/
+substitution/alias inference/JSON repair。与 PRE-26 不同的是，每个 sanitized session result
+必须先通过 Schema，并原子提交到预先冻结的独立临时 sink。
+
+当前：
+
+```text
+PRE28_RECOMMENDATION_REMOTE_VERIFIED=true
+PRE28_DECISION_RECORDED=false
+PRE28_LIVE_REVIEW_AUTHORIZED=false
+PRE28_LIVE_MODEL_REQUESTS_EXECUTED=0
+PRE28_CONTRACT_CANDIDATES_ADOPTED=false
+PRE28_IMPLEMENTATION_CREATED=false
+```
+
+下一步只允许：
+
+```text
+APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE28_HANDOFF_BOUND_TWO_SESSION_REVIEW_DECISION_ONLY
+```
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name

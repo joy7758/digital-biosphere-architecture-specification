@@ -347,6 +347,24 @@ PRE26_ADDITIONAL_REQUESTS_ALLOWED=0
 已在远端准备：下一步只建议用 synthetic fixtures 验证 sanitized-result temporary sink，
 network、model request、secret read 和 implementation 均保持为 0。
 
+PRE-27 随后经独立 Decision 与远端 authorization receipt 完成
+[offline diagnostic](commercialization-standards-provider-adapter-profile-review-remediation/PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-RESULT-v0.1.md)：
+
+```text
+PRE27_FIXTURE_EXPECTATIONS_MATCH=11/11
+PRE27_STDOUT_SUPPRESSED_VALID_SINK_RECOVERED=true
+PRE27_HANDOFF_CONTRACT_CANDIDATE_READY=true
+PRE27_PROVIDER_REVIEW_RERUN_READY=false
+PRE27_NETWORK_REQUESTS_EXECUTED=0
+PRE27_LIVE_MODEL_REQUESTS_EXECUTED=0
+PRE27_SECRET_READS_EXECUTED=0
+```
+
+[PRE-28 handoff-bound review recommendation](TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md)
+已在远端准备：建议另建 Decision，让两个固定 reviewer session 把 Schema-valid sanitized
+result 原子提交到独立临时 sink 后再由外层 consumer 读取。PRE-28 尚未授权或执行任何
+provider request；handoff contract 与 v0.2 contracts 仍未采纳，也没有实现。
+
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false
 TITMAS_GOVERNANCE_READY=false

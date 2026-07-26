@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_27_OFFLINE_HANDOFF_DIAGNOSTIC_RECOMMENDATION_PREPARED_DECISION_READY_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_28_HANDOFF_BOUND_REVIEW_RECOMMENDATION_PREPARED_DECISION_READY_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1275,10 +1275,30 @@
         "pre27_offline_handoff_diagnostic_recommendation_prepared",
         "pre27_recommendation_remote_verified",
         "pre27_decision_recorded",
+        "pre27_authorization_baseline_remote_verified",
+        "pre27_authorization_receipt_remote_verified",
+        "pre27_diagnostic_execution_was_authorized",
         "pre27_diagnostic_execution_authorized",
+        "pre27_diagnostic_executed",
+        "pre27_input_hashes_matched",
+        "pre27_schemas_meta_valid",
+        "pre27_frozen_instances_valid",
+        "pre27_fixture_expectations_matched",
+        "pre27_stdout_suppressed_valid_sink_recovered",
+        "pre27_handoff_contract_candidate_ready",
+        "pre27_provider_review_rerun_ready",
+        "pre27_handoff_contract_adopted",
         "pre27_network_requests_executed",
         "pre27_live_model_requests_executed",
+        "pre27_secret_reads_executed",
         "pre27_implementation_created",
+        "pre28_handoff_bound_review_recommendation_prepared",
+        "pre28_recommendation_remote_verified",
+        "pre28_decision_recorded",
+        "pre28_live_review_authorized",
+        "pre28_live_model_requests_executed",
+        "pre28_contract_candidates_adopted",
+        "pre28_implementation_created",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1844,9 +1864,45 @@
           "const": true
         },
         "pre27_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "pre27_authorization_baseline_remote_verified": {
+          "const": true
+        },
+        "pre27_authorization_receipt_remote_verified": {
+          "const": true
+        },
+        "pre27_diagnostic_execution_was_authorized": {
+          "const": true
         },
         "pre27_diagnostic_execution_authorized": {
+          "const": false
+        },
+        "pre27_diagnostic_executed": {
+          "const": true
+        },
+        "pre27_input_hashes_matched": {
+          "const": 16
+        },
+        "pre27_schemas_meta_valid": {
+          "const": 7
+        },
+        "pre27_frozen_instances_valid": {
+          "const": 5
+        },
+        "pre27_fixture_expectations_matched": {
+          "const": 11
+        },
+        "pre27_stdout_suppressed_valid_sink_recovered": {
+          "const": true
+        },
+        "pre27_handoff_contract_candidate_ready": {
+          "const": true
+        },
+        "pre27_provider_review_rerun_ready": {
+          "const": false
+        },
+        "pre27_handoff_contract_adopted": {
           "const": false
         },
         "pre27_network_requests_executed": {
@@ -1855,7 +1911,31 @@
         "pre27_live_model_requests_executed": {
           "const": 0
         },
+        "pre27_secret_reads_executed": {
+          "const": 0
+        },
         "pre27_implementation_created": {
+          "const": false
+        },
+        "pre28_handoff_bound_review_recommendation_prepared": {
+          "const": true
+        },
+        "pre28_recommendation_remote_verified": {
+          "const": true
+        },
+        "pre28_decision_recorded": {
+          "const": false
+        },
+        "pre28_live_review_authorized": {
+          "const": false
+        },
+        "pre28_live_model_requests_executed": {
+          "const": 0
+        },
+        "pre28_contract_candidates_adopted": {
+          "const": false
+        },
+        "pre28_implementation_created": {
           "const": false
         },
         "public_source_record_counting_authorized": {
@@ -2415,9 +2495,44 @@
         "provider_adapter_handoff_diagnostic_network_requests_max",
         "provider_adapter_handoff_diagnostic_live_model_requests_max",
         "provider_adapter_handoff_diagnostic_secret_reads_max",
+        "provider_adapter_handoff_diagnostic_decision_reference",
+        "provider_adapter_handoff_diagnostic_decision_sha256",
+        "provider_adapter_handoff_diagnostic_decision_commit",
+        "provider_adapter_handoff_diagnostic_authorization_receipt_reference",
+        "provider_adapter_handoff_diagnostic_authorization_receipt_sha256",
+        "provider_adapter_handoff_diagnostic_authorization_receipt_commit",
+        "provider_adapter_handoff_diagnostic_validation_result_reference",
+        "provider_adapter_handoff_diagnostic_validation_result_sha256",
+        "provider_adapter_handoff_diagnostic_execution_receipt_reference",
+        "provider_adapter_handoff_diagnostic_execution_receipt_sha256",
+        "provider_adapter_handoff_diagnostic_report_reference",
+        "provider_adapter_handoff_diagnostic_report_sha256",
+        "provider_adapter_handoff_diagnostic_result_commit",
         "provider_adapter_handoff_diagnostic_decision_recorded",
+        "provider_adapter_handoff_diagnostic_execution_was_authorized",
         "provider_adapter_handoff_diagnostic_execution_authorized",
+        "provider_adapter_handoff_diagnostic_executed",
+        "provider_adapter_handoff_diagnostic_input_hashes_matched",
+        "provider_adapter_handoff_diagnostic_schemas_meta_valid",
+        "provider_adapter_handoff_diagnostic_frozen_instances_valid",
+        "provider_adapter_handoff_diagnostic_fixture_expectations_matched",
+        "provider_adapter_handoff_diagnostic_stdout_suppressed_sink_recovered",
+        "provider_adapter_handoff_contract_candidate_ready",
+        "provider_adapter_handoff_provider_review_rerun_ready",
+        "provider_adapter_handoff_contract_adopted",
         "provider_adapter_handoff_diagnostic_implementation_created",
+        "provider_adapter_handoff_bound_review_decision_candidate_id",
+        "provider_adapter_handoff_bound_review_recommendation_reference",
+        "provider_adapter_handoff_bound_review_recommendation_sha256",
+        "provider_adapter_handoff_bound_review_recommendation_commit",
+        "provider_adapter_handoff_bound_review_exact_action",
+        "provider_adapter_handoff_bound_review_sessions_max",
+        "provider_adapter_handoff_bound_review_total_network_requests_max",
+        "provider_adapter_handoff_bound_review_decision_recorded",
+        "provider_adapter_handoff_bound_review_execution_authorized",
+        "provider_adapter_handoff_bound_review_live_model_requests_executed",
+        "provider_adapter_handoff_bound_review_contract_candidates_adopted",
+        "provider_adapter_handoff_bound_review_implementation_created",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -2436,7 +2551,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE27_OFFLINE_HANDOFF_DIAGNOSTIC_RECOMMENDATION_PREPARED_DECISION_READY"
+          "const": "PRE28_HANDOFF_BOUND_REVIEW_RECOMMENDATION_PREPARED_DECISION_READY"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -3828,12 +3943,117 @@
           "const": 0
         },
         "provider_adapter_handoff_diagnostic_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "provider_adapter_handoff_diagnostic_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-DECISION-RECORD.v0.1.json"
+        },
+        "provider_adapter_handoff_diagnostic_decision_sha256": {
+          "const": "b5fd51ac124c14d06840aa3acbb3047b66bfb230b506b822dbd2c23e9ffd1b09"
+        },
+        "provider_adapter_handoff_diagnostic_decision_commit": {
+          "const": "706ca0171255e2e4af1a62f285c4a9b9a933b42b"
+        },
+        "provider_adapter_handoff_diagnostic_authorization_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/sanitized-result-handoff-diagnostic-authorization-receipt.v0.1.json"
+        },
+        "provider_adapter_handoff_diagnostic_authorization_receipt_sha256": {
+          "const": "3c82c7a7fc9ff83d49e389f6d879de2a137eab2e8499627daea2eb7552e8b2ef"
+        },
+        "provider_adapter_handoff_diagnostic_authorization_receipt_commit": {
+          "const": "fa871947ce0aed24899c509dd4d8070e457ff9a9"
+        },
+        "provider_adapter_handoff_diagnostic_validation_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/sanitized-result-handoff-diagnostic-validation-result.v0.1.json"
+        },
+        "provider_adapter_handoff_diagnostic_validation_result_sha256": {
+          "const": "f9d8b98dd6eef26e4069ee31f0114f0fee3a996587cfcd84ed7a24affa9ec871"
+        },
+        "provider_adapter_handoff_diagnostic_execution_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/sanitized-result-handoff-diagnostic-execution-receipt.v0.1.json"
+        },
+        "provider_adapter_handoff_diagnostic_execution_receipt_sha256": {
+          "const": "3fb5e3e23a733b2c2d88a9528fb0493a7c8f6bdd20ff3875062b49f35c8a33aa"
+        },
+        "provider_adapter_handoff_diagnostic_report_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/PRE-27-SANITIZED-RESULT-HANDOFF-DIAGNOSTIC-RESULT-v0.1.md"
+        },
+        "provider_adapter_handoff_diagnostic_report_sha256": {
+          "const": "774701b6302ef95b4b5365d5f4a8f89f024e39302a40c3cfd7df12bc518c8861"
+        },
+        "provider_adapter_handoff_diagnostic_result_commit": {
+          "const": "8fb09feb449778e00db8fc0d16767e730516de50"
+        },
+        "provider_adapter_handoff_diagnostic_execution_was_authorized": {
+          "const": true
         },
         "provider_adapter_handoff_diagnostic_execution_authorized": {
           "const": false
         },
+        "provider_adapter_handoff_diagnostic_executed": {
+          "const": true
+        },
+        "provider_adapter_handoff_diagnostic_input_hashes_matched": {
+          "const": 16
+        },
+        "provider_adapter_handoff_diagnostic_schemas_meta_valid": {
+          "const": 7
+        },
+        "provider_adapter_handoff_diagnostic_frozen_instances_valid": {
+          "const": 5
+        },
+        "provider_adapter_handoff_diagnostic_fixture_expectations_matched": {
+          "const": 11
+        },
+        "provider_adapter_handoff_diagnostic_stdout_suppressed_sink_recovered": {
+          "const": true
+        },
+        "provider_adapter_handoff_contract_candidate_ready": {
+          "const": true
+        },
+        "provider_adapter_handoff_provider_review_rerun_ready": {
+          "const": false
+        },
+        "provider_adapter_handoff_contract_adopted": {
+          "const": false
+        },
         "provider_adapter_handoff_diagnostic_implementation_created": {
+          "const": false
+        },
+        "provider_adapter_handoff_bound_review_decision_candidate_id": {
+          "const": "CS-D02-PRE-28"
+        },
+        "provider_adapter_handoff_bound_review_recommendation_reference": {
+          "const": "TITMAS-CS-D02-PRE-28-HANDOFF-BOUND-CONTRACT-CANDIDATE-REVIEW-RECOMMENDATION-v0.1.md"
+        },
+        "provider_adapter_handoff_bound_review_recommendation_sha256": {
+          "const": "387bb1a7398971030c65acccfe62df4c23194a05af5a1f65f484308f8ee768d1"
+        },
+        "provider_adapter_handoff_bound_review_recommendation_commit": {
+          "const": "b7b9b62b0d5c3635f033c4bc449011c29b29984d"
+        },
+        "provider_adapter_handoff_bound_review_exact_action": {
+          "const": "AUTHORIZE_EXACT_TWO_SESSION_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_WITH_SANITIZED_SINK_HANDOFF_ONLY"
+        },
+        "provider_adapter_handoff_bound_review_sessions_max": {
+          "const": 2
+        },
+        "provider_adapter_handoff_bound_review_total_network_requests_max": {
+          "const": 2
+        },
+        "provider_adapter_handoff_bound_review_decision_recorded": {
+          "const": false
+        },
+        "provider_adapter_handoff_bound_review_execution_authorized": {
+          "const": false
+        },
+        "provider_adapter_handoff_bound_review_live_model_requests_executed": {
+          "const": 0
+        },
+        "provider_adapter_handoff_bound_review_contract_candidates_adopted": {
+          "const": false
+        },
+        "provider_adapter_handoff_bound_review_implementation_created": {
           "const": false
         },
         "composite_gate_reuses_frozen_pre14_deepseek": {
@@ -3852,7 +4072,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE27_OFFLINE_HANDOFF_DIAGNOSTIC_DECISION_ONLY"
+          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE28_HANDOFF_BOUND_TWO_SESSION_REVIEW_DECISION_ONLY"
         },
         "decision_ready": {
           "const": true
