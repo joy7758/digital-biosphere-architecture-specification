@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-09-public-first-party-desk-research-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-09 Public First-party Desk Research Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "parent_decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "method_adoption_decision_reference",
+    "method_adoption_record_reference",
+    "execution_plan_reference",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by_ref",
+    "primary_repository",
+    "roles",
+    "authorized_limits",
+    "frozen_artifacts",
+    "maximum_positive_effect",
+    "execution_state",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./architecture/schemas/titmas-cs-d02-pre-09-public-first-party-desk-research-decision-record.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-09-PUBLIC-FIRST-PARTY-DESK-RESEARCH-DECISION-RECORD-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"enum": ["DECIDED_AUTHORIZED_NOT_EXECUTED", "DECIDED_EXECUTED_WITHIN_BOUNDED_SCOPE", "DECIDED_EXECUTION_FAILED_CLOSED"]},
+    "decision_id": {"const": "CS-D02-PRE-09"},
+    "parent_decision_id": {"const": "CS-D02"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {"const": "TITMAS-CS-D02-PUBLIC-FIRST-PARTY-DESK-RESEARCH-RECOMMENDATION-v0.1.md"},
+    "method_adoption_decision_reference": {"const": "TITMAS-CS-D02-PRE-08-PUBLIC-FIRST-PARTY-METHOD-ADOPTION-DECISION-RECORD.v0.1.json"},
+    "method_adoption_record_reference": {"const": "architecture/veap-public-first-party-problem-report-method-adoption.v0.2.json"},
+    "execution_plan_reference": {"const": "commercialization-standards-public-source-problem-validation/desk-research-execution-plan.v0.1.json"},
+    "decision_result": {"const": "AUTHORIZE_ONE_BOUNDED_PUBLIC_DESK_RESEARCH_RUN"},
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by_ref": {"const": "codex"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "roles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision_owner_ref", "data_steward_ref", "incident_owner_ref", "appeal_owner_ref", "counting_owner_ref", "execution_recorder_ref"],
+      "properties": {
+        "decision_owner_ref": {"const": "zhangbin"},
+        "data_steward_ref": {"const": "zhangbin"},
+        "incident_owner_ref": {"const": "zhangbin"},
+        "appeal_owner_ref": {"const": "zhangbin"},
+        "counting_owner_ref": {"const": "zhangbin"},
+        "execution_recorder_ref": {"const": "codex"}
+      }
+    },
+    "authorized_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["runs_max", "queries_max", "public_pages_opened_max", "candidate_records_max", "source_time_window_start", "source_time_window_end", "quoted_words_per_source_max", "temporary_excerpt_retention_max_days", "anonymous_public_read_only", "raw_source_content_storage_allowed", "direct_personal_identifier_storage_allowed"],
+      "properties": {
+        "runs_max": {"const": 1},
+        "queries_max": {"const": 8},
+        "public_pages_opened_max": {"const": 12},
+        "candidate_records_max": {"const": 4},
+        "source_time_window_start": {"const": "2025-01-01T00:00:00Z"},
+        "source_time_window_end": {"const": "2026-07-26T23:59:59Z"},
+        "quoted_words_per_source_max": {"const": 25},
+        "temporary_excerpt_retention_max_days": {"const": 0},
+        "anonymous_public_read_only": {"const": true},
+        "raw_source_content_storage_allowed": {"const": false},
+        "direct_personal_identifier_storage_allowed": {"const": false}
+      }
+    },
+    "frozen_artifacts": {
+      "const": [
+        {
+          "reference": "commercialization-standards-public-source-problem-validation/desk-research-execution-plan.v0.1.json",
+          "sha256": "c2b749675f2f4d2330e57bf60518f83b6810db2bdb6b8f996662d6e69703a8be"
+        },
+        {
+          "reference": "commercialization-standards-public-source-problem-validation/desk-research-execution-plan.schema.v0.1.json",
+          "sha256": "e3e84de35b0ce25117c60c5fe651fd0ab64d88373e871fa493e26d9d4776aefa"
+        },
+        {
+          "reference": "commercialization-standards-public-source-problem-validation/public-first-party-problem-candidate.schema.v0.1.json",
+          "sha256": "546fff6092b867300e1360335d955cb4e2a0e00f85f54e4c8fd697b691c90742"
+        },
+        {
+          "reference": "commercialization-standards-public-source-problem-validation/source-candidate-set.schema.v0.1.json",
+          "sha256": "a958f9bdfae8a98a881b3832d82b9c95abff100c82d56cd0b972e8b6ce06ec19"
+        }
+      ]
+    },
+    "maximum_positive_effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["public_desk_research_execution_authorized", "public_source_search_authorized", "minimal_public_metadata_collection_authorized", "public_source_candidate_creation_authorized", "public_source_candidate_records_max", "public_source_record_counting_authorized", "valid_problem_records", "cs_g0_pass"],
+      "properties": {
+        "public_desk_research_execution_authorized": {"const": true},
+        "public_source_search_authorized": {"const": true},
+        "minimal_public_metadata_collection_authorized": {"const": true},
+        "public_source_candidate_creation_authorized": {"const": true},
+        "public_source_candidate_records_max": {"const": 4},
+        "public_source_record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false}
+      }
+    },
+    "execution_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorization_baseline_committed", "authorization_baseline_pushed", "execution_started", "execution_completed"],
+      "properties": {
+        "authorization_baseline_committed": {"type": "boolean"},
+        "authorization_baseline_pushed": {"type": "boolean"},
+        "execution_started": {"type": "boolean"},
+        "execution_completed": {"type": "boolean"}
+      }
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authority_changed", "ownership_changed", "full_cs_d02_execution_authorized", "public_source_record_counting_authorized", "external_outreach_authorized", "participant_enrollment_authorized", "private_or_customer_data_authorized", "implementation_authorized", "commercial_offer_authorized", "certification_authorized", "release_authorized", "customer_adoption", "agent_created", "runtime_created", "entity_created", "permission_granted", "canonical_evidence_created"],
+      "properties": {
+        "authority_changed": {"const": false},
+        "ownership_changed": {"const": false},
+        "full_cs_d02_execution_authorized": {"const": false},
+        "public_source_record_counting_authorized": {"const": false},
+        "external_outreach_authorized": {"const": false},
+        "participant_enrollment_authorized": {"const": false},
+        "private_or_customer_data_authorized": {"const": false},
+        "implementation_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false},
+        "customer_adoption": {"const": false},
+        "agent_created": {"const": false},
+        "runtime_created": {"const": false},
+        "entity_created": {"const": false},
+        "permission_granted": {"const": false},
+        "canonical_evidence_created": {"const": false}
+      }
+    }
+  }
+}

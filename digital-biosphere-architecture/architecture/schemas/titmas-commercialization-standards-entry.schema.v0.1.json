@@ -25,6 +25,7 @@
     "public_first_party_method_review",
     "public_first_party_method_revision_review",
     "public_first_party_method_adoption",
+    "public_first_party_desk_research_authorization",
     "human_decision",
     "standing_directive",
     "predecision_evidence",
@@ -46,7 +47,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_08_METHOD_ADOPTED_EXECUTION_NOT_AUTHORIZED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_09_PUBLIC_DESK_RESEARCH_AUTHORIZED_NOT_EXECUTED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -653,6 +654,50 @@
         "cs_g0_effect": {"const": false}
       }
     },
+    "public_first_party_desk_research_authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "decision_result",
+        "decision_record_reference",
+        "recommendation_reference",
+        "execution_plan_reference",
+        "queries_max",
+        "public_pages_opened_max",
+        "candidate_records_max",
+        "minimal_public_metadata_collection_authorized",
+        "public_source_search_authorized",
+        "public_source_candidate_creation_authorized",
+        "authorization_baseline_committed",
+        "authorization_baseline_pushed",
+        "execution_started",
+        "execution_completed",
+        "public_source_record_counting_authorized",
+        "valid_problem_records_created",
+        "cs_g0_effect"
+      ],
+      "properties": {
+        "decision_id": {"const": "CS-D02-PRE-09"},
+        "decision_result": {"const": "AUTHORIZE_ONE_BOUNDED_PUBLIC_DESK_RESEARCH_RUN"},
+        "decision_record_reference": {"const": "TITMAS-CS-D02-PRE-09-PUBLIC-FIRST-PARTY-DESK-RESEARCH-DECISION-RECORD.v0.1.json"},
+        "recommendation_reference": {"const": "TITMAS-CS-D02-PUBLIC-FIRST-PARTY-DESK-RESEARCH-RECOMMENDATION-v0.1.md"},
+        "execution_plan_reference": {"const": "commercialization-standards-public-source-problem-validation/desk-research-execution-plan.v0.1.json"},
+        "queries_max": {"const": 8},
+        "public_pages_opened_max": {"const": 12},
+        "candidate_records_max": {"const": 4},
+        "minimal_public_metadata_collection_authorized": {"const": true},
+        "public_source_search_authorized": {"const": true},
+        "public_source_candidate_creation_authorized": {"const": true},
+        "authorization_baseline_committed": {"type": "boolean"},
+        "authorization_baseline_pushed": {"type": "boolean"},
+        "execution_started": {"const": false},
+        "execution_completed": {"const": false},
+        "public_source_record_counting_authorized": {"const": false},
+        "valid_problem_records_created": {"const": 0},
+        "cs_g0_effect": {"const": false}
+      }
+    },
     "human_decision": {
       "type": "object",
       "additionalProperties": false,
@@ -952,7 +997,10 @@
         "public_first_party_method_delta_review_complete",
         "public_first_party_method_adoption_review_ready",
         "public_first_party_method_adopted",
+        "public_source_search_authorized",
         "public_source_collection_authorized",
+        "public_source_candidate_creation_authorized",
+        "public_source_desk_research_executed",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1001,7 +1049,16 @@
         "public_first_party_method_adopted": {
           "const": true
         },
+        "public_source_search_authorized": {
+          "const": true
+        },
         "public_source_collection_authorized": {
+          "const": true
+        },
+        "public_source_candidate_creation_authorized": {
+          "const": true
+        },
+        "public_source_desk_research_executed": {
           "const": false
         },
         "public_source_record_counting_authorized": {
@@ -1133,7 +1190,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "METHOD_V0_2_ADOPTED_EXECUTION_DECISION_NOT_RECORDED"
+          "const": "METHOD_V0_2_ADOPTED_PRE09_AUTHORIZED_NOT_EXECUTED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -1199,7 +1256,7 @@
           "const": true
         },
         "public_source_execution_authorized": {
-          "const": false
+          "const": true
         },
         "current_recommended_option": {
           "const": "C"

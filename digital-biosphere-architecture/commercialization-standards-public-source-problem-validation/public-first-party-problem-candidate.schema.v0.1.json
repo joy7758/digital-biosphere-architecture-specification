@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/public-first-party-problem-candidate.schema.v0.1.json",
+  "title": "TITMAS Public First-party Problem Candidate v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "candidate_id",
+    "candidate_status",
+    "source_class",
+    "canonical_public_source_ref",
+    "source_publisher_ref",
+    "accountable_source_role",
+    "accountable_role_verification",
+    "published_or_updated_at",
+    "observed_at",
+    "recent_example",
+    "problem_area",
+    "problem_summary",
+    "current_workaround",
+    "workaround_limitations",
+    "measurable_cost_or_risk",
+    "priority_basis",
+    "existing_alternatives",
+    "source_integrity",
+    "relationship_classification",
+    "independence_basis",
+    "source_context_key",
+    "report_lineage",
+    "retention_disposition",
+    "reviewer_refs",
+    "known_limitations",
+    "quoted_word_count",
+    "raw_content_stored",
+    "direct_personal_identifiers_stored",
+    "metadata_sha256",
+    "counting_effect"
+  ],
+  "properties": {
+    "candidate_id": {"type": "string", "pattern": "^PFPC-[0-9]{3}$"},
+    "candidate_status": {"enum": ["CANDIDATE_UNREVIEWED", "PARTIAL", "INVALID", "CONFLICTED", "INVALID_AUTHORIZATION_ENVELOPE"]},
+    "source_class": {"enum": ["OFFICIAL_MAINTAINER_ISSUE", "OFFICIAL_INCIDENT_REPORT", "OFFICIAL_PROJECT_POSTMORTEM", "ACCOUNTABLE_ORGANIZATION_TECHNICAL_REPORT"]},
+    "canonical_public_source_ref": {"type": "string", "format": "uri", "pattern": "^https://"},
+    "source_publisher_ref": {"type": "string", "minLength": 3},
+    "accountable_source_role": {"type": "string", "minLength": 3},
+    "accountable_role_verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "publisher_controlled_role_reference", "source_to_system_responsibility_binding", "reviewer_ref", "known_conflicts"],
+      "properties": {
+        "status": {"enum": ["VERIFIED_FOR_CANDIDATE_REVIEW", "PARTIAL", "CONFLICTED", "UNKNOWN"]},
+        "publisher_controlled_role_reference": {"type": "string", "minLength": 3},
+        "source_to_system_responsibility_binding": {"type": "string", "minLength": 3},
+        "reviewer_ref": {"const": "codex"},
+        "known_conflicts": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    },
+    "published_or_updated_at": {"oneOf": [{"type": "string", "format": "date-time"}, {"const": "UNKNOWN"}]},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "recent_example": {"oneOf": [{"type": "boolean"}, {"const": "UNKNOWN"}]},
+    "problem_area": {"enum": ["AGENT_EXECUTION_ACCOUNTABILITY", "EXECUTION_EVIDENCE", "LONG_TERM_RELIABILITY", "MULTI_AGENT_COORDINATION", "TRACE_OR_PROVENANCE_GAP", "OTHER"]},
+    "problem_summary": {"type": "string", "minLength": 10, "maxLength": 800},
+    "current_workaround": {"type": "string", "minLength": 3, "maxLength": 600},
+    "workaround_limitations": {"type": "string", "minLength": 3, "maxLength": 600},
+    "measurable_cost_or_risk": {"type": "string", "minLength": 3, "maxLength": 600},
+    "priority_basis": {"type": "string", "minLength": 3, "maxLength": 600},
+    "existing_alternatives": {"type": "array", "items": {"type": "string", "minLength": 2}, "uniqueItems": true},
+    "source_integrity": {"enum": ["PUBLIC_SOURCE_OBSERVED", "PARTIAL", "CONFLICTED", "UNVERIFIABLE"]},
+    "relationship_classification": {"enum": ["SAME_CONTROL_OR_ORGANIZATION", "PARENT_CHILD_CONTROL", "CONSORTIUM_OR_SHARED_GOVERNANCE", "RELATED_BUT_OPERATIONALLY_DISTINCT", "INDEPENDENT_ORGANIZATION", "UNKNOWN_RELATIONSHIP"]},
+    "independence_basis": {"type": "string", "minLength": 3, "maxLength": 500},
+    "source_context_key": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["controlling_organization_or_governance", "governed_project_system_or_workflow", "incident_event_or_problem_root", "declared_time_window"],
+      "properties": {
+        "controlling_organization_or_governance": {"type": "string", "minLength": 2},
+        "governed_project_system_or_workflow": {"type": "string", "minLength": 2},
+        "incident_event_or_problem_root": {"type": "string", "minLength": 2},
+        "declared_time_window": {"type": "string", "minLength": 2}
+      }
+    },
+    "report_lineage": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "retention_disposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["raw_content_stored", "temporary_excerpt_deleted", "deletion_tombstone", "minimal_metadata_retained"],
+      "properties": {
+        "raw_content_stored": {"const": false},
+        "temporary_excerpt_deleted": {"const": true},
+        "deletion_tombstone": {"type": "string", "minLength": 10},
+        "minimal_metadata_retained": {"const": true}
+      }
+    },
+    "reviewer_refs": {"const": ["codex"]},
+    "known_limitations": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "quoted_word_count": {"type": "integer", "minimum": 0, "maximum": 25},
+    "raw_content_stored": {"const": false},
+    "direct_personal_identifiers_stored": {"const": false},
+    "metadata_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "counting_effect": {"const": false}
+  }
+}
