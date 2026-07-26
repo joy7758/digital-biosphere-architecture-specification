@@ -1,0 +1,72 @@
+{
+  "$schema": "./execution-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-18-EXECUTION-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-18",
+  "decision_record_reference": "../TITMAS-CS-D02-PRE-18-PROVIDER-ADAPTER-CONFORMANCE-PROFILE-DECISION-RECORD.v0.1.json",
+  "frozen_artifacts": {
+    "recommendation_reference": "../TITMAS-CS-D02-PRE-18-PROVIDER-ADAPTER-CONFORMANCE-PROFILE-RECOMMENDATION-v0.1.md",
+    "recommendation_sha256": "9ea9aabc241d067b47ab9ecbc243a78ab5af956ee293d6e3458d29651f7660d5",
+    "pre17_crosswalk_reference": "../commercialization-standards-qianfan-extraction-contract-review/transport-semantic-crosswalk.v0.1.json",
+    "pre17_crosswalk_sha256": "5a73332191c1a12e293bf64ca42bf2cb5e4d28fb6eff318f6af2ca487fde750a",
+    "pre17_extraction_contract_reference": "../commercialization-standards-qianfan-extraction-contract-review/extraction-contract-candidate.v0.2.json",
+    "pre17_extraction_contract_sha256": "6cffcecc3158ec462be1c0be69a4ed861ad05445782fef5f78a8107f32f27cef",
+    "pre17_shape_descriptor_reference": "../commercialization-standards-qianfan-extraction-contract-review/shape-descriptor-contract.v0.1.json",
+    "pre17_shape_descriptor_sha256": "ace5622502ab29f6f1635f2d2b1968706efa29f8cfdf060224ab76e5dcc138eb",
+    "pre17_offline_result_reference": "../commercialization-standards-qianfan-extraction-contract-review/offline-validation-result.v0.1.json",
+    "pre17_offline_result_sha256": "c0b5af2790430e5bc537c7dd25608f76165a8135672f7b90d73b3b6cabcb5eb5",
+    "pre17_execution_receipt_reference": "../commercialization-standards-qianfan-extraction-contract-review/execution-receipt.v0.1.json",
+    "pre17_execution_receipt_sha256": "284cd1881e1167520930465e3673de9060558b70164395b2f4ab4f18140c7ae4"
+  },
+  "required_outputs": [
+    "architecture/provider-adapter-conformance-profile-v0.1.md",
+    "architecture/provider-adapter-conformance-profile.v0.1.json",
+    "architecture/schemas/provider-adapter-conformance-profile.schema.v0.1.json",
+    "architecture/schemas/provider-adapter-request-descriptor.schema.v0.1.json",
+    "architecture/schemas/provider-adapter-result-descriptor.schema.v0.1.json",
+    "architecture/provider-adapter-failure-taxonomy.v0.1.json",
+    "architecture/schemas/provider-adapter-failure-taxonomy.schema.v0.1.json",
+    "architecture/provider-adapter-conformance-cases.v0.1.json",
+    "architecture/schemas/provider-adapter-conformance-cases.schema.v0.1.json",
+    "schema-rehearsal-result.v0.1.json",
+    "PRE-18-PROVIDER-ADAPTER-CONFORMANCE-PROFILE-RESULT-v0.1.md",
+    "execution-receipt.v0.1.json"
+  ],
+  "minimum_case_count": 16,
+  "controls": {
+    "profile_provider_neutral_required": true,
+    "all_case_status_not_executed_required": true,
+    "live_model_requests_max": 0,
+    "provider_network_requests_max": 0,
+    "adapter_implementation_allowed": false,
+    "conformance_execution_allowed": false,
+    "profile_adoption_allowed": false,
+    "provider_adoption_allowed": false,
+    "raw_provider_body_access_allowed": false,
+    "secret_access_allowed": false,
+    "automatic_valid_status_or_counting_allowed": false
+  },
+  "execution_gate": {
+    "authorization_baseline_committed": false,
+    "authorization_baseline_pushed": false,
+    "authorization_baseline_remote_verified": false,
+    "execution_started": false
+  },
+  "non_effects": {
+    "profile_candidate_created": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_cases_executed": 0,
+    "provider_adoption": false,
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

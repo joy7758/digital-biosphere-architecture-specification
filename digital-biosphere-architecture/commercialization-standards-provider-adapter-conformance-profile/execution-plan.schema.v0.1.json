@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre18-execution-plan.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-18 Execution Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_reference",
+    "decision_record_reference",
+    "frozen_artifacts",
+    "required_outputs",
+    "minimum_case_count",
+    "controls",
+    "execution_gate",
+    "non_effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./execution-plan.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-18-EXECUTION-PLAN-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED"},
+    "observed_on": {"const": "2026-07-26"},
+    "decision_reference": {"const": "CS-D02-PRE-18"},
+    "decision_record_reference": {"const": "../TITMAS-CS-D02-PRE-18-PROVIDER-ADAPTER-CONFORMANCE-PROFILE-DECISION-RECORD.v0.1.json"},
+    "frozen_artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_reference",
+        "recommendation_sha256",
+        "pre17_crosswalk_reference",
+        "pre17_crosswalk_sha256",
+        "pre17_extraction_contract_reference",
+        "pre17_extraction_contract_sha256",
+        "pre17_shape_descriptor_reference",
+        "pre17_shape_descriptor_sha256",
+        "pre17_offline_result_reference",
+        "pre17_offline_result_sha256",
+        "pre17_execution_receipt_reference",
+        "pre17_execution_receipt_sha256"
+      ],
+      "properties": {
+        "recommendation_reference": {"const": "../TITMAS-CS-D02-PRE-18-PROVIDER-ADAPTER-CONFORMANCE-PROFILE-RECOMMENDATION-v0.1.md"},
+        "recommendation_sha256": {"const": "9ea9aabc241d067b47ab9ecbc243a78ab5af956ee293d6e3458d29651f7660d5"},
+        "pre17_crosswalk_reference": {"const": "../commercialization-standards-qianfan-extraction-contract-review/transport-semantic-crosswalk.v0.1.json"},
+        "pre17_crosswalk_sha256": {"const": "5a73332191c1a12e293bf64ca42bf2cb5e4d28fb6eff318f6af2ca487fde750a"},
+        "pre17_extraction_contract_reference": {"const": "../commercialization-standards-qianfan-extraction-contract-review/extraction-contract-candidate.v0.2.json"},
+        "pre17_extraction_contract_sha256": {"const": "6cffcecc3158ec462be1c0be69a4ed861ad05445782fef5f78a8107f32f27cef"},
+        "pre17_shape_descriptor_reference": {"const": "../commercialization-standards-qianfan-extraction-contract-review/shape-descriptor-contract.v0.1.json"},
+        "pre17_shape_descriptor_sha256": {"const": "ace5622502ab29f6f1635f2d2b1968706efa29f8cfdf060224ab76e5dcc138eb"},
+        "pre17_offline_result_reference": {"const": "../commercialization-standards-qianfan-extraction-contract-review/offline-validation-result.v0.1.json"},
+        "pre17_offline_result_sha256": {"const": "c0b5af2790430e5bc537c7dd25608f76165a8135672f7b90d73b3b6cabcb5eb5"},
+        "pre17_execution_receipt_reference": {"const": "../commercialization-standards-qianfan-extraction-contract-review/execution-receipt.v0.1.json"},
+        "pre17_execution_receipt_sha256": {"const": "284cd1881e1167520930465e3673de9060558b70164395b2f4ab4f18140c7ae4"}
+      }
+    },
+    "required_outputs": {
+      "type": "array",
+      "minItems": 12,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 5}
+    },
+    "minimum_case_count": {"const": 16},
+    "controls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_provider_neutral_required",
+        "all_case_status_not_executed_required",
+        "live_model_requests_max",
+        "provider_network_requests_max",
+        "adapter_implementation_allowed",
+        "conformance_execution_allowed",
+        "profile_adoption_allowed",
+        "provider_adoption_allowed",
+        "raw_provider_body_access_allowed",
+        "secret_access_allowed",
+        "automatic_valid_status_or_counting_allowed"
+      ],
+      "properties": {
+        "profile_provider_neutral_required": {"const": true},
+        "all_case_status_not_executed_required": {"const": true},
+        "live_model_requests_max": {"const": 0},
+        "provider_network_requests_max": {"const": 0},
+        "adapter_implementation_allowed": {"const": false},
+        "conformance_execution_allowed": {"const": false},
+        "profile_adoption_allowed": {"const": false},
+        "provider_adoption_allowed": {"const": false},
+        "raw_provider_body_access_allowed": {"const": false},
+        "secret_access_allowed": {"const": false},
+        "automatic_valid_status_or_counting_allowed": {"const": false}
+      }
+    },
+    "execution_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorization_baseline_committed",
+        "authorization_baseline_pushed",
+        "authorization_baseline_remote_verified",
+        "execution_started"
+      ],
+      "properties": {
+        "authorization_baseline_committed": {"const": false},
+        "authorization_baseline_pushed": {"const": false},
+        "authorization_baseline_remote_verified": {"const": false},
+        "execution_started": {"const": false}
+      }
+    },
+    "non_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_candidate_created",
+        "profile_adopted",
+        "adapter_implementation_created",
+        "conformance_cases_executed",
+        "provider_adoption",
+        "candidate_review_completed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "implementation_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "profile_candidate_created": {"const": false},
+        "profile_adopted": {"const": false},
+        "adapter_implementation_created": {"const": false},
+        "conformance_cases_executed": {"const": 0},
+        "provider_adoption": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

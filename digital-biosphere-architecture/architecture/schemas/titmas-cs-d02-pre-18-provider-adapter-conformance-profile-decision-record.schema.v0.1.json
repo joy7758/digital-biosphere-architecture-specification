@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre-18-provider-adapter-conformance-profile-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-18 Provider Adapter Conformance Profile Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_on",
+    "decision_id",
+    "decision_result",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_remote_commit",
+    "decided_by_ref",
+    "executed_by_ref",
+    "primary_repository",
+    "execution_plan_reference",
+    "scope",
+    "preconditions",
+    "execution_gate",
+    "effects",
+    "stop_conditions"
+  ],
+  "properties": {
+    "$schema": {"const": "./architecture/schemas/titmas-cs-d02-pre-18-provider-adapter-conformance-profile-decision-record.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-18-PROVIDER-ADAPTER-CONFORMANCE-PROFILE-DECISION-RECORD-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DECIDED_PROFILE_CANDIDATE_AUTHORIZED_NOT_EXECUTED"},
+    "observed_on": {"const": "2026-07-26"},
+    "decision_id": {"const": "CS-D02-PRE-18"},
+    "decision_result": {"const": "AUTHORIZE_PROVIDER_NEUTRAL_AGENT_REVIEW_ADAPTER_CONFORMANCE_PROFILE_CANDIDATE_ONLY"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {"const": "TITMAS-CS-D02-PRE-18-PROVIDER-ADAPTER-CONFORMANCE-PROFILE-RECOMMENDATION-v0.1.md"},
+    "recommendation_sha256": {"const": "9ea9aabc241d067b47ab9ecbc243a78ab5af956ee293d6e3458d29651f7660d5"},
+    "recommendation_remote_commit": {"const": "f8410aa2a655cea9484be10e391e17ad1695edc4"},
+    "decided_by_ref": {"const": "zhangbin"},
+    "executed_by_ref": {"const": "codex"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "execution_plan_reference": {"const": "commercialization-standards-provider-adapter-conformance-profile/execution-plan.v0.1.json"},
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_candidate_authorized",
+        "normalized_descriptor_schemas_authorized",
+        "failure_taxonomy_authorized",
+        "conformance_case_catalog_authorized",
+        "offline_schema_rehearsal_authorized",
+        "live_model_requests_max",
+        "provider_network_requests_max",
+        "adapter_implementation_authorized",
+        "conformance_execution_authorized",
+        "profile_adoption_authorized"
+      ],
+      "properties": {
+        "profile_candidate_authorized": {"const": true},
+        "normalized_descriptor_schemas_authorized": {"const": true},
+        "failure_taxonomy_authorized": {"const": true},
+        "conformance_case_catalog_authorized": {"const": true},
+        "offline_schema_rehearsal_authorized": {"const": true},
+        "live_model_requests_max": {"const": 0},
+        "provider_network_requests_max": {"const": 0},
+        "adapter_implementation_authorized": {"const": false},
+        "conformance_execution_authorized": {"const": false},
+        "profile_adoption_authorized": {"const": false}
+      }
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_remote_verified",
+        "pre17_offline_static_review_pass",
+        "pre17_provider_runtime_validation_pass",
+        "pre17_frozen_artifacts_bound",
+        "standing_directive_applicable",
+        "authorization_baseline_push_required_before_execution",
+        "later_conflicting_decision_found"
+      ],
+      "properties": {
+        "recommendation_remote_verified": {"const": true},
+        "pre17_offline_static_review_pass": {"const": true},
+        "pre17_provider_runtime_validation_pass": {"const": false},
+        "pre17_frozen_artifacts_bound": {"const": true},
+        "standing_directive_applicable": {"const": true},
+        "authorization_baseline_push_required_before_execution": {"const": true},
+        "later_conflicting_decision_found": {"const": false}
+      }
+    },
+    "execution_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorization_baseline_committed",
+        "authorization_baseline_pushed",
+        "authorization_baseline_remote_verified",
+        "execution_started"
+      ],
+      "properties": {
+        "authorization_baseline_committed": {"const": false},
+        "authorization_baseline_pushed": {"const": false},
+        "authorization_baseline_remote_verified": {"const": false},
+        "execution_started": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profile_candidate_created",
+        "profile_adopted",
+        "adapter_implementation_created",
+        "provider_adoption",
+        "candidate_review_completed",
+        "record_counting_authorized",
+        "valid_problem_records",
+        "cs_g0_pass",
+        "authority",
+        "implementation",
+        "runtime",
+        "agent_instance",
+        "entity",
+        "permission",
+        "external_outreach",
+        "commercial_offer",
+        "certification",
+        "release"
+      ],
+      "properties": {
+        "profile_candidate_created": {"const": false},
+        "profile_adopted": {"const": false},
+        "adapter_implementation_created": {"const": false},
+        "provider_adoption": {"const": false},
+        "candidate_review_completed": {"const": false},
+        "record_counting_authorized": {"const": false},
+        "valid_problem_records": {"const": 0},
+        "cs_g0_pass": {"const": false},
+        "authority": {"const": false},
+        "implementation": {"const": false},
+        "runtime": {"const": false},
+        "agent_instance": {"const": false},
+        "entity": {"const": false},
+        "permission": {"const": false},
+        "external_outreach": {"const": false},
+        "commercial_offer": {"const": false},
+        "certification": {"const": false},
+        "release": {"const": false}
+      }
+    },
+    "stop_conditions": {
+      "const": [
+        "AUTHORIZATION_BASELINE_NOT_REMOTE",
+        "PRE17_FROZEN_ARTIFACT_DIGEST_DRIFT",
+        "PROVIDER_SPECIFIC_NORMATIVE_FIELD_INTRODUCED",
+        "LIVE_REQUEST_IMPLEMENTATION_RAW_RESPONSE_OR_SECRET_ACCESS_ATTEMPTED",
+        "TRANSPORT_SCHEMA_RESULT_ELEVATED_TO_VALIDITY_COUNTING_MARKET_OR_COMMERCIAL_EFFECT",
+        "CONFORMANCE_CASE_STATUS_NOT_NOT_EXECUTED"
+      ]
+    }
+  }
+}
