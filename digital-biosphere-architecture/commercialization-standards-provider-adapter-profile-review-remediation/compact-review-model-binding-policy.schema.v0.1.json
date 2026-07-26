@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:compact-review-model-binding-policy:0.1",
+  "title": "TITMAS Compact Review Model Binding Policy v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "binding_states", "qualification_rule", "explicit_alias_requirements", "current_alias_records", "non_elevation"],
+  "properties": {
+    "$schema": {"const": "./compact-review-model-binding-policy.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-23-COMPACT-REVIEW-MODEL-BINDING-POLICY-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "CANDIDATE_OFFLINE_VALIDATION_NOT_ADOPTED"},
+    "decision_reference": {"const": "CS-D02-PRE-23"},
+    "binding_states": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["EXACT_MATCH", "EXPLICIT_ALIAS_MATCH", "MISMATCH", "UNKNOWN"],
+      "properties": {
+        "EXACT_MATCH": {"type": "string", "minLength": 20},
+        "EXPLICIT_ALIAS_MATCH": {"type": "string", "minLength": 40},
+        "MISMATCH": {"type": "string", "minLength": 20},
+        "UNKNOWN": {"type": "string", "minLength": 20}
+      }
+    },
+    "qualification_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["response_schema_pass_required", "allowed_binding_states", "content_pass_may_override_model_mismatch", "provider_alias_may_be_inferred"],
+      "properties": {
+        "response_schema_pass_required": {"const": true},
+        "allowed_binding_states": {"const": ["EXACT_MATCH", "EXPLICIT_ALIAS_MATCH"]},
+        "content_pass_may_override_model_mismatch": {"const": false},
+        "provider_alias_may_be_inferred": {"const": false}
+      }
+    },
+    "explicit_alias_requirements": {"const": ["EXACT_PROVIDER_SOURCE_REFERENCE", "PROVIDER_SOURCE_VERSION_OR_OBSERVED_AT", "REQUESTED_MODEL", "RETURNED_MODEL", "ALIAS_SCOPE", "INDEPENDENT_DECISION_REFERENCE"]},
+    "current_alias_records": {"const": []},
+    "non_elevation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["model_binding_proves_output_quality", "model_binding_proves_provider_support", "model_binding_proves_conformance", "model_binding_creates_certification", "model_binding_creates_truth"],
+      "properties": {
+        "model_binding_proves_output_quality": {"const": false},
+        "model_binding_proves_provider_support": {"const": false},
+        "model_binding_proves_conformance": {"const": false},
+        "model_binding_creates_certification": {"const": false},
+        "model_binding_creates_truth": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:compact-review-failure-diagnostic-fixtures:0.1",
+  "title": "TITMAS Compact Review Failure Diagnostic Fixtures v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "response_fixture_reference", "cases", "effects"],
+  "properties": {
+    "$schema": {"const": "./compact-review-failure-diagnostic-fixtures.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-23-COMPACT-REVIEW-FAILURE-DIAGNOSTIC-FIXTURES-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "SYNTHETIC_FIXTURES_DEFINED_NOT_PROVIDER_EVIDENCE"},
+    "decision_reference": {"const": "CS-D02-PRE-23"},
+    "response_fixture_reference": {"const": "compact-response-schema-fixtures.v0.1.json#/base_instances/ACCEPT"},
+    "cases": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "fixture_class", "subject", "input", "expected_state", "expected_source", "expected_qualifies"],
+        "properties": {
+          "case_id": {"type": "string", "pattern": "^PRE23-(EXT|MOD)-[0-9]{3}$"},
+          "fixture_class": {"type": "string", "minLength": 8},
+          "subject": {"enum": ["EXTRACTION", "MODEL_BINDING"]},
+          "input": {"type": "object"},
+          "expected_state": {"type": "string", "minLength": 7},
+          "expected_source": {
+            "oneOf": [
+              {"type": "null"},
+              {"type": "string", "minLength": 8}
+            ]
+          },
+          "expected_qualifies": {"type": "boolean"}
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["fixtures_executed", "live_model_requests_executed", "provider_network_requests_executed", "provider_success_created", "profile_review_completed", "profile_adopted"],
+      "properties": {
+        "fixtures_executed": {"const": 0},
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "provider_success_created": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false}
+      }
+    }
+  }
+}

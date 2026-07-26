@@ -1,0 +1,48 @@
+{
+  "$schema": "./offline-live-review-failure-diagnostic-execution-receipt.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTED_OFFLINE_DIAGNOSTIC_PASS_NO_NETWORK",
+  "observed_at": "2026-07-26T22:15:00+08:00",
+  "decision_reference": "CS-D02-PRE-23",
+  "authorization_baseline_commit": "0e2054c49b28598d083dbdf54ab13764321f539e",
+  "authorization_receipt_commit": "5cca426286a568966ff2076886dfa90b35994101",
+  "artifact_bindings": [
+    {"artifact": "offline-live-review-failure-diagnostic-authorization-receipt.v0.1.json", "sha256": "be035988296d95b93201bf43ef0cff3aa43209c6cda9727614fc36b8fc64f9f8"},
+    {"artifact": "compact-review-response-extraction-contract.v0.1.json", "sha256": "1ad48badb0767727fde354ca8ed3298261a2117813b8f41ad2f2cdf344286dc4"},
+    {"artifact": "compact-review-model-binding-policy.v0.1.json", "sha256": "75eb8462b7124fe246889ea600ec52dcc99946d5f16bcc848717d5e39fb4adb2"},
+    {"artifact": "compact-review-failure-diagnostic-fixtures.v0.1.json", "sha256": "2612c33f3dfe3291509e973e12cee37fd3441a8432b83c694573f2feafa78b00"},
+    {"artifact": "offline-live-review-failure-diagnostic-result.v0.1.json", "sha256": "df96ced84e6186208c668d8673dc9155537cbe61e87691af3eccdb41fb18d616"},
+    {"artifact": "offline-live-review-failure-diagnostic-result.schema.v0.1.json", "sha256": "bfb648b20389f860b395501db327ea43f72a2e3aa91b6f5673685d3ec13927f3"},
+    {"artifact": "PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-RESULT-v0.1.md", "sha256": "657269b9f67b48d11aa4c34d1683dbf261a4e85c165a124586c7bafd51a109f2"}
+  ],
+  "validation_summary": {
+    "input_hashes_matched": 9,
+    "fixture_expectations_matched": 15,
+    "fixture_expectations_total": 15,
+    "conflicting_answers_fail_closed": true,
+    "unadopted_alias_fails_closed": true,
+    "content_pass_does_not_override_model_mismatch": true,
+    "offline_failure_diagnostic_pass": true
+  },
+  "execution_accounting": {
+    "offline_validation_runs_completed": 1,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "effects": {
+    "pre22_result_changed": false,
+    "contract_candidates_adopted": false,
+    "implementation_created": false,
+    "live_rerun_ready": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "provider_supported": false,
+    "implementation_authorized": false,
+    "release_authorized": false
+  },
+  "next_permitted_action": "PREPARE_SEPARATE_PRE22_FAILURE_CONTRACT_ADOPTION_REVIEW_RECOMMENDATION_ONLY"
+}

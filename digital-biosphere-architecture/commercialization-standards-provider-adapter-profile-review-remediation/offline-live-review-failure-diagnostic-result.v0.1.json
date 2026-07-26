@@ -1,0 +1,83 @@
+{
+  "$schema": "./offline-live-review-failure-diagnostic-result.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-23-OFFLINE-LIVE-REVIEW-FAILURE-DIAGNOSTIC-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_DIAGNOSTIC_PASS_CONTRACT_CANDIDATES_NOT_ADOPTED",
+  "observed_at": "2026-07-26T22:12:00+08:00",
+  "decision_reference": "CS-D02-PRE-23",
+  "authorization_receipt_reference": "offline-live-review-failure-diagnostic-authorization-receipt.v0.1.json",
+  "artifact_bindings": [
+    {"artifact": "compact-review-response-extraction-contract.v0.1.json", "sha256": "1ad48badb0767727fde354ca8ed3298261a2117813b8f41ad2f2cdf344286dc4"},
+    {"artifact": "compact-review-response-extraction-contract.schema.v0.1.json", "sha256": "669dd135951ab16eced4794ca23332505df3a36e7bd2f482e4f981b6dc8ecce2"},
+    {"artifact": "compact-review-model-binding-policy.v0.1.json", "sha256": "75eb8462b7124fe246889ea600ec52dcc99946d5f16bcc848717d5e39fb4adb2"},
+    {"artifact": "compact-review-model-binding-policy.schema.v0.1.json", "sha256": "77430ba7d53a6b8162000886dff44ec6c679d34e59cd8ea2dbe15d529f225378"},
+    {"artifact": "compact-review-failure-diagnostic-fixtures.v0.1.json", "sha256": "2612c33f3dfe3291509e973e12cee37fd3441a8432b83c694573f2feafa78b00"},
+    {"artifact": "compact-review-failure-diagnostic-fixtures.schema.v0.1.json", "sha256": "8dacd518908172626d015215e7827400023feff929c722d4717ff54f0dd5342f"}
+  ],
+  "validation_counts": {
+    "input_hashes_matched": 9,
+    "input_hashes_total": 9,
+    "candidate_schemas_meta_valid": 3,
+    "candidate_schemas_total": 3,
+    "fixture_expectations_matched": 15,
+    "fixture_expectations_total": 15,
+    "extraction_cases_matched": 10,
+    "extraction_cases_total": 10,
+    "model_binding_cases_matched": 5,
+    "model_binding_cases_total": 5,
+    "positive_cases_matched": 8,
+    "positive_cases_total": 8,
+    "negative_cases_matched": 7,
+    "negative_cases_total": 7
+  },
+  "diagnosis": {
+    "kimi_failure_class": "CLIENT_RESPONSE_EXTRACTION_FAILURE",
+    "kimi_root_cause": "PLAIN_JSON_RESPONSE_OBJECT_MISCLASSIFIED_AND_DISCARDED_BY_CALLER",
+    "kimi_exact_provider_answer_recovered": false,
+    "kimi_provider_no_answer_proven": false,
+    "deepseek_failure_class": "RETURNED_MODEL_MISMATCH",
+    "deepseek_root_cause": "REQUESTED_RETURNED_MODEL_DRIFT_WITHOUT_ADOPTED_ALIAS_RECORD",
+    "deepseek_requested_model": "deepseek-chat",
+    "deepseek_returned_model": "deepseek-v4-flash",
+    "deepseek_alias_adopted": false
+  },
+  "contract_result": {
+    "extraction_contract_candidate_created": true,
+    "model_binding_policy_candidate_created": true,
+    "conflicting_answers_fail_closed": true,
+    "unadopted_alias_fails_closed": true,
+    "content_pass_does_not_override_model_mismatch": true,
+    "contract_candidates_adopted": false,
+    "implementation_created": false,
+    "live_rerun_ready": false,
+    "offline_failure_diagnostic_pass": true,
+    "next_permitted_action": "PREPARE_SEPARATE_PRE22_FAILURE_CONTRACT_ADOPTION_REVIEW_RECOMMENDATION_ONLY"
+  },
+  "execution_accounting": {
+    "offline_validation_runs_completed": 1,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "effects": {
+    "pre22_result_changed": false,
+    "authority_changed": false,
+    "ownership_changed": false,
+    "live_review_executed": false,
+    "compact_projection_review_completed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

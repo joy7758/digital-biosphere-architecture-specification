@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:compact-review-response-extraction-contract:0.1",
+  "title": "TITMAS Compact Review Response Extraction Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "response_schema_reference", "source_precedence", "content_text_rules", "multiple_location_rules", "result_states", "persistence_boundary", "effects"],
+  "properties": {
+    "$schema": {"const": "./compact-review-response-extraction-contract.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-23-COMPACT-REVIEW-RESPONSE-EXTRACTION-CONTRACT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "CANDIDATE_OFFLINE_VALIDATION_NOT_IMPLEMENTATION"},
+    "decision_reference": {"const": "CS-D02-PRE-23"},
+    "response_schema_reference": {"const": "../architecture/schemas/provider-adapter-compact-review-response.schema.v0.1.json"},
+    "source_precedence": {"const": ["STRUCTURED_CONTENT_ANSWER", "DIRECT_ANSWER", "CONTENT_TEXT_JSON_WRAPPER_ANSWER", "CONTENT_TEXT_DIRECT_RESPONSE_OBJECT", "PROVIDER_DECLARED_PLAIN_CONTENT_TEXT"]},
+    "content_text_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["json_parse_attempts_max", "json_repair_allowed", "wrapper_discriminator", "wrapper_answer_must_be_string", "direct_response_object_requires_frozen_schema_pass", "plain_non_json_requires_declared_tool_contract", "markdown_or_code_fence_strip_allowed", "semantic_rewrite_allowed"],
+      "properties": {
+        "json_parse_attempts_max": {"const": 1},
+        "json_repair_allowed": {"const": false},
+        "wrapper_discriminator": {"const": "OBJECT_HAS_ANSWER_MEMBER"},
+        "wrapper_answer_must_be_string": {"const": true},
+        "direct_response_object_requires_frozen_schema_pass": {"const": true},
+        "plain_non_json_requires_declared_tool_contract": {"const": true},
+        "markdown_or_code_fence_strip_allowed": {"const": false},
+        "semantic_rewrite_allowed": {"const": false}
+      }
+    },
+    "multiple_location_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identical_non_empty_answers_may_deduplicate", "different_non_empty_answers_result", "precedence_may_silently_override_conflict"],
+      "properties": {
+        "identical_non_empty_answers_may_deduplicate": {"const": true},
+        "different_non_empty_answers_result": {"const": "CONFLICTING_ANSWER_LOCATIONS"},
+        "precedence_may_silently_override_conflict": {"const": false}
+      }
+    },
+    "result_states": {"const": ["EXTRACTED_SINGLE_SOURCE", "EXTRACTED_IDENTICAL_DEDUPLICATED", "CONFLICTING_ANSWER_LOCATIONS", "MISSING_ANSWER", "NON_STRING_WRAPPER_ANSWER", "DIRECT_RESPONSE_SCHEMA_MISMATCH", "PLAIN_CONTENT_NOT_DECLARED", "CONTENT_TEXT_JSON_PARSE_FAILURE"]},
+    "persistence_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["semantic_answer_may_be_persisted_after_contract_pass", "raw_provider_envelope_persisted", "usage_envelope_persisted", "credentials_persisted", "hidden_reasoning_persisted"],
+      "properties": {
+        "semantic_answer_may_be_persisted_after_contract_pass": {"const": true},
+        "raw_provider_envelope_persisted": {"const": false},
+        "usage_envelope_persisted": {"const": false},
+        "credentials_persisted": {"const": false},
+        "hidden_reasoning_persisted": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["implementation_created", "provider_success_created", "review_completion_created", "profile_adoption_created"],
+      "properties": {
+        "implementation_created": {"const": false},
+        "provider_success_created": {"const": false},
+        "review_completion_created": {"const": false},
+        "profile_adoption_created": {"const": false}
+      }
+    }
+  }
+}

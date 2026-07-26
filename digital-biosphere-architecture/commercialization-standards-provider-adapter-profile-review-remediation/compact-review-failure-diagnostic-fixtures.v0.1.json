@@ -1,0 +1,33 @@
+{
+  "$schema": "./compact-review-failure-diagnostic-fixtures.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-23-COMPACT-REVIEW-FAILURE-DIAGNOSTIC-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "SYNTHETIC_FIXTURES_DEFINED_NOT_PROVIDER_EVIDENCE",
+  "decision_reference": "CS-D02-PRE-23",
+  "response_fixture_reference": "compact-response-schema-fixtures.v0.1.json#/base_instances/ACCEPT",
+  "cases": [
+    {"case_id": "PRE23-EXT-001", "fixture_class": "STRUCTURED_CONTENT_ANSWER", "subject": "EXTRACTION", "input": {"structured_answer": "answer-a"}, "expected_state": "EXTRACTED_SINGLE_SOURCE", "expected_source": "STRUCTURED_CONTENT_ANSWER", "expected_qualifies": true},
+    {"case_id": "PRE23-EXT-002", "fixture_class": "DIRECT_ANSWER", "subject": "EXTRACTION", "input": {"direct_answer": "answer-a"}, "expected_state": "EXTRACTED_SINGLE_SOURCE", "expected_source": "DIRECT_ANSWER", "expected_qualifies": true},
+    {"case_id": "PRE23-EXT-003", "fixture_class": "JSON_WRAPPER_TEXT_ANSWER", "subject": "EXTRACTION", "input": {"content_text_json": {"answer": "answer-a"}}, "expected_state": "EXTRACTED_SINGLE_SOURCE", "expected_source": "CONTENT_TEXT_JSON_WRAPPER_ANSWER", "expected_qualifies": true},
+    {"case_id": "PRE23-EXT-004", "fixture_class": "PLAIN_JSON_RESPONSE_OBJECT", "subject": "EXTRACTION", "input": {"content_text_response_object_ref": "ACCEPT"}, "expected_state": "EXTRACTED_SINGLE_SOURCE", "expected_source": "CONTENT_TEXT_DIRECT_RESPONSE_OBJECT", "expected_qualifies": true},
+    {"case_id": "PRE23-EXT-005", "fixture_class": "PLAIN_NON_JSON_DECLARED_TEXT", "subject": "EXTRACTION", "input": {"content_text_plain": "answer-a", "plain_content_declared": true}, "expected_state": "EXTRACTED_SINGLE_SOURCE", "expected_source": "PROVIDER_DECLARED_PLAIN_CONTENT_TEXT", "expected_qualifies": true},
+    {"case_id": "PRE23-EXT-006", "fixture_class": "DUPLICATE_IDENTICAL_ANSWERS", "subject": "EXTRACTION", "input": {"structured_answer": "answer-a", "direct_answer": "answer-a"}, "expected_state": "EXTRACTED_IDENTICAL_DEDUPLICATED", "expected_source": "MULTIPLE_IDENTICAL", "expected_qualifies": true},
+    {"case_id": "PRE23-EXT-007", "fixture_class": "CONFLICTING_ANSWER_LOCATIONS", "subject": "EXTRACTION", "input": {"structured_answer": "answer-a", "direct_answer": "answer-b"}, "expected_state": "CONFLICTING_ANSWER_LOCATIONS", "expected_source": null, "expected_qualifies": false},
+    {"case_id": "PRE23-EXT-008", "fixture_class": "MISSING_ANSWER", "subject": "EXTRACTION", "input": {}, "expected_state": "MISSING_ANSWER", "expected_source": null, "expected_qualifies": false},
+    {"case_id": "PRE23-EXT-009", "fixture_class": "NON_STRING_WRAPPER_ANSWER", "subject": "EXTRACTION", "input": {"content_text_json": {"answer": {"nested": true}}}, "expected_state": "NON_STRING_WRAPPER_ANSWER", "expected_source": null, "expected_qualifies": false},
+    {"case_id": "PRE23-EXT-010", "fixture_class": "DIRECT_OBJECT_SCHEMA_MISMATCH", "subject": "EXTRACTION", "input": {"content_text_response_object_ref": "INVALID_SCHEMA_OBJECT"}, "expected_state": "DIRECT_RESPONSE_SCHEMA_MISMATCH", "expected_source": null, "expected_qualifies": false},
+    {"case_id": "PRE23-MOD-001", "fixture_class": "MODEL_EXACT_MATCH", "subject": "MODEL_BINDING", "input": {"requested_model": "model-a", "returned_model": "model-a", "alias_adopted": false, "response_schema_pass": true}, "expected_state": "EXACT_MATCH", "expected_source": null, "expected_qualifies": true},
+    {"case_id": "PRE23-MOD-002", "fixture_class": "MODEL_EXPLICIT_ALIAS_MATCH", "subject": "MODEL_BINDING", "input": {"requested_model": "alias-a", "returned_model": "model-a", "alias_adopted": true, "alias_source_bound": true, "alias_decision_recorded": true, "response_schema_pass": true}, "expected_state": "EXPLICIT_ALIAS_MATCH", "expected_source": null, "expected_qualifies": true},
+    {"case_id": "PRE23-MOD-003", "fixture_class": "MODEL_UNADOPTED_ALIAS_MISMATCH", "subject": "MODEL_BINDING", "input": {"requested_model": "alias-a", "returned_model": "model-a", "alias_adopted": false, "response_schema_pass": true}, "expected_state": "MISMATCH", "expected_source": null, "expected_qualifies": false},
+    {"case_id": "PRE23-MOD-004", "fixture_class": "MODEL_RETURNED_MISSING_UNKNOWN", "subject": "MODEL_BINDING", "input": {"requested_model": "model-a", "returned_model": null, "alias_adopted": false, "response_schema_pass": true}, "expected_state": "UNKNOWN", "expected_source": null, "expected_qualifies": false},
+    {"case_id": "PRE23-MOD-005", "fixture_class": "CONTENT_PASS_MODEL_MISMATCH", "subject": "MODEL_BINDING", "input": {"requested_model": "deepseek-chat", "returned_model": "deepseek-v4-flash", "alias_adopted": false, "response_schema_pass": true}, "expected_state": "MISMATCH", "expected_source": null, "expected_qualifies": false}
+  ],
+  "effects": {
+    "fixtures_executed": 0,
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "provider_success_created": false,
+    "profile_review_completed": false,
+    "profile_adopted": false
+  }
+}
