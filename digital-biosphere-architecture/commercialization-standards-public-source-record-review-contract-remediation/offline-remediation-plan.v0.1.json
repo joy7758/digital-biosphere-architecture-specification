@@ -1,0 +1,108 @@
+{
+  "$schema": "./offline-remediation-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-13-OFFLINE-REMEDIATION-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_AUTHORIZATION_BASELINE_NOT_EXECUTED",
+  "observed_on": "2026-07-26",
+  "decision_reference": "CS-D02-PRE-13",
+  "decision_record_reference": "../TITMAS-CS-D02-PRE-13-RESPONSE-CONTRACT-REMEDIATION-DECISION-RECORD.v0.1.json",
+  "frozen_inputs": {
+    "recommendation_reference": "../TITMAS-CS-D02-PRE-13-RESPONSE-CONTRACT-REMEDIATION-RECOMMENDATION-v0.1.md",
+    "recommendation_sha256": "728a0074503ecaf7ce63763e7e78dae029698558e8b60a9b556f7f07ef4cb903",
+    "pre12_execution_receipt_reference": "../commercialization-standards-public-source-record-review-rerun/rerun-execution-receipt.v0.1.json",
+    "pre12_execution_receipt_sha256": "6a4d4e9712918336629a3213f3ebbf59a0ad7beb25771c0c3dc96dca4da0af22",
+    "review_prompt_reference": "../commercialization-standards-public-source-record-review/prompt-template.v0.1.txt",
+    "review_prompt_sha256": "6caaf92907396a8e18dba44c1051183f2b000d06b4b72bb0ae5105b60b6d52df",
+    "source_pack_reference": "../commercialization-standards-public-source-record-review/source-pack.v0.1.md",
+    "source_pack_sha256": "3040ec61c4fae1d50151d07de2214625c371b36ccd9b418047cbee6f24e610ca",
+    "candidate_set_reference": "../commercialization-standards-public-source-problem-validation/source-candidate-set.v0.1.json",
+    "candidate_set_sha256": "f7253e3e2545b1200f1a7eb27b9ce5d323e1eb090b2c1178e112707983ba6300",
+    "response_schema_reference": "../commercialization-standards-public-source-record-review/agent-record-review-response.schema.v0.1.json",
+    "response_schema_sha256": "0f3df0688993fe300bae1f8d2c1cb67c0fd31fecbdabcbb89d5a1819c803ccd8"
+  },
+  "deterministic_rendering": {
+    "role_order": [
+      "SOURCE_QUALIFICATION_REVIEWER",
+      "ACCOUNTABILITY_RELEVANCE_REVIEWER",
+      "CLAIM_AND_PRIVACY_REVIEWER",
+      "ADVERSARIAL_RECORD_REVIEWER"
+    ],
+    "template_role_substitution": "{{REVIEWER_ROLE}}",
+    "template_source_pack_substitution": "{{SOURCE_PACK}}",
+    "schema_prefix": "\n\n=== RESPONSE SCHEMA (NORMATIVE) ===\n",
+    "schema_suffix": "\n=== END RESPONSE SCHEMA ===\n",
+    "encoding": "UTF-8",
+    "newline": "LF",
+    "digest": "SHA-256"
+  },
+  "provider_bindings": [
+    {
+      "binding_id": "QIANFAN_SINGLE_QUERY_SELF_CONTAINED",
+      "provider_gateway": "qianfan_installed_tool",
+      "model": "kimi-k2.6",
+      "request_field": "query",
+      "provider_native_schema_parameter": false,
+      "live_request": false
+    },
+    {
+      "binding_id": "DEEPSEEK_JSON_OBJECT_SELF_CONTAINED",
+      "provider_gateway": "deepseek_direct",
+      "model": "deepseek-v4-pro",
+      "request_field": "messages[0].content",
+      "response_format": {
+        "type": "json_object"
+      },
+      "provider_native_schema_parameter": false,
+      "live_request": false
+    }
+  ],
+  "synthetic_validation": {
+    "compliant_fixture_count": 1,
+    "noncompliant_fixture_count": 3,
+    "required_results": [
+      "COMPLIANT_ACCEPTED",
+      "MISSING_BOUNDARY_FIELD_REJECTED",
+      "COUNTING_EFFECT_TRUE_REJECTED",
+      "UNKNOWN_EXTRA_FIELD_REJECTED"
+    ]
+  },
+  "outputs": [
+    "rendered-request-contract.v0.1.txt",
+    "rendered-request-contract.schema.v0.1.json",
+    "provider-binding-fixtures.v0.1.json",
+    "provider-binding-fixtures.schema.v0.1.json",
+    "response-contract-validator-fixtures.v0.1.json",
+    "response-contract-validator-fixtures.schema.v0.1.json",
+    "offline-validation-result.v0.1.json",
+    "offline-validation-result.schema.v0.1.json",
+    "PRE-13-OFFLINE-RESPONSE-CONTRACT-RESULT-v0.1.md"
+  ],
+  "controls": {
+    "live_model_requests_max": 0,
+    "new_source_searches_max": 0,
+    "new_source_collections_max": 0,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "json_repair_max": 0,
+    "secret_access_allowed": false,
+    "raw_provider_body_allowed": false,
+    "synthetic_fixture_counts_as_provider_evidence": false,
+    "automatic_validity_or_counting_allowed": false
+  },
+  "execution_gate": {
+    "authorization_baseline_committed": false,
+    "authorization_baseline_pushed": false,
+    "authorization_baseline_remote_verified": false,
+    "offline_execution_started": false
+  },
+  "effects": {
+    "candidate_review_completed": false,
+    "record_counting_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
