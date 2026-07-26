@@ -48,7 +48,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_25_CONTRACT_REVISION_RECOMMENDATION_PREPARED_DECISION_READY_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_25_OFFLINE_CONTRACT_REVISION_PASS_V0_2_REVIEW_RECOMMENDATION_READY_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -1229,12 +1229,23 @@
         "pre25_review_failure_revision_recommendation_prepared",
         "pre25_recommendation_remote_verified",
         "pre25_decision_recorded",
+        "pre25_authorization_baseline_remote_verified",
+        "pre25_authorization_receipt_remote_verified",
         "pre25_offline_revision_authorized",
         "pre25_offline_revision_executed",
+        "pre25_input_hashes_matched",
+        "pre25_findings_triaged",
+        "pre25_candidate_schemas_meta_valid",
+        "pre25_candidate_instances_schema_valid",
+        "pre25_fixture_expectations_matched",
+        "pre25_v0_1_history_hashes_matched",
+        "pre25_v0_1_history_changed",
         "pre25_v0_2_candidates_created",
+        "pre25_offline_revision_pass",
         "pre25_contract_candidates_adopted",
         "pre25_implementation_created",
         "pre25_live_rerun_ready",
+        "pre25_v0_2_review_recommendation_ready",
         "public_source_record_counting_authorized",
         "veap_valid_problem_records",
         "cs_g0_problem_freeze_pass",
@@ -1662,16 +1673,46 @@
           "const": true
         },
         "pre25_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "pre25_authorization_baseline_remote_verified": {
+          "const": true
+        },
+        "pre25_authorization_receipt_remote_verified": {
+          "const": true
         },
         "pre25_offline_revision_authorized": {
-          "const": false
+          "const": true
         },
         "pre25_offline_revision_executed": {
+          "const": true
+        },
+        "pre25_input_hashes_matched": {
+          "const": 13
+        },
+        "pre25_findings_triaged": {
+          "const": 3
+        },
+        "pre25_candidate_schemas_meta_valid": {
+          "const": 6
+        },
+        "pre25_candidate_instances_schema_valid": {
+          "const": 5
+        },
+        "pre25_fixture_expectations_matched": {
+          "const": 10
+        },
+        "pre25_v0_1_history_hashes_matched": {
+          "const": 5
+        },
+        "pre25_v0_1_history_changed": {
           "const": false
         },
         "pre25_v0_2_candidates_created": {
-          "const": false
+          "const": true
+        },
+        "pre25_offline_revision_pass": {
+          "const": true
         },
         "pre25_contract_candidates_adopted": {
           "const": false
@@ -1681,6 +1722,9 @@
         },
         "pre25_live_rerun_ready": {
           "const": false
+        },
+        "pre25_v0_2_review_recommendation_ready": {
+          "const": true
         },
         "public_source_record_counting_authorized": {
           "const": false
@@ -2152,13 +2196,40 @@
         "provider_adapter_contract_revision_recommendation_sha256",
         "provider_adapter_contract_revision_recommendation_commit",
         "provider_adapter_contract_revision_exact_action",
+        "provider_adapter_contract_revision_decision_reference",
+        "provider_adapter_contract_revision_plan_reference",
+        "provider_adapter_contract_revision_input_manifest_reference",
+        "provider_adapter_contract_revision_authorization_receipt_reference",
+        "provider_adapter_contract_revision_finding_triage_reference",
+        "provider_adapter_contract_revision_cross_layer_invariants_reference",
+        "provider_adapter_contract_revision_extraction_v0_2_reference",
+        "provider_adapter_contract_revision_model_binding_v0_2_reference",
+        "provider_adapter_contract_revision_alias_schema_reference",
+        "provider_adapter_contract_revision_fixtures_reference",
+        "provider_adapter_contract_revision_validation_result_reference",
+        "provider_adapter_contract_revision_execution_receipt_reference",
+        "provider_adapter_contract_revision_report_reference",
+        "provider_adapter_contract_revision_authorization_baseline_commit",
+        "provider_adapter_contract_revision_authorization_receipt_commit",
+        "provider_adapter_contract_revision_result_commit",
         "provider_adapter_contract_revision_decision_recorded",
+        "provider_adapter_contract_revision_authorization_baseline_remote_verified",
+        "provider_adapter_contract_revision_authorization_receipt_remote_verified",
         "provider_adapter_contract_revision_offline_authorized",
         "provider_adapter_contract_revision_executed",
+        "provider_adapter_contract_revision_input_hashes_matched",
+        "provider_adapter_contract_revision_findings_triaged",
+        "provider_adapter_contract_revision_candidate_schemas_meta_valid",
+        "provider_adapter_contract_revision_candidate_instances_schema_valid",
+        "provider_adapter_contract_revision_fixture_expectations_matched",
+        "provider_adapter_contract_revision_v0_1_history_hashes_matched",
+        "provider_adapter_contract_revision_v0_1_history_changed",
         "provider_adapter_contract_revision_v0_2_candidates_created",
+        "provider_adapter_contract_revision_offline_pass",
         "provider_adapter_contract_revision_contract_candidates_adopted",
         "provider_adapter_contract_revision_implementation_created",
         "provider_adapter_contract_revision_live_rerun_ready",
+        "provider_adapter_contract_revision_v0_2_review_recommendation_ready",
         "composite_gate_reuses_frozen_pre14_deepseek",
         "rerun_retry_allowed",
         "rerun_fallback_allowed",
@@ -2177,7 +2248,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE25_CONTRACT_REVISION_RECOMMENDATION_PREPARED_DECISION_READY"
+          "const": "PRE25_OFFLINE_REVISION_PASS_V0_2_REVIEW_RECOMMENDATION_READY_NOT_PREPARED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -3307,17 +3378,95 @@
         "provider_adapter_contract_revision_exact_action": {
           "const": "AUTHORIZE_OFFLINE_PRE24_FINDING_TRIAGE_AND_V0_2_CONTRACT_REVISION_CANDIDATES_ONLY"
         },
+        "provider_adapter_contract_revision_decision_reference": {
+          "const": "TITMAS-CS-D02-PRE-25-OFFLINE-CONTRACT-REVISION-DECISION-RECORD.v0.1.json"
+        },
+        "provider_adapter_contract_revision_plan_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-contract-revision-plan.v0.1.json"
+        },
+        "provider_adapter_contract_revision_input_manifest_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-contract-revision-input-manifest.v0.1.json"
+        },
+        "provider_adapter_contract_revision_authorization_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-contract-revision-authorization-receipt.v0.1.json"
+        },
+        "provider_adapter_contract_revision_finding_triage_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/contract-revision-finding-triage.v0.1.json"
+        },
+        "provider_adapter_contract_revision_cross_layer_invariants_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-review-cross-layer-invariants.v0.1.json"
+        },
+        "provider_adapter_contract_revision_extraction_v0_2_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-review-response-extraction-contract.v0.2.json"
+        },
+        "provider_adapter_contract_revision_model_binding_v0_2_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-review-model-binding-policy.v0.2.json"
+        },
+        "provider_adapter_contract_revision_alias_schema_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-review-model-alias-record.schema.v0.1.json"
+        },
+        "provider_adapter_contract_revision_fixtures_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/compact-review-contract-revision-fixtures.v0.1.json"
+        },
+        "provider_adapter_contract_revision_validation_result_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-contract-revision-validation-result.v0.1.json"
+        },
+        "provider_adapter_contract_revision_execution_receipt_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/offline-contract-revision-execution-receipt.v0.1.json"
+        },
+        "provider_adapter_contract_revision_report_reference": {
+          "const": "commercialization-standards-provider-adapter-profile-review-remediation/PRE-25-OFFLINE-CONTRACT-REVISION-RESULT-v0.1.md"
+        },
+        "provider_adapter_contract_revision_authorization_baseline_commit": {
+          "const": "52f8794bd5c8df38accbd5d3e414e5c16fd67a30"
+        },
+        "provider_adapter_contract_revision_authorization_receipt_commit": {
+          "const": "59d5e9ca54291c3e835f2b29b5ca5d1fc0296876"
+        },
+        "provider_adapter_contract_revision_result_commit": {
+          "const": "3122832f5aa9b93a10f8cd069b7ee3e5855836e7"
+        },
         "provider_adapter_contract_revision_decision_recorded": {
-          "const": false
+          "const": true
+        },
+        "provider_adapter_contract_revision_authorization_baseline_remote_verified": {
+          "const": true
+        },
+        "provider_adapter_contract_revision_authorization_receipt_remote_verified": {
+          "const": true
         },
         "provider_adapter_contract_revision_offline_authorized": {
-          "const": false
+          "const": true
         },
         "provider_adapter_contract_revision_executed": {
+          "const": true
+        },
+        "provider_adapter_contract_revision_input_hashes_matched": {
+          "const": 13
+        },
+        "provider_adapter_contract_revision_findings_triaged": {
+          "const": 3
+        },
+        "provider_adapter_contract_revision_candidate_schemas_meta_valid": {
+          "const": 6
+        },
+        "provider_adapter_contract_revision_candidate_instances_schema_valid": {
+          "const": 5
+        },
+        "provider_adapter_contract_revision_fixture_expectations_matched": {
+          "const": 10
+        },
+        "provider_adapter_contract_revision_v0_1_history_hashes_matched": {
+          "const": 5
+        },
+        "provider_adapter_contract_revision_v0_1_history_changed": {
           "const": false
         },
         "provider_adapter_contract_revision_v0_2_candidates_created": {
-          "const": false
+          "const": true
+        },
+        "provider_adapter_contract_revision_offline_pass": {
+          "const": true
         },
         "provider_adapter_contract_revision_contract_candidates_adopted": {
           "const": false
@@ -3327,6 +3476,9 @@
         },
         "provider_adapter_contract_revision_live_rerun_ready": {
           "const": false
+        },
+        "provider_adapter_contract_revision_v0_2_review_recommendation_ready": {
+          "const": true
         },
         "composite_gate_reuses_frozen_pre14_deepseek": {
           "const": true
@@ -3344,10 +3496,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE25_OFFLINE_CONTRACT_REVISION_DECISION_ONLY"
+          "const": "PREPARE_SEPARATE_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
-          "const": true
+          "const": false
         },
         "external_execution_authorized": {
           "const": false

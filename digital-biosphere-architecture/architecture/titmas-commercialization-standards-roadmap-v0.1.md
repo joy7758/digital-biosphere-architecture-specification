@@ -1517,19 +1517,42 @@ AUTHORIZE_OFFLINE_PRE24_FINDING_TRIAGE_AND_V0_2_CONTRACT_REVISION_CANDIDATES_ONL
 
 ```text
 PRE25_RECOMMENDATION_REMOTE_VERIFIED=true
-PRE25_DECISION_RECORDED=false
-PRE25_OFFLINE_REVISION_AUTHORIZED=false
-PRE25_OFFLINE_REVISION_EXECUTED=false
-PRE25_V0_2_CANDIDATES_CREATED=false
+PRE25_DECISION_RECORDED=true
+PRE25_AUTHORIZATION_BASELINE_REMOTE_VERIFIED=true
+PRE25_AUTHORIZATION_RECEIPT_REMOTE_VERIFIED=true
+PRE25_OFFLINE_REVISION_AUTHORIZED=true
+PRE25_OFFLINE_REVISION_EXECUTED=true
+PRE25_INPUT_HASHES_MATCHED=13/13
+PRE25_FINDINGS_TRIAGED=3/3
+PRE25_CANDIDATE_SCHEMAS_META_VALID=6/6
+PRE25_CANDIDATE_INSTANCES_SCHEMA_VALID=5/5
+PRE25_FIXTURE_EXPECTATIONS_MATCHED=10/10
+PRE25_V0_1_HISTORY_HASHES_MATCHED=5/5
+PRE25_V0_1_HISTORY_CHANGED=false
+PRE25_V0_2_CANDIDATES_CREATED=true
+PRE25_OFFLINE_REVISION_PASS=true
 PRE25_CONTRACT_CANDIDATES_ADOPTED=false
 PRE25_IMPLEMENTATION_CREATED=false
 PRE25_LIVE_RERUN_READY=false
 ```
 
+实际 [PRE-25 result](../commercialization-standards-provider-adapter-profile-review-remediation/PRE-25-OFFLINE-CONTRACT-REVISION-RESULT-v0.1.md)
+完成一次 zero-network deterministic revision：
+
+- conflict 明确映射为 terminal non-qualifying，caller 必须停止 qualification 并保留失败；
+- semantic response extraction 与 provider model identity binding 成为两个独立维度；
+- alias 只有在 Schema-valid、`ACTIVE`、exact source/version/scope、有效期内且具有
+  `ALIAS_ADOPTION` Decision 时才可能 qualifying；
+- expired、revoked、conflicted、invalid 和普通 Decision alias 全部失败关闭；
+- 10 个正负 fixture 全部匹配，live/provider request、retry、fallback 和 repair 均为 0。
+
+这些对象仍是 v0.2 candidate，不是 adopted contract、implementation、provider support
+或 conformance evidence。
+
 下一步只允许：
 
 ```text
-APPLY_STANDING_DIRECTIVE_TO_EXACT_PRE25_OFFLINE_CONTRACT_REVISION_DECISION_ONLY
+PREPARE_SEPARATE_PRE25_V0_2_CONTRACT_CANDIDATE_REVIEW_RECOMMENDATION_ONLY
 ```
 
 ## 5. First Standardization Wedge（第一个标准化切入口）

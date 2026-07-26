@@ -311,9 +311,13 @@ false。
 
 `CS-D02-PRE-25`
 [offline revision recommendation](TITMAS-CS-D02-PRE-25-REVIEW-FAILURE-AND-CONTRACT-REVISION-RECOMMENDATION-v0.1.md)
-已在远端准备：建议先离线分诊 PRE-24 的 3 个 advisory finding，再建立 v0.2 revision
-candidate。它明确区分 semantic extraction 与 model identity，补充 conflict terminal
-failure 和 alias lifecycle；当前尚未形成 PRE-25 Decision，也未修改 v0.1 或创建 v0.2。
+已经按独立 Decision、远端授权基线和 authorization receipt 完成
+[zero-network offline revision](commercialization-standards-provider-adapter-profile-review-remediation/PRE-25-OFFLINE-CONTRACT-REVISION-RESULT-v0.1.md)：
+13/13 冻结输入、11/11 输出绑定、6/6 candidate Schema、5/5 candidate instance 和
+10/10 deterministic fixture 均通过。PRE-24 的 3 个 advisory finding 已分别分诊；
+v0.2 extraction/model-binding、alias lifecycle 和 cross-layer invariant 候选已经建立，
+v0.1 历史保持不变。该结果没有采纳契约、创建实现或验证 provider，下一步只允许准备
+独立的 v0.2 candidate review recommendation。
 
 ```text
 TITMAS_ARCHITECTURE_FROZEN=false
