@@ -1,0 +1,86 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre-22-bounded-compact-live-review-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_EXACT_TWO_SESSION_COMPACT_PROJECTION_LIVE_REVIEW_ONLY",
+  "decision_id": "CS-D02-PRE-22",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "80aa8fc8330d6fab4efd41a31ec52c18613a923f29b3bf2447bfc45066ba1ebc",
+  "decision_result": "AUTHORIZE_EXACT_TWO_SESSION_COMPACT_PROJECTION_LIVE_REVIEW_ONLY",
+  "decided_by_ref": "zhangbin",
+  "executed_by": "Codex",
+  "primary_repository": "digital-biosphere-architecture",
+  "target_branch": "codex/production-observability-baseline",
+  "live_review_plan_reference": "commercialization-standards-provider-adapter-profile-review-remediation/compact-live-review-plan.v0.1.json",
+  "input_manifest_reference": "commercialization-standards-provider-adapter-profile-review-remediation/compact-live-review-input-manifest.v0.1.json",
+  "authorized_sessions": [
+    {
+      "session_id": "PRE21-KIMI-INTEROP-CANDIDATE",
+      "provider": "KIMI_QIANFAN",
+      "model": "kimi-k2.6",
+      "reviewer_role": "INTEROPERABILITY_AND_DEVELOPER_IMPLEMENTABILITY_REVIEWER",
+      "query_bytes": 21010,
+      "query_sha256": "a7d762d7bd22c762d2c7d479508c22624e28f51707eeedaf1945c4153fc7fed7",
+      "requests_max": 1
+    },
+    {
+      "session_id": "PRE21-DEEPSEEK-BOUNDARY-CANDIDATE",
+      "provider": "DEEPSEEK",
+      "model": "deepseek-chat",
+      "reviewer_role": "SECURITY_FAILURE_AND_SEMANTIC_BOUNDARY_REVIEWER",
+      "query_bytes": 21006,
+      "query_sha256": "d2297316da3e20c750f16119610d1b06c2fae98b84f21ce911ff84c4a4572f6b",
+      "requests_max": 1
+    }
+  ],
+  "limits": {
+    "live_model_requests_max": 2,
+    "provider_network_requests_max": 2,
+    "requests_per_session_max": 1,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "repair_attempts_max": 0
+  },
+  "failure_policy": {
+    "ordinary_session_failure_stops_other_independent_session": false,
+    "shared_integrity_failure_stops_all_unexecuted_sessions": true,
+    "one_session_pass_may_substitute_other": false,
+    "composite_fail_closed": true
+  },
+  "persistence_boundary": {
+    "valid_compact_response_object_allowed": true,
+    "request_response_hash_and_bytes_allowed": true,
+    "failure_class_and_safe_error_allowed": true,
+    "credentials_allowed": false,
+    "raw_provider_envelope_allowed": false,
+    "usage_envelope_allowed": false,
+    "hidden_reasoning_allowed": false,
+    "json_repair_allowed": false
+  },
+  "preconditions": {
+    "pre21_offline_response_contract_pass": true,
+    "pre21_live_review_recommendation_ready": true,
+    "standing_directive_active": true,
+    "recommendation_remote_verified": true,
+    "remote_decision_baseline_required_before_execution": true,
+    "live_requests_executed_before_authorization_baseline": 0
+  },
+  "effects": {
+    "full_source_human_review_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false,
+    "adapter_implementation_created": false,
+    "conformance_executed": false,
+    "provider_supported": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "market_validation_created": false,
+    "customer_evidence_created": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}

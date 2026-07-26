@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:compact-live-review-input-manifest:0.1",
+  "title": "TITMAS Compact Live Review Input Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "bindings", "sessions", "accounting_before_execution", "effects"],
+  "properties": {
+    "$schema": {"const": "./compact-live-review-input-manifest.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-22-COMPACT-LIVE-REVIEW-INPUT-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-22"},
+    "bindings": {
+      "type": "array",
+      "minItems": 9,
+      "maxItems": 9,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["artifact", "sha256"],
+        "properties": {
+          "artifact": {"type": "string", "minLength": 8},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["session_id", "provider", "model", "reviewer_role", "query_bytes", "query_sha256", "requests_authorized", "requests_executed"],
+          "properties": {
+            "session_id": {"const": "PRE21-KIMI-INTEROP-CANDIDATE"},
+            "provider": {"const": "KIMI_QIANFAN"},
+            "model": {"const": "kimi-k2.6"},
+            "reviewer_role": {"const": "INTEROPERABILITY_AND_DEVELOPER_IMPLEMENTABILITY_REVIEWER"},
+            "query_bytes": {"const": 21010},
+            "query_sha256": {"const": "a7d762d7bd22c762d2c7d479508c22624e28f51707eeedaf1945c4153fc7fed7"},
+            "requests_authorized": {"const": 1},
+            "requests_executed": {"const": 0}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["session_id", "provider", "model", "reviewer_role", "query_bytes", "query_sha256", "requests_authorized", "requests_executed"],
+          "properties": {
+            "session_id": {"const": "PRE21-DEEPSEEK-BOUNDARY-CANDIDATE"},
+            "provider": {"const": "DEEPSEEK"},
+            "model": {"const": "deepseek-chat"},
+            "reviewer_role": {"const": "SECURITY_FAILURE_AND_SEMANTIC_BOUNDARY_REVIEWER"},
+            "query_bytes": {"const": 21006},
+            "query_sha256": {"const": "d2297316da3e20c750f16119610d1b06c2fae98b84f21ce911ff84c4a4572f6b"},
+            "requests_authorized": {"const": 1},
+            "requests_executed": {"const": 0}
+          }
+        }
+      ],
+      "items": false
+    },
+    "accounting_before_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["live_model_requests_executed", "provider_network_requests_executed", "retry_attempts", "fallback_attempts", "repair_attempts"],
+      "properties": {
+        "live_model_requests_executed": {"const": 0},
+        "provider_network_requests_executed": {"const": 0},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "repair_attempts": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["compact_projection_review_completed", "full_source_human_review_executed", "profile_review_completed", "profile_adopted"],
+      "properties": {
+        "compact_projection_review_completed": {"const": false},
+        "full_source_human_review_executed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false}
+      }
+    }
+  }
+}

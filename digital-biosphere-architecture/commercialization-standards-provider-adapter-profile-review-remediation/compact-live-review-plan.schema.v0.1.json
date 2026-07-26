@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:compact-live-review-plan:0.1",
+  "title": "TITMAS Compact Live Review Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "execution_mode", "input_manifest_reference", "session_order", "limits", "steps", "ordinary_failure_policy", "shared_stop_conditions", "composite_success_conditions", "output_references", "effects"],
+  "properties": {
+    "$schema": {"const": "./compact-live-review-plan.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-22-COMPACT-LIVE-REVIEW-PLAN-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_EXECUTED"},
+    "decision_reference": {"const": "CS-D02-PRE-22"},
+    "execution_mode": {"const": "EXACT_TWO_SESSION_LIVE_PROVIDER_REVIEW"},
+    "input_manifest_reference": {"const": "compact-live-review-input-manifest.v0.1.json"},
+    "session_order": {
+      "const": ["PRE21-KIMI-INTEROP-CANDIDATE", "PRE21-DEEPSEEK-BOUNDARY-CANDIDATE"]
+    },
+    "limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["live_model_requests_max", "provider_network_requests_max", "requests_per_session_max", "retry_attempts_max", "fallback_attempts_max", "repair_attempts_max"],
+      "properties": {
+        "live_model_requests_max": {"const": 2},
+        "provider_network_requests_max": {"const": 2},
+        "requests_per_session_max": {"const": 1},
+        "retry_attempts_max": {"const": 0},
+        "fallback_attempts_max": {"const": 0},
+        "repair_attempts_max": {"const": 0}
+      }
+    },
+    "steps": {
+      "const": [
+        "VERIFY_FROZEN_INPUT_HASHES",
+        "VERIFY_REMOTE_AUTHORIZATION_BASELINE",
+        "RECONSTRUCT_AND_VERIFY_BOTH_EXACT_QUERIES",
+        "VERIFY_CREDENTIAL_PRESENCE_WITHOUT_OUTPUT_OR_PERSISTENCE",
+        "EXECUTE_KIMI_SESSION_ONCE",
+        "RECORD_AND_VALIDATE_KIMI_RESULT_WITHOUT_REPAIR",
+        "RECHECK_SHARED_STOP_CONDITIONS",
+        "EXECUTE_DEEPSEEK_SESSION_ONCE",
+        "RECORD_AND_VALIDATE_DEEPSEEK_RESULT_WITHOUT_REPAIR",
+        "COMPUTE_FAIL_CLOSED_COMPOSITE_RESULT",
+        "RETAIN_REPORT_AND_EXECUTION_RECEIPT"
+      ]
+    },
+    "ordinary_failure_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["continue_other_independent_session", "retry_failed_session", "fallback_provider_or_model", "repair_invalid_json"],
+      "properties": {
+        "continue_other_independent_session": {"const": true},
+        "retry_failed_session": {"const": false},
+        "fallback_provider_or_model": {"const": false},
+        "repair_invalid_json": {"const": false}
+      }
+    },
+    "shared_stop_conditions": {
+      "const": ["INPUT_HASH_MISMATCH", "REMOTE_AUTHORIZATION_DRIFT", "REQUEST_BYTES_OR_HASH_MISMATCH", "CREDENTIAL_SAFETY_FAILURE", "SCOPE_OR_RESPONSE_SCHEMA_DRIFT", "UNAUTHORIZED_PROVIDER_MODEL_OR_SESSION"]
+    },
+    "composite_success_conditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized_sessions", "executed_sessions", "requests_per_session", "valid_compact_responses", "accept_verdicts", "retry_attempts", "fallback_attempts", "repair_attempts", "full_source_human_review_still_required", "profile_review_completed", "profile_adopted"],
+      "properties": {
+        "authorized_sessions": {"const": 2},
+        "executed_sessions": {"const": 2},
+        "requests_per_session": {"const": 1},
+        "valid_compact_responses": {"const": 2},
+        "accept_verdicts": {"const": 2},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "repair_attempts": {"const": 0},
+        "full_source_human_review_still_required": {"const": true},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false}
+      }
+    },
+    "output_references": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kimi_session_result", "deepseek_session_result", "composite_result", "execution_receipt", "report"],
+      "properties": {
+        "kimi_session_result": {"const": "compact-live-review-kimi-session-result.v0.1.json"},
+        "deepseek_session_result": {"const": "compact-live-review-deepseek-session-result.v0.1.json"},
+        "composite_result": {"const": "compact-live-review-validation-result.v0.1.json"},
+        "execution_receipt": {"const": "compact-live-review-execution-receipt.v0.1.json"},
+        "report": {"const": "PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-RESULT-v0.1.md"}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["execution_started", "live_review_executed", "compact_projection_review_completed", "full_source_human_review_executed", "profile_review_completed", "profile_adopted"],
+      "properties": {
+        "execution_started": {"const": false},
+        "live_review_executed": {"const": false},
+        "compact_projection_review_completed": {"const": false},
+        "full_source_human_review_executed": {"const": false},
+        "profile_review_completed": {"const": false},
+        "profile_adopted": {"const": false}
+      }
+    }
+  }
+}

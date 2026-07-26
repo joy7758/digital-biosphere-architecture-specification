@@ -1,0 +1,76 @@
+{
+  "$schema": "./compact-live-review-plan.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-22-COMPACT-LIVE-REVIEW-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-22",
+  "execution_mode": "EXACT_TWO_SESSION_LIVE_PROVIDER_REVIEW",
+  "input_manifest_reference": "compact-live-review-input-manifest.v0.1.json",
+  "session_order": [
+    "PRE21-KIMI-INTEROP-CANDIDATE",
+    "PRE21-DEEPSEEK-BOUNDARY-CANDIDATE"
+  ],
+  "limits": {
+    "live_model_requests_max": 2,
+    "provider_network_requests_max": 2,
+    "requests_per_session_max": 1,
+    "retry_attempts_max": 0,
+    "fallback_attempts_max": 0,
+    "repair_attempts_max": 0
+  },
+  "steps": [
+    "VERIFY_FROZEN_INPUT_HASHES",
+    "VERIFY_REMOTE_AUTHORIZATION_BASELINE",
+    "RECONSTRUCT_AND_VERIFY_BOTH_EXACT_QUERIES",
+    "VERIFY_CREDENTIAL_PRESENCE_WITHOUT_OUTPUT_OR_PERSISTENCE",
+    "EXECUTE_KIMI_SESSION_ONCE",
+    "RECORD_AND_VALIDATE_KIMI_RESULT_WITHOUT_REPAIR",
+    "RECHECK_SHARED_STOP_CONDITIONS",
+    "EXECUTE_DEEPSEEK_SESSION_ONCE",
+    "RECORD_AND_VALIDATE_DEEPSEEK_RESULT_WITHOUT_REPAIR",
+    "COMPUTE_FAIL_CLOSED_COMPOSITE_RESULT",
+    "RETAIN_REPORT_AND_EXECUTION_RECEIPT"
+  ],
+  "ordinary_failure_policy": {
+    "continue_other_independent_session": true,
+    "retry_failed_session": false,
+    "fallback_provider_or_model": false,
+    "repair_invalid_json": false
+  },
+  "shared_stop_conditions": [
+    "INPUT_HASH_MISMATCH",
+    "REMOTE_AUTHORIZATION_DRIFT",
+    "REQUEST_BYTES_OR_HASH_MISMATCH",
+    "CREDENTIAL_SAFETY_FAILURE",
+    "SCOPE_OR_RESPONSE_SCHEMA_DRIFT",
+    "UNAUTHORIZED_PROVIDER_MODEL_OR_SESSION"
+  ],
+  "composite_success_conditions": {
+    "authorized_sessions": 2,
+    "executed_sessions": 2,
+    "requests_per_session": 1,
+    "valid_compact_responses": 2,
+    "accept_verdicts": 2,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0,
+    "full_source_human_review_still_required": true,
+    "profile_review_completed": false,
+    "profile_adopted": false
+  },
+  "output_references": {
+    "kimi_session_result": "compact-live-review-kimi-session-result.v0.1.json",
+    "deepseek_session_result": "compact-live-review-deepseek-session-result.v0.1.json",
+    "composite_result": "compact-live-review-validation-result.v0.1.json",
+    "execution_receipt": "compact-live-review-execution-receipt.v0.1.json",
+    "report": "PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-RESULT-v0.1.md"
+  },
+  "effects": {
+    "execution_started": false,
+    "live_review_executed": false,
+    "compact_projection_review_completed": false,
+    "full_source_human_review_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "./compact-live-review-input-manifest.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-22-COMPACT-LIVE-REVIEW-INPUT-MANIFEST-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-22",
+  "bindings": [
+    {
+      "artifact": "../TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.md",
+      "sha256": "99d6755ecea03f9779ccc914dca33e32065bd72c71927fbe032bd8075238a54b"
+    },
+    {
+      "artifact": "../TITMAS-CS-D02-PRE-22-BOUNDED-COMPACT-LIVE-REVIEW-RECOMMENDATION-v0.1.md",
+      "sha256": "80aa8fc8330d6fab4efd41a31ec52c18613a923f29b3bf2447bfc45066ba1ebc"
+    },
+    {
+      "artifact": "compact-response-contract-validation-result.v0.1.json",
+      "sha256": "8827433ecdc19e22d318f96d3b8d2880c3c929e03b42b686c82454ea37003892"
+    },
+    {
+      "artifact": "compact-review-request-manifest.v0.2.json",
+      "sha256": "61c0f64632ae22791345d7e17bcfaaf0e0e64133a11af6d1f823c1cef142cc29"
+    },
+    {
+      "artifact": "compact-review-request-manifest.schema.v0.2.json",
+      "sha256": "46d87dd4f979f81d66d88ee710ee705a6e99290ba10634c12e39c798b178a26e"
+    },
+    {
+      "artifact": "../architecture/schemas/provider-adapter-compact-review-response.schema.v0.1.json",
+      "sha256": "9de052ed75bbb82f03bcd79f90e85bab71af1a91f31c9a33f383e49258c12487"
+    },
+    {
+      "artifact": "compact-response-schema-fixtures.v0.1.json",
+      "sha256": "29132571a25c5591a5bb5f8196c37a9b66d4a63e54440ded893d5863e1917e2c"
+    },
+    {
+      "artifact": "compact-response-contract-execution-receipt.v0.1.json",
+      "sha256": "54be1458b470936fcb4638f54efc4a120ac3460ccf394844ee712de1c0314618"
+    },
+    {
+      "artifact": "PRE-21-COMPACT-REVIEW-RESPONSE-CONTRACT-RESULT-v0.1.md",
+      "sha256": "09bdf3b66c5118d7f09a3fbf1e17cbad7ef81ae2919c5e87441600c4dc9f18b0"
+    }
+  ],
+  "sessions": [
+    {
+      "session_id": "PRE21-KIMI-INTEROP-CANDIDATE",
+      "provider": "KIMI_QIANFAN",
+      "model": "kimi-k2.6",
+      "reviewer_role": "INTEROPERABILITY_AND_DEVELOPER_IMPLEMENTABILITY_REVIEWER",
+      "query_bytes": 21010,
+      "query_sha256": "a7d762d7bd22c762d2c7d479508c22624e28f51707eeedaf1945c4153fc7fed7",
+      "requests_authorized": 1,
+      "requests_executed": 0
+    },
+    {
+      "session_id": "PRE21-DEEPSEEK-BOUNDARY-CANDIDATE",
+      "provider": "DEEPSEEK",
+      "model": "deepseek-chat",
+      "reviewer_role": "SECURITY_FAILURE_AND_SEMANTIC_BOUNDARY_REVIEWER",
+      "query_bytes": 21006,
+      "query_sha256": "d2297316da3e20c750f16119610d1b06c2fae98b84f21ce911ff84c4a4572f6b",
+      "requests_authorized": 1,
+      "requests_executed": 0
+    }
+  ],
+  "accounting_before_execution": {
+    "live_model_requests_executed": 0,
+    "provider_network_requests_executed": 0,
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "repair_attempts": 0
+  },
+  "effects": {
+    "compact_projection_review_completed": false,
+    "full_source_human_review_executed": false,
+    "profile_review_completed": false,
+    "profile_adopted": false
+  }
+}
