@@ -1,0 +1,285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre50-deepseek-binding-planning-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-50 DeepSeek Binding Planning Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "standing_directive_eligibility",
+    "preconditions",
+    "scope",
+    "authorized_outputs",
+    "required_boundaries",
+    "effects_before_execution",
+    "stop_conditions",
+    "next_gate",
+    "execution_receipt",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre50-deepseek-binding-planning-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-50-RB1-DEEPSEEK-BINDING-PLANNING-DECISION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DBA_ONLY_PROVIDER_BINDING_PLANNING_AUTHORIZED_NOT_EXECUTED"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-50"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-50-RB1-DEEPSEEK-BINDING-SCOPE-AND-SECURITY-PLANNING-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "recommendation_commit": {
+      "$ref": "#/$defs/gitSha"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_DBA_ONLY_RB1_DEEPSEEK_BINDING_SCOPE_SECURITY_AND_AGENT_REVIEW_PLANNING_PACKET"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "standing_directive_eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_present",
+        "single_exact_option",
+        "repositories_target_and_scope_explicit",
+        "preconditions_directly_evidenced",
+        "all_effect_classes_declared",
+        "stop_conditions_explicit",
+        "later_conflict_present",
+        "independent_decision_record_present",
+        "result_validation_and_failure_retention_required",
+        "material_actions_separately_recorded",
+        "applicable"
+      ],
+      "properties": {
+        "canonical_recommendation_present": { "const": true },
+        "single_exact_option": { "const": true },
+        "repositories_target_and_scope_explicit": { "const": true },
+        "preconditions_directly_evidenced": { "const": true },
+        "all_effect_classes_declared": { "const": true },
+        "stop_conditions_explicit": { "const": true },
+        "later_conflict_present": { "const": false },
+        "independent_decision_record_present": { "const": true },
+        "result_validation_and_failure_retention_required": { "const": true },
+        "material_actions_separately_recorded": { "const": true },
+        "applicable": { "const": true }
+      }
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_remote_verified",
+        "recommendation_commit",
+        "dba_parent_head",
+        "target_head",
+        "target_remote_branch_matched",
+        "target_main_head",
+        "pre49_result_pass",
+        "b025_remains_active"
+      ],
+      "properties": {
+        "recommendation_remote_verified": { "const": true },
+        "recommendation_commit": { "$ref": "#/$defs/gitSha" },
+        "dba_parent_head": { "$ref": "#/$defs/gitSha" },
+        "target_head": { "$ref": "#/$defs/gitSha" },
+        "target_remote_branch_matched": { "const": true },
+        "target_main_head": { "$ref": "#/$defs/gitSha" },
+        "pre49_result_pass": { "const": true },
+        "b025_remains_active": { "const": true }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "target_repository",
+        "target_branch",
+        "target_write_paths",
+        "planning_directory",
+        "planning_files",
+        "provider_candidate",
+        "transport_candidate",
+        "network_requests_max",
+        "credential_reads_max",
+        "dependency_installs_max",
+        "agent_review_sessions_executed_max"
+      ],
+      "properties": {
+        "primary_repository": { "const": "digital-biosphere-architecture" },
+        "target_repository": { "const": "https://github.com/joy7758/titmas-integrations.git" },
+        "target_branch": { "const": "codex/rb0-governance-baseline" },
+        "target_write_paths": { "const": 0 },
+        "planning_directory": { "const": "commercialization-standards-titmas-integrations-rb1-provider-binding-planning" },
+        "planning_files": { "const": 12 },
+        "provider_candidate": { "const": "DEEPSEEK_OPENAI_COMPATIBLE_CHAT_COMPLETIONS" },
+        "transport_candidate": { "const": "httpcore==1.0.9" },
+        "network_requests_max": { "const": 0 },
+        "credential_reads_max": { "const": 0 },
+        "dependency_installs_max": { "const": 0 },
+        "agent_review_sessions_executed_max": { "const": 0 }
+      }
+    },
+    "authorized_outputs": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^commercialization-standards-titmas-integrations-rb1-provider-binding-planning/"
+      }
+    },
+    "required_boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "p0_direct_observability",
+        "p0_gap_must_be_preserved",
+        "credential_identifier_only",
+        "raw_request_retention_allowed",
+        "raw_response_retention_allowed",
+        "raw_provider_error_retention_allowed",
+        "retry_allowed",
+        "fallback_allowed",
+        "model_substitution_allowed",
+        "json_repair_allowed"
+      ],
+      "properties": {
+        "p0_direct_observability": { "const": false },
+        "p0_gap_must_be_preserved": { "const": true },
+        "credential_identifier_only": { "const": "DEEPSEEK_API_KEY" },
+        "raw_request_retention_allowed": { "const": false },
+        "raw_response_retention_allowed": { "const": false },
+        "raw_provider_error_retention_allowed": { "const": false },
+        "retry_allowed": { "const": false },
+        "fallback_allowed": { "const": false },
+        "model_substitution_allowed": { "const": false },
+        "json_repair_allowed": { "const": false }
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "dba_planning_write_authorized",
+        "target_write_authorized",
+        "provider_binding_implementation_authorized",
+        "provider_request_authorized",
+        "credential_read_authorized",
+        "dependency_install_authorized",
+        "agent_review_authorized",
+        "security_review_authorized",
+        "provider_supported",
+        "provider_conformance_authorized",
+        "runtime_authorized",
+        "agent_authorized",
+        "entity_authorized",
+        "permission_granted",
+        "evidence_truth_changed",
+        "merge_authorized",
+        "pull_request_authorized",
+        "release_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized"
+      ],
+      "properties": {
+        "dba_planning_write_authorized": { "const": true },
+        "target_write_authorized": { "const": false },
+        "provider_binding_implementation_authorized": { "const": false },
+        "provider_request_authorized": { "const": false },
+        "credential_read_authorized": { "const": false },
+        "dependency_install_authorized": { "const": false },
+        "agent_review_authorized": { "const": false },
+        "security_review_authorized": { "const": false },
+        "provider_supported": { "const": false },
+        "provider_conformance_authorized": { "const": false },
+        "runtime_authorized": { "const": false },
+        "agent_authorized": { "const": false },
+        "entity_authorized": { "const": false },
+        "permission_granted": { "const": false },
+        "evidence_truth_changed": { "const": false },
+        "merge_authorized": { "const": false },
+        "pull_request_authorized": { "const": false },
+        "release_authorized": { "const": false },
+        "commercial_offer_authorized": { "const": false },
+        "certification_authorized": { "const": false }
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "next_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "agent_review_authorized",
+        "provider_binding_implementation_decision_allowed",
+        "release_decision_allowed"
+      ],
+      "properties": {
+        "action": { "const": "FORM_EXACT_RB1_DEEPSEEK_BINDING_AGENT_REVIEW_RECOMMENDATION_ONLY" },
+        "agent_review_authorized": { "const": false },
+        "provider_binding_implementation_decision_allowed": { "const": false },
+        "release_decision_allowed": { "const": false }
+      }
+    },
+    "execution_receipt": {
+      "const": "PENDING_PRE50_RESULT"
+    },
+    "result": {
+      "const": "DBA_ONLY_PROVIDER_BINDING_PLANNING_NOT_EXECUTED"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "gitSha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    }
+  }
+}
