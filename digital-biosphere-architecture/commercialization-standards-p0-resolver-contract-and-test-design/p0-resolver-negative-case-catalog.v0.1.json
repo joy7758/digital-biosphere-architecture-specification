@@ -1,0 +1,40 @@
+{
+  "$schema": "./p0-resolver-negative-case-catalog.schema.v0.1.json",
+  "document_id": "TITMAS-PRE64-P0-RESOLVER-NEGATIVE-CASE-CATALOG-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_TEST_DESIGN_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-64",
+  "case_count": 24,
+  "cases": [
+    {"case_id":"P0-NEG-001","boundary":"INPUT","mutation":"hostname is not in the exact allowlist","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-002","boundary":"INPUT","mutation":"hostname is an IPv4 or IPv6 literal","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-003","boundary":"INPUT","mutation":"port is not 443","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-004","boundary":"INVOCATION","mutation":"resolver is invoked more than once","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-005","boundary":"DEADLINE","mutation":"deadline expires but observation reports PASS","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-006","boundary":"FAILURE_MAPPING","mutation":"name-not-found maps to NONE or PASS","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-007","boundary":"FAILURE_MAPPING","mutation":"temporary failure maps to NONE or PASS","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-008","boundary":"RESULT_LIMIT","mutation":"resolver returns an empty result set","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-009","boundary":"RESULT_LIMIT","mutation":"raw result count exceeds 64","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-010","boundary":"RESULT_LIMIT","mutation":"unique usable result count exceeds 64","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-011","boundary":"RESULT_FILTER","mutation":"selected result uses an unsupported address family","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-012","boundary":"RESULT_FILTER","mutation":"selected result is not SOCK_STREAM","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-013","boundary":"RESULT_FILTER","mutation":"selected result is not IPPROTO_TCP","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-014","boundary":"RESULT_FILTER","mutation":"sockaddr shape or port is invalid","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-015","boundary":"SELECTION","mutation":"selected address is absent from resolver output","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-016","boundary":"CONTINUITY","mutation":"P1 handle differs from the P0 handle","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-017","boundary":"P1_CONNECT","mutation":"P1 invokes a resolver","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-018","boundary":"P1_CONNECT","mutation":"P1 uses socket.create_connection","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-019","boundary":"P1_CONNECT","mutation":"P1 performs a second connect attempt","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-020","boundary":"P1_CONNECT","mutation":"P1 falls back to another address after failure","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-021","boundary":"TLS_IDENTITY","mutation":"TLS identity or SNI is changed to the selected IP","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-022","boundary":"SANITIZATION","mutation":"hostname IP sockaddr or exception string enters observation","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-023","boundary":"CLOSURE","mutation":"P0 PASS is synthesized without resolver execution","expected":"REJECT_OR_FAIL_CLOSED"},
+    {"case_id":"P0-NEG-024","boundary":"SCHEMA","mutation":"additional property or unknown enum is accepted","expected":"REJECT_OR_FAIL_CLOSED"}
+  ],
+  "execution": {
+    "network_requests": 0,
+    "resolver_calls": 0,
+    "tcp_connects": 0,
+    "cases_executed": 0
+  }
+}

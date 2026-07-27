@@ -1,0 +1,132 @@
+{
+  "$schema": "./p0-resolver-contract.schema.v0.1.json",
+  "document_id": "TITMAS-PRE64-P0-RESOLVER-CONTRACT-0.1",
+  "version": "0.1.0",
+  "status": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED_NOT_IMPLEMENTED",
+  "decision_reference": "CS-D02-PRE-64",
+  "profile": {
+    "profile_id": "P0_RESOLVER_OBSERVATION_V0_1",
+    "scope": "SYNCHRONOUS_SINGLE_REQUEST_DEVELOPMENT_PROFILE",
+    "phase_id": "P0",
+    "resolver_invocations_max": 1
+  },
+  "resolver_input": {
+    "hostname_source": "EXACT_APPROVED_RUNTIME_CONFIGURATION",
+    "exact_allowlist_required": true,
+    "ip_literal_allowed": false,
+    "port": 443,
+    "family": "AF_UNSPEC",
+    "socket_type": "SOCK_STREAM",
+    "protocol": "IPPROTO_TCP",
+    "flags": 0
+  },
+  "deadline": {
+    "timeout_budget_ms": 5000,
+    "deadline_enforcement_required": true,
+    "getaddrinfo_timeout_parameter_available": false,
+    "socket_default_timeout_is_sufficient_evidence": false,
+    "mechanism_selected": "NOT_SELECTED_REQUIRES_IMPLEMENTATION_REVIEW"
+  },
+  "filter_and_selection": {
+    "allowed_families": ["AF_INET", "AF_INET6"],
+    "required_socket_type": "SOCK_STREAM",
+    "required_protocol": "IPPROTO_TCP",
+    "required_port": 443,
+    "raw_result_count_max": 64,
+    "unique_usable_result_count_max": 64,
+    "deduplication_key": ["family", "socket_type", "protocol", "sockaddr"],
+    "selection_rule": "FIRST_UNIQUE_IN_RESOLVER_ORDER_V1",
+    "selected_addresses_max": 1,
+    "cross_platform_order_stable_claim": false
+  },
+  "in_memory_continuity": {
+    "object_name": "ResolvedEndpoint",
+    "fields": [
+      "original_hostname",
+      "port",
+      "family",
+      "socket_type",
+      "protocol",
+      "sockaddr",
+      "resolution_handle_ref"
+    ],
+    "serialized": false,
+    "lifetime": "ONE_REQUEST_UNTIL_P2_COMPLETE_OR_FIRST_FAILURE",
+    "handle_generation": "OPAQUE_RANDOM_REFERENCE_MIN_128_BITS",
+    "handle_derived_from_hostname_or_address": false,
+    "p1_must_consume_same_object": true,
+    "p1_handle_match_required": true,
+    "p1_resolver_calls_max": 0,
+    "p1_socket_create_calls_max": 1,
+    "p1_connect_calls_max": 1,
+    "socket_create_connection_allowed": false,
+    "fallback_address_allowed": false,
+    "tls_identity": "ORIGINAL_EXACT_ALLOWLISTED_HOSTNAME"
+  },
+  "sanitized_observation": {
+    "allowed_fields": [
+      "schema_version",
+      "phase_id",
+      "status",
+      "endpoint_reference",
+      "elapsed_ms",
+      "timeout_budget_ms",
+      "raw_result_count",
+      "unique_usable_result_count",
+      "selected_address_family",
+      "failure_category",
+      "resolution_handle_ref",
+      "executed"
+    ],
+    "forbidden_fields": [
+      "hostname",
+      "ip_address",
+      "sockaddr",
+      "canonname",
+      "dns_packet",
+      "credential",
+      "authorization_header",
+      "request_body",
+      "response_body",
+      "resolver_exception_string"
+    ],
+    "status_values": ["PASS", "FAIL"]
+  },
+  "failure_taxonomy": [
+    "NONE",
+    "DNS_TIMEOUT",
+    "DNS_NAME_NOT_FOUND",
+    "DNS_TEMPORARY_FAILURE",
+    "DNS_EMPTY_RESULT",
+    "DNS_RESULT_LIMIT_EXCEEDED",
+    "DNS_NO_USABLE_TCP_ADDRESS",
+    "DNS_RESOLVER_ERROR",
+    "DNS_BOUNDARY_VIOLATION"
+  ],
+  "closure": {
+    "pass_requires_actual_resolver_invocation": true,
+    "pass_requires_usable_result": true,
+    "pass_requires_selected_family": true,
+    "pass_requires_handle": true,
+    "synthetic_pass_allowed": false,
+    "failure_closes_p1_p9": true,
+    "unknown_failure_fails_closed": true
+  },
+  "known_limitations": [
+    "RESOLVER_RESULT_ORDER_MAY_DIFFER_BY_PLATFORM",
+    "DEADLINE_MECHANISM_NOT_SELECTED",
+    "SINGLE_ADDRESS_NO_FAILOVER",
+    "NO_NETWORK_EXECUTION",
+    "NO_PROVIDER_CONFORMANCE",
+    "NO_PRODUCTION_AVAILABILITY_CLAIM"
+  ],
+  "effects": {
+    "contract_adopted": false,
+    "implemented": false,
+    "network_executed": false,
+    "dependency_adopted": false,
+    "provider_supported": false,
+    "formal_security_review_complete": false,
+    "standard_ready": false
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/p0-resolver-negative-case-catalog.schema.v0.1.json",
+  "title": "TITMAS P0 Resolver Negative Case Catalog",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "case_count",
+    "cases",
+    "execution"
+  ],
+  "properties": {
+    "$schema": { "const": "./p0-resolver-negative-case-catalog.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-PRE64-P0-RESOLVER-NEGATIVE-CASE-CATALOG-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "OFFLINE_TEST_DESIGN_NOT_EXECUTED" },
+    "decision_reference": { "const": "CS-D02-PRE-64" },
+    "case_count": { "const": 24 },
+    "cases": {
+      "type": "array",
+      "minItems": 24,
+      "maxItems": 24,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "boundary", "mutation", "expected"],
+        "properties": {
+          "case_id": {
+            "enum": [
+              "P0-NEG-001",
+              "P0-NEG-002",
+              "P0-NEG-003",
+              "P0-NEG-004",
+              "P0-NEG-005",
+              "P0-NEG-006",
+              "P0-NEG-007",
+              "P0-NEG-008",
+              "P0-NEG-009",
+              "P0-NEG-010",
+              "P0-NEG-011",
+              "P0-NEG-012",
+              "P0-NEG-013",
+              "P0-NEG-014",
+              "P0-NEG-015",
+              "P0-NEG-016",
+              "P0-NEG-017",
+              "P0-NEG-018",
+              "P0-NEG-019",
+              "P0-NEG-020",
+              "P0-NEG-021",
+              "P0-NEG-022",
+              "P0-NEG-023",
+              "P0-NEG-024"
+            ]
+          },
+          "boundary": {
+            "enum": [
+              "INPUT",
+              "INVOCATION",
+              "DEADLINE",
+              "FAILURE_MAPPING",
+              "RESULT_LIMIT",
+              "RESULT_FILTER",
+              "SELECTION",
+              "CONTINUITY",
+              "P1_CONNECT",
+              "TLS_IDENTITY",
+              "SANITIZATION",
+              "CLOSURE",
+              "SCHEMA"
+            ]
+          },
+          "mutation": { "type": "string", "minLength": 4, "maxLength": 180 },
+          "expected": { "const": "REJECT_OR_FAIL_CLOSED" }
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["network_requests", "resolver_calls", "tcp_connects", "cases_executed"],
+      "properties": {
+        "network_requests": { "const": 0 },
+        "resolver_calls": { "const": 0 },
+        "tcp_connects": { "const": 0 },
+        "cases_executed": { "const": 0 }
+      }
+    }
+  }
+}

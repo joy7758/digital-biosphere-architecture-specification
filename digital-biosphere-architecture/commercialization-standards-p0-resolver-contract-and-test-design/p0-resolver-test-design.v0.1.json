@@ -1,0 +1,66 @@
+{
+  "$schema": "./p0-resolver-test-design.schema.v0.1.json",
+  "document_id": "TITMAS-PRE64-P0-RESOLVER-TEST-DESIGN-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_FIXTURE_DESIGN_NOT_IMPLEMENTED_NOT_EXECUTED",
+  "decision_reference": "CS-D02-PRE-64",
+  "harness": {
+    "resolver": "INJECTED_FAKE",
+    "connector": "INJECTED_FAKE",
+    "clock": "INJECTED_MONOTONIC_FAKE",
+    "handle_source": "INJECTED_DETERMINISTIC_FAKE_FOR_TEST_ONLY",
+    "network_allowed": false,
+    "real_dns_allowed": false,
+    "real_tcp_allowed": false
+  },
+  "positive_cases": [
+    {"case_id":"P0-POS-001","purpose":"single IPv4 TCP result produces one sanitized PASS observation","expected":"PASS_OFFLINE_FIXTURE_EXPECTATION"},
+    {"case_id":"P0-POS-002","purpose":"single IPv6 TCP result produces one sanitized PASS observation","expected":"PASS_OFFLINE_FIXTURE_EXPECTATION"},
+    {"case_id":"P0-POS-003","purpose":"mixed family selects first unique usable result in resolver order","expected":"PASS_OFFLINE_FIXTURE_EXPECTATION"},
+    {"case_id":"P0-POS-004","purpose":"duplicate resolver tuples are deduplicated before selection","expected":"PASS_OFFLINE_FIXTURE_EXPECTATION"},
+    {"case_id":"P0-POS-005","purpose":"sanitized observation contains no hostname IP or sockaddr","expected":"PASS_OFFLINE_FIXTURE_EXPECTATION"},
+    {"case_id":"P0-POS-006","purpose":"P1 consumes the same ResolvedEndpoint and opaque handle","expected":"PASS_OFFLINE_FIXTURE_EXPECTATION"}
+  ],
+  "negative_case_refs": [
+    "P0-NEG-001",
+    "P0-NEG-002",
+    "P0-NEG-003",
+    "P0-NEG-004",
+    "P0-NEG-005",
+    "P0-NEG-006",
+    "P0-NEG-007",
+    "P0-NEG-008",
+    "P0-NEG-009",
+    "P0-NEG-010",
+    "P0-NEG-011",
+    "P0-NEG-012",
+    "P0-NEG-013",
+    "P0-NEG-014",
+    "P0-NEG-015",
+    "P0-NEG-016",
+    "P0-NEG-017",
+    "P0-NEG-018",
+    "P0-NEG-019",
+    "P0-NEG-020",
+    "P0-NEG-021",
+    "P0-NEG-022",
+    "P0-NEG-023",
+    "P0-NEG-024"
+  ],
+  "acceptance": {
+    "positive_count": 6,
+    "negative_count": 24,
+    "all_case_ids_unique": true,
+    "schema_rejects_additional_properties": true,
+    "no_network": true,
+    "first_failure_retained": true,
+    "platform_stability_claim_allowed": false,
+    "implementation_authorized": false
+  },
+  "effects": {
+    "tests_created": false,
+    "tests_executed": false,
+    "network_executed": false,
+    "target_changed": false
+  }
+}

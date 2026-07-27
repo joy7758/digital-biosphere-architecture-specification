@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/p0-resolver-agent-review-input.schema.v0.1.json",
+  "title": "TITMAS P0 Resolver Agent Review Input",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "reviewed_artifacts",
+    "future_lanes",
+    "questions",
+    "mandatory_open_findings",
+    "review_effects"
+  ],
+  "properties": {
+    "$schema": { "const": "./p0-resolver-agent-review-input.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-PRE64-P0-RESOLVER-AGENT-REVIEW-INPUT-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "PUBLIC_SAFE_INPUT_PREPARED_REVIEW_NOT_AUTHORIZED" },
+    "decision_reference": { "const": "CS-D02-PRE-64" },
+    "reviewed_artifacts": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1, "maxLength": 240 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    },
+    "future_lanes": {
+      "const": [
+        {
+          "role": "INTEGRATION_MAINTAINER_CANDIDATE",
+          "provider": "QIANFAN",
+          "model": "ernie-4.5-turbo-20260402"
+        },
+        {
+          "role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE",
+          "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+          "model": "qwen3.7-plus"
+        }
+      ]
+    },
+    "questions": {
+      "const": [
+        "WOULD_YOU_RECOMMEND_THIS_DEVELOPMENT_CONTRACT_TO_AN_AGENT_INFRASTRUCTURE_DEVELOPER",
+        "IS_P0_SEPARATE_FROM_P1_WITHOUT_SYNTHETIC_PASS",
+        "IS_THE_DEADLINE_REQUIREMENT_IMPLEMENTABLE_AND_NOT_OVERCLAIMED",
+        "IS_SELECTION_DETERMINISTIC_FOR_A_GIVEN_ORDERED_INPUT",
+        "ARE_PLATFORM_LIMITATIONS_EXPLICIT",
+        "IS_RAW_ADDRESS_DATA_MINIMIZED",
+        "IS_P0_P1_CONTINUITY_TESTABLE",
+        "IS_ORIGINAL_HOSTNAME_TLS_IDENTITY_PRESERVED",
+        "DO_NEGATIVE_CASES_CLOSE_RETRY_FALLBACK_AND_RERESOLUTION",
+        "WHAT_MUST_CHANGE_BEFORE_IMPLEMENTATION_RECOMMENDATION"
+      ]
+    },
+    "mandatory_open_findings": {
+      "const": [
+        "DEADLINE_MECHANISM_NOT_SELECTED",
+        "RESOLVER_ORDER_PLATFORM_DEPENDENT",
+        "SINGLE_ADDRESS_NO_FAILOVER",
+        "FORMAL_HUMAN_SECURITY_REVIEW_NOT_COMPLETE",
+        "IMPLEMENTATION_NOT_AUTHORIZED"
+      ]
+    },
+    "review_effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_authorized",
+        "requests_executed",
+        "reviewer_assigned",
+        "formal_security_review_complete",
+        "implementation_authorized"
+      ],
+      "properties": {
+        "review_authorized": { "const": false },
+        "requests_executed": { "const": 0 },
+        "reviewer_assigned": { "const": false },
+        "formal_security_review_complete": { "const": false },
+        "implementation_authorized": { "const": false }
+      }
+    }
+  }
+}

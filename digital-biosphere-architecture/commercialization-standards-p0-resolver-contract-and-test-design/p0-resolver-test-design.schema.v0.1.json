@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/p0-resolver-test-design.schema.v0.1.json",
+  "title": "TITMAS P0 Resolver Test Design",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "harness",
+    "positive_cases",
+    "negative_case_refs",
+    "acceptance",
+    "effects"
+  ],
+  "properties": {
+    "$schema": { "const": "./p0-resolver-test-design.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-PRE64-P0-RESOLVER-TEST-DESIGN-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "OFFLINE_FIXTURE_DESIGN_NOT_IMPLEMENTED_NOT_EXECUTED" },
+    "decision_reference": { "const": "CS-D02-PRE-64" },
+    "harness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resolver",
+        "connector",
+        "clock",
+        "handle_source",
+        "network_allowed",
+        "real_dns_allowed",
+        "real_tcp_allowed"
+      ],
+      "properties": {
+        "resolver": { "const": "INJECTED_FAKE" },
+        "connector": { "const": "INJECTED_FAKE" },
+        "clock": { "const": "INJECTED_MONOTONIC_FAKE" },
+        "handle_source": { "const": "INJECTED_DETERMINISTIC_FAKE_FOR_TEST_ONLY" },
+        "network_allowed": { "const": false },
+        "real_dns_allowed": { "const": false },
+        "real_tcp_allowed": { "const": false }
+      }
+    },
+    "positive_cases": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "purpose", "expected"],
+        "properties": {
+          "case_id": {
+            "enum": ["P0-POS-001", "P0-POS-002", "P0-POS-003", "P0-POS-004", "P0-POS-005", "P0-POS-006"]
+          },
+          "purpose": { "type": "string", "minLength": 4, "maxLength": 180 },
+          "expected": { "const": "PASS_OFFLINE_FIXTURE_EXPECTATION" }
+        }
+      }
+    },
+    "negative_case_refs": {
+      "type": "array",
+      "minItems": 24,
+      "maxItems": 24,
+      "items": { "type": "string", "pattern": "^P0-NEG-[0-9]{3}$" }
+    },
+    "acceptance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "positive_count",
+        "negative_count",
+        "all_case_ids_unique",
+        "schema_rejects_additional_properties",
+        "no_network",
+        "first_failure_retained",
+        "platform_stability_claim_allowed",
+        "implementation_authorized"
+      ],
+      "properties": {
+        "positive_count": { "const": 6 },
+        "negative_count": { "const": 24 },
+        "all_case_ids_unique": { "const": true },
+        "schema_rejects_additional_properties": { "const": true },
+        "no_network": { "const": true },
+        "first_failure_retained": { "const": true },
+        "platform_stability_claim_allowed": { "const": false },
+        "implementation_authorized": { "const": false }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["tests_created", "tests_executed", "network_executed", "target_changed"],
+      "properties": {
+        "tests_created": { "const": false },
+        "tests_executed": { "const": false },
+        "network_executed": { "const": false },
+        "target_changed": { "const": false }
+      }
+    }
+  }
+}
