@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_CE_G11B_PHASE_B_CANONICAL_INTEGRATION_RECOMMENDED_DECISION_PENDING_STANDARD_NOT_READY"
+      "const": "CS_D02_CE_G11B_DRAFT_PR_DECISION_REVIEW_FAIL_CLOSED_REMEDIATION_PENDING_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -109,13 +109,13 @@
       "properties": {
         "as_of": {"const": "2026-07-27"},
         "last_completed_step": {
-          "const": "COMMERCIAL-EVALUATION-CE-G11B-PHASE-B-CANONICAL-INTEGRATION-RECOMMENDATION"
+          "const": "COMMERCIAL-EVALUATION-CE-G11B-DRAFT-PR-DECISION-REVIEW"
         },
         "last_completed_result": {
-          "const": "RECOMMENDED_OPTION_A_DRAFT_PR_THEN_SEPARATE_MERGE_DECISION"
+          "const": "NON_QUALIFYING_REVIEW_ATTEMPT_NO_SANITIZED_MODEL_RESULT"
         },
         "direct_evidence_reference": {
-          "const": "TITMAS-CE-G11B-PHASE-B-CANONICAL-INTEGRATION-QWEN-REVIEW-v0.1.json"
+          "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-DRAFT-PR-QWEN-DECISION-REVIEW-FAILURE-v0.1.json"
         },
         "current_best_connected_model": {"const": "qwen3.7-max"},
         "primary_new_provider_candidate": {
@@ -133,9 +133,9 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "PREPARE_CE_G11B_DRAFT_PR_CREATION_DECISION"
+          "const": "PREPARE_CE_G11B_DRAFT_PR_DECISION_REVIEW_RETRY_RECOMMENDATION"
         },
-        "next_action_authorized": {"const": true},
+        "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
         "provider_integration_authorized": {"const": false},
         "security_review_completed": {"const": false},
@@ -2758,7 +2758,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "CE_G11B_PHASE_B_CANONICAL_INTEGRATION_RECOMMENDED_DECISION_PENDING"
+          "const": "CE_G11B_DRAFT_PR_DECISION_REVIEW_FAIL_CLOSED_REMEDIATION_PENDING"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7784,10 +7784,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_CE_G11B_DRAFT_PR_CREATION_DECISION_ONLY"
+          "const": "PREPARE_CE_G11B_DRAFT_PR_DECISION_REVIEW_RETRY_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
-          "const": true
+          "const": false
         },
         "external_execution_authorized": {
           "const": false

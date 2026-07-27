@@ -426,6 +426,11 @@ workflow runs 仍为 0，Phase B 仍未授权。
 [Max review](TITMAS-CE-G11B-PHASE-B-CANONICAL-INTEGRATION-QWEN-REVIEW-v0.1.json)
 返回 `RECOMMENDED`、Option A、置信度 `0.95`、0 blocker/correction。Recommendation
 不授权创建 PR 或 Phase B。
+[Draft PR Decision review failure](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-DRAFT-PR-QWEN-DECISION-REVIEW-FAILURE-v0.1.json)
+保留 `NON_QUALIFYING_REVIEW_ATTEMPT`：唯一一次 `qwen3.7-max` Decision review 没有产生
+可持久化 sanitized result，因此 returned model、HTTP status 和 verdict 无法验证。
+[Decision record](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-DRAFT-PR-CREATION-DECISION-RECORD.v0.1.json)
+保持 `NOT_AUTHORIZED_DECISION_REVIEW_NON_QUALIFYING`；没有重试，也没有创建 PR。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
