@@ -1,0 +1,52 @@
+{
+  "record_type": "TITMAS_SANITIZED_WRITE_AHEAD_RECOMMENDATION_REVIEW",
+  "review_id": "TITMAS-CE-G11B-REPLACEMENT-DRAFT-PR-CREATION-RECOMMENDATION-QWEN-REVIEW-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T17:36:04.742Z",
+  "status": "COMPLETED_QUALIFYING",
+  "reviewed_artifact": "TITMAS-CE-G11B-REPLACEMENT-DRAFT-PR-CREATION-RECOMMENDATION-v0.1.md",
+  "reviewed_source_sha256": "34a19141b2483a2a19eac1844a55adc9c21f40346c05061987ff56826da06a4c",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "returned_model_equals_requested_model": true,
+  "http_status": 200,
+  "curl_exit": 0,
+  "response_byte_count": 5869,
+  "request_count": 1,
+  "retry_count": 0,
+  "fallback_count": 0,
+  "model_substitution_count": 0,
+  "json_repair_request_count": 0,
+  "request_payload_sha256": "0ccf2ea2a794474f40d0fda1c81db7a674fe6e5f912838494b348eab22771ed7",
+  "response_envelope_sha256": "90ee16dcab023f7b73c04eac18b75e1cc94e50fde418a28726d77ff90e6b44cd",
+  "envelope_json_parse_pass": true,
+  "direct_json_parse_pass": true,
+  "qualifying_review": true,
+  "review": {
+    "verdict": "RECOMMENDED",
+    "confidence": 0.95,
+    "preferred_option": "A",
+    "agent_customer_recommendation": "RECOMMENDED",
+    "current_pr_incomplete": true,
+    "candidate_attestation_separation_complete": true,
+    "workflow_side_effect_bounded": true,
+    "pr22_preserved": true,
+    "no_pr_creation_authority": true,
+    "no_merge_authority": true,
+    "blocking_findings": [],
+    "required_corrections": [],
+    "rationale": "Option A is the correct bounded next step: create a new Draft PR from the immutable candidate branch to provide an accurate review surface for the complete integration candidate. PR #22 remains unmodified, candidate and attestation refs remain separate, no pull_request workflow is present, and no merge or release authority is implied."
+  },
+  "terminal_failure_category": null,
+  "persistence_boundary": {
+    "credential_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "hidden_reasoning_persisted": false
+  },
+  "effects": {
+    "decision": false,
+    "pr_created": false,
+    "pr22_mutated": false,
+    "merge": false
+  }
+}
