@@ -18,30 +18,30 @@ export function Brand() {
   );
 }
 
-export function Header({ locale, section = "home" }: { locale: Locale; section?: "home" | "status" | "community" }) {
+type SiteSection = "home" | "industries" | "demo" | "status" | "community";
+
+export function Header({ locale, section = "home" }: { locale: Locale; section?: SiteSection }) {
   const c = content[locale];
   const root = locale === "zh" ? "/" : "/en/";
   const status = locale === "zh" ? "/status/" : "/en/status/";
   const community = locale === "zh" ? "/community/" : "/en/community/";
-  const language =
-    section === "status"
-      ? locale === "zh"
-        ? "/en/status/"
-        : "/status/"
-      : section === "community"
-        ? locale === "zh"
-          ? "/en/community/"
-          : "/community/"
-      : locale === "zh"
-        ? "/en/"
-        : "/";
+  const industries = locale === "zh" ? "/industries/" : "/en/industries/";
+  const demo = locale === "zh" ? "/digital-cell/" : "/en/digital-cell/";
+  const languageRoutes: Record<SiteSection, [string, string]> = {
+    home: ["/en/", "/"],
+    industries: ["/en/industries/", "/industries/"],
+    demo: ["/en/digital-cell/", "/digital-cell/"],
+    status: ["/en/status/", "/status/"],
+    community: ["/en/community/", "/community/"],
+  };
+  const language = locale === "zh" ? languageRoutes[section][0] : languageRoutes[section][1];
 
   const nav = (
     <>
-      <a href={community}>{c.nav.developers}</a>
       <a href={`${root}#architecture`}>{c.nav.architecture}</a>
-      <a href={`${root}#trust`}>{c.nav.trust}</a>
-      <a href={`${root}#workflow`}>{c.nav.workflow}</a>
+      <a href={industries} aria-current={section === "industries" ? "page" : undefined}>{c.nav.workflow}</a>
+      <a href={demo} aria-current={section === "demo" ? "page" : undefined}>{c.nav.demo}</a>
+      <a href={community}>{c.nav.developers}</a>
       <a href={status}>{c.nav.status}</a>
       <a
         href="https://github.com/joy7758/digital-biosphere-architecture-specification"
@@ -110,6 +110,11 @@ export function Footer({ locale }: { locale: Locale }) {
       <div className="footer-legal">
         <span>© 2026 Digital Biosphere Architecture</span>
         <span>{c.legal}</span>
+      </div>
+      <div className="footer-filing">
+        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">
+          晋ICP备2026006409号-1
+        </a>
       </div>
     </footer>
   );

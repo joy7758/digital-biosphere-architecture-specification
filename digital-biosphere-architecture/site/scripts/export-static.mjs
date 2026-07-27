@@ -30,7 +30,10 @@ const routes = [
   { request: "/en", output: "en/index.html", markers: markers.enHome },
   { request: "/community", output: "community/index.html", markers: ["共同建设可信多智能体基础设施", "COMMUNITY_ESTABLISHED=false"] },
   { request: "/en/community", output: "en/community/index.html", markers: ["Build trustworthy multi-agent infrastructure together", "COMMUNITY_ESTABLISHED=false"] },
+  { request: "/industries", output: "industries/index.html", markers: ["智能制造智能体生态", "TITMAS 不提供", "Digital Cell Demo"] },
+  { request: "/en/industries", output: "en/industries/index.html", markers: ["Manufacturing AI Agent Ecosystem", "TITMAS does not provide", "Digital Cell Demo"] },
   { request: "/digital-cell", output: "digital-cell/index.html", markers: ["TITMAS Digital Cell Demo", "REFERENCE_COMPLETE", "NO DIGITAL LIFE CLAIM"] },
+  { request: "/en/digital-cell", output: "en/digital-cell/index.html", markers: ["Make agent execution", "REFERENCE_COMPLETE", "NO DIGITAL LIFE CLAIM"] },
   { request: "/status", output: "status/index.html", markers: markers.zhStatus },
   { request: "/en/status", output: "en/status/index.html", markers: markers.enStatus },
 ];

@@ -42,13 +42,20 @@ test("renders equivalent Chinese and English public entry points", async () => {
 
   const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
   assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
-  assert.match(en, /infrastructure developer community for trustworthy multi-agent systems/i);
+  assert.match(en, /trust infrastructure layer for autonomous AI agent ecosystems/i);
   for (const marker of expectedMarkers.zhHome) assert.match(zh, new RegExp(marker));
   for (const marker of expectedMarkers.enHome) assert.match(en, new RegExp(marker));
   assert.match(zh, /Evidence/);
   assert.match(en, /Evidence/);
-  assert.match(zh, /TITMAS_PUBLIC_DOMAIN/);
-  assert.match(en, /TITMAS_GITHUB_SLUG/);
+  assert.match(zh, /TITMAS 支撑的行业生态/);
+  assert.match(en, /TITMAS Across Industries/);
+  assert.match(zh, /制造业是一个高价值应用示例/);
+  assert.match(en, /manufacturing is a high-value application example/i);
+  assert.match(zh, /\/status\//);
+  assert.match(en, /\/en\/status\//);
+  assert.match(zh, /晋ICP备2026006409号-1/);
+  assert.match(en, /晋ICP备2026006409号-1/);
+  assert.match(zh, /https:\/\/beian\.miit\.gov\.cn\//);
   if (releaseContext.mode === "candidate") {
     assert.match(zh, /Developer Preview Candidate/);
     assert.match(en, /Developer Preview Candidate/);
@@ -75,6 +82,40 @@ test("renders complete bilingual TITMAS community entry points", async () => {
   assert.match(en, /organization that does not exist/i);
   assert.match(zh, /COMMUNITY_ESTABLISHED=false/);
   assert.match(en, /PUBLIC_CONTRIBUTION_ENABLED=false/);
+});
+
+test("renders clickable bilingual industry application entry points", async () => {
+  const [zhResponse, enResponse] = await Promise.all([
+    render("/industries"),
+    render("/en/industries"),
+  ]);
+  assert.equal(zhResponse.status, 200);
+  assert.equal(enResponse.status, 200);
+  const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
+  assert.match(zh, /智能制造智能体生态/);
+  assert.match(zh, /TITMAS 不提供/);
+  assert.match(en, /Manufacturing AI Agent Ecosystem/);
+  assert.match(en, /TITMAS does not provide/);
+  assert.match(zh, /href="\/digital-cell\//);
+  assert.match(en, /href="\/en\/digital-cell\//);
+});
+
+test("renders bilingual Digital Cell pages with shared return navigation", async () => {
+  const [zhResponse, enResponse] = await Promise.all([
+    render("/digital-cell"),
+    render("/en/digital-cell"),
+  ]);
+  assert.equal(zhResponse.status, 200);
+  assert.equal(enResponse.status, 200);
+  const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
+  assert.match(zh, /REFERENCE_COMPLETE/);
+  assert.match(en, /REFERENCE_COMPLETE/);
+  assert.match(zh, /href="\/industries\//);
+  assert.match(en, /href="\/en\/industries\//);
+  assert.match(zh, /href="\/"/);
+  assert.match(en, /href="\/en\/"/);
+  assert.match(zh, /NO PRODUCTION CERTIFICATION/);
+  assert.match(en, /NO PRODUCTION CERTIFICATION/);
 });
 
 test("renders bilingual status pages with fail-closed truth", async () => {
@@ -125,6 +166,8 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.public_brand, "TITMAS");
   assert.equal(agentIndex.developer_community.community_established, false);
   assert.equal(agentIndex.entrypoints.titmas_community, "/titmas-community.json");
+  assert.equal(agentIndex.entrypoints.industries_zh, "/industries/");
+  assert.equal(agentIndex.entrypoints.industries_en, "/en/industries/");
   assert.equal(titmasCommunity.public_front_door.future_domain_filing_status, "PENDING");
   assert.equal(titmasCommunity.github.organization_created, false);
   assert.equal(titmasCommunity.community_state.public_contribution_enabled, false);
@@ -151,6 +194,13 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.license.identifier, "Apache-2.0");
   assert.equal(status.public_website.deployed, true);
   assert.equal(status.public_website.rollback_validated, true);
+  assert.equal(status.public_website.icp_filing.approved, true);
+  assert.equal(status.public_website.icp_filing.record_number, "晋ICP备2026006409号-1");
+  assert.deepEqual(status.public_website.icp_filing.covered_domains, ["redcrag.cn", "www.redcrag.cn"]);
+  assert.equal(agentIndex.public_website.icp_filing_approved, true);
+  assert.equal(agentIndex.public_website.icp_record_number, "晋ICP备2026006409号-1");
+  assert.match(llms, /ICP filing: APPROVED/);
+  assert.match(llms, /ICP record number: 晋ICP备2026006409号-1/);
   assert.equal(status.production_path.otlp_reference_candidate_version, "1.11.0");
   assert.equal(status.production_path.otlp_reference_version_status, "ADOPTED_REFERENCE_NOT_RUNTIME_PROOF");
   assert.equal(status.production_path.dq_022_status, "DECIDED_REFERENCE_ADOPTED");

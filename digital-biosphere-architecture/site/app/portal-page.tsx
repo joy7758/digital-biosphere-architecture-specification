@@ -1,9 +1,12 @@
-import { communityGateRows, content, type Locale } from "./site-content";
+import { content, type Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
 
 export function PortalPage({ locale }: { locale: Locale }) {
   const c = content[locale];
   const statusPath = locale === "zh" ? "/status/" : "/en/status/";
+  const communityPath = locale === "zh" ? "/community/" : "/en/community/";
+  const industriesPath = locale === "zh" ? "/industries/" : "/en/industries/";
+  const demoPath = locale === "zh" ? "/digital-cell/" : "/en/digital-cell/";
   const architectureHref =
     "https://github.com/joy7758/digital-biosphere-architecture-specification";
 
@@ -15,6 +18,14 @@ export function PortalPage({ locale }: { locale: Locale }) {
     url: locale === "zh" ? "https://redcrag.cn/" : "https://redcrag.cn/en/",
     inLanguage: c.lang,
     description: c.lead,
+    keywords: [
+      "AI Agent Infrastructure",
+      "Trusted Agent Execution",
+      "Verifiable Execution Evidence",
+      "Industrial AI Agent Governance",
+      "Multi-Agent System Infrastructure",
+      "Autonomous Digital Ecosystem",
+    ],
     isBasedOn: architectureHref,
   };
 
@@ -22,7 +33,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
     <div className="site" lang={c.lang}>
       <Header locale={locale} />
       <main>
-        <section className="hero" data-section-id="hero">
+        <section className="hero simple-hero" data-section-id="hero">
           <div className="hero-grid" aria-hidden="true">
             <div className="orbit orbit-a" />
             <div className="orbit orbit-b" />
@@ -32,18 +43,109 @@ export function PortalPage({ locale }: { locale: Locale }) {
           </div>
           <div className="hero-content">
             <div className="hero-badge"><span />{c.badge}</div>
-            <p className="eyebrow">{c.eyebrow}</p>
+            <p className="eyebrow">
+              {locale === "zh"
+                ? "TRUST INFRASTRUCTURE / 可信基础设施"
+                : "TRUST INFRASTRUCTURE FOR AUTONOMOUS AGENTS"}
+            </p>
             <h1>{c.title}</h1>
             <p className="hero-lead">{c.lead}</p>
+            <p className="hero-strategy">{c.strategyLine}</p>
             <div className="hero-actions">
-              <a className="button button-primary" href={locale === "zh" ? "/community/" : "/en/community/"}>{c.primaryCta}</a>
-              <a className="button button-secondary" href={statusPath}>{c.secondaryCta}</a>
+              <a className="button button-primary" href="#architecture">{c.primaryCta}</a>
+              <a className="button button-secondary" href={demoPath}>{c.secondaryCta}</a>
             </div>
-            <p className="truth-notice"><span>i</span>{c.notice}</p>
+            <a className="truth-notice" href={statusPath}>
+              <span>i</span>
+              {locale === "zh"
+                ? "Developer Preview · 查看当前状态与明确边界"
+                : "Developer Preview · View current status and explicit boundaries"}
+            </a>
           </div>
         </section>
 
-        <section className="cell-feature" data-section-id="digital-cell-demo">
+        <section className="section infrastructure-section" id="architecture" data-section-id="infrastructure">
+          <div className="section-shell">
+            <div className="section-heading">
+              <p className="section-kicker">INFRASTRUCTURE / 基础设施</p>
+              <h2>{c.infrastructureTitle}</h2>
+              <p>{c.infrastructureLead}</p>
+            </div>
+            <div className="capability-grid">
+              {c.infrastructureCapabilities.map(([name, title, description], index) => (
+                <article className="capability-card" key={name}>
+                  <div>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <code>{name}</code>
+                  </div>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                </article>
+              ))}
+            </div>
+            <div className="section-links">
+              <a href={communityPath}>
+                {locale === "zh" ? "查看开发者入口" : "Open the developer entry"} <span>→</span>
+              </a>
+              <a href={statusPath}>
+                {locale === "zh" ? "核对当前状态" : "Check current status"} <span>→</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <section className="section industries-section" id="industries" data-section-id="industry-applications">
+          <div className="section-shell">
+            <div className="section-heading industries-heading">
+              <p className="section-kicker">INDUSTRY APPLICATIONS / 行业应用</p>
+              <h2>{c.industriesTitle}</h2>
+              <p>{c.industriesLead}</p>
+            </div>
+            <div className="industries-grid">
+              <a className="manufacturing-card" href={industriesPath}>
+                <span className="industry-label">
+                  {locale === "zh" ? "APPLICATION EXAMPLE / 应用示例" : "APPLICATION EXAMPLE"}
+                </span>
+                <h3>{c.manufacturingTitle}</h3>
+                <div className="agent-list">
+                  {c.manufacturingAgents.map(([name, description]) => (
+                    <div key={name}>
+                      <code>{name}</code>
+                      <span>{description}</span>
+                    </div>
+                  ))}
+                </div>
+                <p>
+                  {locale === "zh"
+                    ? "这些 Agent 由行业开发者和企业构建。TITMAS 只提供可信基础设施规则。"
+                    : "These agents are built by industry developers and enterprises. TITMAS provides trust-infrastructure rules only."}
+                </p>
+                <strong className="industry-card-link">
+                  {locale === "zh" ? "进入制造业应用示例" : "Explore the manufacturing example"}
+                  <span>→</span>
+                </strong>
+              </a>
+
+              <div
+                className="ecosystem-stack"
+                role="img"
+                aria-label={locale === "zh"
+                  ? "从行业应用、工业 AI Agent、TITMAS、Agent Framework 与 MCP 到模型、数据和设备的分层关系"
+                  : "Layered relationship from industry applications and industrial AI agents through TITMAS, agent frameworks and MCP, to models, data, and devices"}
+              >
+                {c.stackLabels.map((label, index) => (
+                  <div className={index === 2 ? "stack-core" : ""} key={label}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <strong>{label}</strong>
+                    {index < c.stackLabels.length - 1 && <i aria-hidden="true">↓</i>}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="cell-feature evidence-demo" data-section-id="industrial-agent-evidence-demo">
           <div className="section-shell cell-feature-grid">
             <div className="cell-feature-copy">
               <div className="cell-feature-meta">
@@ -51,35 +153,31 @@ export function PortalPage({ locale }: { locale: Locale }) {
                 <code>v0.1.0</code>
                 <code>REPLAY_PASS</code>
               </div>
-              <p className="section-kicker">DIGITAL CELL / 数字细胞</p>
-              <h2>
-                {locale === "zh"
-                  ? "让 Agent 的身份、边界与执行历史被看见"
-                  : "Make agent identity, boundaries, and execution history visible"}
-              </h2>
-              <p>
-                {locale === "zh"
-                  ? "TITMAS Digital Cell Demo 是一个最小参考实现，展示 AI Agent 如何具备 Identity、Boundary、Evidence、Health、Memory 和 Reputation。"
-                  : "TITMAS Digital Cell Demo is a minimal reference implementation showing Identity, Boundary, Evidence, Health, Memory, and Reputation around an AI agent."}
-              </p>
+              <p className="section-kicker">VERIFIABLE EXECUTION / 可核验执行</p>
+              <h2>{c.demoTitle}</h2>
+              <p>{c.demoLead}</p>
+              <ol className="demo-steps">
+                {c.demoSteps.map((step, index) => (
+                  <li key={step}>
+                    <span>{String(index + 1).padStart(2, "0")}</span>
+                    <strong>{step}</strong>
+                  </li>
+                ))}
+              </ol>
               <div className="cell-feature-actions">
-                <a className="button cell-feature-primary" href="/digital-cell/">
+                <a className="button cell-feature-primary" href={demoPath}>
                   {locale === "zh" ? "查看 Digital Cell Demo" : "Explore the Digital Cell Demo"}
                   <span>→</span>
                 </a>
-                <a href="https://github.com/joy7758/titmas-demo/releases/tag/v0.1.0">
-                  GitHub Release <span>↗</span>
+                <a href={statusPath}>
+                  {locale === "zh" ? "查看边界与状态" : "Review boundaries and status"} <span>↗</span>
                 </a>
               </div>
-              <p className="cell-feature-boundary">
-                {locale === "zh"
-                  ? "参考 Demo，不构成生产认证、数字生命或 AI 意识声明。"
-                  : "Reference demo only. No production certification, digital-life, or AI-consciousness claim."}
-              </p>
+              <p className="cell-feature-boundary">{c.demoBoundary}</p>
             </div>
             <a
               className="cell-feature-visual"
-              href="/digital-cell/"
+              href={demoPath}
               aria-label={locale === "zh" ? "打开 TITMAS Digital Cell Demo" : "Open TITMAS Digital Cell Demo"}
             >
               <img
@@ -93,142 +191,6 @@ export function PortalPage({ locale }: { locale: Locale }) {
                 <small>Observable · Verifiable · Health-assessable</small>
               </span>
             </a>
-          </div>
-        </section>
-
-        <section className="intro section" data-section-id="intro">
-          <div className="section-shell intro-grid">
-            <div>
-              <p className="section-kicker">WHY / 为什么</p>
-              <h2>{c.introTitle}</h2>
-            </div>
-            <p className="intro-copy">{c.introBody}</p>
-          </div>
-        </section>
-
-        <section className="section layers-section" id="architecture" data-section-id="architecture">
-          <div className="section-shell">
-            <div className="section-heading">
-              <p className="section-kicker">STACK / 技术栈</p>
-              <h2>{c.layersTitle}</h2>
-              <p>{c.layersLead}</p>
-            </div>
-            <div className="layer-stack">
-              {c.layers.map((layer) => (
-                <article className="layer-card" key={layer.name}>
-                  <div className="layer-index">{layer.index}</div>
-                  <div className="layer-name">{layer.name}</div>
-                  <div className="layer-copy">
-                    <span>{layer.tag}</span>
-                    <h3>{layer.title}</h3>
-                    <p>{layer.body}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section trust-section" id="trust" data-section-id="trust">
-          <div className="section-shell">
-            <div className="section-heading light">
-              <p className="section-kicker">TRUST BOUNDARIES / 可信边界</p>
-              <h2>{c.trustTitle}</h2>
-              <p>{c.trustLead}</p>
-            </div>
-            <div className="boundary-grid">
-              {c.trustCards.map(([left, right, description], index) => (
-                <article className="boundary-card" key={left}>
-                  <span className="boundary-number">0{index + 1}</span>
-                  <div className="boundary-equation">
-                    <strong>{left}</strong><b>≠</b><strong>{right}</strong>
-                  </div>
-                  <p>{description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section workflow-section" id="workflow" data-section-id="workflow">
-          <div className="section-shell">
-            <div className="section-heading">
-              <p className="section-kicker">LIFECYCLE / 生命周期</p>
-              <h2>{c.workflowTitle}</h2>
-              <p>{c.workflowLead}</p>
-            </div>
-            <ol className="workflow-list">
-              {c.workflow.map((step, index) => (
-                <li key={step}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{step}</strong>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section className="section signals-section" data-section-id="signals">
-          <div className="section-shell">
-            <div className="section-heading centered">
-              <p className="section-kicker">INFRASTRUCTURE / 基础设施</p>
-              <h2>{c.signalsTitle}</h2>
-            </div>
-            <div className="signal-grid">
-              {c.signals.map(([name, title, description], index) => (
-                <article className="signal-card" key={name}>
-                  <div className={`signal-symbol signal-${index + 1}`} aria-hidden="true"><i /><i /><i /></div>
-                  <span>{name}</span>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section status-section" id="status" data-section-id="status">
-          <div className="section-shell">
-            <div className="section-heading light">
-              <p className="section-kicker">STATUS / 状态</p>
-              <h2>{c.statusTitle}</h2>
-              <p>{c.statusLead}</p>
-            </div>
-            <div className="gate-grid">
-              {communityGateRows.map((gate) => (
-                <article className="gate-card" key={gate.id}>
-                  <div>
-                    <span className={`state state-${gate.state.toLowerCase()}`}>{gate.state}</span>
-                    <code>{gate.id}</code>
-                  </div>
-                  <p>{gate[locale]}</p>
-                </article>
-              ))}
-            </div>
-            <a className="text-link light-link" href={statusPath}>{c.statusCta}<span>→</span></a>
-          </div>
-        </section>
-
-        <section className="section developer-section" id="developers" data-section-id="developers">
-          <div className="section-shell developer-grid">
-            <div>
-              <p className="section-kicker">AGENTS / 智能体</p>
-              <h2>{c.developersTitle}</h2>
-              <p>{c.developersBody}</p>
-              <div className="developer-links">
-                <a href={locale === "zh" ? "/community/" : "/en/community/"}>{c.developerLinks[0]}<span>↗</span></a>
-                <a href="/status.json">{c.developerLinks[1]}<span>↗</span></a>
-                <a href="/llms.txt">{c.developerLinks[2]}<span>↗</span></a>
-                <a href="/titmas-community.json">{c.developerLinks[3]}<span>↗</span></a>
-              </div>
-            </div>
-            <aside className="governance-card">
-              <span className="governance-label">RELEASE GATE</span>
-              <h3>{c.governanceTitle}</h3>
-              <ul>
-                {c.governanceItems.map((item) => <li key={item}>{item}</li>)}
-              </ul>
-            </aside>
           </div>
         </section>
       </main>

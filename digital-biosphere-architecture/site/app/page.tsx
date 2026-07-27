@@ -4,7 +4,7 @@ import { PortalPage } from "./portal-page";
 export const metadata: Metadata = {
   title: "TITMAS 可信多智能体基础设施开发者社区",
   description:
-    "为长期运行的多智能体系统共同建设开放、可验证的可信基础设施规则。",
+    "面向自治 AI 智能体生态的可信基础设施层；制造业等行业场景是基础设施应用示例。",
   alternates: {
     canonical: "/",
     languages: { "zh-CN": "/", en: "/en/" },

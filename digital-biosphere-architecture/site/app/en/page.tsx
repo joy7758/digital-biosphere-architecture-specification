@@ -4,7 +4,7 @@ import { PortalPage } from "../portal-page";
 export const metadata: Metadata = {
   title: "TITMAS Infrastructure Developer Community",
   description:
-    "Build the shared trust layer for long-running multi-agent systems.",
+    "A trust infrastructure layer for autonomous AI agent ecosystems; manufacturing and other industries are application examples.",
   alternates: {
     canonical: "/en/",
     languages: { "zh-CN": "/", en: "/en/" },
