@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: ce-g7-fail-closed-rollback-pass-ce-g8-tls-diagnosis-pending-standard-not-ready
+status: ce-g8-inconclusive-correlator-fail-closed-ce-g9-offline-remediation-pending-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -2445,6 +2445,28 @@ CE_G7_ROLLBACK_PASS=true
 SecureTransport/LibreSSL path 再次出现 transport signal；exact root cause 仍未证明。
 新版本当前未部署。
 
+### 4.67 CE-G8 Controller TLS Diagnosis
+
+[Recommendation](../TITMAS-CE-G8-CONTROLLER-TLS-DIAGNOSIS-RECOMMENDATION-v0.1.md)
+与 [Decision](../TITMAS-COMMERCIAL-EVALUATION-CE-G8-DECISION-RECORD.v0.1.json)只授权
+四次单次 `/en/` observations 和一个 exact-window server correlation。
+
+```text
+CE_G8_CONTROLLER_REQUESTS_PASS=4/4
+CE_G8_FAILURE_REPRODUCED=false
+CE_G8_CONTENT_HASH_CONSISTENCY_PASS=true
+CE_G8_SYSTEM_PROXY_CLASS=LOOPBACK_ENABLED
+CE_G8_ROUTE_INTERFACE_CLASS=TUNNEL
+CE_G8_SERVER_CORRELATION_PASS=false
+CE_G8_CLASSIFICATION=INCONCLUSIVE
+CE_G8_ROOT_CAUSE_PROVEN=false
+```
+
+[Report](../TITMAS-CE-G8-CONTROLLER-TLS-DIAGNOSIS-REPORT-v0.1.md)与
+[result](../commercial-evaluation-controller-tls-diagnosis/ce-g8-result.v0.1.json)保留
+4/4 pass 与 correlator `error_class=error`。没有增加请求或 SSH session；下一步必须
+offline 修复工具，不能把 no-failure observation 写为 root-cause resolution。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -2714,10 +2736,10 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Prepare CE-G8 controller TLS failure diagnosis recommendation**：CE-G7 已按 exact
-   Decision 执行并因 controller `/en/` 的 `curl exit 35` 失败关闭、回滚成功；下一步先
-   区分 client stack、local network path、address family 与 server handshake evidence，
-   不自动重试部署，也不降低 two-vantage gate；
+1. **Prepare CE-G9 offline log correlator remediation recommendation**：CE-G8 四次
+   controller observations 均通过，但 exact-window server correlator 工具失败关闭；
+   下一步只允许 fixture、parser、sanitized stage error 和 cross-version offline tests，
+   不产生新 public request、SSH、部署或策略变化；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -2926,7 +2948,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G8_CONTROLLER_TLS_FAILURE_DIAGNOSIS_RECOMMENDATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G9_OFFLINE_LOG_CORRELATOR_REMEDIATION_RECOMMENDATION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -3001,6 +3023,14 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G7_RETRY_EXECUTED=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G7_GITHUB_VANTAGES_EXECUTED=0
 TITMAS_COMMERCIAL_EVALUATION_CE_G7_ROLLBACK_PASS=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G7_NEW_RELEASE_CURRENT=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G8_DECIDED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G8_EXECUTION_COMPLETED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G8_CONTROLLER_REQUESTS_PASS=4/4
+TITMAS_COMMERCIAL_EVALUATION_CE_G8_FAILURE_REPRODUCED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G8_CONTENT_HASH_CONSISTENCY_PASS=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G8_SERVER_CORRELATION_PASS=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G8_CLASSIFICATION=INCONCLUSIVE
+TITMAS_COMMERCIAL_EVALUATION_CE_G8_ROOT_CAUSE_PROVEN=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
 

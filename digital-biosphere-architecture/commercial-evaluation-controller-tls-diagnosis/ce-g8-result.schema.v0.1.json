@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/titmas-ce-g8-result.schema.v0.1.json",
+  "title": "TITMAS CE-G8 Controller TLS Diagnosis Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "result_id",
+    "version",
+    "status",
+    "decision_reference",
+    "observed_at",
+    "controller_matrix",
+    "server_correlation",
+    "classification",
+    "current_truth",
+    "effects",
+    "next_gate"
+  ],
+  "properties": {
+    "$schema": {"const": "./ce-g8-result.schema.v0.1.json"},
+    "result_id": {"const": "TITMAS-CE-G8-RESULT-001"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "INCONCLUSIVE_LOG_CORRELATION_FAIL_CLOSED"},
+    "decision_reference": {"const": "TITMAS-COMMERCIAL-EVALUATION-CE-G8"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "controller_matrix": {"type": "object"},
+    "server_correlation": {"type": "object"},
+    "classification": {"type": "object"},
+    "current_truth": {"type": "object"},
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "redeployment",
+        "policy_change",
+        "root_cause_proof",
+        "runtime",
+        "api",
+        "agent",
+        "entity",
+        "permission",
+        "capability",
+        "certification",
+        "sla",
+        "commercial_offering",
+        "production_readiness"
+      ],
+      "properties": {
+        "redeployment": {"const": false},
+        "policy_change": {"const": false},
+        "root_cause_proof": {"const": false},
+        "runtime": {"const": false},
+        "api": {"const": false},
+        "agent": {"const": false},
+        "entity": {"const": false},
+        "permission": {"const": false},
+        "capability": {"const": false},
+        "certification": {"const": false},
+        "sla": {"const": false},
+        "commercial_offering": {"const": false},
+        "production_readiness": {"const": false}
+      }
+    },
+    "next_gate": {"type": "object"}
+  }
+}

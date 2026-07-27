@@ -1,0 +1,166 @@
+{
+  "receipt_id": "TITMAS-CE-G8-CONTROLLER-001",
+  "version": "0.1.0",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G8",
+  "status": "DIAGNOSTIC_MATRIX_COMPLETE",
+  "window_start": "2026-07-27T12:31:56Z",
+  "window_end": "2026-07-27T12:31:57Z",
+  "environment": {
+    "platform": "macOS-26.5.2-arm64-arm-64bit-Mach-O",
+    "proxy_environment_present": false,
+    "system_proxy": {
+      "http_enabled": true,
+      "http_target_class": "LOOPBACK",
+      "https_enabled": true,
+      "https_target_class": "LOOPBACK",
+      "socks_enabled": false,
+      "socks_target_class": "NONE",
+      "auto_config_enabled": false
+    },
+    "route": {
+      "interface_class": "TUNNEL",
+      "gateway_class": "NONE",
+      "destination_class": "PUBLIC_IPV4"
+    },
+    "curl_stack": "curl 8.7.1 (x86_64-apple-darwin25.0) libcurl/8.7.1 (SecureTransport) LibreSSL/3.3.6 zlib/1.2.12 nghttp2/1.68.1",
+    "python_version": "3.14.5",
+    "python_tls_stack": "OpenSSL 3.6.2 7 Apr 2026",
+    "address_summary": {
+      "records": 2,
+      "address_classes": {
+        "SYNTHETIC_198_18_0_0_15": 1,
+        "PUBLIC_IPV6": 1
+      },
+      "ipv4_available": true,
+      "ipv6_available": true
+    }
+  },
+  "matrix": [
+    {
+      "id": "A",
+      "client": "MACOS_SYSTEM_CURL",
+      "resolution": "NORMAL",
+      "http": "DEFAULT",
+      "attempts": 1
+    },
+    {
+      "id": "B",
+      "client": "MACOS_SYSTEM_CURL",
+      "resolution": "EXPLICIT_180_76_115_193",
+      "http": "HTTP_1_1",
+      "attempts": 1
+    },
+    {
+      "id": "C",
+      "client": "PYTHON_HTTP_CLIENT_OPENSSL",
+      "resolution": "NORMAL_DNS",
+      "http": "HTTP_1_1",
+      "attempts": 1
+    },
+    {
+      "id": "D",
+      "client": "PYTHON_SOCKET_OPENSSL",
+      "resolution": "DIRECT_180_76_115_193_WITH_SNI",
+      "http": "HTTP_1_1",
+      "attempts": 1
+    }
+  ],
+  "requests_expected": 4,
+  "requests_executed": 4,
+  "retry": false,
+  "fallback": false,
+  "tls_verification_bypass": false,
+  "records": [
+    {
+      "id": "A",
+      "client": "MACOS_SYSTEM_CURL",
+      "resolution": "NORMAL",
+      "http": "DEFAULT",
+      "route": "/en/",
+      "attempts": 1,
+      "started_at": "2026-07-27T12:31:56Z",
+      "ended_at": "2026-07-27T12:31:56Z",
+      "result": "PASS",
+      "error_class": "NONE",
+      "http_code": 200,
+      "remote_ip_class": "SYNTHETIC_198_18_0_0_15",
+      "tls_version": null,
+      "cipher": null,
+      "latency_seconds": 0.321448,
+      "bytes": 48045,
+      "sha256": "8169a448f400b7b88184d4902a3d44edf58c6ac364b923ec0c1130585c91d69a"
+    },
+    {
+      "id": "B",
+      "client": "MACOS_SYSTEM_CURL",
+      "resolution": "EXPLICIT_180_76_115_193",
+      "http": "HTTP_1_1",
+      "route": "/en/",
+      "attempts": 1,
+      "started_at": "2026-07-27T12:31:56Z",
+      "ended_at": "2026-07-27T12:31:56Z",
+      "result": "PASS",
+      "error_class": "NONE",
+      "http_code": 200,
+      "remote_ip_class": "PUBLIC_IPV4",
+      "tls_version": null,
+      "cipher": null,
+      "latency_seconds": 0.288063,
+      "bytes": 48045,
+      "sha256": "8169a448f400b7b88184d4902a3d44edf58c6ac364b923ec0c1130585c91d69a"
+    },
+    {
+      "id": "C",
+      "client": "PYTHON_HTTP_CLIENT_OPENSSL",
+      "resolution": "NORMAL_DNS",
+      "http": "HTTP_1_1",
+      "route": "/en/",
+      "attempts": 1,
+      "started_at": "2026-07-27T12:31:56Z",
+      "ended_at": "2026-07-27T12:31:57Z",
+      "result": "PASS",
+      "error_class": "NONE",
+      "http_code": 200,
+      "remote_ip_class": "SYNTHETIC_198_18_0_0_15",
+      "tls_version": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384",
+      "latency_seconds": 0.168053,
+      "bytes": 48045,
+      "sha256": "8169a448f400b7b88184d4902a3d44edf58c6ac364b923ec0c1130585c91d69a"
+    },
+    {
+      "id": "D",
+      "client": "PYTHON_SOCKET_OPENSSL",
+      "resolution": "DIRECT_180_76_115_193_WITH_SNI",
+      "http": "HTTP_1_1",
+      "route": "/en/",
+      "attempts": 1,
+      "started_at": "2026-07-27T12:31:57Z",
+      "ended_at": "2026-07-27T12:31:57Z",
+      "result": "PASS",
+      "error_class": "NONE",
+      "http_code": 200,
+      "remote_ip_class": "PUBLIC_IPV4",
+      "tls_version": "TLSv1.3",
+      "cipher": "TLS_AES_256_GCM_SHA384",
+      "latency_seconds": 0.177758,
+      "bytes": 48045,
+      "sha256": "8169a448f400b7b88184d4902a3d44edf58c6ac364b923ec0c1130585c91d69a"
+    }
+  ],
+  "summary": {
+    "passes": 4,
+    "failures": 0,
+    "passing_ids": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "failing_ids": [],
+    "content_hashes_for_passes": [
+      "8169a448f400b7b88184d4902a3d44edf58c6ac364b923ec0c1130585c91d69a"
+    ]
+  },
+  "error_class": null
+}

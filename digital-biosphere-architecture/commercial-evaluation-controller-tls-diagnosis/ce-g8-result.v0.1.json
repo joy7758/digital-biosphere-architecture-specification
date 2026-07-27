@@ -1,0 +1,75 @@
+{
+  "$schema": "./ce-g8-result.schema.v0.1.json",
+  "result_id": "TITMAS-CE-G8-RESULT-001",
+  "version": "0.1.0",
+  "status": "INCONCLUSIVE_LOG_CORRELATION_FAIL_CLOSED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G8",
+  "observed_at": "2026-07-27T12:31:57Z",
+  "controller_matrix": {
+    "status": "PASS_4_OF_4_NO_FAILURE_OBSERVED",
+    "window_start": "2026-07-27T12:31:56Z",
+    "window_end": "2026-07-27T12:31:57Z",
+    "requests_executed": 4,
+    "requests_passed": 4,
+    "retry": false,
+    "fallback": false,
+    "tls_verification_bypass": false,
+    "content_hash_consistency": true,
+    "content_sha256": "8169a448f400b7b88184d4902a3d44edf58c6ac364b923ec0c1130585c91d69a",
+    "system_proxy_http": "LOOPBACK_ENABLED",
+    "system_proxy_https": "LOOPBACK_ENABLED",
+    "route_interface_class": "TUNNEL",
+    "normal_ipv4_class": "SYNTHETIC_198_18_0_0_15",
+    "direct_ipv4_class": "PUBLIC_IPV4",
+    "curl_stack": "SecureTransport_LibreSSL_3_3_6",
+    "python_tls_stack": "OpenSSL_3_6_2",
+    "receipt_reference": "ce-g8-controller.v0.1.json"
+  },
+  "server_correlation": {
+    "status": "FAIL_CLOSED",
+    "ssh_sessions_executed": 1,
+    "window_padding_seconds": 0,
+    "error_class": "error",
+    "raw_logs_persisted": false,
+    "server_write": false,
+    "receipt_reference": "ce-g8-server-correlation.v0.1.json"
+  },
+  "classification": {
+    "status": "FAIL_CLOSED",
+    "result": "INCONCLUSIVE",
+    "classification_strength": "SUPPORTED_NOT_PROVEN",
+    "root_cause_proven": false,
+    "controller_failure_reproduced": false,
+    "server_handshake_signal_assessed": false,
+    "composite_reference": "ce-g8-composite.v0.1.json"
+  },
+  "current_truth": {
+    "current_release": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "new_contract_website_deployed": false,
+    "redeployment_admission_pass": false,
+    "redeployment_authorized": false,
+    "tls_root_cause_proven": false
+  },
+  "effects": {
+    "redeployment": false,
+    "policy_change": false,
+    "root_cause_proof": false,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "capability": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offering": false,
+    "production_readiness": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G9_OFFLINE_LOG_CORRELATOR_REMEDIATION_RECOMMENDATION",
+    "authorized": false,
+    "new_public_requests_authorized": false,
+    "new_ssh_sessions_authorized": false,
+    "automatic_redeployment": false
+  }
+}

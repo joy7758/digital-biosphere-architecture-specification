@@ -132,6 +132,9 @@ exact_redeployment_server_local_routes_pass: 11-of-11
 exact_redeployment_controller_routes_pass: 10-of-11
 exact_redeployment_controller_curl_exit_code: 35
 exact_redeployment_github_vantages_executed: 0
+controller_tls_diagnosis_result: inconclusive-log-correlation-fail-closed
+controller_tls_diagnosis_requests_pass: 4-of-4
+controller_tls_diagnosis_root_cause_proven: false
 public_entry_redeployment_admission_pass: false
 public_entry_redeployment_authorized: false
 developer_ecosystem_created: false
@@ -287,8 +290,24 @@ CURRENT_RELEASE=7da4bcf16eeec7de1c61031fe08fc04081cf8705
 
 [CE-G7 报告](TITMAS-CE-G7-EXACT-REDEPLOYMENT-REPORT-v0.1.md)保留了原子切换、失败路径
 和 rollback receipt。该结果证明 fail-closed control（失败关闭控制）有效，不证明发布
-成功、TLS 根因、SLA 或 Production。下一步只允许准备 CE-G8 controller TLS failure
-diagnosis recommendation（控制端 TLS 失败诊断建议）。
+成功、TLS 根因、SLA 或 Production。
+
+CE-G8 在旧稳定版本上执行了四种单次 controller observations：system curl normal/direct
+与 Python/OpenSSL normal/direct 全部通过，且 body hash 一致；同时观察到 loopback
+system proxy、TUNNEL route 和 synthetic `198.18.0.0/15` normal IPv4。服务器精确窗口
+log correlator 自身失败关闭，因此：
+
+```text
+CONTROLLER_REQUESTS_PASS=4/4
+FAILURE_REPRODUCED=false
+SERVER_CORRELATION_PASS=false
+CLASSIFICATION=INCONCLUSIVE
+ROOT_CAUSE_PROVEN=false
+```
+
+[CE-G8 报告](TITMAS-CE-G8-CONTROLLER-TLS-DIAGNOSIS-REPORT-v0.1.md)明确：本次未复现
+不等于问题解决，proxy/TUN 存在也不等于因果证明。下一步只允许准备 CE-G9 offline log
+correlator remediation recommendation（离线日志关联器修正建议）。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
