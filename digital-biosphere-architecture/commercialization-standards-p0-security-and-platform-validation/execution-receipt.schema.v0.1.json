@@ -1,0 +1,241 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre68-execution-receipt.v0.1.json",
+  "title": "TITMAS PRE-68 Security and Platform Validation Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_commit",
+    "decision_sha256",
+    "execution_plan_reference",
+    "execution_plan_sha256",
+    "started_at",
+    "ended_at",
+    "executed_by",
+    "target",
+    "actuals",
+    "runtime_observation",
+    "lane_results",
+    "first_failure",
+    "gate_results",
+    "effects",
+    "next_action"
+  ],
+  "properties": {
+    "$schema": {"const": "./execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE68-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FAIL_CLOSED_AT_FIRST_IMAGE_PULL_CREDENTIAL_HELPER_MISSING"},
+    "decision_reference": {
+      "const": "../TITMAS-CS-D02-PRE-68-P0-SECURITY-AND-PLATFORM-VALIDATION-DECISION-RECORD.v0.1.json"
+    },
+    "decision_commit": {
+      "const": "d23c8e2993d12a5e066831b40a7932b0de58e2f8"
+    },
+    "decision_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "execution_plan_reference": {"const": "./execution-plan.v0.1.json"},
+    "execution_plan_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "ended_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "Codex"},
+    "target": {"$ref": "#/$defs/target"},
+    "actuals": {"$ref": "#/$defs/actuals"},
+    "runtime_observation": {"$ref": "#/$defs/runtimeObservation"},
+    "lane_results": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {"type": "object"}
+    },
+    "first_failure": {"$ref": "#/$defs/firstFailure"},
+    "gate_results": {
+      "const": {
+        "platform_gate": "FAIL_NOT_EXECUTED",
+        "agent_review_gate": "NOT_EXECUTED",
+        "formal_human_security_review_gate": "NOT_SATISFIED",
+        "standard_gate": "NOT_SATISFIED",
+        "overall": "FAIL_CLOSED"
+      }
+    },
+    "effects": {"$ref": "#/$defs/effects"},
+    "next_action": {
+      "const": "PREPARE_ISOLATED_DOCKER_CONFIG_REMEDIATION_RECOMMENDATION_NO_RETRY_AUTHORIZED"
+    }
+  },
+  "$defs": {
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "branch",
+        "commit_before",
+        "commit_after",
+        "dirty_count_before",
+        "dirty_count_after",
+        "review_hashes_matched_before",
+        "review_hashes_matched_after",
+        "review_hashes_expected",
+        "writes"
+      ],
+      "properties": {
+        "repository": {"const": "joy7758/titmas-integrations"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "commit_before": {"const": "0030077f29c37145a306b72e7083345eb76b504a"},
+        "commit_after": {"const": "0030077f29c37145a306b72e7083345eb76b504a"},
+        "dirty_count_before": {"const": 0},
+        "dirty_count_after": {"const": 0},
+        "review_hashes_matched_before": {"const": 10},
+        "review_hashes_matched_after": {"const": 10},
+        "review_hashes_expected": {"const": 10},
+        "writes": {"const": 0}
+      }
+    },
+    "actuals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "colima_start_attempts",
+        "colima_start_successes",
+        "colima_stop_attempts",
+        "colima_stop_successes",
+        "image_pull_attempts",
+        "image_pull_successes",
+        "images_present_after_failure",
+        "container_runs",
+        "linux_platform_validations_executed",
+        "unit_tests_executed",
+        "independent_rehearsals_executed",
+        "agent_model_requests",
+        "credential_value_reads",
+        "retry_count",
+        "fallback_count",
+        "model_substitution_count",
+        "json_extraction_or_repair_count",
+        "p1_or_p2_executions",
+        "provider_binding_actions",
+        "release_actions"
+      ],
+      "properties": {
+        "colima_start_attempts": {"const": 1},
+        "colima_start_successes": {"const": 1},
+        "colima_stop_attempts": {"const": 1},
+        "colima_stop_successes": {"const": 1},
+        "image_pull_attempts": {"const": 1},
+        "image_pull_successes": {"const": 0},
+        "images_present_after_failure": {"const": 0},
+        "container_runs": {"const": 0},
+        "linux_platform_validations_executed": {"const": 0},
+        "unit_tests_executed": {"const": 0},
+        "independent_rehearsals_executed": {"const": 0},
+        "agent_model_requests": {"const": 0},
+        "credential_value_reads": {"const": 0},
+        "retry_count": {"const": 0},
+        "fallback_count": {"const": 0},
+        "model_substitution_count": {"const": 0},
+        "json_extraction_or_repair_count": {"const": 0},
+        "p1_or_p2_executions": {"const": 0},
+        "provider_binding_actions": {"const": 0},
+        "release_actions": {"const": 0}
+      }
+    },
+    "runtimeObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "docker_client_version",
+        "docker_server_version",
+        "docker_server_os",
+        "docker_server_architecture",
+        "linux_amd64_emulator_observed",
+        "colima_initial_state",
+        "colima_final_state",
+        "startup_warning_classes"
+      ],
+      "properties": {
+        "docker_client_version": {"const": "29.5.2"},
+        "docker_server_version": {"const": "29.2.1"},
+        "docker_server_os": {"const": "linux"},
+        "docker_server_architecture": {"const": "aarch64"},
+        "linux_amd64_emulator_observed": {"const": true},
+        "colima_initial_state": {"const": "NOT_RUNNING"},
+        "colima_final_state": {"const": "NOT_RUNNING"},
+        "startup_warning_classes": {
+          "const": ["COLIMA_PROVISIONING_CWD_REFERENCE_NOT_FOUND"]
+        }
+      }
+    },
+    "firstFailure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage",
+        "lane_id",
+        "error_class",
+        "missing_executable",
+        "docker_config_metadata",
+        "immediate_local_cause_confirmed",
+        "image_transfer_started",
+        "registry_network_activity",
+        "retry_allowed_under_pre68"
+      ],
+      "properties": {
+        "stage": {"const": "PULL_TWO_EXACT_LINUX_AMD64_MANIFEST_DIGESTS"},
+        "lane_id": {"const": "PFM-LINUX-311"},
+        "error_class": {"const": "DOCKER_CREDENTIAL_HELPER_EXECUTABLE_NOT_FOUND"},
+        "missing_executable": {"const": "docker-credential-desktop"},
+        "docker_config_metadata": {
+          "const": {
+            "config_present": true,
+            "global_creds_store": "desktop",
+            "auth_registry_entries": 0,
+            "per_registry_credential_helpers": 0
+          }
+        },
+        "immediate_local_cause_confirmed": {"const": true},
+        "image_transfer_started": {"const": false},
+        "registry_network_activity": {"const": "NOT_ASSESSED"},
+        "retry_allowed_under_pre68": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formal_human_security_review_complete",
+        "provider_supported",
+        "linux_support_proven",
+        "cross_platform_support_proven",
+        "real_network_conformance_proven",
+        "contract_adopted_as_standard",
+        "target_repository_changed",
+        "runtime_created_as_product",
+        "agent_created",
+        "entity_created",
+        "permission_created",
+        "release_authorized",
+        "standard_ready"
+      ],
+      "properties": {
+        "formal_human_security_review_complete": {"const": false},
+        "provider_supported": {"const": false},
+        "linux_support_proven": {"const": false},
+        "cross_platform_support_proven": {"const": false},
+        "real_network_conformance_proven": {"const": false},
+        "contract_adopted_as_standard": {"const": false},
+        "target_repository_changed": {"const": false},
+        "runtime_created_as_product": {"const": false},
+        "agent_created": {"const": false},
+        "entity_created": {"const": false},
+        "permission_created": {"const": false},
+        "release_authorized": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    }
+  }
+}

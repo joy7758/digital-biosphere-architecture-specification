@@ -1,0 +1,129 @@
+{
+  "$schema": "./execution-receipt.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE68-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_AT_FIRST_IMAGE_PULL_CREDENTIAL_HELPER_MISSING",
+  "decision_reference": "../TITMAS-CS-D02-PRE-68-P0-SECURITY-AND-PLATFORM-VALIDATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "d23c8e2993d12a5e066831b40a7932b0de58e2f8",
+  "decision_sha256": "426fb40e4cb4bbfc2f666fbd04cc3028c97a225bf05165e1062e7d45d0e29606",
+  "execution_plan_reference": "./execution-plan.v0.1.json",
+  "execution_plan_sha256": "2c80811937fb61bad2ac05a061b7588844fc348bc3354acd32ec0a8495e3060e",
+  "started_at": "2026-07-27T13:07:00+08:00",
+  "ended_at": "2026-07-27T13:12:41+08:00",
+  "executed_by": "Codex",
+  "target": {
+    "repository": "joy7758/titmas-integrations",
+    "branch": "codex/rb0-governance-baseline",
+    "commit_before": "0030077f29c37145a306b72e7083345eb76b504a",
+    "commit_after": "0030077f29c37145a306b72e7083345eb76b504a",
+    "dirty_count_before": 0,
+    "dirty_count_after": 0,
+    "review_hashes_matched_before": 10,
+    "review_hashes_matched_after": 10,
+    "review_hashes_expected": 10,
+    "writes": 0
+  },
+  "actuals": {
+    "colima_start_attempts": 1,
+    "colima_start_successes": 1,
+    "colima_stop_attempts": 1,
+    "colima_stop_successes": 1,
+    "image_pull_attempts": 1,
+    "image_pull_successes": 0,
+    "images_present_after_failure": 0,
+    "container_runs": 0,
+    "linux_platform_validations_executed": 0,
+    "unit_tests_executed": 0,
+    "independent_rehearsals_executed": 0,
+    "agent_model_requests": 0,
+    "credential_value_reads": 0,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "model_substitution_count": 0,
+    "json_extraction_or_repair_count": 0,
+    "p1_or_p2_executions": 0,
+    "provider_binding_actions": 0,
+    "release_actions": 0
+  },
+  "runtime_observation": {
+    "docker_client_version": "29.5.2",
+    "docker_server_version": "29.2.1",
+    "docker_server_os": "linux",
+    "docker_server_architecture": "aarch64",
+    "linux_amd64_emulator_observed": true,
+    "colima_initial_state": "NOT_RUNNING",
+    "colima_final_state": "NOT_RUNNING",
+    "startup_warning_classes": [
+      "COLIMA_PROVISIONING_CWD_REFERENCE_NOT_FOUND"
+    ]
+  },
+  "lane_results": [
+    {
+      "lane_id": "PFM-LINUX-311",
+      "status": "FAIL_BEFORE_IMAGE_TRANSFER",
+      "image": "docker.io/library/python@sha256:28255a3ace7eb4c48bc1b57b90af29e1bc82b4fd6c60614a8e3dce61b87ff941",
+      "container_executed": false,
+      "tests_executed": 0
+    },
+    {
+      "lane_id": "PFM-LINUX-314",
+      "status": "NOT_EXECUTED_DUE_PRIOR_FAILURE",
+      "image": "docker.io/library/python@sha256:f70215e5dbe2a47dee6d23f9c6d358bf3c148f59cce2fd165b61118e9d80f2bb",
+      "container_executed": false,
+      "tests_executed": 0
+    },
+    {
+      "lane_id": "PRE68-QF-SECURITY-01",
+      "status": "NOT_EXECUTED_DUE_PRIOR_PLATFORM_FAILURE",
+      "provider": "BAIDU_QIANFAN",
+      "model": "ernie-4.5-turbo-20260402",
+      "request_executed": false
+    },
+    {
+      "lane_id": "PRE68-QWEN-SECURITY-02",
+      "status": "NOT_EXECUTED_DUE_PRIOR_PLATFORM_FAILURE",
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "model": "qwen3.7-plus",
+      "request_executed": false
+    }
+  ],
+  "first_failure": {
+    "stage": "PULL_TWO_EXACT_LINUX_AMD64_MANIFEST_DIGESTS",
+    "lane_id": "PFM-LINUX-311",
+    "error_class": "DOCKER_CREDENTIAL_HELPER_EXECUTABLE_NOT_FOUND",
+    "missing_executable": "docker-credential-desktop",
+    "docker_config_metadata": {
+      "config_present": true,
+      "global_creds_store": "desktop",
+      "auth_registry_entries": 0,
+      "per_registry_credential_helpers": 0
+    },
+    "immediate_local_cause_confirmed": true,
+    "image_transfer_started": false,
+    "registry_network_activity": "NOT_ASSESSED",
+    "retry_allowed_under_pre68": false
+  },
+  "gate_results": {
+    "platform_gate": "FAIL_NOT_EXECUTED",
+    "agent_review_gate": "NOT_EXECUTED",
+    "formal_human_security_review_gate": "NOT_SATISFIED",
+    "standard_gate": "NOT_SATISFIED",
+    "overall": "FAIL_CLOSED"
+  },
+  "effects": {
+    "formal_human_security_review_complete": false,
+    "provider_supported": false,
+    "linux_support_proven": false,
+    "cross_platform_support_proven": false,
+    "real_network_conformance_proven": false,
+    "contract_adopted_as_standard": false,
+    "target_repository_changed": false,
+    "runtime_created_as_product": false,
+    "agent_created": false,
+    "entity_created": false,
+    "permission_created": false,
+    "release_authorized": false,
+    "standard_ready": false
+  },
+  "next_action": "PREPARE_ISOLATED_DOCKER_CONFIG_REMEDIATION_RECOMMENDATION_NO_RETRY_AUTHORIZED"
+}

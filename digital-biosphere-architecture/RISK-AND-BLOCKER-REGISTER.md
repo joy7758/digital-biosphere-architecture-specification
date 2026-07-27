@@ -93,6 +93,7 @@ risk_acceptance_authority_assigned: true
 | `R-071` | `HIGH` | PRE-67 的 macOS POSIX reference、92/92 tests、remote clean clone 或 frozen IANA policy 被升级为 Linux/Windows/cross-platform support、native-thread fork safety、real-network conformance、Provider support、adopted Standard 或 release | 当前只观察 Darwin arm64 / CPython 3.14.5；Linux 未验证，Windows 不支持；native thread/extension fork safety、真实 DNS/TCP/TLS、P1/P2、formal Human Security Review 均未完成 | 固定 exact platform 与 negative claims；下一步只允许形成 PRE-68 formal Security Review 与 platform-validation scope Recommendation，任何执行仍需独立 Decision | `CONTROL_DEFINED_PRE67_DEVELOPMENT_REFERENCE_ONLY_PRE68_RECOMMENDATION_REQUIRED` |
 | `R-072` | `HIGH` | `threading.active_count()==1`、两次 agent review 或两个 Linux image PASS 被当作 post-fork safety、macOS safety、OpenSSL state safety 或正式 Human Security Review 证明 | Python 官方文档明确保留 fork/thread、macOS higher-level API 和 OpenSSL multiprocessing 风险；Python 层 thread count 不能证明 native/extension thread 为 0；当前 human reviewer 未指派 | PRE-68 冻结 16 个 review questions、exact agent/platform lanes 和 `AGENT_REVIEW_NE_FORMAL_HUMAN_SECURITY_REVIEW`；没有独立 Decision 不执行，未命名 human reviewer 时 formal gate 永远保持 false | `CONTROL_DEFINED_PRE68_RECOMMENDATION_ONLY_DECISION_AND_HUMAN_REVIEW_OPEN` |
 | `R-073` | `HIGH` | AVH 被扩张为新产品、Runtime、Sandbox service、第二 Evidence/Verification Authority，或把 claim-observation match 宣称为完整行为证明、Truth、Safety、Reputation/Health 结论或 Certification | 用户提案识别的问题有效，但来源在 Sandbox Manager 示例处截断；Owner、oracle、观察覆盖、threat/data contract、符合性与重复建设审查均未完成；DBOS 已拥有 canonical Evidence/Verification 和独立 Evidence Admission 边界 | 只登记可替换 AVH Profile candidate；输出限于 Observation、Validation Receipt 与 Evidence Material；强制 DBOS admission；`TITMAS-AVH-D01` 前不得采纳、实现或执行 | `CONTROL_DEFINED_AVH_ASSESSMENT_ONLY_PROFILE_NOT_ADOPTED` |
+| `R-074` | `MEDIUM` | 本机 Docker 全局 `credsStore=desktop` 与当前 CLI helper availability 漂移，导致 public digest pull 在执行前失败；如果直接删除/修改用户 Docker config 或静默重试，会破坏可复现性和授权边界 | PRE-68 第一幅 image pull 直接返回 missing `docker-credential-desktop`；metadata-only 检查确认 global store 为 `desktop`、registry auth=0、per-registry helpers=0；未证明 registry/network 或 target 问题 | 保留 PRE-68 failure；不改用户 config；后继只建议 ephemeral、no-credential isolated Docker client config，绑定 exact public digests、cleanup 和新 Decision | `CONTROL_DEFINED_PRE68_FAIL_CLOSED_PRE69_REMEDIATION_RECOMMENDATION_REQUIRED` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -110,7 +111,7 @@ risk_acceptance_authority_assigned: true
 | `B-018` | Schema/Resource/Entity 的 36 个 DQ-018 authorized offline cases 已通过，但 acquisition/cache/transform、真实 detector provenance 和 9 个 DQ-020 deployment cases 仍未执行 | `PR-G2T`、`PR-G3`、`PR-G5`、`PR-G6` | DQ-020 authorization + exact deployment source/policy/environment + 剩余 9 cases + 独立 review | 当前 36-case offline subset 与 DBA reference review |
 | `B-020` | TITMAS C1 Contributor Entry 已本地准备，但 Authority Freeze、正式 Code of Conduct、安全接收路径、Owner/review roles、license/CLA 输入和公共外部动作授权不完整 | `DQ-026`、公共贡献表面、真实贡献者接收、SIG/Workstream 激活 | 补齐全部输入并由 Human Architecture Authority 对 exact public surface 作独立 Decision；启用后仍按贡献/角色/Workstream gate 分阶段 | 本地文档、模板、JSON/Schema、Good First candidate 和 fail-closed 验证；不阻塞 DBA 内继续改进贡献入口 |
 | `B-021` | `titmas.cn` 备案未完成，DNS/TLS/canonical cutover 与 `redcrag.cn` redirect 没有直接验证；`titmas-cn` Organization 尚未创建 | 公共域名切换、Organization 创建、仓库迁移 | 备案证据 + 独立 DNS/TLS/health/security-header/machine-entry/rollback gate；Organization 创建与每个仓库迁移分别授权 | 网站源码、双语／机器入口、GitHub profile copy 和迁移清单的本地准备 |
-| `B-025` | PRE-68 独立 Decision 与 frozen execution plan 已形成，但两个 agent sessions、两个 pinned Linux x86_64 validations、formal Human Security Review、native-thread/macOS/OpenSSL fork safety、真实 DNS/TCP/TLS、P1/P2、Provider binding/conformance、SBOM/reproducible build、merge/release 仍无结果证据 | 按 request/image/network/write caps 失败关闭执行 advisory review 与 exact Linux observations；之后仍需独立指派 formal human reviewer 与 Decision | 只授权两个模型请求、启动现有 Colima、两个 exact image pull、两个 network-none/read-only container run 和 DBA result artifacts；不得凭 Decision、agent output 或 platform PASS 改写 formal review、Provider support 或 Standard Ready | PRE-50/52/53/60/61/62/63/64/65/66/67 retained evidence，PRE-68 Recommendation、Decision、scope、Schema 与 frozen plan 可审查 |
+| `B-025` | PRE-68 在 first image pull 因本机 Docker credential-helper drift 失败关闭；两个 Linux validations 与两个 agent sessions 均未执行；formal Human Security Review、native-thread/macOS/OpenSSL fork safety、真实 DNS/TCP/TLS、P1/P2、Provider binding/conformance、SBOM/reproducible build、merge/release 仍无结果证据 | 先形成 PRE-69 ephemeral no-credential Docker client config remediation Recommendation；新 Decision 后才能重新拉取 exact digests，后继仍需独立 formal human reviewer | PRE-68 retry=false；不修改用户 Docker config，不执行第二 image、container 或 model request；不得把 environment failure 写成 target failure，也不得改写 formal review、Provider support 或 Standard Ready | PRE-68 result/receipt 保留 target 10/10 hashes、container=0、agent request=0、Colima final stopped |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
 
@@ -144,8 +145,8 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=73
-ACTIVE_RISKS=71
+TRACKED_RISKS=74
+ACTIVE_RISKS=72
 RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=13
 BLOCKERS_CLEARED=12

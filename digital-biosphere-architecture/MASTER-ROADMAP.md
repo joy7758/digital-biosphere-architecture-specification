@@ -60,17 +60,20 @@ SAEE_NE_CONTROLLER=true
 | step | 当前状态 | 直接证据 | 下一步 |
 |---|---|---|---|
 | `CS-D02-PRE-67` | `GATE_PASSED_DEVELOPMENT_REFERENCE_ONLY` | `titmas-integrations@0030077…`；本地与 remote clean clone 均 92/92 tests、7/7 rehearsal、offline build PASS；真实网络与 credential read 为 0 | PRE-68 scope Recommendation 已形成；保持 reference-only |
-| `CS-D02-PRE-68` | `DECIDED_AUTHORIZED_NOT_EXECUTED` | Recommendation、独立 Decision、10 个 target hashes、16 个 security questions、2 个 Provider/model review bindings、2 个 pinned Linux/amd64 image digests、frozen plan 和 12/12 mutation negatives | 按冻结顺序失败关闭执行；不自动产生 formal review、target change、P1/P2、contract adoption、merge、release 或 Standard Ready |
+| `CS-D02-PRE-68` | `DECIDED_EXECUTED_FAIL_CLOSED_FIRST_IMAGE_PULL` | Colima start/stop PASS；first exact image pull 因本机 global `credsStore=desktop` 但 helper executable 缺失，在 image transfer 前停止；target 10/10 hashes 保持；containers=0、agent requests=0 | PRE-68 不允许 retry；先形成 PRE-69 isolated Docker client config remediation Recommendation 与独立 Decision |
 | `TITMAS-FINALIZATION-AVH-001` | `ARCHITECTURE_ASSESSMENT_DEFINED_NOT_ADOPTED` | [AVH architecture assessment](architecture/agent-validation-harness-architecture-assessment-v0.1.md) / [machine record](architecture/agent-validation-harness-architecture-assessment.v0.1.json)；现有 Technical Validation、Evidence Admission、DBOS/SAEE Owner crosswalk 已完成 | 只允许架构、overlap、threat、oracle 和 conformance design review；等待完整提案、Owner/Reviewer 和 `TITMAS-AVH-D01`，不创建产品、Runtime、Sandbox、Agent、Evidence 或实现 |
 
 ```text
-COMMERCIALIZATION_LAST_COMPLETED_STEP=CS-D02-PRE-68-DECISION
-COMMERCIALIZATION_NEXT_ACTION=EXECUTE_PRE68_FROZEN_SECURITY_AND_PLATFORM_VALIDATION
-COMMERCIALIZATION_NEXT_ACTION_AUTHORIZED=true
+COMMERCIALIZATION_LAST_COMPLETED_STEP=CS-D02-PRE-68-FAIL-CLOSED-EXECUTION
+COMMERCIALIZATION_NEXT_ACTION=FORM_PRE69_ISOLATED_DOCKER_CONFIG_REMEDIATION_RECOMMENDATION
+COMMERCIALIZATION_NEXT_ACTION_AUTHORIZED=false
 P0_REFERENCE_IMPLEMENTATION_CREATED=true
 P0_OFFLINE_TESTS_PASS=true
 PRE68_SECURITY_AND_PLATFORM_SCOPE_DEFINED=true
-PRE68_EXECUTION_AUTHORIZED=true
+PRE68_EXECUTION_AUTHORIZED=false
+PRE68_EXECUTION_RESULT=FAIL_CLOSED_AT_FIRST_IMAGE_PULL
+PRE68_PLATFORM_VALIDATIONS_EXECUTED=0
+PRE68_AGENT_MODEL_REQUESTS_EXECUTED=0
 FORMAL_HUMAN_SECURITY_REVIEW_COMPLETE=false
 CONTRACT_ADOPTED_AS_STANDARD=false
 STANDARD_READY=false
