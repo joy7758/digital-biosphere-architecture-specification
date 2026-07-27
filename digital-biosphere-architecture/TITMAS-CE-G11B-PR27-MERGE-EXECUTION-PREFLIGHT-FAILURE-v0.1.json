@@ -1,0 +1,57 @@
+{
+  "record_type": "TITMAS_PR27_MERGE_EXECUTION_PREFLIGHT_FAILURE",
+  "record_id": "TITMAS-CE-G11B-PR27-MERGE-EXECUTION-PREFLIGHT-FAILURE-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28T05:09:00+08:00",
+  "status": "FAIL_CLOSED_LOCAL_EXPECTED_GOVERNANCE_SHA_BINDING_ERROR",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-MERGE-EXECUTION-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "d9261970d29fb411a23a9de3d418f6ce0fa69b2a5008256d2163eb2d7542eec4",
+  "attempt": {
+    "sequence": "FINAL_PREFLIGHT",
+    "attempt_number": 1,
+    "mutation": false,
+    "exit_code": 1,
+    "failure_phase": "LOCAL_GOVERNANCE_COMMIT_BINDING",
+    "failed_before_remote_pr_preconditions": true,
+    "expected_governance_commit_entered": "5aa0d260ba6f4d3ea89d79d1d557cde9219c5470",
+    "actual_local_governance_commit": "5aa0d266c3c70c4d3f720c3d6606698c573a79d6",
+    "actual_remote_governance_commit": "5aa0d266c3c70c4d3f720c3d6606698c573a79d6",
+    "root_cause": "MANUAL_TRANSCRIPTION_OF_ABBREVIATED_COMMIT_INTO_AN_UNBOUND_INLINE_PREFLIGHT_COMMAND"
+  },
+  "post_failure_pr_observation": {
+    "state": "OPEN",
+    "draft": true,
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "mergeable": "MERGEABLE",
+    "merge_state": "CLEAN",
+    "comments": 0,
+    "reviews": 0,
+    "review_requests": 0,
+    "checks": 0
+  },
+  "effects": {
+    "draft_ready_mutations": 0,
+    "merge_attempts": 0,
+    "pr_mutations": 0,
+    "branch_mutations": 0,
+    "release_actions": 0,
+    "deployment_actions": 0,
+    "evidence_truth_changes": 0,
+    "permission_changes": 0,
+    "authority_changes": 0
+  },
+  "remaining_original_caps": {
+    "draft_ready_mutations": 1,
+    "merge_mutations": 1,
+    "merge_attempts": 1,
+    "retries": 0
+  },
+  "result": {
+    "execution_stopped": true,
+    "silent_retry_performed": false,
+    "draft_conversion_executed": false,
+    "merge_executed": false,
+    "new_decision_required_for_corrected_preflight": true
+  }
+}
