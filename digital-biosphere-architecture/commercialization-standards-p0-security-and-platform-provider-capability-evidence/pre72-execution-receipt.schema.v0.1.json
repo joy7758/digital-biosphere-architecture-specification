@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre72/pre72-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS PRE-72 Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "executed_at",
+    "decision_reference",
+    "decision_sha256",
+    "authorization_baseline_commit",
+    "sanitized_session_results_reference",
+    "sanitized_session_results_sha256",
+    "scope_continuity",
+    "attempt_accounting",
+    "credential_accounting",
+    "persistence_boundary",
+    "result_classification",
+    "effects",
+    "known_limitations",
+    "next_action",
+    "next_action_authorized"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre72-execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE72-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_BOUNDED_STRUCTURED_OUTPUT_PREFLIGHT_6_OF_6"},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "../TITMAS-CS-D02-PRE-72-BOUNDED-STRUCTURED-OUTPUT-PREFLIGHT-DECISION-RECORD.v0.1.json"},
+    "decision_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "authorization_baseline_commit": {"pattern": "^[0-9a-f]{40}$"},
+    "sanitized_session_results_reference": {"const": "./pre72-sanitized-session-results.v0.1.json"},
+    "sanitized_session_results_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "scope_continuity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorized_request_cap",
+        "executed_requests",
+        "qianfan_passed",
+        "qwen_passed",
+        "exact_returned_model_match",
+        "direct_single_json_object_pass",
+        "response_schema_pass",
+        "exact_session_binding_pass",
+        "authority_boundary_pass"
+      ],
+      "properties": {
+        "authorized_request_cap": {"const": 6},
+        "executed_requests": {"const": 6},
+        "qianfan_passed": {"const": "3/3"},
+        "qwen_passed": {"const": "3/3"},
+        "exact_returned_model_match": {"const": "6/6"},
+        "direct_single_json_object_pass": {"const": "6/6"},
+        "response_schema_pass": {"const": "6/6"},
+        "exact_session_binding_pass": {"const": "6/6"},
+        "authority_boundary_pass": {"const": "6/6"}
+      }
+    },
+    "attempt_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "retry_attempts",
+        "fallback_attempts",
+        "model_substitutions",
+        "response_extractions",
+        "json_repairs"
+      ],
+      "properties": {
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "model_substitutions": {"const": 0},
+        "response_extractions": {"const": 0},
+        "json_repairs": {"const": 0}
+      }
+    },
+    "credential_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "credential_identifiers_configured",
+        "credential_values_accessed_in_process_memory",
+        "authorization_header_values_emitted_to_tls_client",
+        "credential_values_printed",
+        "credential_values_persisted",
+        "credential_values_exposed_outside_authorized_transport",
+        "record_contains_secret_value"
+      ],
+      "properties": {
+        "credential_identifiers_configured": {"const": 2},
+        "credential_values_accessed_in_process_memory": {"const": 2},
+        "authorization_header_values_emitted_to_tls_client": {"const": 6},
+        "credential_values_printed": {"const": 0},
+        "credential_values_persisted": {"const": 0},
+        "credential_values_exposed_outside_authorized_transport": {"const": 0},
+        "record_contains_secret_value": {"const": false}
+      }
+    },
+    "persistence_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_response_envelopes_persisted",
+        "assistant_content_persisted",
+        "provider_error_body_persisted",
+        "usage_persisted",
+        "sanitized_metadata_only"
+      ],
+      "properties": {
+        "raw_response_envelopes_persisted": {"const": 0},
+        "assistant_content_persisted": {"const": 0},
+        "provider_error_body_persisted": {"const": 0},
+        "usage_persisted": {"const": 0},
+        "sanitized_metadata_only": {"const": true}
+      }
+    },
+    "result_classification": {"const": "BOUNDED_STRUCTURED_OUTPUT_PREFLIGHT_PASS"},
+    "effects": {
+      "type": "object",
+      "minProperties": 10,
+      "additionalProperties": {"const": false}
+    },
+    "known_limitations": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 15}
+    },
+    "next_action": {"const": "PREPARE_PRE73_EXACT_DUAL_PROVIDER_AGENT_ASSISTED_SECURITY_REVIEW_RECOMMENDATION"},
+    "next_action_authorized": {"const": false}
+  }
+}

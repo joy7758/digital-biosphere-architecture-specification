@@ -1,0 +1,239 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre72/pre72-sanitized-session-results.schema.v0.1.json",
+  "title": "TITMAS PRE-72 Sanitized Session Results v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "decision_sha256",
+    "authorization_baseline_commit",
+    "lane_summary",
+    "sessions",
+    "attempt_accounting",
+    "credential_accounting",
+    "persistence_boundary",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre72-sanitized-session-results.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE72-SANITIZED-SESSION-RESULTS-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_6_OF_6"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "../TITMAS-CS-D02-PRE-72-BOUNDED-STRUCTURED-OUTPUT-PREFLIGHT-DECISION-RECORD.v0.1.json"},
+    "decision_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "authorization_baseline_commit": {"pattern": "^[0-9a-f]{40}$"},
+    "lane_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "PRE72-QIANFAN-STRUCTURED-OUTPUT",
+        "PRE72-QWEN-STRUCTURED-OUTPUT"
+      ],
+      "properties": {
+        "PRE72-QIANFAN-STRUCTURED-OUTPUT": {"$ref": "#/$defs/lane"},
+        "PRE72-QWEN-STRUCTURED-OUTPUT": {"$ref": "#/$defs/lane"}
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "prefixItems": [
+        {
+          "allOf": [
+            {"$ref": "#/$defs/qianfan_session"},
+            {"properties": {"session_id": {"const": "PRE72-QIANFAN-01"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/qianfan_session"},
+            {"properties": {"session_id": {"const": "PRE72-QIANFAN-02"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/qianfan_session"},
+            {"properties": {"session_id": {"const": "PRE72-QIANFAN-03"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/qwen_session"},
+            {"properties": {"session_id": {"const": "PRE72-QWEN-01"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/qwen_session"},
+            {"properties": {"session_id": {"const": "PRE72-QWEN-02"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/qwen_session"},
+            {"properties": {"session_id": {"const": "PRE72-QWEN-03"}}}
+          ]
+        }
+      ],
+      "items": false
+    },
+    "attempt_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_requests",
+        "retry_attempts",
+        "fallback_attempts",
+        "model_substitutions",
+        "response_extractions",
+        "json_repairs"
+      ],
+      "properties": {
+        "network_requests": {"const": 6},
+        "retry_attempts": {"const": 0},
+        "fallback_attempts": {"const": 0},
+        "model_substitutions": {"const": 0},
+        "response_extractions": {"const": 0},
+        "json_repairs": {"const": 0}
+      }
+    },
+    "credential_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "credential_identifiers_configured",
+        "credential_values_accessed_in_process_memory",
+        "authorization_header_values_emitted_to_tls_client",
+        "credential_values_printed",
+        "credential_values_persisted",
+        "credential_values_exposed_outside_authorized_transport",
+        "record_contains_secret_value"
+      ],
+      "properties": {
+        "credential_identifiers_configured": {"const": 2},
+        "credential_values_accessed_in_process_memory": {"const": 2},
+        "authorization_header_values_emitted_to_tls_client": {"const": 6},
+        "credential_values_printed": {"const": 0},
+        "credential_values_persisted": {"const": 0},
+        "credential_values_exposed_outside_authorized_transport": {"const": 0},
+        "record_contains_secret_value": {"const": false}
+      }
+    },
+    "persistence_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_response_envelopes_persisted",
+        "assistant_content_persisted",
+        "provider_error_body_persisted",
+        "usage_persisted"
+      ],
+      "properties": {
+        "raw_response_envelopes_persisted": {"const": 0},
+        "assistant_content_persisted": {"const": 0},
+        "provider_error_body_persisted": {"const": 0},
+        "usage_persisted": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 6,
+      "additionalProperties": {"const": false}
+    }
+  },
+  "$defs": {
+    "lane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["scheduled", "executed", "passed", "status"],
+      "properties": {
+        "scheduled": {"const": 3},
+        "executed": {"const": 3},
+        "passed": {"const": 3},
+        "status": {"const": "PASS_3_OF_3"}
+      }
+    },
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "lane_id",
+        "provider",
+        "endpoint",
+        "requested_model",
+        "returned_model",
+        "http_status",
+        "request_payload_bytes",
+        "request_payload_sha256",
+        "response_envelope_bytes",
+        "response_envelope_sha256",
+        "assistant_content_bytes",
+        "assistant_content_sha256",
+        "returned_model_match",
+        "direct_single_json_object_pass",
+        "response_schema_pass",
+        "exact_session_binding_pass",
+        "authority_boundary_pass",
+        "status"
+      ],
+      "properties": {
+        "session_id": {"pattern": "^PRE72-(QIANFAN|QWEN)-0[1-3]$"},
+        "lane_id": {"enum": ["PRE72-QIANFAN-STRUCTURED-OUTPUT", "PRE72-QWEN-STRUCTURED-OUTPUT"]},
+        "provider": {"enum": ["BAIDU_QIANFAN", "ALIBABA_CLOUD_MODEL_STUDIO"]},
+        "endpoint": {"type": "string", "format": "uri", "pattern": "/chat/completions$"},
+        "requested_model": {"enum": ["ernie-4.5-turbo-20260402", "qwen3.7-plus"]},
+        "returned_model": {"enum": ["ernie-4.5-turbo-20260402", "qwen3.7-plus"]},
+        "http_status": {"const": 200},
+        "request_payload_bytes": {"type": "integer", "minimum": 1},
+        "request_payload_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "response_envelope_bytes": {"type": "integer", "minimum": 1},
+        "response_envelope_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "assistant_content_bytes": {"type": "integer", "minimum": 1, "maximum": 131072},
+        "assistant_content_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "returned_model_match": {"const": true},
+        "direct_single_json_object_pass": {"const": true},
+        "response_schema_pass": {"const": true},
+        "exact_session_binding_pass": {"const": true},
+        "authority_boundary_pass": {"const": true},
+        "status": {"const": "PASS"}
+      }
+    },
+    "qianfan_session": {
+      "allOf": [
+        {"$ref": "#/$defs/session"},
+        {
+          "properties": {
+            "lane_id": {"const": "PRE72-QIANFAN-STRUCTURED-OUTPUT"},
+            "provider": {"const": "BAIDU_QIANFAN"},
+            "endpoint": {"const": "https://qianfan.baidubce.com/v2/chat/completions"},
+            "requested_model": {"const": "ernie-4.5-turbo-20260402"},
+            "returned_model": {"const": "ernie-4.5-turbo-20260402"}
+          }
+        }
+      ]
+    },
+    "qwen_session": {
+      "allOf": [
+        {"$ref": "#/$defs/session"},
+        {
+          "properties": {
+            "lane_id": {"const": "PRE72-QWEN-STRUCTURED-OUTPUT"},
+            "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+            "endpoint": {"const": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions"},
+            "requested_model": {"const": "qwen3.7-plus"},
+            "returned_model": {"const": "qwen3.7-plus"}
+          }
+        }
+      ]
+    }
+  }
+}

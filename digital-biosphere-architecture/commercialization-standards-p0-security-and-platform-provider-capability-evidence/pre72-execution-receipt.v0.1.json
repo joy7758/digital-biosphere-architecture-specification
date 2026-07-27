@@ -1,0 +1,67 @@
+{
+  "$schema": "./pre72-execution-receipt.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE72-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_BOUNDED_STRUCTURED_OUTPUT_PREFLIGHT_6_OF_6",
+  "executed_at": "2026-07-27T15:06:50+08:00",
+  "decision_reference": "../TITMAS-CS-D02-PRE-72-BOUNDED-STRUCTURED-OUTPUT-PREFLIGHT-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "d75a8f8f87e02733188b5384512f6b73c8ceb06cc4b9d1d686eb90e587e55986",
+  "authorization_baseline_commit": "19f55e0c282a41809b04756aaac072783d564212",
+  "sanitized_session_results_reference": "./pre72-sanitized-session-results.v0.1.json",
+  "sanitized_session_results_sha256": "60f4d44ab6aa01c460b4be166f68758f0575e375dda285bec6103d7aa6c5a2aa",
+  "scope_continuity": {
+    "authorized_request_cap": 6,
+    "executed_requests": 6,
+    "qianfan_passed": "3/3",
+    "qwen_passed": "3/3",
+    "exact_returned_model_match": "6/6",
+    "direct_single_json_object_pass": "6/6",
+    "response_schema_pass": "6/6",
+    "exact_session_binding_pass": "6/6",
+    "authority_boundary_pass": "6/6"
+  },
+  "attempt_accounting": {
+    "retry_attempts": 0,
+    "fallback_attempts": 0,
+    "model_substitutions": 0,
+    "response_extractions": 0,
+    "json_repairs": 0
+  },
+  "credential_accounting": {
+    "credential_identifiers_configured": 2,
+    "credential_values_accessed_in_process_memory": 2,
+    "authorization_header_values_emitted_to_tls_client": 6,
+    "credential_values_printed": 0,
+    "credential_values_persisted": 0,
+    "credential_values_exposed_outside_authorized_transport": 0,
+    "record_contains_secret_value": false
+  },
+  "persistence_boundary": {
+    "raw_response_envelopes_persisted": 0,
+    "assistant_content_persisted": 0,
+    "provider_error_body_persisted": 0,
+    "usage_persisted": 0,
+    "sanitized_metadata_only": true
+  },
+  "result_classification": "BOUNDED_STRUCTURED_OUTPUT_PREFLIGHT_PASS",
+  "effects": {
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false,
+    "production_ready": false,
+    "implementation_authorized": false,
+    "target_repository_written": false,
+    "dbos_written": false,
+    "saee_written": false
+  },
+  "known_limitations": [
+    "SIX_BOUNDED_RESPONSES_DO_NOT_PROVE_LONG_TERM_RELIABILITY",
+    "PREFLIGHT_PASS_DOES_NOT_CREATE_PROVIDER_SUPPORT",
+    "PREFLIGHT_PASS_DOES_NOT_COMPLETE_FORMAL_HUMAN_SECURITY_REVIEW",
+    "PREFLIGHT_PASS_DOES_NOT_CREATE_CONFORMANCE_STANDARD_READY_RELEASE_OR_PRODUCTION_STATUS"
+  ],
+  "next_action": "PREPARE_PRE73_EXACT_DUAL_PROVIDER_AGENT_ASSISTED_SECURITY_REVIEW_RECOMMENDATION",
+  "next_action_authorized": false
+}

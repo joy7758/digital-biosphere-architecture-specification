@@ -64,13 +64,13 @@ SAEE_NE_CONTROLLER=true
 | `CS-D02-PRE-69` | `DECIDED_EXECUTED_FAIL_CLOSED_DOCKER_CONTEXT_AND_ZERO_WRITE_BOUNDARY` | Exact source export 与 10/10 hashes PASS；anonymous config PASS；首个 pull 在 transfer 前因 daemon socket unavailable 失败；Colima lifecycle 产生用户 config metadata drift；containers=0、agent requests=0；target unchanged | PRE-69 retry=false；只允许形成 PRE-70 explicit Docker context + global config write guard Recommendation，不自动执行 |
 | `CS-D02-PRE-70` | `DECIDED_EXECUTED_FAIL_CLOSED_AGENT_RESPONSE_NOT_DIRECT_JSON_AFTER_PLATFORM_PASS` | explicit `DOCKER_HOST` 与 global-config guard PASS；2/2 exact pulls 和 2/2 network-none read-only Linux/amd64 containers PASS；每 lane 92 tests run、1 skip、suite OK 与 7/7 rehearsal；首个 Qianfan review response 含 code fence，违反 direct-JSON contract，Qwen 未执行；target 10/10 hashes unchanged | PRE-70 retry=false；只允许形成 PRE-71 response-contract 与 credential-accounting disposition Recommendation；不自动执行模型请求 |
 | `CS-D02-PRE-71` | `DECIDED_EXECUTED_PASS_BOUNDED_OFFLINE_DESIGN_PRE72_RECOMMENDATION_REQUIRED` | strict direct JSON v0.2 candidate、Provider capability checklist、credential accounting profile 和 10 fixtures 已形成；contract Schema PASS、2/2 positive、8/8 negatives；首次一次性 validator double-inversion error 留痕，修正逻辑后 PASS；network/model/credential/raw response/target/DBOS/SAEE writes=0 | 只允许形成 PRE-72 current official Provider capability evidence acquisition Recommendation；任何 external/live request 仍需独立 Decision |
-| `CS-D02-PRE-72` | `DECIDED_AUTHORIZED_NOT_EXECUTED` | Qianfan 与 Alibaba Cloud official docs、exact 6-session request contract、response Schema、3+3 顺序 request scope、credential caps 与 false effects 已冻结；`TITMAS-CS-STANDING-001` 已形成独立 Decision；当前 model request/credential read=0 | 按 exact request contract 执行一次；失败 lane 停止剩余请求，另一 lane 独立继续；不得把 Decision 或 future preflight PASS 升级为 Provider support、formal Human Security Review、conformance、Standard Ready 或 release |
+| `CS-D02-PRE-72` | `DECIDED_EXECUTED_PASS_6_OF_6_PRE73_RECOMMENDATION_REQUIRED` | Qianfan 3/3、Qwen 3/3；6/6 HTTP 200、exact model、direct JSON、response Schema、session binding 与 authority boundary PASS；0 retry/fallback/substitution/extraction/repair；raw response/assistant content persistence=0；secret print/persist/expose=0 | PRE-72 authorization consumed；只允许形成 PRE-73 exact dual-provider agent-assisted Security Review Recommendation；Provider support、formal Human Security Review、conformance、Standard Ready 与 release 仍为 false |
 | `TITMAS-FINALIZATION-AVH-001` | `ARCHITECTURE_ASSESSMENT_DEFINED_NOT_ADOPTED` | [AVH architecture assessment](architecture/agent-validation-harness-architecture-assessment-v0.1.md) / [machine record](architecture/agent-validation-harness-architecture-assessment.v0.1.json)；现有 Technical Validation、Evidence Admission、DBOS/SAEE Owner crosswalk 已完成 | 只允许架构、overlap、threat、oracle 和 conformance design review；等待完整提案、Owner/Reviewer 和 `TITMAS-AVH-D01`，不创建产品、Runtime、Sandbox、Agent、Evidence 或实现 |
 
 ```text
-COMMERCIALIZATION_LAST_COMPLETED_STEP=CS-D02-PRE-72-DECISION
-COMMERCIALIZATION_NEXT_ACTION=EXECUTE_AUTHORIZED_CS_D02_PRE72_BOUNDED_PREFLIGHT
-COMMERCIALIZATION_NEXT_ACTION_AUTHORIZED=true
+COMMERCIALIZATION_LAST_COMPLETED_STEP=CS-D02-PRE-72-EXECUTION
+COMMERCIALIZATION_NEXT_ACTION=PREPARE_PRE73_EXACT_DUAL_PROVIDER_AGENT_ASSISTED_SECURITY_REVIEW_RECOMMENDATION
+COMMERCIALIZATION_NEXT_ACTION_AUTHORIZED=false
 P0_REFERENCE_IMPLEMENTATION_CREATED=true
 P0_OFFLINE_TESTS_PASS=true
 PRE68_SECURITY_AND_PLATFORM_SCOPE_DEFINED=true
