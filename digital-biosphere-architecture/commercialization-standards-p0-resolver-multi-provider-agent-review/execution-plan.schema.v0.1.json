@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre65-p0-resolver-multi-provider-agent-review-execution-plan.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_sha256",
+    "decision_commit",
+    "request_contract_reference",
+    "request_contract_sha256",
+    "response_schema_reference",
+    "response_schema_sha256",
+    "bindings",
+    "sessions",
+    "execution_policy",
+    "pass_rule",
+    "raw_capture_policy",
+    "interpretation"
+  ],
+  "properties": {
+    "$schema": { "const": "./execution-plan.schema.v0.1.json" },
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-65-P0-RESOLVER-MULTI-PROVIDER-AGENT-REVIEW-EXECUTION-PLAN-0.1"
+    },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "FROZEN_BEFORE_FIRST_REQUEST" },
+    "decision_reference": {
+      "const": "../TITMAS-CS-D02-PRE-65-P0-RESOLVER-CONTRACT-MULTI-PROVIDER-AGENT-REVIEW-DECISION-RECORD.v0.1.json"
+    },
+    "decision_sha256": {
+      "const": "27619071c696cb3fb705b1c9c381b22f7fdc7638c185c211137b94d424c14e99"
+    },
+    "decision_commit": {
+      "const": "7935a1ef714c9a851a5f19acc11d7efea6c9b02f"
+    },
+    "request_contract_reference": {
+      "const": "./request-contract-candidate.v0.1.json"
+    },
+    "request_contract_sha256": {
+      "const": "7a9e9934abb7b3630ce8d71cf79743a51d12739d3b7f935e611f622e717e16f9"
+    },
+    "response_schema_reference": {
+      "const": "./agent-review-response.schema.v0.1.json"
+    },
+    "response_schema_sha256": {
+      "const": "5ad3000506171bc08721e9d26fc13b2930de87a45aa0bbb655756411116016fd"
+    },
+    "bindings": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "execution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequential",
+        "concurrency_max",
+        "timeout_seconds",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "content_extraction_max",
+        "json_repair_max",
+        "stop_after_failed_prerequisite_session"
+      ],
+      "properties": {
+        "sequential": { "const": true },
+        "concurrency_max": { "const": 1 },
+        "timeout_seconds": { "const": 60 },
+        "retry_max": { "const": 0 },
+        "fallback_max": { "const": 0 },
+        "model_substitution_max": { "const": 0 },
+        "content_extraction_max": { "const": 0 },
+        "json_repair_max": { "const": 0 },
+        "stop_after_failed_prerequisite_session": { "const": true }
+      }
+    },
+    "pass_rule": {
+      "type": "object",
+      "minProperties": 9,
+      "additionalProperties": { "const": true }
+    },
+    "raw_capture_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "local_temporary_only",
+        "file_mode",
+        "git_tracked",
+        "credential_value_recorded",
+        "authorization_header_recorded"
+      ],
+      "properties": {
+        "local_temporary_only": { "const": true },
+        "file_mode": { "const": "0600" },
+        "git_tracked": { "const": false },
+        "credential_value_recorded": { "const": false },
+        "authorization_header_recorded": { "const": false }
+      }
+    },
+    "interpretation": {
+      "type": "object",
+      "minProperties": 10,
+      "additionalProperties": { "const": false }
+    }
+  }
+}
