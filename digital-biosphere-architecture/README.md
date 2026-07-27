@@ -378,10 +378,14 @@ offline target-binding remediation Recommendation。
 已把修正收敛为 historical-source-preserving、offline-only 的 correlation binding
 contract 与最小 adapter candidate。binding 只承载 evidence routing metadata，不产生
 Authority；未来 live binding 仍须由独立 deployment Decision 固定 bytes/hash。
-`qwen3.7-plus` 给出 `RECOMMENDED`、愿意向智能体客户推荐、置信度 `0.98`。当前只达到
-Decision review ready。[CE-G11A Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11A-DECISION-RECORD.v0.1.json)
+`qwen3.7-plus` 给出 `RECOMMENDED`、愿意向智能体客户推荐、置信度 `0.98`。该
+Recommendation 随后进入独立 Decision review。[CE-G11A Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11A-DECISION-RECORD.v0.1.json)
 已依据 `TITMAS-CS-STANDING-001` 独立授权 exact offline artifacts/tests；Decision 不等于
-execution。remote matrix、服务器访问和重部署仍均未授权。
+execution。[CE-G11A result](commercial-evaluation-controller-tls-diagnosis/ce-g11a-offline-remediation-result.v0.1.json)
+与[报告](TITMAS-CE-G11A-OFFLINE-TARGET-BINDING-REMEDIATION-REPORT-v0.1.md)记录
+13/13 新 tests、13/13 historical regressions、9/9 negatives，以及 Python 3.13.12 /
+3.14.5 各 13/13；historical hashes 全部保持。该 PASS 只证明 offline binding
+remediation，不创建 live binding。remote matrix、服务器访问和重部署仍均未授权。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/titmas-ce-g11-correlation-binding.schema.v0.1.json",
+  "title": "TITMAS CE-G11 Offline Correlation Binding v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "binding_id",
+    "version",
+    "declared_decision_reference",
+    "receipt_id",
+    "expected_current_release",
+    "authorization_status",
+    "authority_effect"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./ce-g11-correlation-binding.schema.v0.1.json"
+    },
+    "binding_id": {
+      "const": "TITMAS-CE-G11-CORRELATION-BINDING-OFFLINE-001"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "declared_decision_reference": {
+      "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G11"
+    },
+    "receipt_id": {
+      "const": "TITMAS-CE-G11-SERVER-CORRELATION-001"
+    },
+    "expected_current_release": {
+      "const": "/srv/tmai/releases/f8107969aa1f43be8ecf43f557297a630309fe41"
+    },
+    "authorization_status": {
+      "const": "NOT_AUTHORIZED"
+    },
+    "authority_effect": {
+      "const": false
+    }
+  }
+}
