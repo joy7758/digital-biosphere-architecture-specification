@@ -1,0 +1,65 @@
+{
+  "record_type": "TITMAS_CE_G11B_OFFLINE_SITE_DEPENDENCY_MATERIALIZATION_RESULT",
+  "result_id": "TITMAS-CE-G11B-OFFLINE-SITE-DEPS-R1-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27",
+  "status": "FAIL_CLOSED_NPM_CI_LOCKFILE_SYNC_REPORTED_MISSING_SITE_0_1_0",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "37c159481ad1bc95df51606d85745d0a98ff5b1f",
+  "inputs": {
+    "merge_tree": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "package_json_sha256": "60dc7abf99a878f0e9dd24f0362d1ac7ad9c72a4d21578085fed39c526e3709b",
+    "package_lock_sha256": "4f179b1107a3a3f18aa906ebd19f952a9a4d190b1ad7123cba0a6884e3a312fd",
+    "node_version": "v26.0.0",
+    "npm_version": "11.12.1"
+  },
+  "execution": {
+    "command": "npm ci --offline --ignore-scripts --no-audit --no-fund",
+    "attempts": 1,
+    "exit_code": 1,
+    "npm_error_code": "EUSAGE",
+    "sanitized_error": "npm ci reported package.json and package-lock.json were not in sync and reported Missing: site@0.1.0 from lock file.",
+    "network_fallbacks": 0,
+    "lifecycle_install_scripts": 0,
+    "existing_node_modules_reuses": 0,
+    "site_tests_executed": 0,
+    "ce_tests_executed_in_this_stage": 0
+  },
+  "diagnostic_observations": {
+    "lockfile_version": 3,
+    "lockfile_root_name": "trusted-multi-agent-infrastructure-site",
+    "lockfile_root_version": "0.1.0",
+    "package_name": "trusted-multi-agent-infrastructure-site",
+    "package_version": "0.1.0",
+    "explicit_site_dependency_found": false,
+    "exact_root_cause_proven": false,
+    "npm_bug_proven": false,
+    "lockfile_content_defect_proven": false
+  },
+  "action_accounting": {
+    "temporary_worktrees_created": 1,
+    "temporary_worktrees_remaining": 0,
+    "dependency_install_attempts": 1,
+    "retries": 0,
+    "network_fallbacks": 0,
+    "pr_mutations": 0,
+    "pushes": 0,
+    "merges": 0,
+    "workflow_runs": 0,
+    "site_source_changes": 0,
+    "server_actions": 0,
+    "deployments": 0
+  },
+  "false_effects": {
+    "offline_materialization_pass": false,
+    "site_validation_pass": false,
+    "merge_tree_revalidation_pass": false,
+    "merge_authorization": false,
+    "merge": false,
+    "phase_b_authorization": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": "ZERO_INSTALL_NPM_CLI_AND_LOCKFILE_BEHAVIOR_DIAGNOSTIC_RECOMMENDATION",
+  "next_gate_authorized": false
+}

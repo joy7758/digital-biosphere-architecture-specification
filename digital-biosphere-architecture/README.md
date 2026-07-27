@@ -394,8 +394,199 @@ remediation，不创建 live binding。remote matrix、服务器访问和重部�
 测试、one-run cap 和 fail-closed aggregate。全文经 `qwen3.7-max` 主审，得到
 `RECOMMENDED`、愿意向智能体客户推荐、置信度 `0.98`、0 blocker/correction。
 `qwen3.8-max-preview` 的同范围请求返回 HTTP 400，未形成有效审查，不计入认可。
-Recommendation 不授权 workflow、run request、server access 或 redeployment；下一步只
-进入 CE-G11B Phase A Decision review。
+Recommendation 本身不授权 workflow、run request、server access 或 redeployment。
+[CE-G11B Phase A Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-DECISION-RECORD.v0.1.json)
+已依据 `TITMAS-CS-STANDING-001` 授权 component preparation only；`qwen3.7-max`
+Decision quality review 为 `APPROVE`、置信度 `0.99`。当前仍不得创建有效 run request
+或执行 workflow。[Phase A result](commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-result.v0.1.json)
+和[报告](TITMAS-CE-G11B-PHASE-A-COMPONENT-PREPARATION-REPORT-v0.1.md)保留了
+`FAIL_CLOSED_PHASE_A_MODEL_REQUEST_CAP_EXCEEDED`：Decision cap 为 0，但 Max 代码审查
+产生了 1 次 implementation-time model request。组件测试虽达到 Python 3.13/3.14
+各 40/40、full discovery 49/49，仍不能把 Phase A 写成 PASS；workflow runs 保持 0。
+[Cap remediation Recommendation](TITMAS-CE-G11B-PHASE-A-MODEL-REVIEW-CAP-REMEDIATION-RECOMMENDATION-v0.1.md)
+采用 non-retroactive Option A：未来新 Decision 只允许恰好 1 次 fresh
+`qwen3.7-max` implementation review，workflow execution-time model requests 仍为 0。
+[Sanitized qwen review](TITMAS-CE-G11B-PHASE-A-MODEL-REVIEW-CAP-REMEDIATION-QWEN-REVIEW-v0.1.json)
+返回 exact model identity、`RECOMMENDED`、置信度 `0.95`、0 blocker/correction。
+Recommendation 与模型审查本身不授权 Phase A-R1、Phase B 或 workflow run。
+[Phase A-R1 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-R1-DECISION-RECORD.v0.1.json)
+已依据 `TITMAS-CS-STANDING-001` 授权 bounded revalidation only；exact
+[qwen Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-R1-QWEN-DECISION-REVIEW-v0.1.json)
+为 `APPROVE`、置信度 `0.95`、0 blocker/correction。该授权不允许修改 candidate、
+创建有效 run request、执行 workflow、进入 Phase B 或重部署。
+[Phase A-R1 result](commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.v0.1.json)
+和[报告](TITMAS-CE-G11B-PHASE-A-R1-REVALIDATION-REPORT-v0.1.md)记录
+`PASS_PHASE_A_R1_REVALIDATION_ONLY`：15/15 hashes、Python 3.13/3.14 各 40/40、
+full discovery 49/49；唯一一次 fresh `qwen3.7-max` review 为 `PASS`、置信度
+`0.95`、0 blocker/correction，候选无需修改。旧 Phase A 失败继续保留，CE-G11B
+workflow runs 仍为 0，Phase B 仍未授权。
+[Phase B canonical integration Recommendation](TITMAS-CE-G11B-PHASE-B-CANONICAL-INTEGRATION-RECOMMENDATION-v0.1.md)
+记录远端 clean-clone PASS，并推荐先创建一个 base=canonical、head=CE-G11B 的 Draft PR；
+不 merge、不包含 `site/`、不创建 run request、不触发 workflow。
+[Max review](TITMAS-CE-G11B-PHASE-B-CANONICAL-INTEGRATION-QWEN-REVIEW-v0.1.json)
+返回 `RECOMMENDED`、Option A、置信度 `0.95`、0 blocker/correction。Recommendation
+不授权创建 PR 或 Phase B。
+[Draft PR Decision review failure](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-DRAFT-PR-QWEN-DECISION-REVIEW-FAILURE-v0.1.json)
+保留 `NON_QUALIFYING_REVIEW_ATTEMPT`：唯一一次 `qwen3.7-max` Decision review 没有产生
+可持久化 sanitized result，因此 returned model、HTTP status 和 verdict 无法验证。
+[Decision record](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-DRAFT-PR-CREATION-DECISION-RECORD.v0.1.json)
+保持 `NOT_AUTHORIZED_DECISION_REVIEW_NON_QUALIFYING`；没有重试，也没有创建 PR。
+[Decision-review retry Recommendation](TITMAS-CE-G11B-DRAFT-PR-DECISION-REVIEW-RETRY-RECOMMENDATION-v0.1.md)
+保留旧失败并推荐建立新的 `CE-G11B-PR-A-R1` Decision candidate，采用 write-ahead
+persistence 后只允许一次新的 exact `qwen3.7-max` Decision review。
+[Sanitized Max review](TITMAS-CE-G11B-DRAFT-PR-DECISION-REVIEW-RETRY-QWEN-REVIEW-v0.1.json)
+为 `RECOMMENDED`、Option A、置信度 `0.95`、0 blocker/correction。该审查不授权新
+Decision、PR 创建、merge、workflow、Phase B 或 deployment。
+[CE-G11B-PR-A-R1 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-DRAFT-PR-A-R1-DECISION-RECORD.v0.1.json)
+及其 exact
+[Max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-DRAFT-PR-A-R1-QWEN-DECISION-REVIEW-v0.1.json)
+已远端固化；审查为 `APPROVE`、置信度 `0.95`、0 blocker/correction。
+[Draft PR #22](https://github.com/joy7758/digital-biosphere-architecture-specification/pull/22)
+随后按一次性授权创建。[结果](TITMAS-CE-G11B-DRAFT-PR-CREATION-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-DRAFT-PR-CREATION-REPORT-v0.1.md)确认其为 `OPEN` Draft、
+base/head SHA 精确、无 auto-merge/labels/reviewer/milestone，head Actions runs 为 0。
+该 PR 尚未 merge，也不授权 Phase B、workflow、deployment 或 commercial offering。
+[Independent PR review Recommendation](TITMAS-CE-G11B-DRAFT-PR-INDEPENDENT-REVIEW-RECOMMENDATION-v0.1.md)
+已冻结一次只读、无 GitHub mutation 的 Max review scope；
+[qwen3.7-max review](TITMAS-CE-G11B-DRAFT-PR-INDEPENDENT-REVIEW-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+为 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction。下一步仍须独立
+Decision；尚未执行 PR diff review，也未授权 merge。
+[Independent review result](TITMAS-CE-G11B-DRAFT-PR-INDEPENDENT-REVIEW-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-DRAFT-PR-INDEPENDENT-REVIEW-REPORT-v0.1.md)现已记录完整
+159,206-byte / 21-path diff 的 exact `qwen3.7-max` 只读审查：`PASS`、confidence
+`0.95`、0 blocker/correction，且建议进入 merge Recommendation 准备。没有提交
+GitHub review/comment，也没有 merge、workflow 或 Phase B 授权。
+随后发现 canonical 已前进至 `ccf473f3…`，新增 2 个仅涉及 `site/` 的提交；旧 base
+`4c95f6b…` 仍是 ancestor，CE head 与 site paths 交集为 0，offline candidate
+merge-tree 为 `ea296d8b…` 且未观察到冲突。
+[Merge-tree revalidation Recommendation](TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-RECOMMENDATION-v0.1.md)
+经 [qwen3.7-max review](TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction。下一步必须先
+离线复验当前真实 merge tree；不得直接 merge、rebase 或改网站。
+[Merge-tree R1 result](TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-REPORT-v0.1.md)
+保留 `FAIL_CLOSED_SITE_DEPENDENCY_NOT_MATERIALIZED`：merge tree、0 path intersection、
+3 个 Schema 和 49/49 CE tests 均通过，但临时 worktree 无 `site/node_modules`。
+依赖安装、网络获取和 site tests 均为 0；不得写成 merge-tree PASS 或 merge 授权。
+[Offline site dependency remediation Recommendation](TITMAS-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-REMEDIATION-RECOMMENDATION-v0.1.md)
+选择 exact lockfile、`npm ci --offline --ignore-scripts` 和 disposable worktree，不复用含
+extraneous packages 的现成 `node_modules`。
+[Max review](TITMAS-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-REMEDIATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+为 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction。安装仍需独立
+Decision，merge 仍未授权。
+[Offline materialization result](TITMAS-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-REPORT-v0.1.md)保留
+fail-closed：唯一一次 `npm ci --offline --ignore-scripts` 返回 `EUSAGE` 并报告
+`Missing: site@0.1.0`。无 retry/network fallback/node_modules reuse/site tests/merge。
+根因仍未证明，下一步只能做 zero-install 静态诊断。
+[Zero-install npm cwd diagnostic Recommendation](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-RECOMMENDATION-v0.1.md)
+建议在真实 site cwd 中执行一次 `npm ci --dry-run --offline --ignore-scripts`，只验证
+prefix/cwd hypothesis。[Max review](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+为 `RECOMMENDED`、Option A、confidence `1.0`、0 blocker/correction。dry-run、真实安装
+和 merge 均未授权。[Decision review failure](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-QWEN-DECISION-REVIEW-FAILURE-v0.1.json)
+进一步保留唯一一次 Decision review 的 `NON_QUALIFYING_REVIEW_ATTEMPT`：本地 preflight
+在请求前失败一次，不计 provider request；修正后的单次请求未产生可持久化的 sanitized
+result，因此 returned model、HTTP、verdict、blocker/correction 均为 unknown。不得把
+该尝试视为 APPROVE，也不得在同一 Decision 下重试或执行 dry-run。
+[Timestamp erratum](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-DECISION-REVIEW-FAILURE-TIMESTAMP-ERRATUM-v0.1.json)
+保留旧 failure artifact 但将其人工填写的 `observed_at` 标为 invalid，exact event time
+保持 `UNKNOWN`。[Review-retry Recommendation](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-DECISION-REVIEW-RETRY-RECOMMENDATION-v0.1.md)
+及其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-DECISION-REVIEW-RETRY-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction；只允许建立新的
+R2 Decision candidate。[R2 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-R2-DECISION-RECORD.v0.1.json)
+及其 [write-ahead qwen3.7-max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-R2-QWEN-DECISION-REVIEW-v0.1.json)
+随后得到 `APPROVE`、confidence `0.95`、0 blocker/correction。远端 Decision baseline
+核验后只允许一次 site-cwd offline dry-run；真实安装、site tests、PR mutation 和 merge
+仍未授权。[R2 result](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-R2-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-R2-REPORT-v0.1.md)保留
+`FAIL_CLOSED_PRECONDITION_NPM_PREFIX_STRING_MISMATCH`：merge tree、0 status entry、
+package/lock 和无 `node_modules` 均通过，但 raw `npm prefix` 字符串比较失败，dry-run
+尝试数为 0。实际 prefix 未持久化，realpath hypothesis 未证明；R2 不重跑。
+[R3 Recommendation](TITMAS-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-RECOMMENDATION-v0.1.md)
+及其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction；只允许建立新的
+R3 Decision，以 raw+realpath 双记录修正前置检查，不改变诊断命令。
+[R3 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-DECISION-RECORD.v0.1.json)
+及其 [write-ahead qwen3.7-max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-QWEN-DECISION-REVIEW-v0.1.json)
+得到 `APPROVE`、confidence `0.95`、0 blocker/correction。远端 Decision baseline 核验后
+只允许一次 normalized-prefix observation 和一次 conditional zero-install dry-run。
+[R3 result](TITMAS-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-REPORT-v0.1.md)记录 raw
+`/tmp` 与 `/private/tmp` 不同、realpath 相等，唯一 dry-run exit `0`；`node_modules`
+前后不存在，Git status 0，package/lock/tree 未改变。真实安装和 site tests 仍为 0，
+下一步只能准备独立 actual-install Recommendation。
+[R4 Recommendation](TITMAS-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-RECOMMENDATION-v0.1.md)
+及其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction；只允许建立新的
+R4 Decision，要求一次 offline/ignore-scripts 安装后完成 npm/site/static/CE 全部验证。
+[R4 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-DECISION-RECORD.v0.1.json)
+及其 [write-ahead qwen3.7-max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-QWEN-DECISION-REVIEW-v0.1.json)
+得到 `APPROVE`、confidence `0.95`、0 blocker/correction。远端 Decision baseline
+核验后，只允许在 disposable merge-tree worktree 的真实 site cwd 执行一次
+offline/ignore-scripts `npm ci`，成功后各执行一次 `npm ls`、site tests、
+`verify:static`、3 个 Schema meta-validation 和精确 49 个 CE tests。PR mutation、
+workflow、merge、部署和网站源码修改仍为 0／未授权。
+[R4 result](TITMAS-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-REPORT-v0.1.md)保留
+`FAIL_CLOSED_STATIC_EXPORT_ARTIFACT_ABSENT`：唯一 offline install、`npm ls` 和
+`npm test` 分别 exit `0`，site tests 16/16；唯一 `verify:static` 因
+`site/out/index.html` 不存在而 exit `1`。CE Schema/test 阶段未执行，R4 不重试；
+package/lock/source/tree 未漂移，下一步只能准备独立 R5 static-export sequence
+remediation Recommendation。
+[R5 Recommendation](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-RECOMMENDATION-v0.1.md)
+要求在 `npm test` 后显式运行 public `npm run export`，再执行 `verify:static` 和完整
+CE validation。[首次 Max review](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+返回 exact `qwen3.7-max`、direct JSON、`RECOMMENDED`、Option A、confidence `1.0`
+和 0 blocker/correction；但采集器未保留 HTTP status 与 curl exit，故该请求按
+`HTTP_STATUS_AND_CURL_EXIT_CAPTURE_GAP` 不合格关闭。请求不重试，下一步只能先形成
+独立 review-retry Recommendation。
+[R5-R1 Recommendation](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-R1-RECOMMENDATION-v0.1.md)
+把旧 R5 语义结果保持为非合格历史，并以新 artifact 修正同进程 HTTP/curl 状态采集。
+其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-R1-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+完整记录 curl `0`、HTTP `200`、exact returned model、direct JSON，并得到
+`RECOMMENDED`、Option A、confidence `1.0`、0 blocker/correction。下一步只允许建立
+独立 R5 Decision；安装、export、tests、PR mutation 和 merge 仍未授权。
+[R5 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-DECISION-RECORD.v0.1.json)
+及其 [write-ahead qwen3.7-max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-QWEN-DECISION-REVIEW-v0.1.json)
+完整记录 curl `0`、HTTP `200`、exact model、direct JSON，并得到 `APPROVE`、
+confidence `0.95`、0 blocker/correction。远端 Decision baseline 核验后，只允许一次
+disposable offline install，并严格按 test→public export→verify→3 Schema→49 CE
+tests 执行；PR mutation、workflow、merge 和 deployment 仍未授权。
+[R5 result](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-REPORT-v0.1.md)记录
+`FAIL_CLOSED_FORMAL_RELEASE_CONTEXT_REQUIRED`：install、dependency tree 和 16/16
+site tests 通过；唯一 `npm run export` 因默认 candidate mode 与冻结
+`status.release_claim=true` 不一致而 exit `1`。verify/static/CE 未执行，0 retry，
+source/tree 未漂移。下一步只能准备独立 R6 formal-release-context validation
+Recommendation，不能修改 public truth 绕过 gate。
+[R6 Recommendation](TITMAS-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-RECOMMENDATION-v0.1.md)
+建议只把冻结 `npm run release:formal` 作为 disposable worktree 内的 local static
+export + verification command，不产生 tag、GitHub Release 或部署。其
+[write-ahead qwen3.7-max review](TITMAS-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 curl `0`、HTTP `200`、exact model、direct JSON、`RECOMMENDED`、Option A、
+confidence `0.95`、0 blocker/correction。下一步只允许建立独立 R6 Decision。
+[R6 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-DECISION-RECORD.v0.1.json)
+及其 [write-ahead qwen3.7-max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-QWEN-DECISION-REVIEW-v0.1.json)
+得到 curl `0`、HTTP `200`、`APPROVE`、confidence `0.95`、0 blocker/correction。
+远端 baseline 核验后只允许一次 local `release:formal` static validation；不产生新发布、
+tag、deployment、PR mutation 或 merge。
+[R6 result](TITMAS-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-REPORT-v0.1.md)
+记录完整 PASS：offline install、23/23 dependencies、16/16 site tests、static export/
+verify、3/3 CE Schemas 和 49/49 CE tests 均通过；source/tree drift 为 0。该结果不
+授权 merge，下一步只能准备独立 merge Recommendation。
+[Atomic governance integration Merge Recommendation](TITMAS-CE-G11B-ATOMIC-GOVERNANCE-INTEGRATION-MERGE-RECOMMENDATION-v0.1.md)
+确认 PR #22 只包含 CE implementation，而当前 governance head 还包含 71 个后续治理证据
+paths。其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-ATOMIC-GOVERNANCE-INTEGRATION-MERGE-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 curl `0`、HTTP `200`、`RECOMMENDED`、Option A、confidence `0.95`、0
+blocker/correction。下一步只允许验证新的 canonical + governance merge tree；replacement
+Draft PR、PR #22 closure 和 merge 仍分别需要独立 Decision。
+[Immutable candidate Recommendation](TITMAS-CE-G11B-IMMUTABLE-CANDIDATE-EXTERNAL-ATTESTATION-RECOMMENDATION-v0.1.md)
+解决“结果提交后 candidate SHA 再次变化”的验证自引用问题：Validation Decision
+作为 candidate 最后一个 commit，Result/Report 写入 distinct evidence ref 并通过 SHA
+绑定。其 [qwen3.7-max review](TITMAS-CE-G11B-IMMUTABLE-CANDIDATE-EXTERNAL-ATTESTATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 curl `0`、HTTP `200`、`RECOMMENDED`、Option A、confidence `0.95`、0
+blocker/correction。下一步只允许建立最终 candidate Validation Decision。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

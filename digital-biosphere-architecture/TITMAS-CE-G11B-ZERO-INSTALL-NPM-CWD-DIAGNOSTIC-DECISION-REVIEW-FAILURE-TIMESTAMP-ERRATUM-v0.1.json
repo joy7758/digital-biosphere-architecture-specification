@@ -1,0 +1,27 @@
+{
+  "record_type": "TITMAS_GOVERNANCE_EVIDENCE_ERRATUM",
+  "erratum_id": "TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-DECISION-REVIEW-FAILURE-TIMESTAMP-ERRATUM-001",
+  "version": "0.1.0",
+  "recorded_at": "2026-07-27T16:07:53.334Z",
+  "source_artifact": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-QWEN-DECISION-REVIEW-FAILURE-v0.1.json",
+  "source_artifact_sha256": "a7e8210d23e09a6f72b62880153e39852d095ff779ad0a4e0aba3be36994e585",
+  "source_commit": "22a8d4111bc4d2c7c4837d2d8f789e40a380ce37",
+  "field": "observed_at",
+  "recorded_value": "2026-07-27T16:13:00Z",
+  "corrected_value": null,
+  "correction_status": "RECORDED_VALUE_INVALID_EXACT_EVENT_TIME_UNKNOWN",
+  "evidence": [
+    "A later local UTC observation was 2026-07-27T16:06:33Z.",
+    "The subsequent independent qwen3.7-max Recommendation review completed at 2026-07-27T16:07:53.334Z.",
+    "Therefore the source record's manually entered 2026-07-27T16:13:00Z value cannot be used as the exact time of the earlier failed Decision review."
+  ],
+  "interpretation": "Preserve the source artifact unchanged for history, but treat its observed_at value as invalid. The failed review occurred before the later write-ahead Recommendation review; its exact event time is UNKNOWN.",
+  "effects": {
+    "source_artifact_rewritten": false,
+    "failure_result_changed": false,
+    "request_count_changed": false,
+    "authority": false,
+    "dry_run": false,
+    "merge": false
+  }
+}

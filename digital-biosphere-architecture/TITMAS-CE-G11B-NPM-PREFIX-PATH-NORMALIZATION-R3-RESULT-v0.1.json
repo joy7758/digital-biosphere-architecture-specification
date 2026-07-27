@@ -1,0 +1,98 @@
+{
+  "result_id": "TITMAS-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T16:28:08Z",
+  "status": "PASS_NORMALIZED_PREFIX_AND_ZERO_INSTALL_DRY_RUN",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-DECISION-RECORD.v0.1.json",
+  "decision_commit": "36cba2ba786363aea28caa6b55daa0d758f841ac",
+  "decision_remote_baseline_verified": true,
+  "frozen_remote_state": {
+    "canonical_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "ce_commit": "e032115adbe38cc84bde80cc9b10b96f6da1b428",
+    "merge_base": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "merge_tree": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "draft_pr_number": 22,
+    "draft_pr_state": "OPEN",
+    "draft_pr_is_draft": true,
+    "draft_pr_mergeable": "MERGEABLE",
+    "draft_pr_merge_state_status": "CLEAN",
+    "ce_head_actions_run_count": 0,
+    "matched": true
+  },
+  "temporary_worktree": {
+    "created": 1,
+    "removed": 1,
+    "remaining": 0
+  },
+  "prefix_observation": {
+    "site_path_raw": "/tmp/titmas-ce-g11b-prefix-r3.PuxTyA/worktree/digital-biosphere-architecture/site",
+    "npm_prefix_raw": "/private/tmp/titmas-ce-g11b-prefix-r3.PuxTyA/worktree/digital-biosphere-architecture/site",
+    "site_path_realpath": "/private/tmp/titmas-ce-g11b-prefix-r3.PuxTyA/worktree/digital-biosphere-architecture/site",
+    "npm_prefix_realpath": "/private/tmp/titmas-ce-g11b-prefix-r3.PuxTyA/worktree/digital-biosphere-architecture/site",
+    "raw_equality": false,
+    "normalized_equality": true,
+    "normalizer": "python3-os.path.realpath"
+  },
+  "package_observation": {
+    "name": "trusted-multi-agent-infrastructure-site",
+    "version": "0.1.0",
+    "package_json_sha256_before": "60dc7abf99a878f0e9dd24f0362d1ac7ad9c72a4d21578085fed39c526e3709b",
+    "package_json_sha256_after": "60dc7abf99a878f0e9dd24f0362d1ac7ad9c72a4d21578085fed39c526e3709b",
+    "package_lock_sha256_before": "4f179b1107a3a3f18aa906ebd19f952a9a4d190b1ad7123cba0a6884e3a312fd",
+    "package_lock_sha256_after": "4f179b1107a3a3f18aa906ebd19f952a9a4d190b1ad7123cba0a6884e3a312fd",
+    "hashes_unchanged": true
+  },
+  "diagnostic_execution": {
+    "command": "NPM_CONFIG_OFFLINE=true npm ci --dry-run --offline --ignore-scripts --no-audit --no-fund",
+    "dry_run_attempts": 1,
+    "dry_run_exit": 0,
+    "failure_category": "NONE",
+    "sanitized_output_summary": "added 493 packages in 414ms",
+    "output_represents_actual_install": false
+  },
+  "post_execution_verification": {
+    "node_modules_absent_before": true,
+    "node_modules_absent_after": true,
+    "git_status_entries_after": 0,
+    "merge_tree_before": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "merge_tree_after": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "merge_tree_unchanged": true,
+    "temporary_worktree_remaining": 0
+  },
+  "caps_consumed": {
+    "temporary_worktrees": 1,
+    "npm_prefix_observations": 1,
+    "npm_dry_run_attempts": 1,
+    "actual_install_attempts": 0,
+    "network_fallbacks": 0,
+    "dependency_materializations": 0,
+    "install_script_executions": 0,
+    "site_test_runs": 0,
+    "pr_mutations": 0,
+    "pushes": 0,
+    "merges": 0,
+    "workflow_runs": 0,
+    "deployments": 0
+  },
+  "interpretation": {
+    "cwd_form_contract_pass": true,
+    "r2_exact_prefix_value_known": false,
+    "r2_mismatch_consistent_with_r3_path_spelling": true,
+    "r2_exact_mismatch_root_cause_proven": false,
+    "actual_install_validated": false,
+    "site_tests_validated": false,
+    "merge_ready": false
+  },
+  "effects": {
+    "actual_install_authorization": false,
+    "site_test_authorization": false,
+    "merge_authorization": false,
+    "phase_b_authorization": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_SITE_CWD_OFFLINE_ACTUAL_INSTALL_RECOMMENDATION",
+    "authorized": false
+  }
+}

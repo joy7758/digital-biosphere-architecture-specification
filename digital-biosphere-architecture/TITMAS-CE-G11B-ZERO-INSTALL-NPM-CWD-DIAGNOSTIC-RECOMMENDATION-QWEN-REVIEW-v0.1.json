@@ -1,0 +1,42 @@
+{
+  "record_type": "TITMAS_SANITIZED_WRITE_AHEAD_PRE_DECISION_REVIEW",
+  "review_id": "TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-RECOMMENDATION-QWEN-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T15:51:44.821363Z",
+  "status": "QUALIFYING_REVIEW_COMPLETED",
+  "reviewed_artifact": "TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-RECOMMENDATION-v0.1.md",
+  "reviewed_source_sha256": "c822559bcc1a7c438d8ec222908b62a8afd30515cef8be83f35d57639c11bfa4",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "http_status": 200,
+  "request_count": 1,
+  "retry_count": 0,
+  "request_payload_sha256": "63d4b8b8e25a69c73f1edc34d1a0adf77d73bb0b187004904766834d46cbeb54",
+  "response_envelope_sha256": "929e340eae22b9be48d54b8796b56a094ff71c0b16520ac83a135491712ef488",
+  "response_byte_count": 5786,
+  "qualifying_review": true,
+  "review": {
+    "verdict": "RECOMMENDED",
+    "selected_option": "A",
+    "confidence": 1.0,
+    "diagnostic_hypothesis_bounded": true,
+    "dry_run_zero_install_boundary": true,
+    "single_attempt_only": true,
+    "failure_interpretation_coherent": true,
+    "source_mutation_prohibited": true,
+    "network_prohibited": true,
+    "actual_install_unauthorized": true,
+    "merge_unauthorized": true,
+    "blocking_reasons": [],
+    "required_corrections": [],
+    "rationale": "Option A is a single offline dry-run from the actual site cwd, bounded to the prefix/cwd hypothesis, with no network, mutation, install, merge or downstream authority."
+  },
+  "terminal_failure_category": null,
+  "effects": {
+    "authority": false,
+    "dry_run": false,
+    "install": false,
+    "network": false,
+    "merge": false
+  }
+}

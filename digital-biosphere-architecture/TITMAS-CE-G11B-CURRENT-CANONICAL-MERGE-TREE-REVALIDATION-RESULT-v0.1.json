@@ -1,0 +1,65 @@
+{
+  "record_type": "TITMAS_CE_G11B_CURRENT_CANONICAL_MERGE_TREE_REVALIDATION_RESULT",
+  "result_id": "TITMAS-CE-G11B-MERGE-TREE-R1-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27",
+  "status": "FAIL_CLOSED_SITE_DEPENDENCY_NOT_MATERIALIZED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "36da0ceb21f1f0bf26083786837155c36999faf6",
+  "inputs": {
+    "current_canonical_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "ce_head_commit": "e032115adbe38cc84bde80cc9b10b96f6da1b428",
+    "candidate_merge_tree_expected": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "candidate_merge_tree_actual": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97"
+  },
+  "checks": {
+    "merge_tree_exact": true,
+    "ce_changed_paths": 21,
+    "canonical_site_changed_paths": 13,
+    "path_intersection": 0,
+    "schemas_meta_valid": 3,
+    "ce_tests_run": 49,
+    "ce_tests_passed": 49,
+    "site_package_json_present": true,
+    "site_package_lock_present": true,
+    "site_dependencies_materialized": false,
+    "site_tests_executed": 0,
+    "site_static_verification_executed": 0
+  },
+  "action_accounting": {
+    "temporary_worktrees_created": 1,
+    "temporary_worktrees_remaining": 0,
+    "dependency_installations": 0,
+    "network_dependency_fetches": 0,
+    "pr_mutations": 0,
+    "rebases": 0,
+    "force_pushes": 0,
+    "merges": 0,
+    "workflow_runs": 0,
+    "site_source_changes": 0,
+    "server_actions": 0,
+    "deployments": 0
+  },
+  "failure": {
+    "category": "SITE_DEPENDENCY_NOT_MATERIALIZED",
+    "reason": "The temporary detached merge-tree worktree did not contain site/node_modules. The Decision prohibited dependency installation and required site validation to fail closed when dependencies were absent.",
+    "ce_failure": false,
+    "merge_conflict_proven": false,
+    "site_source_defect_proven": false,
+    "dependency_installation_authorized": false,
+    "retry_authorized": false
+  },
+  "false_effects": {
+    "merge_tree_revalidation_pass": false,
+    "merge_authorization": false,
+    "merge": false,
+    "pr_approval": false,
+    "workflow_run": false,
+    "phase_b_authorization": false,
+    "deployment": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": "SITE_DEPENDENCY_MATERIALIZATION_AND_HERMETIC_VALIDATION_REMEDIATION_RECOMMENDATION",
+  "next_gate_authorized": false
+}

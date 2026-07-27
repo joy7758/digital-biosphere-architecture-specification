@@ -1,0 +1,49 @@
+{
+  "record_type": "TITMAS_SANITIZED_PRE_EXECUTION_DECISION_REVIEW_FAILURE",
+  "review_id": "TITMAS-CE-G11B-DRAFT-PR-QWEN-DECISION-REVIEW-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T15:05:28Z",
+  "status": "NON_QUALIFYING_REVIEW_ATTEMPT",
+  "terminal_failure_category": "NO_SANITIZED_MODEL_RESULT_AVAILABLE",
+  "reviewed_artifact": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-DRAFT-PR-CREATION-DECISION-RECORD.v0.1.json",
+  "reviewed_source_sha256": "74aa453879739eaf1b4acd0860650a59ef809ede6760f7cacaf0818b8eec83ba",
+  "requested_model": "qwen3.7-max",
+  "returned_model": null,
+  "returned_model_equals_requested_model": false,
+  "http_status": null,
+  "request_count": 1,
+  "retry_count": 0,
+  "fallback_count": 0,
+  "model_substitution_count": 0,
+  "json_repair_request_count": 0,
+  "direct_json_parse_pass": false,
+  "qualifying_review": false,
+  "review": null,
+  "sanitized_observation": [
+    "The single review process completed without emitting a persisted sanitized result.",
+    "No HTTP status, returned model identity, response hash, verdict, blocker list, or correction list is available for qualification.",
+    "The attempt is counted and cannot be retried under the same Decision candidate."
+  ],
+  "persistence_boundary": {
+    "credential_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "usage_persisted": false,
+    "provider_error_body_persisted": false
+  },
+  "effects": {
+    "authority": false,
+    "draft_pr_creation_authorization": false,
+    "draft_pr_created": false,
+    "merge": false,
+    "valid_run_request": false,
+    "workflow_run": false,
+    "phase_b_authorization": false,
+    "deployment": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_DRAFT_PR_DECISION_REVIEW_RETRY_RECOMMENDATION",
+    "authorized": false
+  }
+}

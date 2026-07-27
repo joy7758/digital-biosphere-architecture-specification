@@ -1,0 +1,138 @@
+{
+  "result_id": "TITMAS-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T16:42:38Z",
+  "status": "FAIL_CLOSED_STATIC_EXPORT_ARTIFACT_ABSENT",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-DECISION-RECORD.v0.1.json",
+  "decision_commit": "dadea3422c585c072c771afc40446cf51a8d1262",
+  "decision_remote_baseline_verified": true,
+  "frozen_remote_state": {
+    "canonical_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "ce_commit": "e032115adbe38cc84bde80cc9b10b96f6da1b428",
+    "merge_base": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "merge_tree": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "draft_pr_number": 22,
+    "draft_pr_state": "OPEN",
+    "draft_pr_is_draft": true,
+    "draft_pr_api_base_commit": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "draft_pr_head_commit": "e032115adbe38cc84bde80cc9b10b96f6da1b428",
+    "draft_pr_mergeable": "MERGEABLE",
+    "draft_pr_merge_state_status": "CLEAN",
+    "ce_head_actions_run_count": 0,
+    "matched": true
+  },
+  "temporary_worktree": {
+    "created": 1,
+    "removed": 1,
+    "remaining": 0
+  },
+  "prefix_observation": {
+    "site_path_raw": "/tmp/titmas-ce-g11b-r4.6t9PR0/worktree/digital-biosphere-architecture/site",
+    "npm_prefix_raw": "/private/tmp/titmas-ce-g11b-r4.6t9PR0/worktree/digital-biosphere-architecture/site",
+    "site_path_normalized": "/private/tmp/titmas-ce-g11b-r4.6t9PR0/worktree/digital-biosphere-architecture/site",
+    "npm_prefix_normalized": "/private/tmp/titmas-ce-g11b-r4.6t9PR0/worktree/digital-biosphere-architecture/site",
+    "raw_equality": false,
+    "normalized_equality": true
+  },
+  "installation": {
+    "command": "NPM_CONFIG_OFFLINE=true npm ci --offline --ignore-scripts --no-audit --no-fund",
+    "attempts": 1,
+    "exit": 0,
+    "sanitized_output_summary": "added 493 packages in 5s",
+    "output_sha256": "e7582a1527764bdc6231acca0c9ff91d11fd1f0dce93414fc9d9983faa90650a",
+    "node_modules_absent_before": true,
+    "node_modules_present_after": true,
+    "network_fallbacks": 0,
+    "lifecycle_install_scripts": 0
+  },
+  "dependency_validation": {
+    "command": "npm ls --depth=0 --json",
+    "attempts": 1,
+    "exit": 0,
+    "direct_dependencies": 23,
+    "missing_direct_dependencies": 0,
+    "invalid_direct_dependencies": 0,
+    "output_sha256": "1efcb0a985ede9c0229cda9ed440a503ead5aaa5ed4b8221f5d52a7a03f9e0e1"
+  },
+  "site_test_validation": {
+    "command": "npm test",
+    "attempts": 1,
+    "exit": 0,
+    "build_exit": 0,
+    "tests_observed": 16,
+    "tests_passed": 16,
+    "tests_failed": 0,
+    "output_sha256": "cfe0b263f5e4f4b50d4a54495c705d95b17c9881b6f356e628bc6336a6abc0b6"
+  },
+  "static_validation": {
+    "command": "npm run verify:static",
+    "attempts": 1,
+    "exit": 1,
+    "failure_category": "STATIC_EXPORT_ARTIFACT_ABSENT",
+    "missing_path_suffix": "site/out/index.html",
+    "error_code": "ENOENT",
+    "output_sha256": "342240e8a51b1d7ce58473b99da2b4f2f098ca8825ac6b637b5d661afae1aab8"
+  },
+  "ce_validation": {
+    "schema_meta_validation_runs": 0,
+    "schemas_meta_validated": 0,
+    "test_discovery_runs": 0,
+    "tests_run": 0,
+    "tests_passed": 0,
+    "not_run_reason": "STOPPED_AFTER_STATIC_VALIDATION_FAILURE"
+  },
+  "source_integrity": {
+    "package_json_sha256_before": "60dc7abf99a878f0e9dd24f0362d1ac7ad9c72a4d21578085fed39c526e3709b",
+    "package_json_sha256_after": "60dc7abf99a878f0e9dd24f0362d1ac7ad9c72a4d21578085fed39c526e3709b",
+    "package_lock_sha256_before": "4f179b1107a3a3f18aa906ebd19f952a9a4d190b1ad7123cba0a6884e3a312fd",
+    "package_lock_sha256_after": "4f179b1107a3a3f18aa906ebd19f952a9a4d190b1ad7123cba0a6884e3a312fd",
+    "tracked_source_diff": 0,
+    "git_status_entries": 0,
+    "merge_tree_after": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "merge_tree_unchanged": true
+  },
+  "direct_script_observation": {
+    "npm_test_script_calls_build_not_export": true,
+    "verify_static_reads_out_directory": true,
+    "out_index_html_observed_absent": true,
+    "exact_causal_claim_beyond_script_and_error_observation": false
+  },
+  "caps_consumed": {
+    "temporary_worktrees": 1,
+    "npm_ci_attempts": 1,
+    "npm_ci_retries": 0,
+    "npm_ls_attempts": 1,
+    "npm_test_attempts": 1,
+    "verify_static_attempts": 1,
+    "ce_schema_validation_runs": 0,
+    "ce_test_discovery_runs": 0,
+    "network_fallbacks": 0,
+    "pr_mutations": 0,
+    "pushes": 0,
+    "merges": 0,
+    "workflow_runs": 0,
+    "server_actions": 0,
+    "deployments": 0,
+    "site_source_changes": 0
+  },
+  "interpretation": {
+    "actual_offline_install_validated": true,
+    "dependency_tree_validated": true,
+    "site_test_command_validated": true,
+    "static_export_validated": false,
+    "ce_validation_completed": false,
+    "full_r4_contract_passed": false,
+    "merge_ready": false
+  },
+  "effects": {
+    "retry_authorization": false,
+    "merge_authorization": false,
+    "phase_b_authorization": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_R5_STATIC_EXPORT_SEQUENCE_REMEDIATION_RECOMMENDATION",
+    "authorized": false
+  }
+}

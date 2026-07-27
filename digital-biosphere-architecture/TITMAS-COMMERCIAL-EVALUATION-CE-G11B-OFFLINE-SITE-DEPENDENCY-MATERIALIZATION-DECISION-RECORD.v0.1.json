@@ -1,0 +1,78 @@
+{
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-OFFLINE-SITE-DEPS-R1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_OFFLINE_SITE_DEPENDENCY_MATERIALIZATION_ONLY_IF_QUALIFYING_DECISION_REVIEW",
+  "decided_at": "2026-07-27",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-REMEDIATION-RECOMMENDATION-v0.1.md",
+  "recommendation_commit": "881bc046fa87c5c488634431f66e0da424786b3b",
+  "recommendation_review_reference": "TITMAS-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-REMEDIATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "decision_quality_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "primary_repository": "digital-biosphere-architecture",
+  "exact_action": "After one qualifying write-ahead qwen3.7-max Decision review and remote Decision baseline verification, reconstruct merge tree ea296d8b2143aeb7cc220a81689ba4d057e4bb97 in one temporary detached worktree. Verify exact package and lock hashes, run exactly one npm ci --offline --ignore-scripts --no-audit --no-fund using the existing local npm cache, then run npm ls --depth=0 --json, npm test, npm run verify:static, CE Schema validation and 49 CE tests. Fail closed on cache miss, install/test/verify failure, tracked-source drift or tree drift. Remove the temporary worktree. Do not copy or symlink existing node_modules, use network fallback, mutate PR, push, merge, trigger workflows, modify site source, access servers, or deploy.",
+  "frozen_inputs": {
+    "merge_tree": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "package_json_sha256": "60dc7abf99a878f0e9dd24f0362d1ac7ad9c72a4d21578085fed39c526e3709b",
+    "package_lock_sha256": "4f179b1107a3a3f18aa906ebd19f952a9a4d190b1ad7123cba0a6884e3a312fd",
+    "node_version_observed": "v26.0.0",
+    "npm_version_observed": "11.12.1",
+    "python_version_observed": "3.14.5",
+    "npm_cache_present": true,
+    "existing_node_modules_reuse_allowed": false
+  },
+  "materialization_contract": {
+    "command": "npm ci --offline --ignore-scripts --no-audit --no-fund",
+    "attempts_exact": 1,
+    "npm_config_offline": true,
+    "registry_fallback_allowed": false,
+    "lifecycle_install_scripts_allowed": false,
+    "copy_existing_node_modules_allowed": false,
+    "symlink_existing_node_modules_allowed": false,
+    "temporary_worktree_only": true
+  },
+  "required_results": {
+    "npm_ci_exit": 0,
+    "missing_direct_dependencies": 0,
+    "invalid_direct_dependencies": 0,
+    "npm_test_exit": 0,
+    "verify_static_exit": 0,
+    "ce_schemas_meta_valid": 3,
+    "ce_tests_passed": 49,
+    "tracked_source_diff": 0,
+    "merge_tree_unchanged": true,
+    "network_fallbacks": 0
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "temporary_worktrees": 1,
+    "npm_ci_attempts": 1,
+    "network_fallbacks": 0,
+    "existing_node_modules_reuses": 0,
+    "pr_mutations": 0,
+    "pushes": 0,
+    "merges": 0,
+    "workflow_runs": 0,
+    "site_source_changes": 0,
+    "server_actions": 0,
+    "deployments": 0
+  },
+  "stop_conditions": [
+    "Decision review is not exact qwen3.7-max APPROVE with zero blockers and corrections.",
+    "Any frozen commit, merge tree, package hash, lock hash, PR state or Actions run count drifts.",
+    "npm ci requires network, retry, lifecycle scripts, existing node_modules reuse or a second attempt.",
+    "Any required dependency, site, CE, tracked-source or tree check fails.",
+    "Any PR mutation, push, merge, workflow, source change, server action or deployment is required."
+  ],
+  "false_effects": {
+    "merge_authorization": false,
+    "merge": false,
+    "pr_approval": false,
+    "workflow_run": false,
+    "phase_b_authorization": false,
+    "deployment": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "result": "NOT_EXECUTED"
+}

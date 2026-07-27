@@ -1,0 +1,42 @@
+{
+  "record_type": "TITMAS_SANITIZED_WRITE_AHEAD_DECISION_REVIEW",
+  "review_id": "TITMAS-CE-G11B-OFFLINE-SITE-DEPS-R1-QWEN-DECISION-REVIEW-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T15:46:37.295299Z",
+  "status": "QUALIFYING_REVIEW_COMPLETED",
+  "reviewed_artifact": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-DECISION-RECORD.v0.1.json",
+  "reviewed_source_sha256": "9f0d6b1ea903592ca6add2bc3c0778c2b3acc69f69cfca4c43eacc9de69d4e9f",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "http_status": 200,
+  "request_count": 1,
+  "retry_count": 0,
+  "request_payload_sha256": "1a641bd3f5f8880285679a6a20964f4a71339ed32a2ce2b9fd7cd8acaf9cb58d",
+  "response_envelope_sha256": "78f0b521a496323df9d1fa51a69884c7855914f8e4f333fb66ef509449141e9a",
+  "response_byte_count": 4331,
+  "qualifying_review": true,
+  "review": {
+    "verdict": "APPROVE",
+    "confidence": 0.95,
+    "standing_directive_applicable": true,
+    "recommendation_commit_bound": true,
+    "frozen_inputs_coherent": true,
+    "offline_ci_scope_bounded": true,
+    "ignore_scripts_and_no_reuse_enforced": true,
+    "failure_closed": true,
+    "validation_scope_sufficient": true,
+    "no_remote_mutation": true,
+    "merge_remains_unauthorized": true,
+    "blocking_findings": [],
+    "required_corrections": [],
+    "rationale": "The Decision permits one exact-lockfile offline install in a disposable worktree, prohibits existing node_modules reuse and network fallback, requires complete site and CE validation, and leaves merge unauthorized."
+  },
+  "terminal_failure_category": null,
+  "effects": {
+    "authority": false,
+    "dependency_installation": false,
+    "network": false,
+    "remote_mutation": false,
+    "merge": false
+  }
+}

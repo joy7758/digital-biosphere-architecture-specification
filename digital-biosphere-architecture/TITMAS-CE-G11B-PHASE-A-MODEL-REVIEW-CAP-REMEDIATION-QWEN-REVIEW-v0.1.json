@@ -1,0 +1,52 @@
+{
+  "record_type": "TITMAS_SANITIZED_PRE_DECISION_AGENT_REVIEW",
+  "review_id": "TITMAS-CE-G11B-PHASE-A-CAP-REMEDIATION-QWEN-REVIEW-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T14:41:40Z",
+  "reviewed_artifact": "TITMAS-CE-G11B-PHASE-A-MODEL-REVIEW-CAP-REMEDIATION-RECOMMENDATION-v0.1.md",
+  "reviewed_source_sha256": "854f263a4e3bc3b2452cc22ceacb16b60275fc8f5d21a68584daa57368f4c05b",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "returned_model_equals_requested_model": true,
+  "http_status": 200,
+  "request_count": 1,
+  "retry_count": 0,
+  "fallback_count": 0,
+  "model_substitution_count": 0,
+  "json_repair_request_count": 0,
+  "request_payload_sha256": "20e3cc2338c370b723cff2875ce0ca88aac7593a5eca99c5c11f7f2a9ff25345",
+  "response_envelope_sha256": "1ef38903aee115bb4a7ba4fff7d8dbee2f9fd6ed55d7c0919e11e5be9cbf61fe",
+  "direct_json_parse_pass": true,
+  "review": {
+    "verdict": "RECOMMENDED",
+    "selected_option": "A",
+    "would_recommend_to_agent_customer": true,
+    "confidence": 0.95,
+    "historical_failure_preserved": true,
+    "retroactive_authorization_rejected": true,
+    "review_stages_separated": true,
+    "implementation_review_request_cap": 1,
+    "execution_time_model_request_cap": 0,
+    "phase_b_authorized": false,
+    "blocking_reasons": [],
+    "required_corrections": [],
+    "rationale": "Option A is a coherent fail-closed remediation. It explicitly preserves the historical Phase A failure without retroactive authorization. It separates pre-decision review, Phase A-R1 implementation review, and execution with strict caps: exactly one qwen3.7-max request for implementation review and zero execution-time model requests. It rejects Phase B authorization, workflow execution, deployment, and commercial claims."
+  },
+  "persistence_boundary": {
+    "credential_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "usage_persisted": false,
+    "provider_error_body_persisted": false
+  },
+  "effects": {
+    "authority": false,
+    "decision": false,
+    "permission": false,
+    "implementation_authorization": false,
+    "workflow_run": false,
+    "phase_b_authorization": false,
+    "deployment": false,
+    "commercial_offering": false
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "record_type": "TITMAS_SANITIZED_PRE_DECISION_AGENT_REVIEW",
+  "review_id": "TITMAS-CE-G11B-PHASE-B-CANONICAL-INTEGRATION-QWEN-REVIEW-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T14:59:38Z",
+  "reviewed_artifact": "TITMAS-CE-G11B-PHASE-B-CANONICAL-INTEGRATION-RECOMMENDATION-v0.1.md",
+  "reviewed_source_sha256": "cd5603bb7096475b54f266bffd5d36b7fc01cce88563e5d7b8585ced94e9347a",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "returned_model_equals_requested_model": true,
+  "http_status": 200,
+  "request_count": 1,
+  "retry_count": 0,
+  "fallback_count": 0,
+  "model_substitution_count": 0,
+  "json_repair_request_count": 0,
+  "request_payload_sha256": "a6ae75ba55268d76fe4de91391ac60120d2a19270942732db20cc44aa34afba5",
+  "response_envelope_sha256": "4c4164b32315fe156d3517e2f8e67dba17fe248b04b0f6dac92fcdc7ae49f727",
+  "direct_json_parse_pass": true,
+  "review": {
+    "verdict": "RECOMMENDED",
+    "selected_option": "A",
+    "would_recommend_to_agent_customer": true,
+    "confidence": 0.95,
+    "topology_reasoning_coherent": true,
+    "draft_pr_boundary_preserved": true,
+    "site_scope_isolated": true,
+    "workflow_run_boundary_preserved": true,
+    "merge_requires_separate_decision": true,
+    "phase_b_unauthorized": true,
+    "blocking_reasons": [],
+    "required_corrections": [],
+    "rationale": "Option A correctly binds the frozen canonical branch trigger and exact topology evidence. It enforces a Draft PR boundary with no auto-merge or merge authorization, preserves PR-review-merge-Phase B separation, excludes site paths, caps PR creation and workflow effects, and retains all production, certification, and commercial non-claims."
+  },
+  "persistence_boundary": {
+    "credential_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "usage_persisted": false,
+    "provider_error_body_persisted": false
+  },
+  "effects": {
+    "authority": false,
+    "draft_pr_creation": false,
+    "merge": false,
+    "valid_run_request": false,
+    "workflow_run": false,
+    "phase_b_authorization": false,
+    "deployment": false,
+    "commercial_offering": false
+  }
+}

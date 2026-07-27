@@ -1,0 +1,87 @@
+{
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-MERGE-TREE-R1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_OFFLINE_MERGE_TREE_REVALIDATION_ONLY_IF_QUALIFYING_DECISION_REVIEW",
+  "decided_at": "2026-07-27",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-RECOMMENDATION-v0.1.md",
+  "recommendation_commit": "461fde0f7e6ece507aa6b1f68ff271b0e40c7c07",
+  "recommendation_review_reference": "TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "decision_quality_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "primary_repository": "digital-biosphere-architecture",
+  "exact_action": "After one qualifying write-ahead qwen3.7-max Decision review and remote Decision baseline verification, reconstruct candidate merge tree ea296d8b2143aeb7cc220a81689ba4d057e4bb97 from current canonical ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14 and CE head e032115adbe38cc84bde80cc9b10b96f6da1b428 in a temporary detached worktree. Verify exact paths and disjointness, run CE-G11B Schema and Python tests, and run repository-defined site tests only if their dependencies are already locally materialized. Do not install dependencies. Persist pass or fail-closed results. Do not mutate PR, rebase, push, merge, trigger workflows, modify site source, access servers, or deploy.",
+  "frozen_inputs": {
+    "current_canonical_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "ce_head_commit": "e032115adbe38cc84bde80cc9b10b96f6da1b428",
+    "merge_base": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "candidate_merge_tree": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "canonical_new_commits": 2,
+    "canonical_site_changed_paths": 13,
+    "ce_changed_paths": 21,
+    "path_intersection": 0,
+    "pr_number": 22,
+    "pr_state": "OPEN",
+    "pr_draft": true,
+    "head_branch_actions_runs": 0
+  },
+  "required_checks": [
+    "Remote current canonical, CE head, governance recommendation commit, PR state and Actions run count match.",
+    "Candidate merge tree reconstructs to the exact frozen tree hash.",
+    "Current-canonical and CE changed-path sets match frozen counts and have zero intersection.",
+    "All CE-G11B Schema and Python 3.14 local tests pass.",
+    "Site package scripts and lockfile are present.",
+    "Site dependencies are already locally materialized in the temporary worktree.",
+    "Repository-defined site test and static verification commands pass without dependency installation.",
+    "No source, index, branch, PR, workflow, server or deployment state is mutated."
+  ],
+  "dependency_policy": {
+    "dependency_installation_allowed": false,
+    "network_dependency_fetch_allowed": false,
+    "reuse_only_if_already_materialized_in_temporary_worktree": true,
+    "missing_dependency_result": "FAIL_CLOSED_SITE_DEPENDENCY_NOT_MATERIALIZED",
+    "skipping_site_validation_allowed": false
+  },
+  "authorized_output_paths": [
+    "digital-biosphere-architecture/TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-RESULT-v0.1.json",
+    "digital-biosphere-architecture/TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-REPORT-v0.1.md",
+    "digital-biosphere-architecture/PROGRAM-STATUS.md",
+    "digital-biosphere-architecture/README.md",
+    "digital-biosphere-architecture/MASTER-ROADMAP.md",
+    "digital-biosphere-architecture/TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+    "digital-biosphere-architecture/architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json"
+  ],
+  "caps": {
+    "decision_review_model_requests": 1,
+    "temporary_worktrees": 1,
+    "dependency_installations": 0,
+    "network_dependency_fetches": 0,
+    "pr_mutations": 0,
+    "rebases": 0,
+    "force_pushes": 0,
+    "merges": 0,
+    "workflow_runs": 0,
+    "site_source_changes": 0,
+    "server_actions": 0,
+    "deployments": 0
+  },
+  "stop_conditions": [
+    "The Decision review is not exact qwen3.7-max APPROVE with zero blockers and corrections.",
+    "Any frozen commit, tree, path count, PR state, draft flag or Actions run count drifts.",
+    "The merge tree cannot be reconstructed exactly or contains conflicts.",
+    "CE tests fail.",
+    "Site dependencies are not already materialized, site commands are absent, or site validation fails.",
+    "Any dependency installation, network fetch, PR mutation, rebase, push, merge, workflow, site source change, server action or deployment is required."
+  ],
+  "false_effects": {
+    "merge_authorization": false,
+    "merge": false,
+    "pr_approval": false,
+    "workflow_run": false,
+    "phase_b_authorization": false,
+    "deployment": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "result": "NOT_EXECUTED"
+}

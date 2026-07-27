@@ -1,0 +1,51 @@
+{
+  "record_type": "TITMAS_SANITIZED_PRE_IMPLEMENTATION_DECISION_REVIEW",
+  "review_id": "TITMAS-CE-G11B-A-R1-QWEN-DECISION-REVIEW-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T14:47:28Z",
+  "reviewed_artifact": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-R1-DECISION-RECORD.v0.1.json",
+  "reviewed_source_sha256": "a63df8da0bd165b424b4fdf8991404e220771d34ef0493cd422755a745ba7851",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "returned_model_equals_requested_model": true,
+  "http_status": 200,
+  "request_count": 1,
+  "retry_count": 0,
+  "fallback_count": 0,
+  "model_substitution_count": 0,
+  "json_repair_request_count": 0,
+  "request_payload_sha256": "3cc27ed5a09d1b230ec2140e0bbfeb22c13314715dadb473b2e018d81a24c827",
+  "response_envelope_sha256": "eccc57143c574f088e0a1415036c54e198c8a8ccb7ec40182d10d61df686e72e",
+  "direct_json_parse_pass": true,
+  "review": {
+    "verdict": "APPROVE",
+    "confidence": 0.95,
+    "standing_directive_applicable": true,
+    "recommendation_commit_bound": true,
+    "historical_failure_preserved": true,
+    "retroactive_authorization_rejected": true,
+    "candidate_components_read_only": true,
+    "implementation_request_cap_exact_1": true,
+    "execution_request_cap_zero": true,
+    "phase_b_unauthorized": true,
+    "blocking_findings": [],
+    "required_corrections": [],
+    "rationale": "The Decision binds TITMAS-CS-STANDING-001 and recommendation commit c8e1977e3406e58215d115434e32d2a6de89d92b. It preserves the historical Phase A failure, rejects retroactive authorization, keeps candidate components read-only with frozen hashes, caps the implementation review at exactly one qwen3.7-max request, caps workflow-execution model requests at zero, and leaves Phase B unauthorized."
+  },
+  "persistence_boundary": {
+    "credential_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "usage_persisted": false,
+    "provider_error_body_persisted": false
+  },
+  "effects": {
+    "authority": false,
+    "permission": false,
+    "implementation_execution": false,
+    "workflow_run": false,
+    "phase_b_authorization": false,
+    "deployment": false,
+    "commercial_offering": false
+  }
+}
