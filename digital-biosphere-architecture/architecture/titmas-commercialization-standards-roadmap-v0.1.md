@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: ce-g10-preflight-fail-closed-ce-g10a-recommendation-prepared-decision-pending-standard-not-ready
+status: ce-g10a-decided-phase-a-trigger-implementation-authorized-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -2533,10 +2533,16 @@ CE_G10A_AGENT_VERDICT=RECOMMENDED
 CE_G10A_AGENT_OPTION=A
 CE_G10A_WOULD_RECOMMEND_TO_AGENT_CUSTOMER=true
 CE_G10A_AGENT_CONFIDENCE=0.95
-CE_G10A_DECISION_RECORDED=false
+CE_G10A_DECISION_RECORDED=true
+CE_G10A_PHASE_A_AUTHORIZED=true
+CE_G10A_PHASE_A_COMPLETED=false
 CE_G10A_TRIGGER_IMPLEMENTED=false
 CE_G10A_RUN_REQUEST_CREATED=false
 ```
+
+[CE-G10A Decision](../TITMAS-COMMERCIAL-EVALUATION-CE-G10A-DECISION-RECORD.v0.1.json)
+授权两阶段修正。Phase A 明确禁止 run-request；只有 Phase A 远端验证且 workflow run 仍为
+0，Phase B 才可提交一次 request。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -2807,10 +2813,9 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Review and decide CE-G10A branch trigger remediation**：manual dispatch preflight
-   已失败关闭且 run=0；Recommendation 只允许 exact validation branch/path 的单次
-   run-request trigger，不合并 `main`，不产生 TITMAS public-site request、SSH、部署或
-   策略变化；
+1. **Implement CE-G10A Phase A without run-request**：Decision 只允许修改 exact
+   validation branch/path trigger、request Schema 和 runner validation；本次提交禁止
+   request instance，workflow run 必须保持 0；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -3019,7 +3024,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=REVIEW_AND_DECIDE_CE_G10A_BRANCH_SCOPED_TRIGGER_REMEDIATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=IMPLEMENT_CE_G10A_BRANCH_SCOPED_TRIGGER_WITHOUT_RUN_REQUEST_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -3130,7 +3135,10 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G10A_RECOMMENDATION_PREPARED=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G10A_AGENT_VERDICT=RECOMMENDED
 TITMAS_COMMERCIAL_EVALUATION_CE_G10A_AGENT_OPTION=A
 TITMAS_COMMERCIAL_EVALUATION_CE_G10A_AGENT_CONFIDENCE=0.95
-TITMAS_COMMERCIAL_EVALUATION_CE_G10A_DECISION_RECORDED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G10A_DECISION_RECORDED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G10A_PHASE_A_AUTHORIZED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G10A_PHASE_A_COMPLETED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G10A_RUN_REQUEST_CREATED=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
 

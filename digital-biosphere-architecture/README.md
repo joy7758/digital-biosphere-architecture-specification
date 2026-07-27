@@ -150,6 +150,9 @@ cross_version_validation_dispatch_preflight: fail-closed-workflow-not-on-default
 cross_version_validation_workflow_runs: 0
 branch_trigger_remediation_recommendation_prepared: true
 branch_trigger_remediation_agent_verdict: recommended
+branch_trigger_remediation_decision_recorded: true
+branch_trigger_remediation_phase_a_authorized: true
+branch_trigger_remediation_run_request_created: false
 public_entry_redeployment_admission_pass: false
 public_entry_redeployment_authorized: false
 developer_ecosystem_created: false
@@ -346,7 +349,10 @@ default branch 是 `main`，validation workflow 只存在于工作分支，GitHu
 endpoint 不可用；因此 dispatch/run/matrix 均为 0。没有为此合并 `main`。
 [CE-G10A Recommendation](TITMAS-CE-G10A-BRANCH-SCOPED-TRIGGER-REMEDIATION-RECOMMENDATION-v0.1.md)
 提出 exact branch/path run-request trigger；`qwen3.7-plus` 给出 `RECOMMENDED`、Option A、
-置信度 `0.95`。当前只等待独立 Decision。
+置信度 `0.95`。
+[CE-G10A Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G10A-DECISION-RECORD.v0.1.json)
+已授权两阶段修正；Phase A 只允许实现 trigger/validator，禁止包含 run-request，因此不会
+触发 workflow。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
