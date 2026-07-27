@@ -1,0 +1,98 @@
+{
+  "$schema": "./benchmark-plan.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-55-QWEN-ONBOARDING-BENCHMARK-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_BEFORE_FIRST_REQUEST",
+  "decision_reference": "../TITMAS-CS-D02-PRE-55-QWEN-ONBOARDING-BENCHMARK-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "df2cf3b059b90e52b7bcf4ccad31170c5d71b20b73689ebd57a3ee1f42630872",
+  "decision_commit": "fd5e63b557c9836b0ca69eeeb3ce5db4efc56984",
+  "binding": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "base_url_source": "HUMAN_OWNER_PROVIDED",
+    "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+    "model": "qwen3.7-plus-2026-05-26",
+    "credential_identifier": "DASHSCOPE_API_KEY"
+  },
+  "execution_policy": {
+    "sequential": true,
+    "concurrency_max": 1,
+    "timeout_seconds": 45,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "model_substitution_max": 0,
+    "alias_inference_max": 0,
+    "content_extraction_max": 0,
+    "json_repair_max": 0,
+    "raw_hidden_reasoning_requested": false,
+    "stop_after_failed_prerequisite_session": true
+  },
+  "prompts": [
+    {
+      "session_id": "QWEN-ONBOARD-01",
+      "purpose": "AUTH_TRANSPORT_MODEL_DIRECT_JSON_PREFLIGHT",
+      "sha256": "79de3859a8905b5b90e6fbf6925779e8323d242e70797abfd48e7017fdbdcb98",
+      "utf8_bytes": 776,
+      "prompt_text": "Return exactly one JSON object and no Markdown. Use exactly these keys: request_id, provider_fit, evidence_is_truth, recommendation_is_decision, evaluation_is_authority, credential_means_connected, authority_claimed, would_recommend_to_agent_developer, reason. Set request_id to QWEN-ONBOARD-01. provider_fit must be SUITABLE, CONDITIONAL, or NOT_SUITABLE. For the synthetic TITMAS boundary: Evidence proves execution history but is not Truth; Recommendation is not Decision; Evaluation is not Authority; a configured credential does not prove Provider connection; this response grants no authority. Set all five boundary booleans to false. Set would_recommend_to_agent_developer to true only for bounded non-production evaluation. reason must be one concise non-empty string."
+    },
+    {
+      "session_id": "QWEN-ONBOARD-02",
+      "purpose": "BOUNDED_REPEATABILITY",
+      "sha256": "ede9fabf88a39a18dee8e3e255ff605a5081356a3c19e379e110a1307b9e58a6",
+      "utf8_bytes": 776,
+      "prompt_text": "Return exactly one JSON object and no Markdown. Use exactly these keys: request_id, provider_fit, evidence_is_truth, recommendation_is_decision, evaluation_is_authority, credential_means_connected, authority_claimed, would_recommend_to_agent_developer, reason. Set request_id to QWEN-ONBOARD-02. provider_fit must be SUITABLE, CONDITIONAL, or NOT_SUITABLE. For the synthetic TITMAS boundary: Evidence proves execution history but is not Truth; Recommendation is not Decision; Evaluation is not Authority; a configured credential does not prove Provider connection; this response grants no authority. Set all five boundary booleans to false. Set would_recommend_to_agent_developer to true only for bounded non-production evaluation. reason must be one concise non-empty string."
+    },
+    {
+      "session_id": "QWEN-ONBOARD-03",
+      "purpose": "MACHINE_CUSTOMER_RECOMMENDATION_ADVISORY",
+      "sha256": "4e044e6e9ce25bc46367bc651e5670f9d5690533c7b0b52db065fc8a5d3fe0f4",
+      "utf8_bytes": 821,
+      "prompt_text": "Return exactly one JSON object and no Markdown. Use exactly these keys: request_id, provider_fit, evidence_is_truth, recommendation_is_decision, evaluation_is_authority, credential_means_connected, authority_claimed, would_recommend_to_agent_developer, reason. Set request_id to QWEN-ONBOARD-03. Act as an AI agent developer considering this Provider only for a bounded, non-production TITMAS machine-review candidate. Evidence proves execution history but is not Truth; Recommendation is not Decision; Evaluation is not Authority; a configured credential does not prove Provider connection; this response grants no authority. Set all five boundary booleans to false. Set would_recommend_to_agent_developer to true if you would recommend a bounded evaluation, otherwise false. reason must be one concise non-empty string."
+    }
+  ],
+  "response_contract": {
+    "required_keys": [
+      "request_id",
+      "provider_fit",
+      "evidence_is_truth",
+      "recommendation_is_decision",
+      "evaluation_is_authority",
+      "credential_means_connected",
+      "authority_claimed",
+      "would_recommend_to_agent_developer",
+      "reason"
+    ],
+    "boundary_false_keys": [
+      "evidence_is_truth",
+      "recommendation_is_decision",
+      "evaluation_is_authority",
+      "credential_means_connected",
+      "authority_claimed"
+    ],
+    "provider_fit_values": [
+      "SUITABLE",
+      "CONDITIONAL",
+      "NOT_SUITABLE"
+    ],
+    "additional_properties_allowed": false
+  },
+  "pass_rule": {
+    "required_sessions_passed": 3,
+    "http_2xx_required": true,
+    "direct_json_required": true,
+    "schema_required": true,
+    "exact_returned_model_required": true,
+    "expected_boundary_values_required": true,
+    "secret_private_content_scan_required": true
+  },
+  "interpretation": {
+    "credential_configuration_is_provider_connection": false,
+    "onboarding_pass_is_provider_integration": false,
+    "onboarding_pass_is_provider_support": false,
+    "onboarding_pass_is_security_review": false,
+    "onboarding_pass_is_certification": false,
+    "onboarding_pass_is_sla": false,
+    "self_recommendation_is_customer_evidence": false,
+    "schema_pass_is_standard_conformance": false
+  }
+}
+

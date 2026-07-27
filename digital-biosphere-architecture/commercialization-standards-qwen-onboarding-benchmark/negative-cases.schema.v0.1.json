@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre55-qwen-onboarding-negative-cases.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "cases"
+  ],
+  "properties": {
+    "$schema": {"const": "./negative-cases.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-55-QWEN-ONBOARDING-NEGATIVE-CASES-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_EXECUTED"},
+    "cases": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "condition", "required_outcome"],
+        "properties": {
+          "case_id": {"pattern": "^PRE55-NEG-(0[1-9]|1[0-2])$"},
+          "condition": {"type": "string", "minLength": 1},
+          "required_outcome": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}

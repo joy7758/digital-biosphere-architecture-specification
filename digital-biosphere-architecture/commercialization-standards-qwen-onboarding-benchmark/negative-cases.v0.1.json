@@ -1,0 +1,69 @@
+{
+  "$schema": "./negative-cases.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-55-QWEN-ONBOARDING-NEGATIVE-CASES-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_EXECUTED",
+  "cases": [
+    {
+      "case_id": "PRE55-NEG-01",
+      "condition": "CREDENTIAL_IDENTIFIER_ABSENT_OR_EMPTY",
+      "required_outcome": "FAIL_CLOSED_NO_REQUEST"
+    },
+    {
+      "case_id": "PRE55-NEG-02",
+      "condition": "BASE_URL_MISMATCH",
+      "required_outcome": "FAIL_CLOSED_NO_REQUEST"
+    },
+    {
+      "case_id": "PRE55-NEG-03",
+      "condition": "AUTHENTICATION_OR_ENTITLEMENT_FAILURE",
+      "required_outcome": "RETAIN_FAILURE_STOP_REMAINING_SESSIONS"
+    },
+    {
+      "case_id": "PRE55-NEG-04",
+      "condition": "NETWORK_TIMEOUT_OR_HTTP_NON_2XX",
+      "required_outcome": "RETAIN_FAILURE_NO_RETRY"
+    },
+    {
+      "case_id": "PRE55-NEG-05",
+      "condition": "MARKDOWN_FENCED_OR_NON_JSON_CONTENT",
+      "required_outcome": "DIRECT_JSON_FAIL_NO_EXTRACTION"
+    },
+    {
+      "case_id": "PRE55-NEG-06",
+      "condition": "SCHEMA_INVALID_JSON",
+      "required_outcome": "SCHEMA_FAIL_NO_REPAIR"
+    },
+    {
+      "case_id": "PRE55-NEG-07",
+      "condition": "RETURNED_MODEL_MISMATCH",
+      "required_outcome": "MODEL_IDENTITY_FAIL_NO_ALIAS_INFERENCE"
+    },
+    {
+      "case_id": "PRE55-NEG-08",
+      "condition": "BOUNDARY_BOOLEAN_ELEVATED",
+      "required_outcome": "GOVERNANCE_BOUNDARY_FAIL"
+    },
+    {
+      "case_id": "PRE55-NEG-09",
+      "condition": "SECRET_PRIVATE_OR_PERSONAL_CONTENT_DETECTED",
+      "required_outcome": "STOP_DO_NOT_PERSIST_CONTENT"
+    },
+    {
+      "case_id": "PRE55-NEG-10",
+      "condition": "SESSION_01_OR_02_FAILED",
+      "required_outcome": "DEPENDENT_SESSIONS_NOT_EXECUTED_FAIL_CLOSED"
+    },
+    {
+      "case_id": "PRE55-NEG-11",
+      "condition": "THREE_OF_THREE_PASS",
+      "required_outcome": "NO_PROVIDER_INTEGRATION_SECURITY_REVIEW_SLA_OR_CERTIFICATION_CLAIM"
+    },
+    {
+      "case_id": "PRE55-NEG-12",
+      "condition": "MODEL_SELF_RECOMMENDATION_PRESENT",
+      "required_outcome": "ADVISORY_ONLY_NOT_CUSTOMER_EVIDENCE"
+    }
+  ]
+}
+
