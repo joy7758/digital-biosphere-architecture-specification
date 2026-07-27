@@ -474,6 +474,11 @@ extraneous packages 的现成 `node_modules`。
 [Max review](TITMAS-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-REMEDIATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
 为 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction。安装仍需独立
 Decision，merge 仍未授权。
+[Offline materialization result](TITMAS-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-REPORT-v0.1.md)保留
+fail-closed：唯一一次 `npm ci --offline --ignore-scripts` 返回 `EUSAGE` 并报告
+`Missing: site@0.1.0`。无 retry/network fallback/node_modules reuse/site tests/merge。
+根因仍未证明，下一步只能做 zero-install 静态诊断。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
