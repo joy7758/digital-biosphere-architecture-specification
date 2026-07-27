@@ -120,6 +120,8 @@ agent_evaluation_entry_contract_maturity: Development
 agent_evaluation_entry_contract_schema_valid: true
 agent_evaluation_entry_website_source_prepared: true
 agent_evaluation_entry_website_deployed: false
+agent_evaluation_entry_publication_result: fail-closed-rollback-pass
+agent_evaluation_entry_time_window_observation_completed: false
 developer_ecosystem_created: false
 titmas_infrastructure_developer_community_strategy_defined: true
 titmas_infrastructure_developer_community_direction_adopted: true
@@ -216,6 +218,11 @@ PRODUCTION_READY=false
 合成验证、失败分类和安全推荐规则放进一个机器对象。它只允许在全部前置检查通过时推荐
 offline read-only evaluation，并始终输出 `DO_NOT_RECOMMEND_FOR_PRODUCTION`。
 该契约目前是 Development source，不表示网站已经部署，也不创建产品、SLA 或商业产品。
+
+CE-G3 曾把该静态源切换到公开站点进行有界观察：第一轮 11/11 通过，第二个可审计轮次
+出现 1 个 `curl` code 35 transport error，因此未重试并已原子回滚。当前公开站点仍运行
+旧版本；[发布报告](TITMAS-AGENT-EVALUATION-ENTRY-PUBLICATION-REPORT-v0.1.md) 保留失败、
+回滚和下一诊断闸门。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

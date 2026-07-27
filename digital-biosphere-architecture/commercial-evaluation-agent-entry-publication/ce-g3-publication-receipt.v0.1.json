@@ -1,0 +1,135 @@
+{
+  "$schema": "./ce-g3-publication-receipt.schema.v0.1.json",
+  "receipt_id": "TITMAS-CE-G3-PUBLICATION-20260727-001",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_ROLLBACK_PASS",
+  "observed_at": "2026-07-27",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G3",
+  "source": {
+    "revision": "f8107969aa1f43be8ecf43f557297a630309fe41",
+    "remote_revision_match": true,
+    "worktree_clean": true
+  },
+  "artifact": {
+    "archive_bytes": 962612,
+    "archive_sha256": "fceb10bba908fee4c36bed5fcccc88c3f6ff44d1326c3e1565be17cd12ac167e",
+    "archive_path_safety_pass": true,
+    "manifest_files_verified": 60,
+    "manifest_pass": true,
+    "truth_boundary_pass": true
+  },
+  "deployment": {
+    "host_alias": "hongyan-4cj",
+    "previous_release": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "attempted_release": "/srv/tmai/releases/f8107969aa1f43be8ecf43f557297a630309fe41",
+    "atomic_switch_pass": true,
+    "nginx_test_pass": true,
+    "nginx_reload_pass": true,
+    "initial_routes_passed": 11,
+    "initial_routes_total": 11,
+    "security_headers_passed": 6,
+    "security_headers_total": 6,
+    "failed_release_preserved": true,
+    "uploaded_archive_preserved": true
+  },
+  "observation_contract": {
+    "classification": "OBSERVATION_NOT_SLA",
+    "rounds_required": 3,
+    "minimum_elapsed_seconds": 120,
+    "targets_per_round": 11,
+    "retry_within_round": false,
+    "preserve_failures": true
+  },
+  "observation_summary": {
+    "auditable_rounds": 2,
+    "completed": false,
+    "elapsed_seconds": 82,
+    "records": 22,
+    "successful_records": 21,
+    "failed_records": 1,
+    "missing_receipt_attempts": 1,
+    "result": "FAIL_STOP_RULE_TRIGGERED"
+  },
+  "uncounted_attempts": [
+    {
+      "attempt": "ROUND_2_INITIAL_COMMAND",
+      "status": "TOOL_COMPLETED_WITHOUT_AUDITABLE_OUTPUT",
+      "counted_as_pass": false
+    }
+  ],
+  "rounds": [
+    {
+      "round": 1,
+      "observed_at": "2026-07-27T11:08:13Z",
+      "status": "PASS",
+      "records": [
+        {"path": "/", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.231398, "bytes": 46401, "sha256": "67ca2e49dbb558a6b6ff155d9e0889817a83f67a073f7a4646383862a8190929"},
+        {"path": "/en/", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.306688, "bytes": 48045, "sha256": "b7c8f1d1faef23ab104fe87fde00003e52eb4869aba8b01d0b81b34d626ff50a"},
+        {"path": "/llms.txt", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.193322, "bytes": 28852, "sha256": "1b687ce3cda5e81cee6ac2dde41131c5f5b8059be956d25a648cfc06b90c2837"},
+        {"path": "/agent-index.json", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.239288, "bytes": 19998, "sha256": "3849b2ecff7e2fd44f361b284b3314a77fa1923bf71f9d59785a37d1cc29465d"},
+        {"path": "/status.json", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.285621, "bytes": 19358, "sha256": "8d7cef3c6b07916ddd3e5e40d988764a95ad9a97878584986c2c33f1cdef2b33"},
+        {"path": "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.168015, "bytes": 4276, "sha256": "54a738beef94c2e5e6b3fa28f8a8c299681e05ec5c3e82ec6901710dcfea8269"},
+        {"path": "/TITMAS-AGENT-EVALUATION-ENTRY-v0.1.json", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.245944, "bytes": 6036, "sha256": "af106a96eceb9e555ef73948eff3d15c7e48b5c9657d5d1d7d7c205bf905b114"},
+        {"path": "/TITMAS-AGENT-EVALUATION-ENTRY-VALIDATION-REPORT-v0.1.md", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.178186, "bytes": 3087, "sha256": "5b472f3db7b9a27e61ab31ad6cc2e490af5749d37abfd668b549e6e57c5f2cf4"},
+        {"path": "/architecture/titmas-agent-evaluation-entry-contract-v0.1.md", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.263420, "bytes": 8053, "sha256": "6b2cae58f15ba69a459e4273c6cc69f1aed302904b134dcd5fc7c4aa2cd31fa5"},
+        {"path": "/architecture/schemas/titmas-agent-evaluation-entry.schema.v0.1.json", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.219540, "bytes": 12819, "sha256": "a49b8d25b2d1c0a79a37fb6449408df3ddbd97b952bff2f7917f913627e55f1c"},
+        {"path": "/release-manifest.json", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.287692, "bytes": 10678, "sha256": "578d3aa556efe3a647cb44fe40dad74d675dac11e92c87b38c298be97969fc2b"}
+      ]
+    },
+    {
+      "round": 2,
+      "observed_at": "2026-07-27T11:09:35Z",
+      "status": "FAIL_TRANSPORT",
+      "records": [
+        {"path": "/", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.316269, "bytes": 46401, "sha256": "67ca2e49dbb558a6b6ff155d9e0889817a83f67a073f7a4646383862a8190929"},
+        {"path": "/en/", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.221155, "bytes": 48045, "sha256": "b7c8f1d1faef23ab104fe87fde00003e52eb4869aba8b01d0b81b34d626ff50a"},
+        {"path": "/llms.txt", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.279402, "bytes": 28852, "sha256": "1b687ce3cda5e81cee6ac2dde41131c5f5b8059be956d25a648cfc06b90c2837"},
+        {"path": "/agent-index.json", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.199276, "bytes": 19998, "sha256": "3849b2ecff7e2fd44f361b284b3314a77fa1923bf71f9d59785a37d1cc29465d"},
+        {"path": "/status.json", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.307160, "bytes": 19358, "sha256": "8d7cef3c6b07916ddd3e5e40d988764a95ad9a97878584986c2c33f1cdef2b33"},
+        {"path": "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", "result": "TRANSPORT_ERROR", "curl_exit_code": 35, "http_code": null, "latency_seconds": null, "bytes": 0, "sha256": null},
+        {"path": "/TITMAS-AGENT-EVALUATION-ENTRY-v0.1.json", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.213264, "bytes": 6036, "sha256": "af106a96eceb9e555ef73948eff3d15c7e48b5c9657d5d1d7d7c205bf905b114"},
+        {"path": "/TITMAS-AGENT-EVALUATION-ENTRY-VALIDATION-REPORT-v0.1.md", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.167154, "bytes": 3087, "sha256": "5b472f3db7b9a27e61ab31ad6cc2e490af5749d37abfd668b549e6e57c5f2cf4"},
+        {"path": "/architecture/titmas-agent-evaluation-entry-contract-v0.1.md", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.158187, "bytes": 8053, "sha256": "6b2cae58f15ba69a459e4273c6cc69f1aed302904b134dcd5fc7c4aa2cd31fa5"},
+        {"path": "/architecture/schemas/titmas-agent-evaluation-entry.schema.v0.1.json", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.231395, "bytes": 12819, "sha256": "a49b8d25b2d1c0a79a37fb6449408df3ddbd97b952bff2f7917f913627e55f1c"},
+        {"path": "/release-manifest.json", "result": "PASS", "curl_exit_code": 0, "http_code": 200, "latency_seconds": 0.186178, "bytes": 10678, "sha256": "578d3aa556efe3a647cb44fe40dad74d675dac11e92c87b38c298be97969fc2b"}
+      ]
+    }
+  ],
+  "failure": {
+    "stage": "TIME_WINDOW_AVAILABILITY_OBSERVATION",
+    "path": "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json",
+    "failure_class": "ASSET_FETCH_TRANSPORT_ERROR",
+    "curl_exit_code": 35,
+    "exact_root_cause_proven": false,
+    "retry_executed": false,
+    "rollback_triggered": true
+  },
+  "rollback": {
+    "status": "PASS",
+    "target": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "current_after": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "nginx_test_pass": true,
+    "nginx_reload_pass": true,
+    "post_rollback_root_http": 200
+  },
+  "current_truth": {
+    "new_contract_website_deployed": false,
+    "time_window_observation_completed": false,
+    "availability_sla_defined": false,
+    "commercial_offer_created": false,
+    "production_ready": false
+  },
+  "effects": {
+    "authority": false,
+    "permission": false,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "capability": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offer": false,
+    "production_readiness": false
+  }
+}
