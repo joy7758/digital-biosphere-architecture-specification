@@ -379,7 +379,9 @@ offline target-binding remediation Recommendation。
 contract 与最小 adapter candidate。binding 只承载 evidence routing metadata，不产生
 Authority；未来 live binding 仍须由独立 deployment Decision 固定 bytes/hash。
 `qwen3.7-plus` 给出 `RECOMMENDED`、愿意向智能体客户推荐、置信度 `0.98`。当前只达到
-Decision review ready；实现、remote matrix、服务器访问和重部署仍均未授权。
+Decision review ready。[CE-G11A Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11A-DECISION-RECORD.v0.1.json)
+已依据 `TITMAS-CS-STANDING-001` 独立授权 exact offline artifacts/tests；Decision 不等于
+execution。remote matrix、服务器访问和重部署仍均未授权。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

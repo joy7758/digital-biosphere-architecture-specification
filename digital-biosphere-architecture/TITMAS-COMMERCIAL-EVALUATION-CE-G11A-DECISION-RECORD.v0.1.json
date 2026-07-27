@@ -1,0 +1,117 @@
+{
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G11A",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_OFFLINE_TARGET_BINDING_REMEDIATION_ONLY",
+  "decided_at": "2026-07-27",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G11A-OFFLINE-TARGET-BINDING-REMEDIATION-RECOMMENDATION-v0.1.md",
+  "recommendation_commit": "4ca3120d9b280f1e777635f49f3972add156a3ae",
+  "primary_repository": "digital-biosphere-architecture",
+  "decision_basis": {
+    "agent_verdict": "RECOMMENDED",
+    "agent_selected_option": "A",
+    "would_recommend_to_agent_customer": true,
+    "confidence": 0.98,
+    "blocking_reasons": 0,
+    "required_corrections": 0,
+    "decision_is_execution": false
+  },
+  "exact_action": "Create and validate an offline-only correlation binding contract and minimal target-bound adapter candidate that preserves the historical CE-G8/CE-G9 correlator while removing its hard-coded target and receipt-identity limitation for future, separately authorized CE-G11 evidence routing.",
+  "authorized_paths": [
+    "commercial-evaluation-controller-tls-diagnosis/ce-g11-correlation-binding.schema.v0.1.json",
+    "commercial-evaluation-controller-tls-diagnosis/ce-g11-correlation-binding.offline-fixture.v0.1.json",
+    "commercial-evaluation-controller-tls-diagnosis/ce_g11_target_bound_correlator.py",
+    "commercial-evaluation-controller-tls-diagnosis/test_ce_g11_target_bound_correlator.py",
+    "commercial-evaluation-controller-tls-diagnosis/ce-g11a-offline-remediation-result.schema.v0.1.json",
+    "commercial-evaluation-controller-tls-diagnosis/ce-g11a-offline-remediation-result.v0.1.json",
+    "TITMAS-CE-G11A-OFFLINE-TARGET-BINDING-REMEDIATION-REPORT-v0.1.md",
+    "PROGRAM-STATUS.md",
+    "README.md",
+    "TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+    "architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
+    "architecture/titmas-commercialization-standards-roadmap-v0.1.md"
+  ],
+  "frozen_historical_inputs": {
+    "ce_g8_server_log_correlator.py": "508245e1a49eb2fba94a3617517da2dfd200f9c8b1677cfdd92e186130ab6bef",
+    "test_ce_g8_diagnostic.py": "22f500fa5bdb3e72ca424e8bfd800827e6e585c554270bf260d9271a2de74829",
+    "fixtures/access.log": "3e63d82fd85b151cf3b5479b11b020d113790ac8cd71df561699479dc057bf8d",
+    "fixtures/error.log": "38e96f94008c3bef6e988f5ef6725f0ccea5439b27a5be35e8f1722ce1709c55",
+    "ce-g9-offline-remediation-result.v0.1.json": "7b5be0c3f6aaf02a9f5093eef4cd1d53163507b1d5ac99bdb5c906871eb8947b",
+    "ce-g10-cross-version-result.v0.1.json": "3ffabc0fa8b12ff02829b39ce6a6f3a678298ea4fca6fb53e76953c392ee76e3"
+  },
+  "required_controls": {
+    "historical_sources_read_only": true,
+    "adapter_reuses_validated_parser_functions": true,
+    "binding_schema_validation": true,
+    "binding_sha256_validation_before_field_use": true,
+    "expected_current_target_validation": true,
+    "decision_and_receipt_identity_validation": true,
+    "offline_fixture_authorization_status": "NOT_AUTHORIZED",
+    "binding_authority_effect": false,
+    "raw_log_persistence": false,
+    "literal_source_value_persistence": false,
+    "stable_fail_closed_errors": true,
+    "draft_2020_12_format_validation": true,
+    "standard_library_runtime_only": true
+  },
+  "caps": {
+    "live_model_requests_during_implementation": 0,
+    "public_site_requests": 0,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "deployments": 0,
+    "dbos_changes": 0,
+    "saee_changes": 0,
+    "historical_files_modified": 0
+  },
+  "preconditions": [
+    "Recommendation commit 4ca3120d9b280f1e777635f49f3972add156a3ae is present on origin/codex/production-observability-baseline.",
+    "Every frozen historical input hash matches before implementation.",
+    "The Decision record is committed and pushed before implementation begins.",
+    "The adapter and fixtures remain offline-only and do not create an AUTHORIZED live binding."
+  ],
+  "stop_conditions": [
+    "Any frozen historical input changes.",
+    "The adapter duplicates or changes historical parsing semantics instead of reusing them.",
+    "Any binding field is used before Schema and expected-SHA validation.",
+    "Unknown current target, wrong Decision reference, wrong receipt ID, binding tamper, or authority_effect=true is accepted.",
+    "Any fixture or result persists a raw log line, raw error, salt, literal source value, credential, proxy detail, or interface detail.",
+    "Any test requires a model request, public-site request, SSH, server read/write, deployment, DBOS change, or SAEE change.",
+    "The result is presented as remote cross-version conformance, TLS root-cause proof, redeployment admission, production readiness, certification, SLA, or commercial availability."
+  ],
+  "rollback": {
+    "runtime_state_change": false,
+    "server_state_change": false,
+    "historical_sources_unchanged": true,
+    "failed_results_preserved": true,
+    "remediation_failure_requires_new_recommendation": true
+  },
+  "false_effects": {
+    "authority": false,
+    "permission": false,
+    "live_binding": false,
+    "remote_cross_version_validation": false,
+    "tls_root_cause_proof": false,
+    "public_entry_redeployment_admission": false,
+    "redeployment": false,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "capability": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offering": false,
+    "production_readiness": false
+  },
+  "executed_by": "Codex under bounded human standing delegation",
+  "execution_receipt": null,
+  "result": "NOT_EXECUTED",
+  "known_limitations": [
+    "Offline remediation cannot prove server compatibility or redeployment readiness.",
+    "A future execution binding remains metadata and must be pinned by a separate deployment Decision.",
+    "The new adapter requires a separately authorized exact Python 3.10-3.14 remote matrix before any revised redeployment recommendation."
+  ]
+}

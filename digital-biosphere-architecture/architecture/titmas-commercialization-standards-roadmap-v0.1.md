@@ -2623,8 +2623,10 @@ CE_G11A_REDEPLOYMENT_AUTHORIZED=false
 binding 通过 Schema + expected SHA-256 绑定 target、Decision 与 receipt identity，但只
 是 evidence routing metadata，不产生 Authority。offline fixture 必须保持
 `authorization_status=NOT_AUTHORIZED`、`authority_effect=false`。`qwen3.7-plus`
-选择 Option A，`RECOMMENDED`，置信度 `0.98`。本建议只达到独立 Decision review ready；
-实现、remote matrix 和 redeployment 继续分离。
+选择 Option A，`RECOMMENDED`，置信度 `0.98`。
+[CE-G11A Decision](../TITMAS-COMMERCIAL-EVALUATION-CE-G11A-DECISION-RECORD.v0.1.json)
+已依据 `TITMAS-CS-STANDING-001` 独立授权 exact offline artifacts/tests。remote matrix
+和 redeployment 继续分离。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -2895,9 +2897,9 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Review CE-G11A for an independent Decision**：offline-only target/identity binding
-   remediation 已获得智能体 `RECOMMENDED`；下一步只审查是否授权 exact bounded
-   artifacts/tests，remote matrix 和 redeployment 仍不在该 Decision 范围；
+1. **Execute CE-G11A offline remediation only**：独立 Decision 已授权 exact
+   binding/adapter/schema/tests；下一步只执行 zero-network implementation 与
+   validation，remote matrix、server access 和 redeployment 仍不在范围；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -3106,7 +3108,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=INDEPENDENT_REVIEW_AND_DECISION_FOR_CE_G11A_OFFLINE_REMEDIATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=EXECUTE_CE_G11A_OFFLINE_TARGET_BINDING_REMEDIATION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -3247,8 +3249,9 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G11A_RECOMMENDATION_PREPARED=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G11A_AGENT_VERDICT=RECOMMENDED
 TITMAS_COMMERCIAL_EVALUATION_CE_G11A_WOULD_RECOMMEND_TO_AGENT_CUSTOMER=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G11A_AGENT_CONFIDENCE=0.98
-TITMAS_COMMERCIAL_EVALUATION_CE_G11A_DECISION_RECORDED=false
-TITMAS_COMMERCIAL_EVALUATION_CE_G11A_IMPLEMENTATION_AUTHORIZED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11A_DECISION_RECORDED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G11A_IMPLEMENTATION_AUTHORIZED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G11A_IMPLEMENTATION_COMPLETED=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G11A_REDEPLOYMENT_AUTHORIZED=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
