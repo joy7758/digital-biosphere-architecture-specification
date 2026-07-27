@@ -1,0 +1,59 @@
+{
+  "$schema": "./ce-g10-run-request.schema.v0.1.json",
+  "request_id": "TITMAS-CE-G10-RUN-REQUEST-001",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_SINGLE_TRIGGER",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G10",
+  "trigger_decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G10A",
+  "created_at": "2026-07-27T13:22:26Z",
+  "source_branch": "codex/production-observability-baseline",
+  "phase_a_commit": "1ea13851dc620d513f4ddaac3688a0c1bfa8fa28",
+  "trigger": {
+    "event": "push",
+    "branch": "codex/production-observability-baseline",
+    "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g10-run-request.v0.1.json",
+    "events_cap": 1
+  },
+  "python_matrix": [
+    "3.10.20",
+    "3.11.15",
+    "3.12.13",
+    "3.13.14",
+    "3.14.6"
+  ],
+  "frozen_inputs": {
+    "ce_g8_server_log_correlator.py": "508245e1a49eb2fba94a3617517da2dfd200f9c8b1677cfdd92e186130ab6bef",
+    "test_ce_g8_diagnostic.py": "22f500fa5bdb3e72ca424e8bfd800827e6e585c554270bf260d9271a2de74829",
+    "fixtures/access.log": "3e63d82fd85b151cf3b5479b11b020d113790ac8cd71df561699479dc057bf8d",
+    "fixtures/error.log": "38e96f94008c3bef6e988f5ef6725f0ccea5439b27a5be35e8f1722ce1709c55",
+    "ce-g9-offline-remediation-result.schema.v0.1.json": "e4e60d8d4715bfbd6495201e3ac00d62c167d3b112605c81606d244f575d5863"
+  },
+  "phase_a_components": {
+    ".github/workflows/titmas-ce-g10-correlator-cross-version.yml": "530cd00b5e1199508c6a08a8ee0e295a5469284c3f471c5600b378550d1126ef",
+    "ce_g10_cross_version_runner.py": "361e87422b53771d857774ea1ff61490806af4c99897b592114f05a7c86c8107",
+    "test_ce_g10_cross_version_runner.py": "a7317f9507a1d9f4cc715a61609240125a8b8c0a85e90f22b65c00180589c99f",
+    "ce-g10-run-request.schema.v0.1.json": "6f56b4409d5ea64d6cb25a41743507e7b3263cf2ca91eb72695c1a3b91e7d207",
+    "ce-g10-cross-version-result.schema.v0.1.json": "124dc04019d827c63ab0388bccbd68e7e88f7836349520296dbf1643036e082a"
+  },
+  "actions": {
+    "actions/checkout": "11d5960a326750d5838078e36cf38b85af677262",
+    "actions/setup-python": "ece7cb06caefa5fff74198d8649806c4678c61a1",
+    "actions/upload-artifact": "ea165f8d65b6e75b540449e92b4886f43607fa02"
+  },
+  "caps": {
+    "trigger_events": 1,
+    "workflow_runs": 1,
+    "matrix_jobs": 5,
+    "target_public_site_requests": 0,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "deployments": 0,
+    "dbos_changes": 0,
+    "saee_changes": 0,
+    "model_requests_during_execution": 0
+  },
+  "retry": false,
+  "fallback": false,
+  "result_schema_reference": "./ce-g10-cross-version-result.schema.v0.1.json"
+}

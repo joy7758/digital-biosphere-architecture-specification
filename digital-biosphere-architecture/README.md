@@ -152,7 +152,11 @@ branch_trigger_remediation_recommendation_prepared: true
 branch_trigger_remediation_agent_verdict: recommended
 branch_trigger_remediation_decision_recorded: true
 branch_trigger_remediation_phase_a_authorized: true
-branch_trigger_remediation_run_request_created: false
+branch_trigger_remediation_phase_a_completed: true
+branch_trigger_implemented: true
+branch_trigger_remediation_run_request_created: true
+branch_trigger_remediation_trigger_event_committed: true
+branch_trigger_remediation_execution_completed: false
 public_entry_redeployment_admission_pass: false
 public_entry_redeployment_authorized: false
 developer_ecosystem_created: false
@@ -352,7 +356,9 @@ endpoint 不可用；因此 dispatch/run/matrix 均为 0。没有为此合并 `m
 置信度 `0.95`。
 [CE-G10A Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G10A-DECISION-RECORD.v0.1.json)
 已授权两阶段修正；Phase A 只允许实现 trigger/validator，禁止包含 run-request，因此不会
-触发 workflow。
+触发 workflow。Phase A `1ea13851…` 已通过远端一致、request absent 和 run=0 预检；
+唯一 decision-bound run-request 已单独创建，其 push 是唯一允许的 trigger event。当前
+等待 workflow 结果，不允许 retry。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
