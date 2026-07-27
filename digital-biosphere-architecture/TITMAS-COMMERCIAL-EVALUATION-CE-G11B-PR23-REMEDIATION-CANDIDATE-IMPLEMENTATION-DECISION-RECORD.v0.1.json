@@ -1,0 +1,323 @@
+{
+  "record_type": "TITMAS_PROSPECTIVE_BOUNDED_REMEDIATION_CANDIDATE_IMPLEMENTATION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-REMEDIATION-CANDIDATE-IMPLEMENTATION",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_SEVEN_PATH_NEW_CANDIDATE_IMPLEMENTATION_AND_FREEZE_ONLY_IF_QUALIFYING_DECISION_REVIEW",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G11B-PR23-REMEDIATION-CANDIDATE-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "598262255bfdd9d8acc32c39ec0066d0adecced8c95d72df562287bd494a6507",
+  "recommendation_review_reference": "TITMAS-CE-G11B-PR23-REMEDIATION-CANDIDATE-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "c0090e4727a5d224e9f6276afc55cf92ac0e654318cade1f0eff985def71c29d",
+  "recommendation_commit": "3688b0cfaba573414ac4db4ce08ed57aa9d93af4",
+  "recommendation_remote_verified": true,
+  "decision_quality_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-REMEDIATION-CANDIDATE-IMPLEMENTATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_layer": "PROSPECTIVE_IMPLEMENTATION_AND_CANDIDATE_FREEZE_AUTHORIZATION_ONLY",
+  "result_layer": "SEPARATE_IMPLEMENTATION_RESULT_AND_SEPARATE_EVIDENCE_DECISION_REQUIRED",
+  "review_question": "Does this exact Decision authorize only a new seven-path remediation candidate from the frozen source, with complete fail-closed validation and one exact qwen3.7-max implementation review, while preserving all old refs and excluding evidence execution, PR mutation, merge, release and deployment?",
+  "frozen_topology": {
+    "repository": "joy7758/digital-biosphere-architecture-specification",
+    "canonical_ref": "codex/production-observability-baseline",
+    "canonical_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "source_candidate_ref": "codex/ce-g11b-phase-b-integration-governance",
+    "source_candidate_commit": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+    "source_evidence_ref": "codex/ce-g11b-atomic-integration-evidence",
+    "source_evidence_commit": "89baeeeb42904b4ea41652d649f8be9a484f3b48",
+    "source_validated_merge_tree": "bd67298eb8d869b024eaf9f03a53636c6dc377d4",
+    "governance_ref": "codex/ce-g11b-pr23-remediation-candidate-governance",
+    "governance_recommendation_commit": "3688b0cfaba573414ac4db4ce08ed57aa9d93af4",
+    "new_candidate_ref": "codex/ce-g11b-pr23-remediation-candidate",
+    "new_candidate_ref_remote_absent_at_decision_preparation": true
+  },
+  "frozen_pr_state": {
+    "pr_23": {
+      "number": 23,
+      "state": "OPEN",
+      "draft": true,
+      "base_ref": "codex/production-observability-baseline",
+      "head_ref": "codex/ce-g11b-phase-b-integration-governance",
+      "head_commit": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+      "mergeable": true,
+      "merge_state": "CLEAN"
+    },
+    "pr_24": {
+      "number": 24,
+      "state": "CLOSED",
+      "merged": false,
+      "base_ref": "main",
+      "head_ref": "codex/ce-g11b-atomic-integration-evidence",
+      "head_commit": "89baeeeb42904b4ea41652d649f8be9a484f3b48"
+    }
+  },
+  "adjudication_input": {
+    "result_reference": "TITMAS-CE-G11B-PR23-FINDING-ADJUDICATION-RESULT-v0.1.json",
+    "result_sha256": "10b3a7cf71d57a158cabe38e489e4936eeb7a59a17068c1e58c603c6e30d79fd",
+    "report_reference": "TITMAS-CE-G11B-PR23-FINDING-ADJUDICATION-REPORT-v0.1.md",
+    "report_sha256": "bd83f526d8abdfd67f122559a6736e75f7099997fd10b4c17ea4d64fdaca9311",
+    "finding_coverage": "17/17",
+    "derived_blocking_finding_ids": [
+      "D-B03",
+      "D-B04",
+      "D-B05"
+    ],
+    "required_correction_finding_ids": [
+      "D-B03",
+      "D-B04",
+      "D-S01",
+      "D-S02",
+      "D-S03"
+    ],
+    "d_b05_disposition": "PARTIALLY_CONFIRMED",
+    "d_b05_correction_effect": "NOT_REQUIRED",
+    "d_b05_scope_expansion_allowed": false
+  },
+  "source_bindings": [
+    {
+      "path": "digital-biosphere-architecture/PROGRAM-STATUS.md",
+      "source_sha256": "c2fe29617a6eee900b912a0701678874aa0777b6f3bc55ccdf48679da7f819a2",
+      "finding_ids": [
+        "D-S01"
+      ]
+    },
+    {
+      "path": "digital-biosphere-architecture/TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+      "source_sha256": "50f52921bce8d250661503fba2caff594ecfb5790d8f5aa544862d7bb2560c82",
+      "finding_ids": [
+        "D-B03",
+        "D-B04"
+      ]
+    },
+    {
+      "path": "digital-biosphere-architecture/architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
+      "source_sha256": "6b921ba726b99117d9008a6edf63e6c82241404bf097148637dc0fd3817fe130",
+      "finding_ids": [
+        "D-B03",
+        "D-B04"
+      ],
+      "companion_contract_only": true
+    },
+    {
+      "path": "digital-biosphere-architecture/site/app/site-shell.tsx",
+      "source_sha256": "ca68a0e1c7b93a76e12a385a1eaa1039825e2410748fe69467ddd9c8f49dbcf9",
+      "finding_ids": [
+        "D-S02"
+      ]
+    },
+    {
+      "path": "digital-biosphere-architecture/site/app/commercial-evaluation/page.tsx",
+      "source_sha256": "1d10113d656ef22bf72ffe45128290d104276da008d5c3f44600ebcecc43f1a8",
+      "finding_ids": [
+        "D-S03"
+      ]
+    },
+    {
+      "path": "digital-biosphere-architecture/site/app/en/commercial-evaluation/page.tsx",
+      "source_sha256": "4f428a9b135547ecde813095392dec8096657f7f426a3f8ed0f4a19b9f46b2c3",
+      "finding_ids": [
+        "D-S03"
+      ]
+    },
+    {
+      "path": "digital-biosphere-architecture/site/tests/rendered-html.test.mjs",
+      "source_sha256": "eb5b5d9adf8c1bd457be0b0518cc3a05ef92c38e8f93d34de9670178b7d54e91",
+      "finding_ids": [
+        "D-S02",
+        "D-S03"
+      ],
+      "regression_test_only": true
+    }
+  ],
+  "correction_contract": {
+    "allowed_paths_exact": 7,
+    "new_paths_allowed": 0,
+    "deleted_paths_allowed": 0,
+    "readme_change_allowed": false,
+    "other_site_source_change_allowed": false,
+    "required_effects": [
+      {
+        "finding_id": "D-B03",
+        "field": "next_decision_candidate.status",
+        "exact_value": "CE_G11B_IMMUTABLE_CANDIDATE_VALIDATION_AUTHORIZATION_APPROVED_FINALIZATION_PENDING",
+        "entry_schema_exact_match_required": true
+      },
+      {
+        "finding_id": "D-B04",
+        "field": "next_decision_candidate.current_recommended_option",
+        "exact_value": "FINALIZE_AND_FREEZE_CE_G11B_CANDIDATE_THEN_VALIDATE_ON_DISTINCT_EVIDENCE_REF",
+        "entry_schema_exact_match_required": true
+      },
+      {
+        "finding_id": "D-S01",
+        "field_group": "PROGRAM_STATUS_FRONTMATTER_AND_BODY",
+        "required_values": {
+          "titmas_ce_g10_execution_completed": true,
+          "titmas_ce_g10_workflow_dispatched": false,
+          "titmas_ce_g10_workflow_runs": 1,
+          "titmas_ce_g10a_execution_completed": true,
+          "titmas_commercial_evaluation_next_gate": "ce-g11b-finalize-freeze-then-distinct-evidence-validation"
+        },
+        "preserve_values": {
+          "workflow_run_id": 30270198036,
+          "matrix_jobs_pass": "5/5",
+          "tests_pass": "65/65",
+          "artifacts": 5,
+          "retry": 0
+        }
+      },
+      {
+        "finding_id": "D-S02",
+        "field": "site_footer_current_manifest_href",
+        "exact_value": "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json",
+        "historical_v0_1_file_preserved": true
+      },
+      {
+        "finding_id": "D-S03",
+        "field_group": "BILINGUAL_COMMERCIAL_EVALUATION_METADATA_TITLES",
+        "exact_values": {
+          "zh": "第一版商业评估包 v0.2",
+          "en": "Commercial Evaluation Pack v0.2"
+        }
+      }
+    ]
+  },
+  "implementation_sequence": [
+    "Verify this exact Decision has a qualifying qwen3.7-max Decision review and the Decision baseline is committed, pushed and remotely matched.",
+    "Verify all frozen refs, PR states, seven source hashes and new candidate remote-ref absence.",
+    "Create one disposable worktree and new local branch codex/ce-g11b-pr23-remediation-candidate from exact c608fd78d7d50d1733ddd9e19aeb6870c5a08288.",
+    "Apply only the exact correction contract to the seven allowed paths.",
+    "Verify the changed path set exactly equals the seven allowed paths and no generated dependency, build output, credential or absolute local user path is tracked.",
+    "Run all authorized JSON, duplicate-key, Schema, status-consistency, site, formal static-export and CE regression validations offline.",
+    "Run exactly one write-ahead qwen3.7-max implementation review over exact parent, exact diff, validation results and authority boundaries.",
+    "If and only if every deterministic gate and implementation review passes with zero blocker and zero correction, create one candidate commit and push the new candidate branch once.",
+    "Persist a bounded implementation result on the governance branch; do not execute distinct-ref evidence validation under this Decision."
+  ],
+  "validation_contract": {
+    "source_and_scope": [
+      "candidate parent equals c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+      "seven source hashes match",
+      "changed paths equal the seven source-binding paths",
+      "README diff equals zero",
+      "new paths equals zero",
+      "deleted paths equals zero",
+      "tracked secret matches equals zero",
+      "absolute local user path matches equals zero",
+      "generated dependency and build-output paths equals zero"
+    ],
+    "machine_contract": [
+      "all tracked JSON parses",
+      "duplicate JSON keys equal zero",
+      "commercialization entry Schema meta-validates",
+      "commercialization entry instance validates",
+      "entry status and option equal Schema const values",
+      "PROGRAM-STATUS frontmatter and body agree on CE-G10 completion, workflow run count, CE-G10A completion and next-gate semantics"
+    ],
+    "site": [
+      "offline dependency materialization passes with no network fallback",
+      "npm test passes",
+      "rendered Chinese metadata title is v0.2",
+      "rendered English metadata title is v0.2",
+      "rendered footer current-manifest href is v0.2",
+      "historical v0.1 manifest remains present",
+      "formal static export and verification pass"
+    ],
+    "ce_regression": [
+      "test_ce_g11b_cross_version_runner.py passes",
+      "test_ce_g11_target_bound_correlator.py passes",
+      "test_ce_g8_diagnostic.py passes",
+      "full CE discovery passes 49/49"
+    ]
+  },
+  "implementation_review_contract": {
+    "model": "qwen3.7-max",
+    "requests": 1,
+    "http_status_required": 200,
+    "curl_exit_required": 0,
+    "returned_model_exact_match_required": true,
+    "direct_json_required": true,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "model_substitution_count": 0,
+    "json_extraction_count": 0,
+    "json_repair_count": 0,
+    "required_verdict": "PASS",
+    "required_correction_coverage": "5/5",
+    "required_changed_path_coverage": "7/7",
+    "blocking_findings_max": 0,
+    "required_corrections_max": 0,
+    "authority_effect": "ADVISORY_ONLY"
+  },
+  "exact_authorized_action": "After one qualifying exact qwen3.7-max prospective Decision review, commit and push this Decision, its completed review and cockpit update to codex/ce-g11b-pr23-remediation-candidate-governance, then verify the remote Decision baseline and all frozen preconditions. Create one disposable worktree and the new branch codex/ce-g11b-pr23-remediation-candidate at exact parent c608fd78d7d50d1733ddd9e19aeb6870c5a08288. Modify exactly the seven bound paths to implement only D-B03, D-B04, D-S01, D-S02 and D-S03 plus companion Schema constants and existing regression assertions. Run the complete offline validation contract. Send exactly one implementation-review request to exact qwen3.7-max with no retry, fallback, model substitution, JSON extraction or repair. If and only if all deterministic checks and the implementation review qualify with zero blocker and zero correction, create exactly one candidate commit and push the new candidate branch exactly once. Persist a sanitized implementation result on the governance branch. Do not modify old candidate/evidence refs or PR #23/#24, create evidence, open/close/retarget a PR, submit a GitHub review/comment, merge, release, deploy, claim production, certification, SLA, Standard Ready or commercial offering.",
+  "caps": {
+    "decision_model_requests": 1,
+    "decision_retries": 0,
+    "decision_fallbacks": 0,
+    "decision_model_substitutions": 0,
+    "decision_json_extractions": 0,
+    "decision_json_repairs": 0,
+    "decision_commits": 1,
+    "decision_pushes": 1,
+    "implementation_worktrees": 1,
+    "new_candidate_branches": 1,
+    "source_paths_modified": 7,
+    "new_source_paths": 0,
+    "deleted_source_paths": 0,
+    "dependency_materializations": 1,
+    "dependency_network_fallbacks": 0,
+    "implementation_model_requests": 1,
+    "implementation_retries": 0,
+    "implementation_fallbacks": 0,
+    "implementation_model_substitutions": 0,
+    "implementation_json_extractions": 0,
+    "implementation_json_repairs": 0,
+    "candidate_commits": 1,
+    "candidate_pushes": 1,
+    "implementation_result_commits": 1,
+    "implementation_result_pushes": 1,
+    "old_ref_mutations": 0,
+    "evidence_ref_creations": 0,
+    "evidence_executions": 0,
+    "pr_creations": 0,
+    "pr_mutations": 0,
+    "pr_closures": 0,
+    "github_review_submissions": 0,
+    "github_comments": 0,
+    "merges": 0,
+    "releases": 0,
+    "deployments": 0
+  },
+  "stop_conditions": [
+    "The Decision review is not exact qwen3.7-max APPROVE with zero blockers and corrections.",
+    "The Decision baseline is not committed, pushed and remotely matched before implementation.",
+    "Any frozen ref, PR state, source hash or candidate-branch absence precondition differs.",
+    "Any required correction needs a path outside the seven-path allowlist.",
+    "README or any unlisted path changes.",
+    "Any JSON, Schema, status, site, static-export or CE validation fails.",
+    "Dependency materialization requires a network fallback.",
+    "The implementation review is not exact qwen3.7-max direct JSON PASS with zero blocker and correction.",
+    "Any retry, fallback, model substitution, JSON extraction or repair would be required.",
+    "Any credential, absolute local user path, generated dependency or build output would enter the candidate.",
+    "Any evidence, PR, merge, release, deployment or public-state action would be required."
+  ],
+  "non_authorizations": {
+    "source_candidate_mutation": false,
+    "source_evidence_mutation": false,
+    "canonical_mutation": false,
+    "distinct_evidence_execution": false,
+    "replacement_pr_creation": false,
+    "pr_23_mutation": false,
+    "pr_24_mutation": false,
+    "github_review_submission": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "production": false,
+    "certification": false,
+    "sla": false,
+    "standard_ready": false,
+    "available_commercial_offering": false,
+    "truth_created": false,
+    "permission_created": false,
+    "authority_expanded": false
+  }
+}
