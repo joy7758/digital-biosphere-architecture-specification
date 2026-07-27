@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre61-multi-provider-security-review-preflight-decision-record.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "standing_directive_eligibility",
+    "scope",
+    "effects_before_execution",
+    "next_gate",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre61-multi-provider-security-review-preflight-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-DECISION-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "OFFLINE_PREFLIGHT_PACKET_AUTHORIZED_NOT_EXECUTED"},
+    "decision_id": {"const": "CS-D02-PRE-61"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "cbabc53ef961ba48a4d0a5e1bd43b162fdd5957d13eac7e72182805bcaeda8d4"
+    },
+    "recommendation_commit": {
+      "const": "1ab47b2f6b5f952351d3585b3b2d35c21014f3a9"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_PRE61_OFFLINE_MULTI_PROVIDER_SECURITY_REVIEW_PREFLIGHT_PACKET"
+    },
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "Codex"},
+    "standing_directive_eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_present",
+        "single_exact_option",
+        "primary_repository_explicit",
+        "preconditions_directly_evidenced",
+        "zero_network_scope_explicit",
+        "all_effect_classes_declared",
+        "stop_conditions_explicit",
+        "later_conflict_absent",
+        "independent_decision_record_present",
+        "result_validation_and_failure_retention_required"
+      ],
+      "properties": {
+        "canonical_recommendation_present": {"const": true},
+        "single_exact_option": {"const": true},
+        "primary_repository_explicit": {"const": true},
+        "preconditions_directly_evidenced": {"const": true},
+        "zero_network_scope_explicit": {"const": true},
+        "all_effect_classes_declared": {"const": true},
+        "stop_conditions_explicit": {"const": true},
+        "later_conflict_absent": {"const": true},
+        "independent_decision_record_present": {"const": true},
+        "result_validation_and_failure_retention_required": {"const": true}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "input_commit",
+        "output_files",
+        "network_requests_max",
+        "live_model_requests_max",
+        "credential_reads_max",
+        "external_repository_writes_max",
+        "target_runtime_writes_max",
+        "provider_integration_writes_max"
+      ],
+      "properties": {
+        "primary_repository": {"const": "digital-biosphere-architecture"},
+        "input_commit": {"const": "1ab47b2f6b5f952351d3585b3b2d35c21014f3a9"},
+        "output_files": {"const": 11},
+        "network_requests_max": {"const": 0},
+        "live_model_requests_max": {"const": 0},
+        "credential_reads_max": {"const": 0},
+        "external_repository_writes_max": {"const": 0},
+        "target_runtime_writes_max": {"const": 0},
+        "provider_integration_writes_max": {"const": 0}
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "minProperties": 14,
+      "additionalProperties": {"const": false}
+    },
+    "next_gate": {
+      "const": "CREATE_VALIDATE_AND_REMOTE_FREEZE_EXACT_ELEVEN_FILE_PRE61_PACKET"
+    },
+    "result": {"const": "NOT_EXECUTED"}
+  }
+}
