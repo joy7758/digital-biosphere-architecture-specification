@@ -1,0 +1,139 @@
+{
+  "$schema": "./ce-g10-cross-version-result.schema.v0.1.json",
+  "result_id": "TITMAS-CE-G10-CROSS-VERSION-RESULT-001",
+  "version": "0.1.0",
+  "status": "PASS_CROSS_VERSION_OFFLINE_COMPATIBILITY_ONLY",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G10",
+  "observed_at": "2026-07-27T13:25:34Z",
+  "workflow": {
+    "repository": "joy7758/digital-biosphere-architecture-specification",
+    "branch": "codex/production-observability-baseline",
+    "source_commit": "8d317bd78b21af76b49c77df25df4a74c95a1c19",
+    "workflow_file": "titmas-ce-g10-correlator-cross-version.yml",
+    "run_id": 30270198036,
+    "run_url": "https://github.com/joy7758/digital-biosphere-architecture-specification/actions/runs/30270198036",
+    "conclusion": "success",
+    "trigger_event": "push",
+    "trigger_events": 1,
+    "manual_dispatches": 0
+  },
+  "frozen_inputs": {
+    "ce_g8_server_log_correlator.py": "508245e1a49eb2fba94a3617517da2dfd200f9c8b1677cfdd92e186130ab6bef",
+    "test_ce_g8_diagnostic.py": "22f500fa5bdb3e72ca424e8bfd800827e6e585c554270bf260d9271a2de74829",
+    "fixtures/access.log": "3e63d82fd85b151cf3b5479b11b020d113790ac8cd71df561699479dc057bf8d",
+    "fixtures/error.log": "38e96f94008c3bef6e988f5ef6725f0ccea5439b27a5be35e8f1722ce1709c55",
+    "ce-g9-offline-remediation-result.schema.v0.1.json": "e4e60d8d4715bfbd6495201e3ac00d62c167d3b112605c81606d244f575d5863"
+  },
+  "matrix_expected": [
+    "3.10.20",
+    "3.11.15",
+    "3.12.13",
+    "3.13.14",
+    "3.14.6"
+  ],
+  "matrix_results": [
+    {
+      "python_version": "3.10.20",
+      "status": "PYTHON_VERSION_OFFLINE_PASS",
+      "test_count": 13,
+      "input_hashes_match": true,
+      "privacy_pass": true,
+      "runner_label": "ubuntu-24.04",
+      "runner_image_os": "ubuntu24",
+      "runner_image_version": "20260720.247.2",
+      "artifact_name": "ce-g10-python-3.10.20",
+      "error_class": null
+    },
+    {
+      "python_version": "3.11.15",
+      "status": "PYTHON_VERSION_OFFLINE_PASS",
+      "test_count": 13,
+      "input_hashes_match": true,
+      "privacy_pass": true,
+      "runner_label": "ubuntu-24.04",
+      "runner_image_os": "ubuntu24",
+      "runner_image_version": "20260720.247.2",
+      "artifact_name": "ce-g10-python-3.11.15",
+      "error_class": null
+    },
+    {
+      "python_version": "3.12.13",
+      "status": "PYTHON_VERSION_OFFLINE_PASS",
+      "test_count": 13,
+      "input_hashes_match": true,
+      "privacy_pass": true,
+      "runner_label": "ubuntu-24.04",
+      "runner_image_os": "ubuntu24",
+      "runner_image_version": "20260720.247.2",
+      "artifact_name": "ce-g10-python-3.12.13",
+      "error_class": null
+    },
+    {
+      "python_version": "3.13.14",
+      "status": "PYTHON_VERSION_OFFLINE_PASS",
+      "test_count": 13,
+      "input_hashes_match": true,
+      "privacy_pass": true,
+      "runner_label": "ubuntu-24.04",
+      "runner_image_os": "ubuntu24",
+      "runner_image_version": "20260720.247.2",
+      "artifact_name": "ce-g10-python-3.13.14",
+      "error_class": null
+    },
+    {
+      "python_version": "3.14.6",
+      "status": "PYTHON_VERSION_OFFLINE_PASS",
+      "test_count": 13,
+      "input_hashes_match": true,
+      "privacy_pass": true,
+      "runner_label": "ubuntu-24.04",
+      "runner_image_os": "ubuntu24",
+      "runner_image_version": "20260720.247.2",
+      "artifact_name": "ce-g10-python-3.14.6",
+      "error_class": null
+    }
+  ],
+  "summary": {
+    "matrix_jobs_expected": 5,
+    "matrix_jobs_observed": 5,
+    "matrix_jobs_passed": 5,
+    "matrix_jobs_failed": 0,
+    "all_exact_versions_observed": true,
+    "all_input_hashes_match": true,
+    "all_privacy_checks_pass": true,
+    "all_test_counts_match": true
+  },
+  "execution_caps": {
+    "trigger_events": 1,
+    "workflow_runs": 1,
+    "manual_dispatches": 0,
+    "matrix_jobs": 5,
+    "target_public_site_requests": 0,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "deployments": 0,
+    "dbos_changes": 0,
+    "saee_changes": 0,
+    "model_requests_during_execution": 0
+  },
+  "current_truth": {
+    "ce_g9_result": "PASS_OFFLINE_LOG_CORRELATOR_REMEDIATION_ONLY",
+    "ce_g8_historical_result": "INCONCLUSIVE_LOG_CORRELATION_FAIL_CLOSED",
+    "tls_root_cause_proven": false,
+    "public_entry_redeployment_admission_pass": false
+  },
+  "effects": {
+    "tls_root_cause_proof": false,
+    "public_entry_redeployment_admission": false,
+    "redeployment": false,
+    "production_readiness": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G11_CORRELATED_EXACT_REDEPLOYMENT_RECOMMENDATION",
+    "authorized": false
+  }
+}

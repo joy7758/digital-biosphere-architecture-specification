@@ -341,12 +341,12 @@ cross-version correlator validation recommendation。
 [CE-G10 Recommendation](TITMAS-CE-G10-CROSS-VERSION-CORRELATOR-VALIDATION-RECOMMENDATION-v0.1.md)
 已固定 Python `3.10.20`–`3.14.6`、action SHA、read-only permission、input hash、privacy
 和 fail-closed controls。`qwen3.7-plus` 给出 `CONDITIONALLY_RECOMMENDED`，愿意向
-智能体客户推荐，置信度 `0.78`。这只表示建议可进入独立 Decision；workflow 尚未创建或
-执行，也不产生 TLS、production、certification、SLA 或 commercial claim。
+智能体客户推荐，置信度 `0.78`。这只表示建议可进入独立 Decision，不产生 TLS、
+production、certification、SLA 或 commercial claim。
 [CE-G10 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G10-DECISION-RECORD.v0.1.json)已独立
 授权一次 manual-only、read-only、五版本离线 matrix；Decision 不等于执行。
 Workflow、sanitized runner 和 result Schema 已通过 Python 3.14/3.13 各 `21/21` 本地
-tests；workflow 只支持手动触发，当前尚未 dispatch。
+tests。
 
 [CE-G10 dispatch preflight](TITMAS-CE-G10-DISPATCH-PREFLIGHT-REPORT-v0.1.md)证明：
 default branch 是 `main`，validation workflow 只存在于工作分支，GitHub manual dispatch
@@ -357,8 +357,14 @@ endpoint 不可用；因此 dispatch/run/matrix 均为 0。没有为此合并 `m
 [CE-G10A Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G10A-DECISION-RECORD.v0.1.json)
 已授权两阶段修正；Phase A 只允许实现 trigger/validator，禁止包含 run-request，因此不会
 触发 workflow。Phase A `1ea13851…` 已通过远端一致、request absent 和 run=0 预检；
-唯一 decision-bound run-request 已单独创建，其 push 是唯一允许的 trigger event。当前
-等待 workflow 结果，不允许 retry。
+唯一 decision-bound run-request 已单独创建，其 push 产生唯一一次
+[GitHub Actions run `30270198036`](https://github.com/joy7758/digital-biosphere-architecture-specification/actions/runs/30270198036)。
+[CE-G10 result](commercial-evaluation-controller-tls-diagnosis/ce-g10-cross-version-result.v0.1.json)
+与[验证报告](TITMAS-CE-G10-CROSS-VERSION-CORRELATOR-VALIDATION-REPORT-v0.1.md)记录：
+5/5 matrix jobs、65/65 CE-G9 tests、5 个 sanitized artifacts 全部通过，manual dispatch、
+retry、public-site request、SSH、server read/write、deployment、DBOS/SAEE change 均为
+0。该结果只证明 CE-G9 remediated correlator 的离线跨版本兼容性；下一步只允许准备
+CE-G11 correlated exact redeployment Recommendation，尚未授权重部署。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
