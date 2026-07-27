@@ -1,0 +1,116 @@
+{
+  "record_type": "TITMAS_EXACT_THREE_SCHEMA_R2_MERGE_TREE_VALIDATION_RESULT",
+  "result_id": "TITMAS-CE-G11B-PR23-EXACT-THREE-SCHEMA-R2-VALIDATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28",
+  "status": "PASS_SHA_BOUND_EXACT_THREE_SCHEMA_R2_VALIDATION",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-EXACT-THREE-SCHEMA-R2-VALIDATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "16e6fd81418827dbf02ab3b81c9bb2b8146a7718",
+  "evidence_ref": "refs/heads/codex/ce-g11b-pr23-remediation-candidate-evidence-r2",
+  "frozen_binding": {
+    "canonical_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "candidate_commit": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "candidate_patch_sha256": "61c6bffe91df1f3af4731ae3be721998f5e3c8c687ca05cfc4dac74cd07aa0a8",
+    "merge_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "synthetic_local_validation_commit": "52444f301b555462d004aa78c2feb61618fb599d",
+    "r1_evidence_commit": "d054b5cf3880904aba84816501b07358fcfb4c06",
+    "r1_evidence_unchanged": true,
+    "candidate_remote_unchanged": true,
+    "canonical_remote_unchanged": true,
+    "merge_tree_unchanged": true
+  },
+  "execution": {
+    "temporary_worktrees_created": 1,
+    "command_retries": 0,
+    "network_fallbacks": 0,
+    "tracked_json_check": {
+      "attempts": 1,
+      "exit": 0,
+      "files_passed": 1165,
+      "duplicate_keys": 0,
+      "output_sha256": "238bbf85ce6aff3c0fa139123b16c523be5b7535aa5080478a07a868e98546f5"
+    },
+    "commercial_entry_schema": {
+      "attempts": 1,
+      "exit": 0,
+      "status": "PASS",
+      "output_sha256": "465a2bb3418801244eab9d856df8ef5e81f87b176b4b0976e834ee6126c7b54a"
+    },
+    "npm_ci": {
+      "attempts": 1,
+      "exit": 0,
+      "offline": true,
+      "ignore_scripts": true,
+      "packages_added": 493,
+      "output_sha256": "2b5925a6b642314b9919466370d0f080423c093b0d2f45c31542fc46c015be29"
+    },
+    "npm_ls": {
+      "attempts": 1,
+      "exit": 0,
+      "direct_dependencies": 23,
+      "reported_problem_count": 5,
+      "reported_problem_category": "EXTRANEOUS_OPTIONAL_WASM_PACKAGES",
+      "absolute_local_paths_persisted": false,
+      "output_sha256": "b1c36695295777eb7dfca32f7ffa71d016b7dd9ce484c847c898807f72279fe7"
+    },
+    "npm_test": {
+      "attempts": 1,
+      "exit": 0,
+      "tests_passed": 16,
+      "tests_failed": 0,
+      "output_sha256": "c5974b4fbc5d06d8f004344bd7423ab6a1ad30b4d3006b6f8e3253b0b90bce14"
+    },
+    "release_formal": {
+      "attempts": 1,
+      "exit": 0,
+      "effect": "LOCAL_STATIC_EXPORT_AND_VERIFICATION_ONLY",
+      "static_export_pass": true,
+      "content_parity_pass": true,
+      "truth_boundary_validation_pass": true,
+      "manifest_files": 65,
+      "output_sha256": "ba29e630ca4ffa762fb69d7306df874598cc69c48e8824b32651e97c6761e45b"
+    },
+    "ce_schema_meta_validation": {
+      "attempts": 1,
+      "exit": 0,
+      "selector": "EXACT_PATH_LIST_ONLY",
+      "hashes_passed": "3/3",
+      "schemas_meta_valid": "3/3",
+      "output_sha256": "d3aa6dff1c19b1e9f0f708cb3b4f8dcfbd122029afc60293f548603448a3a2c6"
+    },
+    "ce_tests": {
+      "attempts": 1,
+      "exit": 0,
+      "tests_passed": 49,
+      "tests_failed": 0,
+      "output_sha256": "aceec025608c8742bb6239efc5ec24c0447456f248acbba35d798c9949036c91"
+    }
+  },
+  "integrity": {
+    "tracked_source_diff": 0,
+    "git_status_entries": 0,
+    "candidate_remote_unchanged": true,
+    "canonical_remote_unchanged": true,
+    "merge_tree_unchanged": true,
+    "r1_evidence_unchanged": true,
+    "pr_23_mutated": false,
+    "pr_24_mutated": false
+  },
+  "effects": {
+    "r2_merge_tree_validation_complete": true,
+    "r2_validation_pass": true,
+    "r1_failure_overwritten": false,
+    "replacement_pr_authorization": false,
+    "pr_mutation_authorization": false,
+    "merge_authorization": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_REPLACEMENT_DRAFT_PR_RECOMMENDATION_AGAINST_R2_EVIDENCE",
+    "authorized": false
+  }
+}
