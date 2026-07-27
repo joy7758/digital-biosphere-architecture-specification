@@ -1,0 +1,260 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre69-remediation-scope.v0.1.json",
+  "title": "TITMAS PRE-69 Isolated Docker Config Remediation Scope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "prepared_at",
+    "decision_candidate",
+    "exact_recommended_action",
+    "pre68_failure",
+    "target",
+    "remediation",
+    "platform_lanes",
+    "agent_review_lanes",
+    "authorization_limits",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre69-remediation-scope.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE69-ISOLATED-DOCKER-CONFIG-REMEDIATION-SCOPE-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "RECOMMENDATION_SCOPE_ONLY_DECISION_REQUIRED"},
+    "prepared_at": {"type": "string", "format": "date-time"},
+    "decision_candidate": {"const": "CS-D02-PRE-69"},
+    "exact_recommended_action": {
+      "const": "AUTHORIZE_ONE_REMEDIATED_PRE68_RERUN_USING_EPHEMERAL_EMPTY_DOCKER_CONFIG_THEN_TWO_EXISTING_AGENT_REVIEW_LANES"
+    },
+    "pre68_failure": {"$ref": "#/$defs/pre68Failure"},
+    "target": {"$ref": "#/$defs/target"},
+    "remediation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "template_reference",
+        "template_sha256",
+        "temporary_directories_max",
+        "template_copies_max",
+        "global_docker_config_reads_max",
+        "global_docker_config_writes_max",
+        "credential_store_allowed",
+        "credential_helpers_allowed",
+        "registry_credentials_allowed",
+        "cleanup_attempts_required",
+        "image_cache_cleanup_authorized"
+      ],
+      "properties": {
+        "template_reference": {
+          "const": "./anonymous-docker-config.template.v0.1.json"
+        },
+        "template_sha256": {
+          "const": "e58c7564b64e92c6c8ebc3cb296e644b4f2409ace8882621e888924c0c598753"
+        },
+        "temporary_directories_max": {"const": 1},
+        "template_copies_max": {"const": 1},
+        "global_docker_config_reads_max": {"const": 1},
+        "global_docker_config_writes_max": {"const": 0},
+        "credential_store_allowed": {"const": false},
+        "credential_helpers_allowed": {"const": false},
+        "registry_credentials_allowed": {"const": false},
+        "cleanup_attempts_required": {"const": 1},
+        "image_cache_cleanup_authorized": {"const": false}
+      }
+    },
+    "platform_lanes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"$ref": "#/$defs/platform311"},
+        {"$ref": "#/$defs/platform314"}
+      ],
+      "items": false
+    },
+    "agent_review_lanes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"$ref": "#/$defs/qianfanLane"},
+        {"$ref": "#/$defs/qwenLane"}
+      ],
+      "items": false
+    },
+    "authorization_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "container_runtime_starts_max",
+        "image_pull_attempts_max",
+        "container_runs_max",
+        "agent_model_requests_max",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "json_repair_max",
+        "target_network_calls_max",
+        "target_writes_max",
+        "p1_or_p2_executions_max",
+        "provider_binding_actions_max",
+        "release_actions_max"
+      ],
+      "properties": {
+        "container_runtime_starts_max": {"const": 1},
+        "image_pull_attempts_max": {"const": 2},
+        "container_runs_max": {"const": 2},
+        "agent_model_requests_max": {"const": 2},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "model_substitution_max": {"const": 0},
+        "json_repair_max": {"const": 0},
+        "target_network_calls_max": {"const": 0},
+        "target_writes_max": {"const": 0},
+        "p1_or_p2_executions_max": {"const": 0},
+        "provider_binding_actions_max": {"const": 0},
+        "release_actions_max": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_created",
+        "decision_created",
+        "execution_authorized",
+        "global_docker_config_changed",
+        "target_changed",
+        "platform_validation_executed",
+        "agent_review_executed",
+        "formal_human_security_review_complete",
+        "provider_supported",
+        "contract_adopted_as_standard",
+        "release_authorized",
+        "standard_ready"
+      ],
+      "properties": {
+        "recommendation_created": {"const": true},
+        "decision_created": {"const": false},
+        "execution_authorized": {"const": false},
+        "global_docker_config_changed": {"const": false},
+        "target_changed": {"const": false},
+        "platform_validation_executed": {"const": false},
+        "agent_review_executed": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "provider_supported": {"const": false},
+        "contract_adopted_as_standard": {"const": false},
+        "release_authorized": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "pre68Failure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "result_commit",
+        "result_reference",
+        "result_sha256",
+        "receipt_reference",
+        "receipt_sha256",
+        "first_failure",
+        "image_pull_successes",
+        "container_runs",
+        "agent_model_requests"
+      ],
+      "properties": {
+        "result_commit": {
+          "const": "040497ee33db3522d13be0a7c4ef37defa3b388c"
+        },
+        "result_reference": {
+          "const": "../commercialization-standards-p0-security-and-platform-validation/PRE-68-P0-SECURITY-AND-PLATFORM-VALIDATION-RESULT-v0.1.md"
+        },
+        "result_sha256": {
+          "const": "aad363724a8c43bff1d264e7da37b5ebd65d764527975c92502505916de7229a"
+        },
+        "receipt_reference": {
+          "const": "../commercialization-standards-p0-security-and-platform-validation/execution-receipt.v0.1.json"
+        },
+        "receipt_sha256": {
+          "const": "2233327af50a77cbd18830076ad2cd1890ae375d8ea43c9b25e4e9736d44e7c5"
+        },
+        "first_failure": {
+          "const": "DOCKER_CREDENTIAL_HELPER_EXECUTABLE_NOT_FOUND"
+        },
+        "image_pull_successes": {"const": 0},
+        "container_runs": {"const": 0},
+        "agent_model_requests": {"const": 0}
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "branch",
+        "commit",
+        "pre68_scope_reference",
+        "pre68_scope_sha256",
+        "review_input_hashes_expected",
+        "writes_max"
+      ],
+      "properties": {
+        "repository": {"const": "joy7758/titmas-integrations"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "commit": {
+          "const": "0030077f29c37145a306b72e7083345eb76b504a"
+        },
+        "pre68_scope_reference": {
+          "const": "../commercialization-standards-p0-security-and-platform-scope/pre68-security-and-platform-scope.v0.1.json"
+        },
+        "pre68_scope_sha256": {
+          "const": "c1706e8d6d4cca6f8dfe140096c0d41534370f6ed9e7398e388be5f34bb5b07d"
+        },
+        "review_input_hashes_expected": {"const": 10},
+        "writes_max": {"const": 0}
+      }
+    },
+    "platform311": {
+      "const": {
+        "environment_id": "PFM-LINUX-311-R1",
+        "image": "docker.io/library/python@sha256:28255a3ace7eb4c48bc1b57b90af29e1bc82b4fd6c60614a8e3dce61b87ff941",
+        "platform": "linux/amd64",
+        "network": "none"
+      }
+    },
+    "platform314": {
+      "const": {
+        "environment_id": "PFM-LINUX-314-R1",
+        "image": "docker.io/library/python@sha256:f70215e5dbe2a47dee6d23f9c6d358bf3c148f59cce2fd165b61118e9d80f2bb",
+        "platform": "linux/amd64",
+        "network": "none"
+      }
+    },
+    "qianfanLane": {
+      "const": {
+        "session_id": "PRE69-QF-SECURITY-01",
+        "provider": "BAIDU_QIANFAN",
+        "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+        "model": "ernie-4.5-turbo-20260402",
+        "credential_identifier": "QIANFAN_API_KEY"
+      }
+    },
+    "qwenLane": {
+      "const": {
+        "session_id": "PRE69-QWEN-SECURITY-02",
+        "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+        "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+        "model": "qwen3.7-plus",
+        "credential_identifier": "DASHSCOPE_API_KEY"
+      }
+    }
+  }
+}
