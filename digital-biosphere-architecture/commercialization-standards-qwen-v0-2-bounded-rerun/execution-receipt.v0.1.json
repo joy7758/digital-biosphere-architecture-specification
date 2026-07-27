@@ -1,0 +1,83 @@
+{
+  "$schema": "./execution-receipt.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-60-QWEN3-7-PLUS-V0-2-BOUNDED-RERUN-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_3_OF_3_V0_2",
+  "completed_at": "2026-07-27T09:31:49+08:00",
+  "artifact_count_bound": 8,
+  "artifacts": [
+    {
+      "path": "PRE-60-QWEN3-7-PLUS-V0-2-BOUNDED-RERUN-RESULT-v0.1.md",
+      "sha256": "04390343a3ab55da0fd2591c77a94c4eb379f8f55ed613dbd69a3210f9816cde"
+    },
+    {
+      "path": "execution-receipt.schema.v0.1.json",
+      "sha256": "25c23318c56cfdced7514f6ec689746800a60fbc3f187093d93fa8b8e81a50f4"
+    },
+    {
+      "path": "negative-cases.schema.v0.1.json",
+      "sha256": "59833caa4ce8fbe14f28ef5994441c7d6a4386362216349d8be0a775285890c8"
+    },
+    {
+      "path": "negative-cases.v0.1.json",
+      "sha256": "bba68d588a5274ff03ac56fe86aaeb2f28b06dfd81631aba189f5667e129c448"
+    },
+    {
+      "path": "rerun-plan.schema.v0.1.json",
+      "sha256": "7168eb6b59e44c6c84985d36f77a2d783e120cb813486049f3aa890c8d41efd4"
+    },
+    {
+      "path": "rerun-plan.v0.1.json",
+      "sha256": "ddeb8795c0845a37c98c074be34be30cd8e0f9d3acae386f0b6da90adbc5f4ea"
+    },
+    {
+      "path": "sanitized-session-results.schema.v0.1.json",
+      "sha256": "f1821ac001b1d795f1dd96a865fe4ffc669bb65cf390a83ad21c60fef98bce31"
+    },
+    {
+      "path": "sanitized-session-results.v0.1.json",
+      "sha256": "c750f97fc294dc3d1d37fff3bb2a9222ecae5d7b45e84b68cd06bbc06d7c5fcc"
+    }
+  ],
+  "session_counts": {
+    "authorized": 3,
+    "executed": 3,
+    "passed": 3,
+    "failed": 0,
+    "not_executed": 0
+  },
+  "contract_counts": {
+    "http_2xx": 3,
+    "outer_json": 3,
+    "direct_json": 3,
+    "schema_pass": 3,
+    "request_id_match": 3,
+    "exact_model_match": 3,
+    "boundary_match": 3,
+    "negative_cases_rejected": 5,
+    "retry_fallback_substitution_extraction_repair": 0
+  },
+  "classification": {
+    "provider_connected": true,
+    "successfully_direct_tested": true,
+    "independent_provider_candidate": true,
+    "provider_supported": false,
+    "provider_integrated": false,
+    "security_review_completed": false
+  },
+  "effects": {
+    "provider_support_created": false,
+    "provider_integration_created": false,
+    "security_review_completed": false,
+    "implementation_authorized": false,
+    "release_authorized": false,
+    "production_readiness_created": false,
+    "customer_evidence_created": false,
+    "certification_created": false,
+    "sla_created": false,
+    "authority_created": false,
+    "permission_created": false,
+    "standard_ready": false
+  },
+  "next_action": "FORM_MULTI_PROVIDER_SECURITY_REVIEW_PREFLIGHT_RECOMMENDATION"
+}

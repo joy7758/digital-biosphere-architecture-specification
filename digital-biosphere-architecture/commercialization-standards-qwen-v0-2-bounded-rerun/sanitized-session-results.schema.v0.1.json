@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre60-qwen-v0-2-sanitized-session-results.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "executed_at",
+    "provider",
+    "endpoint_reference",
+    "requested_model",
+    "credential_identifier",
+    "credential_value_recorded",
+    "local_raw_capture_sha256",
+    "sessions_authorized",
+    "sessions_executed",
+    "sessions_passed",
+    "sessions_failed",
+    "sessions_not_executed_fail_closed",
+    "retry_fallback_substitution_extraction_repair_attempts",
+    "sessions",
+    "status"
+  ],
+  "properties": {
+    "$schema": {"const": "./sanitized-session-results.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-60-QWEN3-7-PLUS-V0-2-SANITIZED-SESSION-RESULTS-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+    "endpoint_reference": {"const": "FROZEN_PLAN"},
+    "requested_model": {"const": "qwen3.7-plus"},
+    "credential_identifier": {"const": "DASHSCOPE_API_KEY"},
+    "credential_value_recorded": {"const": false},
+    "local_raw_capture_sha256": {
+      "const": "cf0ba75c7f5e752c297603ca72a7885dc82832d73b8fa29d70f15ed68ffe3f60"
+    },
+    "sessions_authorized": {"const": 3},
+    "sessions_executed": {"const": 3},
+    "sessions_passed": {"const": 3},
+    "sessions_failed": {"const": 0},
+    "sessions_not_executed_fail_closed": {"const": 0},
+    "retry_fallback_substitution_extraction_repair_attempts": {"const": 0},
+    "sessions": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {"$ref": "#/$defs/session"}
+    },
+    "status": {"const": "PASS_3_OF_3_V0_2"}
+  },
+  "$defs": {
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "status",
+        "http_status",
+        "elapsed_ms",
+        "outer_json",
+        "direct_json",
+        "schema_valid",
+        "request_id_match",
+        "returned_model",
+        "exact_returned_model_match",
+        "expected_boundary_values_match",
+        "credential_value_recorded",
+        "provider_error_code",
+        "response"
+      ],
+      "properties": {
+        "session_id": {"pattern": "^QWEN37-ONBOARD-0[1-3]$"},
+        "status": {"const": "PASS"},
+        "http_status": {"const": 200},
+        "elapsed_ms": {"type": "integer", "minimum": 0},
+        "outer_json": {"const": true},
+        "direct_json": {"const": true},
+        "schema_valid": {"const": true},
+        "request_id_match": {"const": true},
+        "returned_model": {"const": "qwen3.7-plus"},
+        "exact_returned_model_match": {"const": true},
+        "expected_boundary_values_match": {"const": true},
+        "credential_value_recorded": {"const": false},
+        "provider_error_code": {"type": "null"},
+        "response": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "request_id",
+            "provider_fit",
+            "evidence_is_truth",
+            "recommendation_is_decision",
+            "evaluation_is_authority",
+            "credential_means_connected",
+            "authority_claimed",
+            "would_recommend_to_agent_developer",
+            "reason"
+          ],
+          "properties": {
+            "request_id": {"pattern": "^QWEN37-ONBOARD-0[1-3]$"},
+            "provider_fit": {
+              "enum": ["SUITABLE", "CONDITIONAL", "NOT_SUITABLE"]
+            },
+            "evidence_is_truth": {"const": false},
+            "recommendation_is_decision": {"const": false},
+            "evaluation_is_authority": {"const": false},
+            "credential_means_connected": {"const": false},
+            "authority_claimed": {"const": false},
+            "would_recommend_to_agent_developer": {"type": "boolean"},
+            "reason": {"type": "string", "minLength": 1, "maxLength": 1000}
+          }
+        }
+      }
+    }
+  }
+}
