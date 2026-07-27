@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_60_QWEN_V0_2_RERUN_PASS_3_OF_3_SECURITY_PREFLIGHT_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_61_MULTI_PROVIDER_SECURITY_PREFLIGHT_PASS_20_OF_20_LIVE_REVIEW_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "CS-D02-PRE-60"},
+        "last_completed_step": {"const": "CS-D02-PRE-61"},
         "last_completed_result": {
-          "const": "PASS_3_OF_3_V0_2"
+          "const": "PASS_20_OF_20_OFFLINE_PREFLIGHT_DESIGN"
         },
         "direct_evidence_reference": {
-          "const": "commercialization-standards-qwen-v0-2-bounded-rerun/PRE-60-QWEN3-7-PLUS-V0-2-BOUNDED-RERUN-RESULT-v0.1.md"
+          "const": "commercialization-standards-multi-provider-security-review-preflight/PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-RESULT-v0.1.md"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,7 +131,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "FORM_MULTI_PROVIDER_SECURITY_REVIEW_PREFLIGHT_RECOMMENDATION"
+          "const": "FORM_EXACT_LIVE_MULTI_PROVIDER_SECURITY_REVIEW_RECOMMENDATION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE60_QWEN_V0_2_RERUN_PASS_3_OF_3_SECURITY_PREFLIGHT_RECOMMENDATION_REQUIRED"
+          "const": "PRE61_MULTI_PROVIDER_SECURITY_PREFLIGHT_PASS_20_OF_20_LIVE_REVIEW_RECOMMENDATION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -5445,6 +5445,28 @@
             "pre60_schema_passes",
             "pre60_negative_cases_rejected",
             "pre60_retry_fallback_substitution_extraction_repair_attempts",
+            "pre61_recommendation_reference",
+            "pre61_recommendation_sha256",
+            "pre61_recommendation_commit",
+            "pre61_decision_reference",
+            "pre61_decision_sha256",
+            "pre61_decision_commit",
+            "pre61_plan_sha256",
+            "pre61_role_bindings_sha256",
+            "pre61_input_manifest_sha256",
+            "pre61_validation_sha256",
+            "pre61_result_reference",
+            "pre61_result_sha256",
+            "pre61_execution_receipt_sha256",
+            "pre61_result_commit",
+            "pre61_result",
+            "pre61_checks_required",
+            "pre61_checks_passed",
+            "pre61_input_hashes_matched",
+            "pre61_provider_paths_distinct",
+            "pre61_network_requests",
+            "pre61_live_model_requests",
+            "pre61_credential_reads",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5490,6 +5512,9 @@
             "pre52_offline_remediation_executed",
             "pre52_offline_remediation_pass",
             "multi_provider_preflight_recommendation_allowed",
+            "multi_provider_preflight_executed",
+            "multi_provider_preflight_pass",
+            "live_security_review_recommendation_allowed",
             "qianfan_exact_model_binding_required",
             "security_reviewer_exact_binding_required",
             "pre53_china_provider_benchmark_executed",
@@ -6840,6 +6865,58 @@
             "pre60_schema_passes": {"const": 3},
             "pre60_negative_cases_rejected": {"const": 5},
             "pre60_retry_fallback_substitution_extraction_repair_attempts": {"const": 0},
+            "pre61_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-RECOMMENDATION-v0.1.md"
+            },
+            "pre61_recommendation_sha256": {
+              "const": "cbabc53ef961ba48a4d0a5e1bd43b162fdd5957d13eac7e72182805bcaeda8d4"
+            },
+            "pre61_recommendation_commit": {
+              "const": "1ab47b2f6b5f952351d3585b3b2d35c21014f3a9"
+            },
+            "pre61_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-DECISION-RECORD.v0.1.json"
+            },
+            "pre61_decision_sha256": {
+              "const": "0490e98027990c3e5afcc845c3cf1b85dc7a96befda298109154c08e5ce6f838"
+            },
+            "pre61_decision_commit": {
+              "const": "95c6616098c44d3f89c0817fe2e818e0ba5f7190"
+            },
+            "pre61_plan_sha256": {
+              "const": "4e5f75ab6c03761ab11e9a7e57c100c67ea6c2e07bb4d5b1ddfbbd61f81641c7"
+            },
+            "pre61_role_bindings_sha256": {
+              "const": "8053ef9f214e4fbd573efefd91deb29a17bcfba7cf338728132c04e16a699a83"
+            },
+            "pre61_input_manifest_sha256": {
+              "const": "6c54468348e29e51b5ec1a872b8943f7b8eebf921aafea7b0ce596742bd2b78f"
+            },
+            "pre61_validation_sha256": {
+              "const": "e41d9672df2395c6ec19bda48ef30b499de10267129c8f6dbe34d51f1868369c"
+            },
+            "pre61_result_reference": {
+              "const": "commercialization-standards-multi-provider-security-review-preflight/PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-RESULT-v0.1.md"
+            },
+            "pre61_result_sha256": {
+              "const": "458595dbe5fc87d80a8e8238cc5248a4a73d1842a00c8efd3159f54c971ecd3e"
+            },
+            "pre61_execution_receipt_sha256": {
+              "const": "85334d27fae6a5b67f71256760dca0e7707aea7596e401b4fb2d487ff85f3736"
+            },
+            "pre61_result_commit": {
+              "const": "2313c05d976e1c11b33cf63c296bb8911befd7bc"
+            },
+            "pre61_result": {
+              "const": "PASS_20_OF_20_OFFLINE_PREFLIGHT_DESIGN"
+            },
+            "pre61_checks_required": {"const": 20},
+            "pre61_checks_passed": {"const": 20},
+            "pre61_input_hashes_matched": {"const": 7},
+            "pre61_provider_paths_distinct": {"const": 3},
+            "pre61_network_requests": {"const": 0},
+            "pre61_live_model_requests": {"const": 0},
+            "pre61_credential_reads": {"const": 0},
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -6973,6 +7050,15 @@
               "const": true
             },
             "multi_provider_preflight_recommendation_allowed": {
+              "const": false
+            },
+            "multi_provider_preflight_executed": {
+              "const": true
+            },
+            "multi_provider_preflight_pass": {
+              "const": true
+            },
+            "live_security_review_recommendation_allowed": {
               "const": true
             },
             "qianfan_exact_model_binding_required": {
@@ -7098,7 +7184,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_MULTI_PROVIDER_SECURITY_REVIEW_PREFLIGHT_RECOMMENDATION"
+          "const": "FORM_EXACT_LIVE_MULTI_PROVIDER_SECURITY_REVIEW_RECOMMENDATION"
         },
         "decision_ready": {
           "const": false
