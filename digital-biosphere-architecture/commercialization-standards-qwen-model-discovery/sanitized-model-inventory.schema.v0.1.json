@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre56-qwen-sanitized-model-inventory.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "executed_at",
+    "started_at",
+    "provider",
+    "endpoint_reference",
+    "method",
+    "credential_identifier",
+    "credential_value_recorded",
+    "requests_authorized",
+    "requests_executed",
+    "model_inference_requests_executed",
+    "http_status",
+    "elapsed_ms",
+    "http_2xx",
+    "outer_json_object",
+    "data_array",
+    "model_ids_total",
+    "model_ids_retained",
+    "truncated",
+    "model_ids",
+    "raw_response_sha256",
+    "secret_scan_pass",
+    "provider_error_code",
+    "error_class",
+    "retry_fallback_alternate_endpoint_scraping_guessing_attempts",
+    "status"
+  ],
+  "properties": {
+    "$schema": {"const": "./sanitized-model-inventory.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-56-QWEN-SANITIZED-MODEL-INVENTORY-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+    "endpoint_reference": {"const": "FROZEN_PLAN"},
+    "method": {"const": "GET"},
+    "credential_identifier": {"const": "DASHSCOPE_API_KEY"},
+    "credential_value_recorded": {"const": false},
+    "requests_authorized": {"const": 1},
+    "requests_executed": {"const": 1},
+    "model_inference_requests_executed": {"const": 0},
+    "http_status": {"const": 200},
+    "elapsed_ms": {"type": "integer", "minimum": 0},
+    "http_2xx": {"const": true},
+    "outer_json_object": {"const": true},
+    "data_array": {"const": true},
+    "model_ids_total": {"const": 8},
+    "model_ids_retained": {"const": 8},
+    "truncated": {"const": false},
+    "model_ids": {
+      "const": [
+        "deepseek-v4-pro",
+        "glm-5.2",
+        "qwen3.6-flash",
+        "qwen3.7-max",
+        "qwen3.7-plus",
+        "qwen3.8-max-preview",
+        "wan2.7-image",
+        "wan2.7-image-pro"
+      ]
+    },
+    "raw_response_sha256": {
+      "const": "53688ab101d5f0460b41ee5315b34f6c94ae619e88d4fc0648d7e35d27d573af"
+    },
+    "secret_scan_pass": {"const": true},
+    "provider_error_code": {"type": "null"},
+    "error_class": {"type": "null"},
+    "retry_fallback_alternate_endpoint_scraping_guessing_attempts": {"const": 0},
+    "status": {"const": "PASS_READ_ONLY_MODEL_DISCOVERY"}
+  }
+}
