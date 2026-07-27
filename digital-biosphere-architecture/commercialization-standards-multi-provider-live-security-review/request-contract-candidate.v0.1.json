@@ -1,0 +1,101 @@
+{
+  "$schema": "./request-contract-candidate.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-62-MULTI-PROVIDER-LIVE-SECURITY-REVIEW-REQUEST-CONTRACT-CANDIDATE-0.1",
+  "version": "0.1.0",
+  "status": "CANDIDATE_FOR_PRE62_DECISION_NOT_AUTHORIZED",
+  "pre61_result_reference": "../commercialization-standards-multi-provider-security-review-preflight/PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-RESULT-v0.1.md",
+  "pre61_result_sha256": "458595dbe5fc87d80a8e8238cc5248a4a73d1842a00c8efd3159f54c971ecd3e",
+  "pre61_result_commit": "2313c05d976e1c11b33cf63c296bb8911befd7bc",
+  "bindings": [
+    {
+      "binding_id": "QIANFAN_ERNIE_INTEGRATION_REVIEW",
+      "provider": "QIANFAN",
+      "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+      "model": "ernie-4.5-turbo-20260402",
+      "credential_identifier": "QIANFAN_API_KEY"
+    },
+    {
+      "binding_id": "ALIBABA_QWEN_SECURITY_REVIEW",
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "model": "qwen3.7-plus",
+      "credential_identifier": "DASHSCOPE_API_KEY"
+    }
+  ],
+  "sessions": [
+    {
+      "sequence": 1,
+      "session_id": "PRE62-QF-INTEGRATION-01",
+      "binding_id": "QIANFAN_ERNIE_INTEGRATION_REVIEW",
+      "review_role": "INTEGRATION_MAINTAINER_CANDIDATE",
+      "prompt_text": "Return exactly one JSON object and no Markdown. Use exactly these keys: request_id, review_role, verdict, p0_dns_observability_unresolved, provider_support_created, security_review_completed, implementation_authorized, authority_claimed, blocking_findings, required_controls, reason. Set request_id to PRE62-QF-INTEGRATION-01 and review_role to INTEGRATION_MAINTAINER_CANDIDATE. verdict must be READY_FOR_AUTHORIZATION, REVISE, or BLOCKED. Review this public-safe candidate: a DeepSeek OpenAI-compatible binding uses exact model deepseek-v4-pro, synchronous httpcore 1.0.9, stream=false, thinking disabled, JSON-object output, finite connect/write/read/total limits, capped request and response sizes, no retry, fallback, substitution, repair, redirect, proxy, raw body retention, prompt retention, credential retention, or hidden reasoning request. Current P0 DNS observability cannot be separated from TCP using the candidate transport and must remain unresolved. Evidence is not Truth; review is not Decision; evaluation is not Authority. Set p0_dns_observability_unresolved=true. Set provider_support_created, security_review_completed, implementation_authorized, and authority_claimed to false. blocking_findings and required_controls must each be an array of one to eight concise strings. reason must be one concise non-empty string. This is AI-assisted integration review input only.",
+      "prompt_sha256": "5c627334ece80374782f8ae3f6c6a71cbbc2e368cbf06f83b8a0bbd6601da482",
+      "prompt_utf8_bytes": 1390
+    },
+    {
+      "sequence": 2,
+      "session_id": "PRE62-QWEN-SECURITY-01",
+      "binding_id": "ALIBABA_QWEN_SECURITY_REVIEW",
+      "review_role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE",
+      "prompt_text": "Return exactly one JSON object and no Markdown. Use exactly these keys: request_id, review_role, verdict, p0_dns_observability_unresolved, provider_support_created, security_review_completed, implementation_authorized, authority_claimed, blocking_findings, required_controls, reason. Set request_id to PRE62-QWEN-SECURITY-01 and review_role to INDEPENDENT_SECURITY_REVIEWER_CANDIDATE. verdict must be READY_FOR_AUTHORIZATION, REVISE, or BLOCKED. Review this public-safe candidate independently: a DeepSeek OpenAI-compatible binding uses exact model deepseek-v4-pro, synchronous httpcore 1.0.9, stream=false, thinking disabled, JSON-object output, finite connect/write/read/total limits, capped request and response sizes, no retry, fallback, substitution, repair, redirect, proxy, raw body retention, prompt retention, credential retention, or hidden reasoning request. Current P0 DNS observability cannot be separated from TCP using the candidate transport and must remain unresolved. Identify security risks and required controls for credentials, network path, response-size enforcement, sanitized failures, supply chain, evidence non-elevation, and incident handling. Evidence is not Truth; review is not Decision; evaluation is not Authority. Set p0_dns_observability_unresolved=true. Set provider_support_created, security_review_completed, implementation_authorized, and authority_claimed to false. blocking_findings and required_controls must each be an array of one to eight concise strings. reason must be one concise non-empty string. This is AI-assisted security review input only, not a formal Human Security Review.",
+      "prompt_sha256": "1608662d638409c1ce7a3d1ac8ac701482688ca4e55136b597fe8e9643e573d1",
+      "prompt_utf8_bytes": 1628
+    }
+  ],
+  "response_contract": {
+    "required_keys": [
+      "request_id",
+      "review_role",
+      "verdict",
+      "p0_dns_observability_unresolved",
+      "provider_support_created",
+      "security_review_completed",
+      "implementation_authorized",
+      "authority_claimed",
+      "blocking_findings",
+      "required_controls",
+      "reason"
+    ],
+    "verdict_values": [
+      "READY_FOR_AUTHORIZATION",
+      "REVISE",
+      "BLOCKED"
+    ],
+    "review_role_values": [
+      "INTEGRATION_MAINTAINER_CANDIDATE",
+      "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"
+    ],
+    "p0_dns_observability_unresolved": true,
+    "boundary_false_keys": [
+      "provider_support_created",
+      "security_review_completed",
+      "implementation_authorized",
+      "authority_claimed"
+    ],
+    "additional_properties_allowed": false
+  },
+  "execution_policy": {
+    "sequential": true,
+    "concurrency_max": 1,
+    "timeout_seconds": 60,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "model_substitution_max": 0,
+    "content_extraction_max": 0,
+    "json_repair_max": 0,
+    "raw_hidden_reasoning_requested": false,
+    "stop_after_failed_prerequisite_session": true
+  },
+  "interpretation": {
+    "agent_review_is_formal_human_security_review": false,
+    "agent_review_is_provider_support": false,
+    "agent_review_is_provider_integration": false,
+    "agent_review_is_certification": false,
+    "agent_review_is_customer_evidence": false,
+    "agent_review_is_production_readiness": false,
+    "verdict_is_governance_decision": false,
+    "schema_pass_is_standard_conformance": false,
+    "provider_independence_is_correctness": false,
+    "security_review_completed": false
+  }
+}
