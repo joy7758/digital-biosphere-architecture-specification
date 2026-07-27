@@ -1,0 +1,94 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre74-offline-schema-failure-diagnostic-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-74-OFFLINE-SCHEMA-FAILURE-DIAGNOSTIC-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_NOT_EXECUTED",
+  "decision_id": "CS-D02-PRE-74",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "standing_directive_artifact": "TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.json",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-74-OFFLINE-SCHEMA-FAILURE-DIAGNOSTIC-AND-SANITIZED-FAILURE-DETAIL-CAPTURE-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "8d6410abc97271cd1970230774b07876ce19f6c24219b2c35637a200414a810b",
+  "decision_result": "AUTHORIZE_PRE74_OFFLINE_RESPONSE_CONTRACT_TRANSMISSION_GAP_DIAGNOSTIC_AND_SANITIZED_FAILURE_DETAIL_CAPTURE_DESIGN",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-27T15:54:22+08:00",
+  "executed_by": "CODEX_AFTER_REMOTE_DECISION_VALIDATION",
+  "primary_repository": "digital-biosphere-architecture",
+  "authorization_baseline_commit": "a79adbf625e1979475e8d404bba8355ebfbe5a4a",
+  "target_refs": [
+    {
+      "path": "commercialization-standards-pre74-schema-failure-diagnostic/pre74-offline-diagnostic-scope.v0.1.json",
+      "sha256": "dfb8fdb2d8d209272fcb330a4118053183800b4e98e1cd523abb51719782aab3"
+    },
+    {
+      "path": "commercialization-standards-pre74-schema-failure-diagnostic/pre74-contract-transmission-coverage-observation.v0.1.json",
+      "sha256": "6209253737c1842b1042d08256e4d9d47db6bed5fbb55aeb6cdf287ec47a4774"
+    }
+  ],
+  "preconditions": {
+    "canonical_recommendation_present": true,
+    "single_exact_action_present": true,
+    "primary_repository_target_and_scope_explicit": true,
+    "input_hashes_match": "6/6",
+    "scope_schema_pass": true,
+    "coverage_observation_schema_pass": true,
+    "contract_transmission_gap_proven": true,
+    "exact_schema_failure_cause_proven": false,
+    "pre73_live_retry_allowed": false,
+    "standing_directive_active": true,
+    "later_conflicting_human_decision_found": false
+  },
+  "scope": {
+    "authorized_outputs": [
+      "RESPONSE_CONTRACT_TRANSMISSION_MAP",
+      "SANITIZED_FAILURE_DETAIL_CAPTURE_CONTRACT",
+      "SYNTHETIC_VALIDATION_FAILURE_FIXTURES",
+      "OFFLINE_DIAGNOSTIC_RESULT",
+      "EXECUTION_RECEIPT"
+    ],
+    "input_hashes_required": "6/6",
+    "synthetic_cases_minimum": 12,
+    "network_requests_max": 0,
+    "live_model_requests_max": 0,
+    "credential_value_reads_max": 0,
+    "raw_provider_response_reads_max": 0,
+    "target_repository_writes_max": 0,
+    "dbos_writes_max": 0,
+    "saee_writes_max": 0,
+    "request_revision_adoptions_max": 0,
+    "response_schema_changes_max": 0,
+    "live_retries_max": 0
+  },
+  "false_effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "implementation_authorized": false,
+    "request_revision_adopted": false,
+    "response_schema_changed": false,
+    "live_retry_authorized": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false,
+    "production_ready": false
+  },
+  "stop_conditions": [
+    "AUTHORIZATION_BASELINE_OR_SCOPE_MISMATCH",
+    "ANY_INPUT_HASH_DRIFT",
+    "ANY_NETWORK_MODEL_OR_CREDENTIAL_ACTION",
+    "ANY_RAW_PROVIDER_RESPONSE_REQUEST_SOURCE_OR_SECRET_READ",
+    "ANY_RAW_ERROR_MESSAGE_OR_OFFENDING_VALUE_PERSISTENCE",
+    "ANY_TARGET_DBOS_OR_SAEE_WRITE",
+    "ANY_REQUEST_REVISION_OR_RESPONSE_SCHEMA_ADOPTION",
+    "ANY_LIVE_RETRY_OR_PROVIDER_REQUEST",
+    "ANY_FORMAL_REVIEW_PROVIDER_CONFORMANCE_STANDARD_OR_RELEASE_OVERCLAIM"
+  ],
+  "execution_receipt": "commercialization-standards-pre74-schema-failure-diagnostic/pre74-execution-receipt.v0.1.json",
+  "result": "AUTHORIZED_NOT_EXECUTED",
+  "known_limitations": [
+    "CONTRACT_TRANSMISSION_GAP_IS_NOT_THE_PROVEN_EXACT_SCHEMA_FAILURE_CAUSE",
+    "NO_PRE73_RAW_RESPONSE_OR_EXACT_VALIDATION_PATH_IS_AVAILABLE",
+    "SYNTHETIC_DIAGNOSTIC_WILL_NOT_VALIDATE_PROVIDER_RUNTIME_BEHAVIOR",
+    "OFFLINE_PASS_WILL_NOT_AUTHORIZE_A_LIVE_RETRY"
+  ]
+}
