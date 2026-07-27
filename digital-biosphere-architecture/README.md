@@ -581,6 +581,12 @@ paths。其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-ATOMIC-GOVERNANCE-IN
 得到 curl `0`、HTTP `200`、`RECOMMENDED`、Option A、confidence `0.95`、0
 blocker/correction。下一步只允许验证新的 canonical + governance merge tree；replacement
 Draft PR、PR #22 closure 和 merge 仍分别需要独立 Decision。
+[Immutable candidate Recommendation](TITMAS-CE-G11B-IMMUTABLE-CANDIDATE-EXTERNAL-ATTESTATION-RECOMMENDATION-v0.1.md)
+解决“结果提交后 candidate SHA 再次变化”的验证自引用问题：Validation Decision
+作为 candidate 最后一个 commit，Result/Report 写入 distinct evidence ref 并通过 SHA
+绑定。其 [qwen3.7-max review](TITMAS-CE-G11B-IMMUTABLE-CANDIDATE-EXTERNAL-ATTESTATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 curl `0`、HTTP `200`、`RECOMMENDED`、Option A、confidence `0.95`、0
+blocker/correction。下一步只允许建立最终 candidate Validation Decision。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
