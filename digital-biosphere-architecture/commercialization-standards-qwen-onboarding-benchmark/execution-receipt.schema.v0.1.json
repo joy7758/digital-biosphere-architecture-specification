@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre55-qwen-onboarding-execution-receipt.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "completed_at",
+    "artifact_count_bound",
+    "artifacts",
+    "request_counts",
+    "effects",
+    "next_action"
+  ],
+  "properties": {
+    "$schema": {"const": "./execution-receipt.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-55-QWEN-ONBOARDING-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FAIL_CLOSED_MODEL_NOT_FOUND"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "artifact_count_bound": {"const": 8},
+    "artifacts": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "request_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorized",
+        "executed",
+        "passed",
+        "failed",
+        "not_executed_fail_closed",
+        "retry",
+        "fallback",
+        "model_substitution",
+        "content_extraction",
+        "json_repair"
+      ],
+      "properties": {
+        "authorized": {"const": 3},
+        "executed": {"const": 1},
+        "passed": {"const": 0},
+        "failed": {"const": 1},
+        "not_executed_fail_closed": {"const": 2},
+        "retry": {"const": 0},
+        "fallback": {"const": 0},
+        "model_substitution": {"const": 0},
+        "content_extraction": {"const": 0},
+        "json_repair": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": {"const": false}
+    },
+    "next_action": {
+      "const": "FORM_EXACT_READ_ONLY_MODEL_DISCOVERY_RECOMMENDATION"
+    }
+  }
+}

@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre55-qwen-onboarding-sanitized-session-results.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "executed_at",
+    "provider",
+    "endpoint_reference",
+    "model",
+    "credential_identifier",
+    "credential_value_recorded",
+    "requests_authorized",
+    "requests_executed",
+    "requests_passed",
+    "requests_failed",
+    "requests_not_executed_fail_closed",
+    "retry_fallback_substitution_extraction_repair_attempts",
+    "status",
+    "sessions"
+  ],
+  "properties": {
+    "$schema": {"const": "./sanitized-session-results.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-55-QWEN-ONBOARDING-SANITIZED-RESULTS-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+    "endpoint_reference": {"const": "FROZEN_PLAN"},
+    "model": {"const": "qwen3.7-plus-2026-05-26"},
+    "credential_identifier": {"const": "DASHSCOPE_API_KEY"},
+    "credential_value_recorded": {"const": false},
+    "requests_authorized": {"const": 3},
+    "requests_executed": {"const": 1},
+    "requests_passed": {"const": 0},
+    "requests_failed": {"const": 1},
+    "requests_not_executed_fail_closed": {"const": 2},
+    "retry_fallback_substitution_extraction_repair_attempts": {"const": 0},
+    "status": {"const": "FAIL_CLOSED_MODEL_NOT_FOUND"},
+    "sessions": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sequence",
+          "session_id",
+          "executed",
+          "status",
+          "requested_model",
+          "returned_model",
+          "http_status",
+          "elapsed_ms",
+          "transport_completed",
+          "outer_json_parse_pass",
+          "content_present",
+          "direct_json_parse_pass",
+          "schema_pass",
+          "expected_boundary_values_pass",
+          "exact_returned_model_match",
+          "provider_fit",
+          "would_recommend_to_agent_developer",
+          "authority_claimed",
+          "reason_sha256",
+          "reason_utf8_bytes",
+          "raw_response_sha256",
+          "error_class",
+          "provider_error_code",
+          "provider_error_message_class"
+        ],
+        "properties": {
+          "sequence": {"type": "integer", "minimum": 1, "maximum": 3},
+          "session_id": {"pattern": "^QWEN-ONBOARD-0[1-3]$"},
+          "executed": {"type": "boolean"},
+          "status": {"enum": ["PASS", "FAIL", "NOT_EXECUTED_FAIL_CLOSED"]},
+          "started_at": {"type": "string", "format": "date-time"},
+          "completed_at": {"type": "string", "format": "date-time"},
+          "requested_model": {"const": "qwen3.7-plus-2026-05-26"},
+          "returned_model": {"type": ["string", "null"]},
+          "http_status": {"type": ["integer", "null"]},
+          "elapsed_ms": {"type": ["integer", "null"], "minimum": 0},
+          "transport_completed": {"type": "boolean"},
+          "outer_json_parse_pass": {"type": "boolean"},
+          "content_present": {"type": "boolean"},
+          "direct_json_parse_pass": {"type": "boolean"},
+          "schema_pass": {"type": "boolean"},
+          "expected_boundary_values_pass": {"type": "boolean"},
+          "exact_returned_model_match": {"type": "boolean"},
+          "provider_fit": {
+            "type": ["string", "null"],
+            "enum": ["SUITABLE", "CONDITIONAL", "NOT_SUITABLE", null]
+          },
+          "would_recommend_to_agent_developer": {"type": ["boolean", "null"]},
+          "authority_claimed": {"type": ["boolean", "null"]},
+          "reason_sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "reason_utf8_bytes": {"type": "integer", "minimum": 0},
+          "raw_response_sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "error_class": {"type": ["string", "null"]},
+          "provider_error_code": {"type": ["string", "null"]},
+          "provider_error_message_class": {"type": ["string", "null"]}
+        }
+      }
+    }
+  }
+}
+
