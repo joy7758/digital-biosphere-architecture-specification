@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_65_P0_RESOLVER_MULTI_PROVIDER_AGENT_REVIEW_PASS_REVISE_VERDICTS_REMEDIATION_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_66_P0_DEADLINE_AND_DNS_REBINDING_OFFLINE_REMEDIATION_PASS_EXECUTABLE_TEST_SCOPE_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "CS-D02-PRE-65"},
+        "last_completed_step": {"const": "CS-D02-PRE-66"},
         "last_completed_result": {
-          "const": "PASS_2_OF_2_AGENT_REVIEW_INPUT_WITH_REVISE_VERDICTS"
+          "const": "PASS_OFFLINE_DEADLINE_AND_DNS_REBINDING_REMEDIATION_DESIGN_ONLY"
         },
         "direct_evidence_reference": {
-          "const": "commercialization-standards-p0-resolver-multi-provider-agent-review/PRE-65-P0-RESOLVER-MULTI-PROVIDER-AGENT-REVIEW-RESULT-v0.1.md"
+          "const": "commercialization-standards-p0-deadline-and-dns-rebinding-remediation/PRE-66-P0-DEADLINE-AND-DNS-REBINDING-REMEDIATION-RESULT-v0.1.md"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,7 +131,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "FORM_PRE66_P0_DEADLINE_AND_DNS_REBINDING_REMEDIATION_RECOMMENDATION"
+          "const": "FORM_PRE67_P0_EXECUTABLE_TEST_AND_IMPLEMENTATION_SCOPE_RECOMMENDATION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -5548,6 +5548,25 @@
             "pre65_favorable_verdicts",
             "pre65_retry_fallback_substitution_extraction_repair",
             "pre65_target_changes",
+            "pre66_recommendation_reference",
+            "pre66_recommendation_sha256",
+            "pre66_recommendation_commit",
+            "pre66_decision_reference",
+            "pre66_decision_sha256",
+            "pre66_decision_commit",
+            "pre66_deadline_comparison_sha256",
+            "pre66_dns_mitigation_contract_sha256",
+            "pre66_contract_revision_candidate_sha256",
+            "pre66_validation_sha256",
+            "pre66_execution_receipt_sha256",
+            "pre66_result_reference",
+            "pre66_result_sha256",
+            "pre66_result_commit",
+            "pre66_schema_instances_passed",
+            "pre66_input_hashes_matched",
+            "pre66_deadline_candidates_compared",
+            "pre66_mutation_negatives_rejected",
+            "pre66_target_changes",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5611,6 +5630,12 @@
             "pre65_multi_provider_agent_review_favorable",
             "pre65_remediation_recommendation_required",
             "pre66_p0_deadline_and_dns_rebinding_remediation_recommendation_allowed",
+            "pre66_p0_deadline_and_dns_rebinding_remediation_executed",
+            "pre66_p0_deadline_and_dns_rebinding_remediation_pass",
+            "pre66_contract_revision_adopted",
+            "pre66_total_wall_clock_upper_bound_proven",
+            "pre66_destination_policy_snapshot_adopted",
+            "pre67_p0_executable_test_and_implementation_scope_recommendation_allowed",
             "qianfan_exact_model_binding_required",
             "security_reviewer_exact_binding_required",
             "pre53_china_provider_benchmark_executed",
@@ -7212,6 +7237,53 @@
             "pre65_favorable_verdicts": {"const": 0},
             "pre65_retry_fallback_substitution_extraction_repair": {"const": 0},
             "pre65_target_changes": {"const": 0},
+            "pre66_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-66-P0-DEADLINE-AND-DNS-REBINDING-REMEDIATION-RECOMMENDATION-v0.1.md"
+            },
+            "pre66_recommendation_sha256": {
+              "const": "d599dbe96c124b7c4a7ca40ac7251939b5c90e2cbb616ba8ccdb1e551e94a909"
+            },
+            "pre66_recommendation_commit": {
+              "const": "dbb9afa9fef6b604bd684738cbda39ac570e634b"
+            },
+            "pre66_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-66-P0-DEADLINE-AND-DNS-REBINDING-REMEDIATION-DECISION-RECORD.v0.1.json"
+            },
+            "pre66_decision_sha256": {
+              "const": "9468c69de87f01ab895fa2f3039631cfe11bcd12ad7ca411354f10d81f496f44"
+            },
+            "pre66_decision_commit": {
+              "const": "2789dabd80967f175a960edbdd1d1f624beccf20"
+            },
+            "pre66_deadline_comparison_sha256": {
+              "const": "da2b2bd71f764c49d2deddc0bc4e01679a90caf3f14578a13d75baefaaaf447c"
+            },
+            "pre66_dns_mitigation_contract_sha256": {
+              "const": "7e17d7245e52d22296218e5dd68c3320f3b1fcc85f140f686cf58eef50354f34"
+            },
+            "pre66_contract_revision_candidate_sha256": {
+              "const": "6ff761ec6e33296b409fa4023a617d44f08d1db102b26743d7b10428b1c72ddc"
+            },
+            "pre66_validation_sha256": {
+              "const": "b1c408386fcbabd0681f9c86b8dd143e3a76b9433e301074ea0dc317acbbaca4"
+            },
+            "pre66_execution_receipt_sha256": {
+              "const": "967e62aff4e94356578dc9a7b8398ae8d90947c265d7bfbb7b80cb152494065f"
+            },
+            "pre66_result_reference": {
+              "const": "commercialization-standards-p0-deadline-and-dns-rebinding-remediation/PRE-66-P0-DEADLINE-AND-DNS-REBINDING-REMEDIATION-RESULT-v0.1.md"
+            },
+            "pre66_result_sha256": {
+              "const": "f9ec25607d073957864b7a77abb7f728579374ca51abfe12246a266b2282f770"
+            },
+            "pre66_result_commit": {
+              "const": "e484641e8cf4109cbf4c5093df1edf1b67d8fbe0"
+            },
+            "pre66_schema_instances_passed": {"const": 6},
+            "pre66_input_hashes_matched": {"const": 7},
+            "pre66_deadline_candidates_compared": {"const": 5},
+            "pre66_mutation_negatives_rejected": {"const": 12},
+            "pre66_target_changes": {"const": 0},
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -7396,9 +7468,27 @@
               "const": false
             },
             "pre65_remediation_recommendation_required": {
-              "const": true
+              "const": false
             },
             "pre66_p0_deadline_and_dns_rebinding_remediation_recommendation_allowed": {
+              "const": false
+            },
+            "pre66_p0_deadline_and_dns_rebinding_remediation_executed": {
+              "const": true
+            },
+            "pre66_p0_deadline_and_dns_rebinding_remediation_pass": {
+              "const": true
+            },
+            "pre66_contract_revision_adopted": {
+              "const": false
+            },
+            "pre66_total_wall_clock_upper_bound_proven": {
+              "const": false
+            },
+            "pre66_destination_policy_snapshot_adopted": {
+              "const": false
+            },
+            "pre67_p0_executable_test_and_implementation_scope_recommendation_allowed": {
               "const": true
             },
             "qianfan_exact_model_binding_required": {

@@ -88,7 +88,8 @@ risk_acceptance_authority_assigned: true
 | `R-066` | `HIGH` | PRE-62 的 2/2 strict agent-review pass 或两份 `REVISE` findings 被升级为 proven vulnerability、adopted security control、formal Human Security Review、Provider approval 或 implementation mandate | 输出来自两个模型候选且没有已指派 Human Security Reviewer；模型可能提出过度控制或遗漏风险 | PRE-63 已按 source/necessity/compatibility 完成 11-control 分类，并保持 `AI_ASSISTED_REVIEW_INPUT_COMPLETE=true`、`FORMAL_HUMAN_SECURITY_REVIEW_COMPLETE=false`；模型 finding 不进入当前漏洞声明 | `MITIGATED_BY_PRE63_CLASSIFICATION_FORMAL_REVIEW_STILL_OPEN` |
 | `R-067` | `HIGH` | PRE-63 的 11-control classification 或 P0 resolver design 被升级为当前漏洞证明、安全修复完成、Provider binding 实现或 production-safe transport | target 当前没有 HTTP client、credential read、Provider binding 或 `httpcore` dependency；单地址策略有明确可用性代价 | PRE-64 已形成 contract/Schema/negative-test design 并继续固定 `CLASSIFICATION_NE_VULNERABILITY_PROOF`、`DESIGN_NE_IMPLEMENTATION`；target write、dependency adoption 和 network execution 仍为 0 | `MITIGATED_BY_PRE64_CONTRACT_DESIGN_IMPLEMENTATION_STILL_BLOCKED` |
 | `R-068` | `HIGH` | PRE-64 contract/Schema/test design 被升级为跨平台稳定、deadline 已实现、P0 conformance、正式安全审查或 production-ready resolver | `getaddrinfo` 顺序可随平台变化且无 per-call timeout 参数；deadline mechanism 未选；单地址 profile 无 failover；default HTTPCore 1.0.9 backend 会委托 `socket.create_connection()` 并可能重解析/尝试多地址 | PRE-65 两条审查均要求修订；继续固定 `CONTRACT_CANDIDATE_NE_ADOPTED_STANDARD`、`TEST_DESIGN_NE_EXECUTED_TEST`、`ORDER_STABILITY_CLAIM=false`，后继实现仍需独立 exact Decision | `MITIGATED_BY_PRE65_REVISE_VERDICTS_IMPLEMENTATION_BLOCKED` |
-| `R-069` | `HIGH` | PRE-65 的 2/2 transport/Schema PASS、双 Provider 来源或候选安全审查标签被升级为正式 Human Security Review、Provider approval、已证实漏洞、adopted remediation 或实现授权 | 两个输出都是模型 advisory；两者均为 `REVISE` / `CONDITIONAL`；deadline mechanism 未选，DNS rebinding/TOCTOU 只是需进一步验证的 finding，continuity testability 仍有分歧 | 固定 `AGENT_REVIEW_NE_HUMAN_SECURITY_REVIEW`、`FINDING_NE_PROVEN_VULNERABILITY`、`REVISE_NE_IMPLEMENTATION_AUTHORIZATION`；PRE-66 只允许形成 remediation Recommendation | `CONTROL_DEFINED_PRE65_ADVISORY_ONLY_PRE66_RECOMMENDATION_REQUIRED` |
+| `R-069` | `HIGH` | PRE-65 的 2/2 transport/Schema PASS、双 Provider 来源或候选安全审查标签被升级为正式 Human Security Review、Provider approval、已证实漏洞、adopted remediation 或实现授权 | 两个输出都是模型 advisory；两者均为 `REVISE` / `CONDITIONAL`；DNS rebinding/TOCTOU 仍只是需进一步验证的 finding | PRE-66 已把 deadline、ephemeral IPC、destination policy、address pinning 和 executable-test gate 分解为 Development candidate；继续固定 `AGENT_REVIEW_NE_HUMAN_SECURITY_REVIEW`、`FINDING_NE_PROVEN_VULNERABILITY`、`DESIGN_NE_IMPLEMENTATION` | `MITIGATED_BY_PRE66_OFFLINE_REMEDIATION_FORMAL_REVIEW_STILL_OPEN` |
+| `R-070` | `HIGH` | PRE-66 的 subprocess 选择、5000 ms admission deadline、DNS mitigation design 或 6/6 Schema PASS 被升级为跨平台 hard wall-clock guarantee、无地址序列化、已采纳 destination policy、漏洞修复、测试完成或 production-safe resolver | Python 官方语义保留 process-creation timeout 限制；selected address 必须经过一次 ephemeral IPC；IANA snapshot/digest 尚未采纳；target 实现和 executable tests 均为 0 | 固定 `TOTAL_WALL_CLOCK_UPPER_BOUND_CLAIM=false`、`EPHEMERAL_IPC_SERIALIZATION=true`、`DESTINATION_POLICY_SNAPSHOT_ADOPTED=false`、`TESTS_EXECUTED=false`；PRE-67 只能先形成 executable-test 与 implementation-scope Recommendation | `CONTROL_DEFINED_PRE66_DESIGN_ONLY_PRE67_RECOMMENDATION_REQUIRED` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -106,7 +107,7 @@ risk_acceptance_authority_assigned: true
 | `B-018` | Schema/Resource/Entity 的 36 个 DQ-018 authorized offline cases 已通过，但 acquisition/cache/transform、真实 detector provenance 和 9 个 DQ-020 deployment cases 仍未执行 | `PR-G2T`、`PR-G3`、`PR-G5`、`PR-G6` | DQ-020 authorization + exact deployment source/policy/environment + 剩余 9 cases + 独立 review | 当前 36-case offline subset 与 DBA reference review |
 | `B-020` | TITMAS C1 Contributor Entry 已本地准备，但 Authority Freeze、正式 Code of Conduct、安全接收路径、Owner/review roles、license/CLA 输入和公共外部动作授权不完整 | `DQ-026`、公共贡献表面、真实贡献者接收、SIG/Workstream 激活 | 补齐全部输入并由 Human Architecture Authority 对 exact public surface 作独立 Decision；启用后仍按贡献/角色/Workstream gate 分阶段 | 本地文档、模板、JSON/Schema、Good First candidate 和 fail-closed 验证；不阻塞 DBA 内继续改进贡献入口 |
 | `B-021` | `titmas.cn` 备案未完成，DNS/TLS/canonical cutover 与 `redcrag.cn` redirect 没有直接验证；`titmas-cn` Organization 尚未创建 | 公共域名切换、Organization 创建、仓库迁移 | 备案证据 + 独立 DNS/TLS/health/security-header/machine-entry/rollback gate；Organization 创建与每个仓库迁移分别授权 | 网站源码、双语／机器入口、GitHub profile copy 和迁移清单的本地准备 |
-| `B-025` | PRE-65 已完成 2/2 双 Provider 智能体候选审查，但两者均要求修订；5s deadline enforcement、DNS rebinding/TOCTOU disposition、continuity testability 分歧、可执行测试、Human Security Accountability、Security Disclosure path、target implementation、真实 conformance、SBOM 与 reproducible build 仍无证据 | PRE-66 exact deadline/DNS rebinding remediation Recommendation/Decision、后续 executable-test gate、bounded implementation scope、Provider support/conformance claim、merge、release 和 commercial availability | 如继续，只先形成 remediation Recommendation；不得把 agent review、finding 或 transport/Schema PASS 写成 Human Security Review、漏洞证明、implementation/security approval | PRE-50/52/53/60/61/62/63/64/65 retained evidence、sanitized results、negative cases 和 hash receipt 可审查 |
+| `B-025` | PRE-66 已完成 deadline/DNS rebinding 的离线修复设计，但 selected subprocess 尚无 target implementation；IANA destination-policy snapshot/digest 尚未采纳；executable tests、platform matrix、Human Security Accountability、Security Disclosure path、真实 conformance、SBOM 与 reproducible build 仍无证据 | PRE-67 executable-test and implementation-scope Recommendation/Decision、后续 bounded target implementation、independent review、Provider support/conformance claim、merge、release 和 commercial availability | 如继续，只先形成 PRE-67 Recommendation；不得把 offline design、Schema PASS 或 mitigation candidate 写成 hard deadline proof、漏洞修复、implementation/security approval | PRE-50/52/53/60/61/62/63/64/65/66 retained evidence、sanitized results、negative cases 和 hash receipt 可审查 |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
 
@@ -140,11 +141,11 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=53
-ACTIVE_RISKS=51
+TRACKED_RISKS=70
+ACTIVE_RISKS=68
 RESOLVED_RISKS=2
-ACTIVE_BLOCKERS=11
-BLOCKERS_CLEARED=9
+ACTIVE_BLOCKERS=13
+BLOCKERS_CLEARED=12
 LOCAL_BLOCKERS_CLEARED_NOT_RELEASED=1
 RISKS_ACCEPTED=1
 RISK_REGISTER_GRANTS_AUTHORITY=false
