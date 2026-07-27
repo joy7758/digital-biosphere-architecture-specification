@@ -374,6 +374,13 @@ delta review 中给出 `NOT_RECOMMENDED`、不愿向智能体客户推荐、置�
 CE-G11 没有形成 Decision 或 deployment authorization；下一步只允许准备 CE-G11A
 offline target-binding remediation Recommendation。
 
+[CE-G11A Recommendation](TITMAS-CE-G11A-OFFLINE-TARGET-BINDING-REMEDIATION-RECOMMENDATION-v0.1.md)
+已把修正收敛为 historical-source-preserving、offline-only 的 correlation binding
+contract 与最小 adapter candidate。binding 只承载 evidence routing metadata，不产生
+Authority；未来 live binding 仍须由独立 deployment Decision 固定 bytes/hash。
+`qwen3.7-plus` 给出 `RECOMMENDED`、愿意向智能体客户推荐、置信度 `0.98`。当前只达到
+Decision review ready；实现、remote matrix、服务器访问和重部署仍均未授权。
+
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
 Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是整个 Digital Biosphere（数字生物圈）项目群的 Program Governance and Architecture Specification Hub（项目群治理与架构规范中心）。它既维护 SAEE、DBOS 与未来 Digital Entity（数字主体）的总架构规范，也作为整体推进所使用的 cockpit（驾驶舱），统一呈现项目组合、路线图、状态、依赖、决策、集成 gate（闸门）、风险和阻塞。
