@@ -1,0 +1,111 @@
+{
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_ONE_LOCAL_FORMAL_CONTEXT_STATIC_VALIDATION_ONLY_IF_QUALIFYING_WRITE_AHEAD_DECISION_REVIEW",
+  "decided_at": "2026-07-27",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "r5_result_reference": "TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-RESULT-v0.1.json",
+  "r5_result_commit": "315a384cd80085e49158f4eaba7bdcbb08ce4de6",
+  "recommendation_reference": "TITMAS-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "c258d2febea5bc7754bf986b60aaf4672e4b268952202c86c380e93ca943dbb3",
+  "recommendation_commit": "f9a3ba8ded0499c540f9ba9cfd449d6160e7ea9f",
+  "recommendation_review_reference": "TITMAS-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "decision_quality_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-QWEN-DECISION-REVIEW-v0.1.json",
+  "exact_action": "After a qualifying write-ahead exact qwen3.7-max Decision review and remote baseline verification, reconstruct frozen merge tree ea296d8b2143aeb7cc220a81689ba4d057e4bb97 in one disposable worktree. Verify frozen topology, Draft PR, Actions, package/lock/export/verify hashes, empty status, absent node_modules and normalized npm prefix equality. Run exactly one offline ignore-scripts npm ci, then npm ls, npm test and npm run release:formal exactly once each in order. Treat release:formal strictly as a local static export plus verification command; it must not create a tag, GitHub Release, deployment or new release authority. Only on success meta-validate three frozen CE Schemas and run exactly 49 CE tests. Fail closed on any error or source/tree drift, remove the worktree, and do not retry, mutate remote state or merge.",
+  "review_protocol": {
+    "request_count_exact": 1,
+    "requested_model": "qwen3.7-max",
+    "http_status_required": 200,
+    "curl_exit_required": 0,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "model_substitution_count": 0,
+    "json_repair_request_count": 0
+  },
+  "frozen_inputs": {
+    "canonical_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "ce_commit": "e032115adbe38cc84bde80cc9b10b96f6da1b428",
+    "merge_base": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "merge_tree": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "draft_pr_number": 22,
+    "draft_pr_state": "OPEN",
+    "draft_pr_is_draft": true,
+    "draft_pr_head_commit": "e032115adbe38cc84bde80cc9b10b96f6da1b428",
+    "ce_head_actions_run_count": 0,
+    "package_json_sha256": "60dc7abf99a878f0e9dd24f0362d1ac7ad9c72a4d21578085fed39c526e3709b",
+    "package_lock_sha256": "4f179b1107a3a3f18aa906ebd19f952a9a4d190b1ad7123cba0a6884e3a312fd",
+    "export_static_sha256": "cd5cd0eef9b4a61f66cb866b3f96d16d5e95c28768ceda37633f454f3429a8bd",
+    "verify_static_sha256": "8e26f3af1cba44184f2552969d67fba2983d84459d1e5cd1ab7a75f7436c089d"
+  },
+  "execution_contract": {
+    "temporary_worktrees": 1,
+    "install_command": "NPM_CONFIG_OFFLINE=true npm ci --offline --ignore-scripts --no-audit --no-fund",
+    "install_attempts": 1,
+    "ordered_site_commands": [
+      "npm ls --depth=0 --json",
+      "npm test",
+      "npm run release:formal"
+    ],
+    "attempts_each": 1,
+    "release_formal_effect": "LOCAL_STATIC_EXPORT_AND_VERIFICATION_ONLY",
+    "network_fallbacks": 0,
+    "lifecycle_install_scripts": 0,
+    "existing_node_modules_reuses": 0
+  },
+  "ce_validation_contract": {
+    "schemas_meta_valid_expected": 3,
+    "test_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis -p 'test_ce_g*.py'",
+    "tests_passed_expected": 49
+  },
+  "required_results": {
+    "npm_ci_exit": 0,
+    "npm_ls_exit": 0,
+    "npm_test_exit": 0,
+    "release_formal_exit": 0,
+    "static_output_present": true,
+    "ce_schemas_meta_valid": 3,
+    "ce_tests_passed": 49,
+    "tracked_source_diff": 0,
+    "git_status_entries": 0,
+    "frozen_hashes_unchanged": true,
+    "merge_tree_unchanged": true
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "temporary_worktrees": 1,
+    "npm_ci_attempts": 1,
+    "npm_ls_attempts": 1,
+    "npm_test_attempts": 1,
+    "release_formal_attempts": 1,
+    "ce_schema_validation_runs": 1,
+    "ce_test_discovery_runs": 1,
+    "public_truth_mutations": 0,
+    "tags": 0,
+    "github_releases": 0,
+    "pr_mutations": 0,
+    "pushes": 0,
+    "merges": 0,
+    "workflow_runs": 0,
+    "server_actions": 0,
+    "deployments": 0
+  },
+  "stop_conditions": [
+    "Decision review is not HTTP 200, curl exit 0, exact qwen3.7-max APPROVE with zero blockers and corrections.",
+    "Any frozen topology, PR, Actions, hash, prefix or clean-worktree precondition drifts.",
+    "Any install, dependency, site, formal-context, static or CE validation fails.",
+    "Any source/tree drift, retry, network fallback, truth mutation or remote mutation occurs."
+  ],
+  "false_effects": {
+    "new_release_authorization": false,
+    "tag": false,
+    "github_release": false,
+    "deployment": false,
+    "merge_authorization": false,
+    "merge": false,
+    "phase_b_authorization": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "result": "NOT_EXECUTED"
+}

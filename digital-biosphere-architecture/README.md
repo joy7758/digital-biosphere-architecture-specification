@@ -565,6 +565,11 @@ export + verification command，不产生 tag、GitHub Release 或部署。其
 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
 得到 curl `0`、HTTP `200`、exact model、direct JSON、`RECOMMENDED`、Option A、
 confidence `0.95`、0 blocker/correction。下一步只允许建立独立 R6 Decision。
+[R6 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-DECISION-RECORD.v0.1.json)
+及其 [write-ahead qwen3.7-max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-QWEN-DECISION-REVIEW-v0.1.json)
+得到 curl `0`、HTTP `200`、`APPROVE`、confidence `0.95`、0 blocker/correction。
+远端 baseline 核验后只允许一次 local `release:formal` static validation；不产生新发布、
+tag、deployment、PR mutation 或 merge。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
