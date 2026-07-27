@@ -1,0 +1,129 @@
+{
+  "$schema": "./pre73-review-request-contract.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE73-REVIEW-REQUEST-CONTRACT-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_CANDIDATE_NOT_AUTHORIZED",
+  "target": {
+    "repository": "joy7758/titmas-integrations",
+    "branch": "codex/rb0-governance-baseline",
+    "commit": "0030077f29c37145a306b72e7083345eb76b504a",
+    "writes_max": 0
+  },
+  "source_package_contract": {
+    "contract_version": "pre73.security-review-source-package/v0.1",
+    "canonicalization": "UTF8_JSON_SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE",
+    "source_package_bytes": 102960,
+    "source_package_sha256": "5e357eab0d23db0c79d34f7a66ddc01e0a8070314ed8b6be2cee3b34e3973813",
+    "content_loaded_from_exact_target_commit_in_memory": true,
+    "source_package_persistence_allowed": false
+  },
+  "source_package_explicit_non_claims": {
+    "formal_human_security_review_complete": false,
+    "production_safe": false,
+    "provider_supported": false,
+    "cross_platform_supported": false,
+    "real_network_conformant": false,
+    "standard_ready": false
+  },
+  "system_message": "Perform a source-grounded static security review. Return exactly one direct JSON object conforming to pre73.agent-review-response/v0.2. Do not use Markdown, code fences, commentary, prefixes, suffixes or additional fields. Assess every SR-001 through SR-016 question in order. Retain concerns, unknowns, limitations and proposed tests. This is advisory agent input only, not a formal human security review, provider approval, conformance result, standard decision, release authorization or production claim.",
+  "review_instruction": "Review the hash-bound public-safe source package against all sixteen security questions. Return exactly one direct JSON object conforming to pre73.agent-review-response/v0.2. Do not use Markdown or code fences. Retain concerns, unknowns, limitations and proposed tests. This is advisory input only and not a formal human review, provider approval, conformance result, standard decision, release authorization or production claim.",
+  "security_questions": [
+    {"question_id": "SR-001", "question": "Can the process prove that no Python, native or extension thread makes fork() unsafe?"},
+    {"question_id": "SR-002", "question": "Are all child-side Python and libc operations defensible after fork()?"},
+    {"question_id": "SR-003", "question": "Does the macOS high-level API warning require macOS rejection or mechanism replacement?"},
+    {"question_id": "SR-004", "question": "Can inherited OpenSSL or TLS state affect P0 now or future P2 composition?"},
+    {"question_id": "SR-005", "question": "Is inherited file-descriptor closure complete, bounded and resistant to resource exhaustion?"},
+    {"question_id": "SR-006", "question": "Can clearing os.environ race, leak or corrupt parent/child state?"},
+    {"question_id": "SR-007", "question": "Are timeout, kill, wait and reap paths complete for every child state?"},
+    {"question_id": "SR-008", "question": "Are monotonic deadline and late-result semantics internally consistent without claiming an absolute bound?"},
+    {"question_id": "SR-009", "question": "Can the pipe payload exceed, fragment, deadlock or bypass the 512-byte canonical boundary?"},
+    {"question_id": "SR-010", "question": "Can hostname, numeric address, exception, credential or authorization data leak through observations or errors?"},
+    {"question_id": "SR-011", "question": "Does first-address selection plus the destination policy fail closed for every IPv4/IPv6 class?"},
+    {"question_id": "SR-012", "question": "Are policy snapshot provenance, update, stale-data and IANA non-routability semantics stated correctly?"},
+    {"question_id": "SR-013", "question": "Are lowercase ASCII hostname and exact allowlist rules sufficient, including IDNA and trailing-dot cases?"},
+    {"question_id": "SR-014", "question": "Are raw results, prefix matching, file limits, CPU time and memory use bounded against denial of service?"},
+    {"question_id": "SR-015", "question": "Can signal handlers, audit hooks, subinterpreters or process state invalidate the child-safety assumptions?"},
+    {"question_id": "SR-016", "question": "Does the transient binding actually prevent P1 re-resolution and preserve original-hostname P2 verification?"}
+  ],
+  "review_inputs": [
+    {"path": "src/titmas_integrations/p0_resolver.py", "sha256": "8818f11020ceac56db17d738d800f1d7ab3fd16fd3361cc46a8b1ab6a7cec702"},
+    {"path": "src/titmas_integrations/_p0_resolver_worker.py", "sha256": "d28cd2f69d444cb60c41ed56f5945386fbbb02f5671ea7273199caba9183eb11"},
+    {"path": "src/titmas_integrations/data/global-unicast-destination-policy.v1.json", "sha256": "945d73ab20026b3bdd15b225d2c37280a2e0efd2f68d7dc597c7674eeb8abba7"},
+    {"path": "tests/test_p0_resolver_contract.py", "sha256": "2119610001928b1e4ca282bd8048e99e6796dca542fc0bedf33c0d57a9593228"},
+    {"path": "tests/test_p0_resolver_deadline.py", "sha256": "6ebbafd8f46c79d183574b848edcf61a5afcb507809f5c6d70b0681377b91e31"},
+    {"path": "tests/test_p0_resolver_security.py", "sha256": "3c092da62c0c1d82ecbc8baa31782645c90d810a42547acbb1826d6b522e8156"},
+    {"path": "P0-IMPLEMENTATION-DECLARATION.v0.1.json", "sha256": "960341e7623fa7109f4741447447bd142788c5cfdd2fa46f131979e06a67fe6c"},
+    {"path": "README.md", "sha256": "74f97d564d6df7bc83b6c6f2fe32e33b4246a796018dfcd08692c31fcc68915d"},
+    {"path": "SECURITY.md", "sha256": "43b1948f61f8a0cfac499912d6a846d46423f1bc2c05dfb5dc66cd46a85e388b"},
+    {"path": "AGENTS.md", "sha256": "13fb9f3a67e2a43daab24c5ccd1862ca4fd17e1852a4c29f5827a7a661031e94"}
+  ],
+  "response_contract": {
+    "schema_reference": "./pre73-agent-review-response.schema.v0.2.json",
+    "schema_sha256": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8",
+    "assistant_content_maximum_bytes": 131072,
+    "direct_single_json_object_required": true,
+    "duplicate_keys_allowed": false,
+    "code_fence_allowed": false,
+    "prefix_suffix_allowed": false,
+    "extraction_allowed": false,
+    "repair_allowed": false
+  },
+  "sessions": [
+    {
+      "session_id": "PRE73-QF-SECURITY-01",
+      "provider": "BAIDU_QIANFAN",
+      "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+      "model": "ernie-4.5-turbo-20260402",
+      "credential_identifier": "QIANFAN_API_KEY",
+      "review_role": "IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE",
+      "response_format": {"type": "json_object"},
+      "enable_thinking": "OMITTED",
+      "user_message_bytes": 103618,
+      "user_message_sha256": "a53a994a5427bc247bd483d4263183348aa997c1b5b31950b29faaf5c8f3b14a"
+    },
+    {
+      "session_id": "PRE73-QWEN-SECURITY-02",
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "model": "qwen3.7-plus",
+      "credential_identifier": "DASHSCOPE_API_KEY",
+      "review_role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE",
+      "response_format": {"type": "json_object"},
+      "enable_thinking": false,
+      "user_message_bytes": 103617,
+      "user_message_sha256": "e973133f5f8cf2e7c9f4b40b1925f9782f8112c4e6dd91b3aa734c84e39c188f"
+    }
+  ],
+  "transport_policy": {
+    "requests_max": 2,
+    "concurrency_max": 1,
+    "temperature": 0,
+    "stream": false,
+    "max_tokens": "OMITTED",
+    "timeout_seconds_per_request": 120,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "model_substitution_max": 0,
+    "response_extraction_max": 0,
+    "json_repair_max": 0,
+    "continue_independent_lane_after_failure": true
+  },
+  "persistence_policy": {
+    "request_payload_persisted": false,
+    "source_package_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "raw_assistant_content_persisted": false,
+    "sanitized_admitted_review_object_persisted": true,
+    "hashes_and_counts_persisted": true
+  },
+  "effects": {
+    "decision_recorded": false,
+    "live_model_request_authorized": false,
+    "target_repository_write_authorized": false,
+    "formal_human_security_review_complete": false,
+    "provider_supported": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false
+  }
+}

@@ -1,0 +1,283 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre73/pre73-review-request-contract.schema.v0.1.json",
+  "title": "TITMAS PRE-73 Review Request Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "target",
+    "source_package_contract",
+    "source_package_explicit_non_claims",
+    "system_message",
+    "review_instruction",
+    "security_questions",
+    "review_inputs",
+    "response_contract",
+    "sessions",
+    "transport_policy",
+    "persistence_policy",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre73-review-request-contract.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE73-REVIEW-REQUEST-CONTRACT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_CANDIDATE_NOT_AUTHORIZED"},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "branch", "commit", "writes_max"],
+      "properties": {
+        "repository": {"const": "joy7758/titmas-integrations"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "commit": {"const": "0030077f29c37145a306b72e7083345eb76b504a"},
+        "writes_max": {"const": 0}
+      }
+    },
+    "source_package_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version",
+        "canonicalization",
+        "source_package_bytes",
+        "source_package_sha256",
+        "content_loaded_from_exact_target_commit_in_memory",
+        "source_package_persistence_allowed"
+      ],
+      "properties": {
+        "contract_version": {"const": "pre73.security-review-source-package/v0.1"},
+        "canonicalization": {"const": "UTF8_JSON_SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE"},
+        "source_package_bytes": {"const": 102960},
+        "source_package_sha256": {"const": "5e357eab0d23db0c79d34f7a66ddc01e0a8070314ed8b6be2cee3b34e3973813"},
+        "content_loaded_from_exact_target_commit_in_memory": {"const": true},
+        "source_package_persistence_allowed": {"const": false}
+      }
+    },
+    "source_package_explicit_non_claims": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formal_human_security_review_complete",
+        "production_safe",
+        "provider_supported",
+        "cross_platform_supported",
+        "real_network_conformant",
+        "standard_ready"
+      ],
+      "properties": {
+        "formal_human_security_review_complete": {"const": false},
+        "production_safe": {"const": false},
+        "provider_supported": {"const": false},
+        "cross_platform_supported": {"const": false},
+        "real_network_conformant": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    },
+    "system_message": {"type": "string", "minLength": 300, "pattern": "JSON"},
+    "review_instruction": {"type": "string", "minLength": 300, "pattern": "JSON"},
+    "security_questions": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "prefixItems": [
+        {"$ref": "#/$defs/q01"}, {"$ref": "#/$defs/q02"},
+        {"$ref": "#/$defs/q03"}, {"$ref": "#/$defs/q04"},
+        {"$ref": "#/$defs/q05"}, {"$ref": "#/$defs/q06"},
+        {"$ref": "#/$defs/q07"}, {"$ref": "#/$defs/q08"},
+        {"$ref": "#/$defs/q09"}, {"$ref": "#/$defs/q10"},
+        {"$ref": "#/$defs/q11"}, {"$ref": "#/$defs/q12"},
+        {"$ref": "#/$defs/q13"}, {"$ref": "#/$defs/q14"},
+        {"$ref": "#/$defs/q15"}, {"$ref": "#/$defs/q16"}
+      ],
+      "items": false
+    },
+    "review_inputs": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {"$ref": "#/$defs/input"}
+    },
+    "response_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_reference",
+        "schema_sha256",
+        "assistant_content_maximum_bytes",
+        "direct_single_json_object_required",
+        "duplicate_keys_allowed",
+        "code_fence_allowed",
+        "prefix_suffix_allowed",
+        "extraction_allowed",
+        "repair_allowed"
+      ],
+      "properties": {
+        "schema_reference": {"const": "./pre73-agent-review-response.schema.v0.2.json"},
+        "schema_sha256": {"const": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8"},
+        "assistant_content_maximum_bytes": {"const": 131072},
+        "direct_single_json_object_required": {"const": true},
+        "duplicate_keys_allowed": {"const": false},
+        "code_fence_allowed": {"const": false},
+        "prefix_suffix_allowed": {"const": false},
+        "extraction_allowed": {"const": false},
+        "repair_allowed": {"const": false}
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"$ref": "#/$defs/qianfanSession"},
+        {"$ref": "#/$defs/qwenSession"}
+      ],
+      "items": false
+    },
+    "transport_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requests_max",
+        "concurrency_max",
+        "temperature",
+        "stream",
+        "max_tokens",
+        "timeout_seconds_per_request",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "response_extraction_max",
+        "json_repair_max",
+        "continue_independent_lane_after_failure"
+      ],
+      "properties": {
+        "requests_max": {"const": 2},
+        "concurrency_max": {"const": 1},
+        "temperature": {"const": 0},
+        "stream": {"const": false},
+        "max_tokens": {"const": "OMITTED"},
+        "timeout_seconds_per_request": {"const": 120},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "model_substitution_max": {"const": 0},
+        "response_extraction_max": {"const": 0},
+        "json_repair_max": {"const": 0},
+        "continue_independent_lane_after_failure": {"const": true}
+      }
+    },
+    "persistence_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_payload_persisted",
+        "source_package_persisted",
+        "raw_provider_envelope_persisted",
+        "raw_assistant_content_persisted",
+        "sanitized_admitted_review_object_persisted",
+        "hashes_and_counts_persisted"
+      ],
+      "properties": {
+        "request_payload_persisted": {"const": false},
+        "source_package_persisted": {"const": false},
+        "raw_provider_envelope_persisted": {"const": false},
+        "raw_assistant_content_persisted": {"const": false},
+        "sanitized_admitted_review_object_persisted": {"const": true},
+        "hashes_and_counts_persisted": {"const": true}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 8,
+      "additionalProperties": {"const": false}
+    }
+  },
+  "$defs": {
+    "question": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["question_id", "question"],
+      "properties": {
+        "question_id": {"pattern": "^SR-0(0[1-9]|1[0-6])$"},
+        "question": {"type": "string", "minLength": 40}
+      }
+    },
+    "q01": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-001"}}}]},
+    "q02": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-002"}}}]},
+    "q03": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-003"}}}]},
+    "q04": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-004"}}}]},
+    "q05": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-005"}}}]},
+    "q06": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-006"}}}]},
+    "q07": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-007"}}}]},
+    "q08": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-008"}}}]},
+    "q09": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-009"}}}]},
+    "q10": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-010"}}}]},
+    "q11": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-011"}}}]},
+    "q12": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-012"}}}]},
+    "q13": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-013"}}}]},
+    "q14": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-014"}}}]},
+    "q15": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-015"}}}]},
+    "q16": {"allOf": [{"$ref": "#/$defs/question"}, {"properties": {"question_id": {"const": "SR-016"}}}]},
+    "input": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 5},
+        "sha256": {"pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "responseFormat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {"type": {"const": "json_object"}}
+    },
+    "qianfanSession": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id", "provider", "endpoint", "model", "credential_identifier",
+        "review_role", "response_format", "enable_thinking",
+        "user_message_bytes", "user_message_sha256"
+      ],
+      "properties": {
+        "session_id": {"const": "PRE73-QF-SECURITY-01"},
+        "provider": {"const": "BAIDU_QIANFAN"},
+        "endpoint": {"const": "https://qianfan.baidubce.com/v2/chat/completions"},
+        "model": {"const": "ernie-4.5-turbo-20260402"},
+        "credential_identifier": {"const": "QIANFAN_API_KEY"},
+        "review_role": {"const": "IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE"},
+        "response_format": {"$ref": "#/$defs/responseFormat"},
+        "enable_thinking": {"const": "OMITTED"},
+        "user_message_bytes": {"const": 103618},
+        "user_message_sha256": {"const": "a53a994a5427bc247bd483d4263183348aa997c1b5b31950b29faaf5c8f3b14a"}
+      }
+    },
+    "qwenSession": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id", "provider", "endpoint", "model", "credential_identifier",
+        "review_role", "response_format", "enable_thinking",
+        "user_message_bytes", "user_message_sha256"
+      ],
+      "properties": {
+        "session_id": {"const": "PRE73-QWEN-SECURITY-02"},
+        "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+        "endpoint": {"const": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions"},
+        "model": {"const": "qwen3.7-plus"},
+        "credential_identifier": {"const": "DASHSCOPE_API_KEY"},
+        "review_role": {"const": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"},
+        "response_format": {"$ref": "#/$defs/responseFormat"},
+        "enable_thinking": {"const": false},
+        "user_message_bytes": {"const": 103617},
+        "user_message_sha256": {"const": "e973133f5f8cf2e7c9f4b40b1925f9782f8112c4e6dd91b3aa734c84e39c188f"}
+      }
+    }
+  }
+}

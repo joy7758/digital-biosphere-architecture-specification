@@ -65,11 +65,12 @@ SAEE_NE_CONTROLLER=true
 | `CS-D02-PRE-70` | `DECIDED_EXECUTED_FAIL_CLOSED_AGENT_RESPONSE_NOT_DIRECT_JSON_AFTER_PLATFORM_PASS` | explicit `DOCKER_HOST` 与 global-config guard PASS；2/2 exact pulls 和 2/2 network-none read-only Linux/amd64 containers PASS；每 lane 92 tests run、1 skip、suite OK 与 7/7 rehearsal；首个 Qianfan review response 含 code fence，违反 direct-JSON contract，Qwen 未执行；target 10/10 hashes unchanged | PRE-70 retry=false；只允许形成 PRE-71 response-contract 与 credential-accounting disposition Recommendation；不自动执行模型请求 |
 | `CS-D02-PRE-71` | `DECIDED_EXECUTED_PASS_BOUNDED_OFFLINE_DESIGN_PRE72_RECOMMENDATION_REQUIRED` | strict direct JSON v0.2 candidate、Provider capability checklist、credential accounting profile 和 10 fixtures 已形成；contract Schema PASS、2/2 positive、8/8 negatives；首次一次性 validator double-inversion error 留痕，修正逻辑后 PASS；network/model/credential/raw response/target/DBOS/SAEE writes=0 | 只允许形成 PRE-72 current official Provider capability evidence acquisition Recommendation；任何 external/live request 仍需独立 Decision |
 | `CS-D02-PRE-72` | `DECIDED_EXECUTED_PASS_6_OF_6_PRE73_RECOMMENDATION_REQUIRED` | Qianfan 3/3、Qwen 3/3；6/6 HTTP 200、exact model、direct JSON、response Schema、session binding 与 authority boundary PASS；0 retry/fallback/substitution/extraction/repair；raw response/assistant content persistence=0；secret print/persist/expose=0 | PRE-72 authorization consumed；只允许形成 PRE-73 exact dual-provider agent-assisted Security Review Recommendation；Provider support、formal Human Security Review、conformance、Standard Ready 与 release 仍为 false |
+| `CS-D02-PRE-73` | `RECOMMENDATION_PREPARED_DECISION_REQUIRED_NOT_EXECUTED` | exact target/source/questions、两条 Provider lane、ordered v0.2 response Schema、零重试/修复和零 raw persistence 已冻结；3/3 metaschema、2/2 instance、10/10 target hashes、4/4 bound evidence、3/3 deterministic render 与 17/17 negative mutation PASS；network/model/credential/target/DBOS/SAEE actions=0 | 只允许记录独立 PRE-73 Decision；Recommendation 不授权 live request，Agent Review 不等于 formal Human Security Review |
 | `TITMAS-FINALIZATION-AVH-001` | `ARCHITECTURE_ASSESSMENT_DEFINED_NOT_ADOPTED` | [AVH architecture assessment](architecture/agent-validation-harness-architecture-assessment-v0.1.md) / [machine record](architecture/agent-validation-harness-architecture-assessment.v0.1.json)；现有 Technical Validation、Evidence Admission、DBOS/SAEE Owner crosswalk 已完成 | 只允许架构、overlap、threat、oracle 和 conformance design review；等待完整提案、Owner/Reviewer 和 `TITMAS-AVH-D01`，不创建产品、Runtime、Sandbox、Agent、Evidence 或实现 |
 
 ```text
-COMMERCIALIZATION_LAST_COMPLETED_STEP=CS-D02-PRE-72-EXECUTION
-COMMERCIALIZATION_NEXT_ACTION=PREPARE_PRE73_EXACT_DUAL_PROVIDER_AGENT_ASSISTED_SECURITY_REVIEW_RECOMMENDATION
+COMMERCIALIZATION_LAST_COMPLETED_STEP=CS-D02-PRE-73-RECOMMENDATION
+COMMERCIALIZATION_NEXT_ACTION=RECORD_CS_D02_PRE73_AGENT_SECURITY_REVIEW_DECISION
 COMMERCIALIZATION_NEXT_ACTION_AUTHORIZED=false
 P0_REFERENCE_IMPLEMENTATION_CREATED=true
 P0_OFFLINE_TESTS_PASS=true

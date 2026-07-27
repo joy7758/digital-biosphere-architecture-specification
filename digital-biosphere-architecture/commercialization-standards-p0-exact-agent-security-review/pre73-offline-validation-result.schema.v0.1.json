@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre73/pre73-offline-validation-result.schema.v0.1.json",
+  "title": "TITMAS PRE-73 Offline Validation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "target",
+    "validated_artifacts",
+    "validation",
+    "deterministic_binding",
+    "executed_counts",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre73-offline-validation-result.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE73-OFFLINE-VALIDATION-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_RECOMMENDATION_ONLY_DECISION_REQUIRED"},
+    "observed_at": {"const": "2026-07-27"},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "commit", "writes"],
+      "properties": {
+        "repository": {"const": "joy7758/titmas-integrations"},
+        "commit": {"const": "0030077f29c37145a306b72e7083345eb76b504a"},
+        "writes": {"const": 0}
+      }
+    },
+    "validated_artifacts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_sha256",
+        "scope_sha256",
+        "scope_schema_sha256",
+        "request_contract_sha256",
+        "request_contract_schema_sha256",
+        "response_schema_sha256"
+      ],
+      "properties": {
+        "recommendation_sha256": {"const": "f188b635f31b9b0c5c58ea197734052a9f02ba22b2272e04769a4da4ffe04eff"},
+        "scope_sha256": {"const": "f93a3c1e1a50ac98ae1031ce7da9eca41bdad76551aaa48b9df412d2918d13cc"},
+        "scope_schema_sha256": {"const": "dbaa568b18f4c061bb867f2d1047830b3c6f9234221bfefcd1fcd948454a8283"},
+        "request_contract_sha256": {"const": "c98f2464b814696152bcb8946ffbc5ffea5b6a9daf48e1b6657f59d5aa2f2a1b"},
+        "request_contract_schema_sha256": {"const": "c8ba494b784249425b6f503f049393f91ca3937cb076ba81c811732dc3697aa9"},
+        "response_schema_sha256": {"const": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8"}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_metaschema_pass",
+        "schema_instances_pass",
+        "response_exemplar_pass",
+        "target_input_hashes_match",
+        "bound_evidence_hashes_match",
+        "deterministic_source_package_render_pass",
+        "deterministic_user_message_render_pass",
+        "negative_mutations_rejected"
+      ],
+      "properties": {
+        "schema_metaschema_pass": {"const": "3/3"},
+        "schema_instances_pass": {"const": "2/2"},
+        "response_exemplar_pass": {"const": "1/1"},
+        "target_input_hashes_match": {"const": "10/10"},
+        "bound_evidence_hashes_match": {"const": "4/4"},
+        "deterministic_source_package_render_pass": {"const": "1/1"},
+        "deterministic_user_message_render_pass": {"const": "2/2"},
+        "negative_mutations_rejected": {"const": "17/17"}
+      }
+    },
+    "deterministic_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_package_bytes",
+        "source_package_sha256",
+        "qianfan_user_message_bytes",
+        "qianfan_user_message_sha256",
+        "qwen_user_message_bytes",
+        "qwen_user_message_sha256"
+      ],
+      "properties": {
+        "source_package_bytes": {"const": 102960},
+        "source_package_sha256": {"const": "5e357eab0d23db0c79d34f7a66ddc01e0a8070314ed8b6be2cee3b34e3973813"},
+        "qianfan_user_message_bytes": {"const": 103618},
+        "qianfan_user_message_sha256": {"const": "a53a994a5427bc247bd483d4263183348aa997c1b5b31950b29faaf5c8f3b14a"},
+        "qwen_user_message_bytes": {"const": 103617},
+        "qwen_user_message_sha256": {"const": "e973133f5f8cf2e7c9f4b40b1925f9782f8112c4e6dd91b3aa734c84e39c188f"}
+      }
+    },
+    "executed_counts": {
+      "type": "object",
+      "minProperties": 8,
+      "additionalProperties": {"const": 0}
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 8,
+      "additionalProperties": {"const": false}
+    }
+  }
+}

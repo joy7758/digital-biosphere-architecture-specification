@@ -1,0 +1,58 @@
+{
+  "$schema": "./pre73-offline-validation-result.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE73-OFFLINE-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_RECOMMENDATION_ONLY_DECISION_REQUIRED",
+  "observed_at": "2026-07-27",
+  "target": {
+    "repository": "joy7758/titmas-integrations",
+    "commit": "0030077f29c37145a306b72e7083345eb76b504a",
+    "writes": 0
+  },
+  "validated_artifacts": {
+    "recommendation_sha256": "f188b635f31b9b0c5c58ea197734052a9f02ba22b2272e04769a4da4ffe04eff",
+    "scope_sha256": "f93a3c1e1a50ac98ae1031ce7da9eca41bdad76551aaa48b9df412d2918d13cc",
+    "scope_schema_sha256": "dbaa568b18f4c061bb867f2d1047830b3c6f9234221bfefcd1fcd948454a8283",
+    "request_contract_sha256": "c98f2464b814696152bcb8946ffbc5ffea5b6a9daf48e1b6657f59d5aa2f2a1b",
+    "request_contract_schema_sha256": "c8ba494b784249425b6f503f049393f91ca3937cb076ba81c811732dc3697aa9",
+    "response_schema_sha256": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8"
+  },
+  "validation": {
+    "schema_metaschema_pass": "3/3",
+    "schema_instances_pass": "2/2",
+    "response_exemplar_pass": "1/1",
+    "target_input_hashes_match": "10/10",
+    "bound_evidence_hashes_match": "4/4",
+    "deterministic_source_package_render_pass": "1/1",
+    "deterministic_user_message_render_pass": "2/2",
+    "negative_mutations_rejected": "17/17"
+  },
+  "deterministic_binding": {
+    "source_package_bytes": 102960,
+    "source_package_sha256": "5e357eab0d23db0c79d34f7a66ddc01e0a8070314ed8b6be2cee3b34e3973813",
+    "qianfan_user_message_bytes": 103618,
+    "qianfan_user_message_sha256": "a53a994a5427bc247bd483d4263183348aa997c1b5b31950b29faaf5c8f3b14a",
+    "qwen_user_message_bytes": 103617,
+    "qwen_user_message_sha256": "e973133f5f8cf2e7c9f4b40b1925f9782f8112c4e6dd91b3aa734c84e39c188f"
+  },
+  "executed_counts": {
+    "network_requests": 0,
+    "live_model_requests": 0,
+    "credential_value_reads": 0,
+    "platform_validations": 0,
+    "container_starts": 0,
+    "target_writes": 0,
+    "dbos_writes": 0,
+    "saee_writes": 0
+  },
+  "effects": {
+    "decision_recorded": false,
+    "live_model_request_authorized": false,
+    "agent_security_review_executed": false,
+    "formal_human_security_review_complete": false,
+    "provider_supported": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false
+  }
+}

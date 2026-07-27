@@ -1,0 +1,226 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre73/pre73-agent-security-review-scope.schema.v0.1.json",
+  "title": "TITMAS PRE-73 Agent Security Review Scope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema", "document_id", "version", "status", "decision_candidate",
+    "exact_recommended_action", "primary_repository", "target", "bound_evidence",
+    "preconditions", "review_lanes", "execution_policy", "credential_accounting_caps",
+    "persistence_policy", "success_gate", "stop_conditions", "truth_boundaries", "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre73-agent-security-review-scope.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE73-AGENT-SECURITY-REVIEW-SCOPE-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "RECOMMENDATION_ONLY_DECISION_REQUIRED"},
+    "decision_candidate": {"const": "CS-D02-PRE-73"},
+    "exact_recommended_action": {"const": "AUTHORIZE_EXACT_TWO_SESSION_PRE73_DUAL_PROVIDER_AGENT_ASSISTED_STATIC_SECURITY_REVIEW"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "branch", "commit", "writes_max"],
+      "properties": {
+        "repository": {"const": "joy7758/titmas-integrations"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "commit": {"const": "0030077f29c37145a306b72e7083345eb76b504a"},
+        "writes_max": {"const": 0}
+      }
+    },
+    "bound_evidence": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {"$ref": "#/$defs/evidence"}
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre70_platform_gate_pass", "pre72_structured_output_preflight_pass",
+        "target_commit_exact", "target_clean", "review_input_hashes_match",
+        "source_package_sha256", "request_contract_schema_pass",
+        "response_schema_metaschema_pass", "formal_human_security_reviewer_assigned"
+      ],
+      "properties": {
+        "pre70_platform_gate_pass": {"const": true},
+        "pre72_structured_output_preflight_pass": {"const": true},
+        "target_commit_exact": {"const": true},
+        "target_clean": {"const": true},
+        "review_input_hashes_match": {"const": "10/10"},
+        "source_package_sha256": {"const": "5e357eab0d23db0c79d34f7a66ddc01e0a8070314ed8b6be2cee3b34e3973813"},
+        "request_contract_schema_pass": {"const": true},
+        "response_schema_metaschema_pass": {"const": true},
+        "formal_human_security_reviewer_assigned": {"const": false}
+      }
+    },
+    "review_lanes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"$ref": "#/$defs/qianfanLane"},
+        {"$ref": "#/$defs/qwenLane"}
+      ],
+      "items": false
+    },
+    "execution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "platform_validation_repeated", "container_runtime_started", "requests_max",
+        "ordering", "concurrency_max", "timeout_seconds_per_request", "retry_max",
+        "fallback_max", "model_substitution_max", "response_extraction_max",
+        "json_repair_max", "continue_independent_lane_after_failure"
+      ],
+      "properties": {
+        "platform_validation_repeated": {"const": false},
+        "container_runtime_started": {"const": false},
+        "requests_max": {"const": 2},
+        "ordering": {"const": "SEQUENTIAL"},
+        "concurrency_max": {"const": 1},
+        "timeout_seconds_per_request": {"const": 120},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "model_substitution_max": {"const": 0},
+        "response_extraction_max": {"const": 0},
+        "json_repair_max": {"const": 0},
+        "continue_independent_lane_after_failure": {"const": true}
+      }
+    },
+    "credential_accounting_caps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "credential_identifiers_configured",
+        "credential_values_accessed_in_process_memory_max",
+        "authorization_header_values_emitted_to_tls_client_max",
+        "credential_values_printed_max",
+        "credential_values_persisted_max",
+        "credential_values_exposed_outside_authorized_transport_max"
+      ],
+      "properties": {
+        "credential_identifiers_configured": {"const": 2},
+        "credential_values_accessed_in_process_memory_max": {"const": 2},
+        "authorization_header_values_emitted_to_tls_client_max": {"const": 2},
+        "credential_values_printed_max": {"const": 0},
+        "credential_values_persisted_max": {"const": 0},
+        "credential_values_exposed_outside_authorized_transport_max": {"const": 0}
+      }
+    },
+    "persistence_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_payload_persisted",
+        "source_package_persisted",
+        "raw_provider_envelope_persisted",
+        "raw_assistant_content_persisted",
+        "sanitized_admitted_review_object_persisted",
+        "request_response_hashes_and_counts_persisted"
+      ],
+      "properties": {
+        "request_payload_persisted": {"const": false},
+        "source_package_persisted": {"const": false},
+        "raw_provider_envelope_persisted": {"const": false},
+        "raw_assistant_content_persisted": {"const": false},
+        "sanitized_admitted_review_object_persisted": {"const": true},
+        "request_response_hashes_and_counts_persisted": {"const": true}
+      }
+    },
+    "success_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "qualifying_responses_required", "exact_returned_model_match_required",
+        "direct_json_required", "response_schema_required",
+        "all_sixteen_question_ids_in_order_required",
+        "role_target_source_and_non_claim_binding_required",
+        "favorable_verdict_required", "all_findings_and_unknowns_retained"
+      ],
+      "properties": {
+        "qualifying_responses_required": {"const": "2/2"},
+        "exact_returned_model_match_required": {"const": "2/2"},
+        "direct_json_required": {"const": "2/2"},
+        "response_schema_required": {"const": "2/2"},
+        "all_sixteen_question_ids_in_order_required": {"const": "2/2"},
+        "role_target_source_and_non_claim_binding_required": {"const": "2/2"},
+        "favorable_verdict_required": {"const": false},
+        "all_findings_and_unknowns_retained": {"const": true}
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 11,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 15}
+    },
+    "truth_boundaries": {
+      "type": "array",
+      "minItems": 9,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 10}
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": {"const": false}
+    }
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256", "meaning"],
+      "properties": {
+        "path": {"type": "string", "minLength": 20},
+        "sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "meaning": {"type": "string", "minLength": 15}
+      }
+    },
+    "responseFormat": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type"],
+      "properties": {"type": {"const": "json_object"}}
+    },
+    "qianfanLane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id", "provider", "endpoint", "model", "credential_identifier",
+        "review_role", "response_format", "enable_thinking"
+      ],
+      "properties": {
+        "session_id": {"const": "PRE73-QF-SECURITY-01"},
+        "provider": {"const": "BAIDU_QIANFAN"},
+        "endpoint": {"const": "https://qianfan.baidubce.com/v2/chat/completions"},
+        "model": {"const": "ernie-4.5-turbo-20260402"},
+        "credential_identifier": {"const": "QIANFAN_API_KEY"},
+        "review_role": {"const": "IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE"},
+        "response_format": {"$ref": "#/$defs/responseFormat"},
+        "enable_thinking": {"const": "OMITTED"}
+      }
+    },
+    "qwenLane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id", "provider", "endpoint", "model", "credential_identifier",
+        "review_role", "response_format", "enable_thinking"
+      ],
+      "properties": {
+        "session_id": {"const": "PRE73-QWEN-SECURITY-02"},
+        "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+        "endpoint": {"const": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions"},
+        "model": {"const": "qwen3.7-plus"},
+        "credential_identifier": {"const": "DASHSCOPE_API_KEY"},
+        "review_role": {"const": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"},
+        "response_format": {"$ref": "#/$defs/responseFormat"},
+        "enable_thinking": {"const": false}
+      }
+    }
+  }
+}

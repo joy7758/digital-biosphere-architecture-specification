@@ -1,0 +1,148 @@
+{
+  "$schema": "./pre73-agent-security-review-scope.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE73-AGENT-SECURITY-REVIEW-SCOPE-0.1",
+  "version": "0.1.0",
+  "status": "RECOMMENDATION_ONLY_DECISION_REQUIRED",
+  "decision_candidate": "CS-D02-PRE-73",
+  "exact_recommended_action": "AUTHORIZE_EXACT_TWO_SESSION_PRE73_DUAL_PROVIDER_AGENT_ASSISTED_STATIC_SECURITY_REVIEW",
+  "primary_repository": "digital-biosphere-architecture",
+  "target": {
+    "repository": "joy7758/titmas-integrations",
+    "branch": "codex/rb0-governance-baseline",
+    "commit": "0030077f29c37145a306b72e7083345eb76b504a",
+    "writes_max": 0
+  },
+  "bound_evidence": [
+    {
+      "path": "../commercialization-standards-p0-security-and-platform-context-remediation/pre70-execution-receipt.v0.1.json",
+      "sha256": "dff61e79c0322860b7d9796f09bdad32ad1d7e91a69b2a5b7c03e94764f2ddc9",
+      "meaning": "PLATFORM_GATE_PASS_AGENT_REVIEW_TRANSPORT_FAILED"
+    },
+    {
+      "path": "../commercialization-standards-p0-security-and-platform-provider-capability-evidence/pre72-execution-receipt.v0.1.json",
+      "sha256": "12c00a10d468f21f07088a0dd5620f7c33dbbd5146c516bacb3e204022b51e2e",
+      "meaning": "DUAL_PROVIDER_STRUCTURED_OUTPUT_PREFLIGHT_PASS_6_OF_6"
+    },
+    {
+      "path": "./pre73-review-request-contract.v0.1.json",
+      "sha256": "c98f2464b814696152bcb8946ffbc5ffea5b6a9daf48e1b6657f59d5aa2f2a1b",
+      "meaning": "FROZEN_REQUEST_SOURCE_AND_TRANSPORT_CONTRACT"
+    },
+    {
+      "path": "./pre73-agent-review-response.schema.v0.2.json",
+      "sha256": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8",
+      "meaning": "STRICT_ORDERED_SIXTEEN_QUESTION_RESPONSE_SCHEMA"
+    }
+  ],
+  "preconditions": {
+    "pre70_platform_gate_pass": true,
+    "pre72_structured_output_preflight_pass": true,
+    "target_commit_exact": true,
+    "target_clean": true,
+    "review_input_hashes_match": "10/10",
+    "source_package_sha256": "5e357eab0d23db0c79d34f7a66ddc01e0a8070314ed8b6be2cee3b34e3973813",
+    "request_contract_schema_pass": true,
+    "response_schema_metaschema_pass": true,
+    "formal_human_security_reviewer_assigned": false
+  },
+  "review_lanes": [
+    {
+      "session_id": "PRE73-QF-SECURITY-01",
+      "provider": "BAIDU_QIANFAN",
+      "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+      "model": "ernie-4.5-turbo-20260402",
+      "credential_identifier": "QIANFAN_API_KEY",
+      "review_role": "IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE",
+      "response_format": {"type": "json_object"},
+      "enable_thinking": "OMITTED"
+    },
+    {
+      "session_id": "PRE73-QWEN-SECURITY-02",
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "model": "qwen3.7-plus",
+      "credential_identifier": "DASHSCOPE_API_KEY",
+      "review_role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE",
+      "response_format": {"type": "json_object"},
+      "enable_thinking": false
+    }
+  ],
+  "execution_policy": {
+    "platform_validation_repeated": false,
+    "container_runtime_started": false,
+    "requests_max": 2,
+    "ordering": "SEQUENTIAL",
+    "concurrency_max": 1,
+    "timeout_seconds_per_request": 120,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "model_substitution_max": 0,
+    "response_extraction_max": 0,
+    "json_repair_max": 0,
+    "continue_independent_lane_after_failure": true
+  },
+  "credential_accounting_caps": {
+    "credential_identifiers_configured": 2,
+    "credential_values_accessed_in_process_memory_max": 2,
+    "authorization_header_values_emitted_to_tls_client_max": 2,
+    "credential_values_printed_max": 0,
+    "credential_values_persisted_max": 0,
+    "credential_values_exposed_outside_authorized_transport_max": 0
+  },
+  "persistence_policy": {
+    "request_payload_persisted": false,
+    "source_package_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "raw_assistant_content_persisted": false,
+    "sanitized_admitted_review_object_persisted": true,
+    "request_response_hashes_and_counts_persisted": true
+  },
+  "success_gate": {
+    "qualifying_responses_required": "2/2",
+    "exact_returned_model_match_required": "2/2",
+    "direct_json_required": "2/2",
+    "response_schema_required": "2/2",
+    "all_sixteen_question_ids_in_order_required": "2/2",
+    "role_target_source_and_non_claim_binding_required": "2/2",
+    "favorable_verdict_required": false,
+    "all_findings_and_unknowns_retained": true
+  },
+  "stop_conditions": [
+    "DECISION_MISSING_OR_SCOPE_MISMATCH",
+    "TARGET_COMMIT_OR_TEN_INPUT_HASH_DRIFT",
+    "SOURCE_PACKAGE_OR_USER_MESSAGE_HASH_MISMATCH",
+    "MISSING_OR_EMPTY_CREDENTIAL_VALUE",
+    "REQUEST_CAP_OR_SEQUENCE_DRIFT",
+    "HTTP_TIMEOUT_OR_RETURNED_MODEL_FAILURE_STOPS_FAILED_LANE",
+    "DIRECT_JSON_SCHEMA_ROLE_TARGET_SOURCE_OR_NON_CLAIM_FAILURE_STOPS_FAILED_LANE",
+    "NO_RETRY_FALLBACK_SUBSTITUTION_EXTRACTION_OR_REPAIR",
+    "RAW_REQUEST_SOURCE_PROVIDER_ENVELOPE_OR_ASSISTANT_TEXT_PERSISTENCE_ATTEMPT_STOPS_ALL",
+    "CREDENTIAL_PRINT_PERSISTENCE_OR_EXPOSURE_ATTEMPT_STOPS_ALL",
+    "TARGET_DBOS_OR_SAEE_WRITE_ATTEMPT_STOPS_ALL"
+  ],
+  "truth_boundaries": [
+    "AGENT_REVIEW_NE_FORMAL_HUMAN_SECURITY_REVIEW",
+    "SCHEMA_PASS_NE_FAVORABLE_VERDICT",
+    "TWO_REVIEWS_NE_PROVIDER_SUPPORT",
+    "STATIC_REVIEW_NE_RUNTIME_CONFORMANCE",
+    "FINDING_NE_PROVEN_VULNERABILITY",
+    "PLATFORM_EVIDENCE_REUSE_NE_NEW_PLATFORM_EXECUTION",
+    "RECOMMENDATION_NE_DECISION",
+    "DECISION_NE_EXECUTION",
+    "EVIDENCE_NE_TRUTH"
+  ],
+  "effects": {
+    "decision_recorded": false,
+    "live_model_request_authorized": false,
+    "platform_validation_executed": false,
+    "target_repository_write_authorized": false,
+    "dbos_write_authorized": false,
+    "saee_write_authorized": false,
+    "formal_human_security_review_complete": false,
+    "provider_supported": false,
+    "conformance_pass": false,
+    "contract_adopted_as_standard": false,
+    "standard_ready": false,
+    "release_authorized": false
+  }
+}
