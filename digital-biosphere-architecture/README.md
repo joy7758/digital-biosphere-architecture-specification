@@ -506,6 +506,10 @@ package/lock 和无 `node_modules` 均通过，但 raw `npm prefix` 字符串比
 及其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
 得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction；只允许建立新的
 R3 Decision，以 raw+realpath 双记录修正前置检查，不改变诊断命令。
+[R3 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-DECISION-RECORD.v0.1.json)
+及其 [write-ahead qwen3.7-max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-QWEN-DECISION-REVIEW-v0.1.json)
+得到 `APPROVE`、confidence `0.95`、0 blocker/correction。远端 Decision baseline 核验后
+只允许一次 normalized-prefix observation 和一次 conditional zero-install dry-run。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
