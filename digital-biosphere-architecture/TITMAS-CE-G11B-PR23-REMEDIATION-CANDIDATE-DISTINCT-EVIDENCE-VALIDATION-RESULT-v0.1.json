@@ -1,0 +1,127 @@
+{
+  "record_type": "TITMAS_DISTINCT_EVIDENCE_MERGE_TREE_VALIDATION_RESULT",
+  "result_id": "TITMAS-CE-G11B-PR23-REMEDIATION-CANDIDATE-DISTINCT-EVIDENCE-VALIDATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28",
+  "status": "FAIL_CLOSED_CE_SCHEMA_SELECTOR_SCOPE_MISMATCH_EXPECTED_3_OBSERVED_11",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-REMEDIATION-CANDIDATE-DISTINCT-EVIDENCE-VALIDATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "0df0979b54069388ee8ae08ab5d29b88738dbefe",
+  "evidence_ref": "refs/heads/codex/ce-g11b-pr23-remediation-candidate-evidence",
+  "evidence_ref_result_commit_binding_rule": "The remote evidence ref commit containing this Result and Report is the evidence result commit. Its concrete SHA is observed after the single authorized push and is not self-embedded.",
+  "frozen_binding": {
+    "candidate_ref": "refs/heads/codex/ce-g11b-pr23-remediation-candidate",
+    "candidate_commit": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "candidate_parent": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+    "candidate_patch_sha256": "61c6bffe91df1f3af4731ae3be721998f5e3c8c687ca05cfc4dac74cd07aa0a8",
+    "canonical_ref": "refs/heads/codex/production-observability-baseline",
+    "canonical_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "merge_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "synthetic_local_validation_commit": "e891200371a6a85ce97fa83c1317b54e48846d3a",
+    "old_candidate_commit": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+    "old_evidence_commit": "89baeeeb42904b4ea41652d649f8be9a484f3b48",
+    "candidate_remote_unchanged": true,
+    "canonical_remote_unchanged": true,
+    "old_candidate_remote_unchanged": true,
+    "old_evidence_remote_unchanged": true
+  },
+  "execution": {
+    "temporary_worktrees_created": 1,
+    "network_fallbacks": 0,
+    "command_retries": 0,
+    "tracked_json_check": {
+      "attempts": 1,
+      "exit": 0,
+      "files_passed": 1165,
+      "duplicate_keys": 0,
+      "output_sha256": "238bbf85ce6aff3c0fa139123b16c523be5b7535aa5080478a07a868e98546f5"
+    },
+    "commercial_entry_schema": {
+      "attempts": 1,
+      "exit": 0,
+      "status": "PASS",
+      "output_sha256": "465a2bb3418801244eab9d856df8ef5e81f87b176b4b0976e834ee6126c7b54a"
+    },
+    "npm_ci": {
+      "attempts": 1,
+      "exit": 0,
+      "offline": true,
+      "ignore_scripts": true,
+      "packages_added": 493,
+      "output_sha256": "6baae97dd1f30b8fe31c1508cbbb10b50a88f539ae08f896fe8d85226e760b55"
+    },
+    "npm_ls": {
+      "attempts": 1,
+      "exit": 0,
+      "direct_dependencies": 23,
+      "reported_problem_count": 5,
+      "reported_problem_category": "EXTRANEOUS_OPTIONAL_WASM_PACKAGES",
+      "absolute_local_paths_persisted": false,
+      "output_sha256": "c97547c59c4aeaf036cc63bff96fb00244ac1ff5175b5922922dd349367b7951"
+    },
+    "npm_test": {
+      "attempts": 1,
+      "exit": 0,
+      "tests_passed": 16,
+      "tests_failed": 0,
+      "output_sha256": "d1fe63e35950f214f1d8c7f681180469096f2832301deb993164efb33782a66f"
+    },
+    "release_formal": {
+      "attempts": 1,
+      "exit": 0,
+      "effect": "LOCAL_STATIC_EXPORT_AND_VERIFICATION_ONLY",
+      "static_export_pass": true,
+      "content_parity_pass": true,
+      "truth_boundary_validation_pass": true,
+      "manifest_files": 65,
+      "output_sha256": "6055b0848fa79be9a1d26ed7b825a565904cb31ec93fe35946421a902a9c9094"
+    },
+    "ce_schema_meta_validation": {
+      "attempts": 1,
+      "exit": 1,
+      "schemas_validated_before_contract_assertion": 11,
+      "schemas_expected_by_contract": 3,
+      "output_sha256": "535465341a725cc4c94a69991ef60cd3a49074e95ca53787f3b4acfda2d53062"
+    },
+    "ce_tests": {
+      "attempts": 0,
+      "reason": "NOT_RUN_AFTER_FAIL_CLOSED_CE_SCHEMA_COUNT_ASSERTION"
+    }
+  },
+  "failure_analysis": {
+    "failure_category": "VALIDATION_CONTRACT_SELECTOR_SCOPE_MISMATCH",
+    "selector_used": "recursive filenames containing schema",
+    "selector_observed_schema_count": 11,
+    "decision_expected_schema_count": 3,
+    "all_observed_schemas_passed_meta_validation_before_count_assertion": true,
+    "product_schema_failure_proven": false,
+    "product_test_failure_proven": false,
+    "local_pass_reinterpretation_allowed": false,
+    "rerun_allowed": false,
+    "source_or_test_fix_allowed": false
+  },
+  "integrity": {
+    "tracked_source_diff_before_failure": 0,
+    "git_status_entries_before_failure": 0,
+    "candidate_remote_unchanged": true,
+    "canonical_remote_unchanged": true,
+    "old_refs_unchanged": true,
+    "pr_23_mutated": false,
+    "pr_24_mutated": false
+  },
+  "effects": {
+    "merge_tree_validation_complete": false,
+    "distinct_evidence_result": "FAIL_CLOSED",
+    "replacement_pr_authorization": false,
+    "pr_mutation_authorization": false,
+    "merge_authorization": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_SCHEMA_SELECTOR_CONTRACT_REMEDIATION_RECOMMENDATION_ONLY",
+    "authorized": false
+  }
+}
