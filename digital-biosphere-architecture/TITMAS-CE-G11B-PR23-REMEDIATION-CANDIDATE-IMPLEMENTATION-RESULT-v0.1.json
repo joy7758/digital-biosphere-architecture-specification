@@ -1,0 +1,125 @@
+{
+  "record_type": "TITMAS_BOUNDED_REMEDIATION_CANDIDATE_IMPLEMENTATION_RESULT",
+  "result_id": "TITMAS-CE-G11B-PR23-REMEDIATION-CANDIDATE-IMPLEMENTATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28",
+  "status": "FAIL_CLOSED_IMPLEMENTATION_REVIEW_CONTRACT_AMBIGUITY_CANDIDATE_NOT_COMMITTED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-REMEDIATION-CANDIDATE-IMPLEMENTATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "b8a3d6c11df59da7ef15e806c5bdf27a8a11c20b",
+  "implementation_review_reference": "TITMAS-CE-G11B-PR23-REMEDIATION-CANDIDATE-IMPLEMENTATION-QWEN-REVIEW-v0.1.json",
+  "frozen_inputs": {
+    "base_sha": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+    "patch_sha256": "61c6bffe91df1f3af4731ae3be721998f5e3c8c687ca05cfc4dac74cd07aa0a8",
+    "patch_bytes": 10409,
+    "patch_lines": 181,
+    "source_hashes_matched": "7/7",
+    "changed_paths": "7/7",
+    "required_corrections": "5/5"
+  },
+  "deterministic_validation": {
+    "scope_exact": true,
+    "readme_diff": 0,
+    "new_paths": 0,
+    "deleted_paths": 0,
+    "tracked_json_parse": "1164/1164",
+    "duplicate_json_keys": 0,
+    "commercialization_entry_schema_meta": "PASS",
+    "commercialization_entry_instance": "PASS",
+    "entry_schema_const_match": "PASS",
+    "program_status_consistency": "PASS",
+    "ce_schema_meta": "3/3",
+    "npm_ci": {
+      "attempts": 1,
+      "exit": 0,
+      "offline": true,
+      "ignore_scripts": true,
+      "direct_dependencies": 23,
+      "missing": 0,
+      "invalid": 0,
+      "log_sha256": "e7582a1527764bdc6231acca0c9ff91d11fd1f0dce93414fc9d9983faa90650a",
+      "npm_ls_sha256": "bc6c837d04159c3212554784d3e352c46d885541632a329d341c9294a5d10a07"
+    },
+    "npm_test": {
+      "attempts": 1,
+      "exit": 0,
+      "tests_passed": 15,
+      "tests_failed": 0,
+      "log_sha256": "d0093c92e98a54191f29f1e3e947b12a4c8702fe7a7681dcc32c57ede92412ce"
+    },
+    "release_formal": {
+      "attempts": 1,
+      "exit": 0,
+      "effect": "LOCAL_STATIC_EXPORT_AND_VERIFICATION_ONLY",
+      "static_export": "PASS",
+      "static_verify": "PASS",
+      "content_parity": "PASS",
+      "truth_boundary_validation": "PASS",
+      "manifest_files": 60,
+      "log_sha256": "f86bf8131481cdb669acb59d7a457b5f004dcd33ae576b144aa085f2124def0a"
+    },
+    "ce_tests": {
+      "attempts": 1,
+      "exit": 0,
+      "tests_passed": 49,
+      "tests_failed": 0,
+      "log_sha256": "8ab6a92d348b11e1020d76ba719bbf896ef6c003f3b2e026520546a545443153"
+    },
+    "wrapper_observation": {
+      "wrapper_exit_after_successful_commands": 1,
+      "cause": "POST_COMMAND_ASSERTION_EXPECTED_16_SITE_TESTS_WHILE_FROZEN_SOURCE_CONTAINS_15",
+      "npm_test_rerun": 0,
+      "release_formal_rerun": 0,
+      "product_test_failure": false
+    },
+    "generated_tracked_paths": 0,
+    "secret_or_absolute_local_path_diff_hits": 0
+  },
+  "implementation_review": {
+    "requested_model": "qwen3.7-max",
+    "returned_model": "qwen3.7-max",
+    "http_status": 200,
+    "curl_exit": 0,
+    "direct_json": true,
+    "verdict": "PASS",
+    "confidence": 1,
+    "blocking_findings": 0,
+    "required_corrections": 5,
+    "request_count": 1,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "model_substitution_count": 0,
+    "json_extraction_count": 0,
+    "json_repair_count": 0,
+    "qualifying": false,
+    "failure_category": "REQUIRED_CORRECTIONS_ARRAY_NONEMPTY_UNDER_ZERO_MAX_CONTRACT"
+  },
+  "failure_analysis": {
+    "model_rationale_says_five_corrections_are_implemented": true,
+    "required_corrections_array_contains_same_five_implemented_ids": true,
+    "outstanding_correction_semantics_explicit_in_request": false,
+    "local_reclassification_or_reinterpretation_allowed": false,
+    "candidate_defect_proven_by_failure": false,
+    "response_contract_ambiguity_detected": true,
+    "authorized_request_cap_consumed": true
+  },
+  "effects": {
+    "candidate_branch_local_exists": true,
+    "candidate_commit_created": false,
+    "candidate_remote_ref_created": false,
+    "old_candidate_mutated": false,
+    "old_evidence_mutated": false,
+    "pr_23_mutated": false,
+    "pr_24_mutated": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "available_commercial_offering": false
+  },
+  "next_gate": {
+    "allowed": "PREPARE_IMPLEMENTATION_REVIEW_RESPONSE_CONTRACT_REMEDIATION_RECOMMENDATION_ONLY",
+    "authorized": false,
+    "candidate_patch_must_remain_exact": true,
+    "new_model_request_authorized": false
+  }
+}
