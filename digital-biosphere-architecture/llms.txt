@@ -1,0 +1,53 @@
+# TITMAS
+
+> Trusted Multi-Agent Infrastructure
+> 可信多智能体基础设施
+
+TITMAS provides open, agent-readable trust infrastructure for long-running
+multi-agent systems. The current public artifact is a bounded Developer Preview,
+not an Agent Framework, Runtime, hosted API, permission system, certification,
+or production release.
+
+## Start here
+
+- Commercial evaluation package:
+  ./TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json
+- Ten-minute first run:
+  ./TITMAS-FIRST-RUN-v0.1.md
+- Synthetic validation fixture:
+  ./examples/titmas-first-run/entity-object.synthetic.v0.1.json
+- Public package manifest:
+  ./DBOS-PUBLIC-PACKAGE-MANIFEST-v0.1.json
+- Agent customer package:
+  ./AGENT-CUSTOMER-PACKAGE-v0.1.1.json
+- Public project overview:
+  ./PUBLIC-PROJECT-OVERVIEW.md
+
+## Install
+
+Python requirement: >=3.11
+
+git clone --branch codex/production-observability-baseline --single-branch https://github.com/joy7758/digital-biosphere-architecture-specification.git
+cd digital-biosphere-architecture-specification
+python3 -m venv .venv-titmas
+. .venv-titmas/bin/activate
+python3 -m pip install https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl
+
+## Validate
+
+dbos-validate examples/titmas-first-run/entity-object.synthetic.v0.1.json
+
+Expected result: PASS
+
+PASS means local structure and governance-constraint validation only. It does
+not establish truth, authority, authorization, permission, certification,
+registration, activation, execution, or production readiness.
+
+## Current commercial truth
+
+- Commercial evaluation package prepared: true
+- Available commercial offering: false
+- Customers verified: 0
+- Contracts created: 0
+- SLA defined: false
+- Production ready: false

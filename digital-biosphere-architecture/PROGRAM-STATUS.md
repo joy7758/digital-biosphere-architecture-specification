@@ -19,6 +19,9 @@ titmas_public_domain_filing_status: pending
 titmas_public_domain_live: false
 titmas_github_organization_slug: titmas-cn
 titmas_github_organization_created: false
+titmas_commercial_evaluation_package_prepared: true
+titmas_available_commercial_offering: false
+titmas_commercial_evaluation_next_gate: external-agent-first-run-validation-not-authorized
 ---
 
 # Digital Biosphere Program Status Snapshot（数字生物圈项目群状态快照）
@@ -54,6 +57,11 @@ TITMAS_GITHUB_ORGANIZATION_SLUG_SELECTED=true
 TITMAS_GITHUB_ORGANIZATION_SLUG=titmas-cn
 TITMAS_GITHUB_ORGANIZATION_CREATED=false
 TITMAS_REPOSITORIES_TRANSFERRED=0
+TITMAS_COMMERCIAL_EVALUATION_PACKAGE_PREPARED=true
+TITMAS_AVAILABLE_COMMERCIAL_OFFERING=false
+TITMAS_COMMERCIAL_EVALUATION_FIRST_RUN_PASS=true
+TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE=EXTERNAL_AGENT_FIRST_RUN_VALIDATION
+TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE_AUTHORIZED=false
 SCOPED_LOCAL_DBOS_SAEE_CONFORMANCE_PASS=true
 FULL_END_TO_END_INTEGRATION_VERIFIED=false
 ACTIVE_DIGITAL_ENTITY_VERIFIED_BY_DBA=false
@@ -416,7 +424,8 @@ Developer Preview v0.1 的历史发布结果 `PASS_WITH_DISCLOSED_LIMITATIONS` �
 | P0 Resolver Multi-Provider Agent Review | `PRE65_PASS_2_OF_2_CONTRACT_REVISE_VERDICTS_PRE66_REMEDIATION_RECOMMENDATION_REQUIRED` | ERNIE `ernie-4.5-turbo-20260402` 与 Qwen `qwen3.7-plus` 两条顺序候选审查均通过 HTTP/direct JSON/frozen Schema/exact model/boundary；两者均为 `REVISE` / `CONDITIONAL`，共同要求可执行 5s deadline 与 executable tests，Qwen 另提出 DNS rebinding/TOCTOU；10/10 negative mutations rejected，0 retry/fallback/substitution/extraction/repair；正式 Human Security Review、Provider support、实现授权与 Standard Ready 仍为 false |
 | P0 Deadline and DNS Rebinding Remediation | `PRE66_PASS_OFFLINE_REMEDIATION_DESIGN_PRE67_EXECUTABLE_TEST_SCOPE_RECOMMENDATION_REQUIRED` | 5 种 deadline mechanism 已比较，有条件选择 single-use subprocess；5000 ms 修订为 success admission deadline，并显式保持 total wall-clock upper-bound claim=false；DNS 采用 numeric destination policy、same-address pinning、P1 zero re-resolution 与 original-hostname TLS；为跨进程连续性明确允许最多 512-byte／1 address 的 ephemeral local IPC；6/6 Schema、7/7 input hashes、12/12 negatives、12/12 receipt hashes；policy snapshot、contract adoption、tests、implementation、formal Security Review 和 Standard Ready 仍为 false |
 | P0 Executable Test and Reference Implementation | `PRE67_PASS_BOUNDED_POSIX_REFERENCE_IMPLEMENTATION_OFFLINE_TESTS_PRE68_FORMAL_REVIEW_SCOPE_RECOMMENDATION_REQUIRED` | target `0030077…` 精确完成 11 个新增与 8 个更新路径；本地及 remote clean clone 均为 92/92 tests、7/7 independent rehearsal、4/4 machine instances、9/9 declaration hashes、2/2 frozen IANA bytes 和 offline build PASS；真实 DNS/TCP/TLS/HTTP、credential read、P1/P2、Provider binding 与发布均为 0；只在 Darwin arm64 / CPython 3.14.5 观察，Linux 未验证、Windows 不支持、跨平台与绝对 wall-clock bound 不声明；正式 Human Security Review、contract adoption、Standard Ready 仍为 false |
-| P0 Security and Platform Review Scope | `PRE75_EXECUTED_PASS_FULL_SCHEMA_TRANSMISSION_PRE76_RECOMMENDATION_REQUIRED` | PRE-75 已以独立 Decision 完成 Stage A：7/7 input、10/10 target、2/2 rendered requests/full Schema transmission、3/3 coverage、2/2 response session binding、16/16 negatives PASS；execution id 与 frozen PRE73 response id 分离。request/capture 仍为 Development candidate；network/model/credential/raw persistence/target actions=0，PRE-76 尚未推荐或授权 |
+| P0 Security and Platform Review Scope | `PRE75_EXECUTED_SECURITY_SUBTRACK_FROZEN` | PRE-75 已以独立 Decision 完成 Stage A：7/7 input、10/10 target、2/2 rendered requests/full Schema transmission、3/3 coverage、2/2 response session binding、16/16 negatives PASS；execution id 与 frozen PRE73 response id 分离。request/capture 仍为 Development candidate；network/model/credential/raw persistence/target actions=0。为避免偏离主线，PRE-76 不再作为当前下一步 |
+| First Commercial Evaluation Pack | `PREPARED_NOT_AVAILABLE_OFFERING` | 公开 wheel、5 类对象契约、只读 validator、机器清单、合成样例和 10 分钟 First Run 已收敛；本地样例得到 `PASS`。客户、合同、收入、SLA、生产与认证继续为 0/false；外部智能体 First Run 尚未授权 |
 | Trusted Multi-Agent Protocol | `ARCHITECTURE_BASELINE_DEFINED_NOT_IMPLEMENTED` | 六类协议对象、四个可信边界和 Protocol→SDK→Reference Implementation→Adapter 路线已定义；未创建 API、SDK 或 Runtime |
 | OpenTelemetry Observability Profile | `DQ_018_SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_HUMAN_SECURITY_REVIEW_READY_NOT_APPROVED` | DQ-022–025 exact references 已采纳；当前 DBOS source 的 P001—P005、`HSR-PRE-001/002` 负例与供应链检查已在原生 Linux x86_64 完成并远端复验；未部署 Collector 或 endpoint |
 | OpenTelemetry Semantic Mapping and Conformance | `DQ_023_REFERENCE_ADOPTED_DQ_018_AUTHORIZED_SUBSET_32_OF_32_PASS` | pinned mapping 已进入 DBOS 离线参考实现；32/32 authorized cases 通过，14 个 DQ-020 cases blocked；不产生 Runtime compatibility 声明 |

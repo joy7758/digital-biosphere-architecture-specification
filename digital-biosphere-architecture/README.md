@@ -111,6 +111,10 @@ entity_registered: false
 open_infrastructure_strategy_constitution_defined: true
 open_infrastructure_strategy_implemented: false
 commercial_offering_created: false
+commercial_evaluation_package_defined: true
+commercial_evaluation_package_status: prepared-not-available-offering
+commercial_evaluation_first_run_validated: true
+commercial_evaluation_machine_entry_defined: true
 developer_ecosystem_created: false
 titmas_infrastructure_developer_community_strategy_defined: true
 titmas_infrastructure_developer_community_direction_adopted: true
@@ -148,6 +152,47 @@ TITMAS_GITHUB_ORGANIZATION_SLUG_SELECTED=true
 TITMAS_GITHUB_ORGANIZATION_CREATED=false
 TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
 TITMAS_PUBLIC_CONTRIBUTION_ENABLED=false
+```
+
+## Start Here — First Commercial Evaluation Pack（第一版商业评估入口）
+
+如果你第一次接触 TITMAS，不需要先阅读全部架构历史。先用 10 分钟回答一个问题：
+
+> TITMAS 当前能否为多智能体系统提供可机器读取、失败关闭的执行可追责对象边界？
+
+入口：
+
+- 人类与智能体说明：
+  [`TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.md`](TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.md)
+- Machine-readable manifest：
+  [`TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json`](TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json)
+- 10 分钟验证：
+  [`TITMAS-FIRST-RUN-v0.1.md`](TITMAS-FIRST-RUN-v0.1.md)
+- LLM / Agent 入口：
+  [`llms.txt`](llms.txt)
+
+```bash
+git clone --branch codex/production-observability-baseline --single-branch \
+  https://github.com/joy7758/digital-biosphere-architecture-specification.git
+cd digital-biosphere-architecture-specification
+python3 -m venv .venv-titmas
+. .venv-titmas/bin/activate
+python -m pip install \
+  https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl
+dbos-validate examples/titmas-first-run/entity-object.synthetic.v0.1.json
+```
+
+期望输出包含 `"result": "PASS"`。这个 `PASS` 只表示本地结构和治理约束验证通过，
+不表示 Truth、Permission、Authority、Certification、Registration、Activation 或
+Production Readiness。
+
+```text
+COMMERCIAL_EVALUATION_PACKAGE_PREPARED=true
+AVAILABLE_COMMERCIAL_OFFERING=false
+CUSTOMERS_VERIFIED=0
+CONTRACTS_CREATED=0
+SLA_DEFINED=false
+PRODUCTION_READY=false
 ```
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
