@@ -1,0 +1,71 @@
+{
+  "$schema": "./deadline-mechanism-comparison.schema.v0.1.json",
+  "document_id": "TITMAS-PRE66-DEADLINE-MECHANISM-COMPARISON-0.1",
+  "version": "0.1.0",
+  "decision_reference": "CS-D02-PRE-66",
+  "candidates": [
+    {
+      "candidate_id": "BOUNDED_THREAD_JOIN",
+      "hard_cancellation": false,
+      "preserves_in_process_address": true,
+      "cross_platform_candidate": true,
+      "dependency_required": false,
+      "disposition": "REJECTED_BACKGROUND_RESOLUTION_CAN_SURVIVE_TIMEOUT"
+    },
+    {
+      "candidate_id": "SIGNAL_ALARM_WRAPPER",
+      "hard_cancellation": "PLATFORM_AND_CONTEXT_DEPENDENT",
+      "preserves_in_process_address": true,
+      "cross_platform_candidate": false,
+      "dependency_required": false,
+      "disposition": "REJECTED_NOT_CROSS_PLATFORM"
+    },
+    {
+      "candidate_id": "SINGLE_USE_SUBPROCESS_TIMEOUT_V1",
+      "hard_cancellation": "TERMINATE_OR_KILL_AND_WAIT_WITH_PROCESS_CREATION_LIMITATION",
+      "preserves_in_process_address": false,
+      "cross_platform_candidate": true,
+      "dependency_required": false,
+      "disposition": "SELECTED_WITH_LIMITATIONS"
+    },
+    {
+      "candidate_id": "ASYNC_CARES_RESOLVER",
+      "hard_cancellation": "IMPLEMENTATION_DEPENDENT",
+      "preserves_in_process_address": true,
+      "cross_platform_candidate": true,
+      "dependency_required": true,
+      "disposition": "DEFERRED_DEPENDENCY_NOT_AUTHORIZED"
+    },
+    {
+      "candidate_id": "PLATFORM_NATIVE_CANCELLABLE_RESOLVER",
+      "hard_cancellation": "PLATFORM_DEPENDENT",
+      "preserves_in_process_address": true,
+      "cross_platform_candidate": false,
+      "dependency_required": "PLATFORM_DEPENDENT",
+      "disposition": "DEFERRED_NOT_GENERAL_V0_1_REFERENCE"
+    }
+  ],
+  "selected_candidate_id": "SINGLE_USE_SUBPROCESS_TIMEOUT_V1",
+  "deadline_semantics": {
+    "clock": "MONOTONIC",
+    "success_admission_deadline_ms": 5000,
+    "deadline_starts_before_worker_start_attempt": true,
+    "late_result_accepted": false,
+    "p1_allowed_after_deadline": false,
+    "worker_must_not_be_alive_before_return": true,
+    "total_wall_clock_upper_bound_claim": false,
+    "process_creation_interruptible_claim": false
+  },
+  "known_limitations": [
+    "PROCESS_CREATION_MAY_NOT_BE_INTERRUPTIBLE_BY_TIMEOUT",
+    "TERMINATION_AND_WAIT_LATENCY_HAS_NO_CROSS_PLATFORM_ABSOLUTE_BOUND",
+    "SELECTED_ADDRESS_REQUIRES_EPHEMERAL_LOCAL_IPC",
+    "SUPPORTED_PLATFORM_CONFORMANCE_REQUIRES_IMPLEMENTATION_EVIDENCE"
+  ],
+  "effects": {
+    "mechanism_implemented": false,
+    "dependency_adopted": false,
+    "tests_executed": false,
+    "cross_platform_hard_deadline_proven": false
+  }
+}

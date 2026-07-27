@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/deadline-mechanism-comparison.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "decision_reference", "candidates", "selected_candidate_id", "deadline_semantics", "known_limitations", "effects"],
+  "properties": {
+    "$schema": {"const": "./deadline-mechanism-comparison.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-PRE66-DEADLINE-MECHANISM-COMPARISON-0.1"},
+    "version": {"const": "0.1.0"},
+    "decision_reference": {"const": "CS-D02-PRE-66"},
+    "candidates": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["candidate_id", "hard_cancellation", "preserves_in_process_address", "cross_platform_candidate", "dependency_required", "disposition"],
+        "properties": {
+          "candidate_id": {"enum": ["BOUNDED_THREAD_JOIN", "SIGNAL_ALARM_WRAPPER", "SINGLE_USE_SUBPROCESS_TIMEOUT_V1", "ASYNC_CARES_RESOLVER", "PLATFORM_NATIVE_CANCELLABLE_RESOLVER"]},
+          "hard_cancellation": {"type": ["boolean", "string"]},
+          "preserves_in_process_address": {"type": "boolean"},
+          "cross_platform_candidate": {"type": "boolean"},
+          "dependency_required": {"type": ["boolean", "string"]},
+          "disposition": {"type": "string"}
+        }
+      }
+    },
+    "selected_candidate_id": {"const": "SINGLE_USE_SUBPROCESS_TIMEOUT_V1"},
+    "deadline_semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["clock", "success_admission_deadline_ms", "deadline_starts_before_worker_start_attempt", "late_result_accepted", "p1_allowed_after_deadline", "worker_must_not_be_alive_before_return", "total_wall_clock_upper_bound_claim", "process_creation_interruptible_claim"],
+      "properties": {
+        "clock": {"const": "MONOTONIC"},
+        "success_admission_deadline_ms": {"const": 5000},
+        "deadline_starts_before_worker_start_attempt": {"const": true},
+        "late_result_accepted": {"const": false},
+        "p1_allowed_after_deadline": {"const": false},
+        "worker_must_not_be_alive_before_return": {"const": true},
+        "total_wall_clock_upper_bound_claim": {"const": false},
+        "process_creation_interruptible_claim": {"const": false}
+      }
+    },
+    "known_limitations": {
+      "const": [
+        "PROCESS_CREATION_MAY_NOT_BE_INTERRUPTIBLE_BY_TIMEOUT",
+        "TERMINATION_AND_WAIT_LATENCY_HAS_NO_CROSS_PLATFORM_ABSOLUTE_BOUND",
+        "SELECTED_ADDRESS_REQUIRES_EPHEMERAL_LOCAL_IPC",
+        "SUPPORTED_PLATFORM_CONFORMANCE_REQUIRES_IMPLEMENTATION_EVIDENCE"
+      ]
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mechanism_implemented", "dependency_adopted", "tests_executed", "cross_platform_hard_deadline_proven"],
+      "properties": {
+        "mechanism_implemented": {"const": false},
+        "dependency_adopted": {"const": false},
+        "tests_executed": {"const": false},
+        "cross_platform_hard_deadline_proven": {"const": false}
+      }
+    }
+  }
+}

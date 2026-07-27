@@ -1,0 +1,82 @@
+{
+  "$schema": "./remediation-input-manifest.schema.v0.1.json",
+  "document_id": "TITMAS-PRE66-REMEDIATION-INPUT-MANIFEST-0.1",
+  "version": "0.1.0",
+  "decision_reference": "CS-D02-PRE-66",
+  "dba_input_commit": "2789dabd80967f175a960edbdd1d1f624beccf20",
+  "target": {
+    "repository": "https://github.com/joy7758/titmas-integrations.git",
+    "branch": "codex/rb0-governance-baseline",
+    "commit": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6",
+    "writes_authorized": false
+  },
+  "inputs": [
+    {
+      "path": "TITMAS-CS-D02-PRE-66-P0-DEADLINE-AND-DNS-REBINDING-REMEDIATION-RECOMMENDATION-v0.1.md",
+      "sha256": "d599dbe96c124b7c4a7ca40ac7251939b5c90e2cbb616ba8ccdb1e551e94a909"
+    },
+    {
+      "path": "TITMAS-CS-D02-PRE-66-P0-DEADLINE-AND-DNS-REBINDING-REMEDIATION-DECISION-RECORD.v0.1.json",
+      "sha256": "9468c69de87f01ab895fa2f3039631cfe11bcd12ad7ca411354f10d81f496f44"
+    },
+    {
+      "path": "commercialization-standards-p0-resolver-contract-and-test-design/p0-resolver-contract.v0.1.json",
+      "sha256": "4dd99f43cbe989e558129929a5f2d8c43d5d22645484137d666d55f52d0eacff"
+    },
+    {
+      "path": "commercialization-standards-p0-resolver-contract-and-test-design/p0-resolver-test-design.v0.1.json",
+      "sha256": "1264f92bd1cc15130fac8545ee6fde8c64996c1cc2d2c52120f81226d7bdcd27"
+    },
+    {
+      "path": "commercialization-standards-p0-resolver-multi-provider-agent-review/sanitized-agent-review-results.v0.1.json",
+      "sha256": "aa399e3a21e9b1c2d37bd3f1d410c48c81baf86525dbc14210d5e7339c33b2e4"
+    },
+    {
+      "path": "commercialization-standards-p0-resolver-multi-provider-agent-review/execution-receipt.v0.1.json",
+      "sha256": "d0cb6aa3179d31839abfdf4eb08a86af409cf1b77c3c94dbec89f8d7ab905f58"
+    },
+    {
+      "path": "commercialization-standards-p0-resolver-multi-provider-agent-review/PRE-65-P0-RESOLVER-MULTI-PROVIDER-AGENT-REVIEW-RESULT-v0.1.md",
+      "sha256": "e11d47988b9f2b904e2c7b4184b9d7c07fa5941b04103b910f9b707c1748719c"
+    }
+  ],
+  "official_reference_inputs": [
+    {
+      "reference_id": "PYTHON_SOCKET_GETADDRINFO",
+      "url": "https://docs.python.org/3/library/socket.html",
+      "use": "getaddrinfo and create_connection semantics"
+    },
+    {
+      "reference_id": "PYTHON_THREADING",
+      "url": "https://docs.python.org/3/library/threading.html",
+      "use": "threads cannot be destroyed stopped suspended resumed or interrupted"
+    },
+    {
+      "reference_id": "PYTHON_SUBPROCESS",
+      "url": "https://docs.python.org/3/library/subprocess.html",
+      "use": "timeout kill wait and process-creation limitation"
+    },
+    {
+      "reference_id": "PYTHON_SSL",
+      "url": "https://docs.python.org/3/library/ssl.html",
+      "use": "original hostname SNI and certificate hostname verification"
+    },
+    {
+      "reference_id": "IANA_IPV4_SPECIAL_PURPOSE",
+      "url": "https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml",
+      "use": "versioned destination policy source candidate"
+    },
+    {
+      "reference_id": "IANA_IPV6_SPECIAL_PURPOSE",
+      "url": "https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry.xhtml",
+      "use": "versioned destination policy source candidate"
+    }
+  ],
+  "effects": {
+    "network_executed": false,
+    "credential_read": false,
+    "target_changed": false,
+    "implementation_authorized": false,
+    "formal_security_review_complete": false
+  }
+}

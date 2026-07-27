@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre66-validation-result.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "executed_at", "status", "checks", "mutation_negative_ids", "boundary_results", "truth_state"],
+  "properties": {
+    "$schema": {"const": "./pre66-validation-result.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-PRE66-VALIDATION-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "status": {"const": "PASS_OFFLINE_REMEDIATION_DESIGN_ONLY"},
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["schema_definitions_valid", "schema_instances_valid", "input_hashes_matched", "deadline_candidates_exact", "selected_candidate_exact", "cross_artifact_checks_passed", "mutation_negatives_rejected", "mutation_negatives_total", "target_commit_matched", "target_clean", "secret_or_private_path_findings"],
+      "properties": {
+        "schema_definitions_valid": {"const": 6},
+        "schema_instances_valid": {"const": 6},
+        "input_hashes_matched": {"const": 7},
+        "deadline_candidates_exact": {"const": 5},
+        "selected_candidate_exact": {"const": true},
+        "cross_artifact_checks_passed": {"const": 4},
+        "mutation_negatives_rejected": {"const": 12},
+        "mutation_negatives_total": {"const": 12},
+        "target_commit_matched": {"const": true},
+        "target_clean": {"const": true},
+        "secret_or_private_path_findings": {"const": 0}
+      }
+    },
+    "mutation_negative_ids": {"const": ["M01_TARGET_COMMIT_DRIFT", "M02_MANIFEST_EXTRA_PROPERTY", "M03_CANDIDATE_REMOVED", "M04_THREAD_SELECTED", "M05_WALL_CLOCK_OVERCLAIM", "M06_DNS_RECHECK", "M07_POLICY_DIGEST_OPTIONAL", "M08_NEXT_ADDRESS_ALLOWED", "M09_THREAD_MECHANISM", "M10_PUBLIC_RAW_ADDRESS", "M11_TOTAL_BOUND_CLAIM", "M12_TESTS_EXECUTED"]},
+    "boundary_results": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["network_requests", "live_model_requests", "credential_reads", "target_repository_writes", "dependency_installs", "implementation_writes", "test_files_created", "tests_executed"],
+      "properties": {
+        "network_requests": {"const": 0},
+        "live_model_requests": {"const": 0},
+        "credential_reads": {"const": 0},
+        "target_repository_writes": {"const": 0},
+        "dependency_installs": {"const": 0},
+        "implementation_writes": {"const": 0},
+        "test_files_created": {"const": 0},
+        "tests_executed": {"const": 0}
+      }
+    },
+    "truth_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deadline_mechanism_selected_in_design", "deadline_mechanism_implemented", "total_wall_clock_upper_bound_proven", "dns_rebinding_mitigation_designed", "dns_rebinding_vulnerability_proven", "destination_policy_snapshot_adopted", "contract_revision_adopted", "formal_human_security_review_complete", "standard_ready"],
+      "properties": {
+        "deadline_mechanism_selected_in_design": {"const": true},
+        "deadline_mechanism_implemented": {"const": false},
+        "total_wall_clock_upper_bound_proven": {"const": false},
+        "dns_rebinding_mitigation_designed": {"const": true},
+        "dns_rebinding_vulnerability_proven": {"const": false},
+        "destination_policy_snapshot_adopted": {"const": false},
+        "contract_revision_adopted": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    }
+  }
+}

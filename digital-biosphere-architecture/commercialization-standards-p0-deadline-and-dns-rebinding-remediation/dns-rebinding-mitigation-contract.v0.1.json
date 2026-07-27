@@ -1,0 +1,67 @@
+{
+  "$schema": "./dns-rebinding-mitigation-contract.schema.v0.1.json",
+  "document_id": "TITMAS-PRE66-DNS-REBINDING-MITIGATION-CONTRACT-0.1",
+  "version": "0.1.0",
+  "status": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED_NOT_IMPLEMENTED",
+  "decision_reference": "CS-D02-PRE-66",
+  "hostname_boundary": {
+    "source": "EXACT_APPROVED_RUNTIME_CONFIGURATION",
+    "exact_allowlist_check_before_resolution": true,
+    "ip_literal_allowed": false,
+    "dns_recheck_allowed": false
+  },
+  "destination_policy": {
+    "policy_id": "GLOBAL_UNICAST_DESTINATION_PROFILE_V1",
+    "check_selected_numeric_address_before_p1": true,
+    "frozen_iana_ipv4_snapshot_required": true,
+    "frozen_iana_ipv6_snapshot_required": true,
+    "snapshot_sha256_required": true,
+    "missing_or_mismatched_snapshot_fails_closed": true,
+    "default_rejected_classes": [
+      "NON_GLOBAL",
+      "LOOPBACK",
+      "LINK_LOCAL",
+      "PRIVATE_USE",
+      "SHARED",
+      "DOCUMENTATION",
+      "BENCHMARK",
+      "MULTICAST",
+      "UNSPECIFIED",
+      "RESERVED"
+    ],
+    "automatic_exception_allowed": false
+  },
+  "address_binding": {
+    "resolution_calls_max": 1,
+    "selected_addresses_max": 1,
+    "same_selected_sockaddr_p0_to_p1": true,
+    "p1_reresolution_allowed": false,
+    "p1_alternate_address_allowed": false,
+    "p1_fallback_allowed": false,
+    "selected_address_policy_rejection_allows_next_address": false
+  },
+  "tls_identity": {
+    "server_hostname": "ORIGINAL_EXACT_ALLOWLISTED_HOSTNAME",
+    "certificate_hostname_verification_required": true,
+    "ip_literal_identity_allowed": false
+  },
+  "claims": {
+    "mitigates_rebinding_and_ssrf_risk": true,
+    "proves_dns_truth": false,
+    "proves_peer_identity_before_tls": false,
+    "creates_permission": false,
+    "creates_authority": false
+  },
+  "failure_mapping": {
+    "policy_unavailable": "DNS_DESTINATION_POLICY_UNAVAILABLE",
+    "address_rejected": "DNS_DESTINATION_POLICY_REJECTED",
+    "all_results_unusable": "DNS_NO_USABLE_TCP_ADDRESS",
+    "unknown": "DNS_BOUNDARY_VIOLATION"
+  },
+  "effects": {
+    "implemented": false,
+    "policy_snapshot_adopted": false,
+    "network_executed": false,
+    "formal_security_review_complete": false
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre66-execution-receipt.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "executed_at", "decision_reference", "status", "artifact_hashes", "counts", "effects"],
+  "properties": {
+    "$schema": {"const": "./pre66-execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-PRE66-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "decision_reference": {"const": "CS-D02-PRE-66"},
+    "status": {"const": "PASS_OFFLINE_REMEDIATION_DESIGN_ONLY"},
+    "artifact_hashes": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["packet_files", "schema_instance_pairs", "input_hashes", "deadline_candidates", "mutation_negatives_rejected"],
+      "properties": {
+        "packet_files": {"const": 13},
+        "schema_instance_pairs": {"const": 6},
+        "input_hashes": {"const": 7},
+        "deadline_candidates": {"const": 5},
+        "mutation_negatives_rejected": {"const": 12}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authority_changed", "target_changed", "network_executed", "credential_read", "dependency_adopted", "implementation_authorized", "tests_created", "tests_executed", "formal_human_security_review_complete", "standard_ready"],
+      "properties": {
+        "authority_changed": {"const": false},
+        "target_changed": {"const": false},
+        "network_executed": {"const": false},
+        "credential_read": {"const": false},
+        "dependency_adopted": {"const": false},
+        "implementation_authorized": {"const": false},
+        "tests_created": {"const": false},
+        "tests_executed": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/p0-contract-revision-candidate.schema.v0.2.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "supersedes_if_adopted", "resolver_worker", "deadline", "ephemeral_ipc", "endpoint_binding", "destination_policy", "failure_taxonomy_additions", "executable_test_gate", "known_limitations", "effects"],
+  "properties": {
+    "$schema": {"const": "./p0-contract-revision-candidate.schema.v0.2.json"},
+    "document_id": {"const": "TITMAS-PRE66-P0-CONTRACT-REVISION-CANDIDATE-0.2"},
+    "version": {"const": "0.2.0"},
+    "status": {"const": "DEVELOPMENT_REVISION_CANDIDATE_NOT_ADOPTED_NOT_IMPLEMENTED"},
+    "decision_reference": {"const": "CS-D02-PRE-66"},
+    "supersedes_if_adopted": {"const": "TITMAS-PRE64-P0-RESOLVER-CONTRACT-0.1"},
+    "resolver_worker": {
+      "type": "object", "additionalProperties": false,
+      "required": ["mechanism", "shell_allowed", "resolver_invocations_max", "worker_children_allowed", "credential_environment_allowed", "worker_must_not_be_alive_before_return"],
+      "properties": {
+        "mechanism": {"const": "SINGLE_USE_SUBPROCESS_TIMEOUT_V1"},
+        "shell_allowed": {"const": false},
+        "resolver_invocations_max": {"const": 1},
+        "worker_children_allowed": {"const": false},
+        "credential_environment_allowed": {"const": false},
+        "worker_must_not_be_alive_before_return": {"const": true}
+      }
+    },
+    "deadline": {
+      "type": "object", "additionalProperties": false,
+      "required": ["clock", "success_admission_deadline_ms", "deadline_starts_before_worker_start_attempt", "late_result_accepted", "p1_allowed_after_deadline", "total_wall_clock_upper_bound_claim", "process_creation_interruptible_claim"],
+      "properties": {
+        "clock": {"const": "MONOTONIC"},
+        "success_admission_deadline_ms": {"const": 5000},
+        "deadline_starts_before_worker_start_attempt": {"const": true},
+        "late_result_accepted": {"const": false},
+        "p1_allowed_after_deadline": {"const": false},
+        "total_wall_clock_upper_bound_claim": {"const": false},
+        "process_creation_interruptible_claim": {"const": false}
+      }
+    },
+    "ephemeral_ipc": {
+      "type": "object", "additionalProperties": false,
+      "required": ["allowed", "local_only", "payload_bytes_max", "selected_address_count_max", "persistent_serialization_allowed", "public_observation_serialization_allowed", "logging_allowed", "raw_dns_result_set_allowed", "hostname_allowed", "credential_or_header_allowed", "exception_string_allowed", "memory_zeroization_claim"],
+      "properties": {
+        "allowed": {"const": true},
+        "local_only": {"const": true},
+        "payload_bytes_max": {"const": 512},
+        "selected_address_count_max": {"const": 1},
+        "persistent_serialization_allowed": {"const": false},
+        "public_observation_serialization_allowed": {"const": false},
+        "logging_allowed": {"const": false},
+        "raw_dns_result_set_allowed": {"const": false},
+        "hostname_allowed": {"const": false},
+        "credential_or_header_allowed": {"const": false},
+        "exception_string_allowed": {"const": false},
+        "memory_zeroization_claim": {"const": false}
+      }
+    },
+    "endpoint_binding": {
+      "type": "object", "additionalProperties": false,
+      "required": ["object_name", "fields", "parent_object_persisted", "p1_same_binding_required", "p1_resolver_calls_max", "p1_connect_calls_max", "p1_fallback_allowed", "tls_identity"],
+      "properties": {
+        "object_name": {"const": "EndpointBinding"},
+        "fields": {"const": ["original_hostname", "port", "family", "socket_type", "protocol", "selected_sockaddr", "resolution_handle_ref", "resolver_worker_receipt_ref", "destination_policy_id", "destination_policy_snapshot_sha256", "resolved_at_monotonic_ns", "success_admission_deadline_monotonic_ns"]},
+        "parent_object_persisted": {"const": false},
+        "p1_same_binding_required": {"const": true},
+        "p1_resolver_calls_max": {"const": 0},
+        "p1_connect_calls_max": {"const": 1},
+        "p1_fallback_allowed": {"const": false},
+        "tls_identity": {"const": "ORIGINAL_EXACT_ALLOWLISTED_HOSTNAME"}
+      }
+    },
+    "destination_policy": {
+      "type": "object", "additionalProperties": false,
+      "required": ["policy_id", "versioned_snapshot_and_sha256_required", "check_before_p1", "rejection_allows_next_address", "missing_policy_fails_closed"],
+      "properties": {
+        "policy_id": {"const": "GLOBAL_UNICAST_DESTINATION_PROFILE_V1"},
+        "versioned_snapshot_and_sha256_required": {"const": true},
+        "check_before_p1": {"const": true},
+        "rejection_allows_next_address": {"const": false},
+        "missing_policy_fails_closed": {"const": true}
+      }
+    },
+    "failure_taxonomy_additions": {"const": ["DNS_WORKER_START_FAILURE", "DNS_LATE_RESULT", "DNS_WORKER_TERMINATION_UNCONFIRMED", "DNS_IPC_BOUNDARY_VIOLATION", "DNS_DESTINATION_POLICY_REJECTED", "DNS_DESTINATION_POLICY_UNAVAILABLE"]},
+    "executable_test_gate": {
+      "type": "object", "additionalProperties": false,
+      "required": ["required_before_implementation_recommendation", "required_groups", "pre64_positive_cases_to_migrate", "pre64_negative_cases_to_migrate", "tests_created", "tests_executed"],
+      "properties": {
+        "required_before_implementation_recommendation": {"const": true},
+        "required_groups": {"const": ["WORKER_LIFECYCLE", "DEADLINE_AND_LATE_RESULT", "IPC_PRIVACY_AND_BOUNDS", "DESTINATION_POLICY_IPV4_IPV6", "P0_P1_ADDRESS_CONTINUITY", "P1_ZERO_RERESOLUTION_AND_FALLBACK", "P2_ORIGINAL_HOSTNAME_TLS", "PRE64_CASE_MIGRATION", "SUPPORTED_PLATFORM_MATRIX"]},
+        "pre64_positive_cases_to_migrate": {"const": 6},
+        "pre64_negative_cases_to_migrate": {"const": 24},
+        "tests_created": {"const": false},
+        "tests_executed": {"const": false}
+      }
+    },
+    "known_limitations": {"const": ["TOTAL_WALL_CLOCK_ABSOLUTE_BOUND_NOT_CLAIMED", "EPHEMERAL_SELECTED_ADDRESS_IPC_REQUIRED", "SINGLE_ADDRESS_NO_FAILOVER", "PLATFORM_ORDER_STABILITY_NOT_CLAIMED", "POLICY_SNAPSHOT_NOT_YET_ADOPTED", "NO_IMPLEMENTATION_OR_CONFORMANCE_EVIDENCE"]},
+    "effects": {
+      "type": "object", "additionalProperties": false,
+      "required": ["contract_adopted", "implemented", "tests_created", "tests_executed", "network_executed", "dependency_adopted", "provider_supported", "formal_security_review_complete", "standard_ready"],
+      "properties": {
+        "contract_adopted": {"const": false},
+        "implemented": {"const": false},
+        "tests_created": {"const": false},
+        "tests_executed": {"const": false},
+        "network_executed": {"const": false},
+        "dependency_adopted": {"const": false},
+        "provider_supported": {"const": false},
+        "formal_security_review_complete": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    }
+  }
+}

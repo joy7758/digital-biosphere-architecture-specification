@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/dns-rebinding-mitigation-contract.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "decision_reference", "hostname_boundary", "destination_policy", "address_binding", "tls_identity", "claims", "failure_mapping", "effects"],
+  "properties": {
+    "$schema": {"const": "./dns-rebinding-mitigation-contract.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-PRE66-DNS-REBINDING-MITIGATION-CONTRACT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED_NOT_IMPLEMENTED"},
+    "decision_reference": {"const": "CS-D02-PRE-66"},
+    "hostname_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "exact_allowlist_check_before_resolution", "ip_literal_allowed", "dns_recheck_allowed"],
+      "properties": {
+        "source": {"const": "EXACT_APPROVED_RUNTIME_CONFIGURATION"},
+        "exact_allowlist_check_before_resolution": {"const": true},
+        "ip_literal_allowed": {"const": false},
+        "dns_recheck_allowed": {"const": false}
+      }
+    },
+    "destination_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_id", "check_selected_numeric_address_before_p1", "frozen_iana_ipv4_snapshot_required", "frozen_iana_ipv6_snapshot_required", "snapshot_sha256_required", "missing_or_mismatched_snapshot_fails_closed", "default_rejected_classes", "automatic_exception_allowed"],
+      "properties": {
+        "policy_id": {"const": "GLOBAL_UNICAST_DESTINATION_PROFILE_V1"},
+        "check_selected_numeric_address_before_p1": {"const": true},
+        "frozen_iana_ipv4_snapshot_required": {"const": true},
+        "frozen_iana_ipv6_snapshot_required": {"const": true},
+        "snapshot_sha256_required": {"const": true},
+        "missing_or_mismatched_snapshot_fails_closed": {"const": true},
+        "default_rejected_classes": {"const": ["NON_GLOBAL", "LOOPBACK", "LINK_LOCAL", "PRIVATE_USE", "SHARED", "DOCUMENTATION", "BENCHMARK", "MULTICAST", "UNSPECIFIED", "RESERVED"]},
+        "automatic_exception_allowed": {"const": false}
+      }
+    },
+    "address_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["resolution_calls_max", "selected_addresses_max", "same_selected_sockaddr_p0_to_p1", "p1_reresolution_allowed", "p1_alternate_address_allowed", "p1_fallback_allowed", "selected_address_policy_rejection_allows_next_address"],
+      "properties": {
+        "resolution_calls_max": {"const": 1},
+        "selected_addresses_max": {"const": 1},
+        "same_selected_sockaddr_p0_to_p1": {"const": true},
+        "p1_reresolution_allowed": {"const": false},
+        "p1_alternate_address_allowed": {"const": false},
+        "p1_fallback_allowed": {"const": false},
+        "selected_address_policy_rejection_allows_next_address": {"const": false}
+      }
+    },
+    "tls_identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["server_hostname", "certificate_hostname_verification_required", "ip_literal_identity_allowed"],
+      "properties": {
+        "server_hostname": {"const": "ORIGINAL_EXACT_ALLOWLISTED_HOSTNAME"},
+        "certificate_hostname_verification_required": {"const": true},
+        "ip_literal_identity_allowed": {"const": false}
+      }
+    },
+    "claims": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mitigates_rebinding_and_ssrf_risk", "proves_dns_truth", "proves_peer_identity_before_tls", "creates_permission", "creates_authority"],
+      "properties": {
+        "mitigates_rebinding_and_ssrf_risk": {"const": true},
+        "proves_dns_truth": {"const": false},
+        "proves_peer_identity_before_tls": {"const": false},
+        "creates_permission": {"const": false},
+        "creates_authority": {"const": false}
+      }
+    },
+    "failure_mapping": {
+      "const": {
+        "policy_unavailable": "DNS_DESTINATION_POLICY_UNAVAILABLE",
+        "address_rejected": "DNS_DESTINATION_POLICY_REJECTED",
+        "all_results_unusable": "DNS_NO_USABLE_TCP_ADDRESS",
+        "unknown": "DNS_BOUNDARY_VIOLATION"
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["implemented", "policy_snapshot_adopted", "network_executed", "formal_security_review_complete"],
+      "properties": {
+        "implemented": {"const": false},
+        "policy_snapshot_adopted": {"const": false},
+        "network_executed": {"const": false},
+        "formal_security_review_complete": {"const": false}
+      }
+    }
+  }
+}

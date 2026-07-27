@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/remediation-input-manifest.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "decision_reference", "dba_input_commit", "target", "inputs", "official_reference_inputs", "effects"],
+  "properties": {
+    "$schema": {"const": "./remediation-input-manifest.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-PRE66-REMEDIATION-INPUT-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "decision_reference": {"const": "CS-D02-PRE-66"},
+    "dba_input_commit": {"const": "2789dabd80967f175a960edbdd1d1f624beccf20"},
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "branch", "commit", "writes_authorized"],
+      "properties": {
+        "repository": {"const": "https://github.com/joy7758/titmas-integrations.git"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "commit": {"const": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6"},
+        "writes_authorized": {"const": false}
+      }
+    },
+    "inputs": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "official_reference_inputs": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["reference_id", "url", "use"],
+        "properties": {
+          "reference_id": {"type": "string"},
+          "url": {"type": "string", "format": "uri"},
+          "use": {"type": "string"}
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["network_executed", "credential_read", "target_changed", "implementation_authorized", "formal_security_review_complete"],
+      "properties": {
+        "network_executed": {"const": false},
+        "credential_read": {"const": false},
+        "target_changed": {"const": false},
+        "implementation_authorized": {"const": false},
+        "formal_security_review_complete": {"const": false}
+      }
+    }
+  }
+}
