@@ -1,0 +1,187 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/governance/titmas-cs-d02-pre75-response-contract-transmission-remediation-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-75 Response Contract Transmission Remediation Decision v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "standing_directive_artifact",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "primary_repository",
+    "authorization_baseline_commit",
+    "target_refs",
+    "preconditions",
+    "scope",
+    "false_effects",
+    "stop_conditions",
+    "execution_receipt",
+    "result",
+    "known_limitations"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre75-response-contract-transmission-remediation-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-75-RESPONSE-CONTRACT-TRANSMISSION-REMEDIATION-DECISION-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "AUTHORIZED_NOT_EXECUTED"},
+    "decision_id": {"const": "CS-D02-PRE-75"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "standing_directive_artifact": {
+      "const": "TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.json"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-75-RESPONSE-CONTRACT-TRANSMISSION-REMEDIATION-AND-BOUNDED-RERUN-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "d0fcc8e1c584171da13fa450f4ed31b3dfd9670f7cf1aacac0a697b3111de066"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_PRE75_OFFLINE_FULL_RESPONSE_SCHEMA_TRANSMISSION_REMEDIATION_AND_PRE76_TWO_REQUEST_RERUN_SCOPE_DESIGN"
+    },
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "CODEX_AFTER_REMOTE_DECISION_VALIDATION"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "authorization_baseline_commit": {
+      "const": "87d2334eb24d5e430d90ecf78bd41f71bff574cd"
+    },
+    "target_refs": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"$ref": "#/$defs/ref"}
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_present",
+        "single_exact_action_present",
+        "primary_repository_target_and_scope_explicit",
+        "recommendation_hash_match",
+        "scope_hash_match",
+        "scope_schema_pass",
+        "input_hashes_match",
+        "canonical_response_schema_payload_match",
+        "stage_a_stage_b_separated",
+        "pre74_transmission_gap_proven",
+        "pre74_exact_schema_failure_cause_proven",
+        "live_rerun_currently_authorized",
+        "standing_directive_active",
+        "later_conflicting_human_decision_found",
+        "remote_baseline_verified"
+      ],
+      "properties": {
+        "canonical_recommendation_present": {"const": true},
+        "single_exact_action_present": {"const": true},
+        "primary_repository_target_and_scope_explicit": {"const": true},
+        "recommendation_hash_match": {"const": true},
+        "scope_hash_match": {"const": true},
+        "scope_schema_pass": {"const": true},
+        "input_hashes_match": {"const": "7/7"},
+        "canonical_response_schema_payload_match": {"const": true},
+        "stage_a_stage_b_separated": {"const": true},
+        "pre74_transmission_gap_proven": {"const": true},
+        "pre74_exact_schema_failure_cause_proven": {"const": false},
+        "live_rerun_currently_authorized": {"const": false},
+        "standing_directive_active": {"const": true},
+        "later_conflicting_human_decision_found": {"const": false},
+        "remote_baseline_verified": {"const": true}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authorized_outputs",
+        "input_hashes_required",
+        "rendered_requests_required",
+        "mutation_negatives_minimum",
+        "network_requests_max",
+        "live_model_requests_max",
+        "credential_value_reads_max",
+        "raw_provider_response_reads_max",
+        "raw_request_or_source_persistence_max",
+        "target_repository_writes_max",
+        "dbos_writes_max",
+        "saee_writes_max",
+        "request_contract_adoptions_max",
+        "response_schema_changes_max",
+        "live_retries_max"
+      ],
+      "properties": {
+        "authorized_outputs": {
+          "const": [
+            "REVIEW_REQUEST_CONTRACT_CANDIDATE_V0_2",
+            "CANONICAL_RESPONSE_SCHEMA_TRANSMISSION_PAYLOAD",
+            "TWO_DETERMINISTIC_RENDERED_REQUEST_FIXTURES",
+            "CONTRACT_TRANSMISSION_COVERAGE_VALIDATION",
+            "SANITIZED_FAILURE_CAPTURE_INTEGRATION",
+            "PRE76_TWO_REQUEST_RERUN_SCOPE_CANDIDATE",
+            "OFFLINE_RESULT_AND_EXECUTION_RECEIPT"
+          ]
+        },
+        "input_hashes_required": {"const": "7/7"},
+        "rendered_requests_required": {"const": "2/2"},
+        "mutation_negatives_minimum": {"const": 16},
+        "network_requests_max": {"const": 0},
+        "live_model_requests_max": {"const": 0},
+        "credential_value_reads_max": {"const": 0},
+        "raw_provider_response_reads_max": {"const": 0},
+        "raw_request_or_source_persistence_max": {"const": 0},
+        "target_repository_writes_max": {"const": 0},
+        "dbos_writes_max": {"const": 0},
+        "saee_writes_max": {"const": 0},
+        "request_contract_adoptions_max": {"const": 0},
+        "response_schema_changes_max": {"const": 0},
+        "live_retries_max": {"const": 0}
+      }
+    },
+    "false_effects": {
+      "type": "object",
+      "minProperties": 13,
+      "additionalProperties": {"const": false}
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 9,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 15}
+    },
+    "execution_receipt": {
+      "const": "commercialization-standards-pre75-response-contract-transmission-remediation/pre75-execution-receipt.v0.1.json"
+    },
+    "result": {"const": "AUTHORIZED_NOT_EXECUTED"},
+    "known_limitations": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 15}
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 20},
+        "sha256": {"pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

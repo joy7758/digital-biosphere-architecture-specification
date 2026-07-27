@@ -1,0 +1,106 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre75-response-contract-transmission-remediation-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-75-RESPONSE-CONTRACT-TRANSMISSION-REMEDIATION-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_NOT_EXECUTED",
+  "decision_id": "CS-D02-PRE-75",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "standing_directive_artifact": "TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.json",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-75-RESPONSE-CONTRACT-TRANSMISSION-REMEDIATION-AND-BOUNDED-RERUN-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "d0fcc8e1c584171da13fa450f4ed31b3dfd9670f7cf1aacac0a697b3111de066",
+  "decision_result": "AUTHORIZE_PRE75_OFFLINE_FULL_RESPONSE_SCHEMA_TRANSMISSION_REMEDIATION_AND_PRE76_TWO_REQUEST_RERUN_SCOPE_DESIGN",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-27T16:19:26+08:00",
+  "executed_by": "CODEX_AFTER_REMOTE_DECISION_VALIDATION",
+  "primary_repository": "digital-biosphere-architecture",
+  "authorization_baseline_commit": "87d2334eb24d5e430d90ecf78bd41f71bff574cd",
+  "target_refs": [
+    {
+      "path": "TITMAS-CS-D02-PRE-75-RESPONSE-CONTRACT-TRANSMISSION-REMEDIATION-AND-BOUNDED-RERUN-RECOMMENDATION-v0.1.md",
+      "sha256": "d0fcc8e1c584171da13fa450f4ed31b3dfd9670f7cf1aacac0a697b3111de066"
+    },
+    {
+      "path": "commercialization-standards-pre75-response-contract-transmission-remediation/pre75-remediation-and-rerun-scope.v0.1.json",
+      "sha256": "a9008d47b1e5cb5ece2ed27e68ef84978f2943fa75fbd7767cbba303af0a70f9"
+    }
+  ],
+  "preconditions": {
+    "canonical_recommendation_present": true,
+    "single_exact_action_present": true,
+    "primary_repository_target_and_scope_explicit": true,
+    "recommendation_hash_match": true,
+    "scope_hash_match": true,
+    "scope_schema_pass": true,
+    "input_hashes_match": "7/7",
+    "canonical_response_schema_payload_match": true,
+    "stage_a_stage_b_separated": true,
+    "pre74_transmission_gap_proven": true,
+    "pre74_exact_schema_failure_cause_proven": false,
+    "live_rerun_currently_authorized": false,
+    "standing_directive_active": true,
+    "later_conflicting_human_decision_found": false,
+    "remote_baseline_verified": true
+  },
+  "scope": {
+    "authorized_outputs": [
+      "REVIEW_REQUEST_CONTRACT_CANDIDATE_V0_2",
+      "CANONICAL_RESPONSE_SCHEMA_TRANSMISSION_PAYLOAD",
+      "TWO_DETERMINISTIC_RENDERED_REQUEST_FIXTURES",
+      "CONTRACT_TRANSMISSION_COVERAGE_VALIDATION",
+      "SANITIZED_FAILURE_CAPTURE_INTEGRATION",
+      "PRE76_TWO_REQUEST_RERUN_SCOPE_CANDIDATE",
+      "OFFLINE_RESULT_AND_EXECUTION_RECEIPT"
+    ],
+    "input_hashes_required": "7/7",
+    "rendered_requests_required": "2/2",
+    "mutation_negatives_minimum": 16,
+    "network_requests_max": 0,
+    "live_model_requests_max": 0,
+    "credential_value_reads_max": 0,
+    "raw_provider_response_reads_max": 0,
+    "raw_request_or_source_persistence_max": 0,
+    "target_repository_writes_max": 0,
+    "dbos_writes_max": 0,
+    "saee_writes_max": 0,
+    "request_contract_adoptions_max": 0,
+    "response_schema_changes_max": 0,
+    "live_retries_max": 0
+  },
+  "false_effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "implementation_authorized": false,
+    "request_contract_adopted": false,
+    "response_schema_changed": false,
+    "live_rerun_authorized": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false,
+    "production_ready": false,
+    "external_execution_authorized": false
+  },
+  "stop_conditions": [
+    "AUTHORIZATION_BASELINE_OR_SCOPE_MISMATCH",
+    "ANY_INPUT_HASH_OR_TARGET_COMMIT_DRIFT",
+    "ANY_RESPONSE_SCHEMA_SEMANTIC_CHANGE",
+    "ANY_NETWORK_PROVIDER_MODEL_OR_CREDENTIAL_ACTION",
+    "ANY_RAW_PRE73_RESPONSE_RECOVERY",
+    "ANY_RAW_REQUEST_SOURCE_ERROR_MESSAGE_OR_VALUE_PERSISTENCE",
+    "ANY_REQUEST_CONTRACT_ADOPTION",
+    "ANY_TARGET_DBOS_OR_SAEE_WRITE",
+    "ANY_LIVE_RERUN_OR_PROVIDER_REQUEST",
+    "ANY_REVIEW_PROVIDER_CONFORMANCE_STANDARD_RELEASE_OR_PRODUCTION_OVERCLAIM"
+  ],
+  "execution_receipt": "commercialization-standards-pre75-response-contract-transmission-remediation/pre75-execution-receipt.v0.1.json",
+  "result": "AUTHORIZED_NOT_EXECUTED",
+  "known_limitations": [
+    "THE_TRANSMISSION_GAP_IS_NOT_THE_PROVEN_UNIQUE_CAUSE_OF_EITHER_PRE73_SCHEMA_FAILURE",
+    "FULL_SCHEMA_TRANSMISSION_DOES_NOT_GUARANTEE_PROVIDER_CONFORMANCE",
+    "THE_REQUEST_CONTRACT_OUTPUT_WILL_REMAIN_A_DEVELOPMENT_CANDIDATE",
+    "THE_SANITIZED_FAILURE_CAPTURE_CONTRACT_REMAINS_A_DEVELOPMENT_CANDIDATE",
+    "PRE76_LIVE_RERUN_REQUIRES_A_SEPARATE_RECOMMENDATION_AND_DECISION",
+    "FORMAL_HUMAN_SECURITY_REVIEW_REMAINS_OPEN"
+  ]
+}
