@@ -587,6 +587,24 @@ Draft PR、PR #22 closure 和 merge 仍分别需要独立 Decision。
 绑定。其 [qwen3.7-max review](TITMAS-CE-G11B-IMMUTABLE-CANDIDATE-EXTERNAL-ATTESTATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
 得到 curl `0`、HTTP `200`、`RECOMMENDED`、Option A、confidence `0.95`、0
 blocker/correction。下一步只允许建立最终 candidate Validation Decision。
+[Immutable candidate validation result](TITMAS-CE-G11B-IMMUTABLE-CANDIDATE-MERGE-TREE-VALIDATION-RESULT-v0.1.json)
+及其[报告](TITMAS-CE-G11B-IMMUTABLE-CANDIDATE-MERGE-TREE-VALIDATION-REPORT-v0.1.md)
+已在 distinct evidence ref `89baeeeb…` 记录
+`PASS_SHA_BOUND_EXTERNAL_ATTESTATION`：1165/1165 tracked JSON、23/23 dependencies、
+16/16 site tests、3/3 CE Schemas 和 49/49 CE tests 通过，candidate
+`c608fd78…` 保持不可变。
+[Draft PR #23](https://github.com/joy7758/digital-biosphere-architecture-specification/pull/23)
+是该 candidate 的授权 review surface；它仍为 `OPEN` Draft、base/head 精确且
+`CLEAN`，不等于 merge authorization。
+[Four-lane review result](TITMAS-CE-G11B-PR23-FOUR-LANE-AGENT-REVIEW-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-PR23-FOUR-LANE-AGENT-REVIEW-REPORT-v0.1.md)记录
+`INCOMPLETE_REVIEW_LANE_A_CONTRACT_FAILURE_SYNTHESIS_NOT_EXECUTED`：B/C PASS，
+A/D REQUEST_CHANGES，A 的 severity/array 组合违反 contract，故未执行 synthesis。
+[Contract remediation and finding adjudication Recommendation](TITMAS-CE-G11B-PR23-REVIEW-CONTRACT-REMEDIATION-AND-FINDING-ADJUDICATION-RECOMMENDATION-v0.1.md)
+及其 [exact qwen3.7-max review](TITMAS-CE-G11B-PR23-REVIEW-CONTRACT-REMEDIATION-AND-FINDING-ADJUDICATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+现得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction。下一步
+只允许建立独立 Adjudication Decision；finding 仍不是 Truth，candidate/PR/merge
+均未授权修改。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
