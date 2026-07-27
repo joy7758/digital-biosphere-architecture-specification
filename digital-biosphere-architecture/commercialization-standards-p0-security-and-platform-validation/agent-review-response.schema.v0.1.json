@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre68-agent-review-response.v0.1.json",
+  "title": "TITMAS PRE-68 Agent-assisted Static Security Review Response v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "review_role",
+    "target_commit",
+    "verdict",
+    "summary",
+    "question_assessments",
+    "cross_cutting_findings",
+    "explicit_non_claims"
+  ],
+  "properties": {
+    "contract_version": {"const": "pre68.agent-review-response/v0.1"},
+    "review_role": {
+      "enum": [
+        "IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE",
+        "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"
+      ]
+    },
+    "target_commit": {
+      "const": "0030077f29c37145a306b72e7083345eb76b504a"
+    },
+    "verdict": {"enum": ["RETAIN", "REVISE", "REPLACE", "REJECT"]},
+    "summary": {"type": "string", "minLength": 1, "maxLength": 3000},
+    "question_assessments": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "items": {"$ref": "#/$defs/questionAssessment"}
+    },
+    "cross_cutting_findings": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {"$ref": "#/$defs/finding"}
+    },
+    "explicit_non_claims": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "formal_human_security_review_complete",
+        "production_safe",
+        "provider_supported",
+        "cross_platform_supported",
+        "real_network_conformant",
+        "standard_ready"
+      ],
+      "properties": {
+        "formal_human_security_review_complete": {"const": false},
+        "production_safe": {"const": false},
+        "provider_supported": {"const": false},
+        "cross_platform_supported": {"const": false},
+        "real_network_conformant": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "questionAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "question_id",
+        "assessment",
+        "severity",
+        "finding",
+        "affected_symbols",
+        "proposed_tests",
+        "limitations"
+      ],
+      "properties": {
+        "question_id": {
+          "enum": [
+            "SR-001",
+            "SR-002",
+            "SR-003",
+            "SR-004",
+            "SR-005",
+            "SR-006",
+            "SR-007",
+            "SR-008",
+            "SR-009",
+            "SR-010",
+            "SR-011",
+            "SR-012",
+            "SR-013",
+            "SR-014",
+            "SR-015",
+            "SR-016"
+          ]
+        },
+        "assessment": {
+          "enum": ["PASS", "CONCERN", "UNKNOWN", "NOT_APPLICABLE"]
+        },
+        "severity": {
+          "enum": ["NONE", "LOW", "MEDIUM", "HIGH", "CRITICAL", "UNKNOWN"]
+        },
+        "finding": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "affected_symbols": {
+          "type": "array",
+          "maxItems": 12,
+          "items": {"type": "string", "minLength": 1, "maxLength": 300}
+        },
+        "proposed_tests": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {"type": "string", "minLength": 1, "maxLength": 600}
+        },
+        "limitations": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {"type": "string", "minLength": 1, "maxLength": 600}
+        }
+      }
+    },
+    "finding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "finding_id",
+        "severity",
+        "finding",
+        "affected_symbols",
+        "proposed_tests",
+        "limitations"
+      ],
+      "properties": {
+        "finding_id": {"type": "string", "pattern": "^CF-[0-9]{3}$"},
+        "severity": {
+          "enum": ["LOW", "MEDIUM", "HIGH", "CRITICAL", "UNKNOWN"]
+        },
+        "finding": {"type": "string", "minLength": 1, "maxLength": 2000},
+        "affected_symbols": {
+          "type": "array",
+          "maxItems": 12,
+          "items": {"type": "string", "minLength": 1, "maxLength": 300}
+        },
+        "proposed_tests": {
+          "type": "array",
+          "maxItems": 8,
+          "items": {"type": "string", "minLength": 1, "maxLength": 600}
+        },
+        "limitations": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 8,
+          "items": {"type": "string", "minLength": 1, "maxLength": 600}
+        }
+      }
+    }
+  }
+}

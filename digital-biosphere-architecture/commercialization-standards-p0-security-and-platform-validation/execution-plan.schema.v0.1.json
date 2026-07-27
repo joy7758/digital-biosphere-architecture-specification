@@ -1,0 +1,334 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre68-execution-plan.v0.1.json",
+  "title": "TITMAS PRE-68 Security and Platform Validation Execution Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "recommendation_reference",
+    "target",
+    "execution_order",
+    "platform_lanes",
+    "agent_review_lanes",
+    "request_policy",
+    "response_contract",
+    "container_controls",
+    "output_policy",
+    "stop_conditions",
+    "truth_boundaries"
+  ],
+  "properties": {
+    "$schema": {"const": "./execution-plan.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE68-EXECUTION-PLAN-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_AUTHORIZED_NOT_EXECUTED"},
+    "decision_reference": {
+      "const": "../TITMAS-CS-D02-PRE-68-P0-SECURITY-AND-PLATFORM-VALIDATION-DECISION-RECORD.v0.1.json"
+    },
+    "recommendation_reference": {
+      "const": "../TITMAS-CS-D02-PRE-68-P0-FORMAL-SECURITY-REVIEW-AND-PLATFORM-VALIDATION-SCOPE-RECOMMENDATION-v0.1.md"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "branch", "commit", "source_mount", "writes_max"],
+      "properties": {
+        "repository": {"const": "joy7758/titmas-integrations"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "commit": {"const": "0030077f29c37145a306b72e7083345eb76b504a"},
+        "source_mount": {"const": "READ_ONLY"},
+        "writes_max": {"const": 0}
+      }
+    },
+    "execution_order": {
+      "const": [
+        "VERIFY_DECISION_TARGET_AND_TEN_HASHES",
+        "START_EXISTING_COLIMA_IF_REQUIRED",
+        "PULL_TWO_EXACT_LINUX_AMD64_MANIFEST_DIGESTS",
+        "RUN_LINUX_311_NETWORK_NONE_READ_ONLY",
+        "RUN_LINUX_314_NETWORK_NONE_READ_ONLY",
+        "RUN_QIANFAN_AGENT_REVIEW",
+        "RUN_DASHSCOPE_AGENT_REVIEW",
+        "VALIDATE_AND_RETAIN_RESULTS",
+        "STOP_COLIMA_IF_STARTED_FOR_PRE68",
+        "FORM_RESULT_PACKET"
+      ]
+    },
+    "platform_lanes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"$ref": "#/$defs/python311Lane"},
+        {"$ref": "#/$defs/python314Lane"}
+      ],
+      "items": false
+    },
+    "agent_review_lanes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"$ref": "#/$defs/qianfanLane"},
+        {"$ref": "#/$defs/qwenLane"}
+      ],
+      "items": false
+    },
+    "request_policy": {"$ref": "#/$defs/requestPolicy"},
+    "response_contract": {"$ref": "#/$defs/responseContract"},
+    "container_controls": {"$ref": "#/$defs/containerControls"},
+    "output_policy": {"$ref": "#/$defs/outputPolicy"},
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 15,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "truth_boundaries": {
+      "const": [
+        "AGENT_REVIEW_NE_FORMAL_HUMAN_SECURITY_REVIEW",
+        "PLATFORM_TEST_NE_SECURITY_APPROVAL",
+        "LINUX_AMD64_OBSERVATION_NE_ALL_LINUX_SUPPORT",
+        "NETWORK_NONE_TEST_NE_REAL_NETWORK_CONFORMANCE",
+        "REFERENCE_IMPLEMENTATION_NE_STANDARD",
+        "TEST_PASS_NE_PROVIDER_SUPPORT"
+      ]
+    }
+  },
+  "$defs": {
+    "platformLaneBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "environment_id",
+        "image",
+        "platform",
+        "expected_python",
+        "network",
+        "root_filesystem",
+        "source_mount",
+        "dependencies_installed",
+        "command"
+      ],
+      "properties": {
+        "environment_id": {"type": "string"},
+        "image": {"type": "string"},
+        "platform": {"const": "linux/amd64"},
+        "expected_python": {"type": "string"},
+        "network": {"const": "none"},
+        "root_filesystem": {"const": "read-only"},
+        "source_mount": {"const": "read-only"},
+        "dependencies_installed": {"const": 0},
+        "command": {
+          "const": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -v"
+        }
+      }
+    },
+    "python311Lane": {
+      "allOf": [
+        {"$ref": "#/$defs/platformLaneBase"},
+        {
+          "properties": {
+            "environment_id": {"const": "PFM-LINUX-311"},
+            "image": {
+              "const": "docker.io/library/python@sha256:28255a3ace7eb4c48bc1b57b90af29e1bc82b4fd6c60614a8e3dce61b87ff941"
+            },
+            "expected_python": {"const": "3.11.15"}
+          }
+        }
+      ]
+    },
+    "python314Lane": {
+      "allOf": [
+        {"$ref": "#/$defs/platformLaneBase"},
+        {
+          "properties": {
+            "environment_id": {"const": "PFM-LINUX-314"},
+            "image": {
+              "const": "docker.io/library/python@sha256:f70215e5dbe2a47dee6d23f9c6d358bf3c148f59cce2fd165b61118e9d80f2bb"
+            },
+            "expected_python": {"const": "3.14.6"}
+          }
+        }
+      ]
+    },
+    "agentLaneBase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "provider",
+        "endpoint",
+        "model",
+        "credential_identifier",
+        "role",
+        "timeout_seconds"
+      ],
+      "properties": {
+        "session_id": {"type": "string"},
+        "provider": {"type": "string"},
+        "endpoint": {"type": "string", "format": "uri"},
+        "model": {"type": "string"},
+        "credential_identifier": {"type": "string"},
+        "role": {"type": "string"},
+        "timeout_seconds": {"const": 120}
+      }
+    },
+    "qianfanLane": {
+      "allOf": [
+        {"$ref": "#/$defs/agentLaneBase"},
+        {
+          "properties": {
+            "session_id": {"const": "PRE68-QF-SECURITY-01"},
+            "provider": {"const": "BAIDU_QIANFAN"},
+            "endpoint": {"const": "https://qianfan.baidubce.com/v2/chat/completions"},
+            "model": {"const": "ernie-4.5-turbo-20260402"},
+            "credential_identifier": {"const": "QIANFAN_API_KEY"},
+            "role": {"const": "IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE"}
+          }
+        }
+      ]
+    },
+    "qwenLane": {
+      "allOf": [
+        {"$ref": "#/$defs/agentLaneBase"},
+        {
+          "properties": {
+            "session_id": {"const": "PRE68-QWEN-SECURITY-02"},
+            "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+            "endpoint": {
+              "const": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions"
+            },
+            "model": {"const": "qwen3.7-plus"},
+            "credential_identifier": {"const": "DASHSCOPE_API_KEY"},
+            "role": {"const": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"}
+          }
+        }
+      ]
+    },
+    "requestPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requests_max",
+        "concurrency_max",
+        "temperature",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "assistant_content_must_be_direct_json",
+        "code_fence_allowed",
+        "content_repair_allowed",
+        "credential_value_recording_allowed",
+        "raw_provider_envelope_persisted",
+        "prompt_or_raw_response_persisted"
+      ],
+      "properties": {
+        "requests_max": {"const": 2},
+        "concurrency_max": {"const": 1},
+        "temperature": {"const": 0},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "model_substitution_max": {"const": 0},
+        "assistant_content_must_be_direct_json": {"const": true},
+        "code_fence_allowed": {"const": false},
+        "content_repair_allowed": {"const": false},
+        "credential_value_recording_allowed": {"const": false},
+        "raw_provider_envelope_persisted": {"const": false},
+        "prompt_or_raw_response_persisted": {"const": false}
+      }
+    },
+    "responseContract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_reference",
+        "required_question_ids",
+        "verdicts",
+        "all_findings_retained"
+      ],
+      "properties": {
+        "schema_reference": {"const": "./agent-review-response.schema.v0.1.json"},
+        "required_question_ids": {
+          "const": [
+            "SR-001",
+            "SR-002",
+            "SR-003",
+            "SR-004",
+            "SR-005",
+            "SR-006",
+            "SR-007",
+            "SR-008",
+            "SR-009",
+            "SR-010",
+            "SR-011",
+            "SR-012",
+            "SR-013",
+            "SR-014",
+            "SR-015",
+            "SR-016"
+          ]
+        },
+        "verdicts": {"const": ["RETAIN", "REVISE", "REPLACE", "REJECT"]},
+        "all_findings_retained": {"const": true}
+      }
+    },
+    "containerControls": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "colima_starts_max",
+        "image_pulls_max",
+        "container_runs_max",
+        "capabilities_dropped",
+        "no_new_privileges",
+        "pids_limit",
+        "memory_limit",
+        "cpu_limit",
+        "tmpfs",
+        "docker_socket_mounted",
+        "target_network_calls_max"
+      ],
+      "properties": {
+        "colima_starts_max": {"const": 1},
+        "image_pulls_max": {"const": 2},
+        "container_runs_max": {"const": 2},
+        "capabilities_dropped": {"const": "ALL"},
+        "no_new_privileges": {"const": true},
+        "pids_limit": {"const": 256},
+        "memory_limit": {"const": "1g"},
+        "cpu_limit": {"const": "2"},
+        "tmpfs": {"const": "/tmp:rw,noexec,nosuid,size=256m"},
+        "docker_socket_mounted": {"const": false},
+        "target_network_calls_max": {"const": 0}
+      }
+    },
+    "outputPolicy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository_only",
+        "raw_secrets_allowed",
+        "raw_prompt_allowed",
+        "raw_provider_envelope_allowed",
+        "sanitized_parsed_results_allowed",
+        "request_and_response_hashes_allowed",
+        "failures_and_unknowns_retained"
+      ],
+      "properties": {
+        "primary_repository_only": {"const": true},
+        "raw_secrets_allowed": {"const": false},
+        "raw_prompt_allowed": {"const": false},
+        "raw_provider_envelope_allowed": {"const": false},
+        "sanitized_parsed_results_allowed": {"const": true},
+        "request_and_response_hashes_allowed": {"const": true},
+        "failures_and_unknowns_retained": {"const": true}
+      }
+    }
+  }
+}

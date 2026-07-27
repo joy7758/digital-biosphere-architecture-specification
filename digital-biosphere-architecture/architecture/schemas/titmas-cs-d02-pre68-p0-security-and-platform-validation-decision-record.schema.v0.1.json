@@ -1,0 +1,333 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre68-p0-security-and-platform-validation-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-68 P0 Security and Platform Validation Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "scope_reference",
+    "scope_sha256",
+    "scope_schema_sha256",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "standing_directive_eligibility",
+    "preconditions",
+    "scope",
+    "authorization",
+    "effects_before_execution",
+    "rollback",
+    "next_gate",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre68-p0-security-and-platform-validation-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-68-P0-SECURITY-AND-PLATFORM-VALIDATION-DECISION-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {
+      "const": "EXACT_TWO_AGENT_REVIEWS_AND_TWO_PINNED_LINUX_VALIDATIONS_AUTHORIZED_NOT_EXECUTED"
+    },
+    "decision_id": {"const": "CS-D02-PRE-68"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-68-P0-FORMAL-SECURITY-REVIEW-AND-PLATFORM-VALIDATION-SCOPE-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {"$ref": "#/$defs/sha256"},
+    "recommendation_commit": {"$ref": "#/$defs/commit"},
+    "scope_reference": {
+      "const": "commercialization-standards-p0-security-and-platform-scope/pre68-security-and-platform-scope.v0.1.json"
+    },
+    "scope_sha256": {"$ref": "#/$defs/sha256"},
+    "scope_schema_sha256": {"$ref": "#/$defs/sha256"},
+    "decision_result": {
+      "const": "AUTHORIZE_TWO_PUBLIC_SAFE_AGENT_ASSISTED_STATIC_REVIEWS_AND_TWO_PINNED_NETWORK_DISABLED_LINUX_X86_64_VALIDATIONS_WITH_FORMAL_HUMAN_SECURITY_REVIEW_REMAINING_SEPARATE"
+    },
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "Codex"},
+    "standing_directive_eligibility": {"$ref": "#/$defs/eligibility"},
+    "preconditions": {"$ref": "#/$defs/preconditions"},
+    "scope": {"$ref": "#/$defs/scope"},
+    "authorization": {"$ref": "#/$defs/authorization"},
+    "effects_before_execution": {"$ref": "#/$defs/effects"},
+    "rollback": {"$ref": "#/$defs/rollback"},
+    "next_gate": {"$ref": "#/$defs/nextGate"},
+    "result": {"const": "NOT_EXECUTED"}
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_present",
+        "single_exact_option",
+        "repositories_target_and_scope_explicit",
+        "preconditions_directly_evidenced",
+        "api_runtime_and_network_actions_exactly_bounded",
+        "all_effect_classes_declared",
+        "stop_conditions_explicit",
+        "later_conflict_present",
+        "independent_decision_record_present",
+        "result_validation_and_failure_retention_required",
+        "material_actions_separately_recorded",
+        "applicable"
+      ],
+      "properties": {
+        "canonical_recommendation_present": {"const": true},
+        "single_exact_option": {"const": true},
+        "repositories_target_and_scope_explicit": {"const": true},
+        "preconditions_directly_evidenced": {"const": true},
+        "api_runtime_and_network_actions_exactly_bounded": {"const": true},
+        "all_effect_classes_declared": {"const": true},
+        "stop_conditions_explicit": {"const": true},
+        "later_conflict_present": {"const": false},
+        "independent_decision_record_present": {"const": true},
+        "result_validation_and_failure_retention_required": {"const": true},
+        "material_actions_separately_recorded": {"const": true},
+        "applicable": {"const": true}
+      }
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_remote_verified",
+        "recommendation_commit",
+        "target_commit",
+        "target_remote_branch_matched",
+        "target_dirty_count",
+        "target_main_commit",
+        "review_input_hashes_matched",
+        "review_input_hashes_expected",
+        "qianfan_credential_identifier_configured",
+        "dashscope_credential_identifier_configured",
+        "credential_values_recorded",
+        "docker_client_present",
+        "docker_client_version",
+        "colima_present",
+        "container_daemon_initial_state",
+        "container_daemon_start_required"
+      ],
+      "properties": {
+        "recommendation_remote_verified": {"const": true},
+        "recommendation_commit": {
+          "const": "3b54d167593c90041bc100119bdc67044eac323d"
+        },
+        "target_commit": {
+          "const": "0030077f29c37145a306b72e7083345eb76b504a"
+        },
+        "target_remote_branch_matched": {"const": true},
+        "target_dirty_count": {"const": 0},
+        "target_main_commit": {
+          "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+        },
+        "review_input_hashes_matched": {"const": 10},
+        "review_input_hashes_expected": {"const": 10},
+        "qianfan_credential_identifier_configured": {"const": true},
+        "dashscope_credential_identifier_configured": {"const": true},
+        "credential_values_recorded": {"const": false},
+        "docker_client_present": {"const": true},
+        "docker_client_version": {"const": "29.5.2"},
+        "colima_present": {"const": true},
+        "container_daemon_initial_state": {"const": "NOT_RUNNING"},
+        "container_daemon_start_required": {"const": true}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "target_repository",
+        "target_branch",
+        "target_commit",
+        "execution_plan_reference",
+        "agent_model_requests_max",
+        "concurrency_max",
+        "timeout_seconds_per_request",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "json_extraction_or_repair_max",
+        "credential_identifiers_max",
+        "container_runtime_starts_max",
+        "container_images_max",
+        "container_executions_max",
+        "target_repository_writes_max",
+        "implementation_files_modified_max",
+        "test_files_modified_max",
+        "target_real_dns_calls_max",
+        "target_tcp_calls_max",
+        "target_tls_handshakes_max",
+        "target_http_requests_max",
+        "p1_or_p2_executions_max",
+        "provider_binding_actions_max",
+        "release_actions_max"
+      ],
+      "properties": {
+        "primary_repository": {"const": "digital-biosphere-architecture"},
+        "target_repository": {
+          "const": "https://github.com/joy7758/titmas-integrations.git"
+        },
+        "target_branch": {"const": "codex/rb0-governance-baseline"},
+        "target_commit": {
+          "const": "0030077f29c37145a306b72e7083345eb76b504a"
+        },
+        "execution_plan_reference": {
+          "const": "commercialization-standards-p0-security-and-platform-validation/execution-plan.v0.1.json"
+        },
+        "agent_model_requests_max": {"const": 2},
+        "concurrency_max": {"const": 1},
+        "timeout_seconds_per_request": {"const": 120},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "model_substitution_max": {"const": 0},
+        "json_extraction_or_repair_max": {"const": 0},
+        "credential_identifiers_max": {"const": 2},
+        "container_runtime_starts_max": {"const": 1},
+        "container_images_max": {"const": 2},
+        "container_executions_max": {"const": 2},
+        "target_repository_writes_max": {"const": 0},
+        "implementation_files_modified_max": {"const": 0},
+        "test_files_modified_max": {"const": 0},
+        "target_real_dns_calls_max": {"const": 0},
+        "target_tcp_calls_max": {"const": 0},
+        "target_tls_handshakes_max": {"const": 0},
+        "target_http_requests_max": {"const": 0},
+        "p1_or_p2_executions_max": {"const": 0},
+        "provider_binding_actions_max": {"const": 0},
+        "release_actions_max": {"const": 0}
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "two_exact_agent_review_requests_authorized",
+        "two_exact_credential_identifier_reads_authorized",
+        "credential_value_recording_authorized",
+        "existing_colima_start_authorized",
+        "two_exact_image_pulls_authorized",
+        "two_network_none_container_executions_authorized",
+        "result_artifact_writes_in_primary_repository_authorized",
+        "target_repository_write_authorized",
+        "real_network_test_authorized",
+        "p1_or_p2_execution_authorized",
+        "provider_binding_authorized",
+        "formal_human_security_review_authorized",
+        "contract_adoption_authorized",
+        "merge_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "two_exact_agent_review_requests_authorized": {"const": true},
+        "two_exact_credential_identifier_reads_authorized": {"const": true},
+        "credential_value_recording_authorized": {"const": false},
+        "existing_colima_start_authorized": {"const": true},
+        "two_exact_image_pulls_authorized": {"const": true},
+        "two_network_none_container_executions_authorized": {"const": true},
+        "result_artifact_writes_in_primary_repository_authorized": {"const": true},
+        "target_repository_write_authorized": {"const": false},
+        "real_network_test_authorized": {"const": false},
+        "p1_or_p2_execution_authorized": {"const": false},
+        "provider_binding_authorized": {"const": false},
+        "formal_human_security_review_authorized": {"const": false},
+        "contract_adoption_authorized": {"const": false},
+        "merge_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_reviews_executed",
+        "platform_validations_executed",
+        "target_repository_changed",
+        "provider_supported",
+        "formal_human_security_review_complete",
+        "contract_adopted_as_standard",
+        "cross_platform_support_proven",
+        "real_network_conformance_proven",
+        "runtime_created_as_product",
+        "agent_created",
+        "entity_created",
+        "permission_created",
+        "release_authorized",
+        "standard_ready"
+      ],
+      "properties": {
+        "agent_reviews_executed": {"const": false},
+        "platform_validations_executed": {"const": false},
+        "target_repository_changed": {"const": false},
+        "provider_supported": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "contract_adopted_as_standard": {"const": false},
+        "cross_platform_support_proven": {"const": false},
+        "real_network_conformance_proven": {"const": false},
+        "runtime_created_as_product": {"const": false},
+        "agent_created": {"const": false},
+        "entity_created": {"const": false},
+        "permission_created": {"const": false},
+        "release_authorized": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stop_colima_if_started_for_pre68",
+        "history_rewrite_allowed",
+        "force_push_allowed",
+        "target_cleanup_required",
+        "image_cache_cleanup_authorized",
+        "failed_and_partial_results_retained"
+      ],
+      "properties": {
+        "stop_colima_if_started_for_pre68": {"const": true},
+        "history_rewrite_allowed": {"const": false},
+        "force_push_allowed": {"const": false},
+        "target_cleanup_required": {"const": false},
+        "image_cache_cleanup_authorized": {"const": false},
+        "failed_and_partial_results_retained": {"const": true}
+      }
+    },
+    "nextGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate_id",
+        "action",
+        "formal_human_security_review_decision_allowed",
+        "contract_adoption_decision_allowed",
+        "release_decision_allowed"
+      ],
+      "properties": {
+        "gate_id": {"const": "CS-D02-PRE-68-EXECUTION"},
+        "action": {
+          "const": "EXECUTE_FROZEN_PLATFORM_LANES_THEN_TWO_SEQUENTIAL_AGENT_REVIEW_LANES_AND_FORM_FAIL_CLOSED_RESULT"
+        },
+        "formal_human_security_review_decision_allowed": {"const": false},
+        "contract_adoption_decision_allowed": {"const": false},
+        "release_decision_allowed": {"const": false}
+      }
+    }
+  }
+}
