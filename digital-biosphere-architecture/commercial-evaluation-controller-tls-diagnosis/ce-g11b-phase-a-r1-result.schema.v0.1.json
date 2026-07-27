@@ -1,0 +1,410 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/titmas-ce-g11b-phase-a-r1-result.schema.v0.1.json",
+  "title": "TITMAS CE-G11B Phase A-R1 Revalidation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "result_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_baseline_commit",
+    "observed_at",
+    "historical_failure",
+    "validation",
+    "model_review",
+    "execution_caps",
+    "effects",
+    "next_gate"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./ce-g11b-phase-a-r1-result.schema.v0.1.json"
+    },
+    "result_id": {
+      "const": "TITMAS-CE-G11B-PHASE-A-R1-RESULT-001"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PASS_PHASE_A_R1_REVALIDATION_ONLY"
+    },
+    "decision_reference": {
+      "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-A-R1"
+    },
+    "decision_baseline_commit": {
+      "const": "fcab763ccdd8077a0f77c7fa879af3979357f0e7"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "historical_failure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reference",
+        "status",
+        "preserved",
+        "retroactively_authorized",
+        "historical_review_reused"
+      ],
+      "properties": {
+        "reference": {
+          "const": "./ce-g11b-phase-a-result.v0.1.json"
+        },
+        "status": {
+          "const": "FAIL_CLOSED_PHASE_A_MODEL_REQUEST_CAP_EXCEEDED"
+        },
+        "preserved": {
+          "const": true
+        },
+        "retroactively_authorized": {
+          "const": false
+        },
+        "historical_review_reused": {
+          "const": false
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_remote_baseline_match",
+        "candidate_hashes_matched",
+        "ce_g11a_hashes_matched",
+        "draft_2020_12_schemas_valid",
+        "runner_tests_python_3_13_12",
+        "runner_tests_python_3_14_5",
+        "all_scoped_tests_python_3_13_12",
+        "all_scoped_tests_python_3_14_5",
+        "full_ce_g_discovery_tests",
+        "valid_run_request_absent",
+        "final_cross_version_result_absent",
+        "candidate_components_modified",
+        "phase_a_r1_pass"
+      ],
+      "properties": {
+        "decision_remote_baseline_match": {
+          "const": true
+        },
+        "candidate_hashes_matched": {
+          "const": 5
+        },
+        "ce_g11a_hashes_matched": {
+          "const": 10
+        },
+        "draft_2020_12_schemas_valid": {
+          "const": 3
+        },
+        "runner_tests_python_3_13_12": {
+          "const": 14
+        },
+        "runner_tests_python_3_14_5": {
+          "const": 14
+        },
+        "all_scoped_tests_python_3_13_12": {
+          "const": 40
+        },
+        "all_scoped_tests_python_3_14_5": {
+          "const": 40
+        },
+        "full_ce_g_discovery_tests": {
+          "const": 49
+        },
+        "valid_run_request_absent": {
+          "const": true
+        },
+        "final_cross_version_result_absent": {
+          "const": true
+        },
+        "candidate_components_modified": {
+          "const": false
+        },
+        "phase_a_r1_pass": {
+          "const": true
+        }
+      }
+    },
+    "model_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "review_id",
+        "requested_model",
+        "returned_model",
+        "returned_model_equals_requested_model",
+        "http_status",
+        "request_count",
+        "retry_count",
+        "fallback_count",
+        "model_substitution_count",
+        "json_repair_request_count",
+        "request_payload_sha256",
+        "review_bundle_sha256",
+        "response_envelope_sha256",
+        "direct_json_parse_pass",
+        "verdict",
+        "confidence",
+        "would_recommend_to_agent_customer",
+        "python_3_10_compatible",
+        "workflow_exact_scope",
+        "workflow_read_only",
+        "request_contract_fail_closed",
+        "runner_sanitization_boundary",
+        "environment_allowlist_boundary",
+        "test_coverage_sufficient_for_phase_a_r1",
+        "historical_failure_preserved",
+        "candidate_edits_required",
+        "workflow_execution_authorized",
+        "phase_b_authorized",
+        "blocking_findings",
+        "required_corrections",
+        "persistence_boundary"
+      ],
+      "properties": {
+        "review_id": {
+          "const": "TITMAS-CE-G11B-A-R1-QWEN-IMPLEMENTATION-REVIEW-001"
+        },
+        "requested_model": {
+          "const": "qwen3.7-max"
+        },
+        "returned_model": {
+          "const": "qwen3.7-max"
+        },
+        "returned_model_equals_requested_model": {
+          "const": true
+        },
+        "http_status": {
+          "const": 200
+        },
+        "request_count": {
+          "const": 1
+        },
+        "retry_count": {
+          "const": 0
+        },
+        "fallback_count": {
+          "const": 0
+        },
+        "model_substitution_count": {
+          "const": 0
+        },
+        "json_repair_request_count": {
+          "const": 0
+        },
+        "request_payload_sha256": {
+          "const": "d8fb78db6ebf2e5226aca03b4bef59d4c212dd315afc55e816cffdd7bedc16ea"
+        },
+        "review_bundle_sha256": {
+          "const": "9c28084952b49a2b190cb908e5659a19d0d5c355e5ca61d1c94448bd0d0f9c6b"
+        },
+        "response_envelope_sha256": {
+          "const": "b0dcf42cb056ea43a6a736a2b457da7719e25b5e88e69b4c7c4bf399e6857f45"
+        },
+        "direct_json_parse_pass": {
+          "const": true
+        },
+        "verdict": {
+          "const": "PASS"
+        },
+        "confidence": {
+          "const": 0.95
+        },
+        "would_recommend_to_agent_customer": {
+          "const": true
+        },
+        "python_3_10_compatible": {
+          "const": true
+        },
+        "workflow_exact_scope": {
+          "const": true
+        },
+        "workflow_read_only": {
+          "const": true
+        },
+        "request_contract_fail_closed": {
+          "const": true
+        },
+        "runner_sanitization_boundary": {
+          "const": true
+        },
+        "environment_allowlist_boundary": {
+          "const": true
+        },
+        "test_coverage_sufficient_for_phase_a_r1": {
+          "const": true
+        },
+        "historical_failure_preserved": {
+          "const": true
+        },
+        "candidate_edits_required": {
+          "const": false
+        },
+        "workflow_execution_authorized": {
+          "const": false
+        },
+        "phase_b_authorized": {
+          "const": false
+        },
+        "blocking_findings": {
+          "const": []
+        },
+        "required_corrections": {
+          "const": []
+        },
+        "persistence_boundary": {
+          "const": {
+            "credential_persisted": false,
+            "hidden_reasoning_persisted": false,
+            "raw_provider_envelope_persisted": false,
+            "usage_persisted": false,
+            "provider_error_body_persisted": false
+          }
+        }
+      }
+    },
+    "execution_caps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "trigger_events",
+        "workflow_runs",
+        "matrix_jobs",
+        "phase_a_r1_model_requests",
+        "workflow_execution_model_requests",
+        "target_public_site_requests",
+        "ssh_sessions",
+        "server_reads",
+        "server_writes",
+        "deployments",
+        "dbos_changes",
+        "saee_changes",
+        "site_changes_included",
+        "live_bindings_created"
+      ],
+      "properties": {
+        "trigger_events": {
+          "const": 0
+        },
+        "workflow_runs": {
+          "const": 0
+        },
+        "matrix_jobs": {
+          "const": 0
+        },
+        "phase_a_r1_model_requests": {
+          "const": 1
+        },
+        "workflow_execution_model_requests": {
+          "const": 0
+        },
+        "target_public_site_requests": {
+          "const": 0
+        },
+        "ssh_sessions": {
+          "const": 0
+        },
+        "server_reads": {
+          "const": 0
+        },
+        "server_writes": {
+          "const": 0
+        },
+        "deployments": {
+          "const": 0
+        },
+        "dbos_changes": {
+          "const": 0
+        },
+        "saee_changes": {
+          "const": 0
+        },
+        "site_changes_included": {
+          "const": 0
+        },
+        "live_bindings_created": {
+          "const": 0
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "permission",
+        "retroactive_authorization",
+        "valid_run_request",
+        "workflow_run",
+        "remote_cross_version_validation",
+        "phase_b_authorization",
+        "live_binding",
+        "tls_root_cause_proof",
+        "public_entry_redeployment_admission",
+        "redeployment",
+        "production_readiness",
+        "certification",
+        "sla",
+        "commercial_offering"
+      ],
+      "properties": {
+        "authority": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "retroactive_authorization": {
+          "const": false
+        },
+        "valid_run_request": {
+          "const": false
+        },
+        "workflow_run": {
+          "const": false
+        },
+        "remote_cross_version_validation": {
+          "const": false
+        },
+        "phase_b_authorization": {
+          "const": false
+        },
+        "live_binding": {
+          "const": false
+        },
+        "tls_root_cause_proof": {
+          "const": false
+        },
+        "public_entry_redeployment_admission": {
+          "const": false
+        },
+        "redeployment": {
+          "const": false
+        },
+        "production_readiness": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "sla": {
+          "const": false
+        },
+        "commercial_offering": {
+          "const": false
+        }
+      }
+    },
+    "next_gate": {
+      "const": {
+        "action": "VERIFY_PHASE_A_R1_REMOTE_BASELINE_THEN_PREPARE_PHASE_B_RECOMMENDATION",
+        "authorized": false
+      }
+    }
+  }
+}

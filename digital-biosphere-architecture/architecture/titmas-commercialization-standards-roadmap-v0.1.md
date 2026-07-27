@@ -2779,6 +2779,41 @@ preserved、retroactive authorization rejected、candidate read-only、implement
 request cap 1、execution request cap 0 和 Phase B unauthorized。Decision 必须先远端
 固化，才能执行 Phase A-R1。
 
+### 4.79 CE-G11B Phase A-R1 Revalidation Result
+
+[Phase A-R1 Report](../TITMAS-CE-G11B-PHASE-A-R1-REVALIDATION-REPORT-v0.1.md)
+和
+[machine-readable result](../commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.v0.1.json)
+记录：
+
+```text
+CE_G11B_PHASE_A_R1_RESULT=PASS_PHASE_A_R1_REVALIDATION_ONLY
+CE_G11B_HISTORICAL_PHASE_A_FAILURE_PRESERVED=true
+CE_G11B_RETROACTIVE_AUTHORIZATION=false
+CE_G11B_CANDIDATE_HASHES_MATCH=5/5
+CE_G11B_CE_G11A_HASHES_MATCH=10/10
+CE_G11B_RUNNER_TESTS_PYTHON_3_13_12=14/14
+CE_G11B_RUNNER_TESTS_PYTHON_3_14_5=14/14
+CE_G11B_ALL_SCOPED_TESTS_PYTHON_3_13_12=40/40
+CE_G11B_ALL_SCOPED_TESTS_PYTHON_3_14_5=40/40
+CE_G11B_FULL_DISCOVERY_TESTS=49/49
+CE_G11B_PHASE_A_R1_REVIEW_MODEL=qwen3.7-max
+CE_G11B_PHASE_A_R1_REVIEW_VERDICT=PASS
+CE_G11B_PHASE_A_R1_REVIEW_CONFIDENCE=0.95
+CE_G11B_PHASE_A_R1_MODEL_REQUESTS=1/1
+CE_G11B_CANDIDATE_COMPONENTS_MODIFIED=false
+CE_G11B_VALID_RUN_REQUEST_CREATED=false
+CE_G11B_WORKFLOW_RUNS=0
+CE_G11B_PHASE_B_AUTHORIZED=false
+```
+
+唯一一次 fresh Max review 返回 exact model identity、愿意向智能体客户推荐、0
+blocker/correction，并确认 Python 3.10 compatibility、workflow exact/read-only、
+fail-closed request、sanitization、environment allowlist 与测试覆盖。该 PASS 只修复并
+关闭 Phase A-R1 的本地重新验证 gate，不证明 remote matrix、live compatibility、TLS
+root cause、redeployment admission、Production、Certification、SLA 或 Commercial
+Offering。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -3048,11 +3083,10 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Execute CE-G11B Phase A-R1 revalidation only**：Decision 已由 `qwen3.7-max`
-   以 `APPROVE` 审查；先远端固化 Decision，再验证 frozen hashes、Schema、本地测试与
-   workflow runs=0，并执行恰好一次 fresh Max implementation review。不得修改 candidate、
-   创建有效 run request、执行 workflow、server access、live binding、Phase B 或
-   redeployment；
+1. **Verify CE-G11B Phase A-R1 remote baseline only**：R1 本地 PASS 已形成；先提交
+   exact result/report/cockpit 并验证远端 commit、Schema、hashes 和 workflow runs=0。
+   验证完成前不得准备 Phase B recommendation；始终不得创建有效 run request、执行
+   workflow、server access、live binding、Phase B 或 redeployment；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -3261,7 +3295,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=EXECUTE_CE_G11B_PHASE_A_R1_REVALIDATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=VERIFY_CE_G11B_PHASE_A_R1_REMOTE_BASELINE_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -3450,7 +3484,16 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_DECISION_REVIEW_MODEL=qwen3.7-ma
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_DECISION_REVIEW_VERDICT=APPROVE
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_DECISION_REVIEW_CONFIDENCE=0.95
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_AUTHORIZED=true
-TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_COMPLETED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_COMPLETED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_RESULT=PASS_PHASE_A_R1_REVALIDATION_ONLY
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_CANDIDATE_HASHES_MATCH=5/5
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_CE_G11A_HASHES_MATCH=10/10
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_REVIEW_MODEL=qwen3.7-max
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_REVIEW_VERDICT=PASS
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_REVIEW_CONFIDENCE=0.95
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_MODEL_REQUESTS=1/1
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_CANDIDATE_COMPONENTS_MODIFIED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_REMOTE_BASELINE_VERIFIED=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_REDEPLOYMENT_AUTHORIZED=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false

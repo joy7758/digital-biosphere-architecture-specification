@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_CE_G11B_PHASE_A_R1_DECIDED_REVALIDATION_PENDING_STANDARD_NOT_READY"
+      "const": "CS_D02_CE_G11B_PHASE_A_R1_PASS_REMOTE_VERIFICATION_PENDING_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -109,13 +109,13 @@
       "properties": {
         "as_of": {"const": "2026-07-27"},
         "last_completed_step": {
-          "const": "COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-R1-DECISION"
+          "const": "COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-R1"
         },
         "last_completed_result": {
-          "const": "AUTHORIZED_PHASE_A_R1_REVALIDATION_ONLY"
+          "const": "PASS_PHASE_A_R1_REVALIDATION_ONLY"
         },
         "direct_evidence_reference": {
-          "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-R1-DECISION-RECORD.v0.1.json"
+          "const": "commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.v0.1.json"
         },
         "current_best_connected_model": {"const": "qwen3.7-max"},
         "primary_new_provider_candidate": {
@@ -133,13 +133,13 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "EXECUTE_CE_G11B_PHASE_A_R1_REVALIDATION"
+          "const": "VERIFY_CE_G11B_PHASE_A_R1_REMOTE_BASELINE"
         },
         "next_action_authorized": {"const": true},
         "standard_ready": {"const": false},
         "provider_integration_authorized": {"const": false},
         "security_review_completed": {"const": false},
-        "implementation_authorized": {"const": true},
+        "implementation_authorized": {"const": false},
         "external_execution_authorized": {"const": false}
       }
     },
@@ -2758,7 +2758,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "CE_G11B_PHASE_A_R1_DECIDED_REVALIDATION_PENDING"
+          "const": "CE_G11B_PHASE_A_R1_PASS_REMOTE_VERIFICATION_PENDING"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7784,7 +7784,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "EXECUTE_CE_G11B_PHASE_A_R1_REVALIDATION_ONLY"
+          "const": "VERIFY_CE_G11B_PHASE_A_R1_REMOTE_BASELINE_ONLY"
         },
         "decision_ready": {
           "const": false

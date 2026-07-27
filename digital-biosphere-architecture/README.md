@@ -414,6 +414,12 @@ Recommendation 与模型审查本身不授权 Phase A-R1、Phase B 或 workflow 
 [qwen Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-R1-QWEN-DECISION-REVIEW-v0.1.json)
 为 `APPROVE`、置信度 `0.95`、0 blocker/correction。该授权不允许修改 candidate、
 创建有效 run request、执行 workflow、进入 Phase B 或重部署。
+[Phase A-R1 result](commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.v0.1.json)
+和[报告](TITMAS-CE-G11B-PHASE-A-R1-REVALIDATION-REPORT-v0.1.md)记录
+`PASS_PHASE_A_R1_REVALIDATION_ONLY`：15/15 hashes、Python 3.13/3.14 各 40/40、
+full discovery 49/49；唯一一次 fresh `qwen3.7-max` review 为 `PASS`、置信度
+`0.95`、0 blocker/correction，候选无需修改。旧 Phase A 失败继续保留，CE-G11B
+workflow runs 仍为 0，Phase B 仍未授权。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
