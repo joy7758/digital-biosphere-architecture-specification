@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_69_EXECUTED_FAIL_CLOSED_DOCKER_CONTEXT_AND_ZERO_WRITE_BOUNDARY_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_70_EXPLICIT_DOCKER_HOST_AND_GLOBAL_CONFIG_GUARD_RECOMMENDATION_DEFINED_DECISION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "CS-D02-PRE-69-EXECUTION"},
+        "last_completed_step": {"const": "CS-D02-PRE-70-RECOMMENDATION"},
         "last_completed_result": {
-          "const": "FAIL_CLOSED_DOCKER_CONTEXT_UNAVAILABLE_AND_ZERO_WRITE_BOUNDARY_NOT_MET"
+          "const": "EXPLICIT_DOCKER_HOST_AND_GLOBAL_CONFIG_GUARD_RECOMMENDATION_DEFINED_DECISION_REQUIRED"
         },
         "direct_evidence_reference": {
-          "const": "commercialization-standards-p0-security-and-platform-remediation/execution-receipt.v0.1.json"
+          "const": "TITMAS-CS-D02-PRE-70-EXPLICIT-DOCKER-HOST-AND-GLOBAL-CONFIG-GUARD-RECOMMENDATION-v0.1.md"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,9 +131,9 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "PREPARE_PRE70_EXPLICIT_DOCKER_CONTEXT_AND_GLOBAL_CONFIG_WRITE_GUARD_RECOMMENDATION"
+          "const": "RECORD_PRE70_EXPLICIT_DOCKER_HOST_AND_GLOBAL_CONFIG_GUARD_DECISION"
         },
-        "next_action_authorized": {"const": true},
+        "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
         "provider_integration_authorized": {"const": false},
         "security_review_completed": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE70_RECOMMENDATION_REQUIRED_NOT_PREPARED"
+          "const": "PRE70_EXPLICIT_DOCKER_HOST_AND_GLOBAL_CONFIG_GUARD_RECOMMENDATION_DEFINED_DECISION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7782,7 +7782,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_PRE70_EXPLICIT_DOCKER_CONTEXT_AND_GLOBAL_CONFIG_WRITE_GUARD_RECOMMENDATION"
+          "const": "RECORD_PRE70_EXPLICIT_DOCKER_HOST_AND_GLOBAL_CONFIG_GUARD_DECISION"
         },
         "decision_ready": {
           "const": false
