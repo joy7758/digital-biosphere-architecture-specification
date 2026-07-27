@@ -5213,6 +5213,32 @@
             "pre52_required_bound_sessions",
             "pre52_execution_ready",
             "pre52_root_cause_proven",
+            "pre53_recommendation_reference",
+            "pre53_recommendation_sha256",
+            "pre53_recommendation_commit",
+            "pre53_decision_reference",
+            "pre53_decision_sha256",
+            "pre53_decision_commit",
+            "pre53_plan_sha256",
+            "pre53_plan_commit",
+            "pre53_result_reference",
+            "pre53_result_sha256",
+            "pre53_sanitized_results_sha256",
+            "pre53_provider_comparison_sha256",
+            "pre53_execution_receipt_sha256",
+            "pre53_result_commit",
+            "pre53_result",
+            "pre53_requests_executed",
+            "pre53_requests_passed",
+            "pre53_direct_json_passed",
+            "pre53_schema_passed",
+            "pre53_expected_boundary_values_passed",
+            "pre53_exact_returned_model_matches",
+            "pre53_retry_fallback_substitution_repair_attempts",
+            "pre53_best_current_connected_model",
+            "pre53_primary_new_provider_candidate",
+            "pre53_primary_new_model_candidate",
+            "pre53_primary_new_credential_identifier",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5260,6 +5286,12 @@
             "multi_provider_preflight_recommendation_allowed",
             "qianfan_exact_model_binding_required",
             "security_reviewer_exact_binding_required",
+            "pre53_china_provider_benchmark_executed",
+            "pre53_china_provider_benchmark_pass",
+            "qwen_provider_connected",
+            "qwen_provider_directly_tested",
+            "independent_security_reviewer_provider_required",
+            "qwen_onboarding_benchmark_recommendation_allowed",
             "rb1_provider_binding_implementation_authorized",
             "rb1_reproducible_build_proven",
             "provider_supported",
@@ -6157,6 +6189,84 @@
             "pre52_root_cause_proven": {
               "const": false
             },
+            "pre53_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-53-CHINA-PROVIDER-SUITABILITY-BENCHMARK-RECOMMENDATION-v0.1.md"
+            },
+            "pre53_recommendation_sha256": {
+              "const": "82ba3e8d118e865ddede872b85f70115f6f6a1874d67db3322a724d70747b506"
+            },
+            "pre53_recommendation_commit": {
+              "const": "75837f12f0a5df8607405211010bde77d372ac70"
+            },
+            "pre53_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-53-CHINA-PROVIDER-SUITABILITY-BENCHMARK-DECISION-RECORD.v0.1.json"
+            },
+            "pre53_decision_sha256": {
+              "const": "77b09d6f5d78d8c775185cdbdf619902395f0a31e8557e8b27461fb38f610657"
+            },
+            "pre53_decision_commit": {
+              "const": "ef0fc6a3424a47091b770e873fc73b3bbd09166b"
+            },
+            "pre53_plan_sha256": {
+              "const": "ab7f56b7d76b9bb3dd57fd09a3961935b050ede863c13dd7af34cf9848f11811"
+            },
+            "pre53_plan_commit": {
+              "const": "5089d367818c9b5c039ccc5844fe198126fb888f"
+            },
+            "pre53_result_reference": {
+              "const": "commercialization-standards-china-provider-suitability-benchmark/PRE-53-CHINA-PROVIDER-SUITABILITY-BENCHMARK-RESULT-v0.1.md"
+            },
+            "pre53_result_sha256": {
+              "const": "519ff16fec79afb6c07c970338038dc2995466823119ce16fdf6fd4346e7e26c"
+            },
+            "pre53_sanitized_results_sha256": {
+              "const": "bb397188984dd8fcc1362a4cf1aaf1af32633d83dcc930768de8ef9dfd83d9ae"
+            },
+            "pre53_provider_comparison_sha256": {
+              "const": "66b12ac6b053cf001d13da783fa0210e432d74b3a1042473fb9d98011e91d403"
+            },
+            "pre53_execution_receipt_sha256": {
+              "const": "649c47e11f818d3fa4f4b06fcc215e53b3f2330add34d972ddcc3664d6a651c2"
+            },
+            "pre53_result_commit": {
+              "const": "b2295af127c7cce533f2ffed8a066072df9cabf0"
+            },
+            "pre53_result": {
+              "const": "PASS_12_OF_12_BOUND_REQUESTS_PRIMARY_NEW_PROVIDER_QWEN"
+            },
+            "pre53_requests_executed": {
+              "const": 12
+            },
+            "pre53_requests_passed": {
+              "const": 12
+            },
+            "pre53_direct_json_passed": {
+              "const": 12
+            },
+            "pre53_schema_passed": {
+              "const": 12
+            },
+            "pre53_expected_boundary_values_passed": {
+              "const": 12
+            },
+            "pre53_exact_returned_model_matches": {
+              "const": 12
+            },
+            "pre53_retry_fallback_substitution_repair_attempts": {
+              "const": 0
+            },
+            "pre53_best_current_connected_model": {
+              "const": "deepseek-v4-flash"
+            },
+            "pre53_primary_new_provider_candidate": {
+              "const": "ALIBABA_CLOUD_MODEL_STUDIO"
+            },
+            "pre53_primary_new_model_candidate": {
+              "const": "qwen3.7-plus-2026-05-26"
+            },
+            "pre53_primary_new_credential_identifier": {
+              "const": "DASHSCOPE_API_KEY"
+            },
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -6293,10 +6403,28 @@
               "const": false
             },
             "qianfan_exact_model_binding_required": {
-              "const": true
+              "const": false
             },
             "security_reviewer_exact_binding_required": {
+              "const": false
+            },
+            "pre53_china_provider_benchmark_executed": {
               "const": true
+            },
+            "pre53_china_provider_benchmark_pass": {
+              "const": true
+            },
+            "qwen_provider_connected": {
+              "const": false
+            },
+            "qwen_provider_directly_tested": {
+              "const": false
+            },
+            "independent_security_reviewer_provider_required": {
+              "const": true
+            },
+            "qwen_onboarding_benchmark_recommendation_allowed": {
+              "const": false
             },
             "rb1_provider_binding_implementation_authorized": {
               "const": false
@@ -6331,7 +6459,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "RESOLVE_QIANFAN_AND_SECURITY_REVIEWER_EXACT_MODEL_BINDINGS_THEN_FORM_PREFLIGHT_RECOMMENDATION"
+          "const": "CONNECT_DASHSCOPE_API_KEY_THEN_FORM_QWEN_ONBOARDING_BENCHMARK_RECOMMENDATION"
         },
         "decision_ready": {
           "const": false
