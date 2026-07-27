@@ -463,6 +463,11 @@ merge-tree 为 `ea296d8b…` 且未观察到冲突。
 经 [qwen3.7-max review](TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
 得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction。下一步必须先
 离线复验当前真实 merge tree；不得直接 merge、rebase 或改网站。
+[Merge-tree R1 result](TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-REPORT-v0.1.md)
+保留 `FAIL_CLOSED_SITE_DEPENDENCY_NOT_MATERIALIZED`：merge tree、0 path intersection、
+3 个 Schema 和 49/49 CE tests 均通过，但临时 worktree 无 `site/node_modules`。
+依赖安装、网络获取和 site tests 均为 0；不得写成 merge-tree PASS 或 merge 授权。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
