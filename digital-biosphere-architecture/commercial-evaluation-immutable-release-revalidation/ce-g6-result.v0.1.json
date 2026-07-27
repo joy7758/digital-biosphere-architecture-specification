@@ -1,0 +1,100 @@
+{
+  "$schema": "./ce-g6-result.schema.v0.1.json",
+  "result_id": "TITMAS-CE-G6-IMMUTABLE-RELEASE-REVALIDATION-001",
+  "version": "0.1.0",
+  "status": "PASS_IMMUTABLE_RELEASE_REVALIDATION_ONLY",
+  "observed_at": "2026-07-27T12:00:32Z",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G6",
+  "decision_commit": "efaf6c14f991a0fbb23d0be255bb931318565226",
+  "server_revalidation": {
+    "started_at": "2026-07-27T12:00:32Z",
+    "ended_at": "2026-07-27T12:00:32Z",
+    "current_release": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "proposed_release": "/srv/tmai/releases/f8107969aa1f43be8ecf43f557297a630309fe41",
+    "archive": {
+      "path": "/tmp/titmas-site-f8107969aa1f43be8ecf43f557297a630309fe41.tar.gz",
+      "bytes": 962612,
+      "sha256": "fceb10bba908fee4c36bed5fcccc88c3f6ff44d1326c3e1565be17cd12ac167e",
+      "path_safety_pass": true,
+      "regular_files_verified": 61
+    },
+    "manifest": {
+      "path": "/srv/tmai/releases/f8107969aa1f43be8ecf43f557297a630309fe41/release-manifest.json",
+      "schema_version": "0.1",
+      "source_revision": "f8107969aa1f43be8ecf43f557297a630309fe41",
+      "files_declared": 60,
+      "files_verified": 60,
+      "release_manifest_bytes": 10678,
+      "release_manifest_sha256": "578d3aa556efe3a647cb44fe40dad74d675dac11e92c87b38c298be97969fc2b",
+      "release_file_set_exact": true,
+      "archive_file_set_exact": true
+    },
+    "truth_boundary": {
+      "entry_status": "DEVELOPMENT_CONTRACT_SOURCE_PREPARED_NOT_DEPLOYED",
+      "entry_maturity": "Development",
+      "evaluation_only": true,
+      "effects_all_false": true,
+      "production_recommendation": "DO_NOT_RECOMMEND_FOR_PRODUCTION",
+      "available_offering": false,
+      "production_ready": false,
+      "customer_adoption_claimed": false,
+      "customers_verified": 0,
+      "contracts_created": 0,
+      "sla_defined": false
+    },
+    "execution": {
+      "server_ssh_sessions": 1,
+      "public_http_requests": 0,
+      "model_requests": 0,
+      "archive_extraction": false,
+      "retry": false,
+      "fallback": false,
+      "server_file_write": false,
+      "symlink_switch": false,
+      "nginx_reload": false,
+      "deployment": false
+    }
+  },
+  "local_revalidation": {
+    "decision_head": "efaf6c14f991a0fbb23d0be255bb931318565226",
+    "site_source_diff_zero": true,
+    "schema_positive_pass": true,
+    "negative_boundary_cases_rejected": "5/5",
+    "entry_source_sha256": "af106a96eceb9e555ef73948eff3d15c7e48b5c9657d5d1d7d7c205bf905b114",
+    "entry_release_sha256": "af106a96eceb9e555ef73948eff3d15c7e48b5c9657d5d1d7d7c205bf905b114",
+    "entry_schema_source_sha256": "a49b8d25b2d1c0a79a37fb6449408df3ddbd97b952bff2f7917f913627e55f1c",
+    "entry_schema_release_sha256": "a49b8d25b2d1c0a79a37fb6449408df3ddbd97b952bff2f7917f913627e55f1c"
+  },
+  "gate_assessment": {
+    "immutable_release_revalidation_pass": true,
+    "artifact_integrity_pass": true,
+    "source_correspondence_pass": true,
+    "truth_boundary_pass": true,
+    "redeployment_admission_pass": false,
+    "redeployment_authorized": false,
+    "tls_root_cause_proven": false,
+    "next_action": "PREPARE_CE_G7_EXACT_REDEPLOYMENT_RECOMMENDATION"
+  },
+  "known_limitations": [
+    "CE-G6 validates preserved artifact integrity and source correspondence only; it does not deploy.",
+    "CE-G6 does not prove the root cause of the earlier TLS transport error.",
+    "CE-G6 does not guarantee that a future deployment or post-switch observation will succeed.",
+    "Deployment environment, public routes, Nginx reload, and post-switch rollback behavior were not executed in CE-G6."
+  ],
+  "effects": {
+    "authority": false,
+    "permission": false,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "capability": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offer": false,
+    "production_readiness": false,
+    "deployment_authorization": false,
+    "tls_root_cause_proof": false,
+    "deployment_success_guarantee": false
+  }
+}

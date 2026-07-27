@@ -1,0 +1,413 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/architecture/schemas/titmas-ce-g6-result.schema.v0.1.json",
+  "title": "TITMAS CE-G6 Immutable Release Revalidation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "result_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "decision_commit",
+    "server_revalidation",
+    "local_revalidation",
+    "gate_assessment",
+    "known_limitations",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./ce-g6-result.schema.v0.1.json"
+    },
+    "result_id": {
+      "const": "TITMAS-CE-G6-IMMUTABLE-RELEASE-REVALIDATION-001"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PASS_IMMUTABLE_RELEASE_REVALIDATION_ONLY"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G6"
+    },
+    "decision_commit": {
+      "const": "efaf6c14f991a0fbb23d0be255bb931318565226"
+    },
+    "server_revalidation": {
+      "$ref": "#/$defs/serverRevalidation"
+    },
+    "local_revalidation": {
+      "$ref": "#/$defs/localRevalidation"
+    },
+    "gate_assessment": {
+      "$ref": "#/$defs/gateAssessment"
+    },
+    "known_limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "effects": {
+      "$ref": "#/$defs/effects"
+    }
+  },
+  "$defs": {
+    "serverRevalidation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "started_at",
+        "ended_at",
+        "current_release",
+        "proposed_release",
+        "archive",
+        "manifest",
+        "truth_boundary",
+        "execution"
+      ],
+      "properties": {
+        "started_at": {
+          "const": "2026-07-27T12:00:32Z"
+        },
+        "ended_at": {
+          "const": "2026-07-27T12:00:32Z"
+        },
+        "current_release": {
+          "const": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705"
+        },
+        "proposed_release": {
+          "const": "/srv/tmai/releases/f8107969aa1f43be8ecf43f557297a630309fe41"
+        },
+        "archive": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "bytes",
+            "sha256",
+            "path_safety_pass",
+            "regular_files_verified"
+          ],
+          "properties": {
+            "path": {
+              "const": "/tmp/titmas-site-f8107969aa1f43be8ecf43f557297a630309fe41.tar.gz"
+            },
+            "bytes": {
+              "const": 962612
+            },
+            "sha256": {
+              "const": "fceb10bba908fee4c36bed5fcccc88c3f6ff44d1326c3e1565be17cd12ac167e"
+            },
+            "path_safety_pass": {
+              "const": true
+            },
+            "regular_files_verified": {
+              "const": 61
+            }
+          }
+        },
+        "manifest": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "path",
+            "schema_version",
+            "source_revision",
+            "files_declared",
+            "files_verified",
+            "release_manifest_bytes",
+            "release_manifest_sha256",
+            "release_file_set_exact",
+            "archive_file_set_exact"
+          ],
+          "properties": {
+            "path": {
+              "const": "/srv/tmai/releases/f8107969aa1f43be8ecf43f557297a630309fe41/release-manifest.json"
+            },
+            "schema_version": {
+              "const": "0.1"
+            },
+            "source_revision": {
+              "const": "f8107969aa1f43be8ecf43f557297a630309fe41"
+            },
+            "files_declared": {
+              "const": 60
+            },
+            "files_verified": {
+              "const": 60
+            },
+            "release_manifest_bytes": {
+              "const": 10678
+            },
+            "release_manifest_sha256": {
+              "const": "578d3aa556efe3a647cb44fe40dad74d675dac11e92c87b38c298be97969fc2b"
+            },
+            "release_file_set_exact": {
+              "const": true
+            },
+            "archive_file_set_exact": {
+              "const": true
+            }
+          }
+        },
+        "truth_boundary": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "entry_status",
+            "entry_maturity",
+            "evaluation_only",
+            "effects_all_false",
+            "production_recommendation",
+            "available_offering",
+            "production_ready",
+            "customer_adoption_claimed",
+            "customers_verified",
+            "contracts_created",
+            "sla_defined"
+          ],
+          "properties": {
+            "entry_status": {
+              "const": "DEVELOPMENT_CONTRACT_SOURCE_PREPARED_NOT_DEPLOYED"
+            },
+            "entry_maturity": {
+              "const": "Development"
+            },
+            "evaluation_only": {
+              "const": true
+            },
+            "effects_all_false": {
+              "const": true
+            },
+            "production_recommendation": {
+              "const": "DO_NOT_RECOMMEND_FOR_PRODUCTION"
+            },
+            "available_offering": {
+              "const": false
+            },
+            "production_ready": {
+              "const": false
+            },
+            "customer_adoption_claimed": {
+              "const": false
+            },
+            "customers_verified": {
+              "const": 0
+            },
+            "contracts_created": {
+              "const": 0
+            },
+            "sla_defined": {
+              "const": false
+            }
+          }
+        },
+        "execution": {
+          "$ref": "#/$defs/execution"
+        }
+      }
+    },
+    "localRevalidation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_head",
+        "site_source_diff_zero",
+        "schema_positive_pass",
+        "negative_boundary_cases_rejected",
+        "entry_source_sha256",
+        "entry_release_sha256",
+        "entry_schema_source_sha256",
+        "entry_schema_release_sha256"
+      ],
+      "properties": {
+        "decision_head": {
+          "const": "efaf6c14f991a0fbb23d0be255bb931318565226"
+        },
+        "site_source_diff_zero": {
+          "const": true
+        },
+        "schema_positive_pass": {
+          "const": true
+        },
+        "negative_boundary_cases_rejected": {
+          "const": "5/5"
+        },
+        "entry_source_sha256": {
+          "const": "af106a96eceb9e555ef73948eff3d15c7e48b5c9657d5d1d7d7c205bf905b114"
+        },
+        "entry_release_sha256": {
+          "const": "af106a96eceb9e555ef73948eff3d15c7e48b5c9657d5d1d7d7c205bf905b114"
+        },
+        "entry_schema_source_sha256": {
+          "const": "a49b8d25b2d1c0a79a37fb6449408df3ddbd97b952bff2f7917f913627e55f1c"
+        },
+        "entry_schema_release_sha256": {
+          "const": "a49b8d25b2d1c0a79a37fb6449408df3ddbd97b952bff2f7917f913627e55f1c"
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "server_ssh_sessions",
+        "public_http_requests",
+        "model_requests",
+        "archive_extraction",
+        "retry",
+        "fallback",
+        "server_file_write",
+        "symlink_switch",
+        "nginx_reload",
+        "deployment"
+      ],
+      "properties": {
+        "server_ssh_sessions": {
+          "const": 1
+        },
+        "public_http_requests": {
+          "const": 0
+        },
+        "model_requests": {
+          "const": 0
+        },
+        "archive_extraction": {
+          "const": false
+        },
+        "retry": {
+          "const": false
+        },
+        "fallback": {
+          "const": false
+        },
+        "server_file_write": {
+          "const": false
+        },
+        "symlink_switch": {
+          "const": false
+        },
+        "nginx_reload": {
+          "const": false
+        },
+        "deployment": {
+          "const": false
+        }
+      }
+    },
+    "gateAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "immutable_release_revalidation_pass",
+        "artifact_integrity_pass",
+        "source_correspondence_pass",
+        "truth_boundary_pass",
+        "redeployment_admission_pass",
+        "redeployment_authorized",
+        "tls_root_cause_proven",
+        "next_action"
+      ],
+      "properties": {
+        "immutable_release_revalidation_pass": {
+          "const": true
+        },
+        "artifact_integrity_pass": {
+          "const": true
+        },
+        "source_correspondence_pass": {
+          "const": true
+        },
+        "truth_boundary_pass": {
+          "const": true
+        },
+        "redeployment_admission_pass": {
+          "const": false
+        },
+        "redeployment_authorized": {
+          "const": false
+        },
+        "tls_root_cause_proven": {
+          "const": false
+        },
+        "next_action": {
+          "const": "PREPARE_CE_G7_EXACT_REDEPLOYMENT_RECOMMENDATION"
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "permission",
+        "runtime",
+        "api",
+        "agent",
+        "entity",
+        "capability",
+        "certification",
+        "sla",
+        "commercial_offer",
+        "production_readiness",
+        "deployment_authorization",
+        "tls_root_cause_proof",
+        "deployment_success_guarantee"
+      ],
+      "properties": {
+        "authority": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "api": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "capability": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "sla": {
+          "const": false
+        },
+        "commercial_offer": {
+          "const": false
+        },
+        "production_readiness": {
+          "const": false
+        },
+        "deployment_authorization": {
+          "const": false
+        },
+        "tls_root_cause_proof": {
+          "const": false
+        },
+        "deployment_success_guarantee": {
+          "const": false
+        }
+      }
+    }
+  }
+}

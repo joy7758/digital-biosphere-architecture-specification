@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: ce-g5-independent-vantage-transport-pass-redeployment-admission-pending-standard-not-ready
+status: ce-g6-immutable-release-revalidation-pass-ce-g7-redeployment-decision-pending-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -2391,6 +2391,34 @@ TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_AUTHORIZED=false
 TITMAS_PUBLIC_ENTRY_ROOT_CAUSE_PROVEN=false
 ```
 
+### 4.65 CE-G6 Immutable Proposed Release Revalidation
+
+[Recommendation](../TITMAS-CE-G6-IMMUTABLE-RELEASE-REVALIDATION-RECOMMENDATION-v0.1.md)
+与 [Decision](../TITMAS-COMMERCIAL-EVALUATION-CE-G6-DECISION-RECORD.v0.1.json)
+只授权一次 server read-only revalidation，不授权 deployment。
+
+```text
+CE_G6_RESULT=PASS_IMMUTABLE_RELEASE_REVALIDATION_ONLY
+CE_G6_ARCHIVE_BYTES_PASS=true
+CE_G6_ARCHIVE_SHA256_PASS=true
+CE_G6_ARCHIVE_PATH_SAFETY_PASS=true
+CE_G6_MANIFEST_FILES_PASS=60/60
+CE_G6_ARCHIVE_FILES_PASS=61/61
+CE_G6_SITE_SOURCE_DIFF_ZERO=true
+CE_G6_SCHEMA_POSITIVE_PASS=true
+CE_G6_NEGATIVE_CASES_REJECTED=5/5
+CE_G6_PUBLIC_HTTP_REQUESTS=0
+CE_G6_DEPLOYMENT=false
+```
+
+[Report](../TITMAS-CE-G6-IMMUTABLE-RELEASE-REVALIDATION-REPORT-v0.1.md) 与
+[machine result](../commercial-evaluation-immutable-release-revalidation/ce-g6-result.v0.1.json)
+证明 preserved `f810796...` release、archive、manifest、source correspondence 和
+Development truth boundary 一致。
+
+CE-G6 不证明 TLS 根因，也不保证 future deployment success。下一步只允许准备 CE-G7
+exact atomic redeployment recommendation；仍需独立 Decision。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -2660,11 +2688,10 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Revalidate the exact proposed immutable release before redeployment**：CE-G5 已用
-   两个独立 execution environment / network egress / TLS client stack 完成 `24/24`
-   current-live observation；下一步只允许准备拟重新发布 release/archive 的 manifest、
-   source revision、rollback target、switch 与 failure-preservation exact recommendation，
-   不自动授权部署；
+1. **Prepare CE-G7 exact redeployment recommendation**：CE-G5 已完成两个独立视角
+   `24/24`，CE-G6 已完成 proposed immutable release 的 `60/60` manifest、`61/61`
+   archive 与 `5/5` negative boundary revalidation；下一步只允许定义 atomic switch、
+   two-vantage post-switch observation 和 exact rollback，不自动授权部署；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -2873,7 +2900,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_EXACT_PROPOSED_RELEASE_REVALIDATION_AND_REDEPLOYMENT_RECOMMENDATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G7_EXACT_REDEPLOYMENT_RECOMMENDATION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -2925,6 +2952,17 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G5_DISTINCT_NETWORK_EGRESS=2
 TITMAS_COMMERCIAL_EVALUATION_CE_G5_DISTINCT_CLIENT_TLS_STACKS=2
 TITMAS_COMMERCIAL_EVALUATION_CE_G5_TRANSPORT_OBSERVATION_PASS=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G5_PROPOSED_RELEASE_REVALIDATED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G6_DECIDED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G6_EXECUTION_COMPLETED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G6_RESULT=PASS_IMMUTABLE_RELEASE_REVALIDATION_ONLY
+TITMAS_COMMERCIAL_EVALUATION_CE_G6_ARCHIVE_SHA256_PASS=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G6_MANIFEST_FILES_PASS=60/60
+TITMAS_COMMERCIAL_EVALUATION_CE_G6_ARCHIVE_FILES_PASS=61/61
+TITMAS_COMMERCIAL_EVALUATION_CE_G6_SITE_SOURCE_DIFF_ZERO=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G6_SCHEMA_POSITIVE_PASS=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G6_NEGATIVE_CASES_REJECTED=5/5
+TITMAS_COMMERCIAL_EVALUATION_CE_G6_PUBLIC_HTTP_REQUESTS=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G6_DEPLOYMENT_EXECUTED=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
 

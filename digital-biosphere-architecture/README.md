@@ -126,6 +126,7 @@ agent_evaluation_entry_transport_diagnosis_result: pass-root-cause-unresolved
 public_entry_redeployment_admission_policy_defined: true
 public_entry_independent_vantages_validated: 2
 public_entry_transport_observation_result: pass-24-of-24
+proposed_immutable_release_revalidation_result: pass-read-only
 public_entry_redeployment_admission_pass: false
 public_entry_redeployment_authorized: false
 developer_ecosystem_created: false
@@ -253,6 +254,21 @@ REDEPLOYMENT_ADMISSION_PASS=false
 REDEPLOYMENT_AUTHORIZED=false
 ROOT_CAUSE_PROVEN=false
 ```
+
+CE-G6 随后只读重验证待发布的 immutable release `f810796...`：archive bytes/SHA-256、
+路径安全、`60/60` manifest 文件、`61/61` archive regular files、source revision、
+Agent Evaluation Entry Development 边界、Schema 正例与 `5/5` 负例全部通过。
+[CE-G6 报告](TITMAS-CE-G6-IMMUTABLE-RELEASE-REVALIDATION-REPORT-v0.1.md)明确记录：
+
+```text
+PUBLIC_HTTP_REQUESTS=0
+SYMLINK_SWITCH=false
+NGINX_RELOAD=false
+DEPLOYMENT=false
+REDEPLOYMENT_AUTHORIZED=false
+```
+
+下一步只允许准备 CE-G7 exact redeployment recommendation（精确重新部署建议）。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
