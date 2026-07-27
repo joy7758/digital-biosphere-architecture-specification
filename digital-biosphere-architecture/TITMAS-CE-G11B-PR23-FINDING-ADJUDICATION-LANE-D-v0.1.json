@@ -1,0 +1,273 @@
+{
+  "record_type": "TITMAS_SANITIZED_WRITE_AHEAD_FINDING_ADJUDICATION",
+  "adjudication_id": "TITMAS-CE-G11B-PR23-FINDING-ADJUDICATION-LANE-D-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T18:35:58.230Z",
+  "status": "COMPLETED_QUALIFYING_WITH_NONAUTHORITATIVE_SUMMARY_MISMATCH",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-FINDING-ADJUDICATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "928023f69979b89cb6e0d581c01a4d85a10f7962",
+  "adjudication_lane": "D",
+  "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+  "head_sha": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+  "patch_sha256": "9cba5a068d16e5cf90178111d67a7282f8bc1d850b62ffc49e224da0cc9672e2",
+  "source_review_reference": "TITMAS-CE-G11B-PR23-AGENT-REVIEW-LANE-D-v0.1.json",
+  "source_review_sha256": "68647084a87f2f212de7e81c6e2c96ce73e5ed33cdc151053b972dbcfc506aca",
+  "expected_finding_ids": [
+    "D-B01",
+    "D-B02",
+    "D-B03",
+    "D-B04",
+    "D-B05",
+    "D-N01",
+    "D-N02",
+    "D-S01",
+    "D-S02",
+    "D-S03"
+  ],
+  "supplemental_body_hash_projection": "TSV_SAFE_ESCAPE_BACKSLASH_TAB_LF_CR",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "returned_model_equals_requested_model": true,
+  "http_status": 200,
+  "curl_exit": 0,
+  "response_byte_count": 36250,
+  "request_count": 1,
+  "retry_count": 0,
+  "fallback_count": 0,
+  "model_substitution_count": 0,
+  "json_repair_request_count": 0,
+  "request_payload_sha256": "ac03f7c9a4acbcfa63708b4dcc0f96c1eac65dcb3ba9ab6b59b0b56f95e98c39",
+  "response_envelope_sha256": "5d2183760cdcca37e96a220fe3bbd2d1d606a97b1be00733525d1281e994f1b6",
+  "envelope_json_parse_pass": true,
+  "direct_json_parse_pass": true,
+  "binding_valid": true,
+  "contract_valid": true,
+  "coverage_valid": true,
+  "qualifying_adjudication": true,
+  "adjudication": {
+    "verdict": "ADJUDICATION_COMPLETE",
+    "confidence": 0.95,
+    "adjudication_lane": "D",
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+    "patch_sha256": "9cba5a068d16e5cf90178111d67a7282f8bc1d850b62ffc49e224da0cc9672e2",
+    "source_review_sha256": "68647084a87f2f212de7e81c6e2c96ce73e5ed33cdc151053b972dbcfc506aca",
+    "expected_finding_ids": [
+      "D-B01",
+      "D-B02",
+      "D-B03",
+      "D-B04",
+      "D-B05",
+      "D-N01",
+      "D-N02",
+      "D-S01",
+      "D-S02",
+      "D-S03"
+    ],
+    "findings": [
+      {
+        "finding_id": "D-B01",
+        "source_severity": "CRITICAL",
+        "disposition": "REJECTED",
+        "claim_assessment": "False claim. PROGRAM-STATUS.md is a Markdown document and is not an instance of titmas-commercialization-standards-entry.schema.v0.1.json. The schema validates the JSON entry file, not the Markdown status mirror. Direct evidence confirms the JSON entry passed Draft 2020-12 meta-validation and instance validation at the frozen candidate.",
+        "direct_evidence": [
+          "PROGRAM-STATUS.md is Markdown format, not JSON",
+          "titmas-commercialization-standards-entry.schema.v0.1.json validates TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+          "Direct validation evidence states: 'TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json is the Schema instance and directly passed Draft 2020-12 meta-validation plus instance validation at the frozen candidate'",
+          "Schema validation does not apply to Markdown files"
+        ],
+        "correction_effect": "NOT_REQUIRED",
+        "rationale": "The finding conflates Markdown status documentation with JSON Schema validation. Schema validation applies only to JSON instances, not Markdown mirrors. The claim that Markdown fields cause JSON Schema validation failure is technically incorrect."
+      },
+      {
+        "finding_id": "D-B02",
+        "source_severity": "CRITICAL",
+        "disposition": "REJECTED",
+        "claim_assessment": "False claim. Same root cause as D-B01. PROGRAM-STATUS.md is Markdown and not subject to JSON Schema validation. The 36 new fields added to the Markdown status mirror do not affect schema validation of the JSON entry file.",
+        "direct_evidence": [
+          "PROGRAM-STATUS.md lines 286-330 add Markdown key-value pairs",
+          "titmas-commercialization-standards-entry.schema.v0.1.json validates JSON instances only",
+          "Direct validation evidence confirms JSON entry passed schema validation",
+          "Markdown status mirrors are documentation, not schema-bound instances"
+        ],
+        "correction_effect": "NOT_REQUIRED",
+        "rationale": "The finding incorrectly assumes Markdown status fields must be defined in a JSON Schema. Schema validation applies to JSON instances, not Markdown documentation. No schema validation failure occurs."
+      },
+      {
+        "finding_id": "D-B03",
+        "source_severity": "HIGH",
+        "disposition": "CONFIRMED",
+        "claim_assessment": "Confirmed. The next_decision_candidate.status field at line 664-665 is set to CE_G11B_DRAFT_PR_DECISION_REVIEW_FAIL_CLOSED_REMEDIATION_PENDING, which is historical relative to the current immutable candidate validation authorization state. The v0.2 Decision record shows AUTHORIZED status, and current_state_summary.last_completed_result reflects APPROVE_EXACT_QWEN3_7_MAX_FINAL_CANDIDATE_COMMIT_EXTERNAL_ATTESTATION_VALIDATION_NOT_EXECUTED.",
+        "direct_evidence": [
+          "TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json line 664-665: status is CE_G11B_DRAFT_PR_DECISION_REVIEW_FAIL_CLOSED_REMEDIATION_PENDING",
+          "current_state_summary.last_completed_result at line 17: APPROVE_EXACT_QWEN3_7_MAX_FINAL_CANDIDATE_COMMIT_EXTERNAL_ATTESTATION_VALIDATION_NOT_EXECUTED",
+          "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-IMMUTABLE-CANDIDATE-VALIDATION-AUTHORIZATION-DECISION-RECORD.v0.2.json shows AUTHORIZED status",
+          "Direct evidence states: 'The candidate entry next_decision_candidate.status still names CE_G11B_DRAFT_PR_DECISION_REVIEW_FAIL_CLOSED_REMEDIATION_PENDING... These are genuinely historical relative to the later immutable-candidate and PR #23 state'"
+        ],
+        "correction_effect": "REQUIRED",
+        "rationale": "The status field reflects an obsolete historical state (Draft PR review failure) rather than the current immutable candidate validation authorization approval. This creates status confusion and misrepresents the current gate state."
+      },
+      {
+        "finding_id": "D-B04",
+        "source_severity": "HIGH",
+        "disposition": "CONFIRMED",
+        "claim_assessment": "Confirmed. The current_recommended_option at line 2132-2133 is set to PREPARE_CE_G11B_DRAFT_PR_DECISION_REVIEW_RETRY_RECOMMENDATION_ONLY, which is obsolete. The v0.2 Decision record shows authorization has been approved and the next action is FINALIZE_AND_FREEZE_CE_G11B_CANDIDATE_THEN_VALIDATE_ON_DISTINCT_EVIDENCE_REF.",
+        "direct_evidence": [
+          "TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json line 2132-2133: current_recommended_option is PREPARE_CE_G11B_DRAFT_PR_DECISION_REVIEW_RETRY_RECOMMENDATION_ONLY",
+          "current_state_summary.next_action: FINALIZE_AND_FREEZE_CE_G11B_CANDIDATE_THEN_VALIDATE_ON_DISTINCT_EVIDENCE_REF",
+          "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-IMMUTABLE-CANDIDATE-VALIDATION-AUTHORIZATION-DECISION-RECORD.v0.2.json shows authorization approved",
+          "Direct evidence states: 'current_recommended_option still names PREPARE_CE_G11B_DRAFT_PR_DECISION_REVIEW_RETRY_RECOMMENDATION_ONLY. These are genuinely historical'"
+        ],
+        "correction_effect": "REQUIRED",
+        "rationale": "The recommended option reflects an obsolete historical state (Draft PR retry preparation) rather than the current authorized next action (finalize and freeze candidate). This creates execution confusion."
+      },
+      {
+        "finding_id": "D-B05",
+        "source_severity": "HIGH",
+        "disposition": "PARTIALLY_CONFIRMED",
+        "claim_assessment": "Partially confirmed. README.md lines 395-594 do contain 191 lines of dense narrative text describing 15+ sequential Decision/Recommendation/Result cycles. However, length alone does not establish a merge blocker. The narrative lacks structured tables and machine-parseable status indicators, which is agent-readability debt but not a blocking defect.",
+        "direct_evidence": [
+          "README.md lines 395-594 contain continuous prose describing Phase A, Phase A-R1, Phase B, Draft PR #22, independent review, merge-tree revalidation, site dependency remediation, zero-install diagnostic, R2-R6 cycles, atomic governance integration, and immutable candidate recommendation",
+          "Direct evidence states: 'README contains a long sequential narrative. This can be agent-readability debt, but length alone does not establish a merge blocker'",
+          "The narrative lacks structured tables, clear state transitions, or machine-parseable status indicators"
+        ],
+        "correction_effect": "NOT_REQUIRED",
+        "rationale": "While the narrative is dense and lacks structured formatting, it documents the complete decision chain. Agent-readability debt is a quality concern but not a blocking defect that requires remediation before merge. The information is present, just not optimally formatted for agent parsing."
+      },
+      {
+        "finding_id": "D-N01",
+        "source_severity": "MEDIUM",
+        "disposition": "PARTIALLY_CONFIRMED",
+        "claim_assessment": "Partially confirmed. MASTER-ROADMAP.md line 72 adds CE-G11B-PR-A-M1 with status IMMUTABLE_CANDIDATE_VALIDATION_AUTHORIZATION_APPROVED_FINALIZATION_PENDING. The description correctly states '不得创建/修改 PR 或 merge' (no PR creation/modification or merge), but the status name contains 'APPROVED' which could theoretically be confused with PR approval authority. However, the context and description make the actual authority boundary clear.",
+        "direct_evidence": [
+          "MASTER-ROADMAP.md line 72: CE-G11B-PR-A-M1 with status IMMUTABLE_CANDIDATE_VALIDATION_AUTHORIZATION_APPROVED_FINALIZATION_PENDING",
+          "Description states: '一次性冻结 candidate，然后仅在 distinct evidence ref 执行并记录 SHA-bound validation；不得创建/修改 PR 或 merge'",
+          "The status refers to validation authorization approval, not PR approval",
+          "Context makes authority boundary explicit"
+        ],
+        "correction_effect": "NOT_REQUIRED",
+        "rationale": "While the status name contains 'APPROVED', the description explicitly clarifies that no PR creation, modification, or merge is authorized. The potential for confusion is mitigated by the clear description. This is a minor readability concern, not a blocking issue."
+      },
+      {
+        "finding_id": "D-N02",
+        "source_severity": "MEDIUM",
+        "disposition": "CONFIRMED",
+        "claim_assessment": "Confirmed. The recommendation document TITMAS-CE-G11B-IMMUTABLE-CANDIDATE-EXTERNAL-ATTESTATION-RECOMMENDATION-v0.1.md describes solving 'validation self-reference' but is itself committed to the candidate branch that will be frozen. This creates a meta-level self-reference where the solution description is part of the problem it describes. However, the document correctly identifies this and recommends Option A to resolve it by freezing the candidate at the Decision commit and writing results to a distinct evidence ref.",
+        "direct_evidence": [
+          "TITMAS-CE-G11B-IMMUTABLE-CANDIDATE-EXTERNAL-ATTESTATION-RECOMMENDATION-v0.1.md lines 1-144 describe the validation self-reference problem",
+          "The document is committed as part of the candidate branch",
+          "The document recommends Option A: freeze candidate at Decision commit, write results to distinct evidence ref",
+          "Direct evidence states: 'The immutable-candidate Recommendation occurs before the final freeze Decision; validation Result/Report are stored on the distinct evidence ref 89baeeeb..., so the candidate itself remains immutable'"
+        ],
+        "correction_effect": "NOT_REQUIRED",
+        "rationale": "The self-reference is real but the document correctly identifies and addresses it. The recommendation to freeze the candidate at the Decision commit and write results to a distinct evidence ref resolves the self-reference problem. No correction is needed because the document itself provides the solution."
+      },
+      {
+        "finding_id": "D-S01",
+        "source_severity": "MEDIUM",
+        "disposition": "CONFIRMED",
+        "claim_assessment": "Confirmed. PROGRAM-STATUS.md frontmatter shows CE-G10 as incomplete with zero workflow runs and next gate at CE-G10A, while the body records TITMAS_COMMERCIAL_EVALUATION_CE_G10_EXECUTION_COMPLETED=true, one workflow run (30270198036), and CE-G11B as the next gate. This inconsistency makes the same status snapshot return different current states depending on how it is parsed.",
+        "direct_evidence": [
+          "PROGRAM-STATUS.md frontmatter: CE-G10 incomplete, workflow runs 0, next gate CE-G10A",
+          "PROGRAM-STATUS.md body: TITMAS_COMMERCIAL_EVALUATION_CE_G10_EXECUTION_COMPLETED=true, workflow run 30270198036, next gate CE-G11B",
+          "Direct evidence states: 'PROGRAM-STATUS frontmatter says CE-G10 incomplete, workflow runs 0 and next gate CE-G10A, while the body records CE-G10 workflow run 30270198036 and later CE-G11B state'"
+        ],
+        "correction_effect": "REQUIRED",
+        "rationale": "The frontmatter and body present contradictory state information. Cockpit tooling reading YAML frontmatter will see a different current state than parsers reading the body. This inconsistency must be resolved to ensure consistent state representation."
+      },
+      {
+        "finding_id": "D-S02",
+        "source_severity": "MEDIUM",
+        "disposition": "CONFIRMED",
+        "claim_assessment": "Confirmed. The public evaluation entry and agent index designate v0.2 as the latest manifest, and v0.2 explicitly supersedes v0.1, but the generic footer link in site-shell.tsx still sends machine-readable navigation to v0.1. Agents discovering the package through the footer will consume the superseded contract.",
+        "direct_evidence": [
+          "agent-index.json, llms.txt and v0.2 manifest identify v0.2 as current",
+          "v0.2 manifest explicitly supersedes v0.1",
+          "Footer link in site/app/site-shell.tsx points to v0.1",
+          "Direct evidence states: 'Footer links commercial evaluation pack v0.1 while agent-index.json, llms.txt and the v0.2 manifest identify v0.2 as current; v0.2 explicitly supersedes v0.1'"
+        ],
+        "correction_effect": "REQUIRED",
+        "rationale": "The footer link points to an obsolete version (v0.1) while all other machine-readable entry points designate v0.2 as current. This inconsistency will cause agents to consume superseded contracts. The footer must be updated to point to v0.2."
+      },
+      {
+        "finding_id": "D-S03",
+        "source_severity": "MEDIUM",
+        "disposition": "CONFIRMED",
+        "claim_assessment": "Confirmed. The rendered page, resources, and latest manifest all identify the entry as Commercial Evaluation Pack v0.2, but the document metadata in site/app/commercial-evaluation/page.tsx and en/commercial-evaluation/page.tsx advertises v0.1. Browser titles and search/social metadata will identify the current evaluation page as the obsolete version.",
+        "direct_evidence": [
+          "Page content and resources identify v0.2",
+          "Latest manifest is v0.2",
+          "Metadata title in site/app/commercial-evaluation/page.tsx and en/commercial-evaluation/page.tsx says v0.1",
+          "Direct evidence states: 'Chinese and English commercial evaluation metadata still say v0.1 while the page/resources and current manifest use v0.2'"
+        ],
+        "correction_effect": "REQUIRED",
+        "rationale": "The metadata title advertises an obsolete version (v0.1) while the actual content and manifest are v0.2. This will cause browser titles and search/social metadata to misidentify the current version. The metadata must be updated to v0.2."
+      }
+    ],
+    "coverage": {
+      "expected_count": 10,
+      "returned_count": 10,
+      "missing_ids": [],
+      "duplicate_ids": [],
+      "unknown_ids": []
+    },
+    "lane_outcome": "REMEDIATION_REQUIRED",
+    "blocking_finding_ids": [
+      "D-B03",
+      "D-B04"
+    ],
+    "required_correction_ids": [
+      "D-B03",
+      "D-B04",
+      "D-S01",
+      "D-S02",
+      "D-S03"
+    ],
+    "contradictions": [],
+    "rationale": "Lane D adjudication complete. Two HIGH severity findings (D-B03, D-B04) are CONFIRMED and represent blocking status/execution confusion in the JSON entry file where historical states are not updated to reflect the current immutable candidate validation authorization. Three MEDIUM severity findings (D-S01, D-S02, D-S03) are CONFIRMED and require remediation for version/status consistency. Two CRITICAL severity findings (D-B01, D-B02) are REJECTED as false claims based on incorrect understanding that JSON Schema validation does not apply to Markdown documentation. The remaining findings are either PARTIALLY_CONFIRMED with no correction required (D-B05, D-N01) or CONFIRMED with no correction required (D-N02). Remediation is required for the blocking findings and version consistency issues before merge."
+  },
+  "derived_blocking_finding_ids": [
+    "D-B03",
+    "D-B04",
+    "D-B05"
+  ],
+  "derived_required_correction_ids": [
+    "D-B03",
+    "D-B04",
+    "D-S01",
+    "D-S02",
+    "D-S03"
+  ],
+  "terminal_failure_category": null,
+  "persistence_boundary": {
+    "credential_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "temporary_patch_persisted_in_git": false
+  },
+  "effects": {
+    "finding_truth_created": false,
+    "code_change_authorized": false,
+    "github_review_submitted": false,
+    "pr_mutation": false,
+    "merge": false
+  },
+  "model_summary_consistency": {
+    "model_blocking_finding_ids": [
+      "D-B03",
+      "D-B04"
+    ],
+    "model_required_correction_ids": [
+      "D-B03",
+      "D-B04",
+      "D-S01",
+      "D-S02",
+      "D-S03"
+    ],
+    "blocking_ids_match_derived": false,
+    "required_correction_ids_match_derived": true,
+    "model_summary_arrays_authoritative": false,
+    "local_classifier_rule": "CONFIRMED_OR_PARTIALLY_CONFIRMED_AND_CRITICAL_OR_HIGH",
+    "synthesis_contradiction_input": "MODEL_SUMMARY_OMITTED_D_B05_LOCAL_CLASSIFIER_PRESERVED"
+  }
+}

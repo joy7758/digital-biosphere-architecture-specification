@@ -1,0 +1,172 @@
+{
+  "record_type": "TITMAS_SANITIZED_WRITE_AHEAD_FINDING_ADJUDICATION_SYNTHESIS_RESULT",
+  "result_id": "TITMAS-CE-G11B-PR23-FINDING-ADJUDICATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T18:41:22.257Z",
+  "status": "COMPLETED_QUALIFYING_REMEDIATION_CANDIDATE_REQUIRED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-FINDING-ADJUDICATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "928023f69979b89cb6e0d581c01a4d85a10f7962",
+  "input_records": {
+    "lane_a_reference": "TITMAS-CE-G11B-PR23-FINDING-ADJUDICATION-LANE-A-v0.1.json",
+    "lane_a_sha256": "349cadfa02ecbcdf2addab20dd6a0b3fce066d5cf7b42d1ca3b469580ae78f02",
+    "lane_d_reference": "TITMAS-CE-G11B-PR23-FINDING-ADJUDICATION-LANE-D-v0.1.json",
+    "lane_d_sha256": "c53a0f4c2ce075bed2cdd56d34d12dc79b5a8a355ede77487b897b6b8bdf523f",
+    "prior_lane_b_reference": "TITMAS-CE-G11B-PR23-AGENT-REVIEW-LANE-B-v0.1.json",
+    "prior_lane_b_sha256": "c914826600cf6f0f80ea6ae2a09c3ad4a2a20742610d39afb7973a1a2b827821",
+    "prior_lane_c_reference": "TITMAS-CE-G11B-PR23-AGENT-REVIEW-LANE-C-v0.1.json",
+    "prior_lane_c_sha256": "1485fe6971b726b72f12f5140f09b373b4c8b80e9ccb4373f9fa49f8d9c6d1ae"
+  },
+  "pre_synthesis_gate": {
+    "lane_a_qualifying": true,
+    "lane_d_qualifying": true,
+    "prior_lane_b_qualifying_pass": true,
+    "prior_lane_c_qualifying_pass": true,
+    "findings_covered": 17,
+    "missing_finding_ids": [],
+    "duplicate_finding_ids": [],
+    "unknown_finding_ids": [],
+    "derived_blocking_finding_ids": [
+      "D-B03",
+      "D-B04",
+      "D-B05"
+    ],
+    "derived_required_correction_ids": [
+      "D-B03",
+      "D-B04",
+      "D-S01",
+      "D-S02",
+      "D-S03"
+    ],
+    "synthesis_authorized": true
+  },
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "returned_model_equals_requested_model": true,
+  "http_status": 200,
+  "curl_exit": 0,
+  "response_byte_count": 11881,
+  "request_count": 1,
+  "retry_count": 0,
+  "fallback_count": 0,
+  "model_substitution_count": 0,
+  "json_repair_request_count": 0,
+  "request_payload_sha256": "7c3e85b7c5db71aa156ee25f856d4a84769656794272beb30ceed5b5136b22d3",
+  "response_envelope_sha256": "50cf0c10497f7b76cf6d42648665cafb6c11b6f5b3056052d1a399716cc27576",
+  "envelope_json_parse_pass": true,
+  "direct_json_parse_pass": true,
+  "binding_valid": true,
+  "contract_valid": true,
+  "qualifying_synthesis": true,
+  "synthesis": {
+    "verdict": "REMEDIATION_CANDIDATE_REQUIRED",
+    "confidence": 0.95,
+    "input_binding": {
+      "lane_a_record_sha256": "349cadfa02ecbcdf2addab20dd6a0b3fce066d5cf7b42d1ca3b469580ae78f02",
+      "lane_d_record_sha256": "c53a0f4c2ce075bed2cdd56d34d12dc79b5a8a355ede77487b897b6b8bdf523f",
+      "prior_lane_b_record_sha256": "c914826600cf6f0f80ea6ae2a09c3ad4a2a20742610d39afb7973a1a2b827821",
+      "prior_lane_c_record_sha256": "1485fe6971b726b72f12f5140f09b373b4c8b80e9ccb4373f9fa49f8d9c6d1ae"
+    },
+    "coverage": {
+      "expected_findings": 17,
+      "adjudicated_findings": 17,
+      "missing_ids": [],
+      "duplicate_ids": [],
+      "unknown_ids": []
+    },
+    "prior_pass_lanes": [
+      "B",
+      "C"
+    ],
+    "derived_blocking_finding_ids": [
+      "D-B03",
+      "D-B04",
+      "D-B05"
+    ],
+    "derived_required_correction_ids": [
+      "D-B03",
+      "D-B04",
+      "D-S01",
+      "D-S02",
+      "D-S03"
+    ],
+    "remediation_scope": [
+      {
+        "finding_id": "D-B03",
+        "paths": [
+          "TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json"
+        ],
+        "required_effect": "Update next_decision_candidate.status to reflect current immutable candidate validation authorization state",
+        "source_severity": "HIGH"
+      },
+      {
+        "finding_id": "D-B04",
+        "paths": [
+          "TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json"
+        ],
+        "required_effect": "Update current_recommended_option to reflect current authorized next action",
+        "source_severity": "HIGH"
+      },
+      {
+        "finding_id": "D-S01",
+        "paths": [
+          "PROGRAM-STATUS.md"
+        ],
+        "required_effect": "Reconcile frontmatter and body to present consistent CE-G10/CE-G11B state",
+        "source_severity": "MEDIUM"
+      },
+      {
+        "finding_id": "D-S02",
+        "paths": [
+          "site/app/site-shell.tsx"
+        ],
+        "required_effect": "Update footer link to point to v0.2 manifest",
+        "source_severity": "MEDIUM"
+      },
+      {
+        "finding_id": "D-S03",
+        "paths": [
+          "site/app/commercial-evaluation/page.tsx",
+          "site/app/en/commercial-evaluation/page.tsx"
+        ],
+        "required_effect": "Update metadata title to v0.2",
+        "source_severity": "MEDIUM"
+      }
+    ],
+    "cross_input_contradictions": [
+      "Lane D model summary arrays omitted D-B05 from blocking_finding_ids even though the single findings array marks D-B05 PARTIALLY_CONFIRMED at source severity HIGH; local classifier preserved D-B05 as derived blocking"
+    ],
+    "findings_not_truth_boundary": true,
+    "adjudication_not_code_change_authority": true,
+    "frozen_candidate_preserved": true,
+    "no_github_mutation": true,
+    "no_merge_authority": true,
+    "no_release_authority": true,
+    "blocking_findings": [],
+    "required_corrections": [],
+    "rationale": "Lane A adjudicated 7 findings with all HIGH/MEDIUM blocking findings REJECTED and no required corrections. Lane D adjudicated 10 findings with 2 HIGH severity CONFIRMED blocking findings (D-B03, D-B04) requiring status field updates, 1 HIGH severity PARTIALLY_CONFIRMED finding (D-B05) classified as blocking by local rules, and 3 MEDIUM severity CONFIRMED findings (D-S01, D-S02, D-S03) requiring version consistency corrections. Prior lanes B and C both achieved PASS verdicts. Coverage complete at 17/17 findings. The presence of derived blocking findings and required corrections triggers REMEDIATION_CANDIDATE_REQUIRED verdict. Synthesis is advisory only and creates no authority for candidate changes, GitHub review, PR mutation, merge, release, deployment, or commercial offering."
+  },
+  "terminal_failure_category": null,
+  "effects": {
+    "finding_truth_created": false,
+    "code_change_authorized": false,
+    "github_review_submitted": false,
+    "pr_mutation": false,
+    "merge": false,
+    "release": false
+  },
+  "local_scope_validation": {
+    "required_correction_ids_covered": true,
+    "remediation_scope_finding_ids": [
+      "D-B03",
+      "D-B04",
+      "D-S01",
+      "D-S02",
+      "D-S03"
+    ],
+    "derived_blocking_without_required_correction": [
+      "D-B05"
+    ],
+    "blocker_without_required_correction_must_be_duplicated_in_remediation_scope": false,
+    "model_output_modified": false
+  }
+}

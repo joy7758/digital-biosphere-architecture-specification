@@ -611,6 +611,13 @@ A/D REQUEST_CHANGES，A 的 severity/array 组合违反 contract，故未执行 
 gated synthesis；review 为 `APPROVE`、confidence `0.95`、0 blocker/correction。
 授权只覆盖 advisory model requests 与 sanitized Result/Report，不授权代码修改、
 GitHub review、PR mutation、merge、release 或 deployment。
+[Finding adjudication result](TITMAS-CE-G11B-PR23-FINDING-ADJUDICATION-RESULT-v0.1.json)
+及其[报告](TITMAS-CE-G11B-PR23-FINDING-ADJUDICATION-REPORT-v0.1.md)现记录
+`REMEDIATION_CANDIDATE_REQUIRED`、confidence `0.95`：17/17 findings 覆盖，Lane A
+为 `CLEAR`，Lane D 派生 3 个 blocker 和 5 个 required corrections，B/C 保持 PASS。
+三次请求均为 HTTP 200 / exact `qwen3.7-max` / direct JSON，retry/fallback/substitution/
+repair 均为 0。下一步只允许准备新 remediation-candidate Recommendation；frozen
+candidate、PR #23 和 merge 均未获修改授权。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

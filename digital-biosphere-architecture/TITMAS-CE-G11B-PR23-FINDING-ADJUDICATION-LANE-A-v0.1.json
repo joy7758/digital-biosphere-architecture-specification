@@ -1,0 +1,193 @@
+{
+  "record_type": "TITMAS_SANITIZED_WRITE_AHEAD_FINDING_ADJUDICATION",
+  "adjudication_id": "TITMAS-CE-G11B-PR23-FINDING-ADJUDICATION-LANE-A-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T18:29:37.057Z",
+  "status": "COMPLETED_QUALIFYING",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-FINDING-ADJUDICATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "928023f69979b89cb6e0d581c01a4d85a10f7962",
+  "adjudication_lane": "A",
+  "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+  "head_sha": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+  "patch_sha256": "30d0ad22f5e8d824fcc9e5a42adba1379770d3c52d84d8aa21e266bdc3110093",
+  "source_review_reference": "TITMAS-CE-G11B-PR23-AGENT-REVIEW-LANE-A-v0.1.json",
+  "source_review_sha256": "33571b9c27ed44226ebad517ad02f913278cb611d2666e4615d5f65c7661e2c3",
+  "expected_finding_ids": [
+    "A-B01",
+    "A-B02",
+    "A-B03",
+    "A-B04",
+    "A-B05",
+    "A-N01",
+    "A-N02"
+  ],
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "returned_model_equals_requested_model": true,
+  "http_status": 200,
+  "curl_exit": 0,
+  "response_byte_count": 31299,
+  "request_count": 1,
+  "retry_count": 0,
+  "fallback_count": 0,
+  "model_substitution_count": 0,
+  "json_repair_request_count": 0,
+  "request_payload_sha256": "7fea17c3084d9387ad3d9a9e1039c1a2984dd0774c342bc22489c6457dc371a6",
+  "response_envelope_sha256": "b68d9796a4fad23d433058c96206dcf81cb4b78b6080121ccd4b79b20ce18414",
+  "envelope_json_parse_pass": true,
+  "direct_json_parse_pass": true,
+  "binding_valid": true,
+  "contract_valid": true,
+  "coverage_valid": true,
+  "qualifying_adjudication": true,
+  "adjudication": {
+    "verdict": "ADJUDICATION_COMPLETE",
+    "confidence": 0.95,
+    "adjudication_lane": "A",
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+    "patch_sha256": "30d0ad22f5e8d824fcc9e5a42adba1379770d3c52d84d8aa21e266bdc3110093",
+    "source_review_sha256": "33571b9c27ed44226ebad517ad02f913278cb611d2666e4615d5f65c7661e2c3",
+    "expected_finding_ids": [
+      "A-B01",
+      "A-B02",
+      "A-B03",
+      "A-B04",
+      "A-B05",
+      "A-N01",
+      "A-N02"
+    ],
+    "findings": [
+      {
+        "finding_id": "A-B01",
+        "source_severity": "HIGH",
+        "disposition": "REJECTED",
+        "claim_assessment": "The claim that passing the module string to subprocess could lead to command injection is incorrect. The runner uses an argument array [sys.executable, '-m', 'unittest', '-v', module] without shell=True, which prevents shell metacharacter interpretation. Additionally, the only actual callers pass hardcoded literals.",
+        "direct_evidence": [
+          "Lines 457-460 in ce_g11b_cross_version_runner.py: result = test_runner([sys.executable, '-m', 'unittest', '-v', module], ...) uses array form without shell=True",
+          "Lines 489-492: _run_suite is called with hardcoded literal 'test_ce_g11_target_bound_correlator.py'",
+          "Lines 498-501: _run_suite is called with hardcoded literal 'test_ce_g8_diagnostic.py'",
+          "No shell metacharacter interpretation occurs with subprocess array invocation"
+        ],
+        "correction_effect": "NOT_REQUIRED",
+        "rationale": "The subprocess invocation uses array form which is safe against command injection. The module parameter is never passed through a shell, and all actual invocations use hardcoded test module names. The finding's security concern is unfounded."
+      },
+      {
+        "finding_id": "A-B02",
+        "source_severity": "HIGH",
+        "disposition": "REJECTED",
+        "claim_assessment": "The claim that verify_frozen_inputs allows path traversal is incorrect. FROZEN_INPUTS is a module-level constant dictionary with hardcoded relative paths. The function iterates over this constant, not user-supplied input. The request validation requires exact match of the entire FROZEN_INPUTS dictionary.",
+        "direct_evidence": [
+          "Lines 78-99: FROZEN_INPUTS is a module constant with 10 hardcoded relative paths like 'ce_g8_server_log_correlator.py', 'fixtures/access.log', etc.",
+          "Lines 268-275: verify_frozen_inputs iterates over FROZEN_INPUTS.items(), not user input",
+          "Line 368: validate_request checks 'if request.get(\"frozen_inputs\") != FROZEN_INPUTS' requiring exact match",
+          "No user-controlled path construction occurs"
+        ],
+        "correction_effect": "NOT_REQUIRED",
+        "rationale": "The paths are derived from a module constant, not user input. The request validation enforces exact dictionary match with FROZEN_INPUTS. Path traversal is impossible because the relative paths are hardcoded and validated against the constant."
+      },
+      {
+        "finding_id": "A-B03",
+        "source_severity": "MEDIUM",
+        "disposition": "REJECTED",
+        "claim_assessment": "The claim that git merge-base executes before source_commit validation is incorrect. Both phase_a_commit and source_commit are validated with regex patterns before the git command executes.",
+        "direct_evidence": [
+          "Lines 336-340: phase_a_commit is validated with re.fullmatch(r'[0-9a-f]{40}', phase_a_commit) before git execution",
+          "Lines 341-343: source_commit is validated with re.fullmatch(r'[0-9a-f]{40}', source_commit) before git execution",
+          "Lines 344-350: git merge-base executes only after both validations pass",
+          "Both validations raise StageFailure if patterns don't match, preventing git execution"
+        ],
+        "correction_effect": "NOT_REQUIRED",
+        "rationale": "The code validates both commit parameters with strict hexadecimal patterns before executing the git command. The finding's claim about execution order is factually incorrect based on the actual code structure."
+      },
+      {
+        "finding_id": "A-B04",
+        "source_severity": "MEDIUM",
+        "disposition": "REJECTED",
+        "claim_assessment": "The claim that error_class allows arbitrary content injection is incorrect. The error_class field is populated from stable StageFailure.stage_code values or exception class names, not user input. The schema's lack of pattern constraint is not a security issue given the controlled data source.",
+        "direct_evidence": [
+          "Lines 519-520: error_class is set to error.stage_code from StageFailure exceptions",
+          "Lines 522-523: error_class is set to f'UNEXPECTED_{type(error).__name__.upper()}' for other exceptions",
+          "StageFailure.stage_code values are hardcoded strings like 'FROZEN_INPUT_MISSING', 'PYTHON_VERSION_MISMATCH', etc.",
+          "No user-controlled data flows into error_class"
+        ],
+        "correction_effect": "NOT_REQUIRED",
+        "rationale": "The error_class field receives only controlled values from exception handling, not user input. The schema's permissive type definition does not create a security vulnerability because the data source is internally controlled and sanitized."
+      },
+      {
+        "finding_id": "A-B05",
+        "source_severity": "MEDIUM",
+        "disposition": "REJECTED",
+        "claim_assessment": "The claim that safe_environment_value's character set causes information disclosure by masking legitimate values is incorrect. The function sanitizes receipt metadata only, not the test subprocess environment. The test environment is constructed separately from TEST_ENVIRONMENT_ALLOWLIST.",
+        "direct_evidence": [
+          "Lines 382-389: safe_environment_value is used only for receipt metadata fields like RUNNER_OS, RUNNER_ARCH, ImageOS, ImageVersion",
+          "Lines 476-480: Test subprocess environment is constructed from TEST_ENVIRONMENT_ALLOWLIST (HOME, LANG, LC_ALL, PATH, etc.) without using safe_environment_value",
+          "Lines 68-76: TEST_ENVIRONMENT_ALLOWLIST includes PATH and other standard variables",
+          "safe_environment_value does not affect test execution environment"
+        ],
+        "correction_effect": "NOT_REQUIRED",
+        "rationale": "The function sanitizes receipt metadata for logging purposes, not the test execution environment. The test subprocess receives the full allowlisted environment including PATH with separators. The finding conflates two separate environment handling mechanisms."
+      },
+      {
+        "finding_id": "A-N01",
+        "source_severity": "LOW",
+        "disposition": "CONFIRMED",
+        "claim_assessment": "The claim that next_gate uses const instead of type: object with nested properties is correct. The schema defines next_gate as a const object rather than an object type with property definitions.",
+        "direct_evidence": [
+          "Lines 267-269 in ce-g11b-phase-a-r1-result.schema.v0.1.json: \"next_gate\": {\"const\": {\"action\": \"...\", \"authorized\": false}}",
+          "This pattern prevents schema extension without modifying the const value",
+          "Other object properties in the schema use type: object with properties definitions"
+        ],
+        "correction_effect": "NOT_REQUIRED",
+        "rationale": "The schema design choice is confirmed but is a minor consistency issue. Using const for next_gate enforces exact value matching which may be intentional for this specific use case. The finding is valid but low severity."
+      },
+      {
+        "finding_id": "A-N02",
+        "source_severity": "LOW",
+        "disposition": "DISPUTED",
+        "claim_assessment": "The claim that tests lack edge case coverage is partially incorrect. The test file includes comprehensive coverage of workflow scope, frozen inputs, authority rejection, fixture privacy, request schema validation, version mismatch, environment allowlist, suite failures, retry rejection, and component hash mismatch.",
+        "direct_evidence": [
+          "test_workflow_is_exactly_scoped_and_read_only: Tests workflow structure and permissions",
+          "test_frozen_inputs_match: Tests frozen input validation",
+          "test_binding_authority_elevation_is_rejected: Tests authority boundary",
+          "test_fixture_privacy_rejects_literal_ipv4_and_ipv6: Tests privacy validation",
+          "test_request_schema_matches_synthetic_contract: Tests schema validation",
+          "test_version_mismatch_fails_before_suites: Tests version validation",
+          "test_test_process_receives_allowlisted_environment_only: Tests environment isolation",
+          "test_request_contract_rejects_retry: Tests retry rejection",
+          "test_phase_a_component_hash_mismatch_is_rejected: Tests component validation"
+        ],
+        "correction_effect": "NOT_REQUIRED",
+        "rationale": "While the tests may not cover every possible edge case like malformed JSON parsing, they provide substantial coverage of the critical validation paths and security boundaries. The finding overstates the coverage gaps."
+      }
+    ],
+    "coverage": {
+      "expected_count": 7,
+      "returned_count": 7,
+      "missing_ids": [],
+      "duplicate_ids": [],
+      "unknown_ids": []
+    },
+    "lane_outcome": "CLEAR",
+    "blocking_finding_ids": [],
+    "required_correction_ids": [],
+    "contradictions": [],
+    "rationale": "All five HIGH and MEDIUM severity blocking findings (A-B01 through A-B05) are REJECTED based on direct evidence from the frozen patch. The security concerns raised are unfounded: subprocess uses safe array invocation, paths come from module constants not user input, commit validation occurs before git execution, error_class receives only controlled values, and environment sanitization is correctly separated from test execution. The two LOW severity non-blocking findings include one CONFIRMED schema consistency issue (A-N01) and one DISPUTED test coverage claim (A-N02). No findings require remediation, resulting in CLEAR lane outcome."
+  },
+  "derived_blocking_finding_ids": [],
+  "derived_required_correction_ids": [],
+  "terminal_failure_category": null,
+  "persistence_boundary": {
+    "credential_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "temporary_patch_persisted_in_git": false
+  },
+  "effects": {
+    "finding_truth_created": false,
+    "code_change_authorized": false,
+    "github_review_submitted": false,
+    "pr_mutation": false,
+    "merge": false
+  }
+}
