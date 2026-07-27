@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: pre-18-provider-adapter-conformance-profile-recommendation-prepared-not-decided-standard-not-ready
+status: ce-g5-independent-vantage-transport-pass-redeployment-admission-pending-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -17,7 +17,7 @@ known_limitations: [SEE_DOCUMENT_BODY]
 document_type: non-executable-commercialization-standards-roadmap
 architecture_domain: TITMAS
 primary_repository: digital-biosphere-architecture
-observed_at: 2026-07-26
+observed_at: 2026-07-27
 roadmap_defined: true
 bounded_internal_scope_authorized: true
 standardization_execution_authorized: false
@@ -2349,6 +2349,48 @@ transient client/network TLS path 仅为 `SUPPORTED_NOT_PROVEN`。
 要求两个独立 network egress 和两个 TLS client stack。当前同一 Mac 的 default/direct
 路径不构成独立视角，validated vantage 为 0，重新部署仍未授权。
 
+### 4.64 CE-G5 Independent Vantage Transport Observation
+
+[Recommendation](../TITMAS-CE-G5-INDEPENDENT-VANTAGE-VALIDATION-RECOMMENDATION-v0.1.md)
+与 [Decision](../TITMAS-COMMERCIAL-EVALUATION-CE-G5-DECISION-RECORD.v0.1.json)
+把下一步限制为两个隔离 GitHub-hosted runner 的 current-live read-only observation：
+
+- Ubuntu：Python `http.client` + OpenSSL；
+- macOS：system curl + SecureTransport / LibreSSL；
+- 每个 vantage 3 rounds × 4 fixed routes；
+- 总计 24 public-origin GET；
+- 无 retry、fallback、TLS bypass、服务器修改或 deployment；
+- 源站只保留 run-scoped source-IP salted hash 与计数。
+
+```text
+CE_G5_DECIDED=true
+CE_G5_GITHUB_RUN=30263067801
+CE_G5_VANTAGES_PASS=2/2
+CE_G5_REQUESTS_PASS=24/24
+CE_G5_HASH_CONSISTENCY_PASS=true
+CE_G5_DISTINCT_NETWORK_EGRESS=2
+CE_G5_DISTINCT_CLIENT_TLS_STACKS=2
+CE_G5_TRANSPORT_OBSERVATION_PASS=true
+CE_G5_RETRY_EXECUTED=false
+CE_G5_WORKFLOW_RERUN=false
+```
+
+[Report](../TITMAS-CE-G5-INDEPENDENT-VANTAGE-VALIDATION-REPORT-v0.1.md) 与
+[machine result](../commercial-evaluation-independent-vantage/ce-g5-composite-result.v0.1.json)
+记录 24/24 HTTP 200、24/24 fixed body hash、两个不同 source-IP salted hash、两种
+client/TLS stack，以及一次 receipt Schema 初稿缺少 `curl_exit_code` 的失败。Schema
+修正后只重新验证原始回执，没有重跑 workflow。
+
+CE-G5 只证明当前回滚版本的 transport/content observation。拟重新发布的 immutable
+release 未在本轮重新验证，因此：
+
+```text
+CE_G5_PROPOSED_RELEASE_REVALIDATED=false
+TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
+TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_AUTHORIZED=false
+TITMAS_PUBLIC_ENTRY_ROOT_CAUSE_PROVEN=false
+```
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -2618,9 +2660,11 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Require independent vantages before redeployment**：CE-G4 已否定 default proxy
-   unique failure，但 exact root cause 仍未知；当前只能准备两个独立 network egress /
-   TLS stack 的观察与重新部署建议，新的网络观察或部署必须有独立 exact decision；
+1. **Revalidate the exact proposed immutable release before redeployment**：CE-G5 已用
+   两个独立 execution environment / network egress / TLS client stack 完成 `24/24`
+   current-live observation；下一步只允许准备拟重新发布 release/archive 的 manifest、
+   source revision、rollback target、switch 与 failure-preservation exact recommendation，
+   不自动授权部署；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -2829,7 +2873,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_INDEPENDENT_VANTAGE_TRANSPORT_OBSERVATION_AND_REDEPLOYMENT_RECOMMENDATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_EXACT_PROPOSED_RELEASE_REVALIDATION_AND_REDEPLOYMENT_RECOMMENDATION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -2871,7 +2915,17 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G4_TRANSPORT_FAILURES=1
 TITMAS_COMMERCIAL_EVALUATION_CE_G4_HASH_CONSISTENCY_PASS=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G4_ROOT_CAUSE_PROVEN=false
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_POLICY_DEFINED=true
-TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G5_DECIDED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G5_EXECUTION_COMPLETED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G5_GITHUB_RUN=30263067801
+TITMAS_COMMERCIAL_EVALUATION_CE_G5_VANTAGES_PASS=2/2
+TITMAS_COMMERCIAL_EVALUATION_CE_G5_REQUESTS_PASS=24/24
+TITMAS_COMMERCIAL_EVALUATION_CE_G5_HASH_CONSISTENCY_PASS=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G5_DISTINCT_NETWORK_EGRESS=2
+TITMAS_COMMERCIAL_EVALUATION_CE_G5_DISTINCT_CLIENT_TLS_STACKS=2
+TITMAS_COMMERCIAL_EVALUATION_CE_G5_TRANSPORT_OBSERVATION_PASS=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G5_PROPOSED_RELEASE_REVALIDATED=false
+TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false

@@ -1,0 +1,425 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/architecture/schemas/titmas-ce-g5-composite-result.schema.v0.1.json",
+  "title": "TITMAS CE-G5 Composite Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "result_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "run_request_reference",
+    "github_run",
+    "receipt_validation",
+    "vantages",
+    "server_correlation",
+    "gate_assessment",
+    "known_limitations",
+    "current_truth",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./ce-g5-composite-result.schema.v0.1.json"
+    },
+    "result_id": {
+      "const": "TITMAS-CE-G5-COMPOSITE-RESULT-001"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PASS_INDEPENDENT_VANTAGE_TRANSPORT_OBSERVATION_REDEPLOYMENT_DECISION_REQUIRED"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G5"
+    },
+    "run_request_reference": {
+      "const": "ce-g5-run-request.v0.1.json"
+    },
+    "github_run": {
+      "$ref": "#/$defs/githubRun"
+    },
+    "receipt_validation": {
+      "$ref": "#/$defs/receiptValidation"
+    },
+    "vantages": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "$ref": "#/$defs/vantage"
+      }
+    },
+    "server_correlation": {
+      "$ref": "#/$defs/serverCorrelation"
+    },
+    "gate_assessment": {
+      "$ref": "#/$defs/gateAssessment"
+    },
+    "known_limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "current_truth": {
+      "$ref": "#/$defs/currentTruth"
+    },
+    "effects": {
+      "$ref": "#/$defs/effects"
+    }
+  },
+  "$defs": {
+    "githubRun": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "run_id",
+        "run_url",
+        "head_sha",
+        "event",
+        "conclusion",
+        "jobs_passed",
+        "jobs_total",
+        "rerun",
+        "warning"
+      ],
+      "properties": {
+        "repository": {
+          "const": "joy7758/digital-biosphere-architecture-specification"
+        },
+        "run_id": {
+          "const": 30263067801
+        },
+        "run_url": {
+          "const": "https://github.com/joy7758/digital-biosphere-architecture-specification/actions/runs/30263067801"
+        },
+        "head_sha": {
+          "const": "02533cf9c64eb6ff9b3453f675f61c252c2a7a6c"
+        },
+        "event": {
+          "const": "push"
+        },
+        "conclusion": {
+          "const": "success"
+        },
+        "jobs_passed": {
+          "const": 2
+        },
+        "jobs_total": {
+          "const": 2
+        },
+        "rerun": {
+          "const": false
+        },
+        "warning": {
+          "type": "string"
+        }
+      }
+    },
+    "receiptValidation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "initial_schema_validation",
+        "initial_failure",
+        "schema_corrected",
+        "workflow_rerun",
+        "original_receipts_revalidated",
+        "final_schema_validation"
+      ],
+      "properties": {
+        "initial_schema_validation": {
+          "const": "FAIL"
+        },
+        "initial_failure": {
+          "const": "CURL_EXIT_CODE_PROPERTY_MISSING_FROM_SCHEMA"
+        },
+        "schema_corrected": {
+          "const": true
+        },
+        "workflow_rerun": {
+          "const": false
+        },
+        "original_receipts_revalidated": {
+          "const": true
+        },
+        "final_schema_validation": {
+          "const": "PASS_2_OF_2"
+        }
+      }
+    },
+    "vantage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "vantage_id",
+        "receipt_reference",
+        "artifact_sha256",
+        "runner_os",
+        "client",
+        "tls_backend",
+        "requests_executed",
+        "passes",
+        "failures",
+        "proxy_environment_present",
+        "all_hashes_match"
+      ],
+      "properties": {
+        "vantage_id": {
+          "enum": [
+            "GITHUB_HOSTED_UBUNTU",
+            "GITHUB_HOSTED_MACOS"
+          ]
+        },
+        "receipt_reference": {
+          "type": "string"
+        },
+        "artifact_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "runner_os": {
+          "type": "string"
+        },
+        "client": {
+          "enum": [
+            "python-http-client",
+            "system-curl"
+          ]
+        },
+        "tls_backend": {
+          "type": "string"
+        },
+        "requests_executed": {
+          "const": 12
+        },
+        "passes": {
+          "const": 12
+        },
+        "failures": {
+          "const": 0
+        },
+        "proxy_environment_present": {
+          "const": false
+        },
+        "all_hashes_match": {
+          "const": true
+        }
+      }
+    },
+    "serverCorrelation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ubuntu_log_records",
+        "macos_log_records",
+        "ubuntu_distinct_source_count",
+        "macos_distinct_source_count",
+        "ubuntu_source_salted_sha256",
+        "macos_source_salted_sha256",
+        "source_hashes_distinct",
+        "salt_sha256",
+        "salt_value_persisted",
+        "raw_source_ip_persisted",
+        "raw_nginx_log_persisted"
+      ],
+      "properties": {
+        "ubuntu_log_records": {
+          "const": 12
+        },
+        "macos_log_records": {
+          "const": 12
+        },
+        "ubuntu_distinct_source_count": {
+          "const": 1
+        },
+        "macos_distinct_source_count": {
+          "const": 1
+        },
+        "ubuntu_source_salted_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "macos_source_salted_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "source_hashes_distinct": {
+          "const": true
+        },
+        "salt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "salt_value_persisted": {
+          "const": false
+        },
+        "raw_source_ip_persisted": {
+          "const": false
+        },
+        "raw_nginx_log_persisted": {
+          "const": false
+        }
+      }
+    },
+    "gateAssessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "independent_execution_environments",
+        "distinct_network_egress",
+        "distinct_client_tls_stacks",
+        "public_origin_requests_executed",
+        "public_origin_requests_passed",
+        "retry_used",
+        "fallback_used",
+        "tls_verification_bypass_used",
+        "transport_observation_pass",
+        "current_live_content_gate_pass",
+        "proposed_release_revalidated_in_this_run",
+        "redeployment_admission_pass",
+        "redeployment_authorized",
+        "root_cause_proven"
+      ],
+      "properties": {
+        "independent_execution_environments": {
+          "const": 2
+        },
+        "distinct_network_egress": {
+          "const": 2
+        },
+        "distinct_client_tls_stacks": {
+          "const": 2
+        },
+        "public_origin_requests_executed": {
+          "const": 24
+        },
+        "public_origin_requests_passed": {
+          "const": 24
+        },
+        "retry_used": {
+          "const": false
+        },
+        "fallback_used": {
+          "const": false
+        },
+        "tls_verification_bypass_used": {
+          "const": false
+        },
+        "transport_observation_pass": {
+          "const": true
+        },
+        "current_live_content_gate_pass": {
+          "const": true
+        },
+        "proposed_release_revalidated_in_this_run": {
+          "const": false
+        },
+        "redeployment_admission_pass": {
+          "const": false
+        },
+        "redeployment_authorized": {
+          "const": false
+        },
+        "root_cause_proven": {
+          "const": false
+        }
+      }
+    },
+    "currentTruth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "active_release",
+        "website_redeployed",
+        "new_contract_website_deployed",
+        "availability_sla_defined",
+        "commercial_offer_created",
+        "production_ready"
+      ],
+      "properties": {
+        "active_release": {
+          "const": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705"
+        },
+        "website_redeployed": {
+          "const": false
+        },
+        "new_contract_website_deployed": {
+          "const": false
+        },
+        "availability_sla_defined": {
+          "const": false
+        },
+        "commercial_offer_created": {
+          "const": false
+        },
+        "production_ready": {
+          "const": false
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "permission",
+        "runtime",
+        "api",
+        "agent",
+        "entity",
+        "capability",
+        "certification",
+        "sla",
+        "commercial_offer",
+        "production_readiness"
+      ],
+      "properties": {
+        "authority": {
+          "const": false
+        },
+        "permission": {
+          "const": false
+        },
+        "runtime": {
+          "const": false
+        },
+        "api": {
+          "const": false
+        },
+        "agent": {
+          "const": false
+        },
+        "entity": {
+          "const": false
+        },
+        "capability": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "sla": {
+          "const": false
+        },
+        "commercial_offer": {
+          "const": false
+        },
+        "production_readiness": {
+          "const": false
+        }
+      }
+    }
+  }
+}

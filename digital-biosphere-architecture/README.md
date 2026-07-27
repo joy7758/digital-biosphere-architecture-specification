@@ -124,7 +124,9 @@ agent_evaluation_entry_publication_result: fail-closed-rollback-pass
 agent_evaluation_entry_time_window_observation_completed: false
 agent_evaluation_entry_transport_diagnosis_result: pass-root-cause-unresolved
 public_entry_redeployment_admission_policy_defined: true
-public_entry_independent_vantages_validated: 0
+public_entry_independent_vantages_validated: 2
+public_entry_transport_observation_result: pass-24-of-24
+public_entry_redeployment_admission_pass: false
 public_entry_redeployment_authorized: false
 developer_ecosystem_created: false
 titmas_infrastructure_developer_community_strategy_defined: true
@@ -233,7 +235,24 @@ direct path `5/6`，HTTP 200 内容 hash 全部一致。唯一失败仍是 Libre
 `SSL_ERROR_SYSCALL`，且发生在旧线上版本，因此不是新发布内容独有故障。根因仍未关闭；
 [诊断报告](TITMAS-CE-G4-TRANSPORT-DIAGNOSIS-REPORT-v0.1.md)和
 [重新部署准入策略](architecture/titmas-public-entry-redeployment-admission-policy-v0.1.md)
-要求至少两个独立网络视角，当前有效独立视角为 0。
+要求至少两个独立网络视角。
+
+CE-G5 随后使用两个隔离的 GitHub-hosted runner：Ubuntu
+`Python http.client / OpenSSL` 与 macOS `system curl / SecureTransport + LibreSSL`。
+两者各执行 3 轮 × 4 个固定公开路由，共 `24/24` HTTP 200，内容全部匹配当前 immutable
+release 的固定 SHA-256；源站仅持久化来源 IP 的 salted hash，确认两个不同出口。
+[CE-G5 报告](TITMAS-CE-G5-INDEPENDENT-VANTAGE-VALIDATION-REPORT-v0.1.md)保留了原始回执、
+一次 Schema 缺陷及其无重跑修正。
+
+该结果只把 validated independent vantages 从 `0` 提升为 `2`，并使
+`TRANSPORT_OBSERVATION_PASS=true`。准备发布的新 immutable release 尚未在 CE-G5
+重新验证，因此：
+
+```text
+REDEPLOYMENT_ADMISSION_PASS=false
+REDEPLOYMENT_AUTHORIZED=false
+ROOT_CAUSE_PROVEN=false
+```
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

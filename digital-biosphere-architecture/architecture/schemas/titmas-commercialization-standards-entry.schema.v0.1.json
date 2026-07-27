@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_CE_G4_DIAGNOSIS_COMPLETE_ROOT_CAUSE_UNRESOLVED_STANDARD_NOT_READY"
+      "const": "CS_D02_CE_G5_TRANSPORT_OBSERVATION_PASS_REDEPLOYMENT_ADMISSION_PENDING_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "COMMERCIAL-EVALUATION-CE-G4"},
+        "last_completed_step": {"const": "COMMERCIAL-EVALUATION-CE-G5"},
         "last_completed_result": {
-          "const": "PASS_BOUNDED_DIAGNOSTIC_ROOT_CAUSE_UNRESOLVED"
+          "const": "PASS_INDEPENDENT_VANTAGE_TRANSPORT_OBSERVATION_REDEPLOYMENT_DECISION_REQUIRED"
         },
         "direct_evidence_reference": {
-          "const": "commercial-evaluation-agent-entry-transport-diagnosis/ce-g4-transport-diagnosis-result.v0.1.json"
+          "const": "commercial-evaluation-independent-vantage/ce-g5-composite-result.v0.1.json"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,7 +131,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "PREPARE_INDEPENDENT_VANTAGE_TRANSPORT_OBSERVATION_AND_REDEPLOYMENT_DECISION"
+          "const": "PREPARE_EXACT_PROPOSED_RELEASE_REVALIDATION_AND_REDEPLOYMENT_DECISION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "CE_G4_DIAGNOSIS_COMPLETE_ROOT_CAUSE_UNRESOLVED_NEXT_GATE_NOT_AUTHORIZED"
+          "const": "CE_G5_TRANSPORT_OBSERVATION_PASS_REDEPLOYMENT_ADMISSION_PENDING"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7782,7 +7782,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_INDEPENDENT_VANTAGE_OBSERVATION_AND_REDEPLOYMENT_RECOMMENDATION_ONLY"
+          "const": "PREPARE_EXACT_PROPOSED_RELEASE_REVALIDATION_AND_REDEPLOYMENT_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false

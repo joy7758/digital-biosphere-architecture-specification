@@ -1,0 +1,114 @@
+{
+  "$schema": "./ce-g5-composite-result.schema.v0.1.json",
+  "result_id": "TITMAS-CE-G5-COMPOSITE-RESULT-001",
+  "version": "0.1.0",
+  "status": "PASS_INDEPENDENT_VANTAGE_TRANSPORT_OBSERVATION_REDEPLOYMENT_DECISION_REQUIRED",
+  "observed_at": "2026-07-27T11:47:30Z",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G5",
+  "run_request_reference": "ce-g5-run-request.v0.1.json",
+  "github_run": {
+    "repository": "joy7758/digital-biosphere-architecture-specification",
+    "run_id": 30263067801,
+    "run_url": "https://github.com/joy7758/digital-biosphere-architecture-specification/actions/runs/30263067801",
+    "head_sha": "02533cf9c64eb6ff9b3453f675f61c252c2a7a6c",
+    "event": "push",
+    "conclusion": "success",
+    "jobs_passed": 2,
+    "jobs_total": 2,
+    "rerun": false,
+    "warning": "Pinned checkout and upload-artifact actions declared Node.js 20 and were forced by GitHub to run on Node.js 24; non-blocking for this run and retained as a maintenance risk."
+  },
+  "receipt_validation": {
+    "initial_schema_validation": "FAIL",
+    "initial_failure": "CURL_EXIT_CODE_PROPERTY_MISSING_FROM_SCHEMA",
+    "schema_corrected": true,
+    "workflow_rerun": false,
+    "original_receipts_revalidated": true,
+    "final_schema_validation": "PASS_2_OF_2"
+  },
+  "vantages": [
+    {
+      "vantage_id": "GITHUB_HOSTED_UBUNTU",
+      "receipt_reference": "ce-g5-GITHUB_HOSTED_UBUNTU.v0.1.json",
+      "artifact_sha256": "1acaf0b3240da57da8cd14b287fcad4a36e54ee0fbd93b8053fd1d265bba3a7b",
+      "runner_os": "Linux 6.17.0-1020-azure x86_64",
+      "client": "python-http-client",
+      "tls_backend": "OpenSSL 3.0.13 30 Jan 2024",
+      "requests_executed": 12,
+      "passes": 12,
+      "failures": 0,
+      "proxy_environment_present": false,
+      "all_hashes_match": true
+    },
+    {
+      "vantage_id": "GITHUB_HOSTED_MACOS",
+      "receipt_reference": "ce-g5-GITHUB_HOSTED_MACOS.v0.1.json",
+      "artifact_sha256": "8b8fc75b2a0c6ece98ddb31c522f8e3cdee158b17b3062e0d078741d986815e5",
+      "runner_os": "Darwin 25.4.0 arm64",
+      "client": "system-curl",
+      "tls_backend": "SecureTransport with LibreSSL 3.3.6",
+      "requests_executed": 12,
+      "passes": 12,
+      "failures": 0,
+      "proxy_environment_present": false,
+      "all_hashes_match": true
+    }
+  ],
+  "server_correlation": {
+    "ubuntu_log_records": 12,
+    "macos_log_records": 12,
+    "ubuntu_distinct_source_count": 1,
+    "macos_distinct_source_count": 1,
+    "ubuntu_source_salted_sha256": "62a3e2850397bfed87f662d7c145dcd954c0d8064f5b5622c12639b12fe7d9e7",
+    "macos_source_salted_sha256": "8594abc86b3eb4174e4cd787e1f8d3b8b199c3bc8acffc12e6159894a827e1f0",
+    "source_hashes_distinct": true,
+    "salt_sha256": "4fad02a2a646a541aa01ac68192844c15d3ade1e1554eac63eac10fb80edecd9",
+    "salt_value_persisted": false,
+    "raw_source_ip_persisted": false,
+    "raw_nginx_log_persisted": false
+  },
+  "gate_assessment": {
+    "independent_execution_environments": 2,
+    "distinct_network_egress": 2,
+    "distinct_client_tls_stacks": 2,
+    "public_origin_requests_executed": 24,
+    "public_origin_requests_passed": 24,
+    "retry_used": false,
+    "fallback_used": false,
+    "tls_verification_bypass_used": false,
+    "transport_observation_pass": true,
+    "current_live_content_gate_pass": true,
+    "proposed_release_revalidated_in_this_run": false,
+    "redeployment_admission_pass": false,
+    "redeployment_authorized": false,
+    "root_cause_proven": false
+  },
+  "known_limitations": [
+    "Both counted vantages are GitHub-hosted; distinct egress is proven for this run by different source-IP salted hashes, not by different cloud-provider ownership.",
+    "The observation covers one bounded time window and does not define uptime, SLO, SLA, production readiness, or global availability.",
+    "The exact root cause of the earlier LibreSSL SSL_ERROR_SYSCALL remains unresolved.",
+    "The proposed immutable failed release was not revalidated in CE-G5, so redeployment admission remains false.",
+    "The pinned checkout and upload-artifact actions emitted a Node.js 20 deprecation warning under GitHub's forced Node.js 24 runtime."
+  ],
+  "current_truth": {
+    "active_release": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "website_redeployed": false,
+    "new_contract_website_deployed": false,
+    "availability_sla_defined": false,
+    "commercial_offer_created": false,
+    "production_ready": false
+  },
+  "effects": {
+    "authority": false,
+    "permission": false,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "capability": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offer": false,
+    "production_readiness": false
+  }
+}

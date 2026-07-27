@@ -194,6 +194,7 @@
           "observed_at",
           "route",
           "result",
+          "curl_exit_code",
           "http_code",
           "remote_ip",
           "ssl_verify_result",
@@ -232,6 +233,13 @@
               "TLS_ERROR",
               "CONTENT_MISMATCH"
             ]
+          },
+          "curl_exit_code": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
           },
           "http_code": {
             "type": [
