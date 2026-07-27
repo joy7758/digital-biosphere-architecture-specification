@@ -17,7 +17,7 @@ Release Governance（发布治理）；它不是 Runtime（运行时），不替
 - exact `qwen3.7-max` 对 v0.2 授权决策：`APPROVE`，0 blocker，0 correction；
 - candidate `c608fd78…` + canonical `ccf473f3…` 的 merge tree `bd67298e…` 完成完整验证；
 - 1165/1165 tracked JSON、23/23 dependencies、16/16 site tests、3/3 CE Schemas、49/49 CE tests 均通过；
-- replacement Draft PR Recommendation 已由 exact `qwen3.7-max` 推荐 Option A；PR Creation Decision 仍待建立；
+- replacement Draft PR Recommendation 为 Option A，Creation Decision 已由 exact `qwen3.7-max` `APPROVE`；单次 Draft PR 创建尚未执行；
 - 未授权创建或修改 PR、merge、release、deployment 或服务器操作。
 
 [查看 CE-G11B 验证报告](digital-biosphere-architecture/TITMAS-CE-G11B-IMMUTABLE-CANDIDATE-MERGE-TREE-VALIDATION-REPORT-v0.1.md)
