@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre57-qwen3-7-plus-execution-receipt.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "completed_at",
+    "artifact_count_bound",
+    "artifacts",
+    "session_counts",
+    "contract_counts",
+    "effects",
+    "next_action"
+  ],
+  "properties": {
+    "$schema": {"const": "./execution-receipt.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-57-QWEN3-7-PLUS-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FAIL_CLOSED"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "artifact_count_bound": {"const": 8},
+    "artifacts": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "session_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized", "executed", "passed", "failed", "not_executed"],
+      "properties": {
+        "authorized": {"const": 3},
+        "executed": {"const": 3},
+        "passed": {"const": 2},
+        "failed": {"const": 1},
+        "not_executed": {"const": 0}
+      }
+    },
+    "contract_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "http_2xx",
+        "direct_json",
+        "schema_pass",
+        "exact_model_match",
+        "boundary_match",
+        "negative_cases_rejected",
+        "retry_fallback_substitution_extraction_repair"
+      ],
+      "properties": {
+        "http_2xx": {"const": 3},
+        "direct_json": {"const": 3},
+        "schema_pass": {"const": 2},
+        "exact_model_match": {"const": 3},
+        "boundary_match": {"const": 3},
+        "negative_cases_rejected": {"const": 5},
+        "retry_fallback_substitution_extraction_repair": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": {"const": false}
+    },
+    "next_action": {
+      "const": "FORM_QWEN_RESPONSE_CONTRACT_DIAGNOSTIC_RECOMMENDATION"
+    }
+  }
+}

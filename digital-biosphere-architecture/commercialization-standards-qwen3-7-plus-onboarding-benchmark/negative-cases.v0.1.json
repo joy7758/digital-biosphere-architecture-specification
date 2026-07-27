@@ -1,0 +1,36 @@
+{
+  "$schema": "./negative-cases.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-57-QWEN3-7-PLUS-NEGATIVE-CASES-0.1",
+  "version": "0.1.0",
+  "target_contract": "FROZEN_RESPONSE_CONTRACT",
+  "cases": [
+    {
+      "case_id": "NEG-01-PROVIDER-FIT-OUTSIDE-ENUM",
+      "mutation": "provider_fit outside frozen enum",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-02-EVIDENCE-IS-TRUTH",
+      "mutation": "evidence_is_truth true",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-03-AUTHORITY-CLAIMED",
+      "mutation": "authority_claimed true",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-04-MISSING-REASON",
+      "mutation": "reason omitted",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-05-ADDITIONAL-PROPERTY",
+      "mutation": "uncontracted key added",
+      "expected_valid": false
+    }
+  ],
+  "cases_total": 5,
+  "cases_rejected": 5,
+  "status": "PASS_ALL_NEGATIVE_CASES_REJECTED"
+}

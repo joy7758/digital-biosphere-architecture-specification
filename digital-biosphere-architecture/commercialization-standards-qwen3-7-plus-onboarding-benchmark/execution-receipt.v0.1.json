@@ -1,0 +1,73 @@
+{
+  "$schema": "./execution-receipt.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-57-QWEN3-7-PLUS-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED",
+  "completed_at": "2026-07-27T08:54:20+08:00",
+  "artifact_count_bound": 8,
+  "artifacts": [
+    {
+      "path": "PRE-57-QWEN3-7-PLUS-ONBOARDING-BENCHMARK-RESULT-v0.1.md",
+      "sha256": "1a58f7614aa5c759347259f6dd934fb15d7d7a24f38dbabb97c4d1ab66d94866"
+    },
+    {
+      "path": "benchmark-plan.schema.v0.1.json",
+      "sha256": "e46d2699c07e7782ce0bebcc61f6d84b97f401feb933680b53b4b8a4668281f2"
+    },
+    {
+      "path": "benchmark-plan.v0.1.json",
+      "sha256": "631e2d0bacece27cf8b30f7fbb4228801f216b841ec2b33203aefdb1b5a300f7"
+    },
+    {
+      "path": "execution-receipt.schema.v0.1.json",
+      "sha256": "1320713cd2060cd38b102a39f4a0279325ba7b4b9fa6a33b189ae43c198e4ad6"
+    },
+    {
+      "path": "negative-cases.schema.v0.1.json",
+      "sha256": "8b902d7d871bcada22a6fd9cb2f561f237631eb09c260f39736c2e583c177fb9"
+    },
+    {
+      "path": "negative-cases.v0.1.json",
+      "sha256": "4457953c508aa1b7f27e6ad7e4165f1fcbf4587f39572dabda9f18187a1ecd55"
+    },
+    {
+      "path": "sanitized-session-results.schema.v0.1.json",
+      "sha256": "31647c39f3a5745e55e22a9de28cbb671287d0592c1eedbf594dc2eedc369d04"
+    },
+    {
+      "path": "sanitized-session-results.v0.1.json",
+      "sha256": "28a4747a87199e7b1eda61b636c01e48e78db7f6ec92ccd2fb027dea9ad1829c"
+    }
+  ],
+  "session_counts": {
+    "authorized": 3,
+    "executed": 3,
+    "passed": 2,
+    "failed": 1,
+    "not_executed": 0
+  },
+  "contract_counts": {
+    "http_2xx": 3,
+    "direct_json": 3,
+    "schema_pass": 2,
+    "exact_model_match": 3,
+    "boundary_match": 3,
+    "negative_cases_rejected": 5,
+    "retry_fallback_substitution_extraction_repair": 0
+  },
+  "effects": {
+    "provider_integration_authorized": false,
+    "provider_supported": false,
+    "provider_certified": false,
+    "security_review_authorized": false,
+    "security_review_completed": false,
+    "implementation_authorized": false,
+    "runtime_authorized": false,
+    "agent_authorized": false,
+    "entity_authorized": false,
+    "permission_granted": false,
+    "commercial_offer_authorized": false,
+    "release_authorized": false
+  },
+  "next_action": "FORM_QWEN_RESPONSE_CONTRACT_DIAGNOSTIC_RECOMMENDATION"
+}

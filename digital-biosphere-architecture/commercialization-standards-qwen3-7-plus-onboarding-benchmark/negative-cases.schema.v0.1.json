@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre57-qwen3-7-plus-negative-cases.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "target_contract",
+    "cases",
+    "cases_total",
+    "cases_rejected",
+    "status"
+  ],
+  "properties": {
+    "$schema": {"const": "./negative-cases.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-57-QWEN3-7-PLUS-NEGATIVE-CASES-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "target_contract": {"const": "FROZEN_RESPONSE_CONTRACT"},
+    "cases": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "mutation", "expected_valid"],
+        "properties": {
+          "case_id": {"pattern": "^NEG-0[1-5]-[A-Z0-9-]+$"},
+          "mutation": {"type": "string", "minLength": 1},
+          "expected_valid": {"const": false}
+        }
+      }
+    },
+    "cases_total": {"const": 5},
+    "cases_rejected": {"const": 5},
+    "status": {"const": "PASS_ALL_NEGATIVE_CASES_REJECTED"}
+  }
+}
