@@ -546,6 +546,12 @@ CE validation。[首次 Max review](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDI
 完整记录 curl `0`、HTTP `200`、exact returned model、direct JSON，并得到
 `RECOMMENDED`、Option A、confidence `1.0`、0 blocker/correction。下一步只允许建立
 独立 R5 Decision；安装、export、tests、PR mutation 和 merge 仍未授权。
+[R5 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-DECISION-RECORD.v0.1.json)
+及其 [write-ahead qwen3.7-max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-QWEN-DECISION-REVIEW-v0.1.json)
+完整记录 curl `0`、HTTP `200`、exact model、direct JSON，并得到 `APPROVE`、
+confidence `0.95`、0 blocker/correction。远端 Decision baseline 核验后，只允许一次
+disposable offline install，并严格按 test→public export→verify→3 Schema→49 CE
+tests 执行；PR mutation、workflow、merge 和 deployment 仍未授权。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
