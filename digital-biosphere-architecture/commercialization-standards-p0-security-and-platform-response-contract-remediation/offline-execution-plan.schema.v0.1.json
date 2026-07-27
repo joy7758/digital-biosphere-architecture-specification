@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre71-offline-execution-plan.v0.1.json",
+  "title": "TITMAS PRE-71 Offline Execution Plan v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "recommendation_commit",
+    "inputs",
+    "outputs",
+    "execution_order",
+    "caps",
+    "truth_boundaries"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./offline-execution-plan.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE71-OFFLINE-EXECUTION-PLAN-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FROZEN_AUTHORIZED_NOT_EXECUTED"
+    },
+    "decision_reference": {
+      "const": "../TITMAS-CS-D02-PRE-71-AGENT-RESPONSE-CONTRACT-AND-CREDENTIAL-ACCOUNTING-DISPOSITION-DECISION-RECORD.v0.1.json"
+    },
+    "recommendation_commit": {
+      "const": "17ad17db9881940e3734c2889d4452b92279b1d8"
+    },
+    "inputs": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3
+    },
+    "outputs": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "uniqueItems": true
+    },
+    "execution_order": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true
+    },
+    "caps": {
+      "const": {
+        "live_model_requests": 0,
+        "credential_value_reads": 0,
+        "raw_provider_response_reads": 0,
+        "external_network_requests": 0,
+        "target_writes": 0,
+        "dbos_writes": 0,
+        "saee_writes": 0,
+        "response_extraction_or_repair": 0,
+        "provider_substitutions": 0,
+        "runtime_creations": 0,
+        "agent_creations": 0,
+        "entity_creations": 0,
+        "permission_creations": 0,
+        "release_actions": 0
+      }
+    },
+    "truth_boundaries": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "uniqueItems": true
+    }
+  }
+}
