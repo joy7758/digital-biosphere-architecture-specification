@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre72/official-provider-capability-evidence.schema.v0.1.json",
+  "title": "TITMAS PRE-72 Official Provider Capability Evidence v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "source_method",
+    "claim_unit",
+    "providers",
+    "cross_provider_conclusion",
+    "prohibited_inferences",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./official-provider-capability-evidence.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE72-OFFICIAL-PROVIDER-CAPABILITY-EVIDENCE-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "OFFICIAL_DOCUMENTATION_BOUND_LIVE_RELIABILITY_UNPROVEN"},
+    "observed_at": {"type": "string", "format": "date"},
+    "source_method": {"const": "READ_ONLY_OFFICIAL_PROVIDER_DOCUMENTATION"},
+    "claim_unit": {
+      "const": ["provider", "endpoint", "model", "request_shape", "observed_at"]
+    },
+    "providers": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"$ref": "#/$defs/provider"},
+        {"$ref": "#/$defs/provider"}
+      ],
+      "items": false
+    },
+    "cross_provider_conclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "official_parameter_evidence_complete",
+        "exact_endpoint_model_documentation_complete",
+        "strict_direct_json_reliability_proven",
+        "next_required_action"
+      ],
+      "properties": {
+        "official_parameter_evidence_complete": {"const": true},
+        "exact_endpoint_model_documentation_complete": {"const": true},
+        "strict_direct_json_reliability_proven": {"const": false},
+        "next_required_action": {"const": "SEPARATE_DECISION_FOR_BOUNDED_DUAL_PROVIDER_PREFLIGHT"}
+      }
+    },
+    "prohibited_inferences": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 10}
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_request_executed",
+        "model_request_executed",
+        "credential_value_read",
+        "provider_supported",
+        "formal_human_security_review_complete",
+        "standard_ready",
+        "implementation_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "network_request_executed": {"const": false},
+        "model_request_executed": {"const": false},
+        "credential_value_read": {"const": false},
+        "provider_supported": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "standard_ready": {"const": false},
+        "implementation_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "evidence_kind", "facts"],
+      "properties": {
+        "url": {"type": "string", "format": "uri", "pattern": "^https://"},
+        "evidence_kind": {"type": "string", "minLength": 8},
+        "facts": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 10}
+        }
+      }
+    },
+    "request_shape_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parameter",
+        "selected_mode_for_candidate_preflight",
+        "json_object_shape_documented",
+        "json_schema_mode_documented",
+        "exact_json_schema_payload_shape_frozen_by_provider_doc",
+        "known_limitations"
+      ],
+      "properties": {
+        "parameter": {"const": "response_format"},
+        "selected_mode_for_candidate_preflight": {"const": "json_object"},
+        "json_object_shape_documented": {"const": true},
+        "json_schema_mode_documented": {"type": "boolean"},
+        "exact_json_schema_payload_shape_frozen_by_provider_doc": {"const": false},
+        "known_limitations": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 10}
+        }
+      }
+    },
+    "provider": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "endpoint",
+        "model",
+        "official_sources",
+        "request_shape_evidence",
+        "classification",
+        "official_capability_evidence_verified",
+        "strict_direct_json_reliability_proven",
+        "bounded_preflight_authorized"
+      ],
+      "properties": {
+        "provider": {
+          "enum": ["BAIDU_QIANFAN", "ALIBABA_CLOUD_MODEL_STUDIO"]
+        },
+        "endpoint": {"type": "string", "format": "uri", "pattern": "/chat/completions$"},
+        "model": {"enum": ["ernie-4.5-turbo-20260402", "qwen3.7-plus"]},
+        "official_sources": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"$ref": "#/$defs/source"}
+        },
+        "request_shape_evidence": {"$ref": "#/$defs/request_shape_evidence"},
+        "classification": {
+          "enum": [
+            "DOCUMENTED_PARAMETER_AVAILABLE_EXACT_MODEL_NOT_EXCLUDED_LIVE_PREFLIGHT_REQUIRED",
+            "DOCUMENTED_CAPABILITY_LIVE_PREFLIGHT_REQUIRED"
+          ]
+        },
+        "official_capability_evidence_verified": {"const": true},
+        "strict_direct_json_reliability_proven": {"const": false},
+        "bounded_preflight_authorized": {"const": false}
+      }
+    }
+  }
+}

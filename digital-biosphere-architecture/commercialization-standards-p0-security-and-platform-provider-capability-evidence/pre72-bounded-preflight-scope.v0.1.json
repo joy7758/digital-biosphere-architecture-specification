@@ -1,0 +1,105 @@
+{
+  "$schema": "./pre72-bounded-preflight-scope.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE72-BOUNDED-PREFLIGHT-SCOPE-0.1",
+  "version": "0.1.0",
+  "status": "RECOMMENDATION_ONLY_NOT_DECIDED_NOT_AUTHORIZED",
+  "decision_candidate": "CS-D02-PRE-72",
+  "exact_recommended_action": "AUTHORIZE_BOUNDED_PRE72_DUAL_PROVIDER_STRUCTURED_OUTPUT_PREFLIGHT",
+  "recommendation_reference": "../TITMAS-CS-D02-PRE-72-OFFICIAL-PROVIDER-STRUCTURED-OUTPUT-EVIDENCE-AND-PREFLIGHT-SCOPE-RECOMMENDATION-v0.1.md",
+  "official_evidence_reference": "./official-provider-capability-evidence.v0.1.json",
+  "frozen_inputs": [
+    {
+      "path": "../commercialization-standards-p0-security-and-platform-response-contract-remediation/strict-response-contract-candidate.v0.2.json",
+      "sha256": "f3cd4f8932e9ed5cc04261d290181d9a6a29284ff4f93579b1e2498135259170"
+    },
+    {
+      "path": "../commercialization-standards-p0-security-and-platform-response-contract-remediation/provider-structured-output-capability-evidence-checklist.v0.1.json",
+      "sha256": "3802380f05eef949830a5f04ec8950c94ffabc5e3e263d58a876d80326ed4904"
+    },
+    {
+      "path": "../commercialization-standards-p0-security-and-platform-response-contract-remediation/credential-use-accounting-profile.v0.1.json",
+      "sha256": "f3e6e744cd2b15269d1a68f918e71fb52f9f31c8419eafb490ad21b8744e913e"
+    }
+  ],
+  "execution_policy": {
+    "ordering": "SEQUENTIAL",
+    "total_request_cap": 6,
+    "retry_cap": 0,
+    "fallback_cap": 0,
+    "model_substitution_cap": 0,
+    "response_extraction_cap": 0,
+    "json_repair_cap": 0,
+    "raw_response_persistence_cap": 0,
+    "timeout_seconds_per_request": 120,
+    "stop_on_first_lane_failure": true
+  },
+  "lanes": [
+    {
+      "lane_id": "PRE72-QIANFAN-STRUCTURED-OUTPUT",
+      "provider": "BAIDU_QIANFAN",
+      "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+      "model": "ernie-4.5-turbo-20260402",
+      "credential_identifier": "QIANFAN_API_KEY",
+      "request_count": 3,
+      "request_shape": {
+        "response_format": {"type": "json_object"},
+        "prompt_must_contain": "JSON",
+        "enable_thinking": "NOT_ENABLED_NO_UNDOCUMENTED_FIELD_ADDED",
+        "max_tokens": "OMITTED"
+      }
+    },
+    {
+      "lane_id": "PRE72-QWEN-STRUCTURED-OUTPUT",
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "model": "qwen3.7-plus",
+      "credential_identifier": "DASHSCOPE_API_KEY",
+      "request_count": 3,
+      "request_shape": {
+        "response_format": {"type": "json_object"},
+        "prompt_must_contain": "JSON",
+        "enable_thinking": false,
+        "max_tokens": "OMITTED"
+      }
+    }
+  ],
+  "required_pass_predicates": [
+    "HTTP_SUCCESS_3_OF_3_PER_LANE",
+    "EXACT_RETURNED_MODEL_MATCH_3_OF_3_PER_LANE",
+    "DIRECT_SINGLE_JSON_OBJECT_3_OF_3_PER_LANE",
+    "FROZEN_SCHEMA_PASS_3_OF_3_PER_LANE",
+    "AUTHORITY_AND_NON_CLAIM_BOUNDARY_PASS_3_OF_3_PER_LANE",
+    "ZERO_RETRY_FALLBACK_SUBSTITUTION_EXTRACTION_REPAIR",
+    "ZERO_RAW_RESPONSE_AND_SECRET_PERSISTENCE",
+    "SANITIZED_RECEIPT_BOUND_TO_PROVIDER_ENDPOINT_MODEL_REQUEST_SHAPE_AND_TIME"
+  ],
+  "credential_accounting_caps": {
+    "credential_identifiers_configured": 2,
+    "credential_values_accessed_in_process_memory_max": 6,
+    "authorization_header_values_emitted_to_tls_client_max": 6,
+    "credential_values_printed_max": 0,
+    "credential_values_persisted_max": 0,
+    "credential_values_exposed_outside_authorized_transport_max": 0,
+    "record_contains_secret_value": false
+  },
+  "allowed_result_label": "BOUNDED_STRUCTURED_OUTPUT_PREFLIGHT_PASS",
+  "prohibited_result_labels": [
+    "PROVIDER_SUPPORTED",
+    "FORMAL_HUMAN_SECURITY_REVIEW_COMPLETE",
+    "CONFORMANCE_PASS",
+    "CERTIFIED",
+    "STANDARD_READY",
+    "RELEASED",
+    "PRODUCTION_READY"
+  ],
+  "effects": {
+    "decision_recorded": false,
+    "live_model_request_authorized": false,
+    "credential_value_read": false,
+    "target_repository_write_authorized": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "standard_ready": false,
+    "release_authorized": false
+  }
+}

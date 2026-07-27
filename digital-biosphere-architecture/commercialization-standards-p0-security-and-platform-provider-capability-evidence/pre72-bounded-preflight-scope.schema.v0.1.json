@@ -1,0 +1,186 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre72/pre72-bounded-preflight-scope.schema.v0.1.json",
+  "title": "TITMAS PRE-72 Bounded Structured-Output Preflight Scope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_candidate",
+    "exact_recommended_action",
+    "recommendation_reference",
+    "official_evidence_reference",
+    "frozen_inputs",
+    "execution_policy",
+    "lanes",
+    "required_pass_predicates",
+    "credential_accounting_caps",
+    "allowed_result_label",
+    "prohibited_result_labels",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre72-bounded-preflight-scope.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE72-BOUNDED-PREFLIGHT-SCOPE-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "RECOMMENDATION_ONLY_NOT_DECIDED_NOT_AUTHORIZED"},
+    "decision_candidate": {"const": "CS-D02-PRE-72"},
+    "exact_recommended_action": {"const": "AUTHORIZE_BOUNDED_PRE72_DUAL_PROVIDER_STRUCTURED_OUTPUT_PREFLIGHT"},
+    "recommendation_reference": {"type": "string", "minLength": 20},
+    "official_evidence_reference": {"const": "./official-provider-capability-evidence.v0.1.json"},
+    "frozen_inputs": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 20},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "execution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ordering",
+        "total_request_cap",
+        "retry_cap",
+        "fallback_cap",
+        "model_substitution_cap",
+        "response_extraction_cap",
+        "json_repair_cap",
+        "raw_response_persistence_cap",
+        "timeout_seconds_per_request",
+        "stop_on_first_lane_failure"
+      ],
+      "properties": {
+        "ordering": {"const": "SEQUENTIAL"},
+        "total_request_cap": {"const": 6},
+        "retry_cap": {"const": 0},
+        "fallback_cap": {"const": 0},
+        "model_substitution_cap": {"const": 0},
+        "response_extraction_cap": {"const": 0},
+        "json_repair_cap": {"const": 0},
+        "raw_response_persistence_cap": {"const": 0},
+        "timeout_seconds_per_request": {"const": 120},
+        "stop_on_first_lane_failure": {"const": true}
+      }
+    },
+    "lanes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {"$ref": "#/$defs/lane"}
+    },
+    "required_pass_predicates": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 12}
+    },
+    "credential_accounting_caps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "credential_identifiers_configured",
+        "credential_values_accessed_in_process_memory_max",
+        "authorization_header_values_emitted_to_tls_client_max",
+        "credential_values_printed_max",
+        "credential_values_persisted_max",
+        "credential_values_exposed_outside_authorized_transport_max",
+        "record_contains_secret_value"
+      ],
+      "properties": {
+        "credential_identifiers_configured": {"const": 2},
+        "credential_values_accessed_in_process_memory_max": {"const": 6},
+        "authorization_header_values_emitted_to_tls_client_max": {"const": 6},
+        "credential_values_printed_max": {"const": 0},
+        "credential_values_persisted_max": {"const": 0},
+        "credential_values_exposed_outside_authorized_transport_max": {"const": 0},
+        "record_contains_secret_value": {"const": false}
+      }
+    },
+    "allowed_result_label": {"const": "BOUNDED_STRUCTURED_OUTPUT_PREFLIGHT_PASS"},
+    "prohibited_result_labels": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 5}
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_recorded",
+        "live_model_request_authorized",
+        "credential_value_read",
+        "target_repository_write_authorized",
+        "provider_supported",
+        "formal_human_security_review_complete",
+        "standard_ready",
+        "release_authorized"
+      ],
+      "properties": {
+        "decision_recorded": {"const": false},
+        "live_model_request_authorized": {"const": false},
+        "credential_value_read": {"const": false},
+        "target_repository_write_authorized": {"const": false},
+        "provider_supported": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "standard_ready": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "lane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lane_id",
+        "provider",
+        "endpoint",
+        "model",
+        "credential_identifier",
+        "request_count",
+        "request_shape"
+      ],
+      "properties": {
+        "lane_id": {"type": "string", "pattern": "^PRE72-"},
+        "provider": {"enum": ["BAIDU_QIANFAN", "ALIBABA_CLOUD_MODEL_STUDIO"]},
+        "endpoint": {"type": "string", "format": "uri", "pattern": "/chat/completions$"},
+        "model": {"enum": ["ernie-4.5-turbo-20260402", "qwen3.7-plus"]},
+        "credential_identifier": {"enum": ["QIANFAN_API_KEY", "DASHSCOPE_API_KEY"]},
+        "request_count": {"const": 3},
+        "request_shape": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["response_format", "prompt_must_contain", "enable_thinking", "max_tokens"],
+          "properties": {
+            "response_format": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["type"],
+              "properties": {"type": {"const": "json_object"}}
+            },
+            "prompt_must_contain": {"const": "JSON"},
+            "enable_thinking": {
+              "oneOf": [
+                {"const": false},
+                {"const": "NOT_ENABLED_NO_UNDOCUMENTED_FIELD_ADDED"}
+              ]
+            },
+            "max_tokens": {"const": "OMITTED"}
+          }
+        }
+      }
+    }
+  }
+}

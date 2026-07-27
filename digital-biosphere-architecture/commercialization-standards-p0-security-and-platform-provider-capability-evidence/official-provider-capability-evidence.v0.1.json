@@ -1,0 +1,124 @@
+{
+  "$schema": "./official-provider-capability-evidence.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE72-OFFICIAL-PROVIDER-CAPABILITY-EVIDENCE-0.1",
+  "version": "0.1.0",
+  "status": "OFFICIAL_DOCUMENTATION_BOUND_LIVE_RELIABILITY_UNPROVEN",
+  "observed_at": "2026-07-27",
+  "source_method": "READ_ONLY_OFFICIAL_PROVIDER_DOCUMENTATION",
+  "claim_unit": [
+    "provider",
+    "endpoint",
+    "model",
+    "request_shape",
+    "observed_at"
+  ],
+  "providers": [
+    {
+      "provider": "BAIDU_QIANFAN",
+      "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+      "model": "ernie-4.5-turbo-20260402",
+      "official_sources": [
+        {
+          "url": "https://cloud.baidu.com/doc/qianfan-api/s/3m7of64lb",
+          "evidence_kind": "TEXT_GENERATION_API_REFERENCE",
+          "facts": [
+            "response_format is an optional object",
+            "type supports json_object, text and json_schema",
+            "json_schema is required when type is json_schema",
+            "generated output may not satisfy the requested format effect",
+            "ERNIE X1 Turbo series is listed as unsupported"
+          ]
+        },
+        {
+          "url": "https://cloud.baidu.com/doc/qianfan/s/Smoghsq3g",
+          "evidence_kind": "TOKEN_PLAN_ENDPOINT_AND_MODEL_REFERENCE",
+          "facts": [
+            "OpenAI-compatible Base URL is https://qianfan.baidubce.com/v2",
+            "chat completion endpoint is https://qianfan.baidubce.com/v2/chat/completions",
+            "ERNIE-4.5-Turbo-20260402 model parameter is ernie-4.5-turbo-20260402"
+          ]
+        }
+      ],
+      "request_shape_evidence": {
+        "parameter": "response_format",
+        "selected_mode_for_candidate_preflight": "json_object",
+        "json_object_shape_documented": true,
+        "json_schema_mode_documented": true,
+        "exact_json_schema_payload_shape_frozen_by_provider_doc": false,
+        "known_limitations": [
+          "PROVIDER_DOCUMENTATION_WARNS_FORMAT_EFFECT_MAY_NOT_BE_SATISFIED",
+          "EXACT_MODEL_IS_NOT_LISTED_IN_THE_DOCUMENTED_ERNIE_X1_TURBO_EXCLUSION"
+        ]
+      },
+      "classification": "DOCUMENTED_PARAMETER_AVAILABLE_EXACT_MODEL_NOT_EXCLUDED_LIVE_PREFLIGHT_REQUIRED",
+      "official_capability_evidence_verified": true,
+      "strict_direct_json_reliability_proven": false,
+      "bounded_preflight_authorized": false
+    },
+    {
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "model": "qwen3.7-plus",
+      "official_sources": [
+        {
+          "url": "https://help.aliyun.com/en/model-studio/qwen-structured-output",
+          "evidence_kind": "QWEN_STRUCTURED_OUTPUT_REFERENCE",
+          "facts": [
+            "JSON mode request uses response_format type json_object",
+            "the prompt must contain the word JSON",
+            "thinking mode may not return strictly valid JSON",
+            "structured output still requires application-side validation"
+          ]
+        },
+        {
+          "url": "https://help.aliyun.com/en/model-studio/models",
+          "evidence_kind": "MODEL_AND_ENDPOINT_REFERENCE",
+          "facts": [
+            "exact model id is qwen3.7-plus",
+            "Beijing OpenAI-compatible Base URL pattern is https://{WorkspaceId}.cn-beijing.maas.aliyuncs.com/compatible-mode/v1"
+          ]
+        }
+      ],
+      "request_shape_evidence": {
+        "parameter": "response_format",
+        "selected_mode_for_candidate_preflight": "json_object",
+        "json_object_shape_documented": true,
+        "json_schema_mode_documented": false,
+        "exact_json_schema_payload_shape_frozen_by_provider_doc": false,
+        "known_limitations": [
+          "PROMPT_MUST_CONTAIN_JSON",
+          "THINKING_MODE_MAY_NOT_RETURN_STRICTLY_VALID_JSON",
+          "CANDIDATE_PREFLIGHT_MUST_SET_ENABLE_THINKING_FALSE",
+          "CANDIDATE_PREFLIGHT_MUST_OMIT_MAX_TOKENS"
+        ]
+      },
+      "classification": "DOCUMENTED_CAPABILITY_LIVE_PREFLIGHT_REQUIRED",
+      "official_capability_evidence_verified": true,
+      "strict_direct_json_reliability_proven": false,
+      "bounded_preflight_authorized": false
+    }
+  ],
+  "cross_provider_conclusion": {
+    "official_parameter_evidence_complete": true,
+    "exact_endpoint_model_documentation_complete": true,
+    "strict_direct_json_reliability_proven": false,
+    "next_required_action": "SEPARATE_DECISION_FOR_BOUNDED_DUAL_PROVIDER_PREFLIGHT"
+  },
+  "prohibited_inferences": [
+    "OFFICIAL_DOCUMENTATION_NE_LIVE_RELIABILITY",
+    "JSON_MODE_NE_SCHEMA_CONFORMANCE",
+    "ONE_SUCCESS_NE_STABLE_CAPABILITY",
+    "PREFLIGHT_PASS_NE_PROVIDER_SUPPORT",
+    "AGENT_REVIEW_NE_FORMAL_HUMAN_SECURITY_REVIEW"
+  ],
+  "effects": {
+    "network_request_executed": false,
+    "model_request_executed": false,
+    "credential_value_read": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "standard_ready": false,
+    "implementation_authorized": false,
+    "release_authorized": false
+  }
+}
