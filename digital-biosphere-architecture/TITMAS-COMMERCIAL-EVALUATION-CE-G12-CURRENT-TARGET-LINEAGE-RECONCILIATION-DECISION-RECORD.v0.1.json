@@ -1,0 +1,326 @@
+{
+  "record_type": "TITMAS_CE_G12_CURRENT_TARGET_LINEAGE_RECONCILIATION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-CURRENT-TARGET-LINEAGE-RECONCILIATION",
+  "version": "0.1.0",
+  "status": "AUTHORIZE_ONE_OFFLINE_LINEAGE_RECONCILIATION_ONLY_IF_QUALIFYING_DECISION_REVIEW_AND_LATER_SEPARATE_EXECUTION",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G12-CURRENT-TARGET-LINEAGE-RECONCILIATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "3d8c660a225f247a420b076f6cd260d142fb43f918b93cf7b5600656e91d98dc",
+  "recommendation_review_reference": "TITMAS-CE-G12-CURRENT-TARGET-LINEAGE-RECONCILIATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "e4cb0527f37a02788d0155f6bdc0fe897eb5597ec2e31965acfc9f0e89bc181f",
+  "recommendation_commit": "11797a05d5ce62d79ea8413f5d09e94289a7be25",
+  "recommendation_remote_verified": true,
+  "selected_option": "A",
+  "primary_repository": "digital-biosphere-architecture",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "source_evidence": [
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g12-current-target-classification-result.v0.1.json",
+      "sha256": "277f9c6c9c757aae7870c32e101fd496cb5a06203015c2ce2723de8785f56a28",
+      "role": "fresh_current_target_classification"
+    },
+    {
+      "reference": "TITMAS-CE-G12-CURRENT-TARGET-CLASSIFICATION-REPORT-v0.1.md",
+      "sha256": "760be97e60f8ddf2ff9d8bdb3c328406330539fe07b3f783231c0217e5d6e336",
+      "role": "fresh_current_target_classification_report"
+    },
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g7-result.v0.1.json",
+      "sha256": "08fbeae76848886950029c1c4fc445ad665bff324a1a1bd18566817b6cbd8276",
+      "role": "stable_proposed_and_rollback_result"
+    },
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g7-rollback-receipt.v0.1.json",
+      "sha256": "153edba2dcf5cbf7814034ef037e541412883b16106bf5f30a84e2b47d4150e8",
+      "role": "stable_rollback_receipt"
+    },
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g7-proposed-release-hash-baseline.v0.1.json",
+      "sha256": "173fa2a0972bbbf3f61d4a649a1331249334c0fa003a668da200318a7858f7fc",
+      "role": "proposed_release_baseline"
+    },
+    {
+      "reference": "TITMAS-CE-G11B-PR27-MERGE-EXECUTION-AND-POST-MERGE-VALIDATION-RESULT-v0.1.json",
+      "sha256": "bda16758916a8df843c84bd5ca803b7a50d3343e5248f56ba94b944509d64c86",
+      "role": "pr27_merge_and_repository_validation"
+    }
+  ],
+  "release_role_binding": {
+    "stable_and_rollback_release": "7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "exact_proposed_release": "f8107969aa1f43be8ecf43f557297a630309fe41",
+    "fresh_observed_current_release": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "pr27_merge_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "observed_current_classification": "OTHER_CANONICAL_RELEASE",
+    "classification_is_root_cause": false,
+    "classification_is_deployment_success": false,
+    "classification_is_redeployment_authority": false,
+    "git_lineage_is_deployment_authority": false
+  },
+  "commit_object_contract": [
+    {
+      "commit": "7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+      "parent": "01495186ab68ab8275763ab4c56d0fcbe51c71ab",
+      "tree": "cd95f0ec3f0ddba7ac5e787b506450c60226594d",
+      "subject": "docs: validate TITMAS commercial evaluation with external agents"
+    },
+    {
+      "commit": "f8107969aa1f43be8ecf43f557297a630309fe41",
+      "parent": "8b2b42a0ede38161ccf7351a314f5426a96f7c5d",
+      "tree": "13d1d8d5c34faddc459e2ad68b422cd9ea52f798",
+      "subject": "docs: authorize TITMAS evaluation entry publication"
+    },
+    {
+      "commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+      "parent": "cc13ef545101dacb9cb3c0506f4dd7fc35edbce2",
+      "tree": "9473e64a1a0e1af129627cb93bdad7b38655944e",
+      "subject": "fix(site): align medical evidence demo boundaries"
+    },
+    {
+      "commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+      "parent": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14 e6a193f4bf0d48d65649077122f0ab262460daac",
+      "tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+      "subject": "Merge PR #27: integrate CE-G11B atomic evidence"
+    }
+  ],
+  "ancestry_contract": [
+    {
+      "ancestor": "7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+      "descendant": "f8107969aa1f43be8ecf43f557297a630309fe41",
+      "expected": true
+    },
+    {
+      "ancestor": "f8107969aa1f43be8ecf43f557297a630309fe41",
+      "descendant": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+      "expected": true
+    },
+    {
+      "ancestor": "7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+      "descendant": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+      "expected": true
+    },
+    {
+      "ancestor": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+      "descendant": "f8107969aa1f43be8ecf43f557297a630309fe41",
+      "expected": false
+    }
+  ],
+  "pr27_contract": {
+    "pull_request": 27,
+    "state": "MERGED",
+    "base_ref": "codex/production-observability-baseline",
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_ref": "codex/ce-g11b-pr23-remediation-candidate",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "merge_sha": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "remote_base_head": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "metadata_reads": 1,
+    "pr_mutations": 0
+  },
+  "missing_evidence_contract": {
+    "observed_current_deployment_authorized": "UNKNOWN",
+    "observed_current_deployment_receipt_found": false,
+    "observed_current_switch_source": "UNKNOWN",
+    "observed_current_intent": "UNKNOWN",
+    "observed_current_is_stale": "UNKNOWN",
+    "observed_current_is_unauthorized": "UNKNOWN",
+    "observed_current_is_safe": "UNKNOWN",
+    "root_cause_proven": false,
+    "server_mutation_attribution_proven": false
+  },
+  "exact_offline_sequence": [
+    {
+      "id": "L01",
+      "check": "Require local governance HEAD to equal the remotely verified Decision and review commit before execution."
+    },
+    {
+      "id": "L02",
+      "check": "Perform one fetch of exact remote refs without changing any remote branch."
+    },
+    {
+      "id": "L03",
+      "check": "Verify the six source artifact SHA-256 bindings."
+    },
+    {
+      "id": "L04",
+      "check": "Verify the four exact commit objects, parents, trees and subjects."
+    },
+    {
+      "id": "L05",
+      "check": "Execute exactly the four ancestry contract checks."
+    },
+    {
+      "id": "L06",
+      "check": "Read GitHub PR #27 base, head, merge and state metadata once and compare the exact contract."
+    },
+    {
+      "id": "L07",
+      "check": "Emit one machine-readable Result and one human-readable Report without server or public-site access."
+    }
+  ],
+  "result_contract": {
+    "result_reference": "commercial-evaluation-exact-redeployment/ce-g12-current-target-lineage-reconciliation-result.v0.1.json",
+    "report_reference": "TITMAS-CE-G12-CURRENT-TARGET-LINEAGE-RECONCILIATION-REPORT-v0.1.md",
+    "success_status": "PASS_OFFLINE_LINEAGE_RECONCILED_NO_OPERATION_AUTHORIZED",
+    "failure_status": "FAIL_CLOSED_OFFLINE_LINEAGE_NOT_RECONCILED_NO_OPERATION_AUTHORIZED",
+    "required_sections": [
+      "result_id",
+      "version",
+      "observed_at",
+      "status",
+      "decision_reference",
+      "repository",
+      "stable_release_id",
+      "proposed_release_id",
+      "observed_current_release_id",
+      "pr27_merge_id",
+      "commit_object_checks",
+      "ancestry_checks",
+      "governance_artifact_hash_checks",
+      "pr27_metadata_check",
+      "role_mapping",
+      "missing_evidence",
+      "effects",
+      "next_gate"
+    ]
+  },
+  "execution_authorization": {
+    "decision_review_request_authorized": true,
+    "offline_lineage_reconciliation_authorized_if_review_qualifies_and_decision_remote_verified": true,
+    "execution_in_decision_preparation_action": false,
+    "later_separate_execution_required": true,
+    "remote_ref_fetch_read_only": true,
+    "github_pr27_metadata_read_only": true,
+    "ssh": false,
+    "server_reads": false,
+    "server_writes": false,
+    "public_site_requests": false,
+    "symlink_reads": false,
+    "symlink_switch": false,
+    "repair": false,
+    "rollback": false,
+    "redeployment": false,
+    "release": false,
+    "pr_mutation": false,
+    "result_and_report_creation": true,
+    "path_scoped_commit_and_push": true
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "git_fetches_during_execution": 1,
+    "github_pr_metadata_reads": 1,
+    "source_artifact_hash_checks": 6,
+    "commit_object_checks": 4,
+    "ancestry_checks": 4,
+    "result_artifacts": 2,
+    "result_commits": 1,
+    "result_pushes": 1,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "public_site_requests": 0,
+    "symlink_reads": 0,
+    "symlink_switches": 0,
+    "repairs": 0,
+    "rollbacks": 0,
+    "redeployments": 0,
+    "releases": 0,
+    "pr_mutations": 0,
+    "model_requests_during_execution": 0,
+    "retries": 0,
+    "fallbacks": 0
+  },
+  "preconditions": {
+    "recommendation_and_review_remote_verified": true,
+    "recommendation_review_qualifying": true,
+    "decision_and_review_remote_verified_before_execution": true,
+    "local_remote_governance_sha_equality_required": true,
+    "no_unrelated_worktree_change_allowed": true
+  },
+  "stop_conditions": [
+    "DECISION_OR_REVIEW_NOT_REMOTE_VERIFIED",
+    "RETURNED_MODEL_NOT_EXACT_QWEN3_7_MAX",
+    "DIRECT_JSON_OR_EXACT_CONTRACT_INVALID",
+    "REVIEW_NOT_QUALIFYING",
+    "GOVERNANCE_LOCAL_REMOTE_SHA_DIFFERS",
+    "ANY_SOURCE_ARTIFACT_SHA_DIFFERS",
+    "ANY_COMMIT_OBJECT_PARENT_TREE_OR_SUBJECT_DIFFERS",
+    "ANY_ANCESTRY_CHECK_DIFFERS",
+    "PR27_BASE_HEAD_MERGE_STATE_OR_REMOTE_BASE_HEAD_DIFFERS",
+    "ANY_SERVER_PUBLIC_SITE_DNS_TLS_LOG_JOURNAL_ENVIRONMENT_OR_CREDENTIAL_READ_WOULD_OCCUR",
+    "ANY_PR_REMOTE_BASE_SERVER_SYMLINK_OR_RELEASE_MUTATION_WOULD_OCCUR",
+    "OBSERVED_CURRENT_WOULD_BE_PROMOTED_TO_AUTHORIZED_UNAUTHORIZED_STALE_SAFE_DEPLOYED_PRODUCTION_OR_COMMERCIAL_TRUTH",
+    "LINEAGE_WOULD_BE_PROMOTED_TO_REPAIR_ROLLBACK_REDEPLOYMENT_OR_RELEASE_AUTHORITY",
+    "ANY_NON_AUTHORIZATION_BOUNDARY_WOULD_BECOME_TRUE"
+  ],
+  "decision_review_contract": {
+    "model": "qwen3.7-max",
+    "request_cap": 1,
+    "retries": 0,
+    "fallbacks": 0,
+    "model_substitutions": 0,
+    "json_extractions": 0,
+    "json_repairs": 0,
+    "direct_json_required": true,
+    "exact_returned_model_required": true,
+    "required_top_level_keys": [
+      "verdict",
+      "confidence",
+      "standing_directive_applicable",
+      "recommendation_chain_valid",
+      "recommendation_review_qualifying",
+      "evidence_bindings_sound",
+      "offline_scope_exact",
+      "commit_object_contract_sound",
+      "ancestry_contract_sound",
+      "pr27_contract_sound",
+      "missing_evidence_preserved",
+      "result_contract_sufficient",
+      "execution_separation_sound",
+      "caps_and_stop_rules_sufficient",
+      "no_server_repair_or_redeployment_authority",
+      "non_authorizations_complete",
+      "authority_boundaries_preserved",
+      "blockers",
+      "corrections",
+      "rationale"
+    ],
+    "additional_top_level_keys_allowed": false,
+    "verdict_enum": [
+      "APPROVE",
+      "REJECT"
+    ],
+    "approval_threshold": {
+      "verdict": "APPROVE",
+      "minimum_confidence": 0.9,
+      "all_boolean_checks": true,
+      "blockers": [],
+      "corrections": []
+    }
+  },
+  "exact_authorized_action": "After one qualifying exact qwen3.7-max prospective Decision review and remote verification of this Decision plus review, execute one later separate offline lineage reconciliation only. Fetch exact remote refs once without mutating them; verify six artifact SHA-256 bindings, four exact commit object contracts and four ancestry contracts; read GitHub PR #27 metadata once; emit one Result and one Report; commit and push only those two artifacts on the governance branch. Do not use SSH, read or write the server, request the public site, mutate any PR or remote base branch, switch a symlink, repair, rollback, redeploy, release, or promote Git lineage to authorization, root cause, safety, Production or commercial truth.",
+  "effects": {
+    "decision_recorded": true,
+    "offline_reconciliation_executed": false,
+    "server_state_changed": false,
+    "pr_state_changed": false,
+    "remote_base_changed": false,
+    "repair_authorized": false,
+    "rollback_authorized": false,
+    "redeployment_authorized": false,
+    "release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "permission_created": false,
+    "authority_elevated": false,
+    "evidence_truth_changed": false
+  },
+  "next_gate": {
+    "action": "EXECUTE_CE_G12_CURRENT_TARGET_LINEAGE_RECONCILIATION_ONLY_AFTER_QUALIFYING_DECISION_REVIEW_AND_REMOTE_VERIFICATION",
+    "authorized_if_review_qualifies": true,
+    "execution_in_same_action": false
+  }
+}
