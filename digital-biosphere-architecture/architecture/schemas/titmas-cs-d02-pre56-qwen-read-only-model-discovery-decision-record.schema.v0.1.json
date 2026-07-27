@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-pre56-qwen-read-only-model-discovery-decision-record:0.1",
+  "title": "TITMAS CS-D02 PRE-56 Qwen Read-Only Model Discovery Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "standing_directive_eligibility",
+    "scope",
+    "effects_before_execution",
+    "next_gate",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre56-qwen-read-only-model-discovery-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-56-QWEN-READ-ONLY-MODEL-DISCOVERY-DECISION-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {
+      "const": "ONE_REQUEST_READ_ONLY_MODEL_DISCOVERY_AUTHORIZED_NOT_EXECUTED"
+    },
+    "decision_id": {"const": "CS-D02-PRE-56"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-56-QWEN-READ-ONLY-MODEL-DISCOVERY-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "64a94cc7c3ee295a56dfcf09753d6e6ba80571b6396432be1731f599ee163414"
+    },
+    "recommendation_commit": {
+      "const": "fc9c849b894baac85b041bba65012bf45e3ad6d7"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_ONE_EXACT_READ_ONLY_QWEN_MODEL_DISCOVERY_REQUEST"
+    },
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "Codex"},
+    "standing_directive_eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_present",
+        "single_exact_option",
+        "endpoint_method_scope_explicit",
+        "preconditions_directly_evidenced",
+        "all_effect_classes_declared",
+        "stop_conditions_explicit",
+        "later_conflict_present",
+        "independent_decision_record_present",
+        "result_validation_and_failure_retention_required",
+        "material_actions_separately_recorded",
+        "applicable"
+      ],
+      "properties": {
+        "canonical_recommendation_present": {"const": true},
+        "single_exact_option": {"const": true},
+        "endpoint_method_scope_explicit": {"const": true},
+        "preconditions_directly_evidenced": {"const": true},
+        "all_effect_classes_declared": {"const": true},
+        "stop_conditions_explicit": {"const": true},
+        "later_conflict_present": {"const": false},
+        "independent_decision_record_present": {"const": true},
+        "result_validation_and_failure_retention_required": {"const": true},
+        "material_actions_separately_recorded": {"const": true},
+        "applicable": {"const": true}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "input_commit",
+        "output_files",
+        "provider_requests_max",
+        "model_inference_requests_max",
+        "credential_identifiers_max",
+        "timeout_seconds",
+        "retry_max",
+        "fallback_max",
+        "external_repository_writes_max"
+      ],
+      "properties": {
+        "primary_repository": {"const": "digital-biosphere-architecture"},
+        "input_commit": {"const": "fc9c849b894baac85b041bba65012bf45e3ad6d7"},
+        "output_files": {"const": 7},
+        "provider_requests_max": {"const": 1},
+        "model_inference_requests_max": {"const": 0},
+        "credential_identifiers_max": {"const": 1},
+        "timeout_seconds": {"const": 30},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "external_repository_writes_max": {"const": 0}
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "read_only_model_discovery_authorized",
+        "model_selection_authorized",
+        "model_inference_authorized",
+        "provider_integration_authorized",
+        "provider_supported",
+        "security_review_authorized",
+        "security_review_completed",
+        "implementation_authorized",
+        "runtime_authorized",
+        "permission_granted",
+        "evidence_truth_changed",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized",
+        "standard_ready"
+      ],
+      "properties": {
+        "read_only_model_discovery_authorized": {"const": true},
+        "model_selection_authorized": {"const": false},
+        "model_inference_authorized": {"const": false},
+        "provider_integration_authorized": {"const": false},
+        "provider_supported": {"const": false},
+        "security_review_authorized": {"const": false},
+        "security_review_completed": {"const": false},
+        "implementation_authorized": {"const": false},
+        "runtime_authorized": {"const": false},
+        "permission_granted": {"const": false},
+        "evidence_truth_changed": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    },
+    "next_gate": {
+      "const": "CREATE_AND_VALIDATE_EXACT_SEVEN_FILE_PRE56_MODEL_DISCOVERY_PACKET"
+    },
+    "result": {"const": "NOT_EXECUTED"}
+  }
+}
