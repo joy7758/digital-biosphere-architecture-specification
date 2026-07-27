@@ -502,6 +502,10 @@ R2 Decision candidate。[R2 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-ZERO-
 `FAIL_CLOSED_PRECONDITION_NPM_PREFIX_STRING_MISMATCH`：merge tree、0 status entry、
 package/lock 和无 `node_modules` 均通过，但 raw `npm prefix` 字符串比较失败，dry-run
 尝试数为 0。实际 prefix 未持久化，realpath hypothesis 未证明；R2 不重跑。
+[R3 Recommendation](TITMAS-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-RECOMMENDATION-v0.1.md)
+及其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-NPM-PREFIX-PATH-NORMALIZATION-R3-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction；只允许建立新的
+R3 Decision，以 raw+realpath 双记录修正前置检查，不改变诊断命令。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
