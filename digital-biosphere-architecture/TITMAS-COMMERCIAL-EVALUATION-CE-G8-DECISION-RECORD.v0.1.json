@@ -1,0 +1,86 @@
+{
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G8",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_EXACT_CONTROLLER_TLS_DIAGNOSIS_ONLY",
+  "decided_at": "2026-07-27",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G8-CONTROLLER-TLS-DIAGNOSIS-RECOMMENDATION-v0.1.md",
+  "primary_repository": "digital-biosphere-architecture",
+  "exact_action": "Run the exact four-observation controller TLS matrix against the stable rollback /en/ route, then perform one exact-window read-only server log correlation and classify the signal without retry, redeployment, policy change, or root-cause elevation.",
+  "preconditions": {
+    "ce_g7_result": "FAIL_CLOSED_ROLLBACK_PASS",
+    "current_release": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "new_release_current": false,
+    "prior_failure_preserved": true,
+    "root_cause_proven": false
+  },
+  "request_matrix": [
+    {"id": "A", "client": "MACOS_SYSTEM_CURL", "resolution": "NORMAL", "http": "DEFAULT", "path": "/en/", "attempts": 1},
+    {"id": "B", "client": "MACOS_SYSTEM_CURL", "resolution": "EXPLICIT_180_76_115_193", "http": "HTTP_1_1", "path": "/en/", "attempts": 1},
+    {"id": "C", "client": "PYTHON_HTTP_CLIENT_OPENSSL", "resolution": "NORMAL_DNS", "http": "HTTP_1_1", "path": "/en/", "attempts": 1},
+    {"id": "D", "client": "PYTHON_SOCKET_OPENSSL", "resolution": "DIRECT_180_76_115_193_WITH_SNI", "http": "HTTP_1_1", "path": "/en/", "attempts": 1}
+  ],
+  "server_correlation": {
+    "ssh_sessions_max": 2,
+    "preflight_session_scope": "EXACT_CURRENT_SYMLINK_ONLY",
+    "window_start": "EXACT_FIRST_OBSERVATION_START",
+    "window_end": "EXACT_LAST_OBSERVATION_END",
+    "padding_seconds": 0,
+    "read_only": true,
+    "raw_logs_persisted": false,
+    "source_ip_persistence": "EPHEMERAL_SALTED_SHA256_ONLY"
+  },
+  "caps": {
+    "new_public_gets_max": 4,
+    "ssh_sessions_max": 2,
+    "model_requests_during_execution_max": 0,
+    "retry": false,
+    "fallback": false,
+    "tls_verification_bypass": false,
+    "website_redeployment": false,
+    "symlink_switch": false,
+    "nginx_reload": false,
+    "server_write": false
+  },
+  "allowed_classifications": [
+    "CLIENT_STACK_OR_LOCAL_PATH_SIGNAL",
+    "ADDRESS_PATH_SIGNAL",
+    "SERVER_HANDSHAKE_SIGNAL",
+    "INCONCLUSIVE",
+    "NO_FAILURE_OBSERVED"
+  ],
+  "stop_conditions": [
+    "Current release differs from the exact rollback target.",
+    "The privacy filter cannot reduce proxy, interface, DNS, error, or log data to the authorized classes.",
+    "The request/client/resolution/attempt binding differs from the exact matrix.",
+    "The server log window would exceed the exact observation start and end timestamps.",
+    "Any request, SSH, model, retry, fallback, or TLS-bypass cap would be exceeded."
+  ],
+  "authorized_effects": {
+    "path_scoped_commit_and_push": true,
+    "bounded_public_transport_diagnosis": true,
+    "read_only_server_log_correlation": true
+  },
+  "false_effects": {
+    "redeployment": false,
+    "policy_change": false,
+    "controller_gate_classification_change": false,
+    "root_cause_proof": false,
+    "dbos_change": false,
+    "saee_change": false,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "capability": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offering": false,
+    "production_readiness": false
+  },
+  "executed_by": "Codex under bounded human standing delegation",
+  "execution_receipt": "PENDING",
+  "result": "PENDING_EXECUTION"
+}
