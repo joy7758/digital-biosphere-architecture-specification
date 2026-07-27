@@ -1,0 +1,52 @@
+{
+  "record_type": "TITMAS_PR27_POST_MERGE_VALIDATION_HARNESS_BINDING_FAILURE",
+  "record_id": "TITMAS-CE-G11B-PR27-POST-MERGE-VALIDATION-HARNESS-BINDING-FAILURE-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28T05:23:00+08:00",
+  "status": "FAIL_CLOSED_LOCAL_DECISION_REVIEW_SHA_BINDING_ERROR",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-POST-MERGE-VERIFIER-REMEDIATION-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "ef62cad6f195dd20c29de6db2428a7b207dadcc4aecbd0e0b7cba04681a62e1e",
+  "attempt": {
+    "sequence": "POST_MERGE_CORRECTED_STRUCTURAL_AND_ISOLATED_VALIDATION",
+    "attempt_number": 1,
+    "exit_code": 1,
+    "failure_phase": "LOCAL_DECISION_REVIEW_SHA_BINDING",
+    "failed_before_structural_validation": true,
+    "failed_before_worktree_creation": true,
+    "expected_review_sha256_entered": "a13da7940ae075884256928ea3a8218684588739a950f8fb0cc9fb1ca7bfb401",
+    "actual_review_sha256": "96548d0c93e04aabd9c018442919c0443cc56724e1563e47265ce89c1a0eb74d",
+    "root_cause": "MANUAL_UNVERIFIED_REVIEW_HASH_ENTRY_IN_INLINE_VALIDATION_COMMAND"
+  },
+  "caps_consumed": {
+    "corrected_structural_validation_runs": 0,
+    "temporary_worktrees": 0,
+    "tracked_json_runs": 0,
+    "commercial_entry_schema_runs": 0,
+    "npm_ci_attempts": 0,
+    "npm_ls_runs": 0,
+    "site_test_runs": 0,
+    "release_formal_runs": 0,
+    "ce_schema_validation_runs": 0,
+    "ce_test_runs": 0,
+    "source_or_test_fixes": 0,
+    "resets": 0,
+    "force_pushes": 0,
+    "candidate_branch_deletions": 0,
+    "automatic_reverts": 0,
+    "new_merges": 0,
+    "releases": 0,
+    "deployments": 0
+  },
+  "effects": {
+    "merge_commit_changed": false,
+    "remote_branches_changed": false,
+    "pull_request_changed": false,
+    "worktree_created": false,
+    "tests_started": false,
+    "failure_reclassified_as_pass": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CONTENT_DERIVED_REMOTE_BINDING_REMEDIATION",
+    "authorized": false
+  }
+}
