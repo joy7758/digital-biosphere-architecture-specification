@@ -77,6 +77,26 @@ PROTOCOLIZATION_BEFORE_PLATFORM_EXPANSION=true
 
 推荐结论不是 Implementation Authorization（实现授权）。
 
+## Commercialization Review Model Quality Baseline（商业化审查模型质量基线）
+
+处理 TITMAS 商业化标准推进、agent-customer recommendation gate 或 release-safety
+review 时，当前默认主审模型为：
+
+```text
+TITMAS_COMMERCIAL_REVIEW_PRIMARY_MODEL=qwen3.7-max
+SILENT_MODEL_DOWNGRADE_ALLOWED=false
+MODEL_RECOMMENDATION_NE_AUTHORITY=true
+```
+
+只有在 Provider model catalog 可发现、更高模型可直接调用、returned model identity
+精确匹配并对同一完整 scope 形成有效结果时，才可使用更高模型替代或补充主审。Preview
+或更高模型请求失败时必须保留失败，不得把目录可见性、HTTP failure、空正文、其他模型
+结果或历史 `qwen3.7-plus` 结果冒充为更高模型认可。`qwen3.7-max` 不可用时应失败关闭并
+记录 blocker，不得静默降级。
+
+模型 review 仍是 advisory input（咨询输入），不是 Decision、Authorization、
+Implementation、Truth、customer adoption 或 release evidence。
+
 ## Mandatory Proposal Questions（提案必答问题）
 
 每个提案必须说明：

@@ -387,6 +387,16 @@ execution。[CE-G11A result](commercial-evaluation-controller-tls-diagnosis/ce-g
 3.14.5 各 13/13；historical hashes 全部保持。该 PASS 只证明 offline binding
 remediation，不创建 live binding。remote matrix、服务器访问和重部署仍均未授权。
 
+[CE-G11B Recommendation](TITMAS-CE-G11B-REMOTE-CROSS-VERSION-VALIDATION-RECOMMENDATION-v0.1.md)
+冻结了新 adapter 的五版本 remote matrix 候选：Python 3.10.20、3.11.15、3.12.13、
+3.13.14、3.14.6，外加 10 个 input hashes、full-SHA actions、`contents: read`、
+5 jobs、每 job 13 个新测试和 13 个历史
+测试、one-run cap 和 fail-closed aggregate。全文经 `qwen3.7-max` 主审，得到
+`RECOMMENDED`、愿意向智能体客户推荐、置信度 `0.98`、0 blocker/correction。
+`qwen3.8-max-preview` 的同范围请求返回 HTTP 400，未形成有效审查，不计入认可。
+Recommendation 不授权 workflow、run request、server access 或 redeployment；下一步只
+进入 CE-G11B Phase A Decision review。
+
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
 Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是整个 Digital Biosphere（数字生物圈）项目群的 Program Governance and Architecture Specification Hub（项目群治理与架构规范中心）。它既维护 SAEE、DBOS 与未来 Digital Entity（数字主体）的总架构规范，也作为整体推进所使用的 cockpit（驾驶舱），统一呈现项目组合、路线图、状态、依赖、决策、集成 gate（闸门）、风险和阻塞。
