@@ -1,0 +1,160 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre64-p0-resolver-contract-and-test-design-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-64 P0 Resolver Contract and Test Design Decision Record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "authorization",
+    "scope",
+    "effects_before_execution",
+    "next_gate",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre64-p0-resolver-contract-and-test-design-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-64-P0-RESOLVER-CONTRACT-AND-TEST-DESIGN-DECISION-0.1"
+    },
+    "version": { "const": "0.1.0" },
+    "status": {
+      "const": "EXACT_OFFLINE_P0_RESOLVER_CONTRACT_AND_TEST_DESIGN_AUTHORIZED_NOT_EXECUTED"
+    },
+    "decision_id": { "const": "CS-D02-PRE-64" },
+    "standing_directive_reference": { "const": "TITMAS-CS-STANDING-001" },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-64-P0-RESOLVER-CONTRACT-AND-TEST-DESIGN-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "recommendation_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_PRE64_OFFLINE_P0_RESOLVER_CONTRACT_AND_TEST_DESIGN"
+    },
+    "decided_by_ref": { "const": "zhangbin" },
+    "decided_at": { "type": "string", "format": "date-time" },
+    "executed_by": { "const": "Codex" },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_packet_authorized",
+        "target_repository_write_authorized",
+        "credential_read_authorized",
+        "network_or_model_request_authorized",
+        "dependency_install_authorized",
+        "p0_resolver_implementation_authorized",
+        "formal_security_review_authorized"
+      ],
+      "properties": {
+        "offline_packet_authorized": { "const": true },
+        "target_repository_write_authorized": { "const": false },
+        "credential_read_authorized": { "const": false },
+        "network_or_model_request_authorized": { "const": false },
+        "dependency_install_authorized": { "const": false },
+        "p0_resolver_implementation_authorized": { "const": false },
+        "formal_security_review_authorized": { "const": false }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "input_commit",
+        "target_repository",
+        "target_branch",
+        "target_commit",
+        "offline_packet_files",
+        "positive_design_cases",
+        "negative_design_cases",
+        "network_requests_max",
+        "live_model_requests_max",
+        "credential_reads_max",
+        "target_repository_writes_max",
+        "dependency_installs_max",
+        "implementation_writes_max"
+      ],
+      "properties": {
+        "primary_repository": { "const": "digital-biosphere-architecture" },
+        "input_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "target_repository": {
+          "const": "https://github.com/joy7758/titmas-integrations.git"
+        },
+        "target_branch": { "const": "codex/rb0-governance-baseline" },
+        "target_commit": {
+          "const": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6"
+        },
+        "offline_packet_files": { "const": 13 },
+        "positive_design_cases": { "const": 6 },
+        "negative_design_cases": { "const": 24 },
+        "network_requests_max": { "const": 0 },
+        "live_model_requests_max": { "const": 0 },
+        "credential_reads_max": { "const": 0 },
+        "target_repository_writes_max": { "const": 0 },
+        "dependency_installs_max": { "const": 0 },
+        "implementation_writes_max": { "const": 0 }
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_changed",
+        "ownership_changed",
+        "target_repository_changed",
+        "p0_resolver_implemented",
+        "dependency_adopted",
+        "provider_supported",
+        "provider_integrated",
+        "formal_human_security_review_complete",
+        "implementation_authorized",
+        "release_authorized",
+        "standard_ready",
+        "runtime_created",
+        "agent_created",
+        "permission_created"
+      ],
+      "properties": {
+        "authority_changed": { "const": false },
+        "ownership_changed": { "const": false },
+        "target_repository_changed": { "const": false },
+        "p0_resolver_implemented": { "const": false },
+        "dependency_adopted": { "const": false },
+        "provider_supported": { "const": false },
+        "provider_integrated": { "const": false },
+        "formal_human_security_review_complete": { "const": false },
+        "implementation_authorized": { "const": false },
+        "release_authorized": { "const": false },
+        "standard_ready": { "const": false },
+        "runtime_created": { "const": false },
+        "agent_created": { "const": false },
+        "permission_created": { "const": false }
+      }
+    },
+    "next_gate": {
+      "const": "EXECUTE_PRE64_OFFLINE_CONTRACT_AND_TEST_DESIGN_VALIDATE_AND_REMOTE_FREEZE"
+    },
+    "result": { "const": "NOT_EXECUTED" }
+  }
+}
