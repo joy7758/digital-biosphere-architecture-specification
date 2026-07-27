@@ -1,0 +1,393 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre67-p0-executable-test-and-implementation-scope-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-67 P0 Executable Test and Implementation Scope Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "standing_directive_eligibility",
+    "preconditions",
+    "scope",
+    "authorized_paths",
+    "official_snapshot_inputs",
+    "authorization",
+    "effects_before_execution",
+    "rollback",
+    "next_gate",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre67-p0-executable-test-and-implementation-scope-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-67-P0-EXECUTABLE-TEST-AND-IMPLEMENTATION-SCOPE-DECISION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "EXACT_P0_EXECUTABLE_TEST_AND_REFERENCE_IMPLEMENTATION_AUTHORIZED_NOT_EXECUTED"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-67"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-67-P0-EXECUTABLE-TEST-AND-IMPLEMENTATION-SCOPE-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "recommendation_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_EXACT_POSIX_SINGLE_USE_CHILD_P0_RESOLVER_REFERENCE_IMPLEMENTATION_AND_OFFLINE_TESTS"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "standing_directive_eligibility": {
+      "$ref": "#/$defs/standingDirectiveEligibility"
+    },
+    "preconditions": {
+      "$ref": "#/$defs/preconditions"
+    },
+    "scope": {
+      "$ref": "#/$defs/scope"
+    },
+    "authorized_paths": {
+      "$ref": "#/$defs/authorizedPaths"
+    },
+    "official_snapshot_inputs": {
+      "$ref": "#/$defs/officialSnapshotInputs"
+    },
+    "authorization": {
+      "$ref": "#/$defs/authorization"
+    },
+    "effects_before_execution": {
+      "$ref": "#/$defs/effects"
+    },
+    "rollback": {
+      "$ref": "#/$defs/rollback"
+    },
+    "next_gate": {
+      "$ref": "#/$defs/nextGate"
+    },
+    "result": {
+      "const": "P0_REFERENCE_IMPLEMENTATION_AND_OFFLINE_TESTS_NOT_EXECUTED"
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "standingDirectiveEligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_present",
+        "single_exact_option",
+        "repositories_target_and_scope_explicit",
+        "preconditions_directly_evidenced",
+        "all_effect_classes_declared",
+        "stop_conditions_explicit",
+        "later_conflict_present",
+        "independent_decision_record_present",
+        "result_validation_and_failure_retention_required",
+        "material_actions_separately_recorded",
+        "applicable"
+      ],
+      "properties": {
+        "canonical_recommendation_present": {"const": true},
+        "single_exact_option": {"const": true},
+        "repositories_target_and_scope_explicit": {"const": true},
+        "preconditions_directly_evidenced": {"const": true},
+        "all_effect_classes_declared": {"const": true},
+        "stop_conditions_explicit": {"const": true},
+        "later_conflict_present": {"const": false},
+        "independent_decision_record_present": {"const": true},
+        "result_validation_and_failure_retention_required": {"const": true},
+        "material_actions_separately_recorded": {"const": true},
+        "applicable": {"const": true}
+      }
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_remote_verified",
+        "recommendation_commit",
+        "pre66_design_complete",
+        "pre66_implementation_authorized",
+        "target_head",
+        "target_remote_branch_matched",
+        "target_dirty_count",
+        "target_main_head",
+        "iana_ipv4_sha256",
+        "iana_ipv6_sha256"
+      ],
+      "properties": {
+        "recommendation_remote_verified": {"const": true},
+        "recommendation_commit": {
+          "const": "cd59bf26ad91bd4a729214b976b57347c3f33a51"
+        },
+        "pre66_design_complete": {"const": true},
+        "pre66_implementation_authorized": {"const": false},
+        "target_head": {
+          "const": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6"
+        },
+        "target_remote_branch_matched": {"const": true},
+        "target_dirty_count": {"const": 0},
+        "target_main_head": {
+          "const": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+        },
+        "iana_ipv4_sha256": {
+          "const": "e3e39e76d00b1677335db8e9a805c7b9480ea2f4dc9e33f0b93cd3a905128d73"
+        },
+        "iana_ipv6_sha256": {
+          "const": "775feea0621dec8735a44fbf30f762e721e8f0a1b3ab7eb341961a88cfce2139"
+        }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "target_repository",
+        "target_branch",
+        "new_files_max",
+        "updated_files_max",
+        "new_public_symbols_max",
+        "runtime_dependencies_max",
+        "provider_dependencies_max",
+        "real_dns_calls_during_tests_max",
+        "real_tcp_calls_during_tests_max",
+        "tls_handshakes_during_tests_max",
+        "http_requests_during_tests_max",
+        "credential_reads_max",
+        "provider_bindings_max"
+      ],
+      "properties": {
+        "primary_repository": {"const": "digital-biosphere-architecture"},
+        "target_repository": {
+          "const": "https://github.com/joy7758/titmas-integrations.git"
+        },
+        "target_branch": {"const": "codex/rb0-governance-baseline"},
+        "new_files_max": {"const": 11},
+        "updated_files_max": {"const": 8},
+        "new_public_symbols_max": {"const": 6},
+        "runtime_dependencies_max": {"const": 0},
+        "provider_dependencies_max": {"const": 0},
+        "real_dns_calls_during_tests_max": {"const": 0},
+        "real_tcp_calls_during_tests_max": {"const": 0},
+        "tls_handshakes_during_tests_max": {"const": 0},
+        "http_requests_during_tests_max": {"const": 0},
+        "credential_reads_max": {"const": 0},
+        "provider_bindings_max": {"const": 0}
+      }
+    },
+    "authorizedPaths": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["new", "updated"],
+      "properties": {
+        "new": {
+          "const": [
+            "src/titmas_integrations/p0_resolver.py",
+            "src/titmas_integrations/_p0_resolver_worker.py",
+            "src/titmas_integrations/data/__init__.py",
+            "src/titmas_integrations/data/iana-ipv4-special-registry-2025-10-09.csv",
+            "src/titmas_integrations/data/iana-ipv6-special-registry-2025-10-09.csv",
+            "src/titmas_integrations/data/global-unicast-destination-policy.v1.json",
+            "tests/test_p0_resolver_contract.py",
+            "tests/test_p0_resolver_deadline.py",
+            "tests/test_p0_resolver_security.py",
+            "P0-IMPLEMENTATION-DECLARATION.v0.1.json",
+            "schemas/p0-implementation-declaration.schema.v0.1.json"
+          ]
+        },
+        "updated": {
+          "const": [
+            "src/titmas_integrations/__init__.py",
+            "pyproject.toml",
+            "README.md",
+            "AGENTS.md",
+            "SECURITY.md",
+            "llms.txt",
+            "TITMAS-INTEGRATIONS-ENTRY.v0.1.json",
+            "schemas/titmas-integrations-entry.schema.v0.1.json"
+          ]
+        }
+      }
+    },
+    "officialSnapshotInputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["retrieved_at", "license", "ipv4", "ipv6"],
+      "properties": {
+        "retrieved_at": {"const": "2026-07-27T11:42:00+08:00"},
+        "license": {"const": "CC0-1.0"},
+        "ipv4": {"$ref": "#/$defs/ipv4Snapshot"},
+        "ipv6": {"$ref": "#/$defs/ipv6Snapshot"}
+      }
+    },
+    "ipv4Snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "source_last_updated", "bytes", "sha256"],
+      "properties": {
+        "url": {
+          "const": "https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry-1.csv"
+        },
+        "source_last_updated": {"const": "2025-10-09"},
+        "bytes": {"const": 2423},
+        "sha256": {
+          "const": "e3e39e76d00b1677335db8e9a805c7b9480ea2f4dc9e33f0b93cd3a905128d73"
+        }
+      }
+    },
+    "ipv6Snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["url", "source_last_updated", "bytes", "sha256"],
+      "properties": {
+        "url": {
+          "const": "https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry-1.csv"
+        },
+        "source_last_updated": {"const": "2025-10-09"},
+        "bytes": {"const": 2289},
+        "sha256": {
+          "const": "775feea0621dec8735a44fbf30f762e721e8f0a1b3ab7eb341961a88cfce2139"
+        }
+      }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_repository_write_authorized",
+        "p0_reference_implementation_authorized",
+        "offline_test_creation_and_execution_authorized",
+        "official_snapshot_vendoring_authorized",
+        "remote_clean_clone_validation_authorized",
+        "real_dns_or_network_test_authorized",
+        "credential_read_authorized",
+        "dependency_install_authorized",
+        "p1_or_p2_implementation_authorized",
+        "provider_binding_authorized",
+        "formal_security_review_authorized",
+        "release_authorized"
+      ],
+      "properties": {
+        "target_repository_write_authorized": {"const": true},
+        "p0_reference_implementation_authorized": {"const": true},
+        "offline_test_creation_and_execution_authorized": {"const": true},
+        "official_snapshot_vendoring_authorized": {"const": true},
+        "remote_clean_clone_validation_authorized": {"const": true},
+        "real_dns_or_network_test_authorized": {"const": false},
+        "credential_read_authorized": {"const": false},
+        "dependency_install_authorized": {"const": false},
+        "p1_or_p2_implementation_authorized": {"const": false},
+        "provider_binding_authorized": {"const": false},
+        "formal_security_review_authorized": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_repository_changed",
+        "p0_resolver_implemented",
+        "tests_created",
+        "tests_executed",
+        "contract_revision_adopted_as_standard",
+        "provider_supported",
+        "formal_human_security_review_complete",
+        "runtime_created",
+        "agent_created",
+        "permission_created",
+        "release_authorized",
+        "standard_ready"
+      ],
+      "properties": {
+        "target_repository_changed": {"const": false},
+        "p0_resolver_implemented": {"const": false},
+        "tests_created": {"const": false},
+        "tests_executed": {"const": false},
+        "contract_revision_adopted_as_standard": {"const": false},
+        "provider_supported": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "runtime_created": {"const": false},
+        "agent_created": {"const": false},
+        "permission_created": {"const": false},
+        "release_authorized": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    },
+    "rollback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_parent",
+        "history_rewrite_allowed",
+        "force_push_allowed",
+        "rollback_by_followup_commit_only"
+      ],
+      "properties": {
+        "target_parent": {
+          "const": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6"
+        },
+        "history_rewrite_allowed": {"const": false},
+        "force_push_allowed": {"const": false},
+        "rollback_by_followup_commit_only": {"const": true}
+      }
+    },
+    "nextGate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "gate_id",
+        "action",
+        "formal_security_review_decision_allowed",
+        "release_decision_allowed"
+      ],
+      "properties": {
+        "gate_id": {"const": "CS-D02-PRE-67-EXECUTION"},
+        "action": {
+          "const": "IMPLEMENT_EXACT_19_PATH_P0_REFERENCE_SCOPE_TEST_AND_REMOTE_CLEAN_CLONE_VALIDATE"
+        },
+        "formal_security_review_decision_allowed": {"const": false},
+        "release_decision_allowed": {"const": false}
+      }
+    }
+  }
+}

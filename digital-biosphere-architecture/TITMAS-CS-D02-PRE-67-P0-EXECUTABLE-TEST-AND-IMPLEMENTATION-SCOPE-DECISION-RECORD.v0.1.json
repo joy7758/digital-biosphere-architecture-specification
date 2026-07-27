@@ -1,0 +1,138 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre67-p0-executable-test-and-implementation-scope-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-67-P0-EXECUTABLE-TEST-AND-IMPLEMENTATION-SCOPE-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "EXACT_P0_EXECUTABLE_TEST_AND_REFERENCE_IMPLEMENTATION_AUTHORIZED_NOT_EXECUTED",
+  "decision_id": "CS-D02-PRE-67",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-67-P0-EXECUTABLE-TEST-AND-IMPLEMENTATION-SCOPE-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "cdfee583371a6784cd4a2dad385bfc8bbcae9ed4858a325997aacb53a5877ff9",
+  "recommendation_commit": "cd59bf26ad91bd4a729214b976b57347c3f33a51",
+  "decision_result": "AUTHORIZE_EXACT_POSIX_SINGLE_USE_CHILD_P0_RESOLVER_REFERENCE_IMPLEMENTATION_AND_OFFLINE_TESTS",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-27T11:47:24+08:00",
+  "executed_by": "Codex",
+  "standing_directive_eligibility": {
+    "canonical_recommendation_present": true,
+    "single_exact_option": true,
+    "repositories_target_and_scope_explicit": true,
+    "preconditions_directly_evidenced": true,
+    "all_effect_classes_declared": true,
+    "stop_conditions_explicit": true,
+    "later_conflict_present": false,
+    "independent_decision_record_present": true,
+    "result_validation_and_failure_retention_required": true,
+    "material_actions_separately_recorded": true,
+    "applicable": true
+  },
+  "preconditions": {
+    "recommendation_remote_verified": true,
+    "recommendation_commit": "cd59bf26ad91bd4a729214b976b57347c3f33a51",
+    "pre66_design_complete": true,
+    "pre66_implementation_authorized": false,
+    "target_head": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6",
+    "target_remote_branch_matched": true,
+    "target_dirty_count": 0,
+    "target_main_head": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "iana_ipv4_sha256": "e3e39e76d00b1677335db8e9a805c7b9480ea2f4dc9e33f0b93cd3a905128d73",
+    "iana_ipv6_sha256": "775feea0621dec8735a44fbf30f762e721e8f0a1b3ab7eb341961a88cfce2139"
+  },
+  "scope": {
+    "primary_repository": "digital-biosphere-architecture",
+    "target_repository": "https://github.com/joy7758/titmas-integrations.git",
+    "target_branch": "codex/rb0-governance-baseline",
+    "new_files_max": 11,
+    "updated_files_max": 8,
+    "new_public_symbols_max": 6,
+    "runtime_dependencies_max": 0,
+    "provider_dependencies_max": 0,
+    "real_dns_calls_during_tests_max": 0,
+    "real_tcp_calls_during_tests_max": 0,
+    "tls_handshakes_during_tests_max": 0,
+    "http_requests_during_tests_max": 0,
+    "credential_reads_max": 0,
+    "provider_bindings_max": 0
+  },
+  "authorized_paths": {
+    "new": [
+      "src/titmas_integrations/p0_resolver.py",
+      "src/titmas_integrations/_p0_resolver_worker.py",
+      "src/titmas_integrations/data/__init__.py",
+      "src/titmas_integrations/data/iana-ipv4-special-registry-2025-10-09.csv",
+      "src/titmas_integrations/data/iana-ipv6-special-registry-2025-10-09.csv",
+      "src/titmas_integrations/data/global-unicast-destination-policy.v1.json",
+      "tests/test_p0_resolver_contract.py",
+      "tests/test_p0_resolver_deadline.py",
+      "tests/test_p0_resolver_security.py",
+      "P0-IMPLEMENTATION-DECLARATION.v0.1.json",
+      "schemas/p0-implementation-declaration.schema.v0.1.json"
+    ],
+    "updated": [
+      "src/titmas_integrations/__init__.py",
+      "pyproject.toml",
+      "README.md",
+      "AGENTS.md",
+      "SECURITY.md",
+      "llms.txt",
+      "TITMAS-INTEGRATIONS-ENTRY.v0.1.json",
+      "schemas/titmas-integrations-entry.schema.v0.1.json"
+    ]
+  },
+  "official_snapshot_inputs": {
+    "retrieved_at": "2026-07-27T11:42:00+08:00",
+    "license": "CC0-1.0",
+    "ipv4": {
+      "url": "https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry-1.csv",
+      "source_last_updated": "2025-10-09",
+      "bytes": 2423,
+      "sha256": "e3e39e76d00b1677335db8e9a805c7b9480ea2f4dc9e33f0b93cd3a905128d73"
+    },
+    "ipv6": {
+      "url": "https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry-1.csv",
+      "source_last_updated": "2025-10-09",
+      "bytes": 2289,
+      "sha256": "775feea0621dec8735a44fbf30f762e721e8f0a1b3ab7eb341961a88cfce2139"
+    }
+  },
+  "authorization": {
+    "target_repository_write_authorized": true,
+    "p0_reference_implementation_authorized": true,
+    "offline_test_creation_and_execution_authorized": true,
+    "official_snapshot_vendoring_authorized": true,
+    "remote_clean_clone_validation_authorized": true,
+    "real_dns_or_network_test_authorized": false,
+    "credential_read_authorized": false,
+    "dependency_install_authorized": false,
+    "p1_or_p2_implementation_authorized": false,
+    "provider_binding_authorized": false,
+    "formal_security_review_authorized": false,
+    "release_authorized": false
+  },
+  "effects_before_execution": {
+    "target_repository_changed": false,
+    "p0_resolver_implemented": false,
+    "tests_created": false,
+    "tests_executed": false,
+    "contract_revision_adopted_as_standard": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "runtime_created": false,
+    "agent_created": false,
+    "permission_created": false,
+    "release_authorized": false,
+    "standard_ready": false
+  },
+  "rollback": {
+    "target_parent": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6",
+    "history_rewrite_allowed": false,
+    "force_push_allowed": false,
+    "rollback_by_followup_commit_only": true
+  },
+  "next_gate": {
+    "gate_id": "CS-D02-PRE-67-EXECUTION",
+    "action": "IMPLEMENT_EXACT_19_PATH_P0_REFERENCE_SCOPE_TEST_AND_REMOTE_CLEAN_CLONE_VALIDATE",
+    "formal_security_review_decision_allowed": false,
+    "release_decision_allowed": false
+  },
+  "result": "P0_REFERENCE_IMPLEMENTATION_AND_OFFLINE_TESTS_NOT_EXECUTED"
+}
