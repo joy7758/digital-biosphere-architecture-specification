@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "observed_at": "2026-07-22T12:05:04+08:00",
+  "observed_at": "2026-07-27T18:23:08+08:00",
   "release_state": "developer_preview_released",
   "release_claim": true,
   "public_website": {
@@ -35,10 +35,17 @@
     "decision_reference": "architecture/ADR-030-titmas-public-front-door-and-github-slug.md"
   },
   "commercial_evaluation": {
-    "package_id": "TITMAS-COMMERCIAL-EVALUATION-PACK-0.1",
-    "status": "PREPARED_NOT_AVAILABLE_OFFERING",
+    "package_id": "TITMAS-COMMERCIAL-EVALUATION-PACK-0.2",
+    "status": "AGENT_FIRST_RUN_VALIDATED_NOT_AVAILABLE_OFFERING",
     "remote_validated": true,
     "first_run_pass": true,
+    "agent_first_run_sessions": 4,
+    "agent_first_run_schema_valid": 4,
+    "distinct_providers": 2,
+    "evaluation_entry_agent_recommendable": true,
+    "production_not_recommended": 4,
+    "critical_boundary_failures": 0,
+    "transient_public_transport_failures_observed": 3,
     "available_offering": false,
     "production_ready": false,
     "customers_verified": 0,
@@ -65,7 +72,8 @@
     "DEVELOPER_PREVIEW_RELEASED": true,
     "PREVIEW_DEPLOYMENT_HEALTH_PASS": true,
     "ROLLBACK_VALIDATED": true,
-    "COMMERCIAL_EVALUATION_PACKAGE_REMOTE_VALIDATED": true
+    "COMMERCIAL_EVALUATION_PACKAGE_REMOTE_VALIDATED": true,
+    "COMMERCIAL_EVALUATION_AGENT_FIRST_RUN_PASS": true
   },
   "production_path": {
     "architecture_baseline_defined": true,

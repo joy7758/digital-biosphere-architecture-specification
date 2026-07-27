@@ -24,7 +24,9 @@ TITMAS_FUTURE_DOMAIN_LIVE=false
 TITMAS_GITHUB_ORGANIZATION_SLUG=titmas-cn
 TITMAS_GITHUB_ORGANIZATION_CREATED=false
 TITMAS_REDESIGN_SOURCE_PREPARED=true
-TITMAS_REDESIGN_DEPLOYED=false
+TITMAS_REDESIGN_DEPLOYED=true
+COMMERCIAL_EVALUATION_V0_2_SOURCE_PREPARED=true
+COMMERCIAL_EVALUATION_V0_2_DEPLOYED=false
 ```
 
 这个目录是网站实现，不是 DBOS Runtime（运行时）、SAEE Evaluation
@@ -94,8 +96,10 @@ DEPLOYMENT_AUTHORIZED=false
 
 ## Deployment boundary
 
-Developer Preview v0.1 的现有版本已部署到 `https://redcrag.cn/`；本轮 TITMAS
-明亮版仍是本地预发布源码，尚未替换线上版本。`titmas.cn` 正在备案且尚未
-上线，因此当前 metadata base、sitemap 和机器资源继续使用 `redcrag.cn`。新域名正式部署必须继续通过
-manifest hash、Nginx、健康、安全头和回滚边界验证。Deployment（部署）不等于
-Production Readiness（生产就绪）或 Adoption（采用）。
+Developer Preview v0.1 的 TITMAS 明亮版已部署到 `https://redcrag.cn/`；本轮
+Commercial Evaluation Pack v0.2（商业评估包 v0.2）源码已准备，但在完成提交、
+推送和线上验证前仍保持 `COMMERCIAL_EVALUATION_V0_2_DEPLOYED=false`。
+`titmas.cn` 正在备案且尚未上线，因此当前 metadata base、sitemap 和机器资源继续使用
+`redcrag.cn`。新版本与新域名部署都必须继续通过 manifest hash、Nginx、健康、
+安全头和回滚边界验证。Deployment（部署）不等于 Production Readiness（生产就绪）
+或 Adoption（采用）。

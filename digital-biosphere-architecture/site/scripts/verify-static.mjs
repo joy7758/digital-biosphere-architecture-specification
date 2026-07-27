@@ -25,8 +25,17 @@ const requiredFiles = [
   "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.md",
   "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json",
   "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1-VALIDATION-REPORT.md",
+  "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.md",
+  "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json",
+  "TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-PROTOCOL-v0.1.md",
+  "TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-REPORT-v0.1.md",
   "TITMAS-FIRST-RUN-v0.1.md",
   "architecture/schemas/titmas-commercial-evaluation-pack.schema.v0.1.json",
+  "architecture/schemas/titmas-commercial-evaluation-pack.schema.v0.2.json",
+  "commercial-evaluation-agent-first-run/composite-result.v0.1.json",
+  "commercial-evaluation-agent-first-run/composite-result.schema.v0.1.json",
+  "commercial-evaluation-agent-first-run/technical-first-run-receipt.v0.1.json",
+  "commercial-evaluation-agent-first-run/technical-first-run-receipt.schema.v0.1.json",
   "examples/titmas-first-run/entity-object.synthetic.v0.1.json",
   "status/index.html",
   "en/status/index.html",
@@ -67,7 +76,8 @@ const [zhIndustries, enIndustries, digitalCellPage, enDigitalCellPage] = await P
 const digitalCell = await readFile(join(outputRoot, "digital-cell.json"), "utf8").then(JSON.parse);
 const commercialZh = await readFile(join(outputRoot, "commercial-evaluation/index.html"), "utf8");
 const commercialEn = await readFile(join(outputRoot, "en/commercial-evaluation/index.html"), "utf8");
-const commercialPack = await readFile(join(outputRoot, "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json"), "utf8").then(JSON.parse);
+const commercialPack = await readFile(join(outputRoot, "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"), "utf8").then(JSON.parse);
+const commercialAgentResult = await readFile(join(outputRoot, "commercial-evaluation-agent-first-run/composite-result.v0.1.json"), "utf8").then(JSON.parse);
 const commercialFixture = await readFile(join(outputRoot, "examples/titmas-first-run/entity-object.synthetic.v0.1.json"), "utf8").then(JSON.parse);
 const agentIndex = await readFile(join(outputRoot, "agent-index.json"), "utf8").then(JSON.parse);
 const releaseContext = resolveReleaseContext(process.env, {
@@ -94,14 +104,19 @@ assert.match(enIndustries, /TITMAS does not provide/);
 assert.equal(digitalCell.status, "REFERENCE_COMPLETE");
 assert.equal(digitalCell.boundaries.production_claim, false);
 assert.equal(agentIndex.entrypoints.digital_cell_demo, "/digital-cell/");
-assert.match(commercialZh, /第一版商业评估包 v0\.1/);
-assert.match(commercialEn, /Commercial Evaluation Pack v0\.1/);
+assert.match(commercialZh, /商业评估包 v0\.2/);
+assert.match(commercialEn, /Commercial Evaluation Pack v0\.2/);
 assert.equal(commercialPack.commercial_truth.evaluation_package_prepared, true);
+assert.equal(commercialPack.commercial_truth.evaluation_entry_agent_recommendable, true);
 assert.equal(commercialPack.commercial_truth.available_offering, false);
 assert.equal(commercialPack.commercial_truth.production_ready, false);
+assert.equal(commercialAgentResult.status, "PASS_EVALUATION_ENTRY_AGENT_RECOMMENDABLE");
+assert.equal(commercialAgentResult.agent_result.sessions_executed, 4);
+assert.equal(commercialAgentResult.agent_result.distinct_providers, 2);
+assert.equal(commercialAgentResult.agent_result.critical_boundary_failures, 0);
 assert.equal(commercialFixture.lifecycle_state, "PROPOSED");
 assert.equal(agentIndex.entrypoints.commercial_evaluation_zh, "/commercial-evaluation/");
-assert.equal(agentIndex.entrypoints.commercial_evaluation_manifest, "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json");
+assert.equal(agentIndex.entrypoints.commercial_evaluation_manifest, "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json");
 if (releaseContext.mode === "candidate") {
   assert.match(zhStatus, /当前不是正式发布/);
   assert.match(enStatus, /This is not a release/);

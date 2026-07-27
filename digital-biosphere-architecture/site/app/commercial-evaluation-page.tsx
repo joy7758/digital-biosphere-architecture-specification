@@ -8,9 +8,9 @@ const copy = {
   zh: {
     lang: "zh-CN",
     kicker: "COMMERCIAL EVALUATION / 商业评估",
-    title: "第一版商业评估包 v0.1",
-    lead: "用一个公开、只读、无副作用的入口，评估 TITMAS 是否适合多智能体执行可追责场景。",
-    status: "远端干净检出已通过",
+    title: "商业评估包 v0.2",
+    lead: "公开、只读、无副作用的执行可追责评估入口，已通过双 Provider、四角色智能体首次运行验证。",
+    status: "4/4 智能体推荐用于离线评估；4/4 拒绝生产采购",
     start: "10 分钟开始",
     install: "在独立 Python 环境中安装公开 Developer Preview wheel，然后验证同源合成对象。",
     meaningTitle: "这个 PASS 证明什么",
@@ -36,9 +36,9 @@ const copy = {
   en: {
     lang: "en",
     kicker: "COMMERCIAL EVALUATION",
-    title: "Commercial Evaluation Pack v0.1",
-    lead: "Use one public, read-only, side-effect-free entry to evaluate TITMAS for multi-agent execution-accountability scenarios.",
-    status: "Remote clean-clone validation passed",
+    title: "Commercial Evaluation Pack v0.2",
+    lead: "A public, read-only, side-effect-free execution-accountability evaluation entry validated by four agent roles across two providers.",
+    status: "4/4 recommend offline evaluation; 4/4 reject production purchase",
     start: "Start in 10 minutes",
     install: "Install the public Developer Preview wheel in an isolated Python environment, then validate the same-origin synthetic object.",
     meaningTitle: "What PASS establishes",
@@ -64,11 +64,13 @@ const copy = {
 } as const;
 
 const resources = [
-  ["Machine manifest", "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json"],
-  ["Evaluation guide", "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.md"],
+  ["Latest machine manifest", "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"],
+  ["Evaluation guide", "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.md"],
   ["10-minute First Run", "/TITMAS-FIRST-RUN-v0.1.md"],
-  ["Validation report", "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1-VALIDATION-REPORT.md"],
-  ["JSON Schema", "/architecture/schemas/titmas-commercial-evaluation-pack.schema.v0.1.json"],
+  ["Agent First Run report", "/TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-REPORT-v0.1.md"],
+  ["Composite machine result", "/commercial-evaluation-agent-first-run/composite-result.v0.1.json"],
+  ["Technical receipt", "/commercial-evaluation-agent-first-run/technical-first-run-receipt.v0.1.json"],
+  ["JSON Schema", "/architecture/schemas/titmas-commercial-evaluation-pack.schema.v0.2.json"],
   ["Synthetic Entity Object", "/examples/titmas-first-run/entity-object.synthetic.v0.1.json"],
 ] as const;
 
@@ -87,7 +89,7 @@ export function CommercialEvaluationPage({ locale }: { locale: Locale }) {
             <p>{c.lead}</p>
             <div className="evaluation-status">
               <span>PASS</span>
-              <code>COMMERCIAL_EVALUATION_PACKAGE_PREPARED</code>
+              <code>AGENT_FIRST_RUN_VALIDATED</code>
               <code>AVAILABLE_OFFERING=false</code>
               <strong>{c.status}</strong>
             </div>

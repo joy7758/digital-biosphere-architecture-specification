@@ -75,8 +75,10 @@ test("renders bilingual commercial evaluation entry with fail-closed truth", asy
   assert.equal(zhResponse.status, 200);
   assert.equal(enResponse.status, 200);
   const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
-  assert.match(zh, /第一版商业评估包 v0\.1/);
-  assert.match(en, /Commercial Evaluation Pack v0\.1/);
+  assert.match(zh, /商业评估包 v0\.2/);
+  assert.match(en, /Commercial Evaluation Pack v0\.2/);
+  assert.match(zh, /4\/4 智能体推荐用于离线评估/);
+  assert.match(en, /4\/4 recommend offline evaluation/);
   assert.match(zh, /AVAILABLE_OFFERING=false/);
   assert.match(en, /PASS ≠ TRUTH/);
 });
@@ -162,8 +164,12 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("robots.txt", root)),
     access(new URL("sitemap.xml", root)),
     access(new URL("TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json", root)),
+    access(new URL("TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", root)),
+    access(new URL("TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-REPORT-v0.1.md", root)),
     access(new URL("TITMAS-FIRST-RUN-v0.1.md", root)),
     access(new URL("architecture/schemas/titmas-commercial-evaluation-pack.schema.v0.1.json", root)),
+    access(new URL("architecture/schemas/titmas-commercial-evaluation-pack.schema.v0.2.json", root)),
+    access(new URL("commercial-evaluation-agent-first-run/composite-result.v0.1.json", root)),
     access(new URL("examples/titmas-first-run/entity-object.synthetic.v0.1.json", root)),
   ]);
 
@@ -185,7 +191,7 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.developer_community.community_established, false);
   assert.equal(agentIndex.entrypoints.titmas_community, "/titmas-community.json");
   assert.equal(agentIndex.entrypoints.commercial_evaluation_zh, "/commercial-evaluation/");
-  assert.equal(agentIndex.entrypoints.commercial_evaluation_manifest, "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json");
+  assert.equal(agentIndex.entrypoints.commercial_evaluation_manifest, "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json");
   assert.equal(agentIndex.entrypoints.industries_zh, "/industries/");
   assert.equal(agentIndex.entrypoints.industries_en, "/en/industries/");
   assert.equal(titmasCommunity.public_front_door.future_domain_filing_status, "PENDING");
@@ -255,6 +261,9 @@ test("ships agent-readable and discovery resources", async () => {
   assert.match(llms, /DBOS records -> SAEE evaluation\/recommendation -> Governance Decision review\/adoption -> DBOS authorized execution/);
   assert.match(llms, /OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY/);
   assert.match(llms, /COMMERCIAL_EVALUATION_PACKAGE_PREPARED=true/);
+  assert.match(llms, /EXTERNAL_AGENT_FIRST_RUN_VALIDATION=PASS/);
+  assert.match(llms, /EVALUATION_RECOMMENDED=4\/4/);
+  assert.match(llms, /PRODUCTION_NOT_RECOMMENDED=4\/4/);
   assert.match(
     llms,
     releaseContext.mode === "candidate"

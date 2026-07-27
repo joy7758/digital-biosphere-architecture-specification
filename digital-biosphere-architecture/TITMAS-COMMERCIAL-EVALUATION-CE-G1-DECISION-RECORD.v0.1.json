@@ -1,0 +1,54 @@
+{
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G1",
+  "version": "0.1.0",
+  "status": "DECIDED_BOUNDED_INTERNAL_VALIDATION_AUTHORIZED",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_basis": [
+    "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json#next_gate",
+    "TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-PROTOCOL-v0.1.md"
+  ],
+  "exact_action": "RUN_ONE_CLEAN_PUBLIC_FIRST_RUN_AND_FOUR_PUBLIC_SAFE_AGENT_REVIEW_SESSIONS",
+  "primary_repository": "digital-biosphere-architecture",
+  "target_refs": [
+    "commercial-evaluation-agent-first-run/"
+  ],
+  "authorization": {
+    "public_http_reads": true,
+    "clean_local_validation": true,
+    "model_requests": 4,
+    "providers": [
+      "ALIBABA_CLOUD_MODEL_STUDIO",
+      "BAIDU_QIANFAN"
+    ],
+    "public_safe_prompt_only": true
+  },
+  "prohibited": {
+    "external_outreach": true,
+    "customer_enrollment": true,
+    "customer_data_collection": true,
+    "commercial_offer": true,
+    "certification": true,
+    "runtime_creation": true,
+    "agent_creation": true,
+    "permission_creation": true,
+    "model_retry": true,
+    "fallback": true,
+    "model_substitution": true,
+    "json_repair": true
+  },
+  "stop_conditions": [
+    "SECRET_OR_PRIVATE_DATA_PRESENT",
+    "PROVIDER_OR_MODEL_IDENTITY_MISMATCH",
+    "JSON_REPAIR_REQUIRED",
+    "CRITICAL_BOUNDARY_ELEVATION",
+    "PUBLIC_ARTIFACT_NOT_REPRODUCIBLE"
+  ],
+  "authority_effect": {
+    "implementation_authorized": false,
+    "commercial_offering_authorized": false,
+    "production_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false
+  }
+}
