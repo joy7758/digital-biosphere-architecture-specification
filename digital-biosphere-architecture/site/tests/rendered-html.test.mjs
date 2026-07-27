@@ -77,6 +77,10 @@ test("renders bilingual commercial evaluation entry with fail-closed truth", asy
   const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
   assert.match(zh, /商业评估包 v0\.2/);
   assert.match(en, /Commercial Evaluation Pack v0\.2/);
+  assert.match(zh, /<title>[^<]*第一版商业评估包 v0\.2[^<]*<\/title>/);
+  assert.match(en, /<title>[^<]*Commercial Evaluation Pack v0\.2[^<]*<\/title>/);
+  assert.match(zh, /href="\/TITMAS-COMMERCIAL-EVALUATION-PACK-v0\.2\.json"/);
+  assert.match(en, /href="\/TITMAS-COMMERCIAL-EVALUATION-PACK-v0\.2\.json"/);
   assert.match(zh, /4\/4 智能体推荐用于离线评估/);
   assert.match(en, /4\/4 recommend offline evaluation/);
   assert.match(zh, /AVAILABLE_OFFERING=false/);

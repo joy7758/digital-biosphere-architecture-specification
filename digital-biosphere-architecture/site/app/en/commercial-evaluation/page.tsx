@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { CommercialEvaluationPage } from "../../commercial-evaluation-page";
 
 export const metadata: Metadata = {
-  title: "Commercial Evaluation Pack v0.1",
+  title: "Commercial Evaluation Pack v0.2",
   description: "The ten-minute TITMAS commercial evaluation entry, validation boundaries, and complete same-origin materials.",
   alternates: {
     canonical: "/en/commercial-evaluation/",

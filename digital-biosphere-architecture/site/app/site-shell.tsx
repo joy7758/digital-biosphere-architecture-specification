@@ -98,7 +98,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <a href="/agent-index.json">agent-index.json</a>
           <a href="/status.json">status.json</a>
           <a href="/titmas-community.json">titmas-community.json</a>
-          <a href="/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json">commercial-evaluation-pack.json</a>
+          <a href="/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json">commercial-evaluation-pack.json</a>
         </div>
         <div>
           <strong>{locale === "zh" ? "治理" : "Governance"}</strong>
