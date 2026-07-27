@@ -50,7 +50,9 @@
         "run_id",
         "run_url",
         "conclusion",
-        "dispatches"
+        "trigger_event",
+        "trigger_events",
+        "manual_dispatches"
       ],
       "properties": {
         "repository": {
@@ -72,7 +74,9 @@
           "pattern": "^https://github.com/joy7758/digital-biosphere-architecture-specification/actions/runs/[0-9]+$"
         },
         "conclusion": {"enum": ["success", "failure"]},
-        "dispatches": {"const": 1}
+        "trigger_event": {"const": "push"},
+        "trigger_events": {"const": 1},
+        "manual_dispatches": {"const": 0}
       }
     },
     "frozen_inputs": {
@@ -185,7 +189,9 @@
       "type": "object",
       "additionalProperties": false,
       "required": [
-        "workflow_dispatches",
+        "trigger_events",
+        "workflow_runs",
+        "manual_dispatches",
         "matrix_jobs",
         "target_public_site_requests",
         "ssh_sessions",
@@ -197,7 +203,9 @@
         "model_requests_during_execution"
       ],
       "properties": {
-        "workflow_dispatches": {"const": 1},
+        "trigger_events": {"const": 1},
+        "workflow_runs": {"const": 1},
+        "manual_dispatches": {"const": 0},
         "matrix_jobs": {"const": 5},
         "target_public_site_requests": {"const": 0},
         "ssh_sessions": {"const": 0},

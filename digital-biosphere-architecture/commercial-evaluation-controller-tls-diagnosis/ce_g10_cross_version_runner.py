@@ -20,6 +20,7 @@ import json
 import os
 from pathlib import Path
 import platform
+import re
 import subprocess
 import sys
 from typing import Any, Callable
@@ -36,6 +37,32 @@ EXPECTED_PYTHON_VERSIONS = (
     "3.14.6",
 )
 EXPECTED_TEST_COUNT = 13
+EXPECTED_REQUEST_ID = "TITMAS-CE-G10-RUN-REQUEST-001"
+TRIGGER_DECISION = "TITMAS-COMMERCIAL-EVALUATION-CE-G10A"
+EXPECTED_BRANCH = "codex/production-observability-baseline"
+EXPECTED_TRIGGER_PATH = (
+    "digital-biosphere-architecture/"
+    "commercial-evaluation-controller-tls-diagnosis/"
+    "ce-g10-run-request.v0.1.json"
+)
+EXPECTED_ACTIONS = {
+    "actions/checkout": "11d5960a326750d5838078e36cf38b85af677262",
+    "actions/setup-python": "ece7cb06caefa5fff74198d8649806c4678c61a1",
+    "actions/upload-artifact": "ea165f8d65b6e75b540449e92b4886f43607fa02",
+}
+EXPECTED_CAPS = {
+    "trigger_events": 1,
+    "workflow_runs": 1,
+    "matrix_jobs": 5,
+    "target_public_site_requests": 0,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "deployments": 0,
+    "dbos_changes": 0,
+    "saee_changes": 0,
+    "model_requests_during_execution": 0,
+}
 TEST_ENVIRONMENT_ALLOWLIST = (
     "HOME",
     "LANG",
@@ -56,6 +83,20 @@ FROZEN_INPUTS = {
         "38e96f94008c3bef6e988f5ef6725f0ccea5439b27a5be35e8f1722ce1709c55",
     "ce-g9-offline-remediation-result.schema.v0.1.json":
         "e4e60d8d4715bfbd6495201e3ac00d62c167d3b112605c81606d244f575d5863",
+}
+PHASE_A_COMPONENTS = {
+    ".github/workflows/titmas-ce-g10-correlator-cross-version.yml":
+        ROOT.parents[1]
+        / ".github"
+        / "workflows"
+        / "titmas-ce-g10-correlator-cross-version.yml",
+    "ce_g10_cross_version_runner.py": ROOT / "ce_g10_cross_version_runner.py",
+    "test_ce_g10_cross_version_runner.py":
+        ROOT / "test_ce_g10_cross_version_runner.py",
+    "ce-g10-run-request.schema.v0.1.json":
+        ROOT / "ce-g10-run-request.schema.v0.1.json",
+    "ce-g10-cross-version-result.schema.v0.1.json":
+        ROOT / "ce-g10-cross-version-result.schema.v0.1.json",
 }
 
 
@@ -107,6 +148,108 @@ def verify_fixture_privacy(root: Path = ROOT) -> None:
             raise StageFailure("FIXTURE_LITERAL_IP_FOUND")
 
 
+def load_request(path: Path) -> dict[str, Any]:
+    try:
+        value = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        raise StageFailure("RUN_REQUEST_READ_FAILED")
+    if not isinstance(value, dict):
+        raise StageFailure("RUN_REQUEST_NOT_OBJECT")
+    return value
+
+
+def verify_phase_a_components(
+    expected: dict[str, str],
+) -> None:
+    if set(expected) != set(PHASE_A_COMPONENTS):
+        raise StageFailure("PHASE_A_COMPONENT_SET_MISMATCH")
+    for name, path in PHASE_A_COMPONENTS.items():
+        value = expected.get(name)
+        if not isinstance(value, str) or not re.fullmatch(r"[0-9a-f]{64}", value):
+            raise StageFailure("PHASE_A_COMPONENT_HASH_INVALID")
+        if not path.is_file() or sha256_file(path) != value:
+            raise StageFailure("PHASE_A_COMPONENT_HASH_MISMATCH")
+
+
+def validate_request(
+    request: dict[str, Any],
+    expected_python: str,
+    source_commit: str,
+    *,
+    git_runner: Callable[..., subprocess.CompletedProcess[str]] = subprocess.run,
+) -> str:
+    if request.get("$schema") != "./ce-g10-run-request.schema.v0.1.json":
+        raise StageFailure("RUN_REQUEST_SCHEMA_REFERENCE_MISMATCH")
+    if request.get("request_id") != EXPECTED_REQUEST_ID:
+        raise StageFailure("RUN_REQUEST_ID_MISMATCH")
+    if request.get("version") != "0.1.0":
+        raise StageFailure("RUN_REQUEST_VERSION_MISMATCH")
+    if request.get("status") != "AUTHORIZED_SINGLE_TRIGGER":
+        raise StageFailure("RUN_REQUEST_STATUS_MISMATCH")
+    if request.get("decision_reference") != DECISION:
+        raise StageFailure("RUN_REQUEST_DECISION_MISMATCH")
+    if request.get("trigger_decision_reference") != TRIGGER_DECISION:
+        raise StageFailure("RUN_REQUEST_TRIGGER_DECISION_MISMATCH")
+    created_at = request.get("created_at")
+    if not isinstance(created_at, str) or not re.fullmatch(
+        r"[0-9]{4}-[0-9]{2}-[0-9]{2}T"
+        r"[0-9]{2}:[0-9]{2}:[0-9]{2}Z",
+        created_at,
+    ):
+        raise StageFailure("RUN_REQUEST_CREATED_AT_INVALID")
+    if request.get("source_branch") != EXPECTED_BRANCH:
+        raise StageFailure("RUN_REQUEST_BRANCH_MISMATCH")
+    phase_a_commit = request.get("phase_a_commit")
+    if not isinstance(phase_a_commit, str) or not re.fullmatch(
+        r"[0-9a-f]{40}", phase_a_commit
+    ):
+        raise StageFailure("PHASE_A_COMMIT_INVALID")
+    if not re.fullmatch(r"[0-9a-f]{40}", source_commit):
+        raise StageFailure("SOURCE_COMMIT_INVALID")
+    ancestry = git_runner(
+        ["git", "merge-base", "--is-ancestor", phase_a_commit, source_commit],
+        cwd=ROOT.parents[1],
+        capture_output=True,
+        text=True,
+        check=False,
+        timeout=10,
+    )
+    if ancestry.returncode != 0:
+        raise StageFailure("PHASE_A_COMMIT_NOT_ANCESTOR")
+    trigger = request.get("trigger")
+    if trigger != {
+        "event": "push",
+        "branch": EXPECTED_BRANCH,
+        "path": EXPECTED_TRIGGER_PATH,
+        "events_cap": 1,
+    }:
+        raise StageFailure("RUN_REQUEST_TRIGGER_MISMATCH")
+    if request.get("python_matrix") != list(EXPECTED_PYTHON_VERSIONS):
+        raise StageFailure("RUN_REQUEST_MATRIX_MISMATCH")
+    if expected_python not in request["python_matrix"]:
+        raise StageFailure("RUN_REQUEST_PYTHON_BINDING_MISMATCH")
+    if request.get("frozen_inputs") != FROZEN_INPUTS:
+        raise StageFailure("RUN_REQUEST_FROZEN_INPUT_MISMATCH")
+    components = request.get("phase_a_components")
+    if not isinstance(components, dict):
+        raise StageFailure("PHASE_A_COMPONENTS_NOT_OBJECT")
+    verify_phase_a_components(components)
+    if request.get("actions") != EXPECTED_ACTIONS:
+        raise StageFailure("RUN_REQUEST_ACTIONS_MISMATCH")
+    if request.get("caps") != EXPECTED_CAPS:
+        raise StageFailure("RUN_REQUEST_CAPS_MISMATCH")
+    if request.get("retry") is not False:
+        raise StageFailure("RUN_REQUEST_RETRY_NOT_FALSE")
+    if request.get("fallback") is not False:
+        raise StageFailure("RUN_REQUEST_FALLBACK_NOT_FALSE")
+    if (
+        request.get("result_schema_reference")
+        != "./ce-g10-cross-version-result.schema.v0.1.json"
+    ):
+        raise StageFailure("RUN_REQUEST_RESULT_SCHEMA_MISMATCH")
+    return phase_a_commit
+
+
 def safe_environment_value(name: str) -> str:
     value = os.environ.get(name, "")
     if (
@@ -145,6 +288,8 @@ def base_receipt(
         "receipt_id": f"TITMAS-CE-G10-PYTHON-{expected_python}",
         "version": "0.1.0",
         "decision_reference": DECISION,
+        "trigger_decision_reference": TRIGGER_DECISION,
+        "run_request_id": EXPECTED_REQUEST_ID,
         "status": "FAIL_CLOSED",
         "source_commit": source_commit,
         "frozen_source_commit": FROZEN_SOURCE_COMMIT,
@@ -162,6 +307,9 @@ def base_receipt(
         },
         "checks": {
             "exact_python_version_match": False,
+            "run_request_contract_match": False,
+            "phase_a_commit_is_ancestor": False,
+            "phase_a_component_hashes_match": False,
             "frozen_input_hashes_match": False,
             "fixture_literal_ip_absent": False,
             "ce_g9_test_count": 0,
@@ -170,6 +318,9 @@ def base_receipt(
         },
         "execution_caps": {
             "target_public_site_requests": 0,
+            "trigger_events": 1,
+            "workflow_runs": 1,
+            "manual_dispatches": 0,
             "ssh_sessions": 0,
             "server_reads": 0,
             "server_writes": 0,
@@ -201,6 +352,7 @@ def write_receipt(path: Path, receipt: dict[str, Any]) -> None:
 
 
 def execute(
+    request_path: Path,
     expected_python: str,
     source_commit: str,
     runner_label: str,
@@ -208,6 +360,7 @@ def execute(
     *,
     root: Path = ROOT,
     version_reader: Callable[[], str] = platform.python_version,
+    git_runner: Callable[..., subprocess.CompletedProcess[str]] = subprocess.run,
     test_runner: Callable[..., subprocess.CompletedProcess[str]] = subprocess.run,
 ) -> int:
     observed_python = version_reader()
@@ -218,6 +371,17 @@ def execute(
         observed_python,
     )
     try:
+        request = load_request(request_path)
+        validate_request(
+            request,
+            expected_python,
+            source_commit,
+            git_runner=git_runner,
+        )
+        receipt["checks"]["run_request_contract_match"] = True
+        receipt["checks"]["phase_a_commit_is_ancestor"] = True
+        receipt["checks"]["phase_a_component_hashes_match"] = True
+
         if expected_python not in EXPECTED_PYTHON_VERSIONS:
             raise StageFailure("EXPECTED_PYTHON_NOT_AUTHORIZED")
         if observed_python != expected_python:
@@ -273,12 +437,14 @@ def execute(
 
 def main() -> int:
     parser = argparse.ArgumentParser()
+    parser.add_argument("--request", type=Path, required=True)
     parser.add_argument("--expected-python", required=True)
     parser.add_argument("--source-commit", required=True)
     parser.add_argument("--runner-label", required=True)
     parser.add_argument("--output", type=Path, required=True)
     args = parser.parse_args()
     return execute(
+        args.request,
         args.expected_python,
         args.source_commit,
         args.runner_label,

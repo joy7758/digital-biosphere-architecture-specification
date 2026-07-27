@@ -78,7 +78,9 @@ digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce
 digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g10-run-request.v0.1.json
 ```
 
-Correlator、CE-G9 test、fixtures、Python matrix、action SHA 和 result Schema 不变。
+Correlator、CE-G9 test、fixtures、Python matrix 和 action SHA 不变。Result Schema
+只允许把原 `dispatches` accounting 精确改为 `trigger_event=push`、
+`trigger_events=1`、`manual_dispatches=0`；不得改变评价范围或 non-claims。
 
 ## 5. Two-commit execution
 
