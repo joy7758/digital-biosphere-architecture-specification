@@ -1,0 +1,121 @@
+{
+  "$schema": "./architecture/schemas/titmas-cs-d02-pre72-bounded-structured-output-preflight-decision-record.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-CS-D02-PRE-72-BOUNDED-STRUCTURED-OUTPUT-PREFLIGHT-DECISION-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_NOT_EXECUTED",
+  "decision_id": "CS-D02-PRE-72",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "standing_directive_artifact": "TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.json",
+  "recommendation_reference": "TITMAS-CS-D02-PRE-72-OFFICIAL-PROVIDER-STRUCTURED-OUTPUT-EVIDENCE-AND-PREFLIGHT-SCOPE-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "793d8119e0b7a830e18c7e1ff5c85778427e0ae0478ed38267294d1ccc48b237",
+  "decision_result": "AUTHORIZE_BOUNDED_PRE72_DUAL_PROVIDER_STRUCTURED_OUTPUT_PREFLIGHT",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-27T15:00:16+08:00",
+  "executed_by": "CODEX_AFTER_REMOTE_DECISION_VALIDATION",
+  "primary_repository": "digital-biosphere-architecture",
+  "authorization_baseline_commit": "ae90c394c6ab364800df04558a64e7178564d327",
+  "target_refs": [
+    {
+      "path": "commercialization-standards-p0-security-and-platform-provider-capability-evidence/official-provider-capability-evidence.v0.1.json",
+      "sha256": "b18d170acb8529028a897cd02901eaca4aaace15d58495678102f49e5ef99540"
+    },
+    {
+      "path": "commercialization-standards-p0-security-and-platform-provider-capability-evidence/pre72-bounded-preflight-scope.v0.1.json",
+      "sha256": "9b03cac7a046541723c6ee48ce16f9b269a0c6de9eae97960e1514bae4142eef"
+    },
+    {
+      "path": "commercialization-standards-p0-security-and-platform-provider-capability-evidence/pre72-preflight-request-contract.v0.1.json",
+      "sha256": "1e4b6703c44aeb91430cf0dc74dfd66ac2747a36b1c21f2ac2a087d1b9d5cefb"
+    },
+    {
+      "path": "commercialization-standards-p0-security-and-platform-provider-capability-evidence/pre72-preflight-response.schema.v0.1.json",
+      "sha256": "a8ca448053760f892ed36a244bad521f5d018539ec2050f20eca1338146088d8"
+    }
+  ],
+  "preconditions": {
+    "canonical_recommendation_present": true,
+    "single_exact_action_present": true,
+    "primary_repository_target_and_scope_explicit": true,
+    "official_provider_evidence_schema_pass": true,
+    "preflight_scope_schema_pass": true,
+    "request_contract_schema_pass": true,
+    "response_schema_metaschema_pass": true,
+    "negative_mutations_rejected": "16/16",
+    "standing_directive_active": true,
+    "later_conflicting_human_decision_found": false,
+    "credential_presence_check_deferred_until_after_decision": true
+  },
+  "scope": {
+    "providers": [
+      "BAIDU_QIANFAN",
+      "ALIBABA_CLOUD_MODEL_STUDIO"
+    ],
+    "exact_endpoints": [
+      "https://qianfan.baidubce.com/v2/chat/completions",
+      "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions"
+    ],
+    "exact_models": [
+      "ernie-4.5-turbo-20260402",
+      "qwen3.7-plus"
+    ],
+    "requests_per_lane": 3,
+    "total_request_cap": 6,
+    "ordering": "SEQUENTIAL",
+    "timeout_seconds_per_request": 120,
+    "retry_cap": 0,
+    "fallback_cap": 0,
+    "substitution_cap": 0,
+    "extraction_cap": 0,
+    "repair_cap": 0,
+    "raw_response_persistence_cap": 0,
+    "continue_independent_lanes": true
+  },
+  "credential_boundary": {
+    "credential_identifiers": [
+      "QIANFAN_API_KEY",
+      "DASHSCOPE_API_KEY"
+    ],
+    "credential_values_accessed_in_process_memory_max": 6,
+    "authorization_header_values_emitted_to_tls_client_max": 6,
+    "credential_values_printed_max": 0,
+    "credential_values_persisted_max": 0,
+    "credential_values_exposed_outside_authorized_transport_max": 0
+  },
+  "false_effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "implementation_authorized": false,
+    "target_repository_write_authorized": false,
+    "dbos_write_authorized": false,
+    "saee_write_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false,
+    "production_ready": false
+  },
+  "stop_conditions": [
+    "MISSING_OR_EMPTY_CREDENTIAL_IDENTIFIER_VALUE",
+    "SOURCE_HASH_MISMATCH",
+    "REQUEST_CAP_OR_SEQUENCE_DRIFT",
+    "HTTP_OR_TIMEOUT_FAILURE_STOPS_REMAINING_REQUESTS_IN_FAILED_LANE",
+    "RETURNED_MODEL_MISMATCH_STOPS_REMAINING_REQUESTS_IN_FAILED_LANE",
+    "NON_DIRECT_JSON_OR_SCHEMA_FAILURE_STOPS_REMAINING_REQUESTS_IN_FAILED_LANE",
+    "CREDENTIAL_ACCOUNTING_BOUNDARY_FAILURE_STOPS_ALL_REQUESTS",
+    "RAW_RESPONSE_OR_SECRET_PERSISTENCE_ATTEMPT_STOPS_ALL_REQUESTS",
+    "NO_RETRY_FALLBACK_SUBSTITUTION_EXTRACTION_OR_REPAIR"
+  ],
+  "execution_receipt": "commercialization-standards-p0-security-and-platform-provider-capability-evidence/pre72-execution-receipt.v0.1.json",
+  "result": "AUTHORIZED_NOT_EXECUTED",
+  "known_limitations": [
+    "OFFICIAL_DOCUMENTATION_DOES_NOT_PROVE_LIVE_RELIABILITY",
+    "PREFLIGHT_PASS_WILL_NOT_CREATE_PROVIDER_SUPPORT",
+    "PREFLIGHT_PASS_WILL_NOT_COMPLETE_FORMAL_HUMAN_SECURITY_REVIEW",
+    "PREFLIGHT_PASS_WILL_NOT_CREATE_CONFORMANCE_STANDARD_READY_RELEASE_OR_PRODUCTION_STATUS"
+  ]
+}
+

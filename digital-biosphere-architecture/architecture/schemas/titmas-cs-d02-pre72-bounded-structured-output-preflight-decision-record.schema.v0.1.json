@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/governance/titmas-cs-d02-pre72-bounded-structured-output-preflight-decision-record.schema.v0.1.json",
+  "title": "TITMAS CS-D02 PRE-72 Bounded Structured-Output Preflight Decision v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "standing_directive_artifact",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "primary_repository",
+    "authorization_baseline_commit",
+    "target_refs",
+    "preconditions",
+    "scope",
+    "credential_boundary",
+    "false_effects",
+    "stop_conditions",
+    "execution_receipt",
+    "result",
+    "known_limitations"
+  ],
+  "properties": {
+    "$schema": {"const": "./architecture/schemas/titmas-cs-d02-pre72-bounded-structured-output-preflight-decision-record.schema.v0.1.json"},
+    "document_id": {"const": "DBA-TITMAS-CS-D02-PRE-72-BOUNDED-STRUCTURED-OUTPUT-PREFLIGHT-DECISION-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "AUTHORIZED_NOT_EXECUTED"},
+    "decision_id": {"const": "CS-D02-PRE-72"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "standing_directive_artifact": {"const": "TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.json"},
+    "recommendation_reference": {"const": "TITMAS-CS-D02-PRE-72-OFFICIAL-PROVIDER-STRUCTURED-OUTPUT-EVIDENCE-AND-PREFLIGHT-SCOPE-RECOMMENDATION-v0.1.md"},
+    "recommendation_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "decision_result": {"const": "AUTHORIZE_BOUNDED_PRE72_DUAL_PROVIDER_STRUCTURED_OUTPUT_PREFLIGHT"},
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "CODEX_AFTER_REMOTE_DECISION_VALIDATION"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "authorization_baseline_commit": {"pattern": "^[0-9a-f]{40}$"},
+    "target_refs": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {"$ref": "#/$defs/ref"}
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_present",
+        "single_exact_action_present",
+        "primary_repository_target_and_scope_explicit",
+        "official_provider_evidence_schema_pass",
+        "preflight_scope_schema_pass",
+        "request_contract_schema_pass",
+        "response_schema_metaschema_pass",
+        "negative_mutations_rejected",
+        "standing_directive_active",
+        "later_conflicting_human_decision_found",
+        "credential_presence_check_deferred_until_after_decision"
+      ],
+      "properties": {
+        "canonical_recommendation_present": {"const": true},
+        "single_exact_action_present": {"const": true},
+        "primary_repository_target_and_scope_explicit": {"const": true},
+        "official_provider_evidence_schema_pass": {"const": true},
+        "preflight_scope_schema_pass": {"const": true},
+        "request_contract_schema_pass": {"const": true},
+        "response_schema_metaschema_pass": {"const": true},
+        "negative_mutations_rejected": {"const": "16/16"},
+        "standing_directive_active": {"const": true},
+        "later_conflicting_human_decision_found": {"const": false},
+        "credential_presence_check_deferred_until_after_decision": {"const": true}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "providers",
+        "exact_endpoints",
+        "exact_models",
+        "requests_per_lane",
+        "total_request_cap",
+        "ordering",
+        "timeout_seconds_per_request",
+        "retry_cap",
+        "fallback_cap",
+        "substitution_cap",
+        "extraction_cap",
+        "repair_cap",
+        "raw_response_persistence_cap",
+        "continue_independent_lanes"
+      ],
+      "properties": {
+        "providers": {"const": ["BAIDU_QIANFAN", "ALIBABA_CLOUD_MODEL_STUDIO"]},
+        "exact_endpoints": {
+          "const": [
+            "https://qianfan.baidubce.com/v2/chat/completions",
+            "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions"
+          ]
+        },
+        "exact_models": {"const": ["ernie-4.5-turbo-20260402", "qwen3.7-plus"]},
+        "requests_per_lane": {"const": 3},
+        "total_request_cap": {"const": 6},
+        "ordering": {"const": "SEQUENTIAL"},
+        "timeout_seconds_per_request": {"const": 120},
+        "retry_cap": {"const": 0},
+        "fallback_cap": {"const": 0},
+        "substitution_cap": {"const": 0},
+        "extraction_cap": {"const": 0},
+        "repair_cap": {"const": 0},
+        "raw_response_persistence_cap": {"const": 0},
+        "continue_independent_lanes": {"const": true}
+      }
+    },
+    "credential_boundary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "credential_identifiers",
+        "credential_values_accessed_in_process_memory_max",
+        "authorization_header_values_emitted_to_tls_client_max",
+        "credential_values_printed_max",
+        "credential_values_persisted_max",
+        "credential_values_exposed_outside_authorized_transport_max"
+      ],
+      "properties": {
+        "credential_identifiers": {"const": ["QIANFAN_API_KEY", "DASHSCOPE_API_KEY"]},
+        "credential_values_accessed_in_process_memory_max": {"const": 6},
+        "authorization_header_values_emitted_to_tls_client_max": {"const": 6},
+        "credential_values_printed_max": {"const": 0},
+        "credential_values_persisted_max": {"const": 0},
+        "credential_values_exposed_outside_authorized_transport_max": {"const": 0}
+      }
+    },
+    "false_effects": {
+      "type": "object",
+      "minProperties": 15,
+      "additionalProperties": {"const": false}
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 9,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 15}
+    },
+    "execution_receipt": {"const": "commercialization-standards-p0-security-and-platform-provider-capability-evidence/pre72-execution-receipt.v0.1.json"},
+    "result": {"const": "AUTHORIZED_NOT_EXECUTED"},
+    "known_limitations": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 15}
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 20},
+        "sha256": {"pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}
