@@ -559,6 +559,12 @@ site tests 通过；唯一 `npm run export` 因默认 candidate mode 与冻结
 `status.release_claim=true` 不一致而 exit `1`。verify/static/CE 未执行，0 retry，
 source/tree 未漂移。下一步只能准备独立 R6 formal-release-context validation
 Recommendation，不能修改 public truth 绕过 gate。
+[R6 Recommendation](TITMAS-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-RECOMMENDATION-v0.1.md)
+建议只把冻结 `npm run release:formal` 作为 disposable worktree 内的 local static
+export + verification command，不产生 tag、GitHub Release 或部署。其
+[write-ahead qwen3.7-max review](TITMAS-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 curl `0`、HTTP `200`、exact model、direct JSON、`RECOMMENDED`、Option A、
+confidence `0.95`、0 blocker/correction。下一步只允许建立独立 R6 Decision。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
