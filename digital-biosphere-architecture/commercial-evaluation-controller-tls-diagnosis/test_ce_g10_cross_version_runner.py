@@ -62,6 +62,7 @@ class CrossVersionRunnerTests(unittest.TestCase):
         self.assertNotIn("\n  schedule:", value)
         self.assertIn("permissions:\n  contents: read", value)
         self.assertIn("timeout-minutes: 5", value)
+        self.assertIn("fetch-depth: 2", value)
         self.assertNotIn("secrets.", value)
 
     def test_workflow_matrix_and_actions_are_exact(self) -> None:
