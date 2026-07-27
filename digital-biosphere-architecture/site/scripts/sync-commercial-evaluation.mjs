@@ -16,6 +16,19 @@ const artifacts = [
   ["TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-PROTOCOL-v0.1.md", "TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-PROTOCOL-v0.1.md"],
   ["TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-REPORT-v0.1.md", "TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-REPORT-v0.1.md"],
   ["TITMAS-FIRST-RUN-v0.1.md", "TITMAS-FIRST-RUN-v0.1.md"],
+  ["TITMAS-AGENT-EVALUATION-ENTRY-v0.1.json", "TITMAS-AGENT-EVALUATION-ENTRY-v0.1.json"],
+  [
+    "TITMAS-AGENT-EVALUATION-ENTRY-VALIDATION-REPORT-v0.1.md",
+    "TITMAS-AGENT-EVALUATION-ENTRY-VALIDATION-REPORT-v0.1.md",
+  ],
+  [
+    "architecture/titmas-agent-evaluation-entry-contract-v0.1.md",
+    "architecture/titmas-agent-evaluation-entry-contract-v0.1.md",
+  ],
+  [
+    "architecture/schemas/titmas-agent-evaluation-entry.schema.v0.1.json",
+    "architecture/schemas/titmas-agent-evaluation-entry.schema.v0.1.json",
+  ],
   [
     "architecture/schemas/titmas-commercial-evaluation-pack.schema.v0.1.json",
     "architecture/schemas/titmas-commercial-evaluation-pack.schema.v0.1.json",
@@ -77,6 +90,9 @@ const artifacts = [
 const manifest = JSON.parse(
   await readFile(join(repositoryRoot, "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"), "utf8"),
 );
+const agentEvaluationEntry = JSON.parse(
+  await readFile(join(repositoryRoot, "TITMAS-AGENT-EVALUATION-ENTRY-v0.1.json"), "utf8"),
+);
 assert.equal(
   manifest.status,
   "AGENT_FIRST_RUN_VALIDATED_NOT_AVAILABLE_OFFERING",
@@ -92,6 +108,13 @@ assert.equal(manifest.effects.authority, false);
 assert.equal(manifest.effects.permission, false);
 assert.equal(manifest.effects.runtime, false);
 assert.equal(manifest.effects.agent, false);
+assert.equal(agentEvaluationEntry.evaluation_only, true);
+assert.equal(agentEvaluationEntry.artifact.no_deps_allowed, false);
+assert.equal(agentEvaluationEntry.discovery.contract_site_deployed, false);
+assert.equal(agentEvaluationEntry.availability_observation.sla_defined, false);
+assert.equal(agentEvaluationEntry.recommendation_policy.production_result, "DO_NOT_RECOMMEND_FOR_PRODUCTION");
+assert.equal(agentEvaluationEntry.effects.runtime, false);
+assert.equal(agentEvaluationEntry.effects.commercial_offer, false);
 
 for (const [source, target] of artifacts) {
   const destination = join(publicRoot, target);

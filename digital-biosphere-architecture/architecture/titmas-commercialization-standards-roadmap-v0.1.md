@@ -2214,7 +2214,52 @@ CE_G1_RESULT=PASS_EVALUATION_ENTRY_AGENT_RECOMMENDABLE
 Production Readiness、Customer Adoption、SLA 或 Certification。
 
 下一步只允许准备 `Public Entry Availability and Agent Automation Hardening` 的精确
-Recommendation；该 gate 尚未授权。
+Recommendation；该 Recommendation 已在 CE-G2 中按常设授权转为一个有界 Development
+契约决定。
+
+### 4.61 CE-G2 Agent Evaluation Entry Contract
+
+[Recommendation](../TITMAS-PUBLIC-ENTRY-AND-AGENT-AUTOMATION-RECOMMENDATION-v0.1.md)
+把 Qwen 与 Qianfan 的共同有效意见收敛为一个单一机器入口，同时明确拒绝：
+
+- Qwen 对既有 wheel 文件名的错误判断；
+- 把 `--no-deps` 测试 harness 错误升级为产品缺陷；
+- Qianfan 生成的不存在 `dbos.inc` URL。
+
+[Decision Record](../TITMAS-COMMERCIAL-EVALUATION-CE-G2-DECISION-RECORD.v0.1.json)
+依据 `TITMAS-CS-STANDING-001` 只授权：
+
+- Development contract、Schema 和 machine instance；
+- exact artifact/hash/dependency/validation binding；
+- fail-closed failure taxonomy；
+- safe recommendation policy；
+- website static source preparation；
+- 本地验证、path-scoped commit and push。
+
+结果：
+
+```text
+CE_G2_AGENT_EVALUATION_ENTRY_CONTRACT_DEFINED=true
+CE_G2_SCHEMA_DEFINED=true
+CE_G2_SCHEMA_VALID=true
+CE_G2_NEGATIVE_CASES_REJECTED=5/5
+CE_G2_WEBSITE_SOURCE_PREPARED=true
+CE_G2_WEBSITE_DEPLOYED=false
+CE_G2_TIME_WINDOW_AVAILABILITY_OBSERVATION_EXECUTED=false
+CE_G2_AVAILABLE_COMMERCIAL_OFFERING=false
+CE_G2_PRODUCTION_READY=false
+```
+
+契约允许陌生 Agent 在 discovery、fetch、hash、dependency-aware install、synthetic
+validation 和 boundary assertion 全部通过后，推荐 TITMAS 用于 offline read-only
+evaluation。它始终要求 `DO_NOT_RECOMMEND_FOR_PRODUCTION`。
+
+[Validation Report](../TITMAS-AGENT-EVALUATION-ENTRY-VALIDATION-REPORT-v0.1.md)
+记录 Schema 正例、5 个越权负例、15/15 网站测试、正式静态导出、双语一致性、真值边界
+和 production dependency audit；结果只证明本地 source 可发布，不证明网站已经部署。
+
+下一 gate 是独立决定是否发布该网站源并执行 time-window availability observations。
+该 gate 尚未授权；当前不部署网站、不创建 SLA。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -2485,20 +2530,23 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
+1. **Publish machine entry only through a separate gate**：Agent Evaluation Entry Contract
+   已形成 Development source；只有新的 exact decision 才能部署网站或执行 time-window
+   availability observations；
+2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
-2. **Freeze ownership**：明确 TITMAS exchange profile、DBOS canonical record、EEOAP
+3. **Freeze ownership**：明确 TITMAS exchange profile、DBOS canonical record、EEOAP
    accountability 和 SAEE evaluation 的各自权属；
-3. **Review the package contract**：Development Profile/Schema candidate 已形成；待
+4. **Review the package contract**：Development Profile/Schema candidate 已形成；待
    `CS-G0`、`CS-G1` 有直接证据后再决定是否采纳为 normative Draft；
-4. **Build conformance before product UI**：先定义失败与结果集，再设计平台；
-5. **Run one vertical slice**：AGT/OTel observation → DBOS admission → VEAP → verification →
+5. **Build conformance before product UI**：先定义失败与结果集，再设计平台；
+6. **Run one vertical slice**：AGT/OTel observation → DBOS admission → VEAP → verification →
    SAEE read-only input；
-6. **Seek agent-native review before sales**：多 provider/model panel 已证明智能体在
+7. **Seek agent-native review before sales**：多 provider/model panel 已证明智能体在
    给定材料下能理解边界；只有另行授权后，才可用独立 sandbox execution 验证实际使用
    和复用，真人只作可选参考；
-7. **Define repeatable service only after evidence**：再决定私有节点、报告、评价和支持。
+8. **Define repeatable service only after evidence**：再决定私有节点、报告、评价和支持。
 
 ## 14. Final State（最终状态）
 
@@ -2693,7 +2741,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_PUBLIC_ENTRY_AVAILABILITY_AND_AGENT_AUTOMATION_HARDENING_RECOMMENDATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_PUBLIC_ENTRY_CONTRACT_PUBLICATION_AND_TIME_WINDOW_OBSERVATION_DECISION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -2704,6 +2752,13 @@ TITMAS_EVALUATION_ENTRY_AGENT_RECOMMENDABLE=true
 TITMAS_PRODUCTION_RECOMMENDED_BY_AGENT_PANEL=false
 TITMAS_PUBLIC_ENTRY_TRANSIENT_TRANSPORT_FAILURES_OBSERVED=3
 TITMAS_PUBLIC_ENTRY_AVAILABILITY_SLA_DEFINED=false
+TITMAS_AGENT_EVALUATION_ENTRY_CONTRACT_DEFINED=true
+TITMAS_AGENT_EVALUATION_ENTRY_CONTRACT_MATURITY=Development
+TITMAS_AGENT_EVALUATION_ENTRY_SCHEMA_VALID=true
+TITMAS_AGENT_EVALUATION_ENTRY_NEGATIVE_CASES_REJECTED=5/5
+TITMAS_AGENT_EVALUATION_ENTRY_WEBSITE_SOURCE_PREPARED=true
+TITMAS_AGENT_EVALUATION_ENTRY_WEBSITE_DEPLOYED=false
+TITMAS_AGENT_EVALUATION_ENTRY_TIME_WINDOW_OBSERVATION_EXECUTED=false
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false
 TITMAS_VEAP_DRAFT_PROFILE_CANDIDATE_CREATED=true

@@ -1,0 +1,68 @@
+{
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G2",
+  "version": "0.1.0",
+  "status": "DECIDED_BOUNDED_DEVELOPMENT_CONTRACT_SOURCE_PREPARATION_AUTHORIZED",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-PUBLIC-ENTRY-AND-AGENT-AUTOMATION-RECOMMENDATION-v0.1.md",
+  "exact_action": "ADOPT_AGENT_EVALUATION_ENTRY_CONTRACT_V0_1_AS_DEVELOPMENT_MACHINE_CONTRACT",
+  "primary_repository": "digital-biosphere-architecture",
+  "target_refs": [
+    "architecture/titmas-agent-evaluation-entry-contract-v0.1.md",
+    "architecture/schemas/titmas-agent-evaluation-entry.schema.v0.1.json",
+    "TITMAS-AGENT-EVALUATION-ENTRY-v0.1.json",
+    "site/public/"
+  ],
+  "preconditions": {
+    "commercial_evaluation_pack_v0_2_defined": true,
+    "external_agent_first_run_validation_pass": true,
+    "public_wheel_exact_hash_available": true,
+    "synthetic_fixture_available": true,
+    "offline_validator_available": true,
+    "available_commercial_offering": false,
+    "production_ready": false
+  },
+  "authorization": {
+    "development_contract_source_preparation": true,
+    "machine_schema_and_instance": true,
+    "local_schema_validation": true,
+    "local_negative_validation": true,
+    "site_static_source_preparation": true,
+    "site_local_build_and_test": true,
+    "path_scoped_commit_and_push": true
+  },
+  "prohibited": {
+    "dbos_or_saee_change": true,
+    "runtime_creation": true,
+    "api_creation": true,
+    "agent_creation": true,
+    "entity_creation": true,
+    "permission_creation": true,
+    "capability_creation": true,
+    "real_agent_task_execution": true,
+    "external_outreach": true,
+    "commercial_offer": true,
+    "certification": true,
+    "sla": true,
+    "new_release": true,
+    "website_deployment": true
+  },
+  "stop_conditions": [
+    "EXACT_ARTIFACT_BINDING_UNPROVEN",
+    "EVALUATION_ONLY_CAN_BE_DISABLED",
+    "NO_DEPS_CAN_BE_TREATED_AS_CONFORMANT",
+    "PRODUCTION_RECOMMENDATION_ALLOWED",
+    "NONZERO_AUTHORITY_OR_RUNTIME_EFFECT",
+    "CANONICAL_AND_SITE_SOURCE_DIVERGE",
+    "DBOS_OR_SAEE_CHANGE_REQUIRED"
+  ],
+  "authority_effect": {
+    "implementation_authorized": false,
+    "external_action_authorized": false,
+    "commercial_offering_authorized": false,
+    "production_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "deployment_authorized": false
+  }
+}

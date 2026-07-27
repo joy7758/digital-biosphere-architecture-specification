@@ -115,6 +115,11 @@ commercial_evaluation_package_defined: true
 commercial_evaluation_package_status: prepared-not-available-offering
 commercial_evaluation_first_run_validated: true
 commercial_evaluation_machine_entry_defined: true
+agent_evaluation_entry_contract_defined: true
+agent_evaluation_entry_contract_maturity: Development
+agent_evaluation_entry_contract_schema_valid: true
+agent_evaluation_entry_website_source_prepared: true
+agent_evaluation_entry_website_deployed: false
 developer_ecosystem_created: false
 titmas_infrastructure_developer_community_strategy_defined: true
 titmas_infrastructure_developer_community_direction_adopted: true
@@ -166,6 +171,10 @@ TITMAS_PUBLIC_CONTRIBUTION_ENABLED=false
   [`TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.md`](TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.md)
 - Machine-readable manifest：
   [`TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json`](TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json)
+- Agent Evaluation Entry Contract（Development；网站源已准备、尚未部署）：
+  [`TITMAS-AGENT-EVALUATION-ENTRY-v0.1.json`](TITMAS-AGENT-EVALUATION-ENTRY-v0.1.json) /
+  [规范](architecture/titmas-agent-evaluation-entry-contract-v0.1.md) /
+  [验证报告](TITMAS-AGENT-EVALUATION-ENTRY-VALIDATION-REPORT-v0.1.md)
 - External Agent First Run validation：
   [`TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-REPORT-v0.1.md`](TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-REPORT-v0.1.md)
 - 10 分钟验证：
@@ -202,6 +211,11 @@ CONTRACTS_CREATED=0
 SLA_DEFINED=false
 PRODUCTION_READY=false
 ```
+
+新的 Agent Evaluation Entry Contract 把 discovery、exact wheel、依赖安装、SHA-256、
+合成验证、失败分类和安全推荐规则放进一个机器对象。它只允许在全部前置检查通过时推荐
+offline read-only evaluation，并始终输出 `DO_NOT_RECOMMEND_FOR_PRODUCTION`。
+该契约目前是 Development source，不表示网站已经部署，也不创建产品、SLA 或商业产品。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
