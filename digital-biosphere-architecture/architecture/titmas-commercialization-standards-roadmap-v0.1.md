@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: ce-g9-offline-correlator-remediation-pass-ce-g10-cross-version-pending-standard-not-ready
+status: ce-g10-cross-version-recommendation-prepared-decision-pending-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -2487,6 +2487,26 @@ CE_G9_TLS_ROOT_CAUSE_PROVEN=false
 [result](../commercial-evaluation-controller-tls-diagnosis/ce-g9-offline-remediation-result.v0.1.json)
 证明 CE-G8 工具缺陷已被离线定位和修正；不恢复历史 receipt，不解释 TLS failure。
 
+### 4.69 CE-G10 Cross-Version Correlator Validation Recommendation
+
+[CE-G10 Recommendation](../TITMAS-CE-G10-CROSS-VERSION-CORRELATOR-VALIDATION-RECOMMENDATION-v0.1.md)
+固定 Python `3.10.20`、`3.11.15`、`3.12.13`、`3.13.14`、`3.14.6`，
+`ubuntu-24.04` runner label、full action SHA、CE-G9 input hashes、read-only permissions、
+privacy checks 和 fail-closed rules。
+
+```text
+CE_G10_RECOMMENDATION_PREPARED=true
+CE_G10_AGENT_VERDICT=CONDITIONALLY_RECOMMENDED
+CE_G10_WOULD_RECOMMEND_TO_AGENT_CUSTOMER=true
+CE_G10_AGENT_CONFIDENCE=0.78
+CE_G10_DECISION_RECORDED=false
+CE_G10_EXECUTION_AUTHORIZED=false
+CE_G10_WORKFLOW_CREATED=false
+CE_G10_WORKFLOW_DISPATCHED=false
+```
+
+本建议不改变 CE-G9 completed state。下一动作只允许 review 与 independent Decision。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -2756,9 +2776,10 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Prepare CE-G10 cross-version correlator validation recommendation**：CE-G9 已在
-   Python 3.14/3.13 各通过 13/13，Python 3.10 未直接验证；下一步只允许 pinned runner
-   offline tests，不产生 public request、SSH、部署或策略变化；
+1. **Review and decide CE-G10 cross-version correlator validation**：Recommendation
+   已固定 exact Python matrix、action SHA、input hash、permissions、privacy 和
+   fail-closed controls；只有 independent Decision 才能创建和 dispatch manual-only
+   workflow，不产生 TITMAS public-site request、SSH、部署或策略变化；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -2967,7 +2988,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION_RECOMMENDATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=REVIEW_AND_DECIDE_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -3059,6 +3080,12 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G9_PYTHON_3_13_TESTS_PASS=13/13
 TITMAS_COMMERCIAL_EVALUATION_CE_G9_PUBLIC_REQUESTS=0
 TITMAS_COMMERCIAL_EVALUATION_CE_G9_SSH_SESSIONS=0
 TITMAS_COMMERCIAL_EVALUATION_CE_G9_TLS_ROOT_CAUSE_PROVEN=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G10_RECOMMENDATION_PREPARED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G10_AGENT_VERDICT=CONDITIONALLY_RECOMMENDED
+TITMAS_COMMERCIAL_EVALUATION_CE_G10_WOULD_RECOMMEND_TO_AGENT_CUSTOMER=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G10_AGENT_CONFIDENCE=0.78
+TITMAS_COMMERCIAL_EVALUATION_CE_G10_DECISION_RECORDED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G10_EXECUTION_AUTHORIZED=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
 

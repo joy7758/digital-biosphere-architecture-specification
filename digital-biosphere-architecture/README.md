@@ -138,6 +138,9 @@ controller_tls_diagnosis_root_cause_proven: false
 log_correlator_offline_remediation_result: pass-offline-only
 log_correlator_python_3_14_tests_pass: 13-of-13
 log_correlator_python_3_13_tests_pass: 13-of-13
+cross_version_validation_recommendation_prepared: true
+cross_version_validation_agent_verdict: conditionally-recommended
+cross_version_validation_execution_authorized: false
 public_entry_redeployment_admission_pass: false
 public_entry_redeployment_authorized: false
 developer_ecosystem_created: false
@@ -318,6 +321,12 @@ Python 3.14 与 3.13 各 `13/13` tests 通过，public requests 与 SSH 均为 0
 [CE-G9 报告](TITMAS-CE-G9-OFFLINE-LOG-CORRELATOR-REMEDIATION-REPORT-v0.1.md)只证明工具
 离线修正，不改变 CE-G8 历史结果，也不证明 TLS 根因。下一步只允许准备 CE-G10
 cross-version correlator validation recommendation。
+
+[CE-G10 Recommendation](TITMAS-CE-G10-CROSS-VERSION-CORRELATOR-VALIDATION-RECOMMENDATION-v0.1.md)
+已固定 Python `3.10.20`–`3.14.6`、action SHA、read-only permission、input hash、privacy
+和 fail-closed controls。`qwen3.7-plus` 给出 `CONDITIONALLY_RECOMMENDED`，愿意向
+智能体客户推荐，置信度 `0.78`。这只表示建议可进入独立 Decision；workflow 尚未创建或
+执行，也不产生 TLS、production、certification、SLA 或 commercial claim。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
