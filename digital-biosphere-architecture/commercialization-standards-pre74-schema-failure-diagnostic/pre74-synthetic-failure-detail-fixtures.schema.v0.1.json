@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre74/pre74-synthetic-failure-detail-fixtures.schema.v0.1.json",
+  "title": "TITMAS PRE-74 Synthetic Failure Detail Fixtures v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "response_schema_reference",
+    "response_schema_sha256",
+    "capture_contract_reference",
+    "capture_contract_sha256",
+    "detail_schema_reference",
+    "detail_schema_sha256",
+    "cases",
+    "accounting"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre74-synthetic-failure-detail-fixtures.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE74-SYNTHETIC-FAILURE-DETAIL-FIXTURES-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_12_OF_12_SANITIZED_CAPTURE"},
+    "response_schema_reference": {"const": "../commercialization-standards-p0-exact-agent-security-review/pre73-agent-review-response.schema.v0.2.json"},
+    "response_schema_sha256": {"const": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8"},
+    "capture_contract_reference": {"const": "./pre74-sanitized-failure-detail-capture-contract.v0.1.json"},
+    "capture_contract_sha256": {"const": "a2c3310877528f270f819a796ad3e13b0f85cc03a7763c5de9ddd533a94f58dd"},
+    "detail_schema_reference": {"const": "./pre74-sanitized-failure-detail.schema.v0.1.json"},
+    "detail_schema_sha256": {"const": "c628cd18143209638fe562877edd01764c1f2fbb58b02dc5764ebbee0fb55e21"},
+    "cases": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "prefixItems": [
+        {"allOf": [{"$ref": "#/$defs/case"}, {"properties": {"case_id": {"const": "SF-001"}}}]},
+        {"allOf": [{"$ref": "#/$defs/case"}, {"properties": {"case_id": {"const": "SF-002"}}}]},
+        {"allOf": [{"$ref": "#/$defs/case"}, {"properties": {"case_id": {"const": "SF-003"}}}]},
+        {"allOf": [{"$ref": "#/$defs/case"}, {"properties": {"case_id": {"const": "SF-004"}}}]},
+        {"allOf": [{"$ref": "#/$defs/case"}, {"properties": {"case_id": {"const": "SF-005"}}}]},
+        {"allOf": [{"$ref": "#/$defs/case"}, {"properties": {"case_id": {"const": "SF-006"}}}]},
+        {"allOf": [{"$ref": "#/$defs/case"}, {"properties": {"case_id": {"const": "SF-007"}}}]},
+        {"allOf": [{"$ref": "#/$defs/case"}, {"properties": {"case_id": {"const": "SF-008"}}}]},
+        {"allOf": [{"$ref": "#/$defs/case"}, {"properties": {"case_id": {"const": "SF-009"}}}]},
+        {"allOf": [{"$ref": "#/$defs/case"}, {"properties": {"case_id": {"const": "SF-010"}}}]},
+        {"allOf": [{"$ref": "#/$defs/case"}, {"properties": {"case_id": {"const": "SF-011"}}}]},
+        {"allOf": [{"$ref": "#/$defs/case"}, {"properties": {"case_id": {"const": "SF-012"}}}]}
+      ],
+      "items": false
+    },
+    "accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_hashes_checked",
+        "synthetic_cases",
+        "captured_details_schema_pass",
+        "network_requests",
+        "live_model_requests",
+        "credential_value_reads",
+        "raw_provider_response_reads",
+        "target_writes",
+        "dbos_writes",
+        "saee_writes"
+      ],
+      "properties": {
+        "input_hashes_checked": {"const": 6},
+        "synthetic_cases": {"const": 12},
+        "captured_details_schema_pass": {"const": "12/12"},
+        "network_requests": {"const": 0},
+        "live_model_requests": {"const": 0},
+        "credential_value_reads": {"const": 0},
+        "raw_provider_response_reads": {"const": 0},
+        "target_writes": {"const": 0},
+        "dbos_writes": {"const": 0},
+        "saee_writes": {"const": 0}
+      }
+    }
+  },
+  "$defs": {
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case_id", "mutation_descriptor", "expected_validator", "captured_detail"],
+      "properties": {
+        "case_id": {"pattern": "^SF-0(0[1-9]|1[0-2])$"},
+        "mutation_descriptor": {"type": "string", "pattern": "^[A-Z0-9_]+$"},
+        "expected_validator": {"enum": ["additionalProperties", "const", "enum", "maxItems", "maxLength", "minItems", "minLength", "pattern", "required", "type"]},
+        "captured_detail": {"type": "object"}
+      }
+    }
+  }
+}

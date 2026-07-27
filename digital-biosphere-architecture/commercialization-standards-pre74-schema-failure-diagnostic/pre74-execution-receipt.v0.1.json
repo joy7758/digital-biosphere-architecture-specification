@@ -1,0 +1,86 @@
+{
+  "$schema": "./pre74-execution-receipt.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE74-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTED_PASS_OFFLINE_DIAGNOSTIC",
+  "observed_at": "2026-07-27",
+  "decision": {
+    "decision_id": "CS-D02-PRE-74",
+    "decision_reference": "../TITMAS-CS-D02-PRE-74-OFFLINE-SCHEMA-FAILURE-DIAGNOSTIC-DECISION-RECORD.v0.1.json",
+    "decision_sha256": "33df6fe62f8b7ae69a91936f22356f84c96dc0f97bbbd80e9d3ee780f5b840cf",
+    "decision_commit": "43ad835b0ac45b7899c6d8541e0cfed41e01ebb3",
+    "authorization_baseline_commit": "a79adbf625e1979475e8d404bba8355ebfbe5a4a"
+  },
+  "artifacts": [
+    {
+      "path": "./pre74-offline-diagnostic-scope.v0.1.json",
+      "sha256": "dfb8fdb2d8d209272fcb330a4118053183800b4e98e1cd523abb51719782aab3"
+    },
+    {
+      "path": "./pre74-contract-transmission-coverage-observation.v0.1.json",
+      "sha256": "6209253737c1842b1042d08256e4d9d47db6bed5fbb55aeb6cdf287ec47a4774"
+    },
+    {
+      "path": "./pre74-response-contract-transmission-map.v0.1.json",
+      "sha256": "da84ffc21e41c9e3f4abb847642a93119a1f4a530a8cd01f2d9e3d3f0eff3329"
+    },
+    {
+      "path": "./pre74-sanitized-failure-detail-capture-contract.v0.1.json",
+      "sha256": "a2c3310877528f270f819a796ad3e13b0f85cc03a7763c5de9ddd533a94f58dd"
+    },
+    {
+      "path": "./pre74-sanitized-failure-detail.schema.v0.1.json",
+      "sha256": "c628cd18143209638fe562877edd01764c1f2fbb58b02dc5764ebbee0fb55e21"
+    },
+    {
+      "path": "./pre74-synthetic-failure-detail-fixtures.v0.1.json",
+      "sha256": "d53f3eb039b644dbde23ba303270d53eade6a31f7185e9a557ae1f717ca41310"
+    }
+  ],
+  "validation_summary": {
+    "input_hashes_match": "6/6",
+    "coverage_groups_checked": "3/3",
+    "coverage_groups_with_shared_gap": "3/3",
+    "synthetic_capture_details_pass": "12/12",
+    "forbidden_field_and_boundary_negatives_rejected": "10/10",
+    "transmission_gap_proven": true,
+    "exact_failure_cause_proven": false,
+    "capture_contract_status": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED"
+  },
+  "operation_accounting": {
+    "network_requests": 0,
+    "live_model_requests": 0,
+    "credential_value_reads": 0,
+    "raw_provider_response_reads": 0,
+    "raw_error_messages_persisted": 0,
+    "raw_offending_values_persisted": 0,
+    "target_writes": 0,
+    "dbos_writes": 0,
+    "saee_writes": 0,
+    "request_revision_adoptions": 0,
+    "response_schema_changes": 0,
+    "live_retries": 0
+  },
+  "result_reference": "./pre74-offline-diagnostic-result.v0.1.json",
+  "next_action": "PREPARE_PRE75_RESPONSE_CONTRACT_TRANSMISSION_REMEDIATION_AND_BOUNDED_RERUN_RECOMMENDATION",
+  "next_action_authorized": false,
+  "truth_boundaries": [
+    "TRANSMISSION_GAP_NE_UNIQUE_SCHEMA_FAILURE_CAUSE",
+    "SYNTHETIC_VALIDATION_NE_PROVIDER_RUNTIME_VALIDATION",
+    "SANITIZED_FAILURE_DETAIL_NE_RAW_PROVIDER_RESPONSE",
+    "OFFLINE_PASS_NE_REQUEST_REVISION_ADOPTION",
+    "OFFLINE_PASS_NE_LIVE_RETRY_AUTHORIZATION",
+    "AGENT_REVIEW_NE_FORMAL_HUMAN_SECURITY_REVIEW",
+    "EVIDENCE_NE_TRUTH"
+  ],
+  "effects": {
+    "request_revision_adopted": false,
+    "live_retry_authorized": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false,
+    "production_ready": false
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre74-offline-diagnostic-result.schema.v0.1.json",
+  "title": "TITMAS PRE-74 Offline Diagnostic Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "decision_sha256",
+    "authorization_baseline_commit",
+    "input_lineage",
+    "transmission_diagnosis",
+    "sanitized_capture_validation",
+    "operation_accounting",
+    "next_action",
+    "next_action_authorized",
+    "limitations",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./pre74-offline-diagnostic-result.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE74-OFFLINE-DIAGNOSTIC-RESULT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PASS_OFFLINE_CONTRACT_TRANSMISSION_GAP_DIAGNOSTIC_AND_SANITIZED_FAILURE_CAPTURE_DESIGN"
+    },
+    "observed_at": {
+      "const": "2026-07-27"
+    },
+    "decision_reference": {
+      "const": "../TITMAS-CS-D02-PRE-74-OFFLINE-SCHEMA-FAILURE-DIAGNOSTIC-DECISION-RECORD.v0.1.json"
+    },
+    "decision_sha256": {
+      "const": "33df6fe62f8b7ae69a91936f22356f84c96dc0f97bbbd80e9d3ee780f5b840cf"
+    },
+    "authorization_baseline_commit": {
+      "const": "a79adbf625e1979475e8d404bba8355ebfbe5a4a"
+    },
+    "input_lineage": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 10
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "transmission_diagnosis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sessions_checked",
+        "coverage_groups_checked",
+        "coverage_groups_with_shared_gap",
+        "response_schema_serialized",
+        "transmission_gap_proven",
+        "consistent_with_pre73_schema_failure",
+        "exact_failure_cause_proven",
+        "model_internal_causality_proven"
+      ],
+      "properties": {
+        "sessions_checked": {"const": 2},
+        "coverage_groups_checked": {"const": 3},
+        "coverage_groups_with_shared_gap": {"const": 3},
+        "response_schema_serialized": {"const": false},
+        "transmission_gap_proven": {"const": true},
+        "consistent_with_pre73_schema_failure": {"const": true},
+        "exact_failure_cause_proven": {"const": false},
+        "model_internal_causality_proven": {"const": false}
+      }
+    },
+    "sanitized_capture_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "synthetic_cases",
+        "captured_details_schema_pass",
+        "forbidden_field_and_boundary_negatives",
+        "forbidden_field_and_boundary_negatives_rejected",
+        "raw_error_messages_persisted",
+        "raw_offending_values_persisted",
+        "phase_accounting_preserves_direct_json_pass"
+      ],
+      "properties": {
+        "synthetic_cases": {"const": 12},
+        "captured_details_schema_pass": {"const": "12/12"},
+        "forbidden_field_and_boundary_negatives": {"const": 10},
+        "forbidden_field_and_boundary_negatives_rejected": {"const": "10/10"},
+        "raw_error_messages_persisted": {"const": 0},
+        "raw_offending_values_persisted": {"const": 0},
+        "phase_accounting_preserves_direct_json_pass": {"const": true}
+      }
+    },
+    "operation_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_requests",
+        "live_model_requests",
+        "credential_value_reads",
+        "raw_provider_response_reads",
+        "target_writes",
+        "dbos_writes",
+        "saee_writes",
+        "request_revision_adoptions",
+        "response_schema_changes",
+        "live_retries"
+      ],
+      "properties": {
+        "network_requests": {"const": 0},
+        "live_model_requests": {"const": 0},
+        "credential_value_reads": {"const": 0},
+        "raw_provider_response_reads": {"const": 0},
+        "target_writes": {"const": 0},
+        "dbos_writes": {"const": 0},
+        "saee_writes": {"const": 0},
+        "request_revision_adoptions": {"const": 0},
+        "response_schema_changes": {"const": 0},
+        "live_retries": {"const": 0}
+      }
+    },
+    "next_action": {
+      "const": "PREPARE_PRE75_RESPONSE_CONTRACT_TRANSMISSION_REMEDIATION_AND_BOUNDED_RERUN_RECOMMENDATION"
+    },
+    "next_action_authorized": {
+      "const": false
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 4,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 10
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_revision_adopted",
+        "live_retry_authorized",
+        "provider_supported",
+        "formal_human_security_review_complete",
+        "conformance_pass",
+        "standard_ready",
+        "release_authorized",
+        "production_ready"
+      ],
+      "properties": {
+        "request_revision_adopted": {"const": false},
+        "live_retry_authorized": {"const": false},
+        "provider_supported": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "conformance_pass": {"const": false},
+        "standard_ready": {"const": false},
+        "release_authorized": {"const": false},
+        "production_ready": {"const": false}
+      }
+    }
+  }
+}

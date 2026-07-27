@@ -1,0 +1,67 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre74/pre74-sanitized-failure-detail-capture-contract.schema.v0.1.json",
+  "title": "TITMAS PRE-74 Sanitized Failure Detail Capture Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "capture_phase",
+    "allowed_fields",
+    "forbidden_fields",
+    "validator_allowlist",
+    "path_policy",
+    "value_metadata_policy",
+    "phase_accounting_policy",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre74-sanitized-failure-detail-capture-contract.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE74-SANITIZED-FAILURE-DETAIL-CAPTURE-CONTRACT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED"},
+    "capture_phase": {"const": "RESPONSE_SCHEMA_VALIDATION"},
+    "allowed_fields": {"const": ["phase", "error_class", "instance_path", "schema_path", "validator", "offending_value_type", "offending_value_length"]},
+    "forbidden_fields": {"const": ["error_message", "offending_value", "assistant_content", "provider_envelope", "request_payload", "source_package", "credential_value", "authorization_header"]},
+    "validator_allowlist": {"const": ["additionalProperties", "const", "enum", "maxItems", "maxLength", "minItems", "minLength", "pattern", "required", "type"]},
+    "path_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["maximum_tokens", "token_types", "maximum_string_token_length"],
+      "properties": {
+        "maximum_tokens": {"const": 64},
+        "token_types": {"const": ["string", "integer"]},
+        "maximum_string_token_length": {"const": 120}
+      }
+    },
+    "value_metadata_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed_types", "length_only", "maximum_recorded_length", "raw_value_allowed"],
+      "properties": {
+        "allowed_types": {"const": ["dict", "list", "str", "int", "float", "bool", "NoneType"]},
+        "length_only": {"const": true},
+        "maximum_recorded_length": {"const": 1000000},
+        "raw_value_allowed": {"const": false}
+      }
+    },
+    "phase_accounting_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["phase_flag_recorded_before_validation", "direct_json_pass_preserved_if_later_schema_fails", "schema_failure_does_not_reset_earlier_pass_flags"],
+      "properties": {
+        "phase_flag_recorded_before_validation": {"const": true},
+        "direct_json_pass_preserved_if_later_schema_fails": {"const": true},
+        "schema_failure_does_not_reset_earlier_pass_flags": {"const": true}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 6,
+      "additionalProperties": {"const": false}
+    }
+  }
+}

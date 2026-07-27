@@ -1,0 +1,73 @@
+{
+  "$schema": "./pre74-sanitized-failure-detail-capture-contract.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE74-SANITIZED-FAILURE-DETAIL-CAPTURE-CONTRACT-0.1",
+  "version": "0.1.0",
+  "status": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED",
+  "capture_phase": "RESPONSE_SCHEMA_VALIDATION",
+  "allowed_fields": [
+    "phase",
+    "error_class",
+    "instance_path",
+    "schema_path",
+    "validator",
+    "offending_value_type",
+    "offending_value_length"
+  ],
+  "forbidden_fields": [
+    "error_message",
+    "offending_value",
+    "assistant_content",
+    "provider_envelope",
+    "request_payload",
+    "source_package",
+    "credential_value",
+    "authorization_header"
+  ],
+  "validator_allowlist": [
+    "additionalProperties",
+    "const",
+    "enum",
+    "maxItems",
+    "maxLength",
+    "minItems",
+    "minLength",
+    "pattern",
+    "required",
+    "type"
+  ],
+  "path_policy": {
+    "maximum_tokens": 64,
+    "token_types": [
+      "string",
+      "integer"
+    ],
+    "maximum_string_token_length": 120
+  },
+  "value_metadata_policy": {
+    "allowed_types": [
+      "dict",
+      "list",
+      "str",
+      "int",
+      "float",
+      "bool",
+      "NoneType"
+    ],
+    "length_only": true,
+    "maximum_recorded_length": 1000000,
+    "raw_value_allowed": false
+  },
+  "phase_accounting_policy": {
+    "phase_flag_recorded_before_validation": true,
+    "direct_json_pass_preserved_if_later_schema_fails": true,
+    "schema_failure_does_not_reset_earlier_pass_flags": true
+  },
+  "effects": {
+    "raw_response_persistence_authorized": false,
+    "request_persistence_authorized": false,
+    "secret_persistence_authorized": false,
+    "request_revision_adopted": false,
+    "response_schema_changed": false,
+    "live_retry_authorized": false
+  }
+}

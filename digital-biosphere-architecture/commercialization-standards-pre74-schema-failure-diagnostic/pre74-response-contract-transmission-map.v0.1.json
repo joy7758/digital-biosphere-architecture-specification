@@ -1,0 +1,55 @@
+{
+  "$schema": "./pre74-response-contract-transmission-map.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE74-RESPONSE-CONTRACT-TRANSMISSION-MAP-0.1",
+  "version": "0.1.0",
+  "status": "PASS_GAP_PROVEN_CAUSALITY_NOT_PROVEN",
+  "source_observation_reference": "./pre74-contract-transmission-coverage-observation.v0.1.json",
+  "source_observation_sha256": "6209253737c1842b1042d08256e4d9d47db6bed5fbb55aeb6cdf287ec47a4774",
+  "session_maps": [
+    {
+      "session_id": "PRE73-QF-SECURITY-01",
+      "response_contract_version_mentions": 2,
+      "schema_serialized": false,
+      "top_level_keys": "6/10",
+      "assessment_keys": "1/7",
+      "non_claim_keys": "6/8",
+      "schema_structure_markers": "0/3"
+    },
+    {
+      "session_id": "PRE73-QWEN-SECURITY-02",
+      "response_contract_version_mentions": 2,
+      "schema_serialized": false,
+      "top_level_keys": "6/10",
+      "assessment_keys": "1/7",
+      "non_claim_keys": "6/8",
+      "schema_structure_markers": "0/3"
+    }
+  ],
+  "missing_contract_elements": {
+    "top_level": [
+      "verdict",
+      "summary",
+      "question_assessments",
+      "cross_cutting_findings"
+    ],
+    "question_assessment": [
+      "assessment",
+      "severity",
+      "finding",
+      "affected_symbols",
+      "proposed_tests",
+      "limitations"
+    ],
+    "explicit_non_claims": [
+      "conformance_pass",
+      "release_authorized"
+    ]
+  },
+  "conclusion": {
+    "transmission_gap_proven": true,
+    "shared_by_both_sessions": true,
+    "consistent_with_pre73_schema_failure": true,
+    "exact_failure_cause_proven": false,
+    "model_internal_causality_proven": false
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre74/pre74-sanitized-failure-detail.schema.v0.1.json",
+  "title": "TITMAS PRE-74 Sanitized Failure Detail v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "phase",
+    "error_class",
+    "instance_path",
+    "schema_path",
+    "validator",
+    "offending_value_type",
+    "offending_value_length"
+  ],
+  "properties": {
+    "phase": {"const": "RESPONSE_SCHEMA_VALIDATION"},
+    "error_class": {"const": "ValidationError"},
+    "instance_path": {"$ref": "#/$defs/path"},
+    "schema_path": {"$ref": "#/$defs/path"},
+    "validator": {"enum": ["additionalProperties", "const", "enum", "maxItems", "maxLength", "minItems", "minLength", "pattern", "required", "type"]},
+    "offending_value_type": {"enum": ["dict", "list", "str", "int", "float", "bool", "NoneType"]},
+    "offending_value_length": {
+      "oneOf": [
+        {"type": "integer", "minimum": 0, "maximum": 1000000},
+        {"type": "null"}
+      ]
+    }
+  },
+  "$defs": {
+    "path": {
+      "type": "array",
+      "maxItems": 64,
+      "items": {
+        "oneOf": [
+          {"type": "string", "minLength": 1, "maxLength": 120},
+          {"type": "integer", "minimum": 0}
+        ]
+      }
+    }
+  }
+}

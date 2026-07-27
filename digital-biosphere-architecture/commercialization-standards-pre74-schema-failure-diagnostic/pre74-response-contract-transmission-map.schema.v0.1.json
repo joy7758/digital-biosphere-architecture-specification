@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre74/pre74-response-contract-transmission-map.schema.v0.1.json",
+  "title": "TITMAS PRE-74 Response Contract Transmission Map v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "source_observation_reference",
+    "source_observation_sha256",
+    "session_maps",
+    "missing_contract_elements",
+    "conclusion"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre74-response-contract-transmission-map.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE74-RESPONSE-CONTRACT-TRANSMISSION-MAP-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_GAP_PROVEN_CAUSALITY_NOT_PROVEN"},
+    "source_observation_reference": {"const": "./pre74-contract-transmission-coverage-observation.v0.1.json"},
+    "source_observation_sha256": {"const": "6209253737c1842b1042d08256e4d9d47db6bed5fbb55aeb6cdf287ec47a4774"},
+    "session_maps": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"allOf": [{"$ref": "#/$defs/session"}, {"properties": {"session_id": {"const": "PRE73-QF-SECURITY-01"}}}]},
+        {"allOf": [{"$ref": "#/$defs/session"}, {"properties": {"session_id": {"const": "PRE73-QWEN-SECURITY-02"}}}]}
+      ],
+      "items": false
+    },
+    "missing_contract_elements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["top_level", "question_assessment", "explicit_non_claims"],
+      "properties": {
+        "top_level": {"const": ["verdict", "summary", "question_assessments", "cross_cutting_findings"]},
+        "question_assessment": {"const": ["assessment", "severity", "finding", "affected_symbols", "proposed_tests", "limitations"]},
+        "explicit_non_claims": {"const": ["conformance_pass", "release_authorized"]}
+      }
+    },
+    "conclusion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "transmission_gap_proven",
+        "shared_by_both_sessions",
+        "consistent_with_pre73_schema_failure",
+        "exact_failure_cause_proven",
+        "model_internal_causality_proven"
+      ],
+      "properties": {
+        "transmission_gap_proven": {"const": true},
+        "shared_by_both_sessions": {"const": true},
+        "consistent_with_pre73_schema_failure": {"const": true},
+        "exact_failure_cause_proven": {"const": false},
+        "model_internal_causality_proven": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "response_contract_version_mentions",
+        "schema_serialized",
+        "top_level_keys",
+        "assessment_keys",
+        "non_claim_keys",
+        "schema_structure_markers"
+      ],
+      "properties": {
+        "session_id": {"type": "string"},
+        "response_contract_version_mentions": {"const": 2},
+        "schema_serialized": {"const": false},
+        "top_level_keys": {"const": "6/10"},
+        "assessment_keys": {"const": "1/7"},
+        "non_claim_keys": {"const": "6/8"},
+        "schema_structure_markers": {"const": "0/3"}
+      }
+    }
+  }
+}

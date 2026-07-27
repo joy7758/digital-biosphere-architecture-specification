@@ -1,0 +1,86 @@
+{
+  "$schema": "./pre74-offline-diagnostic-result.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE74-OFFLINE-DIAGNOSTIC-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_OFFLINE_CONTRACT_TRANSMISSION_GAP_DIAGNOSTIC_AND_SANITIZED_FAILURE_CAPTURE_DESIGN",
+  "observed_at": "2026-07-27",
+  "decision_reference": "../TITMAS-CS-D02-PRE-74-OFFLINE-SCHEMA-FAILURE-DIAGNOSTIC-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "33df6fe62f8b7ae69a91936f22356f84c96dc0f97bbbd80e9d3ee780f5b840cf",
+  "authorization_baseline_commit": "a79adbf625e1979475e8d404bba8355ebfbe5a4a",
+  "input_lineage": [
+    {
+      "path": "./pre74-contract-transmission-coverage-observation.v0.1.json",
+      "sha256": "6209253737c1842b1042d08256e4d9d47db6bed5fbb55aeb6cdf287ec47a4774"
+    },
+    {
+      "path": "../commercialization-standards-p0-exact-agent-security-review/pre73-review-request-contract.v0.1.json",
+      "sha256": "c98f2464b814696152bcb8946ffbc5ffea5b6a9daf48e1b6657f59d5aa2f2a1b"
+    },
+    {
+      "path": "../commercialization-standards-p0-exact-agent-security-review/pre73-agent-review-response.schema.v0.2.json",
+      "sha256": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8"
+    },
+    {
+      "path": "../commercialization-standards-p0-exact-agent-security-review/pre73-execution-receipt.v0.1.json",
+      "sha256": "652b9561d816fe5bc88e412c4d6ebe636cf036a876047a4e5d6613c30699ac7a"
+    },
+    {
+      "path": "../commercialization-standards-p0-exact-agent-security-review/pre73-qianfan-session-result.v0.1.json",
+      "sha256": "74a11ce415fd1fb815aef176d667a2c97687c5837019de572154e489a41225bf"
+    },
+    {
+      "path": "../commercialization-standards-p0-exact-agent-security-review/pre73-qwen-session-result.v0.1.json",
+      "sha256": "6212851a2d6f45d5c52648b075215ada439f17531da65786aed3eec4972ef882"
+    }
+  ],
+  "transmission_diagnosis": {
+    "sessions_checked": 2,
+    "coverage_groups_checked": 3,
+    "coverage_groups_with_shared_gap": 3,
+    "response_schema_serialized": false,
+    "transmission_gap_proven": true,
+    "consistent_with_pre73_schema_failure": true,
+    "exact_failure_cause_proven": false,
+    "model_internal_causality_proven": false
+  },
+  "sanitized_capture_validation": {
+    "synthetic_cases": 12,
+    "captured_details_schema_pass": "12/12",
+    "forbidden_field_and_boundary_negatives": 10,
+    "forbidden_field_and_boundary_negatives_rejected": "10/10",
+    "raw_error_messages_persisted": 0,
+    "raw_offending_values_persisted": 0,
+    "phase_accounting_preserves_direct_json_pass": true
+  },
+  "operation_accounting": {
+    "network_requests": 0,
+    "live_model_requests": 0,
+    "credential_value_reads": 0,
+    "raw_provider_response_reads": 0,
+    "target_writes": 0,
+    "dbos_writes": 0,
+    "saee_writes": 0,
+    "request_revision_adoptions": 0,
+    "response_schema_changes": 0,
+    "live_retries": 0
+  },
+  "next_action": "PREPARE_PRE75_RESPONSE_CONTRACT_TRANSMISSION_REMEDIATION_AND_BOUNDED_RERUN_RECOMMENDATION",
+  "next_action_authorized": false,
+  "limitations": [
+    "THE_TRANSMISSION_GAP_IS_NOT_THE_PROVEN_UNIQUE_CAUSE_OF_EITHER_PRE73_SCHEMA_FAILURE",
+    "NO_PRE73_RAW_RESPONSE_OR_EXACT_VALIDATION_PATH_WAS_READ_OR_RECOVERED",
+    "SYNTHETIC_VALIDATION_DOES_NOT_VALIDATE_PROVIDER_RUNTIME_BEHAVIOR",
+    "THE_CAPTURE_CONTRACT_IS_A_DEVELOPMENT_CANDIDATE_AND_IS_NOT_ADOPTED",
+    "AN_OFFLINE_PASS_DOES_NOT_AUTHORIZE_REQUEST_REVISION_OR_LIVE_RERUN"
+  ],
+  "effects": {
+    "request_revision_adopted": false,
+    "live_retry_authorized": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false,
+    "production_ready": false
+  }
+}

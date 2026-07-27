@@ -1,0 +1,194 @@
+{
+  "$schema": "./pre74-synthetic-failure-detail-fixtures.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE74-SYNTHETIC-FAILURE-DETAIL-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "PASS_12_OF_12_SANITIZED_CAPTURE",
+  "response_schema_reference": "../commercialization-standards-p0-exact-agent-security-review/pre73-agent-review-response.schema.v0.2.json",
+  "response_schema_sha256": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8",
+  "capture_contract_reference": "./pre74-sanitized-failure-detail-capture-contract.v0.1.json",
+  "capture_contract_sha256": "a2c3310877528f270f819a796ad3e13b0f85cc03a7763c5de9ddd533a94f58dd",
+  "detail_schema_reference": "./pre74-sanitized-failure-detail.schema.v0.1.json",
+  "detail_schema_sha256": "c628cd18143209638fe562877edd01764c1f2fbb58b02dc5764ebbee0fb55e21",
+  "cases": [
+    {
+      "case_id": "SF-001",
+      "mutation_descriptor": "REMOVE_TOP_LEVEL_VERDICT",
+      "expected_validator": "required",
+      "captured_detail": {
+        "phase": "RESPONSE_SCHEMA_VALIDATION",
+        "error_class": "ValidationError",
+        "instance_path": [],
+        "schema_path": ["required"],
+        "validator": "required",
+        "offending_value_type": "dict",
+        "offending_value_length": 9
+      }
+    },
+    {
+      "case_id": "SF-002",
+      "mutation_descriptor": "ADD_UNDECLARED_TOP_LEVEL_FIELD",
+      "expected_validator": "additionalProperties",
+      "captured_detail": {
+        "phase": "RESPONSE_SCHEMA_VALIDATION",
+        "error_class": "ValidationError",
+        "instance_path": [],
+        "schema_path": ["additionalProperties"],
+        "validator": "additionalProperties",
+        "offending_value_type": "dict",
+        "offending_value_length": 11
+      }
+    },
+    {
+      "case_id": "SF-003",
+      "mutation_descriptor": "SET_VERDICT_OUTSIDE_ENUM",
+      "expected_validator": "enum",
+      "captured_detail": {
+        "phase": "RESPONSE_SCHEMA_VALIDATION",
+        "error_class": "ValidationError",
+        "instance_path": ["verdict"],
+        "schema_path": ["properties", "verdict", "enum"],
+        "validator": "enum",
+        "offending_value_type": "str",
+        "offending_value_length": 17
+      }
+    },
+    {
+      "case_id": "SF-004",
+      "mutation_descriptor": "REMOVE_LAST_QUESTION_ASSESSMENT",
+      "expected_validator": "minItems",
+      "captured_detail": {
+        "phase": "RESPONSE_SCHEMA_VALIDATION",
+        "error_class": "ValidationError",
+        "instance_path": ["question_assessments"],
+        "schema_path": ["properties", "question_assessments", "minItems"],
+        "validator": "minItems",
+        "offending_value_type": "list",
+        "offending_value_length": 15
+      }
+    },
+    {
+      "case_id": "SF-005",
+      "mutation_descriptor": "DUPLICATE_SECOND_QUESTION_ID",
+      "expected_validator": "const",
+      "captured_detail": {
+        "phase": "RESPONSE_SCHEMA_VALIDATION",
+        "error_class": "ValidationError",
+        "instance_path": ["question_assessments", 1, "question_id"],
+        "schema_path": ["properties", "question_assessments", "prefixItems", 1, "allOf", 1, "properties", "question_id", "const"],
+        "validator": "const",
+        "offending_value_type": "str",
+        "offending_value_length": 6
+      }
+    },
+    {
+      "case_id": "SF-006",
+      "mutation_descriptor": "SET_ASSESSMENT_OUTSIDE_ENUM",
+      "expected_validator": "enum",
+      "captured_detail": {
+        "phase": "RESPONSE_SCHEMA_VALIDATION",
+        "error_class": "ValidationError",
+        "instance_path": ["question_assessments", 0, "assessment"],
+        "schema_path": ["properties", "question_assessments", "prefixItems", 0, "allOf", 0, "properties", "assessment", "enum"],
+        "validator": "enum",
+        "offending_value_type": "str",
+        "offending_value_length": 17
+      }
+    },
+    {
+      "case_id": "SF-007",
+      "mutation_descriptor": "REMOVE_LIMITATIONS_FIELD",
+      "expected_validator": "required",
+      "captured_detail": {
+        "phase": "RESPONSE_SCHEMA_VALIDATION",
+        "error_class": "ValidationError",
+        "instance_path": ["question_assessments", 0],
+        "schema_path": ["properties", "question_assessments", "prefixItems", 0, "allOf", 0, "required"],
+        "validator": "required",
+        "offending_value_type": "dict",
+        "offending_value_length": 6
+      }
+    },
+    {
+      "case_id": "SF-008",
+      "mutation_descriptor": "EMPTY_LIMITATIONS_ARRAY",
+      "expected_validator": "minItems",
+      "captured_detail": {
+        "phase": "RESPONSE_SCHEMA_VALIDATION",
+        "error_class": "ValidationError",
+        "instance_path": ["question_assessments", 0, "limitations"],
+        "schema_path": ["properties", "question_assessments", "prefixItems", 0, "allOf", 0, "properties", "limitations", "minItems"],
+        "validator": "minItems",
+        "offending_value_type": "list",
+        "offending_value_length": 0
+      }
+    },
+    {
+      "case_id": "SF-009",
+      "mutation_descriptor": "SET_PRODUCTION_NON_CLAIM_TRUE",
+      "expected_validator": "const",
+      "captured_detail": {
+        "phase": "RESPONSE_SCHEMA_VALIDATION",
+        "error_class": "ValidationError",
+        "instance_path": ["explicit_non_claims", "production_safe"],
+        "schema_path": ["properties", "explicit_non_claims", "properties", "production_safe", "const"],
+        "validator": "const",
+        "offending_value_type": "bool",
+        "offending_value_length": null
+      }
+    },
+    {
+      "case_id": "SF-010",
+      "mutation_descriptor": "REMOVE_RELEASE_NON_CLAIM",
+      "expected_validator": "required",
+      "captured_detail": {
+        "phase": "RESPONSE_SCHEMA_VALIDATION",
+        "error_class": "ValidationError",
+        "instance_path": ["explicit_non_claims"],
+        "schema_path": ["properties", "explicit_non_claims", "required"],
+        "validator": "required",
+        "offending_value_type": "dict",
+        "offending_value_length": 7
+      }
+    },
+    {
+      "case_id": "SF-011",
+      "mutation_descriptor": "SET_SOURCE_PACKAGE_HASH_MISMATCH",
+      "expected_validator": "const",
+      "captured_detail": {
+        "phase": "RESPONSE_SCHEMA_VALIDATION",
+        "error_class": "ValidationError",
+        "instance_path": ["source_package_sha256"],
+        "schema_path": ["properties", "source_package_sha256", "const"],
+        "validator": "const",
+        "offending_value_type": "str",
+        "offending_value_length": 64
+      }
+    },
+    {
+      "case_id": "SF-012",
+      "mutation_descriptor": "EXCEED_SUMMARY_MAX_LENGTH",
+      "expected_validator": "maxLength",
+      "captured_detail": {
+        "phase": "RESPONSE_SCHEMA_VALIDATION",
+        "error_class": "ValidationError",
+        "instance_path": ["summary"],
+        "schema_path": ["properties", "summary", "maxLength"],
+        "validator": "maxLength",
+        "offending_value_type": "str",
+        "offending_value_length": 3001
+      }
+    }
+  ],
+  "accounting": {
+    "input_hashes_checked": 6,
+    "synthetic_cases": 12,
+    "captured_details_schema_pass": "12/12",
+    "network_requests": 0,
+    "live_model_requests": 0,
+    "credential_value_reads": 0,
+    "raw_provider_response_reads": 0,
+    "target_writes": 0,
+    "dbos_writes": 0,
+    "saee_writes": 0
+  }
+}
