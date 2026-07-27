@@ -1,0 +1,135 @@
+{
+  "result_id": "TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T16:58:11Z",
+  "status": "FAIL_CLOSED_FORMAL_RELEASE_CONTEXT_REQUIRED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-DECISION-RECORD.v0.1.json",
+  "decision_commit": "41b0bc91734d81581efa7efdd500e5d9ce30658a",
+  "decision_remote_baseline_verified": true,
+  "frozen_remote_state": {
+    "canonical_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "ce_commit": "e032115adbe38cc84bde80cc9b10b96f6da1b428",
+    "merge_base": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "merge_tree": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "draft_pr_number": 22,
+    "draft_pr_state": "OPEN",
+    "draft_pr_is_draft": true,
+    "draft_pr_mergeable": "MERGEABLE",
+    "draft_pr_merge_state_status": "CLEAN",
+    "ce_head_actions_run_count": 0,
+    "matched": true
+  },
+  "temporary_worktree": {
+    "created": 1,
+    "removed": 1,
+    "remaining": 0
+  },
+  "prefix_observation": {
+    "site_path_raw": "/tmp/titmas-ce-g11b-r5.57xtav/worktree/digital-biosphere-architecture/site",
+    "npm_prefix_raw": "/private/tmp/titmas-ce-g11b-r5.57xtav/worktree/digital-biosphere-architecture/site",
+    "site_path_normalized": "/private/tmp/titmas-ce-g11b-r5.57xtav/worktree/digital-biosphere-architecture/site",
+    "npm_prefix_normalized": "/private/tmp/titmas-ce-g11b-r5.57xtav/worktree/digital-biosphere-architecture/site",
+    "normalized_equality": true
+  },
+  "installation": {
+    "command": "NPM_CONFIG_OFFLINE=true npm ci --offline --ignore-scripts --no-audit --no-fund",
+    "attempts": 1,
+    "retries": 0,
+    "exit": 0,
+    "sanitized_output_summary": "added 493 packages in 5s",
+    "output_sha256": "e7582a1527764bdc6231acca0c9ff91d11fd1f0dce93414fc9d9983faa90650a",
+    "network_fallbacks": 0,
+    "lifecycle_install_scripts": 0
+  },
+  "dependency_validation": {
+    "command": "npm ls --depth=0 --json",
+    "attempts": 1,
+    "exit": 0,
+    "direct_dependencies": 23,
+    "missing_direct_dependencies": 0,
+    "invalid_direct_dependencies": 0,
+    "output_sha256": "ba77d7d9c042942359209dca32b8492e78d4a3cc0f221e2eb69e378ca0bb3779"
+  },
+  "site_test_validation": {
+    "command": "npm test",
+    "attempts": 1,
+    "exit": 0,
+    "tests_observed": 16,
+    "tests_passed": 16,
+    "tests_failed": 0,
+    "output_sha256": "f05d4f5463de81b723fa2180aa9784a1cad22e1bbc135a389c8e14f3dd986c17"
+  },
+  "export_validation": {
+    "command": "npm run export",
+    "attempts": 1,
+    "exit": 1,
+    "failure_category": "FORMAL_RELEASE_CONTEXT_REQUIRED",
+    "error_message": "candidate export requires status.release_claim=false",
+    "public_status_release_claim": true,
+    "output_sha256": "e247c30386e4651f6b30fa96975a2a8433d46bb0285263fc080ef0cee29cc345",
+    "out_index_html_observed": false
+  },
+  "downstream_validation": {
+    "verify_static_runs": 0,
+    "schema_meta_validation_runs": 0,
+    "ce_test_discovery_runs": 0,
+    "not_run_reason": "STOPPED_AFTER_EXPORT_RELEASE_CONTEXT_FAILURE"
+  },
+  "source_integrity": {
+    "package_json_sha256_unchanged": true,
+    "package_lock_sha256_unchanged": true,
+    "export_static_sha256_unchanged": true,
+    "verify_static_sha256_unchanged": true,
+    "tracked_source_diff": 0,
+    "git_status_entries": 0,
+    "merge_tree_after": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "merge_tree_unchanged": true
+  },
+  "direct_release_boundary_observation": {
+    "default_release_mode": "candidate",
+    "candidate_requires_release_claim_false": true,
+    "observed_release_claim": true,
+    "formal_mode_requires_explicit_release_context": true,
+    "frozen_package_script_release_formal_exists": true,
+    "exact_causal_claim_beyond_script_and_error_observation": false
+  },
+  "caps_consumed": {
+    "temporary_worktrees": 1,
+    "npm_ci_attempts": 1,
+    "npm_ls_attempts": 1,
+    "npm_test_attempts": 1,
+    "npm_export_attempts": 1,
+    "verify_static_attempts": 0,
+    "ce_schema_validation_runs": 0,
+    "ce_test_discovery_runs": 0,
+    "network_fallbacks": 0,
+    "pr_mutations": 0,
+    "pushes": 0,
+    "merges": 0,
+    "workflow_runs": 0,
+    "site_source_changes": 0,
+    "server_actions": 0,
+    "deployments": 0
+  },
+  "interpretation": {
+    "actual_offline_install_validated": true,
+    "dependency_tree_validated": true,
+    "site_test_command_validated": true,
+    "formal_static_export_validated": false,
+    "static_verification_completed": false,
+    "ce_validation_completed": false,
+    "merge_ready": false
+  },
+  "effects": {
+    "retry_authorization": false,
+    "release_authorization": false,
+    "merge_authorization": false,
+    "phase_b_authorization": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_R6_FORMAL_RELEASE_CONTEXT_STATIC_VALIDATION_RECOMMENDATION",
+    "authorized": false
+  }
+}

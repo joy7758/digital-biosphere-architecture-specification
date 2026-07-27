@@ -552,6 +552,13 @@ CE validation。[首次 Max review](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDI
 confidence `0.95`、0 blocker/correction。远端 Decision baseline 核验后，只允许一次
 disposable offline install，并严格按 test→public export→verify→3 Schema→49 CE
 tests 执行；PR mutation、workflow、merge 和 deployment 仍未授权。
+[R5 result](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-REPORT-v0.1.md)记录
+`FAIL_CLOSED_FORMAL_RELEASE_CONTEXT_REQUIRED`：install、dependency tree 和 16/16
+site tests 通过；唯一 `npm run export` 因默认 candidate mode 与冻结
+`status.release_claim=true` 不一致而 exit `1`。verify/static/CE 未执行，0 retry，
+source/tree 未漂移。下一步只能准备独立 R6 formal-release-context validation
+Recommendation，不能修改 public truth 绕过 gate。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
