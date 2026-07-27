@@ -61,6 +61,7 @@ SAEE_NE_CONTROLLER=true
 |---|---|---|---|
 | `CS-D02-PRE-67` | `GATE_PASSED_DEVELOPMENT_REFERENCE_ONLY` | `titmas-integrations@0030077…`；本地与 remote clean clone 均 92/92 tests、7/7 rehearsal、offline build PASS；真实网络与 credential read 为 0 | PRE-68 scope Recommendation 已形成；保持 reference-only |
 | `CS-D02-PRE-68` | `RECOMMENDATION_DEFINED_DECISION_REQUIRED` | 10 个 target hashes、16 个 security questions、2 个 Provider/model review bindings、2 个 pinned Linux/amd64 image digests 和 12/12 mutation negatives | 先形成独立 Decision；不自动执行 model/API、image pull/container、Linux validation、formal review、target change、P1/P2、contract adoption、merge 或 release |
+| `TITMAS-FINALIZATION-AVH-001` | `ARCHITECTURE_ASSESSMENT_DEFINED_NOT_ADOPTED` | [AVH architecture assessment](architecture/agent-validation-harness-architecture-assessment-v0.1.md) / [machine record](architecture/agent-validation-harness-architecture-assessment.v0.1.json)；现有 Technical Validation、Evidence Admission、DBOS/SAEE Owner crosswalk 已完成 | 只允许架构、overlap、threat、oracle 和 conformance design review；等待完整提案、Owner/Reviewer 和 `TITMAS-AVH-D01`，不创建产品、Runtime、Sandbox、Agent、Evidence 或实现 |
 
 ```text
 COMMERCIALIZATION_LAST_COMPLETED_STEP=CS-D02-PRE-68-RECOMMENDATION
@@ -73,6 +74,9 @@ PRE68_EXECUTION_AUTHORIZED=false
 FORMAL_HUMAN_SECURITY_REVIEW_COMPLETE=false
 CONTRACT_ADOPTED_AS_STANDARD=false
 STANDARD_READY=false
+TITMAS_AVH_ARCHITECTURE_ASSESSMENT_DEFINED=true
+TITMAS_AVH_PROFILE_ADOPTED=false
+TITMAS_AVH_IMPLEMENTATION_AUTHORIZED=false
 ```
 
 | preview milestone | 目标 | primary repository | 当前状态 | 完成证据 | 下一步 |

@@ -92,6 +92,7 @@ risk_acceptance_authority_assigned: true
 | `R-070` | `HIGH` | PRE-66 的 subprocess 选择、5000 ms admission deadline、DNS mitigation design 或后继离线 PASS 被升级为跨平台 hard wall-clock guarantee、无地址序列化、漏洞修复或 production-safe resolver | PRE-67 已实现 bounded POSIX P0 reference、采纳 Development-only frozen policy input 并完成离线测试，但 selected address 仍经过 ephemeral IPC，绝对 wall-clock bound 未证明，真实网络与正式安全审查未执行 | 固定 `TOTAL_WALL_CLOCK_UPPER_BOUND_CLAIM=false`、`EPHEMERAL_IPC_SERIALIZATION=true`、`FORMAL_HUMAN_SECURITY_REVIEW_COMPLETE=false`；不得把 92/92 offline tests 写成 production security proof | `MITIGATED_BY_PRE67_IMPLEMENTATION_AND_OFFLINE_TESTS_FORMAL_REVIEW_STILL_OPEN` |
 | `R-071` | `HIGH` | PRE-67 的 macOS POSIX reference、92/92 tests、remote clean clone 或 frozen IANA policy 被升级为 Linux/Windows/cross-platform support、native-thread fork safety、real-network conformance、Provider support、adopted Standard 或 release | 当前只观察 Darwin arm64 / CPython 3.14.5；Linux 未验证，Windows 不支持；native thread/extension fork safety、真实 DNS/TCP/TLS、P1/P2、formal Human Security Review 均未完成 | 固定 exact platform 与 negative claims；下一步只允许形成 PRE-68 formal Security Review 与 platform-validation scope Recommendation，任何执行仍需独立 Decision | `CONTROL_DEFINED_PRE67_DEVELOPMENT_REFERENCE_ONLY_PRE68_RECOMMENDATION_REQUIRED` |
 | `R-072` | `HIGH` | `threading.active_count()==1`、两次 agent review 或两个 Linux image PASS 被当作 post-fork safety、macOS safety、OpenSSL state safety 或正式 Human Security Review 证明 | Python 官方文档明确保留 fork/thread、macOS higher-level API 和 OpenSSL multiprocessing 风险；Python 层 thread count 不能证明 native/extension thread 为 0；当前 human reviewer 未指派 | PRE-68 冻结 16 个 review questions、exact agent/platform lanes 和 `AGENT_REVIEW_NE_FORMAL_HUMAN_SECURITY_REVIEW`；没有独立 Decision 不执行，未命名 human reviewer 时 formal gate 永远保持 false | `CONTROL_DEFINED_PRE68_RECOMMENDATION_ONLY_DECISION_AND_HUMAN_REVIEW_OPEN` |
+| `R-073` | `HIGH` | AVH 被扩张为新产品、Runtime、Sandbox service、第二 Evidence/Verification Authority，或把 claim-observation match 宣称为完整行为证明、Truth、Safety、Reputation/Health 结论或 Certification | 用户提案识别的问题有效，但来源在 Sandbox Manager 示例处截断；Owner、oracle、观察覆盖、threat/data contract、符合性与重复建设审查均未完成；DBOS 已拥有 canonical Evidence/Verification 和独立 Evidence Admission 边界 | 只登记可替换 AVH Profile candidate；输出限于 Observation、Validation Receipt 与 Evidence Material；强制 DBOS admission；`TITMAS-AVH-D01` 前不得采纳、实现或执行 | `CONTROL_DEFINED_AVH_ASSESSMENT_ONLY_PROFILE_NOT_ADOPTED` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -143,8 +144,8 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=72
-ACTIVE_RISKS=70
+TRACKED_RISKS=73
+ACTIVE_RISKS=71
 RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=13
 BLOCKERS_CLEARED=12

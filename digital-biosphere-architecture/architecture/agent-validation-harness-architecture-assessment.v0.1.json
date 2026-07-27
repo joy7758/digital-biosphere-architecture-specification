@@ -1,0 +1,109 @@
+{
+  "$schema": "./schemas/agent-validation-harness-architecture-assessment.schema.v0.1.json",
+  "document_id": "DBA-TITMAS-AVH-ARCHITECTURE-ASSESSMENT-0.1",
+  "version": "0.1.0",
+  "status": "ARCHITECTURE_ASSESSMENT_DEFINED_CONDITIONALLY_RECOMMENDED_NOT_ADOPTED",
+  "assessed_at": "2026-07-27",
+  "decision_reference": "TITMAS-AVH-D01",
+  "canonical_document": "agent-validation-harness-architecture-assessment-v0.1.md",
+  "source_intake": {
+    "source_type": "USER_PROVIDED_ARCHITECTURE_PROPOSAL",
+    "source_completeness": "PARTIAL_TRUNCATED_AFTER_SANDBOX_MANAGER_EXAMPLE",
+    "unprovided_details_are_assumed": false
+  },
+  "classification": {
+    "candidate_name": "Agent Validation Harness Profile",
+    "candidate_acronym": "AVH",
+    "architecture_class": "EVIDENCE_INFRASTRUCTURE_VALIDATION_EXECUTION_PROFILE_CANDIDATE",
+    "primary_repository": "digital-biosphere-architecture",
+    "implementation_owner": "NOT_ASSIGNED",
+    "new_product": false,
+    "new_core_layer": false,
+    "agent_framework": false,
+    "runtime": false,
+    "evidence_authority": false,
+    "verification_authority": false
+  },
+  "recommendation": {
+    "result": "CONDITIONALLY_RECOMMENDED",
+    "recommended_as": "BOUNDED_REPLACEABLE_VALIDATION_EXECUTION_PROFILE_CANDIDATE",
+    "not_recommended_as": [
+      "NEW_PRODUCT",
+      "RUNTIME",
+      "AGENT_FRAMEWORK",
+      "CANONICAL_EVIDENCE_PRODUCER",
+      "CANONICAL_VERIFICATION_AUTHORITY",
+      "TRUTH_OR_SAFETY_CERTIFIER"
+    ],
+    "adoption_decision": "BLOCKED_INPUT"
+  },
+  "bounded_flow": [
+    "AGENT_OR_RUNTIME_UNDER_TEST",
+    "CONTROLLED_EXECUTION_BOUNDARY",
+    "OBSERVATION_CAPTURE",
+    "CLAIM_OBSERVATION_COMPARISON",
+    "VALIDATION_RECEIPT_AND_EVIDENCE_MATERIAL",
+    "DBOS_EVIDENCE_ADMISSION",
+    "DBOS_CANONICAL_EVIDENCE_AND_INDEPENDENT_VERIFICATION",
+    "READ_ONLY_EVALUATION_CONSUMERS"
+  ],
+  "candidate_outputs": [
+    "OBSERVATION_PACKAGE",
+    "CLAIM_BINDING",
+    "COMPARISON_RESULT",
+    "VALIDATION_RECEIPT",
+    "EVIDENCE_MATERIAL_HANDOFF"
+  ],
+  "comparison_results": [
+    "MATCH",
+    "MISMATCH",
+    "PARTIAL",
+    "UNKNOWN",
+    "ERROR"
+  ],
+  "ownership": {
+    "avh_scope": "BOUNDED_VALIDATION_EXECUTION_AND_MATERIAL_HANDOFF",
+    "canonical_evidence_owner": "DBOS",
+    "canonical_verification_owner": "DBOS",
+    "evaluation_owner": "SAEE",
+    "architecture_governance_owner": "DBA",
+    "health_consumer_role": "AGENT_IMMUNE_DESIGN_LAYER_READ_ONLY_CONSUMER_CANDIDATE"
+  },
+  "invariants": {
+    "observation_ne_evidence": true,
+    "validation_receipt_ne_canonical_verification": true,
+    "claim_observation_match_ne_world_truth": true,
+    "avh_ne_dbos": true,
+    "avh_ne_saee": true,
+    "avh_ne_agent_immune": true,
+    "avh_ne_agent_framework": true,
+    "avh_ne_runtime": true
+  },
+  "required_before_adoption": [
+    "COMPLETE_PROPOSAL",
+    "ARCHITECTURE_REVIEWER_AND_CANDIDATE_DOMAIN_OWNER",
+    "THREAT_MODEL",
+    "DATA_MINIMIZATION_RETENTION_AND_CLEANUP",
+    "ORACLE_OBSERVATION_COVERAGE_AND_FAILURE_CONTRACT",
+    "MACHINE_CONTRACT",
+    "POSITIVE_AND_NEGATIVE_CONFORMANCE_CASES",
+    "OVERLAP_REVIEW",
+    "EXPLICIT_TITMAS_AVH_D01_DECISION"
+  ],
+  "effects": {
+    "core_architecture_changed": false,
+    "authority_changed": false,
+    "ownership_changed": false,
+    "implementation_authorized": false,
+    "runtime_authorized": false,
+    "sandbox_created": false,
+    "agent_created": false,
+    "entity_created": false,
+    "permission_created": false,
+    "evidence_object_created": false,
+    "verification_object_created": false,
+    "commercial_offer_created": false,
+    "certification_created": false,
+    "release_authorized": false
+  }
+}

@@ -29,6 +29,7 @@ creates_project_relationships: false
 | `PROJECT-POP` | POP | Identity-related component（身份相关组件）；既有公共语义中也用于 portable persona interface（可移植人格接口） | DBOS Identity 相邻域 | 本表不声明 POP 是 DBOS 子模块、身份权威或已接入 DBOS | POP persona projection（人格投射）与 DBOS canonical identity（规范身份）的责任分界 |
 | `PROJECT-ARO` | ARO / ARO-Audit | Evidence/Audit component（证据/审计组件） | DBOS Evidence/Verification 相邻域 | 本表不声明其采集、验证、审计或回放能力已实现或属于 DBOS | 与 Agent Evidence、DBOS Evidence Collection 的数据所有权和阶段边界 |
 | `PROJECT-AGENT-EVIDENCE` | Agent Evidence | Evidence component（证据组件） | Execution-to-evidence handoff（执行到证据交接）相邻域 | Evidence package（证据包）不自动等于 DBOS 验证或 SAEE 评价 | 与 ARO 的审计职责、与 DBOS 的证据采集职责可能重叠 |
+| `ARCH-CANDIDATE-AVH-PROFILE` | Agent Validation Harness Profile | Evidence Infrastructure validation-execution profile candidate（证据基础设施验证执行 Profile 候选） | 受控执行条件下的 Observation capture、claim-observation comparison 和 Evidence Material handoff | 不是新产品、Runtime、Agent Framework、Sandbox service、canonical Evidence producer 或 Verification Authority；当前未采纳、未授权实现或执行 | 需完成 oracle／coverage／threat／data contract、与 Agent Evidence／ARO／DBOS／Technical Validation Pilot 的重复建设审查及 `TITMAS-AVH-D01` |
 | `PROJECT-TOKEN-GOVERNOR` | Token Governor | Resource governance component（资源治理组件） | DBOS operational governance（运行治理）相邻域；为 SAEE 提供资源评价输入 | 本表不声明其是 DBOS 内置模块或拥有最终治理权 | 与 DBOS 执行约束、SAEE 资源适应度评价的边界 |
 | `PROJECT-RESEARCH-AGENT` | Research Agent | Future Operational Digital Entity（未来运行型数字实体）；第一个 Pilot reference（试验参考） | Digital Entity / Operational | 只是参考规范与 Pilot 设计；没有创建 Agent、Identity、Runtime、Capability、Permission、任务或研究结果 | 接入前需满足 Digital Entity、Capability、授权、Evidence、评价与 Human Oversight 契约 |
 | `ARCH-ROLE-DIGITAL-ORGANISM` | Digital Organism | SAEE Evaluation Target（SAEE 评价目标）；高级 Digital Entity qualification state | Evolution Evaluation + DBOS qualification record | 不是项目、Entity 实例、Agent、Runtime、Capability 或权限；SAEE 评价不自动产生资格 | 长期阈值、Lineage、生态范围、暂停与撤销状态机尚需定义 |
@@ -97,6 +98,16 @@ v0.1 将二者都登记在证据相邻域，但不把二者合并：
 ### 4.4 Token Governor
 
 Token Governor 的资源、预算、策略或运行约束记录可以成为 DBOS 运行治理的相邻输入，也可以成为 SAEE 适应度与风险评价的数据来源。它不因此拥有 SAEE 演化算法，也不自动成为 DBOS 状态权威。
+
+### 4.4A Agent Validation Harness Profile candidate
+
+[`Agent Validation Harness Architecture Assessment v0.1`](agent-validation-harness-architecture-assessment-v0.1.md)
+把 AVH 只登记为 TITMAS Evidence Infrastructure 的 validation-execution profile candidate。
+它可以在受控执行边界内捕获 Observation、比较 Agent claim 并输出 Validation Receipt 与
+Evidence Material，但必须把材料提交给独立 DBOS Evidence Admission；它不能创建
+canonical Evidence/Verification，也不能直接驱动 Agent Immune、SAEE、Health、
+Reputation、Permission 或 Lifecycle。该登记是收尾阶段架构评估，不是项目准入、组件采纳、
+实现或执行授权。
 
 ### 4.5 Research Agent
 
@@ -180,5 +191,10 @@ TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
 TITMAS_CODE_OF_CONDUCT_ADOPTED=false
 TITMAS_MAINTAINER_ASSIGNED=false
 TITMAS_FOUNDATION_IN_SCOPE=false
+TITMAS_AVH_PROFILE_CANDIDATE_RECORDED=true
+TITMAS_AVH_PROFILE_ADOPTED=false
+TITMAS_AVH_IMPLEMENTATION_AUTHORIZED=false
+TITMAS_AVH_EXECUTION_AUTHORIZED=false
+TITMAS_AVH_CANONICAL_EVIDENCE_OWNER=false
 PRODUCTION_READY=false
 ```
