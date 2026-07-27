@@ -526,6 +526,13 @@ R4 Decision，要求一次 offline/ignore-scripts 安装后完成 npm/site/stati
 offline/ignore-scripts `npm ci`，成功后各执行一次 `npm ls`、site tests、
 `verify:static`、3 个 Schema meta-validation 和精确 49 个 CE tests。PR mutation、
 workflow、merge、部署和网站源码修改仍为 0／未授权。
+[R4 result](TITMAS-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-REPORT-v0.1.md)保留
+`FAIL_CLOSED_STATIC_EXPORT_ARTIFACT_ABSENT`：唯一 offline install、`npm ls` 和
+`npm test` 分别 exit `0`，site tests 16/16；唯一 `verify:static` 因
+`site/out/index.html` 不存在而 exit `1`。CE Schema/test 阶段未执行，R4 不重试；
+package/lock/source/tree 未漂移，下一步只能准备独立 R5 static-export sequence
+remediation Recommendation。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
