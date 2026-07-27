@@ -1,0 +1,57 @@
+{
+  "record_type": "TITMAS_SANITIZED_PRE_EXECUTION_DECISION_REVIEW_FAILURE",
+  "review_id": "TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-QWEN-DECISION-REVIEW-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T16:13:00Z",
+  "status": "NON_QUALIFYING_REVIEW_ATTEMPT",
+  "terminal_failure_category": "NO_SANITIZED_MODEL_RESULT_AVAILABLE",
+  "reviewed_artifact": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-DECISION-RECORD.v0.1.json",
+  "reviewed_source_sha256": "3be57ae217875b887b88a470ed0166e4c980630c1ce8a898a4722e8d4d5517bd",
+  "requested_model": "qwen3.7-max",
+  "returned_model": null,
+  "returned_model_equals_requested_model": false,
+  "http_status": null,
+  "request_payload_sha256": "d2e5ecb80214957a0dcc0dbec5454c1b826840c047a258457c0df4fb5af0a887",
+  "response_envelope_sha256": null,
+  "response_byte_count": null,
+  "local_preflight_failure_count": 1,
+  "request_count": 1,
+  "retry_count": 0,
+  "fallback_count": 0,
+  "model_substitution_count": 0,
+  "json_repair_request_count": 0,
+  "direct_json_parse_pass": false,
+  "qualifying_review": false,
+  "review": null,
+  "sanitized_observation": [
+    "A local Node.js module-format preflight failed before fetch was called and did not consume the provider request cap.",
+    "The corrected single-request process was then started and completed without emitting a persisted sanitized provider result.",
+    "No HTTP status, response hash, returned model identity, verdict, blocker list or correction list is available for qualification.",
+    "The provider request is counted and cannot be retried under this Decision candidate."
+  ],
+  "root_cause": "UNKNOWN",
+  "persistence_boundary": {
+    "credential_persisted": false,
+    "hidden_reasoning_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "usage_persisted": false,
+    "provider_error_body_persisted": false
+  },
+  "effects": {
+    "authority": false,
+    "dry_run_authorization": false,
+    "dry_run_executed": false,
+    "actual_install": false,
+    "site_test": false,
+    "pr_mutation": false,
+    "merge": false,
+    "workflow_run": false,
+    "phase_b_authorization": false,
+    "deployment": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_ZERO_INSTALL_NPM_CWD_DECISION_REVIEW_RETRY_RECOMMENDATION",
+    "authorized": false
+  }
+}

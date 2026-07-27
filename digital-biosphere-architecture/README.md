@@ -483,7 +483,11 @@ fail-closed：唯一一次 `npm ci --offline --ignore-scripts` 返回 `EUSAGE` �
 建议在真实 site cwd 中执行一次 `npm ci --dry-run --offline --ignore-scripts`，只验证
 prefix/cwd hypothesis。[Max review](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
 为 `RECOMMENDED`、Option A、confidence `1.0`、0 blocker/correction。dry-run、真实安装
-和 merge 均未授权。
+和 merge 均未授权。[Decision review failure](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-QWEN-DECISION-REVIEW-FAILURE-v0.1.json)
+进一步保留唯一一次 Decision review 的 `NON_QUALIFYING_REVIEW_ATTEMPT`：本地 preflight
+在请求前失败一次，不计 provider request；修正后的单次请求未产生可持久化的 sanitized
+result，因此 returned model、HTTP、verdict、blocker/correction 均为 unknown。不得把
+该尝试视为 APPROVE，也不得在同一 Decision 下重试或执行 dry-run。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
