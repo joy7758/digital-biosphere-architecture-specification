@@ -1,0 +1,152 @@
+{
+  "observed_at": "2026-07-27T17:56:42.038Z",
+  "lane": "A",
+  "curl_exit": 0,
+  "http_status": 200,
+  "request_payload_sha256": "fa2a814a9a233f8c719f847d0e5483418516ede83b838c1f09ebb3e0bc7f62de",
+  "response_byte_count": 30066,
+  "response_envelope_sha256": "4b2910b34b471f4c326909734380174baf638534df455d807ea6775df21cd15e",
+  "envelope_json_parse_pass": true,
+  "direct_json_parse_pass": true,
+  "returned_model": "qwen3.7-max",
+  "returned_model_equals_requested_model": true,
+  "binding_valid": true,
+  "contract_valid": false,
+  "qualifying_lane": false,
+  "review": {
+    "verdict": "REQUEST_CHANGES",
+    "confidence": 0.95,
+    "reviewed_lane": "A",
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+    "patch_sha256": "30d0ad22f5e8d824fcc9e5a42adba1379770d3c52d84d8aa21e266bdc3110093",
+    "files_reviewed": 9,
+    "correctness_pass": false,
+    "security_pass": true,
+    "authority_boundary_pass": true,
+    "evidence_claim_pass": false,
+    "agent_readability_pass": true,
+    "blocking_findings": [
+      {
+        "severity": "HIGH",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce_g11b_cross_version_runner.py",
+        "line_or_reference": "457-460",
+        "category": "command_injection",
+        "claim": "The runner executes test modules by passing the filename string directly to `python -m unittest -v <module>` via subprocess. If the module name contains shell metacharacters or path traversal sequences, it could lead to unintended command execution or file access.",
+        "evidence": "Lines 457-460: `result = test_runner([sys.executable, '-m', 'unittest', '-v', module], ...)` where `module` is a string parameter. While the current hardcoded values are safe, the function signature accepts arbitrary strings without validation."
+      },
+      {
+        "severity": "HIGH",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce_g11b_cross_version_runner.py",
+        "line_or_reference": "268-275",
+        "category": "path_traversal",
+        "claim": "The `verify_frozen_inputs` function constructs paths by joining `root` with relative paths from `FROZEN_INPUTS` dictionary without validating that the resulting path stays within the expected directory tree.",
+        "evidence": "Lines 268-275: `path = root / relative` where `relative` comes from `FROZEN_INPUTS.items()`. If `FROZEN_INPUTS` contained values like `../../../etc/passwd`, the path would escape the root directory."
+      },
+      {
+        "severity": "MEDIUM",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce_g11b_cross_version_runner.py",
+        "line_or_reference": "343-350",
+        "category": "command_injection",
+        "claim": "The `validate_request` function passes `phase_a_commit` and `source_commit` directly to a git command without validating they are strictly hexadecimal strings before execution.",
+        "evidence": "Lines 343-350: `ancestry = git_runner(['git', 'merge-base', '--is-ancestor', phase_a_commit, source_commit], ...)` executes before the regex validation on lines 336-340 completes for `source_commit`."
+      },
+      {
+        "severity": "MEDIUM",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-cross-version-result.schema.v0.1.json",
+        "line_or_reference": "145-147",
+        "category": "schema_validation",
+        "claim": "The schema allows `error_class` to be either string or null, but does not constrain the string format, potentially allowing injection of arbitrary content into the result artifact.",
+        "evidence": "Lines 145-147: `\"error_class\": {\"type\": [\"string\", \"null\"]}` lacks pattern or length constraints."
+      },
+      {
+        "severity": "MEDIUM",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce_g11b_cross_version_runner.py",
+        "line_or_reference": "382-389",
+        "category": "information_disclosure",
+        "claim": "The `safe_environment_value` function returns 'UNAVAILABLE' for missing or invalid environment variables, but the allowlist check uses a hardcoded character set that may not match all valid runner environment values.",
+        "evidence": "Lines 382-389: The allowed character set excludes common characters like '/' and ':' that appear in PATH and other standard environment variables, causing legitimate values to be masked as 'UNAVAILABLE'."
+      }
+    ],
+    "non_blocking_findings": [
+      {
+        "severity": "LOW",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.schema.v0.1.json",
+        "line_or_reference": "267-269",
+        "category": "schema_consistency",
+        "claim": "The `next_gate` property uses `const` instead of `type: object` with nested properties, making it impossible to validate the structure if the schema is extended.",
+        "evidence": "Lines 267-269: `\"next_gate\": {\"const\": {\"action\": \"...\", \"authorized\": false}}` uses const for the entire object rather than defining it as an object type."
+      },
+      {
+        "severity": "LOW",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/test_ce_g11b_cross_version_runner.py",
+        "line_or_reference": "1-10",
+        "category": "test_coverage",
+        "claim": "The test file lacks tests for edge cases such as malformed JSON in request files, missing required fields, and invalid date formats.",
+        "evidence": "The test file contains 13 test methods but none specifically test JSON parsing failures or schema validation edge cases."
+      }
+    ],
+    "required_corrections": [
+      {
+        "severity": "HIGH",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce_g11b_cross_version_runner.py",
+        "line_or_reference": "457-460",
+        "category": "command_injection",
+        "claim": "Add validation to ensure the `module` parameter contains only alphanumeric characters, underscores, and dots before passing to subprocess.",
+        "evidence": "Current implementation accepts arbitrary strings without validation."
+      },
+      {
+        "severity": "HIGH",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce_g11b_cross_version_runner.py",
+        "line_or_reference": "268-275",
+        "category": "path_traversal",
+        "claim": "Add path validation to ensure constructed paths remain within the expected root directory using `path.resolve().is_relative_to(root.resolve())`.",
+        "evidence": "Current implementation does not validate path boundaries."
+      },
+      {
+        "severity": "MEDIUM",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce_g11b_cross_version_runner.py",
+        "line_or_reference": "343-350",
+        "category": "command_injection",
+        "claim": "Move the git command execution after both `phase_a_commit` and `source_commit` have been validated with regex patterns.",
+        "evidence": "Current code executes git command before validating `source_commit` format."
+      },
+      {
+        "severity": "MEDIUM",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-cross-version-result.schema.v0.1.json",
+        "line_or_reference": "145-147",
+        "category": "schema_validation",
+        "claim": "Add pattern constraint to `error_class` string type to limit it to uppercase alphanumeric characters and underscores with a maximum length.",
+        "evidence": "Current schema allows arbitrary string content."
+      },
+      {
+        "severity": "MEDIUM",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce_g11b_cross_version_runner.py",
+        "line_or_reference": "382-389",
+        "category": "information_disclosure",
+        "claim": "Expand the allowed character set in `safe_environment_value` to include '/' and ':' for PATH-like variables, or document the intentional masking behavior.",
+        "evidence": "Current character set excludes common path separators."
+      }
+    ],
+    "rationale": "The patch introduces a cross-version validation runner with multiple security vulnerabilities including command injection risks in subprocess execution, path traversal vulnerabilities in file operations, and insufficient input validation before git command execution. While the authority boundary is properly maintained and the overall design is sound, the implementation contains HIGH severity defects that must be corrected before merge. The schema definitions also lack proper constraints on string fields that could allow injection of arbitrary content into result artifacts."
+  },
+  "terminal_failure_category": "LANE_CONTRACT_FAILURE_BLOCKING_SEVERITY",
+  "post_capture_contract_audit": {
+    "decision_blocking_severities": [
+      "CRITICAL",
+      "HIGH"
+    ],
+    "observed_blocking_severities": [
+      "HIGH",
+      "HIGH",
+      "MEDIUM",
+      "MEDIUM",
+      "MEDIUM"
+    ],
+    "invalid_blocking_severities": [
+      "MEDIUM"
+    ],
+    "model_content_modified": false,
+    "synthesis_allowed": false
+  }
+}
