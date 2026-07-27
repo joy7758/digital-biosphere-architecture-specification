@@ -515,6 +515,10 @@ R3 Decision，以 raw+realpath 双记录修正前置检查，不改变诊断命�
 `/tmp` 与 `/private/tmp` 不同、realpath 相等，唯一 dry-run exit `0`；`node_modules`
 前后不存在，Git status 0，package/lock/tree 未改变。真实安装和 site tests 仍为 0，
 下一步只能准备独立 actual-install Recommendation。
+[R4 Recommendation](TITMAS-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-RECOMMENDATION-v0.1.md)
+及其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction；只允许建立新的
+R4 Decision，要求一次 offline/ignore-scripts 安装后完成 npm/site/static/CE 全部验证。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
