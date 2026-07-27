@@ -91,6 +91,7 @@ risk_acceptance_authority_assigned: true
 | `R-069` | `HIGH` | PRE-65 的 2/2 transport/Schema PASS、双 Provider 来源或候选安全审查标签被升级为正式 Human Security Review、Provider approval、已证实漏洞、adopted remediation 或实现授权 | 两个输出都是模型 advisory；两者均为 `REVISE` / `CONDITIONAL`；DNS rebinding/TOCTOU 仍只是需进一步验证的 finding | PRE-66 已把 deadline、ephemeral IPC、destination policy、address pinning 和 executable-test gate 分解为 Development candidate；继续固定 `AGENT_REVIEW_NE_HUMAN_SECURITY_REVIEW`、`FINDING_NE_PROVEN_VULNERABILITY`、`DESIGN_NE_IMPLEMENTATION` | `MITIGATED_BY_PRE66_OFFLINE_REMEDIATION_FORMAL_REVIEW_STILL_OPEN` |
 | `R-070` | `HIGH` | PRE-66 的 subprocess 选择、5000 ms admission deadline、DNS mitigation design 或后继离线 PASS 被升级为跨平台 hard wall-clock guarantee、无地址序列化、漏洞修复或 production-safe resolver | PRE-67 已实现 bounded POSIX P0 reference、采纳 Development-only frozen policy input 并完成离线测试，但 selected address 仍经过 ephemeral IPC，绝对 wall-clock bound 未证明，真实网络与正式安全审查未执行 | 固定 `TOTAL_WALL_CLOCK_UPPER_BOUND_CLAIM=false`、`EPHEMERAL_IPC_SERIALIZATION=true`、`FORMAL_HUMAN_SECURITY_REVIEW_COMPLETE=false`；不得把 92/92 offline tests 写成 production security proof | `MITIGATED_BY_PRE67_IMPLEMENTATION_AND_OFFLINE_TESTS_FORMAL_REVIEW_STILL_OPEN` |
 | `R-071` | `HIGH` | PRE-67 的 macOS POSIX reference、92/92 tests、remote clean clone 或 frozen IANA policy 被升级为 Linux/Windows/cross-platform support、native-thread fork safety、real-network conformance、Provider support、adopted Standard 或 release | 当前只观察 Darwin arm64 / CPython 3.14.5；Linux 未验证，Windows 不支持；native thread/extension fork safety、真实 DNS/TCP/TLS、P1/P2、formal Human Security Review 均未完成 | 固定 exact platform 与 negative claims；下一步只允许形成 PRE-68 formal Security Review 与 platform-validation scope Recommendation，任何执行仍需独立 Decision | `CONTROL_DEFINED_PRE67_DEVELOPMENT_REFERENCE_ONLY_PRE68_RECOMMENDATION_REQUIRED` |
+| `R-072` | `HIGH` | `threading.active_count()==1`、两次 agent review 或两个 Linux image PASS 被当作 post-fork safety、macOS safety、OpenSSL state safety 或正式 Human Security Review 证明 | Python 官方文档明确保留 fork/thread、macOS higher-level API 和 OpenSSL multiprocessing 风险；Python 层 thread count 不能证明 native/extension thread 为 0；当前 human reviewer 未指派 | PRE-68 冻结 16 个 review questions、exact agent/platform lanes 和 `AGENT_REVIEW_NE_FORMAL_HUMAN_SECURITY_REVIEW`；没有独立 Decision 不执行，未命名 human reviewer 时 formal gate 永远保持 false | `CONTROL_DEFINED_PRE68_RECOMMENDATION_ONLY_DECISION_AND_HUMAN_REVIEW_OPEN` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -108,7 +109,7 @@ risk_acceptance_authority_assigned: true
 | `B-018` | Schema/Resource/Entity 的 36 个 DQ-018 authorized offline cases 已通过，但 acquisition/cache/transform、真实 detector provenance 和 9 个 DQ-020 deployment cases 仍未执行 | `PR-G2T`、`PR-G3`、`PR-G5`、`PR-G6` | DQ-020 authorization + exact deployment source/policy/environment + 剩余 9 cases + 独立 review | 当前 36-case offline subset 与 DBA reference review |
 | `B-020` | TITMAS C1 Contributor Entry 已本地准备，但 Authority Freeze、正式 Code of Conduct、安全接收路径、Owner/review roles、license/CLA 输入和公共外部动作授权不完整 | `DQ-026`、公共贡献表面、真实贡献者接收、SIG/Workstream 激活 | 补齐全部输入并由 Human Architecture Authority 对 exact public surface 作独立 Decision；启用后仍按贡献/角色/Workstream gate 分阶段 | 本地文档、模板、JSON/Schema、Good First candidate 和 fail-closed 验证；不阻塞 DBA 内继续改进贡献入口 |
 | `B-021` | `titmas.cn` 备案未完成，DNS/TLS/canonical cutover 与 `redcrag.cn` redirect 没有直接验证；`titmas-cn` Organization 尚未创建 | 公共域名切换、Organization 创建、仓库迁移 | 备案证据 + 独立 DNS/TLS/health/security-header/machine-entry/rollback gate；Organization 创建与每个仓库迁移分别授权 | 网站源码、双语／机器入口、GitHub profile copy 和迁移清单的本地准备 |
-| `B-025` | PRE-67 已完成 bounded POSIX P0 reference、离线 executable tests、Development-only frozen IANA policy input 与 remote clean clone；但 formal Human Security Review、Linux/platform matrix、native-thread fork safety、真实 DNS/TCP/TLS、P1/P2、Provider binding/conformance、SBOM/reproducible build、merge/release 仍无证据 | PRE-68 review/platform scope Recommendation 与独立 Decision、后续 formal review 和精确平台验证；Provider support/conformance、merge、release 与 commercial availability 继续分离 | 如继续，只先形成 PRE-68 Recommendation；不得把 offline test、macOS observation、snapshot 或 clean clone 写成跨平台、production security、Provider support 或 Standard Ready | PRE-50/52/53/60/61/62/63/64/65/66/67 retained evidence、sanitized results、negative cases、target commit 和 hash receipt 可审查 |
+| `B-025` | PRE-68 已完成 exact security/platform scope Recommendation，但独立 Decision 未形成；两个 agent sessions、两个 pinned Linux x86_64 validations、formal Human Security Review、native-thread/macOS/OpenSSL fork safety、真实 DNS/TCP/TLS、P1/P2、Provider binding/conformance、SBOM/reproducible build、merge/release 仍无证据 | PRE-68 独立 Decision；如获准再按 request/image/network/write caps 执行 advisory review 与 exact Linux observations；formal human reviewer 仍需独立指派与 decision | standing directive 不覆盖当前 API/runtime/network resource 显式 false；不得仅凭 Recommendation、agent output 或 platform PASS 改写 formal review、Provider support 或 Standard Ready | PRE-50/52/53/60/61/62/63/64/65/66/67 retained evidence，及 PRE-68 hash-bound Recommendation/Schema 可审查 |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
 
@@ -142,8 +143,8 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=71
-ACTIVE_RISKS=69
+TRACKED_RISKS=72
+ACTIVE_RISKS=70
 RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=13
 BLOCKERS_CLEARED=12
