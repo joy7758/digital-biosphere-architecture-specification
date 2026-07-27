@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_53_BENCHMARK_PASS_QWEN_CREDENTIAL_CONFIGURED_ONBOARDING_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_55_QWEN_ONBOARDING_FAIL_CLOSED_MODEL_NOT_FOUND_DISCOVERY_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -96,6 +96,8 @@
         "credential_value_recorded",
         "provider_connected",
         "provider_directly_tested",
+        "provider_direct_test_passed",
+        "provider_error_code",
         "next_action",
         "next_action_authorized",
         "standard_ready",
@@ -106,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "CS-D02-PRE-53"},
+        "last_completed_step": {"const": "CS-D02-PRE-55"},
         "last_completed_result": {
-          "const": "PASS_12_OF_12_BOUND_REQUESTS_PRIMARY_NEW_PROVIDER_QWEN"
+          "const": "FAIL_CLOSED_MODEL_NOT_FOUND"
         },
         "direct_evidence_reference": {
-          "const": "commercialization-standards-china-provider-suitability-benchmark/PRE-53-CHINA-PROVIDER-SUITABILITY-BENCHMARK-RESULT-v0.1.md"
+          "const": "commercialization-standards-qwen-onboarding-benchmark/PRE-55-QWEN-ONBOARDING-BENCHMARK-RESULT-v0.1.md"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -125,9 +127,11 @@
         "base_url_configured_local": {"const": true},
         "credential_value_recorded": {"const": false},
         "provider_connected": {"const": false},
-        "provider_directly_tested": {"const": false},
+        "provider_directly_tested": {"const": true},
+        "provider_direct_test_passed": {"const": false},
+        "provider_error_code": {"const": "model_not_found"},
         "next_action": {
-          "const": "FORM_EXACT_QWEN_ONBOARDING_BENCHMARK_RECOMMENDATION"
+          "const": "FORM_EXACT_READ_ONLY_MODEL_DISCOVERY_RECOMMENDATION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -2752,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE53_BENCHMARK_PASS_QWEN_CREDENTIAL_CONFIGURED_ONBOARDING_BENCHMARK_RECOMMENDATION_REQUIRED"
+          "const": "PRE55_QWEN_ONBOARDING_FAIL_CLOSED_MODEL_NOT_FOUND_MODEL_DISCOVERY_RECOMMENDATION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -5306,6 +5310,27 @@
             "pre54_decision_commit",
             "pre54_result_reference",
             "pre54_current_state_reconciled",
+            "pre55_recommendation_reference",
+            "pre55_recommendation_sha256",
+            "pre55_recommendation_commit",
+            "pre55_decision_reference",
+            "pre55_decision_sha256",
+            "pre55_decision_commit",
+            "pre55_plan_sha256",
+            "pre55_plan_commit",
+            "pre55_result_reference",
+            "pre55_result_sha256",
+            "pre55_sanitized_results_sha256",
+            "pre55_execution_receipt_sha256",
+            "pre55_result_commit",
+            "pre55_result",
+            "pre55_requests_authorized",
+            "pre55_requests_executed",
+            "pre55_requests_passed",
+            "pre55_requests_failed",
+            "pre55_requests_not_executed_fail_closed",
+            "pre55_provider_error_code",
+            "pre55_retry_fallback_substitution_extraction_repair_attempts",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5359,8 +5384,11 @@
             "qwen_base_url_configured_local",
             "qwen_provider_connected",
             "qwen_provider_directly_tested",
+            "qwen_provider_direct_test_passed",
+            "qwen_exact_model_not_found",
             "independent_security_reviewer_provider_required",
             "qwen_onboarding_benchmark_recommendation_allowed",
+            "qwen_model_discovery_recommendation_allowed",
             "rb1_provider_binding_implementation_authorized",
             "rb1_reproducible_build_proven",
             "provider_supported",
@@ -6360,6 +6388,57 @@
             "pre54_current_state_reconciled": {
               "const": true
             },
+            "pre55_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-55-QWEN-ONBOARDING-BENCHMARK-RECOMMENDATION-v0.1.md"
+            },
+            "pre55_recommendation_sha256": {
+              "const": "9bae2f49dbc975a6651cdf1c38bddca5cbbece39d5df93c3d9442f1751a0745d"
+            },
+            "pre55_recommendation_commit": {
+              "const": "87b76344cfa2f78dc626605b8756fa7e4c6ecb07"
+            },
+            "pre55_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-55-QWEN-ONBOARDING-BENCHMARK-DECISION-RECORD.v0.1.json"
+            },
+            "pre55_decision_sha256": {
+              "const": "df2cf3b059b90e52b7bcf4ccad31170c5d71b20b73689ebd57a3ee1f42630872"
+            },
+            "pre55_decision_commit": {
+              "const": "fd5e63b557c9836b0ca69eeeb3ce5db4efc56984"
+            },
+            "pre55_plan_sha256": {
+              "const": "b3ff386a7b238f0e51ac31f78ebfa6564a54c5441a887ae2326698d0de5b2cde"
+            },
+            "pre55_plan_commit": {
+              "const": "23b68c8083ed294542a9bf95b9396ffe9815e8fa"
+            },
+            "pre55_result_reference": {
+              "const": "commercialization-standards-qwen-onboarding-benchmark/PRE-55-QWEN-ONBOARDING-BENCHMARK-RESULT-v0.1.md"
+            },
+            "pre55_result_sha256": {
+              "const": "cee2a2475ea2b59a5add862ad27b8de523d22412b3730e825112950cdbe3dbd9"
+            },
+            "pre55_sanitized_results_sha256": {
+              "const": "a655447097281e596c35c8751e01800d5d9035bc540f2e76ce9eb7264dafbf7a"
+            },
+            "pre55_execution_receipt_sha256": {
+              "const": "a0fe320314bafb1518f7d9968e3c1c88b254c743ba0fb9eea78c71ae35cb58fa"
+            },
+            "pre55_result_commit": {
+              "const": "4f37d19aa4a53a8b7b6deba4293c397ec23fc6ee"
+            },
+            "pre55_result": {
+              "const": "FAIL_CLOSED_MODEL_NOT_FOUND"
+            },
+            "pre55_requests_authorized": {"const": 3},
+            "pre55_requests_executed": {"const": 1},
+            "pre55_requests_passed": {"const": 0},
+            "pre55_requests_failed": {"const": 1},
+            "pre55_requests_not_executed_fail_closed": {"const": 2},
+            "pre55_provider_error_code": {"const": "model_not_found"},
+            "pre55_retry_fallback_substitution_extraction_repair_attempts": {
+              "const": 0
+            },
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -6517,12 +6596,21 @@
               "const": false
             },
             "qwen_provider_directly_tested": {
+              "const": true
+            },
+            "qwen_provider_direct_test_passed": {
               "const": false
+            },
+            "qwen_exact_model_not_found": {
+              "const": true
             },
             "independent_security_reviewer_provider_required": {
               "const": true
             },
             "qwen_onboarding_benchmark_recommendation_allowed": {
+              "const": false
+            },
+            "qwen_model_discovery_recommendation_allowed": {
               "const": true
             },
             "rb1_provider_binding_implementation_authorized": {
@@ -6558,7 +6646,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_EXACT_QWEN_ONBOARDING_BENCHMARK_RECOMMENDATION"
+          "const": "FORM_EXACT_READ_ONLY_MODEL_DISCOVERY_RECOMMENDATION"
         },
         "decision_ready": {
           "const": false
