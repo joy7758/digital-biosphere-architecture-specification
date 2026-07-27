@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_70_EXECUTED_FAIL_CLOSED_AGENT_RESPONSE_NOT_DIRECT_JSON_AFTER_PLATFORM_PASS_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_71_RESPONSE_CONTRACT_AND_CREDENTIAL_ACCOUNTING_RECOMMENDATION_PREPARED_DECISION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "CS-D02-PRE-70-EXECUTION"},
+        "last_completed_step": {"const": "CS-D02-PRE-71-RECOMMENDATION"},
         "last_completed_result": {
-          "const": "PLATFORM_PASS_AGENT_REVIEW_FAIL_CLOSED_NOT_DIRECT_JSON"
+          "const": "STRICT_RESPONSE_CONTRACT_AND_CREDENTIAL_ACCOUNTING_OFFLINE_DESIGN_RECOMMENDED"
         },
         "direct_evidence_reference": {
-          "const": "commercialization-standards-p0-security-and-platform-context-remediation/pre70-execution-receipt.v0.1.json"
+          "const": "TITMAS-CS-D02-PRE-71-AGENT-RESPONSE-CONTRACT-AND-CREDENTIAL-ACCOUNTING-DISPOSITION-RECOMMENDATION-v0.1.md"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,7 +131,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "PREPARE_PRE71_AGENT_RESPONSE_CONTRACT_AND_CREDENTIAL_ACCOUNTING_DISPOSITION_RECOMMENDATION"
+          "const": "RECORD_CS_D02_PRE71_OFFLINE_DESIGN_DECISION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE70_EXECUTED_FAIL_CLOSED_AGENT_RESPONSE_NOT_DIRECT_JSON_PRE71_RECOMMENDATION_REQUIRED"
+          "const": "PRE71_RESPONSE_CONTRACT_AND_CREDENTIAL_ACCOUNTING_RECOMMENDATION_PREPARED_DECISION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7782,10 +7782,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_PRE71_AGENT_RESPONSE_CONTRACT_AND_CREDENTIAL_ACCOUNTING_DISPOSITION_RECOMMENDATION"
+          "const": "AUTHORIZE_OFFLINE_ONLY_PRE71_STRICT_RESPONSE_CONTRACT_AND_CREDENTIAL_ACCOUNTING_DESIGN"
         },
         "decision_ready": {
-          "const": false
+          "const": true
         },
         "external_execution_authorized": {
           "const": false
