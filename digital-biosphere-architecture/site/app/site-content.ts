@@ -163,11 +163,12 @@ export const content = {
   zh: {
     lang: "zh-CN",
     nav: {
-      architecture: "架构",
+      architecture: "基础设施",
       trust: "可信边界",
-      workflow: "贡献路径",
+      workflow: "行业应用",
+      demo: "Demo",
       status: "状态",
-      developers: "社区",
+      developers: "开发者",
       github: "GitHub",
       language: "English",
     },
@@ -175,11 +176,54 @@ export const content = {
     eyebrow: "INFRASTRUCTURE DEVELOPER COMMUNITY / 基础设施开发者社区",
     title: "TITMAS",
     lead:
-      "可信多智能体基础设施开发者社区。共同建设让 AI Agent 能够长期运行、协作并被验证的开放规则。",
-    primaryCta: "进入开发者入口",
-    secondaryCta: "查看当前状态",
+      "面向自治 AI 智能体生态的可信基础设施层。",
+    primaryCta: "了解基础设施",
+    secondaryCta: "查看 Demo",
     notice:
       "titmas.cn 正在备案，当前站点仍为 redcrag.cn；GitHub slug 已选为 titmas-cn，但 Organization 和公共贡献渠道尚未创建。",
+    strategyLine:
+      "TITMAS 不构建行业专用 AI 智能体，而提供让自治智能体在各行业可靠运行的可信基础设施。",
+    infrastructureTitle: "自治智能体需要一层共同的可信基础",
+    infrastructureLead:
+      "TITMAS 围绕开放规范、Adapter contract、Conformance 和可替换参考实现，定义六个可组合的可信关注面。它不是 Agent Framework，也不替代行业应用。",
+    infrastructureCapabilities: [
+      ["Identity", "身份", "确认 Agent 是谁、属于谁，以及声明了什么能力。"],
+      ["Boundary", "边界", "表达 Agent 可以做什么、不能做什么。"],
+      ["Evidence", "证据", "保留任务、过程与结果的可追溯记录。"],
+      ["Health", "健康", "评价长期运行中的可靠性、风险与稳定性。"],
+      ["Memory", "记忆", "组织可引用的执行历史与经验。"],
+      ["Reputation", "声誉", "形成长期、可审查的可信表现。"],
+    ],
+    industriesTitle: "TITMAS 支撑的行业生态",
+    industriesLead:
+      "行业开发者和企业构建自己的 Agent；TITMAS 提供跨行业复用的可信运行规则。制造业是一个高价值应用示例，不是 TITMAS 自身提供的行业解决方案。",
+    manufacturingTitle: "智能制造智能体生态",
+    manufacturingAgents: [
+      ["Production Planning Agent", "生产调度智能体"],
+      ["Quality Inspection Agent", "质量检测智能体"],
+      ["Maintenance Agent", "设备维护智能体"],
+      ["Supply Chain Agent", "供应链智能体"],
+    ],
+    stackLabels: [
+      "Industry Applications",
+      "Industrial AI Agents",
+      "TITMAS Trust Infrastructure",
+      "Agent Framework / MCP",
+      "Models + Data + Devices",
+    ],
+    demoTitle: "工业智能体可信执行演示",
+    demoLead:
+      "该 Demo 不模拟制造系统本身。它复用 Digital Cell 参考演示，展示一个工业 Agent 如何沿可信执行路径生成可核验记录。",
+    demoSteps: [
+      "注册身份",
+      "接受任务",
+      "执行操作",
+      "生成 Evidence",
+      "输出 Verifiable Execution Certificate",
+      "进行 Health Evaluation",
+    ],
+    demoBoundary:
+      "参考演示，不构成 MES、工业 AI 平台、生产认证、客户采用或 production-ready 声明。",
     introTitle: "开发者构建 Agent；TITMAS 建设共同的可信基础层",
     introBody:
       "TITMAS 不是另一个 Agent Framework。我们围绕开放规范、Adapter contract、Conformance 和可替换参考实现，解决多智能体长期运行后的身份连续、行为追溯、证据边界与受控演化问题。",
@@ -247,11 +291,12 @@ export const content = {
   en: {
     lang: "en",
     nav: {
-      architecture: "Architecture",
+      architecture: "Infrastructure",
       trust: "Trust boundaries",
-      workflow: "Contribute",
+      workflow: "Applications",
+      demo: "Demo",
       status: "Status",
-      developers: "Community",
+      developers: "Developers",
       github: "GitHub",
       language: "中文",
     },
@@ -259,11 +304,54 @@ export const content = {
     eyebrow: "INFRASTRUCTURE DEVELOPER COMMUNITY",
     title: "TITMAS",
     lead:
-      "The infrastructure developer community for trustworthy multi-agent systems. Build open rules that help AI agents operate, collaborate, and remain verifiable over time.",
-    primaryCta: "Enter the developer guide",
-    secondaryCta: "View current status",
+      "A trust infrastructure layer for autonomous AI agent ecosystems.",
+    primaryCta: "Explore the infrastructure",
+    secondaryCta: "View the demo",
     notice:
       "titmas.cn is in filing and redcrag.cn remains the live site. The selected GitHub slug is titmas-cn, but the organization and public contribution channels do not exist.",
+    strategyLine:
+      "TITMAS does not build industry-specific AI agents. It provides the trust infrastructure that allows autonomous agents to operate reliably across industries.",
+    infrastructureTitle: "Autonomous agents need a shared trust layer",
+    infrastructureLead:
+      "TITMAS uses open specifications, adapter contracts, conformance, and replaceable reference implementations to frame six composable trust concerns. It is not an agent framework and does not replace industry applications.",
+    infrastructureCapabilities: [
+      ["Identity", "Identity", "Establish who an agent is, who it belongs to, and what capabilities it claims."],
+      ["Boundary", "Boundary", "Express what an agent may and may not do."],
+      ["Evidence", "Evidence", "Retain traceable records of tasks, process, and outcomes."],
+      ["Health", "Health", "Assess reliability, risk, and stability over long-running operation."],
+      ["Memory", "Memory", "Organize referencable execution history and experience."],
+      ["Reputation", "Reputation", "Build a long-term, reviewable record of trustworthy performance."],
+    ],
+    industriesTitle: "TITMAS Across Industries",
+    industriesLead:
+      "Industry developers and enterprises build their own agents; TITMAS provides reusable trust rules across industries. Manufacturing is a high-value application example, not an industry solution offered by TITMAS.",
+    manufacturingTitle: "Manufacturing AI Agent Ecosystem",
+    manufacturingAgents: [
+      ["Production Planning Agent", "Production planning"],
+      ["Quality Inspection Agent", "Quality inspection"],
+      ["Maintenance Agent", "Equipment maintenance"],
+      ["Supply Chain Agent", "Supply chain"],
+    ],
+    stackLabels: [
+      "Industry Applications",
+      "Industrial AI Agents",
+      "TITMAS Trust Infrastructure",
+      "Agent Framework / MCP",
+      "Models + Data + Devices",
+    ],
+    demoTitle: "Industrial Agent Evidence Demo",
+    demoLead:
+      "This demo does not simulate a manufacturing system. It reuses the Digital Cell reference demo to show how an industrial agent can follow a trusted execution path and produce verifiable records.",
+    demoSteps: [
+      "Register identity",
+      "Accept a task",
+      "Execute an operation",
+      "Generate Evidence",
+      "Issue a Verifiable Execution Certificate",
+      "Run a Health Evaluation",
+    ],
+    demoBoundary:
+      "Reference demo only. It is not a MES, industrial AI platform, production certification, customer-adoption, or production-readiness claim.",
     introTitle: "You build agents. TITMAS builds the shared trust layer.",
     introBody:
       "TITMAS is not another agent framework. We focus on open specifications, adapter contracts, conformance, and replaceable reference implementations for identity continuity, traceable behavior, evidence boundaries, and governed evolution.",

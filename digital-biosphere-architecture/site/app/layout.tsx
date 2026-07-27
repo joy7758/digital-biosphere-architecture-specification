@@ -8,19 +8,33 @@ export const metadata: Metadata = {
     template: "%s · TITMAS",
   },
   description:
-    "为长期运行的多智能体系统共同建设开放、可验证的可信基础设施规则。",
+    "TITMAS 是面向自治 AI 智能体生态的可信基础设施层；制造业等行业场景是基础设施应用示例。",
+  keywords: [
+    "AI Agent Infrastructure",
+    "Trusted Agent Execution",
+    "Verifiable Execution Evidence",
+    "Industrial AI Agent Governance",
+    "Multi-Agent System Infrastructure",
+    "Autonomous Digital Ecosystem",
+    "智能体基础设施",
+    "AI执行证明",
+    "智能体可信治理",
+    "工业智能体可信运行",
+    "多智能体系统基础设施",
+    "数字生态基础设施",
+  ],
   openGraph: {
     type: "website",
     siteName: "TITMAS Infrastructure Developer Community",
     title: "TITMAS 可信多智能体基础设施开发者社区",
     description:
-      "为长期运行的多智能体系统共同建设开放、可验证的可信基础设施规则。",
+      "面向自治 AI 智能体生态的可信基础设施层，支撑跨行业的可信运行与可核验执行。",
   },
   twitter: {
     card: "summary_large_image",
     title: "TITMAS Infrastructure Developer Community",
     description:
-      "Build the shared trust layer for long-running multi-agent systems.",
+      "A trust infrastructure layer for autonomous AI agent ecosystems across industries.",
   },
 };
 

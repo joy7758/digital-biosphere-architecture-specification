@@ -11,7 +11,10 @@ const requiredFiles = [
   "en/index.html",
   "community/index.html",
   "en/community/index.html",
+  "industries/index.html",
+  "en/industries/index.html",
   "digital-cell/index.html",
+  "en/digital-cell/index.html",
   "digital-cell.json",
   "digital-cell/digital-cell-architecture.png",
   "digital-cell/digital-cell-lifecycle.png",
@@ -55,7 +58,12 @@ const [zh, en, zhCommunity, enCommunity, zhStatus, enStatus, status, titmasCommu
   readFile(join(outputRoot, "release.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release-manifest.json"), "utf8").then(JSON.parse),
 ]);
-const digitalCellPage = await readFile(join(outputRoot, "digital-cell/index.html"), "utf8");
+const [zhIndustries, enIndustries, digitalCellPage, enDigitalCellPage] = await Promise.all([
+  readFile(join(outputRoot, "industries/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/industries/index.html"), "utf8"),
+  readFile(join(outputRoot, "digital-cell/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/digital-cell/index.html"), "utf8"),
+]);
 const digitalCell = await readFile(join(outputRoot, "digital-cell.json"), "utf8").then(JSON.parse);
 const commercialZh = await readFile(join(outputRoot, "commercial-evaluation/index.html"), "utf8");
 const commercialEn = await readFile(join(outputRoot, "en/commercial-evaluation/index.html"), "utf8");
@@ -69,12 +77,20 @@ const releaseContext = resolveReleaseContext(process.env, {
   dbosPackage,
 });
 
-assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
-assert.match(en, /infrastructure developer community for trustworthy multi-agent systems/i);
+assert.match(zh, /面向自治 AI 智能体生态的可信基础设施层/);
+assert.match(en, /trust infrastructure layer for autonomous AI agent ecosystems/i);
+assert.match(zh, /晋ICP备2026006409号-1/);
+assert.match(en, /晋ICP备2026006409号-1/);
+assert.match(zh, /https:\/\/beian\.miit\.gov\.cn\//);
 assert.match(zhCommunity, /共同建设可信多智能体基础设施/);
 assert.match(enCommunity, /Build trustworthy multi-agent infrastructure together/);
 assert.match(digitalCellPage, /TITMAS Digital Cell Demo/);
 assert.match(digitalCellPage, /NO DIGITAL LIFE CLAIM/);
+assert.match(digitalCellPage, /href="\/industries\//);
+assert.match(enDigitalCellPage, /Make agent execution/);
+assert.match(enDigitalCellPage, /href="\/en\/industries\//);
+assert.match(zhIndustries, /TITMAS 不提供/);
+assert.match(enIndustries, /TITMAS does not provide/);
 assert.equal(digitalCell.status, "REFERENCE_COMPLETE");
 assert.equal(digitalCell.boundaries.production_claim, false);
 assert.equal(agentIndex.entrypoints.digital_cell_demo, "/digital-cell/");
@@ -101,6 +117,10 @@ assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
 assert.equal(status.gates.COMMERCIAL_EVALUATION_PACKAGE_REMOTE_VALIDATED, true);
 assert.equal(status.public_front_door.future_domain_live, false);
 assert.equal(status.public_front_door.github_organization_created, false);
+assert.equal(status.public_website.icp_filing.approved, true);
+assert.equal(status.public_website.icp_filing.record_number, "晋ICP备2026006409号-1");
+assert.equal(agentIndex.public_website.icp_filing_approved, true);
+assert.equal(agentIndex.public_website.icp_record_number, "晋ICP备2026006409号-1");
 assert.equal(titmasCommunity.github.selected_organization_slug, "titmas-cn");
 assert.equal(titmasCommunity.github.organization_created, false);
 assert.equal(titmasCommunity.community_state.community_established, false);

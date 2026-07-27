@@ -12,6 +12,9 @@ ZH_EN_CONTENT_PARITY_PASS=true
 AGENT_READABLE_ENTRY_PASS=true
 SITE_DEPLOYED=true
 SITE_URL=https://redcrag.cn/
+ICP_FILING_APPROVED=true
+ICP_RECORD_NUMBER=晋ICP备2026006409号-1
+ICP_PUBLIC_QUERY_URL=https://beian.miit.gov.cn/
 SITE_HEALTH_PASS=true
 SITE_ROLLBACK_VALIDATED=true
 DEVELOPER_PREVIEW_RELEASED=true
@@ -39,7 +42,10 @@ Runtime（评价运行时）或 Agent（智能体）实现。页面将当前项�
 | `/en/status` | English status page |
 | `/community` | 完整中文社区／开发者入口 |
 | `/en/community` | Complete English community/developer entry |
+| `/industries` | 完整中文制造业应用示例 |
+| `/en/industries` | Complete English manufacturing application example |
 | `/digital-cell` | TITMAS Digital Cell Demo v0.1 reference page |
+| `/en/digital-cell` | English TITMAS Digital Cell Demo v0.1 reference page |
 | `/llms.txt` | LLM-readable（大模型可读）项目入口 |
 | `/agent-index.json` | Agent discovery（智能体发现）索引 |
 | `/status.json` | 机器可读验证状态 |
@@ -71,6 +77,20 @@ exact wheel URL 执行失败关闭的正式导出，并生成带 SHA-256 清单�
 视觉系统重度参考 OpenTelemetry 官网的明亮信息架构：白色与浅灰页面、紫色主色、
 琥珀色与青色强调、清晰导航、模块化能力卡片、有限的高饱和状态区和多语言入口。
 不复制其 Logo、插图、文案或项目事实。
+
+首页信息架构进一步参考 OpenTelemetry 与 OpenAI 官网“首页只承载定位和入口、详情由
+导航分流”的原则：保留现有色调，将详细治理状态、贡献流程和内部责任域放回 Status /
+Developers 页面；首页只保留 Infrastructure、Industry Applications 与 bounded Demo。
+
+```text
+AGENT_RECOMMENDATION=CONDITIONALLY_RECOMMENDED
+RECOMMENDED_AS=SIMPLIFIED_INFRASTRUCTURE_PUBLIC_ENTRY
+NOT_RECOMMENDED_AS=INDUSTRY_SOLUTION_OR_PRODUCTION_PLATFORM
+REASON_FIXED=HOMEPAGE_NO_LONGER_DUPLICATES_DETAILED_STATUS_AND_GOVERNANCE_SECTIONS
+REMAINING_CONDITION=DEVELOPER_PREVIEW_AND_REFERENCE_DEMO_BOUNDARIES_MUST_REMAIN_VISIBLE
+IMPLEMENTATION_AUTHORIZATION_SOURCE=USER_REQUEST_2026_07_27
+DEPLOYMENT_AUTHORIZED=false
+```
 
 ## Deployment boundary
 
