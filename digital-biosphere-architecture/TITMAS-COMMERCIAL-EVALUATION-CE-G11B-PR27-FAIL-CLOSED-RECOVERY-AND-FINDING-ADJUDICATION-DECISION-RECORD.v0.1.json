@@ -1,0 +1,285 @@
+{
+  "record_type": "TITMAS_PR27_FAIL_CLOSED_RECOVERY_AND_FINDING_ADJUDICATION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-FAIL-CLOSED-RECOVERY-AND-FINDING-ADJUDICATION",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_ONLY_IF_QUALIFYING_EXACT_DECISION_REVIEW_AND_REMOTE_DECISION_BASELINE",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G11B-PR27-FAIL-CLOSED-RECOVERY-AND-FINDING-ADJUDICATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "e97ace0d57defcf9008d5058021d0d6064401ece648135652b4bcb5b24b5a120",
+  "recommendation_review_reference": "TITMAS-CE-G11B-PR27-FAIL-CLOSED-RECOVERY-AND-FINDING-ADJUDICATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "eeb432ee252a7fe0784ccb97cc2eca1de2c16432e8271cc865e68ae0a427d606",
+  "recommendation_commit": "4c59641e3b0fb74d63befb267e611cca17691b1d",
+  "recommendation_remote_verified": true,
+  "frozen_pr": {
+    "number": 27,
+    "state": "OPEN",
+    "draft": true,
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "merge_base": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "three_dot_changed_files": 100,
+    "three_dot_patch_sha256": "e031466cbb422e707bfae8ba5751c5f0bd076c6628a518124e36d353f3e92451",
+    "r2_merge_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "r2_evidence_commit": "27bc3b6e586a2259d17152a2022a85d2dd69107b",
+    "checks": 0,
+    "reviews": 0,
+    "review_requests": 0,
+    "comments": 0
+  },
+  "prior_review": {
+    "result_reference": "TITMAS-CE-G11B-PR27-BOUNDED-MULTI-LANE-AGENT-REVIEW-RESULT-v0.1.json",
+    "result_sha256": "a54075ab4c894afe5c4b53d85e690e8af49076f753cbde77d57bf8532ded9205",
+    "result_commit": "4a793ca98ade2a6b7c578c31ba0c5bc9ded9965b",
+    "status": "FAIL_CLOSED_LANE_C_BINDING_FAILURE_LANE_D_AND_SYNTHESIS_NOT_EXECUTED",
+    "lane_a_reference": "TITMAS-CE-G11B-PR27-AGENT-REVIEW-LANE-A-v0.1.json",
+    "lane_a_sha256": "5e4caccc79e0a445b3443e4085fd65e54d9ab3d25b9558b9e538099063d6abbb",
+    "lane_a_verdict": "CLEAR",
+    "lane_b_reference": "TITMAS-CE-G11B-PR27-AGENT-REVIEW-LANE-B-v0.1.json",
+    "lane_b_sha256": "d12c332f31976efb74b73fef996930b096c4720d7affc81039ea719f6db67d88",
+    "lane_b_verdict": "REMEDIATION_REQUIRED",
+    "lane_b_finding_ids": [
+      "B-001",
+      "B-002",
+      "B-003",
+      "B-004",
+      "B-005"
+    ],
+    "lane_c_failure_reference": "TITMAS-CE-G11B-PR27-AGENT-REVIEW-LANE-C-FAILURE-v0.1.json",
+    "lane_c_failure_sha256": "2fcfdca4cd2eda1287bf1b6108338ba749bcaec707fb87b68c5933037c1bcedd",
+    "lane_d_request_executed": false,
+    "synthesis_request_executed": false
+  },
+  "recovery_inputs": {
+    "lane_b_fact_matrix_reference": "TITMAS-CE-G11B-PR27-LANE-B-REPOSITORY-AWARE-FACT-MATRIX-v0.1.json",
+    "lane_b_fact_matrix_sha256": "ce173b41e20fdd5d094a544bbd295e554e89f73bad0c1cbc7f2561d47c31dafe",
+    "lane_c_diagnostic_matrix_reference": "TITMAS-CE-G11B-PR27-LANE-C-BINDING-FAILURE-DIAGNOSTIC-MATRIX-v0.1.json",
+    "lane_c_diagnostic_matrix_sha256": "25ddf13d1c6abfc34e58117aec73bd8a816e600c969a60edcb120b2aef4d468b",
+    "lane_c_patch_sha256": "1f94782837c2b7946f45f35f3b5e0bd1337839004089e5ba69c65034d28886f5",
+    "lane_c_files": 6,
+    "lane_d_patch_sha256": "e3024eba64c24f813e7cdfc01944bfe786094149dd7f30d1881a9a05afa190d7",
+    "lane_d_files": 83,
+    "lane_d_complete_inventory_required": true
+  },
+  "request_sequence": [
+    {
+      "ordinal": 1,
+      "request_id": "PR27-B-FINDING-ADJUDICATION-001",
+      "purpose": "ADJUDICATE_ALL_FIVE_ORIGINAL_LANE_B_FINDINGS_AGAINST_EXACT_REPOSITORY_CONTEXT",
+      "gate": "REMOTE_DECISION_BASELINE_AND_ALL_FROZEN_INPUTS_VERIFIED"
+    },
+    {
+      "ordinal": 2,
+      "request_id": "PR27-C-REPLACEMENT-REVIEW-001",
+      "purpose": "NEW_IDENTITY_PUBLIC_AND_DEVELOPER_SURFACE_REVIEW_USING_RESPONSE_CONTRACT_V0_2_CANDIDATE",
+      "gate": "B_ADJUDICATION_TRANSPORT_MODEL_JSON_BINDING_CONTRACT_AND_5_OF_5_COVERAGE_VALID"
+    },
+    {
+      "ordinal": 3,
+      "request_id": "PR27-D-GOVERNANCE-REVIEW-001",
+      "purpose": "REVIEW_FROZEN_83_FILE_GOVERNANCE_PATCH_WITH_COMPLETE_100_FILE_INVENTORY",
+      "gate": "C_REPLACEMENT_REVIEW_QUALIFYING"
+    },
+    {
+      "ordinal": 4,
+      "request_id": "PR27-RECOVERY-SYNTHESIS-001",
+      "purpose": "SYNTHESIZE_PRIOR_A_ORIGINAL_B_B_ADJUDICATION_REPLACEMENT_C_AND_D_WITHOUT_MERGE_RECOMMENDATION",
+      "gate": "D_REVIEW_QUALIFYING_AND_ALL_PRIOR_INPUT_HASHES_VERIFIED"
+    }
+  ],
+  "lane_b_adjudication_contract": {
+    "required_top_level_keys": [
+      "verdict",
+      "confidence",
+      "base_sha",
+      "head_sha",
+      "source_review_sha256",
+      "fact_matrix_sha256",
+      "source_finding_ids",
+      "adjudications",
+      "all_source_findings_accounted_for",
+      "authority_boundaries_preserved",
+      "rationale"
+    ],
+    "additional_top_level_keys_allowed": false,
+    "verdict_required": "ADJUDICATION_COMPLETE",
+    "source_finding_ids_exact": [
+      "B-001",
+      "B-002",
+      "B-003",
+      "B-004",
+      "B-005"
+    ],
+    "adjudication_required_keys": [
+      "finding_id",
+      "source_severity",
+      "source_severity_preserved",
+      "disposition",
+      "derived_blocking",
+      "repository_evidence",
+      "reasoning",
+      "required_correction"
+    ],
+    "disposition_enum": [
+      "CONFIRMED",
+      "PARTIALLY_CONFIRMED",
+      "REJECTED"
+    ],
+    "source_severity_enum": [
+      "BLOCKER",
+      "HIGH",
+      "MEDIUM",
+      "LOW"
+    ],
+    "each_source_finding_exactly_once": true,
+    "source_severity_preserved_required": true,
+    "repository_evidence_type": "NON_EMPTY_STRING_ARRAY",
+    "required_correction_type": "STRING_OR_NULL",
+    "finding_deletion_allowed": false,
+    "source_severity_downgrade_allowed": false,
+    "adjudication_creates_source_change_authority": false
+  },
+  "lane_review_contract_v0_2_candidate": {
+    "applies_to": [
+      "C",
+      "D"
+    ],
+    "required_top_level_keys": [
+      "lane_id",
+      "verdict",
+      "confidence",
+      "base_sha",
+      "head_sha",
+      "patch_sha256",
+      "assigned_files",
+      "assigned_files_reviewed",
+      "inventory_context_received",
+      "r2_boundary_understood",
+      "authority_boundaries_preserved",
+      "findings",
+      "rationale"
+    ],
+    "additional_top_level_keys_allowed": false,
+    "verdict_enum": [
+      "CLEAR",
+      "REMEDIATION_REQUIRED",
+      "REJECT"
+    ],
+    "finding_required_keys": [
+      "finding_id",
+      "severity",
+      "path",
+      "location",
+      "claim",
+      "evidence",
+      "required_correction"
+    ],
+    "finding_severity_enum": [
+      "BLOCKER",
+      "HIGH",
+      "MEDIUM",
+      "LOW"
+    ],
+    "assigned_files_binding": "UNIQUE_SET_EQUALITY",
+    "assigned_files_reviewed_binding": "UNIQUE_SET_EQUALITY_AND_COMPLETE_COVERAGE",
+    "ordered_array_identity_required": false,
+    "lane_base_head_patch_identity_exact": true,
+    "inventory_context_acknowledgement_exact": true,
+    "r2_boundary_acknowledgement_exact": true,
+    "authority_boundary_acknowledgement_exact": true,
+    "response_capture_required": {
+      "direct_json_when_parseable": true,
+      "direct_json_sha256": true,
+      "binding_subchecks": true,
+      "contract_subchecks": true,
+      "qualifying_lane": true,
+      "terminal_failure_category": true
+    },
+    "json_extraction_allowed": false,
+    "json_repair_allowed": false,
+    "non_qualifying_response_creates_authority": false
+  },
+  "synthesis_contract": {
+    "required_top_level_keys": [
+      "verdict",
+      "confidence",
+      "input_hashes",
+      "lane_outcomes",
+      "adjudicated_findings",
+      "new_findings",
+      "all_findings_accounted_for",
+      "severity_preserved",
+      "authority_boundaries_preserved",
+      "rationale"
+    ],
+    "additional_top_level_keys_allowed": false,
+    "verdict_enum": [
+      "CLEAR",
+      "REMEDIATION_REQUIRED",
+      "REJECT"
+    ],
+    "inputs": [
+      "PRIOR_QUALIFYING_LANE_A",
+      "ORIGINAL_QUALIFYING_LANE_B",
+      "QUALIFYING_LANE_B_ADJUDICATION",
+      "QUALIFYING_REPLACEMENT_LANE_C",
+      "QUALIFYING_LANE_D"
+    ],
+    "all_original_and_new_findings_accounted_for": true,
+    "silent_finding_deletion_allowed": false,
+    "silent_severity_downgrade_allowed": false,
+    "deduplication_requires_source_finding_ids": true,
+    "merge_recommendation_allowed": false
+  },
+  "model_contract": {
+    "model": "qwen3.7-max",
+    "recovery_requests": 4,
+    "retries": 0,
+    "fallbacks": 0,
+    "model_substitutions": 0,
+    "json_extractions": 0,
+    "json_repairs": 0,
+    "direct_json_required": true,
+    "exact_returned_model_required": true,
+    "sequential_execution_required": true
+  },
+  "exact_authorized_action": "After one qualifying exact qwen3.7-max Decision review and a remote Decision baseline, reverify PR #27, base/head/merge-base, full and lane patches, R2 evidence, prior A/B/C results, fact and diagnostic matrices, and all hashes. Send exactly one qwen3.7-max Lane B finding-adjudication request. If qualifying, send exactly one new-identity qwen3.7-max Lane C replacement review under response contract v0.2 candidate, persisting direct JSON and field-level binding diagnostics. If qualifying, send exactly one qwen3.7-max Lane D review with the complete 100-file inventory and exact 83-file patch. If qualifying, send exactly one qwen3.7-max synthesis using prior A, original B, B adjudication, replacement C and D plus exact hashes. Persist sanitized results and one bounded report on the governance branch. Do not modify source or candidate branches, submit GitHub review/comment, mutate PR #27, merge, release, deploy, or change Standard/commercial status.",
+  "caps": {
+    "decision_review_model_requests": 1,
+    "recovery_model_requests": 4,
+    "all_model_retries": 0,
+    "all_model_fallbacks": 0,
+    "result_commits": 1,
+    "result_pushes": 1,
+    "github_review_submissions": 0,
+    "github_comments": 0,
+    "pr_mutations": 0,
+    "source_changes": 0,
+    "merges": 0,
+    "releases": 0,
+    "deployments": 0
+  },
+  "stop_conditions": [
+    "ANY_PR_OR_INPUT_HASH_DRIFT",
+    "ANY_RETURNED_MODEL_NOT_EXACT_QWEN3_7_MAX",
+    "ANY_TRANSPORT_OR_DIRECT_JSON_FAILURE",
+    "ANY_RESPONSE_CONTRACT_OR_BINDING_FAILURE",
+    "LANE_B_FINDING_COVERAGE_NOT_EXACTLY_5_OF_5",
+    "LANE_C_OR_D_NON_QUALIFYING",
+    "SYNTHESIS_INPUT_OR_FINDING_COVERAGE_INCOMPLETE"
+  ],
+  "non_authorizations": {
+    "human_review_equivalence": false,
+    "old_lane_c_response_retry_or_repair": false,
+    "source_remediation": false,
+    "github_review_submission": false,
+    "pr_mutation": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false
+  }
+}
