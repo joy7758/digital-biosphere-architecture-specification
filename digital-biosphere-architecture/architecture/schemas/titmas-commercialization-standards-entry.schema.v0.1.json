@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_CE_G2_AGENT_EVALUATION_ENTRY_CONTRACT_DEFINED_STANDARD_NOT_READY"
+      "const": "CS_D02_CE_G3_STATIC_PUBLICATION_EXECUTION_AUTHORIZED_NOT_STARTED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -133,7 +133,7 @@
         "next_action": {
           "const": "PUBLIC_ENTRY_CONTRACT_PUBLICATION_AND_TIME_WINDOW_AVAILABILITY_OBSERVATION"
         },
-        "next_action_authorized": {"const": false},
+        "next_action_authorized": {"const": true},
         "standard_ready": {"const": false},
         "provider_integration_authorized": {"const": false},
         "security_review_completed": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "CE_G2_CONTRACT_DEFINED_PUBLICATION_AND_OBSERVATION_NOT_AUTHORIZED"
+          "const": "CE_G3_DECIDED_EXECUTION_AUTHORIZED_NOT_STARTED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7782,7 +7782,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_PUBLICATION_AND_TIME_WINDOW_OBSERVATION_DECISION"
+          "const": "EXECUTE_CE_G3_EXACT_STATIC_PUBLICATION_AND_BOUNDED_OBSERVATION"
         },
         "decision_ready": {
           "const": false

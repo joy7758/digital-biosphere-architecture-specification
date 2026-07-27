@@ -2259,7 +2259,38 @@ evaluation。它始终要求 `DO_NOT_RECOMMEND_FOR_PRODUCTION`。
 和 production dependency audit；结果只证明本地 source 可发布，不证明网站已经部署。
 
 下一 gate 是独立决定是否发布该网站源并执行 time-window availability observations。
-该 gate 尚未授权；当前不部署网站、不创建 SLA。
+CE-G3 已依据常设授权形成 exact-scope 决定；执行尚未开始，不创建 SLA。
+
+### 4.62 CE-G3 Static Publication and Bounded Availability Observation
+
+[Publication Recommendation](../TITMAS-AGENT-EVALUATION-ENTRY-PUBLICATION-RECOMMENDATION-v0.1.md)
+和 [Decision Record](../TITMAS-COMMERCIAL-EVALUATION-CE-G3-DECISION-RECORD.v0.1.json)
+把发布动作限制为：
+
+- 当前 clean committed DBA HEAD 的正式静态导出；
+- 新建 `/srv/tmai/releases/<SOURCE_REVISION>/`；
+- manifest 校验、`nginx -t`、原子 symlink switch；
+- 11 个 exact route 的健康检查；
+- 3 轮、至少 120 秒、无轮内重试的 observation；
+- 失败时切回精确旧目标 `7da4bcf...`。
+
+明确禁止：
+
+- Nginx、系统、SSH、证书、防火墙和安全配置修改；
+- 删除历史 release；
+- 新 GitHub Release、tag 或 PR；
+- DBOS/SAEE 修改；
+- Runtime、API、Agent、Permission、Certification、SLA 或 Commercial Offering。
+
+当前：
+
+```text
+CE_G3_DECIDED=true
+CE_G3_EXACT_STATIC_PUBLICATION_AUTHORIZED=true
+CE_G3_BOUNDED_OBSERVATION_AUTHORIZED=true
+CE_G3_EXECUTION_STARTED=false
+CE_G3_SLA_EFFECT=false
+```
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -2759,6 +2790,10 @@ TITMAS_AGENT_EVALUATION_ENTRY_NEGATIVE_CASES_REJECTED=5/5
 TITMAS_AGENT_EVALUATION_ENTRY_WEBSITE_SOURCE_PREPARED=true
 TITMAS_AGENT_EVALUATION_ENTRY_WEBSITE_DEPLOYED=false
 TITMAS_AGENT_EVALUATION_ENTRY_TIME_WINDOW_OBSERVATION_EXECUTED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G3_DECIDED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G3_PUBLICATION_AUTHORIZED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G3_OBSERVATION_AUTHORIZED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G3_EXECUTION_STARTED=false
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false
 TITMAS_VEAP_DRAFT_PROFILE_CANDIDATE_CREATED=true
