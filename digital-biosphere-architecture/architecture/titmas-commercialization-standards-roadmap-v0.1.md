@@ -2814,6 +2814,29 @@ fail-closed request、sanitization、environment allowlist 与测试覆盖。该
 root cause、redeployment admission、Production、Certification、SLA 或 Commercial
 Offering。
 
+### 4.80 CE-G11B Phase B Canonical Integration Recommendation
+
+[Canonical integration Recommendation](../TITMAS-CE-G11B-PHASE-B-CANONICAL-INTEGRATION-RECOMMENDATION-v0.1.md)
+记录 Phase A-R1 remote clean-clone verification，并选择 Option A：
+
+```text
+CE_G11B_PHASE_A_R1_REMOTE_BASELINE_VERIFIED=true
+CE_G11B_REMOTE_CANONICAL_COMMIT=4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a
+CE_G11B_REMOTE_HEAD_COMMIT=e032115adbe38cc84bde80cc9b10b96f6da1b428
+CE_G11B_MERGE_BASE=4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a
+CE_G11B_COMMITS_AHEAD=5
+CE_G11B_CHANGED_FILES=21
+CE_G11B_SITE_PATHS_IN_DIFF=0
+CE_G11B_EXISTING_PRS=0
+CE_G11B_RECOMMENDED_OPTION=A_DRAFT_PR_NO_MERGE
+```
+
+[Max review](../TITMAS-CE-G11B-PHASE-B-CANONICAL-INTEGRATION-QWEN-REVIEW-v0.1.json)
+由 exact `qwen3.7-max` 返回 `RECOMMENDED`、Option A、愿意向智能体客户推荐、置信度
+`0.95`、0 blocker/correction，并确认 topology、Draft PR boundary、site isolation、
+workflow-run boundary、separate merge Decision 和 Phase B unauthorized。下一步只允许
+建立 Draft PR Creation Decision；不得从 Recommendation 直接创建 PR 或 merge。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -3083,10 +3106,10 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Verify CE-G11B Phase A-R1 remote baseline only**：R1 本地 PASS 已形成；先提交
-   exact result/report/cockpit 并验证远端 commit、Schema、hashes 和 workflow runs=0。
-   验证完成前不得准备 Phase B recommendation；始终不得创建有效 run request、执行
-   workflow、server access、live binding、Phase B 或 redeployment；
+1. **Prepare CE-G11B Draft PR Creation Decision only**：Phase A-R1 remote baseline
+   和 Phase B integration Recommendation 已通过；依据 standing directive 只建立一个
+   exact Decision，允许未来创建一份 Draft PR，不允许 merge、push、run request、
+   workflow、site path、server access、Phase B 或 redeployment；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -3295,7 +3318,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=VERIFY_CE_G11B_PHASE_A_R1_REMOTE_BASELINE_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G11B_DRAFT_PR_CREATION_DECISION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -3493,7 +3516,15 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_REVIEW_VERDICT=PASS
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_REVIEW_CONFIDENCE=0.95
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_MODEL_REQUESTS=1/1
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_CANDIDATE_COMPONENTS_MODIFIED=false
-TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_REMOTE_BASELINE_VERIFIED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_REMOTE_BASELINE_VERIFIED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_B_INTEGRATION_RECOMMENDATION_PREPARED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_B_INTEGRATION_OPTION=A
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_B_INTEGRATION_REVIEW_MODEL=qwen3.7-max
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_B_INTEGRATION_REVIEW_VERDICT=RECOMMENDED
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_B_INTEGRATION_REVIEW_CONFIDENCE=0.95
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_DRAFT_PR_DECISION_RECORDED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_DRAFT_PR_CREATED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PR_MERGED=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_REDEPLOYMENT_AUTHORIZED=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false

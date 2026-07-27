@@ -420,6 +420,12 @@ Recommendation 与模型审查本身不授权 Phase A-R1、Phase B 或 workflow 
 full discovery 49/49；唯一一次 fresh `qwen3.7-max` review 为 `PASS`、置信度
 `0.95`、0 blocker/correction，候选无需修改。旧 Phase A 失败继续保留，CE-G11B
 workflow runs 仍为 0，Phase B 仍未授权。
+[Phase B canonical integration Recommendation](TITMAS-CE-G11B-PHASE-B-CANONICAL-INTEGRATION-RECOMMENDATION-v0.1.md)
+记录远端 clean-clone PASS，并推荐先创建一个 base=canonical、head=CE-G11B 的 Draft PR；
+不 merge、不包含 `site/`、不创建 run request、不触发 workflow。
+[Max review](TITMAS-CE-G11B-PHASE-B-CANONICAL-INTEGRATION-QWEN-REVIEW-v0.1.json)
+返回 `RECOMMENDED`、Option A、置信度 `0.95`、0 blocker/correction。Recommendation
+不授权创建 PR 或 Phase B。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
