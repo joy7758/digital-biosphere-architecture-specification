@@ -61,12 +61,12 @@ SAEE_NE_CONTROLLER=true
 |---|---|---|---|
 | `CS-D02-PRE-67` | `GATE_PASSED_DEVELOPMENT_REFERENCE_ONLY` | `titmas-integrations@0030077…`；本地与 remote clean clone 均 92/92 tests、7/7 rehearsal、offline build PASS；真实网络与 credential read 为 0 | PRE-68 scope Recommendation 已形成；保持 reference-only |
 | `CS-D02-PRE-68` | `DECIDED_EXECUTED_FAIL_CLOSED_FIRST_IMAGE_PULL` | Colima start/stop PASS；first exact image pull 因本机 global `credsStore=desktop` 但 helper executable 缺失，在 image transfer 前停止；target 10/10 hashes 保持；containers=0、agent requests=0 | PRE-68 不允许 retry；先形成 PRE-69 isolated Docker client config remediation Recommendation 与独立 Decision |
-| `CS-D02-PRE-69` | `DECIDED_AUTHORIZED_NOT_EXECUTED` | Recommendation、独立 Decision、ephemeral anonymous-only config、local exact source export、same two image digests、same two Provider/model lanes、user Docker config writes=0 和 frozen plan | 按冻结顺序执行一次；任何环境、digest、network、test、model、Schema 或 cleanup 偏差失败关闭 |
+| `CS-D02-PRE-69` | `DECIDED_EXECUTED_FAIL_CLOSED_DOCKER_CONTEXT_AND_ZERO_WRITE_BOUNDARY` | Exact source export 与 10/10 hashes PASS；anonymous config PASS；首个 pull 在 transfer 前因 daemon socket unavailable 失败；Colima lifecycle 产生用户 config metadata drift；containers=0、agent requests=0；target unchanged | PRE-69 retry=false；只允许形成 PRE-70 explicit Docker context + global config write guard Recommendation，不自动执行 |
 | `TITMAS-FINALIZATION-AVH-001` | `ARCHITECTURE_ASSESSMENT_DEFINED_NOT_ADOPTED` | [AVH architecture assessment](architecture/agent-validation-harness-architecture-assessment-v0.1.md) / [machine record](architecture/agent-validation-harness-architecture-assessment.v0.1.json)；现有 Technical Validation、Evidence Admission、DBOS/SAEE Owner crosswalk 已完成 | 只允许架构、overlap、threat、oracle 和 conformance design review；等待完整提案、Owner/Reviewer 和 `TITMAS-AVH-D01`，不创建产品、Runtime、Sandbox、Agent、Evidence 或实现 |
 
 ```text
-COMMERCIALIZATION_LAST_COMPLETED_STEP=CS-D02-PRE-69-DECISION
-COMMERCIALIZATION_NEXT_ACTION=EXECUTE_PRE69_ISOLATED_DOCKER_CONFIG_REMEDIATION_RERUN
+COMMERCIALIZATION_LAST_COMPLETED_STEP=CS-D02-PRE-69-EXECUTION
+COMMERCIALIZATION_NEXT_ACTION=PREPARE_PRE70_EXPLICIT_DOCKER_CONTEXT_AND_GLOBAL_CONFIG_WRITE_GUARD_RECOMMENDATION
 COMMERCIALIZATION_NEXT_ACTION_AUTHORIZED=true
 P0_REFERENCE_IMPLEMENTATION_CREATED=true
 P0_OFFLINE_TESTS_PASS=true

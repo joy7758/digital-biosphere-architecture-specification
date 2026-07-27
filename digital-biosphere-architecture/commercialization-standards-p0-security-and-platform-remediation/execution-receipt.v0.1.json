@@ -1,0 +1,162 @@
+{
+  "$schema": "./execution-receipt.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE69-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_DOCKER_CONTEXT_UNAVAILABLE_AND_ZERO_WRITE_BOUNDARY_NOT_MET",
+  "decision_reference": "../TITMAS-CS-D02-PRE-69-ISOLATED-DOCKER-CONFIG-REMEDIATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "530481920bec909e95a793a2acd6179bbf6f5993",
+  "decision_sha256": "44694eb46091cdf6fe4ee571e517a269a28c0e4347fa57de5007bf170e4ab316",
+  "execution_plan_reference": "./execution-plan.v0.1.json",
+  "execution_plan_sha256": "ebcf8eb5ceaf82389e1fdd6637b8eabf3a70aa8375a60acf7df4413a766a01f3",
+  "started_at": "2026-07-27T13:35:03+08:00",
+  "ended_at": "2026-07-27T13:37:32+08:00",
+  "executed_by": "Codex",
+  "target": {
+    "repository": "joy7758/titmas-integrations",
+    "branch": "codex/rb0-governance-baseline",
+    "commit_before": "0030077f29c37145a306b72e7083345eb76b504a",
+    "commit_after": "0030077f29c37145a306b72e7083345eb76b504a",
+    "remote_commit_after": "0030077f29c37145a306b72e7083345eb76b504a",
+    "dirty_count_before": 0,
+    "dirty_count_after": 0,
+    "review_hashes_matched_before": 10,
+    "review_hashes_matched_after": 10,
+    "review_hashes_expected": 10,
+    "writes": 0
+  },
+  "actuals": {
+    "temporary_roots_created": 1,
+    "local_source_exports": 1,
+    "anonymous_config_copies": 1,
+    "colima_start_attempts": 1,
+    "colima_start_successes": 1,
+    "colima_stop_attempts": 1,
+    "colima_stop_successes": 1,
+    "image_pull_attempts": 1,
+    "image_pull_successes": 0,
+    "image_transfer_started": false,
+    "container_runs": 0,
+    "linux_platform_validations_executed": 0,
+    "unit_tests_executed": 0,
+    "independent_rehearsals_executed": 0,
+    "agent_model_requests": 0,
+    "credential_value_reads": 0,
+    "cleanup_attempts": 2,
+    "cleanup_successes": 1,
+    "temporary_roots_remaining": 0,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "model_substitution_count": 0,
+    "json_extraction_or_repair_count": 0,
+    "p1_or_p2_executions": 0,
+    "provider_binding_actions": 0,
+    "release_actions": 0
+  },
+  "runtime_observation": {
+    "colima_initial_state": "NOT_RUNNING",
+    "colima_final_state": "NOT_RUNNING",
+    "linux_amd64_emulator_observed": true,
+    "startup_warning_classes": [
+      "HOST_PORT_53_ALREADY_IN_USE_NONBLOCKING"
+    ],
+    "isolated_config_valid": true,
+    "isolated_config_auth_registry_count": 0,
+    "isolated_config_credential_store_present": false,
+    "isolated_config_credential_helpers_present": false,
+    "docker_context_in_isolated_config_present": false,
+    "docker_context_explicitly_selected_on_pull": false
+  },
+  "user_docker_config_observation": {
+    "authorized_writes_max": 0,
+    "metadata_changed_during_colima_lifecycle": true,
+    "exact_write_count": "UNKNOWN",
+    "direct_codex_write_command_executed": false,
+    "final_current_context_present": false,
+    "final_auth_registry_count": 0,
+    "final_credential_store_present": true,
+    "final_semantic_equality_to_pre_start": "NOT_PROVEN",
+    "credential_values_printed_or_persisted": false,
+    "zero_write_boundary_met": false
+  },
+  "lane_results": [
+    {
+      "lane_id": "PFM-LINUX-311-R1",
+      "status": "FAIL_BEFORE_IMAGE_TRANSFER_DOCKER_DAEMON_SOCKET_UNAVAILABLE",
+      "image": "docker.io/library/python@sha256:28255a3ace7eb4c48bc1b57b90af29e1bc82b4fd6c60614a8e3dce61b87ff941",
+      "container_executed": false,
+      "tests_executed": 0
+    },
+    {
+      "lane_id": "PFM-LINUX-314-R1",
+      "status": "NOT_EXECUTED_DUE_PRIOR_FAILURE",
+      "image": "docker.io/library/python@sha256:f70215e5dbe2a47dee6d23f9c6d358bf3c148f59cce2fd165b61118e9d80f2bb",
+      "container_executed": false,
+      "tests_executed": 0
+    },
+    {
+      "lane_id": "PRE69-QF-SECURITY-01",
+      "status": "NOT_EXECUTED_DUE_PRIOR_PLATFORM_FAILURE",
+      "provider": "BAIDU_QIANFAN",
+      "model": "ernie-4.5-turbo-20260402",
+      "request_executed": false
+    },
+    {
+      "lane_id": "PRE69-QWEN-SECURITY-02",
+      "status": "NOT_EXECUTED_DUE_PRIOR_PLATFORM_FAILURE",
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "model": "qwen3.7-plus",
+      "request_executed": false
+    }
+  ],
+  "first_failure": {
+    "stage": "PULL_TWO_EXACT_DIGESTS_WITH_EPHEMERAL_DOCKER_CONFIG",
+    "lane_id": "PFM-LINUX-311-R1",
+    "error_class": "DOCKER_DAEMON_SOCKET_UNAVAILABLE_UNDER_ISOLATED_CONFIG",
+    "default_socket": "unix:///var/run/docker.sock",
+    "immediate_local_cause_confirmed": true,
+    "cause": "ISOLATED_CONFIG_REMOVED_CURRENT_CONTEXT_AND_PULL_DID_NOT_EXPLICITLY_SELECT_COLIMA_CONTEXT",
+    "image_transfer_started": false,
+    "registry_network_activity": "NO_IMAGE_TRANSFER_OBSERVED",
+    "retry_allowed_under_pre69": false
+  },
+  "boundary_event": {
+    "event_class": "USER_DOCKER_CONFIG_ZERO_WRITE_BOUNDARY_NOT_MET",
+    "trigger": "COLIMA_START_STOP_LIFECYCLE",
+    "metadata_drift_observed": true,
+    "credential_value_exposure_observed": false,
+    "target_repository_effect": false,
+    "automatic_repair_authorized": false
+  },
+  "cleanup": {
+    "first_delete_attempt_failed_due_read_only_export": true,
+    "temporary_export_permission_restored_for_cleanup": true,
+    "temporary_root_deleted": true,
+    "colima_stopped": true,
+    "user_docker_config_repair_attempted": false,
+    "image_cache_cleanup_attempted": false
+  },
+  "gate_results": {
+    "remediation_gate": "FAIL",
+    "platform_gate": "FAIL_NOT_EXECUTED",
+    "agent_review_gate": "NOT_EXECUTED",
+    "formal_human_security_review_gate": "NOT_SATISFIED",
+    "standard_gate": "NOT_SATISFIED",
+    "overall": "FAIL_CLOSED"
+  },
+  "effects": {
+    "formal_human_security_review_complete": false,
+    "provider_supported": false,
+    "linux_support_proven": false,
+    "cross_platform_support_proven": false,
+    "real_network_conformance_proven": false,
+    "contract_adopted_as_standard": false,
+    "target_repository_changed": false,
+    "runtime_created_as_product": false,
+    "agent_created": false,
+    "entity_created": false,
+    "permission_created": false,
+    "release_authorized": false,
+    "standard_ready": false
+  },
+  "next_action": "PREPARE_PRE70_EXPLICIT_DOCKER_CONTEXT_AND_GLOBAL_CONFIG_WRITE_GUARD_RECOMMENDATION_NO_EXECUTION_AUTHORIZED"
+}
