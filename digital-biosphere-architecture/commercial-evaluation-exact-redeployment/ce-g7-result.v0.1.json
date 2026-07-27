@@ -1,0 +1,92 @@
+{
+  "$schema": "./ce-g7-result.schema.v0.1.json",
+  "result_id": "TITMAS-CE-G7-RESULT-001",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_ROLLBACK_PASS",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G7",
+  "observed_at": "2026-07-27T12:18:56Z",
+  "source_revision": "f8107969aa1f43be8ecf43f557297a630309fe41",
+  "release": {
+    "attempted_release": "/srv/tmai/releases/f8107969aa1f43be8ecf43f557297a630309fe41",
+    "rollback_release": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "archive_sha256": "fceb10bba908fee4c36bed5fcccc88c3f6ff44d1326c3e1565be17cd12ac167e",
+    "atomic_switch_pass": true,
+    "nginx_test_pass": true,
+    "nginx_reload_pass": true,
+    "failed_release_preserved": true,
+    "archive_preserved": true
+  },
+  "server_gate": {
+    "status": "PASS",
+    "requests_executed": 11,
+    "routes_passed": 11,
+    "routes_total": 11,
+    "hashes_passed": 11,
+    "security_headers_passed": 6,
+    "security_headers_total": 6,
+    "receipt_reference": "ce-g7-server-switch-receipt.v0.1.json"
+  },
+  "controller_gate": {
+    "status": "FAIL_CLOSED",
+    "client": "curl 8.7.1 SecureTransport LibreSSL/3.3.6",
+    "proxy_environment_present": false,
+    "requests_executed": 11,
+    "routes_passed": 10,
+    "routes_total": 11,
+    "failure_route": "/en/",
+    "failure_curl_exit_code": 35,
+    "failure_http_code": null,
+    "failure_bytes": 0,
+    "retry_executed": false,
+    "raw_error_persisted": false,
+    "receipt_reference": "ce-g7-controller-immediate.v0.1.json"
+  },
+  "independent_vantage_gate": {
+    "run_request_created": false,
+    "workflow_triggered": false,
+    "github_vantages_executed": 0,
+    "public_requests_executed": 0,
+    "reason": "Controller immediate stop rule triggered before run-request creation."
+  },
+  "failure": {
+    "stage": "CONTROLLER_IMMEDIATE_PUBLIC_PATH",
+    "classification": "TLS_TRANSPORT_FAILURE",
+    "exact_root_cause_proven": false,
+    "content_defect_proven": false,
+    "server_local_failure": false,
+    "history_preserved": true
+  },
+  "rollback": {
+    "status": "PASS",
+    "target": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "current_after": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "nginx_test_pass": true,
+    "nginx_reload_pass": true,
+    "root_verification_pass": true,
+    "receipt_reference": "ce-g7-rollback-receipt.v0.1.json"
+  },
+  "current_truth": {
+    "new_contract_website_deployed": false,
+    "current_release": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "redeployment_admission_pass": false,
+    "time_window_observation_completed": false,
+    "tls_root_cause_proven": false
+  },
+  "effects": {
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "capability": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offering": false,
+    "production_readiness": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G8_CONTROLLER_TLS_FAILURE_DIAGNOSIS_RECOMMENDATION",
+    "authorized": false,
+    "automatic_redeployment": false
+  }
+}

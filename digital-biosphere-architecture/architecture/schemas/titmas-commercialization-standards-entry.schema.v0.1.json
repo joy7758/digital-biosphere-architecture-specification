@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_CE_G6_IMMUTABLE_RELEASE_REVALIDATION_PASS_CE_G7_REDEPLOYMENT_DECISION_PENDING_STANDARD_NOT_READY"
+      "const": "CS_D02_CE_G7_FAIL_CLOSED_ROLLBACK_PASS_CE_G8_TLS_DIAGNOSIS_PENDING_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "COMMERCIAL-EVALUATION-CE-G6"},
+        "last_completed_step": {"const": "COMMERCIAL-EVALUATION-CE-G7"},
         "last_completed_result": {
-          "const": "PASS_IMMUTABLE_RELEASE_REVALIDATION_ONLY"
+          "const": "FAIL_CLOSED_ROLLBACK_PASS"
         },
         "direct_evidence_reference": {
-          "const": "commercial-evaluation-immutable-release-revalidation/ce-g6-result.v0.1.json"
+          "const": "commercial-evaluation-exact-redeployment/ce-g7-result.v0.1.json"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,7 +131,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "PREPARE_CE_G7_EXACT_REDEPLOYMENT_RECOMMENDATION"
+          "const": "PREPARE_CE_G8_CONTROLLER_TLS_FAILURE_DIAGNOSIS_RECOMMENDATION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "CE_G6_IMMUTABLE_RELEASE_REVALIDATION_PASS_CE_G7_REDEPLOYMENT_DECISION_PENDING"
+          "const": "CE_G7_FAIL_CLOSED_ROLLBACK_PASS_CE_G8_TLS_DIAGNOSIS_PENDING"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7782,7 +7782,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_CE_G7_EXACT_REDEPLOYMENT_RECOMMENDATION_ONLY"
+          "const": "PREPARE_CE_G8_CONTROLLER_TLS_FAILURE_DIAGNOSIS_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false

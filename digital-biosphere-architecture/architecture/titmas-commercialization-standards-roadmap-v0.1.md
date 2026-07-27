@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: ce-g6-immutable-release-revalidation-pass-ce-g7-redeployment-decision-pending-standard-not-ready
+status: ce-g7-fail-closed-rollback-pass-ce-g8-tls-diagnosis-pending-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -2419,6 +2419,32 @@ Development truth boundary 一致。
 CE-G6 不证明 TLS 根因，也不保证 future deployment success。下一步只允许准备 CE-G7
 exact atomic redeployment recommendation；仍需独立 Decision。
 
+### 4.66 CE-G7 Exact Redeployment and Fail-closed Rollback
+
+[Recommendation](../TITMAS-CE-G7-EXACT-REDEPLOYMENT-RECOMMENDATION-v0.1.md)与
+[Decision](../TITMAS-COMMERCIAL-EVALUATION-CE-G7-DECISION-RECORD.v0.1.json)固定了
+`f810796...`、`7da4bcf...`、atomic switch、11-route immediate gate、two-vantage
+post-switch observation 和 exact rollback。
+
+```text
+CE_G7_RESULT=FAIL_CLOSED_ROLLBACK_PASS
+CE_G7_ATOMIC_SWITCH_PASS=true
+CE_G7_SERVER_LOCAL_ROUTES_PASS=11/11
+CE_G7_SECURITY_HEADERS_PASS=6/6
+CE_G7_CONTROLLER_ROUTES_PASS=10/11
+CE_G7_CONTROLLER_FAILURE_ROUTE=/en/
+CE_G7_CONTROLLER_CURL_EXIT_CODE=35
+CE_G7_RETRY_EXECUTED=false
+CE_G7_GITHUB_VANTAGES_EXECUTED=0
+CE_G7_ROLLBACK_PASS=true
+```
+
+[Report](../TITMAS-CE-G7-EXACT-REDEPLOYMENT-REPORT-v0.1.md)与
+[machine result](../commercial-evaluation-exact-redeployment/ce-g7-result.v0.1.json)
+证明 stop rule 和 rollback 正常工作。服务器本地内容 gate 全部通过，但 controller
+SecureTransport/LibreSSL path 再次出现 transport signal；exact root cause 仍未证明。
+新版本当前未部署。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -2688,10 +2714,10 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Prepare CE-G7 exact redeployment recommendation**：CE-G5 已完成两个独立视角
-   `24/24`，CE-G6 已完成 proposed immutable release 的 `60/60` manifest、`61/61`
-   archive 与 `5/5` negative boundary revalidation；下一步只允许定义 atomic switch、
-   two-vantage post-switch observation 和 exact rollback，不自动授权部署；
+1. **Prepare CE-G8 controller TLS failure diagnosis recommendation**：CE-G7 已按 exact
+   Decision 执行并因 controller `/en/` 的 `curl exit 35` 失败关闭、回滚成功；下一步先
+   区分 client stack、local network path、address family 与 server handshake evidence，
+   不自动重试部署，也不降低 two-vantage gate；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -2900,7 +2926,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G7_EXACT_REDEPLOYMENT_RECOMMENDATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G8_CONTROLLER_TLS_FAILURE_DIAGNOSIS_RECOMMENDATION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -2963,6 +2989,18 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G6_SCHEMA_POSITIVE_PASS=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G6_NEGATIVE_CASES_REJECTED=5/5
 TITMAS_COMMERCIAL_EVALUATION_CE_G6_PUBLIC_HTTP_REQUESTS=0
 TITMAS_COMMERCIAL_EVALUATION_CE_G6_DEPLOYMENT_EXECUTED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G7_DECIDED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G7_EXECUTION_COMPLETED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G7_RESULT=FAIL_CLOSED_ROLLBACK_PASS
+TITMAS_COMMERCIAL_EVALUATION_CE_G7_ATOMIC_SWITCH_PASS=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G7_SERVER_LOCAL_ROUTES_PASS=11/11
+TITMAS_COMMERCIAL_EVALUATION_CE_G7_SECURITY_HEADERS_PASS=6/6
+TITMAS_COMMERCIAL_EVALUATION_CE_G7_CONTROLLER_ROUTES_PASS=10/11
+TITMAS_COMMERCIAL_EVALUATION_CE_G7_CONTROLLER_CURL_EXIT_CODE=35
+TITMAS_COMMERCIAL_EVALUATION_CE_G7_RETRY_EXECUTED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G7_GITHUB_VANTAGES_EXECUTED=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G7_ROLLBACK_PASS=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G7_NEW_RELEASE_CURRENT=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
 

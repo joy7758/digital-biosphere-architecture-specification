@@ -127,6 +127,11 @@ public_entry_redeployment_admission_policy_defined: true
 public_entry_independent_vantages_validated: 2
 public_entry_transport_observation_result: pass-24-of-24
 proposed_immutable_release_revalidation_result: pass-read-only
+exact_redeployment_result: fail-closed-rollback-pass
+exact_redeployment_server_local_routes_pass: 11-of-11
+exact_redeployment_controller_routes_pass: 10-of-11
+exact_redeployment_controller_curl_exit_code: 35
+exact_redeployment_github_vantages_executed: 0
 public_entry_redeployment_admission_pass: false
 public_entry_redeployment_authorized: false
 developer_ecosystem_created: false
@@ -268,7 +273,22 @@ DEPLOYMENT=false
 REDEPLOYMENT_AUTHORIZED=false
 ```
 
-下一步只允许准备 CE-G7 exact redeployment recommendation（精确重新部署建议）。
+CE-G7 随后形成独立 exact decision，并对 `f810796...` 执行一次原子切换。服务器本地
+TLS path 的 11/11 路由、11/11 hash、6/6 安全响应头以及 Nginx test/reload 全部通过；
+但本机 controller public path 在 `/en/` 出现 `curl exit 35`，因此：
+
+```text
+CE_G7_RESULT=FAIL_CLOSED_ROLLBACK_PASS
+CONTROLLER_ROUTES_PASS=10/11
+RETRY_EXECUTED=false
+GITHUB_VANTAGE_WORKFLOW_TRIGGERED=false
+CURRENT_RELEASE=7da4bcf16eeec7de1c61031fe08fc04081cf8705
+```
+
+[CE-G7 报告](TITMAS-CE-G7-EXACT-REDEPLOYMENT-REPORT-v0.1.md)保留了原子切换、失败路径
+和 rollback receipt。该结果证明 fail-closed control（失败关闭控制）有效，不证明发布
+成功、TLS 根因、SLA 或 Production。下一步只允许准备 CE-G8 controller TLS failure
+diagnosis recommendation（控制端 TLS 失败诊断建议）。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

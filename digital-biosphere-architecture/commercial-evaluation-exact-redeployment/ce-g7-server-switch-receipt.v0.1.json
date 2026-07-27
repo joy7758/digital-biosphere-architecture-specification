@@ -1,0 +1,64 @@
+{
+  "receipt_id": "TITMAS-CE-G7-SERVER-SWITCH-001",
+  "version": "0.1.0",
+  "capture": "SANITIZED_FROM_DECISION_BOUND_CONTROLLER_STDOUT",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G7",
+  "status": "SWITCH_AND_SERVER_LOCAL_GATE_PASS",
+  "started_at": "2026-07-27T12:18:35Z",
+  "ended_at": "2026-07-27T12:18:36Z",
+  "preconditions": {
+    "current_target": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "proposed_release_exists": true,
+    "rollback_release_exists": true,
+    "archive_bytes": 962612,
+    "archive_sha256": "fceb10bba908fee4c36bed5fcccc88c3f6ff44d1326c3e1565be17cd12ac167e",
+    "routes_verified": 11,
+    "nginx_test_pass": true
+  },
+  "switch": {
+    "from": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "to": "/srv/tmai/releases/f8107969aa1f43be8ecf43f557297a630309fe41",
+    "atomic": true,
+    "nginx_test_pass": true,
+    "nginx_reload_pass": true
+  },
+  "server_local_observation": {
+    "requests_executed": 11,
+    "passes": 11,
+    "failures": 0,
+    "routes": [
+      {"path": "/", "bytes": 46401, "sha256": "67ca2e49dbb558a6b6ff155d9e0889817a83f67a073f7a4646383862a8190929"},
+      {"path": "/en/", "bytes": 48045, "sha256": "b7c8f1d1faef23ab104fe87fde00003e52eb4869aba8b01d0b81b34d626ff50a"},
+      {"path": "/llms.txt", "bytes": 28852, "sha256": "1b687ce3cda5e81cee6ac2dde41131c5f5b8059be956d25a648cfc06b90c2837"},
+      {"path": "/agent-index.json", "bytes": 19998, "sha256": "3849b2ecff7e2fd44f361b284b3314a77fa1923bf71f9d59785a37d1cc29465d"},
+      {"path": "/status.json", "bytes": 19358, "sha256": "8d7cef3c6b07916ddd3e5e40d988764a95ad9a97878584986c2c33f1cdef2b33"},
+      {"path": "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", "bytes": 4276, "sha256": "54a738beef94c2e5e6b3fa28f8a8c299681e05ec5c3e82ec6901710dcfea8269"},
+      {"path": "/TITMAS-AGENT-EVALUATION-ENTRY-v0.1.json", "bytes": 6036, "sha256": "af106a96eceb9e555ef73948eff3d15c7e48b5c9657d5d1d7d7c205bf905b114"},
+      {"path": "/TITMAS-AGENT-EVALUATION-ENTRY-VALIDATION-REPORT-v0.1.md", "bytes": 3087, "sha256": "5b472f3db7b9a27e61ab31ad6cc2e490af5749d37abfd668b549e6e57c5f2cf4"},
+      {"path": "/architecture/titmas-agent-evaluation-entry-contract-v0.1.md", "bytes": 8053, "sha256": "6b2cae58f15ba69a459e4273c6cc69f1aed302904b134dcd5fc7c4aa2cd31fa5"},
+      {"path": "/architecture/schemas/titmas-agent-evaluation-entry.schema.v0.1.json", "bytes": 12819, "sha256": "a49b8d25b2d1c0a79a37fb6449408df3ddbd97b952bff2f7917f913627e55f1c"},
+      {"path": "/release-manifest.json", "bytes": 10678, "sha256": "578d3aa556efe3a647cb44fe40dad74d675dac11e92c87b38c298be97969fc2b"}
+    ],
+    "security_headers_passed": [
+      "content-security-policy",
+      "permissions-policy",
+      "referrer-policy",
+      "strict-transport-security",
+      "x-content-type-options",
+      "x-frame-options"
+    ]
+  },
+  "rollback_during_server_gate": null,
+  "effects": {
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "capability": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offering": false,
+    "production_readiness": false
+  }
+}

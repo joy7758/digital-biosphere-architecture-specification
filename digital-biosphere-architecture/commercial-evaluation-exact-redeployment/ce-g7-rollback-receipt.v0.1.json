@@ -1,0 +1,27 @@
+{
+  "receipt_id": "TITMAS-CE-G7-ROLLBACK-001",
+  "version": "0.1.0",
+  "capture": "SANITIZED_FROM_DECISION_BOUND_CONTROLLER_STDOUT",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G7",
+  "observed_at": "2026-07-27T12:18:56Z",
+  "status": "ROLLBACK_PASS",
+  "rollback": {
+    "status": "PASS",
+    "switched": true,
+    "target": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "current_after": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "nginx_test_pass": true,
+    "nginx_reload_pass": true,
+    "root_verification": {
+      "route": "/",
+      "result": "PASS",
+      "curl_exit_code": 0,
+      "http_200": true,
+      "latency_seconds": 0.046899,
+      "bytes": 46401,
+      "sha256": "992ca20edcc603a087db7875c7d21ff3ce390700cd8879fedebdbd5585b303a5",
+      "expected_bytes": 46401,
+      "expected_sha256": "992ca20edcc603a087db7875c7d21ff3ce390700cd8879fedebdbd5585b303a5"
+    }
+  }
+}
