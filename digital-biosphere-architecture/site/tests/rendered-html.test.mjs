@@ -130,6 +130,10 @@ test("renders bilingual synthetic medical evidence demo with explicit boundaries
   assert.match(en, /UDI-DICOM Evidence Chain Validator/);
   assert.match(zh, /SYNTHETIC_DATA_ONLY/);
   assert.match(en, /REAL_REGISTRY_LOOKUP=false/);
+  assert.match(zh, /VALIDATOR_IMPLEMENTED_HERE=false/);
+  assert.match(en, /VALIDATOR_IMPLEMENTED_HERE=false/);
+  assert.match(zh, /不执行医疗 Validator/);
+  assert.match(en, /does not implement a medical validator/);
   assert.match(zh, /不构成监管认证或合规背书/);
   assert.match(en, /No regulatory certification or compliance endorsement/);
   assert.match(zh, /href="\/industries\//);
@@ -219,7 +223,12 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.entrypoints.medical_evidence_demo_zh, "/medical-evidence/");
   assert.equal(agentIndex.entrypoints.medical_evidence_demo_en, "/en/medical-evidence/");
   assert.equal(medicalEvidence.status, "STATIC_SYNTHETIC_UI_DEMO");
+  assert.equal(medicalEvidence.direction_status, "DEVELOPMENT_DIRECTION");
+  assert.equal(medicalEvidence.vertical_development_direction, true);
+  assert.equal(medicalEvidence.independent_medical_platform, false);
   assert.equal(medicalEvidence.data_policy.patient_data_used, false);
+  assert.equal(medicalEvidence.boundaries.validator_implemented_here, false);
+  assert.equal(medicalEvidence.boundaries.clinical_validation, false);
   assert.equal(medicalEvidence.boundaries.regulatory_certification_claim, false);
   assert.equal(titmasCommunity.public_front_door.future_domain_filing_status, "PENDING");
   assert.equal(titmasCommunity.github.organization_created, false);

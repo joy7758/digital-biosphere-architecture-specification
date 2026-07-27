@@ -5,6 +5,14 @@
   "name_zh": "UDI-DICOM 医疗设备影像证据清单与验证器",
   "status": "STATIC_SYNTHETIC_UI_DEMO",
   "maturity": "Development",
+  "direction_status": "DEVELOPMENT_DIRECTION",
+  "vertical_development_direction": true,
+  "independent_medical_platform": false,
+  "source": {
+    "repository": "https://github.com/joy7758/titmas",
+    "branch": "codex/medical-evidence-direction",
+    "revision": "292e83aaafa4ada5a6089bcde7bbebf0e70045b4"
+  },
   "sample_identifier": "999.TEST.UDI.DICOM.0001",
   "purpose": "Explain structural evidence-chain closure across device identity, an imaging object, and external evidence.",
   "entrypoints": {
@@ -24,9 +32,13 @@
     "real_registry_lookup": false
   },
   "boundaries": {
+    "validator_implemented_here": false,
+    "real_medical_data_allowed": false,
+    "clinical_validation": false,
     "device_safety_claim": false,
     "clinical_safety_claim": false,
     "regulatory_certification_claim": false,
+    "medical_diagnosis": false,
     "real_hospital_deployment_claim": false,
     "production_ready": false,
     "authority_effect": false,

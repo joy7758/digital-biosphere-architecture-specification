@@ -6,53 +6,57 @@ import { Footer, Header } from "./site-shell";
 import styles from "./medical-evidence/medical-evidence.module.css";
 
 const SAMPLE_UDI = "999.TEST.UDI.DICOM.0001";
+const DIRECTION_SOURCE =
+  "https://github.com/joy7758/titmas/tree/292e83aaafa4ada5a6089bcde7bbebf0e70045b4";
 
 const copy = {
   zh: {
     breadcrumb: ["TITMAS 首页", "行业应用", "医疗证据 Demo"],
     eyebrow: "BOUNDED APPLICATION DEMO / 有界应用演示",
     title: "UDI-DICOM 证据链验证器",
-    lead: "输入一个模拟 UDI，直观查看设备身份、影像对象与外部证据是否形成结构闭合。",
+    lead: "输入一个明确的模拟 UDI，查看设备身份、影像对象与外部证据之间的引用关系如何表达。",
     banner: "概念演示 · 仅含模拟数据 · 非生产就绪 · 不代表真实合规或认证",
     label: "模拟 UDI",
     helper: "仅在当前浏览器中使用；不会上传，也不会查询真实登记库。",
-    button: "验证证据链",
+    button: "查看模拟证据链",
     reset: "重置",
     idle: "等待验证",
-    closed: "结构闭合",
-    invalid: "请输入一个模拟 UDI。",
+    closed: "模拟引用结构已展开",
+    invalid: "仅允许使用以 999.TEST. 开头的模拟标识符。",
     steps: [
       ["Identity", "设备身份", "解析模拟 UDI，并建立设备身份锚点。"],
       ["Imaging", "影像对象", "检查 DICOM 元数据与身份引用的映射。"],
       ["Evidence", "外部证据", "检查 Manifest 对影像与证据引用的闭合。"],
     ],
-    resultTitle: "三段证据链结构闭合",
-    resultBody: "该结果只说明演示数据之间的引用关系完整，不评价设备、临床流程或 AI 决策是否安全、正确或合规。",
+    resultTitle: "三段模拟证据关系",
+    resultBody: "该界面只是解释预设模拟数据之间的引用关系，不执行医疗 Validator，也不评价设备、临床流程或 AI 决策是否安全、正确或合规。",
     boundariesTitle: "这个 Demo 明确不证明什么",
     boundaries: ["不证明设备物理或临床安全", "不构成监管认证或合规背书", "不代表真实医院部署或生产就绪"],
+    sourceCta: "查看已发布的方向文档",
   },
   en: {
     breadcrumb: ["TITMAS home", "Applications", "Medical Evidence Demo"],
     eyebrow: "BOUNDED APPLICATION DEMO",
     title: "UDI-DICOM Evidence Chain Validator",
-    lead: "Enter a synthetic UDI to see whether device identity, an imaging object, and external evidence form a structurally closed chain.",
+    lead: "Enter an explicitly synthetic UDI to inspect how references across device identity, an imaging object, and external evidence are represented.",
     banner: "Concept demo · Synthetic data only · Not production-ready · No compliance or certification claim",
     label: "Synthetic UDI",
     helper: "Used only in this browser. Nothing is uploaded and no real registry is queried.",
-    button: "Validate evidence chain",
+    button: "Inspect synthetic evidence chain",
     reset: "Reset",
     idle: "Awaiting validation",
-    closed: "Structurally closed",
-    invalid: "Enter a synthetic UDI.",
+    closed: "Synthetic reference structure shown",
+    invalid: "Use a synthetic identifier beginning with 999.TEST. only.",
     steps: [
       ["Identity", "Device identity", "Parse the synthetic UDI and establish an identity anchor."],
       ["Imaging", "Imaging object", "Check the mapping between DICOM metadata and the identity reference."],
       ["Evidence", "External evidence", "Check whether the Manifest closes its imaging and evidence references."],
     ],
-    resultTitle: "Three-part evidence chain structurally closed",
-    resultBody: "This result only shows that references in the demo data are complete. It does not assess whether a device, clinical workflow, or AI decision is safe, correct, or compliant.",
+    resultTitle: "Three-part synthetic evidence relationship",
+    resultBody: "This interface only explains references in preset synthetic data. It does not implement a medical validator or assess whether a device, clinical workflow, or AI decision is safe, correct, or compliant.",
     boundariesTitle: "What this demo explicitly does not prove",
     boundaries: ["No physical or clinical safety claim", "No regulatory certification or compliance endorsement", "No real hospital deployment or production-readiness claim"],
+    sourceCta: "Read the published direction documents",
   },
 } as const;
 
@@ -64,7 +68,7 @@ export function MedicalEvidencePage({ locale }: { locale: Locale }) {
   const [state, setState] = useState<"idle" | "complete" | "invalid">("idle");
 
   function validate() {
-    setState(udi.trim() ? "complete" : "invalid");
+    setState(udi.trim().startsWith("999.TEST.") ? "complete" : "invalid");
   }
 
   function reset() {
@@ -88,8 +92,10 @@ export function MedicalEvidencePage({ locale }: { locale: Locale }) {
             <h1>{c.title}</h1>
             <p className={styles.lead}>{c.lead}</p>
             <div className={styles.truthRow}>
+              <code>MEDICAL_EVIDENCE_DIRECTION=DEVELOPMENT_DIRECTION</code>
               <code>SYNTHETIC_DATA_ONLY</code>
               <code>REAL_REGISTRY_LOOKUP=false</code>
+              <code>VALIDATOR_IMPLEMENTED_HERE=false</code>
             </div>
           </div>
 
@@ -139,6 +145,9 @@ export function MedicalEvidencePage({ locale }: { locale: Locale }) {
           <p>INTERPRETATION BOUNDARY</p>
           <h2>{c.boundariesTitle}</h2>
           <div>{c.boundaries.map((item) => <span key={item}>{item}</span>)}</div>
+          <a className={styles.sourceLink} href={DIRECTION_SOURCE} target="_blank" rel="noreferrer">
+            {c.sourceCta} <span>↗</span>
+          </a>
         </section>
       </main>
       <Footer locale={locale} />
