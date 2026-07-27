@@ -13,6 +13,9 @@ const requiredFiles = [
   "en/community/index.html",
   "industries/index.html",
   "en/industries/index.html",
+  "medical-evidence/index.html",
+  "en/medical-evidence/index.html",
+  "medical-evidence-demo.json",
   "digital-cell/index.html",
   "en/digital-cell/index.html",
   "digital-cell.json",
@@ -71,13 +74,16 @@ const [zh, en, zhCommunity, enCommunity, zhStatus, enStatus, status, titmasCommu
   readFile(join(outputRoot, "release.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release-manifest.json"), "utf8").then(JSON.parse),
 ]);
-const [zhIndustries, enIndustries, digitalCellPage, enDigitalCellPage] = await Promise.all([
+const [zhIndustries, enIndustries, medicalEvidencePage, enMedicalEvidencePage, digitalCellPage, enDigitalCellPage] = await Promise.all([
   readFile(join(outputRoot, "industries/index.html"), "utf8"),
   readFile(join(outputRoot, "en/industries/index.html"), "utf8"),
+  readFile(join(outputRoot, "medical-evidence/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/medical-evidence/index.html"), "utf8"),
   readFile(join(outputRoot, "digital-cell/index.html"), "utf8"),
   readFile(join(outputRoot, "en/digital-cell/index.html"), "utf8"),
 ]);
 const digitalCell = await readFile(join(outputRoot, "digital-cell.json"), "utf8").then(JSON.parse);
+const medicalEvidence = await readFile(join(outputRoot, "medical-evidence-demo.json"), "utf8").then(JSON.parse);
 const commercialZh = await readFile(join(outputRoot, "commercial-evaluation/index.html"), "utf8");
 const commercialEn = await readFile(join(outputRoot, "en/commercial-evaluation/index.html"), "utf8");
 const commercialPack = await readFile(join(outputRoot, "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"), "utf8").then(JSON.parse);
@@ -106,9 +112,21 @@ assert.match(enDigitalCellPage, /Make agent execution/);
 assert.match(enDigitalCellPage, /href="\/en\/industries\//);
 assert.match(zhIndustries, /TITMAS 不提供/);
 assert.match(enIndustries, /TITMAS does not provide/);
+assert.match(zhIndustries, /href="\/medical-evidence\//);
+assert.match(enIndustries, /href="\/en\/medical-evidence\//);
+assert.match(medicalEvidencePage, /UDI-DICOM 证据链验证器/);
+assert.match(enMedicalEvidencePage, /UDI-DICOM Evidence Chain Validator/);
+assert.match(medicalEvidencePage, /REAL_REGISTRY_LOOKUP=false/);
+assert.match(enMedicalEvidencePage, /REAL_REGISTRY_LOOKUP=false/);
+assert.equal(medicalEvidence.status, "STATIC_SYNTHETIC_UI_DEMO");
+assert.equal(medicalEvidence.data_policy.real_registry_lookup, false);
+assert.equal(medicalEvidence.boundaries.production_ready, false);
 assert.equal(digitalCell.status, "REFERENCE_COMPLETE");
 assert.equal(digitalCell.boundaries.production_claim, false);
 assert.equal(agentIndex.entrypoints.digital_cell_demo, "/digital-cell/");
+assert.equal(agentIndex.entrypoints.medical_evidence_demo_zh, "/medical-evidence/");
+assert.equal(agentIndex.entrypoints.medical_evidence_demo_en, "/en/medical-evidence/");
+assert.equal(agentIndex.medical_evidence_demo.real_registry_lookup, false);
 assert.match(commercialZh, /商业评估包 v0\.2/);
 assert.match(commercialEn, /Commercial Evaluation Pack v0\.2/);
 assert.equal(commercialPack.commercial_truth.evaluation_package_prepared, true);

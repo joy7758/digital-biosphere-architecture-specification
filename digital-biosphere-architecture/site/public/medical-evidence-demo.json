@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.1",
+  "demo_id": "TITMAS-MEDICAL-EVIDENCE-DEMO-0.1",
+  "name": "UDI-DICOM Evidence Manifest and Validator",
+  "name_zh": "UDI-DICOM 医疗设备影像证据清单与验证器",
+  "status": "STATIC_SYNTHETIC_UI_DEMO",
+  "maturity": "Development",
+  "sample_identifier": "999.TEST.UDI.DICOM.0001",
+  "purpose": "Explain structural evidence-chain closure across device identity, an imaging object, and external evidence.",
+  "entrypoints": {
+    "zh": "/medical-evidence/",
+    "en": "/en/medical-evidence/"
+  },
+  "chain": [
+    "Identity",
+    "Imaging",
+    "Evidence"
+  ],
+  "data_policy": {
+    "synthetic_input_only": true,
+    "patient_data_used": false,
+    "hospital_data_used": false,
+    "input_uploaded": false,
+    "real_registry_lookup": false
+  },
+  "boundaries": {
+    "device_safety_claim": false,
+    "clinical_safety_claim": false,
+    "regulatory_certification_claim": false,
+    "real_hospital_deployment_claim": false,
+    "production_ready": false,
+    "authority_effect": false,
+    "permission_effect": false,
+    "evidence_truth_effect": false
+  }
+}

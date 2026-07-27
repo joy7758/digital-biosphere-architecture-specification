@@ -30,6 +30,7 @@ const industryCopy = {
     demoTitle: "查看可运行的参考演示",
     demoLead: "Digital Cell Demo 展示最小可信执行对象、确定性重放和健康视图；它不是制造系统本身。",
     demoCta: "进入 Digital Cell Demo",
+    medicalCta: "医疗证据 Demo",
     statusCta: "查看状态与边界",
   },
   en: {
@@ -60,6 +61,7 @@ const industryCopy = {
     demoTitle: "Explore the runnable reference demo",
     demoLead: "The Digital Cell Demo shows minimal trust objects, deterministic replay, and a health view. It is not a manufacturing system.",
     demoCta: "Open the Digital Cell Demo",
+    medicalCta: "Medical Evidence Demo",
     statusCta: "Review status and boundaries",
   },
 } as const;
@@ -69,6 +71,7 @@ export function IndustryPage({ locale }: { locale: Locale }) {
   const copy = industryCopy[locale];
   const root = locale === "zh" ? "/" : "/en/";
   const demo = locale === "zh" ? "/digital-cell/" : "/en/digital-cell/";
+  const medical = locale === "zh" ? "/medical-evidence/" : "/en/medical-evidence/";
   const status = locale === "zh" ? "/status/" : "/en/status/";
 
   return (
@@ -88,6 +91,7 @@ export function IndustryPage({ locale }: { locale: Locale }) {
                 {locale === "zh" ? "查看生态结构" : "View the ecosystem"}
               </a>
               <a className="button button-secondary" href={demo}>{copy.demoCta}</a>
+              <a className="button button-secondary" href={medical}>{copy.medicalCta}</a>
             </div>
           </div>
         </section>

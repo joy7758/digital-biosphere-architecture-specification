@@ -32,6 +32,8 @@ const routes = [
   { request: "/en/community", output: "en/community/index.html", markers: ["Build trustworthy multi-agent infrastructure together", "COMMUNITY_ESTABLISHED=false"] },
   { request: "/industries", output: "industries/index.html", markers: ["智能制造智能体生态", "TITMAS 不提供", "Digital Cell Demo"] },
   { request: "/en/industries", output: "en/industries/index.html", markers: ["Manufacturing AI Agent Ecosystem", "TITMAS does not provide", "Digital Cell Demo"] },
+  { request: "/medical-evidence", output: "medical-evidence/index.html", markers: ["UDI-DICOM 证据链验证器", "SYNTHETIC_DATA_ONLY", "REAL_REGISTRY_LOOKUP=false"] },
+  { request: "/en/medical-evidence", output: "en/medical-evidence/index.html", markers: ["UDI-DICOM Evidence Chain Validator", "SYNTHETIC_DATA_ONLY", "REAL_REGISTRY_LOOKUP=false"] },
   { request: "/digital-cell", output: "digital-cell/index.html", markers: ["TITMAS Digital Cell Demo", "REFERENCE_COMPLETE", "NO DIGITAL LIFE CLAIM"] },
   { request: "/commercial-evaluation", output: "commercial-evaluation/index.html", markers: ["商业评估包 v0.2", "AGENT_FIRST_RUN_VALIDATED"] },
   { request: "/en/commercial-evaluation", output: "en/commercial-evaluation/index.html", markers: ["Commercial Evaluation Pack v0.2", "AGENT_FIRST_RUN_VALIDATED"] },

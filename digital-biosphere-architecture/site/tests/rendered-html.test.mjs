@@ -114,6 +114,26 @@ test("renders clickable bilingual industry application entry points", async () =
   assert.match(en, /TITMAS does not provide/);
   assert.match(zh, /href="\/digital-cell\//);
   assert.match(en, /href="\/en\/digital-cell\//);
+  assert.match(zh, /href="\/medical-evidence\//);
+  assert.match(en, /href="\/en\/medical-evidence\//);
+});
+
+test("renders bilingual synthetic medical evidence demo with explicit boundaries", async () => {
+  const [zhResponse, enResponse] = await Promise.all([
+    render("/medical-evidence"),
+    render("/en/medical-evidence"),
+  ]);
+  assert.equal(zhResponse.status, 200);
+  assert.equal(enResponse.status, 200);
+  const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
+  assert.match(zh, /UDI-DICOM 证据链验证器/);
+  assert.match(en, /UDI-DICOM Evidence Chain Validator/);
+  assert.match(zh, /SYNTHETIC_DATA_ONLY/);
+  assert.match(en, /REAL_REGISTRY_LOOKUP=false/);
+  assert.match(zh, /不构成监管认证或合规背书/);
+  assert.match(en, /No regulatory certification or compliance endorsement/);
+  assert.match(zh, /href="\/industries\//);
+  assert.match(en, /href="\/en\/industries\//);
 });
 
 test("renders bilingual Digital Cell pages with shared return navigation", async () => {
@@ -163,6 +183,7 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("titmas-community.json", root)),
     access(new URL("robots.txt", root)),
     access(new URL("sitemap.xml", root)),
+    access(new URL("medical-evidence-demo.json", root)),
     access(new URL("TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json", root)),
     access(new URL("TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", root)),
     access(new URL("TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-REPORT-v0.1.md", root)),
@@ -173,12 +194,13 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("examples/titmas-first-run/entity-object.synthetic.v0.1.json", root)),
   ]);
 
-  const [agentIndex, status, agentCustomerPackage, dbosPackage, titmasCommunity, llms] = await Promise.all([
+  const [agentIndex, status, agentCustomerPackage, dbosPackage, titmasCommunity, medicalEvidence, llms] = await Promise.all([
     readFile(new URL("agent-index.json", root), "utf8").then(JSON.parse),
     readFile(new URL("status.json", root), "utf8").then(JSON.parse),
     readFile(new URL("agent-customer-package.json", root), "utf8").then(JSON.parse),
     readFile(new URL("dbos-public-package-manifest.json", root), "utf8").then(JSON.parse),
     readFile(new URL("titmas-community.json", root), "utf8").then(JSON.parse),
+    readFile(new URL("medical-evidence-demo.json", root), "utf8").then(JSON.parse),
     readFile(new URL("llms.txt", root), "utf8"),
   ]);
   assert.equal(agentIndex.released, releaseContext.developerPreviewReleased);
@@ -194,6 +216,11 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.entrypoints.commercial_evaluation_manifest, "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json");
   assert.equal(agentIndex.entrypoints.industries_zh, "/industries/");
   assert.equal(agentIndex.entrypoints.industries_en, "/en/industries/");
+  assert.equal(agentIndex.entrypoints.medical_evidence_demo_zh, "/medical-evidence/");
+  assert.equal(agentIndex.entrypoints.medical_evidence_demo_en, "/en/medical-evidence/");
+  assert.equal(medicalEvidence.status, "STATIC_SYNTHETIC_UI_DEMO");
+  assert.equal(medicalEvidence.data_policy.patient_data_used, false);
+  assert.equal(medicalEvidence.boundaries.regulatory_certification_claim, false);
   assert.equal(titmasCommunity.public_front_door.future_domain_filing_status, "PENDING");
   assert.equal(titmasCommunity.github.organization_created, false);
   assert.equal(titmasCommunity.community_state.public_contribution_enabled, false);
