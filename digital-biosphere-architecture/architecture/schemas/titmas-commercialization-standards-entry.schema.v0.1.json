@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_56_QWEN_MODEL_DISCOVERY_PASS_EXACT_QWEN3_7_PLUS_BENCHMARK_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_57_QWEN3_7_PLUS_BENCHMARK_FAIL_CLOSED_RESPONSE_ENUM_DIAGNOSTIC_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "CS-D02-PRE-56"},
+        "last_completed_step": {"const": "CS-D02-PRE-57"},
         "last_completed_result": {
-          "const": "PASS_READ_ONLY_MODEL_DISCOVERY"
+          "const": "FAIL_CLOSED_RESPONSE_ENUM_MISMATCH_2_OF_3_PASS"
         },
         "direct_evidence_reference": {
-          "const": "commercialization-standards-qwen-model-discovery/PRE-56-QWEN-MODEL-DISCOVERY-RESULT-v0.1.md"
+          "const": "commercialization-standards-qwen3-7-plus-onboarding-benchmark/PRE-57-QWEN3-7-PLUS-ONBOARDING-BENCHMARK-RESULT-v0.1.md"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -126,12 +126,12 @@
         "credential_configured_local": {"const": true},
         "base_url_configured_local": {"const": true},
         "credential_value_recorded": {"const": false},
-        "provider_connected": {"const": false},
+        "provider_connected": {"const": true},
         "provider_directly_tested": {"const": true},
         "provider_direct_test_passed": {"const": false},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "FORM_EXACT_QWEN3_7_PLUS_ONBOARDING_BENCHMARK_RECOMMENDATION"
+          "const": "FORM_QWEN_RESPONSE_CONTRACT_DIAGNOSTIC_RECOMMENDATION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE56_QWEN_MODEL_DISCOVERY_PASS_EXACT_QWEN3_7_PLUS_BENCHMARK_RECOMMENDATION_REQUIRED"
+          "const": "PRE57_QWEN3_7_PLUS_BENCHMARK_FAIL_CLOSED_RESPONSE_ENUM_DIAGNOSTIC_RECOMMENDATION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -5351,6 +5351,31 @@
             "pre56_model_ids_discovered",
             "pre56_primary_exact_model_candidate",
             "pre56_retry_fallback_alternate_endpoint_scraping_guessing_attempts",
+            "pre57_recommendation_reference",
+            "pre57_recommendation_sha256",
+            "pre57_recommendation_commit",
+            "pre57_decision_reference",
+            "pre57_decision_sha256",
+            "pre57_decision_commit",
+            "pre57_plan_sha256",
+            "pre57_plan_commit",
+            "pre57_result_reference",
+            "pre57_result_sha256",
+            "pre57_sanitized_results_sha256",
+            "pre57_execution_receipt_sha256",
+            "pre57_local_raw_capture_sha256",
+            "pre57_result_commit",
+            "pre57_result",
+            "pre57_sessions_authorized",
+            "pre57_sessions_executed",
+            "pre57_sessions_passed",
+            "pre57_sessions_failed",
+            "pre57_http_2xx",
+            "pre57_direct_json",
+            "pre57_exact_returned_model_matches",
+            "pre57_expected_boundary_values_matches",
+            "pre57_schema_passes",
+            "pre57_retry_fallback_substitution_extraction_repair_attempts",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5413,6 +5438,9 @@
             "qwen_onboarding_benchmark_recommendation_allowed",
             "qwen_model_discovery_recommendation_allowed",
             "qwen_exact_benchmark_recommendation_allowed",
+            "qwen_exact_benchmark_executed",
+            "qwen_exact_benchmark_pass",
+            "qwen_response_contract_diagnostic_recommendation_allowed",
             "rb1_provider_binding_implementation_authorized",
             "rb1_reproducible_build_proven",
             "provider_supported",
@@ -6515,6 +6543,63 @@
             "pre56_retry_fallback_alternate_endpoint_scraping_guessing_attempts": {
               "const": 0
             },
+            "pre57_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-57-QWEN3-7-PLUS-ONBOARDING-BENCHMARK-RECOMMENDATION-v0.1.md"
+            },
+            "pre57_recommendation_sha256": {
+              "const": "00f6ab979744cc86460e35b706a19ba52ff3db629757faab2ac1a260ab293375"
+            },
+            "pre57_recommendation_commit": {
+              "const": "cbe69b00d104e7087bda8108f13ff65d44c50efd"
+            },
+            "pre57_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-57-QWEN3-7-PLUS-ONBOARDING-BENCHMARK-DECISION-RECORD.v0.1.json"
+            },
+            "pre57_decision_sha256": {
+              "const": "2df6514bad2d90cfa52c32cfe6805a87b674ce3c68a4fafa9f888d0f6cd87237"
+            },
+            "pre57_decision_commit": {
+              "const": "6b42bb0a8f98a3e4884278a53835bf02afc23ecb"
+            },
+            "pre57_plan_sha256": {
+              "const": "631e2d0bacece27cf8b30f7fbb4228801f216b841ec2b33203aefdb1b5a300f7"
+            },
+            "pre57_plan_commit": {
+              "const": "8be575189e6e2cef2b20766074c17b5a488dded5"
+            },
+            "pre57_result_reference": {
+              "const": "commercialization-standards-qwen3-7-plus-onboarding-benchmark/PRE-57-QWEN3-7-PLUS-ONBOARDING-BENCHMARK-RESULT-v0.1.md"
+            },
+            "pre57_result_sha256": {
+              "const": "1a58f7614aa5c759347259f6dd934fb15d7d7a24f38dbabb97c4d1ab66d94866"
+            },
+            "pre57_sanitized_results_sha256": {
+              "const": "28a4747a87199e7b1eda61b636c01e48e78db7f6ec92ccd2fb027dea9ad1829c"
+            },
+            "pre57_execution_receipt_sha256": {
+              "const": "87d58360034339d02ad4e888f8075deb94e334860422c921245791b31996afc0"
+            },
+            "pre57_local_raw_capture_sha256": {
+              "const": "dbeb03296bdcf4838b01e7688e35862e12a1c7560a058d4b6dbd97ad8c81b49c"
+            },
+            "pre57_result_commit": {
+              "const": "ce2f3eaf50e7f5f4cd98778965091ae240f3bfe8"
+            },
+            "pre57_result": {
+              "const": "FAIL_CLOSED_RESPONSE_ENUM_MISMATCH_2_OF_3_PASS"
+            },
+            "pre57_sessions_authorized": {"const": 3},
+            "pre57_sessions_executed": {"const": 3},
+            "pre57_sessions_passed": {"const": 2},
+            "pre57_sessions_failed": {"const": 1},
+            "pre57_http_2xx": {"const": 3},
+            "pre57_direct_json": {"const": 3},
+            "pre57_exact_returned_model_matches": {"const": 3},
+            "pre57_expected_boundary_values_matches": {"const": 3},
+            "pre57_schema_passes": {"const": 2},
+            "pre57_retry_fallback_substitution_extraction_repair_attempts": {
+              "const": 0
+            },
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -6669,7 +6754,7 @@
               "const": true
             },
             "qwen_provider_connected": {
-              "const": false
+              "const": true
             },
             "qwen_provider_directly_tested": {
               "const": true
@@ -6699,6 +6784,15 @@
               "const": false
             },
             "qwen_exact_benchmark_recommendation_allowed": {
+              "const": false
+            },
+            "qwen_exact_benchmark_executed": {
+              "const": true
+            },
+            "qwen_exact_benchmark_pass": {
+              "const": false
+            },
+            "qwen_response_contract_diagnostic_recommendation_allowed": {
               "const": true
             },
             "rb1_provider_binding_implementation_authorized": {
@@ -6734,7 +6828,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_EXACT_QWEN3_7_PLUS_ONBOARDING_BENCHMARK_RECOMMENDATION"
+          "const": "FORM_QWEN_RESPONSE_CONTRACT_DIAGNOSTIC_RECOMMENDATION"
         },
         "decision_ready": {
           "const": false
