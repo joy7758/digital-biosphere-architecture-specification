@@ -2924,6 +2924,16 @@ GitHub 在创建时观察到 `MERGEABLE` / `CLEAN`，但该观察不等于 appro
 authorization 或 canonical adoption。下一步仅允许独立 review Draft PR #22，并另行
 形成 merge Recommendation/Decision。
 
+### 4.84 CE-G11B Draft PR Independent Review Recommendation
+
+[Independent review Recommendation](../TITMAS-CE-G11B-DRAFT-PR-INDEPENDENT-REVIEW-RECOMMENDATION-v0.1.md)
+冻结一次只读 PR review：exact base/head diff、21 changed paths、Phase A-R1 证据、
+topology、Actions runs、site isolation 和 authority/fail-closed/security/compatibility
+维度；不提交 GitHub comment/review，不转 Ready，不 merge。
+[Max review](../TITMAS-CE-G11B-DRAFT-PR-INDEPENDENT-REVIEW-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+为 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction。下一步只允许
+建立新的独立 Review Decision；PR diff review 尚未执行。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -3193,10 +3203,10 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Review Draft PR #22 before any merge decision**：PR 已按一次性 Decision 创建并保持
-   `OPEN` Draft；只允许独立审查 frozen diff，并另行形成 merge Recommendation 和
-   Decision。不得直接 merge、创建 run request、触发 workflow、包含 site path、访问
-   server、进入 Phase B 或 redeploy；
+1. **Prepare the Draft PR #22 independent Review Decision only**：只读审查
+   Recommendation 已通过 exact Max review；下一步只允许建立 Decision 并审查其 exact
+   bytes。不得提交 GitHub review/comment、转 Ready、merge、创建 run request、触发
+   workflow、包含 site path、访问 server、进入 Phase B 或 redeploy；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
