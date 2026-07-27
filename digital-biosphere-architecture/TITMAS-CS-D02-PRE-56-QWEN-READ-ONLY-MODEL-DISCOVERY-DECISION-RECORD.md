@@ -35,4 +35,3 @@ Chat Completions、自动选择模型或把 listing 提升为 entitlement、supp
 
 创建并验证 exact seven-file PRE-56 packet。发现通过后只能形成 exact model candidate
 selection Recommendation；新的 inference 需要新的独立 Decision。
-
