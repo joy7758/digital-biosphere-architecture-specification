@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre72/pre72-preflight-request-contract.schema.v0.1.json",
+  "title": "TITMAS PRE-72 Preflight Request Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "response_schema_reference",
+    "response_schema_sha256",
+    "system_message",
+    "sessions",
+    "transport_rules",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre72-preflight-request-contract.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE72-PREFLIGHT-REQUEST-CONTRACT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_CANDIDATE_NOT_AUTHORIZED"},
+    "response_schema_reference": {"const": "./pre72-preflight-response.schema.v0.1.json"},
+    "response_schema_sha256": {
+      "const": "a8ca448053760f892ed36a244bad521f5d018539ec2050f20eca1338146088d8"
+    },
+    "system_message": {
+      "type": "string",
+      "minLength": 200,
+      "pattern": "JSON"
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "prefixItems": [
+        {
+          "allOf": [
+            {"$ref": "#/$defs/qianfan_session"},
+            {"properties": {"session_id": {"const": "PRE72-QIANFAN-01"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/qianfan_session"},
+            {"properties": {"session_id": {"const": "PRE72-QIANFAN-02"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/qianfan_session"},
+            {"properties": {"session_id": {"const": "PRE72-QIANFAN-03"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/qwen_session"},
+            {"properties": {"session_id": {"const": "PRE72-QWEN-01"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/qwen_session"},
+            {"properties": {"session_id": {"const": "PRE72-QWEN-02"}}}
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/qwen_session"},
+            {"properties": {"session_id": {"const": "PRE72-QWEN-03"}}}
+          ]
+        }
+      ],
+      "items": false
+    },
+    "transport_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "temperature",
+        "stream",
+        "max_tokens",
+        "raw_response_persistence_allowed",
+        "assistant_content_extraction_allowed",
+        "json_repair_allowed"
+      ],
+      "properties": {
+        "temperature": {"const": 0},
+        "stream": {"const": false},
+        "max_tokens": {"const": "OMITTED"},
+        "raw_response_persistence_allowed": {"const": false},
+        "assistant_content_extraction_allowed": {"const": false},
+        "json_repair_allowed": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_recorded",
+        "live_model_request_authorized",
+        "credential_value_read",
+        "provider_supported",
+        "formal_human_security_review_complete",
+        "standard_ready"
+      ],
+      "properties": {
+        "decision_recorded": {"const": false},
+        "live_model_request_authorized": {"const": false},
+        "credential_value_read": {"const": false},
+        "provider_supported": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "lane_id",
+        "provider",
+        "endpoint",
+        "requested_model",
+        "user_message",
+        "response_format",
+        "enable_thinking"
+      ],
+      "properties": {
+        "session_id": {"pattern": "^PRE72-(QIANFAN|QWEN)-0[1-3]$"},
+        "lane_id": {
+          "enum": [
+            "PRE72-QIANFAN-STRUCTURED-OUTPUT",
+            "PRE72-QWEN-STRUCTURED-OUTPUT"
+          ]
+        },
+        "provider": {
+          "enum": [
+            "BAIDU_QIANFAN",
+            "ALIBABA_CLOUD_MODEL_STUDIO"
+          ]
+        },
+        "endpoint": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "/chat/completions$"
+        },
+        "requested_model": {
+          "enum": [
+            "ernie-4.5-turbo-20260402",
+            "qwen3.7-plus"
+          ]
+        },
+        "user_message": {
+          "type": "string",
+          "minLength": 500,
+          "pattern": "JSON"
+        },
+        "response_format": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["type"],
+          "properties": {"type": {"const": "json_object"}}
+        },
+        "enable_thinking": {
+          "oneOf": [
+            {"const": false},
+            {"const": "OMITTED"}
+          ]
+        }
+      }
+    },
+    "qianfan_session": {
+      "allOf": [
+        {"$ref": "#/$defs/session"},
+        {
+          "properties": {
+            "lane_id": {"const": "PRE72-QIANFAN-STRUCTURED-OUTPUT"},
+            "provider": {"const": "BAIDU_QIANFAN"},
+            "endpoint": {"const": "https://qianfan.baidubce.com/v2/chat/completions"},
+            "requested_model": {"const": "ernie-4.5-turbo-20260402"},
+            "enable_thinking": {"const": "OMITTED"}
+          }
+        }
+      ]
+    },
+    "qwen_session": {
+      "allOf": [
+        {"$ref": "#/$defs/session"},
+        {
+          "properties": {
+            "lane_id": {"const": "PRE72-QWEN-STRUCTURED-OUTPUT"},
+            "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+            "endpoint": {"const": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions"},
+            "requested_model": {"const": "qwen3.7-plus"},
+            "enable_thinking": {"const": false}
+          }
+        }
+      ]
+    }
+  }
+}

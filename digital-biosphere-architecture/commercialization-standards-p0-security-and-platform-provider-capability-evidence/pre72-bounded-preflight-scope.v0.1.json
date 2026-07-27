@@ -19,6 +19,14 @@
     {
       "path": "../commercialization-standards-p0-security-and-platform-response-contract-remediation/credential-use-accounting-profile.v0.1.json",
       "sha256": "f3e6e744cd2b15269d1a68f918e71fb52f9f31c8419eafb490ad21b8744e913e"
+    },
+    {
+      "path": "./pre72-preflight-response.schema.v0.1.json",
+      "sha256": "a8ca448053760f892ed36a244bad521f5d018539ec2050f20eca1338146088d8"
+    },
+    {
+      "path": "./pre72-preflight-request-contract.v0.1.json",
+      "sha256": "c637b43a55126e004619d781a537c0181815c568e62e938f4f2d0feddb37156d"
     }
   ],
   "execution_policy": {
@@ -31,7 +39,8 @@
     "json_repair_cap": 0,
     "raw_response_persistence_cap": 0,
     "timeout_seconds_per_request": 120,
-    "stop_on_first_lane_failure": true
+    "stop_remaining_requests_in_failed_lane": true,
+    "continue_independent_lanes": true
   },
   "lanes": [
     {

@@ -106,7 +106,8 @@ QWEN_STATUS=DOCUMENTED_CAPABILITY_LIVE_PREFLIGHT_REQUIRED
 | Target repository writes | 0 |
 
 任一请求发生 HTTP、model identity、direct JSON、Schema、boundary、timeout 或
-credential accounting 偏差，即 fail closed（失败关闭）并停止该 lane。
+credential accounting 偏差，即 fail closed（失败关闭）并停止该 lane 的剩余请求；
+另一条 Provider lane 保持独立并继续，以免单一 Provider 故障遮蔽另一条证据。
 
 ## 5. Pass criteria
 
@@ -149,6 +150,8 @@ DBOS、SAEE、target implementation、商业报价、认证或发布状态。
 
 - [Official provider evidence ledger](commercialization-standards-p0-security-and-platform-provider-capability-evidence/official-provider-capability-evidence.v0.1.json)
 - [Bounded preflight scope](commercialization-standards-p0-security-and-platform-provider-capability-evidence/pre72-bounded-preflight-scope.v0.1.json)
+- [Frozen preflight request contract](commercialization-standards-p0-security-and-platform-provider-capability-evidence/pre72-preflight-request-contract.v0.1.json)
+- [Frozen preflight response Schema](commercialization-standards-p0-security-and-platform-provider-capability-evidence/pre72-preflight-response.schema.v0.1.json)
 - [Offline validation result](commercialization-standards-p0-security-and-platform-provider-capability-evidence/PRE-72-OFFICIAL-PROVIDER-CAPABILITY-EVIDENCE-RESULT-v0.1.md)
 - [PRE-71 strict response contract](commercialization-standards-p0-security-and-platform-response-contract-remediation/strict-response-contract-candidate.v0.2.json)
 - [PRE-71 credential accounting profile](commercialization-standards-p0-security-and-platform-response-contract-remediation/credential-use-accounting-profile.v0.1.json)

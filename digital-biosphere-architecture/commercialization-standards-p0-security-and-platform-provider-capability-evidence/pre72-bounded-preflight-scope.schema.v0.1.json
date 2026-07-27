@@ -33,8 +33,8 @@
     "official_evidence_reference": {"const": "./official-provider-capability-evidence.v0.1.json"},
     "frozen_inputs": {
       "type": "array",
-      "minItems": 3,
-      "maxItems": 3,
+      "minItems": 5,
+      "maxItems": 5,
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -58,7 +58,8 @@
         "json_repair_cap",
         "raw_response_persistence_cap",
         "timeout_seconds_per_request",
-        "stop_on_first_lane_failure"
+        "stop_remaining_requests_in_failed_lane",
+        "continue_independent_lanes"
       ],
       "properties": {
         "ordering": {"const": "SEQUENTIAL"},
@@ -70,7 +71,8 @@
         "json_repair_cap": {"const": 0},
         "raw_response_persistence_cap": {"const": 0},
         "timeout_seconds_per_request": {"const": 120},
-        "stop_on_first_lane_failure": {"const": true}
+        "stop_remaining_requests_in_failed_lane": {"const": true},
+        "continue_independent_lanes": {"const": true}
       }
     },
     "lanes": {

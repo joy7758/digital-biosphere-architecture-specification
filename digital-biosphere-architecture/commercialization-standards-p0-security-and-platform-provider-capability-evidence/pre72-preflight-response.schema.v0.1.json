@@ -1,0 +1,105 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre72/pre72-preflight-response.schema.v0.1.json",
+  "title": "TITMAS PRE-72 Structured-Output Preflight Response v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "contract_version",
+    "lane_id",
+    "session_id",
+    "provider",
+    "requested_model",
+    "target_contract_sha256",
+    "result_intent",
+    "structured_output_observed",
+    "authority_boundary",
+    "explicit_non_claims"
+  ],
+  "properties": {
+    "contract_version": {
+      "const": "titmas.provider-structured-output-preflight/v0.1"
+    },
+    "lane_id": {
+      "enum": [
+        "PRE72-QIANFAN-STRUCTURED-OUTPUT",
+        "PRE72-QWEN-STRUCTURED-OUTPUT"
+      ]
+    },
+    "session_id": {
+      "pattern": "^PRE72-(QIANFAN|QWEN)-0[1-3]$"
+    },
+    "provider": {
+      "enum": [
+        "BAIDU_QIANFAN",
+        "ALIBABA_CLOUD_MODEL_STUDIO"
+      ]
+    },
+    "requested_model": {
+      "enum": [
+        "ernie-4.5-turbo-20260402",
+        "qwen3.7-plus"
+      ]
+    },
+    "target_contract_sha256": {
+      "const": "f3cd4f8932e9ed5cc04261d290181d9a6a29284ff4f93579b1e2498135259170"
+    },
+    "result_intent": {
+      "const": "PROVE_TRANSPORT_FORMAT_ONLY"
+    },
+    "structured_output_observed": {
+      "const": true
+    },
+    "authority_boundary": {
+      "const": "PREFLIGHT_OBSERVATION_ONLY"
+    },
+    "explicit_non_claims": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_supported",
+        "formal_human_security_review_complete",
+        "conformance_pass",
+        "standard_ready",
+        "release_authorized",
+        "production_ready"
+      ],
+      "properties": {
+        "provider_supported": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "conformance_pass": {"const": false},
+        "standard_ready": {"const": false},
+        "release_authorized": {"const": false},
+        "production_ready": {"const": false}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"provider": {"const": "BAIDU_QIANFAN"}},
+        "required": ["provider"]
+      },
+      "then": {
+        "properties": {
+          "lane_id": {"const": "PRE72-QIANFAN-STRUCTURED-OUTPUT"},
+          "session_id": {"pattern": "^PRE72-QIANFAN-0[1-3]$"},
+          "requested_model": {"const": "ernie-4.5-turbo-20260402"}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"}},
+        "required": ["provider"]
+      },
+      "then": {
+        "properties": {
+          "lane_id": {"const": "PRE72-QWEN-STRUCTURED-OUTPUT"},
+          "session_id": {"pattern": "^PRE72-QWEN-0[1-3]$"},
+          "requested_model": {"const": "qwen3.7-plus"}
+        }
+      }
+    }
+  ]
+}

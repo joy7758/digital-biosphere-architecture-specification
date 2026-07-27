@@ -5,9 +5,10 @@
 ```text
 PRE72_RECOMMENDATION_PREPARED=true
 OFFICIAL_PROVIDER_DOCUMENTATION_BOUND=true
-NEW_MACHINE_INSTANCES_SCHEMA_PASS=2/2
+NEW_MACHINE_INSTANCES_SCHEMA_PASS=3/3
+PREFLIGHT_RESPONSE_SCHEMA_METASCHEMA_PASS=true
 COMMERCIALIZATION_ENTRY_SCHEMA_PASS=1/1
-NEGATIVE_MUTATIONS_REJECTED=12/12
+NEGATIVE_MUTATIONS_REJECTED=16/16
 NETWORK_REQUESTS=0
 MODEL_REQUESTS=0
 CREDENTIAL_VALUE_READS=0
@@ -31,10 +32,11 @@ STANDARD_READY=false
 
 ## Offline validation
 
-两个新增 machine instance 均通过各自 JSON Schema 2020-12 校验；
+三个新增 machine instance 均通过各自 JSON Schema 2020-12 校验，预检响应
+Schema 通过 JSON Schema 2020-12 metaschema 校验；
 商业化机器入口继续通过其既有 Schema。
 
-12 个 mutation（变异负例）全部被拒绝：
+16 个 mutation（变异负例）全部被拒绝：
 
 | case | mutation | result |
 |---|---|---|
@@ -50,10 +52,16 @@ STANDARD_READY=false
 | `PRE72-N010` | 允许 raw response persistence | REJECTED_PASS |
 | `PRE72-N011` | 允许打印 credential value | REJECTED_PASS |
 | `PRE72-N012` | 将 Decision recorded 改为 true | REJECTED_PASS |
+| `PRE72-N013` | 从 request contract 删除 JSON mode | REJECTED_PASS |
+| `PRE72-N014` | 允许 request contract JSON repair | REJECTED_PASS |
+| `PRE72-N015` | 让 response Schema 接受 Provider supported=true | REJECTED_PASS |
+| `PRE72-N016` | 让 Qianfan response 使用 Qwen model | REJECTED_PASS |
 
 第一次一次性 Python 校验命令在执行 mutation validation 前出现生成器表达式语法错误。
-该错误没有修改 Schema、instance 或 fixture；修正一次性命令后，同一组 12 个负例
+该错误没有修改 Schema、instance 或 fixture；修正一次性命令后，原 12 个负例
 全部通过。此过程事实被保留，不升级为契约缺陷。
+
+在补齐 exact preflight request/response contract 后，增加的 4 个负例也全部通过。
 
 ## Boundary conclusion
 
