@@ -1,0 +1,103 @@
+{
+  "result_id": "TITMAS-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T17:07:49Z",
+  "status": "PASS_LOCAL_FORMAL_CONTEXT_STATIC_AND_CE_VALIDATION",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-DECISION-RECORD.v0.1.json",
+  "decision_commit": "a0b19661a758932bb5f94ca13530b33209990901",
+  "decision_remote_baseline_verified": true,
+  "frozen_state": {
+    "canonical_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "ce_commit": "e032115adbe38cc84bde80cc9b10b96f6da1b428",
+    "merge_base": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "merge_tree": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "draft_pr_number": 22,
+    "draft_pr_state": "OPEN",
+    "draft_pr_is_draft": true,
+    "ce_head_actions_run_count": 0,
+    "matched": true
+  },
+  "harness_preparse_event": {
+    "shell_parse_failure_before_execution": 1,
+    "temporary_worktrees_created": 0,
+    "install_attempts": 0,
+    "validation_attempts": 0,
+    "authority_cap_consumed": false
+  },
+  "temporary_worktree": {
+    "created": 1,
+    "removed": 1,
+    "remaining": 0
+  },
+  "prefix_observation": {
+    "site_path_raw": "/tmp/titmas-ce-g11b-r6.TK0hk8/worktree/digital-biosphere-architecture/site",
+    "npm_prefix_raw": "/private/tmp/titmas-ce-g11b-r6.TK0hk8/worktree/digital-biosphere-architecture/site",
+    "normalized_equality": true
+  },
+  "execution": {
+    "npm_ci": {"attempts": 1, "exit": 0, "output_sha256": "e7582a1527764bdc6231acca0c9ff91d11fd1f0dce93414fc9d9983faa90650a"},
+    "npm_ls": {"attempts": 1, "exit": 0, "direct_dependencies": 23, "missing": 0, "invalid": 0, "output_sha256": "c07549f8c8b0566a9159d5b4a8ea531792692a35ad9e37f8bcb99833912eab93"},
+    "npm_test": {"attempts": 1, "exit": 0, "tests_passed": 16, "tests_failed": 0, "output_sha256": "beb520ba69f6193a8803b1f728def9abf4a1a0ad73b48e1160de3af340901728"},
+    "release_formal": {
+      "attempts": 1,
+      "exit": 0,
+      "effect": "LOCAL_STATIC_EXPORT_AND_VERIFICATION_ONLY",
+      "static_export_pass": true,
+      "content_parity_pass": true,
+      "truth_boundary_validation_pass": true,
+      "release_mode": "formal",
+      "manifest_files": 65,
+      "output_sha256": "804381e3127b5ba1888a550df9d1234ce5fe9c28a2baf86566570eff71359483"
+    },
+    "ce_schema_meta_validation": {"runs": 1, "exit": 0, "schemas_valid": 3, "output_sha256": "337b7d3ed9945b6ed15f9b7f17323912d6d70c692d9c8cf7f3982afcc7f4db31"},
+    "ce_tests": {"runs": 1, "exit": 0, "tests_passed": 49, "tests_failed": 0, "output_sha256": "4bbe1cac02fda96564d63c55b47cc66506a33fc43b97199fd46d4d1ba00e3c86"}
+  },
+  "integrity": {
+    "out_index_present": true,
+    "package_hash_unchanged": true,
+    "lock_hash_unchanged": true,
+    "export_script_hash_unchanged": true,
+    "verify_script_hash_unchanged": true,
+    "tracked_source_diff": 0,
+    "git_status_entries": 0,
+    "merge_tree_after": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "merge_tree_unchanged": true
+  },
+  "caps_consumed": {
+    "npm_ci_attempts": 1,
+    "npm_ls_attempts": 1,
+    "npm_test_attempts": 1,
+    "release_formal_attempts": 1,
+    "ce_schema_validation_runs": 1,
+    "ce_test_discovery_runs": 1,
+    "network_fallbacks": 0,
+    "public_truth_mutations": 0,
+    "tags": 0,
+    "github_releases": 0,
+    "pr_mutations": 0,
+    "pushes": 0,
+    "merges": 0,
+    "workflow_runs": 0,
+    "server_actions": 0,
+    "deployments": 0
+  },
+  "interpretation": {
+    "merge_tree_validation_complete": true,
+    "site_validation_complete": true,
+    "ce_validation_complete": true,
+    "merge_ready_claim": false,
+    "new_release_claim": false
+  },
+  "effects": {
+    "merge_authorization": false,
+    "merge": false,
+    "new_release_authorization": false,
+    "deployment": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G11B_MERGE_RECOMMENDATION",
+    "authorized": false
+  }
+}

@@ -570,6 +570,11 @@ confidence `0.95`、0 blocker/correction。下一步只允许建立独立 R6 Dec
 得到 curl `0`、HTTP `200`、`APPROVE`、confidence `0.95`、0 blocker/correction。
 远端 baseline 核验后只允许一次 local `release:formal` static validation；不产生新发布、
 tag、deployment、PR mutation 或 merge。
+[R6 result](TITMAS-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-FORMAL-RELEASE-CONTEXT-STATIC-VALIDATION-R6-REPORT-v0.1.md)
+记录完整 PASS：offline install、23/23 dependencies、16/16 site tests、static export/
+verify、3/3 CE Schemas 和 49/49 CE tests 均通过；source/tree drift 为 0。该结果不
+授权 merge，下一步只能准备独立 merge Recommendation。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
