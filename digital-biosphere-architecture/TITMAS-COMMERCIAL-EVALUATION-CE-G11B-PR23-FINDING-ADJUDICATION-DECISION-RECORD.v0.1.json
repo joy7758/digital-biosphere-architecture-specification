@@ -1,0 +1,291 @@
+{
+  "record_type": "TITMAS_PROSPECTIVE_FINDING_ADJUDICATION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-FINDING-ADJUDICATION",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_TWO_ADJUDICATION_LANES_AND_ONE_GATED_SYNTHESIS_ONLY_IF_QUALIFYING_DECISION_REVIEW",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G11B-PR23-REVIEW-CONTRACT-REMEDIATION-AND-FINDING-ADJUDICATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "502ad6c7091f22e05a01415f7376e2bb40e0f7be8a8d4a8acd71a185d540a021",
+  "recommendation_commit": "200d7bfeb3f988cd58af3184614c3842639a052b",
+  "recommendation_review_reference": "TITMAS-CE-G11B-PR23-REVIEW-CONTRACT-REMEDIATION-AND-FINDING-ADJUDICATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "409a4ce6b89b77f71eb6847a67c1adfff353a70f47e61d77dc83c8e499143849",
+  "decision_quality_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-FINDING-ADJUDICATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_layer": "PROSPECTIVE_ADVISORY_FINDING_ADJUDICATION_EXECUTION_AUTHORIZATION_ONLY",
+  "result_layer": "SEPARATE_SANITIZED_RESULT_AND_REPORT",
+  "review_question": "Is this exact two-lane finding adjudication plus gated synthesis authorization deterministic, complete, fail-closed, and free of candidate, GitHub, merge, release, or code-change authority?",
+  "frozen_governance_baseline": {
+    "branch": "codex/ce-g11b-pr23-adjudication-governance",
+    "commit": "200d7bfeb3f988cd58af3184614c3842639a052b",
+    "remote_verified": true
+  },
+  "frozen_pr": {
+    "repository": "joy7758/digital-biosphere-architecture-specification",
+    "number": 23,
+    "url": "https://github.com/joy7758/digital-biosphere-architecture-specification/pull/23",
+    "state": "OPEN",
+    "draft": true,
+    "base_ref": "codex/production-observability-baseline",
+    "base_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_ref": "codex/ce-g11b-phase-b-integration-governance",
+    "head_commit": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+    "merge_tree": "bd67298eb8d869b024eaf9f03a53636c6dc377d4",
+    "evidence_ref": "codex/ce-g11b-atomic-integration-evidence",
+    "evidence_commit": "89baeeeb42904b4ea41652d649f8be9a484f3b48",
+    "body_sha256": "f272f4008dbec25faf3b111d758b46dacfd6ff13117361631516f1022ebca18f",
+    "review_requests": 0,
+    "reviews": 0,
+    "comments": 0,
+    "labels": 0,
+    "milestone": null,
+    "auto_merge": false,
+    "candidate_action_runs": 0
+  },
+  "closed_invalid_pr_context": {
+    "number": 24,
+    "state": "CLOSED_NOT_MERGED",
+    "head_ref": "codex/ce-g11b-atomic-integration-evidence",
+    "head_commit": "89baeeeb42904b4ea41652d649f8be9a484f3b48",
+    "head_mutated": false,
+    "review_findings_preserved": true,
+    "authority_effect": "NONE"
+  },
+  "source_review_contract": {
+    "lane_a_reference": "TITMAS-CE-G11B-PR23-AGENT-REVIEW-LANE-A-v0.1.json",
+    "lane_a_sha256": "33571b9c27ed44226ebad517ad02f913278cb611d2666e4615d5f65c7661e2c3",
+    "lane_d_reference": "TITMAS-CE-G11B-PR23-AGENT-REVIEW-LANE-D-v0.1.json",
+    "lane_d_sha256": "68647084a87f2f212de7e81c6e2c96ce73e5ed33cdc151053b972dbcfc506aca",
+    "source_findings": 14,
+    "source_required_corrections": 9,
+    "supplemental_findings": 3,
+    "total_adjudication_findings": 17,
+    "finding_ids": {
+      "A": [
+        "A-B01",
+        "A-B02",
+        "A-B03",
+        "A-B04",
+        "A-B05",
+        "A-N01",
+        "A-N02"
+      ],
+      "D": [
+        "D-B01",
+        "D-B02",
+        "D-B03",
+        "D-B04",
+        "D-B05",
+        "D-N01",
+        "D-N02",
+        "D-S01",
+        "D-S02",
+        "D-S03"
+      ]
+    },
+    "supplemental_findings": [
+      {
+        "finding_id": "D-S01",
+        "source": "PR24_REVIEW_COMMENT",
+        "comment_id": 3659668291,
+        "path": "digital-biosphere-architecture/PROGRAM-STATUS.md",
+        "line_or_reference": "frontmatter through current CE state",
+        "source_severity": "MEDIUM",
+        "body_sha256": "543be679f3d0a601d10ce4e22003dc3514c217b2bf177f741b35c2e6f526f733"
+      },
+      {
+        "finding_id": "D-S02",
+        "source": "PR24_REVIEW_COMMENT",
+        "comment_id": 3659668298,
+        "path": "digital-biosphere-architecture/site/app/site-shell.tsx",
+        "line_or_reference": "Footer machine-readable links",
+        "source_severity": "MEDIUM",
+        "body_sha256": "67afff7cb09a38c09912dd2ab47995f61d120e12f54f49a9473134ca3be27a92"
+      },
+      {
+        "finding_id": "D-S03",
+        "source": "PR24_REVIEW_COMMENT",
+        "comment_id": 3659668305,
+        "path": "digital-biosphere-architecture/site/app/commercial-evaluation/page.tsx and en/commercial-evaluation/page.tsx",
+        "line_or_reference": "metadata title",
+        "source_severity": "MEDIUM",
+        "body_sha256": "61d5b4bf79eb1bacacce2e6706f91113e983010e29274937ace37601688262df"
+      }
+    ]
+  },
+  "patch_contract": {
+    "diff_expression": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14...c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+    "diff_command_per_lane": "git diff --no-ext-diff --unified=5 BASE...HEAD -- <ordered lane paths>",
+    "all_paths_count": 96,
+    "all_paths_manifest_sha256": "fde0c9b1c10114efaff1ccd26d2e9a32382912ccdf83cac4226388b9d0778ddc",
+    "lanes": {
+      "A": {
+        "files": 9,
+        "patch_bytes": 80123,
+        "patch_lines": 2316,
+        "patch_sha256": "30d0ad22f5e8d824fcc9e5a42adba1379770d3c52d84d8aa21e266bdc3110093",
+        "path_manifest_sha256": "49627a1ec2de69b6d7476e24be0703efc9e52a7d04244f08f9e8478d5079bd75"
+      },
+      "D": {
+        "files": 23,
+        "patch_bytes": 135501,
+        "patch_lines": 2467,
+        "patch_sha256": "9cba5a068d16e5cf90178111d67a7282f8bc1d850b62ffc49e224da0cc9672e2",
+        "path_manifest_sha256": "96fcd4876d556fc4a4d666defce3b0aa74359898d0b10f7ac7fc7f532eb18313"
+      }
+    }
+  },
+  "adjudication_contract_v0_2": {
+    "disposition_values": [
+      "CONFIRMED",
+      "PARTIALLY_CONFIRMED",
+      "DISPUTED",
+      "REJECTED"
+    ],
+    "severity_values": [
+      "CRITICAL",
+      "HIGH",
+      "MEDIUM",
+      "LOW",
+      "INFO"
+    ],
+    "single_findings_array_required": true,
+    "source_severity_must_be_preserved": true,
+    "required_binding_fields": [
+      "adjudication_lane",
+      "base_sha",
+      "head_sha",
+      "patch_sha256",
+      "source_review_sha256",
+      "expected_finding_ids"
+    ],
+    "finding_required_fields": [
+      "finding_id",
+      "source_severity",
+      "disposition",
+      "claim_assessment",
+      "direct_evidence",
+      "correction_effect",
+      "rationale"
+    ],
+    "correction_effect_values": [
+      "REQUIRED",
+      "MODIFIED",
+      "NOT_REQUIRED"
+    ],
+    "deterministic_local_classification": {
+      "blocking_severities": [
+        "CRITICAL",
+        "HIGH"
+      ],
+      "non_blocking_severities": [
+        "MEDIUM",
+        "LOW",
+        "INFO"
+      ],
+      "blocking_effect_rule": "A finding is blocking only when disposition is CONFIRMED or PARTIALLY_CONFIRMED and source_severity is CRITICAL or HIGH.",
+      "required_correction_rule": "Any correction_effect REQUIRED or MODIFIED requires a remediation candidate regardless of severity."
+    },
+    "coverage_rule": "Every expected finding id must appear exactly once; no unknown id, missing id or duplicate id is allowed.",
+    "local_json_repair_allowed": false,
+    "model_may_move_findings_between_arrays": false
+  },
+  "model_contract": {
+    "requested_model": "qwen3.7-max",
+    "adjudication_requests": 2,
+    "synthesis_requests": 1,
+    "maximum_requests": 3,
+    "request_order": [
+      "A",
+      "D",
+      "S"
+    ],
+    "http_status_required": 200,
+    "curl_exit_required": 0,
+    "returned_model_exact_match_required": true,
+    "direct_json_required": true,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "model_substitution_count": 0,
+    "json_repair_request_count": 0,
+    "synthesis_requires_two_transport_identity_json_binding_contract_and_coverage_valid_adjudications": true
+  },
+  "synthesis_contract": {
+    "input_adjudications": 2,
+    "prior_pass_lanes": [
+      "B",
+      "C"
+    ],
+    "result_values": [
+      "AGENT_REVIEW_PASS_AFTER_ADJUDICATION",
+      "REMEDIATION_CANDIDATE_REQUIRED",
+      "INCOMPLETE_ADJUDICATION"
+    ],
+    "pass_requires": [
+      "A and D adjudications are HTTP 200, curl exit 0, exact qwen3.7-max, direct JSON, binding-valid, contract-valid and cover all 17 finding ids exactly once.",
+      "Prior B and C lane results remain qualifying PASS.",
+      "No CONFIRMED or PARTIALLY_CONFIRMED CRITICAL/HIGH finding exists.",
+      "No correction_effect REQUIRED or MODIFIED exists.",
+      "No cross-input contradiction remains unresolved."
+    ],
+    "remediation_requires": [
+      "Any CONFIRMED or PARTIALLY_CONFIRMED CRITICAL/HIGH finding exists.",
+      "Any correction_effect REQUIRED or MODIFIED exists."
+    ],
+    "incomplete_requires": [
+      "Any transport, model identity, JSON, binding, contract or coverage failure exists.",
+      "A synthesis request is not permitted because an adjudication precondition failed."
+    ],
+    "authority_effect": "ADVISORY_ONLY"
+  },
+  "exact_authorized_action": "After one qualifying exact qwen3.7-max prospective Decision review, commit and push this Decision, its completed review, and cockpit update to codex/ce-g11b-pr23-adjudication-governance. Verify the remote Decision baseline plus PR #23, canonical, candidate, evidence, merge-tree, body, metadata and candidate Actions preconditions. Generate exact Lane A and Lane D full unified-5 patches whose hashes equal this Decision. Send exactly one Lane A and one Lane D adjudication request, sequentially, to exact qwen3.7-max with no retry, fallback, model substitution, extraction or JSON repair. Persist only sanitized direct-JSON adjudications and request/response hashes. If and only if both adjudications are transport, identity, JSON, binding, contract and finding-coverage valid, send exactly one synthesis request using those sanitized adjudications plus the prior qualifying B/C PASS results. Record the bounded result and report on the governance branch. Do not modify candidate, evidence, canonical, PR #23, PR #22 or PR #24; do not submit a GitHub review/comment, request reviewers, close a PR, merge, release, deploy, edit website source or authorize code changes.",
+  "caps": {
+    "decision_commits": 1,
+    "decision_pushes": 1,
+    "adjudication_patch_generations": 2,
+    "adjudication_model_requests": 2,
+    "synthesis_model_requests": 1,
+    "total_model_requests": 3,
+    "retries": 0,
+    "fallbacks": 0,
+    "model_substitutions": 0,
+    "json_repairs": 0,
+    "github_review_submissions": 0,
+    "github_comments": 0,
+    "reviewer_requests": 0,
+    "pr_mutations": 0,
+    "pr_closures": 0,
+    "workflow_dispatches": 0,
+    "run_request_writes": 0,
+    "result_commits": 1,
+    "result_pushes": 1,
+    "merges": 0,
+    "releases": 0,
+    "deployments": 0,
+    "server_actions": 0,
+    "website_source_changes": 0
+  },
+  "stop_conditions": [
+    "Decision review is not HTTP 200, curl exit 0, exact qwen3.7-max APPROVE with zero blockers and zero required corrections.",
+    "The Decision commit is not the current governance remote.",
+    "PR #23, canonical, candidate, evidence, merge tree, body, metadata, candidate action-run or PR #22 state drifts.",
+    "The Lane A or Lane D patch count or hash differs from this Decision.",
+    "An adjudication request is not HTTP 200, curl exit 0, exact qwen3.7-max, direct JSON, binding-valid, contract-valid or full finding coverage; in that case do not execute synthesis.",
+    "Any retry, fallback, model substitution, JSON repair, candidate or GitHub mutation, PR closure, merge, release, deployment, website source change or server action is required."
+  ],
+  "false_effects": {
+    "finding_truth": false,
+    "code_change_authorization": false,
+    "github_review_approval": false,
+    "pr23_ready_for_merge": false,
+    "pr22_closure_authorization": false,
+    "merge_authorization": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "execution_status": "NOT_STARTED_PENDING_QUALIFYING_PROSPECTIVE_REVIEW"
+}

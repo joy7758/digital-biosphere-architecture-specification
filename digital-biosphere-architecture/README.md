@@ -605,6 +605,12 @@ A/D REQUEST_CHANGES，A 的 severity/array 组合违反 contract，故未执行 
 现得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction。下一步
 只允许建立独立 Adjudication Decision；finding 仍不是 Truth，candidate/PR/merge
 均未授权修改。
+[Finding Adjudication Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-FINDING-ADJUDICATION-DECISION-RECORD.v0.1.json)
+及其 [exact qwen3.7-max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-FINDING-ADJUDICATION-QWEN-DECISION-REVIEW-v0.1.json)
+现已绑定 17 个 finding ID、Lane A/D 完整 patch hash 和最多两次 adjudication 加一次
+gated synthesis；review 为 `APPROVE`、confidence `0.95`、0 blocker/correction。
+授权只覆盖 advisory model requests 与 sanitized Result/Report，不授权代码修改、
+GitHub review、PR mutation、merge、release 或 deployment。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
