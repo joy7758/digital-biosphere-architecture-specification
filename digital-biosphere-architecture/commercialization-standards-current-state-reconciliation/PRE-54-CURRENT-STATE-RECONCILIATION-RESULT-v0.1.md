@@ -15,7 +15,6 @@ QWEN_PROVIDER_CONNECTED=false
 QWEN_PROVIDER_DIRECTLY_TESTED=false
 STANDARD_READY=false
 ```
-
 ## Reconciled State
 
 PRE-54 corrected three stale machine-routing fields:
@@ -75,4 +74,3 @@ CERTIFICATION_AUTHORIZED=false
 RELEASE_AUTHORIZED=false
 STANDARD_READY=false
 ```
-
