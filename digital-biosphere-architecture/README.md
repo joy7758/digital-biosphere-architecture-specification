@@ -122,6 +122,10 @@ agent_evaluation_entry_website_source_prepared: true
 agent_evaluation_entry_website_deployed: false
 agent_evaluation_entry_publication_result: fail-closed-rollback-pass
 agent_evaluation_entry_time_window_observation_completed: false
+agent_evaluation_entry_transport_diagnosis_result: pass-root-cause-unresolved
+public_entry_redeployment_admission_policy_defined: true
+public_entry_independent_vantages_validated: 0
+public_entry_redeployment_authorized: false
 developer_ecosystem_created: false
 titmas_infrastructure_developer_community_strategy_defined: true
 titmas_infrastructure_developer_community_direction_adopted: true
@@ -223,6 +227,13 @@ CE-G3 曾把该静态源切换到公开站点进行有界观察：第一轮 11/1
 出现 1 个 `curl` code 35 transport error，因此未重试并已原子回滚。当前公开站点仍运行
 旧版本；[发布报告](TITMAS-AGENT-EVALUATION-ENTRY-PUBLICATION-REPORT-v0.1.md) 保留失败、
 回滚和下一诊断闸门。
+
+CE-G4 又执行了 default path 与 direct-resolve path 的 12 个只读请求：默认路径 `6/6`，
+direct path `5/6`，HTTP 200 内容 hash 全部一致。唯一失败仍是 LibreSSL
+`SSL_ERROR_SYSCALL`，且发生在旧线上版本，因此不是新发布内容独有故障。根因仍未关闭；
+[诊断报告](TITMAS-CE-G4-TRANSPORT-DIAGNOSIS-REPORT-v0.1.md)和
+[重新部署准入策略](architecture/titmas-public-entry-redeployment-admission-policy-v0.1.md)
+要求至少两个独立网络视角，当前有效独立视角为 0。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

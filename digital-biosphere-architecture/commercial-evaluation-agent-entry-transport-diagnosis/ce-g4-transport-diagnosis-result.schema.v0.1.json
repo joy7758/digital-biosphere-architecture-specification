@@ -1,0 +1,321 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:ce-g4-transport-diagnosis-result:0.1",
+  "title": "TITMAS CE-G4 Transport Diagnosis Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "result_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "execution",
+    "environment",
+    "summary",
+    "records",
+    "server_correlation",
+    "hypothesis_assessment",
+    "current_truth",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./ce-g4-transport-diagnosis-result.schema.v0.1.json"
+    },
+    "result_id": {
+      "const": "TITMAS-CE-G4-TRANSPORT-DIAGNOSIS-20260727-001"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PASS_BOUNDED_DIAGNOSTIC_ROOT_CAUSE_UNRESOLVED"
+    },
+    "observed_at": {
+      "const": "2026-07-27"
+    },
+    "decision_reference": {
+      "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G4"
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "started_at",
+        "ended_at",
+        "request_cap",
+        "requests_executed",
+        "rounds",
+        "sequential",
+        "retry",
+        "fallback",
+        "tls_verification_bypass",
+        "website_redeployment"
+      ],
+      "properties": {
+        "started_at": {"const": "2026-07-27T11:20:39Z"},
+        "ended_at": {"const": "2026-07-27T11:21:12Z"},
+        "request_cap": {"const": 12},
+        "requests_executed": {"const": 12},
+        "rounds": {"const": 3},
+        "sequential": {"const": true},
+        "retry": {"const": false},
+        "fallback": {"const": false},
+        "tls_verification_bypass": {"const": false},
+        "website_redeployment": {"const": false}
+      }
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "curl_version",
+        "tls_stack",
+        "default_remote_ip",
+        "default_remote_ip_class",
+        "direct_remote_ip",
+        "system_http_proxy",
+        "system_https_proxy",
+        "active_release"
+      ],
+      "properties": {
+        "curl_version": {"const": "8.7.1"},
+        "tls_stack": {"const": "SecureTransport_LibreSSL_3_3_6"},
+        "default_remote_ip": {"const": "198.18.0.90"},
+        "default_remote_ip_class": {"const": "SYNTHETIC_198_18_0_0_15"},
+        "direct_remote_ip": {"const": "180.76.115.193"},
+        "system_http_proxy": {"const": "LOOPBACK_ENABLED"},
+        "system_https_proxy": {"const": "LOOPBACK_ENABLED"},
+        "active_release": {
+          "const": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705"
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "records",
+        "passes",
+        "transport_failures",
+        "default_path_passes",
+        "default_path_total",
+        "direct_path_passes",
+        "direct_path_total",
+        "http_200_hash_consistency",
+        "root_cause_proven",
+        "result"
+      ],
+      "properties": {
+        "records": {"const": 12},
+        "passes": {"const": 11},
+        "transport_failures": {"const": 1},
+        "default_path_passes": {"const": 6},
+        "default_path_total": {"const": 6},
+        "direct_path_passes": {"const": 5},
+        "direct_path_total": {"const": 6},
+        "http_200_hash_consistency": {"const": true},
+        "root_cause_proven": {"const": false},
+        "result": {
+          "const": "DIAGNOSTIC_COMPLETE_REDEPLOYMENT_NOT_AUTHORIZED"
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 12,
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "round",
+          "observed_at",
+          "path_class",
+          "target_path",
+          "curl_exit_code",
+          "result",
+          "http_code",
+          "remote_ip",
+          "ssl_verify_result",
+          "latency_seconds",
+          "bytes",
+          "sha256",
+          "error_class"
+        ],
+        "properties": {
+          "round": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "observed_at": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "path_class": {
+            "enum": [
+              "DEFAULT_PATH",
+              "DIRECT_RESOLVE_PATH"
+            ]
+          },
+          "target_path": {
+            "enum": [
+              "/llms.txt",
+              "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"
+            ]
+          },
+          "curl_exit_code": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "result": {
+            "enum": [
+              "PASS",
+              "TRANSPORT_ERROR"
+            ]
+          },
+          "http_code": {
+            "type": [
+              "integer",
+              "null"
+            ]
+          },
+          "remote_ip": {
+            "enum": [
+              "198.18.0.90",
+              "180.76.115.193"
+            ]
+          },
+          "ssl_verify_result": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "latency_seconds": {
+            "type": "number",
+            "minimum": 0
+          },
+          "bytes": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "error_class": {
+            "enum": [
+              "NONE",
+              "LIBRESSL_SSL_ERROR_SYSCALL"
+            ]
+          }
+        }
+      }
+    },
+    "server_correlation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "nginx_error_lines",
+        "nginx_ssl_or_handshake_errors",
+        "access_5xx",
+        "journal_warnings",
+        "raw_logs_persisted"
+      ],
+      "properties": {
+        "nginx_error_lines": {"const": 0},
+        "nginx_ssl_or_handshake_errors": {"const": 0},
+        "access_5xx": {"const": 0},
+        "journal_warnings": {"const": 0},
+        "raw_logs_persisted": {"const": false}
+      }
+    },
+    "hypothesis_assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "asset_specific_content_failure",
+        "default_proxy_path_unique_failure",
+        "new_release_specific_failure",
+        "transient_client_or_network_tls_failure",
+        "server_tls_failure",
+        "exact_root_cause"
+      ],
+      "properties": {
+        "asset_specific_content_failure": {
+          "const": "NOT_SUPPORTED"
+        },
+        "default_proxy_path_unique_failure": {
+          "const": "REFUTED_BY_DIRECT_PATH_FAILURE"
+        },
+        "new_release_specific_failure": {
+          "const": "NOT_SUPPORTED_FAILURE_REPRODUCED_ON_ROLLBACK_BASELINE"
+        },
+        "transient_client_or_network_tls_failure": {
+          "const": "SUPPORTED_NOT_PROVEN"
+        },
+        "server_tls_failure": {
+          "const": "OPEN_NOT_PROVEN"
+        },
+        "exact_root_cause": {
+          "const": "UNRESOLVED"
+        }
+      }
+    },
+    "current_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "website_redeployed",
+        "new_contract_website_deployed",
+        "redeployment_authorized",
+        "availability_sla_defined",
+        "commercial_offer_created",
+        "production_ready"
+      ],
+      "properties": {
+        "website_redeployed": {"const": false},
+        "new_contract_website_deployed": {"const": false},
+        "redeployment_authorized": {"const": false},
+        "availability_sla_defined": {"const": false},
+        "commercial_offer_created": {"const": false},
+        "production_ready": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority",
+        "permission",
+        "runtime",
+        "api",
+        "agent",
+        "entity",
+        "capability",
+        "certification",
+        "sla",
+        "commercial_offer",
+        "production_readiness"
+      ],
+      "properties": {
+        "authority": {"const": false},
+        "permission": {"const": false},
+        "runtime": {"const": false},
+        "api": {"const": false},
+        "agent": {"const": false},
+        "entity": {"const": false},
+        "capability": {"const": false},
+        "certification": {"const": false},
+        "sla": {"const": false},
+        "commercial_offer": {"const": false},
+        "production_readiness": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "$schema": "./ce-g4-transport-diagnosis-result.schema.v0.1.json",
+  "result_id": "TITMAS-CE-G4-TRANSPORT-DIAGNOSIS-20260727-001",
+  "version": "0.1.0",
+  "status": "PASS_BOUNDED_DIAGNOSTIC_ROOT_CAUSE_UNRESOLVED",
+  "observed_at": "2026-07-27",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G4",
+  "execution": {
+    "started_at": "2026-07-27T11:20:39Z",
+    "ended_at": "2026-07-27T11:21:12Z",
+    "request_cap": 12,
+    "requests_executed": 12,
+    "rounds": 3,
+    "sequential": true,
+    "retry": false,
+    "fallback": false,
+    "tls_verification_bypass": false,
+    "website_redeployment": false
+  },
+  "environment": {
+    "curl_version": "8.7.1",
+    "tls_stack": "SecureTransport_LibreSSL_3_3_6",
+    "default_remote_ip": "198.18.0.90",
+    "default_remote_ip_class": "SYNTHETIC_198_18_0_0_15",
+    "direct_remote_ip": "180.76.115.193",
+    "system_http_proxy": "LOOPBACK_ENABLED",
+    "system_https_proxy": "LOOPBACK_ENABLED",
+    "active_release": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705"
+  },
+  "summary": {
+    "records": 12,
+    "passes": 11,
+    "transport_failures": 1,
+    "default_path_passes": 6,
+    "default_path_total": 6,
+    "direct_path_passes": 5,
+    "direct_path_total": 6,
+    "http_200_hash_consistency": true,
+    "root_cause_proven": false,
+    "result": "DIAGNOSTIC_COMPLETE_REDEPLOYMENT_NOT_AUTHORIZED"
+  },
+  "records": [
+    {"round": 1, "observed_at": "2026-07-27T11:20:39Z", "path_class": "DEFAULT_PATH", "target_path": "/llms.txt", "curl_exit_code": 0, "result": "PASS", "http_code": 200, "remote_ip": "198.18.0.90", "ssl_verify_result": 0, "latency_seconds": 0.222087, "bytes": 28241, "sha256": "a1da55a77da20c5fe384e5f1f8714a00f06ffe81f307676e0f71209f991afdca", "error_class": "NONE"},
+    {"round": 1, "observed_at": "2026-07-27T11:20:39Z", "path_class": "DEFAULT_PATH", "target_path": "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", "curl_exit_code": 0, "result": "PASS", "http_code": 200, "remote_ip": "198.18.0.90", "ssl_verify_result": 0, "latency_seconds": 0.237334, "bytes": 4276, "sha256": "54a738beef94c2e5e6b3fa28f8a8c299681e05ec5c3e82ec6901710dcfea8269", "error_class": "NONE"},
+    {"round": 1, "observed_at": "2026-07-27T11:20:39Z", "path_class": "DIRECT_RESOLVE_PATH", "target_path": "/llms.txt", "curl_exit_code": 0, "result": "PASS", "http_code": 200, "remote_ip": "180.76.115.193", "ssl_verify_result": 0, "latency_seconds": 0.201809, "bytes": 28241, "sha256": "a1da55a77da20c5fe384e5f1f8714a00f06ffe81f307676e0f71209f991afdca", "error_class": "NONE"},
+    {"round": 1, "observed_at": "2026-07-27T11:20:39Z", "path_class": "DIRECT_RESOLVE_PATH", "target_path": "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", "curl_exit_code": 0, "result": "PASS", "http_code": 200, "remote_ip": "180.76.115.193", "ssl_verify_result": 0, "latency_seconds": 0.214293, "bytes": 4276, "sha256": "54a738beef94c2e5e6b3fa28f8a8c299681e05ec5c3e82ec6901710dcfea8269", "error_class": "NONE"},
+    {"round": 2, "observed_at": "2026-07-27T11:20:55Z", "path_class": "DEFAULT_PATH", "target_path": "/llms.txt", "curl_exit_code": 0, "result": "PASS", "http_code": 200, "remote_ip": "198.18.0.90", "ssl_verify_result": 0, "latency_seconds": 0.299749, "bytes": 28241, "sha256": "a1da55a77da20c5fe384e5f1f8714a00f06ffe81f307676e0f71209f991afdca", "error_class": "NONE"},
+    {"round": 2, "observed_at": "2026-07-27T11:20:55Z", "path_class": "DEFAULT_PATH", "target_path": "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", "curl_exit_code": 0, "result": "PASS", "http_code": 200, "remote_ip": "198.18.0.90", "ssl_verify_result": 0, "latency_seconds": 0.194449, "bytes": 4276, "sha256": "54a738beef94c2e5e6b3fa28f8a8c299681e05ec5c3e82ec6901710dcfea8269", "error_class": "NONE"},
+    {"round": 2, "observed_at": "2026-07-27T11:20:55Z", "path_class": "DIRECT_RESOLVE_PATH", "target_path": "/llms.txt", "curl_exit_code": 0, "result": "PASS", "http_code": 200, "remote_ip": "180.76.115.193", "ssl_verify_result": 0, "latency_seconds": 0.245528, "bytes": 28241, "sha256": "a1da55a77da20c5fe384e5f1f8714a00f06ffe81f307676e0f71209f991afdca", "error_class": "NONE"},
+    {"round": 2, "observed_at": "2026-07-27T11:20:55Z", "path_class": "DIRECT_RESOLVE_PATH", "target_path": "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", "curl_exit_code": 0, "result": "PASS", "http_code": 200, "remote_ip": "180.76.115.193", "ssl_verify_result": 0, "latency_seconds": 0.134595, "bytes": 4276, "sha256": "54a738beef94c2e5e6b3fa28f8a8c299681e05ec5c3e82ec6901710dcfea8269", "error_class": "NONE"},
+    {"round": 3, "observed_at": "2026-07-27T11:21:11Z", "path_class": "DEFAULT_PATH", "target_path": "/llms.txt", "curl_exit_code": 0, "result": "PASS", "http_code": 200, "remote_ip": "198.18.0.90", "ssl_verify_result": 0, "latency_seconds": 0.212022, "bytes": 28241, "sha256": "a1da55a77da20c5fe384e5f1f8714a00f06ffe81f307676e0f71209f991afdca", "error_class": "NONE"},
+    {"round": 3, "observed_at": "2026-07-27T11:21:11Z", "path_class": "DEFAULT_PATH", "target_path": "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", "curl_exit_code": 0, "result": "PASS", "http_code": 200, "remote_ip": "198.18.0.90", "ssl_verify_result": 0, "latency_seconds": 0.215178, "bytes": 4276, "sha256": "54a738beef94c2e5e6b3fa28f8a8c299681e05ec5c3e82ec6901710dcfea8269", "error_class": "NONE"},
+    {"round": 3, "observed_at": "2026-07-27T11:21:11Z", "path_class": "DIRECT_RESOLVE_PATH", "target_path": "/llms.txt", "curl_exit_code": 35, "result": "TRANSPORT_ERROR", "http_code": null, "remote_ip": "180.76.115.193", "ssl_verify_result": 1, "latency_seconds": 0.052739, "bytes": 0, "sha256": null, "error_class": "LIBRESSL_SSL_ERROR_SYSCALL"},
+    {"round": 3, "observed_at": "2026-07-27T11:21:11Z", "path_class": "DIRECT_RESOLVE_PATH", "target_path": "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", "curl_exit_code": 0, "result": "PASS", "http_code": 200, "remote_ip": "180.76.115.193", "ssl_verify_result": 0, "latency_seconds": 0.158842, "bytes": 4276, "sha256": "54a738beef94c2e5e6b3fa28f8a8c299681e05ec5c3e82ec6901710dcfea8269", "error_class": "NONE"}
+  ],
+  "server_correlation": {
+    "nginx_error_lines": 0,
+    "nginx_ssl_or_handshake_errors": 0,
+    "access_5xx": 0,
+    "journal_warnings": 0,
+    "raw_logs_persisted": false
+  },
+  "hypothesis_assessment": {
+    "asset_specific_content_failure": "NOT_SUPPORTED",
+    "default_proxy_path_unique_failure": "REFUTED_BY_DIRECT_PATH_FAILURE",
+    "new_release_specific_failure": "NOT_SUPPORTED_FAILURE_REPRODUCED_ON_ROLLBACK_BASELINE",
+    "transient_client_or_network_tls_failure": "SUPPORTED_NOT_PROVEN",
+    "server_tls_failure": "OPEN_NOT_PROVEN",
+    "exact_root_cause": "UNRESOLVED"
+  },
+  "current_truth": {
+    "website_redeployed": false,
+    "new_contract_website_deployed": false,
+    "redeployment_authorized": false,
+    "availability_sla_defined": false,
+    "commercial_offer_created": false,
+    "production_ready": false
+  },
+  "effects": {
+    "authority": false,
+    "permission": false,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "capability": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offer": false,
+    "production_readiness": false
+  }
+}

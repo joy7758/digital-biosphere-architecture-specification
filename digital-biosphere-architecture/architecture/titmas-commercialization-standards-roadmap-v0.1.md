@@ -2329,10 +2329,25 @@ CE_G4_RETRY=false
 CE_G4_TLS_BYPASS=false
 CE_G4_REDEPLOYMENT_AUTHORIZED=false
 CE_G4_CONFIG_CHANGE_AUTHORIZED=false
-CE_G4_EXECUTION_STARTED=false
+CE_G4_EXECUTION_STARTED=true
+CE_G4_EXECUTION_COMPLETED=true
+CE_G4_REQUESTS_EXECUTED=12/12
+CE_G4_DEFAULT_PATH_PASS=6/6
+CE_G4_DIRECT_PATH_PASS=5/6
+CE_G4_TRANSPORT_FAILURES=1
+CE_G4_HTTP_200_HASH_CONSISTENCY=true
+CE_G4_ROOT_CAUSE_PROVEN=false
 ```
 
-该诊断只能确定 transport path 是否被证据支持；它不创建重新部署授权或 SLA。
+[Report](../TITMAS-CE-G4-TRANSPORT-DIAGNOSIS-REPORT-v0.1.md) 和
+[machine result](../commercial-evaluation-agent-entry-transport-diagnosis/ce-g4-transport-diagnosis-result.v0.1.json)
+证明默认路径 `6/6`、direct path `5/6`；唯一 failure 发生在旧线上版本的 direct path。
+因此 default proxy unique failure 被否定，asset/new-release-specific failure 不受支持，
+transient client/network TLS path 仅为 `SUPPORTED_NOT_PROVEN`。
+
+[Redeployment Admission Policy](titmas-public-entry-redeployment-admission-policy-v0.1.md)
+要求两个独立 network egress 和两个 TLS client stack。当前同一 Mac 的 default/direct
+路径不构成独立视角，validated vantage 为 0，重新部署仍未授权。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -2603,9 +2618,9 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Diagnose before redeployment**：CE-G3 已因一个 transport error 失败关闭并回滚；
-   当前只能准备 transport/client/server/harness 分层诊断与重新部署建议，新的网络观察或
-   部署必须有独立 exact decision；
+1. **Require independent vantages before redeployment**：CE-G4 已否定 default proxy
+   unique failure，但 exact root cause 仍未知；当前只能准备两个独立 network egress /
+   TLS stack 的观察与重新部署建议，新的网络观察或部署必须有独立 exact decision；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -2814,7 +2829,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_PUBLIC_ENTRY_TRANSPORT_FAILURE_DIAGNOSIS_AND_REDEPLOYMENT_RECOMMENDATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_INDEPENDENT_VANTAGE_TRANSPORT_OBSERVATION_AND_REDEPLOYMENT_RECOMMENDATION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -2847,7 +2862,17 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G4_DECIDED=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G4_DIAGNOSIS_AUTHORIZED=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G4_REQUEST_CAP=12
 TITMAS_COMMERCIAL_EVALUATION_CE_G4_REDEPLOYMENT_AUTHORIZED=false
-TITMAS_COMMERCIAL_EVALUATION_CE_G4_EXECUTION_STARTED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_EXECUTION_STARTED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_EXECUTION_COMPLETED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_REQUESTS_EXECUTED=12/12
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_DEFAULT_PATH_PASS=6/6
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_DIRECT_PATH_PASS=5/6
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_TRANSPORT_FAILURES=1
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_HASH_CONSISTENCY_PASS=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_ROOT_CAUSE_PROVEN=false
+TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_POLICY_DEFINED=true
+TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=0
+TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false
 TITMAS_VEAP_DRAFT_PROFILE_CANDIDATE_CREATED=true
