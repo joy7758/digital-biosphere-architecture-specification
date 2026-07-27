@@ -540,6 +540,12 @@ CE validation。[首次 Max review](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDI
 和 0 blocker/correction；但采集器未保留 HTTP status 与 curl exit，故该请求按
 `HTTP_STATUS_AND_CURL_EXIT_CAPTURE_GAP` 不合格关闭。请求不重试，下一步只能先形成
 独立 review-retry Recommendation。
+[R5-R1 Recommendation](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-R1-RECOMMENDATION-v0.1.md)
+把旧 R5 语义结果保持为非合格历史，并以新 artifact 修正同进程 HTTP/curl 状态采集。
+其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-R1-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+完整记录 curl `0`、HTTP `200`、exact returned model、direct JSON，并得到
+`RECOMMENDED`、Option A、confidence `1.0`、0 blocker/correction。下一步只允许建立
+独立 R5 Decision；安装、export、tests、PR mutation 和 merge 仍未授权。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
