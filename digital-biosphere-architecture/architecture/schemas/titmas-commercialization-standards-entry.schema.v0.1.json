@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_58_QWEN_CONTRACT_DIAGNOSTIC_PASS_TRANSMISSION_GAP_PROVEN_PROMPT_REVISION_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_59_QWEN_PROMPT_CONTRACT_V0_2_PASS_24_OF_24_PRE60_RERUN_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "CS-D02-PRE-58"},
+        "last_completed_step": {"const": "CS-D02-PRE-59"},
         "last_completed_result": {
-          "const": "PASS_CONTRACT_TRANSMISSION_GAP_PROVEN"
+          "const": "PASS_24_OF_24_CONTRACT_COVERAGE"
         },
         "direct_evidence_reference": {
-          "const": "commercialization-standards-qwen-response-contract-diagnostic/PRE-58-QWEN-RESPONSE-CONTRACT-OFFLINE-DIAGNOSTIC-RESULT-v0.1.md"
+          "const": "commercialization-standards-qwen-prompt-contract-revision/PRE-59-QWEN-PROMPT-CONTRACT-REVISION-RESULT-v0.1.md"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,7 +131,7 @@
         "provider_direct_test_passed": {"const": false},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "FORM_EXACT_PROMPT_CONTRACT_REVISION_RECOMMENDATION"
+          "const": "FORM_PRE60_EXACT_BOUNDED_LIVE_RERUN_RECOMMENDATION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE58_QWEN_CONTRACT_DIAGNOSTIC_PASS_TRANSMISSION_GAP_PROVEN_PROMPT_REVISION_RECOMMENDATION_REQUIRED"
+          "const": "PRE59_QWEN_PROMPT_CONTRACT_V0_2_PASS_24_OF_24_PRE60_RERUN_RECOMMENDATION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -5400,6 +5400,30 @@
             "pre58_provider_network_requests",
             "pre58_live_model_requests",
             "pre58_credential_reads",
+            "pre59_recommendation_reference",
+            "pre59_recommendation_sha256",
+            "pre59_recommendation_commit",
+            "pre59_decision_reference",
+            "pre59_decision_sha256",
+            "pre59_decision_commit",
+            "pre59_plan_sha256",
+            "pre59_plan_commit",
+            "pre59_result_reference",
+            "pre59_result_sha256",
+            "pre59_revised_prompt_set_sha256",
+            "pre59_contract_coverage_sha256",
+            "pre59_execution_receipt_sha256",
+            "pre59_result_commit",
+            "pre59_result",
+            "pre59_input_hashes_matched",
+            "pre59_prompts_validated",
+            "pre59_contract_coverage_passed",
+            "pre59_source_prompt_hashes_unchanged",
+            "pre59_revised_prompt_hash_match",
+            "pre59_semantic_changes",
+            "pre59_provider_network_requests",
+            "pre59_live_model_requests",
+            "pre59_credential_reads",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5468,6 +5492,10 @@
             "qwen_response_contract_diagnostic_executed",
             "qwen_response_contract_diagnostic_pass",
             "qwen_prompt_revision_recommendation_allowed",
+            "qwen_prompt_revision_executed",
+            "qwen_prompt_revision_pass",
+            "qwen_prompt_contract_v0_2_adopted_for_rerun_input",
+            "qwen_pre60_rerun_recommendation_allowed",
             "rb1_provider_binding_implementation_authorized",
             "rb1_reproducible_build_proven",
             "provider_supported",
@@ -6683,6 +6711,60 @@
             "pre58_provider_network_requests": {"const": 0},
             "pre58_live_model_requests": {"const": 0},
             "pre58_credential_reads": {"const": 0},
+            "pre59_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-59-QWEN-PROMPT-CONTRACT-REVISION-RECOMMENDATION-v0.1.md"
+            },
+            "pre59_recommendation_sha256": {
+              "const": "5f9bb464aac3478496a9dc7a0a5249bd98c5701b7a1c66b1e5640f1a210bb658"
+            },
+            "pre59_recommendation_commit": {
+              "const": "4a63ce02688923e2ae4d31126b4c835beb635930"
+            },
+            "pre59_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-59-QWEN-PROMPT-CONTRACT-REVISION-DECISION-RECORD.v0.1.json"
+            },
+            "pre59_decision_sha256": {
+              "const": "838406b5548bf5db35937e8dd20d8f05d4977fa7f7031a333613195bc52a51cd"
+            },
+            "pre59_decision_commit": {
+              "const": "cb4ed4f27e4c8dc56936097bd6de0311e1cabf03"
+            },
+            "pre59_plan_sha256": {
+              "const": "760b7bba3e33ad4cb7031f7bfb62b1ea518464d2dbd27bdd8d2085e09fc8f671"
+            },
+            "pre59_plan_commit": {
+              "const": "905fb055e9ec12003fd65d9b2c6a56f8caa4cdf1"
+            },
+            "pre59_result_reference": {
+              "const": "commercialization-standards-qwen-prompt-contract-revision/PRE-59-QWEN-PROMPT-CONTRACT-REVISION-RESULT-v0.1.md"
+            },
+            "pre59_result_sha256": {
+              "const": "35ec6d1bac50ab26c296ac838d3fcf920d673443bd0a0cd6cef977621efe1720"
+            },
+            "pre59_revised_prompt_set_sha256": {
+              "const": "66fcd6dcdc4b2e255fce5005cc58a1d272e0ccedee43629e78dbfc5af4de22d7"
+            },
+            "pre59_contract_coverage_sha256": {
+              "const": "332045a58a096e83a3ac1130b17b935469ae2afa21a3863fe11e6bbd3eba6cdc"
+            },
+            "pre59_execution_receipt_sha256": {
+              "const": "5b711dfd89a500153e42563abcd7f33e40173d0699c98044c94bacc9d720eba5"
+            },
+            "pre59_result_commit": {
+              "const": "4828032803d17511ce0e0de6863aeec7515a3efb"
+            },
+            "pre59_result": {
+              "const": "PASS_24_OF_24_CONTRACT_COVERAGE"
+            },
+            "pre59_input_hashes_matched": {"const": 4},
+            "pre59_prompts_validated": {"const": 3},
+            "pre59_contract_coverage_passed": {"const": 24},
+            "pre59_source_prompt_hashes_unchanged": {"const": 2},
+            "pre59_revised_prompt_hash_match": {"const": true},
+            "pre59_semantic_changes": {"const": 1},
+            "pre59_provider_network_requests": {"const": 0},
+            "pre59_live_model_requests": {"const": 0},
+            "pre59_credential_reads": {"const": 0},
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -6885,6 +6967,18 @@
               "const": true
             },
             "qwen_prompt_revision_recommendation_allowed": {
+              "const": false
+            },
+            "qwen_prompt_revision_executed": {
+              "const": true
+            },
+            "qwen_prompt_revision_pass": {
+              "const": true
+            },
+            "qwen_prompt_contract_v0_2_adopted_for_rerun_input": {
+              "const": true
+            },
+            "qwen_pre60_rerun_recommendation_allowed": {
               "const": true
             },
             "rb1_provider_binding_implementation_authorized": {
@@ -6920,7 +7014,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_EXACT_PROMPT_CONTRACT_REVISION_RECOMMENDATION"
+          "const": "FORM_PRE60_EXACT_BOUNDED_LIVE_RERUN_RECOMMENDATION"
         },
         "decision_ready": {
           "const": false
