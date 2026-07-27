@@ -493,7 +493,11 @@ result，因此 returned model、HTTP、verdict、blocker/correction 均为 unkn
 保持 `UNKNOWN`。[Review-retry Recommendation](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-DECISION-REVIEW-RETRY-RECOMMENDATION-v0.1.md)
 及其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-DECISION-REVIEW-RETRY-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
 得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction；只允许建立新的
-R2 Decision candidate，dry-run、install 和 merge 仍未授权。
+R2 Decision candidate。[R2 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-R2-DECISION-RECORD.v0.1.json)
+及其 [write-ahead qwen3.7-max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-R2-QWEN-DECISION-REVIEW-v0.1.json)
+随后得到 `APPROVE`、confidence `0.95`、0 blocker/correction。远端 Decision baseline
+核验后只允许一次 site-cwd offline dry-run；真实安装、site tests、PR mutation 和 merge
+仍未授权。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
