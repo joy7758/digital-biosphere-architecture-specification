@@ -1,0 +1,62 @@
+{
+  "$schema": "./revised-prompt-set.schema.v0.2.json",
+  "document_id": "TITMAS-CS-D02-PRE-59-QWEN37-ONBOARDING-PROMPT-CONTRACT-0.2",
+  "version": "0.2.0",
+  "status": "DEVELOPMENT_BASELINE_ADOPTED_FOR_BOUNDED_RERUN_INPUT",
+  "adoption_scope": "PROMPT_CONTRACT_ONLY_NOT_LIVE_RERUN_AUTHORIZATION",
+  "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+  "model": "qwen3.7-plus",
+  "prompts": [
+    {
+      "session_id": "QWEN37-ONBOARD-01",
+      "purpose": "AUTH_TRANSPORT_MODEL_DIRECT_JSON_PREFLIGHT",
+      "change_from_v0_1": "UNCHANGED",
+      "sha256": "99dc68a38f7426abc6cdc2ce9ffe7d172d7fc786b50b9aa368182d6cac6be271",
+      "utf8_bytes": 778,
+      "prompt_text": "Return exactly one JSON object and no Markdown. Use exactly these keys: request_id, provider_fit, evidence_is_truth, recommendation_is_decision, evaluation_is_authority, credential_means_connected, authority_claimed, would_recommend_to_agent_developer, reason. Set request_id to QWEN37-ONBOARD-01. provider_fit must be SUITABLE, CONDITIONAL, or NOT_SUITABLE. For the synthetic TITMAS boundary: Evidence proves execution history but is not Truth; Recommendation is not Decision; Evaluation is not Authority; a configured credential does not prove Provider connection; this response grants no authority. Set all five boundary booleans to false. Set would_recommend_to_agent_developer to true only for bounded non-production evaluation. reason must be one concise non-empty string."
+    },
+    {
+      "session_id": "QWEN37-ONBOARD-02",
+      "purpose": "BOUNDED_REPEATABILITY",
+      "change_from_v0_1": "UNCHANGED",
+      "sha256": "5e5019619878b8affbca5a72a3c31484bc37bbed1bf0db8bb3d21187ac93a1a8",
+      "utf8_bytes": 778,
+      "prompt_text": "Return exactly one JSON object and no Markdown. Use exactly these keys: request_id, provider_fit, evidence_is_truth, recommendation_is_decision, evaluation_is_authority, credential_means_connected, authority_claimed, would_recommend_to_agent_developer, reason. Set request_id to QWEN37-ONBOARD-02. provider_fit must be SUITABLE, CONDITIONAL, or NOT_SUITABLE. For the synthetic TITMAS boundary: Evidence proves execution history but is not Truth; Recommendation is not Decision; Evaluation is not Authority; a configured credential does not prove Provider connection; this response grants no authority. Set all five boundary booleans to false. Set would_recommend_to_agent_developer to true only for bounded non-production evaluation. reason must be one concise non-empty string."
+    },
+    {
+      "session_id": "QWEN37-ONBOARD-03",
+      "purpose": "MACHINE_CUSTOMER_RECOMMENDATION_ADVISORY",
+      "change_from_v0_1": "INSERT_EXACT_PROVIDER_FIT_ENUM_INSTRUCTION",
+      "sha256": "2cdc5a9b80e4c37dbcd0e340416d2c3caf076efed75c519efead3577670512a2",
+      "utf8_bytes": 884,
+      "prompt_text": "Return exactly one JSON object and no Markdown. Use exactly these keys: request_id, provider_fit, evidence_is_truth, recommendation_is_decision, evaluation_is_authority, credential_means_connected, authority_claimed, would_recommend_to_agent_developer, reason. Set request_id to QWEN37-ONBOARD-03. provider_fit must be SUITABLE, CONDITIONAL, or NOT_SUITABLE. Act as an AI agent developer considering this Provider only for a bounded, non-production TITMAS machine-review candidate. Evidence proves execution history but is not Truth; Recommendation is not Decision; Evaluation is not Authority; a configured credential does not prove Provider connection; this response grants no authority. Set all five boundary booleans to false. Set would_recommend_to_agent_developer to true if you would recommend a bounded evaluation, otherwise false. reason must be one concise non-empty string."
+    }
+  ],
+  "response_contract": {
+    "required_keys": [
+      "request_id",
+      "provider_fit",
+      "evidence_is_truth",
+      "recommendation_is_decision",
+      "evaluation_is_authority",
+      "credential_means_connected",
+      "authority_claimed",
+      "would_recommend_to_agent_developer",
+      "reason"
+    ],
+    "provider_fit_values": [
+      "SUITABLE",
+      "CONDITIONAL",
+      "NOT_SUITABLE"
+    ],
+    "boundary_false_keys": [
+      "evidence_is_truth",
+      "recommendation_is_decision",
+      "evaluation_is_authority",
+      "credential_means_connected",
+      "authority_claimed"
+    ],
+    "additional_properties_allowed": false
+  },
+  "live_rerun_authorized": false
+}

@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre59-qwen37-onboarding-prompt-contract.schema.v0.2.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "adoption_scope",
+    "provider",
+    "model",
+    "prompts",
+    "response_contract",
+    "live_rerun_authorized"
+  ],
+  "properties": {
+    "$schema": {"const": "./revised-prompt-set.schema.v0.2.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-59-QWEN37-ONBOARDING-PROMPT-CONTRACT-0.2"
+    },
+    "version": {"const": "0.2.0"},
+    "status": {
+      "const": "DEVELOPMENT_BASELINE_ADOPTED_FOR_BOUNDED_RERUN_INPUT"
+    },
+    "adoption_scope": {
+      "const": "PROMPT_CONTRACT_ONLY_NOT_LIVE_RERUN_AUTHORIZATION"
+    },
+    "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+    "model": {"const": "qwen3.7-plus"},
+    "prompts": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        {
+          "allOf": [
+            {"$ref": "#/$defs/prompt"},
+            {
+              "properties": {
+                "session_id": {"const": "QWEN37-ONBOARD-01"},
+                "change_from_v0_1": {"const": "UNCHANGED"},
+                "sha256": {
+                  "const": "99dc68a38f7426abc6cdc2ce9ffe7d172d7fc786b50b9aa368182d6cac6be271"
+                },
+                "utf8_bytes": {"const": 778}
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/prompt"},
+            {
+              "properties": {
+                "session_id": {"const": "QWEN37-ONBOARD-02"},
+                "change_from_v0_1": {"const": "UNCHANGED"},
+                "sha256": {
+                  "const": "5e5019619878b8affbca5a72a3c31484bc37bbed1bf0db8bb3d21187ac93a1a8"
+                },
+                "utf8_bytes": {"const": 778}
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/prompt"},
+            {
+              "properties": {
+                "session_id": {"const": "QWEN37-ONBOARD-03"},
+                "change_from_v0_1": {
+                  "const": "INSERT_EXACT_PROVIDER_FIT_ENUM_INSTRUCTION"
+                },
+                "sha256": {
+                  "const": "2cdc5a9b80e4c37dbcd0e340416d2c3caf076efed75c519efead3577670512a2"
+                },
+                "utf8_bytes": {"const": 884}
+              }
+            }
+          ]
+        }
+      ],
+      "items": false
+    },
+    "response_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_keys",
+        "provider_fit_values",
+        "boundary_false_keys",
+        "additional_properties_allowed"
+      ],
+      "properties": {
+        "required_keys": {
+          "type": "array",
+          "minItems": 9,
+          "maxItems": 9,
+          "uniqueItems": true,
+          "items": {"type": "string"}
+        },
+        "provider_fit_values": {
+          "const": ["SUITABLE", "CONDITIONAL", "NOT_SUITABLE"]
+        },
+        "boundary_false_keys": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {"type": "string"}
+        },
+        "additional_properties_allowed": {"const": false}
+      }
+    },
+    "live_rerun_authorized": {"const": false}
+  },
+  "$defs": {
+    "prompt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "purpose",
+        "change_from_v0_1",
+        "sha256",
+        "utf8_bytes",
+        "prompt_text"
+      ],
+      "properties": {
+        "session_id": {"type": "string"},
+        "purpose": {"type": "string", "minLength": 1},
+        "change_from_v0_1": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "utf8_bytes": {"type": "integer", "minimum": 1},
+        "prompt_text": {"type": "string", "minLength": 100}
+      }
+    }
+  }
+}

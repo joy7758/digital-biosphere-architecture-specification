@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre59-qwen-prompt-contract-revision-execution-receipt.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "completed_at",
+    "artifact_count_bound",
+    "artifacts",
+    "validation_counts",
+    "execution_counts",
+    "effects",
+    "next_action"
+  ],
+  "properties": {
+    "$schema": {"const": "./execution-receipt.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-59-QWEN-PROMPT-CONTRACT-REVISION-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_24_OF_24_CONTRACT_COVERAGE"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "artifact_count_bound": {"const": 8},
+    "artifacts": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "validation_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_hashes_matched",
+        "input_hashes_required",
+        "prompts_validated",
+        "prompts_required",
+        "coverage_passed",
+        "coverage_required",
+        "source_prompt_hashes_unchanged",
+        "revised_prompt_hash_match",
+        "semantic_changes"
+      ],
+      "properties": {
+        "input_hashes_matched": {"const": 4},
+        "input_hashes_required": {"const": 4},
+        "prompts_validated": {"const": 3},
+        "prompts_required": {"const": 3},
+        "coverage_passed": {"const": 24},
+        "coverage_required": {"const": 24},
+        "source_prompt_hashes_unchanged": {"const": 2},
+        "revised_prompt_hash_match": {"const": true},
+        "semantic_changes": {"const": 1}
+      }
+    },
+    "execution_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_network_requests",
+        "live_model_requests",
+        "credential_reads",
+        "source_history_mutations",
+        "external_repository_writes"
+      ],
+      "properties": {
+        "provider_network_requests": {"const": 0},
+        "live_model_requests": {"const": 0},
+        "credential_reads": {"const": 0},
+        "source_history_mutations": {"const": 0},
+        "external_repository_writes": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": {"const": false}
+    },
+    "next_action": {
+      "const": "FORM_PRE60_EXACT_BOUNDED_LIVE_RERUN_RECOMMENDATION"
+    }
+  }
+}

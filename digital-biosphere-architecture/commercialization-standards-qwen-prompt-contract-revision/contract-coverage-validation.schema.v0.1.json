@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre59-qwen-prompt-contract-coverage-validation.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "executed_at",
+    "input_hashes_matched",
+    "input_hashes_required",
+    "sessions",
+    "coverage_passed",
+    "coverage_required",
+    "source_prompt_hashes_unchanged",
+    "source_prompt_hashes_required_unchanged",
+    "revised_prompt_hash_match",
+    "semantic_changes",
+    "provider_network_requests",
+    "live_model_requests",
+    "credential_reads",
+    "status"
+  ],
+  "properties": {
+    "$schema": {"const": "./contract-coverage-validation.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-59-QWEN-PROMPT-CONTRACT-COVERAGE-VALIDATION-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "input_hashes_matched": {"const": 4},
+    "input_hashes_required": {"const": 4},
+    "sessions": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "session_id",
+          "requirements",
+          "coverage_passed",
+          "coverage_required"
+        ],
+        "properties": {
+          "session_id": {"pattern": "^QWEN37-ONBOARD-0[1-3]$"},
+          "requirements": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "DIRECT_JSON_ONLY",
+              "EXACT_REQUIRED_KEYS",
+              "EXACT_REQUEST_ID",
+              "EXACT_PROVIDER_FIT_ENUM",
+              "FIVE_FALSE_BOUNDARIES",
+              "RECOMMENDATION_ADVISORY_RULE",
+              "NON_EMPTY_BOUNDED_REASON",
+              "NO_AUTHORITY_GRANT"
+            ],
+            "properties": {
+              "DIRECT_JSON_ONLY": {"const": true},
+              "EXACT_REQUIRED_KEYS": {"const": true},
+              "EXACT_REQUEST_ID": {"const": true},
+              "EXACT_PROVIDER_FIT_ENUM": {"const": true},
+              "FIVE_FALSE_BOUNDARIES": {"const": true},
+              "RECOMMENDATION_ADVISORY_RULE": {"const": true},
+              "NON_EMPTY_BOUNDED_REASON": {"const": true},
+              "NO_AUTHORITY_GRANT": {"const": true}
+            }
+          },
+          "coverage_passed": {"const": 8},
+          "coverage_required": {"const": 8}
+        }
+      }
+    },
+    "coverage_passed": {"const": 24},
+    "coverage_required": {"const": 24},
+    "source_prompt_hashes_unchanged": {"const": 2},
+    "source_prompt_hashes_required_unchanged": {"const": 2},
+    "revised_prompt_hash_match": {"const": true},
+    "semantic_changes": {"const": 1},
+    "provider_network_requests": {"const": 0},
+    "live_model_requests": {"const": 0},
+    "credential_reads": {"const": 0},
+    "status": {"const": "PASS_24_OF_24_CONTRACT_COVERAGE"}
+  }
+}
