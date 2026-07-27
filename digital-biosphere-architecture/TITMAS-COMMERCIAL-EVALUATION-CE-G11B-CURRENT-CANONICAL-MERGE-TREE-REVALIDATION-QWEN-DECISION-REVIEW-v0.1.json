@@ -1,0 +1,40 @@
+{
+  "record_type": "TITMAS_SANITIZED_WRITE_AHEAD_DECISION_REVIEW",
+  "review_id": "TITMAS-CE-G11B-MERGE-TREE-R1-QWEN-DECISION-REVIEW-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T15:38:00.098094Z",
+  "status": "QUALIFYING_REVIEW_COMPLETED",
+  "reviewed_artifact": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-DECISION-RECORD.v0.1.json",
+  "reviewed_source_sha256": "2e6cd340b0e2aa738cc96509465cf6ed2a3a89929f293d70b9e14764b6d6ffe3",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "http_status": 200,
+  "request_count": 1,
+  "retry_count": 0,
+  "request_payload_sha256": "6b93cc9cadd8c1e66b4db7cad8956d028aec81fe211bce8cf10a3247dc021ebb",
+  "response_envelope_sha256": "ed4f5ef048cae22b1ba938bdc19d3e09eea1f0f5d151e643302b04685c91099b",
+  "response_byte_count": 6253,
+  "qualifying_review": true,
+  "review": {
+    "verdict": "APPROVE",
+    "confidence": 0.95,
+    "standing_directive_applicable": true,
+    "recommendation_commit_bound": true,
+    "frozen_merge_tree_coherent": true,
+    "offline_scope_bounded": true,
+    "dependency_fail_closed_policy_coherent": true,
+    "no_remote_mutation": true,
+    "merge_remains_unauthorized": true,
+    "blocking_findings": [],
+    "required_corrections": [],
+    "rationale": "The Decision authorizes only offline reconstruction and testing, prohibits dependency installation and all remote mutation, fails closed if site dependencies are absent, and leaves merge unauthorized."
+  },
+  "terminal_failure_category": null,
+  "effects": {
+    "authority": false,
+    "revalidation_execution": false,
+    "dependency_installation": false,
+    "remote_mutation": false,
+    "merge": false
+  }
+}
