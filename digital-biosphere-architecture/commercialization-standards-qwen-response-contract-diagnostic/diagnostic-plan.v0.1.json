@@ -1,0 +1,71 @@
+{
+  "$schema": "./diagnostic-plan.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-58-QWEN-RESPONSE-CONTRACT-OFFLINE-DIAGNOSTIC-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "decision_reference": "../TITMAS-CS-D02-PRE-58-QWEN-RESPONSE-CONTRACT-OFFLINE-DIAGNOSTIC-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "c5168a388ba7266f49b630c5ab620c30a7328e668417ce218ccf2eb1db225eb0",
+  "decision_commit": "86549cf95c0a2f0479ec7d16e14c9e9fb2830ed6",
+  "inputs": [
+    {
+      "path": "../commercialization-standards-qwen3-7-plus-onboarding-benchmark/benchmark-plan.v0.1.json",
+      "sha256": "631e2d0bacece27cf8b30f7fbb4228801f216b841ec2b33203aefdb1b5a300f7"
+    },
+    {
+      "path": "../commercialization-standards-qwen3-7-plus-onboarding-benchmark/sanitized-session-results.v0.1.json",
+      "sha256": "28a4747a87199e7b1eda61b636c01e48e78db7f6ec92ccd2fb027dea9ad1829c"
+    },
+    {
+      "path": "../commercialization-standards-qwen3-7-plus-onboarding-benchmark/PRE-57-QWEN3-7-PLUS-ONBOARDING-BENCHMARK-RESULT-v0.1.md",
+      "sha256": "1a58f7614aa5c759347259f6dd934fb15d7d7a24f38dbabb97c4d1ab66d94866"
+    },
+    {
+      "path": "../commercialization-standards-qwen3-7-plus-onboarding-benchmark/execution-receipt.v0.1.json",
+      "sha256": "87d58360034339d02ad4e888f8075deb94e334860422c921245791b31996afc0"
+    }
+  ],
+  "execution_policy": {
+    "offline_only": true,
+    "deterministic": true,
+    "provider_network_requests_max": 0,
+    "live_model_requests_max": 0,
+    "credential_reads_max": 0,
+    "source_mutations_max": 0,
+    "external_repository_writes_max": 0
+  },
+  "normalization": {
+    "unicode_form": "NFKC",
+    "lowercase": true,
+    "replace_non_alphanumeric_with_space": true,
+    "collapse_whitespace": true,
+    "trim": true
+  },
+  "enum_instruction": {
+    "exact_text": "provider_fit must be SUITABLE, CONDITIONAL, or NOT_SUITABLE.",
+    "allowed_values": [
+      "SUITABLE",
+      "CONDITIONAL",
+      "NOT_SUITABLE"
+    ]
+  },
+  "role_phrase": {
+    "source_session": "QWEN37-ONBOARD-03",
+    "exact_text": "bounded, non-production TITMAS machine-review candidate"
+  },
+  "checks": [
+    "PLAN_PROVIDER_FIT_ENUM_DEFINED",
+    "SESSION_01_ENUM_INSTRUCTION_TRANSMITTED",
+    "SESSION_02_ENUM_INSTRUCTION_TRANSMITTED",
+    "SESSION_03_ENUM_INSTRUCTION_TRANSMITTED",
+    "SESSION_03_OBSERVED_VALUE_IN_ENUM",
+    "SESSION_03_ROLE_PHRASE_NORMALIZED_MATCH",
+    "SESSION_03_BOUNDARY_VALUES_PRESERVED",
+    "NO_SCHEMA_OR_HISTORY_MUTATION"
+  ],
+  "classification_rule": {
+    "contract_transmission_gap_proven_when": "PLAN_ENUM_DEFINED_AND_SESSION_03_ENUM_INSTRUCTION_ABSENT",
+    "model_causality_proven": false,
+    "role_phrase_match_interpretation": "CONSISTENT_WITH_PROMPT_COPYING_NOT_CAUSAL_PROOF"
+  },
+  "next_action_on_gap": "FORM_EXACT_PROMPT_CONTRACT_REVISION_RECOMMENDATION"
+}

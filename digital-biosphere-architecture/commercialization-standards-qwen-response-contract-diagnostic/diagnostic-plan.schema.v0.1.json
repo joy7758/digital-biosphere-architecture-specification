@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre58-qwen-response-contract-offline-diagnostic-plan.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_sha256",
+    "decision_commit",
+    "inputs",
+    "execution_policy",
+    "normalization",
+    "enum_instruction",
+    "role_phrase",
+    "checks",
+    "classification_rule",
+    "next_action_on_gap"
+  ],
+  "properties": {
+    "$schema": {"const": "./diagnostic-plan.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-58-QWEN-RESPONSE-CONTRACT-OFFLINE-DIAGNOSTIC-PLAN-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_BEFORE_EXECUTION"},
+    "decision_reference": {
+      "const": "../TITMAS-CS-D02-PRE-58-QWEN-RESPONSE-CONTRACT-OFFLINE-DIAGNOSTIC-DECISION-RECORD.v0.1.json"
+    },
+    "decision_sha256": {
+      "const": "c5168a388ba7266f49b630c5ab620c30a7328e668417ce218ccf2eb1db225eb0"
+    },
+    "decision_commit": {
+      "const": "86549cf95c0a2f0479ec7d16e14c9e9fb2830ed6"
+    },
+    "inputs": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "execution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_only",
+        "deterministic",
+        "provider_network_requests_max",
+        "live_model_requests_max",
+        "credential_reads_max",
+        "source_mutations_max",
+        "external_repository_writes_max"
+      ],
+      "properties": {
+        "offline_only": {"const": true},
+        "deterministic": {"const": true},
+        "provider_network_requests_max": {"const": 0},
+        "live_model_requests_max": {"const": 0},
+        "credential_reads_max": {"const": 0},
+        "source_mutations_max": {"const": 0},
+        "external_repository_writes_max": {"const": 0}
+      }
+    },
+    "normalization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unicode_form",
+        "lowercase",
+        "replace_non_alphanumeric_with_space",
+        "collapse_whitespace",
+        "trim"
+      ],
+      "properties": {
+        "unicode_form": {"const": "NFKC"},
+        "lowercase": {"const": true},
+        "replace_non_alphanumeric_with_space": {"const": true},
+        "collapse_whitespace": {"const": true},
+        "trim": {"const": true}
+      }
+    },
+    "enum_instruction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exact_text", "allowed_values"],
+      "properties": {
+        "exact_text": {
+          "const": "provider_fit must be SUITABLE, CONDITIONAL, or NOT_SUITABLE."
+        },
+        "allowed_values": {
+          "const": ["SUITABLE", "CONDITIONAL", "NOT_SUITABLE"]
+        }
+      }
+    },
+    "role_phrase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_session", "exact_text"],
+      "properties": {
+        "source_session": {"const": "QWEN37-ONBOARD-03"},
+        "exact_text": {
+          "const": "bounded, non-production TITMAS machine-review candidate"
+        }
+      }
+    },
+    "checks": {
+      "const": [
+        "PLAN_PROVIDER_FIT_ENUM_DEFINED",
+        "SESSION_01_ENUM_INSTRUCTION_TRANSMITTED",
+        "SESSION_02_ENUM_INSTRUCTION_TRANSMITTED",
+        "SESSION_03_ENUM_INSTRUCTION_TRANSMITTED",
+        "SESSION_03_OBSERVED_VALUE_IN_ENUM",
+        "SESSION_03_ROLE_PHRASE_NORMALIZED_MATCH",
+        "SESSION_03_BOUNDARY_VALUES_PRESERVED",
+        "NO_SCHEMA_OR_HISTORY_MUTATION"
+      ]
+    },
+    "classification_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_transmission_gap_proven_when",
+        "model_causality_proven",
+        "role_phrase_match_interpretation"
+      ],
+      "properties": {
+        "contract_transmission_gap_proven_when": {
+          "const": "PLAN_ENUM_DEFINED_AND_SESSION_03_ENUM_INSTRUCTION_ABSENT"
+        },
+        "model_causality_proven": {"const": false},
+        "role_phrase_match_interpretation": {
+          "const": "CONSISTENT_WITH_PROMPT_COPYING_NOT_CAUSAL_PROOF"
+        }
+      }
+    },
+    "next_action_on_gap": {
+      "const": "FORM_EXACT_PROMPT_CONTRACT_REVISION_RECOMMENDATION"
+    }
+  }
+}
