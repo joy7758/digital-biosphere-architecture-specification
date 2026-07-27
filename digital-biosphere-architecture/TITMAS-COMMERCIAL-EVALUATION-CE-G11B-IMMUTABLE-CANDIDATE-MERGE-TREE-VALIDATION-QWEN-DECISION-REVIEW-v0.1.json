@@ -1,0 +1,66 @@
+{
+  "record_type": "TITMAS_SANITIZED_WRITE_AHEAD_DECISION_REVIEW",
+  "review_id": "TITMAS-CE-G11B-IMMUTABLE-CANDIDATE-MERGE-TREE-VALIDATION-QWEN-DECISION-REVIEW-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T17:20:48.696Z",
+  "status": "COMPLETED_NON_QUALIFYING",
+  "reviewed_artifact": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-IMMUTABLE-CANDIDATE-MERGE-TREE-VALIDATION-DECISION-RECORD.v0.1.json",
+  "reviewed_source_sha256": "fa2105b8ec4ad3d6403e37d6e29357d5134a5855e2c9f2fdac0369ff54cd9dda",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "returned_model_equals_requested_model": true,
+  "http_status": 200,
+  "curl_exit": 0,
+  "response_byte_count": 8179,
+  "request_count": 1,
+  "retry_count": 0,
+  "fallback_count": 0,
+  "model_substitution_count": 0,
+  "json_repair_request_count": 0,
+  "request_payload_sha256": "33e637d9b2907b127eb40a13bb2c20744a567b196d23a8d7527daf271aa39beb",
+  "response_envelope_sha256": "97fd89bd8277a9f719f62e573e6ae8e9251fe2aa8c7badab13cadaa1ec429d03",
+  "envelope_json_parse_pass": true,
+  "direct_json_parse_pass": true,
+  "qualifying_review": false,
+  "review": {
+    "verdict": "REJECT",
+    "confidence": 0.95,
+    "recommendation_bound": true,
+    "single_final_candidate_commit": true,
+    "candidate_freeze_enforced": true,
+    "external_evidence_ref_distinct": true,
+    "sha_binding_complete": false,
+    "validation_scope_complete": true,
+    "candidate_drift_fails_closed": true,
+    "canonical_drift_fails_closed": true,
+    "no_pr_mutation": true,
+    "no_merge_authority": true,
+    "blocking_findings": [
+      "evidence_ref_observed_absent is true, meaning the distinct evidence ref codex/ce-g11b-atomic-integration-evidence has not been created or pushed; therefore no results are SHA-bound on it.",
+      "candidate_final_commit_binding is a placeholder string rather than a concrete SHA, so the single final candidate commit is not yet frozen or verifiable.",
+      "result is NOT_EXECUTED; none of the required_results are populated or bound to an evidence ref.",
+      "No merge-tree SHA, final candidate commit SHA, or complete binding is recorded."
+    ],
+    "required_corrections": [
+      "Separate prospective authorization review from post-execution result attestation.",
+      "Create and freeze the final candidate only after a qualifying prospective authorization review.",
+      "Create the distinct evidence ref from the immutable candidate and bind the later result to exact candidate, canonical, and merge-tree SHAs.",
+      "Run the complete validation contract and record concrete results on the evidence ref.",
+      "Verify candidate and canonical remote refs remain unchanged."
+    ],
+    "rationale": "The contract preserves the main boundaries, but this review interpreted post-execution evidence as a prerequisite for approving the prospective authorization. The decision therefore requires a corrected two-object structure before execution."
+  },
+  "terminal_failure_category": "NON_QUALIFYING_REVIEW_AUTHORIZATION_RESULT_LAYER_CONFLATION",
+  "persistence_boundary": {
+    "credential_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "hidden_reasoning_persisted": false
+  },
+  "effects": {
+    "candidate_finalized": false,
+    "evidence_branch_created": false,
+    "validation": false,
+    "pr_mutation": false,
+    "merge": false
+  }
+}
