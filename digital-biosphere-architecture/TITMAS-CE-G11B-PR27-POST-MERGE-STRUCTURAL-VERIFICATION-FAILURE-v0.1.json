@@ -1,0 +1,48 @@
+{
+  "record_type": "TITMAS_PR27_POST_MERGE_STRUCTURAL_VERIFICATION_FAILURE",
+  "record_id": "TITMAS-CE-G11B-PR27-POST-MERGE-STRUCTURAL-VERIFICATION-FAILURE-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28T05:17:00+08:00",
+  "status": "FAIL_CLOSED_VERIFIER_PR_BASE_REFOID_SEMANTIC_ASSUMPTION",
+  "merge_execution_decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-MERGE-EXECUTION-DECISION-RECORD.v0.1.json",
+  "preflight_remediation_decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-PREFLIGHT-HARNESS-BINDING-REMEDIATION-DECISION-RECORD.v0.1.json",
+  "execution_observation": {
+    "draft_ready_mutations": 1,
+    "merge_attempts": 1,
+    "merge_succeeded": true,
+    "merged_at": "2026-07-27T21:16:42Z",
+    "merge_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "remote_base_head": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "merge_subject": "Merge PR #27: integrate CE-G11B atomic evidence",
+    "first_parent": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "second_parent": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "candidate_branch_preserved": true,
+    "pull_request_state": "MERGED",
+    "pull_request_merge_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919"
+  },
+  "failed_assertion": {
+    "expression": "PR.baseRefOid == remote_base_head_after_merge",
+    "expected_by_verifier": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "observed_pr_base_ref_oid": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "correct_semantics": "For a merged GitHub pull request, baseRefOid remains the base commit reviewed by the PR while mergeCommit.oid identifies the created merge commit.",
+    "merge_tree_or_lineage_failure_observed": false,
+    "root_cause": "POST_MERGE_VERIFIER_CONFLATED_PR_BASE_INPUT_WITH_UPDATED_REMOTE_BASE_BRANCH_HEAD"
+  },
+  "validation_effects": {
+    "structural_validation_recorded_pass": false,
+    "isolated_post_merge_validation_started": false,
+    "isolated_post_merge_validation_completed": false,
+    "automatic_revert_executed": false,
+    "reset_executed": false,
+    "force_push_executed": false,
+    "candidate_branch_deleted": false,
+    "release_executed": false,
+    "deployment_executed": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CORRECTED_POST_MERGE_STRUCTURAL_AND_ISOLATED_VALIDATION_RECOMMENDATION",
+    "authorized": false,
+    "revert_recommended": false
+  }
+}
