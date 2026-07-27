@@ -98,8 +98,17 @@ MISSING_RECEIPT_ATTEMPTS=1
 OBSERVATION_COMPLETED=false
 ```
 
-第一轮 11/11 为 HTTP `200`。一个原计划的第二轮命令没有返回可审计输出，因此没有计为
-PASS。重新编号的第二个可审计轮次中：
+第一轮 11/11 为 HTTP `200`。一个原计划的第二轮命令没有返回 stdout，因此没有计为
+PASS；事后只读检查本地临时目录发现 10 个响应体和 1 个非空 error receipt：
+
+```text
+PATH=/llms.txt
+ERROR=LibreSSL SSL_connect: SSL_ERROR_SYSCALL
+CURL_EXIT_CODE=35
+RETROACTIVELY_COUNTED_AS_ROUND=false
+```
+
+重新编号的第二个可审计轮次中：
 
 ```text
 PATH=/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json
@@ -111,6 +120,22 @@ RETRY_EXECUTED=false
 
 同轮其余 10 个路径为 HTTP `200`。错误可能是瞬时 TLS/transport failure，但没有直接
 证据证明根因属于客户端、网络或服务器，因此保持 `UNKNOWN`。
+
+CE-G4 准备阶段的只读诊断又确认：
+
+```text
+LOCAL_CURL_TLS_STACK=SecureTransport_LibreSSL_3_3_6
+LOCAL_SYSTEM_HTTP_PROXY=LOOPBACK_ENABLED
+LOCAL_SYSTEM_HTTPS_PROXY=LOOPBACK_ENABLED
+LOCAL_DNS_RESULT=198.18.0.90_SYNTHETIC_RANGE
+ACTUAL_SERVER=180.76.115.193
+SERVER_NGINX_ERROR_LINES_WINDOW=0
+SERVER_NGINX_JOURNAL_WARNING_LINES=0
+SERVER_ACCESS_5XX_WINDOW=0
+```
+
+这些证据降低 asset-specific failure（资源内容特定故障）的可能性，并把本地 proxy/TUN
+传输路径列为首要诊断候选；它们仍不足以证明最终根因。
 
 ## 5. Rollback（回滚）
 

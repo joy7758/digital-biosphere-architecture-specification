@@ -232,7 +232,8 @@
         "required": [
           "attempt",
           "status",
-          "counted_as_pass"
+          "counted_as_pass",
+          "recovered_local_artifacts"
         ],
         "properties": {
           "attempt": {
@@ -243,6 +244,38 @@
           },
           "counted_as_pass": {
             "const": false
+          },
+          "recovered_local_artifacts": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "body_files",
+              "nonempty_error_files",
+              "failure_path",
+              "curl_exit_code",
+              "error_text",
+              "retroactively_counted_as_round"
+            ],
+            "properties": {
+              "body_files": {
+                "const": 10
+              },
+              "nonempty_error_files": {
+                "const": 1
+              },
+              "failure_path": {
+                "const": "/llms.txt"
+              },
+              "curl_exit_code": {
+                "const": 35
+              },
+              "error_text": {
+                "const": "LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to redcrag.cn:443"
+              },
+              "retroactively_counted_as_round": {
+                "const": false
+              }
+            }
           }
         }
       }

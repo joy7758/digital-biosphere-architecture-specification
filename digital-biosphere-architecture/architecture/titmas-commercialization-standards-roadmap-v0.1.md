@@ -2305,6 +2305,35 @@ CE_G3_SLA_EFFECT=false
 Evaluation Pack 路径出现 `curl` code 35，未重试，随后原子切回 `7da4bcf...`。
 失败 release 与 archive 均保留，当前新契约网站部署仍为 false。
 
+### 4.63 CE-G4 Proxy Path vs Direct Resolve Diagnosis
+
+[Recommendation](../TITMAS-CE-G4-TRANSPORT-FAILURE-DIAGNOSIS-RECOMMENDATION-v0.1.md)
+记录 CE-G3 两次不同资源上的同类
+`LibreSSL SSL_connect: SSL_ERROR_SYSCALL`，并补充：
+
+- 本机使用 SecureTransport / LibreSSL 3.3.6；
+- loopback HTTP/HTTPS proxy 处于启用状态；
+- `redcrag.cn` 本地解析为 `198.18.0.90` synthetic address；
+- 实际服务器为 `180.76.115.193`；
+- 服务器同期 Nginx error、journal warning 和 access 5xx 均为 0。
+
+[Decision](../TITMAS-COMMERCIAL-EVALUATION-CE-G4-DECISION-RECORD.v0.1.json)
+只授权 12 个顺序、无重试公开 GET，对比默认路径和
+`--noproxy '*' --resolve redcrag.cn:443:180.76.115.193` 直连解析路径。
+
+```text
+CE_G4_DECIDED=true
+CE_G4_DIAGNOSIS_AUTHORIZED=true
+CE_G4_REQUEST_CAP=12
+CE_G4_RETRY=false
+CE_G4_TLS_BYPASS=false
+CE_G4_REDEPLOYMENT_AUTHORIZED=false
+CE_G4_CONFIG_CHANGE_AUTHORIZED=false
+CE_G4_EXECUTION_STARTED=false
+```
+
+该诊断只能确定 transport path 是否被证据支持；它不创建重新部署授权或 SLA。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -2814,6 +2843,11 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G3_TRANSPORT_FAILURES=1
 TITMAS_COMMERCIAL_EVALUATION_CE_G3_RETRY_EXECUTED=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G3_ROLLBACK_PASS=true
 TITMAS_AGENT_EVALUATION_ENTRY_WEBSITE_DEPLOYED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_DECIDED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_DIAGNOSIS_AUTHORIZED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_REQUEST_CAP=12
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_REDEPLOYMENT_AUTHORIZED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G4_EXECUTION_STARTED=false
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false
 TITMAS_VEAP_DRAFT_PROFILE_CANDIDATE_CREATED=true

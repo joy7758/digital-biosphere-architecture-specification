@@ -1,0 +1,88 @@
+{
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G4",
+  "version": "0.1.0",
+  "status": "DECIDED_BOUNDED_READ_ONLY_TRANSPORT_DIAGNOSIS_AUTHORIZED",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G4-TRANSPORT-FAILURE-DIAGNOSIS-RECOMMENDATION-v0.1.md",
+  "exact_action": "RUN_BOUNDED_PROXY_PATH_VS_DIRECT_RESOLVE_TLS_DIAGNOSTIC",
+  "primary_repository": "digital-biosphere-architecture",
+  "evidence_baseline": {
+    "ce_g3_result": "FAIL_CLOSED_ROLLBACK_PASS",
+    "distinct_failed_paths": 2,
+    "shared_error": "LibreSSL SSL_connect: SSL_ERROR_SYSCALL",
+    "local_system_proxy_class": "LOOPBACK",
+    "local_dns_class": "SYNTHETIC_198_18_0_0_15",
+    "server_nginx_error_lines_window": 0,
+    "server_nginx_journal_warning_lines": 0,
+    "server_access_5xx_window": 0,
+    "exact_root_cause_proven": false
+  },
+  "diagnostic_matrix": {
+    "rounds": 3,
+    "paths": [
+      "DEFAULT_PATH",
+      "DIRECT_RESOLVE_PATH"
+    ],
+    "targets": [
+      "/llms.txt",
+      "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"
+    ],
+    "request_cap": 12,
+    "sequential": true,
+    "retry": false,
+    "fallback": false,
+    "max_time_seconds": 20,
+    "direct_ip": "180.76.115.193",
+    "tls_verification_required": true
+  },
+  "authorization": {
+    "public_https_gets": 12,
+    "direct_resolve_without_tls_bypass": true,
+    "local_environment_metadata_read": true,
+    "server_aggregate_log_counts_read": true,
+    "local_result_recording": true,
+    "path_scoped_commit_and_push": true
+  },
+  "prohibited": {
+    "website_redeployment": true,
+    "system_proxy_change": true,
+    "dns_change": true,
+    "nginx_change": true,
+    "certificate_change": true,
+    "firewall_change": true,
+    "security_configuration_change": true,
+    "tls_verification_bypass": true,
+    "raw_server_log_persistence": true,
+    "model_request": true,
+    "dbos_or_saee_change": true,
+    "runtime_creation": true,
+    "api_creation": true,
+    "agent_creation": true,
+    "entity_creation": true,
+    "permission_creation": true,
+    "capability_creation": true,
+    "certification": true,
+    "sla": true,
+    "commercial_offer": true
+  },
+  "stop_conditions": [
+    "REQUEST_CAP_EXCEEDED",
+    "PRIVATE_OR_SECRET_DATA_PRESENT",
+    "CONFIGURATION_CHANGE_REQUIRED",
+    "REDEPLOYMENT_REQUIRED",
+    "RETRY_FALLBACK_PARALLEL_OR_TLS_BYPASS_USED",
+    "HTTP_200_BODY_HASH_DIVERGENCE",
+    "CURRENT_RELEASE_NOT_ROLLBACK_BASELINE"
+  ],
+  "authority_effect": {
+    "read_only_diagnosis_authorized": true,
+    "redeployment_authorized": false,
+    "configuration_change_authorized": false,
+    "root_cause_declared_proven": false,
+    "production_authorized": false,
+    "certification_authorized": false,
+    "commercial_offering_authorized": false,
+    "sla_authorized": false
+  }
+}
