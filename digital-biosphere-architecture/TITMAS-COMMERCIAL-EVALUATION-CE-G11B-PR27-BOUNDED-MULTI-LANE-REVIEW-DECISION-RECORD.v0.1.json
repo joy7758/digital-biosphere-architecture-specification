@@ -1,0 +1,138 @@
+{
+  "record_type": "TITMAS_PROSPECTIVE_BOUNDED_MULTI_LANE_PR_REVIEW_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-BOUNDED-MULTI-LANE-REVIEW",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_FOUR_LANES_AND_ONE_SYNTHESIS_ONLY_IF_QUALIFYING_DECISION_REVIEW",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G11B-PR27-BOUNDED-MULTI-LANE-INDEPENDENT-REVIEW-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "118f78523b0dbfd7bb31ed393e60ae070c92134203cedb684ac9cd4afdfad06e",
+  "recommendation_review_reference": "TITMAS-CE-G11B-PR27-BOUNDED-MULTI-LANE-INDEPENDENT-REVIEW-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "7ccebb9442cffa5b7f0902fa115198ea52c2c38be54ca89642f6d9817b0aefa3",
+  "recommendation_commit": "dfdc6b9ebef3872326bf59409547c0fabdd3a9f8",
+  "recommendation_remote_verified": true,
+  "decision_quality_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-BOUNDED-MULTI-LANE-REVIEW-QWEN-DECISION-REVIEW-v0.1.json",
+  "frozen_pr": {
+    "number": 27,
+    "state": "OPEN",
+    "draft": true,
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "merge_base": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "three_dot_changed_files": 100,
+    "commits": 41,
+    "additions": 10809,
+    "deletions": 46,
+    "three_dot_patch_sha256": "e031466cbb422e707bfae8ba5751c5f0bd076c6628a518124e36d353f3e92451",
+    "three_dot_patch_bytes": 512200,
+    "r2_merge_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "r2_evidence": "27bc3b6e586a2259d17152a2022a85d2dd69107b",
+    "checks": 0,
+    "reviews": 0,
+    "review_requests": 0,
+    "comments": 0
+  },
+  "diff_semantics": {
+    "review_diff": "THREE_DOT_MERGE_BASE_TO_HEAD",
+    "canonical_only_files_excluded_from_pr_patch": 11,
+    "canonical_only_files_are_not_deletions_in_merge_tree": true,
+    "canonical_plus_candidate_merge_tree_covered_by_r2": true
+  },
+  "lanes": {
+    "A": {
+      "role": "EXECUTION_AND_WORKFLOW",
+      "files": 3,
+      "patch_sha256": "3c67cb59e0783fbb400c6fcfda4687167e695f9cab747515ad7bc8d78ffa9b99",
+      "patch_bytes": 38004
+    },
+    "B": {
+      "role": "SCHEMA_AND_DATA_CONTRACT",
+      "files": 8,
+      "patch_sha256": "7f721c2605a1508a76884f3e2b76aafd85efd6cea56d71d8a4dca0d0f44c40a6",
+      "patch_bytes": 49029
+    },
+    "C": {
+      "role": "PUBLIC_AND_DEVELOPER_SURFACE",
+      "files": 6,
+      "patch_sha256": "1f94782837c2b7946f45f35f3b5e0bd1337839004089e5ba69c65034d28886f5",
+      "patch_bytes": 23957
+    },
+    "D": {
+      "role": "GOVERNANCE_AND_AUTHORITY",
+      "files": 83,
+      "patch_sha256": "e3024eba64c24f813e7cdfc01944bfe786094149dd7f30d1881a9a05afa190d7",
+      "patch_bytes": 401210,
+      "complete_inventory_required": true
+    }
+  },
+  "lane_response_contract": {
+    "required_keys": [
+      "lane_id",
+      "verdict",
+      "confidence",
+      "base_sha",
+      "head_sha",
+      "patch_sha256",
+      "assigned_files",
+      "assigned_files_reviewed",
+      "inventory_context_received",
+      "r2_boundary_understood",
+      "authority_boundaries_preserved",
+      "findings",
+      "rationale"
+    ],
+    "verdict_enum": ["CLEAR", "REMEDIATION_REQUIRED", "REJECT"],
+    "finding_required_keys": ["finding_id", "severity", "path", "location", "claim", "evidence", "required_correction"],
+    "finding_severity_enum": ["BLOCKER", "HIGH", "MEDIUM", "LOW"],
+    "additional_top_level_keys_allowed": false
+  },
+  "synthesis_contract": {
+    "inputs": "EXACT_FOUR_DIRECT_LANE_RESULTS_AND_HASHES",
+    "required_verdict_enum": ["CLEAR", "REMEDIATION_REQUIRED", "REJECT"],
+    "all_lane_findings_must_be_accounted_for": true,
+    "silent_deletion_or_severity_downgrade_allowed": false,
+    "deduplication_requires_explicit_source_finding_ids": true,
+    "merge_recommendation_allowed": false
+  },
+  "model_contract": {
+    "model": "qwen3.7-max",
+    "lane_requests": 4,
+    "synthesis_requests": 1,
+    "total_requests": 5,
+    "retries": 0,
+    "fallbacks": 0,
+    "model_substitutions": 0,
+    "json_extractions": 0,
+    "json_repairs": 0,
+    "direct_json_required": true,
+    "exact_returned_model_required": true
+  },
+  "exact_authorized_action": "After one qualifying exact qwen3.7-max Decision review and remote Decision baseline, verify PR #27 and all frozen diff/R2 bindings. Send exactly four sequential qwen3.7-max lane reviews using the complete 100-file inventory and exact three-dot patch slices, then one synthesis using the four direct results and hashes. Persist all direct JSON results and a bounded report on the governance branch. Do not submit GitHub review/comment, edit or close any PR, remediate source, merge, release or deploy.",
+  "caps": {
+    "decision_model_requests": 1,
+    "lane_model_requests": 4,
+    "synthesis_model_requests": 1,
+    "all_model_retries": 0,
+    "all_model_fallbacks": 0,
+    "result_commits": 1,
+    "result_pushes": 1,
+    "github_review_submissions": 0,
+    "github_comments": 0,
+    "pr_mutations": 0,
+    "source_changes": 0,
+    "merges": 0,
+    "releases": 0,
+    "deployments": 0
+  },
+  "non_authorizations": {
+    "human_review_equivalence": false,
+    "github_review_submission": false,
+    "source_remediation": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "commercial_offering": false
+  }
+}
