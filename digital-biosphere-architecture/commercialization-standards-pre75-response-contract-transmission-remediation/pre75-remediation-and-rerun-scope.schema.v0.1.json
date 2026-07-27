@@ -1,0 +1,285 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre75-remediation-and-rerun-scope.schema.v0.1.json",
+  "title": "TITMAS PRE-75 Remediation and Rerun Scope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_candidate",
+    "exact_recommended_action",
+    "primary_repository",
+    "input_refs",
+    "proven_facts",
+    "stage_a_offline_scope",
+    "stage_b_future_scope",
+    "full_contract_transmission_requirements",
+    "offline_validation",
+    "execution_caps",
+    "stop_conditions",
+    "truth_boundaries",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./pre75-remediation-and-rerun-scope.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE75-REMEDIATION-AND-RERUN-SCOPE-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "RECOMMENDATION_SCOPE_NOT_AUTHORIZED"
+    },
+    "decision_candidate": {
+      "const": "CS-D02-PRE-75"
+    },
+    "exact_recommended_action": {
+      "const": "AUTHORIZE_PRE75_OFFLINE_FULL_RESPONSE_SCHEMA_TRANSMISSION_REMEDIATION_AND_PRE76_TWO_REQUEST_RERUN_SCOPE_DESIGN"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "input_refs": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 10},
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "proven_facts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre73_direct_json_parse_pass",
+        "pre73_response_schema_pass",
+        "pre73_request_cap_consumed",
+        "pre74_transmission_gap_proven",
+        "pre74_exact_schema_failure_cause_proven",
+        "pre74_sanitized_capture_details_pass",
+        "pre74_forbidden_negatives_rejected",
+        "live_retry_allowed"
+      ],
+      "properties": {
+        "pre73_direct_json_parse_pass": {"const": "2/2"},
+        "pre73_response_schema_pass": {"const": "0/2"},
+        "pre73_request_cap_consumed": {"const": true},
+        "pre74_transmission_gap_proven": {"const": true},
+        "pre74_exact_schema_failure_cause_proven": {"const": false},
+        "pre74_sanitized_capture_details_pass": {"const": "12/12"},
+        "pre74_forbidden_negatives_rejected": {"const": "10/10"},
+        "live_retry_allowed": {"const": false}
+      }
+    },
+    "stage_a_offline_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized_outputs", "adoption_allowed", "live_execution_allowed"],
+      "properties": {
+        "authorized_outputs": {
+          "type": "array",
+          "minItems": 7,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "REVIEW_REQUEST_CONTRACT_CANDIDATE_V0_2",
+              "CANONICAL_RESPONSE_SCHEMA_TRANSMISSION_PAYLOAD",
+              "TWO_DETERMINISTIC_RENDERED_REQUEST_FIXTURES",
+              "CONTRACT_TRANSMISSION_COVERAGE_VALIDATION",
+              "SANITIZED_FAILURE_CAPTURE_INTEGRATION",
+              "PRE76_TWO_REQUEST_RERUN_SCOPE_CANDIDATE",
+              "OFFLINE_RESULT_AND_EXECUTION_RECEIPT"
+            ]
+          }
+        },
+        "adoption_allowed": {"const": false},
+        "live_execution_allowed": {"const": false}
+      }
+    },
+    "stage_b_future_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage_id",
+        "separate_recommendation_required",
+        "separate_decision_required",
+        "requests_max",
+        "requests_per_provider_max",
+        "concurrency_max",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "response_extraction_max",
+        "json_repair_max",
+        "currently_authorized"
+      ],
+      "properties": {
+        "stage_id": {"const": "CS-D02-PRE-76-CANDIDATE"},
+        "separate_recommendation_required": {"const": true},
+        "separate_decision_required": {"const": true},
+        "requests_max": {"const": 2},
+        "requests_per_provider_max": {"const": 1},
+        "concurrency_max": {"const": 1},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "model_substitution_max": {"const": 0},
+        "response_extraction_max": {"const": 0},
+        "json_repair_max": {"const": 0},
+        "currently_authorized": {"const": false}
+      }
+    },
+    "full_contract_transmission_requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_response_schema_embedded",
+        "schema_sha256_embedded",
+        "canonicalization",
+        "source_schema_file_sha256",
+        "canonical_payload_bytes",
+        "canonical_payload_sha256",
+        "top_level_keys",
+        "question_assessment_keys",
+        "explicit_non_claim_keys",
+        "schema_structure_markers",
+        "ordered_question_bindings",
+        "session_role_bindings",
+        "direct_json_and_no_repair_boundary",
+        "advisory_non_claim"
+      ],
+      "properties": {
+        "canonical_response_schema_embedded": {"const": true},
+        "schema_sha256_embedded": {"const": true},
+        "canonicalization": {
+          "const": "UTF8_JSON_SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE"
+        },
+        "source_schema_file_sha256": {
+          "const": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8"
+        },
+        "canonical_payload_bytes": {"const": 5271},
+        "canonical_payload_sha256": {
+          "const": "fa515e139eb5915f48b2ed6fda9f4b85275f9f6ac4c5b49e69cecf4b8afdc2af"
+        },
+        "top_level_keys": {"const": "10/10"},
+        "question_assessment_keys": {"const": "7/7"},
+        "explicit_non_claim_keys": {"const": "8/8"},
+        "schema_structure_markers": {"const": "3/3"},
+        "ordered_question_bindings": {"const": "16/16"},
+        "session_role_bindings": {"const": "2/2"},
+        "direct_json_and_no_repair_boundary": {"const": true},
+        "advisory_non_claim": {"const": true}
+      }
+    },
+    "offline_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_hashes_required",
+        "rendered_request_schema_bytes_required",
+        "rendered_request_schema_hashes_required",
+        "coverage_groups_required",
+        "session_role_bindings_required",
+        "mutation_negatives_minimum",
+        "sanitized_failure_detail_schema_required",
+        "phase_accounting_required",
+        "rendered_request_size_budget_bytes"
+      ],
+      "properties": {
+        "input_hashes_required": {"const": "7/7"},
+        "rendered_request_schema_bytes_required": {"const": "2/2"},
+        "rendered_request_schema_hashes_required": {"const": "2/2"},
+        "coverage_groups_required": {"const": "3/3"},
+        "session_role_bindings_required": {"const": "2/2"},
+        "mutation_negatives_minimum": {"const": 16},
+        "sanitized_failure_detail_schema_required": {"const": true},
+        "phase_accounting_required": {"const": true},
+        "rendered_request_size_budget_bytes": {"const": 131072}
+      }
+    },
+    "execution_caps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_requests_max",
+        "live_model_requests_max",
+        "credential_value_reads_max",
+        "raw_provider_response_reads_max",
+        "target_repository_writes_max",
+        "dbos_writes_max",
+        "saee_writes_max",
+        "request_contract_adoptions_max",
+        "response_schema_changes_max",
+        "live_retries_max"
+      ],
+      "properties": {
+        "network_requests_max": {"const": 0},
+        "live_model_requests_max": {"const": 0},
+        "credential_value_reads_max": {"const": 0},
+        "raw_provider_response_reads_max": {"const": 0},
+        "target_repository_writes_max": {"const": 0},
+        "dbos_writes_max": {"const": 0},
+        "saee_writes_max": {"const": 0},
+        "request_contract_adoptions_max": {"const": 0},
+        "response_schema_changes_max": {"const": 0},
+        "live_retries_max": {"const": 0}
+      }
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 10}
+    },
+    "truth_boundaries": {
+      "type": "array",
+      "minItems": 8,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 8}
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_recorded",
+        "offline_execution_authorized",
+        "request_contract_adopted",
+        "response_schema_changed",
+        "live_rerun_authorized",
+        "provider_supported",
+        "formal_human_security_review_complete",
+        "conformance_pass",
+        "standard_ready",
+        "release_authorized",
+        "production_ready"
+      ],
+      "properties": {
+        "decision_recorded": {"const": false},
+        "offline_execution_authorized": {"const": false},
+        "request_contract_adopted": {"const": false},
+        "response_schema_changed": {"const": false},
+        "live_rerun_authorized": {"const": false},
+        "provider_supported": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "conformance_pass": {"const": false},
+        "standard_ready": {"const": false},
+        "release_authorized": {"const": false},
+        "production_ready": {"const": false}
+      }
+    }
+  }
+}

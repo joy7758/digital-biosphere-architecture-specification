@@ -1,0 +1,149 @@
+{
+  "$schema": "./pre75-remediation-and-rerun-scope.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE75-REMEDIATION-AND-RERUN-SCOPE-0.1",
+  "version": "0.1.0",
+  "status": "RECOMMENDATION_SCOPE_NOT_AUTHORIZED",
+  "decision_candidate": "CS-D02-PRE-75",
+  "exact_recommended_action": "AUTHORIZE_PRE75_OFFLINE_FULL_RESPONSE_SCHEMA_TRANSMISSION_REMEDIATION_AND_PRE76_TWO_REQUEST_RERUN_SCOPE_DESIGN",
+  "primary_repository": "digital-biosphere-architecture",
+  "input_refs": [
+    {
+      "path": "../commercialization-standards-pre74-schema-failure-diagnostic/pre74-offline-diagnostic-result.v0.1.json",
+      "sha256": "98ff117f9980d30690d85878c25608068abd7e3b724941da0713b8b80c3e462f"
+    },
+    {
+      "path": "../commercialization-standards-pre74-schema-failure-diagnostic/pre74-execution-receipt.v0.1.json",
+      "sha256": "84a2a10a042d0cd9a7267e6f26ed6e397a8246b9e2b1fa142ca8e7d65465fbd3"
+    },
+    {
+      "path": "../commercialization-standards-pre74-schema-failure-diagnostic/pre74-response-contract-transmission-map.v0.1.json",
+      "sha256": "da84ffc21e41c9e3f4abb847642a93119a1f4a530a8cd01f2d9e3d3f0eff3329"
+    },
+    {
+      "path": "../commercialization-standards-pre74-schema-failure-diagnostic/pre74-sanitized-failure-detail-capture-contract.v0.1.json",
+      "sha256": "a2c3310877528f270f819a796ad3e13b0f85cc03a7763c5de9ddd533a94f58dd"
+    },
+    {
+      "path": "../commercialization-standards-pre74-schema-failure-diagnostic/pre74-sanitized-failure-detail.schema.v0.1.json",
+      "sha256": "c628cd18143209638fe562877edd01764c1f2fbb58b02dc5764ebbee0fb55e21"
+    },
+    {
+      "path": "../commercialization-standards-p0-exact-agent-security-review/pre73-review-request-contract.v0.1.json",
+      "sha256": "c98f2464b814696152bcb8946ffbc5ffea5b6a9daf48e1b6657f59d5aa2f2a1b"
+    },
+    {
+      "path": "../commercialization-standards-p0-exact-agent-security-review/pre73-agent-review-response.schema.v0.2.json",
+      "sha256": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8"
+    }
+  ],
+  "proven_facts": {
+    "pre73_direct_json_parse_pass": "2/2",
+    "pre73_response_schema_pass": "0/2",
+    "pre73_request_cap_consumed": true,
+    "pre74_transmission_gap_proven": true,
+    "pre74_exact_schema_failure_cause_proven": false,
+    "pre74_sanitized_capture_details_pass": "12/12",
+    "pre74_forbidden_negatives_rejected": "10/10",
+    "live_retry_allowed": false
+  },
+  "stage_a_offline_scope": {
+    "authorized_outputs": [
+      "REVIEW_REQUEST_CONTRACT_CANDIDATE_V0_2",
+      "CANONICAL_RESPONSE_SCHEMA_TRANSMISSION_PAYLOAD",
+      "TWO_DETERMINISTIC_RENDERED_REQUEST_FIXTURES",
+      "CONTRACT_TRANSMISSION_COVERAGE_VALIDATION",
+      "SANITIZED_FAILURE_CAPTURE_INTEGRATION",
+      "PRE76_TWO_REQUEST_RERUN_SCOPE_CANDIDATE",
+      "OFFLINE_RESULT_AND_EXECUTION_RECEIPT"
+    ],
+    "adoption_allowed": false,
+    "live_execution_allowed": false
+  },
+  "stage_b_future_scope": {
+    "stage_id": "CS-D02-PRE-76-CANDIDATE",
+    "separate_recommendation_required": true,
+    "separate_decision_required": true,
+    "requests_max": 2,
+    "requests_per_provider_max": 1,
+    "concurrency_max": 1,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "model_substitution_max": 0,
+    "response_extraction_max": 0,
+    "json_repair_max": 0,
+    "currently_authorized": false
+  },
+  "full_contract_transmission_requirements": {
+    "canonical_response_schema_embedded": true,
+    "schema_sha256_embedded": true,
+    "canonicalization": "UTF8_JSON_SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE",
+    "source_schema_file_sha256": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8",
+    "canonical_payload_bytes": 5271,
+    "canonical_payload_sha256": "fa515e139eb5915f48b2ed6fda9f4b85275f9f6ac4c5b49e69cecf4b8afdc2af",
+    "top_level_keys": "10/10",
+    "question_assessment_keys": "7/7",
+    "explicit_non_claim_keys": "8/8",
+    "schema_structure_markers": "3/3",
+    "ordered_question_bindings": "16/16",
+    "session_role_bindings": "2/2",
+    "direct_json_and_no_repair_boundary": true,
+    "advisory_non_claim": true
+  },
+  "offline_validation": {
+    "input_hashes_required": "7/7",
+    "rendered_request_schema_bytes_required": "2/2",
+    "rendered_request_schema_hashes_required": "2/2",
+    "coverage_groups_required": "3/3",
+    "session_role_bindings_required": "2/2",
+    "mutation_negatives_minimum": 16,
+    "sanitized_failure_detail_schema_required": true,
+    "phase_accounting_required": true,
+    "rendered_request_size_budget_bytes": 131072
+  },
+  "execution_caps": {
+    "network_requests_max": 0,
+    "live_model_requests_max": 0,
+    "credential_value_reads_max": 0,
+    "raw_provider_response_reads_max": 0,
+    "target_repository_writes_max": 0,
+    "dbos_writes_max": 0,
+    "saee_writes_max": 0,
+    "request_contract_adoptions_max": 0,
+    "response_schema_changes_max": 0,
+    "live_retries_max": 0
+  },
+  "stop_conditions": [
+    "ANY_INPUT_HASH_OR_TARGET_COMMIT_DRIFT",
+    "ANY_RESPONSE_SCHEMA_SEMANTIC_CHANGE",
+    "ANY_NETWORK_OR_PROVIDER_REQUEST",
+    "ANY_LIVE_MODEL_OR_CREDENTIAL_VALUE_ACTION",
+    "ANY_RAW_PRE73_RESPONSE_RECOVERY",
+    "ANY_RAW_ERROR_VALUE_SOURCE_OR_REQUEST_PERSISTENCE",
+    "ANY_REQUEST_CONTRACT_ADOPTION",
+    "ANY_TARGET_DBOS_OR_SAEE_WRITE",
+    "ANY_PROVIDER_REVIEW_CONFORMANCE_STANDARD_RELEASE_OR_PRODUCTION_OVERCLAIM"
+  ],
+  "truth_boundaries": [
+    "RECOMMENDATION_NE_DECISION",
+    "OFFLINE_REQUEST_CANDIDATE_NE_ADOPTED_REQUEST_CONTRACT",
+    "RERUN_SCOPE_DESIGN_NE_LIVE_RERUN_AUTHORIZATION",
+    "FULL_SCHEMA_TRANSMISSION_NE_PROVIDER_CONFORMANCE",
+    "SCHEMA_PASS_NE_SECURITY_REVIEW_CORRECTNESS",
+    "AGENT_REVIEW_NE_FORMAL_HUMAN_SECURITY_REVIEW",
+    "EVIDENCE_NE_TRUTH",
+    "DBA_NE_DBOS_NE_SAEE"
+  ],
+  "effects": {
+    "decision_recorded": false,
+    "offline_execution_authorized": false,
+    "request_contract_adopted": false,
+    "response_schema_changed": false,
+    "live_rerun_authorized": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false,
+    "production_ready": false
+  }
+}
