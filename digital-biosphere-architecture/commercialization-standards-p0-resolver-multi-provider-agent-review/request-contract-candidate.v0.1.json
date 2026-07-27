@@ -1,0 +1,91 @@
+{
+  "$schema": "./request-contract-candidate.schema.v0.1.json",
+  "document_id": "TITMAS-PRE65-P0-RESOLVER-AGENT-REVIEW-REQUEST-CONTRACT-0.1",
+  "version": "0.1.0",
+  "status": "CANDIDATE_NOT_AUTHORIZED",
+  "pre64_inputs": [
+    {
+      "path": "../commercialization-standards-p0-resolver-contract-and-test-design/p0-resolver-contract.v0.1.json",
+      "sha256": "4dd99f43cbe989e558129929a5f2d8c43d5d22645484137d666d55f52d0eacff"
+    },
+    {
+      "path": "../commercialization-standards-p0-resolver-contract-and-test-design/p0-resolver-negative-case-catalog.v0.1.json",
+      "sha256": "7ba8596347366d2036453d4898852bc40afd9a4bb5bc89331a915066fcab8475"
+    },
+    {
+      "path": "../commercialization-standards-p0-resolver-contract-and-test-design/p0-resolver-test-design.v0.1.json",
+      "sha256": "1264f92bd1cc15130fac8545ee6fde8c64996c1cc2d2c52120f81226d7bdcd27"
+    },
+    {
+      "path": "../commercialization-standards-p0-resolver-contract-and-test-design/p0-resolver-agent-review-input.v0.1.json",
+      "sha256": "74e5ad2b8feee45c43f600f43b310f6c53c106382e4d4de658f7f355a60dde4c"
+    }
+  ],
+  "bindings": [
+    {
+      "binding_id": "QIANFAN_ERNIE_INTEGRATION_REVIEW",
+      "provider": "QIANFAN",
+      "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+      "model": "ernie-4.5-turbo-20260402",
+      "credential_identifier": "QIANFAN_API_KEY"
+    },
+    {
+      "binding_id": "ALIBABA_QWEN_SECURITY_REVIEW",
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "model": "qwen3.7-plus",
+      "credential_identifier": "DASHSCOPE_API_KEY"
+    }
+  ],
+  "sessions": [
+    {
+      "sequence": 1,
+      "request_id": "PRE65-QF-INTEGRATION-01",
+      "binding_id": "QIANFAN_ERNIE_INTEGRATION_REVIEW",
+      "review_role": "INTEGRATION_MAINTAINER_CANDIDATE",
+      "prompt_text": "Return exactly one JSON object and no Markdown. Use exactly these keys: request_id, review_role, verdict, recommend_to_developer, p0_separate_from_p1, deadline_requirement_not_overclaimed, platform_limitations_explicit, raw_address_minimized, continuity_testable, original_hostname_tls_preserved, retry_fallback_reresolution_closed, provider_support_created, formal_security_review_completed, implementation_authorized, authority_claimed, blocking_findings, required_changes, reason. Set request_id to PRE65-QF-INTEGRATION-01 and review_role to INTEGRATION_MAINTAINER_CANDIDATE. verdict must be READY_FOR_NEXT_RECOMMENDATION, REVISE, or BLOCKED. recommend_to_developer must be YES, CONDITIONAL, or NO. Review this public-safe Development contract as an integration maintainer: P0 performs exactly one getaddrinfo call with AF_UNSPEC, SOCK_STREAM, IPPROTO_TCP, flags 0, exact allowlisted hostname and port 443. It requires a 5000 ms deadline but explicitly states that getaddrinfo has no per-call timeout parameter and the enforcement mechanism is not selected. It caps raw and unique usable results at 64, deduplicates full tuples, selects FIRST_UNIQUE_IN_RESOLVER_ORDER_V1, and admits that resolver order may differ by platform. It selects one address only. P0 returns a sanitized observation with no hostname, IP, sockaddr, canonname, DNS packet, credential, body, or exception string. A non-serialized one-request ResolvedEndpoint carries the original hostname, selected address, protocol fields, and an opaque random handle to P1. P1 must consume the same object, cannot call a resolver or socket.create_connection, and may create one socket and attempt one connect. P2 TLS uses the original allowlisted hostname. Retry, fallback, redirect, re-resolution, second address, and synthetic P0 PASS are forbidden. The design has 6 positive and 24 negative offline cases; no tests or implementation exist. Assess each boolean honestly. Set provider_support_created, formal_security_review_completed, implementation_authorized, and authority_claimed to false. blocking_findings and required_changes must each contain one to eight concise strings. reason must be concise. READY_FOR_NEXT_RECOMMENDATION does not authorize implementation.",
+      "prompt_sha256": "66dbf37413c824dbe9a8ef4139064fe8134a388f207dfa16836ea04936568fe5",
+      "prompt_utf8_bytes": 2232
+    },
+    {
+      "sequence": 2,
+      "request_id": "PRE65-QWEN-SECURITY-01",
+      "binding_id": "ALIBABA_QWEN_SECURITY_REVIEW",
+      "review_role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE",
+      "prompt_text": "Return exactly one JSON object and no Markdown. Use exactly these keys: request_id, review_role, verdict, recommend_to_developer, p0_separate_from_p1, deadline_requirement_not_overclaimed, platform_limitations_explicit, raw_address_minimized, continuity_testable, original_hostname_tls_preserved, retry_fallback_reresolution_closed, provider_support_created, formal_security_review_completed, implementation_authorized, authority_claimed, blocking_findings, required_changes, reason. Set request_id to PRE65-QWEN-SECURITY-01 and review_role to INDEPENDENT_SECURITY_REVIEWER_CANDIDATE. verdict must be READY_FOR_NEXT_RECOMMENDATION, REVISE, or BLOCKED. recommend_to_developer must be YES, CONDITIONAL, or NO. Independently review this public-safe Development contract: P0 performs exactly one getaddrinfo call with AF_UNSPEC, SOCK_STREAM, IPPROTO_TCP, flags 0, exact allowlisted hostname and port 443. It requires a 5000 ms deadline but states that getaddrinfo has no per-call timeout parameter and the enforcement mechanism is not selected. It caps raw and unique usable results at 64, deduplicates full tuples, selects FIRST_UNIQUE_IN_RESOLVER_ORDER_V1, and admits platform-dependent result order. It selects one address only and permits no failover. P0 serializes no hostname, IP, sockaddr, canonname, DNS packet, credential, raw body, or exception string. A non-serialized one-request ResolvedEndpoint carries the original hostname, selected address and opaque random handle to P1. P1 must consume the same object, cannot call a resolver or socket.create_connection, and may create one socket and attempt one connect. P2 TLS verifies the original allowlisted hostname. Retry, fallback, redirect, re-resolution, second address, and synthetic P0 PASS are forbidden. There are 6 positive and 24 negative offline case designs; no code or test execution exists. Assess deadline enforcement, DNS rebinding/TOCTOU, address privacy, handle continuity, platform behavior, TLS identity, error closure, denial-of-service limits, and whether negative cases are sufficient. Assess each boolean honestly. Set provider_support_created, formal_security_review_completed, implementation_authorized, and authority_claimed to false. blocking_findings and required_changes must each contain one to eight concise strings. reason must be concise. This is AI-assisted input, not formal Human Security Review.",
+      "prompt_sha256": "38e02593ac1eb8c3d752074fd1df7e2ab669e654a3ddda4d29415c000a918b17",
+      "prompt_utf8_bytes": 2388
+    }
+  ],
+  "response_contract": {
+    "schema_reference": "./agent-review-response.schema.v0.1.json",
+    "verdict_values": ["READY_FOR_NEXT_RECOMMENDATION", "REVISE", "BLOCKED"],
+    "recommendation_values": ["YES", "CONDITIONAL", "NO"],
+    "boundary_false_keys": [
+      "provider_support_created",
+      "formal_security_review_completed",
+      "implementation_authorized",
+      "authority_claimed"
+    ],
+    "additional_properties_allowed": false
+  },
+  "execution_policy": {
+    "sequential": true,
+    "concurrency_max": 1,
+    "timeout_seconds": 60,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "model_substitution_max": 0,
+    "content_extraction_max": 0,
+    "json_repair_max": 0,
+    "stop_after_failed_prerequisite_session": true
+  },
+  "interpretation": {
+    "agent_review_is_formal_human_security_review": false,
+    "agent_review_is_provider_support": false,
+    "agent_review_is_implementation_authorization": false,
+    "favorable_verdict_is_governance_decision": false,
+    "schema_pass_is_conformance": false,
+    "standard_ready": false
+  }
+}

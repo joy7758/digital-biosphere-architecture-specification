@@ -1,0 +1,163 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre65-p0-resolver-agent-review-request-contract.schema.v0.1.json",
+  "title": "TITMAS PRE-65 P0 Resolver Agent Review Request Contract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "pre64_inputs",
+    "bindings",
+    "sessions",
+    "response_contract",
+    "execution_policy",
+    "interpretation"
+  ],
+  "properties": {
+    "$schema": { "const": "./request-contract-candidate.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-PRE65-P0-RESOLVER-AGENT-REVIEW-REQUEST-CONTRACT-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "CANDIDATE_NOT_AUTHORIZED" },
+    "pre64_inputs": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1, "maxLength": 260 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    },
+    "bindings": {
+      "const": [
+        {
+          "binding_id": "QIANFAN_ERNIE_INTEGRATION_REVIEW",
+          "provider": "QIANFAN",
+          "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+          "model": "ernie-4.5-turbo-20260402",
+          "credential_identifier": "QIANFAN_API_KEY"
+        },
+        {
+          "binding_id": "ALIBABA_QWEN_SECURITY_REVIEW",
+          "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+          "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+          "model": "qwen3.7-plus",
+          "credential_identifier": "DASHSCOPE_API_KEY"
+        }
+      ]
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sequence",
+          "request_id",
+          "binding_id",
+          "review_role",
+          "prompt_text",
+          "prompt_sha256",
+          "prompt_utf8_bytes"
+        ],
+        "properties": {
+          "sequence": { "enum": [1, 2] },
+          "request_id": {
+            "enum": ["PRE65-QF-INTEGRATION-01", "PRE65-QWEN-SECURITY-01"]
+          },
+          "binding_id": {
+            "enum": ["QIANFAN_ERNIE_INTEGRATION_REVIEW", "ALIBABA_QWEN_SECURITY_REVIEW"]
+          },
+          "review_role": {
+            "enum": ["INTEGRATION_MAINTAINER_CANDIDATE", "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"]
+          },
+          "prompt_text": { "type": "string", "minLength": 1200, "maxLength": 5000 },
+          "prompt_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "prompt_utf8_bytes": { "type": "integer", "minimum": 1200, "maximum": 6000 }
+        }
+      }
+    },
+    "response_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema_reference",
+        "verdict_values",
+        "recommendation_values",
+        "boundary_false_keys",
+        "additional_properties_allowed"
+      ],
+      "properties": {
+        "schema_reference": { "const": "./agent-review-response.schema.v0.1.json" },
+        "verdict_values": {
+          "const": ["READY_FOR_NEXT_RECOMMENDATION", "REVISE", "BLOCKED"]
+        },
+        "recommendation_values": { "const": ["YES", "CONDITIONAL", "NO"] },
+        "boundary_false_keys": {
+          "const": [
+            "provider_support_created",
+            "formal_security_review_completed",
+            "implementation_authorized",
+            "authority_claimed"
+          ]
+        },
+        "additional_properties_allowed": { "const": false }
+      }
+    },
+    "execution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequential",
+        "concurrency_max",
+        "timeout_seconds",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "content_extraction_max",
+        "json_repair_max",
+        "stop_after_failed_prerequisite_session"
+      ],
+      "properties": {
+        "sequential": { "const": true },
+        "concurrency_max": { "const": 1 },
+        "timeout_seconds": { "const": 60 },
+        "retry_max": { "const": 0 },
+        "fallback_max": { "const": 0 },
+        "model_substitution_max": { "const": 0 },
+        "content_extraction_max": { "const": 0 },
+        "json_repair_max": { "const": 0 },
+        "stop_after_failed_prerequisite_session": { "const": true }
+      }
+    },
+    "interpretation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "agent_review_is_formal_human_security_review",
+        "agent_review_is_provider_support",
+        "agent_review_is_implementation_authorization",
+        "favorable_verdict_is_governance_decision",
+        "schema_pass_is_conformance",
+        "standard_ready"
+      ],
+      "properties": {
+        "agent_review_is_formal_human_security_review": { "const": false },
+        "agent_review_is_provider_support": { "const": false },
+        "agent_review_is_implementation_authorization": { "const": false },
+        "favorable_verdict_is_governance_decision": { "const": false },
+        "schema_pass_is_conformance": { "const": false },
+        "standard_ready": { "const": false }
+      }
+    }
+  }
+}
