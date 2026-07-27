@@ -1,0 +1,88 @@
+{
+  "result_id": "TITMAS-CE-G11B-PR27-MERGE-ADMISSION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28",
+  "status": "PASS_MERGE_ADMISSION_READY_MERGE_EXECUTION_NOT_AUTHORIZED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-MERGE-ADMISSION-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "c07acec6e4ea073f3d904d4563a26c18703073f0998a15b629d2d6ef3fedb8d2",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-MERGE-ADMISSION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "440213e6f73f51e2e7be210b5c7375e2a00bfbe65d889469d4b832738dfaa556",
+  "decision_commit": "1644d443a8c83de973a4325893c23cc4454eb23f",
+  "decision_remote_baseline_verified": true,
+  "report_reference": "TITMAS-CE-G11B-PR27-MERGE-ADMISSION-REPORT-v0.1.md",
+  "report_sha256": "af0aba8ae886d8425e812d031a30bc4cc9c8978c78f3d10ed99d0cba4fdddfc6",
+  "frozen_pr": {
+    "number": 27,
+    "state": "OPEN",
+    "draft": true,
+    "mergeable": "MERGEABLE",
+    "merge_state": "CLEAN",
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "merge_base": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "three_dot_changed_files": 100,
+    "three_dot_patch_sha256": "e031466cbb422e707bfae8ba5751c5f0bd076c6628a518124e36d353f3e92451",
+    "github_checks": 0,
+    "github_reviews": 0,
+    "github_review_requests": 0,
+    "github_comments": 0
+  },
+  "evidence": {
+    "r2_status": "PASS",
+    "r2_merge_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "recovery_synthesis": "CLEAR",
+    "recovery_synthesis_confidence": 0.95,
+    "blocking_findings": 0,
+    "candidate_changes_required": 0,
+    "all_findings_accounted_for": true,
+    "severity_preserved": true,
+    "recommendation_review_qualifying": true,
+    "decision_review_qualifying": true
+  },
+  "admission_state": {
+    "merge_admission_ready": true,
+    "merge_execution_decision_allowed": true,
+    "merge_execution_authorized": false,
+    "pr_mutation_authorized": false,
+    "github_review_submission_authorized": false,
+    "draft_conversion_authorized": false,
+    "merge_authorized": false,
+    "release_authorized": false,
+    "deployment_authorized": false
+  },
+  "residual_observations": {
+    "github_checks": "ABSENT_NOT_SUCCESS",
+    "github_human_reviews": "ABSENT",
+    "b004": "NON_BLOCKING_DOCUMENTATION_OPPORTUNITY",
+    "d_cap_001": "STRUCTURAL_LANE_D_FILE_COUNT_IS_83",
+    "governance_branch_duplicate_key": "PRE_EXISTING_OUTSIDE_PR27_CANDIDATE_AND_R2_MERGE_TREE"
+  },
+  "caps_consumed": {
+    "decision_review_model_requests": 1,
+    "retries": 0,
+    "fallbacks": 0,
+    "model_substitutions": 0,
+    "json_extractions": 0,
+    "json_repairs": 0,
+    "github_review_submissions": 0,
+    "github_comments": 0,
+    "pr_mutations": 0,
+    "source_changes": 0,
+    "merges": 0,
+    "releases": 0,
+    "deployments": 0
+  },
+  "next_gate": {
+    "action": "PREPARE_PR27_MERGE_EXECUTION_RECOMMENDATION",
+    "authorized": false,
+    "required_bindings": [
+      "EXACT_CURRENT_PR_STATE",
+      "EXACT_MERGE_METHOD",
+      "EXPECTED_RESULT_TREE",
+      "EXPLICIT_ZERO_CHECK_ACCEPTANCE_OR_NEW_CHECK_EVIDENCE",
+      "ROLLBACK_PLAN",
+      "POST_MERGE_VALIDATION",
+      "SEPARATE_HUMAN_DECISION"
+    ]
+  }
+}
