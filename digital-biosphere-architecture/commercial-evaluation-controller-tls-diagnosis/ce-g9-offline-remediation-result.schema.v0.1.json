@@ -1,0 +1,204 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/titmas-ce-g9-offline-remediation-result.schema.v0.1.json",
+  "title": "TITMAS CE-G9 Offline Log Correlator Remediation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "result_id",
+    "version",
+    "status",
+    "decision_reference",
+    "observed_at",
+    "defect",
+    "implementation",
+    "verification",
+    "execution_caps",
+    "current_truth",
+    "effects",
+    "next_gate"
+  ],
+  "properties": {
+    "$schema": {"const": "./ce-g9-offline-remediation-result.schema.v0.1.json"},
+    "result_id": {"const": "TITMAS-CE-G9-OFFLINE-REMEDIATION-RESULT-001"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_OFFLINE_LOG_CORRELATOR_REMEDIATION_ONLY"},
+    "decision_reference": {"const": "TITMAS-COMMERCIAL-EVALUATION-CE-G9"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "defect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "classification",
+        "direct_offline_reproduction",
+        "original_error_class_explained",
+        "ce_g8_tool_failure_cause_proven",
+        "ce_g7_tls_failure_cause_proven"
+      ],
+      "properties": {
+        "classification": {"const": "DOUBLE_ESCAPED_REGEX_PATTERN"},
+        "direct_offline_reproduction": {"const": true},
+        "original_error_class_explained": {
+          "const": "re.error has class name error on the observed Python family"
+        },
+        "ce_g8_tool_failure_cause_proven": {"const": true},
+        "ce_g7_tls_failure_cause_proven": {"const": false}
+      }
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "regex_removed",
+        "deterministic_access_parser",
+        "locale_independent_timestamp_parser",
+        "epoch_journal_bounds",
+        "dependency_injection",
+        "stable_stage_error_codes",
+        "fixtures_added",
+        "standard_library_only"
+      ],
+      "properties": {
+        "regex_removed": {"const": true},
+        "deterministic_access_parser": {"const": true},
+        "locale_independent_timestamp_parser": {"const": true},
+        "epoch_journal_bounds": {"const": true},
+        "dependency_injection": {"const": true},
+        "stable_stage_error_codes": {"const": true},
+        "fixtures_added": {"const": 2},
+        "standard_library_only": {"const": true}
+      }
+    },
+    "verification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "python_3_14_tests_pass",
+        "python_3_13_tests_pass",
+        "exact_boundary_inclusion_pass",
+        "out_of_window_exclusion_pass",
+        "ipv4_ipv6_hashing_pass",
+        "malformed_line_fail_closed_pass",
+        "tls_handshake_classification_pass",
+        "journal_epoch_bounds_pass",
+        "journal_nonzero_stage_error_pass",
+        "raw_log_persistence_negative_pass",
+        "literal_source_ip_persistence_negative_pass",
+        "salt_persistence_negative_pass",
+        "python_3_10_runtime_directly_tested"
+      ],
+      "properties": {
+        "python_3_14_tests_pass": {"const": "13/13"},
+        "python_3_13_tests_pass": {"const": "13/13"},
+        "exact_boundary_inclusion_pass": {"const": true},
+        "out_of_window_exclusion_pass": {"const": true},
+        "ipv4_ipv6_hashing_pass": {"const": true},
+        "malformed_line_fail_closed_pass": {"const": true},
+        "tls_handshake_classification_pass": {"const": true},
+        "journal_epoch_bounds_pass": {"const": true},
+        "journal_nonzero_stage_error_pass": {"const": true},
+        "raw_log_persistence_negative_pass": {"const": true},
+        "literal_source_ip_persistence_negative_pass": {"const": true},
+        "salt_persistence_negative_pass": {"const": true},
+        "python_3_10_runtime_directly_tested": {"const": false}
+      }
+    },
+    "execution_caps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "public_requests",
+        "ssh_sessions",
+        "model_requests_during_execution",
+        "server_reads",
+        "server_writes"
+      ],
+      "properties": {
+        "public_requests": {"const": 0},
+        "ssh_sessions": {"const": 0},
+        "model_requests_during_execution": {"const": 0},
+        "server_reads": {"const": 0},
+        "server_writes": {"const": 0}
+      }
+    },
+    "current_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ce_g8_result",
+        "ce_g8_historical_receipt_unchanged",
+        "current_release",
+        "tls_root_cause_proven",
+        "redeployment_admission_pass"
+      ],
+      "properties": {
+        "ce_g8_result": {
+          "const": "INCONCLUSIVE_LOG_CORRELATION_FAIL_CLOSED"
+        },
+        "ce_g8_historical_receipt_unchanged": {"const": true},
+        "current_release": {
+          "const": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705"
+        },
+        "tls_root_cause_proven": {"const": false},
+        "redeployment_admission_pass": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ce_g8_server_correlation_recovered",
+        "tls_root_cause_proof",
+        "redeployment",
+        "policy_change",
+        "runtime",
+        "api",
+        "agent",
+        "entity",
+        "permission",
+        "capability",
+        "certification",
+        "sla",
+        "commercial_offering",
+        "production_readiness"
+      ],
+      "properties": {
+        "ce_g8_server_correlation_recovered": {"const": false},
+        "tls_root_cause_proof": {"const": false},
+        "redeployment": {"const": false},
+        "policy_change": {"const": false},
+        "runtime": {"const": false},
+        "api": {"const": false},
+        "agent": {"const": false},
+        "entity": {"const": false},
+        "permission": {"const": false},
+        "capability": {"const": false},
+        "certification": {"const": false},
+        "sla": {"const": false},
+        "commercial_offering": {"const": false},
+        "production_readiness": {"const": false}
+      }
+    },
+    "next_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "action",
+        "authorized",
+        "public_requests_authorized",
+        "ssh_sessions_authorized",
+        "redeployment_authorized"
+      ],
+      "properties": {
+        "action": {
+          "const": "PREPARE_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION_RECOMMENDATION"
+        },
+        "authorized": {"const": false},
+        "public_requests_authorized": {"const": false},
+        "ssh_sessions_authorized": {"const": false},
+        "redeployment_authorized": {"const": false}
+      }
+    }
+  }
+}

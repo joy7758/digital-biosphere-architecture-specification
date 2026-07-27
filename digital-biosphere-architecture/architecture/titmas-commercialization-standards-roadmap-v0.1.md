@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: ce-g8-inconclusive-correlator-fail-closed-ce-g9-offline-remediation-pending-standard-not-ready
+status: ce-g9-offline-correlator-remediation-pass-ce-g10-cross-version-pending-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -2467,6 +2467,26 @@ CE_G8_ROOT_CAUSE_PROVEN=false
 4/4 pass 与 correlator `error_class=error`。没有增加请求或 SSH session；下一步必须
 offline 修复工具，不能把 no-failure observation 写为 root-cause resolution。
 
+### 4.68 CE-G9 Offline Log Correlator Remediation
+
+[Recommendation](../TITMAS-CE-G9-OFFLINE-LOG-CORRELATOR-REMEDIATION-RECOMMENDATION-v0.1.md)
+与 [Decision](../TITMAS-COMMERCIAL-EVALUATION-CE-G9-DECISION-RECORD.v0.1.json)只授权
+offline parser、fixture、privacy 和 cross-version-local tests。
+
+```text
+CE_G9_RESULT=PASS_OFFLINE_LOG_CORRELATOR_REMEDIATION_ONLY
+CE_G9_DEFECT=DOUBLE_ESCAPED_REGEX_PATTERN
+CE_G9_PYTHON_3_14_TESTS_PASS=13/13
+CE_G9_PYTHON_3_13_TESTS_PASS=13/13
+CE_G9_PUBLIC_REQUESTS=0
+CE_G9_SSH_SESSIONS=0
+CE_G9_TLS_ROOT_CAUSE_PROVEN=false
+```
+
+[Report](../TITMAS-CE-G9-OFFLINE-LOG-CORRELATOR-REMEDIATION-REPORT-v0.1.md)和
+[result](../commercial-evaluation-controller-tls-diagnosis/ce-g9-offline-remediation-result.v0.1.json)
+证明 CE-G8 工具缺陷已被离线定位和修正；不恢复历史 receipt，不解释 TLS failure。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -2736,10 +2756,9 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Prepare CE-G9 offline log correlator remediation recommendation**：CE-G8 四次
-   controller observations 均通过，但 exact-window server correlator 工具失败关闭；
-   下一步只允许 fixture、parser、sanitized stage error 和 cross-version offline tests，
-   不产生新 public request、SSH、部署或策略变化；
+1. **Prepare CE-G10 cross-version correlator validation recommendation**：CE-G9 已在
+   Python 3.14/3.13 各通过 13/13，Python 3.10 未直接验证；下一步只允许 pinned runner
+   offline tests，不产生 public request、SSH、部署或策略变化；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -2948,7 +2967,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G9_OFFLINE_LOG_CORRELATOR_REMEDIATION_RECOMMENDATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION_RECOMMENDATION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -3031,6 +3050,15 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G8_CONTENT_HASH_CONSISTENCY_PASS=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G8_SERVER_CORRELATION_PASS=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G8_CLASSIFICATION=INCONCLUSIVE
 TITMAS_COMMERCIAL_EVALUATION_CE_G8_ROOT_CAUSE_PROVEN=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G9_DECIDED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G9_EXECUTION_COMPLETED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G9_RESULT=PASS_OFFLINE_LOG_CORRELATOR_REMEDIATION_ONLY
+TITMAS_COMMERCIAL_EVALUATION_CE_G9_DEFECT=DOUBLE_ESCAPED_REGEX_PATTERN
+TITMAS_COMMERCIAL_EVALUATION_CE_G9_PYTHON_3_14_TESTS_PASS=13/13
+TITMAS_COMMERCIAL_EVALUATION_CE_G9_PYTHON_3_13_TESTS_PASS=13/13
+TITMAS_COMMERCIAL_EVALUATION_CE_G9_PUBLIC_REQUESTS=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G9_SSH_SESSIONS=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G9_TLS_ROOT_CAUSE_PROVEN=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
 

@@ -1,0 +1,77 @@
+{
+  "$schema": "./ce-g9-offline-remediation-result.schema.v0.1.json",
+  "result_id": "TITMAS-CE-G9-OFFLINE-REMEDIATION-RESULT-001",
+  "version": "0.1.0",
+  "status": "PASS_OFFLINE_LOG_CORRELATOR_REMEDIATION_ONLY",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G9",
+  "observed_at": "2026-07-27T12:42:00Z",
+  "defect": {
+    "classification": "DOUBLE_ESCAPED_REGEX_PATTERN",
+    "direct_offline_reproduction": true,
+    "original_error_class_explained": "re.error has class name error on the observed Python family",
+    "ce_g8_tool_failure_cause_proven": true,
+    "ce_g7_tls_failure_cause_proven": false
+  },
+  "implementation": {
+    "regex_removed": true,
+    "deterministic_access_parser": true,
+    "locale_independent_timestamp_parser": true,
+    "epoch_journal_bounds": true,
+    "dependency_injection": true,
+    "stable_stage_error_codes": true,
+    "fixtures_added": 2,
+    "standard_library_only": true
+  },
+  "verification": {
+    "python_3_14_tests_pass": "13/13",
+    "python_3_13_tests_pass": "13/13",
+    "exact_boundary_inclusion_pass": true,
+    "out_of_window_exclusion_pass": true,
+    "ipv4_ipv6_hashing_pass": true,
+    "malformed_line_fail_closed_pass": true,
+    "tls_handshake_classification_pass": true,
+    "journal_epoch_bounds_pass": true,
+    "journal_nonzero_stage_error_pass": true,
+    "raw_log_persistence_negative_pass": true,
+    "literal_source_ip_persistence_negative_pass": true,
+    "salt_persistence_negative_pass": true,
+    "python_3_10_runtime_directly_tested": false
+  },
+  "execution_caps": {
+    "public_requests": 0,
+    "ssh_sessions": 0,
+    "model_requests_during_execution": 0,
+    "server_reads": 0,
+    "server_writes": 0
+  },
+  "current_truth": {
+    "ce_g8_result": "INCONCLUSIVE_LOG_CORRELATION_FAIL_CLOSED",
+    "ce_g8_historical_receipt_unchanged": true,
+    "current_release": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "tls_root_cause_proven": false,
+    "redeployment_admission_pass": false
+  },
+  "effects": {
+    "ce_g8_server_correlation_recovered": false,
+    "tls_root_cause_proof": false,
+    "redeployment": false,
+    "policy_change": false,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "capability": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offering": false,
+    "production_readiness": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION_RECOMMENDATION",
+    "authorized": false,
+    "public_requests_authorized": false,
+    "ssh_sessions_authorized": false,
+    "redeployment_authorized": false
+  }
+}

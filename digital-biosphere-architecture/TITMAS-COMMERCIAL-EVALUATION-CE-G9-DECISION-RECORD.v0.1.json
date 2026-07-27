@@ -1,0 +1,60 @@
+{
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G9",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_OFFLINE_LOG_CORRELATOR_REMEDIATION_ONLY",
+  "decided_at": "2026-07-27",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G9-OFFLINE-LOG-CORRELATOR-REMEDIATION-RECOMMENDATION-v0.1.md",
+  "primary_repository": "digital-biosphere-architecture",
+  "exact_action": "Replace fragile CE-G8 log parsing with deterministic, injectable, stage-specific fail-closed parsing and prove the remediation with offline privacy fixtures only.",
+  "authorized_paths": [
+    "commercial-evaluation-controller-tls-diagnosis/ce_g8_server_log_correlator.py",
+    "commercial-evaluation-controller-tls-diagnosis/test_ce_g8_diagnostic.py",
+    "commercial-evaluation-controller-tls-diagnosis/fixtures/",
+    "commercial-evaluation-controller-tls-diagnosis/ce-g9-offline-remediation-result.v0.1.json",
+    "commercial-evaluation-controller-tls-diagnosis/ce-g9-offline-remediation-result.schema.v0.1.json",
+    "TITMAS-CE-G9-OFFLINE-LOG-CORRELATOR-REMEDIATION-REPORT-v0.1.md"
+  ],
+  "required_controls": {
+    "deterministic_access_parser": true,
+    "locale_independent_timestamp_parser": true,
+    "epoch_journal_bounds": true,
+    "dependency_injection": true,
+    "stable_stage_error_codes": true,
+    "raw_log_persistence": false,
+    "literal_source_ip_persistence": false
+  },
+  "caps": {
+    "public_requests": 0,
+    "ssh_sessions": 0,
+    "model_requests_during_execution": 0,
+    "server_reads": 0,
+    "server_writes": 0
+  },
+  "stop_conditions": [
+    "Any test requires network, SSH, server data, deployment, or policy change.",
+    "A fixture or receipt persists a literal source IP, raw log line, raw error, or salt.",
+    "The remediation is described as proof of the prior correlator or TLS failure root cause.",
+    "Python 3.10-compatible syntax and standard-library-only behavior cannot be retained."
+  ],
+  "false_effects": {
+    "ce_g8_server_correlation_recovered": false,
+    "tls_root_cause_proof": false,
+    "redeployment": false,
+    "policy_change": false,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "capability": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offering": false,
+    "production_readiness": false
+  },
+  "executed_by": "Codex under bounded human standing delegation",
+  "execution_receipt": "commercial-evaluation-controller-tls-diagnosis/ce-g9-offline-remediation-result.v0.1.json",
+  "result": "PASS_OFFLINE_LOG_CORRELATOR_REMEDIATION_ONLY"
+}

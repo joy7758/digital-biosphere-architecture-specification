@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_CE_G8_INCONCLUSIVE_CORRELATOR_FAIL_CLOSED_CE_G9_OFFLINE_REMEDIATION_PENDING_STANDARD_NOT_READY"
+      "const": "CS_D02_CE_G9_OFFLINE_CORRELATOR_REMEDIATION_PASS_CE_G10_CROSS_VERSION_PENDING_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "COMMERCIAL-EVALUATION-CE-G8"},
+        "last_completed_step": {"const": "COMMERCIAL-EVALUATION-CE-G9"},
         "last_completed_result": {
-          "const": "INCONCLUSIVE_LOG_CORRELATION_FAIL_CLOSED"
+          "const": "PASS_OFFLINE_LOG_CORRELATOR_REMEDIATION_ONLY"
         },
         "direct_evidence_reference": {
-          "const": "commercial-evaluation-controller-tls-diagnosis/ce-g8-result.v0.1.json"
+          "const": "commercial-evaluation-controller-tls-diagnosis/ce-g9-offline-remediation-result.v0.1.json"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,7 +131,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "PREPARE_CE_G9_OFFLINE_LOG_CORRELATOR_REMEDIATION_RECOMMENDATION"
+          "const": "PREPARE_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION_RECOMMENDATION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "CE_G8_INCONCLUSIVE_CORRELATOR_FAIL_CLOSED_CE_G9_OFFLINE_REMEDIATION_PENDING"
+          "const": "CE_G9_OFFLINE_CORRELATOR_REMEDIATION_PASS_CE_G10_CROSS_VERSION_PENDING"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7782,7 +7782,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_CE_G9_OFFLINE_LOG_CORRELATOR_REMEDIATION_RECOMMENDATION_ONLY"
+          "const": "PREPARE_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false

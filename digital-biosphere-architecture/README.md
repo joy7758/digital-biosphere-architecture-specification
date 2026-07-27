@@ -135,6 +135,9 @@ exact_redeployment_github_vantages_executed: 0
 controller_tls_diagnosis_result: inconclusive-log-correlation-fail-closed
 controller_tls_diagnosis_requests_pass: 4-of-4
 controller_tls_diagnosis_root_cause_proven: false
+log_correlator_offline_remediation_result: pass-offline-only
+log_correlator_python_3_14_tests_pass: 13-of-13
+log_correlator_python_3_13_tests_pass: 13-of-13
 public_entry_redeployment_admission_pass: false
 public_entry_redeployment_authorized: false
 developer_ecosystem_created: false
@@ -308,6 +311,13 @@ ROOT_CAUSE_PROVEN=false
 [CE-G8 报告](TITMAS-CE-G8-CONTROLLER-TLS-DIAGNOSIS-REPORT-v0.1.md)明确：本次未复现
 不等于问题解决，proxy/TUN 存在也不等于因果证明。下一步只允许准备 CE-G9 offline log
 correlator remediation recommendation（离线日志关联器修正建议）。
+
+CE-G9 离线定位到 correlator 原 regex 的 double escaping defect（双重转义缺陷），并以
+deterministic parser、epoch bounds、dependency injection 和 stable stage errors 修正。
+Python 3.14 与 3.13 各 `13/13` tests 通过，public requests 与 SSH 均为 0。
+[CE-G9 报告](TITMAS-CE-G9-OFFLINE-LOG-CORRELATOR-REMEDIATION-REPORT-v0.1.md)只证明工具
+离线修正，不改变 CE-G8 历史结果，也不证明 TLS 根因。下一步只允许准备 CE-G10
+cross-version correlator validation recommendation。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
