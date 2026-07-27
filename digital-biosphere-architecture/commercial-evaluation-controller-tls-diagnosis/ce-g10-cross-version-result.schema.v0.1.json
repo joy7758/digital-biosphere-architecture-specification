@@ -1,0 +1,264 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/titmas-ce-g10-cross-version-result.schema.v0.1.json",
+  "title": "TITMAS CE-G10 Cross-Version Correlator Validation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "result_id",
+    "version",
+    "status",
+    "decision_reference",
+    "observed_at",
+    "workflow",
+    "frozen_inputs",
+    "matrix_expected",
+    "matrix_results",
+    "summary",
+    "execution_caps",
+    "current_truth",
+    "effects",
+    "next_gate"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./ce-g10-cross-version-result.schema.v0.1.json"
+    },
+    "result_id": {
+      "const": "TITMAS-CE-G10-CROSS-VERSION-RESULT-001"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {
+      "enum": [
+        "PASS_CROSS_VERSION_OFFLINE_COMPATIBILITY_ONLY",
+        "FAIL_CLOSED_CROSS_VERSION_VALIDATION"
+      ]
+    },
+    "decision_reference": {
+      "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G10"
+    },
+    "observed_at": {"type": "string", "format": "date-time"},
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "branch",
+        "source_commit",
+        "workflow_file",
+        "run_id",
+        "run_url",
+        "conclusion",
+        "dispatches"
+      ],
+      "properties": {
+        "repository": {
+          "const": "joy7758/digital-biosphere-architecture-specification"
+        },
+        "branch": {
+          "const": "codex/production-observability-baseline"
+        },
+        "source_commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "workflow_file": {
+          "const": "titmas-ce-g10-correlator-cross-version.yml"
+        },
+        "run_id": {"type": "integer", "minimum": 1},
+        "run_url": {
+          "type": "string",
+          "pattern": "^https://github.com/joy7758/digital-biosphere-architecture-specification/actions/runs/[0-9]+$"
+        },
+        "conclusion": {"enum": ["success", "failure"]},
+        "dispatches": {"const": 1}
+      }
+    },
+    "frozen_inputs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      },
+      "minProperties": 5,
+      "maxProperties": 5
+    },
+    "matrix_expected": {
+      "const": [
+        "3.10.20",
+        "3.11.15",
+        "3.12.13",
+        "3.13.14",
+        "3.14.6"
+      ]
+    },
+    "matrix_results": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "python_version",
+          "status",
+          "test_count",
+          "input_hashes_match",
+          "privacy_pass",
+          "runner_label",
+          "runner_image_os",
+          "runner_image_version",
+          "artifact_name",
+          "error_class"
+        ],
+        "properties": {
+          "python_version": {
+            "enum": [
+              "3.10.20",
+              "3.11.15",
+              "3.12.13",
+              "3.13.14",
+              "3.14.6"
+            ]
+          },
+          "status": {
+            "enum": ["PYTHON_VERSION_OFFLINE_PASS", "FAIL_CLOSED"]
+          },
+          "test_count": {
+            "type": "integer",
+            "minimum": 0,
+            "maximum": 13
+          },
+          "input_hashes_match": {"type": "boolean"},
+          "privacy_pass": {"type": "boolean"},
+          "runner_label": {"const": "ubuntu-24.04"},
+          "runner_image_os": {"type": "string", "minLength": 1},
+          "runner_image_version": {"type": "string", "minLength": 1},
+          "artifact_name": {
+            "type": "string",
+            "pattern": "^ce-g10-python-3\\.(10|11|12|13|14)\\.[0-9]+$"
+          },
+          "error_class": {
+            "type": ["string", "null"]
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "matrix_jobs_expected",
+        "matrix_jobs_observed",
+        "matrix_jobs_passed",
+        "matrix_jobs_failed",
+        "all_exact_versions_observed",
+        "all_input_hashes_match",
+        "all_privacy_checks_pass",
+        "all_test_counts_match"
+      ],
+      "properties": {
+        "matrix_jobs_expected": {"const": 5},
+        "matrix_jobs_observed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "matrix_jobs_passed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "matrix_jobs_failed": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5
+        },
+        "all_exact_versions_observed": {"type": "boolean"},
+        "all_input_hashes_match": {"type": "boolean"},
+        "all_privacy_checks_pass": {"type": "boolean"},
+        "all_test_counts_match": {"type": "boolean"}
+      }
+    },
+    "execution_caps": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "workflow_dispatches",
+        "matrix_jobs",
+        "target_public_site_requests",
+        "ssh_sessions",
+        "server_reads",
+        "server_writes",
+        "deployments",
+        "dbos_changes",
+        "saee_changes",
+        "model_requests_during_execution"
+      ],
+      "properties": {
+        "workflow_dispatches": {"const": 1},
+        "matrix_jobs": {"const": 5},
+        "target_public_site_requests": {"const": 0},
+        "ssh_sessions": {"const": 0},
+        "server_reads": {"const": 0},
+        "server_writes": {"const": 0},
+        "deployments": {"const": 0},
+        "dbos_changes": {"const": 0},
+        "saee_changes": {"const": 0},
+        "model_requests_during_execution": {"const": 0}
+      }
+    },
+    "current_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ce_g9_result",
+        "ce_g8_historical_result",
+        "tls_root_cause_proven",
+        "public_entry_redeployment_admission_pass"
+      ],
+      "properties": {
+        "ce_g9_result": {
+          "const": "PASS_OFFLINE_LOG_CORRELATOR_REMEDIATION_ONLY"
+        },
+        "ce_g8_historical_result": {
+          "const": "INCONCLUSIVE_LOG_CORRELATION_FAIL_CLOSED"
+        },
+        "tls_root_cause_proven": {"const": false},
+        "public_entry_redeployment_admission_pass": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tls_root_cause_proof",
+        "public_entry_redeployment_admission",
+        "redeployment",
+        "production_readiness",
+        "certification",
+        "sla",
+        "commercial_offering"
+      ],
+      "properties": {
+        "tls_root_cause_proof": {"const": false},
+        "public_entry_redeployment_admission": {"const": false},
+        "redeployment": {"const": false},
+        "production_readiness": {"const": false},
+        "certification": {"const": false},
+        "sla": {"const": false},
+        "commercial_offering": {"const": false}
+      }
+    },
+    "next_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "authorized"],
+      "properties": {
+        "action": {"type": "string", "minLength": 10},
+        "authorized": {"const": false}
+      }
+    }
+  }
+}

@@ -143,6 +143,9 @@ cross_version_validation_agent_verdict: conditionally-recommended
 cross_version_validation_decision_recorded: true
 cross_version_validation_execution_authorized: true
 cross_version_validation_execution_completed: false
+cross_version_validation_workflow_created: true
+cross_version_validation_local_tests_pass: 21-of-21-on-python-3.14-and-3.13
+cross_version_validation_workflow_dispatched: false
 public_entry_redeployment_admission_pass: false
 public_entry_redeployment_authorized: false
 developer_ecosystem_created: false
@@ -331,6 +334,8 @@ cross-version correlator validation recommendation。
 执行，也不产生 TLS、production、certification、SLA 或 commercial claim。
 [CE-G10 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G10-DECISION-RECORD.v0.1.json)已独立
 授权一次 manual-only、read-only、五版本离线 matrix；Decision 不等于执行。
+Workflow、sanitized runner 和 result Schema 已通过 Python 3.14/3.13 各 `21/21` 本地
+tests；workflow 只支持手动触发，当前尚未 dispatch。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

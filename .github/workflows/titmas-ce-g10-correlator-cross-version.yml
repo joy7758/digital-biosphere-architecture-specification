@@ -1,0 +1,68 @@
+name: TITMAS CE-G10 correlator cross-version validation
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: titmas-ce-g10-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  validate:
+    name: Python ${{ matrix.python }}
+    strategy:
+      fail-fast: false
+      matrix:
+        python:
+          - "3.10.20"
+          - "3.11.15"
+          - "3.12.13"
+          - "3.13.14"
+          - "3.14.6"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+    steps:
+      - name: Check out the decision-bound source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Set up the exact Python patch version
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: ${{ matrix.python }}
+
+      - name: Test the sanitized cross-version runner
+        working-directory: digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis
+        run: >-
+          python -m unittest -v
+          test_ce_g10_cross_version_runner.py
+
+      - name: Run the frozen CE-G9 suite
+        id: validate
+        continue-on-error: true
+        working-directory: digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis
+        run: >-
+          python ce_g10_cross_version_runner.py
+          --expected-python "${{ matrix.python }}"
+          --source-commit "${GITHUB_SHA}"
+          --runner-label "ubuntu-24.04"
+          --output "${RUNNER_TEMP}/ce-g10-python-${{ matrix.python }}.json"
+
+      - name: Preserve the sanitized version receipt
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: ce-g10-python-${{ matrix.python }}
+          path: ${{ runner.temp }}/ce-g10-python-${{ matrix.python }}.json
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Preserve fail-closed job status
+        if: always()
+        run: test "${{ steps.validate.outcome }}" = "success"

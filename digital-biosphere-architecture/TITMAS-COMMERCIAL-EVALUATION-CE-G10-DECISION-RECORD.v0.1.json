@@ -46,13 +46,14 @@
     "read_only_permissions": true,
     "full_action_commit_hashes": true,
     "timeout_minutes_per_job": 5,
-    "credentials_available_to_jobs": false,
+    "repository_or_environment_secrets_exposed_to_test_process": false,
     "input_hash_check": true,
     "synthetic_privacy_fixtures_only": true,
     "sanitized_artifacts_only": true,
     "aggregate_schema_validation": true,
     "fail_closed": true
   },
+  "credential_boundary_clarification": "GitHub control-plane actions may use the platform ephemeral token under contents-read permission. No repository or environment secret is referenced, persisted, or passed to the CE-G10 test process.",
   "caps": {
     "workflow_dispatches": 1,
     "matrix_jobs": 5,
