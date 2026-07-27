@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre61-provider-role-bindings.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "subject_under_review",
+    "future_review_lanes",
+    "provider_independence",
+    "execution_state"
+  ],
+  "properties": {
+    "$schema": {"const": "./provider-role-bindings.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-61-PROVIDER-ROLE-BINDINGS-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "subject_under_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "model", "role"],
+      "properties": {
+        "provider": {"const": "DEEPSEEK"},
+        "model": {"const": "deepseek-v4-pro"},
+        "role": {"const": "PROVIDER_BINDING_CANDIDATE_UNDER_REVIEW"}
+      }
+    },
+    "future_review_lanes": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "provider",
+          "model",
+          "binding_source",
+          "direct_test_status",
+          "assigned_reviewer"
+        ],
+        "properties": {
+          "role": {
+            "enum": ["INTEGRATION_MAINTAINER_CANDIDATE", "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"]
+          },
+          "provider": {"enum": ["QIANFAN", "ALIBABA_CLOUD_MODEL_STUDIO"]},
+          "model": {"enum": ["ernie-4.5-turbo-20260402", "qwen3.7-plus"]},
+          "binding_source": {"type": "string", "minLength": 1},
+          "direct_test_status": {"const": "PASS_3_OF_3_BOUNDED"},
+          "assigned_reviewer": {"const": false}
+        }
+      }
+    },
+    "provider_independence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subject_vs_integration", "subject_vs_security", "integration_vs_security"],
+      "properties": {
+        "subject_vs_integration": {"const": true},
+        "subject_vs_security": {"const": true},
+        "integration_vs_security": {"const": true}
+      }
+    },
+    "execution_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["network_requests", "live_model_requests", "credential_reads"],
+      "properties": {
+        "network_requests": {"const": 0},
+        "live_model_requests": {"const": 0},
+        "credential_reads": {"const": 0}
+      }
+    }
+  }
+}

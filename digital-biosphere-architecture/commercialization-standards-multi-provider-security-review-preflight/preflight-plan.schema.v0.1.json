@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre61-multi-provider-security-review-preflight-plan.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_sha256",
+    "decision_commit",
+    "artifact_count_expected",
+    "inputs",
+    "review_scope",
+    "execution_limits",
+    "result_vocabulary",
+    "mandatory_open_findings",
+    "interpretation",
+    "next_action"
+  ],
+  "properties": {
+    "$schema": {"const": "./preflight-plan.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-PLAN-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_BEFORE_OFFLINE_VALIDATION"},
+    "decision_reference": {
+      "const": "../TITMAS-CS-D02-PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-DECISION-RECORD.v0.1.json"
+    },
+    "decision_sha256": {
+      "const": "0490e98027990c3e5afcc845c3cf1b85dc7a96befda298109154c08e5ce6f838"
+    },
+    "decision_commit": {
+      "const": "95c6616098c44d3f89c0817fe2e818e0ba5f7190"
+    },
+    "artifact_count_expected": {"const": 11},
+    "inputs": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "use"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "use": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "review_scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["subject", "integration_review_lane", "security_review_lane"],
+      "properties": {
+        "subject": {"const": "DEEPSEEK_PROVIDER_BINDING_CANDIDATE"},
+        "integration_review_lane": {"const": "QIANFAN_INTEGRATION_MAINTAINER_CANDIDATE"},
+        "security_review_lane": {"const": "ALIBABA_QWEN_INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"}
+      }
+    },
+    "execution_limits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_requests_max",
+        "live_model_requests_max",
+        "credential_reads_max",
+        "external_repository_writes_max",
+        "implementation_writes_max"
+      ],
+      "properties": {
+        "network_requests_max": {"const": 0},
+        "live_model_requests_max": {"const": 0},
+        "credential_reads_max": {"const": 0},
+        "external_repository_writes_max": {"const": 0},
+        "implementation_writes_max": {"const": 0}
+      }
+    },
+    "result_vocabulary": {
+      "const": ["READY_FOR_AUTHORIZATION", "REVISE", "BLOCKED"]
+    },
+    "mandatory_open_findings": {
+      "type": "array",
+      "contains": {"const": "P0_DNS_OBSERVABILITY_UNRESOLVED"},
+      "minContains": 1
+    },
+    "interpretation": {
+      "type": "object",
+      "minProperties": 10,
+      "additionalProperties": {"const": false}
+    },
+    "next_action": {
+      "const": "FORM_EXACT_LIVE_MULTI_PROVIDER_SECURITY_REVIEW_RECOMMENDATION"
+    }
+  }
+}

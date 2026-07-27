@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre61-multi-provider-security-review-preflight-validation.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "validated_at",
+    "checks_required",
+    "checks_passed",
+    "checks_failed",
+    "checks",
+    "execution_counts",
+    "classification",
+    "status",
+    "next_action"
+  ],
+  "properties": {
+    "$schema": {"const": "./preflight-validation.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-VALIDATION-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "validated_at": {"type": "string", "format": "date-time"},
+    "checks_required": {"const": 20},
+    "checks_passed": {"const": 20},
+    "checks_failed": {"const": 0},
+    "checks": {
+      "type": "array",
+      "minItems": 20,
+      "maxItems": 20,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["check_id", "result"],
+        "properties": {
+          "check_id": {"type": "string", "minLength": 1},
+          "result": {"const": "PASS"}
+        }
+      }
+    },
+    "execution_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_requests",
+        "live_model_requests",
+        "credential_reads",
+        "external_repository_writes",
+        "implementation_writes"
+      ],
+      "properties": {
+        "network_requests": {"const": 0},
+        "live_model_requests": {"const": 0},
+        "credential_reads": {"const": 0},
+        "external_repository_writes": {"const": 0},
+        "implementation_writes": {"const": 0}
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "preflight_design_ready",
+        "live_security_review_authorized",
+        "security_review_completed",
+        "provider_supported",
+        "provider_integrated",
+        "standard_ready"
+      ],
+      "properties": {
+        "preflight_design_ready": {"const": true},
+        "live_security_review_authorized": {"const": false},
+        "security_review_completed": {"const": false},
+        "provider_supported": {"const": false},
+        "provider_integrated": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    },
+    "status": {"const": "PASS_20_OF_20_OFFLINE_PREFLIGHT_DESIGN"},
+    "next_action": {
+      "const": "FORM_EXACT_LIVE_MULTI_PROVIDER_SECURITY_REVIEW_RECOMMENDATION"
+    }
+  }
+}

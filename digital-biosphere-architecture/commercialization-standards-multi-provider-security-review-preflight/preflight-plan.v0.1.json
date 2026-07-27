@@ -1,0 +1,82 @@
+{
+  "$schema": "./preflight-plan.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_BEFORE_OFFLINE_VALIDATION",
+  "decision_reference": "../TITMAS-CS-D02-PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "0490e98027990c3e5afcc845c3cf1b85dc7a96befda298109154c08e5ce6f838",
+  "decision_commit": "95c6616098c44d3f89c0817fe2e818e0ba5f7190",
+  "artifact_count_expected": 11,
+  "inputs": [
+    {
+      "path": "../commercialization-standards-titmas-integrations-rb1-provider-binding-planning/deepseek-binding-scope-and-security-plan-v0.1.md",
+      "sha256": "f9d25fec739c4a4b4ba40b028859c534e4617ab4dfb728ad857749c78f4493db",
+      "use": "SUBJECT_UNDER_REVIEW"
+    },
+    {
+      "path": "../commercialization-standards-titmas-integrations-rb1-multi-provider-review-remediation/PRE-52-MULTI-PROVIDER-REVIEW-REMEDIATION-RESULT-v0.1.md",
+      "sha256": "7fa360398b5e3c35614bb38862bb78622fced96b3281e5f60cc52b026a4194a7",
+      "use": "PRIOR_FAILURE_AND_REMEDIATION_BOUNDARY"
+    },
+    {
+      "path": "../commercialization-standards-china-provider-suitability-benchmark/provider-comparison.v0.1.json",
+      "sha256": "66b12ac6b053cf001d13da783fa0210e432d74b3a1042473fb9d98011e91d403",
+      "use": "DIRECT_TESTED_PROVIDER_INVENTORY"
+    },
+    {
+      "path": "../commercialization-standards-qwen-v0-2-bounded-rerun/PRE-60-QWEN3-7-PLUS-V0-2-BOUNDED-RERUN-RESULT-v0.1.md",
+      "sha256": "04390343a3ab55da0fd2591c77a94c4eb379f8f55ed613dbd69a3210f9816cde",
+      "use": "INDEPENDENT_PROVIDER_CANDIDATE_RESULT"
+    },
+    {
+      "path": "../commercialization-standards-qwen-v0-2-bounded-rerun/sanitized-session-results.v0.1.json",
+      "sha256": "c750f97fc294dc3d1d37fff3bb2a9222ecae5d7b45e84b68cd06bbc06d7c5fcc",
+      "use": "SANITIZED_DIRECT_TEST_DETAIL"
+    },
+    {
+      "path": "../commercialization-standards-qwen-v0-2-bounded-rerun/execution-receipt.v0.1.json",
+      "sha256": "099252e92240fd7603a9aa99663b7db3431dcdca2cfbdfecd55c28da1bc50a49",
+      "use": "DIRECT_TEST_HASH_LINEAGE"
+    },
+    {
+      "path": "../architecture/titmas-review-and-maintenance-model-v0.1.md",
+      "sha256": "3d46b681667c24bb862bdf52db3a0a14ee39c61f0491592dcb17696c10758785",
+      "use": "REVIEW_AUTHORITY_BOUNDARY"
+    }
+  ],
+  "review_scope": {
+    "subject": "DEEPSEEK_PROVIDER_BINDING_CANDIDATE",
+    "integration_review_lane": "QIANFAN_INTEGRATION_MAINTAINER_CANDIDATE",
+    "security_review_lane": "ALIBABA_QWEN_INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"
+  },
+  "execution_limits": {
+    "network_requests_max": 0,
+    "live_model_requests_max": 0,
+    "credential_reads_max": 0,
+    "external_repository_writes_max": 0,
+    "implementation_writes_max": 0
+  },
+  "result_vocabulary": [
+    "READY_FOR_AUTHORIZATION",
+    "REVISE",
+    "BLOCKED"
+  ],
+  "mandatory_open_findings": [
+    "P0_DNS_OBSERVABILITY_UNRESOLVED",
+    "FORMAL_SECURITY_REVIEWER_NOT_ASSIGNED",
+    "SECURITY_DISCLOSURE_PATH_NOT_ASSIGNED"
+  ],
+  "interpretation": {
+    "preflight_is_security_review": false,
+    "preflight_is_provider_support": false,
+    "preflight_is_provider_integration": false,
+    "preflight_is_certification": false,
+    "preflight_is_customer_evidence": false,
+    "preflight_is_production_readiness": false,
+    "reviewer_candidate_is_assigned_reviewer": false,
+    "direct_test_is_sla": false,
+    "schema_pass_is_standard_conformance": false,
+    "security_review_completed": false
+  },
+  "next_action": "FORM_EXACT_LIVE_MULTI_PROVIDER_SECURITY_REVIEW_RECOMMENDATION"
+}

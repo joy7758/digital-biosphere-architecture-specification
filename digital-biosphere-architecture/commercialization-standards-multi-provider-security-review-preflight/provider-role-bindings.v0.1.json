@@ -1,0 +1,38 @@
+{
+  "$schema": "./provider-role-bindings.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-61-PROVIDER-ROLE-BINDINGS-0.1",
+  "version": "0.1.0",
+  "subject_under_review": {
+    "provider": "DEEPSEEK",
+    "model": "deepseek-v4-pro",
+    "role": "PROVIDER_BINDING_CANDIDATE_UNDER_REVIEW"
+  },
+  "future_review_lanes": [
+    {
+      "role": "INTEGRATION_MAINTAINER_CANDIDATE",
+      "provider": "QIANFAN",
+      "model": "ernie-4.5-turbo-20260402",
+      "binding_source": "PRE-53_DIRECT_TEST",
+      "direct_test_status": "PASS_3_OF_3_BOUNDED",
+      "assigned_reviewer": false
+    },
+    {
+      "role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE",
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "model": "qwen3.7-plus",
+      "binding_source": "PRE-60_DIRECT_TEST",
+      "direct_test_status": "PASS_3_OF_3_BOUNDED",
+      "assigned_reviewer": false
+    }
+  ],
+  "provider_independence": {
+    "subject_vs_integration": true,
+    "subject_vs_security": true,
+    "integration_vs_security": true
+  },
+  "execution_state": {
+    "network_requests": 0,
+    "live_model_requests": 0,
+    "credential_reads": 0
+  }
+}

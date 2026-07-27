@@ -1,0 +1,48 @@
+{
+  "$schema": "./preflight-validation.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-VALIDATION-0.1",
+  "version": "0.1.0",
+  "validated_at": "2026-07-27T09:52:00+08:00",
+  "checks_required": 20,
+  "checks_passed": 20,
+  "checks_failed": 0,
+  "checks": [
+    {"check_id": "DECISION_SCHEMA_VALID", "result": "PASS"},
+    {"check_id": "RECOMMENDATION_HASH_MATCH", "result": "PASS"},
+    {"check_id": "DECISION_HASH_MATCH", "result": "PASS"},
+    {"check_id": "INPUT_HASHES_7_OF_7", "result": "PASS"},
+    {"check_id": "SUBJECT_PROVIDER_EXACT", "result": "PASS"},
+    {"check_id": "INTEGRATION_REVIEW_PROVIDER_DISTINCT", "result": "PASS"},
+    {"check_id": "SECURITY_REVIEW_PROVIDER_DISTINCT", "result": "PASS"},
+    {"check_id": "SECURITY_REVIEWER_QWEN_DIRECT_TEST_PASS", "result": "PASS"},
+    {"check_id": "REVIEWER_PROVIDER_LANES_DISTINCT", "result": "PASS"},
+    {"check_id": "RESULT_VOCABULARY_BOUND", "result": "PASS"},
+    {"check_id": "P0_OPEN_FINDING_RETAINED", "result": "PASS"},
+    {"check_id": "NO_SECRET_VALUES", "result": "PASS"},
+    {"check_id": "NO_LOCAL_SECRET_PATH", "result": "PASS"},
+    {"check_id": "NO_RAW_PROVIDER_BODIES", "result": "PASS"},
+    {"check_id": "NETWORK_REQUESTS_ZERO", "result": "PASS"},
+    {"check_id": "LIVE_MODEL_REQUESTS_ZERO", "result": "PASS"},
+    {"check_id": "CREDENTIAL_READS_ZERO", "result": "PASS"},
+    {"check_id": "EXTERNAL_WRITES_ZERO", "result": "PASS"},
+    {"check_id": "SECURITY_REVIEW_NOT_COMPLETED", "result": "PASS"},
+    {"check_id": "PROVIDER_SUPPORT_NOT_CREATED", "result": "PASS"}
+  ],
+  "execution_counts": {
+    "network_requests": 0,
+    "live_model_requests": 0,
+    "credential_reads": 0,
+    "external_repository_writes": 0,
+    "implementation_writes": 0
+  },
+  "classification": {
+    "preflight_design_ready": true,
+    "live_security_review_authorized": false,
+    "security_review_completed": false,
+    "provider_supported": false,
+    "provider_integrated": false,
+    "standard_ready": false
+  },
+  "status": "PASS_20_OF_20_OFFLINE_PREFLIGHT_DESIGN",
+  "next_action": "FORM_EXACT_LIVE_MULTI_PROVIDER_SECURITY_REVIEW_RECOMMENDATION"
+}

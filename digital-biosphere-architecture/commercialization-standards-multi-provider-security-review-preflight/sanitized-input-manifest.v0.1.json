@@ -1,0 +1,70 @@
+{
+  "$schema": "./sanitized-input-manifest.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-61-SANITIZED-INPUT-MANIFEST-0.1",
+  "version": "0.1.0",
+  "classification": "PUBLIC_SAFE_REFERENCE_ONLY",
+  "references": [
+    {
+      "reference_id": "BINDING-PLAN",
+      "path": "../commercialization-standards-titmas-integrations-rb1-provider-binding-planning/deepseek-binding-scope-and-security-plan-v0.1.md",
+      "sha256": "f9d25fec739c4a4b4ba40b028859c534e4617ab4dfb728ad857749c78f4493db",
+      "content_class": "PUBLIC_REPOSITORY_DOCUMENT"
+    },
+    {
+      "reference_id": "PRE52-RESULT",
+      "path": "../commercialization-standards-titmas-integrations-rb1-multi-provider-review-remediation/PRE-52-MULTI-PROVIDER-REVIEW-REMEDIATION-RESULT-v0.1.md",
+      "sha256": "7fa360398b5e3c35614bb38862bb78622fced96b3281e5f60cc52b026a4194a7",
+      "content_class": "PUBLIC_REPOSITORY_DOCUMENT"
+    },
+    {
+      "reference_id": "PRE53-PROVIDER-COMPARISON",
+      "path": "../commercialization-standards-china-provider-suitability-benchmark/provider-comparison.v0.1.json",
+      "sha256": "66b12ac6b053cf001d13da783fa0210e432d74b3a1042473fb9d98011e91d403",
+      "content_class": "PUBLIC_REPOSITORY_DOCUMENT"
+    },
+    {
+      "reference_id": "PRE60-RESULT",
+      "path": "../commercialization-standards-qwen-v0-2-bounded-rerun/PRE-60-QWEN3-7-PLUS-V0-2-BOUNDED-RERUN-RESULT-v0.1.md",
+      "sha256": "04390343a3ab55da0fd2591c77a94c4eb379f8f55ed613dbd69a3210f9816cde",
+      "content_class": "PUBLIC_REPOSITORY_DOCUMENT"
+    },
+    {
+      "reference_id": "PRE60-SANITIZED-SESSIONS",
+      "path": "../commercialization-standards-qwen-v0-2-bounded-rerun/sanitized-session-results.v0.1.json",
+      "sha256": "c750f97fc294dc3d1d37fff3bb2a9222ecae5d7b45e84b68cd06bbc06d7c5fcc",
+      "content_class": "PUBLIC_SANITIZED_PROVIDER_RESULT"
+    },
+    {
+      "reference_id": "PRE60-RECEIPT",
+      "path": "../commercialization-standards-qwen-v0-2-bounded-rerun/execution-receipt.v0.1.json",
+      "sha256": "099252e92240fd7603a9aa99663b7db3431dcdca2cfbdfecd55c28da1bc50a49",
+      "content_class": "PUBLIC_HASH_RECEIPT"
+    },
+    {
+      "reference_id": "REVIEW-MODEL",
+      "path": "../architecture/titmas-review-and-maintenance-model-v0.1.md",
+      "sha256": "3d46b681667c24bb862bdf52db3a0a14ee39c61f0491592dcb17696c10758785",
+      "content_class": "PUBLIC_REPOSITORY_DOCUMENT"
+    }
+  ],
+  "prohibited_content": [
+    "CREDENTIAL_VALUE",
+    "AUTHORIZATION_HEADER",
+    "PRIVATE_KEY",
+    "LOCAL_SECRET_PATH",
+    "RAW_PROMPT_BODY",
+    "RAW_RESPONSE_BODY",
+    "HIDDEN_REASONING",
+    "PRIVATE_CUSTOMER_DATA"
+  ],
+  "content_checks": {
+    "credential_value_present": false,
+    "authorization_header_present": false,
+    "private_key_present": false,
+    "local_secret_path_present": false,
+    "raw_prompt_body_present": false,
+    "raw_response_body_present": false,
+    "hidden_reasoning_present": false,
+    "private_customer_data_present": false
+  }
+}
