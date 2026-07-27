@@ -366,6 +366,14 @@ retry、public-site request、SSH、server read/write、deployment、DBOS/SAEE c
 0。该结果只证明 CE-G9 remediated correlator 的离线跨版本兼容性；下一步只允许准备
 CE-G11 correlated exact redeployment Recommendation，尚未授权重部署。
 
+[CE-G11 Recommendation](TITMAS-CE-G11-CORRELATED-EXACT-REDEPLOYMENT-RECOMMENDATION-v0.1.md)
+在源码核对后得到 `NOT_RECOMMENDED`：CE-G9/10 验证过的 correlator 仍硬编码 CE-G8
+Decision、receipt ID 和旧稳定 release；切换到 proposed release 后会必然
+`CURRENT_TARGET_MISMATCH`，且输出 identity 仍错误。`qwen3.7-plus` 在 material-fact
+delta review 中给出 `NOT_RECOMMENDED`、不愿向智能体客户推荐、置信度 `0.98`。因此
+CE-G11 没有形成 Decision 或 deployment authorization；下一步只允许准备 CE-G11A
+offline target-binding remediation Recommendation。
+
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
 Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是整个 Digital Biosphere（数字生物圈）项目群的 Program Governance and Architecture Specification Hub（项目群治理与架构规范中心）。它既维护 SAEE、DBOS 与未来 Digital Entity（数字主体）的总架构规范，也作为整体推进所使用的 cockpit（驾驶舱），统一呈现项目组合、路线图、状态、依赖、决策、集成 gate（闸门）、风险和阻塞。

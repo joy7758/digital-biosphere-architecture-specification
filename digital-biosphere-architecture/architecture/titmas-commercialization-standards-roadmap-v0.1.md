@@ -2583,6 +2583,27 @@ CE-G8 历史 `INCONCLUSIVE`，也不产生 redeployment admission、Production�
 SLA 或 Commercial Offering。下一步只允许准备 CE-G11 correlated exact redeployment
 Recommendation，且必须再经过独立 Decision。
 
+### 4.72 CE-G11 Correlated Redeployment Recommendation
+
+[CE-G11 Recommendation](../TITMAS-CE-G11-CORRELATED-EXACT-REDEPLOYMENT-RECOMMENDATION-v0.1.md)
+在源码核对后失败关闭：
+
+```text
+CE_G11_REDEPLOYMENT_RECOMMENDATION=NOT_RECOMMENDED
+CE_G11_WOULD_RECOMMEND_TO_AGENT_CUSTOMER=false
+CE_G11_AGENT_CONFIDENCE=0.98
+CE_G11_BLOCKER=HARD_CODED_CE_G8_TARGET_AND_IDENTITY_BINDING
+CE_G11_DECISION_RECORDED=false
+CE_G11_EXECUTION_AUTHORIZED=false
+CE_G11_REDEPLOYMENT=false
+```
+
+CE-G9/10 correlator 仍固定 CE-G8 Decision、receipt ID 和旧 stable release。切换到
+proposed release 后会触发 `CURRENT_TARGET_MISMATCH`；即使移除 target check，receipt
+identity 也仍不属于 CE-G11。`qwen3.7-plus` 在 material-fact delta review 中给出
+`NOT_RECOMMENDED`，置信度 `0.98`。下一步只能准备 CE-G11A offline target/identity
+binding remediation Recommendation；不得从 CE-G10 PASS 直接重部署。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -2852,10 +2873,10 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Prepare CE-G11 Recommendation only**：CE-G10 已以唯一 run、5/5 matrix jobs、
-   65/65 tests 和 5 个 sanitized artifacts 完成；下一步只准备 correlated exact
-   redeployment Recommendation，必须保留旧稳定 release、原子切换、failure receipt、
-   rollback 和 no-retry 边界，独立 Decision 前不得部署；
+1. **Prepare CE-G11A remediation Recommendation only**：CE-G11 因 hard-coded CE-G8
+   target/Decision/receipt binding 得到 `NOT_RECOMMENDED`；下一步只定义 offline-only、
+   fail-closed 的 target/identity binding remediation，保留历史 correlator 和 receipts，
+   独立 Decision 前不得实现或部署；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -3064,7 +3085,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G11_CORRELATED_EXACT_REDEPLOYMENT_RECOMMENDATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G11A_OFFLINE_TARGET_BINDING_REMEDIATION_RECOMMENDATION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -3193,6 +3214,14 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G10A_TRIGGER_IMPLEMENTED=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G10A_RUN_REQUEST_CREATED=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G10A_TRIGGER_EVENT_COMMITTED=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G10A_EXECUTION_COMPLETED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G11_RECOMMENDATION_PREPARED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G11_AGENT_VERDICT=NOT_RECOMMENDED
+TITMAS_COMMERCIAL_EVALUATION_CE_G11_WOULD_RECOMMEND_TO_AGENT_CUSTOMER=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11_AGENT_CONFIDENCE=0.98
+TITMAS_COMMERCIAL_EVALUATION_CE_G11_BLOCKER=HARD_CODED_CE_G8_TARGET_AND_IDENTITY_BINDING
+TITMAS_COMMERCIAL_EVALUATION_CE_G11_DECISION_RECORDED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11_EXECUTION_AUTHORIZED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11_REDEPLOYMENT=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
 
