@@ -1,0 +1,55 @@
+{
+  "record_type": "TITMAS_CE_G11B_STATUS_RECONCILIATION_TRACKED_JSON_DUPLICATE_KEY_FAILURE",
+  "failure_id": "TITMAS-CE-G11B-STATUS-RECONCILIATION-TRACKED-JSON-DUPLICATE-KEY-FAILURE-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28",
+  "status": "FAIL_CLOSED_PRE_EXISTING_DUPLICATE_KEY_FOUND",
+  "authorization_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-STATUS-RECONCILIATION-VALIDATION-HARNESS-REMEDIATION-DECISION-RECORD.v0.2.json",
+  "authorization_commit": "95cc1b89e51af350777ddc6163c3c34c253083ae",
+  "authorization_remote_verified": true,
+  "validator_invocation": [
+    "python3",
+    "/tmp/titmas_pr27_post_merge_json_validation.py",
+    "/tmp/titmas-ce-g11b-decision.2dqOYW"
+  ],
+  "failure_type": "DUPLICATE_JSON_OBJECT_KEY",
+  "duplicate": {
+    "path": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-FINDING-ADJUDICATION-DECISION-RECORD.v0.1.json",
+    "object_path": "/source_review_contract",
+    "key": "supplemental_findings",
+    "first_occurrence_line": 61,
+    "first_occurrence_type": "integer",
+    "first_occurrence_value": 3,
+    "second_occurrence_line": 86,
+    "second_occurrence_type": "array",
+    "second_occurrence_length": 3,
+    "original_commit": "928023f69979b89cb6e0d581c01a4d85a10f7962",
+    "original_sha256": "b84d67435eeaf353cefc501f0d0ed482bc55ef3571c82f14b709b1f0becc706d",
+    "previously_observed_in_pr27_review": true
+  },
+  "validation_effects": {
+    "tracked_json_validation_pass": false,
+    "commercial_entry_schema_validation_executed": false,
+    "cross_file_consistency_validation_executed": false,
+    "status_reconciliation_committed": false,
+    "status_reconciliation_pushed": false,
+    "duplicate_silently_ignored": false,
+    "duplicate_silently_repaired": false
+  },
+  "non_effects": {
+    "historical_decision_reclassified": false,
+    "ce_g12_prepared": false,
+    "deployment": false,
+    "release": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "permission": false,
+    "authority_elevation": false,
+    "evidence_truth_change": false
+  },
+  "next_gate": {
+    "action": "PREPARE_BOUNDED_DUPLICATE_KEY_CORRECTION_RECOMMENDATION",
+    "authorized": false
+  }
+}
