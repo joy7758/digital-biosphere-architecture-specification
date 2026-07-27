@@ -1,0 +1,128 @@
+{
+  "$schema": "./pre75-review-request-contract-candidate.schema.v0.2.json",
+  "document_id": "TITMAS-CS-D02-PRE75-REVIEW-REQUEST-CONTRACT-CANDIDATE-0.2",
+  "version": "0.2.0",
+  "status": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED",
+  "base_contract": {
+    "reference": "../commercialization-standards-p0-exact-agent-security-review/pre73-review-request-contract.v0.1.json",
+    "sha256": "c98f2464b814696152bcb8946ffbc5ffea5b6a9daf48e1b6657f59d5aa2f2a1b"
+  },
+  "target": {
+    "repository": "joy7758/titmas-integrations",
+    "branch": "codex/rb0-governance-baseline",
+    "commit": "0030077f29c37145a306b72e7083345eb76b504a",
+    "writes_max": 0
+  },
+  "source_package_contract": {
+    "contract_version": "pre73.security-review-source-package/v0.1",
+    "canonicalization": "UTF8_JSON_SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE",
+    "source_package_bytes": 102960,
+    "source_package_sha256": "5e357eab0d23db0c79d34f7a66ddc01e0a8070314ed8b6be2cee3b34e3973813",
+    "content_loaded_in_memory": true,
+    "persistence_allowed": false
+  },
+  "response_schema_transmission": {
+    "manifest_reference": "./pre75-canonical-response-schema-transmission-payload.v0.1.json",
+    "manifest_sha256": "f231414fd8bc326e79fa3c97956cb91767646f6719348eebbda4608eed0c693e",
+    "source_schema_reference": "../commercialization-standards-p0-exact-agent-security-review/pre73-agent-review-response.schema.v0.2.json",
+    "source_schema_file_sha256": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8",
+    "canonicalization": "UTF8_JSON_SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE",
+    "canonical_payload_bytes": 5271,
+    "canonical_payload_sha256": "fa515e139eb5915f48b2ed6fda9f4b85275f9f6ac4c5b49e69cecf4b8afdc2af",
+    "embedded_in_each_user_message": true,
+    "occurrences_per_message": 1
+  },
+  "system_message": "Perform a source-grounded static security review. The user message contains a hash-bound public-safe source package and the complete canonical JSON response Schema. Return exactly one direct JSON object conforming to that embedded Schema. Do not use Markdown, code fences, commentary, prefixes, suffixes or additional fields. Assess every SR-001 through SR-016 question in order. Retain concerns, unknowns, limitations and proposed tests. This is advisory agent input only, not a formal human security review, provider approval, conformance result, standard decision, release authorization or production claim.",
+  "review_instruction": "Review the hash-bound public-safe source package against all sixteen security questions. Return exactly one direct JSON object conforming to pre73.agent-review-response/v0.2. Do not use Markdown or code fences. Retain concerns, unknowns, limitations and proposed tests. This is advisory input only and not a formal human review, provider approval, conformance result, standard decision, release authorization or production claim.",
+  "render_algorithm": {
+    "separator": "\\n",
+    "ordered_segments": [
+      "REVIEW_INSTRUCTION",
+      "RESPONSE_REVIEW_SESSION_ID_LINE",
+      "REVIEW_ROLE_LINE",
+      "TARGET_COMMIT_LINE",
+      "SOURCE_PACKAGE_SHA256_LINE",
+      "RESPONSE_SCHEMA_SOURCE_FILE_SHA256_LINE",
+      "RESPONSE_SCHEMA_CANONICAL_SHA256_LINE",
+      "RESPONSE_SCHEMA_CANONICAL_JSON_BEGIN",
+      "RESPONSE_SCHEMA_CANONICAL_JSON",
+      "RESPONSE_SCHEMA_CANONICAL_JSON_END",
+      "SOURCE_PACKAGE_CANONICAL_JSON_BEGIN",
+      "SOURCE_PACKAGE_CANONICAL_JSON",
+      "SOURCE_PACKAGE_CANONICAL_JSON_END"
+    ],
+    "raw_request_persisted": false
+  },
+  "sessions": [
+    {
+      "execution_session_id": "PRE76-QF-SECURITY-01",
+      "response_review_session_id": "PRE73-QF-SECURITY-01",
+      "provider": "BAIDU_QIANFAN",
+      "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+      "model": "ernie-4.5-turbo-20260402",
+      "credential_identifier": "QIANFAN_API_KEY",
+      "review_role": "IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE",
+      "response_format": {"type": "json_object"},
+      "enable_thinking": "OMITTED",
+      "system_message_bytes": 610,
+      "system_message_sha256": "a9d764aca83b764f9b4367bc1cdf50dd6b7698c03daa03d1690dc447d64b39c3",
+      "user_message_bytes": 109238,
+      "user_message_sha256": "dcd0d4a55be5ddb86ff369d4cb0dec63c8802af57f7974ed16045c5e4ceb94fe",
+      "schema_payload_occurrences": 1,
+      "source_package_occurrences": 1
+    },
+    {
+      "execution_session_id": "PRE76-QWEN-SECURITY-02",
+      "response_review_session_id": "PRE73-QWEN-SECURITY-02",
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "model": "qwen3.7-plus",
+      "credential_identifier": "DASHSCOPE_API_KEY",
+      "review_role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE",
+      "response_format": {"type": "json_object"},
+      "enable_thinking": false,
+      "system_message_bytes": 610,
+      "system_message_sha256": "a9d764aca83b764f9b4367bc1cdf50dd6b7698c03daa03d1690dc447d64b39c3",
+      "user_message_bytes": 109237,
+      "user_message_sha256": "80fc280dc0ade4ace46ccabdaf2456c38eda63abce5710aeb13d84ef8eb0a20b",
+      "schema_payload_occurrences": 1,
+      "source_package_occurrences": 1
+    }
+  ],
+  "transport_policy": {
+    "requests_max": 2,
+    "concurrency_max": 1,
+    "temperature": 0,
+    "stream": false,
+    "timeout_seconds_per_request": 120,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "model_substitution_max": 0,
+    "response_extraction_max": 0,
+    "json_repair_max": 0,
+    "currently_authorized": false
+  },
+  "failure_capture": {
+    "contract_reference": "../commercialization-standards-pre74-schema-failure-diagnostic/pre74-sanitized-failure-detail-capture-contract.v0.1.json",
+    "contract_sha256": "a2c3310877528f270f819a796ad3e13b0f85cc03a7763c5de9ddd533a94f58dd",
+    "detail_schema_reference": "../commercialization-standards-pre74-schema-failure-diagnostic/pre74-sanitized-failure-detail.schema.v0.1.json",
+    "detail_schema_sha256": "c628cd18143209638fe562877edd01764c1f2fbb58b02dc5764ebbee0fb55e21",
+    "status": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED"
+  },
+  "persistence_policy": {
+    "request_payload_persisted": false,
+    "source_package_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "raw_assistant_content_persisted": false,
+    "sanitized_success_or_failure_record_allowed": true
+  },
+  "effects": {
+    "request_contract_adopted": false,
+    "response_schema_changed": false,
+    "live_rerun_authorized": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "standard_ready": false,
+    "release_authorized": false
+  }
+}

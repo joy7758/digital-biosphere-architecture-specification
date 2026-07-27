@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre75-rendered-request-fixtures.schema.v0.1.json",
+  "title": "TITMAS PRE-75 Rendered Request Fixture Metadata v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "request_contract_reference",
+    "request_contract_sha256",
+    "source_package",
+    "response_schema_payload",
+    "sessions",
+    "validation",
+    "persistence_accounting",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre75-rendered-request-fixtures.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE75-RENDERED-REQUEST-FIXTURE-METADATA-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_2_OF_2_DETERMINISTIC_RENDER_METADATA"},
+    "request_contract_reference": {"const": "./pre75-review-request-contract-candidate.v0.2.json"},
+    "request_contract_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "source_package": {"$ref": "#/$defs/payload"},
+    "response_schema_payload": {"$ref": "#/$defs/payload"},
+    "sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"$ref": "#/$defs/qianfan"},
+        {"$ref": "#/$defs/qwen"}
+      ],
+      "items": false
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_input_hashes_match",
+        "source_package_render_pass",
+        "response_schema_render_pass",
+        "user_message_render_pass",
+        "schema_payload_occurrences",
+        "source_package_occurrences",
+        "messages_within_budget"
+      ],
+      "properties": {
+        "target_input_hashes_match": {"const": "10/10"},
+        "source_package_render_pass": {"const": "1/1"},
+        "response_schema_render_pass": {"const": "1/1"},
+        "user_message_render_pass": {"const": "2/2"},
+        "schema_payload_occurrences": {"const": "2/2"},
+        "source_package_occurrences": {"const": "2/2"},
+        "messages_within_budget": {"const": "2/2"}
+      }
+    },
+    "persistence_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "raw_request_payloads",
+        "source_packages",
+        "raw_provider_envelopes",
+        "raw_assistant_contents"
+      ],
+      "properties": {
+        "raw_request_payloads": {"const": 0},
+        "source_packages": {"const": 0},
+        "raw_provider_envelopes": {"const": 0},
+        "raw_assistant_contents": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["request_contract_adopted", "live_rerun_authorized"],
+      "properties": {
+        "request_contract_adopted": {"const": false},
+        "live_rerun_authorized": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["bytes", "sha256", "canonicalization"],
+      "properties": {
+        "bytes": {"type": "integer", "minimum": 1},
+        "sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "canonicalization": {
+          "const": "UTF8_JSON_SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE"
+        }
+      }
+    },
+    "qianfan": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_session_id",
+        "response_review_session_id",
+        "system_message_bytes",
+        "system_message_sha256",
+        "user_message_bytes",
+        "user_message_sha256",
+        "schema_payload_occurrences",
+        "source_package_occurrences"
+      ],
+      "properties": {
+        "execution_session_id": {"const": "PRE76-QF-SECURITY-01"},
+        "response_review_session_id": {"const": "PRE73-QF-SECURITY-01"},
+        "system_message_bytes": {"const": 610},
+        "system_message_sha256": {
+          "const": "a9d764aca83b764f9b4367bc1cdf50dd6b7698c03daa03d1690dc447d64b39c3"
+        },
+        "user_message_bytes": {"const": 109238},
+        "user_message_sha256": {
+          "const": "dcd0d4a55be5ddb86ff369d4cb0dec63c8802af57f7974ed16045c5e4ceb94fe"
+        },
+        "schema_payload_occurrences": {"const": 1},
+        "source_package_occurrences": {"const": 1}
+      }
+    },
+    "qwen": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_session_id",
+        "response_review_session_id",
+        "system_message_bytes",
+        "system_message_sha256",
+        "user_message_bytes",
+        "user_message_sha256",
+        "schema_payload_occurrences",
+        "source_package_occurrences"
+      ],
+      "properties": {
+        "execution_session_id": {"const": "PRE76-QWEN-SECURITY-02"},
+        "response_review_session_id": {"const": "PRE73-QWEN-SECURITY-02"},
+        "system_message_bytes": {"const": 610},
+        "system_message_sha256": {
+          "const": "a9d764aca83b764f9b4367bc1cdf50dd6b7698c03daa03d1690dc447d64b39c3"
+        },
+        "user_message_bytes": {"const": 109237},
+        "user_message_sha256": {
+          "const": "80fc280dc0ade4ace46ccabdaf2456c38eda63abce5710aeb13d84ef8eb0a20b"
+        },
+        "schema_payload_occurrences": {"const": 1},
+        "source_package_occurrences": {"const": 1}
+      }
+    }
+  }
+}

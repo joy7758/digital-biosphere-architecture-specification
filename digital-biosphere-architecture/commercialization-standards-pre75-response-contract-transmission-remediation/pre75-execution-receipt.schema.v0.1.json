@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre75-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS PRE-75 Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision",
+    "artifacts",
+    "validation_summary",
+    "operation_accounting",
+    "result_reference",
+    "next_action",
+    "next_action_authorized",
+    "truth_boundaries",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre75-execution-receipt.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE75-EXECUTION-RECEIPT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "EXECUTED_PASS_OFFLINE_FULL_SCHEMA_TRANSMISSION_REMEDIATION"},
+    "observed_at": {"const": "2026-07-27"},
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["decision_id", "reference", "sha256", "commit", "authorization_baseline_commit"],
+      "properties": {
+        "decision_id": {"const": "CS-D02-PRE-75"},
+        "reference": {
+          "const": "../TITMAS-CS-D02-PRE-75-RESPONSE-CONTRACT-TRANSMISSION-REMEDIATION-DECISION-RECORD.v0.1.json"
+        },
+        "sha256": {
+          "const": "bae7fb8e7c60171ec9066bde5dbe4813ed17941e68c74268e118d4bc7bb9fafd"
+        },
+        "commit": {"const": "c050ef0f94fe7ecb266b074bfb162e22fd1caeb9"},
+        "authorization_baseline_commit": {"const": "87d2334eb24d5e430d90ecf78bd41f71bff574cd"}
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/ref"}
+    },
+    "validation_summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_hashes_match",
+        "target_input_hashes_match",
+        "rendered_user_messages",
+        "full_schema_transmission",
+        "mutation_negatives_rejected",
+        "request_candidate_status",
+        "pre76_scope_status"
+      ],
+      "properties": {
+        "input_hashes_match": {"const": "7/7"},
+        "target_input_hashes_match": {"const": "10/10"},
+        "rendered_user_messages": {"const": "2/2"},
+        "full_schema_transmission": {"const": "2/2"},
+        "mutation_negatives_rejected": {"const": "16/16"},
+        "request_candidate_status": {"const": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED"},
+        "pre76_scope_status": {"const": "SCOPE_CANDIDATE_NOT_RECOMMENDED_NOT_AUTHORIZED"}
+      }
+    },
+    "operation_accounting": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": {"const": 0}
+    },
+    "result_reference": {"const": "./pre75-offline-remediation-result.v0.1.json"},
+    "next_action": {
+      "const": "PREPARE_PRE76_EXACT_TWO_REQUEST_SECURITY_REVIEW_RERUN_RECOMMENDATION"
+    },
+    "next_action_authorized": {"const": false},
+    "truth_boundaries": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 8}
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 8,
+      "additionalProperties": {"const": false}
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 10},
+        "sha256": {"pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

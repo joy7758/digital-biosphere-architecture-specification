@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre75-canonical-response-schema-transmission-payload.schema.v0.1.json",
+  "title": "TITMAS PRE-75 Canonical Response Schema Transmission Payload v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "source_schema_reference",
+    "source_schema_file_sha256",
+    "canonicalization",
+    "canonical_payload_bytes",
+    "canonical_payload_sha256",
+    "transmission_policy",
+    "persistence_policy",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre75-canonical-response-schema-transmission-payload.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE75-CANONICAL-RESPONSE-SCHEMA-TRANSMISSION-PAYLOAD-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DETERMINISTIC_DERIVATION_CONTRACT_NOT_ADOPTED"},
+    "source_schema_reference": {
+      "const": "../commercialization-standards-p0-exact-agent-security-review/pre73-agent-review-response.schema.v0.2.json"
+    },
+    "source_schema_file_sha256": {
+      "const": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8"
+    },
+    "canonicalization": {
+      "const": "UTF8_JSON_SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE"
+    },
+    "canonical_payload_bytes": {"const": 5271},
+    "canonical_payload_sha256": {
+      "const": "fa515e139eb5915f48b2ed6fda9f4b85275f9f6ac4c5b49e69cecf4b8afdc2af"
+    },
+    "transmission_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "embedded_in_each_future_user_message",
+        "occurrences_per_message",
+        "begin_marker",
+        "end_marker",
+        "source_file_hash_transmitted",
+        "canonical_payload_hash_transmitted"
+      ],
+      "properties": {
+        "embedded_in_each_future_user_message": {"const": true},
+        "occurrences_per_message": {"const": 1},
+        "begin_marker": {"const": "RESPONSE_SCHEMA_CANONICAL_JSON_BEGIN"},
+        "end_marker": {"const": "RESPONSE_SCHEMA_CANONICAL_JSON_END"},
+        "source_file_hash_transmitted": {"const": true},
+        "canonical_payload_hash_transmitted": {"const": true}
+      }
+    },
+    "persistence_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_payload_duplicated_in_this_artifact",
+        "future_raw_request_persisted",
+        "future_source_package_persisted"
+      ],
+      "properties": {
+        "canonical_payload_duplicated_in_this_artifact": {"const": false},
+        "future_raw_request_persisted": {"const": false},
+        "future_source_package_persisted": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "response_schema_changed",
+        "request_contract_adopted",
+        "live_rerun_authorized"
+      ],
+      "properties": {
+        "response_schema_changed": {"const": false},
+        "request_contract_adopted": {"const": false},
+        "live_rerun_authorized": {"const": false}
+      }
+    }
+  }
+}

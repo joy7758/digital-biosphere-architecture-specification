@@ -1,0 +1,81 @@
+{
+  "$schema": "./pre75-contract-transmission-coverage-validation.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE75-CONTRACT-TRANSMISSION-COVERAGE-VALIDATION-0.1",
+  "version": "0.1.0",
+  "status": "PASS_FULL_SCHEMA_TRANSMISSION_AND_16_OF_16_NEGATIVES",
+  "validated_refs": [
+    {
+      "path": "./pre75-canonical-response-schema-transmission-payload.v0.1.json",
+      "sha256": "f231414fd8bc326e79fa3c97956cb91767646f6719348eebbda4608eed0c693e"
+    },
+    {
+      "path": "./pre75-review-request-contract-candidate.v0.2.json",
+      "sha256": "50f129deb290c943d65b37a07008ee0a70827f084045ebe8d30daeb8622c2e98"
+    },
+    {
+      "path": "./pre75-rendered-request-fixtures.v0.1.json",
+      "sha256": "d26f2d84ec294c9c2286610d6c34aa7eed54f64d7e05a983a8e246b4e85539d1"
+    },
+    {
+      "path": "./pre75-failure-capture-integration.v0.1.json",
+      "sha256": "2d7abb49ae38b72c995aa4b3d5c897b972bd9633710c41d73f4143322f3cfd98"
+    },
+    {
+      "path": "./pre76-two-request-rerun-scope-candidate.v0.1.json",
+      "sha256": "4c7f312a1cb74b47803f47f450b16c3b154ae10612b08aeaf6f781a1199c4e00"
+    }
+  ],
+  "render_validation": {
+    "target_input_hashes_match": "10/10",
+    "source_package_reconstruction": "1/1",
+    "response_schema_canonicalization": "1/1",
+    "rendered_user_messages": "2/2",
+    "schema_payload_occurrences": "2/2",
+    "source_package_occurrences": "2/2",
+    "messages_within_budget": "2/2"
+  },
+  "coverage": {
+    "top_level_keys": "10/10",
+    "question_assessment_keys": "7/7",
+    "explicit_non_claim_keys": "8/8",
+    "schema_structure_markers": "3/3",
+    "ordered_question_bindings": "16/16",
+    "session_role_bindings": "2/2",
+    "direct_json_and_no_repair_boundary": true
+  },
+  "mutation_cases": [
+    {"case_id": "MUT-001", "mutation": "REMOVE_SCHEMA_TRANSMISSION", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-002", "mutation": "CHANGE_SCHEMA_FILE_HASH", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-003", "mutation": "CHANGE_CANONICALIZATION", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-004", "mutation": "ZERO_CANONICAL_BYTES", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-005", "mutation": "CHANGE_CANONICAL_HASH", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-006", "mutation": "DISABLE_EMBEDDING", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-007", "mutation": "ZERO_SCHEMA_OCCURRENCES", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-008", "mutation": "WRONG_QF_SESSION", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-009", "mutation": "WRONG_QF_ROLE", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-010", "mutation": "WRONG_QWEN_SESSION", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-011", "mutation": "WRONG_QWEN_ROLE", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-012", "mutation": "TARGET_COMMIT_DRIFT", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-013", "mutation": "RENDERED_REQUEST_BUDGET_EXCEEDED", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-014", "mutation": "ENABLE_RESPONSE_EXTRACTION", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-015", "mutation": "AUTHORIZE_TRANSPORT_IN_CANDIDATE", "result": "REJECTED_FAIL_CLOSED"},
+    {"case_id": "MUT-016", "mutation": "PERSIST_RAW_REQUEST", "result": "REJECTED_FAIL_CLOSED"}
+  ],
+  "operation_accounting": {
+    "network_requests": 0,
+    "live_model_requests": 0,
+    "credential_value_reads": 0,
+    "raw_provider_response_reads": 0,
+    "raw_request_or_source_persistence": 0,
+    "target_writes": 0,
+    "dbos_writes": 0,
+    "saee_writes": 0
+  },
+  "effects": {
+    "request_contract_adopted": false,
+    "live_rerun_authorized": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "standard_ready": false
+  }
+}

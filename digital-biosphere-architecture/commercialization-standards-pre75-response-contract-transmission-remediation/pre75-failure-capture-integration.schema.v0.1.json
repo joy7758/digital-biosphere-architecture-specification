@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre75-failure-capture-integration.schema.v0.1.json",
+  "title": "TITMAS PRE-75 Failure Capture Integration v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "request_contract_reference",
+    "request_contract_sha256",
+    "capture_contract_reference",
+    "capture_contract_sha256",
+    "detail_schema_reference",
+    "detail_schema_sha256",
+    "ordered_phases",
+    "phase_accounting",
+    "failure_persistence",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre75-failure-capture-integration.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE75-FAILURE-CAPTURE-INTEGRATION-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "DEVELOPMENT_INTEGRATION_CANDIDATE_NOT_ADOPTED"},
+    "request_contract_reference": {"const": "./pre75-review-request-contract-candidate.v0.2.json"},
+    "request_contract_sha256": {"pattern": "^[0-9a-f]{64}$"},
+    "capture_contract_reference": {
+      "const": "../commercialization-standards-pre74-schema-failure-diagnostic/pre74-sanitized-failure-detail-capture-contract.v0.1.json"
+    },
+    "capture_contract_sha256": {
+      "const": "a2c3310877528f270f819a796ad3e13b0f85cc03a7763c5de9ddd533a94f58dd"
+    },
+    "detail_schema_reference": {
+      "const": "../commercialization-standards-pre74-schema-failure-diagnostic/pre74-sanitized-failure-detail.schema.v0.1.json"
+    },
+    "detail_schema_sha256": {
+      "const": "c628cd18143209638fe562877edd01764c1f2fbb58b02dc5764ebbee0fb55e21"
+    },
+    "ordered_phases": {
+      "const": [
+        "HTTP_RESPONSE_RECEIVED",
+        "EXACT_MODEL_MATCH",
+        "DIRECT_JSON_PARSE",
+        "RESPONSE_SCHEMA_VALIDATION",
+        "SESSION_AND_SOURCE_BINDING_VALIDATION"
+      ]
+    },
+    "phase_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "phase_flag_set_before_gate",
+        "earlier_pass_flags_immutable_after_later_failure",
+        "schema_failure_records_direct_json_pass",
+        "binding_not_run_after_schema_failure"
+      ],
+      "properties": {
+        "phase_flag_set_before_gate": {"const": true},
+        "earlier_pass_flags_immutable_after_later_failure": {"const": true},
+        "schema_failure_records_direct_json_pass": {"const": true},
+        "binding_not_run_after_schema_failure": {"const": true}
+      }
+    },
+    "failure_persistence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sanitized_detail_allowed",
+        "raw_error_message_allowed",
+        "offending_value_allowed",
+        "raw_assistant_content_allowed",
+        "provider_envelope_allowed",
+        "request_payload_allowed",
+        "source_package_allowed",
+        "credential_or_authorization_header_allowed"
+      ],
+      "properties": {
+        "sanitized_detail_allowed": {"const": true},
+        "raw_error_message_allowed": {"const": false},
+        "offending_value_allowed": {"const": false},
+        "raw_assistant_content_allowed": {"const": false},
+        "provider_envelope_allowed": {"const": false},
+        "request_payload_allowed": {"const": false},
+        "source_package_allowed": {"const": false},
+        "credential_or_authorization_header_allowed": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["integration_adopted", "live_rerun_authorized", "raw_persistence_authorized"],
+      "properties": {
+        "integration_adopted": {"const": false},
+        "live_rerun_authorized": {"const": false},
+        "raw_persistence_authorized": {"const": false}
+      }
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "$schema": "./pre75-execution-receipt.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE75-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTED_PASS_OFFLINE_FULL_SCHEMA_TRANSMISSION_REMEDIATION",
+  "observed_at": "2026-07-27",
+  "decision": {
+    "decision_id": "CS-D02-PRE-75",
+    "reference": "../TITMAS-CS-D02-PRE-75-RESPONSE-CONTRACT-TRANSMISSION-REMEDIATION-DECISION-RECORD.v0.1.json",
+    "sha256": "bae7fb8e7c60171ec9066bde5dbe4813ed17941e68c74268e118d4bc7bb9fafd",
+    "commit": "c050ef0f94fe7ecb266b074bfb162e22fd1caeb9",
+    "authorization_baseline_commit": "87d2334eb24d5e430d90ecf78bd41f71bff574cd"
+  },
+  "artifacts": [
+    {
+      "path": "./pre75-canonical-response-schema-transmission-payload.v0.1.json",
+      "sha256": "f231414fd8bc326e79fa3c97956cb91767646f6719348eebbda4608eed0c693e"
+    },
+    {
+      "path": "./pre75-review-request-contract-candidate.v0.2.json",
+      "sha256": "50f129deb290c943d65b37a07008ee0a70827f084045ebe8d30daeb8622c2e98"
+    },
+    {
+      "path": "./pre75-rendered-request-fixtures.v0.1.json",
+      "sha256": "d26f2d84ec294c9c2286610d6c34aa7eed54f64d7e05a983a8e246b4e85539d1"
+    },
+    {
+      "path": "./pre75-failure-capture-integration.v0.1.json",
+      "sha256": "2d7abb49ae38b72c995aa4b3d5c897b972bd9633710c41d73f4143322f3cfd98"
+    },
+    {
+      "path": "./pre76-two-request-rerun-scope-candidate.v0.1.json",
+      "sha256": "4c7f312a1cb74b47803f47f450b16c3b154ae10612b08aeaf6f781a1199c4e00"
+    },
+    {
+      "path": "./pre75-contract-transmission-coverage-validation.v0.1.json",
+      "sha256": "60690cac00554a9b196972a286a10a3a6468a19196f72c79ae7cb6478f5c016a"
+    }
+  ],
+  "validation_summary": {
+    "input_hashes_match": "7/7",
+    "target_input_hashes_match": "10/10",
+    "rendered_user_messages": "2/2",
+    "full_schema_transmission": "2/2",
+    "mutation_negatives_rejected": "16/16",
+    "request_candidate_status": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED",
+    "pre76_scope_status": "SCOPE_CANDIDATE_NOT_RECOMMENDED_NOT_AUTHORIZED"
+  },
+  "operation_accounting": {
+    "network_requests": 0,
+    "live_model_requests": 0,
+    "credential_value_reads": 0,
+    "raw_provider_response_reads": 0,
+    "raw_request_payloads_persisted": 0,
+    "source_packages_persisted": 0,
+    "raw_error_messages_persisted": 0,
+    "raw_offending_values_persisted": 0,
+    "target_writes": 0,
+    "dbos_writes": 0,
+    "saee_writes": 0,
+    "live_retries": 0
+  },
+  "result_reference": "./pre75-offline-remediation-result.v0.1.json",
+  "next_action": "PREPARE_PRE76_EXACT_TWO_REQUEST_SECURITY_REVIEW_RERUN_RECOMMENDATION",
+  "next_action_authorized": false,
+  "truth_boundaries": [
+    "OFFLINE_REQUEST_CANDIDATE_NE_ADOPTED_REQUEST_CONTRACT",
+    "FULL_SCHEMA_TRANSMISSION_NE_PROVIDER_CONFORMANCE",
+    "OFFLINE_RENDER_PASS_NE_LIVE_PROVIDER_BEHAVIOR",
+    "PRE76_SCOPE_CANDIDATE_NE_LIVE_RERUN_AUTHORIZATION",
+    "SCHEMA_PASS_NE_SECURITY_REVIEW_CORRECTNESS",
+    "AGENT_REVIEW_NE_FORMAL_HUMAN_SECURITY_REVIEW",
+    "EVIDENCE_NE_TRUTH"
+  ],
+  "effects": {
+    "request_contract_adopted": false,
+    "failure_capture_integration_adopted": false,
+    "live_rerun_authorized": false,
+    "credential_read_authorized": false,
+    "provider_request_authorized": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "standard_ready": false,
+    "release_authorized": false,
+    "production_ready": false
+  }
+}

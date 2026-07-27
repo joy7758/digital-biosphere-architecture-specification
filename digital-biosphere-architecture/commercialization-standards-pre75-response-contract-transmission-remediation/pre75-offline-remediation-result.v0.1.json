@@ -1,0 +1,64 @@
+{
+  "$schema": "./pre75-offline-remediation-result.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE75-OFFLINE-REMEDIATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_FULL_SCHEMA_TRANSMISSION_REMEDIATION_PRE76_RECOMMENDATION_REQUIRED",
+  "observed_at": "2026-07-27",
+  "decision": {
+    "reference": "../TITMAS-CS-D02-PRE-75-RESPONSE-CONTRACT-TRANSMISSION-REMEDIATION-DECISION-RECORD.v0.1.json",
+    "sha256": "bae7fb8e7c60171ec9066bde5dbe4813ed17941e68c74268e118d4bc7bb9fafd",
+    "commit": "c050ef0f94fe7ecb266b074bfb162e22fd1caeb9",
+    "authorization_baseline_commit": "87d2334eb24d5e430d90ecf78bd41f71bff574cd"
+  },
+  "validation": {
+    "input_hashes_match": "7/7",
+    "target_input_hashes_match": "10/10",
+    "source_package_reconstruction": "1/1",
+    "canonical_schema_payload": "1/1",
+    "rendered_user_messages": "2/2",
+    "full_schema_transmission": "2/2",
+    "coverage_groups": "3/3",
+    "session_role_bindings": "2/2",
+    "mutation_negatives_rejected": "16/16",
+    "failure_capture_phase_accounting": "PASS"
+  },
+  "operation_accounting": {
+    "network_requests": 0,
+    "live_model_requests": 0,
+    "credential_value_reads": 0,
+    "raw_provider_response_reads": 0,
+    "raw_request_payloads_persisted": 0,
+    "source_packages_persisted": 0,
+    "target_writes": 0,
+    "dbos_writes": 0,
+    "saee_writes": 0,
+    "request_contract_adoptions": 0,
+    "response_schema_changes": 0,
+    "live_retries": 0
+  },
+  "artifact_status": {
+    "request_contract_candidate": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED",
+    "failure_capture_integration": "DEVELOPMENT_INTEGRATION_CANDIDATE_NOT_ADOPTED",
+    "pre76_scope": "SCOPE_CANDIDATE_NOT_RECOMMENDED_NOT_AUTHORIZED",
+    "response_schema": "FROZEN_UNCHANGED"
+  },
+  "next_action": "PREPARE_PRE76_EXACT_TWO_REQUEST_SECURITY_REVIEW_RERUN_RECOMMENDATION",
+  "next_action_authorized": false,
+  "limitations": [
+    "FULL_SCHEMA_TRANSMISSION_DOES_NOT_GUARANTEE_PROVIDER_CONFORMANCE",
+    "OFFLINE_RENDER_VALIDATION_DOES_NOT_PROVE_LIVE_PROVIDER_BEHAVIOR",
+    "THE_PRE73_EXACT_FAILURE_PATH_REMAINS_UNKNOWN",
+    "REQUEST_AND_CAPTURE_CANDIDATES_ARE_NOT_ADOPTED",
+    "PRE76_LIVE_RERUN_REQUIRES_A_SEPARATE_RECOMMENDATION_AND_DECISION",
+    "FORMAL_HUMAN_SECURITY_REVIEW_REMAINS_OPEN"
+  ],
+  "effects": {
+    "live_rerun_authorized": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false,
+    "production_ready": false
+  }
+}

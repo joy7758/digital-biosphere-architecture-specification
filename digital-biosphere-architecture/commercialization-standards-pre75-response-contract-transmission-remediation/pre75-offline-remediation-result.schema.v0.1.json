@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre75-offline-remediation-result.schema.v0.1.json",
+  "title": "TITMAS PRE-75 Offline Remediation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision",
+    "validation",
+    "operation_accounting",
+    "artifact_status",
+    "next_action",
+    "next_action_authorized",
+    "limitations",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre75-offline-remediation-result.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE75-OFFLINE-REMEDIATION-RESULT-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_FULL_SCHEMA_TRANSMISSION_REMEDIATION_PRE76_RECOMMENDATION_REQUIRED"},
+    "observed_at": {"const": "2026-07-27"},
+    "decision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "sha256", "commit", "authorization_baseline_commit"],
+      "properties": {
+        "reference": {
+          "const": "../TITMAS-CS-D02-PRE-75-RESPONSE-CONTRACT-TRANSMISSION-REMEDIATION-DECISION-RECORD.v0.1.json"
+        },
+        "sha256": {
+          "const": "bae7fb8e7c60171ec9066bde5dbe4813ed17941e68c74268e118d4bc7bb9fafd"
+        },
+        "commit": {"const": "c050ef0f94fe7ecb266b074bfb162e22fd1caeb9"},
+        "authorization_baseline_commit": {"const": "87d2334eb24d5e430d90ecf78bd41f71bff574cd"}
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_hashes_match",
+        "target_input_hashes_match",
+        "source_package_reconstruction",
+        "canonical_schema_payload",
+        "rendered_user_messages",
+        "full_schema_transmission",
+        "coverage_groups",
+        "session_role_bindings",
+        "mutation_negatives_rejected",
+        "failure_capture_phase_accounting"
+      ],
+      "properties": {
+        "input_hashes_match": {"const": "7/7"},
+        "target_input_hashes_match": {"const": "10/10"},
+        "source_package_reconstruction": {"const": "1/1"},
+        "canonical_schema_payload": {"const": "1/1"},
+        "rendered_user_messages": {"const": "2/2"},
+        "full_schema_transmission": {"const": "2/2"},
+        "coverage_groups": {"const": "3/3"},
+        "session_role_bindings": {"const": "2/2"},
+        "mutation_negatives_rejected": {"const": "16/16"},
+        "failure_capture_phase_accounting": {"const": "PASS"}
+      }
+    },
+    "operation_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_requests",
+        "live_model_requests",
+        "credential_value_reads",
+        "raw_provider_response_reads",
+        "raw_request_payloads_persisted",
+        "source_packages_persisted",
+        "target_writes",
+        "dbos_writes",
+        "saee_writes",
+        "request_contract_adoptions",
+        "response_schema_changes",
+        "live_retries"
+      ],
+      "properties": {
+        "network_requests": {"const": 0},
+        "live_model_requests": {"const": 0},
+        "credential_value_reads": {"const": 0},
+        "raw_provider_response_reads": {"const": 0},
+        "raw_request_payloads_persisted": {"const": 0},
+        "source_packages_persisted": {"const": 0},
+        "target_writes": {"const": 0},
+        "dbos_writes": {"const": 0},
+        "saee_writes": {"const": 0},
+        "request_contract_adoptions": {"const": 0},
+        "response_schema_changes": {"const": 0},
+        "live_retries": {"const": 0}
+      }
+    },
+    "artifact_status": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_contract_candidate",
+        "failure_capture_integration",
+        "pre76_scope",
+        "response_schema"
+      ],
+      "properties": {
+        "request_contract_candidate": {"const": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED"},
+        "failure_capture_integration": {"const": "DEVELOPMENT_INTEGRATION_CANDIDATE_NOT_ADOPTED"},
+        "pre76_scope": {"const": "SCOPE_CANDIDATE_NOT_RECOMMENDED_NOT_AUTHORIZED"},
+        "response_schema": {"const": "FROZEN_UNCHANGED"}
+      }
+    },
+    "next_action": {
+      "const": "PREPARE_PRE76_EXACT_TWO_REQUEST_SECURITY_REVIEW_RERUN_RECOMMENDATION"
+    },
+    "next_action_authorized": {"const": false},
+    "limitations": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 12}
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "live_rerun_authorized",
+        "provider_supported",
+        "formal_human_security_review_complete",
+        "conformance_pass",
+        "standard_ready",
+        "release_authorized",
+        "production_ready"
+      ],
+      "properties": {
+        "live_rerun_authorized": {"const": false},
+        "provider_supported": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "conformance_pass": {"const": false},
+        "standard_ready": {"const": false},
+        "release_authorized": {"const": false},
+        "production_ready": {"const": false}
+      }
+    }
+  }
+}

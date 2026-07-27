@@ -1,0 +1,332 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre75-review-request-contract-candidate.schema.v0.2.json",
+  "title": "TITMAS PRE-75 Review Request Contract Candidate v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "base_contract",
+    "target",
+    "source_package_contract",
+    "response_schema_transmission",
+    "system_message",
+    "review_instruction",
+    "render_algorithm",
+    "sessions",
+    "transport_policy",
+    "failure_capture",
+    "persistence_policy",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre75-review-request-contract-candidate.schema.v0.2.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE75-REVIEW-REQUEST-CONTRACT-CANDIDATE-0.2"},
+    "version": {"const": "0.2.0"},
+    "status": {"const": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED"},
+    "base_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reference", "sha256"],
+      "properties": {
+        "reference": {
+          "const": "../commercialization-standards-p0-exact-agent-security-review/pre73-review-request-contract.v0.1.json"
+        },
+        "sha256": {
+          "const": "c98f2464b814696152bcb8946ffbc5ffea5b6a9daf48e1b6657f59d5aa2f2a1b"
+        }
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "branch", "commit", "writes_max"],
+      "properties": {
+        "repository": {"const": "joy7758/titmas-integrations"},
+        "branch": {"const": "codex/rb0-governance-baseline"},
+        "commit": {"const": "0030077f29c37145a306b72e7083345eb76b504a"},
+        "writes_max": {"const": 0}
+      }
+    },
+    "source_package_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version",
+        "canonicalization",
+        "source_package_bytes",
+        "source_package_sha256",
+        "content_loaded_in_memory",
+        "persistence_allowed"
+      ],
+      "properties": {
+        "contract_version": {"const": "pre73.security-review-source-package/v0.1"},
+        "canonicalization": {
+          "const": "UTF8_JSON_SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE"
+        },
+        "source_package_bytes": {"const": 102960},
+        "source_package_sha256": {
+          "const": "5e357eab0d23db0c79d34f7a66ddc01e0a8070314ed8b6be2cee3b34e3973813"
+        },
+        "content_loaded_in_memory": {"const": true},
+        "persistence_allowed": {"const": false}
+      }
+    },
+    "response_schema_transmission": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "manifest_reference",
+        "manifest_sha256",
+        "source_schema_reference",
+        "source_schema_file_sha256",
+        "canonicalization",
+        "canonical_payload_bytes",
+        "canonical_payload_sha256",
+        "embedded_in_each_user_message",
+        "occurrences_per_message"
+      ],
+      "properties": {
+        "manifest_reference": {
+          "const": "./pre75-canonical-response-schema-transmission-payload.v0.1.json"
+        },
+        "manifest_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "source_schema_reference": {
+          "const": "../commercialization-standards-p0-exact-agent-security-review/pre73-agent-review-response.schema.v0.2.json"
+        },
+        "source_schema_file_sha256": {
+          "const": "567434aacc1c6747771e96d5238568fa6906d8a24db51cf74afab838847684c8"
+        },
+        "canonicalization": {
+          "const": "UTF8_JSON_SORT_KEYS_TRUE_SEPARATORS_COMMA_COLON_ENSURE_ASCII_FALSE"
+        },
+        "canonical_payload_bytes": {"const": 5271},
+        "canonical_payload_sha256": {
+          "const": "fa515e139eb5915f48b2ed6fda9f4b85275f9f6ac4c5b49e69cecf4b8afdc2af"
+        },
+        "embedded_in_each_user_message": {"const": true},
+        "occurrences_per_message": {"const": 1}
+      }
+    },
+    "system_message": {
+      "const": "Perform a source-grounded static security review. The user message contains a hash-bound public-safe source package and the complete canonical JSON response Schema. Return exactly one direct JSON object conforming to that embedded Schema. Do not use Markdown, code fences, commentary, prefixes, suffixes or additional fields. Assess every SR-001 through SR-016 question in order. Retain concerns, unknowns, limitations and proposed tests. This is advisory agent input only, not a formal human security review, provider approval, conformance result, standard decision, release authorization or production claim."
+    },
+    "review_instruction": {
+      "type": "string",
+      "minLength": 400
+    },
+    "render_algorithm": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["separator", "ordered_segments", "raw_request_persisted"],
+      "properties": {
+        "separator": {"const": "\\n"},
+        "ordered_segments": {
+          "const": [
+            "REVIEW_INSTRUCTION",
+            "RESPONSE_REVIEW_SESSION_ID_LINE",
+            "REVIEW_ROLE_LINE",
+            "TARGET_COMMIT_LINE",
+            "SOURCE_PACKAGE_SHA256_LINE",
+            "RESPONSE_SCHEMA_SOURCE_FILE_SHA256_LINE",
+            "RESPONSE_SCHEMA_CANONICAL_SHA256_LINE",
+            "RESPONSE_SCHEMA_CANONICAL_JSON_BEGIN",
+            "RESPONSE_SCHEMA_CANONICAL_JSON",
+            "RESPONSE_SCHEMA_CANONICAL_JSON_END",
+            "SOURCE_PACKAGE_CANONICAL_JSON_BEGIN",
+            "SOURCE_PACKAGE_CANONICAL_JSON",
+            "SOURCE_PACKAGE_CANONICAL_JSON_END"
+          ]
+        },
+        "raw_request_persisted": {"const": false}
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {"$ref": "#/$defs/qianfanSession"},
+        {"$ref": "#/$defs/qwenSession"}
+      ],
+      "items": false
+    },
+    "transport_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "requests_max",
+        "concurrency_max",
+        "temperature",
+        "stream",
+        "timeout_seconds_per_request",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "response_extraction_max",
+        "json_repair_max",
+        "currently_authorized"
+      ],
+      "properties": {
+        "requests_max": {"const": 2},
+        "concurrency_max": {"const": 1},
+        "temperature": {"const": 0},
+        "stream": {"const": false},
+        "timeout_seconds_per_request": {"const": 120},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "model_substitution_max": {"const": 0},
+        "response_extraction_max": {"const": 0},
+        "json_repair_max": {"const": 0},
+        "currently_authorized": {"const": false}
+      }
+    },
+    "failure_capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["contract_reference", "contract_sha256", "detail_schema_reference", "detail_schema_sha256", "status"],
+      "properties": {
+        "contract_reference": {
+          "const": "../commercialization-standards-pre74-schema-failure-diagnostic/pre74-sanitized-failure-detail-capture-contract.v0.1.json"
+        },
+        "contract_sha256": {
+          "const": "a2c3310877528f270f819a796ad3e13b0f85cc03a7763c5de9ddd533a94f58dd"
+        },
+        "detail_schema_reference": {
+          "const": "../commercialization-standards-pre74-schema-failure-diagnostic/pre74-sanitized-failure-detail.schema.v0.1.json"
+        },
+        "detail_schema_sha256": {
+          "const": "c628cd18143209638fe562877edd01764c1f2fbb58b02dc5764ebbee0fb55e21"
+        },
+        "status": {"const": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED"}
+      }
+    },
+    "persistence_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_payload_persisted",
+        "source_package_persisted",
+        "raw_provider_envelope_persisted",
+        "raw_assistant_content_persisted",
+        "sanitized_success_or_failure_record_allowed"
+      ],
+      "properties": {
+        "request_payload_persisted": {"const": false},
+        "source_package_persisted": {"const": false},
+        "raw_provider_envelope_persisted": {"const": false},
+        "raw_assistant_content_persisted": {"const": false},
+        "sanitized_success_or_failure_record_allowed": {"const": true}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_contract_adopted",
+        "response_schema_changed",
+        "live_rerun_authorized",
+        "provider_supported",
+        "formal_human_security_review_complete",
+        "standard_ready",
+        "release_authorized"
+      ],
+      "properties": {
+        "request_contract_adopted": {"const": false},
+        "response_schema_changed": {"const": false},
+        "live_rerun_authorized": {"const": false},
+        "provider_supported": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "standard_ready": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "qianfanSession": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_session_id",
+        "response_review_session_id",
+        "provider",
+        "endpoint",
+        "model",
+        "credential_identifier",
+        "review_role",
+        "response_format",
+        "enable_thinking",
+        "system_message_bytes",
+        "system_message_sha256",
+        "user_message_bytes",
+        "user_message_sha256",
+        "schema_payload_occurrences",
+        "source_package_occurrences"
+      ],
+      "properties": {
+        "execution_session_id": {"const": "PRE76-QF-SECURITY-01"},
+        "response_review_session_id": {"const": "PRE73-QF-SECURITY-01"},
+        "provider": {"const": "BAIDU_QIANFAN"},
+        "endpoint": {"const": "https://qianfan.baidubce.com/v2/chat/completions"},
+        "model": {"const": "ernie-4.5-turbo-20260402"},
+        "credential_identifier": {"const": "QIANFAN_API_KEY"},
+        "review_role": {"const": "IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE"},
+        "response_format": {"const": {"type": "json_object"}},
+        "enable_thinking": {"const": "OMITTED"},
+        "system_message_bytes": {"const": 610},
+        "system_message_sha256": {
+          "const": "a9d764aca83b764f9b4367bc1cdf50dd6b7698c03daa03d1690dc447d64b39c3"
+        },
+        "user_message_bytes": {"type": "integer", "minimum": 1, "maximum": 131072},
+        "user_message_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "schema_payload_occurrences": {"const": 1},
+        "source_package_occurrences": {"const": 1}
+      }
+    },
+    "qwenSession": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "execution_session_id",
+        "response_review_session_id",
+        "provider",
+        "endpoint",
+        "model",
+        "credential_identifier",
+        "review_role",
+        "response_format",
+        "enable_thinking",
+        "system_message_bytes",
+        "system_message_sha256",
+        "user_message_bytes",
+        "user_message_sha256",
+        "schema_payload_occurrences",
+        "source_package_occurrences"
+      ],
+      "properties": {
+        "execution_session_id": {"const": "PRE76-QWEN-SECURITY-02"},
+        "response_review_session_id": {"const": "PRE73-QWEN-SECURITY-02"},
+        "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+        "endpoint": {
+          "const": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions"
+        },
+        "model": {"const": "qwen3.7-plus"},
+        "credential_identifier": {"const": "DASHSCOPE_API_KEY"},
+        "review_role": {"const": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"},
+        "response_format": {"const": {"type": "json_object"}},
+        "enable_thinking": {"const": false},
+        "system_message_bytes": {"const": 610},
+        "system_message_sha256": {
+          "const": "a9d764aca83b764f9b4367bc1cdf50dd6b7698c03daa03d1690dc447d64b39c3"
+        },
+        "user_message_bytes": {"type": "integer", "minimum": 1, "maximum": 131072},
+        "user_message_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "schema_payload_occurrences": {"const": 1},
+        "source_package_occurrences": {"const": 1}
+      }
+    }
+  }
+}

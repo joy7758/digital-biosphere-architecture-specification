@@ -1,0 +1,143 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre75-contract-transmission-coverage-validation.schema.v0.1.json",
+  "title": "TITMAS PRE-75 Contract Transmission Coverage Validation v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "validated_refs",
+    "render_validation",
+    "coverage",
+    "mutation_cases",
+    "operation_accounting",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre75-contract-transmission-coverage-validation.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE75-CONTRACT-TRANSMISSION-COVERAGE-VALIDATION-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_FULL_SCHEMA_TRANSMISSION_AND_16_OF_16_NEGATIVES"},
+    "validated_refs": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {"$ref": "#/$defs/ref"}
+    },
+    "render_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_input_hashes_match",
+        "source_package_reconstruction",
+        "response_schema_canonicalization",
+        "rendered_user_messages",
+        "schema_payload_occurrences",
+        "source_package_occurrences",
+        "messages_within_budget"
+      ],
+      "properties": {
+        "target_input_hashes_match": {"const": "10/10"},
+        "source_package_reconstruction": {"const": "1/1"},
+        "response_schema_canonicalization": {"const": "1/1"},
+        "rendered_user_messages": {"const": "2/2"},
+        "schema_payload_occurrences": {"const": "2/2"},
+        "source_package_occurrences": {"const": "2/2"},
+        "messages_within_budget": {"const": "2/2"}
+      }
+    },
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "top_level_keys",
+        "question_assessment_keys",
+        "explicit_non_claim_keys",
+        "schema_structure_markers",
+        "ordered_question_bindings",
+        "session_role_bindings",
+        "direct_json_and_no_repair_boundary"
+      ],
+      "properties": {
+        "top_level_keys": {"const": "10/10"},
+        "question_assessment_keys": {"const": "7/7"},
+        "explicit_non_claim_keys": {"const": "8/8"},
+        "schema_structure_markers": {"const": "3/3"},
+        "ordered_question_bindings": {"const": "16/16"},
+        "session_role_bindings": {"const": "2/2"},
+        "direct_json_and_no_repair_boundary": {"const": true}
+      }
+    },
+    "mutation_cases": {
+      "type": "array",
+      "minItems": 16,
+      "maxItems": 16,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "mutation", "result"],
+        "properties": {
+          "case_id": {"pattern": "^MUT-[0-9]{3}$"},
+          "mutation": {"type": "string", "minLength": 8},
+          "result": {"const": "REJECTED_FAIL_CLOSED"}
+        }
+      }
+    },
+    "operation_accounting": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "network_requests",
+        "live_model_requests",
+        "credential_value_reads",
+        "raw_provider_response_reads",
+        "raw_request_or_source_persistence",
+        "target_writes",
+        "dbos_writes",
+        "saee_writes"
+      ],
+      "properties": {
+        "network_requests": {"const": 0},
+        "live_model_requests": {"const": 0},
+        "credential_value_reads": {"const": 0},
+        "raw_provider_response_reads": {"const": 0},
+        "raw_request_or_source_persistence": {"const": 0},
+        "target_writes": {"const": 0},
+        "dbos_writes": {"const": 0},
+        "saee_writes": {"const": 0}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_contract_adopted",
+        "live_rerun_authorized",
+        "provider_supported",
+        "formal_human_security_review_complete",
+        "standard_ready"
+      ],
+      "properties": {
+        "request_contract_adopted": {"const": false},
+        "live_rerun_authorized": {"const": false},
+        "provider_supported": {"const": false},
+        "formal_human_security_review_complete": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 10},
+        "sha256": {"pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}
