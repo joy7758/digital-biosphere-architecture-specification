@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre63-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS PRE-63 Execution Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "executed_at",
+    "input_commits",
+    "artifact_hashes",
+    "counts",
+    "effects"
+  ],
+  "properties": {
+    "$schema": { "const": "./pre63-execution-receipt.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-PRE63-EXECUTION-RECEIPT-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "PASS_OFFLINE_PACKET_COMPLETE" },
+    "decision_reference": { "const": "CS-D02-PRE-63" },
+    "executed_at": { "type": "string", "format": "date-time" },
+    "input_commits": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dba_decision_commit", "target_observation_commit"],
+      "properties": {
+        "dba_decision_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "target_observation_commit": { "const": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6" }
+      }
+    },
+    "artifact_hashes": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": { "type": "string", "minLength": 1, "maxLength": 240 },
+          "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_packet_files",
+        "controls_classified",
+        "network_requests",
+        "model_requests",
+        "credential_reads",
+        "external_repository_writes",
+        "implementation_writes"
+      ],
+      "properties": {
+        "offline_packet_files": { "const": 9 },
+        "controls_classified": { "const": 11 },
+        "network_requests": { "const": 0 },
+        "model_requests": { "const": 0 },
+        "credential_reads": { "const": 0 },
+        "external_repository_writes": { "const": 0 },
+        "implementation_writes": { "const": 0 }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_changed",
+        "provider_supported",
+        "formal_human_security_review_complete",
+        "implementation_authorized",
+        "release_authorized",
+        "standard_ready"
+      ],
+      "properties": {
+        "authority_changed": { "const": false },
+        "provider_supported": { "const": false },
+        "formal_human_security_review_complete": { "const": false },
+        "implementation_authorized": { "const": false },
+        "release_authorized": { "const": false },
+        "standard_ready": { "const": false }
+      }
+    }
+  }
+}

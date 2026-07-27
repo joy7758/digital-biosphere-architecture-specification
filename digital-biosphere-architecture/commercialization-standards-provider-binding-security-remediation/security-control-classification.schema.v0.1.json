@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/security-control-classification.schema.v0.1.json",
+  "title": "TITMAS Provider Binding Security Control Classification",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "target_observation",
+    "classifications",
+    "summary",
+    "effects"
+  ],
+  "properties": {
+    "$schema": { "const": "./security-control-classification.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-PRE63-SECURITY-CONTROL-CLASSIFICATION-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "OFFLINE_CLASSIFICATION_COMPLETE_IMPLEMENTATION_NOT_AUTHORIZED" },
+    "decision_reference": { "const": "CS-D02-PRE-63" },
+    "target_observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "branch", "commit", "network_binding_implemented", "dependencies"],
+      "properties": {
+        "repository": { "const": "https://github.com/joy7758/titmas-integrations.git" },
+        "branch": { "const": "codex/rb0-governance-baseline" },
+        "commit": { "const": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6" },
+        "network_binding_implemented": { "const": false },
+        "dependencies": { "const": [] }
+      }
+    },
+    "classifications": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "control_id",
+          "classification",
+          "source_refs",
+          "current_target_fact",
+          "disposition",
+          "required_gate",
+          "current_vulnerability_proven",
+          "implementation_authorized"
+        ],
+        "properties": {
+          "control_id": {
+            "enum": [
+              "P0_DNS_TCP_SEPARATION",
+              "TLS_HOSTNAME_VERIFICATION",
+              "CERTIFICATE_PINNING",
+              "CREDENTIAL_NON_PERSISTENCE",
+              "CREDENTIAL_LIFECYCLE",
+              "RESPONSE_BODY_LIMIT",
+              "SANITIZED_ERROR_HANDLING",
+              "EXACT_DEPENDENCY_PIN",
+              "SUPPLY_CHAIN_AND_REPRODUCIBLE_BUILD",
+              "AUTOMATIC_RESILIENCE_MECHANISMS",
+              "INCIDENT_AND_DISCLOSURE"
+            ]
+          },
+          "classification": {
+            "enum": [
+              "REQUIRED_BLOCKING",
+              "REQUIRED_BEFORE_NETWORK_BINDING",
+              "REQUIRED_BEFORE_BINDING_IMPLEMENTATION",
+              "OPTIONAL_NOT_DEFAULT",
+              "UNSUPPORTED_CONFLICTS_WITH_FAIL_CLOSED",
+              "OUT_OF_SCOPE_CURRENT_DEVELOPMENT_REQUIRED_BEFORE_SUPPORTED_OPERATION",
+              "OUT_OF_SCOPE_CURRENT_DEVELOPMENT_REQUIRED_BEFORE_RELEASE"
+            ]
+          },
+          "source_refs": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1, "maxLength": 240 }
+          },
+          "current_target_fact": { "type": "string", "minLength": 1, "maxLength": 500 },
+          "disposition": { "type": "string", "minLength": 1, "maxLength": 700 },
+          "required_gate": { "type": "string", "minLength": 1, "maxLength": 180 },
+          "current_vulnerability_proven": { "const": false },
+          "implementation_authorized": { "const": false }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "total",
+        "required_blocking",
+        "required_before_network_binding",
+        "required_before_binding_implementation",
+        "optional_not_default",
+        "unsupported",
+        "out_of_scope_current"
+      ],
+      "properties": {
+        "total": { "const": 11 },
+        "required_blocking": { "const": 1 },
+        "required_before_network_binding": { "const": 4 },
+        "required_before_binding_implementation": { "const": 1 },
+        "optional_not_default": { "const": 1 },
+        "unsupported": { "const": 1 },
+        "out_of_scope_current": { "const": 3 }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_findings_elevated_to_proven_vulnerabilities",
+        "target_changed",
+        "implementation_authorized",
+        "provider_supported",
+        "formal_security_review_complete",
+        "standard_ready"
+      ],
+      "properties": {
+        "model_findings_elevated_to_proven_vulnerabilities": { "const": false },
+        "target_changed": { "const": false },
+        "implementation_authorized": { "const": false },
+        "provider_supported": { "const": false },
+        "formal_security_review_complete": { "const": false },
+        "standard_ready": { "const": false }
+      }
+    }
+  }
+}

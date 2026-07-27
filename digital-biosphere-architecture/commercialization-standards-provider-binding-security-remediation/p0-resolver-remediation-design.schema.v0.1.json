@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/p0-resolver-remediation-design.schema.v0.1.json",
+  "title": "TITMAS P0 Resolver Remediation Design",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "selected_design",
+    "invariants",
+    "retained_metadata",
+    "forbidden_metadata",
+    "known_limitations",
+    "authorization"
+  ],
+  "properties": {
+    "$schema": { "const": "./p0-resolver-remediation-design.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-PRE63-P0-RESOLVER-REMEDIATION-DESIGN-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "DESIGN_ONLY_IMPLEMENTATION_BLOCKED" },
+    "decision_reference": { "const": "CS-D02-PRE-63" },
+    "selected_design": {
+      "const": "BOUNDED_SINGLE_RESOLUTION_SINGLE_ADDRESS_SINGLE_CONNECT_ORIGINAL_HOSTNAME_TLS"
+    },
+    "invariants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resolver_invocations_max",
+        "selected_addresses_max",
+        "tcp_connection_attempts_max",
+        "fallback_allowed",
+        "redirect_allowed",
+        "proxy_allowed",
+        "alternate_host_allowed",
+        "p0_synthetic_pass_allowed",
+        "dns_failure_closes_dependents",
+        "tls_identity_uses_original_allowlisted_hostname",
+        "address_selection_rule_versioned",
+        "component_replaceable"
+      ],
+      "properties": {
+        "resolver_invocations_max": { "const": 1 },
+        "selected_addresses_max": { "const": 1 },
+        "tcp_connection_attempts_max": { "const": 1 },
+        "fallback_allowed": { "const": false },
+        "redirect_allowed": { "const": false },
+        "proxy_allowed": { "const": false },
+        "alternate_host_allowed": { "const": false },
+        "p0_synthetic_pass_allowed": { "const": false },
+        "dns_failure_closes_dependents": { "const": true },
+        "tls_identity_uses_original_allowlisted_hostname": { "const": true },
+        "address_selection_rule_versioned": { "const": true },
+        "component_replaceable": { "const": true }
+      }
+    },
+    "retained_metadata": {
+      "const": [
+        "P0_ELAPSED_MS",
+        "BOUNDED_RESULT_COUNT",
+        "FAILURE_ENUM",
+        "OPAQUE_MONOTONIC_REFERENCE"
+      ]
+    },
+    "forbidden_metadata": {
+      "const": [
+        "RESOLVED_IP_ADDRESS",
+        "DNS_PACKET",
+        "CREDENTIAL",
+        "AUTHORIZATION_HEADER",
+        "RAW_REQUEST_BODY",
+        "RAW_RESPONSE_BODY"
+      ]
+    },
+    "known_limitations": {
+      "const": [
+        "NO_MULTI_ADDRESS_FAILOVER",
+        "NO_ALTERNATE_RESOLVER",
+        "NO_HIGH_AVAILABILITY_CLAIM",
+        "NO_PROVIDER_CONFORMANCE_CLAIM"
+      ]
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_implementation_authorized",
+        "network_execution_authorized",
+        "dependency_adoption_authorized",
+        "target_write_authorized"
+      ],
+      "properties": {
+        "contract_implementation_authorized": { "const": false },
+        "network_execution_authorized": { "const": false },
+        "dependency_adoption_authorized": { "const": false },
+        "target_write_authorized": { "const": false }
+      }
+    }
+  }
+}

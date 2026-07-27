@@ -1,0 +1,48 @@
+{
+  "$schema": "./p0-resolver-remediation-design.schema.v0.1.json",
+  "document_id": "TITMAS-PRE63-P0-RESOLVER-REMEDIATION-DESIGN-0.1",
+  "version": "0.1.0",
+  "status": "DESIGN_ONLY_IMPLEMENTATION_BLOCKED",
+  "decision_reference": "CS-D02-PRE-63",
+  "selected_design": "BOUNDED_SINGLE_RESOLUTION_SINGLE_ADDRESS_SINGLE_CONNECT_ORIGINAL_HOSTNAME_TLS",
+  "invariants": {
+    "resolver_invocations_max": 1,
+    "selected_addresses_max": 1,
+    "tcp_connection_attempts_max": 1,
+    "fallback_allowed": false,
+    "redirect_allowed": false,
+    "proxy_allowed": false,
+    "alternate_host_allowed": false,
+    "p0_synthetic_pass_allowed": false,
+    "dns_failure_closes_dependents": true,
+    "tls_identity_uses_original_allowlisted_hostname": true,
+    "address_selection_rule_versioned": true,
+    "component_replaceable": true
+  },
+  "retained_metadata": [
+    "P0_ELAPSED_MS",
+    "BOUNDED_RESULT_COUNT",
+    "FAILURE_ENUM",
+    "OPAQUE_MONOTONIC_REFERENCE"
+  ],
+  "forbidden_metadata": [
+    "RESOLVED_IP_ADDRESS",
+    "DNS_PACKET",
+    "CREDENTIAL",
+    "AUTHORIZATION_HEADER",
+    "RAW_REQUEST_BODY",
+    "RAW_RESPONSE_BODY"
+  ],
+  "known_limitations": [
+    "NO_MULTI_ADDRESS_FAILOVER",
+    "NO_ALTERNATE_RESOLVER",
+    "NO_HIGH_AVAILABILITY_CLAIM",
+    "NO_PROVIDER_CONFORMANCE_CLAIM"
+  ],
+  "authorization": {
+    "contract_implementation_authorized": false,
+    "network_execution_authorized": false,
+    "dependency_adoption_authorized": false,
+    "target_write_authorized": false
+  }
+}

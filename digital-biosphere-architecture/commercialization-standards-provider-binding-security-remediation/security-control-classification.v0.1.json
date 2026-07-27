@@ -1,0 +1,143 @@
+{
+  "$schema": "./security-control-classification.schema.v0.1.json",
+  "document_id": "TITMAS-PRE63-SECURITY-CONTROL-CLASSIFICATION-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_CLASSIFICATION_COMPLETE_IMPLEMENTATION_NOT_AUTHORIZED",
+  "decision_reference": "CS-D02-PRE-63",
+  "target_observation": {
+    "repository": "https://github.com/joy7758/titmas-integrations.git",
+    "branch": "codex/rb0-governance-baseline",
+    "commit": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6",
+    "network_binding_implemented": false,
+    "dependencies": []
+  },
+  "classifications": [
+    {
+      "control_id": "P0_DNS_TCP_SEPARATION",
+      "classification": "REQUIRED_BLOCKING",
+      "source_refs": ["PRE-50 section 4.1", "PRE-62 Qianfan", "PRE-62 Qwen"],
+      "current_target_fact": "The current target validates P0-P9 observations but has no network executor and cannot directly observe DNS separately from TCP.",
+      "disposition": "Define a bounded resolver observation and single resolved-address connection contract. Keep implementation blocked until contract, negative tests and security accountability are separately reviewed.",
+      "required_gate": "BEFORE_PROVIDER_BINDING_IMPLEMENTATION_RECOMMENDATION",
+      "current_vulnerability_proven": false,
+      "implementation_authorized": false
+    },
+    {
+      "control_id": "TLS_HOSTNAME_VERIFICATION",
+      "classification": "REQUIRED_BEFORE_NETWORK_BINDING",
+      "source_refs": ["PRE-50 section 5.1", "target SECURITY.md", "PRE-62 Qwen"],
+      "current_target_fact": "No TLS stack or network binding exists in the target.",
+      "disposition": "Require system trust-store verification, original allowlisted hostname verification and SNI; reject disabled verification.",
+      "required_gate": "BEFORE_ANY_NETWORK_BINDING_EXECUTION",
+      "current_vulnerability_proven": false,
+      "implementation_authorized": false
+    },
+    {
+      "control_id": "CERTIFICATE_PINNING",
+      "classification": "OPTIONAL_NOT_DEFAULT",
+      "source_refs": ["PRE-62 Qwen", "PRE-50 section 5.1"],
+      "current_target_fact": "No TLS stack exists and no certificate-pinning policy has been adopted.",
+      "disposition": "Do not mandate pinning by default. It requires a separate threat model plus certificate rotation, rollback and outage handling.",
+      "required_gate": "SEPARATE_SECURITY_DECISION_IF_PROPOSED",
+      "current_vulnerability_proven": false,
+      "implementation_authorized": false
+    },
+    {
+      "control_id": "CREDENTIAL_NON_PERSISTENCE",
+      "classification": "REQUIRED_BEFORE_NETWORK_BINDING",
+      "source_refs": ["PRE-50 section 5.2", "target SECURITY.md", "PRE-62 Qwen"],
+      "current_target_fact": "The target exposes no credential fields and reads no credential.",
+      "disposition": "A future binding may read only the named variable at request construction and must never persist or log credential, Authorization, environment dumps or raw bodies.",
+      "required_gate": "BEFORE_ANY_CREDENTIAL_READ",
+      "current_vulnerability_proven": false,
+      "implementation_authorized": false
+    },
+    {
+      "control_id": "CREDENTIAL_LIFECYCLE",
+      "classification": "OUT_OF_SCOPE_CURRENT_DEVELOPMENT_REQUIRED_BEFORE_SUPPORTED_OPERATION",
+      "source_refs": ["PRE-62 Qwen", "target SECURITY.md"],
+      "current_target_fact": "No supported operation, credential store, security contact or rotation owner exists.",
+      "disposition": "Define rotation, revocation, expiry and incident ownership before supported operation; do not claim secret-manager integration now.",
+      "required_gate": "BEFORE_SUPPORTED_OR_PRODUCTION_OPERATION",
+      "current_vulnerability_proven": false,
+      "implementation_authorized": false
+    },
+    {
+      "control_id": "RESPONSE_BODY_LIMIT",
+      "classification": "REQUIRED_BEFORE_NETWORK_BINDING",
+      "source_refs": ["PRE-50 section 5.3", "target SECURITY.md", "PRE-62 Qwen"],
+      "current_target_fact": "The target has no response reader; PRE-50 proposed but did not implement a 1048576-byte limit.",
+      "disposition": "Enforce a cumulative 1048576-byte limit while reading; fail before unbounded buffering and retain no raw body.",
+      "required_gate": "BEFORE_RESPONSE_BODY_READ_IMPLEMENTATION",
+      "current_vulnerability_proven": false,
+      "implementation_authorized": false
+    },
+    {
+      "control_id": "SANITIZED_ERROR_HANDLING",
+      "classification": "REQUIRED_BEFORE_NETWORK_BINDING",
+      "source_refs": ["PRE-50 sections 5.2 and 6", "target SECURITY.md", "PRE-62 Qwen"],
+      "current_target_fact": "The target currently serializes bounded sanitized metadata and has no Provider error body.",
+      "disposition": "Retain only approved enums, HTTP status, bounded counts, digests and opaque references; never retain Provider error body, prompt, review content or hidden reasoning.",
+      "required_gate": "BEFORE_PROVIDER_ERROR_HANDLING_IMPLEMENTATION",
+      "current_vulnerability_proven": false,
+      "implementation_authorized": false
+    },
+    {
+      "control_id": "EXACT_DEPENDENCY_PIN",
+      "classification": "REQUIRED_BEFORE_BINDING_IMPLEMENTATION",
+      "source_refs": ["PRE-50 section 4", "PRE-62 Qwen", "target pyproject.toml"],
+      "current_target_fact": "Target project dependencies are empty; httpcore==1.0.9 is a planning candidate only.",
+      "disposition": "Keep the exact pin as a candidate until license, artifact hash, vulnerability and transitive dependency review are complete.",
+      "required_gate": "BEFORE_DEPENDENCY_ADOPTION",
+      "current_vulnerability_proven": false,
+      "implementation_authorized": false
+    },
+    {
+      "control_id": "SUPPLY_CHAIN_AND_REPRODUCIBLE_BUILD",
+      "classification": "OUT_OF_SCOPE_CURRENT_DEVELOPMENT_REQUIRED_BEFORE_RELEASE",
+      "source_refs": ["PRE-49 build result", "PRE-50 section 4", "PRE-62 Qwen"],
+      "current_target_fact": "Two offline builds passed but artifact hashes differed; no SBOM or reproducible-build proof exists.",
+      "disposition": "Require lock/provenance, artifact hashes, SBOM and reproducible-build evidence before release; keep current Development reference non-released.",
+      "required_gate": "BEFORE_RELEASE_AUTHORIZATION",
+      "current_vulnerability_proven": false,
+      "implementation_authorized": false
+    },
+    {
+      "control_id": "AUTOMATIC_RESILIENCE_MECHANISMS",
+      "classification": "UNSUPPORTED_CONFLICTS_WITH_FAIL_CLOSED",
+      "source_refs": ["PRE-50 sections 4 and 6", "target AGENTS.md", "PRE-62 Qwen"],
+      "current_target_fact": "Current contract preserves one first failure and prohibits silent retry, fallback, substitution and repair.",
+      "disposition": "Keep automatic retry, fallback, redirect, model substitution, alias inference and JSON repair disabled for the bounded profile.",
+      "required_gate": "NOT_APPLICABLE_UNSUPPORTED_IN_BOUNDED_PROFILE",
+      "current_vulnerability_proven": false,
+      "implementation_authorized": false
+    },
+    {
+      "control_id": "INCIDENT_AND_DISCLOSURE",
+      "classification": "OUT_OF_SCOPE_CURRENT_DEVELOPMENT_REQUIRED_BEFORE_SUPPORTED_OPERATION",
+      "source_refs": ["target SECURITY.md", "PRE-62 Qwen"],
+      "current_target_fact": "Security contact and private disclosure channel are NOT_ASSIGNED; there is no supported version or operation.",
+      "disposition": "Assign accountable security contact, private route and incident runbook before supported operation; do not publish sensitive exploit details before a verified route exists.",
+      "required_gate": "BEFORE_SUPPORTED_OR_PRODUCTION_OPERATION",
+      "current_vulnerability_proven": false,
+      "implementation_authorized": false
+    }
+  ],
+  "summary": {
+    "total": 11,
+    "required_blocking": 1,
+    "required_before_network_binding": 4,
+    "required_before_binding_implementation": 1,
+    "optional_not_default": 1,
+    "unsupported": 1,
+    "out_of_scope_current": 3
+  },
+  "effects": {
+    "model_findings_elevated_to_proven_vulnerabilities": false,
+    "target_changed": false,
+    "implementation_authorized": false,
+    "provider_supported": false,
+    "formal_security_review_complete": false,
+    "standard_ready": false
+  }
+}

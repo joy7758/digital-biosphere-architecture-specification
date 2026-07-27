@@ -1,0 +1,102 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre63-validation-result.schema.v0.1.json",
+  "title": "TITMAS PRE-63 Validation Result",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "checks",
+    "counts",
+    "effects",
+    "next_action"
+  ],
+  "properties": {
+    "$schema": { "const": "./pre63-validation-result.schema.v0.1.json" },
+    "document_id": { "const": "TITMAS-PRE63-VALIDATION-RESULT-0.1" },
+    "version": { "const": "0.1.0" },
+    "status": { "const": "PASS_OFFLINE_CLASSIFICATION_AND_REMEDIATION_DESIGN" },
+    "decision_reference": { "const": "CS-D02-PRE-63" },
+    "checks": {
+      "type": "array",
+      "minItems": 18,
+      "maxItems": 18,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "DECISION_SCHEMA_PASS",
+          "CLASSIFICATION_SCHEMA_PASS",
+          "P0_DESIGN_SCHEMA_PASS",
+          "VALIDATION_RESULT_SCHEMA_PASS",
+          "RECEIPT_SCHEMA_PASS",
+          "CONTROL_COUNT_11_PASS",
+          "CONTROL_IDS_UNIQUE_PASS",
+          "CLASSIFICATION_COUNTS_PASS",
+          "P0_SINGLE_RESOLUTION_PASS",
+          "P0_SINGLE_ADDRESS_PASS",
+          "P1_SINGLE_CONNECT_PASS",
+          "P0_SYNTHETIC_PASS_REJECTED",
+          "RETRY_FALLBACK_REDIRECT_REJECTED",
+          "TLS_ORIGINAL_HOSTNAME_PASS",
+          "FALSE_EFFECTS_PASS",
+          "TARGET_CLEAN_UNCHANGED_PASS",
+          "PRIVATE_PATH_AND_SECRET_PATTERN_SCAN_PASS",
+          "ARTIFACT_HASH_RECEIPT_PASS"
+        ]
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "checks_passed",
+        "checks_total",
+        "controls_classified",
+        "network_requests",
+        "model_requests",
+        "credential_reads",
+        "target_writes",
+        "implementation_writes"
+      ],
+      "properties": {
+        "checks_passed": { "const": 18 },
+        "checks_total": { "const": 18 },
+        "controls_classified": { "const": 11 },
+        "network_requests": { "const": 0 },
+        "model_requests": { "const": 0 },
+        "credential_reads": { "const": 0 },
+        "target_writes": { "const": 0 },
+        "implementation_writes": { "const": 0 }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_findings_are_proven_vulnerabilities",
+        "formal_human_security_review_complete",
+        "provider_supported",
+        "provider_integrated",
+        "implementation_authorized",
+        "p0_remediation_implemented",
+        "standard_ready"
+      ],
+      "properties": {
+        "model_findings_are_proven_vulnerabilities": { "const": false },
+        "formal_human_security_review_complete": { "const": false },
+        "provider_supported": { "const": false },
+        "provider_integrated": { "const": false },
+        "implementation_authorized": { "const": false },
+        "p0_remediation_implemented": { "const": false },
+        "standard_ready": { "const": false }
+      }
+    },
+    "next_action": {
+      "const": "FORM_EXACT_P0_RESOLVER_CONTRACT_AND_TEST_DESIGN_RECOMMENDATION"
+    }
+  }
+}
