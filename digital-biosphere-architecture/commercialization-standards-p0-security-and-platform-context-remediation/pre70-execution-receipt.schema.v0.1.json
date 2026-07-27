@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre70-execution-receipt.v0.1.json",
+  "title": "TITMAS PRE-70 Explicit Docker Host and Platform Validation Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_commit",
+    "decision_sha256",
+    "execution_plan_reference",
+    "execution_plan_sha256",
+    "started_at",
+    "ended_at",
+    "executed_by",
+    "target",
+    "runtime_controls",
+    "actuals",
+    "platform_results",
+    "agent_review_results",
+    "first_failure",
+    "global_config_guard",
+    "cleanup",
+    "gate_results",
+    "effects",
+    "accounting_issue",
+    "next_action"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./pre70-execution-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE70-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FAIL_CLOSED_AGENT_RESPONSE_NOT_DIRECT_JSON_AFTER_PLATFORM_PASS"
+    },
+    "decision_reference": {
+      "const": "../../TITMAS-CS-D02-PRE-70-EXPLICIT-DOCKER-HOST-AND-GLOBAL-CONFIG-GUARD-DECISION-RECORD.v0.1.json"
+    },
+    "decision_commit": {
+      "const": "426d1e128f55ea421b8926e3b55101244b9cc220"
+    },
+    "decision_sha256": {
+      "const": "1f7b2f3ce5a28b4bc4b1bc3a78a0b4cf730e47aaf3fa5afc115e5fd6461f3b5c"
+    },
+    "execution_plan_reference": {
+      "const": "./execution-plan.v0.1.json"
+    },
+    "execution_plan_sha256": {
+      "const": "8e2291822047a9d2e9bf3d31888496692b430b1587fff42964ce03387ea797b5"
+    },
+    "started_at": {
+      "const": "2026-07-27T14:07:13+08:00"
+    },
+    "ended_at": {
+      "const": "2026-07-27T14:16:00+08:00"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "target": {
+      "type": "object"
+    },
+    "runtime_controls": {
+      "type": "object"
+    },
+    "actuals": {
+      "type": "object"
+    },
+    "platform_results": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "agent_review_results": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "first_failure": {
+      "type": "object"
+    },
+    "global_config_guard": {
+      "type": "object"
+    },
+    "cleanup": {
+      "type": "object"
+    },
+    "gate_results": {
+      "type": "object"
+    },
+    "effects": {
+      "type": "object"
+    },
+    "accounting_issue": {
+      "type": "object"
+    },
+    "next_action": {
+      "const": "PREPARE_PRE71_AGENT_RESPONSE_CONTRACT_AND_CREDENTIAL_ACCOUNTING_DISPOSITION_RECOMMENDATION_NO_EXECUTION_AUTHORIZED"
+    }
+  },
+  "allOf": [
+    {
+      "properties": {
+        "target": {
+          "const": {
+            "repository": "joy7758/titmas-integrations",
+            "branch": "codex/rb0-governance-baseline",
+            "commit_before": "0030077f29c37145a306b72e7083345eb76b504a",
+            "commit_after": "0030077f29c37145a306b72e7083345eb76b504a",
+            "remote_commit_after": "0030077f29c37145a306b72e7083345eb76b504a",
+            "dirty_count_before": 0,
+            "dirty_count_after": 0,
+            "review_hashes_matched_before": 10,
+            "review_hashes_matched_after": 10,
+            "review_hashes_expected": 10,
+            "writes": 0
+          }
+        },
+        "actuals": {
+          "const": {
+            "temporary_roots_created": 1,
+            "local_source_exports": 1,
+            "anonymous_config_copies": 1,
+            "global_config_snapshot_pairs": 1,
+            "colima_start_attempts": 1,
+            "colima_start_successes": 1,
+            "colima_stop_attempts": 1,
+            "colima_stop_successes": 1,
+            "image_pull_attempts": 2,
+            "image_pull_successes": 2,
+            "container_runs": 2,
+            "linux_platform_validations_executed": 2,
+            "unit_test_cases_run": 184,
+            "unit_test_cases_skipped": 2,
+            "independent_rehearsal_cases_run": 14,
+            "independent_rehearsal_cases_passed": 14,
+            "agent_model_requests": 1,
+            "credential_identifiers_configured": 2,
+            "credential_values_used_for_authorization_headers": 1,
+            "credential_values_printed_or_persisted": 0,
+            "cleanup_attempts": 1,
+            "cleanup_successes": 1,
+            "temporary_roots_remaining": 0,
+            "retry_count": 0,
+            "fallback_count": 0,
+            "model_substitution_count": 0,
+            "json_extraction_or_repair_count": 0,
+            "p1_or_p2_executions": 0,
+            "provider_binding_actions": 0,
+            "release_actions": 0
+          }
+        },
+        "first_failure": {
+          "const": {
+            "stage": "RUN_TWO_SEQUENTIAL_AGENT_REVIEW_LANES",
+            "lane_id": "PRE70-QF-SECURITY-01",
+            "error_class": "ASSISTANT_CONTENT_CODE_FENCE",
+            "cause": "MODEL_RESPONSE_WAS_NOT_A_DIRECT_JSON_OBJECT",
+            "response_repair_or_extraction_allowed": false,
+            "retry_allowed_under_pre70": false,
+            "second_agent_lane_allowed_after_failure": false
+          }
+        },
+        "global_config_guard": {
+          "const": {
+            "method": "RECURSIVE_LSTAT_METADATA_ONLY",
+            "pre_entries": 110,
+            "post_entries": 110,
+            "metadata_match": true,
+            "file_content_reads": 0,
+            "paths_or_metadata_persisted": false,
+            "direct_codex_write_commands": 0,
+            "exact_system_write_count": "NOT_PROVEN",
+            "metadata_match_proves_zero_writes": false,
+            "repair_attempted": false
+          }
+        },
+        "gate_results": {
+          "const": {
+            "context_and_config_control_gate": "PASS",
+            "platform_gate": "PASS_BOUNDED_TWO_LINUX_AMD64_OBSERVATIONS",
+            "agent_review_gate": "FAIL_CLOSED_NOT_DIRECT_JSON",
+            "formal_human_security_review_gate": "NOT_SATISFIED",
+            "standard_gate": "NOT_SATISFIED",
+            "overall": "FAIL_CLOSED_AFTER_PLATFORM_PASS"
+          }
+        },
+        "effects": {
+          "const": {
+            "formal_human_security_review_complete": false,
+            "provider_supported": false,
+            "linux_support_proven": false,
+            "cross_platform_support_proven": false,
+            "real_network_conformance_proven": false,
+            "contract_adopted_as_standard": false,
+            "target_repository_changed": false,
+            "runtime_created_as_product": false,
+            "agent_created": false,
+            "entity_created": false,
+            "permission_created": false,
+            "release_authorized": false,
+            "standard_ready": false
+          }
+        },
+        "accounting_issue": {
+          "const": {
+            "issue_id": "PRE70-AI-001",
+            "issue": "The frozen plan used credential_value_reads=0 while an authenticated provider request necessarily consumes one credential value in process memory.",
+            "secret_exposure_observed": false,
+            "future_contract_change_required": true,
+            "automatic_semantic_reinterpretation_allowed": false
+          }
+        }
+      }
+    }
+  ]
+}
