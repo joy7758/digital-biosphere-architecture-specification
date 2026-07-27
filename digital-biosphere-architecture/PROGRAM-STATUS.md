@@ -441,11 +441,16 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PR23_REPLACEMENT_DRAFT_PR_DECISION_REVIEW_M
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PR23_REPLACEMENT_DRAFT_PR_DECISION_REVIEW_VERDICT=APPROVE
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PR23_REPLACEMENT_DRAFT_PR_DECISION_REVIEW_CONFIDENCE=0.95
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PR23_REPLACEMENT_DRAFT_PR_CREATION_AUTHORIZED=true
-TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PR23_REPLACEMENT_DRAFT_PR_CREATED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PR23_REPLACEMENT_DRAFT_PR_CREATED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PR23_REPLACEMENT_DRAFT_PR_NUMBER=27
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PR23_REPLACEMENT_DRAFT_PR_STATE=OPEN_DRAFT
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PR23_REPLACEMENT_DRAFT_PR_HEAD=e6a193f4bf0d48d65649077122f0ab262460daac
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PR23_REPLACEMENT_DRAFT_PR_MERGEABLE_STATE=CLEAN
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PR23_REPLACEMENT_DRAFT_PR_READBACK_PASS=true
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
-TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE=CREATE_ONE_CE_G11B_PR23_REMEDIATION_REPLACEMENT_DRAFT_PR
-TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE_AUTHORIZED=true
+TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE=PREPARE_CE_G11B_PR27_INDEPENDENT_REVIEW_RECOMMENDATION
+TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE_AUTHORIZED=false
 SCOPED_LOCAL_DBOS_SAEE_CONFORMANCE_PASS=true
 FULL_END_TO_END_INTEGRATION_VERIFIED=false
 ACTIVE_DIGITAL_ENTITY_VERIFIED_BY_DBA=false
@@ -810,7 +815,7 @@ Developer Preview v0.1 的历史发布结果 `PASS_WITH_DISCLOSED_LIMITATIONS` �
 | P0 Executable Test and Reference Implementation | `PRE67_PASS_BOUNDED_POSIX_REFERENCE_IMPLEMENTATION_OFFLINE_TESTS_PRE68_FORMAL_REVIEW_SCOPE_RECOMMENDATION_REQUIRED` | target `0030077…` 精确完成 11 个新增与 8 个更新路径；本地及 remote clean clone 均为 92/92 tests、7/7 independent rehearsal、4/4 machine instances、9/9 declaration hashes、2/2 frozen IANA bytes 和 offline build PASS；真实 DNS/TCP/TLS/HTTP、credential read、P1/P2、Provider binding 与发布均为 0；只在 Darwin arm64 / CPython 3.14.5 观察，Linux 未验证、Windows 不支持、跨平台与绝对 wall-clock bound 不声明；正式 Human Security Review、contract adoption、Standard Ready 仍为 false |
 | P0 Security and Platform Review Scope | `PRE75_EXECUTED_SECURITY_SUBTRACK_FROZEN` | PRE-75 已以独立 Decision 完成 Stage A：7/7 input、10/10 target、2/2 rendered requests/full Schema transmission、3/3 coverage、2/2 response session binding、16/16 negatives PASS；execution id 与 frozen PRE73 response id 分离。request/capture 仍为 Development candidate；network/model/credential/raw persistence/target actions=0。为避免偏离主线，PRE-76 不再作为当前下一步 |
 | Commercial Evaluation Pack v0.2 | `AGENT_FIRST_RUN_VALIDATED_NOT_AVAILABLE_OFFERING` | 公开 wheel、5 类对象契约、只读 validator、机器清单、合成样例和 10 分钟 First Run 已收敛；clean run 最终 `PASS`，两次 harness 失败保留。Qwen 3 角色与 Qianfan DeepSeek 1 角色共 4/4 direct JSON/Schema valid、2 Provider、0 boundary failure，4/4 推荐离线评估且 4/4 拒绝生产采购。另观察 3 次公开入口瞬时传输失败；客户、合同、收入、SLA、生产与认证继续为 0/false |
-| CE-G11B Draft PR Integration Gate | `PR23_REMEDIATION_REPLACEMENT_DRAFT_PR_AUTHORIZED_NOT_CREATED` | Recommendation `RECOMMENDED` 0.95；Creation Decision exact Max `APPROVE` 0.95；exact base/head/R2 body frozen，历史 PR preserved | 创建一个 bounded Draft PR 并只读核验；历史 PR、merge、release、deploy 均未授权 |
+| CE-G11B Draft PR Integration Gate | `PR27_OPEN_DRAFT_READBACK_VERIFIED_INDEPENDENT_REVIEW_RECOMMENDATION_REQUIRED` | #27 exact base/head/R2 body，Open Draft、mergeable clean、empty reviewer/label/milestone、auto-merge off；历史 #22/#23/#24 unchanged | 只准备 #27 independent review Recommendation；review submission、merge、release、deploy 均未授权 |
 | Trusted Multi-Agent Protocol | `ARCHITECTURE_BASELINE_DEFINED_NOT_IMPLEMENTED` | 六类协议对象、四个可信边界和 Protocol→SDK→Reference Implementation→Adapter 路线已定义；未创建 API、SDK 或 Runtime |
 | OpenTelemetry Observability Profile | `DQ_018_SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_HUMAN_SECURITY_REVIEW_READY_NOT_APPROVED` | DQ-022–025 exact references 已采纳；当前 DBOS source 的 P001—P005、`HSR-PRE-001/002` 负例与供应链检查已在原生 Linux x86_64 完成并远端复验；未部署 Collector 或 endpoint |
 | OpenTelemetry Semantic Mapping and Conformance | `DQ_023_REFERENCE_ADOPTED_DQ_018_AUTHORIZED_SUBSET_32_OF_32_PASS` | pinned mapping 已进入 DBOS 离线参考实现；32/32 authorized cases 通过，14 个 DQ-020 cases blocked；不产生 Runtime compatibility 声明 |

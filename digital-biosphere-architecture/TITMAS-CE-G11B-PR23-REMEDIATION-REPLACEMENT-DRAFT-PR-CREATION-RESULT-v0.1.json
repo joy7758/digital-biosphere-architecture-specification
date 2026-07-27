@@ -1,0 +1,70 @@
+{
+  "record_type": "TITMAS_REPLACEMENT_DRAFT_PR_CREATION_RESULT",
+  "result_id": "TITMAS-CE-G11B-PR23-REMEDIATION-REPLACEMENT-DRAFT-PR-CREATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28",
+  "status": "PASS_DRAFT_PR_CREATED_AND_READBACK_VERIFIED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-REMEDIATION-REPLACEMENT-DRAFT-PR-CREATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "16ba0a2ffcb33df65c55066fb69bb3cef547b715",
+  "pr": {
+    "number": 27,
+    "url": "https://github.com/joy7758/digital-biosphere-architecture-specification/pull/27",
+    "title": "CE-G11B: review remediated candidate with R2 evidence",
+    "state": "OPEN",
+    "draft": true,
+    "base_ref": "codex/production-observability-baseline",
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_ref": "codex/ce-g11b-pr23-remediation-candidate",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "mergeable": true,
+    "mergeable_state": "clean",
+    "labels": 0,
+    "requested_reviewers": 0,
+    "milestone": null,
+    "auto_merge": null,
+    "merged": false
+  },
+  "body_binding": {
+    "validated_merge_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "r1_evidence": "d054b5cf3880904aba84816501b07358fcfb4c06",
+    "r2_evidence": "27bc3b6e586a2259d17152a2022a85d2dd69107b",
+    "r2_status": "PASS_SHA_BOUND_EXACT_THREE_SCHEMA_R2_VALIDATION",
+    "review_and_authority_boundaries_present": true
+  },
+  "execution": {
+    "pr_list_prechecks": 1,
+    "existing_open_exact_head_base": 0,
+    "pr_creation_attempts": 1,
+    "pr_creation_exit": 0,
+    "pr_creation_retries": 0,
+    "graphql_readback_attempts": 2,
+    "graphql_readback_failures": 2,
+    "graphql_failure_category": "TRANSIENT_EOF",
+    "rest_readback_attempts": 2,
+    "rest_readback_failures": 1,
+    "rest_readback_successes": 1,
+    "public_page_readback_success": true,
+    "post_creation_edits": 0
+  },
+  "historical_prs": {
+    "pr_22_mutated": false,
+    "pr_23_mutated": false,
+    "pr_24_mutated": false,
+    "pr_24_reopened": false
+  },
+  "effects": {
+    "draft_review_surface_created": true,
+    "review_approval": false,
+    "merge_authorization": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_PR27_INDEPENDENT_REVIEW_RECOMMENDATION",
+    "authorized": false
+  }
+}
