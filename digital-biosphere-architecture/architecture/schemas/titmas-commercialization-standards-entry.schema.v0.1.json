@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_63_SECURITY_CONTROL_CLASSIFICATION_AND_P0_REMEDIATION_DESIGN_PASS_P0_CONTRACT_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_64_P0_RESOLVER_CONTRACT_AND_TEST_DESIGN_PASS_MULTI_PROVIDER_AGENT_REVIEW_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "CS-D02-PRE-63"},
+        "last_completed_step": {"const": "CS-D02-PRE-64"},
         "last_completed_result": {
-          "const": "PASS_OFFLINE_SECURITY_CONTROL_CLASSIFICATION_AND_P0_REMEDIATION_DESIGN"
+          "const": "PASS_OFFLINE_P0_RESOLVER_CONTRACT_AND_TEST_DESIGN"
         },
         "direct_evidence_reference": {
-          "const": "commercialization-standards-provider-binding-security-remediation/PRE-63-PROVIDER-BINDING-SECURITY-CONTROL-REMEDIATION-RESULT-v0.1.md"
+          "const": "commercialization-standards-p0-resolver-contract-and-test-design/PRE-64-P0-RESOLVER-CONTRACT-AND-TEST-DESIGN-RESULT-v0.1.md"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,7 +131,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "FORM_EXACT_P0_RESOLVER_CONTRACT_AND_TEST_DESIGN_RECOMMENDATION"
+          "const": "FORM_PRE65_P0_RESOLVER_CONTRACT_MULTI_PROVIDER_AGENT_REVIEW_RECOMMENDATION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE63_SECURITY_CONTROL_CLASSIFICATION_AND_P0_REMEDIATION_DESIGN_PASS_P0_CONTRACT_RECOMMENDATION_REQUIRED"
+          "const": "PRE64_P0_RESOLVER_CONTRACT_AND_TEST_DESIGN_PASS_MULTI_PROVIDER_AGENT_REVIEW_RECOMMENDATION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -5509,6 +5509,26 @@
             "pre63_checks_passed",
             "pre63_negative_cases_rejected",
             "pre63_network_model_credential_target_implementation_actions",
+            "pre64_recommendation_reference",
+            "pre64_recommendation_sha256",
+            "pre64_recommendation_commit",
+            "pre64_decision_reference",
+            "pre64_decision_sha256",
+            "pre64_decision_commit",
+            "pre64_contract_sha256",
+            "pre64_negative_catalog_sha256",
+            "pre64_test_design_sha256",
+            "pre64_agent_review_input_sha256",
+            "pre64_validation_sha256",
+            "pre64_execution_receipt_sha256",
+            "pre64_result_reference",
+            "pre64_result_sha256",
+            "pre64_result_commit",
+            "pre64_result",
+            "pre64_positive_design_cases",
+            "pre64_negative_design_cases",
+            "pre64_mutation_negatives_rejected",
+            "pre64_network_model_credential_target_dependency_implementation_actions",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5564,6 +5584,9 @@
             "pre63_security_control_classification_executed",
             "pre63_security_control_classification_pass",
             "p0_resolver_contract_and_test_design_recommendation_allowed",
+            "pre64_p0_resolver_contract_and_test_design_executed",
+            "pre64_p0_resolver_contract_and_test_design_pass",
+            "pre65_multi_provider_agent_review_recommendation_allowed",
             "qianfan_exact_model_binding_required",
             "security_reviewer_exact_binding_required",
             "pre53_china_provider_benchmark_executed",
@@ -7070,6 +7093,58 @@
             "pre63_checks_passed": {"const": 18},
             "pre63_negative_cases_rejected": {"const": 8},
             "pre63_network_model_credential_target_implementation_actions": {"const": 0},
+            "pre64_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-64-P0-RESOLVER-CONTRACT-AND-TEST-DESIGN-RECOMMENDATION-v0.1.md"
+            },
+            "pre64_recommendation_sha256": {
+              "const": "ef6b2117bac339247d18f29eb498c45b6434098b48e1ed6f6ab184a89575c506"
+            },
+            "pre64_recommendation_commit": {
+              "const": "5240bd2ee6f73d4277eda77c826f83863713e37b"
+            },
+            "pre64_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-64-P0-RESOLVER-CONTRACT-AND-TEST-DESIGN-DECISION-RECORD.v0.1.json"
+            },
+            "pre64_decision_sha256": {
+              "const": "eb0ec28e4f1a690113a6bc1392bf467ecac3e92fe86ec209981bd3170cb7bc24"
+            },
+            "pre64_decision_commit": {
+              "const": "58b2fc45bb33fad1f7eee5950f7c89dcb9bf9fe6"
+            },
+            "pre64_contract_sha256": {
+              "const": "4dd99f43cbe989e558129929a5f2d8c43d5d22645484137d666d55f52d0eacff"
+            },
+            "pre64_negative_catalog_sha256": {
+              "const": "7ba8596347366d2036453d4898852bc40afd9a4bb5bc89331a915066fcab8475"
+            },
+            "pre64_test_design_sha256": {
+              "const": "1264f92bd1cc15130fac8545ee6fde8c64996c1cc2d2c52120f81226d7bdcd27"
+            },
+            "pre64_agent_review_input_sha256": {
+              "const": "74e5ad2b8feee45c43f600f43b310f6c53c106382e4d4de658f7f355a60dde4c"
+            },
+            "pre64_validation_sha256": {
+              "const": "e7b997f8b287ade2407e906b566ec7775427bd16f1911aa8f80f3ae4aa17b464"
+            },
+            "pre64_execution_receipt_sha256": {
+              "const": "34a8dcd32f436ac00f93267c8f62c5ee908ff8832ca1e68d532c62adccf4cb06"
+            },
+            "pre64_result_reference": {
+              "const": "commercialization-standards-p0-resolver-contract-and-test-design/PRE-64-P0-RESOLVER-CONTRACT-AND-TEST-DESIGN-RESULT-v0.1.md"
+            },
+            "pre64_result_sha256": {
+              "const": "4804aaf4587e8855f22a18575eb469cb90aff8f729bc3e0b8160a6f4ca987b8b"
+            },
+            "pre64_result_commit": {
+              "const": "f43e199b044311d87a55dd0ae51f0c2144355eab"
+            },
+            "pre64_result": {
+              "const": "PASS_OFFLINE_P0_RESOLVER_CONTRACT_AND_TEST_DESIGN"
+            },
+            "pre64_positive_design_cases": {"const": 6},
+            "pre64_negative_design_cases": {"const": 24},
+            "pre64_mutation_negatives_rejected": {"const": 12},
+            "pre64_network_model_credential_target_dependency_implementation_actions": {"const": 0},
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -7233,6 +7308,15 @@
               "const": true
             },
             "p0_resolver_contract_and_test_design_recommendation_allowed": {
+              "const": false
+            },
+            "pre64_p0_resolver_contract_and_test_design_executed": {
+              "const": true
+            },
+            "pre64_p0_resolver_contract_and_test_design_pass": {
+              "const": true
+            },
+            "pre65_multi_provider_agent_review_recommendation_allowed": {
               "const": true
             },
             "qianfan_exact_model_binding_required": {
@@ -7358,7 +7442,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_EXACT_P0_RESOLVER_CONTRACT_AND_TEST_DESIGN_RECOMMENDATION"
+          "const": "FORM_PRE65_P0_RESOLVER_CONTRACT_MULTI_PROVIDER_AGENT_REVIEW_RECOMMENDATION"
         },
         "decision_ready": {
           "const": false
