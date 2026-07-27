@@ -1,0 +1,57 @@
+{
+  "record_type": "TITMAS_CE_G11B_COMMERCIALIZATION_STATUS_RECONCILIATION_RESUMPTION_RECOMMENDATION_REVIEW_FAILURE",
+  "failure_id": "TITMAS-CE-G11B-COMMERCIALIZATION-STATUS-RECONCILIATION-RESUMPTION-RECOMMENDATION-REVIEW-FAILURE-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28",
+  "status": "FAIL_CLOSED_NONZERO_CORRECTIONS",
+  "recommendation_reference": "TITMAS-CE-G11B-COMMERCIALIZATION-STATUS-RECONCILIATION-RESUMPTION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "55bc6be5d648156d747c5a93803d8bad321a3071e7ce002581facc17679422ca",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "returned_model_exact": true,
+  "request_count": 1,
+  "retries": 0,
+  "fallbacks": 0,
+  "model_substitutions": 0,
+  "json_extractions": 0,
+  "json_repairs": 0,
+  "provider_request_id": "chatcmpl-58a7bd15-46c4-4132-b10c-b40cb7436ece",
+  "finish_reason": "stop",
+  "prompt_tokens": 1604,
+  "completion_tokens": 1142,
+  "direct_content_sha256": "3e6e83e4aeda3b0103be8128922716535568ccb9476ac9c0bb07526bf681fb70",
+  "direct_json_valid": true,
+  "contract_valid": true,
+  "verdict": "RECOMMENDED",
+  "confidence": 0.95,
+  "recommended_option": "A",
+  "blockers": [],
+  "corrections": [
+    "Duplicate key independently corrected and remotely committed at 34640c418df869c95907fb37fe1f2e5f44eff08f with semantic preservation and no history rewrite."
+  ],
+  "formal_correction_count": 1,
+  "qualifying": false,
+  "adjudication": {
+    "correction_text_appears_to_confirm_existing_evidence": true,
+    "correction_text_reclassified_as_observation": false,
+    "zero_correction_threshold_met": false,
+    "same_recommendation_review_retry_allowed": false
+  },
+  "effects": {
+    "recommendation_adopted": false,
+    "decision_authorized": false,
+    "validation_executed": false,
+    "five_path_commit": false,
+    "five_path_push": false,
+    "ce_g12_prepared": false,
+    "deployment": false,
+    "release": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_V0_2_RECOMMENDATION_WITH_EXACT_CORRECTIONS_FIELD_SEMANTICS",
+    "authorized": false
+  }
+}
