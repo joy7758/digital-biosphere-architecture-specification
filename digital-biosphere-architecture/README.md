@@ -533,6 +533,13 @@ workflow、merge、部署和网站源码修改仍为 0／未授权。
 `site/out/index.html` 不存在而 exit `1`。CE Schema/test 阶段未执行，R4 不重试；
 package/lock/source/tree 未漂移，下一步只能准备独立 R5 static-export sequence
 remediation Recommendation。
+[R5 Recommendation](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-RECOMMENDATION-v0.1.md)
+要求在 `npm test` 后显式运行 public `npm run export`，再执行 `verify:static` 和完整
+CE validation。[首次 Max review](TITMAS-CE-G11B-STATIC-EXPORT-SEQUENCE-REMEDIATION-R5-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+返回 exact `qwen3.7-max`、direct JSON、`RECOMMENDED`、Option A、confidence `1.0`
+和 0 blocker/correction；但采集器未保留 HTTP status 与 curl exit，故该请求按
+`HTTP_STATUS_AND_CURL_EXIT_CAPTURE_GAP` 不合格关闭。请求不重试，下一步只能先形成
+独立 review-retry Recommendation。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
