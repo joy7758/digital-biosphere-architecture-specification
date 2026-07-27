@@ -1,0 +1,48 @@
+{
+  "record_type": "TITMAS_CE_G11B_STATUS_RECONCILIATION_VALIDATION_HARNESS_FAILURE",
+  "failure_id": "TITMAS-CE-G11B-STATUS-RECONCILIATION-VALIDATION-HARNESS-FAILURE-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28",
+  "status": "FAIL_CLOSED_TRACKED_JSON_VALIDATOR_REQUIRED_ROOT_ARGUMENT_MISSING",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-STATUS-RECONCILIATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "35641e6bb98329d3f4d24602107a629b5bb7db86",
+  "decision_remote_baseline_verified": true,
+  "failed_command": "python3 /tmp/titmas_pr27_post_merge_json_validation.py",
+  "failure_type": "VALIDATION_HARNESS_INVOCATION_BINDING_ERROR",
+  "failure_message": "IndexError: list index out of range at sys.argv[1]",
+  "required_argument_omitted": "repository_root",
+  "correct_argument_value": "/tmp/titmas-ce-g11b-decision.2dqOYW",
+  "validation_consumption": {
+    "tracked_json_validation_started": false,
+    "tracked_json_files_read": 0,
+    "commercial_entry_schema_validation_started": false,
+    "cross_file_consistency_validation_started": false,
+    "target_patch_reapplied": false
+  },
+  "working_state": {
+    "authorized_target_paths_modified": 5,
+    "target_paths_staged": 0,
+    "target_paths_committed": 0,
+    "target_paths_pushed": 0,
+    "unrelated_paths_modified": 0
+  },
+  "effects": {
+    "failure_reclassified_as_pass": false,
+    "validation_pass": false,
+    "status_reconciliation_committed": false,
+    "status_reconciliation_pushed": false,
+    "ce_g12_prepared": false,
+    "deployment": false,
+    "release": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "permission": false,
+    "authority_elevation": false,
+    "evidence_truth_change": false
+  },
+  "next_gate": {
+    "action": "PREPARE_EXACT_VALIDATOR_ROOT_BINDING_REMEDIATION_RECOMMENDATION",
+    "authorized": false
+  }
+}
