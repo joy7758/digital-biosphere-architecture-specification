@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/architecture/schemas/titmas-ce-g5-current-release-hash-baseline.schema.v0.1.json",
+  "title": "TITMAS CE-G5 Current Release Hash Baseline v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "baseline_id",
+    "version",
+    "status",
+    "observed_at",
+    "decision_reference",
+    "public_origin",
+    "active_release",
+    "source_revision",
+    "release_manifest",
+    "routes",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./ce-g5-current-release-hash-baseline.schema.v0.1.json"
+    },
+    "baseline_id": {
+      "const": "TITMAS-CE-G5-CURRENT-RELEASE-HASH-BASELINE"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FIXED_CURRENT_RELEASE_BASELINE"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G5"
+    },
+    "public_origin": {
+      "const": "https://redcrag.cn"
+    },
+    "active_release": {
+      "const": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705"
+    },
+    "source_revision": {
+      "const": "7da4bcf16eeec7de1c61031fe08fc04081cf8705"
+    },
+    "release_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "release-manifest.json"
+        },
+        "bytes": {
+          "const": 9917
+        },
+        "sha256": {
+          "const": "b008349083c448d576fd5bca6da59911b3ef7cbe87527c110f29a470a28a2eae"
+        }
+      }
+    },
+    "routes": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/root"
+        },
+        {
+          "$ref": "#/$defs/llms"
+        },
+        {
+          "$ref": "#/$defs/agentIndex"
+        },
+        {
+          "$ref": "#/$defs/commercialPack"
+        }
+      ],
+      "items": false
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deployment",
+        "configuration_change",
+        "production",
+        "sla",
+        "commercial_offer",
+        "certification"
+      ],
+      "properties": {
+        "deployment": {
+          "const": false
+        },
+        "configuration_change": {
+          "const": false
+        },
+        "production": {
+          "const": false
+        },
+        "sla": {
+          "const": false
+        },
+        "commercial_offer": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        }
+      }
+    }
+  },
+  "$defs": {
+    "root": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "server_file",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "/"
+        },
+        "server_file": {
+          "const": "index.html"
+        },
+        "bytes": {
+          "const": 46401
+        },
+        "sha256": {
+          "const": "992ca20edcc603a087db7875c7d21ff3ce390700cd8879fedebdbd5585b303a5"
+        }
+      }
+    },
+    "llms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "server_file",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "/llms.txt"
+        },
+        "server_file": {
+          "const": "llms.txt"
+        },
+        "bytes": {
+          "const": 28241
+        },
+        "sha256": {
+          "const": "a1da55a77da20c5fe384e5f1f8714a00f06ffe81f307676e0f71209f991afdca"
+        }
+      }
+    },
+    "agentIndex": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "server_file",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "/agent-index.json"
+        },
+        "server_file": {
+          "const": "agent-index.json"
+        },
+        "bytes": {
+          "const": 18958
+        },
+        "sha256": {
+          "const": "0e26b70538d33ec3c5f6ddebb9d1280ef01480b63d5c6d51b48bc7dddf2a72dd"
+        }
+      }
+    },
+    "commercialPack": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "server_file",
+        "bytes",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "const": "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"
+        },
+        "server_file": {
+          "const": "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"
+        },
+        "bytes": {
+          "const": 4276
+        },
+        "sha256": {
+          "const": "54a738beef94c2e5e6b3fa28f8a8c299681e05ec5c3e82ec6901710dcfea8269"
+        }
+      }
+    }
+  }
+}

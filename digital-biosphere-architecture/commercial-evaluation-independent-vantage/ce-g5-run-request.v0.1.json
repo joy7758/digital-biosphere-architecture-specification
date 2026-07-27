@@ -1,0 +1,46 @@
+{
+  "$schema": "./ce-g5-run-request.schema.v0.1.json",
+  "request_id": "TITMAS-CE-G5-RUN-REQUEST-001",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_EXACT_RUN_REQUEST",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G5",
+  "decision_commit": "fa7a301482348a87dbb3fdb1f5801eeca3016f70",
+  "authorized_by_ref": "zhangbin",
+  "created_at": "2026-07-27T11:42:15Z",
+  "run_id": "CE-G5-20260727-001",
+  "public_origin": "https://redcrag.cn",
+  "active_release_expected": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+  "hash_baseline_reference": "ce-g5-current-release-hash-baseline.v0.1.json",
+  "vantages": [
+    "GITHUB_HOSTED_UBUNTU",
+    "GITHUB_HOSTED_MACOS"
+  ],
+  "rounds": 3,
+  "routes": [
+    "/",
+    "/llms.txt",
+    "/agent-index.json",
+    "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"
+  ],
+  "requests_per_vantage": 12,
+  "total_public_origin_get_cap": 24,
+  "round_gap_seconds": 10,
+  "sequential_within_vantage": true,
+  "retry": false,
+  "fallback": false,
+  "tls_verification_bypass": false,
+  "server_change": false,
+  "redeployment": false,
+  "effects": {
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "capability": false,
+    "production": false,
+    "sla": false,
+    "commercial_offer": false,
+    "certification": false
+  }
+}
