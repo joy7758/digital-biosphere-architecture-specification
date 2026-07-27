@@ -408,7 +408,12 @@ Decision quality review 为 `APPROVE`、置信度 `0.99`。当前仍不得创建
 `qwen3.7-max` implementation review，workflow execution-time model requests 仍为 0。
 [Sanitized qwen review](TITMAS-CE-G11B-PHASE-A-MODEL-REVIEW-CAP-REMEDIATION-QWEN-REVIEW-v0.1.json)
 返回 exact model identity、`RECOMMENDED`、置信度 `0.95`、0 blocker/correction。
-Recommendation 与模型审查均不授权 Phase A-R1、Phase B 或 workflow run。
+Recommendation 与模型审查本身不授权 Phase A-R1、Phase B 或 workflow run。
+[Phase A-R1 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-R1-DECISION-RECORD.v0.1.json)
+已依据 `TITMAS-CS-STANDING-001` 授权 bounded revalidation only；exact
+[qwen Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-R1-QWEN-DECISION-REVIEW-v0.1.json)
+为 `APPROVE`、置信度 `0.95`、0 blocker/correction。该授权不允许修改 candidate、
+创建有效 run request、执行 workflow、进入 Phase B 或重部署。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
