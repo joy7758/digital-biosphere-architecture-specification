@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_CE_G10_CROSS_VERSION_RECOMMENDATION_PREPARED_DECISION_PENDING_STANDARD_NOT_READY"
+      "const": "CS_D02_CE_G10_CROSS_VERSION_DECIDED_EXECUTION_AUTHORIZED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -131,9 +131,9 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "REVIEW_AND_DECIDE_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION"
+          "const": "IMPLEMENT_AND_DISPATCH_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION"
         },
-        "next_action_authorized": {"const": false},
+        "next_action_authorized": {"const": true},
         "standard_ready": {"const": false},
         "provider_integration_authorized": {"const": false},
         "security_review_completed": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "CE_G10_CROSS_VERSION_RECOMMENDATION_PREPARED_DECISION_PENDING"
+          "const": "CE_G10_CROSS_VERSION_DECIDED_EXECUTION_AUTHORIZED_NOT_STARTED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7782,13 +7782,13 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "REVIEW_AND_DECIDE_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION_ONLY"
+          "const": "IMPLEMENT_AND_DISPATCH_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION_ONLY"
         },
         "decision_ready": {
-          "const": true
+          "const": false
         },
         "external_execution_authorized": {
-          "const": false
+          "const": true
         }
       }
     },

@@ -1,0 +1,110 @@
+{
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G10",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_CROSS_VERSION_OFFLINE_VALIDATION_ONLY",
+  "decided_at": "2026-07-27",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G10-CROSS-VERSION-CORRELATOR-VALIDATION-RECOMMENDATION-v0.1.md",
+  "recommendation_commit": "768b77bc211519e2c8b8431ba818f6865bc9ed12",
+  "primary_repository": "digital-biosphere-architecture",
+  "decision_basis": {
+    "agent_verdict": "CONDITIONALLY_RECOMMENDED",
+    "would_recommend_to_agent_customer": true,
+    "confidence": 0.78,
+    "blocking_corrections_incorporated": 3,
+    "bounded_and_reversible": true,
+    "decision_is_execution": false
+  },
+  "exact_action": "Create a manual-only, read-only, fail-closed GitHub Actions matrix and execute it once to validate the unchanged CE-G9 correlator inputs on exact Python 3.10.20, 3.11.15, 3.12.13, 3.13.14, and 3.14.6 runners.",
+  "authorized_paths": [
+    ".github/workflows/titmas-ce-g10-correlator-cross-version.yml",
+    "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce_g10_cross_version_runner.py",
+    "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/test_ce_g10_cross_version_runner.py",
+    "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g10-cross-version-result.schema.v0.1.json",
+    "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g10-cross-version-result.v0.1.json",
+    "digital-biosphere-architecture/TITMAS-CE-G10-CROSS-VERSION-CORRELATOR-VALIDATION-REPORT-v0.1.md",
+    "digital-biosphere-architecture/PROGRAM-STATUS.md",
+    "digital-biosphere-architecture/README.md",
+    "digital-biosphere-architecture/TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+    "digital-biosphere-architecture/architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
+    "digital-biosphere-architecture/architecture/titmas-commercialization-standards-roadmap-v0.1.md"
+  ],
+  "frozen_inputs": {
+    "source_commit": "5438215028bc565c24073f51c627f400ce738b0f",
+    "ce_g8_server_log_correlator.py": "508245e1a49eb2fba94a3617517da2dfd200f9c8b1677cfdd92e186130ab6bef",
+    "test_ce_g8_diagnostic.py": "22f500fa5bdb3e72ca424e8bfd800827e6e585c554270bf260d9271a2de74829",
+    "fixtures/access.log": "3e63d82fd85b151cf3b5479b11b020d113790ac8cd71df561699479dc057bf8d",
+    "fixtures/error.log": "38e96f94008c3bef6e988f5ef6725f0ccea5439b27a5be35e8f1722ce1709c55",
+    "ce-g9-offline-remediation-result.schema.v0.1.json": "e4e60d8d4715bfbd6495201e3ac00d62c167d3b112605c81606d244f575d5863"
+  },
+  "required_controls": {
+    "workflow_dispatch_only": true,
+    "workflow_dispatch_cap": 1,
+    "matrix_jobs": 5,
+    "exact_python_patch_versions": true,
+    "read_only_permissions": true,
+    "full_action_commit_hashes": true,
+    "timeout_minutes_per_job": 5,
+    "credentials_available_to_jobs": false,
+    "input_hash_check": true,
+    "synthetic_privacy_fixtures_only": true,
+    "sanitized_artifacts_only": true,
+    "aggregate_schema_validation": true,
+    "fail_closed": true
+  },
+  "caps": {
+    "workflow_dispatches": 1,
+    "matrix_jobs": 5,
+    "target_public_site_requests": 0,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "deployments": 0,
+    "policy_changes": 0,
+    "dbos_changes": 0,
+    "saee_changes": 0,
+    "model_requests_during_execution": 0
+  },
+  "preconditions": [
+    "Recommendation commit 768b77bc211519e2c8b8431ba818f6865bc9ed12 is present on origin/codex/production-observability-baseline.",
+    "All frozen input hashes match before workflow creation and again inside every matrix job.",
+    "Local runner and workflow tests pass before push.",
+    "Workflow is manual-only and cannot run on push.",
+    "No secret context or credential reference is present in the workflow."
+  ],
+  "stop_conditions": [
+    "Any frozen input hash changes.",
+    "Any exact Python patch version or pinned action hash cannot be resolved.",
+    "Any workflow permission exceeds contents read.",
+    "Any test process requires a public-site request, SSH, server access, deployment, policy change, DBOS change, or SAEE change.",
+    "Any job or aggregate receipt contains raw logs, literal source IP, salt, credential, proxy detail, or interface detail.",
+    "Any matrix job, artifact, input check, privacy check, or Schema validation fails.",
+    "Any output is presented as TLS root-cause proof, production readiness, certification, SLA, or commercial availability."
+  ],
+  "rollback": {
+    "server_state_change": false,
+    "runtime_state_change": false,
+    "workflow_is_manual_only": true,
+    "failed_results_preserved": true,
+    "retry_authorized": false,
+    "remediation_requires_new_recommendation_and_decision": true
+  },
+  "false_effects": {
+    "tls_root_cause_proof": false,
+    "public_entry_redeployment_admission": false,
+    "redeployment": false,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "entity": false,
+    "permission": false,
+    "capability": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offering": false,
+    "production_readiness": false
+  },
+  "execution_receipt": null,
+  "result": "NOT_EXECUTED"
+}
