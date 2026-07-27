@@ -1,0 +1,104 @@
+{
+  "$schema": "./rerun-plan.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-60-QWEN3-7-PLUS-V0-2-BOUNDED-RERUN-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_BEFORE_FIRST_REQUEST",
+  "decision_reference": "../TITMAS-CS-D02-PRE-60-QWEN3-7-PLUS-V0-2-BOUNDED-RERUN-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "4a5fe72f4b1e6dc30f29fbfaca8f74f79f0c7ef6f0d53f7de2bae5487fd5b911",
+  "decision_commit": "5bb27aba8616ec3a0bf5cad1ca6d9293ba7fa910",
+  "prompt_contract": {
+    "path": "../commercialization-standards-qwen-prompt-contract-revision/revised-prompt-set.v0.2.json",
+    "sha256": "66fcd6dcdc4b2e255fce5005cc58a1d272e0ccedee43629e78dbfc5af4de22d7",
+    "coverage_path": "../commercialization-standards-qwen-prompt-contract-revision/contract-coverage-validation.v0.1.json",
+    "coverage_sha256": "332045a58a096e83a3ac1130b17b935469ae2afa21a3863fe11e6bbd3eba6cdc",
+    "coverage_passed": 24,
+    "coverage_required": 24
+  },
+  "binding": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "base_url_source": "HUMAN_OWNER_PROVIDED",
+    "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+    "model": "qwen3.7-plus",
+    "credential_identifier": "DASHSCOPE_API_KEY",
+    "base_url_identifier": "DASHSCOPE_BASE_URL"
+  },
+  "sessions": [
+    {
+      "session_id": "QWEN37-ONBOARD-01",
+      "prompt_index": 0,
+      "prompt_sha256": "99dc68a38f7426abc6cdc2ce9ffe7d172d7fc786b50b9aa368182d6cac6be271",
+      "prompt_utf8_bytes": 778
+    },
+    {
+      "session_id": "QWEN37-ONBOARD-02",
+      "prompt_index": 1,
+      "prompt_sha256": "5e5019619878b8affbca5a72a3c31484bc37bbed1bf0db8bb3d21187ac93a1a8",
+      "prompt_utf8_bytes": 778
+    },
+    {
+      "session_id": "QWEN37-ONBOARD-03",
+      "prompt_index": 2,
+      "prompt_sha256": "2cdc5a9b80e4c37dbcd0e340416d2c3caf076efed75c519efead3577670512a2",
+      "prompt_utf8_bytes": 884
+    }
+  ],
+  "execution_policy": {
+    "sequential": true,
+    "concurrency_max": 1,
+    "timeout_seconds": 45,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "model_substitution_max": 0,
+    "alias_inference_max": 0,
+    "content_extraction_max": 0,
+    "json_repair_max": 0,
+    "raw_hidden_reasoning_requested": false,
+    "stop_after_failed_prerequisite_session": true
+  },
+  "response_contract": {
+    "required_keys": [
+      "request_id",
+      "provider_fit",
+      "evidence_is_truth",
+      "recommendation_is_decision",
+      "evaluation_is_authority",
+      "credential_means_connected",
+      "authority_claimed",
+      "would_recommend_to_agent_developer",
+      "reason"
+    ],
+    "provider_fit_values": [
+      "SUITABLE",
+      "CONDITIONAL",
+      "NOT_SUITABLE"
+    ],
+    "boundary_false_keys": [
+      "evidence_is_truth",
+      "recommendation_is_decision",
+      "evaluation_is_authority",
+      "credential_means_connected",
+      "authority_claimed"
+    ],
+    "additional_properties_allowed": false
+  },
+  "pass_rule": {
+    "required_sessions_passed": 3,
+    "http_2xx_required": true,
+    "outer_json_required": true,
+    "direct_json_required": true,
+    "schema_required": true,
+    "request_id_match_required": true,
+    "exact_returned_model_required": true,
+    "expected_boundary_values_required": true,
+    "credential_absent_from_capture_required": true
+  },
+  "interpretation": {
+    "rerun_pass_is_provider_support": false,
+    "rerun_pass_is_provider_integration": false,
+    "rerun_pass_is_security_review": false,
+    "rerun_pass_is_customer_evidence": false,
+    "rerun_pass_is_certification": false,
+    "rerun_pass_is_sla": false,
+    "schema_pass_is_standard_conformance": false
+  }
+}

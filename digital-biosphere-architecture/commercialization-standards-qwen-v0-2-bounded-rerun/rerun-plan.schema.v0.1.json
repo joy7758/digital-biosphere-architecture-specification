@@ -1,0 +1,201 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre60-qwen-v0-2-bounded-rerun-plan.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_sha256",
+    "decision_commit",
+    "prompt_contract",
+    "binding",
+    "sessions",
+    "execution_policy",
+    "response_contract",
+    "pass_rule",
+    "interpretation"
+  ],
+  "properties": {
+    "$schema": {"const": "./rerun-plan.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-60-QWEN3-7-PLUS-V0-2-BOUNDED-RERUN-PLAN-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_BEFORE_FIRST_REQUEST"},
+    "decision_reference": {
+      "const": "../TITMAS-CS-D02-PRE-60-QWEN3-7-PLUS-V0-2-BOUNDED-RERUN-DECISION-RECORD.v0.1.json"
+    },
+    "decision_sha256": {
+      "const": "4a5fe72f4b1e6dc30f29fbfaca8f74f79f0c7ef6f0d53f7de2bae5487fd5b911"
+    },
+    "decision_commit": {
+      "const": "5bb27aba8616ec3a0bf5cad1ca6d9293ba7fa910"
+    },
+    "prompt_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256",
+        "coverage_path",
+        "coverage_sha256",
+        "coverage_passed",
+        "coverage_required"
+      ],
+      "properties": {
+        "path": {
+          "const": "../commercialization-standards-qwen-prompt-contract-revision/revised-prompt-set.v0.2.json"
+        },
+        "sha256": {
+          "const": "66fcd6dcdc4b2e255fce5005cc58a1d272e0ccedee43629e78dbfc5af4de22d7"
+        },
+        "coverage_path": {
+          "const": "../commercialization-standards-qwen-prompt-contract-revision/contract-coverage-validation.v0.1.json"
+        },
+        "coverage_sha256": {
+          "const": "332045a58a096e83a3ac1130b17b935469ae2afa21a3863fe11e6bbd3eba6cdc"
+        },
+        "coverage_passed": {"const": 24},
+        "coverage_required": {"const": 24}
+      }
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "base_url_source",
+        "endpoint",
+        "model",
+        "credential_identifier",
+        "base_url_identifier"
+      ],
+      "properties": {
+        "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+        "base_url_source": {"const": "HUMAN_OWNER_PROVIDED"},
+        "endpoint": {
+          "const": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions"
+        },
+        "model": {"const": "qwen3.7-plus"},
+        "credential_identifier": {"const": "DASHSCOPE_API_KEY"},
+        "base_url_identifier": {"const": "DASHSCOPE_BASE_URL"}
+      }
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "session_id",
+          "prompt_index",
+          "prompt_sha256",
+          "prompt_utf8_bytes"
+        ],
+        "properties": {
+          "session_id": {"pattern": "^QWEN37-ONBOARD-0[1-3]$"},
+          "prompt_index": {"type": "integer", "minimum": 0, "maximum": 2},
+          "prompt_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "prompt_utf8_bytes": {"type": "integer", "minimum": 1}
+        }
+      }
+    },
+    "execution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequential",
+        "concurrency_max",
+        "timeout_seconds",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "alias_inference_max",
+        "content_extraction_max",
+        "json_repair_max",
+        "raw_hidden_reasoning_requested",
+        "stop_after_failed_prerequisite_session"
+      ],
+      "properties": {
+        "sequential": {"const": true},
+        "concurrency_max": {"const": 1},
+        "timeout_seconds": {"const": 45},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "model_substitution_max": {"const": 0},
+        "alias_inference_max": {"const": 0},
+        "content_extraction_max": {"const": 0},
+        "json_repair_max": {"const": 0},
+        "raw_hidden_reasoning_requested": {"const": false},
+        "stop_after_failed_prerequisite_session": {"const": true}
+      }
+    },
+    "response_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_keys",
+        "provider_fit_values",
+        "boundary_false_keys",
+        "additional_properties_allowed"
+      ],
+      "properties": {
+        "required_keys": {
+          "type": "array",
+          "minItems": 9,
+          "maxItems": 9,
+          "uniqueItems": true,
+          "items": {"type": "string"}
+        },
+        "provider_fit_values": {
+          "const": ["SUITABLE", "CONDITIONAL", "NOT_SUITABLE"]
+        },
+        "boundary_false_keys": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {"type": "string"}
+        },
+        "additional_properties_allowed": {"const": false}
+      }
+    },
+    "pass_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_sessions_passed",
+        "http_2xx_required",
+        "outer_json_required",
+        "direct_json_required",
+        "schema_required",
+        "request_id_match_required",
+        "exact_returned_model_required",
+        "expected_boundary_values_required",
+        "credential_absent_from_capture_required"
+      ],
+      "properties": {
+        "required_sessions_passed": {"const": 3},
+        "http_2xx_required": {"const": true},
+        "outer_json_required": {"const": true},
+        "direct_json_required": {"const": true},
+        "schema_required": {"const": true},
+        "request_id_match_required": {"const": true},
+        "exact_returned_model_required": {"const": true},
+        "expected_boundary_values_required": {"const": true},
+        "credential_absent_from_capture_required": {"const": true}
+      }
+    },
+    "interpretation": {
+      "type": "object",
+      "minProperties": 7,
+      "additionalProperties": {"const": false}
+    }
+  }
+}
