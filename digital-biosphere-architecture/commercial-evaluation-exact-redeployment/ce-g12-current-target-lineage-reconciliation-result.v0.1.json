@@ -1,0 +1,196 @@
+{
+  "result_id": "TITMAS-CE-G12-CURRENT-TARGET-LINEAGE-RECONCILIATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T23:55:12Z",
+  "status": "PASS_OFFLINE_LINEAGE_RECONCILED_NO_OPERATION_AUTHORIZED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-CURRENT-TARGET-LINEAGE-RECONCILIATION",
+  "decision_sha256": "024f5d0cd484306178d1a5b3b99421c8afb7c8842aa906cf963a3736025561ba",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-CURRENT-TARGET-LINEAGE-RECONCILIATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "f92722f3e512759a027a161d15898ca0d57cfa4aabc7e1f38c8ce01c77ddb74d",
+  "governance_commit": "7795a34cd815c9ed8d28b40fee7dc1c7b8dc8e93",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "stable_release_id": "7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+  "proposed_release_id": "f8107969aa1f43be8ecf43f557297a630309fe41",
+  "observed_current_release_id": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+  "pr27_merge_id": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+  "remote_ref_check": {
+    "git_fetches": 1,
+    "governance_local_remote_equal": true,
+    "governance_local_head": "7795a34cd815c9ed8d28b40fee7dc1c7b8dc8e93",
+    "governance_remote_head": "7795a34cd815c9ed8d28b40fee7dc1c7b8dc8e93",
+    "production_observability_remote_head": "c1d8931930fbae15f96ee6a6ac050b081538c919"
+  },
+  "commit_object_checks": [
+    {
+      "commit": "7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+      "type": "commit",
+      "parent": "01495186ab68ab8275763ab4c56d0fcbe51c71ab",
+      "tree": "cd95f0ec3f0ddba7ac5e787b506450c60226594d",
+      "subject": "docs: validate TITMAS commercial evaluation with external agents",
+      "status": "PASS"
+    },
+    {
+      "commit": "f8107969aa1f43be8ecf43f557297a630309fe41",
+      "type": "commit",
+      "parent": "8b2b42a0ede38161ccf7351a314f5426a96f7c5d",
+      "tree": "13d1d8d5c34faddc459e2ad68b422cd9ea52f798",
+      "subject": "docs: authorize TITMAS evaluation entry publication",
+      "status": "PASS"
+    },
+    {
+      "commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+      "type": "commit",
+      "parent": "cc13ef545101dacb9cb3c0506f4dd7fc35edbce2",
+      "tree": "9473e64a1a0e1af129627cb93bdad7b38655944e",
+      "subject": "fix(site): align medical evidence demo boundaries",
+      "status": "PASS"
+    },
+    {
+      "commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+      "type": "commit",
+      "parents": [
+        "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+        "e6a193f4bf0d48d65649077122f0ab262460daac"
+      ],
+      "tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+      "subject": "Merge PR #27: integrate CE-G11B atomic evidence",
+      "status": "PASS"
+    }
+  ],
+  "ancestry_checks": [
+    {
+      "ancestor": "7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+      "descendant": "f8107969aa1f43be8ecf43f557297a630309fe41",
+      "expected": true,
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "ancestor": "f8107969aa1f43be8ecf43f557297a630309fe41",
+      "descendant": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+      "expected": true,
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "ancestor": "7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+      "descendant": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+      "expected": true,
+      "observed": true,
+      "status": "PASS"
+    },
+    {
+      "ancestor": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+      "descendant": "f8107969aa1f43be8ecf43f557297a630309fe41",
+      "expected": false,
+      "observed": false,
+      "status": "PASS"
+    }
+  ],
+  "governance_artifact_hash_checks": [
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g12-current-target-classification-result.v0.1.json",
+      "sha256": "277f9c6c9c757aae7870c32e101fd496cb5a06203015c2ce2723de8785f56a28",
+      "status": "PASS"
+    },
+    {
+      "reference": "TITMAS-CE-G12-CURRENT-TARGET-CLASSIFICATION-REPORT-v0.1.md",
+      "sha256": "760be97e60f8ddf2ff9d8bdb3c328406330539fe07b3f783231c0217e5d6e336",
+      "status": "PASS"
+    },
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g7-result.v0.1.json",
+      "sha256": "08fbeae76848886950029c1c4fc445ad665bff324a1a1bd18566817b6cbd8276",
+      "status": "PASS"
+    },
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g7-rollback-receipt.v0.1.json",
+      "sha256": "153edba2dcf5cbf7814034ef037e541412883b16106bf5f30a84e2b47d4150e8",
+      "status": "PASS"
+    },
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g7-proposed-release-hash-baseline.v0.1.json",
+      "sha256": "173fa2a0972bbbf3f61d4a649a1331249334c0fa003a668da200318a7858f7fc",
+      "status": "PASS"
+    },
+    {
+      "reference": "TITMAS-CE-G11B-PR27-MERGE-EXECUTION-AND-POST-MERGE-VALIDATION-RESULT-v0.1.json",
+      "sha256": "bda16758916a8df843c84bd5ca803b7a50d3343e5248f56ba94b944509d64c86",
+      "status": "PASS"
+    }
+  ],
+  "pr27_metadata_check": {
+    "metadata_reads": 1,
+    "number": 27,
+    "state": "MERGED",
+    "base_ref": "codex/production-observability-baseline",
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_ref": "codex/ce-g11b-pr23-remediation-candidate",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "merge_sha": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "remote_base_head": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "status": "PASS"
+  },
+  "role_mapping": {
+    "7da4bcf16eeec7de1c61031fe08fc04081cf8705": "CE_G7_RECORDED_STABLE_AND_ROLLBACK_RELEASE",
+    "f8107969aa1f43be8ecf43f557297a630309fe41": "CE_G7_AND_CE_G12_EXACT_PROPOSED_RELEASE",
+    "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14": "LATER_DESCENDANT_PR27_PRE_MERGE_BASE_AND_FRESH_OBSERVED_CURRENT_CANONICAL_TARGET",
+    "c1d8931930fbae15f96ee6a6ac050b081538c919": "PR27_MERGE_COMMIT_AND_REMOTE_PRODUCTION_OBSERVABILITY_BASELINE_HEAD"
+  },
+  "missing_evidence": {
+    "observed_current_deployment_authorized": "UNKNOWN",
+    "observed_current_deployment_receipt_found": false,
+    "observed_current_switch_source": "UNKNOWN",
+    "observed_current_intent": "UNKNOWN",
+    "observed_current_is_stale": "UNKNOWN",
+    "observed_current_is_unauthorized": "UNKNOWN",
+    "observed_current_is_safe": "UNKNOWN",
+    "root_cause_proven": false,
+    "server_mutation_attribution_proven": false
+  },
+  "execution_counts": {
+    "git_fetches": 1,
+    "source_artifact_hash_checks": 6,
+    "commit_object_checks": 4,
+    "ancestry_checks": 4,
+    "github_pr_metadata_reads": 1,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "public_site_requests": 0,
+    "symlink_reads": 0,
+    "symlink_switches": 0,
+    "repairs": 0,
+    "rollbacks": 0,
+    "redeployments": 0,
+    "releases": 0,
+    "pr_mutations": 0,
+    "model_requests": 0,
+    "retries": 0,
+    "fallbacks": 0
+  },
+  "effects": {
+    "lineage_reconciliation_complete": true,
+    "lineage_reconciliation_pass": true,
+    "deployment_proven": false,
+    "deployment_authority_proven": false,
+    "server_state_changed": false,
+    "pr_state_changed": false,
+    "remote_base_changed": false,
+    "repair_authorized": false,
+    "rollback_authorized": false,
+    "redeployment_authorized": false,
+    "release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "permission_created": false,
+    "authority_elevated": false,
+    "evidence_truth_changed": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G12_CURRENT_TARGET_DISPOSITION_RECOMMENDATION_ONLY",
+    "authorized": false
+  }
+}
