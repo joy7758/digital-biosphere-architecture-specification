@@ -437,6 +437,15 @@ persistence 后只允许一次新的 exact `qwen3.7-max` Decision review。
 [Sanitized Max review](TITMAS-CE-G11B-DRAFT-PR-DECISION-REVIEW-RETRY-QWEN-REVIEW-v0.1.json)
 为 `RECOMMENDED`、Option A、置信度 `0.95`、0 blocker/correction。该审查不授权新
 Decision、PR 创建、merge、workflow、Phase B 或 deployment。
+[CE-G11B-PR-A-R1 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-DRAFT-PR-A-R1-DECISION-RECORD.v0.1.json)
+及其 exact
+[Max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-DRAFT-PR-A-R1-QWEN-DECISION-REVIEW-v0.1.json)
+已远端固化；审查为 `APPROVE`、置信度 `0.95`、0 blocker/correction。
+[Draft PR #22](https://github.com/joy7758/digital-biosphere-architecture-specification/pull/22)
+随后按一次性授权创建。[结果](TITMAS-CE-G11B-DRAFT-PR-CREATION-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-DRAFT-PR-CREATION-REPORT-v0.1.md)确认其为 `OPEN` Draft、
+base/head SHA 精确、无 auto-merge/labels/reviewer/milestone，head Actions runs 为 0。
+该 PR 尚未 merge，也不授权 Phase B、workflow、deployment 或 commercial offering。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
