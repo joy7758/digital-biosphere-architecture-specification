@@ -1,0 +1,141 @@
+{
+  "$schema": "./execution-plan.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE70-EXECUTION-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_AUTHORIZED_NOT_EXECUTED",
+  "decision_reference": "../TITMAS-CS-D02-PRE-70-EXPLICIT-DOCKER-HOST-AND-GLOBAL-CONFIG-GUARD-DECISION-RECORD.v0.1.json",
+  "target_commit": "0030077f29c37145a306b72e7083345eb76b504a",
+  "temporary_root": {
+    "class": "HOST_HOME_CODEX_TEMP",
+    "count_max": 1,
+    "source_export_subdirectory": "source",
+    "docker_config_subdirectory": "docker-config",
+    "cleanup_required": true
+  },
+  "source_export": {
+    "method": "LOCAL_GIT_ARCHIVE_EXACT_COMMIT",
+    "network_required": false,
+    "target_writes_max": 0,
+    "export_read_only_before_mount": true,
+    "review_hashes_expected": 10
+  },
+  "global_config_guard": {
+    "root_class": "USER_DEFAULT_DOCKER_CONFIG_ROOT",
+    "method": "RECURSIVE_LSTAT_METADATA_ONLY",
+    "file_content_reads": false,
+    "path_or_metadata_persistence": false,
+    "pre_post_match_required": true,
+    "mismatch_action": "FAIL_CLOSED_NO_REPAIR"
+  },
+  "docker_config": {
+    "template_reference": "../commercialization-standards-p0-security-and-platform-remediation/anonymous-docker-config.template.v0.1.json",
+    "template_sha256": "e58c7564b64e92c6c8ebc3cb296e644b4f2409ace8882621e888924c0c598753",
+    "runtime_filename": "config.json",
+    "directory_mode": "0700",
+    "file_mode": "0600",
+    "bound_to_colima_start_stop_and_all_docker_commands": true,
+    "registry_credentials_allowed": false
+  },
+  "colima_control": {
+    "version": "0.10.1",
+    "profile": "default",
+    "start_flags": [
+      "--activate=false",
+      "--save-config=false",
+      "--port-forwarder=none"
+    ],
+    "docker_host_template": "unix://${COLIMA_HOME_OR_DEFAULT}/default/docker.sock",
+    "socket_checks": [
+      "EXISTS",
+      "UNIX_SOCKET",
+      "CURRENT_USER_OWNED",
+      "RESOLVES_UNDER_DEFAULT_PROFILE"
+    ],
+    "docker_context_used": false,
+    "default_socket_fallback_allowed": false
+  },
+  "platform_lanes": [
+    {
+      "lane_id": "PFM-LINUX-311-R2",
+      "image": "docker.io/library/python@sha256:28255a3ace7eb4c48bc1b57b90af29e1bc82b4fd6c60614a8e3dce61b87ff941",
+      "platform": "linux/amd64",
+      "network": "none",
+      "root_filesystem": "read-only",
+      "source_mount": "read-only",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -v && PYTHONDONTWRITEBYTECODE=1 python3 conformance/validate.py --manifest conformance/case-manifest.v0.1.json"
+    },
+    {
+      "lane_id": "PFM-LINUX-314-R2",
+      "image": "docker.io/library/python@sha256:f70215e5dbe2a47dee6d23f9c6d358bf3c148f59cce2fd165b61118e9d80f2bb",
+      "platform": "linux/amd64",
+      "network": "none",
+      "root_filesystem": "read-only",
+      "source_mount": "read-only",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -v && PYTHONDONTWRITEBYTECODE=1 python3 conformance/validate.py --manifest conformance/case-manifest.v0.1.json"
+    }
+  ],
+  "agent_review_lanes": [
+    {
+      "session_id": "PRE70-QF-SECURITY-01",
+      "provider": "BAIDU_QIANFAN",
+      "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+      "model": "ernie-4.5-turbo-20260402",
+      "credential_identifier": "QIANFAN_API_KEY",
+      "role": "IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE",
+      "timeout_seconds": 120
+    },
+    {
+      "session_id": "PRE70-QWEN-SECURITY-02",
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "model": "qwen3.7-plus",
+      "credential_identifier": "DASHSCOPE_API_KEY",
+      "role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE",
+      "timeout_seconds": 120
+    }
+  ],
+  "agent_response_schema": "../commercialization-standards-p0-security-and-platform-validation/agent-review-response.schema.v0.1.json",
+  "execution_order": [
+    "VERIFY_DECISION_TARGET_TEMPLATE_AND_TEN_HASHES",
+    "CREATE_ONE_EPHEMERAL_TEMP_ROOT",
+    "EXPORT_EXACT_SOURCE_AND_FREEZE_READ_ONLY",
+    "COPY_AND_VALIDATE_ANONYMOUS_DOCKER_CONFIG",
+    "CAPTURE_IN_MEMORY_GLOBAL_CONFIG_METADATA_SNAPSHOT",
+    "START_EXISTING_COLIMA_NONACTIVATING_WITH_EPHEMERAL_DOCKER_CONFIG",
+    "VALIDATE_AND_BIND_EXPLICIT_COLIMA_DOCKER_HOST",
+    "PULL_TWO_EXACT_DIGESTS",
+    "RUN_TWO_NETWORK_NONE_READ_ONLY_PLATFORM_LANES",
+    "RUN_TWO_SEQUENTIAL_AGENT_REVIEW_LANES",
+    "STOP_COLIMA_WITH_EPHEMERAL_DOCKER_CONFIG",
+    "COMPARE_GLOBAL_CONFIG_METADATA_SNAPSHOT_FAIL_CLOSED",
+    "DELETE_ONLY_PRE70_EPHEMERAL_TEMP_ROOT",
+    "FORM_RESULT_PACKET"
+  ],
+  "caps": {
+    "temp_roots": 1,
+    "source_exports": 1,
+    "docker_config_copies": 1,
+    "global_config_snapshot_pairs": 1,
+    "colima_starts": 1,
+    "image_pull_attempts": 2,
+    "container_runs": 2,
+    "agent_model_requests": 2,
+    "retry": 0,
+    "fallback": 0,
+    "model_substitution": 0,
+    "json_repair": 0,
+    "credential_value_reads": 0,
+    "user_docker_config_direct_writes": 0,
+    "user_docker_config_repairs": 0,
+    "target_writes": 0,
+    "target_network_calls": 0
+  },
+  "truth_boundaries": [
+    "METADATA_GUARD_PASS_NE_ZERO_WRITE_PROOF",
+    "EXPLICIT_DOCKER_HOST_NE_PRODUCTION_RUNTIME_CONFIGURATION",
+    "PLATFORM_PASS_NE_FORMAL_SECURITY_REVIEW",
+    "AGENT_REVIEW_NE_HUMAN_REVIEW",
+    "ANONYMOUS_PULL_NE_SUPPLY_CHAIN_APPROVAL",
+    "REFERENCE_IMPLEMENTATION_NE_STANDARD"
+  ]
+}
