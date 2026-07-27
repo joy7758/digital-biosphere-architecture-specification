@@ -1,0 +1,53 @@
+{
+  "$schema": "./discovery-plan.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-56-QWEN-MODEL-DISCOVERY-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_BEFORE_REQUEST",
+  "decision_reference": "../TITMAS-CS-D02-PRE-56-QWEN-READ-ONLY-MODEL-DISCOVERY-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "24844387840bddecaaacacd0df985416e872432336f0de5084746323190c900a",
+  "decision_commit": "c210cda45d5e900d371124a143f30a2b0ddec6e2",
+  "request": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "base_url_source": "HUMAN_OWNER_PROVIDED",
+    "method": "GET",
+    "url": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/models",
+    "credential_identifier": "DASHSCOPE_API_KEY",
+    "timeout_seconds": 30,
+    "request_body_present": false
+  },
+  "execution_policy": {
+    "provider_requests_max": 1,
+    "model_inference_requests_max": 0,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "alternate_endpoint_max": 0,
+    "html_scraping_max": 0,
+    "model_guessing_max": 0
+  },
+  "sanitization": {
+    "model_ids_only": true,
+    "sort_and_deduplicate": true,
+    "model_ids_max": 500,
+    "retain_raw_response_sha256": true,
+    "retain_account_metadata": false,
+    "retain_billing_or_quota": false,
+    "retain_owner_or_created": false,
+    "retain_headers": false,
+    "retain_credential_value": false
+  },
+  "pass_rule": {
+    "http_2xx": true,
+    "outer_json_object": true,
+    "data_array": true,
+    "model_id_count_min": 1,
+    "secret_scan_pass": true
+  },
+  "interpretation": {
+    "listing_is_entitlement": false,
+    "listing_is_inference_success": false,
+    "listing_is_provider_support": false,
+    "listing_is_security_review": false,
+    "listing_is_model_selection": false
+  }
+}
+

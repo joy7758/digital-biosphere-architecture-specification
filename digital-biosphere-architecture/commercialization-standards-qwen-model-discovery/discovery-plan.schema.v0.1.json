@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre56-qwen-model-discovery-plan.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_sha256",
+    "decision_commit",
+    "request",
+    "execution_policy",
+    "sanitization",
+    "pass_rule",
+    "interpretation"
+  ],
+  "properties": {
+    "$schema": {"const": "./discovery-plan.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-56-QWEN-MODEL-DISCOVERY-PLAN-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_BEFORE_REQUEST"},
+    "decision_reference": {
+      "const": "../TITMAS-CS-D02-PRE-56-QWEN-READ-ONLY-MODEL-DISCOVERY-DECISION-RECORD.v0.1.json"
+    },
+    "decision_sha256": {
+      "const": "24844387840bddecaaacacd0df985416e872432336f0de5084746323190c900a"
+    },
+    "decision_commit": {
+      "const": "c210cda45d5e900d371124a143f30a2b0ddec6e2"
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "base_url_source",
+        "method",
+        "url",
+        "credential_identifier",
+        "timeout_seconds",
+        "request_body_present"
+      ],
+      "properties": {
+        "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+        "base_url_source": {"const": "HUMAN_OWNER_PROVIDED"},
+        "method": {"const": "GET"},
+        "url": {
+          "const": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/models"
+        },
+        "credential_identifier": {"const": "DASHSCOPE_API_KEY"},
+        "timeout_seconds": {"const": 30},
+        "request_body_present": {"const": false}
+      }
+    },
+    "execution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_requests_max",
+        "model_inference_requests_max",
+        "retry_max",
+        "fallback_max",
+        "alternate_endpoint_max",
+        "html_scraping_max",
+        "model_guessing_max"
+      ],
+      "properties": {
+        "provider_requests_max": {"const": 1},
+        "model_inference_requests_max": {"const": 0},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "alternate_endpoint_max": {"const": 0},
+        "html_scraping_max": {"const": 0},
+        "model_guessing_max": {"const": 0}
+      }
+    },
+    "sanitization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model_ids_only",
+        "sort_and_deduplicate",
+        "model_ids_max",
+        "retain_raw_response_sha256",
+        "retain_account_metadata",
+        "retain_billing_or_quota",
+        "retain_owner_or_created",
+        "retain_headers",
+        "retain_credential_value"
+      ],
+      "properties": {
+        "model_ids_only": {"const": true},
+        "sort_and_deduplicate": {"const": true},
+        "model_ids_max": {"const": 500},
+        "retain_raw_response_sha256": {"const": true},
+        "retain_account_metadata": {"const": false},
+        "retain_billing_or_quota": {"const": false},
+        "retain_owner_or_created": {"const": false},
+        "retain_headers": {"const": false},
+        "retain_credential_value": {"const": false}
+      }
+    },
+    "pass_rule": {
+      "type": "object",
+      "minProperties": 5,
+      "additionalProperties": {"const": true}
+    },
+    "interpretation": {
+      "type": "object",
+      "minProperties": 5,
+      "additionalProperties": {"const": false}
+    }
+  }
+}
