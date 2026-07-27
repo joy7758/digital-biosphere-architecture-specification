@@ -2863,6 +2863,35 @@ returned model identity、response hash、verdict、blockers 和 corrections 均
 `NOT_AUTHORIZED_DECISION_REVIEW_NON_QUALIFYING`，没有创建 PR。下一步必须先准备新的
 review-retry Recommendation。
 
+### 4.82 CE-G11B Draft PR Decision-review Retry Recommendation
+
+[Retry Recommendation](../TITMAS-CE-G11B-DRAFT-PR-DECISION-REVIEW-RETRY-RECOMMENDATION-v0.1.md)
+和
+[sanitized Max review](../TITMAS-CE-G11B-DRAFT-PR-DECISION-REVIEW-RETRY-QWEN-REVIEW-v0.1.json)
+记录：
+
+```text
+CE_G11B_OLD_DRAFT_PR_DECISION_REVIEW_FAILURE_PRESERVED=true
+CE_G11B_RETRY_RECOMMENDATION_REVIEWED_SOURCE_SHA256=38cbc23f28e1d434bca5361443bf41ef547e33333a8f136923b9b0e02e988a68
+CE_G11B_RETRY_RECOMMENDATION_REVIEW_MODEL=qwen3.7-max
+CE_G11B_RETRY_RECOMMENDATION_REVIEW_RESULT=RECOMMENDED
+CE_G11B_RETRY_RECOMMENDATION_SELECTED_OPTION=A
+CE_G11B_RETRY_RECOMMENDATION_CONFIDENCE=0.95
+CE_G11B_RETRY_RECOMMENDATION_BLOCKERS=0
+CE_G11B_RETRY_RECOMMENDATION_CORRECTIONS=0
+CE_G11B_NEW_DECISION_RECORDED=false
+CE_G11B_DRAFT_PR_CREATION_AUTHORIZED=false
+CE_G11B_DRAFT_PR_CREATED=false
+CE_G11B_WORKFLOW_RUNS=0
+CE_G11B_PHASE_B_AUTHORIZED=false
+```
+
+Recommendation 的 exact bytes 在审查后保持不变，使 source hash 可复核。审查采用
+write-ahead persistence，唯一一次请求为 HTTP 200，returned model 精确等于
+`qwen3.7-max`，direct JSON 与 review contract 均通过。下一步只允许建立新的独立
+`CE-G11B-PR-A-R1` Decision candidate，并对该 Decision 进行一次相同顺序的
+write-ahead Max review；不得从 Recommendation 直接创建 PR。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -3132,10 +3161,10 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Prepare CE-G11B Draft PR Decision-review retry Recommendation only**：原
-   Decision review 未产生合格 sanitized result，Decision 未授权；只允许定义一次新的
-   independent review attempt 及完整结果持久化要求。不得直接重试、创建 PR、merge、
-   push、run request、workflow、site path、server access、Phase B 或 redeployment；
+1. **Prepare CE-G11B-PR-A-R1 Decision candidate only**：retry Recommendation 已由
+   exact `qwen3.7-max` 通过 write-ahead review；旧失败保持不变。只允许建立新的独立
+   Decision 并审查其 exact bytes；不得直接创建 PR、merge、run request、workflow、
+   site path、server access、Phase B 或 redeployment；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
