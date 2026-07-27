@@ -1,0 +1,82 @@
+{
+  "document_id": "TITMAS-CS-D02-PRE71-OFFLINE-VALIDATION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_BOUNDED_OFFLINE_CONTRACT_DESIGN",
+  "contract_schema_valid": true,
+  "fixture_count": 10,
+  "positive_cases_expected": 2,
+  "positive_cases_passed": 2,
+  "negative_cases_expected": 8,
+  "negative_cases_rejected": 8,
+  "validator_attempts": 2,
+  "first_attempt_result": "LOCAL_HARNESS_LOGIC_ERROR_NEGATIVE_RESULT_DOUBLE_INVERSION",
+  "first_attempt_changed_contract_or_fixtures": false,
+  "second_attempt_result": "PASS",
+  "case_results": [
+    {
+      "case_id": "PRE71-P001",
+      "result": "PASS"
+    },
+    {
+      "case_id": "PRE71-P002",
+      "result": "PASS"
+    },
+    {
+      "case_id": "PRE71-N001",
+      "result": "EXPECTED_REJECTION"
+    },
+    {
+      "case_id": "PRE71-N002",
+      "result": "EXPECTED_REJECTION"
+    },
+    {
+      "case_id": "PRE71-N003",
+      "result": "EXPECTED_REJECTION"
+    },
+    {
+      "case_id": "PRE71-N004",
+      "result": "EXPECTED_REJECTION"
+    },
+    {
+      "case_id": "PRE71-N005",
+      "result": "EXPECTED_REJECTION"
+    },
+    {
+      "case_id": "PRE71-N006",
+      "result": "EXPECTED_REJECTION"
+    },
+    {
+      "case_id": "PRE71-N007",
+      "result": "EXPECTED_REJECTION"
+    },
+    {
+      "case_id": "PRE71-N008",
+      "result": "EXPECTED_REJECTION"
+    }
+  ],
+  "caps_observed": {
+    "live_model_requests": 0,
+    "credential_value_reads": 0,
+    "raw_provider_response_reads": 0,
+    "external_network_requests": 0,
+    "target_writes": 0,
+    "dbos_writes": 0,
+    "saee_writes": 0,
+    "response_extraction_or_repair": 0,
+    "provider_substitutions": 0,
+    "runtime_creations": 0,
+    "agent_creations": 0,
+    "entity_creations": 0,
+    "permission_creations": 0,
+    "release_actions": 0
+  },
+  "effects": {
+    "provider_capability_proven": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "contract_adopted_as_standard": false,
+    "implementation_authorized": false,
+    "release_authorized": false,
+    "standard_ready": false
+  }
+}

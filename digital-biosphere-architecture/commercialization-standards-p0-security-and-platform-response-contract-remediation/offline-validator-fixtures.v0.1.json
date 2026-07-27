@@ -1,0 +1,104 @@
+{
+  "document_id": "TITMAS-CS-D02-PRE71-OFFLINE-VALIDATOR-FIXTURES-0.1",
+  "version": "0.1.0",
+  "status": "SYNTHETIC_OFFLINE_FIXTURES",
+  "cases": [
+    {
+      "case_id": "PRE71-P001",
+      "class": "POSITIVE",
+      "subject": "ASSISTANT_CONTENT",
+      "input": "{\"contract_version\":\"example/v0.1\"}",
+      "expected": "PASS_DIRECT_SINGLE_JSON_OBJECT"
+    },
+    {
+      "case_id": "PRE71-P002",
+      "class": "POSITIVE",
+      "subject": "ASSISTANT_CONTENT",
+      "input": " \n{\"contract_version\":\"example/v0.1\"}\t",
+      "expected": "PASS_DIRECT_SINGLE_JSON_OBJECT_WITH_JSON_WHITESPACE"
+    },
+    {
+      "case_id": "PRE71-N001",
+      "class": "NEGATIVE",
+      "subject": "ASSISTANT_CONTENT",
+      "input": "```json\n{\"contract_version\":\"example/v0.1\"}\n```",
+      "expected": "REJECT_CODE_FENCED_JSON_AS_DIRECT_JSON"
+    },
+    {
+      "case_id": "PRE71-N002",
+      "class": "NEGATIVE",
+      "subject": "ASSISTANT_CONTENT",
+      "input": "Result: {\"contract_version\":\"example/v0.1\"}",
+      "expected": "REJECT_PREFIX_OR_SUFFIX_PROSE"
+    },
+    {
+      "case_id": "PRE71-N003",
+      "class": "NEGATIVE",
+      "subject": "PROCESSING_POLICY",
+      "input": {
+        "substring_extraction_allowed": true,
+        "json_repair_allowed": true
+      },
+      "expected": "REJECT_EXTRACTION_OR_REPAIR_ENABLED"
+    },
+    {
+      "case_id": "PRE71-N004",
+      "class": "NEGATIVE",
+      "subject": "PROVIDER_PRECONDITION",
+      "input": {
+        "official_capability_evidence_verified": false,
+        "provider_response_contract_proven": true
+      },
+      "expected": "REJECT_UNPROVEN_PROVIDER_STRUCTURED_OUTPUT_CLAIM"
+    },
+    {
+      "case_id": "PRE71-N005",
+      "class": "NEGATIVE",
+      "subject": "CREDENTIAL_ACCOUNTING",
+      "input": {
+        "authenticated_requests": 1,
+        "credential_values_accessed_in_process_memory": 0
+      },
+      "expected": "REJECT_AUTHENTICATED_REQUEST_WITH_ZERO_IN_MEMORY_ACCESS"
+    },
+    {
+      "case_id": "PRE71-N006",
+      "class": "NEGATIVE",
+      "subject": "CREDENTIAL_ACCOUNTING",
+      "input": {
+        "credential_values_accessed_in_process_memory": 1,
+        "automatic_exposure_inference": true
+      },
+      "expected": "REJECT_IN_MEMORY_ACCESS_AUTOMATICALLY_MARKED_AS_EXPOSURE"
+    },
+    {
+      "case_id": "PRE71-N007",
+      "class": "NEGATIVE",
+      "subject": "TRUTH_BOUNDARY",
+      "input": {
+        "platform_gate": "PASS",
+        "formal_human_security_review_complete": true
+      },
+      "expected": "REJECT_PLATFORM_PASS_AS_FORMAL_SECURITY_REVIEW"
+    },
+    {
+      "case_id": "PRE71-N008",
+      "class": "NEGATIVE",
+      "subject": "TRUTH_BOUNDARY",
+      "input": {
+        "contract_status": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED",
+        "standard_ready": true
+      },
+      "expected": "REJECT_CONTRACT_CANDIDATE_AS_ADOPTED_STANDARD"
+    }
+  ],
+  "effects": {
+    "live_model_requests": 0,
+    "credential_value_reads": 0,
+    "raw_provider_response_reads": 0,
+    "external_network_requests": 0,
+    "target_writes": 0,
+    "implementation_created": false,
+    "standard_ready": false
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/strict-response-contract-candidate.v0.2.json",
+  "title": "TITMAS Strict Agent Review Response Contract Candidate v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "contract_version",
+    "status",
+    "purpose",
+    "layers",
+    "assistant_content_contract",
+    "processing_contract",
+    "admission_gates",
+    "provider_precondition",
+    "failure_classes",
+    "truth_boundaries",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./strict-response-contract-candidate.schema.v0.2.json"
+    },
+    "contract_version": {
+      "const": "titmas.agent-review-response-transport/v0.2"
+    },
+    "status": {
+      "const": "DEVELOPMENT_CANDIDATE_NOT_ADOPTED"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 20
+    },
+    "layers": {
+      "const": {
+        "provider_transport_envelope": "TRANSPORT_ONLY_NOT_REVIEW_OBJECT",
+        "assistant_content": "ONLY_CANDIDATE_REVIEW_OBJECT_SOURCE",
+        "review_object": "ADMITTED_ONLY_AFTER_ALL_GATES_PASS"
+      }
+    },
+    "assistant_content_contract": {
+      "const": {
+        "encoding": "UTF-8",
+        "maximum_bytes": 131072,
+        "leading_or_trailing_json_whitespace_allowed": true,
+        "allowed_json_whitespace_code_points": [
+          "U+0020",
+          "U+0009",
+          "U+000A",
+          "U+000D"
+        ],
+        "top_level_type": "object",
+        "single_json_value_required": true,
+        "markdown_code_fence_allowed": false,
+        "non_whitespace_prefix_allowed": false,
+        "non_whitespace_suffix_allowed": false,
+        "duplicate_object_keys_allowed": false,
+        "maximum_nesting_depth": 16,
+        "maximum_total_object_properties": 2048,
+        "maximum_array_items": 1024,
+        "maximum_string_utf8_bytes": 32768,
+        "non_finite_numbers_allowed": false
+      }
+    },
+    "processing_contract": {
+      "const": {
+        "markdown_fence_stripping_allowed": false,
+        "substring_extraction_allowed": false,
+        "prefix_or_suffix_discard_allowed": false,
+        "json_repair_allowed": false,
+        "type_coercion_allowed": false,
+        "missing_field_synthesis_allowed": false,
+        "unknown_field_deletion_allowed": false,
+        "retry_on_contract_failure_allowed": false,
+        "fallback_model_on_contract_failure_allowed": false
+      }
+    },
+    "admission_gates": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "uniqueItems": true
+    },
+    "provider_precondition": {
+      "const": {
+        "provider_native_structured_output_capability_evidence_required": true,
+        "prompt_only_json_instruction_sufficient": false,
+        "official_documentation_or_bounded_preflight_required": true,
+        "endpoint_model_and_request_shape_binding_required": true,
+        "unproven_status": "PROVIDER_RESPONSE_CONTRACT_UNPROVEN",
+        "unproven_lane_action": "DO_NOT_START_FULL_REVIEW"
+      }
+    },
+    "failure_classes": {
+      "type": "object"
+    },
+    "truth_boundaries": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true
+    },
+    "effects": {
+      "const": {
+        "provider_supported": false,
+        "formal_human_security_review_complete": false,
+        "contract_adopted_as_standard": false,
+        "implementation_authorized": false,
+        "live_model_request_authorized": false,
+        "release_authorized": false,
+        "standard_ready": false
+      }
+    }
+  }
+}

@@ -1,0 +1,97 @@
+{
+  "document_id": "TITMAS-CS-D02-PRE71-OFFLINE-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_BOUNDED_OFFLINE_CONTRACT_DESIGN",
+  "decision_reference": "../TITMAS-CS-D02-PRE-71-AGENT-RESPONSE-CONTRACT-AND-CREDENTIAL-ACCOUNTING-DISPOSITION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "96355bcf78755f05d6a820762ae6d9e48e3f38af",
+  "decision_sha256": "36727cfded696d97e7f734935fcbeb1d17ba7294f573f9e45b364b0c16ec98b0",
+  "execution_plan_reference": "./offline-execution-plan.v0.1.json",
+  "execution_plan_sha256": "bda515f0444f294655260dd7abda4e02e44ab6fed5a178ac90182cecb63ed0a3",
+  "started_at": "2026-07-27T14:31:00+08:00",
+  "ended_at": "2026-07-27T14:36:44+08:00",
+  "executed_by": "Codex",
+  "validated_artifacts": [
+    {
+      "path": "strict-response-contract-candidate.v0.2.json",
+      "sha256": "f3cd4f8932e9ed5cc04261d290181d9a6a29284ff4f93579b1e2498135259170"
+    },
+    {
+      "path": "strict-response-contract-candidate.schema.v0.2.json",
+      "sha256": "fbec0199804c8083a496b7b9b6e1a4d6ce678dd2b25ab96febf7f3bac0abdf3c"
+    },
+    {
+      "path": "provider-structured-output-capability-evidence-checklist.v0.1.json",
+      "sha256": "3802380f05eef949830a5f04ec8950c94ffabc5e3e263d58a876d80326ed4904"
+    },
+    {
+      "path": "credential-use-accounting-profile.v0.1.json",
+      "sha256": "f3e6e744cd2b15269d1a68f918e71fb52f9f31c8419eafb490ad21b8744e913e"
+    },
+    {
+      "path": "offline-validator-fixtures.v0.1.json",
+      "sha256": "61288e1c1b93b7a40b6ab6f8527638a25c101c9bab48b44a1d80628f7be6c8fe"
+    },
+    {
+      "path": "offline-validation-result.v0.1.json",
+      "sha256": "38058ccf35875617cf9c9adebdc5972349faf2a7b8c91e91dbabfecf52e27a30"
+    }
+  ],
+  "validation": {
+    "contract_schema_valid": true,
+    "fixtures_total": 10,
+    "positive_cases_passed": 2,
+    "positive_cases_expected": 2,
+    "negative_cases_rejected": 8,
+    "negative_cases_expected": 8,
+    "validator_attempts": 2,
+    "first_attempt_result": "LOCAL_HARNESS_LOGIC_ERROR_NEGATIVE_RESULT_DOUBLE_INVERSION",
+    "first_attempt_changed_contract_or_fixtures": false,
+    "second_attempt_result": "PASS"
+  },
+  "target": {
+    "repository": "joy7758/titmas-integrations",
+    "commit_before": "0030077f29c37145a306b72e7083345eb76b504a",
+    "commit_after": "0030077f29c37145a306b72e7083345eb76b504a",
+    "remote_commit_after": "0030077f29c37145a306b72e7083345eb76b504a",
+    "dirty_count_after": 0,
+    "writes": 0
+  },
+  "actuals": {
+    "live_model_requests": 0,
+    "credential_value_reads": 0,
+    "raw_provider_response_reads": 0,
+    "external_network_requests": 0,
+    "target_writes": 0,
+    "dbos_writes": 0,
+    "saee_writes": 0,
+    "response_extraction_or_repair": 0,
+    "provider_substitutions": 0,
+    "runtime_creations": 0,
+    "agent_creations": 0,
+    "entity_creations": 0,
+    "permission_creations": 0,
+    "release_actions": 0
+  },
+  "gate_results": {
+    "offline_contract_design_gate": "PASS",
+    "provider_capability_gate": "NOT_EVALUATED_NO_EXTERNAL_EVIDENCE_ACQUIRED",
+    "live_agent_review_gate": "NOT_AUTHORIZED_NOT_EXECUTED",
+    "formal_human_security_review_gate": "NOT_SATISFIED",
+    "standard_gate": "NOT_SATISFIED",
+    "overall": "PASS_BOUNDED_OFFLINE_DESIGN_ONLY"
+  },
+  "effects": {
+    "provider_capability_proven": false,
+    "provider_supported": false,
+    "formal_human_security_review_complete": false,
+    "contract_adopted_as_standard": false,
+    "implementation_created": false,
+    "runtime_created": false,
+    "agent_created": false,
+    "entity_created": false,
+    "permission_created": false,
+    "release_authorized": false,
+    "standard_ready": false
+  },
+  "next_action": "PREPARE_PRE72_OFFICIAL_PROVIDER_STRUCTURED_OUTPUT_CAPABILITY_EVIDENCE_ACQUISITION_RECOMMENDATION_NO_EXTERNAL_REQUEST_AUTHORIZED"
+}

@@ -1,0 +1,65 @@
+{
+  "document_id": "TITMAS-PRE71-PROVIDER-STRUCTURED-OUTPUT-CAPABILITY-EVIDENCE-CHECKLIST-0.1",
+  "version": "0.1.0",
+  "status": "DEVELOPMENT_CHECKLIST_NO_PROVIDER_CAPABILITY_PROVEN",
+  "claim_unit": [
+    "provider",
+    "endpoint",
+    "model",
+    "request_shape",
+    "capability_version_or_observed_at"
+  ],
+  "required_official_evidence": [
+    "AUTHORITATIVE_PROVIDER_DOCUMENT_URL",
+    "EXACT_ENDPOINT_FAMILY",
+    "EXACT_MODEL_OR_DOCUMENTED_MODEL_CLASS",
+    "SUPPORTED_STRUCTURED_OUTPUT_PARAMETER",
+    "OBJECT_ONLY_OR_SCHEMA_CONSTRAINT_SEMANTICS",
+    "KNOWN_LIMITATIONS",
+    "EVIDENCE_OBSERVED_AT"
+  ],
+  "required_bounded_preflight_if_official_evidence_is_INSUFFICIENT": [
+    "EXACT_ENDPOINT_MODEL_AND_REQUEST_SHAPE",
+    "AT_LEAST_THREE_SEQUENTIAL_DIRECT_OBJECT_RESPONSES",
+    "ZERO_CODE_FENCE_PREFIX_SUFFIX_EXTRACTION_OR_REPAIR",
+    "EXACT_RETURNED_MODEL_BINDING",
+    "FROZEN_SCHEMA_AND_NON_CLAIM_PASS",
+    "RAW_RESPONSE_NOT_PERSISTED",
+    "SEPARATE_DECISION_AND_REQUEST_CAP"
+  ],
+  "candidate_lanes": [
+    {
+      "provider": "BAIDU_QIANFAN",
+      "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+      "model": "ernie-4.5-turbo-20260402",
+      "current_status": "PROVIDER_RESPONSE_CONTRACT_UNPROVEN",
+      "pre70_observation": "ASSISTANT_CONTENT_CODE_FENCE",
+      "official_capability_evidence_verified": false,
+      "bounded_preflight_authorized": false
+    },
+    {
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "model": "qwen3.7-plus",
+      "current_status": "PROVIDER_RESPONSE_CONTRACT_UNPROVEN_FOR_PRE71",
+      "pre70_observation": "NOT_EXECUTED_DUE_PRIOR_AGENT_CONTRACT_FAILURE",
+      "official_capability_evidence_verified": false,
+      "bounded_preflight_authorized": false
+    }
+  ],
+  "prohibited_inferences": [
+    "PROMPT_REQUESTING_JSON_NE_PROVIDER_STRUCTURED_OUTPUT_CAPABILITY",
+    "ONE_DIRECT_JSON_RESPONSE_NE_STABLE_CAPABILITY",
+    "OPENAI_COMPATIBLE_ENDPOINT_NE_IDENTICAL_RESPONSE_FORMAT_SUPPORT",
+    "CAPABILITY_EVIDENCE_NE_PROVIDER_SUPPORT",
+    "PREFLIGHT_PASS_NE_FORMAL_SECURITY_REVIEW"
+  ],
+  "effects": {
+    "provider_capability_proven": false,
+    "provider_supported": false,
+    "bounded_preflight_authorized": false,
+    "live_model_request_authorized": false,
+    "formal_human_security_review_complete": false,
+    "standard_ready": false
+  }
+}
