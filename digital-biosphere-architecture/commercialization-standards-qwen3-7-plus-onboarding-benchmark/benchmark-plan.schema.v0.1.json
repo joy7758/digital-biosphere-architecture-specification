@@ -1,0 +1,185 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre57-qwen3-7-plus-onboarding-benchmark-plan.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_sha256",
+    "decision_commit",
+    "pre56_discovery_binding",
+    "binding",
+    "execution_policy",
+    "prompts",
+    "response_contract",
+    "pass_rule",
+    "interpretation"
+  ],
+  "properties": {
+    "$schema": {"const": "./benchmark-plan.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-57-QWEN3-7-PLUS-ONBOARDING-BENCHMARK-PLAN-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_BEFORE_FIRST_REQUEST"},
+    "decision_reference": {
+      "const": "../TITMAS-CS-D02-PRE-57-QWEN3-7-PLUS-ONBOARDING-BENCHMARK-DECISION-RECORD.v0.1.json"
+    },
+    "decision_sha256": {
+      "const": "2df6514bad2d90cfa52c32cfe6805a87b674ce3c68a4fafa9f888d0f6cd87237"
+    },
+    "decision_commit": {
+      "const": "6b42bb0a8f98a3e4884278a53835bf02afc23ecb"
+    },
+    "pre56_discovery_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "result_reference",
+        "result_sha256",
+        "result_commit",
+        "model_id_listed"
+      ],
+      "properties": {
+        "result_reference": {
+          "const": "../commercialization-standards-qwen-model-discovery/PRE-56-QWEN-MODEL-DISCOVERY-RESULT-v0.1.md"
+        },
+        "result_sha256": {
+          "const": "75cffdf8de4a7a1fcf3316421ad0388822a6021547bedfacbf82adca5768b03b"
+        },
+        "result_commit": {
+          "const": "660ab543583f6d75ac19d3db779df6b0c999e6f5"
+        },
+        "model_id_listed": {"const": true}
+      }
+    },
+    "binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "base_url_source",
+        "endpoint",
+        "model",
+        "credential_identifier"
+      ],
+      "properties": {
+        "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+        "base_url_source": {"const": "HUMAN_OWNER_PROVIDED"},
+        "endpoint": {
+          "const": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions"
+        },
+        "model": {"const": "qwen3.7-plus"},
+        "credential_identifier": {"const": "DASHSCOPE_API_KEY"}
+      }
+    },
+    "execution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequential",
+        "concurrency_max",
+        "timeout_seconds",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "alias_inference_max",
+        "content_extraction_max",
+        "json_repair_max",
+        "raw_hidden_reasoning_requested",
+        "stop_after_failed_prerequisite_session"
+      ],
+      "properties": {
+        "sequential": {"const": true},
+        "concurrency_max": {"const": 1},
+        "timeout_seconds": {"const": 45},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "model_substitution_max": {"const": 0},
+        "alias_inference_max": {"const": 0},
+        "content_extraction_max": {"const": 0},
+        "json_repair_max": {"const": 0},
+        "raw_hidden_reasoning_requested": {"const": false},
+        "stop_after_failed_prerequisite_session": {"const": true}
+      }
+    },
+    "prompts": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["session_id", "purpose", "sha256", "utf8_bytes", "prompt_text"],
+        "properties": {
+          "session_id": {"pattern": "^QWEN37-ONBOARD-0[1-3]$"},
+          "purpose": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+          "utf8_bytes": {"type": "integer", "minimum": 1},
+          "prompt_text": {"type": "string", "minLength": 100}
+        }
+      }
+    },
+    "response_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_keys",
+        "boundary_false_keys",
+        "provider_fit_values",
+        "additional_properties_allowed"
+      ],
+      "properties": {
+        "required_keys": {
+          "type": "array",
+          "minItems": 9,
+          "maxItems": 9,
+          "uniqueItems": true,
+          "items": {"type": "string"}
+        },
+        "boundary_false_keys": {
+          "type": "array",
+          "minItems": 5,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {"type": "string"}
+        },
+        "provider_fit_values": {
+          "const": ["SUITABLE", "CONDITIONAL", "NOT_SUITABLE"]
+        },
+        "additional_properties_allowed": {"const": false}
+      }
+    },
+    "pass_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "required_sessions_passed",
+        "http_2xx_required",
+        "direct_json_required",
+        "schema_required",
+        "exact_returned_model_required",
+        "expected_boundary_values_required",
+        "secret_private_content_scan_required"
+      ],
+      "properties": {
+        "required_sessions_passed": {"const": 3},
+        "http_2xx_required": {"const": true},
+        "direct_json_required": {"const": true},
+        "schema_required": {"const": true},
+        "exact_returned_model_required": {"const": true},
+        "expected_boundary_values_required": {"const": true},
+        "secret_private_content_scan_required": {"const": true}
+      }
+    },
+    "interpretation": {
+      "type": "object",
+      "minProperties": 8,
+      "additionalProperties": {"const": false}
+    }
+  }
+}
