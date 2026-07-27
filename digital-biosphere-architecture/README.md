@@ -575,6 +575,12 @@ tag、deployment、PR mutation 或 merge。
 记录完整 PASS：offline install、23/23 dependencies、16/16 site tests、static export/
 verify、3/3 CE Schemas 和 49/49 CE tests 均通过；source/tree drift 为 0。该结果不
 授权 merge，下一步只能准备独立 merge Recommendation。
+[Atomic governance integration Merge Recommendation](TITMAS-CE-G11B-ATOMIC-GOVERNANCE-INTEGRATION-MERGE-RECOMMENDATION-v0.1.md)
+确认 PR #22 只包含 CE implementation，而当前 governance head 还包含 71 个后续治理证据
+paths。其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-ATOMIC-GOVERNANCE-INTEGRATION-MERGE-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 curl `0`、HTTP `200`、`RECOMMENDED`、Option A、confidence `0.95`、0
+blocker/correction。下一步只允许验证新的 canonical + governance merge tree；replacement
+Draft PR、PR #22 closure 和 merge 仍分别需要独立 Decision。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
