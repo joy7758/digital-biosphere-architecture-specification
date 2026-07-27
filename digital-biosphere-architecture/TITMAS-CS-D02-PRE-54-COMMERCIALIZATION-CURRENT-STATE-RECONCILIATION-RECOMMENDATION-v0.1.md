@@ -47,7 +47,7 @@ IMPLEMENTATION_AUTHORIZED=false
 CURRENT_ENTRY_RECOMMENDATION=NOT_RECOMMENDED_AS_SINGLE_CURRENT_STATE_SOURCE
 REASON=TOP_LEVEL_PRE49_PRE32_SUMMARY_CONFLICTS_WITH_NESTED_PRE53_EVIDENCE
 AFTER_RECONCILIATION_EXPECTED_RECOMMENDATION=CONDITIONALLY_RECOMMENDED
-REMAINING_CONDITION=QWEN_CREDENTIAL_NOT_CONNECTED_AND_STANDARD_NOT_READY
+REMAINING_CONDITION=QWEN_CREDENTIAL_CONFIGURED_DIRECT_BENCHMARK_NOT_EXECUTED_STANDARD_NOT_READY
 ```
 
 修正目标不是提升成熟度，而是让顶层摘要忠实指向已经存在的 PRE-53 直接证据。
@@ -69,21 +69,27 @@ Decision Markdown、Decision JSON 和 Decision Schema 可在执行前单独创�
 
 机器入口必须：
 
-- 将顶层 `status` 更新为 PRE-53 已完成、Qwen onboarding 仍 blocked 的事实；
-- 将 `next_decision_candidate.question/status` 更新为 Qwen credential input 和后续独立
-  onboarding benchmark recommendation；
+- 将顶层 `status` 更新为 PRE-53 已完成、Qwen 本地 credential identifier 已配置但
+  onboarding benchmark 尚未执行的事实；
+- 将 `next_decision_candidate.question/status` 更新为后续独立 Qwen onboarding
+  benchmark Recommendation；
 - 新增 required `current_state_summary`，只包含最后完成步骤、直接证据、阻塞输入、下一动作、
   false effects 和来源引用；
+- 只记录 `DASHSCOPE_API_KEY` 存在且非空、Base URL 匹配；不得记录 credential value；
 - 保留所有 PRE-01—PRE-53 历史字段，不删除失败或旧决定；
 - 保持 `decision_ready=false`、`external_execution_authorized=false`、
   `live_model_request_authorized=false`。
 
 ## Preconditions
 
-- DBA HEAD 是 `7313ea030c71f24ab0230978bf21c0d356622356`；
+- DBA Recommendation baseline HEAD 是
+  `c385b03b2f8fef1996697c479ef7138581be3228`；
 - PRE-53 result 保持
   `PASS_12_OF_12_BOUND_REQUESTS_PRIMARY_NEW_PROVIDER_QWEN`；
 - PRE-53 packet 5/5 Schema、10/10 receipt hash 和 clean-clone validation 已通过；
+- 本地 Git-excluded secret file 中 `DASHSCOPE_API_KEY` 存在且非空；
+- `DASHSCOPE_BASE_URL` 精确匹配用户指定的北京区域 OpenAI-compatible endpoint；
+- secret value 不进入 DBA、Git、报告或验证输出；
 - 没有更晚的人类决定授权 Qwen connection、Provider integration、Security Review 或 release；
 - 目标实现仓库 `titmas-integrations` 不被修改。
 
@@ -100,6 +106,8 @@ Decision Markdown、Decision JSON 和 Decision Schema 可在执行前单独创�
 ## Permanent Non-Effects
 
 ```text
+QWEN_CREDENTIAL_IDENTIFIER_CONFIGURED_LOCAL=true
+QWEN_BASE_URL_CONFIGURED_LOCAL=true
 QWEN_PROVIDER_CONNECTED=false
 QWEN_PROVIDER_DIRECTLY_TESTED=false
 PROVIDER_INTEGRATION_AUTHORIZED=false
