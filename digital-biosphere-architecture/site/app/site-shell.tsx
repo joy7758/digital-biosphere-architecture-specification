@@ -18,7 +18,7 @@ export function Brand() {
   );
 }
 
-export function Header({ locale, section = "home" }: { locale: Locale; section?: "home" | "status" | "community" }) {
+export function Header({ locale, section = "home" }: { locale: Locale; section?: "home" | "status" | "community" | "commercial" }) {
   const c = content[locale];
   const root = locale === "zh" ? "/" : "/en/";
   const status = locale === "zh" ? "/status/" : "/en/status/";
@@ -32,6 +32,10 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
         ? locale === "zh"
           ? "/en/community/"
           : "/community/"
+      : section === "commercial"
+        ? locale === "zh"
+          ? "/en/commercial-evaluation/"
+          : "/commercial-evaluation/"
       : locale === "zh"
         ? "/en/"
         : "/";
@@ -39,6 +43,9 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
   const nav = (
     <>
       <a href={community}>{c.nav.developers}</a>
+      <a href={locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/"}>
+        {locale === "zh" ? "商业评估" : "Evaluation"}
+      </a>
       <a href={`${root}#architecture`}>{c.nav.architecture}</a>
       <a href={`${root}#trust`}>{c.nav.trust}</a>
       <a href={`${root}#workflow`}>{c.nav.workflow}</a>
@@ -93,6 +100,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <a href="/agent-index.json">agent-index.json</a>
           <a href="/status.json">status.json</a>
           <a href="/titmas-community.json">titmas-community.json</a>
+          <a href="/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json">commercial-evaluation-pack.json</a>
         </div>
         <div>
           <strong>{locale === "zh" ? "治理" : "Governance"}</strong>

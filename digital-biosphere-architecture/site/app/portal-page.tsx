@@ -43,6 +43,40 @@ export function PortalPage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
+        <section className="commercial-entry" data-section-id="commercial-evaluation">
+          <div className="section-shell commercial-entry-grid">
+            <div>
+              <div className="commercial-entry-meta">
+                <span>REMOTE VALIDATED</span>
+                <code>v0.1</code>
+                <code>PASS</code>
+              </div>
+              <p className="section-kicker">COMMERCIAL EVALUATION / 商业评估</p>
+              <h2>
+                {locale === "zh"
+                  ? "10 分钟判断 TITMAS 是否适合你的多智能体系统"
+                  : "Evaluate TITMAS for your multi-agent system in 10 minutes"}
+              </h2>
+              <p>
+                {locale === "zh"
+                  ? "公开安装、同源合成样例、只读验证和明确边界已经收敛为第一版商业评估包。国内访问者无需跳转 GitHub 即可读取完整材料。"
+                  : "Public installation, a same-origin synthetic fixture, read-only validation, and explicit boundaries are now packaged as the first Commercial Evaluation Pack."}
+              </p>
+              <a className="button button-primary" href={locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/"}>
+                {locale === "zh" ? "开始商业评估" : "Start evaluation"}
+              </a>
+            </div>
+            <aside className="commercial-entry-truth">
+              <span>{locale === "zh" ? "当前真实状态" : "Current truth"}</span>
+              <code>PACKAGE_PREPARED=true</code>
+              <code>REMOTE_VALIDATED=true</code>
+              <code>AVAILABLE_OFFERING=false</code>
+              <code>PRODUCTION_READY=false</code>
+              <code>CUSTOMERS_VERIFIED=0</code>
+            </aside>
+          </div>
+        </section>
+
         <section className="cell-feature" data-section-id="digital-cell-demo">
           <div className="section-shell cell-feature-grid">
             <div className="cell-feature-copy">

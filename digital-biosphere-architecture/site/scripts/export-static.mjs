@@ -31,6 +31,8 @@ const routes = [
   { request: "/community", output: "community/index.html", markers: ["共同建设可信多智能体基础设施", "COMMUNITY_ESTABLISHED=false"] },
   { request: "/en/community", output: "en/community/index.html", markers: ["Build trustworthy multi-agent infrastructure together", "COMMUNITY_ESTABLISHED=false"] },
   { request: "/digital-cell", output: "digital-cell/index.html", markers: ["TITMAS Digital Cell Demo", "REFERENCE_COMPLETE", "NO DIGITAL LIFE CLAIM"] },
+  { request: "/commercial-evaluation", output: "commercial-evaluation/index.html", markers: ["第一版商业评估包 v0.1", "COMMERCIAL_EVALUATION_PACKAGE_PREPARED"] },
+  { request: "/en/commercial-evaluation", output: "en/commercial-evaluation/index.html", markers: ["Commercial Evaluation Pack v0.1", "COMMERCIAL_EVALUATION_PACKAGE_PREPARED"] },
   { request: "/status", output: "status/index.html", markers: markers.zhStatus },
   { request: "/en/status", output: "en/status/index.html", markers: markers.enStatus },
 ];

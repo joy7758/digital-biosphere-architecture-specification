@@ -17,6 +17,14 @@ const requiredFiles = [
   "digital-cell/digital-cell-lifecycle.png",
   "digital-cell/digital-cell-report.png",
   "digital-cell/digital-cell-repository-structure.png",
+  "commercial-evaluation/index.html",
+  "en/commercial-evaluation/index.html",
+  "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.md",
+  "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json",
+  "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1-VALIDATION-REPORT.md",
+  "TITMAS-FIRST-RUN-v0.1.md",
+  "architecture/schemas/titmas-commercial-evaluation-pack.schema.v0.1.json",
+  "examples/titmas-first-run/entity-object.synthetic.v0.1.json",
   "status/index.html",
   "en/status/index.html",
   "llms.txt",
@@ -49,6 +57,10 @@ const [zh, en, zhCommunity, enCommunity, zhStatus, enStatus, status, titmasCommu
 ]);
 const digitalCellPage = await readFile(join(outputRoot, "digital-cell/index.html"), "utf8");
 const digitalCell = await readFile(join(outputRoot, "digital-cell.json"), "utf8").then(JSON.parse);
+const commercialZh = await readFile(join(outputRoot, "commercial-evaluation/index.html"), "utf8");
+const commercialEn = await readFile(join(outputRoot, "en/commercial-evaluation/index.html"), "utf8");
+const commercialPack = await readFile(join(outputRoot, "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json"), "utf8").then(JSON.parse);
+const commercialFixture = await readFile(join(outputRoot, "examples/titmas-first-run/entity-object.synthetic.v0.1.json"), "utf8").then(JSON.parse);
 const agentIndex = await readFile(join(outputRoot, "agent-index.json"), "utf8").then(JSON.parse);
 const releaseContext = resolveReleaseContext(process.env, {
   status,
@@ -66,6 +78,14 @@ assert.match(digitalCellPage, /NO DIGITAL LIFE CLAIM/);
 assert.equal(digitalCell.status, "REFERENCE_COMPLETE");
 assert.equal(digitalCell.boundaries.production_claim, false);
 assert.equal(agentIndex.entrypoints.digital_cell_demo, "/digital-cell/");
+assert.match(commercialZh, /第一版商业评估包 v0\.1/);
+assert.match(commercialEn, /Commercial Evaluation Pack v0\.1/);
+assert.equal(commercialPack.commercial_truth.evaluation_package_prepared, true);
+assert.equal(commercialPack.commercial_truth.available_offering, false);
+assert.equal(commercialPack.commercial_truth.production_ready, false);
+assert.equal(commercialFixture.lifecycle_state, "PROPOSED");
+assert.equal(agentIndex.entrypoints.commercial_evaluation_zh, "/commercial-evaluation/");
+assert.equal(agentIndex.entrypoints.commercial_evaluation_manifest, "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json");
 if (releaseContext.mode === "candidate") {
   assert.match(zhStatus, /当前不是正式发布/);
   assert.match(enStatus, /This is not a release/);
@@ -78,6 +98,7 @@ assert.match(en, /TITMAS_GITHUB_SLUG/);
 assert.doesNotMatch(zh, /codex-preview|Your site is taking shape/);
 assert.doesNotMatch(en, /codex-preview|Your site is taking shape/);
 assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
+assert.equal(status.gates.COMMERCIAL_EVALUATION_PACKAGE_REMOTE_VALIDATED, true);
 assert.equal(status.public_front_door.future_domain_live, false);
 assert.equal(status.public_front_door.github_organization_created, false);
 assert.equal(titmasCommunity.github.selected_organization_slug, "titmas-cn");

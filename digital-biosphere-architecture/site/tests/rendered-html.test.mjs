@@ -47,6 +47,8 @@ test("renders equivalent Chinese and English public entry points", async () => {
   for (const marker of expectedMarkers.enHome) assert.match(en, new RegExp(marker));
   assert.match(zh, /Evidence/);
   assert.match(en, /Evidence/);
+  assert.match(zh, /10 分钟判断 TITMAS/);
+  assert.match(en, /Evaluate TITMAS for your multi-agent system in 10 minutes/);
   assert.match(zh, /TITMAS_PUBLIC_DOMAIN/);
   assert.match(en, /TITMAS_GITHUB_SLUG/);
   if (releaseContext.mode === "candidate") {
@@ -58,6 +60,20 @@ test("renders equivalent Chinese and English public entry points", async () => {
     assert.doesNotMatch(zh, /Developer Preview Candidate/);
     assert.doesNotMatch(en, /Developer Preview Candidate/);
   }
+});
+
+test("renders bilingual commercial evaluation entry with fail-closed truth", async () => {
+  const [zhResponse, enResponse] = await Promise.all([
+    render("/commercial-evaluation"),
+    render("/en/commercial-evaluation"),
+  ]);
+  assert.equal(zhResponse.status, 200);
+  assert.equal(enResponse.status, 200);
+  const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
+  assert.match(zh, /第一版商业评估包 v0\.1/);
+  assert.match(en, /Commercial Evaluation Pack v0\.1/);
+  assert.match(zh, /AVAILABLE_OFFERING=false/);
+  assert.match(en, /PASS ≠ TRUTH/);
 });
 
 test("renders complete bilingual TITMAS community entry points", async () => {
@@ -106,6 +122,10 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("titmas-community.json", root)),
     access(new URL("robots.txt", root)),
     access(new URL("sitemap.xml", root)),
+    access(new URL("TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json", root)),
+    access(new URL("TITMAS-FIRST-RUN-v0.1.md", root)),
+    access(new URL("architecture/schemas/titmas-commercial-evaluation-pack.schema.v0.1.json", root)),
+    access(new URL("examples/titmas-first-run/entity-object.synthetic.v0.1.json", root)),
   ]);
 
   const [agentIndex, status, agentCustomerPackage, dbosPackage, titmasCommunity, llms] = await Promise.all([
@@ -125,6 +145,8 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.public_brand, "TITMAS");
   assert.equal(agentIndex.developer_community.community_established, false);
   assert.equal(agentIndex.entrypoints.titmas_community, "/titmas-community.json");
+  assert.equal(agentIndex.entrypoints.commercial_evaluation_zh, "/commercial-evaluation/");
+  assert.equal(agentIndex.entrypoints.commercial_evaluation_manifest, "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json");
   assert.equal(titmasCommunity.public_front_door.future_domain_filing_status, "PENDING");
   assert.equal(titmasCommunity.github.organization_created, false);
   assert.equal(titmasCommunity.community_state.public_contribution_enabled, false);
@@ -132,6 +154,7 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.gates.DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE, true);
   assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL, true);
   assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_RERUN_PASS, true);
+  assert.equal(status.gates.COMMERCIAL_EVALUATION_PACKAGE_REMOTE_VALIDATED, true);
   assert.equal(status.agent_customer_validation.api_sessions_completed, 12);
   assert.equal(status.agent_customer_validation.result, "PASS");
   assert.equal(status.agent_customer_validation.open_web_discovery, "NOT_ASSESSED");
@@ -183,6 +206,7 @@ test("ships agent-readable and discovery resources", async () => {
   assert.match(llms, /OTLP_REFERENCE_VERSION_ADOPTED=true/);
   assert.match(llms, /DBOS records -> SAEE evaluation\/recommendation -> Governance Decision review\/adoption -> DBOS authorized execution/);
   assert.match(llms, /OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY/);
+  assert.match(llms, /COMMERCIAL_EVALUATION_PACKAGE_PREPARED=true/);
   assert.match(
     llms,
     releaseContext.mode === "candidate"
