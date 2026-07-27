@@ -1,0 +1,73 @@
+{
+  "$schema": "./execution-receipt.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-58-QWEN-RESPONSE-CONTRACT-OFFLINE-DIAGNOSTIC-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_CONTRACT_TRANSMISSION_GAP_PROVEN",
+  "completed_at": "2026-07-27T09:07:25+08:00",
+  "artifact_count_bound": 7,
+  "artifacts": [
+    {
+      "path": "PRE-58-QWEN-RESPONSE-CONTRACT-OFFLINE-DIAGNOSTIC-RESULT-v0.1.md",
+      "sha256": "6a586bf53a8820b54e8c215cec287898d43e1438e0aa277fab08d4198c2b605a"
+    },
+    {
+      "path": "diagnostic-observations.schema.v0.1.json",
+      "sha256": "930b03f14bd04e2734e4cac0a39af676433c7c8f9558d5e3ab6a43ae05d3b54e"
+    },
+    {
+      "path": "diagnostic-observations.v0.1.json",
+      "sha256": "9eb4aeaaedf34726d043757baf22030115a3ad3dca78428a5dce8777864e6b45"
+    },
+    {
+      "path": "diagnostic-plan.schema.v0.1.json",
+      "sha256": "34f2172b15c14fb7f3b08dad38a1686210d72f15d8486c32ef580d9ee72f9421"
+    },
+    {
+      "path": "diagnostic-plan.v0.1.json",
+      "sha256": "b815f46ec2982cd3f80edcc63a6b6a7fa3790fb5c437bea265a2ec188dab227c"
+    },
+    {
+      "path": "execution-receipt.schema.v0.1.json",
+      "sha256": "7777ef2067fd4a5e1cc5c41c977429a2ce0c56c004008934803ef4bf9cbc3b1b"
+    },
+    {
+      "path": "prompt-revision-candidate.v0.1.txt",
+      "sha256": "98abae760a70210bef50bcc40dc22a9d23fb1b39ea695d0a466defcf3909a11a"
+    }
+  ],
+  "validation_counts": {
+    "input_hashes_matched": 4,
+    "input_hashes_required": 4,
+    "checks_matched": 8,
+    "checks_total": 8
+  },
+  "execution_counts": {
+    "provider_network_requests": 0,
+    "live_model_requests": 0,
+    "credential_reads": 0,
+    "source_mutations": 0,
+    "external_repository_writes": 0
+  },
+  "diagnostic": {
+    "contract_transmission_gap_proven": true,
+    "primary_diagnostic": "SESSION_03_REQUEST_DID_NOT_TRANSMIT_PROVIDER_FIT_ENUM",
+    "model_causality_proven": false,
+    "prompt_revision_candidate_prepared": true,
+    "prompt_revision_adopted": false
+  },
+  "effects": {
+    "provider_connected_state_changed": false,
+    "provider_supported": false,
+    "provider_integration_authorized": false,
+    "security_review_authorized": false,
+    "security_review_completed": false,
+    "implementation_authorized": false,
+    "runtime_authorized": false,
+    "live_rerun_authorized": false,
+    "schema_adopted": false,
+    "prompt_revision_adopted": false,
+    "commercial_offer_authorized": false,
+    "release_authorized": false
+  },
+  "next_action": "FORM_EXACT_PROMPT_CONTRACT_REVISION_RECOMMENDATION"
+}

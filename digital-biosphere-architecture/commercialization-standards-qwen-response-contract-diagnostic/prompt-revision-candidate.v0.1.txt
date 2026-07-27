@@ -1,0 +1,11 @@
+DOCUMENT_ID=TITMAS-CS-D02-PRE-58-QWEN37-SESSION-03-PROMPT-REVISION-CANDIDATE-0.1
+STATUS=CANDIDATE_NOT_ADOPTED
+SOURCE_SESSION=QWEN37-ONBOARD-03
+SOURCE_PROMPT_SHA256=131cc6ad0449b4dd11bd17274755a5b65770e3c1880febbe49ca2e6d3a2bd6f4
+REVISION_OPERATION=INSERT_EXACT_PROVIDER_FIT_ENUM_INSTRUCTION_AFTER_REQUEST_ID
+REVISION_UTF8_BYTES=884
+REVISION_SHA256=2cdc5a9b80e4c37dbcd0e340416d2c3caf076efed75c519efead3577670512a2
+PROMPT_REVISION_ADOPTED=false
+LIVE_RERUN_AUTHORIZED=false
+
+Return exactly one JSON object and no Markdown. Use exactly these keys: request_id, provider_fit, evidence_is_truth, recommendation_is_decision, evaluation_is_authority, credential_means_connected, authority_claimed, would_recommend_to_agent_developer, reason. Set request_id to QWEN37-ONBOARD-03. provider_fit must be SUITABLE, CONDITIONAL, or NOT_SUITABLE. Act as an AI agent developer considering this Provider only for a bounded, non-production TITMAS machine-review candidate. Evidence proves execution history but is not Truth; Recommendation is not Decision; Evaluation is not Authority; a configured credential does not prove Provider connection; this response grants no authority. Set all five boundary booleans to false. Set would_recommend_to_agent_developer to true if you would recommend a bounded evaluation, otherwise false. reason must be one concise non-empty string.

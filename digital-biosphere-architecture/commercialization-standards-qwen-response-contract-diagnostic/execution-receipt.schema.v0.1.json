@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre58-qwen-response-contract-offline-diagnostic-execution-receipt.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "completed_at",
+    "artifact_count_bound",
+    "artifacts",
+    "validation_counts",
+    "execution_counts",
+    "diagnostic",
+    "effects",
+    "next_action"
+  ],
+  "properties": {
+    "$schema": {"const": "./execution-receipt.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-58-QWEN-RESPONSE-CONTRACT-OFFLINE-DIAGNOSTIC-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_CONTRACT_TRANSMISSION_GAP_PROVEN"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "artifact_count_bound": {"const": 7},
+    "artifacts": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "validation_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["input_hashes_matched", "input_hashes_required", "checks_matched", "checks_total"],
+      "properties": {
+        "input_hashes_matched": {"const": 4},
+        "input_hashes_required": {"const": 4},
+        "checks_matched": {"const": 8},
+        "checks_total": {"const": 8}
+      }
+    },
+    "execution_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider_network_requests",
+        "live_model_requests",
+        "credential_reads",
+        "source_mutations",
+        "external_repository_writes"
+      ],
+      "properties": {
+        "provider_network_requests": {"const": 0},
+        "live_model_requests": {"const": 0},
+        "credential_reads": {"const": 0},
+        "source_mutations": {"const": 0},
+        "external_repository_writes": {"const": 0}
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_transmission_gap_proven",
+        "primary_diagnostic",
+        "model_causality_proven",
+        "prompt_revision_candidate_prepared",
+        "prompt_revision_adopted"
+      ],
+      "properties": {
+        "contract_transmission_gap_proven": {"const": true},
+        "primary_diagnostic": {
+          "const": "SESSION_03_REQUEST_DID_NOT_TRANSMIT_PROVIDER_FIT_ENUM"
+        },
+        "model_causality_proven": {"const": false},
+        "prompt_revision_candidate_prepared": {"const": true},
+        "prompt_revision_adopted": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": {"const": false}
+    },
+    "next_action": {
+      "const": "FORM_EXACT_PROMPT_CONTRACT_REVISION_RECOMMENDATION"
+    }
+  }
+}

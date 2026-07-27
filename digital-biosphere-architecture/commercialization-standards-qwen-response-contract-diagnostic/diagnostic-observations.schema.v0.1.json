@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre58-qwen-response-contract-diagnostic-observations.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "executed_at",
+    "execution_mode",
+    "input_hashes_matched",
+    "input_hashes_required",
+    "checks",
+    "checks_total",
+    "checks_matched",
+    "normalized_role_phrase",
+    "normalized_observed_provider_fit",
+    "contract_transmission_gap_proven",
+    "primary_diagnostic",
+    "role_phrase_match_interpretation",
+    "model_causality_proven",
+    "provider_network_requests",
+    "live_model_requests",
+    "credential_reads",
+    "source_mutations",
+    "status"
+  ],
+  "properties": {
+    "$schema": {"const": "./diagnostic-observations.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-58-QWEN-RESPONSE-CONTRACT-DIAGNOSTIC-OBSERVATIONS-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "execution_mode": {"const": "DETERMINISTIC_OFFLINE"},
+    "input_hashes_matched": {"const": 4},
+    "input_hashes_required": {"const": 4},
+    "checks": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "prefixItems": [
+        {"$ref": "#/$defs/expected_true_check"},
+        {"$ref": "#/$defs/expected_true_check"},
+        {"$ref": "#/$defs/expected_true_check"},
+        {"$ref": "#/$defs/expected_false_check"},
+        {"$ref": "#/$defs/expected_false_check"},
+        {"$ref": "#/$defs/expected_true_check"},
+        {"$ref": "#/$defs/expected_true_check"},
+        {"$ref": "#/$defs/expected_true_check"}
+      ],
+      "items": false
+    },
+    "checks_total": {"const": 8},
+    "checks_matched": {"const": 8},
+    "normalized_role_phrase": {
+      "const": "bounded non production titmas machine review candidate"
+    },
+    "normalized_observed_provider_fit": {
+      "const": "bounded non production titmas machine review candidate"
+    },
+    "contract_transmission_gap_proven": {"const": true},
+    "primary_diagnostic": {
+      "const": "SESSION_03_REQUEST_DID_NOT_TRANSMIT_PROVIDER_FIT_ENUM"
+    },
+    "role_phrase_match_interpretation": {
+      "const": "CONSISTENT_WITH_PROMPT_COPYING_NOT_CAUSAL_PROOF"
+    },
+    "model_causality_proven": {"const": false},
+    "provider_network_requests": {"const": 0},
+    "live_model_requests": {"const": 0},
+    "credential_reads": {"const": 0},
+    "source_mutations": {"const": 0},
+    "status": {"const": "PASS_CONTRACT_TRANSMISSION_GAP_PROVEN"}
+  },
+  "$defs": {
+    "expected_true_check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check_id", "observed", "expected", "matched"],
+      "properties": {
+        "check_id": {"type": "string", "minLength": 1},
+        "observed": {"const": true},
+        "expected": {"const": true},
+        "matched": {"const": true}
+      }
+    },
+    "expected_false_check": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["check_id", "observed", "expected", "matched"],
+      "properties": {
+        "check_id": {"type": "string", "minLength": 1},
+        "observed": {"const": false},
+        "expected": {"const": false},
+        "matched": {"const": true}
+      }
+    }
+  }
+}

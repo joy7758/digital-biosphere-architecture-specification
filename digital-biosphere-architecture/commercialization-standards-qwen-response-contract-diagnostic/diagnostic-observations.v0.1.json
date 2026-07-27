@@ -1,0 +1,72 @@
+{
+  "$schema": "./diagnostic-observations.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-58-QWEN-RESPONSE-CONTRACT-DIAGNOSTIC-OBSERVATIONS-0.1",
+  "version": "0.1.0",
+  "executed_at": "2026-07-27T09:07:25+08:00",
+  "execution_mode": "DETERMINISTIC_OFFLINE",
+  "input_hashes_matched": 4,
+  "input_hashes_required": 4,
+  "checks": [
+    {
+      "check_id": "PLAN_PROVIDER_FIT_ENUM_DEFINED",
+      "observed": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "check_id": "SESSION_01_ENUM_INSTRUCTION_TRANSMITTED",
+      "observed": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "check_id": "SESSION_02_ENUM_INSTRUCTION_TRANSMITTED",
+      "observed": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "check_id": "SESSION_03_ENUM_INSTRUCTION_TRANSMITTED",
+      "observed": false,
+      "expected": false,
+      "matched": true
+    },
+    {
+      "check_id": "SESSION_03_OBSERVED_VALUE_IN_ENUM",
+      "observed": false,
+      "expected": false,
+      "matched": true
+    },
+    {
+      "check_id": "SESSION_03_ROLE_PHRASE_NORMALIZED_MATCH",
+      "observed": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "check_id": "SESSION_03_BOUNDARY_VALUES_PRESERVED",
+      "observed": true,
+      "expected": true,
+      "matched": true
+    },
+    {
+      "check_id": "NO_SCHEMA_OR_HISTORY_MUTATION",
+      "observed": true,
+      "expected": true,
+      "matched": true
+    }
+  ],
+  "checks_total": 8,
+  "checks_matched": 8,
+  "normalized_role_phrase": "bounded non production titmas machine review candidate",
+  "normalized_observed_provider_fit": "bounded non production titmas machine review candidate",
+  "contract_transmission_gap_proven": true,
+  "primary_diagnostic": "SESSION_03_REQUEST_DID_NOT_TRANSMIT_PROVIDER_FIT_ENUM",
+  "role_phrase_match_interpretation": "CONSISTENT_WITH_PROMPT_COPYING_NOT_CAUSAL_PROOF",
+  "model_causality_proven": false,
+  "provider_network_requests": 0,
+  "live_model_requests": 0,
+  "credential_reads": 0,
+  "source_mutations": 0,
+  "status": "PASS_CONTRACT_TRANSMISSION_GAP_PROVEN"
+}
