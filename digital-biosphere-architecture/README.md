@@ -398,7 +398,11 @@ Recommendation 本身不授权 workflow、run request、server access 或 redepl
 [CE-G11B Phase A Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-DECISION-RECORD.v0.1.json)
 已依据 `TITMAS-CS-STANDING-001` 授权 component preparation only；`qwen3.7-max`
 Decision quality review 为 `APPROVE`、置信度 `0.99`。当前仍不得创建有效 run request
-或执行 workflow。
+或执行 workflow。[Phase A result](commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-result.v0.1.json)
+和[报告](TITMAS-CE-G11B-PHASE-A-COMPONENT-PREPARATION-REPORT-v0.1.md)保留了
+`FAIL_CLOSED_PHASE_A_MODEL_REQUEST_CAP_EXCEEDED`：Decision cap 为 0，但 Max 代码审查
+产生了 1 次 implementation-time model request。组件测试虽达到 Python 3.13/3.14
+各 40/40、full discovery 49/49，仍不能把 Phase A 写成 PASS；workflow runs 保持 0。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

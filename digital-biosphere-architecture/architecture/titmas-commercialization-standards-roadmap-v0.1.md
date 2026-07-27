@@ -2674,8 +2674,11 @@ CE_G11B_DECISION_REVIEW_VERDICT=APPROVE
 CE_G11B_DECISION_REVIEW_CONFIDENCE=0.99
 CE_G11B_DECISION_RECORDED=true
 CE_G11B_PHASE_A_AUTHORIZED=true
-CE_G11B_PHASE_A_COMPLETED=false
-CE_G11B_WORKFLOW_CREATED=false
+CE_G11B_PHASE_A_COMPLETED=true
+CE_G11B_PHASE_A_RESULT=FAIL_CLOSED_PHASE_A_MODEL_REQUEST_CAP_EXCEEDED
+CE_G11B_DECISION_MODEL_REQUEST_CAP=0
+CE_G11B_OBSERVED_MODEL_REQUESTS_DURING_IMPLEMENTATION=1
+CE_G11B_WORKFLOW_CREATED=true
 CE_G11B_WORKFLOW_RUNS=0
 ```
 
@@ -2690,9 +2693,41 @@ candidate 固定 Python `3.10.20`、`3.11.15`、`3.12.13`、`3.13.14`、`3.14.6`
 不创建有效 run request；Phase B 需要后续独立 Decision。
 [CE-G11B Phase A Decision](../TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-DECISION-RECORD.v0.1.json)
 已依据 `TITMAS-CS-STANDING-001` 授权 component preparation only；`qwen3.7-max`
-Decision review 为 `APPROVE`、置信度 `0.99`、0 blocker/correction。当前下一步只允许
-执行 Phase A local component preparation，不执行 GitHub workflow、服务器访问、
-live binding 或 redeployment。
+Decision review 为 `APPROVE`、置信度 `0.99`、0 blocker/correction。Phase A 已执行并
+失败关闭：组件和本地技术验证通过，但 Decision 把 implementation model request cap
+固定为 `0`，实际为了满足新的 Max 质量要求执行了 1 次 `qwen3.7-max` 代码审查。
+当前只允许准备新的 cap remediation Recommendation；不得把技术 PASS 升级为 Phase A
+PASS，也不得执行 GitHub workflow、服务器访问、live binding、Phase B 或 redeployment。
+
+### 4.76 CE-G11B Phase A Fail-Closed Result
+
+[CE-G11B Phase A Report](../TITMAS-CE-G11B-PHASE-A-COMPONENT-PREPARATION-REPORT-v0.1.md)
+和
+[machine-readable result](../commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-result.v0.1.json)
+记录：
+
+```text
+CE_G11B_PHASE_A_RESULT=FAIL_CLOSED_PHASE_A_MODEL_REQUEST_CAP_EXCEEDED
+CE_G11B_DECISION_MODEL_REQUEST_CAP=0
+CE_G11B_OBSERVED_MODEL_REQUESTS_DURING_IMPLEMENTATION=1
+CE_G11B_STOP_CONDITION=MODEL_REQUESTS_DURING_IMPLEMENTATION_EXCEEDED_1_GT_0
+CE_G11B_PHASE_A_COMPONENT_HASHES_MATCH=5/5
+CE_G11B_RUNNER_TESTS_PYTHON_3_13_12=14/14
+CE_G11B_RUNNER_TESTS_PYTHON_3_14_5=14/14
+CE_G11B_ALL_SCOPED_TESTS_PYTHON_3_13_12=40/40
+CE_G11B_ALL_SCOPED_TESTS_PYTHON_3_14_5=40/40
+CE_G11B_FULL_DISCOVERY_TESTS=49/49
+CE_G11B_VALID_RUN_REQUEST_CREATED=false
+CE_G11B_WORKFLOW_RUNS=0
+CE_G11B_PHASE_A_PASS=false
+CE_G11B_PHASE_B_AUTHORIZED=false
+```
+
+失败时的 workflow、runner、tests 和 Schema candidates 保留为 Development evidence，
+不表示 adoption、run authorization、remote compatibility 或 Phase A PASS。模型 review
+本身得到 `PASS`、置信度 `0.98`，但 advisory quality result 不能覆盖 exact Decision cap。
+下一步必须先形成新的 Recommendation 和独立 Decision，明确区分 pre-implementation
+review、bounded implementation code review 与 execution-time model requests。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -2963,9 +2998,10 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Execute CE-G11B Phase A component preparation only**：exact Decision 已授权
-   workflow/runner/tests/Schema 和 local receipt/report；不得创建有效 run request，
-   不得执行 workflow、server access、live binding 或 redeployment；
+1. **Prepare CE-G11B Phase A model-review cap remediation Recommendation only**：
+   Phase A 已因 `1 > 0` 的 model request cap 违规失败关闭；只允许提出新的 bounded
+   Recommendation，不得追溯授权既有 review、不得创建有效 run request、不得执行
+   workflow、server access、live binding、Phase B 或 redeployment；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -3174,7 +3210,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=EXECUTE_CE_G11B_PHASE_A_COMPONENT_PREPARATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G11B_PHASE_A_MODEL_REVIEW_CAP_REMEDIATION_RECOMMENDATION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -3340,9 +3376,16 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G11B_DECISION_REVIEW_VERDICT=APPROVE
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_DECISION_REVIEW_CONFIDENCE=0.99
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_DECISION_RECORDED=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_AUTHORIZED=true
-TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_COMPLETED=false
-TITMAS_COMMERCIAL_EVALUATION_CE_G11B_WORKFLOW_CREATED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_COMPLETED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_RESULT=FAIL_CLOSED_PHASE_A_MODEL_REQUEST_CAP_EXCEEDED
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_DECISION_MODEL_REQUEST_CAP=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_OBSERVED_MODEL_REQUESTS_DURING_IMPLEMENTATION=1
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_COMPONENT_HASHES_MATCH=5/5
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_PASS=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_WORKFLOW_CREATED=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_WORKFLOW_RUNS=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_VALID_RUN_REQUEST_CREATED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_B_AUTHORIZED=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_REDEPLOYMENT_AUTHORIZED=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false

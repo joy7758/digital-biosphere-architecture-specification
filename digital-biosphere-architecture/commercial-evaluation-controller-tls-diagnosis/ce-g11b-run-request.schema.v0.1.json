@@ -1,0 +1,150 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/titmas-ce-g11b-run-request.schema.v0.1.json",
+  "title": "TITMAS CE-G11B Single Trigger Run Request v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "request_id",
+    "version",
+    "status",
+    "decision_reference",
+    "trigger_decision_reference",
+    "created_at",
+    "source_branch",
+    "phase_a_commit",
+    "trigger",
+    "python_matrix",
+    "frozen_inputs",
+    "phase_a_components",
+    "actions",
+    "caps",
+    "retry",
+    "fallback",
+    "result_schema_reference"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./ce-g11b-run-request.schema.v0.1.json"
+    },
+    "request_id": {
+      "const": "TITMAS-CE-G11B-RUN-REQUEST-001"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "AUTHORIZED_SINGLE_TRIGGER"},
+    "decision_reference": {
+      "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-A"
+    },
+    "trigger_decision_reference": {
+      "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-B"
+    },
+    "created_at": {"type": "string", "format": "date-time"},
+    "source_branch": {
+      "const": "codex/production-observability-baseline"
+    },
+    "phase_a_commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "trigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["event", "branch", "path", "events_cap"],
+      "properties": {
+        "event": {"const": "push"},
+        "branch": {
+          "const": "codex/production-observability-baseline"
+        },
+        "path": {
+          "const": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-run-request.v0.1.json"
+        },
+        "events_cap": {"const": 1}
+      }
+    },
+    "python_matrix": {
+      "const": [
+        "3.10.20",
+        "3.11.15",
+        "3.12.13",
+        "3.13.14",
+        "3.14.6"
+      ]
+    },
+    "frozen_inputs": {
+      "const": {
+        "ce_g8_server_log_correlator.py": "508245e1a49eb2fba94a3617517da2dfd200f9c8b1677cfdd92e186130ab6bef",
+        "test_ce_g8_diagnostic.py": "22f500fa5bdb3e72ca424e8bfd800827e6e585c554270bf260d9271a2de74829",
+        "fixtures/access.log": "3e63d82fd85b151cf3b5479b11b020d113790ac8cd71df561699479dc057bf8d",
+        "fixtures/error.log": "38e96f94008c3bef6e988f5ef6725f0ccea5439b27a5be35e8f1722ce1709c55",
+        "ce-g11-correlation-binding.schema.v0.1.json": "2263c3c224097f6d7ed233bd5ff261a6dd225e11f10e290d0d1dc4aa382be684",
+        "ce-g11-correlation-binding.offline-fixture.v0.1.json": "cee58ceb4088ba99f4c0c5631a309898bf9c7df8a6d6ad64fc85ac920ad80f06",
+        "ce_g11_target_bound_correlator.py": "b72ad6e707a95f65e20f235963306e04c4f3e81342f4c762514cffcbf7e2d0e3",
+        "test_ce_g11_target_bound_correlator.py": "39d1b06a16197407fa97e5d884e5703deaa155030fcaeff6bbabba2da152f5cb",
+        "ce-g11a-offline-remediation-result.schema.v0.1.json": "94e569e8efe70acf767c4680c86204681299ec3ad2179107c43d003d74f874f5",
+        "ce-g11a-offline-remediation-result.v0.1.json": "47980dcabff53312516a925633db8d5087efeb3058c1422d61ef115788505de7"
+      }
+    },
+    "phase_a_components": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        ".github/workflows/titmas-ce-g11b-target-bound-cross-version.yml",
+        "ce_g11b_cross_version_runner.py",
+        "test_ce_g11b_cross_version_runner.py",
+        "ce-g11b-run-request.schema.v0.1.json",
+        "ce-g11b-cross-version-result.schema.v0.1.json"
+      ],
+      "properties": {
+        ".github/workflows/titmas-ce-g11b-target-bound-cross-version.yml": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "ce_g11b_cross_version_runner.py": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "test_ce_g11b_cross_version_runner.py": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "ce-g11b-run-request.schema.v0.1.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "ce-g11b-cross-version-result.schema.v0.1.json": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "actions": {
+      "const": {
+        "actions/checkout": "11d5960a326750d5838078e36cf38b85af677262",
+        "actions/setup-python": "ece7cb06caefa5fff74198d8649806c4678c61a1",
+        "actions/upload-artifact": "ea165f8d65b6e75b540449e92b4886f43607fa02"
+      }
+    },
+    "caps": {
+      "const": {
+        "trigger_events": 1,
+        "workflow_runs": 1,
+        "matrix_jobs": 5,
+        "target_public_site_requests": 0,
+        "ssh_sessions": 0,
+        "server_reads": 0,
+        "server_writes": 0,
+        "deployments": 0,
+        "dbos_changes": 0,
+        "saee_changes": 0,
+        "live_bindings_created": 0,
+        "model_requests_during_execution": 0
+      }
+    },
+    "retry": {"const": false},
+    "fallback": {"const": false},
+    "result_schema_reference": {
+      "const": "./ce-g11b-cross-version-result.schema.v0.1.json"
+    }
+  }
+}

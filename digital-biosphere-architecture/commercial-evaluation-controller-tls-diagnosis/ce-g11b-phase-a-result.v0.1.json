@@ -1,0 +1,71 @@
+{
+  "$schema": "./ce-g11b-phase-a-result.schema.v0.1.json",
+  "result_id": "TITMAS-CE-G11B-PHASE-A-RESULT-001",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_PHASE_A_MODEL_REQUEST_CAP_EXCEEDED",
+  "stop_condition": "MODEL_REQUESTS_DURING_IMPLEMENTATION_EXCEEDED_1_GT_0",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-A",
+  "authorization_baseline_commit": "73a1f8d1de6024fe9ad22959998e2bc4a1caa03d",
+  "observed_at": "2026-07-27T14:29:02Z",
+  "frozen_source_commit": "457d59f263ef52bb31bba1902cfe4c429e3c2207",
+  "phase_a_components": {
+    ".github/workflows/titmas-ce-g11b-target-bound-cross-version.yml": "ea97c600c633196cb0afdb767d28fd47610856c9185dfcb0570de53a0a596503",
+    "ce_g11b_cross_version_runner.py": "8f8d521adfdec1517767313933c5650b684262c97c0756c53372a28f948a5e9d",
+    "test_ce_g11b_cross_version_runner.py": "e8b3e86a36cc6015937860b61cafb98dcfd7fc092e7fee03cffb318e071e6c24",
+    "ce-g11b-run-request.schema.v0.1.json": "6a6e4ee89cc39085950737fcd4a8fc913d4b48a051508e1e1e1e02352e2b1d39",
+    "ce-g11b-cross-version-result.schema.v0.1.json": "6c7f328f28c04c94a955f2b3642c5685590e3b556984d34db693fbef3ff1f15f"
+  },
+  "validation": {
+    "frozen_input_hashes_matched": 10,
+    "phase_a_component_hashes_matched": 5,
+    "runner_tests_python_3_13_12": 14,
+    "runner_tests_python_3_14_5": 14,
+    "all_tests_python_3_13_12": 40,
+    "all_tests_python_3_14_5": 40,
+    "full_discovery_tests": 49,
+    "draft_2020_12_schemas_valid": 3,
+    "workflow_static_contract_pass": true,
+    "valid_run_request_instance_absent": true,
+    "final_cross_version_result_instance_absent": true,
+    "qwen_review_model": "qwen3.7-max",
+    "qwen_review_verdict": "PASS",
+    "qwen_review_confidence": 0.98,
+    "qwen_blocking_findings": 0,
+    "qwen_required_corrections": 0,
+    "phase_a_pass": false
+  },
+  "execution_caps": {
+    "trigger_events": 0,
+    "workflow_runs": 0,
+    "matrix_jobs": 0,
+    "model_requests_during_implementation": 1,
+    "target_public_site_requests": 0,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "deployments": 0,
+    "dbos_changes": 0,
+    "saee_changes": 0,
+    "site_changes_included": 0,
+    "live_bindings_created": 0
+  },
+  "effects": {
+    "authority": false,
+    "permission": false,
+    "valid_run_request": false,
+    "workflow_run": false,
+    "remote_cross_version_validation": false,
+    "live_binding": false,
+    "tls_root_cause_proof": false,
+    "public_entry_redeployment_admission": false,
+    "redeployment": false,
+    "production_readiness": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G11B_PHASE_A_MODEL_REVIEW_CAP_REMEDIATION_RECOMMENDATION",
+    "authorized": false
+  }
+}
