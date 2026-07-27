@@ -1,0 +1,212 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/titmas-ce-g7-vantage-receipt.schema.v0.1.json",
+  "title": "TITMAS CE-G7 Post-switch Vantage Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "receipt_id",
+    "version",
+    "status",
+    "decision_reference",
+    "run_id",
+    "vantage_id",
+    "environment",
+    "execution",
+    "records",
+    "summary",
+    "error_class",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./ce-g7-vantage-receipt.schema.v0.1.json"},
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^TITMAS-CE-G7-GITHUB_HOSTED_(UBUNTU|MACOS)$"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {
+      "enum": [
+        "VANTAGE_OBSERVATION_PASS",
+        "VANTAGE_OBSERVATION_FAIL_CLOSED",
+        "FAIL_CLOSED_INCOMPLETE",
+        "FAIL_CLOSED_CONTRACT_OR_ENVIRONMENT"
+      ]
+    },
+    "decision_reference": {"const": "TITMAS-COMMERCIAL-EVALUATION-CE-G7"},
+    "run_id": {
+      "type": ["string", "null"],
+      "pattern": "^CE-G7-20260727-001$"
+    },
+    "vantage_id": {
+      "enum": ["GITHUB_HOSTED_UBUNTU", "GITHUB_HOSTED_MACOS"]
+    },
+    "environment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "runner_os",
+        "runner_release",
+        "runner_machine",
+        "github_actions",
+        "github_run_id",
+        "github_run_attempt",
+        "proxy_environment_present",
+        "client_stack"
+      ],
+      "properties": {
+        "runner_os": {"type": "string", "minLength": 1},
+        "runner_release": {"type": "string", "minLength": 1},
+        "runner_machine": {"type": "string", "minLength": 1},
+        "github_actions": {"type": "boolean"},
+        "github_run_id": {"type": ["string", "null"]},
+        "github_run_attempt": {"type": ["string", "null"]},
+        "proxy_environment_present": {"type": "boolean"},
+        "client_stack": {
+          "type": ["object", "null"],
+          "additionalProperties": false,
+          "required": ["client", "client_version", "tls_backend", "executable"],
+          "properties": {
+            "client": {"enum": ["python-http-client", "system-curl"]},
+            "client_version": {"type": "string", "minLength": 1},
+            "tls_backend": {"type": "string", "minLength": 1},
+            "executable": {"type": "string", "minLength": 1}
+          }
+        }
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "started_at",
+        "ended_at",
+        "rounds",
+        "routes_per_round",
+        "requests_expected",
+        "requests_executed",
+        "retry",
+        "fallback",
+        "tls_verification_bypass",
+        "sequential"
+      ],
+      "properties": {
+        "started_at": {"type": "string"},
+        "ended_at": {"type": ["string", "null"]},
+        "rounds": {"const": 3},
+        "routes_per_round": {"const": 4},
+        "requests_expected": {"const": 12},
+        "requests_executed": {"type": "integer", "minimum": 0, "maximum": 12},
+        "retry": {"const": false},
+        "fallback": {"const": false},
+        "tls_verification_bypass": {"const": false},
+        "sequential": {"const": true}
+      }
+    },
+    "records": {
+      "type": "array",
+      "maxItems": 12,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "round",
+          "observed_at",
+          "route",
+          "result",
+          "http_code",
+          "remote_ip",
+          "ssl_verify_result",
+          "tls_version",
+          "cipher",
+          "latency_seconds",
+          "bytes",
+          "sha256",
+          "expected_bytes",
+          "expected_sha256",
+          "error_class"
+        ],
+        "properties": {
+          "round": {"type": "integer", "minimum": 1, "maximum": 3},
+          "observed_at": {"type": "string"},
+          "route": {
+            "enum": [
+              "/",
+              "/llms.txt",
+              "/agent-index.json",
+              "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"
+            ]
+          },
+          "result": {
+            "enum": [
+              "PASS",
+              "FAIL_CLOSED",
+              "TRANSPORT_ERROR",
+              "HTTP_ERROR",
+              "TLS_ERROR",
+              "CONTENT_MISMATCH"
+            ]
+          },
+          "curl_exit_code": {"type": ["integer", "null"]},
+          "http_code": {"type": ["integer", "null"]},
+          "remote_ip": {"type": ["string", "null"]},
+          "ssl_verify_result": {"type": ["integer", "null"]},
+          "tls_version": {"type": ["string", "null"]},
+          "cipher": {"type": ["string", "null"]},
+          "latency_seconds": {"type": ["number", "null"], "minimum": 0},
+          "bytes": {"type": "integer", "minimum": 0},
+          "sha256": {
+            "type": ["string", "null"],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "expected_bytes": {"type": "integer", "minimum": 1},
+          "expected_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "error_class": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["passes", "failures", "all_hashes_match", "result"],
+      "properties": {
+        "passes": {"type": "integer", "minimum": 0, "maximum": 12},
+        "failures": {"type": "integer", "minimum": 0, "maximum": 12},
+        "all_hashes_match": {"type": "boolean"},
+        "result": {
+          "enum": [
+            "FAIL_CLOSED_INCOMPLETE",
+            "VANTAGE_OBSERVATION_PASS",
+            "VANTAGE_OBSERVATION_FAIL_CLOSED",
+            "FAIL_CLOSED_CONTRACT_OR_ENVIRONMENT"
+          ]
+        }
+      }
+    },
+    "error_class": {"type": ["string", "null"]},
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deployment",
+        "configuration_change",
+        "production",
+        "sla",
+        "commercial_offer",
+        "certification"
+      ],
+      "properties": {
+        "deployment": {"const": false},
+        "configuration_change": {"const": false},
+        "production": {"const": false},
+        "sla": {"const": false},
+        "commercial_offer": {"const": false},
+        "certification": {"const": false}
+      }
+    }
+  }
+}

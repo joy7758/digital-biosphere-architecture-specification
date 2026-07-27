@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/titmas-ce-g7-proposed-release-hash-baseline.schema.v0.1.json",
+  "title": "TITMAS CE-G7 Proposed Release Hash Baseline v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "baseline_id",
+    "version",
+    "status",
+    "decision_reference",
+    "public_origin",
+    "source_revision",
+    "active_release_expected",
+    "rollback_release",
+    "archive_bytes",
+    "archive_sha256",
+    "manifest_files",
+    "routes",
+    "required_security_headers"
+  ],
+  "properties": {
+    "$schema": {"const": "./ce-g7-proposed-release-hash-baseline.schema.v0.1.json"},
+    "baseline_id": {"const": "TITMAS-CE-G7-PROPOSED-RELEASE-HASH-BASELINE"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FIXED_PROPOSED_RELEASE_BASELINE"},
+    "decision_reference": {"const": "TITMAS-COMMERCIAL-EVALUATION-CE-G7"},
+    "public_origin": {"const": "https://redcrag.cn"},
+    "source_revision": {
+      "const": "f8107969aa1f43be8ecf43f557297a630309fe41"
+    },
+    "active_release_expected": {
+      "const": "/srv/tmai/releases/f8107969aa1f43be8ecf43f557297a630309fe41"
+    },
+    "rollback_release": {
+      "const": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705"
+    },
+    "archive_bytes": {"const": 962612},
+    "archive_sha256": {
+      "const": "fceb10bba908fee4c36bed5fcccc88c3f6ff44d1326c3e1565be17cd12ac167e"
+    },
+    "manifest_files": {"const": 60},
+    "routes": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "release_path", "bytes", "sha256"],
+        "properties": {
+          "path": {"type": "string", "pattern": "^/"},
+          "release_path": {
+            "type": "string",
+            "minLength": 1,
+            "not": {"pattern": "(^/|(^|/)\\.\\.(/|$))"}
+          },
+          "bytes": {"type": "integer", "minimum": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "required_security_headers": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "uniqueItems": true,
+      "items": {"type": "string", "pattern": "^[a-z0-9-]+$"}
+    }
+  }
+}

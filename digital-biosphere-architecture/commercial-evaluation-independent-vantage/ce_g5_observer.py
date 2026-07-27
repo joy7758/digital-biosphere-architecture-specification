@@ -40,6 +40,10 @@ EXPECTED_ROUTES = [
 ]
 EXPECTED_ROUNDS = 3
 MAX_TIME_SECONDS = 20
+RECEIPT_PREFIX = "TITMAS-CE-G5"
+RECEIPT_SCHEMA = "./ce-g5-vantage-receipt.schema.v0.1.json"
+USER_AGENT_PREFIX = "TITMAS-CE-G5"
+OBSERVER_DESCRIPTION = "Run one exact TITMAS CE-G5 observation vantage."
 ALLOWED_CLIENTS = {
     "GITHUB_HOSTED_UBUNTU": "python-http-client",
     "GITHUB_HOSTED_MACOS": "system-curl",
@@ -299,8 +303,8 @@ def execute(
 ) -> int:
     started_at = time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime())
     receipt: dict[str, Any] = {
-        "$schema": "./ce-g5-vantage-receipt.schema.v0.1.json",
-        "receipt_id": f"TITMAS-CE-G5-{vantage_id}",
+        "$schema": RECEIPT_SCHEMA,
+        "receipt_id": f"{RECEIPT_PREFIX}-{vantage_id}",
         "version": "0.1.0",
         "status": "FAIL_CLOSED_INCOMPLETE",
         "decision_reference": EXPECTED_DECISION,
@@ -362,7 +366,7 @@ def execute(
             else curl_stack()
         )
         receipt["environment"]["client_stack"] = stack
-        user_agent = f"TITMAS-CE-G5/{run_id}/{vantage_id}"
+        user_agent = f"{USER_AGENT_PREFIX}/{run_id}/{vantage_id}"
 
         for round_number in range(1, EXPECTED_ROUNDS + 1):
             for route in EXPECTED_ROUTES:
@@ -459,7 +463,7 @@ def execute(
 
 def main() -> int:
     parser = argparse.ArgumentParser(
-        description="Run one exact TITMAS CE-G5 observation vantage."
+        description=OBSERVER_DESCRIPTION
     )
     parser.add_argument("--request", required=True, type=Path)
     parser.add_argument("--vantage-id", required=True)

@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/titmas-ce-g7-run-request.schema.v0.1.json",
+  "title": "TITMAS CE-G7 Exact Post-switch Run Request v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "request_id",
+    "version",
+    "status",
+    "decision_reference",
+    "run_id",
+    "created_at",
+    "public_origin",
+    "hash_baseline_reference",
+    "active_release_expected",
+    "deployment_state_expected",
+    "immediate_gates_passed",
+    "rounds",
+    "routes",
+    "requests_per_vantage",
+    "total_public_origin_get_cap",
+    "round_gap_seconds",
+    "sequential_within_vantage",
+    "retry",
+    "fallback",
+    "tls_verification_bypass",
+    "rollback_on_any_failure",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./ce-g7-run-request.schema.v0.1.json"},
+    "request_id": {"const": "TITMAS-CE-G7-RUN-REQUEST-001"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "AUTHORIZED_POST_SWITCH_OBSERVATION_REQUEST"},
+    "decision_reference": {"const": "TITMAS-COMMERCIAL-EVALUATION-CE-G7"},
+    "run_id": {"const": "CE-G7-20260727-001"},
+    "created_at": {"type": "string", "format": "date-time"},
+    "public_origin": {"const": "https://redcrag.cn"},
+    "hash_baseline_reference": {
+      "const": "ce-g7-proposed-release-hash-baseline.v0.1.json"
+    },
+    "active_release_expected": {
+      "const": "/srv/tmai/releases/f8107969aa1f43be8ecf43f557297a630309fe41"
+    },
+    "deployment_state_expected": {"const": "POST_SWITCH_PROPOSED_RELEASE"},
+    "immediate_gates_passed": {"const": true},
+    "rounds": {"const": 3},
+    "routes": {
+      "const": [
+        "/",
+        "/llms.txt",
+        "/agent-index.json",
+        "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"
+      ]
+    },
+    "requests_per_vantage": {"const": 12},
+    "total_public_origin_get_cap": {"const": 24},
+    "round_gap_seconds": {"type": "integer", "minimum": 0, "maximum": 30},
+    "sequential_within_vantage": {"const": true},
+    "retry": {"const": false},
+    "fallback": {"const": false},
+    "tls_verification_bypass": {"const": false},
+    "rollback_on_any_failure": {"const": true},
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "deployment",
+        "runtime",
+        "api",
+        "agent",
+        "entity",
+        "permission",
+        "capability",
+        "certification",
+        "sla",
+        "commercial_offering",
+        "production_readiness"
+      ],
+      "properties": {
+        "deployment": {"const": false},
+        "runtime": {"const": false},
+        "api": {"const": false},
+        "agent": {"const": false},
+        "entity": {"const": false},
+        "permission": {"const": false},
+        "capability": {"const": false},
+        "certification": {"const": false},
+        "sla": {"const": false},
+        "commercial_offering": {"const": false},
+        "production_readiness": {"const": false}
+      }
+    }
+  }
+}
