@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre62-agent-review-negative-cases.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "target_schema",
+    "cases",
+    "cases_total",
+    "cases_rejected",
+    "status"
+  ],
+  "properties": {
+    "$schema": {"const": "./negative-cases.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE-62-AGENT-REVIEW-NEGATIVE-CASES-0.1"},
+    "version": {"const": "0.1.0"},
+    "target_schema": {"const": "./agent-review-response.schema.v0.1.json"},
+    "cases": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["case_id", "expected_valid"],
+        "properties": {
+          "case_id": {"type": "string", "minLength": 1},
+          "expected_valid": {"const": false}
+        }
+      }
+    },
+    "cases_total": {"const": 8},
+    "cases_rejected": {"const": 8},
+    "status": {"const": "PASS_ALL_8_NEGATIVE_CASES_REJECTED"}
+  }
+}

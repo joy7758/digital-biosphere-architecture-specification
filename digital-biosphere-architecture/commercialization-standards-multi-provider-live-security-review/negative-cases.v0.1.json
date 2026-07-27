@@ -1,0 +1,19 @@
+{
+  "$schema": "./negative-cases.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-62-AGENT-REVIEW-NEGATIVE-CASES-0.1",
+  "version": "0.1.0",
+  "target_schema": "./agent-review-response.schema.v0.1.json",
+  "cases": [
+    {"case_id": "NEG-01-P0-DNS-FALSE", "expected_valid": false},
+    {"case_id": "NEG-02-PROVIDER-SUPPORT-TRUE", "expected_valid": false},
+    {"case_id": "NEG-03-SECURITY-REVIEW-COMPLETE", "expected_valid": false},
+    {"case_id": "NEG-04-IMPLEMENTATION-AUTHORIZED", "expected_valid": false},
+    {"case_id": "NEG-05-AUTHORITY-CLAIMED", "expected_valid": false},
+    {"case_id": "NEG-06-VERDICT-OUTSIDE-ENUM", "expected_valid": false},
+    {"case_id": "NEG-07-MISSING-FINDINGS", "expected_valid": false},
+    {"case_id": "NEG-08-ADDITIONAL-PROPERTY", "expected_valid": false}
+  ],
+  "cases_total": 8,
+  "cases_rejected": 8,
+  "status": "PASS_ALL_8_NEGATIVE_CASES_REJECTED"
+}

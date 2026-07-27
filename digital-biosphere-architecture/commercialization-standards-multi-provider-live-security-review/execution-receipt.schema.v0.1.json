@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre62-multi-provider-agent-review-execution-receipt.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "completed_at",
+    "artifact_count_bound",
+    "artifacts",
+    "request_counts",
+    "contract_counts",
+    "classification",
+    "effects",
+    "next_action"
+  ],
+  "properties": {
+    "$schema": {"const": "./execution-receipt.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-62-MULTI-PROVIDER-AGENT-REVIEW-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_2_OF_2_AGENT_REVIEW_INPUT"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "artifact_count_bound": {"const": 11},
+    "artifacts": {
+      "type": "array",
+      "minItems": 11,
+      "maxItems": 11,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "request_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized", "executed", "passed", "failed", "not_executed"],
+      "properties": {
+        "authorized": {"const": 2},
+        "executed": {"const": 2},
+        "passed": {"const": 2},
+        "failed": {"const": 0},
+        "not_executed": {"const": 0}
+      }
+    },
+    "contract_counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "http_2xx",
+        "direct_json",
+        "schema_pass",
+        "request_role_model_boundary_match",
+        "negative_cases_rejected",
+        "retry_fallback_substitution_extraction_repair"
+      ],
+      "properties": {
+        "http_2xx": {"const": 2},
+        "direct_json": {"const": 2},
+        "schema_pass": {"const": 2},
+        "request_role_model_boundary_match": {"const": 2},
+        "negative_cases_rejected": {"const": 8},
+        "retry_fallback_substitution_extraction_repair": {"const": 0}
+      }
+    },
+    "classification": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ai_assisted_multi_provider_review_input_complete",
+        "formal_human_security_review_complete",
+        "provider_supported",
+        "provider_integrated",
+        "implementation_authorized",
+        "standard_ready"
+      ],
+      "properties": {
+        "ai_assisted_multi_provider_review_input_complete": {"const": true},
+        "formal_human_security_review_complete": {"const": false},
+        "provider_supported": {"const": false},
+        "provider_integrated": {"const": false},
+        "implementation_authorized": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": {"const": false}
+    },
+    "next_action": {
+      "const": "FORM_PROVIDER_BINDING_SECURITY_CONTROL_REMEDIATION_RECOMMENDATION"
+    }
+  }
+}

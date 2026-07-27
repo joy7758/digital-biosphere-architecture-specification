@@ -1,0 +1,92 @@
+{
+  "$schema": "./execution-receipt.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-62-MULTI-PROVIDER-AGENT-REVIEW-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_2_OF_2_AGENT_REVIEW_INPUT",
+  "completed_at": "2026-07-27T10:06:28.664582+08:00",
+  "artifact_count_bound": 11,
+  "artifacts": [
+    {
+      "path": "PRE-62-MULTI-PROVIDER-AGENT-SECURITY-REVIEW-RESULT-v0.1.md",
+      "sha256": "38932b5e2ed70c4b747c78fb420b9276580ff1a85ad47f5cb13d171bb5633d89"
+    },
+    {
+      "path": "agent-review-response.schema.v0.1.json",
+      "sha256": "2f73f299b9a8f9bb9af64c0c1ae092e6feb56d5c2febdda2c5b1f72e081144a8"
+    },
+    {
+      "path": "execution-plan.schema.v0.1.json",
+      "sha256": "05bdc358df49da9ed20a89c89ffa5794ec0ee86b862df63c3c87c0735f72da5a"
+    },
+    {
+      "path": "execution-plan.v0.1.json",
+      "sha256": "125a3532b888fd3e6330253d01fe30e6f7693a4c74337241abaae0e58c4a7240"
+    },
+    {
+      "path": "execution-receipt.schema.v0.1.json",
+      "sha256": "b54ffd1c826b1f0d284b65dbedb597a3269b148ed1edb23e5266329711aa9b54"
+    },
+    {
+      "path": "negative-cases.schema.v0.1.json",
+      "sha256": "4f5b264d17f0d3e4ca9a2925945754f3ed7a8c7e7438139352b372843321020f"
+    },
+    {
+      "path": "negative-cases.v0.1.json",
+      "sha256": "2a5f46250545ea56fc86893f9b8d720f1062061e57ef3798da8ef7acaa39c12c"
+    },
+    {
+      "path": "request-contract-candidate.schema.v0.1.json",
+      "sha256": "68091db94bb127a3ae4f1e0b5109138510d96fd6fad4f3baf5b2d814bef5a03b"
+    },
+    {
+      "path": "request-contract-candidate.v0.1.json",
+      "sha256": "9802e2e36d920c53e40f7926ab50420b18f684fe01f7335e8b003fbad14258cc"
+    },
+    {
+      "path": "sanitized-agent-review-results.schema.v0.1.json",
+      "sha256": "937933b21ff714debff8778eccea940176a3b7891b37a17c099377d554643d89"
+    },
+    {
+      "path": "sanitized-agent-review-results.v0.1.json",
+      "sha256": "2ef6acccfb534aabb25dc79bd2d717a11445a1498003f65e6d1203eb66dd627d"
+    }
+  ],
+  "request_counts": {
+    "authorized": 2,
+    "executed": 2,
+    "passed": 2,
+    "failed": 0,
+    "not_executed": 0
+  },
+  "contract_counts": {
+    "http_2xx": 2,
+    "direct_json": 2,
+    "schema_pass": 2,
+    "request_role_model_boundary_match": 2,
+    "negative_cases_rejected": 8,
+    "retry_fallback_substitution_extraction_repair": 0
+  },
+  "classification": {
+    "ai_assisted_multi_provider_review_input_complete": true,
+    "formal_human_security_review_complete": false,
+    "provider_supported": false,
+    "provider_integrated": false,
+    "implementation_authorized": false,
+    "standard_ready": false
+  },
+  "effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "provider_support_created": false,
+    "provider_integration_created": false,
+    "formal_security_review_completed": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "customer_evidence_created": false,
+    "standard_ready": false
+  },
+  "next_action": "FORM_PROVIDER_BINDING_SECURITY_CONTROL_REMEDIATION_RECOMMENDATION"
+}

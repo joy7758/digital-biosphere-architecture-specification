@@ -1,0 +1,110 @@
+{
+  "$schema": "./sanitized-agent-review-results.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-62-SANITIZED-AGENT-REVIEW-RESULTS-0.1",
+  "version": "0.1.0",
+  "executed_at": "2026-07-27T10:06:28.664582+08:00",
+  "local_raw_capture_sha256": "5c5bbd0ebffe975ccaaa8873103692ba2b6700e19e674eaaf002ca109228b162",
+  "requests_authorized": 2,
+  "requests_executed": 2,
+  "requests_passed": 2,
+  "requests_failed": 0,
+  "requests_not_executed_fail_closed": 0,
+  "credential_identifiers_read": 2,
+  "retry_fallback_substitution_extraction_repair_attempts": 0,
+  "credential_value_recorded": false,
+  "authorization_header_recorded": false,
+  "sessions": [
+    {
+      "session_id": "PRE62-QF-INTEGRATION-01",
+      "provider": "QIANFAN",
+      "requested_model": "ernie-4.5-turbo-20260402",
+      "review_role": "INTEGRATION_MAINTAINER_CANDIDATE",
+      "status": "PASS",
+      "http_status": 200,
+      "elapsed_ms": 4797,
+      "outer_json": true,
+      "non_empty_content": true,
+      "direct_json": true,
+      "schema_valid": true,
+      "request_id_match": true,
+      "review_role_match": true,
+      "returned_model": "ernie-4.5-turbo-20260402",
+      "exact_returned_model_match": true,
+      "expected_boundary_values_match": true,
+      "credential_value_recorded": false,
+      "authorization_header_recorded": false,
+      "provider_error_code": null,
+      "error_class": null,
+      "total_tokens": 493,
+      "response": {
+        "request_id": "PRE62-QF-INTEGRATION-01",
+        "review_role": "INTEGRATION_MAINTAINER_CANDIDATE",
+        "verdict": "REVISE",
+        "p0_dns_observability_unresolved": true,
+        "provider_support_created": false,
+        "security_review_completed": false,
+        "implementation_authorized": false,
+        "authority_claimed": false,
+        "blocking_findings": [
+          "P0 DNS observability unresolved per transport constraints"
+        ],
+        "required_controls": [
+          "Implement DNS observability separation from TCP layer",
+          "Document transport-layer observability limitations"
+        ],
+        "reason": "DNS observability gap requires technical resolution before authorization"
+      }
+    },
+    {
+      "session_id": "PRE62-QWEN-SECURITY-01",
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "requested_model": "qwen3.7-plus",
+      "review_role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE",
+      "status": "PASS",
+      "http_status": 200,
+      "elapsed_ms": 35918,
+      "outer_json": true,
+      "non_empty_content": true,
+      "direct_json": true,
+      "schema_valid": true,
+      "request_id_match": true,
+      "review_role_match": true,
+      "returned_model": "qwen3.7-plus",
+      "exact_returned_model_match": true,
+      "expected_boundary_values_match": true,
+      "credential_value_recorded": false,
+      "authorization_header_recorded": false,
+      "provider_error_code": null,
+      "error_class": null,
+      "total_tokens": 2291,
+      "response": {
+        "request_id": "PRE62-QWEN-SECURITY-01",
+        "review_role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE",
+        "verdict": "REVISE",
+        "p0_dns_observability_unresolved": true,
+        "provider_support_created": false,
+        "security_review_completed": false,
+        "implementation_authorized": false,
+        "authority_claimed": false,
+        "blocking_findings": [
+          "P0 DNS observability cannot be separated from TCP at the transport layer and remains unresolved.",
+          "No explicit TLS certificate pinning or hostname verification policy is documented for the provider endpoint.",
+          "Absence of retry, fallback, and redirect is positive but leaves no graceful degradation path for transient network failures.",
+          "Credential lifecycle (rotation, revocation, storage backend) is unspecified beyond retention prohibition.",
+          "Supply-chain provenance and integrity verification for the DeepSeek binding and httpcore 1.0.9 are not evidenced."
+        ],
+        "required_controls": [
+          "Enforce strict TLS 1.2+ with certificate pinning or OS-level trust-store validation and hostname checking.",
+          "Store credentials in a dedicated secrets manager with rotation policy; never log or retain in memory beyond request scope.",
+          "Validate and cap response body size post-read with a hard byte limit and truncated-response alerting.",
+          "Implement structured, sanitized error responses that exclude raw bodies, prompts, and internal diagnostics.",
+          "Pin and cryptographically verify dependency versions (binding, httpcore) via a lockfile and SBOM attestation.",
+          "Establish an incident-handling runbook covering credential compromise, provider outage, and anomalous response patterns.",
+          "Resolve P0 DNS observability gap by adding DNS-level telemetry or an approved alternative transport with equivalent visibility."
+        ],
+        "reason": "Candidate binding demonstrates strong defensive defaults but is blocked by unresolved P0 DNS observability and missing explicit controls for TLS pinning, credential lifecycle, supply-chain integrity, and incident handling."
+      }
+    }
+  ],
+  "status": "PASS_2_OF_2_AGENT_REVIEW_INPUT"
+}

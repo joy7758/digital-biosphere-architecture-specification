@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre62-sanitized-agent-review-results.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "executed_at",
+    "local_raw_capture_sha256",
+    "requests_authorized",
+    "requests_executed",
+    "requests_passed",
+    "requests_failed",
+    "requests_not_executed_fail_closed",
+    "credential_identifiers_read",
+    "retry_fallback_substitution_extraction_repair_attempts",
+    "credential_value_recorded",
+    "authorization_header_recorded",
+    "sessions",
+    "status"
+  ],
+  "properties": {
+    "$schema": {"const": "./sanitized-agent-review-results.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-62-SANITIZED-AGENT-REVIEW-RESULTS-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "executed_at": {"type": "string", "format": "date-time"},
+    "local_raw_capture_sha256": {
+      "const": "5c5bbd0ebffe975ccaaa8873103692ba2b6700e19e674eaaf002ca109228b162"
+    },
+    "requests_authorized": {"const": 2},
+    "requests_executed": {"const": 2},
+    "requests_passed": {"const": 2},
+    "requests_failed": {"const": 0},
+    "requests_not_executed_fail_closed": {"const": 0},
+    "credential_identifiers_read": {"const": 2},
+    "retry_fallback_substitution_extraction_repair_attempts": {"const": 0},
+    "credential_value_recorded": {"const": false},
+    "authorization_header_recorded": {"const": false},
+    "sessions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "allOf": [
+            {"$ref": "#/$defs/session"},
+            {
+              "properties": {
+                "session_id": {"const": "PRE62-QF-INTEGRATION-01"},
+                "provider": {"const": "QIANFAN"},
+                "requested_model": {"const": "ernie-4.5-turbo-20260402"},
+                "review_role": {"const": "INTEGRATION_MAINTAINER_CANDIDATE"},
+                "returned_model": {"const": "ernie-4.5-turbo-20260402"}
+              }
+            }
+          ]
+        },
+        {
+          "allOf": [
+            {"$ref": "#/$defs/session"},
+            {
+              "properties": {
+                "session_id": {"const": "PRE62-QWEN-SECURITY-01"},
+                "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+                "requested_model": {"const": "qwen3.7-plus"},
+                "review_role": {"const": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"},
+                "returned_model": {"const": "qwen3.7-plus"}
+              }
+            }
+          ]
+        }
+      ],
+      "items": false
+    },
+    "status": {"const": "PASS_2_OF_2_AGENT_REVIEW_INPUT"}
+  },
+  "$defs": {
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "session_id",
+        "provider",
+        "requested_model",
+        "review_role",
+        "status",
+        "http_status",
+        "elapsed_ms",
+        "outer_json",
+        "non_empty_content",
+        "direct_json",
+        "schema_valid",
+        "request_id_match",
+        "review_role_match",
+        "returned_model",
+        "exact_returned_model_match",
+        "expected_boundary_values_match",
+        "credential_value_recorded",
+        "authorization_header_recorded",
+        "provider_error_code",
+        "error_class",
+        "total_tokens",
+        "response"
+      ],
+      "properties": {
+        "session_id": {"type": "string"},
+        "provider": {"type": "string"},
+        "requested_model": {"type": "string"},
+        "review_role": {"type": "string"},
+        "status": {"const": "PASS"},
+        "http_status": {"const": 200},
+        "elapsed_ms": {"type": "integer", "minimum": 0, "maximum": 60000},
+        "outer_json": {"const": true},
+        "non_empty_content": {"const": true},
+        "direct_json": {"const": true},
+        "schema_valid": {"const": true},
+        "request_id_match": {"const": true},
+        "review_role_match": {"const": true},
+        "returned_model": {"type": "string"},
+        "exact_returned_model_match": {"const": true},
+        "expected_boundary_values_match": {"const": true},
+        "credential_value_recorded": {"const": false},
+        "authorization_header_recorded": {"const": false},
+        "provider_error_code": {"type": "null"},
+        "error_class": {"type": "null"},
+        "total_tokens": {"type": "integer", "minimum": 1},
+        "response": {"$ref": "./agent-review-response.schema.v0.1.json"}
+      }
+    }
+  }
+}
