@@ -1,0 +1,69 @@
+{
+  "matrix_id": "TITMAS-CE-G11B-PR27-LANE-C-BINDING-FAILURE-DIAGNOSTIC-MATRIX-001",
+  "version": "0.1.0",
+  "status": "OFFLINE_FAILURE_SCOPE_DEFINED_REPLACEMENT_REQUEST_NOT_AUTHORIZED",
+  "observed_at": "2026-07-28",
+  "failure_reference": "TITMAS-CE-G11B-PR27-AGENT-REVIEW-LANE-C-FAILURE-v0.1.json",
+  "failure_reference_sha256": "2fcfdca4cd2eda1287bf1b6108338ba749bcaec707fb87b68c5933037c1bcedd",
+  "frozen_binding": {
+    "pr_number": 27,
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "lane_id": "C",
+    "assigned_files": 6,
+    "patch_sha256": "1f94782837c2b7946f45f35f3b5e0bd1337839004089e5ba69c65034d28886f5"
+  },
+  "known_checks": {
+    "transport_valid": true,
+    "returned_model_exact": true,
+    "direct_json_valid": true,
+    "exact_top_level_keys_valid": true,
+    "verdict_valid": true,
+    "confidence_valid": true,
+    "findings_contract_valid": true,
+    "rationale_valid": true,
+    "binding_valid": false
+  },
+  "binding_subchecks_not_captured": [
+    "lane_id",
+    "base_sha",
+    "head_sha",
+    "patch_sha256",
+    "assigned_files",
+    "assigned_files_reviewed",
+    "inventory_context_received",
+    "r2_boundary_understood",
+    "authority_boundaries_preserved"
+  ],
+  "root_cause": "UNKNOWN_NOT_RECONSTRUCTIBLE_FROM_PERSISTED_FAILURE_RECORD",
+  "old_response_repair_or_reinterpretation_allowed": false,
+  "old_response_retry_allowed": false,
+  "replacement_contract_candidate": {
+    "contract_version": "0.2-candidate",
+    "new_decision_required": true,
+    "new_request_identity_required": true,
+    "exact_model": "qwen3.7-max",
+    "direct_json_required": true,
+    "response_content_persisted_when_json_valid": true,
+    "response_content_extraction_allowed": false,
+    "response_content_repair_allowed": false,
+    "binding_subcheck_matrix_persisted": true,
+    "assigned_files_binding": "UNIQUE_SET_EQUALITY",
+    "assigned_files_reviewed_binding": "UNIQUE_SET_EQUALITY_AND_COMPLETE_COVERAGE",
+    "ordered_array_identity_required": false,
+    "lane_base_head_patch_identity_exact": true,
+    "inventory_context_acknowledgement_exact": true,
+    "r2_boundary_acknowledgement_exact": true,
+    "authority_boundary_acknowledgement_exact": true,
+    "non_qualifying_response_can_authorize_any_action": false
+  },
+  "authority_boundaries": {
+    "replacement_request_authorized": false,
+    "lane_d_request_authorized": false,
+    "synthesis_authorized": false,
+    "candidate_change_authorized": false,
+    "github_review_authorized": false,
+    "merge_authorized": false,
+    "release_authorized": false
+  }
+}

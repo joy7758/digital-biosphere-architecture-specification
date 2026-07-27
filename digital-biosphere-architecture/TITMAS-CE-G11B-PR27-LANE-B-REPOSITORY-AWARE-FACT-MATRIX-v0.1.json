@@ -1,0 +1,120 @@
+{
+  "matrix_id": "TITMAS-CE-G11B-PR27-LANE-B-REPOSITORY-AWARE-FACT-MATRIX-001",
+  "version": "0.1.0",
+  "status": "PRELIMINARY_REPOSITORY_FACT_INPUT_NOT_ADJUDICATION",
+  "observed_at": "2026-07-28",
+  "candidate_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+  "source_review_reference": "TITMAS-CE-G11B-PR27-AGENT-REVIEW-LANE-B-v0.1.json",
+  "source_review_sha256": "d12c332f31976efb74b73fef996930b096c4720d7affc81039ea719f6db67d88",
+  "source_finding_ids": [
+    "B-001",
+    "B-002",
+    "B-003",
+    "B-004",
+    "B-005"
+  ],
+  "source_bindings": [
+    {
+      "path": "digital-biosphere-architecture/TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+      "sha256": "7c30cea67d12f406e77215333ff425ea997e3bff55d3e9ba62071a49b7355c68"
+    },
+    {
+      "path": "digital-biosphere-architecture/architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
+      "sha256": "bf54d8ec5a4703e42d690ed525264ac821a4c6a129732f33fd0c1340a5595a37"
+    },
+    {
+      "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.v0.1.json",
+      "sha256": "3b650bfdd6639ce70b213ffc571b91ea727260346bb73e9fefd67e3f251604a5"
+    },
+    {
+      "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.schema.v0.1.json",
+      "sha256": "1e6e4f379a689ae292359efdba2da72b45b55249f39c253e678d28aa8b6c3331"
+    },
+    {
+      "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-cross-version-result.schema.v0.1.json",
+      "sha256": "6c7f328f28c04c94a955f2b3642c5685590e3b556984d34db693fbef3ff1f15f"
+    },
+    {
+      "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-run-request.schema.v0.1.json",
+      "sha256": "6a6e4ee89cc39085950737fcd4a8fc913d4b48a051508e1e1e1e02352e2b1d39"
+    },
+    {
+      "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce_g11b_cross_version_runner.py",
+      "sha256": "8f8d521adfdec1517767313933c5650b684262c97c0756c53372a28f948a5e9d"
+    },
+    {
+      "path": ".github/workflows/titmas-ce-g11b-target-bound-cross-version.yml",
+      "sha256": "ea97c600c633196cb0afdb767d28fd47610856c9185dfcb0570de53a0a596503"
+    }
+  ],
+  "finding_context": [
+    {
+      "finding_id": "B-001",
+      "source_severity": "HIGH",
+      "preliminary_disposition": "DISPUTED_DIFFERENT_STATE_SCOPES",
+      "repository_facts": [
+        "current_state_summary.next_action is FINALIZE_AND_FREEZE_CE_G11B_CANDIDATE_THEN_VALIDATE_ON_DISTINCT_EVIDENCE_REF",
+        "current_state_summary.next_action_authorized is true and binds a completed immutable-candidate validation authorization Decision review",
+        "current_state_summary.standard_ready, implementation_authorized and external_execution_authorized are false",
+        "next_decision_candidate.decision_ready is false for the separate CS-D02 decision-candidate scope"
+      ],
+      "open_question": "Does the document sufficiently distinguish authorization of one exact next governance action from readiness of a separate formal decision candidate?"
+    },
+    {
+      "finding_id": "B-002",
+      "source_severity": "MEDIUM",
+      "preliminary_disposition": "DISPUTED_SNAPSHOT_SCHEMA_BINDS_DISTINCT_OBJECTS",
+      "repository_facts": [
+        "The Schema binds current_state_summary.next_action_authorized and next_decision_candidate.decision_ready in different object scopes",
+        "The Schema is a snapshot contract and intentionally uses const values for both current state and future gate state",
+        "The two values do not grant implementation, external execution, release or Standard readiness"
+      ],
+      "open_question": "Is additional description useful even though the two const values are not logically contradictory?"
+    },
+    {
+      "finding_id": "B-003",
+      "source_severity": "MEDIUM",
+      "preliminary_disposition": "DISPUTED_RECOMMENDATION_EXPLICITLY_SEPARATED_FROM_AUTHORIZATION",
+      "repository_facts": [
+        "would_recommend_to_agent_customer is nested inside model_review",
+        "The same model_review object explicitly records workflow_execution_authorized=false and phase_b_authorized=false",
+        "The result next_gate is authorized=false",
+        "Recommendation is advisory and does not imply execution authorization"
+      ],
+      "open_question": "Would a description improve first-contact readability without changing the existing authority semantics?"
+    },
+    {
+      "finding_id": "B-004",
+      "source_severity": "LOW",
+      "preliminary_disposition": "PARTIALLY_SUPPORTED_EXTENSIBILITY_NEEDS_EXPLICIT_RATIONALE",
+      "repository_facts": [
+        "error_class currently accepts string or null",
+        "The runner emits a bounded stage_code for known failures",
+        "The runner also emits UNEXPECTED_<exception class name> for unanticipated exceptions",
+        "A fixed enum would reject legitimate fail-closed unexpected error classes unless the runner contract changes"
+      ],
+      "open_question": "Should the Schema add a pattern, length bound or description while retaining forward-compatible error classes?"
+    },
+    {
+      "finding_id": "B-005",
+      "source_severity": "LOW",
+      "preliminary_disposition": "DISPUTED_TRIGGER_FILE_IS_INTENTIONALLY_FUTURE_AND_TARGET_BOUND",
+      "repository_facts": [
+        "The run-request instance is absent from the frozen candidate",
+        "The run-request Schema, workflow path filter and runner expected path use the same exact path",
+        "The workflow is designed to trigger only when a separately authorized run-request instance is later written to the canonical branch",
+        "Absence before trigger authorization is not evidence that the path is stale"
+      ],
+      "open_question": "Should the Schema describe the intentional absent-until-authorized trigger lifecycle?"
+    }
+  ],
+  "authority_boundaries": {
+    "matrix_is_final_adjudication": false,
+    "model_findings_are_truth": false,
+    "candidate_change_authorized": false,
+    "finding_deletion_authorized": false,
+    "severity_downgrade_authorized": false,
+    "merge_authorized": false,
+    "release_authorized": false
+  }
+}
