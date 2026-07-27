@@ -1,0 +1,63 @@
+{
+  "$schema": "./revision-plan.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-59-QWEN-PROMPT-CONTRACT-REVISION-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_BEFORE_EXECUTION",
+  "decision_reference": "../TITMAS-CS-D02-PRE-59-QWEN-PROMPT-CONTRACT-REVISION-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "838406b5548bf5db35937e8dd20d8f05d4977fa7f7031a333613195bc52a51cd",
+  "decision_commit": "cb4ed4f27e4c8dc56936097bd6de0311e1cabf03",
+  "inputs": [
+    {
+      "path": "../commercialization-standards-qwen-response-contract-diagnostic/PRE-58-QWEN-RESPONSE-CONTRACT-OFFLINE-DIAGNOSTIC-RESULT-v0.1.md",
+      "sha256": "6a586bf53a8820b54e8c215cec287898d43e1438e0aa277fab08d4198c2b605a"
+    },
+    {
+      "path": "../commercialization-standards-qwen-response-contract-diagnostic/diagnostic-observations.v0.1.json",
+      "sha256": "9eb4aeaaedf34726d043757baf22030115a3ad3dca78428a5dce8777864e6b45"
+    },
+    {
+      "path": "../commercialization-standards-qwen-response-contract-diagnostic/prompt-revision-candidate.v0.1.txt",
+      "sha256": "98abae760a70210bef50bcc40dc22a9d23fb1b39ea695d0a466defcf3909a11a"
+    },
+    {
+      "path": "../commercialization-standards-qwen-response-contract-diagnostic/execution-receipt.v0.1.json",
+      "sha256": "001c6b7f59773417db2e28b3756895d74972cbb1b7a03d9e4bc3f256fa3ea028"
+    }
+  ],
+  "revision": {
+    "source_prompt_set": "../commercialization-standards-qwen3-7-plus-onboarding-benchmark/benchmark-plan.v0.1.json",
+    "target_session": "QWEN37-ONBOARD-03",
+    "operation": "INSERT_EXACT_TEXT_AFTER_REQUEST_ID",
+    "inserted_text": "provider_fit must be SUITABLE, CONDITIONAL, or NOT_SUITABLE.",
+    "semantic_changes_max": 1,
+    "source_prompt_01_02_bytes_and_hashes_must_remain": true,
+    "source_history_mutation_allowed": false
+  },
+  "coverage_requirements": [
+    "DIRECT_JSON_ONLY",
+    "EXACT_REQUIRED_KEYS",
+    "EXACT_REQUEST_ID",
+    "EXACT_PROVIDER_FIT_ENUM",
+    "FIVE_FALSE_BOUNDARIES",
+    "RECOMMENDATION_ADVISORY_RULE",
+    "NON_EMPTY_BOUNDED_REASON",
+    "NO_AUTHORITY_GRANT"
+  ],
+  "pass_rule": {
+    "input_hashes_required": 4,
+    "prompts_required": 3,
+    "requirements_per_prompt": 8,
+    "coverage_required": 24,
+    "source_prompt_hashes_unchanged_required": 2,
+    "revised_prompt_hash_match_required": true,
+    "schema_pass_required": true
+  },
+  "execution_policy": {
+    "offline_only": true,
+    "provider_network_requests_max": 0,
+    "live_model_requests_max": 0,
+    "credential_reads_max": 0,
+    "external_repository_writes_max": 0
+  },
+  "next_action_on_pass": "FORM_PRE60_EXACT_BOUNDED_LIVE_RERUN_RECOMMENDATION"
+}

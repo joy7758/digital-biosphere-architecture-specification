@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre59-qwen-prompt-contract-revision-plan.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_reference",
+    "decision_sha256",
+    "decision_commit",
+    "inputs",
+    "revision",
+    "coverage_requirements",
+    "pass_rule",
+    "execution_policy",
+    "next_action_on_pass"
+  ],
+  "properties": {
+    "$schema": {"const": "./revision-plan.schema.v0.1.json"},
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-59-QWEN-PROMPT-CONTRACT-REVISION-PLAN-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_BEFORE_EXECUTION"},
+    "decision_reference": {
+      "const": "../TITMAS-CS-D02-PRE-59-QWEN-PROMPT-CONTRACT-REVISION-DECISION-RECORD.v0.1.json"
+    },
+    "decision_sha256": {
+      "const": "838406b5548bf5db35937e8dd20d8f05d4977fa7f7031a333613195bc52a51cd"
+    },
+    "decision_commit": {
+      "const": "cb4ed4f27e4c8dc56936097bd6de0311e1cabf03"
+    },
+    "inputs": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+        }
+      }
+    },
+    "revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_prompt_set",
+        "target_session",
+        "operation",
+        "inserted_text",
+        "semantic_changes_max",
+        "source_prompt_01_02_bytes_and_hashes_must_remain",
+        "source_history_mutation_allowed"
+      ],
+      "properties": {
+        "source_prompt_set": {
+          "const": "../commercialization-standards-qwen3-7-plus-onboarding-benchmark/benchmark-plan.v0.1.json"
+        },
+        "target_session": {"const": "QWEN37-ONBOARD-03"},
+        "operation": {"const": "INSERT_EXACT_TEXT_AFTER_REQUEST_ID"},
+        "inserted_text": {
+          "const": "provider_fit must be SUITABLE, CONDITIONAL, or NOT_SUITABLE."
+        },
+        "semantic_changes_max": {"const": 1},
+        "source_prompt_01_02_bytes_and_hashes_must_remain": {"const": true},
+        "source_history_mutation_allowed": {"const": false}
+      }
+    },
+    "coverage_requirements": {
+      "const": [
+        "DIRECT_JSON_ONLY",
+        "EXACT_REQUIRED_KEYS",
+        "EXACT_REQUEST_ID",
+        "EXACT_PROVIDER_FIT_ENUM",
+        "FIVE_FALSE_BOUNDARIES",
+        "RECOMMENDATION_ADVISORY_RULE",
+        "NON_EMPTY_BOUNDED_REASON",
+        "NO_AUTHORITY_GRANT"
+      ]
+    },
+    "pass_rule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_hashes_required",
+        "prompts_required",
+        "requirements_per_prompt",
+        "coverage_required",
+        "source_prompt_hashes_unchanged_required",
+        "revised_prompt_hash_match_required",
+        "schema_pass_required"
+      ],
+      "properties": {
+        "input_hashes_required": {"const": 4},
+        "prompts_required": {"const": 3},
+        "requirements_per_prompt": {"const": 8},
+        "coverage_required": {"const": 24},
+        "source_prompt_hashes_unchanged_required": {"const": 2},
+        "revised_prompt_hash_match_required": {"const": true},
+        "schema_pass_required": {"const": true}
+      }
+    },
+    "execution_policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "offline_only",
+        "provider_network_requests_max",
+        "live_model_requests_max",
+        "credential_reads_max",
+        "external_repository_writes_max"
+      ],
+      "properties": {
+        "offline_only": {"const": true},
+        "provider_network_requests_max": {"const": 0},
+        "live_model_requests_max": {"const": 0},
+        "credential_reads_max": {"const": 0},
+        "external_repository_writes_max": {"const": 0}
+      }
+    },
+    "next_action_on_pass": {
+      "const": "FORM_PRE60_EXACT_BOUNDED_LIVE_RERUN_RECOMMENDATION"
+    }
+  }
+}
