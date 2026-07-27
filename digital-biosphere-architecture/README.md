@@ -468,6 +468,12 @@ merge-tree 为 `ea296d8b…` 且未观察到冲突。
 保留 `FAIL_CLOSED_SITE_DEPENDENCY_NOT_MATERIALIZED`：merge tree、0 path intersection、
 3 个 Schema 和 49/49 CE tests 均通过，但临时 worktree 无 `site/node_modules`。
 依赖安装、网络获取和 site tests 均为 0；不得写成 merge-tree PASS 或 merge 授权。
+[Offline site dependency remediation Recommendation](TITMAS-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-REMEDIATION-RECOMMENDATION-v0.1.md)
+选择 exact lockfile、`npm ci --offline --ignore-scripts` 和 disposable worktree，不复用含
+extraneous packages 的现成 `node_modules`。
+[Max review](TITMAS-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-REMEDIATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+为 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction。安装仍需独立
+Decision，merge 仍未授权。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

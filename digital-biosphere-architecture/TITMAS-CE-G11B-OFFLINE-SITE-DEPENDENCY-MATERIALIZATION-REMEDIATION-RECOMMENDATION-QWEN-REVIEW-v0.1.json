@@ -1,0 +1,43 @@
+{
+  "record_type": "TITMAS_SANITIZED_WRITE_AHEAD_PRE_DECISION_REVIEW",
+  "review_id": "TITMAS-CE-G11B-OFFLINE-SITE-DEPS-RECOMMENDATION-QWEN-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T15:43:53.638648Z",
+  "status": "QUALIFYING_REVIEW_COMPLETED",
+  "reviewed_artifact": "TITMAS-CE-G11B-OFFLINE-SITE-DEPENDENCY-MATERIALIZATION-REMEDIATION-RECOMMENDATION-v0.1.md",
+  "reviewed_source_sha256": "a619658642fba629be4a8d19bd88b58da0827c52ac4a6f19cdf2389ab6012816",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "http_status": 200,
+  "request_count": 1,
+  "retry_count": 0,
+  "request_payload_sha256": "c8964f2622a2a9b1c63c8641766605b0d447b780435f6c69144a4cd9df9cdc4b",
+  "response_envelope_sha256": "7802ae3a6eb72f67401ae1ce67f5814b6d8eb0668ee78b02d5ef00c068703453",
+  "response_byte_count": 5652,
+  "qualifying_review": true,
+  "review": {
+    "verdict": "RECOMMENDED",
+    "selected_option": "A",
+    "would_recommend_to_agent_customer": true,
+    "confidence": 0.95,
+    "lockfile_binding_sufficient": true,
+    "offline_boundary_coherent": true,
+    "ignore_scripts_boundary_coherent": true,
+    "existing_node_modules_reuse_rejected": true,
+    "failure_closed": true,
+    "site_validation_scope_sufficient": true,
+    "no_remote_mutation": true,
+    "merge_remains_unauthorized": true,
+    "blocking_reasons": [],
+    "required_corrections": [],
+    "rationale": "Option A uses exact-lockfile npm ci offline with install scripts disabled in a disposable worktree, rejects existing node_modules reuse and network fallback, requires complete site validation, and leaves merge unauthorized."
+  },
+  "terminal_failure_category": null,
+  "effects": {
+    "authority": false,
+    "dependency_installation": false,
+    "network": false,
+    "remote_mutation": false,
+    "merge": false
+  }
+}
