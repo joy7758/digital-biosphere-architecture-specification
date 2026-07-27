@@ -1,0 +1,84 @@
+{
+  "result_id": "TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-R2-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T16:16:50Z",
+  "status": "FAIL_CLOSED_PRECONDITION_NPM_PREFIX_STRING_MISMATCH",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-R2-DECISION-RECORD.v0.1.json",
+  "decision_commit": "2430b83430ddbfd219ba068b74f9db130b12aa30",
+  "decision_remote_baseline_verified": true,
+  "frozen_remote_state": {
+    "canonical_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "ce_commit": "e032115adbe38cc84bde80cc9b10b96f6da1b428",
+    "merge_base": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "merge_tree": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "draft_pr_number": 22,
+    "draft_pr_state": "OPEN",
+    "draft_pr_is_draft": true,
+    "draft_pr_mergeable": "MERGEABLE",
+    "draft_pr_merge_state_status": "CLEAN",
+    "ce_head_actions_run_count": 0,
+    "matched": true
+  },
+  "temporary_worktree": {
+    "created": 1,
+    "removed": 1,
+    "remaining": 0,
+    "detached_tree_before": "ea296d8b2143aeb7cc220a81689ba4d057e4bb97",
+    "status_entries_before": 0
+  },
+  "precondition_observations": {
+    "package_json_sha256": "60dc7abf99a878f0e9dd24f0362d1ac7ad9c72a4d21578085fed39c526e3709b",
+    "package_json_hash_match": true,
+    "package_lock_sha256": "4f179b1107a3a3f18aa906ebd19f952a9a4d190b1ad7123cba0a6884e3a312fd",
+    "package_lock_hash_match": true,
+    "node_modules_absent": true,
+    "npm_prefix_command_executed": true,
+    "npm_prefix_observed_value_persisted": false,
+    "npm_prefix_raw_string_match": false,
+    "npm_prefix_realpath_match": "NOT_ASSESSED",
+    "npm_package_info_observed_value_persisted": false
+  },
+  "diagnostic_execution": {
+    "authorized_command": "NPM_CONFIG_OFFLINE=true npm ci --dry-run --offline --ignore-scripts --no-audit --no-fund",
+    "dry_run_attempts": 0,
+    "dry_run_executed": false,
+    "dry_run_exit": null,
+    "dry_run_output": null,
+    "stop_reason": "NPM_PREFIX_RAW_STRING_PRECONDITION_MISMATCH"
+  },
+  "post_stop_verification": {
+    "temporary_worktree_remaining": 0,
+    "governance_remote_head": "2430b83430ddbfd219ba068b74f9db130b12aa30",
+    "pr_state_unchanged": true,
+    "ce_head_actions_run_count": 0,
+    "site_source_changes": 0
+  },
+  "root_cause": "UNKNOWN",
+  "bounded_hypothesis": "The comparison may have observed a path spelling difference such as /tmp versus /private/tmp, but the actual npm prefix value was not persisted and the hypothesis is not proven.",
+  "caps_consumed": {
+    "temporary_worktrees": 1,
+    "npm_dry_run_attempts": 0,
+    "actual_install_attempts": 0,
+    "network_fallbacks": 0,
+    "dependency_materializations": 0,
+    "site_test_runs": 0,
+    "pr_mutations": 0,
+    "pushes": 0,
+    "merges": 0,
+    "workflow_runs": 0,
+    "deployments": 0
+  },
+  "effects": {
+    "dry_run_pass": false,
+    "actual_install_authorization": false,
+    "site_test_authorization": false,
+    "merge_authorization": false,
+    "phase_b_authorization": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_NPM_PREFIX_PATH_NORMALIZATION_R3_RECOMMENDATION",
+    "authorized": false
+  }
+}

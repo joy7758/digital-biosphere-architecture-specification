@@ -497,7 +497,11 @@ R2 Decision candidate。[R2 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-ZERO-
 及其 [write-ahead qwen3.7-max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-R2-QWEN-DECISION-REVIEW-v0.1.json)
 随后得到 `APPROVE`、confidence `0.95`、0 blocker/correction。远端 Decision baseline
 核验后只允许一次 site-cwd offline dry-run；真实安装、site tests、PR mutation 和 merge
-仍未授权。
+仍未授权。[R2 result](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-R2-RESULT-v0.1.json)
+和[报告](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-R2-REPORT-v0.1.md)保留
+`FAIL_CLOSED_PRECONDITION_NPM_PREFIX_STRING_MISMATCH`：merge tree、0 status entry、
+package/lock 和无 `node_modules` 均通过，但 raw `npm prefix` 字符串比较失败，dry-run
+尝试数为 0。实际 prefix 未持久化，realpath hypothesis 未证明；R2 不重跑。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
