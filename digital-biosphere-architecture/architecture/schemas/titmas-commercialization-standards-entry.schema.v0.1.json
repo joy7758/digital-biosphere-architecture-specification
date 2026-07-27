@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_61_MULTI_PROVIDER_SECURITY_PREFLIGHT_PASS_20_OF_20_LIVE_REVIEW_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_62_AGENT_REVIEW_PASS_2_OF_2_BOTH_REVISE_SECURITY_CONTROL_REMEDIATION_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "CS-D02-PRE-61"},
+        "last_completed_step": {"const": "CS-D02-PRE-62"},
         "last_completed_result": {
-          "const": "PASS_20_OF_20_OFFLINE_PREFLIGHT_DESIGN"
+          "const": "PASS_2_OF_2_AGENT_REVIEW_INPUT_BOTH_REVISE"
         },
         "direct_evidence_reference": {
-          "const": "commercialization-standards-multi-provider-security-review-preflight/PRE-61-MULTI-PROVIDER-SECURITY-REVIEW-PREFLIGHT-RESULT-v0.1.md"
+          "const": "commercialization-standards-multi-provider-live-security-review/PRE-62-MULTI-PROVIDER-AGENT-SECURITY-REVIEW-RESULT-v0.1.md"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,7 +131,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "FORM_EXACT_LIVE_MULTI_PROVIDER_SECURITY_REVIEW_RECOMMENDATION"
+          "const": "FORM_PROVIDER_BINDING_SECURITY_CONTROL_REMEDIATION_RECOMMENDATION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE61_MULTI_PROVIDER_SECURITY_PREFLIGHT_PASS_20_OF_20_LIVE_REVIEW_RECOMMENDATION_REQUIRED"
+          "const": "PRE62_AGENT_REVIEW_PASS_2_OF_2_BOTH_REVISE_SECURITY_CONTROL_REMEDIATION_RECOMMENDATION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -5467,6 +5467,30 @@
             "pre61_network_requests",
             "pre61_live_model_requests",
             "pre61_credential_reads",
+            "pre62_recommendation_reference",
+            "pre62_recommendation_sha256",
+            "pre62_recommendation_commit",
+            "pre62_decision_reference",
+            "pre62_decision_sha256",
+            "pre62_decision_commit",
+            "pre62_request_contract_sha256",
+            "pre62_plan_sha256",
+            "pre62_plan_commit",
+            "pre62_response_schema_sha256",
+            "pre62_sanitized_results_sha256",
+            "pre62_negative_cases_sha256",
+            "pre62_result_reference",
+            "pre62_result_sha256",
+            "pre62_execution_receipt_sha256",
+            "pre62_result_commit",
+            "pre62_result",
+            "pre62_requests_authorized",
+            "pre62_requests_executed",
+            "pre62_requests_passed",
+            "pre62_qianfan_verdict",
+            "pre62_qwen_verdict",
+            "pre62_negative_cases_rejected",
+            "pre62_retry_fallback_substitution_extraction_repair_attempts",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5515,6 +5539,10 @@
             "multi_provider_preflight_executed",
             "multi_provider_preflight_pass",
             "live_security_review_recommendation_allowed",
+            "pre62_agent_review_executed",
+            "pre62_agent_review_pass",
+            "ai_assisted_multi_provider_review_input_complete",
+            "provider_binding_security_control_remediation_recommendation_allowed",
             "qianfan_exact_model_binding_required",
             "security_reviewer_exact_binding_required",
             "pre53_china_provider_benchmark_executed",
@@ -6917,6 +6945,64 @@
             "pre61_network_requests": {"const": 0},
             "pre61_live_model_requests": {"const": 0},
             "pre61_credential_reads": {"const": 0},
+            "pre62_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-62-EXACT-LIVE-MULTI-PROVIDER-SECURITY-REVIEW-RECOMMENDATION-v0.1.md"
+            },
+            "pre62_recommendation_sha256": {
+              "const": "7583279bad3e8a8fd67dd2803e95bcbd87a47e9b0303952c5c6cff78fd1720ba"
+            },
+            "pre62_recommendation_commit": {
+              "const": "e43c620f6e6f46ef0ab695f2963debd40aa3d627"
+            },
+            "pre62_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-62-EXACT-LIVE-MULTI-PROVIDER-SECURITY-REVIEW-DECISION-RECORD.v0.1.json"
+            },
+            "pre62_decision_sha256": {
+              "const": "32af0ba4ae31004752cf97dabd9a75441ccc6d6a3ae48f9bfdd2e0799e02ddd9"
+            },
+            "pre62_decision_commit": {
+              "const": "24ca87062168723209b5ceab488c6b112ef6c3fa"
+            },
+            "pre62_request_contract_sha256": {
+              "const": "9802e2e36d920c53e40f7926ab50420b18f684fe01f7335e8b003fbad14258cc"
+            },
+            "pre62_plan_sha256": {
+              "const": "125a3532b888fd3e6330253d01fe30e6f7693a4c74337241abaae0e58c4a7240"
+            },
+            "pre62_plan_commit": {
+              "const": "a7d58640752e79d4d530da7a7697ae79f0ea96fd"
+            },
+            "pre62_response_schema_sha256": {
+              "const": "2f73f299b9a8f9bb9af64c0c1ae092e6feb56d5c2febdda2c5b1f72e081144a8"
+            },
+            "pre62_sanitized_results_sha256": {
+              "const": "2ef6acccfb534aabb25dc79bd2d717a11445a1498003f65e6d1203eb66dd627d"
+            },
+            "pre62_negative_cases_sha256": {
+              "const": "2a5f46250545ea56fc86893f9b8d720f1062061e57ef3798da8ef7acaa39c12c"
+            },
+            "pre62_result_reference": {
+              "const": "commercialization-standards-multi-provider-live-security-review/PRE-62-MULTI-PROVIDER-AGENT-SECURITY-REVIEW-RESULT-v0.1.md"
+            },
+            "pre62_result_sha256": {
+              "const": "38932b5e2ed70c4b747c78fb420b9276580ff1a85ad47f5cb13d171bb5633d89"
+            },
+            "pre62_execution_receipt_sha256": {
+              "const": "7ce7e922b188fe2827ec8ca35343bcb0d8d7be66f726dc5b912c77dde30e3f25"
+            },
+            "pre62_result_commit": {
+              "const": "5a9478bb7d28c0a1f20534785777b9aba4d7e223"
+            },
+            "pre62_result": {
+              "const": "PASS_2_OF_2_AGENT_REVIEW_INPUT"
+            },
+            "pre62_requests_authorized": {"const": 2},
+            "pre62_requests_executed": {"const": 2},
+            "pre62_requests_passed": {"const": 2},
+            "pre62_qianfan_verdict": {"const": "REVISE"},
+            "pre62_qwen_verdict": {"const": "REVISE"},
+            "pre62_negative_cases_rejected": {"const": 8},
+            "pre62_retry_fallback_substitution_extraction_repair_attempts": {"const": 0},
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -7059,6 +7145,18 @@
               "const": true
             },
             "live_security_review_recommendation_allowed": {
+              "const": false
+            },
+            "pre62_agent_review_executed": {
+              "const": true
+            },
+            "pre62_agent_review_pass": {
+              "const": true
+            },
+            "ai_assisted_multi_provider_review_input_complete": {
+              "const": true
+            },
+            "provider_binding_security_control_remediation_recommendation_allowed": {
               "const": true
             },
             "qianfan_exact_model_binding_required": {
@@ -7184,7 +7282,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "FORM_EXACT_LIVE_MULTI_PROVIDER_SECURITY_REVIEW_RECOMMENDATION"
+          "const": "FORM_PROVIDER_BINDING_SECURITY_CONTROL_REMEDIATION_RECOMMENDATION"
         },
         "decision_ready": {
           "const": false
