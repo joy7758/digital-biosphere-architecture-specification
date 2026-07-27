@@ -20,6 +20,7 @@ titmas_public_domain_live: false
 titmas_github_organization_slug: titmas-cn
 titmas_github_organization_created: false
 titmas_commercial_evaluation_package_prepared: true
+titmas_commercial_evaluation_package_remote_validated: true
 titmas_available_commercial_offering: false
 titmas_commercial_evaluation_next_gate: external-agent-first-run-validation-not-authorized
 ---
@@ -58,6 +59,7 @@ TITMAS_GITHUB_ORGANIZATION_SLUG=titmas-cn
 TITMAS_GITHUB_ORGANIZATION_CREATED=false
 TITMAS_REPOSITORIES_TRANSFERRED=0
 TITMAS_COMMERCIAL_EVALUATION_PACKAGE_PREPARED=true
+TITMAS_COMMERCIAL_EVALUATION_PACKAGE_REMOTE_VALIDATED=true
 TITMAS_AVAILABLE_COMMERCIAL_OFFERING=false
 TITMAS_COMMERCIAL_EVALUATION_FIRST_RUN_PASS=true
 TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE=EXTERNAL_AGENT_FIRST_RUN_VALIDATION

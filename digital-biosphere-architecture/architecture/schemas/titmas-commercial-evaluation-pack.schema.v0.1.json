@@ -139,6 +139,8 @@
         "installed_cli_help_passed",
         "remote_baseline_commit",
         "remote_json_documents_parsed",
+        "remote_first_run_passed",
+        "remote_validation_report",
         "remote_secret_scan_passed"
       ],
       "properties": {
@@ -148,6 +150,10 @@
         "installed_cli_help_passed": {"const": true},
         "remote_baseline_commit": {"type": "string", "pattern": "^[a-f0-9]{7,40}$"},
         "remote_json_documents_parsed": {"type": "integer", "minimum": 1},
+        "remote_first_run_passed": {"const": true},
+        "remote_validation_report": {
+          "const": "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1-VALIDATION-REPORT.md"
+        },
         "remote_secret_scan_passed": {"const": true}
       }
     },
