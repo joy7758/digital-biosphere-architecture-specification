@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre62-multi-provider-agent-review-response.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "request_id",
+    "review_role",
+    "verdict",
+    "p0_dns_observability_unresolved",
+    "provider_support_created",
+    "security_review_completed",
+    "implementation_authorized",
+    "authority_claimed",
+    "blocking_findings",
+    "required_controls",
+    "reason"
+  ],
+  "properties": {
+    "request_id": {
+      "enum": ["PRE62-QF-INTEGRATION-01", "PRE62-QWEN-SECURITY-01"]
+    },
+    "review_role": {
+      "enum": ["INTEGRATION_MAINTAINER_CANDIDATE", "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"]
+    },
+    "verdict": {
+      "enum": ["READY_FOR_AUTHORIZATION", "REVISE", "BLOCKED"]
+    },
+    "p0_dns_observability_unresolved": {"const": true},
+    "provider_support_created": {"const": false},
+    "security_review_completed": {"const": false},
+    "implementation_authorized": {"const": false},
+    "authority_claimed": {"const": false},
+    "blocking_findings": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {"type": "string", "minLength": 1, "maxLength": 500}
+    },
+    "required_controls": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 8,
+      "items": {"type": "string", "minLength": 1, "maxLength": 500}
+    },
+    "reason": {"type": "string", "minLength": 1, "maxLength": 1000}
+  }
+}

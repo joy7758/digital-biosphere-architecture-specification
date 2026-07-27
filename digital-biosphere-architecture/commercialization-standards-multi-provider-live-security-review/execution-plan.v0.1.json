@@ -1,0 +1,88 @@
+{
+  "$schema": "./execution-plan.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-62-MULTI-PROVIDER-AGENT-REVIEW-EXECUTION-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_BEFORE_FIRST_REQUEST",
+  "decision_reference": "../TITMAS-CS-D02-PRE-62-EXACT-LIVE-MULTI-PROVIDER-SECURITY-REVIEW-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "32af0ba4ae31004752cf97dabd9a75441ccc6d6a3ae48f9bfdd2e0799e02ddd9",
+  "decision_commit": "24ca87062168723209b5ceab488c6b112ef6c3fa",
+  "request_contract_reference": "./request-contract-candidate.v0.1.json",
+  "request_contract_sha256": "9802e2e36d920c53e40f7926ab50420b18f684fe01f7335e8b003fbad14258cc",
+  "response_schema_reference": "./agent-review-response.schema.v0.1.json",
+  "response_schema_sha256": "2f73f299b9a8f9bb9af64c0c1ae092e6feb56d5c2febdda2c5b1f72e081144a8",
+  "bindings": [
+    {
+      "binding_id": "QIANFAN_ERNIE_INTEGRATION_REVIEW",
+      "provider": "QIANFAN",
+      "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+      "model": "ernie-4.5-turbo-20260402",
+      "credential_identifier": "QIANFAN_API_KEY"
+    },
+    {
+      "binding_id": "ALIBABA_QWEN_SECURITY_REVIEW",
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "endpoint": "https://token-plan.cn-beijing.maas.aliyuncs.com/compatible-mode/v1/chat/completions",
+      "model": "qwen3.7-plus",
+      "credential_identifier": "DASHSCOPE_API_KEY"
+    }
+  ],
+  "sessions": [
+    {
+      "sequence": 1,
+      "session_id": "PRE62-QF-INTEGRATION-01",
+      "binding_id": "QIANFAN_ERNIE_INTEGRATION_REVIEW",
+      "review_role": "INTEGRATION_MAINTAINER_CANDIDATE",
+      "prompt_sha256": "5c627334ece80374782f8ae3f6c6a71cbbc2e368cbf06f83b8a0bbd6601da482",
+      "prompt_utf8_bytes": 1390
+    },
+    {
+      "sequence": 2,
+      "session_id": "PRE62-QWEN-SECURITY-01",
+      "binding_id": "ALIBABA_QWEN_SECURITY_REVIEW",
+      "review_role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE",
+      "prompt_sha256": "1608662d638409c1ce7a3d1ac8ac701482688ca4e55136b597fe8e9643e573d1",
+      "prompt_utf8_bytes": 1628
+    }
+  ],
+  "execution_policy": {
+    "sequential": true,
+    "concurrency_max": 1,
+    "timeout_seconds": 60,
+    "retry_max": 0,
+    "fallback_max": 0,
+    "model_substitution_max": 0,
+    "content_extraction_max": 0,
+    "json_repair_max": 0,
+    "stop_after_failed_prerequisite_session": true
+  },
+  "pass_rule": {
+    "http_2xx_required": true,
+    "outer_json_required": true,
+    "non_empty_content_required": true,
+    "direct_json_required": true,
+    "schema_required": true,
+    "request_id_match_required": true,
+    "review_role_match_required": true,
+    "exact_returned_model_required": true,
+    "expected_boundary_values_required": true
+  },
+  "raw_capture_policy": {
+    "local_temporary_only": true,
+    "file_mode": "0600",
+    "git_tracked": false,
+    "credential_value_recorded": false,
+    "authorization_header_recorded": false
+  },
+  "interpretation": {
+    "agent_review_is_formal_human_security_review": false,
+    "agent_review_is_provider_support": false,
+    "agent_review_is_provider_integration": false,
+    "agent_review_is_certification": false,
+    "agent_review_is_customer_evidence": false,
+    "agent_review_is_production_readiness": false,
+    "verdict_is_governance_decision": false,
+    "schema_pass_is_standard_conformance": false,
+    "provider_independence_is_correctness": false,
+    "security_review_completed": false
+  }
+}
