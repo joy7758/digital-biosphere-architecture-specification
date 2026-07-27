@@ -456,6 +456,13 @@ Decision；尚未执行 PR diff review，也未授权 merge。
 159,206-byte / 21-path diff 的 exact `qwen3.7-max` 只读审查：`PASS`、confidence
 `0.95`、0 blocker/correction，且建议进入 merge Recommendation 准备。没有提交
 GitHub review/comment，也没有 merge、workflow 或 Phase B 授权。
+随后发现 canonical 已前进至 `ccf473f3…`，新增 2 个仅涉及 `site/` 的提交；旧 base
+`4c95f6b…` 仍是 ancestor，CE head 与 site paths 交集为 0，offline candidate
+merge-tree 为 `ea296d8b…` 且未观察到冲突。
+[Merge-tree revalidation Recommendation](TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-RECOMMENDATION-v0.1.md)
+经 [qwen3.7-max review](TITMAS-CE-G11B-CURRENT-CANONICAL-MERGE-TREE-REVALIDATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction。下一步必须先
+离线复验当前真实 merge tree；不得直接 merge、rebase 或改网站。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
