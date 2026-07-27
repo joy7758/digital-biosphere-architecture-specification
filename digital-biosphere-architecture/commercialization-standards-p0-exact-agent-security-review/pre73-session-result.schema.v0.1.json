@@ -1,0 +1,156 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre73/pre73-session-result.schema.v0.1.json",
+  "title": "TITMAS PRE-73 Sanitized Session Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "session_id",
+    "provider",
+    "requested_model",
+    "returned_model",
+    "review_role",
+    "target_commit",
+    "source_package_sha256",
+    "request_observation",
+    "response_observation",
+    "persistence_observation",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre73-session-result.schema.v0.1.json"},
+    "document_id": {"enum": ["TITMAS-CS-D02-PRE73-QF-SESSION-RESULT-0.1", "TITMAS-CS-D02-PRE73-QWEN-SESSION-RESULT-0.1"]},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FAIL_CLOSED_RESPONSE_SCHEMA"},
+    "observed_at": {"const": "2026-07-27"},
+    "session_id": {"enum": ["PRE73-QF-SECURITY-01", "PRE73-QWEN-SECURITY-02"]},
+    "provider": {"enum": ["BAIDU_QIANFAN", "ALIBABA_CLOUD_MODEL_STUDIO"]},
+    "requested_model": {"enum": ["ernie-4.5-turbo-20260402", "qwen3.7-plus"]},
+    "returned_model": {"enum": ["ernie-4.5-turbo-20260402", "qwen3.7-plus"]},
+    "review_role": {"enum": ["IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE", "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"]},
+    "target_commit": {"const": "0030077f29c37145a306b72e7083345eb76b504a"},
+    "source_package_sha256": {"const": "5e357eab0d23db0c79d34f7a66ddc01e0a8070314ed8b6be2cee3b34e3973813"},
+    "request_observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_bytes",
+        "request_sha256",
+        "attempts",
+        "retry_count",
+        "fallback_count",
+        "substitution_count",
+        "extraction_count",
+        "repair_count"
+      ],
+      "properties": {
+        "request_bytes": {"type": "integer", "minimum": 1},
+        "request_sha256": {"pattern": "^[0-9a-f]{64}$"},
+        "attempts": {"const": 1},
+        "retry_count": {"const": 0},
+        "fallback_count": {"const": 0},
+        "substitution_count": {"const": 0},
+        "extraction_count": {"const": 0},
+        "repair_count": {"const": 0}
+      }
+    },
+    "response_observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "http_status",
+        "provider_envelope_bytes",
+        "exact_returned_model_match",
+        "direct_json_parse_pass",
+        "response_schema_pass",
+        "schema_failure_class",
+        "schema_failure_detail_persisted",
+        "binding_evaluation_completed",
+        "qualifying_review"
+      ],
+      "properties": {
+        "http_status": {"const": 200},
+        "provider_envelope_bytes": {"type": "integer", "minimum": 1},
+        "exact_returned_model_match": {"const": true},
+        "direct_json_parse_pass": {"const": true},
+        "response_schema_pass": {"const": false},
+        "schema_failure_class": {"const": "ValidationError"},
+        "schema_failure_detail_persisted": {"const": false},
+        "binding_evaluation_completed": {"const": false},
+        "qualifying_review": {"const": false}
+      }
+    },
+    "persistence_observation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_payload_persisted",
+        "source_package_persisted",
+        "raw_provider_envelope_persisted",
+        "raw_assistant_content_persisted",
+        "sanitized_review_object_persisted"
+      ],
+      "properties": {
+        "request_payload_persisted": {"const": false},
+        "source_package_persisted": {"const": false},
+        "raw_provider_envelope_persisted": {"const": false},
+        "raw_assistant_content_persisted": {"const": false},
+        "sanitized_review_object_persisted": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 7,
+      "additionalProperties": {"const": false}
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"session_id": {"const": "PRE73-QF-SECURITY-01"}}, "required": ["session_id"]},
+      "then": {
+        "properties": {
+          "document_id": {"const": "TITMAS-CS-D02-PRE73-QF-SESSION-RESULT-0.1"},
+          "provider": {"const": "BAIDU_QIANFAN"},
+          "requested_model": {"const": "ernie-4.5-turbo-20260402"},
+          "returned_model": {"const": "ernie-4.5-turbo-20260402"},
+          "review_role": {"const": "IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE"},
+          "request_observation": {
+            "properties": {
+              "request_bytes": {"const": 110117},
+              "request_sha256": {"const": "7985fe658e4e808c073dbb6e73e7724f0bc18bf49aef1e68a1074be5e9ec446d"}
+            }
+          },
+          "response_observation": {
+            "properties": {"provider_envelope_bytes": {"const": 6398}}
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"session_id": {"const": "PRE73-QWEN-SECURITY-02"}}, "required": ["session_id"]},
+      "then": {
+        "properties": {
+          "document_id": {"const": "TITMAS-CS-D02-PRE73-QWEN-SESSION-RESULT-0.1"},
+          "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+          "requested_model": {"const": "qwen3.7-plus"},
+          "returned_model": {"const": "qwen3.7-plus"},
+          "review_role": {"const": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"},
+          "request_observation": {
+            "properties": {
+              "request_bytes": {"const": 110128},
+              "request_sha256": {"const": "19cf137ab892d3ddefcafde4984f869f20c8ec1bc1267da6c83dbdc78b762307"}
+            }
+          },
+          "response_observation": {
+            "properties": {"provider_envelope_bytes": {"const": 12275}}
+          }
+        }
+      }
+    }
+  ]
+}

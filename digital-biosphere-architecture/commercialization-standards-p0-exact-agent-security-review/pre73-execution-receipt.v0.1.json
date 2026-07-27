@@ -1,0 +1,107 @@
+{
+  "$schema": "./pre73-execution-receipt.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE73-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "EXECUTED_FAIL_CLOSED_RESPONSE_SCHEMA_0_OF_2",
+  "observed_at": "2026-07-27",
+  "decision": {
+    "decision_id": "CS-D02-PRE-73",
+    "decision_reference": "../TITMAS-CS-D02-PRE-73-EXACT-DUAL-PROVIDER-AGENT-ASSISTED-SECURITY-REVIEW-DECISION-RECORD.v0.1.json",
+    "decision_sha256": "abfd62666991aaf66087101db238eb8a02c6de255f6d1f7ffa86e8581e94737c",
+    "decision_commit": "7161a9e28eb9ba7b4c4c824b7554e0bc0a7e888b",
+    "authorization_baseline_commit": "3abee7de8b4a8e821655d8b9357994fe146fcbfd"
+  },
+  "target": {
+    "repository": "joy7758/titmas-integrations",
+    "commit": "0030077f29c37145a306b72e7083345eb76b504a",
+    "input_hashes_match": "10/10",
+    "writes": 0
+  },
+  "source_binding": {
+    "source_package_bytes": 102960,
+    "source_package_sha256": "5e357eab0d23db0c79d34f7a66ddc01e0a8070314ed8b6be2cee3b34e3973813",
+    "deterministic_user_messages_match": "2/2"
+  },
+  "session_results": [
+    {
+      "session_id": "PRE73-QF-SECURITY-01",
+      "reference": "./pre73-qianfan-session-result.v0.1.json",
+      "sha256": "74a11ce415fd1fb815aef176d667a2c97687c5837019de572154e489a41225bf"
+    },
+    {
+      "session_id": "PRE73-QWEN-SECURITY-02",
+      "reference": "./pre73-qwen-session-result.v0.1.json",
+      "sha256": "6212851a2d6f45d5c52648b075215ada439f17531da65786aed3eec4972ef882"
+    }
+  ],
+  "execution_summary": {
+    "requests_authorized": 2,
+    "requests_executed": 2,
+    "http_200": "2/2",
+    "exact_returned_model_match": "2/2",
+    "direct_json_parse_pass": "2/2",
+    "response_schema_pass": "0/2",
+    "binding_evaluation_completed": "0/2",
+    "qualifying_reviews": "0/2",
+    "request_cap_consumed": true,
+    "retry_allowed": false
+  },
+  "credential_accounting": {
+    "credential_identifiers_configured": 2,
+    "credential_values_accessed_in_process_memory": 2,
+    "authorization_header_values_emitted_to_tls_client": 2,
+    "credential_values_printed": 0,
+    "credential_values_persisted": 0,
+    "credential_values_exposed_outside_authorized_transport": 0
+  },
+  "persistence_accounting": {
+    "request_payloads_persisted": 0,
+    "source_packages_persisted": 0,
+    "raw_provider_envelopes_persisted": 0,
+    "raw_assistant_contents_persisted": 0,
+    "sanitized_review_objects_persisted": 0,
+    "sanitized_failure_session_records_persisted": 2
+  },
+  "operation_accounting": {
+    "retry": 0,
+    "fallback": 0,
+    "model_substitution": 0,
+    "response_extraction": 0,
+    "json_repair": 0,
+    "platform_validations": 0,
+    "container_starts": 0,
+    "target_writes": 0,
+    "dbos_writes": 0,
+    "saee_writes": 0
+  },
+  "failure_disclosure": {
+    "failure_stage": "RESPONSE_SCHEMA_VALIDATION",
+    "failure_class": "ValidationError",
+    "affected_sessions": "2/2",
+    "schema_failure_detail_persisted": false,
+    "exact_schema_failure_path_known": false,
+    "raw_response_recovery_allowed": false,
+    "inference": "Both responses reached direct JSON parsing and exact returned-model matching before failing the response Schema; the exact rejected field or path was not retained."
+  },
+  "next_action": "PREPARE_PRE74_OFFLINE_SCHEMA_FAILURE_DIAGNOSTIC_AND_SANITIZED_FAILURE_DETAIL_CAPTURE_RECOMMENDATION",
+  "next_action_authorized": false,
+  "truth_boundaries": [
+    "HTTP_200_AND_DIRECT_JSON_NE_SCHEMA_CONFORMANCE",
+    "SCHEMA_FAILURE_NE_SECURITY_REVIEW_FINDING",
+    "AGENT_REVIEW_NE_FORMAL_HUMAN_SECURITY_REVIEW",
+    "FAILED_REVIEW_NE_TARGET_SECURITY_FAILURE",
+    "TWO_REQUESTS_NE_PROVIDER_SUPPORT",
+    "EVIDENCE_NE_TRUTH",
+    "DECISION_NE_RETRY_AUTHORIZATION"
+  ],
+  "effects": {
+    "agent_security_review_complete": false,
+    "formal_human_security_review_complete": false,
+    "provider_supported": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false,
+    "production_ready": false,
+    "retry_authorized": false
+  }
+}

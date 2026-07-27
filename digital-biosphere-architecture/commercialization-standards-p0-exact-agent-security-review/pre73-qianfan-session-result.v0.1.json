@@ -1,0 +1,51 @@
+{
+  "$schema": "./pre73-session-result.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE73-QF-SESSION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_RESPONSE_SCHEMA",
+  "observed_at": "2026-07-27",
+  "session_id": "PRE73-QF-SECURITY-01",
+  "provider": "BAIDU_QIANFAN",
+  "requested_model": "ernie-4.5-turbo-20260402",
+  "returned_model": "ernie-4.5-turbo-20260402",
+  "review_role": "IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE",
+  "target_commit": "0030077f29c37145a306b72e7083345eb76b504a",
+  "source_package_sha256": "5e357eab0d23db0c79d34f7a66ddc01e0a8070314ed8b6be2cee3b34e3973813",
+  "request_observation": {
+    "request_bytes": 110117,
+    "request_sha256": "7985fe658e4e808c073dbb6e73e7724f0bc18bf49aef1e68a1074be5e9ec446d",
+    "attempts": 1,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0
+  },
+  "response_observation": {
+    "http_status": 200,
+    "provider_envelope_bytes": 6398,
+    "exact_returned_model_match": true,
+    "direct_json_parse_pass": true,
+    "response_schema_pass": false,
+    "schema_failure_class": "ValidationError",
+    "schema_failure_detail_persisted": false,
+    "binding_evaluation_completed": false,
+    "qualifying_review": false
+  },
+  "persistence_observation": {
+    "request_payload_persisted": false,
+    "source_package_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "raw_assistant_content_persisted": false,
+    "sanitized_review_object_persisted": false
+  },
+  "effects": {
+    "formal_human_security_review_complete": false,
+    "provider_supported": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false,
+    "production_ready": false,
+    "finding_created": false
+  }
+}

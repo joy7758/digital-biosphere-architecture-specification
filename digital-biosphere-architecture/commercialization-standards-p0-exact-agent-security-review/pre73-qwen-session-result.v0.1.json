@@ -1,0 +1,51 @@
+{
+  "$schema": "./pre73-session-result.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE73-QWEN-SESSION-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_RESPONSE_SCHEMA",
+  "observed_at": "2026-07-27",
+  "session_id": "PRE73-QWEN-SECURITY-02",
+  "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+  "requested_model": "qwen3.7-plus",
+  "returned_model": "qwen3.7-plus",
+  "review_role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE",
+  "target_commit": "0030077f29c37145a306b72e7083345eb76b504a",
+  "source_package_sha256": "5e357eab0d23db0c79d34f7a66ddc01e0a8070314ed8b6be2cee3b34e3973813",
+  "request_observation": {
+    "request_bytes": 110128,
+    "request_sha256": "19cf137ab892d3ddefcafde4984f869f20c8ec1bc1267da6c83dbdc78b762307",
+    "attempts": 1,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0
+  },
+  "response_observation": {
+    "http_status": 200,
+    "provider_envelope_bytes": 12275,
+    "exact_returned_model_match": true,
+    "direct_json_parse_pass": true,
+    "response_schema_pass": false,
+    "schema_failure_class": "ValidationError",
+    "schema_failure_detail_persisted": false,
+    "binding_evaluation_completed": false,
+    "qualifying_review": false
+  },
+  "persistence_observation": {
+    "request_payload_persisted": false,
+    "source_package_persisted": false,
+    "raw_provider_envelope_persisted": false,
+    "raw_assistant_content_persisted": false,
+    "sanitized_review_object_persisted": false
+  },
+  "effects": {
+    "formal_human_security_review_complete": false,
+    "provider_supported": false,
+    "conformance_pass": false,
+    "standard_ready": false,
+    "release_authorized": false,
+    "production_ready": false,
+    "finding_created": false
+  }
+}
