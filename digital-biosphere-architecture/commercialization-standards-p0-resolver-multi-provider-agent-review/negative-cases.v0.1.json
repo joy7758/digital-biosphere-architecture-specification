@@ -1,0 +1,61 @@
+{
+  "$schema": "./negative-cases.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-65-P0-RESOLVER-AGENT-REVIEW-NEGATIVE-CASES-0.1",
+  "version": "0.1.0",
+  "target_schema": "./agent-review-response.schema.v0.1.json",
+  "cases": [
+    {
+      "case_id": "NEG-01-PROVIDER-SUPPORT-TRUE",
+      "mutation": "provider_support_created=true",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-02-FORMAL-SECURITY-REVIEW-TRUE",
+      "mutation": "formal_security_review_completed=true",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-03-IMPLEMENTATION-AUTHORIZED-TRUE",
+      "mutation": "implementation_authorized=true",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-04-AUTHORITY-CLAIMED-TRUE",
+      "mutation": "authority_claimed=true",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-05-VERDICT-OUTSIDE-ENUM",
+      "mutation": "verdict=APPROVED",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-06-RECOMMENDATION-OUTSIDE-ENUM",
+      "mutation": "recommend_to_developer=STRONGLY_YES",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-07-MISSING-BLOCKING-FINDINGS",
+      "mutation": "remove blocking_findings",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-08-EMPTY-REQUIRED-CHANGES",
+      "mutation": "required_changes=[]",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-09-ADDITIONAL-PROPERTY",
+      "mutation": "add provider_approved=true",
+      "expected_valid": false
+    },
+    {
+      "case_id": "NEG-10-UNKNOWN-REQUEST-ID",
+      "mutation": "request_id=PRE65-UNKNOWN",
+      "expected_valid": false
+    }
+  ],
+  "cases_total": 10,
+  "cases_rejected": 10,
+  "status": "PASS_ALL_10_NEGATIVE_CASES_REJECTED"
+}

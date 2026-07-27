@@ -1,0 +1,100 @@
+{
+  "$schema": "./execution-receipt.schema.v0.1.json",
+  "document_id": "TITMAS-CS-D02-PRE-65-P0-RESOLVER-MULTI-PROVIDER-AGENT-REVIEW-EXECUTION-RECEIPT-0.1",
+  "version": "0.1.0",
+  "status": "PASS_2_OF_2_AGENT_REVIEW_INPUT_WITH_REVISE_VERDICTS",
+  "completed_at": "2026-07-27T11:01:28.958712+08:00",
+  "artifact_count_bound": 11,
+  "artifacts": [
+    {
+      "path": "PRE-65-P0-RESOLVER-MULTI-PROVIDER-AGENT-REVIEW-RESULT-v0.1.md",
+      "sha256": "e11d47988b9f2b904e2c7b4184b9d7c07fa5941b04103b910f9b707c1748719c"
+    },
+    {
+      "path": "agent-review-response.schema.v0.1.json",
+      "sha256": "5ad3000506171bc08721e9d26fc13b2930de87a45aa0bbb655756411116016fd"
+    },
+    {
+      "path": "execution-plan.schema.v0.1.json",
+      "sha256": "4d504fca918a5c50c3c0cf3a9744b7ff2b9796fd8a74fc9bea9231606f29ca35"
+    },
+    {
+      "path": "execution-plan.v0.1.json",
+      "sha256": "e233323a201a38b26f7b1e0a4082c2e0f645f20e380c81e9a3a35d6661135f3b"
+    },
+    {
+      "path": "execution-receipt.schema.v0.1.json",
+      "sha256": "0f1af1f09d54dae3269eff7f3dfdaeb335114da924c6b555fd4ee7f3c77a1383"
+    },
+    {
+      "path": "negative-cases.schema.v0.1.json",
+      "sha256": "4d0a5761594e6022d8f180f5c89c6ab20ae0d940f06a5c2a802d76afe3c15c74"
+    },
+    {
+      "path": "negative-cases.v0.1.json",
+      "sha256": "f3e9b1f470967e34bf0f5deb9ac8590a7b47cacbc7d584d817ce35a76ac7517d"
+    },
+    {
+      "path": "request-contract-candidate.schema.v0.1.json",
+      "sha256": "591b2b598e2b6fcebdafb3c8f60b8e5c5afb74eb77161b6bc23c7473457946ca"
+    },
+    {
+      "path": "request-contract-candidate.v0.1.json",
+      "sha256": "7a9e9934abb7b3630ce8d71cf79743a51d12739d3b7f935e611f622e717e16f9"
+    },
+    {
+      "path": "sanitized-agent-review-results.schema.v0.1.json",
+      "sha256": "5e8610d5a26e5b7cadfeff532660b94361b738445ce372e8b654e416fb64776e"
+    },
+    {
+      "path": "sanitized-agent-review-results.v0.1.json",
+      "sha256": "aa399e3a21e9b1c2d37bd3f1d410c48c81baf86525dbc14210d5e7339c33b2e4"
+    }
+  ],
+  "request_counts": {
+    "authorized": 2,
+    "executed": 2,
+    "passed": 2,
+    "failed": 0,
+    "not_executed": 0
+  },
+  "contract_counts": {
+    "http_2xx": 2,
+    "direct_json": 2,
+    "schema_pass": 2,
+    "request_role_model_boundary_match": 2,
+    "negative_cases_rejected": 10,
+    "retry_fallback_substitution_extraction_repair": 0
+  },
+  "verdict_counts": {
+    "ready_for_next_recommendation": 0,
+    "revise": 2,
+    "blocked": 0,
+    "conditional_recommendations": 2
+  },
+  "classification": {
+    "ai_assisted_multi_provider_review_input_complete": true,
+    "favorable_review_complete": false,
+    "remediation_recommendation_required": true,
+    "formal_human_security_review_complete": false,
+    "provider_supported": false,
+    "provider_integrated": false,
+    "implementation_authorized": false,
+    "standard_ready": false
+  },
+  "effects": {
+    "authority_changed": false,
+    "ownership_changed": false,
+    "provider_support_created": false,
+    "provider_integration_created": false,
+    "formal_security_review_completed": false,
+    "implementation_authorized": false,
+    "external_outreach_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "customer_evidence_created": false,
+    "standard_ready": false
+  },
+  "next_action": "FORM_PRE66_P0_DEADLINE_AND_DNS_REBINDING_REMEDIATION_RECOMMENDATION"
+}

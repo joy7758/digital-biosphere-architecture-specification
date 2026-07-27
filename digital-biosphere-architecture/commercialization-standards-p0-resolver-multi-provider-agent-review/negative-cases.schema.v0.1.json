@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre65-p0-resolver-agent-review-negative-cases.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "target_schema",
+    "cases",
+    "cases_total",
+    "cases_rejected",
+    "status"
+  ],
+  "properties": {
+    "$schema": { "const": "./negative-cases.schema.v0.1.json" },
+    "document_id": {
+      "const": "TITMAS-CS-D02-PRE-65-P0-RESOLVER-AGENT-REVIEW-NEGATIVE-CASES-0.1"
+    },
+    "version": { "const": "0.1.0" },
+    "target_schema": {
+      "const": "./agent-review-response.schema.v0.1.json"
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "case_id",
+          "mutation",
+          "expected_valid"
+        ],
+        "properties": {
+          "case_id": { "type": "string", "minLength": 1 },
+          "mutation": { "type": "string", "minLength": 1 },
+          "expected_valid": { "const": false }
+        }
+      }
+    },
+    "cases_total": { "const": 10 },
+    "cases_rejected": { "const": 10 },
+    "status": {
+      "const": "PASS_ALL_10_NEGATIVE_CASES_REJECTED"
+    }
+  }
+}
