@@ -55,6 +55,23 @@ DBOS_NE_AGENT_FRAMEWORK=true
 SAEE_NE_CONTROLLER=true
 ```
 
+### 2.2 Commercialization Standardization Track（商业化标准推进线）
+
+| step | 当前状态 | 直接证据 | 下一步 |
+|---|---|---|---|
+| `CS-D02-PRE-67` | `GATE_PASSED_DEVELOPMENT_REFERENCE_ONLY` | `titmas-integrations@0030077…`；本地与 remote clean clone 均 92/92 tests、7/7 rehearsal、offline build PASS；真实网络与 credential read 为 0 | 只形成 `PRE-68` formal Security Review 与 platform-validation scope Recommendation；不自动执行 review、Linux/真实网络测试、P1/P2、Provider binding、contract adoption、merge 或 release |
+
+```text
+COMMERCIALIZATION_LAST_COMPLETED_STEP=CS-D02-PRE-67
+COMMERCIALIZATION_NEXT_ACTION=FORM_PRE68_P0_FORMAL_SECURITY_REVIEW_AND_PLATFORM_VALIDATION_SCOPE_RECOMMENDATION
+COMMERCIALIZATION_NEXT_ACTION_AUTHORIZED=false
+P0_REFERENCE_IMPLEMENTATION_CREATED=true
+P0_OFFLINE_TESTS_PASS=true
+FORMAL_HUMAN_SECURITY_REVIEW_COMPLETE=false
+CONTRACT_ADOPTED_AS_STANDARD=false
+STANDARD_READY=false
+```
+
 | preview milestone | 目标 | primary repository | 当前状态 | 完成证据 | 下一步 |
 |---|---|---|---|---|---|
 | `DP-1` | 建立 Digital Biosphere 统一公开入口 | DBA | `GATE_PASSED` | Public Overview、Developer Preview Plan、Release Plan、ADR-017、链接与边界验证 | 保持未发布边界 |

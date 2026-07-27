@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_66_P0_DEADLINE_AND_DNS_REBINDING_OFFLINE_REMEDIATION_PASS_EXECUTABLE_TEST_SCOPE_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_67_P0_REFERENCE_IMPLEMENTATION_AND_OFFLINE_TESTS_PASS_FORMAL_SECURITY_REVIEW_SCOPE_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "CS-D02-PRE-66"},
+        "last_completed_step": {"const": "CS-D02-PRE-67"},
         "last_completed_result": {
-          "const": "PASS_OFFLINE_DEADLINE_AND_DNS_REBINDING_REMEDIATION_DESIGN_ONLY"
+          "const": "PASS_BOUNDED_POSIX_P0_REFERENCE_IMPLEMENTATION_AND_OFFLINE_TESTS"
         },
         "direct_evidence_reference": {
-          "const": "commercialization-standards-p0-deadline-and-dns-rebinding-remediation/PRE-66-P0-DEADLINE-AND-DNS-REBINDING-REMEDIATION-RESULT-v0.1.md"
+          "const": "commercialization-standards-p0-executable-test-and-implementation/PRE-67-P0-EXECUTABLE-TEST-AND-IMPLEMENTATION-RESULT-v0.1.md"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,7 +131,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "FORM_PRE67_P0_EXECUTABLE_TEST_AND_IMPLEMENTATION_SCOPE_RECOMMENDATION"
+          "const": "FORM_PRE68_P0_FORMAL_SECURITY_REVIEW_AND_PLATFORM_VALIDATION_SCOPE_RECOMMENDATION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -5567,6 +5567,29 @@
             "pre66_deadline_candidates_compared",
             "pre66_mutation_negatives_rejected",
             "pre66_target_changes",
+            "pre67_recommendation_reference",
+            "pre67_recommendation_sha256",
+            "pre67_recommendation_commit",
+            "pre67_decision_reference",
+            "pre67_decision_sha256",
+            "pre67_decision_commit",
+            "pre67_target_parent_commit",
+            "pre67_target_commit",
+            "pre67_result_reference",
+            "pre67_result_sha256",
+            "pre67_validation_result_sha256",
+            "pre67_execution_receipt_sha256",
+            "pre67_result_commit",
+            "pre67_result",
+            "pre67_target_new_paths",
+            "pre67_target_updated_paths",
+            "pre67_tests_passed",
+            "pre67_independent_rehearsal_passed",
+            "pre67_machine_instances_valid",
+            "pre67_declared_hashes_valid",
+            "pre67_iana_snapshot_files_exact",
+            "pre67_remote_clean_clone_pass",
+            "pre67_real_network_and_credential_actions",
             "target_branch",
             "target_remote_main_unchanged",
             "license_adopted",
@@ -5636,6 +5659,14 @@
             "pre66_total_wall_clock_upper_bound_proven",
             "pre66_destination_policy_snapshot_adopted",
             "pre67_p0_executable_test_and_implementation_scope_recommendation_allowed",
+            "pre67_p0_executable_test_and_implementation_executed",
+            "pre67_p0_executable_test_and_implementation_pass",
+            "pre67_destination_policy_snapshot_adopted_for_development_reference",
+            "pre67_total_wall_clock_upper_bound_proven",
+            "pre67_linux_validated",
+            "pre67_windows_supported",
+            "pre67_cross_platform_support_claim",
+            "pre68_formal_security_review_and_platform_validation_scope_recommendation_allowed",
             "qianfan_exact_model_binding_required",
             "security_reviewer_exact_binding_required",
             "pre53_china_provider_benchmark_executed",
@@ -7284,6 +7315,57 @@
             "pre66_deadline_candidates_compared": {"const": 5},
             "pre66_mutation_negatives_rejected": {"const": 12},
             "pre66_target_changes": {"const": 0},
+            "pre67_recommendation_reference": {
+              "const": "TITMAS-CS-D02-PRE-67-P0-EXECUTABLE-TEST-AND-IMPLEMENTATION-SCOPE-RECOMMENDATION-v0.1.md"
+            },
+            "pre67_recommendation_sha256": {
+              "const": "cdfee583371a6784cd4a2dad385bfc8bbcae9ed4858a325997aacb53a5877ff9"
+            },
+            "pre67_recommendation_commit": {
+              "const": "cd59bf26ad91bd4a729214b976b57347c3f33a51"
+            },
+            "pre67_decision_reference": {
+              "const": "TITMAS-CS-D02-PRE-67-P0-EXECUTABLE-TEST-AND-IMPLEMENTATION-SCOPE-DECISION-RECORD.v0.1.json"
+            },
+            "pre67_decision_sha256": {
+              "const": "70b1e45f9876726e9bc15eba68c4f588347eb18b91d3004c41fdada20caf9db7"
+            },
+            "pre67_decision_commit": {
+              "const": "aa99c20f40423275a61b732d212751bde2fdca6b"
+            },
+            "pre67_target_parent_commit": {
+              "const": "5ac891c5af88b1e9aeacdb3666217c6f832a57a6"
+            },
+            "pre67_target_commit": {
+              "const": "0030077f29c37145a306b72e7083345eb76b504a"
+            },
+            "pre67_result_reference": {
+              "const": "commercialization-standards-p0-executable-test-and-implementation/PRE-67-P0-EXECUTABLE-TEST-AND-IMPLEMENTATION-RESULT-v0.1.md"
+            },
+            "pre67_result_sha256": {
+              "const": "7f29b7631c9fe76c2ed135ac65220513d3673ff31b70dbc0851703426ecd9b81"
+            },
+            "pre67_validation_result_sha256": {
+              "const": "814917e6647bbd00fab37717d645cf1db52b767f2bd8e6c0484587d7e5a84647"
+            },
+            "pre67_execution_receipt_sha256": {
+              "const": "125e0bac52a0df474c01de5c739da4865506eb1d553beb8f88eddbecd75ee21d"
+            },
+            "pre67_result_commit": {
+              "const": "4480da32dc440433ae47a2dc8943c4efd755a7df"
+            },
+            "pre67_result": {
+              "const": "PASS_BOUNDED_POSIX_P0_REFERENCE_IMPLEMENTATION_AND_OFFLINE_TESTS"
+            },
+            "pre67_target_new_paths": {"const": 11},
+            "pre67_target_updated_paths": {"const": 8},
+            "pre67_tests_passed": {"const": 92},
+            "pre67_independent_rehearsal_passed": {"const": 7},
+            "pre67_machine_instances_valid": {"const": 4},
+            "pre67_declared_hashes_valid": {"const": 9},
+            "pre67_iana_snapshot_files_exact": {"const": 2},
+            "pre67_remote_clean_clone_pass": {"const": true},
+            "pre67_real_network_and_credential_actions": {"const": 0},
             "target_branch": {
               "const": "codex/rb0-governance-baseline"
             },
@@ -7489,6 +7571,30 @@
               "const": false
             },
             "pre67_p0_executable_test_and_implementation_scope_recommendation_allowed": {
+              "const": false
+            },
+            "pre67_p0_executable_test_and_implementation_executed": {
+              "const": true
+            },
+            "pre67_p0_executable_test_and_implementation_pass": {
+              "const": true
+            },
+            "pre67_destination_policy_snapshot_adopted_for_development_reference": {
+              "const": true
+            },
+            "pre67_total_wall_clock_upper_bound_proven": {
+              "const": false
+            },
+            "pre67_linux_validated": {
+              "const": false
+            },
+            "pre67_windows_supported": {
+              "const": false
+            },
+            "pre67_cross_platform_support_claim": {
+              "const": false
+            },
+            "pre68_formal_security_review_and_platform_validation_scope_recommendation_allowed": {
               "const": true
             },
             "qianfan_exact_model_binding_required": {
