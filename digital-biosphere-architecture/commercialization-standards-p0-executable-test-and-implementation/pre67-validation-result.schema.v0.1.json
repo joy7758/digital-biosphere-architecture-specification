@@ -1,0 +1,248 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre67-validation-result.schema.v0.1.json",
+  "title": "TITMAS PRE-67 Validation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "executed_at",
+    "status",
+    "target",
+    "checks",
+    "boundary_results",
+    "truth_state"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./pre67-validation-result.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "TITMAS-PRE67-VALIDATION-RESULT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "executed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "status": {
+      "const": "PASS_BOUNDED_POSIX_P0_REFERENCE_IMPLEMENTATION_AND_OFFLINE_TESTS"
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "repository",
+        "branch",
+        "parent_commit",
+        "implementation_commit",
+        "remote_commit_matched",
+        "main_unchanged",
+        "worktree_clean"
+      ],
+      "properties": {
+        "repository": {
+          "const": "joy7758/titmas-integrations"
+        },
+        "branch": {
+          "const": "codex/rb0-governance-baseline"
+        },
+        "parent_commit": {
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "implementation_commit": {
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "remote_commit_matched": {
+          "const": true
+        },
+        "main_unchanged": {
+          "const": true
+        },
+        "worktree_clean": {
+          "const": true
+        }
+      }
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "unit_tests_passed",
+        "unit_tests_total",
+        "existing_tests",
+        "new_tests",
+        "independent_rehearsal_passed",
+        "independent_rehearsal_total",
+        "schema_instances_passed",
+        "declaration_hashes_matched",
+        "iana_snapshot_files_exact",
+        "new_paths",
+        "updated_paths",
+        "offline_builds_passed",
+        "wheel_snapshot_hashes_matched",
+        "remote_clean_clone_pass",
+        "secret_or_private_path_findings",
+        "forbidden_overclaim_findings"
+      ],
+      "properties": {
+        "unit_tests_passed": {
+          "const": 92
+        },
+        "unit_tests_total": {
+          "const": 92
+        },
+        "existing_tests": {
+          "const": 30
+        },
+        "new_tests": {
+          "const": 62
+        },
+        "independent_rehearsal_passed": {
+          "const": 7
+        },
+        "independent_rehearsal_total": {
+          "const": 7
+        },
+        "schema_instances_passed": {
+          "const": 4
+        },
+        "declaration_hashes_matched": {
+          "const": 9
+        },
+        "iana_snapshot_files_exact": {
+          "const": 2
+        },
+        "new_paths": {
+          "const": 11
+        },
+        "updated_paths": {
+          "const": 8
+        },
+        "offline_builds_passed": {
+          "const": 2
+        },
+        "wheel_snapshot_hashes_matched": {
+          "const": 2
+        },
+        "remote_clean_clone_pass": {
+          "const": true
+        },
+        "secret_or_private_path_findings": {
+          "const": 0
+        },
+        "forbidden_overclaim_findings": {
+          "const": 0
+        }
+      }
+    },
+    "boundary_results": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "real_dns_calls",
+        "real_tcp_calls",
+        "tls_handshakes",
+        "http_requests",
+        "credential_reads",
+        "dependency_installs",
+        "published_artifacts",
+        "provider_bindings",
+        "p1_implementations",
+        "p2_implementations"
+      ],
+      "properties": {
+        "real_dns_calls": {
+          "const": 0
+        },
+        "real_tcp_calls": {
+          "const": 0
+        },
+        "tls_handshakes": {
+          "const": 0
+        },
+        "http_requests": {
+          "const": 0
+        },
+        "credential_reads": {
+          "const": 0
+        },
+        "dependency_installs": {
+          "const": 0
+        },
+        "published_artifacts": {
+          "const": 0
+        },
+        "provider_bindings": {
+          "const": 0
+        },
+        "p1_implementations": {
+          "const": 0
+        },
+        "p2_implementations": {
+          "const": 0
+        }
+      }
+    },
+    "truth_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "p0_reference_implementation_created",
+        "offline_tests_passed",
+        "destination_policy_snapshot_adopted_for_development_reference",
+        "total_wall_clock_upper_bound_proven",
+        "linux_validated",
+        "windows_supported",
+        "cross_platform_support_claim",
+        "formal_human_security_review_complete",
+        "contract_adopted_as_standard",
+        "provider_supported",
+        "release_authorized",
+        "standard_ready"
+      ],
+      "properties": {
+        "p0_reference_implementation_created": {
+          "const": true
+        },
+        "offline_tests_passed": {
+          "const": true
+        },
+        "destination_policy_snapshot_adopted_for_development_reference": {
+          "const": true
+        },
+        "total_wall_clock_upper_bound_proven": {
+          "const": false
+        },
+        "linux_validated": {
+          "const": false
+        },
+        "windows_supported": {
+          "const": false
+        },
+        "cross_platform_support_claim": {
+          "const": false
+        },
+        "formal_human_security_review_complete": {
+          "const": false
+        },
+        "contract_adopted_as_standard": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        },
+        "standard_ready": {
+          "const": false
+        }
+      }
+    }
+  }
+}

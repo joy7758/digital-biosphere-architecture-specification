@@ -1,0 +1,137 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre67-execution-receipt.schema.v0.1.json",
+  "title": "TITMAS PRE-67 Execution Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "executed_at",
+    "decision_reference",
+    "status",
+    "artifact_hashes",
+    "counts",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./pre67-execution-receipt.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "TITMAS-PRE67-EXECUTION-RECEIPT-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "executed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "decision_reference": {
+      "const": "CS-D02-PRE-67"
+    },
+    "status": {
+      "const": "PASS_BOUNDED_POSIX_P0_REFERENCE_IMPLEMENTATION_AND_OFFLINE_TESTS"
+    },
+    "artifact_hashes": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packet_files",
+        "target_new_paths",
+        "target_updated_paths",
+        "unit_tests_passed",
+        "remote_clean_clone_tests_passed"
+      ],
+      "properties": {
+        "packet_files": {
+          "const": 5
+        },
+        "target_new_paths": {
+          "const": 11
+        },
+        "target_updated_paths": {
+          "const": 8
+        },
+        "unit_tests_passed": {
+          "const": 92
+        },
+        "remote_clean_clone_tests_passed": {
+          "const": 92
+        }
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_changed",
+        "authority_changed",
+        "permission_granted",
+        "real_network_executed",
+        "credential_read",
+        "formal_human_security_review_complete",
+        "contract_adopted_as_standard",
+        "provider_supported",
+        "release_authorized",
+        "standard_ready"
+      ],
+      "properties": {
+        "target_changed": {
+          "const": true
+        },
+        "authority_changed": {
+          "const": false
+        },
+        "permission_granted": {
+          "const": false
+        },
+        "real_network_executed": {
+          "const": false
+        },
+        "credential_read": {
+          "const": false
+        },
+        "formal_human_security_review_complete": {
+          "const": false
+        },
+        "contract_adopted_as_standard": {
+          "const": false
+        },
+        "provider_supported": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        },
+        "standard_ready": {
+          "const": false
+        }
+      }
+    }
+  }
+}
