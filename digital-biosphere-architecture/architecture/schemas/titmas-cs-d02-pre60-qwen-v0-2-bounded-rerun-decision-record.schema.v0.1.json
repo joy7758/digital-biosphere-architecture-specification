@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre60-qwen-v0-2-bounded-rerun-decision-record.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "standing_directive_eligibility",
+    "scope",
+    "effects_before_execution",
+    "next_gate",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre60-qwen-v0-2-bounded-rerun-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-60-QWEN3-7-PLUS-V0-2-BOUNDED-RERUN-DECISION-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {
+      "const": "QWEN3_7_PLUS_V0_2_BOUNDED_RERUN_AUTHORIZED_NOT_EXECUTED"
+    },
+    "decision_id": {"const": "CS-D02-PRE-60"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-60-QWEN3-7-PLUS-V0-2-BOUNDED-RERUN-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "d87fd82704776e582e3799065fead96e70114e810ba8d8c618aacd7c04f7264e"
+    },
+    "recommendation_commit": {
+      "const": "d19c4fc694868d43f0ba313d5a522d0639ee29e8"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_QWEN3_7_PLUS_V0_2_EXACT_THREE_REQUEST_BOUNDED_RERUN"
+    },
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "Codex"},
+    "standing_directive_eligibility": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": {"const": true}
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "input_commit",
+        "output_files",
+        "provider_requests_max",
+        "live_model_requests_max",
+        "credential_identifiers_max",
+        "concurrency_max",
+        "timeout_seconds_per_request",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "content_extraction_max",
+        "json_repair_max",
+        "external_repository_writes_max"
+      ],
+      "properties": {
+        "primary_repository": {"const": "digital-biosphere-architecture"},
+        "input_commit": {
+          "const": "d19c4fc694868d43f0ba313d5a522d0639ee29e8"
+        },
+        "output_files": {"const": 9},
+        "provider_requests_max": {"const": 3},
+        "live_model_requests_max": {"const": 3},
+        "credential_identifiers_max": {"const": 1},
+        "concurrency_max": {"const": 1},
+        "timeout_seconds_per_request": {"const": 45},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "model_substitution_max": {"const": 0},
+        "content_extraction_max": {"const": 0},
+        "json_repair_max": {"const": 0},
+        "external_repository_writes_max": {"const": 0}
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "minProperties": 16,
+      "additionalProperties": {"const": false}
+    },
+    "next_gate": {
+      "const": "CREATE_VALIDATE_AND_REMOTE_FREEZE_EXACT_NINE_FILE_PRE60_PACKET"
+    },
+    "result": {"const": "NOT_EXECUTED"}
+  }
+}
