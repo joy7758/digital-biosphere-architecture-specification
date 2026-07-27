@@ -1,0 +1,138 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre65-p0-resolver-contract-multi-provider-agent-review-decision-record.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "request_contract_reference",
+    "request_contract_sha256",
+    "request_contract_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "standing_directive_eligibility",
+    "authorization",
+    "scope",
+    "effects_before_execution",
+    "next_gate",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre65-p0-resolver-contract-multi-provider-agent-review-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-65-P0-RESOLVER-CONTRACT-MULTI-PROVIDER-AGENT-REVIEW-DECISION-0.1"
+    },
+    "version": { "const": "0.1.0" },
+    "status": {
+      "const": "EXACT_TWO_REQUEST_P0_CONTRACT_AGENT_REVIEW_AUTHORIZED_NOT_EXECUTED"
+    },
+    "decision_id": { "const": "CS-D02-PRE-65" },
+    "standing_directive_reference": { "const": "TITMAS-CS-STANDING-001" },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-65-P0-RESOLVER-CONTRACT-MULTI-PROVIDER-AGENT-REVIEW-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "e70a061df19e37fc7c602dd6b32aaa349b6d0fef08f44c1b6da126fa9c4b2dea"
+    },
+    "recommendation_commit": {
+      "const": "d5775173d10f88550b15d9d46ac97f5284ab4f32"
+    },
+    "request_contract_reference": {
+      "const": "commercialization-standards-p0-resolver-multi-provider-agent-review/request-contract-candidate.v0.1.json"
+    },
+    "request_contract_sha256": {
+      "const": "7a9e9934abb7b3630ce8d71cf79743a51d12739d3b7f935e611f622e717e16f9"
+    },
+    "request_contract_commit": {
+      "const": "d5775173d10f88550b15d9d46ac97f5284ab4f32"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_PRE65_EXACT_TWO_SEQUENTIAL_P0_CONTRACT_AGENT_REVIEW_REQUESTS"
+    },
+    "decided_by_ref": { "const": "zhangbin" },
+    "decided_at": { "type": "string", "format": "date-time" },
+    "executed_by": { "const": "Codex" },
+    "standing_directive_eligibility": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": { "const": true }
+    },
+    "authorization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bounded_provider_validation_authorized",
+        "formal_security_review_authorized",
+        "provider_integration_authorized",
+        "implementation_authorized"
+      ],
+      "properties": {
+        "bounded_provider_validation_authorized": { "const": true },
+        "formal_security_review_authorized": { "const": false },
+        "provider_integration_authorized": { "const": false },
+        "implementation_authorized": { "const": false }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "input_commit",
+        "output_files",
+        "provider_requests_max",
+        "live_model_requests_max",
+        "credential_identifiers_max",
+        "concurrency_max",
+        "timeout_seconds_per_request",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "content_extraction_max",
+        "json_repair_max",
+        "external_repository_writes_max",
+        "implementation_writes_max"
+      ],
+      "properties": {
+        "primary_repository": { "const": "digital-biosphere-architecture" },
+        "input_commit": {
+          "const": "d5775173d10f88550b15d9d46ac97f5284ab4f32"
+        },
+        "output_files": { "const": 12 },
+        "provider_requests_max": { "const": 2 },
+        "live_model_requests_max": { "const": 2 },
+        "credential_identifiers_max": { "const": 2 },
+        "concurrency_max": { "const": 1 },
+        "timeout_seconds_per_request": { "const": 60 },
+        "retry_max": { "const": 0 },
+        "fallback_max": { "const": 0 },
+        "model_substitution_max": { "const": 0 },
+        "content_extraction_max": { "const": 0 },
+        "json_repair_max": { "const": 0 },
+        "external_repository_writes_max": { "const": 0 },
+        "implementation_writes_max": { "const": 0 }
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "minProperties": 15,
+      "additionalProperties": { "const": false }
+    },
+    "next_gate": {
+      "const": "FREEZE_EXECUTION_PLAN_THEN_EXECUTE_MAX_TWO_SEQUENTIAL_REQUESTS"
+    },
+    "result": { "const": "NOT_EXECUTED" }
+  }
+}
