@@ -1,0 +1,206 @@
+{
+  "record_type": "TITMAS_PROSPECTIVE_MULTI_LANE_AGENT_REVIEW_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-FOUR-LANE-AGENT-REVIEW",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_FOUR_LANES_AND_ONE_SYNTHESIS_ONLY_IF_QUALIFYING_DECISION_REVIEW",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G11B-PR23-INDEPENDENT-AGENT-REVIEW-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "e5022a06eb805fd58bad941bc1589ae9613d83b250676d1a9867cae3794009a7",
+  "recommendation_commit": "942f3816891ceef06a90c21bb721b09ecddd5331",
+  "recommendation_review_reference": "TITMAS-CE-G11B-PR23-INDEPENDENT-AGENT-REVIEW-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "dece4debda361aacddb2b11e45978c960bb0d63bfe4cd44dad1d26d364696e9f",
+  "decision_quality_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-FOUR-LANE-AGENT-REVIEW-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_layer": "PROSPECTIVE_AGENT_REVIEW_EXECUTION_AUTHORIZATION_ONLY",
+  "review_result_layer": "SEPARATE_SANITIZED_RESULT_AND_REPORT",
+  "review_question": "Is this exact four-lane plus synthesis review authorization complete, deterministic, fail-closed, and free of GitHub approval or merge authority?",
+  "review_must_not_require": [
+    "Lane or synthesis results before the review requests are authorized.",
+    "A GitHub review submission, reviewer assignment, PR comment, or merge action.",
+    "A PASS verdict as a condition for authorizing an evidence-producing review."
+  ],
+  "frozen_pr": {
+    "repository": "joy7758/digital-biosphere-architecture-specification",
+    "number": 23,
+    "url": "https://github.com/joy7758/digital-biosphere-architecture-specification/pull/23",
+    "state": "OPEN",
+    "draft": true,
+    "base_ref": "codex/production-observability-baseline",
+    "base_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_ref": "codex/ce-g11b-phase-b-integration-governance",
+    "head_commit": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+    "merge_tree": "bd67298eb8d869b024eaf9f03a53636c6dc377d4",
+    "evidence_ref": "codex/ce-g11b-atomic-integration-evidence",
+    "evidence_commit": "89baeeeb42904b4ea41652d649f8be9a484f3b48",
+    "body_sha256": "f272f4008dbec25faf3b111d758b46dacfd6ff13117361631516f1022ebca18f",
+    "review_requests": 0,
+    "reviews": 0,
+    "comments": 0,
+    "labels": 0,
+    "milestone": null,
+    "auto_merge": false,
+    "candidate_action_runs": 0
+  },
+  "patch_contract": {
+    "diff_expression": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14...c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+    "diff_command_per_lane": "git diff --no-ext-diff --unified=5 BASE...HEAD -- <ordered lane paths>",
+    "all_paths_count": 96,
+    "all_paths_manifest_sha256": "fde0c9b1c10114efaff1ccd26d2e9a32382912ccdf83cac4226388b9d0778ddc",
+    "assigned_once": 96,
+    "unassigned": 0,
+    "duplicate_assignments": 0,
+    "partition_rules_ordered": [
+      "A: path starts .github/workflows/ or contains /commercial-evaluation-controller-tls-diagnosis/",
+      "B: uppercase path contains PHASE-A or DRAFT-PR",
+      "C: uppercase path contains ZERO-INSTALL, NPM-PREFIX, OFFLINE-SITE, SITE-CWD, STATIC-EXPORT, or FORMAL-RELEASE",
+      "D: all remaining paths"
+    ],
+    "lanes": {
+      "A": {
+        "role": "CODE_SCHEMA_WORKFLOW_REVIEWER",
+        "files": 9,
+        "patch_bytes": 80123,
+        "patch_lines": 2316,
+        "patch_sha256": "30d0ad22f5e8d824fcc9e5a42adba1379770d3c52d84d8aa21e266bdc3110093",
+        "path_manifest_sha256": "49627a1ec2de69b6d7476e24be0703efc9e52a7d04244f08f9e8478d5079bd75"
+      },
+      "B": {
+        "role": "PHASE_A_AND_PRIOR_PR_GOVERNANCE_REVIEWER",
+        "files": 21,
+        "patch_bytes": 120091,
+        "patch_lines": 2788,
+        "patch_sha256": "48baa1b0e716a4a7ff888fbb2436a1fa7b64fbe5b72ec8e5bb4e807aecc8fdbc",
+        "path_manifest_sha256": "91fb72bfc27bf7bc7133c1830ff7d9c8de0d548bb4d13f05f100b4962ebf370d"
+      },
+      "C": {
+        "role": "R2_R6_REMEDIATION_VALIDATION_REVIEWER",
+        "files": 43,
+        "patch_bytes": 178600,
+        "patch_lines": 4057,
+        "patch_sha256": "0f55df8aee571562f24dd07c8ea5728529f165e7f7c3d5e313834113c5593e7a",
+        "path_manifest_sha256": "e99f013222f64804df945fdb2f5b5e85a3323f87a82c9304d95ab715ea4ebe5a"
+      },
+      "D": {
+        "role": "INTEGRATION_AUTHORITY_COCKPIT_REVIEWER",
+        "files": 23,
+        "patch_bytes": 135501,
+        "patch_lines": 2467,
+        "patch_sha256": "9cba5a068d16e5cf90178111d67a7282f8bc1d850b62ffc49e224da0cc9672e2",
+        "path_manifest_sha256": "96fcd4876d556fc4a4d666defce3b0aa74359898d0b10f7ac7fc7f532eb18313"
+      }
+    }
+  },
+  "model_contract": {
+    "requested_model": "qwen3.7-max",
+    "lane_requests": 4,
+    "synthesis_requests": 1,
+    "maximum_requests": 5,
+    "request_order": ["A", "B", "C", "D", "S"],
+    "http_status_required": 200,
+    "curl_exit_required": 0,
+    "returned_model_exact_match_required": true,
+    "direct_json_required": true,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "model_substitution_count": 0,
+    "json_repair_request_count": 0,
+    "synthesis_requires_four_transport_and_contract_valid_lane_results": true
+  },
+  "lane_review_contract": {
+    "verdict_values": ["PASS", "REQUEST_CHANGES"],
+    "required_binding_fields": [
+      "reviewed_lane",
+      "base_sha",
+      "head_sha",
+      "patch_sha256",
+      "files_reviewed"
+    ],
+    "required_assessment_fields": [
+      "correctness_pass",
+      "security_pass",
+      "authority_boundary_pass",
+      "evidence_claim_pass",
+      "agent_readability_pass"
+    ],
+    "finding_required_fields": [
+      "severity",
+      "path",
+      "line_or_reference",
+      "category",
+      "claim",
+      "evidence"
+    ],
+    "blocking_severities": ["CRITICAL", "HIGH"],
+    "missing_binding_or_finding_evidence_effect": "LANE_CONTRACT_FAILURE"
+  },
+  "synthesis_contract": {
+    "input_lane_results": 4,
+    "result_values": [
+      "AGENT_REVIEW_PASS",
+      "RETURN_FOR_REVISION",
+      "INCOMPLETE_REVIEW"
+    ],
+    "must_preserve_all_lane_findings": true,
+    "must_report_cross_lane_contradictions": true,
+    "must_report_coverage": true,
+    "agent_review_pass_requires": [
+      "All four lanes are transport, identity, JSON, binding, and contract valid.",
+      "All 96 paths are covered exactly once.",
+      "All lane verdicts are PASS.",
+      "No CRITICAL or HIGH finding exists.",
+      "No required correction exists.",
+      "No cross-lane contradiction remains unresolved."
+    ],
+    "authority_effect": "ADVISORY_ONLY"
+  },
+  "exact_authorized_action": "After one qualifying exact qwen3.7-max prospective Decision review, commit and push this Decision, its completed review, and cockpit update to codex/ce-g11b-pr23-review-governance. Verify that governance remote equals the Decision commit and PR #23 plus canonical, candidate, evidence, merge-tree, body and zero-metadata preconditions remain frozen. Deterministically partition all 96 paths exactly once and generate four temporary full unified-5 patch inputs whose counts and hashes equal this Decision. Send exactly four sequential lane requests A, B, C and D to exact qwen3.7-max with no retry, fallback, substitution, extraction or JSON repair. Persist only sanitized direct-JSON review content and request/response hashes, not raw provider envelopes, credentials, hidden reasoning or temporary patches. If and only if all four lanes are HTTP 200, curl exit 0, exact returned model, direct JSON and contract/binding valid, send exactly one synthesis request using the four sanitized lane results and frozen validation manifest. Record PASS, RETURN_FOR_REVISION or INCOMPLETE_REVIEW and all findings on the governance ref. Do not submit a GitHub review, comment, request reviewers, mutate PR #23 or PR #22, close a PR, dispatch workflows, write run requests, merge, release, deploy or modify servers.",
+  "caps": {
+    "decision_commits": 1,
+    "decision_pushes": 1,
+    "lane_patch_generations": 4,
+    "lane_model_requests": 4,
+    "synthesis_model_requests": 1,
+    "total_model_requests": 5,
+    "retries": 0,
+    "fallbacks": 0,
+    "model_substitutions": 0,
+    "json_repairs": 0,
+    "github_review_submissions": 0,
+    "github_comments": 0,
+    "reviewer_requests": 0,
+    "pr_mutations": 0,
+    "pr22_mutations": 0,
+    "pr_closures": 0,
+    "workflow_dispatches": 0,
+    "run_request_writes": 0,
+    "result_commits": 1,
+    "result_pushes": 1,
+    "merges": 0,
+    "releases": 0,
+    "deployments": 0,
+    "server_actions": 0
+  },
+  "stop_conditions": [
+    "Decision review is not HTTP 200, curl exit 0, exact qwen3.7-max APPROVE with zero blockers and zero required corrections.",
+    "The Decision commit is not the current governance remote.",
+    "PR #23, canonical, candidate, evidence, merge tree, body, metadata, action-run or PR #22 state drifts.",
+    "The path set is not exactly 96 paths assigned once, or any lane count/hash differs.",
+    "A lane request is not HTTP 200, curl exit 0, exact qwen3.7-max, direct JSON, or contract/binding valid; in that case finish other already authorized independent lanes but do not execute synthesis.",
+    "Any retry, fallback, model substitution, JSON repair, GitHub mutation, PR closure, merge, release, deployment or server action is required."
+  ],
+  "false_effects": {
+    "review_result_claim_before_execution": false,
+    "github_review_approval": false,
+    "pr23_ready_for_merge": false,
+    "pr22_closure_authorization": false,
+    "merge_authorization": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "execution_status": "NOT_STARTED_PENDING_QUALIFYING_PROSPECTIVE_REVIEW"
+}

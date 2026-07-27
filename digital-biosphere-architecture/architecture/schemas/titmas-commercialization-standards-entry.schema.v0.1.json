@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_CE_G11B_PR23_FOUR_LANE_AGENT_REVIEW_RECOMMENDATION_PASS_DECISION_PENDING_STANDARD_NOT_READY"
+      "const": "CS_D02_CE_G11B_PR23_FOUR_LANE_AGENT_REVIEW_DECISION_APPROVED_EXECUTION_PENDING_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -109,13 +109,13 @@
       "properties": {
         "as_of": {"const": "2026-07-27"},
         "last_completed_step": {
-          "const": "COMMERCIAL-EVALUATION-CE-G11B-PR23-INDEPENDENT-AGENT-REVIEW-RECOMMENDATION-REVIEW"
+          "const": "COMMERCIAL-EVALUATION-CE-G11B-PR23-FOUR-LANE-AGENT-REVIEW-DECISION-REVIEW"
         },
         "last_completed_result": {
-          "const": "RECOMMENDED_OPTION_A_FOUR_FULL_PATCH_LANES_PLUS_SYNTHESIS"
+          "const": "APPROVE_EXACT_QWEN3_7_MAX_FOUR_LANES_PLUS_SYNTHESIS_NOT_EXECUTED"
         },
         "direct_evidence_reference": {
-          "const": "TITMAS-CE-G11B-PR23-INDEPENDENT-AGENT-REVIEW-RECOMMENDATION-QWEN-REVIEW-v0.1.json"
+          "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-FOUR-LANE-AGENT-REVIEW-QWEN-DECISION-REVIEW-v0.1.json"
         },
         "current_best_connected_model": {"const": "qwen3.7-max"},
         "primary_new_provider_candidate": {
@@ -133,9 +133,9 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "PREPARE_CE_G11B_PR23_FOUR_LANE_AGENT_REVIEW_DECISION"
+          "const": "EXECUTE_CE_G11B_PR23_FOUR_LANES_AND_GATED_SYNTHESIS"
         },
-        "next_action_authorized": {"const": false},
+        "next_action_authorized": {"const": true},
         "standard_ready": {"const": false},
         "provider_integration_authorized": {"const": false},
         "security_review_completed": {"const": false},
