@@ -1,0 +1,192 @@
+{
+  "record_type": "TITMAS_PR27_POST_MERGE_VERIFIER_REMEDIATION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-POST-MERGE-VERIFIER-REMEDIATION",
+  "version": "0.1.0",
+  "status": "AUTHORIZE_ONE_CORRECTED_STRUCTURAL_AND_ISOLATED_VALIDATION_ONLY_IF_QUALIFYING_DECISION_REVIEW",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "failure_reference": "TITMAS-CE-G11B-PR27-POST-MERGE-STRUCTURAL-VERIFICATION-FAILURE-v0.1.json",
+  "failure_sha256": "df53b58d33de5ed548ac65944c91d371eda2481ac61bff29f86db9c874c2fdb7",
+  "recommendation_reference": "TITMAS-CE-G11B-PR27-POST-MERGE-VERIFIER-REMEDIATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "273a6692cb2c38db00ac4ffd7b113434339b48ffd22200d8b64eca02575b1e44",
+  "recommendation_review_reference": "TITMAS-CE-G11B-PR27-POST-MERGE-VERIFIER-REMEDIATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "d041591f3a1186eb73cf1285e900f07fb4b9857f3f05026536c31c6295e32f2f",
+  "recommendation_review_result": {
+    "requested_model": "qwen3.7-max",
+    "returned_model": "qwen3.7-max",
+    "returned_model_exact": true,
+    "verdict": "RECOMMENDED",
+    "confidence": 0.95,
+    "qualifying": true,
+    "blockers": 0,
+    "corrections": 0
+  },
+  "recommendation_commit": "91203352cdf5cbb2e88f0084c39010a2c5bd409a",
+  "recommendation_remote_verified": true,
+  "frozen_merged_state": {
+    "repository": "joy7758/digital-biosphere-architecture-specification",
+    "pull_request": 27,
+    "pull_request_state": "MERGED",
+    "merged_at": "2026-07-27T21:16:42Z",
+    "base_branch": "codex/production-observability-baseline",
+    "merge_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "first_parent": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "second_parent": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "expected_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "candidate_branch": "codex/ce-g11b-pr23-remediation-candidate",
+    "candidate_branch_preserved": true
+  },
+  "corrected_structural_contract": [
+    "remote base branch head equals merge commit",
+    "PR baseRefOid equals first parent",
+    "PR headRefOid equals second parent",
+    "PR mergeCommit.oid equals merge commit",
+    "merge commit parents equal first parent then second parent with no third parent",
+    "merge commit tree equals expected tree",
+    "candidate branch remains present at second parent"
+  ],
+  "isolated_validation_contract": {
+    "temporary_worktrees": 1,
+    "target_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "tracked_json_parse_and_duplicate_key_runs": 1,
+    "commercial_entry_schema_runs": 1,
+    "npm_ci_command": "NPM_CONFIG_OFFLINE=true npm ci --offline --ignore-scripts --no-audit --no-fund",
+    "npm_ci_attempts": 1,
+    "ordered_site_commands": [
+      "npm ls --depth=0 --json",
+      "npm test",
+      "npm run release:formal"
+    ],
+    "attempts_each": 1,
+    "ce_schema_selector": "EXACT_PATH_LIST_ONLY",
+    "ce_schema_hash_checks": "3/3",
+    "ce_schema_meta_validation_runs": 1,
+    "ce_schemas_meta_valid_expected": 3,
+    "ce_test_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis -p 'test_ce_g*.py'",
+    "ce_test_runs": 1,
+    "ce_tests_passed_expected": 49,
+    "network_fallbacks": 0,
+    "command_retries": 0,
+    "source_or_test_fixes": 0
+  },
+  "exact_ce_schema_contract": [
+    {
+      "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-run-request.schema.v0.1.json",
+      "sha256": "6a6e4ee89cc39085950737fcd4a8fc913d4b48a051508e1e1e1e02352e2b1d39"
+    },
+    {
+      "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-cross-version-result.schema.v0.1.json",
+      "sha256": "6c7f328f28c04c94a955f2b3642c5685590e3b556984d34db693fbef3ff1f15f"
+    },
+    {
+      "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.schema.v0.1.json",
+      "sha256": "1e6e4f379a689ae292359efdba2da72b45b55249f39c253e678d28aa8b6c3331"
+    }
+  ],
+  "authorization": {
+    "corrected_structural_validation_authorized": true,
+    "isolated_post_merge_validation_authorized": true,
+    "result_record_authorized": true,
+    "history_rewrite_authorized": false,
+    "reset_authorized": false,
+    "force_push_authorized": false,
+    "candidate_branch_deletion_authorized": false,
+    "automatic_revert_authorized": false,
+    "source_or_test_fix_authorized": false,
+    "new_merge_authorized": false,
+    "release_authorized": false,
+    "deployment_authorized": false,
+    "standard_ready_authorized": false,
+    "production_ready_authorized": false,
+    "commercial_offering_authorized": false
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "corrected_structural_validation_runs": 1,
+    "temporary_worktrees": 1,
+    "tracked_json_runs": 1,
+    "commercial_entry_schema_runs": 1,
+    "npm_ci_attempts": 1,
+    "npm_ls_runs": 1,
+    "site_test_runs": 1,
+    "release_formal_runs": 1,
+    "ce_schema_validation_runs": 1,
+    "ce_test_runs": 1,
+    "command_retries": 0,
+    "network_fallbacks": 0,
+    "source_or_test_fixes": 0,
+    "resets": 0,
+    "force_pushes": 0,
+    "candidate_branch_deletions": 0,
+    "automatic_reverts": 0,
+    "new_merges": 0,
+    "releases": 0,
+    "deployments": 0
+  },
+  "failure_handling": {
+    "preserve_original_failure": true,
+    "persist_pass_or_fail": true,
+    "cleanup_disposable_worktree": true,
+    "validation_failure_authorizes_revert": false,
+    "new_revert_or_remediation_decision_required_on_failure": true
+  },
+  "decision_review_contract": {
+    "model": "qwen3.7-max",
+    "request_cap": 1,
+    "retries": 0,
+    "fallbacks": 0,
+    "model_substitutions": 0,
+    "json_extractions": 0,
+    "json_repairs": 0,
+    "direct_json_required": true,
+    "exact_returned_model_required": true,
+    "required_top_level_keys": [
+      "verdict",
+      "confidence",
+      "standing_directive_applicable",
+      "failure_history_preserved",
+      "corrected_structural_contract_sound",
+      "isolated_validation_contract_complete",
+      "caps_bounded",
+      "failure_handling_fail_closed",
+      "non_authorizations_complete",
+      "authority_boundaries_preserved",
+      "blockers",
+      "corrections",
+      "rationale"
+    ],
+    "additional_top_level_keys_allowed": false,
+    "verdict_enum": [
+      "APPROVE",
+      "REVISE",
+      "REJECT"
+    ],
+    "qualifying_threshold": {
+      "verdict": "APPROVE",
+      "confidence_min": 0.9,
+      "all_boolean_checks_true": true,
+      "blockers": 0,
+      "corrections": 0
+    }
+  },
+  "exact_authorized_action": "Send exactly one independent qwen3.7-max Decision review. If and only if it qualifies and this Decision plus review are committed and remotely verified, run exactly one corrected structural verification and exactly one isolated post-merge validation at merge commit c1d8931930fbae15f96ee6a6ac050b081538c919 under the frozen contract. Persist PASS or FAIL on the governance branch and remove the disposable worktree. Do not rewrite history, reset, force-push, delete the candidate branch, automatically revert, fix source/tests, create another merge, release, deploy, or change Standard, production, commercial, permission, authority, Evidence or Truth status.",
+  "non_authorizations": {
+    "failure_reclassification": false,
+    "history_rewrite": false,
+    "reset": false,
+    "force_push": false,
+    "candidate_branch_deletion": false,
+    "automatic_revert": false,
+    "source_or_test_fix": false,
+    "new_merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "permission": false,
+    "authority_elevation": false,
+    "evidence_truth": false
+  }
+}
