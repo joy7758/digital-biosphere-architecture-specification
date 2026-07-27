@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_PRE_73_EXECUTED_FAIL_CLOSED_RESPONSE_SCHEMA_PRE74_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_PRE_74_OFFLINE_SCHEMA_FAILURE_DIAGNOSTIC_RECOMMENDATION_PREPARED_DECISION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,12 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "CS-D02-PRE-73-EXECUTION"},
+        "last_completed_step": {"const": "CS-D02-PRE-74-RECOMMENDATION"},
         "last_completed_result": {
-          "const": "FAIL_CLOSED_RESPONSE_SCHEMA_0_OF_2"
+          "const": "PASS_OFFLINE_CONTRACT_TRANSMISSION_GAP_DIAGNOSIS_AND_SCOPE_VALIDATION"
         },
         "direct_evidence_reference": {
-          "const": "commercialization-standards-p0-exact-agent-security-review/pre73-execution-receipt.v0.1.json"
+          "const": "commercialization-standards-pre74-schema-failure-diagnostic/pre74-contract-transmission-coverage-observation.v0.1.json"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,7 +131,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "PREPARE_PRE74_OFFLINE_SCHEMA_FAILURE_DIAGNOSTIC_AND_SANITIZED_FAILURE_DETAIL_CAPTURE_RECOMMENDATION"
+          "const": "RECORD_CS_D02_PRE74_OFFLINE_DIAGNOSTIC_DECISION"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -2756,7 +2756,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "PRE73_EXECUTED_FAIL_CLOSED_RESPONSE_SCHEMA_PRE74_RECOMMENDATION_REQUIRED"
+          "const": "PRE74_RECOMMENDATION_PREPARED_DECISION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7782,10 +7782,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_PRE74_OFFLINE_SCHEMA_FAILURE_DIAGNOSTIC_AND_SANITIZED_FAILURE_DETAIL_CAPTURE_RECOMMENDATION"
+          "const": "AUTHORIZE_PRE74_OFFLINE_RESPONSE_CONTRACT_TRANSMISSION_GAP_DIAGNOSTIC_AND_SANITIZED_FAILURE_DETAIL_CAPTURE_DESIGN"
         },
         "decision_ready": {
-          "const": false
+          "const": true
         },
         "external_execution_authorized": {
           "const": false

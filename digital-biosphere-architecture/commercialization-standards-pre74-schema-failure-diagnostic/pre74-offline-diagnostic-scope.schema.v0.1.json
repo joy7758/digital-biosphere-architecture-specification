@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre74/pre74-offline-diagnostic-scope.schema.v0.1.json",
+  "title": "TITMAS PRE-74 Offline Diagnostic Scope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_candidate",
+    "exact_recommended_action",
+    "primary_repository",
+    "input_refs",
+    "preconditions",
+    "authorized_offline_outputs",
+    "failure_capture_contract",
+    "offline_validation",
+    "execution_caps",
+    "stop_conditions",
+    "truth_boundaries",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre74-offline-diagnostic-scope.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE74-OFFLINE-DIAGNOSTIC-SCOPE-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "RECOMMENDATION_ONLY_DECISION_REQUIRED"},
+    "decision_candidate": {"const": "CS-D02-PRE-74"},
+    "exact_recommended_action": {"const": "AUTHORIZE_PRE74_OFFLINE_RESPONSE_CONTRACT_TRANSMISSION_GAP_DIAGNOSTIC_AND_SANITIZED_FAILURE_DETAIL_CAPTURE_DESIGN"},
+    "primary_repository": {"const": "digital-biosphere-architecture"},
+    "input_refs": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {"$ref": "#/$defs/ref"}
+    },
+    "preconditions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pre73_decided_and_executed",
+        "pre73_request_cap_consumed",
+        "pre73_response_schema_pass",
+        "pre73_qualifying_reviews",
+        "direct_json_parse_pass",
+        "exact_schema_failure_path_known",
+        "contract_transmission_gap_proven",
+        "gap_proven_as_exact_failure_cause",
+        "live_retry_allowed"
+      ],
+      "properties": {
+        "pre73_decided_and_executed": {"const": true},
+        "pre73_request_cap_consumed": {"const": true},
+        "pre73_response_schema_pass": {"const": "0/2"},
+        "pre73_qualifying_reviews": {"const": "0/2"},
+        "direct_json_parse_pass": {"const": "2/2"},
+        "exact_schema_failure_path_known": {"const": false},
+        "contract_transmission_gap_proven": {"const": true},
+        "gap_proven_as_exact_failure_cause": {"const": false},
+        "live_retry_allowed": {"const": false}
+      }
+    },
+    "authorized_offline_outputs": {
+      "const": [
+        "RESPONSE_CONTRACT_TRANSMISSION_MAP",
+        "SANITIZED_FAILURE_DETAIL_CAPTURE_CONTRACT",
+        "SYNTHETIC_VALIDATION_FAILURE_FIXTURES",
+        "OFFLINE_DIAGNOSTIC_RESULT",
+        "EXECUTION_RECEIPT"
+      ]
+    },
+    "failure_capture_contract": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "allowed_fields",
+        "forbidden_fields",
+        "phase_flags_recorded_before_next_gate",
+        "path_tokens_allow_string_and_integer_only",
+        "validator_allowlist_required",
+        "raw_value_persistence_allowed"
+      ],
+      "properties": {
+        "allowed_fields": {
+          "const": [
+            "phase",
+            "error_class",
+            "instance_path",
+            "schema_path",
+            "validator",
+            "offending_value_type",
+            "offending_value_length"
+          ]
+        },
+        "forbidden_fields": {
+          "const": [
+            "error_message",
+            "offending_value",
+            "assistant_content",
+            "provider_envelope",
+            "request_payload",
+            "source_package",
+            "credential_value",
+            "authorization_header"
+          ]
+        },
+        "phase_flags_recorded_before_next_gate": {"const": true},
+        "path_tokens_allow_string_and_integer_only": {"const": true},
+        "validator_allowlist_required": {"const": true},
+        "raw_value_persistence_allowed": {"const": false}
+      }
+    },
+    "offline_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "input_hashes_required",
+        "transmission_coverage_groups_required",
+        "synthetic_cases_minimum",
+        "valid_failure_details_schema_pass_required",
+        "forbidden_field_mutations_rejected_required",
+        "raw_value_leakage_cases_rejected_required"
+      ],
+      "properties": {
+        "input_hashes_required": {"const": "6/6"},
+        "transmission_coverage_groups_required": {"const": "3/3"},
+        "synthetic_cases_minimum": {"const": 12},
+        "valid_failure_details_schema_pass_required": {"const": true},
+        "forbidden_field_mutations_rejected_required": {"const": true},
+        "raw_value_leakage_cases_rejected_required": {"const": true}
+      }
+    },
+    "execution_caps": {
+      "type": "object",
+      "minProperties": 10,
+      "additionalProperties": {"const": 0}
+    },
+    "stop_conditions": {
+      "type": "array",
+      "minItems": 9,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 15}
+    },
+    "truth_boundaries": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 15}
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 10,
+      "additionalProperties": {"const": false}
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 20},
+        "sha256": {"pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}

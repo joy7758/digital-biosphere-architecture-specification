@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/pre74/pre74-contract-transmission-coverage-observation.schema.v0.1.json",
+  "title": "TITMAS PRE-74 Contract Transmission Coverage Observation v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "observed_at",
+    "source_refs",
+    "sessions_checked",
+    "coverage",
+    "diagnosis",
+    "failure_capture_gap",
+    "executed_counts",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {"const": "./pre74-contract-transmission-coverage-observation.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CS-D02-PRE74-CONTRACT-TRANSMISSION-COVERAGE-OBSERVATION-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "PASS_CONTRACT_TRANSMISSION_GAP_PROVEN_CAUSALITY_NOT_PROVEN"},
+    "observed_at": {"const": "2026-07-27"},
+    "source_refs": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "items": {"$ref": "#/$defs/ref"}
+    },
+    "sessions_checked": {"const": ["PRE73-QF-SECURITY-01", "PRE73-QWEN-SECURITY-02"]},
+    "coverage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "response_schema_file_in_review_inputs",
+        "response_schema_serialized_in_system_or_user_message",
+        "response_contract_version_mentions_per_session",
+        "response_top_level_required_keys",
+        "response_top_level_exact_keys_present",
+        "response_top_level_exact_keys_missing",
+        "question_assessment_required_keys",
+        "question_assessment_exact_keys_present",
+        "question_assessment_exact_keys_missing",
+        "explicit_non_claim_required_keys",
+        "explicit_non_claim_exact_keys_present",
+        "explicit_non_claim_exact_keys_missing",
+        "schema_structure_markers_present"
+      ],
+      "properties": {
+        "response_schema_file_in_review_inputs": {"const": false},
+        "response_schema_serialized_in_system_or_user_message": {"const": false},
+        "response_contract_version_mentions_per_session": {"const": 2},
+        "response_top_level_required_keys": {"const": 10},
+        "response_top_level_exact_keys_present": {"const": 6},
+        "response_top_level_exact_keys_missing": {"const": ["verdict", "summary", "question_assessments", "cross_cutting_findings"]},
+        "question_assessment_required_keys": {"const": 7},
+        "question_assessment_exact_keys_present": {"const": 1},
+        "question_assessment_exact_keys_missing": {"const": ["assessment", "severity", "finding", "affected_symbols", "proposed_tests", "limitations"]},
+        "explicit_non_claim_required_keys": {"const": 8},
+        "explicit_non_claim_exact_keys_present": {"const": 6},
+        "explicit_non_claim_exact_keys_missing": {"const": ["conformance_pass", "release_authorized"]},
+        "schema_structure_markers_present": {"const": "0/3"}
+      }
+    },
+    "diagnosis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "request_contract_transmission_gap_proven",
+        "prompt_named_unserialized_contract_version",
+        "both_sessions_shared_same_gap",
+        "gap_consistent_with_schema_failure",
+        "gap_proven_as_exact_schema_failure_cause",
+        "model_internal_causality_proven",
+        "exact_rejected_field_or_path_known"
+      ],
+      "properties": {
+        "request_contract_transmission_gap_proven": {"const": true},
+        "prompt_named_unserialized_contract_version": {"const": true},
+        "both_sessions_shared_same_gap": {"const": true},
+        "gap_consistent_with_schema_failure": {"const": true},
+        "gap_proven_as_exact_schema_failure_cause": {"const": false},
+        "model_internal_causality_proven": {"const": false},
+        "exact_rejected_field_or_path_known": {"const": false}
+      }
+    },
+    "failure_capture_gap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "direct_json_phase_reached",
+        "schema_validation_phase_failed",
+        "sanitized_validation_path_persisted",
+        "sanitized_validator_keyword_persisted",
+        "offending_value_type_persisted",
+        "raw_response_recovery_allowed"
+      ],
+      "properties": {
+        "direct_json_phase_reached": {"const": "2/2"},
+        "schema_validation_phase_failed": {"const": "2/2"},
+        "sanitized_validation_path_persisted": {"const": "0/2"},
+        "sanitized_validator_keyword_persisted": {"const": "0/2"},
+        "offending_value_type_persisted": {"const": "0/2"},
+        "raw_response_recovery_allowed": {"const": false}
+      }
+    },
+    "executed_counts": {
+      "type": "object",
+      "minProperties": 7,
+      "additionalProperties": {"const": 0}
+    },
+    "effects": {
+      "type": "object",
+      "minProperties": 8,
+      "additionalProperties": {"const": false}
+    }
+  },
+  "$defs": {
+    "ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["path", "sha256"],
+      "properties": {
+        "path": {"type": "string", "minLength": 20},
+        "sha256": {"pattern": "^[0-9a-f]{64}$"}
+      }
+    }
+  }
+}
