@@ -1,0 +1,255 @@
+{
+  "$schema": "./pre68-security-and-platform-scope.schema.v0.1.json",
+  "document_id": "TITMAS-PRE68-P0-SECURITY-AND-PLATFORM-SCOPE-0.1",
+  "version": "0.1.0",
+  "status": "RECOMMENDATION_SCOPE_ONLY_DECISION_REQUIRED",
+  "prepared_at": "2026-07-27T12:39:34+08:00",
+  "target": {
+    "repository": "joy7758/titmas-integrations",
+    "branch": "codex/rb0-governance-baseline",
+    "commit": "0030077f29c37145a306b72e7083345eb76b504a",
+    "main_commit": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8",
+    "commit_drift_allowed": false
+  },
+  "agent_recommendation_gate": {
+    "prior_review_reference": "commercialization-standards-p0-resolver-multi-provider-agent-review/PRE-65-P0-RESOLVER-MULTI-PROVIDER-AGENT-REVIEW-RESULT-v0.1.md",
+    "prior_review_result": "2_OF_2_REVISE_CONDITIONAL",
+    "current_recommendation": "CONDITIONALLY_RECOMMENDED",
+    "recommended_as": "DEVELOPMENT_REFERENCE_CANDIDATE_FOR_BOUNDED_SECURITY_AND_PLATFORM_REVIEW",
+    "not_recommended_as": "PRODUCTION_SAFE_CROSS_PLATFORM_PROVIDER_SUPPORTED_OR_STANDARD_READY",
+    "correction_evidence": "commercialization-standards-p0-executable-test-and-implementation/PRE-67-P0-EXECUTABLE-TEST-AND-IMPLEMENTATION-RESULT-v0.1.md",
+    "remaining_reason_not_to_recommend": [
+      "FORMAL_HUMAN_SECURITY_REVIEW_NOT_ASSIGNED",
+      "LINUX_EXECUTION_NOT_OBSERVED",
+      "WINDOWS_UNSUPPORTED",
+      "NATIVE_THREAD_AND_EXTENSION_FORK_SAFETY_NOT_ESTABLISHED",
+      "MACOS_HIGH_LEVEL_API_FORK_SAFETY_NOT_ESTABLISHED",
+      "TOTAL_WALL_CLOCK_UPPER_BOUND_NOT_PROVEN",
+      "REAL_NETWORK_PATH_NOT_VALIDATED",
+      "P1_TCP_AND_P2_TLS_NOT_IMPLEMENTED",
+      "PROVIDER_SUPPORT_AND_CONFORMANCE_NOT_PROVEN",
+      "CONTRACT_NOT_ADOPTED_AS_STANDARD"
+    ]
+  },
+  "exact_recommended_action": "AUTHORIZE_TWO_PUBLIC_SAFE_AGENT_ASSISTED_STATIC_REVIEWS_AND_TWO_PINNED_NETWORK_DISABLED_LINUX_X86_64_VALIDATIONS_WITH_FORMAL_HUMAN_SECURITY_REVIEW_REMAINING_SEPARATE",
+  "review_inputs": [
+    {
+      "path": "src/titmas_integrations/p0_resolver.py",
+      "sha256": "8818f11020ceac56db17d738d800f1d7ab3fd16fd3361cc46a8b1ab6a7cec702",
+      "classification": "PUBLIC_SAFE_TARGET_INPUT"
+    },
+    {
+      "path": "src/titmas_integrations/_p0_resolver_worker.py",
+      "sha256": "d28cd2f69d444cb60c41ed56f5945386fbbb02f5671ea7273199caba9183eb11",
+      "classification": "PUBLIC_SAFE_TARGET_INPUT"
+    },
+    {
+      "path": "src/titmas_integrations/data/global-unicast-destination-policy.v1.json",
+      "sha256": "945d73ab20026b3bdd15b225d2c37280a2e0efd2f68d7dc597c7674eeb8abba7",
+      "classification": "PUBLIC_SAFE_TARGET_INPUT"
+    },
+    {
+      "path": "tests/test_p0_resolver_contract.py",
+      "sha256": "2119610001928b1e4ca282bd8048e99e6796dca542fc0bedf33c0d57a9593228",
+      "classification": "PUBLIC_SAFE_TARGET_INPUT"
+    },
+    {
+      "path": "tests/test_p0_resolver_deadline.py",
+      "sha256": "6ebbafd8f46c79d183574b848edcf61a5afcb507809f5c6d70b0681377b91e31",
+      "classification": "PUBLIC_SAFE_TARGET_INPUT"
+    },
+    {
+      "path": "tests/test_p0_resolver_security.py",
+      "sha256": "3c092da62c0c1d82ecbc8baa31782645c90d810a42547acbb1826d6b522e8156",
+      "classification": "PUBLIC_SAFE_TARGET_INPUT"
+    },
+    {
+      "path": "P0-IMPLEMENTATION-DECLARATION.v0.1.json",
+      "sha256": "960341e7623fa7109f4741447447bd142788c5cfdd2fa46f131979e06a67fe6c",
+      "classification": "PUBLIC_SAFE_TARGET_INPUT"
+    },
+    {
+      "path": "README.md",
+      "sha256": "74f97d564d6df7bc83b6c6f2fe32e33b4246a796018dfcd08692c31fcc68915d",
+      "classification": "PUBLIC_SAFE_TARGET_INPUT"
+    },
+    {
+      "path": "SECURITY.md",
+      "sha256": "43b1948f61f8a0cfac499912d6a846d46423f1bc2c05dfb5dc66cd46a85e388b",
+      "classification": "PUBLIC_SAFE_TARGET_INPUT"
+    },
+    {
+      "path": "AGENTS.md",
+      "sha256": "13fb9f3a67e2a43daab24c5ccd1862ca4fd17e1852a4c29f5827a7a661031e94",
+      "classification": "PUBLIC_SAFE_TARGET_INPUT"
+    }
+  ],
+  "review_lanes": {
+    "agent_assisted_static_review": {
+      "status": "CANDIDATE_REQUIRES_DECISION",
+      "sessions_max": 2,
+      "provider_paths_distinct": true,
+      "bindings": [
+        {
+          "provider": "BAIDU_QIANFAN",
+          "model": "ernie-4.5-turbo-20260402",
+          "role": "IMPLEMENTATION_SECURITY_REVIEWER_CANDIDATE"
+        },
+        {
+          "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+          "model": "qwen3.7-plus",
+          "role": "INDEPENDENT_SECURITY_REVIEWER_CANDIDATE"
+        }
+      ],
+      "output_is_formal_review": false
+    },
+    "automated_platform_validation": {
+      "status": "CANDIDATE_REQUIRES_DECISION",
+      "environment_count": 2,
+      "target_network_mode": "NONE",
+      "target_write_mode": "READ_ONLY"
+    },
+    "formal_human_security_review": {
+      "required": true,
+      "reviewer_ref": null,
+      "assigned": false,
+      "execution_authorized": false,
+      "completion_claim": false
+    }
+  },
+  "security_questions": [
+    "SR-001",
+    "SR-002",
+    "SR-003",
+    "SR-004",
+    "SR-005",
+    "SR-006",
+    "SR-007",
+    "SR-008",
+    "SR-009",
+    "SR-010",
+    "SR-011",
+    "SR-012",
+    "SR-013",
+    "SR-014",
+    "SR-015",
+    "SR-016"
+  ],
+  "platform_matrix": [
+    {
+      "environment_id": "PFM-OBSERVED-001",
+      "status": "PRE67_OBSERVED_REFERENCE_ONLY",
+      "os": "macOS-26.5.2",
+      "architecture": "arm64",
+      "python": "3.14.5",
+      "image": null,
+      "image_digest": null,
+      "network_mode": "NOT_APPLICABLE_EXISTING_OBSERVATION",
+      "source_mode": "EXISTING_TARGET_COMMIT",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -v",
+      "claim_scope": "EXISTING_PRE67_OBSERVATION_ONLY_NOT_A_PRE68_EXECUTION"
+    },
+    {
+      "environment_id": "PFM-LINUX-311",
+      "status": "CANDIDATE_REQUIRES_DECISION",
+      "os": "Debian-Bookworm-container",
+      "architecture": "linux-amd64",
+      "python": "3.11.15",
+      "image": "docker.io/library/python:3.11.15-slim-bookworm",
+      "image_digest": "sha256:28255a3ace7eb4c48bc1b57b90af29e1bc82b4fd6c60614a8e3dce61b87ff941",
+      "network_mode": "NONE",
+      "source_mode": "READ_ONLY_BIND_MOUNT_EXACT_COMMIT",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -v",
+      "claim_scope": "EXACT_LINUX_AMD64_CPYTHON_3_11_OBSERVATION_ONLY"
+    },
+    {
+      "environment_id": "PFM-LINUX-314",
+      "status": "CANDIDATE_REQUIRES_DECISION",
+      "os": "Debian-Bookworm-container",
+      "architecture": "linux-amd64",
+      "python": "3.14.6",
+      "image": "docker.io/library/python:3.14.6-slim-bookworm",
+      "image_digest": "sha256:f70215e5dbe2a47dee6d23f9c6d358bf3c148f59cce2fd165b61118e9d80f2bb",
+      "network_mode": "NONE",
+      "source_mode": "READ_ONLY_BIND_MOUNT_EXACT_COMMIT",
+      "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=src python3 -m unittest discover -s tests -v",
+      "claim_scope": "EXACT_LINUX_AMD64_CPYTHON_3_14_OBSERVATION_ONLY"
+    }
+  ],
+  "execution_order": [
+    "VERIFY_DBA_DECISION_AND_EXACT_TARGET_COMMIT",
+    "VERIFY_ALL_TEN_REVIEW_INPUT_HASHES",
+    "PULL_ONLY_TWO_PINNED_LINUX_AMD64_IMAGE_MANIFESTS",
+    "RUN_EXISTING_SUITE_IN_READ_ONLY_NETWORK_NONE_LINUX_311",
+    "RUN_EXISTING_SUITE_IN_READ_ONLY_NETWORK_NONE_LINUX_314",
+    "RUN_TWO_SEQUENTIAL_PUBLIC_SAFE_AGENT_ASSISTED_STATIC_REVIEWS",
+    "VALIDATE_DIRECT_RESPONSES_AND_RETAIN_ALL_FINDINGS",
+    "FORM_RESULT_PACKET_WITH_FORMAL_HUMAN_REVIEW_STILL_FALSE"
+  ],
+  "stop_conditions": [
+    "DECISION_MISSING_OR_SCOPE_MISMATCH",
+    "TARGET_COMMIT_OR_INPUT_HASH_DRIFT",
+    "IMAGE_DIGEST_OR_ARCHITECTURE_MISMATCH",
+    "CONTAINER_NETWORK_NOT_NONE",
+    "TARGET_SOURCE_NOT_READ_ONLY",
+    "ANY_REAL_DNS_TCP_TLS_OR_HTTP_FROM_TEST_SUBJECT",
+    "ANY_TEST_FAILURE_OR_UNEXPECTED_WARNING",
+    "ANY_CHILD_PROCESS_LEFT_UNREAPED",
+    "ANY_IPC_PAYLOAD_OVER_512_BYTES",
+    "ANY_HOSTNAME_ADDRESS_CREDENTIAL_OR_EXCEPTION_LEAK",
+    "ANY_AGENT_RESPONSE_NOT_DIRECT_JSON_OR_SCHEMA_VALID",
+    "ANY_MODEL_OR_PROVIDER_SUBSTITUTION",
+    "ANY_RETRY_FALLBACK_EXTRACTION_OR_REPAIR",
+    "ANY_AUTHORITY_PERMISSION_STANDARD_OR_RELEASE_OVERCLAIM"
+  ],
+  "authorization_limits": {
+    "target_repository_writes_max": 0,
+    "implementation_files_modified_max": 0,
+    "test_files_modified_max": 0,
+    "container_images_max": 2,
+    "agent_model_requests_max": 2,
+    "credential_values_recorded": false,
+    "target_real_dns_calls_max": 0,
+    "target_tcp_calls_max": 0,
+    "target_tls_handshakes_max": 0,
+    "target_http_requests_max": 0,
+    "p1_or_p2_execution_max": 0,
+    "provider_binding_actions_max": 0,
+    "release_actions_max": 0
+  },
+  "success_gates": {
+    "platform_gate": "BOTH_PINNED_LINUX_ENVIRONMENTS_92_OF_92_TESTS_AND_7_OF_7_REHEARSAL_PASS",
+    "agent_review_gate": "TWO_OF_TWO_DIRECT_SCHEMA_VALID_BOUNDARY_SAFE_RESPONSES_RETAINED_WITH_FINDINGS",
+    "formal_review_gate": "NAMED_HUMAN_REVIEWER_DECISION_REQUIRED_NOT_SATISFIED_BY_AGENT_OR_TEST_PASS",
+    "standard_gate": "SEPARATE_CONTRACT_ADOPTION_DECISION_REQUIRED"
+  },
+  "truth_boundaries": [
+    "AGENT_REVIEW_NE_FORMAL_HUMAN_SECURITY_REVIEW",
+    "PLATFORM_TEST_NE_SECURITY_APPROVAL",
+    "LINUX_AMD64_OBSERVATION_NE_ALL_LINUX_SUPPORT",
+    "TWO_PYTHON_VERSIONS_NE_SUPPORTED_VERSION_MATRIX",
+    "NETWORK_NONE_TEST_NE_REAL_NETWORK_CONFORMANCE",
+    "FORK_SINGLE_THREAD_CHECK_NE_NATIVE_THREAD_SAFETY_PROOF",
+    "MACOS_OBSERVATION_NE_MACOS_FORK_SAFETY_APPROVAL",
+    "IANA_POLICY_INPUT_NE_ROUTABILITY_TRUTH",
+    "P0_REFERENCE_NE_P1_TCP_OR_P2_TLS",
+    "RECOMMENDATION_NE_DECISION",
+    "DECISION_NE_EXECUTION",
+    "REFERENCE_IMPLEMENTATION_NE_STANDARD",
+    "TEST_PASS_NE_PROVIDER_SUPPORT",
+    "COMMIT_NE_RELEASE"
+  ],
+  "effects": {
+    "recommendation_created": true,
+    "decision_created": false,
+    "execution_authorized": false,
+    "review_executed": false,
+    "platform_validation_executed": false,
+    "formal_human_security_review_complete": false,
+    "target_changed": false,
+    "contract_adopted_as_standard": false,
+    "provider_supported": false,
+    "release_authorized": false,
+    "standard_ready": false
+  }
+}
