@@ -1,0 +1,115 @@
+{
+  "record_type": "TITMAS_PROSPECTIVE_EXACT_THREE_SCHEMA_R2_VALIDATION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-EXACT-THREE-SCHEMA-R2-VALIDATION",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_ONE_R2_VALIDATION_ONLY_IF_QUALIFYING_DECISION_REVIEW",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G11B-PR23-CE-SCHEMA-SELECTOR-CONTRACT-REMEDIATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "4be5fe7ccfcb6dda8048a7a3333fe76d3b98ba723c06dfea674c83fc305879ff",
+  "recommendation_review_reference": "TITMAS-CE-G11B-PR23-CE-SCHEMA-SELECTOR-CONTRACT-REMEDIATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "7301286a5fb1086390d21e6b69fc3f56a190131b103bf6371ea3e47ec21b5fd8",
+  "recommendation_commit": "4a58f0227aa3ee6724fb12bf347318872257ff55",
+  "recommendation_remote_verified": true,
+  "decision_quality_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-EXACT-THREE-SCHEMA-R2-VALIDATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "frozen_bindings": {
+    "canonical_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "candidate_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "candidate_patch_sha256": "61c6bffe91df1f3af4731ae3be721998f5e3c8c687ca05cfc4dac74cd07aa0a8",
+    "merge_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "r1_evidence_ref": "codex/ce-g11b-pr23-remediation-candidate-evidence",
+    "r1_evidence_commit": "d054b5cf3880904aba84816501b07358fcfb4c06",
+    "r2_evidence_ref": "codex/ce-g11b-pr23-remediation-candidate-evidence-r2",
+    "r2_evidence_ref_absent_required": true
+  },
+  "exact_ce_schema_contract": [
+    {
+      "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-run-request.schema.v0.1.json",
+      "sha256": "6a6e4ee89cc39085950737fcd4a8fc913d4b48a051508e1e1e1e02352e2b1d39"
+    },
+    {
+      "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-cross-version-result.schema.v0.1.json",
+      "sha256": "6c7f328f28c04c94a955f2b3642c5685590e3b556984d34db693fbef3ff1f15f"
+    },
+    {
+      "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.schema.v0.1.json",
+      "sha256": "1e6e4f379a689ae292359efdba2da72b45b55249f39c253e678d28aa8b6c3331"
+    }
+  ],
+  "validation_contract": {
+    "temporary_worktrees": 1,
+    "synthetic_validation_commits": 1,
+    "tracked_json_parse_and_duplicate_key_runs": 1,
+    "commercial_entry_schema_runs": 1,
+    "npm_ci_command": "NPM_CONFIG_OFFLINE=true npm ci --offline --ignore-scripts --no-audit --no-fund",
+    "npm_ci_attempts": 1,
+    "ordered_site_commands": [
+      "npm ls --depth=0 --json",
+      "npm test",
+      "npm run release:formal"
+    ],
+    "attempts_each": 1,
+    "ce_schema_selector": "EXACT_PATH_LIST_ONLY",
+    "ce_schema_hash_checks": "3/3",
+    "ce_schema_meta_validation_runs": 1,
+    "ce_schemas_meta_valid_expected": 3,
+    "ce_test_command": "PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis -p 'test_ce_g*.py'",
+    "ce_test_runs": 1,
+    "ce_tests_passed_expected": 49,
+    "network_fallbacks": 0,
+    "command_retries": 0,
+    "source_or_test_fixes": 0
+  },
+  "execution_sequence": [
+    "Require one qualifying exact qwen3.7-max Decision review and remotely match this Decision baseline.",
+    "Verify all frozen refs, merge tree, R1 evidence, exact Schema hashes and PR states; require R2 ref absent.",
+    "Create R2 locally from exact candidate, one synthetic merge-tree commit and one disposable worktree.",
+    "Run the full validation contract exactly once in order.",
+    "For CE Schema validation read only the three exact paths, verify all three hashes, then apply Draft202012Validator.check_schema.",
+    "Run exactly one CE test discovery requiring 49/49.",
+    "Reverify remote/tree/source integrity and persist PASS or FAIL only on R2 as one commit and one non-force push.",
+    "Stop before any PR, merge, release or deployment action."
+  ],
+  "qualification_contract": {
+    "required_verdict": "APPROVE",
+    "required_confidence_min": 0.9,
+    "blocking_findings_max": 0,
+    "required_corrections_max": 0,
+    "all_booleans_true_required": true
+  },
+  "exact_authorized_action": "After one qualifying exact qwen3.7-max Decision review and remote Decision baseline, execute one full R2 merge-tree validation for candidate e6a193f4bf0d48d65649077122f0ab262460daac plus canonical ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14 at merge tree 9171e554cfcbeaa02d5542c3a35cb729bca44185. Preserve R1 d054b5cf3880904aba84816501b07358fcfb4c06. Use only the three exact frozen CE Schema paths and hashes, retain full tracked-JSON coverage and require CE tests 49/49. Persist PASS or FAIL on new R2 ref codex/ce-g11b-pr23-remediation-candidate-evidence-r2 as one commit and one non-force push. Do not mutate PRs, merge, release, deploy or claim Standard Ready or commercial availability.",
+  "caps": {
+    "decision_model_requests": 1,
+    "decision_retries": 0,
+    "decision_fallbacks": 0,
+    "decision_commits": 1,
+    "decision_pushes": 1,
+    "r2_evidence_branches_created": 1,
+    "temporary_worktrees": 1,
+    "synthetic_validation_commits": 1,
+    "validation_command_retries": 0,
+    "r2_result_commits": 1,
+    "r2_pushes": 1,
+    "force_pushes": 0,
+    "source_fixes": 0,
+    "test_fixes": 0,
+    "pr_actions": 0,
+    "merges": 0,
+    "releases": 0,
+    "deployments": 0
+  },
+  "non_authorizations": {
+    "r1_mutation": false,
+    "candidate_mutation": false,
+    "canonical_mutation": false,
+    "pr_action": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "commercial_offering": false,
+    "truth_created": false,
+    "permission_created": false
+  }
+}
