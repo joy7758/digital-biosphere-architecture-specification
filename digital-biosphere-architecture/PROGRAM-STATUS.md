@@ -73,7 +73,10 @@ titmas_ce_g10a_run_request_created: true
 titmas_ce_g10a_trigger_event_committed: true
 titmas_ce_g10a_execution_completed: false
 titmas_public_entry_redeployment_admission_pass: false
-titmas_commercial_evaluation_next_gate: ce-g10a-single-workflow-run-observation-pending
+titmas_ce_g12_read_only_preflight_result: fail-closed-p02-current-target-mismatch
+titmas_ce_g12_actual_current_target: unknown-not-persisted
+titmas_ce_g12_current_target_diagnostic_recommendation_review: recommended-option-a
+titmas_commercial_evaluation_next_gate: ce-g12-current-target-classification-decision-required
 ---
 
 # Digital Biosphere Program Status Snapshot（数字生物圈项目群状态快照）
@@ -485,11 +488,28 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G12_RECOMMENDATION_REVIEW_MODEL=qwen3.7-max
 TITMAS_COMMERCIAL_EVALUATION_CE_G12_RECOMMENDATION_REVIEW_VERDICT=RECOMMENDED
 TITMAS_COMMERCIAL_EVALUATION_CE_G12_RECOMMENDATION_REVIEW_CONFIDENCE=0.95
 TITMAS_COMMERCIAL_EVALUATION_CE_G12_RECOMMENDATION_REVIEW_QUALIFYING=true
-TITMAS_COMMERCIAL_EVALUATION_CE_G12_PREFLIGHT_COMPLETE=false
-TITMAS_COMMERCIAL_EVALUATION_CE_G12_PREFLIGHT_AUTHORIZED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PREFLIGHT_DECISION_RECORDED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PREFLIGHT_AUTHORIZED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PREFLIGHT_EXECUTED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PREFLIGHT_COMPLETE=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PREFLIGHT_PASS=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PREFLIGHT_RESULT=FAIL_CLOSED_READ_ONLY_PREFLIGHT_REDEPLOYMENT_DECISION_NOT_AUTHORIZED
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PREFLIGHT_FAILURE_STAGE=P02_CURRENT_TARGET
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PREFLIGHT_SSH_SESSIONS=1/1
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PREFLIGHT_SERVER_WRITES=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PREFLIGHT_PUBLIC_REQUESTS=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_ACTUAL_CURRENT_TARGET=UNKNOWN_NOT_PERSISTED
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_DIAGNOSTIC_RECOMMENDATION_PREPARED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_DIAGNOSTIC_REVIEW_MODEL=qwen3.7-max
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_DIAGNOSTIC_REVIEW_VERDICT=RECOMMENDED
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_DIAGNOSTIC_REVIEW_CONFIDENCE=0.95
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_DIAGNOSTIC_REVIEW_QUALIFYING=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_CLASSIFICATION_DECISION_RECORDED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_CLASSIFICATION_EXECUTION_AUTHORIZED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_SECOND_SSH_AUTHORIZED=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G12_REDEPLOYMENT_AUTHORIZED=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G12_REDEPLOYMENT_EXECUTED=false
-TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE=PREPARE_CE_G12_READ_ONLY_PREFLIGHT_DECISION
+TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE=PREPARE_CE_G12_CURRENT_TARGET_CLASSIFICATION_DECISION
 TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE_AUTHORIZED=false
 SCOPED_LOCAL_DBOS_SAEE_CONFORMANCE_PASS=true
 FULL_END_TO_END_INTEGRATION_VERIFIED=false
@@ -856,7 +876,7 @@ Developer Preview v0.1 的历史发布结果 `PASS_WITH_DISCLOSED_LIMITATIONS` �
 | P0 Security and Platform Review Scope | `PRE75_EXECUTED_SECURITY_SUBTRACK_FROZEN` | PRE-75 已以独立 Decision 完成 Stage A：7/7 input、10/10 target、2/2 rendered requests/full Schema transmission、3/3 coverage、2/2 response session binding、16/16 negatives PASS；execution id 与 frozen PRE73 response id 分离。request/capture 仍为 Development candidate；network/model/credential/raw persistence/target actions=0。为避免偏离主线，PRE-76 不再作为当前下一步 |
 | Commercial Evaluation Pack v0.2 | `AGENT_FIRST_RUN_VALIDATED_NOT_AVAILABLE_OFFERING` | 公开 wheel、5 类对象契约、只读 validator、机器清单、合成样例和 10 分钟 First Run 已收敛；clean run 最终 `PASS`，两次 harness 失败保留。Qwen 3 角色与 Qianfan DeepSeek 1 角色共 4/4 direct JSON/Schema valid、2 Provider、0 boundary failure，4/4 推荐离线评估且 4/4 拒绝生产采购。另观察 3 次公开入口瞬时传输失败；客户、合同、收入、SLA、生产与认证继续为 0/false |
 | CE-G11B Draft PR Integration Gate | `PR27_MERGED_POST_MERGE_VALIDATION_PASS` | 初次多路审查在 Lane C binding 失败关闭；独立 recovery 完成 Lane B adjudication、Lane C replacement、Lane D 与 synthesis，结果 `CLEAR`、blocking finding 0；PR #27 merge commit `c1d8931…`；隔离验证 JSON `1165/1165`、site `16/16`、CE `49/49` | 下一步只允许准备 CE-G12 correlated exact redeployment Recommendation；GitHub checks success、human review equivalence、release、deploy、Standard Ready 与 commercial offering 均保持 false |
-| CE-G12 Correlated Exact Redeployment Recommendation | `RECOMMENDED_OPTION_A_PREFLIGHT_FIRST_EXECUTION_NOT_AUTHORIZED` | potential agent customer `CONDITIONALLY_RECOMMENDED`；exact `qwen3.7-max` review `RECOMMENDED`、confidence `0.95`、0 blocker/correction；固定 stable `7da4bcf…`、proposed `f810796…`、archive、CE-G11 binding/correlator、two-vantage 和 exact rollback | 下一步只准备 CE-G12-P read-only preflight Decision；SSH、server read/write、network execution、redeployment、release、Standard Ready、Production、SLA 与 offering 均保持 false |
+| CE-G12 Preflight and Current-target Classification Gate | `PREFLIGHT_FAIL_CLOSED_P02_CURRENT_TARGET_MISMATCH_CLASSIFICATION_DECISION_REQUIRED` | CE-G12-P 已消费唯一 SSH：`P02_CURRENT_TARGET` mismatch 后失败关闭；server writes/public requests/retries 均为 0；failure handler 未持久化实际 target，因此 `ACTUAL_CURRENT_TARGET=UNKNOWN_NOT_PERSISTED`。最小分类诊断 Recommendation 经 exact `qwen3.7-max` 审查为 `RECOMMENDED`、confidence `0.95`、0 blocker/correction | 下一步只准备独立 current-target classification Decision；第二次 SSH、server read/write、repair、rollback、redeployment、release、Standard Ready、Production、SLA 与 offering 均保持 false |
 | Trusted Multi-Agent Protocol | `ARCHITECTURE_BASELINE_DEFINED_NOT_IMPLEMENTED` | 六类协议对象、四个可信边界和 Protocol→SDK→Reference Implementation→Adapter 路线已定义；未创建 API、SDK 或 Runtime |
 | OpenTelemetry Observability Profile | `DQ_018_SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_HUMAN_SECURITY_REVIEW_READY_NOT_APPROVED` | DQ-022–025 exact references 已采纳；当前 DBOS source 的 P001—P005、`HSR-PRE-001/002` 负例与供应链检查已在原生 Linux x86_64 完成并远端复验；未部署 Collector 或 endpoint |
 | OpenTelemetry Semantic Mapping and Conformance | `DQ_023_REFERENCE_ADOPTED_DQ_018_AUTHORIZED_SUBSET_32_OF_32_PASS` | pinned mapping 已进入 DBOS 离线参考实现；32/32 authorized cases 通过，14 个 DQ-020 cases blocked；不产生 Runtime compatibility 声明 |
