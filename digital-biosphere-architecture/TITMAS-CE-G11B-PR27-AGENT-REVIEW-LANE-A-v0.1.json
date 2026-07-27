@@ -1,0 +1,48 @@
+{
+  "observed_at": "2026-07-27T20:16:38Z",
+  "lane": "A",
+  "status": "QUALIFYING_DIRECT_JSON_RESULT",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "request_count": 1,
+  "retries": 0,
+  "fallbacks": 0,
+  "model_substitutions": 0,
+  "json_extractions": 0,
+  "json_repairs": 0,
+  "provider_request_id": "chatcmpl-3972cc9e-dbe6-4e0a-862a-58f905d6dfbd",
+  "finish_reason": "stop",
+  "prompt_tokens": 16732,
+  "completion_tokens": 4004,
+  "provider_direct_content_sha256": "b389547d3cca7966ab5018895856b0b1f1068a65d58114d1d3368577660eaa3d",
+  "transport_valid": true,
+  "returned_model_exact": true,
+  "direct_json_valid": true,
+  "binding_valid": true,
+  "contract_valid": true,
+  "qualifying_lane": true,
+  "review": {
+    "lane_id": "A",
+    "verdict": "CLEAR",
+    "confidence": 0.95,
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "patch_sha256": "3c67cb59e0783fbb400c6fcfda4687167e695f9cab747515ad7bc8d78ffa9b99",
+    "assigned_files": [
+      ".github/workflows/titmas-ce-g11b-target-bound-cross-version.yml",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce_g11b_cross_version_runner.py",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/test_ce_g11b_cross_version_runner.py"
+    ],
+    "assigned_files_reviewed": [
+      ".github/workflows/titmas-ce-g11b-target-bound-cross-version.yml",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce_g11b_cross_version_runner.py",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/test_ce_g11b_cross_version_runner.py"
+    ],
+    "inventory_context_received": true,
+    "r2_boundary_understood": true,
+    "authority_boundaries_preserved": true,
+    "findings": [],
+    "rationale": "The workflow is strictly scoped to push events on a single branch and path, with read-only permissions and no secrets access. The runner validates frozen inputs, binding contracts, and Python versions before executing test suites in isolated subprocesses with allowlisted environments. All subprocess calls use argument arrays without shell interpolation. Test coverage validates failure modes, environment sanitization, and authority boundaries. The implementation demonstrates deterministic fail-closed behavior with no evidence of shell injection, privilege escalation, or unauthorized side effects."
+  },
+  "terminal_failure_category": null
+}

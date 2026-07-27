@@ -1,0 +1,104 @@
+{
+  "observed_at": "2026-07-27T20:16:38Z",
+  "lane": "B",
+  "status": "QUALIFYING_DIRECT_JSON_RESULT",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "request_count": 1,
+  "retries": 0,
+  "fallbacks": 0,
+  "model_substitutions": 0,
+  "json_extractions": 0,
+  "json_repairs": 0,
+  "provider_request_id": "chatcmpl-51f52b20-257f-4bdb-858c-6dcf71f7efe8",
+  "finish_reason": "stop",
+  "prompt_tokens": 22809,
+  "completion_tokens": 6583,
+  "provider_direct_content_sha256": "677cc76f64dff853aca4500fe1337c7fc25fd8dbbfba23b4fa8950d9c3dc2895",
+  "transport_valid": true,
+  "returned_model_exact": true,
+  "direct_json_valid": true,
+  "binding_valid": true,
+  "contract_valid": true,
+  "qualifying_lane": true,
+  "review": {
+    "lane_id": "B",
+    "verdict": "REMEDIATION_REQUIRED",
+    "confidence": 0.85,
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "patch_sha256": "7f721c2605a1508a76884f3e2b76aafd85efd6cea56d71d8a4dca0d0f44c40a6",
+    "assigned_files": [
+      "digital-biosphere-architecture/TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+      "digital-biosphere-architecture/architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-cross-version-result.schema.v0.1.json",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.schema.v0.1.json",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.v0.1.json",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-result.schema.v0.1.json",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-result.v0.1.json",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-run-request.schema.v0.1.json"
+    ],
+    "assigned_files_reviewed": [
+      "digital-biosphere-architecture/TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+      "digital-biosphere-architecture/architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-cross-version-result.schema.v0.1.json",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.schema.v0.1.json",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.v0.1.json",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-result.schema.v0.1.json",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-result.v0.1.json",
+      "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-run-request.schema.v0.1.json"
+    ],
+    "inventory_context_received": true,
+    "r2_boundary_understood": true,
+    "authority_boundaries_preserved": true,
+    "findings": [
+      {
+        "finding_id": "B-001",
+        "severity": "HIGH",
+        "path": "digital-biosphere-architecture/TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+        "location": "current_state_summary.next_action_authorized",
+        "claim": "Entry object asserts next_action_authorized=true while decision_ready=false and standard_ready=false, creating ambiguous authority semantics.",
+        "evidence": "Line 35 sets next_action_authorized to true, but line 36 shows standard_ready=false and line 2139 shows decision_ready=false. The schema enforces these exact values via const constraints.",
+        "required_correction": "Clarify governance contract: either next_action_authorized must be false when decision_ready=false, or document explicit exception allowing authorization without decision readiness."
+      },
+      {
+        "finding_id": "B-002",
+        "severity": "MEDIUM",
+        "path": "digital-biosphere-architecture/architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
+        "location": "current_state_summary.next_action_authorized const constraint",
+        "claim": "Schema hardcodes next_action_authorized=true as const while decision_ready=false is also const, creating contradictory governance state.",
+        "evidence": "Line 142 enforces const true for next_action_authorized, line 7793 enforces const false for decision_ready. No conditional logic or documentation explains this state combination.",
+        "required_correction": "Add schema documentation explaining the semantic meaning of authorized=true with decision_ready=false, or revise const values to maintain consistent governance semantics."
+      },
+      {
+        "finding_id": "B-003",
+        "severity": "MEDIUM",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-r1-result.v0.1.json",
+        "location": "model_review.would_recommend_to_agent_customer",
+        "claim": "Result instance asserts would_recommend_to_agent_customer=true despite workflow_execution_authorized=false and phase_b_authorized=false, creating ambiguous recommendation semantics.",
+        "evidence": "Line 68 sets would_recommend_to_agent_customer to true, but lines 73-74 show both workflow_execution_authorized and phase_b_authorized are false. Schema enforces these exact values.",
+        "required_correction": "Document what 'recommend to agent customer' means when execution is not authorized, or align recommendation with authorization state."
+      },
+      {
+        "finding_id": "B-004",
+        "severity": "LOW",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-cross-version-result.schema.v0.1.json",
+        "location": "matrix_results.items.properties.error_class",
+        "claim": "Schema allows error_class to be string or null but provides no enum or pattern constraint for string values, reducing validation precision.",
+        "evidence": "Line 181 defines error_class as type ['string', 'null'] with no additional constraints. Other status fields use enum for precision.",
+        "required_correction": "Add enum constraint for error_class string values (e.g., ['TIMEOUT', 'NETWORK_ERROR', 'ASSERTION_FAILURE']) or document that free-form strings are intentional."
+      },
+      {
+        "finding_id": "B-005",
+        "severity": "LOW",
+        "path": "digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-run-request.schema.v0.1.json",
+        "location": "trigger.path const value",
+        "claim": "Trigger path references a specific result file path that may not exist or may be stale, creating potential selector precision issue.",
+        "evidence": "Line 68 hardcodes path to 'digital-biosphere-architecture/commercial-evaluation-controller-tls-diagnosis/ce-g11b-run-request.v0.1.json' but no such file appears in the assigned patch or inventory.",
+        "required_correction": "Verify the referenced path exists in the repository, or update to reference an actual file path that will trigger the workflow."
+      }
+    ],
+    "rationale": "Schema and data contract review reveals governance semantic ambiguity: the entry object and schema enforce next_action_authorized=true while decision_ready=false and standard_ready=false, creating unclear authority semantics. The phase-a-r1 result similarly asserts customer recommendation despite execution not being authorized. These contradictions require documentation or schema revision to clarify governance state transitions. Minor precision issues exist in error_class validation and trigger path references. All schemas use additionalProperties=false appropriately and maintain structural integrity, but the semantic contradictions in authorization states require remediation before merge."
+  },
+  "terminal_failure_category": null
+}

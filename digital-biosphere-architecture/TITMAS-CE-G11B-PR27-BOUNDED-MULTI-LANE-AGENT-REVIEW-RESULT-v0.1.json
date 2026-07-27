@@ -1,0 +1,161 @@
+{
+  "result_id": "TITMAS-CE-G11B-PR27-BOUNDED-MULTI-LANE-AGENT-REVIEW-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T20:16:38Z",
+  "status": "FAIL_CLOSED_LANE_C_BINDING_FAILURE_LANE_D_AND_SYNTHESIS_NOT_EXECUTED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-BOUNDED-MULTI-LANE-REVIEW-DECISION-RECORD.v0.1.json",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-BOUNDED-MULTI-LANE-REVIEW-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_commit": "c98927ebc3fc603b48680d2bafa6ad3b613aff42",
+  "decision_remote_baseline_verified": true,
+  "report_reference": "TITMAS-CE-G11B-PR27-BOUNDED-MULTI-LANE-AGENT-REVIEW-REPORT-v0.1.md",
+  "report_sha256": "1beaadb6bc0ba76a2dabdf97b545b590617d0d2c00a07bf85357330e961daed8",
+  "frozen_binding": {
+    "pr_number": 27,
+    "pr_state": "OPEN",
+    "pr_draft": true,
+    "base_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_commit": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "merge_base": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "three_dot_patch_sha256": "e031466cbb422e707bfae8ba5751c5f0bd076c6628a518124e36d353f3e92451",
+    "three_dot_changed_files": 100,
+    "paths_assigned_once": 100,
+    "unassigned_paths": 0,
+    "duplicate_assignments": 0,
+    "r2_merge_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "r2_evidence_commit": "27bc3b6e586a2259d17152a2022a85d2dd69107b"
+  },
+  "lane_results": {
+    "A": {
+      "reference": "TITMAS-CE-G11B-PR27-AGENT-REVIEW-LANE-A-v0.1.json",
+      "sha256": "5e4caccc79e0a445b3443e4085fd65e54d9ab3d25b9558b9e538099063d6abbb",
+      "role": "EXECUTION_AND_WORKFLOW",
+      "files": 3,
+      "transport_valid": true,
+      "returned_model_exact": true,
+      "direct_json_valid": true,
+      "binding_valid": true,
+      "contract_valid": true,
+      "qualifying_lane": true,
+      "verdict": "CLEAR",
+      "findings": 0
+    },
+    "B": {
+      "reference": "TITMAS-CE-G11B-PR27-AGENT-REVIEW-LANE-B-v0.1.json",
+      "sha256": "d12c332f31976efb74b73fef996930b096c4720d7affc81039ea719f6db67d88",
+      "role": "SCHEMA_AND_DATA_CONTRACT",
+      "files": 8,
+      "transport_valid": true,
+      "returned_model_exact": true,
+      "direct_json_valid": true,
+      "binding_valid": true,
+      "contract_valid": true,
+      "qualifying_lane": true,
+      "verdict": "REMEDIATION_REQUIRED",
+      "findings": 5,
+      "finding_severity_counts": {
+        "BLOCKER": 0,
+        "HIGH": 1,
+        "MEDIUM": 2,
+        "LOW": 2
+      }
+    },
+    "C": {
+      "reference": "TITMAS-CE-G11B-PR27-AGENT-REVIEW-LANE-C-FAILURE-v0.1.json",
+      "sha256": "2fcfdca4cd2eda1287bf1b6108338ba749bcaec707fb87b68c5933037c1bcedd",
+      "role": "PUBLIC_AND_DEVELOPER_SURFACE",
+      "files": 6,
+      "transport_valid": true,
+      "returned_model_exact": true,
+      "direct_json_valid": true,
+      "binding_valid": false,
+      "contract_valid": false,
+      "qualifying_lane": false,
+      "verdict": null,
+      "findings": null,
+      "terminal_failure_category": "LANE_RESPONSE_BINDING_FAILURE"
+    },
+    "D": {
+      "reference": null,
+      "role": "GOVERNANCE_AND_AUTHORITY",
+      "files": 83,
+      "request_executed": false,
+      "not_executed_reason": "Lane C failed the frozen response-binding contract and the Decision requires immediate fail-closed termination."
+    }
+  },
+  "synthesis": {
+    "authorized_cap": 1,
+    "requests_executed": 0,
+    "not_executed_reason": "The four qualifying direct lane results required by the synthesis contract do not exist.",
+    "result": "NOT_EXECUTED"
+  },
+  "unadjudicated_lane_b_findings": {
+    "finding_ids": [
+      "B-001",
+      "B-002",
+      "B-003",
+      "B-004",
+      "B-005"
+    ],
+    "model_findings_are_truth": false,
+    "model_findings_are_approved_corrections": false,
+    "adjudication_completed": false,
+    "notes": [
+      "No Lane B finding was deleted, accepted as repository truth, downgraded, or converted into a source correction.",
+      "The complete-repository existence claim in B-005 was inferred from a changed-file inventory and requires independent repository-aware adjudication.",
+      "Recommendation, next-action authorization, Decision readiness, execution authorization, Standard readiness, and commercial availability remain distinct states."
+    ]
+  },
+  "local_validation": {
+    "new_json_artifacts_parsed": 4,
+    "new_json_artifacts_expected": 4,
+    "new_json_duplicate_keys": 0,
+    "branch_json_files_scanned": 1210,
+    "branch_json_duplicate_keys": 1,
+    "branch_wide_json_duplicate_free": false,
+    "pre_existing_duplicate": {
+      "path": "digital-biosphere-architecture/TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR23-FINDING-ADJUDICATION-DECISION-RECORD.v0.1.json",
+      "key": "supplemental_findings",
+      "first_occurrence_line": 61,
+      "second_occurrence_line": 86,
+      "present_at_decision_commit": true,
+      "modified_by_this_result": false
+    }
+  },
+  "caps_consumed": {
+    "lane_patch_generations": 4,
+    "lane_model_requests": 3,
+    "lane_model_requests_remaining_but_prohibited_after_failure": 1,
+    "synthesis_model_requests": 0,
+    "total_model_requests": 3,
+    "retries": 0,
+    "fallbacks": 0,
+    "model_substitutions": 0,
+    "json_extractions": 0,
+    "json_repairs": 0,
+    "github_review_submissions": 0,
+    "github_comments": 0,
+    "reviewer_requests": 0,
+    "pr_mutations": 0,
+    "source_changes": 0,
+    "merges": 0,
+    "releases": 0,
+    "deployments": 0
+  },
+  "effects": {
+    "agent_review_complete": false,
+    "agent_review_pass": false,
+    "github_review_approval": false,
+    "pr27_ready_for_merge": false,
+    "merge_authorization": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_PR27_LANE_C_BINDING_FAILURE_DIAGNOSTIC_AND_LANE_B_FINDING_ADJUDICATION_RECOMMENDATION",
+    "authorized": false
+  }
+}
