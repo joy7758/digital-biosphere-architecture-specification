@@ -519,6 +519,13 @@ R3 Decision，以 raw+realpath 双记录修正前置检查，不改变诊断命�
 及其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
 得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction；只允许建立新的
 R4 Decision，要求一次 offline/ignore-scripts 安装后完成 npm/site/static/CE 全部验证。
+[R4 Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-DECISION-RECORD.v0.1.json)
+及其 [write-ahead qwen3.7-max Decision review](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-SITE-CWD-OFFLINE-ACTUAL-INSTALL-R4-QWEN-DECISION-REVIEW-v0.1.json)
+得到 `APPROVE`、confidence `0.95`、0 blocker/correction。远端 Decision baseline
+核验后，只允许在 disposable merge-tree worktree 的真实 site cwd 执行一次
+offline/ignore-scripts `npm ci`，成功后各执行一次 `npm ls`、site tests、
+`verify:static`、3 个 Schema meta-validation 和精确 49 个 CE tests。PR mutation、
+workflow、merge、部署和网站源码修改仍为 0／未授权。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
