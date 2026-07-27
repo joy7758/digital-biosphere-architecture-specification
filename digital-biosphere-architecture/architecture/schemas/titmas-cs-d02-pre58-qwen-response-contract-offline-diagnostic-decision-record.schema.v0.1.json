@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-d02-pre58-qwen-response-contract-offline-diagnostic-decision-record.schema.v0.1.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "standing_directive_eligibility",
+    "scope",
+    "effects_before_execution",
+    "next_gate",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre58-qwen-response-contract-offline-diagnostic-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-58-QWEN-RESPONSE-CONTRACT-OFFLINE-DIAGNOSTIC-DECISION-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {
+      "const": "QWEN_RESPONSE_CONTRACT_OFFLINE_DIAGNOSTIC_AUTHORIZED_NOT_EXECUTED"
+    },
+    "decision_id": {"const": "CS-D02-PRE-58"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-58-QWEN-RESPONSE-CONTRACT-OFFLINE-DIAGNOSTIC-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "2922effb9b8236277d34fd6c9038fe449ba236ad76dcbc445bf91b1bc186a77a"
+    },
+    "recommendation_commit": {
+      "const": "41558cc53c78e4f844747c3772755ec4e6acc50b"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_PRE57_RESPONSE_ENUM_OFFLINE_DIAGNOSTIC"
+    },
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "Codex"},
+    "standing_directive_eligibility": {
+      "type": "object",
+      "minProperties": 12,
+      "additionalProperties": {"const": true}
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "input_commit",
+        "output_files",
+        "provider_network_requests_max",
+        "live_model_requests_max",
+        "credential_reads_max",
+        "source_mutations_max",
+        "external_repository_writes_max"
+      ],
+      "properties": {
+        "primary_repository": {"const": "digital-biosphere-architecture"},
+        "input_commit": {
+          "const": "41558cc53c78e4f844747c3772755ec4e6acc50b"
+        },
+        "output_files": {"const": 8},
+        "provider_network_requests_max": {"const": 0},
+        "live_model_requests_max": {"const": 0},
+        "credential_reads_max": {"const": 0},
+        "source_mutations_max": {"const": 0},
+        "external_repository_writes_max": {"const": 0}
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "minProperties": 15,
+      "additionalProperties": {"const": false}
+    },
+    "next_gate": {
+      "const": "CREATE_VALIDATE_AND_REMOTE_FREEZE_EXACT_EIGHT_FILE_PRE58_PACKET"
+    },
+    "result": {"const": "NOT_EXECUTED"}
+  }
+}
