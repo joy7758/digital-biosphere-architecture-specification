@@ -107,8 +107,21 @@
     },
     "pass_rule": {
       "type": "object",
-      "minProperties": 5,
-      "additionalProperties": {"const": true}
+      "additionalProperties": false,
+      "required": [
+        "http_2xx",
+        "outer_json_object",
+        "data_array",
+        "model_id_count_min",
+        "secret_scan_pass"
+      ],
+      "properties": {
+        "http_2xx": {"const": true},
+        "outer_json_object": {"const": true},
+        "data_array": {"const": true},
+        "model_id_count_min": {"const": 1},
+        "secret_scan_pass": {"const": true}
+      }
     },
     "interpretation": {
       "type": "object",
