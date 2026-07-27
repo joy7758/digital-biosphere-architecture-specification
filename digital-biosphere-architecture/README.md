@@ -394,8 +394,11 @@ remediation，不创建 live binding。remote matrix、服务器访问和重部�
 测试、one-run cap 和 fail-closed aggregate。全文经 `qwen3.7-max` 主审，得到
 `RECOMMENDED`、愿意向智能体客户推荐、置信度 `0.98`、0 blocker/correction。
 `qwen3.8-max-preview` 的同范围请求返回 HTTP 400，未形成有效审查，不计入认可。
-Recommendation 不授权 workflow、run request、server access 或 redeployment；下一步只
-进入 CE-G11B Phase A Decision review。
+Recommendation 本身不授权 workflow、run request、server access 或 redeployment。
+[CE-G11B Phase A Decision](TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-DECISION-RECORD.v0.1.json)
+已依据 `TITMAS-CS-STANDING-001` 授权 component preparation only；`qwen3.7-max`
+Decision quality review 为 `APPROVE`、置信度 `0.99`。当前仍不得创建有效 run request
+或执行 workflow。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

@@ -2669,8 +2669,12 @@ CE_G11B_AGENT_OPTION=A
 CE_G11B_WOULD_RECOMMEND_TO_AGENT_CUSTOMER=true
 CE_G11B_AGENT_CONFIDENCE=0.98
 CE_G11B_MAX_REVIEWS_PASS=1/2
-CE_G11B_DECISION_RECORDED=false
-CE_G11B_PHASE_A_AUTHORIZED=false
+CE_G11B_DECISION_REVIEW_MODEL=qwen3.7-max
+CE_G11B_DECISION_REVIEW_VERDICT=APPROVE
+CE_G11B_DECISION_REVIEW_CONFIDENCE=0.99
+CE_G11B_DECISION_RECORDED=true
+CE_G11B_PHASE_A_AUTHORIZED=true
+CE_G11B_PHASE_A_COMPLETED=false
 CE_G11B_WORKFLOW_CREATED=false
 CE_G11B_WORKFLOW_RUNS=0
 ```
@@ -2683,9 +2687,12 @@ candidate 固定 Python `3.10.20`、`3.11.15`、`3.12.13`、`3.13.14`、`3.14.6`
 `qwen3.8-max-preview` 请求返回 HTTP 400，未形成有效审查，不能作为更高模型认可。
 
 该建议采用 two-phase trigger separation：Phase A 只准备 workflow/runner/tests/Schema，
-不创建有效 run request；Phase B 需要后续独立 Decision。当前下一步只允许 review
-CE-G11B Phase A Decision，不执行 GitHub workflow、服务器访问、live binding 或
-redeployment。
+不创建有效 run request；Phase B 需要后续独立 Decision。
+[CE-G11B Phase A Decision](../TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-DECISION-RECORD.v0.1.json)
+已依据 `TITMAS-CS-STANDING-001` 授权 component preparation only；`qwen3.7-max`
+Decision review 为 `APPROVE`、置信度 `0.99`、0 blocker/correction。当前下一步只允许
+执行 Phase A local component preparation，不执行 GitHub workflow、服务器访问、
+live binding 或 redeployment。
 
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
@@ -2956,10 +2963,9 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Review CE-G11B Phase A Decision only**：exact matrix Recommendation 已通过
-   agent-customer gate；下一步只决定是否允许创建 workflow/runner/tests/Schema
-   components，不创建有效 run request，不执行 workflow、server access、live binding
-   或 redeployment；
+1. **Execute CE-G11B Phase A component preparation only**：exact Decision 已授权
+   workflow/runner/tests/Schema 和 local receipt/report；不得创建有效 run request，
+   不得执行 workflow、server access、live binding 或 redeployment；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -3168,7 +3174,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=REVIEW_CE_G11B_PHASE_A_DECISION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=EXECUTE_CE_G11B_PHASE_A_COMPONENT_PREPARATION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -3329,8 +3335,12 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G11B_WOULD_RECOMMEND_TO_AGENT_CUSTOMER=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_AGENT_CONFIDENCE=0.98
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_MAX_REVIEWS_PASS=1/2
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_QWEN_3_8_MAX_PREVIEW_REVIEW_PASS=false
-TITMAS_COMMERCIAL_EVALUATION_CE_G11B_DECISION_RECORDED=false
-TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_AUTHORIZED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_DECISION_REVIEW_MODEL=qwen3.7-max
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_DECISION_REVIEW_VERDICT=APPROVE
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_DECISION_REVIEW_CONFIDENCE=0.99
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_DECISION_RECORDED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_AUTHORIZED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_COMPLETED=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_WORKFLOW_CREATED=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_WORKFLOW_RUNS=0
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_REDEPLOYMENT_AUTHORIZED=false
