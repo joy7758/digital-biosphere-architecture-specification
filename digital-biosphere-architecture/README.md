@@ -488,6 +488,12 @@ prefix/cwd hypothesis。[Max review](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOS
 在请求前失败一次，不计 provider request；修正后的单次请求未产生可持久化的 sanitized
 result，因此 returned model、HTTP、verdict、blocker/correction 均为 unknown。不得把
 该尝试视为 APPROVE，也不得在同一 Decision 下重试或执行 dry-run。
+[Timestamp erratum](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-DECISION-REVIEW-FAILURE-TIMESTAMP-ERRATUM-v0.1.json)
+保留旧 failure artifact 但将其人工填写的 `observed_at` 标为 invalid，exact event time
+保持 `UNKNOWN`。[Review-retry Recommendation](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-DECISION-REVIEW-RETRY-RECOMMENDATION-v0.1.md)
+及其 [write-ahead qwen3.7-max review](TITMAS-CE-G11B-ZERO-INSTALL-NPM-CWD-DIAGNOSTIC-DECISION-REVIEW-RETRY-RECOMMENDATION-QWEN-REVIEW-v0.1.json)
+得到 `RECOMMENDED`、Option A、confidence `0.95`、0 blocker/correction；只允许建立新的
+R2 Decision candidate，dry-run、install 和 merge 仍未授权。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 
