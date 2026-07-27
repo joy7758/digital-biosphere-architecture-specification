@@ -146,6 +146,10 @@ cross_version_validation_execution_completed: false
 cross_version_validation_workflow_created: true
 cross_version_validation_local_tests_pass: 21-of-21-on-python-3.14-and-3.13
 cross_version_validation_workflow_dispatched: false
+cross_version_validation_dispatch_preflight: fail-closed-workflow-not-on-default-branch
+cross_version_validation_workflow_runs: 0
+branch_trigger_remediation_recommendation_prepared: true
+branch_trigger_remediation_agent_verdict: recommended
 public_entry_redeployment_admission_pass: false
 public_entry_redeployment_authorized: false
 developer_ecosystem_created: false
@@ -336,6 +340,13 @@ cross-version correlator validation recommendation。
 授权一次 manual-only、read-only、五版本离线 matrix；Decision 不等于执行。
 Workflow、sanitized runner 和 result Schema 已通过 Python 3.14/3.13 各 `21/21` 本地
 tests；workflow 只支持手动触发，当前尚未 dispatch。
+
+[CE-G10 dispatch preflight](TITMAS-CE-G10-DISPATCH-PREFLIGHT-REPORT-v0.1.md)证明：
+default branch 是 `main`，validation workflow 只存在于工作分支，GitHub manual dispatch
+endpoint 不可用；因此 dispatch/run/matrix 均为 0。没有为此合并 `main`。
+[CE-G10A Recommendation](TITMAS-CE-G10A-BRANCH-SCOPED-TRIGGER-REMEDIATION-RECOMMENDATION-v0.1.md)
+提出 exact branch/path run-request trigger；`qwen3.7-plus` 给出 `RECOMMENDED`、Option A、
+置信度 `0.95`。当前只等待独立 Decision。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

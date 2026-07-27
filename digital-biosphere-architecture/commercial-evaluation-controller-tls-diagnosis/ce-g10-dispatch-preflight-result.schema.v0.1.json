@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/titmas-ce-g10-dispatch-preflight-result.schema.v0.1.json",
+  "title": "TITMAS CE-G10 Dispatch Preflight Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "result_id",
+    "version",
+    "status",
+    "decision_reference",
+    "observed_at",
+    "repository",
+    "workflow",
+    "attempts",
+    "agent_review",
+    "current_truth",
+    "effects",
+    "next_gate"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./ce-g10-dispatch-preflight-result.schema.v0.1.json"
+    },
+    "result_id": {
+      "const": "TITMAS-CE-G10-DISPATCH-PREFLIGHT-RESULT-001"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {
+      "const": "FAIL_CLOSED_WORKFLOW_NOT_ON_DEFAULT_BRANCH_NO_DISPATCH"
+    },
+    "decision_reference": {
+      "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G10"
+    },
+    "observed_at": {"type": "string", "format": "date-time"},
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "default_branch",
+        "validation_branch",
+        "source_commit",
+        "local_remote_match"
+      ],
+      "properties": {
+        "name": {
+          "const": "joy7758/digital-biosphere-architecture-specification"
+        },
+        "default_branch": {"const": "main"},
+        "validation_branch": {
+          "const": "codex/production-observability-baseline"
+        },
+        "source_commit": {
+          "const": "3f243b265294fc3c41659adbcff44ffc9508dbb7"
+        },
+        "local_remote_match": {"const": true}
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "exists_on_validation_branch",
+        "listed_on_default_branch",
+        "manual_dispatch_endpoint_available",
+        "preflight_error_class",
+        "preflight_http_status"
+      ],
+      "properties": {
+        "path": {
+          "const": ".github/workflows/titmas-ce-g10-correlator-cross-version.yml"
+        },
+        "exists_on_validation_branch": {"const": true},
+        "listed_on_default_branch": {"const": false},
+        "manual_dispatch_endpoint_available": {"const": false},
+        "preflight_error_class": {
+          "const": "WORKFLOW_NOT_FOUND_ON_DEFAULT_BRANCH"
+        },
+        "preflight_http_status": {"const": 404}
+      }
+    },
+    "attempts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "workflow_dispatch_attempted",
+        "workflow_dispatches",
+        "workflow_runs",
+        "matrix_jobs"
+      ],
+      "properties": {
+        "workflow_dispatch_attempted": {"const": false},
+        "workflow_dispatches": {"const": 0},
+        "workflow_runs": {"const": 0},
+        "matrix_jobs": {"const": 0}
+      }
+    },
+    "agent_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "model",
+        "verdict",
+        "recommended_option",
+        "would_recommend_to_agent_customer",
+        "confidence"
+      ],
+      "properties": {
+        "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+        "model": {"const": "qwen3.7-plus"},
+        "verdict": {"const": "RECOMMENDED"},
+        "recommended_option": {"const": "A"},
+        "would_recommend_to_agent_customer": {"const": true},
+        "confidence": {"const": 0.95}
+      }
+    },
+    "current_truth": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ce_g10_cross_version_validation_executed",
+        "ce_g10_result_available",
+        "ce_g9_result",
+        "tls_root_cause_proven",
+        "public_entry_redeployment_admission_pass"
+      ],
+      "properties": {
+        "ce_g10_cross_version_validation_executed": {"const": false},
+        "ce_g10_result_available": {"const": false},
+        "ce_g9_result": {
+          "const": "PASS_OFFLINE_LOG_CORRELATOR_REMEDIATION_ONLY"
+        },
+        "tls_root_cause_proven": {"const": false},
+        "public_entry_redeployment_admission_pass": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "main_merge",
+        "workflow_change",
+        "run_request",
+        "public_site_request",
+        "ssh",
+        "server_access",
+        "deployment",
+        "production_readiness",
+        "certification",
+        "sla",
+        "commercial_offering"
+      ],
+      "properties": {
+        "main_merge": {"const": false},
+        "workflow_change": {"const": false},
+        "run_request": {"const": false},
+        "public_site_request": {"const": false},
+        "ssh": {"const": false},
+        "server_access": {"const": false},
+        "deployment": {"const": false},
+        "production_readiness": {"const": false},
+        "certification": {"const": false},
+        "sla": {"const": false},
+        "commercial_offering": {"const": false}
+      }
+    },
+    "next_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action", "authorized"],
+      "properties": {
+        "action": {
+          "const": "REVIEW_AND_DECIDE_CE_G10A_BRANCH_SCOPED_TRIGGER_REMEDIATION"
+        },
+        "authorized": {"const": false}
+      }
+    }
+  }
+}

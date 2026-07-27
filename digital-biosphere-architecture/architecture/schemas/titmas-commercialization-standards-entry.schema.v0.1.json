@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_CE_G10_IMPLEMENTATION_PASS_SINGLE_DISPATCH_PENDING_STANDARD_NOT_READY"
+      "const": "CS_D02_CE_G10_PREFLIGHT_FAIL_CLOSED_CE_G10A_RECOMMENDATION_PREPARED_DECISION_PENDING_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -108,12 +108,14 @@
       ],
       "properties": {
         "as_of": {"const": "2026-07-27"},
-        "last_completed_step": {"const": "COMMERCIAL-EVALUATION-CE-G9"},
+        "last_completed_step": {
+          "const": "COMMERCIAL-EVALUATION-CE-G10-DISPATCH-PREFLIGHT"
+        },
         "last_completed_result": {
-          "const": "PASS_OFFLINE_LOG_CORRELATOR_REMEDIATION_ONLY"
+          "const": "FAIL_CLOSED_WORKFLOW_NOT_ON_DEFAULT_BRANCH_NO_DISPATCH"
         },
         "direct_evidence_reference": {
-          "const": "commercial-evaluation-controller-tls-diagnosis/ce-g9-offline-remediation-result.v0.1.json"
+          "const": "commercial-evaluation-controller-tls-diagnosis/ce-g10-dispatch-preflight-result.v0.1.json"
         },
         "current_best_connected_model": {"const": "deepseek-v4-flash"},
         "primary_new_provider_candidate": {
@@ -131,9 +133,9 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "DISPATCH_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION_ONCE"
+          "const": "REVIEW_AND_DECIDE_CE_G10A_BRANCH_SCOPED_TRIGGER_REMEDIATION"
         },
-        "next_action_authorized": {"const": true},
+        "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
         "provider_integration_authorized": {"const": false},
         "security_review_completed": {"const": false},
@@ -2756,7 +2758,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "CE_G10_IMPLEMENTATION_PASS_SINGLE_DISPATCH_AUTHORIZED_NOT_STARTED"
+          "const": "CE_G10_PREFLIGHT_FAIL_CLOSED_CE_G10A_RECOMMENDATION_PREPARED_DECISION_PENDING"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7782,13 +7784,13 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "DISPATCH_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION_ONCE"
+          "const": "REVIEW_AND_DECIDE_CE_G10A_BRANCH_SCOPED_TRIGGER_REMEDIATION_ONLY"
         },
         "decision_ready": {
-          "const": false
+          "const": true
         },
         "external_execution_authorized": {
-          "const": true
+          "const": false
         }
       }
     },

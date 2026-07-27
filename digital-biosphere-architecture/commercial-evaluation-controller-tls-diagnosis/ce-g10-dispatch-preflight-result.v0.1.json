@@ -1,0 +1,61 @@
+{
+  "$schema": "./ce-g10-dispatch-preflight-result.schema.v0.1.json",
+  "result_id": "TITMAS-CE-G10-DISPATCH-PREFLIGHT-RESULT-001",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_WORKFLOW_NOT_ON_DEFAULT_BRANCH_NO_DISPATCH",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G10",
+  "observed_at": "2026-07-27T13:11:08Z",
+  "repository": {
+    "name": "joy7758/digital-biosphere-architecture-specification",
+    "default_branch": "main",
+    "validation_branch": "codex/production-observability-baseline",
+    "source_commit": "3f243b265294fc3c41659adbcff44ffc9508dbb7",
+    "local_remote_match": true
+  },
+  "workflow": {
+    "path": ".github/workflows/titmas-ce-g10-correlator-cross-version.yml",
+    "exists_on_validation_branch": true,
+    "listed_on_default_branch": false,
+    "manual_dispatch_endpoint_available": false,
+    "preflight_error_class": "WORKFLOW_NOT_FOUND_ON_DEFAULT_BRANCH",
+    "preflight_http_status": 404
+  },
+  "attempts": {
+    "workflow_dispatch_attempted": false,
+    "workflow_dispatches": 0,
+    "workflow_runs": 0,
+    "matrix_jobs": 0
+  },
+  "agent_review": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "model": "qwen3.7-plus",
+    "verdict": "RECOMMENDED",
+    "recommended_option": "A",
+    "would_recommend_to_agent_customer": true,
+    "confidence": 0.95
+  },
+  "current_truth": {
+    "ce_g10_cross_version_validation_executed": false,
+    "ce_g10_result_available": false,
+    "ce_g9_result": "PASS_OFFLINE_LOG_CORRELATOR_REMEDIATION_ONLY",
+    "tls_root_cause_proven": false,
+    "public_entry_redeployment_admission_pass": false
+  },
+  "effects": {
+    "main_merge": false,
+    "workflow_change": false,
+    "run_request": false,
+    "public_site_request": false,
+    "ssh": false,
+    "server_access": false,
+    "deployment": false,
+    "production_readiness": false,
+    "certification": false,
+    "sla": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "REVIEW_AND_DECIDE_CE_G10A_BRANCH_SCOPED_TRIGGER_REMEDIATION",
+    "authorized": false
+  }
+}

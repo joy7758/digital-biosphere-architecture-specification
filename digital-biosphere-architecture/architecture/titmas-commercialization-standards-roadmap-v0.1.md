@@ -3,7 +3,7 @@ document_id: DBA-TITMAS-COMMERCIALIZATION-STANDARDS-ROADMAP-0.1
 title: TITMAS Commercialization Standards Roadmap v0.1
 title_zh: TITMAS 商业化标准推进路线图 v0.1
 version: 0.1.0
-status: ce-g10-implementation-pass-single-dispatch-pending-standard-not-ready
+status: ce-g10-preflight-fail-closed-ce-g10a-recommendation-prepared-decision-pending-standard-not-ready
 maturity: Development
 maturity_scope: entire-document
 owner_ref: zhangbin
@@ -2511,6 +2511,33 @@ CE_G10_WORKFLOW_DISPATCHED=false
 [CE-G10 Decision](../TITMAS-COMMERCIAL-EVALUATION-CE-G10-DECISION-RECORD.v0.1.json)
 独立授权一次 manual-only、read-only、五版本 offline matrix；Decision 不等于 execution。
 
+### 4.70 CE-G10 Dispatch Preflight and CE-G10A Recommendation
+
+[Preflight report](../TITMAS-CE-G10-DISPATCH-PREFLIGHT-REPORT-v0.1.md)与
+[result](../commercial-evaluation-controller-tls-diagnosis/ce-g10-dispatch-preflight-result.v0.1.json)
+证明 workflow 不在 default branch，manual dispatch endpoint 不可用：
+
+```text
+CE_G10_DISPATCH_PREFLIGHT=FAIL_CLOSED_WORKFLOW_NOT_ON_DEFAULT_BRANCH_NO_DISPATCH
+CE_G10_WORKFLOW_DISPATCHES=0
+CE_G10_WORKFLOW_RUNS=0
+CE_G10_MATRIX_JOBS=0
+MAIN_MERGE=false
+```
+
+[CE-G10A Recommendation](../TITMAS-CE-G10A-BRANCH-SCOPED-TRIGGER-REMEDIATION-RECOMMENDATION-v0.1.md)
+只提出 validation branch + exact run-request path 的 single push trigger。
+
+```text
+CE_G10A_AGENT_VERDICT=RECOMMENDED
+CE_G10A_AGENT_OPTION=A
+CE_G10A_WOULD_RECOMMEND_TO_AGENT_CUSTOMER=true
+CE_G10A_AGENT_CONFIDENCE=0.95
+CE_G10A_DECISION_RECORDED=false
+CE_G10A_TRIGGER_IMPLEMENTED=false
+CE_G10A_RUN_REQUEST_CREATED=false
+```
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -2780,9 +2807,10 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Dispatch CE-G10 once**：manual-only workflow、sanitized runner 与 result Schema
-   已在 Python 3.14/3.13 各通过 21/21；按 Decision 只允许单次 dispatch，不产生
-   TITMAS public-site request、SSH、部署或策略变化；
+1. **Review and decide CE-G10A branch trigger remediation**：manual dispatch preflight
+   已失败关闭且 run=0；Recommendation 只允许 exact validation branch/path 的单次
+   run-request trigger，不合并 `main`，不产生 TITMAS public-site request、SSH、部署或
+   策略变化；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -2991,7 +3019,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=DISPATCH_CE_G10_CROSS_VERSION_CORRELATOR_VALIDATION_ONCE
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=REVIEW_AND_DECIDE_CE_G10A_BRANCH_SCOPED_TRIGGER_REMEDIATION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -3094,6 +3122,15 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G10_WORKFLOW_CREATED=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G10_LOCAL_PYTHON_3_14_TESTS_PASS=21/21
 TITMAS_COMMERCIAL_EVALUATION_CE_G10_LOCAL_PYTHON_3_13_TESTS_PASS=21/21
 TITMAS_COMMERCIAL_EVALUATION_CE_G10_WORKFLOW_DISPATCHED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G10_DISPATCH_PREFLIGHT_RESULT=FAIL_CLOSED_WORKFLOW_NOT_ON_DEFAULT_BRANCH_NO_DISPATCH
+TITMAS_COMMERCIAL_EVALUATION_CE_G10_WORKFLOW_DISPATCHES=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G10_WORKFLOW_RUNS=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G10_MATRIX_JOBS=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G10A_RECOMMENDATION_PREPARED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G10A_AGENT_VERDICT=RECOMMENDED
+TITMAS_COMMERCIAL_EVALUATION_CE_G10A_AGENT_OPTION=A
+TITMAS_COMMERCIAL_EVALUATION_CE_G10A_AGENT_CONFIDENCE=0.95
+TITMAS_COMMERCIAL_EVALUATION_CE_G10A_DECISION_RECORDED=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
 
