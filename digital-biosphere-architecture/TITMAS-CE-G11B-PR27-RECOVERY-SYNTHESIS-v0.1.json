@@ -1,0 +1,136 @@
+{
+  "observed_at": "2026-07-27T20:47:34.093Z",
+  "request_id": "PR27-RECOVERY-SYNTHESIS-001",
+  "status": "QUALIFYING_SYNTHESIS",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "returned_model_exact": true,
+  "request_count": 1,
+  "retries": 0,
+  "fallbacks": 0,
+  "model_substitutions": 0,
+  "json_extractions": 0,
+  "json_repairs": 0,
+  "provider_request_id": "chatcmpl-d4afadeb-f68d-43c3-bb8d-6ca03f8c3ce8",
+  "finish_reason": "stop",
+  "prompt_tokens": 14755,
+  "completion_tokens": 6144,
+  "direct_content_sha256": "1591be87f25f8f718cc406db8e2131ab7fd9beb8201b33011702cd50dd4173c9",
+  "direct_json_valid": true,
+  "binding_subchecks": {
+    "input_hashes": true,
+    "original_findings": true,
+    "new_findings": true,
+    "all_findings_accounted_for": true,
+    "severity_preserved": true,
+    "authority_boundaries_preserved": true
+  },
+  "contract_subchecks": {
+    "exact_top_level_keys": true,
+    "verdict": true,
+    "confidence": true,
+    "lane_outcomes": true,
+    "rationale": true
+  },
+  "binding_valid": true,
+  "contract_valid": true,
+  "qualifying": true,
+  "terminal_failure_category": null,
+  "synthesis": {
+    "verdict": "CLEAR",
+    "confidence": 0.95,
+    "input_hashes": {
+      "lane_a": "5e4caccc79e0a445b3443e4085fd65e54d9ab3d25b9558b9e538099063d6abbb",
+      "original_lane_b": "d12c332f31976efb74b73fef996930b096c4720d7affc81039ea719f6db67d88",
+      "lane_b_adjudication": "0fa142c4783adbe5db148e18d32d0381910f46e8987bd5080cdc99a2afa8e01e",
+      "lane_c": "a397b55a187bb5438b3e72feb6b126c33af7174f997469799391ce1aa0f0027b",
+      "lane_d": "399ba27cd185f1aa52bcccd267c78a45c59fa2bdc45c19fbfbb5de15674a0721"
+    },
+    "lane_outcomes": {
+      "A": "CLEAR: Workflow scoped to push events with read-only permissions, isolated subprocess execution, and deterministic fail-closed behavior. No security or authority boundary violations.",
+      "B": "REMEDIATION_REQUIRED (original) → ADJUDICATION_COMPLETE: Four findings rejected due to intentional governance scope separation; one partially confirmed for schema extensibility documentation.",
+      "C": "CLEAR: Bilingual parity maintained, version references consistent, comprehensive test coverage. No blockers or semantic overreach.",
+      "D": "CLEAR: Complete historical lineage preservation across 83 assigned files. Proper separation of Recommendation/Decision/Execution layers. Authority boundaries enforced."
+    },
+    "adjudicated_findings": [
+      {
+        "finding_id": "B-001",
+        "source_severity": "HIGH",
+        "disposition": "REJECTED",
+        "derived_blocking": false,
+        "requires_candidate_change": false,
+        "required_correction": null,
+        "rationale": "Finding conflates two distinct governance scopes. Entry object authorizes specific next action (finalize and freeze candidate) while marking broader CS-D02 decision as not ready. These are intentional separations, not contradictions."
+      },
+      {
+        "finding_id": "B-002",
+        "source_severity": "MEDIUM",
+        "disposition": "REJECTED",
+        "derived_blocking": false,
+        "requires_candidate_change": false,
+        "required_correction": null,
+        "rationale": "Schema correctly binds two separate governance concepts: authorization to proceed with one exact next action versus readiness of broader decision candidate. Const constraints govern different scopes and gates."
+      },
+      {
+        "finding_id": "B-003",
+        "source_severity": "MEDIUM",
+        "disposition": "REJECTED",
+        "derived_blocking": false,
+        "requires_candidate_change": false,
+        "required_correction": null,
+        "rationale": "Field captures model's advisory assessment of candidate quality independent of execution authorization. Schema explicitly records both positive recommendation and false authorization states, making separation intentional."
+      },
+      {
+        "finding_id": "B-004",
+        "source_severity": "LOW",
+        "disposition": "PARTIALLY_CONFIRMED",
+        "derived_blocking": false,
+        "requires_candidate_change": false,
+        "required_correction": "Add description or pattern constraint to error_class field documenting intentional extensibility for UNEXPECTED_<exception> format, or add minLength constraint to prevent empty strings.",
+        "rationale": "Schema intentionally allows forward-compatible error classes for unexpected exceptions. Lack of pattern or length constraint reduces validation precision but preserves extensibility."
+      },
+      {
+        "finding_id": "B-005",
+        "source_severity": "LOW",
+        "disposition": "REJECTED",
+        "derived_blocking": false,
+        "requires_candidate_change": false,
+        "required_correction": null,
+        "rationale": "Trigger path references file intentionally absent until future authorization decision creates it. Schema, workflow, and runner consistently reference same path, demonstrating intentional future-triggered design."
+      }
+    ],
+    "new_findings": [
+      {
+        "finding_id": "D-001",
+        "source": "lane_d",
+        "severity": "LOW",
+        "status": "ACCEPTABLE_GOVERNANCE_PRACTICE",
+        "requires_candidate_change": false,
+        "required_correction": null,
+        "rationale": "Timestamp documented as invalid in corresponding erratum record. Erratum preserves historical artifact while documenting invalidity, which is acceptable governance practice."
+      },
+      {
+        "finding_id": "D-002",
+        "source": "lane_d",
+        "severity": "LOW",
+        "status": "HISTORICAL_FAILURE_PRESERVED",
+        "requires_candidate_change": false,
+        "required_correction": null,
+        "rationale": "v0.1 Decision review returned REJECT with blocking findings, correctly preserved as historical failure. v0.2 supersedes with corrected two-layer separation addressing authorization/result layer conflation."
+      },
+      {
+        "finding_id": "D-CAP-001",
+        "source": "lane_d_post_capture",
+        "severity": "LOW",
+        "status": "MODEL_RATIONALE_DISCREPANCY",
+        "requires_candidate_change": false,
+        "required_correction": null,
+        "rationale": "Direct model rationale states 88 assigned files while structural evidence (bound arrays, contract, frozen Lane D files) proves 83 assigned files. Synthesis accounts for discrepancy and does not use 88 as repository truth."
+      }
+    ],
+    "all_findings_accounted_for": true,
+    "severity_preserved": true,
+    "authority_boundaries_preserved": true,
+    "rationale": "Synthesis confirms PR #27 maintains strict authority boundaries with no merge, release, deployment, or commercial availability authorization. Lane A demonstrates secure workflow execution. Lane B adjudication correctly rejects four findings based on intentional governance scope separation and partially confirms one schema extensibility documentation opportunity. Lane C validates bilingual parity and test coverage. Lane D preserves complete historical lineage across 83 files with proper Recommendation/Decision/Execution layer separation. All findings accounted for with original severities preserved. No blocking issues require candidate changes."
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "observed_at": "2026-07-27T20:35:50.624Z",
+  "request_id": "PR27-B-FINDING-ADJUDICATION-001",
+  "status": "QUALIFYING_ADJUDICATION",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "returned_model_exact": true,
+  "request_count": 1,
+  "retries": 0,
+  "fallbacks": 0,
+  "model_substitutions": 0,
+  "json_extractions": 0,
+  "json_repairs": 0,
+  "provider_request_id": "chatcmpl-156a34c3-c4fb-4baf-8722-fd796c459514",
+  "finish_reason": "stop",
+  "prompt_tokens": 202764,
+  "completion_tokens": 4797,
+  "direct_content_sha256": "2c292f90df25987b371a0d28fba83a0484ae6a4c833b406e50d9085ccf25a459",
+  "direct_json_valid": true,
+  "binding_subchecks": {
+    "verdict": true,
+    "base_sha": true,
+    "head_sha": true,
+    "source_review_sha256": true,
+    "fact_matrix_sha256": true,
+    "source_finding_ids": true,
+    "all_source_findings_accounted_for": true,
+    "authority_boundaries_preserved": true
+  },
+  "contract_subchecks": {
+    "exact_top_level_keys": true,
+    "confidence": true,
+    "adjudications": true,
+    "rationale": true
+  },
+  "binding_valid": true,
+  "contract_valid": true,
+  "qualifying": true,
+  "terminal_failure_category": null,
+  "adjudication": {
+    "verdict": "ADJUDICATION_COMPLETE",
+    "confidence": 0.95,
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "source_review_sha256": "d12c332f31976efb74b73fef996930b096c4720d7affc81039ea719f6db67d88",
+    "fact_matrix_sha256": "ce173b41e20fdd5d094a544bbd295e554e89f73bad0c1cbc7f2561d47c31dafe",
+    "source_finding_ids": [
+      "B-001",
+      "B-002",
+      "B-003",
+      "B-004",
+      "B-005"
+    ],
+    "adjudications": [
+      {
+        "finding_id": "B-001",
+        "source_severity": "HIGH",
+        "source_severity_preserved": true,
+        "disposition": "REJECTED",
+        "derived_blocking": false,
+        "repository_evidence": [
+          "current_state_summary.next_action_authorized=true binds authorization for FINALIZE_AND_FREEZE_CE_G11B_CANDIDATE_THEN_VALIDATE_ON_DISTINCT_EVIDENCE_REF",
+          "next_decision_candidate.decision_ready=false applies to separate CS-D02 decision-candidate scope",
+          "Schema enforces const values in distinct object scopes: current_state_summary vs next_decision_candidate",
+          "Authorization of one exact next governance action does not require readiness of a separate formal decision candidate"
+        ],
+        "reasoning": "The finding conflates two distinct governance scopes. The entry object authorizes a specific next action (finalize and freeze candidate) while explicitly marking the broader CS-D02 decision as not ready. These are not contradictory states but intentional separation of immediate action authorization from future decision readiness.",
+        "required_correction": null
+      },
+      {
+        "finding_id": "B-002",
+        "source_severity": "MEDIUM",
+        "source_severity_preserved": true,
+        "disposition": "REJECTED",
+        "derived_blocking": false,
+        "repository_evidence": [
+          "Schema line 142 enforces const true for current_state_summary.next_action_authorized",
+          "Schema line 7793 enforces const false for next_decision_candidate.decision_ready",
+          "Two const values bind different object scopes with distinct semantic meanings",
+          "Snapshot contract intentionally uses const values for both current state and future gate state",
+          "Neither value grants implementation, external execution, release, or Standard readiness"
+        ],
+        "reasoning": "The schema correctly binds two separate governance concepts: authorization to proceed with one exact next action (finalize candidate) versus readiness of a broader decision candidate (CS-D02). The const constraints are not logically contradictory because they govern different scopes and different governance gates.",
+        "required_correction": null
+      },
+      {
+        "finding_id": "B-003",
+        "source_severity": "MEDIUM",
+        "source_severity_preserved": true,
+        "disposition": "REJECTED",
+        "derived_blocking": false,
+        "repository_evidence": [
+          "would_recommend_to_agent_customer=true is nested inside model_review object",
+          "Same model_review object explicitly records workflow_execution_authorized=false and phase_b_authorized=false",
+          "Result next_gate.authorized=false confirms no execution authorization granted",
+          "Recommendation is advisory assessment of candidate quality, not execution authorization",
+          "Schema enforces all three values as const, preserving explicit separation"
+        ],
+        "reasoning": "The finding misinterprets the semantic meaning of 'recommend to agent customer'. This field captures the model's advisory assessment of whether the candidate implementation quality warrants recommendation, independent of whether execution is authorized. The schema explicitly records both the positive recommendation and the false authorization states, making the separation intentional and unambiguous.",
+        "required_correction": null
+      },
+      {
+        "finding_id": "B-004",
+        "source_severity": "LOW",
+        "source_severity_preserved": true,
+        "disposition": "PARTIALLY_CONFIRMED",
+        "derived_blocking": false,
+        "repository_evidence": [
+          "Schema line 181 defines error_class as type ['string', 'null'] with no enum or pattern constraint",
+          "Runner emits bounded stage_code for known failures",
+          "Runner also emits UNEXPECTED_<exception class name> for unanticipated exceptions",
+          "Fixed enum would reject legitimate fail-closed unexpected error classes unless runner contract changes",
+          "Other status fields in schema use enum for precision"
+        ],
+        "reasoning": "The schema intentionally allows forward-compatible error classes to accommodate unexpected exceptions without requiring schema revision. However, the lack of any pattern or length constraint reduces validation precision. A description or pattern constraint would improve clarity while preserving extensibility.",
+        "required_correction": "Add description or pattern constraint to error_class field documenting intentional extensibility for UNEXPECTED_<exception> format, or add minLength constraint to prevent empty strings."
+      },
+      {
+        "finding_id": "B-005",
+        "source_severity": "LOW",
+        "source_severity_preserved": true,
+        "disposition": "REJECTED",
+        "derived_blocking": false,
+        "repository_evidence": [
+          "Run-request instance is intentionally absent from frozen candidate",
+          "Run-request Schema, workflow path filter, and runner expected path all use same exact path",
+          "Workflow designed to trigger only when separately authorized run-request instance is later written",
+          "Absence before trigger authorization is not evidence that path is stale",
+          "Schema, workflow, and runner bind the same target path consistently"
+        ],
+        "reasoning": "The trigger path references a file that is intentionally absent until a future authorization decision creates it. The schema, workflow, and runner all consistently reference the same path, demonstrating intentional design for a future-triggered workflow. The absence of the file in the current candidate is expected behavior, not a stale reference.",
+        "required_correction": null
+      }
+    ],
+    "all_source_findings_accounted_for": true,
+    "authority_boundaries_preserved": true,
+    "rationale": "Four of five findings are rejected based on repository evidence showing intentional separation of governance scopes and semantic meanings. The entry object and schema correctly distinguish authorization of one exact next action from readiness of a separate decision candidate. The phase-a-r1 result correctly separates advisory recommendation from execution authorization. The trigger path is intentionally future-bound and consistently referenced across schema, workflow, and runner. Only B-004 is partially confirmed: the error_class field intentionally allows extensibility for unexpected exceptions, but could benefit from a description or pattern constraint to document this design choice. No findings warrant blocking severity or require source changes."
+  }
+}

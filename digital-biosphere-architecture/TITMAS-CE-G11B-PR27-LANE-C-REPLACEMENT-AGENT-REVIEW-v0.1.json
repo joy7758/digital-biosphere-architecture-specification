@@ -1,0 +1,71 @@
+{
+  "observed_at": "2026-07-27T20:38:49.863Z",
+  "request_id": "PR27-C-REPLACEMENT-REVIEW-001",
+  "status": "QUALIFYING_LANE_REVIEW",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "returned_model_exact": true,
+  "request_count": 1,
+  "retries": 0,
+  "fallbacks": 0,
+  "model_substitutions": 0,
+  "json_extractions": 0,
+  "json_repairs": 0,
+  "provider_request_id": "chatcmpl-8e7436e3-aeee-4955-a768-5d682a974595",
+  "finish_reason": "stop",
+  "prompt_tokens": 12892,
+  "completion_tokens": 3351,
+  "direct_content_sha256": "0e828eeb4659c469184cf3ebb091435ba8df9e247c74b18c738f70dea42b00a4",
+  "direct_json_valid": true,
+  "binding_subchecks": {
+    "lane_id": true,
+    "base_sha": true,
+    "head_sha": true,
+    "patch_sha256": true,
+    "assigned_files_unique_set": true,
+    "assigned_files_reviewed_unique_complete_set": true,
+    "inventory_context_received": true,
+    "r2_boundary_understood": true,
+    "authority_boundaries_preserved": true
+  },
+  "contract_subchecks": {
+    "exact_top_level_keys": true,
+    "verdict": true,
+    "confidence": true,
+    "findings": true,
+    "rationale": true
+  },
+  "binding_valid": true,
+  "contract_valid": true,
+  "qualifying": true,
+  "terminal_failure_category": null,
+  "review": {
+    "lane_id": "C",
+    "verdict": "CLEAR",
+    "confidence": 0.95,
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "patch_sha256": "1f94782837c2b7946f45f35f3b5e0bd1337839004089e5ba69c65034d28886f5",
+    "assigned_files": [
+      "README.md",
+      "digital-biosphere-architecture/README.md",
+      "digital-biosphere-architecture/site/app/commercial-evaluation/page.tsx",
+      "digital-biosphere-architecture/site/app/en/commercial-evaluation/page.tsx",
+      "digital-biosphere-architecture/site/app/site-shell.tsx",
+      "digital-biosphere-architecture/site/tests/rendered-html.test.mjs"
+    ],
+    "assigned_files_reviewed": [
+      "README.md",
+      "digital-biosphere-architecture/README.md",
+      "digital-biosphere-architecture/site/app/commercial-evaluation/page.tsx",
+      "digital-biosphere-architecture/site/app/en/commercial-evaluation/page.tsx",
+      "digital-biosphere-architecture/site/app/site-shell.tsx",
+      "digital-biosphere-architecture/site/tests/rendered-html.test.mjs"
+    ],
+    "inventory_context_received": true,
+    "r2_boundary_understood": true,
+    "authority_boundaries_preserved": true,
+    "findings": [],
+    "rationale": "Lane C review confirms bilingual parity in metadata titles (v0.1 to v0.2), consistent version references in site-shell.tsx footer link, and comprehensive test coverage for rendered HTML assertions. The README updates document the CE-G11B validation authorization decision chain without elevating development artifacts to production or release status. All assigned files reviewed; no blockers, corrections, or semantic overreach detected. Patch maintains fail-closed boundaries and agent-readable discoverability."
+  }
+}

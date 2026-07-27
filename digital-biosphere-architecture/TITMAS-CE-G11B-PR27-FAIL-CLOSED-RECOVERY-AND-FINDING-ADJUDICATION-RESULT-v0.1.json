@@ -1,0 +1,151 @@
+{
+  "result_id": "TITMAS-CE-G11B-PR27-FAIL-CLOSED-RECOVERY-AND-FINDING-ADJUDICATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-27T20:47:34.093Z",
+  "status": "PASS_QUALIFYING_CLEAR_SYNTHESIS_MERGE_ADMISSION_RECOMMENDATION_ALLOWED_NOT_AUTHORIZED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-FAIL-CLOSED-RECOVERY-AND-FINDING-ADJUDICATION-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "5e516c9adcd6d63b04330e9723ca033e040f097a52454814a6b429bcddacc4e8",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-FAIL-CLOSED-RECOVERY-AND-FINDING-ADJUDICATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "b6e584fe29f504fcf8d4b1d91ed3324eaee2cfee1fcd4eea31d329136554b83e",
+  "decision_commit": "45b1f8d82206abe38db9eb12221b25c37f329bcb",
+  "decision_remote_baseline_verified": true,
+  "report_reference": "TITMAS-CE-G11B-PR27-FAIL-CLOSED-RECOVERY-AND-FINDING-ADJUDICATION-REPORT-v0.1.md",
+  "report_sha256": "9e5b36b9f3fc3537cfa6f94c31a81a47c768305b8ba1065ed97fd39e0540b1f0",
+  "frozen_pr": {
+    "number": 27,
+    "state": "OPEN",
+    "draft": true,
+    "base_sha": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "head_sha": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "merge_base": "4c95f6b68c21e4bf6e9babb8bd1afa4977cd418a",
+    "three_dot_changed_files": 100,
+    "three_dot_patch_sha256": "e031466cbb422e707bfae8ba5751c5f0bd076c6628a518124e36d353f3e92451",
+    "r2_merge_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "r2_evidence_commit": "27bc3b6e586a2259d17152a2022a85d2dd69107b"
+  },
+  "request_results": {
+    "lane_b_adjudication": {
+      "reference": "TITMAS-CE-G11B-PR27-LANE-B-FINDING-ADJUDICATION-v0.1.json",
+      "sha256": "0fa142c4783adbe5db148e18d32d0381910f46e8987bd5080cdc99a2afa8e01e",
+      "qualifying": true,
+      "finding_coverage": "5/5",
+      "rejected": 4,
+      "partially_confirmed": 1,
+      "confirmed": 0,
+      "derived_blocking": 0
+    },
+    "lane_c_replacement": {
+      "reference": "TITMAS-CE-G11B-PR27-LANE-C-REPLACEMENT-AGENT-REVIEW-v0.1.json",
+      "sha256": "a397b55a187bb5438b3e72feb6b126c33af7174f997469799391ce1aa0f0027b",
+      "qualifying": true,
+      "verdict": "CLEAR",
+      "files_reviewed": 6,
+      "findings": 0
+    },
+    "lane_d": {
+      "reference": "TITMAS-CE-G11B-PR27-LANE-D-AGENT-REVIEW-v0.1.json",
+      "sha256": "399ba27cd185f1aa52bcccd267c78a45c59fa2bdc45c19fbfbb5de15674a0721",
+      "qualifying": true,
+      "verdict": "CLEAR",
+      "files_reviewed": 83,
+      "model_findings": 2,
+      "post_capture_observations": 1
+    },
+    "synthesis": {
+      "reference": "TITMAS-CE-G11B-PR27-RECOVERY-SYNTHESIS-v0.1.json",
+      "sha256": "54824a9202592170bcb45ea1548be532033334611b81996987853ac106a97fa1",
+      "qualifying": true,
+      "verdict": "CLEAR",
+      "confidence": 0.95,
+      "all_findings_accounted_for": true,
+      "severity_preserved": true,
+      "authority_boundaries_preserved": true
+    }
+  },
+  "finding_accounting": {
+    "original_lane_b_findings": 5,
+    "original_lane_b_finding_ids": [
+      "B-001",
+      "B-002",
+      "B-003",
+      "B-004",
+      "B-005"
+    ],
+    "rejected_finding_ids": [
+      "B-001",
+      "B-002",
+      "B-003",
+      "B-005"
+    ],
+    "partially_confirmed_finding_ids": [
+      "B-004"
+    ],
+    "confirmed_finding_ids": [],
+    "new_finding_or_observation_ids": [
+      "D-001",
+      "D-002",
+      "D-CAP-001"
+    ],
+    "blocking_findings": 0,
+    "candidate_changes_required_by_synthesis": 0,
+    "documentation_opportunity": {
+      "finding_id": "B-004",
+      "status": "NON_BLOCKING_NOT_AUTHORIZED_FOR_SOURCE_CHANGE",
+      "summary": "Document or bound the intentionally extensible error_class string while preserving UNEXPECTED_<exception> support."
+    },
+    "lane_d_rationale_count_discrepancy": {
+      "finding_id": "D-CAP-001",
+      "model_rationale_value": 88,
+      "structural_truth_value": 83,
+      "model_content_modified": false,
+      "synthesis_uses_structural_truth": true
+    }
+  },
+  "caps_consumed": {
+    "recovery_model_requests_authorized": 4,
+    "recovery_model_requests_executed": 4,
+    "lane_b_adjudication_requests": 1,
+    "lane_c_replacement_requests": 1,
+    "lane_d_requests": 1,
+    "synthesis_requests": 1,
+    "retries": 0,
+    "fallbacks": 0,
+    "model_substitutions": 0,
+    "json_extractions": 0,
+    "json_repairs": 0,
+    "github_review_submissions": 0,
+    "github_comments": 0,
+    "reviewer_requests": 0,
+    "pr_mutations": 0,
+    "source_changes": 0,
+    "merges": 0,
+    "releases": 0,
+    "deployments": 0
+  },
+  "effects": {
+    "recovery_review_complete": true,
+    "recovery_review_pass": true,
+    "semantic_synthesis_clear": true,
+    "merge_admission_recommendation_allowed": true,
+    "github_review_approval": false,
+    "pr27_ready_for_merge": false,
+    "merge_authorization": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_PR27_MERGE_ADMISSION_RECOMMENDATION_USING_R2_AND_COMPLETE_SEMANTIC_REVIEW",
+    "authorized": false,
+    "requirements": [
+      "REVERIFY_PR27_AND_REMOTE_INPUTS",
+      "PRESERVE_B004_AS_NON_BLOCKING_DOCUMENTATION_OPPORTUNITY",
+      "PRESERVE_DCAP001_STRUCTURAL_83_FILE_TRUTH",
+      "SEPARATE_MERGE_ADMISSION_FROM_MERGE_EXECUTION",
+      "REQUIRE_NEW_INDEPENDENT_DECISION_BEFORE_ANY_PR_OR_MERGE_ACTION"
+    ]
+  }
+}
