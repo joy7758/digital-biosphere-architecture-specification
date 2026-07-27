@@ -1,0 +1,129 @@
+{
+  "result_id": "TITMAS-CE-G11B-IMMUTABLE-CANDIDATE-MERGE-TREE-VALIDATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28",
+  "status": "PASS_SHA_BOUND_EXTERNAL_ATTESTATION",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-IMMUTABLE-CANDIDATE-VALIDATION-AUTHORIZATION-DECISION-RECORD.v0.2.json",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-IMMUTABLE-CANDIDATE-VALIDATION-AUTHORIZATION-QWEN-DECISION-REVIEW-v0.2.json",
+  "evidence_ref": "refs/heads/codex/ce-g11b-atomic-integration-evidence",
+  "evidence_ref_result_commit_binding_rule": "The remote evidence ref commit containing this Result and its Report is the evidence attestation commit. Its concrete SHA is observed from the remote ref after the authorized final evidence push and is not self-embedded in the commit content.",
+  "frozen_binding": {
+    "candidate_ref": "refs/heads/codex/ce-g11b-phase-b-integration-governance",
+    "candidate_final_commit": "c608fd78d7d50d1733ddd9e19aeb6870c5a08288",
+    "canonical_ref": "refs/heads/codex/production-observability-baseline",
+    "canonical_commit": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "merge_tree": "bd67298eb8d869b024eaf9f03a53636c6dc377d4",
+    "synthetic_local_validation_commit": "667605ecd320302822aeb8b647a134d7055ad1bf",
+    "candidate_remote_unchanged": true,
+    "canonical_remote_unchanged": true,
+    "merge_tree_unchanged": true
+  },
+  "execution": {
+    "temporary_worktrees_created": 1,
+    "npm_ci": {
+      "attempts": 1,
+      "exit": 0,
+      "offline": true,
+      "ignore_scripts": true,
+      "output_sha256": "e7582a1527764bdc6231acca0c9ff91d11fd1f0dce93414fc9d9983faa90650a"
+    },
+    "npm_ls": {
+      "attempts": 1,
+      "exit": 0,
+      "direct_dependencies": 23,
+      "missing": 0,
+      "invalid": 0,
+      "output_sha256": "e1206ec5444b21822e50f359d6fc4864a119363e7bbbb9ed6324aa6617c28f36"
+    },
+    "npm_test": {
+      "attempts": 1,
+      "exit": 0,
+      "tests_passed": 16,
+      "tests_failed": 0,
+      "output_sha256": "06a6f6c857828b811015e990e3faaaee594d02cc79adaf787d302e5a930bc7c5"
+    },
+    "release_formal": {
+      "attempts": 1,
+      "exit": 0,
+      "effect": "LOCAL_STATIC_EXPORT_AND_VERIFICATION_ONLY",
+      "static_export_pass": true,
+      "content_parity_pass": true,
+      "truth_boundary_validation_pass": true,
+      "release_mode": "formal",
+      "manifest_files": 65,
+      "output_sha256": "760d3c6f52180f410be166044df73536fd9dff8806dfb961cdeb1150dea0890f"
+    },
+    "ce_schema_meta_validation": {
+      "runs": 1,
+      "exit": 0,
+      "schemas_valid": 3,
+      "output_sha256": "8b6f312f60461f2d769224f6a065464b72e97ce919ed492818b53d71a9db8986"
+    },
+    "ce_tests": {
+      "runs": 1,
+      "exit": 0,
+      "tests_passed": 49,
+      "tests_failed": 0,
+      "output_sha256": "c1c7f108869c61ab537d26f5b49ad105afceb28447656d3774e6515bbb4add70"
+    }
+  },
+  "pre_validation_checks": {
+    "tracked_json_files": 1165,
+    "json_duplicate_keys": 0,
+    "json_parse_failures": 0,
+    "json_check_output_sha256": "f3df812bdd156e26bcc4f2c2ef4f569cd1fb6adb869e9a54d47c3066134f499f",
+    "commercial_entry_schema": "PASS",
+    "commercial_schema_output_sha256": "465a2bb3418801244eab9d856df8ef5e81f87b176b4b0976e834ee6126c7b54a"
+  },
+  "preserved_harness_event": {
+    "post_validation_summary_parser_attempts": 1,
+    "post_validation_summary_parser_exit": 2,
+    "cause": "The first read-only summary parser expected hash-prefixed TAP counters and a non-existent STATIC_VERIFY_PASS line. The underlying validation commands had already completed with exit 0.",
+    "validation_commands_rerun": 0,
+    "corrective_action": "Read and parse the already generated output files with the observed Node TAP and release:formal formats.",
+    "authority_cap_consumed_again": false
+  },
+  "integrity": {
+    "tracked_source_diff": 0,
+    "git_status_entries": 0,
+    "merge_tree_unchanged": true,
+    "candidate_remote_unchanged": true,
+    "canonical_remote_unchanged": true
+  },
+  "caps_consumed": {
+    "candidate_finalization_commits": 1,
+    "candidate_pushes": 1,
+    "evidence_branches_created": 1,
+    "evidence_pushes_before_result": 1,
+    "temporary_worktrees": 1,
+    "npm_ci_attempts": 1,
+    "npm_ls_attempts": 1,
+    "npm_test_attempts": 1,
+    "release_formal_attempts": 1,
+    "ce_schema_validation_runs": 1,
+    "ce_test_discovery_runs": 1,
+    "network_fallbacks": 0,
+    "pr_creations": 0,
+    "pr_mutations": 0,
+    "pr_closures": 0,
+    "merges": 0,
+    "releases": 0,
+    "deployments": 0,
+    "server_actions": 0
+  },
+  "effects": {
+    "merge_tree_validation_complete": true,
+    "replacement_pr_authorization": false,
+    "pr22_closure_authorization": false,
+    "merge_authorization": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "standard_ready": false,
+    "commercial_offering": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G11B_REPLACEMENT_DRAFT_PR_DECISION",
+    "authorized": false
+  }
+}
