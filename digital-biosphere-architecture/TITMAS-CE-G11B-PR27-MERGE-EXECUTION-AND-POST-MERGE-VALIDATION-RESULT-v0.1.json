@@ -1,0 +1,170 @@
+{
+  "record_type": "TITMAS_PR27_MERGE_EXECUTION_AND_POST_MERGE_VALIDATION_RESULT",
+  "result_id": "TITMAS-CE-G11B-PR27-MERGE-EXECUTION-AND-POST-MERGE-VALIDATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28",
+  "status": "PASS_MERGE_COMMIT_AND_CONTENT_DERIVED_POST_MERGE_VALIDATION",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "pull_request": 27,
+  "merge_execution_decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-MERGE-EXECUTION-DECISION-RECORD.v0.1.json",
+  "preflight_remediation_decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-PREFLIGHT-HARNESS-BINDING-REMEDIATION-DECISION-RECORD.v0.1.json",
+  "post_merge_validation_decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-CONTENT-DERIVED-POST-MERGE-VALIDATION-DECISION-RECORD.v0.1.json",
+  "post_merge_validation_decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G11B-PR27-CONTENT-DERIVED-POST-MERGE-VALIDATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "post_merge_validation_governance_commit": "10a43abf71d441c4c4423dbeb385ce5574156468",
+  "failure_history": [
+    {
+      "reference": "TITMAS-CE-G11B-PR27-MERGE-EXECUTION-PREFLIGHT-FAILURE-v0.1.json",
+      "status": "FAIL_CLOSED_LOCAL_EXPECTED_GOVERNANCE_SHA_BINDING_ERROR",
+      "preserved": true,
+      "external_mutations": 0
+    },
+    {
+      "reference": "TITMAS-CE-G11B-PR27-POST-MERGE-STRUCTURAL-VERIFICATION-FAILURE-v0.1.json",
+      "status": "FAIL_CLOSED_VERIFIER_PR_BASE_REFOID_SEMANTIC_ASSUMPTION",
+      "preserved": true,
+      "merge_succeeded_before_failure": true
+    },
+    {
+      "reference": "TITMAS-CE-G11B-PR27-POST-MERGE-VALIDATION-HARNESS-BINDING-FAILURE-v0.1.json",
+      "status": "FAIL_CLOSED_LOCAL_DECISION_REVIEW_SHA_BINDING_ERROR",
+      "preserved": true,
+      "worktrees_created": 0,
+      "tests_started": false
+    }
+  ],
+  "merge_execution": {
+    "draft_ready_mutations": 1,
+    "merge_attempts": 1,
+    "merge_method": "MERGE_COMMIT",
+    "pull_request_state": "MERGED",
+    "merged_at": "2026-07-27T21:16:42Z",
+    "merge_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "remote_base_head": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "first_parent": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "second_parent": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "subject": "Merge PR #27: integrate CE-G11B atomic evidence",
+    "candidate_branch_preserved": true,
+    "admin_bypass_used": false,
+    "auto_merge_used": false,
+    "squash_merge_used": false,
+    "rebase_merge_used": false,
+    "branch_deleted": false
+  },
+  "content_derived_binding": {
+    "status": "PASS",
+    "local_remote_governance_sha_equal": true,
+    "governance_sha": "10a43abf71d441c4c4423dbeb385ce5574156468",
+    "decision_local_remote_sha256": "f96c7e1bc110d4a6ebb5e53c4d2f10c64f3217e90f5c5088bb4fa9d56c8169e9",
+    "decision_review_local_remote_sha256": "06a1c68dd36f6a0ccb0ac83223368c8e2694528f6c39766f467f220aebaf33a7",
+    "manual_expected_review_hash_used": false
+  },
+  "corrected_structural_validation": {
+    "status": "PASS",
+    "remote_base_head_matches_merge_commit": true,
+    "pr_base_ref_oid_matches_first_parent": true,
+    "pr_head_ref_oid_matches_second_parent": true,
+    "pr_merge_commit_matches": true,
+    "parents_match": true,
+    "tree_matches": true,
+    "candidate_branch_preserved": true
+  },
+  "isolated_validation": {
+    "status": "PASS",
+    "target_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "target_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "temporary_worktrees_created": 1,
+    "temporary_worktrees_removed": 1,
+    "temporary_worktrees_remaining": 0,
+    "command_retries": 0,
+    "network_fallbacks": 0,
+    "source_or_test_fixes": 0,
+    "tracked_json": {
+      "files_passed": 1165,
+      "files_failed": 0,
+      "duplicate_keys": 0,
+      "output_sha256": "b34c86f845c899b550143715c9606100f00dc73289b739f526b5892d3e775444"
+    },
+    "commercial_entry_schema": {
+      "status": "PASS"
+    },
+    "ce_schema_contract": {
+      "hashes_passed": "3/3",
+      "meta_schemas_passed": "3/3"
+    },
+    "npm_ci": {
+      "attempts": 1,
+      "exit": 0,
+      "offline": true,
+      "ignore_scripts": true,
+      "packages_added": 493,
+      "output_sha256": "6baae97dd1f30b8fe31c1508cbbb10b50a88f539ae08f896fe8d85226e760b55"
+    },
+    "npm_ls": {
+      "attempts": 1,
+      "exit": 0,
+      "direct_dependencies": 23,
+      "reported_problem_count": 5,
+      "reported_problem_category": "EXTRANEOUS_OPTIONAL_WASM_PACKAGES",
+      "absolute_local_paths_persisted": false,
+      "output_sha256": "994e188cb3eedb9afc8c7d91f50aac67da1ef02fac2f73cec117dd0a9148d40e"
+    },
+    "site_tests": {
+      "attempts": 1,
+      "exit": 0,
+      "tests_passed": 16,
+      "tests_failed": 0,
+      "output_sha256": "5cc3c17de49e1faf077c56ff9434b31e549c88235c0ae8a36b053ce4e2e8bf11"
+    },
+    "release_formal": {
+      "attempts": 1,
+      "exit": 0,
+      "effect": "LOCAL_STATIC_EXPORT_AND_VERIFICATION_ONLY",
+      "static_export_pass": true,
+      "content_parity_pass": true,
+      "truth_boundary_validation_pass": true,
+      "manifest_files": 65,
+      "output_sha256": "04696ecc436a53625bcd799a4eed3644c5bf014e418d70359bd9aa960caa41f9"
+    },
+    "ce_tests": {
+      "attempts": 1,
+      "exit": 0,
+      "tests_passed": 49,
+      "tests_failed": 0,
+      "output_sha256": "c1c7f108869c61ab537d26f5b49ad105afceb28447656d3774e6515bbb4add70"
+    },
+    "tracked_source_diff": 0,
+    "remote_drift": 0
+  },
+  "residual_observations": {
+    "github_checks": "ABSENT_NOT_SUCCESS",
+    "github_human_reviews": "ABSENT",
+    "b004": "NON_BLOCKING_DOCUMENTATION_OPPORTUNITY_NO_CANDIDATE_CHANGE_REQUIRED",
+    "d_cap_001": "MODEL_RATIONALE_88_STRUCTURAL_TRUTH_83",
+    "governance_branch_duplicate_key": "PRE_EXISTING_OUTSIDE_PR27_TARGET_MERGE_TREE",
+    "npm_optional_wasm_observations": 5,
+    "release_formal_source_revision_label": "working-tree"
+  },
+  "effects": {
+    "pr27_merge_execution_complete": true,
+    "post_merge_validation_complete": true,
+    "post_merge_validation_pass": true,
+    "failed_attempts_overwritten": false,
+    "github_checks_success": false,
+    "human_review_equivalence": false,
+    "release_authorized": false,
+    "release_executed": false,
+    "deployment_authorized": false,
+    "deployment_executed": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "permission_created": false,
+    "authority_elevated": false,
+    "evidence_truth_changed": false
+  },
+  "next_gate": {
+    "action": "RECONCILE_CE_G11B_COMMERCIALIZATION_STATUS_AND_SELECT_NEXT_BOUNDED_STANDARD_GATE",
+    "authorized": false
+  }
+}
