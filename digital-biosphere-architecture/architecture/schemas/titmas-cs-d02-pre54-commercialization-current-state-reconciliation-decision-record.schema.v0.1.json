@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-pre54-commercialization-current-state-reconciliation-decision-record:0.1",
+  "title": "TITMAS CS-D02 PRE-54 Commercialization Current-State Reconciliation Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "standing_directive_eligibility",
+    "scope",
+    "effects_before_execution",
+    "next_gate",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre54-commercialization-current-state-reconciliation-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-54-COMMERCIALIZATION-CURRENT-STATE-RECONCILIATION-DECISION-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "DBA_ONLY_CURRENT_STATE_RECONCILIATION_AUTHORIZED_NOT_EXECUTED"
+    },
+    "decision_id": {
+      "const": "CS-D02-PRE-54"
+    },
+    "standing_directive_reference": {
+      "const": "TITMAS-CS-STANDING-001"
+    },
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-54-COMMERCIALIZATION-CURRENT-STATE-RECONCILIATION-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "d0f82906c6935bbaa93a578a231f98779da5fcf7e407d0ab0f7f281143a34876"
+    },
+    "recommendation_commit": {
+      "const": "acd3c1a007f8a32c80eb22f1c3c7090ce3cd683a"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_DBA_ONLY_PRE53_CURRENT_STATE_RECONCILIATION_EXACT_SIX_FILES"
+    },
+    "decided_by_ref": {
+      "const": "zhangbin"
+    },
+    "decided_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "executed_by": {
+      "const": "Codex"
+    },
+    "standing_directive_eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_present",
+        "single_exact_option",
+        "primary_repository_and_files_explicit",
+        "preconditions_directly_evidenced",
+        "all_effect_classes_declared",
+        "stop_conditions_explicit",
+        "later_conflict_present",
+        "independent_decision_record_present",
+        "result_validation_and_failure_retention_required",
+        "material_actions_separately_recorded",
+        "applicable"
+      ],
+      "properties": {
+        "canonical_recommendation_present": {"const": true},
+        "single_exact_option": {"const": true},
+        "primary_repository_and_files_explicit": {"const": true},
+        "preconditions_directly_evidenced": {"const": true},
+        "all_effect_classes_declared": {"const": true},
+        "stop_conditions_explicit": {"const": true},
+        "later_conflict_present": {"const": false},
+        "independent_decision_record_present": {"const": true},
+        "result_validation_and_failure_retention_required": {"const": true},
+        "material_actions_separately_recorded": {"const": true},
+        "applicable": {"const": true}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "input_commit",
+        "execution_files_max",
+        "network_requests_max",
+        "credential_reads_max",
+        "external_repository_writes_max"
+      ],
+      "properties": {
+        "primary_repository": {"const": "digital-biosphere-architecture"},
+        "input_commit": {"const": "acd3c1a007f8a32c80eb22f1c3c7090ce3cd683a"},
+        "execution_files_max": {"const": 6},
+        "network_requests_max": {"const": 0},
+        "credential_reads_max": {"const": 0},
+        "external_repository_writes_max": {"const": 0}
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "current_state_reconciliation_authorized",
+        "qwen_credential_identifier_configured_local",
+        "qwen_base_url_configured_local",
+        "qwen_provider_connected",
+        "qwen_provider_directly_tested",
+        "provider_integration_authorized",
+        "security_review_authorized",
+        "security_review_completed",
+        "implementation_authorized",
+        "runtime_authorized",
+        "agent_authorized",
+        "entity_authorized",
+        "permission_granted",
+        "evidence_truth_changed",
+        "external_action_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized",
+        "standard_ready"
+      ],
+      "properties": {
+        "current_state_reconciliation_authorized": {"const": true},
+        "qwen_credential_identifier_configured_local": {"const": true},
+        "qwen_base_url_configured_local": {"const": true},
+        "qwen_provider_connected": {"const": false},
+        "qwen_provider_directly_tested": {"const": false},
+        "provider_integration_authorized": {"const": false},
+        "security_review_authorized": {"const": false},
+        "security_review_completed": {"const": false},
+        "implementation_authorized": {"const": false},
+        "runtime_authorized": {"const": false},
+        "agent_authorized": {"const": false},
+        "entity_authorized": {"const": false},
+        "permission_granted": {"const": false},
+        "evidence_truth_changed": {"const": false},
+        "external_action_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    },
+    "next_gate": {
+      "const": "EXECUTE_VALIDATE_AND_REMOTE_ATTEST_EXACT_SIX_FILE_CURRENT_STATE_RECONCILIATION"
+    },
+    "result": {
+      "const": "NOT_EXECUTED"
+    }
+  }
+}
