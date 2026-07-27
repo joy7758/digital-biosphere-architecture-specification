@@ -10,7 +10,7 @@ primary_repository: digital-biosphere-architecture
 decision_candidate: CS-D02-PRE-63
 standing_directive_reference: TITMAS-CS-STANDING-001
 recommended_by: Codex
-recommended_at: 2026-07-27T11:20:00+08:00
+recommended_at: 2026-07-27T10:20:00+08:00
 target_repository_observed: https://github.com/joy7758/titmas-integrations.git
 target_branch_observed: codex/rb0-governance-baseline
 target_commit_observed: 5ac891c5af88b1e9aeacdb3666217c6f832a57a6
