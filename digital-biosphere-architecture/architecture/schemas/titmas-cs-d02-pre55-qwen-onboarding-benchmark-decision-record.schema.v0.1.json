@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:cs-d02-pre55-qwen-onboarding-benchmark-decision-record:0.1",
+  "title": "TITMAS CS-D02 PRE-55 Qwen Onboarding Benchmark Decision Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "decision_id",
+    "standing_directive_reference",
+    "recommendation_reference",
+    "recommendation_sha256",
+    "recommendation_commit",
+    "decision_result",
+    "decided_by_ref",
+    "decided_at",
+    "executed_by",
+    "standing_directive_eligibility",
+    "scope",
+    "effects_before_execution",
+    "next_gate",
+    "result"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-cs-d02-pre55-qwen-onboarding-benchmark-decision-record.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA-TITMAS-CS-D02-PRE-55-QWEN-ONBOARDING-BENCHMARK-DECISION-0.1"
+    },
+    "version": {"const": "0.1.0"},
+    "status": {"const": "QWEN_ONBOARDING_BENCHMARK_AUTHORIZED_NOT_EXECUTED"},
+    "decision_id": {"const": "CS-D02-PRE-55"},
+    "standing_directive_reference": {"const": "TITMAS-CS-STANDING-001"},
+    "recommendation_reference": {
+      "const": "TITMAS-CS-D02-PRE-55-QWEN-ONBOARDING-BENCHMARK-RECOMMENDATION-v0.1.md"
+    },
+    "recommendation_sha256": {
+      "const": "9bae2f49dbc975a6651cdf1c38bddca5cbbece39d5df93c3d9442f1751a0745d"
+    },
+    "recommendation_commit": {
+      "const": "87b76344cfa2f78dc626605b8756fa7e4c6ecb07"
+    },
+    "decision_result": {
+      "const": "AUTHORIZE_QWEN_ONBOARDING_BENCHMARK_EXACT_THREE_PUBLIC_SAFE_REQUESTS"
+    },
+    "decided_by_ref": {"const": "zhangbin"},
+    "decided_at": {"type": "string", "format": "date-time"},
+    "executed_by": {"const": "Codex"},
+    "standing_directive_eligibility": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "canonical_recommendation_present",
+        "single_exact_option",
+        "provider_model_endpoint_scope_explicit",
+        "public_safe_inputs_explicit",
+        "preconditions_directly_evidenced",
+        "all_effect_classes_declared",
+        "stop_conditions_explicit",
+        "later_conflict_present",
+        "independent_decision_record_present",
+        "result_validation_and_failure_retention_required",
+        "material_actions_separately_recorded",
+        "applicable"
+      ],
+      "properties": {
+        "canonical_recommendation_present": {"const": true},
+        "single_exact_option": {"const": true},
+        "provider_model_endpoint_scope_explicit": {"const": true},
+        "public_safe_inputs_explicit": {"const": true},
+        "preconditions_directly_evidenced": {"const": true},
+        "all_effect_classes_declared": {"const": true},
+        "stop_conditions_explicit": {"const": true},
+        "later_conflict_present": {"const": false},
+        "independent_decision_record_present": {"const": true},
+        "result_validation_and_failure_retention_required": {"const": true},
+        "material_actions_separately_recorded": {"const": true},
+        "applicable": {"const": true}
+      }
+    },
+    "scope": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_repository",
+        "input_commit",
+        "output_files",
+        "provider_requests_max",
+        "model_requests_max",
+        "credential_identifiers_max",
+        "concurrency_max",
+        "timeout_seconds_per_request",
+        "retry_max",
+        "fallback_max",
+        "model_substitution_max",
+        "json_repair_max",
+        "external_repository_writes_max"
+      ],
+      "properties": {
+        "primary_repository": {"const": "digital-biosphere-architecture"},
+        "input_commit": {"const": "87b76344cfa2f78dc626605b8756fa7e4c6ecb07"},
+        "output_files": {"const": 9},
+        "provider_requests_max": {"const": 3},
+        "model_requests_max": {"const": 3},
+        "credential_identifiers_max": {"const": 1},
+        "concurrency_max": {"const": 1},
+        "timeout_seconds_per_request": {"const": 45},
+        "retry_max": {"const": 0},
+        "fallback_max": {"const": 0},
+        "model_substitution_max": {"const": 0},
+        "json_repair_max": {"const": 0},
+        "external_repository_writes_max": {"const": 0}
+      }
+    },
+    "effects_before_execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bounded_onboarding_benchmark_authorized",
+        "provider_integration_authorized",
+        "provider_supported",
+        "provider_certified",
+        "security_review_authorized",
+        "security_review_completed",
+        "implementation_authorized",
+        "runtime_authorized",
+        "agent_authorized",
+        "entity_authorized",
+        "permission_granted",
+        "evidence_truth_changed",
+        "external_repository_write_authorized",
+        "commercial_offer_authorized",
+        "certification_authorized",
+        "release_authorized",
+        "standard_ready"
+      ],
+      "properties": {
+        "bounded_onboarding_benchmark_authorized": {"const": true},
+        "provider_integration_authorized": {"const": false},
+        "provider_supported": {"const": false},
+        "provider_certified": {"const": false},
+        "security_review_authorized": {"const": false},
+        "security_review_completed": {"const": false},
+        "implementation_authorized": {"const": false},
+        "runtime_authorized": {"const": false},
+        "agent_authorized": {"const": false},
+        "entity_authorized": {"const": false},
+        "permission_granted": {"const": false},
+        "evidence_truth_changed": {"const": false},
+        "external_repository_write_authorized": {"const": false},
+        "commercial_offer_authorized": {"const": false},
+        "certification_authorized": {"const": false},
+        "release_authorized": {"const": false},
+        "standard_ready": {"const": false}
+      }
+    },
+    "next_gate": {
+      "const": "CREATE_AND_VALIDATE_EXACT_NINE_FILE_PRE55_QWEN_ONBOARDING_PACKET"
+    },
+    "result": {"const": "NOT_EXECUTED"}
+  }
+}
