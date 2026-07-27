@@ -49,7 +49,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_CE_G11B_PHASE_A_FAIL_CLOSED_MODEL_CAP_REMEDIATION_PENDING_STANDARD_NOT_READY"
+      "const": "CS_D02_CE_G11B_PHASE_A_CAP_REMEDIATION_RECOMMENDED_DECISION_PENDING_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -109,13 +109,13 @@
       "properties": {
         "as_of": {"const": "2026-07-27"},
         "last_completed_step": {
-          "const": "COMMERCIAL-EVALUATION-CE-G11B-PHASE-A"
+          "const": "COMMERCIAL-EVALUATION-CE-G11B-PHASE-A-CAP-REMEDIATION-RECOMMENDATION"
         },
         "last_completed_result": {
-          "const": "FAIL_CLOSED_PHASE_A_MODEL_REQUEST_CAP_EXCEEDED"
+          "const": "RECOMMENDED_OPTION_A_FRESH_PHASE_A_R1_DECISION"
         },
         "direct_evidence_reference": {
-          "const": "commercial-evaluation-controller-tls-diagnosis/ce-g11b-phase-a-result.v0.1.json"
+          "const": "TITMAS-CE-G11B-PHASE-A-MODEL-REVIEW-CAP-REMEDIATION-QWEN-REVIEW-v0.1.json"
         },
         "current_best_connected_model": {"const": "qwen3.7-max"},
         "primary_new_provider_candidate": {
@@ -133,9 +133,9 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "PREPARE_CE_G11B_PHASE_A_MODEL_REVIEW_CAP_REMEDIATION_RECOMMENDATION"
+          "const": "PREPARE_CE_G11B_PHASE_A_R1_DECISION"
         },
-        "next_action_authorized": {"const": false},
+        "next_action_authorized": {"const": true},
         "standard_ready": {"const": false},
         "provider_integration_authorized": {"const": false},
         "security_review_completed": {"const": false},
@@ -2758,7 +2758,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "CE_G11B_PHASE_A_FAIL_CLOSED_MODEL_CAP_REMEDIATION_PENDING"
+          "const": "CE_G11B_PHASE_A_CAP_REMEDIATION_RECOMMENDED_DECISION_PENDING"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7784,10 +7784,10 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_CE_G11B_PHASE_A_MODEL_REVIEW_CAP_REMEDIATION_RECOMMENDATION_ONLY"
+          "const": "PREPARE_CE_G11B_PHASE_A_R1_DECISION_ONLY"
         },
         "decision_ready": {
-          "const": false
+          "const": true
         },
         "external_execution_authorized": {
           "const": false

@@ -403,6 +403,12 @@ Decision quality review 为 `APPROVE`、置信度 `0.99`。当前仍不得创建
 `FAIL_CLOSED_PHASE_A_MODEL_REQUEST_CAP_EXCEEDED`：Decision cap 为 0，但 Max 代码审查
 产生了 1 次 implementation-time model request。组件测试虽达到 Python 3.13/3.14
 各 40/40、full discovery 49/49，仍不能把 Phase A 写成 PASS；workflow runs 保持 0。
+[Cap remediation Recommendation](TITMAS-CE-G11B-PHASE-A-MODEL-REVIEW-CAP-REMEDIATION-RECOMMENDATION-v0.1.md)
+采用 non-retroactive Option A：未来新 Decision 只允许恰好 1 次 fresh
+`qwen3.7-max` implementation review，workflow execution-time model requests 仍为 0。
+[Sanitized qwen review](TITMAS-CE-G11B-PHASE-A-MODEL-REVIEW-CAP-REMEDIATION-QWEN-REVIEW-v0.1.json)
+返回 exact model identity、`RECOMMENDED`、置信度 `0.95`、0 blocker/correction。
+Recommendation 与模型审查均不授权 Phase A-R1、Phase B 或 workflow run。
 
 ## Digital Biosphere Program Governance and Architecture Specification v0.1
 

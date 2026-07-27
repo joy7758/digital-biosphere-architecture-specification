@@ -2729,6 +2729,32 @@ CE_G11B_PHASE_B_AUTHORIZED=false
 下一步必须先形成新的 Recommendation 和独立 Decision，明确区分 pre-implementation
 review、bounded implementation code review 与 execution-time model requests。
 
+### 4.77 CE-G11B Phase A Model-Review Cap Remediation Recommendation
+
+[Cap remediation Recommendation](../TITMAS-CE-G11B-PHASE-A-MODEL-REVIEW-CAP-REMEDIATION-RECOMMENDATION-v0.1.md)
+选择 non-retroactive Option A：
+
+```text
+CE_G11B_CAP_REMEDIATION_RECOMMENDATION_PREPARED=true
+CE_G11B_CAP_REMEDIATION_OPTION=A
+CE_G11B_HISTORICAL_REVIEW_RETROACTIVELY_AUTHORIZED=false
+CE_G11B_PHASE_A_R1_IMPLEMENTATION_REVIEW_MODEL=qwen3.7-max
+CE_G11B_PHASE_A_R1_IMPLEMENTATION_MODEL_REQUESTS_EXACT=1
+CE_G11B_EXECUTION_TIME_MODEL_REQUESTS_MAX=0
+CE_G11B_MODEL_RETRY_ALLOWED=false
+CE_G11B_MODEL_FALLBACK_ALLOWED=false
+CE_G11B_VALID_RUN_REQUEST_ALLOWED=false
+CE_G11B_WORKFLOW_TRIGGER_ALLOWED=false
+CE_G11B_PHASE_B_AUTHORIZED=false
+```
+
+[Sanitized qwen review](../TITMAS-CE-G11B-PHASE-A-MODEL-REVIEW-CAP-REMEDIATION-QWEN-REVIEW-v0.1.json)
+记录一次 exact `qwen3.7-max` pre-decision review：`RECOMMENDED`、Option A、愿意向
+智能体客户推荐、置信度 `0.95`、0 blocker/correction；historical failure preserved、
+retroactive authorization rejected 和 three-stage separation 均为 true。该 review 不计入
+未来 Phase A-R1 implementation request，也不授权 Phase A-R1。下一步只允许建立新的
+independent Decision。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -2998,10 +3024,11 @@ Owner/Authority freeze 和 problem-validation execution 决定仍未形成直接
 
 ## 13. Immediate Work Order（近期工作顺序）
 
-1. **Prepare CE-G11B Phase A model-review cap remediation Recommendation only**：
-   Phase A 已因 `1 > 0` 的 model request cap 违规失败关闭；只允许提出新的 bounded
-   Recommendation，不得追溯授权既有 review、不得创建有效 run request、不得执行
-   workflow、server access、live binding、Phase B 或 redeployment；
+1. **Prepare CE-G11B Phase A-R1 Decision only**：cap remediation Recommendation 已由
+   `qwen3.7-max` 以 `RECOMMENDED` 审查；依据 standing directive 只建立新的
+   non-retroactive Decision，固定一次 fresh Max implementation review 和 execution-time
+   zero model request。不得创建有效 run request、执行 Phase A-R1、workflow、server
+   access、live binding、Phase B 或 redeployment；
 2. **Freeze the problem, not the solution**：Profile Agent Review 与 Agent-native Problem
    Signal 两个子闸门已通过；只有独立授权后，才收集并保留 Track B 的真实问题、
    非采用者、替代方案、拒绝和推荐证据；
@@ -3210,7 +3237,7 @@ TITMAS_CS_D02_PRE_25_V0_2_CANDIDATES_CREATED=false
 TITMAS_CS_D02_PRE_25_CONTRACT_CANDIDATES_ADOPTED=false
 TITMAS_CS_D02_PRE_25_IMPLEMENTATION_CREATED=false
 TITMAS_CS_D02_PRE_25_LIVE_RERUN_READY=false
-TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G11B_PHASE_A_MODEL_REVIEW_CAP_REMEDIATION_RECOMMENDATION_ONLY
+TITMAS_CS_D02_NEXT_ALLOWED_ACTION=PREPARE_CE_G11B_PHASE_A_R1_DECISION_ONLY
 
 TITMAS_COMMERCIAL_EVALUATION_PACK_V0_2_DEFINED=true
 TITMAS_EXTERNAL_AGENT_FIRST_RUN_VALIDATION_PASS=true
@@ -3386,6 +3413,16 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G11B_WORKFLOW_CREATED=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_WORKFLOW_RUNS=0
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_VALID_RUN_REQUEST_CREATED=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_B_AUTHORIZED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_CAP_REMEDIATION_RECOMMENDATION_PREPARED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_CAP_REMEDIATION_OPTION=A
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_CAP_REMEDIATION_REVIEW_MODEL=qwen3.7-max
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_CAP_REMEDIATION_REVIEW_VERDICT=RECOMMENDED
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_CAP_REMEDIATION_REVIEW_CONFIDENCE=0.95
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_CAP_REMEDIATION_BLOCKERS=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_CAP_REMEDIATION_REQUIRED_CORRECTIONS=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_HISTORICAL_REVIEW_RETROACTIVELY_AUTHORIZED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_DECISION_RECORDED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G11B_PHASE_A_R1_AUTHORIZED=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G11B_REDEPLOYMENT_AUTHORIZED=false
 TITMAS_PUBLIC_ENTRY_INDEPENDENT_VANTAGES_VALIDATED=2
 TITMAS_PUBLIC_ENTRY_REDEPLOYMENT_ADMISSION_PASS=false
