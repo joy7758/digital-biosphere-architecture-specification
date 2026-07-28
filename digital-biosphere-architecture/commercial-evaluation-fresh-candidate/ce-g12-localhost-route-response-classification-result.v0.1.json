@@ -1,0 +1,196 @@
+{
+  "result_id": "TITMAS-CE-G12-LOCALHOST-ROUTE-RESPONSE-CLASSIFICATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28T01:44:47Z",
+  "status": "PASS_LOCALHOST_ROUTE_RESPONSE_CLASSIFIED_NO_REDEPLOYMENT_AUTHORIZED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-LOCALHOST-ROUTE-RESPONSE-CLASSIFICATION",
+  "decision_sha256": "dae5e94c9d9a807ed4f4acdc58ff23479282098d899c84a007628e3f38806af6",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-LOCALHOST-ROUTE-RESPONSE-CLASSIFICATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "e9c910c8a9a97bbbd94cbda5358ccbb62f2e0ffb7562038b073e81c5a83a04e5",
+  "governance_commit": "37ebb5b023ad5ac698daa197d120c54b71a9dfb9",
+  "current_contract": {
+    "current_target": "/srv/tmai/releases/ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "source_revision": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "manifest_source_revision": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "release_json_sha256": "686099343e21602a191366feb186f294ab77178044de1a940b119d60e12699f7",
+    "manifest_sha256": "a9bca24223de6d54d683d7c576be967a251633315a2e753288980961d801ada0",
+    "current_changed": false
+  },
+  "nginx_observation": {
+    "config_path": "/etc/nginx/conf.d/redcrag.cn.conf",
+    "config_sha256": "ddbd14b27abcce59330d86156fc0d42ea2ebaf933f3bc1447eba0fc9c13b29b5",
+    "directives": [
+      "server_name _;",
+      "root /var/www/letsencrypt;",
+      "return 301 https://redcrag.cn$request_uri;",
+      "server_name redcrag.cn;",
+      "root /var/www/letsencrypt;",
+      "return 301 https://redcrag.cn$request_uri;",
+      "server_name redcrag.cn;",
+      "root /srv/tmai/current;",
+      "index index.html;",
+      "try_files $uri =404;",
+      "try_files $uri =404;",
+      "try_files $uri =404;",
+      "try_files $uri $uri/ $uri/index.html =404;"
+    ],
+    "certificate_or_private_key_paths_recorded": false,
+    "config_changed": false
+  },
+  "observations": [
+    {
+      "path": "/",
+      "expected_file": "index.html",
+      "expected_sha256": "87b2888ffdb72689c5a68241dd3d29612c9f7709a6a663b077e7052e03f3ab42",
+      "initial_status": 200,
+      "initial_location": null,
+      "redirect_count": 0,
+      "final_status": 200,
+      "final_url": "https://redcrag.cn/",
+      "final_body_bytes": 46401,
+      "final_body_sha256": "87b2888ffdb72689c5a68241dd3d29612c9f7709a6a663b077e7052e03f3ab42",
+      "final_body_hash_match": true
+    },
+    {
+      "path": "/en",
+      "expected_file": "en/index.html",
+      "expected_sha256": "28b6d4f0323d7299cae88742fc47c1468d85c2799c7c99afae66fae235aefad0",
+      "initial_status": 301,
+      "initial_location": "https://redcrag.cn/en/",
+      "redirect_count": 1,
+      "final_status": 200,
+      "final_url": "https://redcrag.cn/en/",
+      "final_body_bytes": 48045,
+      "final_body_sha256": "28b6d4f0323d7299cae88742fc47c1468d85c2799c7c99afae66fae235aefad0",
+      "final_body_hash_match": true
+    },
+    {
+      "path": "/en/",
+      "expected_file": "en/index.html",
+      "expected_sha256": "28b6d4f0323d7299cae88742fc47c1468d85c2799c7c99afae66fae235aefad0",
+      "initial_status": 200,
+      "initial_location": null,
+      "redirect_count": 0,
+      "final_status": 200,
+      "final_url": "https://redcrag.cn/en/",
+      "final_body_bytes": 48045,
+      "final_body_sha256": "28b6d4f0323d7299cae88742fc47c1468d85c2799c7c99afae66fae235aefad0",
+      "final_body_hash_match": true
+    },
+    {
+      "path": "/status",
+      "expected_file": "status/index.html",
+      "expected_sha256": "b20c02d07fd1b8683b4bbbc582bd9275d2aa8c3cac22e0ffacb16ca33e695e17",
+      "initial_status": 301,
+      "initial_location": "https://redcrag.cn/status/",
+      "redirect_count": 1,
+      "final_status": 200,
+      "final_url": "https://redcrag.cn/status/",
+      "final_body_bytes": 31115,
+      "final_body_sha256": "b20c02d07fd1b8683b4bbbc582bd9275d2aa8c3cac22e0ffacb16ca33e695e17",
+      "final_body_hash_match": true
+    },
+    {
+      "path": "/status/",
+      "expected_file": "status/index.html",
+      "expected_sha256": "b20c02d07fd1b8683b4bbbc582bd9275d2aa8c3cac22e0ffacb16ca33e695e17",
+      "initial_status": 200,
+      "initial_location": null,
+      "redirect_count": 0,
+      "final_status": 200,
+      "final_url": "https://redcrag.cn/status/",
+      "final_body_bytes": 31115,
+      "final_body_sha256": "b20c02d07fd1b8683b4bbbc582bd9275d2aa8c3cac22e0ffacb16ca33e695e17",
+      "final_body_hash_match": true
+    },
+    {
+      "path": "/en/status",
+      "expected_file": "en/status/index.html",
+      "expected_sha256": "9d63b8aed7f684576f3ddc6f9ded2a8aad51a35bdb7c5bbbbfeffb139c220588",
+      "initial_status": 301,
+      "initial_location": "https://redcrag.cn/en/status/",
+      "redirect_count": 1,
+      "final_status": 200,
+      "final_url": "https://redcrag.cn/en/status/",
+      "final_body_bytes": 32493,
+      "final_body_sha256": "9d63b8aed7f684576f3ddc6f9ded2a8aad51a35bdb7c5bbbbfeffb139c220588",
+      "final_body_hash_match": true
+    },
+    {
+      "path": "/en/status/",
+      "expected_file": "en/status/index.html",
+      "expected_sha256": "9d63b8aed7f684576f3ddc6f9ded2a8aad51a35bdb7c5bbbbfeffb139c220588",
+      "initial_status": 200,
+      "initial_location": null,
+      "redirect_count": 0,
+      "final_status": 200,
+      "final_url": "https://redcrag.cn/en/status/",
+      "final_body_bytes": 32493,
+      "final_body_sha256": "9d63b8aed7f684576f3ddc6f9ded2a8aad51a35bdb7c5bbbbfeffb139c220588",
+      "final_body_hash_match": true
+    }
+  ],
+  "classifications": [
+    {
+      "non_canonical": "/en",
+      "canonical": "/en/",
+      "classification": "CANONICAL_DIRECTORY_REDIRECT",
+      "criteria_pass": true
+    },
+    {
+      "non_canonical": "/status",
+      "canonical": "/status/",
+      "classification": "CANONICAL_DIRECTORY_REDIRECT",
+      "criteria_pass": true
+    },
+    {
+      "non_canonical": "/en/status",
+      "canonical": "/en/status/",
+      "classification": "CANONICAL_DIRECTORY_REDIRECT",
+      "criteria_pass": true
+    }
+  ],
+  "finding": {
+    "canonical_directory_redirects_proven": true,
+    "prior_178_byte_response_classified": true,
+    "prior_failure_cause": "VALIDATION_CONTRACT_DID_NOT_CAPTURE_OR_FOLLOW_CANONICAL_DIRECTORY_REDIRECT",
+    "candidate_content_failure_proven": false,
+    "nginx_root_failure_proven": false,
+    "required_validation_contract_change": "RECORD_INITIAL_301_LOCATION_AND_REQUIRE_FOLLOWED_200_BODY_HASH_MATCH_OR_USE_CANONICAL_TRAILING_SLASH_PATH"
+  },
+  "execution_counts": {
+    "local_ssh_config_resolutions": 1,
+    "ssh_sessions": 1,
+    "server_read_commands": 6,
+    "localhost_route_requests": 14,
+    "server_writes": 0,
+    "public_external_requests": 0,
+    "nginx_tests": 0,
+    "nginx_reloads": 0,
+    "current_switches": 0,
+    "artifact_reuse": 0,
+    "deployments": 0,
+    "new_product_releases": 0,
+    "retries": 0,
+    "network_fallbacks": 0
+  },
+  "effects": {
+    "classification_complete": true,
+    "classification_pass": true,
+    "current_changed": false,
+    "server_state_changed": false,
+    "artifact_reuse_authorized": false,
+    "redeployment_authorized": false,
+    "new_product_release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G12_PRESERVED_ARTIFACT_ATOMIC_ACTIVATION_RECOMMENDATION_ONLY",
+    "authorized": false
+  }
+}
