@@ -1,0 +1,44 @@
+{
+  "schema_version": "0.1",
+  "baseline_id": "AGENT-FRONT-DOOR-FORMAL-RELEASE-BASELINE-20260728-R1",
+  "status": "FIXED_PROPOSED_RELEASE_BASELINE",
+  "decision_reference": "AGENT-FRONT-DOOR-PUBLIC-WEBSITE-FORMAL-RELEASE-2026-07-28",
+  "public_origin": "https://redcrag.cn",
+  "source_revision": "35f30d81962a02a8353a79763fd4f09db815fd15",
+  "active_release_expected": "/srv/tmai/releases/35f30d81962a02a8353a79763fd4f09db815fd15--5b19e75d6ff653f2b44f124a22bf45cea37e8aa771e7e2f8919aeab9ede8eadc",
+  "routes": [
+    {
+      "path": "/",
+      "artifact_path": "index.html",
+      "bytes": 60880,
+      "sha256": "2e3eb4af5042365c2fa22b7e2908e8e09a5e61827f0493168dd7cbaea635e4af"
+    },
+    {
+      "path": "/en/",
+      "artifact_path": "en/index.html",
+      "bytes": 62971,
+      "sha256": "70c82f94a7b7b0b350d95a8bda226f331d509dfda417baab9158e344a8e605dc"
+    },
+    {
+      "path": "/agent-index.json",
+      "artifact_path": "agent-index.json",
+      "bytes": 24408,
+      "sha256": "da9cffef22df2f64304716f83bf0991b07b1a543e5557f16c8bef0407cd7a812"
+    },
+    {
+      "path": "/site-catalog.json",
+      "artifact_path": "site-catalog.json",
+      "bytes": 5257,
+      "sha256": "5a5da6c3b82c4cb615db4d4e0eff54c657cd28815e18532388e79ded7d25a423"
+    }
+  ],
+  "effects": {
+    "static_public_site_release": true,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "permission": false,
+    "certification": false,
+    "production_readiness": false
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "schema_version": "0.1",
+  "run_id": "AGENT-FRONT-DOOR-FORMAL-20260728-R1",
+  "decision_reference": "AGENT-FRONT-DOOR-PUBLIC-WEBSITE-FORMAL-RELEASE-2026-07-28",
+  "public_origin": "https://redcrag.cn",
+  "source_revision": "35f30d81962a02a8353a79763fd4f09db815fd15",
+  "active_release_expected": "/srv/tmai/releases/35f30d81962a02a8353a79763fd4f09db815fd15--5b19e75d6ff653f2b44f124a22bf45cea37e8aa771e7e2f8919aeab9ede8eadc",
+  "deployment_state_expected": "POST_SWITCH_PROPOSED_RELEASE",
+  "immediate_gates_passed": true,
+  "rollback_on_any_failure": true,
+  "hash_baseline_reference": "agent-front-door-formal-release-baseline.v0.1.json",
+  "rounds": 3,
+  "round_gap_seconds": 2,
+  "routes": [
+    "/",
+    "/en/",
+    "/agent-index.json",
+    "/site-catalog.json"
+  ],
+  "requests_per_vantage": 12,
+  "total_public_origin_get_cap": 24,
+  "retry": false,
+  "fallback": false,
+  "tls_verification_bypass": false,
+  "sequential_within_vantage": true,
+  "vantages": [
+    {
+      "vantage_id": "GITHUB_HOSTED_UBUNTU",
+      "client": "python-http-client"
+    },
+    {
+      "vantage_id": "GITHUB_HOSTED_MACOS",
+      "client": "system-curl"
+    }
+  ],
+  "effects": {
+    "deployment_authorization": false,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "permission": false,
+    "certification": false,
+    "sla": false,
+    "production_readiness": false
+  }
+}

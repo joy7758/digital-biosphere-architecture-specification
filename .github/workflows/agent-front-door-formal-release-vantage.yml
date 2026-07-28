@@ -1,0 +1,63 @@
+name: Agent Front Door formal release independent vantages
+
+on:
+  push:
+    branches:
+      - codex/agent-front-door
+    paths:
+      - digital-biosphere-architecture/commercial-evaluation-exact-redeployment/agent-front-door-formal-release-request.v0.1.json
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: agent-front-door-formal-release-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  observe:
+    name: ${{ matrix.vantage_id }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            vantage_id: GITHUB_HOSTED_UBUNTU
+            client: python-http-client
+          - os: macos-latest
+            vantage_id: GITHUB_HOSTED_MACOS
+            client: system-curl
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    steps:
+      - name: Check out the release-bound source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+
+      - name: Run three bounded rounds without retry
+        id: observe
+        continue-on-error: true
+        shell: bash
+        run: |
+          python3 digital-biosphere-architecture/commercial-evaluation-exact-redeployment/agent_front_door_release_observer.py \
+            --request digital-biosphere-architecture/commercial-evaluation-exact-redeployment/agent-front-door-formal-release-request.v0.1.json \
+            --vantage-id "${{ matrix.vantage_id }}" \
+            --client "${{ matrix.client }}" \
+            --output "agent-front-door-release-${{ matrix.vantage_id }}.v0.1.json"
+
+      - name: Preserve the sanitized receipt
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: agent-front-door-release-${{ matrix.vantage_id }}
+          path: agent-front-door-release-${{ matrix.vantage_id }}.v0.1.json
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Preserve fail-closed job status
+        if: always()
+        shell: bash
+        run: |
+          test "${{ steps.observe.outcome }}" = "success"
