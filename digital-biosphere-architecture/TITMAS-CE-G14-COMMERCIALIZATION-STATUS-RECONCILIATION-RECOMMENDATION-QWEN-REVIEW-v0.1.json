@@ -1,0 +1,81 @@
+{
+  "record_type": "TITMAS_CE_G14_COMMERCIALIZATION_STATUS_RECONCILIATION_RECOMMENDATION_QWEN_REVIEW",
+  "version": "0.1.0",
+  "status": "QUALIFYING_ADVISORY_REVIEW_HUMAN_DECISION_REQUIRED",
+  "observed_at": "2026-07-28T15:26:55+08:00",
+  "recommendation_reference": "TITMAS-CE-G14-COMMERCIALIZATION-STATUS-RECONCILIATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "7f18c2e7ec4c543a0f068533beaa79fb49634f7af0fdb7e6360515f58004aab3",
+  "request": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "requested_model": "qwen3.7-max",
+    "requests": 1,
+    "retry": 0,
+    "fallback": 0,
+    "substitution": 0,
+    "extraction": 0,
+    "repair": 0,
+    "direct_json_required": true
+  },
+  "response": {
+    "response_id": "chatcmpl-f915d2d2-b831-4c70-9060-c3bbcb328a2d",
+    "returned_model": "qwen3.7-max",
+    "temporary_capture_sha256": "5516035f97a1f4fde2223128080e930961ecf8f6d08d032d30e498ca96b00981",
+    "temporary_capture_bytes": 7868,
+    "temporary_capture_retained": false,
+    "temporary_capture_deleted_after_binding": true,
+    "direct_json_verified": true,
+    "usage": {
+      "prompt_tokens": 2696,
+      "completion_tokens": 1681,
+      "total_tokens": 4377,
+      "cached_prompt_tokens": 0,
+      "reasoning_tokens": 1452
+    }
+  },
+  "review": {
+    "verdict": "RECOMMENDED",
+    "confidence": 0.95,
+    "agent_customer_would_recommend_status_reconciliation": true,
+    "stale_state_problem_real": true,
+    "exact_six_path_scope_bound": true,
+    "evidence_chain_exact": true,
+    "required_state_truth_preserving": true,
+    "machine_entry_schema_change_bounded": true,
+    "validation_contract_complete": true,
+    "failure_history_preserved": true,
+    "standing_directive_eligible": false,
+    "authority_and_commercial_nonclaims_preserved": true,
+    "blockers": [],
+    "corrections": [],
+    "rationale": "Leaving CE-G13 as current after CE-G14 fail-closed is materially misleading for agent customers. The six paths are sufficient and bounded to status surfaces only. TITMAS-CS-STANDING-001 could apply to a later independent Decision only if eligibility is confirmed, which it currently is not."
+  },
+  "qualification": {
+    "exact_model_verified": true,
+    "direct_json_verified": true,
+    "verdict_qualifies": true,
+    "confidence_qualifies": true,
+    "all_scope_and_truth_checks_true": true,
+    "blockers_zero": true,
+    "corrections_zero": true,
+    "qualifying_advisory_review_complete": true,
+    "agent_customer_recommends_reconciliation": true,
+    "standing_directive_eligibility_as_reviewed": false,
+    "status_reconciliation_authorized": false
+  },
+  "effects": {
+    "decision_created": false,
+    "status_reconciliation_authorized": false,
+    "status_reconciliation_executed": false,
+    "diagnostic_authorized": false,
+    "diagnostic_executed": false,
+    "ce_g14_model_execution_authorized": false,
+    "implementation_authorized": false,
+    "commercial_offering_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "production_ready": false,
+    "authority_or_ownership_changed": false
+  },
+  "next_action": "INDEPENDENT_HUMAN_DECISION_ON_EXACT_SIX_PATH_STATUS_RECONCILIATION",
+  "next_action_authorized": false
+}
