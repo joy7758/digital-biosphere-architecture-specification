@@ -105,11 +105,32 @@
       "supersedes": []
     },
     {
+      "source_branch": "main",
+      "source_commit": "ba6d51f60c12f1ac954dd67947451821fd5a3eb6",
+      "source_path": ".github/workflows/datadog-synthetics.yml",
+      "destination_path": ".github/workflows/datadog-synthetics.yml",
+      "content_hash": "sha256:6bcc19f91da7a564e84e177cd8602f329d5f63a9d59450c12b0d7db1ef069848",
+      "category": "GOVERNANCE_ENTRY",
+      "disposition": "MERGE_CONTENT",
+      "reason": "Existing optional external CI was made explicit and fail-closed when repository secrets are unavailable.",
+      "canonical_owner": "zhangbin",
+      "maturity": "Development",
+      "normative": false,
+      "tests": [
+        "WORKFLOW_YAML_PARSE",
+        "GITHUB_ACTIONS"
+      ],
+      "conflicts": [
+        "DATADOG_REPOSITORY_SECRETS_ABSENT"
+      ],
+      "supersedes": []
+    },
+    {
       "source_branch": "codex/titmas-agent-native-open-standards-community-canonical-integration-v1",
       "source_commit": "ba6d51f60c12f1ac954dd67947451821fd5a3eb6",
       "source_path": ".github/workflows/titmas-community-conformance.yml",
       "destination_path": ".github/workflows/titmas-community-conformance.yml",
-      "content_hash": "sha256:16048dbec2c3edea5e2ec519d862b61dfb6e60245f82738be9a3d5301dcf1483",
+      "content_hash": "sha256:4c4cf9aa02c921729126dc8ee1eb5af9084a075b9d18defc6f5eef6c793f7d92",
       "category": "CONFORMANCE_CORE",
       "disposition": "MERGE_CONTENT",
       "reason": "Content reconciled or created for the canonical integration candidate.",
@@ -2821,6 +2842,6 @@
       "supersedes": []
     }
   ],
-  "file_entry_count": 143,
+  "file_entry_count": 144,
   "excluded_or_deferred_entry_count": 5
 }

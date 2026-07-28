@@ -42,7 +42,9 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
-          fetch-depth: 2
+          # Candidate Grounding resolves an exact frozen origin/main commit.
+          # A shallow PR checkout can omit that object and must fail closed.
+          fetch-depth: 0
 
       - name: Parse JSON and YAML assets
         run: |
