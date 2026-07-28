@@ -1,0 +1,44 @@
+{
+  "manifest_id": "DEB-TITMAS-001-REPRODUCIBILITY-0.1",
+  "status": "TEMPLATE_COMPLETE_RUN_ARTIFACTS_ABSENT",
+  "required_bindings": {
+    "source_snapshot": "source-snapshot-manifest.yaml",
+    "task_registry": "../tasks/task-registry.yaml",
+    "metrics_schema": "../metrics/schema.json",
+    "role_registry": "../roles/registry.yaml",
+    "success_criteria": "../success-criteria.md",
+    "resource_budget": "resource-budget.yaml",
+    "provider_profiles": "provider-adoption-template.yaml",
+    "participant_assignments": "participant-assignment-template.yaml",
+    "randomization_plan": "randomization-and-blinding-plan.yaml",
+    "stop_and_abort": [
+      "../stop-rules.yaml",
+      "abort-and-rollback-plan.md"
+    ]
+  },
+  "future_run_fields": [
+    "run_id",
+    "source_commit",
+    "dependency_lock_hash",
+    "environment_fingerprint",
+    "participant_and_lineage_refs",
+    "provider_and_returned_model_refs",
+    "budget_receipt",
+    "origin_map_hash",
+    "candidate_hashes",
+    "validation_receipts",
+    "incident_refs",
+    "report_hash"
+  ],
+  "replay_requirements": {
+    "independent_lineage": true,
+    "no_blind_key_access_before_review": true,
+    "same_frozen_ten_tasks": true,
+    "same_metrics_and_criteria": true,
+    "negative_and_invalid_results_retained": true
+  },
+  "run_artifacts_present": false,
+  "independent_replay_completed": false,
+  "reproducibility_demonstrated": false,
+  "execution_authorized": false
+}

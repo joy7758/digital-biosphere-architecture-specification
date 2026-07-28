@@ -1,0 +1,44 @@
+{
+  "plan_id": "DEB-TITMAS-001-DATA-HANDLING-0.1",
+  "status": "PLAN_DEFINED_EXACT_PROVIDER_PROFILE_NOT_ADOPTED",
+  "allowed_data_classes": [
+    "FROZEN_PUBLIC_SAFE_SOURCE",
+    "SYNTHETIC_FIXTURE",
+    "ORIGIN_NEUTRAL_CANDIDATE",
+    "SANITIZED_VALIDATION_METADATA"
+  ],
+  "forbidden_data_classes": [
+    "CREDENTIAL",
+    "SECRET",
+    "PERSONAL_DATA",
+    "CUSTOMER_DATA",
+    "CLINICAL_DATA",
+    "PRIVATE_REPOSITORY_CONTENT",
+    "BLIND_KEY",
+    "ORIGIN_MAPPING",
+    "RAW_HIDDEN_REASONING",
+    "PRIVATE_LOCAL_PATH"
+  ],
+  "collection_minimization": "ONLY_FIELDS_REQUIRED_BY_THE_FROZEN_PROTOCOL",
+  "local_retention": {
+    "raw_provider_request_response": "ZERO_AFTER_BOUNDED_SESSION",
+    "sanitized_receipt": "365_DAYS_THEN_ARCHIVE_MINIMAL_METADATA_OR_DELETE",
+    "failure_record": "RETAIN_APPEND_ONLY"
+  },
+  "provider_requirements": {
+    "retention": "MUST_BE_DECLARED",
+    "training_usage": "MUST_BE_DISABLED_OR_EXPLICITLY_ACCEPTED",
+    "logging": "MUST_BE_DECLARED",
+    "deletion": "MUST_BE_DECLARED_AND_TESTABLE_WHERE_AVAILABLE",
+    "data_region": "MUST_BE_DECLARED",
+    "unknown_value_action": "REJECT_PROFILE"
+  },
+  "access_control": "LEAST_PRIVILEGE_ROLE_SCOPED",
+  "credential_handling": "PROCESS_ONLY_NEVER_PERSIST_OR_LOG",
+  "incident_action": "STOP_BATCH_QUARANTINE_ARTIFACTS_PRESERVE_SANITIZED_EVIDENCE",
+  "policy_owner_ref": "NOT_ASSIGNED",
+  "provider_profile_adopted": false,
+  "privacy_policy_adopted": false,
+  "experiment_data_processed": false,
+  "decision_ref": "HD-EB-11"
+}

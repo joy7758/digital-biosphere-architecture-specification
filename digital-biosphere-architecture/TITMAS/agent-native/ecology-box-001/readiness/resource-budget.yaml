@@ -1,0 +1,55 @@
+{
+  "budget_id": "DEB-TITMAS-001-RESOURCE-BUDGET-0.1",
+  "status": "DEFINED_NOT_ADOPTED",
+  "scope": "PER_TASK_PER_ARM",
+  "shared": {
+    "active_wall_clock_minutes": 45,
+    "candidate_revision_limit": 2,
+    "formal_review_cycle_limit": 2,
+    "local_validation_invocation_limit": 5,
+    "network_operation_limit": 0,
+    "real_git_write_limit": 0,
+    "source_file_count_limit": "FROZEN_TASK_REFERENCES_ONLY",
+    "clarification_counting": "COUNT_EACH_HUMAN_CLARIFICATION_EVENT",
+    "rework_counting": "COUNT_EACH_CANDIDATE_REVISION"
+  },
+  "agent_native": {
+    "input_token_limit": 65536,
+    "output_token_limit": 16384,
+    "tool_call_limit": 40,
+    "provider_retry_limit": 0,
+    "fallback_allowed": false,
+    "human_intervention_definition": "Any Human content, instruction, correction or exception after session start."
+  },
+  "human_first": {
+    "allowed_tools": [
+      "offline editor",
+      "frozen local source search",
+      "frozen local deterministic tests"
+    ],
+    "ordinary_network_search_allowed": false,
+    "ai_assistance_allowed": false,
+    "ai_assistance_if_observed": "STOP_AND_MARK_PROTOCOL_DEVIATION",
+    "active_time_method": "MONOTONIC_TIMER_EXCLUDING_PREDECLARED_BREAKS"
+  },
+  "comparability": {
+    "directly_comparable": [
+      "active minutes",
+      "candidate revisions",
+      "formal review cycles",
+      "local validation invocations",
+      "network operations",
+      "real Git writes"
+    ],
+    "not_directly_comparable": [
+      "Agent tokens versus Human cognition",
+      "Provider compute versus Human workstation effort"
+    ],
+    "information_parity_rule": "Both arms receive only the same frozen task-specific source references and rubric.",
+    "over_budget_action": "STOP_TASK_AND_RECORD_PROTOCOL_DEVIATION_NOT_ASSESSED"
+  },
+  "post_hoc_budget_change_allowed": false,
+  "budget_adopted": false,
+  "decision_ref": "HD-EB-13",
+  "execution_authorized": false
+}

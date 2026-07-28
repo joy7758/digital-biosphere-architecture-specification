@@ -1,0 +1,37 @@
+{
+  "template_id": "DEB-TITMAS-001-PROVIDER-ADOPTION-0.1",
+  "source_policy": "../provider-privacy-retention-policy.yaml",
+  "status": "TEMPLATE_ONLY_NOT_ADOPTED",
+  "profile": {
+    "provider": "NOT_SELECTED",
+    "requested_model": "NOT_SELECTED",
+    "allowed_returned_model": "NOT_SELECTED",
+    "data_region": "NOT_ASSESSED",
+    "input_data_classes": [],
+    "retention_period": "NOT_ASSESSED",
+    "training_usage": "NOT_ASSESSED",
+    "human_review_by_provider": "NOT_ASSESSED",
+    "logging": "NOT_ASSESSED",
+    "deletion_method": "NOT_ASSESSED",
+    "credentials_handling": "NOT_ASSESSED",
+    "network_access": "NOT_ASSESSED",
+    "fallback_allowed": false,
+    "fallback_model": "NONE",
+    "effective_from": null,
+    "expires_at": null,
+    "adopted_by": "NOT_ASSIGNED",
+    "decision_ref": "HD-EB-11"
+  },
+  "adoption_requirements": [
+    "Returned model identity exactly matches the accepted profile.",
+    "Retention, training usage, logging and deletion are explicitly accepted.",
+    "Only public-safe or synthetic data classes are allowed.",
+    "Unknown Provider behavior fails closed.",
+    "Fallback requires a separate accepted profile and cannot be silent."
+  ],
+  "advisory_review_providers_are_adopted": false,
+  "provider_profile_adopted": false,
+  "experiment_data_processed": false,
+  "experiment_model_invoked": false,
+  "execution_authorized": false
+}

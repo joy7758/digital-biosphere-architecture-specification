@@ -1,0 +1,55 @@
+{
+  "template_id": "DEB-TITMAS-001-PARTICIPANT-ASSIGNMENT-0.1",
+  "status": "TEMPLATE_ONLY_NO_ASSIGNMENTS",
+  "canonical_participant_schema": "../participants/schema.json",
+  "canonical_role_registry": "../roles/registry.yaml",
+  "required_instance_fields": [
+    "participant_instance",
+    "role",
+    "model",
+    "provider",
+    "runtime",
+    "session",
+    "lineage",
+    "operator",
+    "authority_issuer"
+  ],
+  "human_roles": [
+    {"role": "ACCOUNTABLE_HUMAN_OWNER", "assignee_ref": "NOT_ASSIGNED", "assignment_status": "NOT_ASSIGNED"},
+    {"role": "HUMAN_BASELINE_OPERATOR", "assignee_ref": "NOT_ASSIGNED", "assignment_status": "NOT_ASSIGNED"},
+    {"role": "INDEPENDENT_BLIND_REVIEWER", "assignee_ref": "NOT_ASSIGNED", "assignment_status": "NOT_ASSIGNED"},
+    {"role": "BLIND_CUSTODIAN", "assignee_ref": "NOT_ASSIGNED", "assignment_status": "NOT_ASSIGNED"},
+    {"role": "PROVIDER_PRIVACY_POLICY_OWNER", "assignee_ref": "NOT_ASSIGNED", "assignment_status": "NOT_ASSIGNED"},
+    {"role": "EMERGENCY_STOP_AUTHORITY", "assignee_ref": "NOT_ASSIGNED", "assignment_status": "NOT_ASSIGNED"}
+  ],
+  "agent_roles": [
+    {"role": "EXPLORER", "participant_instance": "NOT_ASSIGNED"},
+    {"role": "VALUE_JUDGE", "participant_instance": "NOT_ASSIGNED"},
+    {"role": "ARCHITECTURE_REVIEWER", "participant_instance": "NOT_ASSIGNED"},
+    {"role": "CONTRIBUTOR", "participant_instance": "NOT_ASSIGNED"},
+    {"role": "CONFORMANCE", "participant_instance": "NOT_ASSIGNED"},
+    {"role": "MEMORY", "participant_instance": "NOT_ASSIGNED"},
+    {"role": "RECOMMENDATION", "participant_instance": "NOT_ASSIGNED"},
+    {"role": "EVOLUTION_OBSERVER", "participant_instance": "NOT_ASSIGNED"}
+  ],
+  "planned_independent_agent_lineage_count": 3,
+  "planned_count_is_current_count": false,
+  "current_counts": {
+    "AGENT_PARTICIPANT_COUNT": 0,
+    "MODEL_COUNT": 0,
+    "SESSION_COUNT": 0,
+    "ROLE_COUNT": 0,
+    "INDEPENDENT_AGENT_LINEAGE_COUNT": 0
+  },
+  "invariants": {
+    "ROLE_NE_AUTHORITY": true,
+    "SESSION_NE_INDEPENDENT_LINEAGE": true,
+    "MODEL_DIVERSITY_NE_REVIEW_INDEPENDENCE": true,
+    "PROVIDER_DIVERSITY_NE_AUTOMATIC_INDEPENDENCE": true
+  },
+  "assignment_created": false,
+  "participant_created": false,
+  "agent_created": false,
+  "runtime_created": false,
+  "execution_authorized": false
+}

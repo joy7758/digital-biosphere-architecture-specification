@@ -1,0 +1,48 @@
+{
+  "plan_id": "DEB-TITMAS-001-RANDOMIZATION-BLINDING-0.1",
+  "status": "METHOD_DEFINED_NO_REAL_KEY_OR_MAPPING",
+  "candidate_id_method": "CANDIDATE_<TASK_ID>_<OPAQUE_RANDOM_LABEL>",
+  "origin_mapping": {
+    "fields": ["candidate_id", "task_id", "arm", "source_output_ref"],
+    "storage": "SEALED_ORIGIN_MAP_CONTROLLED_BY_BLIND_CUSTODIAN",
+    "created": false
+  },
+  "randomization": {
+    "method": "CRYPTOGRAPHICALLY_SECURE_PERMUTATION_AFTER_BOTH_ARM_SUBMISSIONS_SEALED",
+    "seed_source": "BLIND_KEY_DERIVATION",
+    "seed_created": false,
+    "post_hoc_reordering_allowed": false
+  },
+  "sealed_origin_map": {
+    "hash_algorithm": "SHA-256",
+    "hash_created": false,
+    "map_created": false,
+    "public_hash_before_review_required": true
+  },
+  "blind_key_custody": {
+    "owner_ref": "NOT_ASSIGNED",
+    "key_created": false,
+    "access_log_ref": "../blind-custodian-protocol.yaml#access_log"
+  },
+  "unblinding": {
+    "trigger": "ALL_RUBRIC_RECORDS_SEALED_AND_NO_OPEN_BLINDING_INCIDENT",
+    "scheduled_time": "NOT_SCHEDULED",
+    "emergency_trigger": "SAFETY_OR_INTEGRITY_INCIDENT_REQUIRING_HUMAN_DECISION",
+    "emergency_action": "STOP_AFFECTED_PAIR_RECORD_INCIDENT_NO_SCORE_CHANGE",
+    "executed": false
+  },
+  "reviewer_controls": {
+    "prior_access_check_required": true,
+    "conflict_check_required": true,
+    "abstention_required_on_uncertainty": true,
+    "post_unblinding_audit_required": true
+  },
+  "custodian_independent_from": [
+    "Contributor",
+    "Human baseline operator",
+    "Independent blind Reviewer"
+  ],
+  "method_adopted": false,
+  "decision_ref": "HD-EB-13",
+  "execution_authorized": false
+}

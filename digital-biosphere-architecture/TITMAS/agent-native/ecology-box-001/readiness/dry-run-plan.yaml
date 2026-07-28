@@ -1,0 +1,40 @@
+{
+  "plan_id": "DEB-TITMAS-001-SYNTHETIC-DRY-RUN-0.1",
+  "status": "PACKAGE_READY_NOT_EXECUTED",
+  "synthetic_dry_run": true,
+  "allowed_validations": [
+    "SCHEMA_VALIDATION",
+    "STATE_TRANSITION_VALIDATION",
+    "FILE_DISCOVERY",
+    "SYNTHETIC_CANDIDATE_LABELING",
+    "MOCK_BLIND_MAPPING",
+    "METRIC_PARSER",
+    "REPORT_GENERATION",
+    "STOP_RULE_TRIGGER"
+  ],
+  "fixture_constraints": {
+    "synthetic_records_only": true,
+    "formal_participants_used": false,
+    "formal_models_invoked": false,
+    "participant_count_effect": 0,
+    "lineage_count_effect": 0,
+    "metric_effect": "NONE",
+    "outcome_effect": "NONE",
+    "value_evidence_effect": "NONE",
+    "freeze_manifest_effect": "NONE"
+  },
+  "prohibited": [
+    "FORMAL_EXPERIMENT_MODEL_CALL",
+    "REAL_PARTICIPANT_ASSIGNMENT",
+    "REAL_BLIND_KEY",
+    "REAL_ORIGIN_MAPPING",
+    "EXPERIMENT_METRIC_RECORD",
+    "OUTCOME_CLAIM",
+    "VALUE_EVIDENCE"
+  ],
+  "DRY_RUN_PACKAGE_READY": true,
+  "DRY_RUN_EXECUTED": false,
+  "SYNTHETIC_DRY_RUN_NE_EXPERIMENT_EXECUTION": true,
+  "SYNTHETIC_DRY_RUN_NE_PILOT_RESULT": true,
+  "SYNTHETIC_DRY_RUN_NE_VALUE_EVIDENCE": true
+}
