@@ -1,0 +1,110 @@
+{
+  "record_type": "TITMAS_CS_G0_ROLE_ACCEPTANCE_DECISION_CANDIDATE_QWEN_REVIEW",
+  "version": "0.1.0",
+  "status": "RECOMMENDED_OPTION_A_HUMAN_DECISION_PACKET_READY",
+  "observed_at": "2026-07-28T16:04:00+08:00",
+  "reviewed_artifacts": [
+    {
+      "path": "TITMAS-CS-G0-ROLE-ACCEPTANCE-DECISION-CANDIDATE-v0.1.md",
+      "reviewed_sha256": "b8913ddb016a0e348273c6e991cc0afa5839c827d19e7d2aabb370ff93a20735",
+      "current_sha256": "bf8bb2536b81ea9adc1ff8e2d721ccda6f0f3ce931749520770ceddd2c7a0a1d",
+      "post_review_change": "REMOVE_ONE_TRAILING_BLANK_LINE_ONLY"
+    },
+    {
+      "path": "architecture/titmas-cs-g0-role-acceptance-decision-candidate.v0.1.json",
+      "reviewed_sha256": "8ab34f342c1825c7a172df6d88d70b75f40902fc8c8cb3910b6423e7e9cc623e",
+      "current_sha256": "8ab34f342c1825c7a172df6d88d70b75f40902fc8c8cb3910b6423e7e9cc623e",
+      "post_review_change": "NONE"
+    }
+  ],
+  "post_review_normalization": {
+    "performed": true,
+    "scope": "MARKDOWN_TRAILING_BLANK_LINE_ONLY",
+    "semantic_content_changed": false,
+    "role_or_effect_changed": false,
+    "review_rerun_performed": false
+  },
+  "request": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "requested_model": "qwen3.7-max",
+    "requests": 1,
+    "retry": 0,
+    "fallback": 0,
+    "substitution": 0,
+    "extraction": 0,
+    "repair": 0,
+    "direct_json_required": true,
+    "request_sha256": "bbe746bfb508a0b60b65eef0f297067f0ae57393e1c24c39a0a322ce82ffc99c",
+    "request_bytes": 17952
+  },
+  "response": {
+    "response_id": "chatcmpl-b87f6388-460a-421d-b367-433f8ab75430",
+    "returned_model": "qwen3.7-max",
+    "finish_reason": "stop",
+    "raw_response_sha256": "2e30545102996c809321acff9bd0f04a8bf1b1b89af7cb6d50230974c92a86b9",
+    "raw_response_bytes": 8780,
+    "direct_content_sha256": "e4ce0ede77809ac28deb4cedeef4ea054dd7ea5be4f7b996d811bbd89e87a92c",
+    "direct_json_verified": true,
+    "temporary_capture_retained": false,
+    "temporary_capture_deleted_after_binding": true,
+    "usage": {
+      "prompt_tokens": 3926,
+      "completion_tokens": 2107,
+      "total_tokens": 6033,
+      "cached_prompt_tokens": 0,
+      "reasoning_tokens": 1818
+    }
+  },
+  "review": {
+    "verdict": "RECOMMENDED",
+    "confidence": 0.95,
+    "recommended_option": "A",
+    "agent_customer_would_recommend_option_a": true,
+    "duties_and_prohibitions_exact": true,
+    "dual_role_conflict_disclosed": true,
+    "dual_role_mitigations_sufficient_for_candidate": true,
+    "term_bounded_and_revocable": true,
+    "candidate_ne_role_acceptance_preserved": true,
+    "explicit_human_decision_required": true,
+    "standing_directive_may_auto_accept_roles": false,
+    "false_effects_preserved": true,
+    "human_decision_packet_ready": true,
+    "blockers": [],
+    "required_corrections": [],
+    "rationale": "Option A is bounded, revocable, non-renewing without a new Human Decision, and explicitly preserves all acquisition/reviewer/data/record/Gate/commercial/release effects as false. Dual-role concentration is disclosed and mitigated by external review, separate counting decisions, and frozen agent-assisted review. No automatic role acceptance, standing directive auto-acceptance, self-review, or authority expansion is present. The packet is ready for explicit Human choice."
+  },
+  "qualification": {
+    "exact_model_verified": true,
+    "direct_json_verified": true,
+    "verdict_recommended": true,
+    "confidence_at_least_0_90": true,
+    "recommended_option_a": true,
+    "all_boundary_checks_true": true,
+    "blockers_zero": true,
+    "corrections_zero": true,
+    "human_decision_packet_ready": true,
+    "role_acceptance_authorized": false
+  },
+  "effects": {
+    "decision_created": false,
+    "role_accepted": false,
+    "reviewer_assigned": false,
+    "acquisition_ready": false,
+    "acquisition_authorized": false,
+    "data_processing_authorized": false,
+    "record_created": false,
+    "record_validated": false,
+    "record_counted": false,
+    "cs_g0_pass": false,
+    "standard_ready": false,
+    "market_validation_pass": false,
+    "commercial_offering_authorized": false,
+    "customer_adoption_verified": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "production_ready": false,
+    "authority_or_ownership_changed": false
+  },
+  "next_action": "EXPLICIT_HUMAN_OPTION_A_B_C_OR_D_DECISION",
+  "next_action_authorized": false
+}

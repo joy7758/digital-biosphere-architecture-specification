@@ -1,0 +1,147 @@
+{
+  "document_id": "DBA_TITMAS_CS_G0_ROLE_ACCEPTANCE_DECISION_CANDIDATE_0_1",
+  "version": "0.1.0",
+  "status": "DECISION_CANDIDATE_PREPARED_REVIEW_REQUIRED_NOT_DECIDED",
+  "created_at": "2026-07-28T16:00:08+08:00",
+  "primary_repository": "digital-biosphere-architecture",
+  "human_accountability_ref": "zhangbin",
+  "canonical_document": "../TITMAS-CS-G0-ROLE-ACCEPTANCE-DECISION-CANDIDATE-v0.1.md",
+  "source_baseline": {
+    "branch": "codex/cs-g0-track-b-evidence-route-decision-candidate",
+    "commit": "9b51e05602f0330d07389710df517e210ed1b798",
+    "remote_equality_verified": true
+  },
+  "preparation_authority": {
+    "review_reference": "../TITMAS-CS-G0-OPTION-A-ACQUISITION-READINESS-QWEN-AGENT-CUSTOMER-REVIEW-v0.1.json",
+    "review_sha256": "38ce762da2be636b750a301c468804b5dffc7c161a45ae9c06f5512f85907a1c",
+    "recommended_immediate_action": "PREPARE_ROLE_ACCEPTANCE_DECISION_CANDIDATE_ONLY",
+    "standing_directive_eligible_for_candidate_preparation": true,
+    "explicit_human_decision_required_for_role_acceptance": true
+  },
+  "current_roles": [
+    {
+      "role_id": "PROBLEM_VALIDATION_OWNER",
+      "candidate_ref": "zhangbin",
+      "state": "CANDIDATE_NOT_ACCEPTED"
+    },
+    {
+      "role_id": "PRIVACY_DATA_STEWARD",
+      "candidate_ref": "zhangbin",
+      "state": "CANDIDATE_NOT_ACCEPTED"
+    }
+  ],
+  "recommended_option": "A",
+  "proposed_term": {
+    "starts_at": "DECISION_RECORDED_AT",
+    "expires_at": "2026-09-30T23:59:59+08:00",
+    "revocable_by_ref": "zhangbin",
+    "renewal_requires_new_explicit_human_decision": true
+  },
+  "problem_validation_owner_duties": [
+    "MAINTAIN_FROZEN_PROBLEM_OBSERVER_FIELDS_AND_THRESHOLDS",
+    "PREVENT_TRACK_A_TRACK_B_CROSS_COUNTING",
+    "MAINTAIN_EXACT_SOURCE_CHANNEL_INVENTORY",
+    "PRESERVE_REJECTION_PARTIAL_INVALID_WITHDRAWN_AND_NEGATIVE_RECORDS",
+    "REJECT_AUTHOR_LED_SYNTHETIC_SELF_CERTIFIED_OR_CONTEXT_FREE_EXAMPLES",
+    "REQUIRE_INDEPENDENT_METHOD_AND_CLAIM_REVIEW_BEFORE_VALID_STATUS",
+    "REQUIRE_SEPARATE_HUMAN_COUNTING_DECISION_PER_RECORD",
+    "STOP_ON_DATA_INDEPENDENCE_CAP_TERM_OR_REVIEW_FAILURE",
+    "DISCLOSE_CONFLICTS_AND_LIMITATIONS"
+  ],
+  "privacy_data_steward_duties": [
+    "DEFINE_AND_APPROVE_DATA_CLASSES_BEFORE_FUTURE_ACQUISITION_DECISION",
+    "REQUIRE_PUBLIC_SAFE_PARAPHRASE_OR_EXACT_CONSENT_SOURCE_BASIS",
+    "REJECT_CREDENTIALS_SECRETS_DIRECT_IDENTIFIERS_REGULATED_DATA_AND_UNNECESSARY_RAW_TRANSCRIPTS",
+    "APPROVE_STORAGE_ACCESS_RETENTION_WITHDRAWAL_DELETION_AND_INCIDENT_CONTROLS_BEFORE_ACQUISITION",
+    "STOP_ON_CONSENT_SOURCE_ACCESS_OR_PROHIBITED_DATA_FAILURE",
+    "PRESERVE_WITHDRAWAL_AND_DELETION_DECISIONS_WITHOUT_REWRITING_HISTORY",
+    "LIMIT_PUBLIC_OUTPUT_TO_AGGREGATES_PUBLIC_SAFE_PARAPHRASE_AND_LIMITATIONS"
+  ],
+  "dual_role_conflict": {
+    "same_person_is_human_decision_owner_problem_validation_owner_and_privacy_data_steward": true,
+    "described_as_independent_review": false,
+    "mitigations": [
+      "ROLE_HOLDER_CANNOT_SOLELY_VALIDATE_OWN_RECORD",
+      "ROLE_HOLDER_CANNOT_SOLELY_COUNT_RECORD",
+      "METHOD_SECURITY_CLAIM_REVIEW_MUST_BE_EXTERNAL_TO_RECORD_CREATOR",
+      "AGENT_ASSISTED_REVIEW_BYTES_AND_MODEL_MUST_BE_FROZEN",
+      "DISSENT_AND_FAILURE_MUST_BE_RETAINED",
+      "ACQUISITION_REQUIRES_SEPARATE_EXPLICIT_DECISION",
+      "CS_G0_REQUIRES_SEPARATE_EXPLICIT_HUMAN_DECISION"
+    ]
+  },
+  "options": [
+    {
+      "id": "A",
+      "name": "ACCEPT_BOTH_BOUNDED_ROLES",
+      "recommended": true,
+      "problem_validation_owner_accepted_if_decided": true,
+      "privacy_data_steward_accepted_if_decided": true,
+      "bounded_accountability_effect_if_decided": true,
+      "acquisition_authorized": false
+    },
+    {
+      "id": "B",
+      "name": "ACCEPT_PROBLEM_VALIDATION_OWNER_ONLY",
+      "recommended": false,
+      "acquisition_remains_blocked": true
+    },
+    {
+      "id": "C",
+      "name": "DEFER_BOTH",
+      "recommended": false,
+      "roles_remain_candidate_not_accepted": true
+    },
+    {
+      "id": "D",
+      "name": "REJECT_BOTH",
+      "recommended": false,
+      "new_candidates_required": true
+    }
+  ],
+  "review_requirement": {
+    "exact_model": "qwen3.7-max",
+    "direct_json_required": true,
+    "requests_max": 1,
+    "retry": 0,
+    "fallback": 0,
+    "substitution": 0,
+    "extraction": 0,
+    "repair": 0,
+    "review_completed": false
+  },
+  "decision": {
+    "decision_id": "CS-G0-ROLE-D01",
+    "selected_option": null,
+    "decision_recorded": false,
+    "role_acceptance_effect": false
+  },
+  "false_effects_under_every_option": {
+    "reviewer_assigned": false,
+    "source_channel_approved": false,
+    "storage_approved": false,
+    "data_processing_authorized": false,
+    "external_outreach_authorized": false,
+    "participant_enrollment_authorized": false,
+    "model_or_network_acquisition_authorized": false,
+    "private_store_created": false,
+    "implementation_authorized": false,
+    "runtime_created": false,
+    "agent_created": false,
+    "entity_created": false,
+    "permission_created": false,
+    "record_created": false,
+    "record_validated": false,
+    "record_counted": false,
+    "cs_g0_pass": false,
+    "standard_ready": false,
+    "market_validation_pass": false,
+    "customer_adoption_verified": false,
+    "commercial_offering_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "production_ready": false
+  },
+  "next_action": "EXACT_QWEN3_7_MAX_REVIEW_OF_ROLE_ACCEPTANCE_DECISION_CANDIDATE",
+  "next_action_authorized": true
+}
