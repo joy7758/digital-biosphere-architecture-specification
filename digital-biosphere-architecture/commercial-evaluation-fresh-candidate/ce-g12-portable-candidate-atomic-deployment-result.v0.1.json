@@ -1,0 +1,157 @@
+{
+  "result_id": "TITMAS-CE-G12-PORTABLE-CANDIDATE-ATOMIC-DEPLOYMENT-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28T01:35:28Z",
+  "status": "FAIL_CLOSED_ARTIFACT_ADDRESSED_ATOMIC_STATIC_SITE_DEPLOYMENT_NO_NEW_RELEASE_AUTHORIZED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PORTABLE-CANDIDATE-ATOMIC-DEPLOYMENT",
+  "decision_sha256": "6a1e231eb5efffdc11f598d87b693100dd5287ed289bb396051a46226bc8198a",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PORTABLE-CANDIDATE-ATOMIC-DEPLOYMENT-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "27e890c530e04b1f6d2d7faae6f309ff7221a762a108ebc8bc1a98b4cfaf58e8",
+  "governance_commit": "fae34eb7e88777748135ef7a2ae5a71507d7da10",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "local_gate": {
+    "governance_local_remote_equal": true,
+    "candidate_exact": true,
+    "extractor_dry_run_attempts_executed": 1,
+    "extractor_dry_run_pass": true,
+    "ssh_config_resolutions": 1,
+    "ssh_mapping_exact": true,
+    "identity_path_recorded": false
+  },
+  "candidate_contract": {
+    "source_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "archive_reference": "/tmp/titmas-site-c1d8931930fbae15f96ee6a6ac050b081538c919-source-bound-portable.tar.gz",
+    "archive_bytes": 979463,
+    "archive_sha256": "f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "manifest_sha256": "f0e42b7f0be3c36f201517d68bef42ec365809261ed46d4fc6af74949a397a60",
+    "candidate_changed": false
+  },
+  "server_artifacts": {
+    "release_id": "c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "artifact_path": "/srv/tmai/artifacts/c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7.tar.gz",
+    "artifact_received_bytes": 979463,
+    "artifact_received_sha256": "f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "final_path": "/srv/tmai/releases/c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "staging_renamed_to_final": true,
+    "failed_artifacts_silently_deleted": false,
+    "future_reuse_authorized": false
+  },
+  "archive_and_tree_checks": {
+    "archive_transfer_pass": true,
+    "raw_members": 87,
+    "directory_members": 21,
+    "file_members": 66,
+    "appledouble_members": 0,
+    "duplicate_members": 0,
+    "special_members": 0,
+    "archive_extracted": true,
+    "manifest_files": 65,
+    "actual_files": 66,
+    "manifest_coverage_pass": true,
+    "file_hashes_passed": 65,
+    "source_binding_pass": true,
+    "owner_policy_pass": true,
+    "directory_owner_group": "root:root",
+    "directory_mode": "0755",
+    "file_owner_group": "root:root",
+    "file_mode": "0644"
+  },
+  "nginx_check": {
+    "tests": 1,
+    "exit": 0,
+    "output_sha256": "c1d95d6441adac8d73265f026042743581500b1133052abc44ed98cf52bb6618",
+    "reloads": 0,
+    "config_changed": false
+  },
+  "switch_and_rollback": {
+    "pre_switch_current": "/srv/tmai/releases/ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "forward_switches": 1,
+    "forward_target": "/srv/tmai/releases/c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "rollback_triggered": true,
+    "rollback_switches": 1,
+    "rollback_target": "/srv/tmai/releases/ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "rollback_target_verified": true,
+    "post_session_current": "/srv/tmai/releases/ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "candidate_active_after_session": false
+  },
+  "route_validation": {
+    "planned_routes": 4,
+    "attempted_routes": 2,
+    "passed_routes": 1,
+    "failure_route": "/en",
+    "failure_classification": "RESPONSE_BODY_HASH_MISMATCH_HTTP_STATUS_AND_REDIRECT_NOT_CAPTURED",
+    "http_status_observed": false,
+    "redirect_proven": false,
+    "root_cause_proven": false,
+    "observations": [
+      {
+        "route": "/",
+        "curl_exit": 0,
+        "body_bytes": 46401,
+        "body_sha256": "cca332da1364a614bbef83939d0ff7c948739e673d14c7c1b2a60cd9d500abf8",
+        "expected_file": "index.html",
+        "expected_sha256": "cca332da1364a614bbef83939d0ff7c948739e673d14c7c1b2a60cd9d500abf8",
+        "hash_match": true
+      },
+      {
+        "route": "/en",
+        "curl_exit": 0,
+        "body_bytes": 178,
+        "body_sha256": "7cb59ce037656d9a4e8ee9194bc31dfc540cbc8fd5b19c64439a89631cde3715",
+        "expected_file": "en/index.html",
+        "expected_sha256": "562c061979c8cd72b1a94a74715727a898251a7716d61f64f4760468c0fb65f1",
+        "hash_match": false
+      }
+    ]
+  },
+  "failure": {
+    "failure_stage": "LOCALHOST_ROUTE_VALIDATION",
+    "terminal_stage": "ROLLBACK",
+    "error": "RuntimeError: ROUTE_VALIDATION_FAILURE:/en",
+    "retry_executed": false,
+    "fallback_executed": false,
+    "cleanup_executed": false
+  },
+  "execution_counts": {
+    "local_extractor_dry_runs_executed": 1,
+    "local_ssh_config_resolutions": 1,
+    "ssh_sessions": 1,
+    "archive_transfers": 1,
+    "archive_extractions": 1,
+    "nginx_tests": 1,
+    "nginx_reloads": 0,
+    "forward_symlink_switches": 1,
+    "rollback_symlink_switches": 1,
+    "localhost_route_requests": 2,
+    "external_public_requests": 0,
+    "retries": 0,
+    "network_fallbacks": 0,
+    "new_product_releases": 0,
+    "pr_mutations": 0
+  },
+  "effects": {
+    "deployment_execution_complete": true,
+    "deployment_pass": false,
+    "rollback_complete": true,
+    "rollback_pass": true,
+    "candidate_active": false,
+    "server_artifacts_persist": true,
+    "server_state_changed": true,
+    "current_target_restored": true,
+    "public_site_transiently_changed": true,
+    "public_site_final_target_changed": false,
+    "new_product_release_authorized": false,
+    "new_product_release_executed": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G12_LOCALHOST_ROUTE_RESPONSE_CLASSIFICATION_RECOMMENDATION_ONLY",
+    "authorized": false
+  }
+}
