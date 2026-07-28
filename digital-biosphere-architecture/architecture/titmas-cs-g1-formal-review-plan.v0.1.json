@@ -1,0 +1,211 @@
+{
+  "document_id": "DBA-TITMAS-CS-G1-FORMAL-REVIEW-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "PLAN_PREPARED_EXECUTION_BLOCKED_PENDING_HUMAN_DECISION",
+  "maturity": "Development",
+  "created_at": "2026-07-28T16:36:29+08:00",
+  "primary_repository": "digital-biosphere-architecture",
+  "canonical_document": "titmas-cs-g1-formal-review-execution-plan-v0.1.md",
+  "result_schema": "schemas/titmas-cs-g1-formal-review-result.schema.v0.1.json",
+  "owner_ref": "NOT_ACCEPTED",
+  "decision_reference": "CS-G1-ROLE-REVIEW-D01-NOT_DECIDED",
+  "execution_prerequisite": {
+    "required_decision_id": "CS-G1-ROLE-REVIEW-D01",
+    "required_decision_result": "ACCEPT_OPTION_A_BOUNDED_OWNER_ACCOUNTABILITY_AND_ROLE_SCOPED_QWEN_REVIEW",
+    "currently_satisfied": false,
+    "requests_allowed_now": 0
+  },
+  "source_bindings": [
+    {
+      "path": "../TITMAS-CS-G1-OWNER-REVIEW-ASSIGNMENT-DECISION-CANDIDATE-v0.1.md",
+      "sha256": "eedf8dccd903b0a3301d09ae1cd2df4a8877821c3120c97c4585b23aaf6f6f73"
+    },
+    {
+      "path": "titmas-cs-g1-owner-review-assignment-decision-candidate.v0.1.json",
+      "sha256": "4bf68d8dca71e436e25edc00b9c992fe608c676e7607a07a866c41341e0b0218"
+    },
+    {
+      "path": "../TITMAS-CS-G1-OWNER-REVIEW-ASSIGNMENT-DECISION-CANDIDATE-QWEN-REVIEW-v0.1.json",
+      "sha256": "1797e425127bc58e3479b52a1c50aa8fcc11b1795e39bfe10479f2cef76ddaa6"
+    },
+    {
+      "path": "titmas-cs-g1-scope-authority-freeze-readiness-audit.v0.1.json",
+      "sha256": "f296cb8e7eda80febbeca9b4157f92d5422a6ae75602a0e79e6e375c8b5460b5"
+    },
+    {
+      "path": "veap-security-privacy-claim-risk-register.v0.1.json",
+      "sha256": "ef1a38a4af01efe36cabb3e13c8e4815d05ba71c7703521c4fea05cd8a471492"
+    },
+    {
+      "path": "veap-canonical-ownership-crosswalk.v0.1.json",
+      "sha256": "53a50508dcae8d490c79b7c4d9a3eee1b1ddc002d9808d2ea19b287a92dd7edf"
+    }
+  ],
+  "request_contract": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "requested_model": "qwen3.7-max",
+    "temperature": 0,
+    "request_per_session": 1,
+    "retry_allowed": false,
+    "fallback_allowed": false,
+    "substitution_allowed": false,
+    "extraction_allowed": false,
+    "repair_allowed": false,
+    "tools_allowed": false,
+    "external_retrieval_allowed": false,
+    "memory_retrieval_allowed": false,
+    "direct_json_required": true,
+    "public_safe_frozen_bytes_only": true,
+    "returned_model_identity_must_match": true
+  },
+  "sessions": [
+    {
+      "sequence": 1,
+      "review_id": "CS-G1-REV-SEC-01",
+      "domain": "SECURITY",
+      "requested_model": "qwen3.7-max",
+      "target_items": [
+        "VEAP-SEC-001",
+        "VEAP-SEC-002",
+        "VEAP-SEC-003",
+        "VEAP-SEC-004",
+        "VEAP-SEC-005"
+      ],
+      "target_count": 5,
+      "output_path": "reviews/cs-g1/security-review-result.v0.1.json",
+      "execution_status": "NOT_AUTHORIZED_NOT_EXECUTED"
+    },
+    {
+      "sequence": 2,
+      "review_id": "CS-G1-REV-PRIV-01",
+      "domain": "PRIVACY",
+      "requested_model": "qwen3.7-max",
+      "target_items": [
+        "VEAP-PRIV-001",
+        "VEAP-PRIV-002",
+        "VEAP-PRIV-003",
+        "VEAP-PRIV-004"
+      ],
+      "target_count": 4,
+      "output_path": "reviews/cs-g1/privacy-review-result.v0.1.json",
+      "execution_status": "NOT_AUTHORIZED_NOT_EXECUTED"
+    },
+    {
+      "sequence": 3,
+      "review_id": "CS-G1-REV-CLAIM-AUTH-01",
+      "domain": "CLAIM_AUTHORITY",
+      "requested_model": "qwen3.7-max",
+      "target_items": [
+        "VEAP-CLAIM-001",
+        "VEAP-CLAIM-002",
+        "VEAP-CLAIM-003",
+        "VEAP-CLAIM-004",
+        "VEAP-CLAIM-005",
+        "VEAP-AUTH-001",
+        "VEAP-AUTH-002",
+        "PROGRAM_ARCHITECTURE_RULE",
+        "VEAP_EXCHANGE_PROFILE",
+        "ENTITY_IDENTITY_LIFECYCLE",
+        "CAPABILITY_PERMISSION",
+        "EXECUTION_RECORD",
+        "RUNTIME_OBSERVATION",
+        "EVIDENCE_MATERIAL_PACKAGE",
+        "EVIDENCE_ADMISSION_CANONICAL_EVIDENCE",
+        "ACCOUNTABILITY_STATEMENT",
+        "VERIFICATION_RESULT",
+        "EVOLUTION_EVALUATION",
+        "GOVERNANCE_DECISION",
+        "COMMERCIAL_SERVICE",
+        "CERTIFICATION"
+      ],
+      "risk_target_count": 7,
+      "crosswalk_target_count": 14,
+      "target_count": 21,
+      "output_path": "reviews/cs-g1/claim-authority-review-result.v0.1.json",
+      "execution_status": "NOT_AUTHORIZED_NOT_EXECUTED"
+    }
+  ],
+  "coverage": {
+    "sessions": 3,
+    "risk_items": 16,
+    "crosswalk_items": 14,
+    "duplicate_risk_items_allowed": false,
+    "duplicate_crosswalk_items_allowed": false,
+    "scope_outside_plan_allowed": false
+  },
+  "allowed_item_dispositions": [
+    "ACCEPTED",
+    "ACCEPTED_WITH_RESIDUAL_RISK",
+    "RETURN_FOR_REVISION",
+    "REJECTED",
+    "NOT_ASSESSED"
+  ],
+  "allowed_overall_verdicts": [
+    "ACCEPT_FOR_HUMAN_FREEZE_REVIEW",
+    "RETURN_FOR_REVISION",
+    "REJECT",
+    "NOT_AVAILABLE"
+  ],
+  "aggregation_contract": {
+    "all_sessions_completed_required": true,
+    "all_model_identities_verified_required": true,
+    "all_direct_json_verified_required": true,
+    "all_schema_valid_required": true,
+    "risk_coverage_required": "16/16",
+    "crosswalk_coverage_required": "14/14",
+    "rejected_allowed_for_ready": 0,
+    "return_for_revision_allowed_for_ready": 0,
+    "not_assessed_allowed_for_ready": 0,
+    "blockers_allowed_for_ready": 0,
+    "required_corrections_allowed_for_ready": 0,
+    "residual_risks_must_be_enumerated": true,
+    "unresolved_authority_decisions_must_be_enumerated": true,
+    "ready_result": "READY_FOR_HUMAN_FREEZE_REVIEW",
+    "ready_result_is_gate_pass": false
+  },
+  "failure_contract": {
+    "missing_decision": "NOT_EXECUTED",
+    "source_binding_mismatch": "FAILED_SOURCE_BINDING",
+    "provider_or_transport_failure": "FAILED_PROVIDER_OR_TRANSPORT",
+    "model_identity_mismatch": "FAILED_MODEL_IDENTITY",
+    "non_json_response": "FAILED_DIRECT_JSON",
+    "schema_invalid": "FAILED_SCHEMA",
+    "scope_mismatch": "FAILED_SCOPE_COVERAGE",
+    "retry_fallback_substitution_extraction_repair_or_tool_use": "FAILED_REQUEST_CONTRACT",
+    "failure_fill_from_other_source_allowed": false
+  },
+  "current_state": {
+    "role_accepted": false,
+    "reviewer_assigned": false,
+    "review_execution_authorized": false,
+    "requests_sent": 0,
+    "results_created": 0,
+    "formal_review_complete": false,
+    "residual_risk_accepted": false,
+    "crosswalk_accepted": false,
+    "authority_delegated": false,
+    "cs_g1_pass": false
+  },
+  "effects": {
+    "decision": false,
+    "role_assignment": false,
+    "review_execution": false,
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "implementation": false,
+    "runtime": false,
+    "agent_instance": false,
+    "entity": false,
+    "capability": false,
+    "permission": false,
+    "evidence_truth": false,
+    "external_action": false,
+    "commercial_offer": false,
+    "certification": false,
+    "standard_ready": false,
+    "release": false,
+    "deployment": false
+  }
+}
