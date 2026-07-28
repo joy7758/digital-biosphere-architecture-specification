@@ -115,3 +115,21 @@ ROADMAP_APPROVES_EXPERIMENT=false
 ROADMAP_PROVES_INTEGRATION=false
 ROADMAP_PROVES_ADOPTION=false
 ```
+
+## 6. TITMAS Open Standards Mainline（TITMAS 开放标准主线）
+
+| milestone | objective | status | required evidence |
+|---|---|---|---|
+| `TOS-1` | Selective canonical integration | `IN_PROGRESS` | manifest, one human entry, one agent entry, one status and one registry per type |
+| `TOS-2` | Human merge review | `NOT_STARTED` | clean Draft PR, CI success, Human `COMMUNITY-HD-01` decision |
+| `TOS-3` | Security transport activation decision | `BLOCKED` | real private receiving transport and Human `COMMUNITY-HD-02` decision |
+| `TOS-4` | Limited public contribution preview | `NOT_STARTED` | merged core, security path, explicit activation decision |
+| `TOS-5` | Agent-native contribution pilot | `NOT_STARTED` | separately authorized public pilot and retained evidence |
+| `TOS-6` | Community Preview | `NOT_STARTED` | explicit tag, announcement and launch decisions |
+
+```text
+CURRENT_TITMAS_FOCUS=CANONICAL_INTEGRATION
+OPEN_STANDARDS_COMMUNITY_IS_MAINLINE=true
+CALIBRATION_IS_SUPPORTING_VALIDATION_ONLY=true
+CALIBRATION_V0_3_AUTHORIZED=false
+```

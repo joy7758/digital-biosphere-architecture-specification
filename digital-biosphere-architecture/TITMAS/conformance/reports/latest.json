@@ -1,0 +1,71 @@
+{
+  "report_version": "1.0.0",
+  "profile": "TITMAS_DEVELOPMENT_CONFORMANCE",
+  "status": "FAIL",
+  "checks": [
+    {
+      "id": "registries",
+      "status": "PASS",
+      "details": {
+        "registry_entries_checked": 10,
+        "maturity_states_checked": 7
+      }
+    },
+    {
+      "id": "frontmatter",
+      "status": "PASS",
+      "details": {
+        "proposal_frontmatter_checked": 1
+      }
+    },
+    {
+      "id": "fixtures",
+      "status": "PASS",
+      "details": {
+        "positive_cases_passed": 1,
+        "negative_cases_rejected": 8
+      }
+    },
+    {
+      "id": "community_status",
+      "status": "PASS",
+      "details": {
+        "community_invariants_checked": 13,
+        "interim_role_assignments_checked": 3
+      }
+    },
+    {
+      "id": "internal_reviews",
+      "status": "FAIL",
+      "error": "ConformanceError: expected 4 integration reviews, found 0",
+      "remediation": "Correct the reported internal_reviews input and rerun: python3 TITMAS/conformance/harness.py"
+    },
+    {
+      "id": "agent_native_surfaces",
+      "status": "FAIL",
+      "error": "ConformanceError: TITMAS/agent-native/community-manifest.json.community_mode: expected constant 'CONTROLLED_AGENT_NATIVE_PILOT'",
+      "remediation": "Correct the reported agent_native_surfaces input and rerun: python3 TITMAS/conformance/harness.py"
+    },
+    {
+      "id": "agent_native_adversarial",
+      "status": "PASS",
+      "details": {
+        "adversarial_cases_rejected": 22,
+        "adversarial_cases_executed": 22
+      }
+    },
+    {
+      "id": "local_links",
+      "status": "PASS",
+      "details": {
+        "local_links_checked": 43
+      }
+    }
+  ],
+  "non_claims": [
+    "CONFORMANCE_NE_TRUTH",
+    "CONFORMANCE_NE_AUTHORIZATION",
+    "CONFORMANCE_NE_ADOPTION",
+    "CONFORMANCE_NE_CERTIFICATION"
+  ]
+}

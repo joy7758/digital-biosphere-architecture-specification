@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "format_version",
+    "canonical_agent_entry",
+    "canonical_community_name",
+    "purpose",
+    "when_to_use",
+    "when_not_to_use",
+    "maturity",
+    "source",
+    "machine_surfaces",
+    "commands",
+    "authority_boundaries"
+  ],
+  "properties": {
+    "$schema": {"type": "string"},
+    "format_version": {"type": "string"},
+    "canonical_agent_entry": {"const": true},
+    "canonical_community_name": {"const": "TITMAS Agent-Native Standards Community"},
+    "canonical_community_name_zh": {"type": "string"},
+    "subtitle": {"type": "string"},
+    "compatibility_aliases": {"type": "array", "minItems": 2, "items": {"type": "string"}},
+    "purpose": {"type": "string", "minLength": 20},
+    "when_to_use": {"type": "array", "minItems": 3, "items": {"type": "string"}},
+    "when_not_to_use": {"type": "array", "minItems": 4, "items": {"type": "string"}},
+    "maturity": {"enum": ["Development"]},
+    "source": {"type": "object"},
+    "machine_surfaces": {"type": "object"},
+    "commands": {"type": "object"},
+    "authority_boundaries": {"type": "array", "minItems": 5, "items": {"type": "string"}}
+  }
+}

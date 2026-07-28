@@ -118,22 +118,52 @@ Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是整个 
 
 本仓库是文档型 Program Governance（项目群治理）与 Architecture Specification（架构规范）表面，不是运行系统。它不替代 SAEE，不替代 DBOS，不合并二者，也不创建新的 Agent（智能体）、Runtime（运行时）或 Digital Organism（数字有机体）。
 
+## Current Program Mainline（当前项目主线）
+
+当前主线已由
+`TITMAS-OPEN-STANDARDS-COMMUNITY-INTEGRATION-D01` 明确恢复为：
+
+```text
+开放标准
+→ 机器可读规范
+→ Conformance
+→ Agent-native Contribution
+→ 公共贡献表面候选
+→ Community Preview（仍未授权）
+```
+
+统一人类入口是 [`TITMAS/README.md`](TITMAS/README.md)，统一智能体入口是
+[`agent-index.json`](agent-index.json)，统一机器状态投影是
+[`TITMAS/community/community-status.json`](TITMAS/community/community-status.json)。
+Ecology Box、Operational Calibration 和 Candidate Grounding 只作为支持性验证；
+Calibration v0.3 继续冻结。
+
+```text
+COMMUNITY_STATUS=CANONICAL_INTEGRATION_CANDIDATE
+OPEN_STANDARDS_COMMUNITY_MAINLINE_RESTORED=true
+CALIBRATION_SUBTRACK_FROZEN=true
+PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+PUBLIC_LAUNCH_AUTHORIZED=false
+COMMUNITY_ESTABLISHED=false
+```
+
 ## Public Entry（统一对外入口）
 
-> **TITMAS Infrastructure Developer Community**
+> **TITMAS Agent-Native Standards Community**
 >
-> 中文：**TITMAS 可信多智能体基础设施开发者社区**
+> 中文：**TITMAS 智能体原生标准社区**
 >
-> Developer Community for Trusted Multi-Agent Infrastructure
+> Agent-Native Open Standards Community for Trusted Multi-Agent Infrastructure
 
-开发者负责构建 Agent；TITMAS 共同推进开放规范、Adapter contract、Conformance 和
-reference implementation boundary，帮助不同 Agent 通过易理解、可实现、可验证的
-基础设施规则可信协作。
+TITMAS 共同推进开放规范、Adapter contract、Conformance、reference implementation
+boundary 和机器可读贡献流程，帮助不同 Agent 通过易理解、可实现、可验证的基础设施
+规则可信协作。`TITMAS Developer Standards Community` 与
+`TITMAS Infrastructure Developer Community` 仅保留为兼容别名。
 
 Digital Biosphere 是总项目；`Trusted Multi-Agent Infrastructure`（可信多智能体基础设施）
-是技术定位；TITMAS Infrastructure Developer Community 是当前统一公开工作重心。
-DBA、DBOS、SAEE 和 Digital Entities 仍是同一项目群内相互分离的责任域，社区不替代
-任何责任域，也不创建第二套 Architecture Authority。
+是技术定位；TITMAS Agent-Native Standards Community 是当前规范主线。DBA、DBOS、
+SAEE 和 Digital Entities 仍是同一项目群内相互分离的责任域，社区不替代任何责任域，
+也不创建第二套 Architecture Authority。
 
 网站 [`https://redcrag.cn/`](https://redcrag.cn/) 提供完整中英文与机器可读入口，国内
 访问者不需要依赖 GitHub 才能理解社区使命、共同建设范围、当前状态、底层架构和技术
@@ -151,24 +181,23 @@ DBA、DBOS、SAEE 和 Digital Entities 仍是同一项目群内相互分离的�
 | Reference Boundary | 可替换参考实现边界；当前未授权创建 Runtime 或唯一实现 |
 
 ```text
-TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY_DIRECTION_ADOPTED=true
-TITMAS_CONTRIBUTOR_ENTRY_PREPARED=true
+TITMAS_AGENT_NATIVE_STANDARDS_COMMUNITY_DIRECTION_ADOPTED=true
+TITMAS_COMMUNITY_STATUS=CANONICAL_INTEGRATION_CANDIDATE
+TITMAS_CODE_OF_CONDUCT_ADOPTED_FOR_INTEGRATION_CANDIDATE=true
 TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
-TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
-TITMAS_CODE_OF_CONDUCT_ADOPTED=false
+TITMAS_COMMUNITY_ESTABLISHED=false
 TITMAS_MAINTAINER_ASSIGNED=false
-TITMAS_FOUNDATION_IN_SCOPE=false
+TITMAS_FOUNDATION_CREATED=false
 ```
 
-`CONTRIBUTOR_ENTRY_PREPARED` 只表示贡献流程和机器入口已准备。当前不开放公共 Issue、
-Pull Request、SIG、Maintainer 招募或 Foundation；社区意见和智能体推荐只是 Review
-input，不是 Architecture Decision、Implementation Authorization 或 Permission。
+`CANONICAL_INTEGRATION_CANDIDATE` 只表示贡献流程和机器入口正在单一分支中接受验证。
+当前不开放公共 Issue、Pull Request、SIG、Maintainer 招募或 Foundation；临时责任分配
+不是永久 Maintainer，社区意见和智能体推荐只是 Review input，不是 Architecture
+Decision、Implementation Authorization 或 Permission。
 
-### Current Validation Milestone（当前验证里程碑）
+### Historical Validation References（历史验证参考）
 
-TITMAS 已从生态制度设计进入 Technical Validation Pilot（技术验证试点）设计阶段。
-当前选择一个有界垂直切片来验证 Runtime Governance（运行治理）和 Evolution
-Evaluation（演化评价）能否通过证据边界解耦协作：
+以下资产保留为 supporting validation（支持性验证），不再占据当前社区主线：
 
 ```text
 Microsoft AGT observation candidate
@@ -187,6 +216,9 @@ Microsoft AGT observation candidate
 | [`architecture/telemetry-to-evidence-admission-contract.md`](architecture/telemetry-to-evidence-admission-contract.md) | Observation 到 canonical Evidence 之间的独立失败关闭准入边界 | `PROPOSED_DQ_021_BLOCKED_INPUT` |
 | [`architecture/titmas-contributor-pilot-program-v0.1.md`](architecture/titmas-contributor-pilot-program-v0.1.md) | 未来有限贡献者试点边界 | `DESIGN_ONLY_NO_PARTICIPANTS` |
 | [`architecture/titmas-ecosystem-expansion-strategy-v0.1.md`](architecture/titmas-ecosystem-expansion-strategy-v0.1.md) | AGT、OpenTelemetry、LangChain、CrewAI、MCP 的 reference/candidate 分类 | `REFERENCE_ONLY_NO_ADOPTION` |
+
+当前主线是 selective canonical integration（选择性规范集成）；Ecology Box 原始操作资产不
+进入社区核心，Calibration v0.3 保持冻结和未授权。
 
 ```text
 TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE=true
