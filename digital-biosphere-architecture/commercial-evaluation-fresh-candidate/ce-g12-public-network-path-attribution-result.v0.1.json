@@ -1,0 +1,155 @@
+{
+  "record_type": "TITMAS_CE_G12_PUBLIC_NETWORK_PATH_ATTRIBUTION_RESULT",
+  "version": "0.1.0",
+  "status": "PASS_LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED_NO_DIRECT_ORIGIN_OR_STATUS_ELEVATION",
+  "observed_at": "2026-07-28T02:16:54Z",
+  "primary_repository": "digital-biosphere-architecture",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PUBLIC-NETWORK-PATH-ATTRIBUTION-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "3bac1d0a71a2bce189f35685230280ee587d38b8d6b3c159c5ed03a1c2900543",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PUBLIC-NETWORK-PATH-ATTRIBUTION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "7d4b1ae2c180cae41ee3e7c91be97fb8d85bd538de1f269721be0ba54dc3723c",
+  "decision_commit": "9f68e85d309881f654092b0ee486679b1115d80b",
+  "decision_remote_verified": true,
+  "binding_check": {
+    "local_head": "9f68e85d309881f654092b0ee486679b1115d80b",
+    "remote_head": "9f68e85d309881f654092b0ee486679b1115d80b",
+    "exact_head_match": true,
+    "failure_result_reference": "commercial-evaluation-fresh-candidate/ce-g12-public-route-validation-result.v0.1.json",
+    "failure_result_sha256": "f20e12db44dd5206a2cc0bc798fe2f76ac8c7243acb5aa28e89b40366a0b62d4",
+    "failure_result_hash_match": true,
+    "failure_report_reference": "TITMAS-CE-G12-PUBLIC-ROUTE-VALIDATION-REPORT-v0.1.md",
+    "failure_report_sha256": "65f529afce1d642dffffc89e91282ab0a0009538ce3eb558a4864603cf3b59a8",
+    "failure_report_hash_match": true
+  },
+  "execution_window": {
+    "started_at": "2026-07-28T02:16:53Z",
+    "finished_at": "2026-07-28T02:16:54Z",
+    "actual_diagnostic_executions": 1,
+    "pre_execution_wrapper_rejections": 1,
+    "pre_execution_wrapper_rejection_classification": "WRAPPER_TEMPLATE_INTERPOLATION_REJECTED_BEFORE_SHELL_EXECUTION",
+    "pre_execution_wrapper_rejection_consumed_diagnostic_reads_or_lookups": false
+  },
+  "curl_capability_observation": {
+    "exit_code": 0,
+    "version": "8.7.1",
+    "platform": "x86_64-apple-darwin25.0",
+    "tls_backend": "SecureTransport",
+    "http2_feature_present": true,
+    "https_proxy_feature_present": true,
+    "network_request_executed": false
+  },
+  "filtered_dns_metadata": {
+    "exit_code": 0,
+    "resolver_count": 10,
+    "nameserver_count": 5,
+    "nameserver_loopback_count": 0,
+    "nameserver_private_count": 1,
+    "nameserver_synthetic_count": 3,
+    "nameserver_other_count": 1,
+    "search_domain_entry_count": 0,
+    "supplemental_match_metadata_count": 0,
+    "scoped_configuration_section_count": 1,
+    "unrelated_private_resolver_content_recorded": false
+  },
+  "filtered_proxy_metadata": {
+    "exit_code": 0,
+    "http_enabled": true,
+    "http_host": "127.0.0.1",
+    "http_port": 1080,
+    "https_enabled": true,
+    "https_host": "127.0.0.1",
+    "https_port": 1080,
+    "socks_enabled": false,
+    "proxy_auto_config_enabled": false,
+    "proxy_auto_discovery_enabled": false,
+    "credentials_recorded": false,
+    "pac_content_recorded": false,
+    "specific_proxy_product_identified": false
+  },
+  "proxy_environment_presence": {
+    "exit_code": 0,
+    "HTTP_PROXY": false,
+    "HTTPS_PROXY": false,
+    "ALL_PROXY": false,
+    "NO_PROXY": false,
+    "http_proxy": false,
+    "https_proxy": false,
+    "all_proxy": false,
+    "no_proxy": false,
+    "environment_values_recorded": false
+  },
+  "dns_lookup_observations": [
+    {
+      "id": "PATH-L01",
+      "type": "system_resolver",
+      "hostname": "redcrag.cn",
+      "exit_code": 0,
+      "ipv4_answers": [
+        "198.18.0.90"
+      ],
+      "ipv4_mapped_ipv6_answers": [
+        "::ffff:0:c612:5a"
+      ]
+    },
+    {
+      "id": "PATH-L02",
+      "type": "independent_dns_cli",
+      "hostname": "redcrag.cn",
+      "exit_code": 0,
+      "ipv4_answers": [
+        "198.18.0.90"
+      ]
+    }
+  ],
+  "classification": {
+    "value": "LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED",
+    "system_and_independent_answers_equal": true,
+    "common_ipv4_answer": "198.18.0.90",
+    "common_answer_in_198_18_0_0_15": true,
+    "prior_curl_remote_ip": "198.18.0.90",
+    "prior_curl_remote_ip_matches_dns_mapping": true,
+    "local_proxy_configuration_observed": true,
+    "specific_proxy_product_attribution": "NOT_PROVEN",
+    "rationale": "Both the macOS system resolver and an independent dig A lookup returned 198.18.0.90, the same address previously reported by curl. The address belongs to the reserved 198.18.0.0/15 benchmarking range. Filtered local metadata also shows HTTP and HTTPS proxy configuration on 127.0.0.1:1080, but no direct evidence identifies a specific product or operator."
+  },
+  "execution_accounting": {
+    "local_config_reads": 4,
+    "dns_lookups": 2,
+    "http_requests": 0,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "network_config_changes": 0,
+    "dns_flushes": 0,
+    "proxy_changes": 0,
+    "retries": 0,
+    "fallbacks": 0,
+    "credential_values_recorded": 0
+  },
+  "status_separation": {
+    "application_surface_exact_from_bound_public_validation": true,
+    "application_surface_reachable_through_observed_system_network_path": true,
+    "direct_origin_ip_attribution_available_in_current_environment": false,
+    "direct_origin_path_pass": false,
+    "outside_in_strict_origin_validation_pass": false,
+    "public_http_matrix_rerun": false,
+    "static_candidate_activation_state_changed": false,
+    "new_product_release": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false
+  },
+  "effects": {
+    "local_network_path_classified": true,
+    "application_content_or_route_truth_changed": false,
+    "server_state_changed": false,
+    "network_state_changed": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false,
+    "specific_proxy_product_claim_created": false,
+    "status_elevated": false
+  }
+}
