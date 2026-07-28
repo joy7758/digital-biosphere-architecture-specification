@@ -52,6 +52,10 @@ class HarnessTests(unittest.TestCase):
         with self.assertRaises(HARNESS.ConformanceError):
             HARNESS.validate_schema(True, {"type": "number"})
 
+    def test_number_schema_enforces_minimum(self):
+        with self.assertRaises(HARNESS.ConformanceError):
+            HARNESS.validate_schema(-1, {"type": "integer", "minimum": 0})
+
     def test_agent_native_surfaces_pass(self):
         details = HARNESS.check_agent_native_surfaces()
         self.assertEqual(12, details["agent_tasks_checked"])
@@ -85,6 +89,40 @@ class HarnessTests(unittest.TestCase):
     def test_agent_native_value_gate_preserves_negative_result(self):
         details = HARNESS.check_agent_native_value_gate()
         self.assertEqual(6, details["frozen_counts_checked"])
+
+    def test_agent_native_value_validation_framework_passes(self):
+        details = HARNESS.check_agent_native_value_validation_framework()
+        self.assertEqual(10, details["ecology_box_tasks_checked"])
+        self.assertEqual(9, details["security_cases_rejected"])
+        self.assertEqual(0, details["independent_lineage_count"])
+
+    def test_value_validation_security_cases_fail_closed(self):
+        path = (
+            HARNESS.TITMAS_ROOT / "agent-native" / "value-validation"
+            / "security-negative-cases.v0.1.json"
+        )
+        cases = json.loads(path.read_text(encoding="utf-8"))["cases"]
+        self.assertEqual(9, len(cases))
+        for case in cases:
+            self.assertEqual(
+                {
+                    "decision": "REJECT",
+                    "reason_code": case["reason_code"],
+                },
+                HARNESS.value_validation_rejection(case["attack"]),
+            )
+
+    def test_value_validation_lineage_inflation_fails_closed(self):
+        path = (
+            HARNESS.TITMAS_ROOT / "agent-native" / "value-validation"
+            / "not-executed-record.v0.1.json"
+        )
+        record = json.loads(path.read_text(encoding="utf-8"))
+        inflated = copy.deepcopy(record)
+        inflated["lineage"]["independent_lineage_count"] = 2
+        with self.assertRaises(HARNESS.ConformanceError):
+            HARNESS.validate_value_lineage(inflated["lineage"])
+        self.assertEqual(0, record["lineage"]["independent_lineage_count"])
 
     def test_agent_native_reviews_preserve_real_independence(self):
         details = HARNESS.check_agent_native_reviews()

@@ -66,6 +66,23 @@ python3 TITMAS/agent-native/community_cli.py discover \
 Humans or accountable institutions retain constitutional, irreversible,
 legal/privacy, Ownership and Authority decisions.
 
+## 10. Agent-native value validation
+
+The [Value Validation Framework](../architecture/titmas-agent-native-value-validation-framework-v0.1.md)
+defines a falsifiable, paired `HUMAN_FIRST` versus `AGENT_NATIVE` experiment.
+Its ten-task [Ecology Box 001](../architecture/titmas-agent-native-ecology-box-001-v0.1.md)
+is design-ready but not authorized or executed. Start with the
+[verified baseline](../architecture/titmas-agent-native-value-validation-baseline-v0.1.md)
+and the
+[Human Decision Packet](../TITMAS-AGENT-NATIVE-VALUE-VALIDATION-HUMAN-DECISION-PACKET-v0.1.md).
+
+```text
+FRAMEWORK_DEFINED=true
+EXPERIMENT_DESIGN_READY=true
+EXPERIMENT_EXECUTION_AUTHORIZED=false
+VALUE_PROVEN=false
+```
+
 ## Human five-minute quick start
 
 ```bash
@@ -121,3 +138,4 @@ CERTIFICATION_AUTHORIZED=false
 - Experimental material is not Stable.
 - TITMAS is not an Agent Runtime, executor, repository fixer or central control plane.
 - Agent participation is not Authority; activity volume is not community value.
+- Experiment design is not execution; a Pilot pass is not operational value proof.

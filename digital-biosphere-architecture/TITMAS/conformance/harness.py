@@ -59,6 +59,13 @@ def validate_schema(
         raise ConformanceError(f"{path}: boolean is not an integer")
     if expected == "number" and isinstance(instance, bool):
         raise ConformanceError(f"{path}: boolean is not a number")
+    if (
+        isinstance(instance, (int, float))
+        and not isinstance(instance, bool)
+        and "minimum" in schema
+        and instance < schema["minimum"]
+    ):
+        raise ConformanceError(f"{path}: number is less than minimum")
     if "enum" in schema and instance not in schema["enum"]:
         raise ConformanceError(f"{path}: value {instance!r} is not allowed")
     if "const" in schema and instance != schema["const"]:
@@ -478,6 +485,118 @@ def check_agent_native_value_gate() -> dict[str, Any]:
     return {"frozen_counts_checked": len(expected), "reason_codes_checked": 11}
 
 
+VALUE_VALIDATION_REJECTIONS = {
+    "SELF_AUTHORIZATION": "AUTHORITY_MUST_BE_EXTERNALLY_BOUND",
+    "ROLE_ELEVATION": "ROLE_CANNOT_CREATE_AUTHORITY",
+    "RELEASE_CREATION": "RELEASE_NOT_AUTHORIZED",
+    "STANDARD_COMPLETE_CLAIM": "EXPERIMENT_NE_STANDARD_COMPLETION",
+    "COMMERCIAL_ADOPTION_CLAIM": "EXPERIMENT_NE_COMMERCIAL_ADOPTION",
+    "AUTHORITY_CHANGE": "AUTHORITY_CHANGE_OUT_OF_SCOPE",
+    "DELETE_FAILURE": "FAILURE_RETENTION_REQUIRED",
+    "RECOMMENDATION_TO_COMMAND": "RECOMMENDATION_NE_COMMAND",
+    "EVIDENCE_TO_TRUTH": "EVIDENCE_NE_TRUTH",
+}
+
+
+def value_validation_rejection(attack: str) -> dict[str, str]:
+    reason = VALUE_VALIDATION_REJECTIONS.get(attack)
+    if not reason:
+        return {"decision": "NOT_ASSESSED", "reason_code": "UNKNOWN_CASE"}
+    return {"decision": "REJECT", "reason_code": reason}
+
+
+def validate_value_lineage(lineage: dict[str, Any]) -> None:
+    if lineage["independent_lineage_count"] > lineage["session_count"]:
+        raise ConformanceError("independent lineage count exceeds session count")
+    if lineage["model_count"] > lineage["session_count"]:
+        raise ConformanceError("model count exceeds session count")
+    if lineage["independent_lineage_count"] != len(lineage["lineage_refs"]):
+        raise ConformanceError("independent lineage count does not match references")
+
+
+def check_agent_native_value_validation_framework() -> dict[str, Any]:
+    root = TITMAS_ROOT / "agent-native" / "value-validation"
+    task_catalog = load_json(root / "ecology-box-001-task-catalog.v0.1.json")
+    required_task_fields = {
+        "task_id", "problem", "context", "allowed_scope", "forbidden_scope",
+        "required_capability", "expected_output", "validation_method",
+        "success_condition", "failure_condition",
+    }
+    tasks = task_catalog["tasks"]
+    if task_catalog["task_count"] != len(tasks) or len(tasks) < 10:
+        raise ConformanceError("value validation catalog must contain at least 10 tasks")
+    task_ids = [item["task_id"] for item in tasks]
+    if len(task_ids) != len(set(task_ids)):
+        raise ConformanceError("value validation task IDs must be unique")
+    for task in tasks:
+        missing = sorted(required_task_fields - task.keys())
+        if missing:
+            raise ConformanceError(f"{task.get('task_id')}: missing task fields {missing}")
+        if not task["allowed_scope"] or not task["forbidden_scope"]:
+            raise ConformanceError(f"{task['task_id']}: scope must fail closed")
+    if task_catalog["execution_authorized"] or task_catalog["external_action_authorized"]:
+        raise ConformanceError("value validation task catalog authorizes execution")
+
+    record = validate_json_file(
+        root / "not-executed-record.v0.1.json",
+        TITMAS_ROOT / "agent-native" / "schemas"
+        / "value-validation-experiment-record.schema.json",
+    )
+    lineage = record["lineage"]
+    validate_value_lineage(lineage)
+    if record["record_status"] != "NOT_EXECUTED":
+        raise ConformanceError("design example must remain NOT_EXECUTED")
+    if record["action"] or record["output"] or record["evidence_reference"]:
+        raise ConformanceError("non-execution example contains execution claims")
+    if record["result"]["status"] != "NOT_ASSESSED":
+        raise ConformanceError("non-execution result must remain NOT_ASSESSED")
+
+    fixture = load_json(root / "security-negative-cases.v0.1.json")
+    cases = fixture["cases"]
+    if {item["attack"] for item in cases} != set(VALUE_VALIDATION_REJECTIONS):
+        raise ConformanceError("value validation security coverage drift")
+    for item in cases:
+        actual = value_validation_rejection(item["attack"])
+        if actual["decision"] != item["expected"]:
+            raise ConformanceError(f"{item['id']}: security case failed open")
+        if actual["reason_code"] != item["reason_code"]:
+            raise ConformanceError(f"{item['id']}: reason code drift")
+    if fixture["experiment_executed"]:
+        raise ConformanceError("security fixture claims experiment execution")
+
+    review = load_json(
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-agent-native-value-validation-predevelopment-review-v0.1.json"
+    )
+    if review["requested_model"] != "qwen3.7-max":
+        raise ConformanceError("predevelopment review requested model drift")
+    if review["returned_model"] != "qwen3.7-max":
+        raise ConformanceError("predevelopment review returned model drift")
+    if review["authority_effect"] != "NONE" or review["decision_effect"] != "NONE":
+        raise ConformanceError("advisory review creates Authority or Decision")
+    if review["would_recommend_to_customer"] is not False:
+        raise ConformanceError("pre-result customer recommendation must remain false")
+
+    required_docs = (
+        "architecture/titmas-agent-native-value-validation-baseline-v0.1.md",
+        "architecture/titmas-agent-native-value-validation-framework-v0.1.md",
+        "architecture/titmas-agent-native-ecology-box-001-v0.1.md",
+        "architecture/titmas-agent-native-value-metrics-v0.1.md",
+        "TITMAS-AGENT-NATIVE-VALUE-VALIDATION-HUMAN-DECISION-PACKET-v0.1.md",
+    )
+    missing_docs = [path for path in required_docs if not (DBA_ROOT / path).is_file()]
+    if missing_docs:
+        raise ConformanceError(f"value validation documents missing {missing_docs}")
+    return {
+        "ecology_box_tasks_checked": len(tasks),
+        "experiment_records_checked": 1,
+        "security_cases_rejected": len(cases),
+        "independent_lineage_count": lineage["independent_lineage_count"],
+        "predevelopment_reviews_checked": 1,
+        "documents_checked": len(required_docs),
+    }
+
+
 def check_agent_native_pilot() -> dict[str, Any]:
     path = TITMAS_ROOT / "agent-native" / "pilot" / "pilot-result.json"
     if not path.exists():
@@ -597,6 +716,7 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("bilingual_brand_identity", check_bilingual_brand_identity),
         ("agent_native_adversarial", check_agent_native_adversarial),
         ("agent_native_value_gate", check_agent_native_value_gate),
+        ("agent_native_value_validation_framework", check_agent_native_value_validation_framework),
         ("agent_native_pilot", check_agent_native_pilot),
         ("agent_native_reviews", check_agent_native_reviews),
         ("local_links", check_local_links),

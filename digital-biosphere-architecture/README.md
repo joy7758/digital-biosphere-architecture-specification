@@ -232,6 +232,24 @@ TITMAS_PUBLIC_CONTRIBUTION_ENABLED=false
 这个入口是 Development launch-ready candidate，不表示公共社区、Standard、Maintainer、
 Release、Certification 或商业 Offering 已经建立。
 
+## Agent-Native Value Validation v0.1（智能体原生价值验证）
+
+当前新增的是严格、可证伪的实验设计，用来回答“Agent-native 流程是否比 Human-first
+流程产生可测量价值”，而不是继续用 Agent 数量或输出量证明价值：
+
+- [已核验基线](architecture/titmas-agent-native-value-validation-baseline-v0.1.md)；
+- [Value Validation Framework](architecture/titmas-agent-native-value-validation-framework-v0.1.md)；
+- [Ecology Box 001](architecture/titmas-agent-native-ecology-box-001-v0.1.md)；
+- [Human Decision Packet](TITMAS-AGENT-NATIVE-VALUE-VALIDATION-HUMAN-DECISION-PACKET-v0.1.md)。
+
+```text
+TITMAS_AGENT_NATIVE_VALUE_FRAMEWORK_DEFINED=true
+TITMAS_AGENT_NATIVE_VALUE_EXPERIMENT_READY=true
+TITMAS_AGENT_NATIVE_VALUE_EXPERIMENT_EXECUTED=false
+TITMAS_AGENT_NATIVE_VALUE_PROVEN=false
+TITMAS_AGENT_OPERATIONAL_VALUE_DEMONSTRATED=false
+```
+
 ## Legacy scenario — Commercial Evaluation Pack v0.2（既有场景材料）
 
 如果你第一次接触 TITMAS，不需要先阅读全部架构历史。先用 10 分钟回答一个问题：
