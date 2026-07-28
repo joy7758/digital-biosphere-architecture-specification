@@ -45,6 +45,26 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="zh-CN">
+      <head>
+        <link
+          rel="alternate"
+          type="text/plain"
+          href="https://redcrag.cn/llms.txt"
+          title="TITMAS LLM-readable entry"
+        />
+        <link
+          rel="alternate"
+          type="application/json"
+          href="https://redcrag.cn/agent-index.json"
+          title="TITMAS agent discovery index"
+        />
+        <link
+          rel="alternate"
+          type="application/json"
+          href="https://redcrag.cn/site-catalog.json"
+          title="TITMAS public site catalog"
+        />
+      </head>
       <body>{children}</body>
     </html>
   );

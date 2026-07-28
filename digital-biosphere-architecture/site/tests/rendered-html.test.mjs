@@ -77,6 +77,41 @@ test("renders equivalent Chinese and English public entry points", async () => {
   }
 });
 
+test("front-loads a bilingual, no-JavaScript Agent Front Door", async () => {
+  const [zhResponse, enResponse, siteCatalog, llms, robots] = await Promise.all([
+    render("/"),
+    render("/en"),
+    readFile(new URL("site-catalog.json", publicRoot), "utf8").then(JSON.parse),
+    readFile(new URL("llms.txt", publicRoot), "utf8"),
+    readFile(new URL("robots.txt", publicRoot), "utf8"),
+  ]);
+  const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
+
+  for (const html of [zh, en]) {
+    const prefix = html.slice(0, 50_000);
+    assert.match(prefix, /id="agent-start"/);
+    assert.match(prefix, /AGENT START HERE/);
+    assert.match(prefix, /href="\/llms\.txt"/);
+    assert.match(prefix, /href="\/agent-index\.json"/);
+    assert.match(prefix, /href="\/site-catalog\.json"/);
+    assert.match(html, /rel="alternate"[^>]+type="text\/plain"[^>]+llms\.txt/);
+    assert.match(html, /rel="alternate"[^>]+type="application\/json"[^>]+agent-index\.json/);
+    assert.match(html, /rel="alternate"[^>]+type="application\/json"[^>]+site-catalog\.json/);
+    assert.match(html, /"hasPart":\[/);
+    assert.match(html, /https:\/\/redcrag\.cn\/site-catalog\.json#document/);
+  }
+
+  assert.match(zh.slice(0, 50_000), /一眼理解 RedCrag/);
+  assert.match(en.slice(0, 50_000), /Understand RedCrag at a glance/);
+  assert.ok(llms.indexOf("## Agent start here") < 1_500);
+  assert.match(robots, /User-agent: OAI-SearchBot\s+Allow: \//);
+  assert.equal(siteCatalog.agent_front_door.position, "IMMEDIATELY_AFTER_HERO");
+  assert.equal(siteCatalog.agent_front_door.javascript_required, false);
+  assert.equal(publicAgentIndex.agent_front_door.maximum_expected_source_prefix_bytes, 50_000);
+  assert.equal(publicAgentIndex.agent_front_door.runtime_created, false);
+  assert.equal(publicAgentIndex.agent_front_door.permission_created, false);
+});
+
 test("renders OpenAI-inspired peer surfaces with the bounded product entry", async () => {
   const [zhResearchResponse, enResearchResponse, zhIndexResponse, enIndexResponse, zhApplicationsResponse, enApplicationsResponse, zhDemosResponse, enDemosResponse] = await Promise.all([
     render("/research"),

@@ -146,6 +146,8 @@ const agentEvaluationEntry = await readFile(join(outputRoot, "TITMAS-AGENT-EVALU
 const commercialAgentResult = await readFile(join(outputRoot, "commercial-evaluation-agent-first-run/composite-result.v0.1.json"), "utf8").then(JSON.parse);
 const commercialFixture = await readFile(join(outputRoot, "examples/titmas-first-run/entity-object.synthetic.v0.1.json"), "utf8").then(JSON.parse);
 const agentIndex = await readFile(join(outputRoot, "agent-index.json"), "utf8").then(JSON.parse);
+const llms = await readFile(join(outputRoot, "llms.txt"), "utf8");
+const robots = await readFile(join(outputRoot, "robots.txt"), "utf8");
 const releaseContext = resolveReleaseContext(process.env, {
   status,
   agentIndex,
@@ -160,6 +162,27 @@ assert.match(en, /晋ICP备2026006409号-1/);
 assert.match(zh, /https:\/\/beian\.miit\.gov\.cn\//);
 assert.match(zh, /href="\/research\//);
 assert.match(en, /href="\/en\/research\//);
+for (const html of [zh, en]) {
+  const prefix = html.slice(0, 50_000);
+  assert.match(prefix, /id="agent-start"/);
+  assert.match(prefix, /AGENT START HERE/);
+  assert.match(prefix, /href="\/llms\.txt"/);
+  assert.match(prefix, /href="\/agent-index\.json"/);
+  assert.match(prefix, /href="\/site-catalog\.json"/);
+  assert.match(html, /rel="alternate"[^>]+type="text\/plain"[^>]+llms\.txt/);
+  assert.match(html, /rel="alternate"[^>]+type="application\/json"[^>]+agent-index\.json/);
+  assert.match(html, /rel="alternate"[^>]+type="application\/json"[^>]+site-catalog\.json/);
+  assert.match(html, /"hasPart":\[/);
+}
+assert.match(zh.slice(0, 50_000), /一眼理解 RedCrag/);
+assert.match(en.slice(0, 50_000), /Understand RedCrag at a glance/);
+assert.ok(llms.indexOf("## Agent start here") < 1_500);
+assert.match(robots, /User-agent: OAI-SearchBot\s+Allow: \//);
+assert.equal(siteCatalog.agent_front_door.position, "IMMEDIATELY_AFTER_HERO");
+assert.equal(siteCatalog.agent_front_door.javascript_required, false);
+assert.equal(agentIndex.agent_front_door.maximum_expected_source_prefix_bytes, 50_000);
+assert.equal(agentIndex.agent_front_door.runtime_created, false);
+assert.equal(agentIndex.agent_front_door.permission_created, false);
 assert.match(zhResearch, /Evidence Governance/);
 assert.match(enResearch, /Evidence ≠ Truth/);
 assert.match(zhResearchIndex, /PUBLISHED_ARCHITECTURE_BASELINE/);

@@ -9,16 +9,87 @@ export function PortalPage({ locale }: { locale: Locale }) {
   const digitalCellPath = locale === "zh" ? "/digital-cell/" : "/en/digital-cell/";
   const architectureHref =
     "https://github.com/joy7758/digital-biosphere-architecture-specification";
+  const agentDirectory = [
+    {
+      id: "research",
+      label: locale === "zh" ? "研究" : "Research",
+      description: locale === "zh" ? "方向、架构与证据治理" : "Directions, architecture, and evidence governance",
+      href: researchPath,
+    },
+    {
+      id: "applications",
+      label: locale === "zh" ? "行业应用" : "Applications",
+      description: locale === "zh" ? "基础设施如何进入行业" : "How the infrastructure enters industries",
+      href: locale === "zh" ? "/applications/" : "/en/applications/",
+    },
+    {
+      id: "demos",
+      label: "Demos",
+      description: locale === "zh" ? "有边界的参考实现" : "Bounded reference implementations",
+      href: demosPath,
+    },
+    {
+      id: "products",
+      label: locale === "zh" ? "产品" : "Products",
+      description: locale === "zh" ? "当前可用的独立工具" : "Currently available independent tools",
+      href: locale === "zh" ? "/products/agent-immune/" : "/en/products/agent-immune/",
+    },
+    {
+      id: "developers",
+      label: locale === "zh" ? "开发者" : "Developers",
+      description: locale === "zh" ? "规范、边界与贡献入口" : "Specifications, boundaries, and contribution entry",
+      href: locale === "zh" ? "/community/" : "/en/community/",
+    },
+    {
+      id: "updates",
+      label: locale === "zh" ? "更新" : "Updates",
+      description: locale === "zh" ? "公告、版本与变更来源" : "Announcements, versions, and change provenance",
+      href: locale === "zh" ? "/updates/" : "/en/updates/",
+    },
+  ];
+  const agentMachineEntries = [
+    {
+      label: "llms.txt",
+      href: "/llms.txt",
+      description: locale === "zh" ? "快速理解与边界" : "Quick orientation and boundaries",
+    },
+    {
+      label: "agent-index.json",
+      href: "/agent-index.json",
+      description: locale === "zh" ? "完整智能体发现索引" : "Complete agent discovery index",
+    },
+    {
+      label: "site-catalog.json",
+      href: "/site-catalog.json",
+      description: locale === "zh" ? "网站栏目与扩展接口" : "Site surfaces and extension interfaces",
+    },
+  ];
 
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": "https://redcrag.cn/#website",
     name: "TITMAS Infrastructure Developer Community",
     alternateName: "TITMAS 可信多智能体基础设施开发者社区",
     url: locale === "zh" ? "https://redcrag.cn/" : "https://redcrag.cn/en/",
     inLanguage: c.lang,
     description: c.lead,
     isBasedOn: architectureHref,
+    hasPart: [
+      ...agentDirectory.map((entry) => ({
+        "@type": "WebPage",
+        "@id": `https://redcrag.cn${entry.href}#webpage`,
+        name: entry.label,
+        url: `https://redcrag.cn${entry.href}`,
+      })),
+      ...agentMachineEntries.map((entry) => ({
+        "@type": "DigitalDocument",
+        "@id": `https://redcrag.cn${entry.href}#document`,
+        name: entry.label,
+        url: `https://redcrag.cn${entry.href}`,
+        encodingFormat: entry.href.endsWith(".txt") ? "text/plain" : "application/json",
+      })),
+    ],
   };
 
   return (
@@ -43,6 +114,58 @@ export function PortalPage({ locale }: { locale: Locale }) {
               <a className="button button-secondary" href={demosPath}>{c.secondaryCta}</a>
             </div>
             <p className="truth-notice"><span>i</span>{c.notice}</p>
+          </div>
+        </section>
+
+        <section
+          className="agent-front-door"
+          id="agent-start"
+          data-section-id="agent-front-door"
+          aria-labelledby="agent-start-title"
+        >
+          <div className="section-shell agent-front-door-shell">
+            <div className="agent-front-door-intro">
+              <p className="section-kicker">AGENT START HERE / 智能体从这里开始</p>
+              <h2 id="agent-start-title">
+                {locale === "zh" ? "一眼理解 RedCrag" : "Understand RedCrag at a glance"}
+              </h2>
+              <p>
+                {locale === "zh"
+                  ? "TITMAS 是可信多智能体基础设施的开发者入口：研究定义方向，行业应用解释用途，Demo 展示参考实现，产品提供独立工具。它不是 Agent Framework、托管 Runtime 或认证机构。"
+                  : "TITMAS is a developer entry for trusted multi-agent infrastructure: research defines directions, applications explain uses, demos show references, and products provide independent tools. It is not an Agent Framework, hosted Runtime, or certification body."}
+              </p>
+            </div>
+
+            <nav
+              className="agent-front-door-nav"
+              aria-label={locale === "zh" ? "智能体网站导航" : "Agent site navigation"}
+            >
+              {agentDirectory.map((entry) => (
+                <a href={entry.href} key={entry.id}>
+                  <strong>{entry.label}</strong>
+                  <span>{entry.description}</span>
+                  <i aria-hidden="true">→</i>
+                </a>
+              ))}
+            </nav>
+
+            <aside
+              className="agent-front-door-machine"
+              aria-label={locale === "zh" ? "机器可读入口" : "Machine-readable entry points"}
+            >
+              <div>
+                <span>{locale === "zh" ? "机器可读入口" : "Machine-readable"}</span>
+                <code>NO JAVASCRIPT REQUIRED</code>
+              </div>
+              <nav aria-label={locale === "zh" ? "智能体机器入口" : "Agent machine entry points"}>
+                {agentMachineEntries.map((entry) => (
+                  <a href={entry.href} key={entry.href}>
+                    <strong>{entry.label}</strong>
+                    <small>{entry.description}</small>
+                  </a>
+                ))}
+              </nav>
+            </aside>
           </div>
         </section>
 
