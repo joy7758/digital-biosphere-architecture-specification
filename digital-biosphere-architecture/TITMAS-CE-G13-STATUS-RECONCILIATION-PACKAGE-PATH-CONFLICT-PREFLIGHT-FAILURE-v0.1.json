@@ -1,0 +1,42 @@
+{
+  "record_type": "TITMAS_CE_G13_STATUS_RECONCILIATION_PREFLIGHT_FAILURE",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_DURABLE_RESULT_PATH_WOULD_INVALIDATE_EXACT_28_FILE_PACKAGE",
+  "observed_at": "2026-07-28",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G13-COMMERCIALIZATION-STATUS-RECONCILIATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "d33da2a4a401ee769bd7a2ebc7c3bc7c8edba56f",
+  "conflicting_path": "commercial-evaluation-ce-g13-offline-contract/ce-g13-offline-contract-r2-validation-result.v0.1.json",
+  "conflict": {
+    "validated_package_files": 28,
+    "files_after_proposed_result": 29,
+    "package_manifest_total_files": 28,
+    "package_manifest_entries": 27,
+    "package_readme_declared_files": 28,
+    "exact_package_boundary_would_be_preserved": false
+  },
+  "execution": {
+    "canonical_paths_modified": 0,
+    "durable_result_created": false,
+    "validation_run_executed": false,
+    "commit_created": false,
+    "push_executed": false,
+    "retry_authorized": false
+  },
+  "effects": {
+    "network_requests": 0,
+    "credential_reads": 0,
+    "model_requests_after_decision_review": 0,
+    "technical_reuse_runs": 0,
+    "runtime_starts": 0,
+    "agent_instances": 0,
+    "entity_instances": 0,
+    "permission_grants": 0,
+    "evidence_truth_objects": 0,
+    "ce_g13_execution": false,
+    "customer_adoption": false,
+    "commercial_offering": false,
+    "production_ready": false
+  },
+  "next_step": "NEW_RECOMMENDATION_REQUIRED_TO_MOVE_DURABLE_RESULT_OUTSIDE_IMMUTABLE_PACKAGE"
+}
+
