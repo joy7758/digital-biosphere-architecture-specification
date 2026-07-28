@@ -1,0 +1,237 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-commercial-standard-next-human-decision-entry.schema.v0.1.json",
+  "title": "TITMAS Commercial Standard Next Human Decision Entry v0.1",
+  "description": "Exact machine-readable signing entry for two independent pending Human Decisions. Schema validity does not record either Decision or authorize execution.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "created_at",
+    "primary_repository",
+    "decision_owner_ref",
+    "source_coordinate",
+    "source_bindings",
+    "decisions",
+    "human_input_template",
+    "invariants",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "architecture/schemas/titmas-commercial-standard-next-human-decision-entry.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "DBA_TITMAS_COMMERCIAL_STANDARD_NEXT_HUMAN_DECISION_ENTRY_0_1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "AWAITING_HUMAN_SELECTION"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "decision_owner_ref": {
+      "const": "zhangbin"
+    },
+    "source_coordinate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["branch", "commit"],
+      "properties": {
+        "branch": {
+          "const": "codex/commercial-standard-next-decision-candidates"
+        },
+        "commit": {
+          "const": "aa4829c1720512b928a05d9b5f75da42cf59ef56"
+        }
+      }
+    },
+    "source_bindings": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["binding_id", "path", "sha256", "bytes"],
+          "properties": {
+            "binding_id": {"const": "CS_G1_D03_CANDIDATE"},
+            "path": {"const": "architecture/titmas-cs-g1-v0-3-review-authorization-decision-candidate.v0.1.json"},
+            "sha256": {"const": "4e9f2c39670add77732ac34a921ddddd1f5b9ba4fbd0fc0604b5953ebd1b403b"},
+            "bytes": {"const": 4124}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["binding_id", "path", "sha256", "bytes"],
+          "properties": {
+            "binding_id": {"const": "CS_G0_PREP_D01_CANDIDATE"},
+            "path": {"const": "architecture/titmas-cs-g0-acquisition-contract-preparation-decision-candidate.v0.1.json"},
+            "sha256": {"const": "8201236728259d59d18ee42b692aa02fd872727a0709e07382b3bd251afc9d40"},
+            "bytes": {"const": 4534}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["binding_id", "path", "sha256", "bytes"],
+          "properties": {
+            "binding_id": {"const": "NEXT_CANDIDATE_VALIDATION"},
+            "path": {"const": "architecture/titmas-commercial-standard-next-decision-candidate-validation.v0.1.json"},
+            "sha256": {"const": "c5c8c76d1f4c5e44af91b6065e9bb764bf7428136d328145864135c76d42cec3"},
+            "bytes": {"const": 3199}
+          }
+        }
+      ],
+      "items": false
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "decision_id",
+            "decision_state",
+            "recommended_selection",
+            "selection_recorded",
+            "one_time_authorization_if_selected",
+            "validity_seconds_from_decision_record_if_selected",
+            "provider_request_count_max_if_selected",
+            "provider_requests_authorized_now",
+            "consumption_rule_if_selected",
+            "stop_after"
+          ],
+          "properties": {
+            "decision_id": {"const": "CS-G1-REMEDIATION-D03"},
+            "decision_state": {"const": "NOT_DECIDED"},
+            "recommended_selection": {"const": "AUTHORIZE_EXACT_TWO_SESSION_QWEN3_7_MAX_REVIEW_OF_FROZEN_V0_3_PROJECTIONS_ONLY"},
+            "selection_recorded": {"const": false},
+            "one_time_authorization_if_selected": {"const": true},
+            "validity_seconds_from_decision_record_if_selected": {"const": 604800},
+            "provider_request_count_max_if_selected": {"const": 2},
+            "provider_requests_authorized_now": {"const": 0},
+            "consumption_rule_if_selected": {"const": "CONSUMED_AFTER_TWO_REQUEST_ATTEMPTS_OR_EXPIRY"},
+            "stop_after": {"const": "DETERMINISTIC_AGGREGATION_FOR_NEW_HUMAN_ADJUDICATION"}
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "decision_id",
+            "decision_state",
+            "recommended_selection",
+            "selection_recorded",
+            "one_time_authorization_if_selected",
+            "validity_seconds_from_decision_record_if_selected",
+            "provider_request_count_max_if_selected",
+            "provider_requests_authorized_now",
+            "consumption_rule_if_selected",
+            "stop_after"
+          ],
+          "properties": {
+            "decision_id": {"const": "CS-G0-ACQUISITION-PREP-D01"},
+            "decision_state": {"const": "NOT_DECIDED"},
+            "recommended_selection": {"const": "AUTHORIZE_SOURCE_DATA_STORAGE_CAP_CONTRACT_CANDIDATE_PREPARATION_ONLY"},
+            "selection_recorded": {"const": false},
+            "one_time_authorization_if_selected": {"const": true},
+            "validity_seconds_from_decision_record_if_selected": {"const": 604800},
+            "provider_request_count_max_if_selected": {"const": 0},
+            "provider_requests_authorized_now": {"const": 0},
+            "consumption_rule_if_selected": {"const": "CONSUMED_AFTER_OFFLINE_CANDIDATE_VALIDATION_OR_EXPIRY"},
+            "stop_after": {"const": "OFFLINE_VALIDATION_FOR_SEPARATE_ACQUISITION_DECISION"}
+          }
+        }
+      ],
+      "items": false
+    },
+    "human_input_template": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decided_by_ref",
+        "cs_g1_remediation_d03",
+        "cs_g0_acquisition_prep_d01"
+      ],
+      "properties": {
+        "decided_by_ref": {"const": "zhangbin"},
+        "cs_g1_remediation_d03": {"const": "AUTHORIZE_EXACT_TWO_SESSION_QWEN3_7_MAX_REVIEW_OF_FROZEN_V0_3_PROJECTIONS_ONLY"},
+        "cs_g0_acquisition_prep_d01": {"const": "AUTHORIZE_SOURCE_DATA_STORAGE_CAP_CONTRACT_CANDIDATE_PREPARATION_ONLY"}
+      }
+    },
+    "invariants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decisions_are_independent",
+        "silence_is_selection",
+        "model_recommendation_is_decision",
+        "git_commit_is_decision",
+        "review_is_authority",
+        "verification_is_authorization",
+        "evidence_is_truth"
+      ],
+      "properties": {
+        "decisions_are_independent": {"const": true},
+        "silence_is_selection": {"const": false},
+        "model_recommendation_is_decision": {"const": false},
+        "git_commit_is_decision": {"const": false},
+        "review_is_authority": {"const": false},
+        "verification_is_authorization": {"const": false},
+        "evidence_is_truth": {"const": false}
+      }
+    },
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "packet_ready_for_human_selection",
+        "decisions_recorded",
+        "cs_g1_review_execution_authorized",
+        "cs_g0_contract_preparation_authorized",
+        "provider_requests_authorized",
+        "provider_requests_executed",
+        "data_processing_authorized",
+        "acquisition_authorized",
+        "cs_g0_pass",
+        "cs_g1_pass",
+        "implementation_authorized",
+        "standard_ready",
+        "commercial_ready",
+        "release_authorized"
+      ],
+      "properties": {
+        "packet_ready_for_human_selection": {"const": true},
+        "decisions_recorded": {"const": false},
+        "cs_g1_review_execution_authorized": {"const": false},
+        "cs_g0_contract_preparation_authorized": {"const": false},
+        "provider_requests_authorized": {"const": 0},
+        "provider_requests_executed": {"const": 0},
+        "data_processing_authorized": {"const": false},
+        "acquisition_authorized": {"const": false},
+        "cs_g0_pass": {"const": false},
+        "cs_g1_pass": {"const": false},
+        "implementation_authorized": {"const": false},
+        "standard_ready": {"const": false},
+        "commercial_ready": {"const": false},
+        "release_authorized": {"const": false}
+      }
+    }
+  }
+}

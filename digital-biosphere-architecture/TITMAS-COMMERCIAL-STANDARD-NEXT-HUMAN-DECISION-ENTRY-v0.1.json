@@ -1,0 +1,89 @@
+{
+  "$schema": "architecture/schemas/titmas-commercial-standard-next-human-decision-entry.schema.v0.1.json",
+  "document_id": "DBA_TITMAS_COMMERCIAL_STANDARD_NEXT_HUMAN_DECISION_ENTRY_0_1",
+  "version": "0.1.0",
+  "status": "AWAITING_HUMAN_SELECTION",
+  "created_at": "2026-07-28T23:20:00+08:00",
+  "primary_repository": "digital-biosphere-architecture",
+  "decision_owner_ref": "zhangbin",
+  "source_coordinate": {
+    "branch": "codex/commercial-standard-next-decision-candidates",
+    "commit": "aa4829c1720512b928a05d9b5f75da42cf59ef56"
+  },
+  "source_bindings": [
+    {
+      "binding_id": "CS_G1_D03_CANDIDATE",
+      "path": "architecture/titmas-cs-g1-v0-3-review-authorization-decision-candidate.v0.1.json",
+      "sha256": "4e9f2c39670add77732ac34a921ddddd1f5b9ba4fbd0fc0604b5953ebd1b403b",
+      "bytes": 4124
+    },
+    {
+      "binding_id": "CS_G0_PREP_D01_CANDIDATE",
+      "path": "architecture/titmas-cs-g0-acquisition-contract-preparation-decision-candidate.v0.1.json",
+      "sha256": "8201236728259d59d18ee42b692aa02fd872727a0709e07382b3bd251afc9d40",
+      "bytes": 4534
+    },
+    {
+      "binding_id": "NEXT_CANDIDATE_VALIDATION",
+      "path": "architecture/titmas-commercial-standard-next-decision-candidate-validation.v0.1.json",
+      "sha256": "c5c8c76d1f4c5e44af91b6065e9bb764bf7428136d328145864135c76d42cec3",
+      "bytes": 3199
+    }
+  ],
+  "decisions": [
+    {
+      "decision_id": "CS-G1-REMEDIATION-D03",
+      "decision_state": "NOT_DECIDED",
+      "recommended_selection": "AUTHORIZE_EXACT_TWO_SESSION_QWEN3_7_MAX_REVIEW_OF_FROZEN_V0_3_PROJECTIONS_ONLY",
+      "selection_recorded": false,
+      "one_time_authorization_if_selected": true,
+      "validity_seconds_from_decision_record_if_selected": 604800,
+      "provider_request_count_max_if_selected": 2,
+      "provider_requests_authorized_now": 0,
+      "consumption_rule_if_selected": "CONSUMED_AFTER_TWO_REQUEST_ATTEMPTS_OR_EXPIRY",
+      "stop_after": "DETERMINISTIC_AGGREGATION_FOR_NEW_HUMAN_ADJUDICATION"
+    },
+    {
+      "decision_id": "CS-G0-ACQUISITION-PREP-D01",
+      "decision_state": "NOT_DECIDED",
+      "recommended_selection": "AUTHORIZE_SOURCE_DATA_STORAGE_CAP_CONTRACT_CANDIDATE_PREPARATION_ONLY",
+      "selection_recorded": false,
+      "one_time_authorization_if_selected": true,
+      "validity_seconds_from_decision_record_if_selected": 604800,
+      "provider_request_count_max_if_selected": 0,
+      "provider_requests_authorized_now": 0,
+      "consumption_rule_if_selected": "CONSUMED_AFTER_OFFLINE_CANDIDATE_VALIDATION_OR_EXPIRY",
+      "stop_after": "OFFLINE_VALIDATION_FOR_SEPARATE_ACQUISITION_DECISION"
+    }
+  ],
+  "human_input_template": {
+    "decided_by_ref": "zhangbin",
+    "cs_g1_remediation_d03": "AUTHORIZE_EXACT_TWO_SESSION_QWEN3_7_MAX_REVIEW_OF_FROZEN_V0_3_PROJECTIONS_ONLY",
+    "cs_g0_acquisition_prep_d01": "AUTHORIZE_SOURCE_DATA_STORAGE_CAP_CONTRACT_CANDIDATE_PREPARATION_ONLY"
+  },
+  "invariants": {
+    "decisions_are_independent": true,
+    "silence_is_selection": false,
+    "model_recommendation_is_decision": false,
+    "git_commit_is_decision": false,
+    "review_is_authority": false,
+    "verification_is_authorization": false,
+    "evidence_is_truth": false
+  },
+  "effects": {
+    "packet_ready_for_human_selection": true,
+    "decisions_recorded": false,
+    "cs_g1_review_execution_authorized": false,
+    "cs_g0_contract_preparation_authorized": false,
+    "provider_requests_authorized": 0,
+    "provider_requests_executed": 0,
+    "data_processing_authorized": false,
+    "acquisition_authorized": false,
+    "cs_g0_pass": false,
+    "cs_g1_pass": false,
+    "implementation_authorized": false,
+    "standard_ready": false,
+    "commercial_ready": false,
+    "release_authorized": false
+  }
+}

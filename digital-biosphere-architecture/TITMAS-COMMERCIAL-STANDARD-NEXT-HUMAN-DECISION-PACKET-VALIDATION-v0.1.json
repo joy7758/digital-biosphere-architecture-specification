@@ -1,0 +1,55 @@
+{
+  "document_id": "DBA_TITMAS_COMMERCIAL_STANDARD_NEXT_HUMAN_DECISION_PACKET_VALIDATION_0_1",
+  "version": "0.1.0",
+  "status": "OFFLINE_VALIDATION_PASS_AWAITING_HUMAN_SELECTION",
+  "validated_at": "2026-07-28T23:30:00+08:00",
+  "packet_bindings": [
+    {
+      "path": "TITMAS-COMMERCIAL-STANDARD-NEXT-HUMAN-DECISION-PACKET-v0.1.md",
+      "sha256": "ce284311eec4e14342a285551d31085011fe7a913e7d2cf1f2270f08012bd4b5",
+      "bytes": 4964
+    },
+    {
+      "path": "TITMAS-COMMERCIAL-STANDARD-NEXT-HUMAN-DECISION-ENTRY-v0.1.json",
+      "sha256": "5fd251209d9d2eadec2c8a982d3b86b80dc2236168716902fe366011bbaeac28",
+      "bytes": 3746
+    },
+    {
+      "path": "architecture/schemas/titmas-commercial-standard-next-human-decision-entry.schema.v0.1.json",
+      "sha256": "0f4f1ca2d2482764f2583cc0a109d7854a45718be21f5953ef354ce852da7e5d",
+      "bytes": 8921
+    }
+  ],
+  "checks": {
+    "schema_meta_validation": "PASS",
+    "machine_entry_instance_validation": "PASS",
+    "source_hash_and_byte_bindings": "PASS",
+    "source_branch_and_commit_binding": "PASS",
+    "selection_elevation_rejected": true,
+    "provider_authorization_elevation_rejected": true,
+    "source_commit_drift_rejected": true,
+    "candidate_hash_drift_rejected": true,
+    "validity_drift_rejected": true
+  },
+  "authorization_semantics_if_selected": {
+    "validity_seconds": 604800,
+    "cs_g1_d03_consumption": "TWO_REQUEST_ATTEMPTS_OR_EXPIRY",
+    "cs_g0_prep_d01_consumption": "OFFLINE_CANDIDATE_VALIDATION_OR_EXPIRY",
+    "one_time": true
+  },
+  "effects": {
+    "human_decision_packet_ready": true,
+    "human_selection_recorded": false,
+    "cs_g1_review_execution_authorized": false,
+    "cs_g0_contract_preparation_authorized": false,
+    "provider_requests_authorized": 0,
+    "provider_requests_executed": 0,
+    "data_processing_authorized": false,
+    "acquisition_authorized": false,
+    "cs_g0_pass": false,
+    "cs_g1_pass": false,
+    "standard_ready": false,
+    "commercial_ready": false,
+    "release_authorized": false
+  }
+}

@@ -2,7 +2,7 @@
 document_id: DBA-TITMAS-COMMERCIAL-STANDARD-UPSTREAM-HUMAN-DECISION-QUEUE-0.1
 title: TITMAS Commercial Standard Upstream Human Decision Queue v0.1
 title_zh: TITMAS 商业标准上游人类决定队列 v0.1
-status: TWO_NEXT_BOUNDED_DECISION_CANDIDATES_READY
+status: HUMAN_DECISION_PACKET_READY_AWAITING_SELECTION
 maturity: Development
 created_at: 2026-07-28T18:45:00+08:00
 updated_at: 2026-07-28T22:55:00+08:00
@@ -54,6 +54,15 @@ CS-G0-ACQUISITION-PREP-D01=AUTHORIZE_SOURCE_DATA_STORAGE_CAP_CONTRACT_CANDIDATE_
 The two Decisions remain independent. Selection may be recorded together, but
 does not create a combined Gate PASS.
 
+The canonical signing entry is now:
+
+- [`Next Human Decision Packet`](TITMAS-COMMERCIAL-STANDARD-NEXT-HUMAN-DECISION-PACKET-v0.1.md);
+- [`machine entry`](TITMAS-COMMERCIAL-STANDARD-NEXT-HUMAN-DECISION-ENTRY-v0.1.json);
+- [`packet validation`](TITMAS-COMMERCIAL-STANDARD-NEXT-HUMAN-DECISION-PACKET-VALIDATION-v0.1.md).
+
+It binds the exact candidate bytes, a one-time 604,800-second validity rule and
+authorization-consumption semantics. Packet readiness is not selection.
+
 ## 5. Work after the recorded Decisions
 
 ### CS-G1
@@ -83,6 +92,8 @@ CS_G1_PASS=false
 CS_G2_THROUGH_CS_G7=BLOCKED
 CS_G1_REMEDIATION_D03_DECISION_STATE=NOT_DECIDED
 CS_G0_ACQUISITION_PREP_D01_DECISION_STATE=NOT_DECIDED
+HUMAN_DECISION_PACKET_READY=true
+HUMAN_SELECTION_RECORDED=false
 PROVIDER_REQUESTS_AUTHORIZED=0
 PROVIDER_REQUESTS_EXECUTED=0
 DATA_PROCESSING_AUTHORIZED=false

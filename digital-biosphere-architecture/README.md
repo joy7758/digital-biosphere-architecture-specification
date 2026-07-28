@@ -801,6 +801,12 @@ live reviewer session、acquisition 与 record creation 均未授权。
 两个下一决定候选的 hash、Schema、失败关闭和 no-effect 状态已由
 [`offline candidate validation`](architecture/titmas-commercial-standard-next-decision-candidate-validation-v0.1.md)
 验证为 `PASS`；该 PASS 只表示候选可供 Human Owner 决定。
+当前统一签署入口为
+[`Next Human Decision Packet`](TITMAS-COMMERCIAL-STANDARD-NEXT-HUMAN-DECISION-PACKET-v0.1.md)
+及其 [`machine entry`](TITMAS-COMMERCIAL-STANDARD-NEXT-HUMAN-DECISION-ENTRY-v0.1.json)；
+[`packet validation`](TITMAS-COMMERCIAL-STANDARD-NEXT-HUMAN-DECISION-PACKET-VALIDATION-v0.1.md)
+已拒绝 selection、provider authorization、source commit/hash 和有效期漂移。两个决定
+仍为 `NOT_DECIDED`，packet ready 不等于授权。
 `CS-G2–CS-G7` 仍为 `BLOCKED`；数据处理、外部推广、客户记录、实现、商业试点、认证、
 正式标准发布、Release 和 Deployment 均保持关闭。
 
