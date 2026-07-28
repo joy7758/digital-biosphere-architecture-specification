@@ -1,0 +1,88 @@
+{
+  "schema_version": "0.1",
+  "result_id": "AGENT-IMMUNE-FORMAL-RELEASE-RESULT-20260728-R3",
+  "status": "PASS_RETAIN_FORMAL_STATIC_SITE_RELEASE",
+  "observed_at": "2026-07-28T06:48:28Z",
+  "decision_reference": "AGENT-IMMUNE-PUBLIC-WEBSITE-FORMAL-RELEASE-2026-07-28",
+  "public_origin": "https://redcrag.cn",
+  "source_revision": "69fe2b7a1b6123a64dff12ed81fd6df1e8e863c4",
+  "release_gate_revision": "c211144681e26ccc2946a3b03e1f0da3c83c1f8c",
+  "active_release": "/srv/tmai/releases/69fe2b7a1b6123a64dff12ed81fd6df1e8e863c4--f60fffad44ddbbbbc214f3dab5f4ce217ca05b9b0660520f7f61c5ae037ff5b1",
+  "rollback_release": "/srv/tmai/releases/c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+  "artifact": {
+    "archive_sha256": "f60fffad44ddbbbbc214f3dab5f4ce217ca05b9b0660520f7f61c5ae037ff5b1",
+    "archive_bytes": 1052405,
+    "manifest_files": 90,
+    "on_host_manifest_pass": true
+  },
+  "server_immediate_gate": {
+    "atomic_switch_pass": true,
+    "routes_passed": 10,
+    "routes_expected": 10,
+    "security_headers_passed": 6,
+    "security_headers_expected": 6,
+    "product_boundary_pass": true,
+    "nginx_active": true,
+    "rollback_target_preserved": true
+  },
+  "independent_vantage_run": {
+    "github_run_id": 30336015247,
+    "url": "https://github.com/joy7758/digital-biosphere-architecture-specification/actions/runs/30336015247",
+    "status": "completed",
+    "conclusion": "success",
+    "requests_total": 24,
+    "retry": false,
+    "fallback": false,
+    "tls_verification_bypass": false,
+    "all_hashes_match": true,
+    "vantages": [
+      {
+        "vantage_id": "GITHUB_HOSTED_UBUNTU",
+        "runner_os": "Linux",
+        "client": "python-http-client",
+        "tls_backend": "OpenSSL 3.0.13 30 Jan 2024",
+        "requests_executed": 12,
+        "passes": 12,
+        "failures": 0,
+        "result": "VANTAGE_OBSERVATION_PASS",
+        "proxy_environment_present": false,
+        "receipt_sha256": "a2f7513796affdedde6d648dae75116837ba73b0e54138ad05876b4f3738661d"
+      },
+      {
+        "vantage_id": "GITHUB_HOSTED_MACOS",
+        "runner_os": "Darwin",
+        "client": "system-curl",
+        "tls_backend": "SecureTransport and LibreSSL 3.3.6",
+        "requests_executed": 12,
+        "passes": 12,
+        "failures": 0,
+        "result": "VANTAGE_OBSERVATION_PASS",
+        "proxy_environment_present": false,
+        "receipt_sha256": "95564ff149493c0418dce42baff5dac8d4f472499549beb1cce7a95f4412d21d"
+      }
+    ]
+  },
+  "published_entrypoints": {
+    "zh": "https://redcrag.cn/products/agent-immune/",
+    "en": "https://redcrag.cn/en/products/agent-immune/",
+    "machine": "https://redcrag.cn/products/agent-immune.json"
+  },
+  "prior_failed_batch_preserved": {
+    "error": "LibreSSL SSL_ERROR_SYSCALL",
+    "retry_performed": false,
+    "rollback_pass": true,
+    "failure_overwritten": false
+  },
+  "effects": {
+    "static_public_site_release": true,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "permission": false,
+    "security_certification": false,
+    "reliability_proof": false,
+    "compliance_certification": false,
+    "deployment_guarantee": false,
+    "production_readiness": false
+  }
+}
