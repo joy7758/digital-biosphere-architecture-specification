@@ -1,0 +1,187 @@
+{
+  "result_id": "TITMAS-CE-G12-SOURCE-BOUND-CANDIDATE-PREPARATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28T00:37:30Z",
+  "status": "FAIL_CLOSED_EXACT_SOURCE_BOUND_CANDIDATE_NOT_PREPARED_NO_DEPLOYMENT_AUTHORIZED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-MANIFEST-SOURCE-BINDING-REMEDIATION",
+  "decision_sha256": "d02512ee74f9e628c588edb72cb787815848e2edfbc6d9c795533b68d6587509",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-MANIFEST-SOURCE-BINDING-REMEDIATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "f84dbc5f210f962da29ac642453a3fb0971d866f27d0742906c0693723e68a4e",
+  "governance_commit": "eba89a0f2a58fc11d1107a49d9ec56407bb1ab95",
+  "source_contract": {
+    "source_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "source_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "remote_source_ref": "refs/heads/codex/production-observability-baseline",
+    "remote_source_ref_exact_at_single_fetch_snapshot": true,
+    "export_script_blob": "f7f3b75370e48577dc5812d389b5ccfd21805044",
+    "package_json_blob": "f30dcc3f4b41a53539737becfb58d0b6a1d26525"
+  },
+  "tracked_json": {
+    "runs": 1,
+    "files_passed": 1165,
+    "files_failed": 0,
+    "duplicate_keys": 0,
+    "output_sha256": "e25633c038d63d294f82b30cc9ceec3fd18b0a1a479b7c523470a6a22a7f1f36"
+  },
+  "commercial_entry_schema": {
+    "runs": 1,
+    "draft": "2020-12",
+    "schema_meta_valid": "1/1",
+    "instance_valid": "1/1",
+    "status": "PASS",
+    "output_sha256": "9c3dfdfdb5a88f8f4717579aa9df04d71b9e73d2d90c7eaba6f8f209cafeba86"
+  },
+  "npm_ci": {
+    "attempts": 1,
+    "exit": 0,
+    "offline": true,
+    "ignore_scripts": true,
+    "packages_added": 493,
+    "output_sha256": "6baae97dd1f30b8fe31c1508cbbb10b50a88f539ae08f896fe8d85226e760b55"
+  },
+  "npm_ls": {
+    "attempts": 1,
+    "exit": 0,
+    "direct_dependencies": 23,
+    "reported_problem_count": 5,
+    "reported_problem_categories": [
+      "extraneous"
+    ],
+    "absolute_local_paths_persisted": false,
+    "output_sha256": "b738938b7f2e553c5ecb36981ca89f4156c9017de0518b5d0925ab67c58f8522"
+  },
+  "site_tests": {
+    "attempts": 1,
+    "exit": 0,
+    "tests_passed": 16,
+    "tests_failed": 0,
+    "output_sha256": "62921b9bd465ce1070af421b41040d859be6991a28f229670111a37c40e07b87"
+  },
+  "release_formal": {
+    "attempts": 1,
+    "exit": 0,
+    "effect": "LOCAL_STATIC_EXPORT_AND_VERIFICATION_ONLY",
+    "static_export_pass": true,
+    "content_parity_pass": true,
+    "truth_boundary_validation_pass": true,
+    "manifest_files": 65,
+    "source_revision_input": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "release_source_revision": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "manifest_source_revision": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "source_revision_binding_pass": true,
+    "output_sha256": "4f7d769c69d3e751aa388aae66fa3fa18690c9ee31565ae52e5418205b13101c"
+  },
+  "source_binding": {
+    "release_json_exact_source_pass": true,
+    "release_manifest_exact_source_pass": true,
+    "release_manifest_release_json_equality_pass": true,
+    "output_sha256": "deaaf129d49db2cfefa442017b0dea0de39b446f1cd14a75316e8f560fddd511"
+  },
+  "ce_schema_contract": {
+    "runs": 1,
+    "hashes_passed": "3/3",
+    "meta_schemas_passed": "3/3",
+    "output_sha256": "cd20ee87b6e273faedeed23561d1b8301d83a89be234a06cc4eeb1ba3031b192"
+  },
+  "ce_tests": {
+    "attempts": 1,
+    "exit": 0,
+    "tests_passed": 49,
+    "tests_failed": 0,
+    "output_sha256": "2bae1db318f7088318726861b381908649a81b5de6be00ec92e24404dc58b68a"
+  },
+  "source_drift": {
+    "tracked_source_diff": 0,
+    "source_commit_exact": true,
+    "source_tree_exact": true,
+    "remote_source_ref_drift_against_single_fetch_snapshot": 0
+  },
+  "archive_attempt": {
+    "archives_created": 1,
+    "reference": "/tmp/titmas-site-c1d8931930fbae15f96ee6a6ac050b081538c919-source-bound.tar.gz",
+    "bytes": 994348,
+    "sha256": "789064b92d6dd93f615406ae6430d2b5410d5396d01969fc708f89e2e489e665",
+    "entries_total": 174,
+    "payload_entries": 87,
+    "appledouble_entries": 87,
+    "unique_names": 174,
+    "duplicate_names": 0,
+    "manifest_reference": "./release-manifest.json",
+    "manifest_bytes": 11521,
+    "manifest_sha256": "f5d26d8e9ae1e26a0288cea24fa3a572a4ba1c1cf39ce6633be7b488db143434",
+    "manifest_files": 65,
+    "route_hashes_bound": "11/11",
+    "source_binding_pass": true,
+    "portable_archive_pass": false,
+    "manifest_coverage_pass": false,
+    "admitted_as_candidate": false,
+    "failure_reason": "MACOS_BSDTAR_APPLEDOUBLE_METADATA_MEMBERS_NOT_COVERED_BY_RELEASE_MANIFEST"
+  },
+  "current_candidate_disposition": {
+    "current_candidate_archive": "/tmp/titmas-site-c1d8931930fbae15f96ee6a6ac050b081538c919.tar.gz",
+    "current_candidate_sha256": "7240f58b5f4471ee9166b5fe18fe83937a344116114a4b33468a580e75cdcda2",
+    "current_candidate_still_exact": true,
+    "history_preserved": true,
+    "superseded": false,
+    "deleted": false,
+    "overwritten": false
+  },
+  "cleanup": {
+    "disposable_worktrees_created": 1,
+    "disposable_worktrees_removed": 1,
+    "final_worktrees_remaining": 0,
+    "final_worktree_directories_remaining": 0,
+    "status": "PASS"
+  },
+  "execution_counts": {
+    "git_fetches": 1,
+    "npm_ci_attempts": 1,
+    "npm_ls_attempts": 1,
+    "site_test_attempts": 1,
+    "release_formal_attempts": 1,
+    "ce_test_attempts": 1,
+    "archives_created": 1,
+    "archive_rebuilds": 0,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "public_site_requests": 0,
+    "symlink_switches": 0,
+    "nginx_tests": 0,
+    "nginx_reloads": 0,
+    "repairs": 0,
+    "rollbacks": 0,
+    "deployments": 0,
+    "releases": 0,
+    "pr_mutations": 0,
+    "model_requests": 0,
+    "validation_retries": 0,
+    "network_fallbacks": 0
+  },
+  "effects": {
+    "execution_complete": true,
+    "source_binding_remediation_pass": true,
+    "portable_archive_validation_pass": false,
+    "candidate_preparation_pass": false,
+    "fresh_candidate_prepared": false,
+    "current_candidate_superseded": false,
+    "archive_failure_preserved": true,
+    "server_state_changed": false,
+    "public_site_changed": false,
+    "repair_authorized": false,
+    "rollback_authorized": false,
+    "deployment_admission_pass": false,
+    "deployment_authorized": false,
+    "release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "permission_created": false,
+    "authority_elevated": false,
+    "evidence_truth_changed": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G12_PORTABLE_ARCHIVE_REMEDIATION_RECOMMENDATION_ONLY",
+    "authorized": false
+  }
+}
