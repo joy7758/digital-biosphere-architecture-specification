@@ -1,0 +1,24 @@
+{
+  "session_id": "CE-G13-S05",
+  "role": "BOUNDARY_AND_NON_MATCH_AUDITOR",
+  "source_snapshot_sha256": "48039a10b3542c49a89b4ba9353360b378300c570f42c7ebf0bf6595abbb7548",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "hard_boundaries": [
+    "Evidence != Truth",
+    "Evaluation != Authority",
+    "Recommendation != Decision",
+    "Capability != Permission"
+  ],
+  "unknowns": [],
+  "blockers": [],
+  "critical_boundary_failures": [],
+  "production_recommended": false,
+  "certification_claimed": false,
+  "automatic_authority_claimed": false,
+  "customer_adoption_claimed": false,
+  "non_matching_use_cases": [
+    "Production deployment or live runtime integration requiring hosted DBOS, SLA, or customer adoption evidence",
+    "Agent framework, orchestration platform, or foundation model providing reasoning, creation, or automatic permission grants"
+  ]
+}

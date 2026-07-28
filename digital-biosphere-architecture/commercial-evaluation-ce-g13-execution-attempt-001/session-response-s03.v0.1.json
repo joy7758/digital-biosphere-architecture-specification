@@ -1,0 +1,24 @@
+{
+  "session_id": "CE-G13-S03",
+  "role": "WEBSITE_ONLY_REUSE_PLANNER",
+  "source_snapshot_sha256": "48039a10b3542c49a89b4ba9353360b378300c570f42c7ebf0bf6595abbb7548",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "hard_boundaries": [
+    "Evidence != Truth",
+    "Evaluation != Authority",
+    "Recommendation != Decision",
+    "Capability != Permission"
+  ],
+  "unknowns": [],
+  "blockers": [],
+  "critical_boundary_failures": [],
+  "machine_status_entry": "https://redcrag.cn/status.json",
+  "architecture_entry": "https://redcrag.cn/llms.txt",
+  "evaluation_package_or_manifest": "https://redcrag.cn/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json",
+  "synthetic_input": "https://redcrag.cn/examples/titmas-first-run/entity-object.synthetic.v0.1.json",
+  "validation_procedure": "Install the exact public-safe wheel digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl (SHA-256 edf92e548860384b1416a612a7e319e0d994bb324f8621847d0d154624ae8f09) in an isolated Python >=3.11 environment, download the synthetic entity object from the website, and execute 'dbos-validate entity.json'. A PASS result confirms only local structural and governance constraints; it does not confer truth, authority, permission, production readiness, or commercial availability.",
+  "bounded_result_meaning": "A passing validation confirms that the synthetic DBOS v0.1 object satisfies local structure and governance constraints using the published public-safe wheel and same-origin fixture. It does not prove entity existence, registration, activation, capability, permission, evidence truth, production readiness, customer adoption, SLA, certification, or any commercial offering. The result is bounded to offline, read-only, non-production reuse planning derived solely from the public TITMAS website snapshot.",
+  "website_sufficient_without_github": true,
+  "hidden_dependencies": []
+}
