@@ -166,6 +166,87 @@ class HarnessTests(unittest.TestCase):
         ]
         self.assertEqual([], records)
 
+    def test_ecology_box_001_preregistration_passes_without_execution(self):
+        details = HARNESS.check_agent_native_ecology_box_001_preregistration()
+        self.assertEqual("REQUIRES_CORRECTION", details["fairness_review_status"])
+        self.assertEqual(5, details["transition_cases_rejected"])
+        self.assertEqual(10, details["human_decisions_undecided"])
+        self.assertFalse(details["execution_authorized"])
+        self.assertFalse(details["experiment_executed"])
+        self.assertFalse(details["value_proven"])
+
+    def test_ecology_box_001_ready_cannot_auto_become_executed(self):
+        self.assertEqual(
+            {"decision": "REJECT", "reason_code": "READY_NE_EXECUTED"},
+            HARNESS.ecology_box_001_preregistration_rejection(
+                "READY_TO_EXECUTED"
+            ),
+        )
+
+    def test_ecology_box_001_result_cannot_auto_become_value_proven(self):
+        self.assertEqual(
+            {"decision": "REJECT", "reason_code": "RESULT_NE_VALUE_PROVEN"},
+            HARNESS.ecology_box_001_preregistration_rejection(
+                "RESULT_TO_VALUE_PROVEN"
+            ),
+        )
+
+    def test_ecology_box_001_agent_activity_cannot_prove_community_value(self):
+        self.assertEqual(
+            {
+                "decision": "REJECT",
+                "reason_code": "AGENT_ACTIVITY_NE_COMMUNITY_VALUE",
+            },
+            HARNESS.ecology_box_001_preregistration_rejection(
+                "ACTIVITY_TO_COMMUNITY_VALUE"
+            ),
+        )
+
+    def test_ecology_box_001_sessions_cannot_be_lineages(self):
+        root = HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+        lineage = json.loads((root / "agent-lineage-plan.yaml").read_text())
+        self.assertEqual(
+            1,
+            lineage["counting_rules"][
+                "single_model_multiple_sessions_multiple_roles"
+            ]["independent_lineage_count"],
+        )
+        inflated = copy.deepcopy(lineage)
+        inflated["current_counts"]["MODEL_COUNT"] = 1
+        inflated["current_counts"]["SESSION_COUNT"] = 8
+        inflated["current_counts"]["ROLE_COUNT"] = 8
+        inflated["current_counts"]["INDEPENDENT_LINEAGE_COUNT"] = 8
+        with self.assertRaises(HARNESS.ConformanceError):
+            HARNESS.validate_ecology_box_001_preregistration_lineage(inflated)
+        self.assertEqual(
+            {
+                "decision": "REJECT",
+                "reason_code": "SESSION_COUNT_NE_INDEPENDENT_LINEAGE_COUNT",
+            },
+            HARNESS.ecology_box_001_preregistration_rejection(
+                "SESSION_TO_LINEAGE"
+            ),
+        )
+
+    def test_ecology_box_001_pilot_pass_cannot_prove_commercial_value(self):
+        self.assertEqual(
+            {
+                "decision": "REJECT",
+                "reason_code": "PILOT_PASS_NE_COMMERCIAL_VALUE",
+            },
+            HARNESS.ecology_box_001_preregistration_rejection(
+                "PILOT_PASS_TO_COMMERCIAL_VALUE"
+            ),
+        )
+
+    def test_ecology_box_001_unknown_transition_is_not_assessed(self):
+        self.assertEqual(
+            {"decision": "NOT_ASSESSED", "reason_code": "UNKNOWN_CASE"},
+            HARNESS.ecology_box_001_preregistration_rejection(
+                "UNFROZEN_TRANSITION"
+            ),
+        )
+
     def test_agent_native_reviews_preserve_real_independence(self):
         details = HARNESS.check_agent_native_reviews()
         self.assertEqual(14, details["review_sessions_checked"])

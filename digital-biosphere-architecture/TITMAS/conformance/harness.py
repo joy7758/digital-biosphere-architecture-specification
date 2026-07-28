@@ -610,12 +610,46 @@ ECOLOGY_BOX_001_REJECTIONS = {
     "TEST_PASS_TO_ADOPTION": "TEST_PASS_NE_ADOPTION",
 }
 
+ECOLOGY_BOX_001_PREREGISTRATION_REJECTIONS = {
+    "READY_TO_EXECUTED": "READY_NE_EXECUTED",
+    "RESULT_TO_VALUE_PROVEN": "RESULT_NE_VALUE_PROVEN",
+    "ACTIVITY_TO_COMMUNITY_VALUE": "AGENT_ACTIVITY_NE_COMMUNITY_VALUE",
+    "SESSION_TO_LINEAGE": "SESSION_COUNT_NE_INDEPENDENT_LINEAGE_COUNT",
+    "PILOT_PASS_TO_COMMERCIAL_VALUE": "PILOT_PASS_NE_COMMERCIAL_VALUE",
+}
+
 
 def ecology_box_001_rejection(attack: str) -> dict[str, str]:
     reason = ECOLOGY_BOX_001_REJECTIONS.get(attack)
     if not reason:
         return {"decision": "NOT_ASSESSED", "reason_code": "UNKNOWN_CASE"}
     return {"decision": "REJECT", "reason_code": reason}
+
+
+def ecology_box_001_preregistration_rejection(transition: str) -> dict[str, str]:
+    reason = ECOLOGY_BOX_001_PREREGISTRATION_REJECTIONS.get(transition)
+    if not reason:
+        return {"decision": "NOT_ASSESSED", "reason_code": "UNKNOWN_CASE"}
+    return {"decision": "REJECT", "reason_code": reason}
+
+
+def validate_ecology_box_001_preregistration_lineage(
+    lineage: dict[str, Any],
+) -> None:
+    current = lineage["current_counts"]
+    if current["INDEPENDENT_LINEAGE_COUNT"] > current["SESSION_COUNT"]:
+        raise ConformanceError("independent lineage count exceeds session count")
+    if current["MODEL_COUNT"] > current["SESSION_COUNT"]:
+        raise ConformanceError("model count exceeds session count")
+    if current["INDEPENDENT_LINEAGE_COUNT"] != len(lineage["lineage_refs"]):
+        raise ConformanceError("independent lineage count does not match references")
+    same_model_rule = lineage["counting_rules"][
+        "single_model_multiple_sessions_multiple_roles"
+    ]
+    if same_model_rule["independent_lineage_count"] != 1:
+        raise ConformanceError(
+            "one model across sessions and roles must remain one lineage"
+        )
 
 
 def sha256_file(path: Path) -> str:
@@ -800,11 +834,14 @@ def check_agent_native_ecology_box_001_package() -> dict[str, Any]:
         DBA_ROOT
         / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-HUMAN-DECISION-PACKET-v0.1.md"
     ).read_text(encoding="utf-8")
-    for decision_id in ("HD-EB-01", "HD-EB-02", "HD-EB-03", "HD-EB-04", "HD-EB-05"):
+    for decision_id in (
+        "HD-EB-01", "HD-EB-02", "HD-EB-03", "HD-EB-04", "HD-EB-05",
+        "HD-EB-06", "HD-EB-07", "HD-EB-08", "HD-EB-09", "HD-EB-10",
+    ):
         if decision_id not in packet:
             raise ConformanceError(f"Human Decision packet missing {decision_id}")
-    if packet.count("decision=UNDECIDED") != 5:
-        raise ConformanceError("Human Decision packet must keep five decisions UNDECIDED")
+    if packet.count("decision=UNDECIDED") != 10:
+        raise ConformanceError("Human Decision packet must keep ten decisions UNDECIDED")
 
     review = load_json(
         DBA_ROOT / "architecture" / "reviews"
@@ -848,8 +885,210 @@ def check_agent_native_ecology_box_001_package() -> dict[str, Any]:
         "baseline_metrics_not_assessed": len(expected_metrics),
         "failure_scenarios_checked": len(failure_names),
         "security_cases_rejected": len(ECOLOGY_BOX_001_REJECTIONS),
-        "human_decisions_undecided": 5,
+        "human_decisions_undecided": 10,
         "experiment_executed": False,
+    }
+
+
+def check_agent_native_ecology_box_001_preregistration() -> dict[str, Any]:
+    root = TITMAS_ROOT / "agent-native" / "ecology-box-001"
+    required_paths = {
+        "pre_registration_sha256": root / "pre-registration.md",
+        "fairness_review_sha256": root / "fairness-review.md",
+        "bias_analysis_sha256": root / "bias-analysis.md",
+        "blind_evaluation_protocol_sha256": root / "blind-evaluation-protocol.md",
+        "agent_lineage_plan_sha256": root / "agent-lineage-plan.yaml",
+        "baseline_execution_plan_sha256": root / "baseline-execution-plan.md",
+        "agent_native_execution_plan_sha256": root / "agent-native-execution-plan.md",
+        "stop_rules_sha256": root / "stop-rules.yaml",
+        "success_criteria_sha256": root / "success-criteria.md",
+    }
+    supporting_paths = (
+        root / "freeze-review.yaml",
+        DBA_ROOT / "architecture"
+        / "titmas-agent-native-ecology-box-001-preregistration-baseline-v0.1.md",
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-preregistration-predevelopment-review-v0.1.json",
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-preregistration-post-remediation-review-v0.1.json",
+        DBA_ROOT
+        / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-PREREGISTRATION-AND-EXECUTION-REVIEW-REPORT-v0.1.md",
+    )
+    missing = [
+        str(path.relative_to(DBA_ROOT))
+        for path in tuple(required_paths.values()) + supporting_paths
+        if not path.is_file()
+    ]
+    if missing:
+        raise ConformanceError(
+            f"Ecology Box 001 pre-registration files missing {missing}"
+        )
+
+    freeze = load_json(root / "freeze-review.yaml")
+    if freeze["status"] != "PREREGISTERED_REVIEW_COMPLETE_REQUIRES_CORRECTION":
+        raise ConformanceError("pre-registration freeze review status drift")
+    if freeze["source_commit"] != "b92a9a8c0553b51afc832e549d9ad5af271443f2":
+        raise ConformanceError("pre-registration source revision drift")
+    for key, path in required_paths.items():
+        if freeze["frozen_components"].get(key) != sha256_file(path):
+            raise ConformanceError(f"{key}: pre-registration frozen hash mismatch")
+    original_frozen_paths = {
+        "task_registry_sha256": root / "tasks" / "task-registry.yaml",
+        "metrics_schema_sha256": root / "metrics" / "schema.json",
+        "roles_registry_sha256": root / "roles" / "registry.yaml",
+        "protocol_sha256": root / "protocol.md",
+    }
+    for key, path in original_frozen_paths.items():
+        if freeze["frozen_components"].get(key) != sha256_file(path):
+            raise ConformanceError(f"{key}: original package hash drift")
+    expected_false = (
+        "execution_authorized", "experiment_executed", "value_proven",
+        "real_agent_contribution_authorized", "real_git_access_authorized",
+        "public_report_authorized", "commercial_validation_authorized",
+    )
+    elevated = [key for key in expected_false if freeze.get(key) is not False]
+    if elevated:
+        raise ConformanceError(
+            f"pre-registration freeze semantically elevated {elevated}"
+        )
+    if (
+        freeze["EXECUTION_AUTHORIZATION_CANDIDATE_READY"] is not True
+        or freeze["EXECUTION_AUTHORIZATION_CANDIDATE_READY_MEANS"]
+        != "HUMAN_REVIEW_PACKET_COMPLETE_NOT_EXECUTION_READY"
+    ):
+        raise ConformanceError("authorization candidate readiness is ambiguous")
+
+    fairness = (root / "fairness-review.md").read_text(encoding="utf-8")
+    if (
+        "FAIRNESS_REVIEW_STATUS=REQUIRES_CORRECTION" not in fairness
+        or "EXECUTION_AUTHORIZED=false" not in fairness
+        or "HD-EB-07" not in fairness
+    ):
+        raise ConformanceError("fairness review does not fail closed")
+
+    bias = (root / "bias-analysis.md").read_text(encoding="utf-8")
+    bias_types = {
+        "CONFIRMATION_BIAS", "SELECTION_BIAS", "MEASUREMENT_BIAS",
+        "MODEL_BIAS", "OBSERVER_BIAS", "CARRY_OVER_BIAS",
+    }
+    missing_bias = sorted(item for item in bias_types if item not in bias)
+    if missing_bias or "BIAS_ELIMINATED=false" not in bias:
+        raise ConformanceError(f"bias analysis incomplete {missing_bias}")
+
+    lineage = load_json(root / "agent-lineage-plan.yaml")
+    validate_ecology_box_001_preregistration_lineage(lineage)
+    if (
+        any(lineage["current_counts"].values())
+        or lineage["participant_refs"]
+        or lineage["lineage_refs"]
+        or lineage["assignment_created"]
+        or lineage["lineage_plan_approved"]
+        or lineage["execution_authorized"]
+    ):
+        raise ConformanceError("lineage plan creates participants or authorization")
+    minimums = lineage["confirmatory_minimums"]
+    expected_minimums = {
+        "MODEL_COUNT_MIN": 3,
+        "SESSION_COUNT_MIN": 20,
+        "ROLE_COUNT": 8,
+        "INDEPENDENT_LINEAGE_COUNT_MIN": 3,
+        "FULL_PIPELINE_COUNT_MIN": 5,
+        "NON_FIXTURE_REPOSITORY_COUNT_MIN": 3,
+    }
+    if minimums != expected_minimums:
+        raise ConformanceError("confirmatory lineage minimums drift")
+
+    stops = load_json(root / "stop-rules.yaml")
+    if (
+        stops["STOP_ON_BOUNDARY_BREACH"] is not True
+        or stops["STOP_ON_SCHEMA_DRIFT"] is not True
+        or stops["STOP_ON_AUTHORITY_DRIFT"] is not True
+        or stops["failure_records_deletable"] is not False
+        or stops["execution_authorized"] is not False
+    ):
+        raise ConformanceError("stop rules fail open")
+
+    success = (root / "success-criteria.md").read_text(encoding="utf-8")
+    required_nonclaims = (
+        "AGENT_ACTIVITY_IS_VALUE=false",
+        "SESSION_COUNT_IS_LINEAGE_COUNT=false",
+        "PILOT_PASS_IS_COMMERCIAL_VALUE=false",
+        "RESULT_IS_VALUE_PROOF=false",
+        "VALUE_PROVEN=false",
+    )
+    if any(item not in success for item in required_nonclaims):
+        raise ConformanceError("success criteria permit proxy elevation")
+
+    for transition, reason_code in (
+        ECOLOGY_BOX_001_PREREGISTRATION_REJECTIONS.items()
+    ):
+        if ecology_box_001_preregistration_rejection(transition) != {
+            "decision": "REJECT",
+            "reason_code": reason_code,
+        }:
+            raise ConformanceError(f"{transition}: transition failed open")
+
+    review = load_json(
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-preregistration-predevelopment-review-v0.1.json"
+    )
+    if (
+        review["requested_model"] != "qwen3.7-max"
+        or review["transport_returned_model"] != "qwen3.7-max"
+        or review["authority_effect"] != "NONE"
+        or review["decision_effect"] != "NONE"
+        or review["execution_authorized"]
+    ):
+        raise ConformanceError("pre-registration advisory review boundary drift")
+
+    post_review = load_json(
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-preregistration-post-remediation-review-v0.1.json"
+    )
+    if (
+        post_review["requested_model"] != "qwen3.7-max"
+        or post_review["transport_returned_model"] != "qwen3.7-max"
+        or post_review["verdict"]
+        != "CONDITIONALLY_RECOMMENDED_FOR_HUMAN_REVIEW"
+        or post_review["would_recommend_as_human_review_candidate"] is not True
+        or post_review["would_recommend_execution"] is not False
+        or post_review["authority_effect"] != "NONE"
+        or post_review["decision_effect"] != "NONE"
+        or post_review["execution_authorized"] is not False
+    ):
+        raise ConformanceError("post-remediation advisory review boundary drift")
+
+    report = (
+        DBA_ROOT
+        / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-PREREGISTRATION-AND-EXECUTION-REVIEW-REPORT-v0.1.md"
+    ).read_text(encoding="utf-8")
+    required_report_states = (
+        "TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_PREREGISTRATION_COMPLETE=true",
+        "TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTION_REVIEW_COMPLETE=true",
+        "TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTION_AUTHORIZED=false",
+        "TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTED=false",
+        "TITMAS_AGENT_NATIVE_VALUE_PROVEN=false",
+        "REAL_AGENT_CONTRIBUTION_AUTHORIZED=false",
+        "REAL_GIT_ACCESS_AUTHORIZED=false",
+        "PUBLIC_REPORT_AUTHORIZED=false",
+        "COMMERCIAL_VALIDATION_AUTHORIZED=false",
+    )
+    if any(item not in report for item in required_report_states):
+        raise ConformanceError("completion report status drift")
+
+    return {
+        "preregistration_files_checked": len(required_paths) + len(supporting_paths),
+        "frozen_hashes_checked": len(required_paths) + len(original_frozen_paths),
+        "fairness_review_status": "REQUIRES_CORRECTION",
+        "bias_types_checked": len(bias_types),
+        "transition_cases_rejected": len(
+            ECOLOGY_BOX_001_PREREGISTRATION_REJECTIONS
+        ),
+        "independent_lineage_count": 0,
+        "human_decisions_undecided": 10,
+        "execution_authorized": False,
+        "experiment_executed": False,
+        "value_proven": False,
     }
 
 
@@ -974,6 +1213,10 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("agent_native_value_gate", check_agent_native_value_gate),
         ("agent_native_value_validation_framework", check_agent_native_value_validation_framework),
         ("agent_native_ecology_box_001_package", check_agent_native_ecology_box_001_package),
+        (
+            "agent_native_ecology_box_001_preregistration",
+            check_agent_native_ecology_box_001_preregistration,
+        ),
         ("agent_native_pilot", check_agent_native_pilot),
         ("agent_native_reviews", check_agent_native_reviews),
         ("local_links", check_local_links),
