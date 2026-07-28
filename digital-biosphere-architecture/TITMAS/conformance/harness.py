@@ -136,6 +136,24 @@ def semantic_errors(payload: dict[str, Any]) -> list[str]:
     return errors
 
 
+def brand_identity_errors(payload: dict[str, Any]) -> list[str]:
+    """Reject semantic elevation or identity drift in the bilingual brand layer."""
+    errors: list[str] = []
+    if payload.get("canonical_name") != "TITMAS":
+        errors.append("NON_TITMAS_ENGLISH_BRAND")
+    if payload.get("canonical_name_zh") != "夏日之海":
+        errors.append("CHINESE_BRAND_IDENTITY_DRIFT")
+    if payload.get("new_project_created") is True or payload.get("project_continuity") is not True:
+        errors.append("BRAND_AS_NEW_PROJECT")
+    if payload.get("authority_change") is True:
+        errors.append("NEW_AUTHORITY_FROM_BRAND")
+    if payload.get("brand_change_means_standard_adoption") is True:
+        errors.append("BRAND_CHANGE_AS_ADOPTION")
+    if payload.get("domain_registered") is True and payload.get("public_launch_authorized") is True:
+        errors.append("DOMAIN_REGISTRATION_AS_PUBLIC_LAUNCH")
+    return errors
+
+
 def check_registries() -> dict[str, Any]:
     specs = TITMAS_ROOT / "specifications"
     registry_schema = load_json(TITMAS_ROOT / "conformance" / "schemas" / "registry-entry.schema.json")
@@ -348,6 +366,55 @@ def check_agent_native_surfaces() -> dict[str, Any]:
     }
 
 
+def check_bilingual_brand_identity() -> dict[str, Any]:
+    entry = load_json(DBA_ROOT / "agent-index.json")
+    identity = load_json(DBA_ROOT / "titmas-brand-identity.json")
+    if entry.get("canonical_brand") != "TITMAS":
+        raise ConformanceError("agent-index.json English brand must remain TITMAS")
+    if entry.get("canonical_brand_zh") != "夏日之海":
+        raise ConformanceError("agent-index.json Chinese brand must be 夏日之海")
+    if entry.get("brand_identity_projection") != "titmas-brand-identity.json":
+        raise ConformanceError("agent-index.json must reference the brand identity projection")
+    if identity["machine_discovery"]["canonical_entry"] != "agent-index.json":
+        raise ConformanceError("brand identity projection must point to the canonical machine entry")
+    if identity["machine_discovery"]["second_canonical_entry_created"]:
+        raise ConformanceError("brand identity projection creates a competing machine entry")
+    normalized_identity = {
+        "canonical_name": identity["canonical_name"],
+        "canonical_name_zh": identity["canonical_name_zh"],
+        "project_continuity": identity["project_continuity"],
+        "new_project_created": identity["new_project_created"],
+        "authority_change": identity["authority_change"],
+        "brand_change_means_standard_adoption": False,
+        "domain_registered": identity["domain"]["registered"],
+        "public_launch_authorized": identity["domain"]["public_launch_authorized"],
+    }
+    errors = brand_identity_errors(normalized_identity)
+    if errors:
+        raise ConformanceError(f"brand identity projection errors {errors}")
+
+    fixture = load_json(
+        TITMAS_ROOT / "conformance" / "fixtures" / "brand"
+        / "titmas-xiarizhihai-brand-cases.json"
+    )
+    for case in fixture["positive_cases"]:
+        errors = brand_identity_errors(case["payload"])
+        if errors:
+            raise ConformanceError(f"{case['id']}: unexpected brand errors {errors}")
+    for case in fixture["negative_cases"]:
+        errors = brand_identity_errors(case["payload"])
+        if case["expected_error"] not in errors:
+            raise ConformanceError(
+                f"{case['id']}: expected {case['expected_error']}, got {errors}"
+            )
+    return {
+        "canonical_machine_entries": 1,
+        "brand_identity_projections": 1,
+        "positive_cases_passed": len(fixture["positive_cases"]),
+        "negative_cases_rejected": len(fixture["negative_cases"]),
+    }
+
+
 def check_agent_native_adversarial() -> dict[str, Any]:
     payload = load_json(TITMAS_ROOT / "agent-native" / "security" / "adversarial-cases.json")
     cases = payload["cases"]
@@ -527,6 +594,7 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("contributor_entry", check_contributor_entry),
         ("internal_reviews", check_internal_reviews),
         ("agent_native_surfaces", check_agent_native_surfaces),
+        ("bilingual_brand_identity", check_bilingual_brand_identity),
         ("agent_native_adversarial", check_agent_native_adversarial),
         ("agent_native_value_gate", check_agent_native_value_gate),
         ("agent_native_pilot", check_agent_native_pilot),

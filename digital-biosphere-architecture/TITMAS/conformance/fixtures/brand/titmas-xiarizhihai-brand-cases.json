@@ -1,0 +1,105 @@
+{
+  "format_version": "1.0.0",
+  "positive_cases": [
+    {
+      "id": "BRAND-POS-001-BILINGUAL-CONTINUITY",
+      "description": "TITMAS and 夏日之海 identify one continuous initiative.",
+      "payload": {
+        "canonical_name": "TITMAS",
+        "canonical_name_zh": "夏日之海",
+        "project_continuity": true,
+        "new_project_created": false,
+        "authority_change": false,
+        "brand_change_means_standard_adoption": false,
+        "domain_registered": true,
+        "public_launch_authorized": false
+      }
+    },
+    {
+      "id": "BRAND-POS-002-TECHNICAL-IDENTITY-PRESERVED",
+      "description": "The English and technical identity remains TITMAS.",
+      "payload": {
+        "canonical_name": "TITMAS",
+        "canonical_name_zh": "夏日之海",
+        "project_continuity": true,
+        "new_project_created": false,
+        "authority_change": false,
+        "brand_change_means_standard_adoption": false,
+        "domain_registered": true,
+        "public_launch_authorized": false
+      }
+    }
+  ],
+  "negative_cases": [
+    {
+      "id": "BRAND-NEG-001-SUMMERSEA-ACTIVE",
+      "expected_error": "NON_TITMAS_ENGLISH_BRAND",
+      "payload": {
+        "canonical_name": "SummerSea",
+        "canonical_name_zh": "夏日之海",
+        "project_continuity": true,
+        "new_project_created": false,
+        "authority_change": false,
+        "brand_change_means_standard_adoption": false,
+        "domain_registered": true,
+        "public_launch_authorized": false
+      }
+    },
+    {
+      "id": "BRAND-NEG-002-NEW-PROJECT",
+      "expected_error": "BRAND_AS_NEW_PROJECT",
+      "payload": {
+        "canonical_name": "TITMAS",
+        "canonical_name_zh": "夏日之海",
+        "project_continuity": false,
+        "new_project_created": true,
+        "authority_change": false,
+        "brand_change_means_standard_adoption": false,
+        "domain_registered": true,
+        "public_launch_authorized": false
+      }
+    },
+    {
+      "id": "BRAND-NEG-003-NEW-AUTHORITY",
+      "expected_error": "NEW_AUTHORITY_FROM_BRAND",
+      "payload": {
+        "canonical_name": "TITMAS",
+        "canonical_name_zh": "夏日之海",
+        "project_continuity": true,
+        "new_project_created": false,
+        "authority_change": true,
+        "brand_change_means_standard_adoption": false,
+        "domain_registered": true,
+        "public_launch_authorized": false
+      }
+    },
+    {
+      "id": "BRAND-NEG-004-BRAND-AS-ADOPTION",
+      "expected_error": "BRAND_CHANGE_AS_ADOPTION",
+      "payload": {
+        "canonical_name": "TITMAS",
+        "canonical_name_zh": "夏日之海",
+        "project_continuity": true,
+        "new_project_created": false,
+        "authority_change": false,
+        "brand_change_means_standard_adoption": true,
+        "domain_registered": true,
+        "public_launch_authorized": false
+      }
+    },
+    {
+      "id": "BRAND-NEG-005-DOMAIN-AS-LAUNCH",
+      "expected_error": "DOMAIN_REGISTRATION_AS_PUBLIC_LAUNCH",
+      "payload": {
+        "canonical_name": "TITMAS",
+        "canonical_name_zh": "夏日之海",
+        "project_continuity": true,
+        "new_project_created": false,
+        "authority_change": false,
+        "brand_change_means_standard_adoption": false,
+        "domain_registered": true,
+        "public_launch_authorized": true
+      }
+    }
+  ]
+}

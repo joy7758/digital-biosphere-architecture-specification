@@ -57,6 +57,26 @@ class HarnessTests(unittest.TestCase):
         self.assertEqual(12, details["agent_tasks_checked"])
         self.assertEqual(1, details["canonical_machine_entries"])
 
+    def test_bilingual_brand_identity_passes(self):
+        details = HARNESS.check_bilingual_brand_identity()
+        self.assertEqual(1, details["canonical_machine_entries"])
+        self.assertEqual(1, details["brand_identity_projections"])
+        self.assertEqual(2, details["positive_cases_passed"])
+        self.assertEqual(5, details["negative_cases_rejected"])
+
+    def test_bilingual_brand_identity_fails_closed(self):
+        path = (
+            HARNESS.TITMAS_ROOT / "conformance" / "fixtures" / "brand"
+            / "titmas-xiarizhihai-brand-cases.json"
+        )
+        cases = json.loads(path.read_text(encoding="utf-8"))["negative_cases"]
+        self.assertEqual(5, len(cases))
+        for case in cases:
+            self.assertIn(
+                case["expected_error"],
+                HARNESS.brand_identity_errors(case["payload"]),
+            )
+
     def test_agent_native_adversarial_coverage(self):
         details = HARNESS.check_agent_native_adversarial()
         self.assertEqual(22, details["adversarial_cases_rejected"])

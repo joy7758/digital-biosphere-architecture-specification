@@ -1,8 +1,12 @@
-# TITMAS Agent-Native Standards Community
+# 夏日之海 / TITMAS Agent-Native Standards Community
 
-中文：TITMAS 智能体原生标准社区。
+中文：夏日之海智能体原生标准社区。
 
 Agent-Native Community for Trusted Multi-Agent Infrastructure.
+
+`TITMAS` is the English master brand and stable technical identity;
+`夏日之海` is the Chinese master brand. They identify the same continuous
+initiative and are parallel bilingual names, not literal translations.
 
 The v1.0 names **TITMAS Developer Standards Community** and **TITMAS
 Infrastructure Developer Community** remain historical and human-facing
@@ -11,6 +15,9 @@ compatibility aliases. No path was renamed.
 ## 1. Agent entry
 
 The sole canonical machine entry is [`../agent-index.json`](../agent-index.json).
+The bilingual brand projection is
+[`../titmas-brand-identity.json`](../titmas-brand-identity.json); it is not a
+second canonical machine entry.
 Start with [Agent in 60 Seconds](agent-native/guides/agent-in-60-seconds.md).
 
 ## 2. Machine-readable manifests
@@ -72,6 +79,9 @@ python3 TITMAS/reference/minimal-python/titmas_reference.py \
 
 ## Human compatibility paths
 
+- [Read the bilingual brand architecture](../architecture/titmas-xiarizhihai-brand-architecture-v1.0.md)
+- [Read the agent discovery brand identity](../architecture/titmas-agent-discovery-brand-identity-v1.0.md)
+- [Read the bilingual brand continuity policy](../architecture/titmas-bilingual-brand-continuity-policy-v1.0.md)
 - [Understand the positioning](../architecture/titmas-developer-infrastructure-positioning-v1.0.md)
 - [Read the first-contribution guide](community/CONTRIBUTING.md)
 - [Propose a specification](specifications/templates/proposal.md)

@@ -64,6 +64,13 @@ titmas_public_domain_selected: true
 titmas_public_domain: https://titmas.cn/
 titmas_public_domain_filing_status: pending
 titmas_public_domain_live: false
+canonical_brand_domain_selected: true
+canonical_brand_domain: https://xrzh.net/
+canonical_brand_domain_registered_owner_statement: true
+canonical_brand_domain_control_confirmed_owner_statement: true
+canonical_brand_domain_live: false
+canonical_brand_domain_public_launch_authorized: false
+titmas_public_domain_role: prior-public-domain-candidate-not-modified-by-this-brand-direction
 titmas_github_organization_slug_selected: true
 titmas_github_organization_slug: titmas-cn
 titmas_github_organization_created: false
@@ -177,7 +184,21 @@ data_migration_executed: false
 canonicality: canonical-program-governance-cockpit-does-not-supersede-existing-public-meaning-layer
 ---
 
-# TITMAS Infrastructure Developer Community
+# 夏日之海 / TITMAS Infrastructure Developer Community
+
+中文主品牌：**夏日之海**。英文主品牌与稳定技术标识：**TITMAS**。
+二者表示同一持续项目，是并行双语名称而不是逐字翻译。
+
+机器客户从 [`agent-index.json`](agent-index.json) 进入；品牌身份投影见
+[`titmas-brand-identity.json`](titmas-brand-identity.json)。后者不是第二机器入口，
+也不创建新的项目、Authority、Capability、Release 或公共社区。
+
+品牌架构：
+
+- [`TITMAS 与夏日之海品牌架构 v1.0`](architecture/titmas-xiarizhihai-brand-architecture-v1.0.md)
+- [`智能体发现品牌身份 v1.0`](architecture/titmas-agent-discovery-brand-identity-v1.0.md)
+- [`双语品牌连续性策略 v1.0`](architecture/titmas-bilingual-brand-continuity-policy-v1.0.md)
+- [`xrzh.net 域名策略 v1.0`](architecture/titmas-xrzh-domain-strategy-v1.0.md)
 
 中文：**TITMAS 可信多智能体基础设施开发者社区**。
 
