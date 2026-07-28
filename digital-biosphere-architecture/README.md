@@ -242,12 +242,18 @@ Release、Certification 或商业 Offering 已经建立。
 - [Ecology Box 001](architecture/titmas-agent-native-ecology-box-001-v0.1.md)；
 - [Ecology Box 001 试验准备包](TITMAS/agent-native/ecology-box-001/README.md)；
 - [Ecology Box 001 冻结清单](TITMAS/agent-native/ecology-box-001/freeze-manifest.yaml)；
+- [Ecology Box 001 预注册](TITMAS/agent-native/ecology-box-001/pre-registration.md)；
+- [预注册冻结审查](TITMAS/agent-native/ecology-box-001/freeze-review.yaml)；
+- [公平性审查](TITMAS/agent-native/ecology-box-001/fairness-review.md)与
+  [偏差分析](TITMAS/agent-native/ecology-box-001/bias-analysis.md)；
 - [Ecology Box 001 准备完成报告](TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-PACKAGE-COMPLETION-REPORT-v0.1.md)；
 - [Human Decision Packet](TITMAS-AGENT-NATIVE-VALUE-VALIDATION-HUMAN-DECISION-PACKET-v0.1.md)。
 
 试验准备包冻结协议、角色、任务、指标、盲审、失败场景与报告模板，但不创建
-参与者、不运行试验，也不授权真实 Git、公开报告或商业验证。任何后续执行仍需
-`HD-EB-01` 至 `HD-EB-05` 的独立 Human Decision（人类决策）。
+参与者、不运行试验，也不授权真实 Git、公开报告或商业验证。预注册与执行审查
+已经完成，但公平性状态仍为 `REQUIRES_CORRECTION`。任何后续执行仍需
+`HD-EB-01` 至 `HD-EB-10` 的独立 Human Decision（人类决策），以及独立
+Reviewer、谱系和 Provider/隐私控制证据。
 
 ```text
 TITMAS_AGENT_NATIVE_VALUE_FRAMEWORK_DEFINED=true
@@ -256,6 +262,9 @@ TITMAS_AGENT_NATIVE_VALUE_EXPERIMENT_EXECUTED=false
 TITMAS_AGENT_NATIVE_VALUE_PROVEN=false
 TITMAS_AGENT_OPERATIONAL_VALUE_DEMONSTRATED=false
 TITMAS_ECOLOGY_BOX_001_PACKAGE_COMPLETE=true
+TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_PREREGISTRATION_COMPLETE=true
+TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTION_REVIEW_COMPLETE=true
+TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTION_AUTHORIZED=false
 TITMAS_ECOLOGY_BOX_001_EXECUTED=false
 ```
 

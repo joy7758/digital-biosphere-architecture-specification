@@ -96,10 +96,19 @@ records validation and remaining Human gates.
 
 The package is prepared but not executed. It creates no participant, Agent
 contribution, Git access, Authority, public report or commercial evidence.
+Its [pre-registration](agent-native/ecology-box-001/pre-registration.md),
+[freeze review](agent-native/ecology-box-001/freeze-review.yaml),
+[fairness review](agent-native/ecology-box-001/fairness-review.md) and
+[bias analysis](agent-native/ecology-box-001/bias-analysis.md) make the future
+comparison auditable. The execution review is complete with
+`REQUIRES_CORRECTION`; it is not execution readiness.
 
 ```text
 TITMAS_ECOLOGY_BOX_001_PACKAGE_COMPLETE=true
 TITMAS_ECOLOGY_BOX_001_READY=true
+TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_PREREGISTRATION_COMPLETE=true
+TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTION_REVIEW_COMPLETE=true
+TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTION_AUTHORIZED=false
 TITMAS_ECOLOGY_BOX_001_EXECUTED=false
 TITMAS_ECOLOGY_BOX_001_VALUE_PROVEN=false
 REAL_AGENT_CONTRIBUTION_AUTHORIZED=false
