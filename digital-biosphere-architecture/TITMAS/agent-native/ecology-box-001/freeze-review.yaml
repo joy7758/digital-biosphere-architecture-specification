@@ -1,0 +1,59 @@
+{
+  "experiment_id": "DEB-TITMAS-001",
+  "review_id": "DEB-TITMAS-001-PREREG-FREEZE-REVIEW-0.1",
+  "version": "0.1.0",
+  "source_repository": "joy7758/digital-biosphere-architecture-specification",
+  "source_commit": "b92a9a8c0553b51afc832e549d9ad5af271443f2",
+  "status": "PREREGISTERED_REVIEW_COMPLETE_REQUIRES_CORRECTION",
+  "frozen_components": {
+    "task_registry_sha256": "fd4af6852bdb77e61813808ade93681104fd4813db8889d1a50127c96b35654c",
+    "metrics_schema_sha256": "49df0c7f28594bd0b0a53b97f41585ee1856685b73d2f62f07f58d99a836abbf",
+    "roles_registry_sha256": "cc24482be66cdbdeb7daa5121cedfa1c91b1909ca63246d8dadb10211ce18af8",
+    "protocol_sha256": "319705ae44d78873a1b73e1f88d4865ecf349d4032ea008cd683b525f273f3e6",
+    "pre_registration_sha256": "567bd3664e397304d347f2de9ac79be6810aec06294376db46c5afe7c8c7cf4d",
+    "fairness_review_sha256": "1dc392ebb93d5f620b5cdaeac0b0a5f1fd4f34afbac31c1a3e52feac33279964",
+    "bias_analysis_sha256": "dd3b62e6fb9cec82c4be281a9224d440059aeede5b0f817c7e550024b92939b6",
+    "blind_evaluation_protocol_sha256": "47a27b35c0f669bfacc8af8776516348ab8c65638d247936711fc8331344f633",
+    "agent_lineage_plan_sha256": "4e7b951fb96cbabfcc37d7fc5cfd4399c70985b4eee033e23cb9c2b4285cf54a",
+    "baseline_execution_plan_sha256": "49954603154a4485cff37a47642701b1d451b7a995dca04787fda27f087a594a",
+    "agent_native_execution_plan_sha256": "dd340330eccb5fa7e7ede06d09eed2c765eb33d941ad887901a864bcb82b85e5",
+    "stop_rules_sha256": "509f0d5f17fc448914409829376de2100b3af4706f9825aca00485544d88a533",
+    "success_criteria_sha256": "efd1fd0e6c7415084517573391361bd255cc7ecaeb00d3ff96f3b7aa849e7076"
+  },
+  "resource_budgets": {
+    "active_minutes_per_task_per_arm": 45,
+    "candidate_revisions_per_task_per_arm": 2,
+    "formal_review_cycles_per_task_per_arm": 2,
+    "local_validation_invocations_per_task_per_arm": 5,
+    "network_operations": 0,
+    "real_git_writes": 0,
+    "agent_input_token_ceiling_per_task": 65536,
+    "agent_output_token_ceiling_per_task": 16384
+  },
+  "freeze_invariants": {
+    "TASKS_FROZEN": true,
+    "METRICS_FROZEN": true,
+    "ROLES_FROZEN": true,
+    "PROTOCOL_FROZEN": true,
+    "SUCCESS_CRITERIA_FROZEN": true,
+    "NO_POST_HOC_WEIGHT_CHANGE": true,
+    "FAILURES_RETAINED": true,
+    "READY_NE_EXECUTED": true,
+    "RESULT_NE_VALUE_PROVEN": true
+  },
+  "unresolved_corrections": [
+    "Independent Reviewer and blind custodian are not assigned.",
+    "Multi-lineage participation plan is not accepted.",
+    "Provider, privacy, retention and data-handling controls are not adopted.",
+    "The canonical TITMAS Charter v0.2 named by AGENTS.md is absent from the source baseline."
+  ],
+  "EXECUTION_AUTHORIZATION_CANDIDATE_READY": true,
+  "EXECUTION_AUTHORIZATION_CANDIDATE_READY_MEANS": "HUMAN_REVIEW_PACKET_COMPLETE_NOT_EXECUTION_READY",
+  "execution_authorized": false,
+  "experiment_executed": false,
+  "value_proven": false,
+  "real_agent_contribution_authorized": false,
+  "real_git_access_authorized": false,
+  "public_report_authorized": false,
+  "commercial_validation_authorized": false
+}

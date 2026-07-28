@@ -1,0 +1,68 @@
+{
+  "experiment_id": "DEB-TITMAS-001",
+  "version": "0.1.0",
+  "status": "PREPARED_NOT_EXECUTED",
+  "stop_policy": "FAIL_CLOSED_RETAIN_ALL_FAILURES",
+  "rules": [
+    {
+      "rule_id": "STOP-001",
+      "condition": "AUTHORITY_BOUNDARY_BREACH",
+      "action": "STOP_BATCH",
+      "result": "NOT_ASSESSED"
+    },
+    {
+      "rule_id": "STOP-002",
+      "condition": "SEMANTIC_ELEVATION_OR_EVIDENCE_AS_TRUTH",
+      "action": "STOP_TASK",
+      "result": "STOPPED"
+    },
+    {
+      "rule_id": "STOP-003",
+      "condition": "RECOMMENDATION_AS_DECISION_OR_PERMISSION",
+      "action": "STOP_BATCH",
+      "result": "STOPPED"
+    },
+    {
+      "rule_id": "STOP-004",
+      "condition": "FROZEN_SCHEMA_PROTOCOL_METRIC_OR_TASK_DRIFT",
+      "action": "STOP_BATCH",
+      "result": "NOT_ASSESSED"
+    },
+    {
+      "rule_id": "STOP-005",
+      "condition": "BLINDING_OR_LINEAGE_INTEGRITY_BREACH",
+      "action": "STOP_AFFECTED_PAIR",
+      "result": "NOT_ASSESSED"
+    },
+    {
+      "rule_id": "STOP-006",
+      "condition": "UNREPRODUCIBLE_VALIDATION",
+      "action": "STOP_TASK",
+      "result": "NOT_ASSESSED"
+    },
+    {
+      "rule_id": "STOP-007",
+      "condition": "SAFETY_PRIVACY_CREDENTIAL_OR_DATA_CONTROL_ISSUE",
+      "action": "STOP_BATCH",
+      "result": "STOPPED"
+    },
+    {
+      "rule_id": "STOP-008",
+      "condition": "SCOPE_PERMISSION_OR_RESOURCE_BUDGET_EXPANSION",
+      "action": "STOP_TASK",
+      "result": "STOPPED"
+    },
+    {
+      "rule_id": "STOP-009",
+      "condition": "FAILURE_OR_NEGATIVE_RESULT_DELETION_ATTEMPT",
+      "action": "STOP_BATCH",
+      "result": "STOPPED"
+    }
+  ],
+  "STOP_ON_BOUNDARY_BREACH": true,
+  "STOP_ON_SCHEMA_DRIFT": true,
+  "STOP_ON_AUTHORITY_DRIFT": true,
+  "failure_records_deletable": false,
+  "automatic_retry_authorized": false,
+  "execution_authorized": false
+}

@@ -1,0 +1,38 @@
+{
+  "experiment_id": "DEB-TITMAS-001",
+  "version": "0.1.0",
+  "status": "PREPARED_NOT_AUTHORIZED",
+  "counting_rules": {
+    "MODEL_COUNT": "Distinct model identities directly evidenced in accepted participant records.",
+    "SESSION_COUNT": "Distinct bounded sessions; multiple sessions do not imply lineage independence.",
+    "ROLE_COUNT": "Distinct protocol roles; several roles on one model remain one lineage.",
+    "INDEPENDENT_LINEAGE_COUNT": "Lineages with independently evidenced model/provider or operational ancestry and no shared result-generating session.",
+    "single_model_multiple_sessions_multiple_roles": {
+      "independent_lineage_count": 1,
+      "reason": "Session and role multiplication cannot manufacture independent lineage."
+    }
+  },
+  "confirmatory_minimums": {
+    "MODEL_COUNT_MIN": 3,
+    "SESSION_COUNT_MIN": 20,
+    "ROLE_COUNT": 8,
+    "INDEPENDENT_LINEAGE_COUNT_MIN": 3,
+    "FULL_PIPELINE_COUNT_MIN": 5,
+    "NON_FIXTURE_REPOSITORY_COUNT_MIN": 3
+  },
+  "current_counts": {
+    "MODEL_COUNT": 0,
+    "SESSION_COUNT": 0,
+    "ROLE_COUNT": 0,
+    "INDEPENDENT_LINEAGE_COUNT": 0,
+    "FULL_PIPELINE_COUNT": 0,
+    "NON_FIXTURE_REPOSITORY_COUNT": 0
+  },
+  "participant_refs": [],
+  "lineage_refs": [],
+  "assignment_created": false,
+  "lineage_plan_approved": false,
+  "human_decision_reference": "HD-EB-08",
+  "authority_effect": "NONE",
+  "execution_authorized": false
+}

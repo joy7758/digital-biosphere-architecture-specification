@@ -1,0 +1,44 @@
+{
+  "review_id": "TITMAS-EB001-PREREG-POST-REMEDIATION-QWEN-001",
+  "review_type": "AGENT_RECOMMENDATION_GATE_POST_REMEDIATION",
+  "reviewed_at": "2026-07-29",
+  "reviewed_artifact": "DEB-TITMAS-001 pre-registration and execution-review package",
+  "requested_model": "qwen3.7-max",
+  "transport_returned_model": "qwen3.7-max",
+  "session_count": 1,
+  "independent_lineage_count": 1,
+  "verdict": "CONDITIONALLY_RECOMMENDED_FOR_HUMAN_REVIEW",
+  "would_recommend_as_human_review_candidate": true,
+  "would_recommend_execution": false,
+  "strengths": [
+    "Falsifiable questions, matched-pair unit and minimum bounded signal are explicit.",
+    "Per-arm time, revision, review, validation, network and Git budgets are frozen.",
+    "Blind review, fail-closed stop rules and non-proxy success criteria are explicit.",
+    "Bias classes and fairness corrections are disclosed.",
+    "Local conformance and reference tests pass, including five prohibited transitions."
+  ],
+  "remaining_blockers": [
+    "HD-EB-01 through HD-EB-10 remain UNDECIDED.",
+    "Provider, privacy and retention controls are specified but not adopted.",
+    "Independent Reviewer and blind custodian remain unassigned.",
+    "Participant and lineage counts remain zero.",
+    "The canonical TITMAS Charter v0.2 named by AGENTS.md is absent from the source baseline.",
+    "No experiment run record exists."
+  ],
+  "required_human_decisions": [
+    "Resolve HD-EB-01 through HD-EB-10.",
+    "Adopt or explicitly defer Provider, privacy and retention controls.",
+    "Assign an independent Reviewer and separate blind custodian.",
+    "Accept or remediate the Charter v0.2 source gap.",
+    "Accept a lineage plan before any confirmatory execution."
+  ],
+  "authority_effect": "NONE",
+  "decision_effect": "NONE",
+  "execution_authorized": false,
+  "limitations": [
+    "The review covers preparation quality, not experiment results.",
+    "One advisory model session is not independent Human review.",
+    "The sanitized record omits credentials, raw prompts and hidden reasoning.",
+    "Conditional recommendation for Human review does not imply execution readiness."
+  ]
+}

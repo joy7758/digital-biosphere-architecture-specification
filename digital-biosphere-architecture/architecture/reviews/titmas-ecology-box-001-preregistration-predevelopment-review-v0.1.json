@@ -1,0 +1,35 @@
+{
+  "review_id": "TITMAS-EB001-PREREG-PREDEV-QWEN-001",
+  "review_type": "AGENT_RECOMMENDATION_GATE",
+  "reviewed_at": "2026-07-29T02:57:02+08:00",
+  "requested_model": "qwen3.7-max",
+  "transport_returned_model": "qwen3.7-max",
+  "session_count": 1,
+  "independent_lineage_count": 1,
+  "verdict": "NOT_RECOMMENDED",
+  "would_recommend_to_user": false,
+  "reasons": [
+    "Prior evidence records zero final outcome improvements and a high false or not-applicable rate.",
+    "The canonical TITMAS Charter v0.2 named by AGENTS.md is absent from the remote source.",
+    "Numeric context, time, tool and review budgets were not assigned.",
+    "No independent reviewer was assigned.",
+    "Provider, privacy and retention controls were not adopted.",
+    "Task-to-outcome and minimum-effect interpretation needed more precision."
+  ],
+  "required_corrections": [
+    "Freeze explicit resource budgets and fail-closed overrun behavior.",
+    "Define independent blind-review prerequisites without self-assignment.",
+    "Define public-safe Provider, privacy and retention requirements.",
+    "Retain and map prior false and duplicate findings to controls.",
+    "Define a minimum meaningful outcome effect and task-to-metric mapping.",
+    "Route Charter v0.2 reconciliation to Human Architecture review."
+  ],
+  "stop_conditions": [
+    "Do not execute while required corrections or Human decisions remain open.",
+    "Do not authorize Agent access, Git operations, publication or commercial validation.",
+    "Do not expand TITMAS scope while the named canonical Charter is unresolved."
+  ],
+  "authority_effect": "NONE",
+  "decision_effect": "NONE",
+  "execution_authorized": false
+}
