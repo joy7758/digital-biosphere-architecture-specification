@@ -116,6 +116,7 @@ export const gateRows = [
 
 export const content = {
   zh: {
+    gateRows,
     lang: "zh-CN",
     nav: {
       community: "社区",
@@ -278,6 +279,7 @@ export const content = {
     footer: "Digital Biosphere 是总项目；TITMAS 是当前可信多智能体基础设施开发者社区入口。",
   },
   en: {
+    gateRows,
     lang: "en",
     nav: {
       community: "Community",

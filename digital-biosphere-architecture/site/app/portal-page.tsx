@@ -1,4 +1,4 @@
-import { content, gateRows, type Locale } from "./site-content";
+import { content, type Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
 
 export function PortalPage({ locale }: { locale: Locale }) {
@@ -261,7 +261,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
               <p>{c.statusLead}</p>
             </div>
             <div className="gate-grid">
-              {gateRows.map((gate) => (
+              {c.gateRows.map((gate) => (
                 <article className="gate-card" key={gate.id}>
                   <div>
                     <span className={`state state-${gate.state.toLowerCase()}`}>{gate.state}</span>
