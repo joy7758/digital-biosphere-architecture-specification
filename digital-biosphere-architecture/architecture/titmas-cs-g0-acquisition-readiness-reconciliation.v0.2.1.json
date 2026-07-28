@@ -1,0 +1,72 @@
+{
+  "document_id": "DBA_TITMAS_CS_G0_ACQUISITION_READINESS_RECONCILIATION_0_2_1",
+  "version": "0.2.1",
+  "status": "REVIEWER_PROCESS_ACCEPTED_ACQUISITION_NOT_READY",
+  "observed_at": "2026-07-28T22:15:00+08:00",
+  "decision_reference": "CS-G0-REVIEWER-D01",
+  "dimensions": [
+    {"id": "ROUTE_SELECTION", "status": "PASS"},
+    {"id": "FROZEN_FIELDS_AND_THRESHOLDS", "status": "PASS"},
+    {"id": "HUMAN_DECISION_OWNER", "status": "PASS"},
+    {"id": "PROBLEM_VALIDATION_OWNER", "status": "PASS"},
+    {"id": "PRIVACY_DATA_STEWARD", "status": "PASS"},
+    {"id": "AGENT_ASSISTED_REVIEWER_PROCESS_AND_ASSIGNMENT", "status": "PARTIAL"},
+    {"id": "REAL_INDEPENDENT_SOURCE_CONTEXT", "status": "BLOCKED"},
+    {"id": "STORAGE_ACCESS_RETENTION", "status": "BLOCKED"},
+    {"id": "CAP_BUDGET_TIMEBOX_EXPIRY", "status": "BLOCKED"},
+    {"id": "REVIEW_COUNTING_WORKFLOW", "status": "PARTIAL"}
+  ],
+  "counts": {
+    "total": 10,
+    "pass": 5,
+    "partial": 2,
+    "blocked": 3
+  },
+  "accepted_reviewer_process": {
+    "model": "qwen3.7-max",
+    "future_roles": [
+      "METHOD_REVIEW",
+      "SECURITY_PRIVACY_REVIEW",
+      "CLAIM_AUTHORITY_REVIEW"
+    ],
+    "sessions_per_future_batch": 3,
+    "requests_per_session": 1,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0,
+    "tools_allowed": false,
+    "external_retrieval_allowed": false,
+    "memory_retrieval_allowed": false,
+    "direct_json_required": true,
+    "per_batch_human_assignment_required": true,
+    "human_counting_decision_required": true,
+    "reviewer_model_may_review_own_record": false,
+    "cross_role_fill_allowed": false,
+    "same_provider_sessions_are_independent_organizations": false
+  },
+  "remaining_blockers": [
+    "EXACT_REAL_SOURCE_OR_OPERATIONAL_CONTEXT",
+    "APPROVED_STORAGE_ACCESS_RETENTION_DELETION_CONTRACT",
+    "EXACT_BATCH_CAP_BUDGET_TIMEBOX_AND_EXPIRY",
+    "PER_BATCH_ASSIGNMENT_AND_FROZEN_REVIEW_BYTES",
+    "PER_RECORD_HUMAN_COUNTING_DECISION"
+  ],
+  "effects": {
+    "reviewer_process_contract_accepted": true,
+    "live_reviewer_session_assigned": false,
+    "provider_requests_authorized": 0,
+    "provider_requests_executed": 0,
+    "acquisition_ready": false,
+    "acquisition_authorized": false,
+    "data_processing_authorized": false,
+    "external_outreach_authorized": false,
+    "customer_record_creation_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false,
+    "standard_ready": false,
+    "commercial_ready": false,
+    "release_authorized": false
+  }
+}

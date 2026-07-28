@@ -766,19 +766,27 @@ risks 覆盖 `16/16`、crosswalk 覆盖 `14/14`。
 Claim/Authority 仅为 `ACCEPT_FOR_HUMAN_FREEZE_REVIEW`。详见
 [`v0.2 execution report`](architecture/titmas-cs-g1-remediation-execution-report-v0.2.md)
 与 [`current machine aggregate`](architecture/reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.1.json)。
-因此 `FORMAL_REVIEW_BUNDLE_READY=false`、`CS_G1_PASS=false`；新请求或下一轮修订仍需
-新的 Human Decision。当前入口为
-[`CS-G1-REMEDIATION-D02 decision packet`](TITMAS-CS-G1-SECURITY-CROSSWALK-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md)；
-Option A 仅建议准备 Security/Crosswalk Development candidates，尚未被选择。
+因此 `FORMAL_REVIEW_BUNDLE_READY=false`、`CS_G1_PASS=false`。Human Owner 已通过
+[`CS-G1-REMEDIATION-D02`](architecture/titmas-cs-g1-security-crosswalk-remediation-human-decision-record-v0.1.md)
+选择仅准备规范阶段修订：当前
+[`Security v0.2 candidate`](architecture/veap-security-control-profile-candidate-v0.2.md)
+覆盖固定 5/5 Security risks，
+[`Crosswalk v0.2 candidate`](architecture/veap-canonical-ownership-crosswalk-candidate-v0.2.md)
+覆盖 14/14 surfaces，处分为 `6 bounded / 6 dependency-open / 2 fail-closed`；八个
+`OPEN/BLOCKED` dependency ID 由
+[`dependency disposition candidate`](architecture/veap-authority-dependency-disposition-candidate-v0.1.md)
+显式保留。离线
+[`preparation validation`](architecture/titmas-cs-g1-security-crosswalk-preparation-validation-v0.1.md)
+为 `PASS`，只证明精确候选和 source-bound projection 已准备；未调用模型，五项
+Security stop state 仍为 `NOT_ASSESSED`。下一次两会话审查仍需独立 Human Decision。
 
-`CS-G0` 的当前状态也已按后继角色决定重新协调：
-[`acquisition readiness v0.2`](architecture/titmas-cs-g0-acquisition-readiness-reconciliation-v0.2.md)
-确认 Track B 路线、Human Decision Owner、Problem Validation Owner 与 Privacy/Data
-Steward 等 5 项为 `PASS`，同时仍有 1 项 `PARTIAL`、4 项 `BLOCKED`；采集就绪、数据
-处理、有效记录与 Gate PASS 均为 false。下一入口是
-[`CS-G0-REVIEWER-D01`](TITMAS-CS-G0-AGENT-ASSISTED-REVIEWER-CONTRACT-HUMAN-DECISION-PACKET-v0.1.md)，
-仅候选接受智能体辅助 reviewer-process contract，不分配 live session 或授权 provider
-request。两个上游决定的统一顺序见
+`CS-G0` 的当前状态也已按后继角色决定重新协调。Human Owner 已通过
+[`CS-G0-REVIEWER-D01`](architecture/titmas-cs-g0-agent-assisted-reviewer-contract-human-decision-record-v0.1.md)
+接受有界 `qwen3.7-max` role-scoped reviewer-process contract。当前
+[`acquisition readiness v0.2.1`](architecture/titmas-cs-g0-acquisition-readiness-reconciliation-v0.2.1.md)
+为 5 项 `PASS`、2 项 `PARTIAL`、3 项 `BLOCKED`；process contract 不等于 live
+session，同一 provider/model 也不等于组织独立性。采集就绪、数据处理、provider
+request、有效记录与 Gate PASS 均为 false。两个上游决定的统一状态见
 [`Human Decision Queue`](TITMAS-COMMERCIAL-STANDARD-UPSTREAM-HUMAN-DECISION-QUEUE-v0.1.md)。
 `CS-G2–CS-G7` 仍为 `BLOCKED`；数据处理、外部推广、客户记录、实现、商业试点、认证、
 正式标准发布、Release 和 Deployment 均保持关闭。

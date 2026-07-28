@@ -1,0 +1,165 @@
+{
+  "document_id": "DBA_VEAP_SECURITY_CONTROL_PROFILE_CANDIDATE_0_2",
+  "version": "0.2.0",
+  "status": "DEVELOPMENT_CANDIDATE_OFFLINE_REVIEW_INPUT_ONLY",
+  "decision_reference": "CS-G1-REMEDIATION-D02",
+  "preserves_v01": true,
+  "controls": [
+    {
+      "risk_id": "VEAP-SEC-001",
+      "control_id": "VEAP-SEC-CONTROL-001-V0.2",
+      "control_specification_state": "DEFINED_CANDIDATE",
+      "required_bindings": [
+        "DIGEST_ALGORITHM_AND_VERSION",
+        "OBJECT_OR_PROFILE_VERSION",
+        "SOURCE_NAMESPACE_AND_IDENTIFIER",
+        "SUBJECT_OR_ENTITY_REFERENCE",
+        "CANONICAL_SOURCE_STATUS_AND_OBSERVED_TIME"
+      ],
+      "failure_status": "REJECTED_INTEGRITY_BINDING",
+      "prohibited_behaviors": [
+        "SILENT_REPAIR",
+        "FALLBACK_SUBSTITUTION",
+        "LATEST_TIMESTAMP_AUTO_SELECTION"
+      ],
+      "future_implementation_evidence": [
+        "TAMPER_CASE",
+        "SOURCE_IMPERSONATION_CASE",
+        "ALGORITHM_CONFUSION_CASE",
+        "SILENT_REPAIR_REJECTION_CASE"
+      ],
+      "implementation_state": "NOT_IMPLEMENTED_BY_THIS_SPEC",
+      "operational_effectiveness": "NOT_ASSESSED",
+      "current_stop_state": "NOT_ASSESSED"
+    },
+    {
+      "risk_id": "VEAP-SEC-002",
+      "control_id": "VEAP-SEC-CONTROL-002-V0.2",
+      "control_specification_state": "DEFINED_CANDIDATE",
+      "required_bindings": [
+        "GLOBALLY_SCOPED_PACKAGE_IDENTIFIER",
+        "ISSUER_AND_NAMESPACE",
+        "CREATED_AND_OBSERVED_TIMES",
+        "ACCEPTANCE_TIME_POLICY_REFERENCE",
+        "REPLAY_OR_DUPLICATE_STATUS",
+        "PREDECESSOR_SUCCESSOR_OR_REVOCATION_REFERENCE"
+      ],
+      "failure_status": "REJECTED_REPLAY_OR_DUPLICATE_UNKNOWN",
+      "prohibited_behaviors": [
+        "DUPLICATE_AS_NEW_SUCCESS",
+        "UNKNOWN_REPLAY_AS_ACCEPTED",
+        "FAILURE_RECORD_OVERWRITE"
+      ],
+      "future_implementation_evidence": [
+        "FIRST_USE_CASE",
+        "EXACT_REPLAY_CASE",
+        "CROSS_NAMESPACE_DUPLICATE_CASE",
+        "EXPIRED_WINDOW_CASE",
+        "IMMUTABLE_FAILURE_CASE"
+      ],
+      "implementation_state": "NOT_IMPLEMENTED_BY_THIS_SPEC",
+      "operational_effectiveness": "NOT_ASSESSED",
+      "current_stop_state": "NOT_ASSESSED"
+    },
+    {
+      "risk_id": "VEAP-SEC-003",
+      "control_id": "VEAP-SEC-CONTROL-003-V0.2",
+      "control_specification_state": "DEFINED_CANDIDATE",
+      "required_bindings": [
+        "TENANT_OR_OPERATIONAL_CONTEXT_NAMESPACE",
+        "SUBJECT_OR_ENTITY_REFERENCE",
+        "AUTHORIZATION_OR_DECISION_REFERENCE",
+        "CORRELATION_PURPOSE_AND_SCOPE"
+      ],
+      "failure_status": "REJECTED_TENANT_OR_SUBJECT_CONFLICT",
+      "prohibited_behaviors": [
+        "CROSS_TENANT_AUTO_CORRELATION",
+        "LABEL_OR_TIMESTAMP_IDENTITY_INFERENCE",
+        "MODEL_OUTPUT_AS_AUTHORIZATION"
+      ],
+      "future_implementation_evidence": [
+        "CROSS_TENANT_ACCESS_CASE",
+        "SUBJECT_SUBSTITUTION_CASE",
+        "MISSING_AUTHORIZATION_CASE",
+        "CORRELATION_CONFLICT_CASE"
+      ],
+      "implementation_state": "NOT_IMPLEMENTED_BY_THIS_SPEC",
+      "operational_effectiveness": "NOT_ASSESSED",
+      "current_stop_state": "NOT_ASSESSED"
+    },
+    {
+      "risk_id": "VEAP-SEC-004",
+      "control_id": "VEAP-SEC-CONTROL-004-V0.2",
+      "control_specification_state": "DEFINED_CANDIDATE",
+      "required_bindings": [
+        "ISSUER_OR_VERIFIER_IDENTITY_AND_NAMESPACE",
+        "VALIDITY_INTERVAL",
+        "STATUS_OBSERVED_TIME",
+        "REVOCATION_STATUS_REFERENCE",
+        "INCIDENT_OR_COMPROMISE_REFERENCE",
+        "RULE_OR_PROFILE_VERSION"
+      ],
+      "failure_status": "NOT_CURRENT_OR_NOT_ASSESSED",
+      "prohibited_behaviors": [
+        "EXPIRED_AS_TRUSTED",
+        "REVOKED_AS_TRUSTED",
+        "STALE_OR_UNKNOWN_AS_CURRENT"
+      ],
+      "future_implementation_evidence": [
+        "EXPIRED_IDENTITY_CASE",
+        "REVOKED_IDENTITY_CASE",
+        "STALE_STATUS_CASE",
+        "REVOCATION_SOURCE_UNAVAILABLE_CASE",
+        "INCIDENT_PATH_CASE"
+      ],
+      "implementation_state": "NOT_IMPLEMENTED_BY_THIS_SPEC",
+      "operational_effectiveness": "NOT_ASSESSED",
+      "current_stop_state": "NOT_ASSESSED"
+    },
+    {
+      "risk_id": "VEAP-SEC-005",
+      "control_id": "VEAP-SEC-CONTROL-005-V0.2",
+      "control_specification_state": "DEFINED_CANDIDATE",
+      "required_bindings": [
+        "CONTENT_AUTHORIZATION_REFERENCE",
+        "FIELD_ALLOWLIST",
+        "DATA_CLASS_DECLARATION",
+        "REDACTION_DECLARATION",
+        "SECRET_SCAN_DECLARATION_AND_RESULT",
+        "RETENTION_AND_RECIPIENT_SCOPE"
+      ],
+      "failure_status": "REJECTED_SENSITIVE_CONTENT",
+      "prohibited_behaviors": [
+        "RAW_CONTENT_BY_DEFAULT",
+        "CREDENTIAL_OR_SECRET_PORTABILITY",
+        "UNKNOWN_CLASSIFICATION_AS_ALLOWED"
+      ],
+      "future_implementation_evidence": [
+        "CREDENTIAL_CASE",
+        "TOKEN_CASE",
+        "DIRECT_IDENTIFIER_CASE",
+        "REGULATED_DATA_CASE",
+        "OBFUSCATED_SECRET_CASE",
+        "SCANNER_UNAVAILABLE_CASE"
+      ],
+      "implementation_state": "NOT_IMPLEMENTED_BY_THIS_SPEC",
+      "operational_effectiveness": "NOT_ASSESSED",
+      "current_stop_state": "NOT_ASSESSED"
+    }
+  ],
+  "separations": {
+    "schema_valid_ne_control_implemented": true,
+    "control_implemented_ne_control_effective": true,
+    "test_pass_ne_production_proof": true
+  },
+  "effects": {
+    "security_controls_adopted": false,
+    "security_controls_implemented": false,
+    "security_controls_effective": false,
+    "residual_risk_accepted": false,
+    "model_review_authorized": false,
+    "provider_requests_authorized": 0,
+    "cs_g1_pass": false,
+    "standard_ready": false
+  }
+}

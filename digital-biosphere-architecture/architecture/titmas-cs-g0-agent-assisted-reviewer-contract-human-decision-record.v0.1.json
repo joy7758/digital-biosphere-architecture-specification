@@ -1,0 +1,54 @@
+{
+  "document_id": "DBA_TITMAS_CS_G0_AGENT_ASSISTED_REVIEWER_CONTRACT_HUMAN_DECISION_RECORD_0_1",
+  "version": "0.1.0",
+  "status": "OPTION_A_PROCESS_CONTRACT_ACCEPTED",
+  "decided_at": "2026-07-28T21:50:22+08:00",
+  "decision_id": "CS-G0-REVIEWER-D01",
+  "decided_by_ref": "zhangbin",
+  "selection": "ACCEPT_BOUNDED_QWEN_ROLE_SCOPED_REVIEWER_CONTRACT_WITH_PER_BATCH_ASSIGNMENT",
+  "candidate_binding": {
+    "path": "titmas-cs-g0-agent-assisted-reviewer-contract-decision-candidate.v0.1.json",
+    "sha256": "e972543aac0334fea44426e3bb3c0d7c6c0ce608890b9bd549fb751294e8abde"
+  },
+  "accepted_process": {
+    "review_model": "qwen3.7-max",
+    "future_roles": [
+      "METHOD_REVIEW",
+      "SECURITY_PRIVACY_REVIEW",
+      "CLAIM_AUTHORITY_REVIEW"
+    ],
+    "sessions_per_future_batch": 3,
+    "requests_per_session": 1,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0,
+    "tools_allowed": false,
+    "external_retrieval_allowed": false,
+    "memory_retrieval_allowed": false,
+    "direct_json_required": true,
+    "cross_role_fill_allowed": false,
+    "human_counting_decision_required": true,
+    "reviewer_model_may_review_own_record": false,
+    "same_provider_sessions_are_independent_organizations": false
+  },
+  "effects": {
+    "decision_created": true,
+    "reviewer_process_contract_accepted": true,
+    "live_reviewer_session_assigned": false,
+    "provider_requests_authorized": 0,
+    "source_channel_approved": false,
+    "storage_approved": false,
+    "data_processing_authorized": false,
+    "external_outreach_authorized": false,
+    "acquisition_authorized": false,
+    "record_created": false,
+    "record_validated": false,
+    "record_counted": false,
+    "cs_g0_pass": false,
+    "standard_ready": false,
+    "commercial_ready": false,
+    "release_authorized": false
+  }
+}

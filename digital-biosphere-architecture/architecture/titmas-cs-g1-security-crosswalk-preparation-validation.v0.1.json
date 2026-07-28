@@ -1,0 +1,68 @@
+{
+  "document_id": "DBA_TITMAS_CS_G1_SECURITY_CROSSWALK_PREPARATION_VALIDATION_0_1",
+  "version": "0.1.0",
+  "status": "OFFLINE_VALIDATION_PASS_MODEL_REVIEW_NOT_AUTHORIZED",
+  "validated_at": "2026-07-28T22:20:00+08:00",
+  "decision_reference": "CS-G1-REMEDIATION-D02",
+  "source_bindings": [
+    {"path": "architecture/veap-security-privacy-claim-risk-register.v0.1.json", "bytes": 9314, "sha256": "ef1a38a4af01efe36cabb3e13c8e4815d05ba71c7703521c4fea05cd8a471492"},
+    {"path": "architecture/veap-security-control-profile-candidate.v0.2.json", "bytes": 5668, "sha256": "f4b012d7787df78efae7947bdcd0ff6534d870c8f065bf0cf7978aafd5774426"},
+    {"path": "architecture/veap-canonical-ownership-crosswalk-candidate.v0.2.json", "bytes": 10782, "sha256": "8ad968326c281941169cf9060892f100351c493a2e41372d2713b3cb38e92f49"},
+    {"path": "architecture/veap-authority-dependency-disposition-candidate.v0.1.json", "bytes": 3143, "sha256": "aed772bd4b556da8c2661578e263d05d3c7dba212c1bbcc6823c4363e10580cc"},
+    {"path": "architecture/reviews/cs-g1/v0.3/inputs/security-review-input.v0.3.json", "bytes": 9744, "sha256": "41affda69a634ea05753ab005a8adeb07a582d55ee5262d1cec8460a983c5204"},
+    {"path": "architecture/reviews/cs-g1/v0.3/inputs/ownership-crosswalk-review-input.v0.3.json", "bytes": 15749, "sha256": "aef7f1f7ec40f93c70c3b6550d625b3756de982c3593a72ec051416484e3e7b5"}
+  ],
+  "checks": {
+    "security_risk_coverage": "5/5",
+    "security_risk_ids_unique": true,
+    "security_projection_source_equal": true,
+    "security_controls_matched": "5/5",
+    "security_stop_condition_current_state": "NOT_ASSESSED",
+    "crosswalk_surface_coverage": "14/14",
+    "crosswalk_surface_ids_unique": true,
+    "crosswalk_projection_source_equal": true,
+    "crosswalk_dispositions": {
+      "candidate_acceptable_as_bounded": 6,
+      "boundary_acceptable_dependency_open": 6,
+      "return_for_revision_fail_closed": 2
+    },
+    "fail_closed_surfaces": [
+      "EVIDENCE_MATERIAL_PACKAGE",
+      "ACCOUNTABILITY_STATEMENT"
+    ],
+    "exact_dependency_ids": [
+      "DQ-003",
+      "AF-D04",
+      "AF-D05",
+      "AF-D13",
+      "AF-D14",
+      "AF-D15",
+      "AF-D16",
+      "CS-G6"
+    ],
+    "dependency_records": 7,
+    "resolved_dependencies": 0,
+    "offline_validation_pass": true
+  },
+  "historical_hashes_preserved": {
+    "claim_authority_review_result": "50eab4b588bca746a41ea5a81efcf86954c43f1c002a6f13523c83497c902d8c",
+    "ownership_crosswalk_review_result": "365bd6498089cbe71fefad60d34f50ff9418f2382c483eb1bed491cf7ef6611e",
+    "privacy_review_result": "fec06729fade338fa9606849eac774192612fffcd42900596d6ffb79043c2b26",
+    "security_review_result": "123754799c5e3782959fc761d21bcd35adbac2711bc38e81721faee2b3f3e06c",
+    "formal_review_bundle_result_v0_2_1": "914230038c4ca8d9af9b38820ca87715422082d40828285ab1e4538130135451"
+  },
+  "effects": {
+    "revision_preparation_complete": true,
+    "model_review_authorized": false,
+    "model_review_executed": false,
+    "provider_requests_executed": 0,
+    "risk_accepted": false,
+    "crosswalk_accepted": false,
+    "authority_assigned": false,
+    "implementation_authorized": false,
+    "cs_g1_pass": false,
+    "standard_ready": false,
+    "commercial_ready": false,
+    "release_authorized": false
+  }
+}

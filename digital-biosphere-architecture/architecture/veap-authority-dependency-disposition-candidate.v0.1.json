@@ -1,0 +1,83 @@
+{
+  "document_id": "DBA_VEAP_AUTHORITY_DEPENDENCY_DISPOSITION_CANDIDATE_0_1",
+  "version": "0.1.0",
+  "status": "DEVELOPMENT_CANDIDATE_OFFLINE_REVIEW_INPUT_ONLY",
+  "decision_reference": "CS-G1-REMEDIATION-D02",
+  "dependencies": [
+    {
+      "dependency_ids": ["DQ-003"],
+      "current_state": "OPEN",
+      "required_treatment": "PRESERVE_DBOS_PROJECT_LOCAL_SOURCE_STATUS_UNCERTAINTY_REQUIRE_EXACT_PROJECT_SOURCE",
+      "fallback_state": "NOT_ASSESSED",
+      "prohibited_inference": "DBA_BECOMES_DBOS_STATUS_TRUTH"
+    },
+    {
+      "dependency_ids": ["AF-D04", "AF-D14"],
+      "current_state": "OPEN",
+      "required_treatment": "REQUIRE_EXACT_EEOAP_CANONICAL_SOURCE_VERSION_AND_ISSUER",
+      "fallback_state": "NOT_ASSESSED",
+      "prohibited_inference": "SECOND_EEOAP_SOURCE_CERTIFICATION_OR_LEGAL_RESPONSIBILITY"
+    },
+    {
+      "dependency_ids": ["AF-D05"],
+      "current_state": "OPEN",
+      "required_treatment": "REQUIRE_EXACT_NAMED_AGENT_EVIDENCE_SURFACE_AND_VERSION",
+      "fallback_state": "NOT_ASSESSED",
+      "prohibited_inference": "FAMILY_OWNER_MERGE_MIGRATION_RENAME_RELICENSE_OR_IP_TRANSFER"
+    },
+    {
+      "dependency_ids": ["AF-D13"],
+      "current_state": "OPEN",
+      "required_treatment": "PRESERVE_SAEE_READ_ONLY_ADVISORY_ONLY_NO_WRITEBACK_BOUNDARY",
+      "fallback_state": "NOT_ASSESSED",
+      "prohibited_inference": "FITNESS_INVENTION_DBOS_WRITEBACK_OR_RECOMMENDATION_EXECUTION"
+    },
+    {
+      "dependency_ids": ["AF-D15"],
+      "current_state": "OPEN",
+      "required_treatment": "PRESERVE_TITMAS_SPECIFICATION_AUTHORITY_UNASSIGNED_UNTIL_HUMAN_DECISION",
+      "fallback_state": "NOT_ASSESSED",
+      "prohibited_inference": "SELF_ASSIGNED_TITMAS_SPECIFICATION_AUTHORITY"
+    },
+    {
+      "dependency_ids": ["AF-D16"],
+      "current_state": "OPEN",
+      "required_treatment": "KEEP_CROSSWALK_V0_2_AS_DEVELOPMENT_CANDIDATE_UNTIL_HUMAN_ACCEPTANCE",
+      "fallback_state": "NOT_ASSESSED",
+      "prohibited_inference": "SECOND_CANONICAL_OBJECT_OR_ACCEPTED_OWNERSHIP"
+    },
+    {
+      "dependency_ids": ["CS-G6"],
+      "current_state": "BLOCKED",
+      "required_treatment": "KEEP_COMMERCIAL_SERVICE_NO_OFFERING_AND_OWNER_UNASSIGNED",
+      "fallback_state": "NOT_APPLICABLE",
+      "prohibited_inference": "OFFERING_PRICE_CONTRACT_CUSTOMER_ADOPTION_OR_COMMERCIAL_AVAILABILITY"
+    }
+  ],
+  "counts": {
+    "dependency_records": 7,
+    "exact_dependency_ids": 8,
+    "resolved_dependencies": 0,
+    "open_dependencies": 6,
+    "blocked_dependencies": 1
+  },
+  "conflict_policy": {
+    "latest_timestamp_wins": false,
+    "model_output_resolves_dependency": false,
+    "schema_valid_resolves_dependency": false,
+    "candidate_completeness_resolves_dependency": false
+  },
+  "effects": {
+    "dependency_disposition_candidate_defined": true,
+    "authority_assigned": false,
+    "ownership_assigned": false,
+    "crosswalk_accepted": false,
+    "model_review_authorized": false,
+    "provider_requests_authorized": 0,
+    "cs_g1_pass": false,
+    "standard_ready": false,
+    "implementation_authorized": false,
+    "commercial_ready": false,
+    "release_authorized": false
+  }
+}

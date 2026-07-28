@@ -1,0 +1,256 @@
+{
+  "document_id": "DBA_TITMAS_CS_G1_SECURITY_REVIEW_INPUT_0_3",
+  "version": "0.3.0",
+  "status": "OFFLINE_SOURCE_BOUND_PROJECTION_MODEL_REVIEW_NOT_AUTHORIZED",
+  "decision_reference": "CS-G1-REMEDIATION-D02",
+  "review_scope": "SECURITY_SPECIFICATION_STAGE_CONTROLS_ONLY",
+  "source_bindings": [
+    {
+      "path": "architecture/veap-security-privacy-claim-risk-register.v0.1.json",
+      "sha256": "ef1a38a4af01efe36cabb3e13c8e4815d05ba71c7703521c4fea05cd8a471492",
+      "bytes": 9314
+    },
+    {
+      "path": "architecture/veap-security-control-profile-candidate.v0.2.json",
+      "sha256": "f4b012d7787df78efae7947bdcd0ff6534d870c8f065bf0cf7978aafd5774426",
+      "bytes": 5668
+    }
+  ],
+  "items": [
+    {
+      "source_pointer": "/risks/0",
+      "source_risk": {
+        "risk_id": "VEAP-SEC-001",
+        "domain": "SECURITY",
+        "severity": "HIGH",
+        "risk_statement": "A digest or reference could be replaced, or a canonical source could be impersonated.",
+        "required_control": "Bind algorithm, version, source and subject; reject tamper and never silently repair.",
+        "stop_condition": "SOURCE_OR_INTEGRITY_BINDING_MISSING",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      },
+      "candidate_control_pointer": "/controls/0",
+      "candidate_control": {
+        "risk_id": "VEAP-SEC-001",
+        "control_id": "VEAP-SEC-CONTROL-001-V0.2",
+        "control_specification_state": "DEFINED_CANDIDATE",
+        "required_bindings": [
+          "DIGEST_ALGORITHM_AND_VERSION",
+          "OBJECT_OR_PROFILE_VERSION",
+          "SOURCE_NAMESPACE_AND_IDENTIFIER",
+          "SUBJECT_OR_ENTITY_REFERENCE",
+          "CANONICAL_SOURCE_STATUS_AND_OBSERVED_TIME"
+        ],
+        "failure_status": "REJECTED_INTEGRITY_BINDING",
+        "prohibited_behaviors": [
+          "SILENT_REPAIR",
+          "FALLBACK_SUBSTITUTION",
+          "LATEST_TIMESTAMP_AUTO_SELECTION"
+        ],
+        "future_implementation_evidence": [
+          "TAMPER_CASE",
+          "SOURCE_IMPERSONATION_CASE",
+          "ALGORITHM_CONFUSION_CASE",
+          "SILENT_REPAIR_REJECTION_CASE"
+        ],
+        "implementation_state": "NOT_IMPLEMENTED_BY_THIS_SPEC",
+        "operational_effectiveness": "NOT_ASSESSED",
+        "current_stop_state": "NOT_ASSESSED"
+      },
+      "current_stop_state": "NOT_ASSESSED"
+    },
+    {
+      "source_pointer": "/risks/1",
+      "source_risk": {
+        "risk_id": "VEAP-SEC-002",
+        "domain": "SECURITY",
+        "severity": "HIGH",
+        "risk_statement": "A replayed or duplicate package could be presented as a new successful execution.",
+        "required_control": "Use unique package identity, time policy, deduplication and immutable replay status.",
+        "stop_condition": "REPLAY_OR_DUPLICATE_STATUS_UNKNOWN",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      },
+      "candidate_control_pointer": "/controls/1",
+      "candidate_control": {
+        "risk_id": "VEAP-SEC-002",
+        "control_id": "VEAP-SEC-CONTROL-002-V0.2",
+        "control_specification_state": "DEFINED_CANDIDATE",
+        "required_bindings": [
+          "GLOBALLY_SCOPED_PACKAGE_IDENTIFIER",
+          "ISSUER_AND_NAMESPACE",
+          "CREATED_AND_OBSERVED_TIMES",
+          "ACCEPTANCE_TIME_POLICY_REFERENCE",
+          "REPLAY_OR_DUPLICATE_STATUS",
+          "PREDECESSOR_SUCCESSOR_OR_REVOCATION_REFERENCE"
+        ],
+        "failure_status": "REJECTED_REPLAY_OR_DUPLICATE_UNKNOWN",
+        "prohibited_behaviors": [
+          "DUPLICATE_AS_NEW_SUCCESS",
+          "UNKNOWN_REPLAY_AS_ACCEPTED",
+          "FAILURE_RECORD_OVERWRITE"
+        ],
+        "future_implementation_evidence": [
+          "FIRST_USE_CASE",
+          "EXACT_REPLAY_CASE",
+          "CROSS_NAMESPACE_DUPLICATE_CASE",
+          "EXPIRED_WINDOW_CASE",
+          "IMMUTABLE_FAILURE_CASE"
+        ],
+        "implementation_state": "NOT_IMPLEMENTED_BY_THIS_SPEC",
+        "operational_effectiveness": "NOT_ASSESSED",
+        "current_stop_state": "NOT_ASSESSED"
+      },
+      "current_stop_state": "NOT_ASSESSED"
+    },
+    {
+      "source_pointer": "/risks/2",
+      "source_risk": {
+        "risk_id": "VEAP-SEC-003",
+        "domain": "SECURITY",
+        "severity": "HIGH",
+        "risk_statement": "Cross-tenant or cross-entity binding could disclose data or misattribute identity.",
+        "required_control": "Require tenant and subject binding, authorization checks and correlation conflict rejection.",
+        "stop_condition": "TENANT_OR_SUBJECT_BINDING_CONFLICTED",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      },
+      "candidate_control_pointer": "/controls/2",
+      "candidate_control": {
+        "risk_id": "VEAP-SEC-003",
+        "control_id": "VEAP-SEC-CONTROL-003-V0.2",
+        "control_specification_state": "DEFINED_CANDIDATE",
+        "required_bindings": [
+          "TENANT_OR_OPERATIONAL_CONTEXT_NAMESPACE",
+          "SUBJECT_OR_ENTITY_REFERENCE",
+          "AUTHORIZATION_OR_DECISION_REFERENCE",
+          "CORRELATION_PURPOSE_AND_SCOPE"
+        ],
+        "failure_status": "REJECTED_TENANT_OR_SUBJECT_CONFLICT",
+        "prohibited_behaviors": [
+          "CROSS_TENANT_AUTO_CORRELATION",
+          "LABEL_OR_TIMESTAMP_IDENTITY_INFERENCE",
+          "MODEL_OUTPUT_AS_AUTHORIZATION"
+        ],
+        "future_implementation_evidence": [
+          "CROSS_TENANT_ACCESS_CASE",
+          "SUBJECT_SUBSTITUTION_CASE",
+          "MISSING_AUTHORIZATION_CASE",
+          "CORRELATION_CONFLICT_CASE"
+        ],
+        "implementation_state": "NOT_IMPLEMENTED_BY_THIS_SPEC",
+        "operational_effectiveness": "NOT_ASSESSED",
+        "current_stop_state": "NOT_ASSESSED"
+      },
+      "current_stop_state": "NOT_ASSESSED"
+    },
+    {
+      "source_pointer": "/risks/3",
+      "source_risk": {
+        "risk_id": "VEAP-SEC-004",
+        "domain": "SECURITY",
+        "severity": "HIGH",
+        "risk_statement": "A compromised or expired issuer or verifier identity could remain trusted.",
+        "required_control": "Bind issuer status, validity interval, revocation reference and incident response path.",
+        "stop_condition": "ISSUER_OR_VERIFIER_STATUS_NOT_CURRENT",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      },
+      "candidate_control_pointer": "/controls/3",
+      "candidate_control": {
+        "risk_id": "VEAP-SEC-004",
+        "control_id": "VEAP-SEC-CONTROL-004-V0.2",
+        "control_specification_state": "DEFINED_CANDIDATE",
+        "required_bindings": [
+          "ISSUER_OR_VERIFIER_IDENTITY_AND_NAMESPACE",
+          "VALIDITY_INTERVAL",
+          "STATUS_OBSERVED_TIME",
+          "REVOCATION_STATUS_REFERENCE",
+          "INCIDENT_OR_COMPROMISE_REFERENCE",
+          "RULE_OR_PROFILE_VERSION"
+        ],
+        "failure_status": "NOT_CURRENT_OR_NOT_ASSESSED",
+        "prohibited_behaviors": [
+          "EXPIRED_AS_TRUSTED",
+          "REVOKED_AS_TRUSTED",
+          "STALE_OR_UNKNOWN_AS_CURRENT"
+        ],
+        "future_implementation_evidence": [
+          "EXPIRED_IDENTITY_CASE",
+          "REVOKED_IDENTITY_CASE",
+          "STALE_STATUS_CASE",
+          "REVOCATION_SOURCE_UNAVAILABLE_CASE",
+          "INCIDENT_PATH_CASE"
+        ],
+        "implementation_state": "NOT_IMPLEMENTED_BY_THIS_SPEC",
+        "operational_effectiveness": "NOT_ASSESSED",
+        "current_stop_state": "NOT_ASSESSED"
+      },
+      "current_stop_state": "NOT_ASSESSED"
+    },
+    {
+      "source_pointer": "/risks/4",
+      "source_risk": {
+        "risk_id": "VEAP-SEC-005",
+        "domain": "SECURITY",
+        "severity": "HIGH",
+        "risk_statement": "Raw payloads, credentials, secrets or sensitive content could enter a portable package.",
+        "required_control": "Deny content by default and require allowlists, redaction, secret scans and stop conditions.",
+        "stop_condition": "SENSITIVE_CONTENT_POLICY_UNRESOLVED",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      },
+      "candidate_control_pointer": "/controls/4",
+      "candidate_control": {
+        "risk_id": "VEAP-SEC-005",
+        "control_id": "VEAP-SEC-CONTROL-005-V0.2",
+        "control_specification_state": "DEFINED_CANDIDATE",
+        "required_bindings": [
+          "CONTENT_AUTHORIZATION_REFERENCE",
+          "FIELD_ALLOWLIST",
+          "DATA_CLASS_DECLARATION",
+          "REDACTION_DECLARATION",
+          "SECRET_SCAN_DECLARATION_AND_RESULT",
+          "RETENTION_AND_RECIPIENT_SCOPE"
+        ],
+        "failure_status": "REJECTED_SENSITIVE_CONTENT",
+        "prohibited_behaviors": [
+          "RAW_CONTENT_BY_DEFAULT",
+          "CREDENTIAL_OR_SECRET_PORTABILITY",
+          "UNKNOWN_CLASSIFICATION_AS_ALLOWED"
+        ],
+        "future_implementation_evidence": [
+          "CREDENTIAL_CASE",
+          "TOKEN_CASE",
+          "DIRECT_IDENTIFIER_CASE",
+          "REGULATED_DATA_CASE",
+          "OBFUSCATED_SECRET_CASE",
+          "SCANNER_UNAVAILABLE_CASE"
+        ],
+        "implementation_state": "NOT_IMPLEMENTED_BY_THIS_SPEC",
+        "operational_effectiveness": "NOT_ASSESSED",
+        "current_stop_state": "NOT_ASSESSED"
+      },
+      "current_stop_state": "NOT_ASSESSED"
+    }
+  ],
+  "counts": {
+    "expected_security_risks": 5,
+    "projected_security_risks": 5,
+    "matched_controls": 5
+  },
+  "instructions": {
+    "assess_specification_stage_control_clarity_only": true,
+    "implementation_evidence_in_scope": false,
+    "operational_effectiveness_in_scope": false,
+    "risk_acceptance_in_scope": false,
+    "human_decision_required": true
+  },
+  "effects": {
+    "model_review_authorized": false,
+    "provider_requests_authorized": 0,
+    "risk_accepted": false,
+    "cs_g1_pass": false,
+    "standard_ready": false
+  }
+}
