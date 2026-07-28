@@ -47,9 +47,9 @@ Relative to the source revision, the final candidate contains:
 
 ```text
 files_created=92
-files_updated=7
+files_updated=8
 files_deleted=0
-files_changed_total=99
+files_changed_total=100
 ```
 
 Major additions:

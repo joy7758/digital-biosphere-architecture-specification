@@ -4,6 +4,12 @@ on:
   push:
     paths:
       - "digital-biosphere-architecture/TITMAS/**"
+      - "digital-biosphere-architecture/agent-index.json"
+      - "digital-biosphere-architecture/llms.txt"
+      - "digital-biosphere-architecture/architecture/ADR-034-titmas-agent-native-standards-community-direction.md"
+      - "digital-biosphere-architecture/architecture/open-infrastructure-strategy-constitution.md"
+      - "digital-biosphere-architecture/architecture/titmas-agent-native-*.md"
+      - "digital-biosphere-architecture/TITMAS-AGENT-NATIVE-*.md"
       - "digital-biosphere-architecture/architecture/titmas-architecture-charter-v1.0.md"
       - "digital-biosphere-architecture/architecture/titmas-developer-infrastructure-positioning-v1.0.md"
       - ".github/ISSUE_TEMPLATE/**"
@@ -12,6 +18,12 @@ on:
   pull_request:
     paths:
       - "digital-biosphere-architecture/TITMAS/**"
+      - "digital-biosphere-architecture/agent-index.json"
+      - "digital-biosphere-architecture/llms.txt"
+      - "digital-biosphere-architecture/architecture/ADR-034-titmas-agent-native-standards-community-direction.md"
+      - "digital-biosphere-architecture/architecture/open-infrastructure-strategy-constitution.md"
+      - "digital-biosphere-architecture/architecture/titmas-agent-native-*.md"
+      - "digital-biosphere-architecture/TITMAS-AGENT-NATIVE-*.md"
       - "digital-biosphere-architecture/architecture/titmas-architecture-charter-v1.0.md"
       - "digital-biosphere-architecture/architecture/titmas-developer-infrastructure-positioning-v1.0.md"
       - ".github/ISSUE_TEMPLATE/**"
@@ -74,6 +86,16 @@ jobs:
       - name: Test conformance harness
         working-directory: digital-biosphere-architecture
         run: python3 -m unittest discover -s TITMAS/conformance/tests -v
+
+      - name: Test agent-native local protocol
+        working-directory: digital-biosphere-architecture
+        run: python3 -m unittest discover -s TITMAS/agent-native/tests -v
+
+      - name: Recompute controlled-pilot metrics
+        working-directory: digital-biosphere-architecture
+        run: |
+          python3 TITMAS/agent-native/pilot/evaluate_pilot.py
+          git diff --exit-code -- TITMAS/agent-native/pilot/pilot-result.json
 
       - name: Test minimal reference
         working-directory: digital-biosphere-architecture
