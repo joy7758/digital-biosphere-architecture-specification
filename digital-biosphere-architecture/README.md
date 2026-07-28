@@ -770,6 +770,16 @@ Claim/Authority 仅为 `ACCEPT_FOR_HUMAN_FREEZE_REVIEW`。详见
 新的 Human Decision。当前入口为
 [`CS-G1-REMEDIATION-D02 decision packet`](TITMAS-CS-G1-SECURITY-CROSSWALK-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md)；
 Option A 仅建议准备 Security/Crosswalk Development candidates，尚未被选择。
+
+`CS-G0` 的当前状态也已按后继角色决定重新协调：
+[`acquisition readiness v0.2`](architecture/titmas-cs-g0-acquisition-readiness-reconciliation-v0.2.md)
+确认 Track B 路线、Human Decision Owner、Problem Validation Owner 与 Privacy/Data
+Steward 等 5 项为 `PASS`，同时仍有 1 项 `PARTIAL`、4 项 `BLOCKED`；采集就绪、数据
+处理、有效记录与 Gate PASS 均为 false。下一入口是
+[`CS-G0-REVIEWER-D01`](TITMAS-CS-G0-AGENT-ASSISTED-REVIEWER-CONTRACT-HUMAN-DECISION-PACKET-v0.1.md)，
+仅候选接受智能体辅助 reviewer-process contract，不分配 live session 或授权 provider
+request。两个上游决定的统一顺序见
+[`Human Decision Queue`](TITMAS-COMMERCIAL-STANDARD-UPSTREAM-HUMAN-DECISION-QUEUE-v0.1.md)。
 `CS-G2–CS-G7` 仍为 `BLOCKED`；数据处理、外部推广、客户记录、实现、商业试点、认证、
 正式标准发布、Release 和 Deployment 均保持关闭。
 

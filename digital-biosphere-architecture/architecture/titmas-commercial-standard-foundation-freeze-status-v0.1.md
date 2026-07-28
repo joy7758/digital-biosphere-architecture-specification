@@ -2,10 +2,10 @@
 document_id: DBA-TITMAS-COMMERCIAL-STANDARD-FOUNDATION-FREEZE-STATUS-0.1
 title: TITMAS Commercial Standard Foundation Freeze Status v0.1
 title_zh: TITMAS 商业标准基础冻结状态报告 v0.1
-status: FOUNDATION_ROLE_FREEZE_COMPLETE_CS_G1_D02_HUMAN_DECISION_REQUIRED
+status: FOUNDATION_ROLE_FREEZE_COMPLETE_TWO_UPSTREAM_HUMAN_DECISIONS_REQUIRED
 maturity: Development
 maturity_scope: entire-document
-observed_at: 2026-07-28T18:30:00+08:00
+observed_at: 2026-07-28T18:45:00+08:00
 primary_repository: digital-biosphere-architecture
 human_accountability_ref: zhangbin
 implementation_effect: none
@@ -56,6 +56,10 @@ TITMAS_CS_FOUNDATION_GATE_FREEZE_COMPLETE=false
 
 ```text
 CS_G0_ROLE_ACCEPTED=true
+CS_G0_ACQUISITION_READINESS_PASS=5
+CS_G0_ACQUISITION_READINESS_PARTIAL=1
+CS_G0_ACQUISITION_READINESS_BLOCKED=4
+CS_G0_REVIEWER_D01_DECISION_STATE=NOT_DECIDED
 CS_G1_ROLE_ACCEPTED=true
 CS_G1_QWEN_REVIEW_SESSIONS_AUTHORIZED=3
 CS_G1_QWEN_REVIEW_REQUESTS_SENT=3
@@ -112,6 +116,8 @@ product is created by these records.
 | Current record | What it proves |
 |---|---|
 | [`titmas-cs-g0-human-decision-record-v0.1.md`](titmas-cs-g0-human-decision-record-v0.1.md) | Human acceptance of two bounded CS-G0 responsibilities |
+| [`titmas-cs-g0-acquisition-readiness-reconciliation-v0.2.md`](titmas-cs-g0-acquisition-readiness-reconciliation-v0.2.md) | Current CS-G0 readiness projection after role acceptance: 5 PASS, 1 PARTIAL, 4 BLOCKED |
+| [`../TITMAS-CS-G0-AGENT-ASSISTED-REVIEWER-CONTRACT-HUMAN-DECISION-PACKET-v0.1.md`](../TITMAS-CS-G0-AGENT-ASSISTED-REVIEWER-CONTRACT-HUMAN-DECISION-PACKET-v0.1.md) | Pending bounded agent-assisted reviewer-process contract Decision |
 | [`titmas-cs-g1-human-decision-record-v0.1.md`](titmas-cs-g1-human-decision-record-v0.1.md) | Human acceptance of four bounded CS-G1 responsibilities and the original three-session advisory budget |
 | [`titmas-commercial-standard-next-gate-roadmap-v0.1.md`](titmas-commercial-standard-next-gate-roadmap-v0.1.md) | Blocked downstream order, criteria, owners, evidence and forbidden actions |
 | [`reviews/cs-g1/security-review-result.v0.1.json`](reviews/cs-g1/security-review-result.v0.1.json) | Security request failed closed after a 55-second read timeout |
@@ -126,6 +132,7 @@ product is created by these records.
 | [`titmas-cs-g1-review-semantics-correction-v0.2.1.md`](titmas-cs-g1-review-semantics-correction-v0.2.1.md) | Non-destructive correction: conditional stop rule is not observed implementation state |
 | [`reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.1.json`](reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.1.json) | Current deterministic aggregate: 4/4 sessions, 16/16 risks, 14/14 crosswalk, Security stop state not assessed, Gate still not met |
 | [`../TITMAS-CS-G1-SECURITY-CROSSWALK-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md`](../TITMAS-CS-G1-SECURITY-CROSSWALK-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md) | Current D02 Option A/B/C/D Human Decision entry; no option selected |
+| [`../TITMAS-COMMERCIAL-STANDARD-UPSTREAM-HUMAN-DECISION-QUEUE-v0.1.md`](../TITMAS-COMMERCIAL-STANDARD-UPSTREAM-HUMAN-DECISION-QUEUE-v0.1.md) | Unified ordering for the two current bounded upstream Decisions |
 
 ## 6. Invariants
 

@@ -1,0 +1,97 @@
+{
+  "document_id": "DBA_TITMAS_CS_G0_AGENT_ASSISTED_REVIEWER_CONTRACT_DECISION_CANDIDATE_0_1",
+  "version": "0.1.0",
+  "status": "HUMAN_DECISION_REQUIRED_OPTION_NOT_SELECTED",
+  "decision_id": "CS-G0-REVIEWER-D01",
+  "decision_owner_ref": "zhangbin",
+  "decision_state": "NOT_DECIDED",
+  "recommended_option": "A",
+  "options": [
+    {
+      "option_id": "A",
+      "selection": "ACCEPT_BOUNDED_QWEN_ROLE_SCOPED_REVIEWER_CONTRACT_WITH_PER_BATCH_ASSIGNMENT",
+      "recommended": true,
+      "review_model": "qwen3.7-max",
+      "future_roles": [
+        "METHOD_REVIEW",
+        "SECURITY_PRIVACY_REVIEW",
+        "CLAIM_AUTHORITY_REVIEW"
+      ],
+      "sessions_per_future_batch": 3,
+      "requests_per_session": 1,
+      "retry_count": 0,
+      "fallback_count": 0,
+      "substitution_count": 0,
+      "extraction_count": 0,
+      "repair_count": 0,
+      "tools_allowed": false,
+      "external_retrieval_allowed": false,
+      "memory_retrieval_allowed": false,
+      "direct_json_required": true,
+      "cross_role_fill_allowed": false,
+      "reviewer_process_contract_accepted_if_selected": true,
+      "live_reviewer_session_assigned": false,
+      "provider_requests_authorized": 0
+    },
+    {
+      "option_id": "B",
+      "selection": "REQUIRE_MULTI_PROVIDER_ROLE_SEPARATION",
+      "recommended": false,
+      "reason": "Exact eligible providers and conflict contracts are not frozen."
+    },
+    {
+      "option_id": "C",
+      "selection": "REQUIRE_THREE_EXTERNAL_HUMAN_REVIEWERS",
+      "recommended": false,
+      "reason": "Not aligned with the current agent-first review strategy."
+    },
+    {
+      "option_id": "D",
+      "selection": "DEFER_OR_REJECT",
+      "recommended": false
+    }
+  ],
+  "conflict_rules": {
+    "reviewer_model_may_review_own_record": false,
+    "same_provider_sessions_are_independent_organizations": false,
+    "role_separation_is_organization_independence": false,
+    "failed_or_dissenting_results_retained": true,
+    "human_counting_decision_required_per_record": true
+  },
+  "per_batch_decision_required": [
+    "CANDIDATE_BYTES_AND_HASHES",
+    "PROMPTS_AND_RESULT_SCHEMAS",
+    "REQUEST_BYTE_CAP_AND_TIMEOUT",
+    "REVIEWER_SESSION_IDENTIFIERS",
+    "CONFLICT_DECLARATION",
+    "STORAGE_AND_RETENTION_PATH",
+    "BATCH_EXPIRY_AND_REVOCATION"
+  ],
+  "agent_recommendation": {
+    "verdict": "CONDITIONALLY_RECOMMENDED",
+    "recommended_option": "A",
+    "source": "CODEX_RECONCILIATION_PLUS_EXISTING_QWEN_ACQUISITION_READINESS_REVIEW",
+    "new_provider_requests_executed": 0,
+    "human_decision_required": true
+  },
+  "effects": {
+    "decision_created": false,
+    "reviewer_process_contract_accepted": false,
+    "live_reviewer_session_assigned": false,
+    "provider_requests_authorized": 0,
+    "source_channel_approved": false,
+    "storage_approved": false,
+    "data_processing_authorized": false,
+    "external_outreach_authorized": false,
+    "acquisition_authorized": false,
+    "record_created": false,
+    "record_validated": false,
+    "record_counted": false,
+    "cs_g0_pass": false,
+    "standard_ready": false,
+    "commercial_ready": false,
+    "release_authorized": false
+  },
+  "next_action": "EXPLICIT_HUMAN_OPTION_A_B_C_OR_D_DECISION",
+  "next_action_authorized": false
+}
