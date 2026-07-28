@@ -1,0 +1,198 @@
+{
+  "record_type": "TITMAS_CE_G12_PORTABLE_CANDIDATE_DEPLOYMENT_ADMISSION_PREFLIGHT_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PORTABLE-CANDIDATE-DEPLOYMENT-ADMISSION-PREFLIGHT",
+  "version": "0.1.0",
+  "status": "AUTHORIZE_ONE_READ_ONLY_ARTIFACT_ADDRESSED_SERVER_PREFLIGHT_ONLY_IF_QUALIFYING_DECISION_REVIEW_AND_LATER_SEPARATE_EXECUTION",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G12-PORTABLE-CANDIDATE-DEPLOYMENT-ADMISSION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "d639f8b7ecacaac9dc095fd7cf2e3a0526b0e208841f4ecc270ab9285e358b42",
+  "recommendation_review_reference": "TITMAS-CE-G12-PORTABLE-CANDIDATE-DEPLOYMENT-ADMISSION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "54ecd3b739622f17795f5b5c0ccc0ab4bb566fdc0a3aa9a98795713fc8118e0e",
+  "recommendation_commit": "689b560c1d525c244f589e5edd1dbbb82c0dbf7b",
+  "recommendation_remote_verified": true,
+  "selected_option": "A",
+  "primary_repository": "digital-biosphere-architecture",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "candidate_contract": {
+    "source_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "source_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "archive_reference": "/tmp/titmas-site-c1d8931930fbae15f96ee6a6ac050b081538c919-source-bound-portable.tar.gz",
+    "archive_bytes": 979463,
+    "archive_sha256": "f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "baseline_reference": "commercial-evaluation-fresh-candidate/ce-g12-portable-source-bound-candidate-baseline.v0.1.json",
+    "baseline_sha256": "a83d8ef4db2ce41166e430cd024df81e4a8df946320996b9f0ba07c4ecdb6b78",
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-portable-source-bound-candidate-preparation-result.v0.1.json",
+    "result_sha256": "d6d5aac53a7e6f5cd7e07d073536e94faf77d2a4bb64aaf4a9ac243afff31d75",
+    "report_reference": "TITMAS-CE-G12-PORTABLE-SOURCE-BOUND-CANDIDATE-PREPARATION-REPORT-v0.1.md",
+    "report_sha256": "01d682b35508cefde8c21c98c28301d6577068ea607f5569d6383ac3992fb3b5",
+    "portable_archive_pass": true,
+    "source_binding_pass": true,
+    "deployment_admission_pass": false
+  },
+  "release_identity_contract": {
+    "identity_type": "SOURCE_COMMIT_AND_ARCHIVE_SHA256",
+    "delimiter": "--",
+    "release_id": "c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "future_release_path": "/srv/tmai/releases/c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "path_safe_pattern": "^[0-9a-f]{40}--[0-9a-f]{64}$",
+    "source_revision_only_identity_rejected": true,
+    "future_release_path_creation_authorized": false
+  },
+  "historical_observation": {
+    "lineage_result_reference": "commercial-evaluation-exact-redeployment/ce-g12-current-target-lineage-reconciliation-result.v0.1.json",
+    "lineage_result_sha256": "2afa3d7851d6a8ca6733afa8360e371358d70075f6d94c8e740284fa3ceb073b",
+    "observed_current_target": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "historical_stable_rollback": "7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "treated_as_current_truth": false,
+    "authorization_inferred": false
+  },
+  "server_scope": {
+    "host": "180.76.115.193",
+    "root": "/srv/tmai",
+    "current_symlink": "/srv/tmai/current",
+    "releases_root": "/srv/tmai/releases",
+    "future_release_path": "/srv/tmai/releases/c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "read_only": true
+  },
+  "exact_preflight_sequence": [
+    {
+      "id": "D01",
+      "action": "Require local governance HEAD to equal the remotely verified Decision and exact qwen3.7-max Decision review commit."
+    },
+    {
+      "id": "D02",
+      "action": "Verify candidate archive bytes/hash and candidate Baseline, Result and Report hashes."
+    },
+    {
+      "id": "D03",
+      "action": "Open exactly one non-interactive SSH session to the configured host."
+    },
+    {
+      "id": "D04",
+      "action": "Read canonical current symlink target and reject unresolved, non-absolute or out-of-root targets."
+    },
+    {
+      "id": "D05",
+      "action": "Read current release.json and release-manifest.json metadata and SHA-256 without modification."
+    },
+    {
+      "id": "D06",
+      "action": "Read historical stable rollback path existence, type, owner/group/mode and release metadata."
+    },
+    {
+      "id": "D07",
+      "action": "Require the artifact-addressed future release path to be absent or byte-for-byte identical; do not create it."
+    },
+    {
+      "id": "D08",
+      "action": "Read releases-root and current-symlink parent owner/group/mode, filesystem capacity and nginx/static-root prerequisites without reload or request."
+    },
+    {
+      "id": "D09",
+      "action": "Close SSH, classify PASS/FAIL/UNKNOWN and generate one Preflight Result and Report."
+    },
+    {
+      "id": "D10",
+      "action": "Commit and push only the two preflight artifacts; preserve raw secrets and absolute local credential paths outside Git."
+    }
+  ],
+  "preflight_result_contract": {
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-portable-candidate-deployment-admission-preflight-result.v0.1.json",
+    "report_reference": "TITMAS-CE-G12-PORTABLE-CANDIDATE-DEPLOYMENT-ADMISSION-PREFLIGHT-REPORT-v0.1.md",
+    "success_status": "PASS_READ_ONLY_ARTIFACT_ADDRESSED_DEPLOYMENT_ADMISSION_PREFLIGHT_NO_DEPLOYMENT_AUTHORIZED",
+    "failure_status": "FAIL_CLOSED_READ_ONLY_ARTIFACT_ADDRESSED_DEPLOYMENT_ADMISSION_PREFLIGHT_NO_DEPLOYMENT_AUTHORIZED",
+    "required_observations": [
+      "current_target",
+      "current_release_source_revision",
+      "current_release_manifest_hash",
+      "stable_rollback_presence",
+      "stable_rollback_readable",
+      "future_release_path_collision",
+      "releases_root_owner_group_mode",
+      "current_parent_owner_group_mode",
+      "filesystem_free_bytes",
+      "server_write_count"
+    ]
+  },
+  "execution_authorization": {
+    "decision_review_request_authorized": true,
+    "read_only_preflight_authorized_if_review_qualifies_and_decision_remote_verified": true,
+    "later_separate_execution_required": true,
+    "execution_in_decision_preparation_action": false,
+    "one_ssh_session": true,
+    "server_reads": true,
+    "server_writes": false,
+    "public_site_requests": false,
+    "file_or_directory_creation": false,
+    "archive_transfer": false,
+    "archive_extraction": false,
+    "chmod_or_chown": false,
+    "symlink_switch": false,
+    "nginx_test_or_reload": false,
+    "repair": false,
+    "rollback": false,
+    "deployment": false,
+    "release": false,
+    "pr_mutation": false,
+    "path_scoped_commit_and_push": true
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "ssh_sessions": 1,
+    "server_read_commands": 12,
+    "server_writes": 0,
+    "public_site_requests": 0,
+    "file_or_directory_creations": 0,
+    "archive_transfers": 0,
+    "archive_extractions": 0,
+    "chmod_chown_operations": 0,
+    "symlink_switches": 0,
+    "nginx_tests": 0,
+    "nginx_reloads": 0,
+    "repairs": 0,
+    "rollbacks": 0,
+    "deployments": 0,
+    "releases": 0,
+    "pr_mutations": 0,
+    "retries": 0,
+    "network_fallbacks": 0,
+    "result_artifacts": 2,
+    "result_commits": 1,
+    "result_pushes": 1
+  },
+  "stop_conditions": [
+    "DECISION_OR_REVIEW_NOT_REMOTE_VERIFIED",
+    "RETURNED_MODEL_NOT_EXACT_QWEN3_7_MAX",
+    "DIRECT_JSON_OR_CONTRACT_INVALID",
+    "DECISION_REVIEW_NOT_QUALIFYING",
+    "CANDIDATE_ARCHIVE_OR_EVIDENCE_HASH_DIFFERS",
+    "SSH_AUTH_OR_HOST_KEY_FAILURE",
+    "CURRENT_TARGET_UNRESOLVED_NONABSOLUTE_OR_OUTSIDE_ROOT",
+    "CURRENT_OR_ROLLBACK_METADATA_UNREADABLE",
+    "FUTURE_RELEASE_PATH_EXISTS_WITH_UNKNOWN_OR_DIFFERENT_CONTENT",
+    "RELEASE_IDENTITY_PATTERN_INVALID",
+    "WRITE_RETRY_FALLBACK_PUBLIC_REQUEST_OR_SECOND_SSH_REQUIRED",
+    "DEPLOYMENT_RELEASE_ROLLBACK_OR_STATUS_ELEVATION_REQUIRED"
+  ],
+  "effects": {
+    "decision_recorded": true,
+    "decision_review_complete": false,
+    "execution_authorized_after_qualifying_review_and_remote_verification": true,
+    "execution_started": false,
+    "ssh_session_created": false,
+    "server_read_executed": false,
+    "server_write_executed": false,
+    "deployment_admission_pass": false,
+    "deployment_authorized": false,
+    "release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  }
+}
