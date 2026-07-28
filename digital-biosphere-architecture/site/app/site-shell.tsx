@@ -31,6 +31,7 @@ type SiteSection =
   | "demos"
   | "industries"
   | "medicalIndustry"
+  | "spaceIndustry"
   | "medical"
   | "demo"
   | "updates"
@@ -57,6 +58,7 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
     demos: ["/en/demos/", "/demos/"],
     industries: ["/en/industries/", "/industries/"],
     medicalIndustry: ["/en/industry/medical-evidence/", "/industry/medical-evidence/"],
+    spaceIndustry: ["/en/industry/space-agent-evidence/", "/industry/space-agent-evidence/"],
     medical: ["/en/demo/medical-evidence/", "/demo/medical-evidence/"],
     demo: ["/en/digital-cell/", "/digital-cell/"],
     updates: ["/en/updates/", "/updates/"],
@@ -72,7 +74,7 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
       <a href={research} aria-current={section === "research" || section === "researchIndex" ? "page" : undefined}>
         {locale === "zh" ? "研究" : "Research"}
       </a>
-      <a href={applications} aria-current={section === "applications" || section === "industries" || section === "medicalIndustry" ? "page" : undefined}>
+      <a href={applications} aria-current={section === "applications" || section === "industries" || section === "medicalIndustry" || section === "spaceIndustry" ? "page" : undefined}>
         {locale === "zh" ? "行业应用" : "Applications"}
       </a>
       <a href={demos} aria-current={section === "demos" || section === "demo" || section === "medical" ? "page" : undefined}>
@@ -156,6 +158,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <a href="/llms.txt">llms.txt</a>
           <a href="/agent-index.json">agent-index.json</a>
           <a href="/site-catalog.json">site-catalog.json</a>
+          <a href="/space-agent-evidence-profile.json">space-agent-evidence-profile.json</a>
           <a href="/updates.json">updates.json</a>
           <a href="/status.json">status.json</a>
           <a href="/titmas-community.json">titmas-community.json</a>

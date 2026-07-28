@@ -31,6 +31,14 @@ const industryCopy = {
     demoLead: "Digital Cell Demo 展示最小可信执行对象、确定性重放和健康视图；它不是制造系统本身。",
     demoCta: "进入 Digital Cell Demo",
     medicalCta: "医疗证据基础设施",
+    spaceCta: "自主航天 SAEP",
+    profilesTitle: "从一个制造示例进入更多行业剖面",
+    profilesLead: "行业剖面把共同的 TITMAS 可信结构翻译为领域问题；领域系统、业务规则与 Agent 仍由行业团队负责。",
+    profileOpen: "查看行业剖面",
+    profileCards: [
+      ["HEALTHCARE", "医疗证据基础设施", "UDI-DICOM 从设备身份与影像证据出发，说明医疗方向如何复用 TITMAS。"],
+      ["AUTONOMOUS SPACE", "Space Agent Evidence Profile (SAEP)", "SAEP 基于 EEOAP，研究高风险自主航天 Agent 的可核验执行证据。"],
+    ],
     statusCta: "查看状态与边界",
   },
   en: {
@@ -62,6 +70,14 @@ const industryCopy = {
     demoLead: "The Digital Cell Demo shows minimal trust objects, deterministic replay, and a health view. It is not a manufacturing system.",
     demoCta: "Open the Digital Cell Demo",
     medicalCta: "Medical Evidence Infrastructure",
+    spaceCta: "Autonomous Space SAEP",
+    profilesTitle: "From one manufacturing example to more industry profiles",
+    profilesLead: "Industry profiles translate shared TITMAS trust structures into domain questions. Industry teams still own their systems, rules, and agents.",
+    profileOpen: "Open the industry profile",
+    profileCards: [
+      ["HEALTHCARE", "Medical Evidence Infrastructure", "UDI-DICOM starts from device identity and imaging evidence to show how healthcare can reuse TITMAS."],
+      ["AUTONOMOUS SPACE", "Space Agent Evidence Profile (SAEP)", "SAEP uses EEOAP to research verifiable execution evidence for high-risk autonomous space agents."],
+    ],
     statusCta: "Review status and boundaries",
   },
 } as const;
@@ -72,6 +88,7 @@ export function IndustryPage({ locale }: { locale: Locale }) {
   const root = locale === "zh" ? "/" : "/en/";
   const demo = locale === "zh" ? "/digital-cell/" : "/en/digital-cell/";
   const medical = locale === "zh" ? "/industry/medical-evidence/" : "/en/industry/medical-evidence/";
+  const space = locale === "zh" ? "/industry/space-agent-evidence/" : "/en/industry/space-agent-evidence/";
   const status = locale === "zh" ? "/status/" : "/en/status/";
 
   return (
@@ -92,6 +109,7 @@ export function IndustryPage({ locale }: { locale: Locale }) {
               </a>
               <a className="button button-secondary" href={demo}>{copy.demoCta}</a>
               <a className="button button-secondary" href={medical}>{copy.medicalCta}</a>
+              <a className="button button-secondary" href={space}>{copy.spaceCta}</a>
             </div>
           </div>
         </section>
@@ -176,6 +194,26 @@ export function IndustryPage({ locale }: { locale: Locale }) {
                 <strong>{copy.excludes}</strong>
                 <ul>{copy.excludesItems.map((item) => <li key={item}>{item}</li>)}</ul>
               </article>
+            </div>
+          </div>
+        </section>
+
+        <section className="section industry-profiles">
+          <div className="section-shell">
+            <div className="section-heading">
+              <p className="section-kicker">INDUSTRY APPLICATION PROFILES</p>
+              <h2>{copy.profilesTitle}</h2>
+              <p>{copy.profilesLead}</p>
+            </div>
+            <div className="industry-profile-grid">
+              {copy.profileCards.map(([label, title, description], index) => (
+                <a href={index === 0 ? medical : space} key={label}>
+                  <code>{label}</code>
+                  <h3>{title}</h3>
+                  <p>{description}</p>
+                  <strong>{copy.profileOpen} <span>↗</span></strong>
+                </a>
+              ))}
             </div>
           </div>
         </section>

@@ -106,6 +106,24 @@ export const directoryItems: Record<PublicDirectory, DirectoryItem[]> = {
       },
       metadata: ["APPLICATION_EXAMPLE", "NO_PRODUCTION_CERTIFICATION"],
     },
+    {
+      id: "space-agent-evidence",
+      type: "INDUSTRY_APPLICATION_PROFILE",
+      status: "PUBLISHED_RESEARCH_PROFILE",
+      title: {
+        zh: "自主航天智能体可信执行（SAEP）",
+        en: "Space Agent Evidence Profile (SAEP)",
+      },
+      description: {
+        zh: "TITMAS 面向自主航天系统的垂直应用剖面；基于 EEOAP 研究合成、可核验、可离线检查的执行证据。",
+        en: "A TITMAS vertical profile using EEOAP to research synthetic, verifiable, and offline-reviewable execution evidence for autonomous space systems.",
+      },
+      href: {
+        zh: "/industry/space-agent-evidence/",
+        en: "/en/industry/space-agent-evidence/",
+      },
+      metadata: ["RESEARCH_PROTOTYPE", "EVIDENCE_ORIGIN=SYNTHETIC", "FLIGHT_CERTIFIED=false"],
+    },
   ],
   demos: [
     {

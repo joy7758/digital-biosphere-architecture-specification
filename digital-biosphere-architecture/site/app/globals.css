@@ -451,6 +451,19 @@ button, input { font: inherit; }
 .industry-boundary-grid .industry-boundary-excludes { border-top-color: var(--red); }
 .industry-boundary-grid strong { font-size: 1.15rem; }
 .industry-boundary-grid ul { margin: 22px 0 0; padding-left: 20px; display: grid; gap: 12px; color: var(--ink-soft); line-height: 1.6; }
+.industry-profiles { background: white; border-top: 1px solid var(--line); }
+.industry-profile-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.industry-profile-grid > a { min-height: 280px; padding: 32px; display: flex; flex-direction: column; background: #f7f8fb; border: 1px solid #d6dbe8; border-top: 4px solid var(--violet); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; }
+.industry-profile-grid > a:nth-child(2) { color: white; background: #102d3c; border-color: #28505a; border-top-color: var(--amber); }
+.industry-profile-grid > a:hover { transform: translateY(-4px); border-top-color: var(--amber); box-shadow: 0 18px 44px rgba(16,45,60,.1); }
+.industry-profile-grid code { color: var(--violet-deep); font: 740 .66rem var(--font-mono); letter-spacing: .08em; }
+.industry-profile-grid > a:nth-child(2) code { color: #8adcd8; }
+.industry-profile-grid h3 { margin: 34px 0 12px; font-size: clamp(1.5rem, 2.8vw, 2.2rem); letter-spacing: -.035em; }
+.industry-profile-grid p { max-width: 520px; margin: 0; color: var(--ink-soft); line-height: 1.7; }
+.industry-profile-grid > a:nth-child(2) p { color: #b8c9ce; }
+.industry-profile-grid strong { margin-top: auto; padding-top: 34px; color: var(--violet-deep); }
+.industry-profile-grid > a:nth-child(2) strong { color: #8adcd8; }
+.industry-profile-grid strong span { color: var(--amber); }
 .industry-demo-cta { width: min(1160px, calc(100% - 40px)); margin: 0 auto; padding: 88px 0; display: grid; grid-template-columns: 1.35fr .65fr; gap: 80px; align-items: end; }
 .industry-demo-cta h2 { margin: 0; font-size: clamp(2.2rem, 4.5vw, 4rem); line-height: 1.05; letter-spacing: -.045em; }
 .industry-demo-cta p:not(.section-kicker) { max-width: 700px; color: var(--ink-soft); line-height: 1.75; }
@@ -621,7 +634,7 @@ button, input { font: inherit; }
   .industry-hero-shell { width: min(100% - 28px, 1160px); }
   .industry-hero { padding: 42px 0 72px; }
   .breadcrumb { margin-bottom: 38px; }
-  .industry-role-grid, .industry-flow ol, .industry-boundary-grid { grid-template-columns: 1fr; }
+  .industry-role-grid, .industry-flow ol, .industry-boundary-grid, .industry-profile-grid { grid-template-columns: 1fr; }
   .industry-capabilities { grid-template-columns: 1fr; }
   .industry-demo-cta { width: min(100% - 28px, 1160px); gap: 30px; padding: 70px 0; }
   .directory-hero { padding: 42px 0 66px; }

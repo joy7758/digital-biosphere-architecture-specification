@@ -179,6 +179,50 @@ Machine boundaries:
 - PRODUCTION_READY=false
 - APPLICATION_POSITIONING=TITMAS_INDUSTRY_APPLICATION_NOT_MEDICAL_SOFTWARE
 
+## Space Agent Evidence Profile (SAEP)
+
+Industry application:
+- /industry/space-agent-evidence/
+- /en/industry/space-agent-evidence/
+
+Machine entry:
+- /space-agent-evidence-profile.json
+
+SAEP is a vertical application profile of TITMAS for autonomous space systems.
+It applies the EEOAP execution-evidence model to a bounded, synthetic research
+case. It is not an independent spacecraft project, spacecraft-control system,
+operational-authorization gate, flight-safety system, or production service.
+
+Public sources:
+- Agent-readable profile entry: https://github.com/joy7758/agent-evidence/tree/main/extensions/space
+- Version DOI: https://doi.org/10.5281/zenodo.21393369
+- Project concept DOI: 10.5281/zenodo.19334061
+
+The version DOI identifies the frozen SAEP v0.1 research snapshot. The concept
+DOI identifies the evolving project. They are not interchangeable.
+
+Public status:
+- SAEP_VERSION=v0.1
+- SAEP_STATUS=RESEARCH_PROTOTYPE
+- OPEN_RESEARCH_ARTIFACT=true
+- SYNTHETIC_VALIDATION_COMPLETED=true
+- DOI_ARCHIVED=true
+- BASE_PROFILE=EEOAP@0.1
+- EVIDENCE_ORIGIN=SYNTHETIC
+- EXTERNAL_VALIDATION=false
+- NASA_ADOPTION_CLAIM=false
+- ESA_ADOPTION_CLAIM=false
+- FDO_ADOPTION_CLAIM=false
+- FLIGHT_CERTIFICATION_CLAIM=false
+- SPACE_QUALIFICATION_CLAIM=false
+- INDUSTRIAL_DEPLOYMENT_CLAIM=false
+- MISSION_SAFETY_GUARANTEE=false
+- PRODUCTION_READY=false
+
+Synthetic validation applies only to deterministic mutations of one synthetic
+fixture. It is not external validation, a flight-performance measurement,
+space qualification, or certification.
+
 TITMAS is the developer entry for specifications, adapter contracts, conformance,
 and replaceable reference-implementation boundaries. It is not an Agent
 Framework, hosted Runtime, Foundation, Marketplace, or automatic authority system.

@@ -30,6 +30,9 @@ const requiredFiles = [
   "en/industries/index.html",
   "industry/medical-evidence/index.html",
   "en/industry/medical-evidence/index.html",
+  "industry/space-agent-evidence/index.html",
+  "en/industry/space-agent-evidence/index.html",
+  "space-agent-evidence-profile.json",
   "demo/medical-evidence/index.html",
   "en/demo/medical-evidence/index.html",
   "medical-evidence/index.html",
@@ -124,11 +127,13 @@ const [zhResearch, enResearch, zhResearchIndex, enResearchIndex, zhApplications,
   readFile(join(outputRoot, "demos/index.html"), "utf8"),
   readFile(join(outputRoot, "en/demos/index.html"), "utf8"),
 ]);
-const [zhIndustries, enIndustries, medicalIndustryPage, enMedicalIndustryPage, medicalEvidencePage, enMedicalEvidencePage, digitalCellPage, enDigitalCellPage] = await Promise.all([
+const [zhIndustries, enIndustries, medicalIndustryPage, enMedicalIndustryPage, spaceIndustryPage, enSpaceIndustryPage, medicalEvidencePage, enMedicalEvidencePage, digitalCellPage, enDigitalCellPage] = await Promise.all([
   readFile(join(outputRoot, "industries/index.html"), "utf8"),
   readFile(join(outputRoot, "en/industries/index.html"), "utf8"),
   readFile(join(outputRoot, "industry/medical-evidence/index.html"), "utf8"),
   readFile(join(outputRoot, "en/industry/medical-evidence/index.html"), "utf8"),
+  readFile(join(outputRoot, "industry/space-agent-evidence/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/industry/space-agent-evidence/index.html"), "utf8"),
   readFile(join(outputRoot, "demo/medical-evidence/index.html"), "utf8"),
   readFile(join(outputRoot, "en/demo/medical-evidence/index.html"), "utf8"),
   readFile(join(outputRoot, "digital-cell/index.html"), "utf8"),
@@ -136,6 +141,7 @@ const [zhIndustries, enIndustries, medicalIndustryPage, enMedicalIndustryPage, m
 ]);
 const digitalCell = await readFile(join(outputRoot, "digital-cell.json"), "utf8").then(JSON.parse);
 const medicalEvidence = await readFile(join(outputRoot, "medical-evidence-demo.json"), "utf8").then(JSON.parse);
+const spaceAgentEvidence = await readFile(join(outputRoot, "space-agent-evidence-profile.json"), "utf8").then(JSON.parse);
 const commercialZh = await readFile(join(outputRoot, "commercial-evaluation/index.html"), "utf8");
 const commercialEn = await readFile(join(outputRoot, "en/commercial-evaluation/index.html"), "utf8");
 const commercialPack = await readFile(join(outputRoot, "TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"), "utf8").then(JSON.parse);
@@ -187,6 +193,8 @@ assert.match(zhResearchIndex, /PUBLISHED_ARCHITECTURE_BASELINE/);
 assert.match(enResearchIndex, /DEVELOPER_PREVIEW_RELEASED/);
 assert.match(zhApplications, /医疗证据基础设施/);
 assert.match(enApplications, /Manufacturing AI Agent Ecosystem/);
+assert.match(zhApplications, /Space Agent Evidence Profile/);
+assert.match(enApplications, /PUBLISHED_RESEARCH_PROFILE/);
 assert.match(zhDemos, /SYNTHETIC_DATA=true/);
 assert.match(enDemos, /CLINICAL_VALIDATION=false/);
 assert.match(zh, /网站结构已更新/);
@@ -234,10 +242,21 @@ assert.match(zh, /href="\/demo\/medical-evidence\//);
 assert.match(en, /href="\/en\/demo\/medical-evidence\//);
 assert.match(zhIndustries, /href="\/industry\/medical-evidence\//);
 assert.match(enIndustries, /href="\/en\/industry\/medical-evidence\//);
+assert.match(zhIndustries, /href="\/industry\/space-agent-evidence\//);
+assert.match(enIndustries, /href="\/en\/industry\/space-agent-evidence\//);
 assert.match(medicalIndustryPage, /医疗证据基础设施/);
 assert.match(enMedicalIndustryPage, /Medical Evidence Infrastructure/);
 assert.match(medicalIndustryPage, /INDEPENDENT_MEDICAL_PLATFORM=false/);
 assert.match(enMedicalIndustryPage, /DIRECTION_ONLY/);
+assert.match(spaceIndustryPage, /自主航天智能体可信执行/);
+assert.match(enSpaceIndustryPage, /Space Agent Evidence Profile/);
+assert.match(spaceIndustryPage, /BASE_PROFILE=EEOAP@0.1/);
+assert.match(enSpaceIndustryPage, /EVIDENCE_ORIGIN=SYNTHETIC/);
+assert.match(spaceIndustryPage, /https:\/\/github\.com\/joy7758\/agent-evidence\/tree\/main\/extensions\/space/);
+assert.match(enSpaceIndustryPage, /https:\/\/doi\.org\/10\.5281\/zenodo\.21393369/);
+assert.match(spaceIndustryPage, /10\.5281\/zenodo\.19334061/);
+assert.match(spaceIndustryPage, /NASA_ADOPTION_CLAIM=false/);
+assert.match(enSpaceIndustryPage, /FLIGHT_CERTIFICATION_CLAIM=false/);
 assert.match(medicalEvidencePage, /UDI-DICOM Evidence Validator Demo/);
 assert.match(enMedicalEvidencePage, /UDI-DICOM Evidence Validator Demo/);
 assert.match(medicalEvidencePage, /REAL_REGISTRY_LOOKUP=false/);
@@ -252,6 +271,23 @@ assert.equal(medicalEvidence.data_policy.real_registry_lookup, false);
 assert.equal(medicalEvidence.boundaries.validator_implemented_here, false);
 assert.equal(medicalEvidence.boundaries.clinical_validation, false);
 assert.equal(medicalEvidence.boundaries.production_ready, false);
+assert.equal(spaceAgentEvidence.application_positioning, "TITMAS_VERTICAL_APPLICATION_PROFILE_FOR_AUTONOMOUS_SPACE_SYSTEMS");
+assert.equal(spaceAgentEvidence.relationship.base_evidence_profile, "EEOAP@0.1");
+assert.equal(spaceAgentEvidence.status.research_prototype, true);
+assert.equal(spaceAgentEvidence.status.synthetic_validation_completed, true);
+assert.equal(spaceAgentEvidence.status.doi_archived, true);
+assert.equal(spaceAgentEvidence.public_truth_contract.SAEP_VERSION, "v0.1");
+assert.equal(spaceAgentEvidence.public_truth_contract.SAEP_STATUS, "RESEARCH_PROTOTYPE");
+assert.equal(spaceAgentEvidence.public_truth_contract.FDO_ADOPTION_CLAIM, false);
+assert.equal(spaceAgentEvidence.public_sources.concept_doi, "10.5281/zenodo.19334061");
+assert.equal(spaceAgentEvidence.synthetic_validation.external_validation, false);
+assert.equal(spaceAgentEvidence.non_claims.nasa_adopted, false);
+assert.equal(spaceAgentEvidence.non_claims.esa_adopted, false);
+assert.equal(spaceAgentEvidence.non_claims.flight_certified, false);
+assert.equal(spaceAgentEvidence.non_claims.space_qualified, false);
+assert.equal(spaceAgentEvidence.non_claims.industrial_deployment, false);
+assert.equal(spaceAgentEvidence.non_claims.mission_safety_guarantee, false);
+assert.equal(spaceAgentEvidence.non_claims.production_ready, false);
 assert.equal(digitalCell.status, "REFERENCE_COMPLETE");
 assert.equal(digitalCell.boundaries.production_claim, false);
 assert.equal(agentIndex.entrypoints.digital_cell_demo, "/digital-cell/");
@@ -266,6 +302,11 @@ assert.equal(agentIndex.entrypoints.medical_evidence_industry_zh, "/industry/med
 assert.equal(agentIndex.entrypoints.medical_evidence_industry_en, "/en/industry/medical-evidence/");
 assert.equal(agentIndex.entrypoints.medical_evidence_demo_zh, "/demo/medical-evidence/");
 assert.equal(agentIndex.entrypoints.medical_evidence_demo_en, "/en/demo/medical-evidence/");
+assert.equal(agentIndex.entrypoints.space_agent_evidence_industry_zh, "/industry/space-agent-evidence/");
+assert.equal(agentIndex.entrypoints.space_agent_evidence_industry_en, "/en/industry/space-agent-evidence/");
+assert.equal(agentIndex.entrypoints.space_agent_evidence_profile_object, "/space-agent-evidence-profile.json");
+assert.equal(agentIndex.space_agent_evidence_profile.base_profile, "EEOAP@0.1");
+assert.equal(agentIndex.space_agent_evidence_profile.external_validation, false);
 assert.equal(agentIndex.medical_evidence_demo.real_registry_lookup, false);
 assert.match(commercialZh, /商业评估包 v0\.2/);
 assert.match(commercialEn, /Commercial Evaluation Pack v0\.2/);

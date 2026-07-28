@@ -142,6 +142,8 @@ test("renders OpenAI-inspired peer surfaces without an empty product shelf", asy
   assert.match(enIndex, /DEVELOPER_PREVIEW_RELEASED/);
   assert.match(zhApplications, /医疗证据基础设施/);
   assert.match(enApplications, /Manufacturing AI Agent Ecosystem/);
+  assert.match(zhApplications, /Space Agent Evidence Profile/);
+  assert.match(enApplications, /PUBLISHED_RESEARCH_PROFILE/);
   assert.match(zhDemos, /SYNTHETIC_DATA=true/);
   assert.match(enDemos, /CLINICAL_VALIDATION=false/);
   for (const html of [zhResearch, enResearch, zhIndex, enIndex, zhApplications, enApplications, zhDemos, enDemos]) {
@@ -283,6 +285,8 @@ test("renders clickable bilingual industry application entry points", async () =
   assert.match(en, /href="\/en\/digital-cell\//);
   assert.match(zh, /href="\/industry\/medical-evidence\//);
   assert.match(en, /href="\/en\/industry\/medical-evidence\//);
+  assert.match(zh, /href="\/industry\/space-agent-evidence\//);
+  assert.match(en, /href="\/en\/industry\/space-agent-evidence\//);
 });
 
 test("renders bilingual medical evidence industry application with explicit infrastructure positioning", async () => {
@@ -303,6 +307,38 @@ test("renders bilingual medical evidence industry application with explicit infr
   assert.match(en, /DIRECTION_ONLY/);
   assert.match(zh, /href="\/demo\/medical-evidence\//);
   assert.match(en, /href="\/en\/demo\/medical-evidence\//);
+});
+
+test("renders bilingual SAEP industry profile with research and non-certification boundaries", async () => {
+  const [zhResponse, enResponse] = await Promise.all([
+    render("/industry/space-agent-evidence"),
+    render("/en/industry/space-agent-evidence"),
+  ]);
+  assert.equal(zhResponse.status, 200);
+  assert.equal(enResponse.status, 200);
+  const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
+  assert.match(zh, /自主航天智能体可信执行/);
+  assert.match(en, /Space Agent Evidence Profile/);
+  assert.match(zh, /BASE_PROFILE=EEOAP@0.1/);
+  assert.match(en, /EVIDENCE_ORIGIN=SYNTHETIC/);
+  assert.match(zh, /SAEP_VERSION=v0.1/);
+  assert.match(en, /SAEP_STATUS=RESEARCH_PROTOTYPE/);
+  assert.match(zh, /Digital Biosphere \/ TITMAS/);
+  assert.match(en, /EEOAP Evidence Layer/);
+  assert.match(zh, /SYNTHETIC_VALIDATION_COMPLETED=true/);
+  assert.match(en, /DOI_ARCHIVED=true/);
+  assert.match(zh, /NASA_ADOPTION_CLAIM=false/);
+  assert.match(en, /ESA_ADOPTION_CLAIM=false/);
+  assert.match(zh, /FDO_ADOPTION_CLAIM=false/);
+  assert.match(en, /FLIGHT_CERTIFICATION_CLAIM=false/);
+  assert.match(zh, /SPACE_QUALIFICATION_CLAIM=false/);
+  assert.match(en, /INDUSTRIAL_DEPLOYMENT_CLAIM=false/);
+  assert.match(zh, /MISSION_SAFETY_GUARANTEE=false/);
+  assert.match(zh, /href="https:\/\/github\.com\/joy7758\/agent-evidence\/tree\/main\/extensions\/space"/);
+  assert.match(en, /href="https:\/\/doi\.org\/10\.5281\/zenodo\.21393369"/);
+  assert.match(zh, /10\.5281\/zenodo\.19334061/);
+  assert.match(zh, /href="\/en\/industry\/space-agent-evidence\//);
+  assert.match(en, /href="\/industry\/space-agent-evidence\//);
 });
 
 test("renders bilingual synthetic medical evidence reference demo with explicit boundaries", async () => {
@@ -379,6 +415,7 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("robots.txt", root)),
     access(new URL("sitemap.xml", root)),
     access(new URL("medical-evidence-demo.json", root)),
+    access(new URL("space-agent-evidence-profile.json", root)),
     access(new URL("TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json", root)),
     access(new URL("TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", root)),
     access(new URL("TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-REPORT-v0.1.md", root)),
@@ -389,13 +426,14 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("examples/titmas-first-run/entity-object.synthetic.v0.1.json", root)),
   ]);
 
-  const [agentIndex, status, agentCustomerPackage, dbosPackage, titmasCommunity, medicalEvidence, siteCatalog, updatesCatalog, websiteConstitution, llms, sitemap] = await Promise.all([
+  const [agentIndex, status, agentCustomerPackage, dbosPackage, titmasCommunity, medicalEvidence, spaceAgentEvidence, siteCatalog, updatesCatalog, websiteConstitution, llms, sitemap] = await Promise.all([
     readFile(new URL("agent-index.json", root), "utf8").then(JSON.parse),
     readFile(new URL("status.json", root), "utf8").then(JSON.parse),
     readFile(new URL("agent-customer-package.json", root), "utf8").then(JSON.parse),
     readFile(new URL("dbos-public-package-manifest.json", root), "utf8").then(JSON.parse),
     readFile(new URL("titmas-community.json", root), "utf8").then(JSON.parse),
     readFile(new URL("medical-evidence-demo.json", root), "utf8").then(JSON.parse),
+    readFile(new URL("space-agent-evidence-profile.json", root), "utf8").then(JSON.parse),
     readFile(new URL("site-catalog.json", root), "utf8").then(JSON.parse),
     readFile(new URL("updates.json", root), "utf8").then(JSON.parse),
     readFile(new URL("WEBSITE-UPDATE-CONSTITUTION-v0.1.json", root), "utf8").then(JSON.parse),
@@ -449,6 +487,11 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.entrypoints.medical_evidence_industry_en, "/en/industry/medical-evidence/");
   assert.equal(agentIndex.entrypoints.medical_evidence_demo_zh, "/demo/medical-evidence/");
   assert.equal(agentIndex.entrypoints.medical_evidence_demo_en, "/en/demo/medical-evidence/");
+  assert.equal(agentIndex.entrypoints.space_agent_evidence_industry_zh, "/industry/space-agent-evidence/");
+  assert.equal(agentIndex.entrypoints.space_agent_evidence_industry_en, "/en/industry/space-agent-evidence/");
+  assert.equal(agentIndex.entrypoints.space_agent_evidence_profile_object, "/space-agent-evidence-profile.json");
+  assert.equal(agentIndex.space_agent_evidence_profile.base_profile, "EEOAP@0.1");
+  assert.equal(agentIndex.space_agent_evidence_profile.external_validation, false);
   assert.equal(agentIndex.entrypoints.agent_immune_product_zh, undefined);
   assert.equal(agentIndex.entrypoints.agent_immune_product_en, undefined);
   assert.equal(agentIndex.entrypoints.agent_immune_product_object, undefined);
@@ -467,6 +510,24 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(medicalEvidence.boundaries.validator_implemented_here, false);
   assert.equal(medicalEvidence.boundaries.clinical_validation, false);
   assert.equal(medicalEvidence.boundaries.regulatory_certification_claim, false);
+  assert.equal(spaceAgentEvidence.application_positioning, "TITMAS_VERTICAL_APPLICATION_PROFILE_FOR_AUTONOMOUS_SPACE_SYSTEMS");
+  assert.equal(spaceAgentEvidence.status.research_prototype, true);
+  assert.equal(spaceAgentEvidence.status.open_research_artifact, true);
+  assert.equal(spaceAgentEvidence.status.synthetic_validation_completed, true);
+  assert.equal(spaceAgentEvidence.status.doi_archived, true);
+  assert.equal(spaceAgentEvidence.public_truth_contract.SAEP_VERSION, "v0.1");
+  assert.equal(spaceAgentEvidence.public_truth_contract.SAEP_STATUS, "RESEARCH_PROTOTYPE");
+  assert.equal(spaceAgentEvidence.public_truth_contract.FDO_ADOPTION_CLAIM, false);
+  assert.equal(spaceAgentEvidence.public_sources.concept_doi, "10.5281/zenodo.19334061");
+  assert.equal(spaceAgentEvidence.synthetic_validation.external_validation, false);
+  assert.equal(spaceAgentEvidence.non_claims.nasa_adopted, false);
+  assert.equal(spaceAgentEvidence.non_claims.esa_adopted, false);
+  assert.equal(spaceAgentEvidence.non_claims.flight_certified, false);
+  assert.equal(spaceAgentEvidence.non_claims.space_qualified, false);
+  assert.equal(spaceAgentEvidence.non_claims.industrial_deployment, false);
+  assert.equal(spaceAgentEvidence.non_claims.mission_safety_guarantee, false);
+  assert.equal(spaceAgentEvidence.non_claims.production_ready, false);
+  assert.match(llms, /SAEP is a vertical application profile of TITMAS/);
   assert.equal(titmasCommunity.public_front_door.future_domain_filing_status, "PENDING");
   assert.equal(titmasCommunity.github.organization_created, false);
   assert.equal(titmasCommunity.community_state.public_contribution_enabled, false);
