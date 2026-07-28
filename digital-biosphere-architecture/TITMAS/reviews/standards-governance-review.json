@@ -1,0 +1,15 @@
+{
+  "review_id": "TITMAS-V1-STANDARDS-GOVERNANCE-REVIEW-01",
+  "review_role": "Standards Governance Reviewer",
+  "model": "qwen3.7-max",
+  "session_count": 1,
+  "result": "PASS",
+  "findings": [
+    {"finding_id":"GOV-001","severity":"MEDIUM","evidence":"Reviewer, Maintainer and community roles remain false.","required_correction":"Assign roles only before an authorized public launch.","deferred_issue":"Human Owner role decisions."},
+    {"finding_id":"GOV-002","severity":"LOW","evidence":"Proposal lifecycle requires explicit maturity and deprecation tracking.","required_correction":"Keep lifecycle and maturity registries machine-readable.","deferred_issue":"No further proposal before validation."},
+    {"finding_id":"GATE-001","severity":"MEDIUM","evidence":"CS-G0 and CS-G1 remain false.","required_correction":"Do not promote to Release until separately satisfied.","deferred_issue":"Current Foundation Freeze gates."}
+  ],
+  "summary": "Governance and registry foundations pass Development review; role and commercial gates remain fail-closed.",
+  "post_review_disposition": "DEFERRED_GATES_PRESERVED_NO_SEMANTIC_ELEVATION",
+  "authority_effect": "NONE"
+}
