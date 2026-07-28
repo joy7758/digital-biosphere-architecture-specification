@@ -1,0 +1,137 @@
+{
+  "document_id": "TITMAS_CS_G0_TRACK_B_D01_GOVERNED_AGENT_OPERATIONAL_CONTEXT_ROUTE_DECISION_RECORD_0_1",
+  "version": "0.1.0",
+  "status": "DECIDED_OPTION_A_ROUTE_SELECTED_NO_ACQUISITION_AUTHORITY",
+  "decision_id": "CS-G0-TRACK-B-D01",
+  "decided_at": "2026-07-28T15:51:02+08:00",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "standing_directive_bindings": [
+    {
+      "path": "TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.md",
+      "sha256": "99d6755ecea03f9779ccc914dca33e32065bd72c71927fbe032bd8075238a54b"
+    },
+    {
+      "path": "TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.json",
+      "sha256": "ec4c092f8a703fdae09853e0f8a2fc75157f247b9683d0cb0306ff2252e2a17a"
+    }
+  ],
+  "recommendation_binding": {
+    "path": "TITMAS-CS-G0-TRACK-B-GOVERNED-AGENT-OPERATIONAL-CONTEXT-ROUTE-RECOMMENDATION-v0.1.md",
+    "sha256": "52979625d24f6488c451ccaeed8721ea83648abd858dab75669fbe44b6eb0baf"
+  },
+  "decision_candidate_binding": {
+    "path": "architecture/titmas-cs-g0-track-b-evidence-route-decision-candidate.v0.1.json",
+    "sha256": "7f3c546ff078714452acd04a40f4481659ecbefb87a11dd9d102a34ef7128a1a"
+  },
+  "review_binding": {
+    "path": "TITMAS-CS-G0-TRACK-B-GOVERNED-AGENT-OPERATIONAL-CONTEXT-ROUTE-QWEN-REVIEW-v0.1.json",
+    "sha256": "947349b21f4c09a1d959e8bb99b5123efc67232b19f4255985c87fba5342f9d2",
+    "requested_model": "qwen3.7-max",
+    "returned_model": "qwen3.7-max",
+    "verdict": "RECOMMENDED",
+    "confidence": 0.95,
+    "recommended_option": "A",
+    "blockers": 0,
+    "required_corrections": 0,
+    "standing_directive_eligible": true
+  },
+  "exact_action": "SELECT_OPTION_A_GOVERNED_AGENT_OPERATIONAL_CONTEXT_ROUTE_ONLY",
+  "primary_repository": "digital-biosphere-architecture",
+  "target_refs": [
+    "architecture/veap-problem-validation-contract.v0.1.json",
+    "architecture/veap-problem-validation-governance-contract.v0.1.json",
+    "architecture/veap-problem-validation-protocol-v0.1.md"
+  ],
+  "scope": {
+    "selected_track_b_candidate_route": "GOVERNED_AGENT_OPERATIONAL_CONTEXT",
+    "existing_observer_class": "GOVERNED_AI_AGENT",
+    "route_selected": true,
+    "track_b_requirement_changed": false,
+    "threshold_changed": false,
+    "protocol_changed": false,
+    "contract_changed": false,
+    "counting_semantics_changed": false
+  },
+  "preconditions_satisfied": [
+    "CANONICAL_EXACT_RECOMMENDATION_EXISTS",
+    "PRIMARY_REPOSITORY_AND_SCOPE_EXPLICIT",
+    "EXISTING_CONTRACT_INCLUDES_GOVERNED_AI_AGENT",
+    "THRESHOLDS_FALSE_EFFECTS_AND_STOP_RULES_EXPLICIT",
+    "EXACT_QWEN3_7_MAX_DIRECT_JSON_REVIEW_RECOMMENDS_OPTION_A",
+    "REVIEW_CONFIDENCE_0_95",
+    "REVIEW_BLOCKERS_AND_CORRECTIONS_ZERO",
+    "STANDING_DIRECTIVE_ELIGIBILITY_CONFIRMED",
+    "NO_LATER_CONFLICTING_HUMAN_DECISION_IDENTIFIED",
+    "SOURCE_BASELINE_REMOTE_EQUALITY_VERIFIED"
+  ],
+  "preconditions_missing_for_future_acquisition": [
+    "ACCEPTED_PROBLEM_VALIDATION_OWNER",
+    "ACCEPTED_PRIVACY_DATA_STEWARD",
+    "INDEPENDENT_METHOD_SECURITY_AND_CLAIM_REVIEWERS",
+    "EXACT_SOURCE_CHANNEL_AND_RECORD_CAP",
+    "STORAGE_ACCESS_RETENTION_WITHDRAWAL_DELETION_AND_INCIDENT_CONTRACT",
+    "CONSENT_OR_PUBLIC_SOURCE_BASIS",
+    "ACQUISITION_DECISION_WITH_EXPIRY_REVOCATION_AND_ROLLBACK",
+    "PER_RECORD_INDEPENDENT_REVIEW_AND_HUMAN_COUNTING_DECISION"
+  ],
+  "false_effects": {
+    "automatic_gate_approval": false,
+    "agent_self_approval": false,
+    "track_b_evidence_acquisition_authorized": false,
+    "external_outreach_authorized": false,
+    "participant_enrollment_authorized": false,
+    "model_request_authorized_beyond_completed_review": false,
+    "record_created": false,
+    "record_validated": false,
+    "record_counted": false,
+    "cs_g0_pass": false,
+    "market_validation_pass": false,
+    "standard_ready": false,
+    "implementation_authorized": false,
+    "runtime_created": false,
+    "agent_created": false,
+    "entity_created": false,
+    "permission_created": false,
+    "evidence_truth_created": false,
+    "commercial_pilot_authorized": false,
+    "commercial_offering_authorized": false,
+    "customer_adoption_verified": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "production_ready": false,
+    "authority_or_ownership_changed": false
+  },
+  "stop_conditions": [
+    "REQUIRED_ROLE_OR_DATA_CONTROL_MISSING",
+    "REAL_OPERATIONAL_CONTEXT_OR_HUMAN_ACCOUNTABILITY_MISSING",
+    "MODEL_PRAISE_SYNTHETIC_FICTION_OR_SELF_CERTIFICATION_USED",
+    "TRACK_A_MATERIAL_REUSED_IN_TRACK_B",
+    "MODEL_PROVIDER_PROMPT_OR_PERSONA_DIVERSITY_USED_AS_CONTEXT_INDEPENDENCE",
+    "CANDIDATE_ELEVATED_TO_VALID_WITHOUT_INDEPENDENT_REVIEW",
+    "VALID_RECORD_COUNTED_WITHOUT_HUMAN_COUNTING_DECISION",
+    "RECORD_OR_THRESHOLD_ELEVATED_TO_CS_G0_PASS",
+    "EXTERNAL_IMPLEMENTATION_COMMERCIAL_CERTIFICATION_RELEASE_PRODUCTION_OR_AUTHORITY_EFFECT_INFERRED"
+  ],
+  "executed_by": "Codex",
+  "execution_receipt": {
+    "action": "RECORD_OPTION_A_ROUTE_SELECTION_ONLY",
+    "result": "PASS",
+    "decision_recorded": true,
+    "route_selected": true,
+    "model_requests_after_review": 0,
+    "network_actions_after_review": 0,
+    "external_acquisition": 0,
+    "records_created": 0,
+    "records_counted": 0,
+    "gate_status_changed": false
+  },
+  "known_limitations": [
+    "ROUTE_SELECTION_DOES_NOT_SATISFY_ANY_CS_G0_THRESHOLD",
+    "HUMAN_OR_ORGANIZATIONAL_ACCOUNTABILITY_BINDING_REMAINS_REQUIRED",
+    "VALID_OPERATIONAL_RECORDS_MAY_REMAIN_DIFFICULT_TO_OBTAIN",
+    "FUTURE_ACQUISITION_REQUIRES_A_SEPARATE_EXACT_DECISION"
+  ],
+  "next_action": "PREPARE_OPTION_A_ACQUISITION_READINESS_GAP_AUDIT_ONLY",
+  "next_action_authorized": true
+}

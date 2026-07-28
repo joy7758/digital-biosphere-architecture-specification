@@ -1,0 +1,93 @@
+{
+  "record_type": "TITMAS_CS_G0_TRACK_B_GOVERNED_AGENT_OPERATIONAL_CONTEXT_ROUTE_QWEN_REVIEW",
+  "version": "0.1.0",
+  "status": "QUALIFYING_RECOMMENDED_OPTION_A_STANDING_DIRECTIVE_ELIGIBLE",
+  "observed_at": "2026-07-28T15:51:02+08:00",
+  "reviewed_artifacts": [
+    {
+      "path": "TITMAS-CS-G0-TRACK-B-GOVERNED-AGENT-OPERATIONAL-CONTEXT-ROUTE-RECOMMENDATION-v0.1.md",
+      "sha256": "52979625d24f6488c451ccaeed8721ea83648abd858dab75669fbe44b6eb0baf"
+    },
+    {
+      "path": "architecture/titmas-cs-g0-track-b-evidence-route-decision-candidate.v0.1.json",
+      "sha256": "7f3c546ff078714452acd04a40f4481659ecbefb87a11dd9d102a34ef7128a1a"
+    }
+  ],
+  "request": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "requested_model": "qwen3.7-max",
+    "requests": 1,
+    "retry": 0,
+    "fallback": 0,
+    "substitution": 0,
+    "extraction": 0,
+    "repair": 0,
+    "direct_json_required": true,
+    "request_sha256": "245cc152b4800525c32885205795ace135b110291e1161c0ad8a542e316a1ba4",
+    "request_bytes": 21105
+  },
+  "response": {
+    "response_id": "chatcmpl-1fa61a5f-8d97-46c7-92f9-656e237c042e",
+    "returned_model": "qwen3.7-max",
+    "finish_reason": "stop",
+    "raw_response_sha256": "f7d3653e7650dbcbd4b70751296e2cb887480b1386743659a43f2490dc9751fc",
+    "raw_response_bytes": 7755,
+    "direct_content_sha256": "9f6fdcff5127c11d29dce4f3cc01ddff0cded2fe3b484c2f87540f0c8b8baa21",
+    "direct_json_verified": true,
+    "temporary_capture_retained": false,
+    "temporary_capture_deleted_after_binding": true,
+    "usage": {
+      "prompt_tokens": 4730,
+      "completion_tokens": 1932,
+      "total_tokens": 6662,
+      "cached_prompt_tokens": 0,
+      "reasoning_tokens": 1565
+    }
+  },
+  "review": {
+    "verdict": "RECOMMENDED",
+    "confidence": 0.95,
+    "recommended_option": "A",
+    "agent_customer_would_recommend_option_a": true,
+    "existing_contract_supports_governed_agent_observer": true,
+    "real_operational_context_requirement_preserved": true,
+    "track_a_track_b_separation_preserved": true,
+    "thresholds_and_human_counting_preserved": true,
+    "circular_self_validation_avoided": true,
+    "human_architecture_decision_required": true,
+    "standing_directive_eligible": true,
+    "blockers": [],
+    "required_corrections": [],
+    "rationale": "Option A preserves the adopted dual-track CS-G0 Gate, frozen thresholds, independence rules, and per-record Human Counting Decision while explicitly admitting the already-defined GOVERNED_AI_AGENT observer class as a Track B acquisition route only when bound to a real operational context with exact source trace and human accountability. It does not treat model sessions, prompts, providers, personas, recommendations, or self-reports as organizations, customers, market evidence, or Gate PASS, and it keeps Track A and Track B strictly separated. It resolves the strategy-route mismatch without weakening Track B and avoids circular self-validation. A later Human Architecture Decision is still required before any evidence acquisition, and the existing TITMAS-CS-STANDING-001 directive remains eligible to select the route, provided no automatic validity, counting, Gate PASS, threshold reduction, external acquisition, implementation, offering, adoption, certification, release, production, or authority effect is triggered."
+  },
+  "qualification": {
+    "exact_model_verified": true,
+    "direct_json_verified": true,
+    "verdict_recommended": true,
+    "confidence_at_least_0_90": true,
+    "recommended_option_a": true,
+    "all_contract_preservation_checks_true": true,
+    "blockers_zero": true,
+    "corrections_zero": true,
+    "standing_directive_eligible": true
+  },
+  "effects": {
+    "decision_created": false,
+    "track_b_route_adopted": false,
+    "gate_changed": false,
+    "threshold_changed": false,
+    "record_created": false,
+    "record_counted": false,
+    "cs_g0_pass": false,
+    "external_acquisition_authorized": false,
+    "implementation_authorized": false,
+    "commercial_offering_authorized": false,
+    "customer_adoption_verified": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "production_ready": false,
+    "authority_or_ownership_changed": false
+  },
+  "next_action": "INDEPENDENT_STANDING_DIRECTIVE_DECISION_RECORD_SELECTING_OPTION_A_ROUTE_ONLY",
+  "next_action_authorized": true
+}
