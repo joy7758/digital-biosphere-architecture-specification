@@ -266,6 +266,119 @@ class HarnessTests(unittest.TestCase):
         )
         self.assertIn("EXECUTION_AUTHORIZED=false", fairness)
 
+    def test_ecology_box_001_execution_readiness_is_honest_no_go(self):
+        details = (
+            HARNESS.check_agent_native_ecology_box_001_execution_readiness()
+        )
+        self.assertEqual(25, details["prerequisites_total"])
+        self.assertEqual(9, details["prerequisites_satisfied"])
+        self.assertEqual(7, details["prerequisites_partially_satisfied"])
+        self.assertEqual(9, details["prerequisites_missing"])
+        self.assertEqual(16, details["blocking_prerequisites_open"])
+        self.assertEqual(10, details["task_count_frozen"])
+        self.assertEqual("NO_GO", details["go_no_go_status"])
+        self.assertFalse(details["execution_authorized"])
+        self.assertFalse(details["experiment_executed"])
+        self.assertFalse(details["value_proven"])
+
+    def test_ecology_box_001_readiness_negative_cases_fail_closed(self):
+        path = (
+            HARNESS.TITMAS_ROOT / "conformance" / "fixtures"
+            / "ecology-box-001-readiness-negative-cases.yaml"
+        )
+        cases = json.loads(path.read_text())["cases"]
+        self.assertEqual(12, len(cases))
+        for case in cases:
+            self.assertEqual(
+                {
+                    "decision": "REJECT",
+                    "reason_code": case["expected_reason_code"],
+                },
+                HARNESS.ecology_box_001_readiness_rejection(
+                    case["transition"]
+                ),
+            )
+
+    def test_ecology_box_001_readiness_unknown_case_not_assessed(self):
+        self.assertEqual(
+            {"decision": "NOT_ASSESSED", "reason_code": "UNKNOWN_CASE"},
+            HARNESS.ecology_box_001_readiness_rejection("UNKNOWN_TRANSITION"),
+        )
+
+    def test_ecology_box_001_readiness_templates_create_no_instances(self):
+        root = (
+            HARNESS.TITMAS_ROOT
+            / "agent-native" / "ecology-box-001" / "readiness"
+        )
+        participant = json.loads(
+            (root / "participant-assignment-template.yaml").read_text()
+        )
+        provider = json.loads(
+            (root / "provider-adoption-template.yaml").read_text()
+        )
+        self.assertTrue(all(
+            value == 0 for value in participant["current_counts"].values()
+        ))
+        self.assertFalse(participant["planned_count_is_current_count"])
+        self.assertFalse(participant["agent_created"])
+        self.assertFalse(participant["runtime_created"])
+        self.assertFalse(provider["provider_profile_adopted"])
+        self.assertFalse(provider["experiment_model_invoked"])
+
+    def test_ecology_box_001_dry_run_is_not_experiment(self):
+        path = (
+            HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+            / "readiness" / "dry-run-plan.yaml"
+        )
+        dry_run = json.loads(path.read_text())
+        self.assertTrue(dry_run["DRY_RUN_PACKAGE_READY"])
+        self.assertFalse(dry_run["DRY_RUN_EXECUTED"])
+        self.assertTrue(
+            dry_run["SYNTHETIC_DRY_RUN_NE_EXPERIMENT_EXECUTION"]
+        )
+        self.assertEqual(
+            "NONE", dry_run["fixture_constraints"]["metric_effect"]
+        )
+
+    def test_ecology_box_001_readiness_preserves_ten_task_freeze(self):
+        root = HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+        snapshot = json.loads(
+            (root / "readiness" / "source-snapshot-manifest.yaml").read_text()
+        )
+        tasks = json.loads((root / "tasks" / "task-registry.yaml").read_text())
+        self.assertEqual(10, snapshot["task_registry"]["task_count"])
+        self.assertEqual(10, tasks["task_count"])
+        self.assertEqual(
+            {
+                "decision": "REJECT",
+                "reason_code": "FROZEN_TEN_TASK_SET_REQUIRED",
+            },
+            HARNESS.ecology_box_001_readiness_rejection(
+                "TEN_TASK_TO_THREE_TASK"
+            ),
+        )
+
+    def test_ecology_box_001_no_go_is_not_experiment_failure(self):
+        self.assertEqual(
+            {
+                "decision": "REJECT",
+                "reason_code": "NO_GO_NE_EXPERIMENT_FAILURE",
+            },
+            HARNESS.ecology_box_001_readiness_rejection(
+                "NO_GO_TO_EXPERIMENT_FAILURE"
+            ),
+        )
+
+    def test_ecology_box_001_agent_immune_is_disabled_confounder(self):
+        path = (
+            HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+            / "readiness" / "confounder-control.md"
+        )
+        text = path.read_text()
+        self.assertIn("AGENT_IMMUNE_ENABLED=false", text)
+        self.assertIn("AGENT_IMMUNE_REQUIRED=false", text)
+        self.assertIn("OBSERVATION_NE_EVIDENCE=true", text)
+
     def test_ecology_box_001_ready_cannot_auto_become_executed(self):
         self.assertEqual(
             {"decision": "REJECT", "reason_code": "READY_NE_EXECUTED"},

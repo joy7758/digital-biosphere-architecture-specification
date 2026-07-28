@@ -618,6 +618,29 @@ ECOLOGY_BOX_001_PREREGISTRATION_REJECTIONS = {
     "PILOT_PASS_TO_COMMERCIAL_VALUE": "PILOT_PASS_NE_COMMERCIAL_VALUE",
 }
 
+ECOLOGY_BOX_001_READINESS_REJECTIONS = {
+    "FAIRNESS_PASS_TO_EMPIRICAL":
+        "FAIRNESS_PROTOCOL_PASS_NE_EMPIRICAL_FAIRNESS",
+    "REVIEWER_TEMPLATE_TO_ASSIGNED":
+        "REVIEWER_TEMPLATE_NE_REVIEWER_ASSIGNMENT",
+    "CUSTODIAN_PROTOCOL_TO_ASSIGNED":
+        "CUSTODIAN_PROTOCOL_NE_CUSTODIAN_ASSIGNMENT",
+    "PROVIDER_TEMPLATE_TO_ADOPTED":
+        "PROVIDER_TEMPLATE_NE_PROVIDER_ADOPTION",
+    "PLANNED_LINEAGE_TO_CURRENT":
+        "PLANNED_LINEAGE_NE_CURRENT_LINEAGE",
+    "READINESS_TO_AUTHORIZATION": "READINESS_NE_AUTHORIZATION",
+    "BLOCKING_GAPS_TO_GO": "BLOCKING_GAPS_REQUIRE_NO_GO",
+    "DRY_RUN_TO_EXPERIMENT":
+        "SYNTHETIC_DRY_RUN_NE_EXPERIMENT_EXECUTION",
+    "TEN_TASK_TO_THREE_TASK": "FROZEN_TEN_TASK_SET_REQUIRED",
+    "HEALTH_SIGNAL_TO_EVIDENCE":
+        "HEALTH_SIGNAL_NE_EVIDENCE_EVALUATION_OR_DECISION",
+    "MODEL_RECOMMENDATION_TO_DECISION":
+        "MODEL_RECOMMENDATION_NE_HUMAN_DECISION",
+    "NO_GO_TO_EXPERIMENT_FAILURE": "NO_GO_NE_EXPERIMENT_FAILURE",
+}
+
 
 def ecology_box_001_rejection(attack: str) -> dict[str, str]:
     reason = ECOLOGY_BOX_001_REJECTIONS.get(attack)
@@ -628,6 +651,13 @@ def ecology_box_001_rejection(attack: str) -> dict[str, str]:
 
 def ecology_box_001_preregistration_rejection(transition: str) -> dict[str, str]:
     reason = ECOLOGY_BOX_001_PREREGISTRATION_REJECTIONS.get(transition)
+    if not reason:
+        return {"decision": "NOT_ASSESSED", "reason_code": "UNKNOWN_CASE"}
+    return {"decision": "REJECT", "reason_code": reason}
+
+
+def ecology_box_001_readiness_rejection(transition: str) -> dict[str, str]:
+    reason = ECOLOGY_BOX_001_READINESS_REJECTIONS.get(transition)
     if not reason:
         return {"decision": "NOT_ASSESSED", "reason_code": "UNKNOWN_CASE"}
     return {"decision": "REJECT", "reason_code": reason}
@@ -1234,6 +1264,330 @@ def check_agent_native_ecology_box_001_preregistration() -> dict[str, Any]:
     }
 
 
+def check_agent_native_ecology_box_001_execution_readiness() -> dict[str, Any]:
+    root = TITMAS_ROOT / "agent-native" / "ecology-box-001"
+    readiness_root = root / "readiness"
+    required_names = (
+        "README.md",
+        "execution-prerequisites-matrix.yaml",
+        "go-no-go-checklist.md",
+        "execution-readiness.yaml",
+        "source-snapshot-manifest.yaml",
+        "participant-assignment-template.yaml",
+        "reviewer-assignment-template.yaml",
+        "blind-custodian-assignment-template.yaml",
+        "provider-adoption-template.yaml",
+        "resource-budget.yaml",
+        "data-handling-plan.yaml",
+        "randomization-and-blinding-plan.yaml",
+        "experiment-runbook.md",
+        "abort-and-rollback-plan.md",
+        "reproducibility-manifest.yaml",
+        "confounder-control.md",
+        "dry-run-plan.yaml",
+        "unresolved-prerequisites.yaml",
+        "final-go-no-go-review-template.md",
+        "human-first-baseline-operation-plan.md",
+        "agent-native-arm-operation-plan.md",
+    )
+    supporting_paths = (
+        DBA_ROOT / "EXECUTION-READINESS-SUPPLEMENTAL-DECISION-PACKET-v0.1.md",
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-execution-readiness-predevelopment-review-v0.1.json",
+        TITMAS_ROOT / "conformance" / "fixtures"
+        / "ecology-box-001-readiness-negative-cases.yaml",
+    )
+    required_paths = tuple(readiness_root / name for name in required_names)
+    missing = [
+        str(path.relative_to(DBA_ROOT))
+        for path in required_paths + supporting_paths
+        if not path.is_file()
+    ]
+    if missing:
+        raise ConformanceError(
+            f"Ecology Box 001 readiness files missing {missing}"
+        )
+
+    matrix = load_json(readiness_root / "execution-prerequisites-matrix.yaml")
+    allowed_statuses = {
+        "SATISFIED",
+        "PARTIALLY_SATISFIED",
+        "NOT_SATISFIED",
+        "NOT_ASSIGNED",
+        "NOT_ADOPTED",
+        "NOT_ASSESSED",
+        "CONFLICT",
+        "EXPIRED",
+    }
+    if set(matrix["allowed_statuses"]) != allowed_statuses:
+        raise ConformanceError("readiness prerequisite status vocabulary drift")
+    prerequisites = matrix["prerequisites"]
+    required_fields = {
+        "prerequisite_id",
+        "description",
+        "required",
+        "current_status",
+        "evidence_ref",
+        "owner_or_assignee_ref",
+        "decision_ref",
+        "blocking",
+        "expires_at",
+        "limitations",
+    }
+    if len(prerequisites) != 25:
+        raise ConformanceError("readiness matrix must contain 25 prerequisites")
+    if len({item["prerequisite_id"] for item in prerequisites}) != 25:
+        raise ConformanceError("readiness prerequisite identifiers are not unique")
+    for item in prerequisites:
+        if set(item) != required_fields:
+            raise ConformanceError(
+                f"{item.get('prerequisite_id')}: prerequisite fields drift"
+            )
+        if item["current_status"] not in allowed_statuses:
+            raise ConformanceError(
+                f"{item['prerequisite_id']}: invalid prerequisite status"
+            )
+        if item["required"] is not True or item["blocking"] is not True:
+            raise ConformanceError(
+                f"{item['prerequisite_id']}: required blocking control drift"
+            )
+
+    statuses = [item["current_status"] for item in prerequisites]
+    satisfied = statuses.count("SATISFIED")
+    partial = statuses.count("PARTIALLY_SATISFIED")
+    missing_count = len(statuses) - satisfied - partial
+    blocking_open = len(statuses) - satisfied
+    expected_summary = {
+        "total": 25,
+        "satisfied": 9,
+        "partially_satisfied": 7,
+        "not_satisfied_or_missing": 9,
+        "blocking_not_satisfied": 16,
+    }
+    if (
+        matrix["summary"] != expected_summary
+        or (satisfied, partial, missing_count, blocking_open) != (9, 7, 9, 16)
+        or matrix["all_blocking_prerequisites_satisfied"] is not False
+        or matrix["go_no_go_status"] != "NO_GO"
+        or matrix["execution_authorized"] is not False
+        or matrix["experiment_executed"] is not False
+        or matrix["value_proven"] is not False
+    ):
+        raise ConformanceError("readiness prerequisite summary or NO_GO drift")
+
+    readiness = load_json(readiness_root / "execution-readiness.yaml")
+    if (
+        readiness["source_commit"]
+        != "005b2382a43324e737c207095ad379e95b12acf1"
+        or readiness["status"] != "PACKAGE_COMPLETE_NO_GO"
+        or readiness["fairness_protocol_status"] != "PASS"
+        or readiness["fairness_pass_scope"]
+        != "PROTOCOL_DESIGN_COMPLETENESS_ONLY"
+        or readiness["operational_prerequisites_satisfied"] is not False
+    ):
+        raise ConformanceError("readiness fixed state drift")
+    if (
+        readiness["go_rule"]["all_blocking_prerequisites_satisfied"] is not False
+        or readiness["go_rule"]["reviewer_assigned"] is not False
+        or readiness["go_rule"]["blind_custodian_assigned"] is not False
+        or readiness["go_rule"]["provider_profile_adopted"] is not False
+        or readiness["go_rule"]["privacy_policy_adopted"] is not False
+        or readiness["go_rule"]["participant_plan_populated"] is not False
+        or readiness["go_rule"]["independent_lineage_plan_accepted"] is not False
+        or readiness["go_rule"]["human_execution_decision_accept"] is not False
+        or readiness["go_no_go_status"] != "NO_GO"
+        or readiness["go_no_go_reason"]
+        != "NO_GO_PENDING_OPERATIONAL_ASSIGNMENTS_AND_HUMAN_AUTHORIZATION"
+        or any(readiness["current_counts"].values())
+        or readiness["execution_authorized"] is not False
+        or readiness["experiment_executed"] is not False
+        or readiness["value_proven"] is not False
+    ):
+        raise ConformanceError("readiness state fails open")
+
+    snapshot = load_json(readiness_root / "source-snapshot-manifest.yaml")
+    if (
+        snapshot["experiment_source_commit"]
+        != "b92a9a8c0553b51afc832e549d9ad5af271443f2"
+        or snapshot["fairness_remediation_commit"]
+        != "005b2382a43324e737c207095ad379e95b12acf1"
+        or snapshot["task_registry"]["task_count"] != 10
+        or snapshot["roles_registry"]["role_count"] != 8
+        or snapshot["task_registry"]["sha256"]
+        != sha256_file(root / "tasks" / "task-registry.yaml")
+        or snapshot["metrics_schema"]["sha256"]
+        != sha256_file(root / "metrics" / "schema.json")
+        or snapshot["roles_registry"]["sha256"]
+        != sha256_file(root / "roles" / "registry.yaml")
+        or snapshot["protocol"]["sha256"] != sha256_file(root / "protocol.md")
+        or not all(
+            snapshot[key] is True
+            for key in (
+                "task_set_frozen",
+                "metrics_frozen",
+                "roles_frozen",
+                "protocol_frozen",
+                "success_criteria_frozen",
+            )
+        )
+        or snapshot["experiment_execution_authorized"] is not False
+    ):
+        raise ConformanceError("readiness source or ten-task freeze drift")
+
+    participant = load_json(
+        readiness_root / "participant-assignment-template.yaml"
+    )
+    if (
+        any(participant["current_counts"].values())
+        or participant["planned_independent_agent_lineage_count"] != 3
+        or participant["planned_count_is_current_count"] is not False
+        or any(
+            item["assignment_status"] != "NOT_ASSIGNED"
+            or item["assignee_ref"] != "NOT_ASSIGNED"
+            for item in participant["human_roles"]
+        )
+        or any(
+            item["participant_instance"] != "NOT_ASSIGNED"
+            for item in participant["agent_roles"]
+        )
+        or participant["assignment_created"] is not False
+        or participant["participant_created"] is not False
+        or participant["agent_created"] is not False
+        or participant["runtime_created"] is not False
+        or participant["execution_authorized"] is not False
+    ):
+        raise ConformanceError("participant template creates or inflates instances")
+
+    reviewer = load_json(readiness_root / "reviewer-assignment-template.yaml")
+    custodian = load_json(
+        readiness_root / "blind-custodian-assignment-template.yaml"
+    )
+    provider = load_json(readiness_root / "provider-adoption-template.yaml")
+    if (
+        reviewer["reviewer_identity"]["instance_ref"] != "NOT_ASSIGNED"
+        or reviewer["reviewer_assigned"] is not False
+        or reviewer["review_session_created"] is not False
+        or custodian["custodian_identity"]["instance_ref"] != "NOT_ASSIGNED"
+        or custodian["blind_key_owner_assigned"] is not False
+        or custodian["blind_key_created"] is not False
+        or custodian["origin_mapping_created"] is not False
+        or provider["profile"]["provider"] != "NOT_SELECTED"
+        or provider["profile"]["requested_model"] != "NOT_SELECTED"
+        or provider["provider_profile_adopted"] is not False
+        or provider["experiment_data_processed"] is not False
+        or provider["experiment_model_invoked"] is not False
+    ):
+        raise ConformanceError("assignment or Provider template is instantiated")
+
+    budget = load_json(readiness_root / "resource-budget.yaml")
+    data_plan = load_json(readiness_root / "data-handling-plan.yaml")
+    blinding = load_json(
+        readiness_root / "randomization-and-blinding-plan.yaml"
+    )
+    dry_run = load_json(readiness_root / "dry-run-plan.yaml")
+    if (
+        budget["budget_adopted"] is not False
+        or budget["post_hoc_budget_change_allowed"] is not False
+        or data_plan["provider_profile_adopted"] is not False
+        or data_plan["privacy_policy_adopted"] is not False
+        or data_plan["experiment_data_processed"] is not False
+        or blinding["origin_mapping"]["created"] is not False
+        or blinding["randomization"]["seed_created"] is not False
+        or blinding["blind_key_custody"]["key_created"] is not False
+        or blinding["unblinding"]["executed"] is not False
+        or blinding["method_adopted"] is not False
+        or dry_run["DRY_RUN_PACKAGE_READY"] is not True
+        or dry_run["DRY_RUN_EXECUTED"] is not False
+        or dry_run["SYNTHETIC_DRY_RUN_NE_EXPERIMENT_EXECUTION"] is not True
+        or dry_run["SYNTHETIC_DRY_RUN_NE_PILOT_RESULT"] is not True
+        or dry_run["SYNTHETIC_DRY_RUN_NE_VALUE_EVIDENCE"] is not True
+    ):
+        raise ConformanceError("budget, data, blinding or dry-run boundary drift")
+
+    confounder = (readiness_root / "confounder-control.md").read_text(
+        encoding="utf-8"
+    )
+    required_confounder_states = (
+        "AGENT_IMMUNE_ENABLED=false",
+        "AGENT_IMMUNE_REQUIRED=false",
+        "OBSERVATION_NE_EVIDENCE=true",
+        "HEALTH_SIGNAL_NE_EVALUATION=true",
+        "HEALTH_SIGNAL_NE_DECISION=true",
+    )
+    if any(item not in confounder for item in required_confounder_states):
+        raise ConformanceError("Agent Immune confounder boundary drift")
+
+    decision_packet = (
+        DBA_ROOT / "EXECUTION-READINESS-SUPPLEMENTAL-DECISION-PACKET-v0.1.md"
+    ).read_text(encoding="utf-8")
+    if (
+        decision_packet.count("decision=UNDECIDED") != 4
+        or "HD_EB_06_TO_08_STATUS=UNDECIDED" not in decision_packet
+        or "HD_EB_11_TO_14_STATUS=UNDECIDED" not in decision_packet
+        or "EXECUTION_AUTHORIZED=false" not in decision_packet
+        or "EXPERIMENT_EXECUTED=false" not in decision_packet
+        or "VALUE_PROVEN=false" not in decision_packet
+    ):
+        raise ConformanceError("supplemental Human Decision packet drift")
+
+    review = load_json(
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-execution-readiness-predevelopment-review-v0.1.json"
+    )
+    if (
+        review["requested_model"] != "qwen3.7-max"
+        or review["returned_model"] != "qwen3.7-max"
+        or review["verdict"] != "NOT_RECOMMENDED"
+        or review["recommend_implementation"] is not False
+        or review["recommend_experiment_execution"] is not False
+        or review["authority_effect"] != "NONE"
+        or review["decision_effect"] != "NONE"
+        or review["raw_prompt_retained"] is not False
+        or review["raw_response_retained"] is not False
+    ):
+        raise ConformanceError("readiness predevelopment review boundary drift")
+
+    negative_fixture = load_json(
+        TITMAS_ROOT / "conformance" / "fixtures"
+        / "ecology-box-001-readiness-negative-cases.yaml"
+    )
+    if len(negative_fixture["cases"]) != 12:
+        raise ConformanceError("expected 12 readiness negative cases")
+    for case in negative_fixture["cases"]:
+        if ecology_box_001_readiness_rejection(case["transition"]) != {
+            "decision": "REJECT",
+            "reason_code": case["expected_reason_code"],
+        }:
+            raise ConformanceError(
+                f"{case['case_id']}: readiness negative case failed open"
+            )
+
+    run_records = [
+        path
+        for path in (root / "runs").iterdir()
+        if path.is_file() and path.name != "README.md"
+    ]
+    if run_records:
+        raise ConformanceError("readiness package contains experiment run records")
+
+    return {
+        "readiness_files_checked": len(required_paths) + len(supporting_paths),
+        "prerequisites_total": 25,
+        "prerequisites_satisfied": 9,
+        "prerequisites_partially_satisfied": 7,
+        "prerequisites_missing": 9,
+        "blocking_prerequisites_open": 16,
+        "negative_cases_rejected": 12,
+        "task_count_frozen": 10,
+        "current_participant_count": 0,
+        "current_independent_lineage_count": 0,
+        "go_no_go_status": "NO_GO",
+        "execution_authorized": False,
+        "experiment_executed": False,
+        "value_proven": False,
+    }
+
+
 def check_agent_native_pilot() -> dict[str, Any]:
     path = TITMAS_ROOT / "agent-native" / "pilot" / "pilot-result.json"
     if not path.exists():
@@ -1358,6 +1712,10 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         (
             "agent_native_ecology_box_001_preregistration",
             check_agent_native_ecology_box_001_preregistration,
+        ),
+        (
+            "agent_native_ecology_box_001_execution_readiness",
+            check_agent_native_ecology_box_001_execution_readiness,
         ),
         ("agent_native_pilot", check_agent_native_pilot),
         ("agent_native_reviews", check_agent_native_reviews),
