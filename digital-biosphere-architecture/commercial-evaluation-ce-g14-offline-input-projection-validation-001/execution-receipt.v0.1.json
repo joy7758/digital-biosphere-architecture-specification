@@ -1,0 +1,91 @@
+{
+  "record_type": "TITMAS_CE_G14_OFFLINE_INPUT_PROJECTION_EXECUTION_RECEIPT",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_AUTHORIZATION_CONSUMED",
+  "recorded_at": "2026-07-28T15:04:36+08:00",
+  "execution_id": "TITMAS-CE-G14-OFFLINE-PROJECTION-EXEC-001",
+  "primary_repository": "digital-biosphere-architecture",
+  "execution_branch": "codex/ce-g14-offline-projection-validation-execution",
+  "base_commit": "c0237c4c76bcfde7a8f218120eca343d079d605a",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G14-OFFLINE-INPUT-PROJECTION-PREPARATION-AND-VALIDATION-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "92e7c72f7d2e47b8290aaddae57e3b0805f385f4f2c4bbe42d34dc49a8ae33db",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G14-OFFLINE-INPUT-PROJECTION-PREPARATION-AND-VALIDATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "9b8e87946b680ae2274888fe9d1bdc38db9a6d27c831aa7eab6fb75789eca542",
+  "authorization": {
+    "scope": "ONE_OFFLINE_CONTEXT_COMPATIBLE_INPUT_PROJECTION_PREPARATION_AND_VALIDATION_CYCLE_AFTER_QUALIFYING_DECISION_REVIEW_AND_REMOTE_BASELINE",
+    "consumed": true,
+    "execution_attempts_authorized": 1,
+    "execution_attempts_observed": 1,
+    "retry_authorized": false,
+    "automatic_repair_authorized": false
+  },
+  "source_binding": {
+    "reference": "commercial-evaluation-ce-g13-execution-attempt-001/sanitized-public-input-bundle.v0.1.json",
+    "sha256": "fa2786883e58f02df6e9677de5d215a623493932664e47be2a55a6e7ac8f328b",
+    "bytes": 513351,
+    "resource_count": 16,
+    "selected_resource_ids": [
+      "CE-G13-RESOURCE-08",
+      "CE-G13-RESOURCE-09",
+      "CE-G13-RESOURCE-10",
+      "CE-G13-RESOURCE-11",
+      "CE-G13-RESOURCE-12"
+    ],
+    "selected_resource_count": 5,
+    "selected_sanitized_text_bytes": 79456
+  },
+  "failure": {
+    "stage": "POSITIVE_CANONICAL_PROJECTION_VALIDATION",
+    "exception_class": "AssertionError",
+    "exact_failed_assertion_persisted": false,
+    "cause": "UNKNOWN",
+    "failure_closed_before_artifact_write": true,
+    "negative_cases_executed": 0
+  },
+  "output_accounting": {
+    "frozen_output_path_count": 8,
+    "artifacts_created_before_failure": 0,
+    "projection_artifacts_created": 0,
+    "failure_record_path_count": 3,
+    "failure_record_paths": [
+      "commercial-evaluation-ce-g14-offline-input-projection-validation-001/offline-validation-result.v0.1.json",
+      "commercial-evaluation-ce-g14-offline-input-projection-validation-001/execution-receipt.v0.1.json",
+      "commercial-evaluation-ce-g14-offline-input-projection-validation-001/TITMAS-CE-G14-OFFLINE-INPUT-PROJECTION-VALIDATION-REPORT-v0.1.md"
+    ]
+  },
+  "result_binding": {
+    "reference": "commercial-evaluation-ce-g14-offline-input-projection-validation-001/offline-validation-result.v0.1.json",
+    "sha256": "58ab12deb7d7800912e58a6673ed174555816a352e1846d36ff05021a63aa1ae"
+  },
+  "actual_budget": {
+    "network_requests": 0,
+    "model_requests": 0,
+    "credential_reads": 0,
+    "external_or_child_target_repository_writes": 0,
+    "runtime_creations": 0,
+    "agent_creations": 0,
+    "entity_creations": 0,
+    "capability_creations": 0,
+    "permission_grants": 0,
+    "evidence_truth_changes": 0
+  },
+  "effects": {
+    "ce_g14_model_execution_authorized": false,
+    "ce_g14_public_get_authorized": false,
+    "ce_g14_technical_reuse_authorized": false,
+    "ce_g14_execution_decision_ready": false,
+    "implementation_authorized": false,
+    "external_action_authorized": false,
+    "commercial_offering_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "deployment_authorized": false,
+    "customer_adoption_verified": false,
+    "market_demand_verified": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "authority_or_ownership_changed": false
+  },
+  "next_action": "PREPARE_OFFLINE_PROJECTION_POSITIVE_VALIDATION_FAILURE_DIAGNOSTIC_RECOMMENDATION_ONLY",
+  "next_action_authorized": false
+}
