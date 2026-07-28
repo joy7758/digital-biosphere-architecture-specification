@@ -2,7 +2,7 @@
 document_id: DBA-TITMAS-CS-G1-REMEDIATION-EXECUTION-REPORT-0.2
 title: TITMAS CS-G1 Remediation Execution Report v0.2
 title_zh: TITMAS CS-G1 修订执行报告 v0.2
-status: ADVISORY_EXECUTION_COMPLETE_RETURN_FOR_REVISION
+status: SUPERSEDED_CURRENT_PROJECTION_BY_V0_2_1
 maturity: Development
 maturity_scope: entire-document
 observed_at: 2026-07-28T18:10:00+08:00
@@ -15,6 +15,12 @@ authority_effect: none
 ---
 
 # TITMAS CS-G1 Remediation Execution Report v0.2
+
+> Current aggregation semantics are defined by
+> [`titmas-cs-g1-review-semantics-correction-v0.2.1.md`](titmas-cs-g1-review-semantics-correction-v0.2.1.md)
+> and the
+> [`v0.2.1 machine aggregate`](reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.1.json).
+> The four provider results remain unchanged.
 
 ## 1. Outcome
 
@@ -57,10 +63,12 @@ cap.
 
 ## 3. Material findings
 
-Security returned all five risks for revision and treated all five current stop
-conditions as triggered. Its request for implementation evidence is advisory
-and must be adjudicated against the current specification-stage scope; it does
-not itself authorize implementation.
+Security returned all five risks for revision and marked five conditional stop
+rules as triggered. The review input contains no implementation-state evidence,
+so the current stop-condition state is authoritatively `NOT_ASSESSED`. Its
+request for implementation evidence is advisory and must be adjudicated against
+the current specification-stage scope; it does not itself authorize
+implementation.
 
 Privacy found the four v0.2 candidate controls structurally sufficient while
 retaining residual risks. It explicitly did not assess operational
@@ -85,7 +93,8 @@ Across 30 reviewed items:
 - 12 controls were assessed `SUFFICIENT`;
 - 11 were assessed `PARTIAL`;
 - 7 were assessed `INSUFFICIENT`;
-- 5 Security stop conditions remained triggered.
+- Qwen marked 5 Security stop conditions as triggered; this is retained as an
+  advisory assertion, while current authoritative state is `NOT_ASSESSED`.
 
 Full coverage is not the same as formal-review completion. Human adjudication
 must decide which corrections are applicable at specification stage, revise
@@ -112,5 +121,7 @@ RELEASE_AUTHORIZED=false
 DEPLOYMENT_AUTHORIZED=false
 ```
 
-The exact machine-readable aggregate is
+The original machine-readable aggregate is retained at
 [`reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.json`](reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.json).
+The corrected current projection is
+[`reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.1.json`](reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.1.json).

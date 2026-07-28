@@ -759,12 +759,17 @@ Human Owner 随后通过
 risks 覆盖 `16/16`、crosswalk 覆盖 `14/14`。
 
 该完整覆盖没有升级 Gate。Security 与 Ownership Crosswalk 均为
-`RETURN_FOR_REVISION`，五个 Security stop conditions 仍触发；Privacy 与
+`RETURN_FOR_REVISION`。Qwen 将五个条件式 Security stop rules 标记为 triggered，但输入
+没有实现状态证据，因此当前权威状态按
+[`v0.2.1 semantics correction`](architecture/titmas-cs-g1-review-semantics-correction-v0.2.1.md)
+保持 `NOT_ASSESSED`；Privacy 与
 Claim/Authority 仅为 `ACCEPT_FOR_HUMAN_FREEZE_REVIEW`。详见
 [`v0.2 execution report`](architecture/titmas-cs-g1-remediation-execution-report-v0.2.md)
-与 [`machine aggregate`](architecture/reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.json)。
+与 [`current machine aggregate`](architecture/reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.1.json)。
 因此 `FORMAL_REVIEW_BUNDLE_READY=false`、`CS_G1_PASS=false`；新请求或下一轮修订仍需
-新的 Human Decision。
+新的 Human Decision。当前入口为
+[`CS-G1-REMEDIATION-D02 decision packet`](TITMAS-CS-G1-SECURITY-CROSSWALK-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md)；
+Option A 仅建议准备 Security/Crosswalk Development candidates，尚未被选择。
 `CS-G2–CS-G7` 仍为 `BLOCKED`；数据处理、外部推广、客户记录、实现、商业试点、认证、
 正式标准发布、Release 和 Deployment 均保持关闭。
 

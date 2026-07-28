@@ -2,10 +2,10 @@
 document_id: DBA-TITMAS-COMMERCIAL-STANDARD-FOUNDATION-FREEZE-STATUS-0.1
 title: TITMAS Commercial Standard Foundation Freeze Status v0.1
 title_zh: TITMAS 商业标准基础冻结状态报告 v0.1
-status: FOUNDATION_ROLE_FREEZE_COMPLETE_CS_G1_REMEDIATION_RETURN_FOR_REVISION
+status: FOUNDATION_ROLE_FREEZE_COMPLETE_CS_G1_D02_HUMAN_DECISION_REQUIRED
 maturity: Development
 maturity_scope: entire-document
-observed_at: 2026-07-28T18:10:00+08:00
+observed_at: 2026-07-28T18:30:00+08:00
 primary_repository: digital-biosphere-architecture
 human_accountability_ref: zhangbin
 implementation_effect: none
@@ -76,6 +76,9 @@ FORMAL_REVIEW_COMPLETE=false
 FORMAL_REVIEW_BUNDLE_READY=false
 CS_G1_RISK_COVERAGE=16/16
 CS_G1_CROSSWALK_COVERAGE=14/14
+CS_G1_SECURITY_STOP_CONDITION_CURRENT_STATE=NOT_ASSESSED
+CS_G1_REMEDIATION_D02_DECISION_STATE=NOT_DECIDED
+CS_G1_REMEDIATION_D02_OPTION_SELECTED=false
 CROSSWALK_ACCEPTED=false
 RESIDUAL_RISK_ACCEPTED=false
 STANDARD_READY=false
@@ -120,7 +123,9 @@ product is created by these records.
 | [`titmas-cs-g1-remediation-human-decision-record-v0.1.md`](titmas-cs-g1-remediation-human-decision-record-v0.1.md) | Human selection of bounded Option A |
 | [`veap-privacy-control-profile-candidate-v0.2.md`](veap-privacy-control-profile-candidate-v0.2.md) | Development-only remediation candidates for four Privacy risks |
 | [`titmas-cs-g1-remediation-execution-report-v0.2.md`](titmas-cs-g1-remediation-execution-report-v0.2.md) | Four-session execution, full coverage and return-for-revision result |
-| [`reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.json`](reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.json) | Deterministic v0.2 aggregate: 4/4 sessions, 16/16 risks, 14/14 crosswalk, Gate still not met |
+| [`titmas-cs-g1-review-semantics-correction-v0.2.1.md`](titmas-cs-g1-review-semantics-correction-v0.2.1.md) | Non-destructive correction: conditional stop rule is not observed implementation state |
+| [`reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.1.json`](reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.1.json) | Current deterministic aggregate: 4/4 sessions, 16/16 risks, 14/14 crosswalk, Security stop state not assessed, Gate still not met |
+| [`../TITMAS-CS-G1-SECURITY-CROSSWALK-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md`](../TITMAS-CS-G1-SECURITY-CROSSWALK-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md) | Current D02 Option A/B/C/D Human Decision entry; no option selected |
 
 ## 6. Invariants
 

@@ -1,0 +1,94 @@
+{
+  "document_id": "DBA-TITMAS-CS-G1-SECURITY-CROSSWALK-REMEDIATION-DECISION-CANDIDATE-0.1",
+  "version": "0.1.0",
+  "status": "HUMAN_DECISION_REQUIRED_OPTION_NOT_SELECTED",
+  "decision_id": "CS-G1-REMEDIATION-D02",
+  "decision_owner_ref": "zhangbin",
+  "decision_state": "NOT_DECIDED",
+  "recommended_option": "A",
+  "current_evidence": {
+    "advisory_sessions_completed": 4,
+    "risk_coverage": "16/16",
+    "crosswalk_coverage": "14/14",
+    "security_verdict": "RETURN_FOR_REVISION",
+    "crosswalk_verdict": "RETURN_FOR_REVISION",
+    "privacy_verdict": "ACCEPT_FOR_HUMAN_FREEZE_REVIEW",
+    "claim_authority_verdict": "ACCEPT_FOR_HUMAN_FREEZE_REVIEW",
+    "security_stop_condition_current_state": "NOT_ASSESSED",
+    "formal_review_bundle_ready": false,
+    "cs_g1_pass": false
+  },
+  "options": [
+    {
+      "option_id": "A",
+      "selection": "AUTHORIZE_SPECIFICATION_STAGE_SECURITY_AND_CROSSWALK_REVISION_PREPARATION_ONLY",
+      "recommended": true,
+      "security_candidate_preparation_authorized_if_selected": true,
+      "crosswalk_candidate_preparation_authorized_if_selected": true,
+      "dependency_disposition_preparation_authorized_if_selected": true,
+      "offline_validation_authorized_if_selected": true,
+      "model_review_authorized_if_selected": false,
+      "provider_request_count": 0,
+      "coverage": {
+        "security_risks": 5,
+        "crosswalk_surfaces": 14
+      }
+    },
+    {
+      "option_id": "B",
+      "selection": "AUTHORIZE_PREPARATION_AND_TWO_SCOPED_QWEN_REVIEWS",
+      "recommended": false,
+      "reason": "Exact corrected candidates and review projections do not yet exist."
+    },
+    {
+      "option_id": "C",
+      "selection": "AUTHORIZE_CROSSWALK_PREPARATION_ONLY",
+      "recommended": false,
+      "reason": "Security would remain unrevised."
+    },
+    {
+      "option_id": "D",
+      "selection": "DEFER_OR_REJECT",
+      "recommended": false
+    }
+  ],
+  "option_a_outputs": {
+    "security_control_candidate": true,
+    "crosswalk_candidate": true,
+    "authority_dependency_disposition_candidate": true,
+    "security_projection": true,
+    "crosswalk_projection": true,
+    "offline_validation_report": true
+  },
+  "agent_recommendation": {
+    "verdict": "RECOMMENDED",
+    "recommended_option": "A",
+    "source": "CODEX_ASSESSMENT_PLUS_COMPLETED_QWEN_SECURITY_AND_CROSSWALK_REVIEWS",
+    "new_provider_requests_executed": 0,
+    "human_decision_required": true
+  },
+  "effects": {
+    "decision_created": false,
+    "revision_preparation_authorized": false,
+    "model_review_authorized": false,
+    "provider_requests_authorized": 0,
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "formal_review_completion": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "external_outreach": false,
+    "data_processing": false,
+    "customer_record_creation": false,
+    "commercial_pilot": false,
+    "commercial_offer": false,
+    "certification": false,
+    "formal_standard_publication": false,
+    "release": false,
+    "deployment": false
+  },
+  "next_action": "EXPLICIT_HUMAN_OPTION_A_B_C_OR_D_DECISION",
+  "next_action_authorized": false
+}
