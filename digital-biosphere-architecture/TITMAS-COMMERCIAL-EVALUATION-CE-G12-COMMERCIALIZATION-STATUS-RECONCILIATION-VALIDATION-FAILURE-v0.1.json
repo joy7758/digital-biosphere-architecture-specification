@@ -1,0 +1,68 @@
+{
+  "record_type": "TITMAS_CE_G12_COMMERCIALIZATION_STATUS_RECONCILIATION_VALIDATION_FAILURE",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_TRACKED_JSON_VALIDATOR_GIT_PATH_CONTEXT_MISMATCH_NO_STATUS_COMMIT_OR_PUSH",
+  "observed_at": "2026-07-28T02:36:19Z",
+  "primary_repository": "digital-biosphere-architecture",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-COMMERCIALIZATION-STATUS-RECONCILIATION-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "0c3ffe3f50408d5d75a04e5bef0cc969cfda4d7f6c9bd1596fed8aa7ba3294b6",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-COMMERCIALIZATION-STATUS-RECONCILIATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "851b03411e7330e477cb1755de7cc8785ef8ff203b13ed96729edf40ac3fe9df",
+  "decision_commit": "a76275eae94c78dc2e631aa7def031549d290292",
+  "decision_remote_verified": true,
+  "failure_stage": "TRACKED_JSON_DUPLICATE_REJECTING_VALIDATION",
+  "failure_classification": "VALIDATION_HARNESS_GIT_PATH_CONTEXT_MISMATCH",
+  "exact_cause": {
+    "git_toplevel": "/private/tmp/titmas-ce-g11b-decision.2dqOYW",
+    "git_prefix": "digital-biosphere-architecture/",
+    "default_ls_files_path_mode": "RELATIVE_TO_COMMAND_WORKING_DIRECTORY",
+    "default_sample": "AGENT-CUSTOMER-PACKAGE-v0.1.1.json",
+    "full_name_sample": "digital-biosphere-architecture/AGENT-CUSTOMER-PACKAGE-v0.1.1.json",
+    "validator_join_base": "GIT_TOPLEVEL",
+    "mismatch": "CWD_RELATIVE_PATH_JOINED_TO_GIT_TOPLEVEL",
+    "content_failure_proven": false
+  },
+  "execution_accounting": {
+    "formal_validation_attempts": 1,
+    "tracked_json_files_expected": 1337,
+    "tracked_json_files_successfully_opened": 0,
+    "tracked_json_content_failures": 0,
+    "commercial_entry_schema_validation_executed": false,
+    "cross_file_consistency_validation_executed": false,
+    "validation_retries": 0,
+    "five_path_status_commit_created": false,
+    "five_path_status_push_executed": false
+  },
+  "preserved_patch": {
+    "modified_path_count": 5,
+    "sha256": "9a0d7425d400427f236c155a3e473f2beeb45286bdb655ec2fa1b5c3e486d968",
+    "paths": [
+      "MASTER-ROADMAP.md",
+      "PROGRAM-STATUS.md",
+      "TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+      "architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
+      "architecture/titmas-commercialization-standards-roadmap-v0.1.md"
+    ],
+    "patch_changed_after_failure": false,
+    "patch_committed": false,
+    "patch_pushed": false
+  },
+  "required_remediation": {
+    "use_git_ls_files_full_name": true,
+    "join_full_name_to_git_toplevel": true,
+    "preserve_patch_sha256": true,
+    "new_independent_decision_required": true,
+    "direct_retry_allowed": false
+  },
+  "effects": {
+    "status_reconciliation_pass": false,
+    "status_surface_changed_in_git_history": false,
+    "status_claim_elevated": false,
+    "server_state_changed": false,
+    "network_state_changed": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  }
+}
