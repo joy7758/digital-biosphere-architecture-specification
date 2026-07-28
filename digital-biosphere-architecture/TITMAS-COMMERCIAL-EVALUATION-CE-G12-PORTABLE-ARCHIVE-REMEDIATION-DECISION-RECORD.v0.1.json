@@ -1,0 +1,220 @@
+{
+  "record_type": "TITMAS_CE_G12_PORTABLE_ARCHIVE_REMEDIATION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PORTABLE-ARCHIVE-REMEDIATION",
+  "version": "0.1.0",
+  "status": "AUTHORIZE_ONE_METADATA_SUPPRESSED_PORTABLE_CANDIDATE_BUILD_ONLY_IF_QUALIFYING_DECISION_REVIEW_AND_LATER_SEPARATE_EXECUTION",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G12-PORTABLE-ARCHIVE-REMEDIATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "5d7a6f22ea15f4d263e4d6e56c82f5c98282376e4816d139d9c24ce9a8f12b86",
+  "recommendation_review_reference": "TITMAS-CE-G12-PORTABLE-ARCHIVE-REMEDIATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "82230571a47d02bf6ad8d570603b0d63d220fb4f4bc091888c6a0a09912073b1",
+  "recommendation_commit": "c2f71de3404fbe926cda0b4395d2014ded2584a6",
+  "recommendation_remote_verified": true,
+  "selected_option": "A",
+  "primary_repository": "digital-biosphere-architecture",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "source_contract": {
+    "source_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "source_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "remote_ref": "refs/heads/codex/production-observability-baseline",
+    "export_script_blob": "f7f3b75370e48577dc5812d389b5ccfd21805044",
+    "package_json_blob": "f30dcc3f4b41a53539737becfb58d0b6a1d26525",
+    "source_revision_input": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "source_code_change_authorized": false
+  },
+  "failure_history": [
+    {
+      "reference": "commercial-evaluation-fresh-candidate/ce-g12-fresh-candidate-baseline.v0.1.json",
+      "archive_reference": "/tmp/titmas-site-c1d8931930fbae15f96ee6a6ac050b081538c919.tar.gz",
+      "archive_sha256": "7240f58b5f4471ee9166b5fe18fe83937a344116114a4b33468a580e75cdcda2",
+      "failure": "MANIFEST_SOURCE_REVISION_WORKING_TREE",
+      "preserved": true,
+      "overwrite_authorized": false
+    },
+    {
+      "reference": "commercial-evaluation-fresh-candidate/ce-g12-source-bound-candidate-baseline.v0.1.json",
+      "archive_reference": "/tmp/titmas-site-c1d8931930fbae15f96ee6a6ac050b081538c919-source-bound.tar.gz",
+      "archive_sha256": "789064b92d6dd93f615406ae6430d2b5410d5396d01969fc708f89e2e489e665",
+      "failure": "APPLEDOUBLE_METADATA_MEMBERS_NOT_COVERED_BY_MANIFEST",
+      "preserved": true,
+      "overwrite_authorized": false
+    }
+  ],
+  "archive_producer_contract": {
+    "producer": "bsdtar",
+    "producer_version": "3.5.3",
+    "libarchive_version": "3.7.4",
+    "required_flags": [
+      "--no-mac-metadata",
+      "--no-xattrs"
+    ],
+    "command_shape": "tar --no-mac-metadata --no-xattrs -czf <new-path> -C <site-out> .",
+    "new_archive_reference": "/tmp/titmas-site-c1d8931930fbae15f96ee6a6ac050b081538c919-source-bound-portable.tar.gz",
+    "new_archive_path_absent_required": true,
+    "raw_member_reader": "python3-tarfile"
+  },
+  "raw_member_contract": {
+    "total_members": 87,
+    "directory_members": 21,
+    "file_members": 66,
+    "manifest_listed_files": 65,
+    "manifest_self_entries": 1,
+    "normal_payload_members": 87,
+    "appledouble_members": 0,
+    "duplicate_member_names": 0,
+    "unexpected_special_members": 0,
+    "release_source_revision_exact": true,
+    "manifest_source_revision_exact": true,
+    "manifest_matches_release_source_revision": true,
+    "route_hashes": "11/11"
+  },
+  "result_contract": {
+    "baseline_reference": "commercial-evaluation-fresh-candidate/ce-g12-portable-source-bound-candidate-baseline.v0.1.json",
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-portable-source-bound-candidate-preparation-result.v0.1.json",
+    "report_reference": "TITMAS-CE-G12-PORTABLE-SOURCE-BOUND-CANDIDATE-PREPARATION-REPORT-v0.1.md",
+    "success_status": "PASS_PORTABLE_EXACT_SOURCE_BOUND_CANDIDATE_PREPARED_NO_DEPLOYMENT_AUTHORIZED",
+    "failure_status": "FAIL_CLOSED_PORTABLE_EXACT_SOURCE_BOUND_CANDIDATE_NOT_PREPARED_NO_DEPLOYMENT_AUTHORIZED",
+    "prior_candidate_supersession_status_on_pass": "SUPERSEDED_FOR_PORTABLE_EXACT_SOURCE_BOUND_CANDIDATE",
+    "deployment_admission_created": false
+  },
+  "exact_execution_sequence": [
+    {
+      "id": "P01",
+      "action": "Require local governance HEAD to equal the remotely verified Decision and exact qwen3.7-max Decision review commit."
+    },
+    {
+      "id": "P02",
+      "action": "Fetch governance and production baseline refs once and require exact expected SHAs."
+    },
+    {
+      "id": "P03",
+      "action": "Verify Recommendation, reviews, Decision, source commit/tree/blobs and both prior failure archive/evidence hashes."
+    },
+    {
+      "id": "P04",
+      "action": "Create exactly one disposable detached worktree at exact c1d8931."
+    },
+    {
+      "id": "P05",
+      "action": "Run one tracked JSON validation, one Commercial Entry Schema validation, one offline npm ci, one npm ls and one site test command."
+    },
+    {
+      "id": "P06",
+      "action": "Run one formal export with exact SOURCE_REVISION and verify release/manifest source equality."
+    },
+    {
+      "id": "P07",
+      "action": "Run one CE Schema hash/meta validation and one CE test command and require zero source/tree/snapshot drift."
+    },
+    {
+      "id": "P08",
+      "action": "Create one new archive with --no-mac-metadata and --no-xattrs at the exact new path."
+    },
+    {
+      "id": "P09",
+      "action": "Use Python tarfile to validate every raw member and require the exact 87/21/66/65/1/0 member contract."
+    },
+    {
+      "id": "P10",
+      "action": "Bind archive, manifest and 11 route hashes and generate one Baseline, Result and Report."
+    },
+    {
+      "id": "P11",
+      "action": "Only on full PASS record prior candidate attempts as superseded without deletion or overwrite."
+    },
+    {
+      "id": "P12",
+      "action": "Remove the worktree and commit/push only the three result artifacts."
+    }
+  ],
+  "execution_authorization": {
+    "decision_review_request_authorized": true,
+    "portable_candidate_build_authorized_if_review_qualifies_and_decision_remote_verified": true,
+    "later_separate_execution_required": true,
+    "execution_in_decision_preparation_action": false,
+    "one_remote_fetch": true,
+    "one_disposable_worktree": true,
+    "offline_dependency_install": true,
+    "explicit_source_revision_injection": true,
+    "metadata_suppressed_archive_creation": true,
+    "raw_member_validation": true,
+    "result_artifact_creation": true,
+    "prior_failure_preservation": true,
+    "source_code_change": false,
+    "server_reads": false,
+    "server_writes": false,
+    "public_site_requests": false,
+    "ssh": false,
+    "symlink_switch": false,
+    "nginx_test_or_reload": false,
+    "repair": false,
+    "rollback": false,
+    "deployment": false,
+    "release": false,
+    "pr_mutation": false,
+    "path_scoped_commit_and_push": true
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "git_fetches_during_execution": 1,
+    "disposable_worktrees": 1,
+    "npm_ci_attempts": 1,
+    "npm_ls_attempts": 1,
+    "site_test_attempts": 1,
+    "release_formal_attempts": 1,
+    "ce_test_attempts": 1,
+    "portable_archives": 1,
+    "result_artifacts": 3,
+    "result_commits": 1,
+    "result_pushes": 1,
+    "server_reads": 0,
+    "server_writes": 0,
+    "public_site_requests": 0,
+    "ssh_sessions": 0,
+    "deployments": 0,
+    "releases": 0,
+    "pr_mutations": 0,
+    "model_requests_during_execution": 0,
+    "retries": 0,
+    "network_fallbacks": 0
+  },
+  "stop_conditions": [
+    "DECISION_OR_REVIEW_NOT_REMOTE_VERIFIED",
+    "RETURNED_MODEL_NOT_EXACT_QWEN3_7_MAX",
+    "DIRECT_JSON_OR_CONTRACT_INVALID",
+    "DECISION_REVIEW_NOT_QUALIFYING",
+    "LOCAL_REMOTE_OR_SOURCE_BINDING_DIFFERS",
+    "PRIOR_FAILURE_ARCHIVE_OR_EVIDENCE_HASH_DIFFERS",
+    "NEW_ARCHIVE_PATH_ALREADY_EXISTS",
+    "BSDTAR_VERSION_OR_REQUIRED_FLAG_UNAVAILABLE",
+    "JSON_SCHEMA_TEST_OR_SOURCE_BINDING_FAILURE",
+    "RAW_MEMBER_COUNT_DIFFERS",
+    "APPLEDOUBLE_MEMBER_COUNT_NONZERO",
+    "DUPLICATE_OR_SPECIAL_MEMBER_NONZERO",
+    "MANIFEST_FILE_COVERAGE_DIFFERS",
+    "RETRY_FALLBACK_SECOND_WORKTREE_OR_SECOND_ARCHIVE_REQUIRED",
+    "SOURCE_SERVER_DEPLOYMENT_RELEASE_OR_STATUS_ELEVATION_REQUIRED"
+  ],
+  "effects": {
+    "decision_recorded": true,
+    "decision_review_complete": false,
+    "execution_authorized_after_qualifying_review_and_remote_verification": true,
+    "execution_started": false,
+    "portable_candidate_created": false,
+    "prior_failures_preserved": true,
+    "source_changed": false,
+    "server_state_changed": false,
+    "public_site_changed": false,
+    "deployment_authorized": false,
+    "release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  }
+}
