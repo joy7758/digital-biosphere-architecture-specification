@@ -1,0 +1,50 @@
+{
+  "record_type": "TITMAS_CE_G14_AGENT_CUSTOMER_REVIEW_CORRECTION_DISPOSITION",
+  "version": "0.1.0",
+  "status": "ALL_THREE_CORRECTIONS_APPLIED_FINAL_REVIEW_REQUIRED",
+  "observed_at": "2026-07-28",
+  "initial_review_reference": "TITMAS-CE-G14-INITIAL-AGENT-CUSTOMER-REVIEW-v0.1.json",
+  "initial_reviewed_draft_sha256": "7b90bbf428fadc5508bf6258f0511b13b98cbae5fe95795fb7fd04ae1fa969f2",
+  "corrected_recommendation_reference": "TITMAS-CE-G14-CROSS-PROVIDER-AND-CLEAN-TECHNICAL-REUSE-RECOMMENDATION-v0.1.md",
+  "corrected_recommendation_sha256": "5cd54f23e6150545a1b5c667faf51c2b63c21d15c4b4cf8d2376668dfbe3e603",
+  "dispositions": [
+    {
+      "correction_id": "CE-G14-C01",
+      "request": "Bind Provider B and model explicitly before execution authorization, including availability verification and cost ceiling.",
+      "status": "APPLIED",
+      "evidence": [
+        "section 6.2 requires a recent exact-model availability receipt",
+        "section 6.2 requires a fixed total provider cost ceiling no greater than CNY 500",
+        "section 6.2 prohibits undeclared availability requests and provider onboarding"
+      ]
+    },
+    {
+      "correction_id": "CE-G14-C02",
+      "request": "Add a pre-execution liveness and hash check for both public URLs; if either fails, halt and re-scope rather than silently substituting artifacts.",
+      "status": "APPLIED",
+      "evidence": [
+        "section 6.4 makes the exact two GETs the only liveness checks",
+        "section 6.4 stops closed on non-200, unapproved redirect, hash mismatch, invalid JSON or unavailable URL",
+        "section 6.4 prohibits probe, mirror, cache, third GET and substitution"
+      ]
+    },
+    {
+      "correction_id": "CE-G14-C03",
+      "request": "Document a maximum elapsed-time and token-cost budget for the four model sessions to prevent unbounded spend on a recommendation-only validation.",
+      "status": "APPLIED",
+      "evidence": [
+        "section 6.3 caps input bytes, output tokens, total reported tokens, request timeout and model-stage wall clock",
+        "section 6.5 caps technical-stage and total CE-G14 wall clock",
+        "section 6.2 caps total provider cost"
+      ]
+    }
+  ],
+  "remaining_known_limits": [
+    "Provider B is not selected or authorized.",
+    "One clean synthetic run would remain minimal evidence, not general technical reuse.",
+    "Public URL availability may change before a future authorized run."
+  ],
+  "final_review_request_authorized": true,
+  "ce_g14_execution_authorized": false,
+  "authority_effect": false
+}
