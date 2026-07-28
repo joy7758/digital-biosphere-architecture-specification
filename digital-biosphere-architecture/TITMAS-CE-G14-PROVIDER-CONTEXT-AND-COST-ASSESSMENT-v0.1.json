@@ -1,0 +1,121 @@
+{
+  "record_type": "TITMAS_CE_G14_PROVIDER_CONTEXT_AND_COST_ASSESSMENT",
+  "version": "0.1.0",
+  "status": "COST_BOUNDED_CONTEXT_COMPATIBILITY_REMEDIATION_REQUIRED",
+  "observed_at": "2026-07-28",
+  "primary_repository": "digital-biosphere-architecture",
+  "parent_recommendation": {
+    "reference": "TITMAS-CE-G14-CROSS-PROVIDER-AND-CLEAN-TECHNICAL-REUSE-RECOMMENDATION-v0.1.md",
+    "sha256": "5cd54f23e6150545a1b5c667faf51c2b63c21d15c4b4cf8d2376668dfbe3e603",
+    "commit": "01812738eae7608417103a2ff91db1af303ad25d"
+  },
+  "provider_b_binding": {
+    "reference": "TITMAS-CE-G14-PROVIDER-B-EVIDENCE-BINDING-RECOMMENDATION-v0.1.md",
+    "commit": "18d1f64c6ae7e609477af9bb828e7358aaf919e8",
+    "provider": "BAIDU_QIANFAN",
+    "endpoint": "https://qianfan.baidubce.com/v2/chat/completions",
+    "model": "ernie-4.5-turbo-20260402",
+    "credential_identifier": "QIANFAN_API_KEY",
+    "credential_identifier_configured": true,
+    "credential_value_read_or_recorded": false
+  },
+  "official_sources": [
+    {
+      "provider": "BAIDU_QIANFAN",
+      "url": "https://cloud.baidu.com/doc/qianfan-api/s/Dmba8k71y",
+      "observed_facts": {
+        "model_id": "ernie-4.5-turbo-20260402",
+        "context_length": 138240,
+        "prompt_tokens": 125952,
+        "max_completion_tokens": 12288,
+        "input_price_cny_per_thousand_tokens": 0.0008,
+        "output_price_cny_per_thousand_tokens": 0.0032
+      }
+    },
+    {
+      "provider": "BAIDU_QIANFAN",
+      "url": "https://cloud.baidu.com/doc/qianfan-docs/s/Jm8r1826a",
+      "observed_facts": {
+        "price_updated_at": "2026-07-09",
+        "model_id": "ERNIE-4.5-Turbo-20260402",
+        "input_price_cny_per_thousand_tokens": 0.0008,
+        "output_price_cny_per_thousand_tokens": 0.0032
+      }
+    },
+    {
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "url": "https://help.aliyun.com/en/model-studio/model-pricing",
+      "observed_facts": {
+        "model_id": "qwen3.7-max",
+        "deployment_scope": "Chinese mainland",
+        "input_token_range_per_request": "0<Token<=1M",
+        "list_input_price_cny_per_million_tokens": 12,
+        "list_output_price_cny_per_million_tokens": 36
+      }
+    }
+  ],
+  "input_context_assessment": {
+    "source_bundle_reference": "commercial-evaluation-ce-g13-execution-attempt-001/sanitized-public-input-bundle.v0.1.json",
+    "source_bundle_sha256": "fa2786883e58f02df6e9677de5d215a623493932664e47be2a55a6e7ac8f328b",
+    "source_bundle_file_bytes": 513351,
+    "source_sanitized_text_bytes": 440364,
+    "qianfan_prompt_token_limit": 125952,
+    "exact_qianfan_token_count_proven": false,
+    "full_bundle_context_compatibility_proven": false,
+    "reason": "The full source bundle byte size does not provide a safe proof that the provider-specific prompt token count is within 125952."
+  },
+  "compact_projection_candidate": {
+    "selected_resource_ids": [
+      "CE-G13-RESOURCE-08",
+      "CE-G13-RESOURCE-09",
+      "CE-G13-RESOURCE-10",
+      "CE-G13-RESOURCE-11",
+      "CE-G13-RESOURCE-12"
+    ],
+    "selected_resource_urls": [
+      "https://redcrag.cn/status.json",
+      "https://redcrag.cn/llms.txt",
+      "https://redcrag.cn/titmas-community.json",
+      "https://redcrag.cn/agent-index.json",
+      "https://redcrag.cn/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json"
+    ],
+    "selected_sanitized_text_bytes": 79456,
+    "diagnostic_canonical_projection_bytes": 85708,
+    "diagnostic_canonical_projection_sha256": "38dc90cb43bfba32a05a71c1ed8aaba3d8115d1a3c26037d1161e653b1b7f6ac",
+    "projection_artifact_created": false,
+    "projection_schema_created": false,
+    "projection_validation_executed": false,
+    "maximum_projection_bytes_recommended": 86000,
+    "maximum_role_prompt_and_schema_bytes_recommended": 12000,
+    "maximum_total_model_visible_utf8_bytes_recommended": 100000,
+    "context_compatibility_proven": false
+  },
+  "conservative_cost_assessment": {
+    "pricing_basis": "CURRENT_OFFICIAL_LIST_PRICES_NO_FREE_QUOTA_NO_PROMOTION_NO_CACHE_DISCOUNT",
+    "maximum_input_tokens_per_provider": 500000,
+    "maximum_output_tokens_per_provider": 8192,
+    "qwen_max_cost_cny": 6.294912,
+    "qianfan_max_cost_cny": 0.4262144,
+    "combined_max_cost_cny": 6.7211264,
+    "rounded_estimate_cny": 6.73,
+    "recommended_execution_cost_cap_cny": 20,
+    "parent_maximum_cost_cap_cny": 500,
+    "cost_precondition_satisfied_for_decision_packet": true,
+    "actual_charge_proven": false
+  },
+  "effects": {
+    "network_requests_for_assessment": 0,
+    "model_requests_for_assessment": 0,
+    "credential_values_read": 0,
+    "projection_artifact_created": false,
+    "ce_g14_execution_authorized": false,
+    "customer_adoption_verified": false,
+    "market_demand_verified": false,
+    "commercial_offering": false,
+    "certification": false,
+    "standard_ready": false,
+    "production_ready": false
+  },
+  "next_action": "PREPARE_OFFLINE_CONTEXT_COMPATIBLE_INPUT_PROJECTION_REMEDIATION_RECOMMENDATION_ONLY",
+  "next_action_authorized": false
+}
