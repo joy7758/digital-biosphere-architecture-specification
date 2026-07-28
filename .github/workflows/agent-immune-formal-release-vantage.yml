@@ -1,6 +1,11 @@
 name: Agent Immune formal release independent vantages
 
 on:
+  push:
+    branches:
+      - codex/agent-immune-product-entry
+    paths:
+      - digital-biosphere-architecture/commercial-evaluation-exact-redeployment/agent-immune-formal-release-request.v0.1.json
   workflow_dispatch:
 
 permissions:
