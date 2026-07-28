@@ -1,0 +1,50 @@
+{
+  "deviations": [
+    {
+      "deviation_id": "CAL-DEV-001",
+      "category": "PREDEVELOPMENT_CAPTURE_FAILURE",
+      "count": 2,
+      "severity": "MEDIUM",
+      "effect": "No captured advisory result; exact-model readiness post-review was reused. No downgrade or Authority effect."
+    },
+    {
+      "deviation_id": "CAL-DEV-002",
+      "category": "MODEL_OUTPUT_CONTRACT_AMBIGUITY",
+      "count": 2,
+      "severity": "HIGH",
+      "effect": "The prompt represented finding_disposition as an array of allowed values; two Contributors returned a list rather than one selected string."
+    },
+    {
+      "deviation_id": "CAL-DEV-003",
+      "category": "UNHANDLED_LOCAL_NORMALIZATION_EXCEPTION",
+      "count": 1,
+      "severity": "CRITICAL",
+      "effect": "The run stopped before Task 3 blind review."
+    },
+    {
+      "deviation_id": "CAL-DEV-004",
+      "category": "CRITICAL_HANDOFF_FIELD_LOSS",
+      "count": 1,
+      "severity": "CRITICAL",
+      "effect": "The first-run Harness wrote records only at finalization, so normalized timestamps, hashes, findings, patches, review and conformance details were not durably retained after the abort."
+    }
+  ],
+  "stop_conditions_triggered": [
+    "CRITICAL_HANDOFF_FIELD_LOSS",
+    "UNHANDLED_LOCAL_NORMALIZATION_EXCEPTION"
+  ],
+  "human_interventions": [
+    {
+      "intervention_id": "CAL-HI-001",
+      "reason": "Human Owner calibration authorization",
+      "time": "USER_GOAL_2026-07-29",
+      "effect": "BOUNDED_CALIBRATION_ONLY"
+    }
+  ],
+  "fallback_count": 0,
+  "authority_violations_observed": 0,
+  "authority_assessment_complete": false,
+  "formal_experiment_effect": "NONE",
+  "next_recommendation": "SIMPLIFY_PROTOCOL",
+  "repeat_calibration_requires_new_human_authorization": true
+}

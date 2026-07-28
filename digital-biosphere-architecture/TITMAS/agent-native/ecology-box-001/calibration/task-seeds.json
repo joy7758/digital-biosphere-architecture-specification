@@ -1,0 +1,69 @@
+{
+  "seed_count": 3,
+  "formal_task_count": 10,
+  "formal_tasks_accessed": false,
+  "seeds": [
+    {
+      "seed_id": "SEED-CAL-TASK-001",
+      "task_id": "CAL-TASK-001",
+      "source_hash": "sha256:d821a24336e1d273b06d4fd9ce77b2531016e6c5b1061b6e09b68c57e6701631",
+      "modified_hash": "sha256:9a6846d63897555ad544e449e1fb42038b7246229147d852501c5b66867f3a01",
+      "expected_issue_class": "MISSING_MACHINE_ENTRY_TARGET",
+      "allowed_fix_scope": [
+        "agent-index.fragment.json machine_surfaces value",
+        "existing public repository path"
+      ],
+      "forbidden_fix_scope": [
+        "new canonical machine entry",
+        "brand change",
+        "Authority",
+        "Release"
+      ],
+      "generation_method": "run_calibration.py::seeded_task_definitions",
+      "model_answer_exposure": false,
+      "formal_task": false
+    },
+    {
+      "seed_id": "SEED-CAL-TASK-002",
+      "task_id": "CAL-TASK-002",
+      "source_hash": "sha256:06451670474f7aa5aa133af76d6381a40e1a3ee95309eff27dcb0bb74df30340",
+      "modified_hash": "sha256:0063e967c7d157c2ec23e3b74e6e62e30195ad1444001c811ad3f707db8506d3",
+      "expected_issue_class": "MISSING_REQUIRED_FIELD",
+      "allowed_fix_scope": [
+        "fixture.json",
+        "required field restoration",
+        "synthetic limitation"
+      ],
+      "forbidden_fix_scope": [
+        "weaken Schema",
+        "Stable promotion",
+        "Authority",
+        "Release"
+      ],
+      "generation_method": "run_calibration.py::seeded_task_definitions",
+      "model_answer_exposure": false,
+      "formal_task": false
+    },
+    {
+      "seed_id": "SEED-CAL-TASK-003",
+      "task_id": "CAL-TASK-003",
+      "source_hash": "sha256:a40048c1cb128fb119b4f901e48389ac062fdb17a99fc6db4d63be29e7cd164e",
+      "modified_hash": "sha256:865f79058fc98177d3a479093cbf0556e786e98cb12811060104acc68ba0f617",
+      "expected_issue_class": "MAPPING_AS_ADOPTION",
+      "allowed_fix_scope": [
+        "handoff.json semantic status correction",
+        "preserve limitations"
+      ],
+      "forbidden_fix_scope": [
+        "Adoption claim",
+        "Command",
+        "Evidence admission",
+        "Value proof",
+        "Authority"
+      ],
+      "generation_method": "run_calibration.py::seeded_task_definitions",
+      "model_answer_exposure": false,
+      "formal_task": false
+    }
+  ]
+}

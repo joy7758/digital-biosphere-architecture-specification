@@ -21,6 +21,7 @@ Start in this order:
 12. `metrics/schema.json`, `failure-scenarios/registry.yaml` and
     [Final report template](reports/final-report-template.md)
 13. [Execution Readiness Package](readiness/README.md)
+14. [Operational Calibration Record](calibration/calibration-report-v0.1.md)
 
 ```text
 PACKAGE_STATUS=PREPARED
@@ -43,6 +44,21 @@ REAL_GIT_ACCESS_AUTHORIZED=false
 PUBLIC_REPORT_AUTHORIZED=false
 COMMERCIAL_VALIDATION_AUTHORIZED=false
 ```
+
+The separately authorized operational calibration was attempted with three
+exact Provider/Model lineages and stopped fail-closed after a local
+normalization exception caused critical handoff-record loss:
+
+```text
+OPERATIONAL_CALIBRATION_EXECUTED=true
+CALIBRATION_STATUS=CALIBRATION_ABORTED_FOR_SAFETY
+OPERATIONAL_PIPELINE_DEMONSTRATED=false
+FORMAL_EXPERIMENT_STATE_EFFECT=NONE
+```
+
+The calibration result does not close any of the sixteen formal readiness
+blockers, change `GO_NO_GO_STATUS=NO_GO`, or establish value. See the
+[full calibration report](../../../TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-OPERATIONAL-CALIBRATION-REPORT-v0.1.md).
 
 The files under `runs/`, `reviews/`, `memories/` and `reports/` are contracts
 or templates. They are not execution records, canonical Evidence, adopted

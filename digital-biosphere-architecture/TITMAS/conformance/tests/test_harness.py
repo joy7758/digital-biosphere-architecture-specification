@@ -456,6 +456,60 @@ class HarnessTests(unittest.TestCase):
         self.assertEqual(14, details["review_sessions_checked"])
         self.assertEqual(1, details["independent_model_lineages"])
 
+    def test_ecology_box_001_operational_calibration_preserves_abort(self):
+        details = (
+            HARNESS.check_agent_native_ecology_box_001_operational_calibration()
+        )
+        self.assertEqual(
+            "CALIBRATION_ABORTED_FOR_SAFETY",
+            details["calibration_status"],
+        )
+        self.assertFalse(details["operational_pipeline_demonstrated"])
+        self.assertEqual("NO_GO", details["formal_go_no_go_status"])
+        self.assertFalse(details["formal_experiment_execution_authorized"])
+        self.assertFalse(details["formal_experiment_executed"])
+        self.assertFalse(details["value_proven"])
+
+    def test_ecology_box_001_calibration_counts_lineages_not_sessions(self):
+        path = (
+            HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+            / "calibration" / "participant-lineages.json"
+        )
+        lineages = json.loads(path.read_text())
+        self.assertEqual(3, lineages["model_count"])
+        self.assertEqual(7, lineages["calibration_session_count"])
+        self.assertEqual(3, lineages["role_count"])
+        self.assertEqual(3, lineages["actual_independent_lineage_count"])
+        self.assertTrue(lineages["lineage_presence_ne_pipeline_completion"])
+
+    def test_ecology_box_001_calibration_invents_no_lost_patch(self):
+        root = (
+            HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+            / "calibration"
+        )
+        candidates = json.loads(
+            (root / "candidate-patches" / "candidates.json").read_text()
+        )
+        self.assertEqual([], candidates["candidates"])
+        self.assertEqual(0, candidates["candidate_patches_durably_retained"])
+        self.assertEqual(0, candidates["formal_repository_candidate_changes"])
+        self.assertFalse(candidates["blinding"]["origin_mapping_persisted"])
+
+    def test_ecology_box_001_calibration_abort_cannot_prove_value(self):
+        path = (
+            HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+            / "calibration" / "calibration-metrics.json"
+        )
+        metrics = json.loads(path.read_text())
+        self.assertEqual(0.0, metrics["CALIBRATION_PIPELINE_COMPLETION_RATE"])
+        self.assertEqual(
+            "NOT_ASSESSED", metrics["FINAL_OUTCOME_IMPROVEMENT_RATE"]
+        )
+        self.assertFalse(
+            metrics["TITMAS_AGENT_OPERATIONAL_VALUE_DEMONSTRATED"]
+        )
+        self.assertFalse(metrics["TITMAS_AGENT_NATIVE_VALUE_PROVEN"])
+
 
 if __name__ == "__main__":
     unittest.main()

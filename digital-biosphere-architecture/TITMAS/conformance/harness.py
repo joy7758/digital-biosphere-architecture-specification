@@ -1646,6 +1646,262 @@ def check_agent_native_ecology_box_001_execution_readiness() -> dict[str, Any]:
     }
 
 
+def check_agent_native_ecology_box_001_operational_calibration() -> dict[str, Any]:
+    root = TITMAS_ROOT / "agent-native" / "ecology-box-001"
+    calibration = root / "calibration"
+    required_paths = (
+        calibration / "run_calibration.py",
+        calibration / "calibration-config.yaml",
+        calibration / "task-seeds.json",
+        calibration / "participant-lineages.json",
+        calibration / "role-rotation.yaml",
+        calibration / "normalized-run-records.jsonl",
+        calibration / "candidate-patches" / "candidates.json",
+        calibration / "conformance-results.json",
+        calibration / "calibration-metrics.json",
+        calibration / "protocol-deviations.json",
+        calibration / "calibration-report-v0.1.md",
+        DBA_ROOT
+        / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-OPERATIONAL-CALIBRATION-REPORT-v0.1.md",
+    )
+    missing = [
+        str(path.relative_to(DBA_ROOT))
+        for path in required_paths
+        if not path.is_file()
+    ]
+    if missing:
+        raise ConformanceError(f"operational calibration files missing {missing}")
+
+    config = load_json(calibration / "calibration-config.yaml")
+    if (
+        config["decision_id"]
+        != "TITMAS-EB001-OPERATIONAL-CALIBRATION-D01"
+        or config["decision"] != "ACCEPT"
+        or config["decided_by_ref"] != "zhangbin"
+        or config["source_commit"]
+        != "3c7aff595dde3c8bc4db2ace4a6ec52df8cb7403"
+        or config["calibration_status"] != "CALIBRATION_ABORTED_FOR_SAFETY"
+        or config["calibration_tier"] != "OPERATIONAL_PIPELINE_CALIBRATION"
+        or config["inference_tier"] != "NON_CONFIRMATORY"
+        or config["formal_task_count"] != 10
+        or config["calibration_task_count"] != 3
+        or config["max_total_model_calls"] != 12
+        or config["actual_total_model_calls_or_attempts"] != 9
+        or config["calibration_model_calls"] != 7
+        or config["agent_immune_enabled"] is not False
+        or config["formal_experiment_state_effect"] != "NONE"
+        or config["value_claim_effect"] != "NONE"
+        or config["commercial_claim_effect"] != "NONE"
+        or config["formal_ecology_box_001_execution_authorized"] is not False
+        or config["formal_ten_task_experiment_execution_authorized"] is not False
+        or config["real_repository_git_write_authorized"] is not False
+        or config["public_report_authorized"] is not False
+        or config["commercial_validation_authorized"] is not False
+        or config["runner_repaired_after_abort"] is not True
+        or config["repair_reexecuted_calibration"] is not False
+    ):
+        raise ConformanceError("operational calibration config truth drift")
+
+    seeds = load_json(calibration / "task-seeds.json")
+    if (
+        seeds["seed_count"] != 3
+        or seeds["formal_task_count"] != 10
+        or seeds["formal_tasks_accessed"] is not False
+        or {seed["task_id"] for seed in seeds["seeds"]}
+        != {"CAL-TASK-001", "CAL-TASK-002", "CAL-TASK-003"}
+        or any(seed["formal_task"] is not False for seed in seeds["seeds"])
+        or any(seed["model_answer_exposure"] is not False for seed in seeds["seeds"])
+        or any(seed["source_hash"] == seed["modified_hash"] for seed in seeds["seeds"])
+        or any(
+            not seed["source_hash"].startswith("sha256:")
+            or not seed["modified_hash"].startswith("sha256:")
+            for seed in seeds["seeds"]
+        )
+    ):
+        raise ConformanceError("calibration seed or formal-task isolation drift")
+
+    lineages = load_json(calibration / "participant-lineages.json")
+    expected_pairs = {
+        ("ALIBABA_DASHSCOPE", "qwen3.7-max"),
+        ("BAIDU_QIANFAN", "kimi-k2.6"),
+        ("VOLCENGINE_ARK", "deepseek-v4-flash-260425"),
+    }
+    observed_pairs = {
+        (item["provider"], item["requested_model"])
+        for item in lineages["lineages"]
+    }
+    if (
+        lineages["required_independent_lineage_count"] != 3
+        or lineages["actual_independent_lineage_count"] != 3
+        or lineages["model_count"] != 3
+        or lineages["calibration_session_count"] != 7
+        or lineages["role_count"] != 3
+        or observed_pairs != expected_pairs
+        or any(
+            item["returned_model_identity_verified"] is not True
+            or item["fallback"] != "NONE"
+            or item["data_scope"] != "PUBLIC_REPOSITORY_AND_SYNTHETIC_ONLY"
+            or any(
+                item[field] != "UNKNOWN"
+                for field in (
+                    "retention", "training_usage", "logging", "deletion"
+                )
+            )
+            for item in lineages["lineages"]
+        )
+        or lineages["lineage_presence_ne_pipeline_completion"] is not True
+    ):
+        raise ConformanceError("calibration lineage identity or count drift")
+
+    record_path = calibration / "normalized-run-records.jsonl"
+    if record_path.stat().st_size > MAX_JSON_BYTES:
+        raise ConformanceError("calibration normalized record file too large")
+    records = [
+        json.loads(line)
+        for line in record_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    model_calls = [item for item in records if item["record_type"] == "MODEL_CALL"]
+    task_outcomes = [
+        item for item in records if item["record_type"] == "TASK_OUTCOME"
+    ]
+    if (
+        len(model_calls) != 7
+        or len(task_outcomes) != 3
+        or any(
+            item["requested_model"] != item["returned_model"]
+            or item["returned_model_identity_verified"] is not True
+            or item["fallback"] != "NONE"
+            or item["raw_prompt_stored"] is not False
+            or item["raw_provider_response_stored"] is not False
+            or item["hidden_reasoning_stored"] is not False
+            or item["authority_effect"] != "NONE"
+            or item["input_hash"]
+            != "UNKNOWN_NOT_PERSISTED_DUE_HARNESS_ABORT"
+            or item["output_hash"]
+            != "UNKNOWN_NOT_PERSISTED_DUE_HARNESS_ABORT"
+            for item in model_calls
+        )
+        or any(
+            item["pipeline_complete"] is not False
+            or item["outcome_classification"]
+            != "CALIBRATION_ABORTED_FOR_SAFETY"
+            for item in task_outcomes
+        )
+    ):
+        raise ConformanceError("calibration normalized abort records drift")
+
+    candidates = load_json(
+        calibration / "candidate-patches" / "candidates.json"
+    )
+    if (
+        candidates["candidates"]
+        or candidates["candidate_patches_durably_retained"] != 0
+        or candidates["formal_repository_candidate_changes"] != 0
+        or candidates["candidate_git_commits"] != 0
+        or candidates["candidate_pull_requests"] != 0
+        or candidates["blinding"]["formal_blind_custodian"] is not False
+        or candidates["blinding"]["origin_mapping_persisted"] is not False
+        or candidates["blinding"]["unblinded_after_review"] is not False
+    ):
+        raise ConformanceError("calibration abort invents patches or blinding")
+
+    conformance_result = load_json(
+        calibration / "conformance-results.json"
+    )
+    if (
+        conformance_result["status"] != "NOT_ASSESSED_ABORTED"
+        or len(conformance_result["task_results"]) != 3
+        or conformance_result["source_hashes_verified"] is not True
+        or conformance_result["formal_task_count"] != 10
+        or conformance_result["formal_task_set_unchanged"] is not True
+        or conformance_result["formal_tasks_accessed_by_calibration"] is not False
+        or conformance_result["formal_blinding_not_contaminated"] is not True
+        or conformance_result["formal_go_no_go_status"] != "NO_GO"
+        or conformance_result["formal_experiment_execution_authorized"] is not False
+        or conformance_result["formal_experiment_executed"] is not False
+        or conformance_result["formal_run_record_count"] != 0
+        or conformance_result["calibration_result_in_formal_metrics"] is not False
+    ):
+        raise ConformanceError("calibration conformance or formal state drift")
+
+    metrics = load_json(calibration / "calibration-metrics.json")
+    if (
+        metrics["CALIBRATION_PIPELINE_COMPLETION_RATE"] != 0.0
+        or metrics["HANDOFF_CRITICAL_FIELD_LOSS_RATE"] != 1.0
+        or metrics["CALIBRATION_MODEL_CALL_COUNT"] != 7
+        or metrics["MODEL_CALL_COUNT"] != 9
+        or metrics["FALLBACK_COUNT"] != 0
+        or metrics["PROTOCOL_DEVIATION_COUNT"] != 4
+        or metrics["FINAL_OUTCOME_IMPROVEMENT_RATE"] != "NOT_ASSESSED"
+        or metrics["TITMAS_AGENT_OPERATIONAL_VALUE_DEMONSTRATED"] is not False
+        or metrics["TITMAS_AGENT_NATIVE_VALUE_PROVEN"] is not False
+        or metrics["AUTHORITY_VIOLATION_ASSESSMENT_COMPLETE"] is not False
+        or metrics["SEMANTIC_ELEVATION_ASSESSMENT_COMPLETE"] is not False
+        or metrics["HARMFUL_CANDIDATE_ASSESSMENT_COMPLETE"] is not False
+    ):
+        raise ConformanceError("calibration metrics overclaim or drift")
+
+    deviations = load_json(calibration / "protocol-deviations.json")
+    if (
+        len(deviations["deviations"]) != 4
+        or set(deviations["stop_conditions_triggered"])
+        != {
+            "CRITICAL_HANDOFF_FIELD_LOSS",
+            "UNHANDLED_LOCAL_NORMALIZATION_EXCEPTION",
+        }
+        or deviations["fallback_count"] != 0
+        or deviations["authority_assessment_complete"] is not False
+        or deviations["formal_experiment_effect"] != "NONE"
+        or deviations["next_recommendation"] != "SIMPLIFY_PROTOCOL"
+        or deviations["repeat_calibration_requires_new_human_authorization"]
+        is not True
+    ):
+        raise ConformanceError("calibration stop or deviation record drift")
+
+    report = (
+        DBA_ROOT
+        / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-OPERATIONAL-CALIBRATION-REPORT-v0.1.md"
+    ).read_text(encoding="utf-8")
+    required_report_states = (
+        "TITMAS_ECOLOGY_BOX_001_OPERATIONAL_CALIBRATION_EXECUTED=true",
+        "TITMAS_ECOLOGY_BOX_001_OPERATIONAL_PIPELINE_DEMONSTRATED=false",
+        "CALIBRATION_STATUS=CALIBRATION_ABORTED_FOR_SAFETY",
+        "TITMAS_ECOLOGY_BOX_001_GO_NO_GO_STATUS=NO_GO",
+        "TITMAS_ECOLOGY_BOX_001_EXECUTION_AUTHORIZED=false",
+        "TITMAS_ECOLOGY_BOX_001_EXECUTED=false",
+        "TITMAS_ECOLOGY_BOX_001_VALUE_PROVEN=false",
+        "PUBLIC_REPORT_AUTHORIZED=false",
+        "COMMERCIAL_VALIDATION_AUTHORIZED=false",
+        "NEXT_RECOMMENDATION=SIMPLIFY_PROTOCOL",
+    )
+    if any(item not in report for item in required_report_states):
+        raise ConformanceError("operational calibration report truth drift")
+
+    formal_runs = [
+        path
+        for path in (root / "runs").iterdir()
+        if path.is_file() and path.name != "README.md"
+    ]
+    if formal_runs:
+        raise ConformanceError("calibration created a formal experiment run record")
+    return {
+        "calibration_files_checked": len(required_paths),
+        "calibration_model_calls_checked": len(model_calls),
+        "calibration_tasks_checked": len(task_outcomes),
+        "independent_lineages_checked": 3,
+        "protocol_deviations_preserved": 4,
+        "formal_task_count": 10,
+        "formal_run_record_count": 0,
+        "calibration_status": "CALIBRATION_ABORTED_FOR_SAFETY",
+        "operational_pipeline_demonstrated": False,
+        "formal_go_no_go_status": "NO_GO",
+        "formal_experiment_execution_authorized": False,
+        "formal_experiment_executed": False,
+        "value_proven": False,
+    }
+
+
 def check_agent_native_pilot() -> dict[str, Any]:
     path = TITMAS_ROOT / "agent-native" / "pilot" / "pilot-result.json"
     if not path.exists():
@@ -1774,6 +2030,10 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         (
             "agent_native_ecology_box_001_execution_readiness",
             check_agent_native_ecology_box_001_execution_readiness,
+        ),
+        (
+            "agent_native_ecology_box_001_operational_calibration",
+            check_agent_native_ecology_box_001_operational_calibration,
         ),
         ("agent_native_pilot", check_agent_native_pilot),
         ("agent_native_reviews", check_agent_native_reviews),

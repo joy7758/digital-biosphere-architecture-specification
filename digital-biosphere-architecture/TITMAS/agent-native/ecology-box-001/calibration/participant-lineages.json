@@ -1,0 +1,44 @@
+{
+  "required_independent_lineage_count": 3,
+  "actual_independent_lineage_count": 3,
+  "model_count": 3,
+  "calibration_session_count": 7,
+  "role_count": 3,
+  "lineages": [
+    {
+      "provider": "ALIBABA_DASHSCOPE",
+      "requested_model": "qwen3.7-max",
+      "returned_model_identity_verified": true,
+      "retention": "UNKNOWN",
+      "training_usage": "UNKNOWN",
+      "logging": "UNKNOWN",
+      "deletion": "UNKNOWN",
+      "data_scope": "PUBLIC_REPOSITORY_AND_SYNTHETIC_ONLY",
+      "fallback": "NONE"
+    },
+    {
+      "provider": "BAIDU_QIANFAN",
+      "requested_model": "kimi-k2.6",
+      "returned_model_identity_verified": true,
+      "retention": "UNKNOWN",
+      "training_usage": "UNKNOWN",
+      "logging": "UNKNOWN",
+      "deletion": "UNKNOWN",
+      "data_scope": "PUBLIC_REPOSITORY_AND_SYNTHETIC_ONLY",
+      "fallback": "NONE"
+    },
+    {
+      "provider": "VOLCENGINE_ARK",
+      "requested_model": "deepseek-v4-flash-260425",
+      "returned_model_identity_verified": true,
+      "retention": "UNKNOWN",
+      "training_usage": "UNKNOWN",
+      "logging": "UNKNOWN",
+      "deletion": "UNKNOWN",
+      "data_scope": "PUBLIC_REPOSITORY_AND_SYNTHETIC_ONLY",
+      "fallback": "NONE"
+    }
+  ],
+  "counting_rule": "MODEL_COUNT_NE_SESSION_COUNT_NE_ROLE_COUNT_NE_INDEPENDENT_LINEAGE_COUNT",
+  "lineage_presence_ne_pipeline_completion": true
+}
