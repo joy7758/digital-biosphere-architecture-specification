@@ -728,12 +728,30 @@ C2.5–C8 已把治理激活、开放规范、参考实现、有限贡献者试�
 
 #### Current Commercial Standard Foundation Freeze
 
-当前最短入口是
-[`Foundation Freeze Decision Board`](TITMAS-COMMERCIAL-STANDARD-FOUNDATION-FREEZE-DECISION-BOARD-v0.1.md)
-及其 [`machine entry`](TITMAS-COMMERCIAL-STANDARD-FOUNDATION-FREEZE-ENTRY-v0.1.json)。
-它并列呈现 `CS-G0-ROLE-D01` 与 `CS-G1-ROLE-REVIEW-D01` 两个独立 Human Decision，
-但不合并或替代它们。当前 `CS-G0=NOT_MET`、`CS-G1=NOT_MET`、`CS-G2–CS-G7=BLOCKED`；
-角色接受、正式审查执行、Gate 通过、实现、商业服务、认证和发布均保持 `false`。
+Human Owner 已分别记录
+[`CS-G0 role decision`](architecture/titmas-cs-g0-human-decision-record-v0.1.md) 与
+[`CS-G1 role decision`](architecture/titmas-cs-g1-human-decision-record-v0.1.md)。
+当前入口是
+[`Foundation Role Freeze Status`](architecture/titmas-commercial-standard-foundation-freeze-status-v0.1.md)
+及 [`Next Gate Roadmap`](architecture/titmas-commercial-standard-next-gate-roadmap-v0.1.md)。
+历史 [`Decision Board`](TITMAS-COMMERCIAL-STANDARD-FOUNDATION-FREEZE-DECISION-BOARD-v0.1.md)
+与 [`machine entry`](TITMAS-COMMERCIAL-STANDARD-FOUNDATION-FREEZE-ENTRY-v0.1.json)
+保留为 pre-decision snapshot（决定前快照），不再代表当前角色接受状态。
+
+```text
+TITMAS_CS_FOUNDATION_ROLE_FREEZE_COMPLETE=true
+CS_G0_ROLE_ACCEPTED=true
+CS_G1_ROLE_ACCEPTED=true
+CS_G0_PASS=false
+CS_G1_PASS=false
+STANDARD_READY=false
+COMMERCIAL_READY=false
+RELEASE_AUTHORIZED=false
+```
+
+三个 role-scoped `qwen3.7-max` advisory review sessions 已获有界授权但尚未执行。
+`CS-G2–CS-G7` 仍为 `BLOCKED`；数据处理、外部推广、客户记录、实现、商业试点、认证、
+正式标准发布、Release 和 Deployment 均保持关闭。
 
 `CS-D02-PRE-18` 已形成
 [provider-neutral Adapter Conformance Profile candidate](architecture/provider-adapter-conformance-profile-v0.1.md)、
