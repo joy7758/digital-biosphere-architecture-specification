@@ -76,7 +76,13 @@ titmas_public_entry_redeployment_admission_pass: false
 titmas_ce_g12_read_only_preflight_result: fail-closed-p02-current-target-mismatch
 titmas_ce_g12_actual_current_target: unknown-not-persisted
 titmas_ce_g12_current_target_diagnostic_recommendation_review: recommended-option-a
-titmas_commercial_evaluation_next_gate: ce-g12-current-target-classification-decision-required
+titmas_ce_g13_recommendation_prepared: true
+titmas_ce_g13_predevelopment_agent_customer_gate_pass: true
+titmas_ce_g13_offline_contract_package_files: 28
+titmas_ce_g13_offline_contract_r2_validation_pass: true
+titmas_ce_g13_offline_contract_package_remote_verified: true
+titmas_ce_g13_execution_authorized: false
+titmas_commercial_evaluation_next_gate: prepare-ce-g13-execution-authorization-recommendation-only
 ---
 
 # Digital Biosphere Program Status Snapshot（数字生物圈项目群状态快照）
@@ -536,7 +542,22 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G12_AVAILABLE_OFFERINGS=0
 TITMAS_COMMERCIAL_EVALUATION_CE_G12_PRODUCTION_READY=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G12_COMMERCIAL_OFFERING=false
 TITMAS_COMMERCIAL_EVALUATION_CE_G12_CERTIFICATION=false
-TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE=PREPARE_CE_G13_PUBLIC_AGENT_CUSTOMER_DISCOVERY_AND_REUSE_VALIDATION_RECOMMENDATION_ONLY
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_RECOMMENDATION_PREPARED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_PREDEVELOPMENT_AGENT_CUSTOMER_GATE_PASS=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_OFFLINE_PACKAGE_FILES=28
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_OFFLINE_PACKAGE_MANIFEST_SHA256=be7b0db4f0f349f8898f749e8ee0f4bd6a3407c79acbe33b415da081ff9ea9ed
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_OFFLINE_PACKAGE_COMMIT=bdfdfb076aaa129af50d5e2ecdec7cc87adff487
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_OFFLINE_PACKAGE_REMOTE_VERIFIED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_R1_FAILURE_PRESERVED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_R2_VALIDATION_PASS=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_R2_CHECKS=94
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_R2_SCHEMAS=14
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_R2_NEGATIVE_CASES=28
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_EXECUTION_AUTHORIZED=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_PUBLIC_FETCHES_EXECUTED=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_AGENT_SESSIONS_EXECUTED=0
+TITMAS_COMMERCIAL_EVALUATION_CE_G13_TECHNICAL_REUSE_RUNS=0
+TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE=PREPARE_CE_G13_EXECUTION_AUTHORIZATION_RECOMMENDATION_ONLY
 TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE_AUTHORIZED=false
 SCOPED_LOCAL_DBOS_SAEE_CONFORMANCE_PASS=true
 FULL_END_TO_END_INTEGRATION_VERIFIED=false
@@ -903,7 +924,8 @@ Developer Preview v0.1 的历史发布结果 `PASS_WITH_DISCLOSED_LIMITATIONS` �
 | P0 Security and Platform Review Scope | `PRE75_EXECUTED_SECURITY_SUBTRACK_FROZEN` | PRE-75 已以独立 Decision 完成 Stage A：7/7 input、10/10 target、2/2 rendered requests/full Schema transmission、3/3 coverage、2/2 response session binding、16/16 negatives PASS；execution id 与 frozen PRE73 response id 分离。request/capture 仍为 Development candidate；network/model/credential/raw persistence/target actions=0。为避免偏离主线，PRE-76 不再作为当前下一步 |
 | Commercial Evaluation Pack v0.2 | `AGENT_FIRST_RUN_VALIDATED_NOT_AVAILABLE_OFFERING` | 公开 wheel、5 类对象契约、只读 validator、机器清单、合成样例和 10 分钟 First Run 已收敛；clean run 最终 `PASS`，两次 harness 失败保留。Qwen 3 角色与 Qianfan DeepSeek 1 角色共 4/4 direct JSON/Schema valid、2 Provider、0 boundary failure，4/4 推荐离线评估且 4/4 拒绝生产采购。另观察 3 次公开入口瞬时传输失败；客户、合同、收入、SLA、生产与认证继续为 0/false |
 | CE-G11B Draft PR Integration Gate | `PR27_MERGED_POST_MERGE_VALIDATION_PASS` | 初次多路审查在 Lane C binding 失败关闭；独立 recovery 完成 Lane B adjudication、Lane C replacement、Lane D 与 synthesis，结果 `CLEAR`、blocking finding 0；PR #27 merge commit `c1d8931…`；隔离验证 JSON `1165/1165`、site `16/16`、CE `49/49` | 下一步只允许准备 CE-G12 correlated exact redeployment Recommendation；GitHub checks success、human review equivalence、release、deploy、Standard Ready 与 commercial offering 均保持 false |
-| CE-G12 Public Candidate and Network-path Gate | `STATIC_CANDIDATE_ACTIVE_APPLICATION_EXACT_LOCAL_SYNTHETIC_DNS_PATH_DIRECT_ORIGIN_UNVERIFIED_CE_G13_RECOMMENDATION_REQUIRED` | 首次 preflight failure、atomic deployment route-hash failure 与 rollback 均保留；source-bound portable artifact 已在独立 Decision 下激活，canonical route `10/10`；公网 status/redirect `10/10`、body hash `9/9`、JSON `5/5`、agent-readable endpoints `7/7` 精确通过；system resolver、`dig` 与先前 curl remote IP 均为 `198.18.0.90`，分类 `LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED`，不归因具体产品 | 下一步只允许准备 CE-G13 公网智能体客户发现与复用验证 Recommendation；direct-origin、Release、Standard Ready、Commercial Validation Ready、Production、Certification 与 offering 均保持 false |
+| CE-G12 Public Candidate and Network-path Gate | `STATIC_CANDIDATE_ACTIVE_APPLICATION_EXACT_LOCAL_SYNTHETIC_DNS_PATH_DIRECT_ORIGIN_UNVERIFIED` | 首次 preflight failure、atomic deployment route-hash failure 与 rollback 均保留；source-bound portable artifact 已在独立 Decision 下激活，canonical route `10/10`；公网 status/redirect `10/10`、body hash `9/9`、JSON `5/5`、agent-readable endpoints `7/7` 精确通过；system resolver、`dig` 与先前 curl remote IP 均为 `198.18.0.90`，分类 `LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED`，不归因具体产品 | direct-origin、Release、Standard Ready、Commercial Validation Ready、Production、Certification 与 offering 均保持 false |
+| CE-G13 Offline Execution Contract Gate | `PACKAGE_PASS_EXECUTION_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY` | CE-G13 Recommendation 与 Agent-customer gate 完成；28 文件离线契约包在 R1 失败关闭后，经 R2 本地 Registry 验证 `94/94` checks、14 Schemas、28 negative cases PASS；commit `bdfdfb0…` 已远程核验；network/model/credential/technical execution 为 0 | 下一步只允许准备 CE-G13 execution authorization Recommendation；public fetch、Agent sessions、technical reuse、customer/adoption、commercial offering 与 production 均未授权 |
 | Trusted Multi-Agent Protocol | `ARCHITECTURE_BASELINE_DEFINED_NOT_IMPLEMENTED` | 六类协议对象、四个可信边界和 Protocol→SDK→Reference Implementation→Adapter 路线已定义；未创建 API、SDK 或 Runtime |
 | OpenTelemetry Observability Profile | `DQ_018_SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_HUMAN_SECURITY_REVIEW_READY_NOT_APPROVED` | DQ-022–025 exact references 已采纳；当前 DBOS source 的 P001—P005、`HSR-PRE-001/002` 负例与供应链检查已在原生 Linux x86_64 完成并远端复验；未部署 Collector 或 endpoint |
 | OpenTelemetry Semantic Mapping and Conformance | `DQ_023_REFERENCE_ADOPTED_DQ_018_AUTHORIZED_SUBSET_32_OF_32_PASS` | pinned mapping 已进入 DBOS 离线参考实现；32/32 authorized cases 通过，14 个 DQ-020 cases blocked；不产生 Runtime compatibility 声明 |

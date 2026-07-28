@@ -15,6 +15,7 @@
     "objective",
     "current_state_summary",
     "ce_g12_current_state",
+    "ce_g13_current_state",
     "priority_value_problem",
     "priority_open_artifact",
     "agent_recommendation",
@@ -50,7 +51,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_CE_G12_PUBLIC_CANDIDATE_ACTIVE_APPLICATION_EXACT_LOCAL_SYNTHETIC_DNS_PATH_DIRECT_ORIGIN_UNVERIFIED_CE_G13_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CE_G13_OFFLINE_CONTRACT_PACKAGE_PASS_EXECUTION_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -110,13 +111,13 @@
       "properties": {
         "as_of": {"const": "2026-07-28"},
         "last_completed_step": {
-          "const": "CE_G12_PUBLIC_NETWORK_PATH_ATTRIBUTION"
+          "const": "CE_G13_OFFLINE_EXECUTION_CONTRACT_PACKAGE_R2_VALIDATION"
         },
         "last_completed_result": {
-          "const": "LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED_NO_DIRECT_ORIGIN_OR_STATUS_ELEVATION"
+          "const": "PASS_28_FILE_PACKAGE_94_CHECKS_ZERO_NETWORK"
         },
         "direct_evidence_reference": {
-          "const": "commercial-evaluation-fresh-candidate/ce-g12-public-network-path-attribution-result.v0.1.json"
+          "const": "commercial-evaluation-fresh-candidate/ce-g13-offline-contract-r2-validation-result.v0.1.json"
         },
         "current_best_connected_model": {"const": "qwen3.7-max"},
         "primary_new_provider_candidate": {
@@ -134,7 +135,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "PREPARE_CE_G13_PUBLIC_AGENT_CUSTOMER_DISCOVERY_AND_REUSE_VALIDATION_RECOMMENDATION_ONLY"
+          "const": "PREPARE_CE_G13_EXECUTION_AUTHORIZATION_RECOMMENDATION_ONLY"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -249,11 +250,93 @@
           "const": false
         },
         "next_allowed_action": {
-          "const": "PREPARE_CE_G13_PUBLIC_AGENT_CUSTOMER_DISCOVERY_AND_REUSE_VALIDATION_RECOMMENDATION_ONLY"
+          "const": "PREPARE_CE_G13_EXECUTION_AUTHORIZATION_RECOMMENDATION_ONLY"
         },
         "next_action_authorized": {
           "const": false
         }
+      }
+    },
+    "ce_g13_current_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "recommendation_reference",
+        "recommendation_prepared",
+        "predevelopment_gate_reference",
+        "predevelopment_agent_customer_gate_pass",
+        "offline_package_directory",
+        "offline_package_files",
+        "offline_package_manifest_sha256",
+        "offline_package_commit",
+        "offline_package_remote_verified",
+        "r1_failure_reference",
+        "r1_failure_preserved",
+        "r2_validation_result_reference",
+        "r2_validation_pass",
+        "r2_checks_passed",
+        "r2_schemas_validated",
+        "r2_negative_cases",
+        "execution_authorized",
+        "public_fetches_executed",
+        "agent_sessions_executed",
+        "technical_reuse_runs",
+        "customer_adoption_verified",
+        "market_demand_verified",
+        "commercial_validation_ready",
+        "standard_ready",
+        "commercial_offering",
+        "certification",
+        "production_ready",
+        "next_allowed_action",
+        "next_action_authorized"
+      ],
+      "properties": {
+        "recommendation_reference": {
+          "const": "TITMAS-CE-G13-PUBLIC-AGENT-CUSTOMER-DISCOVERY-AND-REUSE-VALIDATION-RECOMMENDATION-v0.1.md"
+        },
+        "recommendation_prepared": {"const": true},
+        "predevelopment_gate_reference": {
+          "const": "TITMAS-CE-G13-PREDEVELOPMENT-AGENT-CUSTOMER-RECOMMENDATION-GATE-v0.1.json"
+        },
+        "predevelopment_agent_customer_gate_pass": {"const": true},
+        "offline_package_directory": {
+          "const": "commercial-evaluation-ce-g13-offline-contract"
+        },
+        "offline_package_files": {"const": 28},
+        "offline_package_manifest_sha256": {
+          "const": "be7b0db4f0f349f8898f749e8ee0f4bd6a3407c79acbe33b415da081ff9ea9ed"
+        },
+        "offline_package_commit": {
+          "const": "bdfdfb076aaa129af50d5e2ecdec7cc87adff487"
+        },
+        "offline_package_remote_verified": {"const": true},
+        "r1_failure_reference": {
+          "const": "TITMAS-CE-G13-OFFLINE-CONTRACT-PACKAGE-R1-FAILURE-REPORT-v0.1.md"
+        },
+        "r1_failure_preserved": {"const": true},
+        "r2_validation_result_reference": {
+          "const": "commercial-evaluation-fresh-candidate/ce-g13-offline-contract-r2-validation-result.v0.1.json"
+        },
+        "r2_validation_pass": {"const": true},
+        "r2_checks_passed": {"const": 94},
+        "r2_schemas_validated": {"const": 14},
+        "r2_negative_cases": {"const": 28},
+        "execution_authorized": {"const": false},
+        "public_fetches_executed": {"const": 0},
+        "agent_sessions_executed": {"const": 0},
+        "technical_reuse_runs": {"const": 0},
+        "customer_adoption_verified": {"const": false},
+        "market_demand_verified": {"const": false},
+        "commercial_validation_ready": {"const": false},
+        "standard_ready": {"const": false},
+        "commercial_offering": {"const": false},
+        "certification": {"const": false},
+        "production_ready": {"const": false},
+        "next_allowed_action": {
+          "const": "PREPARE_CE_G13_EXECUTION_AUTHORIZATION_RECOMMENDATION_ONLY"
+        },
+        "next_action_authorized": {"const": false}
       }
     },
     "priority_value_problem": {
@@ -2871,7 +2954,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "CE_G12_CURRENT_STATE_RECONCILED_CE_G13_RECOMMENDATION_REQUIRED"
+          "const": "CE_G13_OFFLINE_CONTRACT_PACKAGE_PASS_EXECUTION_RECOMMENDATION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7897,7 +7980,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_CE_G13_PUBLIC_AGENT_CUSTOMER_DISCOVERY_AND_REUSE_VALIDATION_RECOMMENDATION_ONLY"
+          "const": "PREPARE_CE_G13_EXECUTION_AUTHORIZATION_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false
