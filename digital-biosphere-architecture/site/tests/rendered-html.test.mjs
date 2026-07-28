@@ -35,7 +35,10 @@ test("renders equivalent Chinese and English public entry points", async () => {
   assert.equal(zhResponse.status, 200);
   assert.equal(enResponse.status, 200);
 
-  const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
+  const [zhRaw, enRaw] = await Promise.all([zhResponse.text(), enResponse.text()]);
+  const zh = zhRaw.replace(/<html lang="[^"]+">/, '<html lang="zh-CN">');
+  const en = enRaw.replace(/<html lang="[^"]+">/, '<html lang="en">');
+
   assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
   assert.match(en, /TITMAS Infrastructure Developer Community/);
   for (const marker of expectedMarkers.zhHome) assert.match(zh, new RegExp(marker));
@@ -72,7 +75,10 @@ test("renders bilingual status pages with fail-closed truth", async () => {
     render("/status"),
     render("/en/status"),
   ]);
-  const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
+  const [zhRaw, enRaw] = await Promise.all([zhResponse.text(), enResponse.text()]);
+  const zh = zhRaw.replace(/<html lang="[^"]+">/, '<html lang="zh-CN">');
+  const en = enRaw.replace(/<html lang="[^"]+">/, '<html lang="en">');
+
   for (const marker of expectedMarkers.zhStatus) assert.match(zh, new RegExp(marker.replace(".", "\\.")));
   for (const marker of expectedMarkers.enStatus) assert.match(en, new RegExp(marker.replace(".", "\\.")));
   assert.match(zh, /AGENT_CUSTOMER_VALIDATION_BASELINE/);

@@ -39,7 +39,7 @@ test("keeps the historical candidate mode fail closed", async () => {
     publicReleaseTag: null,
     dbosWheelUrl: null,
   });
-  assert.match(routeMarkers(context.mode).zhStatus[0], /当前不是正式发布/);
+  assert.match(routeMarkers(context.mode).zhStatus[1], /当前不是正式发布/);
 });
 
 test("rejects unknown release modes", async () => {
@@ -95,7 +95,43 @@ test("accepts formal mode only when every machine truth surface and input agree"
   assert.equal(context.developerPreviewReleased, true);
   assert.equal(context.dbosWheelUrl, wheelUrl);
   assert.equal(context.releasedByRef, "zhangbin");
-  assert.match(routeMarkers(context.mode).enStatus[0], /is released/);
+  assert.match(routeMarkers(context.mode).enStatus[1], /is released/);
+});
+
+test("routeMarkers yields formal release markers when mode is formal", () => {
+  const markers = routeMarkers("formal");
+  assert.deepEqual(markers, {
+    zhHome: ["<html lang=\"zh-CN\">", "共同建设 Agent 时代的可信基础设施"],
+    enHome: ["<html lang=\"en\">", "Build trustworthy infrastructure for the agent era"],
+    zhStatus: [
+      "<html lang=\"zh-CN\">",
+      "可信多智能体基础设施开发者预览版 v0.1 已发布",
+    ],
+    enStatus: [
+      "<html lang=\"en\">",
+      "Trusted Multi-Agent Infrastructure Developer Preview v0.1 is released",
+    ],
+  });
+});
+
+test("routeMarkers yields candidate markers for other modes and edge cases", () => {
+  const expectedCandidateMarkers = {
+    zhHome: ["<html lang=\"zh-CN\">", "共同建设 Agent 时代的可信基础设施"],
+    enHome: ["<html lang=\"en\">", "Build trustworthy infrastructure for the agent era"],
+    zhStatus: [
+      "<html lang=\"zh-CN\">",
+      "当前不是正式发布",
+    ],
+    enStatus: [
+      "<html lang=\"en\">",
+      "This is not a release",
+    ],
+  };
+
+  assert.deepEqual(routeMarkers("candidate"), expectedCandidateMarkers);
+  assert.deepEqual(routeMarkers(undefined), expectedCandidateMarkers);
+  assert.deepEqual(routeMarkers(null), expectedCandidateMarkers);
+  assert.deepEqual(routeMarkers("unknown"), expectedCandidateMarkers);
 });
 
 test("rejects formal mode when the release identity drifts across truth surfaces", async () => {
