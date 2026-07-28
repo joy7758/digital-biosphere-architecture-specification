@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-session-02.schema.v0.1.json",
+  "title": "CE-G13 S02 Architecture Comprehension Response",
+  "allOf": [
+    {"$ref": "./session-response.base.schema.v0.1.json#/$defs/common"},
+    {
+      "type": "object",
+      "required": ["responsibilities", "not_an_agent_framework", "not_a_foundation_model", "recommendation_execution_separated"],
+      "properties": {
+        "session_id": {"const": "CE-G13-S02"},
+        "role": {"const": "ARCHITECTURE_COMPREHENSION_AGENT"},
+        "responsibilities": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["DBA", "DBOS", "SAEE", "Governance Decision"],
+          "properties": {"DBA": {"type": "string"}, "DBOS": {"type": "string"}, "SAEE": {"type": "string"}, "Governance Decision": {"type": "string"}}
+        },
+        "not_an_agent_framework": {"const": true},
+        "not_a_foundation_model": {"const": true},
+        "recommendation_execution_separated": {"const": true}
+      }
+    }
+  ],
+  "unevaluatedProperties": false
+}

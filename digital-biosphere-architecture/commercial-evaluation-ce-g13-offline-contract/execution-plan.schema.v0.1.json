@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-execution-plan.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Execution Plan Candidate v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "initial_url", "retrieval_budget", "sessions", "technical_reuse", "effects"],
+  "properties": {
+    "$schema": {"const": "./execution-plan.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CE-G13-EXECUTION-PLAN-CANDIDATE-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "FROZEN_NOT_AUTHORIZED_NOT_EXECUTED"},
+    "initial_url": {"const": "https://redcrag.cn/"},
+    "retrieval_budget": {
+      "const": {"http_get_requests_max": 16, "same_origin_only": true, "same_origin_redirects_only": true, "raw_public_bytes_max": 3000000, "retries": 0}
+    },
+    "sessions": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "prefixItems": [
+        {"$ref": "#/$defs/s1"}, {"$ref": "#/$defs/s2"}, {"$ref": "#/$defs/s3"}, {"$ref": "#/$defs/s4"}, {"$ref": "#/$defs/s5"}
+      ],
+      "items": false
+    },
+    "technical_reuse": {
+      "const": {"runs_max": 1, "synthetic_only": true, "clean_environment": true, "runtime_starts": 0, "agent_instances": 0, "entity_instances": 0, "permission_grants": 0, "evidence_truth_objects": 0}
+    },
+    "effects": {
+      "const": {"authorized": false, "public_fetches": 0, "model_requests": 0, "technical_reuse_runs": 0, "customer_adoption": false, "commercial_offering": false, "production_ready": false}
+    }
+  },
+  "$defs": {
+    "session": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["session_id", "role", "provider", "requested_model", "requests_max", "retry", "fallback", "substitution", "json_extraction", "json_repair"],
+      "properties": {
+        "session_id": {"type": "string"},
+        "role": {"type": "string"},
+        "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+        "requested_model": {"const": "qwen3.7-max"},
+        "requests_max": {"const": 1},
+        "retry": {"const": false},
+        "fallback": {"const": false},
+        "substitution": {"const": false},
+        "json_extraction": {"const": false},
+        "json_repair": {"const": false}
+      }
+    },
+    "s1": {"allOf": [{"$ref": "#/$defs/session"}, {"properties": {"session_id": {"const": "CE-G13-S01"}, "role": {"const": "COLD_DISCOVERY_AGENT"}}}]},
+    "s2": {"allOf": [{"$ref": "#/$defs/session"}, {"properties": {"session_id": {"const": "CE-G13-S02"}, "role": {"const": "ARCHITECTURE_COMPREHENSION_AGENT"}}}]},
+    "s3": {"allOf": [{"$ref": "#/$defs/session"}, {"properties": {"session_id": {"const": "CE-G13-S03"}, "role": {"const": "WEBSITE_ONLY_REUSE_PLANNER"}}}]},
+    "s4": {"allOf": [{"$ref": "#/$defs/session"}, {"properties": {"session_id": {"const": "CE-G13-S04"}, "role": {"const": "AGENT_RECOMMENDER"}}}]},
+    "s5": {"allOf": [{"$ref": "#/$defs/session"}, {"properties": {"session_id": {"const": "CE-G13-S05"}, "role": {"const": "BOUNDARY_AND_NON_MATCH_AUDITOR"}}}]}
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-session-04.schema.v0.1.json",
+  "title": "CE-G13 S04 Agent Recommender Response",
+  "allOf": [
+    {"$ref": "./session-response.base.schema.v0.1.json#/$defs/common"},
+    {
+      "type": "object",
+      "required": ["recommendation_verdict", "recommended_use", "recommendation_reasons", "conditions", "production_purchase_or_deployment"],
+      "properties": {
+        "session_id": {"const": "CE-G13-S04"},
+        "role": {"const": "AGENT_RECOMMENDER"},
+        "recommendation_verdict": {"enum": ["RECOMMENDED", "CONDITIONALLY_RECOMMENDED", "NOT_RECOMMENDED"]},
+        "recommended_use": {"type": "string", "minLength": 1},
+        "recommendation_reasons": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "conditions": {"type": "array", "items": {"type": "string"}},
+        "production_purchase_or_deployment": {"const": "NOT_RECOMMENDED"}
+      }
+    }
+  ],
+  "unevaluatedProperties": false
+}

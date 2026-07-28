@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-technical-reuse-receipt.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Synthetic Technical Reuse Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "receipt_id", "status", "run_count", "synthetic_only", "clean_environment", "input_reference", "procedure_reference", "result_reference", "failures", "effects"],
+  "properties": {
+    "$schema": {"const": "./technical-reuse-receipt.schema.v0.1.json"},
+    "receipt_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["NOT_EXECUTED", "PASS", "FAIL_CLOSED"]},
+    "run_count": {"type": "integer", "minimum": 0, "maximum": 1},
+    "synthetic_only": {"const": true},
+    "clean_environment": {"const": true},
+    "input_reference": {"$ref": "#/$defs/nullable_reference"},
+    "procedure_reference": {"$ref": "#/$defs/nullable_reference"},
+    "result_reference": {"$ref": "#/$defs/nullable_reference"},
+    "failures": {"type": "array", "items": {"type": "string"}},
+    "effects": {
+      "const": {
+        "runtime_started": false,
+        "agent_instance_created": false,
+        "entity_instance_created": false,
+        "permission_granted": false,
+        "evidence_truth_created": false,
+        "customer_workload_executed": false,
+        "production_ready": false
+      }
+    }
+  },
+  "$defs": {
+    "nullable_reference": {
+      "anyOf": [
+        {"type": "string", "minLength": 1},
+        {"type": "null"}
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "NOT_EXECUTED"}}},
+      "then": {
+        "properties": {
+          "run_count": {"const": 0},
+          "input_reference": {"type": "null"},
+          "procedure_reference": {"type": "null"},
+          "result_reference": {"type": "null"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"enum": ["PASS", "FAIL_CLOSED"]}}},
+      "then": {
+        "properties": {
+          "run_count": {"const": 1},
+          "input_reference": {"type": "string", "minLength": 1},
+          "procedure_reference": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  ]
+}
+

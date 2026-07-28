@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-package-manifest.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Offline Contract Package Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "document_id", "version", "status", "hash_rule", "files", "counts", "effects"],
+  "properties": {
+    "$schema": {"const": "./package-manifest.schema.v0.1.json"},
+    "document_id": {"const": "TITMAS-CE-G13-OFFLINE-CONTRACT-PACKAGE-MANIFEST-0.1"},
+    "version": {"const": "0.1.0"},
+    "status": {"const": "OFFLINE_CONTRACT_PACKAGE_CANDIDATE_NOT_EXECUTED"},
+    "hash_rule": {"const": "SHA256_EACH_OF_27_OTHER_FILES_MANIFEST_EXCLUDES_ITSELF"},
+    "files": {
+      "type": "array",
+      "minItems": 27,
+      "maxItems": 27,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "bytes", "sha256", "kind"],
+        "properties": {
+          "path": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]+$"},
+          "bytes": {"type": "integer", "minimum": 1},
+          "sha256": {"$ref": "#/$defs/sha256"},
+          "kind": {"enum": ["SCHEMA", "CANDIDATE", "TEMPLATE", "PROMPT", "PROCEDURE", "CATALOG", "DOCUMENT"]}
+        }
+      }
+    },
+    "counts": {
+      "const": {"total_files": 28, "manifest_entries": 27, "json_files": 21, "markdown_files": 2, "prompt_files": 5, "executable_files": 0}
+    },
+    "effects": {
+      "const": {"public_fetches": 0, "model_requests": 0, "technical_reuse_runs": 0, "agent_instances": 0, "runtime_instances": 0, "permission": false, "evidence_truth": false, "customer_adoption": false, "commercial_offering": false, "production_ready": false}
+    }
+  },
+  "$defs": {"sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}}
+}

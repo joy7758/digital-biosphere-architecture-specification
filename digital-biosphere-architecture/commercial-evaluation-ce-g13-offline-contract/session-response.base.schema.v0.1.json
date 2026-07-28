@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/session-response.base.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Session Response Base Definitions v0.1",
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "uri": {"type": "string", "format": "uri"},
+    "hard_boundaries": {
+      "const": ["Evidence != Truth", "Evaluation != Authority", "Recommendation != Decision", "Capability != Permission"]
+    },
+    "common": {
+      "type": "object",
+      "required": ["session_id", "role", "source_snapshot_sha256", "requested_model", "returned_model", "hard_boundaries", "unknowns", "blockers", "critical_boundary_failures"],
+      "properties": {
+        "session_id": {"type": "string", "pattern": "^CE-G13-S0[1-5]$"},
+        "role": {"enum": ["COLD_DISCOVERY_AGENT", "ARCHITECTURE_COMPREHENSION_AGENT", "WEBSITE_ONLY_REUSE_PLANNER", "AGENT_RECOMMENDER", "BOUNDARY_AND_NON_MATCH_AUDITOR"]},
+        "source_snapshot_sha256": {"$ref": "#/$defs/sha256"},
+        "requested_model": {"const": "qwen3.7-max"},
+        "returned_model": {"const": "qwen3.7-max"},
+        "hard_boundaries": {"$ref": "#/$defs/hard_boundaries"},
+        "unknowns": {"type": "array", "items": {"type": "string"}},
+        "blockers": {"type": "array", "items": {"type": "string"}},
+        "critical_boundary_failures": {"type": "array", "maxItems": 0}
+      }
+    }
+  }
+}

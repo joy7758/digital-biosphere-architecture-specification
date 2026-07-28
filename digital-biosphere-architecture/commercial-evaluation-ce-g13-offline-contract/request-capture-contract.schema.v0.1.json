@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-request-capture-contract.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Model Request Capture Contract v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "capture_id", "session_id", "role", "status", "provider", "requested_model", "returned_model", "request_count", "prompt_sha256", "source_snapshot_sha256", "raw_response_sha256", "schema_validation", "failure_reference", "controls"],
+  "properties": {
+    "$schema": {"const": "./request-capture-contract.schema.v0.1.json"},
+    "capture_id": {"type": "string", "minLength": 1},
+    "session_id": {"type": "string", "pattern": "^CE-G13-S0[1-5]$"},
+    "role": {"enum": ["COLD_DISCOVERY_AGENT", "ARCHITECTURE_COMPREHENSION_AGENT", "WEBSITE_ONLY_REUSE_PLANNER", "AGENT_RECOMMENDER", "BOUNDARY_AND_NON_MATCH_AUDITOR"]},
+    "status": {"enum": ["NOT_EXECUTED", "CAPTURED", "FAIL_CLOSED"]},
+    "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+    "requested_model": {"const": "qwen3.7-max"},
+    "returned_model": {
+      "anyOf": [
+        {"const": "qwen3.7-max"},
+        {"type": "null"}
+      ]
+    },
+    "request_count": {"type": "integer", "minimum": 0, "maximum": 1},
+    "prompt_sha256": {"$ref": "#/$defs/sha256"},
+    "source_snapshot_sha256": {
+      "anyOf": [
+        {"$ref": "#/$defs/sha256"},
+        {"type": "null"}
+      ]
+    },
+    "raw_response_sha256": {
+      "anyOf": [
+        {"$ref": "#/$defs/sha256"},
+        {"type": "null"}
+      ]
+    },
+    "schema_validation": {"enum": ["NOT_RUN", "PASS", "FAIL"]},
+    "failure_reference": {
+      "anyOf": [
+        {"type": "string", "minLength": 1},
+        {"type": "null"}
+      ]
+    },
+    "controls": {
+      "const": {
+        "retry": false,
+        "fallback": false,
+        "substitution": false,
+        "json_extraction": false,
+        "json_repair": false,
+        "secret_persisted": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "NOT_EXECUTED"}}},
+      "then": {
+        "properties": {
+          "returned_model": {"type": "null"},
+          "request_count": {"const": 0},
+          "source_snapshot_sha256": {"type": "null"},
+          "raw_response_sha256": {"type": "null"},
+          "schema_validation": {"const": "NOT_RUN"},
+          "failure_reference": {"type": "null"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "CAPTURED"}}},
+      "then": {
+        "properties": {
+          "returned_model": {"const": "qwen3.7-max"},
+          "request_count": {"const": 1},
+          "source_snapshot_sha256": {"$ref": "#/$defs/sha256"},
+          "raw_response_sha256": {"$ref": "#/$defs/sha256"},
+          "schema_validation": {"const": "PASS"},
+          "failure_reference": {"type": "null"}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"status": {"const": "FAIL_CLOSED"}}},
+      "then": {
+        "properties": {
+          "request_count": {"const": 1},
+          "failure_reference": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  ]
+}
+

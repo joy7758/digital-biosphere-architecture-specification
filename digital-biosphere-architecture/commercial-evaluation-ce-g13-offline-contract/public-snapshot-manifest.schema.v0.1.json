@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-public-snapshot-manifest.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Public Snapshot Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "snapshot_id", "status", "root_seed", "same_origin", "resource_byte_cap", "resources", "failures", "totals", "boundaries"],
+  "properties": {
+    "$schema": {"const": "./public-snapshot-manifest.schema.v0.1.json"},
+    "snapshot_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["NOT_EXECUTED", "CAPTURED", "FAIL_CLOSED"]},
+    "root_seed": {"const": "https://redcrag.cn/"},
+    "same_origin": {"const": true},
+    "resource_byte_cap": {"const": 3000000},
+    "resources": {"type": "array", "maxItems": 16, "items": {"$ref": "#/$defs/resource"}},
+    "failures": {"type": "array", "maxItems": 16, "items": {"$ref": "#/$defs/failure"}},
+    "totals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["requests", "captured_resources", "failed_resources", "captured_bytes"],
+      "properties": {
+        "requests": {"type": "integer", "minimum": 0, "maximum": 16},
+        "captured_resources": {"type": "integer", "minimum": 0, "maximum": 16},
+        "failed_resources": {"type": "integer", "minimum": 0, "maximum": 16},
+        "captured_bytes": {"type": "integer", "minimum": 0, "maximum": 3000000}
+      }
+    },
+    "boundaries": {
+      "const": {"authorization_header_persisted": false, "cookie_persisted": false, "api_key_persisted": false, "raw_ip_persisted": false, "customer_data_persisted": false, "public_bytes_are_evidence_truth": false}
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["request_id", "source_url", "discovered_from", "status", "final_url", "content_type", "byte_count", "sha256", "retrieved_at", "same_origin", "parse_status", "admitted_to_model_input"],
+      "properties": {
+        "request_id": {"type": "string", "minLength": 1},
+        "source_url": {"type": "string", "format": "uri", "pattern": "^https://redcrag\\.cn/"},
+        "discovered_from": {"type": "string", "format": "uri", "pattern": "^https://redcrag\\.cn/"},
+        "status": {"type": "integer", "minimum": 100, "maximum": 599},
+        "final_url": {"type": "string", "format": "uri", "pattern": "^https://redcrag\\.cn/"},
+        "content_type": {"type": "string", "minLength": 1},
+        "byte_count": {"type": "integer", "minimum": 0, "maximum": 3000000},
+        "sha256": {"$ref": "#/$defs/sha256"},
+        "retrieved_at": {"type": "string", "format": "date-time"},
+        "same_origin": {"const": true},
+        "parse_status": {"enum": ["PASS", "UNSUPPORTED", "FAIL"]},
+        "admitted_to_model_input": {"type": "boolean"}
+      }
+    },
+    "failure": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["request_id", "source_url", "failure_class", "retained"],
+      "properties": {
+        "request_id": {"type": "string"},
+        "source_url": {"type": "string", "format": "uri"},
+        "failure_class": {"enum": ["TRANSPORT", "STATUS", "REDIRECT", "SIZE", "MIME", "ORIGIN", "PARSE", "SANITIZATION"]},
+        "retained": {"const": true}
+      }
+    }
+  }
+}

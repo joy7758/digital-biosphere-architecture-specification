@@ -1,0 +1,17 @@
+{
+  "$schema": "./execution-plan.schema.v0.1.json",
+  "document_id": "TITMAS-CE-G13-EXECUTION-PLAN-CANDIDATE-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_AUTHORIZED_NOT_EXECUTED",
+  "initial_url": "https://redcrag.cn/",
+  "retrieval_budget": {"http_get_requests_max": 16, "same_origin_only": true, "same_origin_redirects_only": true, "raw_public_bytes_max": 3000000, "retries": 0},
+  "sessions": [
+    {"session_id": "CE-G13-S01", "role": "COLD_DISCOVERY_AGENT", "provider": "ALIBABA_CLOUD_MODEL_STUDIO", "requested_model": "qwen3.7-max", "requests_max": 1, "retry": false, "fallback": false, "substitution": false, "json_extraction": false, "json_repair": false},
+    {"session_id": "CE-G13-S02", "role": "ARCHITECTURE_COMPREHENSION_AGENT", "provider": "ALIBABA_CLOUD_MODEL_STUDIO", "requested_model": "qwen3.7-max", "requests_max": 1, "retry": false, "fallback": false, "substitution": false, "json_extraction": false, "json_repair": false},
+    {"session_id": "CE-G13-S03", "role": "WEBSITE_ONLY_REUSE_PLANNER", "provider": "ALIBABA_CLOUD_MODEL_STUDIO", "requested_model": "qwen3.7-max", "requests_max": 1, "retry": false, "fallback": false, "substitution": false, "json_extraction": false, "json_repair": false},
+    {"session_id": "CE-G13-S04", "role": "AGENT_RECOMMENDER", "provider": "ALIBABA_CLOUD_MODEL_STUDIO", "requested_model": "qwen3.7-max", "requests_max": 1, "retry": false, "fallback": false, "substitution": false, "json_extraction": false, "json_repair": false},
+    {"session_id": "CE-G13-S05", "role": "BOUNDARY_AND_NON_MATCH_AUDITOR", "provider": "ALIBABA_CLOUD_MODEL_STUDIO", "requested_model": "qwen3.7-max", "requests_max": 1, "retry": false, "fallback": false, "substitution": false, "json_extraction": false, "json_repair": false}
+  ],
+  "technical_reuse": {"runs_max": 1, "synthetic_only": true, "clean_environment": true, "runtime_starts": 0, "agent_instances": 0, "entity_instances": 0, "permission_grants": 0, "evidence_truth_objects": 0},
+  "effects": {"authorized": false, "public_fetches": 0, "model_requests": 0, "technical_reuse_runs": 0, "customer_adoption": false, "commercial_offering": false, "production_ready": false}
+}

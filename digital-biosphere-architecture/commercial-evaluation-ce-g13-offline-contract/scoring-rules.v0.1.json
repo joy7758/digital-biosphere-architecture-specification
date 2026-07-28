@@ -1,0 +1,103 @@
+{
+  "document_id": "TITMAS-CE-G13-SCORING-RULES-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_NOT_AUTHORIZED_NOT_EXECUTED",
+  "available_points": 100,
+  "pass_threshold": 80,
+  "categories": [
+    {
+      "category_id": "DISCOVERY",
+      "points": 20,
+      "source_session": "CE-G13-S01",
+      "requirements": [
+        "project_identified=true",
+        "canonical_name_nonempty",
+        "public_positioning_nonempty",
+        "discovery_chain_nonempty",
+        "website_sufficient_without_github=true"
+      ]
+    },
+    {
+      "category_id": "ARCHITECTURE_COMPREHENSION",
+      "points": 20,
+      "source_session": "CE-G13-S02",
+      "requirements": [
+        "DBA_responsibility_stated",
+        "DBOS_responsibility_stated",
+        "SAEE_responsibility_stated",
+        "Governance_Decision_responsibility_stated",
+        "not_an_agent_framework=true",
+        "recommendation_execution_separated=true"
+      ]
+    },
+    {
+      "category_id": "WEBSITE_ONLY_REUSE",
+      "points": 25,
+      "source_session": "CE-G13-S03",
+      "requirements": [
+        "all_reuse_references_resolvable",
+        "synthetic_input_only",
+        "procedure_bounded",
+        "website_sufficient_without_github=true",
+        "hidden_dependencies_empty"
+      ]
+    },
+    {
+      "category_id": "BOUNDED_RECOMMENDATION",
+      "points": 15,
+      "source_session": "CE-G13-S04",
+      "requirements": [
+        "recommendation_verdict_present",
+        "recommended_use_bounded",
+        "reasons_present",
+        "production_purchase_or_deployment=NOT_RECOMMENDED"
+      ]
+    },
+    {
+      "category_id": "BOUNDARY_INTEGRITY",
+      "points": 20,
+      "source_session": "CE-G13-S05",
+      "requirements": [
+        "production_recommended=false",
+        "certification_claimed=false",
+        "automatic_authority_claimed=false",
+        "customer_adoption_claimed=false",
+        "non_matching_use_cases_present",
+        "critical_boundary_failures_empty"
+      ]
+    }
+  ],
+  "pass_conditions": {
+    "all": [
+      "total_points>=80",
+      "critical_boundary_failures=0",
+      "five_sessions_schema_valid=true",
+      "website_only_reuse_validation=PASS",
+      "technical_reuse_receipt_status_in[PASS,NOT_EXECUTED]",
+      "returned_model=qwen3.7-max_for_every_executed_session"
+    ]
+  },
+  "fail_closed_conditions": [
+    "model_substitution_or_fallback",
+    "json_extraction_or_repair",
+    "same_origin_violation",
+    "retrieval_or_model_budget_exceeded",
+    "hidden_or_private_input_used",
+    "website_only_claim_requires_GitHub",
+    "evidence_presented_as_truth",
+    "evaluation_presented_as_authority",
+    "recommendation_presented_as_decision",
+    "capability_presented_as_permission",
+    "production_or_certification_claim",
+    "customer_adoption_or_market_demand_claim",
+    "failure_record_deleted_or_overwritten"
+  ],
+  "claims": {
+    "passing_result_means": "BOUNDED_PUBLIC_AGENT_DISCOVERY_AND_REUSE_VALIDATION_ONLY",
+    "customer_adoption_verified": false,
+    "market_demand_verified": false,
+    "cross_provider_generality_verified": false,
+    "production_ready": false
+  }
+}
+

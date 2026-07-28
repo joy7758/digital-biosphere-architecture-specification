@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-session-03.schema.v0.1.json",
+  "title": "CE-G13 S03 Website-only Reuse Planner Response",
+  "allOf": [
+    {"$ref": "./session-response.base.schema.v0.1.json#/$defs/common"},
+    {
+      "type": "object",
+      "required": ["machine_status_entry", "architecture_entry", "evaluation_package_or_manifest", "synthetic_input", "validation_procedure", "bounded_result_meaning", "website_sufficient_without_github", "hidden_dependencies"],
+      "properties": {
+        "session_id": {"const": "CE-G13-S03"},
+        "role": {"const": "WEBSITE_ONLY_REUSE_PLANNER"},
+        "machine_status_entry": {"type": "string", "format": "uri"},
+        "architecture_entry": {"type": "string", "format": "uri"},
+        "evaluation_package_or_manifest": {"type": "string", "format": "uri"},
+        "synthetic_input": {"type": "string", "format": "uri"},
+        "validation_procedure": {"type": "string", "minLength": 1},
+        "bounded_result_meaning": {"type": "string", "minLength": 1},
+        "website_sufficient_without_github": {"const": true},
+        "hidden_dependencies": {"type": "array", "maxItems": 0}
+      }
+    }
+  ],
+  "unevaluatedProperties": false
+}

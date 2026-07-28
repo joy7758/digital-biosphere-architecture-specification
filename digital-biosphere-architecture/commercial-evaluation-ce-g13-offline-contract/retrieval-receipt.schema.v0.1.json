@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-retrieval-receipt.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Retrieval Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "receipt_id", "status", "request_attempts", "transport_successes", "content_captures", "discovery_edges", "model_input_admissions", "failure_records", "effects"],
+  "properties": {
+    "$schema": {"const": "./retrieval-receipt.schema.v0.1.json"},
+    "receipt_id": {"type": "string"},
+    "status": {"enum": ["NOT_EXECUTED", "PASS", "FAIL_CLOSED"]},
+    "request_attempts": {"type": "integer", "minimum": 0, "maximum": 16},
+    "transport_successes": {"type": "integer", "minimum": 0, "maximum": 16},
+    "content_captures": {"type": "integer", "minimum": 0, "maximum": 16},
+    "discovery_edges": {"type": "integer", "minimum": 0, "maximum": 32},
+    "model_input_admissions": {"type": "integer", "minimum": 0, "maximum": 16},
+    "failure_records": {"type": "integer", "minimum": 0, "maximum": 16},
+    "effects": {"const": {"http_success_is_evidence_truth": false, "hidden_input_added": false, "secret_persisted": false, "customer_data_persisted": false}}
+  }
+}

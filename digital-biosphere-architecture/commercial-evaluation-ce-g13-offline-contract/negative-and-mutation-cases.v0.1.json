@@ -1,0 +1,44 @@
+{
+  "document_id": "TITMAS-CE-G13-NEGATIVE-AND-MUTATION-CASES-0.1",
+  "version": "0.1.0",
+  "status": "OFFLINE_TEST_CATALOG_NOT_EXECUTED",
+  "cases": [
+    {"case_id": "NEG-001", "target": "PACKAGE", "mutation": "missing_authorized_file", "expected": "REJECT", "protected_boundary": "EXACT_SCOPE"},
+    {"case_id": "NEG-002", "target": "PACKAGE", "mutation": "extra_unauthorized_file", "expected": "REJECT", "protected_boundary": "EXACT_SCOPE"},
+    {"case_id": "NEG-003", "target": "PACKAGE", "mutation": "executable_file_present", "expected": "REJECT", "protected_boundary": "CONTRACT_NOT_IMPLEMENTATION"},
+    {"case_id": "NEG-004", "target": "PACKAGE_MANIFEST", "mutation": "manifest_hashes_itself", "expected": "REJECT", "protected_boundary": "NON_RECURSIVE_HASHING"},
+    {"case_id": "NEG-005", "target": "PACKAGE_MANIFEST", "mutation": "file_hash_mismatch", "expected": "REJECT", "protected_boundary": "INTEGRITY"},
+    {"case_id": "NEG-006", "target": "JSON", "mutation": "duplicate_object_key", "expected": "REJECT", "protected_boundary": "UNAMBIGUOUS_DATA"},
+    {"case_id": "NEG-007", "target": "SCHEMA", "mutation": "invalid_draft_2020_12_schema", "expected": "REJECT", "protected_boundary": "SCHEMA_CONFORMANCE"},
+    {"case_id": "NEG-008", "target": "EXECUTION_PLAN", "mutation": "authorized_true", "expected": "REJECT", "protected_boundary": "DECISION_REQUIRED"},
+    {"case_id": "NEG-009", "target": "EXECUTION_PLAN", "mutation": "model_not_qwen3_7_max", "expected": "REJECT", "protected_boundary": "MODEL_IDENTITY"},
+    {"case_id": "NEG-010", "target": "EXECUTION_PLAN", "mutation": "retry_true", "expected": "REJECT", "protected_boundary": "SINGLE_REQUEST"},
+    {"case_id": "NEG-011", "target": "EXECUTION_PLAN", "mutation": "fallback_true", "expected": "REJECT", "protected_boundary": "NO_FALLBACK"},
+    {"case_id": "NEG-012", "target": "EXECUTION_PLAN", "mutation": "json_repair_true", "expected": "REJECT", "protected_boundary": "DIRECT_JSON"},
+    {"case_id": "NEG-013", "target": "SNAPSHOT", "mutation": "cross_origin_resource", "expected": "REJECT", "protected_boundary": "SAME_ORIGIN"},
+    {"case_id": "NEG-014", "target": "SNAPSHOT", "mutation": "resource_budget_exceeded", "expected": "REJECT", "protected_boundary": "BOUNDED_RETRIEVAL"},
+    {"case_id": "NEG-015", "target": "SNAPSHOT", "mutation": "secret_persisted", "expected": "REJECT", "protected_boundary": "NO_CREDENTIALS"},
+    {"case_id": "NEG-016", "target": "RETRIEVAL_RECEIPT", "mutation": "http_success_is_evidence_truth_true", "expected": "REJECT", "protected_boundary": "EVIDENCE_NOT_TRUTH"},
+    {"case_id": "NEG-017", "target": "S01_PROMPT", "mutation": "project_name_answer_key_present", "expected": "REJECT", "protected_boundary": "COLD_DISCOVERY"},
+    {"case_id": "NEG-018", "target": "S01_PROMPT", "mutation": "known_public_filename_answer_key_present", "expected": "REJECT", "protected_boundary": "COLD_DISCOVERY"},
+    {"case_id": "NEG-019", "target": "SESSION_RESPONSE", "mutation": "returned_model_substituted", "expected": "REJECT", "protected_boundary": "MODEL_IDENTITY"},
+    {"case_id": "NEG-020", "target": "SESSION_RESPONSE", "mutation": "critical_boundary_failure_present", "expected": "REJECT", "protected_boundary": "FAIL_CLOSED"},
+    {"case_id": "NEG-021", "target": "S03_RESPONSE", "mutation": "github_required_but_website_sufficient_true", "expected": "REJECT", "protected_boundary": "WEBSITE_ONLY"},
+    {"case_id": "NEG-022", "target": "S04_RESPONSE", "mutation": "production_deployment_recommended", "expected": "REJECT", "protected_boundary": "NO_PRODUCTION_CLAIM"},
+    {"case_id": "NEG-023", "target": "S04_RESPONSE", "mutation": "recommendation_treated_as_decision", "expected": "REJECT", "protected_boundary": "RECOMMENDATION_NOT_DECISION"},
+    {"case_id": "NEG-024", "target": "S05_RESPONSE", "mutation": "customer_adoption_claimed_true", "expected": "REJECT", "protected_boundary": "NO_ADOPTION_CLAIM"},
+    {"case_id": "NEG-025", "target": "REUSE_VALIDATION", "mutation": "runtime_started_true", "expected": "REJECT", "protected_boundary": "NO_RUNTIME"},
+    {"case_id": "NEG-026", "target": "TECHNICAL_RECEIPT", "mutation": "permission_granted_true", "expected": "REJECT", "protected_boundary": "CAPABILITY_NOT_PERMISSION"},
+    {"case_id": "NEG-027", "target": "COMPOSITE_RESULT", "mutation": "evaluation_presented_as_authority", "expected": "REJECT", "protected_boundary": "EVALUATION_NOT_AUTHORITY"},
+    {"case_id": "NEG-028", "target": "FAILURE_RECORD", "mutation": "failure_deleted_or_overwritten", "expected": "REJECT", "protected_boundary": "FAILURE_RETENTION"}
+  ],
+  "effects": {
+    "cases_executed": 0,
+    "network_requests": 0,
+    "model_requests": 0,
+    "runtime_starts": 0,
+    "agent_instances": 0,
+    "permission_grants": 0
+  }
+}
+

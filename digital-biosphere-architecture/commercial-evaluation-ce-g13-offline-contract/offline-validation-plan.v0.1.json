@@ -1,0 +1,62 @@
+{
+  "document_id": "TITMAS-CE-G13-OFFLINE-VALIDATION-PLAN-0.1",
+  "version": "0.1.0",
+  "status": "AUTHORIZED_ONCE_NOT_EXECUTED",
+  "mode": "LOCAL_OFFLINE_READ_ONLY_VALIDATION",
+  "allowed_run_count": 1,
+  "checks": [
+    "exact_28_file_allowlist",
+    "exact_file_type_counts",
+    "no_executable_files",
+    "duplicate_json_key_rejection",
+    "draft_2020_12_schema_meta_validation",
+    "candidate_and_template_instance_validation",
+    "relative_schema_reference_resolution",
+    "five_role_schema_specialization",
+    "prompt_role_and_session_binding",
+    "direct_json_instruction_present",
+    "cold_discovery_answer_keys_absent",
+    "manifest_exact_27_entry_coverage",
+    "manifest_sha256_and_byte_counts",
+    "scoring_points_sum_to_100",
+    "scoring_fail_closed_boundaries_present",
+    "at_least_24_unique_negative_cases",
+    "all_negative_cases_expect_reject",
+    "controller_is_non_executable",
+    "all_execution_effects_zero_or_false"
+  ],
+  "forbidden_actions": [
+    "network_access",
+    "credential_read",
+    "model_request",
+    "public_snapshot_capture",
+    "technical_reuse_run",
+    "runtime_start",
+    "agent_creation",
+    "entity_creation",
+    "permission_grant",
+    "evidence_truth_creation"
+  ],
+  "result_policy": {
+    "pass": "ALL_CHECKS_PASS",
+    "failure": "FAIL_CLOSED_NO_RETRY_WITHOUT_NEW_GOVERNANCE_CYCLE",
+    "persistent_result_file_authorized": false,
+    "console_result_only": true
+  },
+  "effects": {
+    "network_requests": 0,
+    "credential_reads": 0,
+    "model_requests": 0,
+    "public_fetches": 0,
+    "technical_reuse_runs": 0,
+    "runtime_starts": 0,
+    "agent_instances": 0,
+    "entity_instances": 0,
+    "permission_grants": 0,
+    "evidence_truth_objects": 0,
+    "customer_adoption": false,
+    "commercial_offering": false,
+    "certification": false,
+    "production_ready": false
+  }
+}

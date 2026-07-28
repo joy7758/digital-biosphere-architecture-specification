@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-reuse-plan-validation-result.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Website-only Reuse Plan Validation Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "result_id", "status", "session_reference", "source_snapshot_sha256", "checks", "failures", "effects"],
+  "properties": {
+    "$schema": {"const": "./reuse-plan-validation-result.schema.v0.1.json"},
+    "result_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["NOT_EXECUTED", "PASS", "FAIL_CLOSED"]},
+    "session_reference": {"const": "CE-G13-S03"},
+    "source_snapshot_sha256": {"$ref": "#/$defs/nullable_sha256"},
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["machine_status_entry_resolvable", "architecture_entry_resolvable", "evaluation_package_resolvable", "synthetic_input_resolvable", "procedure_bounded", "website_only", "hidden_dependencies_absent"],
+      "properties": {
+        "machine_status_entry_resolvable": {"type": "boolean"},
+        "architecture_entry_resolvable": {"type": "boolean"},
+        "evaluation_package_resolvable": {"type": "boolean"},
+        "synthetic_input_resolvable": {"type": "boolean"},
+        "procedure_bounded": {"type": "boolean"},
+        "website_only": {"type": "boolean"},
+        "hidden_dependencies_absent": {"type": "boolean"}
+      }
+    },
+    "failures": {"type": "array", "items": {"type": "string"}},
+    "effects": {
+      "const": {
+        "runtime_started": false,
+        "agent_created": false,
+        "permission_granted": false,
+        "customer_adoption": false,
+        "production_ready": false
+      }
+    }
+  },
+  "$defs": {
+    "nullable_sha256": {
+      "anyOf": [
+        {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        {"type": "null"}
+      ]
+    }
+  }
+}
+

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-session-05.schema.v0.1.json",
+  "title": "CE-G13 S05 Boundary and Non-match Auditor Response",
+  "allOf": [
+    {"$ref": "./session-response.base.schema.v0.1.json#/$defs/common"},
+    {
+      "type": "object",
+      "required": ["production_recommended", "certification_claimed", "automatic_authority_claimed", "customer_adoption_claimed", "non_matching_use_cases"],
+      "properties": {
+        "session_id": {"const": "CE-G13-S05"},
+        "role": {"const": "BOUNDARY_AND_NON_MATCH_AUDITOR"},
+        "production_recommended": {"const": false},
+        "certification_claimed": {"const": false},
+        "automatic_authority_claimed": {"const": false},
+        "customer_adoption_claimed": {"const": false},
+        "non_matching_use_cases": {"type": "array", "minItems": 2, "items": {"type": "string"}}
+      }
+    }
+  ],
+  "unevaluatedProperties": false
+}

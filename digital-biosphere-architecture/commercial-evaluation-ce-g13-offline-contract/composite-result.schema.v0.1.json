@@ -1,0 +1,60 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-composite-result.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Composite Result v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["$schema", "result_id", "status", "snapshot_manifest_reference", "retrieval_receipt_reference", "request_capture_references", "session_result_references", "reuse_plan_validation_reference", "technical_reuse_receipt_reference", "scorecard", "failures", "claims"],
+  "properties": {
+    "$schema": {"const": "./composite-result.schema.v0.1.json"},
+    "result_id": {"type": "string", "minLength": 1},
+    "status": {"enum": ["NOT_EXECUTED", "PASS", "FAIL_CLOSED"]},
+    "snapshot_manifest_reference": {"$ref": "#/$defs/nullable_reference"},
+    "retrieval_receipt_reference": {"$ref": "#/$defs/nullable_reference"},
+    "request_capture_references": {
+      "type": "array",
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "session_result_references": {
+      "type": "array",
+      "maxItems": 5,
+      "uniqueItems": true,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "reuse_plan_validation_reference": {"$ref": "#/$defs/nullable_reference"},
+    "technical_reuse_receipt_reference": {"$ref": "#/$defs/nullable_reference"},
+    "scorecard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["total_points", "available_points", "critical_boundary_failures", "outcome"],
+      "properties": {
+        "total_points": {"type": "integer", "minimum": 0, "maximum": 100},
+        "available_points": {"const": 100},
+        "critical_boundary_failures": {"type": "integer", "minimum": 0},
+        "outcome": {"enum": ["NOT_SCORED", "PASS", "FAIL_CLOSED"]}
+      }
+    },
+    "failures": {"type": "array", "items": {"type": "string"}},
+    "claims": {
+      "const": {
+        "customer_adoption_verified": false,
+        "market_demand_verified": false,
+        "cross_provider_generality_verified": false,
+        "commercial_offering": false,
+        "certification": false,
+        "production_ready": false,
+        "authority_granted": false
+      }
+    }
+  },
+  "$defs": {
+    "nullable_reference": {
+      "anyOf": [
+        {"type": "string", "minLength": 1},
+        {"type": "null"}
+      ]
+    }
+  }
+}
