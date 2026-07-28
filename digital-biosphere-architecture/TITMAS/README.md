@@ -83,6 +83,31 @@ EXPERIMENT_EXECUTION_AUTHORIZED=false
 VALUE_PROVEN=false
 ```
 
+## 11. Ecology Box 001 experiment package
+
+The [DEB-TITMAS-001 preparation package](agent-native/ecology-box-001/README.md)
+freezes the constitution, protocol, participant Schema, role and task
+registries, human-first baseline, metrics, blind review, failure scenarios,
+Memory candidate contract and final-report template for a future bounded
+comparison. Its [freeze manifest](agent-native/ecology-box-001/freeze-manifest.yaml)
+is machine-readable. The
+[preparation completion report](../TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-PACKAGE-COMPLETION-REPORT-v0.1.md)
+records validation and remaining Human gates.
+
+The package is prepared but not executed. It creates no participant, Agent
+contribution, Git access, Authority, public report or commercial evidence.
+
+```text
+TITMAS_ECOLOGY_BOX_001_PACKAGE_COMPLETE=true
+TITMAS_ECOLOGY_BOX_001_READY=true
+TITMAS_ECOLOGY_BOX_001_EXECUTED=false
+TITMAS_ECOLOGY_BOX_001_VALUE_PROVEN=false
+REAL_AGENT_CONTRIBUTION_AUTHORIZED=false
+REAL_GIT_ACCESS_AUTHORIZED=false
+PUBLIC_REPORT_AUTHORIZED=false
+COMMERCIAL_VALIDATION_AUTHORIZED=false
+```
+
 ## Human five-minute quick start
 
 ```bash

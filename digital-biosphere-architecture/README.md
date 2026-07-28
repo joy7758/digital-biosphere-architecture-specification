@@ -240,7 +240,14 @@ Release、Certification 或商业 Offering 已经建立。
 - [已核验基线](architecture/titmas-agent-native-value-validation-baseline-v0.1.md)；
 - [Value Validation Framework](architecture/titmas-agent-native-value-validation-framework-v0.1.md)；
 - [Ecology Box 001](architecture/titmas-agent-native-ecology-box-001-v0.1.md)；
+- [Ecology Box 001 试验准备包](TITMAS/agent-native/ecology-box-001/README.md)；
+- [Ecology Box 001 冻结清单](TITMAS/agent-native/ecology-box-001/freeze-manifest.yaml)；
+- [Ecology Box 001 准备完成报告](TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-PACKAGE-COMPLETION-REPORT-v0.1.md)；
 - [Human Decision Packet](TITMAS-AGENT-NATIVE-VALUE-VALIDATION-HUMAN-DECISION-PACKET-v0.1.md)。
+
+试验准备包冻结协议、角色、任务、指标、盲审、失败场景与报告模板，但不创建
+参与者、不运行试验，也不授权真实 Git、公开报告或商业验证。任何后续执行仍需
+`HD-EB-01` 至 `HD-EB-05` 的独立 Human Decision（人类决策）。
 
 ```text
 TITMAS_AGENT_NATIVE_VALUE_FRAMEWORK_DEFINED=true
@@ -248,6 +255,8 @@ TITMAS_AGENT_NATIVE_VALUE_EXPERIMENT_READY=true
 TITMAS_AGENT_NATIVE_VALUE_EXPERIMENT_EXECUTED=false
 TITMAS_AGENT_NATIVE_VALUE_PROVEN=false
 TITMAS_AGENT_OPERATIONAL_VALUE_DEMONSTRATED=false
+TITMAS_ECOLOGY_BOX_001_PACKAGE_COMPLETE=true
+TITMAS_ECOLOGY_BOX_001_EXECUTED=false
 ```
 
 ## Legacy scenario — Commercial Evaluation Pack v0.2（既有场景材料）
