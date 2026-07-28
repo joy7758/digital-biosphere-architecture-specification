@@ -1,0 +1,117 @@
+{
+  "schema_version": "0.1",
+  "catalog_id": "TITMAS-PUBLIC-SITE-CATALOG-0.1",
+  "information_architecture": "PEER_SURFACES_WITH_OVERVIEW_AND_INDEX",
+  "public_surfaces": {
+    "research": {
+      "enabled": true,
+      "overview_zh": "/research/",
+      "overview_en": "/en/research/",
+      "index_zh": "/research/index/",
+      "index_en": "/en/research/index/"
+    },
+    "applications": {
+      "enabled": true,
+      "index_zh": "/applications/",
+      "index_en": "/en/applications/"
+    },
+    "demos": {
+      "enabled": true,
+      "index_zh": "/demos/",
+      "index_en": "/en/demos/"
+    },
+    "developers": {
+      "enabled": true,
+      "entry_zh": "/community/",
+      "entry_en": "/en/community/"
+    },
+    "products": {
+      "enabled": false,
+      "public_navigation": false,
+      "sitemap_visible": false,
+      "available_products": 0,
+      "activation_gate": "AVAILABLE_PRODUCTS_GT_0"
+    }
+  },
+  "extension_interfaces": {
+    "research": {
+      "route_template": "/research/{slug}/",
+      "required_metadata": ["id", "title", "status", "source", "limitations"]
+    },
+    "applications": {
+      "route_template": "/industry/{slug}/",
+      "required_metadata": ["id", "title", "status", "infrastructure_role", "industry_role", "non_goals"]
+    },
+    "demos": {
+      "route_template": "/demo/{slug}/",
+      "required_metadata": ["id", "title", "status", "data_policy", "validation_boundary", "production_boundary"]
+    },
+    "products": {
+      "route_template": "/products/{slug}/",
+      "required_metadata": ["id", "title", "availability", "delivery_model", "support_boundary", "production_status"],
+      "publication_precondition": "AVAILABLE_PRODUCTS_GT_0"
+    }
+  },
+  "published_items": {
+    "research": [
+      {
+        "id": "digital-biosphere",
+        "status": "PUBLISHED_ARCHITECTURE_BASELINE",
+        "href": "/research/index/#digital-biosphere"
+      },
+      {
+        "id": "evidence-governance",
+        "status": "PUBLISHED_RESEARCH_DIRECTION",
+        "href": "/research/index/#evidence-governance"
+      },
+      {
+        "id": "titmas-trust-infrastructure",
+        "status": "DEVELOPER_PREVIEW_RELEASED",
+        "href": "/research/index/#titmas-trust-infrastructure"
+      }
+    ],
+    "applications": [
+      {
+        "id": "medical-evidence",
+        "status": "PUBLISHED_DIRECTION",
+        "href": "/industry/medical-evidence/",
+        "independent_medical_platform": false
+      },
+      {
+        "id": "manufacturing-agent-ecosystem",
+        "status": "PUBLISHED_EXAMPLE",
+        "href": "/industries/",
+        "industry_solution_offering": false
+      }
+    ],
+    "demos": [
+      {
+        "id": "digital-cell",
+        "status": "REFERENCE_COMPLETE",
+        "href": "/digital-cell/",
+        "production_claim": false
+      },
+      {
+        "id": "udi-dicom-evidence",
+        "status": "STATIC_SYNTHETIC_UI_DEMO",
+        "href": "/demo/medical-evidence/",
+        "synthetic_data": true,
+        "clinical_validation": false,
+        "real_registry_lookup": false
+      }
+    ]
+  },
+  "commercial_evaluation": {
+    "href": "/commercial-evaluation/",
+    "engagement_type": "consultation",
+    "product": false,
+    "available_offering": false,
+    "production_ready": false
+  },
+  "truth": {
+    "available_products": 0,
+    "available_commercial_offering": false,
+    "production_ready": false,
+    "future_placeholder_items_published": 0
+  }
+}

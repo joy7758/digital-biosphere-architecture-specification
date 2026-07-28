@@ -19,6 +19,28 @@ Repositories transferred: 0
 Community established: false
 Public contribution enabled: false
 
+## Public information architecture
+
+Human entry:
+- Research overview: /research/ and /en/research/
+- Research index: /research/index/ and /en/research/index/
+- Applications: /applications/ and /en/applications/
+- Demos: /demos/ and /en/demos/
+- Developers: /community/ and /en/community/
+
+Machine entry:
+- /site-catalog.json
+
+AVAILABLE_PRODUCTS=0
+PRODUCTS_PUBLIC_NAVIGATION=false
+PRODUCT_ACTIVATION_GATE=AVAILABLE_PRODUCTS_GT_0
+FUTURE_PLACEHOLDER_ITEMS_PUBLISHED=0
+
+The public site does not expose an empty Products shelf. The machine catalog
+preserves route templates and required metadata for future research,
+applications, demos, and products. A Products surface may be published only
+after at least one real, bounded offering exists.
+
 ## Commercial Evaluation Pack v0.2
 
 COMMERCIAL_EVALUATION_PACKAGE_PREPARED=true

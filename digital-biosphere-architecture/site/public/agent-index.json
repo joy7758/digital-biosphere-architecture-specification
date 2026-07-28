@@ -40,6 +40,15 @@
   "entrypoints": {
     "zh": "/",
     "en": "/en/",
+    "research_zh": "/research/",
+    "research_en": "/en/research/",
+    "research_index_zh": "/research/index/",
+    "research_index_en": "/en/research/index/",
+    "applications_zh": "/applications/",
+    "applications_en": "/en/applications/",
+    "demos_zh": "/demos/",
+    "demos_en": "/en/demos/",
+    "site_catalog": "/site-catalog.json",
     "status_zh": "/status/",
     "status_en": "/en/status/",
     "community_zh": "/community/",
@@ -72,6 +81,14 @@
     "digital_cell_demo_en": "/en/digital-cell/",
     "digital_cell_demo_object": "/digital-cell.json"
   },
+  "site_information_architecture": {
+    "pattern": "PEER_SURFACES_WITH_OVERVIEW_AND_INDEX",
+    "public_surfaces": ["research", "applications", "demos", "developers"],
+    "products_public_navigation": false,
+    "available_products": 0,
+    "product_activation_gate": "AVAILABLE_PRODUCTS_GT_0",
+    "future_placeholder_items_published": 0
+  },
   "medical_evidence_demo": {
     "demo_id": "TITMAS-MEDICAL-EVIDENCE-DEMO-0.1",
     "status": "STATIC_SYNTHETIC_UI_DEMO",
@@ -97,6 +114,8 @@
   },
   "commercial_evaluation": {
     "package_id": "TITMAS-COMMERCIAL-EVALUATION-PACK-0.2",
+    "engagement_type": "consultation",
+    "product": false,
     "status": "AGENT_FIRST_RUN_VALIDATED_NOT_AVAILABLE_OFFERING",
     "remote_validated": true,
     "first_run_result": "PASS",

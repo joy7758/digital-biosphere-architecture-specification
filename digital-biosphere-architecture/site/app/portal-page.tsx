@@ -4,6 +4,9 @@ import { Footer, Header } from "./site-shell";
 export function PortalPage({ locale }: { locale: Locale }) {
   const c = content[locale];
   const statusPath = locale === "zh" ? "/status/" : "/en/status/";
+  const researchPath = locale === "zh" ? "/research/" : "/en/research/";
+  const demosPath = locale === "zh" ? "/demos/" : "/en/demos/";
+  const digitalCellPath = locale === "zh" ? "/digital-cell/" : "/en/digital-cell/";
   const architectureHref =
     "https://github.com/joy7758/digital-biosphere-architecture-specification";
 
@@ -36,8 +39,8 @@ export function PortalPage({ locale }: { locale: Locale }) {
             <h1>{c.title}</h1>
             <p className="hero-lead">{c.lead}</p>
             <div className="hero-actions">
-              <a className="button button-primary" href={locale === "zh" ? "/community/" : "/en/community/"}>{c.primaryCta}</a>
-              <a className="button button-secondary" href={statusPath}>{c.secondaryCta}</a>
+              <a className="button button-primary" href={researchPath}>{c.primaryCta}</a>
+              <a className="button button-secondary" href={demosPath}>{c.secondaryCta}</a>
             </div>
             <p className="truth-notice"><span>i</span>{c.notice}</p>
           </div>
@@ -97,7 +100,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
                   : "TITMAS Digital Cell Demo is a minimal reference implementation showing Identity, Boundary, Evidence, Health, Memory, and Reputation around an AI agent."}
               </p>
               <div className="cell-feature-actions">
-                <a className="button cell-feature-primary" href="/digital-cell/">
+                <a className="button cell-feature-primary" href={digitalCellPath}>
                   {locale === "zh" ? "查看 Digital Cell Demo" : "Explore the Digital Cell Demo"}
                   <span>→</span>
                 </a>
@@ -113,7 +116,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
             </div>
             <a
               className="cell-feature-visual"
-              href="/digital-cell/"
+              href={digitalCellPath}
               aria-label={locale === "zh" ? "打开 TITMAS Digital Cell Demo" : "Open TITMAS Digital Cell Demo"}
             >
               <img

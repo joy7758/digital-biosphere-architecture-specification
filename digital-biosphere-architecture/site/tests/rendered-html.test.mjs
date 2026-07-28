@@ -73,6 +73,43 @@ test("renders equivalent Chinese and English public entry points", async () => {
   }
 });
 
+test("renders OpenAI-inspired peer surfaces without an empty product shelf", async () => {
+  const [zhResearchResponse, enResearchResponse, zhIndexResponse, enIndexResponse, zhApplicationsResponse, enApplicationsResponse, zhDemosResponse, enDemosResponse] = await Promise.all([
+    render("/research"),
+    render("/en/research"),
+    render("/research/index"),
+    render("/en/research/index"),
+    render("/applications"),
+    render("/en/applications"),
+    render("/demos"),
+    render("/en/demos"),
+  ]);
+  for (const response of [zhResearchResponse, enResearchResponse, zhIndexResponse, enIndexResponse, zhApplicationsResponse, enApplicationsResponse, zhDemosResponse, enDemosResponse]) {
+    assert.equal(response.status, 200);
+  }
+  const [zhResearch, enResearch, zhIndex, enIndex, zhApplications, enApplications, zhDemos, enDemos] = await Promise.all([
+    zhResearchResponse.text(),
+    enResearchResponse.text(),
+    zhIndexResponse.text(),
+    enIndexResponse.text(),
+    zhApplicationsResponse.text(),
+    enApplicationsResponse.text(),
+    zhDemosResponse.text(),
+    enDemosResponse.text(),
+  ]);
+  assert.match(zhResearch, /从研究框架到可验证基础设施/);
+  assert.match(enResearch, /Evidence Governance/);
+  assert.match(zhIndex, /PUBLISHED_ARCHITECTURE_BASELINE/);
+  assert.match(enIndex, /DEVELOPER_PREVIEW_RELEASED/);
+  assert.match(zhApplications, /医疗证据基础设施/);
+  assert.match(enApplications, /Manufacturing AI Agent Ecosystem/);
+  assert.match(zhDemos, /SYNTHETIC_DATA=true/);
+  assert.match(enDemos, /CLINICAL_VALIDATION=false/);
+  for (const html of [zhResearch, enResearch, zhIndex, enIndex, zhApplications, enApplications, zhDemos, enDemos]) {
+    assert.doesNotMatch(html, /href="(?:\/en)?\/products\//);
+  }
+});
+
 test("renders bilingual commercial evaluation entry with fail-closed truth", async () => {
   const [zhResponse, enResponse] = await Promise.all([
     render("/commercial-evaluation"),
@@ -206,6 +243,7 @@ test("ships agent-readable and discovery resources", async () => {
   const root = new URL("../public/", import.meta.url);
   await Promise.all([
     access(new URL("llms.txt", root)),
+    access(new URL("site-catalog.json", root)),
     access(new URL("agent-index.json", root)),
     access(new URL("status.json", root)),
     access(new URL("agent-customer-package.json", root)),
@@ -224,15 +262,26 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("examples/titmas-first-run/entity-object.synthetic.v0.1.json", root)),
   ]);
 
-  const [agentIndex, status, agentCustomerPackage, dbosPackage, titmasCommunity, medicalEvidence, llms] = await Promise.all([
+  const [agentIndex, status, agentCustomerPackage, dbosPackage, titmasCommunity, medicalEvidence, siteCatalog, llms] = await Promise.all([
     readFile(new URL("agent-index.json", root), "utf8").then(JSON.parse),
     readFile(new URL("status.json", root), "utf8").then(JSON.parse),
     readFile(new URL("agent-customer-package.json", root), "utf8").then(JSON.parse),
     readFile(new URL("dbos-public-package-manifest.json", root), "utf8").then(JSON.parse),
     readFile(new URL("titmas-community.json", root), "utf8").then(JSON.parse),
     readFile(new URL("medical-evidence-demo.json", root), "utf8").then(JSON.parse),
+    readFile(new URL("site-catalog.json", root), "utf8").then(JSON.parse),
     readFile(new URL("llms.txt", root), "utf8"),
   ]);
+  assert.equal(agentIndex.entrypoints.site_catalog, "/site-catalog.json");
+  assert.equal(agentIndex.entrypoints.research_zh, "/research/");
+  assert.equal(agentIndex.entrypoints.applications_en, "/en/applications/");
+  assert.equal(agentIndex.entrypoints.demos_zh, "/demos/");
+  assert.equal(siteCatalog.public_surfaces.products.enabled, false);
+  assert.equal(siteCatalog.public_surfaces.products.available_products, 0);
+  assert.equal(siteCatalog.truth.future_placeholder_items_published, 0);
+  assert.equal(siteCatalog.commercial_evaluation.engagement_type, "consultation");
+  assert.equal(siteCatalog.published_items.demos[1].synthetic_data, true);
+  assert.equal(siteCatalog.published_items.demos[1].clinical_validation, false);
   assert.equal(agentIndex.released, releaseContext.developerPreviewReleased);
   assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
   assert.equal(status.public_front_door.future_primary_domain, "https://titmas.cn/");

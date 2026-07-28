@@ -9,6 +9,14 @@ const outputRoot = join(siteRoot, "out");
 const requiredFiles = [
   "index.html",
   "en/index.html",
+  "research/index.html",
+  "en/research/index.html",
+  "research/index/index.html",
+  "en/research/index/index.html",
+  "applications/index.html",
+  "en/applications/index.html",
+  "demos/index.html",
+  "en/demos/index.html",
   "community/index.html",
   "en/community/index.html",
   "industries/index.html",
@@ -51,6 +59,7 @@ const requiredFiles = [
   "status/index.html",
   "en/status/index.html",
   "llms.txt",
+  "site-catalog.json",
   "agent-index.json",
   "status.json",
   "titmas-community.json",
@@ -64,7 +73,7 @@ const requiredFiles = [
 
 await Promise.all(requiredFiles.map((file) => access(join(outputRoot, file))));
 
-const [zh, en, zhCommunity, enCommunity, zhStatus, enStatus, status, titmasCommunity, agentCustomerPackage, dbosPackage, release, manifest] = await Promise.all([
+const [zh, en, zhCommunity, enCommunity, zhStatus, enStatus, status, titmasCommunity, agentCustomerPackage, dbosPackage, release, manifest, siteCatalog] = await Promise.all([
   readFile(join(outputRoot, "index.html"), "utf8"),
   readFile(join(outputRoot, "en/index.html"), "utf8"),
   readFile(join(outputRoot, "community/index.html"), "utf8"),
@@ -77,6 +86,17 @@ const [zh, en, zhCommunity, enCommunity, zhStatus, enStatus, status, titmasCommu
   readFile(join(outputRoot, "dbos-public-package-manifest.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release-manifest.json"), "utf8").then(JSON.parse),
+  readFile(join(outputRoot, "site-catalog.json"), "utf8").then(JSON.parse),
+]);
+const [zhResearch, enResearch, zhResearchIndex, enResearchIndex, zhApplications, enApplications, zhDemos, enDemos] = await Promise.all([
+  readFile(join(outputRoot, "research/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/research/index.html"), "utf8"),
+  readFile(join(outputRoot, "research/index/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/research/index/index.html"), "utf8"),
+  readFile(join(outputRoot, "applications/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/applications/index.html"), "utf8"),
+  readFile(join(outputRoot, "demos/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/demos/index.html"), "utf8"),
 ]);
 const [zhIndustries, enIndustries, medicalIndustryPage, enMedicalIndustryPage, medicalEvidencePage, enMedicalEvidencePage, digitalCellPage, enDigitalCellPage] = await Promise.all([
   readFile(join(outputRoot, "industries/index.html"), "utf8"),
@@ -109,6 +129,24 @@ assert.match(en, /trust infrastructure layer for autonomous AI agent ecosystems/
 assert.match(zh, /晋ICP备2026006409号-1/);
 assert.match(en, /晋ICP备2026006409号-1/);
 assert.match(zh, /https:\/\/beian\.miit\.gov\.cn\//);
+assert.match(zh, /href="\/research\//);
+assert.match(en, /href="\/en\/research\//);
+assert.match(zhResearch, /Evidence Governance/);
+assert.match(enResearch, /Evidence ≠ Truth/);
+assert.match(zhResearchIndex, /PUBLISHED_ARCHITECTURE_BASELINE/);
+assert.match(enResearchIndex, /DEVELOPER_PREVIEW_RELEASED/);
+assert.match(zhApplications, /医疗证据基础设施/);
+assert.match(enApplications, /Manufacturing AI Agent Ecosystem/);
+assert.match(zhDemos, /SYNTHETIC_DATA=true/);
+assert.match(enDemos, /CLINICAL_VALIDATION=false/);
+assert.equal(siteCatalog.public_surfaces.products.enabled, false);
+assert.equal(siteCatalog.public_surfaces.products.available_products, 0);
+assert.equal(siteCatalog.public_surfaces.products.public_navigation, false);
+assert.equal(siteCatalog.extension_interfaces.products.publication_precondition, "AVAILABLE_PRODUCTS_GT_0");
+assert.equal(siteCatalog.published_items.demos[1].synthetic_data, true);
+assert.equal(siteCatalog.published_items.demos[1].clinical_validation, false);
+assert.equal(siteCatalog.commercial_evaluation.engagement_type, "consultation");
+assert.equal(siteCatalog.commercial_evaluation.product, false);
 assert.match(zhCommunity, /共同建设可信多智能体基础设施/);
 assert.match(enCommunity, /Build trustworthy multi-agent infrastructure together/);
 assert.match(digitalCellPage, /TITMAS Digital Cell Demo/);

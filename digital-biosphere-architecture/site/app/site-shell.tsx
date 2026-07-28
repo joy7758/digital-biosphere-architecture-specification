@@ -18,18 +18,35 @@ export function Brand() {
   );
 }
 
-type SiteSection = "home" | "industries" | "medicalIndustry" | "medical" | "demo" | "status" | "community" | "commercial";
+type SiteSection =
+  | "home"
+  | "research"
+  | "researchIndex"
+  | "applications"
+  | "demos"
+  | "industries"
+  | "medicalIndustry"
+  | "medical"
+  | "demo"
+  | "status"
+  | "community"
+  | "commercial";
 
 export function Header({ locale, section = "home" }: { locale: Locale; section?: SiteSection }) {
   const c = content[locale];
   const root = locale === "zh" ? "/" : "/en/";
   const status = locale === "zh" ? "/status/" : "/en/status/";
   const community = locale === "zh" ? "/community/" : "/en/community/";
-  const industries = locale === "zh" ? "/industries/" : "/en/industries/";
-  const demo = locale === "zh" ? "/digital-cell/" : "/en/digital-cell/";
+  const research = locale === "zh" ? "/research/" : "/en/research/";
+  const applications = locale === "zh" ? "/applications/" : "/en/applications/";
+  const demos = locale === "zh" ? "/demos/" : "/en/demos/";
   const commercial = locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/";
   const languageRoutes: Record<SiteSection, [string, string]> = {
     home: ["/en/", "/"],
+    research: ["/en/research/", "/research/"],
+    researchIndex: ["/en/research/index/", "/research/index/"],
+    applications: ["/en/applications/", "/applications/"],
+    demos: ["/en/demos/", "/demos/"],
     industries: ["/en/industries/", "/industries/"],
     medicalIndustry: ["/en/industry/medical-evidence/", "/industry/medical-evidence/"],
     medical: ["/en/demo/medical-evidence/", "/demo/medical-evidence/"],
@@ -42,10 +59,16 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
 
   const nav = (
     <>
-      <a href={`${root}#architecture`}>{c.nav.architecture}</a>
-      <a href={industries} aria-current={section === "industries" || section === "medicalIndustry" ? "page" : undefined}>{c.nav.workflow}</a>
-      <a href={demo} aria-current={section === "demo" || section === "medical" ? "page" : undefined}>{c.nav.demo}</a>
-      <a href={community}>{c.nav.developers}</a>
+      <a href={research} aria-current={section === "research" || section === "researchIndex" ? "page" : undefined}>
+        {locale === "zh" ? "研究" : "Research"}
+      </a>
+      <a href={applications} aria-current={section === "applications" || section === "industries" || section === "medicalIndustry" ? "page" : undefined}>
+        {locale === "zh" ? "行业应用" : "Applications"}
+      </a>
+      <a href={demos} aria-current={section === "demos" || section === "demo" || section === "medical" ? "page" : undefined}>
+        {locale === "zh" ? "Demo" : "Demos"}
+      </a>
+      <a href={community} aria-current={section === "community" ? "page" : undefined}>{c.nav.developers}</a>
       <a href={commercial} aria-current={section === "commercial" ? "page" : undefined}>
         {locale === "zh" ? "商业评估" : "Evaluation"}
       </a>
@@ -98,9 +121,10 @@ export function Footer({ locale }: { locale: Locale }) {
           <strong>{locale === "zh" ? "机器可读" : "Machine-readable"}</strong>
           <a href="/llms.txt">llms.txt</a>
           <a href="/agent-index.json">agent-index.json</a>
+          <a href="/site-catalog.json">site-catalog.json</a>
           <a href="/status.json">status.json</a>
           <a href="/titmas-community.json">titmas-community.json</a>
-          <a href="/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json">commercial-evaluation-pack.json</a>
+          <a href="/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json">commercial-evaluation-pack.json</a>
         </div>
         <div>
           <strong>{locale === "zh" ? "治理" : "Governance"}</strong>
