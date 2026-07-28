@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/community-status-1.0.json",
+  "type": "object",
+  "required": ["version","state","infrastructure_complete","public_launch_ready_candidate","public_launch_authorized","community_established","foundation_created","maintainer_assigned","external_reviewer_assigned","community_member_count","external_contributor_count","external_adopter_count","commercial_offer_authorized","certification_authorized","release_authorized","cs_g0_pass","cs_g1_pass","updated_at"],
+  "properties": {
+    "version": {"type":"string"},
+    "state": {"type":"string"},
+    "infrastructure_complete": {"type":"boolean"},
+    "public_launch_ready_candidate": {"type":"boolean"},
+    "public_launch_authorized": {"type":"boolean"},
+    "community_established": {"type":"boolean"},
+    "foundation_created": {"type":"boolean"},
+    "maintainer_assigned": {"type":"boolean"},
+    "external_reviewer_assigned": {"type":"boolean"},
+    "community_member_count": {"type":"integer"},
+    "external_contributor_count": {"type":"integer"},
+    "external_adopter_count": {"type":"integer"},
+    "commercial_offer_authorized": {"type":"boolean"},
+    "certification_authorized": {"type":"boolean"},
+    "release_authorized": {"type":"boolean"},
+    "cs_g0_pass": {"type":"boolean"},
+    "cs_g1_pass": {"type":"boolean"},
+    "updated_at": {"type":"string"}
+  }
+}

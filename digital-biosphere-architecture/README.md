@@ -198,7 +198,20 @@ TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
 TITMAS_PUBLIC_CONTRIBUTION_ENABLED=false
 ```
 
-## Start Here — Commercial Evaluation Pack v0.2（商业评估入口）
+## Developer Standards Community v1.0 candidate（开发者标准社区候选）
+
+第一次接触请进入唯一开发者入口：
+
+- [`TITMAS/README.md`](TITMAS/README.md)；
+- [五分钟快速开始](TITMAS/QUICKSTART.md)；
+- [首次贡献指南](TITMAS/FIRST_CONTRIBUTION.md)；
+- [符合性工具](TITMAS/conformance/README.md)；
+- [最小 Python 参考实现](TITMAS/reference/minimal-python/README.md)。
+
+这个入口是 Development launch-ready candidate，不表示公共社区、Standard、Maintainer、
+Release、Certification 或商业 Offering 已经建立。
+
+## Legacy scenario — Commercial Evaluation Pack v0.2（既有场景材料）
 
 如果你第一次接触 TITMAS，不需要先阅读全部架构历史。先用 10 分钟回答一个问题：
 
