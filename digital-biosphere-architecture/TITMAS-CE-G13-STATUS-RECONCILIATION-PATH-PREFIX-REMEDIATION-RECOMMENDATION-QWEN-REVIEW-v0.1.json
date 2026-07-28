@@ -1,0 +1,32 @@
+{
+  "record_type": "TITMAS_CE_G13_STATUS_RECONCILIATION_PATH_PREFIX_REMEDIATION_RECOMMENDATION_QWEN_REVIEW",
+  "version": "0.1.0",
+  "status": "RECOMMENDED",
+  "observed_at": "2026-07-28",
+  "recommendation_reference": "TITMAS-CE-G13-STATUS-RECONCILIATION-PATH-PREFIX-REMEDIATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "dfb1b1a83116dea3e40ea987c723fda4e654d311be0968d8aa24a8b368eaa0f0",
+  "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "request_count": 1,
+  "direct_json_parse": true,
+  "retry": 0,
+  "fallback": 0,
+  "substitution": 0,
+  "extraction": 0,
+  "repair": 0,
+  "review": {
+    "verdict": "RECOMMENDED",
+    "confidence": 0.95,
+    "blockers": [],
+    "corrections": [],
+    "boundary_check": {
+      "no_retry_preserved": true,
+      "exact_prefix_bound": true,
+      "no_authority_elevation": true
+    },
+    "summary": "Recommendation is bounded, fail-closed, preserves v0.1 failure, enforces exact prefix, and separates authority correctly."
+  },
+  "authority_effect": false,
+  "execution_authorized": false
+}
