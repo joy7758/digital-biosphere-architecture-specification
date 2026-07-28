@@ -83,6 +83,9 @@ python3 TITMAS/reference/minimal-python/titmas_reference.py \
 - [Read the launch-readiness assessment](../architecture/titmas-developer-standard-community-launch-readiness-v1.0.md)
 - [Read the completion report](../TITMAS-DEVELOPER-STANDARD-COMMUNITY-COMPLETION-REPORT-v1.0.md)
 - [Review the Human Owner decision packet](../TITMAS-DEVELOPER-STANDARD-COMMUNITY-HUMAN-OWNER-DECISION-PACKET-v1.0.md)
+- [Read v1.1 agent-native launch readiness](../architecture/titmas-agent-native-standards-community-launch-readiness-v1.1.md)
+- [Read the v1.1 completion report](../TITMAS-AGENT-NATIVE-STANDARDS-COMMUNITY-COMPLETION-REPORT-v1.1.md)
+- [Review the v1.1 Human Decision Packet](../TITMAS-AGENT-NATIVE-STANDARDS-COMMUNITY-HUMAN-DECISION-PACKET-v1.1.md)
 
 ## Current maturity
 
