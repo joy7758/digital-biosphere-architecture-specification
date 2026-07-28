@@ -1,0 +1,446 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-commercial-standard-foundation-freeze-entry.schema.v0.1.json",
+  "title": "TITMAS Commercial Standard Foundation Freeze Entry v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "record_type",
+    "version",
+    "status",
+    "prepared_at",
+    "maturity",
+    "primary_repository",
+    "accountability_owner_ref",
+    "human_decision_required",
+    "combined_decision_created",
+    "gate_status_changed",
+    "foundation_state",
+    "decisions",
+    "decision_independence",
+    "effects",
+    "next_action",
+    "next_action_authorized"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./architecture/schemas/titmas-commercial-standard-foundation-freeze-entry.schema.v0.1.json"
+    },
+    "record_type": {
+      "const": "TITMAS_COMMERCIAL_STANDARD_FOUNDATION_FREEZE_ENTRY"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "TWO_INDEPENDENT_HUMAN_ROLE_DECISIONS_REQUIRED_GATES_UNCHANGED"
+    },
+    "prepared_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "maturity": {
+      "const": "Development"
+    },
+    "primary_repository": {
+      "const": "digital-biosphere-architecture"
+    },
+    "accountability_owner_ref": {
+      "const": "zhangbin"
+    },
+    "human_decision_required": {
+      "const": true
+    },
+    "combined_decision_created": {
+      "const": false
+    },
+    "gate_status_changed": {
+      "const": false
+    },
+    "foundation_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "cs_g0",
+        "cs_g1",
+        "cs_g2_to_cs_g7",
+        "valid_problem_records",
+        "track_b_acquisition_authorized",
+        "role_accepted",
+        "formal_review_execution_authorized",
+        "standard_ready"
+      ],
+      "properties": {
+        "cs_g0": {
+          "const": "NOT_MET"
+        },
+        "cs_g1": {
+          "const": "NOT_MET"
+        },
+        "cs_g2_to_cs_g7": {
+          "const": "BLOCKED"
+        },
+        "valid_problem_records": {
+          "const": 0
+        },
+        "track_b_acquisition_authorized": {
+          "const": false
+        },
+        "role_accepted": {
+          "const": false
+        },
+        "formal_review_execution_authorized": {
+          "const": false
+        },
+        "standard_ready": {
+          "const": false
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 2,
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/csG0Decision"
+        },
+        {
+          "$ref": "#/$defs/csG1Decision"
+        }
+      ],
+      "items": false
+    },
+    "decision_independence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "two_decisions_remain_independent",
+        "same_message_submission_allowed",
+        "separate_decision_records_required",
+        "one_decision_cannot_imply_the_other"
+      ],
+      "properties": {
+        "two_decisions_remain_independent": {
+          "const": true
+        },
+        "same_message_submission_allowed": {
+          "const": true
+        },
+        "separate_decision_records_required": {
+          "const": true
+        },
+        "one_decision_cannot_imply_the_other": {
+          "const": true
+        }
+      }
+    },
+    "effects": {
+      "$ref": "#/$defs/falseEffects"
+    },
+    "next_action": {
+      "const": "EXPLICIT_HUMAN_DECISIONS_FOR_CS_G0_ROLE_D01_AND_CS_G1_ROLE_REVIEW_D01"
+    },
+    "next_action_authorized": {
+      "const": false
+    }
+  },
+  "$defs": {
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model",
+        "verdict",
+        "confidence",
+        "recommended_option",
+        "blocker_count",
+        "required_correction_count"
+      ],
+      "properties": {
+        "model": {
+          "const": "qwen3.7-max"
+        },
+        "verdict": {
+          "const": "RECOMMENDED"
+        },
+        "confidence": {
+          "type": "number",
+          "minimum": 0.9,
+          "maximum": 1
+        },
+        "recommended_option": {
+          "const": "A"
+        },
+        "blocker_count": {
+          "const": 0
+        },
+        "required_correction_count": {
+          "const": 0
+        }
+      }
+    },
+    "sourceBinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "sha256"
+      ],
+      "properties": {
+        "path": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "recommendedOption": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "option_id",
+        "selection",
+        "term_expires_at",
+        "role_refs",
+        "review_model",
+        "review_session_count"
+      ],
+      "properties": {
+        "option_id": {
+          "const": "A"
+        },
+        "selection": {
+          "type": "string",
+          "minLength": 1
+        },
+        "term_expires_at": {
+          "const": "2026-09-30T23:59:59+08:00"
+        },
+        "role_refs": {
+          "type": "object",
+          "minProperties": 2,
+          "additionalProperties": {
+            "const": "zhangbin"
+          }
+        },
+        "review_model": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "review_session_count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3
+        }
+      }
+    },
+    "baseDecision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_id",
+        "decision_state",
+        "purpose",
+        "human_owner_ref",
+        "review",
+        "recommended_option",
+        "exact_token_lines",
+        "source_bindings"
+      ],
+      "properties": {
+        "decision_id": {
+          "type": "string"
+        },
+        "decision_state": {
+          "const": "NOT_DECIDED"
+        },
+        "purpose": {
+          "type": "string"
+        },
+        "human_owner_ref": {
+          "const": "zhangbin"
+        },
+        "review": {
+          "$ref": "#/$defs/review"
+        },
+        "recommended_option": {
+          "$ref": "#/$defs/recommendedOption"
+        },
+        "exact_token_lines": {
+          "type": "array",
+          "minItems": 10,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "source_bindings": {
+          "type": "array",
+          "minItems": 3,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/sourceBinding"
+          }
+        }
+      }
+    },
+    "csG0Decision": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseDecision"
+        },
+        {
+          "properties": {
+            "decision_id": {
+              "const": "CS-G0-ROLE-D01"
+            },
+            "purpose": {
+              "const": "BOUNDED_PROBLEM_VALIDATION_AND_PRIVACY_DATA_ACCOUNTABILITY"
+            },
+            "recommended_option": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/recommendedOption"
+                },
+                {
+                  "properties": {
+                    "selection": {
+                      "const": "ACCEPT_OPTION_A_BOUNDED_DUAL_ROLE_ACCOUNTABILITY"
+                    },
+                    "review_model": {
+                      "const": null
+                    },
+                    "review_session_count": {
+                      "const": 0
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "csG1Decision": {
+      "allOf": [
+        {
+          "$ref": "#/$defs/baseDecision"
+        },
+        {
+          "properties": {
+            "decision_id": {
+              "const": "CS-G1-ROLE-REVIEW-D01"
+            },
+            "purpose": {
+              "const": "BOUNDED_SPECIFICATION_ACCOUNTABILITY_AND_ROLE_SCOPED_QWEN_REVIEW"
+            },
+            "recommended_option": {
+              "allOf": [
+                {
+                  "$ref": "#/$defs/recommendedOption"
+                },
+                {
+                  "properties": {
+                    "selection": {
+                      "const": "ACCEPT_OPTION_A_BOUNDED_OWNER_ACCOUNTABILITY_AND_ROLE_SCOPED_QWEN_REVIEW"
+                    },
+                    "review_model": {
+                      "const": "qwen3.7-max"
+                    },
+                    "review_session_count": {
+                      "const": 3
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    "falseEffects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "authority_changed",
+        "ownership_changed",
+        "crosswalk_accepted",
+        "residual_risk_accepted",
+        "track_b_acquisition_authorized",
+        "external_outreach_authorized",
+        "data_processing_authorized",
+        "record_created",
+        "record_counted",
+        "formal_review_complete",
+        "cs_g0_pass",
+        "cs_g1_pass",
+        "implementation_authorized",
+        "commercial_offering_authorized",
+        "certification_authorized",
+        "release_authorized",
+        "deployment_authorized"
+      ],
+      "properties": {
+        "authority_changed": {
+          "const": false
+        },
+        "ownership_changed": {
+          "const": false
+        },
+        "crosswalk_accepted": {
+          "const": false
+        },
+        "residual_risk_accepted": {
+          "const": false
+        },
+        "track_b_acquisition_authorized": {
+          "const": false
+        },
+        "external_outreach_authorized": {
+          "const": false
+        },
+        "data_processing_authorized": {
+          "const": false
+        },
+        "record_created": {
+          "const": false
+        },
+        "record_counted": {
+          "const": false
+        },
+        "formal_review_complete": {
+          "const": false
+        },
+        "cs_g0_pass": {
+          "const": false
+        },
+        "cs_g1_pass": {
+          "const": false
+        },
+        "implementation_authorized": {
+          "const": false
+        },
+        "commercial_offering_authorized": {
+          "const": false
+        },
+        "certification_authorized": {
+          "const": false
+        },
+        "release_authorized": {
+          "const": false
+        },
+        "deployment_authorized": {
+          "const": false
+        }
+      }
+    }
+  }
+}
