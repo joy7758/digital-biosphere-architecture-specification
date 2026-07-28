@@ -1,0 +1,74 @@
+{
+  "record_type": "TITMAS_CE_G12_COMMERCIALIZATION_STATUS_RECONCILIATION_VALIDATION_REMEDIATION_PREFLIGHT_FAILURE",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_FIXED_TRACKED_JSON_COUNT_STALE_NO_FORMAL_VALIDATION_EXECUTED",
+  "observed_at": "2026-07-28T02:51:35Z",
+  "primary_repository": "digital-biosphere-architecture",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-COMMERCIALIZATION-STATUS-RECONCILIATION-VALIDATION-HARNESS-REMEDIATION-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "c46d44663b91482a6096ada1bbb683ee8bfc7a6018fd0eee33d26444e5faa9d1",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-COMMERCIALIZATION-STATUS-RECONCILIATION-VALIDATION-HARNESS-REMEDIATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "833b734d6e9f51b7df24d8c27762ec305507b4735f0fc3c1e30668c981d1da7a",
+  "decision_commit": "dc2764023ebd36aea20ecda9485b7f34b429e568",
+  "decision_remote_verified": true,
+  "preflight": {
+    "checks_executed": 1,
+    "local_head": "dc2764023ebd36aea20ecda9485b7f34b429e568",
+    "remote_head": "dc2764023ebd36aea20ecda9485b7f34b429e568",
+    "local_remote_head_equal": true,
+    "decision_expected_tracked_json_count": 1337,
+    "current_tracked_json_count": 1342,
+    "count_delta": 5,
+    "count_delta_explained_by_post_failure_governance_json": true,
+    "full_name_first_path": "digital-biosphere-architecture/AGENT-CUSTOMER-PACKAGE-v0.1.1.json",
+    "full_name_last_path": "digital-biosphere-architecture/site/tsconfig.json",
+    "required_prefix_present": true,
+    "frozen_patch_sha256": "9a0d7425d400427f236c155a3e473f2beeb45286bdb655ec2fa1b5c3e486d968",
+    "frozen_patch_unchanged": true
+  },
+  "execution_accounting": {
+    "temporary_validator_files_created": 0,
+    "remediation_formal_validation_attempts": 0,
+    "tracked_json_files_opened": 0,
+    "tracked_json_files_validated": 0,
+    "commercial_entry_schema_validation_executed": false,
+    "cross_file_consistency_validation_executed": false,
+    "validation_retries": 0,
+    "five_path_status_commit_created": false,
+    "five_path_status_push_executed": false
+  },
+  "root_cause": {
+    "classification": "FIXED_TRACKED_JSON_COUNT_INVALIDATED_BY_REQUIRED_GOVERNANCE_EVIDENCE_COMMITS",
+    "original_count": 1337,
+    "governance_json_added_after_original_failure": 5,
+    "current_count": 1342,
+    "content_failure_proven": false,
+    "path_binding_failure_proven_in_this_preflight": false,
+    "corrective_principle": "BIND_THE_COMPLETE_RUNTIME_TRACKED_JSON_MANIFEST_AT_THE_REMOTE_VERIFIED_EXECUTION_HEAD_INSTEAD_OF_A_PRE_DECISION_FIXED_COUNT"
+  },
+  "required_remediation": {
+    "preserve_this_failure": true,
+    "preserve_prior_failure": true,
+    "preserve_frozen_patch_sha256": true,
+    "remove_fixed_absolute_count_as_execution_precondition": true,
+    "require_runtime_full_name_manifest_binding": true,
+    "require_listed_opened_and_validated_counts_equal": true,
+    "require_manifest_sha256_in_result": true,
+    "new_independent_decision_required": true,
+    "direct_retry_allowed": false
+  },
+  "effects": {
+    "status_reconciliation_pass": false,
+    "status_surface_changed_in_git_history": false,
+    "status_claim_elevated": false,
+    "server_state_changed": false,
+    "network_state_changed": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  },
+  "next_gate": {
+    "action": "PREPARE_RUNTIME_TRACKED_JSON_MANIFEST_BINDING_REMEDIATION_RECOMMENDATION_ONLY",
+    "authorized": false
+  }
+}
