@@ -1,0 +1,198 @@
+{
+  "result_id": "TITMAS-CE-G12-FRESH-IMMUTABLE-CANDIDATE-PREPARATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28T00:13:09Z",
+  "status": "PASS_FRESH_IMMUTABLE_CANDIDATE_PREPARED_NO_DEPLOYMENT_AUTHORIZED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-CURRENT-TARGET-DISPOSITION",
+  "decision_sha256": "ade2ab2e4f45dfe221af021b9df91deb3e33c2041fb3049e293e2786d87f7e4a",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-CURRENT-TARGET-DISPOSITION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "1d12debae62ce9d581f6eb018ebd72c72e0e20a4919148956abeccc1db3cd17a",
+  "governance_commit": "71c42081c0deb8d446d1e7596a896ca1a4e36331",
+  "source_contract": {
+    "source_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "source_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "source_parent_one": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "source_parent_two": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "source_subject": "Merge PR #27: integrate CE-G11B atomic evidence",
+    "remote_source_ref": "refs/heads/codex/production-observability-baseline",
+    "remote_source_ref_exact": true
+  },
+  "source_evidence_checks": [
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g12-current-target-lineage-reconciliation-result.v0.1.json",
+      "sha256": "2afa3d7851d6a8ca6733afa8360e371358d70075f6d94c8e740284fa3ceb073b",
+      "status": "PASS"
+    },
+    {
+      "reference": "TITMAS-CE-G12-CURRENT-TARGET-LINEAGE-RECONCILIATION-REPORT-v0.1.md",
+      "sha256": "9d19e10761654f03eb9dd08939839c9830b67795ba61066daf0cc2cf89d6ba0b",
+      "status": "PASS"
+    },
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g7-result.v0.1.json",
+      "sha256": "08fbeae76848886950029c1c4fc445ad665bff324a1a1bd18566817b6cbd8276",
+      "status": "PASS"
+    },
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g7-proposed-release-hash-baseline.v0.1.json",
+      "sha256": "173fa2a0972bbbf3f61d4a649a1331249334c0fa003a668da200318a7858f7fc",
+      "status": "PASS"
+    },
+    {
+      "reference": "TITMAS-CE-G11B-PR27-MERGE-EXECUTION-AND-POST-MERGE-VALIDATION-RESULT-v0.1.json",
+      "sha256": "bda16758916a8df843c84bd5ca803b7a50d3343e5248f56ba94b944509d64c86",
+      "status": "PASS"
+    }
+  ],
+  "tracked_json": {
+    "runs": 1,
+    "files_passed": 1165,
+    "files_failed": 0,
+    "duplicate_keys": 0,
+    "output_sha256": "dc91fa164c39f4f58c15f96f043ec576d5f13583ff34acde3a2b086b02d3e4e8"
+  },
+  "commercial_entry_schema": {
+    "runs": 1,
+    "draft": "2020-12",
+    "status": "PASS"
+  },
+  "npm_ci": {
+    "attempts": 1,
+    "exit": 0,
+    "offline": true,
+    "ignore_scripts": true,
+    "packages_added": 493,
+    "output_sha256": "d85b5a8bfc926d978709cec119789b2be904f3ec07dd4a27d86d6bfed50f1438"
+  },
+  "npm_ls": {
+    "attempts": 1,
+    "exit": 0,
+    "direct_dependencies": 23,
+    "reported_problem_count": 5,
+    "reported_problem_categories": [
+      "extraneous"
+    ],
+    "absolute_local_paths_persisted": false,
+    "output_sha256": "bec3a98b0460aa26691ff0eaa993a85831996524867417f1c29fd893886853a7"
+  },
+  "site_tests": {
+    "attempts": 1,
+    "exit": 0,
+    "tests_passed": 16,
+    "tests_failed": 0,
+    "output_sha256": "df63258e7fc24e0983207eaec2949b4d25ec5817ee9043726d86db7047574a04"
+  },
+  "release_formal": {
+    "attempts": 1,
+    "exit": 0,
+    "effect": "LOCAL_STATIC_EXPORT_AND_VERIFICATION_ONLY",
+    "static_export_pass": true,
+    "content_parity_pass": true,
+    "truth_boundary_validation_pass": true,
+    "manifest_files": 65,
+    "manifest_source_revision": "working-tree",
+    "manifest_source_revision_matches_candidate": false,
+    "output_sha256": "59a510b1a16def9b6b05256db1a7f050fc0ec27e072c4308e809cf38c5b7425a"
+  },
+  "ce_schema_contract": {
+    "runs": 1,
+    "hashes_passed": "3/3",
+    "meta_schemas_passed": "3/3",
+    "output_sha256": "0efdd2e1b7f7e8e0b76a9aa68a4531561872a6cf080592bdceaea0985f2137f2"
+  },
+  "ce_tests": {
+    "attempts": 1,
+    "exit": 0,
+    "tests_passed": 49,
+    "tests_failed": 0,
+    "output_sha256": "2bae1db318f7088318726861b381908649a81b5de6be00ec92e24404dc58b68a"
+  },
+  "source_drift": {
+    "tracked_source_diff": 0,
+    "source_commit_exact": true,
+    "source_tree_exact": true,
+    "remote_source_ref_drift": 0
+  },
+  "candidate_archive": {
+    "archives_created": 1,
+    "reference": "/tmp/titmas-site-c1d8931930fbae15f96ee6a6ac050b081538c919.tar.gz",
+    "bytes": 988323,
+    "sha256": "7240f58b5f4471ee9166b5fe18fe83937a344116114a4b33468a580e75cdcda2",
+    "entries": 87,
+    "manifest_reference": "./release-manifest.json",
+    "manifest_bytes": 11492,
+    "manifest_sha256": "8b168f1609b99ba04a4ecac81a5a19d789689bc95190d533b00efad9ab58f9d4",
+    "manifest_files": 65,
+    "route_hashes_bound": "11/11",
+    "baseline_reference": "commercial-evaluation-fresh-candidate/ce-g12-fresh-candidate-baseline.v0.1.json"
+  },
+  "old_candidate_disposition": {
+    "old_candidate": "f8107969aa1f43be8ecf43f557297a630309fe41",
+    "history_preserved": true,
+    "evidence_modified": false,
+    "disposition": "SUPERSEDED_FOR_FRESH_CANDIDATE_PREPARATION",
+    "supersession_recorded_in_result": true,
+    "status_surfaces_synchronized": false,
+    "deleted": false,
+    "revoked": false
+  },
+  "cleanup": {
+    "disposable_worktrees_created": 1,
+    "initial_exit_trap_cleanup_pass": false,
+    "cleanup_remediation_actions": 1,
+    "validation_commands_retried": 0,
+    "candidate_archive_rebuilt": false,
+    "final_worktrees_remaining": 0,
+    "final_worktree_directories_remaining": 0,
+    "final_status": "PASS"
+  },
+  "execution_counts": {
+    "git_fetches": 1,
+    "npm_ci_attempts": 1,
+    "npm_ls_attempts": 1,
+    "site_test_attempts": 1,
+    "release_formal_attempts": 1,
+    "ce_test_attempts": 1,
+    "candidate_archives": 1,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "public_site_requests": 0,
+    "symlink_switches": 0,
+    "nginx_tests": 0,
+    "nginx_reloads": 0,
+    "repairs": 0,
+    "rollbacks": 0,
+    "deployments": 0,
+    "releases": 0,
+    "pr_mutations": 0,
+    "model_requests": 0,
+    "validation_retries": 0,
+    "network_fallbacks": 0
+  },
+  "effects": {
+    "candidate_preparation_complete": true,
+    "candidate_preparation_pass": true,
+    "fresh_candidate_prepared": true,
+    "old_candidate_superseded_for_candidate_preparation": true,
+    "manifest_source_binding_pass": false,
+    "deployment_admission_pass": false,
+    "server_state_changed": false,
+    "public_site_changed": false,
+    "pr_state_changed": false,
+    "repair_authorized": false,
+    "rollback_authorized": false,
+    "deployment_authorized": false,
+    "release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "permission_created": false,
+    "authority_elevated": false,
+    "evidence_truth_changed": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G12_CANDIDATE_MANIFEST_SOURCE_BINDING_RECOMMENDATION_ONLY",
+    "authorized": false
+  }
+}
