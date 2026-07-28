@@ -68,6 +68,10 @@
     "ecology_box_001_operational_calibration_config": "TITMAS/agent-native/ecology-box-001/calibration/calibration-config.yaml",
     "ecology_box_001_operational_calibration_records": "TITMAS/agent-native/ecology-box-001/calibration/normalized-run-records.jsonl",
     "ecology_box_001_operational_calibration_report": "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-OPERATIONAL-CALIBRATION-REPORT-v0.1.md",
+    "ecology_box_001_operational_calibration_v02_contracts": "TITMAS/agent-native/ecology-box-001/calibration/v0.2/role-output-contracts.json",
+    "ecology_box_001_operational_calibration_v02_journal": "TITMAS/agent-native/ecology-box-001/calibration/v0.2/durable-journal.jsonl",
+    "ecology_box_001_operational_calibration_v02_results": "TITMAS/agent-native/ecology-box-001/calibration/v0.2/calibration-results-v0.2.json",
+    "ecology_box_001_operational_calibration_v02_report": "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-OPERATIONAL-CALIBRATION-REPORT-v0.2.md",
     "specifications": "TITMAS/specifications/registry.yaml",
     "conformance_report": "TITMAS/conformance/reports/latest.json"
   },
@@ -123,5 +127,25 @@
     "formal_experiment_executed": false,
     "value_proven": false,
     "next_recommendation": "SIMPLIFY_PROTOCOL"
+  },
+  "ecology_box_001_operational_calibration_v02_state": {
+    "hardening_failure_injection_tests_passed": 14,
+    "role_contract_fixture_tests_passed": 36,
+    "calibration_executed": true,
+    "calibration_status": "CALIBRATION_NEGATIVE_RESULT",
+    "operational_pipeline_demonstrated": false,
+    "pipelines_completed_durably": 3,
+    "independent_lineage_count": 3,
+    "model_call_count": 9,
+    "critical_handoff_field_loss_rate": 0.0,
+    "unhandled_type_error_count": 0,
+    "unhandled_exception_count": 0,
+    "formal_experiment_state_effect": "NONE",
+    "formal_go_no_go_status": "NO_GO",
+    "formal_execution_authorized": false,
+    "formal_experiment_executed": false,
+    "value_proven": false,
+    "route_decision": "STOP_DIRECT_CALIBRATION_RERUNS",
+    "next_human_decision": "MINIMAL_RUNNER_REDESIGN_REQUIRED"
   }
 }

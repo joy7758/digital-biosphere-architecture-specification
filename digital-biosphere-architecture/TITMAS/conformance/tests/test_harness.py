@@ -510,6 +510,65 @@ class HarnessTests(unittest.TestCase):
         )
         self.assertFalse(metrics["TITMAS_AGENT_NATIVE_VALUE_PROVEN"])
 
+    def test_ecology_box_001_calibration_v02_hardening_gate_passes(self):
+        details = (
+            HARNESS.check_agent_native_ecology_box_001_operational_calibration_v02()
+        )
+        self.assertEqual(14, details["failure_injection_tests"])
+        self.assertEqual(36, details["role_contract_fixture_tests"])
+        self.assertEqual("NO_GO", details["formal_go_no_go_status"])
+        self.assertEqual(0, details["formal_run_record_count"])
+        self.assertFalse(details["value_proven"])
+
+    def test_ecology_box_001_calibration_v02_rejects_enum_array_without_coercion(self):
+        root = (
+            HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+            / "calibration" / "v0.2"
+        )
+        contracts = json.loads(
+            (root / "role-output-contracts.json").read_text()
+        )
+        cases = contracts["fixture_results"]["results"]
+        case = next(
+            item
+            for item in cases
+            if item["contract"] == "ContributorCandidate"
+            and item["case"] == "invalid_type"
+        )
+        self.assertEqual("PASS", case["status"])
+        self.assertFalse(case["actual_valid"])
+        self.assertIn("EXPECTED_STRING", case["error"])
+        self.assertFalse(contracts["silent_type_coercion_allowed"])
+
+    def test_ecology_box_001_calibration_v02_failure_suite_is_complete(self):
+        path = (
+            HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+            / "calibration" / "v0.2" / "failure-injection-results.json"
+        )
+        result = json.loads(path.read_text())
+        self.assertEqual(
+            {f"FI-{index:02d}" for index in range(1, 15)},
+            {item["case_id"] for item in result["results"]},
+        )
+        self.assertEqual(14, result["passed"])
+        self.assertEqual(0, result["prior_valid_checkpoints_lost"])
+        self.assertEqual(0, result["critical_handoff_field_loss"])
+        self.assertTrue(result["resume_idempotency_pass"])
+
+    def test_ecology_box_001_calibration_v02_preserves_v01_negative_history(self):
+        v01 = (
+            HARNESS.DBA_ROOT
+            / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-OPERATIONAL-CALIBRATION-REPORT-v0.1.md"
+        ).read_text()
+        self.assertIn(
+            "CALIBRATION_STATUS=CALIBRATION_ABORTED_FOR_SAFETY", v01
+        )
+        self.assertIn("HANDOFF_CRITICAL_FIELD_LOSS_RATE=1.0", v01)
+        self.assertIn(
+            "SEED_DETECTION=NOT_ASSESSED_RECORD_NOT_PERSISTED",
+            v01,
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

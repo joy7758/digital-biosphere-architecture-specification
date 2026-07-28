@@ -1902,6 +1902,300 @@ def check_agent_native_ecology_box_001_operational_calibration() -> dict[str, An
     }
 
 
+def check_agent_native_ecology_box_001_operational_calibration_v02() -> dict[str, Any]:
+    root = TITMAS_ROOT / "agent-native" / "ecology-box-001"
+    v02 = root / "calibration" / "v0.2"
+    preparation_paths = (
+        v02 / "role-output-contracts.json",
+        v02 / "failure-injection-results.json",
+        v02 / "calibration-v0.2-config.yaml",
+        v02 / "task-seeds-v0.2.json",
+    )
+    missing = [
+        str(path.relative_to(DBA_ROOT))
+        for path in preparation_paths
+        if not path.is_file()
+    ]
+    if missing:
+        raise ConformanceError(f"calibration v0.2 hardening files missing {missing}")
+
+    contracts = load_json(v02 / "role-output-contracts.json")
+    fixtures = contracts["fixture_results"]
+    if (
+        contracts["contract_bundle_version"] != "1.0.0"
+        or contracts["silent_type_coercion_allowed"] is not False
+        or contracts["null_allowed"] is not False
+        or set(contracts["schemas"])
+        != {
+            "ExplorerFinding",
+            "ContributorCandidate",
+            "ReviewerAssessment",
+            "RevisionResponse",
+            "ConformanceResult",
+            "HandoffRecord",
+        }
+        or fixtures["fixture_count"] != 36
+        or fixtures["passed"] != 36
+        or any(item["status"] != "PASS" for item in fixtures["results"])
+        or fixtures["unknown_and_not_assessed_allowed"] is not True
+    ):
+        raise ConformanceError("calibration v0.2 role contract drift")
+
+    failure = load_json(v02 / "failure-injection-results.json")
+    if (
+        failure["test_count"] != 14
+        or failure["passed"] != 14
+        or failure["failed"] != 0
+        or failure["status"] != "PASS"
+        or {item["case_id"] for item in failure["results"]}
+        != {f"FI-{index:02d}" for index in range(1, 15)}
+        or any(item["status"] != "PASS" for item in failure["results"])
+        or failure["prior_valid_checkpoints_lost"] != 0
+        or failure["critical_handoff_field_loss"] != 0
+        or failure["unhandled_type_error_count"] != 0
+        or failure["unhandled_exception_count"] != 0
+        or failure["resume_idempotency_pass"] is not True
+        or failure["model_calls_authorized_after_gate"] is not True
+    ):
+        raise ConformanceError("calibration v0.2 failure-injection gate drift")
+
+    config = load_json(v02 / "calibration-v0.2-config.yaml")
+    source = config["source"]
+    hardening = config["hardening"]
+    if (
+        config["decision_id"]
+        != "TITMAS-EB001-OPERATIONAL-CALIBRATION-D02"
+        or config["decision"] != "ACCEPT_ONCE"
+        or config["decided_by_ref"] != "zhangbin"
+        or source["source_commit"]
+        != "70f626d41ef4746f0f23c588324267cae090ca7b"
+        or source["remote_source_commit"] != source["source_commit"]
+        or not all(source["checks"].values())
+        or config["authorized_once"] is not True
+        or config["repeat_without_new_authorization"] is not False
+        or config["model_calls_authorized_after_hardening_gate"] is not True
+        or hardening["durable_event_journal_enabled"] is not True
+        or hardening["checkpoint_after_every_role_handoff"] is not True
+        or hardening["finalization_only_persistence"] is not False
+        or hardening["journal_fsync_granularity"] != "EVERY_RECORD"
+        or hardening["snapshot_schema_version"] != "1.0.0"
+        or hardening["role_contract_schema_version"] != "1.0.0"
+        or hardening["max_correction_calls_per_role"] != 1
+        or hardening["max_total_correction_calls"] != 3
+        or hardening["max_total_model_calls"] != 12
+        or config["formal_ecology_box_001_execution_authorized"] is not False
+        or config["formal_ten_task_experiment_authorized"] is not False
+        or config["agent_native_value_validation_authorized"] is not False
+        or config["real_repository_candidate_git_write_authorized"] is not False
+        or config["public_report_authorized"] is not False
+        or config["commercial_validation_authorized"] is not False
+        or config["release_authorized"] is not False
+    ):
+        raise ConformanceError("calibration v0.2 config or authority drift")
+
+    seeds = load_json(v02 / "task-seeds-v0.2.json")
+    if (
+        seeds["seed_count"] != 3
+        or seeds["formal_task_count"] != 10
+        or seeds["formal_task_set_unchanged"] is not True
+        or seeds["formal_tasks_accessed"] is not False
+        or {item["task_id"] for item in seeds["seeds"]}
+        != {"CAL2-TASK-001", "CAL2-TASK-002", "CAL2-TASK-003"}
+        or any(item["formal_task"] is not False for item in seeds["seeds"])
+        or any(item["expected_issue_class_exposed_to_models"] is not False for item in seeds["seeds"])
+        or any(item["source_hash"] == item["modified_hash"] for item in seeds["seeds"])
+    ):
+        raise ConformanceError("calibration v0.2 seed isolation drift")
+
+    if config.get("calibration_v0_2_executed") is not True:
+        return {
+            "hardening_files_checked": len(preparation_paths),
+            "failure_injection_tests": 14,
+            "role_contract_fixture_tests": 36,
+            "calibration_status": "HARDENING_GATE_PASS_MODEL_RUN_NOT_STARTED",
+            "calibration_executed": False,
+            "operational_pipeline_demonstrated": False,
+            "formal_go_no_go_status": "NO_GO",
+            "formal_run_record_count": 0,
+            "value_proven": False,
+        }
+
+    execution_paths = (
+        v02 / "durable-journal.jsonl",
+        v02 / "durable-artifacts.jsonl",
+        v02 / "task-snapshots.json",
+        v02 / "calibration-results-v0.2.json",
+        v02 / "calibration-report-v0.2.md",
+        DBA_ROOT
+        / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-OPERATIONAL-CALIBRATION-REPORT-v0.2.md",
+    )
+    missing = [
+        str(path.relative_to(DBA_ROOT))
+        for path in execution_paths
+        if not path.is_file()
+    ]
+    if missing:
+        raise ConformanceError(f"calibration v0.2 execution files missing {missing}")
+
+    journal_path = v02 / "durable-journal.jsonl"
+    if journal_path.stat().st_size > MAX_JSON_BYTES:
+        raise ConformanceError("calibration v0.2 journal too large")
+    journal = [
+        json.loads(line)
+        for line in journal_path.read_text(encoding="utf-8").splitlines()
+        if line.strip()
+    ]
+    previous = "GENESIS"
+    allowed_events = {
+        "RUN_STARTED", "TASK_STARTED", "MODEL_CALL_STARTED",
+        "MODEL_RESPONSE_RECEIVED", "MODEL_CALL_OUTCOME_UNKNOWN",
+        "ROLE_OUTPUT_PARSE_FAILED", "ROLE_OUTPUT_SCHEMA_REJECTED",
+        "ROLE_OUTPUT_VALIDATED", "CORRECTION_REQUESTED",
+        "CORRECTION_RESPONSE_RECEIVED", "HANDOFF_COMMITTED",
+        "REVIEW_COMPLETED", "CONFORMANCE_COMPLETED", "STAGE_FAILED",
+        "TASK_COMPLETED", "RUN_ABORTED", "RUN_COMPLETED",
+    }
+    required_event_fields = {
+        "event_id", "run_id", "task_id", "sequence", "event_type", "stage",
+        "role", "participant_ref", "provider", "requested_model",
+        "returned_model", "session_ref", "input_hash", "output_hash",
+        "artifact_ref", "validation_status", "reason_code",
+        "model_call_state", "previous_event_hash", "event_hash", "created_at",
+        "details",
+    }
+    for index, event in enumerate(journal, 1):
+        candidate = dict(event)
+        supplied_hash = candidate.pop("event_hash", None)
+        calculated = "sha256:" + hashlib.sha256(
+            json.dumps(
+                candidate,
+                ensure_ascii=False,
+                sort_keys=True,
+                separators=(",", ":"),
+            ).encode("utf-8")
+        ).hexdigest()
+        if (
+            set(event) != required_event_fields
+            or event["sequence"] != index
+            or event["event_type"] not in allowed_events
+            or event["previous_event_hash"] != previous
+            or supplied_hash != calculated
+        ):
+            raise ConformanceError("calibration v0.2 journal chain drift")
+        previous = supplied_hash
+
+    artifacts = [
+        json.loads(line)
+        for line in (v02 / "durable-artifacts.jsonl")
+        .read_text(encoding="utf-8")
+        .splitlines()
+        if line.strip()
+    ]
+    if (
+        not artifacts
+        or any(item["evidence_authority"] is not False for item in artifacts)
+        or any(item["authority_effect"] != "NONE" for item in artifacts)
+    ):
+        raise ConformanceError("calibration v0.2 artifact authority drift")
+
+    snapshots = load_json(v02 / "task-snapshots.json")
+    if (
+        snapshots["schema_version"] != "1.0.0"
+        or set(snapshots["tasks"])
+        != {"CAL2-TASK-001", "CAL2-TASK-002", "CAL2-TASK-003"}
+        or any(
+            task["last_committed_sequence"] <= 0
+            or not task["last_committed_event_hash"].startswith("sha256:")
+            for task in snapshots["tasks"].values()
+        )
+    ):
+        raise ConformanceError("calibration v0.2 snapshot drift")
+
+    result = load_json(v02 / "calibration-results-v0.2.json")
+    formal = result["formal_experiment_state"]
+    expected_pairs = {
+        ("ALIBABA_DASHSCOPE", "qwen3.7-max"),
+        ("BAIDU_QIANFAN", "kimi-k2.6"),
+        ("VOLCENGINE_ARK", "deepseek-v4-flash-260425"),
+    }
+    if (
+        {(item["provider"], item["requested_model"]) for item in result["lineages"]}
+        != expected_pairs
+        or result["model_call_count"] > 12
+        or result["unknown_call_outcomes"] < 0
+        or result["journal_events"] != len(journal)
+        or result["journal_hash_chain_valid"] is not True
+        or result["resume_idempotency_pass"] is not True
+        or formal["go_no_go_status"] != "NO_GO"
+        or formal["execution_authorized"] is not False
+        or formal["executed"] is not False
+        or formal["formal_task_count"] != 10
+        or formal["formal_run_record_count"] != 0
+        or formal["value_proven"] is not False
+        or result["metrics"]["FINAL_OUTCOME_IMPROVEMENT_RATE"] != "NOT_ASSESSED"
+        or result["metrics"]["TITMAS_AGENT_NATIVE_VALUE_PROVEN"] is not False
+        or result["metrics"]["TITMAS_AGENT_OPERATIONAL_VALUE_DEMONSTRATED"] is not False
+    ):
+        raise ConformanceError("calibration v0.2 result or formal boundary drift")
+    if result["operational_pipeline_demonstrated"]:
+        if (
+            result["independent_lineage_count"] != 3
+            or result["model_identity_match_rate"] != 1.0
+            or sum(item["pipeline_complete"] for item in result["task_results"]) != 3
+            or result["metrics"]["PIPELINE_COMPLETION_RATE"] != 1.0
+            or result["metrics"]["CHECKPOINT_COVERAGE"] != 1.0
+            or result["metrics"]["HANDOFF_FIELD_LOSS_RATE"] != 0.0
+            or result["metrics"]["AUTHORITY_VIOLATION_COUNT"] != 0
+            or result["metrics"]["SEMANTIC_ELEVATION_COUNT"] != 0
+            or result["route_decision"]
+            != "PROCEED_TO_HUMAN_FORMAL_EXPERIMENT_READINESS_REVIEW"
+        ):
+            raise ConformanceError("calibration v0.2 demonstrated gate drift")
+    elif result["route_decision"] != "STOP_DIRECT_CALIBRATION_RERUNS":
+        raise ConformanceError("calibration v0.2 failure route drift")
+
+    report = execution_paths[-1].read_text(encoding="utf-8")
+    for marker in (
+        f"CALIBRATION_STATUS={result['calibration_status']}",
+        "TITMAS_ECOLOGY_BOX_001_OPERATIONAL_CALIBRATION_V0_2_EXECUTED=true",
+        "TITMAS_ECOLOGY_BOX_001_GO_NO_GO_STATUS=NO_GO",
+        "TITMAS_ECOLOGY_BOX_001_EXECUTION_AUTHORIZED=false",
+        "TITMAS_ECOLOGY_BOX_001_EXECUTED=false",
+        "FORMAL_TASK_COUNT=10",
+        "FORMAL_RUN_RECORD_COUNT=0",
+        "TITMAS_ECOLOGY_BOX_001_VALUE_PROVEN=false",
+        "PUBLIC_REPORT_AUTHORIZED=false",
+        "COMMERCIAL_VALIDATION_AUTHORIZED=false",
+        "REAL_REPOSITORY_GIT_WRITE_AUTHORIZED=false",
+    ):
+        if marker not in report:
+            raise ConformanceError("calibration v0.2 report truth drift")
+
+    formal_runs = [
+        path
+        for path in (root / "runs").iterdir()
+        if path.is_file() and path.name != "README.md"
+    ]
+    if formal_runs:
+        raise ConformanceError("calibration v0.2 created formal run records")
+    return {
+        "hardening_files_checked": len(preparation_paths),
+        "execution_files_checked": len(execution_paths),
+        "failure_injection_tests": 14,
+        "role_contract_fixture_tests": 36,
+        "journal_events_checked": len(journal),
+        "artifacts_checked": len(artifacts),
+        "calibration_status": result["calibration_status"],
+        "calibration_executed": True,
+        "operational_pipeline_demonstrated": result[
+            "operational_pipeline_demonstrated"
+        ],
+        "formal_go_no_go_status": "NO_GO",
+        "formal_run_record_count": 0,
+        "value_proven": False,
+    }
+
+
 def check_agent_native_pilot() -> dict[str, Any]:
     path = TITMAS_ROOT / "agent-native" / "pilot" / "pilot-result.json"
     if not path.exists():
@@ -2034,6 +2328,10 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         (
             "agent_native_ecology_box_001_operational_calibration",
             check_agent_native_ecology_box_001_operational_calibration,
+        ),
+        (
+            "agent_native_ecology_box_001_operational_calibration_v02",
+            check_agent_native_ecology_box_001_operational_calibration_v02,
         ),
         ("agent_native_pilot", check_agent_native_pilot),
         ("agent_native_reviews", check_agent_native_reviews),

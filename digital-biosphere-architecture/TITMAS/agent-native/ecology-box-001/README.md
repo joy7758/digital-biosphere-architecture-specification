@@ -22,6 +22,7 @@ Start in this order:
     [Final report template](reports/final-report-template.md)
 13. [Execution Readiness Package](readiness/README.md)
 14. [Operational Calibration Record](calibration/calibration-report-v0.1.md)
+15. [Operational Calibration v0.2 Record](calibration/v0.2/calibration-report-v0.2.md)
 
 ```text
 PACKAGE_STATUS=PREPARED
@@ -59,6 +60,25 @@ FORMAL_EXPERIMENT_STATE_EFFECT=NONE
 The calibration result does not close any of the sixteen formal readiness
 blockers, change `GO_NO_GO_STATUS=NO_GO`, or establish value. See the
 [full calibration report](../../../TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-OPERATIONAL-CALIBRATION-REPORT-v0.1.md).
+
+The separately authorized v0.2 hardening passed 14/14 deterministic failure
+injections and 36/36 role-contract fixtures. Its one permitted rerun completed
+all three durable pipelines across the three exact Provider/Model lineages,
+but one candidate still referenced a missing machine surface and failed local
+conformance:
+
+```text
+OPERATIONAL_CALIBRATION_V0_2_EXECUTED=true
+CALIBRATION_V0_2_STATUS=CALIBRATION_NEGATIVE_RESULT
+PIPELINES_COMPLETED_DURABLY=3
+OPERATIONAL_PIPELINE_DEMONSTRATED=false
+CALIBRATION_ROUTE_DECISION=STOP_DIRECT_CALIBRATION_RERUNS
+```
+
+The v0.2 result demonstrates that the two v0.1 persistence and type-safety
+defects were removed in this run. It does not demonstrate Agent-native value,
+formal experiment readiness, adoption or commercial value. Direct calibration
+reruns now require a new Human decision and a minimal runner redesign review.
 
 The files under `runs/`, `reviews/`, `memories/` and `reports/` are contracts
 or templates. They are not execution records, canonical Evidence, adopted

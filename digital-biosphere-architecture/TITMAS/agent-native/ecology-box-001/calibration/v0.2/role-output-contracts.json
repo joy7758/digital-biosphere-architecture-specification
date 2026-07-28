@@ -1,0 +1,731 @@
+{
+  "contract_bundle_version": "1.0.0",
+  "additional_properties_default": false,
+  "null_allowed": false,
+  "silent_type_coercion_allowed": false,
+  "unknown_and_not_assessed_are_valid_when_enumerated": true,
+  "schemas": {
+    "ExplorerFinding": {
+      "$id": "titmas://ecology-box-001/calibration/v0.2/ExplorerFinding",
+      "schema_version": "1.0.0",
+      "type": "object",
+      "required": [
+        "findings",
+        "overall",
+        "limitations"
+      ],
+      "properties": {
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "issue_class",
+              "description",
+              "file",
+              "factual_validity",
+              "task_relevance",
+              "novelty",
+              "actionability",
+              "decision_impact",
+              "attention_cost",
+              "uncertainty",
+              "evidence_refs"
+            ],
+            "properties": {
+              "issue_class": {
+                "type": "string",
+                "enum": [
+                  "INSUFFICIENT_CONTEXT",
+                  "MAPPING_AS_ADOPTION",
+                  "MISSING_MACHINE_ENTRY_TARGET",
+                  "MISSING_REQUIRED_FIELD",
+                  "NO_VALID_FINDING",
+                  "OTHER_BOUNDED_ISSUE"
+                ]
+              },
+              "description": {
+                "type": "string"
+              },
+              "file": {
+                "type": "string"
+              },
+              "factual_validity": {
+                "type": "string",
+                "enum": [
+                  "VALID",
+                  "INVALID",
+                  "NOT_ASSESSED"
+                ]
+              },
+              "task_relevance": {
+                "type": "string",
+                "enum": [
+                  "RELEVANT",
+                  "NOT_RELEVANT",
+                  "NOT_ASSESSED"
+                ]
+              },
+              "novelty": {
+                "type": "string",
+                "enum": [
+                  "UNIQUE",
+                  "DUPLICATE",
+                  "NOT_ASSESSED"
+                ]
+              },
+              "actionability": {
+                "type": "string",
+                "enum": [
+                  "ACTIONABLE",
+                  "LOW_IMPACT",
+                  "NOT_ACTIONABLE",
+                  "NOT_ASSESSED"
+                ]
+              },
+              "decision_impact": {
+                "type": "string",
+                "enum": [
+                  "NONE",
+                  "LOW",
+                  "MEDIUM",
+                  "HIGH",
+                  "NOT_ASSESSED"
+                ]
+              },
+              "attention_cost": {
+                "type": "string",
+                "enum": [
+                  "LOW",
+                  "MEDIUM",
+                  "HIGH"
+                ]
+              },
+              "uncertainty": {
+                "type": "string",
+                "enum": [
+                  "LOW",
+                  "MEDIUM",
+                  "HIGH"
+                ]
+              },
+              "evidence_refs": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "overall": {
+          "type": "string",
+          "enum": [
+            "FOUND",
+            "NO_VALID_FINDING",
+            "INSUFFICIENT_CONTEXT"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ContributorCandidate": {
+      "$id": "titmas://ecology-box-001/calibration/v0.2/ContributorCandidate",
+      "schema_version": "1.0.0",
+      "type": "object",
+      "required": [
+        "finding_disposition",
+        "candidate_files",
+        "rationale",
+        "limitations",
+        "validation_plan"
+      ],
+      "properties": {
+        "finding_disposition": {
+          "type": "string",
+          "enum": [
+            "INCORRECT",
+            "INSUFFICIENT_CONTEXT",
+            "NOT_APPLICABLE",
+            "VALID_BUT_DUPLICATE",
+            "VALID_BUT_LOW_IMPACT",
+            "VALID_BUT_NOT_TASK_RELEVANT",
+            "VALID_RELEVANT_ACTIONABLE"
+          ]
+        },
+        "candidate_files": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "validation_plan": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReviewerAssessment": {
+      "$id": "titmas://ecology-box-001/calibration/v0.2/ReviewerAssessment",
+      "schema_version": "1.0.0",
+      "type": "object",
+      "required": [
+        "verdict",
+        "caught_issues",
+        "semantic_elevation_detected",
+        "harmful_candidate",
+        "required_corrections",
+        "limitations"
+      ],
+      "properties": {
+        "verdict": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "REVISION_REQUIRED",
+            "REJECT"
+          ]
+        },
+        "caught_issues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "semantic_elevation_detected": {
+          "type": "boolean"
+        },
+        "harmful_candidate": {
+          "type": "boolean"
+        },
+        "required_corrections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "RevisionResponse": {
+      "$id": "titmas://ecology-box-001/calibration/v0.2/RevisionResponse",
+      "schema_version": "1.0.0",
+      "type": "object",
+      "required": [
+        "finding_disposition",
+        "candidate_files",
+        "rationale",
+        "limitations",
+        "validation_plan"
+      ],
+      "properties": {
+        "finding_disposition": {
+          "type": "string",
+          "enum": [
+            "INCORRECT",
+            "INSUFFICIENT_CONTEXT",
+            "NOT_APPLICABLE",
+            "VALID_BUT_DUPLICATE",
+            "VALID_BUT_LOW_IMPACT",
+            "VALID_BUT_NOT_TASK_RELEVANT",
+            "VALID_RELEVANT_ACTIONABLE"
+          ]
+        },
+        "candidate_files": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "validation_plan": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ConformanceResult": {
+      "$id": "titmas://ecology-box-001/calibration/v0.2/ConformanceResult",
+      "schema_version": "1.0.0",
+      "type": "object",
+      "required": [
+        "task_id",
+        "status",
+        "errors",
+        "candidate_hash",
+        "formal_metric_effect",
+        "authority_effect"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "FAIL",
+            "NOT_ASSESSED"
+          ]
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "candidate_hash": {
+          "type": "string"
+        },
+        "formal_metric_effect": {
+          "type": "string",
+          "enum": [
+            "NONE"
+          ]
+        },
+        "authority_effect": {
+          "type": "string",
+          "enum": [
+            "NONE"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "HandoffRecord": {
+      "$id": "titmas://ecology-box-001/calibration/v0.2/HandoffRecord",
+      "schema_version": "1.0.0",
+      "type": "object",
+      "required": [
+        "handoff_id",
+        "run_id",
+        "task_id",
+        "source_revision",
+        "participant_ref",
+        "role",
+        "from_role",
+        "to_role",
+        "source_artifact_ref",
+        "source_artifact_hash",
+        "normalized_payload",
+        "schema_version",
+        "limitations",
+        "unresolved_uncertainty",
+        "scope",
+        "prohibited_scope",
+        "experimental_status",
+        "authority_reference",
+        "created_at"
+      ],
+      "properties": {
+        "handoff_id": {
+          "type": "string"
+        },
+        "run_id": {
+          "type": "string"
+        },
+        "task_id": {
+          "type": "string"
+        },
+        "source_revision": {
+          "type": "string"
+        },
+        "participant_ref": {
+          "type": "string"
+        },
+        "role": {
+          "type": "string"
+        },
+        "from_role": {
+          "type": "string"
+        },
+        "to_role": {
+          "type": "string"
+        },
+        "source_artifact_ref": {
+          "type": "string"
+        },
+        "source_artifact_hash": {
+          "type": "string"
+        },
+        "normalized_payload": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "schema_version": {
+          "type": "string",
+          "enum": [
+            "1.0.0"
+          ]
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unresolved_uncertainty": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "prohibited_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "experimental_status": {
+          "type": "string",
+          "enum": [
+            "CALIBRATION_ONLY"
+          ]
+        },
+        "authority_reference": {
+          "type": "string",
+          "enum": [
+            "TITMAS-EB001-OPERATIONAL-CALIBRATION-D02"
+          ]
+        },
+        "created_at": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "fixture_results": {
+    "fixture_count": 36,
+    "passed": 36,
+    "results": [
+      {
+        "contract": "ExplorerFinding",
+        "case": "valid",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "ExplorerFinding",
+        "case": "invalid_type",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "EXPECTED_OBJECT@$"
+      },
+      {
+        "contract": "ExplorerFinding",
+        "case": "missing_required",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "REQUIRED_FIELD_MISSING@$.findings"
+      },
+      {
+        "contract": "ExplorerFinding",
+        "case": "unknown_field",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "UNKNOWN_FIELD@$.unexpected"
+      },
+      {
+        "contract": "ExplorerFinding",
+        "case": "unknown_or_abstention",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "ExplorerFinding",
+        "case": "semantic_boundary_control",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "ContributorCandidate",
+        "case": "valid",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "ContributorCandidate",
+        "case": "invalid_type",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "EXPECTED_STRING@$.finding_disposition"
+      },
+      {
+        "contract": "ContributorCandidate",
+        "case": "missing_required",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "REQUIRED_FIELD_MISSING@$.finding_disposition"
+      },
+      {
+        "contract": "ContributorCandidate",
+        "case": "unknown_field",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "UNKNOWN_FIELD@$.unexpected"
+      },
+      {
+        "contract": "ContributorCandidate",
+        "case": "semantic_elevation",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "SEMANTIC_ELEVATION@$"
+      },
+      {
+        "contract": "ContributorCandidate",
+        "case": "scope_expansion",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "SCOPE_EXPANSION@$.candidate_files.../outside.json"
+      },
+      {
+        "contract": "ReviewerAssessment",
+        "case": "valid",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "ReviewerAssessment",
+        "case": "invalid_type",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "EXPECTED_OBJECT@$"
+      },
+      {
+        "contract": "ReviewerAssessment",
+        "case": "missing_required",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "REQUIRED_FIELD_MISSING@$.verdict"
+      },
+      {
+        "contract": "ReviewerAssessment",
+        "case": "unknown_field",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "UNKNOWN_FIELD@$.unexpected"
+      },
+      {
+        "contract": "ReviewerAssessment",
+        "case": "unknown_or_abstention",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "ReviewerAssessment",
+        "case": "semantic_boundary_control",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "RevisionResponse",
+        "case": "valid",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "RevisionResponse",
+        "case": "invalid_type",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "EXPECTED_STRING@$.finding_disposition"
+      },
+      {
+        "contract": "RevisionResponse",
+        "case": "missing_required",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "REQUIRED_FIELD_MISSING@$.finding_disposition"
+      },
+      {
+        "contract": "RevisionResponse",
+        "case": "unknown_field",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "UNKNOWN_FIELD@$.unexpected"
+      },
+      {
+        "contract": "RevisionResponse",
+        "case": "semantic_elevation",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "SEMANTIC_ELEVATION@$"
+      },
+      {
+        "contract": "RevisionResponse",
+        "case": "scope_expansion",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "SCOPE_EXPANSION@$.candidate_files.../outside.json"
+      },
+      {
+        "contract": "ConformanceResult",
+        "case": "valid",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "ConformanceResult",
+        "case": "invalid_type",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "EXPECTED_OBJECT@$"
+      },
+      {
+        "contract": "ConformanceResult",
+        "case": "missing_required",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "REQUIRED_FIELD_MISSING@$.task_id"
+      },
+      {
+        "contract": "ConformanceResult",
+        "case": "unknown_field",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "UNKNOWN_FIELD@$.unexpected"
+      },
+      {
+        "contract": "ConformanceResult",
+        "case": "unknown_or_abstention",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "ConformanceResult",
+        "case": "semantic_boundary_control",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "HandoffRecord",
+        "case": "valid",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "HandoffRecord",
+        "case": "invalid_type",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "EXPECTED_OBJECT@$"
+      },
+      {
+        "contract": "HandoffRecord",
+        "case": "missing_required",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "REQUIRED_FIELD_MISSING@$.handoff_id"
+      },
+      {
+        "contract": "HandoffRecord",
+        "case": "unknown_field",
+        "expected_valid": false,
+        "actual_valid": false,
+        "status": "PASS",
+        "error": "UNKNOWN_FIELD@$.unexpected"
+      },
+      {
+        "contract": "HandoffRecord",
+        "case": "unknown_or_abstention",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      },
+      {
+        "contract": "HandoffRecord",
+        "case": "semantic_boundary_control",
+        "expected_valid": true,
+        "actual_valid": true,
+        "status": "PASS",
+        "error": "NONE"
+      }
+    ],
+    "unknown_and_not_assessed_allowed": true
+  }
+}

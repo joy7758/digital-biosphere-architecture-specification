@@ -1,0 +1,324 @@
+{
+  "run_id": "DEB-TITMAS-001-CALIBRATION-V0.2-RUN-001",
+  "source": {
+    "source_branch": "codex/titmas-agent-native-ecology-box-001-operational-calibration-v0-1",
+    "source_commit": "70f626d41ef4746f0f23c588324267cae090ca7b",
+    "working_branch": "codex/titmas-agent-native-ecology-box-001-operational-calibration-v0-2",
+    "remote_source_commit": "70f626d41ef4746f0f23c588324267cae090ca7b",
+    "formal_task_registry_hash": "sha256:fd4af6852bdb77e61813808ade93681104fd4813db8889d1a50127c96b35654c",
+    "checks": {
+      "head_matches_source": true,
+      "remote_matches_source": true,
+      "branch_matches_v0_2": true,
+      "v0_1_abort_preserved": true,
+      "formal_task_count_10": true,
+      "formal_task_hash_unchanged": true,
+      "formal_go_no_go_no_go": true,
+      "formal_execution_false": true,
+      "formal_run_records_zero": true
+    }
+  },
+  "requested_models": [
+    "qwen3.7-max",
+    "kimi-k2.6",
+    "deepseek-v4-flash-260425"
+  ],
+  "returned_models": [
+    "deepseek-v4-flash-260425",
+    "kimi-k2.6",
+    "qwen3.7-max"
+  ],
+  "lineages": [
+    {
+      "provider": "ALIBABA_DASHSCOPE",
+      "requested_model": "qwen3.7-max",
+      "returned_model_identity_verified": true,
+      "retention": "UNKNOWN",
+      "training_usage": "UNKNOWN",
+      "logging": "UNKNOWN",
+      "deletion": "UNKNOWN",
+      "data_scope": "PUBLIC_REPOSITORY_AND_SYNTHETIC_ONLY",
+      "fallback": "NONE"
+    },
+    {
+      "provider": "BAIDU_QIANFAN",
+      "requested_model": "kimi-k2.6",
+      "returned_model_identity_verified": true,
+      "retention": "UNKNOWN",
+      "training_usage": "UNKNOWN",
+      "logging": "UNKNOWN",
+      "deletion": "UNKNOWN",
+      "data_scope": "PUBLIC_REPOSITORY_AND_SYNTHETIC_ONLY",
+      "fallback": "NONE"
+    },
+    {
+      "provider": "VOLCENGINE_ARK",
+      "requested_model": "deepseek-v4-flash-260425",
+      "returned_model_identity_verified": true,
+      "retention": "UNKNOWN",
+      "training_usage": "UNKNOWN",
+      "logging": "UNKNOWN",
+      "deletion": "UNKNOWN",
+      "data_scope": "PUBLIC_REPOSITORY_AND_SYNTHETIC_ONLY",
+      "fallback": "NONE"
+    }
+  ],
+  "independent_lineage_count": 3,
+  "model_identity_match_rate": 1.0,
+  "model_call_count": 9,
+  "unknown_call_outcomes": 0,
+  "invalid_outputs": 0,
+  "correction_attempts": 0,
+  "correction_successes": 0,
+  "journal_events": 50,
+  "checkpoint_count": 50,
+  "journal_hash_chain_valid": true,
+  "resume_idempotency_pass": true,
+  "task_results": [
+    {
+      "task_id": "CAL2-TASK-001",
+      "pipeline_complete": true,
+      "seed_detected": true,
+      "candidate_created": true,
+      "review": {
+        "caught_issues": [],
+        "harmful_candidate": false,
+        "limitations": [],
+        "required_corrections": [],
+        "semantic_elevation_detected": false,
+        "verdict": "PASS"
+      },
+      "conformance": {
+        "task_id": "CAL2-TASK-001",
+        "status": "FAIL",
+        "errors": [
+          "MACHINE_ENTRY_TARGET_MISSING"
+        ],
+        "candidate_hash": "sha256:947d623ccd683fc9f649ebf99da3223018b4e8b9cc12cb8adeed9c0ee08eada4",
+        "formal_metric_effect": "NONE",
+        "authority_effect": "NONE"
+      },
+      "outcome_classification": "CALIBRATION_NEGATIVE_RESULT",
+      "value_gate": [
+        {
+          "issue_class": "MISSING_MACHINE_ENTRY_TARGET",
+          "disposition": "VALID_RELEVANT_ACTIONABLE",
+          "factual_validity": "VALID",
+          "task_relevance": "RELEVANT",
+          "novelty": "UNIQUE",
+          "actionability": "ACTIONABLE",
+          "decision_impact": "MEDIUM",
+          "attention_cost": "LOW",
+          "uncertainty": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "task_id": "CAL2-TASK-002",
+      "pipeline_complete": true,
+      "seed_detected": true,
+      "candidate_created": true,
+      "review": {
+        "caught_issues": [],
+        "harmful_candidate": false,
+        "limitations": [
+          "The correction only adds the missing required field 'prohibited_scope' with an empty array. No semantic validation of the field's content was performed."
+        ],
+        "required_corrections": [],
+        "semantic_elevation_detected": false,
+        "verdict": "PASS"
+      },
+      "conformance": {
+        "task_id": "CAL2-TASK-002",
+        "status": "PASS",
+        "errors": [],
+        "candidate_hash": "sha256:92b78e8eb99499cb915876961a9328e2e0f701c8ffafd1d0bc8f8adcd061b6fb",
+        "formal_metric_effect": "NONE",
+        "authority_effect": "NONE"
+      },
+      "outcome_classification": "CALIBRATION_COMPLETED",
+      "value_gate": [
+        {
+          "issue_class": "MISSING_REQUIRED_FIELD",
+          "disposition": "VALID_RELEVANT_ACTIONABLE",
+          "factual_validity": "VALID",
+          "task_relevance": "RELEVANT",
+          "novelty": "UNIQUE",
+          "actionability": "ACTIONABLE",
+          "decision_impact": "NOT_ASSESSED",
+          "attention_cost": "LOW",
+          "uncertainty": "LOW"
+        }
+      ]
+    },
+    {
+      "task_id": "CAL2-TASK-003",
+      "pipeline_complete": true,
+      "seed_detected": true,
+      "candidate_created": true,
+      "review": {
+        "caught_issues": [],
+        "harmful_candidate": false,
+        "limitations": [
+          "SYNTHETIC_CALIBRATION_ONLY"
+        ],
+        "required_corrections": [],
+        "semantic_elevation_detected": false,
+        "verdict": "PASS"
+      },
+      "conformance": {
+        "task_id": "CAL2-TASK-003",
+        "status": "PASS",
+        "errors": [],
+        "candidate_hash": "sha256:53948dfc5c1db66dd0a8cb74c016411a98e7dd411d600cc94d6eaed565bb4f3e",
+        "formal_metric_effect": "NONE",
+        "authority_effect": "NONE"
+      },
+      "outcome_classification": "CALIBRATION_COMPLETED",
+      "value_gate": [
+        {
+          "issue_class": "MAPPING_AS_ADOPTION",
+          "disposition": "VALID_RELEVANT_ACTIONABLE",
+          "factual_validity": "VALID",
+          "task_relevance": "RELEVANT",
+          "novelty": "UNIQUE",
+          "actionability": "ACTIONABLE",
+          "decision_impact": "HIGH",
+          "attention_cost": "LOW",
+          "uncertainty": "LOW"
+        }
+      ]
+    }
+  ],
+  "candidate_patches": [
+    {
+      "task_id": "CAL2-TASK-001",
+      "candidate_status": "UNADOPTED_CALIBRATION_ONLY",
+      "candidate_files": {
+        "community-surface.variant-b.json": {
+          "entry_id": "EC001-CAL2-B",
+          "limitations": [
+            "SYNTHETIC_CALIBRATION_ONLY"
+          ],
+          "machine_surfaces": {
+            "package": "TITMAS/agent-native/ecology-box-001/calibration/calibration-v0.2.json"
+          },
+          "maturity": "Development"
+        }
+      },
+      "diffs": [
+        {
+          "file": "community-surface.variant-b.json",
+          "diff": "--- a/community-surface.variant-b.json\n+++ b/community-surface.variant-b.json\n@@ -4,7 +4,7 @@\n     \"SYNTHETIC_CALIBRATION_ONLY\"\n   ],\n   \"machine_surfaces\": {\n-    \"package\": \"TITMAS/agent-native/ecology-box-001/calibration/missing-v0.2.json\"\n+    \"package\": \"TITMAS/agent-native/ecology-box-001/calibration/calibration-v0.2.json\"\n   },\n   \"maturity\": \"Development\"\n }",
+          "before_hash": "sha256:e00f70d1319d70f13cee94158d3972983c2ac0794a0076981986b86936e6fe9a",
+          "after_hash": "sha256:5cb1c9177f01d9e8caf93390280f2b0a32fc325dbbddcdb6b5efb341876f42eb"
+        }
+      ],
+      "candidate_hash": "sha256:947d623ccd683fc9f649ebf99da3223018b4e8b9cc12cb8adeed9c0ee08eada4",
+      "real_git_write": false
+    },
+    {
+      "task_id": "CAL2-TASK-002",
+      "candidate_status": "UNADOPTED_CALIBRATION_ONLY",
+      "candidate_files": {
+        "handoff-fixture.variant-b.json": {
+          "handoff_ref": "CAL2-HANDOFF-002",
+          "limitations": [
+            "SYNTHETIC_CALIBRATION_ONLY"
+          ],
+          "status": "CANDIDATE",
+          "prohibited_scope": []
+        }
+      },
+      "diffs": [
+        {
+          "file": "handoff-fixture.variant-b.json",
+          "diff": "--- a/handoff-fixture.variant-b.json\n+++ b/handoff-fixture.variant-b.json\n@@ -3,5 +3,6 @@\n   \"limitations\": [\n     \"SYNTHETIC_CALIBRATION_ONLY\"\n   ],\n+  \"prohibited_scope\": [],\n   \"status\": \"CANDIDATE\"\n }",
+          "before_hash": "sha256:b12f43268b1f80038a8f01dc4b8cd7e68d1a0d8834945ae8ea80d636f92c0709",
+          "after_hash": "sha256:f651e9f9853d73b021aeeef88e279a007630a8593c2b4bb665ca66b9acb86f88"
+        }
+      ],
+      "candidate_hash": "sha256:b28bb65b182957a0c32e88f1d9316cfc6c1e0981360d5e9c038fb0b8ff1872b2",
+      "real_git_write": false
+    },
+    {
+      "task_id": "CAL2-TASK-003",
+      "candidate_status": "UNADOPTED_CALIBRATION_ONLY",
+      "candidate_files": {
+        "recommendation-envelope.variant-b.json": {
+          "adoption_status": "CANDIDATE_NE_ADOPTION",
+          "evidence_status": "NOT_ADMITTED",
+          "limitations": [
+            "SYNTHETIC_CALIBRATION_ONLY"
+          ],
+          "mapping_status": "CANDIDATE_MAPPING",
+          "recommendation_mode": "RECOMMENDATION"
+        }
+      },
+      "diffs": [
+        {
+          "file": "recommendation-envelope.variant-b.json",
+          "diff": "--- a/recommendation-envelope.variant-b.json\n+++ b/recommendation-envelope.variant-b.json\n@@ -1,5 +1,5 @@\n {\n-  \"adoption_status\": \"ADOPTED\",\n+  \"adoption_status\": \"CANDIDATE_NE_ADOPTION\",\n   \"evidence_status\": \"NOT_ADMITTED\",\n   \"limitations\": [\n     \"SYNTHETIC_CALIBRATION_ONLY\"\n",
+          "before_hash": "sha256:607b3d42a7e73aed0cfa4652d7d7bb914ec4cd0445cb76cdb03b6dc56fb24e34",
+          "after_hash": "sha256:6346c5bb269cfd211b158a1b607898cc0262fd4b28881dd5b2c046af23f03437"
+        }
+      ],
+      "candidate_hash": "sha256:53948dfc5c1db66dd0a8cb74c016411a98e7dd411d600cc94d6eaed565bb4f3e",
+      "real_git_write": false
+    }
+  ],
+  "metrics": {
+    "PIPELINE_COMPLETION_RATE": 1.0,
+    "SEEDED_DEFECT_DETECTION_RATE": 1.0,
+    "VALID_FINDING_RATE": 1.0,
+    "NOISE_RATE": 0.0,
+    "CANDIDATE_CORRECTION_RATE": 0.6666666666666666,
+    "REVIEW_CATCH_RATE": "NOT_ASSESSED_NO_OPPORTUNITY",
+    "CONFORMANCE_PASS_RATE": 0.6666666666666666,
+    "CHECKPOINT_COVERAGE": 1.0,
+    "HANDOFF_FIELD_LOSS_RATE": 0.0,
+    "HUMAN_INTERVENTION_COUNT": 1,
+    "MODEL_FAILURE_COUNT": 0,
+    "UNHANDLED_TYPE_ERROR_COUNT": 0,
+    "UNHANDLED_EXCEPTION_COUNT": 0,
+    "PROTOCOL_DEVIATION_COUNT": 0,
+    "AUTHORITY_VIOLATION_COUNT": 0,
+    "SEMANTIC_ELEVATION_COUNT": 0,
+    "HARMFUL_CANDIDATE_COUNT": 0,
+    "FORMAL_TASK_CONTAMINATION_COUNT": 0,
+    "REAL_REPOSITORY_GIT_WRITES": 0,
+    "FINAL_OUTCOME_IMPROVEMENT_RATE": "NOT_ASSESSED",
+    "TITMAS_AGENT_OPERATIONAL_VALUE_DEMONSTRATED": false,
+    "TITMAS_AGENT_NATIVE_VALUE_PROVEN": false
+  },
+  "protocol_deviations": [],
+  "human_interventions": [
+    {
+      "intervention_id": "CAL2-HI-001",
+      "reason": "D02 authorization and one run start",
+      "stage": "PRE_RUN",
+      "effect": "BOUNDED_CALIBRATION_ONLY",
+      "whether_protocol_deviation": false
+    }
+  ],
+  "calibration_status": "CALIBRATION_NEGATIVE_RESULT",
+  "operational_pipeline_demonstrated": false,
+  "formal_experiment_state": {
+    "go_no_go_status": "NO_GO",
+    "execution_authorized": false,
+    "executed": false,
+    "formal_task_count": 10,
+    "formal_run_record_count": 0,
+    "value_proven": false
+  },
+  "route_decision": "STOP_DIRECT_CALIBRATION_RERUNS",
+  "stop_reason": "NONE",
+  "next_human_decision": "MINIMAL_RUNNER_REDESIGN_REQUIRED",
+  "limitations": [
+    "This is one non-confirmatory synthetic calibration.",
+    "Provider retention, training usage, logging and deletion remain UNKNOWN.",
+    "The journal is single-writer; concurrent writers are out of scope.",
+    "Mid-run schema migration is prohibited rather than implemented.",
+    "Pipeline demonstration is not Agent-native, community, commercial or adoption value proof."
+  ]
+}
