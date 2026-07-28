@@ -48,6 +48,23 @@ class HarnessTests(unittest.TestCase):
         with self.assertRaises(HARNESS.ConformanceError):
             HARNESS.load_json(Path("/tmp/not-a-titmas-input.json"))
 
+    def test_number_schema_rejects_boolean(self):
+        with self.assertRaises(HARNESS.ConformanceError):
+            HARNESS.validate_schema(True, {"type": "number"})
+
+    def test_agent_native_surfaces_pass(self):
+        details = HARNESS.check_agent_native_surfaces()
+        self.assertEqual(12, details["agent_tasks_checked"])
+        self.assertEqual(1, details["canonical_machine_entries"])
+
+    def test_agent_native_adversarial_coverage(self):
+        details = HARNESS.check_agent_native_adversarial()
+        self.assertEqual(22, details["adversarial_cases_rejected"])
+
+    def test_agent_native_value_gate_preserves_negative_result(self):
+        details = HARNESS.check_agent_native_value_gate()
+        self.assertEqual(6, details["frozen_counts_checked"])
+
 
 if __name__ == "__main__":
     unittest.main()

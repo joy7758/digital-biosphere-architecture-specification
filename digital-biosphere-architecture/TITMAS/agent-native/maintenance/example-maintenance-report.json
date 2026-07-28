@@ -1,0 +1,15 @@
+{
+  "$schema": "../schemas/maintenance-report.schema.json",
+  "maintenance_id": "MAINT-PILOT-001",
+  "participant_ref": "PILOT-G",
+  "lease_ref": "LEASE-PILOT-G-AN-10-MAINTENANCE",
+  "source_revision": "PILOT_BASE_REVISION",
+  "scope": ["TITMAS/agent-native/pilot/fixtures/example-drift.json"],
+  "findings": ["example source_revision differs from declared pilot baseline"],
+  "proposed_changes": ["prepare candidate correction; do not write automatically"],
+  "tests": ["source revision consistency check"],
+  "rollback_path": "discard unadopted candidate correction",
+  "evidence_references": ["pilot/session-PILOT-G.json"],
+  "review_required": true,
+  "authority_effect": "NONE"
+}

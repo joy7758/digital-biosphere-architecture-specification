@@ -1,0 +1,60 @@
+{
+  "$schema": "TITMAS/agent-native/schemas/agent-index.schema.json",
+  "format_version": "1.1.0",
+  "canonical_agent_entry": true,
+  "canonical_community_name": "TITMAS Agent-Native Standards Community",
+  "canonical_community_name_zh": "TITMAS 智能体原生标准社区",
+  "subtitle": "Agent-Native Community for Trusted Multi-Agent Infrastructure",
+  "compatibility_aliases": [
+    "TITMAS Developer Standards Community",
+    "TITMAS Infrastructure Developer Community"
+  ],
+  "purpose": "Machine-readable, verifiable contribution, review, maintenance, reuse and recommendation infrastructure for trusted multi-agent standards.",
+  "when_to_use": [
+    "an agent must discover a bounded standards task",
+    "a contribution needs machine-readable provenance and review handoff",
+    "multiple agents must review or reuse work without semantic elevation",
+    "a recommendation must distinguish fit, non-fit and insufficient evidence"
+  ],
+  "when_not_to_use": [
+    "running or orchestrating production agents",
+    "granting permission or authority",
+    "certifying safety or compliance",
+    "automatically fixing repositories",
+    "replacing DBOS, SAEE, an Agent framework or Human constitutional responsibility"
+  ],
+  "maturity": "Development",
+  "source": {
+    "repository": "joy7758/digital-biosphere-architecture-specification",
+    "base_branch": "codex/titmas-developer-standards-community-v1",
+    "base_revision": "6fcfd76243b94ddecff8c9aface2ed51116984cb",
+    "candidate_branch": "codex/titmas-agent-native-standards-community-v1-1",
+    "candidate_revision": "UNCOMMITTED_CANDIDATE"
+  },
+  "machine_surfaces": {
+    "community_manifest": "TITMAS/agent-native/community-manifest.json",
+    "current_state": "TITMAS/agent-native/current-state.json",
+    "claims": "TITMAS/agent-native/claims.json",
+    "participants": "TITMAS/agent-native/participants/participant-registry.json",
+    "tasks": "TITMAS/agent-native/tasks/task-registry.json",
+    "review_protocol": "TITMAS/agent-native/reviews/review-protocol.json",
+    "specifications": "TITMAS/specifications/registry.yaml",
+    "conformance_report": "TITMAS/conformance/reports/latest.json"
+  },
+  "commands": {
+    "conformance": "python3 TITMAS/conformance/harness.py",
+    "tests": "python3 -m unittest discover -s TITMAS/conformance/tests -v",
+    "discover_tasks": "python3 TITMAS/agent-native/community_cli.py discover --need NEED",
+    "rank_tasks": "python3 TITMAS/agent-native/community_cli.py rank --need NEED",
+    "eligibility": "python3 TITMAS/agent-native/community_cli.py eligibility --participant PARTICIPANT_REF --task TASK_ID --at ISO8601"
+  },
+  "authority_boundaries": [
+    "AGENT_PARTICIPATION_NE_AUTHORITY",
+    "AGENT_ROLE_NE_SELF_GRANTED_PERMISSION",
+    "AGENT_CONTRIBUTION_NE_ADOPTION",
+    "AGENT_REVIEW_NE_ARCHITECTURE_DECISION",
+    "EVIDENCE_NE_TRUTH",
+    "VERIFICATION_NE_AUTHORIZATION",
+    "RECOMMENDATION_NE_DECISION"
+  ]
+}

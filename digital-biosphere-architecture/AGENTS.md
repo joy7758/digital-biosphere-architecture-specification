@@ -39,7 +39,8 @@ PROTOCOLIZATION_BEFORE_PLATFORM_EXPANSION=true
 15. `architecture/titmas-document-maturity-policy-v0.1.md`（文档级成熟度）；
 16. `architecture/titmas-contribution-proposal-template-v0.1.md`（重大变化 Proposal）；
 17. `architecture/titmas-architecture-charter-v1.0.md`（TITMAS 项目身份与边界的
-    canonical Charter）。
+    canonical Charter）；
+18. `agent-index.json`（TITMAS 智能体原生社区的唯一机器入口）。
 
 进行 TITMAS 工作时，如 v1.0 Charter 不存在、不可读或状态含义不清，必须停止扩大
 TITMAS scope 并报告。每次重大 TITMAS 任务的最终答复必须包含该 Charter 定义的
@@ -154,6 +155,23 @@ contract、Conformance 和参考实现边界，帮助不同 Agent 通过易理�
 - 正式 Code of Conduct、安全接收路径、角色、公开贡献表面、组织账号、仓库、Issue、PR、
   实现和发布仍需分别授权。
 
+`TITMAS Developer Standards Community` 与 `TITMAS Infrastructure Developer Community`
+保留为 v1.0 milestone name 与 human-facing compatibility alias。自 `ADR-034` 起，
+canonical community name 为 `TITMAS Agent-Native Standards Community`
+（TITMAS 智能体原生标准社区）。智能体是默认日常参与主体，但不能自我授权、自我批准、
+自我晋升、改变 Authority、Merge、Release、Deployment 或 Stable status。
+
+```text
+TITMAS_AGENT_NATIVE_DIRECTION_ACCEPTED=true
+AGENT_PARTICIPATION_IS_DEFAULT=true
+AGENT_OPERATION_IS_DEFAULT=true
+HUMAN_INTERVENTION_BY_EXCEPTION=true
+AGENT_OPERATIONAL_MAJORITY_LONG_TERM_TARGET=0.99
+LONG_TERM_TARGET_NE_CURRENT_MEASURED_FACT=true
+AGENT_SELF_AUTHORIZATION_PROHIBITED=true
+AGENT_SELF_APPROVAL_PROHIBITED=true
+```
+
 ## Strategic and Authority Invariants（战略与权力不变量）
 
 ```text
@@ -175,6 +193,10 @@ OPEN_INFRASTRUCTURE_NE_FREE_PRODUCT=true
 SPECIFICATION_NE_IMPLEMENTATION=true
 STRATEGY_NE_COMMERCIAL_COMMITMENT=true
 TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY_DIRECTION_ADOPTED=true
+TITMAS_AGENT_NATIVE_DIRECTION_ACCEPTED=true
+AI_AGENT_IS_PRIMARY_COMMUNITY_PARTICIPANT=true
+AGENT_OPERATIONAL_MAJORITY_LONG_TERM_TARGET=0.99
+LONG_TERM_TARGET_NE_CURRENT_MEASURED_FACT=true
 TITMAS_CONTRIBUTOR_ENTRY_PREPARED=true
 TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
 TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
@@ -190,6 +212,11 @@ COMPOSITION_NE_AUTHORITY_AGGREGATION=true
 COORDINATION_NE_UNBOUNDED_CENTER=true
 COVERAGE_NE_CORRECTNESS_OR_TRUTH=true
 EMERGENT_CAPABILITY_NE_AUTOMATIC_PERMISSION=true
+AGENT_PARTICIPATION_NE_AUTHORITY=true
+AGENT_ACTIVITY_NE_COMMUNITY_VALUE=true
+AGENT_SELF_AUTHORIZATION_PROHIBITED=true
+AGENT_SELF_APPROVAL_PROHIBITED=true
+AGENT_SELF_PROMOTION_PROHIBITED=true
 ```
 
 任何智能体提出架构或实现方向时，必须优先检查能否由职责简单、边界受限、可替换的

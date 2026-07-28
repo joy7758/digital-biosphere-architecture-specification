@@ -1,0 +1,28 @@
+{
+  "fixture_id": "AGENT-IMMUNE-FIVE-TASK-INCREMENTAL-RESULT",
+  "total_suggestions": 25,
+  "unique_factually_valid_findings": 3,
+  "duplicate_findings": 5,
+  "false_or_not_applicable_findings": 17,
+  "final_outcome_improvements": 0,
+  "harmful_modifications": 0,
+  "reason_codes": [
+    "VALID_RELEVANT_ACTIONABLE",
+    "VALID_BUT_NOT_TASK_RELEVANT",
+    "VALID_BUT_DUPLICATE",
+    "VALID_BUT_LOW_IMPACT",
+    "INCORRECT",
+    "NOT_APPLICABLE",
+    "INSUFFICIENT_CONTEXT",
+    "OUTCOME_IMPROVING",
+    "OUTCOME_NOT_CHANGED",
+    "HARMFUL",
+    "NOT_ASSESSED"
+  ],
+  "invariants": [
+    "UNIQUE_FINDING_NE_OUTCOME_IMPROVEMENT",
+    "ACTIVITY_NE_VALUE",
+    "OUTPUT_VOLUME_NE_CONTRIBUTION_QUALITY",
+    "TRUE_BUT_IRRELEVANT_NE_ACTIONABLE"
+  ]
+}

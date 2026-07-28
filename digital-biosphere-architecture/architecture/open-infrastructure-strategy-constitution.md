@@ -1,6 +1,6 @@
-# Digital Biosphere Open Infrastructure Strategy Constitution v0.4
+# Digital Biosphere Open Infrastructure Strategy Constitution v0.5
 
-中文：数字生物圈开放基础设施战略宪法 v0.4
+中文：数字生物圈开放基础设施战略宪法 v0.5
 
 Status: `ADOPTED_STRATEGIC_CONSTITUTION`
 
@@ -12,6 +12,7 @@ Amendment references:
 
 - [`ADR-029`](ADR-029-titmas-infrastructure-developer-community-direction.md)
 - [`ADR-032`](ADR-032-compositional-scale-over-unbounded-center.md)
+- [`ADR-034`](ADR-034-titmas-agent-native-standards-community-direction.md)
 
 Development design overlay:
 
@@ -130,6 +131,68 @@ TITMAS_INDEPENDENT_AUTHORITY_CREATED=false
 
 完整贡献表面、成熟度模型、Workstream activation、Roadmap 和防跑偏检查见
 [`titmas-infrastructure-developer-community-strategy-v0.1.md`](titmas-infrastructure-developer-community-strategy-v0.1.md)。
+
+## Principle 2B: Agent-Native Community
+
+TITMAS 社区的默认参与主体是受治理的智能体。`TITMAS Developer Standards Community`
+和 `TITMAS Infrastructure Developer Community` 继续作为 v1.0 milestone name
+（里程碑名称）与 human-facing compatibility alias（面向人类的兼容别名）；新的规范名称
+是：
+
+```text
+English: TITMAS Agent-Native Standards Community
+Chinese: TITMAS 智能体原生标准社区
+Subtitle: Agent-Native Community for Trusted Multi-Agent Infrastructure
+```
+
+智能体是主要 Discoverer、Consumer、Contributor、Reviewer、Integrator、Maintenance
+Operator、Reuse Consumer、Recommender 和 Archivist。人类或具有现实责任的机构保留
+Constitutional Steward、Authority Issuer、Appeal Authority、Exception Handler、法律与
+隐私责任以及紧急接管职责。
+
+`99%` 是长期设计假设和目标，不是当前测量事实、市场声明或已实现自治比例。日常流程
+可以被有期限、有范围、可撤销的智能体角色执行，但参与、活动或输出数量均不产生
+Authority、Permission、Adoption、Stable status 或社区价值。
+
+```text
+TITMAS_AGENT_NATIVE=true
+AI_AGENT_IS_PRIMARY_COMMUNITY_PARTICIPANT=true
+AGENT_PARTICIPATION_IS_DEFAULT=true
+AGENT_OPERATION_IS_DEFAULT=true
+HUMAN_INTERVENTION_BY_EXCEPTION=true
+
+AGENT_DISCOVERY_PRIORITY=true
+AGENT_READABILITY_PRIORITY=true
+AGENT_OPERABILITY_PRIORITY=true
+AGENT_CONTRIBUTION_PRIORITY=true
+AGENT_REVIEW_PRIORITY=true
+AGENT_MAINTENANCE_PRIORITY=true
+AGENT_REUSE_PRIORITY=true
+AGENT_RECOMMENDATION_PRIORITY=true
+
+AGENT_OPERATIONAL_MAJORITY_LONG_TERM_TARGET=0.99
+HUMAN_ROUTINE_INTERVENTION_LONG_TERM_TARGET_MAX=0.01
+LONG_TERM_TARGET_NE_CURRENT_MEASURED_FACT=true
+DESIGN_ASSUMPTION_NE_PUBLIC_MARKET_CLAIM=true
+
+AGENT_PARTICIPATION_NE_AUTHORITY=true
+AGENT_ROLE_NE_SELF_GRANTED_PERMISSION=true
+AGENT_CONTRIBUTION_NE_ADOPTION=true
+AGENT_REVIEW_NE_ARCHITECTURE_DECISION=true
+AGENT_ACTIVITY_NE_COMMUNITY_VALUE=true
+AGENT_OUTPUT_VOLUME_NE_ECOSYSTEM_HEALTH=true
+
+AGENT_SELF_AUTHORIZATION_PROHIBITED=true
+AGENT_SELF_APPROVAL_PROHIBITED=true
+AGENT_SELF_PROMOTION_PROHIBITED=true
+AGENT_AUTHORITY_EXPANSION_REQUIRES_ACCOUNTABLE_AUTHORITY=true
+IRREVERSIBLE_ACTION_REQUIRES_ACCOUNTABLE_AUTHORITY=true
+CONSTITUTIONAL_CHANGE_REQUIRES_ACCOUNTABLE_HUMAN_OR_INSTITUTIONAL_AUTHORITY=true
+```
+
+智能体原生不表示无人负责。任何不可逆动作、公共写入、角色或 Authority 变化、
+Stable adoption、Merge、Release、Deployment、Certification 或商业承诺继续需要独立、
+可追溯的责任主体决定。
 
 ## Principle 3: Protocolization Before Platform Expansion
 
@@ -371,6 +434,11 @@ OPEN_INFRASTRUCTURE_NE_FREE_PRODUCT=true
 SPECIFICATION_NE_IMPLEMENTATION=true
 STRATEGY_NE_COMMERCIAL_COMMITMENT=true
 TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY_DIRECTION_ADOPTED=true
+TITMAS_AGENT_NATIVE_DIRECTION_ACCEPTED=true
+TITMAS_AGENT_NATIVE=true
+AI_AGENT_IS_PRIMARY_COMMUNITY_PARTICIPANT=true
+AGENT_OPERATIONAL_MAJORITY_LONG_TERM_TARGET=0.99
+LONG_TERM_TARGET_NE_CURRENT_MEASURED_FACT=true
 TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED=false
 TITMAS_FOUNDATION_IN_SCOPE=false
 TELEMETRY_NE_EVIDENCE=true
@@ -387,6 +455,11 @@ COMPOSITION_NE_AUTHORITY_AGGREGATION=true
 COORDINATION_NE_UNBOUNDED_CENTER=true
 COVERAGE_NE_CORRECTNESS_OR_TRUTH=true
 EMERGENT_CAPABILITY_NE_AUTOMATIC_PERMISSION=true
+AGENT_SELF_AUTHORIZATION_PROHIBITED=true
+AGENT_SELF_APPROVAL_PROHIBITED=true
+AGENT_SELF_PROMOTION_PROHIBITED=true
+AGENT_PARTICIPATION_NE_AUTHORITY=true
+AGENT_ACTIVITY_NE_COMMUNITY_VALUE=true
 AUTOMATIC_AUTHORITY_EFFECT=NONE
 ```
 

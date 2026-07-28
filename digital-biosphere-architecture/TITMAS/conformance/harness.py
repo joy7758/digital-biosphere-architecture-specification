@@ -50,12 +50,14 @@ def validate_schema(
     expected = schema.get("type")
     type_map = {
         "object": dict, "array": list, "string": str,
-        "boolean": bool, "integer": int,
+        "boolean": bool, "integer": int, "number": (int, float),
     }
     if expected in type_map and not isinstance(instance, type_map[expected]):
         raise ConformanceError(f"{path}: expected {expected}")
     if expected == "integer" and isinstance(instance, bool):
         raise ConformanceError(f"{path}: boolean is not an integer")
+    if expected == "number" and isinstance(instance, bool):
+        raise ConformanceError(f"{path}: boolean is not a number")
     if "enum" in schema and instance not in schema["enum"]:
         raise ConformanceError(f"{path}: value {instance!r} is not allowed")
     if "const" in schema and instance != schema["const"]:
@@ -243,6 +245,167 @@ def check_internal_reviews() -> dict[str, Any]:
     return {"review_sessions_checked": len(review_paths), "findings_checked": findings}
 
 
+def validate_json_file(path: Path, schema_path: Path) -> dict[str, Any]:
+    value = load_json(path)
+    schema = load_json(schema_path)
+    validation_value = dict(value)
+    validation_value.pop("$schema", None)
+    validate_schema(validation_value, schema, path=str(path.relative_to(DBA_ROOT)))
+    return value
+
+
+def check_agent_native_surfaces() -> dict[str, Any]:
+    root = TITMAS_ROOT / "agent-native"
+    schemas = root / "schemas"
+    entry = validate_json_file(DBA_ROOT / "agent-index.json", schemas / "agent-index.schema.json")
+    manifest = validate_json_file(root / "community-manifest.json", schemas / "community-manifest.schema.json")
+    state = validate_json_file(root / "current-state.json", schemas / "current-state.schema.json")
+    if not entry["canonical_agent_entry"]:
+        raise ConformanceError("agent-index.json must be the canonical agent entry")
+    if manifest["canonical_entry"] != "../../agent-index.json":
+        raise ConformanceError("community manifest creates a competing machine entry")
+
+    must_be_false = (
+        "public_agent_community_authorized", "public_contribution_authorized",
+        "public_github_agent_write_authorized", "agent_community_established",
+        "public_launch_authorized", "release_authorized",
+        "certification_authorized", "commercial_ready", "foundation_created",
+        "cs_g0_pass", "cs_g1_pass", "current_99_percent_autonomy_claim",
+    )
+    elevated = [key for key in must_be_false if state[key] is not False]
+    if elevated:
+        raise ConformanceError(f"agent-native state semantic elevation: {elevated}")
+    if state["agent_operational_majority_long_term_target"] != 0.99:
+        raise ConformanceError("long-term target drift")
+    for key in (
+        "external_agent_participant_count", "external_human_contributor_count",
+        "external_adopter_count",
+    ):
+        if state[key] != 0:
+            raise ConformanceError(f"{key} must remain zero")
+
+    participant_registry = load_json(root / "participants" / "participant-registry.json")
+    participants = participant_registry["participants"]
+    if participant_registry["agent_participant_count"] != len(participants):
+        raise ConformanceError("agent participant count mismatch")
+    lineages = {item["lineage_ref"] for item in participants}
+    if participant_registry["independent_agent_lineage_count"] != len(lineages):
+        raise ConformanceError("independent agent lineage count mismatch")
+    for participant in participants:
+        validate_schema(participant, load_json(schemas / "participant.schema.json"))
+        if participant["participant_ref"] == participant["authority_issuer_ref"]:
+            raise ConformanceError("participant self-authorization")
+
+    task_registry = load_json(root / "tasks" / "task-registry.json")
+    tasks = task_registry["tasks"]
+    if len(tasks) != 12 or len({item["task_id"] for item in tasks}) != len(tasks):
+        raise ConformanceError("task registry must contain 12 unique pilot tasks")
+    task_schema = load_json(schemas / "task.schema.json")
+    for task in tasks:
+        validate_schema(task, task_schema)
+        if task["source_revision"] != task_registry["source_revision"]:
+            raise ConformanceError(f"{task['task_id']}: source revision drift")
+        if task["authority_reference"] != "TITMAS-AGENT-NATIVE-COMMUNITY-D01":
+            raise ConformanceError(f"{task['task_id']}: unauthorized authority reference")
+
+    examples = (
+        (root / "participants" / "example-capability-declaration.json", "capability-declaration"),
+        (root / "participants" / "example-role-assignment.json", "role-assignment"),
+        (root / "participants" / "example-revocation-record.json", "revocation-record"),
+        (root / "participants" / "example-expiry-record.json", "expiry-record"),
+        (root / "tasks" / "example-scope-lease.json", "scope-lease"),
+        (root / "contributions" / "example-contribution-package.json", "contribution-package"),
+        (root / "reviews" / "review-protocol.json", None),
+        (root / "maintenance" / "example-maintenance-report.json", "maintenance-report"),
+        (root / "recommendations" / "example-recommendation-package.json", "recommendation-package"),
+        (root / "handoff" / "example-handoff-package.json", "handoff-package"),
+    )
+    checked = 0
+    for path, schema_name in examples:
+        if schema_name:
+            validate_json_file(path, schemas / f"{schema_name}.schema.json")
+        else:
+            load_json(path)
+        checked += 1
+    return {
+        "canonical_machine_entries": 1,
+        "agent_participants_checked": len(participants),
+        "independent_lineages_checked": len(lineages),
+        "agent_tasks_checked": len(tasks),
+        "agent_protocol_examples_checked": checked,
+        "authority_invariants_checked": len(must_be_false),
+    }
+
+
+def check_agent_native_adversarial() -> dict[str, Any]:
+    payload = load_json(TITMAS_ROOT / "agent-native" / "security" / "adversarial-cases.json")
+    cases = payload["cases"]
+    required_attacks = {
+        "PROMPT_INJECTION", "MALICIOUS_TASK_DESCRIPTION",
+        "FORGED_PARTICIPANT_IDENTITY", "SELF_AUTHORIZATION", "SELF_APPROVAL",
+        "AUTHORITY_ELEVATION", "TASK_SCOPE_EXPANSION", "REVIEW_COLLUSION",
+        "SYBIL_SESSION_AS_INDEPENDENT_LINEAGE", "INFINITE_TASK_LOOP",
+        "AUTOMATIC_ISSUE_PR_NOISE", "DUPLICATE_CONTRIBUTION",
+        "MALICIOUS_SCHEMA", "PATH_TRAVERSAL", "HIDDEN_NETWORK_CALL",
+        "SUPPLY_CHAIN_DEPENDENCY", "FAKE_ADOPTION", "FAKE_CERTIFICATION",
+        "DELETE_FAILURE_RECORD", "NOT_ASSESSED_TO_PASS",
+        "RECOMMENDATION_TO_COMMAND", "EVIDENCE_TO_TRUTH",
+    }
+    observed = {item["attack"] for item in cases}
+    if observed != required_attacks:
+        raise ConformanceError(f"adversarial case coverage drift: {sorted(required_attacks - observed)}")
+    bad = [item["id"] for item in cases if item["expected"] != "REJECT" or not item["reason_code"]]
+    if bad:
+        raise ConformanceError(f"adversarial cases fail open: {bad}")
+    return {"adversarial_cases_rejected": len(cases)}
+
+
+def check_agent_native_value_gate() -> dict[str, Any]:
+    fixture = load_json(
+        TITMAS_ROOT / "agent-native" / "value-gate" / "agent-immune-five-task-fixture.json"
+    )
+    expected = {
+        "total_suggestions": 25,
+        "unique_factually_valid_findings": 3,
+        "duplicate_findings": 5,
+        "false_or_not_applicable_findings": 17,
+        "final_outcome_improvements": 0,
+        "harmful_modifications": 0,
+    }
+    drift = {key: (fixture.get(key), value) for key, value in expected.items()
+             if fixture.get(key) != value}
+    if drift:
+        raise ConformanceError(f"Agent Immune value fixture drift: {drift}")
+    if len(fixture["reason_codes"]) != 11:
+        raise ConformanceError("value gate reason code coverage drift")
+    return {"frozen_counts_checked": len(expected), "reason_codes_checked": 11}
+
+
+def check_agent_native_pilot() -> dict[str, Any]:
+    path = TITMAS_ROOT / "agent-native" / "pilot" / "pilot-result.json"
+    if not path.exists():
+        return {"pilot_result_present": False, "pilot_status": "NOT_EXECUTED"}
+    result = load_json(path)
+    required = {
+        "pilot_status", "participant_count", "independent_lineage_count",
+        "tasks_executed", "metrics", "threshold_results", "authority_violations",
+        "semantic_elevation_findings", "harmful_modifications",
+    }
+    missing = sorted(required - result.keys())
+    if missing:
+        raise ConformanceError(f"pilot result missing fields {missing}")
+    if result["participant_count"] < result["independent_lineage_count"]:
+        raise ConformanceError("lineage count exceeds participant count")
+    if result["authority_violations"] or result["semantic_elevation_findings"]:
+        raise ConformanceError("pilot authority or semantic boundary violated")
+    return {
+        "pilot_result_present": True,
+        "pilot_status": result["pilot_status"],
+        "pilot_tasks_checked": len(result["tasks_executed"]),
+        "pilot_metrics_checked": len(result["metrics"]),
+    }
+
+
 LINK_PATTERN = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 
 
@@ -272,6 +435,10 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("community_status", check_community_status),
         ("contributor_entry", check_contributor_entry),
         ("internal_reviews", check_internal_reviews),
+        ("agent_native_surfaces", check_agent_native_surfaces),
+        ("agent_native_adversarial", check_agent_native_adversarial),
+        ("agent_native_value_gate", check_agent_native_value_gate),
+        ("agent_native_pilot", check_agent_native_pilot),
         ("local_links", check_local_links),
     )
     overall = "PASS"
