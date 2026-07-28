@@ -1,0 +1,237 @@
+{
+  "review_id": "CS-G1-REV-CLAIM-02",
+  "version": "0.2.0",
+  "status": "COMPLETED",
+  "domain": "CLAIM_AUTHORITY",
+  "source_bindings": [
+    {
+      "path": "veap-security-privacy-claim-risk-register.v0.1.json",
+      "sha256": "ef1a38a4af01efe36cabb3e13c8e4815d05ba71c7703521c4fea05cd8a471492",
+      "bytes": 9314,
+      "matched": true
+    }
+  ],
+  "request": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "requested_model": "qwen3.7-max",
+    "request_count": 1,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0,
+    "tools_used": false,
+    "request_sha256": "a6250019b2260f0939c6ba059cab640196709846e4198448643f722a1f9c8d79",
+    "request_bytes": 11254
+  },
+  "response": {
+    "response_id": "chatcmpl-1f6a4f72-f41a-4c8f-9130-0e1bcb3c4743",
+    "returned_model": "qwen3.7-max",
+    "finish_reason": "stop",
+    "raw_response_sha256": "1ff8ca5170321b1927ca7dbefcc97a8a242fd38a3c8711d302c1f156e415a8c5",
+    "raw_response_bytes": 24150,
+    "direct_content_sha256": "a752c4836ad578c98d1925090d3142388d0eb938d70634516b2afbcf4f8a126c",
+    "direct_content_bytes": 11929,
+    "direct_json_verified": true,
+    "schema_valid": true
+  },
+  "item_results": [
+    {
+      "item_id": "VEAP-CLAIM-001",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Risk statement correctly identifies that evidence or attestation could be misinterpreted as truth or proof of correct outcome.",
+        "Required control mandates limitations, forbidden-claim tests, and review of every public wording surface.",
+        "Stop condition TRUTH_OR_CORRECTNESS_INFERENCE_PRESENT is well-defined and detectable.",
+        "Control is procedural and depends on consistent execution across all surfaces; residual risk remains if any surface is missed."
+      ],
+      "required_corrections": [
+        "Define a concrete enumeration or discovery mechanism for all public wording surfaces to ensure review coverage is complete.",
+        "Specify the exact forbidden-claim test criteria and pass/fail thresholds."
+      ],
+      "residual_risks": [
+        "Undiscovered or newly created public wording surfaces may escape review.",
+        "Forbidden-claim tests may not cover novel phrasings that imply truth or correctness."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/9"
+      ]
+    },
+    {
+      "item_id": "VEAP-CLAIM-002",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Risk statement correctly identifies that a verification result could be misconstrued as permission or operational authorization.",
+        "Required control demands non-elevation language, a separate decision reference, and a negative case.",
+        "Stop condition VERIFICATION_TO_PERMISSION_INFERENCE_PRESENT is well-defined.",
+        "Control relies on language discipline and structural separation; residual risk exists if downstream consumers ignore the separation."
+      ],
+      "required_corrections": [
+        "Define the exact format and placement of the separate decision reference.",
+        "Specify the negative case template and ensure it is always co-published with verification results."
+      ],
+      "residual_risks": [
+        "Downstream systems or human readers may still infer permission from verification despite non-elevation language.",
+        "Negative case may be overlooked if not prominently displayed."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/10"
+      ]
+    },
+    {
+      "item_id": "VEAP-CLAIM-003",
+      "disposition": "ACCEPTED",
+      "control_sufficiency": "SUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Risk statement correctly identifies that an attestation could be marketed as a certificate or certified Agent.",
+        "Required control imposes a ban on certificate claims until an independent authorized certification system exists.",
+        "Stop condition CERTIFICATE_OR_CERTIFIED_AGENT_CLAIM_PRESENT is clear and binary.",
+        "Ban is absolute and does not depend on procedural execution, reducing residual risk."
+      ],
+      "required_corrections": [
+        "Define the criteria for recognizing an independent authorized certification system to know when the ban may be lifted."
+      ],
+      "residual_risks": [
+        "Third parties outside VEAP governance may still make certificate claims referencing VEAP attestations."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/11"
+      ]
+    },
+    {
+      "item_id": "VEAP-CLAIM-004",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Risk statement correctly identifies that schema validity or conformance results could be presented as production proof.",
+        "Required control mandates publication of exact maturity, scope, executed count, limitations, and a production-claim prohibition.",
+        "Stop condition PRODUCTION_PROOF_INFERENCE_PRESENT is well-defined.",
+        "Control is disclosure-based; residual risk remains if readers ignore or misunderstand published limitations."
+      ],
+      "required_corrections": [
+        "Specify the exact format and location for publishing maturity, scope, executed count, and limitations.",
+        "Define enforcement mechanism for the production-claim prohibition."
+      ],
+      "residual_risks": [
+        "Published limitations may be ignored or misunderstood by downstream consumers.",
+        "Production-claim prohibition may be violated without detection."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/12"
+      ]
+    },
+    {
+      "item_id": "VEAP-CLAIM-005",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Risk statement correctly identifies that partial or sampled observations could be presented as complete execution history.",
+        "Required control mandates propagation of completeness, sampling, drop, partial, and unknown status without silent fill.",
+        "Stop condition COMPLETENESS_STATUS_MISSING_OR_ELEVATED is well-defined.",
+        "Control depends on consistent status propagation across all data paths; residual risk exists if any path silently fills or drops status."
+      ],
+      "required_corrections": [
+        "Define the exact status vocabulary and encoding for completeness, sampling, drop, partial, and unknown.",
+        "Specify audit or monitoring mechanism to detect silent fill or status elevation."
+      ],
+      "residual_risks": [
+        "Silent fill or status elevation may occur in undocumented data paths.",
+        "Status metadata may be stripped or ignored by downstream systems."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/13"
+      ]
+    },
+    {
+      "item_id": "VEAP-AUTH-001",
+      "disposition": "ACCEPTED",
+      "control_sufficiency": "SUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Risk statement correctly identifies that VEAP could become a second canonical owner for DBOS, EEOAP, or verifier objects.",
+        "Required control enforces the ownership crosswalk, opaque references, and conflict fail-closed semantics.",
+        "Stop condition SECOND_CANONICAL_OWNER_CLAIM_PRESENT is clear and binary.",
+        "Fail-closed semantics ensure that any ownership conflict blocks rather than silently proceeding."
+      ],
+      "required_corrections": [
+        "Document the exact ownership crosswalk mapping and ensure it is versioned and auditable."
+      ],
+      "residual_risks": [
+        "Crosswalk mapping errors could cause false conflicts or missed conflicts.",
+        "Opaque references may complicate debugging if not accompanied by adequate logging."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/14"
+      ]
+    },
+    {
+      "item_id": "VEAP-AUTH-002",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Risk statement correctly identifies that a SAEE evaluation or recommendation could be converted into decision or execution.",
+        "Required control mandates advisory labels, separate decision and authorization, and prohibition of writeback.",
+        "Stop condition EVALUATION_TO_DECISION_OR_EXECUTION_INFERENCE_PRESENT is well-defined.",
+        "Control depends on labeling discipline and architectural separation; residual risk exists if downstream systems bypass the separation."
+      ],
+      "required_corrections": [
+        "Define the exact advisory label format and ensure it is machine-readable.",
+        "Specify the architectural boundary that enforces the writeback prohibition."
+      ],
+      "residual_risks": [
+        "Downstream systems may ignore advisory labels and treat evaluations as decisions.",
+        "Writeback prohibition may be circumvented through indirect channels."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/15"
+      ]
+    }
+  ],
+  "overall_verdict": "ACCEPT_FOR_HUMAN_FREEZE_REVIEW",
+  "blockers": [],
+  "required_corrections": [
+    "Define a concrete enumeration or discovery mechanism for all public wording surfaces (VEAP-CLAIM-001).",
+    "Specify the exact forbidden-claim test criteria and pass/fail thresholds (VEAP-CLAIM-001).",
+    "Define the exact format and placement of the separate decision reference (VEAP-CLAIM-002).",
+    "Specify the negative case template and ensure it is always co-published with verification results (VEAP-CLAIM-002).",
+    "Define the criteria for recognizing an independent authorized certification system (VEAP-CLAIM-003).",
+    "Specify the exact format and location for publishing maturity, scope, executed count, and limitations (VEAP-CLAIM-004).",
+    "Define enforcement mechanism for the production-claim prohibition (VEAP-CLAIM-004).",
+    "Define the exact status vocabulary and encoding for completeness, sampling, drop, partial, and unknown (VEAP-CLAIM-005).",
+    "Specify audit or monitoring mechanism to detect silent fill or status elevation (VEAP-CLAIM-005).",
+    "Document the exact ownership crosswalk mapping and ensure it is versioned and auditable (VEAP-AUTH-001).",
+    "Define the exact advisory label format and ensure it is machine-readable (VEAP-AUTH-002).",
+    "Specify the architectural boundary that enforces the writeback prohibition (VEAP-AUTH-002)."
+  ],
+  "limitations": [
+    "This review is advisory and does not constitute a human decision, authority grant, risk acceptance, crosswalk acceptance, or Gate PASS.",
+    "Evidence cited is limited to the supplied source document and does not establish truth.",
+    "Evaluation does not confer authority; recommendation does not constitute a decision; decision does not constitute execution; capability does not constitute permission.",
+    "All false effects are preserved: no authority, ownership, crosswalk acceptance, risk acceptance, implementation, commercial offer, certification, release, or deployment is approved.",
+    "Human adjudication remains required for all corrections and residual risks identified."
+  ],
+  "human_decision_required": true,
+  "effects": {
+    "decision": false,
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "formal_review_completion": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "standard_ready": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false,
+    "deployment": false
+  }
+}

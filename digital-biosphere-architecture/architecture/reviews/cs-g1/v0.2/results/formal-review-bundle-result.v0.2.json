@@ -1,0 +1,126 @@
+{
+  "document_id": "DBA-TITMAS-CS-G1-FORMAL-REVIEW-BUNDLE-RESULT-0.2",
+  "version": "0.2.0",
+  "status": "ADVISORY_EXECUTION_COMPLETE_RETURN_FOR_REVISION",
+  "decision_reference": "CS-G1-REMEDIATION-D01",
+  "decided_by_ref": "zhangbin",
+  "review_model": "qwen3.7-max",
+  "source_bindings": [
+    {
+      "path": "claim-authority-review-result.v0.2.json",
+      "sha256": "50eab4b588bca746a41ea5a81efcf86954c43f1c002a6f13523c83497c902d8c"
+    },
+    {
+      "path": "ownership-crosswalk-review-result.v0.2.json",
+      "sha256": "365bd6498089cbe71fefad60d34f50ff9418f2382c483eb1bed491cf7ef6611e"
+    },
+    {
+      "path": "privacy-review-result.v0.2.json",
+      "sha256": "fec06729fade338fa9606849eac774192612fffcd42900596d6ffb79043c2b26"
+    },
+    {
+      "path": "security-review-result.v0.2.json",
+      "sha256": "123754799c5e3782959fc761d21bcd35adbac2711bc38e81721faee2b3f3e06c"
+    }
+  ],
+  "execution": {
+    "authorized_sessions": 4,
+    "requests_sent": 4,
+    "completed_sessions": 4,
+    "failed_sessions": 0,
+    "requests_per_session": 1,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0,
+    "tools_used": false,
+    "exact_model_identity_sessions": 4,
+    "request_byte_cap": 24000,
+    "maximum_request_bytes": 14333,
+    "advisory_session_execution_complete": true,
+    "authorization_budget_consumed": true
+  },
+  "coverage": {
+    "security_risks": "5/5",
+    "privacy_risks": "4/4",
+    "claim_authority_risks": "7/7",
+    "total_risks": "16/16",
+    "crosswalk_surfaces": "14/14",
+    "total_items": "30/30",
+    "duplicate_items": 0,
+    "out_of_scope_items": 0,
+    "complete": true
+  },
+  "session_results": [
+    {
+      "review_id": "CS-G1-REV-SEC-02",
+      "status": "COMPLETED",
+      "overall_verdict": "RETURN_FOR_REVISION",
+      "item_count": 5
+    },
+    {
+      "review_id": "CS-G1-REV-PRIV-02",
+      "status": "COMPLETED",
+      "overall_verdict": "ACCEPT_FOR_HUMAN_FREEZE_REVIEW",
+      "item_count": 4
+    },
+    {
+      "review_id": "CS-G1-REV-CLAIM-02",
+      "status": "COMPLETED",
+      "overall_verdict": "ACCEPT_FOR_HUMAN_FREEZE_REVIEW",
+      "item_count": 7
+    },
+    {
+      "review_id": "CS-G1-REV-XWALK-01",
+      "status": "COMPLETED",
+      "overall_verdict": "RETURN_FOR_REVISION",
+      "item_count": 14
+    }
+  ],
+  "advisory_summary": {
+    "accepted": 8,
+    "accepted_with_residual_risk": 15,
+    "return_for_revision": 7,
+    "sufficient_controls": 12,
+    "partial_controls": 11,
+    "insufficient_controls": 7,
+    "triggered_stop_conditions": 5,
+    "session_blockers": 12,
+    "session_required_corrections": 27
+  },
+  "human_adjudication": {
+    "required": true,
+    "security_revision_required": true,
+    "ownership_crosswalk_revision_required": true,
+    "privacy_candidate_ready_for_human_freeze_review": true,
+    "claim_authority_ready_for_human_freeze_review": true,
+    "residual_risk_acceptance_required": true,
+    "crosswalk_acceptance_required": true
+  },
+  "readiness": {
+    "formal_review_complete": false,
+    "formal_review_bundle_ready": false,
+    "cs_g1_pass": false,
+    "reason": "All advisory sessions completed with full scope coverage, but Security and Ownership Crosswalk returned for revision, five Security stop conditions remain triggered, and no Human adjudication has accepted controls, residual risks or the crosswalk."
+  },
+  "effects": {
+    "decision": false,
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "formal_review_completion": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "standard_ready": false,
+    "data_processing": false,
+    "external_outreach": false,
+    "commercial_pilot": false,
+    "commercial_offer": false,
+    "certification": false,
+    "standard_publication": false,
+    "release": false,
+    "deployment": false
+  }
+}

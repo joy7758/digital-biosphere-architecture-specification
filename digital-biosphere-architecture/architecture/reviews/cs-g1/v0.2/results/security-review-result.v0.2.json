@@ -1,0 +1,203 @@
+{
+  "review_id": "CS-G1-REV-SEC-02",
+  "version": "0.2.0",
+  "status": "COMPLETED",
+  "domain": "SECURITY",
+  "source_bindings": [
+    {
+      "path": "veap-security-privacy-claim-risk-register.v0.1.json",
+      "sha256": "ef1a38a4af01efe36cabb3e13c8e4815d05ba71c7703521c4fea05cd8a471492",
+      "bytes": 9314,
+      "matched": true
+    }
+  ],
+  "request": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "requested_model": "qwen3.7-max",
+    "request_count": 1,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0,
+    "tools_used": false,
+    "request_sha256": "4e9a686f92ba08e233b73e2fd810913ebc4cb5fb0841a666e5065c1e8dbec431",
+    "request_bytes": 10293
+  },
+  "response": {
+    "response_id": "chatcmpl-9b5d80b5-d49d-4466-bde5-2ac226d47ed4",
+    "returned_model": "qwen3.7-max",
+    "finish_reason": "stop",
+    "raw_response_sha256": "efae7de52218f1d71ece430cc6cb74778b1581aeeec0028dad31d86615433c50",
+    "raw_response_bytes": 19902,
+    "direct_content_sha256": "40d872990b17e47a10ab4a58f85c324e073d704ac7b366c1982861ef59095fef",
+    "direct_content_bytes": 10116,
+    "direct_json_verified": true,
+    "schema_valid": true
+  },
+  "item_results": [
+    {
+      "item_id": "VEAP-SEC-001",
+      "disposition": "RETURN_FOR_REVISION",
+      "control_sufficiency": "INSUFFICIENT",
+      "stop_condition_triggered": true,
+      "findings": [
+        "Risk statement identifies potential for digest or reference replacement and canonical source impersonation.",
+        "Required control mandates binding of algorithm, version, source and subject with tamper rejection and no silent repair.",
+        "Stop condition SOURCE_OR_INTEGRITY_BINDING_MISSING is active, indicating the binding is not yet established or verified.",
+        "Status remains OPEN with formal reviewer required."
+      ],
+      "required_corrections": [
+        "Implement and document explicit binding of algorithm, version, source and subject for all digests and references.",
+        "Enforce tamper detection that rejects on mismatch without silent repair or fallback substitution.",
+        "Provide evidence that SOURCE_OR_INTEGRITY_BINDING_MISSING stop condition is resolved before execution proceeds."
+      ],
+      "residual_risks": [
+        "Residual risk of impersonation if binding metadata is incomplete or not enforced at every verification point.",
+        "Residual risk of silent failure if stop condition enforcement is bypassed in downstream tooling."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/0"
+      ]
+    },
+    {
+      "item_id": "VEAP-SEC-002",
+      "disposition": "RETURN_FOR_REVISION",
+      "control_sufficiency": "INSUFFICIENT",
+      "stop_condition_triggered": true,
+      "findings": [
+        "Risk statement identifies potential for replayed or duplicate packages to be presented as new successful executions.",
+        "Required control mandates unique package identity, time policy, deduplication and immutable replay status.",
+        "Stop condition REPLAY_OR_DUPLICATE_STATUS_UNKNOWN is active, indicating replay and deduplication status is not yet determined.",
+        "Status remains OPEN with formal reviewer required."
+      ],
+      "required_corrections": [
+        "Assign and enforce unique package identity with non-reusable identifiers.",
+        "Define and enforce time policy for package acceptance and expiration.",
+        "Implement deduplication logic with immutable replay status that cannot be reset or overwritten.",
+        "Provide evidence that REPLAY_OR_DUPLICATE_STATUS_UNKNOWN stop condition is resolved."
+      ],
+      "residual_risks": [
+        "Residual risk of replay acceptance if identity or time policy is not consistently enforced across all ingestion paths.",
+        "Residual risk of status mutation if replay status storage is not immutable."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/1"
+      ]
+    },
+    {
+      "item_id": "VEAP-SEC-003",
+      "disposition": "RETURN_FOR_REVISION",
+      "control_sufficiency": "INSUFFICIENT",
+      "stop_condition_triggered": true,
+      "findings": [
+        "Risk statement identifies potential for cross-tenant or cross-entity binding to disclose data or misattribute identity.",
+        "Required control mandates tenant and subject binding, authorization checks and correlation conflict rejection.",
+        "Stop condition TENANT_OR_SUBJECT_BINDING_CONFLICTED is active, indicating binding conflicts are not yet resolved.",
+        "Status remains OPEN with formal reviewer required."
+      ],
+      "required_corrections": [
+        "Enforce strict tenant and subject binding at every access and correlation point.",
+        "Implement authorization checks that reject cross-tenant or cross-entity access by default.",
+        "Detect and reject correlation conflicts with explicit stop condition enforcement.",
+        "Provide evidence that TENANT_OR_SUBJECT_BINDING_CONFLICTED stop condition is resolved."
+      ],
+      "residual_risks": [
+        "Residual risk of data disclosure if tenant isolation is not enforced at all data boundaries.",
+        "Residual risk of identity misattribution if subject binding is incomplete or inconsistent."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/2"
+      ]
+    },
+    {
+      "item_id": "VEAP-SEC-004",
+      "disposition": "RETURN_FOR_REVISION",
+      "control_sufficiency": "INSUFFICIENT",
+      "stop_condition_triggered": true,
+      "findings": [
+        "Risk statement identifies potential for compromised or expired issuer or verifier identity to remain trusted.",
+        "Required control mandates binding of issuer status, validity interval, revocation reference and incident response path.",
+        "Stop condition ISSUER_OR_VERIFIER_STATUS_NOT_CURRENT is active, indicating issuer or verifier status is not verified as current.",
+        "Status remains OPEN with formal reviewer required."
+      ],
+      "required_corrections": [
+        "Bind and verify issuer status and validity interval at every trust decision point.",
+        "Implement revocation reference checks with current revocation data.",
+        "Define and document incident response path for compromised or expired identities.",
+        "Provide evidence that ISSUER_OR_VERIFIER_STATUS_NOT_CURRENT stop condition is resolved."
+      ],
+      "residual_risks": [
+        "Residual risk of trusting expired or revoked identities if revocation data is stale or unavailable.",
+        "Residual risk of delayed incident response if response path is not tested or enforced."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/3"
+      ]
+    },
+    {
+      "item_id": "VEAP-SEC-005",
+      "disposition": "RETURN_FOR_REVISION",
+      "control_sufficiency": "INSUFFICIENT",
+      "stop_condition_triggered": true,
+      "findings": [
+        "Risk statement identifies potential for raw payloads, credentials, secrets or sensitive content to enter a portable package.",
+        "Required control mandates deny-by-default content policy with allowlists, redaction, secret scans and stop conditions.",
+        "Stop condition SENSITIVE_CONTENT_POLICY_UNRESOLVED is active, indicating sensitive content policy is not yet enforced.",
+        "Status remains OPEN with formal reviewer required."
+      ],
+      "required_corrections": [
+        "Implement deny-by-default content policy for all portable packages.",
+        "Define and enforce allowlists for permitted content types and fields.",
+        "Apply redaction and secret scanning before package creation or transmission.",
+        "Enforce SENSITIVE_CONTENT_POLICY_UNRESOLVED stop condition to block packages that fail content policy.",
+        "Provide evidence that SENSITIVE_CONTENT_POLICY_UNRESOLVED stop condition is resolved."
+      ],
+      "residual_risks": [
+        "Residual risk of sensitive content leakage if allowlists are overly permissive or not updated.",
+        "Residual risk of undetected secrets if scanning tools are not comprehensive or are bypassed."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/4"
+      ]
+    }
+  ],
+  "overall_verdict": "RETURN_FOR_REVISION",
+  "blockers": [
+    "All five security risks have active stop conditions that must be resolved before acceptance.",
+    "No evidence provided that any required controls are implemented or verified.",
+    "Formal reviewer sign-off is required for all items and has not been obtained."
+  ],
+  "required_corrections": [
+    "Resolve SOURCE_OR_INTEGRITY_BINDING_MISSING for VEAP-SEC-001.",
+    "Resolve REPLAY_OR_DUPLICATE_STATUS_UNKNOWN for VEAP-SEC-002.",
+    "Resolve TENANT_OR_SUBJECT_BINDING_CONFLICTED for VEAP-SEC-003.",
+    "Resolve ISSUER_OR_VERIFIER_STATUS_NOT_CURRENT for VEAP-SEC-004.",
+    "Resolve SENSITIVE_CONTENT_POLICY_UNRESOLVED for VEAP-SEC-005.",
+    "Provide documented evidence of control implementation and verification for each risk.",
+    "Obtain formal reviewer sign-off for all items."
+  ],
+  "limitations": [
+    "Review is advisory only and does not constitute a human decision, authority grant, risk acceptance, crosswalk acceptance, or Gate PASS.",
+    "Evaluation is bounded to supplied source material; no external facts, retrieval, or unstated evidence are used.",
+    "Evidence cited is not truth; evaluation is not authority; recommendation is not decision; decision is not execution; capability is not permission.",
+    "Output cannot approve authority, ownership, crosswalk, risk, a Gate, implementation, commercial activity, certification, publication, release, or deployment.",
+    "Human adjudication remains required for all findings and dispositions."
+  ],
+  "human_decision_required": true,
+  "effects": {
+    "decision": false,
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "formal_review_completion": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "standard_ready": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false,
+    "deployment": false
+  }
+}

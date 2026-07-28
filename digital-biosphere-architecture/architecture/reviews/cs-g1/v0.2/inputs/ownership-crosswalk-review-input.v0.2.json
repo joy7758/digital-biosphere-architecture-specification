@@ -1,0 +1,271 @@
+{
+  "projection_id": "CS-G1-PROJ-XWALK-01",
+  "version": "0.2.0",
+  "status": "SOURCE_BOUND_REVIEW_INPUT",
+  "decision_reference": "CS-G1-REMEDIATION-D01",
+  "domain": "OWNERSHIP_CROSSWALK",
+  "source_bindings": [
+    {
+      "path": "veap-canonical-ownership-crosswalk.v0.1.json",
+      "sha256": "53a50508dcae8d490c79b7c4d9a3eee1b1ddc002d9808d2ea19b287a92dd7edf",
+      "bytes": 7872,
+      "matched": true
+    }
+  ],
+  "target_count": 14,
+  "items": [
+    {
+      "source_pointer": "/records/0",
+      "item": {
+        "surface_id": "PROGRAM_ARCHITECTURE_RULE",
+        "candidate_owner": "DBA_AND_EXPLICIT_HUMAN_DECISION",
+        "authority_status": "RESPONSIBILITY_DOMAIN_CONFIRMED",
+        "canonical_source_status": "DBA_LOCAL",
+        "veap_allowed_effect": "CARRY_DECISION_AND_PROFILE_REFERENCES",
+        "prohibited_effects": [
+          "SELF_ADOPT_ARCHITECTURE_RULE"
+        ],
+        "blocking_decisions": []
+      }
+    },
+    {
+      "source_pointer": "/records/1",
+      "item": {
+        "surface_id": "VEAP_EXCHANGE_PROFILE",
+        "candidate_owner": "BOUNDED_TITMAS_SPECIFICATION_AUTHORITY",
+        "authority_status": "UNASSIGNED",
+        "canonical_source_status": "NOT_CREATED",
+        "veap_allowed_effect": "PROPOSE_ENVELOPE_MAPPING_VERSION_FAILURE_AND_CLAIM_VOCABULARY",
+        "prohibited_effects": [
+          "REWRITE_DBOS_OBJECTS",
+          "REWRITE_EEOAP",
+          "REWRITE_SAEE"
+        ],
+        "blocking_decisions": [
+          "CS-D01",
+          "AF-D15",
+          "AF-D16"
+        ]
+      }
+    },
+    {
+      "source_pointer": "/records/2",
+      "item": {
+        "surface_id": "ENTITY_IDENTITY_LIFECYCLE",
+        "candidate_owner": "DBOS_RESPONSIBILITY_DOMAIN",
+        "authority_status": "RESPONSIBILITY_DOMAIN_CONFIRMED",
+        "canonical_source_status": "SOURCE_STATUS_PARTIAL_DQ_003",
+        "veap_allowed_effect": "CARRY_OPAQUE_REFERENCE_VERSION_AND_OBSERVED_STATE",
+        "prohibited_effects": [
+          "CREATE_ENTITY",
+          "REGISTER_ENTITY",
+          "ACTIVATE_ENTITY",
+          "MODIFY_LIFECYCLE"
+        ],
+        "blocking_decisions": [
+          "DQ-003"
+        ]
+      }
+    },
+    {
+      "source_pointer": "/records/3",
+      "item": {
+        "surface_id": "CAPABILITY_PERMISSION",
+        "candidate_owner": "DBOS_OPERATIONAL_BOUNDARY_AND_EXPLICIT_AUTHORIZATION",
+        "authority_status": "RESPONSIBILITY_DOMAIN_CONFIRMED",
+        "canonical_source_status": "PROJECT_LOCAL",
+        "veap_allowed_effect": "CARRY_DECLARED_REFERENCE_WHEN_AUTHORIZED",
+        "prohibited_effects": [
+          "INFER_PERMISSION",
+          "GRANT_PERMISSION",
+          "EXPAND_CAPABILITY"
+        ],
+        "blocking_decisions": []
+      }
+    },
+    {
+      "source_pointer": "/records/4",
+      "item": {
+        "surface_id": "EXECUTION_RECORD",
+        "candidate_owner": "DBOS_RESPONSIBILITY_DOMAIN",
+        "authority_status": "RESPONSIBILITY_DOMAIN_CONFIRMED",
+        "canonical_source_status": "PROJECT_LOCAL",
+        "veap_allowed_effect": "CARRY_IMMUTABLE_EXECUTION_REFERENCE_AND_SCOPE",
+        "prohibited_effects": [
+          "EXECUTE_TASK",
+          "INVENT_SUCCESS",
+          "DELETE_FAILURE"
+        ],
+        "blocking_decisions": []
+      }
+    },
+    {
+      "source_pointer": "/records/5",
+      "item": {
+        "surface_id": "RUNTIME_OBSERVATION",
+        "candidate_owner": "NAMED_RUNTIME_OR_TELEMETRY_PRODUCER",
+        "authority_status": "EXTERNAL_SOURCE_SPECIFIC",
+        "canonical_source_status": "MUST_BE_DECLARED_PER_SOURCE",
+        "veap_allowed_effect": "CARRY_SOURCE_VERSION_EVENT_AND_DELIVERY_REFERENCE",
+        "prohibited_effects": [
+          "CALL_OBSERVATION_EVIDENCE",
+          "CLAIM_COMPLETE_TRACE"
+        ],
+        "blocking_decisions": []
+      }
+    },
+    {
+      "source_pointer": "/records/6",
+      "item": {
+        "surface_id": "EVIDENCE_MATERIAL_PACKAGE",
+        "candidate_owner": "NAMED_AGENT_EVIDENCE_OR_SOURCE_PRODUCER",
+        "authority_status": "SOURCE_SURFACES_UNRESOLVED",
+        "canonical_source_status": "SPLIT_SURFACES",
+        "veap_allowed_effect": "CARRY_PACKAGE_REFERENCE_AND_PROVENANCE",
+        "prohibited_effects": [
+          "CREATE_DBOS_CANONICAL_EVIDENCE",
+          "CLAIM_TRUTH"
+        ],
+        "blocking_decisions": [
+          "AF-D05"
+        ]
+      }
+    },
+    {
+      "source_pointer": "/records/7",
+      "item": {
+        "surface_id": "EVIDENCE_ADMISSION_CANONICAL_EVIDENCE",
+        "candidate_owner": "DBOS_RESPONSIBILITY_DOMAIN",
+        "authority_status": "RESPONSIBILITY_DOMAIN_CONFIRMED",
+        "canonical_source_status": "PROJECT_LOCAL",
+        "veap_allowed_effect": "CARRY_ADMISSION_STATUS_AND_CANONICAL_REFERENCE",
+        "prohibited_effects": [
+          "BYPASS_ADMISSION",
+          "ASSERT_TRUTH",
+          "MODIFY_EVIDENCE"
+        ],
+        "blocking_decisions": []
+      }
+    },
+    {
+      "source_pointer": "/records/8",
+      "item": {
+        "surface_id": "ACCOUNTABILITY_STATEMENT",
+        "candidate_owner": "EEOAP_CANONICAL_SPECIFICATION_OWNER_CANDIDATE",
+        "authority_status": "UNASSIGNED",
+        "canonical_source_status": "VERSION_OWNER_UNRESOLVED",
+        "veap_allowed_effect": "CARRY_EXACT_VERSION_STATEMENT_REFERENCE",
+        "prohibited_effects": [
+          "DECIDE_LEGAL_RESPONSIBILITY",
+          "REWRITE_EEOAP"
+        ],
+        "blocking_decisions": [
+          "AF-D04",
+          "AF-D14"
+        ]
+      }
+    },
+    {
+      "source_pointer": "/records/9",
+      "item": {
+        "surface_id": "VERIFICATION_RESULT",
+        "candidate_owner": "NAMED_VERIFIER_AND_DBOS_REFERENCE_BOUNDARY",
+        "authority_status": "SOURCE_SPECIFIC_PLUS_DBOS_BOUNDARY",
+        "canonical_source_status": "MUST_BE_DECLARED_PER_VERIFIER",
+        "veap_allowed_effect": "CARRY_VERIFIER_RULE_VERSION_STATUS_AND_LIMITATIONS",
+        "prohibited_effects": [
+          "GRANT_PERMISSION",
+          "CREATE_CERTIFICATION",
+          "ASSERT_GLOBAL_TRUST"
+        ],
+        "blocking_decisions": []
+      }
+    },
+    {
+      "source_pointer": "/records/10",
+      "item": {
+        "surface_id": "EVOLUTION_EVALUATION",
+        "candidate_owner": "SAEE_PROTECTED_ADVISORY_DOMAIN",
+        "authority_status": "RESPONSIBILITY_DOMAIN_CONFIRMED",
+        "canonical_source_status": "PUBLIC_CONTRACT_PENDING",
+        "veap_allowed_effect": "CARRY_READ_ONLY_INPUT_OUTPUT_REFERENCE_UNCERTAINTY_AND_ADVISORY_STATUS",
+        "prohibited_effects": [
+          "CALCULATE_FITNESS",
+          "EXECUTE_RECOMMENDATION",
+          "WRITE_BACK_TO_DBOS"
+        ],
+        "blocking_decisions": [
+          "AF-D13"
+        ]
+      }
+    },
+    {
+      "source_pointer": "/records/11",
+      "item": {
+        "surface_id": "GOVERNANCE_DECISION",
+        "candidate_owner": "EXPLICIT_HUMAN_OR_GOVERNANCE_DECISION_AUTHORITY",
+        "authority_status": "EXPLICIT_DECISION_REQUIRED",
+        "canonical_source_status": "DECISION_SPECIFIC",
+        "veap_allowed_effect": "CARRY_DECISION_AUTHORIZATION_SCOPE_AND_VALIDITY_REFERENCE",
+        "prohibited_effects": [
+          "TURN_RECOMMENDATION_INTO_DECISION",
+          "SELF_AUTHORIZE"
+        ],
+        "blocking_decisions": []
+      }
+    },
+    {
+      "source_pointer": "/records/12",
+      "item": {
+        "surface_id": "COMMERCIAL_SERVICE",
+        "candidate_owner": "FUTURE_LEGAL_AND_SERVICE_OWNER",
+        "authority_status": "UNASSIGNED",
+        "canonical_source_status": "NO_OFFERING",
+        "veap_allowed_effect": "CARRY_SEPARATELY_VERSIONED_SERVICE_REFERENCE_IF_CREATED",
+        "prohibited_effects": [
+          "SELL_STANDARD_AUTHORITY",
+          "ALTER_PUBLIC_PROTOCOL",
+          "CLAIM_CUSTOMER_ADOPTION"
+        ],
+        "blocking_decisions": [
+          "CS-G6"
+        ]
+      }
+    },
+    {
+      "source_pointer": "/records/13",
+      "item": {
+        "surface_id": "CERTIFICATION",
+        "candidate_owner": "FUTURE_INDEPENDENT_AUTHORIZED_BODY_IF_CREATED",
+        "authority_status": "NOT_APPLICABLE",
+        "canonical_source_status": "NOT_CREATED_NOT_AUTHORIZED",
+        "veap_allowed_effect": "NONE_CURRENTLY",
+        "prohibited_effects": [
+          "SELF_CERTIFY",
+          "ISSUE_CERTIFICATE",
+          "CLAIM_CERTIFIED_AGENT"
+        ],
+        "blocking_decisions": [
+          "FUTURE_CERTIFICATION_AUTHORITY_DECISION"
+        ]
+      }
+    }
+  ],
+  "invariants": {
+    "evidence_ne_truth": true,
+    "evaluation_ne_authority": true,
+    "recommendation_ne_decision": true,
+    "decision_ne_execution": true,
+    "capability_ne_permission": true
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "commercial_offer": false,
+    "release": false
+  }
+}

@@ -1,0 +1,126 @@
+{
+  "projection_id": "CS-G1-PROJ-CLAIM-02",
+  "version": "0.2.0",
+  "status": "SOURCE_BOUND_REVIEW_INPUT",
+  "decision_reference": "CS-G1-REMEDIATION-D01",
+  "domain": "CLAIM_AUTHORITY",
+  "source_bindings": [
+    {
+      "path": "veap-security-privacy-claim-risk-register.v0.1.json",
+      "sha256": "ef1a38a4af01efe36cabb3e13c8e4815d05ba71c7703521c4fea05cd8a471492",
+      "bytes": 9314,
+      "matched": true
+    }
+  ],
+  "target_count": 7,
+  "items": [
+    {
+      "source_pointer": "/risks/9",
+      "item": {
+        "risk_id": "VEAP-CLAIM-001",
+        "domain": "CLAIM",
+        "severity": "HIGH",
+        "risk_statement": "Evidence or an attestation could be represented as truth or proof of a correct outcome.",
+        "required_control": "Require limitations, forbidden-claim tests and review of every public wording surface.",
+        "stop_condition": "TRUTH_OR_CORRECTNESS_INFERENCE_PRESENT",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      }
+    },
+    {
+      "source_pointer": "/risks/10",
+      "item": {
+        "risk_id": "VEAP-CLAIM-002",
+        "domain": "CLAIM",
+        "severity": "HIGH",
+        "risk_statement": "A verification result could be represented as permission or operational authorization.",
+        "required_control": "Require non-elevation language, a separate decision reference and a negative case.",
+        "stop_condition": "VERIFICATION_TO_PERMISSION_INFERENCE_PRESENT",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      }
+    },
+    {
+      "source_pointer": "/risks/11",
+      "item": {
+        "risk_id": "VEAP-CLAIM-003",
+        "domain": "CLAIM",
+        "severity": "HIGH",
+        "risk_statement": "An attestation could be marketed as a certificate or as a certified Agent.",
+        "required_control": "Ban certificate claims until an independent authorized certification system exists.",
+        "stop_condition": "CERTIFICATE_OR_CERTIFIED_AGENT_CLAIM_PRESENT",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      }
+    },
+    {
+      "source_pointer": "/risks/12",
+      "item": {
+        "risk_id": "VEAP-CLAIM-004",
+        "domain": "CLAIM",
+        "severity": "MEDIUM",
+        "risk_statement": "Schema validity or a conformance result could be presented as production proof.",
+        "required_control": "Publish exact maturity, scope, executed count, limitations and a production-claim prohibition.",
+        "stop_condition": "PRODUCTION_PROOF_INFERENCE_PRESENT",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      }
+    },
+    {
+      "source_pointer": "/risks/13",
+      "item": {
+        "risk_id": "VEAP-CLAIM-005",
+        "domain": "CLAIM",
+        "severity": "HIGH",
+        "risk_statement": "Partial or sampled observations could be presented as a complete execution history.",
+        "required_control": "Propagate completeness, sampling, drop, partial and unknown status without silent fill.",
+        "stop_condition": "COMPLETENESS_STATUS_MISSING_OR_ELEVATED",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      }
+    },
+    {
+      "source_pointer": "/risks/14",
+      "item": {
+        "risk_id": "VEAP-AUTH-001",
+        "domain": "AUTHORITY",
+        "severity": "HIGH",
+        "risk_statement": "VEAP could become a second canonical owner for DBOS, EEOAP or verifier objects.",
+        "required_control": "Enforce the ownership crosswalk, opaque references and conflict fail-closed semantics.",
+        "stop_condition": "SECOND_CANONICAL_OWNER_CLAIM_PRESENT",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      }
+    },
+    {
+      "source_pointer": "/risks/15",
+      "item": {
+        "risk_id": "VEAP-AUTH-002",
+        "domain": "AUTHORITY",
+        "severity": "HIGH",
+        "risk_statement": "A SAEE evaluation or recommendation could be converted into decision or execution.",
+        "required_control": "Keep advisory labels, require separate decision and authorization, and prohibit writeback.",
+        "stop_condition": "EVALUATION_TO_DECISION_OR_EXECUTION_INFERENCE_PRESENT",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      }
+    }
+  ],
+  "invariants": {
+    "evidence_ne_truth": true,
+    "evaluation_ne_authority": true,
+    "recommendation_ne_decision": true,
+    "decision_ne_execution": true,
+    "capability_ne_permission": true
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "commercial_offer": false,
+    "release": false
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "document_id": "DBA-TITMAS-CS-G1-FORMAL-REVIEW-PLAN-0.2",
+  "version": "0.2.0",
+  "status": "EXECUTED_AUTHORIZATION_BUDGET_CONSUMED",
+  "decision": {
+    "decision_id": "CS-G1-REMEDIATION-D01",
+    "selection": "AUTHORIZE_PRIVACY_CONTROL_REVISION_AND_FOUR_SCOPED_QWEN_REVIEWS",
+    "decided_by_ref": "zhangbin",
+    "record_path": "titmas-cs-g1-remediation-human-decision-record-v0.1.md",
+    "record_sha256": "2a1c3ba5f52a8827442ee273a5fdda19926b410f9af401b59c320a2523070ecb"
+  },
+  "request_contract": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "model": "qwen3.7-max",
+    "session_count": 4,
+    "requests_per_session": 1,
+    "request_byte_cap": 24000,
+    "client_read_timeout_seconds": 300,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0,
+    "tools_allowed": false,
+    "external_retrieval_allowed": false,
+    "memory_retrieval_allowed": false,
+    "direct_json_required": true
+  },
+  "result_schema": {
+    "path": "schemas/titmas-cs-g1-formal-review-result.schema.v0.2.json",
+    "sha256": "224215b0a1b5cef4ee1c1336d7403937eab672a6a9bc6399cea1bf0ada2d9640",
+    "bytes": 7420
+  },
+  "sessions": [
+    {
+      "review_id": "CS-G1-REV-SEC-02",
+      "domain": "SECURITY",
+      "projection_path": "reviews/cs-g1/v0.2/inputs/security-review-input.v0.2.json",
+      "projection_sha256": "e2ed844401d576c527b0e19d6679a6766ad44e9ec20a9612f6b5b2c3d2efe7c2",
+      "projection_bytes": 3546,
+      "target_count": 5
+    },
+    {
+      "review_id": "CS-G1-REV-PRIV-02",
+      "domain": "PRIVACY",
+      "projection_path": "reviews/cs-g1/v0.2/inputs/privacy-review-input.v0.2.json",
+      "projection_sha256": "f330e169090de845fbaeac8c3adcf05fcc14eb257e03440542ad05c08a9152d6",
+      "projection_bytes": 6865,
+      "target_count": 4
+    },
+    {
+      "review_id": "CS-G1-REV-CLAIM-02",
+      "domain": "CLAIM_AUTHORITY",
+      "projection_path": "reviews/cs-g1/v0.2/inputs/claim-authority-review-input.v0.2.json",
+      "projection_sha256": "5b5f678bc3e99cc95e120822926bdf7dc6f50704999a4eb53710fa830b228f8f",
+      "projection_bytes": 4652,
+      "target_count": 7
+    },
+    {
+      "review_id": "CS-G1-REV-XWALK-01",
+      "domain": "OWNERSHIP_CROSSWALK",
+      "projection_path": "reviews/cs-g1/v0.2/inputs/ownership-crosswalk-review-input.v0.2.json",
+      "projection_sha256": "ec6016c9dbfbd1d8e3ba3de836d8de5e99263eebc0681e8693b7b866d704eb8c",
+      "projection_bytes": 8822,
+      "target_count": 14
+    }
+  ],
+  "coverage": {
+    "security_risks": 5,
+    "privacy_risks": 4,
+    "claim_authority_risks": 7,
+    "total_risks": 16,
+    "crosswalk_surfaces": 14
+  },
+  "preconditions": {
+    "privacy_v01_preserved": true,
+    "source_hash_match_required": true,
+    "source_pointer_match_required": true,
+    "semantic_equivalence_required": true,
+    "exact_count_required": true,
+    "duplicates_forbidden": true,
+    "request_byte_cap_required": true,
+    "exact_model_identity_required": true
+  },
+  "execution_result": {
+    "path": "reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.json",
+    "sha256": "ceab2fe17dfb95b2aea7d0e7679225be2d1ef882c61b9371d63da8e756b3d36d",
+    "requests_sent": 4,
+    "sessions_completed": 4,
+    "authorization_budget_consumed": true,
+    "formal_review_bundle_ready": false,
+    "cs_g1_pass": false
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "formal_review_completion": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "data_processing": false,
+    "external_outreach": false,
+    "commercial_offer": false,
+    "certification": false,
+    "standard_publication": false,
+    "release": false,
+    "deployment": false
+  }
+}

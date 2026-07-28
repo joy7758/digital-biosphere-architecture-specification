@@ -1,0 +1,371 @@
+{
+  "review_id": "CS-G1-REV-XWALK-01",
+  "version": "0.2.0",
+  "status": "COMPLETED",
+  "domain": "OWNERSHIP_CROSSWALK",
+  "source_bindings": [
+    {
+      "path": "veap-canonical-ownership-crosswalk.v0.1.json",
+      "sha256": "53a50508dcae8d490c79b7c4d9a3eee1b1ddc002d9808d2ea19b287a92dd7edf",
+      "bytes": 7872,
+      "matched": true
+    }
+  ],
+  "request": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "requested_model": "qwen3.7-max",
+    "request_count": 1,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0,
+    "tools_used": false,
+    "request_sha256": "1fbc08222d73c5281269f5627afc790d0abd295a3ffb3dc473f7304ac32b8e26",
+    "request_bytes": 14333
+  },
+  "response": {
+    "response_id": "chatcmpl-7189c2fe-584b-46c9-8fc7-62cdba63a1a3",
+    "returned_model": "qwen3.7-max",
+    "finish_reason": "stop",
+    "raw_response_sha256": "2b35d13a6d0f3ac1db24cc328bd21496c1b68a764d5664360948e8070b177c80",
+    "raw_response_bytes": 29309,
+    "direct_content_sha256": "51b142e9e04ea33effd79b83f504db5dd01b3b991faa9ec1df6da7c550cbcaa8",
+    "direct_content_bytes": 16747,
+    "direct_json_verified": true,
+    "schema_valid": true
+  },
+  "item_results": [
+    {
+      "item_id": "PROGRAM_ARCHITECTURE_RULE",
+      "disposition": "ACCEPTED",
+      "control_sufficiency": "SUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Candidate owner DBA_AND_EXPLICIT_HUMAN_DECISION aligns with responsibility domain confirmation.",
+        "Prohibited effect SELF_ADOPT_ARCHITECTURE_RULE correctly prevents self-referential rule adoption.",
+        "Allowed effect CARRY_DECISION_AND_PROFILE_REFERENCES is bounded and non-authoritative."
+      ],
+      "required_corrections": [],
+      "residual_risks": [],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/0"
+      ]
+    },
+    {
+      "item_id": "VEAP_EXCHANGE_PROFILE",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Authority status remains UNASSIGNED; no confirmed owner for exchange profile governance.",
+        "Canonical source status NOT_CREATED indicates the artifact does not yet exist.",
+        "Blocking decisions CS-D01, AF-D15, AF-D16 constrain envelope mapping and vocabulary claims."
+      ],
+      "required_corrections": [
+        "Assign explicit authority owner before exchange profile can be operationalized.",
+        "Resolve blocking decisions CS-D01, AF-D15, AF-D16 prior to envelope mapping versioning."
+      ],
+      "residual_risks": [
+        "Unassigned authority may lead to ambiguous governance over vocabulary claims.",
+        "Absence of canonical source creates dependency on future artifact creation."
+      ],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/1"
+      ]
+    },
+    {
+      "item_id": "ENTITY_IDENTITY_LIFECYCLE",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "DBOS_RESPONSIBILITY_DOMAIN confirmed as candidate owner with responsibility domain status.",
+        "Canonical source status SOURCE_STATUS_PARTIAL_DQ_003 indicates partial data quality resolution.",
+        "Prohibited effects correctly prevent entity creation, registration, activation, and lifecycle modification.",
+        "Blocking decision DQ-003 remains unresolved."
+      ],
+      "required_corrections": [
+        "Resolve DQ-003 data quality blocking decision to achieve full canonical source status."
+      ],
+      "residual_risks": [
+        "Partial data quality status may affect downstream identity lifecycle references.",
+        "Opaque reference carrying may propagate unresolved state to dependent surfaces."
+      ],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/2"
+      ]
+    },
+    {
+      "item_id": "CAPABILITY_PERMISSION",
+      "disposition": "ACCEPTED",
+      "control_sufficiency": "SUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Candidate owner DBOS_OPERATIONAL_BOUNDARY_AND_EXPLICIT_AUTHORIZATION is confirmed.",
+        "Prohibited effects correctly prevent permission inference, granting, and capability expansion.",
+        "Allowed effect limited to carrying declared references when authorized.",
+        "No blocking decisions present."
+      ],
+      "required_corrections": [],
+      "residual_risks": [],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/3"
+      ]
+    },
+    {
+      "item_id": "EXECUTION_RECORD",
+      "disposition": "ACCEPTED",
+      "control_sufficiency": "SUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "DBOS_RESPONSIBILITY_DOMAIN confirmed as owner with responsibility domain status.",
+        "Prohibited effects correctly prevent task execution, success invention, and failure deletion.",
+        "Allowed effect limited to carrying immutable execution references and scope.",
+        "No blocking decisions present."
+      ],
+      "required_corrections": [],
+      "residual_risks": [],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/4"
+      ]
+    },
+    {
+      "item_id": "RUNTIME_OBSERVATION",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Authority status EXTERNAL_SOURCE_SPECIFIC requires per-source declaration.",
+        "Canonical source status MUST_BE_DECLARED_PER_SOURCE places burden on each telemetry producer.",
+        "Prohibited effects correctly prevent calling observation as evidence and claiming complete trace.",
+        "No blocking decisions present but per-source declaration requirement introduces operational overhead."
+      ],
+      "required_corrections": [
+        "Ensure each named runtime or telemetry producer explicitly declares source version and delivery reference."
+      ],
+      "residual_risks": [
+        "Incomplete per-source declarations may result in unbounded observation surfaces.",
+        "External source specificity may create gaps in trace continuity."
+      ],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/5"
+      ]
+    },
+    {
+      "item_id": "EVIDENCE_MATERIAL_PACKAGE",
+      "disposition": "RETURN_FOR_REVISION",
+      "control_sufficiency": "INSUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Authority status SOURCE_SURFACES_UNRESOLVED indicates unresolved ownership over evidence surfaces.",
+        "Canonical source status SPLIT_SURFACES suggests fragmentation across multiple sources.",
+        "Blocking decision AF-D05 constrains evidence package governance.",
+        "Prohibited effects correctly prevent creation of DBOS canonical evidence and truth claims."
+      ],
+      "required_corrections": [
+        "Resolve SOURCE_SURFACES_UNRESOLVED authority status by assigning explicit evidence surface ownership.",
+        "Address SPLIT_SURFACES canonical source fragmentation.",
+        "Resolve blocking decision AF-D05."
+      ],
+      "residual_risks": [
+        "Unresolved evidence surfaces may compromise provenance chain integrity.",
+        "Split surfaces create ambiguity in evidence package reference resolution."
+      ],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/6"
+      ]
+    },
+    {
+      "item_id": "EVIDENCE_ADMISSION_CANONICAL_EVIDENCE",
+      "disposition": "ACCEPTED",
+      "control_sufficiency": "SUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "DBOS_RESPONSIBILITY_DOMAIN confirmed as owner with responsibility domain status.",
+        "Prohibited effects correctly prevent admission bypass, truth assertion, and evidence modification.",
+        "Allowed effect limited to carrying admission status and canonical reference.",
+        "No blocking decisions present."
+      ],
+      "required_corrections": [],
+      "residual_risks": [],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/7"
+      ]
+    },
+    {
+      "item_id": "ACCOUNTABILITY_STATEMENT",
+      "disposition": "RETURN_FOR_REVISION",
+      "control_sufficiency": "INSUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Authority status UNASSIGNED with candidate owner EEOAP_CANONICAL_SPECIFICATION_OWNER_CANDIDATE.",
+        "Canonical source status VERSION_OWNER_UNRESOLVED indicates unresolved version governance.",
+        "Blocking decisions AF-D04 and AF-D14 constrain legal responsibility and EEOAP rewriting.",
+        "Prohibited effects correctly prevent deciding legal responsibility and rewriting EEOAP."
+      ],
+      "required_corrections": [
+        "Assign explicit authority owner for accountability statement governance.",
+        "Resolve VERSION_OWNER_UNRESOLVED canonical source status.",
+        "Address blocking decisions AF-D04 and AF-D14."
+      ],
+      "residual_risks": [
+        "Unassigned authority creates ambiguity in accountability statement versioning.",
+        "Unresolved version ownership may lead to conflicting statement references."
+      ],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/8"
+      ]
+    },
+    {
+      "item_id": "VERIFICATION_RESULT",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Authority status SOURCE_SPECIFIC_PLUS_DBOS_BOUNDARY requires per-verifier declaration.",
+        "Canonical source status MUST_BE_DECLARED_PER_VERIFIER places burden on each verifier.",
+        "Prohibited effects correctly prevent permission granting, certification creation, and global trust assertion.",
+        "No blocking decisions present but per-verifier declaration introduces operational dependency."
+      ],
+      "required_corrections": [
+        "Ensure each named verifier explicitly declares rule version, status, and limitations."
+      ],
+      "residual_risks": [
+        "Incomplete per-verifier declarations may result in unbounded verification surfaces.",
+        "DBOS reference boundary dependency may create gaps in verification result portability."
+      ],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/9"
+      ]
+    },
+    {
+      "item_id": "EVOLUTION_EVALUATION",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "SAEE_PROTECTED_ADVISORY_DOMAIN confirmed as owner with responsibility domain status.",
+        "Canonical source status PUBLIC_CONTRACT_PENDING indicates contract not yet finalized.",
+        "Blocking decision AF-D13 constrains evolution evaluation governance.",
+        "Prohibited effects correctly prevent fitness calculation, recommendation execution, and DBOS write-back."
+      ],
+      "required_corrections": [
+        "Finalize PUBLIC_CONTRACT_PENDING canonical source status.",
+        "Resolve blocking decision AF-D13."
+      ],
+      "residual_risks": [
+        "Pending public contract may create uncertainty in evaluation input/output references.",
+        "Advisory status limitation may restrict downstream utility of evaluation results."
+      ],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/10"
+      ]
+    },
+    {
+      "item_id": "GOVERNANCE_DECISION",
+      "disposition": "ACCEPTED",
+      "control_sufficiency": "SUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Candidate owner EXPLICIT_HUMAN_OR_GOVERNANCE_DECISION_AUTHORITY with EXPLICIT_DECISION_REQUIRED status.",
+        "Canonical source status DECISION_SPECIFIC correctly scopes governance to individual decisions.",
+        "Prohibited effects correctly prevent turning recommendations into decisions and self-authorization.",
+        "Allowed effect limited to carrying decision authorization, scope, and validity references.",
+        "No blocking decisions present."
+      ],
+      "required_corrections": [],
+      "residual_risks": [],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/11"
+      ]
+    },
+    {
+      "item_id": "COMMERCIAL_SERVICE",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Authority status UNASSIGNED with candidate owner FUTURE_LEGAL_AND_SERVICE_OWNER.",
+        "Canonical source status NO_OFFERING indicates no commercial service currently exists.",
+        "Blocking decision CS-G6 constrains commercial service governance.",
+        "Prohibited effects correctly prevent selling standard authority, altering public protocol, and claiming customer adoption."
+      ],
+      "required_corrections": [
+        "Assign explicit authority owner before any commercial service can be offered.",
+        "Resolve blocking decision CS-G6 prior to service creation."
+      ],
+      "residual_risks": [
+        "Unassigned authority creates ambiguity in future commercial service governance.",
+        "No offering status means all commercial surface controls are prospective only."
+      ],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/12"
+      ]
+    },
+    {
+      "item_id": "CERTIFICATION",
+      "disposition": "ACCEPTED",
+      "control_sufficiency": "SUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Authority status NOT_APPLICABLE with candidate owner FUTURE_INDEPENDENT_AUTHORIZED_BODY_IF_CREATED.",
+        "Canonical source status NOT_CREATED_NOT_AUTHORIZED correctly reflects absence of certification authority.",
+        "Allowed effect NONE_CURRENTLY prevents any certification activity.",
+        "Prohibited effects correctly prevent self-certification, certificate issuance, and certified agent claims.",
+        "Blocking decision FUTURE_CERTIFICATION_AUTHORITY_DECISION correctly defers to future authority."
+      ],
+      "required_corrections": [],
+      "residual_risks": [],
+      "evidence_refs": [
+        "veap-canonical-ownership-crosswalk.v0.1.json#/records/13"
+      ]
+    }
+  ],
+  "overall_verdict": "RETURN_FOR_REVISION",
+  "blockers": [
+    "AF-D05: Evidence material package authority and surface resolution unresolved.",
+    "AF-D04: Accountability statement legal responsibility decision pending.",
+    "AF-D14: Accountability statement EEOAP rewrite constraint unresolved.",
+    "CS-D01: VEAP exchange profile envelope mapping constraint.",
+    "AF-D15: VEAP exchange profile vocabulary claim constraint.",
+    "AF-D16: VEAP exchange profile additional constraint.",
+    "DQ-003: Entity identity lifecycle data quality resolution pending.",
+    "AF-D13: Evolution evaluation governance constraint.",
+    "CS-G6: Commercial service governance constraint."
+  ],
+  "required_corrections": [
+    "Resolve SOURCE_SURFACES_UNRESOLVED and SPLIT_SURFACES for EVIDENCE_MATERIAL_PACKAGE.",
+    "Assign explicit authority owner for ACCOUNTABILITY_STATEMENT and resolve VERSION_OWNER_UNRESOLVED.",
+    "Assign explicit authority owner for VEAP_EXCHANGE_PROFILE.",
+    "Resolve DQ-003 for ENTITY_IDENTITY_LIFECYCLE canonical source status.",
+    "Finalize PUBLIC_CONTRACT_PENDING for EVOLUTION_EVALUATION.",
+    "Assign explicit authority owner for COMMERCIAL_SERVICE before any offering.",
+    "Ensure per-source declarations for all RUNTIME_OBSERVATION producers.",
+    "Ensure per-verifier declarations for all VERIFICATION_RESULT verifiers."
+  ],
+  "limitations": [
+    "This review is advisory only and does not constitute a human decision, authority grant, or gate passage.",
+    "Evidence is not truth; evaluation is not authority; recommendation is not decision.",
+    "All blocking decisions require explicit human adjudication before resolution.",
+    "Crosswalk acceptance, risk acceptance, and ownership confirmation are not granted by this review.",
+    "No commercial activity, certification, publication, release, or deployment is authorized.",
+    "Per-source and per-verifier declaration requirements are operational burdens not validated by this review."
+  ],
+  "human_decision_required": true,
+  "effects": {
+    "decision": false,
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "formal_review_completion": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "standard_ready": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false,
+    "deployment": false
+  }
+}

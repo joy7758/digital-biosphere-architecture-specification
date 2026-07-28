@@ -1,0 +1,249 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/titmas-cs-g1-formal-review-result.schema.v0.2.json",
+  "title": "TITMAS CS-G1 Formal Review Result v0.2",
+  "description": "Fail-closed result contract for one role-scoped advisory session. A result is not a Human Decision, Authority grant, risk acceptance, crosswalk acceptance or Gate PASS.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "review_id",
+    "version",
+    "status",
+    "domain",
+    "source_bindings",
+    "request",
+    "response",
+    "item_results",
+    "overall_verdict",
+    "blockers",
+    "required_corrections",
+    "limitations",
+    "human_decision_required",
+    "effects"
+  ],
+  "properties": {
+    "review_id": {
+      "enum": [
+        "CS-G1-REV-SEC-02",
+        "CS-G1-REV-PRIV-02",
+        "CS-G1-REV-CLAIM-02",
+        "CS-G1-REV-XWALK-01"
+      ]
+    },
+    "version": {"const": "0.2.0"},
+    "status": {
+      "enum": [
+        "NOT_EXECUTED",
+        "COMPLETED",
+        "FAILED_SOURCE_BINDING",
+        "FAILED_PROVIDER_OR_TRANSPORT",
+        "FAILED_MODEL_IDENTITY",
+        "FAILED_DIRECT_JSON",
+        "FAILED_SCHEMA",
+        "FAILED_SCOPE_COVERAGE",
+        "FAILED_REQUEST_CONTRACT"
+      ]
+    },
+    "domain": {
+      "enum": [
+        "SECURITY",
+        "PRIVACY",
+        "CLAIM_AUTHORITY",
+        "OWNERSHIP_CROSSWALK"
+      ]
+    },
+    "source_bindings": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "sha256", "bytes", "matched"],
+        "properties": {
+          "path": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+          "bytes": {"type": "integer", "minimum": 1},
+          "matched": {"const": true}
+        }
+      }
+    },
+    "request": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "requested_model",
+        "request_count",
+        "retry_count",
+        "fallback_count",
+        "substitution_count",
+        "extraction_count",
+        "repair_count",
+        "tools_used",
+        "request_sha256",
+        "request_bytes"
+      ],
+      "properties": {
+        "provider": {"const": "ALIBABA_CLOUD_MODEL_STUDIO"},
+        "requested_model": {"const": "qwen3.7-max"},
+        "request_count": {"type": "integer", "minimum": 0, "maximum": 1},
+        "retry_count": {"const": 0},
+        "fallback_count": {"const": 0},
+        "substitution_count": {"const": 0},
+        "extraction_count": {"const": 0},
+        "repair_count": {"const": 0},
+        "tools_used": {"const": false},
+        "request_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "request_bytes": {"type": ["integer", "null"], "minimum": 1}
+      }
+    },
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "response_id",
+        "returned_model",
+        "finish_reason",
+        "raw_response_sha256",
+        "raw_response_bytes",
+        "direct_content_sha256",
+        "direct_content_bytes",
+        "direct_json_verified",
+        "schema_valid"
+      ],
+      "properties": {
+        "response_id": {"type": ["string", "null"]},
+        "returned_model": {"type": ["string", "null"]},
+        "finish_reason": {"type": ["string", "null"]},
+        "raw_response_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "raw_response_bytes": {"type": ["integer", "null"], "minimum": 1},
+        "direct_content_sha256": {
+          "type": ["string", "null"],
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "direct_content_bytes": {"type": ["integer", "null"], "minimum": 1},
+        "direct_json_verified": {"type": "boolean"},
+        "schema_valid": {"type": "boolean"}
+      }
+    },
+    "item_results": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "item_id",
+          "disposition",
+          "control_sufficiency",
+          "stop_condition_triggered",
+          "findings",
+          "required_corrections",
+          "residual_risks",
+          "evidence_refs"
+        ],
+        "properties": {
+          "item_id": {"type": "string", "minLength": 1},
+          "disposition": {
+            "enum": [
+              "ACCEPTED",
+              "ACCEPTED_WITH_RESIDUAL_RISK",
+              "RETURN_FOR_REVISION",
+              "REJECTED",
+              "NOT_ASSESSED"
+            ]
+          },
+          "control_sufficiency": {
+            "enum": [
+              "SUFFICIENT",
+              "PARTIAL",
+              "INSUFFICIENT",
+              "NOT_ASSESSED"
+            ]
+          },
+          "stop_condition_triggered": {"type": "boolean"},
+          "findings": {"type": "array", "items": {"type": "string"}},
+          "required_corrections": {"type": "array", "items": {"type": "string"}},
+          "residual_risks": {"type": "array", "items": {"type": "string"}},
+          "evidence_refs": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "overall_verdict": {
+      "enum": [
+        "ACCEPT_FOR_HUMAN_FREEZE_REVIEW",
+        "RETURN_FOR_REVISION",
+        "REJECT",
+        "NOT_AVAILABLE"
+      ]
+    },
+    "blockers": {"type": "array", "items": {"type": "string"}},
+    "required_corrections": {"type": "array", "items": {"type": "string"}},
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string"}
+    },
+    "human_decision_required": {"const": true},
+    "effects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision",
+        "authority",
+        "ownership",
+        "crosswalk_acceptance",
+        "risk_acceptance",
+        "formal_review_completion",
+        "cs_g1_pass",
+        "implementation",
+        "standard_ready",
+        "commercial_offer",
+        "certification",
+        "release",
+        "deployment"
+      ],
+      "properties": {
+        "decision": {"const": false},
+        "authority": {"const": false},
+        "ownership": {"const": false},
+        "crosswalk_acceptance": {"const": false},
+        "risk_acceptance": {"const": false},
+        "formal_review_completion": {"const": false},
+        "cs_g1_pass": {"const": false},
+        "implementation": {"const": false},
+        "standard_ready": {"const": false},
+        "commercial_offer": {"const": false},
+        "certification": {"const": false},
+        "release": {"const": false},
+        "deployment": {"const": false}
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"status": {"const": "COMPLETED"}}, "required": ["status"]},
+      "then": {
+        "properties": {
+          "request": {"properties": {"request_count": {"const": 1}}},
+          "response": {
+            "properties": {
+              "returned_model": {"const": "qwen3.7-max"},
+              "direct_json_verified": {"const": true},
+              "schema_valid": {"const": true}
+            }
+          },
+          "item_results": {"minItems": 1}
+        }
+      },
+      "else": {"properties": {"overall_verdict": {"const": "NOT_AVAILABLE"}}}
+    }
+  ]
+}

@@ -2,10 +2,10 @@
 document_id: DBA-TITMAS-COMMERCIAL-STANDARD-FOUNDATION-FREEZE-STATUS-0.1
 title: TITMAS Commercial Standard Foundation Freeze Status v0.1
 title_zh: TITMAS 商业标准基础冻结状态报告 v0.1
-status: FOUNDATION_ROLE_FREEZE_COMPLETE_CS_G1_REVIEW_FAILED_CLOSED
+status: FOUNDATION_ROLE_FREEZE_COMPLETE_CS_G1_REMEDIATION_RETURN_FOR_REVISION
 maturity: Development
 maturity_scope: entire-document
-observed_at: 2026-07-28T17:38:44+08:00
+observed_at: 2026-07-28T18:10:00+08:00
 primary_repository: digital-biosphere-architecture
 human_accountability_ref: zhangbin
 implementation_effect: none
@@ -24,6 +24,8 @@ The two independent Human Owner role decisions are now recorded:
 - `CS-G1-ROLE-REVIEW-D01` accepts bounded specification/domain review
   accountability and a three-session exact `qwen3.7-max` advisory-review
   budget.
+- `CS-G1-REMEDIATION-D01` selects Option A and authorizes one bounded Privacy
+  control revision plus four source-scoped `qwen3.7-max` advisory sessions.
 
 This completes the **Foundation Role Freeze** only. It does not complete the
 full Foundation Gate freeze, because `CS-G0` and `CS-G1` have not passed.
@@ -60,14 +62,20 @@ CS_G1_QWEN_REVIEW_REQUESTS_SENT=3
 CS_G1_QWEN_REVIEW_SESSIONS_COMPLETED=1
 CS_G1_QWEN_REVIEW_SESSIONS_FAILED=2
 CS_G1_QWEN_REVIEW_AUTHORIZATION_BUDGET_CONSUMED=true
+CS_G1_REMEDIATION_OPTION_A_AUTHORIZED=true
+CS_G1_REMEDIATION_QWEN_REVIEW_SESSIONS_AUTHORIZED=4
+CS_G1_REMEDIATION_QWEN_REVIEW_REQUESTS_SENT=4
+CS_G1_REMEDIATION_QWEN_REVIEW_SESSIONS_COMPLETED=4
+CS_G1_REMEDIATION_QWEN_REVIEW_SESSIONS_FAILED=0
+CS_G1_REMEDIATION_AUTHORIZATION_BUDGET_CONSUMED=true
 CS_G1_ADDITIONAL_REVIEW_REQUEST_AUTHORIZED=false
 CS_G0_PASS=false
 CS_G1_PASS=false
 VALID_PROBLEM_RECORDS=0
 FORMAL_REVIEW_COMPLETE=false
 FORMAL_REVIEW_BUNDLE_READY=false
-CS_G1_RISK_COVERAGE=4/16
-CS_G1_CROSSWALK_COVERAGE=0/14
+CS_G1_RISK_COVERAGE=16/16
+CS_G1_CROSSWALK_COVERAGE=14/14
 CROSSWALK_ACCEPTED=false
 RESIDUAL_RISK_ACCEPTED=false
 STANDARD_READY=false
@@ -108,7 +116,11 @@ product is created by these records.
 | [`reviews/cs-g1/claim-authority-review-result.v0.1.json`](reviews/cs-g1/claim-authority-review-result.v0.1.json) | Claim/Authority request failed closed after a 180-second read timeout |
 | [`reviews/cs-g1/formal-review-bundle-result.v0.1.json`](reviews/cs-g1/formal-review-bundle-result.v0.1.json) | Deterministic aggregation: not ready, review budget consumed, new Human Decision required |
 | [`titmas-cs-g1-failed-review-remediation-assessment-v0.1.md`](titmas-cs-g1-failed-review-remediation-assessment-v0.1.md) | Privacy correction applicability and bounded four-scope transport assessment |
-| [`../TITMAS-CS-G1-FAILED-REVIEW-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md`](../TITMAS-CS-G1-FAILED-REVIEW-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md) | Current explicit Human choice; no option selected |
+| [`../TITMAS-CS-G1-FAILED-REVIEW-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md`](../TITMAS-CS-G1-FAILED-REVIEW-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md) | Historical pre-decision Option A/B/C/D packet |
+| [`titmas-cs-g1-remediation-human-decision-record-v0.1.md`](titmas-cs-g1-remediation-human-decision-record-v0.1.md) | Human selection of bounded Option A |
+| [`veap-privacy-control-profile-candidate-v0.2.md`](veap-privacy-control-profile-candidate-v0.2.md) | Development-only remediation candidates for four Privacy risks |
+| [`titmas-cs-g1-remediation-execution-report-v0.2.md`](titmas-cs-g1-remediation-execution-report-v0.2.md) | Four-session execution, full coverage and return-for-revision result |
+| [`reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.json`](reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.json) | Deterministic v0.2 aggregate: 4/4 sessions, 16/16 risks, 14/14 crosswalk, Gate still not met |
 
 ## 6. Invariants
 

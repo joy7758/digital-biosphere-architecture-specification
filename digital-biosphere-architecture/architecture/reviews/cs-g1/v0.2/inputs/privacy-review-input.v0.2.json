@@ -1,0 +1,189 @@
+{
+  "projection_id": "CS-G1-PROJ-PRIV-02",
+  "version": "0.2.0",
+  "status": "SOURCE_BOUND_REVIEW_INPUT",
+  "decision_reference": "CS-G1-REMEDIATION-D01",
+  "domain": "PRIVACY",
+  "source_bindings": [
+    {
+      "path": "veap-security-privacy-claim-risk-register.v0.1.json",
+      "sha256": "ef1a38a4af01efe36cabb3e13c8e4815d05ba71c7703521c4fea05cd8a471492",
+      "bytes": 9314,
+      "matched": true
+    },
+    {
+      "path": "veap-privacy-control-profile-candidate.v0.2.json",
+      "sha256": "6344b58344b594b9796a6d58014bd4a7e82b0899bb3496e57d9e4b285da83bd9",
+      "bytes": 3557,
+      "matched": true
+    }
+  ],
+  "target_count": 4,
+  "items": [
+    {
+      "source_pointer": "/risks/5",
+      "item": {
+        "risk_id": "VEAP-PRIV-001",
+        "domain": "PRIVACY",
+        "severity": "HIGH",
+        "risk_statement": "Execution evidence could be reused for surveillance, profiling or unrelated decisions.",
+        "required_control": "Bind purpose and recipient scope and prohibit secondary use without a separate decision.",
+        "stop_condition": "PURPOSE_OR_RECIPIENT_SCOPE_MISSING",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      },
+      "remediation_control": {
+        "risk_id": "VEAP-PRIV-001",
+        "control_id": "VEAP-PRIV-CONTROL-001-V0.2",
+        "purpose_classes": [
+          "EXECUTION_ACCOUNTABILITY",
+          "EVIDENCE_VERIFICATION",
+          "GOVERNANCE_REVIEW"
+        ],
+        "recipient_classes": [
+          "SUBJECT_OWNER",
+          "AUTHORIZED_VERIFIER",
+          "AUTHORIZED_GOVERNANCE_REVIEWER"
+        ],
+        "secondary_use_default": "FORBIDDEN",
+        "secondary_use_requirement": "SEPARATE_EXPLICIT_DECISION_REFERENCE",
+        "stop_condition": "PURPOSE_OR_RECIPIENT_CLASS_MISSING_OR_SECONDARY_USE_DECISION_ABSENT"
+      }
+    },
+    {
+      "source_pointer": "/risks/6",
+      "item": {
+        "risk_id": "VEAP-PRIV-002",
+        "domain": "PRIVACY",
+        "severity": "MEDIUM",
+        "risk_statement": "A completeness goal could cause collection of unnecessary prompt, response or tool content.",
+        "required_control": "Use reference-first minimization and require field-level purpose and authorization.",
+        "stop_condition": "FIELD_LEVEL_JUSTIFICATION_MISSING",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      },
+      "remediation_control": {
+        "risk_id": "VEAP-PRIV-002",
+        "control_id": "VEAP-PRIV-CONTROL-002-V0.2",
+        "exchange_default": "REFERENCE_FIRST_RAW_CONTENT_FORBIDDEN",
+        "field_authorization_table": [
+          {
+            "field_category": "ENTITY_IDENTITY_REFERENCE",
+            "purpose": "EXECUTION_ACCOUNTABILITY",
+            "authority": "AUTHORIZED_SUBJECT_SCOPE"
+          },
+          {
+            "field_category": "EXECUTION_REFERENCE",
+            "purpose": "EXECUTION_ACCOUNTABILITY",
+            "authority": "AUTHORIZED_EXECUTION_SCOPE"
+          },
+          {
+            "field_category": "EVIDENCE_REFERENCE",
+            "purpose": "EVIDENCE_VERIFICATION",
+            "authority": "AUTHORIZED_EVIDENCE_SCOPE"
+          },
+          {
+            "field_category": "VERIFICATION_REFERENCE",
+            "purpose": "EVIDENCE_VERIFICATION",
+            "authority": "AUTHORIZED_VERIFICATION_SCOPE"
+          },
+          {
+            "field_category": "EVALUATION_REFERENCE",
+            "purpose": "GOVERNANCE_REVIEW",
+            "authority": "AUTHORIZED_EVALUATION_SCOPE"
+          },
+          {
+            "field_category": "GOVERNANCE_DECISION_REFERENCE",
+            "purpose": "GOVERNANCE_REVIEW",
+            "authority": "AUTHORIZED_DECISION_SCOPE"
+          },
+          {
+            "field_category": "LIMITATION_OR_FAILURE_REFERENCE",
+            "purpose": "EXECUTION_ACCOUNTABILITY_OR_GOVERNANCE_REVIEW",
+            "authority": "AUTHORIZED_CASE_SCOPE"
+          }
+        ],
+        "raw_content_requirements": [
+          "SEPARATE_CONTENT_AUTHORIZATION_REFERENCE",
+          "EXPLICIT_FIELD_ALLOWLIST",
+          "REDACTION",
+          "SECRET_SCAN"
+        ],
+        "stop_condition": "FIELD_JUSTIFICATION_OR_RAW_CONTENT_AUTHORIZATION_MISSING"
+      }
+    },
+    {
+      "source_pointer": "/risks/7",
+      "item": {
+        "risk_id": "VEAP-PRIV-003",
+        "domain": "PRIVACY",
+        "severity": "HIGH",
+        "risk_statement": "Retention, withdrawal and deletion duties could conflict with immutable history.",
+        "required_control": "Define class-based retention, tombstone or revocation, deletion proof and legal-hold boundary.",
+        "stop_condition": "RETENTION_OR_DELETION_PATH_UNRESOLVED",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      },
+      "remediation_control": {
+        "risk_id": "VEAP-PRIV-003",
+        "control_id": "VEAP-PRIV-CONTROL-003-V0.2",
+        "retention_classes": [
+          "REFERENCE_ONLY",
+          "RESTRICTED_REFERENCE",
+          "PUBLIC_SAFE_EXTRACT",
+          "CONTENT_AUTHORIZED"
+        ],
+        "requirements": [
+          "RETENTION_POLICY_REFERENCE",
+          "CONTENT_FREE_TOMBSTONE",
+          "DELETION_PROOF_REFERENCE",
+          "SEPARATE_LEGAL_HOLD_REFERENCE"
+        ],
+        "immutable_history_boundary": "PRESERVE_PERMITTED_REFERENCE_OR_TOMBSTONE_LINEAGE_NOT_DELETED_CONTENT",
+        "stop_condition": "RETENTION_POLICY_OR_DELETION_PROOF_OR_LEGAL_HOLD_BOUNDARY_MISSING"
+      }
+    },
+    {
+      "source_pointer": "/risks/8",
+      "item": {
+        "risk_id": "VEAP-PRIV-004",
+        "domain": "PRIVACY",
+        "severity": "MEDIUM",
+        "risk_statement": "Multiple pseudonymous references could be linked to re-identify a person or organization.",
+        "required_control": "Perform linkability review, namespace separation, access control and public-safe extraction.",
+        "stop_condition": "LINKABILITY_RISK_NOT_ASSESSED",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      },
+      "remediation_control": {
+        "risk_id": "VEAP-PRIV-004",
+        "control_id": "VEAP-PRIV-CONTROL-004-V0.2",
+        "requirements": [
+          "SOURCE_NAMESPACE_BINDING",
+          "TARGET_NAMESPACE_BINDING",
+          "ACCESS_SCOPE",
+          "LINKABILITY_ASSESSMENT_REFERENCE"
+        ],
+        "public_safe_extract_rule": "CORRELATING_IDENTIFIERS_FORBIDDEN",
+        "stop_condition": "NAMESPACE_SEPARATION_OR_LINKABILITY_ASSESSMENT_MISSING"
+      }
+    }
+  ],
+  "invariants": {
+    "evidence_ne_truth": true,
+    "evaluation_ne_authority": true,
+    "recommendation_ne_decision": true,
+    "decision_ne_execution": true,
+    "capability_ne_permission": true
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "commercial_offer": false,
+    "release": false
+  }
+}

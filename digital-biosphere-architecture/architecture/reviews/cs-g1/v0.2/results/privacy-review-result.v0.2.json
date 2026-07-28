@@ -1,0 +1,153 @@
+{
+  "review_id": "CS-G1-REV-PRIV-02",
+  "version": "0.2.0",
+  "status": "COMPLETED",
+  "domain": "PRIVACY",
+  "source_bindings": [
+    {
+      "path": "veap-security-privacy-claim-risk-register.v0.1.json",
+      "sha256": "ef1a38a4af01efe36cabb3e13c8e4815d05ba71c7703521c4fea05cd8a471492",
+      "bytes": 9314,
+      "matched": true
+    },
+    {
+      "path": "veap-privacy-control-profile-candidate.v0.2.json",
+      "sha256": "6344b58344b594b9796a6d58014bd4a7e82b0899bb3496e57d9e4b285da83bd9",
+      "bytes": 3557,
+      "matched": true
+    }
+  ],
+  "request": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "requested_model": "qwen3.7-max",
+    "request_count": 1,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0,
+    "tools_used": false,
+    "request_sha256": "e74f18fccfb6e1949184fcbda90c6e51a7a35fad4def1763a6b74cb5558909a6",
+    "request_bytes": 12824
+  },
+  "response": {
+    "response_id": "chatcmpl-bf2e79dd-4c4a-431d-9140-9f1f2d5f2108",
+    "returned_model": "qwen3.7-max",
+    "finish_reason": "stop",
+    "raw_response_sha256": "7c07ca801679c3cc0c32c39ac517286e2297826d61f8c216ed226f70aa649ce9",
+    "raw_response_bytes": 14961,
+    "direct_content_sha256": "b8c40cd64432fb3fa186275ba76b9c0591d1aca5f07a94bf1b1453c2f0f83ea1",
+    "direct_content_bytes": 8097,
+    "direct_json_verified": true,
+    "schema_valid": true
+  },
+  "item_results": [
+    {
+      "item_id": "VEAP-PRIV-001",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "SUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Remediation control VEAP-PRIV-CONTROL-001-V0.2 explicitly binds purpose classes (EXECUTION_ACCOUNTABILITY, EVIDENCE_VERIFICATION, GOVERNANCE_REVIEW) and recipient classes (SUBJECT_OWNER, AUTHORIZED_VERIFIER, AUTHORIZED_GOVERNANCE_REVIEWER).",
+        "Secondary use default is set to FORBIDDEN with a requirement for SEPARATE_EXPLICIT_DECISION_REFERENCE, directly addressing the risk of execution evidence reuse for surveillance, profiling, or unrelated decisions.",
+        "Stop condition PURPOSE_OR_RECIPIENT_CLASS_MISSING_OR_SECONDARY_USE_DECISION_ABSENT is defined and not triggered by the supplied control profile."
+      ],
+      "required_corrections": [],
+      "residual_risks": [
+        "Enforcement of secondary use prohibition depends on runtime governance mechanisms not evidenced in the supplied control profile.",
+        "Recipient class boundaries (e.g., AUTHORIZED_VERIFIER scope) require external authorization definitions not present in the reviewed artifacts."
+      ],
+      "evidence_refs": [
+        "veap-privacy-control-profile-candidate.v0.2.json#/risks/5",
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/5"
+      ]
+    },
+    {
+      "item_id": "VEAP-PRIV-002",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "SUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Remediation control VEAP-PRIV-CONTROL-002-V0.2 enforces REFERENCE_FIRST_RAW_CONTENT_FORBIDDEN as the exchange default, directly mitigating unnecessary collection of prompt, response, or tool content.",
+        "Field authorization table maps seven field categories to specific purposes and authority scopes, satisfying the field-level purpose and authorization requirement.",
+        "Raw content requirements include SEPARATE_CONTENT_AUTHORIZATION_REFERENCE, EXPLICIT_FIELD_ALLOWLIST, REDACTION, and SECRET_SCAN, providing layered minimization controls.",
+        "Stop condition FIELD_JUSTIFICATION_OR_RAW_CONTENT_AUTHORIZATION_MISSING is defined and not triggered."
+      ],
+      "required_corrections": [],
+      "residual_risks": [
+        "Completeness goals at the system level may still drive collection pressure; the control profile defines defaults but does not evidence systemic enforcement against scope creep.",
+        "Field-level authorization depends on external authority scope definitions (e.g., AUTHORIZED_SUBJECT_SCOPE) not included in the reviewed artifacts."
+      ],
+      "evidence_refs": [
+        "veap-privacy-control-profile-candidate.v0.2.json#/risks/6",
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/6"
+      ]
+    },
+    {
+      "item_id": "VEAP-PRIV-003",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "SUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Remediation control VEAP-PRIV-CONTROL-003-V0.2 defines four retention classes (REFERENCE_ONLY, RESTRICTED_REFERENCE, PUBLIC_SAFE_EXTRACT, CONTENT_AUTHORIZED) supporting class-based retention.",
+        "Requirements include RETENTION_POLICY_REFERENCE, CONTENT_FREE_TOMBSTONE, DELETION_PROOF_REFERENCE, and SEPARATE_LEGAL_HOLD_REFERENCE, addressing tombstone/revocation, deletion proof, and legal-hold boundary.",
+        "Immutable history boundary is explicitly set to PRESERVE_PERMITTED_REFERENCE_OR_TOMBSTONE_LINEAGE_NOT_DELETED_CONTENT, reconciling retention/deletion duties with immutability constraints.",
+        "Stop condition RETENTION_POLICY_OR_DELETION_PROOF_OR_LEGAL_HOLD_BOUNDARY_MISSING is defined and not triggered."
+      ],
+      "required_corrections": [],
+      "residual_risks": [
+        "Withdrawal duties requiring active revocation of previously permitted references depend on runtime mechanisms not evidenced in the control profile.",
+        "Legal-hold boundary definition references external legal processes; the control profile provides a reference placeholder but not operational legal-hold procedures."
+      ],
+      "evidence_refs": [
+        "veap-privacy-control-profile-candidate.v0.2.json#/risks/7",
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/7"
+      ]
+    },
+    {
+      "item_id": "VEAP-PRIV-004",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "SUFFICIENT",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Remediation control VEAP-PRIV-CONTROL-004-V0.2 requires SOURCE_NAMESPACE_BINDING, TARGET_NAMESPACE_BINDING, ACCESS_SCOPE, and LINKABILITY_ASSESSMENT_REFERENCE, directly addressing linkability review and namespace separation.",
+        "Public safe extract rule CORRELATING_IDENTIFIERS_FORBIDDEN explicitly prohibits correlating identifiers in public-safe extractions, mitigating re-identification risk.",
+        "Stop condition NAMESPACE_SEPARATION_OR_LINKABILITY_ASSESSMENT_MISSING is defined and not triggered."
+      ],
+      "required_corrections": [],
+      "residual_risks": [
+        "Linkability assessment reference implies an external assessment artifact; the control profile does not evidence completion of such an assessment.",
+        "Access scope definitions for namespace bindings depend on external authorization frameworks not included in the reviewed artifacts."
+      ],
+      "evidence_refs": [
+        "veap-privacy-control-profile-candidate.v0.2.json#/risks/8",
+        "veap-security-privacy-claim-risk-register.v0.1.json#/risks/8"
+      ]
+    }
+  ],
+  "overall_verdict": "ACCEPT_FOR_HUMAN_FREEZE_REVIEW",
+  "blockers": [],
+  "required_corrections": [],
+  "limitations": [
+    "This review is advisory and source-bound; it does not constitute a human decision, authority grant, risk acceptance, or Gate PASS.",
+    "Control sufficiency assessments are based solely on the structural completeness of the supplied remediation control profiles against stated risk requirements; operational effectiveness is not evaluated.",
+    "External authorization scope definitions, runtime enforcement mechanisms, and legal-hold procedures referenced by the control profiles are not included in the reviewed artifacts.",
+    "Evidence is not truth; evaluation is not authority; recommendation is not decision; decision is not execution; capability is not permission."
+  ],
+  "human_decision_required": true,
+  "effects": {
+    "decision": false,
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "formal_review_completion": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "standard_ready": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false,
+    "deployment": false
+  }
+}

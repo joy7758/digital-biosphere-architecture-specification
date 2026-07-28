@@ -749,16 +749,22 @@ COMMERCIAL_READY=false
 RELEASE_AUTHORIZED=false
 ```
 
-三个 role-scoped `qwen3.7-max` advisory review sessions 的一次性预算已经消耗：
-Security 和 Claim/Authority 请求分别在 55 秒与 180 秒读取超时后失败关闭；Privacy
-会话完成并产生 4 项 residual risks 与 4 项 required corrections。当前
-[`formal review bundle`](architecture/reviews/cs-g1/formal-review-bundle-result.v0.1.json)
-只有 risks `4/16`、crosswalk `0/14` 覆盖，因此
-`FORMAL_REVIEW_BUNDLE_READY=false`、`CS_G1_PASS=false`，且重试需要新的 Human Decision。
-当前修订依据见
-[`remediation assessment`](architecture/titmas-cs-g1-failed-review-remediation-assessment-v0.1.md)，
-候选选择见
-[`CS-G1-REMEDIATION-D01 Human Decision Packet`](TITMAS-CS-G1-FAILED-REVIEW-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md)。
+首轮三个 role-scoped `qwen3.7-max` advisory review sessions 已作为历史失败关闭记录保留。
+Human Owner 随后通过
+[`CS-G1-REMEDIATION-D01`](architecture/titmas-cs-g1-remediation-human-decision-record-v0.1.md)
+选择有界 Option A：保留 v0.1，建立
+[`Privacy v0.2 candidate`](architecture/veap-privacy-control-profile-candidate-v0.2.md)
+和四个 source-bound projection，并精确执行四次 `qwen3.7-max` 单请求审查。四个会话均
+完成，无 retry/fallback/substitution/extraction/repair，最大请求 14,333 bytes；
+risks 覆盖 `16/16`、crosswalk 覆盖 `14/14`。
+
+该完整覆盖没有升级 Gate。Security 与 Ownership Crosswalk 均为
+`RETURN_FOR_REVISION`，五个 Security stop conditions 仍触发；Privacy 与
+Claim/Authority 仅为 `ACCEPT_FOR_HUMAN_FREEZE_REVIEW`。详见
+[`v0.2 execution report`](architecture/titmas-cs-g1-remediation-execution-report-v0.2.md)
+与 [`machine aggregate`](architecture/reviews/cs-g1/v0.2/results/formal-review-bundle-result.v0.2.json)。
+因此 `FORMAL_REVIEW_BUNDLE_READY=false`、`CS_G1_PASS=false`；新请求或下一轮修订仍需
+新的 Human Decision。
 `CS-G2–CS-G7` 仍为 `BLOCKED`；数据处理、外部推广、客户记录、实现、商业试点、认证、
 正式标准发布、Release 和 Deployment 均保持关闭。
 

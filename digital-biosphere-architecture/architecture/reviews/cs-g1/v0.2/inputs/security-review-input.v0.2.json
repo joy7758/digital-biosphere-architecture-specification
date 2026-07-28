@@ -1,0 +1,100 @@
+{
+  "projection_id": "CS-G1-PROJ-SEC-02",
+  "version": "0.2.0",
+  "status": "SOURCE_BOUND_REVIEW_INPUT",
+  "decision_reference": "CS-G1-REMEDIATION-D01",
+  "domain": "SECURITY",
+  "source_bindings": [
+    {
+      "path": "veap-security-privacy-claim-risk-register.v0.1.json",
+      "sha256": "ef1a38a4af01efe36cabb3e13c8e4815d05ba71c7703521c4fea05cd8a471492",
+      "bytes": 9314,
+      "matched": true
+    }
+  ],
+  "target_count": 5,
+  "items": [
+    {
+      "source_pointer": "/risks/0",
+      "item": {
+        "risk_id": "VEAP-SEC-001",
+        "domain": "SECURITY",
+        "severity": "HIGH",
+        "risk_statement": "A digest or reference could be replaced, or a canonical source could be impersonated.",
+        "required_control": "Bind algorithm, version, source and subject; reject tamper and never silently repair.",
+        "stop_condition": "SOURCE_OR_INTEGRITY_BINDING_MISSING",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      }
+    },
+    {
+      "source_pointer": "/risks/1",
+      "item": {
+        "risk_id": "VEAP-SEC-002",
+        "domain": "SECURITY",
+        "severity": "HIGH",
+        "risk_statement": "A replayed or duplicate package could be presented as a new successful execution.",
+        "required_control": "Use unique package identity, time policy, deduplication and immutable replay status.",
+        "stop_condition": "REPLAY_OR_DUPLICATE_STATUS_UNKNOWN",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      }
+    },
+    {
+      "source_pointer": "/risks/2",
+      "item": {
+        "risk_id": "VEAP-SEC-003",
+        "domain": "SECURITY",
+        "severity": "HIGH",
+        "risk_statement": "Cross-tenant or cross-entity binding could disclose data or misattribute identity.",
+        "required_control": "Require tenant and subject binding, authorization checks and correlation conflict rejection.",
+        "stop_condition": "TENANT_OR_SUBJECT_BINDING_CONFLICTED",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      }
+    },
+    {
+      "source_pointer": "/risks/3",
+      "item": {
+        "risk_id": "VEAP-SEC-004",
+        "domain": "SECURITY",
+        "severity": "HIGH",
+        "risk_statement": "A compromised or expired issuer or verifier identity could remain trusted.",
+        "required_control": "Bind issuer status, validity interval, revocation reference and incident response path.",
+        "stop_condition": "ISSUER_OR_VERIFIER_STATUS_NOT_CURRENT",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      }
+    },
+    {
+      "source_pointer": "/risks/4",
+      "item": {
+        "risk_id": "VEAP-SEC-005",
+        "domain": "SECURITY",
+        "severity": "HIGH",
+        "risk_statement": "Raw payloads, credentials, secrets or sensitive content could enter a portable package.",
+        "required_control": "Deny content by default and require allowlists, redaction, secret scans and stop conditions.",
+        "stop_condition": "SENSITIVE_CONTENT_POLICY_UNRESOLVED",
+        "status": "OPEN",
+        "formal_reviewer_required": true
+      }
+    }
+  ],
+  "invariants": {
+    "evidence_ne_truth": true,
+    "evaluation_ne_authority": true,
+    "recommendation_ne_decision": true,
+    "decision_ne_execution": true,
+    "capability_ne_permission": true
+  },
+  "effects": {
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "commercial_offer": false,
+    "release": false
+  }
+}
