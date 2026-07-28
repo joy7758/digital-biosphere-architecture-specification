@@ -1,0 +1,45 @@
+{
+  "document_id": "TITMAS-EB001-CAL2-REVIEW-CATCH-CORRECTION-0.2.1",
+  "version": "0.2.1",
+  "status": "APPEND_ONLY_MEASUREMENT_CORRECTION",
+  "source_revision": "ecd5d7f041fc3ff2213cb87a85be49f46e8d9399",
+  "source_result": "calibration-results-v0.2.json",
+  "source_result_blob": "a71df3d74bbcd0a12a1ccad22bcf3658e3826851",
+  "source_report": "calibration-report-v0.2.md",
+  "source_report_blob": "1991d8e9050935584d708377af9883c7f4496803",
+  "historical_value": {
+    "REVIEW_CATCH_RATE": "NOT_ASSESSED_NO_OPPORTUNITY"
+  },
+  "corrected_measurement": {
+    "review_opportunity_count": 1,
+    "review_catch_count": 0,
+    "review_miss_count": 1,
+    "preflight_catch_count": 0,
+    "review_catch_rate": 0.0,
+    "measurement_status": "ASSESSED",
+    "review_catch_classification": "MISS_REQUIRED_RESOURCE_GROUNDING_CHECK"
+  },
+  "basis": {
+    "task_id": "CAL2-TASK-001",
+    "required_machine_surface": "TITMAS/agent-native/ecology-box-001/calibration/calibration-v0.2.json",
+    "candidate_required_resource_claim_present": true,
+    "reviewer_had_check_opportunity": true,
+    "historical_reviewer_verdict": "PASS",
+    "historical_reviewer_caught_issues": [],
+    "final_conformance_status": "FAIL",
+    "final_conformance_error": "MACHINE_ENTRY_TARGET_MISSING",
+    "no_opportunity": false
+  },
+  "history_effect": {
+    "historical_result_modified": false,
+    "historical_report_modified": false,
+    "historical_reviewer_output_modified": false,
+    "historical_candidate_modified": false
+  },
+  "invariants": {
+    "MEASUREMENT_CORRECTION_NE_HISTORY_REWRITE": true,
+    "REVIEW_PASS_NE_REVIEW_EFFECTIVENESS": true,
+    "EVIDENCE_NE_TRUTH": true,
+    "VERIFICATION_NE_AUTHORIZATION": true
+  }
+}

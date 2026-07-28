@@ -1,0 +1,449 @@
+{
+  "contract_bundle_version": "1.1.0",
+  "status": "DETERMINISTIC_GROUNDING_REDESIGN_ONLY",
+  "source_contract": "../v0.2/role-output-contracts.json",
+  "source_contract_version": "1.0.0",
+  "source_revision": "ecd5d7f041fc3ff2213cb87a85be49f46e8d9399",
+  "additional_properties_default": false,
+  "null_allowed": false,
+  "silent_type_coercion_allowed": false,
+  "model_calls_authorized": false,
+  "calibration_v0_3_authorized": false,
+  "schemas": {
+    "ReferenceClaim": {
+      "$id": "titmas://ecology-box-001/calibration/grounding/v1.1/ReferenceClaim",
+      "type": "object",
+      "required": [
+        "reference",
+        "reference_type",
+        "required_for_candidate",
+        "expected_resolution_status",
+        "justification"
+      ],
+      "properties": {
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reference_type": {
+          "type": "string",
+          "enum": [
+            "CURRENT_SNAPSHOT_RESOURCE",
+            "CANDIDATE_CREATED_RESOURCE",
+            "CANDIDATE_MODIFIED_RESOURCE",
+            "REGISTRY_REFERENCE",
+            "SCHEMA_REFERENCE",
+            "MACHINE_SURFACE_REFERENCE"
+          ]
+        },
+        "required_for_candidate": {
+          "type": "boolean"
+        },
+        "expected_resolution_status": {
+          "type": "string",
+          "enum": [
+            "RESOLVED",
+            "NOT_FOUND",
+            "AMBIGUOUS",
+            "OUT_OF_SCOPE",
+            "INVALID_REFERENCE",
+            "NOT_ASSESSED"
+          ]
+        },
+        "justification": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "ContributorCandidate": {
+      "$id": "titmas://ecology-box-001/calibration/grounding/v1.1/ContributorCandidate",
+      "schema_version": "1.1.0",
+      "type": "object",
+      "required": [
+        "candidate_status",
+        "finding_disposition",
+        "candidate_files",
+        "reference_claims",
+        "created_resources",
+        "modified_resources",
+        "abstention_reason",
+        "rationale",
+        "limitations",
+        "validation_plan"
+      ],
+      "properties": {
+        "candidate_status": {
+          "type": "string",
+          "enum": [
+            "CANDIDATE_PRODUCED",
+            "ABSTAINED_INSUFFICIENT_CONTEXT",
+            "ABSTAINED_NO_VALID_TARGET",
+            "ABSTAINED_OUT_OF_SCOPE"
+          ]
+        },
+        "finding_disposition": {
+          "type": "string"
+        },
+        "candidate_files": {
+          "type": "object",
+          "additionalProperties": true
+        },
+        "reference_claims": {
+          "type": "array",
+          "items": {
+            "$ref": "titmas://ecology-box-001/calibration/grounding/v1.1/ReferenceClaim"
+          }
+        },
+        "created_resources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "modified_resources": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "abstention_reason": {
+          "type": "string"
+        },
+        "rationale": {
+          "type": "string"
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "validation_plan": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "ResourceResolutionReceipt": {
+      "$id": "titmas://ecology-box-001/calibration/grounding/v1.1/ResourceResolutionReceipt",
+      "type": "object",
+      "required": [
+        "resolution_id",
+        "reference",
+        "normalized_reference",
+        "reference_type",
+        "status",
+        "required_for_candidate",
+        "resolved_path",
+        "source_revision",
+        "snapshot_hash",
+        "checks_performed",
+        "limitations",
+        "reason_code",
+        "created_at",
+        "dbos_verification",
+        "evidence_truth",
+        "canonical_existence_authority"
+      ],
+      "properties": {
+        "resolution_id": {
+          "type": "string"
+        },
+        "reference": {
+          "type": "string"
+        },
+        "normalized_reference": {
+          "type": "string"
+        },
+        "reference_type": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "RESOLVED",
+            "NOT_FOUND",
+            "AMBIGUOUS",
+            "OUT_OF_SCOPE",
+            "INVALID_REFERENCE",
+            "NOT_ASSESSED"
+          ]
+        },
+        "required_for_candidate": {
+          "type": "boolean"
+        },
+        "resolved_path": {
+          "type": "string"
+        },
+        "source_revision": {
+          "type": "string"
+        },
+        "snapshot_hash": {
+          "type": "string"
+        },
+        "checks_performed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reason_code": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "dbos_verification": {
+          "const": false
+        },
+        "evidence_truth": {
+          "const": false
+        },
+        "canonical_existence_authority": {
+          "const": false
+        },
+        "resolution_phase": {
+          "type": "string",
+          "enum": [
+            "BEFORE_CANDIDATE_APPLY",
+            "AFTER_CANDIDATE_APPLY"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "PreflightResult": {
+      "$id": "titmas://ecology-box-001/calibration/grounding/v1.1/PreflightResult",
+      "type": "object",
+      "required": [
+        "preflight_id",
+        "candidate_ref",
+        "schema_status",
+        "scope_status",
+        "resolution_receipts",
+        "unresolved_required_references",
+        "candidate_apply_status",
+        "incremental_conformance_status",
+        "errors",
+        "warnings",
+        "limitations",
+        "status"
+      ],
+      "properties": {
+        "preflight_id": {
+          "type": "string"
+        },
+        "candidate_ref": {
+          "type": "string"
+        },
+        "schema_status": {
+          "type": "string"
+        },
+        "scope_status": {
+          "type": "string"
+        },
+        "resolution_receipts": {
+          "type": "array",
+          "items": {
+            "type": "object"
+          }
+        },
+        "unresolved_required_references": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "candidate_apply_status": {
+          "type": "string"
+        },
+        "incremental_conformance_status": {
+          "type": "string"
+        },
+        "errors": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warnings": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "status": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "REVISION_REQUIRED",
+            "REJECTED",
+            "NOT_ASSESSED"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "ReviewerAssessment": {
+      "$id": "titmas://ecology-box-001/calibration/grounding/v1.1/ReviewerAssessment",
+      "schema_version": "1.1.0",
+      "type": "object",
+      "required": [
+        "verdict",
+        "caught_issues",
+        "semantic_elevation_detected",
+        "harmful_candidate",
+        "required_corrections",
+        "limitations",
+        "reviewed_artifact_refs",
+        "preflight_result_ref",
+        "checks_performed",
+        "verified_resource_refs",
+        "resolution_receipt_refs",
+        "unverified_claims",
+        "abstention_reason"
+      ],
+      "properties": {
+        "verdict": {
+          "type": "string",
+          "enum": [
+            "PASS",
+            "REVISION_REQUIRED",
+            "REJECT",
+            "ABSTAIN_INSUFFICIENT_EVIDENCE"
+          ]
+        },
+        "caught_issues": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "semantic_elevation_detected": {
+          "type": "boolean"
+        },
+        "harmful_candidate": {
+          "type": "boolean"
+        },
+        "required_corrections": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "reviewed_artifact_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "preflight_result_ref": {
+          "type": "string"
+        },
+        "checks_performed": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verified_resource_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "resolution_receipt_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "unverified_claims": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "abstention_reason": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "HandoffRecord": {
+      "$id": "titmas://ecology-box-001/calibration/grounding/v1.1/HandoffRecord",
+      "schema_version": "1.1.0",
+      "type": "object",
+      "required": [
+        "grounding_status",
+        "resource_resolution_receipt_refs",
+        "preflight_result_ref",
+        "unresolved_required_references"
+      ],
+      "properties": {
+        "grounding_status": {
+          "type": "string",
+          "enum": [
+            "GROUNDED",
+            "PARTIALLY_GROUNDED",
+            "UNGROUNDED",
+            "NOT_ASSESSED"
+          ]
+        },
+        "resource_resolution_receipt_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "preflight_result_ref": {
+          "type": "string"
+        },
+        "unresolved_required_references": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "invariants": {
+    "CONTRIBUTOR_MAY_ABSTAIN": true,
+    "CONTRIBUTOR_GUESSING_UNKNOWN_RESOURCE_PROHIBITED": true,
+    "ABSTENTION_NE_FAILURE": true,
+    "PREFLIGHT_PASS_REQUIRES_ALL_REQUIRED_REFERENCES_RESOLVED": true,
+    "PREFLIGHT_PASS_REQUIRES_CANDIDATE_APPLY_SUCCESS": true,
+    "PREFLIGHT_PASS_REQUIRES_INCREMENTAL_CONFORMANCE": true,
+    "REVIEW_PASS_REQUIRES_PREFLIGHT_PASS": true,
+    "REVIEW_PASS_REQUIRES_REQUIRED_REFERENCES_RESOLVED": true,
+    "REVIEWER_ABSTENTION_SUPPORTED": true,
+    "REVIEW_NE_DECISION": true,
+    "RESOURCE_RESOLUTION_RECEIPT_NE_DBOS_VERIFICATION": true,
+    "RESOURCE_RESOLUTION_RECEIPT_NE_EVIDENCE_TRUTH": true,
+    "LOCAL_SNAPSHOT_RESOLUTION_NE_CANONICAL_EXISTENCE_AUTHORITY": true
+  }
+}

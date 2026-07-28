@@ -2196,6 +2196,176 @@ def check_agent_native_ecology_box_001_operational_calibration_v02() -> dict[str
     }
 
 
+def check_agent_native_ecology_box_001_candidate_grounding() -> dict[str, Any]:
+    root = TITMAS_ROOT / "agent-native" / "ecology-box-001"
+    grounding = root / "calibration" / "grounding"
+    v02 = root / "calibration" / "v0.2"
+    required_paths = (
+        grounding / "local_resource_resolver.py",
+        grounding / "candidate_preflight.py",
+        grounding / "role-output-contracts-v1.1.json",
+        grounding / "candidate-grounding-results-v0.1.json",
+        grounding / "candidate-grounding-report-v0.1.md",
+        v02 / "review-catch-metric-correction-v0.2.1.json",
+        DBA_ROOT
+        / "architecture"
+        / "titmas-ecology-box-001-review-catch-metric-correction-v0.2.1.md",
+        DBA_ROOT
+        / "TITMAS-EB001-CANDIDATE-GROUNDING-HUMAN-DECISION-SUPPLEMENT-v0.1.md",
+        DBA_ROOT
+        / "TITMAS-AGENT-NATIVE-CANDIDATE-GROUNDING-AND-INCREMENTAL-VALIDATION-REPORT-v0.1.md",
+    )
+    missing = [
+        str(path.relative_to(DBA_ROOT))
+        for path in required_paths
+        if not path.is_file()
+    ]
+    if missing:
+        raise ConformanceError(f"candidate grounding files missing {missing}")
+
+    contracts = load_json(grounding / "role-output-contracts-v1.1.json")
+    required_schemas = {
+        "ReferenceClaim",
+        "ContributorCandidate",
+        "ResourceResolutionReceipt",
+        "PreflightResult",
+        "ReviewerAssessment",
+        "HandoffRecord",
+    }
+    invariants = contracts["invariants"]
+    if (
+        contracts["contract_bundle_version"] != "1.1.0"
+        or contracts["source_contract_version"] != "1.0.0"
+        or contracts["source_revision"]
+        != "ecd5d7f041fc3ff2213cb87a85be49f46e8d9399"
+        or contracts["model_calls_authorized"] is not False
+        or contracts["calibration_v0_3_authorized"] is not False
+        or set(contracts["schemas"]) != required_schemas
+        or not all(invariants.values())
+    ):
+        raise ConformanceError("candidate grounding contract drift")
+
+    result = load_json(grounding / "candidate-grounding-results-v0.1.json")
+    tests = result["tests"]
+    replay = result["historical_task_1_replay"]
+    formal = result["formal_experiment_state"]
+    authority = result["authority_and_execution"]
+    if (
+        result["status"] != "PASS_DETERMINISTIC_DESIGN_VALIDATION_ONLY"
+        or result["source_revision"]
+        != "ecd5d7f041fc3ff2213cb87a85be49f46e8d9399"
+        or result["recommendation_gate"]["verdict"]
+        != "CONDITIONALLY_RECOMMENDED"
+        or tests["candidate_grounding"]["total"] != 20
+        or tests["candidate_grounding"]["passed"] != 20
+        or tests["candidate_grounding"]["failed"] != 0
+        or set(tests["candidate_grounding"]["case_ids"])
+        != {f"CG-{index:02d}" for index in range(1, 21)}
+        or tests["review_metric"]["total"] != 6
+        or tests["review_metric"]["passed"] != 6
+        or replay["historical_reviewer_verdict"] != "PASS"
+        or replay["historical_conformance_status"] != "FAIL"
+        or replay["historical_conformance_errors"]
+        != ["MACHINE_ENTRY_TARGET_MISSING"]
+        or replay["resource_resolution_status"] != "NOT_FOUND"
+        or replay["preflight_status"] != "REVISION_REQUIRED"
+        or replay["review_stage_reached"] is not False
+        or replay[
+            "CAL2_TASK_001_INVALID_REFERENCE_REJECTED_BEFORE_REVIEW"
+        ]
+        is not True
+        or authority["model_call_count"] != 0
+        or any(
+            authority[field] is not False
+            for field in (
+                "calibration_v0_3_authorized",
+                "calibration_v0_3_executed",
+                "formal_experiment_execution_authorized",
+                "real_repository_candidate_write_authorized",
+                "public_report_authorized",
+                "commercial_validation_authorized",
+                "release_authorized",
+            )
+        )
+        or formal["go_no_go_status"] != "NO_GO"
+        or formal["execution_authorized"] is not False
+        or formal["executed"] is not False
+        or formal["formal_task_count"] != 10
+        or formal["formal_run_record_count"] != 0
+        or formal["value_proven"] is not False
+    ):
+        raise ConformanceError("candidate grounding result or boundary drift")
+
+    correction = load_json(
+        v02 / "review-catch-metric-correction-v0.2.1.json"
+    )
+    metric = correction["corrected_measurement"]
+    if (
+        correction["status"] != "APPEND_ONLY_MEASUREMENT_CORRECTION"
+        or correction["historical_value"]["REVIEW_CATCH_RATE"]
+        != "NOT_ASSESSED_NO_OPPORTUNITY"
+        or metric["review_opportunity_count"] != 1
+        or metric["review_catch_count"] != 0
+        or metric["review_miss_count"] != 1
+        or metric["review_catch_rate"] != 0.0
+        or metric["review_catch_classification"]
+        != "MISS_REQUIRED_RESOURCE_GROUNDING_CHECK"
+        or correction["basis"]["no_opportunity"] is not False
+        or any(correction["history_effect"].values())
+    ):
+        raise ConformanceError("review catch metric correction drift")
+
+    original_results = load_json(v02 / "calibration-results-v0.2.json")
+    task1 = original_results["task_results"][0]
+    if (
+        original_results["calibration_status"]
+        != "CALIBRATION_NEGATIVE_RESULT"
+        or original_results["operational_pipeline_demonstrated"] is not False
+        or original_results["route_decision"] != "STOP_DIRECT_CALIBRATION_RERUNS"
+        or original_results["metrics"]["PIPELINE_COMPLETION_RATE"] != 1.0
+        or original_results["metrics"]["CONFORMANCE_PASS_RATE"]
+        != 0.6666666666666666
+        or original_results["metrics"]["REVIEW_CATCH_RATE"]
+        != "NOT_ASSESSED_NO_OPPORTUNITY"
+        or task1["review"]["verdict"] != "PASS"
+        or task1["conformance"]["status"] != "FAIL"
+        or task1["conformance"]["errors"]
+        != ["MACHINE_ENTRY_TARGET_MISSING"]
+    ):
+        raise ConformanceError("calibration v0.2 immutable history drift")
+
+    grounding_text = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in (
+            grounding / "local_resource_resolver.py",
+            grounding / "candidate_preflight.py",
+            grounding / "role-output-contracts-v1.1.json",
+        )
+    )
+    if "PRELIGHT" in grounding_text:
+        raise ConformanceError("candidate grounding PREFLIGHT spelling drift")
+    formal_runs = [
+        path
+        for path in (root / "runs").iterdir()
+        if path.is_file() and path.name != "README.md"
+    ]
+    if formal_runs:
+        raise ConformanceError("candidate grounding created formal run records")
+    return {
+        "candidate_grounding_files_checked": len(required_paths),
+        "candidate_grounding_tests": "20/20",
+        "review_metric_tests": "6/6",
+        "historical_task1_rejected_before_review": True,
+        "model_call_count": 0,
+        "calibration_v0_3_authorized": False,
+        "calibration_v0_3_executed": False,
+        "formal_go_no_go_status": "NO_GO",
+        "formal_task_count": 10,
+        "formal_run_record_count": 0,
+        "value_proven": False,
+    }
+
+
 def check_agent_native_pilot() -> dict[str, Any]:
     path = TITMAS_ROOT / "agent-native" / "pilot" / "pilot-result.json"
     if not path.exists():
@@ -2332,6 +2502,10 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         (
             "agent_native_ecology_box_001_operational_calibration_v02",
             check_agent_native_ecology_box_001_operational_calibration_v02,
+        ),
+        (
+            "agent_native_ecology_box_001_candidate_grounding",
+            check_agent_native_ecology_box_001_candidate_grounding,
         ),
         ("agent_native_pilot", check_agent_native_pilot),
         ("agent_native_reviews", check_agent_native_reviews),

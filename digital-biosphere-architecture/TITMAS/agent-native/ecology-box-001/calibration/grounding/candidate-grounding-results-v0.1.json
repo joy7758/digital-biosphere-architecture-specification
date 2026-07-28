@@ -1,0 +1,134 @@
+{
+  "document_id": "TITMAS-EB001-CANDIDATE-GROUNDING-RESULTS-0.1",
+  "status": "PASS_DETERMINISTIC_DESIGN_VALIDATION_ONLY",
+  "decision_id": "TITMAS-EB001-CANDIDATE-GROUNDING-D01",
+  "decision": "ACCEPT_DESIGN_AND_DETERMINISTIC_TESTS_ONLY",
+  "decided_by_ref": "zhangbin",
+  "source_branch": "codex/titmas-agent-native-ecology-box-001-operational-calibration-v0-2",
+  "source_revision": "ecd5d7f041fc3ff2213cb87a85be49f46e8d9399",
+  "snapshot_hash": "git-tree:8339d6cb48649288010259c64c224f96b30c0cd8",
+  "working_branch": "codex/titmas-agent-native-candidate-grounding-v0-1",
+  "recommendation_gate": {
+    "verdict": "CONDITIONALLY_RECOMMENDED",
+    "would_recommend_for_need": true,
+    "recommended_as": "DETERMINISTIC_CANDIDATE_GROUNDING_AND_PREFLIGHT_REDESIGN",
+    "not_recommended_as": "MODEL_PIPELINE_OR_AGENT_NATIVE_VALUE_PROOF",
+    "reasons": [
+      "Calibration v0.2 directly demonstrated an unresolved required machine surface reaching Reviewer PASS.",
+      "Exact frozen-tree resolution and pre-review incremental conformance address the observed failure mechanism."
+    ],
+    "remaining_gaps": [
+      "No model pipeline was executed.",
+      "No Calibration v0.3 was authorized or executed.",
+      "No Agent-native operational value was demonstrated."
+    ],
+    "stop_conditions": [
+      "SOURCE_REVISION_DRIFT",
+      "REQUIRED_REFERENCE_UNRESOLVED",
+      "PREFLIGHT_NOT_PASS",
+      "FINAL_CONFORMANCE_FAIL"
+    ]
+  },
+  "resource_resolver": {
+    "operational": true,
+    "network_access": false,
+    "private_repository_access": false,
+    "path_guessing": false,
+    "allowed_statuses": [
+      "RESOLVED",
+      "NOT_FOUND",
+      "AMBIGUOUS",
+      "OUT_OF_SCOPE",
+      "INVALID_REFERENCE",
+      "NOT_ASSESSED"
+    ],
+    "receipt_is_dbos_verification": false,
+    "receipt_is_evidence_truth": false,
+    "receipt_is_canonical_existence_authority": false
+  },
+  "historical_task_1_replay": {
+    "historical_task_id": "CAL2-TASK-001",
+    "historical_candidate_hash": "sha256:947d623ccd683fc9f649ebf99da3223018b4e8b9cc12cb8adeed9c0ee08eada4",
+    "historical_reviewer_verdict": "PASS",
+    "historical_conformance_status": "FAIL",
+    "historical_conformance_errors": [
+      "MACHINE_ENTRY_TARGET_MISSING"
+    ],
+    "required_reference": "TITMAS/agent-native/ecology-box-001/calibration/calibration-v0.2.json",
+    "resource_resolution_status": "NOT_FOUND",
+    "resource_resolution_receipt_ref": "RR-dc6972b89e16db19264b",
+    "preflight_status": "REVISION_REQUIRED",
+    "review_stage_reached": false,
+    "CAL2_TASK_001_INVALID_REFERENCE_REJECTED_BEFORE_REVIEW": true,
+    "historical_candidate_modified": false,
+    "historical_reviewer_output_modified": false
+  },
+  "tests": {
+    "candidate_grounding": {
+      "total": 20,
+      "passed": 20,
+      "failed": 0,
+      "case_ids": [
+        "CG-01",
+        "CG-02",
+        "CG-03",
+        "CG-04",
+        "CG-05",
+        "CG-06",
+        "CG-07",
+        "CG-08",
+        "CG-09",
+        "CG-10",
+        "CG-11",
+        "CG-12",
+        "CG-13",
+        "CG-14",
+        "CG-15",
+        "CG-16",
+        "CG-17",
+        "CG-18",
+        "CG-19",
+        "CG-20"
+      ]
+    },
+    "review_metric": {
+      "total": 6,
+      "passed": 6,
+      "failed": 0
+    }
+  },
+  "required_results": {
+    "CANDIDATE_GROUNDING_TESTS": "20/20_PASS",
+    "NONEXISTENT_REFERENCE_REJECTED_BEFORE_REVIEW": true,
+    "REVIEW_PASS_WITH_UNRESOLVED_REFERENCE_REJECTED": true,
+    "CONTRIBUTOR_ABSTENTION_PATH_PASS": true,
+    "REFERENCE_EXISTENCE_CHECK_BEFORE_REVIEW": true,
+    "INCREMENTAL_CONFORMANCE_BEFORE_REVIEW": true,
+    "FINAL_CONFORMANCE_REMAINS_REQUIRED": true
+  },
+  "authority_and_execution": {
+    "model_call_count": 0,
+    "calibration_v0_3_authorized": false,
+    "calibration_v0_3_executed": false,
+    "formal_experiment_execution_authorized": false,
+    "real_repository_candidate_write_authorized": false,
+    "public_report_authorized": false,
+    "commercial_validation_authorized": false,
+    "release_authorized": false
+  },
+  "formal_experiment_state": {
+    "go_no_go_status": "NO_GO",
+    "execution_authorized": false,
+    "executed": false,
+    "formal_task_count": 10,
+    "formal_run_record_count": 0,
+    "value_proven": false
+  },
+  "non_claims": [
+    "DETERMINISTIC_PASS_NE_MODEL_PIPELINE_PROOF",
+    "GROUNDING_PASS_NE_AGENT_NATIVE_VALUE_PROOF",
+    "STRUCTURAL_VALIDITY_NE_ENVIRONMENTAL_TRUTH",
+    "RESOURCE_RESOLUTION_RECEIPT_NE_DBOS_VERIFICATION",
+    "RESOURCE_RESOLUTION_RECEIPT_NE_EVIDENCE_TRUTH"
+  ]
+}

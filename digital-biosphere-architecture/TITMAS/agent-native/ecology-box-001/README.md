@@ -23,6 +23,7 @@ Start in this order:
 13. [Execution Readiness Package](readiness/README.md)
 14. [Operational Calibration Record](calibration/calibration-report-v0.1.md)
 15. [Operational Calibration v0.2 Record](calibration/v0.2/calibration-report-v0.2.md)
+16. [Candidate Grounding and Incremental Validation](calibration/grounding/candidate-grounding-report-v0.1.md)
 
 ```text
 PACKAGE_STATUS=PREPARED
@@ -79,6 +80,27 @@ The v0.2 result demonstrates that the two v0.1 persistence and type-safety
 defects were removed in this run. It does not demonstrate Agent-native value,
 formal experiment readiness, adoption or commercial value. Direct calibration
 reruns now require a new Human decision and a minimal runner redesign review.
+
+The deterministic Candidate Grounding redesign now resolves required
+references against the exact frozen repository tree before Reviewer handoff.
+Its historical replay rejects the v0.2 Task 1 missing machine surface before
+review, and its 20/20 grounding plus 6/6 metric fixtures pass. This is a design
+and local validation result only:
+
+```text
+CANDIDATE_GROUNDING_REDESIGN_COMPLETE=true
+RESOURCE_RESOLUTION_GATE_OPERATIONAL=true
+INCREMENTAL_CONFORMANCE_OPERATIONAL=true
+REVIEWER_GROUNDING_CONTRACT_OPERATIONAL=true
+MODEL_CALL_COUNT=0
+CALIBRATION_V0_3_AUTHORIZED=false
+CALIBRATION_V0_3_EXECUTED=false
+```
+
+The original v0.2 candidate, Reviewer `PASS`, final failure and route decision
+remain immutable. The Review Catch correction is append-only and does not
+rewrite history or prove Reviewer effectiveness, model-pipeline behavior, or
+Agent-native value.
 
 The files under `runs/`, `reviews/`, `memories/` and `reports/` are contracts
 or templates. They are not execution records, canonical Evidence, adopted

@@ -72,6 +72,10 @@
     "ecology_box_001_operational_calibration_v02_journal": "TITMAS/agent-native/ecology-box-001/calibration/v0.2/durable-journal.jsonl",
     "ecology_box_001_operational_calibration_v02_results": "TITMAS/agent-native/ecology-box-001/calibration/v0.2/calibration-results-v0.2.json",
     "ecology_box_001_operational_calibration_v02_report": "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-OPERATIONAL-CALIBRATION-REPORT-v0.2.md",
+    "ecology_box_001_candidate_grounding_contracts": "TITMAS/agent-native/ecology-box-001/calibration/grounding/role-output-contracts-v1.1.json",
+    "ecology_box_001_candidate_grounding_results": "TITMAS/agent-native/ecology-box-001/calibration/grounding/candidate-grounding-results-v0.1.json",
+    "ecology_box_001_candidate_grounding_report": "TITMAS-AGENT-NATIVE-CANDIDATE-GROUNDING-AND-INCREMENTAL-VALIDATION-REPORT-v0.1.md",
+    "ecology_box_001_review_catch_correction": "TITMAS/agent-native/ecology-box-001/calibration/v0.2/review-catch-metric-correction-v0.2.1.json",
     "specifications": "TITMAS/specifications/registry.yaml",
     "conformance_report": "TITMAS/conformance/reports/latest.json"
   },
@@ -147,5 +151,30 @@
     "value_proven": false,
     "route_decision": "STOP_DIRECT_CALIBRATION_RERUNS",
     "next_human_decision": "MINIMAL_RUNNER_REDESIGN_REQUIRED"
+  },
+  "ecology_box_001_candidate_grounding_state": {
+    "design_and_deterministic_validation_only": true,
+    "candidate_grounding_redesign_complete": true,
+    "resource_resolution_gate_operational": true,
+    "incremental_conformance_operational": true,
+    "reviewer_grounding_contract_operational": true,
+    "candidate_grounding_tests_passed": 20,
+    "candidate_grounding_tests_total": 20,
+    "review_metric_tests_passed": 6,
+    "review_metric_tests_total": 6,
+    "historical_task1_rejected_before_review": true,
+    "model_call_count": 0,
+    "calibration_v0_3_authorized": false,
+    "calibration_v0_3_executed": false,
+    "formal_go_no_go_status": "NO_GO",
+    "formal_execution_authorized": false,
+    "formal_experiment_executed": false,
+    "value_proven": false,
+    "next_human_decisions": [
+      "CG-HD-01",
+      "CG-HD-02",
+      "CG-HD-03",
+      "CG-HD-04"
+    ]
   }
 }
