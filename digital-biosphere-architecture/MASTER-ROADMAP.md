@@ -71,7 +71,7 @@ SAEE_NE_CONTROLLER=true
 | `TITMAS-COMMERCIAL-EVALUATION-PACK-0.1` | `PREPARED_NOT_AVAILABLE_OFFERING` | Public-safe wheel、5 类对象 Schema、只读 `dbos-validate`、machine manifest、synthetic fixture、`llms.txt` 与 10 分钟 First Run；Qwen 五角色 advisory 完成、最终 2/2 `PASS`；样例本地 `PASS` | 下一步只验证陌生 AI 智能体能否发现、理解、安装、验证并解释边界；不得升级为客户、合同、SLA、生产、认证或 commercial offering |
 | `CE-G11B-PR-A-M1` | `PR27_MERGED_POST_MERGE_VALIDATION_PASS_CE_G12_RECOMMENDATION_REQUIRED` | 初次 Lane C binding failure 保留；独立 recovery synthesis `CLEAR`、blocking finding 0；PR #27 merge `c1d8931…`；隔离 JSON `1165/1165`、site `16/16`、CE `49/49` | 只准备 CE-G12 correlated exact redeployment Recommendation；release、deploy、Standard Ready 和 commercial offering 均需后续独立 Decision |
 | `CE-G12-PUBLIC-CANDIDATE` | `ACTIVE_APPLICATION_EXACT_LOCAL_SYNTHETIC_DNS_PATH_DIRECT_ORIGIN_UNVERIFIED` | 首次 preflight 与 atomic deployment failure/rollback 保留；portable artifact `f3f46e…` 已在独立 Decision 下激活；canonical routes `10/10`，公网 status/redirect `10/10`、body hash `9/9`、JSON `5/5`、agent-readable endpoints `7/7`；本机 system resolver、`dig` 与先前 curl remote IP 均为 `198.18.0.90`，分类 `LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED` | direct-origin、Release、Standard Ready、Commercial Validation Ready、Production、Certification 与 offering 均保持 false |
-| `CE-G13-OFFLINE-CONTRACT` | `PACKAGE_PASS_EXECUTION_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY` | 公网智能体客户发现与复用 Recommendation 和 Agent-customer gate 已通过；28 文件离线执行契约包在 R1 fail-closed 后，经 R2 本地 Registry 验证 `94/94` checks、14 Schemas、28 negative cases PASS；package commit `bdfdfb0…` remote verified；network/model/credential/technical execution 为 0 | 只准备 CE-G13 execution authorization Recommendation；尚未授权 public fetch、5 个 Agent session 或 technical reuse run |
+| `CE-G13-AGENT-CUSTOMER-VALIDATION` | `PASS_100_OF_100_TECHNICAL_REUSE_NOT_EXECUTED_STANDARD_NOT_READY` | 远端结果 `7a20c77…` 固化 26 文件；16/16 同源 GET、16 个资源、440364 字节、5/5 exact `qwen3.7-max` direct JSON/Schema 会话、复用计划 7/7、总分 100/100、critical boundary failure 0；Agent recommendation 为 `CONDITIONALLY_RECOMMENDED` | optional technical reuse 因 GET 预算用满正确记为 `NOT_EXECUTED`；下一步只准备 cross-provider 与 clean technical-reuse Recommendation；客户、市场、offering、认证、Standard Ready 与 Production Ready 均保持 false |
 | `TITMAS-FINALIZATION-AVH-001` | `ARCHITECTURE_ASSESSMENT_DEFINED_NOT_ADOPTED` | [AVH architecture assessment](architecture/agent-validation-harness-architecture-assessment-v0.1.md) / [machine record](architecture/agent-validation-harness-architecture-assessment.v0.1.json)；现有 Technical Validation、Evidence Admission、DBOS/SAEE Owner crosswalk 已完成 | 只允许架构、overlap、threat、oracle 和 conformance design review；等待完整提案、Owner/Reviewer 和 `TITMAS-AVH-D01`，不创建产品、Runtime、Sandbox、Agent、Evidence 或实现 |
 
 ```text
@@ -79,7 +79,7 @@ COMMERCIALIZATION_LAST_COMPLETED_STEP=CS-D02-PRE-75-EXECUTION
 COMMERCIALIZATION_SECURITY_SUBTRACK_FROZEN=true
 COMMERCIAL_EVALUATION_PACKAGE_PREPARED=true
 COMMERCIAL_EVALUATION_PACKAGE_STATUS=PREPARED_NOT_AVAILABLE_OFFERING
-COMMERCIALIZATION_NEXT_ACTION=PREPARE_CE_G13_EXECUTION_AUTHORIZATION_RECOMMENDATION_ONLY
+COMMERCIALIZATION_NEXT_ACTION=PREPARE_POST_CE_G13_CROSS_PROVIDER_AND_CLEAN_TECHNICAL_REUSE_RECOMMENDATION_ONLY
 COMMERCIALIZATION_NEXT_ACTION_AUTHORIZED=false
 CE_G12_PUBLIC_CANDIDATE_ACTIVE=true
 CE_G12_PUBLIC_APPLICATION_SURFACE_EXACT=true
@@ -96,10 +96,24 @@ CE_G13_OFFLINE_CONTRACT_PACKAGE_FILES=28
 CE_G13_OFFLINE_CONTRACT_R2_VALIDATION_PASS=true
 CE_G13_OFFLINE_CONTRACT_R2_CHECKS=94
 CE_G13_OFFLINE_CONTRACT_PACKAGE_REMOTE_VERIFIED=true
-CE_G13_EXECUTION_AUTHORIZED=false
-CE_G13_PUBLIC_FETCHES_EXECUTED=0
-CE_G13_AGENT_SESSIONS_EXECUTED=0
+CE_G13_EXECUTION_AUTHORIZED=true
+CE_G13_EXECUTION_AUTHORIZATION_CONSUMED=true
+CE_G13_EXECUTION_STATUS=PASS
+CE_G13_RESULT_COMMIT=7a20c77bff931380fe109987972d3e43c9774bd3
+CE_G13_RESULT_REMOTE_VERIFIED=true
+CE_G13_PUBLIC_GET_REQUESTS=16
+CE_G13_CAPTURED_RESOURCES=16
+CE_G13_SANITIZED_BYTES=440364
+CE_G13_AGENT_SESSIONS_EXECUTED=5
+CE_G13_SCHEMA_VALID_SESSIONS=5
+CE_G13_REUSE_PLAN_VALIDATION=PASS
+CE_G13_TECHNICAL_REUSE_STATUS=NOT_EXECUTED
 CE_G13_TECHNICAL_REUSE_RUNS=0
+CE_G13_SCORE=100
+CE_G13_CRITICAL_BOUNDARY_FAILURES=0
+CE_G13_CUSTOMER_ADOPTION_VERIFIED=false
+CE_G13_MARKET_DEMAND_VERIFIED=false
+CE_G13_CROSS_PROVIDER_GENERALITY=false
 P0_REFERENCE_IMPLEMENTATION_CREATED=true
 P0_OFFLINE_TESTS_PASS=true
 PRE68_SECURITY_AND_PLATFORM_SCOPE_DEFINED=true

@@ -51,7 +51,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CE_G13_OFFLINE_CONTRACT_PACKAGE_PASS_EXECUTION_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CE_G13_AGENT_CUSTOMER_VALIDATION_PASS_TECHNICAL_REUSE_NOT_EXECUTED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -111,13 +111,13 @@
       "properties": {
         "as_of": {"const": "2026-07-28"},
         "last_completed_step": {
-          "const": "CE_G13_OFFLINE_EXECUTION_CONTRACT_PACKAGE_R2_VALIDATION"
+          "const": "CE_G13_PUBLIC_AGENT_CUSTOMER_DISCOVERY_AND_REUSE_VALIDATION"
         },
         "last_completed_result": {
-          "const": "PASS_28_FILE_PACKAGE_94_CHECKS_ZERO_NETWORK"
+          "const": "PASS_100_OF_100_FIVE_SESSIONS_TECHNICAL_REUSE_NOT_EXECUTED"
         },
         "direct_evidence_reference": {
-          "const": "commercial-evaluation-fresh-candidate/ce-g13-offline-contract-r2-validation-result.v0.1.json"
+          "const": "commercial-evaluation-ce-g13-execution-attempt-001/composite-result.v0.1.json"
         },
         "current_best_connected_model": {"const": "qwen3.7-max"},
         "primary_new_provider_candidate": {
@@ -135,7 +135,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "PREPARE_CE_G13_EXECUTION_AUTHORIZATION_RECOMMENDATION_ONLY"
+          "const": "PREPARE_POST_CE_G13_CROSS_PROVIDER_AND_CLEAN_TECHNICAL_REUSE_RECOMMENDATION_ONLY"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -250,7 +250,7 @@
           "const": false
         },
         "next_allowed_action": {
-          "const": "PREPARE_CE_G13_EXECUTION_AUTHORIZATION_RECOMMENDATION_ONLY"
+          "const": "PREPARE_POST_CE_G13_CROSS_PROVIDER_AND_CLEAN_TECHNICAL_REUSE_RECOMMENDATION_ONLY"
         },
         "next_action_authorized": {
           "const": false
@@ -277,12 +277,36 @@
         "r2_checks_passed",
         "r2_schemas_validated",
         "r2_negative_cases",
+        "execution_decision_reference",
+        "execution_decision_review_reference",
         "execution_authorized",
-        "public_fetches_executed",
+        "execution_authorization_consumed",
+        "execution_status",
+        "result_commit",
+        "result_remote_verified",
+        "output_directory",
+        "output_files",
+        "output_manifest_sha256",
+        "composite_result_reference",
+        "composite_result_sha256",
+        "full_conformance_checks",
+        "public_get_requests",
+        "captured_resources",
+        "sanitized_bytes",
         "agent_sessions_executed",
+        "schema_valid_sessions",
+        "requested_model",
+        "returned_model",
+        "retry_fallback_substitution_extraction_repair",
+        "reuse_plan_validation",
+        "technical_reuse_status",
         "technical_reuse_runs",
+        "score",
+        "critical_boundary_failures",
+        "agent_recommendation",
         "customer_adoption_verified",
         "market_demand_verified",
+        "cross_provider_generality",
         "commercial_validation_ready",
         "standard_ready",
         "commercial_offering",
@@ -322,19 +346,57 @@
         "r2_checks_passed": {"const": 94},
         "r2_schemas_validated": {"const": 14},
         "r2_negative_cases": {"const": 28},
-        "execution_authorized": {"const": false},
-        "public_fetches_executed": {"const": 0},
-        "agent_sessions_executed": {"const": 0},
+        "execution_decision_reference": {
+          "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G13-EXECUTION-AUTHORIZATION-DECISION-RECORD.v0.1.json"
+        },
+        "execution_decision_review_reference": {
+          "const": "TITMAS-COMMERCIAL-EVALUATION-CE-G13-EXECUTION-AUTHORIZATION-QWEN-DECISION-REVIEW-v0.1.json"
+        },
+        "execution_authorized": {"const": true},
+        "execution_authorization_consumed": {"const": true},
+        "execution_status": {"const": "PASS"},
+        "result_commit": {
+          "const": "7a20c77bff931380fe109987972d3e43c9774bd3"
+        },
+        "result_remote_verified": {"const": true},
+        "output_directory": {
+          "const": "commercial-evaluation-ce-g13-execution-attempt-001"
+        },
+        "output_files": {"const": 26},
+        "output_manifest_sha256": {
+          "const": "f3abd3fc3cb29ec52e2920639e220af3900cfb91d96bd083fc4c7702ee1e4700"
+        },
+        "composite_result_reference": {
+          "const": "commercial-evaluation-ce-g13-execution-attempt-001/composite-result.v0.1.json"
+        },
+        "composite_result_sha256": {
+          "const": "a9c7b5726fe8ebcc221046863a239be13f3eab959f5c9cb9867172a63400bed7"
+        },
+        "full_conformance_checks": {"const": 187},
+        "public_get_requests": {"const": 16},
+        "captured_resources": {"const": 16},
+        "sanitized_bytes": {"const": 440364},
+        "agent_sessions_executed": {"const": 5},
+        "schema_valid_sessions": {"const": 5},
+        "requested_model": {"const": "qwen3.7-max"},
+        "returned_model": {"const": "qwen3.7-max"},
+        "retry_fallback_substitution_extraction_repair": {"const": 0},
+        "reuse_plan_validation": {"const": "PASS"},
+        "technical_reuse_status": {"const": "NOT_EXECUTED"},
         "technical_reuse_runs": {"const": 0},
+        "score": {"const": 100},
+        "critical_boundary_failures": {"const": 0},
+        "agent_recommendation": {"const": "CONDITIONALLY_RECOMMENDED"},
         "customer_adoption_verified": {"const": false},
         "market_demand_verified": {"const": false},
+        "cross_provider_generality": {"const": false},
         "commercial_validation_ready": {"const": false},
         "standard_ready": {"const": false},
         "commercial_offering": {"const": false},
         "certification": {"const": false},
         "production_ready": {"const": false},
         "next_allowed_action": {
-          "const": "PREPARE_CE_G13_EXECUTION_AUTHORIZATION_RECOMMENDATION_ONLY"
+          "const": "PREPARE_POST_CE_G13_CROSS_PROVIDER_AND_CLEAN_TECHNICAL_REUSE_RECOMMENDATION_ONLY"
         },
         "next_action_authorized": {"const": false}
       }
@@ -7980,7 +8042,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_CE_G13_EXECUTION_AUTHORIZATION_RECOMMENDATION_ONLY"
+          "const": "PREPARE_POST_CE_G13_CROSS_PROVIDER_AND_CLEAN_TECHNICAL_REUSE_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false
