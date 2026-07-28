@@ -1,0 +1,761 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-model-input-envelope.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Model Input Envelope v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "envelope_id",
+    "session_id",
+    "role",
+    "status",
+    "provider",
+    "requested_model",
+    "prompt_reference",
+    "prompt_sha256",
+    "response_schema_reference",
+    "response_schema_sha256",
+    "source_snapshot_manifest_reference",
+    "source_snapshot_manifest_sha256",
+    "sanitized_public_input_bundle_reference",
+    "sanitized_public_input_bundle_sha256",
+    "ordered_input_components",
+    "upstream_result_hashes",
+    "sanitized_request_payload",
+    "sanitized_request_payload_sha256",
+    "controls",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./model-input-envelope.schema.v0.1.json"
+    },
+    "envelope_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "session_id": {
+      "type": "string",
+      "pattern": "^CE-G13-S0[1-5]$"
+    },
+    "role": {
+      "enum": [
+        "COLD_DISCOVERY_AGENT",
+        "ARCHITECTURE_COMPREHENSION_AGENT",
+        "WEBSITE_ONLY_REUSE_PLANNER",
+        "AGENT_RECOMMENDER",
+        "BOUNDARY_AND_NON_MATCH_AUDITOR"
+      ]
+    },
+    "status": {
+      "enum": [
+        "NOT_EXECUTED",
+        "CAPTURED",
+        "FAIL_CLOSED"
+      ]
+    },
+    "provider": {
+      "const": "ALIBABA_CLOUD_MODEL_STUDIO"
+    },
+    "requested_model": {
+      "const": "qwen3.7-max"
+    },
+    "prompt_reference": {
+      "$ref": "#/$defs/nullable_reference"
+    },
+    "prompt_sha256": {
+      "$ref": "#/$defs/nullable_sha256"
+    },
+    "response_schema_reference": {
+      "$ref": "#/$defs/nullable_reference"
+    },
+    "response_schema_sha256": {
+      "$ref": "#/$defs/nullable_sha256"
+    },
+    "source_snapshot_manifest_reference": {
+      "$ref": "#/$defs/nullable_reference"
+    },
+    "source_snapshot_manifest_sha256": {
+      "$ref": "#/$defs/nullable_sha256"
+    },
+    "sanitized_public_input_bundle_reference": {
+      "$ref": "#/$defs/nullable_reference"
+    },
+    "sanitized_public_input_bundle_sha256": {
+      "$ref": "#/$defs/nullable_sha256"
+    },
+    "ordered_input_components": {
+      "type": "array",
+      "maxItems": 7,
+      "items": {
+        "$ref": "#/$defs/component"
+      }
+    },
+    "upstream_result_hashes": {
+      "type": "array",
+      "maxItems": 4,
+      "items": {
+        "$ref": "#/$defs/upstream_result"
+      }
+    },
+    "sanitized_request_payload": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 3000000
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "sanitized_request_payload_sha256": {
+      "$ref": "#/$defs/nullable_sha256"
+    },
+    "controls": {
+      "const": {
+        "request_count_max": 1,
+        "retry": false,
+        "fallback": false,
+        "substitution": false,
+        "json_extraction": false,
+        "json_repair": false,
+        "secret_persisted": false,
+        "authorization_header_persisted": false,
+        "hidden_reasoning_persisted": false
+      }
+    },
+    "effects": {
+      "const": {
+        "model_request_executed": false,
+        "runtime_started": false,
+        "agent_created": false,
+        "entity_created": false,
+        "permission_granted": false,
+        "evidence_truth_created": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "nullable_sha256": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullable_reference": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "component": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sequence",
+        "component_type",
+        "reference",
+        "sha256",
+        "byte_count"
+      ],
+      "properties": {
+        "sequence": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 7
+        },
+        "component_type": {
+          "enum": [
+            "ROOT_SEED",
+            "CUSTOMER_PROBLEM",
+            "ROLE_PROMPT",
+            "RESPONSE_SCHEMA",
+            "PUBLIC_INPUT_BUNDLE",
+            "VALIDATED_REUSE_PLAN",
+            "PRIOR_SESSION_RESPONSE"
+          ]
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "byte_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3000000
+        }
+      }
+    },
+    "upstream_result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_session_id",
+        "reference",
+        "sha256"
+      ],
+      "properties": {
+        "source_session_id": {
+          "type": "string",
+          "pattern": "^CE-G13-S0[1-4]$"
+        },
+        "reference": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        }
+      }
+    },
+    "s01_components": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "prefixItems": [
+        {
+          "properties": {
+            "sequence": {
+              "const": 1
+            },
+            "component_type": {
+              "const": "ROOT_SEED"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 2
+            },
+            "component_type": {
+              "const": "CUSTOMER_PROBLEM"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 3
+            },
+            "component_type": {
+              "const": "ROLE_PROMPT"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 4
+            },
+            "component_type": {
+              "const": "RESPONSE_SCHEMA"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 5
+            },
+            "component_type": {
+              "const": "PUBLIC_INPUT_BUNDLE"
+            }
+          }
+        }
+      ],
+      "items": false
+    },
+    "s02_s03_components": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "prefixItems": [
+        {
+          "properties": {
+            "sequence": {
+              "const": 1
+            },
+            "component_type": {
+              "const": "ROLE_PROMPT"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 2
+            },
+            "component_type": {
+              "const": "RESPONSE_SCHEMA"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 3
+            },
+            "component_type": {
+              "const": "PUBLIC_INPUT_BUNDLE"
+            }
+          }
+        }
+      ],
+      "items": false
+    },
+    "s04_components": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        {
+          "properties": {
+            "sequence": {
+              "const": 1
+            },
+            "component_type": {
+              "const": "ROLE_PROMPT"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 2
+            },
+            "component_type": {
+              "const": "RESPONSE_SCHEMA"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 3
+            },
+            "component_type": {
+              "const": "PUBLIC_INPUT_BUNDLE"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 4
+            },
+            "component_type": {
+              "const": "VALIDATED_REUSE_PLAN"
+            }
+          }
+        }
+      ],
+      "items": false
+    },
+    "s05_components": {
+      "type": "array",
+      "minItems": 7,
+      "maxItems": 7,
+      "prefixItems": [
+        {
+          "properties": {
+            "sequence": {
+              "const": 1
+            },
+            "component_type": {
+              "const": "ROLE_PROMPT"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 2
+            },
+            "component_type": {
+              "const": "RESPONSE_SCHEMA"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 3
+            },
+            "component_type": {
+              "const": "PUBLIC_INPUT_BUNDLE"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 4
+            },
+            "component_type": {
+              "const": "PRIOR_SESSION_RESPONSE"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 5
+            },
+            "component_type": {
+              "const": "PRIOR_SESSION_RESPONSE"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 6
+            },
+            "component_type": {
+              "const": "PRIOR_SESSION_RESPONSE"
+            }
+          }
+        },
+        {
+          "properties": {
+            "sequence": {
+              "const": 7
+            },
+            "component_type": {
+              "const": "PRIOR_SESSION_RESPONSE"
+            }
+          }
+        }
+      ],
+      "items": false
+    },
+    "s05_upstream": {
+      "type": "array",
+      "minItems": 4,
+      "maxItems": 4,
+      "prefixItems": [
+        {
+          "properties": {
+            "source_session_id": {
+              "const": "CE-G13-S01"
+            }
+          }
+        },
+        {
+          "properties": {
+            "source_session_id": {
+              "const": "CE-G13-S02"
+            }
+          }
+        },
+        {
+          "properties": {
+            "source_session_id": {
+              "const": "CE-G13-S03"
+            }
+          }
+        },
+        {
+          "properties": {
+            "source_session_id": {
+              "const": "CE-G13-S04"
+            }
+          }
+        }
+      ],
+      "items": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "NOT_EXECUTED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "prompt_reference": {
+            "type": "null"
+          },
+          "prompt_sha256": {
+            "type": "null"
+          },
+          "response_schema_reference": {
+            "type": "null"
+          },
+          "response_schema_sha256": {
+            "type": "null"
+          },
+          "source_snapshot_manifest_reference": {
+            "type": "null"
+          },
+          "source_snapshot_manifest_sha256": {
+            "type": "null"
+          },
+          "sanitized_public_input_bundle_reference": {
+            "type": "null"
+          },
+          "sanitized_public_input_bundle_sha256": {
+            "type": "null"
+          },
+          "ordered_input_components": {
+            "maxItems": 0
+          },
+          "upstream_result_hashes": {
+            "maxItems": 0
+          },
+          "sanitized_request_payload": {
+            "type": "null"
+          },
+          "sanitized_request_payload_sha256": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "CAPTURED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "prompt_reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "prompt_sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "response_schema_reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "response_schema_sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "source_snapshot_manifest_reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_snapshot_manifest_sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "sanitized_public_input_bundle_reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sanitized_public_input_bundle_sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "sanitized_request_payload": {
+            "type": "string",
+            "minLength": 2
+          },
+          "sanitized_request_payload_sha256": {
+            "$ref": "#/$defs/sha256"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "CAPTURED"
+          },
+          "session_id": {
+            "const": "CE-G13-S02"
+          }
+        },
+        "required": [
+          "status",
+          "session_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "role": {
+            "const": "ARCHITECTURE_COMPREHENSION_AGENT"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "CAPTURED"
+          },
+          "session_id": {
+            "const": "CE-G13-S03"
+          }
+        },
+        "required": [
+          "status",
+          "session_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "role": {
+            "const": "WEBSITE_ONLY_REUSE_PLANNER"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "CAPTURED"
+          },
+          "session_id": {
+            "const": "CE-G13-S01"
+          }
+        },
+        "required": [
+          "status",
+          "session_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "role": {
+            "const": "COLD_DISCOVERY_AGENT"
+          },
+          "ordered_input_components": {
+            "$ref": "#/$defs/s01_components"
+          },
+          "upstream_result_hashes": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "CAPTURED"
+          },
+          "session_id": {
+            "enum": [
+              "CE-G13-S02",
+              "CE-G13-S03"
+            ]
+          }
+        },
+        "required": [
+          "status",
+          "session_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "ordered_input_components": {
+            "$ref": "#/$defs/s02_s03_components"
+          },
+          "upstream_result_hashes": {
+            "maxItems": 0
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "CAPTURED"
+          },
+          "session_id": {
+            "const": "CE-G13-S04"
+          }
+        },
+        "required": [
+          "status",
+          "session_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "role": {
+            "const": "AGENT_RECOMMENDER"
+          },
+          "ordered_input_components": {
+            "$ref": "#/$defs/s04_components"
+          },
+          "upstream_result_hashes": {
+            "minItems": 1,
+            "maxItems": 1,
+            "prefixItems": [
+              {
+                "properties": {
+                  "source_session_id": {
+                    "const": "CE-G13-S03"
+                  }
+                }
+              }
+            ],
+            "items": false
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "CAPTURED"
+          },
+          "session_id": {
+            "const": "CE-G13-S05"
+          }
+        },
+        "required": [
+          "status",
+          "session_id"
+        ]
+      },
+      "then": {
+        "properties": {
+          "role": {
+            "const": "BOUNDARY_AND_NON_MATCH_AUDITOR"
+          },
+          "ordered_input_components": {
+            "$ref": "#/$defs/s05_components"
+          },
+          "upstream_result_hashes": {
+            "$ref": "#/$defs/s05_upstream"
+          }
+        }
+      }
+    }
+  ]
+}

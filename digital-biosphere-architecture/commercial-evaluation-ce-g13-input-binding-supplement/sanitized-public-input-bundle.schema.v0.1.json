@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-sanitized-public-input-bundle.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Sanitized Public Input Bundle v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "bundle_id",
+    "status",
+    "source_snapshot_manifest_reference",
+    "source_snapshot_manifest_sha256",
+    "sanitization_profile_reference",
+    "sanitization_profile_sha256",
+    "resources",
+    "totals",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./sanitized-public-input-bundle.schema.v0.1.json"
+    },
+    "bundle_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "status": {
+      "enum": [
+        "NOT_EXECUTED",
+        "CAPTURED",
+        "FAIL_CLOSED"
+      ]
+    },
+    "source_snapshot_manifest_reference": {
+      "$ref": "#/$defs/nullable_reference"
+    },
+    "source_snapshot_manifest_sha256": {
+      "$ref": "#/$defs/nullable_sha256"
+    },
+    "sanitization_profile_reference": {
+      "const": "sanitization-profile.candidate.v0.1.json"
+    },
+    "sanitization_profile_sha256": {
+      "$ref": "#/$defs/sha256"
+    },
+    "resources": {
+      "type": "array",
+      "maxItems": 16,
+      "items": {
+        "$ref": "#/$defs/resource"
+      }
+    },
+    "totals": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "admitted_resources",
+        "raw_body_bytes",
+        "sanitized_text_bytes"
+      ],
+      "properties": {
+        "admitted_resources": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 16
+        },
+        "raw_body_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 3000000
+        },
+        "sanitized_text_bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 2000000
+        }
+      }
+    },
+    "effects": {
+      "const": {
+        "public_content_is_evidence_truth": false,
+        "authorization_header_persisted": false,
+        "cookie_persisted": false,
+        "api_key_persisted": false,
+        "raw_ip_persisted": false,
+        "customer_data_persisted": false,
+        "binary_admitted_to_model": false,
+        "runtime_started": false,
+        "agent_created": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "nullable_sha256": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/sha256"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "nullable_reference": {
+      "anyOf": [
+        {
+          "type": "string",
+          "minLength": 1
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "resource": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resource_id",
+        "source_url",
+        "final_url",
+        "retrieval_request_id",
+        "raw_body_sha256",
+        "raw_byte_count",
+        "content_type",
+        "sanitization_profile",
+        "sanitized_text",
+        "sanitized_text_sha256",
+        "sanitized_byte_count",
+        "admission_order",
+        "model_input_sessions"
+      ],
+      "properties": {
+        "resource_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://redcrag\\.cn/"
+        },
+        "final_url": {
+          "type": "string",
+          "format": "uri",
+          "pattern": "^https://redcrag\\.cn/"
+        },
+        "retrieval_request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "raw_body_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "raw_byte_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 3000000
+        },
+        "content_type": {
+          "enum": [
+            "text/html",
+            "text/plain",
+            "application/json",
+            "application/ld+json",
+            "application/xml",
+            "text/xml"
+          ]
+        },
+        "sanitization_profile": {
+          "const": "TITMAS-CE-G13-SANITIZATION-PROFILE-0.1"
+        },
+        "sanitized_text": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 500000
+        },
+        "sanitized_text_sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "sanitized_byte_count": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 500000
+        },
+        "admission_order": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 16
+        },
+        "model_input_sessions": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 5,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "pattern": "^CE-G13-S0[1-5]$"
+          }
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "NOT_EXECUTED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "source_snapshot_manifest_reference": {
+            "type": "null"
+          },
+          "source_snapshot_manifest_sha256": {
+            "type": "null"
+          },
+          "resources": {
+            "maxItems": 0
+          },
+          "totals": {
+            "const": {
+              "admitted_resources": 0,
+              "raw_body_bytes": 0,
+              "sanitized_text_bytes": 0
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "CAPTURED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "source_snapshot_manifest_reference": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_snapshot_manifest_sha256": {
+            "$ref": "#/$defs/sha256"
+          },
+          "resources": {
+            "minItems": 1
+          }
+        }
+      }
+    }
+  ]
+}

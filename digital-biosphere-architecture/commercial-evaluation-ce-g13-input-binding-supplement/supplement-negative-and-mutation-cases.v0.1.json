@@ -1,0 +1,242 @@
+{
+  "document_id": "TITMAS-CE-G13-INPUT-BINDING-SUPPLEMENT-NEGATIVE-AND-MUTATION-CASES-0.1",
+  "version": "0.1.0",
+  "status": "PROPOSED_NOT_AUTHORIZED_NOT_EXECUTED",
+  "cases": [
+    {
+      "case_id": "SUP-NEG-001",
+      "target": "BASE_PACKAGE",
+      "mutation": "base_package_file_changed",
+      "expected": "REJECT",
+      "protected_boundary": "IMMUTABLE_BASE"
+    },
+    {
+      "case_id": "SUP-NEG-002",
+      "target": "SUPPLEMENT_PACKAGE",
+      "mutation": "missing_authorized_file",
+      "expected": "REJECT",
+      "protected_boundary": "EXACT_SCOPE"
+    },
+    {
+      "case_id": "SUP-NEG-003",
+      "target": "SUPPLEMENT_PACKAGE",
+      "mutation": "extra_unauthorized_file",
+      "expected": "REJECT",
+      "protected_boundary": "EXACT_SCOPE"
+    },
+    {
+      "case_id": "SUP-NEG-004",
+      "target": "SUPPLEMENT_PACKAGE",
+      "mutation": "executable_or_network_client_present",
+      "expected": "REJECT",
+      "protected_boundary": "CONTRACT_NOT_IMPLEMENTATION"
+    },
+    {
+      "case_id": "SUP-NEG-005",
+      "target": "SUPPLEMENT_MANIFEST",
+      "mutation": "manifest_hashes_itself",
+      "expected": "REJECT",
+      "protected_boundary": "NON_RECURSIVE_HASHING"
+    },
+    {
+      "case_id": "SUP-NEG-006",
+      "target": "SUPPLEMENT_MANIFEST",
+      "mutation": "file_hash_or_byte_count_mismatch",
+      "expected": "REJECT",
+      "protected_boundary": "INTEGRITY"
+    },
+    {
+      "case_id": "SUP-NEG-007",
+      "target": "JSON",
+      "mutation": "duplicate_object_key",
+      "expected": "REJECT",
+      "protected_boundary": "UNAMBIGUOUS_DATA"
+    },
+    {
+      "case_id": "SUP-NEG-008",
+      "target": "SANITIZATION_PROFILE",
+      "mutation": "accept_encoding_not_identity",
+      "expected": "REJECT",
+      "protected_boundary": "DETERMINISTIC_TRANSPORT"
+    },
+    {
+      "case_id": "SUP-NEG-009",
+      "target": "SANITIZATION_PROFILE",
+      "mutation": "charset_fallback_enabled",
+      "expected": "REJECT",
+      "protected_boundary": "STRICT_UTF8"
+    },
+    {
+      "case_id": "SUP-NEG-010",
+      "target": "SANITIZATION_PROFILE",
+      "mutation": "dynamic_redaction_or_model_rewrite_enabled",
+      "expected": "REJECT",
+      "protected_boundary": "DETERMINISTIC_SANITIZATION"
+    },
+    {
+      "case_id": "SUP-NEG-011",
+      "target": "SANITIZATION_PROFILE",
+      "mutation": "binary_model_input_enabled",
+      "expected": "REJECT",
+      "protected_boundary": "TEXT_ONLY_MODEL_INPUT"
+    },
+    {
+      "case_id": "SUP-NEG-012",
+      "target": "PUBLIC_INPUT_BUNDLE",
+      "mutation": "sanitized_text_missing",
+      "expected": "REJECT",
+      "protected_boundary": "REPRODUCIBLE_INPUT"
+    },
+    {
+      "case_id": "SUP-NEG-013",
+      "target": "PUBLIC_INPUT_BUNDLE",
+      "mutation": "raw_body_hash_mismatch",
+      "expected": "REJECT",
+      "protected_boundary": "RAW_CONTENT_BINDING"
+    },
+    {
+      "case_id": "SUP-NEG-014",
+      "target": "PUBLIC_INPUT_BUNDLE",
+      "mutation": "sanitized_text_hash_or_byte_count_mismatch",
+      "expected": "REJECT",
+      "protected_boundary": "SANITIZED_CONTENT_BINDING"
+    },
+    {
+      "case_id": "SUP-NEG-015",
+      "target": "PUBLIC_INPUT_BUNDLE",
+      "mutation": "duplicate_or_non_contiguous_admission_order",
+      "expected": "REJECT",
+      "protected_boundary": "ORDER_BINDING"
+    },
+    {
+      "case_id": "SUP-NEG-016",
+      "target": "PUBLIC_INPUT_BUNDLE",
+      "mutation": "aggregate_raw_or_sanitized_budget_exceeded",
+      "expected": "REJECT",
+      "protected_boundary": "BOUNDED_INPUT"
+    },
+    {
+      "case_id": "SUP-NEG-017",
+      "target": "MODEL_INPUT_ENVELOPE",
+      "mutation": "prompt_hash_mismatch",
+      "expected": "REJECT",
+      "protected_boundary": "PROMPT_BINDING"
+    },
+    {
+      "case_id": "SUP-NEG-018",
+      "target": "MODEL_INPUT_ENVELOPE",
+      "mutation": "response_schema_hash_mismatch",
+      "expected": "REJECT",
+      "protected_boundary": "SCHEMA_BINDING"
+    },
+    {
+      "case_id": "SUP-NEG-019",
+      "target": "MODEL_INPUT_ENVELOPE",
+      "mutation": "public_input_bundle_hash_mismatch",
+      "expected": "REJECT",
+      "protected_boundary": "SNAPSHOT_BINDING"
+    },
+    {
+      "case_id": "SUP-NEG-020",
+      "target": "MODEL_INPUT_ENVELOPE",
+      "mutation": "component_missing_reordered_or_repeated",
+      "expected": "REJECT",
+      "protected_boundary": "ORDERED_COMPONENTS"
+    },
+    {
+      "case_id": "SUP-NEG-021",
+      "target": "S04_MODEL_INPUT_ENVELOPE",
+      "mutation": "validated_reuse_plan_missing_or_unbound",
+      "expected": "REJECT",
+      "protected_boundary": "S04_DEPENDENCY"
+    },
+    {
+      "case_id": "SUP-NEG-022",
+      "target": "S05_MODEL_INPUT_ENVELOPE",
+      "mutation": "one_prior_session_response_missing",
+      "expected": "REJECT",
+      "protected_boundary": "S05_DEPENDENCY"
+    },
+    {
+      "case_id": "SUP-NEG-023",
+      "target": "S05_MODEL_INPUT_ENVELOPE",
+      "mutation": "prior_session_responses_wrong_order",
+      "expected": "REJECT",
+      "protected_boundary": "S05_ORDER"
+    },
+    {
+      "case_id": "SUP-NEG-024",
+      "target": "MODEL_INPUT_ENVELOPE",
+      "mutation": "sanitized_request_payload_hash_mismatch",
+      "expected": "REJECT",
+      "protected_boundary": "REQUEST_BODY_BINDING"
+    },
+    {
+      "case_id": "SUP-NEG-025",
+      "target": "MODEL_INPUT_ENVELOPE",
+      "mutation": "authorization_cookie_api_key_or_hidden_reasoning_persisted",
+      "expected": "REJECT",
+      "protected_boundary": "NO_SECRETS"
+    },
+    {
+      "case_id": "SUP-NEG-026",
+      "target": "MODEL_INPUT_ENVELOPE",
+      "mutation": "requested_model_not_qwen3_7_max",
+      "expected": "REJECT",
+      "protected_boundary": "MODEL_IDENTITY"
+    },
+    {
+      "case_id": "SUP-NEG-027",
+      "target": "EXECUTION_OUTPUT_MANIFEST",
+      "mutation": "file_count_not_26_or_entry_count_not_25",
+      "expected": "REJECT",
+      "protected_boundary": "OUTPUT_SCOPE"
+    },
+    {
+      "case_id": "SUP-NEG-028",
+      "target": "EXECUTION_OUTPUT_MANIFEST",
+      "mutation": "missing_extra_duplicate_or_renamed_path",
+      "expected": "REJECT",
+      "protected_boundary": "OUTPUT_ALLOWLIST"
+    },
+    {
+      "case_id": "SUP-NEG-029",
+      "target": "EXECUTION_OUTPUT_MANIFEST",
+      "mutation": "manifest_includes_its_own_hash",
+      "expected": "REJECT",
+      "protected_boundary": "NON_RECURSIVE_OUTPUT_HASHING"
+    },
+    {
+      "case_id": "SUP-NEG-030",
+      "target": "EXECUTION_OUTCOME_POLICY",
+      "mutation": "conditional_remediation_used_as_execution_status",
+      "expected": "REJECT",
+      "protected_boundary": "STATUS_SEPARATION"
+    },
+    {
+      "case_id": "SUP-NEG-031",
+      "target": "EXECUTION_OUTCOME_POLICY",
+      "mutation": "failed_result_repaired_or_overwritten_to_pass",
+      "expected": "REJECT",
+      "protected_boundary": "FAILURE_RETENTION"
+    },
+    {
+      "case_id": "SUP-NEG-032",
+      "target": "EXECUTION_OUTCOME_POLICY",
+      "mutation": "pass_claims_customer_adoption_or_production",
+      "expected": "REJECT",
+      "protected_boundary": "NO_COMMERCIAL_ELEVATION"
+    }
+  ],
+  "effects": {
+    "cases_executed": 0,
+    "network_requests": 0,
+    "credential_reads": 0,
+    "model_requests": 0,
+    "runtime_starts": 0,
+    "agent_instances": 0,
+    "entity_instances": 0,
+    "permission_grants": 0,
+    "evidence_truth_objects": 0
+  }
+}

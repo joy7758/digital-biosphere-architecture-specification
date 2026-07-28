@@ -1,0 +1,198 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-execution-output-manifest.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Execution Output Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "manifest_id",
+    "version",
+    "status",
+    "manifest_path",
+    "hash_rule",
+    "exact_file_count",
+    "manifest_entries",
+    "files",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./execution-output-manifest.schema.v0.1.json"
+    },
+    "manifest_id": {
+      "const": "TITMAS-CE-G13-EXECUTION-OUTPUT-MANIFEST-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "enum": [
+        "NOT_EXECUTED",
+        "CAPTURED",
+        "FAIL_CLOSED"
+      ]
+    },
+    "manifest_path": {
+      "const": "execution-output-manifest.v0.1.json"
+    },
+    "hash_rule": {
+      "const": "SHA256_EACH_OF_25_OTHER_FILES_MANIFEST_EXCLUDES_ITSELF_EXACT_FILE_BYTES"
+    },
+    "exact_file_count": {
+      "const": 26
+    },
+    "manifest_entries": {
+      "const": 25
+    },
+    "files": {
+      "type": "array",
+      "minItems": 25,
+      "maxItems": 25,
+      "items": {
+        "$ref": "#/$defs/file"
+      }
+    },
+    "effects": {
+      "const": {
+        "manifest_is_evidence_truth": false,
+        "customer_adoption": false,
+        "commercial_offering": false,
+        "certification": false,
+        "production_ready": false,
+        "authority_granted": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256",
+        "kind"
+      ],
+      "properties": {
+        "path": {
+          "enum": [
+            "README.md",
+            "execution-baseline-receipt.v0.1.json",
+            "public-snapshot-manifest.v0.1.json",
+            "retrieval-receipt.v0.1.json",
+            "sanitized-public-input-bundle.v0.1.json",
+            "model-input-envelope-s01.v0.1.json",
+            "model-input-envelope-s02.v0.1.json",
+            "model-input-envelope-s03.v0.1.json",
+            "model-input-envelope-s04.v0.1.json",
+            "model-input-envelope-s05.v0.1.json",
+            "request-capture-s01.v0.1.json",
+            "request-capture-s02.v0.1.json",
+            "request-capture-s03.v0.1.json",
+            "request-capture-s04.v0.1.json",
+            "request-capture-s05.v0.1.json",
+            "session-response-s01.v0.1.json",
+            "session-response-s02.v0.1.json",
+            "session-response-s03.v0.1.json",
+            "session-response-s04.v0.1.json",
+            "session-response-s05.v0.1.json",
+            "reuse-plan-validation-result.v0.1.json",
+            "technical-reuse-receipt.v0.1.json",
+            "failure-ledger.v0.1.json",
+            "composite-result.v0.1.json",
+            "TITMAS-CE-G13-PUBLIC-AGENT-CUSTOMER-DISCOVERY-AND-REUSE-VALIDATION-REPORT-v0.1.md"
+          ]
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 5000000
+        },
+        "sha256": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/sha256"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "kind": {
+          "enum": [
+            "DOCUMENT",
+            "RECEIPT",
+            "MANIFEST",
+            "INPUT_BUNDLE",
+            "MODEL_INPUT_ENVELOPE",
+            "REQUEST_CAPTURE",
+            "SESSION_RESPONSE",
+            "VALIDATION_RESULT",
+            "FAILURE_LEDGER",
+            "COMPOSITE_RESULT"
+          ]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "const": "NOT_EXECUTED"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "files": {
+            "items": {
+              "properties": {
+                "bytes": {
+                  "const": 0
+                },
+                "sha256": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "status": {
+            "enum": [
+              "CAPTURED",
+              "FAIL_CLOSED"
+            ]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "files": {
+            "items": {
+              "properties": {
+                "bytes": {
+                  "minimum": 1
+                },
+                "sha256": {
+                  "$ref": "#/$defs/sha256"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

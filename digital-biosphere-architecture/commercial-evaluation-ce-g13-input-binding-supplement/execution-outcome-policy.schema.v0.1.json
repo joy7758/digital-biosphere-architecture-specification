@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-execution-outcome-policy.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Execution Outcome Policy v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "policy_id",
+    "version",
+    "status",
+    "execution_statuses",
+    "governance_interpretation_statuses",
+    "rules",
+    "claims",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./execution-outcome-policy.schema.v0.1.json"
+    },
+    "policy_id": {
+      "const": "TITMAS-CE-G13-EXECUTION-OUTCOME-POLICY-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "FROZEN_CANDIDATE_NOT_VALIDATED_NOT_EXECUTED"
+    },
+    "execution_statuses": {
+      "const": [
+        "NOT_EXECUTED",
+        "PASS",
+        "FAIL_CLOSED"
+      ]
+    },
+    "governance_interpretation_statuses": {
+      "const": [
+        "CONDITIONAL_REMEDIATION_REQUIRED"
+      ]
+    },
+    "rules": {
+      "const": {
+        "conditional_remediation_is_execution_status": false,
+        "conditional_remediation_requires_preserved_fail_closed_result": true,
+        "failed_result_may_be_edited_to_pass": false,
+        "failed_result_may_be_overwritten": false,
+        "retry_may_replace_failed_result": false,
+        "new_attempt_requires_new_governance_cycle": true,
+        "pass_requires_frozen_scoring_rules": true,
+        "critical_boundary_failure_forces_fail_closed": true
+      }
+    },
+    "claims": {
+      "const": {
+        "pass_means": "BOUNDED_PUBLIC_AGENT_DISCOVERY_AND_REUSE_VALIDATION_ONLY",
+        "customer_adoption_verified": false,
+        "market_demand_verified": false,
+        "cross_provider_generality_verified": false,
+        "continuous_availability_verified": false,
+        "commercial_offering": false,
+        "certification": false,
+        "standard_ready": false,
+        "production_ready": false
+      }
+    },
+    "effects": {
+      "const": {
+        "execution_performed": false,
+        "decision_created": false,
+        "authorization_created": false,
+        "permission_granted": false,
+        "authority_elevated": false
+      }
+    }
+  }
+}

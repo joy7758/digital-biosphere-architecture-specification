@@ -1,0 +1,132 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/ce-g13-input-binding-supplement-package-manifest.schema.v0.1.json",
+  "title": "TITMAS CE-G13 Input Binding Supplement Package Manifest v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "document_id",
+    "version",
+    "status",
+    "base_package",
+    "hash_rule",
+    "files",
+    "counts",
+    "effects"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "./supplement-package-manifest.schema.v0.1.json"
+    },
+    "document_id": {
+      "const": "TITMAS-CE-G13-INPUT-BINDING-SUPPLEMENT-PACKAGE-MANIFEST-0.1"
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "OFFLINE_INPUT_BINDING_SUPPLEMENT_CANDIDATE_NOT_VALIDATED_NOT_EXECUTED"
+    },
+    "base_package": {
+      "const": {
+        "directory": "../commercial-evaluation-ce-g13-offline-contract",
+        "exact_file_count": 28,
+        "manifest_sha256": "be7b0db4f0f349f8898f749e8ee0f4bd6a3407c79acbe33b415da081ff9ea9ed",
+        "mutation_authorized": false
+      }
+    },
+    "hash_rule": {
+      "const": "SHA256_EACH_OF_15_OTHER_FILES_MANIFEST_EXCLUDES_ITSELF_EXACT_FILE_BYTES"
+    },
+    "files": {
+      "type": "array",
+      "minItems": 15,
+      "maxItems": 15,
+      "items": {
+        "$ref": "#/$defs/file"
+      }
+    },
+    "counts": {
+      "const": {
+        "total_files": 16,
+        "manifest_entries": 15,
+        "json_files": 14,
+        "markdown_files": 2,
+        "executable_files": 0
+      }
+    },
+    "effects": {
+      "const": {
+        "base_package_mutated": false,
+        "offline_validation_executed": false,
+        "network_requests": 0,
+        "credential_reads": 0,
+        "model_requests": 0,
+        "technical_reuse_runs": 0,
+        "runtime_starts": 0,
+        "agent_instances": 0,
+        "entity_instances": 0,
+        "permission_grants": 0,
+        "evidence_truth_objects": 0,
+        "customer_adoption": false,
+        "commercial_offering": false,
+        "production_ready": false
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "bytes",
+        "sha256",
+        "kind"
+      ],
+      "properties": {
+        "path": {
+          "enum": [
+            "README.md",
+            "controller-input-binding-supplement.v0.1.md",
+            "sanitization-profile.schema.v0.1.json",
+            "sanitization-profile.candidate.v0.1.json",
+            "sanitized-public-input-bundle.schema.v0.1.json",
+            "sanitized-public-input-bundle.template.v0.1.json",
+            "model-input-envelope.schema.v0.1.json",
+            "model-input-envelope.template.v0.1.json",
+            "execution-output-manifest.schema.v0.1.json",
+            "execution-output-manifest.template.v0.1.json",
+            "execution-outcome-policy.schema.v0.1.json",
+            "execution-outcome-policy.candidate.v0.1.json",
+            "supplement-package-manifest.schema.v0.1.json",
+            "supplement-offline-validation-plan.v0.1.json",
+            "supplement-negative-and-mutation-cases.v0.1.json"
+          ]
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "kind": {
+          "enum": [
+            "DOCUMENT",
+            "SCHEMA",
+            "CANDIDATE",
+            "TEMPLATE",
+            "PLAN",
+            "CATALOG"
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "$schema": "./sanitization-profile.schema.v0.1.json",
+  "profile_id": "TITMAS-CE-G13-SANITIZATION-PROFILE-0.1",
+  "version": "0.1.0",
+  "status": "FROZEN_CANDIDATE_NOT_VALIDATED_NOT_EXECUTED",
+  "transport": {
+    "scheme": "https",
+    "origin": "https://redcrag.cn",
+    "same_origin_only": true,
+    "same_origin_redirects_only": true,
+    "accept_encoding": "identity",
+    "encoded_entity_body_allowed": false,
+    "http_get_requests_max": 16,
+    "decoded_entity_body_bytes_max": 3000000
+  },
+  "content_admission": {
+    "allowed_media_types": [
+      "text/html",
+      "text/plain",
+      "application/json",
+      "application/ld+json",
+      "application/xml",
+      "text/xml"
+    ],
+    "charset": "utf-8",
+    "charset_absent_means": "STRICT_UTF8_PROBE",
+    "charset_fallback_allowed": false,
+    "binary_model_input_allowed": false,
+    "single_resource_sanitized_bytes_max": 500000,
+    "aggregate_sanitized_bytes_max": 2000000
+  },
+  "normalization": {
+    "decode": "STRICT_UTF8",
+    "line_endings": "CRLF_AND_CR_TO_LF",
+    "unicode_normalization": "NONE",
+    "html_extraction": "NONE",
+    "json_reserialization": "NONE",
+    "whitespace_trimming": "NONE",
+    "dynamic_redaction": "NONE",
+    "model_rewriting": "NONE",
+    "final_newline_rewrite": "NONE",
+    "persist_exact_sanitized_text": true
+  },
+  "rejection_rules": {
+    "nul_byte": "REJECT",
+    "forbidden_control_character": "REJECT",
+    "invalid_utf8": "REJECT",
+    "unsupported_media_type": "REJECT",
+    "unsupported_charset": "REJECT",
+    "encoded_entity_body": "REJECT",
+    "authorization_header": "REJECT",
+    "cookie_header": "REJECT",
+    "api_key_value": "REJECT",
+    "customer_data": "REJECT",
+    "private_file": "REJECT",
+    "hidden_answer_key": "REJECT"
+  },
+  "hash_rules": {
+    "raw_body": "SHA256_HTTP_DECODED_ENTITY_BODY_BYTES",
+    "sanitized_text": "SHA256_UTF8_BYTES_OF_PERSISTED_JSON_STRING_VALUE",
+    "request_payload": "SHA256_UTF8_BYTES_OF_PERSISTED_JSON_STRING_VALUE",
+    "file": "SHA256_EXACT_PERSISTED_FILE_BYTES_NO_REWRITE"
+  },
+  "effects": {
+    "network_request_executed": false,
+    "credential_read": false,
+    "model_request_executed": false,
+    "runtime_started": false,
+    "agent_created": false,
+    "permission_granted": false,
+    "evidence_truth_created": false
+  }
+}
