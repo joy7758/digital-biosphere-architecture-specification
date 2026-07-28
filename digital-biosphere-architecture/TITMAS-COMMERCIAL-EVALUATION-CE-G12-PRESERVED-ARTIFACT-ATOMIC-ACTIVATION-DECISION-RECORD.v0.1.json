@@ -1,0 +1,221 @@
+{
+  "record_type": "TITMAS_CE_G12_PRESERVED_ARTIFACT_ATOMIC_ACTIVATION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PRESERVED-ARTIFACT-ATOMIC-ACTIVATION",
+  "version": "0.1.0",
+  "status": "AUTHORIZE_ONE_REVERIFIED_PRESERVED_ARTIFACT_ATOMIC_ACTIVATION_ONLY_IF_QUALIFYING_DECISION_REVIEW_AND_REMOTE_VERIFICATION",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G12-PRESERVED-ARTIFACT-ATOMIC-ACTIVATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "ba1ae66715f31467e32a5b54aece5e7ef4e716e93f48f7d2ddf9fc6dd9f96cc1",
+  "recommendation_review_reference": "TITMAS-CE-G12-PRESERVED-ARTIFACT-ATOMIC-ACTIVATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "2df3565d591e90c31f501fc4279c143ed6b5e6b58af6cd5512cd40b94dcada96",
+  "recommendation_commit": "54d6fcfe4af8fe14a1206d78e1fc33d4fe56e11d",
+  "recommendation_remote_verified": true,
+  "selected_option": "A",
+  "primary_repository": "digital-biosphere-architecture",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "evidence_contract": {
+    "failed_deployment_result_reference": "commercial-evaluation-fresh-candidate/ce-g12-portable-candidate-atomic-deployment-result.v0.1.json",
+    "failed_deployment_result_sha256": "7997b708cd520574f480221c8b0787920d654cecf888fe12db1ca797d1e32974",
+    "route_classification_result_reference": "commercial-evaluation-fresh-candidate/ce-g12-localhost-route-response-classification-result.v0.1.json",
+    "route_classification_result_sha256": "13dd40ebe01124f5d1ee1ae4b79158d4177a033a440add0a69d78b8c869757ba",
+    "route_classification_report_reference": "TITMAS-CE-G12-LOCALHOST-ROUTE-RESPONSE-CLASSIFICATION-REPORT-v0.1.md",
+    "route_classification_report_sha256": "6bb14d0ddcd37eca61ca38da6c2ad5f8dd31f95ec05e8c6d4cc6e338fa41d267",
+    "evidence_commit": "cfb20dc8d89465af5ae4ff60612c639c06bab14a",
+    "canonical_directory_redirects_proven": true,
+    "artifact_reuse_authorized_by_evidence": false
+  },
+  "preserved_path_contract": {
+    "source_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "archive_bytes": 979463,
+    "archive_sha256": "f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "manifest_sha256": "f0e42b7f0be3c36f201517d68bef42ec365809261ed46d4fc6af74949a397a60",
+    "release_id": "c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "artifact_path": "/srv/tmai/artifacts/c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7.tar.gz",
+    "final_path": "/srv/tmai/releases/c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "expected_pre_switch_current": "/srv/tmai/releases/ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "stable_fallback": "/srv/tmai/releases/7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "nginx_config": "/etc/nginx/conf.d/redcrag.cn.conf",
+    "nginx_config_sha256": "ddbd14b27abcce59330d86156fc0d42ea2ebaf933f3bc1447eba0fc9c13b29b5"
+  },
+  "fresh_reverification_contract": {
+    "artifact_type": "regular_file",
+    "artifact_bytes_and_sha_exact": true,
+    "final_type": "directory",
+    "final_source_and_manifest_exact": true,
+    "raw_members_expected": 87,
+    "manifest_files_expected": 65,
+    "actual_files_expected": 66,
+    "manifest_coverage_required": true,
+    "manifest_file_hashes_required": 65,
+    "unexpected_symlinks_or_specials_allowed": false,
+    "directory_owner_group_mode": "root:root:0755",
+    "file_owner_group_mode": "root:root:0644",
+    "nginx_config_hash_exact": true,
+    "rollback_readable": true,
+    "historical_pass_treated_as_current_truth": false
+  },
+  "canonical_route_contract": [
+    {
+      "non_canonical": "/en",
+      "initial_status": 301,
+      "location": "https://redcrag.cn/en/",
+      "canonical": "/en/",
+      "canonical_status": 200,
+      "expected_file": "en/index.html"
+    },
+    {
+      "non_canonical": "/status",
+      "initial_status": 301,
+      "location": "https://redcrag.cn/status/",
+      "canonical": "/status/",
+      "canonical_status": 200,
+      "expected_file": "status/index.html"
+    },
+    {
+      "non_canonical": "/en/status",
+      "initial_status": 301,
+      "location": "https://redcrag.cn/en/status/",
+      "canonical": "/en/status/",
+      "canonical_status": 200,
+      "expected_file": "en/status/index.html"
+    }
+  ],
+  "exact_sequence": [
+    {
+      "id": "ACT-D01",
+      "action": "Require local and remote governance heads to equal the commit containing this Decision and exact qwen3.7-max Decision review."
+    },
+    {
+      "id": "ACT-D02",
+      "action": "Resolve exact ssh alias mapping once without recording credential paths."
+    },
+    {
+      "id": "ACT-D03",
+      "action": "Open exactly one strict-host-key SSH session and require current to equal expected pre-switch current."
+    },
+    {
+      "id": "ACT-D04",
+      "action": "Fresh reverify preserved artifact, final tree, manifest coverage/hashes, ownership/modes, nginx config hash and rollback readability."
+    },
+    {
+      "id": "ACT-D05",
+      "action": "Run nginx -t exactly once without reload."
+    },
+    {
+      "id": "ACT-D06",
+      "action": "Recheck current compare-and-swap condition, create one temporary symlink and atomically switch current to preserved final."
+    },
+    {
+      "id": "ACT-D07",
+      "action": "Validate root and three directory-route pairs using non-follow, follow and canonical-direct localhost HTTPS requests and exact final-tree hashes."
+    },
+    {
+      "id": "ACT-D08",
+      "action": "On post-switch failure, atomically rollback to captured pre-switch current once and verify."
+    },
+    {
+      "id": "ACT-D09",
+      "action": "Emit one bounded activation receipt, close the session and do not retry."
+    },
+    {
+      "id": "ACT-D10",
+      "action": "Generate, commit and push only one Activation Result and one Report."
+    }
+  ],
+  "result_contract": {
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-preserved-artifact-atomic-activation-result.v0.1.json",
+    "report_reference": "TITMAS-CE-G12-PRESERVED-ARTIFACT-ATOMIC-ACTIVATION-REPORT-v0.1.md",
+    "success_status": "PASS_REVERIFIED_PRESERVED_ARTIFACT_ATOMIC_ACTIVATION_NO_NEW_PRODUCT_RELEASE_AUTHORIZED",
+    "failure_status": "FAIL_CLOSED_REVERIFIED_PRESERVED_ARTIFACT_ATOMIC_ACTIVATION_NO_NEW_PRODUCT_RELEASE_AUTHORIZED"
+  },
+  "execution_authorization": {
+    "decision_review_request_authorized": true,
+    "activation_authorized_if_review_qualifies_and_decision_remote_verified": true,
+    "one_ssh_config_resolution": true,
+    "one_ssh_session": true,
+    "server_reads": true,
+    "preserved_artifact_reuse": true,
+    "preserved_final_tree_reuse": true,
+    "archive_transfer": false,
+    "archive_extraction": false,
+    "artifact_or_release_creation": false,
+    "nginx_test": true,
+    "nginx_reload": false,
+    "atomic_current_switch": true,
+    "localhost_route_checks": true,
+    "public_external_requests": false,
+    "one_in_session_rollback": true,
+    "cleanup_or_repair": false,
+    "new_product_release": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "nginx_config_change": false,
+    "certificate_change": false,
+    "security_config_change": false,
+    "dns_change": false,
+    "dbos_change": false,
+    "saee_change": false,
+    "path_scoped_result_commit_and_push": true
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "local_ssh_config_resolutions": 1,
+    "ssh_sessions": 1,
+    "server_read_commands": 12,
+    "archive_transfers": 0,
+    "archive_extractions": 0,
+    "artifact_or_release_creations": 0,
+    "nginx_tests": 1,
+    "nginx_reloads": 0,
+    "forward_switches": 1,
+    "rollback_switches": 1,
+    "localhost_route_requests": 10,
+    "public_external_requests": 0,
+    "cleanups": 0,
+    "repairs": 0,
+    "retries": 0,
+    "network_fallbacks": 0,
+    "new_product_releases": 0,
+    "result_artifacts": 2,
+    "result_commits": 1,
+    "result_pushes": 1
+  },
+  "stop_conditions": [
+    "DECISION_OR_REVIEW_NOT_REMOTE_VERIFIED",
+    "RETURNED_MODEL_NOT_EXACT_QWEN3_7_MAX",
+    "DIRECT_JSON_OR_CONTRACT_INVALID",
+    "DECISION_REVIEW_NOT_QUALIFYING",
+    "SSH_G_ALIAS_MAPPING_DIFFERS_OR_IDENTITYFILE_MISSING",
+    "SSH_AUTH_OR_STRICT_HOST_KEY_FAILURE",
+    "CURRENT_TARGET_DRIFT",
+    "ARTIFACT_BYTES_OR_HASH_DRIFT",
+    "FINAL_SOURCE_MANIFEST_COVERAGE_FILE_HASH_OWNER_MODE_OR_SPECIAL_FAILURE",
+    "NGINX_CONFIG_HASH_DRIFT_OR_NGINX_TEST_FAILURE",
+    "ROLLBACK_UNREADABLE",
+    "CANONICAL_ROUTE_CONTRACT_FAILURE_REQUIRES_ROLLBACK",
+    "ROLLBACK_FAILURE",
+    "TRANSFER_EXTRACTION_CREATION_CLEANUP_REPAIR_SECOND_SESSION_RETRY_OR_FALLBACK_REQUIRED",
+    "CONFIG_CERTIFICATE_SECURITY_DNS_DBOS_SAEE_OR_STATUS_ELEVATION_REQUIRED"
+  ],
+  "effects": {
+    "decision_recorded": true,
+    "decision_review_complete": false,
+    "activation_authorized_after_qualifying_review_and_remote_verification": true,
+    "execution_started": false,
+    "artifact_reuse_executed": false,
+    "current_switch_executed": false,
+    "public_site_changed": false,
+    "activation_pass": false,
+    "new_product_release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  }
+}
