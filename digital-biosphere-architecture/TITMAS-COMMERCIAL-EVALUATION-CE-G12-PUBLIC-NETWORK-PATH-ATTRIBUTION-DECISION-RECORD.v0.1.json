@@ -1,0 +1,242 @@
+{
+  "record_type": "TITMAS_CE_G12_PUBLIC_NETWORK_PATH_ATTRIBUTION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PUBLIC-NETWORK-PATH-ATTRIBUTION",
+  "version": "0.1.0",
+  "status": "AUTHORIZE_ONE_LOCAL_READ_ONLY_NETWORK_PATH_ATTRIBUTION_DIAGNOSTIC_ONLY_IF_QUALIFYING_DECISION_REVIEW_AND_REMOTE_VERIFICATION",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G12-PUBLIC-NETWORK-PATH-ATTRIBUTION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "de57152074de1ca8d528597258252ecdc4a6c9e15b77aa377e96bbc2016a2c15",
+  "recommendation_review_reference": "TITMAS-CE-G12-PUBLIC-NETWORK-PATH-ATTRIBUTION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "788f11e0f44493b4ccdca7133eea2095f2353d7360376200ded4ff76639cbcab",
+  "recommendation_commit": "d0d15e3b1e6892a547ca5348ccc2adc6922b8f3f",
+  "recommendation_remote_verified": true,
+  "selected_option": "A",
+  "primary_repository": "digital-biosphere-architecture",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "failure_evidence_contract": {
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-public-route-validation-result.v0.1.json",
+    "result_sha256": "f20e12db44dd5206a2cc0bc798fe2f76ac8c7243acb5aa28e89b40366a0b62d4",
+    "report_reference": "TITMAS-CE-G12-PUBLIC-ROUTE-VALIDATION-REPORT-v0.1.md",
+    "report_sha256": "65f529afce1d642dffffc89e91282ab0a0009538ce3eb558a4864603cf3b59a8",
+    "evidence_commit": "45e48cf42697d3509303d4c2f3a574842e21d785",
+    "application_surface_exact": true,
+    "expected_remote_ip": "180.76.115.193",
+    "observed_remote_ip": "198.18.0.90",
+    "strict_outside_in_pass": false
+  },
+  "diagnostic_contract": {
+    "target_hostname": "redcrag.cn",
+    "prior_observed_remote_ip": "198.18.0.90",
+    "synthetic_range_under_test": "198.18.0.0/15",
+    "local_config_reads": [
+      {
+        "id": "PATH-D01",
+        "source": "curl --version",
+        "capture": "version protocols features only",
+        "network_request": false
+      },
+      {
+        "id": "PATH-D02",
+        "source": "scutil --dns",
+        "capture": "resolver count, nameserver address classes, search-domain presence and supplemental/match metadata only",
+        "forbidden_capture": "unrelated private resolver content"
+      },
+      {
+        "id": "PATH-D03",
+        "source": "scutil --proxy",
+        "capture": "enable flags, proxy type, and non-credential host/port only",
+        "forbidden_capture": "credentials, authentication material or PAC content"
+      },
+      {
+        "id": "PATH-D04",
+        "source": "proxy environment variables",
+        "capture": "variable name and present/absent only",
+        "forbidden_capture": "variable value"
+      }
+    ],
+    "dns_lookups": [
+      {
+        "id": "PATH-L01",
+        "type": "system_resolver",
+        "command_class": "dscacheutil host lookup",
+        "hostname": "redcrag.cn",
+        "count": 1
+      },
+      {
+        "id": "PATH-L02",
+        "type": "independent_dns_cli",
+        "command_class": "dig A lookup",
+        "hostname": "redcrag.cn",
+        "count": 1
+      }
+    ],
+    "http_requests": 0,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "network_config_changes": 0,
+    "dns_flushes": 0,
+    "proxy_changes": 0,
+    "retries": 0,
+    "fallbacks": 0
+  },
+  "classification_contract": [
+    {
+      "classification": "LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED",
+      "required_conditions": [
+        "system and independent DNS answers both equal 198.18.0.90",
+        "198.18.0.90 is within 198.18.0.0/15",
+        "prior curl remote IP equals the DNS mapping"
+      ],
+      "prohibited_inference": "specific proxy, VPN, security product or upstream operator attribution without direct configuration evidence"
+    },
+    {
+      "classification": "CURL_PATH_INTERMEDIATION_OBSERVED",
+      "required_conditions": [
+        "DNS answer differs from prior curl remote IP",
+        "filtered local proxy or curl configuration evidence directly explains the difference"
+      ],
+      "prohibited_inference": "direct origin validation"
+    },
+    {
+      "classification": "UNKNOWN",
+      "required_conditions": [
+        "lookup or filtered configuration evidence is inconsistent, incomplete or insufficient"
+      ],
+      "prohibited_inference": "successful direct origin attribution"
+    }
+  ],
+  "exact_sequence": [
+    {
+      "id": "PATH-S01",
+      "action": "Require local and remote governance heads to equal the commit containing this Decision and exact qwen3.7-max Decision review."
+    },
+    {
+      "id": "PATH-S02",
+      "action": "Reverify the fixed failure-evidence artifact hashes without modifying those artifacts."
+    },
+    {
+      "id": "PATH-S03",
+      "action": "Read curl version, filtered resolver metadata, filtered proxy metadata and proxy environment presence without recording credentials or proxy environment values."
+    },
+    {
+      "id": "PATH-S04",
+      "action": "Execute exactly one system resolver lookup and exactly one independent DNS A lookup for redcrag.cn."
+    },
+    {
+      "id": "PATH-S05",
+      "action": "Classify the observed local path under the fixed three-class contract without any HTTP rerun, SSH, server access, network mutation, retry or fallback."
+    },
+    {
+      "id": "PATH-S06",
+      "action": "Generate, commit and push only one attribution Result and one Report."
+    }
+  ],
+  "result_contract": {
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-public-network-path-attribution-result.v0.1.json",
+    "report_reference": "TITMAS-CE-G12-PUBLIC-NETWORK-PATH-ATTRIBUTION-REPORT-v0.1.md",
+    "classifications": [
+      "LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED",
+      "CURL_PATH_INTERMEDIATION_OBSERVED",
+      "UNKNOWN"
+    ],
+    "application_surface_exact_must_remain": true,
+    "direct_origin_path_pass_must_remain": false,
+    "production_ready_must_remain": false
+  },
+  "decision_review_contract": {
+    "model": "qwen3.7-max",
+    "request_count": 1,
+    "response_mode": "direct_json",
+    "retries": 0,
+    "fallbacks": 0,
+    "model_substitutions": 0,
+    "json_extractions": 0,
+    "json_repairs": 0,
+    "qualifying_verdict": "APPROVE",
+    "minimum_confidence": 0.8,
+    "required_boolean_fields": [
+      "standing_directive_applicable",
+      "recommendation_chain_valid",
+      "no_http_retry_sound",
+      "local_read_scope_sufficient",
+      "credential_non_disclosure_sound",
+      "two_lookup_cap_sound",
+      "classification_contract_sound",
+      "result_contract_sufficient",
+      "caps_and_stop_rules_sufficient",
+      "status_elevation_separation_sound",
+      "non_authorizations_complete",
+      "authority_boundaries_preserved"
+    ],
+    "empty_array_fields": [
+      "blockers",
+      "corrections"
+    ]
+  },
+  "execution_authorization": {
+    "decision_review_request_authorized": true,
+    "local_diagnostic_authorized_if_review_qualifies_and_decision_remote_verified": true,
+    "local_config_reads": true,
+    "two_dns_lookups": true,
+    "http_request": false,
+    "ssh_session": false,
+    "server_read_or_write": false,
+    "network_or_proxy_change": false,
+    "dns_change_or_flush": false,
+    "new_product_release": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "path_scoped_result_commit_and_push": true
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "local_config_reads": 4,
+    "dns_lookups": 2,
+    "http_requests": 0,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "network_config_changes": 0,
+    "dns_flushes": 0,
+    "proxy_changes": 0,
+    "retries": 0,
+    "fallbacks": 0,
+    "result_artifacts": 2,
+    "result_commits": 1,
+    "result_pushes": 1
+  },
+  "stop_conditions": [
+    "DECISION_OR_REVIEW_NOT_REMOTE_VERIFIED",
+    "RETURNED_MODEL_NOT_EXACT_QWEN3_7_MAX",
+    "DIRECT_JSON_OR_CONTRACT_INVALID",
+    "DECISION_REVIEW_NOT_QUALIFYING",
+    "FAILURE_EVIDENCE_HASH_DRIFT",
+    "MORE_THAN_TWO_DNS_LOOKUPS_REQUIRED",
+    "HTTP_SSH_SERVER_ACCESS_NETWORK_CHANGE_RETRY_OR_FALLBACK_REQUIRED",
+    "CREDENTIAL_OR_PROXY_ENV_VALUE_CAPTURE_REQUIRED",
+    "SPECIFIC_PROXY_PRODUCT_ATTRIBUTION_NOT_DIRECTLY_PROVEN",
+    "STATUS_ELEVATION_REQUIRED"
+  ],
+  "effects": {
+    "decision_recorded": true,
+    "decision_review_complete": false,
+    "local_diagnostic_authorized_after_qualifying_review_and_remote_verification": true,
+    "diagnostic_executed": false,
+    "application_surface_exact": true,
+    "direct_origin_path_pass": false,
+    "server_state_changed": false,
+    "network_state_changed": false,
+    "new_product_release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  }
+}
