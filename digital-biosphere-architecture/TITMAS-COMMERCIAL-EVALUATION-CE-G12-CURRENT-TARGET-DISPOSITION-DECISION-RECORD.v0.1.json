@@ -1,0 +1,343 @@
+{
+  "record_type": "TITMAS_CE_G12_CURRENT_TARGET_DISPOSITION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-CURRENT-TARGET-DISPOSITION",
+  "version": "0.1.0",
+  "status": "AUTHORIZE_ONE_FRESH_IMMUTABLE_CANDIDATE_PREPARATION_ONLY_IF_QUALIFYING_DECISION_REVIEW_AND_LATER_SEPARATE_EXECUTION",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G12-CURRENT-TARGET-DISPOSITION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "56560c0fad09e60035b6e62e2a86e38a1cfaffeb3e2c592b5c58917e0a64b252",
+  "recommendation_review_reference": "TITMAS-CE-G12-CURRENT-TARGET-DISPOSITION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "9fd848e291a9304a9777a6133ae4d107d7999bbf302e307760e21904de828ead",
+  "recommendation_commit": "a00111d2cac8e5fcf46eae3e8f65d47d8a57ad11",
+  "recommendation_remote_verified": true,
+  "selected_option": "C",
+  "primary_repository": "digital-biosphere-architecture",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "candidate_disposition": {
+    "historical_stable_release": "7da4bcf16eeec7de1c61031fe08fc04081cf8705",
+    "old_proposed_release": "f8107969aa1f43be8ecf43f557297a630309fe41",
+    "fresh_observed_current_release": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "fresh_candidate_source": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "fresh_candidate_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "old_candidate_history_preserved": true,
+    "old_candidate_supersession_status": "SUPERSESSION_PENDING_FRESH_CANDIDATE_PREPARATION_PASS",
+    "old_candidate_superseded_if_candidate_preparation_passes": true,
+    "old_candidate_deleted": false,
+    "old_evidence_modified": false,
+    "current_target_adopted": false,
+    "fresh_candidate_adopted": false,
+    "fresh_candidate_release_authorized": false,
+    "fresh_candidate_deployment_authorized": false
+  },
+  "source_evidence": [
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g12-current-target-lineage-reconciliation-result.v0.1.json",
+      "sha256": "2afa3d7851d6a8ca6733afa8360e371358d70075f6d94c8e740284fa3ceb073b",
+      "role": "current_target_lineage_result"
+    },
+    {
+      "reference": "TITMAS-CE-G12-CURRENT-TARGET-LINEAGE-RECONCILIATION-REPORT-v0.1.md",
+      "sha256": "9d19e10761654f03eb9dd08939839c9830b67795ba61066daf0cc2cf89d6ba0b",
+      "role": "current_target_lineage_report"
+    },
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g7-result.v0.1.json",
+      "sha256": "08fbeae76848886950029c1c4fc445ad665bff324a1a1bd18566817b6cbd8276",
+      "role": "old_proposed_attempt_and_rollback_result"
+    },
+    {
+      "reference": "commercial-evaluation-exact-redeployment/ce-g7-proposed-release-hash-baseline.v0.1.json",
+      "sha256": "173fa2a0972bbbf3f61d4a649a1331249334c0fa003a668da200318a7858f7fc",
+      "role": "old_proposed_candidate_baseline"
+    },
+    {
+      "reference": "TITMAS-CE-G11B-PR27-MERGE-EXECUTION-AND-POST-MERGE-VALIDATION-RESULT-v0.1.json",
+      "sha256": "bda16758916a8df843c84bd5ca803b7a50d3343e5248f56ba94b944509d64c86",
+      "role": "fresh_candidate_source_validation"
+    }
+  ],
+  "source_contract": {
+    "source_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "source_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "source_subject": "Merge PR #27: integrate CE-G11B atomic evidence",
+    "source_parent_one": "ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "source_parent_two": "e6a193f4bf0d48d65649077122f0ab262460daac",
+    "remote_ref": "refs/heads/codex/production-observability-baseline",
+    "remote_ref_expected": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "site_relative_path": "digital-biosphere-architecture/site",
+    "candidate_archive_path": "/tmp/titmas-site-c1d8931930fbae15f96ee6a6ac050b081538c919.tar.gz",
+    "future_release_path": "/srv/tmai/releases/c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "future_release_path_creation_authorized": false
+  },
+  "prior_validation_baseline": {
+    "tracked_json_passed": 1165,
+    "duplicate_keys": 0,
+    "commercial_entry_schema_pass": true,
+    "ce_schema_hashes": "3/3",
+    "ce_meta_schemas": "3/3",
+    "npm_ci_offline_pass": true,
+    "npm_ci_ignore_scripts": true,
+    "npm_packages_added": 493,
+    "npm_ls_exit": 0,
+    "site_tests": "16/16",
+    "release_formal_static_export_pass": true,
+    "release_formal_content_parity_pass": true,
+    "release_formal_truth_boundary_pass": true,
+    "release_formal_manifest_files": 65,
+    "ce_tests": "49/49",
+    "tracked_source_diff": 0,
+    "remote_drift": 0,
+    "prior_validation_is_current_candidate_result": false,
+    "fresh_candidate_preparation_still_required": true
+  },
+  "exact_preparation_sequence": [
+    {
+      "id": "F01",
+      "action": "Require local governance HEAD to equal the remotely verified Decision and review commit."
+    },
+    {
+      "id": "F02",
+      "action": "Fetch the exact production-observability baseline ref once and require it still equals c1d8931930fbae15f96ee6a6ac050b081538c919."
+    },
+    {
+      "id": "F03",
+      "action": "Verify all five source artifact SHA-256 bindings and the exact source commit/tree/parents/subject."
+    },
+    {
+      "id": "F04",
+      "action": "Create exactly one disposable detached worktree at the exact source commit."
+    },
+    {
+      "id": "F05",
+      "action": "Validate all tracked JSON for parseability and duplicate keys, then validate the commercialization entry against its exact Schema."
+    },
+    {
+      "id": "F06",
+      "action": "In the exact site directory run one offline ignore-scripts npm ci, one npm ls, one npm test and one npm run release:formal."
+    },
+    {
+      "id": "F07",
+      "action": "Validate the exact CE Schema hashes and meta-schemas and run the exact CE test suite once."
+    },
+    {
+      "id": "F08",
+      "action": "Require zero tracked source drift, exact source tree identity and zero remote source-ref drift."
+    },
+    {
+      "id": "F09",
+      "action": "Create one candidate archive from the verified static export, bind archive bytes and SHA-256, bind the included release manifest, and record route hashes in a candidate baseline."
+    },
+    {
+      "id": "F10",
+      "action": "Generate one Candidate Result and one Report, preserve failures, then remove the disposable worktree."
+    },
+    {
+      "id": "F11",
+      "action": "Commit and push only the candidate baseline, Result and Report on the governance branch."
+    }
+  ],
+  "candidate_artifact_contract": {
+    "baseline_reference": "commercial-evaluation-fresh-candidate/ce-g12-fresh-candidate-baseline.v0.1.json",
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-fresh-candidate-preparation-result.v0.1.json",
+    "report_reference": "TITMAS-CE-G12-FRESH-IMMUTABLE-CANDIDATE-PREPARATION-REPORT-v0.1.md",
+    "archive_reference": "/tmp/titmas-site-c1d8931930fbae15f96ee6a6ac050b081538c919.tar.gz",
+    "success_status": "PASS_FRESH_IMMUTABLE_CANDIDATE_PREPARED_NO_DEPLOYMENT_AUTHORIZED",
+    "failure_status": "FAIL_CLOSED_FRESH_IMMUTABLE_CANDIDATE_NOT_PREPARED_NO_DEPLOYMENT_AUTHORIZED",
+    "required_baseline_fields": [
+      "baseline_id",
+      "version",
+      "status",
+      "decision_reference",
+      "source_commit",
+      "source_tree",
+      "archive_reference",
+      "archive_bytes",
+      "archive_sha256",
+      "manifest_reference",
+      "manifest_bytes",
+      "manifest_sha256",
+      "manifest_files",
+      "routes",
+      "effects"
+    ],
+    "required_result_fields": [
+      "result_id",
+      "version",
+      "observed_at",
+      "status",
+      "decision_reference",
+      "source_contract",
+      "source_evidence_checks",
+      "tracked_json",
+      "commercial_entry_schema",
+      "npm_ci",
+      "npm_ls",
+      "site_tests",
+      "release_formal",
+      "ce_schema_contract",
+      "ce_tests",
+      "source_drift",
+      "candidate_archive",
+      "old_candidate_disposition",
+      "effects",
+      "next_gate"
+    ]
+  },
+  "execution_authorization": {
+    "decision_review_request_authorized": true,
+    "fresh_candidate_preparation_authorized_if_review_qualifies_and_decision_remote_verified": true,
+    "old_candidate_supersession_record_authorized_only_if_preparation_passes": true,
+    "execution_in_decision_preparation_action": false,
+    "later_separate_execution_required": true,
+    "one_remote_ref_fetch_read_only": true,
+    "one_disposable_worktree": true,
+    "offline_dependency_install": true,
+    "static_export": true,
+    "candidate_archive_creation": true,
+    "candidate_artifact_creation": true,
+    "server_reads": false,
+    "server_writes": false,
+    "public_site_requests": false,
+    "ssh": false,
+    "symlink_switch": false,
+    "nginx_test_or_reload": false,
+    "repair": false,
+    "rollback": false,
+    "deployment": false,
+    "release": false,
+    "pr_mutation": false,
+    "status_surface_sync_in_same_execution": false,
+    "path_scoped_commit_and_push": true
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "git_fetches_during_execution": 1,
+    "source_artifact_hash_checks": 5,
+    "disposable_worktrees": 1,
+    "npm_ci_attempts": 1,
+    "npm_ls_attempts": 1,
+    "site_test_attempts": 1,
+    "release_formal_attempts": 1,
+    "ce_test_attempts": 1,
+    "candidate_archives": 1,
+    "candidate_baselines": 1,
+    "result_artifacts": 3,
+    "result_commits": 1,
+    "result_pushes": 1,
+    "server_reads": 0,
+    "server_writes": 0,
+    "public_site_requests": 0,
+    "ssh_sessions": 0,
+    "symlink_switches": 0,
+    "nginx_tests": 0,
+    "nginx_reloads": 0,
+    "repairs": 0,
+    "rollbacks": 0,
+    "deployments": 0,
+    "releases": 0,
+    "pr_mutations": 0,
+    "model_requests_during_execution": 0,
+    "retries": 0,
+    "network_fallbacks": 0
+  },
+  "preconditions": {
+    "recommendation_and_review_remote_verified": true,
+    "recommendation_review_qualifying": true,
+    "decision_and_review_remote_verified_before_execution": true,
+    "local_remote_governance_sha_equality_required": true,
+    "source_remote_ref_exact_required": true,
+    "offline_dependency_material_available_required": true,
+    "no_unrelated_worktree_change_allowed": true
+  },
+  "stop_conditions": [
+    "DECISION_OR_REVIEW_NOT_REMOTE_VERIFIED",
+    "RETURNED_MODEL_NOT_EXACT_QWEN3_7_MAX",
+    "DIRECT_JSON_OR_EXACT_CONTRACT_INVALID",
+    "REVIEW_NOT_QUALIFYING",
+    "GOVERNANCE_LOCAL_REMOTE_SHA_DIFFERS",
+    "SOURCE_REMOTE_REF_NOT_EXACT_C1D8931",
+    "ANY_SOURCE_ARTIFACT_SHA_DIFFERS",
+    "SOURCE_COMMIT_TREE_PARENT_OR_SUBJECT_DIFFERS",
+    "OFFLINE_DEPENDENCY_MATERIAL_UNAVAILABLE",
+    "ANY_VALIDATION_COMMAND_FAILS",
+    "ANY_RETRY_NETWORK_FALLBACK_SOURCE_FIX_OR_SECOND_WORKTREE_WOULD_BE_REQUIRED",
+    "ANY_TRACKED_SOURCE_TREE_OR_REMOTE_REF_DRIFT_EXISTS",
+    "ARCHIVE_OR_MANIFEST_OR_ROUTE_BASELINE_CANNOT_BE_BOUND_EXACTLY",
+    "ANY_OLD_CANDIDATE_EVIDENCE_WOULD_BE_DELETED_OR_MODIFIED",
+    "ANY_SERVER_PUBLIC_SITE_SSH_SYMLINK_NGINX_REPAIR_ROLLBACK_DEPLOYMENT_RELEASE_OR_PR_MUTATION_WOULD_OCCUR",
+    "CANDIDATE_PREPARED_WOULD_BE_PROMOTED_TO RELEASE_DEPLOYMENT_PRODUCTION_STANDARD_READY_OR_COMMERCIAL_TRUTH",
+    "ANY_NON_AUTHORIZATION_BOUNDARY_WOULD_BECOME_TRUE"
+  ],
+  "decision_review_contract": {
+    "model": "qwen3.7-max",
+    "request_cap": 1,
+    "retries": 0,
+    "fallbacks": 0,
+    "model_substitutions": 0,
+    "json_extractions": 0,
+    "json_repairs": 0,
+    "direct_json_required": true,
+    "exact_returned_model_required": true,
+    "required_top_level_keys": [
+      "verdict",
+      "confidence",
+      "standing_directive_applicable",
+      "recommendation_chain_valid",
+      "recommendation_review_qualifying",
+      "candidate_disposition_sound",
+      "source_contract_exact",
+      "prior_validation_used_without_overclaim",
+      "candidate_preparation_sequence_sufficient",
+      "artifact_contract_sufficient",
+      "history_preservation_sound",
+      "execution_separation_sound",
+      "caps_and_stop_rules_sufficient",
+      "no_server_repair_redeployment_or_release_authority",
+      "non_authorizations_complete",
+      "authority_boundaries_preserved",
+      "blockers",
+      "corrections",
+      "rationale"
+    ],
+    "additional_top_level_keys_allowed": false,
+    "verdict_enum": [
+      "APPROVE",
+      "REJECT"
+    ],
+    "approval_threshold": {
+      "verdict": "APPROVE",
+      "minimum_confidence": 0.9,
+      "all_boolean_checks": true,
+      "blockers": [],
+      "corrections": []
+    }
+  },
+  "exact_authorized_action": "After one qualifying exact qwen3.7-max prospective Decision review and remote verification of this Decision plus review, execute one later separate fresh immutable candidate preparation at exact source commit c1d8931930fbae15f96ee6a6ac050b081538c919 only. Fetch the exact source ref once, verify five evidence bindings and exact source identity, create one disposable detached worktree, run the bounded offline validation once, create one candidate archive and bind its manifest and route hashes, generate exactly one baseline, one Result and one Report, remove the worktree, then commit and push only those three artifacts. Preserve old f810796 evidence and record supersession only if preparation passes. Do not read or write the server, request the public site, use SSH, switch a symlink, run nginx, repair, rollback, deploy, release, mutate a PR, or promote candidate preparation to Standard Ready, Production or commercial truth.",
+  "effects": {
+    "decision_recorded": true,
+    "old_candidate_superseded": false,
+    "fresh_candidate_preparation_executed": false,
+    "fresh_candidate_prepared": false,
+    "server_state_changed": false,
+    "public_site_changed": false,
+    "pr_state_changed": false,
+    "repair_authorized": false,
+    "rollback_authorized": false,
+    "deployment_authorized": false,
+    "release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "permission_created": false,
+    "authority_elevated": false,
+    "evidence_truth_changed": false
+  },
+  "next_gate": {
+    "action": "EXECUTE_CE_G12_FRESH_IMMUTABLE_CANDIDATE_PREPARATION_ONLY_AFTER_QUALIFYING_DECISION_REVIEW_AND_REMOTE_VERIFICATION",
+    "authorized_if_review_qualifies": true,
+    "execution_in_same_action": false
+  }
+}
