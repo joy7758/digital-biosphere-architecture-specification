@@ -9,4 +9,3 @@ references. It does not create a second Evidence Object and never grants
 adoption, merge, release, permission, or Architecture Authority.
 
 Machine example: [`example-contribution-package.json`](example-contribution-package.json).
-

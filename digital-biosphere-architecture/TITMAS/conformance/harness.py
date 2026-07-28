@@ -368,7 +368,13 @@ def check_agent_native_surfaces() -> dict[str, Any]:
     checked = 0
     for path, schema_name in examples:
         if schema_name:
-            validate_json_file(path, schemas / f"{schema_name}.schema.json")
+            value = validate_json_file(path, schemas / f"{schema_name}.schema.json")
+            if schema_name == "contribution-package":
+                serialized = json.dumps(value, ensure_ascii=False, sort_keys=True)
+                if "PILOT-" in serialized or "CONTROLLED_LOCAL_PILOT" in serialized:
+                    raise ConformanceError(
+                        "canonical contribution example retains legacy pilot identity"
+                    )
         else:
             load_json(path)
         checked += 1

@@ -384,7 +384,7 @@ Open Infrastructure 不等于全部产品免费，也不等于开放私有核心
 | phase | objective | required evidence | current result |
 |---|---|---|---|
 | `C0` | 将基础设施开发者社区方向写入 DBA | 本规范、ADR、README、Roadmap、Risk 和 Gate 一致 | `BASELINE_DEFINED` |
-| `C1` | 准备首次贡献入口 | Contributor Guide、Code of Conduct candidate、proposal/maturity/workstream templates、Good First Contribution catalog、agent-readable JSON/Schema、[validation report](../TITMAS-CONTRIBUTOR-ENTRY-PREPARATION-REPORT.md) | `PASS_PREPARED_NOT_PUBLICLY_AUTHORIZED` |
+| `C1` | 准备首次贡献入口 | Contributor Guide、Code of Conduct candidate、proposal/maturity/workstream templates、Good First Contribution catalog、agent-readable JSON/Schema、[current integration plan](titmas-canonical-community-integration-plan-v1.0.md) | `PASS_PREPARED_NOT_PUBLICLY_AUTHORIZED` |
 | `C2` | 决定是否开放公共贡献表面 | `DQ-026`；Authority Freeze、命名、Owner、license/CLA、正式行为规范、安全接收路径与 external-action Decision | `BLOCKED_INPUT_NOT_AUTHORIZED` |
 | `C3` | 接收首批真实贡献 | 可追溯的人类或受治理智能体贡献、review 和结果保留 | `NOT_STARTED` |
 | `C4` | 激活首个 Workstream | Charter、真实工作、Maintainer/Reviewer、公开 notes 与 DBA Decision | `NOT_STARTED` |

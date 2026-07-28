@@ -97,6 +97,10 @@ adoption, and structural validity is not environmental truth.
   tag, release and deployment remain unauthorized;
 - all `COMMUNITY-HD-01` through `COMMUNITY-HD-08` decisions remain undecided.
 
+These are post-Draft blockers. `TITMAS-OPEN-STANDARDS-COMMUNITY-INTEGRATION-D01`
+separately authorizes creation of a Draft PR for Human review. It does not
+authorize merge or any public activation.
+
 ## Mainline sequence
 
 ```text
@@ -116,4 +120,3 @@ CANONICAL_INTEGRATION
 - Reference implementation is not standard authority.
 - `LONG_TERM_AGENT_OPERATIONAL_MAJORITY_TARGET=0.99` is a design target, not a
   current measured fact.
-

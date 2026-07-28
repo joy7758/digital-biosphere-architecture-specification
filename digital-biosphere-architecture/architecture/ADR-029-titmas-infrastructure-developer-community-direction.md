@@ -82,7 +82,7 @@ C1 允许在 DBA 内准备非执行 Contributor Guide、Proposal/Maturity/Workst
 - [Contributor Guide](../CONTRIBUTING.md)；
 - [Agent-readable Contributor Entry](../TITMAS-CONTRIBUTOR-ENTRY-v0.1.json)；
 - [TITMAS Document Maturity Policy v0.1](titmas-document-maturity-policy-v0.1.md)；
-- [TITMAS Architecture Charter v0.1](titmas-architecture-charter-v0.1.md)；
+- [TITMAS Architecture Charter v1.0](titmas-architecture-charter-v1.0.md)；
 - [Open Infrastructure Strategy Constitution](open-infrastructure-strategy-constitution.md)。
 
 ## Alternatives Considered（备选方案）

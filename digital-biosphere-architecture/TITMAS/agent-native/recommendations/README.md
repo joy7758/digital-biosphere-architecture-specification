@@ -11,4 +11,3 @@ candidate as certification.
 
 Primary metrics are precision, abstention accuracy, non-fit rejection accuracy
 and overclaim rate—not raw recommendation rate.
-

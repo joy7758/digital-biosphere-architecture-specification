@@ -8,4 +8,3 @@
 
 No command here authorizes a write, contribution adoption, merge, release,
 deployment, public community action, or external contact.
-

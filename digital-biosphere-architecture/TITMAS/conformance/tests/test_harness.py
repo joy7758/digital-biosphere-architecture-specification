@@ -57,6 +57,17 @@ class HarnessTests(unittest.TestCase):
         self.assertGreaterEqual(details["agent_tasks_checked"], 1)
         self.assertEqual(1, details["canonical_machine_entries"])
 
+    def test_canonical_contribution_example_has_no_legacy_pilot_identity(self):
+        path = (
+            HARNESS.TITMAS_ROOT
+            / "agent-native"
+            / "contributions"
+            / "example-contribution-package.json"
+        )
+        value = json.loads(path.read_text(encoding="utf-8"))
+        serialized = json.dumps(value, ensure_ascii=False, sort_keys=True)
+        self.assertNotIn("PILOT-", serialized)
+
     def test_agent_native_adversarial_coverage(self):
         details = HARNESS.check_agent_native_adversarial()
         self.assertEqual(22, details["adversarial_cases_rejected"])

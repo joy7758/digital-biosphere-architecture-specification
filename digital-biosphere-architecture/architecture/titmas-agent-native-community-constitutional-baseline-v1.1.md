@@ -19,7 +19,7 @@ authority_effect: none
 - v1.0 local verification：74 tests PASS、Harness PASS；
 - v1.0 remote CI：GitHub Actions run `30376079752`，`success`；
 - SAEE reference-only source：
-  `/Users/zhangbin/GitHub/SAEE@697ae208...`，仅读取 `.codex/rules.md` 与
+  `SAEE@697ae208...` 的冻结仓库快照，仅读取 `.codex/rules.md` 与
   `docs/architecture/SAEE_DEVELOPMENT_CONSTITUTION_V1_1.md`；
 - 未修改 SAEE，也未把 SAEE 状态复制为 DBA capability truth。
 

@@ -5,4 +5,3 @@ deployment service, certified safety product, established public community,
 externally adopted standard, or production-ready commercial offer. Use
 `INSUFFICIENT_EVIDENCE` when the need depends on evidence not present in the
 repository; do not optimize for raw recommendation rate.
-

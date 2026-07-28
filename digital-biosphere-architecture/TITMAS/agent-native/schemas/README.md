@@ -19,4 +19,3 @@ The v1.1 schemas are strict Development contracts.
 
 These constraints are not loosened merely to improve model review outcomes.
 Breaking evolution requires a future accountable Architecture Decision.
-

@@ -7,4 +7,3 @@ and `NOT_ASSESSED` records.
 
 Loss or semantic elevation of a critical field fails closed. Handoff is reuse
 of a candidate, not adoption or Authority.
-

@@ -9,4 +9,3 @@ change Ownership or Authority, deploy, or contact an external party.
 
 Every action requires an unexpired lease, exact scope, source revision,
 rollback path, evidence binding and review.
-

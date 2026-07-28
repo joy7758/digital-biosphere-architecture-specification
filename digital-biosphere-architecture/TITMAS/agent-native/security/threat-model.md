@@ -28,4 +28,3 @@ suite; it is not a sandbox and is not claimed to validate compromised code.
 
 Registry scans are linear and bounded by the 1 MB input limit. Large-scale
 registries require a future performance review; no such scale is claimed here.
-
