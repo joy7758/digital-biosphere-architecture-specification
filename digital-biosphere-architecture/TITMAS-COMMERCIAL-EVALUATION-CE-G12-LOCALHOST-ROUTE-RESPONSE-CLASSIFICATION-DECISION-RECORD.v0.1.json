@@ -1,0 +1,199 @@
+{
+  "record_type": "TITMAS_CE_G12_LOCALHOST_ROUTE_RESPONSE_CLASSIFICATION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-LOCALHOST-ROUTE-RESPONSE-CLASSIFICATION",
+  "version": "0.1.0",
+  "status": "AUTHORIZE_ONE_READ_ONLY_LOCALHOST_ROUTE_RESPONSE_CLASSIFICATION_ONLY_IF_QUALIFYING_DECISION_REVIEW_AND_REMOTE_VERIFICATION",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G12-LOCALHOST-ROUTE-RESPONSE-CLASSIFICATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "8519f37ab13aff3ec97966a29e18f3d6f670cee6076430cac9a78bcb6fc43b46",
+  "recommendation_review_reference": "TITMAS-CE-G12-LOCALHOST-ROUTE-RESPONSE-CLASSIFICATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "63c20f8e8cec14e85feb9d18210e7eef69287fb178e2a155b40ee9c671208a8e",
+  "recommendation_commit": "590cd0e9df13f09125f858eb6e3a5d4e38e3bad6",
+  "recommendation_remote_verified": true,
+  "selected_option": "A",
+  "primary_repository": "digital-biosphere-architecture",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "failure_contract": {
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-portable-candidate-atomic-deployment-result.v0.1.json",
+    "result_sha256": "7997b708cd520574f480221c8b0787920d654cecf888fe12db1ca797d1e32974",
+    "report_reference": "TITMAS-CE-G12-PORTABLE-CANDIDATE-ATOMIC-DEPLOYMENT-REPORT-v0.1.md",
+    "report_sha256": "b51cb0a2b9c686ab4c10f17dde17b998e259c7d630df1bda79049f8957b18034",
+    "evidence_commit": "df1c8f9370cf491936b30d6405692b3efccafe23",
+    "rollback_pass": true,
+    "current_restored": true,
+    "root_cause_proven": false,
+    "redeployment_authorized": false
+  },
+  "transport_contract": {
+    "ssh_target_alias": "hongyan-4cj",
+    "expected_hostname": "180.76.115.193",
+    "expected_remote_user": "root",
+    "expected_identities_only": "yes",
+    "identity_file_required": true,
+    "identity_file_path_may_be_recorded": false,
+    "batch_mode": true,
+    "strict_host_key_checking": true,
+    "update_host_keys": false,
+    "control_master": false
+  },
+  "server_scope": {
+    "expected_current": "/srv/tmai/releases/ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "matching_nginx_config": "/etc/nginx/conf.d/redcrag.cn.conf",
+    "host_and_sni": "redcrag.cn",
+    "network_target": "127.0.0.1:443",
+    "read_only": true
+  },
+  "route_matrix": [
+    {
+      "path": "/",
+      "expected_file": "index.html"
+    },
+    {
+      "path": "/en",
+      "expected_file": "en/index.html"
+    },
+    {
+      "path": "/en/",
+      "expected_file": "en/index.html"
+    },
+    {
+      "path": "/status",
+      "expected_file": "status/index.html"
+    },
+    {
+      "path": "/status/",
+      "expected_file": "status/index.html"
+    },
+    {
+      "path": "/en/status",
+      "expected_file": "en/status/index.html"
+    },
+    {
+      "path": "/en/status/",
+      "expected_file": "en/status/index.html"
+    }
+  ],
+  "exact_sequence": [
+    {
+      "id": "ROUTE-D01",
+      "action": "Require local and remote governance heads to equal the commit containing this Decision and its exact qwen3.7-max Decision review."
+    },
+    {
+      "id": "ROUTE-D02",
+      "action": "Resolve ssh -G hongyan-4cj once and require exact mapping without recording identity paths."
+    },
+    {
+      "id": "ROUTE-D03",
+      "action": "Open exactly one strict-host-key read-only SSH session and require current to equal the restored target."
+    },
+    {
+      "id": "ROUTE-D04",
+      "action": "Read current release/manifest metadata and the four expected HTML file hashes."
+    },
+    {
+      "id": "ROUTE-D05",
+      "action": "Read the matching nginx config hash and extract only server_name, root, index, try_files and redirect directives; exclude credential paths."
+    },
+    {
+      "id": "ROUTE-D06",
+      "action": "For each of seven route paths, execute one no-follow and one bounded-follow localhost HTTPS request using configured Host/SNI."
+    },
+    {
+      "id": "ROUTE-D07",
+      "action": "Record initial status/location, redirect count, final URL/status, final body bytes/hash and expected-file hash match."
+    },
+    {
+      "id": "ROUTE-D08",
+      "action": "Classify canonical redirect, content failure, config/host mismatch or unknown using the exact Recommendation rules."
+    },
+    {
+      "id": "ROUTE-D09",
+      "action": "Close SSH with zero server writes and generate one Classification Result and Report."
+    },
+    {
+      "id": "ROUTE-D10",
+      "action": "Commit and push only the two result artifacts."
+    }
+  ],
+  "result_contract": {
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-localhost-route-response-classification-result.v0.1.json",
+    "report_reference": "TITMAS-CE-G12-LOCALHOST-ROUTE-RESPONSE-CLASSIFICATION-REPORT-v0.1.md",
+    "success_status": "PASS_LOCALHOST_ROUTE_RESPONSE_CLASSIFIED_NO_REDEPLOYMENT_AUTHORIZED",
+    "failure_status": "FAIL_CLOSED_LOCALHOST_ROUTE_RESPONSE_NOT_CLASSIFIED_NO_REDEPLOYMENT_AUTHORIZED"
+  },
+  "execution_authorization": {
+    "decision_review_request_authorized": true,
+    "read_only_classification_authorized_if_review_qualifies_and_decision_remote_verified": true,
+    "one_ssh_config_resolution": true,
+    "one_ssh_session": true,
+    "server_reads": true,
+    "localhost_https_requests": true,
+    "nginx_config_read": true,
+    "server_writes": false,
+    "public_external_requests": false,
+    "nginx_test_or_reload": false,
+    "artifact_reuse": false,
+    "artifact_cleanup": false,
+    "current_switch": false,
+    "redeployment": false,
+    "new_product_release": false,
+    "path_scoped_result_commit_and_push": true
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "local_ssh_config_resolutions": 1,
+    "ssh_sessions": 1,
+    "server_read_commands": 10,
+    "localhost_route_requests": 14,
+    "server_writes": 0,
+    "public_external_requests": 0,
+    "nginx_tests": 0,
+    "nginx_reloads": 0,
+    "symlink_switches": 0,
+    "archive_transfers": 0,
+    "archive_extractions": 0,
+    "cleanups": 0,
+    "deployments": 0,
+    "new_product_releases": 0,
+    "retries": 0,
+    "network_fallbacks": 0,
+    "result_artifacts": 2,
+    "result_commits": 1,
+    "result_pushes": 1
+  },
+  "stop_conditions": [
+    "DECISION_OR_REVIEW_NOT_REMOTE_VERIFIED",
+    "RETURNED_MODEL_NOT_EXACT_QWEN3_7_MAX",
+    "DIRECT_JSON_OR_CONTRACT_INVALID",
+    "DECISION_REVIEW_NOT_QUALIFYING",
+    "SSH_G_ALIAS_MAPPING_DIFFERS_OR_IDENTITYFILE_MISSING",
+    "SSH_AUTH_OR_STRICT_HOST_KEY_FAILURE",
+    "CURRENT_TARGET_DRIFT",
+    "CURRENT_RELEASE_OR_EXPECTED_FILE_UNREADABLE",
+    "NGINX_CONFIG_UNREADABLE_OR_CREDENTIAL_DISCLOSURE_REQUIRED",
+    "WRITE_EXTERNAL_REQUEST_SECOND_SESSION_RETRY_OR_FALLBACK_REQUIRED",
+    "ARTIFACT_REUSE_CLEANUP_CURRENT_SWITCH_REDEPLOYMENT_OR_STATUS_ELEVATION_REQUIRED"
+  ],
+  "effects": {
+    "decision_recorded": true,
+    "decision_review_complete": false,
+    "read_only_classification_authorized_after_qualifying_review_and_remote_verification": true,
+    "execution_started": false,
+    "server_read_executed": false,
+    "server_write_executed": false,
+    "localhost_request_executed": false,
+    "current_changed": false,
+    "artifact_reuse_authorized": false,
+    "redeployment_authorized": false,
+    "new_product_release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  }
+}
