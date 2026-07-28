@@ -102,19 +102,16 @@ export function resolveReleaseContext(environment, resources) {
 }
 
 export function routeMarkers(mode) {
-  if (mode === "formal") {
-    return {
-      zhHome: ["TITMAS 可信多智能体基础设施开发者社区", "当前重心：开发者社区方向已采纳"],
-      enHome: ["TITMAS Infrastructure Developer Community", "Current focus: developer community direction adopted"],
-      zhStatus: ["可信多智能体基础设施开发者预览版 v0.1 已发布"],
-      enStatus: ["Trusted Multi-Agent Infrastructure Developer Preview v0.1 is released"],
-    };
-  }
-
   return {
-    zhHome: ["TITMAS 可信多智能体基础设施开发者社区"],
-    enHome: ["TITMAS Infrastructure Developer Community"],
-    zhStatus: ["当前不是正式发布"],
-    enStatus: ["This is not a release"],
+    zhHome: ["<html lang=\"zh-CN\">", "共同建设 Agent 时代的可信基础设施"],
+    enHome: ["<html lang=\"en\">", "Build trustworthy infrastructure for the agent era"],
+    zhStatus: [
+      "<html lang=\"zh-CN\">",
+      mode !== "formal" ? "当前不是正式发布" : "可信多智能体基础设施开发者预览版 v0.1 已发布",
+    ],
+    enStatus: [
+      "<html lang=\"en\">",
+      mode !== "formal" ? "This is not a release" : "Trusted Multi-Agent Infrastructure Developer Preview v0.1 is released",
+    ],
   };
 }
