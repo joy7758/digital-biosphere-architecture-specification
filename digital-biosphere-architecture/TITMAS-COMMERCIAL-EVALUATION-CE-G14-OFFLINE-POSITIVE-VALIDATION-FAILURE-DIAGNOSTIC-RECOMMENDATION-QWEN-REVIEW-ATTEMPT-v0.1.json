@@ -1,0 +1,68 @@
+{
+  "record_type": "TITMAS_CE_G14_OFFLINE_POSITIVE_VALIDATION_FAILURE_DIAGNOSTIC_RECOMMENDATION_QWEN_REVIEW_ATTEMPT",
+  "version": "0.1.0",
+  "status": "REVIEW_CAPTURE_FAILED_NO_RETRY",
+  "observed_at": "2026-07-28T15:09:19+08:00",
+  "recommendation_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G14-OFFLINE-POSITIVE-VALIDATION-FAILURE-DIAGNOSTIC-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "cd96f9aea71339cd42d53f4331db69cb00527576e34f4e268ba11781778e4f2d",
+  "review_contract": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "requested_model": "qwen3.7-max",
+    "maximum_requests": 1,
+    "requests_attempted": 1,
+    "direct_json_required": true,
+    "exact_returned_model_required": true,
+    "retry": 0,
+    "fallback": 0,
+    "substitution": 0,
+    "extraction": 0,
+    "repair": 0
+  },
+  "capture_observation": {
+    "tool_process_completed": true,
+    "captured_stdout_bytes": 0,
+    "response_object_persisted": false,
+    "response_id": "UNKNOWN",
+    "returned_model": "UNKNOWN",
+    "provider_request_completion_verified": false,
+    "direct_json_verified": false,
+    "verdict": "NOT_AVAILABLE",
+    "confidence": null,
+    "blockers": [
+      "REVIEW_RESPONSE_NOT_CAPTURED"
+    ],
+    "corrections": []
+  },
+  "qualification": {
+    "qualifying_review_complete": false,
+    "exact_model_verified": false,
+    "direct_json_verified": false,
+    "recommended_or_approved": false,
+    "eligible_for_human_decision": false,
+    "diagnostic_authorized": false
+  },
+  "failure_behavior": {
+    "fail_closed": true,
+    "retry_performed": false,
+    "automatic_repair_performed": false,
+    "substitute_model_used": false,
+    "review_result_inferred": false
+  },
+  "effects": {
+    "decision_created": false,
+    "diagnostic_authorized": false,
+    "diagnostic_executed": false,
+    "ce_g14_model_execution_authorized": false,
+    "ce_g14_public_get_authorized": false,
+    "ce_g14_technical_reuse_authorized": false,
+    "implementation_authorized": false,
+    "external_action_authorized": false,
+    "commercial_offering_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "production_ready": false,
+    "authority_or_ownership_changed": false
+  },
+  "next_action": "PREPARE_NEW_INDEPENDENT_REVIEW_CAPTURE_REMEDIATION_RECOMMENDATION_ONLY",
+  "next_action_authorized": false
+}
