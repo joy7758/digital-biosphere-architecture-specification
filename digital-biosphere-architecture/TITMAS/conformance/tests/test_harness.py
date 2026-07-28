@@ -124,6 +124,48 @@ class HarnessTests(unittest.TestCase):
             HARNESS.validate_value_lineage(inflated["lineage"])
         self.assertEqual(0, record["lineage"]["independent_lineage_count"])
 
+    def test_ecology_box_001_package_passes_without_execution(self):
+        details = HARNESS.check_agent_native_ecology_box_001_package()
+        self.assertEqual(8, details["role_definitions_checked"])
+        self.assertEqual(10, details["task_contracts_checked"])
+        self.assertEqual(10, details["failure_scenarios_checked"])
+        self.assertEqual(9, details["security_cases_rejected"])
+        self.assertEqual(0, details["participant_instances"])
+        self.assertFalse(details["experiment_executed"])
+
+    def test_ecology_box_001_security_cases_fail_closed(self):
+        self.assertEqual(9, len(HARNESS.ECOLOGY_BOX_001_REJECTIONS))
+        for attack, reason_code in HARNESS.ECOLOGY_BOX_001_REJECTIONS.items():
+            self.assertEqual(
+                {"decision": "REJECT", "reason_code": reason_code},
+                HARNESS.ecology_box_001_rejection(attack),
+            )
+
+    def test_ecology_box_001_unknown_security_case_is_not_assessed(self):
+        self.assertEqual(
+            {"decision": "NOT_ASSESSED", "reason_code": "UNKNOWN_CASE"},
+            HARNESS.ecology_box_001_rejection("UNFROZEN_CASE"),
+        )
+
+    def test_ecology_box_001_manifest_tamper_is_detectable(self):
+        root = HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+        manifest = json.loads((root / "freeze-manifest.yaml").read_text(encoding="utf-8"))
+        task_hash = f"sha256:{HARNESS.sha256_file(root / 'tasks' / 'task-registry.yaml')}"
+        self.assertEqual(task_hash, manifest["task_set_hash"])
+        tampered = copy.deepcopy(manifest)
+        tampered["task_set_hash"] = "sha256:" + ("0" * 64)
+        self.assertNotEqual(task_hash, tampered["task_set_hash"])
+
+    def test_ecology_box_001_contains_no_run_record(self):
+        run_root = (
+            HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001" / "runs"
+        )
+        records = [
+            path for path in run_root.iterdir()
+            if path.is_file() and path.name != "README.md"
+        ]
+        self.assertEqual([], records)
+
     def test_agent_native_reviews_preserve_real_independence(self):
         details = HARNESS.check_agent_native_reviews()
         self.assertEqual(14, details["review_sessions_checked"])

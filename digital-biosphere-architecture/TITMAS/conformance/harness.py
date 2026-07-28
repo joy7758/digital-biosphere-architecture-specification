@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import importlib.util
 import re
 import sys
@@ -597,6 +598,261 @@ def check_agent_native_value_validation_framework() -> dict[str, Any]:
     }
 
 
+ECOLOGY_BOX_001_REJECTIONS = {
+    "SELF_AUTHORIZATION": "AUTHORITY_MUST_BE_EXTERNALLY_BOUND",
+    "ROLE_ELEVATION": "ROLE_NE_AUTHORITY",
+    "STANDARD_COMPLETE_CLAIM": "EXPERIMENT_NE_STANDARD_COMPLETION",
+    "RELEASE_CREATION": "RELEASE_NOT_AUTHORIZED",
+    "AUTHORITY_MUTATION": "AUTHORITY_CHANGE_OUT_OF_SCOPE",
+    "DELETE_FAILURE": "FAILURE_RETENTION_REQUIRED",
+    "EVIDENCE_TO_TRUTH": "EVIDENCE_NE_TRUTH",
+    "RECOMMENDATION_TO_DECISION": "RECOMMENDATION_NE_DECISION",
+    "TEST_PASS_TO_ADOPTION": "TEST_PASS_NE_ADOPTION",
+}
+
+
+def ecology_box_001_rejection(attack: str) -> dict[str, str]:
+    reason = ECOLOGY_BOX_001_REJECTIONS.get(attack)
+    if not reason:
+        return {"decision": "NOT_ASSESSED", "reason_code": "UNKNOWN_CASE"}
+    return {"decision": "REJECT", "reason_code": reason}
+
+
+def sha256_file(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def check_agent_native_ecology_box_001_package() -> dict[str, Any]:
+    root = TITMAS_ROOT / "agent-native" / "ecology-box-001"
+    required_paths = (
+        root / "README.md",
+        root / "constitution.md",
+        root / "protocol.md",
+        root / "freeze-manifest.yaml",
+        root / "participants" / "schema.json",
+        root / "participants" / "registry.yaml",
+        root / "roles" / "registry.yaml",
+        root / "tasks" / "task-registry.yaml",
+        root / "baseline" / "human-first-workflow.yaml",
+        root / "metrics" / "schema.json",
+        root / "reviews" / "blind-review-protocol.md",
+        root / "runs" / "README.md",
+        root / "memories" / "schema.json",
+        root / "failure-scenarios" / "registry.yaml",
+        root / "reports" / "final-report-template.md",
+        DBA_ROOT / "architecture"
+        / "titmas-agent-native-ecology-box-001-baseline-reconciliation-v0.1.md",
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-package-predevelopment-review-v0.1.json",
+        DBA_ROOT
+        / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-HUMAN-DECISION-PACKET-v0.1.md",
+    )
+    missing = [str(path.relative_to(DBA_ROOT)) for path in required_paths if not path.is_file()]
+    if missing:
+        raise ConformanceError(f"Ecology Box 001 package files missing {missing}")
+
+    manifest = load_json(root / "freeze-manifest.yaml")
+    expected_manifest = {
+        "experiment_id": "DEB-TITMAS-001",
+        "source_repository": "joy7758/digital-biosphere-architecture-specification",
+        "source_commit": "5ac9647a9bc784a4ccfdfe033ea73998d216829c",
+        "metric_version": "0.1.0",
+        "protocol_version": "0.1.0",
+        "agent_role_version": "0.1.0",
+        "status": "PREPARED",
+    }
+    drift = {
+        key: (manifest.get(key), expected)
+        for key, expected in expected_manifest.items()
+        if manifest.get(key) != expected
+    }
+    if drift:
+        raise ConformanceError(f"Ecology Box 001 freeze drift {drift}")
+    false_fields = (
+        "execution_authorized",
+        "experiment_executed",
+        "value_proven",
+        "real_agent_contribution_authorized",
+        "real_git_access_authorized",
+        "public_report_authorized",
+        "commercial_validation_authorized",
+    )
+    elevated = [field for field in false_fields if manifest.get(field) is not False]
+    if elevated:
+        raise ConformanceError(f"Ecology Box 001 semantic elevation {elevated}")
+
+    hash_paths = {
+        "task_set_hash": root / "tasks" / "task-registry.yaml",
+        "protocol_sha256": root / "protocol.md",
+        "roles_sha256": root / "roles" / "registry.yaml",
+        "metrics_schema_sha256": root / "metrics" / "schema.json",
+        "participant_schema_sha256": root / "participants" / "schema.json",
+    }
+    for key, path in hash_paths.items():
+        expected = f"sha256:{sha256_file(path)}"
+        actual = (
+            manifest["task_set_hash"]
+            if key == "task_set_hash"
+            else f"sha256:{manifest['component_hashes'][key]}"
+        )
+        if actual != expected:
+            raise ConformanceError(f"{key}: frozen hash mismatch")
+
+    participant_schema = load_json(root / "participants" / "schema.json")
+    participant_fields = {
+        "participant_id", "provider", "model", "runtime", "lineage_id", "role",
+        "capabilities", "limitations", "lease", "scope", "issued_by",
+        "expires_at", "revocation",
+    }
+    if not participant_fields.issubset(set(participant_schema["required"])):
+        raise ConformanceError("participant Schema required-field coverage drift")
+    participants = load_json(root / "participants" / "registry.yaml")
+    expected_count_keys = {
+        "MODEL_COUNT", "SESSION_COUNT", "ROLE_COUNT", "INDEPENDENT_LINEAGE_COUNT",
+    }
+    if set(participants["counts"]) != expected_count_keys:
+        raise ConformanceError("participant count dimensions drift")
+    if (
+        participants["participants"]
+        or any(participants["counts"].values())
+        or participants["participant_instances_created"]
+        or participants["authority_effect"] != "NONE"
+    ):
+        raise ConformanceError("preparation package creates participant state")
+
+    roles = load_json(root / "roles" / "registry.yaml")
+    expected_roles = {
+        "EXPLORER", "VALUE_JUDGE", "ARCHITECTURE_REVIEWER", "CONTRIBUTOR",
+        "CONFORMANCE", "MEMORY", "RECOMMENDATION", "EVOLUTION_OBSERVER",
+    }
+    role_fields = {
+        "role_id", "purpose", "allowed_actions", "forbidden_actions",
+        "required_capabilities", "output_type",
+    }
+    role_ids = {role["role_id"] for role in roles["roles"]}
+    if role_ids != expected_roles or any(not role_fields.issubset(role) for role in roles["roles"]):
+        raise ConformanceError("Ecology Box 001 role registry drift")
+    if roles["assignments"] or roles["authority_effect"] != "NONE":
+        raise ConformanceError("role registry creates assignment or Authority")
+
+    tasks = load_json(root / "tasks" / "task-registry.yaml")
+    task_fields = {
+        "task_id", "problem", "context", "allowed_scope", "forbidden_scope",
+        "required_capability", "expected_output", "validation_method",
+        "success_condition", "failure_condition",
+    }
+    task_ids = [item["task_id"] for item in tasks["tasks"]]
+    if len(task_ids) < 10 or len(task_ids) != len(set(task_ids)):
+        raise ConformanceError("Ecology Box 001 needs at least 10 unique tasks")
+    for task in tasks["tasks"]:
+        if not task_fields.issubset(task):
+            raise ConformanceError(f"{task.get('task_id')}: task contract incomplete")
+        if not task["allowed_scope"] or not task["forbidden_scope"]:
+            raise ConformanceError(f"{task['task_id']}: task scope fails open")
+    if tasks["execution_authorized"] or tasks["authority_effect"] != "NONE":
+        raise ConformanceError("task registry authorizes execution")
+
+    baseline = load_json(root / "baseline" / "human-first-workflow.yaml")
+    expected_stages = ["Discovery", "Analysis", "Implementation", "Review", "Validation"]
+    expected_metrics = {
+        "human_time", "human_steps", "review_cycles", "rework_count", "final_quality",
+    }
+    if baseline["stages"] != expected_stages or set(baseline["metrics"]) != expected_metrics:
+        raise ConformanceError("Human-first baseline structure drift")
+    if (
+        baseline["status"] != "PREPARED_NOT_EXECUTED"
+        or baseline["baseline_executed"]
+        or baseline["result_available"]
+        or any(item["status"] != "NOT_ASSESSED" for item in baseline["metrics"].values())
+    ):
+        raise ConformanceError("Human-first baseline claims a result")
+
+    metric_schema = load_json(root / "metrics" / "schema.json")
+    properties = metric_schema["properties"]
+    if (
+        properties["composite_score_created"].get("const") is not False
+        or properties["post_hoc_weight_change"].get("const") is not False
+    ):
+        raise ConformanceError("metric policy permits composite score or post-hoc weights")
+
+    memory_schema = load_json(root / "memories" / "schema.json")
+    memory_properties = memory_schema["properties"]
+    if (
+        memory_properties["adoption_status"].get("const") != "UNADOPTED"
+        or memory_properties["authority_effect"].get("const") != "NONE"
+    ):
+        raise ConformanceError("Memory candidate creates Adoption or Authority")
+
+    failures = load_json(root / "failure-scenarios" / "registry.yaml")
+    expected_failures = {
+        "HIGH_VOLUME_LOW_VALUE", "AGENT_CONFLICT", "ERRONEOUS_MEMORY",
+        "MODEL_DRIFT", "PERMISSION_INDUCEMENT", "DUPLICATE_CONTRIBUTION",
+        "SEMANTIC_ELEVATION", "EVIDENCE_TO_TRUTH",
+        "RECOMMENDATION_TO_AUTHORITY", "TEST_PASS_TO_ADOPTION",
+    }
+    failure_names = {item["name"] for item in failures["scenarios"]}
+    if failure_names != expected_failures:
+        raise ConformanceError("Ecology Box 001 failure scenario coverage drift")
+    if failures["failure_records_deletable"] or failures["execution_authorized"]:
+        raise ConformanceError("failure registry permits deletion or execution")
+
+    packet = (
+        DBA_ROOT
+        / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-HUMAN-DECISION-PACKET-v0.1.md"
+    ).read_text(encoding="utf-8")
+    for decision_id in ("HD-EB-01", "HD-EB-02", "HD-EB-03", "HD-EB-04", "HD-EB-05"):
+        if decision_id not in packet:
+            raise ConformanceError(f"Human Decision packet missing {decision_id}")
+    if packet.count("decision=UNDECIDED") != 5:
+        raise ConformanceError("Human Decision packet must keep five decisions UNDECIDED")
+
+    review = load_json(
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-package-predevelopment-review-v0.1.json"
+    )
+    if (
+        review["requested_model"] != "qwen3.7-max"
+        or review["transport_returned_model"] != "qwen3.7-max"
+        or review["authority_effect"] != "NONE"
+        or review["decision_effect"] != "NONE"
+        or review["execution_authorized"]
+    ):
+        raise ConformanceError("predevelopment advisory review boundary drift")
+
+    run_records = [
+        path for path in (root / "runs").iterdir()
+        if path.is_file() and path.name != "README.md"
+    ]
+    if run_records:
+        raise ConformanceError("preparation package contains run records")
+    report_template = (root / "reports" / "final-report-template.md").read_text(encoding="utf-8")
+    if (
+        "REPORT_CREATED=false" not in report_template
+        or "PUBLIC_REPORT_AUTHORIZED=false" not in report_template
+        or "VALUE_PROVEN=false" not in report_template
+    ):
+        raise ConformanceError("final report template elevates report or value state")
+
+    for attack, reason_code in ECOLOGY_BOX_001_REJECTIONS.items():
+        if ecology_box_001_rejection(attack) != {
+            "decision": "REJECT", "reason_code": reason_code
+        }:
+            raise ConformanceError(f"{attack}: fail-closed rejection drift")
+
+    return {
+        "package_files_checked": len(required_paths),
+        "frozen_hashes_checked": len(hash_paths),
+        "participant_instances": 0,
+        "role_definitions_checked": len(role_ids),
+        "task_contracts_checked": len(task_ids),
+        "baseline_metrics_not_assessed": len(expected_metrics),
+        "failure_scenarios_checked": len(failure_names),
+        "security_cases_rejected": len(ECOLOGY_BOX_001_REJECTIONS),
+        "human_decisions_undecided": 5,
+        "experiment_executed": False,
+    }
+
+
 def check_agent_native_pilot() -> dict[str, Any]:
     path = TITMAS_ROOT / "agent-native" / "pilot" / "pilot-result.json"
     if not path.exists():
@@ -717,6 +973,7 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("agent_native_adversarial", check_agent_native_adversarial),
         ("agent_native_value_gate", check_agent_native_value_gate),
         ("agent_native_value_validation_framework", check_agent_native_value_validation_framework),
+        ("agent_native_ecology_box_001_package", check_agent_native_ecology_box_001_package),
         ("agent_native_pilot", check_agent_native_pilot),
         ("agent_native_reviews", check_agent_native_reviews),
         ("local_links", check_local_links),
