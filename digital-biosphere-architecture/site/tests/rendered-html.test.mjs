@@ -2,6 +2,10 @@ import assert from "node:assert/strict";
 import { access, readFile, readdir } from "node:fs/promises";
 import test from "node:test";
 import { resolveReleaseContext, routeMarkers } from "../scripts/release-mode.mjs";
+import {
+  selectActiveAnnouncement,
+  validateUpdatesCatalog,
+} from "../scripts/update-contract.mjs";
 
 const publicRoot = new URL("../public/", import.meta.url);
 const [publicStatus, publicAgentIndex, publicAgentCustomerPackage, publicDbosPackage, publicTitmasCommunity] = await Promise.all([
@@ -108,6 +112,81 @@ test("renders OpenAI-inspired peer surfaces without an empty product shelf", asy
   for (const html of [zhResearch, enResearch, zhIndex, enIndex, zhApplications, enApplications, zhDemos, enDemos]) {
     assert.doesNotMatch(html, /href="(?:\/en)?\/products\//);
   }
+});
+
+test("renders bilingual updates, one active announcement, and the website update constitution", async () => {
+  const [zhHomeResponse, enHomeResponse, zhUpdatesResponse, enUpdatesResponse, zhDetailResponse, enDetailResponse, zhConstitutionResponse, enConstitutionResponse] = await Promise.all([
+    render("/"),
+    render("/en"),
+    render("/updates"),
+    render("/en/updates"),
+    render("/updates/information-architecture-v0-1"),
+    render("/en/updates/information-architecture-v0-1"),
+    render("/updates/constitution"),
+    render("/en/updates/constitution"),
+  ]);
+  for (const response of [zhHomeResponse, enHomeResponse, zhUpdatesResponse, enUpdatesResponse, zhDetailResponse, enDetailResponse, zhConstitutionResponse, enConstitutionResponse]) {
+    assert.equal(response.status, 200);
+  }
+  const [zhHome, enHome, zhUpdates, enUpdates, zhDetail, enDetail, zhConstitution, enConstitution] = await Promise.all([
+    zhHomeResponse.text(),
+    enHomeResponse.text(),
+    zhUpdatesResponse.text(),
+    enUpdatesResponse.text(),
+    zhDetailResponse.text(),
+    enDetailResponse.text(),
+    zhConstitutionResponse.text(),
+    enConstitutionResponse.text(),
+  ]);
+  assert.match(zhHome, /当前公告/);
+  assert.match(enHome, /Current announcement/);
+  assert.match(zhHome, /网站结构已更新/);
+  assert.match(enHome, /Site structure updated/);
+  assert.equal((zhHome.match(/class="announcement-bar"/g) || []).length, 1);
+  assert.equal((enHome.match(/class="announcement-bar"/g) || []).length, 1);
+  assert.match(zhUpdates, /每次变化，都要说明发生了什么/);
+  assert.match(enUpdates, /Every change should explain what changed/);
+  assert.match(zhDetail, /AVAILABLE_PRODUCTS=0/);
+  assert.match(enDetail, /PRODUCTION_READY=false/);
+  assert.match(zhConstitution, /TITMAS 网站更新宪法/);
+  assert.match(enConstitution, /TITMAS Website Update Constitution/);
+  assert.match(zhConstitution, /OpenAI：面向受众的信息架构/);
+  assert.match(enConstitution, /OpenTelemetry: open-specification lifecycle/);
+  assert.match(zhConstitution, /REFERENCE_NE_ADOPTION/);
+  assert.match(enConstitution, /REFERENCE_NE_ENDORSEMENT/);
+});
+
+test("enforces deterministic announcement selection and update provenance", async () => {
+  const updates = await readFile(new URL("../public/updates.json", import.meta.url), "utf8").then(JSON.parse);
+  assert.equal(validateUpdatesCatalog(updates), true);
+  assert.equal(selectActiveAnnouncement(updates.items, new Date("2026-07-28T13:20:00+08:00")).slug, "information-architecture-v0-1");
+  assert.equal(selectActiveAnnouncement(updates.items, new Date("2026-09-01T00:00:00+08:00")), null);
+
+  const selectionFixtures = [
+    {
+      slug: "release",
+      category: "RELEASE_NOTE",
+      status: "PUBLISHED",
+      is_announcement: true,
+      severity: null,
+      effective_date: "2026-07-28T10:00:00+08:00",
+      expires_at: "2026-08-20T00:00:00+08:00",
+    },
+    {
+      slug: "maintenance",
+      category: "MAINTENANCE_NOTICE",
+      status: "PUBLISHED",
+      is_announcement: true,
+      severity: "high",
+      effective_date: "2026-07-27T10:00:00+08:00",
+      expires_at: "2026-08-10T00:00:00+08:00",
+    },
+  ];
+  assert.equal(selectActiveAnnouncement(selectionFixtures, new Date("2026-07-29T00:00:00+08:00")).slug, "maintenance");
+
+  const invalidSupersedes = structuredClone(updates);
+  invalidSupersedes.items[0].supersedes = "missing-update";
+  assert.throws(() => validateUpdatesCatalog(invalidSupersedes), /SUPERSEDES_TARGET_NOT_FOUND/);
 });
 
 test("renders bilingual commercial evaluation entry with fail-closed truth", async () => {
@@ -244,6 +323,9 @@ test("ships agent-readable and discovery resources", async () => {
   await Promise.all([
     access(new URL("llms.txt", root)),
     access(new URL("site-catalog.json", root)),
+    access(new URL("updates.json", root)),
+    access(new URL("WEBSITE-UPDATE-CONSTITUTION-v0.1.json", root)),
+    access(new URL("WEBSITE-UPDATE-CONSTITUTION-v0.1.md", root)),
     access(new URL("agent-index.json", root)),
     access(new URL("status.json", root)),
     access(new URL("agent-customer-package.json", root)),
@@ -262,7 +344,7 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("examples/titmas-first-run/entity-object.synthetic.v0.1.json", root)),
   ]);
 
-  const [agentIndex, status, agentCustomerPackage, dbosPackage, titmasCommunity, medicalEvidence, siteCatalog, llms] = await Promise.all([
+  const [agentIndex, status, agentCustomerPackage, dbosPackage, titmasCommunity, medicalEvidence, siteCatalog, updatesCatalog, websiteConstitution, llms] = await Promise.all([
     readFile(new URL("agent-index.json", root), "utf8").then(JSON.parse),
     readFile(new URL("status.json", root), "utf8").then(JSON.parse),
     readFile(new URL("agent-customer-package.json", root), "utf8").then(JSON.parse),
@@ -270,12 +352,27 @@ test("ships agent-readable and discovery resources", async () => {
     readFile(new URL("titmas-community.json", root), "utf8").then(JSON.parse),
     readFile(new URL("medical-evidence-demo.json", root), "utf8").then(JSON.parse),
     readFile(new URL("site-catalog.json", root), "utf8").then(JSON.parse),
+    readFile(new URL("updates.json", root), "utf8").then(JSON.parse),
+    readFile(new URL("WEBSITE-UPDATE-CONSTITUTION-v0.1.json", root), "utf8").then(JSON.parse),
     readFile(new URL("llms.txt", root), "utf8"),
   ]);
   assert.equal(agentIndex.entrypoints.site_catalog, "/site-catalog.json");
   assert.equal(agentIndex.entrypoints.research_zh, "/research/");
   assert.equal(agentIndex.entrypoints.applications_en, "/en/applications/");
   assert.equal(agentIndex.entrypoints.demos_zh, "/demos/");
+  assert.equal(agentIndex.entrypoints.updates_zh, "/updates/");
+  assert.equal(agentIndex.entrypoints.updates_machine, "/updates.json");
+  assert.equal(agentIndex.entrypoints.website_update_constitution_machine, "/WEBSITE-UPDATE-CONSTITUTION-v0.1.json");
+  assert.equal(updatesCatalog.announcement_policy.maximum_visible, 1);
+  assert.equal(updatesCatalog.items[0].source_commit.length, 40);
+  assert.equal(updatesCatalog.items[0].truth_boundaries[0].scope, "PRODUCT_AVAILABILITY");
+  assert.equal(websiteConstitution.default_decision_rule, "WHEN_WEBSITE_CHOICE_IS_REQUIRED_REFER_TO_OPENAI_AND_OPENTELEMETRY_FIRST");
+  assert.equal(websiteConstitution.effects.openai_affiliation, false);
+  assert.equal(websiteConstitution.effects.opentelemetry_affiliation, false);
+  assert.equal(websiteConstitution.effects.release_authorization, false);
+  assert.equal(agentIndex.website_update_governance.reference_creates_affiliation, false);
+  assert.match(llms, /WHEN_WEBSITE_CHOICE_IS_REQUIRED_REFER_TO_OPENAI_AND_OPENTELEMETRY_FIRST/);
+  assert.match(llms, /ANNOUNCEMENT_NE_RELEASE_AUTHORIZATION=true/);
   assert.equal(siteCatalog.public_surfaces.products.enabled, false);
   assert.equal(siteCatalog.public_surfaces.products.available_products, 0);
   assert.equal(siteCatalog.truth.future_placeholder_items_published, 0);

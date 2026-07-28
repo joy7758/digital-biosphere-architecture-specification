@@ -3,6 +3,7 @@ import { access, readFile } from "node:fs/promises";
 import { dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { resolveReleaseContext } from "./release-mode.mjs";
+import { validateUpdatesCatalog } from "./update-contract.mjs";
 
 const siteRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputRoot = join(siteRoot, "out");
@@ -17,6 +18,12 @@ const requiredFiles = [
   "en/applications/index.html",
   "demos/index.html",
   "en/demos/index.html",
+  "updates/index.html",
+  "en/updates/index.html",
+  "updates/information-architecture-v0-1/index.html",
+  "en/updates/information-architecture-v0-1/index.html",
+  "updates/constitution/index.html",
+  "en/updates/constitution/index.html",
   "community/index.html",
   "en/community/index.html",
   "industries/index.html",
@@ -60,6 +67,9 @@ const requiredFiles = [
   "en/status/index.html",
   "llms.txt",
   "site-catalog.json",
+  "updates.json",
+  "WEBSITE-UPDATE-CONSTITUTION-v0.1.json",
+  "WEBSITE-UPDATE-CONSTITUTION-v0.1.md",
   "agent-index.json",
   "status.json",
   "titmas-community.json",
@@ -73,7 +83,7 @@ const requiredFiles = [
 
 await Promise.all(requiredFiles.map((file) => access(join(outputRoot, file))));
 
-const [zh, en, zhCommunity, enCommunity, zhStatus, enStatus, status, titmasCommunity, agentCustomerPackage, dbosPackage, release, manifest, siteCatalog] = await Promise.all([
+const [zh, en, zhCommunity, enCommunity, zhStatus, enStatus, status, titmasCommunity, agentCustomerPackage, dbosPackage, release, manifest, siteCatalog, updatesCatalog, websiteConstitution] = await Promise.all([
   readFile(join(outputRoot, "index.html"), "utf8"),
   readFile(join(outputRoot, "en/index.html"), "utf8"),
   readFile(join(outputRoot, "community/index.html"), "utf8"),
@@ -87,6 +97,17 @@ const [zh, en, zhCommunity, enCommunity, zhStatus, enStatus, status, titmasCommu
   readFile(join(outputRoot, "release.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release-manifest.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "site-catalog.json"), "utf8").then(JSON.parse),
+  readFile(join(outputRoot, "updates.json"), "utf8").then(JSON.parse),
+  readFile(join(outputRoot, "WEBSITE-UPDATE-CONSTITUTION-v0.1.json"), "utf8").then(JSON.parse),
+]);
+validateUpdatesCatalog(updatesCatalog);
+const [zhUpdates, enUpdates, zhUpdateDetail, enUpdateDetail, zhConstitution, enConstitution] = await Promise.all([
+  readFile(join(outputRoot, "updates/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/updates/index.html"), "utf8"),
+  readFile(join(outputRoot, "updates/information-architecture-v0-1/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/updates/information-architecture-v0-1/index.html"), "utf8"),
+  readFile(join(outputRoot, "updates/constitution/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/updates/constitution/index.html"), "utf8"),
 ]);
 const [zhResearch, enResearch, zhResearchIndex, enResearchIndex, zhApplications, enApplications, zhDemos, enDemos] = await Promise.all([
   readFile(join(outputRoot, "research/index.html"), "utf8"),
@@ -139,6 +160,23 @@ assert.match(zhApplications, /医疗证据基础设施/);
 assert.match(enApplications, /Manufacturing AI Agent Ecosystem/);
 assert.match(zhDemos, /SYNTHETIC_DATA=true/);
 assert.match(enDemos, /CLINICAL_VALIDATION=false/);
+assert.match(zh, /网站结构已更新/);
+assert.match(en, /Site structure updated/);
+assert.match(zhUpdates, /每次变化，都要说明发生了什么/);
+assert.match(enUpdates, /Every change should explain what changed/);
+assert.match(zhUpdateDetail, /AVAILABLE_PRODUCTS=0/);
+assert.match(enUpdateDetail, /PRODUCTION_READY=false/);
+assert.match(zhConstitution, /TITMAS 网站更新宪法/);
+assert.match(enConstitution, /TITMAS Website Update Constitution/);
+assert.match(zhConstitution, /OpenAI/);
+assert.match(zhConstitution, /OpenTelemetry/);
+assert.equal(updatesCatalog.items[0].source_commit, "6a30da9c3e4ea52885ba911da50320a06191fd6f");
+assert.equal(updatesCatalog.items[0].severity, null);
+assert.equal(updatesCatalog.items[0].truth_boundaries.length, 3);
+assert.equal(websiteConstitution.default_decision_rule, "WHEN_WEBSITE_CHOICE_IS_REQUIRED_REFER_TO_OPENAI_AND_OPENTELEMETRY_FIRST");
+assert.equal(websiteConstitution.effects.openai_affiliation, false);
+assert.equal(websiteConstitution.effects.opentelemetry_affiliation, false);
+assert.equal(websiteConstitution.effects.release_authorization, false);
 assert.equal(siteCatalog.public_surfaces.products.enabled, false);
 assert.equal(siteCatalog.public_surfaces.products.available_products, 0);
 assert.equal(siteCatalog.public_surfaces.products.public_navigation, false);

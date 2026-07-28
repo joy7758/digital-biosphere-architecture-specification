@@ -25,6 +25,14 @@
       "entry_zh": "/community/",
       "entry_en": "/en/community/"
     },
+    "updates": {
+      "enabled": true,
+      "index_zh": "/updates/",
+      "index_en": "/en/updates/",
+      "machine_entry": "/updates.json",
+      "constitution_zh": "/updates/constitution/",
+      "constitution_en": "/en/updates/constitution/"
+    },
     "products": {
       "enabled": false,
       "public_navigation": false,
@@ -45,6 +53,11 @@
     "demos": {
       "route_template": "/demo/{slug}/",
       "required_metadata": ["id", "title", "status", "data_policy", "validation_boundary", "production_boundary"]
+    },
+    "updates": {
+      "route_template": "/updates/{slug}/",
+      "required_metadata": ["slug", "category", "status", "audience", "effective_date", "expires_at", "source_commit", "truth_boundaries"],
+      "active_announcement_rule": "SEVERITY_DESC_THEN_EXPIRES_AT_ASC_THEN_EFFECTIVE_DATE_DESC"
     },
     "products": {
       "route_template": "/products/{slug}/",
@@ -112,6 +125,9 @@
     "available_products": 0,
     "available_commercial_offering": false,
     "production_ready": false,
-    "future_placeholder_items_published": 0
+    "future_placeholder_items_published": 0,
+    "website_update_constitution_status": "SITE_GOVERNANCE_BASELINE",
+    "openai_affiliation": false,
+    "opentelemetry_affiliation": false
   }
 }

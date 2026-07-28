@@ -30,6 +30,8 @@ Human entry:
 
 Machine entry:
 - /site-catalog.json
+- /updates.json
+- /WEBSITE-UPDATE-CONSTITUTION-v0.1.json
 
 AVAILABLE_PRODUCTS=0
 PRODUCTS_PUBLIC_NAVIGATION=false
@@ -40,6 +42,31 @@ The public site does not expose an empty Products shelf. The machine catalog
 preserves route templates and required metadata for future research,
 applications, demos, and products. A Products surface may be published only
 after at least one real, bounded offering exists.
+
+## Website updates and decision constitution
+
+Human entry:
+- Updates: /updates/ and /en/updates/
+- Website Update Constitution: /updates/constitution/ and /en/updates/constitution/
+
+Default website decision rule:
+WHEN_WEBSITE_CHOICE_IS_REQUIRED_REFER_TO_OPENAI_AND_OPENTELEMETRY_FIRST
+
+OpenAI is the audience-facing reference for information architecture,
+Research overview/index separation, Newsroom categories, release notes,
+developer updates, progressive disclosure, and concise announcements.
+
+OpenTelemetry is the open-specification reference for announcement date and
+expiry, document-level maturity, Specification/Implementation/Contrib
+separation, versioning, stability, deprecation, provenance, and documentation
+contribution workflow.
+
+Verified TITMAS truth and governance boundaries override reference style.
+REFERENCE_NE_ADOPTION=true
+REFERENCE_NE_ENDORSEMENT=true
+OPENAI_AFFILIATION=false
+OPENTELEMETRY_AFFILIATION=false
+ANNOUNCEMENT_NE_RELEASE_AUTHORIZATION=true
 
 ## Commercial Evaluation Pack v0.2
 

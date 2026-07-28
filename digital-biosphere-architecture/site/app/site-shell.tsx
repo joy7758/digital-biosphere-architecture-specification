@@ -1,5 +1,10 @@
 import type { Locale } from "./site-content";
 import { content } from "./site-content";
+import {
+  formatUpdateDate,
+  getActiveAnnouncement,
+  updateCategoryLabels,
+} from "./update-content";
 
 export function Brand() {
   return (
@@ -28,6 +33,8 @@ type SiteSection =
   | "medicalIndustry"
   | "medical"
   | "demo"
+  | "updates"
+  | "constitution"
   | "status"
   | "community"
   | "commercial";
@@ -40,6 +47,7 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
   const research = locale === "zh" ? "/research/" : "/en/research/";
   const applications = locale === "zh" ? "/applications/" : "/en/applications/";
   const demos = locale === "zh" ? "/demos/" : "/en/demos/";
+  const updates = locale === "zh" ? "/updates/" : "/en/updates/";
   const commercial = locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/";
   const languageRoutes: Record<SiteSection, [string, string]> = {
     home: ["/en/", "/"],
@@ -51,6 +59,8 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
     medicalIndustry: ["/en/industry/medical-evidence/", "/industry/medical-evidence/"],
     medical: ["/en/demo/medical-evidence/", "/demo/medical-evidence/"],
     demo: ["/en/digital-cell/", "/digital-cell/"],
+    updates: ["/en/updates/", "/updates/"],
+    constitution: ["/en/updates/constitution/", "/updates/constitution/"],
     status: ["/en/status/", "/status/"],
     community: ["/en/community/", "/community/"],
     commercial: ["/en/commercial-evaluation/", "/commercial-evaluation/"],
@@ -69,6 +79,9 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
         {locale === "zh" ? "Demo" : "Demos"}
       </a>
       <a href={community} aria-current={section === "community" ? "page" : undefined}>{c.nav.developers}</a>
+      <a href={updates} aria-current={section === "updates" || section === "constitution" ? "page" : undefined}>
+        {locale === "zh" ? "更新" : "Updates"}
+      </a>
       <a href={commercial} aria-current={section === "commercial" ? "page" : undefined}>
         {locale === "zh" ? "商业评估" : "Evaluation"}
       </a>
@@ -104,7 +117,28 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
           <nav aria-label={locale === "zh" ? "移动导航" : "Mobile navigation"}>{nav}</nav>
         </details>
       </div>
+      <AnnouncementBar locale={locale} />
     </header>
+  );
+}
+
+function AnnouncementBar({ locale }: { locale: Locale }) {
+  const announcement = getActiveAnnouncement();
+  if (!announcement) return null;
+  const updates = locale === "zh" ? "/updates/" : "/en/updates/";
+
+  return (
+    <aside className="announcement-bar" aria-label={locale === "zh" ? "当前公告" : "Current announcement"}>
+      <div>
+        <a className="announcement-main" href={announcement.href[locale]}>
+          <span>{updateCategoryLabels[announcement.category][locale]}</span>
+          <time dateTime={announcement.effective_date}>{formatUpdateDate(locale, announcement.effective_date)}</time>
+          <strong>{announcement.title[locale]}</strong>
+          <i aria-hidden="true">→</i>
+        </a>
+        <a className="announcement-all" href={updates}>{locale === "zh" ? "全部更新" : "All updates"}</a>
+      </div>
+    </aside>
   );
 }
 
@@ -122,6 +156,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <a href="/llms.txt">llms.txt</a>
           <a href="/agent-index.json">agent-index.json</a>
           <a href="/site-catalog.json">site-catalog.json</a>
+          <a href="/updates.json">updates.json</a>
           <a href="/status.json">status.json</a>
           <a href="/titmas-community.json">titmas-community.json</a>
           <a href="/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json">commercial-evaluation-pack.json</a>
@@ -136,6 +171,9 @@ export function Footer({ locale }: { locale: Locale }) {
           </a>
           <a href="https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/CLEAN-CLONE-VALIDATION-REPORT.md">
             Validation Report
+          </a>
+          <a href={locale === "zh" ? "/updates/constitution/" : "/en/updates/constitution/"}>
+            Website Update Constitution
           </a>
         </div>
       </div>

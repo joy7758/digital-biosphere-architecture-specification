@@ -1,0 +1,94 @@
+{
+  "schema_version": "0.1",
+  "catalog_id": "TITMAS-PUBLIC-UPDATES-0.1",
+  "observed_at": "2026-07-28T13:10:00+08:00",
+  "route_template": "/updates/{slug}/",
+  "categories": [
+    "RELEASE_NOTE",
+    "RESEARCH_UPDATE",
+    "DEMO_UPDATE",
+    "GOVERNANCE_NOTICE",
+    "MAINTENANCE_NOTICE"
+  ],
+  "announcement_policy": {
+    "maximum_visible": 1,
+    "selection_rule": "SEVERITY_DESC_THEN_EXPIRES_AT_ASC_THEN_EFFECTIVE_DATE_DESC",
+    "severity_allowed_for": [
+      "GOVERNANCE_NOTICE",
+      "MAINTENANCE_NOTICE"
+    ],
+    "expires_at_allowed_for_all_categories": true,
+    "null_expires_at_behavior": "EVERGREEN_NOT_PREFERRED_OVER_FINITE_ANNOUNCEMENTS",
+    "no_active_item_behavior": "DO_NOT_RENDER_ANNOUNCEMENT_DOM"
+  },
+  "truth_boundaries_schema": {
+    "type": "array",
+    "required": [
+      "scope",
+      "limitation"
+    ]
+  },
+  "filter_activation_gate": {
+    "interactive_filter_enabled": false,
+    "condition": "UPDATE_COUNT_GT_8_OR_CATEGORY_COUNT_GTE_3"
+  },
+  "items": [
+    {
+      "slug": "information-architecture-v0-1",
+      "category": "RELEASE_NOTE",
+      "status": "PUBLISHED",
+      "audience": [
+        "RESEARCHER",
+        "DEVELOPER",
+        "TECHNICAL_EVALUATOR"
+      ],
+      "effective_date": "2026-07-28T12:20:00+08:00",
+      "expires_at": "2026-08-28T00:00:00+08:00",
+      "is_announcement": true,
+      "severity": null,
+      "source_commit": "6a30da9c3e4ea52885ba911da50320a06191fd6f",
+      "source_url": "/site-catalog.json",
+      "supersedes": null,
+      "title": {
+        "zh": "网站结构已更新：研究、行业应用与 Demo 获得独立入口",
+        "en": "Site structure updated: dedicated Research, Applications, and Demos entries"
+      },
+      "summary": {
+        "zh": "新的公开信息架构已经上线；Products 在 AVAILABLE_PRODUCTS=0 时继续保持隐藏。",
+        "en": "The new public information architecture is live; Products remains hidden while AVAILABLE_PRODUCTS=0."
+      },
+      "href": {
+        "zh": "/updates/information-architecture-v0-1/",
+        "en": "/en/updates/information-architecture-v0-1/"
+      },
+      "changes": {
+        "zh": [
+          "新增 Research Overview 与 Research Index。",
+          "新增 Applications 与 Demos 聚合入口。",
+          "新增 site-catalog.json 扩展接口。",
+          "Products 继续受 AVAILABLE_PRODUCTS_GT_0 门控。"
+        ],
+        "en": [
+          "Added Research Overview and Research Index.",
+          "Added Applications and Demos indexes.",
+          "Added the site-catalog.json extension interface.",
+          "Products remains gated by AVAILABLE_PRODUCTS_GT_0."
+        ]
+      },
+      "truth_boundaries": [
+        {
+          "scope": "PRODUCT_AVAILABILITY",
+          "limitation": "AVAILABLE_PRODUCTS=0; this update does not create or announce a product."
+        },
+        {
+          "scope": "COMMERCIAL_AVAILABILITY",
+          "limitation": "AVAILABLE_COMMERCIAL_OFFERING=false."
+        },
+        {
+          "scope": "PRODUCTION",
+          "limitation": "PRODUCTION_READY=false; information architecture does not change implementation maturity."
+        }
+      ]
+    }
+  ]
+}
