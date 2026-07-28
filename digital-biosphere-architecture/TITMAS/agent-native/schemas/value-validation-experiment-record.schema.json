@@ -1,0 +1,227 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/value-validation-experiment-record.schema.json",
+  "title": "TITMAS Agent-Native Value Validation Experiment Record v0.1",
+  "type": "object",
+  "required": [
+    "experiment_id",
+    "record_id",
+    "record_status",
+    "workflow_type",
+    "agent_participants",
+    "lineage",
+    "model",
+    "runtime",
+    "task",
+    "action",
+    "output",
+    "evidence_reference",
+    "human_intervention",
+    "result",
+    "reuse_reference",
+    "limitations",
+    "authority_effect"
+  ],
+  "properties": {
+    "experiment_id": {
+      "const": "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001"
+    },
+    "record_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "record_status": {
+      "enum": [
+        "NOT_EXECUTED",
+        "RECORDED",
+        "FAILED",
+        "STOPPED"
+      ]
+    },
+    "workflow_type": {
+      "enum": [
+        "HUMAN_FIRST",
+        "AGENT_NATIVE"
+      ]
+    },
+    "agent_participants": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "required": [
+        "model_count",
+        "session_count",
+        "independent_lineage_count",
+        "lineage_refs"
+      ],
+      "properties": {
+        "model_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "session_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "independent_lineage_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "lineage_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "model": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "runtime": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "task": {
+      "type": "object",
+      "required": [
+        "task_id",
+        "source_revision",
+        "allowed_scope",
+        "forbidden_scope"
+      ],
+      "properties": {
+        "task_id": {
+          "type": "string"
+        },
+        "source_revision": {
+          "type": "string"
+        },
+        "allowed_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "forbidden_scope": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "action": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "output": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_reference": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "human_intervention": {
+      "type": "object",
+      "required": [
+        "count",
+        "active_minutes",
+        "references"
+      ],
+      "properties": {
+        "count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "active_minutes": {
+          "type": "number",
+          "minimum": 0
+        },
+        "references": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "result": {
+      "type": "object",
+      "required": [
+        "status",
+        "final_outcome_quality",
+        "review_cycles",
+        "clarification_requests",
+        "rework_count"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "NOT_ASSESSED",
+            "PASS",
+            "FAIL",
+            "PARTIAL",
+            "STOPPED"
+          ]
+        },
+        "final_outcome_quality": {
+          "enum": [
+            "NOT_ASSESSED",
+            "ACCEPTABLE",
+            "UNACCEPTABLE"
+          ]
+        },
+        "review_cycles": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "clarification_requests": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rework_count": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": false
+    },
+    "reuse_reference": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "authority_effect": {
+      "const": "NONE"
+    }
+  },
+  "additionalProperties": false
+}
+

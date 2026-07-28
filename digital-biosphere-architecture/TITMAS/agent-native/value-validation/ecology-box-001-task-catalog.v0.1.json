@@ -1,0 +1,133 @@
+{
+  "catalog_id": "TITMAS-ANVV-ECOLOGY-BOX-001-TASKS",
+  "version": "0.1.0",
+  "status": "DESIGN_ONLY_NOT_EXECUTED",
+  "source_revision_policy": "PIN_BEFORE_HUMAN_AUTHORIZED_EXECUTION",
+  "task_count": 10,
+  "tasks": [
+    {
+      "task_id": "VV-001",
+      "problem": "A bounded documentation section contains terminology that could confuse Recommendation with Decision.",
+      "context": "Low-risk documentation-only terminology review.",
+      "allowed_scope": ["one preselected Markdown section", "terminology correction", "local link validation"],
+      "forbidden_scope": ["Authority change", "Gate status change", "code", "external write"],
+      "required_capability": ["architecture terminology review", "Markdown editing"],
+      "expected_output": ["bounded patch candidate", "rationale", "validation receipt"],
+      "validation_method": "Exact phrase scan plus independent blinded rubric review.",
+      "success_condition": "Ambiguous terminology is corrected without changing normative Authority.",
+      "failure_condition": "Ambiguity remains, scope expands, or Authority semantics change."
+    },
+    {
+      "task_id": "VV-002",
+      "problem": "A Development JSON Schema and its example disagree on one required field.",
+      "context": "Low-risk Schema/example consistency task using synthetic data.",
+      "allowed_scope": ["one Development Schema", "one synthetic example", "offline validation"],
+      "forbidden_scope": ["Stable promotion", "canonical Evidence owner change", "runtime implementation"],
+      "required_capability": ["JSON Schema review", "offline conformance"],
+      "expected_output": ["minimal consistency patch candidate", "positive validation result", "negative validation result"],
+      "validation_method": "Run the pinned offline Schema validator against positive and negative fixtures.",
+      "success_condition": "Positive fixture passes and missing-field negative fixture fails closed.",
+      "failure_condition": "Validator fails open, unrelated fields change, or maturity is elevated."
+    },
+    {
+      "task_id": "VV-003",
+      "problem": "A conformance surface lacks one explicit fail-closed semantic-elevation fixture.",
+      "context": "Low-risk synthetic negative-case addition.",
+      "allowed_scope": ["one negative fixture", "one deterministic conformance assertion"],
+      "forbidden_scope": ["production code", "network call", "automatic remediation", "Permission grant"],
+      "required_capability": ["negative testing", "semantic boundary analysis"],
+      "expected_output": ["negative fixture candidate", "expected reason code", "test result"],
+      "validation_method": "Execute deterministic offline rejection and confirm the exact reason code.",
+      "success_condition": "The unsafe case is rejected and the adjacent safe case remains accepted.",
+      "failure_condition": "Unsafe case passes, unrelated cases regress, or rejection creates Authority."
+    },
+    {
+      "task_id": "VV-004",
+      "problem": "A machine-readable entry references a stale internal documentation path.",
+      "context": "Low-risk path consistency task.",
+      "allowed_scope": ["one machine entry reference", "referenced documentation path", "local link check"],
+      "forbidden_scope": ["second canonical entry", "brand or Ownership change", "external redirect"],
+      "required_capability": ["repository navigation", "reference integrity checking"],
+      "expected_output": ["minimal reference correction", "zero-missing-link result"],
+      "validation_method": "Resolve the path from repository root and run local-link conformance.",
+      "success_condition": "The reference resolves and no competing machine entry is created.",
+      "failure_condition": "Path remains missing, escapes repository root, or creates a second canonical entry."
+    },
+    {
+      "task_id": "VV-005",
+      "problem": "An Adapter crosswalk omits an unsupported-field declaration.",
+      "context": "Low-risk mapping-only clarification.",
+      "allowed_scope": ["one Adapter mapping table", "unsupported-field declaration", "mapping limitation"],
+      "forbidden_scope": ["runtime Adapter implementation", "external adoption claim", "new canonical object"],
+      "required_capability": ["crosswalk review", "unsupported-state modeling"],
+      "expected_output": ["mapping correction candidate", "unsupported limitation", "non-adoption statement"],
+      "validation_method": "Field-by-field mapping review against the pinned source contract.",
+      "success_condition": "Unsupported field is explicit and Mapping remains distinct from Adoption.",
+      "failure_condition": "Field is silently invented, implementation is claimed, or Adoption is implied."
+    },
+    {
+      "task_id": "VV-006",
+      "problem": "A synthetic contribution example no longer validates against its Development Schema.",
+      "context": "Low-risk example-only repair.",
+      "allowed_scope": ["one synthetic example", "fixture metadata", "offline validation"],
+      "forbidden_scope": ["real contributor record", "personal data", "GitHub write", "schema weakening"],
+      "required_capability": ["fixture repair", "data minimization"],
+      "expected_output": ["corrected synthetic example", "validation receipt", "known limitations"],
+      "validation_method": "Validate before and after against the unchanged pinned Schema.",
+      "success_condition": "Corrected example passes without weakening Schema or creating a real contribution.",
+      "failure_condition": "Schema is weakened, personal data appears, or example remains invalid."
+    },
+    {
+      "task_id": "VV-007",
+      "problem": "Recommendation calibration lacks an insufficient-evidence abstention case.",
+      "context": "Low-risk synthetic recommendation case.",
+      "allowed_scope": ["one calibration fixture", "expected ABSTAIN disposition", "reason code"],
+      "forbidden_scope": ["Command", "Decision", "automatic execution", "customer recommendation claim"],
+      "required_capability": ["recommendation calibration", "uncertainty handling"],
+      "expected_output": ["abstention fixture candidate", "expected reason code", "calibration result"],
+      "validation_method": "Run deterministic calibration and check ABSTAIN plus exact reason code.",
+      "success_condition": "Insufficient evidence produces ABSTAIN and no downstream command.",
+      "failure_condition": "Case produces recommendation-as-command, PASS, or implicit Authorization."
+    },
+    {
+      "task_id": "VV-008",
+      "problem": "A public-safe guide contains one broken local Markdown link.",
+      "context": "Low-risk documentation link repair.",
+      "allowed_scope": ["one Markdown link", "existing tracked target", "local link validation"],
+      "forbidden_scope": ["new external URL", "public announcement", "content maturity promotion"],
+      "required_capability": ["Markdown link repair", "repository path resolution"],
+      "expected_output": ["minimal link patch", "local-link validation result"],
+      "validation_method": "Run the existing local-link checker from the repository root.",
+      "success_condition": "All scoped links resolve to tracked repository content.",
+      "failure_condition": "Link remains broken, target is invented, or external publication is implied."
+    },
+    {
+      "task_id": "VV-009",
+      "problem": "A Development document lacks an explicit compatibility statement.",
+      "context": "Low-risk maturity metadata correction.",
+      "allowed_scope": ["frontmatter compatibility_statement", "known limitation"],
+      "forbidden_scope": ["Stable promotion", "release authorization", "implementation claim"],
+      "required_capability": ["document maturity policy review", "metadata editing"],
+      "expected_output": ["metadata patch candidate", "maturity-policy conformance result"],
+      "validation_method": "Check required frontmatter and compare against the Development maturity policy.",
+      "success_condition": "Compatibility is explicit and maturity remains Development.",
+      "failure_condition": "Metadata stays incomplete or implies Stable, Release, or implementation."
+    },
+    {
+      "task_id": "VV-010",
+      "problem": "A deterministic conformance failure message does not identify the failed input field.",
+      "context": "Low-risk diagnostic clarity task with no policy change.",
+      "allowed_scope": ["one error message", "one diagnostic test", "offline execution"],
+      "forbidden_scope": ["validation rule change", "network access", "automatic fix", "production deployment"],
+      "required_capability": ["diagnostic UX", "deterministic testing"],
+      "expected_output": ["diagnostic patch candidate", "before/after message", "regression result"],
+      "validation_method": "Trigger the same frozen invalid fixture before and after and compare reason specificity.",
+      "success_condition": "Failure remains fail-closed and names the invalid field deterministically.",
+      "failure_condition": "Rule behavior changes, invalid input passes, or diagnostics expose secrets."
+    }
+  ],
+  "execution_authorized": false,
+  "external_action_authorized": false,
+  "authority_effect": "NONE"
+}
+

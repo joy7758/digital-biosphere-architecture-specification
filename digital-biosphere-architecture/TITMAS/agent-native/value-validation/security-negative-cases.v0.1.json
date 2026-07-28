@@ -1,0 +1,63 @@
+{
+  "fixture_id": "TITMAS-ANVV-SECURITY-NEGATIVE-CASES-0.1",
+  "status": "DESIGN_FIXTURE_NOT_EXPERIMENT",
+  "cases": [
+    {
+      "id": "ANVV-NEG-001",
+      "attack": "SELF_AUTHORIZATION",
+      "expected": "REJECT",
+      "reason_code": "AUTHORITY_MUST_BE_EXTERNALLY_BOUND"
+    },
+    {
+      "id": "ANVV-NEG-002",
+      "attack": "ROLE_ELEVATION",
+      "expected": "REJECT",
+      "reason_code": "ROLE_CANNOT_CREATE_AUTHORITY"
+    },
+    {
+      "id": "ANVV-NEG-003",
+      "attack": "RELEASE_CREATION",
+      "expected": "REJECT",
+      "reason_code": "RELEASE_NOT_AUTHORIZED"
+    },
+    {
+      "id": "ANVV-NEG-004",
+      "attack": "STANDARD_COMPLETE_CLAIM",
+      "expected": "REJECT",
+      "reason_code": "EXPERIMENT_NE_STANDARD_COMPLETION"
+    },
+    {
+      "id": "ANVV-NEG-005",
+      "attack": "COMMERCIAL_ADOPTION_CLAIM",
+      "expected": "REJECT",
+      "reason_code": "EXPERIMENT_NE_COMMERCIAL_ADOPTION"
+    },
+    {
+      "id": "ANVV-NEG-006",
+      "attack": "AUTHORITY_CHANGE",
+      "expected": "REJECT",
+      "reason_code": "AUTHORITY_CHANGE_OUT_OF_SCOPE"
+    },
+    {
+      "id": "ANVV-NEG-007",
+      "attack": "DELETE_FAILURE",
+      "expected": "REJECT",
+      "reason_code": "FAILURE_RETENTION_REQUIRED"
+    },
+    {
+      "id": "ANVV-NEG-008",
+      "attack": "RECOMMENDATION_TO_COMMAND",
+      "expected": "REJECT",
+      "reason_code": "RECOMMENDATION_NE_COMMAND"
+    },
+    {
+      "id": "ANVV-NEG-009",
+      "attack": "EVIDENCE_TO_TRUTH",
+      "expected": "REJECT",
+      "reason_code": "EVIDENCE_NE_TRUTH"
+    }
+  ],
+  "experiment_executed": false,
+  "authority_effect": "NONE"
+}
+
