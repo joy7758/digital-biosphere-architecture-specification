@@ -1,0 +1,125 @@
+{
+  "record_type": "TITMAS_CE_G13_EXECUTION_DECISION_READINESS_AUDIT",
+  "version": "0.1.0",
+  "status": "NOT_READY_OFFLINE_EXECUTION_CONTRACT_PACKAGE_REQUIRED",
+  "observed_at": "2026-07-28",
+  "owner_ref": "zhangbin",
+  "primary_repository": "digital-biosphere-architecture",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "recommendation_reference": "TITMAS-CE-G13-PUBLIC-AGENT-CUSTOMER-DISCOVERY-AND-REUSE-VALIDATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "07919fdb026f08d6e84da63c6b71060c2f519d607bdf3a1986253d560218ca75",
+  "recommendation_review_reference": "TITMAS-CE-G13-PREDEVELOPMENT-AGENT-CUSTOMER-RECOMMENDATION-GATE-v0.1.json",
+  "recommendation_review_sha256": "994299a581560b18797b56d9dc6764a95024c3dbe53960cca8ce9fa5c904c527",
+  "recommendation_commit": "4fb9357fb956df04a03167900471757ab63d9b74",
+  "recommendation_remote_verified": true,
+  "present_inputs": {
+    "bounded_problem_and_delta_defined": true,
+    "ce_g1_prior_result_bound": true,
+    "ce_g12_current_state_evidence_bound": true,
+    "website_first_without_github_required": true,
+    "single_public_origin_defined": true,
+    "five_agent_roles_defined": true,
+    "model_quality_baseline_defined": "qwen3.7-max",
+    "request_and_fetch_caps_defined": true,
+    "success_and_fail_closed_criteria_defined": true,
+    "customer_adoption_nonclaim_defined": true,
+    "authority_non_effects_defined": true,
+    "human_decision_owner_available": true
+  },
+  "missing_inputs": [
+    {
+      "id": "CE-G13-I01",
+      "input": "public snapshot manifest Schema and frozen instance template",
+      "required_before_decision": true
+    },
+    {
+      "id": "CE-G13-I02",
+      "input": "retrieval receipt Schema with same-origin, redirect, size, hash, lineage and sanitization rules",
+      "required_before_decision": true
+    },
+    {
+      "id": "CE-G13-I03",
+      "input": "five role-specific direct JSON response Schemas",
+      "required_before_decision": true
+    },
+    {
+      "id": "CE-G13-I04",
+      "input": "five immutable role prompt templates without hidden answer keys",
+      "required_before_decision": true
+    },
+    {
+      "id": "CE-G13-I05",
+      "input": "reuse plan deterministic validation Schema and procedure",
+      "required_before_decision": true
+    },
+    {
+      "id": "CE-G13-I06",
+      "input": "optional synthetic technical reuse receipt Schema and exact no-Runtime execution boundary",
+      "required_before_decision": true
+    },
+    {
+      "id": "CE-G13-I07",
+      "input": "composite result Schema with PASS, CONDITIONAL_REMEDIATION_REQUIRED and FAIL_CLOSED states",
+      "required_before_decision": true
+    },
+    {
+      "id": "CE-G13-I08",
+      "input": "sanitized request/capture and credential-reference handling contract",
+      "required_before_decision": true
+    },
+    {
+      "id": "CE-G13-I09",
+      "input": "exact controller procedure, tool inventory and deterministic scoring rules",
+      "required_before_decision": true
+    },
+    {
+      "id": "CE-G13-I10",
+      "input": "offline negative and mutation cases proving hidden dependency and authority elevation rejection",
+      "required_before_decision": true
+    }
+  ],
+  "readiness": {
+    "recommendation_prepared": true,
+    "agent_customer_gate_qualifying": true,
+    "offline_contract_package_complete": false,
+    "execution_decision_candidate_ready": false,
+    "public_fetch_ready": false,
+    "model_session_execution_ready": false,
+    "technical_reuse_run_ready": false,
+    "commercial_validation_ready": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G13_OFFLINE_EXECUTION_CONTRACT_PACKAGE_RECOMMENDATION_ONLY",
+    "authorized": false,
+    "must_remain_offline": true,
+    "agent_or_http_requests_allowed": 0
+  },
+  "non_authorizations": {
+    "execution_decision": false,
+    "http_fetch": false,
+    "model_request": false,
+    "technical_reuse_run": false,
+    "agent_instance": false,
+    "runtime": false,
+    "entity": false,
+    "capability": false,
+    "permission": false,
+    "evidence_truth": false,
+    "customer_adoption": false,
+    "market_demand": false,
+    "external_endorsement": false,
+    "outreach": false,
+    "implementation": false,
+    "deployment": false,
+    "release": false,
+    "commercial_offering": false,
+    "pricing": false,
+    "contract": false,
+    "sla": false,
+    "certification": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "authority_elevation": false,
+    "ownership_change": false
+  }
+}
