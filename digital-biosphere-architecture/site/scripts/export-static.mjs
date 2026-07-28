@@ -36,6 +36,8 @@ const routes = [
   { request: "/en/applications", output: "en/applications/index.html", markers: ["How trust infrastructure enters industries", "Medical Evidence Infrastructure", "PUBLISHED_EXAMPLE"] },
   { request: "/demos", output: "demos/index.html", markers: ["用可检查的演示理解基础设施", "REFERENCE_COMPLETE", "CLINICAL_VALIDATION=false"] },
   { request: "/en/demos", output: "en/demos/index.html", markers: ["Understand the infrastructure through inspectable demos", "REFERENCE_COMPLETE", "CLINICAL_VALIDATION=false"] },
+  { request: "/products/agent-immune", output: "products/agent-immune/index.html", markers: ["Agent Immune", "Give your AI Agent an Immune System.", "STATIC_REPOSITORY_SIGNALS_ONLY", "Recommendation Applicability"] },
+  { request: "/en/products/agent-immune", output: "en/products/agent-immune/index.html", markers: ["Agent Immune", "Give your AI Agent an Immune System.", "STATIC_REPOSITORY_SIGNALS_ONLY", "Recommendation Applicability"] },
   { request: "/updates", output: "updates/index.html", markers: ["每次变化，都要说明发生了什么", "RELEASE_NOTE", "网站更新宪法"] },
   { request: "/en/updates", output: "en/updates/index.html", markers: ["Every change should explain what changed", "RELEASE_NOTE", "Website Update Constitution"] },
   { request: "/updates/information-architecture-v0-1", output: "updates/information-architecture-v0-1/index.html", markers: ["网站结构已更新", "AVAILABLE_PRODUCTS=0", "6a30da9c3e4ea52885ba911da50320a06191fd6f"] },

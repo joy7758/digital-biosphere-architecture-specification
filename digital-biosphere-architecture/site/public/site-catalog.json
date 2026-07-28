@@ -34,10 +34,10 @@
       "constitution_en": "/en/updates/constitution/"
     },
     "products": {
-      "enabled": false,
-      "public_navigation": false,
-      "sitemap_visible": false,
-      "available_products": 0,
+      "enabled": true,
+      "public_navigation": true,
+      "sitemap_visible": true,
+      "available_products": 1,
       "activation_gate": "AVAILABLE_PRODUCTS_GT_0"
     }
   },
@@ -112,6 +112,26 @@
         "clinical_validation": false,
         "real_registry_lookup": false
       }
+    ],
+    "products": [
+      {
+        "id": "agent-immune",
+        "title": "Agent Immune",
+        "status": "PUBLICLY_AVAILABLE",
+        "availability": "PUBLIC_NPM_PACKAGE",
+        "version": "0.2.1",
+        "href": "/products/agent-immune/",
+        "machine_entry": "/products/agent-immune.json",
+        "delivery_model": "LOCAL_CLI",
+        "analysis_scope": "STATIC_REPOSITORY_SIGNALS_ONLY",
+        "support_boundary": "PUBLIC_PACKAGE_AND_REPOSITORY_DOCUMENTATION",
+        "production_status": "STATIC_ASSESSMENT_TOOL",
+        "runtime_monitoring": false,
+        "security_certification": false,
+        "reliability_proof": false,
+        "compliance_certification": false,
+        "deployment_guarantee": false
+      }
     ]
   },
   "commercial_evaluation": {
@@ -122,7 +142,7 @@
     "production_ready": false
   },
   "truth": {
-    "available_products": 0,
+    "available_products": 1,
     "available_commercial_offering": false,
     "production_ready": false,
     "future_placeholder_items_published": 0,

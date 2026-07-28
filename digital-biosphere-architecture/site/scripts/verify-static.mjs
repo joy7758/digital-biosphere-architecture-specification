@@ -18,6 +18,9 @@ const requiredFiles = [
   "en/applications/index.html",
   "demos/index.html",
   "en/demos/index.html",
+  "products/agent-immune/index.html",
+  "en/products/agent-immune/index.html",
+  "products/agent-immune.json",
   "updates/index.html",
   "en/updates/index.html",
   "updates/information-architecture-v0-1/index.html",
@@ -119,6 +122,11 @@ const [zhResearch, enResearch, zhResearchIndex, enResearchIndex, zhApplications,
   readFile(join(outputRoot, "demos/index.html"), "utf8"),
   readFile(join(outputRoot, "en/demos/index.html"), "utf8"),
 ]);
+const [agentImmuneZh, agentImmuneEn, agentImmuneProduct] = await Promise.all([
+  readFile(join(outputRoot, "products/agent-immune/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/products/agent-immune/index.html"), "utf8"),
+  readFile(join(outputRoot, "products/agent-immune.json"), "utf8").then(JSON.parse),
+]);
 const [zhIndustries, enIndustries, medicalIndustryPage, enMedicalIndustryPage, medicalEvidencePage, enMedicalEvidencePage, digitalCellPage, enDigitalCellPage] = await Promise.all([
   readFile(join(outputRoot, "industries/index.html"), "utf8"),
   readFile(join(outputRoot, "en/industries/index.html"), "utf8"),
@@ -160,6 +168,12 @@ assert.match(zhApplications, /医疗证据基础设施/);
 assert.match(enApplications, /Manufacturing AI Agent Ecosystem/);
 assert.match(zhDemos, /SYNTHETIC_DATA=true/);
 assert.match(enDemos, /CLINICAL_VALIDATION=false/);
+assert.match(agentImmuneZh, /Give your AI Agent an Immune System\./);
+assert.match(agentImmuneEn, /STATIC_REPOSITORY_SIGNALS_ONLY/);
+assert.match(agentImmuneZh, /Recommendation Applicability/);
+assert.match(agentImmuneEn, /Runtime monitoring/);
+assert.match(agentImmuneZh, /href="\/en\/products\/agent-immune\//);
+assert.match(agentImmuneEn, /href="\/products\/agent-immune\//);
 assert.match(zh, /网站结构已更新/);
 assert.match(en, /Site structure updated/);
 assert.match(zhUpdates, /每次变化，都要说明发生了什么/);
@@ -180,10 +194,15 @@ assert.equal(websiteConstitution.default_decision_rule, "WHEN_WEBSITE_CHOICE_IS_
 assert.equal(websiteConstitution.effects.openai_affiliation, false);
 assert.equal(websiteConstitution.effects.opentelemetry_affiliation, false);
 assert.equal(websiteConstitution.effects.release_authorization, false);
-assert.equal(siteCatalog.public_surfaces.products.enabled, false);
-assert.equal(siteCatalog.public_surfaces.products.available_products, 0);
-assert.equal(siteCatalog.public_surfaces.products.public_navigation, false);
+assert.equal(siteCatalog.public_surfaces.products.enabled, true);
+assert.equal(siteCatalog.public_surfaces.products.available_products, 1);
+assert.equal(siteCatalog.public_surfaces.products.public_navigation, true);
+assert.equal(siteCatalog.public_surfaces.products.sitemap_visible, true);
 assert.equal(siteCatalog.extension_interfaces.products.publication_precondition, "AVAILABLE_PRODUCTS_GT_0");
+assert.equal(siteCatalog.published_items.products[0].id, "agent-immune");
+assert.equal(siteCatalog.published_items.products[0].version, "0.2.1");
+assert.equal(siteCatalog.published_items.products[0].analysis_scope, "STATIC_REPOSITORY_SIGNALS_ONLY");
+assert.equal(siteCatalog.truth.available_products, 1);
 assert.equal(siteCatalog.published_items.demos[1].synthetic_data, true);
 assert.equal(siteCatalog.published_items.demos[1].clinical_validation, false);
 assert.equal(siteCatalog.commercial_evaluation.engagement_type, "consultation");
@@ -224,6 +243,20 @@ assert.equal(medicalEvidence.boundaries.production_ready, false);
 assert.equal(digitalCell.status, "REFERENCE_COMPLETE");
 assert.equal(digitalCell.boundaries.production_claim, false);
 assert.equal(agentIndex.entrypoints.digital_cell_demo, "/digital-cell/");
+assert.equal(agentIndex.entrypoints.agent_immune_product_zh, "/products/agent-immune/");
+assert.equal(agentIndex.entrypoints.agent_immune_product_en, "/en/products/agent-immune/");
+assert.equal(agentIndex.entrypoints.agent_immune_product_object, "/products/agent-immune.json");
+assert.equal(agentIndex.site_information_architecture.products_public_navigation, true);
+assert.equal(agentIndex.site_information_architecture.available_products, 1);
+assert.equal(agentIndex.products.agent_immune.analysis_scope, "STATIC_REPOSITORY_SIGNALS_ONLY");
+assert.equal(agentImmuneProduct.product_id, "agent-immune");
+assert.equal(agentImmuneProduct.version, "0.2.1");
+assert.equal(agentImmuneProduct.capabilities.recommendation_applicability.available, true);
+assert.equal(agentImmuneProduct.non_claims.runtime_monitoring, false);
+assert.equal(agentImmuneProduct.non_claims.security_certification, false);
+assert.equal(agentImmuneProduct.non_claims.reliability_proof, false);
+assert.equal(agentImmuneProduct.non_claims.compliance_certification, false);
+assert.equal(agentImmuneProduct.non_claims.deployment_guarantee, false);
 assert.equal(agentIndex.entrypoints.medical_evidence_industry_zh, "/industry/medical-evidence/");
 assert.equal(agentIndex.entrypoints.medical_evidence_industry_en, "/en/industry/medical-evidence/");
 assert.equal(agentIndex.entrypoints.medical_evidence_demo_zh, "/demo/medical-evidence/");

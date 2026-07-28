@@ -77,7 +77,7 @@ test("renders equivalent Chinese and English public entry points", async () => {
   }
 });
 
-test("renders OpenAI-inspired peer surfaces without an empty product shelf", async () => {
+test("renders OpenAI-inspired peer surfaces with the bounded product entry", async () => {
   const [zhResearchResponse, enResearchResponse, zhIndexResponse, enIndexResponse, zhApplicationsResponse, enApplicationsResponse, zhDemosResponse, enDemosResponse] = await Promise.all([
     render("/research"),
     render("/en/research"),
@@ -110,8 +110,33 @@ test("renders OpenAI-inspired peer surfaces without an empty product shelf", asy
   assert.match(zhDemos, /SYNTHETIC_DATA=true/);
   assert.match(enDemos, /CLINICAL_VALIDATION=false/);
   for (const html of [zhResearch, enResearch, zhIndex, enIndex, zhApplications, enApplications, zhDemos, enDemos]) {
-    assert.doesNotMatch(html, /href="(?:\/en)?\/products\//);
+    assert.match(html, /href="(?:\/en)?\/products\/agent-immune\//);
   }
+});
+
+test("renders bilingual Agent Immune product pages with static-only boundaries", async () => {
+  const [zhResponse, enResponse] = await Promise.all([
+    render("/products/agent-immune"),
+    render("/en/products/agent-immune"),
+  ]);
+  assert.equal(zhResponse.status, 200);
+  assert.equal(enResponse.status, 200);
+
+  const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
+  assert.match(zh, /Give your AI Agent an Immune System\./);
+  assert.match(en, /Give your AI Agent an Immune System\./);
+  assert.match(zh, /npx agent-health \./);
+  assert.match(en, /npx agent-health \./);
+  assert.match(zh, /Recommendation Applicability/);
+  assert.match(en, /Recommendation Applicability/);
+  assert.match(zh, /STATIC_REPOSITORY_SIGNALS_ONLY/);
+  assert.match(en, /STATIC_REPOSITORY_SIGNALS_ONLY/);
+  assert.match(zh, /RUNTIME_MONITORING=false/);
+  assert.match(en, /SECURITY_CERTIFICATION=false/);
+  assert.match(zh, /不提供运行时免疫或持续监控/);
+  assert.match(en, /does not provide runtime immunity or continuous monitoring/i);
+  assert.match(zh, /href="\/en\/products\/agent-immune\//);
+  assert.match(en, /href="\/products\/agent-immune\//);
 });
 
 test("renders bilingual updates, one active announcement, and the website update constitution", async () => {
@@ -334,6 +359,7 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("robots.txt", root)),
     access(new URL("sitemap.xml", root)),
     access(new URL("medical-evidence-demo.json", root)),
+    access(new URL("products/agent-immune.json", root)),
     access(new URL("TITMAS-COMMERCIAL-EVALUATION-PACK-v0.1.json", root)),
     access(new URL("TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json", root)),
     access(new URL("TITMAS-EXTERNAL-AGENT-FIRST-RUN-VALIDATION-REPORT-v0.1.md", root)),
@@ -344,13 +370,14 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("examples/titmas-first-run/entity-object.synthetic.v0.1.json", root)),
   ]);
 
-  const [agentIndex, status, agentCustomerPackage, dbosPackage, titmasCommunity, medicalEvidence, siteCatalog, updatesCatalog, websiteConstitution, llms] = await Promise.all([
+  const [agentIndex, status, agentCustomerPackage, dbosPackage, titmasCommunity, medicalEvidence, agentImmuneProduct, siteCatalog, updatesCatalog, websiteConstitution, llms] = await Promise.all([
     readFile(new URL("agent-index.json", root), "utf8").then(JSON.parse),
     readFile(new URL("status.json", root), "utf8").then(JSON.parse),
     readFile(new URL("agent-customer-package.json", root), "utf8").then(JSON.parse),
     readFile(new URL("dbos-public-package-manifest.json", root), "utf8").then(JSON.parse),
     readFile(new URL("titmas-community.json", root), "utf8").then(JSON.parse),
     readFile(new URL("medical-evidence-demo.json", root), "utf8").then(JSON.parse),
+    readFile(new URL("products/agent-immune.json", root), "utf8").then(JSON.parse),
     readFile(new URL("site-catalog.json", root), "utf8").then(JSON.parse),
     readFile(new URL("updates.json", root), "utf8").then(JSON.parse),
     readFile(new URL("WEBSITE-UPDATE-CONSTITUTION-v0.1.json", root), "utf8").then(JSON.parse),
@@ -376,8 +403,12 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.website_update_governance.reference_creates_affiliation, false);
   assert.match(llms, /WHEN_WEBSITE_CHOICE_IS_REQUIRED_REFER_TO_OPENAI_AND_OPENTELEMETRY_FIRST/);
   assert.match(llms, /ANNOUNCEMENT_NE_RELEASE_AUTHORIZATION=true/);
-  assert.equal(siteCatalog.public_surfaces.products.enabled, false);
-  assert.equal(siteCatalog.public_surfaces.products.available_products, 0);
+  assert.equal(siteCatalog.public_surfaces.products.enabled, true);
+  assert.equal(siteCatalog.public_surfaces.products.available_products, 1);
+  assert.equal(siteCatalog.public_surfaces.products.public_navigation, true);
+  assert.equal(siteCatalog.public_surfaces.products.sitemap_visible, true);
+  assert.equal(siteCatalog.published_items.products[0].id, "agent-immune");
+  assert.equal(siteCatalog.truth.available_products, 1);
   assert.equal(siteCatalog.truth.future_placeholder_items_published, 0);
   assert.equal(siteCatalog.commercial_evaluation.engagement_type, "consultation");
   assert.equal(siteCatalog.published_items.demos[1].synthetic_data, true);
@@ -399,6 +430,22 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.entrypoints.medical_evidence_industry_en, "/en/industry/medical-evidence/");
   assert.equal(agentIndex.entrypoints.medical_evidence_demo_zh, "/demo/medical-evidence/");
   assert.equal(agentIndex.entrypoints.medical_evidence_demo_en, "/en/demo/medical-evidence/");
+  assert.equal(agentIndex.entrypoints.agent_immune_product_zh, "/products/agent-immune/");
+  assert.equal(agentIndex.entrypoints.agent_immune_product_en, "/en/products/agent-immune/");
+  assert.equal(agentIndex.entrypoints.agent_immune_product_object, "/products/agent-immune.json");
+  assert.equal(agentIndex.site_information_architecture.products_public_navigation, true);
+  assert.equal(agentIndex.site_information_architecture.available_products, 1);
+  assert.equal(agentIndex.products.agent_immune.version, "0.2.1");
+  assert.equal(agentIndex.products.agent_immune.titmas_core_component, false);
+  assert.equal(agentImmuneProduct.analysis_scope, "STATIC_REPOSITORY_SIGNALS_ONLY");
+  assert.equal(agentImmuneProduct.capabilities.recommendation_applicability.available, true);
+  assert.equal(agentImmuneProduct.non_claims.runtime_monitoring, false);
+  assert.equal(agentImmuneProduct.non_claims.security_certification, false);
+  assert.equal(agentImmuneProduct.non_claims.reliability_proof, false);
+  assert.equal(agentImmuneProduct.non_claims.compliance_certification, false);
+  assert.equal(agentImmuneProduct.non_claims.deployment_guarantee, false);
+  assert.match(llms, /AVAILABLE_PRODUCTS=1/);
+  assert.match(llms, /STATIC_REPOSITORY_SIGNALS_ONLY/);
   assert.equal(medicalEvidence.application_positioning, "TITMAS_INDUSTRY_APPLICATION_NOT_MEDICAL_SOFTWARE");
   assert.equal(medicalEvidence.status, "STATIC_SYNTHETIC_UI_DEMO");
   assert.equal(medicalEvidence.direction_status, "DEVELOPMENT_DIRECTION");

@@ -26,22 +26,55 @@ Human entry:
 - Research index: /research/index/ and /en/research/index/
 - Applications: /applications/ and /en/applications/
 - Demos: /demos/ and /en/demos/
+- Products: /products/agent-immune/ and /en/products/agent-immune/
 - Developers: /community/ and /en/community/
 
 Machine entry:
 - /site-catalog.json
 - /updates.json
 - /WEBSITE-UPDATE-CONSTITUTION-v0.1.json
+- /products/agent-immune.json
 
-AVAILABLE_PRODUCTS=0
-PRODUCTS_PUBLIC_NAVIGATION=false
+AVAILABLE_PRODUCTS=1
+PRODUCTS_PUBLIC_NAVIGATION=true
 PRODUCT_ACTIVATION_GATE=AVAILABLE_PRODUCTS_GT_0
 FUTURE_PLACEHOLDER_ITEMS_PUBLISHED=0
 
-The public site does not expose an empty Products shelf. The machine catalog
-preserves route templates and required metadata for future research,
-applications, demos, and products. A Products surface may be published only
-after at least one real, bounded offering exists.
+The Products navigation is active because one real, bounded public package is
+available. The site publishes no empty product placeholders. Future product
+entries must satisfy the same availability, delivery, support, production, and
+non-claim metadata requirements before public navigation or sitemap inclusion.
+
+## Agent Immune
+
+Human entry:
+- Chinese: /products/agent-immune/
+- English: /en/products/agent-immune/
+
+Machine entry:
+- /products/agent-immune.json
+
+Package: agent-health
+Observed public version: 0.2.1
+Install command: npx agent-health .
+Positioning: Give your AI Agent an Immune System.
+Analysis scope: STATIC_REPOSITORY_SIGNALS_ONLY
+
+Agent Immune is a static health assessment tool for AI Agent projects. It
+reports Health, Diagnosis, Problem / Cause / Fix, and Recommendation
+Applicability. Recommendation Applicability explains why a recommendation
+triggered, when it applies, and when it does not apply.
+
+Agent Immune analyzes repository files and configuration signals only. It does
+not claim Runtime monitoring, security certification, reliability proof,
+compliance certification, or deployment guarantees. It is an independent tool
+product listed by RedCrag, not a TITMAS, DBOS, or SAEE core component, and its
+assessment output is not a governance decision or production proof.
+
+Sources:
+- https://www.npmjs.com/package/agent-health
+- https://github.com/joy7758/agent-health
+- https://github.com/joy7758/agent-health/releases/tag/v0.2.1
 
 ## Website updates and decision constitution
 

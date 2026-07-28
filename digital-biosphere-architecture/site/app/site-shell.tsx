@@ -29,6 +29,7 @@ type SiteSection =
   | "researchIndex"
   | "applications"
   | "demos"
+  | "product"
   | "industries"
   | "medicalIndustry"
   | "medical"
@@ -47,6 +48,7 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
   const research = locale === "zh" ? "/research/" : "/en/research/";
   const applications = locale === "zh" ? "/applications/" : "/en/applications/";
   const demos = locale === "zh" ? "/demos/" : "/en/demos/";
+  const product = locale === "zh" ? "/products/agent-immune/" : "/en/products/agent-immune/";
   const updates = locale === "zh" ? "/updates/" : "/en/updates/";
   const commercial = locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/";
   const languageRoutes: Record<SiteSection, [string, string]> = {
@@ -55,6 +57,7 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
     researchIndex: ["/en/research/index/", "/research/index/"],
     applications: ["/en/applications/", "/applications/"],
     demos: ["/en/demos/", "/demos/"],
+    product: ["/en/products/agent-immune/", "/products/agent-immune/"],
     industries: ["/en/industries/", "/industries/"],
     medicalIndustry: ["/en/industry/medical-evidence/", "/industry/medical-evidence/"],
     medical: ["/en/demo/medical-evidence/", "/demo/medical-evidence/"],
@@ -77,6 +80,9 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
       </a>
       <a href={demos} aria-current={section === "demos" || section === "demo" || section === "medical" ? "page" : undefined}>
         {locale === "zh" ? "Demo" : "Demos"}
+      </a>
+      <a href={product} aria-current={section === "product" ? "page" : undefined}>
+        {locale === "zh" ? "产品" : "Products"}
       </a>
       <a href={community} aria-current={section === "community" ? "page" : undefined}>{c.nav.developers}</a>
       <a href={updates} aria-current={section === "updates" || section === "constitution" ? "page" : undefined}>
@@ -156,6 +162,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <a href="/llms.txt">llms.txt</a>
           <a href="/agent-index.json">agent-index.json</a>
           <a href="/site-catalog.json">site-catalog.json</a>
+          <a href="/products/agent-immune.json">agent-immune.json</a>
           <a href="/updates.json">updates.json</a>
           <a href="/status.json">status.json</a>
           <a href="/titmas-community.json">titmas-community.json</a>

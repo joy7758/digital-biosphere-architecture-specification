@@ -48,6 +48,9 @@
     "applications_en": "/en/applications/",
     "demos_zh": "/demos/",
     "demos_en": "/en/demos/",
+    "agent_immune_product_zh": "/products/agent-immune/",
+    "agent_immune_product_en": "/en/products/agent-immune/",
+    "agent_immune_product_object": "/products/agent-immune.json",
     "updates_zh": "/updates/",
     "updates_en": "/en/updates/",
     "updates_machine": "/updates.json",
@@ -89,11 +92,33 @@
   },
   "site_information_architecture": {
     "pattern": "PEER_SURFACES_WITH_OVERVIEW_AND_INDEX",
-    "public_surfaces": ["research", "applications", "demos", "developers"],
-    "products_public_navigation": false,
-    "available_products": 0,
+    "public_surfaces": ["research", "applications", "demos", "products", "developers"],
+    "products_public_navigation": true,
+    "available_products": 1,
     "product_activation_gate": "AVAILABLE_PRODUCTS_GT_0",
     "future_placeholder_items_published": 0
+  },
+  "products": {
+    "agent_immune": {
+      "product_id": "agent-immune",
+      "package_name": "agent-health",
+      "status": "PUBLICLY_AVAILABLE",
+      "version": "0.2.1",
+      "delivery_model": "LOCAL_CLI",
+      "analysis_scope": "STATIC_REPOSITORY_SIGNALS_ONLY",
+      "entry_zh": "/products/agent-immune/",
+      "entry_en": "/en/products/agent-immune/",
+      "machine_entry": "/products/agent-immune.json",
+      "install_command": "npx agent-health .",
+      "recommendation_applicability": true,
+      "runtime_monitoring": false,
+      "security_certification": false,
+      "reliability_proof": false,
+      "compliance_certification": false,
+      "deployment_guarantee": false,
+      "titmas_core_component": false,
+      "governance_system": false
+    }
   },
   "website_update_governance": {
     "constitution_status": "SITE_GOVERNANCE_BASELINE",
