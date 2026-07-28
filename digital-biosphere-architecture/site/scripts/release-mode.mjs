@@ -19,39 +19,21 @@ function requireValue(environment, name) {
   return value;
 }
 
-export function resolveReleaseContext(environment, resources) {
-  const mode = environment.RELEASE_MODE?.trim() || "candidate";
-  invariant(MODES.has(mode), `RELEASE_MODE must be one of: ${[...MODES].join(", ")}`);
-
+function assertCandidateInvariants(resources) {
   const { status, agentIndex, agentCustomerPackage, dbosPackage } = resources;
+  invariant(status.release_claim === false, "candidate export requires status.release_claim=false");
+  invariant(status.gates.DEVELOPER_PREVIEW_RELEASED === false, "candidate export requires DEVELOPER_PREVIEW_RELEASED=false");
+  invariant(status.gates.DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED === false, "candidate export requires DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED=false");
+  invariant(status.gates.DQ_016_DBOS_DISTRIBUTION_DECIDED === false, "candidate export requires DQ_016_DBOS_DISTRIBUTION_DECIDED=false");
+  invariant(agentIndex.released === false, "candidate export requires agent-index released=false");
+  invariant(agentCustomerPackage.released === false, "candidate export requires agent-customer package released=false");
+  invariant(dbosPackage.release_authorized === false, "candidate export requires DBOS package release_authorized=false");
+  invariant(dbosPackage.status === "VALIDATED_NOT_PUBLISHED", "candidate export requires DBOS package status VALIDATED_NOT_PUBLISHED");
+  invariant(dbosPackage.public_download_url === null, "candidate export requires a null DBOS public download URL");
+}
 
-  if (mode === "candidate") {
-    invariant(status.release_claim === false, "candidate export requires status.release_claim=false");
-    invariant(status.gates.DEVELOPER_PREVIEW_RELEASED === false, "candidate export requires DEVELOPER_PREVIEW_RELEASED=false");
-    invariant(status.gates.DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED === false, "candidate export requires DBOS_PUBLIC_SAFE_WHEEL_PUBLISHED=false");
-    invariant(status.gates.DQ_016_DBOS_DISTRIBUTION_DECIDED === false, "candidate export requires DQ_016_DBOS_DISTRIBUTION_DECIDED=false");
-    invariant(agentIndex.released === false, "candidate export requires agent-index released=false");
-    invariant(agentCustomerPackage.released === false, "candidate export requires agent-customer package released=false");
-    invariant(dbosPackage.release_authorized === false, "candidate export requires DBOS package release_authorized=false");
-    invariant(dbosPackage.status === "VALIDATED_NOT_PUBLISHED", "candidate export requires DBOS package status VALIDATED_NOT_PUBLISHED");
-    invariant(dbosPackage.public_download_url === null, "candidate export requires a null DBOS public download URL");
-
-    return {
-      mode,
-      deploymentState: "candidate_not_released",
-      developerPreviewReleased: false,
-      releaseDecisionReference: null,
-      releasedByRef: null,
-      publicReleaseTag: null,
-      dbosWheelUrl: null,
-    };
-  }
-
-  const releaseDecisionReference = requireValue(environment, "RELEASE_DECISION_REF");
-  const releasedByRef = requireValue(environment, "RELEASED_BY_REF");
-  const publicReleaseTag = requireValue(environment, "PUBLIC_RELEASE_TAG");
-  const dbosWheelUrl = requireValue(environment, "DBOS_WHEEL_URL");
-
+function assertFormalInvariants(resources, { dbosWheelUrl, releaseDecisionReference, releasedByRef, publicReleaseTag }) {
+  const { status, agentIndex, agentCustomerPackage, dbosPackage } = resources;
   invariant(isHttpsUrl(dbosWheelUrl), "DBOS_WHEEL_URL must be an HTTPS URL");
   invariant(status.release_claim === true, "formal export requires status.release_claim=true");
   invariant(status.gates.DEVELOPER_PREVIEW_RELEASED === true, "formal export requires DEVELOPER_PREVIEW_RELEASED=true");
@@ -76,6 +58,37 @@ export function resolveReleaseContext(environment, resources) {
   invariant(status.open_web_discovery?.result === "PARTIAL_METADATA_ONLY", "formal export must preserve PARTIAL_METADATA_ONLY");
   invariant(status.open_web_discovery?.accepted_limitation_for_v0_1 === true, "formal export requires the accepted v0.1 discovery limitation");
   invariant(dbosWheelUrl.endsWith(`/${dbosPackage.artifact.filename}`), "DBOS_WHEEL_URL filename must match the DBOS artifact");
+}
+
+export function resolveReleaseContext(environment, resources) {
+  const mode = environment.RELEASE_MODE?.trim() || "candidate";
+  invariant(MODES.has(mode), `RELEASE_MODE must be one of: ${[...MODES].join(", ")}`);
+
+  if (mode === "candidate") {
+    assertCandidateInvariants(resources);
+
+    return {
+      mode,
+      deploymentState: "candidate_not_released",
+      developerPreviewReleased: false,
+      releaseDecisionReference: null,
+      releasedByRef: null,
+      publicReleaseTag: null,
+      dbosWheelUrl: null,
+    };
+  }
+
+  const releaseDecisionReference = requireValue(environment, "RELEASE_DECISION_REF");
+  const releasedByRef = requireValue(environment, "RELEASED_BY_REF");
+  const publicReleaseTag = requireValue(environment, "PUBLIC_RELEASE_TAG");
+  const dbosWheelUrl = requireValue(environment, "DBOS_WHEEL_URL");
+
+  assertFormalInvariants(resources, {
+    dbosWheelUrl,
+    releaseDecisionReference,
+    releasedByRef,
+    publicReleaseTag,
+  });
 
   return {
     mode,
