@@ -1,0 +1,231 @@
+{
+  "record_type": "TITMAS_CE_G12_MANIFEST_SOURCE_BINDING_REMEDIATION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-MANIFEST-SOURCE-BINDING-REMEDIATION",
+  "version": "0.1.0",
+  "status": "AUTHORIZE_ONE_EXACT_SOURCE_REVISION_INJECTED_CANDIDATE_REBUILD_ONLY_IF_QUALIFYING_DECISION_REVIEW_AND_LATER_SEPARATE_EXECUTION",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G12-MANIFEST-SOURCE-BINDING-REMEDIATION-RECOMMENDATION-v0.2.md",
+  "recommendation_sha256": "d9ce76792d25326c10495395d07a6f5a9172f900072787d71fd9d8a22cc1c9cb",
+  "recommendation_review_reference": "TITMAS-CE-G12-MANIFEST-SOURCE-BINDING-REMEDIATION-RECOMMENDATION-QWEN-REVIEW-v0.2.json",
+  "recommendation_review_sha256": "a5e8f9a4710a34df2c54b484ac228e3a012d0ddaaebb034d50acab253fd123e3",
+  "recommendation_commit": "2cfb5889397b80063d897d282934cdcc45901727",
+  "recommendation_remote_verified": true,
+  "prior_review_failure_reference": "TITMAS-CE-G12-MANIFEST-SOURCE-BINDING-REMEDIATION-RECOMMENDATION-QWEN-REVIEW-FAILURE-v0.1.json",
+  "prior_review_failure_preserved": true,
+  "selected_option": "A",
+  "primary_repository": "digital-biosphere-architecture",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "source_contract": {
+    "source_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "source_tree": "9171e554cfcbeaa02d5542c3a35cb729bca44185",
+    "remote_ref": "refs/heads/codex/production-observability-baseline",
+    "remote_ref_expected": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "site_relative_path": "digital-biosphere-architecture/site",
+    "export_script_path": "digital-biosphere-architecture/site/scripts/export-static.mjs",
+    "export_script_blob": "f7f3b75370e48577dc5812d389b5ccfd21805044",
+    "package_json_path": "digital-biosphere-architecture/site/package.json",
+    "package_json_blob": "f30dcc3f4b41a53539737becfb58d0b6a1d26525",
+    "source_revision_input_name": "SOURCE_REVISION",
+    "source_revision_input_value": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "source_code_change_authorized": false
+  },
+  "current_candidate_contract": {
+    "baseline_reference": "commercial-evaluation-fresh-candidate/ce-g12-fresh-candidate-baseline.v0.1.json",
+    "baseline_sha256": "4c7f55b1f277f22eda536a392058031bad04876d2c5b37997a6a505aea5802ed",
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-fresh-candidate-preparation-result.v0.1.json",
+    "result_sha256": "2c0a3c6352f201a690af77f91ecf550c04af5017ea52a383fe525ff536a56110",
+    "report_reference": "TITMAS-CE-G12-FRESH-IMMUTABLE-CANDIDATE-PREPARATION-REPORT-v0.1.md",
+    "report_sha256": "9878aff3d9b4132d99a95d5d47c5f1089d438bcc4c484817f90bc238f23cb22b",
+    "archive_reference": "/tmp/titmas-site-c1d8931930fbae15f96ee6a6ac050b081538c919.tar.gz",
+    "archive_bytes": 988323,
+    "archive_sha256": "7240f58b5f4471ee9166b5fe18fe83937a344116114a4b33468a580e75cdcda2",
+    "manifest_sha256": "8b168f1609b99ba04a4ecac81a5a19d789689bc95190d533b00efad9ab58f9d4",
+    "manifest_source_revision": "working-tree",
+    "manifest_source_binding_pass": false,
+    "deployment_admission_pass": false,
+    "history_preserved": true,
+    "overwrite_authorized": false
+  },
+  "replacement_candidate_contract": {
+    "archive_reference": "/tmp/titmas-site-c1d8931930fbae15f96ee6a6ac050b081538c919-source-bound.tar.gz",
+    "baseline_reference": "commercial-evaluation-fresh-candidate/ce-g12-source-bound-candidate-baseline.v0.1.json",
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-source-bound-candidate-preparation-result.v0.1.json",
+    "report_reference": "TITMAS-CE-G12-SOURCE-BOUND-CANDIDATE-PREPARATION-REPORT-v0.1.md",
+    "success_status": "PASS_EXACT_SOURCE_BOUND_CANDIDATE_PREPARED_NO_DEPLOYMENT_AUTHORIZED",
+    "failure_status": "FAIL_CLOSED_EXACT_SOURCE_BOUND_CANDIDATE_NOT_PREPARED_NO_DEPLOYMENT_AUTHORIZED",
+    "required_source_revision": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "release_json_exact_source_required": true,
+    "release_manifest_exact_source_required": true,
+    "release_manifest_release_json_equality_required": true,
+    "archive_path_must_not_equal_current_archive": true,
+    "old_candidate_supersession_status_on_pass": "SUPERSEDED_FOR_EXACT_SOURCE_BOUND_CANDIDATE",
+    "deployment_admission_created": false
+  },
+  "exact_execution_sequence": [
+    {
+      "id": "M01",
+      "action": "Require local governance HEAD to equal the remotely verified Decision and exact qwen3.7-max Decision review commit."
+    },
+    {
+      "id": "M02",
+      "action": "Fetch the exact production-observability baseline ref once and require it still equals c1d8931930fbae15f96ee6a6ac050b081538c919."
+    },
+    {
+      "id": "M03",
+      "action": "Verify Recommendation, review, current candidate artifacts, source commit/tree and exact source blobs."
+    },
+    {
+      "id": "M04",
+      "action": "Create exactly one disposable detached worktree at the exact source commit."
+    },
+    {
+      "id": "M05",
+      "action": "Validate all tracked JSON for parseability and duplicate keys and validate the Commercial Entry against its exact Schema."
+    },
+    {
+      "id": "M06",
+      "action": "Run one offline ignore-scripts npm ci, one npm ls and one site test command."
+    },
+    {
+      "id": "M07",
+      "action": "Run exactly one formal release export with SOURCE_REVISION set to the exact full source commit."
+    },
+    {
+      "id": "M08",
+      "action": "Require release.json.source_revision and release-manifest.json.source_revision to equal the exact full source commit and each other."
+    },
+    {
+      "id": "M09",
+      "action": "Validate exact CE Schema hashes and meta-schemas and run the exact CE test suite once."
+    },
+    {
+      "id": "M10",
+      "action": "Require zero tracked source drift, exact source tree identity and zero remote source-ref drift."
+    },
+    {
+      "id": "M11",
+      "action": "Create exactly one new source-bound candidate archive at the replacement path and bind archive, manifest and route hashes."
+    },
+    {
+      "id": "M12",
+      "action": "Generate one replacement Candidate Baseline, Result and Report; record old candidate supersession only on complete PASS."
+    },
+    {
+      "id": "M13",
+      "action": "Remove the disposable worktree and commit and push only the three replacement candidate artifacts."
+    }
+  ],
+  "execution_authorization": {
+    "decision_review_request_authorized": true,
+    "source_bound_candidate_rebuild_authorized_if_review_qualifies_and_decision_remote_verified": true,
+    "later_separate_execution_required": true,
+    "execution_in_decision_preparation_action": false,
+    "one_remote_ref_fetch_read_only": true,
+    "one_disposable_worktree": true,
+    "offline_dependency_install": true,
+    "explicit_source_revision_injection": true,
+    "static_export": true,
+    "replacement_archive_creation": true,
+    "replacement_candidate_artifact_creation": true,
+    "old_candidate_supersession_record_only_on_complete_pass": true,
+    "source_code_change": false,
+    "current_candidate_overwrite": false,
+    "server_reads": false,
+    "server_writes": false,
+    "public_site_requests": false,
+    "ssh": false,
+    "symlink_switch": false,
+    "nginx_test_or_reload": false,
+    "repair": false,
+    "rollback": false,
+    "deployment": false,
+    "release": false,
+    "pr_mutation": false,
+    "path_scoped_commit_and_push": true
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "git_fetches_during_execution": 1,
+    "disposable_worktrees": 1,
+    "npm_ci_attempts": 1,
+    "npm_ls_attempts": 1,
+    "site_test_attempts": 1,
+    "release_formal_attempts": 1,
+    "ce_test_attempts": 1,
+    "replacement_archives": 1,
+    "replacement_baselines": 1,
+    "result_artifacts": 3,
+    "result_commits": 1,
+    "result_pushes": 1,
+    "server_reads": 0,
+    "server_writes": 0,
+    "public_site_requests": 0,
+    "ssh_sessions": 0,
+    "symlink_switches": 0,
+    "nginx_tests": 0,
+    "nginx_reloads": 0,
+    "repairs": 0,
+    "rollbacks": 0,
+    "deployments": 0,
+    "releases": 0,
+    "pr_mutations": 0,
+    "model_requests_during_execution": 0,
+    "retries": 0,
+    "network_fallbacks": 0
+  },
+  "preconditions": {
+    "recommendation_and_review_remote_verified": true,
+    "recommendation_review_qualifying": true,
+    "decision_and_review_remote_verified_before_execution": true,
+    "local_remote_governance_sha_equality_required": true,
+    "source_remote_ref_exact_required": true,
+    "offline_dependency_material_available_required": true,
+    "current_archive_available_and_hash_exact_required": true,
+    "replacement_archive_path_absent_required": true,
+    "no_unrelated_worktree_change_allowed": true
+  },
+  "stop_conditions": [
+    "DECISION_OR_REVIEW_NOT_REMOTE_VERIFIED",
+    "RETURNED_MODEL_NOT_EXACT_QWEN3_7_MAX",
+    "DIRECT_JSON_OR_EXACT_CONTRACT_INVALID",
+    "DECISION_REVIEW_NOT_QUALIFYING",
+    "GOVERNANCE_LOCAL_REMOTE_SHA_DIFFERS",
+    "SOURCE_REMOTE_REF_DIFFERS",
+    "SOURCE_COMMIT_TREE_OR_BLOB_DIFFERS",
+    "CURRENT_CANDIDATE_EVIDENCE_HASH_DIFFERS",
+    "CURRENT_ARCHIVE_MISSING_OR_HASH_DIFFERS",
+    "REPLACEMENT_ARCHIVE_PATH_ALREADY_EXISTS",
+    "OFFLINE_DEPENDENCY_MATERIAL_UNAVAILABLE",
+    "JSON_SCHEMA_OR_TEST_FAILURE",
+    "RELEASE_OR_MANIFEST_SOURCE_REVISION_NOT_EXACT_FULL_SHA",
+    "RELEASE_AND_MANIFEST_SOURCE_REVISION_DIFFER",
+    "TRACKED_SOURCE_OR_REMOTE_DRIFT",
+    "SOURCE_CODE_CHANGE_REQUIRED",
+    "CURRENT_CANDIDATE_OVERWRITE_REQUIRED",
+    "RETRY_OR_NETWORK_FALLBACK_REQUIRED",
+    "SERVER_PUBLIC_SITE_OR_DEPLOYMENT_ACTION_REQUIRED",
+    "STANDARD_PRODUCTION_OR_COMMERCIAL_STATUS_ELEVATION_REQUESTED"
+  ],
+  "effects": {
+    "decision_recorded": true,
+    "decision_review_complete": false,
+    "execution_authorized_after_qualifying_review_and_remote_verification": true,
+    "execution_started": false,
+    "source_changed": false,
+    "candidate_created": false,
+    "current_candidate_preserved": true,
+    "server_state_changed": false,
+    "public_site_changed": false,
+    "deployment_authorized": false,
+    "release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  }
+}
