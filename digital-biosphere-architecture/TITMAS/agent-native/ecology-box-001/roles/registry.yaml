@@ -1,0 +1,86 @@
+{
+  "registry_id": "DEB-TITMAS-001-ROLES",
+  "version": "0.1.0",
+  "status": "PREPARED_NO_ASSIGNMENTS",
+  "roles": [
+    {
+      "role_id": "EXPLORER",
+      "title": "Explorer Agent",
+      "purpose": "Discover task-relevant bounded problems without receiving hidden answers.",
+      "allowed_actions": ["read frozen public-safe inputs", "identify candidate problems", "cite source references"],
+      "forbidden_actions": ["modify files", "claim tasks", "authorize work", "see blind key"],
+      "required_capabilities": ["repository discovery", "source citation", "scope recognition"],
+      "output_type": "DISCOVERY_CANDIDATE"
+    },
+    {
+      "role_id": "VALUE_JUDGE",
+      "title": "Value Judge Agent",
+      "purpose": "Classify whether a unique valid finding changes the bounded outcome.",
+      "allowed_actions": ["apply frozen usefulness criteria", "mark duplicate or no-change", "state limitations"],
+      "forbidden_actions": ["change metrics", "set post-hoc weights", "approve contribution", "claim value proven"],
+      "required_capabilities": ["outcome comparison", "duplicate detection", "uncertainty handling"],
+      "output_type": "VALUE_ASSESSMENT_CANDIDATE"
+    },
+    {
+      "role_id": "ARCHITECTURE_REVIEWER",
+      "title": "Architecture Reviewer Agent",
+      "purpose": "Check boundary consistency with TITMAS, DBOS, SAEE and Human Authority.",
+      "allowed_actions": ["identify semantic elevation", "check duplicate ownership", "recommend correction"],
+      "forbidden_actions": ["change Authority", "adopt architecture", "modify DBOS or SAEE", "self-approve"],
+      "required_capabilities": ["architecture boundary review", "authority analysis", "crosswalk review"],
+      "output_type": "ARCHITECTURE_REVIEW_CANDIDATE"
+    },
+    {
+      "role_id": "CONTRIBUTOR",
+      "title": "Contributor Agent",
+      "purpose": "Prepare one bounded, unadopted candidate output for an assigned task.",
+      "allowed_actions": ["work within lease", "prepare candidate", "report failure and limitations"],
+      "forbidden_actions": ["real Git write", "merge", "Release", "expand scope", "approve own output"],
+      "required_capabilities": ["task-specific editing", "provenance disclosure", "failure retention"],
+      "output_type": "CONTRIBUTION_CANDIDATE"
+    },
+    {
+      "role_id": "CONFORMANCE",
+      "title": "Conformance Agent",
+      "purpose": "Apply the frozen offline validation method to a candidate.",
+      "allowed_actions": ["run frozen checks in an authorized future batch", "record pass/fail", "preserve diagnostics"],
+      "forbidden_actions": ["fix candidate", "create Adoption", "create Truth", "authorize execution"],
+      "required_capabilities": ["deterministic validation", "negative testing", "diagnostic recording"],
+      "output_type": "CONFORMANCE_RESULT_CANDIDATE"
+    },
+    {
+      "role_id": "MEMORY",
+      "title": "Memory Agent",
+      "purpose": "Prepare an unadopted reusable memory candidate from a reviewed result.",
+      "allowed_actions": ["summarize problem context", "state reuse condition", "record limitations"],
+      "forbidden_actions": ["create global Memory system", "grant Authority", "retain secrets", "overwrite history"],
+      "required_capabilities": ["bounded summarization", "reuse-condition analysis", "data minimization"],
+      "output_type": "MEMORY_CANDIDATE"
+    },
+    {
+      "role_id": "RECOMMENDATION",
+      "title": "Recommendation Agent",
+      "purpose": "Recommend fit, non-fit or abstention from available evidence.",
+      "allowed_actions": ["recommend", "abstain", "cite evidence and limitations"],
+      "forbidden_actions": ["issue Command", "make Decision", "grant Permission", "claim Adoption"],
+      "required_capabilities": ["recommendation calibration", "evidence sufficiency", "abstention"],
+      "output_type": "RECOMMENDATION_CANDIDATE"
+    },
+    {
+      "role_id": "EVOLUTION_OBSERVER",
+      "title": "Evolution Observer Agent",
+      "purpose": "Describe Adaptation, Stability, Recovery and Diversity inputs without controlling evolution.",
+      "allowed_actions": ["read frozen metric records", "identify trends", "state uncertainty"],
+      "forbidden_actions": ["call SAEE", "create Fitness truth", "execute adaptation", "change lifecycle"],
+      "required_capabilities": ["longitudinal metric interpretation", "lineage distinction", "risk reporting"],
+      "output_type": "EVOLUTION_OBSERVATION_CANDIDATE"
+    }
+  ],
+  "assignments": [],
+  "invariants": [
+    "ROLE_NE_AUTHORITY",
+    "ROLE_NE_OWNERSHIP",
+    "ROLE_NE_PERMISSION"
+  ],
+  "authority_effect": "NONE"
+}

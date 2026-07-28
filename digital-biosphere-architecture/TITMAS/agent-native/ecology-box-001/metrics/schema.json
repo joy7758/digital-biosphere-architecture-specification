@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/deb-titmas-001-metrics.schema.json",
+  "title": "DEB-TITMAS-001 Metric Record",
+  "type": "object",
+  "required": [
+    "experiment_id",
+    "task_id",
+    "workflow_type",
+    "primary_metrics",
+    "secondary_metrics",
+    "descriptive_metrics",
+    "composite_score_created",
+    "post_hoc_weight_change",
+    "limitations",
+    "authority_effect"
+  ],
+  "properties": {
+    "experiment_id": {
+      "const": "DEB-TITMAS-001"
+    },
+    "task_id": {
+      "type": "string"
+    },
+    "workflow_type": {
+      "enum": ["HUMAN_FIRST", "AGENT_NATIVE"]
+    },
+    "primary_metrics": {
+      "type": "object",
+      "required": [
+        "final_outcome_quality",
+        "human_intervention_count",
+        "review_cycle_count"
+      ],
+      "properties": {
+        "final_outcome_quality": {"type": "object"},
+        "human_intervention_count": {"type": "object"},
+        "review_cycle_count": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "secondary_metrics": {
+      "type": "object",
+      "required": [
+        "useful_intelligence_density",
+        "contribution_value",
+        "memory_reuse_rate"
+      ],
+      "properties": {
+        "useful_intelligence_density": {"type": "object"},
+        "contribution_value": {"type": "object"},
+        "memory_reuse_rate": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "descriptive_metrics": {
+      "type": "object",
+      "required": [
+        "adaptation",
+        "stability",
+        "recovery",
+        "diversity"
+      ],
+      "properties": {
+        "adaptation": {"type": "object"},
+        "stability": {"type": "object"},
+        "recovery": {"type": "object"},
+        "diversity": {"type": "object"}
+      },
+      "additionalProperties": false
+    },
+    "composite_score_created": {
+      "const": false
+    },
+    "post_hoc_weight_change": {
+      "const": false
+    },
+    "limitations": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "authority_effect": {
+      "const": "NONE"
+    }
+  },
+  "additionalProperties": false,
+  "$comment": "Each metric object must record status, numerator, denominator, unit, raw value and NOT_ASSESSED reason in future authorized records. Zero denominator is NOT_ASSESSED. Unique valid finding means unique, factually valid, task-relevant and source-bound; useful insight additionally requires a traceable outcome change."
+}

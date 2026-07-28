@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/deb-titmas-001-memory-candidate.schema.json",
+  "title": "DEB-TITMAS-001 Memory Candidate",
+  "type": "object",
+  "required": [
+    "memory_candidate_id",
+    "problem",
+    "context",
+    "resolution",
+    "result",
+    "reuse_condition",
+    "limitations",
+    "source_references",
+    "retention_class",
+    "adoption_status",
+    "authority_effect"
+  ],
+  "properties": {
+    "memory_candidate_id": {"type": "string", "minLength": 1},
+    "problem": {"type": "string", "minLength": 1},
+    "context": {"type": "string", "minLength": 1},
+    "resolution": {"type": "string", "minLength": 1},
+    "result": {
+      "enum": ["HELPFUL", "NOT_HELPFUL", "HARMFUL", "NOT_ASSESSED"]
+    },
+    "reuse_condition": {"type": "string", "minLength": 1},
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string"}
+    },
+    "source_references": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string"}
+    },
+    "retention_class": {
+      "enum": ["EXPERIMENT_CANDIDATE_MINIMIZED"]
+    },
+    "adoption_status": {
+      "const": "UNADOPTED"
+    },
+    "authority_effect": {
+      "const": "NONE"
+    }
+  },
+  "additionalProperties": false,
+  "$comment": "Memory is a bounded reusable resolution candidate, not a raw log, canonical Evidence, global memory service, Authority or Permission."
+}
