@@ -29,12 +29,6 @@ export function PortalPage({ locale }: { locale: Locale }) {
       href: demosPath,
     },
     {
-      id: "products",
-      label: locale === "zh" ? "产品" : "Products",
-      description: locale === "zh" ? "当前可用的独立工具" : "Currently available independent tools",
-      href: locale === "zh" ? "/products/agent-immune/" : "/en/products/agent-immune/",
-    },
-    {
       id: "developers",
       label: locale === "zh" ? "开发者" : "Developers",
       description: locale === "zh" ? "规范、边界与贡献入口" : "Specifications, boundaries, and contribution entry",
@@ -131,8 +125,8 @@ export function PortalPage({ locale }: { locale: Locale }) {
               </h2>
               <p>
                 {locale === "zh"
-                  ? "TITMAS 是可信多智能体基础设施的开发者入口：研究定义方向，行业应用解释用途，Demo 展示参考实现，产品提供独立工具。它不是 Agent Framework、托管 Runtime 或认证机构。"
-                  : "TITMAS is a developer entry for trusted multi-agent infrastructure: research defines directions, applications explain uses, demos show references, and products provide independent tools. It is not an Agent Framework, hosted Runtime, or certification body."}
+                  ? "TITMAS 是可信多智能体基础设施的开发者入口：研究定义方向，行业应用解释用途，Demo 展示参考实现，开发者入口提供规范与贡献路径。它不是 Agent Framework、托管 Runtime 或认证机构。"
+                  : "TITMAS is a developer entry for trusted multi-agent infrastructure: research defines directions, applications explain uses, demos show references, and the developer entry provides specifications and contribution paths. It is not an Agent Framework, hosted Runtime, or certification body."}
               </p>
             </div>
 

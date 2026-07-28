@@ -150,8 +150,8 @@ export const directoryItems: Record<PublicDirectory, DirectoryItem[]> = {
 export const productSurfaceGate = {
   routeTemplate: "/products/{slug}/",
   registryInterface: "site-catalog.json#/extension_interfaces/products",
-  publicNavigation: true,
-  sitemapVisible: true,
-  availableProducts: 1,
+  publicNavigation: false,
+  sitemapVisible: false,
+  availableProducts: 0,
   activationGate: "AVAILABLE_PRODUCTS_GT_0",
 } as const;
