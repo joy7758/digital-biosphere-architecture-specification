@@ -1,0 +1,53 @@
+{
+  "observed_at": "2026-07-28T00:26:10Z",
+  "status": "FAIL_CLOSED_NO_OBSERVABLE_MODEL_OUTPUT",
+  "review_type": "CE_G12_MANIFEST_SOURCE_BINDING_REMEDIATION_RECOMMENDATION_REVIEW",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "UNKNOWN",
+  "returned_model_exact": false,
+  "request_count": 1,
+  "retries": 0,
+  "fallbacks": 0,
+  "model_substitutions": 0,
+  "json_extractions": 0,
+  "json_repairs": 0,
+  "recommendation_reference": "TITMAS-CE-G12-MANIFEST-SOURCE-BINDING-REMEDIATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "2f511b0c0f1ff152a1e242aefad0160484fdba8bddf4a6196453b90962eca06b",
+  "provider_request_id": "UNKNOWN",
+  "http_status": "UNKNOWN",
+  "prompt_tokens": "UNKNOWN",
+  "completion_tokens": "UNKNOWN",
+  "observable_stdout_bytes": 0,
+  "observable_stderr_bytes": 0,
+  "direct_json_valid": false,
+  "contract_valid": false,
+  "qualifying": false,
+  "failure_classification": "MODEL_REQUEST_COMPLETED_WITHOUT_OBSERVABLE_OUTPUT",
+  "local_transport_preconditions": {
+    "api_key_present": true,
+    "api_key_value_recorded": false,
+    "base_url_present": true,
+    "https_scheme": true,
+    "compatible_mode_v1_suffix": true,
+    "expected_chat_completions_path_constructed": true
+  },
+  "effects": {
+    "recommendation_review_complete": false,
+    "recommendation_qualified": false,
+    "decision_ready": false,
+    "rebuild_authorized": false,
+    "source_changed": false,
+    "candidate_created": false,
+    "server_state_changed": false,
+    "public_site_changed": false,
+    "deployment_authorized": false,
+    "release_authorized": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  },
+  "next_gate": {
+    "action": "PREPARE_ONE_BOUNDED_REVIEW_TRANSPORT_DIAGNOSTIC_AND_FRESH_REVIEW_RECOMMENDATION_ONLY",
+    "authorized": false
+  }
+}
