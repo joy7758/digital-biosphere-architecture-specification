@@ -366,6 +366,9 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(updatesCatalog.announcement_policy.maximum_visible, 1);
   assert.equal(updatesCatalog.items[0].source_commit.length, 40);
   assert.equal(updatesCatalog.items[0].truth_boundaries[0].scope, "PRODUCT_AVAILABILITY");
+  assert.equal(updatesCatalog.items[1].slug, "constitution");
+  assert.equal(updatesCatalog.items[1].source_commit, "07f69964b9b2568944bdbb0f2b2038b49c6dff93");
+  assert.equal(updatesCatalog.items[1].is_announcement, false);
   assert.equal(websiteConstitution.default_decision_rule, "WHEN_WEBSITE_CHOICE_IS_REQUIRED_REFER_TO_OPENAI_AND_OPENTELEMETRY_FIRST");
   assert.equal(websiteConstitution.effects.openai_affiliation, false);
   assert.equal(websiteConstitution.effects.opentelemetry_affiliation, false);
