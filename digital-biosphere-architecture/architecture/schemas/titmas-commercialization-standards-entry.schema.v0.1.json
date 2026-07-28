@@ -14,6 +14,7 @@
     "canonical_roadmap",
     "objective",
     "current_state_summary",
+    "ce_g12_current_state",
     "priority_value_problem",
     "priority_open_artifact",
     "agent_recommendation",
@@ -49,7 +50,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "CS_D02_CE_G12_PREFLIGHT_FAIL_CLOSED_CURRENT_TARGET_CLASSIFICATION_DECISION_REQUIRED_STANDARD_NOT_READY"
+      "const": "CS_D02_CE_G12_PUBLIC_CANDIDATE_ACTIVE_APPLICATION_EXACT_LOCAL_SYNTHETIC_DNS_PATH_DIRECT_ORIGIN_UNVERIFIED_CE_G13_RECOMMENDATION_REQUIRED_STANDARD_NOT_READY"
     },
     "observed_at": {
       "type": "string",
@@ -109,13 +110,13 @@
       "properties": {
         "as_of": {"const": "2026-07-28"},
         "last_completed_step": {
-          "const": "COMMERCIAL-EVALUATION-CE-G12-READ-ONLY-PREFLIGHT"
+          "const": "CE_G12_PUBLIC_NETWORK_PATH_ATTRIBUTION"
         },
         "last_completed_result": {
-          "const": "FAIL_CLOSED_P02_CURRENT_TARGET_MISMATCH_ACTUAL_TARGET_UNKNOWN_NOT_PERSISTED"
+          "const": "LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED_NO_DIRECT_ORIGIN_OR_STATUS_ELEVATION"
         },
         "direct_evidence_reference": {
-          "const": "commercial-evaluation-exact-redeployment/ce-g12-read-only-preflight-result.v0.1.json"
+          "const": "commercial-evaluation-fresh-candidate/ce-g12-public-network-path-attribution-result.v0.1.json"
         },
         "current_best_connected_model": {"const": "qwen3.7-max"},
         "primary_new_provider_candidate": {
@@ -133,7 +134,7 @@
         "provider_direct_test_passed": {"const": true},
         "provider_error_code": {"type": "null"},
         "next_action": {
-          "const": "PREPARE_CE_G12_CURRENT_TARGET_CLASSIFICATION_DECISION"
+          "const": "PREPARE_CE_G13_PUBLIC_AGENT_CUSTOMER_DISCOVERY_AND_REUSE_VALIDATION_RECOMMENDATION_ONLY"
         },
         "next_action_authorized": {"const": false},
         "standard_ready": {"const": false},
@@ -141,6 +142,118 @@
         "security_review_completed": {"const": false},
         "implementation_authorized": {"const": false},
         "external_execution_authorized": {"const": false}
+      }
+    },
+    "ce_g12_current_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_revision",
+        "portable_archive_sha256",
+        "activation_result_reference",
+        "activation_pass",
+        "deployment_executed",
+        "public_route_result_reference",
+        "application_surface_exact",
+        "status_and_redirect_contracts",
+        "body_hash_contracts",
+        "json_contracts",
+        "agent_readable_endpoints",
+        "network_path_result_reference",
+        "network_path_classification",
+        "specific_proxy_product_attribution",
+        "strict_direct_origin_path_pass",
+        "initial_preflight_failure_preserved",
+        "atomic_deployment_failure_and_rollback_preserved",
+        "release_authorized",
+        "standard_ready",
+        "commercial_validation_ready",
+        "available_offerings",
+        "production_ready",
+        "commercial_offering",
+        "certification",
+        "next_allowed_action",
+        "next_action_authorized"
+      ],
+      "properties": {
+        "source_revision": {
+          "const": "c1d8931930fbae15f96ee6a6ac050b081538c919"
+        },
+        "portable_archive_sha256": {
+          "const": "f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7"
+        },
+        "activation_result_reference": {
+          "const": "commercial-evaluation-fresh-candidate/ce-g12-preserved-artifact-atomic-activation-result.v0.1.json"
+        },
+        "activation_pass": {
+          "const": true
+        },
+        "deployment_executed": {
+          "const": true
+        },
+        "public_route_result_reference": {
+          "const": "commercial-evaluation-fresh-candidate/ce-g12-public-route-validation-result.v0.1.json"
+        },
+        "application_surface_exact": {
+          "const": true
+        },
+        "status_and_redirect_contracts": {
+          "const": "10/10"
+        },
+        "body_hash_contracts": {
+          "const": "9/9"
+        },
+        "json_contracts": {
+          "const": "5/5"
+        },
+        "agent_readable_endpoints": {
+          "const": "7/7"
+        },
+        "network_path_result_reference": {
+          "const": "commercial-evaluation-fresh-candidate/ce-g12-public-network-path-attribution-result.v0.1.json"
+        },
+        "network_path_classification": {
+          "const": "LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED"
+        },
+        "specific_proxy_product_attribution": {
+          "const": "NOT_PROVEN"
+        },
+        "strict_direct_origin_path_pass": {
+          "const": false
+        },
+        "initial_preflight_failure_preserved": {
+          "const": true
+        },
+        "atomic_deployment_failure_and_rollback_preserved": {
+          "const": true
+        },
+        "release_authorized": {
+          "const": false
+        },
+        "standard_ready": {
+          "const": false
+        },
+        "commercial_validation_ready": {
+          "const": false
+        },
+        "available_offerings": {
+          "const": 0
+        },
+        "production_ready": {
+          "const": false
+        },
+        "commercial_offering": {
+          "const": false
+        },
+        "certification": {
+          "const": false
+        },
+        "next_allowed_action": {
+          "const": "PREPARE_CE_G13_PUBLIC_AGENT_CUSTOMER_DISCOVERY_AND_REUSE_VALIDATION_RECOMMENDATION_ONLY"
+        },
+        "next_action_authorized": {
+          "const": false
+        }
       }
     },
     "priority_value_problem": {
@@ -2758,7 +2871,7 @@
           "minLength": 20
         },
         "status": {
-          "const": "CE_G12_PREFLIGHT_FAIL_CLOSED_CURRENT_TARGET_CLASSIFICATION_DECISION_REQUIRED"
+          "const": "CE_G12_CURRENT_STATE_RECONCILED_CE_G13_RECOMMENDATION_REQUIRED"
         },
         "packet_reference": {
           "const": "TITMAS-CS-D02-VEAP-PROBLEM-VALIDATION-EXECUTION-DECISION-PACKET.v0.1.json"
@@ -7784,7 +7897,7 @@
           "const": false
         },
         "current_recommended_option": {
-          "const": "PREPARE_CE_G12_CURRENT_TARGET_CLASSIFICATION_DECISION"
+          "const": "PREPARE_CE_G13_PUBLIC_AGENT_CUSTOMER_DISCOVERY_AND_REUSE_VALIDATION_RECOMMENDATION_ONLY"
         },
         "decision_ready": {
           "const": false

@@ -70,7 +70,7 @@ SAEE_NE_CONTROLLER=true
 | `CS-D02-PRE-75` | `DECIDED_EXECUTED_PASS_SECURITY_SUBTRACK_FROZEN` | 7/7 input、10/10 target inputs、1/1 source package reconstruction、2/2 deterministic rendered messages、2/2 full canonical Schema transmission、3/3 coverage groups、2/2 session/role binding 与 16/16 mutation negatives PASS；network/model/credential/raw persistence/target/DBOS/SAEE actions=0 | request/failure-capture 继续为 Development candidate；为避免技术递归偏离主线，PRE-76 不作为当前下一步 |
 | `TITMAS-COMMERCIAL-EVALUATION-PACK-0.1` | `PREPARED_NOT_AVAILABLE_OFFERING` | Public-safe wheel、5 类对象 Schema、只读 `dbos-validate`、machine manifest、synthetic fixture、`llms.txt` 与 10 分钟 First Run；Qwen 五角色 advisory 完成、最终 2/2 `PASS`；样例本地 `PASS` | 下一步只验证陌生 AI 智能体能否发现、理解、安装、验证并解释边界；不得升级为客户、合同、SLA、生产、认证或 commercial offering |
 | `CE-G11B-PR-A-M1` | `PR27_MERGED_POST_MERGE_VALIDATION_PASS_CE_G12_RECOMMENDATION_REQUIRED` | 初次 Lane C binding failure 保留；独立 recovery synthesis `CLEAR`、blocking finding 0；PR #27 merge `c1d8931…`；隔离 JSON `1165/1165`、site `16/16`、CE `49/49` | 只准备 CE-G12 correlated exact redeployment Recommendation；release、deploy、Standard Ready 和 commercial offering 均需后续独立 Decision |
-| `CE-G12-PREFLIGHT-FIRST` | `FAIL_CLOSED_P02_CURRENT_TARGET_MISMATCH_CLASSIFICATION_DECISION_REQUIRED` | CE-G12-P 已用尽 1/1 SSH，在 `P02_CURRENT_TARGET` mismatch 后失败关闭；server writes/public requests/retries 为 0；`ACTUAL_CURRENT_TARGET=UNKNOWN_NOT_PERSISTED`。最小分类诊断 Recommendation 经 exact `qwen3.7-max` 审查为 `RECOMMENDED` 0.95、0 blocker/correction | 只准备独立 current-target classification Decision；不授权第二次 SSH、network、server read/write、repair、rollback、redeployment、release、Standard Ready、Production 或 offering |
+| `CE-G12-PUBLIC-CANDIDATE` | `ACTIVE_APPLICATION_EXACT_LOCAL_SYNTHETIC_DNS_PATH_DIRECT_ORIGIN_UNVERIFIED_CE_G13_RECOMMENDATION_REQUIRED` | 首次 preflight 与 atomic deployment failure/rollback 保留；portable artifact `f3f46e…` 已在独立 Decision 下激活；canonical routes `10/10`，公网 status/redirect `10/10`、body hash `9/9`、JSON `5/5`、agent-readable endpoints `7/7`；本机 system resolver、`dig` 与先前 curl remote IP 均为 `198.18.0.90`，分类 `LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED` | 只准备 CE-G13 公网智能体客户发现与复用验证 Recommendation；direct-origin、Release、Standard Ready、Commercial Validation Ready、Production、Certification 与 offering 均保持 false |
 | `TITMAS-FINALIZATION-AVH-001` | `ARCHITECTURE_ASSESSMENT_DEFINED_NOT_ADOPTED` | [AVH architecture assessment](architecture/agent-validation-harness-architecture-assessment-v0.1.md) / [machine record](architecture/agent-validation-harness-architecture-assessment.v0.1.json)；现有 Technical Validation、Evidence Admission、DBOS/SAEE Owner crosswalk 已完成 | 只允许架构、overlap、threat、oracle 和 conformance design review；等待完整提案、Owner/Reviewer 和 `TITMAS-AVH-D01`，不创建产品、Runtime、Sandbox、Agent、Evidence 或实现 |
 
 ```text
@@ -78,10 +78,17 @@ COMMERCIALIZATION_LAST_COMPLETED_STEP=CS-D02-PRE-75-EXECUTION
 COMMERCIALIZATION_SECURITY_SUBTRACK_FROZEN=true
 COMMERCIAL_EVALUATION_PACKAGE_PREPARED=true
 COMMERCIAL_EVALUATION_PACKAGE_STATUS=PREPARED_NOT_AVAILABLE_OFFERING
-COMMERCIALIZATION_NEXT_ACTION=PREPARE_CE_G12_CURRENT_TARGET_CLASSIFICATION_DECISION
+COMMERCIALIZATION_NEXT_ACTION=PREPARE_CE_G13_PUBLIC_AGENT_CUSTOMER_DISCOVERY_AND_REUSE_VALIDATION_RECOMMENDATION_ONLY
 COMMERCIALIZATION_NEXT_ACTION_AUTHORIZED=false
-CE_G12_CURRENT_TARGET_CLASSIFICATION_EXECUTION_AUTHORIZED=false
-CE_G12_REDEPLOYMENT_AUTHORIZED=false
+CE_G12_PUBLIC_CANDIDATE_ACTIVE=true
+CE_G12_PUBLIC_APPLICATION_SURFACE_EXACT=true
+CE_G12_PUBLIC_NETWORK_PATH_CLASSIFICATION=LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED
+CE_G12_STRICT_DIRECT_ORIGIN_PATH_PASS=false
+CE_G12_REDEPLOYMENT_AUTHORIZED=true
+CE_G12_REDEPLOYMENT_EXECUTED=true
+CE_G12_STANDARD_READY=false
+CE_G12_PRODUCTION_READY=false
+CE_G12_COMMERCIAL_OFFERING=false
 P0_REFERENCE_IMPLEMENTATION_CREATED=true
 P0_OFFLINE_TESTS_PASS=true
 PRE68_SECURITY_AND_PLATFORM_SCOPE_DEFINED=true

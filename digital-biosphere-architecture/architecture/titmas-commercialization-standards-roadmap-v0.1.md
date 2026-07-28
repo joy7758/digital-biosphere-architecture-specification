@@ -3088,6 +3088,137 @@ PRODUCTION_READY=false
 COMMERCIAL_OFFERING=false
 ```
 
+### 4.88 CE-G12 Current-target Resolution through Public Network-path Attribution
+
+后续 CE-G12 治理没有重写 4.86/4.87 的 preflight failure，而是通过独立
+Recommendation、Decision、exact `qwen3.7-max` review 和 remote verification，依次完成：
+
+1. current-target classification；
+2. current-target disposition 与 lineage reconciliation；
+3. fresh source-bound portable candidate；
+4. SSH alias mapping 的 read-only preflight；
+5. atomic deployment failure 与同 session rollback；
+6. preserved artifact atomic activation；
+7. outside-in public route/content/agent-readable validation；
+8. local public network path attribution。
+
+最终激活对象：
+
+```text
+SOURCE_REVISION=c1d8931930fbae15f96ee6a6ac050b081538c919
+PORTABLE_ARCHIVE_SHA256=f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7
+ACTIVE_TARGET=/srv/tmai/releases/c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7
+PRESERVED_ARTIFACT_ACTIVATION_PASS=true
+CANONICAL_ROUTE_CONTRACTS=10/10
+ROLLBACK_EXECUTED=false
+```
+
+[Activation result](../commercial-evaluation-fresh-candidate/ce-g12-preserved-artifact-atomic-activation-result.v0.1.json)
+和
+[report](../TITMAS-CE-G12-PRESERVED-ARTIFACT-ATOMIC-ACTIVATION-REPORT-v0.1.md)
+证明了 source/archive/manifest/permission/nginx/current-switch/canonical-route exact binding。
+这是一项已授权并实际完成的静态候选激活，但不是新产品 Release、Standard Ready、
+Production 或 Commercial Offering。
+
+第一次 atomic deployment 尝试在 `/en` 非 trailing-slash route 的 body hash 检查失败，
+并在同一 SSH session 成功回滚到旧 target。该失败及 rollback 继续保留，未被后续成功
+覆盖。
+
+### 4.89 CE-G12 Public Application and Agent-readable Surface
+
+对 `https://redcrag.cn` 的十项真实 DNS／system CA 请求执行一次后：
+
+```text
+STATUS_AND_REDIRECT_CONTRACTS=10/10
+BODY_HASH_CONTRACTS=9/9
+JSON_CONTRACTS=5/5
+AGENT_READABLE_ENDPOINTS=7/7
+APPLICATION_SURFACE_EXACT=true
+HTTP_RETRIES=0
+SERVER_MUTATIONS=0
+```
+
+七个 agent-readable endpoint 为：
+
+1. `/status.json`;
+2. `/agent-index.json`;
+3. `/llms.txt`;
+4. `/robots.txt`;
+5. `/titmas-community.json`;
+6. `/agent-customer-package.json`;
+7. `/release-manifest.json`.
+
+[Public validation result](../commercial-evaluation-fresh-candidate/ce-g12-public-route-validation-result.v0.1.json)
+和
+[report](../TITMAS-CE-G12-PUBLIC-ROUTE-VALIDATION-REPORT-v0.1.md)
+证明应用层内容、route 和 machine-readable contract 精确可达。
+
+每次 curl 观察到的 remote IP 为 `198.18.0.90`，而不是预期 direct origin
+`180.76.115.193`，因此 strict direct-origin gate 失败关闭，未把 application pass 升级为
+direct-origin path pass。
+
+### 4.90 CE-G12 Local Public Network-path Attribution
+
+独立只读 Decision 只允许四类本机配置读取和两次 DNS lookup。执行结果：
+
+```text
+SYSTEM_RESOLVER_A=198.18.0.90
+INDEPENDENT_DIG_A=198.18.0.90
+PRIOR_CURL_REMOTE_IP=198.18.0.90
+ADDRESS_WITHIN_198_18_0_0_15=true
+PATH_CLASSIFICATION=LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED
+SPECIFIC_PROXY_PRODUCT_ATTRIBUTION=NOT_PROVEN
+HTTP_REQUESTS=0
+SSH_SESSIONS=0
+SERVER_READS=0
+SERVER_WRITES=0
+NETWORK_CONFIG_CHANGES=0
+```
+
+filtered metadata 观察到本机 HTTP/HTTPS proxy 配置为 `127.0.0.1:1080`，但没有足够证据
+识别具体代理、VPN、安全产品或上游运营方。
+
+[Path attribution result](../commercial-evaluation-fresh-candidate/ce-g12-public-network-path-attribution-result.v0.1.json)
+和
+[report](../TITMAS-CE-G12-PUBLIC-NETWORK-PATH-ATTRIBUTION-REPORT-v0.1.md)
+只解释当前执行环境为什么无法直接证明 origin IP，不改变公网应用内容验证结果，也不产生
+特定产品归因。
+
+### 4.91 CE-G12 Commercialization Status Reconciliation and CE-G13 Boundary
+
+CE-G12 当前真实状态：
+
+```text
+STATIC_CANDIDATE_ACTIVE=true
+DEPLOYMENT_EXECUTED=true
+APPLICATION_SURFACE_EXACT=true
+LOCAL_NETWORK_PATH_CLASSIFIED=true
+STRICT_DIRECT_ORIGIN_PATH_PASS=false
+INITIAL_PREFLIGHT_FAILURE_PRESERVED=true
+ATOMIC_DEPLOYMENT_FAILURE_AND_ROLLBACK_PRESERVED=true
+NEW_PRODUCT_RELEASE=false
+STANDARD_READY=false
+COMMERCIAL_VALIDATION_READY=false
+AVAILABLE_OFFERINGS=0
+PRODUCTION_READY=false
+COMMERCIAL_OFFERING=false
+CERTIFICATION=false
+```
+
+根据
+[status reconciliation Recommendation](../TITMAS-CE-G12-COMMERCIALIZATION-STATUS-RECONCILIATION-RECOMMENDATION-v0.1.md)
+及独立 Decision，下一步只允许：
+
+```text
+NEXT_ALLOWED_ACTION=PREPARE_CE_G13_PUBLIC_AGENT_CUSTOMER_DISCOVERY_AND_REUSE_VALIDATION_RECOMMENDATION_ONLY
+NEXT_ALLOWED_ACTION_AUTHORIZED=false
+```
+
+未来 CE-G13 需要回答的是：独立 AI Agent 能否从公开 machine-readable 入口发现 TITMAS、
+正确理解边界、识别可复用路径，并基于明确原因推荐或拒绝。当前状态同步不创建 CE-G13
+Recommendation，不执行 Agent request，不发送邀请，不产生客户、采用、收入、合同、SLA、
+认证或 Commercial Offering。
+
 ## 5. First Standardization Wedge（第一个标准化切入口）
 
 ### 5.1 Preferred name
@@ -3806,10 +3937,18 @@ TITMAS_COMMERCIAL_EVALUATION_CE_G12_ACTUAL_CURRENT_TARGET=UNKNOWN_NOT_PERSISTED
 TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_DIAGNOSTIC_RECOMMENDATION_PREPARED=true
 TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_DIAGNOSTIC_REVIEW_VERDICT=RECOMMENDED
 TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_DIAGNOSTIC_REVIEW_CONFIDENCE=0.95
-TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_CLASSIFICATION_DECISION_RECORDED=false
-TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_CLASSIFICATION_EXECUTION_AUTHORIZED=false
-TITMAS_COMMERCIAL_EVALUATION_CE_G12_REDEPLOYMENT_AUTHORIZED=false
-TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE=PREPARE_CE_G12_CURRENT_TARGET_CLASSIFICATION_DECISION
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_CLASSIFICATION_DECISION_RECORDED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_CURRENT_TARGET_CLASSIFICATION_EXECUTION_AUTHORIZED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PRESERVED_ARTIFACT_ACTIVATION_PASS=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PUBLIC_APPLICATION_SURFACE_EXACT=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PUBLIC_NETWORK_PATH_CLASSIFICATION=LOCAL_SYNTHETIC_DNS_MAPPING_OBSERVED
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_STRICT_DIRECT_ORIGIN_PATH_PASS=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_REDEPLOYMENT_AUTHORIZED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_REDEPLOYMENT_EXECUTED=true
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_STANDARD_READY=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_PRODUCTION_READY=false
+TITMAS_COMMERCIAL_EVALUATION_CE_G12_COMMERCIAL_OFFERING=false
+TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE=PREPARE_CE_G13_PUBLIC_AGENT_CUSTOMER_DISCOVERY_AND_REUSE_VALIDATION_RECOMMENDATION_ONLY
 TITMAS_COMMERCIAL_EVALUATION_NEXT_GATE_AUTHORIZED=false
 
 TITMAS_COMMERCIALIZATION_STANDARD_READY=false
