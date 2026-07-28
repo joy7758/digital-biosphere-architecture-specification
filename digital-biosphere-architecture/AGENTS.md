@@ -37,7 +37,14 @@ PROTOCOLIZATION_BEFORE_PLATFORM_EXPANSION=true
 13. `CONTRIBUTING.md`（贡献入口与智能体披露）；
 14. `TITMAS-CONTRIBUTOR-ENTRY-v0.1.json`（机器可读当前状态）；
 15. `architecture/titmas-document-maturity-policy-v0.1.md`（文档级成熟度）；
-16. `architecture/titmas-contribution-proposal-template-v0.1.md`（重大变化 Proposal）。
+16. `architecture/titmas-contribution-proposal-template-v0.1.md`（重大变化 Proposal）；
+17. `architecture/titmas-architecture-charter-v1.0.md`（TITMAS 项目身份与边界的
+    canonical Charter）。
+
+进行 TITMAS 工作时，如 v1.0 Charter 不存在、不可读或状态含义不清，必须停止扩大
+TITMAS scope 并报告。每次重大 TITMAS 任务的最终答复必须包含该 Charter 定义的
+`TITMAS_DRIFT_CHECK`。Drift Check 是 Human Review Gate，不是 automated enforcement，
+也不授权 Implementation、响应动作或公共启动。
 
 ## Work Routing（工作路由）
 
