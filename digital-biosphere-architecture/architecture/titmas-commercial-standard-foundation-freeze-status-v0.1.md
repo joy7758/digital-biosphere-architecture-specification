@@ -107,6 +107,8 @@ product is created by these records.
 | [`reviews/cs-g1/privacy-review-result.v0.1.json`](reviews/cs-g1/privacy-review-result.v0.1.json) | Privacy review completed with four residual risks and four required corrections |
 | [`reviews/cs-g1/claim-authority-review-result.v0.1.json`](reviews/cs-g1/claim-authority-review-result.v0.1.json) | Claim/Authority request failed closed after a 180-second read timeout |
 | [`reviews/cs-g1/formal-review-bundle-result.v0.1.json`](reviews/cs-g1/formal-review-bundle-result.v0.1.json) | Deterministic aggregation: not ready, review budget consumed, new Human Decision required |
+| [`titmas-cs-g1-failed-review-remediation-assessment-v0.1.md`](titmas-cs-g1-failed-review-remediation-assessment-v0.1.md) | Privacy correction applicability and bounded four-scope transport assessment |
+| [`../TITMAS-CS-G1-FAILED-REVIEW-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md`](../TITMAS-CS-G1-FAILED-REVIEW-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md) | Current explicit Human choice; no option selected |
 
 ## 6. Invariants
 

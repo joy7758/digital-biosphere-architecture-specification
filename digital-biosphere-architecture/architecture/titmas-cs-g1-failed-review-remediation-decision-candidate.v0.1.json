@@ -1,0 +1,126 @@
+{
+  "document_id": "DBA-TITMAS-CS-G1-FAILED-REVIEW-REMEDIATION-DECISION-CANDIDATE-0.1",
+  "version": "0.1.0",
+  "status": "HUMAN_DECISION_REQUIRED_OPTION_NOT_SELECTED",
+  "created_at": "2026-07-28T17:46:23+08:00",
+  "primary_repository": "digital-biosphere-architecture",
+  "decision_id": "CS-G1-REMEDIATION-D01",
+  "decision_owner_ref": "zhangbin",
+  "decision_state": "NOT_DECIDED",
+  "recommended_option": "A",
+  "current_evidence": {
+    "authorized_sessions": 3,
+    "requests_sent": 3,
+    "completed_sessions": 1,
+    "failed_sessions": 2,
+    "risk_coverage": "4/16",
+    "crosswalk_coverage": "0/14",
+    "privacy_required_corrections": 4,
+    "formal_review_bundle_ready": false,
+    "cs_g1_pass": false
+  },
+  "source_bindings": [
+    {
+      "path": "reviews/cs-g1/security-review-result.v0.1.json",
+      "sha256": "70d3c31786b3a0e52f4892f0bfb011b4e53e9703f561b97f1c92eb8f5888e03c"
+    },
+    {
+      "path": "reviews/cs-g1/privacy-review-result.v0.1.json",
+      "sha256": "6ce80a8bc34a20b951e62e4ed041bd952a765bae43326579bb50fa9e60d1ffc3"
+    },
+    {
+      "path": "reviews/cs-g1/claim-authority-review-result.v0.1.json",
+      "sha256": "0138352d834075fda58446439c20198920bba108aa3325d3dd7a01519fb25fb8"
+    },
+    {
+      "path": "reviews/cs-g1/formal-review-bundle-result.v0.1.json",
+      "sha256": "cf36711ecd13b32e2e08d979e530a3899a5f5a19ec036ce37367f684e0bcb535"
+    }
+  ],
+  "privacy_correction_applicability": {
+    "reviewed_items": 4,
+    "applicable_items": 4,
+    "fully_satisfied_by_existing_frozen_scope": 0,
+    "partial_prior_control_evidence_exists": true
+  },
+  "options": [
+    {
+      "option_id": "A",
+      "selection": "AUTHORIZE_PRIVACY_CONTROL_REVISION_AND_FOUR_SCOPED_QWEN_REVIEWS",
+      "recommended": true,
+      "privacy_control_revision_authorized_if_selected": true,
+      "projection_preparation_authorized_if_selected": true,
+      "review_execution_authorized_if_selected": true,
+      "review_model": "qwen3.7-max",
+      "review_session_count": 4,
+      "request_byte_cap": 24000,
+      "client_read_timeout_seconds": 300,
+      "retry_count": 0,
+      "coverage": {
+        "security_risks": 5,
+        "privacy_risks": 4,
+        "claim_authority_risks": 7,
+        "crosswalk_surfaces": 14
+      }
+    },
+    {
+      "option_id": "B",
+      "selection": "AUTHORIZE_TRANSPORT_ONLY_RERUN",
+      "recommended": false,
+      "reason": "Privacy required corrections would remain unresolved."
+    },
+    {
+      "option_id": "C",
+      "selection": "AUTHORIZE_PRIVACY_AND_PROJECTION_PREPARATION_ONLY",
+      "recommended": false,
+      "review_execution_authorized_if_selected": false
+    },
+    {
+      "option_id": "D",
+      "selection": "DEFER_OR_REJECT",
+      "recommended": false,
+      "review_execution_authorized_if_selected": false
+    }
+  ],
+  "option_a_preconditions": {
+    "privacy_v01_preserved": true,
+    "four_projection_source_and_pointer_validation_required": true,
+    "projection_semantic_equivalence_required": true,
+    "request_byte_cap_enforced": true,
+    "exact_model_identity_required": true,
+    "prior_results_preserved": true,
+    "precondition_failure_requests_sent": 0
+  },
+  "agent_recommendation": {
+    "verdict": "RECOMMENDED",
+    "recommended_option": "A",
+    "source": "CODEX_ASSESSMENT_PLUS_COMPLETED_QWEN_PRIVACY_REVIEW",
+    "candidate_qwen_review_executed": false,
+    "human_decision_required": true
+  },
+  "effects": {
+    "decision_created": false,
+    "privacy_control_revision_authorized": false,
+    "projection_preparation_authorized": false,
+    "review_execution_authorized": false,
+    "retry_authorized": false,
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "formal_review_completion": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "external_outreach": false,
+    "data_processing": false,
+    "customer_record_creation": false,
+    "commercial_pilot": false,
+    "commercial_offer": false,
+    "certification": false,
+    "formal_standard_publication": false,
+    "release": false,
+    "deployment": false
+  },
+  "next_action": "EXPLICIT_HUMAN_OPTION_A_B_C_OR_D_DECISION",
+  "next_action_authorized": false
+}

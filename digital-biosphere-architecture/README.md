@@ -755,6 +755,10 @@ Security 和 Claim/Authority 请求分别在 55 秒与 180 秒读取超时后失
 [`formal review bundle`](architecture/reviews/cs-g1/formal-review-bundle-result.v0.1.json)
 只有 risks `4/16`、crosswalk `0/14` 覆盖，因此
 `FORMAL_REVIEW_BUNDLE_READY=false`、`CS_G1_PASS=false`，且重试需要新的 Human Decision。
+当前修订依据见
+[`remediation assessment`](architecture/titmas-cs-g1-failed-review-remediation-assessment-v0.1.md)，
+候选选择见
+[`CS-G1-REMEDIATION-D01 Human Decision Packet`](TITMAS-CS-G1-FAILED-REVIEW-REMEDIATION-HUMAN-DECISION-PACKET-v0.1.md)。
 `CS-G2–CS-G7` 仍为 `BLOCKED`；数据处理、外部推广、客户记录、实现、商业试点、认证、
 正式标准发布、Release 和 Deployment 均保持关闭。
 
