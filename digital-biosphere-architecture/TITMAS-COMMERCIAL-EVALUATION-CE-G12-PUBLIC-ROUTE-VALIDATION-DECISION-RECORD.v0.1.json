@@ -1,0 +1,219 @@
+{
+  "record_type": "TITMAS_CE_G12_PUBLIC_ROUTE_VALIDATION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PUBLIC-ROUTE-VALIDATION",
+  "version": "0.1.0",
+  "status": "AUTHORIZE_ONE_TEN_REQUEST_OUTSIDE_IN_PUBLIC_VALIDATION_ONLY_IF_QUALIFYING_DECISION_REVIEW_AND_REMOTE_VERIFICATION",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "recommendation_reference": "TITMAS-CE-G12-PUBLIC-ROUTE-VALIDATION-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "5a32839a4013b18c8d4bdac942aa7c13016c5e9bc4a1b078dd302dbba1556be2",
+  "recommendation_review_reference": "TITMAS-CE-G12-PUBLIC-ROUTE-VALIDATION-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "recommendation_review_sha256": "0822b986244816324a466be0f142dec1154dcfecabd9e3b2fd0baf6cef50330e",
+  "recommendation_commit": "e195add9d259431e7525fc8dc96af7da697409c0",
+  "recommendation_remote_verified": true,
+  "selected_option": "A",
+  "primary_repository": "digital-biosphere-architecture",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "activation_contract": {
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-preserved-artifact-atomic-activation-result.v0.1.json",
+    "result_sha256": "244c50e1f4f1e823d72f44f40b07a94855f35cca716253681d13f4e5ee6223de",
+    "report_reference": "TITMAS-CE-G12-PRESERVED-ARTIFACT-ATOMIC-ACTIVATION-REPORT-v0.1.md",
+    "report_sha256": "5103e69e1b53c8f706aa58648f14f6fb94acd5a2297ff45d621b681966f59857",
+    "evidence_commit": "efca9cbcd9e708448215249796ba422ea5439b05",
+    "candidate_active": true,
+    "public_outside_in_verified": false
+  },
+  "network_contract": {
+    "origin": "https://redcrag.cn",
+    "expected_remote_ip": "180.76.115.193",
+    "real_dns_required": true,
+    "system_ca_required": true,
+    "tls_insecure_allowed": false,
+    "proxy_allowed": false,
+    "resolve_override_allowed": false,
+    "alternate_domain_allowed": false,
+    "retries_allowed": false,
+    "fallbacks_allowed": false
+  },
+  "request_matrix": [
+    {
+      "id": "PUB-01",
+      "path": "/",
+      "follow_redirects": false,
+      "expected_initial_status": 200,
+      "expected_final_status": 200,
+      "expected_body_sha256": "cca332da1364a614bbef83939d0ff7c948739e673d14c7c1b2a60cd9d500abf8",
+      "content_type": "text/html"
+    },
+    {
+      "id": "PUB-02",
+      "path": "/en",
+      "follow_redirects": false,
+      "expected_initial_status": 301,
+      "expected_location": "https://redcrag.cn/en/",
+      "body_hash_not_evaluated": true
+    },
+    {
+      "id": "PUB-03",
+      "path": "/en",
+      "follow_redirects": true,
+      "expected_final_status": 200,
+      "expected_final_url": "https://redcrag.cn/en/",
+      "expected_body_sha256": "562c061979c8cd72b1a94a74715727a898251a7716d61f64f4760468c0fb65f1",
+      "content_type": "text/html"
+    },
+    {
+      "id": "PUB-04",
+      "path": "/status.json",
+      "follow_redirects": false,
+      "expected_initial_status": 200,
+      "expected_body_sha256": "8d7cef3c6b07916ddd3e5e40d988764a95ad9a97878584986c2c33f1cdef2b33",
+      "json_required": true
+    },
+    {
+      "id": "PUB-05",
+      "path": "/agent-index.json",
+      "follow_redirects": false,
+      "expected_initial_status": 200,
+      "expected_body_sha256": "8ac9cf1a4efd5a4b47ed23c300367a63fb18bea6c11a347ee00a7d84f9737f63",
+      "json_required": true
+    },
+    {
+      "id": "PUB-06",
+      "path": "/llms.txt",
+      "follow_redirects": false,
+      "expected_initial_status": 200,
+      "expected_body_sha256": "5f882cc8a58c4a90f345de9bdd68301da4598bc3cbee679cebef6c70776525e6",
+      "non_empty_required": true
+    },
+    {
+      "id": "PUB-07",
+      "path": "/robots.txt",
+      "follow_redirects": false,
+      "expected_initial_status": 200,
+      "expected_body_sha256": "a43968c239c1e497bdd07bad4110c03d7a141f1d18341ee725cde390fc7e007f",
+      "non_empty_required": true
+    },
+    {
+      "id": "PUB-08",
+      "path": "/titmas-community.json",
+      "follow_redirects": false,
+      "expected_initial_status": 200,
+      "expected_body_sha256": "a7cf64e677a6f0cd794b33f69a18c367ea18dd0944e44f438d1175a83416214f",
+      "json_required": true
+    },
+    {
+      "id": "PUB-09",
+      "path": "/agent-customer-package.json",
+      "follow_redirects": false,
+      "expected_initial_status": 200,
+      "expected_body_sha256": "7921f205f6f365777b38d0ad2d680ee921bdc4555a61903a3303b9038a4311b1",
+      "json_required": true
+    },
+    {
+      "id": "PUB-10",
+      "path": "/release-manifest.json",
+      "follow_redirects": false,
+      "expected_initial_status": 200,
+      "expected_body_sha256": "f0e42b7f0be3c36f201517d68bef42ec365809261ed46d4fc6af74949a397a60",
+      "json_required": true,
+      "expected_source_revision": "c1d8931930fbae15f96ee6a6ac050b081538c919"
+    }
+  ],
+  "exact_sequence": [
+    {
+      "id": "PUB-D01",
+      "action": "Require local and remote governance heads to equal the commit containing this Decision and exact qwen3.7-max Decision review."
+    },
+    {
+      "id": "PUB-D02",
+      "action": "Reverify the ten expected local candidate file hashes without modifying the candidate."
+    },
+    {
+      "id": "PUB-D03",
+      "action": "Execute each matrix request exactly once using real DNS, system CA, no proxy, no resolve override and no retry."
+    },
+    {
+      "id": "PUB-D04",
+      "action": "Record remote IP, TLS verify result, HTTP version, status, location/final URL, body bytes/hash and parse contract."
+    },
+    {
+      "id": "PUB-D05",
+      "action": "Fail closed on any mismatch without alternate domain, proxy, fallback, retry or server mutation."
+    },
+    {
+      "id": "PUB-D06",
+      "action": "Generate, commit and push only one Public Validation Result and one Report."
+    }
+  ],
+  "result_contract": {
+    "result_reference": "commercial-evaluation-fresh-candidate/ce-g12-public-route-validation-result.v0.1.json",
+    "report_reference": "TITMAS-CE-G12-PUBLIC-ROUTE-VALIDATION-REPORT-v0.1.md",
+    "success_status": "PASS_OUTSIDE_IN_PUBLIC_ROUTE_AND_AGENT_DISCOVERY_VALIDATION_NO_STATUS_ELEVATION",
+    "failure_status": "FAIL_CLOSED_OUTSIDE_IN_PUBLIC_ROUTE_OR_AGENT_DISCOVERY_VALIDATION_NO_STATUS_ELEVATION"
+  },
+  "execution_authorization": {
+    "decision_review_request_authorized": true,
+    "public_validation_authorized_if_review_qualifies_and_decision_remote_verified": true,
+    "ten_public_get_requests": true,
+    "real_dns": true,
+    "system_ca_tls": true,
+    "server_reads_or_writes": false,
+    "ssh_session": false,
+    "current_switch": false,
+    "dns_or_certificate_change": false,
+    "nginx_change": false,
+    "new_product_release": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "path_scoped_result_commit_and_push": true
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "public_get_requests": 10,
+    "ssh_sessions": 0,
+    "server_read_commands": 0,
+    "server_writes": 0,
+    "current_switches": 0,
+    "dns_changes": 0,
+    "certificate_changes": 0,
+    "nginx_changes": 0,
+    "retries": 0,
+    "proxy_or_network_fallbacks": 0,
+    "alternate_domains": 0,
+    "new_product_releases": 0,
+    "result_artifacts": 2,
+    "result_commits": 1,
+    "result_pushes": 1
+  },
+  "stop_conditions": [
+    "DECISION_OR_REVIEW_NOT_REMOTE_VERIFIED",
+    "RETURNED_MODEL_NOT_EXACT_QWEN3_7_MAX",
+    "DIRECT_JSON_OR_CONTRACT_INVALID",
+    "DECISION_REVIEW_NOT_QUALIFYING",
+    "LOCAL_CANDIDATE_FILE_HASH_DRIFT",
+    "DNS_TLS_OR_REMOTE_IP_MISMATCH",
+    "STATUS_LOCATION_FINAL_URL_BODY_HASH_OR_JSON_MISMATCH",
+    "RETRY_PROXY_RESOLVE_OVERRIDE_ALTERNATE_DOMAIN_OR_FALLBACK_REQUIRED",
+    "SERVER_MUTATION_OR_STATUS_ELEVATION_REQUIRED"
+  ],
+  "effects": {
+    "decision_recorded": true,
+    "decision_review_complete": false,
+    "public_validation_authorized_after_qualifying_review_and_remote_verification": true,
+    "public_requests_executed": 0,
+    "outside_in_validation_pass": false,
+    "server_state_changed": false,
+    "current_changed": false,
+    "new_product_release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  }
+}
