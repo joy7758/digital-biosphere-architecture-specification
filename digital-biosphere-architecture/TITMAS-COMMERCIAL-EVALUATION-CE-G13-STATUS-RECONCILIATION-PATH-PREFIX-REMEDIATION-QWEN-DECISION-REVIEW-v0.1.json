@@ -1,0 +1,34 @@
+{
+  "record_type": "TITMAS_CE_G13_STATUS_RECONCILIATION_PATH_PREFIX_REMEDIATION_QWEN_DECISION_REVIEW",
+  "version": "0.1.0",
+  "status": "APPROVE",
+  "observed_at": "2026-07-28",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G13-STATUS-RECONCILIATION-PATH-PREFIX-REMEDIATION-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "8fabdf2ebbd5de0181d893b699814028f6bfd621afa924ebbb23e16f7f9e5af6",
+  "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "request_count": 1,
+  "direct_json_parse": true,
+  "retry": 0,
+  "fallback": 0,
+  "substitution": 0,
+  "extraction": 0,
+  "repair": 0,
+  "review": {
+    "verdict": "APPROVE",
+    "confidence": 0.95,
+    "blockers": [],
+    "corrections": [],
+    "boundary_check": {
+      "failure_immutable": true,
+      "replacement_run_bounded": true,
+      "prefix_normalization_safe": true,
+      "no_authority_elevation": true
+    },
+    "summary": "Decision safely authorizes exactly one prefix-bound replacement validation run (v0_2_replacement_run_cap=1) with v0_1_retry=false and preserve_v0_1_failure_artifacts=true, ensuring the failed v0.1 record is neither retried nor overwritten. Authority elevation is explicitly denied in non_authorizations. All boundary checks pass."
+  },
+  "authority_effect": false,
+  "execution_authorized": true,
+  "ce_g13_execution_authorized": false
+}
