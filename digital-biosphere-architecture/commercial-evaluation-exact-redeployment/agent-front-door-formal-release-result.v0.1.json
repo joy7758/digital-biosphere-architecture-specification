@@ -1,0 +1,110 @@
+{
+  "schema_version": "0.1",
+  "result_id": "AGENT-FRONT-DOOR-FORMAL-RELEASE-RESULT-20260728-R2",
+  "status": "PASS_RETAIN_FORMAL_STATIC_SITE_RELEASE",
+  "observed_at": "2026-07-28T07:36:58Z",
+  "decision_reference": "AGENT-FRONT-DOOR-PUBLIC-WEBSITE-FORMAL-RELEASE-2026-07-28",
+  "public_origin": "https://redcrag.cn",
+  "source_revision": "35f30d81962a02a8353a79763fd4f09db815fd15",
+  "release_gate_revision": "624a579be49b07937c569a536ec9c9c7ccbdc79e",
+  "active_release": "/srv/tmai/releases/35f30d81962a02a8353a79763fd4f09db815fd15--5b19e75d6ff653f2b44f124a22bf45cea37e8aa771e7e2f8919aeab9ede8eadc",
+  "rollback_release": "/srv/tmai/releases/69fe2b7a1b6123a64dff12ed81fd6df1e8e863c4--f60fffad44ddbbbbc214f3dab5f4ce217ca05b9b0660520f7f61c5ae037ff5b1",
+  "artifact": {
+    "archive_sha256": "5b19e75d6ff653f2b44f124a22bf45cea37e8aa771e7e2f8919aeab9ede8eadc",
+    "archive_bytes": 1088615,
+    "manifest_files": 90,
+    "on_host_manifest_pass": true
+  },
+  "server_immediate_gate": {
+    "atomic_switch_pass": true,
+    "routes_passed": 10,
+    "routes_expected": 10,
+    "security_headers_passed": 6,
+    "security_headers_expected": 6,
+    "agent_front_door_content_pass": true,
+    "machine_entry_boundaries_pass": true,
+    "nginx_active": true,
+    "rollback_target_preserved": true
+  },
+  "independent_vantage_run": {
+    "github_run_id": 30339056493,
+    "url": "https://github.com/joy7758/digital-biosphere-architecture-specification/actions/runs/30339056493",
+    "status": "completed",
+    "conclusion": "success",
+    "requests_total": 24,
+    "retry": false,
+    "fallback": false,
+    "tls_verification_bypass": false,
+    "all_hashes_match": true,
+    "vantages": [
+      {
+        "vantage_id": "GITHUB_HOSTED_UBUNTU",
+        "runner_os": "Linux",
+        "client": "python-http-client",
+        "tls_backend": "OpenSSL 3.0.13 30 Jan 2024",
+        "requests_executed": 12,
+        "passes": 12,
+        "failures": 0,
+        "result": "VANTAGE_OBSERVATION_PASS",
+        "proxy_environment_present": false,
+        "receipt_sha256": "f50583f3132a430f85a9e39b6c19f4a52792356996357db9bfdf6a9551f41533"
+      },
+      {
+        "vantage_id": "GITHUB_HOSTED_MACOS",
+        "runner_os": "Darwin",
+        "client": "system-curl",
+        "tls_backend": "SecureTransport and LibreSSL 3.3.6",
+        "requests_executed": 12,
+        "passes": 12,
+        "failures": 0,
+        "result": "VANTAGE_OBSERVATION_PASS",
+        "proxy_environment_present": false,
+        "receipt_sha256": "1af799b03ace77b14de3fb9181d43a58e153cc5d11d76cf8c9ff505a89a2ff3d"
+      }
+    ]
+  },
+  "sites_release": {
+    "project_id": "appgprj_6a65e07ce728819180d0667d704e767a",
+    "version_number": 13,
+    "version_id": "appgprj_6a65e07ce728819180d0667d704e767a~appgver_a4feb2c2cedc8191ad345113a9e749c3",
+    "deployment_id": "appgdep_6a6859f9ad748191a1f695901560495b",
+    "status": "succeeded",
+    "source_revision": "35f30d81962a02a8353a79763fd4f09db815fd15",
+    "url": "https://titmas-digital-cell-demo.zhangbin1982.chatgpt.site"
+  },
+  "published_entrypoints": {
+    "zh": "https://redcrag.cn/#agent-start",
+    "en": "https://redcrag.cn/en/#agent-start",
+    "llms": "https://redcrag.cn/llms.txt",
+    "agent_index": "https://redcrag.cn/agent-index.json",
+    "site_catalog": "https://redcrag.cn/site-catalog.json"
+  },
+  "prior_failed_batch_preserved": {
+    "github_run_id": 30338909720,
+    "url": "https://github.com/joy7758/digital-biosphere-architecture-specification/actions/runs/30338909720",
+    "status": "completed",
+    "conclusion": "failure",
+    "failed_vantage": "GITHUB_HOSTED_MACOS",
+    "passes": 11,
+    "failures": 1,
+    "error": "CURL_EXIT_35",
+    "failed_route": "/agent-index.json",
+    "failed_round": 2,
+    "retry_performed": false,
+    "rollback_pass": true,
+    "failure_overwritten": false,
+    "new_batch_id": "AGENT-FRONT-DOOR-FORMAL-20260728-R2"
+  },
+  "effects": {
+    "formal_static_public_site_release": true,
+    "runtime": false,
+    "api": false,
+    "agent": false,
+    "permission": false,
+    "security_certification": false,
+    "reliability_proof": false,
+    "compliance_certification": false,
+    "deployment_guarantee": false,
+    "production_readiness": false
+  }
+}
