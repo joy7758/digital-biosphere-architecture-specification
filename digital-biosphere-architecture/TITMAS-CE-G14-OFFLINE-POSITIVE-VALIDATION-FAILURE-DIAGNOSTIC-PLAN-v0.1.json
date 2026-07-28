@@ -1,0 +1,169 @@
+{
+  "record_type": "TITMAS_CE_G14_OFFLINE_POSITIVE_VALIDATION_FAILURE_DIAGNOSTIC_PLAN",
+  "version": "0.1.0",
+  "status": "DESIGN_FROZEN_EXECUTABLE_SOURCE_NOT_CREATED",
+  "plan_id": "TITMAS-CE-G14-OFFLINE-POSITIVE-DIAGNOSTIC-PLAN-001",
+  "created_at": "2026-07-28T15:20:00+08:00",
+  "primary_repository": "digital-biosphere-architecture",
+  "recommendation_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G14-OFFLINE-POSITIVE-VALIDATION-FAILURE-DIAGNOSTIC-RECOMMENDATION-v0.1.md",
+  "recommendation_sha256": "cd96f9aea71339cd42d53f4331db69cb00527576e34f4e268ba11781778e4f2d",
+  "qualifying_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G14-OFFLINE-POSITIVE-VALIDATION-FAILURE-DIAGNOSTIC-RECOMMENDATION-QWEN-REVIEW-v0.1.json",
+  "qualifying_review_sha256": "c4c08f3a74480996e47c403915bbea8c6d7124350e02b8fb72dd21d9ec393775",
+  "failed_execution_reference": "commercial-evaluation-ce-g14-offline-input-projection-validation-001/execution-receipt.v0.1.json",
+  "failed_execution_sha256": "65ef706ba73b17a8d744f8a5a1d824dfee37b8c9a51da2ca43795b82947b8317",
+  "source_bundle_reference": "commercial-evaluation-ce-g13-execution-attempt-001/sanitized-public-input-bundle.v0.1.json",
+  "source_bundle_sha256": "fa2786883e58f02df6e9677de5d215a623493932664e47be2a55a6e7ac8f328b",
+  "diagnostic_goal": "Identify the first failed named positive predicate from the consumed CE-G14 offline projection validation without retrying validation, mutating inputs, writing projection artifacts, or proposing remediation.",
+  "named_predicates": [
+    {
+      "order": 1,
+      "name": "SOURCE_BUNDLE_STRICT_DUPLICATE_REJECTING_PARSE",
+      "predicate": "The exact source bytes parse as one JSON object and no object contains a duplicate key."
+    },
+    {
+      "order": 2,
+      "name": "SOURCE_BUNDLE_SHA256_EXACT",
+      "predicate": "SHA-256 of the exact source bytes equals fa2786883e58f02df6e9677de5d215a623493932664e47be2a55a6e7ac8f328b."
+    },
+    {
+      "order": 3,
+      "name": "SOURCE_BUNDLE_BYTES_EXACT",
+      "predicate": "The exact source byte count equals 513351."
+    },
+    {
+      "order": 4,
+      "name": "SOURCE_RESOURCE_COUNT_16",
+      "predicate": "The top-level resources array has exactly 16 entries."
+    },
+    {
+      "order": 5,
+      "name": "SELECTED_RESOURCE_SET_EXACT",
+      "predicate": "The selected resource ids are exactly CE-G13-RESOURCE-08 through CE-G13-RESOURCE-12 with no additional or missing id."
+    },
+    {
+      "order": 6,
+      "name": "SELECTED_RESOURCE_ORDER_EXACT",
+      "predicate": "The selected resources are ordered by admission_order 8, 9, 10, 11, 12."
+    },
+    {
+      "order": 7,
+      "name": "SELECTED_RESOURCE_METADATA_EXACT",
+      "predicate": "Each selected resource id, admission_order, source_url, final_url, raw_byte_count, and sanitized_byte_count equals the frozen Decision record."
+    },
+    {
+      "order": 8,
+      "name": "SELECTED_RESOURCE_CONTENT_HASHES_EXACT",
+      "predicate": "For each selected resource, SHA-256 of sanitized_text bytes equals sanitized_text_sha256 and both frozen raw_body_sha256 and sanitized_text_sha256 equal the Decision record."
+    },
+    {
+      "order": 9,
+      "name": "SELECTED_SANITIZED_TEXT_BYTES_79456",
+      "predicate": "The sum of UTF-8 byte lengths of the five exact sanitized_text strings equals 79456."
+    },
+    {
+      "order": 10,
+      "name": "PROFILE_SHAPE_VALID",
+      "predicate": "The in-memory profile contains only the fields and constant values frozen by the Decision projection_contract."
+    },
+    {
+      "order": 11,
+      "name": "SCHEMA_SHAPE_VALID",
+      "predicate": "The in-memory Schema is duplicate-free, rejects additional properties, and expresses the frozen five-resource projection constraints."
+    },
+    {
+      "order": 12,
+      "name": "PROJECTION_SHAPE_VALID",
+      "predicate": "The candidate projection contains only the frozen projection metadata and five unmodified selected resources in exact order."
+    },
+    {
+      "order": 13,
+      "name": "PROJECTION_SCHEMA_VALID",
+      "predicate": "The in-memory candidate projection validates against the in-memory frozen Schema."
+    },
+    {
+      "order": 14,
+      "name": "CANONICAL_SERIALIZATION_FIRST_COMPLETE",
+      "predicate": "First UTF-8 sort-keys compact-separators trailing-LF serialization completes."
+    },
+    {
+      "order": 15,
+      "name": "CANONICAL_SERIALIZATION_SECOND_COMPLETE",
+      "predicate": "A separately constructed second UTF-8 sort-keys compact-separators trailing-LF serialization completes."
+    },
+    {
+      "order": 16,
+      "name": "CANONICAL_SERIALIZATIONS_IDENTICAL",
+      "predicate": "The two canonical serialization byte strings are byte-identical."
+    },
+    {
+      "order": 17,
+      "name": "PROJECTION_UTF8_BYTES_AT_MOST_86000",
+      "predicate": "The canonical projection byte count is at most 86000."
+    },
+    {
+      "order": 18,
+      "name": "RESERVED_PROMPT_AND_SCHEMA_BYTES_12000",
+      "predicate": "The frozen reserved role-prompt and response-Schema byte budget equals 12000."
+    },
+    {
+      "order": 19,
+      "name": "TOTAL_RESERVED_MODEL_VISIBLE_BYTES_AT_MOST_100000",
+      "predicate": "Canonical projection bytes plus reserved bytes are at most 100000."
+    },
+    {
+      "order": 20,
+      "name": "COST_MATH_EXACT",
+      "predicate": "The exact cost inputs and arithmetic equal the frozen context-and-cost assessment and do not create a price or spend commitment."
+    },
+    {
+      "order": 21,
+      "name": "ALL_EFFECTS_FALSE",
+      "predicate": "Every authority, runtime, commercial, release, adoption, certification, and production effect remains false."
+    }
+  ],
+  "diagnostic_output_contract": {
+    "allowed_states": [
+      "PASS",
+      "FAIL",
+      "NOT_REACHED"
+    ],
+    "required_fields": [
+      "diagnostic_id",
+      "source_sha256",
+      "decision_sha256",
+      "implementation_sha256",
+      "named_check_results",
+      "first_failed_check",
+      "candidate_projection_utf8_bytes",
+      "candidate_projection_sha256",
+      "actual_budget",
+      "effects"
+    ],
+    "resource_content_persisted": false,
+    "projection_payload_persisted": false,
+    "remediation_inferred": false
+  },
+  "proposed_record_paths": [
+    "commercial-evaluation-ce-g14-offline-positive-validation-diagnostic-001/diagnostic-result.v0.1.json",
+    "commercial-evaluation-ce-g14-offline-positive-validation-diagnostic-001/execution-receipt.v0.1.json",
+    "commercial-evaluation-ce-g14-offline-positive-validation-diagnostic-001/TITMAS-CE-G14-OFFLINE-POSITIVE-VALIDATION-DIAGNOSTIC-REPORT-v0.1.md"
+  ],
+  "missing_execution_precondition": {
+    "diagnostic_implementation_reference": "NOT_CREATED",
+    "diagnostic_implementation_sha256": "NOT_AVAILABLE",
+    "implementation_to_predicate_mapping_verified": false,
+    "execution_authorization_ready": false
+  },
+  "effects": {
+    "implementation_authorized": false,
+    "diagnostic_authorized": false,
+    "diagnostic_executed": false,
+    "ce_g14_model_execution_authorized": false,
+    "external_action_authorized": false,
+    "commercial_offering_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "production_ready": false,
+    "authority_or_ownership_changed": false
+  }
+}
