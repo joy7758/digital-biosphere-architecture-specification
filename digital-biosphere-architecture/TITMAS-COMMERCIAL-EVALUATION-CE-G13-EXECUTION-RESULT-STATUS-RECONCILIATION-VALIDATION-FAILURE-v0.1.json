@@ -1,0 +1,81 @@
+{
+  "record_type": "TITMAS_CE_G13_EXECUTION_RESULT_STATUS_RECONCILIATION_VALIDATION_FAILURE",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED_REMOTE_TRACKING_REF_UNAVAILABLE_UNDER_NARROW_FETCH_CONFIGURATION",
+  "observed_at": "2026-07-28T06:05:49Z",
+  "primary_repository": "digital-biosphere-architecture",
+  "source_branch": "codex/ce-g13-execution-authorization-recommendation",
+  "source_head": "4a4d61a219ab5d7cd8b50ba75f6b4e1129837595",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G13-EXECUTION-RESULT-STATUS-RECONCILIATION-DECISION-RECORD.v0.1.json",
+  "decision_sha256": "ca742175518433d148d9a8c2c8fc8e401d78f546436f366264dabe8fc1a22d34",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G13-EXECUTION-RESULT-STATUS-RECONCILIATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "5c381150bad02d5b3af446261a54ff8fefff4fd2985dcb5056b0a8d01a91bbef",
+  "failure": {
+    "stage": "REMOTE_REF_BINDING",
+    "error_class": "REMOTE_TRACKING_REF_UNAVAILABLE_UNDER_NARROW_FETCH_CONFIGURATION",
+    "command": "git rev-parse refs/remotes/origin/codex/ce-g13-execution-authorization-recommendation",
+    "exit_code": 128,
+    "missing_ref": "refs/remotes/origin/codex/ce-g13-execution-authorization-recommendation",
+    "configured_fetch_refspecs": [
+      "+refs/heads/codex/production-observability-baseline:refs/remotes/origin/codex/production-observability-baseline",
+      "+refs/heads/codex/ce-g13-input-binding-status-reconciliation:refs/remotes/origin/codex/ce-g13-input-binding-status-reconciliation"
+    ],
+    "content_validation_started": false,
+    "canonical_content_failure": false,
+    "retry_performed": false
+  },
+  "frozen_candidate": {
+    "worktree": "/private/tmp/titmas-ce-g13-execution-recommendation.K4Ad7P",
+    "candidate_diff_sha256": "9dcff49758fa92de6b19054b07bec86da14b299474b3a32832d34da3b4379a91",
+    "modified_paths": 5,
+    "staged_paths": 0,
+    "exact_paths": [
+      "digital-biosphere-architecture/MASTER-ROADMAP.md",
+      "digital-biosphere-architecture/PROGRAM-STATUS.md",
+      "digital-biosphere-architecture/TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+      "digital-biosphere-architecture/architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
+      "digital-biosphere-architecture/architecture/titmas-commercialization-standards-roadmap-v0.1.md"
+    ],
+    "committed": false,
+    "pushed": false,
+    "result_artifacts_modified": false
+  },
+  "validation_budget": {
+    "offline_validation_runs_authorized": 1,
+    "offline_validation_runs_consumed": 1,
+    "replacement_run_authorized": false,
+    "retry_authorized": false
+  },
+  "effects": {
+    "network_requests": 0,
+    "credential_reads": 0,
+    "model_requests_after_decision_review": 0,
+    "technical_reuse_runs": 0,
+    "runtime_starts": 0,
+    "agent_instances": 0,
+    "entity_instances": 0,
+    "capability_instances": 0,
+    "permission_grants": 0,
+    "evidence_truth_objects": 0,
+    "canonical_status_commits": 0,
+    "canonical_status_pushes": 0,
+    "customer_adoption": false,
+    "market_demand": false,
+    "cross_provider_generality": false,
+    "commercial_offering": false,
+    "certification": false,
+    "standard_ready": false,
+    "production_ready": false
+  },
+  "diagnostic_evidence": {
+    "result_commit_exists_locally": true,
+    "recommendation_commit_exists_locally": true,
+    "decision_commit_exists_locally": true,
+    "result_commit_is_ancestor_of_decision_commit": true,
+    "recommendation_commit_is_ancestor_of_decision_commit": true,
+    "result_commit": "7a20c77bff931380fe109987972d3e43c9774bd3",
+    "recommendation_commit": "7936b8d60fb7f40c6e5dd35d6111c6658f950164",
+    "decision_commit": "4a4d61a219ab5d7cd8b50ba75f6b4e1129837595"
+  },
+  "next_step": "NEW_GOVERNANCE_CYCLE_REQUIRED_FOR_LOCAL_IMMUTABLE_COMMIT_ANCESTRY_BINDING"
+}
