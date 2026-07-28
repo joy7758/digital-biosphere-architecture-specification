@@ -2,10 +2,10 @@
 document_id: DBA-TITMAS-COMMERCIAL-STANDARD-FOUNDATION-FREEZE-STATUS-0.1
 title: TITMAS Commercial Standard Foundation Freeze Status v0.1
 title_zh: TITMAS 商业标准基础冻结状态报告 v0.1
-status: FOUNDATION_ROLE_FREEZE_COMPLETE_UPSTREAM_DECISIONS_RECORDED_GATES_NOT_MET
+status: FOUNDATION_ROLE_FREEZE_COMPLETE_NEXT_DECISION_CANDIDATES_READY_GATES_NOT_MET
 maturity: Development
 maturity_scope: entire-document
-observed_at: 2026-07-28T22:20:00+08:00
+observed_at: 2026-07-28T22:55:00+08:00
 primary_repository: digital-biosphere-architecture
 human_accountability_ref: zhangbin
 implementation_effect: none
@@ -98,6 +98,14 @@ CS_G1_CROSSWALK_CANDIDATE_DISPOSITIONS=6/6/2
 CS_G1_D02_OFFLINE_VALIDATION=PASS
 CS_G1_D02_MODEL_REVIEW_AUTHORIZED=false
 CS_G1_D02_PROVIDER_REQUESTS_EXECUTED=0
+CS_G1_REMEDIATION_D03_DECISION_STATE=NOT_DECIDED
+CS_G1_REMEDIATION_D03_OPTION_SELECTED=false
+CS_G1_V0_3_RESULT_SCHEMA_DEFINED=true
+CS_G1_V0_3_REVIEW_PLAN_CANDIDATE_DEFINED=true
+CS_G1_V0_3_REVIEW_EXECUTION_AUTHORIZED=false
+CS_G0_ACQUISITION_PREP_D01_DECISION_STATE=NOT_DECIDED
+CS_G0_ACQUISITION_PREP_D01_OPTION_SELECTED=false
+CS_G0_ACQUISITION_CONTRACT_PREPARATION_AUTHORIZED=false
 CROSSWALK_ACCEPTED=false
 RESIDUAL_RISK_ACCEPTED=false
 STANDARD_READY=false
@@ -151,6 +159,11 @@ product is created by these records.
 | [`veap-canonical-ownership-crosswalk-candidate-v0.2.md`](veap-canonical-ownership-crosswalk-candidate-v0.2.md) | Development-only 14-surface crosswalk with 6/6/2 dispositions |
 | [`veap-authority-dependency-disposition-candidate-v0.1.md`](veap-authority-dependency-disposition-candidate-v0.1.md) | Fail-closed treatment for eight unresolved dependency IDs |
 | [`titmas-cs-g1-security-crosswalk-preparation-validation-v0.1.md`](titmas-cs-g1-security-crosswalk-preparation-validation-v0.1.md) | Offline preparation validation PASS; model review and Gate effects remain false |
+| [`schemas/titmas-cs-g1-formal-review-result.schema.v0.3.json`](schemas/titmas-cs-g1-formal-review-result.schema.v0.3.json) | Fail-closed two-role result contract; operational stop state fixed to `NOT_ASSESSED` |
+| [`titmas-cs-g1-formal-review-plan-candidate.v0.3.json`](titmas-cs-g1-formal-review-plan-candidate.v0.3.json) | Exact two-session plan candidate; execution and provider requests remain unauthorized |
+| [`titmas-cs-g1-v0-3-review-authorization-decision-candidate-v0.1.md`](titmas-cs-g1-v0-3-review-authorization-decision-candidate-v0.1.md) | Pending D03 Human Decision for exact two-session advisory review |
+| [`titmas-cs-g0-acquisition-contract-preparation-decision-candidate-v0.1.md`](titmas-cs-g0-acquisition-contract-preparation-decision-candidate-v0.1.md) | Pending CS-G0 Human Decision for offline integrated contract preparation only |
+| [`titmas-commercial-standard-next-decision-candidate-validation-v0.1.md`](titmas-commercial-standard-next-decision-candidate-validation-v0.1.md) | Offline validation of both next Decision candidates; no Decision or execution effect |
 | [`../TITMAS-COMMERCIAL-STANDARD-UPSTREAM-HUMAN-DECISION-QUEUE-v0.1.md`](../TITMAS-COMMERCIAL-STANDARD-UPSTREAM-HUMAN-DECISION-QUEUE-v0.1.md) | Unified ordering for the two current bounded upstream Decisions |
 
 ## 6. Invariants

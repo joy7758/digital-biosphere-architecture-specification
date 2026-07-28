@@ -778,7 +778,13 @@ Claim/Authority 仅为 `ACCEPT_FOR_HUMAN_FREEZE_REVIEW`。详见
 显式保留。离线
 [`preparation validation`](architecture/titmas-cs-g1-security-crosswalk-preparation-validation-v0.1.md)
 为 `PASS`，只证明精确候选和 source-bound projection 已准备；未调用模型，五项
-Security stop state 仍为 `NOT_ASSESSED`。下一次两会话审查仍需独立 Human Decision。
+Security stop state 仍为 `NOT_ASSESSED`。新的
+[`v0.3 result Schema`](architecture/schemas/titmas-cs-g1-formal-review-result.schema.v0.3.json)
+将该运行状态强制保持为 `NOT_ASSESSED`，防止规范审查再次产生运行事实升级；精确
+[`two-session plan candidate`](architecture/titmas-cs-g1-formal-review-plan-candidate.v0.3.json)
+已经准备。下一入口是
+[`CS-G1-REMEDIATION-D03`](architecture/titmas-cs-g1-v0-3-review-authorization-decision-candidate-v0.1.md)，
+未被选择前 provider request 仍为 0。
 
 `CS-G0` 的当前状态也已按后继角色决定重新协调。Human Owner 已通过
 [`CS-G0-REVIEWER-D01`](architecture/titmas-cs-g0-agent-assisted-reviewer-contract-human-decision-record-v0.1.md)
@@ -788,6 +794,13 @@ Security stop state 仍为 `NOT_ASSESSED`。下一次两会话审查仍需独立
 session，同一 provider/model 也不等于组织独立性。采集就绪、数据处理、provider
 request、有效记录与 Gate PASS 均为 false。两个上游决定的统一状态见
 [`Human Decision Queue`](TITMAS-COMMERCIAL-STANDARD-UPSTREAM-HUMAN-DECISION-QUEUE-v0.1.md)。
+当前 CS-G0 下一入口是
+[`CS-G0-ACQUISITION-PREP-D01`](architecture/titmas-cs-g0-acquisition-contract-preparation-decision-candidate-v0.1.md)，
+只建议准备 source/data/storage/cap 集成契约候选；真实 source、storage、数据处理、
+live reviewer session、acquisition 与 record creation 均未授权。
+两个下一决定候选的 hash、Schema、失败关闭和 no-effect 状态已由
+[`offline candidate validation`](architecture/titmas-commercial-standard-next-decision-candidate-validation-v0.1.md)
+验证为 `PASS`；该 PASS 只表示候选可供 Human Owner 决定。
 `CS-G2–CS-G7` 仍为 `BLOCKED`；数据处理、外部推广、客户记录、实现、商业试点、认证、
 正式标准发布、Release 和 Deployment 均保持关闭。
 

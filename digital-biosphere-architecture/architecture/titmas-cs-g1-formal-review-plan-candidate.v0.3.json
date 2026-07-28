@@ -1,0 +1,114 @@
+{
+  "document_id": "DBA_TITMAS_CS_G1_FORMAL_REVIEW_PLAN_CANDIDATE_0_3",
+  "version": "0.3.0",
+  "status": "HUMAN_AUTHORIZATION_REQUIRED_NOT_EXECUTABLE",
+  "primary_repository": "digital-biosphere-architecture",
+  "review_purpose": "SPECIFICATION_STAGE_SECURITY_AND_OWNERSHIP_CROSSWALK_ADVISORY_REVIEW",
+  "request_contract": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "model": "qwen3.7-max",
+    "session_count": 2,
+    "requests_per_session": 1,
+    "request_byte_cap": 24000,
+    "client_read_timeout_seconds": 300,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0,
+    "tools_allowed": false,
+    "external_retrieval_allowed": false,
+    "memory_retrieval_allowed": false,
+    "direct_json_required": true,
+    "exact_returned_model_required": "qwen3.7-max",
+    "silent_model_downgrade_allowed": false
+  },
+  "result_schema": {
+    "path": "architecture/schemas/titmas-cs-g1-formal-review-result.schema.v0.3.json",
+    "sha256": "4ab6e1c1bc7dee94cbbac136aba3ecbdd722f2b595f69619b5dcde1398658272",
+    "bytes": 9560,
+    "operational_stop_state_constraint": "NOT_ASSESSED"
+  },
+  "sessions": [
+    {
+      "review_id": "CS-G1-REV-SEC-03",
+      "role": "SECURITY_SPECIFICATION_REVIEW",
+      "domain": "SECURITY",
+      "projection_path": "architecture/reviews/cs-g1/v0.3/inputs/security-review-input.v0.3.json",
+      "projection_sha256": "41affda69a634ea05753ab005a8adeb07a582d55ee5262d1cec8460a983c5204",
+      "projection_bytes": 9744,
+      "target_count": 5,
+      "review_question": "Are the five specification-stage controls clear, internally consistent, fail-closed and sufficient as contract requirements while implementation and operational effectiveness remain explicitly out of scope?"
+    },
+    {
+      "review_id": "CS-G1-REV-XWALK-02",
+      "role": "CANONICAL_OWNERSHIP_CROSSWALK_REVIEW",
+      "domain": "OWNERSHIP_CROSSWALK",
+      "projection_path": "architecture/reviews/cs-g1/v0.3/inputs/ownership-crosswalk-review-input.v0.3.json",
+      "projection_sha256": "aef7f1f7ec40f93c70c3b6550d625b3756de982c3593a72ec051416484e3e7b5",
+      "projection_bytes": 15749,
+      "target_count": 14,
+      "review_question": "Does the 14-surface candidate preserve canonical ownership boundaries, fail closed on unresolved surfaces and keep all open dependencies visible without assigning Authority or creating a second canonical object?"
+    }
+  ],
+  "preconditions": {
+    "source_hash_match_required": true,
+    "source_byte_count_match_required": true,
+    "source_pointer_match_required": true,
+    "semantic_equivalence_required": true,
+    "exact_count_required": true,
+    "duplicates_forbidden": true,
+    "request_byte_cap_required": true,
+    "exact_model_identity_required": true,
+    "result_schema_meta_validation_required": true,
+    "no_provider_request_before_human_decision": true
+  },
+  "failure_close_rules": [
+    "SOURCE_HASH_OR_BYTE_MISMATCH",
+    "REQUEST_EXCEEDS_24000_BYTES",
+    "PROVIDER_OR_TRANSPORT_FAILURE",
+    "RETURNED_MODEL_NOT_QWEN3_7_MAX",
+    "NON_DIRECT_JSON_RESPONSE",
+    "RESULT_SCHEMA_FAILURE",
+    "ITEM_COVERAGE_OR_DUPLICATE_FAILURE",
+    "OPERATIONAL_STOP_STATE_SEMANTIC_ELEVATION"
+  ],
+  "aggregation_rules": {
+    "both_sessions_must_complete": true,
+    "all_target_items_must_be_unique_and_covered": true,
+    "provider_result_may_be_preserved_unmodified": true,
+    "provider_result_may_assign_authority": false,
+    "provider_result_may_accept_risk": false,
+    "provider_result_may_accept_crosswalk": false,
+    "provider_result_may_pass_cs_g1": false,
+    "separate_human_adjudication_required": true
+  },
+  "agent_recommendation": {
+    "verdict": "RECOMMENDED",
+    "recommended_as": "EXACT_TWO_SESSION_ADVISORY_REVIEW_AFTER_EXPLICIT_HUMAN_AUTHORIZATION",
+    "not_recommended_as": "SECURITY_EFFECTIVENESS_TEST_OR_AUTOMATIC_FREEZE",
+    "why": "The corrected candidate bytes, exact projections and fail-closed v0.3 result contract now exist and directly address the two returned-for-revision scopes.",
+    "remaining_gaps": [
+      "HUMAN_REVIEW_EXECUTION_AUTHORIZATION",
+      "HUMAN_RISK_AND_CROSSWALK_ADJUDICATION_AFTER_RESULTS",
+      "ATOMIC_SCOPE_AUTHORITY_FREEZE_DECISION"
+    ]
+  },
+  "effects": {
+    "plan_candidate_created": true,
+    "review_execution_authorized": false,
+    "provider_requests_authorized": 0,
+    "provider_requests_executed": 0,
+    "model_review_completed": false,
+    "authority_assigned": false,
+    "ownership_assigned": false,
+    "risk_accepted": false,
+    "crosswalk_accepted": false,
+    "formal_review_complete": false,
+    "cs_g1_pass": false,
+    "implementation_authorized": false,
+    "standard_ready": false,
+    "commercial_ready": false,
+    "release_authorized": false
+  }
+}

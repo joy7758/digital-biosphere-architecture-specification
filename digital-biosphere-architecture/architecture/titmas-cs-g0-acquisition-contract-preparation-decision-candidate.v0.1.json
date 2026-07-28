@@ -1,0 +1,128 @@
+{
+  "document_id": "DBA_TITMAS_CS_G0_ACQUISITION_CONTRACT_PREPARATION_DECISION_CANDIDATE_0_1",
+  "version": "0.1.0",
+  "status": "HUMAN_DECISION_REQUIRED_OPTION_NOT_SELECTED",
+  "decision_id": "CS-G0-ACQUISITION-PREP-D01",
+  "decision_owner_ref": "zhangbin",
+  "decision_state": "NOT_DECIDED",
+  "recommended_option": "A",
+  "current_readiness": {
+    "pass": 5,
+    "partial": 2,
+    "blocked": 3,
+    "acquisition_ready": false,
+    "acquisition_authorized": false,
+    "valid_problem_records": 0,
+    "cs_g0_pass": false
+  },
+  "options": [
+    {
+      "option_id": "A",
+      "selection": "AUTHORIZE_SOURCE_DATA_STORAGE_CAP_CONTRACT_CANDIDATE_PREPARATION_ONLY",
+      "recommended": true,
+      "authorized_outputs_if_selected": [
+        "SOURCE_AND_OPERATIONAL_CONTEXT_ELIGIBILITY_PROFILE_CANDIDATE",
+        "DATA_CLASSIFICATION_MINIMIZATION_AND_PROHIBITED_CONTENT_PROFILE_CANDIDATE",
+        "STORAGE_ACCESS_RETENTION_DELETION_AND_INCIDENT_PROFILE_CANDIDATE",
+        "BATCH_CAP_BUDGET_TIMEBOX_EXPIRY_AND_REVOCATION_PROFILE_CANDIDATE",
+        "PER_BATCH_REVIEWER_ASSIGNMENT_AND_CONFLICT_TEMPLATE",
+        "MACHINE_READABLE_CANDIDATE_AND_OFFLINE_VALIDATION"
+      ],
+      "real_source_selection_authorized_if_selected": false,
+      "storage_creation_authorized_if_selected": false,
+      "data_processing_authorized_if_selected": false,
+      "live_session_assignment_authorized_if_selected": false,
+      "provider_requests_authorized_if_selected": 0,
+      "acquisition_authorized_if_selected": false,
+      "record_creation_authorized_if_selected": false
+    },
+    {
+      "option_id": "B",
+      "selection": "AUTHORIZE_SOURCE_ELIGIBILITY_PREPARATION_ONLY",
+      "recommended": false,
+      "reason": "Source eligibility without privacy, storage and cap controls cannot support a safe future acquisition decision."
+    },
+    {
+      "option_id": "C",
+      "selection": "AUTHORIZE_ACQUISITION_NOW",
+      "recommended": false,
+      "reason": "The integrated contract, approved source and approved storage path do not exist."
+    },
+    {
+      "option_id": "D",
+      "selection": "DEFER_OR_REJECT",
+      "recommended": false
+    }
+  ],
+  "candidate_requirements": {
+    "source_context": [
+      "EXACT_SOURCE_IDENTITY",
+      "OWNER_OR_CONTROLLER_REFERENCE",
+      "APPLICABLE_TERMS",
+      "CONTEXT_INDEPENDENCE_STATUS",
+      "OBSERVED_TIME",
+      "UNKNOWN_CONFLICTED_NOT_ASSESSED_AND_REJECTED_PRESERVED"
+    ],
+    "data_privacy": [
+      "REFERENCE_FIRST",
+      "MINIMUM_NECESSARY_FIELDS",
+      "PURPOSE_RECIPIENT_AND_BASIS",
+      "DATA_CLASS_DECLARATION",
+      "CREDENTIAL_SECRET_IDENTIFIER_AND_REGULATED_RAW_CONTENT_DENY_BY_DEFAULT"
+    ],
+    "storage_access": [
+      "STORE_OWNER",
+      "ACCESS_ROLES",
+      "ENCRYPTION_EXPECTATION",
+      "RETENTION_PERIOD",
+      "DELETION_OR_HOLD_RULE",
+      "INCIDENT_PATH",
+      "IMMUTABLE_FAILED_AND_REJECTED_RECORDS",
+      "NO_UNSPECIFIED_MODEL_MEMORY_STORAGE"
+    ],
+    "cap_expiry": [
+      "MAX_CANDIDATE_RECORDS",
+      "MAX_PROVIDER_SESSIONS",
+      "MAX_PROVIDER_REQUESTS",
+      "MAX_REQUEST_BYTES",
+      "MAX_COST_BUDGET",
+      "WALL_CLOCK_WINDOW",
+      "AUTHORIZATION_EXPIRY",
+      "REVOCATION_BEHAVIOR",
+      "NO_RETRY_FALLBACK_SUBSTITUTION_OR_CROSS_ROLE_FILL_BY_DEFAULT"
+    ]
+  },
+  "agent_recommendation": {
+    "verdict": "RECOMMENDED",
+    "recommended_option": "A",
+    "recommended_as": "OFFLINE_INTEGRATED_CONTRACT_PREPARATION_ONLY",
+    "not_recommended_as": "DATA_ACQUISITION_STORAGE_ACTIVATION_OR_RECORD_CREATION",
+    "reason": "The three remaining blocked dimensions require one consistent fail-closed contract.",
+    "new_provider_requests_executed": 0,
+    "human_decision_required": true
+  },
+  "effects": {
+    "decision_created": false,
+    "contract_candidate_preparation_authorized": false,
+    "real_source_selected": false,
+    "source_channel_approved": false,
+    "storage_created": false,
+    "storage_approved": false,
+    "data_processing_authorized": false,
+    "external_outreach_authorized": false,
+    "live_reviewer_session_assigned": false,
+    "provider_requests_authorized": 0,
+    "provider_requests_executed": 0,
+    "acquisition_authorized": false,
+    "record_created": false,
+    "record_validated": false,
+    "record_counted": false,
+    "cs_g0_pass": false,
+    "implementation_authorized": false,
+    "standard_ready": false,
+    "commercial_ready": false,
+    "release_authorized": false
+  },
+  "next_action": "EXPLICIT_HUMAN_OPTION_A_B_C_OR_D_DECISION",
+  "next_action_authorized": false
+}

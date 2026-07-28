@@ -1,0 +1,112 @@
+{
+  "document_id": "DBA_TITMAS_CS_G1_V0_3_REVIEW_AUTHORIZATION_DECISION_CANDIDATE_0_1",
+  "version": "0.1.0",
+  "status": "HUMAN_DECISION_REQUIRED_OPTION_NOT_SELECTED",
+  "decision_id": "CS-G1-REMEDIATION-D03",
+  "decision_owner_ref": "zhangbin",
+  "decision_state": "NOT_DECIDED",
+  "recommended_option": "A",
+  "frozen_package": {
+    "security_projection": {
+      "path": "architecture/reviews/cs-g1/v0.3/inputs/security-review-input.v0.3.json",
+      "sha256": "41affda69a634ea05753ab005a8adeb07a582d55ee5262d1cec8460a983c5204",
+      "bytes": 9744,
+      "target_count": 5
+    },
+    "crosswalk_projection": {
+      "path": "architecture/reviews/cs-g1/v0.3/inputs/ownership-crosswalk-review-input.v0.3.json",
+      "sha256": "aef7f1f7ec40f93c70c3b6550d625b3756de982c3593a72ec051416484e3e7b5",
+      "bytes": 15749,
+      "target_count": 14
+    },
+    "result_schema": {
+      "path": "architecture/schemas/titmas-cs-g1-formal-review-result.schema.v0.3.json",
+      "sha256": "4ab6e1c1bc7dee94cbbac136aba3ecbdd722f2b595f69619b5dcde1398658272",
+      "bytes": 9560,
+      "operational_stop_state_constraint": "NOT_ASSESSED"
+    },
+    "review_plan_candidate": {
+      "path": "architecture/titmas-cs-g1-formal-review-plan-candidate.v0.3.json",
+      "sha256": "f238137bd1e9fafdd5db6b72e58f90a45c7b3852172e7f8bb7ec1b9ec26bf231",
+      "bytes": 4778
+    }
+  },
+  "options": [
+    {
+      "option_id": "A",
+      "selection": "AUTHORIZE_EXACT_TWO_SESSION_QWEN3_7_MAX_REVIEW_OF_FROZEN_V0_3_PROJECTIONS_ONLY",
+      "recommended": true,
+      "review_execution_authorized_if_selected": true,
+      "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+      "model": "qwen3.7-max",
+      "session_count": 2,
+      "requests_per_session": 1,
+      "provider_request_count_max": 2,
+      "request_byte_cap": 24000,
+      "client_read_timeout_seconds": 300,
+      "retry_count": 0,
+      "fallback_count": 0,
+      "substitution_count": 0,
+      "extraction_count": 0,
+      "repair_count": 0,
+      "tools_allowed": false,
+      "external_retrieval_allowed": false,
+      "memory_retrieval_allowed": false,
+      "silent_model_downgrade_allowed": false,
+      "direct_json_required": true
+    },
+    {
+      "option_id": "B",
+      "selection": "AUTHORIZE_SECURITY_REVIEW_ONLY",
+      "recommended": false,
+      "reason": "The returned-for-revision Crosswalk scope would remain unreviewed."
+    },
+    {
+      "option_id": "C",
+      "selection": "AUTHORIZE_CROSSWALK_REVIEW_ONLY",
+      "recommended": false,
+      "reason": "The returned-for-revision Security scope would remain unreviewed."
+    },
+    {
+      "option_id": "D",
+      "selection": "DEFER_OR_REJECT",
+      "recommended": false
+    }
+  ],
+  "agent_recommendation": {
+    "verdict": "RECOMMENDED",
+    "recommended_option": "A",
+    "recommended_as": "EXACT_BOUNDED_ADVISORY_REVIEW_AFTER_HUMAN_AUTHORIZATION",
+    "not_recommended_as": "SECURITY_EFFECTIVENESS_TEST_AUTOMATIC_FREEZE_OR_AUTHORITY_DECISION",
+    "reason": "Corrected candidate bytes, exact projections and a fail-closed v0.3 result contract now exist.",
+    "new_provider_requests_executed": 0,
+    "human_decision_required": true
+  },
+  "effects": {
+    "decision_created": false,
+    "review_execution_authorized": false,
+    "provider_requests_authorized": 0,
+    "provider_requests_executed": 0,
+    "model_review_completed": false,
+    "authority_assigned": false,
+    "ownership_assigned": false,
+    "crosswalk_accepted": false,
+    "risk_accepted": false,
+    "formal_review_complete": false,
+    "cs_g1_pass": false,
+    "implementation_authorized": false,
+    "standard_ready": false,
+    "commercial_ready": false,
+    "data_processing_authorized": false,
+    "external_outreach_authorized": false,
+    "customer_record_creation_authorized": false,
+    "commercial_pilot_authorized": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "formal_standard_publication_authorized": false,
+    "release_authorized": false,
+    "deployment_authorized": false
+  },
+  "next_action": "EXPLICIT_HUMAN_OPTION_A_B_C_OR_D_DECISION",
+  "next_action_authorized": false
+}

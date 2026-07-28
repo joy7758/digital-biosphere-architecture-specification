@@ -1,0 +1,84 @@
+{
+  "document_id": "DBA_TITMAS_COMMERCIAL_STANDARD_NEXT_DECISION_CANDIDATE_VALIDATION_0_1",
+  "version": "0.1.0",
+  "status": "OFFLINE_VALIDATION_PASS_HUMAN_DECISIONS_REQUIRED",
+  "validated_at": "2026-07-28T23:05:00+08:00",
+  "candidate_bindings": [
+    {
+      "decision_id": "CS-G1-REMEDIATION-D03",
+      "path": "architecture/titmas-cs-g1-v0-3-review-authorization-decision-candidate.v0.1.json",
+      "sha256": "4e9f2c39670add77732ac34a921ddddd1f5b9ba4fbd0fc0604b5953ebd1b403b",
+      "bytes": 4124,
+      "candidate_ready": true,
+      "decision_recorded": false
+    },
+    {
+      "decision_id": "CS-G0-ACQUISITION-PREP-D01",
+      "path": "architecture/titmas-cs-g0-acquisition-contract-preparation-decision-candidate.v0.1.json",
+      "sha256": "8201236728259d59d18ee42b692aa02fd872727a0709e07382b3bd251afc9d40",
+      "bytes": 4534,
+      "candidate_ready": true,
+      "decision_recorded": false
+    }
+  ],
+  "cs_g1_review_package": {
+    "plan": {
+      "path": "architecture/titmas-cs-g1-formal-review-plan-candidate.v0.3.json",
+      "sha256": "f238137bd1e9fafdd5db6b72e58f90a45c7b3852172e7f8bb7ec1b9ec26bf231",
+      "bytes": 4778
+    },
+    "result_schema": {
+      "path": "architecture/schemas/titmas-cs-g1-formal-review-result.schema.v0.3.json",
+      "sha256": "4ab6e1c1bc7dee94cbbac136aba3ecbdd722f2b595f69619b5dcde1398658272",
+      "bytes": 9560
+    },
+    "security_projection": {
+      "path": "architecture/reviews/cs-g1/v0.3/inputs/security-review-input.v0.3.json",
+      "sha256": "41affda69a634ea05753ab005a8adeb07a582d55ee5262d1cec8460a983c5204",
+      "bytes": 9744
+    },
+    "crosswalk_projection": {
+      "path": "architecture/reviews/cs-g1/v0.3/inputs/ownership-crosswalk-review-input.v0.3.json",
+      "sha256": "aef7f1f7ec40f93c70c3b6550d625b3756de982c3593a72ec051416484e3e7b5",
+      "bytes": 15749
+    },
+    "checks": {
+      "schema_meta_validation": "PASS",
+      "not_executed_examples": "2/2_PASS",
+      "completed_valid_example": "PASS",
+      "stop_state_elevation_rejected": true,
+      "request_cap_excess_rejected": true,
+      "model_downgrade_rejected": true,
+      "sessions": 2,
+      "provider_request_count_max_if_authorized": 2,
+      "retry_fallback_substitution_extraction_repair": 0,
+      "tools_external_retrieval_memory_retrieval": false
+    }
+  },
+  "cs_g0_contract_candidate_scope": [
+    "SOURCE_AND_OPERATIONAL_CONTEXT",
+    "DATA_CLASSIFICATION_AND_PRIVACY",
+    "STORAGE_ACCESS_RETENTION_DELETION_AND_INCIDENT",
+    "CAP_BUDGET_TIMEBOX_EXPIRY_AND_REVOCATION",
+    "PER_BATCH_REVIEWER_ASSIGNMENT_AND_CONFLICT"
+  ],
+  "agent_recommendations": {
+    "cs_g1_remediation_d03": "RECOMMENDED",
+    "cs_g0_acquisition_prep_d01": "RECOMMENDED",
+    "human_decisions_required": true
+  },
+  "effects": {
+    "decisions_recorded": false,
+    "cs_g1_review_execution_authorized": false,
+    "cs_g0_contract_preparation_authorized": false,
+    "provider_requests_authorized": 0,
+    "provider_requests_executed": 0,
+    "data_processing_authorized": false,
+    "acquisition_authorized": false,
+    "cs_g0_pass": false,
+    "cs_g1_pass": false,
+    "standard_ready": false,
+    "commercial_ready": false,
+    "release_authorized": false
+  }
+}
