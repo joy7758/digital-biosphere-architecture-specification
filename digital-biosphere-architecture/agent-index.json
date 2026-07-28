@@ -61,6 +61,10 @@
     "ecology_box_001_participant_schema": "TITMAS/agent-native/ecology-box-001/participants/schema.json",
     "ecology_box_001_task_registry": "TITMAS/agent-native/ecology-box-001/tasks/task-registry.yaml",
     "ecology_box_001_metrics_schema": "TITMAS/agent-native/ecology-box-001/metrics/schema.json",
+    "ecology_box_001_execution_readiness": "TITMAS/agent-native/ecology-box-001/readiness/execution-readiness.yaml",
+    "ecology_box_001_prerequisites_matrix": "TITMAS/agent-native/ecology-box-001/readiness/execution-prerequisites-matrix.yaml",
+    "ecology_box_001_readiness_runbook": "TITMAS/agent-native/ecology-box-001/readiness/experiment-runbook.md",
+    "ecology_box_001_execution_readiness_report": "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-EXECUTION-READINESS-REPORT-v0.1.md",
     "specifications": "TITMAS/specifications/registry.yaml",
     "conformance_report": "TITMAS/conformance/reports/latest.json"
   },
@@ -85,6 +89,21 @@
     "review_status": "PASS",
     "pass_scope": "PROTOCOL_DESIGN_COMPLETENESS_ONLY",
     "execution_prerequisites_status": "NOT_SATISFIED",
+    "execution_authorized": false,
+    "experiment_executed": false,
+    "value_proven": false
+  },
+  "ecology_box_001_execution_readiness_state": {
+    "package_complete": true,
+    "operational_prerequisites_satisfied": false,
+    "prerequisites_total": 25,
+    "prerequisites_satisfied": 9,
+    "prerequisites_partially_satisfied": 7,
+    "prerequisites_missing": 9,
+    "blocking_prerequisites_open": 16,
+    "go_no_go_status": "NO_GO",
+    "human_readiness_review_candidate": true,
+    "formal_execution_authorization_review_ready": false,
     "execution_authorized": false,
     "experiment_executed": false,
     "value_proven": false

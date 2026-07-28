@@ -20,6 +20,7 @@ Start in this order:
 11. `roles/registry.yaml` and `tasks/task-registry.yaml`
 12. `metrics/schema.json`, `failure-scenarios/registry.yaml` and
     [Final report template](reports/final-report-template.md)
+13. [Execution Readiness Package](readiness/README.md)
 
 ```text
 PACKAGE_STATUS=PREPARED
@@ -28,6 +29,10 @@ EXECUTION_REVIEW_COMPLETE=true
 FAIRNESS_REVIEW_STATUS=PASS
 FAIRNESS_PASS_SCOPE=PROTOCOL_DESIGN_COMPLETENESS_ONLY
 EXECUTION_PREREQUISITES_STATUS=NOT_SATISFIED
+EXECUTION_READINESS_PACKAGE_COMPLETE=true
+OPERATIONAL_PREREQUISITES_SATISFIED=false
+GO_NO_GO_STATUS=NO_GO
+GO_NO_GO_REASON=NO_GO_PENDING_OPERATIONAL_ASSIGNMENTS_AND_HUMAN_AUTHORIZATION
 EXECUTION_AUTHORIZATION_CANDIDATE_READY=true
 EXECUTION_AUTHORIZATION_CANDIDATE_READY_MEANS=HUMAN_REVIEW_PACKET_COMPLETE_NOT_EXECUTION_READY
 EXECUTION_AUTHORIZED=false
@@ -51,3 +56,7 @@ authorized.
 The fairness `PASS` applies only to protocol-design completeness. Reviewer and
 blind-custodian instances remain unassigned, no Provider profile is adopted,
 all lineage counts are zero and every Human Decision remains `UNDECIDED`.
+
+The readiness package is a Human review candidate, not an execution-
+authorization result. Its deterministic `NO_GO` identifies open assignments,
+adoptions and decisions without treating them as an experiment failure.

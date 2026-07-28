@@ -246,7 +246,10 @@ Release、Certification 或商业 Offering 已经建立。
 - [预注册冻结审查](TITMAS/agent-native/ecology-box-001/freeze-review.yaml)；
 - [公平性审查](TITMAS/agent-native/ecology-box-001/fairness-review.md)与
   [偏差分析](TITMAS/agent-native/ecology-box-001/bias-analysis.md)；
+- [执行就绪包](TITMAS/agent-native/ecology-box-001/readiness/README.md)与
+  [确定性前提矩阵](TITMAS/agent-native/ecology-box-001/readiness/execution-prerequisites-matrix.yaml)；
 - [Ecology Box 001 准备完成报告](TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-PACKAGE-COMPLETION-REPORT-v0.1.md)；
+- [执行就绪报告](TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-EXECUTION-READINESS-REPORT-v0.1.md)；
 - [Human Decision Packet](TITMAS-AGENT-NATIVE-VALUE-VALIDATION-HUMAN-DECISION-PACKET-v0.1.md)。
 
 试验准备包冻结协议、角色、任务、指标、盲审、失败场景与报告模板，但不创建
@@ -255,6 +258,10 @@ Release、Certification 或商业 Offering 已经建立。
 `EXECUTION_PREREQUISITES_STATUS=NOT_SATISFIED`。任何后续执行仍需
 `HD-EB-01` 至 `HD-EB-10` 的独立 Human Decision（人类决策），以及独立
 Reviewer、谱系和 Provider/隐私控制证据。
+
+执行就绪包进一步把 25 项 blocking prerequisites（阻塞前提）转换为机器可读矩阵。
+当前 9 项满足、7 项部分满足、9 项缺失，16 项阻塞仍开放，因此确定性结果是
+`NO_GO_PENDING_OPERATIONAL_ASSIGNMENTS_AND_HUMAN_AUTHORIZATION`，不是实验失败。
 
 ```text
 TITMAS_AGENT_NATIVE_VALUE_FRAMEWORK_DEFINED=true
@@ -268,6 +275,9 @@ TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTION_REVIEW_COMPLETE=true
 TITMAS_ECOLOGY_BOX_001_FAIRNESS_REVIEW_STATUS=PASS
 TITMAS_ECOLOGY_BOX_001_FAIRNESS_PASS_SCOPE=PROTOCOL_DESIGN_COMPLETENESS_ONLY
 TITMAS_ECOLOGY_BOX_001_EXECUTION_PREREQUISITES_STATUS=NOT_SATISFIED
+TITMAS_ECOLOGY_BOX_001_EXECUTION_READINESS_PACKAGE_COMPLETE=true
+TITMAS_ECOLOGY_BOX_001_OPERATIONAL_PREREQUISITES_SATISFIED=false
+TITMAS_ECOLOGY_BOX_001_GO_NO_GO_STATUS=NO_GO
 TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTION_AUTHORIZED=false
 TITMAS_ECOLOGY_BOX_001_EXECUTED=false
 ```

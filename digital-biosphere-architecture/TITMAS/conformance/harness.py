@@ -1294,6 +1294,12 @@ def check_agent_native_ecology_box_001_execution_readiness() -> dict[str, Any]:
         DBA_ROOT / "EXECUTION-READINESS-SUPPLEMENTAL-DECISION-PACKET-v0.1.md",
         DBA_ROOT / "architecture" / "reviews"
         / "titmas-ecology-box-001-execution-readiness-predevelopment-review-v0.1.json",
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-execution-readiness-postreview-v0.1.json",
+        DBA_ROOT
+        / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-EXECUTION-READINESS-REPORT-v0.1.md",
+        DBA_ROOT / "architecture"
+        / "titmas-agent-native-ecology-box-001-execution-readiness-review-v0.1.md",
         TITMAS_ROOT / "conformance" / "fixtures"
         / "ecology-box-001-readiness-negative-cases.yaml",
     )
@@ -1546,6 +1552,58 @@ def check_agent_native_ecology_box_001_execution_readiness() -> dict[str, Any]:
         or review["raw_response_retained"] is not False
     ):
         raise ConformanceError("readiness predevelopment review boundary drift")
+
+    post_review = load_json(
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-execution-readiness-postreview-v0.1.json"
+    )
+    if (
+        post_review["requested_model"] != "qwen3.7-max"
+        or post_review["returned_model"] != "qwen3.7-max"
+        or post_review["verdict"] != "RECOMMENDED"
+        or post_review["recommended_as"]
+        != "HUMAN_GO_NO_GO_REVIEW_CANDIDATE_FOR_AUDITABLE_PRE_EXECUTION_READINESS"
+        or post_review["recommend_as_human_review_candidate"] is not True
+        or post_review["recommend_experiment_execution"] is not False
+        or post_review["authority_effect"] != "NONE"
+        or post_review["decision_effect"] != "NONE"
+        or post_review["raw_prompt_retained"] is not False
+        or post_review["raw_response_retained"] is not False
+    ):
+        raise ConformanceError("readiness post-review boundary drift")
+
+    report = (
+        DBA_ROOT
+        / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-EXECUTION-READINESS-REPORT-v0.1.md"
+    ).read_text(encoding="utf-8")
+    required_report_states = (
+        "TITMAS_ECOLOGY_BOX_001_EXECUTION_READINESS_PACKAGE_COMPLETE=true",
+        "TITMAS_ECOLOGY_BOX_001_OPERATIONAL_PREREQUISITES_SATISFIED=false",
+        "TITMAS_ECOLOGY_BOX_001_GO_NO_GO_STATUS=NO_GO",
+        "TITMAS_ECOLOGY_BOX_001_EXECUTION_AUTHORIZED=false",
+        "TITMAS_ECOLOGY_BOX_001_EXECUTED=false",
+        "TITMAS_ECOLOGY_BOX_001_VALUE_PROVEN=false",
+        "HUMAN_READINESS_REVIEW_CANDIDATE=true",
+        "FORMAL_EXECUTION_AUTHORIZATION_REVIEW_READY=false",
+        "DRY_RUN_PACKAGE_READY=true",
+        "DRY_RUN_EXECUTED=false",
+    )
+    if any(item not in report for item in required_report_states):
+        raise ConformanceError("execution readiness report status drift")
+
+    architecture_review = (
+        DBA_ROOT / "architecture"
+        / "titmas-agent-native-ecology-box-001-execution-readiness-review-v0.1.md"
+    ).read_text(encoding="utf-8")
+    if (
+        "FROZEN_TASK_COUNT=10" not in architecture_review
+        or "GO_NO_GO_STATUS=NO_GO" not in architecture_review
+        or "FORMAL_EXECUTION_AUTHORIZATION_REVIEW_READY=false"
+        not in architecture_review
+        or "READINESS_NE_AUTHORIZATION=true" not in architecture_review
+        or "EXECUTION_NE_VALUE_PROOF=true" not in architecture_review
+    ):
+        raise ConformanceError("execution readiness architecture review drift")
 
     negative_fixture = load_json(
         TITMAS_ROOT / "conformance" / "fixtures"

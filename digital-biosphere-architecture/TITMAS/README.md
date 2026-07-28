@@ -105,6 +105,11 @@ Its [pre-registration](agent-native/ecology-box-001/pre-registration.md),
 auditable. The fairness protocol-design review is `PASS`; execution
 prerequisites remain `NOT_SATISFIED`.
 
+The [Execution Readiness Package](agent-native/ecology-box-001/readiness/README.md)
+maps 25 blocking prerequisites to a deterministic `NO_GO`. It prepares
+assignment, Provider, budget, blinding, runbook, abort and reproducibility
+templates without creating their operational instances.
+
 ```text
 TITMAS_ECOLOGY_BOX_001_PACKAGE_COMPLETE=true
 TITMAS_ECOLOGY_BOX_001_READY=true
@@ -112,6 +117,9 @@ TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_PREREGISTRATION_COMPLETE=true
 TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTION_REVIEW_COMPLETE=true
 TITMAS_ECOLOGY_BOX_001_FAIRNESS_REVIEW_STATUS=PASS
 TITMAS_ECOLOGY_BOX_001_EXECUTION_PREREQUISITES_STATUS=NOT_SATISFIED
+TITMAS_ECOLOGY_BOX_001_EXECUTION_READINESS_PACKAGE_COMPLETE=true
+TITMAS_ECOLOGY_BOX_001_OPERATIONAL_PREREQUISITES_SATISFIED=false
+TITMAS_ECOLOGY_BOX_001_GO_NO_GO_STATUS=NO_GO
 TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTION_AUTHORIZED=false
 TITMAS_ECOLOGY_BOX_001_EXECUTED=false
 TITMAS_ECOLOGY_BOX_001_VALUE_PROVEN=false
