@@ -99,15 +99,19 @@ contribution, Git access, Authority, public report or commercial evidence.
 Its [pre-registration](agent-native/ecology-box-001/pre-registration.md),
 [freeze review](agent-native/ecology-box-001/freeze-review.yaml),
 [fairness review](agent-native/ecology-box-001/fairness-review.md) and
-[bias analysis](agent-native/ecology-box-001/bias-analysis.md) make the future
-comparison auditable. The execution review is complete with
-`REQUIRES_CORRECTION`; it is not execution readiness.
+[bias analysis](agent-native/ecology-box-001/bias-analysis.md),
+`independent-reviewer-model.yaml`, `blind-custodian-protocol.yaml` and
+`provider-privacy-retention-policy.yaml` make the future comparison
+auditable. The fairness protocol-design review is `PASS`; execution
+prerequisites remain `NOT_SATISFIED`.
 
 ```text
 TITMAS_ECOLOGY_BOX_001_PACKAGE_COMPLETE=true
 TITMAS_ECOLOGY_BOX_001_READY=true
 TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_PREREGISTRATION_COMPLETE=true
 TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTION_REVIEW_COMPLETE=true
+TITMAS_ECOLOGY_BOX_001_FAIRNESS_REVIEW_STATUS=PASS
+TITMAS_ECOLOGY_BOX_001_EXECUTION_PREREQUISITES_STATUS=NOT_SATISFIED
 TITMAS_AGENT_NATIVE_ECOLOGY_BOX_001_EXECUTION_AUTHORIZED=false
 TITMAS_ECOLOGY_BOX_001_EXECUTED=false
 TITMAS_ECOLOGY_BOX_001_VALUE_PROVEN=false

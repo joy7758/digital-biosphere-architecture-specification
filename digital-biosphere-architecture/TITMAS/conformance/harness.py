@@ -898,6 +898,13 @@ def check_agent_native_ecology_box_001_preregistration() -> dict[str, Any]:
         "bias_analysis_sha256": root / "bias-analysis.md",
         "blind_evaluation_protocol_sha256": root / "blind-evaluation-protocol.md",
         "agent_lineage_plan_sha256": root / "agent-lineage-plan.yaml",
+        "independent_reviewer_model_sha256": root / "independent-reviewer-model.yaml",
+        "blind_custodian_protocol_sha256": root / "blind-custodian-protocol.yaml",
+        "provider_privacy_retention_policy_sha256":
+            root / "provider-privacy-retention-policy.yaml",
+        "human_decision_packet_sha256":
+            DBA_ROOT
+            / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-HUMAN-DECISION-PACKET-v0.1.md",
         "baseline_execution_plan_sha256": root / "baseline-execution-plan.md",
         "agent_native_execution_plan_sha256": root / "agent-native-execution-plan.md",
         "stop_rules_sha256": root / "stop-rules.yaml",
@@ -911,8 +918,14 @@ def check_agent_native_ecology_box_001_preregistration() -> dict[str, Any]:
         / "titmas-ecology-box-001-preregistration-predevelopment-review-v0.1.json",
         DBA_ROOT / "architecture" / "reviews"
         / "titmas-ecology-box-001-preregistration-post-remediation-review-v0.1.json",
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-fairness-remediation-predevelopment-multimodel-review-v0.1.json",
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-fairness-remediation-postreview-multimodel-v0.1.json",
         DBA_ROOT
         / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-PREREGISTRATION-AND-EXECUTION-REVIEW-REPORT-v0.1.md",
+        DBA_ROOT
+        / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-FAIRNESS-REMEDIATION-REPORT-v0.1.md",
     )
     missing = [
         str(path.relative_to(DBA_ROOT))
@@ -925,7 +938,7 @@ def check_agent_native_ecology_box_001_preregistration() -> dict[str, Any]:
         )
 
     freeze = load_json(root / "freeze-review.yaml")
-    if freeze["status"] != "PREREGISTERED_REVIEW_COMPLETE_REQUIRES_CORRECTION":
+    if freeze["status"] != "PREREGISTERED_FAIRNESS_DESIGN_PASS_EXECUTION_BLOCKED":
         raise ConformanceError("pre-registration freeze review status drift")
     if freeze["source_commit"] != "b92a9a8c0553b51afc832e549d9ad5af271443f2":
         raise ConformanceError("pre-registration source revision drift")
@@ -960,11 +973,75 @@ def check_agent_native_ecology_box_001_preregistration() -> dict[str, Any]:
 
     fairness = (root / "fairness-review.md").read_text(encoding="utf-8")
     if (
-        "FAIRNESS_REVIEW_STATUS=REQUIRES_CORRECTION" not in fairness
+        "FAIRNESS_REVIEW_STATUS=PASS" not in fairness
+        or "FAIRNESS_PASS_SCOPE=PROTOCOL_DESIGN_COMPLETENESS_ONLY" not in fairness
+        or "EXECUTION_PREREQUISITES_STATUS=NOT_SATISFIED" not in fairness
+        or "FAIRNESS_EMPIRICALLY_DEMONSTRATED=false" not in fairness
         or "EXECUTION_AUTHORIZED=false" not in fairness
         or "HD-EB-07" not in fairness
     ):
-        raise ConformanceError("fairness review does not fail closed")
+        raise ConformanceError("fairness design PASS is not bounded and fail closed")
+
+    reviewer = load_json(root / "independent-reviewer-model.yaml")
+    reviewer_fields = {
+        "reviewer_identity", "conflict_of_interest", "prior_access",
+        "review_scope", "abstention_policy",
+    }
+    if (
+        not reviewer_fields.issubset(reviewer)
+        or reviewer["reviewer_identity"]["instance_ref"] != "NOT_ASSIGNED"
+        or reviewer["reviewer_identity"]["assignment_requires_human_decision"]
+        != "HD-EB-07"
+        or reviewer["abstention_policy"]["result"] != "ABSTAIN"
+        or reviewer["reviewer_instance_assigned"] is not False
+        or reviewer["review_session_created"] is not False
+        or reviewer["review_executed"] is not False
+        or reviewer["execution_authorized"] is not False
+    ):
+        raise ConformanceError(
+            "independent Reviewer model creates an instance, review or authority"
+        )
+
+    custodian = load_json(root / "blind-custodian-protocol.yaml")
+    custodian_fields = {
+        "blind_key_owner", "unblinding_condition", "unblinding_time", "access_log",
+    }
+    if (
+        not custodian_fields.issubset(custodian)
+        or custodian["blind_key_owner"]["owner_ref"] != "NOT_ASSIGNED"
+        or custodian["access_log"]["mode"] != "APPEND_ONLY_HASH_CHAIN_REQUIRED"
+        or custodian["access_log"]["entries"]
+        or custodian["blind_key_created"] is not False
+        or custodian["blind_key_owner_assigned"] is not False
+        or custodian["origin_mapping_created"] is not False
+        or custodian["unblinding_executed"] is not False
+        or custodian["execution_authorized"] is not False
+    ):
+        raise ConformanceError(
+            "blind custodian protocol creates a key, owner, mapping or execution"
+        )
+
+    provider_policy = load_json(root / "provider-privacy-retention-policy.yaml")
+    provider_fields = {
+        "provider", "model", "data_scope", "retention", "training_usage",
+        "logging", "deletion",
+    }
+    if (
+        not provider_fields.issubset(provider_policy)
+        or provider_policy["provider"] != "NOT_SELECTED"
+        or provider_policy["model"] != "NOT_SELECTED"
+        or provider_policy["logging"]["raw_prompt_logged"] is not False
+        or provider_policy["logging"]["raw_response_logged"] is not False
+        or provider_policy["logging"]["hidden_reasoning_logged"] is not False
+        or provider_policy["logging"]["credential_logged"] is not False
+        or provider_policy["provider_profile_adopted"] is not False
+        or provider_policy["experiment_provider_call_authorized"] is not False
+        or provider_policy["experiment_data_processed"] is not False
+        or provider_policy["execution_authorized"] is not False
+    ):
+        raise ConformanceError(
+            "Provider privacy policy adopts a provider or permits experiment data"
+        )
 
     bias = (root / "bias-analysis.md").read_text(encoding="utf-8")
     bias_types = {
@@ -997,6 +1074,44 @@ def check_agent_native_ecology_box_001_preregistration() -> dict[str, Any]:
     }
     if minimums != expected_minimums:
         raise ConformanceError("confirmatory lineage minimums drift")
+    if (
+        lineage["design_review_status"] != "PASS"
+        or lineage["execution_prerequisites_status"] != "NOT_SATISFIED"
+        or len(lineage["planned_assignment_slots"]) < 3
+        or any(
+            slot["status"] != "UNASSIGNED"
+            or slot["provider"] != "NOT_SELECTED"
+            or slot["model"] != "NOT_SELECTED"
+            for slot in lineage["planned_assignment_slots"]
+        )
+    ):
+        raise ConformanceError("multi-lineage plan creates or inflates participation")
+
+    packet = (
+        DBA_ROOT
+        / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-HUMAN-DECISION-PACKET-v0.1.md"
+    ).read_text(encoding="utf-8")
+    if (
+        packet.count("decision=UNDECIDED") != 10
+        or packet.count("reevaluation_status=COMPLETE") != 10
+        or "HUMAN_DECISIONS_RECORDED=0" not in packet
+        or "HUMAN_DECISIONS_UNDECIDED=10" not in packet
+        or "HUMAN_DECISIONS_REEVALUATED=10" not in packet
+        or "ECOLOGY_BOX_EXECUTION_AUTHORIZED=false" not in packet
+        or "ECOLOGY_BOX_EXECUTED=false" not in packet
+        or "VALUE_PROVEN=false" not in packet
+    ):
+        raise ConformanceError("Human Decision re-evaluation packet status drift")
+
+    if (
+        freeze["fairness_review"]["status"] != "PASS"
+        or freeze["fairness_review"]["pass_scope"]
+        != "PROTOCOL_DESIGN_COMPLETENESS_ONLY"
+        or freeze["fairness_review"]["empirically_demonstrated"] is not False
+        or freeze["execution_prerequisites"]["status"] != "NOT_SATISFIED"
+        or not freeze["execution_prerequisites"]["blockers"]
+    ):
+        raise ConformanceError("freeze review elevates fairness design to readiness")
 
     stops = load_json(root / "stop-rules.yaml")
     if (
@@ -1058,6 +1173,26 @@ def check_agent_native_ecology_box_001_preregistration() -> dict[str, Any]:
     ):
         raise ConformanceError("post-remediation advisory review boundary drift")
 
+    fairness_post_review = load_json(
+        DBA_ROOT / "architecture" / "reviews"
+        / "titmas-ecology-box-001-fairness-remediation-postreview-multimodel-v0.1.json"
+    )
+    if (
+        fairness_post_review["primary_model"] != "qwen3.7-max"
+        or fairness_post_review["authority_effect"] != "NONE"
+        or fairness_post_review["decision_effect"] != "NONE"
+        or fairness_post_review["fairness_review_status"] != "PASS"
+        or fairness_post_review["fairness_pass_scope"]
+        != "PROTOCOL_DESIGN_COMPLETENESS_ONLY"
+        or fairness_post_review["execution_prerequisites_status"]
+        != "NOT_SATISFIED"
+        or fairness_post_review["execution_authorized"] is not False
+        or fairness_post_review["experiment_executed"] is not False
+        or fairness_post_review["value_proven"] is not False
+        or len(fairness_post_review["review_sessions"]) < 3
+    ):
+        raise ConformanceError("fairness post-review semantically elevates the pilot")
+
     report = (
         DBA_ROOT
         / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-PREREGISTRATION-AND-EXECUTION-REVIEW-REPORT-v0.1.md"
@@ -1072,6 +1207,8 @@ def check_agent_native_ecology_box_001_preregistration() -> dict[str, Any]:
         "REAL_GIT_ACCESS_AUTHORIZED=false",
         "PUBLIC_REPORT_AUTHORIZED=false",
         "COMMERCIAL_VALIDATION_AUTHORIZED=false",
+        "FAIRNESS_REVIEW_STATUS=PASS",
+        "EXECUTION_PREREQUISITES_STATUS=NOT_SATISFIED",
     )
     if any(item not in report for item in required_report_states):
         raise ConformanceError("completion report status drift")
@@ -1079,13 +1216,18 @@ def check_agent_native_ecology_box_001_preregistration() -> dict[str, Any]:
     return {
         "preregistration_files_checked": len(required_paths) + len(supporting_paths),
         "frozen_hashes_checked": len(required_paths) + len(original_frozen_paths),
-        "fairness_review_status": "REQUIRES_CORRECTION",
+        "fairness_review_status": "PASS",
+        "fairness_pass_scope": "PROTOCOL_DESIGN_COMPLETENESS_ONLY",
+        "execution_prerequisites_status": "NOT_SATISFIED",
+        "fairness_empirically_demonstrated": False,
         "bias_types_checked": len(bias_types),
         "transition_cases_rejected": len(
             ECOLOGY_BOX_001_PREREGISTRATION_REJECTIONS
         ),
         "independent_lineage_count": 0,
         "human_decisions_undecided": 10,
+        "human_decisions_reevaluated": 10,
+        "fairness_control_contracts_checked": 4,
         "execution_authorized": False,
         "experiment_executed": False,
         "value_proven": False,

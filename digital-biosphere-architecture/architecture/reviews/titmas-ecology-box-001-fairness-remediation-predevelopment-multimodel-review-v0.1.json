@@ -1,0 +1,53 @@
+{
+  "review_id": "TITMAS-EB001-FAIRNESS-REMEDIATION-PREDEV-MULTIMODEL-001",
+  "review_type": "AGENT_RECOMMENDATION_GATE_PRE_REMEDIATION",
+  "reviewed_at": "2026-07-29",
+  "scope": "FAIRNESS_PROTOCOL_DESIGN_ONLY_NO_EXPERIMENT_EXECUTION",
+  "sessions": [
+    {
+      "provider": "baidu-qianfan",
+      "requested_model": "kimi-k2.6",
+      "returned_model": "kimi-k2.6",
+      "verdict": "RECOMMENDED",
+      "execution_recommended": false
+    },
+    {
+      "provider": "aliyun-dashscope",
+      "requested_model": "qwen3.7-max",
+      "returned_model": "qwen3.7-max",
+      "verdict": "CONDITIONAL",
+      "execution_recommended": false
+    },
+    {
+      "provider": "volcengine-ark",
+      "requested_model": "deepseek-v4-flash-260425",
+      "returned_model": "deepseek-v4-flash-260425",
+      "verdict": "NOT_RECOMMENDED",
+      "execution_recommended": false
+    }
+  ],
+  "shared_required_controls": [
+    "Bind PASS to protocol-design completeness only.",
+    "Keep execution prerequisites in a separate fail-closed state.",
+    "Define Reviewer identity, conflict, prior-access, scope and abstention fields.",
+    "Define blind-key ownership, unblinding conditions and append-only access-log requirements.",
+    "Define Provider, model, data scope, retention, training, logging and deletion requirements.",
+    "Keep model, session, role and independent-lineage counts separate.",
+    "Preserve every Human Decision as explicit and independently reviewable."
+  ],
+  "dissent_preserved": [
+    "DeepSeek did not recommend PASS while Reviewer, custodian, Provider and lineage instances remain absent.",
+    "Qwen required PASS to remain conditional on separate execution-readiness controls.",
+    "Kimi recommended design-only PASS with immutable non-inference and delta-review controls."
+  ],
+  "adopted_remediation_direction": "DUAL_TRACK_DESIGN_PASS_AND_EXECUTION_PREREQUISITES_NOT_SATISFIED",
+  "authority_effect": "NONE",
+  "decision_effect": "NONE",
+  "execution_authorized": false,
+  "experiment_executed": false,
+  "known_limitations": [
+    "Three model sessions are advisory inputs, not Human Decision or empirical fairness evidence.",
+    "The sanitized record omits credentials, raw prompts, hidden reasoning and private paths.",
+    "Model/provider diversity does not automatically establish independent experimental lineage."
+  ]
+}

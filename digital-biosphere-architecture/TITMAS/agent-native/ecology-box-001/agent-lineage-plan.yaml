@@ -2,6 +2,8 @@
   "experiment_id": "DEB-TITMAS-001",
   "version": "0.1.0",
   "status": "PREPARED_NOT_AUTHORIZED",
+  "design_review_status": "PASS",
+  "execution_prerequisites_status": "NOT_SATISFIED",
   "counting_rules": {
     "MODEL_COUNT": "Distinct model identities directly evidenced in accepted participant records.",
     "SESSION_COUNT": "Distinct bounded sessions; multiple sessions do not imply lineage independence.",
@@ -10,7 +12,16 @@
     "single_model_multiple_sessions_multiple_roles": {
       "independent_lineage_count": 1,
       "reason": "Session and role multiplication cannot manufacture independent lineage."
-    }
+    },
+    "same_model_different_provider": "NOT_AUTOMATICALLY_INDEPENDENT",
+    "different_model_same_provider": "NOT_AUTOMATICALLY_INDEPENDENT",
+    "independence_requires": [
+      "Distinct accepted participant identity and session boundary.",
+      "No shared result-generating context or candidate output.",
+      "Documented Provider and model identity.",
+      "Documented model-family or operational ancestry assessment.",
+      "Independent review of the lineage claim."
+    ]
   },
   "confirmatory_minimums": {
     "MODEL_COUNT_MIN": 3,
@@ -30,9 +41,30 @@
   },
   "participant_refs": [],
   "lineage_refs": [],
+  "planned_assignment_slots": [
+    {
+      "slot_id": "LINEAGE-A",
+      "provider": "NOT_SELECTED",
+      "model": "NOT_SELECTED",
+      "status": "UNASSIGNED"
+    },
+    {
+      "slot_id": "LINEAGE-B",
+      "provider": "NOT_SELECTED",
+      "model": "NOT_SELECTED",
+      "status": "UNASSIGNED"
+    },
+    {
+      "slot_id": "LINEAGE-C",
+      "provider": "NOT_SELECTED",
+      "model": "NOT_SELECTED",
+      "status": "UNASSIGNED"
+    }
+  ],
   "assignment_created": false,
   "lineage_plan_approved": false,
   "human_decision_reference": "HD-EB-08",
   "authority_effect": "NONE",
+  "lineage_counts_are_value_proof": false,
   "execution_authorized": false
 }

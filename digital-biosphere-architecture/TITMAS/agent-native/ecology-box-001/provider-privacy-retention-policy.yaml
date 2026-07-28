@@ -1,0 +1,77 @@
+{
+  "policy_id": "DEB-TITMAS-001-PROVIDER-PRIVACY-RETENTION-0.1",
+  "version": "0.1.0",
+  "status": "POLICY_DEFINED_NO_PROVIDER_ADOPTED",
+  "provider": "NOT_SELECTED",
+  "model": "NOT_SELECTED",
+  "data_scope": {
+    "allowed": [
+      "Frozen public-safe repository material.",
+      "Synthetic task fixtures.",
+      "Origin-neutral review candidates with local paths and identities removed."
+    ],
+    "forbidden": [
+      "Credentials, secrets, tokens or authentication material.",
+      "Personal, customer, clinical or regulated data.",
+      "Private repository content or unpublished proprietary source.",
+      "Blind keys, candidate-origin mappings, raw hidden reasoning or private paths."
+    ],
+    "unknown_classification_action": "REJECT_BEFORE_PROVIDER_CALL"
+  },
+  "retention": {
+    "project_raw_request_response": "ZERO_AFTER_BOUNDED_SESSION",
+    "sanitized_receipt": "365_DAYS_THEN_ARCHIVE_MINIMAL_METADATA_OR_DELETE",
+    "provider_side": "MUST_BE_DECLARED_AND_ACCEPTED_BEFORE_USE",
+    "unknown_provider_retention_action": "REJECT_PROVIDER_PROFILE"
+  },
+  "training_usage": {
+    "requirement": "MUST_BE_DISABLED_OR_EXPLICITLY_DISCLOSED_AND_ACCEPTED_BY_HUMAN_OWNER",
+    "current_status": "NOT_ASSESSED_NO_PROVIDER_SELECTED",
+    "unknown_action": "REJECT_PROVIDER_PROFILE"
+  },
+  "logging": {
+    "allowed_local_fields": [
+      "provider",
+      "requested_model",
+      "returned_model",
+      "session_ref",
+      "timestamp",
+      "token_usage",
+      "status",
+      "sanitized_error_class"
+    ],
+    "raw_prompt_logged": false,
+    "raw_response_logged": false,
+    "hidden_reasoning_logged": false,
+    "credential_logged": false
+  },
+  "deletion": {
+    "local_raw_material": "DELETE_AT_SESSION_END_WITHOUT_DELETING_SANITIZED_RECEIPT",
+    "provider_material": "VERIFY_AVAILABLE_DELETION_OR_RETENTION_CONTROL_BEFORE_SELECTION",
+    "failed_deletion_action": "STOP_FUTURE_CALLS_AND_RECORD_LIMITATION",
+    "failure_record_deletable": false
+  },
+  "candidate_profiles": [
+    {
+      "provider": "aliyun-dashscope",
+      "model": "qwen3.7-max",
+      "status": "ADVISORY_REVIEW_OBSERVED_NOT_EXPERIMENT_PROVIDER_ADOPTED"
+    },
+    {
+      "provider": "baidu-qianfan",
+      "model": "kimi-k2.6",
+      "status": "ADVISORY_REVIEW_OBSERVED_NOT_EXPERIMENT_PROVIDER_ADOPTED"
+    },
+    {
+      "provider": "volcengine-ark",
+      "model": "deepseek-v4-flash-260425",
+      "status": "ADVISORY_REVIEW_OBSERVED_NOT_EXPERIMENT_PROVIDER_ADOPTED"
+    }
+  ],
+  "advisory_review_calls_observed": 6,
+  "advisory_review_calls_are_experiment_participation": false,
+  "provider_profile_adopted": false,
+  "experiment_provider_call_authorized": false,
+  "experiment_data_processed": false,
+  "execution_authorized": false
+}

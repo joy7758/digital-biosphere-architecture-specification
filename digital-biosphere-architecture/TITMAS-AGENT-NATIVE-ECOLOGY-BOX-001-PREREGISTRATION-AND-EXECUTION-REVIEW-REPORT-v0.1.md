@@ -3,7 +3,7 @@
 ## Outcome
 
 The pre-registration package and execution review are complete as preparation
-artifacts. The fairness review requires correction. No experiment, Agent
+artifacts. The original fairness review required correction. No experiment, Agent
 contribution, Git access for experiment participants, publication or
 commercial validation is authorized.
 
@@ -51,7 +51,7 @@ the package without inferring execution or value proof.
 ## Freeze and review status
 
 ```text
-FREEZE_REVIEW_STATUS=PREREGISTERED_REVIEW_COMPLETE_REQUIRES_CORRECTION
+FREEZE_REVIEW_STATUS=PREREGISTERED_FAIRNESS_DESIGN_PASS_EXECUTION_BLOCKED
 TASKS_FROZEN=true
 METRICS_FROZEN=true
 ROLES_FROZEN=true
@@ -59,13 +59,16 @@ PROTOCOL_FROZEN=true
 SUCCESS_CRITERIA_FROZEN=true
 EXECUTION_AUTHORIZATION_CANDIDATE_READY=true
 EXECUTION_AUTHORIZATION_CANDIDATE_READY_MEANS=HUMAN_REVIEW_PACKET_COMPLETE_NOT_EXECUTION_READY
-FAIRNESS_REVIEW_STATUS=REQUIRES_CORRECTION
+FAIRNESS_REVIEW_STATUS=PASS
+FAIRNESS_PASS_SCOPE=PROTOCOL_DESIGN_COMPLETENESS_ONLY
+EXECUTION_PREREQUISITES_STATUS=NOT_SATISFIED
 BIAS_ANALYSIS_COMPLETE=true
 BIAS_ELIMINATED=false
 ```
 
-The candidate-ready flag means only that the Human packet is ready to review.
-It does not mean execution prerequisites are satisfied.
+The candidate-ready and fairness PASS flags mean only that the Human packet
+and fairness-control contracts are complete. They do not mean execution
+prerequisites are satisfied.
 
 ## Advisory recommendation gate
 
@@ -93,7 +96,7 @@ The conformance harness rejects:
 5. pilot pass -> commercial value.
 
 It also checks frozen hashes, zero participants/lineages, ten undecided Human
-decisions, fairness fail-closed status, bias coverage and absence of execution
+decisions, fairness dual-track status, bias coverage and absence of execution
 claims.
 
 ## Human decisions
@@ -112,8 +115,11 @@ HUMAN_DECISIONS_UNDECIDED=10
 - no accepted multi-lineage plan and all participant counts remain zero;
 - no execution authorization;
 - no empirical result or independent replay;
-- `titmas-architecture-charter-v0.2.md`, named by `AGENTS.md`, is absent from
-  the verified source baseline; v1.0 exists but does not erase this mismatch.
+- no experiment execution Decision or empirical fairness evidence.
+
+Direct source re-verification confirmed that `AGENTS.md` names Charter v1.0
+and v1.0 exists at the source baseline. Earlier v0.2 absence statements in
+advisory model records are corrected errors, not current blockers.
 
 ## TITMAS drift check
 

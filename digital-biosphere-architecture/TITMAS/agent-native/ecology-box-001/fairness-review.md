@@ -3,14 +3,16 @@
 ## Review result
 
 ```text
-FAIRNESS_REVIEW_STATUS=REQUIRES_CORRECTION
+FAIRNESS_REVIEW_STATUS=PASS
+FAIRNESS_PASS_SCOPE=PROTOCOL_DESIGN_COMPLETENESS_ONLY
 FAIRNESS_REVIEW_COMPLETE=true
+EXECUTION_PREREQUISITES_STATUS=NOT_SATISFIED
 EXECUTION_AUTHORIZED=false
 ```
 
-The comparison controls are defined, but execution cannot be considered fair
-until a Human decision binds an independent Reviewer, accepted lineage plan
-and Provider/data controls.
+`PASS` means the fairness protocol now defines every required control and
+fails closed when an operational instance is missing. It does not mean that
+fairness has been empirically demonstrated or that execution is ready.
 
 ## 1. Task fairness
 
@@ -62,17 +64,57 @@ participant/model identity. The frozen rubric evaluates correctness,
 maintainability, conformance and long-term usefulness. Source is revealed only
 after rubric records are sealed.
 
-Status: `REQUIRES_CORRECTION`.
+Status: `CONTROL_CONTRACT_COMPLETE`.
 
-Blocking corrections:
+The following controls are now defined:
 
-- `HD-EB-07` must approve and bind an independent Reviewer;
-- conflict-of-interest and prior-access declarations must be recorded;
-- randomized candidate mapping and blind-key custody must be assigned;
-- Reviewer budget and failure/abstention behavior must be accepted.
+- `independent-reviewer-model.yaml` defines `reviewer_identity`,
+  `conflict_of_interest`, `prior_access`, `review_scope` and
+  `abstention_policy`;
+- `blind-custodian-protocol.yaml` defines `blind_key_owner`,
+  `unblinding_condition`, `unblinding_time` and append-only `access_log`;
+- `provider-privacy-retention-policy.yaml` defines `provider`, `model`,
+  `data_scope`, `retention`, `training_usage`, `logging` and `deletion`;
+- `agent-lineage-plan.yaml` separately defines model, session, role and
+  independent-lineage counts and prohibits count inflation.
+
+All instance-bearing fields remain unassigned or zero. Their absence is an
+execution blocker, not a missing design field.
+Reviewer and blind-custodian assignment remains governed by `HD-EB-07`.
+
+## 5. Dual-track result
+
+| Review dimension | Status |
+|---|---|
+| Fairness protocol completeness | `PASS` |
+| Independent Reviewer instance | `NOT_ASSIGNED` |
+| Blind custodian instance and key | `NOT_ASSIGNED` / `NOT_CREATED` |
+| Experiment Provider adoption | `false` |
+| Model/session/role/lineage instances | `0 / 0 / 0 / 0` |
+| Human execution decision | `UNDECIDED` |
+| Execution prerequisites | `NOT_SATISFIED` |
+| Experiment execution | `false` |
+
+Any transition from unassigned, zero or false values requires a new delta
+review. This `PASS` cannot be reused as that future review.
 
 ## Disposition
 
-The design is reviewable, but not executable. `HD-EB-06` should remain
-`DEFER` until every blocking correction is directly evidenced.
+The fairness design review passes. Execution remains prohibited.
+`HD-EB-06` remains recommended `DEFER` until Reviewer/custodian assignment,
+Provider-policy adoption, participant lineage evidence and an explicit Human
+execution decision are all present.
 
+```text
+FAIRNESS_EMPIRICALLY_DEMONSTRATED=false
+REVIEWER_INSTANCE_ASSIGNED=false
+BLIND_KEY_CREATED=false
+PROVIDER_PROFILE_ADOPTED=false
+MODEL_COUNT=0
+SESSION_COUNT=0
+ROLE_COUNT=0
+INDEPENDENT_LINEAGE_COUNT=0
+ECOLOGY_BOX_EXECUTION_AUTHORIZED=false
+ECOLOGY_BOX_EXECUTED=false
+VALUE_PROVEN=false
+```

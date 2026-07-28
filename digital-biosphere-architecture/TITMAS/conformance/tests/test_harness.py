@@ -168,12 +168,103 @@ class HarnessTests(unittest.TestCase):
 
     def test_ecology_box_001_preregistration_passes_without_execution(self):
         details = HARNESS.check_agent_native_ecology_box_001_preregistration()
-        self.assertEqual("REQUIRES_CORRECTION", details["fairness_review_status"])
+        self.assertEqual("PASS", details["fairness_review_status"])
+        self.assertEqual(
+            "PROTOCOL_DESIGN_COMPLETENESS_ONLY",
+            details["fairness_pass_scope"],
+        )
+        self.assertEqual(
+            "NOT_SATISFIED",
+            details["execution_prerequisites_status"],
+        )
+        self.assertFalse(details["fairness_empirically_demonstrated"])
+        self.assertEqual(4, details["fairness_control_contracts_checked"])
         self.assertEqual(5, details["transition_cases_rejected"])
         self.assertEqual(10, details["human_decisions_undecided"])
+        self.assertEqual(10, details["human_decisions_reevaluated"])
         self.assertFalse(details["execution_authorized"])
         self.assertFalse(details["experiment_executed"])
         self.assertFalse(details["value_proven"])
+
+    def test_ecology_box_001_independent_reviewer_is_a_role_not_instance(self):
+        root = HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+        reviewer = json.loads(
+            (root / "independent-reviewer-model.yaml").read_text()
+        )
+        self.assertEqual(
+            "NOT_ASSIGNED", reviewer["reviewer_identity"]["instance_ref"]
+        )
+        self.assertEqual("ABSTAIN", reviewer["abstention_policy"]["result"])
+        self.assertFalse(reviewer["reviewer_instance_assigned"])
+        self.assertFalse(reviewer["review_executed"])
+
+    def test_ecology_box_001_blind_custodian_creates_no_key_or_owner(self):
+        root = HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+        custodian = json.loads(
+            (root / "blind-custodian-protocol.yaml").read_text()
+        )
+        self.assertEqual(
+            "NOT_ASSIGNED", custodian["blind_key_owner"]["owner_ref"]
+        )
+        self.assertEqual([], custodian["access_log"]["entries"])
+        self.assertFalse(custodian["blind_key_created"])
+        self.assertFalse(custodian["unblinding_executed"])
+
+    def test_ecology_box_001_provider_policy_adopts_no_provider(self):
+        root = HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+        policy = json.loads(
+            (root / "provider-privacy-retention-policy.yaml").read_text()
+        )
+        for field in (
+            "provider", "model", "data_scope", "retention", "training_usage",
+            "logging", "deletion",
+        ):
+            self.assertIn(field, policy)
+        self.assertEqual("NOT_SELECTED", policy["provider"])
+        self.assertEqual("NOT_SELECTED", policy["model"])
+        self.assertFalse(policy["provider_profile_adopted"])
+        self.assertFalse(policy["experiment_provider_call_authorized"])
+        self.assertFalse(policy["experiment_data_processed"])
+
+    def test_ecology_box_001_lineage_dimensions_are_not_inflated(self):
+        root = HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+        lineage = json.loads((root / "agent-lineage-plan.yaml").read_text())
+        self.assertEqual(
+            {
+                "MODEL_COUNT": 0,
+                "SESSION_COUNT": 0,
+                "ROLE_COUNT": 0,
+                "INDEPENDENT_LINEAGE_COUNT": 0,
+                "FULL_PIPELINE_COUNT": 0,
+                "NON_FIXTURE_REPOSITORY_COUNT": 0,
+            },
+            lineage["current_counts"],
+        )
+        self.assertTrue(
+            all(
+                slot["status"] == "UNASSIGNED"
+                for slot in lineage["planned_assignment_slots"]
+            )
+        )
+
+    def test_ecology_box_001_human_decisions_are_reevaluated_not_decided(self):
+        packet = (
+            HARNESS.DBA_ROOT
+            / "TITMAS-AGENT-NATIVE-ECOLOGY-BOX-001-HUMAN-DECISION-PACKET-v0.1.md"
+        ).read_text()
+        self.assertEqual(10, packet.count("decision=UNDECIDED"))
+        self.assertEqual(10, packet.count("reevaluation_status=COMPLETE"))
+        self.assertIn("HUMAN_DECISIONS_RECORDED=0", packet)
+        self.assertIn("ECOLOGY_BOX_EXECUTION_AUTHORIZED=false", packet)
+
+    def test_ecology_box_001_fairness_pass_cannot_authorize_execution(self):
+        root = HARNESS.TITMAS_ROOT / "agent-native" / "ecology-box-001"
+        fairness = (root / "fairness-review.md").read_text()
+        self.assertIn("FAIRNESS_REVIEW_STATUS=PASS", fairness)
+        self.assertIn(
+            "EXECUTION_PREREQUISITES_STATUS=NOT_SATISFIED", fairness
+        )
+        self.assertIn("EXECUTION_AUTHORIZED=false", fairness)
 
     def test_ecology_box_001_ready_cannot_auto_become_executed(self):
         self.assertEqual(

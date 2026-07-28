@@ -38,7 +38,7 @@ imported.
 | Value conclusion | `NOT_PROVEN` | Previous frozen observation recorded zero final outcome improvements. |
 | Agent Immune Integration Role Definition | `UNKNOWN_NOT_PRESENT_IN_SOURCE` | No matching tracked role-definition artifact was found at the source revision. |
 | TITMAS Digital Immune Constitution | `PREPARED_DEVELOPMENT_DESIGN_BASELINE` | v1.0 exists; it creates no Runtime or Authority. |
-| Canonical TITMAS Charter v0.2 named by `AGENTS.md` | `UNKNOWN_NOT_PRESENT_IN_SOURCE` | v0.2 is absent at the source revision; v1.0 exists and defines the drift check. |
+| Canonical TITMAS Charter v1.0 named by `AGENTS.md` | `VERIFIED_PRESENT` | v1.0 exists at the source revision and defines the drift check. |
 
 ## Existing package truth
 
@@ -74,8 +74,8 @@ lineage, Authority or result status is elevated.
 One exact `qwen3.7-max` advisory review returned `NOT_RECOMMENDED` before
 remediation. Its blocking reasons were missing numeric resource budgets,
 unassigned independent review, missing Provider/privacy/retention controls,
-missing Charter v0.2 reconciliation and insufficient task-to-outcome/effect-size
-detail.
+an incorrectly reported Charter v0.2 gap and insufficient
+task-to-outcome/effect-size detail.
 
 This review creates no Decision or Authorization. The current work may correct
 the protocol and prepare a Human decision candidate, but it cannot assign an
@@ -88,6 +88,11 @@ advisory review returned
 `would_recommend_execution=false`. The remaining blockers are preserved in
 the post-remediation review record. Neither Agent review is Human Decision or
 experimental evidence.
+
+Source re-verification established that `AGENTS.md` names
+`titmas-architecture-charter-v1.0.md` and that v1.0 is present at the frozen
+source revision. The earlier v0.2 claim is preserved only as a corrected model
+review error and is not a current blocker.
 
 ## Required semantic separation
 

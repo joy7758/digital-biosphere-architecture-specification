@@ -1,0 +1,69 @@
+{
+  "contract_id": "DEB-TITMAS-001-INDEPENDENT-REVIEWER-MODEL-0.1",
+  "version": "0.1.0",
+  "status": "DESIGN_CONTRACT_DEFINED_INSTANCE_NOT_ASSIGNED",
+  "reviewer_identity": {
+    "profile_id": "EB001-INDEPENDENT-OUTCOME-REVIEWER",
+    "identity_kind": "BOUNDED_ROLE_PROFILE_NOT_AGENT_INSTANCE",
+    "instance_ref": "NOT_ASSIGNED",
+    "provider": "NOT_SELECTED",
+    "model": "NOT_SELECTED",
+    "human_accountability_ref": "NOT_ASSIGNED",
+    "assignment_requires_human_decision": "HD-EB-07"
+  },
+  "conflict_of_interest": {
+    "status": "NOT_ASSESSED_NO_INSTANCE",
+    "required_declaration": true,
+    "disqualifying_conditions": [
+      "Produced or modified either candidate.",
+      "Received the origin allocation key before rubric sealing.",
+      "Has a material interest in a preferred workflow outcome.",
+      "Can approve execution, publication, adoption or commercial use of its own review."
+    ],
+    "uncertain_conflict_action": "ABSTAIN_AND_ROUTE_TO_HUMAN_OWNER"
+  },
+  "prior_access": {
+    "status": "NOT_ASSESSED_NO_INSTANCE",
+    "required_declaration": true,
+    "prohibited_access": [
+      "Candidate origin labels.",
+      "The other arm's execution history.",
+      "Blind key or expected winner.",
+      "Raw prompts, hidden reasoning, credentials or private paths."
+    ],
+    "material_prior_access_action": "DISQUALIFY_OR_MARK_TASK_PAIR_NOT_ASSESSED"
+  },
+  "review_scope": {
+    "allowed": [
+      "Apply the frozen rubric to origin-neutral candidates.",
+      "Record dimension-level findings, abstentions and limitations.",
+      "Verify deterministic validation references supplied in the review packet."
+    ],
+    "forbidden": [
+      "Change the frozen rubric, weights, task scope or candidate.",
+      "Infer Authority, Permission, Adoption, Truth or commercial value.",
+      "Execute code, access real Git, publish results or approve the experiment.",
+      "Review its own produced candidate."
+    ],
+    "authority_effect": "NONE",
+    "decision_effect": "ADVISORY_ONLY"
+  },
+  "abstention_policy": {
+    "required": true,
+    "triggers": [
+      "Conflict or prior access cannot be ruled out.",
+      "Candidate identity or origin is exposed.",
+      "Evidence is incomplete or validation cannot be reproduced.",
+      "The task requires expertise outside the declared review scope.",
+      "The rubric produces an unresolved ambiguity."
+    ],
+    "result": "ABSTAIN",
+    "affected_pair_status": "NOT_ASSESSED",
+    "replacement_reviewer_requires_new_assignment": true,
+    "silent_reassignment_allowed": false
+  },
+  "reviewer_instance_assigned": false,
+  "review_session_created": false,
+  "review_executed": false,
+  "execution_authorized": false
+}

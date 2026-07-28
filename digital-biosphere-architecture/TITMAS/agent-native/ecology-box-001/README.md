@@ -10,8 +10,9 @@ Start in this order:
 3. [Pre-registration](pre-registration.md)
 4. `freeze-manifest.yaml` and `freeze-review.yaml`
 5. [Fairness review](fairness-review.md) and [bias analysis](bias-analysis.md)
-6. [Blind evaluation protocol](blind-evaluation-protocol.md)
-7. `agent-lineage-plan.yaml`
+6. [Blind evaluation protocol](blind-evaluation-protocol.md),
+   `independent-reviewer-model.yaml` and `blind-custodian-protocol.yaml`
+7. `provider-privacy-retention-policy.yaml` and `agent-lineage-plan.yaml`
 8. [Human-first plan](baseline-execution-plan.md) and
    [Agent-native plan](agent-native-execution-plan.md)
 9. `stop-rules.yaml` and [success criteria](success-criteria.md)
@@ -24,7 +25,9 @@ Start in this order:
 PACKAGE_STATUS=PREPARED
 PREREGISTRATION_COMPLETE=true
 EXECUTION_REVIEW_COMPLETE=true
-FAIRNESS_REVIEW_STATUS=REQUIRES_CORRECTION
+FAIRNESS_REVIEW_STATUS=PASS
+FAIRNESS_PASS_SCOPE=PROTOCOL_DESIGN_COMPLETENESS_ONLY
+EXECUTION_PREREQUISITES_STATUS=NOT_SATISFIED
 EXECUTION_AUTHORIZATION_CANDIDATE_READY=true
 EXECUTION_AUTHORIZATION_CANDIDATE_READY_MEANS=HUMAN_REVIEW_PACKET_COMPLETE_NOT_EXECUTION_READY
 EXECUTION_AUTHORIZED=false
@@ -42,4 +45,9 @@ Memory, experiment results or public reports.
 
 `EXECUTION_AUTHORIZATION_CANDIDATE_READY=true` means that a bounded Human
 decision packet can be reviewed. It does not mean that fairness corrections
-are complete or that experiment execution is ready or authorized.
+are operationally instantiated or that experiment execution is ready or
+authorized.
+
+The fairness `PASS` applies only to protocol-design completeness. Reviewer and
+blind-custodian instances remain unassigned, no Provider profile is adopted,
+all lineage counts are zero and every Human Decision remains `UNDECIDED`.

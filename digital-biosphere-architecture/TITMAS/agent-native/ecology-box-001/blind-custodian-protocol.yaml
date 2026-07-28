@@ -1,0 +1,61 @@
+{
+  "protocol_id": "DEB-TITMAS-001-BLIND-CUSTODIAN-0.1",
+  "version": "0.1.0",
+  "status": "DESIGN_PROTOCOL_DEFINED_OWNER_NOT_ASSIGNED",
+  "blind_key_owner": {
+    "profile_id": "EB001-HUMAN-BLIND-CUSTODIAN",
+    "identity_kind": "HUMAN_ACCOUNTABILITY_ROLE_PROFILE",
+    "owner_ref": "NOT_ASSIGNED",
+    "assignment_requires_human_decision": "HD-EB-07",
+    "must_be_separate_from": [
+      "Candidate producer.",
+      "Independent outcome Reviewer.",
+      "Metric analyst before rubric sealing."
+    ]
+  },
+  "unblinding_condition": [
+    "All task-pair rubric records are sealed and hash-bound.",
+    "Reviewer abstentions and unresolved incidents are recorded.",
+    "No open identity leak, allocation tamper or rubric-drift finding exists.",
+    "The Human blind custodian confirms the pre-registered task set and candidate count."
+  ],
+  "unblinding_time": {
+    "rule": "AFTER_FINAL_RUBRIC_SEAL_AND_BEFORE_PRE_REGISTERED_PAIRED_ANALYSIS",
+    "wall_clock_value": "NOT_SCHEDULED",
+    "early_unblinding_allowed": false,
+    "late_change_to_scores_allowed": false
+  },
+  "access_log": {
+    "status": "SCHEMA_DEFINED_NO_LOG_CREATED",
+    "mode": "APPEND_ONLY_HASH_CHAIN_REQUIRED",
+    "required_fields": [
+      "event_id",
+      "actor_ref",
+      "action",
+      "reason",
+      "occurred_at",
+      "previous_event_hash",
+      "event_hash"
+    ],
+    "allowed_actions": [
+      "KEY_CREATED",
+      "KEY_ACCESSED",
+      "KEY_REVEALED",
+      "KEY_DESTROYED",
+      "ACCESS_DENIED"
+    ],
+    "entries": [],
+    "public_report_contains_raw_key": false
+  },
+  "incident_policy": {
+    "premature_access": "STOP_AFFECTED_PAIR_AND_PRESERVE_INCIDENT",
+    "unknown_actor": "STOP_BATCH",
+    "missing_log_entry": "FAIL_CLOSED_NOT_ASSESSED",
+    "key_loss": "STOP_BATCH_NO_RECONSTRUCTION_FROM_OUTCOME"
+  },
+  "blind_key_created": false,
+  "blind_key_owner_assigned": false,
+  "origin_mapping_created": false,
+  "unblinding_executed": false,
+  "execution_authorized": false
+}
