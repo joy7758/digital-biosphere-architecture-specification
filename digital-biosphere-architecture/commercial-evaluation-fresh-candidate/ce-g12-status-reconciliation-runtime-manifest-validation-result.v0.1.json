@@ -1,0 +1,69 @@
+{
+  "record_type": "TITMAS_CE_G12_RUNTIME_MANIFEST_BOUND_STATUS_RECONCILIATION_VALIDATION_RESULT",
+  "version": "0.1.0",
+  "status": "FAIL_CLOSED",
+  "observed_at": "2026-07-28T02:59:10Z",
+  "repository": "/private/tmp/titmas-ce-g11b-decision.2dqOYW/digital-biosphere-architecture",
+  "expected_head": "743ab1116bba52e7a6fe443df56507b4e66eaf8a",
+  "local_head": "743ab1116bba52e7a6fe443df56507b4e66eaf8a",
+  "git_toplevel": "/private/tmp/titmas-ce-g11b-decision.2dqOYW",
+  "git_prefix": "digital-biosphere-architecture/",
+  "frozen_patch_sha256": "9a0d7425d400427f236c155a3e473f2beeb45286bdb655ec2fa1b5c3e486d968",
+  "runtime_manifest_sha256": "3bd236c69f10edf0b67aeac6f6c9706d8f5bd7fa305612738a739f710dabd64f",
+  "runtime_manifest_first_path": "digital-biosphere-architecture/AGENT-CUSTOMER-PACKAGE-v0.1.1.json",
+  "runtime_manifest_last_path": "digital-biosphere-architecture/site/tsconfig.json",
+  "counts": {
+    "listed": 1346,
+    "opened": 1346,
+    "parsed": 1346,
+    "duplicate_checked": 1346
+  },
+  "stages": {
+    "tracked_json_duplicate_rejection": "PASS",
+    "commercial_entry_schema": "PASS",
+    "five_path_cross_file_consistency": "FAIL_CLOSED_BEFORE_CONTENT_ASSERTIONS"
+  },
+  "commercial_entry_schema_errors": 0,
+  "failed_stage": "FIVE_PATH_CROSS_FILE_CONSISTENCY",
+  "failure_classification": "VALIDATOR_DIFF_NAME_ONLY_PATH_CONTEXT_MISMATCH",
+  "failure": "git diff --name-only returned Git-top-level-prefixed paths while the authorized target list used repository-subdirectory-relative paths",
+  "observed_modified_paths": [
+    "digital-biosphere-architecture/MASTER-ROADMAP.md",
+    "digital-biosphere-architecture/PROGRAM-STATUS.md",
+    "digital-biosphere-architecture/TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+    "digital-biosphere-architecture/architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
+    "digital-biosphere-architecture/architecture/titmas-commercialization-standards-roadmap-v0.1.md"
+  ],
+  "authorized_target_paths": [
+    "MASTER-ROADMAP.md",
+    "PROGRAM-STATUS.md",
+    "TITMAS-COMMERCIALIZATION-STANDARDS-ENTRY-v0.1.json",
+    "architecture/schemas/titmas-commercialization-standards-entry.schema.v0.1.json",
+    "architecture/titmas-commercialization-standards-roadmap-v0.1.md"
+  ],
+  "read_only_diagnostic": {
+    "command_shape": "git -C <repo> diff --relative --name-only -- <five-target-paths>",
+    "returned_exact_authorized_target_paths": true,
+    "diagnostic_is_formal_validation_retry": false
+  },
+  "validator": {
+    "temporary_untracked_path": "/tmp/titmas_ce_g12_runtime_manifest_validation_v0_1.py",
+    "sha256": "e3e0ec5cdc7973b2921eb482349fbf3d6c93924d8affcc74a6f7c382ff5fcfe8",
+    "files_modified_by_validator": 0
+  },
+  "effects": {
+    "status_commit_created": false,
+    "status_push_executed": false,
+    "release": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "authority_elevation": false,
+    "permission": false,
+    "evidence_truth": false
+  },
+  "next_gate": {
+    "action": "PREPARE_DIFF_RELATIVE_PATH_SCOPE_REMEDIATION_RECOMMENDATION_ONLY",
+    "authorized": false
+  }
+}
