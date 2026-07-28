@@ -1,0 +1,94 @@
+{
+  "record_type": "TITMAS_CS_G1_OWNER_REVIEW_ASSIGNMENT_DECISION_CANDIDATE_QWEN_REVIEW",
+  "version": "0.1.0",
+  "status": "RECOMMENDED_OPTION_A_HUMAN_DECISION_PACKET_READY",
+  "observed_at": "2026-07-28T16:31:19+08:00",
+  "reviewed_artifacts": [
+    {
+      "path": "TITMAS-CS-G1-OWNER-REVIEW-ASSIGNMENT-DECISION-CANDIDATE-v0.1.md",
+      "sha256": "eedf8dccd903b0a3301d09ae1cd2df4a8877821c3120c97c4585b23aaf6f6f73"
+    },
+    {
+      "path": "architecture/titmas-cs-g1-owner-review-assignment-decision-candidate.v0.1.json",
+      "sha256": "4bf68d8dca71e436e25edc00b9c992fe608c676e7607a07a866c41341e0b0218"
+    }
+  ],
+  "request": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "requested_model": "qwen3.7-max",
+    "requests": 1,
+    "retry": 0,
+    "fallback": 0,
+    "substitution": 0,
+    "extraction": 0,
+    "repair": 0,
+    "direct_json_required": true,
+    "request_sha256": "7960598f15d60d8ba1cdec028bf37917aa7b42ff88eb4c870e9f7886716d6448",
+    "request_bytes": 21954
+  },
+  "response": {
+    "response_id": "chatcmpl-a58dbe03-c58e-42c3-9788-aa4f07729c38",
+    "returned_model": "qwen3.7-max",
+    "provider_created_at": "2026-07-28T16:30:17+08:00",
+    "finish_reason": "stop",
+    "raw_response_sha256": "933662734f55920c04c7238747b288ac686a71f087a14a5aa87b18d53efdf29f",
+    "raw_response_bytes": 9781,
+    "direct_content_sha256": "d39b06412057e51d501c20c3fdcd84e4f9bb576d549bb0234edd10c5a43c9fdb",
+    "direct_content_bytes": 2261,
+    "direct_json_verified": true,
+    "temporary_capture_retained": false,
+    "temporary_capture_deleted_after_binding": true,
+    "usage": {
+      "prompt_tokens": 6195,
+      "completion_tokens": 2088,
+      "total_tokens": 8283,
+      "cached_prompt_tokens": 0,
+      "reasoning_tokens": 1563
+    }
+  },
+  "review": {
+    "review_id": "DBA-TITMAS-CS-G1-OWNER-REVIEW-ASSIGNMENT-DECISION-CANDIDATE-0.1",
+    "verdict": "RECOMMENDED",
+    "confidence": 0.95,
+    "recommended_option": "A",
+    "agent_customer_would_recommend_option_a": true,
+    "commercial_usefulness": "Option A establishes the minimum credible governance scaffolding required to unblock CS-G1 evidence collection without overreaching into premature commercial or implementation authority.",
+    "role_boundaries_credible": true,
+    "single_model_exception_explicit": true,
+    "independence_limitations_preserved": true,
+    "standing_directive_may_prepare_candidate": true,
+    "standing_directive_may_accept_roles": false,
+    "human_decision_required": true,
+    "blockers": [],
+    "required_corrections": [],
+    "rationale": "Option A is the shortest credible path because it uses bounded, time-limited and revocable human accountability roles plus three strictly scoped qwen3.7-max advisory review sessions. It preserves no Specification Authority delegation, no crosswalk or risk acceptance, no Gate pass, no implementation, commercial or release effect, and no false independence claim. The candidate remains a zero-current-effect decision candidate until an explicit Human Decision."
+  },
+  "qualification": {
+    "exact_model_verified": true,
+    "direct_json_verified": true,
+    "verdict_recommended": true,
+    "confidence_at_least_0_90": true,
+    "recommended_option_a": true,
+    "agent_customer_recommendation_positive": true,
+    "blockers_zero": true,
+    "corrections_zero": true,
+    "human_decision_packet_ready": true,
+    "role_acceptance_authorized": false,
+    "review_execution_authorized": false
+  },
+  "effects": {
+    "decision_created": false,
+    "role_accepted": false,
+    "reviewer_assigned": false,
+    "authority_changed": false,
+    "crosswalk_accepted": false,
+    "formal_review_complete": false,
+    "cs_g1_pass": false,
+    "implementation_authorized": false,
+    "standard_ready": false,
+    "commercial_offer_authorized": false,
+    "release_authorized": false
+  },
+  "next_action": "EXPLICIT_HUMAN_OPTION_A_B_C_OR_D_DECISION",
+  "next_action_authorized": false
+}

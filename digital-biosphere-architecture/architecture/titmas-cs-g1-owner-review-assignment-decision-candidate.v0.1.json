@@ -1,0 +1,250 @@
+{
+  "document_id": "DBA-TITMAS-CS-G1-OWNER-REVIEW-ASSIGNMENT-DECISION-CANDIDATE-0.1",
+  "version": "0.1.0",
+  "status": "DECISION_CANDIDATE_PREPARED_REVIEW_REQUIRED_NOT_DECIDED",
+  "maturity": "Development",
+  "created_at": "2026-07-28T16:26:50+08:00",
+  "primary_repository": "digital-biosphere-architecture",
+  "human_accountability_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "canonical_document": "../TITMAS-CS-G1-OWNER-REVIEW-ASSIGNMENT-DECISION-CANDIDATE-v0.1.md",
+  "decision": {
+    "decision_id": "CS-G1-ROLE-REVIEW-D01",
+    "state": "NOT_DECIDED",
+    "question": "Accept bounded VEAP accountability roles and authorize three role-scoped qwen3.7-max advisory review sessions?",
+    "recommended_option": "A",
+    "human_option_required": true
+  },
+  "source_baseline": [
+    {
+      "path": "titmas-cs-g1-scope-authority-freeze-readiness-audit.v0.1.json",
+      "sha256": "f296cb8e7eda80febbeca9b4157f92d5422a6ae75602a0e79e6e375c8b5460b5"
+    },
+    {
+      "path": "../TITMAS-CS-D02-AGENT-FIRST-REVIEW-DECISION-RECORD.v0.1.json",
+      "sha256": "cc321ede26ff1c77723f07d843f9fcaab2a59ece95bdb32f224ca292a766b18a"
+    },
+    {
+      "path": "../TITMAS-COMMERCIALIZATION-STANDING-RECOMMENDATION-AUTHORIZATION-v0.1.json",
+      "sha256": "ec4c092f8a703fdae09853e0f8a2fc75157f247b9683d0cb0306ff2252e2a17a"
+    },
+    {
+      "path": "veap-canonical-ownership-crosswalk.v0.1.json",
+      "sha256": "53a50508dcae8d490c79b7c4d9a3eee1b1ddc002d9808d2ea19b287a92dd7edf"
+    },
+    {
+      "path": "veap-security-privacy-claim-risk-register.v0.1.json",
+      "sha256": "ef1a38a4af01efe36cabb3e13c8e4815d05ba71c7703521c4fea05cd8a471492"
+    },
+    {
+      "path": "ADR-020-release-preparation-owner-decisions.md",
+      "sha256": "49cb59df96335e549204a7d9ccdd18101234950e70076b0af7875b089f6b18b8"
+    },
+    {
+      "path": "../DBOS-PR-2A-GIT-AUTHORIZATION-RECORD.md",
+      "sha256": "c478c2d617ccd57cdb8259f0427b2da9072aae990f709d77e652eee4df2bc952"
+    }
+  ],
+  "current_facts": {
+    "cs_g1_status": "NOT_MET",
+    "readiness_pass": 2,
+    "readiness_partial": 1,
+    "readiness_blocked": 9,
+    "agent_first_review_route_authorized": true,
+    "crosswalk_records": 14,
+    "crosswalk_accepted": false,
+    "ownership_frozen": false,
+    "domain_owner_acceptances": 0,
+    "open_risks": 16,
+    "formal_review_complete": false
+  },
+  "options": [
+    {
+      "id": "A",
+      "label": "ACCEPT_BOUNDED_OWNER_ACCOUNTABILITY_AND_ROLE_SCOPED_QWEN_REVIEW",
+      "recommended": true,
+      "human_roles_accepted": true,
+      "review_route": "THREE_ROLE_SCOPED_QWEN3_7_MAX_SESSIONS",
+      "review_execution_authorized": true,
+      "general_agent_first_policy_amended": false,
+      "cs_g1_pass": false
+    },
+    {
+      "id": "B",
+      "label": "ACCEPT_HUMAN_ROLES_RETAIN_PRIOR_MULTI_MODEL_REVIEW_ROUTE",
+      "recommended": false,
+      "human_roles_accepted": true,
+      "review_route": "PRIOR_MULTI_MODEL_ROUTE_REQUIRES_FUTURE_EXACT_SELECTION",
+      "review_execution_authorized": false,
+      "cs_g1_pass": false
+    },
+    {
+      "id": "C",
+      "label": "DEFER",
+      "recommended": false,
+      "human_roles_accepted": false,
+      "review_execution_authorized": false,
+      "cs_g1_pass": false
+    },
+    {
+      "id": "D",
+      "label": "REJECT",
+      "recommended": false,
+      "human_roles_accepted": false,
+      "review_execution_authorized": false,
+      "cs_g1_pass": false
+    }
+  ],
+  "option_a": {
+    "term": {
+      "starts_at": "DECISION_RECORDED_AT",
+      "expires_at": "2026-09-30T23:59:59+08:00",
+      "revocable_by": "zhangbin",
+      "auto_renewal": false
+    },
+    "human_accountability_roles": [
+      {
+        "role": "VEAP_SPECIFICATION_ACCOUNTABILITY_OWNER",
+        "candidate_ref": "zhangbin",
+        "authority_delegated": false
+      },
+      {
+        "role": "VEAP_DBOS_DOMAIN_BOUNDARY_REVIEW_OWNER",
+        "candidate_ref": "zhangbin",
+        "scope": "VEAP_CROSSWALK_ONLY",
+        "dbos_authority_expanded": false
+      },
+      {
+        "role": "VEAP_SAEE_DOMAIN_BOUNDARY_REVIEW_OWNER",
+        "candidate_ref": "zhangbin",
+        "scope": "VEAP_CROSSWALK_ONLY",
+        "saee_authority_expanded": false
+      },
+      {
+        "role": "VEAP_EEOAP_AGENT_EVIDENCE_BOUNDARY_REVIEW_OWNER",
+        "candidate_ref": "zhangbin",
+        "scope": "BOUNDARY_REVIEW_AND_DECISION_INPUT_ONLY",
+        "canonical_authority_claimed": false
+      }
+    ],
+    "review_sessions": [
+      {
+        "review_id": "CS-G1-REV-SEC-01",
+        "requested_model": "qwen3.7-max",
+        "scope": ["VEAP-SEC-001", "VEAP-SEC-002", "VEAP-SEC-003", "VEAP-SEC-004", "VEAP-SEC-005"]
+      },
+      {
+        "review_id": "CS-G1-REV-PRIV-01",
+        "requested_model": "qwen3.7-max",
+        "scope": ["VEAP-PRIV-001", "VEAP-PRIV-002", "VEAP-PRIV-003", "VEAP-PRIV-004"]
+      },
+      {
+        "review_id": "CS-G1-REV-CLAIM-AUTH-01",
+        "requested_model": "qwen3.7-max",
+        "scope": [
+          "VEAP-CLAIM-001",
+          "VEAP-CLAIM-002",
+          "VEAP-CLAIM-003",
+          "VEAP-CLAIM-004",
+          "VEAP-CLAIM-005",
+          "VEAP-AUTH-001",
+          "VEAP-AUTH-002",
+          "CROSSWALK_RECORDS_1_TO_14"
+        ]
+      }
+    ],
+    "review_contract": {
+      "public_safe_frozen_bytes_only": true,
+      "tool_free": true,
+      "temperature": 0,
+      "direct_json_required": true,
+      "request_per_role": 1,
+      "retry_allowed": false,
+      "fallback_allowed": false,
+      "substitution_allowed": false,
+      "extraction_allowed": false,
+      "repair_allowed": false,
+      "returned_model_identity_must_match": true,
+      "failure_dissent_unknown_retained": true,
+      "independent_model_or_provider_claim": false
+    },
+    "concentration_disclosure": {
+      "human_role_independence": false,
+      "model_provider_independence": false,
+      "organizational_independence": false,
+      "role_scope_separation": true,
+      "input_output_trace_separation": true,
+      "final_human_accountability": true
+    }
+  },
+  "decision_readiness_requirements": {
+    "exact_qwen_review_required": true,
+    "returned_model_identity_required": "qwen3.7-max",
+    "direct_json_required": true,
+    "blockers_required": 0,
+    "corrections_required": 0,
+    "explicit_human_option_required": true,
+    "standing_directive_may_prepare_candidate": true,
+    "standing_directive_may_accept_roles": false
+  },
+  "option_a_effects_if_later_selected": {
+    "veap_specification_accountability_owner_accepted": true,
+    "veap_domain_boundary_review_owner_roles_accepted": true,
+    "cs_g1_role_scoped_agent_review_authorized": true,
+    "specification_authority_delegated": false,
+    "canonical_ownership_frozen": false,
+    "domain_crosswalk_accepted": false,
+    "formal_security_review_complete": false,
+    "formal_privacy_review_complete": false,
+    "formal_claim_review_complete": false,
+    "formal_authority_review_complete": false,
+    "residual_risk_accepted": false,
+    "normative_profile_authorized": false,
+    "implementation_authorized": false,
+    "runtime_created": false,
+    "agent_instance_created": false,
+    "entity_created": false,
+    "capability_created": false,
+    "permission_created": false,
+    "evidence_truth_created": false,
+    "external_outreach_authorized": false,
+    "data_processing_authorized": false,
+    "cs_g1_pass": false,
+    "standard_ready": false,
+    "commercial_offer_authorized": false,
+    "certification_authorized": false,
+    "release_authorized": false,
+    "deployment_authorized": false
+  },
+  "current_effects": {
+    "decision_created": false,
+    "role_accepted": false,
+    "reviewer_assigned": false,
+    "review_execution_authorized": false,
+    "authority": false,
+    "ownership": false,
+    "implementation": false,
+    "runtime": false,
+    "agent_instance": false,
+    "entity": false,
+    "capability": false,
+    "permission": false,
+    "evidence_truth": false,
+    "external_action": false,
+    "commercial_offer": false,
+    "certification": false,
+    "standard_ready": false,
+    "release": false,
+    "deployment": false
+  },
+  "stop_conditions": [
+    "HUMAN_OPTION_ABSENT_OR_AMBIGUOUS",
+    "EXACT_MODEL_SCOPE_TERM_ROLE_OR_FALSE_EFFECT_CHANGED",
+    "QWEN_DIRECT_JSON_OR_MODEL_IDENTITY_MISSING",
+    "QWEN_BLOCKER_OR_CORRECTION_REMAINS",
+    "SLICE_OWNER_PRECEDENT_ELEVATED_TO_GLOBAL_AUTHORITY",
+    "ROLE_ACCEPTANCE_ELEVATED_TO_CROSSWALK_OR_RISK_ACCEPTANCE",
+    "SAME_MODEL_SESSIONS_CLAIMED_AS_INDEPENDENT_MULTI_MODEL_OR_THIRD_PARTY_REVIEW",
+    "IMPLEMENTATION_EXTERNAL_DATA_AGENT_RUNTIME_COMMERCIAL_CERTIFICATION_RELEASE_OR_DEPLOYMENT_EFFECT_INFERRED"
+  ]
+}
