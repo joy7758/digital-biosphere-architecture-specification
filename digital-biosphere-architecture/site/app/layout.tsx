@@ -36,12 +36,27 @@ export const metadata: Metadata = {
     title: "TITMAS 可信多智能体基础设施开发者社区",
     description:
       "面向自治 AI 智能体生态的可信基础设施层，支撑跨行业的可信运行与可核验执行。",
+    images: [
+      {
+        url: "/titmas-social-card.png",
+        width: 1200,
+        height: 630,
+        alt: "TITMAS trust infrastructure for autonomous AI agent ecosystems",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "TITMAS Infrastructure Developer Community",
     description:
       "A trust infrastructure layer for autonomous AI agent ecosystems across industries.",
+    images: ["/titmas-social-card.png"],
+  },
+  icons: {
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
   },
 };
 
@@ -51,8 +66,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="zh-CN">
+    <html lang="zh-CN" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "document.documentElement.lang=location.pathname==='/en'||location.pathname.startsWith('/en/')?'en':'zh-CN';",
+          }}
+        />
         <link
           rel="alternate"
           type="text/plain"

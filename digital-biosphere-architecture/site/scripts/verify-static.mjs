@@ -82,6 +82,9 @@ const requiredFiles = [
   "release-manifest.json",
   "robots.txt",
   "sitemap.xml",
+  "favicon.png",
+  "favicon.ico",
+  "titmas-social-card.png",
 ];
 
 await Promise.all(requiredFiles.map((file) => access(join(outputRoot, file))));
@@ -161,6 +164,16 @@ const releaseContext = resolveReleaseContext(process.env, {
 
 assert.match(zh, /面向自治 AI 智能体生态的可信基础设施层/);
 assert.match(en, /trust infrastructure layer for autonomous AI agent ecosystems/i);
+assert.match(zh, /<html lang="zh-CN"/);
+assert.match(en, /<html lang="en"/);
+assert.match(zh, /class="skip-link" href="#main-content"/);
+assert.match(en, /class="skip-link" href="#main-content"/);
+assert.match(zh, /id="main-content"/);
+assert.match(en, /id="main-content"/);
+assert.match(zh, /titmas-social-card\.png/);
+assert.match(zh, /favicon\.png/);
+assert.match(zh, /"@type":"Organization"/);
+assert.match(zh, /"@type":"WebPage"/);
 assert.match(zh, /晋ICP备2026006409号-1/);
 assert.match(en, /晋ICP备2026006409号-1/);
 assert.match(zh, /https:\/\/beian\.miit\.gov\.cn\//);

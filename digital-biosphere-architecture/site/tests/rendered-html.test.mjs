@@ -112,6 +112,42 @@ test("front-loads a bilingual, no-JavaScript Agent Front Door", async () => {
   assert.equal(publicAgentIndex.agent_front_door.permission_created, false);
 });
 
+test("provides accessible page entry and conservative embedded structured data", async () => {
+  const paths = [
+    "/",
+    "/en",
+    "/research",
+    "/en/research",
+    "/updates",
+    "/en/updates",
+    "/updates/information-architecture-v0-1",
+    "/en/updates/information-architecture-v0-1",
+    "/digital-cell",
+    "/en/digital-cell",
+  ];
+  const responses = await Promise.all(paths.map((pathname) => render(pathname)));
+  const pages = await Promise.all(responses.map((response) => response.text()));
+
+  for (const [index, html] of pages.entries()) {
+    assert.equal(responses[index].status, 200);
+    assert.match(html, /class="skip-link" href="#main-content"/);
+    assert.match(html, /id="main-content"/);
+    assert.match(html, /type="application\/ld\+json"/);
+    assert.doesNotMatch(html, /"@type":"Product"/);
+  }
+
+  assert.match(pages[0], /"@type":"Organization"/);
+  assert.match(pages[0], /"@type":"WebSite"/);
+  assert.match(pages[0], /"@type":"WebPage"/);
+  assert.match(pages[0], /<details class="commercial-entry-truth">/);
+  assert.match(pages[0], /<details class="home-deep-dive">/);
+  assert.doesNotMatch(pages[0], /<details class="home-deep-dive" open/);
+  assert.match(pages[2], /"@type":"CollectionPage"/);
+  assert.match(pages[4], /"@type":"CollectionPage"/);
+  assert.match(pages[6], /"@type":"Article"/);
+  assert.match(pages[8], /"@type":"TechArticle"/);
+});
+
 test("renders OpenAI-inspired peer surfaces without an empty product shelf", async () => {
   const [zhResearchResponse, enResearchResponse, zhIndexResponse, enIndexResponse, zhApplicationsResponse, enApplicationsResponse, zhDemosResponse, enDemosResponse] = await Promise.all([
     render("/research"),

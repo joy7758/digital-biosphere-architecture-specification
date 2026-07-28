@@ -61,35 +61,57 @@ export function PortalPage({ locale }: { locale: Locale }) {
 
   const structuredData = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://redcrag.cn/#website",
-    name: "TITMAS Infrastructure Developer Community",
-    alternateName: "TITMAS 可信多智能体基础设施开发者社区",
-    url: locale === "zh" ? "https://redcrag.cn/" : "https://redcrag.cn/en/",
-    inLanguage: c.lang,
-    description: c.lead,
-    isBasedOn: architectureHref,
-    hasPart: [
-      ...agentDirectory.map((entry) => ({
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://redcrag.cn/#organization",
+        name: "TITMAS Infrastructure Developer Community",
+        url: "https://redcrag.cn/",
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://redcrag.cn/#website",
+        name: "TITMAS Infrastructure Developer Community",
+        alternateName: "TITMAS 可信多智能体基础设施开发者社区",
+        url: "https://redcrag.cn/",
+        inLanguage: ["zh-CN", "en"],
+        description: c.lead,
+        publisher: { "@id": "https://redcrag.cn/#organization" },
+        isBasedOn: architectureHref,
+        hasPart: [
+          ...agentDirectory.map((entry) => ({
+            "@type": "WebPage",
+            "@id": `https://redcrag.cn${entry.href}#webpage`,
+            name: entry.label,
+            url: `https://redcrag.cn${entry.href}`,
+          })),
+          ...agentMachineEntries.map((entry) => ({
+            "@type": "DigitalDocument",
+            "@id": `https://redcrag.cn${entry.href}#document`,
+            name: entry.label,
+            url: `https://redcrag.cn${entry.href}`,
+            encodingFormat: entry.href.endsWith(".txt") ? "text/plain" : "application/json",
+          })),
+        ],
+      },
+      {
         "@type": "WebPage",
-        "@id": `https://redcrag.cn${entry.href}#webpage`,
-        name: entry.label,
-        url: `https://redcrag.cn${entry.href}`,
-      })),
-      ...agentMachineEntries.map((entry) => ({
-        "@type": "DigitalDocument",
-        "@id": `https://redcrag.cn${entry.href}#document`,
-        name: entry.label,
-        url: `https://redcrag.cn${entry.href}`,
-        encodingFormat: entry.href.endsWith(".txt") ? "text/plain" : "application/json",
-      })),
+        "@id": `${locale === "zh" ? "https://redcrag.cn/" : "https://redcrag.cn/en/"}#webpage`,
+        url: locale === "zh" ? "https://redcrag.cn/" : "https://redcrag.cn/en/",
+        name: locale === "zh"
+          ? "TITMAS 可信多智能体基础设施开发者社区"
+          : "TITMAS Infrastructure Developer Community",
+        description: c.lead,
+        inLanguage: c.lang,
+        isPartOf: { "@id": "https://redcrag.cn/#website" },
+      },
     ],
   };
 
   return (
     <div className="site" lang={c.lang}>
       <Header locale={locale} />
-      <main>
+      <main id="main-content">
         <section className="hero" data-section-id="hero">
           <div className="hero-grid" aria-hidden="true">
             <div className="orbit orbit-a" />
@@ -102,12 +124,20 @@ export function PortalPage({ locale }: { locale: Locale }) {
             <div className="hero-badge"><span />{c.badge}</div>
             <p className="eyebrow">{c.eyebrow}</p>
             <h1>{c.title}</h1>
-            <p className="hero-lead">{c.lead}</p>
+            <p className="hero-lead">
+              {c.lead}{" "}
+              {locale === "zh"
+                ? "让身份、行为边界、执行历史与评估记录可理解、可核验。"
+                : "Make identity, behavior boundaries, execution history, and evaluation records understandable and verifiable."}
+            </p>
             <div className="hero-actions">
               <a className="button button-primary" href={researchPath}>{c.primaryCta}</a>
               <a className="button button-secondary" href={demosPath}>{c.secondaryCta}</a>
             </div>
-            <p className="truth-notice"><span>i</span>{c.notice}</p>
+            <p className="truth-notice">
+              <span>i</span>
+              <a href={statusPath}>{c.notice}</a>
+            </p>
           </div>
         </section>
 
@@ -186,14 +216,14 @@ export function PortalPage({ locale }: { locale: Locale }) {
                 {locale === "zh" ? "开始商业评估" : "Start evaluation"}
               </a>
             </div>
-            <aside className="commercial-entry-truth">
-              <span>{locale === "zh" ? "当前真实状态" : "Current truth"}</span>
+            <details className="commercial-entry-truth">
+              <summary>{locale === "zh" ? "查看当前真实状态" : "Review current truth"}</summary>
               <code>PACKAGE_PREPARED=true</code>
               <code>REMOTE_VALIDATED=true</code>
               <code>AVAILABLE_OFFERING=false</code>
               <code>PRODUCTION_READY=false</code>
               <code>CUSTOMERS_VERIFIED=0</code>
-            </aside>
+            </details>
           </div>
         </section>
 
@@ -287,6 +317,15 @@ export function PortalPage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
+        <details className="home-deep-dive">
+          <summary>
+            <span>{locale === "zh" ? "深入了解" : "Go deeper"}</span>
+            <strong>
+              {locale === "zh"
+                ? "查看 TITMAS 架构、可信边界与治理状态"
+                : "Explore TITMAS architecture, trust boundaries, and governance status"}
+            </strong>
+          </summary>
         <section className="intro section" data-section-id="intro">
           <div className="section-shell intro-grid">
             <div>
@@ -422,6 +461,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
             </aside>
           </div>
         </section>
+        </details>
       </main>
       <Footer locale={locale} />
       <script

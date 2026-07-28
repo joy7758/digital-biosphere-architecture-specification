@@ -1,5 +1,6 @@
 import { content, gateRows, repositoryBaselines, type Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
+import { StructuredPageData } from "./structured-page-data";
 
 export function StatusPage({ locale }: { locale: Locale }) {
   const c = content[locale];
@@ -32,7 +33,13 @@ export function StatusPage({ locale }: { locale: Locale }) {
   return (
     <div className="site status-page" lang={c.lang}>
       <Header locale={locale} section="status" />
-      <main>
+      <StructuredPageData
+        locale={locale}
+        path={locale === "zh" ? "/status/" : "/en/status/"}
+        title={copy.title}
+        description={copy.lead}
+      />
+      <main id="main-content">
         <section className="status-hero">
           <div className="section-shell">
             <p className="section-kicker">{copy.eyebrow}</p>

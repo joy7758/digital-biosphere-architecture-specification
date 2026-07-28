@@ -160,7 +160,7 @@ export function SpaceAgentEvidencePage({ locale }: { locale: Locale }) {
   return (
     <div className="site" lang={locale === "zh" ? "zh-CN" : "en"}>
       <Header locale={locale} section="spaceIndustry" />
-      <main className={styles.page}>
+      <main className={styles.page} id="main-content">
         <section className={styles.hero}>
           <div className={styles.orbit} aria-hidden="true"><i /><i /><i /></div>
           <div className={styles.shell}>

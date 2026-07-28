@@ -1,5 +1,6 @@
 import { content, type Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
+import { StructuredPageData } from "./structured-page-data";
 
 const constitutionCopy = {
   zh: {
@@ -65,7 +66,14 @@ export function WebsiteUpdateConstitutionPage({ locale }: { locale: Locale }) {
   return (
     <div className="site constitution-page" lang={c.lang}>
       <Header locale={locale} section="constitution" />
-      <main>
+      <StructuredPageData
+        locale={locale}
+        path={locale === "zh" ? "/updates/constitution/" : "/en/updates/constitution/"}
+        title={t.title}
+        description={t.lead}
+        type="TechArticle"
+      />
+      <main id="main-content">
         <section className="constitution-hero">
           <div className="section-shell">
             <a className="update-back" href={updates}>← {t.back}</a>

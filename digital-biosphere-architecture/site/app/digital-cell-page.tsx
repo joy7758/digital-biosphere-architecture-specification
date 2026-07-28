@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import type { Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
+import { StructuredPageData } from "./structured-page-data";
 import styles from "./digital-cell/digital-cell.module.css";
 
 const pageCopy = {
@@ -78,7 +79,14 @@ export function DigitalCellPage({ locale }: { locale: Locale }) {
   return (
     <div className="site" lang={locale === "zh" ? "zh-CN" : "en"}>
       <Header locale={locale} section="demo" />
-      <main className={styles.page}>
+      <StructuredPageData
+        locale={locale}
+        path={locale === "zh" ? "/digital-cell/" : "/en/digital-cell/"}
+        title={locale === "zh" ? "TITMAS Digital Cell Demo v0.1" : "TITMAS Digital Cell Demo v0.1"}
+        description={copy.lead}
+        type="TechArticle"
+      />
+      <main className={styles.page} id="main-content">
         <section className={styles.hero}>
           <div>
             <nav className={styles.breadcrumb} aria-label={locale === "zh" ? "面包屑导航" : "Breadcrumb"}>

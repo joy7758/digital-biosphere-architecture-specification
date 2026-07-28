@@ -84,15 +84,25 @@ for (const route of routes) {
   }
 
   const html = await response.text();
+  const documentLanguage = route.request === "/en" || route.request.startsWith("/en/")
+    ? "en"
+    : "zh-CN";
+  const localizedHtml = html.replace(
+    /<html lang="[^"]*"/,
+    `<html lang="${documentLanguage}"`,
+  );
+  if (localizedHtml === html && !html.includes(`<html lang="${documentLanguage}"`)) {
+    throw new Error(`Cannot export ${route.request}: document language could not be set`);
+  }
   for (const marker of route.markers) {
-    if (!html.includes(marker)) {
+    if (!localizedHtml.includes(marker)) {
       throw new Error(`Cannot export ${route.request}: expected marker is absent: ${marker}`);
     }
   }
 
   const target = join(outputRoot, route.output);
   await mkdir(dirname(target), { recursive: true });
-  await writeFile(target, html, "utf8");
+  await writeFile(target, localizedHtml, "utf8");
 }
 
 await writeFile(

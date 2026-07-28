@@ -5,6 +5,7 @@ import {
   updateCategoryLabels,
 } from "./update-content";
 import { Footer, Header } from "./site-shell";
+import { StructuredPageData } from "./structured-page-data";
 
 const copy = {
   zh: {
@@ -44,7 +45,14 @@ export function UpdatesPage({ locale }: { locale: Locale }) {
   return (
     <div className="site updates-page" lang={c.lang}>
       <Header locale={locale} section="updates" />
-      <main>
+      <StructuredPageData
+        locale={locale}
+        path={locale === "zh" ? "/updates/" : "/en/updates/"}
+        title={t.title}
+        description={t.lead}
+        type="CollectionPage"
+      />
+      <main id="main-content">
         <section className="updates-hero">
           <div className="section-shell">
             <nav className="breadcrumb" aria-label={locale === "zh" ? "面包屑导航" : "Breadcrumb"}>

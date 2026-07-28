@@ -3,6 +3,7 @@
 import { useState } from "react";
 import type { Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
+import { StructuredPageData } from "./structured-page-data";
 import styles from "./medical-evidence/medical-evidence.module.css";
 
 const SAMPLE_UDI = "999.TEST.UDI.DICOM.0001";
@@ -83,7 +84,14 @@ export function MedicalEvidencePage({ locale }: { locale: Locale }) {
   return (
     <div className="site" lang={locale === "zh" ? "zh-CN" : "en"}>
       <Header locale={locale} section="medical" />
-      <main className={styles.page}>
+      <StructuredPageData
+        locale={locale}
+        path={locale === "zh" ? "/demo/medical-evidence/" : "/en/demo/medical-evidence/"}
+        title={c.title}
+        description={c.lead}
+        type="TechArticle"
+      />
+      <main className={styles.page} id="main-content">
         <div className={styles.banner} role="note">{c.banner}</div>
         <section className={styles.hero}>
           <div className={styles.heroCopy}>

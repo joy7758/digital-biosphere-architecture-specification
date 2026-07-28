@@ -1,6 +1,7 @@
 import { content, type Locale } from "./site-content";
 import { directoryItems, type PublicDirectory } from "./site-directory";
 import { Footer, Header } from "./site-shell";
+import { StructuredPageData } from "./structured-page-data";
 
 const copy = {
   zh: {
@@ -98,11 +99,20 @@ export function DirectoryPage({
   const index = section === "research"
     ? (locale === "zh" ? "/research/index/" : "/en/research/index/")
     : `${overview}#index`;
+  const pagePath = indexOnly ? index : overview;
+  const pageTitle = indexOnly ? sectionCopy.indexLabel : sectionCopy.title;
 
   return (
     <div className="site directory-page" lang={c.lang}>
       <Header locale={locale} section={section === "research" && indexOnly ? "researchIndex" : sectionName(section)} />
-      <main>
+      <StructuredPageData
+        locale={locale}
+        path={pagePath}
+        title={pageTitle}
+        description={sectionCopy.lead}
+        type="CollectionPage"
+      />
+      <main id="main-content">
         <section className="directory-hero">
           <div className="section-shell">
             <nav className="breadcrumb" aria-label={locale === "zh" ? "面包屑导航" : "Breadcrumb"}>

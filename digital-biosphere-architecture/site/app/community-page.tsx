@@ -1,5 +1,6 @@
 import type { Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
+import { StructuredPageData } from "./structured-page-data";
 
 const copy = {
   zh: {
@@ -139,7 +140,13 @@ export function CommunityPage({ locale }: { locale: Locale }) {
   return (
     <div className="site community-page" lang={c.lang}>
       <Header locale={locale} section="community" />
-      <main>
+      <StructuredPageData
+        locale={locale}
+        path={locale === "zh" ? "/community/" : "/en/community/"}
+        title={c.title}
+        description={c.lead}
+      />
+      <main id="main-content">
         <section className="status-hero community-hero">
           <div className="section-shell">
             <p className="section-kicker">{c.eyebrow}</p>

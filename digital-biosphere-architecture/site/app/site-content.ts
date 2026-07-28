@@ -180,7 +180,7 @@ export const content = {
     primaryCta: "了解基础设施",
     secondaryCta: "查看 Demo",
     notice:
-      "titmas.cn 正在备案，当前站点仍为 redcrag.cn；GitHub slug 已选为 titmas-cn，但 Organization 和公共贡献渠道尚未创建。",
+      "当前为 Developer Preview；状态、限制与公开入口均可核验。",
     strategyLine:
       "TITMAS 不构建行业专用 AI 智能体，而提供让自治智能体在各行业可靠运行的可信基础设施。",
     infrastructureTitle: "自治智能体需要一层共同的可信基础",
@@ -308,7 +308,7 @@ export const content = {
     primaryCta: "Explore the infrastructure",
     secondaryCta: "View the demo",
     notice:
-      "titmas.cn is in filing and redcrag.cn remains the live site. The selected GitHub slug is titmas-cn, but the organization and public contribution channels do not exist.",
+      "Developer Preview; current status, limitations, and public entry points are verifiable.",
     strategyLine:
       "TITMAS does not build industry-specific AI agents. It provides the trust infrastructure that allows autonomous agents to operate reliably across industries.",
     infrastructureTitle: "Autonomous agents need a shared trust layer",

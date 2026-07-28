@@ -1,5 +1,6 @@
 import { content, type Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
+import { StructuredPageData } from "./structured-page-data";
 
 const industryCopy = {
   zh: {
@@ -94,7 +95,14 @@ export function IndustryPage({ locale }: { locale: Locale }) {
   return (
     <div className="site industry-page" lang={c.lang}>
       <Header locale={locale} section="industries" />
-      <main>
+      <StructuredPageData
+        locale={locale}
+        path={locale === "zh" ? "/industries/" : "/en/industries/"}
+        title={copy.title}
+        description={copy.lead}
+        type="TechArticle"
+      />
+      <main id="main-content">
         <section className="industry-hero">
           <div className="industry-hero-shell">
             <nav className="breadcrumb" aria-label={locale === "zh" ? "面包屑导航" : "Breadcrumb"}>

@@ -1,5 +1,6 @@
 import type { Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
+import { StructuredPageData } from "./structured-page-data";
 
 const wheelUrl =
   "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl";
@@ -81,7 +82,14 @@ export function CommercialEvaluationPage({ locale }: { locale: Locale }) {
   return (
     <div className="site" lang={c.lang}>
       <Header locale={locale} section="commercial" />
-      <main>
+      <StructuredPageData
+        locale={locale}
+        path={locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/"}
+        title={c.title}
+        description={c.lead}
+        type="TechArticle"
+      />
+      <main id="main-content">
         <section className="evaluation-hero">
           <div className="section-shell">
             <p className="section-kicker">{c.kicker}</p>

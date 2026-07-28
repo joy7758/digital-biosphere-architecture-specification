@@ -5,6 +5,7 @@ import {
   updateCategoryLabels,
 } from "./update-content";
 import { Footer, Header } from "./site-shell";
+import { StructuredPageData } from "./structured-page-data";
 
 const copy = {
   zh: {
@@ -37,7 +38,16 @@ export function UpdateDetailPage({ locale, slug }: { locale: Locale; slug: strin
   return (
     <div className="site update-detail-page" lang={c.lang}>
       <Header locale={locale} section="updates" />
-      <main>
+      <StructuredPageData
+        locale={locale}
+        path={item.href[locale]}
+        title={item.title[locale]}
+        description={item.summary[locale]}
+        type="Article"
+        datePublished={item.effective_date}
+        dateModified={item.effective_date}
+      />
+      <main id="main-content">
         <article>
           <header className="update-detail-hero">
             <div className="section-shell">

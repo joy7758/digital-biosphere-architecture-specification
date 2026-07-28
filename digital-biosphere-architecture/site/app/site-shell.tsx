@@ -102,25 +102,30 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
   );
 
   return (
-    <header className="site-header">
-      <div className="nav-shell">
-        <a className="brand-link" href={root}>
-          <Brand />
-        </a>
-        <nav className="desktop-nav" aria-label={locale === "zh" ? "主导航" : "Primary navigation"}>
-          {nav}
-        </nav>
-        <details className="mobile-nav">
-          <summary aria-label={locale === "zh" ? "打开导航" : "Open navigation"}>
-            <span />
-            <span />
-            <span />
-          </summary>
-          <nav aria-label={locale === "zh" ? "移动导航" : "Mobile navigation"}>{nav}</nav>
-        </details>
-      </div>
-      <AnnouncementBar locale={locale} />
-    </header>
+    <>
+      <a className="skip-link" href="#main-content">
+        {locale === "zh" ? "跳到主要内容" : "Skip to main content"}
+      </a>
+      <header className="site-header">
+        <div className="nav-shell">
+          <a className="brand-link" href={root}>
+            <Brand />
+          </a>
+          <nav className="desktop-nav" aria-label={locale === "zh" ? "主导航" : "Primary navigation"}>
+            {nav}
+          </nav>
+          <details className="mobile-nav">
+            <summary aria-label={locale === "zh" ? "打开导航" : "Open navigation"}>
+              <span />
+              <span />
+              <span />
+            </summary>
+            <nav aria-label={locale === "zh" ? "移动导航" : "Mobile navigation"}>{nav}</nav>
+          </details>
+        </div>
+        <AnnouncementBar locale={locale} />
+      </header>
+    </>
   );
 }
 

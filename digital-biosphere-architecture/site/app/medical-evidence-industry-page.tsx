@@ -123,7 +123,7 @@ export function MedicalEvidenceIndustryPage({ locale }: { locale: Locale }) {
   return (
     <div className="site" lang={locale === "zh" ? "zh-CN" : "en"}>
       <Header locale={locale} section="medicalIndustry" />
-      <main className={styles.page}>
+      <main className={styles.page} id="main-content">
         <section className={styles.hero}>
           <div className={styles.heroGrid} aria-hidden="true" />
           <div className={styles.shell}>
