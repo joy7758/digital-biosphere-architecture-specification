@@ -1,0 +1,177 @@
+{
+  "review_id": "CS-G1-REV-PRIV-01",
+  "version": "0.1.0",
+  "status": "COMPLETED",
+  "domain": "PRIVACY",
+  "source_bindings": [
+    {
+      "path": "../TITMAS-CS-G1-OWNER-REVIEW-ASSIGNMENT-DECISION-CANDIDATE-v0.1.md",
+      "sha256": "eedf8dccd903b0a3301d09ae1cd2df4a8877821c3120c97c4585b23aaf6f6f73",
+      "bytes": 10499,
+      "matched": true
+    },
+    {
+      "path": "titmas-cs-g1-owner-review-assignment-decision-candidate.v0.1.json",
+      "sha256": "4bf68d8dca71e436e25edc00b9c992fe608c676e7607a07a866c41341e0b0218",
+      "bytes": 8642,
+      "matched": true
+    },
+    {
+      "path": "../TITMAS-CS-G1-OWNER-REVIEW-ASSIGNMENT-DECISION-CANDIDATE-QWEN-REVIEW-v0.1.json",
+      "sha256": "1797e425127bc58e3479b52a1c50aa8fcc11b1795e39bfe10479f2cef76ddaa6",
+      "bytes": 3937,
+      "matched": true
+    },
+    {
+      "path": "titmas-cs-g1-scope-authority-freeze-readiness-audit.v0.1.json",
+      "sha256": "f296cb8e7eda80febbeca9b4157f92d5422a6ae75602a0e79e6e375c8b5460b5",
+      "bytes": 6512,
+      "matched": true
+    },
+    {
+      "path": "veap-security-privacy-claim-risk-register.v0.1.json",
+      "sha256": "ef1a38a4af01efe36cabb3e13c8e4815d05ba71c7703521c4fea05cd8a471492",
+      "bytes": 9314,
+      "matched": true
+    },
+    {
+      "path": "veap-canonical-ownership-crosswalk.v0.1.json",
+      "sha256": "53a50508dcae8d490c79b7c4d9a3eee1b1ddc002d9808d2ea19b287a92dd7edf",
+      "bytes": 7872,
+      "matched": true
+    }
+  ],
+  "request": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "requested_model": "qwen3.7-max",
+    "request_count": 1,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0,
+    "tools_used": false,
+    "request_sha256": "68add7e5c6239e12678207ff721298a15c91a1db9b75b64ed6819d41210d9b20",
+    "request_bytes": 60872
+  },
+  "response": {
+    "response_id": "chatcmpl-62909d7d-04c4-43f2-af2e-9e055f87379d",
+    "returned_model": "qwen3.7-max",
+    "finish_reason": "stop",
+    "raw_response_sha256": "58a5cd630adb6bbebabbc088849313913e93a84b28b7def500fa375ef939557c",
+    "raw_response_bytes": 20917,
+    "direct_content_sha256": "96073cce58abb6fc188a52fd8563657771fc07aff929c01c716b97e460376577",
+    "direct_content_bytes": 7041,
+    "direct_json_verified": true,
+    "schema_valid": true
+  },
+  "item_results": [
+    {
+      "item_id": "VEAP-PRIV-001",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Risk register binds purpose and recipient scope and prohibits secondary use without a separate decision.",
+        "Crosswalk and decision candidate do not yet name the exact recipient classes or the separate decision token required for any secondary use."
+      ],
+      "required_corrections": [
+        "Add an explicit recipient-class enumeration and a separate secondary-use decision reference to the normative profile before CS-G1 freeze."
+      ],
+      "residual_risks": [
+        "Secondary use could be inferred from execution evidence if recipient scope remains abstract at freeze time."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#VEAP-PRIV-001",
+        "veap-canonical-ownership-crosswalk.v0.1.json#EXECUTION_RECORD"
+      ]
+    },
+    {
+      "item_id": "VEAP-PRIV-002",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Reference-first minimization and field-level purpose are required by the risk register.",
+        "No field-level purpose allowlist is present in the frozen candidate artifacts."
+      ],
+      "required_corrections": [
+        "Define and bind a field-level purpose and authorization table for every retained prompt, response, or tool field."
+      ],
+      "residual_risks": [
+        "Over-collection may occur if field-level justification is deferred until after CS-G1."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#VEAP-PRIV-002"
+      ]
+    },
+    {
+      "item_id": "VEAP-PRIV-003",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Class-based retention, tombstone/revocation, deletion proof, and legal-hold boundary are required controls.",
+        "The frozen artifacts do not yet specify retention classes or deletion proof mechanics."
+      ],
+      "required_corrections": [
+        "Specify retention classes, tombstone format, deletion proof method, and legal-hold boundary before freeze."
+      ],
+      "residual_risks": [
+        "Immutable history may conflict with withdrawal or deletion duties if retention classes remain undefined."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#VEAP-PRIV-003"
+      ]
+    },
+    {
+      "item_id": "VEAP-PRIV-004",
+      "disposition": "ACCEPTED_WITH_RESIDUAL_RISK",
+      "control_sufficiency": "PARTIAL",
+      "stop_condition_triggered": false,
+      "findings": [
+        "Linkability review, namespace separation, access control, and public-safe extraction are required.",
+        "Crosswalk enforces opaque references but does not yet document namespace separation or linkability assessment results."
+      ],
+      "required_corrections": [
+        "Document namespace separation rules and linkability assessment results for all pseudonymous references."
+      ],
+      "residual_risks": [
+        "Re-identification may be possible if namespace separation is not enforced across evidence packages."
+      ],
+      "evidence_refs": [
+        "veap-security-privacy-claim-risk-register.v0.1.json#VEAP-PRIV-004",
+        "veap-canonical-ownership-crosswalk.v0.1.json#ENTITY_IDENTITY_LIFECYCLE"
+      ]
+    }
+  ],
+  "overall_verdict": "ACCEPT_FOR_HUMAN_FREEZE_REVIEW",
+  "blockers": [],
+  "required_corrections": [
+    "Add an explicit recipient-class enumeration and a separate secondary-use decision reference to the normative profile before CS-G1 freeze.",
+    "Define and bind a field-level purpose and authorization table for every retained prompt, response, or tool field.",
+    "Specify retention classes, tombstone format, deletion proof method, and legal-hold boundary before freeze.",
+    "Document namespace separation rules and linkability assessment results for all pseudonymous references."
+  ],
+  "limitations": [
+    "Review is advisory only and does not constitute a Gate PASS, Authority grant, or risk acceptance.",
+    "All privacy controls remain OPEN in the risk register until formal human freeze decision.",
+    "No external data, tools, or memory retrieval were used; assessment is limited to frozen source bytes."
+  ],
+  "human_decision_required": true,
+  "effects": {
+    "decision": false,
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "formal_review_completion": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "standard_ready": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false,
+    "deployment": false
+  }
+}

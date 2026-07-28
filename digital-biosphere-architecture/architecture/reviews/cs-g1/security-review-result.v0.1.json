@@ -1,0 +1,94 @@
+{
+  "review_id": "CS-G1-REV-SEC-01",
+  "version": "0.1.0",
+  "status": "FAILED_PROVIDER_OR_TRANSPORT",
+  "domain": "SECURITY",
+  "source_bindings": [
+    {
+      "path": "../TITMAS-CS-G1-OWNER-REVIEW-ASSIGNMENT-DECISION-CANDIDATE-v0.1.md",
+      "sha256": "eedf8dccd903b0a3301d09ae1cd2df4a8877821c3120c97c4585b23aaf6f6f73",
+      "bytes": 10499,
+      "matched": true
+    },
+    {
+      "path": "titmas-cs-g1-owner-review-assignment-decision-candidate.v0.1.json",
+      "sha256": "4bf68d8dca71e436e25edc00b9c992fe608c676e7607a07a866c41341e0b0218",
+      "bytes": 8642,
+      "matched": true
+    },
+    {
+      "path": "../TITMAS-CS-G1-OWNER-REVIEW-ASSIGNMENT-DECISION-CANDIDATE-QWEN-REVIEW-v0.1.json",
+      "sha256": "1797e425127bc58e3479b52a1c50aa8fcc11b1795e39bfe10479f2cef76ddaa6",
+      "bytes": 3937,
+      "matched": true
+    },
+    {
+      "path": "titmas-cs-g1-scope-authority-freeze-readiness-audit.v0.1.json",
+      "sha256": "f296cb8e7eda80febbeca9b4157f92d5422a6ae75602a0e79e6e375c8b5460b5",
+      "bytes": 6512,
+      "matched": true
+    },
+    {
+      "path": "veap-security-privacy-claim-risk-register.v0.1.json",
+      "sha256": "ef1a38a4af01efe36cabb3e13c8e4815d05ba71c7703521c4fea05cd8a471492",
+      "bytes": 9314,
+      "matched": true
+    },
+    {
+      "path": "veap-canonical-ownership-crosswalk.v0.1.json",
+      "sha256": "53a50508dcae8d490c79b7c4d9a3eee1b1ddc002d9808d2ea19b287a92dd7edf",
+      "bytes": 7872,
+      "matched": true
+    }
+  ],
+  "request": {
+    "provider": "ALIBABA_CLOUD_MODEL_STUDIO",
+    "requested_model": "qwen3.7-max",
+    "request_count": 1,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0,
+    "tools_used": false,
+    "request_sha256": "6f87bd16ccae3f109e28da14d729eee8ba4c671efaf89ee944b3ab06998c9f0a",
+    "request_bytes": 60950
+  },
+  "response": {
+    "response_id": null,
+    "returned_model": null,
+    "finish_reason": null,
+    "raw_response_sha256": null,
+    "raw_response_bytes": null,
+    "direct_content_sha256": null,
+    "direct_content_bytes": null,
+    "direct_json_verified": false,
+    "schema_valid": false
+  },
+  "item_results": [],
+  "overall_verdict": "NOT_AVAILABLE",
+  "blockers": [
+    "The single authorized request ended with a client-side read TimeoutError after 55 seconds and returned no response body."
+  ],
+  "required_corrections": [],
+  "limitations": [
+    "No Security disposition can be inferred because no direct provider response was received.",
+    "The request was not retried, downgraded, substituted, repaired, or filled from another review session."
+  ],
+  "human_decision_required": true,
+  "effects": {
+    "decision": false,
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "formal_review_completion": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "standard_ready": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false,
+    "deployment": false
+  }
+}

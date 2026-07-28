@@ -749,7 +749,12 @@ COMMERCIAL_READY=false
 RELEASE_AUTHORIZED=false
 ```
 
-三个 role-scoped `qwen3.7-max` advisory review sessions 已获有界授权但尚未执行。
+三个 role-scoped `qwen3.7-max` advisory review sessions 的一次性预算已经消耗：
+Security 和 Claim/Authority 请求分别在 55 秒与 180 秒读取超时后失败关闭；Privacy
+会话完成并产生 4 项 residual risks 与 4 项 required corrections。当前
+[`formal review bundle`](architecture/reviews/cs-g1/formal-review-bundle-result.v0.1.json)
+只有 risks `4/16`、crosswalk `0/14` 覆盖，因此
+`FORMAL_REVIEW_BUNDLE_READY=false`、`CS_G1_PASS=false`，且重试需要新的 Human Decision。
 `CS-G2–CS-G7` 仍为 `BLOCKED`；数据处理、外部推广、客户记录、实现、商业试点、认证、
 正式标准发布、Release 和 Deployment 均保持关闭。
 

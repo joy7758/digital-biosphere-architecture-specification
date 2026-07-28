@@ -1,0 +1,151 @@
+{
+  "document_id": "DBA-TITMAS-CS-G1-FORMAL-REVIEW-BUNDLE-RESULT-0.1",
+  "version": "0.1.0",
+  "status": "FAILED_CLOSED_NOT_READY_FOR_HUMAN_FREEZE_REVIEW",
+  "observed_at": "2026-07-28T17:38:44+08:00",
+  "primary_repository": "digital-biosphere-architecture",
+  "decision_binding": {
+    "decision_id": "CS-G1-ROLE-REVIEW-D01",
+    "decision_result": "ACCEPT_OPTION_A_BOUNDED_OWNER_ACCOUNTABILITY_AND_ROLE_SCOPED_QWEN_REVIEW",
+    "path": "../../titmas-cs-g1-human-decision-record-v0.1.md",
+    "sha256": "857d1d55baa294cc97f5d9fa9065d05ab84eb54a79479e2fae54c9cf59e9b705",
+    "satisfied": true
+  },
+  "plan_binding": {
+    "path": "../../titmas-cs-g1-formal-review-plan.v0.1.json",
+    "sha256": "fe5afbed10233ac92424cfe662ca880b1485ff7975f652ac357f0215973ff528",
+    "matched": true
+  },
+  "schema_binding": {
+    "path": "../../schemas/titmas-cs-g1-formal-review-result.schema.v0.1.json",
+    "sha256": "0313a74d9cf1170968f45737c2af899ca748e4b495ba76d075ed8e7ea62665bc",
+    "matched": true
+  },
+  "execution": {
+    "authorized_sessions": 3,
+    "requests_sent": 3,
+    "completed_sessions": 1,
+    "failed_sessions": 2,
+    "provider_or_transport_failures": 2,
+    "retry_count": 0,
+    "fallback_count": 0,
+    "substitution_count": 0,
+    "extraction_count": 0,
+    "repair_count": 0,
+    "tools_used": false,
+    "authorization_budget_consumed": true,
+    "additional_request_authorized": false
+  },
+  "sessions": [
+    {
+      "review_id": "CS-G1-REV-SEC-01",
+      "domain": "SECURITY",
+      "status": "FAILED_PROVIDER_OR_TRANSPORT",
+      "result_path": "security-review-result.v0.1.json",
+      "result_sha256": "70d3c31786b3a0e52f4892f0bfb011b4e53e9703f561b97f1c92eb8f5888e03c",
+      "request_sha256": "6f87bd16ccae3f109e28da14d729eee8ba4c671efaf89ee944b3ab06998c9f0a",
+      "request_bytes": 60950,
+      "returned_model": null,
+      "schema_valid": false,
+      "target_items": 5,
+      "assessed_items": 0,
+      "failure": "CLIENT_READ_TIMEOUT_55_SECONDS_NO_RESPONSE_BODY"
+    },
+    {
+      "review_id": "CS-G1-REV-PRIV-01",
+      "domain": "PRIVACY",
+      "status": "COMPLETED",
+      "result_path": "privacy-review-result.v0.1.json",
+      "result_sha256": "6ce80a8bc34a20b951e62e4ed041bd952a765bae43326579bb50fa9e60d1ffc3",
+      "request_sha256": "68add7e5c6239e12678207ff721298a15c91a1db9b75b64ed6819d41210d9b20",
+      "request_bytes": 60872,
+      "returned_model": "qwen3.7-max",
+      "provider_created_at": "2026-07-28T17:32:45+08:00",
+      "direct_content_sha256": "96073cce58abb6fc188a52fd8563657771fc07aff929c01c716b97e460376577",
+      "schema_valid": true,
+      "target_items": 4,
+      "assessed_items": 4,
+      "required_corrections": 4,
+      "residual_risks": 4
+    },
+    {
+      "review_id": "CS-G1-REV-CLAIM-AUTH-01",
+      "domain": "CLAIM_AUTHORITY",
+      "status": "FAILED_PROVIDER_OR_TRANSPORT",
+      "result_path": "claim-authority-review-result.v0.1.json",
+      "result_sha256": "0138352d834075fda58446439c20198920bba108aa3325d3dd7a01519fb25fb8",
+      "request_sha256": "718819c0d7b8252819907661c454b4d7b3d516acc7eea6250821cd718cbc161b",
+      "request_bytes": 61952,
+      "returned_model": null,
+      "schema_valid": false,
+      "target_items": 21,
+      "assessed_items": 0,
+      "failure": "CLIENT_READ_TIMEOUT_180_SECONDS_NO_RESPONSE_BODY"
+    }
+  ],
+  "coverage": {
+    "risk_items_expected": 16,
+    "risk_items_assessed": 4,
+    "risk_items_unavailable": 12,
+    "risk_coverage": "4/16",
+    "crosswalk_items_expected": 14,
+    "crosswalk_items_assessed": 0,
+    "crosswalk_items_unavailable": 14,
+    "crosswalk_coverage": "0/14",
+    "duplicate_items": 0,
+    "out_of_scope_items": 0
+  },
+  "privacy_findings": {
+    "accepted_with_residual_risk": 4,
+    "required_corrections": [
+      "Add an explicit recipient-class enumeration and a separate secondary-use decision reference to the normative profile before CS-G1 freeze.",
+      "Define and bind a field-level purpose and authorization table for every retained prompt, response, or tool field.",
+      "Specify retention classes, tombstone format, deletion proof method, and legal-hold boundary before freeze.",
+      "Document namespace separation rules and linkability assessment results for all pseudonymous references."
+    ],
+    "residual_risks": [
+      "Secondary use could be inferred from execution evidence if recipient scope remains abstract at freeze time.",
+      "Over-collection may occur if field-level justification is deferred until after CS-G1.",
+      "Immutable history may conflict with withdrawal or deletion duties if retention classes remain undefined.",
+      "Re-identification may be possible if namespace separation is not enforced across evidence packages."
+    ],
+    "accepted_by_human": false
+  },
+  "aggregation": {
+    "all_sessions_completed": false,
+    "all_model_identities_verified": false,
+    "all_direct_json_verified": false,
+    "all_schema_valid": false,
+    "risk_coverage_complete": false,
+    "crosswalk_coverage_complete": false,
+    "required_corrections_zero": false,
+    "blockers_zero": false,
+    "ready_for_human_freeze_review": false,
+    "formal_review_complete": false
+  },
+  "next_action": {
+    "state": "NEW_HUMAN_DECISION_REQUIRED",
+    "reason": "The one-shot authorization is consumed and two scopes are unavailable; the privacy scope also contains four required corrections.",
+    "allowed_without_new_decision": "PRESERVE_AND_REVIEW_CURRENT_FAILURES_ONLY",
+    "retry_authorized": false,
+    "revised_protocol_authorized": false,
+    "risk_acceptance_authorized": false,
+    "crosswalk_acceptance_authorized": false,
+    "cs_g1_pass_authorized": false
+  },
+  "effects": {
+    "decision": false,
+    "authority": false,
+    "ownership": false,
+    "crosswalk_acceptance": false,
+    "risk_acceptance": false,
+    "formal_review_completion": false,
+    "cs_g1_pass": false,
+    "implementation": false,
+    "standard_ready": false,
+    "commercial_offer": false,
+    "certification": false,
+    "release": false,
+    "deployment": false
+  }
+}

@@ -2,10 +2,10 @@
 document_id: DBA-TITMAS-COMMERCIAL-STANDARD-FOUNDATION-FREEZE-STATUS-0.1
 title: TITMAS Commercial Standard Foundation Freeze Status v0.1
 title_zh: TITMAS 商业标准基础冻结状态报告 v0.1
-status: FOUNDATION_ROLE_FREEZE_COMPLETE_GATES_NOT_PASSED
+status: FOUNDATION_ROLE_FREEZE_COMPLETE_CS_G1_REVIEW_FAILED_CLOSED
 maturity: Development
 maturity_scope: entire-document
-observed_at: 2026-07-28T17:19:25+08:00
+observed_at: 2026-07-28T17:38:44+08:00
 primary_repository: digital-biosphere-architecture
 human_accountability_ref: zhangbin
 implementation_effect: none
@@ -56,11 +56,18 @@ TITMAS_CS_FOUNDATION_GATE_FREEZE_COMPLETE=false
 CS_G0_ROLE_ACCEPTED=true
 CS_G1_ROLE_ACCEPTED=true
 CS_G1_QWEN_REVIEW_SESSIONS_AUTHORIZED=3
-CS_G1_QWEN_REVIEW_SESSIONS_EXECUTED=0
+CS_G1_QWEN_REVIEW_REQUESTS_SENT=3
+CS_G1_QWEN_REVIEW_SESSIONS_COMPLETED=1
+CS_G1_QWEN_REVIEW_SESSIONS_FAILED=2
+CS_G1_QWEN_REVIEW_AUTHORIZATION_BUDGET_CONSUMED=true
+CS_G1_ADDITIONAL_REVIEW_REQUEST_AUTHORIZED=false
 CS_G0_PASS=false
 CS_G1_PASS=false
 VALID_PROBLEM_RECORDS=0
 FORMAL_REVIEW_COMPLETE=false
+FORMAL_REVIEW_BUNDLE_READY=false
+CS_G1_RISK_COVERAGE=4/16
+CS_G1_CROSSWALK_COVERAGE=0/14
 CROSSWALK_ACCEPTED=false
 RESIDUAL_RISK_ACCEPTED=false
 STANDARD_READY=false
@@ -94,8 +101,12 @@ product is created by these records.
 | Current record | What it proves |
 |---|---|
 | [`titmas-cs-g0-human-decision-record-v0.1.md`](titmas-cs-g0-human-decision-record-v0.1.md) | Human acceptance of two bounded CS-G0 responsibilities |
-| [`titmas-cs-g1-human-decision-record-v0.1.md`](titmas-cs-g1-human-decision-record-v0.1.md) | Human acceptance of four bounded CS-G1 responsibilities and three unexecuted advisory sessions |
+| [`titmas-cs-g1-human-decision-record-v0.1.md`](titmas-cs-g1-human-decision-record-v0.1.md) | Human acceptance of four bounded CS-G1 responsibilities and the original three-session advisory budget |
 | [`titmas-commercial-standard-next-gate-roadmap-v0.1.md`](titmas-commercial-standard-next-gate-roadmap-v0.1.md) | Blocked downstream order, criteria, owners, evidence and forbidden actions |
+| [`reviews/cs-g1/security-review-result.v0.1.json`](reviews/cs-g1/security-review-result.v0.1.json) | Security request failed closed after a 55-second read timeout |
+| [`reviews/cs-g1/privacy-review-result.v0.1.json`](reviews/cs-g1/privacy-review-result.v0.1.json) | Privacy review completed with four residual risks and four required corrections |
+| [`reviews/cs-g1/claim-authority-review-result.v0.1.json`](reviews/cs-g1/claim-authority-review-result.v0.1.json) | Claim/Authority request failed closed after a 180-second read timeout |
+| [`reviews/cs-g1/formal-review-bundle-result.v0.1.json`](reviews/cs-g1/formal-review-bundle-result.v0.1.json) | Deterministic aggregation: not ready, review budget consumed, new Human Decision required |
 
 ## 6. Invariants
 
