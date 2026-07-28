@@ -1,0 +1,191 @@
+{
+  "result_id": "TITMAS-CE-G12-PRESERVED-ARTIFACT-ATOMIC-ACTIVATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28T01:54:38Z",
+  "status": "PASS_REVERIFIED_PRESERVED_ARTIFACT_ATOMIC_ACTIVATION_NO_NEW_PRODUCT_RELEASE_AUTHORIZED",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PRESERVED-ARTIFACT-ATOMIC-ACTIVATION",
+  "decision_sha256": "82851ff504de523c4bfdc0995d7a7d52fd2a6d68c75628c691e69cbf4fbc6a89",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PRESERVED-ARTIFACT-ATOMIC-ACTIVATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "01772b586b0e964d4fcf544386a0708ba3b6ff1afd7460a2556a96b9559d0ea1",
+  "governance_commit": "446552297093b4c0782272f06d9a0268c9b5d65d",
+  "repository": "joy7758/digital-biosphere-architecture-specification",
+  "governance_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "local_gate": {
+    "governance_local_remote_equal": true,
+    "ssh_config_resolutions": 1,
+    "ssh_mapping_exact": true,
+    "identity_path_recorded": false
+  },
+  "preserved_artifact": {
+    "release_id": "c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "source_commit": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+    "artifact_path": "/srv/tmai/artifacts/c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7.tar.gz",
+    "artifact_bytes": 979463,
+    "artifact_sha256": "f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "final_path": "/srv/tmai/releases/c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "archive_transfers": 0,
+    "archive_extractions": 0,
+    "artifact_or_release_creations": 0,
+    "reuse_reverified": true
+  },
+  "fresh_reverification": {
+    "manifest_sha256": "f0e42b7f0be3c36f201517d68bef42ec365809261ed46d4fc6af74949a397a60",
+    "manifest_files": 65,
+    "actual_files": 66,
+    "manifest_coverage_pass": true,
+    "file_hashes_passed": 65,
+    "directories_including_root": 21,
+    "files": 66,
+    "owner_group_policy": "root:root",
+    "directory_mode": "0755",
+    "file_mode": "0644",
+    "owner_mode_pass": true,
+    "unexpected_symlinks_or_specials": 0,
+    "stable_rollback_readable": true,
+    "nginx_config_sha256": "ddbd14b27abcce59330d86156fc0d42ea2ebaf933f3bc1447eba0fc9c13b29b5",
+    "nginx_test_exit": 0,
+    "nginx_test_output_sha256": "c1d95d6441adac8d73265f026042743581500b1133052abc44ed98cf52bb6618",
+    "nginx_reloads": 0
+  },
+  "activation": {
+    "pre_switch_current": "/srv/tmai/releases/ccf473f3ea29d5f58326e5b3bf0f57e3536ddd14",
+    "compare_and_swap_pass": true,
+    "forward_switches": 1,
+    "post_session_current": "/srv/tmai/releases/c1d8931930fbae15f96ee6a6ac050b081538c919--f3f46e5e51beb33bc3c2bcaec8df98378a6a65aa905b9a93b271d3cbc304a2a7",
+    "candidate_active": true,
+    "rollback_executed": false,
+    "rollback_switches": 0
+  },
+  "route_validation": {
+    "contract_requests": 10,
+    "passed": "10/10",
+    "observations": [
+      {
+        "kind": "root",
+        "path": "/",
+        "status": 200,
+        "redirects": 0,
+        "body_bytes": 46401,
+        "body_sha256": "cca332da1364a614bbef83939d0ff7c948739e673d14c7c1b2a60cd9d500abf8",
+        "expected_sha256": "cca332da1364a614bbef83939d0ff7c948739e673d14c7c1b2a60cd9d500abf8",
+        "pass": true
+      },
+      {
+        "kind": "non_follow",
+        "path": "/en",
+        "status": 301,
+        "location": "https://redcrag.cn/en/",
+        "pass": true
+      },
+      {
+        "kind": "follow",
+        "path": "/en",
+        "status": 200,
+        "redirects": 1,
+        "final_url": "https://redcrag.cn/en/",
+        "body_sha256": "562c061979c8cd72b1a94a74715727a898251a7716d61f64f4760468c0fb65f1",
+        "expected_sha256": "562c061979c8cd72b1a94a74715727a898251a7716d61f64f4760468c0fb65f1",
+        "pass": true
+      },
+      {
+        "kind": "canonical_direct",
+        "path": "/en/",
+        "status": 200,
+        "redirects": 0,
+        "body_sha256": "562c061979c8cd72b1a94a74715727a898251a7716d61f64f4760468c0fb65f1",
+        "expected_sha256": "562c061979c8cd72b1a94a74715727a898251a7716d61f64f4760468c0fb65f1",
+        "pass": true
+      },
+      {
+        "kind": "non_follow",
+        "path": "/status",
+        "status": 301,
+        "location": "https://redcrag.cn/status/",
+        "pass": true
+      },
+      {
+        "kind": "follow",
+        "path": "/status",
+        "status": 200,
+        "redirects": 1,
+        "final_url": "https://redcrag.cn/status/",
+        "body_sha256": "d682898f5ca60260a5708a73702ffcb9516e24aed1184b3988be2118e4c255e6",
+        "expected_sha256": "d682898f5ca60260a5708a73702ffcb9516e24aed1184b3988be2118e4c255e6",
+        "pass": true
+      },
+      {
+        "kind": "canonical_direct",
+        "path": "/status/",
+        "status": 200,
+        "redirects": 0,
+        "body_sha256": "d682898f5ca60260a5708a73702ffcb9516e24aed1184b3988be2118e4c255e6",
+        "expected_sha256": "d682898f5ca60260a5708a73702ffcb9516e24aed1184b3988be2118e4c255e6",
+        "pass": true
+      },
+      {
+        "kind": "non_follow",
+        "path": "/en/status",
+        "status": 301,
+        "location": "https://redcrag.cn/en/status/",
+        "pass": true
+      },
+      {
+        "kind": "follow",
+        "path": "/en/status",
+        "status": 200,
+        "redirects": 1,
+        "final_url": "https://redcrag.cn/en/status/",
+        "body_sha256": "389c3d30c331475ec226438e943055e081a0f748ec38cc0c50ee0493b66d9f73",
+        "expected_sha256": "389c3d30c331475ec226438e943055e081a0f748ec38cc0c50ee0493b66d9f73",
+        "pass": true
+      },
+      {
+        "kind": "canonical_direct",
+        "path": "/en/status/",
+        "status": 200,
+        "redirects": 0,
+        "body_sha256": "389c3d30c331475ec226438e943055e081a0f748ec38cc0c50ee0493b66d9f73",
+        "expected_sha256": "389c3d30c331475ec226438e943055e081a0f748ec38cc0c50ee0493b66d9f73",
+        "pass": true
+      }
+    ]
+  },
+  "execution_counts": {
+    "local_ssh_config_resolutions": 1,
+    "ssh_sessions": 1,
+    "server_read_commands": 12,
+    "archive_transfers": 0,
+    "archive_extractions": 0,
+    "artifact_or_release_creations": 0,
+    "nginx_tests": 1,
+    "nginx_reloads": 0,
+    "forward_switches": 1,
+    "rollback_switches": 0,
+    "localhost_route_requests": 10,
+    "public_external_requests": 0,
+    "cleanups": 0,
+    "repairs": 0,
+    "retries": 0,
+    "network_fallbacks": 0,
+    "new_product_releases": 0
+  },
+  "effects": {
+    "activation_execution_complete": true,
+    "activation_pass": true,
+    "candidate_active": true,
+    "server_state_changed": true,
+    "public_site_current_target_changed": true,
+    "new_product_release_authorized": false,
+    "new_product_release_executed": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G12_PUBLIC_ROUTE_VALIDATION_RECOMMENDATION_ONLY",
+    "authorized": false
+  }
+}
