@@ -1,0 +1,46 @@
+{
+  "disposition_version": "1.1.0",
+  "review_rounds": 2,
+  "review_sessions": 14,
+  "independent_model_lineages": 1,
+  "independence_level": "LEVEL_2_SAME_MODEL_ISOLATED_SESSION",
+  "corrected_findings": [
+    "hardcoded issuer validation replaced by bounded authority registry",
+    "task scope matching is one-way with participant scope as pattern",
+    "22 adversarial cases execute against policy and fail closed",
+    "status claims include local evidence references",
+    "lease records preserve decision authority_ref and issued_by_ref",
+    "schema date fields declare date-time"
+  ],
+  "accepted_risk_or_policy_dispositions": [
+    {
+      "finding": "single-link registry restriction",
+      "disposition": "RETAIN_AS_FAIL_CLOSED_CONTROL",
+      "reason": "clean-clone canonical inputs are required for this bounded pilot"
+    },
+    {
+      "finding": "allow self_approval for LEVEL_0",
+      "disposition": "REJECT_CONSTITUTIONAL_CONFLICT",
+      "reason": "AGENT_SELF_APPROVAL_PROHIBITED=true"
+    },
+    {
+      "finding": "allow evidence_architecture_reused=false",
+      "disposition": "REJECT_ARCHITECTURE_CONFLICT",
+      "reason": "the contribution profile must reuse the existing Evidence Architecture"
+    },
+    {
+      "finding": "permit empty allowed, forbidden or non-applicable scope",
+      "disposition": "REJECT_BOUNDARY_WEAKENING",
+      "reason": "every controlled task must expose positive, negative and non-fit boundaries"
+    }
+  ],
+  "unresolved_holds": [
+    "agent noise rate remains 0.88",
+    "final outcome improvement rate remains 0.0",
+    "current human intervention rate remains 0.0833",
+    "only one independent model lineage was used",
+    "operational value and self-maintenance remain not demonstrated"
+  ],
+  "authority_effect": "NONE",
+  "human_decision_effect": "NONE"
+}

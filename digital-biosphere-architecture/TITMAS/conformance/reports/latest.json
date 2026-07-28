@@ -54,8 +54,8 @@
       "status": "PASS",
       "details": {
         "canonical_machine_entries": 1,
-        "agent_participants_checked": 0,
-        "independent_lineages_checked": 0,
+        "agent_participants_checked": 7,
+        "independent_lineages_checked": 1,
         "agent_tasks_checked": 12,
         "agent_protocol_examples_checked": 10,
         "authority_invariants_checked": 12
@@ -65,7 +65,8 @@
       "id": "agent_native_adversarial",
       "status": "PASS",
       "details": {
-        "adversarial_cases_rejected": 22
+        "adversarial_cases_rejected": 22,
+        "adversarial_cases_executed": 22
       }
     },
     {
@@ -80,8 +81,21 @@
       "id": "agent_native_pilot",
       "status": "PASS",
       "details": {
-        "pilot_result_present": false,
-        "pilot_status": "NOT_EXECUTED"
+        "pilot_result_present": true,
+        "pilot_status": "PASS",
+        "pilot_sessions_checked": 7,
+        "pilot_tasks_checked": 12,
+        "pilot_metrics_checked": 20
+      }
+    },
+    {
+      "id": "agent_native_reviews",
+      "status": "PASS",
+      "details": {
+        "review_sessions_checked": 14,
+        "review_rounds_checked": 2,
+        "independent_model_lineages": 1,
+        "medium_or_hold_records_preserved": 7
       }
     },
     {

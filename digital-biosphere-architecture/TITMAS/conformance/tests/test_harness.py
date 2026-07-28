@@ -60,10 +60,16 @@ class HarnessTests(unittest.TestCase):
     def test_agent_native_adversarial_coverage(self):
         details = HARNESS.check_agent_native_adversarial()
         self.assertEqual(22, details["adversarial_cases_rejected"])
+        self.assertEqual(22, details["adversarial_cases_executed"])
 
     def test_agent_native_value_gate_preserves_negative_result(self):
         details = HARNESS.check_agent_native_value_gate()
         self.assertEqual(6, details["frozen_counts_checked"])
+
+    def test_agent_native_reviews_preserve_real_independence(self):
+        details = HARNESS.check_agent_native_reviews()
+        self.assertEqual(14, details["review_sessions_checked"])
+        self.assertEqual(1, details["independent_model_lineages"])
 
 
 if __name__ == "__main__":

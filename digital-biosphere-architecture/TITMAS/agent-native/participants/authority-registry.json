@@ -1,0 +1,22 @@
+{
+  "$schema": "../schemas/authority-registry.schema.json",
+  "registry_version": "1.1.0",
+  "registry_scope": "CONTROLLED_LOCAL_PILOT_ONLY",
+  "authorities": [
+    {
+      "authority_ref": "zhangbin",
+      "authority_kind": "ACCOUNTABLE_HUMAN_OWNER",
+      "decision_refs": ["TITMAS-AGENT-NATIVE-COMMUNITY-D01"],
+      "allowed_actions": ["ISSUE_BOUNDED_SCOPE_LEASE"],
+      "prohibited_actions": [
+        "PUBLIC_COMMUNITY_LAUNCH",
+        "PUBLIC_GITHUB_AGENT_WRITE",
+        "RELEASE",
+        "CERTIFICATION"
+      ],
+      "valid_from": "2026-07-29T00:00:00+08:00",
+      "expires_at": "2026-09-30T23:59:59+08:00",
+      "revocation_ref": "NONE"
+    }
+  ]
+}

@@ -1,0 +1,58 @@
+{
+  "review_id": "TITMAS-V11-MACHINE-USABILITY",
+  "reviewer_participant_ref": "PILOT-D",
+  "reviewer_lineage": "QWEN-3.7-MAX",
+  "reviewed_revision": "76e882d+CONTROLLED_PILOT_ROUND-2",
+  "scope": [
+    "agent-index.json",
+    "TITMAS/README.md",
+    "TITMAS/agent-native/README.md",
+    "TITMAS/agent-native/guides/agent-in-60-seconds.md"
+  ],
+  "findings": [
+    "agent-index.json correctly identifies itself as the canonical machine entry and aligns with README references.",
+    "Authority boundaries are explicitly declared and consistently enforced across READMEs and guides.",
+    "Maturity is clearly stated as Development with controlled pilot; 99% target is explicitly labeled as a design assumption.",
+    "Prohibited claims section correctly prevents semantic elevation of fixtures, reference implementations, and agent activity.",
+    "Human exception path is documented and preserves constitutional, legal, and ownership authority for humans.",
+    "Machine surfaces and commands are consistently referenced across documentation.",
+    "No evidence of public launch, certification, or external adoption claims."
+  ],
+  "evidence": [
+    "prompt_hash:sha256:6ba95087d44de0dbe90b3066678963b8d8a0d15284a312a616c0cdd1185f0cb2"
+  ],
+  "severity": "LOW",
+  "relevance": "RELEVANT",
+  "uniqueness": "UNIQUE",
+  "required_corrections": [],
+  "optional_suggestions": [
+    "Consider adding a machine-readable maturity field in agent-index.json to complement the human-readable README statements.",
+    "Add explicit schema validation status or conformance result reference in agent-index.json for automated verification."
+  ],
+  "uncertainty": [
+    "Cannot verify actual execution of conformance harness or CLI commands without runtime environment.",
+    "Schema validation of agent-index.json against referenced schema not performed in this review."
+  ],
+  "verdict": "PASS",
+  "limitations": [
+    "Review limited to documentation and metadata files; no code execution or integration testing performed.",
+    "Cannot assess actual agent behavior or multi-agent interactions from static documentation alone.",
+    "External dependencies (DBOS, SAEE, Agent frameworks) not evaluated for integration correctness."
+  ],
+  "independence_level": "LEVEL_2_SAME_MODEL_ISOLATED_SESSION",
+  "same_base_model_different_session": true,
+  "contributor_participant_ref": "PILOT-B",
+  "self_approval": false,
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "session_id": "V11-ROUND-2-04",
+  "started_at": "2026-07-29T01:23:03.317007+08:00",
+  "completed_at": "2026-07-29T01:23:50.544404+08:00",
+  "output_hash": "sha256:c5747e5f87d69a404fbc48f2c3623488de8fbc440a54c082069eaffd72153d0b",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "authority_effect": "NONE"
+}

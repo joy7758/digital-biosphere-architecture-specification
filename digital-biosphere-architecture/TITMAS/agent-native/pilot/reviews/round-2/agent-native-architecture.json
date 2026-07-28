@@ -1,0 +1,62 @@
+{
+  "review_id": "TITMAS-V11-AGENT-NATIVE-ARCHITECTURE",
+  "reviewer_participant_ref": "PILOT-D",
+  "reviewer_lineage": "QWEN-3.7-MAX",
+  "reviewed_revision": "76e882d+CONTROLLED_PILOT_ROUND-2",
+  "scope": [
+    "agent-index.json",
+    "TITMAS/agent-native/community-manifest.json",
+    "TITMAS/agent-native/current-state.json",
+    "TITMAS/agent-native/community_cli.py"
+  ],
+  "findings": [
+    "CLI correctly enforces fail-closed rejection for path traversal, symlinks, and oversized inputs.",
+    "Authority boundaries are strictly maintained: no self-authorization, no self-approval, no public write actions.",
+    "Adversarial rejection policy covers a comprehensive set of attack classes with stable reason codes.",
+    "Timezone-aware datetime parsing is enforced, preventing naive timestamp injection.",
+    "Task eligibility checks correctly intersect roles, capabilities, and file scopes.",
+    "Lease granting requires an external issuer and validates authority action scope.",
+    "Recommendation calibration explicitly disclaims decision authority and adoption mapping.",
+    "Current state accurately reflects pilot status without claiming public launch or certification.",
+    "Community manifest correctly lists non-capabilities including merge, release, and certify.",
+    "Agent index clearly separates evidence from truth and verification from authorization."
+  ],
+  "evidence": [
+    "prompt_hash:sha256:b119c6c896583e01dd817932b1e184bf548b52d757ed12e93655052e1f2b06af"
+  ],
+  "severity": "LOW",
+  "relevance": "RELEVANT",
+  "uniqueness": "UNIQUE",
+  "required_corrections": [],
+  "optional_suggestions": [
+    "Consider adding a maximum lease duration cap in grant_lease to prevent unbounded leases from misconfigured task definitions.",
+    "Add explicit validation that active_task_refs in grant_lease does not contain duplicates before checking membership.",
+    "Document the expected structure of calibration-cases.json in a schema file for consistency with other registries."
+  ],
+  "uncertainty": [
+    "Unable to verify the actual contents of task-registry.json, participant-registry.json, and authority-registry.json as they were not provided.",
+    "Calibration cases fixture not provided; cannot verify case structure or expected_status values."
+  ],
+  "verdict": "PASS",
+  "limitations": [
+    "Review is limited to the provided files; referenced schemas and registries are not available for cross-validation.",
+    "No runtime execution was performed; static analysis only.",
+    "Independence is LEVEL_2_SAME_MODEL_ISOLATED_SESSION, which may share latent biases with the authoring model."
+  ],
+  "independence_level": "LEVEL_2_SAME_MODEL_ISOLATED_SESSION",
+  "same_base_model_different_session": true,
+  "contributor_participant_ref": "PILOT-B",
+  "self_approval": false,
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "session_id": "V11-ROUND-2-02",
+  "started_at": "2026-07-29T01:19:55.046519+08:00",
+  "completed_at": "2026-07-29T01:21:10.900978+08:00",
+  "output_hash": "sha256:9d843cbbae6365863f95679a2735600f78d74e4bbb84d4cb92468339c5505d10",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "authority_effect": "NONE"
+}

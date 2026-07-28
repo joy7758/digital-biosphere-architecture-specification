@@ -1,0 +1,60 @@
+{
+  "review_id": "TITMAS-V11-RECOMMENDATION-INTEGRITY",
+  "reviewer_participant_ref": "PILOT-D",
+  "reviewer_lineage": "QWEN-3.7-MAX",
+  "reviewed_revision": "76e882d+CONTROLLED_PILOT_CANDIDATE",
+  "scope": [
+    "TITMAS/agent-native/recommendations/README.md",
+    "TITMAS/agent-native/recommendations/calibration-cases.json",
+    "TITMAS/agent-native/recommendations/example-recommendation-package.json",
+    "TITMAS/agent-native/pilot/pilot-result.json"
+  ],
+  "findings": [
+    "Recommendation calibration cases correctly map user needs to allowed outcomes without fabricating adoption or certification.",
+    "Example recommendation package explicitly marks adoption_evidence as INTERNAL_SYNTHETIC_ONLY and lists limitations including 'not publicly launched'.",
+    "Pilot results show 100% precision, abstention accuracy, and non-fit rejection accuracy for recommendation tasks, meeting all defined thresholds.",
+    "Recommendation reason codes and status align with fit/non-fit criteria and verified capabilities without overclaiming maturity.",
+    "Pilot limitations section correctly identifies that local synthetic pilot is not external adoption or public discovery.",
+    "No authority violations or semantic elevation findings recorded, maintaining boundary between recommendation and decision."
+  ],
+  "evidence": [
+    "prompt_hash:sha256:6425e69edf2330e58a568c37c08d04b1a705784a08ed91aa5062bf7f549d0e45"
+  ],
+  "severity": "LOW",
+  "relevance": "RELEVANT",
+  "uniqueness": "UNIQUE",
+  "required_corrections": [],
+  "optional_suggestions": [
+    "Consider adding a calibration case for 'NOT_APPLICABLE' status to ensure full coverage of allowed outcomes.",
+    "Document the specific evaluation methodology used to achieve 100% recommendation precision in the pilot report.",
+    "Add explicit mapping between recommendation reason codes and the fit/non-fit criteria in the schema documentation."
+  ],
+  "uncertainty": [
+    "Long-term human intervention target of 0.01 is not yet met (current rate 0.0833), which may affect recommendation reliability in production scenarios.",
+    "Single model lineage (qwen3.7-max) used across all sessions limits generalizability of recommendation calibration results.",
+    "Zero outcome improvement rate in frozen value-gate fixture suggests recommendation system may not yet demonstrate value-add in complex scenarios."
+  ],
+  "verdict": "PASS",
+  "limitations": [
+    "Review based on controlled pilot artifacts only; no external adoption evidence or production deployment data available.",
+    "Recommendation calibration tested with only 4 synthetic cases; real-world user needs may present edge cases not covered.",
+    "Pilot participant count of 7 with single model lineage limits statistical confidence in recommendation metrics.",
+    "No independent verification of recommendation precision claims beyond self-reported pilot results."
+  ],
+  "independence_level": "LEVEL_2_SAME_MODEL_ISOLATED_SESSION",
+  "same_base_model_different_session": true,
+  "contributor_participant_ref": "PILOT-B",
+  "self_approval": false,
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "session_id": "V11-REVIEW-06",
+  "started_at": "2026-07-29T01:14:13.568971+08:00",
+  "completed_at": "2026-07-29T01:15:18.590086+08:00",
+  "output_hash": "sha256:3f7d1368677610062bc34162ca894f7d6035e8a98f0b915a46fdbed4bc801724",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "authority_effect": "NONE"
+}

@@ -32,7 +32,7 @@
     "stop_conditions": {"type": "array", "minItems": 1, "items": {"type": "string"}},
     "authority_reference": {"type": "string"},
     "lease_duration_seconds": {"type": "integer"},
-    "expiry": {"type": "string"},
+    "expiry": {"type": "string", "format": "date-time"},
     "conflict_policy": {"type": "string"},
     "duplication_policy": {"type": "string"},
     "estimated_context_requirement": {"type": "integer"},

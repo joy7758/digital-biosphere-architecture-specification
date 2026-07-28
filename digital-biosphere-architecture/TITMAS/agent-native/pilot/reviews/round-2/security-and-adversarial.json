@@ -1,0 +1,68 @@
+{
+  "review_id": "TITMAS-V11-SECURITY-AND-ADVERSARIAL",
+  "reviewer_participant_ref": "PILOT-C",
+  "reviewer_lineage": "QWEN-3.7-MAX",
+  "reviewed_revision": "76e882d+CONTROLLED_PILOT_ROUND-2",
+  "scope": [
+    "TITMAS/agent-native/security/adversarial-cases.json",
+    "TITMAS/agent-native/community_cli.py",
+    "TITMAS/conformance/harness.py"
+  ],
+  "findings": [
+    "community_cli.py _load() enforces st_nlink == 1, which rejects legitimate hard-linked registry files and may cause false-positive PATH_TRAVERSAL/UNSAFE_INPUT rejections in normal deployments.",
+    "community_cli.py grant_lease() hardcodes authority_ref to AUTHORITY_REF instead of using the validated issuer_ref, masking the actual authority that issued the lease and weakening audit traceability.",
+    "community_cli.py eligible() checks task allowed_files against participant allowed_scope using fnmatch in the wrong direction (matches allowed pattern against scope glob), potentially granting unintended scope or rejecting valid claims.",
+    "harness.py check_agent_native_adversarial() dynamically imports and executes community_cli.py without sandboxing; a compromised CLI could bypass conformance checks or exfiltrate data during harness execution.",
+    "harness.py semantic_errors() checks for 'TRUTH' in claims list but does not validate the structure of claims, allowing malformed claim objects to pass without detection.",
+    "adversarial-cases.json and ADVERSARIAL_REJECTION_POLICY in community_cli.py are manually synchronized; drift between the two could cause silent policy mismatches not caught by the harness if the CLI module fails to load.",
+    "community_cli.py _participant() and _authority() perform linear scans over registries for every call; with large registries this creates denial-of-service risk via algorithmic complexity in the CLI attack surface.",
+    "harness.py check_internal_reviews() enforces exactly 5 review files but does not validate that reviews are independent (e.g., distinct session IDs or non-overlapping timestamps), weakening the independence boundary."
+  ],
+  "evidence": [
+    "prompt_hash:sha256:6d635ad408c8b64203a724ca010209337b31ce952f892a323640e161036f1b2b"
+  ],
+  "severity": "MEDIUM",
+  "relevance": "RELEVANT",
+  "uniqueness": "UNIQUE",
+  "required_corrections": [
+    "Remove or relax the st_nlink == 1 constraint in _load() to allow hard-linked files, or document and enforce a single-link policy across all registry files.",
+    "In grant_lease(), set authority_ref to the validated issuer_ref (or a derived lease authority) instead of the hardcoded AUTHORITY_REF constant to preserve audit lineage.",
+    "Fix the fnmatch direction in eligible(): match participant allowed_scope patterns against task allowed_files, not the reverse, to correctly enforce scope boundaries.",
+    "Add structural validation for the claims field in semantic_errors() to ensure it is a list of strings before checking for 'TRUTH'.",
+    "Add independence validation in check_internal_reviews() to verify that review sessions have distinct identifiers and non-overlapping execution contexts."
+  ],
+  "optional_suggestions": [
+    "Consider loading community_cli.py in a restricted subprocess or using AST-based static analysis instead of dynamic import to reduce execution risk in the harness.",
+    "Add a harness check that verifies ADVERSARIAL_REJECTION_POLICY keys in community_cli.py exactly match the attack names in adversarial-cases.json, independent of runtime execution.",
+    "Add rate limiting or caching for registry lookups in community_cli.py to mitigate algorithmic complexity attacks on the CLI surface.",
+    "Consider adding a non-claim to the CLI output explicitly stating that CLI eligibility output does not constitute authorization or adoption."
+  ],
+  "uncertainty": [
+    "The fnmatch direction bug in eligible() may be intentional if allowed_scope contains literal file paths and allowed_files contains globs; the intended semantics are not documented.",
+    "The st_nlink == 1 check may be a deliberate hardening measure against specific symlink/hardlink attacks; the threat model is not specified.",
+    "It is unclear whether the hardcoded AUTHORITY_REF in grant_lease() is a placeholder for a future authority derivation mechanism or an intentional design choice."
+  ],
+  "verdict": "REVISION_REQUIRED",
+  "limitations": [
+    "Review is based on static code analysis only; no dynamic execution or fuzzing of the CLI or harness was performed.",
+    "The adversarial-cases.json file defines expected rejections but does not include actual attack payloads, limiting assessment of real-world attack coverage.",
+    "Registry file schemas (task.schema.json, participant.schema.json, etc.) were not provided, preventing full validation of schema enforcement in the CLI and harness.",
+    "The pilot-result.json and session files referenced in check_agent_native_pilot() were not provided, so pilot execution integrity could not be assessed."
+  ],
+  "independence_level": "LEVEL_2_SAME_MODEL_ISOLATED_SESSION",
+  "same_base_model_different_session": true,
+  "contributor_participant_ref": "PILOT-B",
+  "self_approval": false,
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "session_id": "V11-ROUND-2-03",
+  "started_at": "2026-07-29T01:21:10.902036+08:00",
+  "completed_at": "2026-07-29T01:23:03.316058+08:00",
+  "output_hash": "sha256:1fda7814bd7e31104a06af17fe8515bd2d0c4e4636e15bfeb4a6f0885cc05999",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "authority_effect": "NONE"
+}

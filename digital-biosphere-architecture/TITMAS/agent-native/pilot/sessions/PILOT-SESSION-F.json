@@ -1,0 +1,45 @@
+{
+  "session_id": "PILOT-SESSION-F",
+  "participant_ref": "PILOT-F",
+  "role": "F",
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "started_at": "2026-07-29T01:05:04.196721+08:00",
+  "completed_at": "2026-07-29T01:05:29.831342+08:00",
+  "prompt_hash": "sha256:34ce34996751233274d7013449cd74c7497c5d6af90194d902111021e65354dc",
+  "input_scope": [
+    "agent-index.json",
+    "TITMAS/agent-native/current-state.json",
+    "TITMAS/agent-native/recommendations/calibration-cases.json"
+  ],
+  "output_hash": "sha256:3ccf597d2490cc49ab40a0eff872ce85038cb88edea6e7b0e8739b13b06e6d83",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "tasks": [
+    "AN-09-RECOMMENDATION-CALIBRATION"
+  ],
+  "structured_result": {
+    "case_statuses": {
+      "REC-FIT": "RECOMMENDED",
+      "REC-PARTIAL": "CONDITIONALLY_RECOMMENDED",
+      "REC-NON-FIT": "NOT_RECOMMENDED",
+      "REC-UNKNOWN": "INSUFFICIENT_EVIDENCE"
+    },
+    "overclaim_count": 0,
+    "recommendation_precision_numerator": 4,
+    "recommendation_precision_denominator": 4,
+    "abstention_correct": true,
+    "non_fit_rejection_correct": true,
+    "limitations": [
+      "Calibration cases are internally defined and not externally validated.",
+      "No production hosted runtime or enterprise integration is provided by this repository.",
+      "No general chatbot UI or autonomous deployment platform is included.",
+      "No externally adopted certification evidence is present or claimed.",
+      "Recommendations are advisory within the controlled pilot and do not constitute adoption, authority, or release authorization."
+    ]
+  },
+  "authority_effect": "NONE"
+}

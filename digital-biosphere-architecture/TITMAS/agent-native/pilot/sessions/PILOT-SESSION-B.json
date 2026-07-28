@@ -1,0 +1,74 @@
+{
+  "session_id": "PILOT-SESSION-B",
+  "participant_ref": "PILOT-B",
+  "role": "B",
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "started_at": "2026-07-29T01:03:14.699693+08:00",
+  "completed_at": "2026-07-29T01:03:39.812781+08:00",
+  "prompt_hash": "sha256:9ed6617b34ebd9c0c475772895d5f32de3f5e6b0d1033a455841e9022425f239",
+  "input_scope": [
+    "agent-index.json",
+    "TITMAS/agent-native/current-state.json",
+    "TITMAS/agent-native/tasks/task-registry.json",
+    "TITMAS/agent-native/contributions/example-contribution-package.json"
+  ],
+  "output_hash": "sha256:b58edb8328cb10c06296e1d39bdc8f345999bc9cfdbf28025cc80dfaf5f75bd1",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "tasks": [
+    "AN-03-ZERO-HUMAN-QUICKSTART",
+    "AN-04-OBJECT-GENERATION",
+    "AN-05-TASK-CLAIM",
+    "AN-06-CONTRIBUTION-PACKAGE"
+  ],
+  "structured_result": {
+    "quickstart_commands": [
+      "python3 TITMAS/conformance/harness.py",
+      "python3 -m unittest discover -s TITMAS/conformance/tests -v"
+    ],
+    "object_schema_valid": true,
+    "task_match_correct": true,
+    "contribution_fields_complete": true,
+    "conformance_first_pass": true,
+    "conformance_corrected_pass": true,
+    "authority_violations": 0,
+    "semantic_elevations": 0,
+    "limitations": [
+      "no external adopter",
+      "no public GitHub write",
+      "no network call",
+      "no dependency install",
+      "no release authorized",
+      "no certification authorized",
+      "no public launch authorized",
+      "no public contribution authorized",
+      "no public agent community authorized",
+      "no self-granted permission",
+      "no architecture decision",
+      "no evidence as truth",
+      "no verification as authorization",
+      "no recommendation as decision"
+    ],
+    "command_receipts": [
+      {
+        "command": "python3 TITMAS/conformance/harness.py",
+        "status": "PASS",
+        "returncode": 0,
+        "stdout_hash": "sha256:4b846586940aa433bcad7031e33f5d5203f2a9bf1f0a17c874f067b74e0fb8c7",
+        "stderr_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "command": "python3 -m unittest discover -s TITMAS/conformance/tests -v",
+        "status": "PASS",
+        "returncode": 0,
+        "stdout_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_hash": "sha256:4eee45d9f09572660c17fe88a3ca69c145610adbb045ed3e6bf68e8c2963f259"
+      }
+    ]
+  },
+  "authority_effect": "NONE"
+}

@@ -1,0 +1,68 @@
+{
+  "review_id": "TITMAS-V11-STANDARDS-AND-SCHEMA",
+  "reviewer_participant_ref": "PILOT-C",
+  "reviewer_lineage": "QWEN-3.7-MAX",
+  "reviewed_revision": "76e882d+CONTROLLED_PILOT_CANDIDATE",
+  "scope": [
+    "TITMAS/agent-native/schemas/task.schema.json",
+    "TITMAS/agent-native/schemas/participant.schema.json",
+    "TITMAS/agent-native/schemas/contribution-package.schema.json",
+    "TITMAS/agent-native/schemas/review-receipt.schema.json",
+    "TITMAS/agent-native/contributions/example-contribution-package.json"
+  ],
+  "findings": [
+    "task.schema.json requires 'non_applicable_conditions' with minItems:1, which may be logically impossible for tasks where all conditions are applicable.",
+    "task.schema.json 'expiry' is type string but lacks format specification (e.g., date-time), risking inconsistent parsing.",
+    "participant.schema.json requires 'revocation_ref' as a string, making it impossible to represent a non-revoked participant without a dummy value.",
+    "participant.schema.json 'valid_from' and 'expires_at' lack date-time format constraints.",
+    "contribution-package.schema.json requires 'non_claims' and 'limitations' with minItems:1, but other critical arrays like 'known_risks' and 'unresolved_uncertainty' have no minItems, creating inconsistent strictness.",
+    "review-receipt.schema.json hardcodes 'self_approval' to false via const, which is good for boundary enforcement, but 'same_base_model_different_session' is a boolean that could be derived from 'independence_level' and 'reviewer_lineage', introducing redundancy and potential contradiction.",
+    "example-contribution-package.json uses a relative $schema path '../schemas/contribution-package.schema.json' which may not resolve correctly depending on the validator's working directory or base URI handling.",
+    "No schema defines a mechanism for cryptographic signing or integrity verification of the artifacts, which is a gap for non-repudiation in a multi-agent system.",
+    "task.schema.json 'allowed_files' and 'forbidden_files' both require minItems:1, meaning a task must always specify at least one allowed and one forbidden file, which may not be realistic for all task types."
+  ],
+  "evidence": [
+    "prompt_hash:sha256:cdca542bd9750409924a48c5eb61d0514e588859cc483f731722b85f9d2d53fc"
+  ],
+  "severity": "MEDIUM",
+  "relevance": "RELEVANT",
+  "uniqueness": "UNIQUE",
+  "required_corrections": [
+    "Change 'non_applicable_conditions' in task.schema.json to not require minItems:1, or make the field optional.",
+    "Add 'format': 'date-time' to 'expiry' in task.schema.json and to 'valid_from'/'expires_at' in participant.schema.json.",
+    "Make 'revocation_ref' optional in participant.schema.json or allow null to represent non-revocation.",
+    "Resolve the relative $schema path in example-contribution-package.json to an absolute URI or ensure base URI is correctly set in validation harness."
+  ],
+  "optional_suggestions": [
+    "Consider adding 'format': 'uuid' or a pattern constraint to ID fields like 'task_id', 'contribution_id', 'review_id' for consistency.",
+    "Add a 'definitions' or '$defs' block to centralize common types like 'participant_ref' or 'timestamp' to reduce duplication across schemas.",
+    "Consider adding 'minItems': 1 to 'known_risks' and 'unresolved_uncertainty' in contribution-package.schema.json for consistent strictness, or document why they are optional.",
+    "Add a 'signature' or 'integrity_hash' property to contribution-package and review-receipt schemas to support future non-repudiation requirements."
+  ],
+  "uncertainty": [
+    "It is unclear if the validation harness correctly resolves relative $schema paths; this depends on the harness implementation.",
+    "The operational semantics of 'conflict_policy' and 'duplication_policy' in task.schema.json are not defined in the schema, leaving interpretation to external documentation."
+  ],
+  "verdict": "REVISION_REQUIRED",
+  "limitations": [
+    "Review is limited to schema structure and the single example contribution; no runtime validation or harness behavior was assessed.",
+    "No assessment of whether the schemas are sufficient for all intended pilot scenarios, as pilot scope is not fully defined in the inputs.",
+    "Cryptographic and integrity mechanisms are out of scope for this schema-only review but are noted as a gap."
+  ],
+  "independence_level": "LEVEL_2_SAME_MODEL_ISOLATED_SESSION",
+  "same_base_model_different_session": true,
+  "contributor_participant_ref": "PILOT-B",
+  "self_approval": false,
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "session_id": "V11-REVIEW-05",
+  "started_at": "2026-07-29T01:12:51.809915+08:00",
+  "completed_at": "2026-07-29T01:14:13.566802+08:00",
+  "output_hash": "sha256:7185b94eb6fe4e8489a07daf0282a71c82d90a169ed74b88850f0e81cdcae2cf",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "authority_effect": "NONE"
+}

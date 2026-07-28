@@ -1,0 +1,76 @@
+{
+  "review_id": "TITMAS-V11-STANDARDS-AND-SCHEMA",
+  "reviewer_participant_ref": "PILOT-C",
+  "reviewer_lineage": "QWEN-3.7-MAX",
+  "reviewed_revision": "76e882d+CONTROLLED_PILOT_ROUND-2",
+  "scope": [
+    "TITMAS/agent-native/schemas/task.schema.json",
+    "TITMAS/agent-native/schemas/participant.schema.json",
+    "TITMAS/agent-native/schemas/contribution-package.schema.json",
+    "TITMAS/agent-native/schemas/review-receipt.schema.json",
+    "TITMAS/agent-native/contributions/example-contribution-package.json"
+  ],
+  "findings": [
+    "task.schema.json: 'non_applicable_conditions' requires minItems:1, which may be overly restrictive for tasks where all conditions are applicable.",
+    "task.schema.json: 'allowed_files' and 'forbidden_files' both require minItems:1, preventing tasks that have no explicit file restrictions.",
+    "task.schema.json: 'dependencies' lacks minItems constraint, inconsistent with other array fields that enforce minItems:1.",
+    "participant.schema.json: 'evidence_refs' lacks minItems constraint while other array fields enforce minItems:1.",
+    "contribution-package.schema.json: 'non_claims' and 'limitations' require minItems:1, but 'assumptions', 'claims', 'unresolved_uncertainty', 'known_risks' do not, creating inconsistency.",
+    "contribution-package.schema.json: 'evidence_architecture_reused' is constrained to const:true, preventing valid cases where architecture is not reused.",
+    "review-receipt.schema.json: 'self_approval' is constrained to const:false, which is appropriate for independence but prevents legitimate self-review scenarios at LEVEL_0.",
+    "example-contribution-package.json: 'non_claims' uses string values like 'CONTRIBUTION_NE_ADOPTION' which appear to be policy assertions rather than factual non-claims about the contribution.",
+    "No schema defines versioning or schema_version field, making future schema evolution difficult.",
+    "All schemas use additionalProperties:false which is strict but may hinder extensibility during pilot phases."
+  ],
+  "evidence": [
+    "prompt_hash:sha256:1999f4a62264809116c3dc7faf4bb31df0fe8598ad284acc6aca3bc50ac16085"
+  ],
+  "severity": "MEDIUM",
+  "relevance": "RELEVANT",
+  "uniqueness": "UNIQUE",
+  "required_corrections": [
+    "task.schema.json: Remove minItems:1 from 'non_applicable_conditions' or make it optional to support tasks with no non-applicable conditions.",
+    "task.schema.json: Remove minItems:1 from 'allowed_files' and 'forbidden_files' or provide empty array as valid default.",
+    "contribution-package.schema.json: Change 'evidence_architecture_reused' from const:true to type:boolean to allow both true and false values.",
+    "contribution-package.schema.json: Add minItems:1 to 'assumptions', 'claims', 'unresolved_uncertainty', 'known_risks' for consistency, or remove minItems:1 from 'non_claims' and 'limitations'.",
+    "review-receipt.schema.json: Change 'self_approval' from const:false to type:boolean to support LEVEL_0_SELF_REVIEW independence level."
+  ],
+  "optional_suggestions": [
+    "Add 'schema_version' field to all schemas to support future evolution and backward compatibility tracking.",
+    "Consider adding 'description' fields to schema properties for better documentation and tooling support.",
+    "task.schema.json: Add pattern validation for 'task_id' to enforce consistent ID formatting.",
+    "participant.schema.json: Add format validation for 'participant_ref' and related reference fields.",
+    "Consider defining shared definitions using $defs for common patterns like reference strings and date-time fields.",
+    "example-contribution-package.json: Clarify 'non_claims' values to distinguish between policy boundaries and factual limitations of the contribution."
+  ],
+  "uncertainty": [
+    "Unclear whether minItems:1 constraints are intentional policy decisions or oversight in schema design.",
+    "Uncertain if 'evidence_architecture_reused' being const:true reflects a pilot-specific requirement or general schema intent.",
+    "Unknown whether LEVEL_0_SELF_REVIEW is intended to be supported given self_approval is const:false.",
+    "Unclear if the strict additionalProperties:false is intentional for pilot control or should be relaxed for extensibility."
+  ],
+  "verdict": "REVISION_REQUIRED",
+  "limitations": [
+    "Review limited to schema structure and example conformance; no runtime validation testing performed.",
+    "Cannot assess whether schemas align with actual pilot workflow requirements without operational context.",
+    "No access to referenced external schemas or authority documents to validate reference field formats.",
+    "Schema interoperability with existing tooling not assessed.",
+    "Review does not evaluate whether the schemas adequately capture all necessary governance boundaries."
+  ],
+  "independence_level": "LEVEL_2_SAME_MODEL_ISOLATED_SESSION",
+  "same_base_model_different_session": true,
+  "contributor_participant_ref": "PILOT-B",
+  "self_approval": false,
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "session_id": "V11-ROUND-2-05",
+  "started_at": "2026-07-29T01:23:50.545216+08:00",
+  "completed_at": "2026-07-29T01:25:10.673308+08:00",
+  "output_hash": "sha256:d13dc0fc42d9c94b3dde77e84d2ae4f46f189c57bbd474890db847dcd8927a27",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "authority_effect": "NONE"
+}

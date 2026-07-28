@@ -29,13 +29,14 @@
     "base_branch": "codex/titmas-developer-standards-community-v1",
     "base_revision": "6fcfd76243b94ddecff8c9aface2ed51116984cb",
     "candidate_branch": "codex/titmas-agent-native-standards-community-v1-1",
-    "candidate_revision": "UNCOMMITTED_CANDIDATE"
+    "candidate_revision": "76e882d"
   },
   "machine_surfaces": {
     "community_manifest": "TITMAS/agent-native/community-manifest.json",
     "current_state": "TITMAS/agent-native/current-state.json",
     "claims": "TITMAS/agent-native/claims.json",
     "participants": "TITMAS/agent-native/participants/participant-registry.json",
+    "authorities": "TITMAS/agent-native/participants/authority-registry.json",
     "tasks": "TITMAS/agent-native/tasks/task-registry.json",
     "review_protocol": "TITMAS/agent-native/reviews/review-protocol.json",
     "specifications": "TITMAS/specifications/registry.yaml",
@@ -46,7 +47,8 @@
     "tests": "python3 -m unittest discover -s TITMAS/conformance/tests -v",
     "discover_tasks": "python3 TITMAS/agent-native/community_cli.py discover --need NEED",
     "rank_tasks": "python3 TITMAS/agent-native/community_cli.py rank --need NEED",
-    "eligibility": "python3 TITMAS/agent-native/community_cli.py eligibility --participant PARTICIPANT_REF --task TASK_ID --at ISO8601"
+    "eligibility": "python3 TITMAS/agent-native/community_cli.py eligibility --participant PARTICIPANT_REF --task TASK_ID --at ISO8601",
+    "recommendation_calibration": "python3 TITMAS/agent-native/community_cli.py calibrate-recommendation --case REC-FIT"
   },
   "authority_boundaries": [
     "AGENT_PARTICIPATION_NE_AUTHORITY",

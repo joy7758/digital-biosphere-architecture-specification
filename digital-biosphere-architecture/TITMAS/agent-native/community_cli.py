@@ -19,7 +19,34 @@ ROOT = Path(__file__).resolve().parent
 DBA_ROOT = ROOT.parents[1]
 TASKS = ROOT / "tasks" / "task-registry.json"
 PARTICIPANTS = ROOT / "participants" / "participant-registry.json"
+AUTHORITIES = ROOT / "participants" / "authority-registry.json"
+CALIBRATION_CASES = ROOT / "recommendations" / "calibration-cases.json"
 AUTHORITY_REF = "TITMAS-AGENT-NATIVE-COMMUNITY-D01"
+
+ADVERSARIAL_REJECTION_POLICY = {
+    "PROMPT_INJECTION": "UNTRUSTED_INSTRUCTION",
+    "MALICIOUS_TASK_DESCRIPTION": "FORBIDDEN_ACTION",
+    "FORGED_PARTICIPANT_IDENTITY": "IDENTITY_UNVERIFIED",
+    "SELF_AUTHORIZATION": "SELF_AUTHORIZATION",
+    "SELF_APPROVAL": "SELF_APPROVAL",
+    "AUTHORITY_ELEVATION": "AUTHORITY_ELEVATION",
+    "TASK_SCOPE_EXPANSION": "SCOPE_EXPANSION",
+    "REVIEW_COLLUSION": "INDEPENDENCE_INSUFFICIENT",
+    "SYBIL_SESSION_AS_INDEPENDENT_LINEAGE": "LINEAGE_MISREPRESENTATION",
+    "INFINITE_TASK_LOOP": "LEASE_OR_STOP_CONDITION_REQUIRED",
+    "AUTOMATIC_ISSUE_PR_NOISE": "PUBLIC_GITHUB_WRITE_NOT_AUTHORIZED",
+    "DUPLICATE_CONTRIBUTION": "DUPLICATE_ACTIVE_CONTRIBUTION",
+    "MALICIOUS_SCHEMA": "SCHEMA_FAIL_CLOSED",
+    "PATH_TRAVERSAL": "PATH_TRAVERSAL",
+    "HIDDEN_NETWORK_CALL": "UNDECLARED_NETWORK_ACCESS",
+    "SUPPLY_CHAIN_DEPENDENCY": "UNAUTHORIZED_DEPENDENCY",
+    "FAKE_ADOPTION": "MAPPING_AS_ADOPTION",
+    "FAKE_CERTIFICATION": "CERTIFICATION_NOT_AUTHORIZED",
+    "DELETE_FAILURE_RECORD": "HISTORY_DELETION",
+    "NOT_ASSESSED_TO_PASS": "NOT_ASSESSED_AS_PASS",
+    "RECOMMENDATION_TO_COMMAND": "RECOMMENDATION_AS_COMMAND",
+    "EVIDENCE_TO_TRUTH": "EVIDENCE_AS_TRUTH",
+}
 
 
 class ProtocolRejected(ValueError):
@@ -34,12 +61,20 @@ def _load(path: Path) -> dict[str, Any]:
     resolved = path.resolve()
     if not resolved.is_relative_to(DBA_ROOT.resolve()):
         raise ProtocolRejected("PATH_TRAVERSAL", str(path))
-    if path.is_symlink() or not path.is_file() or path.stat().st_size > 1_000_000:
+    stat = path.stat()
+    if (
+        path.is_symlink() or not path.is_file() or stat.st_nlink != 1
+        or stat.st_size > 1_000_000
+    ):
         raise ProtocolRejected("UNSAFE_INPUT", str(path))
     with path.open(encoding="utf-8") as handle:
         value = json.load(handle)
     if not isinstance(value, dict):
         raise ProtocolRejected("MALFORMED_OBJECT", str(path))
+    if path == TASKS and not isinstance(value.get("tasks"), list):
+        raise ProtocolRejected("SCHEMA_FAIL_CLOSED", "task registry missing tasks")
+    if path == PARTICIPANTS and not isinstance(value.get("participants"), list):
+        raise ProtocolRejected("SCHEMA_FAIL_CLOSED", "participant registry missing participants")
     return value
 
 
@@ -72,6 +107,21 @@ def _participant(participant_ref: str, at: str) -> dict[str, Any]:
     raise ProtocolRejected("UNKNOWN_PARTICIPANT", participant_ref)
 
 
+def _authority(issuer_ref: str, at: str, action: str) -> dict[str, Any]:
+    for authority in _load(AUTHORITIES)["authorities"]:
+        if authority["authority_ref"] == issuer_ref:
+            if _instant(at) < _instant(authority["valid_from"]):
+                raise ProtocolRejected("AUTHORITY_NOT_YET_VALID", issuer_ref)
+            if _instant(at) >= _instant(authority["expires_at"]):
+                raise ProtocolRejected("AUTHORITY_EXPIRED", issuer_ref)
+            if authority["revocation_ref"] != "NONE":
+                raise ProtocolRejected("AUTHORITY_REVOKED", issuer_ref)
+            if action not in authority["allowed_actions"]:
+                raise ProtocolRejected("ACTION_NOT_AUTHORIZED", action)
+            return authority
+    raise ProtocolRejected("UNRECOGNIZED_AUTHORITY_ISSUER", issuer_ref)
+
+
 def discover(need: str) -> list[dict[str, Any]]:
     tokens = {token.lower() for token in need.replace("/", " ").replace("-", " ").split()}
     ranked = []
@@ -94,8 +144,7 @@ def eligible(participant: dict[str, Any], task: dict[str, Any]) -> tuple[bool, l
     if not set(task["required_capabilities"]).issubset(set(participant["declared_capabilities"])):
         reasons.append("CAPABILITY_MISMATCH")
     for allowed in task["allowed_files"]:
-        if not any(fnmatch.fnmatch(allowed, scope) or fnmatch.fnmatch(scope, allowed)
-                   for scope in participant["allowed_scope"]):
+        if not any(fnmatch.fnmatch(allowed, scope) for scope in participant["allowed_scope"]):
             reasons.append("SCOPE_MISMATCH")
             break
     return not reasons, reasons
@@ -124,10 +173,9 @@ def grant_lease(
     at: str,
     active_task_refs: list[str],
 ) -> dict[str, Any]:
-    if issued_by_ref != "zhangbin":
-        raise ProtocolRejected("UNRECOGNIZED_AUTHORITY_ISSUER", issued_by_ref)
     if issued_by_ref == participant_ref:
         raise ProtocolRejected("SELF_AUTHORIZATION", participant_ref)
+    _authority(issued_by_ref, at, "ISSUE_BOUNDED_SCOPE_LEASE")
     if task_id in active_task_refs:
         raise ProtocolRejected("DUPLICATE_ACTIVE_CLAIM", task_id)
     participant = _participant(participant_ref, at)
@@ -141,6 +189,7 @@ def grant_lease(
         "participant_ref": participant_ref,
         "task_ref": task_id,
         "authority_ref": AUTHORITY_REF,
+        "issued_by_ref": issued_by_ref,
         "allowed_files": task["allowed_files"],
         "forbidden_files": task["forbidden_files"],
         "issued_at": at,
@@ -164,6 +213,30 @@ def task_contract(task_id: str) -> dict[str, Any]:
             "CONTRIBUTION_NE_PERMISSION",
         ],
     }
+
+
+def calibrate_recommendation(case_id: str) -> dict[str, Any]:
+    for case in _load(CALIBRATION_CASES)["cases"]:
+        if case["case_id"] == case_id:
+            return {
+                "case": case,
+                "calibration_status": case["expected_status"],
+                "reference_fixture_only": True,
+                "authority_effect": "NONE",
+                "non_claims": [
+                    "CALIBRATION_NE_REAL_USER_RECOMMENDATION",
+                    "RECOMMENDATION_NE_DECISION",
+                    "MAPPING_NE_ADOPTION",
+                ],
+            }
+    raise ProtocolRejected("UNKNOWN_CALIBRATION_CASE", case_id)
+
+
+def reject_adversarial(attack: str) -> dict[str, Any]:
+    reason = ADVERSARIAL_REJECTION_POLICY.get(attack)
+    if reason is None:
+        raise ProtocolRejected("UNKNOWN_ATTACK_CLASS", attack)
+    return {"attack": attack, "decision": "REJECT", "reason_code": reason}
 
 
 def _emit(value: Any) -> None:
@@ -197,6 +270,8 @@ def parser() -> argparse.ArgumentParser:
     duplicate.add_argument("--active-task", action="append", default=[])
     contract = sub.add_parser("task-contract")
     contract.add_argument("--task", required=True)
+    calibration = sub.add_parser("calibrate-recommendation")
+    calibration.add_argument("--case", required=True)
     return result
 
 
@@ -228,6 +303,8 @@ def main(argv: list[str] | None = None) -> int:
             return 1 if duplicate else 0
         elif args.command == "task-contract":
             _emit(task_contract(args.task))
+        elif args.command == "calibrate-recommendation":
+            _emit(calibrate_recommendation(args.case))
     except (ProtocolRejected, json.JSONDecodeError) as exc:
         reason = exc.reason_code if isinstance(exc, ProtocolRejected) else "MALFORMED_JSON"
         _emit({"status": "REJECTED", "reason_code": reason, "detail": str(exc)})

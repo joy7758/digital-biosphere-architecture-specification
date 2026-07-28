@@ -1,0 +1,64 @@
+{
+  "session_id": "PILOT-SESSION-A",
+  "participant_ref": "PILOT-A",
+  "role": "A",
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "started_at": "2026-07-29T01:02:48.182734+08:00",
+  "completed_at": "2026-07-29T01:03:14.698565+08:00",
+  "prompt_hash": "sha256:612c27df258c1d58c298ca71fb447b7491b82db77578b0f199019d39f8c6b7da",
+  "input_scope": [
+    "agent-index.json",
+    "TITMAS/agent-native/current-state.json"
+  ],
+  "output_hash": "sha256:4b8c35cca8611bb1570a057904c3c54eb2de3934308576eeea0f451b216ea510",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "tasks": [
+    "AN-01-BLIND-NEED-DISCOVERY",
+    "AN-02-REPOSITORY-UNDERSTANDING"
+  ],
+  "structured_result": {
+    "selected_project": "joy7758/digital-biosphere-architecture-specification",
+    "discovery_correct": true,
+    "positioning_score": 0.9,
+    "boundary_score": 0.95,
+    "maturity": "Development",
+    "forbidden_claims": [
+      "AGENT_PARTICIPATION_NE_AUTHORITY",
+      "AGENT_ROLE_NE_SELF_GRANTED_PERMISSION",
+      "AGENT_CONTRIBUTION_NE_ADOPTION",
+      "AGENT_REVIEW_NE_ARCHITECTURE_DECISION",
+      "EVIDENCE_NE_TRUTH",
+      "VERIFICATION_NE_AUTHORIZATION",
+      "RECOMMENDATION_NE_DECISION"
+    ],
+    "limitations": [
+      "agent_native_infrastructure_complete is false",
+      "controlled_agent_pilot_executed is false",
+      "controlled_agent_pilot_passed is false",
+      "agent_operational_value_demonstrated is false",
+      "agent_recommendation_calibrated is false",
+      "agent_community_self_maintenance_demonstrated is false",
+      "public_agent_community_authorized is false",
+      "public_contribution_authorized is false",
+      "public_github_agent_write_authorized is false",
+      "agent_community_established is false",
+      "external_agent_participant_count is 0",
+      "external_human_contributor_count is 0",
+      "external_adopter_count is 0",
+      "public_launch_authorized is false",
+      "release_authorized is false",
+      "certification_authorized is false",
+      "commercial_ready is false",
+      "foundation_created is false",
+      "cs_g0_pass is false",
+      "cs_g1_pass is false",
+      "current_99_percent_autonomy_claim is false"
+    ]
+  },
+  "authority_effect": "NONE"
+}

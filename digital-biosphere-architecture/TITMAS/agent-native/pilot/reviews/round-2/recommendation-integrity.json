@@ -1,0 +1,60 @@
+{
+  "review_id": "TITMAS-V11-RECOMMENDATION-INTEGRITY",
+  "reviewer_participant_ref": "PILOT-D",
+  "reviewer_lineage": "QWEN-3.7-MAX",
+  "reviewed_revision": "76e882d+CONTROLLED_PILOT_ROUND-2",
+  "scope": [
+    "TITMAS/agent-native/recommendations/README.md",
+    "TITMAS/agent-native/recommendations/calibration-cases.json",
+    "TITMAS/agent-native/recommendations/example-recommendation-package.json",
+    "TITMAS/agent-native/pilot/pilot-result.json"
+  ],
+  "findings": [
+    "Recommendation calibration cases correctly map to allowed outcomes (RECOMMENDED, CONDITIONALLY_RECOMMENDED, NOT_RECOMMENDED, INSUFFICIENT_EVIDENCE).",
+    "Example recommendation package explicitly distinguishes verified capabilities from missing capabilities and avoids adoption fabrication.",
+    "Pilot results show 1.0 precision, abstention accuracy, and non-fit rejection accuracy for recommendation tasks, meeting all defined thresholds.",
+    "Limitations section in pilot-result.json correctly identifies synthetic pilot as not equivalent to external adoption or public discovery.",
+    "Recommendation README explicitly prohibits converting mapping to adoption, test pass to production readiness, or certificate candidate to certification.",
+    "Example package status RECOMMENDED is scoped to 'FIT_FOR_CONTROLLED_DEVELOPMENT_USE' with current_maturity 'Development', avoiding overclaim."
+  ],
+  "evidence": [
+    "prompt_hash:sha256:c4bc3b85d50cde372c435a166d64ec6f8e751f325e10cc5583ca5b4122f3fc48"
+  ],
+  "severity": "LOW",
+  "relevance": "RELEVANT",
+  "uniqueness": "UNIQUE",
+  "required_corrections": [],
+  "optional_suggestions": [
+    "Consider adding a calibration case for NOT_APPLICABLE to ensure full coverage of all five allowed outcomes.",
+    "Document how confidence score (0.91) in example package was derived to improve reproducibility.",
+    "Add explicit mapping between recommendation_reason_codes and fit/non-fit criteria for auditability."
+  ],
+  "uncertainty": [
+    "Single model lineage (qwen3.7-max) across all sessions limits generalizability of recommendation precision metrics.",
+    "Seven isolated sessions may not represent diverse real-world user needs beyond the four calibration cases.",
+    "Confidence score derivation methodology is not documented in the provided files."
+  ],
+  "verdict": "PASS",
+  "limitations": [
+    "Review is based on static file inspection without execution of recommendation generation pipeline.",
+    "Calibration cases are synthetic and may not capture edge cases in real deployment scenarios.",
+    "No external adoption evidence exists to validate recommendation accuracy against real-world outcomes.",
+    "Pilot metrics reflect controlled conditions and may not transfer to production environments."
+  ],
+  "independence_level": "LEVEL_2_SAME_MODEL_ISOLATED_SESSION",
+  "same_base_model_different_session": true,
+  "contributor_participant_ref": "PILOT-B",
+  "self_approval": false,
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "session_id": "V11-ROUND-2-06",
+  "started_at": "2026-07-29T01:25:10.674147+08:00",
+  "completed_at": "2026-07-29T01:26:18.064837+08:00",
+  "output_hash": "sha256:8eb233b9c3b1eda378029379e3f985773e003eb08cc243bf7ee54ebdc1b0633d",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "authority_effect": "NONE"
+}

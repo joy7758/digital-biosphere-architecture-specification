@@ -1,0 +1,39 @@
+{
+  "session_id": "PILOT-SESSION-D",
+  "participant_ref": "PILOT-D",
+  "role": "D",
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "started_at": "2026-07-29T01:04:10.700566+08:00",
+  "completed_at": "2026-07-29T01:04:44.116555+08:00",
+  "prompt_hash": "sha256:cdc015b7151a20803eaaea6ddc47919a6658b9761666bd0214b1a1a26835ac1d",
+  "input_scope": [
+    "agent-index.json",
+    "TITMAS/agent-native/current-state.json",
+    "TITMAS/agent-native/schemas/contribution-package.schema.json",
+    "TITMAS/agent-native/contributions/example-contribution-package.json"
+  ],
+  "output_hash": "sha256:44c529b4dd2aafc60a5710b75d9854559e8a30e92666a088327ae10d058528c3",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "tasks": [
+    "AN-04-OBJECT-GENERATION",
+    "AN-07-MULTI-AGENT-REVIEW"
+  ],
+  "structured_result": {
+    "independence_level": "LEVEL_2",
+    "schema_pass": true,
+    "positive_case_pass": true,
+    "negative_case_rejected": true,
+    "required_corrections": [],
+    "conformance_first_pass": true,
+    "conformance_corrected_pass": true,
+    "authority_violations": 0,
+    "semantic_elevations": 0,
+    "verdict": "PASS"
+  },
+  "authority_effect": "NONE"
+}

@@ -1,0 +1,48 @@
+{
+  "session_id": "PILOT-SESSION-G",
+  "participant_ref": "PILOT-G",
+  "role": "G",
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "started_at": "2026-07-29T01:05:29.832210+08:00",
+  "completed_at": "2026-07-29T01:05:52.274847+08:00",
+  "prompt_hash": "sha256:fc35382b2a6fab5f55fafa73f907ec14c3bdb782270450fb35e1052ec4eb8a3e",
+  "input_scope": [
+    "agent-index.json",
+    "TITMAS/agent-native/current-state.json",
+    "TITMAS/agent-native/pilot/fixtures/example-drift.json",
+    "TITMAS/agent-native/value-gate/agent-immune-five-task-fixture.json"
+  ],
+  "output_hash": "sha256:162ad91b2ef2fe944e5aaa2095b2e148dd4ae4b7832e762694d665859e8b2a00",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "tasks": [
+    "AN-10-MAINTENANCE",
+    "AN-11-NOISE-AND-VALUE"
+  ],
+  "structured_result": {
+    "drift_detected": true,
+    "drift_reason_code": "SOURCE_REVISION_DRIFT",
+    "mutation_performed": false,
+    "maintenance_bounded": true,
+    "total_suggestions": 25,
+    "unique_factually_valid_findings": 3,
+    "duplicate_findings": 5,
+    "false_or_not_applicable_findings": 17,
+    "final_outcome_improvements": 0,
+    "harmful_modifications": 0,
+    "outcome_improved": false,
+    "limitations": [
+      "No authority to commit, release, adopt, or certify.",
+      "Mutation not authorized in fixture; correction remains a proposal only.",
+      "Agent immune counts preserved as frozen (25/3/5/17/0/0).",
+      "Pilot scope limited to AN-10-MAINTENANCE and AN-11-NOISE-AND-VALUE.",
+      "Source revision drift detected against expected 76e882d; declared STALE-REVISION-FOR-DETECTION is not current.",
+      "No external participants, adopters, or public launch authorized in current state."
+    ]
+  },
+  "authority_effect": "NONE"
+}

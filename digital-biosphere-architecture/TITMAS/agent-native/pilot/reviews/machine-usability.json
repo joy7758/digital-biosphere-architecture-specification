@@ -1,0 +1,59 @@
+{
+  "review_id": "TITMAS-V11-MACHINE-USABILITY",
+  "reviewer_participant_ref": "PILOT-D",
+  "reviewer_lineage": "QWEN-3.7-MAX",
+  "reviewed_revision": "76e882d+CONTROLLED_PILOT_CANDIDATE",
+  "scope": [
+    "agent-index.json",
+    "TITMAS/README.md",
+    "TITMAS/agent-native/README.md",
+    "TITMAS/agent-native/guides/agent-in-60-seconds.md"
+  ],
+  "findings": [
+    "agent-index.json correctly identifies itself as the sole canonical machine entry and aligns with README references.",
+    "Authority boundaries are explicitly declared in both agent-index.json and READMEs, satisfying Evidence != Truth and Verification != Authorization.",
+    "Maturity is clearly stated as Development with controlled pilot; 99% target is explicitly labeled as a design assumption, not a measured fact.",
+    "Prohibited claims section correctly prevents semantic elevation of fixtures, reference implementations, and agent activity.",
+    "Machine surfaces and commands are consistently referenced across agent-index.json and README files.",
+    "Human constitutional overview and exception paths are documented, preserving human authority over irreversible decisions.",
+    "Public launch, community establishment, and certification flags are explicitly set to false, preventing unauthorized adoption assumptions."
+  ],
+  "evidence": [
+    "prompt_hash:sha256:24bb847dad64a07b3c0b85de135219818fe0dbeda89b326dcbf19dc6a264ec87"
+  ],
+  "severity": "LOW",
+  "relevance": "RELEVANT",
+  "uniqueness": "UNIQUE",
+  "required_corrections": [],
+  "optional_suggestions": [
+    "Consider adding a machine-readable flag or field in agent-index.json to explicitly indicate 'public_launch_authorized: false' for automated tooling consumption.",
+    "Add a timestamp or revision hash to current-state.json to enable deterministic state verification by agents.",
+    "Include a brief machine-readable summary of prohibited claims in claims.json for automated boundary enforcement."
+  ],
+  "uncertainty": [
+    "Unable to verify if all referenced guide files (e.g., how-an-agent-joins.md) exist and are internally consistent without file content.",
+    "Cannot confirm whether community_cli.py commands produce deterministic, machine-parseable output without execution evidence."
+  ],
+  "verdict": "PASS",
+  "limitations": [
+    "Review is limited to provided file contents; no execution or integration testing was performed.",
+    "No access to external repositories or runtime environments to validate command behavior or schema conformance.",
+    "Agent-index.json schema reference (TITMAS/agent-native/schemas/agent-index.schema.json) was not provided for structural validation."
+  ],
+  "independence_level": "LEVEL_2_SAME_MODEL_ISOLATED_SESSION",
+  "same_base_model_different_session": true,
+  "contributor_participant_ref": "PILOT-B",
+  "self_approval": false,
+  "provider": "ALIBABA_CLOUD",
+  "requested_model": "qwen3.7-max",
+  "returned_model": "qwen3.7-max",
+  "runtime": "PYTHON_STDLIB_OPENAI_COMPATIBLE_CLIENT",
+  "session_id": "V11-REVIEW-04",
+  "started_at": "2026-07-29T01:12:10.071392+08:00",
+  "completed_at": "2026-07-29T01:12:51.809109+08:00",
+  "output_hash": "sha256:e629cd93eacfb723725aebfd496915a8629ca291ec466b15605ecd723fc2ca9e",
+  "failures": [],
+  "retries": 0,
+  "fallback": "NONE",
+  "authority_effect": "NONE"
+}

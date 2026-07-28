@@ -6,7 +6,10 @@
     "scope", "findings", "evidence", "severity", "relevance", "uniqueness",
     "required_corrections", "optional_suggestions", "uncertainty", "verdict",
     "limitations", "independence_level", "same_base_model_different_session",
-    "contributor_participant_ref", "self_approval"
+    "contributor_participant_ref", "self_approval", "provider",
+    "requested_model", "returned_model", "runtime", "session_id", "started_at",
+    "completed_at", "output_hash", "failures", "retries", "fallback",
+    "authority_effect"
   ],
   "properties": {
     "review_id": {"type": "string"},
@@ -27,7 +30,19 @@
     "independence_level": {"enum": ["LEVEL_0_SELF_REVIEW", "LEVEL_1_SAME_SESSION_ROLE_SWITCH", "LEVEL_2_SAME_MODEL_ISOLATED_SESSION", "LEVEL_3_DIFFERENT_MODEL_SAME_PROVIDER", "LEVEL_4_DIFFERENT_MODEL_DIFFERENT_PROVIDER", "LEVEL_5_INDEPENDENT_HUMAN_OR_INSTITUTIONAL_REVIEW"]},
     "same_base_model_different_session": {"type": "boolean"},
     "contributor_participant_ref": {"type": "string"},
-    "self_approval": {"const": false}
+    "self_approval": {"const": false},
+    "provider": {"type": "string"},
+    "requested_model": {"type": "string"},
+    "returned_model": {"type": "string"},
+    "runtime": {"type": "string"},
+    "session_id": {"type": "string"},
+    "started_at": {"type": "string", "format": "date-time"},
+    "completed_at": {"type": "string", "format": "date-time"},
+    "output_hash": {"type": "string"},
+    "failures": {"type": "array", "items": {"type": "string"}},
+    "retries": {"type": "integer"},
+    "fallback": {"const": "NONE"},
+    "authority_effect": {"const": "NONE"}
   },
   "additionalProperties": false
 }

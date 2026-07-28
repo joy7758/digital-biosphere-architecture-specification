@@ -1,4 +1,3 @@
-import copy
 import importlib.util
 import unittest
 from pathlib import Path
@@ -73,6 +72,31 @@ class CommunityCliTests(unittest.TestCase):
         contract = CLI.task_contract("AN-01-BLIND-NEED-DISCOVERY")
         self.assertEqual("NONE", contract["authority_effect"])
         self.assertIn("TASK_CONTRACT_NE_AUTHORITY", contract["non_claims"])
+
+    def test_valid_human_authority_registry_issues_bounded_candidate(self):
+        original = CLI._participant
+        CLI._participant = lambda _ref, _at: participant()
+        try:
+            lease = CLI.grant_lease(
+                "PILOT-A", "AN-01-BLIND-NEED-DISCOVERY", "zhangbin",
+                "2026-07-29T12:00:00+08:00", [],
+            )
+            self.assertEqual("CLAIMED", lease["status"])
+            self.assertEqual(CLI.AUTHORITY_REF, lease["authority_ref"])
+        finally:
+            CLI._participant = original
+
+    def test_recommendation_calibration_is_reference_only(self):
+        result = CLI.calibrate_recommendation("REC-FIT")
+        self.assertTrue(result["reference_fixture_only"])
+        self.assertEqual("NONE", result["authority_effect"])
+
+    def test_all_adversarial_classes_fail_closed(self):
+        self.assertEqual(22, len(CLI.ADVERSARIAL_REJECTION_POLICY))
+        for attack, reason in CLI.ADVERSARIAL_REJECTION_POLICY.items():
+            decision = CLI.reject_adversarial(attack)
+            self.assertEqual("REJECT", decision["decision"])
+            self.assertEqual(reason, decision["reason_code"])
 
 
 if __name__ == "__main__":

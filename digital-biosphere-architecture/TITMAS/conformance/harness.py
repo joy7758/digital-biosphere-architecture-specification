@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import importlib.util
 import re
 import sys
 from pathlib import Path
@@ -112,10 +113,13 @@ def parse_frontmatter(path: Path) -> dict[str, str]:
 
 def semantic_errors(payload: dict[str, Any]) -> list[str]:
     errors: list[str] = []
+    claims = payload.get("claims") or []
+    if not isinstance(claims, list) or not all(isinstance(item, str) for item in claims):
+        errors.append("MALFORMED_CLAIMS")
     evidence = payload.get("evidence_binding") or {}
     if evidence.get("source_kind") == "OBSERVATION" and evidence.get("admission_status") == "ADMITTED_EVIDENCE":
         errors.append("OBSERVATION_AS_EVIDENCE")
-    if "TRUTH" in (payload.get("claims") or []):
+    if "TRUTH" in claims:
         errors.append("EVIDENCE_AS_TRUTH")
     if "authorization_status" in (payload.get("verification_result") or {}):
         errors.append("VERIFICATION_AS_AUTHORIZATION")
@@ -285,6 +289,10 @@ def check_agent_native_surfaces() -> dict[str, Any]:
             raise ConformanceError(f"{key} must remain zero")
 
     participant_registry = load_json(root / "participants" / "participant-registry.json")
+    validate_json_file(
+        root / "participants" / "authority-registry.json",
+        schemas / "authority-registry.schema.json",
+    )
     participants = participant_registry["participants"]
     if participant_registry["agent_participant_count"] != len(participants):
         raise ConformanceError("agent participant count mismatch")
@@ -307,6 +315,9 @@ def check_agent_native_surfaces() -> dict[str, Any]:
             raise ConformanceError(f"{task['task_id']}: source revision drift")
         if task["authority_reference"] != "TITMAS-AGENT-NATIVE-COMMUNITY-D01":
             raise ConformanceError(f"{task['task_id']}: unauthorized authority reference")
+    for evidence_ref in state["evidence_refs"]:
+        if not (DBA_ROOT / evidence_ref).is_file():
+            raise ConformanceError(f"current state evidence ref missing: {evidence_ref}")
 
     examples = (
         (root / "participants" / "example-capability-declaration.json", "capability-declaration"),
@@ -357,7 +368,26 @@ def check_agent_native_adversarial() -> dict[str, Any]:
     bad = [item["id"] for item in cases if item["expected"] != "REJECT" or not item["reason_code"]]
     if bad:
         raise ConformanceError(f"adversarial cases fail open: {bad}")
-    return {"adversarial_cases_rejected": len(cases)}
+    cli_path = TITMAS_ROOT / "agent-native" / "community_cli.py"
+    spec = importlib.util.spec_from_file_location("titmas_agent_native_cli", cli_path)
+    if not spec or not spec.loader:
+        raise ConformanceError("cannot load agent-native policy evaluator")
+    cli = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(cli)
+    mismatches = []
+    for item in cases:
+        decision = cli.reject_adversarial(item["attack"])
+        if (
+            decision["decision"] != item["expected"]
+            or decision["reason_code"] != item["reason_code"]
+        ):
+            mismatches.append(item["id"])
+    if mismatches:
+        raise ConformanceError(f"adversarial policy mismatch: {mismatches}")
+    return {
+        "adversarial_cases_rejected": len(cases),
+        "adversarial_cases_executed": len(cases),
+    }
 
 
 def check_agent_native_value_gate() -> dict[str, Any]:
@@ -396,13 +426,74 @@ def check_agent_native_pilot() -> dict[str, Any]:
         raise ConformanceError(f"pilot result missing fields {missing}")
     if result["participant_count"] < result["independent_lineage_count"]:
         raise ConformanceError("lineage count exceeds participant count")
+    session_paths = sorted((path.parent / "sessions").glob("PILOT-SESSION-?.json"))
+    if len(session_paths) != 7:
+        raise ConformanceError(f"expected 7 primary pilot sessions, found {len(session_paths)}")
+    session_schema = load_json(
+        TITMAS_ROOT / "agent-native" / "schemas" / "pilot-session.schema.json"
+    )
+    returned_models = set()
+    for session_path in session_paths:
+        session = load_json(session_path)
+        validate_schema(session, session_schema)
+        returned_models.add(session["returned_model"])
+        if session["failures"] or session["fallback"] != "NONE":
+            raise ConformanceError(f"{session_path.name}: failed or used fallback")
+    if returned_models != {"qwen3.7-max"}:
+        raise ConformanceError(f"unexpected pilot models {sorted(returned_models)}")
     if result["authority_violations"] or result["semantic_elevation_findings"]:
         raise ConformanceError("pilot authority or semantic boundary violated")
     return {
         "pilot_result_present": True,
         "pilot_status": result["pilot_status"],
-        "pilot_tasks_checked": len(result["tasks_executed"]),
+        "pilot_sessions_checked": len(session_paths),
+        "pilot_tasks_checked": len(set(result["tasks_executed"])),
         "pilot_metrics_checked": len(result["metrics"]),
+    }
+
+
+def check_agent_native_reviews() -> dict[str, Any]:
+    root = TITMAS_ROOT / "agent-native" / "pilot" / "reviews"
+    initial = sorted(root.glob("*.json"))
+    round_two = sorted((root / "round-2").glob("*.json"))
+    if len(initial) != 7 or len(round_two) != 7:
+        raise ConformanceError(
+            f"expected 7 initial and 7 round-2 reviews, found {len(initial)} and {len(round_two)}"
+        )
+    schema = load_json(
+        TITMAS_ROOT / "agent-native" / "schemas" / "review-receipt.schema.json"
+    )
+    sessions: set[str] = set()
+    medium_or_hold = 0
+    for path in initial + round_two:
+        review = load_json(path)
+        validate_schema(review, schema)
+        if review["requested_model"] != "qwen3.7-max" or review["returned_model"] != "qwen3.7-max":
+            raise ConformanceError(f"{path}: unexpected review model")
+        if review["authority_effect"] != "NONE" or review["self_approval"]:
+            raise ConformanceError(f"{path}: review authority elevation")
+        if review["independence_level"] != "LEVEL_2_SAME_MODEL_ISOLATED_SESSION":
+            raise ConformanceError(f"{path}: independence misrepresentation")
+        if review["session_id"] in sessions:
+            raise ConformanceError(f"{path}: duplicate review session")
+        sessions.add(review["session_id"])
+        if review["failures"] or review["fallback"] != "NONE":
+            raise ConformanceError(f"{path}: failed or fallback review")
+        if review["severity"] in {"HIGH", "CRITICAL"} and review["verdict"] == "PASS":
+            raise ConformanceError(f"{path}: high finding cannot pass")
+        medium_or_hold += review["severity"] in {"MEDIUM", "HIGH", "CRITICAL"} or review["verdict"] == "HOLD"
+    disposition = load_json(
+        TITMAS_ROOT / "agent-native" / "pilot" / "review-disposition-v1.1.json"
+    )
+    if disposition["review_sessions"] != len(initial) + len(round_two):
+        raise ConformanceError("review disposition count mismatch")
+    if disposition["independent_model_lineages"] != 1:
+        raise ConformanceError("review lineage misrepresentation")
+    return {
+        "review_sessions_checked": len(sessions),
+        "review_rounds_checked": 2,
+        "independent_model_lineages": 1,
+        "medium_or_hold_records_preserved": medium_or_hold,
     }
 
 
@@ -439,6 +530,7 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("agent_native_adversarial", check_agent_native_adversarial),
         ("agent_native_value_gate", check_agent_native_value_gate),
         ("agent_native_pilot", check_agent_native_pilot),
+        ("agent_native_reviews", check_agent_native_reviews),
         ("local_links", check_local_links),
     )
     overall = "PASS"
