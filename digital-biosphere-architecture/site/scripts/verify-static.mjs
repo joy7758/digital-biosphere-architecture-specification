@@ -13,6 +13,10 @@ const requiredFiles = [
   "en/community/index.html",
   "industries/index.html",
   "en/industries/index.html",
+  "industry/medical-evidence/index.html",
+  "en/industry/medical-evidence/index.html",
+  "demo/medical-evidence/index.html",
+  "en/demo/medical-evidence/index.html",
   "medical-evidence/index.html",
   "en/medical-evidence/index.html",
   "medical-evidence-demo.json",
@@ -74,11 +78,13 @@ const [zh, en, zhCommunity, enCommunity, zhStatus, enStatus, status, titmasCommu
   readFile(join(outputRoot, "release.json"), "utf8").then(JSON.parse),
   readFile(join(outputRoot, "release-manifest.json"), "utf8").then(JSON.parse),
 ]);
-const [zhIndustries, enIndustries, medicalEvidencePage, enMedicalEvidencePage, digitalCellPage, enDigitalCellPage] = await Promise.all([
+const [zhIndustries, enIndustries, medicalIndustryPage, enMedicalIndustryPage, medicalEvidencePage, enMedicalEvidencePage, digitalCellPage, enDigitalCellPage] = await Promise.all([
   readFile(join(outputRoot, "industries/index.html"), "utf8"),
   readFile(join(outputRoot, "en/industries/index.html"), "utf8"),
-  readFile(join(outputRoot, "medical-evidence/index.html"), "utf8"),
-  readFile(join(outputRoot, "en/medical-evidence/index.html"), "utf8"),
+  readFile(join(outputRoot, "industry/medical-evidence/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/industry/medical-evidence/index.html"), "utf8"),
+  readFile(join(outputRoot, "demo/medical-evidence/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/demo/medical-evidence/index.html"), "utf8"),
   readFile(join(outputRoot, "digital-cell/index.html"), "utf8"),
   readFile(join(outputRoot, "en/digital-cell/index.html"), "utf8"),
 ]);
@@ -112,10 +118,18 @@ assert.match(enDigitalCellPage, /Make agent execution/);
 assert.match(enDigitalCellPage, /href="\/en\/industries\//);
 assert.match(zhIndustries, /TITMAS 不提供/);
 assert.match(enIndustries, /TITMAS does not provide/);
-assert.match(zhIndustries, /href="\/medical-evidence\//);
-assert.match(enIndustries, /href="\/en\/medical-evidence\//);
-assert.match(medicalEvidencePage, /UDI-DICOM 证据链验证器/);
-assert.match(enMedicalEvidencePage, /UDI-DICOM Evidence Chain Validator/);
+assert.match(zh, /href="\/industry\/medical-evidence\//);
+assert.match(en, /href="\/en\/industry\/medical-evidence\//);
+assert.match(zh, /href="\/demo\/medical-evidence\//);
+assert.match(en, /href="\/en\/demo\/medical-evidence\//);
+assert.match(zhIndustries, /href="\/industry\/medical-evidence\//);
+assert.match(enIndustries, /href="\/en\/industry\/medical-evidence\//);
+assert.match(medicalIndustryPage, /医疗证据基础设施/);
+assert.match(enMedicalIndustryPage, /Medical Evidence Infrastructure/);
+assert.match(medicalIndustryPage, /INDEPENDENT_MEDICAL_PLATFORM=false/);
+assert.match(enMedicalIndustryPage, /DIRECTION_ONLY/);
+assert.match(medicalEvidencePage, /UDI-DICOM Evidence Validator Demo/);
+assert.match(enMedicalEvidencePage, /UDI-DICOM Evidence Validator Demo/);
 assert.match(medicalEvidencePage, /REAL_REGISTRY_LOOKUP=false/);
 assert.match(enMedicalEvidencePage, /REAL_REGISTRY_LOOKUP=false/);
 assert.match(medicalEvidencePage, /VALIDATOR_IMPLEMENTED_HERE=false/);
@@ -131,8 +145,10 @@ assert.equal(medicalEvidence.boundaries.production_ready, false);
 assert.equal(digitalCell.status, "REFERENCE_COMPLETE");
 assert.equal(digitalCell.boundaries.production_claim, false);
 assert.equal(agentIndex.entrypoints.digital_cell_demo, "/digital-cell/");
-assert.equal(agentIndex.entrypoints.medical_evidence_demo_zh, "/medical-evidence/");
-assert.equal(agentIndex.entrypoints.medical_evidence_demo_en, "/en/medical-evidence/");
+assert.equal(agentIndex.entrypoints.medical_evidence_industry_zh, "/industry/medical-evidence/");
+assert.equal(agentIndex.entrypoints.medical_evidence_industry_en, "/en/industry/medical-evidence/");
+assert.equal(agentIndex.entrypoints.medical_evidence_demo_zh, "/demo/medical-evidence/");
+assert.equal(agentIndex.entrypoints.medical_evidence_demo_en, "/en/demo/medical-evidence/");
 assert.equal(agentIndex.medical_evidence_demo.real_registry_lookup, false);
 assert.match(commercialZh, /商业评估包 v0\.2/);
 assert.match(commercialEn, /Commercial Evaluation Pack v0\.2/);

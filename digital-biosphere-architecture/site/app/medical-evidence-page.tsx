@@ -11,17 +11,17 @@ const DIRECTION_SOURCE =
 
 const copy = {
   zh: {
-    breadcrumb: ["TITMAS 首页", "行业应用", "医疗证据 Demo"],
-    eyebrow: "BOUNDED APPLICATION DEMO / 有界应用演示",
-    title: "UDI-DICOM 证据链验证器",
-    lead: "输入一个明确的模拟 UDI，查看设备身份、影像对象与外部证据之间的引用关系如何表达。",
+    breadcrumb: ["TITMAS 首页", "医疗证据基础设施", "参考 Demo"],
+    eyebrow: "REFERENCE DEMO / 医疗证据方向",
+    title: "UDI-DICOM Evidence Validator Demo",
+    lead: "这是 TITMAS 医疗证据方向的第一个参考实现：输入明确的模拟 UDI，查看设备身份、影像对象与外部证据之间的引用关系如何表达。",
     banner: "概念演示 · 仅含模拟数据 · 非生产就绪 · 不代表真实合规或认证",
     label: "模拟 UDI",
     helper: "仅在当前浏览器中使用；不会上传，也不会查询真实登记库。",
-    button: "查看模拟证据链",
+    button: "展开模拟验证报告",
     reset: "重置",
     idle: "等待验证",
-    closed: "模拟引用结构已展开",
+    closed: "SYNTHETIC_REFERENCE_PASS",
     invalid: "仅允许使用以 999.TEST. 开头的模拟标识符。",
     steps: [
       ["Identity", "设备身份", "解析模拟 UDI，并建立设备身份锚点。"],
@@ -30,22 +30,24 @@ const copy = {
     ],
     resultTitle: "三段模拟证据关系",
     resultBody: "该界面只是解释预设模拟数据之间的引用关系，不执行医疗 Validator，也不评价设备、临床流程或 AI 决策是否安全、正确或合规。",
+    flow: ["Synthetic DICOM Metadata + UDI Evidence Manifest", "Reference UI", "Evidence Receipt", "Verification Report"],
+    output: [["Evidence Status", "SYNTHETIC PASS"], ["Identity", "REFERENCE MATCH"], ["Registry", "NOT QUERIED"], ["Evidence Chain", "STRUCTURE COMPLETE"]],
     boundariesTitle: "这个 Demo 明确不证明什么",
     boundaries: ["不证明设备物理或临床安全", "不构成监管认证或合规背书", "不代表真实医院部署或生产就绪"],
     sourceCta: "查看已发布的方向文档",
   },
   en: {
-    breadcrumb: ["TITMAS home", "Applications", "Medical Evidence Demo"],
-    eyebrow: "BOUNDED APPLICATION DEMO",
-    title: "UDI-DICOM Evidence Chain Validator",
-    lead: "Enter an explicitly synthetic UDI to inspect how references across device identity, an imaging object, and external evidence are represented.",
+    breadcrumb: ["TITMAS home", "Medical Evidence Infrastructure", "Reference demo"],
+    eyebrow: "REFERENCE DEMO / MEDICAL EVIDENCE DIRECTION",
+    title: "UDI-DICOM Evidence Validator Demo",
+    lead: "The first reference implementation for the TITMAS medical evidence direction: enter an explicitly synthetic UDI to inspect references across device identity, an imaging object, and external evidence.",
     banner: "Concept demo · Synthetic data only · Not production-ready · No compliance or certification claim",
     label: "Synthetic UDI",
     helper: "Used only in this browser. Nothing is uploaded and no real registry is queried.",
-    button: "Inspect synthetic evidence chain",
+    button: "Show synthetic verification report",
     reset: "Reset",
     idle: "Awaiting validation",
-    closed: "Synthetic reference structure shown",
+    closed: "SYNTHETIC_REFERENCE_PASS",
     invalid: "Use a synthetic identifier beginning with 999.TEST. only.",
     steps: [
       ["Identity", "Device identity", "Parse the synthetic UDI and establish an identity anchor."],
@@ -54,6 +56,8 @@ const copy = {
     ],
     resultTitle: "Three-part synthetic evidence relationship",
     resultBody: "This interface only explains references in preset synthetic data. It does not implement a medical validator or assess whether a device, clinical workflow, or AI decision is safe, correct, or compliant.",
+    flow: ["Synthetic DICOM Metadata + UDI Evidence Manifest", "Reference UI", "Evidence Receipt", "Verification Report"],
+    output: [["Evidence Status", "SYNTHETIC PASS"], ["Identity", "REFERENCE MATCH"], ["Registry", "NOT QUERIED"], ["Evidence Chain", "STRUCTURE COMPLETE"]],
     boundariesTitle: "What this demo explicitly does not prove",
     boundaries: ["No physical or clinical safety claim", "No regulatory certification or compliance endorsement", "No real hospital deployment or production-readiness claim"],
     sourceCta: "Read the published direction documents",
@@ -63,7 +67,7 @@ const copy = {
 export function MedicalEvidencePage({ locale }: { locale: Locale }) {
   const c = copy[locale];
   const root = locale === "zh" ? "/" : "/en/";
-  const industries = locale === "zh" ? "/industries/" : "/en/industries/";
+  const industry = locale === "zh" ? "/industry/medical-evidence/" : "/en/industry/medical-evidence/";
   const [udi, setUdi] = useState(SAMPLE_UDI);
   const [state, setState] = useState<"idle" | "complete" | "invalid">("idle");
 
@@ -85,7 +89,7 @@ export function MedicalEvidencePage({ locale }: { locale: Locale }) {
           <div className={styles.heroCopy}>
             <nav className={styles.breadcrumb} aria-label={locale === "zh" ? "面包屑导航" : "Breadcrumb"}>
               <a href={root}>{c.breadcrumb[0]}</a><span>/</span>
-              <a href={industries}>{c.breadcrumb[1]}</a><span>/</span>
+              <a href={industry}>{c.breadcrumb[1]}</a><span>/</span>
               <span aria-current="page">{c.breadcrumb[2]}</span>
             </nav>
             <p className={styles.eyebrow}>{c.eyebrow}</p>
@@ -100,6 +104,9 @@ export function MedicalEvidencePage({ locale }: { locale: Locale }) {
           </div>
 
           <div className={styles.validator}>
+            <ol className={styles.demoFlow} aria-label={locale === "zh" ? "参考 Demo 流程" : "Reference demo flow"}>
+              {c.flow.map((item, index) => <li key={item}><span>0{index + 1}</span><strong>{item}</strong>{index < c.flow.length - 1 && <i>→</i>}</li>)}
+            </ol>
             <label htmlFor="medical-evidence-udi">{c.label}</label>
             <div className={styles.inputRow}>
               <input
@@ -136,6 +143,11 @@ export function MedicalEvidencePage({ locale }: { locale: Locale }) {
               <span>{state === "complete" ? c.closed : c.idle}</span>
               <strong>{c.resultTitle}</strong>
               <p>{c.resultBody}</p>
+              {state === "complete" && (
+                <dl className={styles.outputGrid}>
+                  {c.output.map(([label, value]) => <div key={label}><dt>{label}</dt><dd>{value}</dd></div>)}
+                </dl>
+              )}
               {state === "complete" && <button type="button" onClick={reset}>{c.reset}</button>}
             </div>
           </div>

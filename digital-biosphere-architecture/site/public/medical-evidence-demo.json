@@ -16,9 +16,31 @@
   "sample_identifier": "999.TEST.UDI.DICOM.0001",
   "purpose": "Explain structural evidence-chain closure across device identity, an imaging object, and external evidence.",
   "entrypoints": {
-    "zh": "/medical-evidence/",
-    "en": "/en/medical-evidence/"
+    "industry_zh": "/industry/medical-evidence/",
+    "industry_en": "/en/industry/medical-evidence/",
+    "demo_zh": "/demo/medical-evidence/",
+    "demo_en": "/en/demo/medical-evidence/",
+    "compatibility_zh": "/medical-evidence/",
+    "compatibility_en": "/en/medical-evidence/"
   },
+  "application_positioning": "TITMAS_INDUSTRY_APPLICATION_NOT_MEDICAL_SOFTWARE",
+  "roadmap": [
+    {
+      "stage": "UDI_DICOM_EVIDENCE_PROFILE",
+      "question": "WHICH_DEVICE",
+      "site_status": "REFERENCE_DEMO"
+    },
+    {
+      "stage": "MEDICAL_DEVICE_OPERATION_EVIDENCE",
+      "question": "WHAT_DID_THE_DEVICE_DO",
+      "site_status": "DIRECTION_ONLY"
+    },
+    {
+      "stage": "MEDICAL_AGENT_EVIDENCE",
+      "question": "WHY_DID_THE_AI_DECIDE_THIS",
+      "site_status": "DIRECTION_ONLY"
+    }
+  ],
   "chain": [
     "Identity",
     "Imaging",

@@ -18,7 +18,7 @@ export function Brand() {
   );
 }
 
-type SiteSection = "home" | "industries" | "medical" | "demo" | "status" | "community" | "commercial";
+type SiteSection = "home" | "industries" | "medicalIndustry" | "medical" | "demo" | "status" | "community" | "commercial";
 
 export function Header({ locale, section = "home" }: { locale: Locale; section?: SiteSection }) {
   const c = content[locale];
@@ -31,7 +31,8 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
   const languageRoutes: Record<SiteSection, [string, string]> = {
     home: ["/en/", "/"],
     industries: ["/en/industries/", "/industries/"],
-    medical: ["/en/medical-evidence/", "/medical-evidence/"],
+    medicalIndustry: ["/en/industry/medical-evidence/", "/industry/medical-evidence/"],
+    medical: ["/en/demo/medical-evidence/", "/demo/medical-evidence/"],
     demo: ["/en/digital-cell/", "/digital-cell/"],
     status: ["/en/status/", "/status/"],
     community: ["/en/community/", "/community/"],
@@ -42,8 +43,8 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
   const nav = (
     <>
       <a href={`${root}#architecture`}>{c.nav.architecture}</a>
-      <a href={industries} aria-current={section === "industries" || section === "medical" ? "page" : undefined}>{c.nav.workflow}</a>
-      <a href={demo} aria-current={section === "demo" ? "page" : undefined}>{c.nav.demo}</a>
+      <a href={industries} aria-current={section === "industries" || section === "medicalIndustry" ? "page" : undefined}>{c.nav.workflow}</a>
+      <a href={demo} aria-current={section === "demo" || section === "medical" ? "page" : undefined}>{c.nav.demo}</a>
       <a href={community}>{c.nav.developers}</a>
       <a href={commercial} aria-current={section === "commercial" ? "page" : undefined}>
         {locale === "zh" ? "商业评估" : "Evaluation"}

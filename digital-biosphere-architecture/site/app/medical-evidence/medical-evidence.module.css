@@ -33,6 +33,12 @@
 .truthRow code { padding: 7px 9px; color: #8adcd8; background: #0d2732; border: 1px solid #204a55; border-radius: 5px; font: 700 .64rem var(--font-mono); }
 
 .validator { padding: 34px; background: rgba(13, 39, 50, .84); border: 1px solid #28505a; border-radius: 18px; box-shadow: 0 34px 90px rgba(0, 0, 0, .34); }
+.demoFlow { margin: 0 0 30px; padding: 0; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid #24444d; list-style: none; }
+.demoFlow li { position: relative; min-height: 92px; padding: 13px; display: flex; flex-direction: column; justify-content: space-between; border-right: 1px solid #24444d; }
+.demoFlow li:last-child { border-right: 0; }
+.demoFlow span { color: #f5a700; font: 760 .6rem var(--font-mono); }
+.demoFlow strong { color: #b8c9ce; font: 700 .66rem/1.45 var(--font-mono); }
+.demoFlow i { position: absolute; right: -10px; top: calc(50% - 10px); z-index: 2; width: 20px; height: 20px; display: grid; place-items: center; color: #8adcd8; background: #0d2732; font-style: normal; }
 .validator > label { display: block; margin-bottom: 11px; color: #b8c9ce; font-size: .8rem; font-weight: 750; }
 .inputRow { display: grid; grid-template-columns: 1fr auto; gap: 9px; }
 .inputRow input { min-width: 0; min-height: 52px; padding: 0 15px; color: white; background: #06151c; border: 1px solid #315f69; border-radius: 8px; outline: none; font: 680 .8rem var(--font-mono); }
@@ -62,6 +68,10 @@
 .resultVisible { background: #0b282e; border-color: #3e7e7b; box-shadow: 0 0 32px rgba(89, 189, 180, .08); }
 .resultVisible > span { color: #8adcd8; }
 .resultVisible strong { color: white; }
+.outputGrid { margin: 18px 0 0; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.outputGrid div { padding: 12px; background: rgba(255,255,255,.04); border: 1px solid #31525b; }
+.outputGrid dt { color: #78939b; font: 700 .62rem var(--font-mono); }
+.outputGrid dd { margin: 7px 0 0; color: #8adcd8; font: 760 .68rem var(--font-mono); }
 
 .boundaries { padding: 58px max(20px, calc((100vw - 1180px) / 2)); color: #22333a; background: #eef2f1; }
 .boundaries > p { margin: 0; color: #4f61ab; font: 760 .68rem var(--font-mono); letter-spacing: .12em; }
@@ -82,6 +92,10 @@
   .inputRow { grid-template-columns: 1fr; }
   .validator { padding: 22px; }
   .boundaries div { grid-template-columns: 1fr; }
+  .demoFlow { grid-template-columns: 1fr 1fr; }
+  .demoFlow li:nth-child(2) { border-right: 0; }
+  .demoFlow li:nth-child(-n+2) { border-bottom: 1px solid #24444d; }
+  .outputGrid { grid-template-columns: 1fr; }
 }
 
 @media (prefers-reduced-motion: reduce) {

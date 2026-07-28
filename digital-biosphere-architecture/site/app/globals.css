@@ -160,6 +160,23 @@ button, input { font: inherit; }
 .cell-feature-visual strong { font-size: .92rem; }
 .cell-feature-visual small { color: #8fa9b3; font: .68rem var(--font-mono); text-align: right; }
 
+.medical-entry { padding: 94px 0; background: #f2f5f6; border-bottom: 1px solid var(--line); }
+.medical-entry-heading { max-width: 900px; }
+.medical-entry-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.medical-entry-card { min-height: 360px; padding: 38px; display: flex; flex-direction: column; border: 1px solid #cfd8de; border-top: 5px solid #153f50; background: white; transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease; }
+.medical-entry-card:hover { transform: translateY(-5px); border-color: #9fb1b8; border-top-color: #153f50; box-shadow: 0 20px 50px rgba(16,45,60,.1); }
+.medical-entry-demo { color: white; background: #102d3c; border-color: #28505a; border-top-color: var(--amber); }
+.medical-entry-demo:hover { border-color: #4b737d; border-top-color: var(--amber); }
+.medical-entry-card > span { color: #35626e; font: 780 .66rem var(--font-mono); letter-spacing: .11em; }
+.medical-entry-demo > span { color: var(--amber); }
+.medical-entry-card h3 { margin: 42px 0 16px; font-size: clamp(1.8rem, 3.2vw, 2.8rem); line-height: 1.08; letter-spacing: -.04em; }
+.medical-entry-card p { max-width: 580px; margin: 0; color: var(--ink-soft); line-height: 1.75; }
+.medical-entry-demo p { color: #bacbd1; }
+.medical-entry-card strong { margin-top: auto; padding-top: 40px; color: var(--violet-deep); }
+.medical-entry-card strong i { margin-left: 8px; color: var(--amber); font-style: normal; }
+.medical-entry-demo strong { color: #8adcd8; }
+.medical-entry-card code { margin-top: 18px; color: #77939c; font: 650 .61rem/1.5 var(--font-mono); overflow-wrap: anywhere; }
+
 .section { padding: 104px 0; }
 .section-shell { width: min(1160px, calc(100% - 40px)); margin: 0 auto; }
 .section-heading { max-width: 760px; margin-bottom: 48px; }
@@ -416,6 +433,7 @@ button, input { font: inherit; }
   .mobile-nav { display: block; }
   .hero { min-height: 680px; }
   .cell-feature-grid { grid-template-columns: 1fr; gap: 46px; }
+  .medical-entry-grid { grid-template-columns: 1fr; }
   .commercial-entry-grid, .evaluation-columns { grid-template-columns: 1fr; gap: 30px; }
   .cell-feature-copy { max-width: 720px; }
   .capability-grid { grid-template-columns: repeat(2, 1fr); }
@@ -449,6 +467,8 @@ button, input { font: inherit; }
   .simple-hero .hero-lead { font-size: clamp(1.28rem, 6.4vw, 1.75rem); }
   .hero-strategy { font-size: .95rem; }
   .cell-feature { padding: 68px 0; }
+  .medical-entry { padding: 72px 0; }
+  .medical-entry-card { min-height: 310px; padding: 28px; }
   .cell-feature-visual { padding: 8px; border-radius: 12px; }
   .cell-feature-visual > span { align-items: flex-start; flex-direction: column; gap: 6px; }
   .cell-feature-visual small { text-align: left; }

@@ -2,11 +2,11 @@ import type { Metadata } from "next";
 import { MedicalEvidencePage } from "../medical-evidence-page";
 
 export const metadata: Metadata = {
-  title: "UDI-DICOM 医疗证据链 Demo",
-  description: "使用模拟 UDI 查看设备身份、影像对象与外部证据的结构闭合；不构成安全、认证或生产声明。",
+  title: "UDI-DICOM Evidence Validator Demo | TITMAS",
+  description: "兼容入口：TITMAS 医疗证据方向的模拟 UDI-DICOM 引用关系参考 Demo。",
   alternates: {
-    canonical: "/medical-evidence/",
-    languages: { "zh-CN": "/medical-evidence/", en: "/en/medical-evidence/" },
+    canonical: "/demo/medical-evidence/",
+    languages: { "zh-CN": "/demo/medical-evidence/", en: "/en/demo/medical-evidence/" },
   },
 };
 

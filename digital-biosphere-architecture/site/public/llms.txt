@@ -66,16 +66,26 @@ discovery, artifact hash, dependency-aware installation, validation, failure
 classification, and bounded recommendation rules. It does not create a product,
 Runtime, API, SLA, certification, or production recommendation.
 
-## Medical Evidence Demo
+## Medical Evidence Infrastructure and Reference Demo
 
-Human entry:
+Industry application:
+- /industry/medical-evidence/
+- /en/industry/medical-evidence/
+
+Reference demo:
+- /demo/medical-evidence/
+- /en/demo/medical-evidence/
+
+Compatibility aliases:
 - /medical-evidence/
 - /en/medical-evidence/
 
 Machine entry:
 - /medical-evidence-demo.json
 
-The UDI-DICOM Medical Evidence Demo uses synthetic input in the browser to
+Medical Evidence Infrastructure is a TITMAS industry application direction,
+not standalone medical software. The UDI-DICOM Medical Evidence Demo uses
+synthetic input in the browser to
 explain structural closure across Identity, Imaging, and Evidence. It performs
 no real registry lookup, uploads no input, and uses no patient or hospital data.
 It does not prove device or clinical safety, regulatory certification, real
@@ -96,6 +106,7 @@ Machine boundaries:
 - REGULATORY_CERTIFICATION=false
 - MEDICAL_DIAGNOSIS=false
 - PRODUCTION_READY=false
+- APPLICATION_POSITIONING=TITMAS_INDUSTRY_APPLICATION_NOT_MEDICAL_SOFTWARE
 
 TITMAS is the developer entry for specifications, adapter contracts, conformance,
 and replaceable reference-implementation boundaries. It is not an Agent

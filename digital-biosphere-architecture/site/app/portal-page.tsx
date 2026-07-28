@@ -130,6 +130,43 @@ export function PortalPage({ locale }: { locale: Locale }) {
           </div>
         </section>
 
+        <section className="medical-entry" data-section-id="medical-evidence-application">
+          <div className="section-shell">
+            <div className="section-heading medical-entry-heading">
+              <p className="section-kicker">INDUSTRY APPLICATION + REFERENCE DEMO</p>
+              <h2>{locale === "zh" ? "从可信基础设施进入医疗证据场景" : "Bring trust infrastructure into medical evidence"}</h2>
+              <p>
+                {locale === "zh"
+                  ? "医疗证据基础设施不是独立医疗软件，而是 TITMAS 在医疗设备、操作过程与 AI 智能体证据方向上的第一个行业应用。"
+                  : "Medical Evidence Infrastructure is not standalone medical software. It is the first TITMAS industry application direction for evidence across medical devices, operations, and AI agents."}
+              </p>
+            </div>
+            <div className="medical-entry-grid">
+              <a className="medical-entry-card medical-entry-application" href={locale === "zh" ? "/industry/medical-evidence/" : "/en/industry/medical-evidence/"}>
+                <span>INDUSTRY APPLICATION</span>
+                <h3>{locale === "zh" ? "医疗证据基础设施" : "Medical Evidence Infrastructure"}</h3>
+                <p>
+                  {locale === "zh"
+                    ? "基于 TITMAS 的医疗设备、操作流程和 AI 智能体可信证据体系。"
+                    : "A TITMAS-based evidence system for medical devices, operations, and AI agents."}
+                </p>
+                <strong>{locale === "zh" ? "查看详情" : "Explore the direction"} <i>→</i></strong>
+              </a>
+              <a className="medical-entry-card medical-entry-demo" href={locale === "zh" ? "/demo/medical-evidence/" : "/en/demo/medical-evidence/"}>
+                <span>REFERENCE DEMO</span>
+                <h3>UDI-DICOM Evidence Validator</h3>
+                <p>
+                  {locale === "zh"
+                    ? "使用模拟 UDI 展开 Identity → Imaging → Evidence 的预设引用关系。"
+                    : "Use a synthetic UDI to inspect preset Identity → Imaging → Evidence references."}
+                </p>
+                <strong>{locale === "zh" ? "查看 Demo" : "Open the demo"} <i>→</i></strong>
+                <code>SYNTHETIC_DATA_ONLY · VALIDATOR_IMPLEMENTED_HERE=false</code>
+              </a>
+            </div>
+          </div>
+        </section>
+
         <section className="intro section" data-section-id="intro">
           <div className="section-shell intro-grid">
             <div>

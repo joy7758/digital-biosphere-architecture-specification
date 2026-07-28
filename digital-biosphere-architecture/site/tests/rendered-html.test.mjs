@@ -49,6 +49,12 @@ test("renders equivalent Chinese and English public entry points", async () => {
   assert.match(en, /Evidence/);
   assert.match(zh, /10 分钟判断 TITMAS/);
   assert.match(en, /Evaluate TITMAS for your multi-agent system in 10 minutes/);
+  assert.match(zh, /医疗证据基础设施/);
+  assert.match(en, /Medical Evidence Infrastructure/);
+  assert.match(zh, /href="\/industry\/medical-evidence\//);
+  assert.match(en, /href="\/en\/industry\/medical-evidence\//);
+  assert.match(zh, /href="\/demo\/medical-evidence\//);
+  assert.match(en, /href="\/en\/demo\/medical-evidence\//);
   assert.match(zh, /TITMAS_PUBLIC_DOMAIN/);
   assert.match(en, /TITMAS_GITHUB_SLUG/);
   assert.match(zh, /\/status\//);
@@ -114,20 +120,40 @@ test("renders clickable bilingual industry application entry points", async () =
   assert.match(en, /TITMAS does not provide/);
   assert.match(zh, /href="\/digital-cell\//);
   assert.match(en, /href="\/en\/digital-cell\//);
-  assert.match(zh, /href="\/medical-evidence\//);
-  assert.match(en, /href="\/en\/medical-evidence\//);
+  assert.match(zh, /href="\/industry\/medical-evidence\//);
+  assert.match(en, /href="\/en\/industry\/medical-evidence\//);
 });
 
-test("renders bilingual synthetic medical evidence demo with explicit boundaries", async () => {
+test("renders bilingual medical evidence industry application with explicit infrastructure positioning", async () => {
   const [zhResponse, enResponse] = await Promise.all([
-    render("/medical-evidence"),
-    render("/en/medical-evidence"),
+    render("/industry/medical-evidence"),
+    render("/en/industry/medical-evidence"),
   ]);
   assert.equal(zhResponse.status, 200);
   assert.equal(enResponse.status, 200);
   const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
-  assert.match(zh, /UDI-DICOM 证据链验证器/);
-  assert.match(en, /UDI-DICOM Evidence Chain Validator/);
+  assert.match(zh, /医疗证据基础设施/);
+  assert.match(en, /Medical Evidence Infrastructure/);
+  assert.match(zh, /未来医疗系统不是缺少数据/);
+  assert.match(en, /Future medical systems will not lack data/);
+  assert.match(zh, /INDEPENDENT_MEDICAL_PLATFORM=false/);
+  assert.match(en, /INDEPENDENT_MEDICAL_PLATFORM=false/);
+  assert.match(zh, /DIRECTION_ONLY/);
+  assert.match(en, /DIRECTION_ONLY/);
+  assert.match(zh, /href="\/demo\/medical-evidence\//);
+  assert.match(en, /href="\/en\/demo\/medical-evidence\//);
+});
+
+test("renders bilingual synthetic medical evidence reference demo with explicit boundaries", async () => {
+  const [zhResponse, enResponse] = await Promise.all([
+    render("/demo/medical-evidence"),
+    render("/en/demo/medical-evidence"),
+  ]);
+  assert.equal(zhResponse.status, 200);
+  assert.equal(enResponse.status, 200);
+  const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
+  assert.match(zh, /UDI-DICOM Evidence Validator Demo/);
+  assert.match(en, /UDI-DICOM Evidence Validator Demo/);
   assert.match(zh, /SYNTHETIC_DATA_ONLY/);
   assert.match(en, /REAL_REGISTRY_LOOKUP=false/);
   assert.match(zh, /VALIDATOR_IMPLEMENTED_HERE=false/);
@@ -136,8 +162,8 @@ test("renders bilingual synthetic medical evidence demo with explicit boundaries
   assert.match(en, /does not implement a medical validator/);
   assert.match(zh, /不构成监管认证或合规背书/);
   assert.match(en, /No regulatory certification or compliance endorsement/);
-  assert.match(zh, /href="\/industries\//);
-  assert.match(en, /href="\/en\/industries\//);
+  assert.match(zh, /href="\/industry\/medical-evidence\//);
+  assert.match(en, /href="\/en\/industry\/medical-evidence\//);
 });
 
 test("renders bilingual Digital Cell pages with shared return navigation", async () => {
@@ -220,8 +246,11 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.entrypoints.commercial_evaluation_manifest, "/TITMAS-COMMERCIAL-EVALUATION-PACK-v0.2.json");
   assert.equal(agentIndex.entrypoints.industries_zh, "/industries/");
   assert.equal(agentIndex.entrypoints.industries_en, "/en/industries/");
-  assert.equal(agentIndex.entrypoints.medical_evidence_demo_zh, "/medical-evidence/");
-  assert.equal(agentIndex.entrypoints.medical_evidence_demo_en, "/en/medical-evidence/");
+  assert.equal(agentIndex.entrypoints.medical_evidence_industry_zh, "/industry/medical-evidence/");
+  assert.equal(agentIndex.entrypoints.medical_evidence_industry_en, "/en/industry/medical-evidence/");
+  assert.equal(agentIndex.entrypoints.medical_evidence_demo_zh, "/demo/medical-evidence/");
+  assert.equal(agentIndex.entrypoints.medical_evidence_demo_en, "/en/demo/medical-evidence/");
+  assert.equal(medicalEvidence.application_positioning, "TITMAS_INDUSTRY_APPLICATION_NOT_MEDICAL_SOFTWARE");
   assert.equal(medicalEvidence.status, "STATIC_SYNTHETIC_UI_DEMO");
   assert.equal(medicalEvidence.direction_status, "DEVELOPMENT_DIRECTION");
   assert.equal(medicalEvidence.vertical_development_direction, true);
