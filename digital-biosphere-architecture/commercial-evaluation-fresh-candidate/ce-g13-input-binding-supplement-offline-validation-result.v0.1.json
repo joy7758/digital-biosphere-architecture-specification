@@ -1,0 +1,294 @@
+{
+  "record_type": "TITMAS_CE_G13_INPUT_BINDING_SUPPLEMENT_OFFLINE_VALIDATION_RESULT",
+  "version": "0.1.0",
+  "status": "PASS",
+  "observed_at": "2026-07-28",
+  "branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G13-INPUT-BINDING-SUPPLEMENT-OFFLINE-VALIDATION-DECISION-RECORD.v0.1.json",
+  "decision_commit": "a7f67f491b0874fde39766e91020d54ce232e661",
+  "package_commit": "853f86395ba687929da5f45024486f046866d01d",
+  "supplement_package_manifest_sha256": "5a67190aef647c1881d764806b59e0d9b7ed3b9438145a9eed8c9eecc16a2b34",
+  "base_package_manifest_sha256": "be7b0db4f0f349f8898f749e8ee0f4bd6a3407c79acbe33b415da081ff9ea9ed",
+  "counts": {
+    "validation_runs": 1,
+    "package_files": 16,
+    "json_files_duplicate_checked": 14,
+    "schemas_meta_validated": 6,
+    "candidate_and_template_instances": 6,
+    "role_envelope_positive_samples": 5,
+    "declared_negative_cases": 32,
+    "negative_cases_rejected": 32,
+    "checks_passed": 16,
+    "checks_failed": 0
+  },
+  "checks": [
+    {
+      "check_id": "PKG-001-EXACT-SCOPE",
+      "status": "PASS",
+      "detail": "16 files; 14 JSON; 2 Markdown; 0 executable; no symlink or nested file"
+    },
+    {
+      "check_id": "JSON-001-DUPLICATE-KEY-REJECTION",
+      "status": "PASS",
+      "detail": "14/14 JSON parsed with duplicate-key rejection"
+    },
+    {
+      "check_id": "PKG-002-MANIFEST-INTEGRITY",
+      "status": "PASS",
+      "detail": "15/15 non-recursive entries match exact bytes and SHA-256"
+    },
+    {
+      "check_id": "BASE-001-IMMUTABLE-BASE",
+      "status": "PASS",
+      "detail": "immutable 28-file base manifest unchanged"
+    },
+    {
+      "check_id": "SCHEMA-001-META-AND-LOCAL-REGISTRY",
+      "status": "PASS",
+      "detail": "6/6 Draft 2020-12 Schemas meta-valid; unknown URI rejected locally"
+    },
+    {
+      "check_id": "INSTANCE-001-CANDIDATES-AND-TEMPLATES",
+      "status": "PASS",
+      "detail": "6/6 candidate and template instances valid"
+    },
+    {
+      "check_id": "SEM-001-SANITIZATION-PROFILE",
+      "status": "PASS",
+      "detail": "identity encoding, strict UTF-8, deterministic no-rewrite profile"
+    },
+    {
+      "check_id": "SEM-002-PUBLIC-INPUT-BUNDLE",
+      "status": "PASS",
+      "detail": "captured bundle exact raw/text/profile/order binding"
+    },
+    {
+      "check_id": "SEM-003-EXACT-26-OUTPUTS",
+      "status": "PASS",
+      "detail": "25 unique entries plus excluded manifest = 26 files"
+    },
+    {
+      "check_id": "SEM-004-OUTCOME-SEPARATION",
+      "status": "PASS",
+      "detail": "runtime and governance statuses separated; failures immutable"
+    },
+    {
+      "check_id": "SEM-005-CANDIDATE-RUN-COUNT-ZERO",
+      "status": "PASS",
+      "detail": "candidate records zero authorized/executed runs"
+    },
+    {
+      "check_id": "BOUNDARY-001-ZERO-EFFECTS",
+      "status": "PASS",
+      "detail": "8 effect sections remain zero or false"
+    },
+    {
+      "check_id": "ROLE-001-S01-THROUGH-S05-POSITIVE",
+      "status": "PASS",
+      "detail": "5/5 ephemeral CAPTURED role envelopes valid with exact ordered bindings"
+    },
+    {
+      "check_id": "NEG-000-CATALOG",
+      "status": "PASS",
+      "detail": "32 unique declared cases; all expect REJECT"
+    },
+    {
+      "check_id": "NEG-001-ALL-DECLARED-CASES",
+      "status": "PASS",
+      "detail": "32/32 declared mutations rejected"
+    },
+    {
+      "check_id": "BOUNDARY-002-NETWORK-DNS-CREDENTIAL-MODEL-ZERO",
+      "status": "PASS",
+      "detail": "socket=0; dns=0; credentials=0; models=0; public_fetches=0; technical_runs=0"
+    }
+  ],
+  "negative_case_results": [
+    {
+      "case_id": "SUP-NEG-001",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-002",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-003",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-004",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-005",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-006",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-007",
+      "status": "PASS_REJECTED",
+      "rejection": "DuplicateKeyError"
+    },
+    {
+      "case_id": "SUP-NEG-008",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-009",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-010",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-011",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-012",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-013",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-014",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-015",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-016",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-017",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-018",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-019",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-020",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-021",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-022",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-023",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-024",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-025",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-026",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-027",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-028",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-029",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-030",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-031",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    },
+    {
+      "case_id": "SUP-NEG-032",
+      "status": "PASS_REJECTED",
+      "rejection": "AssertionError"
+    }
+  ],
+  "failures": [],
+  "effects": {
+    "network_requests": 0,
+    "dns_requests": 0,
+    "unknown_uri_local_rejections": 1,
+    "credential_reads": 0,
+    "model_requests": 0,
+    "public_fetches": 0,
+    "technical_reuse_runs": 0,
+    "runtime_starts": 0,
+    "agent_instances": 0,
+    "entity_instances": 0,
+    "capability_instances": 0,
+    "permission_grants": 0,
+    "evidence_truth_objects": 0
+  },
+  "claims": {
+    "contract_validation_only": true,
+    "ce_g13_execution_authorized": false,
+    "customer_adoption": false,
+    "market_demand": false,
+    "commercial_offering": false,
+    "certification": false,
+    "standard_ready": false,
+    "production_ready": false
+  }
+}
