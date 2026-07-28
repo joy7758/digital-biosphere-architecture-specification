@@ -19,7 +19,20 @@ export function sites(): Plugin {
   let root = process.cwd();
 
   return {
-    name: "sites",
+    name: "vinext-sites",
+    enforce: "pre",
+    resolveId(source) {
+      if (source === "vinext/server/image-optimization") {
+        return "\0vinext/server/image-optimization";
+      }
+      return null;
+    },
+    load(id) {
+      if (id === "\0vinext/server/image-optimization") {
+        return "export const DEFAULT_DEVICE_SIZES = [];\nexport const DEFAULT_IMAGE_SIZES = [];\nexport function handleImageOptimization() {}";
+      }
+      return null;
+    },
     apply: "build",
     configResolved(config) {
       root = config.root;
