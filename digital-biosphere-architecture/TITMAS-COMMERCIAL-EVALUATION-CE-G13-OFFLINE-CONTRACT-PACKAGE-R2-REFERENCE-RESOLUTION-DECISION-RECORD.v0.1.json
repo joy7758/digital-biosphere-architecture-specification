@@ -1,0 +1,156 @@
+{
+  "record_type": "TITMAS_CE_G13_OFFLINE_CONTRACT_PACKAGE_R2_REFERENCE_RESOLUTION_DECISION",
+  "decision_id": "TITMAS-COMMERCIAL-EVALUATION-CE-G13-OFFLINE-CONTRACT-PACKAGE-R2-REFERENCE-RESOLUTION",
+  "version": "0.1.0",
+  "status": "AUTHORIZE_ONE_URI_ALIGNMENT_AND_ONE_LOCAL_ONLY_R2_VALIDATION_IF_QUALIFYING_DECISION_REVIEW",
+  "decided_at": "2026-07-28",
+  "decided_by_ref": "zhangbin",
+  "standing_directive_reference": "TITMAS-CS-STANDING-001",
+  "selected_option": "A",
+  "primary_repository": "digital-biosphere-architecture",
+  "source_branch": "codex/ce-g11b-pr23-remediation-candidate-governance",
+  "recommendation_reference": "TITMAS-CE-G13-OFFLINE-CONTRACT-PACKAGE-R2-REFERENCE-RESOLUTION-REMEDIATION-RECOMMENDATION-v0.2.md",
+  "recommendation_sha256": "22654367416a7d6b92c0ec8596b682931d6f010273d0fceca1603264dea0e0b3",
+  "recommendation_review_reference": "TITMAS-CE-G13-OFFLINE-CONTRACT-PACKAGE-R2-REFERENCE-RESOLUTION-REMEDIATION-RECOMMENDATION-QWEN-REVIEW-v0.2.json",
+  "recommendation_review_sha256": "5d2bc7d3f566e4fef28ce878430b27a201b7dd0ebe46bfb0ee2fbb16c49ff6aa",
+  "recommendation_commit": "432520570227273895adc3038d18a6558a30490c",
+  "recommendation_remote_verified": true,
+  "preserved_failures": [
+    {
+      "reference": "TITMAS-CE-G13-OFFLINE-CONTRACT-PACKAGE-R1-FAILURE-REPORT-v0.1.md",
+      "sha256": "769e0bea942fa980fd1fc348edc34cbf6250975728de0a891267d6b5c59150ce",
+      "status": "FAIL_CLOSED_SCHEMA_REFERENCE_RESOLUTION_ATTEMPTED_REMOTE_FETCH"
+    },
+    {
+      "reference": "TITMAS-CE-G13-OFFLINE-CONTRACT-PACKAGE-R2-RECOMMENDATION-REVIEW-FAILURE-v0.1.json",
+      "sha256": "05ae5b903b31341f82e986fc7d650582df87cbe6b11cb55d75753f96bedf2ba6",
+      "status": "FAIL_CLOSED_NO_PERSISTED_PROVIDER_RESPONSE"
+    }
+  ],
+  "package_directory": "commercial-evaluation-ce-g13-offline-contract",
+  "package_contract": {
+    "exact_file_count": 28,
+    "unchanged_files": 26,
+    "mutated_files": 2,
+    "json_files": 21,
+    "markdown_files": 2,
+    "prompt_text_files": 5,
+    "executable_files": 0,
+    "network_clients": 0
+  },
+  "exact_mutations": [
+    {
+      "path": "commercial-evaluation-ce-g13-offline-contract/session-response.base.schema.v0.1.json",
+      "field": "$id",
+      "from": "https://titmas.cn/schemas/ce-g13-session-response.base.schema.v0.1.json",
+      "to": "https://titmas.cn/schemas/session-response.base.schema.v0.1.json"
+    },
+    {
+      "path": "commercial-evaluation-ce-g13-offline-contract/package-manifest.candidate.v0.1.json",
+      "field": "files[path=session-response.base.schema.v0.1.json].bytes_and_sha256",
+      "from": "R1_BASE_SCHEMA_BYTES_AND_SHA256",
+      "to": "R2_BASE_SCHEMA_BYTES_AND_SHA256"
+    }
+  ],
+  "r2_validation_contract": {
+    "validation_runs": 1,
+    "exact_28_file_allowlist": true,
+    "duplicate_json_key_rejection": true,
+    "draft_2020_12_schema_count": 14,
+    "candidate_and_template_instance_validation": true,
+    "five_positive_role_samples": true,
+    "five_wrong_session_negative_samples": true,
+    "explicit_local_registry_required": true,
+    "unknown_uri_retrieval_must_raise_locally": true,
+    "deprecated_ref_resolver_forbidden": true,
+    "network_attempts": 0,
+    "credential_reads": 0,
+    "model_requests": 0,
+    "technical_reuse_runs": 0,
+    "result": "PASS_OR_FAIL_CLOSED_CONSOLE_ONLY"
+  },
+  "authorization": {
+    "decision_review_request_authorized": true,
+    "retain_26_unchanged_package_files_if_review_qualifies": true,
+    "two_exact_package_mutations_authorized_if_review_qualifies": true,
+    "one_r2_offline_validation_authorized_if_review_qualifies": true,
+    "one_package_path_scoped_commit_and_push_authorized_only_on_complete_pass": true,
+    "public_fetch": false,
+    "credential_read": false,
+    "post_decision_agent_model_request": false,
+    "technical_reuse_run": false,
+    "ce_g13_execution": false,
+    "runtime": false,
+    "agent_instance": false,
+    "entity_instance": false,
+    "capability": false,
+    "permission": false,
+    "evidence_truth": false,
+    "pr": false,
+    "merge": false,
+    "release": false,
+    "deployment": false,
+    "customer_adoption": false,
+    "commercial_offering": false,
+    "certification": false,
+    "production_ready": false
+  },
+  "caps": {
+    "decision_review_model_requests": 1,
+    "package_mutations": 2,
+    "offline_validation_runs": 1,
+    "package_commits_on_pass": 1,
+    "package_pushes_on_pass": 1,
+    "retries": 0,
+    "fallbacks": 0,
+    "model_substitutions": 0,
+    "json_extractions": 0,
+    "json_repairs": 0,
+    "network_attempts": 0,
+    "credential_reads": 0,
+    "post_decision_model_requests": 0,
+    "technical_runs": 0
+  },
+  "decision_review_contract": {
+    "model": "qwen3.7-max",
+    "request_cap": 1,
+    "direct_json_required": true,
+    "required_top_level_keys": [
+      "verdict",
+      "confidence",
+      "standing_directive_applicable",
+      "preserved_failures_bound",
+      "root_cause_and_uri_mutation_sound",
+      "manifest_update_bounded",
+      "local_only_registry_contract_sound",
+      "r2_validation_scope_complete",
+      "commit_gate_fail_closed",
+      "execution_non_authorization_complete",
+      "authority_boundaries_preserved",
+      "blockers",
+      "corrections",
+      "rationale"
+    ],
+    "qualifying_threshold": {
+      "verdict": "APPROVE",
+      "confidence_min": 0.9,
+      "all_boolean_checks_true": true,
+      "blockers": 0,
+      "corrections": 0
+    }
+  },
+  "stop_conditions": [
+    "DECISION_REVIEW_NOT_EXACT_QWEN3_7_MAX_DIRECT_JSON_OR_NOT_QUALIFYING",
+    "RECOMMENDATION_REMOTE_COMMIT_DRIFT",
+    "R1_OR_REVIEW_FAILURE_NOT_PRESERVED",
+    "PACKAGE_FILE_COUNT_OR_PATH_SCOPE_DIFFERS",
+    "MUTATION_EXCEEDS_TWO_EXACT_FIELDS",
+    "UNKNOWN_URI_CAN_TRIGGER_REMOTE_RETRIEVAL",
+    "ANY_NETWORK_ATTEMPT_OR_CREDENTIAL_READ",
+    "SCHEMA_OR_INSTANCE_OR_HASH_OR_NEGATIVE_VALIDATION_FAILS",
+    "ANY_MODEL_REQUEST_AFTER_DECISION_REVIEW",
+    "ANY_TECHNICAL_RUN_OR_RUNTIME_AGENT_ENTITY_PERMISSION_EFFECT",
+    "ANY_CUSTOMER_COMMERCIAL_CERTIFICATION_PRODUCTION_OR_AUTHORITY_ELEVATION"
+  ],
+  "exact_authorized_action": "Send exactly one qwen3.7-max Decision review. Only after qualifying direct JSON review and remote verification, retain the 26 unchanged files in commercial-evaluation-ce-g13-offline-contract, change exactly the common Schema $id and its manifest bytes/SHA-256 entry, then run exactly one local-only R2 validation using an explicit Registry that raises locally for every unknown URI. Commit and push exactly the package directory only if every check passes. Do not perform public HTTP or DNS, credential reads, CE-G13 role sessions, technical reuse, Runtime/Agent/Entity/Capability/Permission/Evidence creation, PR, merge, release, deployment, customer/adoption/demand, commercial offering, certification, Production Ready, Authority or Ownership changes."
+}
