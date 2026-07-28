@@ -1,0 +1,189 @@
+{
+  "result_id": "TITMAS-CE-G12-PUBLIC-ROUTE-VALIDATION-RESULT-001",
+  "version": "0.1.0",
+  "observed_at": "2026-07-28T02:03:24Z",
+  "status": "FAIL_CLOSED_OUTSIDE_IN_PUBLIC_ROUTE_OR_AGENT_DISCOVERY_VALIDATION_NO_STATUS_ELEVATION",
+  "decision_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PUBLIC-ROUTE-VALIDATION",
+  "decision_sha256": "dd70840aa944338f608b52f0dafae9e8e0c44e3cb3c75b55601432113b790f8a",
+  "decision_review_reference": "TITMAS-COMMERCIAL-EVALUATION-CE-G12-PUBLIC-ROUTE-VALIDATION-QWEN-DECISION-REVIEW-v0.1.json",
+  "decision_review_sha256": "53c307b8aec253c4b190339a9f9b4262f978c06334bd42308efc38e233d2976d",
+  "governance_commit": "16d5bc3f423f7e59b96cf28a501cdf83cb8cad85",
+  "network_observation": {
+    "origin": "https://redcrag.cn",
+    "real_dns_requested": true,
+    "resolve_override": false,
+    "proxy_option_disabled": true,
+    "tls_insecure": false,
+    "expected_remote_ip": "180.76.115.193",
+    "observed_remote_ips": [
+      "198.18.0.90"
+    ],
+    "expected_remote_ip_observed": false,
+    "observed_remote_ip_in_rfc2544_benchmark_range": true,
+    "synthetic_or_intercepted_path_proven": false,
+    "direct_origin_network_path_proven": false,
+    "network_path_attribution": "UNKNOWN_SYNTHETIC_RANGE_REMOTE_IP_OBSERVED"
+  },
+  "application_surface": {
+    "requests_executed": 10,
+    "curl_exits_zero": "10/10",
+    "tls_verify_results_zero": "10/10",
+    "http_version": "2",
+    "status_and_redirect_contracts_passed": "10/10",
+    "body_hash_contracts_passed": "9/9",
+    "json_contracts_passed": "5/5",
+    "agent_readable_endpoint_contracts_passed": "7/7",
+    "content_exact": true,
+    "application_reachable_from_execution_environment": true,
+    "strict_outside_in_contract_pass": false
+  },
+  "request_summary": [
+    {
+      "id": "PUB-01",
+      "path": "/",
+      "status": 200,
+      "remote_ip": "198.18.0.90",
+      "tls_verify_result": 0,
+      "body_sha256": "cca332da1364a614bbef83939d0ff7c948739e673d14c7c1b2a60cd9d500abf8",
+      "content_contract_pass": true,
+      "strict_request_pass": false
+    },
+    {
+      "id": "PUB-02",
+      "path": "/en",
+      "status": 301,
+      "location": "https://redcrag.cn/en/",
+      "remote_ip": "198.18.0.90",
+      "tls_verify_result": 0,
+      "content_contract_pass": true,
+      "strict_request_pass": false
+    },
+    {
+      "id": "PUB-03",
+      "path": "/en",
+      "status": 200,
+      "final_url": "https://redcrag.cn/en/",
+      "remote_ip": "198.18.0.90",
+      "tls_verify_result": 0,
+      "body_sha256": "562c061979c8cd72b1a94a74715727a898251a7716d61f64f4760468c0fb65f1",
+      "content_contract_pass": true,
+      "strict_request_pass": false
+    },
+    {
+      "id": "PUB-04",
+      "path": "/status.json",
+      "status": 200,
+      "remote_ip": "198.18.0.90",
+      "tls_verify_result": 0,
+      "body_sha256": "8d7cef3c6b07916ddd3e5e40d988764a95ad9a97878584986c2c33f1cdef2b33",
+      "json_valid": true,
+      "content_contract_pass": true,
+      "strict_request_pass": false
+    },
+    {
+      "id": "PUB-05",
+      "path": "/agent-index.json",
+      "status": 200,
+      "remote_ip": "198.18.0.90",
+      "tls_verify_result": 0,
+      "body_sha256": "8ac9cf1a4efd5a4b47ed23c300367a63fb18bea6c11a347ee00a7d84f9737f63",
+      "json_valid": true,
+      "content_contract_pass": true,
+      "strict_request_pass": false
+    },
+    {
+      "id": "PUB-06",
+      "path": "/llms.txt",
+      "status": 200,
+      "remote_ip": "198.18.0.90",
+      "tls_verify_result": 0,
+      "body_sha256": "5f882cc8a58c4a90f345de9bdd68301da4598bc3cbee679cebef6c70776525e6",
+      "content_contract_pass": true,
+      "strict_request_pass": false
+    },
+    {
+      "id": "PUB-07",
+      "path": "/robots.txt",
+      "status": 200,
+      "remote_ip": "198.18.0.90",
+      "tls_verify_result": 0,
+      "body_sha256": "a43968c239c1e497bdd07bad4110c03d7a141f1d18341ee725cde390fc7e007f",
+      "content_contract_pass": true,
+      "strict_request_pass": false
+    },
+    {
+      "id": "PUB-08",
+      "path": "/titmas-community.json",
+      "status": 200,
+      "remote_ip": "198.18.0.90",
+      "tls_verify_result": 0,
+      "body_sha256": "a7cf64e677a6f0cd794b33f69a18c367ea18dd0944e44f438d1175a83416214f",
+      "json_valid": true,
+      "content_contract_pass": true,
+      "strict_request_pass": false
+    },
+    {
+      "id": "PUB-09",
+      "path": "/agent-customer-package.json",
+      "status": 200,
+      "remote_ip": "198.18.0.90",
+      "tls_verify_result": 0,
+      "body_sha256": "7921f205f6f365777b38d0ad2d680ee921bdc4555a61903a3303b9038a4311b1",
+      "json_valid": true,
+      "content_contract_pass": true,
+      "strict_request_pass": false
+    },
+    {
+      "id": "PUB-10",
+      "path": "/release-manifest.json",
+      "status": 200,
+      "remote_ip": "198.18.0.90",
+      "tls_verify_result": 0,
+      "body_sha256": "f0e42b7f0be3c36f201517d68bef42ec365809261ed46d4fc6af74949a397a60",
+      "json_valid": true,
+      "source_revision": "c1d8931930fbae15f96ee6a6ac050b081538c919",
+      "content_contract_pass": true,
+      "strict_request_pass": false
+    }
+  ],
+  "failure": {
+    "failure_condition": "EXPECTED_REMOTE_IP_NOT_OBSERVED",
+    "content_or_tls_failure": false,
+    "retry_executed": false,
+    "proxy_or_network_fallback_executed": false,
+    "alternate_domain_used": false
+  },
+  "execution_counts": {
+    "public_get_requests": 10,
+    "ssh_sessions": 0,
+    "server_reads": 0,
+    "server_writes": 0,
+    "current_switches": 0,
+    "dns_changes": 0,
+    "certificate_changes": 0,
+    "nginx_changes": 0,
+    "retries": 0,
+    "proxy_or_network_fallbacks": 0,
+    "new_product_releases": 0
+  },
+  "effects": {
+    "public_validation_execution_complete": true,
+    "strict_outside_in_validation_pass": false,
+    "application_surface_exact": true,
+    "agent_discovery_surface_exact": true,
+    "direct_origin_path_attribution_pass": false,
+    "server_state_changed": false,
+    "current_changed": false,
+    "new_product_release_authorized": false,
+    "standard_ready": false,
+    "production_ready": false,
+    "commercial_offering": false,
+    "authority_created": false,
+    "permission_created": false,
+    "evidence_truth_changed": false
+  },
+  "next_gate": {
+    "action": "PREPARE_CE_G12_PUBLIC_NETWORK_PATH_ATTRIBUTION_REMEDIATION_RECOMMENDATION_ONLY",
+    "authorized": false
+  }
+}
