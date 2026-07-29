@@ -2,8 +2,14 @@
   "schema_version": "0.1",
   "observed_at": "2026-07-23T21:28:24+08:00",
   "public_focus": "TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY",
-  "release_state": "developer_preview_released",
-  "release_claim": true,
+  "release_state": "historical_developer_preview_site_current_private_core",
+  "release_claim": false,
+  "current_stage": "TITMAS_STAGE_5_PRIVATE_PREVIEW",
+  "current_core_repository_visibility": "PRIVATE",
+  "public_core_clone_available": false,
+  "public_protocol_released": false,
+  "external_trial_requires_explicit_access": true,
+  "external_participant_invitation_authorized": false,
   "public_website": {
     "url": "https://redcrag.cn/",
     "deployed": true,
@@ -45,10 +51,20 @@
     "COMPLETE_VERTICAL_SLICE_EXECUTED": false
   },
   "access": {
-    "DBA": "public",
+    "DBA": "private",
     "DBOS": "private",
     "DBOS_PUBLIC_PACKAGE": "published_github_release_asset",
     "SAEE": "public_with_read_only_dbos_adapter"
+  },
+  "private_stage5_1_trial": {
+    "preparation_authorized": true,
+    "trial_repository_separate_from_core": true,
+    "allowlist_reconstruction_required": true,
+    "external_participant_invitation_authorized": false,
+    "external_developer_trial_executed": false,
+    "public_export_authorized": false,
+    "formal_standard_change_authorized": false,
+    "commercial_access_granted": false
   },
   "dbos_public_package": {
     "package_id": "TMAI-DBOS-WHEEL-CANDIDATE-20260722-001",
