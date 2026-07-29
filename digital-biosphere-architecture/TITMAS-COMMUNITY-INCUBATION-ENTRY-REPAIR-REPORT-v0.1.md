@@ -2,7 +2,7 @@
 document_id: TITMAS-COMMUNITY-INCUBATION-ENTRY-REPAIR-REPORT-0.1
 title: TITMAS Community Incubation Entry Repair Report v0.1
 title_zh: TITMAS 社区孵化入口修正报告 v0.1
-status: repair-pr-candidate
+status: complete
 maturity: Development
 normative: false
 owner_ref: zhangbin
@@ -16,10 +16,10 @@ decision_reference: TITMAS-COMMUNITY-INCUBATION-ENTRY-REPAIR-D01
 ```text
 main_before=11849668d9d05ba8e17627c75c5a4d88420108dc
 branch=codex/titmas-community-incubation-entry-repair-v0-1
-pr_number=PENDING
-pr_head=PENDING
-merge_commit=PENDING
-main_after=PENDING
+pr_number=45
+pr_head=82f7f79ff974dd00b506b558013afb6b09ec8290
+merge_commit=07f461642f11209344bb20c6f78a1754f09edacf
+main_after=07f461642f11209344bb20c6f78a1754f09edacf
 ```
 
 ## Welcome Issue repair
@@ -56,7 +56,7 @@ site_tests=22/22_PASS
 site_build=PASS
 site_lint=PASS
 production_dependency_audit=0_VULNERABILITIES
-ci=PENDING_PR
+ci=PASS_RUN_30415006696
 ```
 
 The public entry now states that limited Issue and Pull Request contribution is
@@ -107,4 +107,17 @@ Stable standard, certification or adoption evidence.
 
 ```text
 next_action=WAIT_FOR_REAL_EXTERNAL_ISSUE_OR_PULL_REQUEST
+```
+
+## Completion state
+
+```text
+TITMAS_PUBLIC_ENTRY_REPAIR_COMPLETE=true
+WELCOME_ISSUE_ENTRY_VALID=true
+PUBLIC_ENTRY_CONSISTENCY_OPERATIONAL=true
+COMMUNITY_INCUBATION_ACTIVE=true
+PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=true
+SECURITY_TRANSPORT_ACTIVE=true
+FIRST_EXTERNAL_CONTRIBUTION_CYCLE_COMPLETE=false
+TITMAS_COMMUNITY_ESTABLISHED=false
 ```
