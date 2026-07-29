@@ -5,12 +5,6 @@ import { fileURLToPath } from "node:url";
 
 const siteRoot = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const outputRoot = join(siteRoot, "out");
-const pages = [
-  ["index.html", "https://redcrag.cn/"],
-  ["en/index.html", "https://redcrag.cn/en/"],
-  ["status/index.html", "https://redcrag.cn/status/"],
-  ["en/status/index.html", "https://redcrag.cn/en/status/"],
-];
 let checked = 0;
 
 function targetFor(pathname) {
@@ -20,6 +14,12 @@ function targetFor(pathname) {
   if (extname(clean)) return clean.slice(1);
   return `${clean.slice(1)}/index.html`;
 }
+
+const release = await readFile(join(outputRoot, "release.json"), "utf8").then(JSON.parse);
+const pages = release.routes.map((route) => [
+  targetFor(route),
+  new URL(route.endsWith("/") ? route : `${route}/`, "https://redcrag.cn/").href,
+]);
 
 for (const [page, base] of pages) {
   const html = await readFile(join(outputRoot, page), "utf8");

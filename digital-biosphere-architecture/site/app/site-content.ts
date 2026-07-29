@@ -129,8 +129,8 @@ export const content = {
       language: "English",
     },
     badge: "Stage 5.2：首个外部开发者试用进行中",
-    eyebrow: "TRUSTED MULTI-AGENT INFRASTRUCTURE",
-    title: "TITMAS",
+    eyebrow: "TITMAS · TRUSTED MULTI-AGENT INFRASTRUCTURE",
+    title: "夏日之海",
     lead:
       "可信多智能体基础设施。开发者使用标准、Schema、SDK、Sandbox 和有范围的访问构建 Agent 产品；机密核心保持私有。",
     primaryCta: "申请有界私有开发者试用",

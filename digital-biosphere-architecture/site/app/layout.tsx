@@ -7,7 +7,7 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
   },
   title: {
-    default: "TITMAS 可信多智能体基础设施开发者社区",
+    default: "夏日之海 · TITMAS 可信多智能体基础设施开发者社区",
     template: "%s · TITMAS",
   },
   description:
@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "TITMAS Infrastructure Developer Community",
-    title: "TITMAS 可信多智能体基础设施开发者社区",
+    title: "夏日之海 · TITMAS 可信多智能体基础设施开发者社区",
     description:
       "Developer Community for Trusted Multi-Agent Infrastructure.",
     images: [
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
         url: "/og.png",
         width: 1731,
         height: 909,
-        alt: "TITMAS Infrastructure Developer Community / TITMAS 可信多智能体基础设施开发者社区",
+        alt: "夏日之海 / TITMAS Infrastructure Developer Community",
       },
     ],
   },
