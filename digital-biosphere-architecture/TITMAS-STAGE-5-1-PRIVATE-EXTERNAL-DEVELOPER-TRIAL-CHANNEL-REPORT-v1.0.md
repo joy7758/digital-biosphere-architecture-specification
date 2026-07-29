@@ -109,30 +109,32 @@ GIT_DIFF_CHECK=PASS
 PRODUCTION_DEPENDENCY_AUDIT=0_VULNERABILITIES
 ```
 
-## Branch-protection blocker
+## Branch protection
 
-GitHub accepted creation of the private repository but rejected the required
-private branch protection request with HTTP 403:
-
-```text
-BRANCH_PROTECTION_VERIFIED=false
-TRIAL_REPOSITORY_INVITATION_READY=false
-BLOCK_REASON=INSUFFICIENT_BRANCH_PROTECTION
-GITHUB_RESPONSE=UPGRADE_TO_GITHUB_PRO_OR_MAKE_REPOSITORY_PUBLIC
-```
-
-The repository will not be made public to bypass this control. No participant
-may be invited while the blocker remains.
-
-Prepared options:
+After the GitHub Pro entitlement became active, the required protection was
+configured and read back from the live repository:
 
 ```text
-OPTION_A=TRANSFER_TRIAL_REPOSITORY_TO_GITHUB_ORGANIZATION
-OPTION_B=DISTRIBUTE_TIME_BOUND_SIGNED_TRIAL_ARCHIVE
-RECOMMENDATION=OPTION_A_FOR_GRANULAR_READ_OR_TRIAGE_PERMISSIONS
+BRANCH_PROTECTION_VERIFIED=true
+DEFAULT_BRANCH_DIRECT_PUSH_BLOCKED=true
+FORCE_PUSH_BLOCKED=true
+BRANCH_DELETION_BLOCKED=true
+PULL_REQUEST_REQUIRED=true
+OWNER_REVIEW_REQUIRED=true
+REQUIRED_APPROVING_REVIEW_COUNT=1
+REQUIRE_LAST_PUSH_APPROVAL=true
+DISMISS_STALE_REVIEWS=true
+REQUIRED_CONVERSATION_RESOLUTION=true
+REQUIRED_LINEAR_HISTORY=true
+STATUS_CHECKS_REQUIRED=true
+REQUIRED_STATUS_CHECK=trial-conformance
+TRIAL_REPOSITORY_INVITATION_READY=true
+BLOCK_REASON=NONE
 ```
 
-The core repository must not be transferred as part of either option.
+The initial root commit has one successful `trial-conformance` status. Technical
+invitation readiness does not authorize or send an invitation. The Human Owner
+must still approve a real participant-specific packet.
 
 ## Current gates
 
@@ -147,7 +149,7 @@ TITMAS_PRIVATE_TRIAL_REPOSITORY_READY=true
 TITMAS_EXTERNAL_DEVELOPER_TRIAL_PACKAGE_READY=true
 TITMAS_EXTERNAL_INVITATION_DECISION_PACKET_READY=true
 
-TRIAL_REPOSITORY_INVITATION_READY=false
+TRIAL_REPOSITORY_INVITATION_READY=true
 EXTERNAL_PARTICIPANT_INVITATION_AUTHORIZED=false
 EXTERNAL_DEVELOPER_TRIAL_EXECUTED=false
 PUBLIC_EXPORT_AUTHORIZED=false
