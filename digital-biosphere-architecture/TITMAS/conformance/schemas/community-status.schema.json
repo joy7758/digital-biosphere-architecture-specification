@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://titmas.cn/schemas/community-status-1.1.json",
+  "$id": "https://titmas.cn/schemas/community-status-1.2.json",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -14,6 +14,9 @@
     "integration_branch",
     "integration_candidate_commit",
     "draft_pr",
+    "human_merge_review",
+    "core_merge",
+    "public_contribution_activation",
     "public_contribution_surface",
     "code_of_conduct",
     "security",
@@ -48,7 +51,7 @@
   ],
   "properties": {
     "$schema": {"type": "string"},
-    "version": {"const": "1.1.0"},
+    "version": {"const": "1.2.0"},
     "canonical_name": {"const": "TITMAS Agent-Native Standards Community"},
     "human_aliases": {"type": "array", "minItems": 2, "items": {"type": "string"}},
     "status": {"const": "CANONICAL_INTEGRATION_CANDIDATE"},
@@ -66,6 +69,44 @@
         "state": {"const": "OPEN_DRAFT"},
         "merged": {"const": false},
         "ready_for_review": {"const": false}
+      }
+    },
+    "human_merge_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "completed",
+        "reviewer_ref",
+        "review_type",
+        "independent",
+        "reviewed_commit",
+        "reviewed_at"
+      ],
+      "properties": {
+        "completed": {"const": true},
+        "reviewer_ref": {"const": "zhangbin"},
+        "review_type": {"const": "HUMAN_OWNER_REVIEW"},
+        "independent": {"const": false},
+        "reviewed_commit": {"const": "922f2b088287a9ee026e931357ecdc343a468566"},
+        "reviewed_at": {"type": "string", "minLength": 20}
+      }
+    },
+    "core_merge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized", "executed"],
+      "properties": {
+        "authorized": {"const": true},
+        "executed": {"const": false}
+      }
+    },
+    "public_contribution_activation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized", "executed"],
+      "properties": {
+        "authorized": {"const": true},
+        "executed": {"const": false}
       }
     },
     "public_contribution_surface": {
@@ -95,6 +136,7 @@
       "required": [
         "process_defined",
         "process_owner_assigned",
+        "activation_authorized",
         "transport_active",
         "transport_status",
         "public_activation_blocked"
@@ -102,6 +144,7 @@
       "properties": {
         "process_defined": {"const": true},
         "process_owner_assigned": {"const": true},
+        "activation_authorized": {"const": true},
         "transport_active": {"const": false},
         "transport_status": {"const": "INACTIVE_GITHUB_PRIVATE_VULNERABILITY_REPORTING_DISABLED"},
         "public_activation_blocked": {"const": true}
