@@ -6,6 +6,7 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest.mock import patch
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[3]
@@ -90,6 +91,53 @@ class TrialReconstructionTests(unittest.TestCase):
             )
             with self.assertRaises(ValueError):
                 validate_trial_repository.validate(root)
+
+    def test_directory_symlink_fails_before_file_filtering(self):
+        with tempfile.TemporaryDirectory(
+            prefix="titmas-stage51-directory-symlink-"
+        ) as raw:
+            root = Path(raw) / "trial"
+            outside = Path(raw) / "outside"
+            outside.mkdir()
+            build_trial_repository.build(root, revision())
+            (root / "trial" / "linked-directory").symlink_to(
+                outside, target_is_directory=True
+            )
+            with self.assertRaisesRegex(ValueError, "symlinks are prohibited"):
+                validate_trial_repository.validate(root)
+
+    def test_nonexistent_source_commit_fails_closed(self):
+        with tempfile.TemporaryDirectory(
+            prefix="titmas-stage51-source-commit-"
+        ) as raw:
+            with self.assertRaisesRegex(ValueError, "does not exist"):
+                build_trial_repository.build(
+                    Path(raw) / "trial", "0" * 40
+                )
+
+    def test_dirty_source_bytes_fail_closed(self):
+        original = build_trial_repository.read_source
+
+        def altered(relative):
+            value = original(relative)
+            if relative == build_trial_repository.BUILDER_REF:
+                return value + b"\n"
+            return value
+
+        with tempfile.TemporaryDirectory(
+            prefix="titmas-stage51-dirty-source-"
+        ) as raw:
+            with patch.object(
+                build_trial_repository,
+                "read_source",
+                side_effect=altered,
+            ):
+                with self.assertRaisesRegex(
+                    ValueError, "does not match source commit"
+                ):
+                    build_trial_repository.build(
+                        Path(raw) / "trial", revision()
+                    )
 
 
 if __name__ == "__main__":

@@ -3,6 +3,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import re
 from pathlib import Path
@@ -35,6 +36,14 @@ REGISTRY_FIELDS = {
     "hashes",
     "limitations",
 }
+SANITIZED_PAYLOAD_HASHES = {
+    "sanitized-contributor-plan.json":
+        "9373f5cb59deb2bd025359985c6e6056e17ab8ce8e893d59d479a6f09e8cbda7",
+    "sanitized-standard-contribution.json":
+        "193d76e12b6518d9d5ff6c5d5f921d4e48aecb8f165520e78bf515233b4f0c14",
+    "sanitized-standard-review.json":
+        "bcc73d38ff68b2cee628c57f5b63cdb5dc176e9b6aada88a9b0cd4f2fc80a1dd",
+}
 
 
 def load(name: str) -> dict[str, Any]:
@@ -42,6 +51,24 @@ def load(name: str) -> dict[str, Any]:
     if not isinstance(value, dict):
         raise ValueError(f"{name} must contain an object")
     return value
+
+
+def sanitized_payload_sha256(value: dict[str, Any]) -> str:
+    payload = {
+        key: item
+        for key, item in value.items()
+        if key not in {
+            "checkpoint_payload_sha256",
+            "sanitized_payload_sha256",
+        }
+    }
+    canonical = json.dumps(
+        payload,
+        ensure_ascii=False,
+        separators=(",", ":"),
+        sort_keys=True,
+    ).encode("utf-8")
+    return hashlib.sha256(canonical).hexdigest()
 
 
 def validate() -> dict[str, Any]:
@@ -103,10 +130,27 @@ def validate() -> dict[str, Any]:
         raise ValueError("contribution checkpoint is not durable")
     if review["checkpoint_state"] != "DURABLE":
         raise ValueError("review checkpoint is not durable")
-    if review["checkpoint_payload_sha256"] != (
-        "dd51594360093216e23250e835e2f818ecc9ab82ff27f94441e0fe3850653517"
-    ):
-        raise ValueError("review checkpoint hash drift")
+    checkpoints = {
+        "sanitized-contributor-plan.json": plan,
+        "sanitized-standard-contribution.json": contribution,
+        "sanitized-standard-review.json": review,
+    }
+    observed_sanitized_hashes = []
+    for name, checkpoint in checkpoints.items():
+        observed = sanitized_payload_sha256(checkpoint)
+        if (
+            checkpoint.get("sanitized_payload_sha256") != observed
+            or observed != SANITIZED_PAYLOAD_HASHES[name]
+        ):
+            raise ValueError(f"{name} sanitized payload hash drift")
+        observed_sanitized_hashes.append(observed)
+    if audit["sanitized_payload_hashes"] != observed_sanitized_hashes:
+        raise ValueError("Agent audit sanitized payload hash binding drift")
+    if audit["checkpoint_hashes"] != [
+        checkpoint["checkpoint_payload_sha256"]
+        for checkpoint in checkpoints.values()
+    ]:
+        raise ValueError("Agent audit checkpoint hash binding drift")
     if review["structured_result"]["verdict"] != "PASS":
         raise ValueError("sanitized review verdict drift")
     if contribution["structured_result"]["conformance_status"] != "CONFORMANCE_PASS":
@@ -154,6 +198,7 @@ def validate() -> dict[str, Any]:
         "authorized_review_attempts": 3,
         "automatic_retry_count": 0,
         "durable_checkpoints": 3,
+        "sanitized_payload_hashes_verified": 3,
         "review_checkpoint_durable": True,
         "stage5_private_preview_operational": True,
         "secret_findings": 0,

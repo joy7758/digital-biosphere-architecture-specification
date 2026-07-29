@@ -64,10 +64,19 @@ def validate(root: Path) -> dict[str, Any]:
     if manifest["git_history_copied"] is not False:
         raise ValueError("core Git history cannot be copied")
 
+    all_entries = [
+        path
+        for path in root.rglob("*")
+        if ".git" not in path.relative_to(root).parts
+    ]
+    symlinks = sum(path.is_symlink() for path in all_entries)
+    if symlinks:
+        raise ValueError("trial repository symlinks are prohibited")
+
     actual_files = {
         str(path.relative_to(root))
-        for path in root.rglob("*")
-        if path.is_file() and ".git" not in path.parts
+        for path in all_entries
+        if path.is_file()
     }
     manifest_entries = {
         item["trial_output_path"]: item for item in manifest["files"]
@@ -83,10 +92,8 @@ def validate(root: Path) -> dict[str, Any]:
     secrets = 0
     core_symbols = 0
     provider_configuration = 0
-    symlinks = 0
     for relative in sorted(actual_files):
         path = root / relative
-        symlinks += int(path.is_symlink())
         top = Path(relative).parts[0]
         if (
             relative not in ALLOWED_ROOT_FILES
@@ -126,8 +133,6 @@ def validate(root: Path) -> dict[str, Any]:
             bool(PROVIDER_CONFIGURATION.search(text))
         )
 
-    if symlinks:
-        raise ValueError("trial repository symlinks are prohibited")
     findings = {
         "trial_repository_core_source_findings": core_symbols,
         "trial_repository_secret_findings": secrets,

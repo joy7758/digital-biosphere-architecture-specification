@@ -52,6 +52,22 @@ class AgentAuditValidationTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 validate_agent_audit.validate()
 
+    def test_sanitized_review_payload_tamper_is_rejected(self):
+        original = validate_agent_audit.load
+
+        def altered(name):
+            value = original(name)
+            if name == "sanitized-standard-review.json":
+                value = copy.deepcopy(value)
+                value["structured_result"]["checks"]["negative_cases"] = True
+            return value
+
+        with patch.object(validate_agent_audit, "load", side_effect=altered):
+            with self.assertRaisesRegex(
+                ValueError, "sanitized payload hash drift"
+            ):
+                validate_agent_audit.validate()
+
 
 if __name__ == "__main__":
     unittest.main()

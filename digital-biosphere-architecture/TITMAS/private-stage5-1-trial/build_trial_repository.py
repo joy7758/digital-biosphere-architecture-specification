@@ -16,6 +16,7 @@ import io
 import json
 import os
 import re
+import subprocess
 import zipfile
 from pathlib import Path
 from typing import Any
@@ -215,6 +216,55 @@ def read_source(relative: str) -> bytes:
     if path.is_symlink() or not path.is_file():
         raise ValueError(f"invalid allowlisted source: {relative}")
     return path.read_bytes()
+
+
+def _git_root() -> Path:
+    return Path(subprocess.check_output(
+        ["git", "rev-parse", "--show-toplevel"],
+        cwd=DBA_ROOT,
+        text=True,
+    ).strip()).resolve()
+
+
+def _source_at_commit(source_commit: str, relative: str) -> bytes:
+    git_root = _git_root()
+    source = (DBA_ROOT / relative).resolve()
+    repository_path = source.relative_to(git_root).as_posix()
+    try:
+        return subprocess.check_output(
+            ["git", "show", f"{source_commit}:{repository_path}"],
+            cwd=git_root,
+        )
+    except subprocess.CalledProcessError as exc:
+        raise ValueError(
+            f"source path is not present at source commit: {relative}"
+        ) from exc
+
+
+def validate_source_commit(source_commit: str) -> None:
+    """Bind every exported source and the builder to one exact Git commit."""
+
+    if not re.fullmatch(r"[0-9a-f]{40}", source_commit):
+        raise ValueError("source commit must be a 40-character lowercase Git hash")
+    git_root = _git_root()
+    try:
+        resolved = subprocess.check_output(
+            ["git", "rev-parse", "--verify", f"{source_commit}^{{commit}}"],
+            cwd=git_root,
+            text=True,
+            stderr=subprocess.DEVNULL,
+        ).strip()
+    except subprocess.CalledProcessError as exc:
+        raise ValueError("source commit does not exist") from exc
+    if resolved != source_commit:
+        raise ValueError("source commit did not resolve exactly")
+
+    sources = sorted({BUILDER_REF, *COPIED_SOURCES.values()})
+    for relative in sources:
+        if read_source(relative) != _source_at_commit(source_commit, relative):
+            raise ValueError(
+                f"working source does not match source commit: {relative}"
+            )
 
 
 def trial_tasks() -> dict[str, Any]:
@@ -717,6 +767,7 @@ def build(output_root: Path, source_commit: str) -> dict[str, Any]:
         raise ValueError("trial output must be outside the core repository")
     if output_root.exists() and any(output_root.iterdir()):
         raise ValueError("trial output directory must be empty")
+    validate_source_commit(source_commit)
     output_root.mkdir(parents=True, exist_ok=True)
 
     payloads = build_payloads(source_commit)
