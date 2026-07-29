@@ -103,15 +103,15 @@ export function resolveReleaseContext(environment, resources) {
 
 export function routeMarkers(mode) {
   return {
-    zhHome: ["<html lang=\"zh-CN\">", "共同建设 Agent 时代的可信基础设施"],
-    enHome: ["<html lang=\"en\">", "Build trustworthy infrastructure for the agent era"],
+    zhHome: ["<html lang=\"zh-CN\">", "申请有界私有开发者试用"],
+    enHome: ["<html lang=\"en\">", "Apply for a bounded private developer trial"],
     zhStatus: [
       "<html lang=\"zh-CN\">",
-      mode !== "formal" ? "当前不是正式发布" : "可信多智能体基础设施开发者预览版 v0.1 已发布",
+      mode !== "formal" ? "当前不是正式发布" : "TITMAS Stage 5.2 外部开发者试用进行中",
     ],
     enStatus: [
       "<html lang=\"en\">",
-      mode !== "formal" ? "This is not a release" : "Trusted Multi-Agent Infrastructure Developer Preview v0.1 is released",
+      mode !== "formal" ? "This is not a release" : "TITMAS Stage 5.2 external developer trial in progress",
     ],
   };
 }

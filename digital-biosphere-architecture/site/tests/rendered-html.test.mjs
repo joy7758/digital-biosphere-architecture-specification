@@ -49,16 +49,16 @@ test("renders equivalent Chinese and English public entry points", async () => {
   assert.match(en, /Build trustworthy infrastructure for the agent era/);
   assert.match(zh, /Community Review ≠ Architecture Decision/);
   assert.match(en, /Contribution ≠ Authority/);
-  assert.match(zh, /PUBLIC SURFACE/);
+  assert.match(zh, /PUBLIC CONTRIBUTION/);
   assert.match(en, /NOT ESTABLISHED/);
   assert.match(zh, /第一个可信闭环：设计完成，尚未执行/);
   assert.match(en, /The first trustworthy loop is designed—not executed/);
   assert.match(zh, /Observation ≠ Evidence/);
   assert.match(en, /Evaluation ≠ Authorization/);
-  assert.match(zh, /TITMAS_PILOT_EXECUTION/);
-  assert.match(en, /TITMAS_PILOT_EXECUTION/);
-  assert.match(zh, /SAEE_DBOS_ADAPTER_PASS/);
-  assert.match(en, /SAEE_DBOS_ADAPTER_PASS/);
+  assert.match(zh, /E01 External Human Developer Trial/);
+  assert.match(en, /E01 External Human Developer Trial/);
+  assert.match(zh, /申请有界私有开发者试用/);
+  assert.match(en, /Apply for a bounded private developer trial/);
   if (releaseContext.mode === "candidate") {
     assert.match(zh, /Developer Preview Candidate/);
     assert.match(en, /Developer Preview Candidate/);
@@ -89,6 +89,15 @@ test("renders bilingual status pages with fail-closed truth", async () => {
   assert.match(en, /PARTIAL/);
   assert.match(zh, /cd3f867c4379/);
   assert.match(en, /2173c258f91a/);
+  assert.match(zh, /E01_STATUS/);
+  assert.match(en, /E01_STATUS/);
+  assert.match(zh, /平台发布审核等待中/);
+  assert.match(en, /platform publication review pending/);
+});
+
+test("returns 404 for an unknown route", async () => {
+  const response = await render("/this-route-does-not-exist");
+  assert.equal(response.status, 404);
 });
 
 test("ships agent-readable and discovery resources", async () => {

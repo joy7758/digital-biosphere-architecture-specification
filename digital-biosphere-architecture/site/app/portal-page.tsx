@@ -1,12 +1,13 @@
-import { content, gateRows, type Locale } from "./site-content";
+import { content, type Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
 import { serializeJsonLd } from "./json-ld";
 
 export function PortalPage({ locale }: { locale: Locale }) {
   const c = content[locale];
   const statusPath = locale === "zh" ? "/status/" : "/en/status/";
-  const architectureHref =
-    "https://github.com/joy7758/digital-biosphere-architecture-specification";
+  const publicProfileHref = "https://github.com/joy7758";
+  const trialInterestHref =
+    "https://github.com/joy7758/joy7758/issues/new?template=titmas-private-trial-interest.yml";
 
   const structuredData = {
     "@context": "https://schema.org",
@@ -16,7 +17,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
     url: locale === "zh" ? "https://redcrag.cn/" : "https://redcrag.cn/en/",
     inLanguage: c.lang,
     description: c.lead,
-    isBasedOn: architectureHref,
+    isBasedOn: "https://redcrag.cn/llms.txt",
   };
 
   return (
@@ -37,10 +38,64 @@ export function PortalPage({ locale }: { locale: Locale }) {
             <h1>{c.title}</h1>
             <p className="hero-lead">{c.lead}</p>
             <div className="hero-actions">
-              <a className="button button-primary" href="#community">{c.primaryCta}</a>
+              <a
+                className="button button-primary"
+                href={trialInterestHref}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {c.primaryCta}
+              </a>
               <a className="button button-secondary" href={statusPath}>{c.secondaryCta}</a>
             </div>
+            <div className="trial-meta" aria-label={c.trialMetaLabel}>
+              {c.trialMeta.map((item) => <span key={item}>{item}</span>)}
+            </div>
             <p className="truth-notice"><span>i</span>{c.notice}</p>
+          </div>
+        </section>
+
+        <section className="section trial-entry-section" id="trial-entry" data-section-id="trial-entry">
+          <div className="section-shell">
+            <div className="section-heading">
+              <p className="section-kicker">DEVELOPER ENTRY / 开发者入口</p>
+              <h2>{c.developerPathTitle}</h2>
+              <p>{c.developerPathLead}</p>
+            </div>
+            <ol className="developer-path" aria-label={c.developerPathTitle}>
+              {c.developerPath.map((step, index) => (
+                <li key={step}>
+                  <span>{String(index + 1).padStart(2, "0")}</span>
+                  <strong>{step}</strong>
+                </li>
+              ))}
+            </ol>
+            <div className="public-sdk-panel">
+              <div>
+                <span>PUBLIC-SAFE SDK / 公开安全 SDK</span>
+                <h3>{c.publicSdkTitle}</h3>
+                <p>{c.publicSdkLead}</p>
+                <nav aria-label={c.publicSdkTitle}>
+                  {c.publicSdkLinks.map(([label, href]) => (
+                    <a href={href} key={href}>{label}<span>→</span></a>
+                  ))}
+                </nav>
+              </div>
+              <pre aria-label={c.publicSdkTitle}><code>{c.publicSdkCommands.join("\n")}</code></pre>
+            </div>
+            <div className="developer-access-grid">
+              <article>
+                <span>AVAILABLE / 可获得</span>
+                <h3>{c.developerGetsTitle}</h3>
+                <ul>{c.developerGets.map((item) => <li key={item}>{item}</li>)}</ul>
+              </article>
+              <article className="developer-access-denied">
+                <span>NOT GRANTED / 不授予</span>
+                <h3>{c.developerDoesNotGetTitle}</h3>
+                <ul>{c.developerDoesNotGet.map((item) => <li key={item}>{item}</li>)}</ul>
+              </article>
+            </div>
+            <p className="trial-disclaimer">{c.trialDisclaimer}</p>
           </div>
         </section>
 
@@ -261,14 +316,14 @@ export function PortalPage({ locale }: { locale: Locale }) {
               <h2>{c.statusTitle}</h2>
               <p>{c.statusLead}</p>
             </div>
-            <div className="gate-grid">
-              {gateRows.map((gate) => (
-                <article className="gate-card" key={gate.id}>
+            <div className="gate-grid progress-grid">
+              {c.progressStates.map(([label, state, detail]) => (
+                <article className="gate-card" key={label}>
                   <div>
-                    <span className={`state state-${gate.state.toLowerCase()}`}>{gate.state}</span>
-                    <code>{gate.id}</code>
+                    <span className={`state state-${state.toLowerCase().replaceAll(" ", "_")}`}>{state}</span>
+                    <code>{label}</code>
                   </div>
-                  <p>{gate[locale]}</p>
+                  <p>{detail}</p>
                 </article>
               ))}
             </div>
@@ -283,7 +338,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
               <h2>{c.developersTitle}</h2>
               <p>{c.developersBody}</p>
               <div className="developer-links">
-                <a href={architectureHref}>{c.developerLinks[0]}<span>↗</span></a>
+                <a href={publicProfileHref}>{c.developerLinks[0]}<span>↗</span></a>
                 <a href="/status.json">{c.developerLinks[1]}<span>↗</span></a>
                 <a href="/llms.txt">{c.developerLinks[2]}<span>↗</span></a>
                 <a href="/agent-customer-package.json">{c.developerLinks[3]}<span>↗</span></a>

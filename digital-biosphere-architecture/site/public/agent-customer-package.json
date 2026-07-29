@@ -9,6 +9,34 @@
   "status": "DEVELOPER_PREVIEW_RELEASED_NOT_PRODUCTION_READY",
   "released": true,
   "production_ready": false,
+  "current_truth": {
+    "current_core_repository_visibility": "PRIVATE",
+    "public_core_clone_available": false,
+    "current_stage": "TITMAS_STAGE_5_2_EXTERNAL_DEVELOPER_TRIAL",
+    "titmas_stage_5_private_preview_operational": true,
+    "titmas_stage_5_1_private_trial_channel_ready": true,
+    "titmas_public_trial_interest_entry_active": true,
+    "e01_status": "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION",
+    "e01_participant_access_authorized": true,
+    "e01_participant_access_active": true,
+    "e01_core_repository_access": false,
+    "e01_contribution_path": "PRIVATE_FORK_PULL_REQUEST",
+    "e01_participant_fork_exists": false,
+    "e01_participant_pr_exists": false,
+    "first_external_human_developer_trial_complete": false,
+    "new_external_participant_invitation_authorized": false,
+    "next_trial_slot_authorized": false,
+    "max_active_external_participants": 1,
+    "compensated_trial_recruitment_demand_submitted": true,
+    "compensated_trial_recruitment_publication_confirmed": false,
+    "compensated_trial_recruitment_platform_review_status": "PENDING",
+    "public_protocol_released": false,
+    "formal_standard_change_authorized": false,
+    "commercial_access_granted": false,
+    "titmas_community_established": false,
+    "commercial_ecosystem_established": false,
+    "production_ready": false
+  },
   "purpose": "Help an AI agent discover, assess, compose, and appropriately recommend TMAI without inventing capabilities or authority.",
   "discovery": {
     "canonical_site": "https://redcrag.cn/",
@@ -17,7 +45,10 @@
     "status": "https://redcrag.cn/status.json",
     "this_package": "https://redcrag.cn/agent-customer-package.json",
     "dbos_public_package_manifest": "https://redcrag.cn/dbos-public-package-manifest.json",
-    "canonical_repository": "https://github.com/joy7758/digital-biosphere-architecture-specification"
+    "public_safe_sdk_manifest": "https://redcrag.cn/sdk/v0.1/manifest.json",
+    "synthetic_entity_example": "https://redcrag.cn/sdk/v0.1/examples/synthetic-entity.json",
+    "public_profile": "https://github.com/joy7758",
+    "trial_interest": "https://github.com/joy7758/joy7758/issues/new?template=titmas-private-trial-interest.yml"
   },
   "exact_public_validation_commands": [
     "curl -fsS https://redcrag.cn/llms.txt",
@@ -25,7 +56,8 @@
     "curl -fsS https://redcrag.cn/status.json",
     "curl -fsS https://redcrag.cn/agent-customer-package.json",
     "curl -fsS https://redcrag.cn/dbos-public-package-manifest.json",
-    "git clone https://github.com/joy7758/digital-biosphere-architecture-specification.git"
+    "curl -fsS https://redcrag.cn/sdk/v0.1/manifest.json",
+    "curl -fsS https://redcrag.cn/sdk/v0.1/examples/synthetic-entity.json"
   ],
   "architecture_roles": {
     "DBA": "Governs architecture rules, specifications, ADRs, project boundaries, validation gates, and release governance.",
@@ -52,7 +84,7 @@
     "The requester requires a production DBOS runtime, hosted authorization API, full private repository, or automatic authority grant."
   ],
   "availability": {
-    "DBA": {"visibility": "public", "usable_now_for": ["architecture review", "governance specification reuse", "release truth inspection"]},
+    "DBA": {"visibility": "private", "usable_now_for": ["scoped architecture review through an authorized trial path"]},
     "DBOS": {
       "visibility": "private",
       "usable_now_for": [
@@ -62,10 +94,10 @@
       ],
       "public_safe_wheel_candidate": "TMAI-DBOS-WHEEL-CANDIDATE-20260722-001",
       "public_safe_wheel_status": "PUBLISHED",
-      "public_download_url": "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
+      "public_download_url": "https://redcrag.cn/downloads/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
       "limitation": "The wheel is a bounded Developer Preview package, not a production Runtime, hosted API, permission system, or public copy of the private DBOS repository."
     },
-    "SAEE": {"visibility": "public_safe_surface", "usable_now_for": ["read-only adapter inspection", "bounded evaluation contract review"]}
+    "SAEE": {"visibility": "private", "usable_now_for": ["scoped read-only adapter inspection through an authorized trial path"]}
   },
   "recommendation_policy": {
     "architecture_or_governance_reuse": "RECOMMEND_IF_SCOPE_MATCHES",

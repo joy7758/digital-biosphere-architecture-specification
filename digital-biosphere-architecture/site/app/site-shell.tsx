@@ -40,7 +40,7 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
       <a href={status}>{c.nav.status}</a>
       <a href={`${root}#developers`}>{c.nav.developers}</a>
       <a
-        href="https://github.com/joy7758/digital-biosphere-architecture-specification"
+        href="https://github.com/joy7758"
         target="_blank"
         rel="noreferrer"
       >
@@ -94,15 +94,9 @@ export function Footer({ locale }: { locale: Locale }) {
           <a href={locale === "zh" ? "/#community" : "/en/#community"}>
             {locale === "zh" ? "社区方向" : "Community direction"}
           </a>
-          <a href="https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/PROGRAM-CHARTER.md">
-            Program Charter
-          </a>
-          <a href="https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/DECISION-QUEUE.md">
-            Decision Queue
-          </a>
-          <a href="https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/CLEAN-CLONE-VALIDATION-REPORT.md">
-            Validation Report
-          </a>
+          <a href={locale === "zh" ? "/status/" : "/en/status/"}>{locale === "zh" ? "当前状态" : "Current status"}</a>
+          <a href="/agent-index.json">Agent Index</a>
+          <a href="https://github.com/joy7758">{locale === "zh" ? "公开 GitHub Profile" : "Public GitHub profile"}</a>
         </div>
       </div>
       <div className="footer-legal">
