@@ -60,6 +60,37 @@
       "type": "string",
       "pattern": "^[0-9a-f]{64}$"
     },
+    "customer_session_id": {"type": "string"},
+    "requested_operation": {"type": "string"},
+    "request_body_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "response_status": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 599
+    },
+    "final_state": {
+      "enum": [
+        "PREPARED",
+        "DISPATCH_STARTED",
+        "RESPONSE_HEADERS_CAPTURED",
+        "RESPONSE_BODY_CAPTURED",
+        "PARSE_COMPLETED",
+        "FINALIZED_SUCCESS",
+        "FAILED_BEFORE_DISPATCH",
+        "FAILED_AFTER_DISPATCH_OUTCOME_UNKNOWN",
+        "FAILED_HTTP_RESPONSE_CAPTURED",
+        "FAILED_EMPTY_BODY",
+        "FAILED_TRUNCATED_BODY",
+        "FAILED_PARSE",
+        "FAILED_MODEL_IDENTITY_MISSING",
+        "FAILED_MODEL_IDENTITY_MISMATCH",
+        "FAILED_ATOMIC_WRITE",
+        "FAILED_RECOVERY_REQUIRED"
+      ]
+    },
     "state": {
       "enum": [
         "PREPARED",

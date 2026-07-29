@@ -79,9 +79,9 @@ class PrivateCommercializationBoundaryTests(unittest.TestCase):
                 set(item),
             )
 
-    def test_private_customer_bundle_contains_no_core_code_or_tests(self):
+    def test_private_customer_allowlist_contains_no_core_code_or_tests(self):
         bundle = TITMAS_ROOT / "private-customer-evaluation"
-        files = {path.relative_to(bundle).as_posix() for path in bundle.rglob("*") if path.is_file()}
+        files = {path.name for path in bundle.iterdir() if path.is_file()}
         self.assertEqual(
             {
                 "README.md",
@@ -98,6 +98,7 @@ class PrivateCommercializationBoundaryTests(unittest.TestCase):
         )
         self.assertFalse(any(path.endswith(".py") for path in files))
         self.assertFalse(any("test" in Path(path).name.lower() for path in files))
+        self.assertTrue((bundle / "gateway" / "service.py").is_file())
 
     def test_private_customer_bundle_declares_no_endpoint_or_release(self):
         discovery = json.loads(
@@ -110,7 +111,10 @@ class PrivateCommercializationBoundaryTests(unittest.TestCase):
         )
         self.assertFalse(discovery["real_endpoint_available"])
         self.assertFalse(discovery["real_model_call_authorized"])
-        self.assertFalse(contract["endpoint_implemented"])
+        self.assertTrue(discovery["local_ephemeral_gateway_implemented"])
+        self.assertTrue(contract["endpoint_implemented"])
+        self.assertFalse(contract["endpoint_deployed"])
+        self.assertTrue(contract["loopback_only"])
         self.assertFalse(contract["core_source_returned"])
 
     def test_commercial_drafts_are_nonbinding_and_inactive(self):

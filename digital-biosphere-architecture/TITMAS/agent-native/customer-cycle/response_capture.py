@@ -127,6 +127,10 @@ class AtomicJSONWriter:
             raise AtomicWriteError(f"injected atomic write failure at {stage}")
 
     def write(self, target: Path, payload: dict[str, Any]) -> None:
+        if "final_state" in payload:
+            payload["final_state"] = payload.get("state", "")
+        if "response_status" in payload:
+            payload["response_status"] = payload.get("http_status", 0)
         if not target.parent.is_dir():
             raise AtomicWriteError("target directory is not pre-established")
         descriptor, temporary_name = tempfile.mkstemp(
@@ -246,7 +250,9 @@ def _base_envelope(
     requested_model: str,
     request_payload_sha256: str,
     request_contract_sha256: str,
+    gateway_audit: dict[str, str] | None = None,
 ) -> dict[str, Any]:
+    audit = gateway_audit or {}
     return {
         "schema_version": "0.1.0",
         "attempt_id": attempt_id,
@@ -256,6 +262,14 @@ def _base_envelope(
         "model_identity_status": "NOT_ASSESSED",
         "request_payload_sha256": request_payload_sha256,
         "request_contract_sha256": request_contract_sha256,
+        "customer_session_id": audit.get("customer_session_id", ""),
+        "requested_operation": audit.get("requested_operation", ""),
+        "request_body_sha256": audit.get(
+            "request_body_sha256",
+            request_payload_sha256,
+        ),
+        "response_status": 0,
+        "final_state": "PREPARED",
         "state": "PREPARED",
         "failure_phase": "NONE",
         "outcome_classification": "FAILED_BEFORE_DISPATCH",
@@ -464,6 +478,7 @@ def capture_response(
     attempt_id: str | None = None,
     writer: AtomicJSONWriter | None = None,
     fail_before_dispatch: bool = False,
+    gateway_audit: dict[str, str] | None = None,
 ) -> CaptureResult:
     """Capture one injected transport call; never retries."""
 
@@ -484,6 +499,7 @@ def capture_response(
         requested_model=requested_model,
         request_payload_sha256=request_payload_sha256,
         request_contract_sha256=_sha256(_canonical_bytes(request_contract)),
+        gateway_audit=gateway_audit,
     )
     durable_writer = writer or AtomicJSONWriter()
     request_sent = False
