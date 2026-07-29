@@ -1,15 +1,16 @@
 # GitHub Contribution Activation Package
 
-Status: `ACTIVE_LIMITED_PREVIEW`
+Status: `HISTORICAL_ACTIVATION_PACKAGE_RETAINED_PRIVATE_BOUNDARY`
 
 These TITMAS Issue Forms and Pull Request template have been developed and
 structurally validated. The dormant package remains the hash-bound source.
 Exact copies were reviewed on the Activation branch and merged into `main`.
-GitHub now exposes them only as the bounded repository contribution Preview.
+That activation is historical; the current private repository does not expose
+an authorized public contribution surface.
 
 Current boundaries:
 
-1. the templates are active on `main` after Activation PR #42;
+1. the templates remain tracked after historical Activation PR #42;
 2. this directory remains the canonical activation package;
 3. installation is authorized by
    `TITMAS-COMMUNITY-CORE-MERGE-AND-OPENING-D01`;
@@ -33,7 +34,8 @@ INSTALLED_NE_AUTHORIZED=true
 AUTHORIZED_NE_COMMUNITY_ESTABLISHED=true
 PUBLIC_CONTRIBUTION_TEMPLATES_DEVELOPED=true
 PUBLIC_CONTRIBUTION_TEMPLATES_INSTALLED=true
-PUBLIC_CONTRIBUTION_TEMPLATES_ACTIVE=true
-PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=true
-PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=true
+HISTORICAL_PUBLIC_CONTRIBUTION_TEMPLATES_ACTIVE=true
+CURRENT_PUBLIC_CONTRIBUTION_TEMPLATES_ACTIVE=false
+PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
 ```

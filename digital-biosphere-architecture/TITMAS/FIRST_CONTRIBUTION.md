@@ -2,11 +2,11 @@
 
 ## 1. Choose a bounded contribution
 
-Pick one [Starter Task](community/STARTER_TASKS.md) or draft a
-[Proposal](specifications/templates/proposal.md). The bounded GitHub templates
-were installed through the independent
-[Activation PR](community/github-activation-templates/README.md) and are active
-on `main`.
+This guide is retained as historical infrastructure. Public contribution is
+currently disabled. A future contribution may pick one
+[Starter Task](community/STARTER_TASKS.md) or draft a
+[Proposal](specifications/templates/proposal.md) only after a new bounded Human
+Decision.
 
 ## 2. Declare scope
 
@@ -33,7 +33,7 @@ Authority or adoption.
 
 ## 5. Know the current limits
 
-Limited repository contribution is active. No permanent Maintainer,
+Public contribution is inactive and unauthorized. No permanent Maintainer,
 established community, Stable specification, certification or Release is
-created. A submitted contribution does not grant Authority and is not accepted
-until Human Maintainer disposition.
+created. Preparing a contribution does not grant Authority and does not submit
+anything.

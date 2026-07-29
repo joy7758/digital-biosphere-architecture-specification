@@ -1,9 +1,9 @@
 # Public Contribution Activation Checklist
 
-Status: `PASS_COMPLETE`
+Status: `HISTORICAL_PASS_CURRENTLY_SUPERSEDED`
 
-The templates were reviewed at the exact Activation PR head and are active on
-`main` only for the bounded repository contribution Preview.
+The templates were reviewed at the exact Activation PR head. The table below
+records historical activation evidence; it is not current authorization.
 
 | Required condition | Current state |
 |---|---|
@@ -20,8 +20,8 @@ The templates were reviewed at the exact Activation PR head and are active on
 If any condition is not met, activation fails closed.
 
 ```text
-ACTIVATION_BLOCKED=false
+HISTORICAL_ACTIVATION_BLOCKED=false
 PUBLIC_CONTRIBUTION_TEMPLATES_INSTALLED=true
-PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=true
+PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
 PUBLIC_ACTIVATION_REQUIRES_SEPARATE_PR=true
 ```

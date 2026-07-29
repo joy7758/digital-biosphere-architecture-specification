@@ -1,8 +1,9 @@
 # Contributing to TITMAS
 
-Limited repository contribution is active. GitHub Issue and Pull Request
-templates were installed through the independent
-[Activation PR](github-activation-templates/README.md) and merged into `main`.
+Public contribution is currently inactive and unauthorized. GitHub Issue and
+Pull Request templates were historically installed through the independent
+[Activation PR](github-activation-templates/README.md), but that history does
+not create a current submission path.
 
 ## First contribution
 
@@ -25,8 +26,8 @@ templates were installed through the independent
    clone lacks the Git history required by those lineage checks and therefore
    fails closed with `NOT_ASSESSED`.
 
-6. Use the bounded GitHub template. Submission is active, while Human
-   Maintainer acceptance remains a separate decision.
+6. Stop after preparing a local candidate. Submission requires a new explicit
+   Human Decision; Maintainer acceptance remains separate.
 
 ## Contribution lifecycle
 
@@ -53,7 +54,7 @@ known_unknowns=
 Never submit credentials, personal/customer data, real production Evidence or
 license-incompatible materials.
 
-The repository remains publicly readable and reusable under its license.
-Limited repository contribution is active. Readability, submission and
-Conformance do not imply acceptance, Authority, adoption, Release or community
-membership.
+The core repository is private. Prior public content may have been copied and
+cannot be retracted, but it does not authorize a new export. Local preparation
+and Conformance do not imply submission, acceptance, Authority, adoption,
+Release or community membership.

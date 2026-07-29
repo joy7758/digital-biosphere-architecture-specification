@@ -2,7 +2,7 @@
 document_id: TITMAS-FIRST-PUBLIC-INDEPENDENT-AGENT-CUSTOMER-CYCLE-D02-READINESS
 title: TITMAS First Public Independent Agent Customer Cycle D02 Readiness
 title_zh: TITMAS 首个公开独立智能体客户闭环 D02 就绪性
-status: harness-ready-public-surface-blocked-decision-undecided
+status: superseded-by-private-controlled-cycle-history-retained
 decision_id: TITMAS-FIRST-PUBLIC-INDEPENDENT-AGENT-CUSTOMER-CYCLE-D02
 decision: UNDECIDED
 real_model_call_count: 0
@@ -11,6 +11,11 @@ real_model_call_count: 0
 # TITMAS First Public Independent Agent Customer Cycle D02 Readiness
 
 中文：TITMAS 首个公开独立智能体客户闭环 D02 就绪性。
+
+> Superseded by
+> `TITMAS-PRIVATE-CORE-COMMERCIALIZATION-SUPERSESSION-D01`. This document is
+> retained as historical audit context. It no longer recommends restoring
+> public repository visibility and does not authorize a public cycle.
 
 ## Decision status
 

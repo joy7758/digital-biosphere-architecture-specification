@@ -1,8 +1,8 @@
 # Security Transport Activation Checklist
 
-Status: `TRANSPORT_ACTIVATED_REMAINING_OPERATIONAL_CHECKS_RECORDED`
+Status: `HISTORICAL_TRANSPORT_ACTIVATION_CURRENT_LIVE_REVERIFICATION_FAILED`
 
-This checklist records the bounded security-setting activation authorized by
+This checklist records the historical bounded security-setting activation authorized by
 `TITMAS-COMMUNITY-CORE-MERGE-AND-OPENING-D01`. No private report content,
 token or Authorization header is stored.
 
@@ -29,9 +29,10 @@ audit, certification or absence of vulnerabilities.
 ```text
 SECURITY_PROCESS_NE_SECURITY_TRANSPORT=true
 SECURITY_SETTING_CHANGE_AUTHORIZED=true
-SECURITY_TRANSPORT_ACTIVE=true
-SECURITY_TRANSPORT_VERIFIED=true
-SECURITY_ACTIVATION_HTTP_STATUS=204
+HISTORICAL_SECURITY_TRANSPORT_ACTIVE=true
+CURRENT_SECURITY_TRANSPORT_ACTIVE=false
+CURRENT_SECURITY_TRANSPORT_VERIFIED=false
+HISTORICAL_SECURITY_ACTIVATION_HTTP_STATUS=204
 SECURITY_CERTIFIED=false
 SECURITY_AUDITED=false
 ```
