@@ -149,6 +149,15 @@ class HarnessTests(unittest.TestCase):
         self.assertEqual(22, details["adversarial_cases_rejected"])
         self.assertEqual(22, details["adversarial_cases_executed"])
 
+    def test_public_entry_consistency_passes_all_ten_checks(self):
+        details = HARNESS.check_public_entry_consistency()
+        self.assertEqual(10, details["public_entry_consistency_tests_passed"])
+        self.assertEqual(
+            [f"PE-{index:02d}" for index in range(1, 11)],
+            details["checks"],
+        )
+        self.assertFalse(details["live_github_truth"])
+
     def test_integration_reviews_preserve_independent_lineages(self):
         details = HARNESS.check_internal_reviews()
         self.assertEqual(4, details["review_sessions_checked"])

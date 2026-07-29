@@ -8,10 +8,9 @@ The canonical contribution guide is:
 - [GitHub Activation Package](TITMAS/community/github-activation-templates/README.md)
 
 Limited public contribution is authorized, and GitHub Private Vulnerability
-Reporting is active. Issue Forms and the Pull Request template are installed
-only on the independent Activation PR branch. Public contribution opening is
-pending that PR's merge. Until then, do not use a public Issue or PR as an
-active TITMAS contribution route. Activation opens a bounded repository
-Preview; it does not establish the community, assign a formal Maintainer,
+Reporting is active. Issue Forms and the Pull Request template were merged
+through Activation PR #42 and are active for a bounded repository Preview.
+Submission does not establish the community, assign a formal Maintainer,
 create Authority, publish a Stable standard or accept contributions
-automatically.
+automatically. Security vulnerabilities must use Private Vulnerability
+Reporting rather than a public Issue.

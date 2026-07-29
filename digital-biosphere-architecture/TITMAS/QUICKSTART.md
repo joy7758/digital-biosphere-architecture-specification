@@ -17,8 +17,8 @@ python3 TITMAS/reference/minimal-python/titmas_reference.py \
 Expected:
 
 - harness status `PASS`;
-- 8/8 semantic-elevation negatives rejected;
-- 3 harness tests and 4 reference tests pass;
+- all currently registered semantic-elevation negatives are rejected;
+- Conformance/Candidate Grounding and reference test suites pass;
 - reference output matches `expected-output.json`.
 
 These results prove only deterministic local behavior for a synthetic
