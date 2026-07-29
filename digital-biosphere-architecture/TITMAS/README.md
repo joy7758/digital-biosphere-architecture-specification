@@ -20,6 +20,7 @@ aliases. No fourth community name is created.
 - Human quick start: [`QUICKSTART.md`](QUICKSTART.md)
 - First contribution: [`FIRST_CONTRIBUTION.md`](FIRST_CONTRIBUTION.md)
 - Contribution policy: [`community/CONTRIBUTING.md`](community/CONTRIBUTING.md)
+- Dormant GitHub templates: [`community/github-activation-templates/README.md`](community/github-activation-templates/README.md)
 - Specification registry: [`specifications/registry.yaml`](specifications/registry.yaml)
 - Conformance: [`conformance/README.md`](conformance/README.md)
 - Reference implementation boundary: [`reference/README.md`](reference/README.md)
@@ -52,6 +53,9 @@ SECURITY_TRANSPORT_ACTIVE=false
 INTERIM_MAINTAINER_REF=zhangbin
 INTERIM_ROLE_EXPIRES=2026-09-30T23:59:59+08:00
 PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+PUBLIC_CONTRIBUTION_TEMPLATES_DEVELOPED=true
+PUBLIC_CONTRIBUTION_TEMPLATES_INSTALLED=false
+PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
 PUBLIC_LAUNCH_AUTHORIZED=false
 COMMUNITY_ESTABLISHED=false
 EXTERNAL_CONTRIBUTOR_COUNT=0
@@ -61,6 +65,11 @@ EXTERNAL_ADOPTER_COUNT=0
 The temporary assignment is revocable and limited to this integration
 candidate. It does not grant DBA, DBOS, SAEE, Evidence Truth, Certification,
 Commercial, Release, automatic merge or Stable-promotion authority.
+
+The contribution workflow is developed, but its GitHub templates are dormant
+and not installed in `.github`. Public Issues or PRs are not an authorized
+TITMAS contribution path. A future activation requires an active Security
+Transport, a separate Human Decision and an independent Activation PR.
 
 ## Core boundaries
 

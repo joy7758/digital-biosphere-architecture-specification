@@ -31,9 +31,9 @@ PUBLIC_LAUNCH_BLOCKER_SECURITY_TRANSPORT=true
 Until a route is activated, preserve the minimum local finding and request a
 Human Owner decision. Do not send external reports automatically.
 
-GitHub Issue and PR templates link to this policy and explicitly prohibit
-secrets, PII and public vulnerability details. That link is guidance, not an
-activated receiving channel.
+Prepared GitHub Issue and PR templates are stored outside `.github` as dormant
+activation assets. They are not an active reporting or contribution channel.
+Their policy links are future guidance, not an activated receiving transport.
 
 ## Review requirements
 

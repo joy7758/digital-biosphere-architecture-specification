@@ -12,8 +12,7 @@ on:
       - "digital-biosphere-architecture/TITMAS-AGENT-NATIVE-*.md"
       - "digital-biosphere-architecture/architecture/titmas-architecture-charter-v1.0.md"
       - "digital-biosphere-architecture/architecture/titmas-developer-infrastructure-positioning-v1.0.md"
-      - ".github/ISSUE_TEMPLATE/**"
-      - ".github/pull_request_template.md"
+      - "digital-biosphere-architecture/TITMAS/community/github-activation-templates/**"
       - ".github/workflows/titmas-community-conformance.yml"
   pull_request:
     paths:
@@ -26,8 +25,7 @@ on:
       - "digital-biosphere-architecture/TITMAS-AGENT-NATIVE-*.md"
       - "digital-biosphere-architecture/architecture/titmas-architecture-charter-v1.0.md"
       - "digital-biosphere-architecture/architecture/titmas-developer-infrastructure-positioning-v1.0.md"
-      - ".github/ISSUE_TEMPLATE/**"
-      - ".github/pull_request_template.md"
+      - "digital-biosphere-architecture/TITMAS/community/github-activation-templates/**"
       - ".github/workflows/titmas-community-conformance.yml"
 
 permissions:
@@ -62,7 +60,10 @@ jobs:
           PY
           ruby - <<'RB'
           require "yaml"
-          paths = Dir[".github/**/*.{yml,yaml}"].sort
+          paths = (
+            Dir[".github/**/*.{yml,yaml}"] +
+            Dir["digital-biosphere-architecture/TITMAS/community/github-activation-templates/**/*.{yml,yaml}"]
+          ).sort
           paths.each do |path|
             content = File.read(path)
             begin

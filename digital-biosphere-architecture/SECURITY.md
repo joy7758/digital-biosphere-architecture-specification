@@ -9,3 +9,7 @@ Issue. GitHub Private Vulnerability Reporting was read-only checked on
 activated. The temporary process owner is `zhangbin` through
 2026-09-30T23:59:59+08:00; this assignment is routing responsibility, not
 Security Certification Authority.
+
+The prepared TITMAS Issue and Pull Request templates are dormant and not
+installed under `.github`. Public contribution remains unauthorized and cannot
+be used as a substitute for a private security intake.

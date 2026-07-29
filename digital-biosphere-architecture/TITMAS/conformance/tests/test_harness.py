@@ -26,10 +26,57 @@ class HarnessTests(unittest.TestCase):
     def test_community_status_schema_fails_closed(self):
         status_path = HARNESS.TITMAS_ROOT / "community" / "community-status.json"
         status = json.loads(status_path.read_text(encoding="utf-8"))
+        schema = HARNESS.load_json(
+            HARNESS.TITMAS_ROOT
+            / "conformance"
+            / "schemas"
+            / "community-status.schema.json"
+        )
         unsafe = copy.deepcopy(status)
-        unsafe["public_launch_authorized"] = True
-        self.assertTrue(unsafe["public_launch_authorized"])
-        self.assertFalse(status["public_launch_authorized"])
+        unsafe["public_launch"]["authorized"] = True
+        with self.assertRaises(HARNESS.ConformanceError):
+            HARNESS.validate_schema(unsafe, schema)
+        HARNESS.validate_schema(status, schema)
+
+    def test_merge_admission_boundary_passes(self):
+        details = HARNESS.check_merge_admission_boundary()
+        self.assertEqual(15, details["stage_consistency_checks"])
+        self.assertEqual(0, details["active_titmas_issue_template_count"])
+        self.assertEqual(0, details["active_titmas_pull_request_template_count"])
+        self.assertEqual(5, details["dormant_template_hashes_checked"])
+
+    def test_merge_admission_negative_fixtures_fail_closed(self):
+        fixture = HARNESS.load_json(
+            HARNESS.TITMAS_ROOT
+            / "conformance"
+            / "fixtures"
+            / "merge-admission"
+            / "negative.json"
+        )
+        positive = HARNESS.load_json(
+            HARNESS.TITMAS_ROOT
+            / "conformance"
+            / "fixtures"
+            / "merge-admission"
+            / "positive.json"
+        )
+        base = positive["cases"][0]["payload"]
+        self.assertEqual(8, len(fixture["cases"]))
+        for case in fixture["cases"]:
+            errors = HARNESS.merge_admission_errors(
+                HARNESS.deep_merge(base, case["patch"])
+            )
+            self.assertIn(case["expected_error"], errors, case["id"])
+
+    def test_developed_templates_do_not_require_installation(self):
+        status = HARNESS.load_json(
+            HARNESS.TITMAS_ROOT / "community" / "community-status.json"
+        )
+        surface = status["public_contribution_surface"]
+        self.assertTrue(surface["templates_developed"])
+        self.assertFalse(surface["templates_installed"])
+        self.assertFalse(surface["active"])
+        self.assertFalse(surface["authorized"])
 
     def test_schema_depth_fails_closed(self):
         schema = {"type": "object", "properties": {}}

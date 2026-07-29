@@ -1,7 +1,10 @@
 # Contributing to TITMAS
 
 Public contribution is not yet authorized. This guide is executable preparation
-for a future bounded contribution surface.
+for a future bounded contribution surface. GitHub Issue and Pull Request
+templates are stored as
+[dormant activation assets](github-activation-templates/README.md), not under
+GitHub auto-discovery paths.
 
 ## First contribution
 
@@ -20,7 +23,9 @@ for a future bounded contribution surface.
    git diff --check
    ```
 
-6. Complete the PR checklist when the public surface is authorized.
+6. Do not create a public Issue or PR. A future, independently authorized
+   Activation PR must first install the dormant templates after Security
+   Transport activation.
 
 ## Contribution lifecycle
 
@@ -46,3 +51,7 @@ known_unknowns=
 
 Never submit credentials, personal/customer data, real production Evidence or
 license-incompatible materials.
+
+The repository remains publicly readable and reusable under its license.
+Readable specifications and Conformance do not imply that external
+contributions are currently accepted.

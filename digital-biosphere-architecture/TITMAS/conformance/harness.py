@@ -3,6 +3,8 @@
 
 from __future__ import annotations
 
+import copy
+import hashlib
 import json
 import importlib.util
 import re
@@ -197,7 +199,7 @@ def check_community_status() -> dict[str, Any]:
     schema = load_json(TITMAS_ROOT / "conformance" / "schemas" / "community-status.schema.json")
     validate_schema(status, schema)
     must_be_false = (
-        "public_launch_authorized", "community_established", "foundation_created",
+        "canonical_main_integration_complete", "community_established", "foundation_created",
         "maintainer_assigned", "external_reviewer_assigned",
         "commercial_offer_authorized", "certification_authorized",
         "release_authorized", "cs_g0_pass", "cs_g1_pass",
@@ -205,6 +207,19 @@ def check_community_status() -> dict[str, Any]:
     elevated = [key for key in must_be_false if status[key] is not False]
     if elevated:
         raise ConformanceError(f"community status semantic elevation: {elevated}")
+    if status["public_launch"]["active"] or status["public_launch"]["authorized"]:
+        raise ConformanceError("public launch must remain inactive and unauthorized")
+    contribution = status["public_contribution_surface"]
+    if (
+        contribution["templates_installed"]
+        or contribution["active"]
+        or contribution["authorized"]
+    ):
+        raise ConformanceError("public contribution surface must remain dormant")
+    if status["security"]["transport_active"]:
+        raise ConformanceError("security transport must remain inactive")
+    if status["draft_pr"]["merged"] or status["draft_pr"]["ready_for_review"]:
+        raise ConformanceError("Draft PR must remain unmerged and not ready for review")
     for key in ("community_member_count", "external_contributor_count", "external_adopter_count"):
         if status[key] != 0:
             raise ConformanceError(f"{key} must remain zero")
@@ -228,8 +243,167 @@ def check_community_status() -> dict[str, Any]:
     if not prohibited.issubset(set(assignments["not_granted"])):
         raise ConformanceError("interim role assignment authority boundary drift")
     return {
-        "community_invariants_checked": len(must_be_false) + 3,
+        "community_invariants_checked": len(must_be_false) + 7,
         "interim_role_assignments_checked": len(assignments["assignments"]),
+    }
+
+
+def deep_merge(base: dict[str, Any], patch: dict[str, Any]) -> dict[str, Any]:
+    result = copy.deepcopy(base)
+    for key, value in patch.items():
+        if isinstance(value, dict) and isinstance(result.get(key), dict):
+            result[key] = deep_merge(result[key], value)
+        else:
+            result[key] = copy.deepcopy(value)
+    return result
+
+
+def merge_admission_errors(payload: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    draft = payload["draft_pr"]
+    contribution = payload["public_contribution_surface"]
+    security = payload["security"]
+    maintainer = payload["maintainer"]
+    launch = payload["public_launch"]
+
+    if draft["created"] and "DRAFT_PR_NOT_CREATED" in payload["limitations"]:
+        errors.append("STALE_DRAFT_PR_NOT_CREATED")
+    if contribution["templates_installed"] and not contribution["authorized"]:
+        errors.append("TEMPLATES_INSTALLED_WITHOUT_AUTHORIZATION")
+    if contribution["active"] and not security["transport_active"]:
+        errors.append("CONTRIBUTION_ACTIVE_WITHOUT_SECURITY_TRANSPORT")
+    if launch["active"] and not security["transport_active"]:
+        errors.append("PUBLIC_LAUNCH_WITHOUT_SECURITY_TRANSPORT")
+    if maintainer["interim_assigned"] and maintainer["formal_assigned"]:
+        errors.append("INTERIM_MAINTAINER_AS_FORMAL_MAINTAINER")
+    if (
+        draft["state"] == "OPEN_DRAFT"
+        and payload["canonical_main_integration_complete"]
+    ):
+        errors.append("OPEN_DRAFT_AS_CANONICAL_MAIN")
+    if payload["dormant_path_auto_discoverable"]:
+        errors.append("DORMANT_TEMPLATE_AUTO_DISCOVERABLE")
+    if payload["active_destination_used_outside_activation_pr"]:
+        errors.append("ACTIVE_DESTINATION_OUTSIDE_ACTIVATION_PR")
+    return errors
+
+
+def check_merge_admission_boundary() -> dict[str, Any]:
+    status = load_json(TITMAS_ROOT / "community" / "community-status.json")
+    dormant_root = TITMAS_ROOT / "community" / "github-activation-templates"
+    manifest = load_json(dormant_root / "activation-manifest.json")
+    repository_root = DBA_ROOT.parent
+
+    if manifest["status"] != "DORMANT_ACTIVATION_PACKAGE":
+        raise ConformanceError("activation templates are not marked dormant")
+    if (
+        manifest["installed"]
+        or manifest["active"]
+        or manifest["authorized"]
+        or not manifest["security_transport_required"]
+        or not manifest["activation_pr_required"]
+    ):
+        raise ConformanceError("dormant activation manifest fails closed")
+
+    expected_active = {
+        ".github/ISSUE_TEMPLATE/bug.yml",
+        ".github/ISSUE_TEMPLATE/config.yml",
+        ".github/ISSUE_TEMPLATE/integration.yml",
+        ".github/ISSUE_TEMPLATE/proposal.yml",
+        ".github/pull_request_template.md",
+    }
+    recorded_active = set(manifest["intended_active_destinations"])
+    if recorded_active != expected_active:
+        raise ConformanceError("future active destination set drift")
+    active_paths = [repository_root / path for path in sorted(expected_active)]
+    installed = [str(path.relative_to(repository_root)) for path in active_paths if path.exists()]
+    if installed:
+        raise ConformanceError(f"unauthorized active GitHub templates installed: {installed}")
+
+    template_hashes_checked = 0
+    issue_forms_checked = 0
+    pr_templates_checked = 0
+    for record in manifest["templates"]:
+        dormant_rel = record["dormant_path"]
+        dormant_path = (dormant_root / dormant_rel).resolve()
+        if not dormant_path.is_relative_to(dormant_root.resolve()):
+            raise ConformanceError(f"dormant template escapes package: {dormant_rel}")
+        if dormant_path.is_symlink() or not dormant_path.is_file():
+            raise ConformanceError(f"missing regular dormant template: {dormant_rel}")
+        if record["future_active_path"] not in expected_active:
+            raise ConformanceError(f"unapproved future active path: {record['future_active_path']}")
+        digest = hashlib.sha256(dormant_path.read_bytes()).hexdigest()
+        if digest != record["sha256"]:
+            raise ConformanceError(f"dormant template hash mismatch: {dormant_rel}")
+        if manifest["content_hashes"].get(dormant_rel) != f"sha256:{digest}":
+            raise ConformanceError(f"content_hashes mismatch: {dormant_rel}")
+        text = dormant_path.read_text(encoding="utf-8")
+        if record["template_type"] == "GITHUB_ISSUE_FORM":
+            for field in ("name:", "description:", "body:"):
+                if not any(line.startswith(field) for line in text.splitlines()):
+                    raise ConformanceError(f"{dormant_rel}: missing Issue Form field {field}")
+            issue_forms_checked += 1
+        elif record["template_type"] == "GITHUB_ISSUE_CONFIG":
+            for field in ("blank_issues_enabled:", "contact_links:"):
+                if not any(line.startswith(field) for line in text.splitlines()):
+                    raise ConformanceError(f"{dormant_rel}: missing Issue config field {field}")
+            issue_forms_checked += 1
+        elif record["template_type"] == "GITHUB_PULL_REQUEST_TEMPLATE":
+            if not text.startswith("# ") or "- [ ]" not in text:
+                raise ConformanceError("dormant Pull Request template is structurally incomplete")
+            pr_templates_checked += 1
+        else:
+            raise ConformanceError(f"unknown dormant template type {record['template_type']}")
+        template_hashes_checked += 1
+
+    positive = load_json(
+        TITMAS_ROOT / "conformance" / "fixtures" / "merge-admission" / "positive.json"
+    )
+    for case in positive["cases"]:
+        errors = merge_admission_errors(case["payload"])
+        if errors != case["expected_errors"]:
+            raise ConformanceError(f"{case['id']}: expected {case['expected_errors']}, got {errors}")
+    base_payload = positive["cases"][0]["payload"]
+    negative = load_json(
+        TITMAS_ROOT / "conformance" / "fixtures" / "merge-admission" / "negative.json"
+    )
+    for case in negative["cases"]:
+        errors = merge_admission_errors(deep_merge(base_payload, case["patch"]))
+        if case["expected_error"] not in errors:
+            raise ConformanceError(f"{case['id']}: expected {case['expected_error']}, got {errors}")
+
+    actual_payload = {
+        "draft_pr": status["draft_pr"],
+        "limitations": status["limitations"],
+        "public_contribution_surface": status["public_contribution_surface"],
+        "security": status["security"],
+        "maintainer": status["maintainer"],
+        "public_launch": status["public_launch"],
+        "canonical_main_integration_complete": status["canonical_main_integration_complete"],
+        "community_established": status["community_established"],
+        "infrastructure_complete": status["infrastructure_complete"],
+        "dormant_path_auto_discoverable": False,
+        "active_destination_used_outside_activation_pr": False,
+    }
+    actual_errors = merge_admission_errors(actual_payload)
+    if actual_errors:
+        raise ConformanceError(f"current merge-admission state is unsafe: {actual_errors}")
+    if not status["infrastructure_complete"] or status["community_established"]:
+        raise ConformanceError("community infrastructure and establishment boundary drift")
+
+    return {
+        "stage_consistency_checks": 15,
+        "active_titmas_issue_template_count": sum(
+            path.exists() for path in active_paths if "ISSUE_TEMPLATE" in str(path)
+        ),
+        "active_titmas_pull_request_template_count": sum(
+            path.exists() for path in active_paths if path.name == "pull_request_template.md"
+        ),
+        "dormant_template_hashes_checked": template_hashes_checked,
+        "dormant_issue_templates_structurally_checked": issue_forms_checked,
+        "dormant_pr_templates_structurally_checked": pr_templates_checked,
+        "positive_cases_passed": len(positive["cases"]),
+        "negative_cases_rejected": len(negative["cases"]),
     }
 
 
@@ -457,6 +631,7 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("frontmatter", check_frontmatter),
         ("fixtures", check_fixtures),
         ("community_status", check_community_status),
+        ("merge_admission_boundary", check_merge_admission_boundary),
         ("internal_reviews", check_internal_reviews),
         ("agent_native_surfaces", check_agent_native_surfaces),
         ("agent_native_adversarial", check_agent_native_adversarial),

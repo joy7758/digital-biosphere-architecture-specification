@@ -42,7 +42,8 @@
     "review_protocol": "TITMAS/agent-native/reviews/review-protocol.json",
     "specifications": "TITMAS/specifications/registry.yaml",
     "conformance_report": "TITMAS/conformance/reports/latest.json",
-    "contribution_grounding": "TITMAS/conformance/grounding/candidate_preflight.py"
+    "contribution_grounding": "TITMAS/conformance/grounding/candidate_preflight.py",
+    "dormant_contribution_templates": "TITMAS/community/github-activation-templates/activation-manifest.json"
   },
   "commands": {
     "conformance": "python3 TITMAS/conformance/harness.py",
@@ -60,5 +61,12 @@
     "EVIDENCE_NE_TRUTH",
     "VERIFICATION_NE_AUTHORIZATION",
     "RECOMMENDATION_NE_DECISION"
-  ]
+  ],
+  "public_contribution_state": {
+    "templates_developed": true,
+    "templates_installed": false,
+    "surface_active": false,
+    "surface_authorized": false,
+    "security_transport_active": false
+  }
 }

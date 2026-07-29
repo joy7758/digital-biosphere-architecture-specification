@@ -3,8 +3,10 @@
 ## 1. Choose a bounded contribution
 
 Pick one [Starter Task](community/STARTER_TASKS.md) or draft a
-[Proposal](specifications/templates/proposal.md). Do not create a real Issue
-until the Human Owner authorizes the public contribution surface.
+[Proposal](specifications/templates/proposal.md). Do not create a real Issue or
+public Pull Request. The prepared GitHub templates are
+[dormant activation assets](community/github-activation-templates/README.md),
+not an installed contribution surface.
 
 ## 2. Declare scope
 
@@ -32,4 +34,6 @@ Authority or adoption.
 ## 5. Know the current limits
 
 No public contribution, Maintainer, community, Stable specification,
-certification or release is authorized.
+certification or release is authorized. External contribution activation
+requires a future Human Decision, active Security Transport and a separate
+Activation PR.

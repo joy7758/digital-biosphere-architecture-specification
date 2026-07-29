@@ -240,3 +240,40 @@ TITMAS_FOUNDATION_CREATED=false
 
 This is a completed integration candidate, not completed community development,
 canonical `main`, public launch, adoption, release, certification, or product.
+
+## Append-only PR #41 merge-admission remediation
+
+The subsequent
+`TITMAS-COMMUNITY-PR41-MERGE-ADMISSION-D01` review identified a stage-boundary
+conflict: the candidate declared public contribution unauthorized while five
+TITMAS GitHub templates were installed in active `.github` discovery paths.
+
+The remediation preserves the original source inventory and validated content
+head while changing the merge candidate as follows:
+
+- the four Issue templates and one Pull Request template were removed from
+  active `.github` paths;
+- byte-identical templates were retained in
+  `TITMAS/community/github-activation-templates/` as a dormant activation
+  package;
+- an activation manifest, Security Transport checklist and public contribution
+  checklist were added;
+- community status and its Schema now distinguish developed, installed,
+  authorized and active states;
+- deterministic SC-01 through SC-15 merge-admission checks were added;
+- public contribution remains unauthorized and inactive;
+- Security Transport remains inactive;
+- PR #41 remains Draft and Human Merge Review remains pending.
+
+The dormant package is not an active Issue, Pull Request or security-reporting
+surface. Installation requires a separate Human Decision and Activation PR.
+
+```text
+PR41_STAGE_BOUNDARY_CONFLICT_IDENTIFIED=true
+PUBLIC_CONTRIBUTION_TEMPLATES_DEVELOPED=true
+PUBLIC_CONTRIBUTION_TEMPLATES_INSTALLED=false
+PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
+PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+SECURITY_TRANSPORT_ACTIVE=false
+COMMUNITY_HD_01=UNDECIDED
+```

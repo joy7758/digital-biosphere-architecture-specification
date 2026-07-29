@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://titmas.cn/schemas/community-status-1.0.json",
+  "$id": "https://titmas.cn/schemas/community-status-1.1.json",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -10,23 +10,24 @@
     "human_aliases",
     "status",
     "state",
-    "canonical_branch",
-    "source_commit",
+    "base_main_commit",
+    "integration_branch",
+    "integration_candidate_commit",
+    "draft_pr",
     "public_contribution_surface",
     "code_of_conduct",
-    "security_process",
-    "security_transport",
-    "interim_maintainer",
+    "security",
+    "maintainer",
     "agent_entry",
     "human_entry",
     "specification_registry",
     "conformance",
     "reference_implementation",
     "agent_native_cycle",
+    "canonical_main_integration_complete",
     "draft_pr_authorized",
     "draft_pr_creation_blocked_by_security_transport",
     "public_launch",
-    "public_launch_authorized",
     "community_established",
     "foundation_created",
     "infrastructure_complete",
@@ -47,22 +48,82 @@
   ],
   "properties": {
     "$schema": {"type": "string"},
-    "version": {"type": "string"},
+    "version": {"const": "1.1.0"},
     "canonical_name": {"const": "TITMAS Agent-Native Standards Community"},
     "human_aliases": {"type": "array", "minItems": 2, "items": {"type": "string"}},
     "status": {"const": "CANONICAL_INTEGRATION_CANDIDATE"},
     "state": {"const": "CANONICAL_INTEGRATION_CANDIDATE"},
-    "canonical_branch": {"type": "string"},
-    "source_commit": {"type": "string"},
-    "public_contribution_surface": {"const": "PREPARED_NOT_AUTHORIZED"},
-    "code_of_conduct": {"const": "ADOPTED_FOR_INTEGRATION_CANDIDATE"},
-    "security_process": {"const": "DEFINED_OWNER_ASSIGNED"},
-    "security_transport": {"type": "string"},
-    "interim_maintainer": {
+    "base_main_commit": {"const": "ba6d51f60c12f1ac954dd67947451821fd5a3eb6"},
+    "integration_branch": {"const": "codex/titmas-agent-native-open-standards-community-canonical-integration-v1"},
+    "integration_candidate_commit": {"type": "string", "minLength": 7},
+    "draft_pr": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["ref", "public_id", "github_ref", "term_start", "term_expires", "temporary", "revocable"],
+      "required": ["created", "number", "state", "merged", "ready_for_review"],
       "properties": {
+        "created": {"const": true},
+        "number": {"const": 41},
+        "state": {"const": "OPEN_DRAFT"},
+        "merged": {"const": false},
+        "ready_for_review": {"const": false}
+      }
+    },
+    "public_contribution_surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "templates_developed",
+        "templates_installed",
+        "active",
+        "authorized",
+        "dormant_package_ref"
+      ],
+      "properties": {
+        "status": {"const": "PREPARED_DORMANT_NOT_AUTHORIZED"},
+        "templates_developed": {"const": true},
+        "templates_installed": {"const": false},
+        "active": {"const": false},
+        "authorized": {"const": false},
+        "dormant_package_ref": {"const": "github-activation-templates/activation-manifest.json"}
+      }
+    },
+    "code_of_conduct": {"const": "ADOPTED_FOR_INTEGRATION_CANDIDATE"},
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "process_defined",
+        "process_owner_assigned",
+        "transport_active",
+        "transport_status",
+        "public_activation_blocked"
+      ],
+      "properties": {
+        "process_defined": {"const": true},
+        "process_owner_assigned": {"const": true},
+        "transport_active": {"const": false},
+        "transport_status": {"const": "INACTIVE_GITHUB_PRIVATE_VULNERABILITY_REPORTING_DISABLED"},
+        "public_activation_blocked": {"const": true}
+      }
+    },
+    "maintainer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "interim_assigned",
+        "formal_assigned",
+        "ref",
+        "public_id",
+        "github_ref",
+        "term_start",
+        "term_expires",
+        "temporary",
+        "revocable"
+      ],
+      "properties": {
+        "interim_assigned": {"const": true},
+        "formal_assigned": {"const": false},
         "ref": {"const": "zhangbin"},
         "public_id": {"const": "Bin_Zhang"},
         "github_ref": {"const": "joy7758"},
@@ -78,10 +139,18 @@
     "conformance": {"type": "string"},
     "reference_implementation": {"type": "string"},
     "agent_native_cycle": {"type": "string"},
+    "canonical_main_integration_complete": {"const": false},
     "draft_pr_authorized": {"const": true},
     "draft_pr_creation_blocked_by_security_transport": {"const": false},
-    "public_launch": {"const": false},
-    "public_launch_authorized": {"const": false},
+    "public_launch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["active", "authorized"],
+      "properties": {
+        "active": {"const": false},
+        "authorized": {"const": false}
+      }
+    },
     "community_established": {"const": false},
     "foundation_created": {"const": false},
     "infrastructure_complete": {"type": "boolean"},
