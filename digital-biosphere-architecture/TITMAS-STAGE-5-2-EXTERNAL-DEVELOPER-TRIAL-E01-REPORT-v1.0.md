@@ -8,7 +8,7 @@ normative: false
 owner_ref: zhangbin
 decision_reference: TITMAS-STAGE-5-2-FIRST-EXTERNAL-DEVELOPER-TRIAL-E01
 participant_id: TITMAS-EXT-DEV-001
-observed_at: 2026-07-29T20:44:10+08:00
+observed_at: 2026-07-29T21:11:03+08:00
 ---
 
 # TITMAS Stage 5.2 First External Developer Trial E01 Report
@@ -126,10 +126,21 @@ negative Test Vector that describes an input that must be rejected, declares
 the expected `FAIL` result, exposes a public Reason Code and states the failure
 boundary.
 
+Contribution-path preflight found the direct upstream-branch route unavailable
+with the live `read` role. The repository permits private Forks, so the
+confirmed route is:
+
+```text
+E01_CONTRIBUTION_PATH=PRIVATE_FORK_PULL_REQUEST
+OWNER_START_ISSUE_NUMBER=1
+OWNER_START_ISSUE_CREATED=true
+```
+
 The participant must independently read the repository entry surfaces,
-install the trial SDK, select the task, create a personal branch, prepare the
-Test Vector, run preflight, push the branch, open one Pull Request, wait for
-`trial-conformance` and submit feedback.
+install the trial SDK, select the task, create their own private Fork and
+branch, prepare the Test Vector, run preflight, push to their Fork, open one
+Pull Request to upstream `main`, wait for `trial-conformance` and submit
+feedback.
 
 No standard answer, internal test, core source, hidden expected field, private
 conversation or prior Agent answer may be supplied.
