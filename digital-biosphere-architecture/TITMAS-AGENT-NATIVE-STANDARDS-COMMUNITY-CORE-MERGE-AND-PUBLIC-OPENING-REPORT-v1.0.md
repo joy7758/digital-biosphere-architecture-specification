@@ -81,6 +81,13 @@ secret/private-path scans, site tests/build/lint, production dependency audit
 and `git diff --check`. GitHub CI passed at the exact Activation PR head and at
 merge commit `3f1a32666f82e6096a0f9158a86e92573e895769`.
 
+A clean full clone at status revision
+`2ee1f1bffeb44ec43526e13782028104a576a080` passed Conformance, 39/39
+Conformance/Candidate Grounding tests, 9/9 Agent-native tests and 5/5 reference
+tests. A `--depth 1` clone is not currently supported for Candidate Grounding:
+missing Git history is retained as `NOT_ASSESSED`, so the affected tests fail
+closed rather than making a false provenance claim.
+
 ## Limitations and deferred decisions
 
 - `COMMUNITY_ESTABLISHED=false`;

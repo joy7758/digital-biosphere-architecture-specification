@@ -21,6 +21,10 @@ templates were installed through the independent
    git diff --check
    ```
 
+   Use a normal clone for Candidate Grounding tests. A `--depth 1` shallow
+   clone lacks the Git history required by those lineage checks and therefore
+   fails closed with `NOT_ASSESSED`.
+
 6. Use the bounded GitHub template. Submission is active, while Human
    Maintainer acceptance remains a separate decision.
 
