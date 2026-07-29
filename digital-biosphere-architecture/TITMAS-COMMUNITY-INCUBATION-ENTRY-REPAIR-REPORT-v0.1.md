@@ -7,9 +7,23 @@ maturity: Development
 normative: false
 owner_ref: zhangbin
 decision_reference: TITMAS-COMMUNITY-INCUBATION-ENTRY-REPAIR-D01
+historical_developer_preview: true
+superseded_for_current_titmas_stage5: true
+not_current_discovery_truth: true
 ---
 
 # TITMAS Community Incubation Entry Repair Report v0.1
+
+```text
+HISTORICAL_DEVELOPER_PREVIEW=true
+SUPERSEDED_FOR_CURRENT_TITMAS_STAGE5=true
+NOT_CURRENT_DISCOVERY_TRUTH=true
+```
+
+This report preserves the facts of its historical timepoint. Current
+repository visibility, contribution and Security Transport state must be read
+from `TITMAS/community/community-status.json`; this document does not provide
+current access or publication Authority.
 
 ## Change record
 
