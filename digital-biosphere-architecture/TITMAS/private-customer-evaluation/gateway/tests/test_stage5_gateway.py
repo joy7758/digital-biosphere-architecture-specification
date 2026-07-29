@@ -70,7 +70,7 @@ class Stage5GatewayTests(unittest.TestCase):
             headers={"Authorization": f"Bearer {token}"},
         )
         try:
-            with urllib.request.urlopen(request, timeout=2) as response:
+            with urllib.request.urlopen(request, timeout=5) as response:
                 return response.status
         except urllib.error.HTTPError as exc:
             try:

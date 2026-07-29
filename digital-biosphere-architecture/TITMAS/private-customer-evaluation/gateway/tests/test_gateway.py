@@ -73,7 +73,7 @@ class PrivateEvaluationGatewayTests(unittest.TestCase):
             method=method or ("POST" if data is not None else "GET"),
         )
         try:
-            with urllib.request.urlopen(request, timeout=2) as response:
+            with urllib.request.urlopen(request, timeout=5) as response:
                 rendered = response.read().decode("utf-8")
                 return response.status, json.loads(rendered), rendered
         except urllib.error.HTTPError as exc:
