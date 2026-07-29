@@ -1,0 +1,103 @@
+{
+  "audit_type": "TITMAS_STAGE5_PRIVATE_AGENT_PILOT",
+  "audit_version": "1.0",
+  "cycle_id": "TITMAS-STAGE5-PRIVATE-AGENT-PILOT-001",
+  "source_main": "8848f2c87f30f14b4ec211c9fb2529b3f542cdaa",
+  "data_classification": "PRIVATE_AUDIT_SYNTHETIC",
+  "agent_selected_contribution_without_hint": true,
+  "selected_contribution_type": "TEST_VECTOR",
+  "selected_task_id": "AN-04-OBJECT-GENERATION",
+  "submission_id": "stage5-submission-AGENT-001",
+  "agent_output_submitted_through_sdk_by_local_controller": true,
+  "sandbox_key_sent_to_provider": false,
+  "conformance_completed": true,
+  "conformance_status": "CONFORMANCE_PASS",
+  "conformance_reason_codes": [
+    "TITMAS-STAGE5-CONTRIBUTION-CONFORMANT"
+  ],
+  "independent_agent_review_complete": false,
+  "review_result": "UNKNOWN_POST_DISPATCH_OUTCOME",
+  "review_failure_state": "FAILED_AFTER_DISPATCH_OUTCOME_UNKNOWN",
+  "semantic_plan_durable": true,
+  "semantic_contribution_durable": true,
+  "semantic_review_durable": false,
+  "checkpoint_ids": [
+    "stage5-contributor-plan",
+    "stage5-standard-contribution"
+  ],
+  "checkpoint_hashes": [
+    "dd3db27b50a9c4a32ef0f526dcaaf0f7a9541685a5f6c91eeac411bdfeed18cf",
+    "af5fe38eeaef4b03e07edb753085be6850a083f3f63fbf39801d60e5f1643b62"
+  ],
+  "model_calls": 3,
+  "provider_calls": 3,
+  "automatic_retry_count": 0,
+  "models": [
+    {
+      "provider": "ALIBABA_DASHSCOPE",
+      "requested_model": "qwen3.7-max",
+      "returned_model": "qwen3.7-max",
+      "model_identity_status": "MATCH",
+      "capture_state": "FINALIZED_SUCCESS",
+      "response_body_sha256": "f96f229b544c99609e423832d9321a76b9f15385415cb5c786c1df5d024f787a",
+      "usage_input_tokens": 1872,
+      "usage_output_tokens": 2121,
+      "usage_total_tokens": 3993
+    },
+    {
+      "provider": "ALIBABA_DASHSCOPE",
+      "requested_model": "qwen3.7-max",
+      "returned_model": "qwen3.7-max",
+      "model_identity_status": "MATCH",
+      "capture_state": "FINALIZED_SUCCESS",
+      "response_body_sha256": "087822c72b5e972599cfcfdb1a084224027c8c38b03a0e7cba482291282fa9e1",
+      "usage_input_tokens": 1386,
+      "usage_output_tokens": 581,
+      "usage_total_tokens": 1967
+    },
+    {
+      "provider": "BAIDU_QIANFAN",
+      "requested_model": "kimi-k2.6",
+      "returned_model": "",
+      "model_identity_status": "NOT_ASSESSED",
+      "capture_state": "FAILED_AFTER_DISPATCH_OUTCOME_UNKNOWN",
+      "response_body_sha256": "",
+      "usage_input_tokens": 0,
+      "usage_output_tokens": 0,
+      "usage_total_tokens": 0
+    }
+  ],
+  "token_usage_observed": {
+    "input_tokens": 3258,
+    "output_tokens": 2702,
+    "total_tokens": 5960,
+    "reviewer_usage": "UNKNOWN_POST_DISPATCH_OUTCOME"
+  },
+  "cost": {
+    "observed_qwen_standard_list_rate_estimate_cny": 0.136368,
+    "reviewer_actual_cost_cny": "UNKNOWN_POST_DISPATCH_OUTCOME",
+    "conservative_total_upper_bound_cny": 7.409256,
+    "authorized_max_cny": 10,
+    "billing_truth_available": false
+  },
+  "human_disposition": "REQUIRED",
+  "pilot_status": "PILOT_REJECTED",
+  "stage5_private_agent_pilot_complete": false,
+  "stage5_private_preview_operational": false,
+  "core_access_count": 0,
+  "private_repository_access_granted": false,
+  "raw_prompt_retained": false,
+  "raw_response_retained": false,
+  "hidden_reasoning_retained": false,
+  "credential_material_retained": false,
+  "public_export_executed": false,
+  "formal_specification_registry_modified": false,
+  "limitations": [
+    "INDEPENDENT_REVIEW_OUTCOME_UNKNOWN",
+    "NO_REVIEW_CHECKPOINT",
+    "PILOT_REJECTION_IS_FAIL_CLOSED_NOT_CONTRIBUTION_QUALITY_JUDGMENT",
+    "PILOT_ACCEPTANCE_NE_STANDARD_ADOPTION",
+    "HUMAN_DISPOSITION_REQUIRED",
+    "COST_IS_BOUNDED_ESTIMATE_NOT_BILLING_TRUTH"
+  ]
+}

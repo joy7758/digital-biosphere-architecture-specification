@@ -13,3 +13,25 @@ PROGRAMMATIC_PILOT_NE_AGENT_PILOT=true
 PILOT_ACCEPTANCE_NE_STANDARD_ADOPTION=true
 REAL_MODEL_CALLS_REQUIRE_PROGRAMMATIC_PASS=true
 ```
+
+## Private Agent pilot audit
+
+- Sanitized audit:
+  [`agent-audit/sanitized-agent-pilot-audit.json`](agent-audit/sanitized-agent-pilot-audit.json)
+- Sanitized durable plan:
+  [`agent-audit/sanitized-contributor-plan.json`](agent-audit/sanitized-contributor-plan.json)
+- Sanitized durable contribution:
+  [`agent-audit/sanitized-standard-contribution.json`](agent-audit/sanitized-standard-contribution.json)
+- Agent pilot registry:
+  [`agent-pilot-contribution-registry.json`](agent-pilot-contribution-registry.json)
+- Fail-closed validator: [`validate_agent_audit.py`](validate_agent_audit.py)
+
+The independent Reviewer request ended with an unknown post-dispatch outcome.
+It was not retried, silently substituted or elevated to a completed review.
+
+```text
+STAGE5_PRIVATE_AGENT_PILOT_COMPLETE=false
+STAGE5_PRIVATE_PREVIEW_OPERATIONAL=false
+INDEPENDENT_REVIEW_OUTCOME=UNKNOWN_POST_DISPATCH_OUTCOME
+AUTOMATIC_RETRY_COUNT=0
+```
