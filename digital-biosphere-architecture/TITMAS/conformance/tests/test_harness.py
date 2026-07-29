@@ -68,18 +68,25 @@ class HarnessTests(unittest.TestCase):
             )
             self.assertIn(case["expected_error"], errors, case["id"])
 
-    def test_activation_candidate_is_authorized_but_not_active(self):
+    def test_limited_preview_is_authorized_active_and_merge_bound(self):
         status = HARNESS.load_json(
             HARNESS.TITMAS_ROOT / "community" / "community-status.json"
         )
         surface = status["public_contribution_surface"]
+        self.assertEqual(
+            "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW", status["state"]
+        )
         self.assertTrue(surface["templates_developed"])
         self.assertTrue(surface["templates_installed"])
-        self.assertFalse(surface["active"])
+        self.assertTrue(surface["active"])
         self.assertTrue(surface["authorized"])
-        self.assertFalse(surface["activation_pr_merged"])
+        self.assertTrue(surface["activation_pr_merged"])
+        self.assertTrue(status["activation_pr"]["merged"])
+        self.assertTrue(status["public_contribution_activation"]["executed"])
+        self.assertTrue(status["welcome_issue"]["created"])
         self.assertTrue(status["security"]["transport_active"])
         self.assertTrue(status["security"]["transport_verified"])
+        self.assertFalse(status["community_established"])
 
     def test_security_transport_loss_fails_closed(self):
         status = HARNESS.load_json(

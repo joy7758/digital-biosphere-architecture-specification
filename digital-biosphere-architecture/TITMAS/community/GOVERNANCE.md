@@ -1,6 +1,6 @@
 # TITMAS Community Governance
 
-Status: `INTEGRATION_CANDIDATE_TEMPORARY_ASSIGNMENT`
+Status: `LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW`
 
 ## Scope
 
@@ -25,9 +25,10 @@ Review is input, not a Decision. A Maintainer may merge changes only after the
 applicable repository and Human gates exist. The integration candidate has one
 temporary, revocable Maintainer assignment to `zhangbin`, expiring
 2026-09-30T23:59:59+08:00. It covers candidate triage, review disposition and
-merge recommendation only. It does not activate public contribution,
-automatic merge, permanent Maintainer status or any DBA, DBOS, SAEE, Release,
-Certification or Commercial Authority.
+merge recommendation only. Limited repository contribution is active under the
+Human Owner decision. The assignment does not enable automatic merge, permanent
+Maintainer status or any DBA, DBOS, SAEE, Release, Certification or Commercial
+Authority.
 
 ## Conflict and appeal
 
@@ -45,5 +46,6 @@ MAINTAINER_ASSIGNED=false
 INTERIM_MAINTAINER_ASSIGNED=true
 EXTERNAL_REVIEWER_ASSIGNED=false
 COMMUNITY_MEMBER_COUNT=0
-PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=true
+PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=true
 ```

@@ -4,8 +4,9 @@ Status: `PROCESS_DEFINED_TRANSPORT_ACTIVE_LIMITED_PREVIEW`
 
 ## Supported surface
 
-Only the current Development branch candidate is available for review. There is
-no supported production release, SLA, certification or security guarantee.
+Only the current Development limited repository Preview is available for
+review. There is no supported production release, SLA, certification or
+security guarantee.
 
 ## Reporting
 
@@ -30,8 +31,8 @@ PUBLIC_LAUNCH_BLOCKER_SECURITY_TRANSPORT=false
 Do not send external reports automatically. The private reporting path is a
 transport, not a security audit, certification or guarantee.
 
-GitHub Issue and PR templates are installed only on the Activation PR branch.
-They remain inactive until merge and never replace the private reporting path.
+GitHub Issue and PR templates are active after Activation PR #42 and never
+replace the private reporting path.
 
 ## Review requirements
 

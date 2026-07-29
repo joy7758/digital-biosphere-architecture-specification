@@ -130,7 +130,7 @@ Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是整个 
 → Agent-native Contribution
 → 已合并社区核心
 → 已验证 Security Transport
-→ 有限公共贡献 Activation PR 候选
+→ 有限仓库贡献预览已激活
 ```
 
 统一人类入口是 [`TITMAS/README.md`](TITMAS/README.md)，统一智能体入口是
@@ -140,13 +140,13 @@ Ecology Box、Operational Calibration 和 Candidate Grounding 只作为支持性
 Calibration v0.3 继续冻结。
 
 ```text
-COMMUNITY_STATUS=PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE
+COMMUNITY_STATUS=LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW
 OPEN_STANDARDS_COMMUNITY_MAINLINE_RESTORED=true
 CALIBRATION_SUBTRACK_FROZEN=true
 TITMAS_CANONICAL_MAIN_INTEGRATION_COMPLETE=true
 SECURITY_TRANSPORT_ACTIVE=true
 PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=true
-PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
+PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=true
 PUBLIC_LAUNCH_MODE=LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW
 COMMUNITY_ESTABLISHED=false
 ```
@@ -186,20 +186,20 @@ SAEE 和 Digital Entities 仍是同一项目群内相互分离的责任域，社
 
 ```text
 TITMAS_AGENT_NATIVE_STANDARDS_COMMUNITY_DIRECTION_ADOPTED=true
-TITMAS_COMMUNITY_STATUS=PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE
+TITMAS_COMMUNITY_STATUS=LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW
 TITMAS_CODE_OF_CONDUCT_ADOPTED_FOR_LIMITED_REPOSITORY_PREVIEW=true
 TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=true
-TITMAS_PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
+TITMAS_PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=true
 TITMAS_COMMUNITY_ESTABLISHED=false
 TITMAS_MAINTAINER_ASSIGNED=false
 TITMAS_FOUNDATION_CREATED=false
 ```
 
-社区核心已进入 `main`，GitHub Private Vulnerability Reporting 已验证启用，公共贡献
-模板已安装在独立 Activation PR 分支。Activation PR 合并前，公共 Issue 与 Pull Request
-入口仍未激活。即使合并，也只开放有限仓库级 Preview，不开放 SIG、永久 Maintainer、
-Foundation、Certification、Stable、Release 或商业承诺；社区意见和智能体推荐仍只是
-Review input，不是 Architecture Decision、Implementation Authorization 或 Permission。
+社区核心和 Activation PR #42 已进入 `main`，GitHub Private Vulnerability Reporting
+已验证启用，有限仓库级 Issue 与 Pull Request 贡献入口已经激活。该 Preview 不开放
+SIG、永久 Maintainer、Foundation、Certification、Stable、Release 或商业承诺；社区
+意见和智能体推荐仍只是 Review input，不是 Architecture Decision、Implementation
+Authorization 或 Permission。
 
 ### Historical Validation References（历史验证参考）
 

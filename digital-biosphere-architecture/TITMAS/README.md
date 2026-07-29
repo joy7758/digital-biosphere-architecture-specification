@@ -46,7 +46,7 @@ Authorization, Adoption, Certification, Release or production readiness.
 ## Current state
 
 ```text
-COMMUNITY_STATUS=PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE
+COMMUNITY_STATUS=LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW
 CODE_OF_CONDUCT_ADOPTED_FOR_LIMITED_REPOSITORY_PREVIEW=true
 SECURITY_PROCESS_DEFINED=true
 SECURITY_TRANSPORT_ACTIVE=true
@@ -56,7 +56,7 @@ INTERIM_ROLE_EXPIRES=2026-09-30T23:59:59+08:00
 PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=true
 PUBLIC_CONTRIBUTION_TEMPLATES_DEVELOPED=true
 PUBLIC_CONTRIBUTION_TEMPLATES_INSTALLED=true
-PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
+PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=true
 PUBLIC_LAUNCH_MODE=LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW
 COMMUNITY_ESTABLISHED=false
 EXTERNAL_CONTRIBUTOR_COUNT=0
@@ -67,11 +67,11 @@ The temporary assignment is revocable and limited to this integration
 candidate. It does not grant DBA, DBOS, SAEE, Evidence Truth, Certification,
 Commercial, Release, automatic merge or Stable-promotion authority.
 
-The community core is merged and Security Transport is verified active. The
-GitHub templates are installed only on the independent Activation PR branch.
-Public contribution opening remains pending that PR's merge. Merge opens a
-limited repository Preview; it does not establish the community or authorize
-automatic acceptance, Release, Stable promotion or external Authority.
+The community core and Activation PR #42 are merged, Security Transport is
+verified active, and the bounded GitHub Issue and Pull Request templates are
+available. This limited repository Preview does not establish the community or
+authorize automatic acceptance, Release, Stable promotion or external
+Authority.
 
 ## Core boundaries
 

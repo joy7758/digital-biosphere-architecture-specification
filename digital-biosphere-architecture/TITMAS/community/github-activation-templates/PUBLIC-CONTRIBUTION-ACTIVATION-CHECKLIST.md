@@ -1,17 +1,18 @@
 # Public Contribution Activation Checklist
 
-Status: `ACTIVATION_PR_PREPARATION_IN_PROGRESS`
+Status: `PASS_COMPLETE`
 
-The templates are installed only on the independent Activation PR branch.
-They remain inactive until that PR is reviewed and merged.
+The templates were reviewed at the exact Activation PR head and are active on
+`main` only for the bounded repository contribution Preview.
 
 | Required condition | Current state |
 |---|---|
 | `SECURITY_TRANSPORT_ACTIVE=true` | `MET` |
 | `PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=true` | `MET` |
 | `COMMUNITY_HD_03=ACCEPT_AND_EXECUTE` | `MET` |
-| `ACTIVATION_PR_CREATED=true` | `MET — PR #42 OPEN_DRAFT` |
-| `ACTIVATION_PR_HUMAN_REVIEWED=true` | `NOT_MET` |
+| `ACTIVATION_PR_CREATED=true` | `MET — PR #42 MERGED` |
+| `ACTIVATION_PR_HUMAN_REVIEWED=true` | `MET — Human Owner review at 12c712d42d9fd710d966ea6b6e18d69dd51a8f87` |
+| `ACTIVATION_PR_MERGED=true` | `MET — 3f1a32666f82e6096a0f9158a86e92573e895769` |
 | `ACTIVE_TEMPLATE_HASHES_MATCH_DORMANT_PACKAGE=true` | `MET` |
 | `COMMUNITY_STATUS_UPDATED=true` | `MET` |
 | `ROLLBACK_TESTED=true` | `MET_DETERMINISTIC_FAIL_CLOSED_SIMULATION` |
@@ -19,8 +20,8 @@ They remain inactive until that PR is reviewed and merged.
 If any condition is not met, activation fails closed.
 
 ```text
-ACTIVATION_BLOCKED=true
+ACTIVATION_BLOCKED=false
 PUBLIC_CONTRIBUTION_TEMPLATES_INSTALLED=true
-PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
+PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=true
 PUBLIC_ACTIVATION_REQUIRES_SEPARATE_PR=true
 ```

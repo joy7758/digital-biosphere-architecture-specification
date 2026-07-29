@@ -1,9 +1,8 @@
 # Contributing to TITMAS
 
-Limited public contribution is authorized. GitHub Issue and Pull Request
-templates are installed only on the independent
-[Activation PR branch](github-activation-templates/README.md). They remain
-inactive until that PR is merged.
+Limited repository contribution is active. GitHub Issue and Pull Request
+templates were installed through the independent
+[Activation PR](github-activation-templates/README.md) and merged into `main`.
 
 ## First contribution
 
@@ -22,9 +21,8 @@ inactive until that PR is merged.
    git diff --check
    ```
 
-6. Before the Activation PR merges, do not treat a public Issue or PR as an
-   active TITMAS contribution. After merge, use the bounded template and retain
-   Human Maintainer acceptance as a separate decision.
+6. Use the bounded GitHub template. Submission is active, while Human
+   Maintainer acceptance remains a separate decision.
 
 ## Contribution lifecycle
 
@@ -52,6 +50,6 @@ Never submit credentials, personal/customer data, real production Evidence or
 license-incompatible materials.
 
 The repository remains publicly readable and reusable under its license.
-Public contribution opening is pending the Activation PR merge. Readability,
-submission and Conformance do not imply acceptance, Authority, adoption,
-Release or community membership.
+Limited repository contribution is active. Readability, submission and
+Conformance do not imply acceptance, Authority, adoption, Release or community
+membership.

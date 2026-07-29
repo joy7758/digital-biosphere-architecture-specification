@@ -11,7 +11,7 @@ owner is `zhangbin` through
 2026-09-30T23:59:59+08:00; this assignment is routing responsibility, not
 Security Certification Authority.
 
-The TITMAS Issue and Pull Request templates are installed only on the
-Activation PR branch and remain inactive until merge. Public Issues must never
-be used as a substitute for the private security intake. No SLA, security
-audit, certification or zero-vulnerability claim is made.
+The bounded TITMAS Issue and Pull Request templates are active on `main` after
+Activation PR #42. Public Issues must never be used as a substitute for the
+private security intake. No SLA, security audit, certification or
+zero-vulnerability claim is made.
