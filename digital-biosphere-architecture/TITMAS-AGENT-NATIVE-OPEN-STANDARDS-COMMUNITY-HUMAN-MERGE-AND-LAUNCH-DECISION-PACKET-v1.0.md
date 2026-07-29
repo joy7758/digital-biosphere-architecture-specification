@@ -8,7 +8,7 @@ normative: false
 owner_ref: zhangbin
 authority_ref: HUMAN_DECISION_REQUIRED
 implementation_status: not-authorized-by-this-packet
-conformance_status: pending-remediation-validation
+conformance_status: pass-at-remediation-content-head-awaiting-human-merge-review
 security_review_status: security-transport-blocked
 external_adoption_status: not-assessed
 ---

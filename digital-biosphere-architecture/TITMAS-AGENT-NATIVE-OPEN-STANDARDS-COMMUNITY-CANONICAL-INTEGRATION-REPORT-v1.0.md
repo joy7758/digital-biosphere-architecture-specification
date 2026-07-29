@@ -265,6 +265,13 @@ head while changing the merge candidate as follows:
 - Security Transport remains inactive;
 - PR #41 remains Draft and Human Merge Review remains pending.
 
+The immutable remediation content head is
+`06ad2375d79a805d30933c7fb9d829d485657b6c`. Its push and pull-request
+Conformance checks completed successfully. The later report-and-manifest seal
+cannot contain its own commit hash and is verified separately as the PR head.
+The remediated Manifest contains 158 records: 153 actual candidate files and
+five excluded, deferred or immutable historical path-set records.
+
 The dormant package is not an active Issue, Pull Request or security-reporting
 surface. Installation requires a separate Human Decision and Activation PR.
 
