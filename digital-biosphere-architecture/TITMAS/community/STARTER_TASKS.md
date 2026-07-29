@@ -6,8 +6,11 @@ The sole canonical machine task registry is:
 
 This page is a human compatibility pointer, not a second registry. Tasks are
 prepared Development records, not assignments, permissions or automatic
-acceptance. Public Issue and Pull Request use is pending the independent
-Activation PR merge.
+acceptance. Limited public Issue and Pull Request contribution is active.
+External contributions must disclose sources and AI use, pass the applicable
+Conformance checks and receive Human Maintainer disposition. A Conformance pass
+does not mean acceptance. Security vulnerabilities must use GitHub Private
+Vulnerability Reporting rather than a public Issue.
 
 Use the agent-native CLI to discover a bounded task:
 

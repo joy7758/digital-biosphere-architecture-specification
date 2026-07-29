@@ -219,6 +219,20 @@ def check_community_status() -> dict[str, Any]:
     security = status["security"]
     launch = status["public_launch"]
     activation_pr = status["activation_pr"]
+    repair = status["public_entry_repair"]
+    if not status["community_incubation_active"]:
+        raise ConformanceError("limited public contribution incubation must remain active")
+    if any((
+        status["external_participant_count"],
+        status["first_external_issue_received"],
+        status["first_external_pr_received"],
+        status["first_external_contribution_cycle_complete"],
+    )):
+        raise ConformanceError("external participation cannot be inferred or fabricated")
+    if repair["status"] == "PR_CANDIDATE" and repair["complete"]:
+        raise ConformanceError("repair PR candidate cannot claim completion")
+    if repair["status"] == "COMPLETE" and not repair["complete"]:
+        raise ConformanceError("completed repair status must claim completion")
     if not contribution["templates_installed"] or not contribution["authorized"]:
         raise ConformanceError("authorized activation candidate must install templates")
     if not security["transport_active"] or not security["transport_verified"]:
@@ -291,7 +305,7 @@ def check_community_status() -> dict[str, Any]:
     if not prohibited.issubset(set(assignments["not_granted"])):
         raise ConformanceError("interim role assignment authority boundary drift")
     return {
-        "community_invariants_checked": len(must_be_false) + 15,
+        "community_invariants_checked": len(must_be_false) + 21,
         "interim_role_assignments_checked": len(assignments["assignments"]),
     }
 
@@ -687,6 +701,181 @@ def check_agent_native_adversarial() -> dict[str, Any]:
 
 LINK_PATTERN = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 
+PUBLIC_ENTRY_DOCUMENTS = (
+    DBA_ROOT.parent / "README.md",
+    DBA_ROOT / "CONTRIBUTING.md",
+    TITMAS_ROOT / "README.md",
+    TITMAS_ROOT / "QUICKSTART.md",
+    TITMAS_ROOT / "FIRST_CONTRIBUTION.md",
+    TITMAS_ROOT / "community" / "CONTRIBUTING.md",
+    TITMAS_ROOT / "community" / "STARTER_TASKS.md",
+    TITMAS_ROOT / "community" / "SECURITY.md",
+    DBA_ROOT / "SECURITY.md",
+    DBA_ROOT / "llms.txt",
+)
+
+
+def check_public_entry_consistency() -> dict[str, Any]:
+    projection = load_json(
+        TITMAS_ROOT / "community" / "welcome-issue-43-entry-projection.json"
+    )
+    status = load_json(TITMAS_ROOT / "community" / "community-status.json")
+    agent_entry = load_json(DBA_ROOT / "agent-index.json")
+    entries = {
+        item["id"]: item["repository_path"]
+        for item in projection["repository_entries"]
+    }
+    expected_ids = {
+        "HUMAN_ENTRY",
+        "CONTRIBUTING",
+        "FIRST_CONTRIBUTION",
+        "AGENT_ENTRY",
+        "LLMS_ENTRY",
+        "STARTER_TASKS",
+        "SPECIFICATION_REGISTRY",
+    }
+    resolved_entries: dict[str, Path] = {}
+    pe01 = (
+        set(entries) == expected_ids
+        and len(projection["repository_entries"]) == len(expected_ids)
+    )
+    for entry_id, raw_path in entries.items():
+        resolved = (DBA_ROOT / raw_path).resolve()
+        if not resolved.is_relative_to(DBA_ROOT.resolve()):
+            pe01 = False
+            continue
+        resolved_entries[entry_id] = resolved
+        if resolved.is_symlink() or not resolved.is_file():
+            pe01 = False
+
+    command = projection["conformance"]
+    command_path = (DBA_ROOT / command["script_path"]).resolve()
+    pe02 = (
+        command["working_directory"] == "digital-biosphere-architecture"
+        and command["command"] == "python3 TITMAS/conformance/harness.py"
+        and command_path == Path(__file__).resolve()
+        and command_path.is_file()
+    )
+
+    status_human_entry = (
+        TITMAS_ROOT / "community" / status["human_entry"]
+    ).resolve()
+    pe03 = (
+        entries.get("HUMAN_ENTRY") == "TITMAS/README.md"
+        and resolved_entries.get("HUMAN_ENTRY") == status_human_entry
+        and agent_entry["canonical_agent_entry"] is True
+        and entries.get("AGENT_ENTRY") == "agent-index.json"
+    )
+    pe04 = (
+        entries.get("FIRST_CONTRIBUTION") == "TITMAS/FIRST_CONTRIBUTION.md"
+        and resolved_entries.get("FIRST_CONTRIBUTION", Path()).is_file()
+    )
+
+    starter_path = resolved_entries.get("STARTER_TASKS")
+    registry_path = (DBA_ROOT / projection["task_registry"]).resolve()
+    registries = sorted(TITMAS_ROOT.rglob("task-registry.json"))
+    starter_targets: list[Path] = []
+    if starter_path is not None and starter_path.is_file():
+        for raw in LINK_PATTERN.findall(starter_path.read_text(encoding="utf-8")):
+            target = raw.strip().split("#", 1)[0]
+            if target and "://" not in target:
+                starter_targets.append((starter_path.parent / target).resolve())
+    pe05 = (
+        starter_path is not None
+        and starter_path.is_file()
+        and registry_path.is_file()
+        and registries == [registry_path]
+        and registry_path in starter_targets
+    )
+    pe06 = (
+        entries.get("SPECIFICATION_REGISTRY") == "TITMAS/specifications/registry.yaml"
+        and resolved_entries.get("SPECIFICATION_REGISTRY", Path()).is_file()
+    )
+
+    security_text = "\n".join(
+        path.read_text(encoding="utf-8")
+        for path in (DBA_ROOT / "SECURITY.md", TITMAS_ROOT / "community" / "SECURITY.md")
+    )
+    pe07 = (
+        projection["security"]["transport"] == "GITHUB_PRIVATE_VULNERABILITY_REPORTING"
+        and projection["security"]["active_at_live_verification"] is True
+        and "Private Vulnerability Reporting" in security_text
+        and status["security"]["transport_active"] is True
+    )
+
+    public_text = "\n".join(
+        path.read_text(encoding="utf-8") for path in PUBLIC_ENTRY_DOCUMENTS
+    )
+    activation_stale = re.compile(
+        r"PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE|"
+        r"CANONICAL_INTEGRATION_CANDIDATE|"
+        r"pending (?:the )?Activation PR|"
+        r"Activation PR[^.\n]*(?:not yet merged|pending)|"
+        r"remain inactive until merge",
+        re.IGNORECASE,
+    )
+    pe08 = activation_stale.search(public_text) is None
+    pe08 = pe08 and agent_entry["public_contribution_state"]["activation_pr_merged"] is True
+
+    inactive_stale = re.compile(
+        r"PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false|"
+        r"PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false|"
+        r"public contribution[^.\n]*inactive|"
+        r"public contribution opening is pending",
+        re.IGNORECASE,
+    )
+    pe09 = (
+        inactive_stale.search(public_text) is None
+        and status["public_contribution_surface"]["active"] is True
+        and status["public_contribution_surface"]["authorized"] is True
+        and agent_entry["public_contribution_state"]["surface_active"] is True
+        and agent_entry["public_contribution_state"]["surface_authorized"] is True
+    )
+    pe10 = (
+        "COMMUNITY_ESTABLISHED=true" not in public_text
+        and "TITMAS_COMMUNITY_ESTABLISHED=true" not in public_text
+        and status["community_established"] is False
+        and projection["non_claims"]["community_established"] is False
+        and agent_entry["community_incubation_state"]["community_established"] is False
+    )
+
+    checks = {
+        "PE-01": pe01,
+        "PE-02": pe02,
+        "PE-03": pe03,
+        "PE-04": pe04,
+        "PE-05": pe05,
+        "PE-06": pe06,
+        "PE-07": pe07,
+        "PE-08": pe08,
+        "PE-09": pe09,
+        "PE-10": pe10,
+    }
+    failed = [check_id for check_id, passed in checks.items() if not passed]
+    if failed:
+        raise ConformanceError(f"public entry consistency failed: {failed}")
+    if (
+        projection["live_github_truth"] is not False
+        or projection["live_verification_required"] is not True
+    ):
+        raise ConformanceError("Issue projection must not masquerade as live GitHub truth")
+    if (
+        projection["source_issue_number"] != 43
+        or projection["source_issue_state"] != "OPEN"
+        or projection["source_branch"] != "main"
+        or projection["source_issue_title"]
+        != "Welcome to the TITMAS Agent-Native Standards Community Preview"
+        or re.fullmatch(r"[0-9a-f]{64}", projection["source_body_sha256"]) is None
+    ):
+        raise ConformanceError("Issue projection identity or hash binding is invalid")
+    return {
+        "public_entry_consistency_tests_passed": len(checks),
+        "checks": sorted(checks),
+        "repository_entries_checked": len(resolved_entries),
+        "welcome_issue_body_sha256": projection["source_body_sha256"],
+        "live_github_truth": False,
+    }
+
 
 def check_local_links() -> dict[str, Any]:
     checked = 0
@@ -716,6 +905,7 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("internal_reviews", check_internal_reviews),
         ("agent_native_surfaces", check_agent_native_surfaces),
         ("agent_native_adversarial", check_agent_native_adversarial),
+        ("public_entry_consistency", check_public_entry_consistency),
         ("local_links", check_local_links),
     )
     overall = "PASS"

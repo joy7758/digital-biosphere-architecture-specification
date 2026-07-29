@@ -10,6 +10,8 @@
     "human_aliases",
     "status",
     "state",
+    "community_phase",
+    "community_incubation_active",
     "base_main_commit",
     "integration_branch",
     "integration_candidate_commit",
@@ -33,6 +35,11 @@
     "draft_pr_creation_blocked_by_security_transport",
     "public_launch",
     "welcome_issue",
+    "public_entry_repair",
+    "external_participant_count",
+    "first_external_issue_received",
+    "first_external_pr_received",
+    "first_external_contribution_cycle_complete",
     "community_established",
     "foundation_created",
     "infrastructure_complete",
@@ -68,6 +75,8 @@
         "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW"
       ]
     },
+    "community_phase": {"const": "LIMITED_PUBLIC_CONTRIBUTION_PREVIEW"},
+    "community_incubation_active": {"const": true},
     "base_main_commit": {"const": "3ce0b2008db1433db7c24375f81cfa422fabb7e3"},
     "integration_branch": {"const": "codex/titmas-community-public-contribution-activation-v0-1"},
     "integration_candidate_commit": {"type": "string", "minLength": 7},
@@ -249,6 +258,32 @@
         "url": {}
       }
     },
+    "public_entry_repair": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "decision_reference",
+        "status",
+        "complete",
+        "welcome_issue_entry_valid",
+        "consistency_operational",
+        "consistency_tests_passed",
+        "projection_ref"
+      ],
+      "properties": {
+        "decision_reference": {"const": "TITMAS-COMMUNITY-INCUBATION-ENTRY-REPAIR-D01"},
+        "status": {"enum": ["PR_CANDIDATE", "COMPLETE"]},
+        "complete": {"type": "boolean"},
+        "welcome_issue_entry_valid": {"const": true},
+        "consistency_operational": {"const": true},
+        "consistency_tests_passed": {"const": 10},
+        "projection_ref": {"const": "welcome-issue-43-entry-projection.json"}
+      }
+    },
+    "external_participant_count": {"const": 0},
+    "first_external_issue_received": {"const": false},
+    "first_external_pr_received": {"const": false},
+    "first_external_contribution_cycle_complete": {"const": false},
     "community_established": {"const": false},
     "foundation_created": {"const": false},
     "infrastructure_complete": {"const": true},
