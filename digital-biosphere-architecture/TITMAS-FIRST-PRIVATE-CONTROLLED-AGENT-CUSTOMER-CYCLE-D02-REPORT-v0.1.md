@@ -2,12 +2,15 @@
 document_id: TITMAS-FIRST-PRIVATE-CONTROLLED-AGENT-CUSTOMER-CYCLE-D02-REPORT-v0.1
 title: TITMAS First Private Controlled Agent Customer Cycle D02 Report v0.1
 title_zh: TITMAS 首个私有受控智能体客户闭环 D02 报告 v0.1
-status: stopped-failed-closed-human-disposition-required
+status: stopped-failed-closed-human-disposition-complete-cycle-not-accepted
 decision_id: TITMAS-FIRST-PRIVATE-CONTROLLED-AGENT-CUSTOMER-CYCLE-D02
 decision: ACCEPT_ONCE
 decided_by_ref: zhangbin
 source_main: 601eb69d33cf71f448e704aa2c11ee77f3e58fe2
 gateway_revision: 05f9b3f26c9bd970d0e2c615bb7117e7b9dd4b6f
+human_disposition_complete: true
+first_private_agent_customer_cycle_complete: false
+commercial_pilot_authorized: false
 ---
 
 # TITMAS First Private Controlled Agent Customer Cycle D02 Report v0.1
@@ -27,7 +30,8 @@ PRIVATE_AGENT_CUSTOMER_ASSESSMENT_COMPLETE=true
 INDEPENDENT_AGENT_REVIEW_COMPLETE=false
 
 FIRST_PRIVATE_AGENT_CUSTOMER_CYCLE_COMPLETE=false
-HUMAN_DISPOSITION_REQUIRED=true
+HUMAN_DISPOSITION_COMPLETE=true
+DISPOSITION_BY_REF=zhangbin
 
 STOP_REASON=POST_DISPATCH_OUTCOME_UNKNOWN
 AUTOMATIC_RETRY_CREATED=false
@@ -320,7 +324,8 @@ PRIVATE_AGENT_CUSTOMER_ASSESSMENT_COMPLETE=true
 INDEPENDENT_AGENT_REVIEW_COMPLETE=false
 
 FIRST_PRIVATE_AGENT_CUSTOMER_CYCLE_COMPLETE=false
-HUMAN_DISPOSITION_REQUIRED=true
+HUMAN_DISPOSITION_COMPLETE=true
+DISPOSITION_BY_REF=zhangbin
 
 CORE_REPOSITORIES_PRIVATE=true
 PUBLIC_EXPORT_AUTHORIZED=false
