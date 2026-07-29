@@ -2,10 +2,13 @@
 document_id: TITMAS-PRIVATE-AGENT-CUSTOMER-EVALUATION-GATEWAY-REPORT-v0.1
 title: TITMAS Private Agent Customer Evaluation Gateway Completion Report v0.1
 title_zh: TITMAS 私有智能体客户评估网关完成报告 v0.1
-status: validated-private-merge-candidate
+status: completed-merged-private-main
 decision_id: TITMAS-PRIVATE-AGENT-CUSTOMER-EVALUATION-GATEWAY-D01
 decision: ACCEPT_LOCAL_BLACK_BOX_GATEWAY_PREPARATION
 decided_by_ref: zhangbin
+pr_number: 49
+pr_head: 05f9b3f26c9bd970d0e2c615bb7117e7b9dd4b6f
+merge_commit: 601eb69d33cf71f448e704aa2c11ee77f3e58fe2
 ---
 
 # TITMAS Private Agent Customer Evaluation Gateway Completion Report v0.1
