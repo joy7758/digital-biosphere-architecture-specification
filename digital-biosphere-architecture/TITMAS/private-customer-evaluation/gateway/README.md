@@ -29,6 +29,23 @@ The gateway reuses
 for atomic request/response envelope capture. It does not create a second
 response-capture authority.
 
+## Private Stage 5 extension
+
+[`stage5_service.py`](stage5_service.py) extends this same one-session,
+loopback-only Gateway with bounded standards catalog, task discovery,
+contribution, Conformance and review routes. [`stage5_workspace.py`](stage5_workspace.py)
+reconstructs only the private protocol surface and minimal SDK into the
+customer workspace. The 256-bit Sandbox Key is ephemeral, scope-bound,
+revocable and never persisted in plaintext.
+
+```text
+STAGE5_EXTENDS_EXISTING_GATEWAY=true
+SECOND_GATEWAY_CREATED=false
+SECOND_RESPONSE_CAPTURE_CREATED=false
+SANDBOX_KEY_NE_PERMISSION=true
+CONFORMANCE_PASS_NE_STANDARD_ADOPTION=true
+```
+
 Run the deterministic tests:
 
 ```bash

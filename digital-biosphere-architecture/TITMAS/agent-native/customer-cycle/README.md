@@ -81,6 +81,8 @@ Machine-readable contracts:
 - [`gateway-customer-projection.schema.json`](schemas/gateway-customer-projection.schema.json)
 - [`contributor-assessment.schema.json`](schemas/contributor-assessment.schema.json)
 - [`independent-review.schema.json`](schemas/independent-review.schema.json)
+- [`standard-contribution.schema.json`](schemas/standard-contribution.schema.json)
+- [`standard-review.schema.json`](schemas/standard-review.schema.json)
 
 The required stage order is:
 
@@ -89,6 +91,11 @@ CONTRIBUTOR_PLAN durable
   -> GATEWAY_CUSTOMER_PROJECTION durable
   -> CONTRIBUTOR_ASSESSMENT durable
   -> INDEPENDENT_REVIEW durable
+  -> Human disposition
+
+CONTRIBUTOR_PLAN durable
+  -> STANDARD_CONTRIBUTION durable
+  -> STANDARD_REVIEW durable
   -> Human disposition
 ```
 
@@ -111,7 +118,8 @@ CREDENTIAL_MATERIAL_RETAINED=false
 Run the exact deterministic suite:
 
 ```bash
-python3 -m unittest TITMAS/agent-native/tests/test_semantic_checkpoint.py -v
+python3 -m unittest discover \
+  -s TITMAS/agent-native/tests -p 'test*semantic_checkpoint.py' -v
 ```
 
 Boundaries:

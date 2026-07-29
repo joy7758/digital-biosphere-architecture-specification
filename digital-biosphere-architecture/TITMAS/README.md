@@ -30,6 +30,12 @@ aliases. No fourth community name is created.
   [`private-governance/source-classification-registry.json`](private-governance/source-classification-registry.json)
 - Private Agent customer evaluation candidate:
   [`private-customer-evaluation/README.md`](private-customer-evaluation/README.md)
+- Private Stage 5 standards contribution preview:
+  [`private-stage5-pilot/README.md`](private-stage5-pilot/README.md)
+- Private Stage 5 protocol surface:
+  [`private-stage5-protocol-surface/README.md`](private-stage5-protocol-surface/README.md)
+- Minimal private Stage 5 Python SDK:
+  [`private-stage5-sdk/python/README.md`](private-stage5-sdk/python/README.md)
 
 ## Local validation
 
@@ -39,6 +45,12 @@ From `digital-biosphere-architecture/`:
 python3 TITMAS/conformance/harness.py
 python3 -m unittest discover -s TITMAS/conformance/tests -v
 python3 -m unittest discover -s TITMAS/agent-native/tests -v
+python3 -m unittest discover \
+  -s TITMAS/private-customer-evaluation/gateway/tests -p 'test_*.py' -v
+python3 -m unittest discover \
+  -s TITMAS/private-stage5-sdk/python/tests -p 'test_*.py' -v
+python3 -m unittest discover \
+  -s TITMAS/private-stage5-pilot/tests -p 'test_*.py' -v
 python3 -m unittest discover -s TITMAS/reference/minimal-python/tests -v
 python3 TITMAS/reference/minimal-python/titmas_reference.py \
   TITMAS/reference/minimal-python/example-input.json
@@ -68,6 +80,10 @@ PUBLIC_LAUNCH_MODE=PRIVATE_COMMERCIALIZATION_BOUNDARY
 OPEN_STANDARDS_COMMUNITY_INFRASTRUCTURE_DEVELOPED=true
 OPEN_STANDARDS_COMMUNITY_OPERATION_ACTIVE=false
 PRIVATE_AGENT_CUSTOMER_READINESS_ACTIVE=true
+PRIVATE_STAGE5_CONTRIBUTION_INFRASTRUCTURE_READY=true
+PRIVATE_STAGE5_PROGRAMMATIC_PILOT_PASS=true
+PRIVATE_STAGE5_REAL_MODEL_CALL_COUNT=0
+PRIVATE_STAGE5_HUMAN_DISPOSITION_REQUIRED=true
 COMMUNITY_ESTABLISHED=false
 EXTERNAL_CONTRIBUTOR_COUNT=0
 EXTERNAL_ADOPTER_COUNT=0
