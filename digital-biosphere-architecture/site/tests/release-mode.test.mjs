@@ -152,3 +152,22 @@ test("rejects formal mode when the release identity drifts across truth surfaces
     /RELEASED_BY_REF must match agent-index/,
   );
 });
+
+test("rejects formal mode when truth surfaces have mismatched release status", async () => {
+  const resources = structuredClone(await currentResources());
+  resources.status.gates.DEVELOPER_PREVIEW_RELEASED = false;
+
+  assert.throws(
+    () => resolveReleaseContext(
+      {
+        RELEASE_MODE: "formal",
+        RELEASE_DECISION_REF: "architecture/ADR-022-developer-preview-release.md",
+        RELEASED_BY_REF: "zhangbin",
+        PUBLIC_RELEASE_TAG: "v0.1-developer-preview",
+        DBOS_WHEEL_URL: "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
+      },
+      resources,
+    ),
+    /formal export requires DEVELOPER_PREVIEW_RELEASED=true/,
+  );
+});
