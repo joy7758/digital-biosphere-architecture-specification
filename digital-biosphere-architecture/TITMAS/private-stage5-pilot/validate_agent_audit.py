@@ -53,6 +53,9 @@ def validate() -> dict[str, Any]:
             encoding="utf-8"
         )
     )
+    completion = json.loads(
+        (ROOT / "stage5-completion-audit.json").read_text(encoding="utf-8")
+    )
     if audit["model_calls"] != 3 or audit["provider_calls"] != 3:
         raise ValueError("exact three-call audit required")
     if audit["automatic_retry_count"] != 0:
@@ -78,6 +81,27 @@ def validate() -> dict[str, Any]:
         raise ValueError("pilot registry field boundary drift")
     if entries[0]["pilot_status"] != "PILOT_REJECTED":
         raise ValueError("unknown review must fail closed")
+    if completion["summary"] != {
+        "pass": 20,
+        "partial": 2,
+        "incomplete": 2,
+        "total": 24,
+    }:
+        raise ValueError("completion audit count drift")
+    if completion["completion_proven"] is not False:
+        raise ValueError("incomplete Goal cannot be marked complete")
+    incomplete_sections = {
+        item["section"]
+        for item in completion["requirements"]
+        if item["status"] == "INCOMPLETE"
+    }
+    if incomplete_sections != {"13", "21"}:
+        raise ValueError("completion audit blocker drift")
+    if (
+        completion["blocking_condition"]
+        != "INDEPENDENT_REVIEW_RESULT_AND_DURABLE_REVIEW_CHECKPOINT_MISSING"
+    ):
+        raise ValueError("completion audit blocking condition drift")
     text = "\n".join(
         path.read_text(encoding="utf-8")
         for path in sorted(AUDIT_ROOT.glob("*.json"))
@@ -89,6 +113,7 @@ def validate() -> dict[str, Any]:
     return {
         "agent_audit_files_checked": 3,
         "agent_pilot_registry_entries_checked": 1,
+        "goal_sections_checked": 24,
         "model_calls": 3,
         "automatic_retry_count": 0,
         "durable_checkpoints": 2,

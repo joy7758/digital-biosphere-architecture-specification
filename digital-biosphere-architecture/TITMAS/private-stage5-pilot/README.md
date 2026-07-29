@@ -25,6 +25,10 @@ REAL_MODEL_CALLS_REQUIRE_PROGRAMMATIC_PASS=true
 - Agent pilot registry:
   [`agent-pilot-contribution-registry.json`](agent-pilot-contribution-registry.json)
 - Fail-closed validator: [`validate_agent_audit.py`](validate_agent_audit.py)
+- Requirement completion audit:
+  [`stage5-completion-audit.json`](stage5-completion-audit.json)
+- Independent review recovery decision packet:
+  [`../../TITMAS-STAGE-5-INDEPENDENT-REVIEW-RECOVERY-HUMAN-DECISION-PACKET-v1.0.md`](../../TITMAS-STAGE-5-INDEPENDENT-REVIEW-RECOVERY-HUMAN-DECISION-PACKET-v1.0.md)
 
 The independent Reviewer request ended with an unknown post-dispatch outcome.
 It was not retried, silently substituted or elevated to a completed review.

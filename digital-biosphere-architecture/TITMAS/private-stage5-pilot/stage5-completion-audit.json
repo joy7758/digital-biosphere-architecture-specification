@@ -1,0 +1,165 @@
+{
+  "audit_id": "TITMAS-STAGE5-COMPLETION-AUDIT-1.0",
+  "audit_version": "1.0",
+  "source_goal_sections": 24,
+  "source_main": "8848f2c87f30f14b4ec211c9fb2529b3f542cdaa",
+  "audit_branch": "codex/titmas-stage5-private-agent-pilot-audit",
+  "audit_revision": "b214430a6a495652edfdef19a71b4eedfade684e",
+  "requirements": [
+    {
+      "section": "0",
+      "name": "TITMAS Direction Check",
+      "status": "PASS",
+      "evidence": "TITMAS-STAGE-5-DIRECTION-AND-BASELINE-v1.0.md"
+    },
+    {
+      "section": "1",
+      "name": "Human Decision D01",
+      "status": "PASS",
+      "evidence": "TITMAS-STAGE-5-PRIVATE-AGENT-NATIVE-CONTRIBUTION-PREVIEW-DECISION-v1.0.md"
+    },
+    {
+      "section": "2",
+      "name": "Factual Baseline",
+      "status": "PASS",
+      "evidence": "Private repository, PR 48/49/51 merged, default-deny classification and unchanged original workspace were verified before implementation."
+    },
+    {
+      "section": "3",
+      "name": "Sanitized Semantic Checkpoint",
+      "status": "PASS",
+      "evidence": "Original 16 tests plus 4 Stage 5 tests passed; plan and contribution checkpoints are durable."
+    },
+    {
+      "section": "4",
+      "name": "Private Protocol Surface",
+      "status": "PASS",
+      "evidence": "TITMAS/private-stage5-protocol-surface/protocol-surface-manifest.json reports zero core, secret, private-path and symlink findings."
+    },
+    {
+      "section": "5",
+      "name": "Contribution Object Model",
+      "status": "PASS",
+      "evidence": "Specification Proposal, Adapter Mapping, Test Vector, Result and Review schemas are present and fail closed."
+    },
+    {
+      "section": "6",
+      "name": "Sandbox Contribution Gateway",
+      "status": "PASS",
+      "evidence": "The existing loopback Gateway is extended with all required Stage 5 routes; no second Gateway was created."
+    },
+    {
+      "section": "7",
+      "name": "Sandbox Key",
+      "status": "PASS",
+      "evidence": "Ephemeral 256-bit session binding, exact allowed/prohibited scopes, revocation and non-persistence tests passed."
+    },
+    {
+      "section": "8",
+      "name": "Minimal Python SDK",
+      "status": "PASS",
+      "evidence": "All required client operations are implemented; SDK tests passed and automatic retry is absent."
+    },
+    {
+      "section": "9",
+      "name": "Programmatic Pilot P01",
+      "status": "PASS",
+      "evidence": "5/5 scenarios passed, with 2 valid submissions, 3 expected rejections, and zero core access."
+    },
+    {
+      "section": "10",
+      "name": "Agent Pilot A01",
+      "status": "PARTIAL",
+      "evidence": "Contributor selection, SDK submission and Conformance completed; independent review did not complete."
+    },
+    {
+      "section": "11",
+      "name": "Provider Selection and Budget",
+      "status": "PASS",
+      "evidence": "Exact qwen3.7-max and kimi-k2.6 bindings were requested, total calls stopped at 3, retries remained 0, and conservative cost stayed below CNY 10."
+    },
+    {
+      "section": "12",
+      "name": "Agent Contributor Flow",
+      "status": "PASS",
+      "evidence": "The Agent selected TEST_VECTOR without a contribution-type hint; the sanitized output passed SDK and Conformance and became a durable checkpoint."
+    },
+    {
+      "section": "13",
+      "name": "Independent Agent Reviewer Flow",
+      "status": "INCOMPLETE",
+      "evidence": "BAIDU_QIANFAN/kimi-k2.6 ended as FAILED_AFTER_DISPATCH_OUTCOME_UNKNOWN; no verdict or durable review checkpoint exists."
+    },
+    {
+      "section": "14",
+      "name": "Pilot Registry",
+      "status": "PASS",
+      "evidence": "The private audit registry contains only bounded fields and fail-closes the Agent contribution as PILOT_REJECTED pending review."
+    },
+    {
+      "section": "15",
+      "name": "Human Maintainer Disposition Package",
+      "status": "PASS",
+      "evidence": "The package exists; HD-01 through HD-03 correctly remain UNDECIDED and the formal registry is unchanged."
+    },
+    {
+      "section": "16",
+      "name": "Stage 5 Success Criteria",
+      "status": "PARTIAL",
+      "evidence": "Infrastructure criteria are all true; independent review and complete semantic results are false."
+    },
+    {
+      "section": "17",
+      "name": "Testing and Security Validation",
+      "status": "PASS",
+      "evidence": "All infrastructure and audit suites passed; secret, core disclosure, private path, symlink and unauthorized export findings are zero."
+    },
+    {
+      "section": "18",
+      "name": "Git and Delivery Discipline",
+      "status": "PASS",
+      "evidence": "Infrastructure PR 52 merged after exact-head CI; audit branch was pushed without a PR."
+    },
+    {
+      "section": "19",
+      "name": "Final Report",
+      "status": "PASS",
+      "evidence": "TITMAS-STAGE-5-PRIVATE-AGENT-NATIVE-STANDARDS-CONTRIBUTION-PREVIEW-REPORT-v1.0.md"
+    },
+    {
+      "section": "20",
+      "name": "Stop Conditions",
+      "status": "PASS",
+      "evidence": "Post-dispatch unknown outcome triggered immediate stop; no retry, fallback, substitution, public exposure or registry modification occurred."
+    },
+    {
+      "section": "21",
+      "name": "Final State",
+      "status": "INCOMPLETE",
+      "evidence": "TITMAS_STAGE_5_PRIVATE_AGENT_PILOT_COMPLETE and TITMAS_STAGE_5_PRIVATE_PREVIEW_OPERATIONAL remain false."
+    },
+    {
+      "section": "22",
+      "name": "TITMAS Drift Check",
+      "status": "PASS",
+      "evidence": "PASS_WITH_RECORDED_LIMITATIONS; no new Authority, Runtime, Truth source, duplicate Conformance or Response Capture."
+    },
+    {
+      "section": "23",
+      "name": "Final Principles",
+      "status": "PASS",
+      "evidence": "Program-before-Agent, structured contribution, service-consumed core, access-not-ownership and no-adoption boundaries are preserved."
+    }
+  ],
+  "summary": {
+    "pass": 20,
+    "partial": 2,
+    "incomplete": 2,
+    "total": 24
+  },
+  "completion_proven": false,
+  "blocking_condition": "INDEPENDENT_REVIEW_RESULT_AND_DURABLE_REVIEW_CHECKPOINT_MISSING",
+  "new_human_decision_required": true,
+  "automatic_retry_authorized": false,
+  "next_decision_packet": "TITMAS-STAGE-5-INDEPENDENT-REVIEW-RECOVERY-HUMAN-DECISION-PACKET-v1.0.md"
+}
