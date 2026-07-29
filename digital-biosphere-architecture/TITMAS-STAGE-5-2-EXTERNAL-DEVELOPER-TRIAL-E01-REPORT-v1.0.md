@@ -2,13 +2,13 @@
 document_id: TITMAS-STAGE-5-2-EXTERNAL-DEVELOPER-TRIAL-E01-REPORT-1.0
 title: TITMAS Stage 5.2 First External Developer Trial E01 Report v1.0
 title_zh: TITMAS Stage 5.2 首位外部开发者试用 E01 报告 v1.0
-status: invitation-sent-awaiting-participant
+status: access-active-awaiting-participant-contribution
 maturity: Development
 normative: false
 owner_ref: zhangbin
 decision_reference: TITMAS-STAGE-5-2-FIRST-EXTERNAL-DEVELOPER-TRIAL-E01
 participant_id: TITMAS-EXT-DEV-001
-observed_at: 2026-07-29T20:39:50+08:00
+observed_at: 2026-07-29T20:44:10+08:00
 ---
 
 # TITMAS Stage 5.2 First External Developer Trial E01 Report
@@ -93,25 +93,31 @@ technical baseline, not participant completion or standard adoption.
 ## Invitation state
 
 GitHub accepted a read-only collaborator invitation for the exact participant.
-At the observation time the invitation remained pending and unexpired.
+The first post-invitation check found it pending and unexpired. A later live
+check found no pending invitation, returned `204` for the trial-repository
+collaborator check and reported the participant's role as `read`. This proves
+that repository access became active; it does not identify the exact GitHub
+acceptance timestamp.
 
 ```text
 INVITATION_SENT=true
 INVITATION_SENT_AT=2026-07-29T20:38:37+08:00
 INVITATION_PERMISSION=read
-INVITATION_ACCEPTED=false
-INVITATION_PENDING=true
+INVITATION_ACCEPTED=true
+INVITATION_ACCEPTED_OBSERVED_AT=2026-07-29T20:44:10+08:00
+INVITATION_PENDING=false
 INVITATION_EXPIRED=false
 
-EXTERNAL_ACCESS_GRANTED=false
+EXTERNAL_ACCESS_GRANTED=true
+EXTERNAL_ACCESS_ROLE=read
 CORE_REPOSITORY_ACCESS=false
 CORE_SOURCE_ACCESS=false
 PRIVATE_GOVERNANCE_ACCESS=false
 ```
 
 `INVITATION_SENT=true` records GitHub accepting the invitation request. It does
-not mean that the participant has accepted it or can currently read the
-repository.
+not by itself prove acceptance; the later collaborator and permission reads
+provide that separate evidence.
 
 ## Participant task boundary
 
@@ -134,7 +140,8 @@ No participant behavior has yet been observed. Unknown values are preserved
 rather than inferred from the invitation.
 
 ```text
-time_to_repository_acceptance=NOT_OBSERVED
+time_to_repository_acceptance=OBSERVED_WITHIN_00:05:33
+repository_acceptance_observed_at=2026-07-29T20:44:10+08:00
 time_to_first_clone=NOT_OBSERVED
 time_to_sdk_install=NOT_OBSERVED
 time_to_task_selection=NOT_OBSERVED
@@ -202,7 +209,7 @@ LOCAL_CLONE_DELETION_CONFIRMED_BY_PARTICIPANT=unknown
 
 ```text
 TRIAL_PREFLIGHT_STATUS=PASS
-TRIAL_EXECUTION_STATUS=INVITATION_PENDING_ACCEPTANCE
+TRIAL_EXECUTION_STATUS=ACCESS_ACTIVE_AWAITING_PARTICIPANT_CONTRIBUTION
 FIRST_EXTERNAL_HUMAN_DEVELOPER_TRIAL_COMPLETE=false
 
 CUSTOMER_ADOPTION=false

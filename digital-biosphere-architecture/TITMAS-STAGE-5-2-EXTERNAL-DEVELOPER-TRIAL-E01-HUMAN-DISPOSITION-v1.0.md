@@ -2,22 +2,23 @@
 document_id: TITMAS-STAGE-5-2-EXTERNAL-DEVELOPER-TRIAL-E01-HUMAN-DISPOSITION-1.0
 title: TITMAS Stage 5.2 External Developer Trial E01 Human Disposition v1.0
 title_zh: TITMAS Stage 5.2 外部开发者试用 E01 人工处置记录 v1.0
-status: awaiting-participant
+status: access-active-awaiting-contribution
 maturity: Development
 normative: false
 owner_ref: zhangbin
 decision_reference: TITMAS-STAGE-5-2-FIRST-EXTERNAL-DEVELOPER-TRIAL-E01
 participant_id: TITMAS-EXT-DEV-001
-observed_at: 2026-07-29T20:39:50+08:00
+observed_at: 2026-07-29T20:44:10+08:00
 ---
 
 # TITMAS Stage 5.2 External Developer Trial E01 Human Disposition
 
 ## Current disposition
 
-The participant invitation is pending. No contribution, Conformance result,
-feedback or access-revocation evidence exists. Human disposition therefore
-remains deferred.
+The participant has accepted read-only access to the trial repository. No
+participant branch, contribution, Conformance result, feedback or
+access-revocation evidence exists. Human disposition therefore remains
+deferred.
 
 ```text
 E01-HD-01=DEFER
@@ -28,7 +29,9 @@ HUMAN_DISPOSITION_STATUS=AWAITING_PARTICIPANT
 PARTICIPANT_GITHUB_USERNAME=lizuyi-6
 SELECTED_TRIAL_TASK=TRIAL-01-NEGATIVE-TEST-VECTOR
 INVITATION_SENT=true
-INVITATION_ACCEPTED=false
+INVITATION_ACCEPTED=true
+INVITATION_ACCEPTED_OBSERVED_AT=2026-07-29T20:44:10+08:00
+EXTERNAL_ACCESS_ROLE=read
 PARTICIPANT_PULL_REQUEST_EXISTS=false
 TRIAL_CONFORMANCE_RESULT=NOT_ASSESSED
 PARTICIPANT_FEEDBACK_RECEIVED=false
