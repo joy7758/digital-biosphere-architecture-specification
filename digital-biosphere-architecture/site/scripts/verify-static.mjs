@@ -9,10 +9,40 @@ const outputRoot = join(siteRoot, "out");
 const requiredFiles = [
   "index.html",
   "en/index.html",
+  "research/index.html",
+  "en/research/index.html",
+  "research/index/index.html",
+  "en/research/index/index.html",
+  "applications/index.html",
+  "en/applications/index.html",
+  "demos/index.html",
+  "en/demos/index.html",
+  "community/index.html",
+  "en/community/index.html",
+  "updates/index.html",
+  "en/updates/index.html",
+  "updates/constitution/index.html",
+  "en/updates/constitution/index.html",
+  "industries/index.html",
+  "en/industries/index.html",
+  "industry/medical-evidence/index.html",
+  "en/industry/medical-evidence/index.html",
+  "industry/space-agent-evidence/index.html",
+  "en/industry/space-agent-evidence/index.html",
+  "demo/medical-evidence/index.html",
+  "en/demo/medical-evidence/index.html",
+  "digital-cell/index.html",
+  "en/digital-cell/index.html",
+  "commercial-evaluation/index.html",
+  "en/commercial-evaluation/index.html",
   "status/index.html",
   "en/status/index.html",
   "llms.txt",
+  "TITMAS-FIRST-RUN-v0.1.md",
   "agent-index.json",
+  "site-catalog.json",
+  "titmas-community.json",
+  "updates.json",
   "status.json",
   "agent-customer-package.json",
   "dbos-public-package-manifest.json",
@@ -21,6 +51,13 @@ const requiredFiles = [
   "robots.txt",
   "sitemap.xml",
   "favicon.svg",
+  "favicon.png",
+  "titmas-logo.png",
+  "summersea-logo.png",
+  "digital-cell.json",
+  "digital-cell/digital-cell-architecture.png",
+  "medical-evidence-demo.json",
+  "space-agent-evidence-profile.json",
   "og.png",
 ];
 
@@ -46,6 +83,8 @@ const releaseContext = resolveReleaseContext(process.env, {
 });
 
 assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
+assert.match(zh, /夏日之海/);
+assert.match(zh, /\/summersea-logo\.png/);
 assert.match(en, /TITMAS Infrastructure Developer Community/);
 assert.match(zh, /<html lang="zh-CN">/);
 assert.match(zhStatus, /<html lang="zh-CN">/);
@@ -66,6 +105,12 @@ assert.match(zh, /E01 External Human Developer Trial/);
 assert.match(en, /E01 External Human Developer Trial/);
 assert.match(zh, /申请有界私有开发者试用/);
 assert.match(en, /Apply for a bounded private developer trial/);
+assert.match(zh, /AGENT START HERE/);
+assert.match(en, /Understand TITMAS at a glance/);
+assert.match(zh, /10 分钟判断 TITMAS 是否适合你的多智能体系统/);
+assert.match(en, /Evaluate TITMAS for your multi-agent system in 10 minutes/);
+assert.match(zh, /TITMAS Digital Cell Demo/);
+assert.match(en, /Bring trust infrastructure into medical evidence/);
 assert.match(zh, /第一个可信闭环：设计完成，尚未执行/);
 assert.match(en, /The first trustworthy loop is designed—not executed/);
 assert.match(zh, /Observation ≠ Evidence/);
@@ -83,6 +128,7 @@ assert.equal(status.gates.TITMAS_FOUNDATION_IN_SCOPE, false);
 assert.equal(status.community.current_state, "CONTRIBUTOR_ENTRY_PREPARED");
 assert.equal(status.community.public_contribution_surface_authorized, false);
 assert.equal(agentIndex.name, "TITMAS Infrastructure Developer Community");
+assert.equal(agentIndex.display_name_zh, "夏日之海");
 assert.equal(agentIndex.abbreviation, "TITMAS");
 assert.equal(agentIndex.community.public_submission_invitation, false);
 assert.equal(status.gates.DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE, true);
@@ -135,7 +181,8 @@ assert.equal(release.release_decision_reference, releaseContext.releaseDecisionR
 assert.equal(release.released_by_ref, releaseContext.releasedByRef);
 assert.equal(release.public_release_tag, releaseContext.publicReleaseTag);
 assert.equal(release.dbos_public_package_url, releaseContext.dbosWheelUrl);
-assert.ok(manifest.files.length >= 10);
+assert.equal(release.routes.length, 34);
+assert.ok(manifest.files.length >= 80);
 assert.equal(manifest.source_revision, release.source_revision);
 
 console.log("STATIC_EXPORT_PASS=true");

@@ -110,7 +110,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
   return (
     <div className="site status-page" lang={c.lang}>
       <Header locale={locale} section="status" />
-      <main>
+      <main id="main-content">
         <section className="status-hero">
           <div className="section-shell">
             <p className="section-kicker">{copy.eyebrow}</p>

@@ -40,6 +40,8 @@ test("renders equivalent Chinese and English public entry points", async () => {
   const en = enRaw.replace(/<html lang="[^"]+">/, '<html lang="en">');
 
   assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
+  assert.match(zh, /夏日之海/);
+  assert.match(zh, /\/summersea-logo\.png/);
   assert.match(en, /TITMAS Infrastructure Developer Community/);
   for (const marker of expectedMarkers.zhHome) assert.match(zh, new RegExp(marker));
   for (const marker of expectedMarkers.enHome) assert.match(en, new RegExp(marker));
@@ -59,6 +61,12 @@ test("renders equivalent Chinese and English public entry points", async () => {
   assert.match(en, /E01 External Human Developer Trial/);
   assert.match(zh, /申请有界私有开发者试用/);
   assert.match(en, /Apply for a bounded private developer trial/);
+  assert.match(zh, /AGENT START HERE/);
+  assert.match(en, /Understand TITMAS at a glance/);
+  assert.match(zh, /10 分钟判断 TITMAS 是否适合你的多智能体系统/);
+  assert.match(en, /Evaluate TITMAS for your multi-agent system in 10 minutes/);
+  assert.match(zh, /TITMAS Digital Cell Demo/);
+  assert.match(en, /Bring trust infrastructure into medical evidence/);
   if (releaseContext.mode === "candidate") {
     assert.match(zh, /Developer Preview Candidate/);
     assert.match(en, /Developer Preview Candidate/);
@@ -105,11 +113,15 @@ test("ships agent-readable and discovery resources", async () => {
   await Promise.all([
     access(new URL("llms.txt", root)),
     access(new URL("agent-index.json", root)),
+    access(new URL("site-catalog.json", root)),
+    access(new URL("titmas-community.json", root)),
+    access(new URL("updates.json", root)),
     access(new URL("status.json", root)),
     access(new URL("agent-customer-package.json", root)),
     access(new URL("dbos-public-package-manifest.json", root)),
     access(new URL("robots.txt", root)),
     access(new URL("sitemap.xml", root)),
+    access(new URL("summersea-logo.png", root)),
   ]);
 
   const [agentIndex, status, agentCustomerPackage, dbosPackage, llms] = await Promise.all([
@@ -132,6 +144,7 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.community.public_contribution_surface_authorized, false);
   assert.deepEqual(status.community.maintainers, []);
   assert.equal(agentIndex.name, "TITMAS Infrastructure Developer Community");
+  assert.equal(agentIndex.display_name_zh, "夏日之海");
   assert.equal(agentIndex.abbreviation, "TITMAS");
   assert.equal(agentIndex.community.direction_adopted, true);
   assert.equal(agentIndex.community.public_submission_invitation, false);
