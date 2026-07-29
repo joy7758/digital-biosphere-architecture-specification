@@ -4,8 +4,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://redcrag.cn"),
   title: {
-    default: "TITMAS 可信多智能体基础设施开发者社区",
-    template: "%s · TITMAS",
+    default: "夏日之海 · titmas",
+    template: "%s · titmas",
   },
   description:
     "TITMAS 是面向自治 AI 智能体生态的可信基础设施层；制造业等行业场景是基础设施应用示例。",
@@ -32,31 +32,29 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    siteName: "TITMAS Infrastructure Developer Community",
-    title: "TITMAS 可信多智能体基础设施开发者社区",
+    siteName: "夏日之海 · titmas",
+    title: "夏日之海 · titmas",
     description:
       "面向自治 AI 智能体生态的可信基础设施层，支撑跨行业的可信运行与可核验执行。",
     images: [
       {
-        url: "/titmas-social-card.png",
-        width: 1200,
-        height: 630,
-        alt: "TITMAS trust infrastructure for autonomous AI agent ecosystems",
+        url: "/titmas-logo.png",
+        width: 1024,
+        height: 1024,
+        alt: "夏日之海 · titmas",
       },
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "TITMAS Infrastructure Developer Community",
+    card: "summary",
+    title: "夏日之海 · titmas",
     description:
       "A trust infrastructure layer for autonomous AI agent ecosystems across industries.",
-    images: ["/titmas-social-card.png"],
+    images: ["/titmas-logo.png"],
   },
   icons: {
-    icon: [
-      { url: "/favicon.ico", type: "image/x-icon" },
-      { url: "/favicon.png", type: "image/png" },
-    ],
+    icon: [{ url: "/titmas-logo.png", type: "image/png", sizes: "1024x1024" }],
+    apple: [{ url: "/titmas-logo.png", type: "image/png", sizes: "1024x1024" }],
   },
 };
 

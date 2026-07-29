@@ -6,18 +6,17 @@ import {
   updateCategoryLabels,
 } from "./update-content";
 
-export function Brand() {
+export function Brand({ locale }: { locale: Locale }) {
+  const brandName = locale === "zh" ? "夏日之海" : "titmas";
+  const brandDescriptor =
+    locale === "zh" ? "可信多智能体基础设施" : "Trusted Multi-Agent Infrastructure";
+
   return (
-    <span className="brand" aria-label="TITMAS Infrastructure Developer Community">
-      <span className="brand-mark" aria-hidden="true">
-        <i />
-        <i />
-        <i />
-        <i />
-      </span>
+    <span className="brand" aria-label={`${brandName} · ${brandDescriptor}`}>
+      <span className="brand-logo" aria-hidden="true" />
       <span className="brand-name">
-        <strong>TITMAS</strong>
-        <small>Infrastructure Developer Community</small>
+        <strong>{brandName}</strong>
+        <small>{brandDescriptor}</small>
       </span>
     </span>
   );
@@ -109,7 +108,7 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
       <header className="site-header">
         <div className="nav-shell">
           <a className="brand-link" href={root}>
-            <Brand />
+            <Brand locale={locale} />
           </a>
           <nav className="desktop-nav" aria-label={locale === "zh" ? "主导航" : "Primary navigation"}>
             {nav}
@@ -155,7 +154,7 @@ export function Footer({ locale }: { locale: Locale }) {
     <footer className="site-footer">
       <div className="footer-grid">
         <div>
-          <Brand />
+          <Brand locale={locale} />
           <p>{c.footer}</p>
         </div>
         <div>

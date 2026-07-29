@@ -65,17 +65,20 @@ export function PortalPage({ locale }: { locale: Locale }) {
       {
         "@type": "Organization",
         "@id": "https://redcrag.cn/#organization",
-        name: "TITMAS Infrastructure Developer Community",
+        name: "titmas",
+        alternateName: ["夏日之海", "TITMAS"],
         url: "https://redcrag.cn/",
+        logo: "https://redcrag.cn/titmas-logo.png",
       },
       {
         "@type": "WebSite",
         "@id": "https://redcrag.cn/#website",
-        name: "TITMAS Infrastructure Developer Community",
-        alternateName: "TITMAS 可信多智能体基础设施开发者社区",
+        name: "titmas",
+        alternateName: ["夏日之海", "TITMAS"],
         url: "https://redcrag.cn/",
         inLanguage: ["zh-CN", "en"],
         description: c.lead,
+        image: "https://redcrag.cn/titmas-logo.png",
         publisher: { "@id": "https://redcrag.cn/#organization" },
         isBasedOn: architectureHref,
         hasPart: [
@@ -99,8 +102,8 @@ export function PortalPage({ locale }: { locale: Locale }) {
         "@id": `${locale === "zh" ? "https://redcrag.cn/" : "https://redcrag.cn/en/"}#webpage`,
         url: locale === "zh" ? "https://redcrag.cn/" : "https://redcrag.cn/en/",
         name: locale === "zh"
-          ? "TITMAS 可信多智能体基础设施开发者社区"
-          : "TITMAS Infrastructure Developer Community",
+          ? "夏日之海"
+          : "titmas",
         description: c.lead,
         inLanguage: c.lang,
         isPartOf: { "@id": "https://redcrag.cn/#website" },
@@ -121,6 +124,11 @@ export function PortalPage({ locale }: { locale: Locale }) {
             <div className="node node-c" />
           </div>
           <div className="hero-content">
+            <span
+              className="hero-brand-logo"
+              role="img"
+              aria-label={locale === "zh" ? "夏日之海 Logo" : "titmas logo"}
+            />
             <div className="hero-badge"><span />{c.badge}</div>
             <p className="eyebrow">{c.eyebrow}</p>
             <h1>{c.title}</h1>
@@ -151,7 +159,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
             <div className="agent-front-door-intro">
               <p className="section-kicker">AGENT START HERE / 智能体从这里开始</p>
               <h2 id="agent-start-title">
-                {locale === "zh" ? "一眼理解 RedCrag" : "Understand RedCrag at a glance"}
+                {locale === "zh" ? "一眼理解夏日之海" : "Understand titmas at a glance"}
               </h2>
               <p>
                 {locale === "zh"

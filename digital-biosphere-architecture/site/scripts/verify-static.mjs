@@ -85,6 +85,7 @@ const requiredFiles = [
   "favicon.png",
   "favicon.ico",
   "titmas-social-card.png",
+  "titmas-logo.png",
 ];
 
 await Promise.all(requiredFiles.map((file) => access(join(outputRoot, file))));
@@ -170,8 +171,8 @@ assert.match(zh, /class="skip-link" href="#main-content"/);
 assert.match(en, /class="skip-link" href="#main-content"/);
 assert.match(zh, /id="main-content"/);
 assert.match(en, /id="main-content"/);
-assert.match(zh, /titmas-social-card\.png/);
-assert.match(zh, /favicon\.png/);
+assert.match(zh, /titmas-logo\.png/);
+assert.match(en, /titmas-logo\.png/);
 assert.match(zh, /"@type":"Organization"/);
 assert.match(zh, /"@type":"WebPage"/);
 assert.match(zh, /晋ICP备2026006409号-1/);
@@ -191,8 +192,20 @@ for (const html of [zh, en]) {
   assert.match(html, /rel="alternate"[^>]+type="application\/json"[^>]+site-catalog\.json/);
   assert.match(html, /"hasPart":\[/);
 }
-assert.match(zh.slice(0, 50_000), /一眼理解 RedCrag/);
-assert.match(en.slice(0, 50_000), /Understand RedCrag at a glance/);
+assert.match(zh.slice(0, 50_000), /一眼理解夏日之海/);
+assert.match(en.slice(0, 50_000), /Understand titmas at a glance/);
+assert.doesNotMatch(zh.slice(0, 50_000), /RedCrag/);
+assert.doesNotMatch(en.slice(0, 50_000), /RedCrag/);
+assert.match(zh.slice(0, 50_000), /夏日之海 Logo/);
+assert.match(en.slice(0, 50_000), /titmas logo/);
+assert.equal(agentIndex.public_brand, "titmas");
+assert.equal(agentIndex.public_brand_zh, "夏日之海");
+assert.equal(agentIndex.public_brand_logo, "/titmas-logo.png");
+assert.equal(agentIndex.technical_project_identifier, "TITMAS");
+assert.equal(siteCatalog.public_brand.en, "titmas");
+assert.equal(siteCatalog.public_brand.zh, "夏日之海");
+assert.match(llms, /Public display name \(English\): titmas/);
+assert.match(llms, /Public display name \(Chinese\): 夏日之海/);
 assert.ok(llms.indexOf("## Agent start here") < 1_500);
 assert.match(robots, /User-agent: OAI-SearchBot\s+Allow: \//);
 assert.equal(siteCatalog.agent_front_door.position, "IMMEDIATELY_AFTER_HERO");

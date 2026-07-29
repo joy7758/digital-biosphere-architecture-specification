@@ -23,7 +23,9 @@ const releaseContext = resolveReleaseContext(process.env, {
 });
 const expectedMarkers = routeMarkers(releaseContext.mode);
 
-assert.equal(publicTitmasCommunity.brand, "TITMAS");
+assert.equal(publicTitmasCommunity.brand, "titmas");
+assert.equal(publicTitmasCommunity.brand_zh, "夏日之海");
+assert.equal(publicTitmasCommunity.technical_project_identifier, "TITMAS");
 assert.equal(publicTitmasCommunity.community_state.community_established, false);
 assert.equal(publicTitmasCommunity.community_state.public_contribution_enabled, false);
 
@@ -45,7 +47,12 @@ test("renders equivalent Chinese and English public entry points", async () => {
   assert.equal(enResponse.status, 200);
 
   const [zh, en] = await Promise.all([zhResponse.text(), enResponse.text()]);
-  assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
+  assert.match(zh, /夏日之海/);
+  assert.match(en, /titmas/);
+  assert.match(zh, /titmas-logo\.png/);
+  assert.match(en, /titmas-logo\.png/);
+  assert.match(zh, /<title>夏日之海 · titmas<\/title>/);
+  assert.match(en, /<title>titmas<\/title>/);
   assert.match(en, /trust infrastructure layer for autonomous AI agent ecosystems/i);
   for (const marker of expectedMarkers.zhHome) assert.match(zh, new RegExp(marker));
   for (const marker of expectedMarkers.enHome) assert.match(en, new RegExp(marker));
@@ -101,8 +108,10 @@ test("front-loads a bilingual, no-JavaScript Agent Front Door", async () => {
     assert.match(html, /https:\/\/redcrag\.cn\/site-catalog\.json#document/);
   }
 
-  assert.match(zh.slice(0, 50_000), /一眼理解 RedCrag/);
-  assert.match(en.slice(0, 50_000), /Understand RedCrag at a glance/);
+  assert.match(zh.slice(0, 50_000), /一眼理解夏日之海/);
+  assert.match(en.slice(0, 50_000), /Understand titmas at a glance/);
+  assert.doesNotMatch(zh.slice(0, 50_000), /RedCrag/);
+  assert.doesNotMatch(en.slice(0, 50_000), /RedCrag/);
   assert.ok(llms.indexOf("## Agent start here") < 1_500);
   assert.match(robots, /User-agent: OAI-SearchBot\s+Allow: \//);
   assert.equal(siteCatalog.agent_front_door.position, "IMMEDIATELY_AFTER_HERO");
@@ -512,7 +521,12 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.public_front_door.future_domain_live, false);
   assert.equal(status.public_front_door.selected_github_organization_slug, "titmas-cn");
   assert.equal(status.public_front_door.github_organization_created, false);
-  assert.equal(agentIndex.public_brand, "TITMAS");
+  assert.equal(agentIndex.public_brand, "titmas");
+  assert.equal(agentIndex.public_brand_zh, "夏日之海");
+  assert.equal(agentIndex.public_brand_logo, "/titmas-logo.png");
+  assert.equal(agentIndex.technical_project_identifier, "TITMAS");
+  assert.equal(siteCatalog.public_brand.en, "titmas");
+  assert.equal(siteCatalog.public_brand.zh, "夏日之海");
   assert.equal(agentIndex.developer_community.community_established, false);
   assert.equal(agentIndex.entrypoints.titmas_community, "/titmas-community.json");
   assert.equal(agentIndex.entrypoints.commercial_evaluation_zh, "/commercial-evaluation/");

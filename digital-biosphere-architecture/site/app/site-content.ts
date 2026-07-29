@@ -172,9 +172,9 @@ export const content = {
       github: "GitHub",
       language: "English",
     },
-    badge: "TITMAS · Developer Preview v0.1",
+    badge: "夏日之海 · Developer Preview v0.1",
     eyebrow: "INFRASTRUCTURE DEVELOPER COMMUNITY / 基础设施开发者社区",
-    title: "TITMAS",
+    title: "夏日之海",
     lead:
       "面向自治 AI 智能体生态的可信基础设施层。",
     primaryCta: "了解基础设施",
@@ -300,9 +300,9 @@ export const content = {
       github: "GitHub",
       language: "中文",
     },
-    badge: "TITMAS · Developer Preview v0.1",
+    badge: "titmas · Developer Preview v0.1",
     eyebrow: "INFRASTRUCTURE DEVELOPER COMMUNITY",
-    title: "TITMAS",
+    title: "titmas",
     lead:
       "A trust infrastructure layer for autonomous AI agent ecosystems.",
     primaryCta: "Explore the infrastructure",

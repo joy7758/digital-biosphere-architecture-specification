@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PortalPage } from "../portal-page";
 
 export const metadata: Metadata = {
-  title: "TITMAS Infrastructure Developer Community",
+  title: { absolute: "titmas" },
   description:
     "A trust infrastructure layer for autonomous AI agent ecosystems; manufacturing and other industries are application examples.",
   alternates: {

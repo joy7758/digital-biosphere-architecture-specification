@@ -3,7 +3,7 @@ import { CommunityPage } from "../../community-page";
 
 export const metadata: Metadata = {
   title: "Developer entry",
-  description: "The complete English entry, contribution boundaries, and current status for TITMAS Infrastructure Developer Community.",
+  description: "The complete English developer entry, contribution boundaries, and current status for titmas.",
   alternates: {
     canonical: "/en/community/",
     languages: { "zh-CN": "/community/", en: "/en/community/" },

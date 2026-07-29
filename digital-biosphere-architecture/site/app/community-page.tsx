@@ -13,7 +13,7 @@ const copy = {
     statusValue: "准备完成一部分 · 社区尚未建立",
     definitionTitle: "TITMAS 是什么",
     definition:
-      "TITMAS Infrastructure Developer Community 是面向可信多智能体基础设施的开发者社区方向。开发者继续使用自己选择的 Agent Framework 和 Runtime；TITMAS 关注跨实现的身份、能力、执行、证据、验证和评价接口。",
+      "夏日之海（titmas）是面向可信多智能体基础设施的开发者入口；TITMAS 是其技术项目标识。开发者继续使用自己选择的 Agent Framework 和 Runtime；TITMAS 关注跨实现的身份、能力、执行、证据、验证和评价接口。",
     nonGoalsTitle: "TITMAS 不是什么",
     nonGoals: [
       "不是创建、编排或托管 Agent 的平台",
@@ -77,7 +77,7 @@ const copy = {
     statusValue: "Partially prepared · community not established",
     definitionTitle: "What TITMAS is",
     definition:
-      "TITMAS Infrastructure Developer Community is the developer-community direction for trusted multi-agent infrastructure. Developers keep their chosen agent frameworks and runtimes; TITMAS focuses on portable identity, capability, execution, evidence, verification, and evaluation interfaces.",
+      "titmas is the public developer entry for trusted multi-agent infrastructure; TITMAS remains its technical project identifier. Developers keep their chosen agent frameworks and runtimes; TITMAS focuses on portable identity, capability, execution, evidence, verification, and evaluation interfaces.",
     nonGoalsTitle: "What TITMAS is not",
     nonGoals: [
       "Not a platform that creates, orchestrates, or hosts agents",
