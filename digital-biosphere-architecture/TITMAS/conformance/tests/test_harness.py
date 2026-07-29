@@ -68,31 +68,34 @@ class HarnessTests(unittest.TestCase):
             )
             self.assertIn(case["expected_error"], errors, case["id"])
 
-    def test_limited_preview_is_authorized_active_and_merge_bound(self):
+    def test_private_boundary_disables_public_operation_and_preserves_history(self):
         status = HARNESS.load_json(
             HARNESS.TITMAS_ROOT / "community" / "community-status.json"
         )
         surface = status["public_contribution_surface"]
         self.assertEqual(
-            "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW", status["state"]
+            "PRIVATE_COMMERCIALIZATION_BOUNDARY", status["state"]
         )
         self.assertTrue(surface["templates_developed"])
         self.assertTrue(surface["templates_installed"])
-        self.assertTrue(surface["active"])
-        self.assertTrue(surface["authorized"])
+        self.assertFalse(surface["active"])
+        self.assertFalse(surface["authorized"])
         self.assertTrue(surface["activation_pr_merged"])
-        self.assertTrue(surface["issue_submission_active"])
-        self.assertTrue(surface["pull_request_submission_active"])
-        self.assertTrue(surface["specification_proposal_active"])
-        self.assertTrue(surface["adapter_integration_request_active"])
+        self.assertFalse(surface["issue_submission_active"])
+        self.assertFalse(surface["pull_request_submission_active"])
+        self.assertFalse(surface["specification_proposal_active"])
+        self.assertFalse(surface["adapter_integration_request_active"])
         self.assertTrue(status["activation_pr"]["merged"])
         self.assertTrue(status["public_contribution_activation"]["executed"])
         self.assertTrue(status["welcome_issue"]["created"])
-        self.assertTrue(status["security"]["transport_active"])
-        self.assertTrue(status["security"]["transport_verified"])
+        self.assertFalse(status["security"]["transport_active"])
+        self.assertFalse(status["security"]["transport_verified"])
+        self.assertFalse(status["public_launch"]["active"])
+        self.assertFalse(status["public_launch"]["authorized"])
+        self.assertTrue(status["historical_public_phase"]["limited_public_preview_was_active"])
         self.assertFalse(status["community_established"])
 
-    def test_security_transport_loss_fails_closed(self):
+    def test_security_transport_reactivation_fails_closed(self):
         status = HARNESS.load_json(
             HARNESS.TITMAS_ROOT / "community" / "community-status.json"
         )
@@ -103,7 +106,7 @@ class HarnessTests(unittest.TestCase):
             / "community-status.schema.json"
         )
         unsafe = copy.deepcopy(status)
-        unsafe["security"]["transport_active"] = False
+        unsafe["security"]["transport_active"] = True
         with self.assertRaises(HARNESS.ConformanceError):
             HARNESS.validate_schema(unsafe, schema)
 

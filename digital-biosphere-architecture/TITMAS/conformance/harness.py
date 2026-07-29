@@ -220,8 +220,8 @@ def check_community_status() -> dict[str, Any]:
     launch = status["public_launch"]
     activation_pr = status["activation_pr"]
     repair = status["public_entry_repair"]
-    if not status["community_incubation_active"]:
-        raise ConformanceError("limited public contribution incubation must remain active")
+    if status["community_incubation_active"]:
+        raise ConformanceError("private commercialization boundary must close community incubation")
     if any((
         status["external_participant_count"],
         status["first_external_issue_received"],
@@ -233,12 +233,8 @@ def check_community_status() -> dict[str, Any]:
         raise ConformanceError("repair PR candidate cannot claim completion")
     if repair["status"] == "COMPLETE" and not repair["complete"]:
         raise ConformanceError("completed repair status must claim completion")
-    if not contribution["templates_installed"] or not contribution["authorized"]:
-        raise ConformanceError("authorized activation candidate must install templates")
-    if not security["transport_active"] or not security["transport_verified"]:
-        raise ConformanceError("public activation requires verified Security Transport")
-    if not launch["authorized"]:
-        raise ConformanceError("limited repository preview must be authorized")
+    if not contribution["templates_installed"]:
+        raise ConformanceError("historical activation templates must remain recorded")
     if status["state"] == "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE":
         candidate_writes = (
             contribution["issue_submission_active"],
@@ -278,6 +274,39 @@ def check_community_status() -> dict[str, Any]:
             raise ConformanceError("active preview requires an Activation PR number")
         if not isinstance(status["welcome_issue"]["number"], int):
             raise ConformanceError("active preview requires a Welcome Issue number")
+    elif status["state"] == "PRIVATE_COMMERCIALIZATION_BOUNDARY":
+        current_writes = (
+            contribution["issue_submission_active"],
+            contribution["pull_request_submission_active"],
+            contribution["specification_proposal_active"],
+            contribution["adapter_integration_request_active"],
+        )
+        if (
+            contribution["active"]
+            or contribution["authorized"]
+            or any(current_writes)
+            or launch["active"]
+            or launch["authorized"]
+            or security["transport_active"]
+            or security["transport_verified"]
+            or security["activation_authorized"]
+        ):
+            raise ConformanceError("private commercialization boundary must disable public operation")
+        history = status["historical_public_phase"]
+        if (
+            not history["occurred"]
+            or not history["limited_public_preview_was_active"]
+            or not activation_pr["merged"]
+            or not status["welcome_issue"]["created"]
+        ):
+            raise ConformanceError("private boundary must preserve prior public-stage history")
+        if (
+            status["core_repository_visibility"] != "PRIVATE"
+            or not status["private_core_is_canonical"]
+            or not status["commercialization_boundary_design_active"]
+            or not status["private_agent_customer_readiness_active"]
+        ):
+            raise ConformanceError("private commercialization machine state is incomplete")
     else:
         raise ConformanceError(f"unsupported community activation state: {status['state']}")
     if not status["draft_pr"]["merged"] or not status["draft_pr"]["ready_for_review"]:
@@ -330,7 +359,11 @@ def merge_admission_errors(payload: dict[str, Any]) -> list[str]:
 
     if draft["created"] and "DRAFT_PR_NOT_CREATED" in payload["limitations"]:
         errors.append("STALE_DRAFT_PR_NOT_CREATED")
-    if contribution["templates_installed"] and not contribution["authorized"]:
+    if (
+        contribution["templates_installed"]
+        and not contribution["authorized"]
+        and not payload.get("private_boundary_active", False)
+    ):
         errors.append("TEMPLATES_INSTALLED_WITHOUT_AUTHORIZATION")
     if contribution["active"] and not security["transport_active"]:
         errors.append("CONTRIBUTION_ACTIVE_WITHOUT_SECURITY_TRANSPORT")
@@ -358,18 +391,22 @@ def check_merge_admission_boundary() -> dict[str, Any]:
 
     candidate_state = status["state"] == "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE"
     active_state = status["state"] == "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW"
-    expected_manifest_status = (
-        "INSTALLED_ACTIVATION_PR_CANDIDATE"
-        if candidate_state
-        else "ACTIVE_LIMITED_PREVIEW"
-    )
+    private_state = status["state"] == "PRIVATE_COMMERCIALIZATION_BOUNDARY"
+    if candidate_state:
+        expected_manifest_status = "INSTALLED_ACTIVATION_PR_CANDIDATE"
+    elif active_state:
+        expected_manifest_status = "ACTIVE_LIMITED_PREVIEW"
+    elif private_state:
+        expected_manifest_status = "PRIVATE_BOUNDARY_HISTORICAL_PACKAGE_RETAINED"
+    else:
+        raise ConformanceError(f"unsupported merge-admission state: {status['state']}")
     if manifest["status"] != expected_manifest_status:
         raise ConformanceError(
             f"activation manifest status mismatch: {manifest['status']}"
         )
     if (
         not manifest["installed"]
-        or not manifest["authorized"]
+        or manifest["authorized"] != active_state
         or manifest["active"] != active_state
         or not manifest["security_transport_required"]
         or not manifest["security_transport_verified"]
@@ -468,6 +505,7 @@ def check_merge_admission_boundary() -> dict[str, Any]:
         "infrastructure_complete": status["infrastructure_complete"],
         "dormant_path_auto_discoverable": False,
         "active_destination_used_outside_activation_pr": False,
+        "private_boundary_active": private_state,
     }
     actual_errors = merge_admission_errors(actual_payload)
     if actual_errors:
@@ -570,13 +608,26 @@ def check_agent_native_surfaces() -> dict[str, Any]:
     elevated = [key for key in must_be_false if state[key] is not False]
     if elevated:
         raise ConformanceError(f"agent-native state semantic elevation: {elevated}")
+    if not state["canonical_main_integration_complete"]:
+        raise ConformanceError("agent-native canonical integration history is incomplete")
+    current_public_flags = (
+        state["public_contribution_authorized"],
+        state["public_contribution_active"],
+        state["public_github_agent_write_authorized"],
+        state["public_github_agent_write_active"],
+        state["public_launch_authorized"],
+        state["public_launch_active"],
+    )
+    if any(current_public_flags):
+        raise ConformanceError("private commercialization boundary must disable public Agent operations")
     if (
-        not state["canonical_main_integration_complete"]
-        or not state["public_contribution_authorized"]
-        or not state["public_github_agent_write_authorized"]
-        or not state["public_launch_authorized"]
+        state["core_repository_visibility"] != "PRIVATE"
+        or not state["private_core_is_canonical"]
+        or state["open_standards_community_operation_active"]
+        or not state["commercialization_boundary_design_active"]
+        or not state["private_agent_customer_readiness_active"]
     ):
-        raise ConformanceError("agent-native limited opening authorization is incomplete")
+        raise ConformanceError("agent-native private commercialization state is incomplete")
     if state["public_contribution_activation_candidate"]:
         if state["public_contribution_active"] or state["public_github_agent_write_active"]:
             raise ConformanceError("activation candidate cannot claim active public writes")
@@ -800,7 +851,9 @@ def check_public_entry_consistency() -> dict[str, Any]:
         projection["security"]["transport"] == "GITHUB_PRIVATE_VULNERABILITY_REPORTING"
         and projection["security"]["active_at_live_verification"] is True
         and "Private Vulnerability Reporting" in security_text
-        and status["security"]["transport_active"] is True
+        and status["security"]["transport_active"] is False
+        and status["security"]["transport_verified"] is False
+        and status["security"]["public_activation_blocked"] is True
     )
 
     public_text = "\n".join(
@@ -814,8 +867,11 @@ def check_public_entry_consistency() -> dict[str, Any]:
         r"remain inactive until merge",
         re.IGNORECASE,
     )
-    pe08 = activation_stale.search(public_text) is None
-    pe08 = pe08 and agent_entry["public_contribution_state"]["activation_pr_merged"] is True
+    pe08 = (
+        activation_stale.search(public_text) is None
+        and agent_entry["public_contribution_state"]["activation_pr_merged"] is True
+        and status["historical_public_phase"]["limited_public_preview_was_active"] is True
+    )
 
     inactive_stale = re.compile(
         r"PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false|"
@@ -825,11 +881,11 @@ def check_public_entry_consistency() -> dict[str, Any]:
         re.IGNORECASE,
     )
     pe09 = (
-        inactive_stale.search(public_text) is None
-        and status["public_contribution_surface"]["active"] is True
-        and status["public_contribution_surface"]["authorized"] is True
-        and agent_entry["public_contribution_state"]["surface_active"] is True
-        and agent_entry["public_contribution_state"]["surface_authorized"] is True
+        inactive_stale.search(public_text) is not None
+        and status["public_contribution_surface"]["active"] is False
+        and status["public_contribution_surface"]["authorized"] is False
+        and agent_entry["public_contribution_state"]["surface_active"] is False
+        and agent_entry["public_contribution_state"]["surface_authorized"] is False
     )
     pe10 = (
         "COMMUNITY_ESTABLISHED=true" not in public_text

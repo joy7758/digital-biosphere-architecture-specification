@@ -3,7 +3,7 @@
   "manifest_version": "2.0.0",
   "canonical_name": "TITMAS Agent-Native Standards Community",
   "canonical_entry": "../../agent-index.json",
-  "community_mode": "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW",
+  "community_mode": "PRIVATE_COMMERCIALIZATION_BOUNDARY",
   "default_participant_type": "GOVERNED_AGENT",
   "human_routine_operation_default": false,
   "capabilities": [
@@ -17,8 +17,8 @@
     "PREPARE_MAINTENANCE_REPORT",
     "PREPARE_HANDOFF_PACKAGE",
     "CALIBRATE_RECOMMENDATION",
-    "SUBMIT_PUBLIC_ISSUE",
-    "SUBMIT_PUBLIC_PR"
+    "PREPARE_PRIVATE_EVALUATION_INPUT",
+    "VALIDATE_PUBLIC_EXPORT_CANDIDATE_LOCALLY"
   ],
   "non_capabilities": [
     "SELF_AUTHORIZE",
@@ -28,6 +28,9 @@
     "DEPLOY",
     "AUTO_ACCEPT_PUBLIC_ISSUE",
     "AUTO_MERGE_PUBLIC_PR",
+    "SUBMIT_PUBLIC_ISSUE",
+    "SUBMIT_PUBLIC_PR",
+    "EXPORT_PRIVATE_CORE",
     "DECLARE_STABLE",
     "DECLARE_ADOPTION",
     "CERTIFY"

@@ -26,6 +26,10 @@ aliases. No fourth community name is created.
 - Reference implementation boundary: [`reference/README.md`](reference/README.md)
 - Adapter entry: [`adapters/README.md`](adapters/README.md)
 - Research archive index: [`research/agent-native-ecology-box-001/README.md`](research/agent-native-ecology-box-001/README.md)
+- Private commercialization boundary:
+  [`private-governance/source-classification-registry.json`](private-governance/source-classification-registry.json)
+- Private Agent customer evaluation candidate:
+  [`private-customer-evaluation/README.md`](private-customer-evaluation/README.md)
 
 ## Local validation
 
@@ -46,18 +50,24 @@ Authorization, Adoption, Certification, Release or production readiness.
 ## Current state
 
 ```text
-COMMUNITY_STATUS=LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW
-CODE_OF_CONDUCT_ADOPTED_FOR_LIMITED_REPOSITORY_PREVIEW=true
+COMMUNITY_STATUS=PRIVATE_COMMERCIALIZATION_BOUNDARY
+CORE_REPOSITORY_VISIBILITY=PRIVATE
+PRIVATE_CORE_IS_CANONICAL=true
+CODE_OF_CONDUCT_HISTORICAL_ADOPTION_RETAINED=true
 SECURITY_PROCESS_DEFINED=true
-SECURITY_TRANSPORT_ACTIVE=true
-SECURITY_TRANSPORT_VERIFIED=true
+SECURITY_TRANSPORT_ACTIVE=false
+SECURITY_TRANSPORT_VERIFIED=false
 INTERIM_MAINTAINER_REF=zhangbin
 INTERIM_ROLE_EXPIRES=2026-09-30T23:59:59+08:00
-PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=true
+PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
 PUBLIC_CONTRIBUTION_TEMPLATES_DEVELOPED=true
 PUBLIC_CONTRIBUTION_TEMPLATES_INSTALLED=true
-PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=true
-PUBLIC_LAUNCH_MODE=LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW
+PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
+PUBLIC_LAUNCH_AUTHORIZED=false
+PUBLIC_LAUNCH_MODE=PRIVATE_COMMERCIALIZATION_BOUNDARY
+OPEN_STANDARDS_COMMUNITY_INFRASTRUCTURE_DEVELOPED=true
+OPEN_STANDARDS_COMMUNITY_OPERATION_ACTIVE=false
+PRIVATE_AGENT_CUSTOMER_READINESS_ACTIVE=true
 COMMUNITY_ESTABLISHED=false
 EXTERNAL_CONTRIBUTOR_COUNT=0
 EXTERNAL_ADOPTER_COUNT=0
@@ -67,11 +77,11 @@ The temporary assignment is revocable and limited to this integration
 candidate. It does not grant DBA, DBOS, SAEE, Evidence Truth, Certification,
 Commercial, Release, automatic merge or Stable-promotion authority.
 
-The community core and Activation PR #42 are merged, Security Transport is
-verified active, and the bounded GitHub Issue and Pull Request templates are
-available. This limited repository Preview does not establish the community or
-authorize automatic acceptance, Release, Stable promotion or external
-Authority.
+The community core, PR #41, Activation PR #42, entry-repair PR #45 and Welcome
+Issue #43 remain historical facts. The current repository is private; public
+Issue/PR operation and public Security Transport are not active. The historical
+public phase is not erased, and it does not authorize a new public export,
+Release, Stable promotion or external Authority.
 
 ## Core boundaries
 

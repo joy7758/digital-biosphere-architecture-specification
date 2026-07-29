@@ -1,0 +1,27 @@
+{
+  "contract_version": "0.1.0",
+  "status": "CANDIDATE_NOT_IMPLEMENTED",
+  "operation": "evaluate_agent_need",
+  "input_schema": {
+    "required": ["request_id", "need", "constraints"],
+    "data_policy": "SYNTHETIC_ONLY"
+  },
+  "output_schema": {
+    "required": [
+      "request_id",
+      "recommendation",
+      "rationale",
+      "limitations",
+      "human_review_required"
+    ],
+    "recommendation_values": [
+      "RECOMMENDED",
+      "CONDITIONALLY_RECOMMENDED",
+      "NOT_RECOMMENDED",
+      "ABSTAIN"
+    ]
+  },
+  "authority_effect": "NONE",
+  "core_source_returned": false,
+  "endpoint_implemented": false
+}

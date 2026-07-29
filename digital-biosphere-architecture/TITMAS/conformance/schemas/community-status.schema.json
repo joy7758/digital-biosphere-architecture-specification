@@ -12,6 +12,12 @@
     "state",
     "community_phase",
     "community_incubation_active",
+    "core_repository_visibility",
+    "private_core_is_canonical",
+    "open_standards_community_infrastructure_developed",
+    "open_standards_community_operation_active",
+    "commercialization_boundary_design_active",
+    "private_agent_customer_readiness_active",
     "base_main_commit",
     "integration_branch",
     "integration_candidate_commit",
@@ -36,6 +42,7 @@
     "public_launch",
     "welcome_issue",
     "public_entry_repair",
+    "historical_public_phase",
     "external_participant_count",
     "first_external_issue_received",
     "first_external_pr_received",
@@ -66,17 +73,25 @@
     "status": {
       "enum": [
         "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE",
-        "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW"
+        "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW",
+        "PRIVATE_COMMERCIALIZATION_BOUNDARY"
       ]
     },
     "state": {
       "enum": [
         "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE",
-        "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW"
+        "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW",
+        "PRIVATE_COMMERCIALIZATION_BOUNDARY"
       ]
     },
-    "community_phase": {"const": "LIMITED_PUBLIC_CONTRIBUTION_PREVIEW"},
-    "community_incubation_active": {"const": true},
+    "community_phase": {"const": "PRIVATE_COMMERCIALIZATION_BOUNDARY"},
+    "community_incubation_active": {"const": false},
+    "core_repository_visibility": {"const": "PRIVATE"},
+    "private_core_is_canonical": {"const": true},
+    "open_standards_community_infrastructure_developed": {"const": true},
+    "open_standards_community_operation_active": {"const": false},
+    "commercialization_boundary_design_active": {"const": true},
+    "private_agent_customer_readiness_active": {"const": true},
     "base_main_commit": {"const": "3ce0b2008db1433db7c24375f81cfa422fabb7e3"},
     "integration_branch": {"const": "codex/titmas-community-public-contribution-activation-v0-1"},
     "integration_candidate_commit": {"type": "string", "minLength": 7},
@@ -163,12 +178,16 @@
       ],
       "properties": {
         "status": {
-          "enum": ["ACTIVATION_PR_CANDIDATE", "LIMITED_REPOSITORY_PREVIEW_ACTIVE"]
+          "enum": [
+            "ACTIVATION_PR_CANDIDATE",
+            "LIMITED_REPOSITORY_PREVIEW_ACTIVE",
+            "PRIVATE_DISABLED_HISTORICAL_TEMPLATES_RETAINED"
+          ]
         },
         "templates_developed": {"const": true},
         "templates_installed": {"const": true},
         "active": {"type": "boolean"},
-        "authorized": {"const": true},
+        "authorized": {"const": false},
         "activation_pr_merged": {"type": "boolean"},
         "issue_submission_active": {"type": "boolean"},
         "pull_request_submission_active": {"type": "boolean"},
@@ -177,7 +196,7 @@
         "dormant_package_ref": {"const": "github-activation-templates/activation-manifest.json"}
       }
     },
-    "code_of_conduct": {"const": "ADOPTED_FOR_LIMITED_REPOSITORY_PREVIEW"},
+    "code_of_conduct": {"const": "HISTORICAL_ADOPTION_RETAINED_PRIVATE_REPOSITORY"},
     "security": {
       "type": "object",
       "additionalProperties": false,
@@ -194,12 +213,12 @@
       "properties": {
         "process_defined": {"const": true},
         "process_owner_assigned": {"const": true},
-        "activation_authorized": {"const": true},
-        "transport_active": {"const": true},
-        "transport_verified": {"const": true},
-        "transport_status": {"const": "ACTIVE_GITHUB_PRIVATE_VULNERABILITY_REPORTING"},
-        "activation_http_status": {"enum": ["204", "NOT_APPLICABLE_ALREADY_ENABLED"]},
-        "public_activation_blocked": {"const": false}
+        "activation_authorized": {"const": false},
+        "transport_active": {"const": false},
+        "transport_verified": {"const": false},
+        "transport_status": {"const": "NOT_AVAILABLE_PRIVATE_REPOSITORY"},
+        "activation_http_status": {"const": "404_PRIVATE_REPOSITORY"},
+        "public_activation_blocked": {"const": true}
       }
     },
     "maintainer": {
@@ -242,9 +261,9 @@
       "additionalProperties": false,
       "required": ["mode", "active", "authorized"],
       "properties": {
-        "mode": {"const": "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW"},
-        "active": {"type": "boolean"},
-        "authorized": {"const": true}
+        "mode": {"const": "PRIVATE_COMMERCIALIZATION_BOUNDARY"},
+        "active": {"const": false},
+        "authorized": {"const": false}
       }
     },
     "welcome_issue": {
@@ -278,6 +297,28 @@
         "consistency_operational": {"const": true},
         "consistency_tests_passed": {"const": 10},
         "projection_ref": {"const": "welcome-issue-43-entry-projection.json"}
+      }
+    },
+    "historical_public_phase": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "occurred",
+        "core_pr",
+        "activation_pr",
+        "entry_repair_pr",
+        "welcome_issue",
+        "limited_public_preview_was_active",
+        "current_authority_effect"
+      ],
+      "properties": {
+        "occurred": {"const": true},
+        "core_pr": {"const": 41},
+        "activation_pr": {"const": 42},
+        "entry_repair_pr": {"const": 45},
+        "welcome_issue": {"const": 43},
+        "limited_public_preview_was_active": {"const": true},
+        "current_authority_effect": {"const": "NONE"}
       }
     },
     "external_participant_count": {"const": 0},
