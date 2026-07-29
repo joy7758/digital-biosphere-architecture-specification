@@ -78,7 +78,7 @@ test("rejects formal release mode while public truth surfaces remain candidates"
 
 test("accepts formal mode only when every machine truth surface and input agree", async () => {
   const resources = await currentResources();
-  const wheelUrl = "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl";
+  const wheelUrl = "https://redcrag.cn/downloads/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl";
 
   const context = resolveReleaseContext(
     {
@@ -95,29 +95,29 @@ test("accepts formal mode only when every machine truth surface and input agree"
   assert.equal(context.developerPreviewReleased, true);
   assert.equal(context.dbosWheelUrl, wheelUrl);
   assert.equal(context.releasedByRef, "zhangbin");
-  assert.match(routeMarkers(context.mode).enStatus[1], /is released/);
+  assert.match(routeMarkers(context.mode).enStatus[1], /Stage 5\.2 external developer trial in progress/);
 });
 
 test("routeMarkers yields formal release markers when mode is formal", () => {
   const markers = routeMarkers("formal");
   assert.deepEqual(markers, {
-    zhHome: ["<html lang=\"zh-CN\">", "共同建设 Agent 时代的可信基础设施"],
-    enHome: ["<html lang=\"en\">", "Build trustworthy infrastructure for the agent era"],
+    zhHome: ["<html lang=\"zh-CN\">", "申请有界私有开发者试用"],
+    enHome: ["<html lang=\"en\">", "Apply for a bounded private developer trial"],
     zhStatus: [
       "<html lang=\"zh-CN\">",
-      "可信多智能体基础设施开发者预览版 v0.1 已发布",
+      "TITMAS Stage 5.2 外部开发者试用进行中",
     ],
     enStatus: [
       "<html lang=\"en\">",
-      "Trusted Multi-Agent Infrastructure Developer Preview v0.1 is released",
+      "TITMAS Stage 5.2 external developer trial in progress",
     ],
   });
 });
 
 test("routeMarkers yields candidate markers for other modes and edge cases", () => {
   const expectedCandidateMarkers = {
-    zhHome: ["<html lang=\"zh-CN\">", "共同建设 Agent 时代的可信基础设施"],
-    enHome: ["<html lang=\"en\">", "Build trustworthy infrastructure for the agent era"],
+    zhHome: ["<html lang=\"zh-CN\">", "申请有界私有开发者试用"],
+    enHome: ["<html lang=\"en\">", "Apply for a bounded private developer trial"],
     zhStatus: [
       "<html lang=\"zh-CN\">",
       "当前不是正式发布",
@@ -145,7 +145,7 @@ test("rejects formal mode when the release identity drifts across truth surfaces
         RELEASE_DECISION_REF: "architecture/ADR-022-developer-preview-release.md",
         RELEASED_BY_REF: "zhangbin",
         PUBLIC_RELEASE_TAG: "v0.1-developer-preview",
-        DBOS_WHEEL_URL: "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
+        DBOS_WHEEL_URL: "https://redcrag.cn/downloads/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
       },
       resources,
     ),
@@ -164,7 +164,7 @@ test("rejects formal mode when truth surfaces have mismatched release status", a
         RELEASE_DECISION_REF: "architecture/ADR-022-developer-preview-release.md",
         RELEASED_BY_REF: "zhangbin",
         PUBLIC_RELEASE_TAG: "v0.1-developer-preview",
-        DBOS_WHEEL_URL: "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
+        DBOS_WHEEL_URL: "https://redcrag.cn/downloads/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
       },
       resources,
     ),

@@ -59,11 +59,13 @@ if (releaseContext.mode === "candidate") {
   assert.match(zhStatus, /当前不是正式发布/);
   assert.match(enStatus, /This is not a release/);
 } else {
-  assert.match(zhStatus, /可信多智能体基础设施开发者预览版 v0\.1 已发布/);
-  assert.match(enStatus, /Trusted Multi-Agent Infrastructure Developer Preview v0\.1 is released/);
+  assert.match(zhStatus, /TITMAS Stage 5\.2 外部开发者试用进行中/);
+  assert.match(enStatus, /TITMAS Stage 5\.2 external developer trial in progress/);
 }
-assert.match(zh, /SAEE_DBOS_ADAPTER_PASS/);
-assert.match(en, /SAEE_DBOS_ADAPTER_PASS/);
+assert.match(zh, /E01 External Human Developer Trial/);
+assert.match(en, /E01 External Human Developer Trial/);
+assert.match(zh, /申请有界私有开发者试用/);
+assert.match(en, /Apply for a bounded private developer trial/);
 assert.match(zh, /第一个可信闭环：设计完成，尚未执行/);
 assert.match(en, /The first trustworthy loop is designed—not executed/);
 assert.match(zh, /Observation ≠ Evidence/);
@@ -109,6 +111,14 @@ assert.equal(status.gates.TITMAS_ADOPTION_VALIDATION_READY, false);
 assert.equal(status.gates.TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE, true);
 assert.equal(status.gates.TITMAS_PILOT_EXECUTION_AUTHORIZED, false);
 assert.equal(status.gates.COMPLETE_VERTICAL_SLICE_EXECUTED, false);
+assert.equal(status.current_stage, "TITMAS_STAGE_5_2_EXTERNAL_DEVELOPER_TRIAL");
+assert.equal(status.e01_status, "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION");
+assert.equal(status.e01_participant_access_authorized, true);
+assert.equal(status.e01_core_repository_access, false);
+assert.equal(status.new_external_participant_invitation_authorized, false);
+assert.equal(status.public_protocol_released, false);
+assert.equal(status.commercial_access_granted, false);
+assert.equal(status.production_ready, false);
 assert.equal(status.technical_validation.conformance_cases_defined, 14);
 assert.equal(status.technical_validation.conformance_cases_executed, 0);
 assert.equal(status.technical_validation.first_external_role, "REVIEWER");

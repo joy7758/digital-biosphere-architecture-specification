@@ -5,26 +5,55 @@ Subtitle: Developer Community for Trusted Multi-Agent Infrastructure
 Infrastructure positioning: Trusted Multi-Agent Infrastructure
 Program family: Digital Biosphere / 数字生物圈
 Primary machine customer: AI agents that discover, assess, compose, reuse, and recommend infrastructure
-Observed at: 2026-07-23 Asia/Shanghai
+Observed at: 2026-07-29 Asia/Shanghai
 
 ## Current repository and trial truth
 
 - CURRENT_CORE_REPOSITORY_VISIBILITY=PRIVATE
 - PUBLIC_CORE_CLONE_AVAILABLE=false
-- CURRENT_STAGE=TITMAS_STAGE_5_PRIVATE_PREVIEW
+- CURRENT_STAGE=TITMAS_STAGE_5_2_EXTERNAL_DEVELOPER_TRIAL
 - PUBLIC_PROTOCOL_RELEASED=false
 - EXTERNAL_TRIAL_REQUIRES_EXPLICIT_ACCESS=true
-- EXTERNAL_PARTICIPANT_INVITATION_AUTHORIZED=false
+- TITMAS_STAGE_5_PRIVATE_PREVIEW_OPERATIONAL=true
 - TITMAS_STAGE_5_1_PRIVATE_TRIAL_PREPARATION_AUTHORIZED=true
 - TITMAS_STAGE_5_1_PRIVATE_TRIAL_CHANNEL_READY=true
 - TITMAS_STAGE_5_1_TRIAL_REPOSITORY_INVITATION_READY=true
 - TITMAS_STAGE_5_1_BRANCH_PROTECTION_VERIFIED=true
-- TITMAS_STAGE_5_1_EXTERNAL_PARTICIPANT_INVITATION_AUTHORIZED=false
+- TITMAS_PUBLIC_TRIAL_INTEREST_ENTRY_ACTIVE=true
+- E01_STATUS=IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION
+- E01_PARTICIPANT_ACCESS_AUTHORIZED=true
+- E01_PARTICIPANT_ACCESS_ACTIVE=true
+- E01_ACCESS_MODE=ACTIVE_READ_ONLY
+- E01_CORE_REPOSITORY_ACCESS=false
+- E01_CONTRIBUTION_PATH=PRIVATE_FORK_PULL_REQUEST
+- E01_PARTICIPANT_FORK_EXISTS=false
+- E01_PARTICIPANT_PR_EXISTS=false
+- FIRST_EXTERNAL_HUMAN_DEVELOPER_TRIAL_COMPLETE=false
+- NEW_EXTERNAL_PARTICIPANT_INVITATION_AUTHORIZED=false
+- NEXT_TRIAL_SLOT_AUTHORIZED=false
+- MAX_ACTIVE_EXTERNAL_PARTICIPANTS=1
+- COMPENSATED_TRIAL_RECRUITMENT_DEMAND_SUBMITTED=true
+- COMPENSATED_TRIAL_RECRUITMENT_PUBLICATION_CONFIRMED=false
+- COMPENSATED_TRIAL_RECRUITMENT_PLATFORM_REVIEW_STATUS=PENDING
+- FORMAL_STANDARD_CHANGE_AUTHORIZED=false
+- COMMERCIAL_ACCESS_GRANTED=false
+- TITMAS_COMMUNITY_ESTABLISHED=false
+- COMMERCIAL_ECOSYSTEM_ESTABLISHED=false
+- PRODUCTION_READY=false
 
 The public website is a discovery surface, not a clone of the canonical private
 core. Stage 5.1 prepares a separate private trial repository by exact-file
-allowlist reconstruction. No participant invitation, public protocol release,
-formal standard change or commercial access is active.
+allowlist reconstruction. E01 has specific bounded read-only access and is
+waiting for participant action through a private Fork + Pull Request path. This
+does not authorize a new participant, public protocol release, formal standard
+change, commercial access, or production authority.
+
+Public non-binding trial interest:
+https://github.com/joy7758/joy7758/issues/new?template=titmas-private-trial-interest.yml
+
+Submission collects non-confidential interest only. It does not grant a trial
+slot, private repository access, source licence, community role, commercial
+commitment, or standard authority.
 
 ## One-sentence purpose
 
@@ -47,9 +76,9 @@ Interpretation:
 
 - The developer-community direction is the current public work focus.
 - Contribution workflows and machine-readable entry points are prepared.
-- No public Issue, Pull Request, SIG, maintainer recruitment, or external contribution channel is authorized.
+- The public trial-interest Issue is active; no public contribution Issue, Pull Request, SIG, maintainer recruitment, or external contribution channel is authorized.
 - No operating community, foundation, legal entity, or independent authority is claimed.
-- This page is a discovery and review entry, not a public submission invitation.
+- This page is a discovery, review, and non-binding trial-interest entry, not a public contribution submission invitation.
 
 ## What the community works on
 
@@ -82,6 +111,7 @@ DBOS records -> SAEE evaluation/recommendation -> Governance Decision review/ado
 
 ## Permanent non-equivalence rules
 
+- Conformance != Certification
 - Community Review != Architecture Decision
 - Contribution != Authority
 - Specification != Implementation
@@ -163,9 +193,21 @@ not a hosted Runtime, Agent framework, Permission system, or production claim.
 - /status.json
 - /agent-customer-package.json
 - /dbos-public-package-manifest.json
+- /sdk/v0.1/manifest.json
+- /sdk/v0.1/examples/synthetic-entity.json
 - /sitemap.xml
+
+Public-safe five-minute validation:
+
+1. Install the exact wheel from `/downloads/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl`.
+2. Download `/sdk/v0.1/examples/synthetic-entity.json`.
+3. Run `dbos-validate synthetic-entity.json`.
+
+The SDK contains seven versioned object schemas. This public-safe Developer
+Preview surface is not a public protocol release, formal standard, Runtime,
+certification, adoption, or production authority.
 
 ## Canonical public entry
 
 https://redcrag.cn/
-https://github.com/joy7758/digital-biosphere-architecture-specification
+https://github.com/joy7758

@@ -1,21 +1,51 @@
 {
   "schema_version": "0.1",
-  "observed_at": "2026-07-23T21:28:24+08:00",
+  "observed_at": "2026-07-29T22:30:00+08:00",
   "public_focus": "TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY",
   "release_state": "developer_preview_released",
   "release_claim": true,
-  "current_stage": "TITMAS_STAGE_5_PRIVATE_PREVIEW",
+  "current_stage": "TITMAS_STAGE_5_2_EXTERNAL_DEVELOPER_TRIAL",
   "current_core_repository_visibility": "PRIVATE",
   "public_core_clone_available": false,
   "public_protocol_released": false,
   "external_trial_requires_explicit_access": true,
-  "external_participant_invitation_authorized": false,
+  "titmas_stage_5_private_preview_operational": true,
+  "titmas_stage_5_1_private_trial_channel_ready": true,
+  "titmas_public_trial_interest_entry_active": true,
+  "e01_status": "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION",
+  "e01_participant_access_authorized": true,
+  "e01_participant_access_active": true,
+  "e01_access_mode": "ACTIVE_READ_ONLY",
+  "e01_core_repository_access": false,
+  "e01_contribution_path": "PRIVATE_FORK_PULL_REQUEST",
+  "e01_participant_fork_exists": false,
+  "e01_participant_pr_exists": false,
+  "first_external_human_developer_trial_complete": false,
+  "new_external_participant_invitation_authorized": false,
+  "next_trial_slot_authorized": false,
+  "max_active_external_participants": 1,
+  "compensated_trial_recruitment_demand_submitted": true,
+  "compensated_trial_recruitment_publication_confirmed": false,
+  "compensated_trial_recruitment_platform_review_status": "PENDING",
+  "formal_standard_change_authorized": false,
+  "commercial_access_granted": false,
+  "titmas_community_established": false,
+  "commercial_ecosystem_established": false,
+  "production_ready": false,
   "public_website": {
     "url": "https://redcrag.cn/",
     "deployed": true,
     "health_pass": true,
     "security_headers_pass": true,
     "rollback_validated": true
+  },
+  "public_safe_sdk": {
+    "status": "PUBLIC_SAFE_DEVELOPER_PREVIEW",
+    "manifest": "https://redcrag.cn/sdk/v0.1/manifest.json",
+    "schema_count": 7,
+    "synthetic_example_count": 1,
+    "public_protocol_release": false,
+    "formal_standard_change": false
   },
   "repository_baselines": {
     "DBA": "4fb98898d08fd4a98f971f74356e0078493910a8",
@@ -53,8 +83,8 @@
   "access": {
     "DBA": "private",
     "DBOS": "private",
-    "DBOS_PUBLIC_PACKAGE": "published_github_release_asset",
-    "SAEE": "public_with_read_only_dbos_adapter"
+    "DBOS_PUBLIC_PACKAGE": "published_public_safe_asset_on_redcrag",
+    "SAEE": "private_with_scoped_read_only_adapter_review"
   },
   "private_stage5_1_trial": {
     "preparation_authorized": true,
@@ -66,8 +96,12 @@
     "block_reason": null,
     "trial_repository_separate_from_core": true,
     "allowlist_reconstruction_required": true,
-    "external_participant_invitation_authorized": false,
-    "external_developer_trial_executed": false,
+    "e01_participant_access_authorized": true,
+    "e01_participant_access_active": true,
+    "e01_access_mode": "ACTIVE_READ_ONLY",
+    "e01_contribution_path": "PRIVATE_FORK_PULL_REQUEST",
+    "new_external_participant_invitation_authorized": false,
+    "first_external_human_developer_trial_complete": false,
     "public_export_authorized": false,
     "formal_standard_change_authorized": false,
     "commercial_access_granted": false
@@ -77,7 +111,7 @@
     "source_revision": "cd3f867c4379ec555c45e7d554088ad12ce08a24",
     "status": "PUBLISHED",
     "manifest": "https://redcrag.cn/dbos-public-package-manifest.json",
-    "public_download_url": "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
+    "public_download_url": "https://redcrag.cn/downloads/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl",
     "whole_repository_public_recommended": false
   },
   "agent_customer_validation": {
@@ -110,7 +144,7 @@
     "github_metadata_description_match_observed": true,
     "github_metadata_remediated": true,
     "github_metadata_indexing_signal_observed": true,
-    "report": "https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/OPEN-WEB-DISCOVERY-OBSERVATION.md"
+    "report": "https://redcrag.cn/status/"
   },
   "optional_human_trial": {
     "required_for_primary_route": false,
@@ -197,7 +231,7 @@
     "tag": "v0.1-developer-preview",
     "decision_reference": "architecture/ADR-022-developer-preview-release.md",
     "released_by_ref": "zhangbin",
-    "release_url": "https://github.com/joy7758/digital-biosphere-architecture-specification/releases/tag/v0.1-developer-preview",
+    "release_url": "https://redcrag.cn/status/",
     "production_ready": false,
     "customer_adoption_claimed": false
   },
