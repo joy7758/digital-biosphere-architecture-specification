@@ -2,9 +2,11 @@
 document_id: TITMAS-FIRST-PUBLIC-INDEPENDENT-AGENT-CUSTOMER-CYCLE-HUMAN-DISPOSITION-0.1
 title: TITMAS First Public Independent Agent Customer Cycle Human Disposition v0.1
 title_zh: TITMAS 首个公开独立智能体客户闭环人工处置单 v0.1
-status: awaiting-human-decision
+status: human-disposition-complete-cycle-not-accepted
 cycle_report: TITMAS-FIRST-PUBLIC-INDEPENDENT-AGENT-CUSTOMER-CYCLE-REPORT-v0.1.md
 decision_reference: TITMAS-FIRST-PUBLIC-INDEPENDENT-AGENT-CUSTOMER-CYCLE-D01
+disposition_by_ref: zhangbin
+human_disposition_complete: true
 ---
 
 # TITMAS First Public Independent Agent Customer Cycle Human Disposition v0.1
@@ -42,10 +44,12 @@ Options:
 - `DEFER`
 
 ```text
-AGENT-CUSTOMER-HD-01=UNDECIDED
-CURRENT_NON_AUTHORITY_RECOMMENDATION=DEFER
-RATIONALE=NO_CONTRIBUTION_DIRECTION_WAS_PRODUCED
+AGENT-CUSTOMER-HD-01=DEFER
+RATIONALE=NO_CONTRIBUTION_DIRECTION_WAS_OBSERVED
 ```
+
+`DEFER` does not accept a contribution or contribution direction. No contribution direction was
+observed, so there is nothing to accept, revise or reject on its merits.
 
 ## AGENT-CUSTOMER-HD-02
 
@@ -58,10 +62,11 @@ Options:
 - `DEFER`
 
 ```text
-AGENT-CUSTOMER-HD-02=UNDECIDED
-CURRENT_NON_AUTHORITY_RECOMMENDATION=DEFER
+AGENT-CUSTOMER-HD-02=DEFER
 RATIONALE=NO_CONTRIBUTION_PR_EXISTS
 ```
+
+`DEFER` does not authorize a merge. No contribution PR exists.
 
 ## AGENT-CUSTOMER-HD-03
 
@@ -71,10 +76,31 @@ Only a run with successful discovery, autonomous task selection, public-only con
 independent review, deterministic conformance and Human Maintainer disposition may be accepted.
 
 ```text
-AGENT-CUSTOMER-HD-03=UNDECIDED
-CURRENT_NON_AUTHORITY_RECOMMENDATION=DO_NOT_ACCEPT
+AGENT-CUSTOMER-HD-03=DO_NOT_ACCEPT
 RATIONALE=DISCOVERY_GATE_DID_NOT_PASS
 ```
+
+`DO_NOT_ACCEPT` applies only to the completion claim for Cycle 001. It does not mean that Qwen
+failed, that the Agent-first route failed or that the TITMAS public entry failed. The response and
+returned model identity were not captured, so those questions were not tested.
+
+## Disposition boundary
+
+```text
+HUMAN_DISPOSITION_COMPLETE=true
+DISPOSITION_BY_REF=zhangbin
+CYCLE_001_STATUS=STOPPED_DISCOVERY_RESPONSE_CAPTURE_FAILURE
+CYCLE_001_COMPLETE=false
+TITMAS_DISCOVERABILITY_TESTED=false
+AGENT_CUSTOMER_BEHAVIOR_TESTED=false
+QWEN_UNDERSTANDING_TESTED=false
+PROVIDER_INFERENCE_EXECUTION_OUTCOME=UNKNOWN_AFTER_SEND
+PROVIDER_USAGE_AND_BILLING=UNKNOWN
+REQUEST_RESPONSE_BINDING=NOT_ESTABLISHED
+```
+
+The disposition preserves the negative transport result. It does not relabel the result as an
+Agent rejection, a model failure, a valid abstention or a successful customer cycle.
 
 ## Optional future decision
 
