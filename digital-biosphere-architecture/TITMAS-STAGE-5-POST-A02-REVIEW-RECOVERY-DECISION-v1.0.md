@@ -40,6 +40,29 @@ prove Provider execution, Provider failure or model latency.
 3. Assign a new unique attempt ID and preserve both unknown outcomes.
 4. Continue to prohibit automatic retry and duplicate Human disposition.
 
+## Completed diagnosis
+
+The non-inference diagnostic completed after A03:
+
+```text
+QIANFAN_DNS_TLS_HTTP_PATH=PASS
+QIANFAN_MODELS_ENDPOINT_HTTP=200
+KIMI_K2_6_AVAILABLE=true
+DEEPSEEK_V3_2_AVAILABLE=true
+DEEPSEEK_V3_2_MODEL_OWNER=DeepSeek
+A01_UNKNOWN_DURATION_SECONDS=120.214555
+A02_UNKNOWN_DURATION_SECONDS=120.119427
+LOCAL_TRANSPORT_TIMEOUT_SECONDS=120
+ROOT_CAUSE=LOCAL_TIMEOUT_BOUNDARY_STRONGLY_SUPPORTED_PROVIDER_OUTCOME_STILL_UNKNOWN
+```
+
+The exact timing and healthy control path establish the local timeout as the
+proximate capture failure boundary. They do not establish whether either Kimi
+request completed at the Provider.
+
+The diagnostic satisfies the A03 prerequisite. A04 is recorded separately and
+supersedes only A03's temporary no-action hold.
+
 ## Current state
 
 ```text
@@ -49,7 +72,9 @@ TITMAS_STAGE_5_PRIVATE_AGENT_PILOT_COMPLETE=false
 TITMAS_STAGE_5_PRIVATE_PREVIEW_OPERATIONAL=false
 INDEPENDENT_REVIEW_COMPLETE=false
 REVIEW_CHECKPOINT_DURABLE=false
-FURTHER_REVIEW_AUTHORIZED=false
+FURTHER_REVIEW_AUTHORIZED_BY_A03=false
+A03_DIAGNOSIS_COMPLETE=true
+A04_SEPARATE_DECISION_REQUIRED=true
 ```
 
 The durable Contributor plan and contribution remain valid. No quality verdict

@@ -31,11 +31,14 @@ REAL_MODEL_CALLS_REQUIRE_PROGRAMMATIC_PASS=true
   [`../../TITMAS-STAGE-5-INDEPENDENT-REVIEW-RECOVERY-HUMAN-DECISION-PACKET-v1.0.md`](../../TITMAS-STAGE-5-INDEPENDENT-REVIEW-RECOVERY-HUMAN-DECISION-PACKET-v1.0.md)
 - Post-A02 fail-closed decision:
   [`../../TITMAS-STAGE-5-POST-A02-REVIEW-RECOVERY-DECISION-v1.0.md`](../../TITMAS-STAGE-5-POST-A02-REVIEW-RECOVERY-DECISION-v1.0.md)
+- A04 transport remediation decision:
+  [`../../TITMAS-STAGE-5-INDEPENDENT-REVIEW-TRANSPORT-REMEDIATION-DECISION-v1.0.md`](../../TITMAS-STAGE-5-INDEPENDENT-REVIEW-TRANSPORT-REMEDIATION-DECISION-v1.0.md)
 
 Two separately authorized independent Reviewer attempts ended with unknown
 post-dispatch outcomes. Neither was retried, silently substituted or elevated
-to a completed review. A03 defers any further Reviewer call until transport
-diagnosis and a new scoped execution decision.
+to a completed review. A03 completed transport diagnosis. A04 separately
+authorizes one exact `BAIDU_QIANFAN/deepseek-v3.2` attempt; the current audit
+still records the pre-execution state.
 
 ```text
 STAGE5_PRIVATE_AGENT_PILOT_COMPLETE=false
@@ -44,5 +47,6 @@ INDEPENDENT_REVIEW_OUTCOME=UNKNOWN_POST_DISPATCH_OUTCOME
 AUTHORIZED_REVIEW_ATTEMPTS=2
 TOTAL_MODEL_CALLS=4
 AUTOMATIC_RETRY_COUNT=0
-FURTHER_REVIEW_AUTHORIZED=false
+A04_REVIEW_AUTHORIZED=true
+A04_REVIEW_EXECUTED=false
 ```
