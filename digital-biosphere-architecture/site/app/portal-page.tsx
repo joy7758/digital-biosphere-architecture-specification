@@ -1,5 +1,6 @@
 import { content, gateRows, type Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
+import { serializeJsonLd } from "./json-ld";
 
 export function PortalPage({ locale }: { locale: Locale }) {
   const c = content[locale];
@@ -301,7 +302,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
       <Footer locale={locale} />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
       />
     </div>
   );
