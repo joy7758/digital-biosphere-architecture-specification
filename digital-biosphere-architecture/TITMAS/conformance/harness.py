@@ -226,7 +226,13 @@ def check_community_status() -> dict[str, Any]:
     if not launch["authorized"]:
         raise ConformanceError("limited repository preview must be authorized")
     if status["state"] == "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE":
-        if contribution["active"] or contribution["activation_pr_merged"]:
+        candidate_writes = (
+            contribution["issue_submission_active"],
+            contribution["pull_request_submission_active"],
+            contribution["specification_proposal_active"],
+            contribution["adapter_integration_request_active"],
+        )
+        if contribution["active"] or contribution["activation_pr_merged"] or any(candidate_writes):
             raise ConformanceError("activation candidate must remain inactive before merge")
         if launch["active"] or status["public_contribution_activation"]["executed"]:
             raise ConformanceError("activation candidate cannot claim executed public opening")
@@ -238,7 +244,17 @@ def check_community_status() -> dict[str, Any]:
         elif activation_pr["number"] is not None or activation_pr["state"] != "NOT_CREATED":
             raise ConformanceError("uncreated Activation PR must retain null number and NOT_CREATED state")
     elif status["state"] == "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW":
-        if not contribution["active"] or not contribution["activation_pr_merged"]:
+        active_writes = (
+            contribution["issue_submission_active"],
+            contribution["pull_request_submission_active"],
+            contribution["specification_proposal_active"],
+            contribution["adapter_integration_request_active"],
+        )
+        if (
+            not contribution["active"]
+            or not contribution["activation_pr_merged"]
+            or not all(active_writes)
+        ):
             raise ConformanceError("active preview requires merged active templates")
         if not launch["active"] or not status["public_contribution_activation"]["executed"]:
             raise ConformanceError("active preview requires executed activation")

@@ -146,6 +146,10 @@
         "active",
         "authorized",
         "activation_pr_merged",
+        "issue_submission_active",
+        "pull_request_submission_active",
+        "specification_proposal_active",
+        "adapter_integration_request_active",
         "dormant_package_ref"
       ],
       "properties": {
@@ -157,6 +161,10 @@
         "active": {"type": "boolean"},
         "authorized": {"const": true},
         "activation_pr_merged": {"type": "boolean"},
+        "issue_submission_active": {"type": "boolean"},
+        "pull_request_submission_active": {"type": "boolean"},
+        "specification_proposal_active": {"type": "boolean"},
+        "adapter_integration_request_active": {"type": "boolean"},
         "dormant_package_ref": {"const": "github-activation-templates/activation-manifest.json"}
       }
     },
