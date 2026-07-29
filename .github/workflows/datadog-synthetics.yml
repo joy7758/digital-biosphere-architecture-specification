@@ -35,6 +35,29 @@ jobs:
     steps:
     - uses: actions/checkout@v4
 
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: npm
+        cache-dependency-path: digital-biosphere-architecture/site/package-lock.json
+
+    - name: Install website dependencies
+      working-directory: digital-biosphere-architecture/site
+      run: npm ci
+
+    - name: Test and build website
+      working-directory: digital-biosphere-architecture/site
+      run: npm test
+
+    - name: Lint website
+      working-directory: digital-biosphere-architecture/site
+      run: npm run lint
+
+    - name: Audit production dependencies
+      working-directory: digital-biosphere-architecture/site
+      run: npm audit --omit=dev
+
     # Run Synthetic tests within your GitHub workflow.
     # For additional configuration options visit the action within the marketplace: https://github.com/marketplace/actions/datadog-synthetics-ci
     - name: Run Datadog Synthetic tests
@@ -50,4 +73,3 @@ jobs:
       run: |
         echo "::notice::DATADOG_SYNTHETICS_NOT_ASSESSED_MISSING_CONFIGURATION"
         echo "Datadog Synthetic tests were not executed because one or both repository secrets are absent."
-
