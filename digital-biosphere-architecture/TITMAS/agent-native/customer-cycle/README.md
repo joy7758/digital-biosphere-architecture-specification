@@ -65,3 +65,61 @@ REAL_MODEL_CALLS_IN_TESTS=0
 
 Transport failure is not Agent failure. Parse failure is not Agent abstention.
 `requested_model` equals `returned_model` only after explicit verification.
+
+## Sanitized Semantic Checkpoint
+
+中文：清理后语义检查点。
+
+[`semantic_checkpoint.py`](semantic_checkpoint.py) persists only
+Schema-validated, sanitized and bounded structured results. It is future-cycle
+audit support; it does not reconstruct or elevate missing D02 results.
+
+Machine-readable contracts:
+
+- [`semantic-checkpoint-envelope.schema.json`](schemas/semantic-checkpoint-envelope.schema.json)
+- [`contributor-plan.schema.json`](schemas/contributor-plan.schema.json)
+- [`gateway-customer-projection.schema.json`](schemas/gateway-customer-projection.schema.json)
+- [`contributor-assessment.schema.json`](schemas/contributor-assessment.schema.json)
+- [`independent-review.schema.json`](schemas/independent-review.schema.json)
+
+The required stage order is:
+
+```text
+CONTRIBUTOR_PLAN durable
+  -> GATEWAY_CUSTOMER_PROJECTION durable
+  -> CONTRIBUTOR_ASSESSMENT durable
+  -> INDEPENDENT_REVIEW durable
+  -> Human disposition
+```
+
+`CheckpointStageGate` fail-closes downstream dispatch until the immediately
+preceding stage is durable and hash-valid. The component owns no Provider
+client and performs no dispatch itself.
+
+Storage is private-by-default:
+
+```text
+CHECKPOINT_DIRECTORY_MODE=0700
+CHECKPOINT_FILE_MODE=0600
+GIT_TRACKING_DEFAULT=false
+RAW_PROMPT_RETAINED=false
+RAW_RESPONSE_RETAINED=false
+HIDDEN_REASONING_RETAINED=false
+CREDENTIAL_MATERIAL_RETAINED=false
+```
+
+Run the exact deterministic suite:
+
+```bash
+python3 -m unittest TITMAS/agent-native/tests/test_semantic_checkpoint.py -v
+```
+
+Boundaries:
+
+```text
+RESPONSE_CAPTURE_NE_SEMANTIC_CHECKPOINT=true
+SEMANTIC_CHECKPOINT_NE_EVIDENCE_TRUTH=true
+SEMANTIC_CHECKPOINT_NE_AUTHORIZATION=true
+SEMANTIC_CHECKPOINT_IS_RUNTIME=false
+REAL_MODEL_CALLS_IN_TESTS=0
+```
