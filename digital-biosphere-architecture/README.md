@@ -156,6 +156,20 @@ PRIVATE_AGENT_CUSTOMER_READINESS_ACTIVE=true
 COMMUNITY_ESTABLISHED=false
 ```
 
+## Governance Intelligence Entry（治理情报入口）
+
+外部模型、协议、安全事件、生态联盟和研究信号统一从
+[`intelligence/README.md`](intelligence/README.md) 进入；机器入口是
+[`intelligence/agent-index.json`](intelligence/agent-index.json)。该目录只做带来源、带版本、
+可纠偏的 reference-only intake（仅引用情报收录），不创建 Capability、Permission、
+Evidence Truth、Runtime、Implementation Authorization 或 Release Authorization。
+
+```text
+EXTERNAL_INTELLIGENCE_ENTRY_DEFINED=true
+EXTERNAL_INTELLIGENCE_IS_REFERENCE_ONLY=true
+EXTERNAL_INTELLIGENCE_ADOPTION_AUTOMATIC=false
+```
+
 ## Public Entry（统一对外入口）
 
 > **TITMAS Agent-Native Standards Community**
