@@ -1,0 +1,215 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/community-status-1.2.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "$schema",
+    "version",
+    "canonical_name",
+    "human_aliases",
+    "status",
+    "state",
+    "base_main_commit",
+    "integration_branch",
+    "integration_candidate_commit",
+    "draft_pr",
+    "human_merge_review",
+    "core_merge",
+    "public_contribution_activation",
+    "public_contribution_surface",
+    "code_of_conduct",
+    "security",
+    "maintainer",
+    "agent_entry",
+    "human_entry",
+    "specification_registry",
+    "conformance",
+    "reference_implementation",
+    "agent_native_cycle",
+    "canonical_main_integration_complete",
+    "draft_pr_authorized",
+    "draft_pr_creation_blocked_by_security_transport",
+    "public_launch",
+    "community_established",
+    "foundation_created",
+    "infrastructure_complete",
+    "public_launch_ready_candidate",
+    "maintainer_assigned",
+    "external_reviewer_assigned",
+    "community_member_count",
+    "external_contributor_count",
+    "external_adopter_count",
+    "commercial_offer_authorized",
+    "certification_authorized",
+    "release_authorized",
+    "cs_g0_pass",
+    "cs_g1_pass",
+    "limitations",
+    "observed_at",
+    "updated_at"
+  ],
+  "properties": {
+    "$schema": {"type": "string"},
+    "version": {"const": "1.2.0"},
+    "canonical_name": {"const": "TITMAS Agent-Native Standards Community"},
+    "human_aliases": {"type": "array", "minItems": 2, "items": {"type": "string"}},
+    "status": {"const": "CANONICAL_INTEGRATION_CANDIDATE"},
+    "state": {"const": "CANONICAL_INTEGRATION_CANDIDATE"},
+    "base_main_commit": {"const": "ba6d51f60c12f1ac954dd67947451821fd5a3eb6"},
+    "integration_branch": {"const": "codex/titmas-agent-native-open-standards-community-canonical-integration-v1"},
+    "integration_candidate_commit": {"type": "string", "minLength": 7},
+    "draft_pr": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["created", "number", "state", "merged", "ready_for_review"],
+      "properties": {
+        "created": {"const": true},
+        "number": {"const": 41},
+        "state": {"const": "OPEN_DRAFT"},
+        "merged": {"const": false},
+        "ready_for_review": {"const": false}
+      }
+    },
+    "human_merge_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "completed",
+        "reviewer_ref",
+        "review_type",
+        "independent",
+        "reviewed_commit",
+        "reviewed_at"
+      ],
+      "properties": {
+        "completed": {"const": true},
+        "reviewer_ref": {"const": "zhangbin"},
+        "review_type": {"const": "HUMAN_OWNER_REVIEW"},
+        "independent": {"const": false},
+        "reviewed_commit": {"const": "922f2b088287a9ee026e931357ecdc343a468566"},
+        "reviewed_at": {"type": "string", "minLength": 20}
+      }
+    },
+    "core_merge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized", "executed"],
+      "properties": {
+        "authorized": {"const": true},
+        "executed": {"const": false}
+      }
+    },
+    "public_contribution_activation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized", "executed"],
+      "properties": {
+        "authorized": {"const": true},
+        "executed": {"const": false}
+      }
+    },
+    "public_contribution_surface": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "templates_developed",
+        "templates_installed",
+        "active",
+        "authorized",
+        "dormant_package_ref"
+      ],
+      "properties": {
+        "status": {"const": "PREPARED_DORMANT_NOT_AUTHORIZED"},
+        "templates_developed": {"const": true},
+        "templates_installed": {"const": false},
+        "active": {"const": false},
+        "authorized": {"const": false},
+        "dormant_package_ref": {"const": "github-activation-templates/activation-manifest.json"}
+      }
+    },
+    "code_of_conduct": {"const": "ADOPTED_FOR_INTEGRATION_CANDIDATE"},
+    "security": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "process_defined",
+        "process_owner_assigned",
+        "activation_authorized",
+        "transport_active",
+        "transport_status",
+        "public_activation_blocked"
+      ],
+      "properties": {
+        "process_defined": {"const": true},
+        "process_owner_assigned": {"const": true},
+        "activation_authorized": {"const": true},
+        "transport_active": {"const": false},
+        "transport_status": {"const": "INACTIVE_GITHUB_PRIVATE_VULNERABILITY_REPORTING_DISABLED"},
+        "public_activation_blocked": {"const": true}
+      }
+    },
+    "maintainer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "interim_assigned",
+        "formal_assigned",
+        "ref",
+        "public_id",
+        "github_ref",
+        "term_start",
+        "term_expires",
+        "temporary",
+        "revocable"
+      ],
+      "properties": {
+        "interim_assigned": {"const": true},
+        "formal_assigned": {"const": false},
+        "ref": {"const": "zhangbin"},
+        "public_id": {"const": "Bin_Zhang"},
+        "github_ref": {"const": "joy7758"},
+        "term_start": {"const": "2026-07-29"},
+        "term_expires": {"const": "2026-09-30T23:59:59+08:00"},
+        "temporary": {"const": true},
+        "revocable": {"const": true}
+      }
+    },
+    "agent_entry": {"type": "string"},
+    "human_entry": {"type": "string"},
+    "specification_registry": {"type": "string"},
+    "conformance": {"type": "string"},
+    "reference_implementation": {"type": "string"},
+    "agent_native_cycle": {"type": "string"},
+    "canonical_main_integration_complete": {"const": false},
+    "draft_pr_authorized": {"const": true},
+    "draft_pr_creation_blocked_by_security_transport": {"const": false},
+    "public_launch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["active", "authorized"],
+      "properties": {
+        "active": {"const": false},
+        "authorized": {"const": false}
+      }
+    },
+    "community_established": {"const": false},
+    "foundation_created": {"const": false},
+    "infrastructure_complete": {"type": "boolean"},
+    "public_launch_ready_candidate": {"const": false},
+    "maintainer_assigned": {"const": false},
+    "external_reviewer_assigned": {"const": false},
+    "community_member_count": {"const": 0},
+    "external_contributor_count": {"const": 0},
+    "external_adopter_count": {"const": 0},
+    "commercial_offer_authorized": {"const": false},
+    "certification_authorized": {"const": false},
+    "release_authorized": {"const": false},
+    "cs_g0_pass": {"const": false},
+    "cs_g1_pass": {"const": false},
+    "limitations": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "observed_at": {"type": "string"},
+    "updated_at": {"type": "string"}
+  }
+}

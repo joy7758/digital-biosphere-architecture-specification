@@ -76,3 +76,19 @@ QUEUE_CREATES_AUTHORITY=false
 QUEUE_CREATES_PERMISSION=false
 QUEUE_EXECUTES_DECISIONS=false
 ```
+
+## 5. TITMAS Canonical Integration Decision（TITMAS 规范集成决定）
+
+| decision_reference | status | accepted scope | explicitly not authorized |
+|---|---|---|---|
+| `TITMAS-OPEN-STANDARDS-COMMUNITY-INTEGRATION-D01` | `ACCEPTED_EXECUTION_AUTHORIZED` | branch from latest `origin/main`; selective path port; entry, registry, status and CI repair; candidate Code of Conduct adoption; temporary role records; one bounded internal agent-native contribution cycle; commit, push and Draft PR | merge to `main`; public contribution activation; public launch or announcement; external invitation; tag, release, deployment; Foundation, certification or commercial offer; calibration v0.3; formal Ecology Box execution |
+| `TITMAS-COMMUNITY-CYCLE-001-D01` | `ACCEPTED_ONCE` | one deterministic, low-risk integration-branch contribution of no more than five files with exact Qwen and Kimi advisory reviews | authority, security contact or Stable-status changes; DBOS/SAEE changes; Ecology Box execution; merge to `main` |
+
+```text
+DECIDED_BY_REF=zhangbin
+CG_HD_01=ACCEPT
+CG_HD_02=ACCEPT
+CG_HD_03=DEFER
+CG_HD_04=DEFER
+CALIBRATION_SUBTRACK_STATUS=FROZEN_AFTER_DETERMINISTIC_GROUNDING_REMEDIATION
+```

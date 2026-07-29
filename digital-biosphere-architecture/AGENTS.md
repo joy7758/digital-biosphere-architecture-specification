@@ -30,6 +30,20 @@ DBA_IS_RUNTIME=false
 11. `architecture/project-mapping.md`（项目角色映射）；
 12. 相关 specification（规范）、strategy（战略）和 ADR。
 
+处理 TITMAS 工作时，还必须依次读取：
+
+13. `architecture/titmas-architecture-charter-v1.0.md`；
+14. `TITMAS/README.md`（唯一社区人类入口）；
+15. `agent-index.json`（唯一智能体入口）；
+16. `TITMAS/community/community-status.json`（唯一社区状态投影）；
+17. `TITMAS/specifications/registry.yaml`（唯一规范注册表）；
+18. `TITMAS/agent-native/tasks/task-registry.json`（唯一任务注册表）。
+
+当前规范名称为 `TITMAS Agent-Native Standards Community`（TITMAS
+智能体原生标准社区）；`TITMAS Developer Standards Community` 与
+`TITMAS Infrastructure Developer Community` 仅为兼容别名。每次重大 TITMAS
+任务必须执行 Charter 的 `TITMAS_DRIFT_CHECK`。
+
 ## Work Routing（工作路由）
 
 每项工作必须声明一个且只有一个 primary repository（主责任仓库）：
@@ -99,6 +113,10 @@ DEVELOPER_ECOSYSTEM_FIRST=true
 OPEN_INFRASTRUCTURE_NE_FREE_PRODUCT=true
 SPECIFICATION_NE_IMPLEMENTATION=true
 STRATEGY_NE_COMMERCIAL_COMMITMENT=true
+TITMAS_NE_RUNTIME=true
+TITMAS_NE_EXECUTOR=true
+TITMAS_NE_CERTIFICATION_AUTHORITY=true
+AGENT_NATIVE_NE_AUTONOMOUS_AUTHORITY=true
 ```
 
 ## Architecture Truth Boundaries（架构事实边界）

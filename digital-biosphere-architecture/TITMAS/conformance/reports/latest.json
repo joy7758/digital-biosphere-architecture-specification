@@ -1,0 +1,94 @@
+{
+  "report_version": "1.0.0",
+  "profile": "TITMAS_DEVELOPMENT_CONFORMANCE",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "registries",
+      "status": "PASS",
+      "details": {
+        "registry_entries_checked": 10,
+        "maturity_states_checked": 7
+      }
+    },
+    {
+      "id": "frontmatter",
+      "status": "PASS",
+      "details": {
+        "proposal_frontmatter_checked": 1
+      }
+    },
+    {
+      "id": "fixtures",
+      "status": "PASS",
+      "details": {
+        "positive_cases_passed": 1,
+        "negative_cases_rejected": 8
+      }
+    },
+    {
+      "id": "community_status",
+      "status": "PASS",
+      "details": {
+        "community_invariants_checked": 17,
+        "interim_role_assignments_checked": 3
+      }
+    },
+    {
+      "id": "merge_admission_boundary",
+      "status": "PASS",
+      "details": {
+        "stage_consistency_checks": 15,
+        "active_titmas_issue_template_count": 0,
+        "active_titmas_pull_request_template_count": 0,
+        "dormant_template_hashes_checked": 5,
+        "dormant_issue_templates_structurally_checked": 4,
+        "dormant_pr_templates_structurally_checked": 1,
+        "positive_cases_passed": 2,
+        "negative_cases_rejected": 8
+      }
+    },
+    {
+      "id": "internal_reviews",
+      "status": "PASS",
+      "details": {
+        "review_sessions_checked": 4,
+        "independent_lineages_checked": 4,
+        "findings_checked": 3
+      }
+    },
+    {
+      "id": "agent_native_surfaces",
+      "status": "PASS",
+      "details": {
+        "canonical_machine_entries": 1,
+        "agent_participants_checked": 0,
+        "independent_lineages_checked": 0,
+        "agent_tasks_checked": 10,
+        "agent_protocol_examples_checked": 10,
+        "authority_invariants_checked": 12
+      }
+    },
+    {
+      "id": "agent_native_adversarial",
+      "status": "PASS",
+      "details": {
+        "adversarial_cases_rejected": 22,
+        "adversarial_cases_executed": 22
+      }
+    },
+    {
+      "id": "local_links",
+      "status": "PASS",
+      "details": {
+        "local_links_checked": 50
+      }
+    }
+  ],
+  "non_claims": [
+    "CONFORMANCE_NE_TRUTH",
+    "CONFORMANCE_NE_AUTHORIZATION",
+    "CONFORMANCE_NE_ADOPTION",
+    "CONFORMANCE_NE_CERTIFICATION"
+  ]
+}

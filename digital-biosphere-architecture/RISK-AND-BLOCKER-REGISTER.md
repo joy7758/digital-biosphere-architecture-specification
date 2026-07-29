@@ -76,12 +76,29 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=19
-ACTIVE_RISKS=17
+TRACKED_RISKS=23
+ACTIVE_RISKS=21
 RESOLVED_RISKS=2
-ACTIVE_BLOCKERS=4
+ACTIVE_BLOCKERS=5
 BLOCKERS_CLEARED=7
 LOCAL_BLOCKERS_CLEARED_NOT_RELEASED=1
 RISKS_ACCEPTED=1
 RISK_REGISTER_GRANTS_AUTHORITY=false
+```
+
+## 6. TITMAS Integration Risks and Blockers（TITMAS 集成风险与阻塞）
+
+| item_id | level | state | evidence | required treatment |
+|---|---|---|---|---|
+| `R-020` | `HIGH` | `MITIGATION_IN_PROGRESS` | community core previously existed across multiple unmerged branches and overlapping entries | selective attributable integration, duplicate removal, one-entry checks and Human merge review |
+| `R-021` | `HIGH` | `ACTIVE_BLOCKER` | GitHub Private Vulnerability Reporting read-only check returned disabled on 2026-07-29 | activate a real private security transport only after `COMMUNITY-HD-02`; do not invent an email or active path |
+| `R-022` | `HIGH` | `MITIGATED_BY_FAIL_CLOSED_POLICY` | prepared community files could be misread as an established or launched community | status schema fixes `community_established=false`, public launch/contribution false and external counts zero |
+| `R-023` | `MEDIUM` | `MITIGATED_BY_ARCHIVE_BOUNDARY` | Ecology Box and calibration assets had displaced the open-standards mainline | retain only one immutable research index; freeze calibration v0.3 |
+| `B-012` | `HIGH` | `ACTIVE` | no active private security receiving transport | blocks public launch and public contribution activation; does not block a Draft integration PR |
+
+```text
+PUBLIC_LAUNCH_BLOCKER_SECURITY_TRANSPORT=true
+CALIBRATION_V0_3_AUTHORIZED=false
+COMMUNITY_ESTABLISHED=false
+RISK_ACCEPTANCE_NOT_INFERRED=true
 ```
