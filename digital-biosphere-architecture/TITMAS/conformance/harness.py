@@ -67,9 +67,20 @@ def validate_schema(
         raise ConformanceError(f"{path}: expected constant {schema['const']!r}")
     if isinstance(instance, str) and len(instance) < schema.get("minLength", 0):
         raise ConformanceError(f"{path}: string is shorter than minLength")
+    if isinstance(instance, str) and len(instance) > schema.get("maxLength", 1_000_000):
+        raise ConformanceError(f"{path}: string is longer than maxLength")
+    if isinstance(instance, str) and schema.get("pattern"):
+        if re.fullmatch(schema["pattern"], instance) is None:
+            raise ConformanceError(f"{path}: string does not match pattern")
     if isinstance(instance, list):
         if len(instance) < schema.get("minItems", 0):
             raise ConformanceError(f"{path}: array is shorter than minItems")
+        if len(instance) > schema.get("maxItems", 1_000_000):
+            raise ConformanceError(f"{path}: array is longer than maxItems")
+        if schema.get("uniqueItems"):
+            serialized = [json.dumps(item, sort_keys=True) for item in instance]
+            if len(serialized) != len(set(serialized)):
+                raise ConformanceError(f"{path}: array items must be unique")
         item_schema = schema.get("items")
         if item_schema:
             for index, item in enumerate(instance):
@@ -191,6 +202,17 @@ def check_fixtures() -> dict[str, Any]:
         if case["expected_error"] not in errors:
             raise ConformanceError(f"{case['id']}: expected {case['expected_error']}, got {errors}")
     return {"positive_cases_passed": len(positive_paths), "negative_cases_rejected": len(negative["cases"])}
+
+
+def check_stage5_contributions() -> dict[str, Any]:
+    path = TITMAS_ROOT / "conformance" / "stage5_contributions.py"
+    spec = importlib.util.spec_from_file_location("titmas_stage5_conformance", path)
+    if spec is None or spec.loader is None:
+        raise ConformanceError("Stage 5 contribution extension is unavailable")
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[spec.name] = module
+    spec.loader.exec_module(module)
+    return module.self_check()
 
 
 def check_community_status() -> dict[str, Any]:
@@ -956,6 +978,7 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("registries", check_registries),
         ("frontmatter", check_frontmatter),
         ("fixtures", check_fixtures),
+        ("stage5_contributions", check_stage5_contributions),
         ("community_status", check_community_status),
         ("merge_admission_boundary", check_merge_admission_boundary),
         ("internal_reviews", check_internal_reviews),

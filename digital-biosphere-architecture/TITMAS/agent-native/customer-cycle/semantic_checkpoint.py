@@ -28,18 +28,38 @@ STAGES = {
     "GATEWAY_CUSTOMER_PROJECTION",
     "CONTRIBUTOR_ASSESSMENT",
     "INDEPENDENT_REVIEW",
+    "STANDARD_CONTRIBUTION",
+    "STANDARD_REVIEW",
 }
-STAGE_ORDER = (
+CUSTOMER_CYCLE_STAGES = (
     "CONTRIBUTOR_PLAN",
     "GATEWAY_CUSTOMER_PROJECTION",
     "CONTRIBUTOR_ASSESSMENT",
     "INDEPENDENT_REVIEW",
 )
+STANDARD_CONTRIBUTION_STAGES = (
+    "CONTRIBUTOR_PLAN",
+    "STANDARD_CONTRIBUTION",
+    "STANDARD_REVIEW",
+)
+STAGE_ORDER = CUSTOMER_CYCLE_STAGES + (
+    "STANDARD_CONTRIBUTION",
+    "STANDARD_REVIEW",
+)
+STAGE_PREDECESSOR = {
+    "GATEWAY_CUSTOMER_PROJECTION": "CONTRIBUTOR_PLAN",
+    "CONTRIBUTOR_ASSESSMENT": "GATEWAY_CUSTOMER_PROJECTION",
+    "INDEPENDENT_REVIEW": "CONTRIBUTOR_ASSESSMENT",
+    "STANDARD_CONTRIBUTION": "CONTRIBUTOR_PLAN",
+    "STANDARD_REVIEW": "STANDARD_CONTRIBUTION",
+}
 STAGE_SCHEMA_FILES = {
     "CONTRIBUTOR_PLAN": "contributor-plan.schema.json",
     "GATEWAY_CUSTOMER_PROJECTION": "gateway-customer-projection.schema.json",
     "CONTRIBUTOR_ASSESSMENT": "contributor-assessment.schema.json",
     "INDEPENDENT_REVIEW": "independent-review.schema.json",
+    "STANDARD_CONTRIBUTION": "standard-contribution.schema.json",
+    "STANDARD_REVIEW": "standard-review.schema.json",
 }
 SCHEMA_DIRECTORY = Path(__file__).with_name("schemas")
 ENVELOPE_SCHEMA_PATH = SCHEMA_DIRECTORY / "semantic-checkpoint-envelope.schema.json"
@@ -492,10 +512,9 @@ class CheckpointStageGate:
     def authorize_dispatch(self, stage: str) -> bool:
         if stage not in STAGES:
             raise StageGateError("unsupported downstream stage")
-        index = STAGE_ORDER.index(stage)
-        if index == 0:
+        predecessor = STAGE_PREDECESSOR.get(stage)
+        if predecessor is None:
             return True
-        predecessor = STAGE_ORDER[index - 1]
         record = self._stage_records().get(predecessor)
         if (
             record is None
@@ -522,12 +541,12 @@ def generate_audit_summary(
         "cycle_id": cycle_id,
         "checkpoint_ids": {
             stage: records[stage]["checkpoint_id"]
-            for stage in STAGE_ORDER
+            for stage in CUSTOMER_CYCLE_STAGES
             if stage in records
         },
         "checkpoint_hashes": {
             stage: records[stage]["checkpoint_payload_sha256"]
-            for stage in STAGE_ORDER
+            for stage in CUSTOMER_CYCLE_STAGES
             if stage in records
         },
         "plan_checkpoint_durable": "CONTRIBUTOR_PLAN" in records,
@@ -546,7 +565,7 @@ def generate_audit_summary(
             if "INDEPENDENT_REVIEW" in records
             else review_outcome
         ),
-        "cycle_complete": all(stage in records for stage in STAGE_ORDER),
+        "cycle_complete": all(stage in records for stage in CUSTOMER_CYCLE_STAGES),
         "real_model_call_count": 0,
         "real_provider_call_count": 0,
         "limitations": [
