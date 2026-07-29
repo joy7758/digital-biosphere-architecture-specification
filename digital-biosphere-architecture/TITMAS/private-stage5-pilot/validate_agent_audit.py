@@ -56,18 +56,33 @@ def validate() -> dict[str, Any]:
     completion = json.loads(
         (ROOT / "stage5-completion-audit.json").read_text(encoding="utf-8")
     )
-    if audit["model_calls"] != 3 or audit["provider_calls"] != 3:
-        raise ValueError("exact three-call audit required")
+    if audit["model_calls"] != 4 or audit["provider_calls"] != 4:
+        raise ValueError("A01 plus one A02 call audit required")
     if audit["automatic_retry_count"] != 0:
         raise ValueError("automatic retry is prohibited")
     if audit["independent_agent_review_complete"] is not False:
         raise ValueError("unknown Reviewer outcome cannot become complete")
     if audit["review_result"] != "UNKNOWN_POST_DISPATCH_OUTCOME":
         raise ValueError("Reviewer failure classification drift")
+    if audit["authorized_review_attempts"] != 2:
+        raise ValueError("exact two Human-authorized review attempts required")
+    if audit["confirmed_review_responses"] != 0:
+        raise ValueError("unknown outcomes cannot become confirmed responses")
+    reviewer_models = audit["models"][2:]
+    if len(reviewer_models) != 2 or any(
+        item["provider"] != "BAIDU_QIANFAN"
+        or item["requested_model"] != "kimi-k2.6"
+        or item["returned_model"] != ""
+        or item["capture_state"] != "FAILED_AFTER_DISPATCH_OUTCOME_UNKNOWN"
+        for item in reviewer_models
+    ):
+        raise ValueError("Reviewer attempt identity or failure state drift")
     if audit["stage5_private_preview_operational"] is not False:
         raise ValueError("incomplete review cannot become operational")
     if audit["formal_specification_registry_modified"] is not False:
         raise ValueError("formal registry modification is prohibited")
+    if audit["further_review_authorized"] is not False:
+        raise ValueError("A03 must remain a no-action decision")
     if plan["checkpoint_state"] != "DURABLE":
         raise ValueError("plan checkpoint is not durable")
     if contribution["checkpoint_state"] != "DURABLE":
@@ -99,7 +114,7 @@ def validate() -> dict[str, Any]:
         raise ValueError("completion audit blocker drift")
     if (
         completion["blocking_condition"]
-        != "INDEPENDENT_REVIEW_RESULT_AND_DURABLE_REVIEW_CHECKPOINT_MISSING"
+        != "INDEPENDENT_REVIEW_RESULT_AND_DURABLE_REVIEW_CHECKPOINT_MISSING_AFTER_TWO_AUTHORIZED_ATTEMPTS"
     ):
         raise ValueError("completion audit blocking condition drift")
     text = "\n".join(
@@ -114,7 +129,8 @@ def validate() -> dict[str, Any]:
         "agent_audit_files_checked": 3,
         "agent_pilot_registry_entries_checked": 1,
         "goal_sections_checked": 24,
-        "model_calls": 3,
+        "model_calls": 4,
+        "authorized_review_attempts": 2,
         "automatic_retry_count": 0,
         "durable_checkpoints": 2,
         "review_checkpoint_durable": False,
@@ -122,7 +138,7 @@ def validate() -> dict[str, Any]:
         "secret_findings": 0,
         "private_path_findings": 0,
         "semantic_elevation_findings": 0,
-        "status": "PASS_WITH_RECORDED_NEGATIVE_RESULT",
+        "status": "PASS_WITH_RECORDED_REPEATED_NEGATIVE_RESULT",
     }
 
 

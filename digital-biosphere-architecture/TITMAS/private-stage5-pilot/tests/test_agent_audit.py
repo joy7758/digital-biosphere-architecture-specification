@@ -16,9 +16,12 @@ import validate_agent_audit
 class AgentAuditValidationTests(unittest.TestCase):
     def test_negative_result_is_valid_and_fail_closed(self):
         result = validate_agent_audit.validate()
-        self.assertEqual("PASS_WITH_RECORDED_NEGATIVE_RESULT", result["status"])
+        self.assertEqual(
+            "PASS_WITH_RECORDED_REPEATED_NEGATIVE_RESULT", result["status"]
+        )
         self.assertFalse(result["stage5_private_preview_operational"])
         self.assertEqual(0, result["automatic_retry_count"])
+        self.assertEqual(2, result["authorized_review_attempts"])
 
     def test_unknown_review_cannot_become_operational(self):
         original = validate_agent_audit.load

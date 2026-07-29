@@ -29,13 +29,20 @@ REAL_MODEL_CALLS_REQUIRE_PROGRAMMATIC_PASS=true
   [`stage5-completion-audit.json`](stage5-completion-audit.json)
 - Independent review recovery decision packet:
   [`../../TITMAS-STAGE-5-INDEPENDENT-REVIEW-RECOVERY-HUMAN-DECISION-PACKET-v1.0.md`](../../TITMAS-STAGE-5-INDEPENDENT-REVIEW-RECOVERY-HUMAN-DECISION-PACKET-v1.0.md)
+- Post-A02 fail-closed decision:
+  [`../../TITMAS-STAGE-5-POST-A02-REVIEW-RECOVERY-DECISION-v1.0.md`](../../TITMAS-STAGE-5-POST-A02-REVIEW-RECOVERY-DECISION-v1.0.md)
 
-The independent Reviewer request ended with an unknown post-dispatch outcome.
-It was not retried, silently substituted or elevated to a completed review.
+Two separately authorized independent Reviewer attempts ended with unknown
+post-dispatch outcomes. Neither was retried, silently substituted or elevated
+to a completed review. A03 defers any further Reviewer call until transport
+diagnosis and a new scoped execution decision.
 
 ```text
 STAGE5_PRIVATE_AGENT_PILOT_COMPLETE=false
 STAGE5_PRIVATE_PREVIEW_OPERATIONAL=false
 INDEPENDENT_REVIEW_OUTCOME=UNKNOWN_POST_DISPATCH_OUTCOME
+AUTHORIZED_REVIEW_ATTEMPTS=2
+TOTAL_MODEL_CALLS=4
 AUTOMATIC_RETRY_COUNT=0
+FURTHER_REVIEW_AUTHORIZED=false
 ```

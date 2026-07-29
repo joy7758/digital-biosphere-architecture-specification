@@ -4,7 +4,7 @@
   "source_goal_sections": 24,
   "source_main": "8848f2c87f30f14b4ec211c9fb2529b3f542cdaa",
   "audit_branch": "codex/titmas-stage5-private-agent-pilot-audit",
-  "audit_revision": "b214430a6a495652edfdef19a71b4eedfade684e",
+  "audit_parent_revision": "f3b9f34282b0efa28f5e5ca2dd92d5e32b30e638",
   "requirements": [
     {
       "section": "0",
@@ -70,13 +70,13 @@
       "section": "10",
       "name": "Agent Pilot A01",
       "status": "PARTIAL",
-      "evidence": "Contributor selection, SDK submission and Conformance completed; independent review did not complete."
+      "evidence": "Contributor selection, SDK submission and Conformance completed; A01 and separately authorized A02 independent review attempts both ended with unknown post-dispatch outcomes."
     },
     {
       "section": "11",
       "name": "Provider Selection and Budget",
       "status": "PASS",
-      "evidence": "Exact qwen3.7-max and kimi-k2.6 bindings were requested, total calls stopped at 3, retries remained 0, and conservative cost stayed below CNY 10."
+      "evidence": "Exact qwen3.7-max and kimi-k2.6 bindings were requested. A01 stopped at 3 calls; A02 added exactly one Human-authorized Reviewer call. Automatic retries and substitutions remained 0. Reviewer billing truth is unavailable."
     },
     {
       "section": "12",
@@ -88,7 +88,7 @@
       "section": "13",
       "name": "Independent Agent Reviewer Flow",
       "status": "INCOMPLETE",
-      "evidence": "BAIDU_QIANFAN/kimi-k2.6 ended as FAILED_AFTER_DISPATCH_OUTCOME_UNKNOWN; no verdict or durable review checkpoint exists."
+      "evidence": "Both independently authorized BAIDU_QIANFAN/kimi-k2.6 attempts ended as FAILED_AFTER_DISPATCH_OUTCOME_UNKNOWN; no verdict or durable review checkpoint exists."
     },
     {
       "section": "14",
@@ -112,7 +112,7 @@
       "section": "17",
       "name": "Testing and Security Validation",
       "status": "PASS",
-      "evidence": "All infrastructure and audit suites passed; secret, core disclosure, private path, symlink and unauthorized export findings are zero."
+      "evidence": "158/158 local tests, Conformance harness and the fail-closed audit validator passed; secret, core disclosure, private path, symlink and unauthorized export findings are zero."
     },
     {
       "section": "18",
@@ -130,7 +130,7 @@
       "section": "20",
       "name": "Stop Conditions",
       "status": "PASS",
-      "evidence": "Post-dispatch unknown outcome triggered immediate stop; no retry, fallback, substitution, public exposure or registry modification occurred."
+      "evidence": "Each post-dispatch unknown outcome triggered immediate stop under its own Human Decision; no automatic retry, fallback, substitution, public exposure or registry modification occurred."
     },
     {
       "section": "21",
@@ -158,8 +158,9 @@
     "total": 24
   },
   "completion_proven": false,
-  "blocking_condition": "INDEPENDENT_REVIEW_RESULT_AND_DURABLE_REVIEW_CHECKPOINT_MISSING",
+  "blocking_condition": "INDEPENDENT_REVIEW_RESULT_AND_DURABLE_REVIEW_CHECKPOINT_MISSING_AFTER_TWO_AUTHORIZED_ATTEMPTS",
   "new_human_decision_required": true,
   "automatic_retry_authorized": false,
-  "next_decision_packet": "TITMAS-STAGE-5-INDEPENDENT-REVIEW-RECOVERY-HUMAN-DECISION-PACKET-v1.0.md"
+  "further_review_authorized": false,
+  "next_decision_packet": "TITMAS-STAGE-5-POST-A02-REVIEW-RECOVERY-DECISION-v1.0.md"
 }

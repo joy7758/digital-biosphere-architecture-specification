@@ -66,10 +66,33 @@ Closes the current Pilot with the recorded negative result.
 ## Current decision
 
 ```text
-TITMAS_STAGE5_A02=UNDECIDED
+DECISION_ID=TITMAS-STAGE-5-PRIVATE-AGENT-CONTRIBUTION-PILOT-A02
+DECISION=AUTHORIZE_ONE_NEW_INDEPENDENT_REVIEW_ATTEMPT_FROM_DURABLE_CONTRIBUTION_CHECKPOINT
+DECIDED_BY_REF=zhangbin
+TITMAS_STAGE5_A02=AUTHORIZED_AND_EXECUTED_FAIL_CLOSED
 TITMAS_STAGE_5_PRIVATE_AGENT_PILOT_COMPLETE=false
 TITMAS_STAGE_5_PRIVATE_PREVIEW_OPERATIONAL=false
 ```
 
-No action may be dispatched from this packet until the Human Owner records one
-of the decisions above.
+The authorized A02 attempt reused
+`stage5-standard-contribution` and submission
+`stage5-submission-AGENT-001`. It made exactly one new
+`BAIDU_QIANFAN/kimi-k2.6` call. No Contributor call, new submission,
+Conformance rerun, automatic retry, Provider substitution, public export or
+formal registry change occurred.
+
+The call ended after dispatch without a confirmable response:
+
+```text
+A02_NEW_MODEL_CALLS=1
+A02_CONTRIBUTOR_CALLS=0
+A02_NEW_SUBMISSIONS=0
+A02_CONFORMANCE_RERUNS=0
+A02_AUTOMATIC_RETRIES=0
+A02_PROVIDER_SUBSTITUTIONS=0
+A02_CAPTURE_STATE=FAILED_AFTER_DISPATCH_OUTCOME_UNKNOWN
+A02_REVIEW_CHECKPOINT_DURABLE=false
+```
+
+The absence of a response is not a review verdict. A02 is spent and cannot be
+retried under this decision.
