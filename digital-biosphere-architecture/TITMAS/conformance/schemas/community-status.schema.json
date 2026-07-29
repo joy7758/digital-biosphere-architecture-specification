@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://titmas.cn/schemas/community-status-1.2.json",
+  "$id": "https://titmas.cn/schemas/community-status-2.0.json",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -14,6 +14,7 @@
     "integration_branch",
     "integration_candidate_commit",
     "draft_pr",
+    "activation_pr",
     "human_merge_review",
     "core_merge",
     "public_contribution_activation",
@@ -31,6 +32,7 @@
     "draft_pr_authorized",
     "draft_pr_creation_blocked_by_security_transport",
     "public_launch",
+    "welcome_issue",
     "community_established",
     "foundation_created",
     "infrastructure_complete",
@@ -51,13 +53,23 @@
   ],
   "properties": {
     "$schema": {"type": "string"},
-    "version": {"const": "1.2.0"},
+    "version": {"const": "2.0.0"},
     "canonical_name": {"const": "TITMAS Agent-Native Standards Community"},
     "human_aliases": {"type": "array", "minItems": 2, "items": {"type": "string"}},
-    "status": {"const": "CANONICAL_INTEGRATION_CANDIDATE"},
-    "state": {"const": "CANONICAL_INTEGRATION_CANDIDATE"},
-    "base_main_commit": {"const": "ba6d51f60c12f1ac954dd67947451821fd5a3eb6"},
-    "integration_branch": {"const": "codex/titmas-agent-native-open-standards-community-canonical-integration-v1"},
+    "status": {
+      "enum": [
+        "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE",
+        "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW"
+      ]
+    },
+    "state": {
+      "enum": [
+        "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE",
+        "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW"
+      ]
+    },
+    "base_main_commit": {"const": "3ce0b2008db1433db7c24375f81cfa422fabb7e3"},
+    "integration_branch": {"const": "codex/titmas-community-public-contribution-activation-v0-1"},
     "integration_candidate_commit": {"type": "string", "minLength": 7},
     "draft_pr": {
       "type": "object",
@@ -66,9 +78,22 @@
       "properties": {
         "created": {"const": true},
         "number": {"const": 41},
-        "state": {"const": "OPEN_DRAFT"},
-        "merged": {"const": false},
-        "ready_for_review": {"const": false}
+        "state": {"const": "MERGED"},
+        "merged": {"const": true},
+        "ready_for_review": {"const": true}
+      }
+    },
+    "activation_pr": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["created", "number", "state", "merged", "ready_for_review", "content_head"],
+      "properties": {
+        "created": {"type": "boolean"},
+        "number": {},
+        "state": {"enum": ["NOT_CREATED", "OPEN_DRAFT", "OPEN_READY", "MERGED"]},
+        "merged": {"type": "boolean"},
+        "ready_for_review": {"type": "boolean"},
+        "content_head": {"type": "string"}
       }
     },
     "human_merge_review": {
@@ -94,10 +119,12 @@
     "core_merge": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["authorized", "executed"],
+      "required": ["authorized", "executed", "decision_record_head", "merge_commit"],
       "properties": {
         "authorized": {"const": true},
-        "executed": {"const": false}
+        "executed": {"const": true},
+        "decision_record_head": {"const": "7ac40ea01a48160c8f38af7478c01229f7ec8f21"},
+        "merge_commit": {"const": "3ce0b2008db1433db7c24375f81cfa422fabb7e3"}
       }
     },
     "public_contribution_activation": {
@@ -106,7 +133,7 @@
       "required": ["authorized", "executed"],
       "properties": {
         "authorized": {"const": true},
-        "executed": {"const": false}
+        "executed": {"type": "boolean"}
       }
     },
     "public_contribution_surface": {
@@ -118,18 +145,22 @@
         "templates_installed",
         "active",
         "authorized",
+        "activation_pr_merged",
         "dormant_package_ref"
       ],
       "properties": {
-        "status": {"const": "PREPARED_DORMANT_NOT_AUTHORIZED"},
+        "status": {
+          "enum": ["ACTIVATION_PR_CANDIDATE", "LIMITED_REPOSITORY_PREVIEW_ACTIVE"]
+        },
         "templates_developed": {"const": true},
-        "templates_installed": {"const": false},
-        "active": {"const": false},
-        "authorized": {"const": false},
+        "templates_installed": {"const": true},
+        "active": {"type": "boolean"},
+        "authorized": {"const": true},
+        "activation_pr_merged": {"type": "boolean"},
         "dormant_package_ref": {"const": "github-activation-templates/activation-manifest.json"}
       }
     },
-    "code_of_conduct": {"const": "ADOPTED_FOR_INTEGRATION_CANDIDATE"},
+    "code_of_conduct": {"const": "ADOPTED_FOR_LIMITED_REPOSITORY_PREVIEW"},
     "security": {
       "type": "object",
       "additionalProperties": false,
@@ -138,16 +169,20 @@
         "process_owner_assigned",
         "activation_authorized",
         "transport_active",
+        "transport_verified",
         "transport_status",
+        "activation_http_status",
         "public_activation_blocked"
       ],
       "properties": {
         "process_defined": {"const": true},
         "process_owner_assigned": {"const": true},
         "activation_authorized": {"const": true},
-        "transport_active": {"const": false},
-        "transport_status": {"const": "INACTIVE_GITHUB_PRIVATE_VULNERABILITY_REPORTING_DISABLED"},
-        "public_activation_blocked": {"const": true}
+        "transport_active": {"const": true},
+        "transport_verified": {"const": true},
+        "transport_status": {"const": "ACTIVE_GITHUB_PRIVATE_VULNERABILITY_REPORTING"},
+        "activation_http_status": {"enum": ["204", "NOT_APPLICABLE_ALREADY_ENABLED"]},
+        "public_activation_blocked": {"const": false}
       }
     },
     "maintainer": {
@@ -182,22 +217,34 @@
     "conformance": {"type": "string"},
     "reference_implementation": {"type": "string"},
     "agent_native_cycle": {"type": "string"},
-    "canonical_main_integration_complete": {"const": false},
+    "canonical_main_integration_complete": {"const": true},
     "draft_pr_authorized": {"const": true},
     "draft_pr_creation_blocked_by_security_transport": {"const": false},
     "public_launch": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["active", "authorized"],
+      "required": ["mode", "active", "authorized"],
       "properties": {
-        "active": {"const": false},
-        "authorized": {"const": false}
+        "mode": {"const": "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW"},
+        "active": {"type": "boolean"},
+        "authorized": {"const": true}
+      }
+    },
+    "welcome_issue": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized", "created", "number", "url"],
+      "properties": {
+        "authorized": {"const": true},
+        "created": {"type": "boolean"},
+        "number": {},
+        "url": {}
       }
     },
     "community_established": {"const": false},
     "foundation_created": {"const": false},
-    "infrastructure_complete": {"type": "boolean"},
-    "public_launch_ready_candidate": {"const": false},
+    "infrastructure_complete": {"const": true},
+    "public_launch_ready_candidate": {"type": "boolean"},
     "maintainer_assigned": {"const": false},
     "external_reviewer_assigned": {"const": false},
     "community_member_count": {"const": 0},

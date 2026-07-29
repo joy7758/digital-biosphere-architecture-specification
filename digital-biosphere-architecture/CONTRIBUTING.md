@@ -5,12 +5,13 @@ The canonical contribution guide is:
 - [TITMAS/community/CONTRIBUTING.md](TITMAS/community/CONTRIBUTING.md)
 - [First Contribution Guide](TITMAS/FIRST_CONTRIBUTION.md)
 - [Proposal Template](TITMAS/specifications/templates/proposal.md)
-- [Dormant GitHub Activation Templates](TITMAS/community/github-activation-templates/README.md)
+- [GitHub Activation Package](TITMAS/community/github-activation-templates/README.md)
 
-Public contribution remains unauthorized. The workflow is developed, but its
-Issue Forms and Pull Request template are dormant and are not installed under
-`.github`. Do not open an Issue or public PR as a TITMAS contribution. The
-repository may be inspected and reused under its license; external contribution
-activation requires a separate Human Decision, active Security Transport and
-an independent Activation PR. These files do not establish a community or
-assign a formal Maintainer.
+Limited public contribution is authorized, and GitHub Private Vulnerability
+Reporting is active. Issue Forms and the Pull Request template are installed
+only on the independent Activation PR branch. Public contribution opening is
+pending that PR's merge. Until then, do not use a public Issue or PR as an
+active TITMAS contribution route. Activation opens a bounded repository
+Preview; it does not establish the community, assign a formal Maintainer,
+create Authority, publish a Stable standard or accept contributions
+automatically.

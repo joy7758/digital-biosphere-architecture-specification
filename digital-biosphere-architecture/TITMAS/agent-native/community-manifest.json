@@ -1,9 +1,9 @@
 {
   "$schema": "schemas/community-manifest.schema.json",
-  "manifest_version": "1.1.0",
+  "manifest_version": "2.0.0",
   "canonical_name": "TITMAS Agent-Native Standards Community",
   "canonical_entry": "../../agent-index.json",
-  "community_mode": "CANONICAL_INTEGRATION_CANDIDATE",
+  "community_mode": "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE",
   "default_participant_type": "GOVERNED_AGENT",
   "human_routine_operation_default": false,
   "capabilities": [
@@ -16,7 +16,9 @@
     "PREPARE_REVIEW_RECEIPT",
     "PREPARE_MAINTENANCE_REPORT",
     "PREPARE_HANDOFF_PACKAGE",
-    "CALIBRATE_RECOMMENDATION"
+    "CALIBRATE_RECOMMENDATION",
+    "SUBMIT_PUBLIC_ISSUE_AFTER_ACTIVATION",
+    "SUBMIT_PUBLIC_PR_AFTER_ACTIVATION"
   ],
   "non_capabilities": [
     "SELF_AUTHORIZE",
@@ -24,8 +26,8 @@
     "MERGE",
     "RELEASE",
     "DEPLOY",
-    "CREATE_PUBLIC_ISSUE",
-    "CREATE_PUBLIC_PR",
+    "AUTO_ACCEPT_PUBLIC_ISSUE",
+    "AUTO_MERGE_PUBLIC_PR",
     "DECLARE_STABLE",
     "DECLARE_ADOPTION",
     "CERTIFY"

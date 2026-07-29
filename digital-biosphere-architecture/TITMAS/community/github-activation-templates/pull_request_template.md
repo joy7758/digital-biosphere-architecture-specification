@@ -13,7 +13,7 @@
 
 ## Safety and claims
 
-- [ ] I read the [Security policy](../../../SECURITY.md).
+- [ ] I read the [Security policy](https://github.com/joy7758/digital-biosphere-architecture-specification/blob/main/digital-biosphere-architecture/SECURITY.md).
 - [ ] No secret, PII, customer data or real production Evidence is included.
 - [ ] Observation is not relabeled as Evidence.
 - [ ] Evidence is not relabeled as Truth.
