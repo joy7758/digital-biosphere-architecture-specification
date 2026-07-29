@@ -98,7 +98,7 @@ DEVELOPMENT_TOOLCHAIN_REMEDIATION=DEFERRED_MAJOR_VERSION_REVIEW_REQUIRED
 ```text
 CANONICAL_CONFORMANCE=PASS
 PYTHON_TEST_DOMAINS=8
-PYTHON_TESTS=163/163_PASS
+PYTHON_TESTS=167/167_PASS
 SITE_BUILD=PASS
 SITE_TESTS=22/22_PASS
 SITE_LINT=PASS
@@ -107,6 +107,28 @@ YAML_ASSETS_PARSED=14
 LICENSE_SCAN=PASS
 GIT_DIFF_CHECK=PASS
 PRODUCTION_DEPENDENCY_AUDIT=0_VULNERABILITIES
+```
+
+## Pull Request review remediation
+
+Three P1 findings from the automated PR review were reproduced and closed:
+
+1. directory symlinks are now counted and rejected before file filtering;
+2. reconstruction now requires an existing 40-character Git commit and verifies
+   every copied source plus the Builder itself against the blob at that commit;
+3. each sanitized Stage 5 checkpoint now carries a recomputable payload hash,
+   the audit binds all three hashes, and payload tampering fails closed.
+
+The remediation added three Stage 5.1 negative tests and one Stage 5 audit
+tamper test. It did not execute another Agent or Provider call.
+
+```text
+P1_REVIEW_FINDINGS=3
+P1_REVIEW_REMEDIATIONS=3
+STAGE5_1_TESTS=8/8_PASS
+STAGE5_PILOT_TESTS=7/7_PASS
+REAL_MODEL_CALL_COUNT=0
+REAL_PROVIDER_CALL_COUNT=0
 ```
 
 ## Branch protection
