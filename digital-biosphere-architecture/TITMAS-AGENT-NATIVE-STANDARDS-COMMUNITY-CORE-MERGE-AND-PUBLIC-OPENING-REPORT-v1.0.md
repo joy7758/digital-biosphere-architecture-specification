@@ -42,8 +42,8 @@ zero-vulnerability claim.
 
 ```text
 activation_branch=codex/titmas-community-public-contribution-activation-v0-1
-activation_pr=PENDING_CREATION
-activation_pr_head=PENDING_CONTENT_COMMIT
+activation_pr=42
+activation_pr_head=8a1c114186d3fb3cb613a2e1f423d1a33e760416
 activation_merge_commit=PENDING_MERGE
 main_after_activation=PENDING_MERGE
 ```
