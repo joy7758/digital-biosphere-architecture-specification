@@ -33,7 +33,7 @@ class HarnessTests(unittest.TestCase):
             / "community-status.schema.json"
         )
         unsafe = copy.deepcopy(status)
-        unsafe["public_launch"]["authorized"] = True
+        unsafe["community_established"] = True
         with self.assertRaises(HARNESS.ConformanceError):
             HARNESS.validate_schema(unsafe, schema)
         HARNESS.validate_schema(status, schema)
@@ -41,8 +41,8 @@ class HarnessTests(unittest.TestCase):
     def test_merge_admission_boundary_passes(self):
         details = HARNESS.check_merge_admission_boundary()
         self.assertEqual(15, details["stage_consistency_checks"])
-        self.assertEqual(0, details["active_titmas_issue_template_count"])
-        self.assertEqual(0, details["active_titmas_pull_request_template_count"])
+        self.assertEqual(4, details["active_titmas_issue_template_count"])
+        self.assertEqual(1, details["active_titmas_pull_request_template_count"])
         self.assertEqual(5, details["dormant_template_hashes_checked"])
 
     def test_merge_admission_negative_fixtures_fail_closed(self):
@@ -68,15 +68,33 @@ class HarnessTests(unittest.TestCase):
             )
             self.assertIn(case["expected_error"], errors, case["id"])
 
-    def test_developed_templates_do_not_require_installation(self):
+    def test_activation_candidate_is_authorized_but_not_active(self):
         status = HARNESS.load_json(
             HARNESS.TITMAS_ROOT / "community" / "community-status.json"
         )
         surface = status["public_contribution_surface"]
         self.assertTrue(surface["templates_developed"])
-        self.assertFalse(surface["templates_installed"])
+        self.assertTrue(surface["templates_installed"])
         self.assertFalse(surface["active"])
-        self.assertFalse(surface["authorized"])
+        self.assertTrue(surface["authorized"])
+        self.assertFalse(surface["activation_pr_merged"])
+        self.assertTrue(status["security"]["transport_active"])
+        self.assertTrue(status["security"]["transport_verified"])
+
+    def test_security_transport_loss_fails_closed(self):
+        status = HARNESS.load_json(
+            HARNESS.TITMAS_ROOT / "community" / "community-status.json"
+        )
+        schema = HARNESS.load_json(
+            HARNESS.TITMAS_ROOT
+            / "conformance"
+            / "schemas"
+            / "community-status.schema.json"
+        )
+        unsafe = copy.deepcopy(status)
+        unsafe["security"]["transport_active"] = False
+        with self.assertRaises(HARNESS.ConformanceError):
+            HARNESS.validate_schema(unsafe, schema)
 
     def test_schema_depth_fails_closed(self):
         schema = {"type": "object", "properties": {}}

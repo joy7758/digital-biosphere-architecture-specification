@@ -1,10 +1,12 @@
 {
   "package_id": "TITMAS-GITHUB-CONTRIBUTION-ACTIVATION-TEMPLATES-0.1",
   "version": "0.1.0",
-  "status": "DORMANT_ACTIVATION_PACKAGE",
+  "status": "INSTALLED_ACTIVATION_PR_CANDIDATE",
   "source_pr": 41,
   "source_branch": "codex/titmas-agent-native-open-standards-community-canonical-integration-v1",
-  "source_commit": "7cc12fb35f52a294a708207b594dbd176100d892",
+  "source_commit": "7ac40ea01a48160c8f38af7478c01229f7ec8f21",
+  "core_merge_commit": "3ce0b2008db1433db7c24375f81cfa422fabb7e3",
+  "activation_branch": "codex/titmas-community-public-contribution-activation-v0-1",
   "templates": [
     {
       "source_path": ".github/ISSUE_TEMPLATE/bug.yml",
@@ -38,7 +40,7 @@
       "source_path": ".github/pull_request_template.md",
       "dormant_path": "pull_request_template.md",
       "future_active_path": ".github/pull_request_template.md",
-      "sha256": "6f8ead3b9003e216b9761ade845133cb5e154668aba0b2b825debd9d48a1203b",
+      "sha256": "3b2713aef33a67377ccae0d2ecac7394597a9906594c90e54158d802bdca4bd6",
       "template_type": "GITHUB_PULL_REQUEST_TEMPLATE"
     }
   ],
@@ -54,20 +56,21 @@
     "ISSUE_TEMPLATE/config.yml": "sha256:bd11fe80c16914ac30b79a91abea56bf12933294dd667ff79c6fd21c8a4325f1",
     "ISSUE_TEMPLATE/integration.yml": "sha256:d4f5e106a0505224f8144a218a2a894f313a4b0602dd8ed6358807483964846c",
     "ISSUE_TEMPLATE/proposal.yml": "sha256:ca55a329b9dae84694001c944e5f61ca187e9da0f5a4231a000a4bddde128503",
-    "pull_request_template.md": "sha256:6f8ead3b9003e216b9761ade845133cb5e154668aba0b2b825debd9d48a1203b"
+    "pull_request_template.md": "sha256:3b2713aef33a67377ccae0d2ecac7394597a9906594c90e54158d802bdca4bd6"
   },
   "security_transport_required": true,
-  "human_decision_required": "COMMUNITY-HD-03=ACCEPT",
+  "security_transport_verified": true,
+  "human_decision_required": "COMMUNITY-HD-03=ACCEPT_AND_EXECUTE",
+  "human_decision_reference": "TITMAS-COMMUNITY-CORE-MERGE-AND-OPENING-D01",
   "activation_pr_required": true,
-  "installed": false,
+  "installed": true,
   "active": false,
-  "authorized": false,
+  "authorized": true,
   "limitations": [
-    "DORMANT_TEMPLATE_NE_ACTIVE_SURFACE",
-    "DEVELOPED_NE_INSTALLED",
-    "SECURITY_TRANSPORT_INACTIVE",
-    "ACTIVATION_PR_NOT_CREATED",
-    "PUBLIC_CONTRIBUTION_NOT_AUTHORIZED"
+    "INSTALLED_ON_NON_DEFAULT_ACTIVATION_BRANCH_NE_ACTIVE_SURFACE",
+    "ACTIVATION_PR_NOT_YET_MERGED",
+    "PUBLIC_CONTRIBUTION_NOT_ACTIVE_UNTIL_MAIN_MERGE",
+    "OPEN_DOOR_NE_ESTABLISHED_COMMUNITY"
   ],
   "created_at": "2026-07-29"
 }

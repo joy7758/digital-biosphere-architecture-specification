@@ -199,7 +199,7 @@ def check_community_status() -> dict[str, Any]:
     schema = load_json(TITMAS_ROOT / "conformance" / "schemas" / "community-status.schema.json")
     validate_schema(status, schema)
     must_be_false = (
-        "canonical_main_integration_complete", "community_established", "foundation_created",
+        "community_established", "foundation_created",
         "maintainer_assigned", "external_reviewer_assigned",
         "commercial_offer_authorized", "certification_authorized",
         "release_authorized", "cs_g0_pass", "cs_g1_pass",
@@ -207,19 +207,51 @@ def check_community_status() -> dict[str, Any]:
     elevated = [key for key in must_be_false if status[key] is not False]
     if elevated:
         raise ConformanceError(f"community status semantic elevation: {elevated}")
-    if status["public_launch"]["active"] or status["public_launch"]["authorized"]:
-        raise ConformanceError("public launch must remain inactive and unauthorized")
+    if not status["canonical_main_integration_complete"]:
+        raise ConformanceError("community core must be integrated before public activation")
+    if not status["human_merge_review"]["completed"]:
+        raise ConformanceError("Human merge review must be complete")
+    if status["human_merge_review"]["independent"]:
+        raise ConformanceError("Human Owner review must not be claimed as independent")
+    if not status["core_merge"]["authorized"] or not status["core_merge"]["executed"]:
+        raise ConformanceError("community core merge record is incomplete")
     contribution = status["public_contribution_surface"]
-    if (
-        contribution["templates_installed"]
-        or contribution["active"]
-        or contribution["authorized"]
-    ):
-        raise ConformanceError("public contribution surface must remain dormant")
-    if status["security"]["transport_active"]:
-        raise ConformanceError("security transport must remain inactive")
-    if status["draft_pr"]["merged"] or status["draft_pr"]["ready_for_review"]:
-        raise ConformanceError("Draft PR must remain unmerged and not ready for review")
+    security = status["security"]
+    launch = status["public_launch"]
+    activation_pr = status["activation_pr"]
+    if not contribution["templates_installed"] or not contribution["authorized"]:
+        raise ConformanceError("authorized activation candidate must install templates")
+    if not security["transport_active"] or not security["transport_verified"]:
+        raise ConformanceError("public activation requires verified Security Transport")
+    if not launch["authorized"]:
+        raise ConformanceError("limited repository preview must be authorized")
+    if status["state"] == "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE":
+        if contribution["active"] or contribution["activation_pr_merged"]:
+            raise ConformanceError("activation candidate must remain inactive before merge")
+        if launch["active"] or status["public_contribution_activation"]["executed"]:
+            raise ConformanceError("activation candidate cannot claim executed public opening")
+        if activation_pr["merged"]:
+            raise ConformanceError("activation candidate cannot claim a merged Activation PR")
+        if activation_pr["created"]:
+            if not isinstance(activation_pr["number"], int):
+                raise ConformanceError("created Activation PR requires an integer number")
+        elif activation_pr["number"] is not None or activation_pr["state"] != "NOT_CREATED":
+            raise ConformanceError("uncreated Activation PR must retain null number and NOT_CREATED state")
+    elif status["state"] == "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW":
+        if not contribution["active"] or not contribution["activation_pr_merged"]:
+            raise ConformanceError("active preview requires merged active templates")
+        if not launch["active"] or not status["public_contribution_activation"]["executed"]:
+            raise ConformanceError("active preview requires executed activation")
+        if not activation_pr["merged"] or not status["welcome_issue"]["created"]:
+            raise ConformanceError("active preview requires merged Activation PR and Welcome Issue")
+        if not isinstance(activation_pr["number"], int):
+            raise ConformanceError("active preview requires an Activation PR number")
+        if not isinstance(status["welcome_issue"]["number"], int):
+            raise ConformanceError("active preview requires a Welcome Issue number")
+    else:
+        raise ConformanceError(f"unsupported community activation state: {status['state']}")
+    if not status["draft_pr"]["merged"] or not status["draft_pr"]["ready_for_review"]:
+        raise ConformanceError("core PR #41 merge history is incomplete")
     for key in ("community_member_count", "external_contributor_count", "external_adopter_count"):
         if status[key] != 0:
             raise ConformanceError(f"{key} must remain zero")
@@ -243,7 +275,7 @@ def check_community_status() -> dict[str, Any]:
     if not prohibited.issubset(set(assignments["not_granted"])):
         raise ConformanceError("interim role assignment authority boundary drift")
     return {
-        "community_invariants_checked": len(must_be_false) + 7,
+        "community_invariants_checked": len(must_be_false) + 15,
         "interim_role_assignments_checked": len(assignments["assignments"]),
     }
 
@@ -294,16 +326,26 @@ def check_merge_admission_boundary() -> dict[str, Any]:
     manifest = load_json(dormant_root / "activation-manifest.json")
     repository_root = DBA_ROOT.parent
 
-    if manifest["status"] != "DORMANT_ACTIVATION_PACKAGE":
-        raise ConformanceError("activation templates are not marked dormant")
+    candidate_state = status["state"] == "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE"
+    active_state = status["state"] == "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW"
+    expected_manifest_status = (
+        "INSTALLED_ACTIVATION_PR_CANDIDATE"
+        if candidate_state
+        else "ACTIVE_LIMITED_PREVIEW"
+    )
+    if manifest["status"] != expected_manifest_status:
+        raise ConformanceError(
+            f"activation manifest status mismatch: {manifest['status']}"
+        )
     if (
-        manifest["installed"]
-        or manifest["active"]
-        or manifest["authorized"]
+        not manifest["installed"]
+        or not manifest["authorized"]
+        or manifest["active"] != active_state
         or not manifest["security_transport_required"]
+        or not manifest["security_transport_verified"]
         or not manifest["activation_pr_required"]
     ):
-        raise ConformanceError("dormant activation manifest fails closed")
+        raise ConformanceError("activation manifest stage binding fails closed")
 
     expected_active = {
         ".github/ISSUE_TEMPLATE/bug.yml",
@@ -317,8 +359,10 @@ def check_merge_admission_boundary() -> dict[str, Any]:
         raise ConformanceError("future active destination set drift")
     active_paths = [repository_root / path for path in sorted(expected_active)]
     installed = [str(path.relative_to(repository_root)) for path in active_paths if path.exists()]
-    if installed:
-        raise ConformanceError(f"unauthorized active GitHub templates installed: {installed}")
+    if set(installed) != expected_active:
+        raise ConformanceError(
+            f"authorized active GitHub template set incomplete: {installed}"
+        )
 
     template_hashes_checked = 0
     issue_forms_checked = 0
@@ -337,6 +381,16 @@ def check_merge_admission_boundary() -> dict[str, Any]:
             raise ConformanceError(f"dormant template hash mismatch: {dormant_rel}")
         if manifest["content_hashes"].get(dormant_rel) != f"sha256:{digest}":
             raise ConformanceError(f"content_hashes mismatch: {dormant_rel}")
+        active_path = repository_root / record["future_active_path"]
+        if active_path.is_symlink() or not active_path.is_file():
+            raise ConformanceError(
+                f"missing regular active template candidate: {record['future_active_path']}"
+            )
+        active_digest = hashlib.sha256(active_path.read_bytes()).hexdigest()
+        if active_digest != digest:
+            raise ConformanceError(
+                f"active template hash differs from activation package: {dormant_rel}"
+            )
         text = dormant_path.read_text(encoding="utf-8")
         if record["template_type"] == "GITHUB_ISSUE_FORM":
             for field in ("name:", "description:", "body:"):
@@ -478,15 +532,26 @@ def check_agent_native_surfaces() -> dict[str, Any]:
         raise ConformanceError("community manifest creates a competing machine entry")
 
     must_be_false = (
-        "public_agent_community_authorized", "public_contribution_authorized",
-        "public_github_agent_write_authorized", "agent_community_established",
-        "public_launch_authorized", "release_authorized",
+        "public_agent_community_authorized", "agent_community_established",
+        "release_authorized",
         "certification_authorized", "commercial_ready", "foundation_created",
         "cs_g0_pass", "cs_g1_pass", "current_99_percent_autonomy_claim",
     )
     elevated = [key for key in must_be_false if state[key] is not False]
     if elevated:
         raise ConformanceError(f"agent-native state semantic elevation: {elevated}")
+    if (
+        not state["canonical_main_integration_complete"]
+        or not state["public_contribution_authorized"]
+        or not state["public_github_agent_write_authorized"]
+        or not state["public_launch_authorized"]
+    ):
+        raise ConformanceError("agent-native limited opening authorization is incomplete")
+    if state["public_contribution_activation_candidate"]:
+        if state["public_contribution_active"] or state["public_github_agent_write_active"]:
+            raise ConformanceError("activation candidate cannot claim active public writes")
+        if state["public_launch_active"]:
+            raise ConformanceError("activation candidate cannot claim active public launch")
     if state["agent_operational_majority_long_term_target"] != 0.99:
         raise ConformanceError("long-term target drift")
     for key in (

@@ -5,8 +5,9 @@ The sole canonical machine task registry is:
 [`../agent-native/tasks/task-registry.json`](../agent-native/tasks/task-registry.json)
 
 This page is a human compatibility pointer, not a second registry. Tasks are
-prepared Development records, not GitHub Issues, assignments, permissions or
-public contribution authorization.
+prepared Development records, not assignments, permissions or automatic
+acceptance. Public Issue and Pull Request use is pending the independent
+Activation PR merge.
 
 Use the agent-native CLI to discover a bounded task:
 

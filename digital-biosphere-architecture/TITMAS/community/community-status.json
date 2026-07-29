@@ -1,22 +1,30 @@
 {
   "$schema": "../conformance/schemas/community-status.schema.json",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "canonical_name": "TITMAS Agent-Native Standards Community",
   "human_aliases": [
     "TITMAS Developer Standards Community",
     "TITMAS Infrastructure Developer Community"
   ],
-  "status": "CANONICAL_INTEGRATION_CANDIDATE",
-  "state": "CANONICAL_INTEGRATION_CANDIDATE",
-  "base_main_commit": "ba6d51f60c12f1ac954dd67947451821fd5a3eb6",
-  "integration_branch": "codex/titmas-agent-native-open-standards-community-canonical-integration-v1",
-  "integration_candidate_commit": "922f2b088287a9ee026e931357ecdc343a468566",
+  "status": "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE",
+  "state": "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE",
+  "base_main_commit": "3ce0b2008db1433db7c24375f81cfa422fabb7e3",
+  "integration_branch": "codex/titmas-community-public-contribution-activation-v0-1",
+  "integration_candidate_commit": "7ac40ea01a48160c8f38af7478c01229f7ec8f21",
   "draft_pr": {
     "created": true,
     "number": 41,
-    "state": "OPEN_DRAFT",
+    "state": "MERGED",
+    "merged": true,
+    "ready_for_review": true
+  },
+  "activation_pr": {
+    "created": false,
+    "number": null,
+    "state": "NOT_CREATED",
     "merged": false,
-    "ready_for_review": false
+    "ready_for_review": false,
+    "content_head": "NOT_CREATED"
   },
   "human_merge_review": {
     "completed": true,
@@ -28,28 +36,33 @@
   },
   "core_merge": {
     "authorized": true,
-    "executed": false
+    "executed": true,
+    "decision_record_head": "7ac40ea01a48160c8f38af7478c01229f7ec8f21",
+    "merge_commit": "3ce0b2008db1433db7c24375f81cfa422fabb7e3"
   },
   "public_contribution_activation": {
     "authorized": true,
     "executed": false
   },
   "public_contribution_surface": {
-    "status": "PREPARED_DORMANT_NOT_AUTHORIZED",
+    "status": "ACTIVATION_PR_CANDIDATE",
     "templates_developed": true,
-    "templates_installed": false,
+    "templates_installed": true,
     "active": false,
-    "authorized": false,
+    "authorized": true,
+    "activation_pr_merged": false,
     "dormant_package_ref": "github-activation-templates/activation-manifest.json"
   },
-  "code_of_conduct": "ADOPTED_FOR_INTEGRATION_CANDIDATE",
+  "code_of_conduct": "ADOPTED_FOR_LIMITED_REPOSITORY_PREVIEW",
   "security": {
     "process_defined": true,
     "process_owner_assigned": true,
     "activation_authorized": true,
-    "transport_active": false,
-    "transport_status": "INACTIVE_GITHUB_PRIVATE_VULNERABILITY_REPORTING_DISABLED",
-    "public_activation_blocked": true
+    "transport_active": true,
+    "transport_verified": true,
+    "transport_status": "ACTIVE_GITHUB_PRIVATE_VULNERABILITY_REPORTING",
+    "activation_http_status": "204",
+    "public_activation_blocked": false
   },
   "maintainer": {
     "interim_assigned": true,
@@ -67,18 +80,25 @@
   "specification_registry": "../specifications/registry.yaml",
   "conformance": "../conformance/README.md",
   "reference_implementation": "../reference/README.md",
-  "agent_native_cycle": "COMPLETE_ACCEPTED_IN_INTEGRATION_BRANCH",
-  "canonical_main_integration_complete": false,
+  "agent_native_cycle": "COMPLETE_ACCEPTED_IN_CORE_MERGE",
+  "canonical_main_integration_complete": true,
   "draft_pr_authorized": true,
   "draft_pr_creation_blocked_by_security_transport": false,
   "public_launch": {
+    "mode": "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW",
     "active": false,
-    "authorized": false
+    "authorized": true
+  },
+  "welcome_issue": {
+    "authorized": true,
+    "created": false,
+    "number": null,
+    "url": null
   },
   "community_established": false,
   "foundation_created": false,
   "infrastructure_complete": true,
-  "public_launch_ready_candidate": false,
+  "public_launch_ready_candidate": true,
   "maintainer_assigned": false,
   "external_reviewer_assigned": false,
   "community_member_count": 0,
@@ -90,16 +110,14 @@
   "cs_g0_pass": false,
   "cs_g1_pass": false,
   "limitations": [
-    "DRAFT_PR_41_OPEN_DRAFT_NOT_MERGED",
-    "PUBLIC_CONTRIBUTION_TEMPLATES_DORMANT",
-    "PUBLIC_CONTRIBUTION_NOT_AUTHORIZED",
-    "SECURITY_TRANSPORT_INACTIVE",
-    "CORE_MERGE_AUTHORIZED_NOT_EXECUTED",
-    "PUBLIC_CONTRIBUTION_ACTIVATION_AUTHORIZED_NOT_EXECUTED",
-    "SECURITY_TRANSPORT_ACTIVATION_AUTHORIZED_NOT_EXECUTED",
+    "ACTIVATION_PR_NOT_YET_CREATED",
+    "PUBLIC_CONTRIBUTION_NOT_ACTIVE_UNTIL_ACTIVATION_MERGE",
+    "HUMAN_OWNER_REVIEW_NOT_INDEPENDENT_REVIEW",
     "COMMUNITY_NOT_ESTABLISHED",
-    "NO_EXTERNAL_CONTRIBUTORS_OR_ADOPTERS"
+    "NO_EXTERNAL_CONTRIBUTORS_OR_ADOPTERS",
+    "PREVIEW_NE_STABLE",
+    "NO_RELEASE_TAG_OR_DEPLOYMENT_AUTHORIZED"
   ],
-  "observed_at": "2026-07-29T08:33:36+08:00",
-  "updated_at": "2026-07-29T08:33:36+08:00"
+  "observed_at": "2026-07-29T08:41:25+08:00",
+  "updated_at": "2026-07-29T08:41:25+08:00"
 }

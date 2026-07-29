@@ -95,9 +95,9 @@ commercial_offering_created: false
 developer_ecosystem_created: false
 titmas_infrastructure_developer_community_direction_adopted: true
 titmas_contributor_entry_prepared: true
-titmas_public_contribution_surface_authorized: false
+titmas_public_contribution_surface_authorized: true
 titmas_developer_community_established: false
-titmas_code_of_conduct_adopted: false
+titmas_code_of_conduct_adopted: true
 titmas_maintainer_assigned: false
 titmas_foundation_in_scope: false
 titmas_adoption_validation_framework_defined: true
@@ -128,8 +128,9 @@ Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是整个 
 → 机器可读规范
 → Conformance
 → Agent-native Contribution
-→ 公共贡献表面候选
-→ Community Preview（仍未授权）
+→ 已合并社区核心
+→ 已验证 Security Transport
+→ 有限公共贡献 Activation PR 候选
 ```
 
 统一人类入口是 [`TITMAS/README.md`](TITMAS/README.md)，统一智能体入口是
@@ -139,11 +140,14 @@ Ecology Box、Operational Calibration 和 Candidate Grounding 只作为支持性
 Calibration v0.3 继续冻结。
 
 ```text
-COMMUNITY_STATUS=CANONICAL_INTEGRATION_CANDIDATE
+COMMUNITY_STATUS=PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE
 OPEN_STANDARDS_COMMUNITY_MAINLINE_RESTORED=true
 CALIBRATION_SUBTRACK_FROZEN=true
-PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
-PUBLIC_LAUNCH_AUTHORIZED=false
+TITMAS_CANONICAL_MAIN_INTEGRATION_COMPLETE=true
+SECURITY_TRANSPORT_ACTIVE=true
+PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=true
+PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
+PUBLIC_LAUNCH_MODE=LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW
 COMMUNITY_ESTABLISHED=false
 ```
 
@@ -182,18 +186,20 @@ SAEE 和 Digital Entities 仍是同一项目群内相互分离的责任域，社
 
 ```text
 TITMAS_AGENT_NATIVE_STANDARDS_COMMUNITY_DIRECTION_ADOPTED=true
-TITMAS_COMMUNITY_STATUS=CANONICAL_INTEGRATION_CANDIDATE
-TITMAS_CODE_OF_CONDUCT_ADOPTED_FOR_INTEGRATION_CANDIDATE=true
-TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+TITMAS_COMMUNITY_STATUS=PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE
+TITMAS_CODE_OF_CONDUCT_ADOPTED_FOR_LIMITED_REPOSITORY_PREVIEW=true
+TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=true
+TITMAS_PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
 TITMAS_COMMUNITY_ESTABLISHED=false
 TITMAS_MAINTAINER_ASSIGNED=false
 TITMAS_FOUNDATION_CREATED=false
 ```
 
-`CANONICAL_INTEGRATION_CANDIDATE` 只表示贡献流程和机器入口正在单一分支中接受验证。
-当前不开放公共 Issue、Pull Request、SIG、Maintainer 招募或 Foundation；临时责任分配
-不是永久 Maintainer，社区意见和智能体推荐只是 Review input，不是 Architecture
-Decision、Implementation Authorization 或 Permission。
+社区核心已进入 `main`，GitHub Private Vulnerability Reporting 已验证启用，公共贡献
+模板已安装在独立 Activation PR 分支。Activation PR 合并前，公共 Issue 与 Pull Request
+入口仍未激活。即使合并，也只开放有限仓库级 Preview，不开放 SIG、永久 Maintainer、
+Foundation、Certification、Stable、Release 或商业承诺；社区意见和智能体推荐仍只是
+Review input，不是 Architecture Decision、Implementation Authorization 或 Permission。
 
 ### Historical Validation References（历史验证参考）
 

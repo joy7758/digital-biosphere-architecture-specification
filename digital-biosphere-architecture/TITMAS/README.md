@@ -20,7 +20,7 @@ aliases. No fourth community name is created.
 - Human quick start: [`QUICKSTART.md`](QUICKSTART.md)
 - First contribution: [`FIRST_CONTRIBUTION.md`](FIRST_CONTRIBUTION.md)
 - Contribution policy: [`community/CONTRIBUTING.md`](community/CONTRIBUTING.md)
-- Dormant GitHub templates: [`community/github-activation-templates/README.md`](community/github-activation-templates/README.md)
+- GitHub activation package: [`community/github-activation-templates/README.md`](community/github-activation-templates/README.md)
 - Specification registry: [`specifications/registry.yaml`](specifications/registry.yaml)
 - Conformance: [`conformance/README.md`](conformance/README.md)
 - Reference implementation boundary: [`reference/README.md`](reference/README.md)
@@ -46,17 +46,18 @@ Authorization, Adoption, Certification, Release or production readiness.
 ## Current state
 
 ```text
-COMMUNITY_STATUS=CANONICAL_INTEGRATION_CANDIDATE
-CODE_OF_CONDUCT_ADOPTED_FOR_INTEGRATION_CANDIDATE=true
+COMMUNITY_STATUS=PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE
+CODE_OF_CONDUCT_ADOPTED_FOR_LIMITED_REPOSITORY_PREVIEW=true
 SECURITY_PROCESS_DEFINED=true
-SECURITY_TRANSPORT_ACTIVE=false
+SECURITY_TRANSPORT_ACTIVE=true
+SECURITY_TRANSPORT_VERIFIED=true
 INTERIM_MAINTAINER_REF=zhangbin
 INTERIM_ROLE_EXPIRES=2026-09-30T23:59:59+08:00
-PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
+PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=true
 PUBLIC_CONTRIBUTION_TEMPLATES_DEVELOPED=true
-PUBLIC_CONTRIBUTION_TEMPLATES_INSTALLED=false
+PUBLIC_CONTRIBUTION_TEMPLATES_INSTALLED=true
 PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
-PUBLIC_LAUNCH_AUTHORIZED=false
+PUBLIC_LAUNCH_MODE=LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW
 COMMUNITY_ESTABLISHED=false
 EXTERNAL_CONTRIBUTOR_COUNT=0
 EXTERNAL_ADOPTER_COUNT=0
@@ -66,10 +67,11 @@ The temporary assignment is revocable and limited to this integration
 candidate. It does not grant DBA, DBOS, SAEE, Evidence Truth, Certification,
 Commercial, Release, automatic merge or Stable-promotion authority.
 
-The contribution workflow is developed, but its GitHub templates are dormant
-and not installed in `.github`. Public Issues or PRs are not an authorized
-TITMAS contribution path. A future activation requires an active Security
-Transport, a separate Human Decision and an independent Activation PR.
+The community core is merged and Security Transport is verified active. The
+GitHub templates are installed only on the independent Activation PR branch.
+Public contribution opening remains pending that PR's merge. Merge opens a
+limited repository Preview; it does not establish the community or authorize
+automatic acceptance, Release, Stable promotion or external Authority.
 
 ## Core boundaries
 
