@@ -28,7 +28,7 @@
       "section": "3",
       "name": "Sanitized Semantic Checkpoint",
       "status": "PASS",
-      "evidence": "Original 16 tests plus 4 Stage 5 tests passed; plan and contribution checkpoints are durable."
+      "evidence": "Original 16 tests plus 4 Stage 5 tests passed; plan, contribution and independent review checkpoints are durable and hash-verified."
     },
     {
       "section": "4",
@@ -68,15 +68,15 @@
     },
     {
       "section": "10",
-      "name": "Agent Pilot A01",
-      "status": "PARTIAL",
-      "evidence": "Contributor selection, SDK submission and Conformance completed; A01 and separately authorized A02 independent review attempts both ended with unknown post-dispatch outcomes."
+      "name": "Agent Pilot and bounded recovery cycle",
+      "status": "PASS",
+      "evidence": "Contributor selection, SDK submission and Conformance completed. A01/A02 unknown outcomes remain preserved; A04 separately completed one exact independent review without automatic retry."
     },
     {
       "section": "11",
       "name": "Provider Selection and Budget",
       "status": "PASS",
-      "evidence": "Exact qwen3.7-max and kimi-k2.6 bindings were requested. A01 stopped at 3 calls; A02 added exactly one Human-authorized Reviewer call. Automatic retries and substitutions remained 0. Reviewer billing truth is unavailable."
+      "evidence": "Exact qwen3.7-max, kimi-k2.6 and A04 deepseek-v3.2 bindings were recorded. Each recovery call had a separate Human Decision; automatic retries remained 0. Known cost estimate is CNY 0.140579 and Kimi billing truth remains unknown."
     },
     {
       "section": "12",
@@ -87,32 +87,32 @@
     {
       "section": "13",
       "name": "Independent Agent Reviewer Flow",
-      "status": "INCOMPLETE",
-      "evidence": "Both independently authorized BAIDU_QIANFAN/kimi-k2.6 attempts ended as FAILED_AFTER_DISPATCH_OUTCOME_UNKNOWN; no verdict or durable review checkpoint exists."
+      "status": "PASS",
+      "evidence": "A04 BAIDU_QIANFAN/deepseek-v3.2 returned the exact model, passed Review Schema, produced verdict PASS and became durable checkpoint stage5-standard-review-a04-deepseek."
     },
     {
       "section": "14",
       "name": "Pilot Registry",
       "status": "PASS",
-      "evidence": "The private audit registry contains only bounded fields and fail-closes the Agent contribution as PILOT_REJECTED pending review."
+      "evidence": "The private audit registry contains only bounded fields and records the Human-dispositioned contribution as PILOT_ACCEPTED without formal standard adoption."
     },
     {
       "section": "15",
       "name": "Human Maintainer Disposition Package",
       "status": "PASS",
-      "evidence": "The package exists; HD-01 through HD-03 correctly remain UNDECIDED and the formal registry is unchanged."
+      "evidence": "HD-01=ACCEPT_PILOT, HD-02=DEFER and HD-03=ACCEPT_STAGE5_PRIVATE_PREVIEW are recorded by zhangbin; the formal registry remains unchanged."
     },
     {
       "section": "16",
       "name": "Stage 5 Success Criteria",
-      "status": "PARTIAL",
-      "evidence": "Infrastructure criteria are all true; independent review and complete semantic results are false."
+      "status": "PASS",
+      "evidence": "Infrastructure, Agent selection, SDK submission, Conformance, independent review and all three semantic checkpoints are complete."
     },
     {
       "section": "17",
       "name": "Testing and Security Validation",
       "status": "PASS",
-      "evidence": "158/158 local tests, Conformance harness and the fail-closed audit validator passed; secret, core disclosure, private path, symlink and unauthorized export findings are zero."
+      "evidence": "158/158 Python tests and 22/22 site tests passed. Conformance harness, audit validator, JSON/YAML parsing, Python compilation, site lint and production dependency audit passed; secret, core disclosure, private path, symlink and unauthorized export findings are zero."
     },
     {
       "section": "18",
@@ -130,13 +130,13 @@
       "section": "20",
       "name": "Stop Conditions",
       "status": "PASS",
-      "evidence": "Each post-dispatch unknown outcome triggered immediate stop under its own Human Decision; no automatic retry, fallback, substitution, public exposure or registry modification occurred."
+      "evidence": "A01/A02 unknown outcomes triggered immediate stop. A04 followed only after separate diagnosis and Human Decision; no automatic retry, silent substitution, public exposure or registry modification occurred."
     },
     {
       "section": "21",
       "name": "Final State",
-      "status": "INCOMPLETE",
-      "evidence": "TITMAS_STAGE_5_PRIVATE_AGENT_PILOT_COMPLETE and TITMAS_STAGE_5_PRIVATE_PREVIEW_OPERATIONAL remain false."
+      "status": "PASS",
+      "evidence": "TITMAS_STAGE_5_PRIVATE_AGENT_PILOT_COMPLETE and TITMAS_STAGE_5_PRIVATE_PREVIEW_OPERATIONAL are true with explicit private-preview limitations."
     },
     {
       "section": "22",
@@ -152,15 +152,15 @@
     }
   ],
   "summary": {
-    "pass": 20,
-    "partial": 2,
-    "incomplete": 2,
+    "pass": 24,
+    "partial": 0,
+    "incomplete": 0,
     "total": 24
   },
-  "completion_proven": false,
-  "blocking_condition": "INDEPENDENT_REVIEW_RESULT_AND_DURABLE_REVIEW_CHECKPOINT_MISSING_AFTER_TWO_AUTHORIZED_ATTEMPTS",
-  "new_human_decision_required": true,
+  "completion_proven": true,
+  "blocking_condition": "NONE",
+  "new_human_decision_required": false,
   "automatic_retry_authorized": false,
   "further_review_authorized": false,
-  "next_decision_packet": "TITMAS-STAGE-5-POST-A02-REVIEW-RECOVERY-DECISION-v1.0.md"
+  "next_decision_packet": "NONE"
 }

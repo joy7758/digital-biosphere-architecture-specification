@@ -76,30 +76,55 @@ confirmed_review_responses=0
 ```
 
 The no-retry stop condition was applied to both independently authorized
-attempts. No DeepSeek fallback, same-Provider substitution or third review
-attempt was made. Similar timing supports a transport-timeout hypothesis but
-does not prove root cause or Provider execution outcome.
+attempts. No fallback or substitution occurred under A01 or A02. Similar timing
+supports a transport-timeout hypothesis but does not prove Provider execution
+outcome.
+
+After a non-inference diagnostic confirmed a healthy Qianfan control path,
+verified both exact models through the authenticated model catalog and matched
+both failures to the local 120-second timeout, A04 separately authorized one
+`BAIDU_QIANFAN/deepseek-v3.2` attempt with a 300-second transport boundary.
+
+```text
+A04_CAPTURE_STATE=FINALIZED_SUCCESS
+A04_RETURNED_MODEL=deepseek-v3.2
+A04_MODEL_IDENTITY_STATUS=MATCH
+A04_REVIEW_RESULT=PASS
+A04_REVIEW_CHECKPOINT=DURABLE
+A04_REVIEW_CHECKPOINT_SHA256=dd51594360093216e23250e835e2f818ecc9ab82ff27f94441e0fe3850653517
+A04_AUTOMATIC_RETRY_COUNT=0
+```
+
+The Reviewer reported no blocking finding. It identified the positive-only Test
+Vector and narrow loopback scope as non-blocking limitations. The result was
+submitted through the SDK against an ephemeral projection of the original
+durable contribution record.
 
 ## Calls, tokens and cost
 
 | Item | Value |
 |---|---:|
-| Model calls | 4 |
-| Provider calls | 4 |
+| Model calls | 5 |
+| Provider calls | 5 |
 | Automatic retries | 0 |
 | Observed Qwen input tokens | 3,258 |
 | Observed Qwen output tokens | 2,702 |
-| Reviewer token usage | Unknown after both dispatches |
+| A04 DeepSeek input/output tokens | 1,579 / 351 |
+| Observed known total tokens | 7,890 |
+| Kimi token usage | Unknown after both dispatches |
 | Qwen list-rate estimate | CNY 0.136368 |
+| A04 DeepSeek Token Plan estimate | CNY 0.004211 |
+| Known observed estimate | CNY 0.140579 |
 | A01 conservative total upper bound | CNY 7.409256 |
 | A01 authorized maximum | CNY 10 |
 | A02 | One additional Human-authorized call; billing truth unavailable |
 
 Cost is a bounded estimate, not billing Truth.
 
-## Post-A02 validation
+## Final validation
 
-All local suites remained green after recording the repeated negative result:
+All local suites remained green after the A04 review checkpoint and Human
+disposition were recorded:
 
 ```text
 AGENT_NATIVE_TESTS=45/45
@@ -110,12 +135,19 @@ STAGE5_PILOT_TESTS=6/6
 STAGE5_SDK_TESTS=4/4
 REFERENCE_TESTS=5/5
 TOTAL_TESTS=158/158
+SITE_TESTS=22/22
 CONFORMANCE_HARNESS=PASS
-AUDIT_VALIDATOR=PASS_WITH_RECORDED_REPEATED_NEGATIVE_RESULT
+AUDIT_VALIDATOR=PASS_COMPLETE_WITH_RECORDED_LIMITATIONS
+JSON_PARSE=PASS
+YAML_PARSE=PASS
+PYTHON_COMPILE=PASS
+SITE_LINT=PASS
+PRODUCTION_DEPENDENCY_AUDIT=PASS_0_VULNERABILITIES
 ```
 
 Passing tests validate the fail-closed record and infrastructure behavior. They
-do not substitute for the missing independent review.
+do not prove standard adoption, production readiness or contribution quality
+beyond the bounded Pilot review.
 
 ## Security and classification
 
@@ -135,13 +167,21 @@ credential_material_retained=false
 
 ## Human disposition and current status
 
-`STAGE5-HD-01`, `STAGE5-HD-02` and `STAGE5-HD-03` remain `UNDECIDED`. The
-formal Specification Registry was not modified. A03 records the recommended
-fail-closed decision to defer further review pending transport diagnosis.
+The Human Maintainer recorded:
 
 ```text
-TITMAS_STAGE_5_PRIVATE_AGENT_PILOT_COMPLETE=false
-TITMAS_STAGE_5_PRIVATE_PREVIEW_OPERATIONAL=false
+STAGE5_HD_01=ACCEPT_PILOT
+STAGE5_HD_02=DEFER
+STAGE5_HD_03=ACCEPT_STAGE5_PRIVATE_PREVIEW
+```
+
+The Agent contribution is accepted only into the private Pilot Registry. The
+Specification Candidate is deferred because one positive-only synthetic Test
+Vector is insufficient. The formal Specification Registry was not modified.
+
+```text
+TITMAS_STAGE_5_PRIVATE_AGENT_PILOT_COMPLETE=true
+TITMAS_STAGE_5_PRIVATE_PREVIEW_OPERATIONAL=true
 PUBLIC_PROTOCOL_RELEASED=false
 PUBLIC_EXPORT_AUTHORIZED=false
 FORMAL_STANDARD_CHANGE_AUTHORIZED=false
@@ -151,9 +191,10 @@ TITMAS_COMMUNITY_ESTABLISHED=false
 
 ## Limitations and next decisions
 
-1. Human Maintainer must disposition the incomplete Reviewer cycle.
-2. A01 and A02 are spent; A03 authorizes no further Reviewer call.
-3. The Test Vector's developer value and expected behavior remain unreviewed.
+1. Preserve A01 and A02 as unknown Provider outcomes; do not reinterpret them.
+2. Add negative Test Vector coverage before reconsidering Specification
+   Candidate status.
+3. Validate another independent contribution before any maturity claim.
 4. No public release, commercial access, production deployment or standard
    adoption follows from this report.
 

@@ -22,6 +22,8 @@ REAL_MODEL_CALLS_REQUIRE_PROGRAMMATIC_PASS=true
   [`agent-audit/sanitized-contributor-plan.json`](agent-audit/sanitized-contributor-plan.json)
 - Sanitized durable contribution:
   [`agent-audit/sanitized-standard-contribution.json`](agent-audit/sanitized-standard-contribution.json)
+- Sanitized durable independent review:
+  [`agent-audit/sanitized-standard-review.json`](agent-audit/sanitized-standard-review.json)
 - Agent pilot registry:
   [`agent-pilot-contribution-registry.json`](agent-pilot-contribution-registry.json)
 - Fail-closed validator: [`validate_agent_audit.py`](validate_agent_audit.py)
@@ -34,19 +36,22 @@ REAL_MODEL_CALLS_REQUIRE_PROGRAMMATIC_PASS=true
 - A04 transport remediation decision:
   [`../../TITMAS-STAGE-5-INDEPENDENT-REVIEW-TRANSPORT-REMEDIATION-DECISION-v1.0.md`](../../TITMAS-STAGE-5-INDEPENDENT-REVIEW-TRANSPORT-REMEDIATION-DECISION-v1.0.md)
 
-Two separately authorized independent Reviewer attempts ended with unknown
-post-dispatch outcomes. Neither was retried, silently substituted or elevated
-to a completed review. A03 completed transport diagnosis. A04 separately
-authorizes one exact `BAIDU_QIANFAN/deepseek-v3.2` attempt; the current audit
-still records the pre-execution state.
+A01 and A02 Reviewer attempts ended with unknown post-dispatch outcomes and
+remain preserved. A03 isolated the local 120-second transport boundary. A04
+used one explicitly authorized `BAIDU_QIANFAN/deepseek-v3.2` call, returned the
+exact model, passed Review Schema validation and created a durable
+`STANDARD_REVIEW` checkpoint. No automatic retry occurred.
 
 ```text
-STAGE5_PRIVATE_AGENT_PILOT_COMPLETE=false
-STAGE5_PRIVATE_PREVIEW_OPERATIONAL=false
-INDEPENDENT_REVIEW_OUTCOME=UNKNOWN_POST_DISPATCH_OUTCOME
-AUTHORIZED_REVIEW_ATTEMPTS=2
-TOTAL_MODEL_CALLS=4
+STAGE5_PRIVATE_AGENT_PILOT_COMPLETE=true
+STAGE5_PRIVATE_PREVIEW_OPERATIONAL=true
+INDEPENDENT_REVIEW_OUTCOME=PASS
+AUTHORIZED_REVIEW_ATTEMPTS=3
+CONFIRMED_REVIEW_RESPONSES=1
+TOTAL_MODEL_CALLS=5
 AUTOMATIC_RETRY_COUNT=0
 A04_REVIEW_AUTHORIZED=true
-A04_REVIEW_EXECUTED=false
+A04_REVIEW_EXECUTED=true
+FORMAL_STANDARD_CHANGE_AUTHORIZED=false
+PUBLIC_EXPORT_AUTHORIZED=false
 ```

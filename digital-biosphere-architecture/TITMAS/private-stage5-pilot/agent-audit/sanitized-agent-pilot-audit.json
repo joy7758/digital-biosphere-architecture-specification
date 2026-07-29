@@ -15,24 +15,27 @@
   "conformance_reason_codes": [
     "TITMAS-STAGE5-CONTRIBUTION-CONFORMANT"
   ],
-  "independent_agent_review_complete": false,
-  "review_result": "UNKNOWN_POST_DISPATCH_OUTCOME",
-  "review_failure_state": "FAILED_AFTER_DISPATCH_OUTCOME_UNKNOWN",
-  "authorized_review_attempts": 2,
-  "confirmed_review_responses": 0,
+  "independent_agent_review_complete": true,
+  "review_result": "PASS",
+  "review_id": "STAGE5-REVIEW-A04-001",
+  "review_submission_status": "HUMAN_DISPOSITION_REQUIRED",
+  "authorized_review_attempts": 3,
+  "confirmed_review_responses": 1,
   "semantic_plan_durable": true,
   "semantic_contribution_durable": true,
-  "semantic_review_durable": false,
+  "semantic_review_durable": true,
   "checkpoint_ids": [
     "stage5-contributor-plan",
-    "stage5-standard-contribution"
+    "stage5-standard-contribution",
+    "stage5-standard-review-a04-deepseek"
   ],
   "checkpoint_hashes": [
     "dd3db27b50a9c4a32ef0f526dcaaf0f7a9541685a5f6c91eeac411bdfeed18cf",
-    "af5fe38eeaef4b03e07edb753085be6850a083f3f63fbf39801d60e5f1643b62"
+    "af5fe38eeaef4b03e07edb753085be6850a083f3f63fbf39801d60e5f1643b62",
+    "dd51594360093216e23250e835e2f818ecc9ab82ff27f94441e0fe3850653517"
   ],
-  "model_calls": 4,
-  "provider_calls": 4,
+  "model_calls": 5,
+  "provider_calls": 5,
   "automatic_retry_count": 0,
   "models": [
     {
@@ -79,26 +82,43 @@
       "usage_output_tokens": 0,
       "usage_total_tokens": 0,
       "decision_reference": "TITMAS-STAGE-5-PRIVATE-AGENT-CONTRIBUTION-PILOT-A02"
+    },
+    {
+      "provider": "BAIDU_QIANFAN",
+      "requested_model": "deepseek-v3.2",
+      "returned_model": "deepseek-v3.2",
+      "model_identity_status": "MATCH",
+      "capture_state": "FINALIZED_SUCCESS",
+      "response_body_sha256": "4a86f28805522302de1967c9cb73ed12c2d5d5c55cda93925b06b678df2199a2",
+      "usage_input_tokens": 1579,
+      "usage_output_tokens": 351,
+      "usage_total_tokens": 1930,
+      "decision_reference": "TITMAS-STAGE-5-PRIVATE-AGENT-CONTRIBUTION-PILOT-A04"
     }
   ],
   "token_usage_observed": {
-    "input_tokens": 3258,
-    "output_tokens": 2702,
-    "total_tokens": 5960,
-    "reviewer_usage": "UNKNOWN_POST_DISPATCH_OUTCOME_FOR_BOTH_AUTHORIZED_ATTEMPTS"
+    "input_tokens": 4837,
+    "output_tokens": 3053,
+    "total_tokens": 7890,
+    "unknown_usage_attempts": 2
   },
   "cost": {
     "observed_qwen_standard_list_rate_estimate_cny": 0.136368,
-    "reviewer_actual_cost_cny": "UNKNOWN_POST_DISPATCH_OUTCOME_FOR_BOTH_AUTHORIZED_ATTEMPTS",
+    "observed_deepseek_token_plan_estimate_cny": 0.004211,
+    "observed_known_total_estimate_cny": 0.140579,
+    "kimi_attempts_actual_cost_cny": "UNKNOWN_POST_DISPATCH_OUTCOME_FOR_BOTH_AUTHORIZED_ATTEMPTS",
     "a01_conservative_total_upper_bound_cny": 7.409256,
     "a01_authorized_max_cny": 10,
     "a02_authorization_basis": "ONE_ADDITIONAL_HUMAN_AUTHORIZED_CALL_WITHOUT_BILLING_TRUTH",
     "billing_truth_available": false
   },
-  "human_disposition": "REQUIRED",
-  "pilot_status": "PILOT_REJECTED",
-  "stage5_private_agent_pilot_complete": false,
-  "stage5_private_preview_operational": false,
+  "human_disposition": "ACCEPT_PILOT",
+  "human_disposition_completed": true,
+  "specification_candidate_disposition": "DEFER",
+  "private_preview_disposition": "ACCEPT_STAGE5_PRIVATE_PREVIEW",
+  "pilot_status": "PILOT_ACCEPTED",
+  "stage5_private_agent_pilot_complete": true,
+  "stage5_private_preview_operational": true,
   "core_access_count": 0,
   "private_repository_access_granted": false,
   "raw_prompt_retained": false,
@@ -109,13 +129,12 @@
   "formal_specification_registry_modified": false,
   "further_review_authorized": false,
   "limitations": [
-    "TWO_AUTHORIZED_INDEPENDENT_REVIEW_OUTCOMES_UNKNOWN",
-    "NO_REVIEW_CHECKPOINT",
-    "A02_WAS_A_NEW_HUMAN_AUTHORIZED_ATTEMPT_NOT_AN_AUTOMATIC_RETRY",
-    "TRANSPORT_TIMEOUT_HYPOTHESIS_NOT_CONFIRMED_ROOT_CAUSE",
-    "PILOT_REJECTION_IS_FAIL_CLOSED_NOT_CONTRIBUTION_QUALITY_JUDGMENT",
+    "A01_AND_A02_PROVIDER_OUTCOMES_REMAIN_UNKNOWN",
+    "A04_WAS_A_NEW_HUMAN_AUTHORIZED_ATTEMPT_NOT_AN_AUTOMATIC_RETRY",
+    "ONE_PRIVATE_SYNTHETIC_AGENT_PILOT",
+    "POSITIVE_ONLY_TEST_VECTOR_HAS_NON_BLOCKING_NEGATIVE_COVERAGE_GAP",
     "PILOT_ACCEPTANCE_NE_STANDARD_ADOPTION",
-    "HUMAN_DISPOSITION_REQUIRED",
-    "COST_IS_BOUNDED_ESTIMATE_NOT_BILLING_TRUTH"
+    "PRIVATE_PREVIEW_NE_COMMERCIAL_ECOSYSTEM",
+    "COST_IS_ESTIMATED_NOT_BILLING_TRUTH"
   ]
 }

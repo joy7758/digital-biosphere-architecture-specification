@@ -14,23 +14,24 @@ import validate_agent_audit
 
 
 class AgentAuditValidationTests(unittest.TestCase):
-    def test_negative_result_is_valid_and_fail_closed(self):
+    def test_complete_result_preserves_recorded_limitations(self):
         result = validate_agent_audit.validate()
         self.assertEqual(
-            "PASS_WITH_RECORDED_REPEATED_NEGATIVE_RESULT", result["status"]
+            "PASS_COMPLETE_WITH_RECORDED_LIMITATIONS", result["status"]
         )
-        self.assertFalse(result["stage5_private_preview_operational"])
+        self.assertTrue(result["stage5_private_preview_operational"])
         self.assertEqual(0, result["automatic_retry_count"])
-        self.assertEqual(2, result["authorized_review_attempts"])
+        self.assertEqual(3, result["authorized_review_attempts"])
+        self.assertTrue(result["review_checkpoint_durable"])
 
-    def test_unknown_review_cannot_become_operational(self):
+    def test_operational_state_requires_durable_review(self):
         original = validate_agent_audit.load
 
         def altered(name):
             value = original(name)
-            if name == "sanitized-agent-pilot-audit.json":
+            if name == "sanitized-standard-review.json":
                 value = copy.deepcopy(value)
-                value["stage5_private_preview_operational"] = True
+                value["checkpoint_state"] = "PERSISTING"
             return value
 
         with patch.object(validate_agent_audit, "load", side_effect=altered):
