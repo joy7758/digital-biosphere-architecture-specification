@@ -2,12 +2,18 @@
 document_id: TITMAS-PRIVATE-CORE-COMMERCIALIZATION-BOUNDARY-REPORT-v0.1
 title: TITMAS Private Core Commercialization Boundary Completion Report v0.1
 title_zh: TITMAS 私有核心商业化边界完成报告 v0.1
-status: validated-pr-candidate
+status: completed-merged-private-main
 decision_reference: TITMAS-PRIVATE-CORE-COMMERCIALIZATION-SUPERSESSION-D01
 decided_by_ref: zhangbin
 ---
 
 # TITMAS Private Core Commercialization Boundary Completion Report v0.1
+
+```text
+pr_number=48
+pr_head=ecacfe489c9fc4d80c288340a86c00cf598ca864
+merge_commit=f893d5ef986e52e70957d6bef5c66dfbd1329fba
+```
 
 ## Outcome
 
