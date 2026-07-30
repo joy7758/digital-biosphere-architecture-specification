@@ -95,29 +95,29 @@ test("accepts formal mode only when every machine truth surface and input agree"
   assert.equal(context.developerPreviewReleased, true);
   assert.equal(context.dbosWheelUrl, wheelUrl);
   assert.equal(context.releasedByRef, "zhangbin");
-  assert.match(routeMarkers(context.mode).enStatus[1], /Stage 5\.2 external developer trial in progress/);
+  assert.match(routeMarkers(context.mode).enStatus[1], /Stage 5\.7 agent-native benchmark complete/);
 });
 
 test("routeMarkers yields formal release markers when mode is formal", () => {
   const markers = routeMarkers("formal");
   assert.deepEqual(markers, {
-    zhHome: ["<html lang=\"zh-CN\">", "申请有界私有开发者试用"],
-    enHome: ["<html lang=\"en\">", "Apply for a bounded private developer trial"],
+    zhHome: ["<html lang=\"zh-CN\">", "查看智能体基准证据"],
+    enHome: ["<html lang=\"en\">", "Read the agent benchmark evidence"],
     zhStatus: [
       "<html lang=\"zh-CN\">",
-      "TITMAS Stage 5.2 外部开发者试用进行中",
+      "TITMAS Stage 5.7 智能体原生基准完成",
     ],
     enStatus: [
       "<html lang=\"en\">",
-      "TITMAS Stage 5.2 external developer trial in progress",
+      "TITMAS Stage 5.7 agent-native benchmark complete",
     ],
   });
 });
 
 test("routeMarkers yields candidate markers for other modes and edge cases", () => {
   const expectedCandidateMarkers = {
-    zhHome: ["<html lang=\"zh-CN\">", "申请有界私有开发者试用"],
-    enHome: ["<html lang=\"en\">", "Apply for a bounded private developer trial"],
+    zhHome: ["<html lang=\"zh-CN\">", "查看智能体基准证据"],
+    enHome: ["<html lang=\"en\">", "Read the agent benchmark evidence"],
     zhStatus: [
       "<html lang=\"zh-CN\">",
       "当前不是正式发布",

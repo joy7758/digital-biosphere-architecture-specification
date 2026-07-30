@@ -53,7 +53,7 @@ test("keeps all established bilingual surfaces reachable", async () => {
   }
 });
 
-test("keeps the current trial truth while restoring established content", async () => {
+test("keeps historical E01 while promoting the agent-native mainline", async () => {
   const [homeResponse, statusResponse] = await Promise.all([render("/"), render("/status")]);
   const [home, status] = await Promise.all([homeResponse.text(), statusResponse.text()]);
 
@@ -61,8 +61,9 @@ test("keeps the current trial truth while restoring established content", async 
   assert.match(home, /夏日之海/);
   assert.match(home, /\/summersea-logo\.png/);
   assert.match(home, /TITMAS Digital Cell Demo/);
-  assert.match(home, /E01 External Human Developer Trial/);
-  assert.match(status, /TITMAS Stage 5\.2/);
+  assert.match(home, /E01 Human Compatibility Observation/);
+  assert.match(home, /Stage 5\.7 Agent-Native Selection/);
+  assert.match(status, /TITMAS Stage 5\.7/);
   assert.match(status, /IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION/);
 });
 

@@ -57,10 +57,12 @@ test("renders equivalent Chinese and English public entry points", async () => {
   assert.match(en, /The first trustworthy loop is designed—not executed/);
   assert.match(zh, /Observation ≠ Evidence/);
   assert.match(en, /Evaluation ≠ Authorization/);
-  assert.match(zh, /E01 External Human Developer Trial/);
-  assert.match(en, /E01 External Human Developer Trial/);
-  assert.match(zh, /申请有界私有开发者试用/);
-  assert.match(en, /Apply for a bounded private developer trial/);
+  assert.match(zh, /E01 Human Compatibility Observation/);
+  assert.match(en, /E01 Human Compatibility Observation/);
+  assert.match(zh, /查看智能体基准证据/);
+  assert.match(en, /Read the agent benchmark evidence/);
+  assert.match(zh, /24\/24/);
+  assert.match(en, /24\/24/);
   assert.match(zh, /AGENT START HERE/);
   assert.match(en, /Understand TITMAS at a glance/);
   assert.match(zh, /10 分钟判断 TITMAS 是否适合你的多智能体系统/);
@@ -99,8 +101,8 @@ test("renders bilingual status pages with fail-closed truth", async () => {
   assert.match(en, /2173c258f91a/);
   assert.match(zh, /E01_STATUS/);
   assert.match(en, /E01_STATUS/);
-  assert.match(zh, /平台发布审核等待中/);
-  assert.match(en, /platform publication review pending/);
+  assert.match(zh, /COMPENSATED_HUMAN_TRIAL_STRATEGY/);
+  assert.match(en, /COMPENSATED_HUMAN_TRIAL_STRATEGY/);
 });
 
 test("returns 404 for an unknown route", async () => {
@@ -122,6 +124,9 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("robots.txt", root)),
     access(new URL("sitemap.xml", root)),
     access(new URL("summersea-logo.png", root)),
+    access(new URL("evidence/stage5-7/aggregate-results.json", root)),
+    access(new URL("evidence/stage5-7/agent-selection-audit.json", root)),
+    access(new URL("evidence/stage5-7/evidence-manifest.json", root)),
   ]);
 
   const [agentIndex, status, agentCustomerPackage, dbosPackage, llms] = await Promise.all([

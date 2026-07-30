@@ -103,15 +103,15 @@ export function resolveReleaseContext(environment, resources) {
 
 export function routeMarkers(mode) {
   return {
-    zhHome: ["<html lang=\"zh-CN\">", "申请有界私有开发者试用"],
-    enHome: ["<html lang=\"en\">", "Apply for a bounded private developer trial"],
+    zhHome: ["<html lang=\"zh-CN\">", "查看智能体基准证据"],
+    enHome: ["<html lang=\"en\">", "Read the agent benchmark evidence"],
     zhStatus: [
       "<html lang=\"zh-CN\">",
-      mode !== "formal" ? "当前不是正式发布" : "TITMAS Stage 5.2 外部开发者试用进行中",
+      mode !== "formal" ? "当前不是正式发布" : "TITMAS Stage 5.7 智能体原生基准完成",
     ],
     enStatus: [
       "<html lang=\"en\">",
-      mode !== "formal" ? "This is not a release" : "TITMAS Stage 5.2 external developer trial in progress",
+      mode !== "formal" ? "This is not a release" : "TITMAS Stage 5.7 agent-native benchmark complete",
     ],
   };
 }

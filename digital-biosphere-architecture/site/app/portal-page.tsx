@@ -9,8 +9,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
   const demosPath = locale === "zh" ? "/demos/" : "/en/demos/";
   const digitalCellPath = locale === "zh" ? "/digital-cell/" : "/en/digital-cell/";
   const publicProfileHref = "https://github.com/joy7758";
-  const trialInterestHref =
-    "https://github.com/joy7758/joy7758/issues/new?template=titmas-private-trial-interest.yml";
+  const primaryEvidenceHref = "/evidence/stage5-7/aggregate-results.json";
   const agentDirectory = [
     {
       id: "research",
@@ -131,9 +130,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
             <div className="hero-actions">
               <a
                 className="button button-primary"
-                href={trialInterestHref}
-                target="_blank"
-                rel="noreferrer"
+                href={primaryEvidenceHref}
               >
                 {c.primaryCta}
               </a>
@@ -143,6 +140,40 @@ export function PortalPage({ locale }: { locale: Locale }) {
               {c.trialMeta.map((item) => <span key={item}>{item}</span>)}
             </div>
             <p className="truth-notice"><span>i</span>{c.notice}</p>
+          </div>
+        </section>
+
+        <section className="section agent-benchmark-section" data-section-id="agent-benchmark">
+          <div className="section-shell">
+            <div className="validation-heading">
+              <div className="section-heading">
+                <p className="section-kicker">AGENT-NATIVE EVIDENCE / 智能体原生证据</p>
+                <h2>{c.agentBenchmarkTitle}</h2>
+                <p>{c.agentBenchmarkLead}</p>
+              </div>
+              <div className="validation-question">
+                <span>FROZEN RESULT BOUNDARY</span>
+                <p>
+                  {locale === "zh"
+                    ? "Agent Selection ≠ Customer Adoption · Agent ROI ≠ Production Readiness · Human Accountability Retained"
+                    : "Agent Selection ≠ Customer Adoption · Agent ROI ≠ Production Readiness · Human Accountability Retained"}
+                </p>
+              </div>
+            </div>
+            <div className="validation-state-grid">
+              {c.agentBenchmarkMetrics.map(([label, value, detail]) => (
+                <article key={label}>
+                  <span>{label}</span>
+                  <strong>{value}</strong>
+                  <p>{detail}</p>
+                </article>
+              ))}
+            </div>
+            <div className="agent-benchmark-links">
+              {c.agentBenchmarkLinks.map(([label, href]) => (
+                <a href={href} key={href}>{label}<span>→</span></a>
+              ))}
+            </div>
           </div>
         </section>
 

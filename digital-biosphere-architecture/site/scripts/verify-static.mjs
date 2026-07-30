@@ -98,13 +98,13 @@ if (releaseContext.mode === "candidate") {
   assert.match(zhStatus, /当前不是正式发布/);
   assert.match(enStatus, /This is not a release/);
 } else {
-  assert.match(zhStatus, /TITMAS Stage 5\.2 外部开发者试用进行中/);
-  assert.match(enStatus, /TITMAS Stage 5\.2 external developer trial in progress/);
+  assert.match(zhStatus, /TITMAS Stage 5\.7 智能体原生基准完成/);
+  assert.match(enStatus, /TITMAS Stage 5\.7 agent-native benchmark complete/);
 }
-assert.match(zh, /E01 External Human Developer Trial/);
-assert.match(en, /E01 External Human Developer Trial/);
-assert.match(zh, /申请有界私有开发者试用/);
-assert.match(en, /Apply for a bounded private developer trial/);
+assert.match(zh, /E01 Human Compatibility Observation/);
+assert.match(en, /E01 Human Compatibility Observation/);
+assert.match(zh, /查看智能体基准证据/);
+assert.match(en, /Read the agent benchmark evidence/);
 assert.match(zh, /AGENT START HERE/);
 assert.match(en, /Understand TITMAS at a glance/);
 assert.match(zh, /10 分钟判断 TITMAS 是否适合你的多智能体系统/);
@@ -157,7 +157,7 @@ assert.equal(status.gates.TITMAS_ADOPTION_VALIDATION_READY, false);
 assert.equal(status.gates.TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE, true);
 assert.equal(status.gates.TITMAS_PILOT_EXECUTION_AUTHORIZED, false);
 assert.equal(status.gates.COMPLETE_VERTICAL_SLICE_EXECUTED, false);
-assert.equal(status.current_stage, "TITMAS_STAGE_5_2_EXTERNAL_DEVELOPER_TRIAL");
+assert.equal(status.current_stage, "TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK");
 assert.equal(status.e01_status, "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION");
 assert.equal(status.e01_participant_access_authorized, true);
 assert.equal(status.e01_core_repository_access, false);

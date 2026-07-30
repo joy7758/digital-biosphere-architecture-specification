@@ -8,8 +8,14 @@
   "infrastructure_positioning": "Trusted Multi-Agent Infrastructure",
   "project_family": "Digital Biosphere",
   "primary_customer": "AI_AGENT",
-  "current_state": "stage5_2_external_developer_trial",
-  "current_stage": "TITMAS_STAGE_5_2_EXTERNAL_DEVELOPER_TRIAL",
+  "current_state": "stage5_7_agent_native_selection_and_roi_benchmark_complete",
+  "current_stage": "TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK",
+  "agent_absolute_priority_principle_adopted": true,
+  "primary_operational_customer": "AI_AGENT",
+  "machine_interface_precedes_human_interface": true,
+  "agent_evidence_precedes_human_opinion": true,
+  "human_view_is_derived_view": true,
+  "human_usability_primary_gate": false,
   "current_core_repository_visibility": "PRIVATE",
   "public_core_clone_available": false,
   "public_protocol_released": false,
@@ -18,6 +24,10 @@
   "titmas_stage_5_1_private_trial_channel_ready": true,
   "titmas_public_trial_interest_entry_active": true,
   "e01_status": "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION",
+  "e01_classification": "LEGACY_OPTIONAL_HUMAN_COMPATIBILITY_OBSERVATION",
+  "e01_is_primary_validation": false,
+  "e01_is_program_gate": false,
+  "e01_is_commercial_proof": false,
   "e01_participant_access_authorized": true,
   "e01_participant_access_active": true,
   "e01_access_mode": "ACTIVE_READ_ONLY",
@@ -30,8 +40,9 @@
   "next_trial_slot_authorized": false,
   "max_active_external_participants": 1,
   "compensated_trial_recruitment_demand_submitted": true,
-  "compensated_trial_recruitment_publication_confirmed": false,
-  "compensated_trial_recruitment_platform_review_status": "PENDING",
+  "compensated_trial_recruitment_publication_confirmed": true,
+  "compensated_trial_recruitment_platform_review_status": "MATCHING_STOP_REQUESTED_CONFIRMATION_PENDING",
+  "compensated_human_trial_strategy_status": "RETIRED",
   "formal_standard_change_authorized": false,
   "commercial_access_granted": false,
   "titmas_community_established": false,
@@ -71,6 +82,9 @@
     "dbos_public_package_manifest": "/dbos-public-package-manifest.json",
     "public_safe_sdk_manifest": "/sdk/v0.1/manifest.json",
     "synthetic_entity_example": "/sdk/v0.1/examples/synthetic-entity.json",
+    "stage5_7_aggregate": "/evidence/stage5-7/aggregate-results.json",
+    "stage5_7_audit": "/evidence/stage5-7/agent-selection-audit.json",
+    "stage5_7_manifest": "/evidence/stage5-7/evidence-manifest.json",
     "trial_interest": "https://github.com/joy7758/joy7758/issues/new?template=titmas-private-trial-interest.yml"
   },
   "architecture_roles": {
@@ -118,6 +132,9 @@
     "formal_standard_change_authorized": false
   },
   "hard_boundaries": [
+    "Agent priority != Agent authority",
+    "Agent selection != Customer adoption",
+    "Agent ROI != Production readiness",
     "Evidence != Truth",
     "Evaluation != Authority",
     "Recommendation != Decision",
@@ -125,6 +142,20 @@
     "Capability != Permission",
     "Registration != Activation"
   ],
+  "stage5_7_agent_native_selection_roi": {
+    "status": "COMPLETE_WITH_RECORDED_LIMITATIONS",
+    "providers_completed": 3,
+    "exact_models_completed": 4,
+    "valid_sessions": 24,
+    "option_d_included": "24/24",
+    "option_d_ranked_first": "24/24",
+    "option_d_exclusive": "7/24",
+    "average_frozen_formula_agent_roi": 12.504572,
+    "agent_selection_auditor_status": "PASS",
+    "k3_sessions_executed": 0,
+    "customer_adoption_established": false,
+    "production_ready": false
+  },
   "agent_customer_validation": {
     "baseline_id": "TMAI-ACV-20260721-001",
     "baseline_result": "CONDITIONAL",
@@ -178,5 +209,5 @@
     "production_ready": false
   },
   "public_profile": "https://github.com/joy7758",
-  "observed_at": "2026-07-29T22:30:00+08:00"
+  "observed_at": "2026-07-30T03:00:00+08:00"
 }

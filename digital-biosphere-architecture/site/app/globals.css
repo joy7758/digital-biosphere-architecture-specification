@@ -186,6 +186,11 @@ button, input { font: inherit; }
 .signal-card p { margin: 0; color: var(--ink-soft); line-height: 1.65; }
 
 .validation-section { background: white; }
+.agent-benchmark-section { background: var(--paper-soft); }
+.agent-benchmark-links { margin-top: 18px; display: grid; grid-template-columns: repeat(4, 1fr); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; }
+.agent-benchmark-links a { padding: 18px 20px; display: flex; justify-content: space-between; gap: 14px; color: var(--violet-deep); background: white; border-right: 1px solid var(--line); font-weight: 750; text-decoration: none; }
+.agent-benchmark-links a:last-child { border-right: 0; }
+.agent-benchmark-links a:hover { background: #eef0f9; }
 .validation-heading { display: grid; grid-template-columns: 1.15fr .85fr; gap: 54px; align-items: end; }
 .validation-question { margin-bottom: 48px; padding: 25px 28px; background: #f7f5ed; border-left: 5px solid var(--amber); }
 .validation-question span, .validation-label { color: #8b620b; font: 760 .68rem var(--font-mono); letter-spacing: .12em; }
@@ -306,7 +311,7 @@ button, input { font: inherit; }
 
 /* Additive public-surface restoration.
    These styles cover the established research, application, demo, update,
-   community, and evaluation routes without replacing the current Stage 5.2
+   community, and evaluation routes without replacing the current Stage 5.7
    homepage system above. */
 .skip-link { position: fixed; z-index: 1000; top: .75rem; left: .75rem; padding: .75rem 1rem; border: 1px solid var(--ink); background: var(--paper); color: var(--ink); transform: translateY(-160%); transition: transform 160ms ease; }
 .skip-link:focus { transform: translateY(0); }
@@ -474,6 +479,9 @@ button, input { font: inherit; }
   .current-truth-grid { grid-template-columns: 1fr; }
   .signal-grid { grid-template-columns: repeat(2, 1fr); }
   .validation-state-grid { grid-template-columns: repeat(2, 1fr); }
+  .agent-benchmark-links { grid-template-columns: repeat(2, 1fr); }
+  .agent-benchmark-links a:nth-child(2) { border-right: 0; }
+  .agent-benchmark-links a:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .validation-state-grid article:nth-child(2) { border-right: 0; }
   .validation-state-grid article:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
   .validation-boundaries { grid-template-columns: repeat(2, 1fr); }
@@ -512,6 +520,9 @@ button, input { font: inherit; }
   .signal-grid { grid-template-columns: 1fr; }
   .signal-card { min-height: 280px; }
   .community-surface-grid, .community-state-grid, .community-boundaries, .validation-state-grid, .validation-boundaries { grid-template-columns: 1fr; }
+  .agent-benchmark-links { grid-template-columns: 1fr; }
+  .agent-benchmark-links a { border-right: 0; border-bottom: 1px solid var(--line); }
+  .agent-benchmark-links a:last-child { border-bottom: 0; }
   .developer-path { grid-template-columns: 1fr; }
   .developer-path li { min-height: 92px; border-right: 0; }
   .developer-path li::after { display: none; }
