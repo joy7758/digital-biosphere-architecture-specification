@@ -39,6 +39,18 @@ DBA_IS_RUNTIME=false
 17. `TITMAS/specifications/registry.yaml`（唯一规范注册表）；
 18. `TITMAS/agent-native/tasks/task-registry.json`（唯一任务注册表）。
 
+处理 `TITMAS Agent-Native Commercial Maturity Program` 时，还必须读取：
+
+19. `commercial-program-state.json`（可恢复阶段状态）；
+20. `commercial-readiness.json`（独立就绪矩阵）；
+21. `architecture/ADR-036-agent-native-commercial-maturity-program.md`；
+22. `TITMAS-COMMERCIAL-ARCHITECTURE-v1.0.md`；
+23. `TITMAS-SECURITY-OVERVIEW-v1.0.md`；
+24. `TITMAS-OPERATIONS-RUNBOOK-v1.0.md`。
+
+恢复执行时必须先以实际 Git、服务器和公网状态复核状态文件。不得只根据状态文件
+重复耗费性实验、伪造已等待时间、外部 Agent 使用、付款或生产就绪。
+
 当前规范名称为 `TITMAS Agent-Native Standards Community`（TITMAS
 智能体原生标准社区）；`TITMAS Developer Standards Community` 与
 `TITMAS Infrastructure Developer Community` 仅为兼容别名。每次重大 TITMAS

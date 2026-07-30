@@ -161,3 +161,20 @@ Stage 5.7 的 canonical sanitized evidence 位于
 `titmas-sandbox-gateway@ab1d875921d0a68c5b91fa054f692f1284a75949`。
 24/24 会话把匿名 Option D 排在第一位，但只有 7/24 独占选择；冻结公式平均
 Agent ROI 为 `12.504572`。该结果只适用于合成基准，不是商业采用或生产可靠性证据。
+
+## 8. Agent-Native Commercial Maturity Program
+
+| phase | objective | status | exit evidence |
+|---|---|---|---|
+| `CM-0` | verify Stage 5.8 and current infrastructure truth | `PASS_WITH_LIMITATIONS` | exact source, retained unknowns/failures, server and public baseline |
+| `CM-1` | governance, state machine and architecture freeze | `IN_PROGRESS` | ADR-036, state schemas, architecture/security/operations/data contracts |
+| `CM-2` | first private multi-tenant vertical slice | `NOT_STARTED` | tenant-bound credential, preflight, signed receipt, idempotent usage/quota |
+| `CM-3` | security and operational candidate | `NOT_STARTED` | cross-tenant matrix, scans, backup/restore, incident and rollback drills |
+| `CM-4` | machine onboarding and public-safe integrations | `NOT_STARTED` | machine entries, Python/TypeScript/MCP/framework clients |
+| `CM-5` | internal soak and capacity | `NOT_STARTED` | 72-hour and seven-day real elapsed evidence, load report |
+| `CM-6` | external Agent Beta | `NOT_STARTED` | independent tenants, Agents, frameworks, calls and repeat-use evidence |
+| `CM-7` | Paid Beta Human Decision | `BLOCKED_INPUT` | technical readiness, Beta, legal/pricing packets and Human authorization |
+| `CM-8` | 30-day production/maturity observation | `NOT_STARTED` | real payment, availability, repeat use and maturity thresholds |
+
+Waiting for real elapsed time, external Agent usage or Human commercial
+decisions is a valid state and must not be bypassed.

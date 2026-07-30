@@ -1,0 +1,59 @@
+{
+  "$schema": "architecture/schemas/commercial-program-state-v1.0.schema.json",
+  "program_version": "1.0",
+  "program_id": "TITMAS-AGENT-NATIVE-COMMERCIAL-MATURITY-PROGRAM",
+  "current_phase": "COMMERCIAL_FOUNDATION_BASELINE",
+  "phase_status": "IN_PROGRESS",
+  "started_at": "2026-07-30T19:04:07+08:00",
+  "last_updated_at": "2026-07-30T19:22:40+08:00",
+  "source_commits": {
+    "governance": "e14c4bfbc9814ecb66ee02b48ce9d7c516e4ba12",
+    "data_plane": "dee6c2861d917950c057a8dc2d2feccfc7527ede",
+    "public_integrations": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
+  },
+  "deployment_releases": {
+    "sandbox_preview": "33a10e37d9582f240c518a0b65fb59f12dd3527c",
+    "public_site": "bb60a3ec29379571c787e27d10243545df176472--a1c2ee6db9796f97f8d16dce772f2b02ea477dcfe63cd4fae542c5a1833d7534",
+    "commercial_api_v1": null
+  },
+  "completed_gates": [
+    "STAGE_5_8_SOURCE_IDENTITY_VERIFIED",
+    "STAGE_5_8_FAILURES_AND_UNKNOWNS_RETAINED",
+    "CURRENT_REPOSITORY_AND_SERVER_BASELINE_VERIFIED",
+    "PRE_DEVELOPMENT_AGENT_RECOMMENDATION_GATE_COMPLETED_NOT_RECOMMENDED",
+    "COMMERCIAL_ARCHITECTURE_SPECIFICATION_ADVISORY_REVIEW_PASS"
+  ],
+  "gate_descriptions": {
+    "STAGE_5_8_SOURCE_IDENTITY_VERIFIED": "The canonical source commit was confirmed; Stage 5.8 did not pass.",
+    "STAGE_5_8_FAILURES_AND_UNKNOWNS_RETAINED": "Negative and unknown outcomes are preserved, not resolved.",
+    "CURRENT_REPOSITORY_AND_SERVER_BASELINE_VERIFIED": "A point-in-time read-only baseline was confirmed; no commercial service was deployed.",
+    "PRE_DEVELOPMENT_AGENT_RECOMMENDATION_GATE_COMPLETED_NOT_RECOMMENDED": "The advisory gate completed with NOT_RECOMMENDED and a remediation path.",
+    "COMMERCIAL_ARCHITECTURE_SPECIFICATION_ADVISORY_REVIEW_PASS": "Specification blockers were remediated and re-reviewed; implementation proof is still absent."
+  },
+  "blocked_gates": [],
+  "human_decisions_required": [
+    "PUBLISH_FINAL_PRICING",
+    "ACCEPT_REAL_PAYMENT",
+    "ACCEPT_REAL_CONTRACT",
+    "PUBLISH_LEGAL_TERMS",
+    "CHANGE_DNS_OR_CERTIFICATE",
+    "COMMIT_FORMAL_SLA",
+    "ACCEPT_CUSTOMER_PRODUCTION_DATA",
+    "AUTHORIZE_FORMAL_CERTIFICATION"
+  ],
+  "commercial_technical_ready": false,
+  "paid_beta_ready": false,
+  "production_ready": false,
+  "mature_commercial_infrastructure": false,
+  "limitations": [
+    "STAGE_5_8_COMPARISON_NOT_ASSESSED",
+    "NO_MULTI_TENANT_COMMERCIAL_API_IMPLEMENTED",
+    "NO_SIGNED_RECEIPT_IMPLEMENTED",
+    "NO_USAGE_OR_BILLING_LEDGER_IMPLEMENTED",
+    "NO_BACKUP_OR_RESTORE_EVIDENCE",
+    "NO_EXTERNAL_AGENT_BETA_EVIDENCE",
+    "NO_72_HOUR_7_DAY_OR_30_DAY_ELAPSED_EVIDENCE",
+    "NO_REAL_PAYMENT_OR_CUSTOMER_ADOPTION_EVIDENCE"
+  ],
+  "next_action": "Implement and test one private multi-tenant /api/v1 vertical slice while preserving /sandbox/v0.1."
+}

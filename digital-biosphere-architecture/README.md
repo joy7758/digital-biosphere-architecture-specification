@@ -67,7 +67,13 @@ primary_customer: AI_AGENT
 titmas_agent_absolute_priority: true
 machine_interface_precedes_human_interface: true
 human_usability_gate_required: false
-current_titmas_stage: TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK
+current_titmas_stage: TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM
+commercial_program_status: in-progress
+commercial_program_phase: commercial-foundation-baseline
+commercial_technical_ready: false
+paid_beta_ready: false
+production_ready: false
+mature_commercial_infrastructure: false
 e01_classification: legacy-optional-human-compatibility-observation
 compensated_human_trial_strategy_status: retired
 agent_customer_validation_protocol_defined: true
@@ -178,6 +184,29 @@ AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
 核心开发顺序是 Machine Contract → Machine Validation → Evidence / Failure Record
 → Human Projection。人类意见不再是 agent-native 主线的必要 gate；但合同、付款、
 法律责任、资源所有权、不可逆授权和安全停止仍由人类承担。
+
+### Commercial Maturity Program（商业成熟度计划）
+
+`ADR-036` 已授权从 Developer Preview 进入可恢复、证据闸门驱动的商业技术建设。
+它优先服务 AI Agent，但不把 Agent 变成合同、付款或不可逆决定主体。
+
+- 机器状态：[`commercial-program-state.json`](commercial-program-state.json)
+- 就绪矩阵：[`commercial-readiness.json`](commercial-readiness.json)
+- 商业架构：[`TITMAS-COMMERCIAL-ARCHITECTURE-v1.0.md`](TITMAS-COMMERCIAL-ARCHITECTURE-v1.0.md)
+- Agent 接入：[`TITMAS-AGENT-NATIVE-ONBOARDING-v1.0.md`](TITMAS-AGENT-NATIVE-ONBOARDING-v1.0.md)
+- 当前报告：[`TITMAS-COMMERCIAL-MATURITY-REPORT-v1.0.md`](TITMAS-COMMERCIAL-MATURITY-REPORT-v1.0.md)
+
+```text
+COMMERCIAL_PROGRAM_STATUS=IN_PROGRESS
+COMMERCIAL_TECHNICAL_READY=false
+PAID_BETA_READY=false
+PRODUCTION_READY=false
+MATURE_COMMERCIAL_INFRASTRUCTURE=false
+REAL_PAYMENT_COLLECTION_CONFIRMED=false
+```
+
+Stage 5.8 的结论保持 `NOT_ASSESSED`；失败、未知和未达阈值没有被改写。商业计划继续
+只因为没有发现阻塞性安全问题，不是因为 Stage 5.8 已通过。
 
 E01 及其私有试用历史被保留，并重新分类为
 `LEGACY_OPTIONAL_HUMAN_COMPATIBILITY_OBSERVATION`。它不是首要验证、项目 gate 或

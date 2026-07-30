@@ -45,6 +45,7 @@ DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
 | Research Agent Pilot ↔ DBOS / SAEE | `PASS_PILOT_ROLE` | `PARTIAL` | `SPECIFICATION_DEFINED` | `PREPARED_ONLY` | `NOT_ASSESSED` | `BLOCKED_NOT_READY` | 不得创建 Prototype、Agent、Runtime 或实验 |
 | Adjacent components | `NOT_PASSED` | `NOT_ASSESSED` | `REVIEW_REQUIRED` | `NOT_ASSESSED` | `NOT_ASSESSED` | `NOT_ASSESSED` | 仅保留候选映射 |
 | Trusted Multi-Agent Infrastructure Developer Preview | `PASS_CORE_SCOPE` | `PASS_FROZEN_REMOTE_BASELINE` | `PASS` | `PASS_SCOPED_CLEAN_CLONE` | `AGENT_CUSTOMER_RERUN_PASS` | `G6_SYNTHETIC_G7_PASS_G8_RELEASED_BY_ADR_022` | exact wheel 匿名分发、GitHub Release、百度云 formal deployment 和人工发布决定通过；不是生产采用 |
+| TITMAS Agent-Native Commercial Maturity | `PASS_PROGRAM_ROLE` | `PASS_VERIFIED_SOURCE_BASELINE` | `PASS_ADR_036` | `NOT_STARTED` | `NOT_ASSESSED` | `G5_BOUNDED_TECHNICAL_AUTHORIZATION_G6_G8_NOT_ASSESSED` | 只授权可逆技术建设；商业技术、Paid Beta、Production 和成熟度全部保持 false |
 
 ### Developer Preview Gate Detail（开发者预览闸门明细）
 
@@ -99,3 +100,16 @@ EXECUTION_AUTHORIZED=false
 RELEASE_AUTHORIZED=true
 DEVELOPER_PREVIEW_RELEASED=true
 ```
+
+## 6. Commercial Maturity Gate Detail
+
+| gate | current result | required evidence |
+|---|---|---|
+| `CM-G1` Source and state | `PASS_WITH_LIMITATIONS` | exact DBA/Gateway/Integrations commits, server releases, retained Stage 5.8 result |
+| `CM-G2` Architecture | `PASS_BASELINE` | ADR-036, commercial architecture, security, operations and data boundaries |
+| `CM-G3` Multi-tenant implementation | `NOT_STARTED` | PostgreSQL migrations, tenant/Agent/credential isolation |
+| `CM-G4` Receipt and metering | `NOT_STARTED` | signed receipt, verifier, idempotent Usage/Billing ledgers |
+| `CM-G5` Security and operations | `NOT_ASSESSED` | zero cross-tenant leakage, scans, backup/restore and incident drills |
+| `CM-G6` Agent onboarding | `NOT_STARTED` | machine entries, SDKs/adapters and autonomous two-task reuse |
+| `CM-G7` External Agent Beta | `NOT_STARTED` | independent providers, frameworks, tenants, identities and calls |
+| `CM-G8` Paid/production maturity | `WAITING_FOR_UPSTREAM_GATES` | Human commercial decision, real payment/use and elapsed reliability evidence |

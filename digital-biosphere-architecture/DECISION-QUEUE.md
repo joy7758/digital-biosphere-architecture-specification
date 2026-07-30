@@ -50,6 +50,7 @@ last_reviewed: 2026-07-23
 | `ADR-023` | `ACCEPTED_EXECUTION_AUTHORIZED`：批准 TITMAS 明亮版公开网站源文件推送和现有承载环境发布 | `decided_by_ref=zhangbin`；2026-07-23 用户明确授权 | 允许发布同一已验证网站版本并保留回滚点；不授权 `titmas.cn` 提前切换、GitHub 组织变更、公开贡献、Agent、Runtime 或 Permission |
 | `TITMAS-PRIVATE-CORE-COMMERCIALIZATION-SUPERSESSION-D01` | `ACCEPTED_EXECUTION_AUTHORIZED`：所有核心仓库保持 private，并建立源分类、默认拒绝导出、商业草案和私有智能体客户评估候选 | `decided_by_ref=zhangbin`；2026-07-29 | 废止恢复公开可见性的旧建议并关闭当前公共贡献运行面；保留 PR #41/#42/#45、Welcome Issue #43 与此前公开阶段历史；不授权公开导出、公开镜像、客户访问、真实模型调用、Release 或 Deployment |
 | `ADR-035 / TITMAS-AGENT-ABSOLUTE-PRIORITY-CONSTITUTIONAL-CORRECTION-D01` | `ACCEPTED_EXECUTION_AUTHORIZED`：AI Agent 成为 TITMAS 首要运行客户、选择和验证主体；E01 降级为历史可选兼容性观察；进入 Stage 5.7 匿名选择与 ROI 基准 | `decided_by_ref=zhangbin`；2026-07-30 | 允许治理修正、E01 重分类和有界 Stage 5.7 基准；不产生 Agent 自我授权、商业采用、正式标准、生产或人类责任移除 |
+| `ADR-036 / TITMAS-AGENT-NATIVE-COMMERCIAL-MATURITY-PROGRAM-D01` | `ACCEPTED_EXECUTION_AUTHORIZED_WITH_HUMAN_GATES`：进入可恢复、Agent-first 商业技术成熟度计划 | `decided_by_ref=zhangbin`；2026-07-30 | 允许现有私有 Gateway 内的可逆多租户、Receipt、计量、账单预览、测试和现有百度云候选部署；不授权真实价格、付款、合同、法律发布、DNS、证书、正式 SLA、客户生产数据、认证或公共收费上线 |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 
