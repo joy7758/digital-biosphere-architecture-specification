@@ -38,6 +38,10 @@ aliases. No fourth community name is created.
   [`private-stage5-sdk/python/README.md`](private-stage5-sdk/python/README.md)
 - Stage 5.1 allowlist-reconstructed private developer trial:
   [`private-stage5-1-trial/README.md`](private-stage5-1-trial/README.md)
+- Agent Absolute Priority constitutional correction:
+  [`../architecture/titmas-agent-absolute-priority-constitutional-correction-v0.1.md`](../architecture/titmas-agent-absolute-priority-constitutional-correction-v0.1.md)
+- E01 historical route reclassification:
+  [`../TITMAS-STAGE-5-2-E01-RECLASSIFICATION-RECORD-v0.1.md`](../TITMAS-STAGE-5-2-E01-RECLASSIFICATION-RECORD-v0.1.md)
 
 ## Local validation
 
@@ -98,7 +102,17 @@ STAGE5_1_BLOCK_REASON=NONE
 STAGE5_1_EXTERNAL_PARTICIPANT_INVITATION_AUTHORIZED=false
 STAGE5_1_REAL_MODEL_CALL_COUNT=0
 STAGE5_1_REAL_PROVIDER_CALL_COUNT=0
-CURRENT_STAGE=TITMAS_STAGE_5_PRIVATE_PREVIEW
+TITMAS_AGENT_ABSOLUTE_PRIORITY=true
+PRIMARY_OPERATIONAL_CUSTOMER=AI_AGENT
+MACHINE_INTERFACE_PRECEDES_HUMAN_INTERFACE=true
+HUMAN_USABILITY_GATE_REQUIRED=false
+E01_CLASSIFICATION=LEGACY_OPTIONAL_HUMAN_COMPATIBILITY_OBSERVATION
+E01_IS_PROGRAM_GATE=false
+COMPENSATED_HUMAN_TRIAL_STRATEGY_STATUS=RETIRED
+CURRENT_STAGE=TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK
+STAGE5_7_DESIGN_AUTHORIZED=true
+STAGE5_7_IMPLEMENTATION_COMPLETE=false
+STAGE5_7_REAL_SESSIONS_EXECUTED=0
 PUBLIC_CORE_CLONE_AVAILABLE=false
 PUBLIC_PROTOCOL_RELEASED=false
 EXTERNAL_TRIAL_REQUIRES_EXPLICIT_ACCESS=true
@@ -106,6 +120,10 @@ COMMUNITY_ESTABLISHED=false
 EXTERNAL_CONTRIBUTOR_COUNT=0
 EXTERNAL_ADOPTER_COUNT=0
 ```
+
+Agent-first（智能体优先）是客户、接口和验证优先级，不是 Authority 转移。模型不能
+自我授权、批准标准、签订合同、控制付款或执行不可逆动作。E01 继续作为历史可选的
+human compatibility observation（人类兼容性观察）保留，不再阻塞 Stage 5.7。
 
 The temporary assignment is revocable and limited to this integration
 candidate. It does not grant DBA, DBOS, SAEE, Evidence Truth, Certification,

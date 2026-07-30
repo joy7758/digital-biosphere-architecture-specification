@@ -82,6 +82,16 @@ DBA_IS_RUNTIME=false
 
 推荐结论不是 Implementation Authorization（实现授权）。
 
+## Agent Absolute Priority（智能体绝对优先）
+
+AI Agent 是 TITMAS 的首要 operational customer（运行客户）、发现主体、选择主体、
+验证主体和持续优化对象。核心接口必须先形成 machine-readable contract（机器可读契约）
+和机器验证，再形成面向人类的派生视图。
+
+Agent priority（智能体优先）不是 Agent authority（智能体权威）。模型评价、选择、
+推荐、Conformance 或机器证据不能自动产生合同、付款、Permission、不可逆授权、标准
+采纳、发布或 Truth。人类继续承担法律责任、资源所有权、不可逆授权和安全停止。
+
 ## Mandatory Proposal Questions（提案必答问题）
 
 每个提案必须说明：
@@ -117,6 +127,9 @@ TITMAS_NE_RUNTIME=true
 TITMAS_NE_EXECUTOR=true
 TITMAS_NE_CERTIFICATION_AUTHORITY=true
 AGENT_NATIVE_NE_AUTONOMOUS_AUTHORITY=true
+TITMAS_AGENT_ABSOLUTE_PRIORITY=true
+MACHINE_INTERFACE_PRECEDES_HUMAN_INTERFACE=true
+AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
 ```
 
 ## Architecture Truth Boundaries（架构事实边界）

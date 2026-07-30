@@ -64,6 +64,12 @@ optional_human_trial_participant_source_confirmed: false
 external_developer_trial_execution_authorized: false
 external_developer_validation_complete: false
 primary_customer: AI_AGENT
+titmas_agent_absolute_priority: true
+machine_interface_precedes_human_interface: true
+human_usability_gate_required: false
+current_titmas_stage: TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK
+e01_classification: legacy-optional-human-compatibility-observation
+compensated_human_trial_strategy_status: retired
 agent_customer_validation_protocol_defined: true
 agent_customer_validation_baseline_result: conditional
 agent_customer_validation_rerun_result: pass
@@ -155,6 +161,36 @@ COMMERCIALIZATION_BOUNDARY_DESIGN_ACTIVE=true
 PRIVATE_AGENT_CUSTOMER_READINESS_ACTIVE=true
 COMMUNITY_ESTABLISHED=false
 ```
+
+### Agent Absolute Priority（智能体绝对优先）
+
+`ADR-035` 已将 AI Agent 从“首要验证对象”提升为 TITMAS 的首要 operational
+customer、发现者、选择者和验证者：
+
+```text
+TITMAS_AGENT_ABSOLUTE_PRIORITY=true
+MACHINE_INTERFACE_PRECEDES_HUMAN_INTERFACE=true
+AGENT_EVIDENCE_PRECEDES_HUMAN_OPINION=true
+HUMAN_VIEW_IS_DERIVED_VIEW=true
+AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
+```
+
+核心开发顺序是 Machine Contract → Machine Validation → Evidence / Failure Record
+→ Human Projection。人类意见不再是 agent-native 主线的必要 gate；但合同、付款、
+法律责任、资源所有权、不可逆授权和安全停止仍由人类承担。
+
+E01 及其私有试用历史被保留，并重新分类为
+`LEGACY_OPTIONAL_HUMAN_COMPATIBILITY_OBSERVATION`。它不是首要验证、项目 gate 或
+商业证明。当前主线是
+`TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK`：让多个独立模型在
+匿名可比较方案中选择、拒绝、复用并评价相对 ROI，而不是要求 TITMAS 必须胜出。
+
+入口：
+
+- [`architecture/ADR-035-titmas-agent-absolute-priority.md`](architecture/ADR-035-titmas-agent-absolute-priority.md)
+- [`architecture/titmas-agent-absolute-priority-constitutional-correction-v0.1.md`](architecture/titmas-agent-absolute-priority-constitutional-correction-v0.1.md)
+- [`TITMAS-STAGE-5-2-E01-RECLASSIFICATION-RECORD-v0.1.md`](TITMAS-STAGE-5-2-E01-RECLASSIFICATION-RECORD-v0.1.md)
+- [`TITMAS-STAGE-5-7-AGENT-RECOMMENDATION-GATE-v0.1.md`](TITMAS-STAGE-5-7-AGENT-RECOMMENDATION-GATE-v0.1.md)
 
 ## Governance Intelligence Entry（治理情报入口）
 

@@ -133,3 +133,26 @@ OPEN_STANDARDS_COMMUNITY_IS_MAINLINE=true
 CALIBRATION_IS_SUPPORTING_VALIDATION_ONLY=true
 CALIBRATION_V0_3_AUTHORIZED=false
 ```
+
+## 7. Stage 5.7 Agent-Native Selection and ROI Benchmark
+
+`ADR-035` 将下一条验证主线修正为：
+
+```text
+Anonymous comparable infrastructure options
+  → randomized isolated model sessions
+    → discovery / repair / composition / reuse scenarios
+      → machine metrics and retained failures
+        → Agent Selection Auditor
+          → bounded conclusion
+```
+
+| milestone | objective | status | required evidence |
+|---|---|---|---|
+| `S5.7-A` | 冻结匿名选项、场景、随机化、ROI 评分和上限 | `AUTHORIZED_NOT_IMPLEMENTED` | PR A、测试、空白报告、无品牌提示检查 |
+| `S5.7-B` | 执行多供应商、多模型受控会话 | `BLOCKED_ON_S5.7-A_MERGE` | ≥3 providers、≥4 exact models、≥24 valid runs、失败保留 |
+| `S5.7-C` | 独立 Agent Selection Auditor 复核 | `NOT_STARTED` | 匿名、公平、无事后改分、未知保留审计 |
+| `S5.7-D` | 提交脱敏结果和有界结论 | `NOT_STARTED` | PR B、manifest、hash chain、aggregate、limitations |
+
+E01 与付费真人试用不再是本路线的前置 gate。Stage 5.7 可以证明选择和相对 ROI，
+不能证明客户采用、合同、正式标准、Production 或 Human Authority 已被替代。
