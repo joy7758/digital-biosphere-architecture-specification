@@ -26,6 +26,30 @@ Implementation effect: `NONE`
 
 发生战略解释冲突时，本宪法优先于普通路线图和产品提案。它不替代具体仓库事实、适用法律、开源许可证、商业协议或显式 Human Governance（人工治理）决策。
 
+## Principle 0: Agent Absolute Priority
+
+TITMAS 首先为 AI Agent 提供可发现、可理解、可调用、可验证、可复用和可组合的可信
+基础设施表面。Machine Contract（机器契约）先于 Human Projection（人类投影视图）；
+独立、多模型、对抗、竞争和长期运行的机器证据先于人类主观意见进入技术判断。
+
+```text
+TITMAS_AGENT_ABSOLUTE_PRIORITY=true
+MACHINE_INTERFACE_PRECEDES_HUMAN_INTERFACE=true
+AGENT_EVIDENCE_PRECEDES_HUMAN_OPINION=true
+HUMAN_VIEW_IS_DERIVED_VIEW=true
+```
+
+“绝对优先”只定义项目服务顺序和验证顺序，不定义权力继承。AI Agent 不能自我授权、
+批准正式标准、签订合同、控制付款、承担法律责任或执行不可逆动作。Human Owner 继续
+负责合同、付款、资源、法律责任、不可逆授权和安全停止。
+
+```text
+AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
+AGENT_SELECTION_NE_ADOPTION=true
+AGENT_RECOMMENDATION_NE_CONTRACT=true
+EVIDENCE_NE_TRUTH=true
+```
+
 ## Canonical Role Separation
 
 ### DBOS
@@ -201,6 +225,9 @@ DBOS_NE_SAEE=true
 DBOS_GOVERNS_EXISTENCE=true
 SAEE_GOVERNS_EVOLUTION=true
 DEVELOPER_ECOSYSTEM_FIRST=true
+TITMAS_AGENT_ABSOLUTE_PRIORITY=true
+MACHINE_INTERFACE_PRECEDES_HUMAN_INTERFACE=true
+AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
 OPEN_INFRASTRUCTURE_NE_FREE_PRODUCT=true
 SPECIFICATION_NE_IMPLEMENTATION=true
 STRATEGY_NE_COMMERCIAL_COMMITMENT=true

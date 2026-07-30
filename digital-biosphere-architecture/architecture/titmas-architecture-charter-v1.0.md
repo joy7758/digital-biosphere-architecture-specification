@@ -21,6 +21,24 @@ TITMAS 为外部开发者和系统提供规范、Binding、Crosswalk、Conforman
 Digital Immune、Agent Health、Jules/Codex/Qoder 修复闭环、VEAP/VEC 应用和 SAEE
 Enterprise 是解释层、Profile、使用场景或上层产品，不是 TITMAS 本体。
 
+## Primary program principle
+
+AI Agent 是 TITMAS 的首要 operational customer、发现者、选择者、调用者、验证者、
+评价者和持续优化对象。规范与实现候选必须首先提供 machine-readable contract、
+machine-verifiable result、失败语义和可复用入口；人类网页、报告与控制台是机器事实的
+派生视图，不得成为唯一真相源。
+
+```text
+TITMAS_AGENT_ABSOLUTE_PRIORITY=true
+MACHINE_INTERFACE_PRECEDES_HUMAN_INTERFACE=true
+AGENT_EVIDENCE_PRECEDES_HUMAN_OPINION=true
+HUMAN_VIEW_IS_DERIVED_VIEW=true
+```
+
+该原则不授予 Agent 权威。Human Owner 继续承担合同、付款、法律责任、资源所有权、
+不可逆授权和安全停止。Agent 选择、推荐、评价或 Conformance 均不能替代 Human
+Decision。
+
 ## Permanent boundaries
 
 ```text
@@ -35,6 +53,7 @@ TITMAS_NE_REPOSITORY_FIXER=true
 DIGITAL_IMMUNE_MODEL_IS_EXPLANATORY_LAYER=true
 APPLICATION_SCENARIO_NE_CORE_ARCHITECTURE=true
 COMMUNITY_GOVERNANCE_NE_PRODUCT_RUNTIME=true
+AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
 ```
 
 不得通过后续 Profile 或实现创建第二套 Evidence、Verification、Authority、Identity 或
@@ -103,4 +122,6 @@ TITMAS_COMMUNITY_ESTABLISHED=false
 TITMAS_FOUNDATION_CREATED=false
 TITMAS_CERTIFICATION_AUTHORIZED=false
 TITMAS_RELEASE_AUTHORIZED=false
+TITMAS_AGENT_ABSOLUTE_PRIORITY=true
+HUMAN_ACCOUNTABILITY_REMOVED=false
 ```

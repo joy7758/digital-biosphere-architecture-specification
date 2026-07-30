@@ -28,6 +28,23 @@ DBA_IS_DBOS=false
 DBA_IS_SAEE=false
 ```
 
+### Agent Absolute Priority（智能体绝对优先）
+
+TITMAS 与可信多智能体基础设施路线以 AI Agent 为首要 operational customer、
+发现主体、选择主体和验证主体。协议、Schema、SDK、Sandbox、状态和失败语义必须
+先做到 machine-readable（机器可读）、machine-verifiable（机器可验证）和
+machine-reusable（机器可复用），再生成面向人类的解释视图。
+
+该优先级不改变人类对合同、付款、法律责任、资源、不可逆授权和安全停止的责任。
+
+```text
+TITMAS_AGENT_ABSOLUTE_PRIORITY=true
+MACHINE_INTERFACE_PRECEDES_HUMAN_INTERFACE=true
+AGENT_EVIDENCE_PRECEDES_HUMAN_OPINION=true
+HUMAN_VIEW_IS_DERIVED_VIEW=true
+AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
+```
+
 ## 2. Program Structure（项目群结构）
 
 ```text
@@ -79,6 +96,7 @@ PROGRAM_GOVERNANCE_NE_OPERATIONAL_AUTHORITY=true
 PROGRAM_GOVERNANCE_NE_EVOLUTION_AUTHORITY=true
 PROGRAM_DECISION_NE_EXECUTION=true
 PROGRAM_STATUS_NE_PROJECT_TRUTH=true
+AGENT_RECOMMENDATION_NE_HUMAN_DECISION=true
 ```
 
 `ADR-020` 已指派 `zhangbin` 为 Human Program Owner（人工项目群负责人）。该指派负责
@@ -192,4 +210,6 @@ ENTITY_CREATED=false
 CAPABILITY_CREATED=false
 PERMISSION_GRANTED=false
 EVIDENCE_TRUTH_CHANGED=false
+AGENT_ABSOLUTE_PRIORITY_ADOPTED=true
+HUMAN_ACCOUNTABILITY_REMOVED=false
 ```

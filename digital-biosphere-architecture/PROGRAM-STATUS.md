@@ -185,3 +185,30 @@ This overlay records the current integration candidate only. It does not revise
 historical Developer Preview facts or authorize merge, release, launch,
 external participation, certification, Foundation creation, or commercial
 activity.
+
+## 8. Agent Absolute Priority Overlay（智能体绝对优先覆盖层）
+
+Observed on 2026-07-30 under `ADR-035`:
+
+```text
+TITMAS_AGENT_ABSOLUTE_PRIORITY=true
+PRIMARY_OPERATIONAL_CUSTOMER=AI_AGENT
+MACHINE_INTERFACE_PRECEDES_HUMAN_INTERFACE=true
+AGENT_EVIDENCE_PRECEDES_HUMAN_OPINION=true
+HUMAN_VIEW_IS_DERIVED_VIEW=true
+HUMAN_USABILITY_GATE_REQUIRED=false
+CURRENT_TITMAS_STAGE=TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK
+STAGE5_7_DESIGN_AUTHORIZED=true
+STAGE5_7_IMPLEMENTATION_COMPLETE=false
+STAGE5_7_REAL_SESSIONS_EXECUTED=0
+E01_CLASSIFICATION=LEGACY_OPTIONAL_HUMAN_COMPATIBILITY_OBSERVATION
+E01_IS_PRIMARY_VALIDATION=false
+E01_IS_PROGRAM_GATE=false
+E01_IS_COMMERCIAL_PROOF=false
+COMPENSATED_HUMAN_TRIAL_STRATEGY_STATUS=RETIRED
+HUMAN_TRIAL_REQUIRED_FOR_NEXT_STAGE=false
+```
+
+本覆盖层不改写 E01 的邀请、访问、参与者行为或到期事实。Agent-first（智能体优先）
+也不创建 Agent Authority；合同、付款、法律责任、不可逆授权和安全停止仍属于人类
+责任域。

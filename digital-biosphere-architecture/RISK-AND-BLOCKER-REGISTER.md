@@ -39,6 +39,8 @@ risk_acceptance_authority_assigned: true
 | `R-017` | `MEDIUM` | 给定 URL 后的机器理解或元数据 description 命中被误写成 open-web discovery（开放网络自然发现） | `TMAI-OWD-20260722-001` 首轮 6 查询无命中；修复后 GitHub 完整新 description 已命中，但规范英文名、中文名和 4 个公开搜索仍无精确命中 | 保留 `OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY`；`ADR-022` 仅为 v0.1 接受该限制，后续继续复查 | `ACCEPTED_LIMITATION_FOR_V0_1_RECHECK_OPEN` |
 | `R-018` | `HIGH` | DBOS 保持 private，使 AI agent 能理解 TMAI 但不能自主获取、运行或复用核心存在基础设施 | exact public-safe wheel 已作为 GitHub Release asset 公开并通过匿名 hash 和隔离安装复验 | 整仓继续 private；只使用有界包并保持 Runtime/Permission 非声明 | `MITIGATED_BY_PUBLIC_SAFE_WHEEL_RELEASE_DBOS_PRIVATE` |
 | `R-019` | `HIGH` | 直接公开 DBOS 整仓会披露本机路径和未纳入发布的项目资产清单 | `main@cd3f867` 有 48 个跟踪文件包含 `/Users/...`；0 Gitleaks findings 不能消除该 metadata exposure（元数据暴露） | 禁止整仓公开；使用不含 registry/evidence/reports/paths 的 39-file public-safe wheel | `WHOLE_REPOSITORY_PUBLIC_FAIL_CLOSED` |
+| `R-024` | `HIGH` | “Agent absolute priority” 被误读为 Agent 可自我授权或替代人类法律责任 | `ADR-035` 将 Agent 设为首要客户和验证主体 | 固定 `AGENT_PRIORITY_NE_AGENT_AUTHORITY`；合同、付款、法律责任、不可逆授权和安全停止继续由人类承担 | `MITIGATED_BY_CONSTITUTIONAL_BOUNDARY` |
+| `R-025` | `HIGH` | Stage 5.7 通过品牌提示、事后调分、失败删除或供应商混用人为提高 TITMAS 胜率 | 匿名竞争基准尚未执行；Qwen 独立咨询要求可复现随机化和失败保留 | 固定随机种子、预冻结 ROI、精确模型身份、隔离会话、全量失败和独立 Agent Selection Auditor | `ACTIVE_UNTIL_STAGE5_7_AUDIT_PASS` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -76,8 +78,8 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=23
-ACTIVE_RISKS=21
+TRACKED_RISKS=25
+ACTIVE_RISKS=23
 RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=5
 BLOCKERS_CLEARED=7

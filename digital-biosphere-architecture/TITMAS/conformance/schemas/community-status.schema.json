@@ -11,6 +11,8 @@
     "status",
     "state",
     "community_phase",
+    "program_priority",
+    "current_validation",
     "community_incubation_active",
     "core_repository_visibility",
     "private_core_is_canonical",
@@ -85,6 +87,64 @@
       ]
     },
     "community_phase": {"const": "PRIVATE_COMMERCIALIZATION_BOUNDARY"},
+    "program_priority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "primary_operational_customer",
+        "agent_absolute_priority",
+        "machine_interface_precedes_human_interface",
+        "agent_evidence_precedes_human_opinion",
+        "human_view_is_derived_view",
+        "human_usability_gate_required",
+        "agent_priority_grants_authority",
+        "human_irreversible_authority_retained"
+      ],
+      "properties": {
+        "primary_operational_customer": {"const": "AI_AGENT"},
+        "agent_absolute_priority": {"const": true},
+        "machine_interface_precedes_human_interface": {"const": true},
+        "agent_evidence_precedes_human_opinion": {"const": true},
+        "human_view_is_derived_view": {"const": true},
+        "human_usability_gate_required": {"const": false},
+        "agent_priority_grants_authority": {"const": false},
+        "human_irreversible_authority_retained": {"const": true}
+      }
+    },
+    "current_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "stage",
+        "design_authorized",
+        "implementation_complete",
+        "real_sessions_executed",
+        "minimum_valid_providers",
+        "minimum_exact_models",
+        "minimum_valid_runs",
+        "e01_classification",
+        "e01_is_primary_validation",
+        "e01_is_program_gate",
+        "e01_is_commercial_proof",
+        "human_trial_required_for_next_stage",
+        "compensated_human_trial_strategy_status"
+      ],
+      "properties": {
+        "stage": {"const": "TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK"},
+        "design_authorized": {"const": true},
+        "implementation_complete": {"const": false},
+        "real_sessions_executed": {"const": 0},
+        "minimum_valid_providers": {"const": 3},
+        "minimum_exact_models": {"const": 4},
+        "minimum_valid_runs": {"const": 24},
+        "e01_classification": {"const": "LEGACY_OPTIONAL_HUMAN_COMPATIBILITY_OBSERVATION"},
+        "e01_is_primary_validation": {"const": false},
+        "e01_is_program_gate": {"const": false},
+        "e01_is_commercial_proof": {"const": false},
+        "human_trial_required_for_next_stage": {"const": false},
+        "compensated_human_trial_strategy_status": {"const": "RETIRED"}
+      }
+    },
     "community_incubation_active": {"const": false},
     "core_repository_visibility": {"const": "PRIVATE"},
     "private_core_is_canonical": {"const": true},
