@@ -22,7 +22,10 @@ production_ready: false
 > 不静默改写已绑定输入。当前执行事实以 [`PROGRAM-STATUS.md`](PROGRAM-STATUS.md)、
 > [`DECISION-QUEUE.md`](DECISION-QUEUE.md) 和
 > [`DBOS-PR-2A-GIT-AUTHORIZATION-RECORD.md`](DBOS-PR-2A-GIT-AUTHORIZATION-RECORD.md)
-> 为准：DQ-018 已实施并达到 PR-G2A review ready，但尚未获 gate approval。
+> 为准。本注册表捕获时 DQ-018 尚未实施；后继过程曾推进到 PR-G2A review ready。
+> 2026-07-30 的 gate decision 见
+> [`PR-G2A-HUMAN-SECURITY-REVIEW-DECISION-RECORD-2026-07-30.md`](PR-G2A-HUMAN-SECURITY-REVIEW-DECISION-RECORD-2026-07-30.md)，
+> 不回写本历史快照。
 
 六项精确人工决定已经记录，DBA content baseline 的 exact commit/tree 已形成。当前只等待从远端复验
 freeze attestation，并执行 fresh DBOS before-state。本注册表将四项 reference adoption、`ADR-024` 架构
