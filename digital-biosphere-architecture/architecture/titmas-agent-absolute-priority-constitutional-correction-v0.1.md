@@ -80,4 +80,3 @@ HUMAN_AUTHORITY_NE_HUMAN_OPINION_GATE=true
 
 咨询模型只提供 advisory evidence（建议证据），不能批准自身建议、修改 Gate 或获得
 Authority。
-

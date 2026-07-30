@@ -44,4 +44,3 @@ contribution、Conformance、Human Disposition 和 completion。
   `CLOSED_WITHOUT_REQUIRED_PARTICIPANT_EVIDENCE`。
 
 E01 的关闭不阻塞 Stage 5.7，也不能被解释为 agent-native 价值验证成功。
-
