@@ -101,8 +101,8 @@ DBA 不能为了减少仓库数量而收容 Runtime、Collector config secret �
 | `DQ-023` | 是否采纳 core/GenAI semantic mapping 与 46-case contract？ | `DECIDED_REFERENCE_ADOPTED` | DQ-018 authorized subset 32/32 PASS；deployment subset blocked |
 | `DQ-024` | 是否采纳 Schema/Resource/Entity provenance profile 与 45-case contract？ | `DECIDED_REFERENCE_AND_QUARANTINE_ADOPTED` | DQ-018 authorized subset 36/36 PASS；deployment subset blocked |
 | `DQ-025` | 是否采纳 Collector `v0.156.0` custom-minimal 8-component/2-provider inventory 与 48-case contract？ | `DECIDED_REFERENCE_INVENTORY_ADOPTED` | 不授权 build/config/deployment |
-| `DQ-018` | 是否实施 reference Telemetry Admission Foundation？ | `IMPLEMENTED_PR_G2A_REVIEW_READY_NOT_APPROVED` | source `5c52c1c…`、receipt `aa6440e…`、manifest `fdda745c…` |
-| `DQ-019` | 选择哪个 production persistence backend/profile，是否授权 adapter 实施？ | `BLOCKED_INPUT` | PR-G2A Human Review approval + candidate exact inputs |
+| `DQ-018` | 是否实施 reference Telemetry Admission Foundation？ | `IMPLEMENTED_SECURITY_REMEDIATED_PR_G2A_PASS` | source `ee90c0c…`、receipt `901bf0d…`、manifest `306435cd…`；2 scoped Medium residuals 保留 |
+| `DQ-019` | 选择哪个 production persistence backend/profile，是否授权 adapter 实施？ | `CANDIDATE_INPUT_REVIEW_MAY_PROCEED_IMPLEMENTATION_BLOCKED` | PR-G2A Human Review PASS；仍缺 candidate exact inputs 和独立 Human Decision |
 | `DQ-020` | 是否允许 authenticated OTLP/Collector staging？ | `BLOCKED_INPUT` | DQ-018 + DQ-019 + DQ-022/023/024/025 + deployment profile/schema/readiness matrix + exact owner/repository/build/config/topology/security/capacity/readiness/direct evidence；当前只定义 profile，不创建配置或部署 |
 | `DQ-021` | 是否实施 Telemetry-to-Evidence admission？ | `BLOCKED_INPUT` | DQ-018 + exact Evidence policy/object mapping + security review |
 
@@ -211,11 +211,13 @@ v0.1 最小时间为 7 天 staging soak + 30 天 bounded production observation�
 
 ```text
 PRODUCTION_IMPLEMENTATION_SEQUENCE_DEFINED=true
-CURRENT_STEP=S1_PR_G2A_HUMAN_REVIEW
+CURRENT_STEP=S2_DQ_019_CANDIDATE_INPUT_REVIEW
 DQ_022_REFERENCE_ADOPTED=true
 S1_IMPLEMENTATION_AUTHORIZED=true
 S1_IMPLEMENTATION_COMPLETE=true
-PR_G2A_HUMAN_REVIEW_APPROVED=false
+PR_G2A_HUMAN_REVIEW_APPROVED=true
+DQ_019_CANDIDATE_INPUT_REVIEW_MAY_PROCEED=true
+DQ_019_IMPLEMENTATION_AUTHORIZED=false
 FULL_PR_G2_READY=false
 S2_BACKEND_SELECTED=false
 S3_OTLP_COLLECTOR_AUTHORIZED=false

@@ -3,7 +3,7 @@
   "sequence_id": "TMAI-PRODUCTION-IMPLEMENTATION-SEQUENCE-0.1",
   "name": "TMAI Staged Production Implementation Sequence v0.1",
   "name_zh": "TMAI 分阶段生产实施序列 v0.1",
-  "status": "ADOPTED_S1_SECURITY_REMEDIATED_PR_G2A_HUMAN_REVIEW_READY_LATER_STAGES_BLOCKED",
+  "status": "ADOPTED_S1_PR_G2A_PASS_S2_CANDIDATE_INPUT_REVIEW_LATER_STAGES_BLOCKED",
   "architecture_owner": "digital-biosphere-architecture",
   "normative_specification": "architecture/production-implementation-sequence.md",
   "proposed_adr": "architecture/ADR-024-staged-telemetry-production-path.md",
@@ -40,12 +40,12 @@
     "recommendation_is_authorization": false
   },
   "current_gate": {
-    "step_id": "S1",
-    "decision_id": "PR-G2A",
-    "state": "READY_FOR_HUMAN_SECURITY_REVIEW_NOT_APPROVED",
+    "step_id": "S2",
+    "decision_id": "DQ-019",
+    "state": "CANDIDATE_INPUT_REVIEW_MAY_PROCEED_IMPLEMENTATION_BLOCKED",
     "human_decision_recorded": false,
-    "implementation_authorized": true,
-    "implementation_complete": true,
+    "implementation_authorized": false,
+    "implementation_complete": false,
     "full_pr_g2_ready": false
   },
   "architecture_prerequisites": {
@@ -76,7 +76,7 @@
       "name": "Pinned offline OTLP decoder and Telemetry Admission reference conformance",
       "primary_domain": "DBOS",
       "decision_or_gate": "DQ-018/PR-G2A",
-      "status": "IMPLEMENTED_SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_PR_G2A_HUMAN_REVIEW_READY_NOT_APPROVED",
+      "status": "IMPLEMENTED_SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_PR_G2A_PASS",
       "source_binding": {
         "repository": "digital-biosphere-os",
         "branch": "codex/telemetry-admission-foundation",
@@ -93,7 +93,10 @@
         "independent_findings_fixed": 7,
         "security_precheck_high_findings_closed": 2,
         "open_scoped_medium_residuals": 2,
-        "pr_g2a_human_review_approved": false
+        "pr_g2a_human_review_approved": true,
+        "pr_g2a_decision_record": "PR-G2A-HUMAN-SECURITY-REVIEW-DECISION-RECORD-2026-07-30.json",
+        "dq_019_candidate_input_review_may_proceed": true,
+        "dq_019_implementation_authorized": false
       },
       "required_case_groups": ["OTLP-CG-SIGNAL_SCHEMA", "OTLP-CG-AUTHORITY_BOUNDARY"],
       "forbidden_inference": "Telemetry admission does not create Evidence, Verification, Identity, Capability, Permission, Runtime, or production readiness"
@@ -103,7 +106,7 @@
       "name": "Production persistence selection and proof",
       "primary_domain": "DBOS_AND_DEPLOYMENT_INFRASTRUCTURE",
       "decision_or_gate": "DQ-019/PR-G2B/PR-G5A",
-      "status": "BLOCKED_INPUT",
+      "status": "CANDIDATE_INPUT_REVIEW_MAY_PROCEED_IMPLEMENTATION_BLOCKED",
       "forbidden_inference": "Reference SQLite conformance does not establish production durability"
     },
     {

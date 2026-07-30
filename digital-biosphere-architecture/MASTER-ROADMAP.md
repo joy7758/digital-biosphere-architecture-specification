@@ -112,7 +112,7 @@ Developer Preview 发布历史保持不变。当前新增的 Production Readines
 |---|---|---|---|---|---|
 | `PR-0` | 冻结 Trusted Multi-Agent Protocol（可信多智能体协议）与生产可观测性架构基线 | DBA | `GATE_PASSED_REMOTE_BASELINE_VERIFIED` | content commit `264f317...` / tree `b83f25d...`、OpenTelemetry profiles、56/46/45/48-case contracts、`ADR-023`–`ADR-028`、六项 exact decision 与远端 freeze receipt | 保持基线；不授权 Collector build/config/deploy 或 production claim |
 | `PR-1` | 建立 DBOS/SAEE production implementation mapping（生产实现映射） | 子项目提供事实；DBA 审查边界 | `GATE_PASSED_READ_ONLY_MAPPING` | `PRODUCTION-IMPLEMENTATION-MAPPING-REPORT.md`：remote commits、334 tests、34 validators、8 adapter tests、OTel capability inventory、缺口与重复权威审查 | `DQ-018` decision packet 和两路 next-step recommendation 已就绪，等待人类决策 |
-| `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `PR_G2A_SECURITY_REMEDIATED_HUMAN_REVIEW_READY_NOT_APPROVED_G2B_G2T_G2I_G2C_BLOCKED` | source `ee90c0c…` / receipt `901bf0d…` 已完成原生 Linux x86_64 与远端独立复验；`HSR-PRE-001/002` closed，2 个 scoped Medium residuals 保留 | 执行 Human Security Review；未收到精确 `PR-G2A` 决策 token 前不进入 DQ-019/PR-G2B |
+| `PR-2` | 建立最小 DBOS production core（生产核心） | DBOS | `PR_G2A_PASS_DQ_019_INPUT_REVIEW_OPEN_G2B_G2T_G2I_G2C_BLOCKED` | source `ee90c0c…` / receipt `901bf0d…` 已完成原生 Linux x86_64 与远端独立复验；`HSR-PRE-001/002` closed，2 个 scoped Medium residuals 保留；Human Decision PASS | 补齐 DQ-019 exact candidate inputs；独立 Human Decision 前不进入 PR-G2B implementation |
 | `PR-3` | 建立 OpenTelemetry conformance and operations（符合性与运维） | DBOS + deployment infrastructure | `NOT_STARTED` | 版本锁定、exact custom-minimal Collector build/config/runtime/topology 绑定、deployment + operational-evidence profiles 的 synthetic-input/immutable-rollout/metric-stability/self-observation/no-data-alert/composite-readiness/delivery-reconciliation obligations、56/56 OTLP、46/46 semantic、45/45 Schema/Resource/Entity provenance 与 48/48 Collector distribution cases 的四个独立结果绑定 | 不得创建第五套重复目录；不得把 Telemetry 自动升级为 Evidence/Truth，也不得把 profile/schema/health/dashboard/binary startup 当实现、测量或生产证据 |
 | `PR-4` | 验证 SAEE production adapter isolation（生产适配隔离） | SAEE | `NOT_STARTED` | 只读消费、版本兼容、失败关闭、无 DBOS 写回、无 Decision/Permission | 不调用未获准算法或生成 Authority |
 | `PR-5` | 通过 Security / Recovery / Capacity gates（安全、恢复与容量闸门） | DBOS + DBA review | `NOT_STARTED` | threat model、secret handling、data minimization、backup/restore、灾难恢复、容量与队列压力证据 | 所有 critical gap 关闭后才可进入 Pilot |
@@ -177,12 +177,12 @@ information architecture。该准备不表示新域名已上线、Organization �
 ## 4. Current Program Focus（当前项目群焦点）
 
 ```text
-CURRENT_FOCUS=PR_G2A_HUMAN_SECURITY_REVIEW
-NEXT_BLOCKER=PR_G2A_HUMAN_SECURITY_REVIEW_AND_DECISION_NOT_COMPLETED
-NEXT_DECISION=PR_G2A_APPROVE_RETURN_OR_REJECT_EXACT_SECURITY_REMEDIATED_SLICE
+CURRENT_FOCUS=DQ_019_PRODUCTION_PERSISTENCE_CANDIDATE_INPUT_REVIEW
+NEXT_BLOCKER=DQ_019_EXACT_CANDIDATE_OWNER_TOPOLOGY_COST_SECURITY_RPO_RTO_AND_DIRECT_DRILLS_INCOMPLETE
+NEXT_DECISION=DQ_019_SELECT_DEFER_OR_REJECT_EXACT_PRODUCTION_PERSISTENCE_PROFILE
 NEXT_ARCHITECTURE_VERSION_DECISIONS=DQ_022_OTLP_1_11_REFERENCE_ADOPTION,DQ_023_OTEL_SEMANTIC_MAPPING_ADOPTION,DQ_024_OTEL_SCHEMA_RESOURCE_ENTITY_PROVENANCE_ADOPTION,DQ_025_OTEL_COLLECTOR_DISTRIBUTION_ADOPTION
-NEXT_DELIVERY=DBA_PR_G2A_HUMAN_SECURITY_REVIEW_DECISION_RECORD
-NEXT_INTEGRATION=NONE_AUTHORIZED_UNTIL_PR_G2A_APPROVAL
+NEXT_DELIVERY=DQ_019_COMPLETE_DECISION_INPUT_PACKET
+NEXT_INTEGRATION=NONE_AUTHORIZED_UNTIL_SEPARATE_DQ_019_HUMAN_DECISION
 DQ_015_AGENT_NATIVE_VALIDATION_ACCEPTED=true
 BASELINE_VALIDATION_ID=TMAI-ACV-20260721-001
 BASELINE_RESULT=CONDITIONAL
@@ -220,9 +220,13 @@ DQ_018_NATIVE_LINUX_X86_64_VALIDATED=true
 PR_G2A_READY_FOR_HUMAN_REVIEW=true
 PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_REQUIRED=false
 PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_COMPLETE=true
-PR_G2A_CURRENT_SOURCE_PACKET_STATUS=SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_READY_FOR_HUMAN_SECURITY_REVIEW_NOT_APPROVED
+PR_G2A_CURRENT_SOURCE_PACKET_STATUS=SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_HUMAN_SECURITY_REVIEW_PASS
 PR_G2A_CURRENT_SOURCE_INDEPENDENT_AGENT_REVIEW_COMPLETE=true
-PR_G2A_HUMAN_REVIEW_APPROVED=false
+PR_G2A_HUMAN_REVIEW_APPROVED=true
+PR_G2A_HUMAN_REVIEW_DECIDED_BY_REF=zhangbin
+PR_G2A_HUMAN_REVIEW_DECIDED_AT=2026-07-30T08:54:52+08:00
+DQ_019_CANDIDATE_INPUT_REVIEW_MAY_PROCEED=true
+DQ_019_IMPLEMENTATION_AUTHORIZED=false
 FULL_PR_G2_READY=false
 PRODUCTION_IMPLEMENTATION_SEQUENCE_DEFINED=true
 PRODUCTION_PATH_AGENT_REVIEW_COMPLETE=true
@@ -253,14 +257,13 @@ PRODUCTION_READY=false
 ```
 
 当前不应继续增加新的技术规范、Entity、生产 Runtime 或无验证接口承诺。优先任务是完成
-对已远端证明的 security-remediated exact source 执行 Human Security Review，并保持 review-ready、
-review-complete、gate-approved 和 production-ready 四个状态分离。
+DQ-019 exact candidate inputs，并保持 review-complete、gate-approved、implementation-authorized
+和 production-ready 四个状态分离。
 
 Developer Preview 已发布，`PR-G1` 已完成，DQ-022–025 与 ADR-024 已采纳，DQ-018
 离线实现切片的 current source 已关闭 security precheck 的两个 High findings，并通过 native
-validation 与 remote attestation。当前 packet 为
-`SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_READY_FOR_HUMAN_SECURITY_REVIEW_NOT_APPROVED`；
-尚未完成 Human Security Review 或 Human Decision。后继 production
+validation 与 remote attestation。`PR-G2A` Human Security Review 已对 exact reference slice
+记录 bounded PASS；两个 scoped Medium residuals 保留，DQ-019 implementation 未授权。后继 production
 persistence、OTLP/Collector staging、Identity/Evidence integration 和 SAEE/Pilot 仍按
 [`architecture/production-implementation-sequence.md`](architecture/production-implementation-sequence.md)
 分阶段独立决定；任何 build、configuration、deployment、真实 Pilot 或生产声明都不能由

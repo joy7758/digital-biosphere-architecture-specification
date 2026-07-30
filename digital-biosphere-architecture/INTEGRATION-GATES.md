@@ -137,15 +137,15 @@ human_decision_recorded=true
 immutable_dba_baseline_created=true
 implementation_authorized=true
 implementation_complete=true
-result=IMPLEMENTED_SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_PR_G2A_HUMAN_REVIEW_READY_NOT_APPROVED
-next_gate=PR_G2A_HUMAN_SECURITY_REVIEW
+result=IMPLEMENTED_SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_PR_G2A_PASS
+next_gate=DQ_019_CANDIDATE_INPUT_REVIEW
 ```
 
 该记录已从 decision readiness 演进为 implementation receipt 路由；current source 的五项
 workload 已在原生 Linux x86_64 形成直接证据，并通过 DBOS remote receipt 和 DBA independent
 attestation 复验；安全预审的 2 个 High findings 已由 exact source 修复和远端独立证明关闭，
-Human Security Review 尚未完成。
-它仍不是 PR-G2A Human Approval、完整 PR-G2 或 Production Readiness。
+Human Security Review 已由下方 `TMAI-PR-G2A-20260730-006` 记录为 bounded PASS。
+它仍不是 DQ-019 implementation authorization、完整 PR-G2 或 Production Readiness。
 
 ### PR-G2A Evidence Record（PR-G2A 证据记录）
 
@@ -240,6 +240,38 @@ next_gate=PR_G2A_HUMAN_SECURITY_REVIEW
 `READY_FOR_HUMAN_SECURITY_REVIEW_NOT_APPROVED` 只表示 current exact source 不再触发
 Critical/High stop condition。它不表示 Human Security Review 已完成、Medium residual 已接受、
 `PR-G2A` 已批准、DQ-019 已授权、完整 `PR-G2` 已就绪或生产已就绪。
+
+### PR-G2A Human Security Review Decision Record（PR-G2A 人工安全审查决定记录）
+
+```text
+gate_record_id=TMAI-PR-G2A-20260730-006
+gate_id=PR-G2A
+supersedes_gate_record=TMAI-PR-G2A-20260723-005
+integration_track=DBOS_OFFLINE_TELEMETRY_ADMISSION_REFERENCE
+scope=DQ_018_METADATA_ONLY_NO_LISTENER_SQLITE_REFERENCE
+exact_source_commit=ee90c0c84964f1f3e4dbeb8dffaf888f9822b6a5
+exact_receipt_commit=901bf0dda66e46f8b1c0b5873f5c5f20e9d03920
+implementation_manifest=sha256:306435cd3c5fc65e46995f0e2a57b1322f950889af350f1b0bcbd13c35644fd9
+decision_record_ref=PR-G2A-HUMAN-SECURITY-REVIEW-DECISION-RECORD-2026-07-30.json
+selected_token=PR-G2A=APPROVE_DQ_018_SECURITY_REMEDIATED_OFFLINE_TELEMETRY_ADMISSION_REFERENCE_SLICE
+decided_by_ref=zhangbin
+decided_at=2026-07-30T08:54:52+08:00
+human_security_review_complete=true
+pr_g2a_human_review_approved=true
+open_high_findings=0
+open_scoped_medium_residuals=2
+result=PASS_BOUNDED_SCOPE
+dq_019_candidate_input_review_may_proceed=true
+dq_019_implementation_authorized=false
+full_pr_g2_ready=false
+production_ready=false
+next_gate=DQ_019_CANDIDATE_INPUT_REVIEW
+```
+
+`PASS_BOUNDED_SCOPE` 只关闭 exact DQ-018 reference slice 的 `PR-G2A` 人工安全审查。
+`HSR-PRE-003/004` 继续作为 DQ-019/PR-G2B 与 DQ-020 的 scoped Medium residuals；
+本记录不选择 backend，不授权 implementation、Collector、listener、Evidence、Runtime、
+deployment、production traffic 或完整 `PR-G2`。
 
 ### Proposed Staged Production Path Record（拟议分阶段生产路径）
 

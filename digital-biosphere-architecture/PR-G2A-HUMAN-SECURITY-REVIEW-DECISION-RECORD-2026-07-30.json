@@ -1,0 +1,65 @@
+{
+  "schema_version": "0.1",
+  "document_id": "TMAI-PR-G2A-HUMAN-SECURITY-REVIEW-DECISION-RECORD-20260730-019",
+  "status": "DECIDED_PASS_BOUNDED_SCOPE",
+  "decision_reference": "PR-G2A",
+  "implementation_decision_reference": "DQ-018",
+  "raw_human_instruction": "PR-G2A Human Security Review 确认通过",
+  "selected_token": "PR-G2A=APPROVE_DQ_018_SECURITY_REMEDIATED_OFFLINE_TELEMETRY_ADMISSION_REFERENCE_SLICE",
+  "decided_by_ref": "zhangbin",
+  "decided_at": "2026-07-30T08:54:52+08:00",
+  "exact_review_subject": {
+    "dbos_repository": "https://github.com/joy7758/digital-biosphere-os.git",
+    "dbos_branch": "codex/telemetry-admission-foundation",
+    "source_commit": "ee90c0c84964f1f3e4dbeb8dffaf888f9822b6a5",
+    "source_tree": "a8f2768b707c467607d4939d3e797327af4e9d31",
+    "receipt_commit": "901bf0dda66e46f8b1c0b5873f5c5f20e9d03920",
+    "implementation_manifest_sha256": "306435cd3c5fc65e46995f0e2a57b1322f950889af350f1b0bcbd13c35644fd9",
+    "review_packet_id": "TMAI-PR-G2A-TELEMETRY-ADMISSION-SECURITY-REMEDIATED-HUMAN-REVIEW-PACKET-20260723-017",
+    "readiness_attestation_id": "TMAI-PR-G2A-SECURITY-REMEDIATION-READINESS-REMOTE-ATTESTATION-20260723-018"
+  },
+  "finding_disposition": {
+    "HSR-PRE-001": "CLOSED_BY_REMEDIATION_AND_INDEPENDENT_REMOTE_ATTESTATION",
+    "HSR-PRE-002": "CLOSED_BY_REMEDIATION_AND_INDEPENDENT_REMOTE_ATTESTATION",
+    "HSR-PRE-003": "OPEN_SCOPED_RESIDUAL_DQ_019_PR_G2B",
+    "HSR-PRE-004": "OPEN_SCOPED_RESIDUAL_DQ_020"
+  },
+  "decision_state": {
+    "human_security_review_complete": true,
+    "pr_g2a_human_review_approved": true,
+    "pr_g2a_pass": true,
+    "dq_019_candidate_input_review_may_proceed": true,
+    "dq_019_implementation_authorized": false,
+    "dq_019_backend_selected": false,
+    "full_pr_g2_ready": false,
+    "production_ready": false
+  },
+  "effects": {
+    "decision_record_created": true,
+    "candidate_input_review_unblocked": true,
+    "implementation_authorized": false,
+    "pr_created": false,
+    "merge_performed": false,
+    "main_modified": false,
+    "release_created": false,
+    "deployment_performed": false,
+    "collector_created": false,
+    "listener_created": false,
+    "production_database_created": false,
+    "agent_created": false,
+    "runtime_created": false,
+    "entity_created": false,
+    "permission_granted": false,
+    "canonical_evidence_created": false,
+    "saee_output_created": false,
+    "production_ready": false
+  },
+  "invariants": {
+    "model_recommendation_ne_authority": true,
+    "human_review_ne_production_authorization": true,
+    "gate_pass_ne_implementation_authorization": true,
+    "telemetry_ne_evidence": true,
+    "evidence_ne_truth": true,
+    "verification_ne_authorization": true
+  }
+}

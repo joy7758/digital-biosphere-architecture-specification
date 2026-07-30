@@ -2,12 +2,12 @@
 document_id: DBA-PROGRAM-STATUS-2026-07-23
 title: Digital Biosphere Program Status Snapshot
 title_zh: 数字生物圈项目群状态快照
-status: observed-governance-snapshot-dq-018-security-remediated-pr-g2a-human-review-ready-not-approved
-observed_at: 2026-07-23
-freshness: point-in-time
+status: observed-governance-snapshot-pr-g2a-human-review-pass-dq-019-input-review-open
+observed_at: 2026-07-30
+freshness: pr-g2a-human-decision-delta-over-prior-project-observation
 release_status: developer-preview-v0.1-released-not-production-ready
 developer_preview_status: released-exact-public-safe-wheel-open-web-partial-metadata-only
-production_readiness_status: dq-018-security-remediated-native-remote-attested-pr-g2a-human-review-ready-not-approved-full-pr-g2-blocked-not-production-ready
+production_readiness_status: dq-018-security-remediated-native-remote-attested-pr-g2a-pass-dq-019-input-review-open-full-pr-g2-blocked-not-production-ready
 source_policy: direct-read-only-observation
 titmas_governance_overlay_observed_at: 2026-07-23
 titmas_community_direction_adopted: true
@@ -84,9 +84,9 @@ titmas_commercial_evaluation_next_gate: ce-g11b-finalize-freeze-then-distinct-ev
 PROGRAM_ID=DIGITAL_BIOSPHERE
 PROGRAM_PHASE=TRUSTED_MULTI_AGENT_INFRASTRUCTURE_PRODUCTION_BASELINE_FREEZE
 PROGRAM_HEALTH=PASS_WITH_PRODUCTION_GATES_OPEN
-CURRENT_MILESTONE=DBOS-PR-G2A-SECURITY-REMEDIATED-HUMAN-REVIEW-READY
+CURRENT_MILESTONE=DBOS-PR-G2A-HUMAN-SECURITY-REVIEW-PASS-DQ-019-INPUT-REVIEW
 CURRENT_ARCHITECTURE_MILESTONE=DQ-018-SECURITY-REMEDIATION-NATIVE-REMOTE-ATTESTED
-CURRENT_GOVERNANCE_GATE=PR-G2A-READY-FOR-HUMAN-SECURITY-REVIEW-NOT-APPROVED
+CURRENT_GOVERNANCE_GATE=PR-G2A-PASS-DQ-019-CANDIDATE-INPUT-REVIEW-MAY-PROCEED
 CORE_PROJECTS=3
 PILOT_PROJECTS=1
 PROGRAM_AUTHORITY_ASSIGNED=true
@@ -350,7 +350,7 @@ DBOS_DQ018_P003_RECEIPT_REMOTE_VERIFIED=true
 DBOS_DQ018_CURRENT_SOURCE_PACKET_REFRESH_COMPLETE=true
 DBOS_DQ018_CURRENT_SOURCE_INDEPENDENT_AGENT_REVIEW_COMPLETE=true
 DBOS_DQ018_CURRENT_SOURCE_PACKET_RECEIPT_REMOTE_VERIFIED=true
-DBOS_DQ018_CURRENT_SOURCE_PACKET_STATUS=SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_HUMAN_REVIEW_READY_NOT_APPROVED
+DBOS_DQ018_CURRENT_SOURCE_PACKET_STATUS=SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_HUMAN_SECURITY_REVIEW_PASS
 DBA_DQ018_CURRENT_SOURCE_PACKET_REFRESH_SUPPLEMENT_REMOTE_ATTESTED=true
 DBOS_DQ018_NATIVE_LINUX_X86_64_VALIDATED=true
 DBOS_DQ018_NATIVE_RECEIPT_REMOTE_VERIFIED=true
@@ -363,7 +363,7 @@ DBA_DQ018_SECURITY_REMEDIATION_REMOTE_ATTESTED=true
 DBA_DQ018_SECURITY_REMEDIATION_READINESS_PACKET_REMOTE_ATTESTED=true
 DBA_DQ018_SECURITY_PRECHECK_OPEN_HIGH_FINDINGS=0
 DBA_DQ018_SECURITY_PRECHECK_OPEN_MEDIUM_RESIDUALS=2
-DBA_DQ018_HUMAN_SECURITY_REVIEW_COMPLETE=false
+DBA_DQ018_HUMAN_SECURITY_REVIEW_COMPLETE=true
 DEVELOPER_PREVIEW_LOCAL_CANDIDATE_VALIDATED=true
 PRIMARY_CUSTOMER=AI_AGENT
 AGENT_CUSTOMER_VALIDATION_PROTOCOL_DEFINED=true
@@ -601,7 +601,7 @@ DQ_018_LINUX_ARM64_REMOTE_RECEIPT_VERIFIED=true
 PR_G2A_READY_FOR_HUMAN_REVIEW=true
 PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_REQUIRED=false
 PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_COMPLETE=true
-PR_G2A_CURRENT_SOURCE_PACKET_STATUS=SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_READY_FOR_HUMAN_SECURITY_REVIEW_NOT_APPROVED
+PR_G2A_CURRENT_SOURCE_PACKET_STATUS=SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_HUMAN_SECURITY_REVIEW_PASS
 PR_G2A_CURRENT_SOURCE_INDEPENDENT_AGENT_REVIEW_COMPLETE=true
 PR_G2A_CURRENT_SOURCE_PACKET_REFRESH_SUPPLEMENT_REMOTE_ATTESTED=true
 PR_G2A_P003_OBSERVER_EFFECT_SUPPLEMENT_PREPARED=true
@@ -612,7 +612,12 @@ PR_G2A_HARDENED_PACKET_PREPARED=true
 PR_G2A_HARDENED_PACKET_REMOTE_ATTESTED=true
 PR_G2A_LINUX_ARM64_SUPPLEMENT_PREPARED=true
 PR_G2A_LINUX_ARM64_SUPPLEMENT_REMOTE_ATTESTED=true
-PR_G2A_HUMAN_REVIEW_APPROVED=false
+PR_G2A_HUMAN_REVIEW_APPROVED=true
+PR_G2A_HUMAN_REVIEW_DECIDED_BY_REF=zhangbin
+PR_G2A_HUMAN_REVIEW_DECIDED_AT=2026-07-30T08:54:52+08:00
+PR_G2A_SELECTED_TOKEN=APPROVE_DQ_018_SECURITY_REMEDIATED_OFFLINE_TELEMETRY_ADMISSION_REFERENCE_SLICE
+DQ_019_CANDIDATE_INPUT_REVIEW_MAY_PROCEED=true
+DQ_019_IMPLEMENTATION_AUTHORIZED=false
 FULL_PR_G2_READY=false
 PRODUCTION_IMPLEMENTATION_SEQUENCE_DEFINED=true
 PRODUCTION_PATH_AGENT_REVIEW_COMPLETE=true
@@ -639,7 +644,7 @@ PRODUCTION_AUTHORIZED=false
 PRODUCTION_READY=false
 ```
 
-Developer Preview v0.1 的历史发布结果 `PASS_WITH_DISCLOSED_LIMITATIONS` 只表示其发布闸门通过。当前 `PROGRAM_HEALTH=PASS_WITH_PRODUCTION_GATES_OPEN` 表示生产架构基线、`PR-G1` 只读映射和 DQ-018 离线实现回执可追溯；`PR-G2A` 尚待人工审查，完整 `PR-G2` 仍阻塞。以上均不表示生产就绪、客户采用或完整端到端集成。
+Developer Preview v0.1 的历史发布结果 `PASS_WITH_DISCLOSED_LIMITATIONS` 只表示其发布闸门通过。当前 `PROGRAM_HEALTH=PASS_WITH_PRODUCTION_GATES_OPEN` 表示生产架构基线、`PR-G1` 只读映射、DQ-018 离线实现回执和 `PR-G2A` Human Security Review PASS 可追溯；完整 `PR-G2`、DQ-019 implementation 与生产就绪仍阻塞。以上均不表示生产就绪、客户采用或完整端到端集成。
 
 ## 2. Observed Core Project Snapshot（核心项目观察快照）
 
@@ -648,7 +653,7 @@ Developer Preview v0.1 的历史发布结果 `PASS_WITH_DISCLOSED_LIMITATIONS` �
 | project_id | branch | observed commit | worktree observation | remote observation | 规范状态摘要 |
 |---|---|---|---|---|---|
 | `DBA` | `main` | `v0.1-developer-preview` | `ADR-022`、正式 release notes 和机器事实表面已形成 | public remote、GitHub Release 与百度云正式工件通过同一 tag / `release.json` 追溯 | Developer Preview v0.1 已发布；不是生产就绪或客户采用 |
-| `DBOS` | `main` + `codex/telemetry-admission-foundation` | main `cd3f867…`; DQ-018 source `ee90c0c…`; security-remediation receipt `901bf0d…` | main 保持 Developer Preview；生产分支只实现离线 Telemetry Admission reference slice | native Linux x86_64 fresh remote validation 为 538/538 tests、204/204 telemetry、25/25 Telemetry validator；隔离 validator 为 30 PASS + 5 expected external-source fail closed；`TA-P001`—`TA-P005`、rollback 和 reproducible wheel 均 `PASS` | `HSR-PRE-001/002` 已修复并远端独立复验；Human Security Review 尚未完成，PR-G2A 已 review-ready 但未批准 |
+| `DBOS` | `main` + `codex/telemetry-admission-foundation` | main `cd3f867…`; DQ-018 source `ee90c0c…`; security-remediation receipt `901bf0d…` | main 保持 Developer Preview；生产分支只实现离线 Telemetry Admission reference slice | native Linux x86_64 fresh remote validation 为 538/538 tests、204/204 telemetry、25/25 Telemetry validator；隔离 validator 为 30 PASS + 5 expected external-source fail closed；`TA-P001`—`TA-P005`、rollback 和 reproducible wheel 均 `PASS` | `HSR-PRE-001/002` 已修复并远端独立复验；PR-G2A Human Security Review 已 PASS；2 scoped Medium residuals 与后继 production gates 保持开放 |
 | `SAEE` | public `main` | `2173c258f91aed03fc02c0097d4250a87be703aa` | exact 19-file public-safe extraction 与 Apache-2.0 已合并 | public remote 可干净检出；内部工作树另有未发布变化且未被使用 | 19/19 blob、public smoke/demo、8/8 tests 和 DBOS 只读 Adapter 通过；无写回或 authority |
 | `RESEARCH-AGENT-PILOT` | `main` | `8445fe5d13cd889032c3786ba527d801f56d5351` | `dirty_count=30` | 未发现 `origin` | `V1_0_STATUS=INCOMPLETE_NOT_READY`；Agent、Runtime、Entity、Execution 均为 0 |
 
@@ -711,8 +716,8 @@ Developer Preview v0.1 的历史发布结果 `PASS_WITH_DISCLOSED_LIMITATIONS` �
 | External Agent Governance Intelligence | `REFERENCE_ONLY_VALIDATED_PRIMARY_SOURCES` | FINOS、MCP EMA、ANS、Microsoft Toolkit、LogicHunter 与 conference 来源已按 11 个一手信号固定；4 项成熟度／版本修正和 6 项非提升边界进入机器注册表；未采纳能力、未创建实现、未改变 DQ、未外发 |
 | External Agent Governance Intelligence 2026-07-23 | `REFERENCE_ONLY_CORRECTED_MAINLINE_DRIFT_DETECTED` | Reuters、NIST、OWASP、OpenSearch、OpenTelemetry、Traccia、ACS、GitHub 与论文来源按 13 个 source pin 核验；10 项纠偏进入机器投影；SAEE audit/compliance 重构触发 `MAINLINE_DRIFT_DETECTED`；未创建 PR、产品、Runtime 或外部提交 |
 | External Agent Governance Intelligence Reconciliation 2026-07-23 | `REFERENCE_ONLY_RECONCILED_NO_NEW_CAPABILITY` | 复用 2026-07-22 intake 与 2026-07-23 review；修正 FINOS #347、OTel `v0.157.0`、ANS `v0.1.6` 与 Microsoft PR #3419 状态；SAEE idempotency 已集成、无需重复 PR；DAI workshop 路线不合宪；未采纳能力、未创建 Runtime、未外发 |
-| Production Human Decision Readiness | `DQ_018_SECURITY_REMEDIATED_NATIVE_REMOTE_ATTESTED_PR_G2A_HUMAN_REVIEW_READY_NOT_APPROVED` | `HSR-PRE-001/002` 已修复并由 exact source/native/remote attestation 关闭；2 个 scoped Medium residuals 保留；Human Security Review 未完成 |
-| Production Readiness | `DQ_018_HUMAN_SECURITY_REVIEW_READY_NOT_APPROVED_FULL_PR_G2_BLOCKED` | 当前 source 的原生 P001—P005、rollback、security negatives 和 reproducible wheel 全部 `PASS`；但 PR-G2A Human Security Review、approval 和后继 gates 均未完成 |
+| Production Human Decision Readiness | `PR_G2A_HUMAN_SECURITY_REVIEW_PASS_DQ_019_INPUT_REVIEW_MAY_PROCEED` | `HSR-PRE-001/002` 已修复并由 exact source/native/remote attestation 关闭；2 个 scoped Medium residuals 保留；Human Decision 由 `zhangbin` 于 2026-07-30 记录 |
+| Production Readiness | `PR_G2A_PASS_DQ_019_IMPLEMENTATION_BLOCKED_FULL_PR_G2_BLOCKED` | 当前 source 的原生 P001—P005、rollback、security negatives 和 reproducible wheel 全部 `PASS`；PR-G2A 只解除 DQ-019 candidate input review，后继 implementation gates 均未完成 |
 
 ## 4. Active Decisions and Blockers（当前决策与阻塞）
 
@@ -735,7 +740,7 @@ Developer Preview v0.1 的历史发布结果 `PASS_WITH_DISCLOSED_LIMITATIONS` �
 - `B-010` 已通过 exact wheel 的匿名 GitHub Release URL、hash 和隔离安装复验解除；
 - `B-011` 已由 `ADR-022` 作为 v0.1 明示限制接受而不再阻塞发布；自然发现事实仍保持 `PARTIAL_METADATA_ONLY`。
 - `DQ-017` 已由 `ADR-023` 关闭：采纳 TMAP 协议化、OpenTelemetry 对齐的观察平面和首个有界生产画像；不授权实现或部署；
-- `DQ-018`：当前 exact source `ee90c0c…`、security-remediation receipt `901bf0d…`、manifest `306435cd…`；`HSR-PRE-001/002` 两个 High finding 已修复并通过原生 Linux x86_64 与远端独立复验关闭；`HSR-PRE-003/004` 两个 scoped Medium residuals 继续开放。当前已可进入 Human Security Review，但尚未完成或批准；
+- `DQ-018 / PR-G2A`：当前 exact source `ee90c0c…`、security-remediation receipt `901bf0d…`、manifest `306435cd…`；`HSR-PRE-001/002` 两个 High finding 已修复并通过原生 Linux x86_64 与远端独立复验关闭；`HSR-PRE-003/004` 两个 scoped Medium residuals 继续开放。`PR-G2A` Human Security Review 已由 `zhangbin` 确认通过，只允许 DQ-019 candidate input review 开始；
 - `ADR-024`：`ACCEPT_STAGED_TELEMETRY_PRODUCTION_PATH` 已采纳；S0–S9 每一后继阶段仍需独立决定、证据和 rollback，不自动授权 `DQ-019`–`DQ-021`；
 - Production Gate Evidence Manifest：作为已评审 staged sequence 的 Evidence Package 结构化投影已定义；profile registry 仍 `PROPOSED_NOT_ADOPTED`，validator 和真实 gate evidence 均不存在；
 - `DQ-019`–`DQ-021`：分别对应 production persistence、OTLP/Collector staging 和 Telemetry-to-Evidence admission，均为 `BLOCKED_INPUT`，不能越过 DQ-018 触发实施；
@@ -754,13 +759,12 @@ Developer Preview v0.1 的历史发布结果 `PASS_WITH_DISCLOSED_LIMITATIONS` �
 
 ## 5. Next Program Actions（下一步项目群行动）
 
-1. 由 Human Security Reviewer 审查 exact source `ee90c0c…`、receipt `901bf0d…`、`HSR-PRE-001/002` closure 和两个 scoped Medium residuals；
-2. 仅接受当前 security-remediated review packet 中的精确 `PR-G2A` token；在收到 token 前保持 `PR_G2A_HUMAN_REVIEW_APPROVED=false`；
-3. 只有 PR-G2A 明确批准后，才补齐 DQ-019 exact candidate profile、Owner、topology、cost/security 与 RPO/RTO 输入；
-4. DQ-019 形成独立 Human Decision 后，才允许 `PR-G2B` production persistence 实施；
-5. `PR-G2T`、`PR-G2I`、`PR-G2C` 和 DQ-020/021 继续独立失败关闭；
-6. 不修改 SAEE，不构建 Collector binary/image，不创建 endpoint、Runtime、Evidence、Entity 或 Permission；
-7. 在完整 `PR-G2` 至 `PR-G7` 通过前保持 `PRODUCTION_READY=false`。
+1. 依据 [PR-G2A Human Decision Record](PR-G2A-HUMAN-SECURITY-REVIEW-DECISION-RECORD-2026-07-30.md) 保持 exact source `ee90c0c…`、receipt `901bf0d…` 和两个 scoped Medium residuals 的绑定；
+2. 补齐 DQ-019 exact candidate profile、Owner、topology、cost/security、RPO/RTO 和 direct drills 输入；
+3. DQ-019 形成独立 Human Decision 后，才允许 `PR-G2B` production persistence 实施；
+4. `PR-G2T`、`PR-G2I`、`PR-G2C` 和 DQ-020/021 继续独立失败关闭；
+5. 不修改 SAEE，不构建 Collector binary/image，不创建 endpoint、Runtime、Evidence、Entity 或 Permission；
+6. 在完整 `PR-G2` 至 `PR-G7` 通过前保持 `PRODUCTION_READY=false`。
 
 ## 6. Refresh Protocol（刷新协议）
 
