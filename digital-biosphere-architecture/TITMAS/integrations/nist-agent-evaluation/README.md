@@ -152,5 +152,18 @@ The CLI prints a JSON result and exits with code `0` only for `PASS`.
 - Passing the four synthetic cases does not establish compatibility with an
   official NIST implementation or suitability for a real deployment.
 
-See [`docs/NIST_ALIGNMENT.md`](docs/NIST_ALIGNMENT.md) for the detailed
-alignment statement.
+## Technical input package
+
+- [`docs/NIST_TECHNICAL_INPUT.md`](docs/NIST_TECHNICAL_INPUT.md) describes the
+  proposed Runtime Execution Evidence Consistency dimension and its limits.
+- [`docs/NIST_GITHUB_ISSUE_DRAFT.md`](docs/NIST_GITHUB_ISSUE_DRAFT.md) is a
+  human-review-only draft; it has not been submitted to NIST.
+- [`docs/NIST_SUBMISSION_CHECKLIST.md`](docs/NIST_SUBMISSION_CHECKLIST.md)
+  records the official-channel, duplicate-Issue, public-reference, and safety
+  gates.
+- [`docs/NIST_ALIGNMENT.md`](docs/NIST_ALIGNMENT.md) provides the detailed
+  alignment statement.
+
+The current `origin` repository is private. No public reference URL is claimed,
+and the submission package remains blocked until an approved public reference
+is anonymously accessible.
