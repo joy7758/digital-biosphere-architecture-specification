@@ -63,7 +63,8 @@ test("keeps historical E01 while promoting the agent-native mainline", async () 
   assert.match(home, /TITMAS Digital Cell Demo/);
   assert.match(home, /E01 Human Compatibility Observation/);
   assert.match(home, /Stage 5\.7 Agent-Native Selection/);
-  assert.match(status, /TITMAS Stage 5\.7/);
+  assert.match(status, /TITMAS 商业基础设施成熟度计划进行中/);
+  assert.match(status, /Stage 5\.7 结果/);
   assert.match(status, /IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION/);
 });
 

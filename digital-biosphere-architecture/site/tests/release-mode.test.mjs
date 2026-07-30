@@ -95,7 +95,7 @@ test("accepts formal mode only when every machine truth surface and input agree"
   assert.equal(context.developerPreviewReleased, true);
   assert.equal(context.dbosWheelUrl, wheelUrl);
   assert.equal(context.releasedByRef, "zhangbin");
-  assert.match(routeMarkers(context.mode).enStatus[1], /Stage 5\.7 agent-native benchmark complete/);
+  assert.match(routeMarkers(context.mode).enStatus[1], /commercial infrastructure maturity program in progress/);
 });
 
 test("routeMarkers yields formal release markers when mode is formal", () => {
@@ -105,11 +105,11 @@ test("routeMarkers yields formal release markers when mode is formal", () => {
     enHome: ["<html lang=\"en\">", "Read the agent benchmark evidence"],
     zhStatus: [
       "<html lang=\"zh-CN\">",
-      "TITMAS Stage 5.7 智能体原生基准完成",
+      "TITMAS 商业基础设施成熟度计划进行中",
     ],
     enStatus: [
       "<html lang=\"en\">",
-      "TITMAS Stage 5.7 agent-native benchmark complete",
+      "TITMAS commercial infrastructure maturity program in progress",
     ],
   });
 });

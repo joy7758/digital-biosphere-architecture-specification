@@ -38,11 +38,11 @@ function assertJsonTruth(key, expected) {
 }
 
 test("MT-01 current stage agrees", () => {
-  const expected = "TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK";
+  const expected = "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM";
   assertJsonTruth("current_stage", expected);
   assert.match(llms, new RegExp(`CURRENT_STAGE=${expected}`));
-  assert.match(zhHome, /Stage 5\.7/);
-  assert.match(enHome, /Stage 5\.7/);
+  assert.match(zhHome, /商业成熟度计划/);
+  assert.match(enHome, /COMMERCIAL MATURITY PROGRAM/);
 });
 
 test("MT-02 E01 status agrees", () => {

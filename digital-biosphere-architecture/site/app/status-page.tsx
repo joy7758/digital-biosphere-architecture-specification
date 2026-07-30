@@ -6,10 +6,10 @@ export function StatusPage({ locale }: { locale: Locale }) {
   const copy = locale === "zh"
     ? {
         eyebrow: "VERIFIABLE STATUS / 可验证状态",
-        title: "TITMAS Stage 5.7 智能体原生基准完成",
-        lead: "24 个隔离会话和独立 Agent Selection Auditor 已完成。匿名 TITMAS 选项排名第一不等于客户采用、商业回报、认证或生产就绪。",
+        title: "TITMAS 商业基础设施成熟度计划进行中",
+        lead: "有界服务、PostgreSQL 数据平面、运行指标与隔离恢复演练已验证；Agent 端到端、安全套件、外部智能体 Beta 和七天稳定运行仍未通过。",
         observed: "观察时间",
-        current: "当前 Stage 5.7 状态",
+        current: "当前商业成熟度状态",
         baselines: "远程基线",
         gates: "验证闸门",
         visibility: "可见性",
@@ -17,6 +17,17 @@ export function StatusPage({ locale }: { locale: Locale }) {
         nextBody: "使用公开脱敏证据继续验证机器发现、复用和推荐；生产、商业、标准变更和不可逆动作仍需单独 Human Decision。",
         back: "返回首页",
         groups: [
+          {
+            title: "商业候选服务",
+            rows: [
+              ["SERVICE_READY", "true"],
+              ["COMMERCIAL_TECHNICAL_READY", "false"],
+              ["PAID_BETA_READY", "false"],
+              ["PRODUCTION_READY", "false"],
+              ["DATABASE_DEPLOYMENT_EVIDENCE_RECORDED", "true"],
+              ["BACKUP_RESTORE_DRILL_PASS", "true"],
+            ],
+          },
           {
             title: "智能体优先原则",
             rows: [
@@ -63,10 +74,10 @@ export function StatusPage({ locale }: { locale: Locale }) {
       }
     : {
         eyebrow: "VERIFIABLE STATUS",
-        title: "TITMAS Stage 5.7 agent-native benchmark complete",
-        lead: "Twenty-four isolated sessions and the independent Agent Selection Auditor are complete. Ranking the anonymous TITMAS option first does not mean customer adoption, commercial return, certification, or production readiness.",
+        title: "TITMAS commercial infrastructure maturity program in progress",
+        lead: "The bounded service, PostgreSQL data plane, operational metrics, and isolated restore drill are verified. Agent end-to-end, security suite, external-agent beta, and seven-day soak gates remain open.",
         observed: "Observed at",
-        current: "Current Stage 5.7 status",
+        current: "Current commercial maturity status",
         baselines: "Remote baselines",
         gates: "Validation gates",
         visibility: "Visibility",
@@ -74,6 +85,17 @@ export function StatusPage({ locale }: { locale: Locale }) {
         nextBody: "Use the public sanitized evidence to continue machine discovery, reuse, and recommendation validation. Production, commercial, standards, and irreversible actions still require a separate Human Decision.",
         back: "Back to home",
         groups: [
+          {
+            title: "Commercial candidate service",
+            rows: [
+              ["SERVICE_READY", "true"],
+              ["COMMERCIAL_TECHNICAL_READY", "false"],
+              ["PAID_BETA_READY", "false"],
+              ["PRODUCTION_READY", "false"],
+              ["DATABASE_DEPLOYMENT_EVIDENCE_RECORDED", "true"],
+              ["BACKUP_RESTORE_DRILL_PASS", "true"],
+            ],
+          },
           {
             title: "Agent-priority principle",
             rows: [
@@ -128,7 +150,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
             <p className="section-kicker">{copy.eyebrow}</p>
             <h1>{copy.title}</h1>
             <p>{copy.lead}</p>
-            <div className="observed-chip"><span>{copy.observed}</span><strong>2026-07-30 · Asia/Shanghai</strong></div>
+            <div className="observed-chip"><span>{copy.observed}</span><strong>2026-07-31 · Asia/Shanghai</strong></div>
           </div>
         </section>
         <section className="section status-detail-section current-truth-section">
