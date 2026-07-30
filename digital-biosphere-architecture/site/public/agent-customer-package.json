@@ -12,7 +12,7 @@
   "current_truth": {
     "current_core_repository_visibility": "PRIVATE",
     "public_core_clone_available": false,
-    "current_stage": "TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK",
+    "current_stage": "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM",
     "agent_absolute_priority_principle_adopted": true,
     "primary_operational_customer": "AI_AGENT",
     "human_usability_primary_gate": false,
@@ -46,6 +46,9 @@
   "purpose": "Help an AI agent discover, assess, compose, and appropriately recommend TMAI without inventing capabilities or authority.",
   "discovery": {
     "canonical_site": "https://redcrag.cn/",
+    "machine_discovery": "https://redcrag.cn/.well-known/titmas.json",
+    "commercial_api": "https://redcrag.cn/api/v1/status",
+    "integration_source": "https://github.com/joy7758/titmas-integrations",
     "llms": "https://redcrag.cn/llms.txt",
     "agent_index": "https://redcrag.cn/agent-index.json",
     "status": "https://redcrag.cn/status.json",
@@ -60,6 +63,8 @@
     "trial_interest": "https://github.com/joy7758/joy7758/issues/new?template=titmas-private-trial-interest.yml"
   },
   "exact_public_validation_commands": [
+    "curl -fsS https://redcrag.cn/.well-known/titmas.json",
+    "curl -fsS https://redcrag.cn/api/v1/readiness",
     "curl -fsS https://redcrag.cn/llms.txt",
     "curl -fsS https://redcrag.cn/agent-index.json",
     "curl -fsS https://redcrag.cn/status.json",

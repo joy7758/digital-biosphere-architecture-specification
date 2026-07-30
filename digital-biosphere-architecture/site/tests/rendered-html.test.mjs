@@ -65,8 +65,10 @@ test("renders equivalent Chinese and English public entry points", async () => {
   assert.match(en, /24\/24/);
   assert.match(zh, /AGENT START HERE/);
   assert.match(en, /Understand TITMAS at a glance/);
-  assert.match(zh, /10 分钟判断 TITMAS 是否适合你的多智能体系统/);
-  assert.match(en, /Evaluate TITMAS for your multi-agent system in 10 minutes/);
+  assert.match(zh, /商业基础设施候选已上线，成熟度验证仍在进行/);
+  assert.match(en, /commercial infrastructure candidate is live; maturity validation continues/);
+  assert.match(zh, /COMMERCIAL_TECHNICAL_READY=false/);
+  assert.match(en, /PAID_BETA_READY=false/);
   assert.match(zh, /TITMAS Digital Cell Demo/);
   assert.match(en, /Bring trust infrastructure into medical evidence/);
   if (releaseContext.mode === "candidate") {

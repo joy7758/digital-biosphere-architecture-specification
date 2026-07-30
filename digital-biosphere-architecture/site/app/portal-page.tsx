@@ -277,20 +277,19 @@ export function PortalPage({ locale }: { locale: Locale }) {
           <div className="section-shell commercial-entry-grid">
             <div>
               <div className="commercial-entry-meta">
-                <span>REMOTE VALIDATED</span>
-                <code>v0.1</code>
-                <code>PASS</code>
+                <span>SERVICE READY</span>
+                <code>COMMERCIAL READY=false</code>
               </div>
-              <p className="section-kicker">COMMERCIAL EVALUATION / 商业评估</p>
+              <p className="section-kicker">COMMERCIAL MATURITY PROGRAM / 商业成熟度计划</p>
               <h2>
                 {locale === "zh"
-                  ? "10 分钟判断 TITMAS 是否适合你的多智能体系统"
-                  : "Evaluate TITMAS for your multi-agent system in 10 minutes"}
+                  ? "商业基础设施候选已上线，成熟度验证仍在进行"
+                  : "The commercial infrastructure candidate is live; maturity validation continues"}
               </h2>
               <p>
                 {locale === "zh"
-                  ? "公开安装、同源合成样例、只读验证和明确边界已经收敛为第一版商业评估包。国内访问者无需跳转 GitHub 即可读取完整材料。"
-                  : "Public installation, a same-origin synthetic fixture, read-only validation, and explicit boundaries are packaged as the first Commercial Evaluation Pack."}
+                  ? "PostgreSQL 数据平面、运行指标与隔离恢复演练已经验证；Agent 端到端、安全套件、外部智能体 Beta 和七天稳定运行仍未通过。现有商业评估包继续作为只读入口。"
+                  : "The PostgreSQL data plane, operational metrics, and isolated restore drill are verified. Agent end-to-end, security suite, external-agent beta, and seven-day soak gates remain open. The existing Commercial Evaluation Pack remains a read-only entry."}
               </p>
               <a className="button button-primary" href={locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/"}>
                 {locale === "zh" ? "开始商业评估" : "Start evaluation"}
@@ -298,8 +297,12 @@ export function PortalPage({ locale }: { locale: Locale }) {
             </div>
             <details className="commercial-entry-truth">
               <summary>{locale === "zh" ? "查看当前真实状态" : "Review current truth"}</summary>
-              <code>PACKAGE_PREPARED=true</code>
-              <code>REMOTE_VALIDATED=true</code>
+              <code>SERVICE_READY=true</code>
+              <code>DATABASE_DEPLOYMENT_EVIDENCE_RECORDED=true</code>
+              <code>OBSERVABILITY_READY=true</code>
+              <code>BACKUP_RESTORE_DRILL_PASS=true</code>
+              <code>COMMERCIAL_TECHNICAL_READY=false</code>
+              <code>PAID_BETA_READY=false</code>
               <code>AVAILABLE_OFFERING=false</code>
               <code>PRODUCTION_READY=false</code>
               <code>CUSTOMERS_VERIFIED=0</code>

@@ -107,11 +107,11 @@ export function routeMarkers(mode) {
     enHome: ["<html lang=\"en\">", "Read the agent benchmark evidence"],
     zhStatus: [
       "<html lang=\"zh-CN\">",
-      mode !== "formal" ? "当前不是正式发布" : "TITMAS Stage 5.7 智能体原生基准完成",
+      mode !== "formal" ? "当前不是正式发布" : "TITMAS 商业基础设施成熟度计划进行中",
     ],
     enStatus: [
       "<html lang=\"en\">",
-      mode !== "formal" ? "This is not a release" : "TITMAS Stage 5.7 agent-native benchmark complete",
+      mode !== "formal" ? "This is not a release" : "TITMAS commercial infrastructure maturity program in progress",
     ],
   };
 }

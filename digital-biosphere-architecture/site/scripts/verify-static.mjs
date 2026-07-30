@@ -98,8 +98,8 @@ if (releaseContext.mode === "candidate") {
   assert.match(zhStatus, /当前不是正式发布/);
   assert.match(enStatus, /This is not a release/);
 } else {
-  assert.match(zhStatus, /TITMAS Stage 5\.7 智能体原生基准完成/);
-  assert.match(enStatus, /TITMAS Stage 5\.7 agent-native benchmark complete/);
+  assert.match(zhStatus, /TITMAS 商业基础设施成熟度计划进行中/);
+  assert.match(enStatus, /TITMAS commercial infrastructure maturity program in progress/);
 }
 assert.match(zh, /E01 Human Compatibility Observation/);
 assert.match(en, /E01 Human Compatibility Observation/);
@@ -107,8 +107,8 @@ assert.match(zh, /查看智能体基准证据/);
 assert.match(en, /Read the agent benchmark evidence/);
 assert.match(zh, /AGENT START HERE/);
 assert.match(en, /Understand TITMAS at a glance/);
-assert.match(zh, /10 分钟判断 TITMAS 是否适合你的多智能体系统/);
-assert.match(en, /Evaluate TITMAS for your multi-agent system in 10 minutes/);
+assert.match(zh, /商业基础设施候选已上线，成熟度验证仍在进行/);
+assert.match(en, /commercial infrastructure candidate is live; maturity validation continues/);
 assert.match(zh, /TITMAS Digital Cell Demo/);
 assert.match(en, /Bring trust infrastructure into medical evidence/);
 assert.match(zh, /第一个可信闭环：设计完成，尚未执行/);
@@ -157,7 +157,7 @@ assert.equal(status.gates.TITMAS_ADOPTION_VALIDATION_READY, false);
 assert.equal(status.gates.TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE, true);
 assert.equal(status.gates.TITMAS_PILOT_EXECUTION_AUTHORIZED, false);
 assert.equal(status.gates.COMPLETE_VERTICAL_SLICE_EXECUTED, false);
-assert.equal(status.current_stage, "TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK");
+assert.equal(status.current_stage, "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM");
 assert.equal(status.e01_status, "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION");
 assert.equal(status.e01_participant_access_authorized, true);
 assert.equal(status.e01_core_repository_access, false);
