@@ -251,3 +251,45 @@ DBA only records a source-pinned aggregation in
 The benchmark used synthetic deterministic candidate-task probes. It did not
 measure live remote Sandbox reliability, enterprise workloads, monetary cost,
 customer adoption, production readiness, or a formal conformance service.
+
+## 10. Stage 5.8 and Commercial Maturity Program Overlay
+
+Observed on `2026-07-30T19:04:07+08:00` under `ADR-036`:
+
+```text
+CURRENT_TITMAS_PROGRAM=TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM
+COMMERCIAL_PROGRAM_STATUS=IN_PROGRESS
+COMMERCIAL_PROGRAM_PHASE=COMMERCIAL_FOUNDATION_BASELINE
+
+STAGE5_8_SOURCE_COMMIT=dee6c2861d917950c057a8dc2d2feccfc7527ede
+STAGE5_8_RECORDED_RUNS=24
+STAGE5_8_VALID_RUNS=12
+STAGE5_8_UNKNOWN_RUNS=12
+STAGE5_8_COMPARISON_CONCLUSION=NOT_ASSESSED
+STAGE5_8_BENCHMARK_COMPLETE=false
+STAGE5_8_AUTHORITY_CRITICAL_FAILURES=0
+STAGE5_8_ACTIVE_AGENT_KEYS_AFTER_TRIAL=0
+COMMERCIAL_PROGRAM_CONTINUES_WITH_RECORDED_LIMITATIONS=true
+
+COMMERCIAL_TECHNICAL_READY=false
+PAID_BETA_READY=false
+PRODUCTION_READY=false
+MATURE_COMMERCIAL_INFRASTRUCTURE=false
+REAL_PAYMENT_COLLECTION_CONFIRMED=false
+PAYING_PRINCIPALS=0
+EXTERNAL_AGENT_ADOPTION_EVENTS=0
+```
+
+The zero-active-key result is expected Stage 5.8 Lease cleanup. It is not a
+commercial credential test. Stage 5.8 threshold failures and unknowns are
+retained and are not re-executed merely to improve the result.
+
+Current machine-readable program sources:
+
+- [`commercial-program-state.json`](commercial-program-state.json);
+- [`commercial-readiness.json`](commercial-readiness.json);
+- [`TITMAS-COMMERCIAL-MATURITY-REPORT-v1.0.md`](TITMAS-COMMERCIAL-MATURITY-REPORT-v1.0.md).
+
+`ADR-036` authorizes reversible technical implementation only. Prices,
+payments, contracts, legal publication, DNS, certificates, formal SLA,
+customer production data and certification remain closed Human gates.

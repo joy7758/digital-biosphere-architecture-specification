@@ -42,6 +42,18 @@ aliases. No fourth community name is created.
   [`../architecture/titmas-agent-absolute-priority-constitutional-correction-v0.1.md`](../architecture/titmas-agent-absolute-priority-constitutional-correction-v0.1.md)
 - E01 historical route reclassification:
   [`../TITMAS-STAGE-5-2-E01-RECLASSIFICATION-RECORD-v0.1.md`](../TITMAS-STAGE-5-2-E01-RECLASSIFICATION-RECORD-v0.1.md)
+- Commercial program state:
+  [`../commercial-program-state.json`](../commercial-program-state.json)
+- Commercial readiness:
+  [`../commercial-readiness.json`](../commercial-readiness.json)
+- Agent-native commercial architecture:
+  [`../TITMAS-COMMERCIAL-ARCHITECTURE-v1.0.md`](../TITMAS-COMMERCIAL-ARCHITECTURE-v1.0.md)
+- Agent-native onboarding contract:
+  [`../TITMAS-AGENT-NATIVE-ONBOARDING-v1.0.md`](../TITMAS-AGENT-NATIVE-ONBOARDING-v1.0.md)
+- Receipt key management:
+  [`../TITMAS-RECEIPT-KEY-MANAGEMENT-v1.0.md`](../TITMAS-RECEIPT-KEY-MANAGEMENT-v1.0.md)
+- Commercial maturity report:
+  [`../TITMAS-COMMERCIAL-MATURITY-REPORT-v1.0.md`](../TITMAS-COMMERCIAL-MATURITY-REPORT-v1.0.md)
 
 ## Local validation
 
@@ -137,6 +149,18 @@ ROI 证据，不是客户采用、商业合同、正式标准、生产就绪或�
 The temporary assignment is revocable and limited to this integration
 candidate. It does not grant DBA, DBOS, SAEE, Evidence Truth, Certification,
 Commercial, Release, automatic merge or Stable-promotion authority.
+
+The separately authorized commercial maturity program is `IN_PROGRESS` at its
+governance baseline. It does not change the community state or activate public
+registration, pricing, payment, production, certification or a formal
+standard. Canonical readiness remains:
+
+```text
+COMMERCIAL_TECHNICAL_READY=false
+PAID_BETA_READY=false
+PRODUCTION_READY=false
+MATURE_COMMERCIAL_INFRASTRUCTURE=false
+```
 
 The community core, PR #41, Activation PR #42, entry-repair PR #45 and Welcome
 Issue #43 remain historical facts. The current repository is private; public

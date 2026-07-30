@@ -72,3 +72,17 @@ ADJACENT_PROJECTS_ADMITTED=false
 DISCOVERY_NE_ADOPTION=true
 MAPPING_NE_INTEGRATION=true
 ```
+
+## 6. Commercial Program Implementation Surface
+
+`ADR-036` records a program track, not a new project admission:
+
+| surface | portfolio role | source | state |
+|---|---|---|---|
+| Commercial governance | DBA responsibility extension | `commercial-program-state.json`, ADR-036 | `IN_PROGRESS` |
+| Commercial data/control modules | private Gateway bounded extension | `joy7758/titmas-sandbox-gateway` | `NOT_IMPLEMENTED_AT_BASELINE` |
+| Public-safe SDK and adapters | existing integrations repository | `joy7758/titmas-integrations` | `NOT_STARTED` |
+| Commercial control-plane repository | optional candidate | none | `NOT_CREATED_NOT_CURRENTLY_JUSTIFIED` |
+
+No portfolio Owner, repository visibility or canonical implementation truth is
+changed by this entry.

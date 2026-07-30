@@ -1,0 +1,46 @@
+{
+  "$schema": "architecture/schemas/commercial-readiness-v1.0.schema.json",
+  "readiness_version": "1.0",
+  "observed_at": "2026-07-30T19:04:07+08:00",
+  "commercial_technical_ready": false,
+  "paid_beta_ready": false,
+  "production_ready": false,
+  "mature_commercial_infrastructure": false,
+  "technical_gates": {
+    "multi_tenant_model": "NOT_STARTED",
+    "tenant_bound_credentials": "NOT_STARTED",
+    "usage_metering": "NOT_STARTED",
+    "billing_ledger": "NOT_STARTED",
+    "signed_receipts": "NOT_STARTED",
+    "agent_native_onboarding": "NOT_STARTED",
+    "public_safe_sdks_and_adapters": "NOT_STARTED"
+  },
+  "operational_gates": {
+    "production_candidate_deployment": "NOT_STARTED",
+    "backup_restore_drill": "NOT_STARTED",
+    "incident_drill": "NOT_STARTED",
+    "load_test": "NOT_STARTED",
+    "internal_72_hour_soak": "NOT_STARTED",
+    "production_candidate_7_day_soak": "NOT_STARTED",
+    "commercial_30_day_observation": "NOT_STARTED"
+  },
+  "external_evidence": {
+    "external_agent_frameworks": 0,
+    "external_agent_identities": 0,
+    "external_agent_tenants": 0,
+    "valid_external_calls": 0,
+    "adoption_events": 0
+  },
+  "commercial_evidence": {
+    "paying_principals": 0,
+    "real_payment_collection_confirmed": false,
+    "successful_protected_calls_30d": 0,
+    "active_external_agent_identities_30d": 0
+  },
+  "security": {
+    "critical_findings_open": null,
+    "high_findings_without_mitigation": null,
+    "cross_tenant_leakage_findings": null
+  },
+  "next_human_decision": null
+}
