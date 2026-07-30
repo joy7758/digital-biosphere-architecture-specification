@@ -38,11 +38,11 @@ function assertJsonTruth(key, expected) {
 }
 
 test("MT-01 current stage agrees", () => {
-  const expected = "TITMAS_STAGE_5_2_EXTERNAL_DEVELOPER_TRIAL";
+  const expected = "TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK";
   assertJsonTruth("current_stage", expected);
   assert.match(llms, new RegExp(`CURRENT_STAGE=${expected}`));
-  assert.match(zhHome, /Stage 5\.2/);
-  assert.match(enHome, /Stage 5\.2/);
+  assert.match(zhHome, /Stage 5\.7/);
+  assert.match(enHome, /Stage 5\.7/);
 });
 
 test("MT-02 E01 status agrees", () => {
@@ -64,18 +64,30 @@ test("MT-03 private core status agrees", () => {
 test("MT-04 public intake status agrees", () => {
   assertJsonTruth("titmas_public_trial_interest_entry_active", true);
   assert.match(llms, /TITMAS_PUBLIC_TRIAL_INTEREST_ENTRY_ACTIVE=true/);
-  assert.match(zhHome, /非约束性意向/);
-  assert.match(enHome, /Non-binding interest/);
+  assert.match(zhHome, /Public Trial Interest Intake/);
+  assert.match(enHome, /Public Trial Interest Intake/);
 });
 
-test("MT-05 compensated recruitment status agrees", () => {
+test("MT-05 compensated recruitment history is retired", () => {
   assertJsonTruth("compensated_trial_recruitment_demand_submitted", true);
-  assertJsonTruth("compensated_trial_recruitment_publication_confirmed", false);
-  assert.match(llms, /COMPENSATED_TRIAL_RECRUITMENT_PLATFORM_REVIEW_STATUS=PENDING/);
-  assert.match(zhStatus, /平台发布审核等待中/);
-  assert.match(enStatus, /platform publication review pending/);
+  assertJsonTruth("compensated_trial_recruitment_publication_confirmed", true);
+  assertJsonTruth("compensated_human_trial_strategy_status", "RETIRED");
+  assert.match(llms, /COMPENSATED_HUMAN_TRIAL_STRATEGY_STATUS=RETIRED/);
+  assert.match(zhStatus, /COMPENSATED_HUMAN_TRIAL_STRATEGY/);
+  assert.match(enStatus, /COMPENSATED_HUMAN_TRIAL_STRATEGY/);
   assert.doesNotMatch(zhHome, /程序员客栈|需求ID/);
   assert.doesNotMatch(enHome, /Proginn|demand ID/i);
+});
+
+test("MT-11 Stage 5.7 evidence agrees", () => {
+  assertJsonTruth("agent_absolute_priority_principle_adopted", true);
+  assertJsonTruth("primary_operational_customer", "AI_AGENT");
+  assert.equal(status.stage5_7_agent_native_selection_roi.valid_sessions, 24);
+  assert.equal(agentIndex.stage5_7_agent_native_selection_roi.valid_sessions, 24);
+  assert.equal(status.stage5_7_agent_native_selection_roi.agent_selection_auditor_status, "PASS");
+  assert.match(llms, /OPTION_D_RANKED_FIRST=24\/24/);
+  assert.match(zhHome, /24\/24/);
+  assert.match(enHome, /24\/24/);
 });
 
 test("MT-06 protocol release status agrees", () => {

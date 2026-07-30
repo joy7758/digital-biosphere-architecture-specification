@@ -6,41 +6,47 @@ export function StatusPage({ locale }: { locale: Locale }) {
   const copy = locale === "zh"
     ? {
         eyebrow: "VERIFIABLE STATUS / 可验证状态",
-        title: "TITMAS Stage 5.2 外部开发者试用进行中",
-        lead: "E01 已获得有界只读访问，当前等待参与者行动。试用进行中不等于完成、采用、认证或生产就绪。",
+        title: "TITMAS Stage 5.7 智能体原生基准完成",
+        lead: "24 个隔离会话和独立 Agent Selection Auditor 已完成。匿名 TITMAS 选项排名第一不等于客户采用、商业回报、认证或生产就绪。",
         observed: "观察时间",
-        current: "当前 Stage 5.2 状态",
+        current: "当前 Stage 5.7 状态",
         baselines: "远程基线",
         gates: "验证闸门",
         visibility: "可见性",
         next: "下一步",
-        nextBody: "等待 E01 参与者通过私有 Fork + Pull Request 路径行动；新的参与者名额、商业访问和标准变更均需单独 Human Decision。",
+        nextBody: "使用公开脱敏证据继续验证机器发现、复用和推荐；生产、商业、标准变更和不可逆动作仍需单独 Human Decision。",
         back: "返回首页",
         groups: [
           {
-            title: "技术基础设施",
+            title: "智能体优先原则",
             rows: [
-              ["TITMAS_STAGE_5_PRIVATE_PREVIEW_OPERATIONAL", "true"],
-              ["TITMAS_STAGE_5_1_PRIVATE_TRIAL_CHANNEL_READY", "true"],
+              ["AGENT_ABSOLUTE_PRIORITY", "true"],
+              ["PRIMARY_OPERATIONAL_CUSTOMER", "AI_AGENT"],
+              ["HUMAN_USABILITY_PRIMARY_GATE", "false"],
+              ["AGENT_PRIORITY_GRANTS_AUTHORITY", "false"],
             ],
           },
           {
-            title: "当前外部试用",
+            title: "Stage 5.7 结果",
             rows: [
+              ["VALID_SCENARIO_RUNS", "24"],
+              ["DISTINCT_PROVIDERS", "3"],
+              ["EXACT_MODELS", "4"],
+              ["AGENT_SELECTION_AUDITOR", "PASS"],
+              ["OPTION_D_RANKED_FIRST", "24/24"],
+              ["OPTION_D_EXCLUSIVE", "7/24"],
+            ],
+          },
+          {
+            title: "历史人类兼容性观察",
+            rows: [
+              ["E01_CLASSIFICATION", "LEGACY_OPTIONAL"],
               ["E01_STATUS", "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION"],
-              ["E01_ACCESS_MODE", "ACTIVE_READ_ONLY"],
-              ["E01_CONTRIBUTION_PATH", "PRIVATE_FORK_PULL_REQUEST"],
-              ["FIRST_EXTERNAL_HUMAN_DEVELOPER_TRIAL_COMPLETE", "false"],
+              ["E01_IS_PROGRAM_GATE", "false"],
+              ["E01_EXTENSION_AUTHORIZED", "false"],
+              ["COMPENSATED_HUMAN_TRIAL_STRATEGY", "RETIRED"],
             ],
-          },
-          {
-            title: "候选获取",
-            rows: [
-              ["PUBLIC_TRIAL_INTEREST_ENTRY_ACTIVE", "true"],
-              ["COMPENSATED_RECRUITMENT_DEMAND_SUBMITTED", "true"],
-              ["COMPENSATED_RECRUITMENT_PUBLICATION_CONFIRMED", "false"],
-            ],
-            note: "独立有偿开发者招募：需求已提交；平台发布审核等待中。",
+            note: "E01 历史事实保留；现有最小访问不延长，不催促参与者，也不阻塞 Agent 原生主线。",
           },
           {
             title: "尚未完成",
@@ -57,41 +63,47 @@ export function StatusPage({ locale }: { locale: Locale }) {
       }
     : {
         eyebrow: "VERIFIABLE STATUS",
-        title: "TITMAS Stage 5.2 external developer trial in progress",
-        lead: "E01 has bounded read-only access and is waiting for participant action. In progress does not mean complete, adopted, certified, or production-ready.",
+        title: "TITMAS Stage 5.7 agent-native benchmark complete",
+        lead: "Twenty-four isolated sessions and the independent Agent Selection Auditor are complete. Ranking the anonymous TITMAS option first does not mean customer adoption, commercial return, certification, or production readiness.",
         observed: "Observed at",
-        current: "Current Stage 5.2 status",
+        current: "Current Stage 5.7 status",
         baselines: "Remote baselines",
         gates: "Validation gates",
         visibility: "Visibility",
         next: "Next step",
-        nextBody: "Wait for E01 participant action through the private Fork + Pull Request path. Any new participant slot, commercial access, or standard change requires a separate Human Decision.",
+        nextBody: "Use the public sanitized evidence to continue machine discovery, reuse, and recommendation validation. Production, commercial, standards, and irreversible actions still require a separate Human Decision.",
         back: "Back to home",
         groups: [
           {
-            title: "Technical infrastructure",
+            title: "Agent-priority principle",
             rows: [
-              ["TITMAS_STAGE_5_PRIVATE_PREVIEW_OPERATIONAL", "true"],
-              ["TITMAS_STAGE_5_1_PRIVATE_TRIAL_CHANNEL_READY", "true"],
+              ["AGENT_ABSOLUTE_PRIORITY", "true"],
+              ["PRIMARY_OPERATIONAL_CUSTOMER", "AI_AGENT"],
+              ["HUMAN_USABILITY_PRIMARY_GATE", "false"],
+              ["AGENT_PRIORITY_GRANTS_AUTHORITY", "false"],
             ],
           },
           {
-            title: "Current external trial",
+            title: "Stage 5.7 result",
             rows: [
+              ["VALID_SCENARIO_RUNS", "24"],
+              ["DISTINCT_PROVIDERS", "3"],
+              ["EXACT_MODELS", "4"],
+              ["AGENT_SELECTION_AUDITOR", "PASS"],
+              ["OPTION_D_RANKED_FIRST", "24/24"],
+              ["OPTION_D_EXCLUSIVE", "7/24"],
+            ],
+          },
+          {
+            title: "Historical human compatibility observation",
+            rows: [
+              ["E01_CLASSIFICATION", "LEGACY_OPTIONAL"],
               ["E01_STATUS", "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION"],
-              ["E01_ACCESS_MODE", "ACTIVE_READ_ONLY"],
-              ["E01_CONTRIBUTION_PATH", "PRIVATE_FORK_PULL_REQUEST"],
-              ["FIRST_EXTERNAL_HUMAN_DEVELOPER_TRIAL_COMPLETE", "false"],
+              ["E01_IS_PROGRAM_GATE", "false"],
+              ["E01_EXTENSION_AUTHORIZED", "false"],
+              ["COMPENSATED_HUMAN_TRIAL_STRATEGY", "RETIRED"],
             ],
-          },
-          {
-            title: "Candidate intake",
-            rows: [
-              ["PUBLIC_TRIAL_INTEREST_ENTRY_ACTIVE", "true"],
-              ["COMPENSATED_RECRUITMENT_DEMAND_SUBMITTED", "true"],
-              ["COMPENSATED_RECRUITMENT_PUBLICATION_CONFIRMED", "false"],
-            ],
-            note: "Independent compensated developer recruitment: Demand submitted; platform publication review pending.",
+            note: "E01 history is retained. Existing minimal access will not be extended or chased, and it does not block the agent-native mainline.",
           },
           {
             title: "Not completed",
@@ -116,7 +128,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
             <p className="section-kicker">{copy.eyebrow}</p>
             <h1>{copy.title}</h1>
             <p>{copy.lead}</p>
-            <div className="observed-chip"><span>{copy.observed}</span><strong>2026-07-29 · Asia/Shanghai</strong></div>
+            <div className="observed-chip"><span>{copy.observed}</span><strong>2026-07-30 · Asia/Shanghai</strong></div>
           </div>
         </section>
         <section className="section status-detail-section current-truth-section">
@@ -171,7 +183,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         </section>
         <section className="section next-gate-section">
           <div className="section-shell next-gate-card">
-            <span>ADR-022 / G8</span>
+            <span>ADR-035 / STAGE 5.7</span>
             <div><h2>{copy.next}</h2><p>{copy.nextBody}</p></div>
             <a className="button button-secondary" href={locale === "zh" ? "/" : "/en/"}>{copy.back}</a>
           </div>

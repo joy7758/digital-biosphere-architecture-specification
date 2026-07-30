@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "catalog_id": "TITMAS-PUBLIC-UPDATES-0.1",
-  "observed_at": "2026-07-28T13:10:00+08:00",
+  "observed_at": "2026-07-30T03:00:00+08:00",
   "route_template": "/updates/{slug}/",
   "categories": [
     "RELEASE_NOTE",
@@ -33,6 +33,63 @@
     "condition": "UPDATE_COUNT_GT_8_OR_CATEGORY_COUNT_GTE_3"
   },
   "items": [
+    {
+      "slug": "stage5-7-agent-native-selection-roi",
+      "category": "RESEARCH_UPDATE",
+      "status": "PUBLISHED",
+      "audience": [
+        "AI_AGENT",
+        "DEVELOPER",
+        "TECHNICAL_EVALUATOR"
+      ],
+      "effective_date": "2026-07-30T03:00:00+08:00",
+      "expires_at": null,
+      "is_announcement": true,
+      "severity": null,
+      "source_commit": "ab1d875921d0a68c5b91fa054f692f1284a75949",
+      "source_url": "/evidence/stage5-7/evidence-manifest.json",
+      "supersedes": null,
+      "title": {
+        "zh": "Stage 5.7 智能体原生选择与 ROI 基准完成",
+        "en": "Stage 5.7 agent-native selection and ROI benchmark complete"
+      },
+      "summary": {
+        "zh": "3 个供应商、4 个精确模型、24 个隔离会话和独立审计已完成；结果仅证明合成基准中的智能体选择信号。",
+        "en": "Three providers, four exact models, twenty-four isolated sessions, and an independent audit are complete; the result is bounded to agent-selection signals in a synthetic benchmark."
+      },
+      "href": {
+        "zh": "/#agent-start",
+        "en": "/en/#agent-start"
+      },
+      "changes": {
+        "zh": [
+          "匿名 TITMAS 选项在 24/24 会话中排名第一。",
+          "7/24 会话独占选择该选项，17/24 同时保留其他方案。",
+          "公开聚合结果、审计、Manifest、限制和 24 份脱敏会话。",
+          "K3 未出现在已配置供应商库存中，因此未执行 K3 会话。"
+        ],
+        "en": [
+          "The anonymous TITMAS option ranked first in 24/24 sessions.",
+          "It was selected exclusively in 7/24 sessions; 17/24 retained alternatives.",
+          "Aggregate results, audit, manifest, limitations, and 24 sanitized sessions are public.",
+          "K3 was absent from the configured provider inventories, so no K3 session ran."
+        ]
+      },
+      "truth_boundaries": [
+        {
+          "scope": "AGENT_SELECTION",
+          "limitation": "Agent selection in a synthetic benchmark does not establish customer adoption."
+        },
+        {
+          "scope": "ROI",
+          "limitation": "The frozen-formula score is not measured monetary return or production cost."
+        },
+        {
+          "scope": "PRODUCTION",
+          "limitation": "PRODUCTION_READY=false."
+        }
+      ]
+    },
     {
       "slug": "information-architecture-v0-1",
       "category": "RELEASE_NOTE",

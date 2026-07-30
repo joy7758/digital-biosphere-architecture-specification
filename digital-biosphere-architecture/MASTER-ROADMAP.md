@@ -149,10 +149,15 @@ Anonymous comparable infrastructure options
 
 | milestone | objective | status | required evidence |
 |---|---|---|---|
-| `S5.7-A` | 冻结匿名选项、场景、随机化、ROI 评分和上限 | `AUTHORIZED_NOT_IMPLEMENTED` | PR A、测试、空白报告、无品牌提示检查 |
-| `S5.7-B` | 执行多供应商、多模型受控会话 | `BLOCKED_ON_S5.7-A_MERGE` | ≥3 providers、≥4 exact models、≥24 valid runs、失败保留 |
-| `S5.7-C` | 独立 Agent Selection Auditor 复核 | `NOT_STARTED` | 匿名、公平、无事后改分、未知保留审计 |
-| `S5.7-D` | 提交脱敏结果和有界结论 | `NOT_STARTED` | PR B、manifest、hash chain、aggregate、limitations |
+| `S5.7-A` | 冻结匿名选项、场景、随机化、ROI 评分和上限 | `COMPLETE` | Sandbox PR `#11`、102 tests、空白报告、无品牌提示检查 |
+| `S5.7-B` | 执行多供应商、多模型受控会话 | `COMPLETE` | 3 providers、4 exact models、24 valid runs、失败完整保留 |
+| `S5.7-C` | 独立 Agent Selection Auditor 复核 | `PASS` | 随机化、匿名、公平、无事后改分、未知保留全部通过 |
+| `S5.7-D` | 提交脱敏结果和有界结论 | `COMPLETE` | Sandbox PR `#14`、manifest、hash chain、aggregate、limitations |
 
 E01 与付费真人试用不再是本路线的前置 gate。Stage 5.7 可以证明选择和相对 ROI，
 不能证明客户采用、合同、正式标准、Production 或 Human Authority 已被替代。
+
+Stage 5.7 的 canonical sanitized evidence 位于
+`titmas-sandbox-gateway@ab1d875921d0a68c5b91fa054f692f1284a75949`。
+24/24 会话把匿名 Option D 排在第一位，但只有 7/24 独占选择；冻结公式平均
+Agent ROI 为 `12.504572`。该结果只适用于合成基准，不是商业采用或生产可靠性证据。
