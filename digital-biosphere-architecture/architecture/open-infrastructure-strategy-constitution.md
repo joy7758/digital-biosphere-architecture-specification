@@ -1,12 +1,17 @@
-# Digital Biosphere Open Infrastructure Strategy Constitution v0.1
+# Digital Biosphere Open Infrastructure Strategy Constitution v0.2
 
-中文：数字生物圈开放基础设施战略宪法 v0.1
+中文：数字生物圈开放基础设施战略宪法 v0.2
 
 Status: `ADOPTED_STRATEGIC_CONSTITUTION`
 
 Authority: Architecture governance and strategic interpretation only
 
 Implementation effect: `NONE`
+
+Amendment references:
+
+- [`ADR-032`](ADR-032-compositional-scale-over-unbounded-center.md)
+- [`ADR-033`](ADR-033-attention-principle-for-dynamic-coordination.md)
 
 ## Constitutional Position
 
@@ -111,6 +116,83 @@ DBOS 不与 Foundation Model 在模型规模、推理能力、训练能力或 Ag
 
 DBOS 解决模型之外的可治理问题：信任边界、身份、责任、生命周期、协作、证据和验证引用。
 
+## Principle 4A: Compositional Scale, Not an Unbounded Center
+
+Digital Biosphere 不追求制造单一、无限强的中心，而通过大量职责简单、边界受限、
+接口可组合的数字主体与服务，在可审计、可追溯、可隔离、可降级的结构组合中形成
+系统级覆盖能力。
+
+```text
+many simple and bounded entities
+  + explicit contracts
+  + observable interactions
+  + fail-closed coordination
+  -> broad system coverage
+```
+
+这里的“简单”表示职责有限、边界清楚、可替换，不表示不受治理；“组合”表示通过
+显式接口协作，不表示权力聚合；“覆盖”表示结构能够处理更多场景，不表示结果必然
+正确、已经验证或成为 Truth。
+
+有限的 Architecture Governance、Operational Governance 和 Evolution Evaluation
+继续存在，但任何单体或组合都不得因规模、连接或涌现而自动获得超出显式范围的
+Authority、Permission、Decision、Truth Ownership 或全局控制权。协调组件可以存在，
+但必须边界有限、可替换、可撤销并可审计，不能演变为隐藏的无限强中心。
+
+架构和实现提案应优先选择：
+
+- 职责小、可替换、可单独验证的主体与服务；
+- 开放 Protocol、Schema、Adapter contract 和可追溯 lineage；
+- 可观察、可隔离、可降级且失败尽量局部化的交互；
+- 对组合级行为、耦合、级联失败和涌现风险的独立审查。
+
+详细决策见
+[`ADR-032`](ADR-032-compositional-scale-over-unbounded-center.md)。
+
+## Principle 4B: Attention as Dynamic, Decentralized Allocation
+
+Digital Biosphere 吸收 Transformer 中 dynamic attention allocation（动态注意力分配）
+的思想作为架构启发，但不声明与 Transformer 的数学机制、训练过程、自注意力矩阵或
+具体 Runtime 实现等价。
+
+> Intelligence does not emerge from a single dominant entity, but from dynamic
+> attention allocation and evidence-driven coordination among many simple
+> entities.
+
+中文：
+
+> 智能不是来源于单一强大主体，而是在大量简单主体之间通过动态注意力分配和证据驱动协作产生。
+
+Attention 不是中央控制、Authority、Permission、Decision、Evidence、Verification
+或 Truth 的来源。它根据任务、环境状态和反馈历史，对有限资源及候选参与关系进行
+动态分配。输出必须是有范围、可解释、可复核、可撤销且会过期的候选参与建议。
+
+主体选择至少考虑任务相关性、有范围的 Capability 匹配、有来源且可质疑的历史信号、
+Evidence 的质量与限制、环境状态、资源约束和反馈历史。无关主体不应持续消耗资源；
+未被选择不表示失去 Identity、Capability、Permission 或生态资格。
+
+```text
+Agent Layer
+  ↓ task demand + environment context
+Attention Layer
+  ↓ bounded, explainable, expiring participation proposal
+Coordination Layer
+  ↓ authorized, scoped, temporary collaboration
+Evidence Layer
+  ↓ admitted and verified records + limitations + unknowns
+Memory / Evolution Layer
+  ↺ governed feedback history to Attention Layer
+```
+
+箭头只表示 conceptual handoff（概念交接），不创建新项目、Runtime、API、中央调度器、
+Authority 继承或 Permission 流转。Attention 回答候选“谁参与”；实际参与仍需适用
+Authorization。Evidence 回答主张“由什么材料支持”；Evidence 和 Verification 仍不等于
+Truth。SAEE 可以只读消费已接纳且带限制的材料形成评价反馈，但不成为 Attention
+controller，不写回 DBOS，也不批准或执行自己的 Recommendation。
+
+详细决策见
+[`ADR-033`](ADR-033-attention-principle-for-dynamic-coordination.md)。
+
 ## Principle 5: Applications Grow on DBOS
 
 生态关系为：
@@ -200,6 +282,11 @@ DBOS 不得被重新定位为：
 5. 它是否要求封闭标准或单一供应商锁定？
 6. 它的商业表述是 strategy、available offering、adoption evidence 还是 contractual commitment？
 7. 它是否有明确 Human Governance 和 Architecture Decision Record？
+8. 它是否试图把智能、控制、数据、执行或治理集中到一个无限强中心？
+9. 它能否拆分为边界受限、可替换、可审计的简单主体与显式组合契约？
+10. 组合是否会隐式产生 Authority、Permission、Decision、Truth Ownership 或全局控制？
+11. Attention 的输入、理由、范围、版本、过期和撤销是否可追溯？
+12. Attention、Coordination、Evidence、Evaluation 与 Human Decision 是否保持责任分离？
 
 任一关键问题无法回答时，提案保持 `REVIEW_REQUIRED`，不得进入 DBOS 核心或被宣称为已采用战略。
 
@@ -231,6 +318,20 @@ AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
 OPEN_INFRASTRUCTURE_NE_FREE_PRODUCT=true
 SPECIFICATION_NE_IMPLEMENTATION=true
 STRATEGY_NE_COMMERCIAL_COMMITMENT=true
+UNBOUNDED_CENTRAL_INTELLIGENCE_IS_NOT_TARGET=true
+COMPOSITIONAL_SCALE_IS_STRATEGIC_DEFAULT=true
+SIMPLE_ENTITY_NE_UNGOVERNED_ENTITY=true
+COMPOSITION_NE_AUTHORITY_AGGREGATION=true
+COORDINATION_NE_UNBOUNDED_CENTER=true
+COVERAGE_NE_CORRECTNESS_OR_TRUTH=true
+EMERGENT_CAPABILITY_NE_AUTOMATIC_PERMISSION=true
+ATTENTION_IS_DYNAMIC_RESOURCE_ALLOCATION=true
+ATTENTION_NE_CENTRAL_CONTROL=true
+ATTENTION_NE_AUTHORITY_OR_PERMISSION=true
+ATTENTION_NE_EVIDENCE_OR_TRUTH=true
+ATTENTION_OUTPUT_IS_BOUNDED_PARTICIPATION_PROPOSAL=true
+ATTENTION_RELATIONSHIPS_ARE_TASK_SCOPED_AND_EXPIRING=true
+SAEE_NE_ATTENTION_CONTROLLER=true
 AUTOMATIC_AUTHORITY_EFFECT=NONE
 ```
 
@@ -241,4 +342,8 @@ AUTOMATIC_AUTHORITY_EFFECT=NONE
 - DBOS、SAEE、SDK、Marketplace、Enterprise Edition 或认证体系已经实现或发布；
 - 已经形成开发者采用、社区增长、企业客户或商业收入；
 - 开放基础设施自动满足安全、合规、审计或认证要求；
+- Attention Layer、Coordination Layer、Memory / Evolution feedback loop、动态路由器
+  或中央调度服务已经实现、部署或通过符合性验证；
+- Attention Principle 与 Transformer 数学机制、生物神经系统、意识或数字免疫
+  Runtime 等价；
 - 任何 Agent、Runtime、Entity、Capability、Permission 或 Digital Organism 已被创建。

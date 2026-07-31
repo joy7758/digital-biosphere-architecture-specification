@@ -245,6 +245,12 @@ EXTERNAL_INTELLIGENCE_IS_REFERENCE_ONLY=true
 EXTERNAL_INTELLIGENCE_ADOPTION_AUTOMATIC=false
 ```
 
+旧工作目录材料已经完成选择性解析与合并。逐文件 SHA-256、分类和去向见
+[`Legacy Material Reconciliation Manifest`](LEGACY-MATERIAL-RECONCILIATION-MANIFEST-v1.0.json)，
+人类可读结论见
+[`Legacy Material Reconciliation Report`](LEGACY-MATERIAL-RECONCILIATION-REPORT-v1.0.md)。
+该合并只吸收仍有效的组合式规模与注意力原则，不用旧控制面覆盖当前项目状态。
+
 ## Public Entry（统一对外入口）
 
 > **TITMAS Agent-Native Standards Community**
@@ -564,6 +570,8 @@ DBOS != SAEE.
 | [`architecture/developer-ecosystem-strategy.md`](architecture/developer-ecosystem-strategy.md) | Developer、SDK、Protocol、Community 与 Marketplace 路线 |
 | [`architecture/commercialization-strategy.md`](architecture/commercialization-strategy.md) | Open Core、Enterprise Edition、Industry Solutions 与 Certification 边界 |
 | [`architecture/ADR-015-open-infrastructure-strategy.md`](architecture/ADR-015-open-infrastructure-strategy.md) | 选择开放基础设施路线的架构决策 |
+| [`architecture/ADR-032-compositional-scale-over-unbounded-center.md`](architecture/ADR-032-compositional-scale-over-unbounded-center.md) | 以大量简单、受限、可替换主体的组合形成覆盖能力，不建设无限强中心 |
+| [`architecture/ADR-033-attention-principle-for-dynamic-coordination.md`](architecture/ADR-033-attention-principle-for-dynamic-coordination.md) | 用动态、可解释、会过期的候选参与建议连接协作与 Evidence，不创建中央控制器 |
 | [`architecture/project-mapping.md`](architecture/project-mapping.md) | DBOS、SAEE、应用与服务生态的战略角色映射 |
 
 这些文件只定义 strategy and architecture governance（战略与架构治理），不创建 SDK、Marketplace、Enterprise Edition、Certification program、Agent、Runtime、Entity、Capability、Permission、商业产品或客户承诺。
