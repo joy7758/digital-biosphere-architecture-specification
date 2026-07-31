@@ -63,12 +63,22 @@ Observed at: 2026-07-31 Asia/Shanghai
 - MATURE_COMMERCIAL_INFRASTRUCTURE=false
 - PUBLIC_API_BASE=https://redcrag.cn/api/v1
 - MACHINE_DISCOVERY=https://redcrag.cn/.well-known/titmas.json
-- DATA_PLANE_SOURCE_REVISION=4abae250e78ee48d9b4c35e4a918484536e07854
+- DATA_PLANE_REPOSITORY_REVISION=c319001cc1cf9e44d8b3d0b142a025c6c9af1678
+- LIVE_COMMERCIAL_RELEASE_REVISION=9bbfce6154d67f4ab50e911b5e49611f5a4a8b57
+- FAILED_CANDIDATE_REVISION=33bea67bafcd5fe3aabc7e7f48b456dba42aaf76
 - INTEGRATION_SOURCE=https://github.com/joy7758/titmas-integrations
 - INTEGRATION_SOURCE_REVISION=1d9da72b41e103b92d42d872457af0349021744b
 - DATABASE_DEPLOYMENT_EVIDENCE_RECORDED=true
 - OBSERVABILITY_READY=true
-- BACKUP_RESTORE_DRILL_PASS=true
+- CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
+- BACKUP_INTEGRITY_PASS=true
+- STRUCTURAL_RESTORE_PASS=true
+- RESTORED_RECEIPT_VERIFICATION_PASS=false
+- RESTORED_RECEIPTS_CHECKED=1661
+- RESTORED_RECEIPT_SIGNATURES_VALID=1659
+- RESTORED_RECEIPT_SIGNATURES_INVALID=2
+- BACKUP_RESTORE_DRILL_PASS=false
+- RESTORE_RTO_STATUS=NOT_ESTABLISHED
 - AGENT_END_TO_END_READY=false
 - SECURITY_TEST_SUITE_READY=false
 - SEVEN_DAY_SOAK_PASS=false
@@ -76,11 +86,17 @@ Observed at: 2026-07-31 Asia/Shanghai
 - PACKAGE_REGISTRY_PUBLISHED=false
 - PAYMENT_PROCESSOR_CONNECTED=false
 - PRICING_ACTIVE=false
+- NEXT_HUMAN_DECISION=CR01_HISTORICAL_SYNTHETIC_RECEIPT_DISPOSITION_AND_DEPLOYMENT_CAP
 
-The public API is a bounded service candidate. Its health and readiness
-endpoints being available do not establish commercial readiness, paid-beta
-readiness, production readiness, customer adoption, certification, or standard
-adoption. Credentials are scoped and are not provisioned automatically.
+The public API is a bounded retained service candidate. CR-01 is blocked
+because two immutable historical synthetic Receipts cannot be cryptographically
+verified after restore; their random signing key was not retained. The records
+were not deleted, rewritten, re-signed, or allowlisted. Backup integrity and
+structural restoration passed, but full restore and RTO did not. Health and
+readiness endpoints being available do not establish commercial readiness,
+paid-beta readiness, production readiness, customer adoption, certification,
+or standard adoption. Credentials are scoped and are not provisioned
+automatically.
 
 Public source adapters and SDKs:
 

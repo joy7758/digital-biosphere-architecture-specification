@@ -13,9 +13,11 @@ risk_acceptance_granted: false
 ## Outcome（结论）
 
 站点依赖已在不使用 `npm audit fix --force` 的条件下完成同主版本升级和回归验证。
-完整依赖树从 12 项漏洞（2 low、2 moderate、8 high）降至 2 项 moderate；当前结果为
-0 critical、0 high、2 moderate。正式发布前的 dependency review（依赖复核）已完成，
-剩余风险必须继续在 release notes（发布说明）中披露，但不再单独阻塞静态网站发布。
+本节原始检查把完整依赖树从 12 项漏洞降至 2 项 moderate。`2026-07-31` 的后续复核
+发现上游通告状态已经变化：完整开发树现为 9 项 high，全部来自
+ESLint/minimatch/brace-expansion 开发工具链；`npm audit --omit=dev` 仍为 0。服务器只
+部署静态工件，不部署 Node.js、ESLint 或构建依赖。残余风险继续公开保留，不执行
+`npm audit fix --force`，也不把生产依赖为 0 误写成完整依赖树为 0。
 
 这不是对第三方依赖的安全认证，也不产生 Runtime、Agent、Permission 或发布授权。
 
@@ -53,9 +55,9 @@ risk_acceptance_granted: false
 
 | Check | Result |
 |---|---|
-| `npm audit` | `0 critical / 0 high / 2 moderate / 0 low` |
-| `npm audit --omit=dev` | `0 critical / 0 high / 2 moderate / 0 low` |
-| `npm test` | `5/5 PASS` |
+| `npm audit`（2026-07-31 follow-up） | `0 critical / 9 high / 0 moderate / 0 low`，开发工具链 |
+| `npm audit --omit=dev`（2026-07-31 follow-up） | `0 critical / 0 high / 0 moderate / 0 low` |
+| `npm test`（2026-07-31 follow-up） | `45/45 PASS` |
 | `npm run lint` | `PASS` |
 | `SOURCE_REVISION=DEPENDENCY-AUDIT-PRECOMMIT npm run release:static` | `PASS` |
 | Static source revision check | `PASS` |
@@ -70,7 +72,7 @@ FORMAL_RELEASE_BLOCKER_CLEARED=true
 DEPENDENCY_RISK_ACCEPTED=false
 RUNTIME_DEPENDENCIES_DEPLOYED=false
 CRITICAL_VULNERABILITIES=0
-HIGH_VULNERABILITIES=0
-MODERATE_VULNERABILITIES=2
+PRODUCTION_HIGH_VULNERABILITIES=0
+DEVELOPMENT_HIGH_VULNERABILITIES=9
 FORCED_AUDIT_FIX_USED=false
 ```

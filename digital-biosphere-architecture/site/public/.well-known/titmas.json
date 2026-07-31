@@ -40,14 +40,26 @@
     "package_registry_published": false
   },
   "deployment_evidence": {
-    "data_plane_source_revision": "4abae250e78ee48d9b4c35e4a918484536e07854",
+    "data_plane_repository_revision": "c319001cc1cf9e44d8b3d0b142a025c6c9af1678",
+    "live_commercial_release_revision": "9bbfce6154d67f4ab50e911b5e49611f5a4a8b57",
+    "failed_candidate_revision": "33bea67bafcd5fe3aabc7e7f48b456dba42aaf76",
     "database_deployment_recorded": true,
     "observability_ready": true,
-    "backup_restore_drill_pass": true,
-    "measured_restore_rto_seconds": 0.262,
+    "cr01_status": "BLOCKED_LEDGER_INTEGRITY",
+    "backup_integrity_pass": true,
+    "structural_restore_pass": true,
+    "restored_receipt_verification_pass": false,
+    "restored_receipts_checked": 1661,
+    "restored_receipt_signatures_valid": 1659,
+    "restored_receipt_signatures_invalid": 2,
+    "backup_restore_drill_pass": false,
+    "restore_rto_status": "NOT_ESTABLISHED",
+    "measured_restore_rto_seconds": null,
     "agent_end_to_end_ready": false,
     "security_test_suite_ready": false,
-    "seven_day_soak_pass": false
+    "seven_day_soak_pass": false,
+    "soak_72h_started": false,
+    "next_human_decision": "CR01_HISTORICAL_SYNTHETIC_RECEIPT_DISPOSITION_AND_DEPLOYMENT_CAP"
   },
   "receipt_verification": {
     "signature_algorithm": "Ed25519",
@@ -74,5 +86,5 @@
   "external_access_automatic": false,
   "payment_processor_connected": false,
   "pricing_active": false,
-  "observed_at": "2026-07-31T03:12:12+08:00"
+  "observed_at": "2026-07-31T17:17:01+08:00"
 }

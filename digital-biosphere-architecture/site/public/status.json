@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "observed_at": "2026-07-31T03:12:12+08:00",
+  "observed_at": "2026-07-31T17:17:01+08:00",
   "public_focus": "TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY",
   "release_state": "developer_preview_released",
   "release_claim": true,
@@ -63,7 +63,7 @@
     "formal_standard_change": false
   },
   "commercial_candidate": {
-    "status": "IN_PROGRESS",
+    "status": "WAITING_FOR_HUMAN_DECISION",
     "service_ready": true,
     "commercial_technical_ready": false,
     "paid_beta_ready": false,
@@ -71,17 +71,28 @@
     "mature_commercial_infrastructure": false,
     "public_api_base": "https://redcrag.cn/api/v1",
     "machine_discovery": "https://redcrag.cn/.well-known/titmas.json",
-    "data_plane_source_revision": "4abae250e78ee48d9b4c35e4a918484536e07854",
+    "data_plane_repository_revision": "c319001cc1cf9e44d8b3d0b142a025c6c9af1678",
+    "live_commercial_release_revision": "9bbfce6154d67f4ab50e911b5e49611f5a4a8b57",
+    "failed_candidate_revision": "33bea67bafcd5fe3aabc7e7f48b456dba42aaf76",
     "integration_source_revision": "1d9da72b41e103b92d42d872457af0349021744b",
     "database_deployment_recorded": true,
     "observability_ready": true,
-    "backup_restore_drill_pass": true,
+    "cr01_status": "BLOCKED_LEDGER_INTEGRITY",
+    "backup_integrity_pass": true,
+    "structural_restore_pass": true,
+    "restored_receipt_verification_pass": false,
+    "restored_receipts_checked": 1661,
+    "restored_receipt_signatures_valid": 1659,
+    "restored_receipt_signatures_invalid": 2,
+    "backup_restore_drill_pass": false,
+    "restore_rto_status": "NOT_ESTABLISHED",
     "agent_end_to_end_ready": false,
     "security_test_suite_ready": false,
     "seven_day_soak_pass": false,
     "external_agent_beta_complete": false,
     "payment_processor_connected": false,
-    "pricing_active": false
+    "pricing_active": false,
+    "next_human_decision": "CR01_HISTORICAL_SYNTHETIC_RECEIPT_DISPOSITION_AND_DEPLOYMENT_CAP"
   },
   "repository_baselines": {
     "DBA": "0ab097099fc61f07f171aa7f9f19130846437c55",

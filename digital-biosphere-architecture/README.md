@@ -90,9 +90,9 @@ dbos_public_safe_wheel_validated: true
 dbos_public_safe_wheel_published: true
 dbos_public_safe_wheel_url: https://github.com/joy7758/digital-biosphere-architecture-specification/releases/download/v0.1-developer-preview/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl
 dbos_public_safe_wheel_package_id: TMAI-DBOS-WHEEL-CANDIDATE-20260722-001
-website_dependency_review_result: pass-with-bounded-residual-disclosed
-website_dependency_high_vulnerabilities: 0
-website_dependency_moderate_vulnerabilities: 2
+website_dependency_review_result: pass-production-zero-development-high-nine-disclosed
+website_production_dependency_high_vulnerabilities: 0
+website_development_dependency_high_vulnerabilities: 9
 digital_entity_admission_specification_defined: true
 admission_process_implemented: false
 admission_decision_created: false
