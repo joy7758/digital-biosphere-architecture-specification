@@ -7,15 +7,15 @@ export const metadata: Metadata = {
     icon: "/favicon.svg",
   },
   title: {
-    default: "夏日之海 · TITMAS 可信多智能体基础设施开发者社区",
-    template: "%s · TITMAS",
+    default: "山西游骑兵电子商务有限公司",
+    template: "%s · 山西游骑兵电子商务有限公司",
   },
   description:
     "围绕开放规范、适配器契约、符合性测试和参考实现边界建设可信多智能体基础设施。",
   openGraph: {
     type: "website",
-    siteName: "TITMAS Infrastructure Developer Community",
-    title: "夏日之海 · TITMAS 可信多智能体基础设施开发者社区",
+    siteName: "山西游骑兵电子商务有限公司",
+    title: "山西游骑兵电子商务有限公司",
     description:
       "Developer Community for Trusted Multi-Agent Infrastructure.",
     images: [
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TITMAS Infrastructure Developer Community",
+    title: "山西游骑兵电子商务有限公司",
     description:
       "Open specifications, adapter contracts, conformance, and reference boundaries for trusted multi-agent infrastructure.",
     images: ["/og.png"],

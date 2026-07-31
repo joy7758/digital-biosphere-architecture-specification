@@ -76,6 +76,7 @@ const [zh, en, zhStatus, enStatus, status, agentCustomerPackage, dbosPackage, re
   readFile(join(outputRoot, "release-manifest.json"), "utf8").then(JSON.parse),
 ]);
 const agentIndex = await readFile(join(outputRoot, "agent-index.json"), "utf8").then(JSON.parse);
+const llms = await readFile(join(outputRoot, "llms.txt"), "utf8");
 const releaseContext = resolveReleaseContext(process.env, {
   status,
   agentIndex,
@@ -87,6 +88,14 @@ assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
 assert.match(zh, /夏日之海/);
 assert.match(zh, /\/summersea-logo\.png/);
 assert.match(en, /TITMAS Infrastructure Developer Community/);
+assert.match(zh, /<title>山西游骑兵电子商务有限公司<\/title>/);
+assert.match(en, /<title>山西游骑兵电子商务有限公司<\/title>/);
+assert.match(zh, /网站运营主体[^<]*：山西游骑兵电子商务有限公司/);
+assert.match(en, /Website operator[^<]*：山西游骑兵电子商务有限公司/);
+assert.match(zh, /晋ICP备2026006409号-1/);
+assert.match(en, /晋ICP备2026006409号-1/);
+assert.match(zh, /href="https:\/\/beian\.miit\.gov\.cn"[^>]*>工业和信息化部备案管理系统/);
+assert.match(en, /href="https:\/\/beian\.miit\.gov\.cn"[^>]*>工业和信息化部备案管理系统/);
 assert.match(zh, /<html lang="zh-CN">/);
 assert.match(zhStatus, /<html lang="zh-CN">/);
 assert.match(en, /<html lang="en">/);
@@ -131,6 +140,9 @@ assert.equal(status.community.public_contribution_surface_authorized, false);
 assert.equal(agentIndex.name, "TITMAS Infrastructure Developer Community");
 assert.equal(agentIndex.display_name_zh, "夏日之海");
 assert.equal(agentIndex.abbreviation, "TITMAS");
+assert.equal(agentIndex.website_operator_legal_name, "山西游骑兵电子商务有限公司");
+assert.equal(agentIndex.public_website.operator_legal_name, "山西游骑兵电子商务有限公司");
+assert.equal(agentIndex.public_website.icp_record_number, "晋ICP备2026006409号-1");
 assert.equal(agentIndex.community.public_submission_invitation, false);
 assert.equal(status.gates.DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE, true);
 assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL, true);
@@ -166,6 +178,10 @@ assert.equal(status.new_external_participant_invitation_authorized, false);
 assert.equal(status.public_protocol_released, false);
 assert.equal(status.commercial_access_granted, false);
 assert.equal(status.production_ready, false);
+assert.equal(status.public_website.operator_legal_name, "山西游骑兵电子商务有限公司");
+assert.equal(status.public_website.icp_record_number, "晋ICP备2026006409号-1");
+assert.match(llms, /Website operator legal name: 山西游骑兵电子商务有限公司/);
+assert.match(llms, /ICP record number: 晋ICP备2026006409号-1/);
 assert.equal(status.technical_validation.conformance_cases_defined, 14);
 assert.equal(status.technical_validation.conformance_cases_executed, 0);
 assert.equal(status.technical_validation.first_external_role, "REVIEWER");
