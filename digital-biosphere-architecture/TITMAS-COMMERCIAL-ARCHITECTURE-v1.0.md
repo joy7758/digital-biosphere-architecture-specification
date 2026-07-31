@@ -6,12 +6,17 @@
 MATURITY=TECHNICAL_ARCHITECTURE_BASELINE
 IMPLEMENTATION_COMPLETE=false
 DEPLOYMENT_COMPLETE=false
+FIRST_MULTI_TENANT_VERTICAL_SLICE_IMPLEMENTED=true
+BOUNDED_COMMERCIAL_CANDIDATE_DEPLOYED=true
+CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
 COMMERCIAL_TECHNICAL_READY=false
 PUBLIC_PAID_LAUNCH_AUTHORIZED=false
 ```
 
 This document defines the implementation boundary for a machine-first
-commercial technical candidate. It does not claim a current production service.
+commercial technical candidate. The first bounded vertical slice now exists,
+but the complete architecture and deployment gates are not complete. It does
+not claim a production service.
 
 ## Product contract
 

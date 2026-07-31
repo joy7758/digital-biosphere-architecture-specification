@@ -2,7 +2,7 @@
 
 ## Snapshot
 
-Observed at `2026-07-30T19:04:07+08:00`.
+Observed at `2026-07-31T17:01:11+08:00`.
 
 ```text
 COMMERCIAL_TECHNICAL_READY=false
@@ -16,27 +16,30 @@ SUCCESSFUL_PROTECTED_CALLS_30D=0
 REAL_PAYMENT_COLLECTION_CONFIRMED=false
 
 30_DAY_AVAILABILITY=NOT_ASSESSED
-RESTORE_DRILL=NOT_ASSESSED
-INCIDENT_DRILL=NOT_ASSESSED
-CRITICAL_SECURITY_FINDINGS_OPEN=NOT_ASSESSED
+RESTORE_DRILL=FAIL_RECEIPT_VERIFICATION
+INCIDENT_DRILL=PARTIAL_CANARY_AND_ROLLBACK_ONLY
+CRITICAL_SECURITY_FINDINGS_OPEN=1
 ```
 
 ## Technical work completed
 
 - Human authorization for a resumable, reversible technical program exists.
 - Stage 5.8 exact source and retained negative/unknown results were verified.
-- current governance, Gateway, integrations, public and server baselines were
-  read directly;
-- Agent recommendation gate returned `NOT_RECOMMENDED` and produced a bounded
-  remediation path;
-- machine-readable program and readiness schemas are defined;
-- architecture, onboarding, security, operations, data and commercial decision
-  boundaries are defined.
-- an independent Qwen advisory review returned `CONDITIONAL_PASS`; all three
-  specification blockers were corrected and the bounded remediation review
-  returned `PASS` with zero remaining specification blockers.
+- Gateway `main@c319001cc1cf9e44d8b3d0b142a025c6c9af1678` contains the
+  separate PostgreSQL-backed `/api/v1` commercial candidate;
+- the candidate includes the multi-Tenant model, forced RLS, Tenant/Agent-bound
+  credentials, idempotency, signed and chained Receipts, Usage, Quota, Billing
+  Preview and rate-limit records;
+- machine-readable status, capabilities, plans, OpenAPI and Receipt public-key
+  discovery exist;
+- bounded load, canary failure, encrypted backup and isolated restore tooling
+  exist;
+- final local validation at the CR-01 remediation source recorded
+  `229 passed, 2 skipped`, with lint, type and disclosure scans passing.
 
-This is a governance baseline, not implementation completion.
+Implementation exists, but the commercial technical readiness gate remains
+false because operational recovery and long-running evidence failed or remain
+missing.
 
 ## Stage 5.8 retained input
 
@@ -59,9 +62,35 @@ capability thresholds remain failed and are not rewritten.
 
 ## Running verification
 
-No commercial `/api/v1`, PostgreSQL database, receipt signer, usage ledger,
-billing ledger, backup/restore drill, incident drill, load test or soak window
-has been completed.
+```text
+ACTIVE_COMMERCIAL_RELEASE=9bbfce6154d67f4ab50e911b5e49611f5a4a8b57
+FAILED_CR01_CANDIDATE=33bea67bafcd5fe3aabc7e7f48b456dba42aaf76
+ROLLBACK_RELEASE=5b13693f80aae98a0b3d53d2f4f0187399904a4a
+
+SUPPORTED_CONCURRENCY=10
+SUPPORTED_RPS_RANGE=17_TO_19
+SUSTAINED_CAPACITY_RESULT=NOT_STARTED
+RESOURCE_HEADROOM_RESULT=NOT_ASSESSED
+
+BACKUP_RESULT=PASS
+RESTORED_RECEIPTS_CHECKED=1661
+RESTORED_RECEIPT_SIGNATURES_VALID=1659
+RESTORED_RECEIPT_SIGNATURES_INVALID=2
+RESTORED_RECEIPT_CHAIN_FAILURES=0
+RESTORE_DRILL=FAIL_RECEIPT_VERIFICATION
+
+SOAK_72H=NOT_STARTED
+PRODUCTION_CANDIDATE_CAPACITY_PROFILE_VALIDATED=false
+```
+
+The first CR-01 candidate activation omitted final-path runtime Schemas and
+rolled back to the retained release in about 30 seconds. The isolated restore
+matched counts, schema, audit tip and 12 forced-RLS Tenant tables, but two
+historical synthetic integration-test Receipts cannot be signature-verified
+because their random public key was never retained.
+
+The records and failure remain unchanged. Structural restore is not full
+recovery.
 
 ## External Agent adoption
 
@@ -76,27 +105,31 @@ SLA is active or authorized.
 ## Blocked or incomplete gates
 
 ```text
-BLOCKED_GATES=[]
+BLOCKED_GATES=[
+  CR01_LEDGER_INTEGRITY,
+  CR01_DEPLOYMENT_AND_REMEDIATION_CAPS_EXHAUSTED
+]
 INCOMPLETE_GATES=[
-  MULTI_TENANT_IMPLEMENTATION,
-  SIGNED_RECEIPTS,
-  USAGE_AND_BILLING_LEDGERS,
-  SECURITY_AND_TENANT_ISOLATION,
-  PRODUCTION_CANDIDATE_DEPLOYMENT,
-  BACKUP_RESTORE_AND_INCIDENT_DRILLS,
+  CR01_HISTORICAL_RECEIPT_GOVERNANCE,
+  SUSTAINED_CAPACITY_AND_RESOURCE_HEADROOM,
+  RATE_LIMIT_AND_QUOTA_RUNTIME_VALIDATION,
+  CROSS_TENANT_RUNTIME_RESTORE_TEST,
+  FORMAL_ROLLBACK_AND_COMPLETE_INCIDENT_DRILL,
   LOAD_AND_LONG_RUNNING_EVIDENCE,
+  PUBLIC_SAFE_COMMERCIAL_SDKS_AND_ADAPTERS,
   EXTERNAL_AGENT_BETA,
   PRICING_AND_LEGAL_HUMAN_DECISIONS,
   REAL_PAYMENT_AND_ADOPTION
 ]
-NEXT_HUMAN_DECISION=NONE_UNTIL_PAID_BETA_INPUTS_EXIST
+NEXT_HUMAN_DECISION=CR01_HISTORICAL_SYNTHETIC_RECEIPT_DISPOSITION_AND_DEPLOYMENT_CAP
 ```
 
 ## Next action
 
-Implement one private, synthetic-data-only multi-tenant vertical slice in the
-existing Gateway repository, with tenant-bound credentials, preflight, signed
-receipt, idempotent usage and quota. Preserve `/sandbox/v0.1`.
+Obtain a Human Decision on the immutable historical synthetic Receipt
+disposition and on any exception to the exhausted deployment/remediation caps.
+Do not restart the 60-minute load, resource-headroom checks or 72-hour soak
+before that decision.
 
 ## Drift Check
 

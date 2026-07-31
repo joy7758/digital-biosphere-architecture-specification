@@ -3,18 +3,22 @@
 ## Current state
 
 ```text
-COMMERCIAL_SERVICE_DEPLOYED=false
+COMMERCIAL_SERVICE_DEPLOYED=true
 SANDBOX_PREVIEW_SERVICE_ACTIVE=true
-POSTGRESQL_INSTALLED=false
+POSTGRESQL_INSTALLED=true
 RUNBOOK_VALIDATED_BY_DRILL=false
+RUNBOOK_PARTIALLY_VALIDATED=true
+CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
+PRODUCTION_READY=false
 ```
 
-This runbook is an execution contract for the future commercial candidate. It
-does not describe a currently deployed `/api/v1`.
+This runbook is the execution contract for the deployed bounded commercial
+candidate. Deployment does not mean Production Candidate validation or
+Production Ready. The current CR-01 recovery gate is blocked.
 
 ## Baseline environment
 
-Observed on `2026-07-30T19:04:07+08:00`:
+Last reconciled on `2026-07-31T17:01:11+08:00`:
 
 ```text
 host=existing-baidu-server
@@ -24,10 +28,18 @@ memory=7.7 GiB
 root_disk_free=83 GiB
 sandbox_service=titmas-sandbox-preview.service active
 sandbox_release=33a10e37d9582f240c518a0b65fb59f12dd3527c
-postgresql=not installed
-ubuntu_postgresql_candidate=16
-api_v1_public_status=not deployed
+commercial_service=titmas-commercial-candidate.service active
+commercial_release=9bbfce6154d67f4ab50e911b5e49611f5a4a8b57
+commercial_rollback_release=5b13693f80aae98a0b3d53d2f4f0187399904a4a
+postgresql=16 installed candidate
+api_v1_status=deployed_bounded_not_production_ready
 ```
+
+The attempted CR-01 candidate
+`33bea67bafcd5fe3aabc7e7f48b456dba42aaf76` failed package activation because
+runtime Schemas were absent from its final immutable release path. Automatic
+rollback restored the retained release in about 30 seconds. No second
+activation is authorized under the exhausted CR-01 cap.
 
 ## Immutable release procedure
 
@@ -132,6 +144,16 @@ Plaintext tokens are never backed up.
 
 Restore evidence must record measured RPO and RTO. Design targets cannot be
 reported as measured results.
+
+The CR-01 isolated restore measured a 14-second RPO and completed structural
+restore plus verification work in 1.095 seconds. Formal RTO is not established
+because two of 1,661 historical synthetic Receipt signatures could not be
+verified. Counts, schema, audit tip, 12 forced-RLS tables and all Receipt chain
+links matched, but structural restoration is not full recovery.
+
+The historical records must not be deleted, rewritten, re-signed or
+allowlisted. Any quarantine, segregation or clean-ledger transition requires a
+separate Human Decision and a new authorized execution scope.
 
 ## Synthetic drills required
 

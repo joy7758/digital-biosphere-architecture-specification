@@ -72,9 +72,9 @@ CHILD_REPOSITORIES_CHANGED=false
 
 | dependency_id | upstream | downstream | type | current state | boundary |
 |---|---|---|---|---|---|
-| `DEP-CM-001` | DBA commercial contracts | private Gateway | `NORMATIVE` | `BASELINE_DEFINED_IMPLEMENTATION_PENDING` | DBA defines objects/gates; Gateway owns implementation truth |
-| `DEP-CM-002` | private Gateway | PostgreSQL 16 candidate | `APPLICATION_SERVICE` | `NOT_INSTALLED` | metadata/ledgers only; no raw payload persistence |
-| `DEP-CM-003` | private Gateway | public integrations | `DATA_CONTRACT` | `NOT_STARTED` | only public-safe OpenAPI, SDK, Adapter and verifier assets |
+| `DEP-CM-001` | DBA commercial contracts | private Gateway | `NORMATIVE` | `IMPLEMENTED_CANDIDATE_CR01_BLOCKED` | DBA defines objects/gates; Gateway owns implementation truth |
+| `DEP-CM-002` | private Gateway | PostgreSQL 16 candidate | `APPLICATION_SERVICE` | `DEPLOYED_SYNTHETIC_METADATA_ONLY` | metadata/ledgers only; no raw payload persistence; restore integrity gate is blocked |
+| `DEP-CM-003` | private Gateway | public integrations | `DATA_CONTRACT` | `COMMERCIAL_READINESS_NOT_ASSESSED` | only public-safe OpenAPI, SDK, Adapter and verifier assets |
 | `DEP-CM-004` | Gateway execution evidence | SAEE | `EVALUATION_INPUT` | `NOT_STARTED` | read-only future evaluation; SAEE does not authorize or mutate Gateway |
 | `DEP-CM-005` | Contracting Principal | Tenant/Agent credential lifecycle | `GOVERNANCE_GATE` | `INTERNAL_SYNTHETIC_ONLY` | Human retains contract/payment/irreversible authority |
 
