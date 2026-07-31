@@ -66,15 +66,16 @@ export function PortalPage({ locale }: { locale: Locale }) {
       {
         "@type": "Organization",
         "@id": "https://redcrag.cn/#organization",
-        name: "TITMAS Infrastructure Developer Community",
-        alternateName: ["夏日之海", "TITMAS 可信多智能体基础设施开发者社区"],
+        name: "山西游骑兵电子商务有限公司",
+        legalName: "山西游骑兵电子商务有限公司",
+        alternateName: ["夏日之海", "titmas", "TITMAS Infrastructure Developer Community"],
         url: "https://redcrag.cn/",
       },
       {
         "@type": "WebSite",
         "@id": "https://redcrag.cn/#website",
-        name: "TITMAS Infrastructure Developer Community",
-        alternateName: ["夏日之海", "TITMAS 可信多智能体基础设施开发者社区"],
+        name: "山西游骑兵电子商务有限公司",
+        alternateName: ["夏日之海", "titmas", "TITMAS Infrastructure Developer Community"],
         url: "https://redcrag.cn/",
         inLanguage: ["zh-CN", "en"],
         description: c.lead,
@@ -656,6 +657,18 @@ export function PortalPage({ locale }: { locale: Locale }) {
                 {c.governanceItems.map((item) => <li key={item}>{item}</li>)}
               </ul>
             </aside>
+          </div>
+        </section>
+
+        <section className="site-operator-section" aria-labelledby="site-operator-title">
+          <div className="section-shell site-operator-card">
+            <p className="section-kicker">WEBSITE OPERATOR / 网站运营主体</p>
+            <h2 id="site-operator-title">山西游骑兵电子商务有限公司</h2>
+            <p>
+              {locale === "zh"
+                ? "本网站由山西游骑兵电子商务有限公司运营，用于展示公司公开发布的数字技术研究、可信基础设施说明、行业应用示例与有明确边界的参考演示。夏日之海是中文公开品牌，TITMAS 是技术项目标识。"
+                : "This website is operated by 山西游骑兵电子商务有限公司 and presents the company's public digital-technology research, trust-infrastructure materials, industry application examples, and explicitly bounded reference demos. 夏日之海 is the Chinese public brand and TITMAS is the technical project identifier."}
+            </p>
           </div>
         </section>
       </main>
