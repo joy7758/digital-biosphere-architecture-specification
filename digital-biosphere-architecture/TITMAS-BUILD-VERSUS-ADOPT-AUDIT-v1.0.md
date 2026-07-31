@@ -3,7 +3,7 @@ document_id: TITMAS-BUILD-VERSUS-ADOPT-AUDIT-1.0
 title: TITMAS Build-versus-Adopt Audit v1.0
 title_zh: TITMAS 自研与采用审计 v1.0
 status: complete-decision-support-only
-observed_at: 2026-08-01T04:30:00+08:00
+observed_at: 2026-08-01T04:20:00+08:00
 implementation_authorized: false
 production_ready: false
 ---
@@ -23,8 +23,8 @@ ADOPT_BEFORE_BUILD=true
 AUDIT_STATUS=PASS_WITH_RECORDED_LIMITATIONS
 COMPONENTS_AUDITED=15
 RECOMMEND_ADOPT_COUNT=8
-CONDITIONAL_ADOPT_COUNT=0
-DEFER_COUNT=7
+CONDITIONAL_ADOPT_COUNT=6
+DEFER_COUNT=1
 REJECT_COUNT=0
 KEEP_CUSTOM_COUNT=10
 IMPLEMENTATION_AUTHORIZED=false
@@ -40,11 +40,14 @@ Read-only closure verification:
 PR36_STATE=CLOSED
 PR36_MERGED=false
 PR36_HEAD=3b8356d90b5eea3a0056e4672fdd7be077ec8177
+LIVE_SERVICE_STATUS=active
 LIVE_DATABASE_MIGRATION_EXECUTIONS=0
 APPLICATION_DEPLOYMENT_ATTEMPTS=0
 LIVE_RELEASE_CHANGED=false
 LIVE_RELEASE=9bbfce6154d67f4ab50e911b5e49611f5a4a8b57
 LEGACY_RECEIPTS=1661
+CLEAN_SCHEMA_COUNT=0
+TEMP_CANARY_DATABASE_COUNT=0
 LEGACY_VALID_SIGNATURES=1659
 LEGACY_UNVERIFIABLE_SIGNATURES=2
 LEGACY_CHAIN_FAILURES=0
@@ -75,6 +78,49 @@ The following remain `KEEP_CUSTOM_UNIQUE_SEMANTICS`:
 These semantics may use third-party libraries but cannot be delegated to a
 database, proxy, telemetry collector, policy engine or workflow service.
 
+### Full functional-scope disposition
+
+| Audited function | Disposition | Boundary or gap |
+|---|---|---|
+| Machine discovery entry | `KEEP_CUSTOM_UNIQUE_SEMANTICS` | Nginx only serves the versioned contract |
+| OpenAPI | custom canonical contract + `GENERATE_FROM_CONTRACT` | generator cannot define TITMAS semantics |
+| Schema Catalog | `KEEP_CUSTOM_UNIQUE_SEMANTICS` | registry/storage implementation remains a P0 choice |
+| Preflight | `KEEP_CUSTOM_UNIQUE_SEMANTICS` | fail closed on unknown schema/scope |
+| Reason Codes | `KEEP_CUSTOM_UNIQUE_SEMANTICS` | stable machine-readable meanings |
+| Receipt semantics | `KEEP_CUSTOM_UNIQUE_SEMANTICS` | Evidence and Authority boundaries remain canonical |
+| Receipt signing | custom signer interface | production signer is P1 and does not yet exist |
+| Receipt verification | custom verifier + standard crypto libraries | invalid/unverifiable is never rewritten |
+| Receipt ledger | PostgreSQL + custom immutable chain semantics | legacy is experimental; production is clean genesis only |
+| Agent Identity | custom object + PostgreSQL | identity does not create permission |
+| Scoped Credentials | custom scope contract + current authentication | plaintext credentials are not persisted |
+| Key expiry and revocation | custom contract/current storage | OpenBao deferred to rotation/dynamic-secret trigger |
+| Tenant isolation | PostgreSQL RLS + application binding | restored runtime confirmation remains P0 |
+| Quota | custom result semantics + PostgreSQL transaction | quota result is not payment authority |
+| Usage metering | custom event/Receipt linkage + PostgreSQL | OpenMeter deferred to numeric trigger |
+| Billing Preview | custom non-payment semantics + PostgreSQL | no price, invoice or payment authority |
+| API entry | Nginx + existing FastAPI | APISIX deferred |
+| Reverse proxy | Nginx | commodity ingress only |
+| Rate limiting | existing Nginx/application controls | revalidation remains P0; no new gateway now |
+| Policy engine | fixed custom scopes | OPA deferred to independent policy lifecycle |
+| Secret management | existing OS/service boundaries | OpenBao deferred; no new secret service authorized |
+| Python SDK | OpenAPI Generator | generated transport + thin semantic adapter |
+| TypeScript SDK | OpenAPI Generator | generated transport + thin semantic adapter |
+| MCP Adapter | official MCP SDK | MCP transport does not grant authority |
+| Agent framework adapters | thin TITMAS mappings | framework behavior is not Evidence without admission |
+| Logs | OpenTelemetry | allowlisted telemetry only |
+| Metrics | OpenTelemetry | metrics are observations, not truth |
+| Traces | OpenTelemetry | trace correlation is not authorization |
+| Alerts | OTel signals + existing operations | long-term alert backend is not selected; P0 gap |
+| SBOM | Syft | inventory is not vulnerability or license clearance |
+| Release/SBOM signing | Cosign | artifact signature does not replace Receipt semantics |
+| Dependency scanning | GitHub Actions orchestration and existing ecosystem scanners | exact scanner/version pin is P0 |
+| Vulnerability scanning | adopt a maintained scanner through CI | specific scanner not selected in this 15-project audit; P0 decision gap |
+| Message system | NATS/JetStream deferred | asynchronous delivery trigger required |
+| Long workflow | Temporal deferred | durable multi-hour workflow trigger required |
+| Complex authorization | OpenFGA deferred | relational-rule trigger required |
+| Professional metering/billing | OpenMeter deferred | paying-tenant/event-volume trigger required |
+| Large API gateway | APISIX deferred | Nginx capability-gap trigger required |
+
 ## 3. Adopt now as architecture baseline
 
 | Component | Mode | TITMAS use | Boundary |
@@ -91,7 +137,7 @@ database, proxy, telemetry collector, policy engine or workflow service.
 Adoption is a recommendation for a later implementation decision. No package,
 service or workflow change occurs in this audit.
 
-## 4. Defer by explicit trigger
+## 4. Defer deployment by explicit trigger
 
 | Component | Trigger | Why deferred now |
 |---|---|---|
@@ -103,8 +149,12 @@ service or workflow change occurs in this audit.
 | Temporal | `durable_multi_hour_workflow_required` | current flow does not justify a workflow control plane and persistence history |
 | Apache APISIX | `Nginx_capabilities_no_longer_meet_route_or_plugin_requirements` | Nginx meets present needs; APISIX adds OpenResty/plugins and often etcd |
 
-`DEFER` is not a negative judgment on upstream quality. It is the required
-response when current demand does not justify runtime weight or governance.
+OpenBao, OPA, OpenFGA, NATS, Temporal and APISIX score
+`CONDITIONAL_ADOPT`; OpenMeter scores `DEFER`. All seven use
+`DEFER_UNTIL_SCALE_TRIGGER`, because classification of upstream suitability is
+not permission to deploy it now. `DEFER` is not a negative judgment on upstream
+quality. It is the required response when current demand does not justify
+runtime weight or governance.
 
 ## 5. License and supply-chain review
 
@@ -184,6 +234,16 @@ permanent security clearance.
 
 ## 8. Two-lineage advisory review
 
+```text
+AGENT_AUDIT_SESSION_COUNT=2
+ARCHITECTURE_ADOPTION_AUDITOR_MODEL=qwen3.7-max
+LICENSE_AND_SUPPLY_CHAIN_AUDITOR_MODEL=deepseek-v4-pro
+MODEL_LINEAGES_DISTINCT=true
+RAW_PROVIDER_RESPONSE_COMMITTED=false
+SECRET_OR_CUSTOMER_DATA_SENT=false
+AGENT_APPROVAL_AUTHORITY=false
+```
+
 ### `qwen3.7-max` — `ARCHITECTURE_ADOPTION_AUDITOR`
 
 The model did not recommend TITMAS to a customer at current maturity. It agreed
@@ -222,9 +282,62 @@ The remediation is not “add more infrastructure.” It is to execute only an
 accepted P0 backlog, preserve fail-closed semantics, complete external Agent
 technical onboarding, and obtain new Human authorization for each later gate.
 
-## 10. Drift check
+## 10. Completion state
 
 ```text
+D04_FINAL_CLOSURE_RECORDED=true
+PR36_CLOSED_UNMERGED_CONFIRMED=true
+D04_FURTHER_RETRY_PATH_REMOVED=true
+D04_PROGRAM_GATE=false
+
+LEGACY_EXPERIMENTAL_LEDGER_BOUNDARY_FROZEN=true
+FUTURE_PRODUCTION_CLEAN_GENESIS_PRINCIPLE_FROZEN=true
+NO_MORE_INTERNAL_CLEAN_LEDGER_PROJECTS=true
+NO_MORE_LEGACY_LEDGER_TRANSITION_PROJECTS=true
+NO_MORE_D04_CANARIES=true
+
+BUILD_VERSUS_ADOPT_AUDIT_COMPLETE=true
+COMPONENT_ADOPTION_MATRIX_COMPLETE=true
+LICENSE_REVIEW_COMPLETE=true
+FINAL_FORM_ARCHITECTURE_PACKET_READY=true
+FINAL_FORM_IMPLEMENTATION_BACKLOG_READY=true
+P0_IMPLEMENTATION_ITEMS=10
+P1_IMPLEMENTATION_ITEMS=6
+P2_TRIGGERED_ITEMS=7
+
+GATEWAY_CHANGED=false
+DATABASE_CHANGED=false
+LIVE_RELEASE_CHANGED=false
+PAYMENT_EXECUTED=false
+
+TITMAS_BUILD_VERSUS_ADOPT_AUDIT_COMPLETE=true
+TITMAS_FINAL_FORM_IMPLEMENTATION_PLAN_READY=true
+TITMAS_FINAL_FORM_TECHNICAL_CANDIDATE=false
+TITMAS_COMMERCIAL_TECHNICAL_READY=false
+TITMAS_PAID_BETA_READY=false
+PRODUCTION_READY=false
+TITMAS_MATURE_COMMERCIAL_INFRASTRUCTURE=false
+
+NEXT_HUMAN_DECISION=AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_MATRIX
+```
+
+## 11. Drift check
+
+```text
+D04_FAILURE_RETAINED=true
+FOURTH_CANARY_AUTHORIZED=false
+LEGACY_HISTORY_REWRITTEN=false
+INTERNAL_EXPERIMENTAL_LEDGER_NE_PRODUCTION_LEDGER=true
+FUTURE_PRODUCTION_LEDGER_NE_LEGACY_MIGRATION=true
+ADOPT_BEFORE_BUILD=true
+UPSTREAM_NE_TITMAS_CORE_SEMANTICS=true
+OPEN_SOURCE_ADOPTION_NE_SOURCE_COPY=true
+ARCHITECTURE_PLAN_NE_IMPLEMENTATION_COMPLETE=true
+TECHNICAL_CANDIDATE_NE_PRODUCTION_READY=true
+CUSTOMER_ADOPTION_FABRICATED=false
+PAYMENT_FABRICATED=false
+PRODUCTION_CLAIM_FABRICATED=false
+
 CORE_INTEROPERABILITY_OBJECTIVE_PRESERVED=true
 NEW_CONTROL_AUTHORITY_CREATED=false
 NEW_TRUTH_SOURCE_CREATED=false

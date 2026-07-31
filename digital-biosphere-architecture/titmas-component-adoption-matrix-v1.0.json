@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "document_id": "TITMAS-COMPONENT-ADOPTION-MATRIX-1.0",
   "version": "1.0",
-  "observed_at": "2026-08-01T04:30:00+08:00",
+  "observed_at": "2026-08-01T04:20:00+08:00",
   "scope": "architecture decision support only",
   "scoring_context": {
     "server_count": 1,
@@ -51,6 +51,7 @@
       "rollback_strategy": "Application rollback plus database backup/restore; never claim schema downgrade without a tested path",
       "replacement_boundary": "SQL repository layer and migrations; TITMAS semantics remain outside PostgreSQL",
       "score": 94,
+      "score_breakdown": {"functional_maturity": 20, "maintenance_activity": 15, "license_compatibility": 15, "security_governance": 14, "single_server_fit": 10, "operational_complexity": 8, "replaceability": 8, "integration_cost": 4},
       "classification": "RECOMMEND_ADOPT",
       "adoption_mode": "KEEP_EXISTING_COMMODITY_COMPONENT"
     },
@@ -76,6 +77,7 @@
       "rollback_strategy": "Restore prior package/config and graceful reload",
       "replacement_boundary": "HTTP/TLS ingress only; application contracts remain OpenAPI/TITMAS-owned",
       "score": 90,
+      "score_breakdown": {"functional_maturity": 19, "maintenance_activity": 15, "license_compatibility": 15, "security_governance": 13, "single_server_fit": 10, "operational_complexity": 8, "replaceability": 7, "integration_cost": 3},
       "classification": "RECOMMEND_ADOPT",
       "adoption_mode": "KEEP_EXISTING_COMMODITY_COMPONENT"
     },
@@ -87,7 +89,7 @@
       "latest_stable_release": "v0.157.0",
       "release_date": "2026-07-22",
       "maintenance_activity": "Active; latest repository activity observed 2026-07-31",
-      "security_policy": "https://github.com/open-telemetry/opentelemetry-collector/blob/main/SECURITY.md",
+      "security_policy": "https://github.com/open-telemetry/.github/blob/main/SECURITY.md",
       "known_security_advisories": "Component stability is mixed; select only required stable/beta components and recheck advisories before pinning",
       "dependency_count": "Distribution-dependent component graph; not normalized in this audit",
       "runtime_services_required": ["optional otelcol single binary"],
@@ -101,13 +103,14 @@
       "rollback_strategy": "Restore prior binary/config; application must fail independently of telemetry",
       "replacement_boundary": "OTLP boundary; no TITMAS Truth, Evidence or Authorization semantics delegated",
       "score": 88,
+      "score_breakdown": {"functional_maturity": 18, "maintenance_activity": 15, "license_compatibility": 15, "security_governance": 13, "single_server_fit": 9, "operational_complexity": 7, "replaceability": 7, "integration_cost": 4},
       "classification": "RECOMMEND_ADOPT",
       "adoption_mode": "ADOPT_AS_RUNTIME_SERVICE"
     },
     {
       "project_name": "OpenAPI Generator",
       "official_repository": "https://github.com/OpenAPITools/openapi-generator",
-      "official_documentation": "https://openapi-generator.tech/docs/",
+      "official_documentation": "https://openapi-generator.tech/docs/installation",
       "license": "Apache-2.0",
       "latest_stable_release": "v7.24.0",
       "release_date": "2026-07-20",
@@ -126,6 +129,7 @@
       "rollback_strategy": "Regenerate with previous pinned version",
       "replacement_boundary": "Generated transport clients only; handwritten TITMAS semantic adapter remains separate",
       "score": 87,
+      "score_breakdown": {"functional_maturity": 18, "maintenance_activity": 15, "license_compatibility": 15, "security_governance": 12, "single_server_fit": 10, "operational_complexity": 8, "replaceability": 6, "integration_cost": 3},
       "classification": "RECOMMEND_ADOPT",
       "adoption_mode": "GENERATE_FROM_CONTRACT"
     },
@@ -151,6 +155,7 @@
       "rollback_strategy": "Restore prior lockfile/package set",
       "replacement_boundary": "MCP transport/protocol only; TITMAS capability, evidence and authority semantics stay custom",
       "score": 83,
+      "score_breakdown": {"functional_maturity": 16, "maintenance_activity": 15, "license_compatibility": 15, "security_governance": 12, "single_server_fit": 10, "operational_complexity": 8, "replaceability": 4, "integration_cost": 3},
       "classification": "RECOMMEND_ADOPT",
       "adoption_mode": "ADOPT_AS_DEPENDENCY"
     },
@@ -176,6 +181,7 @@
       "rollback_strategy": "Restore prior CLI and regenerate SBOM",
       "replacement_boundary": "SPDX/CycloneDX output; no TITMAS evidence authority delegated",
       "score": 89,
+      "score_breakdown": {"functional_maturity": 19, "maintenance_activity": 15, "license_compatibility": 15, "security_governance": 13, "single_server_fit": 10, "operational_complexity": 9, "replaceability": 6, "integration_cost": 2},
       "classification": "RECOMMEND_ADOPT",
       "adoption_mode": "ADOPT_AS_BUILD_TOOL"
     },
@@ -187,7 +193,7 @@
       "latest_stable_release": "v3.1.2",
       "release_date": "2026-07-17",
       "maintenance_activity": "Active; repository activity observed 2026-07-31",
-      "security_policy": "https://github.com/sigstore/community/blob/main/SECURITY.md",
+      "security_policy": "https://github.com/sigstore/cosign/security/policy",
       "known_security_advisories": "Historical advisories exist; pin patched CLI and verify identity/key policy explicitly",
       "dependency_count": "Single CLI for build use; transparency/log services depend on signing mode",
       "runtime_services_required": [],
@@ -201,6 +207,7 @@
       "rollback_strategy": "Retain prior verification tool and immutable signatures",
       "replacement_boundary": "Artifact signature envelope only; it does not replace TITMAS Receipt semantics or production signer decisions",
       "score": 86,
+      "score_breakdown": {"functional_maturity": 18, "maintenance_activity": 15, "license_compatibility": 15, "security_governance": 13, "single_server_fit": 10, "operational_complexity": 7, "replaceability": 5, "integration_cost": 3},
       "classification": "RECOMMEND_ADOPT",
       "adoption_mode": "ADOPT_AS_BUILD_TOOL"
     },
@@ -226,6 +233,7 @@
       "rollback_strategy": "Revert workflow and action pins",
       "replacement_boundary": "CI workflow contract and reproducible commands; no TITMAS runtime authority delegated",
       "score": 82,
+      "score_breakdown": {"functional_maturity": 18, "maintenance_activity": 15, "license_compatibility": 12, "security_governance": 13, "single_server_fit": 10, "operational_complexity": 9, "replaceability": 3, "integration_cost": 2},
       "classification": "RECOMMEND_ADOPT",
       "adoption_mode": "KEEP_EXISTING_COMMODITY_COMPONENT"
     },
@@ -250,8 +258,9 @@
       "upgrade_strategy": "Separate MPL-2.0 obligations review, backup/unseal rehearsal and version pin",
       "rollback_strategy": "Storage snapshot and prior binary/config with tested seal/unseal process",
       "replacement_boundary": "Secret/transit API behind a signer interface; never embeds OpenBao source into TITMAS",
-      "score": 64,
-      "classification": "DEFER",
+      "score": 75,
+      "score_breakdown": {"functional_maturity": 18, "maintenance_activity": 14, "license_compatibility": 11, "security_governance": 13, "single_server_fit": 8, "operational_complexity": 3, "replaceability": 5, "integration_cost": 3},
+      "classification": "CONDITIONAL_ADOPT",
       "adoption_mode": "DEFER_UNTIL_SCALE_TRIGGER",
       "trigger": "internal_secret_rotation_or_dynamic_credentials_exceed_current_boundary"
     },
@@ -276,8 +285,9 @@
       "upgrade_strategy": "Version policies and bundles; compatibility and fail-closed tests",
       "rollback_strategy": "Restore prior policy bundle and binary",
       "replacement_boundary": "Policy decision point only; Governance Decision and Authorization semantics remain TITMAS-owned",
-      "score": 64,
-      "classification": "DEFER",
+      "score": 79,
+      "score_breakdown": {"functional_maturity": 18, "maintenance_activity": 15, "license_compatibility": 15, "security_governance": 13, "single_server_fit": 8, "operational_complexity": 3, "replaceability": 4, "integration_cost": 3},
+      "classification": "CONDITIONAL_ADOPT",
       "adoption_mode": "DEFER_UNTIL_SCALE_TRIGGER",
       "trigger": "policy_rules_require_independent_policy_lifecycle"
     },
@@ -302,8 +312,9 @@
       "upgrade_strategy": "Version models and server; run tuple/model migration and authorization regression tests",
       "rollback_strategy": "Restore prior server/model and datastore snapshot",
       "replacement_boundary": "Relationship authorization adapter; TITMAS identity and human authority remain canonical",
-      "score": 63,
-      "classification": "DEFER",
+      "score": 75,
+      "score_breakdown": {"functional_maturity": 17, "maintenance_activity": 14, "license_compatibility": 15, "security_governance": 12, "single_server_fit": 7, "operational_complexity": 2, "replaceability": 5, "integration_cost": 3},
+      "classification": "CONDITIONAL_ADOPT",
       "adoption_mode": "DEFER_UNTIL_SCALE_TRIGGER",
       "trigger": "relational_authorization_rules_exceed_fixed_scope_model"
     },
@@ -329,6 +340,7 @@
       "rollback_strategy": "Component-specific rollback plus Kafka/ClickHouse/PostgreSQL recovery",
       "replacement_boundary": "Usage/billing export interface; TITMAS Receipt and authority semantics remain custom",
       "score": 55,
+      "score_breakdown": {"functional_maturity": 13, "maintenance_activity": 14, "license_compatibility": 15, "security_governance": 8, "single_server_fit": 2, "operational_complexity": 1, "replaceability": 1, "integration_cost": 1},
       "classification": "DEFER",
       "adoption_mode": "DEFER_UNTIL_SCALE_TRIGGER",
       "trigger": "real_paying_tenants>=3 OR monthly_usage_events>=100000"
@@ -354,8 +366,9 @@
       "upgrade_strategy": "Only after trigger; pin server/client and test stream compatibility",
       "rollback_strategy": "Restore prior server and stream snapshot; preserve event semantics outside NATS",
       "replacement_boundary": "Event bus abstraction; no Evidence or Authorization truth delegated",
-      "score": 64,
-      "classification": "DEFER",
+      "score": 78,
+      "score_breakdown": {"functional_maturity": 19, "maintenance_activity": 15, "license_compatibility": 15, "security_governance": 13, "single_server_fit": 6, "operational_complexity": 3, "replaceability": 5, "integration_cost": 2},
+      "classification": "CONDITIONAL_ADOPT",
       "adoption_mode": "DEFER_UNTIL_SCALE_TRIGGER",
       "trigger": "asynchronous_agent_event_delivery_required"
     },
@@ -380,8 +393,9 @@
       "upgrade_strategy": "Only after trigger; version workflows/workers and persistence schema carefully",
       "rollback_strategy": "Compatibility-aware server/worker rollback; durable history cannot be discarded",
       "replacement_boundary": "Durable orchestration interface; TITMAS governance and authority remain external",
-      "score": 62,
-      "classification": "DEFER",
+      "score": 75,
+      "score_breakdown": {"functional_maturity": 19, "maintenance_activity": 15, "license_compatibility": 15, "security_governance": 12, "single_server_fit": 4, "operational_complexity": 2, "replaceability": 5, "integration_cost": 3},
+      "classification": "CONDITIONAL_ADOPT",
       "adoption_mode": "DEFER_UNTIL_SCALE_TRIGGER",
       "trigger": "durable_multi_hour_workflow_required"
     },
@@ -406,8 +420,9 @@
       "upgrade_strategy": "Only after trigger; pin APISIX/OpenResty/plugins and validate route behavior",
       "rollback_strategy": "Restore prior package/config and route snapshot",
       "replacement_boundary": "Gateway routing/plugin layer; OpenAPI and TITMAS semantics remain independent",
-      "score": 60,
-      "classification": "DEFER",
+      "score": 74,
+      "score_breakdown": {"functional_maturity": 18, "maintenance_activity": 15, "license_compatibility": 15, "security_governance": 12, "single_server_fit": 5, "operational_complexity": 2, "replaceability": 5, "integration_cost": 2},
+      "classification": "CONDITIONAL_ADOPT",
       "adoption_mode": "DEFER_UNTIL_SCALE_TRIGGER",
       "trigger": "Nginx_capabilities_no_longer_meet_route_or_plugin_requirements"
     }
@@ -415,8 +430,8 @@
   "summary": {
     "components_audited": 15,
     "recommend_adopt_count": 8,
-    "conditional_adopt_count": 0,
-    "defer_count": 7,
+    "conditional_adopt_count": 6,
+    "defer_count": 1,
     "reject_count": 0,
     "keep_custom_semantic_groups": 10,
     "license_review_complete": true,

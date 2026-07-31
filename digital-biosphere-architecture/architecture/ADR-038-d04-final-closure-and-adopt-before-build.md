@@ -62,6 +62,22 @@ hash, separate signer and public key set, separate backup/recovery plan, and
 separate tenant initialization. Creation is deferred until a separate
 `PAID_BETA_LAUNCH_AUTHORIZED` decision.
 
+```text
+FUTURE_PRODUCTION_LEDGER_MODE=CLEAN_GENESIS
+LEGACY_TO_PRODUCTION_MIGRATION=false
+LEGACY_CHAIN_INHERITANCE=false
+LEGACY_SEQUENCE_INHERITANCE=false
+LEGACY_SIGNATURE_EXCEPTION_INHERITANCE=false
+PRODUCTION_LEDGER_CREATION_TRIGGER=PAID_BETA_LAUNCH_AUTHORIZED
+PRODUCTION_LEDGER_CREATED=false
+PRODUCTION_SIGNER_CREATED=false
+KMS_PURCHASE_AUTHORIZED=false
+NO_MORE_INTERNAL_CLEAN_LEDGER_PROJECTS=true
+NO_MORE_LEGACY_LEDGER_TRANSITION_PROJECTS=true
+NO_MORE_D04_CANARIES=true
+RESULT_REQUIRING_PRODUCTION_LEDGER=DEFERRED_UNTIL_PAID_BETA_PRODUCTION_LEDGER
+```
+
 TITMAS adopts an `ADOPT_BEFORE_BUILD` rule. Commodity persistence, proxying,
 telemetry, SDK generation, protocol transport, SBOM generation, artifact
 signing and CI are adopted from mature upstream projects. Custom code is

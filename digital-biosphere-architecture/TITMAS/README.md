@@ -167,15 +167,15 @@ candidate. It does not grant DBA, DBOS, SAEE, Evidence Truth, Certification,
 Commercial, Release, automatic merge or Stable-promotion authority.
 
 The separately authorized commercial maturity program is `IN_PROGRESS` at its
-technical implementation stage and is currently
-`WAITING_FOR_HUMAN_DECISION` at CR-01. It does not change the community state
+final-form architecture decision stage and is currently
+`WAITING_FOR_HUMAN_DECISION`. It does not change the community state
 or activate public registration, pricing, payment, production, certification
 or a formal standard. Canonical readiness remains:
 
 ```text
 COMMERCIAL_PROGRAM_STATUS=WAITING_FOR_HUMAN_DECISION
 COMMERCIAL_CR01_STATUS=BLOCKED_LEDGER_INTEGRITY_FAILED_RETAINED
-CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY
+CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY_SUPERSEDED_BY_D04_CLOSURE
 CR01_D03_DECISION_PACKET_READY=true
 D04_FINAL_STATUS=CLOSED_FAILED_RETAINED
 D04_CANARY_ATTEMPTS_TOTAL=3
