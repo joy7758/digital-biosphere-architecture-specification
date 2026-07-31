@@ -288,8 +288,8 @@ export function PortalPage({ locale }: { locale: Locale }) {
               </h2>
               <p>
                 {locale === "zh"
-                  ? "PostgreSQL 数据平面与运行指标已建立；CR-01 的备份完整性和结构恢复通过，但 1661 条历史 Receipt 中有 2 条签名无法验证，因此完整恢复闸门阻塞且 RTO 尚未建立。Agent 端到端、安全套件、外部智能体 Beta 和七天稳定运行仍未通过。"
-                  : "The PostgreSQL data plane and operational metrics exist. CR-01 backup integrity and structural restoration passed, but 2 of 1,661 historical Receipt signatures could not be verified; full recovery is blocked and RTO is not established. Agent end-to-end, security suite, external-agent beta, and seven-day soak gates remain open."}
+                  ? "PostgreSQL 数据平面与运行指标已建立；CR-01 的备份完整性和结构恢复通过，但 1661 条历史 Receipt 中有 2 条签名无法验证，因此完整恢复闸门阻塞且 RTO 尚未建立。CR01-D02 只批准不可变账本过渡设计，未批准 Gateway 修改、数据库迁移、再次部署或 soak。"
+                  : "The PostgreSQL data plane and operational metrics exist. CR-01 backup integrity and structural restoration passed, but 2 of 1,661 historical Receipt signatures could not be verified; full recovery is blocked and RTO is not established. CR01-D02 approves only an immutable-ledger transition design, not Gateway changes, database migration, another deployment, or soak."}
               </p>
               <a className="button button-primary" href={locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/"}>
                 {locale === "zh" ? "开始商业评估" : "Start evaluation"}
@@ -301,6 +301,8 @@ export function PortalPage({ locale }: { locale: Locale }) {
               <code>DATABASE_DEPLOYMENT_EVIDENCE_RECORDED=true</code>
               <code>OBSERVABILITY_READY=true</code>
               <code>CR01_STATUS=BLOCKED_LEDGER_INTEGRITY</code>
+              <code>CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY</code>
+              <code>LEDGER_TRANSITION_IMPLEMENTATION_AUTHORIZED=false</code>
               <code>BACKUP_RESTORE_DRILL_PASS=false</code>
               <code>RESTORE_RTO_STATUS=NOT_ESTABLISHED</code>
               <code>COMMERCIAL_TECHNICAL_READY=false</code>

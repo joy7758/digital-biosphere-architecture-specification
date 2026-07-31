@@ -110,6 +110,6 @@ DEVELOPER_PREVIEW_RELEASED=true
 | `CM-G3` Multi-tenant implementation | `PASS_IMPLEMENTED` | Gateway `c319001…` includes PostgreSQL migrations, forced RLS and Tenant/Agent/credential isolation tests |
 | `CM-G4` Receipt and metering | `BLOCKED_CR01_LEDGER_INTEGRITY` | current implementation exists, but isolated restore found 2 unverifiable historical synthetic Receipt signatures |
 | `CM-G5` Security and operations | `BLOCKED_CR01` | backup integrity and partial rollback pass; complete restore, cross-Tenant restored runtime test, sustained load, headroom and formal incident drill remain incomplete |
-| `CM-G6` Agent onboarding | `IN_PROGRESS` | machine entries exist; public-safe commercial SDK/Adapter and autonomous two-task reuse remain unassessed |
+| `CM-G6` Agent onboarding | `IN_PROGRESS` | public-safe SDK/Adapter source is hardened at `titmas-integrations@6ed4dad…`; packages remain unpublished and autonomous two-task reuse remains unassessed |
 | `CM-G7` External Agent Beta | `NOT_STARTED` | independent providers, frameworks, tenants, identities and calls |
-| `CM-G8` Paid/production maturity | `WAITING_FOR_UPSTREAM_GATES` | CR-01 Human Decision, external Agent Beta, legal/pricing inputs, real payment/use and elapsed reliability evidence |
+| `CM-G8` Paid/production maturity | `WAITING_FOR_UPSTREAM_GATES` | CR01-D02 is design-only; CR01-D03 implementation decision, external Agent Beta, legal/pricing inputs, real payment/use and elapsed reliability evidence remain required |

@@ -14,7 +14,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         gates: "验证闸门",
         visibility: "可见性",
         next: "下一步",
-        nextBody: "下一步由 Human Owner 决定如何处置 2 条不可验证的历史合成 Receipt，以及是否例外增加部署额度；在此之前不重启 CR-01 或 72 小时稳定性测试。",
+        nextBody: "CR01-D02 已批准设计但未批准实施。下一步 CR01-D03 决定是否实施“不可变异常清单 + 租户级锚定清洁 epoch”及是否例外增加 PR 和部署额度；此前不修改 Gateway、不迁移数据库、不重启 CR-01 或 72 小时稳定性测试。",
         back: "返回首页",
         groups: [
           {
@@ -26,6 +26,8 @@ export function StatusPage({ locale }: { locale: Locale }) {
               ["PRODUCTION_READY", "false"],
               ["DATABASE_DEPLOYMENT_EVIDENCE_RECORDED", "true"],
               ["CR01_STATUS", "BLOCKED_LEDGER_INTEGRITY"],
+              ["CR01_D02_STATUS", "ACCEPTED_DESIGN_ONLY"],
+              ["LEDGER_TRANSITION_IMPLEMENTATION_AUTHORIZED", "false"],
               ["BACKUP_RESTORE_DRILL_PASS", "false"],
               ["RESTORE_RTO_STATUS", "NOT_ESTABLISHED"],
             ],
@@ -84,7 +86,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
         gates: "Validation gates",
         visibility: "Visibility",
         next: "Next step",
-        nextBody: "The Human Owner must decide how to govern the 2 unverifiable historical synthetic Receipts and whether to grant a deployment-cap exception. CR-01 and the 72-hour soak remain stopped until then.",
+        nextBody: "CR01-D02 approved design, not implementation. CR01-D03 must decide whether to implement an immutable exception manifest plus Tenant-scoped anchored clean epochs and whether to grant PR and deployment-cap exceptions. Gateway changes, database migration, CR-01 restart, and the 72-hour soak remain closed.",
         back: "Back to home",
         groups: [
           {
@@ -96,6 +98,8 @@ export function StatusPage({ locale }: { locale: Locale }) {
               ["PRODUCTION_READY", "false"],
               ["DATABASE_DEPLOYMENT_EVIDENCE_RECORDED", "true"],
               ["CR01_STATUS", "BLOCKED_LEDGER_INTEGRITY"],
+              ["CR01_D02_STATUS", "ACCEPTED_DESIGN_ONLY"],
+              ["LEDGER_TRANSITION_IMPLEMENTATION_AUTHORIZED", "false"],
               ["BACKUP_RESTORE_DRILL_PASS", "false"],
               ["RESTORE_RTO_STATUS", "NOT_ESTABLISHED"],
             ],

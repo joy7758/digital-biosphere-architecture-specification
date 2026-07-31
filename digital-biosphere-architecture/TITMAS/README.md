@@ -161,11 +161,19 @@ or a formal standard. Canonical readiness remains:
 ```text
 COMMERCIAL_PROGRAM_STATUS=WAITING_FOR_HUMAN_DECISION
 COMMERCIAL_CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
+CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY
+LEDGER_TRANSITION_IMPLEMENTATION_AUTHORIZED=false
 COMMERCIAL_TECHNICAL_READY=false
 PAID_BETA_READY=false
 PRODUCTION_READY=false
 MATURE_COMMERCIAL_INFRASTRUCTURE=false
 ```
+
+CR01-D02 authorizes only the immutable ledger-transition design. The reviewed
+candidate is a signed exception manifest plus Tenant-scoped clean epochs
+anchored to legacy chain tips. The legacy `1659 valid / 2 unverifiable` result
+does not change. CR01-D03 is required before Gateway code, database migration,
+another deployment attempt or soak.
 
 The community core, PR #41, Activation PR #42, entry-repair PR #45 and Welcome
 Issue #43 remain historical facts. The current repository is private; public

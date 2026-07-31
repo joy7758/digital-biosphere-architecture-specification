@@ -9,6 +9,8 @@ DEPLOYMENT_COMPLETE=false
 FIRST_MULTI_TENANT_VERTICAL_SLICE_IMPLEMENTED=true
 BOUNDED_COMMERCIAL_CANDIDATE_DEPLOYED=true
 CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
+CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY
+LEDGER_TRANSITION_IMPLEMENTATION_AUTHORIZED=false
 COMMERCIAL_TECHNICAL_READY=false
 PUBLIC_PAID_LAUNCH_AUTHORIZED=false
 ```
@@ -17,6 +19,12 @@ This document defines the implementation boundary for a machine-first
 commercial technical candidate. The first bounded vertical slice now exists,
 but the complete architecture and deployment gates are not complete. It does
 not claim a production service.
+
+ADR-037 adds an implementation-unapproved transition candidate: retain the
+legacy ledger exactly, sign a private exception manifest, and begin new
+Tenant-scoped Receipt epochs anchored to the legacy chain tips. This does not
+validate the two missing signatures and does not authorize a Gateway or
+database change.
 
 ## Product contract
 

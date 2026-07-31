@@ -1,6 +1,6 @@
 {
   "schema_version": "0.1",
-  "observed_at": "2026-07-31T17:17:01+08:00",
+  "observed_at": "2026-07-31T18:44:30+08:00",
   "public_focus": "TITMAS_INFRASTRUCTURE_DEVELOPER_COMMUNITY",
   "release_state": "developer_preview_released",
   "release_claim": true,
@@ -74,10 +74,16 @@
     "data_plane_repository_revision": "c319001cc1cf9e44d8b3d0b142a025c6c9af1678",
     "live_commercial_release_revision": "9bbfce6154d67f4ab50e911b5e49611f5a4a8b57",
     "failed_candidate_revision": "33bea67bafcd5fe3aabc7e7f48b456dba42aaf76",
-    "integration_source_revision": "1d9da72b41e103b92d42d872457af0349021744b",
+    "integration_source_revision": "6ed4dadd4693129d3daca0a9a29964a4f7f864e9",
     "database_deployment_recorded": true,
     "observability_ready": true,
     "cr01_status": "BLOCKED_LEDGER_INTEGRITY",
+    "cr01_d02_status": "ACCEPTED_DESIGN_ONLY",
+    "ledger_transition_recommendation": "IMMUTABLE_EXCEPTION_MANIFEST_PLUS_TENANT_SCOPED_CLEAN_EPOCH",
+    "ledger_transition_design": "https://redcrag.cn/architecture/cr01-ledger-transition-design-v1.0.json",
+    "ledger_transition_implementation_authorized": false,
+    "second_deployment_retry_authorized": false,
+    "soak_execution_authorized": false,
     "backup_integrity_pass": true,
     "structural_restore_pass": true,
     "restored_receipt_verification_pass": false,
@@ -92,7 +98,7 @@
     "external_agent_beta_complete": false,
     "payment_processor_connected": false,
     "pricing_active": false,
-    "next_human_decision": "CR01_HISTORICAL_SYNTHETIC_RECEIPT_DISPOSITION_AND_DEPLOYMENT_CAP"
+    "next_human_decision": "CR01_D03_OPTION_C_IMPLEMENTATION_AND_CAP_EXCEPTION"
   },
   "repository_baselines": {
     "DBA": "0ab097099fc61f07f171aa7f9f19130846437c55",

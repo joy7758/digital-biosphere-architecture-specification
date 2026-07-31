@@ -155,6 +155,11 @@ The historical records must not be deleted, rewritten, re-signed or
 allowlisted. Any quarantine, segregation or clean-ledger transition requires a
 separate Human Decision and a new authorized execution scope.
 
+CR01-D02 now authorizes design only. The reviewed Option C preserves the
+legacy ledger, describes the two exceptions in a signed private manifest and
+anchors new Tenant-scoped epochs to legacy tips. CR01-D03 is still required
+before code, migration, deployment, restore re-execution or soak.
+
 ## Synthetic drills required
 
 1. application process failure;

@@ -44,6 +44,7 @@ const requiredFiles = [
   "titmas-community.json",
   "updates.json",
   "status.json",
+  "architecture/cr01-ledger-transition-design-v1.0.json",
   "agent-customer-package.json",
   "dbos-public-package-manifest.json",
   "release.json",

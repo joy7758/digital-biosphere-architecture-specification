@@ -31,7 +31,7 @@
   },
   "sdk_locations": {
     "source_repository": "https://github.com/joy7758/titmas-integrations",
-    "source_revision": "1d9da72b41e103b92d42d872457af0349021744b",
+    "source_revision": "6ed4dadd4693129d3daca0a9a29964a4f7f864e9",
     "python": "https://github.com/joy7758/titmas-integrations/tree/main/sdk/python",
     "typescript": "https://github.com/joy7758/titmas-integrations/tree/main/sdk/typescript",
     "mcp": "https://github.com/joy7758/titmas-integrations/tree/main/mcp",
@@ -46,6 +46,12 @@
     "database_deployment_recorded": true,
     "observability_ready": true,
     "cr01_status": "BLOCKED_LEDGER_INTEGRITY",
+    "cr01_d02_status": "ACCEPTED_DESIGN_ONLY",
+    "ledger_transition_recommendation": "IMMUTABLE_EXCEPTION_MANIFEST_PLUS_TENANT_SCOPED_CLEAN_EPOCH",
+    "ledger_transition_design": "/architecture/cr01-ledger-transition-design-v1.0.json",
+    "ledger_transition_implementation_authorized": false,
+    "second_deployment_retry_authorized": false,
+    "soak_execution_authorized": false,
     "backup_integrity_pass": true,
     "structural_restore_pass": true,
     "restored_receipt_verification_pass": false,
@@ -59,7 +65,7 @@
     "security_test_suite_ready": false,
     "seven_day_soak_pass": false,
     "soak_72h_started": false,
-    "next_human_decision": "CR01_HISTORICAL_SYNTHETIC_RECEIPT_DISPOSITION_AND_DEPLOYMENT_CAP"
+    "next_human_decision": "CR01_D03_OPTION_C_IMPLEMENTATION_AND_CAP_EXCEPTION"
   },
   "receipt_verification": {
     "signature_algorithm": "Ed25519",
@@ -86,5 +92,5 @@
   "external_access_automatic": false,
   "payment_processor_connected": false,
   "pricing_active": false,
-  "observed_at": "2026-07-31T17:17:01+08:00"
+  "observed_at": "2026-07-31T18:44:30+08:00"
 }

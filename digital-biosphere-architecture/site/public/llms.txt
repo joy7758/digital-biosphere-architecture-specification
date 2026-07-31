@@ -67,10 +67,16 @@ Observed at: 2026-07-31 Asia/Shanghai
 - LIVE_COMMERCIAL_RELEASE_REVISION=9bbfce6154d67f4ab50e911b5e49611f5a4a8b57
 - FAILED_CANDIDATE_REVISION=33bea67bafcd5fe3aabc7e7f48b456dba42aaf76
 - INTEGRATION_SOURCE=https://github.com/joy7758/titmas-integrations
-- INTEGRATION_SOURCE_REVISION=1d9da72b41e103b92d42d872457af0349021744b
+- INTEGRATION_SOURCE_REVISION=6ed4dadd4693129d3daca0a9a29964a4f7f864e9
 - DATABASE_DEPLOYMENT_EVIDENCE_RECORDED=true
 - OBSERVABILITY_READY=true
 - CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
+- CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY
+- LEDGER_TRANSITION_RECOMMENDATION=IMMUTABLE_EXCEPTION_MANIFEST_PLUS_TENANT_SCOPED_CLEAN_EPOCH
+- LEDGER_TRANSITION_DESIGN=https://redcrag.cn/architecture/cr01-ledger-transition-design-v1.0.json
+- LEDGER_TRANSITION_IMPLEMENTATION_AUTHORIZED=false
+- SECOND_DEPLOYMENT_RETRY_AUTHORIZED=false
+- SOAK_EXECUTION_AUTHORIZED=false
 - BACKUP_INTEGRITY_PASS=true
 - STRUCTURAL_RESTORE_PASS=true
 - RESTORED_RECEIPT_VERIFICATION_PASS=false
@@ -86,7 +92,7 @@ Observed at: 2026-07-31 Asia/Shanghai
 - PACKAGE_REGISTRY_PUBLISHED=false
 - PAYMENT_PROCESSOR_CONNECTED=false
 - PRICING_ACTIVE=false
-- NEXT_HUMAN_DECISION=CR01_HISTORICAL_SYNTHETIC_RECEIPT_DISPOSITION_AND_DEPLOYMENT_CAP
+- NEXT_HUMAN_DECISION=CR01_D03_OPTION_C_IMPLEMENTATION_AND_CAP_EXCEPTION
 
 The public API is a bounded retained service candidate. CR-01 is blocked
 because two immutable historical synthetic Receipts cannot be cryptographically
@@ -97,6 +103,12 @@ readiness endpoints being available do not establish commercial readiness,
 paid-beta readiness, production readiness, customer adoption, certification,
 or standard adoption. Credentials are scoped and are not provisioned
 automatically.
+
+CR01-D02 authorizes design only. The recommended transition preserves the
+legacy ledger unchanged, records the two `UNVERIFIABLE_KEY_UNAVAILABLE`
+results in a signed private manifest, and anchors a new clean epoch to each
+Tenant legacy chain tip. It does not turn either legacy signature into PASS and
+does not authorize Gateway code, database migration, redeployment or soak.
 
 Public source adapters and SDKs:
 
