@@ -51,8 +51,8 @@ test("renders equivalent Chinese and English public entry points", async () => {
   assert.match(en, /titmas/);
   assert.match(zh, /titmas-logo\.png/);
   assert.match(en, /titmas-logo\.png/);
-  assert.match(zh, /<title>夏日之海 · titmas<\/title>/);
-  assert.match(en, /<title>titmas<\/title>/);
+  assert.match(zh, /<title>山西游骑兵电子商务有限公司<\/title>/);
+  assert.match(en, /<title>山西游骑兵电子商务有限公司<\/title>/);
   assert.match(en, /trust infrastructure layer for autonomous AI agent ecosystems/i);
   for (const marker of expectedMarkers.zhHome) assert.match(zh, new RegExp(marker));
   for (const marker of expectedMarkers.enHome) assert.match(en, new RegExp(marker));
@@ -72,7 +72,11 @@ test("renders equivalent Chinese and English public entry points", async () => {
   assert.match(en, /\/en\/status\//);
   assert.match(zh, /晋ICP备2026006409号-1/);
   assert.match(en, /晋ICP备2026006409号-1/);
-  assert.match(zh, /https:\/\/beian\.miit\.gov\.cn\//);
+  assert.match(zh, /网站运营主体[^<]*：山西游骑兵电子商务有限公司/);
+  assert.match(en, /Website operator[^<]*：山西游骑兵电子商务有限公司/);
+  assert.match(zh, /href="https:\/\/beian\.miit\.gov\.cn"[^>]*>工业和信息化部备案管理系统/);
+  assert.match(en, /href="https:\/\/beian\.miit\.gov\.cn"[^>]*>工业和信息化部备案管理系统/);
+  assert.match(zh, /https:\/\/beian\.miit\.gov\.cn\/?/);
   if (releaseContext.mode === "candidate") {
     assert.match(zh, /Developer Preview Candidate/);
     assert.match(en, /Developer Preview Candidate/);
@@ -524,9 +528,13 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.public_brand, "titmas");
   assert.equal(agentIndex.public_brand_zh, "夏日之海");
   assert.equal(agentIndex.public_brand_logo, "/titmas-logo.png");
+  assert.equal(agentIndex.website_operator_legal_name, "山西游骑兵电子商务有限公司");
+  assert.equal(agentIndex.public_website.operator_legal_name, "山西游骑兵电子商务有限公司");
   assert.equal(agentIndex.technical_project_identifier, "TITMAS");
   assert.equal(siteCatalog.public_brand.en, "titmas");
   assert.equal(siteCatalog.public_brand.zh, "夏日之海");
+  assert.equal(siteCatalog.website_operator.legal_name, "山西游骑兵电子商务有限公司");
+  assert.equal(siteCatalog.website_operator.icp_record_number, "晋ICP备2026006409号-1");
   assert.equal(agentIndex.developer_community.community_established, false);
   assert.equal(agentIndex.entrypoints.titmas_community, "/titmas-community.json");
   assert.equal(agentIndex.entrypoints.commercial_evaluation_zh, "/commercial-evaluation/");
@@ -607,11 +615,13 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.public_website.rollback_validated, true);
   assert.equal(status.public_website.icp_filing.approved, true);
   assert.equal(status.public_website.icp_filing.record_number, "晋ICP备2026006409号-1");
+  assert.equal(status.public_website.operator_legal_name, "山西游骑兵电子商务有限公司");
   assert.deepEqual(status.public_website.icp_filing.covered_domains, ["redcrag.cn", "www.redcrag.cn"]);
   assert.equal(agentIndex.public_website.icp_filing_approved, true);
   assert.equal(agentIndex.public_website.icp_record_number, "晋ICP备2026006409号-1");
   assert.match(llms, /ICP filing: APPROVED/);
   assert.match(llms, /ICP record number: 晋ICP备2026006409号-1/);
+  assert.match(llms, /Website operator legal name: 山西游骑兵电子商务有限公司/);
   assert.equal(status.production_path.otlp_reference_candidate_version, "1.11.0");
   assert.equal(status.production_path.otlp_reference_version_status, "ADOPTED_REFERENCE_NOT_RUNTIME_PROOF");
   assert.equal(status.production_path.dq_022_status, "DECIDED_REFERENCE_ADOPTED");

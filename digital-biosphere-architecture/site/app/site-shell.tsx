@@ -185,12 +185,14 @@ export function Footer({ locale }: { locale: Locale }) {
         </div>
       </div>
       <div className="footer-legal">
-        <span>© 2026 Digital Biosphere Architecture</span>
+        <span>© 2026 山西游骑兵电子商务有限公司</span>
         <span>{c.legal}</span>
       </div>
       <div className="footer-filing">
-        <a href="https://beian.miit.gov.cn/" target="_blank" rel="noreferrer">
-          晋ICP备2026006409号-1
+        <span>{locale === "zh" ? "网站运营主体" : "Website operator"}：山西游骑兵电子商务有限公司</span>
+        <strong>晋ICP备2026006409号-1</strong>
+        <a href="https://beian.miit.gov.cn" target="_blank" rel="noreferrer">
+          工业和信息化部备案管理系统
         </a>
       </div>
     </footer>

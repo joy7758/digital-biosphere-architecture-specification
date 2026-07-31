@@ -4,8 +4,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://redcrag.cn"),
   title: {
-    default: "夏日之海 · titmas",
-    template: "%s · titmas",
+    default: "山西游骑兵电子商务有限公司",
+    template: "%s · 山西游骑兵电子商务有限公司",
   },
   description:
     "TITMAS 是面向自治 AI 智能体生态的可信基础设施层；制造业等行业场景是基础设施应用示例。",
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     type: "website",
-    siteName: "夏日之海 · titmas",
-    title: "夏日之海 · titmas",
+    siteName: "山西游骑兵电子商务有限公司",
+    title: "山西游骑兵电子商务有限公司",
     description:
       "面向自治 AI 智能体生态的可信基础设施层，支撑跨行业的可信运行与可核验执行。",
     images: [
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    title: "夏日之海 · titmas",
+    title: "山西游骑兵电子商务有限公司",
     description:
       "A trust infrastructure layer for autonomous AI agent ecosystems across industries.",
     images: ["/titmas-logo.png"],

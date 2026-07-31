@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PortalPage } from "./portal-page";
 
 export const metadata: Metadata = {
-  title: { absolute: "夏日之海 · titmas" },
+  title: { absolute: "山西游骑兵电子商务有限公司" },
   description:
     "面向自治 AI 智能体生态的可信基础设施层；制造业等行业场景是基础设施应用示例。",
   alternates: {
