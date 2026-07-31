@@ -7,14 +7,14 @@ export function StatusPage({ locale }: { locale: Locale }) {
     ? {
         eyebrow: "VERIFIABLE STATUS / 可验证状态",
         title: "TITMAS 商业基础设施成熟度计划进行中",
-        lead: "有界服务、PostgreSQL 数据平面、运行指标与隔离恢复演练已验证；Agent 端到端、安全套件、外部智能体 Beta 和七天稳定运行仍未通过。",
+        lead: "有界服务、PostgreSQL 数据平面与运行指标已建立；CR-01 结构恢复通过，但 2 条历史 Receipt 的签名无法验证，完整恢复闸门阻塞且 RTO 尚未建立。",
         observed: "观察时间",
         current: "当前商业成熟度状态",
         baselines: "远程基线",
         gates: "验证闸门",
         visibility: "可见性",
         next: "下一步",
-        nextBody: "使用公开脱敏证据继续验证机器发现、复用和推荐；生产、商业、标准变更和不可逆动作仍需单独 Human Decision。",
+        nextBody: "下一步由 Human Owner 决定如何处置 2 条不可验证的历史合成 Receipt，以及是否例外增加部署额度；在此之前不重启 CR-01 或 72 小时稳定性测试。",
         back: "返回首页",
         groups: [
           {
@@ -25,7 +25,9 @@ export function StatusPage({ locale }: { locale: Locale }) {
               ["PAID_BETA_READY", "false"],
               ["PRODUCTION_READY", "false"],
               ["DATABASE_DEPLOYMENT_EVIDENCE_RECORDED", "true"],
-              ["BACKUP_RESTORE_DRILL_PASS", "true"],
+              ["CR01_STATUS", "BLOCKED_LEDGER_INTEGRITY"],
+              ["BACKUP_RESTORE_DRILL_PASS", "false"],
+              ["RESTORE_RTO_STATUS", "NOT_ESTABLISHED"],
             ],
           },
           {
@@ -75,14 +77,14 @@ export function StatusPage({ locale }: { locale: Locale }) {
     : {
         eyebrow: "VERIFIABLE STATUS",
         title: "TITMAS commercial infrastructure maturity program in progress",
-        lead: "The bounded service, PostgreSQL data plane, operational metrics, and isolated restore drill are verified. Agent end-to-end, security suite, external-agent beta, and seven-day soak gates remain open.",
+        lead: "The bounded service, PostgreSQL data plane, and operational metrics exist. CR-01 structural restoration passed, but 2 historical Receipt signatures could not be verified; full recovery is blocked and RTO is not established.",
         observed: "Observed at",
         current: "Current commercial maturity status",
         baselines: "Remote baselines",
         gates: "Validation gates",
         visibility: "Visibility",
         next: "Next step",
-        nextBody: "Use the public sanitized evidence to continue machine discovery, reuse, and recommendation validation. Production, commercial, standards, and irreversible actions still require a separate Human Decision.",
+        nextBody: "The Human Owner must decide how to govern the 2 unverifiable historical synthetic Receipts and whether to grant a deployment-cap exception. CR-01 and the 72-hour soak remain stopped until then.",
         back: "Back to home",
         groups: [
           {
@@ -93,7 +95,9 @@ export function StatusPage({ locale }: { locale: Locale }) {
               ["PAID_BETA_READY", "false"],
               ["PRODUCTION_READY", "false"],
               ["DATABASE_DEPLOYMENT_EVIDENCE_RECORDED", "true"],
-              ["BACKUP_RESTORE_DRILL_PASS", "true"],
+              ["CR01_STATUS", "BLOCKED_LEDGER_INTEGRITY"],
+              ["BACKUP_RESTORE_DRILL_PASS", "false"],
+              ["RESTORE_RTO_STATUS", "NOT_ESTABLISHED"],
             ],
           },
           {

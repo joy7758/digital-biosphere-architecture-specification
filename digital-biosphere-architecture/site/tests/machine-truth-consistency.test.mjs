@@ -3,12 +3,13 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const publicRoot = new URL("../public/", import.meta.url);
-const [status, agentIndex, customerPackage, llms, dbosPackage] = await Promise.all([
+const [status, agentIndex, customerPackage, llms, dbosPackage, wellKnown] = await Promise.all([
   readFile(new URL("status.json", publicRoot), "utf8").then(JSON.parse),
   readFile(new URL("agent-index.json", publicRoot), "utf8").then(JSON.parse),
   readFile(new URL("agent-customer-package.json", publicRoot), "utf8").then(JSON.parse),
   readFile(new URL("llms.txt", publicRoot), "utf8"),
   readFile(new URL("dbos-public-package-manifest.json", publicRoot), "utf8").then(JSON.parse),
+  readFile(new URL(".well-known/titmas.json", publicRoot), "utf8").then(JSON.parse),
 ]);
 
 async function render(pathname) {
@@ -102,6 +103,34 @@ test("MT-07 commercial status agrees", () => {
   assert.match(llms, /COMMERCIAL_ACCESS_GRANTED=false/);
   assert.match(zhStatus, /COMMERCIAL_ACCESS_GRANTED/);
   assert.match(enStatus, /COMMERCIAL_ACCESS_GRANTED/);
+});
+
+test("MT-12 CR-01 restore failure remains fail-closed across public surfaces", () => {
+  const expectedSource = "c319001cc1cf9e44d8b3d0b142a025c6c9af1678";
+  const expectedRelease = "9bbfce6154d67f4ab50e911b5e49611f5a4a8b57";
+  for (const candidate of [status.commercial_candidate, agentIndex.commercial_candidate]) {
+    assert.equal(candidate.status, "WAITING_FOR_HUMAN_DECISION");
+    assert.equal(candidate.cr01_status, "BLOCKED_LEDGER_INTEGRITY");
+    assert.equal(candidate.data_plane_repository_revision, expectedSource);
+    assert.equal(candidate.live_commercial_release_revision, expectedRelease);
+    assert.equal(candidate.backup_integrity_pass, true);
+    assert.equal(candidate.structural_restore_pass, true);
+    assert.equal(candidate.restored_receipt_verification_pass, false);
+    assert.equal(candidate.restored_receipt_signatures_invalid, 2);
+    assert.equal(candidate.backup_restore_drill_pass, false);
+    assert.equal(candidate.restore_rto_status, "NOT_ESTABLISHED");
+  }
+  assert.match(llms, /CR01_STATUS=BLOCKED_LEDGER_INTEGRITY/);
+  assert.match(llms, /BACKUP_RESTORE_DRILL_PASS=false/);
+  assert.match(llms, /RESTORE_RTO_STATUS=NOT_ESTABLISHED/);
+  assert.equal(wellKnown.deployment_evidence.cr01_status, "BLOCKED_LEDGER_INTEGRITY");
+  assert.equal(wellKnown.deployment_evidence.restored_receipt_verification_pass, false);
+  assert.equal(wellKnown.deployment_evidence.backup_restore_drill_pass, false);
+  assert.equal(wellKnown.deployment_evidence.restore_rto_status, "NOT_ESTABLISHED");
+  assert.match(zhHome, /2 条签名无法验证/);
+  assert.match(enHome, /2 of 1,661 historical Receipt signatures/);
+  assert.match(zhStatus, /BLOCKED_LEDGER_INTEGRITY/);
+  assert.match(enStatus, /BLOCKED_LEDGER_INTEGRITY/);
 });
 
 test("MT-08 community status agrees", () => {

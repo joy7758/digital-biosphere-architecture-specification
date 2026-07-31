@@ -17,7 +17,7 @@ Agent onboarding: ./TITMAS-AGENT-NATIVE-ONBOARDING-v1.0.md
 Receipt key management: ./TITMAS-RECEIPT-KEY-MANAGEMENT-v1.0.md
 Current maturity: Development.
 Current stage: TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM.
-Commercial program status: IN_PROGRESS.
+Commercial program status: WAITING_FOR_HUMAN_DECISION.
 Commercial technical ready: false.
 Paid Beta ready: false.
 Production ready: false.
@@ -39,21 +39,26 @@ Trial repository invitation ready: true.
 External participant invitation authorized: false.
 No invitation has been sent.
 
-The current bounded commercial data plane is deployed from
-titmas-sandbox-gateway revision
-4abae250e78ee48d9b4c35e4a918484536e07854. The service is ready for bounded
-technical calls, while commercial technical ready, Paid Beta ready, production
-ready and mature commercial infrastructure all remain false.
+The canonical data-plane repository revision is
+c319001cc1cf9e44d8b3d0b142a025c6c9af1678. The retained live commercial
+release remains 9bbfce6154d67f4ab50e911b5e49611f5a4a8b57. It is available for
+bounded technical calls, while commercial technical ready, Paid Beta ready,
+production ready and mature commercial infrastructure all remain false.
 
 Machine discovery: https://redcrag.cn/.well-known/titmas.json
 Public API status: https://redcrag.cn/api/v1/status
 Public integration source: https://github.com/joy7758/titmas-integrations
 Integration source revision: 1d9da72b41e103b92d42d872457af0349021744b
 
-Verified foundation evidence currently includes a PostgreSQL deployment,
-tenant-safe operational metrics and a successful isolated backup/restore
-drill. Agent end-to-end, security-suite, external-agent-beta and seven-day soak
-gates remain false. No payment processor or active pricing is connected.
+Verified foundation evidence includes a PostgreSQL deployment and tenant-safe
+operational metrics. CR-01 backup integrity and structural restoration passed,
+but 2 of 1,661 restored historical synthetic Receipt signatures could not be
+verified because their random key was never retained. Full restore therefore
+failed, RTO is not established, and CR-01 is
+BLOCKED_LEDGER_INTEGRITY. The records were not deleted, rewritten, re-signed,
+or allowlisted. Agent end-to-end, security-suite, external-agent-beta and
+seven-day soak gates remain false. No payment processor or active pricing is
+connected.
 
 Stage 5.8 records 24 candidate outcomes: 22 valid and 2 retained unknowns. The
 replacement threshold passed 4 of 6 criteria, so the conclusion remains
