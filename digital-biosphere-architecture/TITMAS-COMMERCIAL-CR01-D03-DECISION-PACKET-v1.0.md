@@ -28,7 +28,7 @@ It does not make either missing signature valid.
 
 | Source | Current identity or observation |
 |---|---|
-| DBA main | `55208c9401b91412dba728e9c38b0f40ad760692` |
+| DBA main | `8b01bb8988c9180392ac2b06a39e2541fc98b260` |
 | Gateway main | `c319001cc1cf9e44d8b3d0b142a025c6c9af1678` |
 | Integrations main | `6ed4dadd4693129d3daca0a9a29964a4f7f864e9` |
 | Live commercial release | `9bbfce6154d67f4ab50e911b5e49611f5a4a8b57` |
