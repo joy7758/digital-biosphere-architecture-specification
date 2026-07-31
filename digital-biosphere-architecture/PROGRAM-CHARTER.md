@@ -4,11 +4,13 @@ title: Digital Biosphere Program Governance Charter v0.1
 title_zh: 数字生物圈项目群治理章程 v0.1
 status: accepted-owner-assigned
 decision_reference: architecture/ADR-020-release-preparation-owner-decisions.md
+strategic_amendment_reference: architecture/ADR-032-compositional-scale-over-unbounded-center.md
+attention_amendment_reference: architecture/ADR-033-attention-principle-for-dynamic-coordination.md
 program_authority_assigned: true
 program_owner_ref: zhangbin
 runtime_authority_created: false
 source_of_truth_policy: reference-only-aggregation
-last_reviewed: 2026-07-21
+last_reviewed: 2026-07-31
 ---
 
 # Digital Biosphere Program Governance Charter v0.1（数字生物圈项目群治理章程 v0.1）
@@ -57,6 +59,41 @@ Digital Biosphere Program
 ```
 
 这里的层级表示 program coordination（项目协调）和 responsibility routing（责任路由），不是仓库所有权、代码依赖、Runtime 控制或权限继承。DBOS、SAEE 和各应用仓库继续维护自己的实现与事实表面。
+
+## 2A. Compositional Scale Principle（组合式规模原则）
+
+Digital Biosphere 不以制造单一、无限强的中心作为扩展路线。项目群通过大量职责简单、
+边界受限、可替换的数字主体与服务，借助显式接口和可审计交互形成系统级覆盖能力。
+
+有限治理仍由 DBA、DBOS、SAEE 和 Human Decision Authority 按既有职责分别承担。
+组合不能自动产生 Authority、Permission、Decision、Truth Ownership 或全局控制，
+覆盖能力也不等于正确性或 Truth。完整决策见
+[`ADR-032`](architecture/ADR-032-compositional-scale-over-unbounded-center.md)。
+
+```text
+UNBOUNDED_CENTRAL_INTELLIGENCE_IS_NOT_TARGET=true
+COMPOSITIONAL_SCALE_IS_STRATEGIC_DEFAULT=true
+COMPOSITION_NE_AUTHORITY_AGGREGATION=true
+COVERAGE_NE_CORRECTNESS_OR_TRUTH=true
+```
+
+## 2B. Attention Principle（注意力原则）
+
+Digital Biosphere 通过任务、环境状态和反馈历史驱动的动态注意力分配，在大量简单、
+受限主体之间形成临时候选协作关系。Attention 不是中央控制器；它只形成有范围、
+可解释、可撤销且会过期的候选参与建议，实际协作仍需要适用 Authorization。
+
+Evidence Layer 负责有范围的材料、准入、验证和限制，不把 Evidence 升级为 Truth；
+SAEE 负责只读评价和演化建议，不成为 Attention controller。完整原则见
+[`ADR-033`](architecture/ADR-033-attention-principle-for-dynamic-coordination.md)。
+
+```text
+ATTENTION_PRINCIPLE_ADOPTED=true
+ATTENTION_NE_CENTRAL_CONTROL=true
+ATTENTION_NE_AUTHORITY_OR_PERMISSION=true
+ATTENTION_NE_EVIDENCE_OR_TRUTH=true
+SAEE_NE_ATTENTION_CONTROLLER=true
+```
 
 ## 3. DBA Program Governance Scope（DBA 项目群治理范围）
 
@@ -211,5 +248,7 @@ CAPABILITY_CREATED=false
 PERMISSION_GRANTED=false
 EVIDENCE_TRUTH_CHANGED=false
 AGENT_ABSOLUTE_PRIORITY_ADOPTED=true
+COMPOSITIONAL_SCALE_PRINCIPLE_ADOPTED=true
+ATTENTION_PRINCIPLE_ADOPTED=true
 HUMAN_ACCOUNTABILITY_REMOVED=false
 ```
