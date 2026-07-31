@@ -110,26 +110,28 @@ BLOCKED_GATES=[
   CR01_DEPLOYMENT_AND_REMEDIATION_CAPS_EXHAUSTED
 ]
 INCOMPLETE_GATES=[
-  CR01_HISTORICAL_RECEIPT_GOVERNANCE,
+  CR01_OPTION_C_IMPLEMENTATION_AND_MIGRATION,
   SUSTAINED_CAPACITY_AND_RESOURCE_HEADROOM,
   RATE_LIMIT_AND_QUOTA_RUNTIME_VALIDATION,
   CROSS_TENANT_RUNTIME_RESTORE_TEST,
   FORMAL_ROLLBACK_AND_COMPLETE_INCIDENT_DRILL,
   LOAD_AND_LONG_RUNNING_EVIDENCE,
-  PUBLIC_SAFE_COMMERCIAL_SDKS_AND_ADAPTERS,
+  PUBLIC_INTEGRATION_PACKAGE_PUBLICATION_AND_END_TO_END_REUSE,
   EXTERNAL_AGENT_BETA,
   PRICING_AND_LEGAL_HUMAN_DECISIONS,
   REAL_PAYMENT_AND_ADOPTION
 ]
-NEXT_HUMAN_DECISION=CR01_HISTORICAL_SYNTHETIC_RECEIPT_DISPOSITION_AND_DEPLOYMENT_CAP
+CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY
+NEXT_HUMAN_DECISION=CR01_D03_OPTION_C_IMPLEMENTATION_AND_CAP_EXCEPTION
 ```
 
 ## Next action
 
-Obtain a Human Decision on the immutable historical synthetic Receipt
-disposition and on any exception to the exhausted deployment/remediation caps.
-Do not restart the 60-minute load, resource-headroom checks or 72-hour soak
-before that decision.
+Obtain CR01-D03 to accept or reject implementation of the immutable exception
+manifest plus Tenant-scoped anchored clean epochs and any exception to the
+exhausted PR/deployment caps. Do not change the Gateway, migrate the database,
+restart the 60-minute load, run resource-headroom checks or start the 72-hour
+soak before that decision.
 
 ## Drift Check
 

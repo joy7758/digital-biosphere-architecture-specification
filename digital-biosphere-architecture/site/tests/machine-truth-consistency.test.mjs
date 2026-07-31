@@ -3,13 +3,14 @@ import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 const publicRoot = new URL("../public/", import.meta.url);
-const [status, agentIndex, customerPackage, llms, dbosPackage, wellKnown] = await Promise.all([
+const [status, agentIndex, customerPackage, llms, dbosPackage, wellKnown, ledgerTransition] = await Promise.all([
   readFile(new URL("status.json", publicRoot), "utf8").then(JSON.parse),
   readFile(new URL("agent-index.json", publicRoot), "utf8").then(JSON.parse),
   readFile(new URL("agent-customer-package.json", publicRoot), "utf8").then(JSON.parse),
   readFile(new URL("llms.txt", publicRoot), "utf8"),
   readFile(new URL("dbos-public-package-manifest.json", publicRoot), "utf8").then(JSON.parse),
   readFile(new URL(".well-known/titmas.json", publicRoot), "utf8").then(JSON.parse),
+  readFile(new URL("architecture/cr01-ledger-transition-design-v1.0.json", publicRoot), "utf8").then(JSON.parse),
 ]);
 
 async function render(pathname) {
@@ -108,11 +109,21 @@ test("MT-07 commercial status agrees", () => {
 test("MT-12 CR-01 restore failure remains fail-closed across public surfaces", () => {
   const expectedSource = "c319001cc1cf9e44d8b3d0b142a025c6c9af1678";
   const expectedRelease = "9bbfce6154d67f4ab50e911b5e49611f5a4a8b57";
+  const expectedIntegration = "6ed4dadd4693129d3daca0a9a29964a4f7f864e9";
   for (const candidate of [status.commercial_candidate, agentIndex.commercial_candidate]) {
     assert.equal(candidate.status, "WAITING_FOR_HUMAN_DECISION");
     assert.equal(candidate.cr01_status, "BLOCKED_LEDGER_INTEGRITY");
     assert.equal(candidate.data_plane_repository_revision, expectedSource);
     assert.equal(candidate.live_commercial_release_revision, expectedRelease);
+    assert.equal(candidate.integration_source_revision, expectedIntegration);
+    assert.equal(candidate.cr01_d02_status, "ACCEPTED_DESIGN_ONLY");
+    assert.equal(
+      candidate.ledger_transition_recommendation,
+      "IMMUTABLE_EXCEPTION_MANIFEST_PLUS_TENANT_SCOPED_CLEAN_EPOCH",
+    );
+    assert.equal(candidate.ledger_transition_implementation_authorized, false);
+    assert.equal(candidate.second_deployment_retry_authorized, false);
+    assert.equal(candidate.soak_execution_authorized, false);
     assert.equal(candidate.backup_integrity_pass, true);
     assert.equal(candidate.structural_restore_pass, true);
     assert.equal(candidate.restored_receipt_verification_pass, false);
@@ -121,9 +132,24 @@ test("MT-12 CR-01 restore failure remains fail-closed across public surfaces", (
     assert.equal(candidate.restore_rto_status, "NOT_ESTABLISHED");
   }
   assert.match(llms, /CR01_STATUS=BLOCKED_LEDGER_INTEGRITY/);
+  assert.match(llms, /CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY/);
+  assert.match(llms, /LEDGER_TRANSITION_IMPLEMENTATION_AUTHORIZED=false/);
   assert.match(llms, /BACKUP_RESTORE_DRILL_PASS=false/);
   assert.match(llms, /RESTORE_RTO_STATUS=NOT_ESTABLISHED/);
   assert.equal(wellKnown.deployment_evidence.cr01_status, "BLOCKED_LEDGER_INTEGRITY");
+  assert.equal(wellKnown.sdk_locations.source_revision, expectedIntegration);
+  assert.equal(wellKnown.deployment_evidence.cr01_d02_status, "ACCEPTED_DESIGN_ONLY");
+  assert.equal(wellKnown.deployment_evidence.ledger_transition_implementation_authorized, false);
+  assert.equal(ledgerTransition.projection_role, "PUBLIC_DERIVED_VIEW");
+  assert.equal(ledgerTransition.decision_status, "ACCEPTED_DESIGN_ONLY");
+  assert.equal(ledgerTransition.retained_facts.signatures_unverifiable, 2);
+  assert.deepEqual(ledgerTransition.recommended_option.anchor, [
+    "LEGACY_TENANT_CHAIN_TIP_HASH",
+    "TRANSITION_MANIFEST_DIGEST",
+  ]);
+  assert.equal("anchors" in ledgerTransition.recommended_option, false);
+  assert.equal(ledgerTransition.recommended_option.legacy_validity_override, false);
+  assert.equal(ledgerTransition.authorization.implementation, false);
   assert.equal(wellKnown.deployment_evidence.restored_receipt_verification_pass, false);
   assert.equal(wellKnown.deployment_evidence.backup_restore_drill_pass, false);
   assert.equal(wellKnown.deployment_evidence.restore_rto_status, "NOT_ESTABLISHED");

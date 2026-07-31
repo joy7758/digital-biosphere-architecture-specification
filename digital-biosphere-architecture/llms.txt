@@ -48,7 +48,8 @@ production ready and mature commercial infrastructure all remain false.
 Machine discovery: https://redcrag.cn/.well-known/titmas.json
 Public API status: https://redcrag.cn/api/v1/status
 Public integration source: https://github.com/joy7758/titmas-integrations
-Integration source revision: 1d9da72b41e103b92d42d872457af0349021744b
+Integration source revision: 6ed4dadd4693129d3daca0a9a29964a4f7f864e9
+Ledger transition design: https://redcrag.cn/architecture/cr01-ledger-transition-design-v1.0.json
 
 Verified foundation evidence includes a PostgreSQL deployment and tenant-safe
 operational metrics. CR-01 backup integrity and structural restoration passed,
@@ -59,6 +60,15 @@ BLOCKED_LEDGER_INTEGRITY. The records were not deleted, rewritten, re-signed,
 or allowlisted. Agent end-to-end, security-suite, external-agent-beta and
 seven-day soak gates remain false. No payment processor or active pricing is
 connected.
+
+Human Decision CR01-D02 is accepted for design only. Three role-scoped
+qwen3.7-max reviews recommend an immutable signed exception manifest plus a
+Tenant-scoped clean Receipt epoch anchored to the corresponding legacy chain
+tip. The legacy result remains 1,659 valid and 2 unverifiable; the anchor does
+not validate the missing signatures. Gateway implementation, database
+migration, a second deployment retry, CR-01 restart and soak remain
+unauthorized. The next decision is
+CR01-D03_OPTION_C_IMPLEMENTATION_AND_CAP_EXCEPTION.
 
 Stage 5.8 records 24 candidate outcomes: 22 valid and 2 retained unknowns. The
 replacement threshold passed 4 of 6 criteria, so the conclusion remains

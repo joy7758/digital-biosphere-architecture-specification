@@ -2,14 +2,14 @@
   "$schema": "architecture/schemas/commercial-program-state-v1.0.schema.json",
   "program_version": "1.0",
   "program_id": "TITMAS-AGENT-NATIVE-COMMERCIAL-MATURITY-PROGRAM",
-  "current_phase": "COMMERCIAL_RELIABILITY_GATE_CR01",
+  "current_phase": "COMMERCIAL_RELIABILITY_GATE_CR01_LEDGER_TRANSITION_DECISION",
   "phase_status": "WAITING_FOR_HUMAN_DECISION",
   "started_at": "2026-07-30T19:04:07+08:00",
-  "last_updated_at": "2026-07-31T17:17:01+08:00",
+  "last_updated_at": "2026-07-31T18:44:30+08:00",
   "source_commits": {
     "governance": "4edee669e67a3b5ba0c1cb0d0c17bc699f57cf3e",
     "data_plane": "c319001cc1cf9e44d8b3d0b142a025c6c9af1678",
-    "public_integrations": "1d9da72b41e103b92d42d872457af0349021744b"
+    "public_integrations": "6ed4dadd4693129d3daca0a9a29964a4f7f864e9"
   },
   "deployment_releases": {
     "sandbox_preview": "33a10e37d9582f240c518a0b65fb59f12dd3527c",
@@ -31,7 +31,9 @@
     "PUBLIC_SAFE_SDK_AND_ADAPTER_SOURCE_CANDIDATES_MERGED",
     "CR01_BACKUP_INTEGRITY_PASS",
     "CR01_STRUCTURAL_RESTORE_PASS_WITH_RECEIPT_FAILURE_RETAINED",
-    "CR01_FAILURE_EVIDENCE_MERGED"
+    "CR01_FAILURE_EVIDENCE_MERGED",
+    "CR01_D02_HOLD_AND_DESIGN_DECISION_RECORDED",
+    "CR01_LEDGER_TRANSITION_DESIGN_REVIEWED"
   ],
   "gate_descriptions": {
     "STAGE_5_8_SOURCE_IDENTITY_VERIFIED": "The canonical source commit was confirmed; Stage 5.8 did not pass.",
@@ -43,18 +45,20 @@
     "COMMERCIAL_POSTGRESQL16_PERSISTENCE_CANDIDATE_DEPLOYED": "The existing Baidu host runs the bounded commercial candidate on the retained release; this is not Production Ready.",
     "COMMERCIAL_SIGNED_RECEIPT_AND_METERING_IMPLEMENTED": "Signed Receipt, usage, quota and billing-preview paths exist; CR-01 later found two unverifiable historical synthetic Receipts.",
     "COMMERCIAL_MACHINE_DISCOVERY_SURFACE_PUBLISHED": "Machine-readable status, capabilities, plans, OpenAPI and Receipt key discovery are available for the candidate boundary.",
-    "PUBLIC_SAFE_SDK_AND_ADAPTER_SOURCE_CANDIDATES_MERGED": "titmas-integrations main at 1d9da72b41e103b92d42d872457af0349021744b contains Python, TypeScript, MCP, LangChain and OpenAI Agents source candidates; package registries and production support remain inactive.",
+    "PUBLIC_SAFE_SDK_AND_ADAPTER_SOURCE_CANDIDATES_MERGED": "titmas-integrations main at 6ed4dadd4693129d3daca0a9a29964a4f7f864e9 contains Python, TypeScript, MCP, LangChain and OpenAI Agents sources with fail-closed authority-boundary validation and a reviewed OpenAPI observation; package registries and production support remain inactive.",
     "CR01_BACKUP_INTEGRITY_PASS": "The encrypted allowlisted backup passed its internal integrity validation.",
     "CR01_STRUCTURAL_RESTORE_PASS_WITH_RECEIPT_FAILURE_RETAINED": "Isolated restore matched counts, schema, audit tip and 12 forced-RLS tables, but full Receipt verification failed.",
-    "CR01_FAILURE_EVIDENCE_MERGED": "Gateway PR #35 merged the sanitized BLOCKED_LEDGER_INTEGRITY evidence at c319001cc1cf9e44d8b3d0b142a025c6c9af1678."
+    "CR01_FAILURE_EVIDENCE_MERGED": "Gateway PR #35 merged the sanitized BLOCKED_LEDGER_INTEGRITY evidence at c319001cc1cf9e44d8b3d0b142a025c6c9af1678.",
+    "CR01_D02_HOLD_AND_DESIGN_DECISION_RECORDED": "Human Owner zhangbin accepted CR01-D02 on 2026-07-31. The decision authorizes design only and keeps implementation, a second deployment retry and soak closed.",
+    "CR01_LEDGER_TRANSITION_DESIGN_REVIEWED": "Three role-scoped qwen3.7-max reviews selected immutable exception manifest plus Tenant-scoped anchored clean epochs; the option remains recommended, not authorized."
   },
   "blocked_gates": [
     "CR01_LEDGER_INTEGRITY",
-    "CR01_DEPLOYMENT_AND_REMEDIATION_CAPS_EXHAUSTED"
+    "CR01_DEPLOYMENT_AND_REMEDIATION_CAPS_EXHAUSTED",
+    "CR01_LEDGER_TRANSITION_IMPLEMENTATION_NOT_AUTHORIZED"
   ],
   "human_decisions_required": [
-    "CR01_HISTORICAL_SYNTHETIC_RECEIPT_DISPOSITION",
-    "CR01_DEPLOYMENT_CAP_EXCEPTION",
+    "CR01_D03_OPTION_C_IMPLEMENTATION_AND_CAP_EXCEPTION",
     "PUBLISH_FINAL_PRICING",
     "ACCEPT_REAL_PAYMENT",
     "ACCEPT_REAL_CONTRACT",
@@ -79,13 +83,11 @@
     "CR01_REMEDIATION_IMPLEMENTATION_PRS_USED_2_OF_2",
     "CR01_APPLICATION_REDEPLOYMENTS_USED_1_OF_1",
     "PUBLIC_INTEGRATION_PACKAGES_NOT_PUBLISHED",
-    "PUBLIC_INTEGRATION_OPENAPI_LIVE_ONLY_NOT_FROZEN",
-    "PUBLIC_INTEGRATION_AUTHORITY_BOUNDARY_RUNTIME_FAIL_CLOSE_NOT_COMPLETE",
-    "PUBLIC_INTEGRATION_COMBINED_PYTEST_IMPORT_COLLISION",
-    "PUBLIC_INTEGRATION_ROOT_RUFF_FINDS_2_IMPORT_ORDER_ISSUES",
+    "PUBLIC_INTEGRATION_RUNTIME_METADATA_DRIFT_DISCLOSED",
+    "CR01_LEDGER_TRANSITION_DESIGN_ONLY_NOT_IMPLEMENTED",
     "NO_EXTERNAL_AGENT_BETA_EVIDENCE",
     "NO_72_HOUR_7_DAY_OR_30_DAY_ELAPSED_EVIDENCE",
     "NO_REAL_PAYMENT_OR_CUSTOMER_ADOPTION_EVIDENCE"
   ],
-  "next_action": "Obtain a Human Decision on immutable historical synthetic Receipt disposition and any deployment-cap exception; do not restart CR-01 or the 72-hour soak before that decision."
+  "next_action": "Obtain CR01-D03 to authorize or reject Option C implementation and any PR or deployment-cap exception; do not change the Gateway, migrate the database, restart CR-01 or start soak before that decision."
 }
