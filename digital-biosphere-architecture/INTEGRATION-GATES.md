@@ -112,4 +112,10 @@ DEVELOPER_PREVIEW_RELEASED=true
 | `CM-G5` Security and operations | `BLOCKED_CR01` | backup integrity and partial rollback pass; complete restore, cross-Tenant restored runtime test, sustained load, headroom and formal incident drill remain incomplete |
 | `CM-G6` Agent onboarding | `IN_PROGRESS` | public-safe SDK/Adapter source is hardened at `titmas-integrations@6ed4dad…`; packages remain unpublished and autonomous two-task reuse remains unassessed |
 | `CM-G7` External Agent Beta | `NOT_STARTED` | independent providers, frameworks, tenants, identities and calls |
-| `CM-G8` Paid/production maturity | `WAITING_FOR_UPSTREAM_GATES` | CR01-D02 is design-only; CR01-D03 implementation decision, external Agent Beta, legal/pricing inputs, real payment/use and elapsed reliability evidence remain required |
+| `CM-G8` Paid/production maturity | `WAITING_FOR_UPSTREAM_GATES` | D04 is closed failed-retained; the final-form P0 implementation decision, external Agent Beta, separate Paid Beta clean-genesis/signer decision, legal/pricing inputs, real payment/use and elapsed reliability evidence remain required |
+
+The Build-versus-Adopt audit passing with limitations is not a runtime gate.
+No component may be installed, started, purchased or deployed until
+`AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_MATRIX` defines an
+exact repository, path, test, rollback and data boundary. P1 and P2 remain
+independently closed even if P0 is later accepted.

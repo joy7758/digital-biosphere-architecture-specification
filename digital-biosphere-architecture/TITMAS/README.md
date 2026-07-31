@@ -60,6 +60,16 @@ aliases. No fourth community name is created.
   [`../TITMAS-COMMERCIAL-CR01-D03-DECISION-PACKET-v1.0.md`](../TITMAS-COMMERCIAL-CR01-D03-DECISION-PACKET-v1.0.md)
 - CR01-D03 advisory review:
   [`../TITMAS-COMMERCIAL-CR01-D03-ADVISORY-REVIEW-v1.0.md`](../TITMAS-COMMERCIAL-CR01-D03-ADVISORY-REVIEW-v1.0.md)
+- D04 final disposition:
+  [`../architecture/ADR-038-d04-final-closure-and-adopt-before-build.md`](../architecture/ADR-038-d04-final-closure-and-adopt-before-build.md)
+- Build-versus-Adopt audit:
+  [`../TITMAS-BUILD-VERSUS-ADOPT-AUDIT-v1.0.md`](../TITMAS-BUILD-VERSUS-ADOPT-AUDIT-v1.0.md)
+- Component adoption matrix:
+  [`../titmas-component-adoption-matrix-v1.0.json`](../titmas-component-adoption-matrix-v1.0.json)
+- Final-form implementation decision packet:
+  [`../TITMAS-FINAL-FORM-IMPLEMENTATION-DECISION-PACKET-v1.0.md`](../TITMAS-FINAL-FORM-IMPLEMENTATION-DECISION-PACKET-v1.0.md)
+- Final-form P0/P1/P2 backlog:
+  [`../TITMAS-FINAL-FORM-IMPLEMENTATION-BACKLOG-v1.0.json`](../TITMAS-FINAL-FORM-IMPLEMENTATION-BACKLOG-v1.0.json)
 
 ## Local validation
 
@@ -164,10 +174,21 @@ or a formal standard. Canonical readiness remains:
 
 ```text
 COMMERCIAL_PROGRAM_STATUS=WAITING_FOR_HUMAN_DECISION
-COMMERCIAL_CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
+COMMERCIAL_CR01_STATUS=BLOCKED_LEDGER_INTEGRITY_FAILED_RETAINED
 CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY
 CR01_D03_DECISION_PACKET_READY=true
-CR01_D03_DECIDED=false
+D04_FINAL_STATUS=CLOSED_FAILED_RETAINED
+D04_CANARY_ATTEMPTS_TOTAL=3
+D04_FURTHER_CANARY_RETRIES_AUTHORIZED=false
+PR36_STATE=CLOSED
+PR36_MERGED=false
+LEGACY_LEDGER_CLASSIFICATION=INTERNAL_EXPERIMENTAL_LEDGER
+FUTURE_PRODUCTION_LEDGER_MODE=CLEAN_GENESIS
+PRODUCTION_LEDGER_CREATED=false
+PRODUCTION_SIGNER_CREATED=false
+BUILD_VERSUS_ADOPT_AUDIT_COMPLETE=true
+FINAL_FORM_IMPLEMENTATION_PLAN_READY=true
+FINAL_FORM_IMPLEMENTATION_AUTHORIZED=false
 EXISTING_NON_EXPORTABLE_ED25519_SIGNER_CONFIRMED=false
 LEDGER_TRANSITION_IMPLEMENTATION_AUTHORIZED=false
 COMMERCIAL_TECHNICAL_READY=false
@@ -176,21 +197,22 @@ PRODUCTION_READY=false
 MATURE_COMMERCIAL_INFRASTRUCTURE=false
 ```
 
-CR01-D02 authorizes only the immutable ledger-transition design. The reviewed
-candidate is a signed exception manifest plus Tenant-scoped clean epochs
-anchored to legacy chain tips. The legacy `1659 valid / 2 unverifiable` result
-does not change. CR01-D03 is required before Gateway code, database migration,
-another deployment attempt or soak.
+D04 is permanently closed after three retained canary failures. PR #36 remains
+closed and unmerged. The legacy `1659 valid / 2 unverifiable` result is not
+rewritten: all 1,661 Receipts remain an internal experimental ledger without
+production, commercial or customer authority. No fourth Canary, Migration 0005,
+PR reuse or new internal clean ledger is authorized.
 
-The D03 packet has passed one remediated `qwen3.7-max` review and one separate
-`deepseek-v4-pro` review with zero remaining architecture blockers. Those
-reviews make the packet ready for a Human Decision; they do not authorize the
-implementation or establish runtime correctness.
+Any future production ledger must start as a separate clean genesis only after
+Paid Beta authorization. It cannot inherit the legacy chain, sequence, signer
+exceptions or implementation. The production signer and ledger do not exist.
 
-An execution prerequisite remains open: no already approved non-exportable
-Ed25519 signer has been confirmed, and new paid cloud resources remain
-unauthorized. This does not invalidate the decision packet; it prevents
-implementation entry until satisfied or separately decided.
+The final-form audit recommends adopting PostgreSQL, Nginx, OpenTelemetry,
+OpenAPI Generator, the official MCP SDK, Syft, Cosign and GitHub Actions, while
+deferring OpenBao, OPA, OpenFGA, OpenMeter, NATS, Temporal and APISIX to explicit
+scale triggers. This is an architecture plan, not implementation. The next
+Human Decision is
+`AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_MATRIX`.
 
 The community core, PR #41, Activation PR #42, entry-repair PR #45 and Welcome
 Issue #43 remain historical facts. The current repository is private; public

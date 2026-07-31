@@ -67,13 +67,23 @@ primary_customer: AI_AGENT
 titmas_agent_absolute_priority: true
 machine_interface_precedes_human_interface: true
 human_usability_gate_required: false
-current_titmas_stage: TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM
-commercial_program_status: in-progress
-commercial_program_phase: commercial-foundation-baseline
+current_titmas_stage: FINAL_FORM_ADOPTION_IMPLEMENTATION_DECISION
+commercial_program_status: waiting-for-human-decision
+commercial_program_phase: d04-closed-build-versus-adopt-audit-complete
 commercial_technical_ready: false
 paid_beta_ready: false
 production_ready: false
 mature_commercial_infrastructure: false
+d04_final_status: closed-failed-retained
+d04_canary_attempts_total: 3
+d04_further_canary_retries_authorized: false
+legacy_ledger_classification: internal-experimental-ledger
+future_production_ledger_mode: clean-genesis
+production_ledger_created: false
+production_signer_created: false
+build_versus_adopt_audit_complete: true
+final_form_implementation_plan_ready: true
+final_form_implementation_authorized: false
 e01_classification: legacy-optional-human-compatibility-observation
 compensated_human_trial_strategy_status: retired
 agent_customer_validation_protocol_defined: true
@@ -131,6 +141,28 @@ Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是整个 
 本仓库是文档型 Program Governance（项目群治理）与 Architecture Specification（架构规范）表面，不是运行系统。它不替代 SAEE，不替代 DBOS，不合并二者，也不创建新的 Agent（智能体）、Runtime（运行时）或 Digital Organism（数字有机体）。
 
 ## Current Program Mainline（当前项目主线）
+
+### D04 closure and final-form adoption audit
+
+D04 已在三次真实失败后关闭，PR #36 保持关闭未合并。旧 1,661 条 Receipt
+永久属于内部实验账本；未来生产账本只允许在 Paid Beta 另行授权后建立独立
+`CLEAN_GENESIS`，不得继承旧链、序列或签名异常。
+
+当前可审查入口：
+
+- [D04 final disposition](architecture/ADR-038-d04-final-closure-and-adopt-before-build.md)
+- [Build-versus-Adopt audit](TITMAS-BUILD-VERSUS-ADOPT-AUDIT-v1.0.md)
+- [Machine-readable component matrix](titmas-component-adoption-matrix-v1.0.json)
+- [Final-form decision packet](TITMAS-FINAL-FORM-IMPLEMENTATION-DECISION-PACKET-v1.0.md)
+- [P0/P1/P2 backlog](TITMAS-FINAL-FORM-IMPLEMENTATION-BACKLOG-v1.0.json)
+
+```text
+D04_FINAL_STATUS=CLOSED_FAILED_RETAINED
+BUILD_VERSUS_ADOPT_AUDIT_COMPLETE=true
+FINAL_FORM_IMPLEMENTATION_PLAN_READY=true
+FINAL_FORM_IMPLEMENTATION_AUTHORIZED=false
+NEXT_HUMAN_DECISION=AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_MATRIX
+```
 
 当前主线由
 `TITMAS-PRIVATE-CORE-COMMERCIALIZATION-SUPERSESSION-D01` 修正为：
@@ -199,13 +231,22 @@ AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
 - 账本过渡设计：[`TITMAS-COMMERCIAL-CR01-LEDGER-TRANSITION-DESIGN-v1.0.md`](TITMAS-COMMERCIAL-CR01-LEDGER-TRANSITION-DESIGN-v1.0.md)
 - CR01-D03 人类决策包：[`TITMAS-COMMERCIAL-CR01-D03-DECISION-PACKET-v1.0.md`](TITMAS-COMMERCIAL-CR01-D03-DECISION-PACKET-v1.0.md)
 - CR01-D03 模型审查：[`TITMAS-COMMERCIAL-CR01-D03-ADVISORY-REVIEW-v1.0.md`](TITMAS-COMMERCIAL-CR01-D03-ADVISORY-REVIEW-v1.0.md)
+- D04 最终处置：[`architecture/ADR-038-d04-final-closure-and-adopt-before-build.md`](architecture/ADR-038-d04-final-closure-and-adopt-before-build.md)
+- 最终形态采用审计：[`TITMAS-BUILD-VERSUS-ADOPT-AUDIT-v1.0.md`](TITMAS-BUILD-VERSUS-ADOPT-AUDIT-v1.0.md)
+- 最终形态实施决策包：[`TITMAS-FINAL-FORM-IMPLEMENTATION-DECISION-PACKET-v1.0.md`](TITMAS-FINAL-FORM-IMPLEMENTATION-DECISION-PACKET-v1.0.md)
 
 ```text
 COMMERCIAL_PROGRAM_STATUS=WAITING_FOR_HUMAN_DECISION
-CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
-CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY
-CR01_D03_DECISION_PACKET_READY=true
-CR01_D03_DECIDED=false
+CR01_STATUS=BLOCKED_LEDGER_INTEGRITY_FAILED_RETAINED
+D04_FINAL_STATUS=CLOSED_FAILED_RETAINED
+D04_FURTHER_CANARY_RETRIES_AUTHORIZED=false
+PR36_STATE=CLOSED
+PR36_MERGED=false
+LEGACY_LEDGER_CLASSIFICATION=INTERNAL_EXPERIMENTAL_LEDGER
+FUTURE_PRODUCTION_LEDGER_MODE=CLEAN_GENESIS
+BUILD_VERSUS_ADOPT_AUDIT_COMPLETE=true
+FINAL_FORM_IMPLEMENTATION_PLAN_READY=true
+FINAL_FORM_IMPLEMENTATION_AUTHORIZED=false
 EXISTING_NON_EXPORTABLE_ED25519_SIGNER_CONFIRMED=false
 LEDGER_TRANSITION_IMPLEMENTATION_AUTHORIZED=false
 COMMERCIAL_TECHNICAL_READY=false
