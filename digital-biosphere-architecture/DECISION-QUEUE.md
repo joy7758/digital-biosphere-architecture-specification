@@ -5,7 +5,7 @@ title_zh: 数字生物圈项目群决策队列 v0.1
 status: active-decision-register-owner-decisions-recorded
 decision_records_created: true
 authority_assignments_created: true
-last_reviewed: 2026-07-23
+last_reviewed: 2026-07-31
 ---
 
 # Digital Biosphere Program Decision Queue v0.1（数字生物圈项目群决策队列 v0.1）
@@ -27,6 +27,7 @@ last_reviewed: 2026-07-23
 | `DQ-006` | `P2` | POP、ARO、Agent Evidence、Token Governor、ACP 哪些进入正式 Portfolio？ | `OPEN` | 每个项目的目的、Owner、canonical source、重复能力和接口边界 | 项目组合与依赖范围 | 本地发现、历史关联或相邻角色等于正式准入 |
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
+| `CR01-D03` | `P0` | 是否授权实施 Option C 不可变历史清单与 Tenant-scoped clean epoch，并给予一次有界 PR、迁移、部署和隔离恢复复验 cap exception？ | `READY_FOR_REVIEW` | D03 决策包、19 项失败关闭矩阵、`qwen3.7-max` 与独立 `deepseek-v4-pro` 零 blocker 审查、签名边界缺口、当前 source/runtime 复核 | 决定是否进入一次受限 Gateway 实现；现有非导出 Ed25519 signer 未确认时仍不可执行 | Packet Ready 自动等于实现、云资源、迁移、部署、CR-01 或 soak 授权 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
@@ -74,7 +75,7 @@ release_authorized=true|false
 
 ```text
 DECISION_QUEUE_ACTIVE=true
-OPEN_DECISIONS=7
+OPEN_DECISIONS=8
 CONDITIONALLY_DECIDED_NOT_EFFECTIVE=0
 QUEUE_CREATES_AUTHORITY=false
 QUEUE_CREATES_PERMISSION=false

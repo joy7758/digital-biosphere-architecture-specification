@@ -5,9 +5,9 @@
   "current_phase": "COMMERCIAL_RELIABILITY_GATE_CR01_LEDGER_TRANSITION_DECISION",
   "phase_status": "WAITING_FOR_HUMAN_DECISION",
   "started_at": "2026-07-30T19:04:07+08:00",
-  "last_updated_at": "2026-07-31T18:44:30+08:00",
+  "last_updated_at": "2026-07-31T19:35:00+08:00",
   "source_commits": {
-    "governance": "4edee669e67a3b5ba0c1cb0d0c17bc699f57cf3e",
+    "governance": "55208c9401b91412dba728e9c38b0f40ad760692",
     "data_plane": "c319001cc1cf9e44d8b3d0b142a025c6c9af1678",
     "public_integrations": "6ed4dadd4693129d3daca0a9a29964a4f7f864e9"
   },
@@ -33,7 +33,9 @@
     "CR01_STRUCTURAL_RESTORE_PASS_WITH_RECEIPT_FAILURE_RETAINED",
     "CR01_FAILURE_EVIDENCE_MERGED",
     "CR01_D02_HOLD_AND_DESIGN_DECISION_RECORDED",
-    "CR01_LEDGER_TRANSITION_DESIGN_REVIEWED"
+    "CR01_LEDGER_TRANSITION_DESIGN_REVIEWED",
+    "CR01_D03_DECISION_PACKET_PREPARED",
+    "CR01_D03_ADVISORY_ARCHITECTURE_REVIEW_PASS"
   ],
   "gate_descriptions": {
     "STAGE_5_8_SOURCE_IDENTITY_VERIFIED": "The canonical source commit was confirmed; Stage 5.8 did not pass.",
@@ -50,12 +52,15 @@
     "CR01_STRUCTURAL_RESTORE_PASS_WITH_RECEIPT_FAILURE_RETAINED": "Isolated restore matched counts, schema, audit tip and 12 forced-RLS tables, but full Receipt verification failed.",
     "CR01_FAILURE_EVIDENCE_MERGED": "Gateway PR #35 merged the sanitized BLOCKED_LEDGER_INTEGRITY evidence at c319001cc1cf9e44d8b3d0b142a025c6c9af1678.",
     "CR01_D02_HOLD_AND_DESIGN_DECISION_RECORDED": "Human Owner zhangbin accepted CR01-D02 on 2026-07-31. The decision authorizes design only and keeps implementation, a second deployment retry and soak closed.",
-    "CR01_LEDGER_TRANSITION_DESIGN_REVIEWED": "Three role-scoped qwen3.7-max reviews selected immutable exception manifest plus Tenant-scoped anchored clean epochs; the option remains recommended, not authorized."
+    "CR01_LEDGER_TRANSITION_DESIGN_REVIEWED": "Three role-scoped qwen3.7-max reviews selected immutable exception manifest plus Tenant-scoped anchored clean epochs; the option remains recommended, not authorized.",
+    "CR01_D03_DECISION_PACKET_PREPARED": "The bounded implementation, migration, signing, rollback, 19-test and cap-exception proposal is ready for Human review; no execution authority was created.",
+    "CR01_D03_ADVISORY_ARCHITECTURE_REVIEW_PASS": "A remediated qwen3.7-max review and separate deepseek-v4-pro review report zero remaining architecture blockers; these are advisory evidence only."
   },
   "blocked_gates": [
     "CR01_LEDGER_INTEGRITY",
     "CR01_DEPLOYMENT_AND_REMEDIATION_CAPS_EXHAUSTED",
-    "CR01_LEDGER_TRANSITION_IMPLEMENTATION_NOT_AUTHORIZED"
+    "CR01_LEDGER_TRANSITION_IMPLEMENTATION_NOT_AUTHORIZED",
+    "CR01_NON_EXPORTABLE_ED25519_SIGNER_NOT_CONFIRMED"
   ],
   "human_decisions_required": [
     "CR01_D03_OPTION_C_IMPLEMENTATION_AND_CAP_EXCEPTION",
@@ -85,6 +90,8 @@
     "PUBLIC_INTEGRATION_PACKAGES_NOT_PUBLISHED",
     "PUBLIC_INTEGRATION_RUNTIME_METADATA_DRIFT_DISCLOSED",
     "CR01_LEDGER_TRANSITION_DESIGN_ONLY_NOT_IMPLEMENTED",
+    "LIVE_API_READINESS_RESTORE_FLAG_STALE_D03_CORRECTION_REQUIRED",
+    "EXISTING_NON_EXPORTABLE_ED25519_SIGNER_NOT_CONFIRMED",
     "NO_EXTERNAL_AGENT_BETA_EVIDENCE",
     "NO_72_HOUR_7_DAY_OR_30_DAY_ELAPSED_EVIDENCE",
     "NO_REAL_PAYMENT_OR_CUSTOMER_ADOPTION_EVIDENCE"

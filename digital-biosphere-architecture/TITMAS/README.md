@@ -56,6 +56,10 @@ aliases. No fourth community name is created.
   [`../TITMAS-COMMERCIAL-MATURITY-REPORT-v1.0.md`](../TITMAS-COMMERCIAL-MATURITY-REPORT-v1.0.md)
 - CR-01 program reconciliation:
   [`../TITMAS-COMMERCIAL-CR01-PROGRAM-RECONCILIATION-v1.0.md`](../TITMAS-COMMERCIAL-CR01-PROGRAM-RECONCILIATION-v1.0.md)
+- CR01-D03 Human Decision packet:
+  [`../TITMAS-COMMERCIAL-CR01-D03-DECISION-PACKET-v1.0.md`](../TITMAS-COMMERCIAL-CR01-D03-DECISION-PACKET-v1.0.md)
+- CR01-D03 advisory review:
+  [`../TITMAS-COMMERCIAL-CR01-D03-ADVISORY-REVIEW-v1.0.md`](../TITMAS-COMMERCIAL-CR01-D03-ADVISORY-REVIEW-v1.0.md)
 
 ## Local validation
 
@@ -162,6 +166,9 @@ or a formal standard. Canonical readiness remains:
 COMMERCIAL_PROGRAM_STATUS=WAITING_FOR_HUMAN_DECISION
 COMMERCIAL_CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
 CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY
+CR01_D03_DECISION_PACKET_READY=true
+CR01_D03_DECIDED=false
+EXISTING_NON_EXPORTABLE_ED25519_SIGNER_CONFIRMED=false
 LEDGER_TRANSITION_IMPLEMENTATION_AUTHORIZED=false
 COMMERCIAL_TECHNICAL_READY=false
 PAID_BETA_READY=false
@@ -174,6 +181,16 @@ candidate is a signed exception manifest plus Tenant-scoped clean epochs
 anchored to legacy chain tips. The legacy `1659 valid / 2 unverifiable` result
 does not change. CR01-D03 is required before Gateway code, database migration,
 another deployment attempt or soak.
+
+The D03 packet has passed one remediated `qwen3.7-max` review and one separate
+`deepseek-v4-pro` review with zero remaining architecture blockers. Those
+reviews make the packet ready for a Human Decision; they do not authorize the
+implementation or establish runtime correctness.
+
+An execution prerequisite remains open: no already approved non-exportable
+Ed25519 signer has been confirmed, and new paid cloud resources remain
+unauthorized. This does not invalidate the decision packet; it prevents
+implementation entry until satisfied or separately decided.
 
 The community core, PR #41, Activation PR #42, entry-repair PR #45 and Welcome
 Issue #43 remain historical facts. The current repository is private; public

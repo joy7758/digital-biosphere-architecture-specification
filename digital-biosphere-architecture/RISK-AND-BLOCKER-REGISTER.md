@@ -3,7 +3,7 @@ document_id: DBA-RISK-BLOCKER-REGISTER-0.1
 title: Digital Biosphere Program Risk and Blocker Register v0.1
 title_zh: 数字生物圈项目群风险与阻塞台账 v0.1
 status: active-risk-register
-as_of_date: 2026-07-22
+as_of_date: 2026-07-31
 risk_acceptance_authority_assigned: true
 ---
 
@@ -48,6 +48,8 @@ risk_acceptance_authority_assigned: true
 | `R-030` | `HIGH` | 原始客户对象、Token、Provider Key 或签名私钥进入数据库、日志或模型 | 商业 PostgreSQL 候选已部署；实现、备份 allowlist 和 disclosure scans 未发现持久化 raw payload 或 secret | 继续默认不持久化 payload；结构化 allowlist 日志；secret scan；停止条件 | `MITIGATED_IMPLEMENTATION_CONTINUOUS_RECHECK_REQUIRED` |
 | `R-031` | `HIGH` | 技术候选被误写成价格、付款、生产或成熟商业采用 | 所有 readiness 状态均为 false，付款与采用计数为 0 | 独立 machine state；Human gates；真实时间和外部采用不可伪造 | `MITIGATED_BY_STATE_MACHINE` |
 | `R-CM-001` | `CRITICAL` | 历史合成 Receipt 缺少可验证公钥，使结构恢复被误写成完整恢复或通过账本完整性闸门 | Gateway `c319001…`：1,661 条已检查、1,659 签名有效、2 条无保留公钥、0 链失败；CR01-D02 保留失败并完成 Option C 设计 | 禁止删除、重写、重签或 allowlist；保持 sustained/soak 关闭；CR01-D03 决定是否实施异常清单加锚定清洁 epoch 及 cap exception | `D02_ACCEPTED_D03_IMPLEMENTATION_DECISION_REQUIRED` |
+| `R-CM-002` | `HIGH` | 公开 `/api/v1/readiness` 的粗粒度 `backup_restore_ready=true` 与规范状态 `backup_restore_drill=false` 冲突，可能误导智能体把备份完整性或结构恢复误读为完整恢复 | 2026-07-31 live endpoint 与 DBA `commercial-readiness.json`、CR-01 报告交叉核验 | CR01-D03 候选实现必须把 backup integrity、structural restore、Receipt integrity、full restore 与 RTO 分开并由证据状态驱动；在授权前不做 status-only 线上修改 | `ACTIVE_D03_CORRECTION_REQUIRED_IMPLEMENTATION_NOT_AUTHORIZED` |
+| `R-CM-003` | `HIGH` | D03 安全设计要求非导出 Ed25519 签名边界，但现有已批准资源尚未确认，且当前禁止新购云资源或 Provider | 官方文档显示百度 KMS 当前列出的非对称规格不含 Ed25519；阿里云 KMS 文档支持 software-protected Ed25519/EdDSA 且私钥不可导出，但没有 TITMAS 账户资源事实 | 先做只读 existing-resource preflight；没有合格资源则停止并请求独立 Human Decision；不得自动换算法、购买或创建 KMS | `ACTIVE_INPUT_BLOCKER_NO_RESOURCE_ACTION_AUTHORIZED` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -58,6 +60,7 @@ risk_acceptance_authority_assigned: true
 | `B-004` | Research Agent Human Review 与 approved source 不完整 | Prototype Authorization Review 和实验 | Pilot 自己的 readiness gate 达到可审查状态并获得人工决定 | Pilot 规范改进和 DBA 项目群规划 |
 | `B-005` | 两个 DBA 语义表面未完成 canonical reconciliation | 对外唯一入口、规范优先级和自动检索路由 | `DQ-008` 形成决定并完成引用/迁移验证 | 当前仓库作为 Program Governance Cockpit 的工作树基线 |
 | `B-CM-001` | CR-01 恢复账本存在 2 条不可验证历史合成 Receipt，且实现 PR 与应用重部署上限均已用尽 | CR-01、CM-G4、CM-G5、CM-5、Production Candidate 和后续长运行 | CR01-D03 明确接受或拒绝 Option C，并单独授权实现、迁移和 cap exception；之后完整复验 | DBA 状态对账、设计审查和公开安全 SDK/Adapter assessment |
+| `B-CM-002` | 已批准、非导出 Ed25519 transition-manifest signer 未确认 | D03 实施入口、manifest 签名、迁移与部署 | 只读证明确认已有合格 signer，或单独 Human Decision 授权明确的资源/算法方案 | D03 决策包审查、DBA 文档和无执行的 schema/test 设计 |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
 
@@ -86,10 +89,10 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=26
-ACTIVE_RISKS=24
+TRACKED_RISKS=28
+ACTIVE_RISKS=26
 RESOLVED_RISKS=2
-ACTIVE_BLOCKERS=6
+ACTIVE_BLOCKERS=7
 BLOCKERS_CLEARED=7
 LOCAL_BLOCKERS_CLEARED_NOT_RELEASED=1
 RISKS_ACCEPTED=1
