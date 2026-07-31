@@ -138,5 +138,8 @@ Python, TypeScript, MCP and framework adapters must:
 
 ## Current limitation
 
-No `/api/v1` implementation, delegated commercial credential, public SDK or
-external Agent Beta exists at this baseline.
+A bounded `/api/v1` implementation and internal synthetic credential workflow
+exist. Public self-registration, externally delegated commercial credentials,
+validated public-safe commercial SDK/Adapters and external Agent Beta do not
+exist. CR-01 is also blocked on restored historical Receipt integrity, so the
+implemented candidate is not Commercial Technical Ready or Production Ready.

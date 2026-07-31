@@ -54,6 +54,8 @@ aliases. No fourth community name is created.
   [`../TITMAS-RECEIPT-KEY-MANAGEMENT-v1.0.md`](../TITMAS-RECEIPT-KEY-MANAGEMENT-v1.0.md)
 - Commercial maturity report:
   [`../TITMAS-COMMERCIAL-MATURITY-REPORT-v1.0.md`](../TITMAS-COMMERCIAL-MATURITY-REPORT-v1.0.md)
+- CR-01 program reconciliation:
+  [`../TITMAS-COMMERCIAL-CR01-PROGRAM-RECONCILIATION-v1.0.md`](../TITMAS-COMMERCIAL-CR01-PROGRAM-RECONCILIATION-v1.0.md)
 
 ## Local validation
 
@@ -151,11 +153,14 @@ candidate. It does not grant DBA, DBOS, SAEE, Evidence Truth, Certification,
 Commercial, Release, automatic merge or Stable-promotion authority.
 
 The separately authorized commercial maturity program is `IN_PROGRESS` at its
-governance baseline. It does not change the community state or activate public
-registration, pricing, payment, production, certification or a formal
-standard. Canonical readiness remains:
+technical implementation stage and is currently
+`WAITING_FOR_HUMAN_DECISION` at CR-01. It does not change the community state
+or activate public registration, pricing, payment, production, certification
+or a formal standard. Canonical readiness remains:
 
 ```text
+COMMERCIAL_PROGRAM_STATUS=WAITING_FOR_HUMAN_DECISION
+COMMERCIAL_CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
 COMMERCIAL_TECHNICAL_READY=false
 PAID_BETA_READY=false
 PRODUCTION_READY=false

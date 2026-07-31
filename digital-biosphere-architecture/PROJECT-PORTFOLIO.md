@@ -79,9 +79,9 @@ MAPPING_NE_INTEGRATION=true
 
 | surface | portfolio role | source | state |
 |---|---|---|---|
-| Commercial governance | DBA responsibility extension | `commercial-program-state.json`, ADR-036 | `IN_PROGRESS` |
-| Commercial data/control modules | private Gateway bounded extension | `joy7758/titmas-sandbox-gateway` | `NOT_IMPLEMENTED_AT_BASELINE` |
-| Public-safe SDK and adapters | existing integrations repository | `joy7758/titmas-integrations` | `NOT_STARTED` |
+| Commercial governance | DBA responsibility extension | `commercial-program-state.json`, ADR-036 | `WAITING_FOR_HUMAN_DECISION_CR01` |
+| Commercial data/control modules | private Gateway bounded extension | `joy7758/titmas-sandbox-gateway@c319001…` | `IMPLEMENTED_CANDIDATE_CR01_BLOCKED` |
+| Public-safe SDK and adapters | existing integrations repository | `joy7758/titmas-integrations@e8eeccb…` | `COMMERCIAL_READINESS_NOT_ASSESSED` |
 | Commercial control-plane repository | optional candidate | none | `NOT_CREATED_NOT_CURRENTLY_JUSTIFIED` |
 
 No portfolio Owner, repository visibility or canonical implementation truth is

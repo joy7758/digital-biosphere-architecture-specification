@@ -2,36 +2,57 @@
   "$schema": "architecture/schemas/commercial-program-state-v1.0.schema.json",
   "program_version": "1.0",
   "program_id": "TITMAS-AGENT-NATIVE-COMMERCIAL-MATURITY-PROGRAM",
-  "current_phase": "COMMERCIAL_FOUNDATION_BASELINE",
-  "phase_status": "IN_PROGRESS",
+  "current_phase": "COMMERCIAL_RELIABILITY_GATE_CR01",
+  "phase_status": "WAITING_FOR_HUMAN_DECISION",
   "started_at": "2026-07-30T19:04:07+08:00",
-  "last_updated_at": "2026-07-30T19:22:40+08:00",
+  "last_updated_at": "2026-07-31T17:01:11+08:00",
   "source_commits": {
-    "governance": "e14c4bfbc9814ecb66ee02b48ce9d7c516e4ba12",
-    "data_plane": "dee6c2861d917950c057a8dc2d2feccfc7527ede",
+    "governance": "4edee669e67a3b5ba0c1cb0d0c17bc699f57cf3e",
+    "data_plane": "c319001cc1cf9e44d8b3d0b142a025c6c9af1678",
     "public_integrations": "e8eeccbf19e5e1d1f01ab9ad8796a53591a38dc8"
   },
   "deployment_releases": {
     "sandbox_preview": "33a10e37d9582f240c518a0b65fb59f12dd3527c",
     "public_site": "bb60a3ec29379571c787e27d10243545df176472--a1c2ee6db9796f97f8d16dce772f2b02ea477dcfe63cd4fae542c5a1833d7534",
-    "commercial_api_v1": null
+    "commercial_api_v1": "9bbfce6154d67f4ab50e911b5e49611f5a4a8b57",
+    "commercial_api_v1_rollback": "5b13693f80aae98a0b3d53d2f4f0187399904a4a",
+    "commercial_api_v1_failed_candidate": "33bea67bafcd5fe3aabc7e7f48b456dba42aaf76"
   },
   "completed_gates": [
     "STAGE_5_8_SOURCE_IDENTITY_VERIFIED",
     "STAGE_5_8_FAILURES_AND_UNKNOWNS_RETAINED",
     "CURRENT_REPOSITORY_AND_SERVER_BASELINE_VERIFIED",
     "PRE_DEVELOPMENT_AGENT_RECOMMENDATION_GATE_COMPLETED_NOT_RECOMMENDED",
-    "COMMERCIAL_ARCHITECTURE_SPECIFICATION_ADVISORY_REVIEW_PASS"
+    "COMMERCIAL_ARCHITECTURE_SPECIFICATION_ADVISORY_REVIEW_PASS",
+    "COMMERCIAL_MULTI_TENANT_VERTICAL_SLICE_IMPLEMENTED",
+    "COMMERCIAL_POSTGRESQL16_PERSISTENCE_CANDIDATE_DEPLOYED",
+    "COMMERCIAL_SIGNED_RECEIPT_AND_METERING_IMPLEMENTED",
+    "COMMERCIAL_MACHINE_DISCOVERY_SURFACE_PUBLISHED",
+    "CR01_BACKUP_INTEGRITY_PASS",
+    "CR01_STRUCTURAL_RESTORE_PASS_WITH_RECEIPT_FAILURE_RETAINED",
+    "CR01_FAILURE_EVIDENCE_MERGED"
   ],
   "gate_descriptions": {
     "STAGE_5_8_SOURCE_IDENTITY_VERIFIED": "The canonical source commit was confirmed; Stage 5.8 did not pass.",
     "STAGE_5_8_FAILURES_AND_UNKNOWNS_RETAINED": "Negative and unknown outcomes are preserved, not resolved.",
     "CURRENT_REPOSITORY_AND_SERVER_BASELINE_VERIFIED": "A point-in-time read-only baseline was confirmed; no commercial service was deployed.",
     "PRE_DEVELOPMENT_AGENT_RECOMMENDATION_GATE_COMPLETED_NOT_RECOMMENDED": "The advisory gate completed with NOT_RECOMMENDED and a remediation path.",
-    "COMMERCIAL_ARCHITECTURE_SPECIFICATION_ADVISORY_REVIEW_PASS": "Specification blockers were remediated and re-reviewed; implementation proof is still absent."
+    "COMMERCIAL_ARCHITECTURE_SPECIFICATION_ADVISORY_REVIEW_PASS": "Specification blockers were remediated and re-reviewed.",
+    "COMMERCIAL_MULTI_TENANT_VERTICAL_SLICE_IMPLEMENTED": "Gateway main contains the separate PostgreSQL-backed /api/v1 candidate with forced RLS and tenant-bound data paths.",
+    "COMMERCIAL_POSTGRESQL16_PERSISTENCE_CANDIDATE_DEPLOYED": "The existing Baidu host runs the bounded commercial candidate on the retained release; this is not Production Ready.",
+    "COMMERCIAL_SIGNED_RECEIPT_AND_METERING_IMPLEMENTED": "Signed Receipt, usage, quota and billing-preview paths exist; CR-01 later found two unverifiable historical synthetic Receipts.",
+    "COMMERCIAL_MACHINE_DISCOVERY_SURFACE_PUBLISHED": "Machine-readable status, capabilities, plans, OpenAPI and Receipt key discovery are available for the candidate boundary.",
+    "CR01_BACKUP_INTEGRITY_PASS": "The encrypted allowlisted backup passed its internal integrity validation.",
+    "CR01_STRUCTURAL_RESTORE_PASS_WITH_RECEIPT_FAILURE_RETAINED": "Isolated restore matched counts, schema, audit tip and 12 forced-RLS tables, but full Receipt verification failed.",
+    "CR01_FAILURE_EVIDENCE_MERGED": "Gateway PR #35 merged the sanitized BLOCKED_LEDGER_INTEGRITY evidence at c319001cc1cf9e44d8b3d0b142a025c6c9af1678."
   },
-  "blocked_gates": [],
+  "blocked_gates": [
+    "CR01_LEDGER_INTEGRITY",
+    "CR01_DEPLOYMENT_AND_REMEDIATION_CAPS_EXHAUSTED"
+  ],
   "human_decisions_required": [
+    "CR01_HISTORICAL_SYNTHETIC_RECEIPT_DISPOSITION",
+    "CR01_DEPLOYMENT_CAP_EXCEPTION",
     "PUBLISH_FINAL_PRICING",
     "ACCEPT_REAL_PAYMENT",
     "ACCEPT_REAL_CONTRACT",
@@ -47,13 +68,18 @@
   "mature_commercial_infrastructure": false,
   "limitations": [
     "STAGE_5_8_COMPARISON_NOT_ASSESSED",
-    "NO_MULTI_TENANT_COMMERCIAL_API_IMPLEMENTED",
-    "NO_SIGNED_RECEIPT_IMPLEMENTED",
-    "NO_USAGE_OR_BILLING_LEDGER_IMPLEMENTED",
-    "NO_BACKUP_OR_RESTORE_EVIDENCE",
+    "CR01_RESTORED_RECEIPT_VERIFICATION_FAILED_2_OF_1661",
+    "CR01_SUSTAINED_CAPACITY_NOT_STARTED",
+    "CR01_RESOURCE_HEADROOM_NOT_ASSESSED",
+    "CR01_RATE_LIMIT_AND_QUOTA_NOT_ASSESSED",
+    "CR01_CROSS_TENANT_RUNTIME_RESTORE_TEST_NOT_ASSESSED",
+    "CR01_FORMAL_ROLLBACK_DRILL_NOT_COMPLETE",
+    "CR01_REMEDIATION_IMPLEMENTATION_PRS_USED_2_OF_2",
+    "CR01_APPLICATION_REDEPLOYMENTS_USED_1_OF_1",
+    "PUBLIC_SAFE_COMMERCIAL_SDK_AND_ADAPTER_GATES_NOT_ASSESSED",
     "NO_EXTERNAL_AGENT_BETA_EVIDENCE",
     "NO_72_HOUR_7_DAY_OR_30_DAY_ELAPSED_EVIDENCE",
     "NO_REAL_PAYMENT_OR_CUSTOMER_ADOPTION_EVIDENCE"
   ],
-  "next_action": "Implement and test one private multi-tenant /api/v1 vertical slice while preserving /sandbox/v0.1."
+  "next_action": "Obtain a Human Decision on immutable historical synthetic Receipt disposition and any deployment-cap exception; do not restart CR-01 or the 72-hour soak before that decision."
 }

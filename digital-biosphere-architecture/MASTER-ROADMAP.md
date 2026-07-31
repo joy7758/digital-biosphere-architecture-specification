@@ -167,14 +167,22 @@ Agent ROI 为 `12.504572`。该结果只适用于合成基准，不是商业采�
 | phase | objective | status | exit evidence |
 |---|---|---|---|
 | `CM-0` | verify Stage 5.8 and current infrastructure truth | `PASS_WITH_LIMITATIONS` | exact source, retained unknowns/failures, server and public baseline |
-| `CM-1` | governance, state machine and architecture freeze | `IN_PROGRESS` | ADR-036, state schemas, architecture/security/operations/data contracts |
-| `CM-2` | first private multi-tenant vertical slice | `NOT_STARTED` | tenant-bound credential, preflight, signed receipt, idempotent usage/quota |
-| `CM-3` | security and operational candidate | `NOT_STARTED` | cross-tenant matrix, scans, backup/restore, incident and rollback drills |
-| `CM-4` | machine onboarding and public-safe integrations | `NOT_STARTED` | machine entries, Python/TypeScript/MCP/framework clients |
-| `CM-5` | internal soak and capacity | `NOT_STARTED` | 72-hour and seven-day real elapsed evidence, load report |
+| `CM-1` | governance, state machine and architecture freeze | `GATE_PASSED` | ADR-036, state schemas, architecture/security/operations/data contracts |
+| `CM-2` | first private multi-tenant vertical slice | `GATE_PASSED` | Gateway `c319001…`: tenant-bound credential, preflight, signed receipt, idempotent usage/quota |
+| `CM-3` | security and operational candidate | `BLOCKED` | implementation and scans exist; CR-01 restore signature verification failed and formal recovery evidence is incomplete |
+| `CM-4` | machine onboarding and public-safe integrations | `IN_PROGRESS` | machine entries exist; commercial SDK/Adapter readiness remains unassessed |
+| `CM-5` | internal soak and capacity | `BLOCKED` | frozen capacity observations exist; sustained test, headroom and 72-hour soak did not start |
 | `CM-6` | external Agent Beta | `NOT_STARTED` | independent tenants, Agents, frameworks, calls and repeat-use evidence |
 | `CM-7` | Paid Beta Human Decision | `BLOCKED_INPUT` | technical readiness, Beta, legal/pricing packets and Human authorization |
 | `CM-8` | 30-day production/maturity observation | `NOT_STARTED` | real payment, availability, repeat use and maturity thresholds |
 
 Waiting for real elapsed time, external Agent usage or Human commercial
 decisions is a valid state and must not be bypassed.
+
+Current stop:
+
+```text
+CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
+PROGRAM_STATUS=WAITING_FOR_HUMAN_DECISION
+NEXT_HUMAN_DECISION=CR01_HISTORICAL_SYNTHETIC_RECEIPT_DISPOSITION_AND_DEPLOYMENT_CAP
+```

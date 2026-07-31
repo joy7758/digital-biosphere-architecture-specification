@@ -107,9 +107,9 @@ DEVELOPER_PREVIEW_RELEASED=true
 |---|---|---|
 | `CM-G1` Source and state | `PASS_WITH_LIMITATIONS` | exact DBA/Gateway/Integrations commits, server releases, retained Stage 5.8 result |
 | `CM-G2` Architecture | `PASS_BASELINE` | ADR-036, commercial architecture, security, operations and data boundaries |
-| `CM-G3` Multi-tenant implementation | `NOT_STARTED` | PostgreSQL migrations, tenant/Agent/credential isolation |
-| `CM-G4` Receipt and metering | `NOT_STARTED` | signed receipt, verifier, idempotent Usage/Billing ledgers |
-| `CM-G5` Security and operations | `NOT_ASSESSED` | zero cross-tenant leakage, scans, backup/restore and incident drills |
-| `CM-G6` Agent onboarding | `NOT_STARTED` | machine entries, SDKs/adapters and autonomous two-task reuse |
+| `CM-G3` Multi-tenant implementation | `PASS_IMPLEMENTED` | Gateway `c319001…` includes PostgreSQL migrations, forced RLS and Tenant/Agent/credential isolation tests |
+| `CM-G4` Receipt and metering | `BLOCKED_CR01_LEDGER_INTEGRITY` | current implementation exists, but isolated restore found 2 unverifiable historical synthetic Receipt signatures |
+| `CM-G5` Security and operations | `BLOCKED_CR01` | backup integrity and partial rollback pass; complete restore, cross-Tenant restored runtime test, sustained load, headroom and formal incident drill remain incomplete |
+| `CM-G6` Agent onboarding | `IN_PROGRESS` | machine entries exist; public-safe commercial SDK/Adapter and autonomous two-task reuse remain unassessed |
 | `CM-G7` External Agent Beta | `NOT_STARTED` | independent providers, frameworks, tenants, identities and calls |
-| `CM-G8` Paid/production maturity | `WAITING_FOR_UPSTREAM_GATES` | Human commercial decision, real payment/use and elapsed reliability evidence |
+| `CM-G8` Paid/production maturity | `WAITING_FOR_UPSTREAM_GATES` | CR-01 Human Decision, external Agent Beta, legal/pricing inputs, real payment/use and elapsed reliability evidence |

@@ -41,12 +41,13 @@ risk_acceptance_authority_assigned: true
 | `R-019` | `HIGH` | 直接公开 DBOS 整仓会披露本机路径和未纳入发布的项目资产清单 | `main@cd3f867` 有 48 个跟踪文件包含 `/Users/...`；0 Gitleaks findings 不能消除该 metadata exposure（元数据暴露） | 禁止整仓公开；使用不含 registry/evidence/reports/paths 的 39-file public-safe wheel | `WHOLE_REPOSITORY_PUBLIC_FAIL_CLOSED` |
 | `R-024` | `HIGH` | “Agent absolute priority” 被误读为 Agent 可自我授权或替代人类法律责任 | `ADR-035` 将 Agent 设为首要客户和验证主体 | 固定 `AGENT_PRIORITY_NE_AGENT_AUTHORITY`；合同、付款、法律责任、不可逆授权和安全停止继续由人类承担 | `MITIGATED_BY_CONSTITUTIONAL_BOUNDARY` |
 | `R-025` | `HIGH` | Stage 5.7 通过品牌提示、事后调分、失败删除或供应商混用人为提高 TITMAS 胜率 | 24 会话已执行；独立 Auditor 对随机化、品牌提示、隐藏答案、hash、失败保留和结果改写全部 PASS | 保留冻结配置、24 份脱敏会话、私有 raw evidence、Manifest 和 Auditor 输出；不得把合成基准升级为采用或生产证据 | `MITIGATED_BY_STAGE5_7_AUDIT_PASS_RESIDUAL_OVERCLAIM_RISK` |
-| `R-026` | `CRITICAL` | 多租户 API 发生跨租户读取、写入、配额消耗或 Receipt 访问 | 商业实现尚未开始，当前为 `NOT_ASSESSED` | 每次对象查询显式 tenant binding；防御纵深；完整负向矩阵；任一发现立即 `BLOCKED_SECURITY` | `OPEN_IMPLEMENTATION_GATE` |
+| `R-026` | `CRITICAL` | 多租户 API 发生跨租户读取、写入、配额消耗或 Receipt 访问 | Gateway `c319001…` 已有 application + forced-RLS 测试；CR-01 恢复后的 runtime cross-Tenant access test 未执行 | 每次对象查询显式 tenant binding；防御纵深；完整负向矩阵；恢复环境必须独立复验；任一发现立即 `BLOCKED_SECURITY` | `MITIGATED_IMPLEMENTATION_RUNTIME_RESTORE_RECHECK_OPEN` |
 | `R-027` | `HIGH` | 将 Stage 5.8 的 `NOT_ASSESSED`、替换率失败或 12 个未知改写成组合成功 | Gateway `dee6c286...` 保留完整聚合与报告 | DBA 只做 source-pinned 投影；禁止为改善结果重复执行；商业架构记录限制 | `MITIGATED_BY_RETAINED_SOURCE` |
-| `R-028` | `CRITICAL` | Receipt 被伪造、链被篡改或被宣传成 Truth/Authorization/Certification | Receipt 尚未实现 | RFC 8785 candidate canonicalization、Ed25519 candidate signing、tamper tests 和明确非声明 | `OPEN_IMPLEMENTATION_GATE` |
-| `R-029` | `HIGH` | 幂等重试导致重复使用量或账单计数 | Usage/Billing Ledger 尚未实现 | tenant-operation-idempotency 唯一约束和原子事务；保留补偿记录 | `OPEN_IMPLEMENTATION_GATE` |
-| `R-030` | `HIGH` | 原始客户对象、Token、Provider Key 或签名私钥进入数据库、日志或模型 | 当前商业数据库不存在 | 默认不持久化 payload；结构化 allowlist 日志；secret scan；停止条件 | `OPEN_IMPLEMENTATION_GATE` |
+| `R-028` | `CRITICAL` | Receipt 被伪造、链被篡改或被宣传成 Truth/Authorization/Certification | Receipt 实现、tamper tests 和当前链验证存在；CR-01 发现 2 条历史合成 Receipt 缺少保留公钥 | 保留 CR-01 失败；不得删除、重签或 allowlist；Human Decision 后才可设计隔离或 clean-ledger transition | `ACTIVE_CRITICAL_CR01_LEDGER_INTEGRITY` |
+| `R-029` | `HIGH` | 幂等重试导致重复使用量或账单计数 | Usage/Billing Ledger 和事务/idempotency tests 已实现；CR-01 完整 reconciliation 未执行 | tenant-operation-idempotency 唯一约束和原子事务；保留补偿记录；恢复后重新对账 | `MITIGATED_IMPLEMENTATION_CR01_RECONCILIATION_OPEN` |
+| `R-030` | `HIGH` | 原始客户对象、Token、Provider Key 或签名私钥进入数据库、日志或模型 | 商业 PostgreSQL 候选已部署；实现、备份 allowlist 和 disclosure scans 未发现持久化 raw payload 或 secret | 继续默认不持久化 payload；结构化 allowlist 日志；secret scan；停止条件 | `MITIGATED_IMPLEMENTATION_CONTINUOUS_RECHECK_REQUIRED` |
 | `R-031` | `HIGH` | 技术候选被误写成价格、付款、生产或成熟商业采用 | 所有 readiness 状态均为 false，付款与采用计数为 0 | 独立 machine state；Human gates；真实时间和外部采用不可伪造 | `MITIGATED_BY_STATE_MACHINE` |
+| `R-CM-001` | `CRITICAL` | 历史合成 Receipt 缺少可验证公钥，使结构恢复被误写成完整恢复或通过账本完整性闸门 | Gateway `c319001…`：1,661 条已检查、1,659 签名有效、2 条无保留公钥、0 链失败；CR-01=`BLOCKED_LEDGER_INTEGRITY` | 保留不可变失败；停止 sustained/soak；禁止删除、重写、重签或 allowlist；等待独立 Human Decision | `HUMAN_DECISION_REQUIRED` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -56,6 +57,7 @@ risk_acceptance_authority_assigned: true
 | `B-003` | canonical status source 未确认 | 自动或周期性可信状态汇总 | DBOS、SAEE、Pilot 各自提供 source + freshness + conflict policy | 当前时间点只读 snapshot |
 | `B-004` | Research Agent Human Review 与 approved source 不完整 | Prototype Authorization Review 和实验 | Pilot 自己的 readiness gate 达到可审查状态并获得人工决定 | Pilot 规范改进和 DBA 项目群规划 |
 | `B-005` | 两个 DBA 语义表面未完成 canonical reconciliation | 对外唯一入口、规范优先级和自动检索路由 | `DQ-008` 形成决定并完成引用/迁移验证 | 当前仓库作为 Program Governance Cockpit 的工作树基线 |
+| `B-CM-001` | CR-01 恢复账本存在 2 条不可验证历史合成 Receipt，且实现 PR 与应用重部署上限均已用尽 | CR-01、CM-G4、CM-G5、CM-5、Production Candidate 和后续长运行 | Human Decision 选择保持历史不可变的隔离／迁移方案，并单独决定是否授权新实现和重部署；随后重新执行受影响验证 | DBA 引用式状态对账和不依赖运行的公开安全 SDK/Adapter assessment |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
 
@@ -84,10 +86,10 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=25
-ACTIVE_RISKS=23
+TRACKED_RISKS=26
+ACTIVE_RISKS=24
 RESOLVED_RISKS=2
-ACTIVE_BLOCKERS=5
+ACTIVE_BLOCKERS=6
 BLOCKERS_CLEARED=7
 LOCAL_BLOCKERS_CLEARED_NOT_RELEASED=1
 RISKS_ACCEPTED=1
