@@ -45,7 +45,7 @@ last_reviewed: 2026-08-02
 |---|---|---|---|
 | POP ↔ DBOS | Persona projection 与 canonical identity 映射 | `REVIEW_REQUIRED` | Owner、schema、状态写权与冲突规则 |
 | Agent Evidence → DBOS | receipt / evidence reference 交接 | `REVIEW_REQUIRED` | canonical Evidence owner、完整性与版本边界 |
-| TITMAS Agent Action Gate → DBA / future execution surfaces | 项目状态汇报与未来 action decision / authorization-reference / refusal 交接候选 | `REFERENCE_IMPLEMENTED_MAPPING_REVIEW_REQUIRED` | Draft PR `#1@27ccf95` 已实现确定性 gate、6-tool MCP、pinned agent-evidence、独立 caller／approver credential、一次性 consumption 和真实 sandbox Draft PR；仍须审查 DBOS Permission、Runtime enforcement、Gateway 和 audit-record Owner；无 live AgentTeams、跨项目 API mapping、生产 Runtime 或采用权 |
+| TITMAS Agent Action Gate → DBA / future execution surfaces | 项目状态汇报与未来 action decision / authorization-reference / refusal 交接候选 | `REFERENCE_IMPLEMENTED_MAPPING_REVIEW_REQUIRED` | public `main@ec00633` 已实现确定性 gate、6-tool MCP、pinned agent-evidence、独立 caller／approver credential、一次性 consumption 和真实 sandbox Draft PR；仍须审查 DBOS Permission、Runtime enforcement、Gateway 和 audit-record Owner；无 live AgentTeams、跨项目 API mapping、生产 Runtime 或采用权 |
 | Media Evidence → DBA / DBOS | 已接纳相邻候选的 private canonical status 只读引用；未来可能的媒体 evidence-bearing record / reference 交接 | `PORTFOLIO_ADMITTED_BOUNDARY_ONLY_MAPPING_NOT_AUTHORIZED` | Source/owner/freshness 和组合准入已建立；DBOS Evidence Admission contract、mapping 实现、跨项目符合性和 G3-G8 仍须独立决定；网站展示不等于架构采用 |
 | ARO → DBOS / SAEE | Audit result 作为 Verification 或 Evaluation 输入 | `REVIEW_REQUIRED` | Audit、Verification、Evaluation 三者分离 |
 | Token Governor → DBOS / SAEE | 资源约束记录与资源适应度输入 | `REVIEW_REQUIRED` | 执行约束、评价和最终决策责任分离 |

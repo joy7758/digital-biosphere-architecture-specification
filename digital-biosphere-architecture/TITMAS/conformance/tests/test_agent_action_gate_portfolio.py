@@ -20,10 +20,10 @@ class AgentActionGatePortfolioTests(unittest.TestCase):
             self.projection["canonical_remote_repository"],
             "https://github.com/joy7758/titmas-agent-action-gate",
         )
-        self.assertEqual(self.projection["observed_branch"], "agent/implement-action-gate-runtime")
+        self.assertEqual(self.projection["observed_branch"], "main")
         self.assertEqual(
             self.projection["observed_commit"],
-            "27ccf953421e1491177c7946a31296a1e1eabe29",
+            "ec00633711067947949128816bc40526c2e43837",
         )
         self.assertEqual(
             self.projection["contract_ci"]["head_sha"],
@@ -45,7 +45,7 @@ class AgentActionGatePortfolioTests(unittest.TestCase):
     def test_gates_preserve_reference_and_non_release_boundaries(self) -> None:
         gates = self.projection["gates"]
         self.assertEqual(gates["G0"], "REVIEW_REQUIRED_READY_FOR_HUMAN_DECISION")
-        self.assertEqual(gates["G1"], "PASS_PUBLIC_DRAFT_PR_SOURCE_PINNED")
+        self.assertEqual(gates["G1"], "PASS_PUBLIC_MAIN_REFERENCE_SOURCE_PINNED")
         self.assertIn("REFERENCE_IMPLEMENTATION", gates["G3"])
         self.assertIn("NOT_INDEPENDENT", gates["G4"])
         self.assertIn("RUNTIME_PERMISSION_NOT_CREATED", gates["G5"])

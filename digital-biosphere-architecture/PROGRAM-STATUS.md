@@ -119,7 +119,7 @@ RELEASE_EXECUTED=true
 - `DQ-003`：确认 DBOS、SAEE、Research Agent Pilot 的 canonical status source；
 - `DQ-004`：选择第一个跨项目 conformance（符合性）里程碑；
 - `DQ-008`：决定当前驾驶舱与既有 DBA public meaning layer 的规范关系和单一前门；
-- `TITMAS-AGENT-ACTION-GATE-ADMISSION-D01`：存在申报、完整 DBA 项目管理授权、public Draft PR `#1@27ccf95`、Action Gate／6 MCP tool／agent-evidence adapter／36 tests 与真实 sandbox Draft PR `#3` 已形成，当前 `READY_FOR_REVIEW`；是否作为 `ADJACENT_CANDIDATE` 准入仍需 Human Decision，并须保留 live AgentTeams、DBOS Permission／Runtime／Gateway Owner 复核；
+- `TITMAS-AGENT-ACTION-GATE-ADMISSION-D01`：存在申报、完整 DBA 项目管理授权、public `main@ec00633`、Action Gate／6 MCP tool／agent-evidence adapter／36 tests 与真实 sandbox Draft PR `#3` 已形成，当前 `READY_FOR_REVIEW`；是否作为 `ADJACENT_CANDIDATE` 准入仍需 Human Decision，并须保留 live AgentTeams、DBOS Permission／Runtime／Gateway Owner 复核；
 - `DQ-009`、`DQ-016` 已由 `ADR-022` 关闭：只公开 exact public-safe wheel、DBOS 整仓保持 private、接受 v0.1 的 `PARTIAL_METADATA_ONLY` 限制并由 `released_by_ref=zhangbin` 授权发布；
 - `DQ-001`、`DQ-011`、`DQ-012`、`DQ-014` 已由 `ADR-020` 关闭；
 - `DQ-010` 的人类参与者路径已由 `ADR-021` 标记为 `SUPERSEDED_FOR_PRIMARY_ROUTE`，没有被改写成执行通过；
@@ -382,20 +382,21 @@ DBOS mapping authorization and G3-G8 remain unresolved or explicitly closed.
 
 ## 13. TITMAS Agent Action Gate Existence Declaration Overlay
 
-Observed on 2026-08-02 from the child repository's public experimental
-implementation Draft PR and completed GitHub Actions run `30711717059`:
+Observed on 2026-08-02 from the child repository's public `main` experimental
+reference implementation and completed GitHub Actions run `30711940716`:
 
 ```text
 AGENT_ACTION_GATE_PROJECT_ID=TITMAS-AGENT-ACTION-GATE
 AGENT_ACTION_GATE_LOCAL_PATH=/Users/zhangbin/GitHub/titmas-agent-action-gate
-AGENT_ACTION_GATE_LOCAL_BRANCH=agent/implement-action-gate-runtime
-AGENT_ACTION_GATE_LOCAL_COMMIT=27ccf953421e1491177c7946a31296a1e1eabe29
+AGENT_ACTION_GATE_LOCAL_BRANCH=main
+AGENT_ACTION_GATE_LOCAL_COMMIT=ec00633711067947949128816bc40526c2e43837
 AGENT_ACTION_GATE_REMOTE=https://github.com/joy7758/titmas-agent-action-gate
 AGENT_ACTION_GATE_REMOTE_VISIBILITY=PUBLIC
-AGENT_ACTION_GATE_REMOTE_COMMIT=27ccf953421e1491177c7946a31296a1e1eabe29
+AGENT_ACTION_GATE_REMOTE_COMMIT=ec00633711067947949128816bc40526c2e43837
 AGENT_ACTION_GATE_IMPLEMENTATION_PR=https://github.com/joy7758/titmas-agent-action-gate/pull/1
-AGENT_ACTION_GATE_IMPLEMENTATION_PR_STATE=OPEN_DRAFT_NOT_MERGED
-AGENT_ACTION_GATE_CONTRACT_CI=https://github.com/joy7758/titmas-agent-action-gate/actions/runs/30711717059
+AGENT_ACTION_GATE_IMPLEMENTATION_PR_STATE=MERGED
+AGENT_ACTION_GATE_IMPLEMENTATION_COMMIT=27ccf953421e1491177c7946a31296a1e1eabe29
+AGENT_ACTION_GATE_CONTRACT_CI=https://github.com/joy7758/titmas-agent-action-gate/actions/runs/30711940716
 AGENT_ACTION_GATE_CONTRACT_CI_CONCLUSION=SUCCESS
 AGENT_ACTION_GATE_CANONICAL_AGENT_ENTRY=agent-index.json
 AGENT_ACTION_GATE_CANONICAL_STATUS_SOURCE=governance/project-declaration.json
@@ -410,9 +411,9 @@ AGENT_ACTION_GATE_CONSTITUTION_SHA256=ca34af2be5152e395454a83a0e9d2f085861497b60
 AGENT_ACTION_GATE_EXISTENCE_DECLARED=true
 AGENT_ACTION_GATE_PORTFOLIO_ADMISSION_GRANTED=false
 AGENT_ACTION_GATE_G0=REVIEW_REQUIRED_READY_FOR_HUMAN_DECISION
-AGENT_ACTION_GATE_G1=PASS_PUBLIC_DRAFT_PR_SOURCE_PINNED
+AGENT_ACTION_GATE_G1=PASS_PUBLIC_MAIN_REFERENCE_SOURCE_PINNED
 AGENT_ACTION_GATE_G2=PARTIAL_SPECIFIED_CROSS_PROJECT_OWNER_REVIEW_REQUIRED
-AGENT_ACTION_GATE_G3=EXPERIMENTAL_REFERENCE_IMPLEMENTATION_ON_DRAFT_PR_NOT_MERGED
+AGENT_ACTION_GATE_G3=EXPERIMENTAL_REFERENCE_IMPLEMENTATION_MERGED_TO_MAIN
 AGENT_ACTION_GATE_G4=PASS_LOCAL_AND_CI_REFERENCE_CONFORMANCE_NOT_INDEPENDENT
 AGENT_ACTION_GATE_G5=OWNER_FULL_PROJECT_MANAGEMENT_POLICY_RECORDED_RUNTIME_PERMISSION_NOT_CREATED
 AGENT_ACTION_GATE_G6=REAL_GITHUB_SANDBOX_BRANCH_AND_DRAFT_PR_EXECUTED_NO_MERGE
@@ -449,6 +450,6 @@ The proposal is
 and the machine projection is
 [`agent-action-gate.json`](TITMAS/specifications/portfolio/agent-action-gate.json).
 DBA records existence, the experimental child implementation and the pending G0
-decision. It does not convert a Draft PR or sandbox trace into portfolio
+decision. It does not convert an implementation merge or sandbox trace into portfolio
 admission, live AgentTeams deployment, production readiness, release, adoption
 or competition submission.

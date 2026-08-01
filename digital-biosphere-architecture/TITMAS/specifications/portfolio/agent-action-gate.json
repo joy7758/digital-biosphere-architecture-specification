@@ -9,22 +9,23 @@
   "implementation_commit": "27ccf953421e1491177c7946a31296a1e1eabe29",
   "local_repository": "/Users/zhangbin/GitHub/titmas-agent-action-gate",
   "canonical_remote_repository": "https://github.com/joy7758/titmas-agent-action-gate",
-  "observed_branch": "agent/implement-action-gate-runtime",
-  "observed_commit": "27ccf953421e1491177c7946a31296a1e1eabe29",
+  "observed_branch": "main",
+  "observed_commit": "ec00633711067947949128816bc40526c2e43837",
   "remote_visibility": "PUBLIC",
   "canonical_status_source": "governance/project-declaration.json",
-  "source_state": "PUBLIC_DRAFT_PR_EXPERIMENTAL_REFERENCE_IMPLEMENTATION_PINNED",
+  "source_state": "PUBLIC_MAIN_EXPERIMENTAL_REFERENCE_IMPLEMENTATION_PINNED",
   "implementation_pull_request": {
     "number": 1,
     "url": "https://github.com/joy7758/titmas-agent-action-gate/pull/1",
-    "state": "OPEN_DRAFT",
-    "merged": false
+    "state": "MERGED",
+    "merged": true,
+    "merge_commit": "ec00633711067947949128816bc40526c2e43837"
   },
   "contract_ci": {
-    "run_id": 30711717059,
-    "url": "https://github.com/joy7758/titmas-agent-action-gate/actions/runs/30711717059",
+    "run_id": 30711940716,
+    "url": "https://github.com/joy7758/titmas-agent-action-gate/actions/runs/30711940716",
     "conclusion": "SUCCESS",
-    "head_sha": "27ccf953421e1491177c7946a31296a1e1eabe29"
+    "head_sha": "ec00633711067947949128816bc40526c2e43837"
   },
   "decision_reference": "../../../DECISION-QUEUE.md#2-open-decisions开放决策",
   "proposal_reference": "../proposals/titmas-agent-action-gate-admission-v0.1.md",
@@ -45,9 +46,9 @@
   "competition_submission": false,
   "gates": {
     "G0": "REVIEW_REQUIRED_READY_FOR_HUMAN_DECISION",
-    "G1": "PASS_PUBLIC_DRAFT_PR_SOURCE_PINNED",
+    "G1": "PASS_PUBLIC_MAIN_REFERENCE_SOURCE_PINNED",
     "G2": "PARTIAL_SPECIFIED_CROSS_PROJECT_OWNER_REVIEW_REQUIRED",
-    "G3": "EXPERIMENTAL_REFERENCE_IMPLEMENTATION_ON_DRAFT_PR_NOT_MERGED",
+    "G3": "EXPERIMENTAL_REFERENCE_IMPLEMENTATION_MERGED_TO_MAIN",
     "G4": "PASS_LOCAL_AND_CI_REFERENCE_CONFORMANCE_NOT_INDEPENDENT",
     "G5": "OWNER_FULL_PROJECT_MANAGEMENT_POLICY_RECORDED_RUNTIME_PERMISSION_NOT_CREATED",
     "G6": "REAL_GITHUB_SANDBOX_BRANCH_AND_DRAFT_PR_EXECUTED_NO_MERGE",
