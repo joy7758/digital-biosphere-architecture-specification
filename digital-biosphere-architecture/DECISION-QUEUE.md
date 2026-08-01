@@ -28,6 +28,7 @@ last_reviewed: 2026-08-01
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
 | `TITMAS-FINAL-FORM-IMPLEMENTATION-D01` | `P0` | 是否根据已审计的采用矩阵授权有界 P0 最终形态实施？ | `READY_FOR_REVIEW` | D04 最终处置、Build-versus-Adopt 审计、组件矩阵、七层架构包、P0/P1/P2 Backlog、许可证与数据边界复核 | 决定是否进入分仓、分路径、可回滚的 P0 实施；P1/P2、生产账本、部署和付费仍需独立决定 | 审计完成自动等于实施、依赖安装、服务创建、迁移、部署、Paid Beta 或生产授权 |
+| `TITMAS-AAEL-GBZ185-PART8-ADMISSION-D01` | `P1` | 是否接纳 `joy7758/agent-accountability-evidence-layer` 作为未来 GB/Z 185 Part 8 Agent Audit Reference Model 的技术仓库候选？ | `READY_FOR_REVIEW` | AAEL `debccc2…` readiness evidence、`PASS_WITH_CONDITIONS` review、PR #21 合并状态、profile namespace isolation 与 Part 8 source/version pin | 仅决定是否成为 `ADJACENT_TECHNICAL_REFERENCE_PROFILE_CANDIDATE` | readiness 或 review 自动等于 admission、implementation authorization、standard implementation、conformance、certification、official affiliation、release 或 deployment |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
