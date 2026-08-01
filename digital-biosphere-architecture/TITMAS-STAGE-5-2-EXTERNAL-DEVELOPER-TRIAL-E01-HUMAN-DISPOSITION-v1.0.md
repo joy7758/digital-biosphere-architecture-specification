@@ -2,30 +2,32 @@
 document_id: TITMAS-STAGE-5-2-EXTERNAL-DEVELOPER-TRIAL-E01-HUMAN-DISPOSITION-1.0
 title: TITMAS Stage 5.2 External Developer Trial E01 Human Disposition v1.0
 title_zh: TITMAS Stage 5.2 外部开发者试用 E01 人工处置记录 v1.0
-status: access-active-awaiting-contribution
+status: access-revoked-expired-awaiting-human-disposition
 maturity: Development
 normative: false
 owner_ref: zhangbin
 decision_reference: TITMAS-STAGE-5-2-FIRST-EXTERNAL-DEVELOPER-TRIAL-E01
 participant_id: TITMAS-EXT-DEV-001
-observed_at: 2026-07-29T20:44:10+08:00
+observed_at: 2026-08-02T04:04:48+08:00
 ---
 
 # TITMAS Stage 5.2 External Developer Trial E01 Human Disposition
 
 ## Current disposition
 
-The participant has accepted read-only access to the trial repository. No
-participant branch, contribution, Conformance result, feedback or
-access-revocation evidence exists. Human disposition therefore remains
-deferred.
+The participant accepted read-only access to the trial repository. At expiry,
+no participant Fork visible to the owner API, upstream participant branch,
+Pull Request, contribution, participant Conformance result, feedback or core
+access request was observed. Access has been revoked and read back as absent.
+No automated Human disposition is inferred from expiry, so all three decisions
+remain deferred for the Human Owner.
 
 ```text
 E01-HD-01=DEFER
 E01-HD-02=DEFER
 E01-HD-03=DEFER
 
-HUMAN_DISPOSITION_STATUS=AWAITING_PARTICIPANT
+HUMAN_DISPOSITION_STATUS=ACCESS_EXPIRED_AWAITING_HUMAN_OWNER
 PARTICIPANT_GITHUB_USERNAME=lizuyi-6
 SELECTED_TRIAL_TASK=TRIAL-01-NEGATIVE-TEST-VECTOR
 INVITATION_SENT=true
@@ -35,7 +37,10 @@ EXTERNAL_ACCESS_ROLE=read
 PARTICIPANT_PULL_REQUEST_EXISTS=false
 TRIAL_CONFORMANCE_RESULT=NOT_ASSESSED
 PARTICIPANT_FEEDBACK_RECEIVED=false
-ACCESS_REVOKED=false
+ACCESS_REVOKED=true
+ACCESS_REVOCATION_REASON=TRIAL_EXPIRY
+POST_REVOCATION_PERMISSION=none
+POST_REVOCATION_COLLABORATOR_CHECK=404_NOT_FOUND
 ```
 
 ## E01-HD-01 — Contribution disposition
@@ -129,9 +134,15 @@ revocation must be read back. Local clone deletion remains
 
 ```text
 ACCESS_EXPIRES_AT=2026-08-01T20:00:00+08:00
-ACCESS_REVOKED=false
+ACCESS_REVOKED=true
+ACCESS_REVOKED_OBSERVED_AT=2026-08-02T04:04:48+08:00
+PENDING_INVITATION_COUNT=0
 LOCAL_CLONE_DELETION_CONFIRMED_BY_PARTICIPANT=unknown
 ```
+
+Expiry and access revocation close the repository-access interval. They do not
+convert an absent contribution into a completed trial, do not produce a Human
+Disposition and do not authorize another participant.
 
 ## TITMAS Drift Check
 

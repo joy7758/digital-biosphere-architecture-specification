@@ -2,13 +2,13 @@
 document_id: TITMAS-STAGE-5-2-EXTERNAL-DEVELOPER-TRIAL-E01-REPORT-1.0
 title: TITMAS Stage 5.2 First External Developer Trial E01 Report v1.0
 title_zh: TITMAS Stage 5.2 首位外部开发者试用 E01 报告 v1.0
-status: access-active-awaiting-participant-contribution
+status: access-revoked-expired-incomplete
 maturity: Development
 normative: false
 owner_ref: zhangbin
 decision_reference: TITMAS-STAGE-5-2-FIRST-EXTERNAL-DEVELOPER-TRIAL-E01
 participant_id: TITMAS-EXT-DEV-001
-observed_at: 2026-07-29T21:11:03+08:00
+observed_at: 2026-08-02T04:04:48+08:00
 ---
 
 # TITMAS Stage 5.2 First External Developer Trial E01 Report
@@ -212,16 +212,56 @@ exception. Revocation must be verified through GitHub. Local clone deletion can
 only be reported from participant confirmation.
 
 ```text
-ACCESS_REVOKED=false
+ACCESS_REVOKED=true
+ACCESS_REVOCATION_REASON=TRIAL_EXPIRY
+ACCESS_EXPIRED_AT=2026-08-01T20:00:00+08:00
+ACCESS_REVOKED_OBSERVED_AT=2026-08-02T04:04:48+08:00
+POST_REVOCATION_PERMISSION=none
+POST_REVOCATION_COLLABORATOR_CHECK=404_NOT_FOUND
+POST_REVOCATION_PENDING_INVITATION_COUNT=0
 LOCAL_CLONE_DELETION_CONFIRMED_BY_PARTICIPANT=unknown
 ```
+
+The expiry check was executed after the declared expiry time. GitHub returned
+`permission=none`, the direct collaborator check returned `404`, the pending
+invitation list was empty and the remaining collaborator list contained only
+the repository owner. These reads verify that repository permission no longer
+exists. They do not prove deletion of any participant-side local clone.
+
+## Expiry-state observation
+
+The owner-visible repository surfaces were read without modifying participant
+content:
+
+```text
+OWNER_START_ISSUE_NUMBER=1
+OWNER_START_ISSUE_STATE=OPEN
+OWNER_START_ISSUE_COMMENT_COUNT=0
+PARTICIPANT_PRIVATE_FORK_OBSERVED_BY_OWNER_API=false
+PARTICIPANT_UPSTREAM_BRANCH_OBSERVED=false
+PARTICIPANT_PULL_REQUEST_EXISTS=false
+PARTICIPANT_CONTRIBUTION_OBSERVED=false
+PARTICIPANT_FEEDBACK_RECEIVED=false
+CORE_ACCESS_REQUESTS_OBSERVED=0
+DATA_SCOPE_VIOLATIONS_OBSERVED=0
+SECURITY_EXCEPTIONS_OBSERVED=0
+PARTICIPANT_TRIAL_CONFORMANCE_RESULT=NOT_ASSESSED
+BASELINE_TRIAL_CONFORMANCE_STATE=success
+BASELINE_TRIAL_CONFORMANCE_SHA=cb824621189262c4e4bc9f12840f1de08d615cb9
+```
+
+The Fork value means that the owner API returned no visible Fork record at the
+observation time; it is not a claim about an unobservable participant-local
+clone. The successful `trial-conformance` status remains the repository
+baseline status and must not be attributed to the participant.
 
 ## Current outcome
 
 ```text
 TRIAL_PREFLIGHT_STATUS=PASS
-TRIAL_EXECUTION_STATUS=ACCESS_ACTIVE_AWAITING_PARTICIPANT_CONTRIBUTION
+TRIAL_EXECUTION_STATUS=ACCESS_EXPIRED_NO_PARTICIPANT_CONTRIBUTION
 FIRST_EXTERNAL_HUMAN_DEVELOPER_TRIAL_COMPLETE=false
+HUMAN_DISPOSITION_STATUS=PENDING
 
 CUSTOMER_ADOPTION=false
 COMMUNITY_ESTABLISHED=false
