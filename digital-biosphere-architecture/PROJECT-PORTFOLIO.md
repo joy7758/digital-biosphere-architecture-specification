@@ -3,7 +3,7 @@ document_id: DBA-PROJECT-PORTFOLIO-0.1
 title: Digital Biosphere Project Portfolio v0.1
 title_zh: 数字生物圈项目组合 v0.1
 status: initial-observed-portfolio-baseline
-as_of_date: 2026-07-21
+as_of_date: 2026-08-01
 source_policy: reference-only
 changes_project_ownership: false
 changes_project_status: false
@@ -18,7 +18,7 @@ changes_project_status: false
 | `CORE` | 核心项目 | Digital Biosphere 总目标不可缺少的责任域；不表示仓库被 DBA 所有 |
 | `PILOT` | 试验项目 | 用于验证架构契约的受控应用或研究工作流；不表示已实现或已授权执行 |
 | `LOGICAL_LAYER` | 逻辑层 | 架构中需要但尚不一定有独立软件仓库的责任边界 |
-| `ADJACENT_CANDIDATE` | 相邻候选项目 | 可能复用或接入，但尚未完成项目准入、Owner 和集成边界确认 |
+| `ADJACENT_CANDIDATE` | 相邻候选项目 | 经显式边界审查可纳入组合观察；不表示进入核心、完成 DBOS 映射、跨项目符合性或采用 |
 | `OUT_OF_SCOPE` | 当前范围外 | 当前项目群不管理；若未来接入必须重新审查 |
 
 ## 2. Core Portfolio（核心项目组合）
@@ -40,7 +40,7 @@ changes_project_status: false
 | `POP` | `/Users/zhangbin/GitHub/persona-object-protocol` | Identity / Persona adjacent component（身份／人格相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 与 DBOS canonical identity 的 Owner 和映射边界是什么？ |
 | `ARO` | `/Users/zhangbin/GitHub/aro-audit` | Audit / Verification adjacent component（审计／验证相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 与 DBOS Verification、Agent Evidence 的阶段和数据所有权如何分离？ |
 | `AGENT-EVIDENCE` | `/Users/zhangbin/GitHub/agent-evidence` | Execution-to-evidence component（执行到证据组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 哪些记录是 canonical Evidence，哪些只是 receipt（回执）或 transport（传输）？ |
-| `MEDIA-EVIDENCE` | private `joy7758/titmas-media-guard`；`v0.1.0@7eac452f66a2b7de525543f80b9a7cf1465ef9a1`；status `governance/project-status.json` | AIGC media-review Application Profile / Reference Implementation candidate（人工智能生成内容媒体审核应用场景配置／参考实现候选） | `READY_FOR_HUMAN_PORTFOLIO_DECISION` | 边界已决定、G1 已通过；是否授予 Portfolio Admission 仍需单独人工决定，DBOS mapping 未授权 |
+| `MEDIA-EVIDENCE` | private `joy7758/titmas-media-guard`；`v0.1.0@7eac452f66a2b7de525543f80b9a7cf1465ef9a1`；status `governance/project-status.json` | AIGC media-review Application Profile / Reference Implementation candidate（人工智能生成内容媒体审核应用场景配置／参考实现候选） | `ADMITTED_ADJACENT_CANDIDATE` | G0、G1 和边界限定的 G2 已通过；DBOS Evidence Admission mapping 未授权，G3-G8 未评估、未授权或未执行 |
 | `TOKEN-GOVERNOR` | `/Users/zhangbin/GitHub/token-governor` | Resource governance adjacent component（资源治理相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | DBOS 运行约束与 SAEE 资源评价之间的责任边界是什么？ |
 | `ACP` | `/Users/zhangbin/GitHub/海洋/autonomous-cell-protocol` | Physical Cell protocol（物理单元协议） | `MAPPING_ONLY_REVIEW_REQUIRED` | Physical Cell Identity 与 DBOS Entity Identity 如何保持不等同？ |
 
@@ -48,7 +48,7 @@ changes_project_status: false
 
 ## 4. Portfolio Admission Rules（项目组合准入规则）
 
-项目进入 `CORE` 或 `PILOT` 前必须：
+项目进入 `CORE` 或 `PILOT` 前，以及相邻候选获得显式组合接纳时，必须：
 
 1. 有稳定 `project_id`、项目目的和 canonical source；
 2. 指定一个 primary responsibility domain（主责任域）；
@@ -69,7 +69,10 @@ Repository discovery（仓库发现）不等于 Portfolio Admission（项目组�
 PORTFOLIO_BASELINE_DEFINED=true
 PORTFOLIO_OWNS_CHILD_REPOSITORIES=false
 PORTFOLIO_CHANGES_CHILD_STATUS=false
-ADJACENT_PROJECTS_ADMITTED=false
+ADJACENT_PROJECTS_ADMITTED=true
+MEDIA_EVIDENCE_PORTFOLIO_ADMISSION_GRANTED=true
+MEDIA_EVIDENCE_PORTFOLIO_CLASSIFICATION=ADJACENT_CANDIDATE
+MEDIA_EVIDENCE_DBOS_MAPPING_AUTHORIZED=false
 DISCOVERY_NE_ADOPTION=true
 MAPPING_NE_INTEGRATION=true
 ```

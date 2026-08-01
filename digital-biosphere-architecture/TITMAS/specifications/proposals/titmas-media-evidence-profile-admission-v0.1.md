@@ -3,10 +3,10 @@ id: TITMAS-PROP-20260801-MEDIA-EVIDENCE-001
 title: TITMAS Media Evidence Profile Architecture Admission Request v0.1
 title_zh: TITMAS 媒体证据场景配置架构接纳请求 v0.1
 category: REFERENCE_CANDIDATE
-status: DEVELOPMENT_DRAFT
+status: ACCEPTED_BOUNDED
 maturity: Development
 owner_ref: ZHANGBIN
-authority_ref: HUMAN_ARCHITECTURE_DECISION_REQUIRED
+authority_ref: TITMAS-DEC-20260801-MEDIA-EVIDENCE-PORTFOLIO-001
 version: 0.1.0
 normative: false
 ---
@@ -19,13 +19,15 @@ normative: false
 PROPOSAL_ID=TITMAS-PROP-20260801-MEDIA-EVIDENCE-001
 REQUESTED_CLASSIFICATION=APPLICATION_PROFILE_AND_REFERENCE_IMPLEMENTATION_CANDIDATE
 ARCHITECTURE_ADMISSION_REQUESTED=true
-ARCHITECTURE_ADMISSION_DECIDED=false
-PORTFOLIO_ADMISSION_GRANTED=false
+ARCHITECTURE_ADMISSION_DECIDED=true
+ARCHITECTURE_ADMISSION=ACCEPTED_BOUNDED
+PORTFOLIO_ADMISSION_GRANTED=true
+PORTFOLIO_CLASSIFICATION=ADJACENT_CANDIDATE
 ARCHITECTURE_BOUNDARY_DECIDED=true
 ARCHITECTURE_INPUTS_RESOLVED=true
 CANONICAL_REMOTE_SOURCE_CONFIGURED=true
 DBOS_MAPPING_AUTHORIZED=false
-PR_READY_FOR_HUMAN_PORTFOLIO_DECISION=true
+PR_READY_FOR_HUMAN_PORTFOLIO_DECISION=false
 IMPLEMENTATION_REQUESTED=false
 RUNTIME_REQUESTED=false
 RELEASE_OR_DEPLOYMENT_REQUESTED=false
@@ -33,12 +35,12 @@ NEW_EVIDENCE_AUTHORITY_REQUESTED=false
 ```
 
 本提案向 Digital Biosphere Architecture（数字生物圈架构）驾驶舱报告
-`TITMAS Media Evidence v0.1.0` 的有界进展，并请求把它作为
-Application Profile（应用场景配置）和 Reference Implementation（参考实现）候选进入
-架构审查。
+`TITMAS Media Evidence v0.1.0` 的有界进展。Human Program Owner 已通过
+[`TITMAS-DEC-20260801-MEDIA-EVIDENCE-PORTFOLIO-001`](../decisions/titmas-media-evidence-portfolio-admission-decision-v0.1.md)
+将其作为 Application Profile（应用场景配置）和 Reference Implementation（参考实现）
+候选，以 `ADJACENT_CANDIDATE` 纳入项目组合。
 
-创建本提案、登记候选、加入待决策队列或打开 Draft PR 都不表示接纳、采用、集成、
-标准化、发布授权或生产就绪。
+该组合接纳只关闭 G0，不表示采用、集成、标准化、发布授权或生产就绪。
 
 ## 1. Main-constitution source lock（主宪法来源锁定）
 
@@ -134,20 +136,21 @@ PUBLIC_SURFACE_STATUS=LOCAL_SYNTHETIC_REFERENCE_IMPLEMENTATION
 该实时结果与 Stage 24 输入中的“尚未部署”预设相反，因此本提案保留可复核的线上事实，
 不把预设写成状态。公开页面存在仍不等于项目已经通过架构接纳或公开采用。
 
-## 3. Accepted candidate classification（已接受候选分类）
+## 3. Accepted portfolio classification（已接受项目组合分类）
 
 ```text
 PRIMARY_RESPONSIBILITY_DOMAIN=AIGC_MEDIA_REVIEW_GOVERNANCE_PROFILE
 PORTFOLIO_TIER_REQUESTED=ADJACENT_CANDIDATE
+PORTFOLIO_TIER_ACCEPTED=ADJACENT_CANDIDATE
 CORE_COMPONENT_REQUESTED=false
 DBOS_MODULE_REQUESTED=false
 SAEE_MODULE_REQUESTED=false
 STANDARD_REQUESTED=false
 ```
 
-人工边界决定接受 Media Evidence 作为面向广播电视和网络视听人工智能生成内容安全的
-应用场景配置与参考实现候选。它展示如何组合有来源、可质疑、可复核的记录，但不成为
-通用证据权威、运行平台、审核产品或认证系统。Portfolio Admission 仍未决定。
+人工项目组合决定接受 Media Evidence 作为面向广播电视和网络视听人工智能生成内容安全
+的应用场景配置与参考实现候选，并以 `ADJACENT_CANDIDATE` 纳入项目组合。它展示如何组合
+有来源、可质疑、可复核的记录，但不成为通用证据权威、运行平台、审核产品或认证系统。
 
 ## 4. Evidence-object ownership boundary decision（证据对象所有权边界决定）
 
@@ -169,8 +172,8 @@ Human architecture decision
    source、version、scope、failure 和 conflict；
 4. 本提案不修改 Media Evidence Schema，也不授权创建映射实现。
 
-该决定接受 candidate classification 和 domain-local object boundary，但没有授予 Portfolio
-Admission，也没有授权 DBOS mapping。
+边界决定接受 candidate classification 和 domain-local object boundary；后续项目组合决定
+授予有界 Portfolio Admission，但两项决定都没有授权 DBOS mapping。
 
 ## 5. Scope and non-goals（范围与非目标）
 
@@ -178,9 +181,9 @@ In scope：
 
 - source-pinned progress report；
 - 主宪法继承关系；
-- `ADJACENT_CANDIDATE` 候选登记；
+- `ADJACENT_CANDIDATE` 项目组合接纳与机器状态登记；
 - 与 DBA、DBOS、Agent Evidence 及外部媒体工具的边界审查；
-- G0、G1 和 G2 所需输入的识别。
+- G0、G1 和边界限定 G2 的结果记录。
 
 Out of scope：
 
@@ -216,10 +219,12 @@ WOULD_RECOMMEND_FINAL_ADOPTION=false
 - tag 后未提交的比赛材料不能混入 v0.1.0 实现证据；
 - 网站展示已存在，但 portfolio、dependency 和 proposal surface 尚未对齐。
 
-本提案把这些原因分解为可审查 gate，不把智能体建议当作架构决定。
+本提案把这些原因分解为可审查 gate，不把智能体建议当作架构决定。实际接纳以人工决定
+`TITMAS-DEC-20260801-MEDIA-EVIDENCE-PORTFOLIO-001` 为唯一依据。
 
-Stage 24 已建立远程规范来源、状态时效契约和人工边界决定。独立复核仍不得把这些输入
-修正解释为 Portfolio Admission 或 DBOS mapping authorization。
+Stage 24 已建立远程规范来源、状态时效契约和人工边界决定；在 Stage 25 人工项目组合决定
+作出前，独立复核不得把这些输入修正解释为 Portfolio Admission。Stage 25 决定仅授予有界
+组合接纳，仍不得解释为 DBOS mapping authorization。
 
 在 112 项实现测试、51 项驾驶舱测试、完整 conformance、远程 tag/status 契约和线上
 网站事实复核通过后，`qwen3.8-max-preview` 对“是否可交由人类作单独 Portfolio Decision”
@@ -230,9 +235,9 @@ Stage 24 已建立远程规范来源、状态时效契约和人工边界决定�
 
 | Gate | Current result | Required remediation |
 |---|---|---|
-| `G0` Portfolio Admission | `READY_FOR_HUMAN_PORTFOLIO_DECISION` | 输入已齐备；仍需单独 Human Portfolio Decision |
+| `G0` Portfolio Admission | `PASS_ADMITTED_AS_ADJACENT_CANDIDATE` | Human Portfolio Decision 已记录；只表示项目组合准入 |
 | `G1` Source-of-Truth | `PASS` | private canonical repository、remote tag、status source 和 freshness policy 已验证 |
-| `G2` Architecture Contract | `BOUNDARY_DECISION_ACCEPTED_MAPPING_NOT_AUTHORIZED` | domain-local ownership 已决定；Evidence Admission mapping 未授权 |
+| `G2` Architecture Contract | `PASS_BOUNDARY_ONLY_MAPPING_NOT_AUTHORIZED` | domain-local ownership 已决定；Evidence Admission mapping 未授权 |
 | `G3` Interface/Mapping | `NOT_ASSESSED` | 本提案不创建或授权 mapping |
 | `G4` Conformance | `NOT_ASSESSED` | 112 tests 不等于跨仓库 conformance |
 | `G5` Authorization | `NOT_AUTHORIZED` | 需要独立 Human architecture decision |
@@ -242,21 +247,22 @@ Stage 24 已建立远程规范来源、状态时效契约和人工边界决定�
 
 ## 9. Required human decisions（所需人工决定）
 
-1. 是否授予 Portfolio Admission；当前答案仍为 `NOT_DECIDED`；
-2. 是否在未来单独授权 Evidence Admission Contract 和 mapping work；当前答案为
+1. Portfolio Admission 已由人工决定授予，限定为 `ADJACENT_CANDIDATE`；
+2. 是否在未来单独授权 Evidence Admission Contract 和 mapping work；当前答案仍为
    `NOT_AUTHORIZED`。
 
 ## 10. Outcome record（结果记录）
 
 ```yaml
-review_result: INPUTS_RESOLVED_AWAITING_HUMAN_PORTFOLIO_DECISION
-decision_result: BOUNDARY_ACCEPTED_PORTFOLIO_NOT_DECIDED
-adopted_version: NOT_ASSIGNED
-implementation_status: EXISTING_LOCAL_REFERENCE_IMPLEMENTATION_NOT_ADMITTED
+review_result: ACCEPTED_BOUNDED
+decision_result: ADMITTED_AS_ADJACENT_CANDIDATE
+adopted_version: NOT_APPLICABLE
+implementation_status: EXISTING_REFERENCE_IMPLEMENTATION
 conformance_status: LOCAL_TESTS_PASS_CROSS_PROJECT_NOT_EXECUTED
-release_status: NOT_RELEASED_BY_THIS_PROPOSAL
+portfolio_status: ADMITTED_ADJACENT_CANDIDATE
+dbos_mapping_status: NOT_AUTHORIZED
+release_status: NOT_RELEASED_BY_THIS_DECISION
 known_limitations:
-  - PORTFOLIO_ADMISSION_NOT_GRANTED
   - DBOS_MAPPING_NOT_AUTHORIZED
   - POST_TAG_COMPETITION_ASSETS_OUTSIDE_V0_1_0
   - NO_EXTERNAL_ADOPTION_OR_CONFORMANCE_EVIDENCE

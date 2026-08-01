@@ -14,7 +14,7 @@ last_reviewed: 2026-08-01
 
 本队列暴露需要人工决定的项目群事项。进入队列不等于批准；Priority（优先级）不等于 Authorization（授权）；关闭事项必须保留结果、理由、范围和 `decided_by_ref`。
 
-合法状态：`OPEN`、`READY_FOR_REVIEW`、`BLOCKED_INPUT`、`DECIDED`、`DEFERRED`、`REJECTED`、`SUPERSEDED`。
+合法状态：`OPEN`、`READY_FOR_REVIEW`、`BLOCKED_INPUT`、`DECIDED`、`DEFERRED`、`REJECTED`、`SUPERSEDED`。项目组合准入可使用有界终态 `CLOSED_ACCEPTED_AS_ADJACENT_CANDIDATE`，但该终态只关闭 G0，不关闭 G3-G8。
 
 ## 2. Open Decisions（开放决策）
 
@@ -27,7 +27,6 @@ last_reviewed: 2026-08-01
 | `DQ-006` | `P2` | POP、ARO、Agent Evidence、Token Governor、ACP 哪些进入正式 Portfolio？ | `OPEN` | 每个项目的目的、Owner、canonical source、重复能力和接口边界 | 项目组合与依赖范围 | 本地发现、历史关联或相邻角色等于正式准入 |
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
-| `TITMAS-MEDIA-EVIDENCE-ADMISSION-D01` | `P1` | 是否把 TITMAS Media Evidence v0.1.0 作为应用场景配置与参考实现候选纳入项目组合？ | `READY_FOR_REVIEW` | `TITMAS-PROP-20260801-MEDIA-EVIDENCE-001`、private canonical source、status/freshness contract、`TITMAS-MEDIA-EVIDENCE-ADMISSION-BOUNDARY-D01` | 决定是否授予 Portfolio Admission；不授权 G3-G8、DBOS mapping 或实现 | 本地 112 tests、网站 Demo、tag、边界决定或 Draft PR 等于项目组合接纳、标准、DBOS Evidence authority、发布或采用 |
 | `TITMAS-FINAL-FORM-IMPLEMENTATION-D01` | `P0` | 是否根据已审计的采用矩阵授权有界 P0 最终形态实施？ | `READY_FOR_REVIEW` | D04 最终处置、Build-versus-Adopt 审计、组件矩阵、七层架构包、P0/P1/P2 Backlog、许可证与数据边界复核 | 决定是否进入分仓、分路径、可回滚的 P0 实施；P1/P2、生产账本、部署和付费仍需独立决定 | 审计完成自动等于实施、依赖安装、服务创建、迁移、部署、Paid Beta 或生产授权 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
@@ -56,6 +55,7 @@ last_reviewed: 2026-08-01
 | `ADR-037 / CR01-D02` | `ACCEPTED_DESIGN_ONLY_THEN_SUPERSEDED_BY_D04_CLOSURE`：保持历史 Receipt 不可变并设计异常清单与清洁账本 epoch | `decided_by_ref=zhangbin`；2026-07-31 | 当时只授权设计并要求下一决定为 `CR01-D03`；后续 D04 三次失败与 `ADR-038` 已关闭该实施路线，历史设计不得恢复为当前授权 |
 | `ADR-038 / TITMAS-D04-FINAL-CLOSURE-AND-ADOPTION-AUDIT-D01` | `ACCEPTED_AND_EXECUTED_GOVERNANCE_ONLY`：D04 在三次失败后永久关闭；PR #36 关闭未合并；旧账本永久归类为内部实验账本；未来生产账本采用 Paid Beta 后的独立 clean genesis；完成优先采用成熟上游的最终形态审计 | `decided_by_ref=zhangbin`；2026-08-01 | 只授权 DBA 最终处置和只读上游审计；不授权第四次 Canary、PR #36 重开/合并/移植、Gateway 修改、Migration 0005、生产账本、部署、购买、客户数据、付款或生产声明 |
 | `ADR-039 / DBA-VERIFIED-CORRECTION-AND-CONTEXT-CONTINUITY-D01` | `ACCEPTED_EXECUTION_AUTHORIZED`：采纳执行上下文结论连续性规则，并持续授权已核验问题的有界修正、测试、commit、push 与 Draft PR | `decided_by_ref=zhangbin`；2026-08-01 | 可在证明必要时修改 DBA、DBOS、SAEE、生产 Runtime 与其他 Owner 授权项目的 canonical repository；不授权 merge、tag、release、deployment、service restart、force push、破坏性删除、密钥／付款／合同动作或合规／生产声明 |
+| `TITMAS-MEDIA-EVIDENCE-ADMISSION-D01` | `CLOSED_ACCEPTED_AS_ADJACENT_CANDIDATE`：TITMAS Media Evidence v0.1.0 作为应用场景配置与参考实现候选纳入项目组合 | `TITMAS-DEC-20260801-MEDIA-EVIDENCE-PORTFOLIO-001`；`decided_by_ref=ZHANGBIN`；2026-08-01 | 只关闭 G0 项目组合准入；G1 为事实源通过，G2 仅为边界通过；G3-G8 仍分别保持未评估、未授权、未执行或未发布未采用；不授权 DBOS mapping、实现、标准、核心、生产或采用 |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 
@@ -78,7 +78,7 @@ release_authorized=true|false
 
 ```text
 DECISION_QUEUE_ACTIVE=true
-OPEN_DECISIONS=8
+OPEN_DECISIONS=7
 CONDITIONALLY_DECIDED_NOT_EFFECTIVE=0
 QUEUE_CREATES_AUTHORITY=false
 QUEUE_CREATES_PERMISSION=false
