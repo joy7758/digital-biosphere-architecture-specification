@@ -54,6 +54,7 @@ last_reviewed: 2026-08-01
 | `ADR-036 / TITMAS-AGENT-NATIVE-COMMERCIAL-MATURITY-PROGRAM-D01` | `ACCEPTED_EXECUTION_AUTHORIZED_WITH_HUMAN_GATES`：进入可恢复、Agent-first 商业技术成熟度计划 | `decided_by_ref=zhangbin`；2026-07-30 | 允许现有私有 Gateway 内的可逆多租户、Receipt、计量、账单预览、测试和现有百度云候选部署；不授权真实价格、付款、合同、法律发布、DNS、证书、正式 SLA、客户生产数据、认证或公共收费上线 |
 | `ADR-037 / CR01-D02` | `ACCEPTED_DESIGN_ONLY_THEN_SUPERSEDED_BY_D04_CLOSURE`：保持历史 Receipt 不可变并设计异常清单与清洁账本 epoch | `decided_by_ref=zhangbin`；2026-07-31 | 当时只授权设计并要求下一决定为 `CR01-D03`；后续 D04 三次失败与 `ADR-038` 已关闭该实施路线，历史设计不得恢复为当前授权 |
 | `ADR-038 / TITMAS-D04-FINAL-CLOSURE-AND-ADOPTION-AUDIT-D01` | `ACCEPTED_AND_EXECUTED_GOVERNANCE_ONLY`：D04 在三次失败后永久关闭；PR #36 关闭未合并；旧账本永久归类为内部实验账本；未来生产账本采用 Paid Beta 后的独立 clean genesis；完成优先采用成熟上游的最终形态审计 | `decided_by_ref=zhangbin`；2026-08-01 | 只授权 DBA 最终处置和只读上游审计；不授权第四次 Canary、PR #36 重开/合并/移植、Gateway 修改、Migration 0005、生产账本、部署、购买、客户数据、付款或生产声明 |
+| `ADR-039 / DBA-VERIFIED-CORRECTION-AND-CONTEXT-CONTINUITY-D01` | `ACCEPTED_EXECUTION_AUTHORIZED`：采纳执行上下文结论连续性规则，并持续授权已核验问题的有界修正、测试、commit、push 与 Draft PR | `decided_by_ref=zhangbin`；2026-08-01 | 可在证明必要时修改 DBA、DBOS、SAEE、生产 Runtime 与其他 Owner 授权项目的 canonical repository；不授权 merge、tag、release、deployment、service restart、force push、破坏性删除、密钥／付款／合同动作或合规／生产声明 |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 

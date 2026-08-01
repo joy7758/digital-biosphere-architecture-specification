@@ -284,6 +284,30 @@ The zero-active-key result is expected Stage 5.8 Lease cleanup. It is not a
 commercial credential test. Stage 5.8 threshold failures and unknowns are
 retained and are not re-executed merely to improve the result.
 
+## 11. Verified Correction and Conclusion Continuity Overlay
+
+Observed on 2026-08-01 under `ADR-039`:
+
+```text
+VERIFIED_CORRECTION_STANDING_AUTHORIZATION=true
+AUTHORIZED_ACTIONS=INSPECT_IMPLEMENT_TEST_COMMIT_PUSH_DRAFT_PR
+EXECUTION_CONTEXT_PROFILE_STATUS=ACCEPTED_DBA_GOVERNANCE_PROFILE
+TRUST_CONCLUSION_REQUIRES_EXECUTION_CONTEXT_BINDING=true
+EXECUTION_CONTEXT_CHANGE_REQUIRES_REASSESSMENT=true
+MISSING_CONTEXT_COMPARISON_FAILS_CLOSED=true
+DOWNSTREAM_REPOSITORY_CHANGE_REQUIRED=false
+RUNTIME_CHANGE_PERFORMED=false
+MERGE_AUTHORIZED=false
+RELEASE_OR_DEPLOYMENT_AUTHORIZED=false
+```
+
+The 2026-08-01 intelligence bundle is no longer record-only for this finding:
+the conclusion-continuity rule is part of the Program Charter and Integration
+Gates. No DBOS, SAEE or Runtime change was necessary to establish the governance
+rule. Future verified downstream defects may be corrected in their canonical
+repositories under the standing authorization while retaining separate source,
+test, commit and PR evidence.
+
 Current machine-readable program sources:
 
 - [`commercial-program-state.json`](commercial-program-state.json);

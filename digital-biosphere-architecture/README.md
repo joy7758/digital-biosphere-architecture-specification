@@ -278,12 +278,16 @@ E01 及其私有试用历史被保留，并重新分类为
 [`intelligence/README.md`](intelligence/README.md) 进入；机器入口是
 [`intelligence/agent-index.json`](intelligence/agent-index.json)。该目录只做带来源、带版本、
 可纠偏的 reference-only intake（仅引用情报收录），不创建 Capability、Permission、
-Evidence Truth、Runtime、Implementation Authorization 或 Release Authorization。
+Evidence Truth、Runtime、Implementation Authorization 或 Release Authorization。经一手来源
+核验且影响驾驶舱规则或机器入口的问题，必须按 [`ADR-039`](architecture/ADR-039-verified-correction-and-execution-context-continuity.md)
+进入 canonical surface 修正，不得只保留为情报记录。
 
 ```text
 EXTERNAL_INTELLIGENCE_ENTRY_DEFINED=true
 EXTERNAL_INTELLIGENCE_IS_REFERENCE_ONLY=true
 EXTERNAL_INTELLIGENCE_ADOPTION_AUTOMATIC=false
+VERIFIED_COCKPIT_CORRECTION_REQUIRED=true
+EXECUTION_CONTEXT_CHANGE_REQUIRES_REASSESSMENT=true
 ```
 
 旧工作目录材料已经完成选择性解析与合并。逐文件 SHA-256、分类和去向见

@@ -28,6 +28,7 @@ external_action_authorized: false
 
 | observed_at | bundle | status | 关键纠偏 |
 |---|---|---|---|
+| `2026-08-01` | [`2026-08-01/`](2026-08-01/) | `PRIMARY_SOURCE_RECONCILED_GOVERNANCE_PROFILE_ADOPTED` | `ADR-039` 已把执行上下文变化触发旧结论重评写入正式闸门；MCP `2026-07-28` 保持 stable；AI Act 适用性仍需结合 Digital Omnibus 与法律审查 |
 | `2026-07-29` | [`2026-07-29/`](2026-07-29/) | `REFERENCE_ONLY_PRIMARY_SOURCE_CORRECTED` | MCP `2026-07-28` 已稳定发布；Kimi K3 是自定义许可证开放权重，不得简化为无限制开源 |
 
 ```text

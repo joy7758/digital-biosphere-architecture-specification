@@ -47,6 +47,7 @@ risk_acceptance_authority_assigned: true
 | `R-029` | `HIGH` | 幂等重试导致重复使用量或账单计数 | Usage/Billing Ledger 和事务/idempotency tests 已实现；CR-01 完整 reconciliation 未执行 | tenant-operation-idempotency 唯一约束和原子事务；保留补偿记录；恢复后重新对账 | `MITIGATED_IMPLEMENTATION_CR01_RECONCILIATION_OPEN` |
 | `R-030` | `HIGH` | 原始客户对象、Token、Provider Key 或签名私钥进入数据库、日志或模型 | 商业 PostgreSQL 候选已部署；实现、备份 allowlist 和 disclosure scans 未发现持久化 raw payload 或 secret | 继续默认不持久化 payload；结构化 allowlist 日志；secret scan；停止条件 | `MITIGATED_IMPLEMENTATION_CONTINUOUS_RECHECK_REQUIRED` |
 | `R-031` | `HIGH` | 技术候选被误写成价格、付款、生产或成熟商业采用 | 所有 readiness 状态均为 false，付款与采用计数为 0 | 独立 machine state；Human gates；真实时间和外部采用不可伪造 | `MITIGATED_BY_STATE_MACHINE` |
+| `R-032` | `HIGH` | 模型或工件名称未变化时，Harness、提示、安全策略、网络、沙箱、凭据、工具、协议、Runtime、执行风格、监控或停止机制变化，旧信任／安全／可靠性／就绪结论仍被静默继承 | 2026-08-01 一手来源对账与 Execution-Context Trust Invalidation Profile | `ADR-039` 要求 gate 绑定 execution-context manifest；关键字段缺失或变化时 fail closed 到重评状态；不得自动保留 `PASS` | `MITIGATED_BY_GOVERNANCE_PROFILE_IMPLEMENTATION_RECHECK_REQUIRED` |
 | `R-CM-001` | `CRITICAL` | 历史合成 Receipt 缺少可验证公钥，使结构恢复被误写成完整恢复或通过账本完整性闸门 | 1,661 条已检查、1,659 签名有效、2 条无保留公钥、0 链失败；D04 第三次 Canary 仍失败 | D04 关闭失败并保留；禁止第四次重试及历史修改；旧账本仅供内部开发/研究，生产 clean genesis 延后到 Paid Beta 决策 | `D04_CLOSED_FAILED_RETAINED` |
 | `R-CM-002` | `HIGH` | 公开 `/api/v1/readiness` 的粗粒度 `backup_restore_ready=true` 与规范状态 `backup_restore_drill=false` 冲突，可能误导智能体把备份完整性或结构恢复误读为完整恢复 | 2026-07-31 live endpoint 与 DBA `commercial-readiness.json`、CR-01 报告交叉核验 | 若 P0 最终形态实施被另行授权，必须把 backup integrity、structural restore、Receipt integrity、full restore 与 RTO 分开并由证据状态驱动；在授权前不做 status-only 线上修改 | `ACTIVE_FINAL_FORM_CORRECTION_REQUIRED_IMPLEMENTATION_NOT_AUTHORIZED` |
 | `R-CM-003` | `HIGH` | 未来生产 signer、算法、不可导出边界和运营责任尚未决定 | D04 不再建设内部 signer/clean ledger；当前 `PRODUCTION_SIGNER_CREATED=false`、`KMS_PURCHASE_AUTHORIZED=false` | 延后到 Paid Beta 前的独立 signer 决策；禁止从旧账本或 PR #36 继承 Key、异常或实现 | `DEFERRED_TO_PAID_BETA_HUMAN_DECISION` |
@@ -94,8 +95,8 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=31
-ACTIVE_RISKS=29
+TRACKED_RISKS=32
+ACTIVE_RISKS=30
 RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=7
 BLOCKERS_CLEARED=9
