@@ -5,7 +5,7 @@ title_zh: 数字生物圈项目群集成闸门 v0.1
 status: fail-closed-gate-baseline
 automatic_approval: false
 runtime_effect: none
-last_reviewed: 2026-07-21
+last_reviewed: 2026-08-01
 ---
 
 # Digital Biosphere Program Integration Gates v0.1（数字生物圈项目群集成闸门 v0.1）
@@ -20,6 +20,9 @@ SPECIFICATION_NE_IMPLEMENTATION=true
 REFERENCE_NE_INTEGRATION=true
 PASS_REQUIRES_SCOPED_EVIDENCE=true
 DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
+TRUST_CONCLUSION_REQUIRES_EXECUTION_CONTEXT_BINDING=true
+EXECUTION_CONTEXT_CHANGE_REQUIRES_REASSESSMENT=true
+MISSING_CONTEXT_COMPARISON_FAILS_CLOSED=true
 ```
 
 ## 2. Standard Gates（标准闸门）
@@ -30,7 +33,7 @@ DOWNSTREAM_GATE_CANNOT_BYPASS_UPSTREAM_GATE=true
 | `G1` | Source Truth（事实来源） | 状态、Capability、Evidence 和 Release 有规范来源 | source path、branch、commit/version、freshness、冲突规则 | 状态保持 `UNKNOWN` / `NOT_ASSESSED` |
 | `G2` | Architecture Contract（架构契约） | Owner、对象、方向、权限和失败边界明确 | DBA specification、ADR、data contract、negative rules | 不得创建跨项目实施任务 |
 | `G3` | Implementation Mapping（实现映射） | 规范字段能映射到现有实现且没有重复权威 | 实现位置、版本、mapping、unsupported fields | 不得宣称集成可用 |
-| `G4` | Conformance（符合性） | 正例、负例、兼容性和 fail-closed 行为通过 | scoped test/validator result、fixture provenance、failure retention | 停止推进并保留失败 |
+| `G4` | Conformance（符合性） | 正例、负例、兼容性和 fail-closed 行为在精确执行上下文中通过 | scoped test/validator result、fixture provenance、execution-context manifest、failure retention | 停止推进并保留失败；上下文变化时重评 |
 | `G5` | Authorization（授权） | 具体变化有明确 decision 和 authorization reference | approved decision、scope、issuer、expiry/revocation | 不得执行、注册、激活或授予 Permission |
 | `G6` | Execution Evidence（执行证据） | 实际执行形成连续、有来源且不可静默删除的记录 | execution、evidence、verification、failure records | 不得进入评价或采用结论 |
 | `G7` | Evaluation and Adoption（评价与采纳） | SAEE 评价与人工决定分离且可追溯 | Fitness/Risk/Recommendation + Human Decision | 不得把 Recommendation 当作状态变化 |
@@ -72,6 +75,11 @@ integration_track=
 scope=
 evidence_refs=
 observed_version_or_commit=
+execution_context_manifest_ref=
+prior_context_manifest_digest=
+current_context_manifest_digest=
+changed_context_dimensions=
+conclusion_inheritance=UNCHANGED|REASSESSMENT_REQUIRED|HOLD_MISSING_EVIDENCE|REVIEW_REQUIRED|REVALIDATED_BOUNDED|INVALIDATED_FOR_DECLARED_SCOPE
 positive_checks=
 negative_checks=
 unknowns=
@@ -82,6 +90,10 @@ next_gate=
 ```
 
 本格式是文档契约，不创建 Gate Service（闸门服务）、API、Permission 或自动审批系统。
+
+同一模型名称、版本或工件 digest 不足以继承旧 gate 结论。若上下文 manifest 无法比较、
+关键字段为 `UNKNOWN`，或发生 `ADR-039` 所列实质变化，旧 `PASS` 必须 fail closed 到重评
+状态。重评状态本身不执行 Runtime 操作，也不撤销 Permission。
 
 ## 5. Gate Authority Boundary（闸门权力边界）
 

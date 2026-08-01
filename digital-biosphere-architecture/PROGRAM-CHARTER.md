@@ -6,11 +6,12 @@ status: accepted-owner-assigned
 decision_reference: architecture/ADR-020-release-preparation-owner-decisions.md
 strategic_amendment_reference: architecture/ADR-032-compositional-scale-over-unbounded-center.md
 attention_amendment_reference: architecture/ADR-033-attention-principle-for-dynamic-coordination.md
+conclusion_continuity_reference: architecture/ADR-039-verified-correction-and-execution-context-continuity.md
 program_authority_assigned: true
 program_owner_ref: zhangbin
 runtime_authority_created: false
 source_of_truth_policy: reference-only-aggregation
-last_reviewed: 2026-07-31
+last_reviewed: 2026-08-01
 ---
 
 # Digital Biosphere Program Governance Charter v0.1（数字生物圈项目群治理章程 v0.1）
@@ -162,6 +163,25 @@ child repository canonical evidence
 ```
 
 该优先级只解决 DBA 如何陈述项目状态，不允许子项目实现反向覆盖已采纳架构边界；冲突必须进入 Decision Queue 和 ADR 流程。
+
+### Trust Conclusion Continuity（信任结论连续性）
+
+Readiness、Reliability、Safety、Trust 或 Evaluation 结论必须绑定精确的受评执行上下文。
+模型名或工件 revision 未变化，不足以证明旧结论仍然可继承。Harness、提示与安全策略、
+网络、沙箱、凭据范围、工具与协议、Runtime、执行风格、监控和停止机制发生实质变化时，
+必须进入 `REASSESSMENT_REQUIRED`、`HOLD_MISSING_EVIDENCE` 或 `REVIEW_REQUIRED`，不得静默
+保留 `PASS`。
+
+结论重评只改变结论继承状态，不自动撤销 Permission、停止 Runtime、删除历史 Evidence 或
+替代 Human Decision。完整规则见 [`ADR-039`](architecture/ADR-039-verified-correction-and-execution-context-continuity.md)。
+
+```text
+TRUST_CONCLUSION_REQUIRES_EXECUTION_CONTEXT_BINDING=true
+EXECUTION_CONTEXT_CHANGE_REQUIRES_REASSESSMENT=true
+MISSING_CONTEXT_COMPARISON_FAILS_CLOSED=true
+REASSESSMENT_NE_PERMISSION_REVOCATION=true
+REASSESSMENT_NE_RUNTIME_STATE_CHANGE=true
+```
 
 ## 6. Program Operating Cycle（项目群运转周期）
 

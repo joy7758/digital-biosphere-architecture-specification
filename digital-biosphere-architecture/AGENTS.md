@@ -75,7 +75,22 @@ DBA_IS_RUNTIME=false
 - 状态快照必须带 `observed_at`、branch、commit/version 和 source reference；
 - `dirty_count`、文件数量、测试数量、Roadmap、Demo 或 Specification 不能自动证明成熟度；
 - `UNKNOWN`、`NOT_ASSESSED`、`STALE`、`CONFLICTED`、失败和拒绝结果必须保留；
-- 不得从 DBA 写入或覆盖 DBOS、SAEE、Pilot 或相邻仓库事实。
+- 不得通过 DBA 快照写入或覆盖 DBOS、SAEE、Pilot 或相邻仓库事实；经 `ADR-039` 授权且
+  已证明必要的跨仓库修正，必须在对应 canonical repository 中独立实施、验证、提交、
+  推送并创建 Draft PR，再由 DBA 引用其实际结果。
+
+## Verified Intelligence Correction Route（已核验情报修正路线）
+
+情报 intake 默认仍为 reference-only。若一手来源核验发现 DBA 规则、机器入口、状态投影
+或已采纳结论存在可修正错误，不得只归档问题：在 `ADR-039` 持续授权范围内，必须在同一
+有界工作中修正受影响的 canonical surface、执行正负验证、commit、push 并创建 Draft PR。
+
+跨项目问题先由 DBA 记录契约、Owner 和 gate；确有必要时可继续修改 DBOS、SAEE、生产
+Runtime 或其他经 Owner 授权的项目，但每个项目保留自己的 truth source、Git 证据和回滚
+边界。未证明必要性时，不为了扩大改动而触碰下游。
+
+该持续授权不包含 merge、tag、release、deployment、service restart、force push、
+破坏性删除、密钥操作、付款、合同或对外合规／生产声明；这些动作仍需对应的独立决定。
 
 ## Pre-development Agent Recommendation Gate（开发前智能体推荐闸门）
 
@@ -152,7 +167,8 @@ AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
 - Candidate ≠ Entity；Registration ≠ Activation；
 - Repository、Specification、Component、Agent、Runtime、Digital Entity 和 Digital Organism 相互不同；
 - 不在本仓库创建可重构的跨仓库 Runtime 或执行路径；
-- 不从 DBA 任务修改 DBOS、SAEE 或 Pilot；
+- 不通过 DBA 文件伪造 DBOS、SAEE 或 Pilot 状态；必要的跨仓库修正遵循 `ADR-039`，并在
+  对应 canonical repository 内独立实施和验证；
 - 未经明确授权，不 commit、tag、push、publish 或声称 adoption。
 
 ## Change Discipline（变更纪律）
