@@ -145,13 +145,6 @@ class GatewayService:
             raise RuntimeError("customer session is not active")
         return self.session.token
 
-    @property
-    def bound_address(self) -> tuple[str, int]:
-        if self._server is None:
-            raise RuntimeError("gateway is not started")
-        host, port = self._server.server_address[:2]
-        return str(host), int(port)
-
     def start(self) -> str:
         if self._server is not None:
             raise RuntimeError("gateway already started")
@@ -184,7 +177,7 @@ class GatewayService:
             daemon=True,
         )
         self._thread.start()
-        host, port = self.bound_address
+        host, port = self._server.server_address[:2]
         self.endpoint = f"http://{host}:{port}"
         session_materials = {
             "customer_session_id": self.session.customer_session_id,
