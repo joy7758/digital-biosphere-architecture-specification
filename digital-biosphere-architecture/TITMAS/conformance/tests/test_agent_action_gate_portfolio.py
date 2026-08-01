@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import hashlib
 import json
 from pathlib import Path
 import unittest
@@ -8,6 +9,7 @@ import unittest
 ROOT = Path(__file__).resolve().parents[3]
 PROJECTION = ROOT / "TITMAS/specifications/portfolio/agent-action-gate.json"
 PROPOSAL = ROOT / "TITMAS/specifications/proposals/titmas-agent-action-gate-admission-v0.1.md"
+CONSTITUTION = ROOT / "architecture/open-infrastructure-strategy-constitution.md"
 
 
 class AgentActionGatePortfolioTests(unittest.TestCase):
@@ -23,23 +25,40 @@ class AgentActionGatePortfolioTests(unittest.TestCase):
         self.assertEqual(self.projection["observed_branch"], "main")
         self.assertEqual(
             self.projection["observed_commit"],
-            "ec00633711067947949128816bc40526c2e43837",
+            "6f1c83bf87e6ee96a0eda281e1fa91b8f80a32e1",
         )
         self.assertEqual(
             self.projection["contract_ci"]["head_sha"],
-            self.projection["observed_commit"],
+            self.projection["implementation_pull_request"]["head_commit"],
         )
         self.assertEqual(self.projection["contract_ci"]["conclusion"], "SUCCESS")
+        self.assertEqual(len(self.projection["contract_ci"]["checks"]), 2)
+        self.assertTrue(
+            all(
+                check["conclusion"] == "SUCCESS"
+                for check in self.projection["contract_ci"]["checks"]
+            )
+        )
 
     def test_existence_and_management_do_not_elevate_authority(self) -> None:
         self.assertFalse(self.projection["portfolio_admission"])
         self.assertTrue(self.projection["dba_management_policy_granted"])
+        self.assertFalse(self.projection["github_principal_mapped"])
         self.assertFalse(self.projection["github_acl_changed"])
         self.assertFalse(self.projection["runtime_permission_created"])
         self.assertTrue(self.projection["implementation_started"])
         self.assertTrue(self.projection["action_gate_implemented"])
         self.assertTrue(self.projection["mcp_server_implemented"])
-        self.assertFalse(self.projection["live_agentteams_deployed"])
+        smoke = self.projection["native_agentteams_smoke"]
+        self.assertTrue(smoke["executed"])
+        self.assertFalse(smoke["autonomous_end_to_end_completed"])
+        self.assertFalse(smoke["per_worker_mcp_tool_acl_enforced"])
+        self.assertFalse(smoke["repository_skills_materialized"])
+        self.assertFalse(smoke["external_action_executed"])
+        self.assertFalse(smoke["persistent_deployment"])
+        self.assertFalse(smoke["production_deployment"])
+        self.assertTrue(smoke["temporary_stack_destroyed"])
+        self.assertTrue(smoke["temporary_state_removed"])
         self.assertFalse(self.projection["competition_submission"])
 
     def test_gates_preserve_reference_and_non_release_boundaries(self) -> None:
@@ -50,14 +69,51 @@ class AgentActionGatePortfolioTests(unittest.TestCase):
         self.assertIn("NOT_INDEPENDENT", gates["G4"])
         self.assertIn("RUNTIME_PERMISSION_NOT_CREATED", gates["G5"])
         self.assertIn("NO_MERGE", gates["G6"])
+        self.assertIn("NO_EXTERNAL_ACTION", gates["G6"])
+        self.assertIn("NOT_ASSESSED", gates["G7"])
+        self.assertIn("NO_HUMAN_ADOPTION_DECISION", gates["G7"])
+        self.assertIn("PRODUCT_NOT_RECOMMENDED", gates["G7"])
         self.assertEqual(gates["G8"], "NOT_RELEASED_NOT_ADOPTED_NOT_SUBMITTED")
 
     def test_proposal_is_review_ready_but_not_admitted(self) -> None:
         self.assertIn("status: READY_FOR_REVIEW", self.proposal)
         self.assertIn("PORTFOLIO_ADMISSION_GRANTED=false", self.proposal)
         self.assertIn("ACTION_GATE_REFERENCE_IMPLEMENTED=true", self.proposal)
-        self.assertIn("LIVE_AGENTTEAMS_DEPLOYED=false", self.proposal)
+        self.assertIn("AGENTTEAMS_NATIVE_LOCAL_SMOKE_EXECUTED=true", self.proposal)
+        self.assertIn("AGENTTEAMS_NATIVE_SMOKE_FULLY_AUTONOMOUS=false", self.proposal)
+        self.assertIn(
+            "AGENTTEAMS_PERSISTENT_OR_PRODUCTION_DEPLOYMENT=false",
+            self.proposal,
+        )
         self.assertIn("COMPETITION_SUBMITTED=false", self.proposal)
+
+    def test_agent_assistance_results_do_not_create_authority(self) -> None:
+        reviews = self.projection["agent_assistance_results"]
+        self.assertEqual(
+            {review["agent"] for review in reviews},
+            {"Qwen qwen3.8-max-preview", "Gemini 3.6 Flash", "Jules API"},
+        )
+        self.assertTrue(
+            all(review["authorization_effect"] == "NONE" for review in reviews)
+        )
+        self.assertEqual(
+            {review["agent"]: review["executed"] for review in reviews},
+            {
+                "Qwen qwen3.8-max-preview": True,
+                "Gemini 3.6 Flash": True,
+                "Jules API": False,
+            },
+        )
+        self.assertEqual(self.projection["product_recommendation"], "NOT_RECOMMENDED")
+
+    def test_constitution_pin_matches_current_cockpit_content(self) -> None:
+        lock = self.projection["constitution_lock"]
+        self.assertTrue(lock["content_matches_observed_main"])
+        self.assertFalse(lock["child_second_constitution_created"])
+        self.assertEqual(
+            hashlib.sha256(CONSTITUTION.read_bytes()).hexdigest(),
+            lock["sha256"],
+        )
 
 
 if __name__ == "__main__":
