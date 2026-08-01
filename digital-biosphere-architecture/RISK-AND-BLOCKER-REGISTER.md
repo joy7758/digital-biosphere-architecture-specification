@@ -3,7 +3,7 @@ document_id: DBA-RISK-BLOCKER-REGISTER-0.1
 title: Digital Biosphere Program Risk and Blocker Register v0.1
 title_zh: 数字生物圈项目群风险与阻塞台账 v0.1
 status: active-risk-register
-as_of_date: 2026-07-25
+as_of_date: 2026-07-27
 risk_acceptance_authority_assigned: true
 ---
 
@@ -40,7 +40,7 @@ risk_acceptance_authority_assigned: true
 | `R-018` | `HIGH` | DBOS 保持 private，使 AI agent 能理解 TMAI 但不能自主获取、运行或复用核心存在基础设施 | exact public-safe wheel 已作为 GitHub Release asset 公开并通过匿名 hash 和隔离安装复验 | 整仓继续 private；只使用有界包并保持 Runtime/Permission 非声明 | `MITIGATED_BY_PUBLIC_SAFE_WHEEL_RELEASE_DBOS_PRIVATE` |
 | `R-019` | `HIGH` | 直接公开 DBOS 整仓会披露本机路径和未纳入发布的项目资产清单 | `main@cd3f867` 有 48 个跟踪文件包含 `/Users/...`；0 Gitleaks findings 不能消除该 metadata exposure（元数据暴露） | 禁止整仓公开；使用不含 registry/evidence/reports/paths 的 39-file public-safe wheel | `WHOLE_REPOSITORY_PUBLIC_FAIL_CLOSED` |
 | `R-020` | `CRITICAL` | OpenTelemetry Trace/Metric/Log 或 Collector receipt 被直接升级为 DBOS Evidence、Verification 或 Truth | OTLP 明确允许 partial success、drop、retry 和 duplicate；sampling 也可能造成不完整 | 强制 Telemetry→Evidence admission、dedupe、provenance、delivery state 和独立 Verification Object | `MITIGATED_BY_SPECIFICATION_IMPLEMENTATION_PENDING` |
-| `R-021` | `HIGH` | GenAI/MCP Semantic Conventions 仍为 Development 或缺少稳定 Schema URL，自动跟随上游会破坏长期合同 | 2026-07-22 `semantic-conventions-genai@2e994c6...` README 为 `Schema URL: TODO` | DQ-023 pinned mapping 已采纳；DQ-018 authorized offline subset 已 fail-closed 验证；升级与部署仍须独立审查 | `MITIGATED_IN_OFFLINE_SLICE_DEPLOYMENT_REVALIDATION_REQUIRED` |
+| `R-021` | `HIGH` | GenAI/MCP Semantic Conventions 仍为 Development 或缺少稳定 Schema URL，自动跟随上游会破坏长期合同 | 2026-07-22 pinned `semantic-conventions-genai@2e994c6...` 与 2026-07-27 current `main@64cfaa6...` README 均为 `Schema URL: TODO`；所称 `https://opentelemetry.io/schemas/gen-ai/1.42.0` 当前返回 HTTP 404 | DQ-023 pinned mapping 已采纳；DQ-018 authorized offline subset 已 fail-closed 验证；不得从搜索摘要猜测 Schema URL，升级与部署仍须独立审查 | `MITIGATED_IN_OFFLINE_SLICE_DEPLOYMENT_REVALIDATION_REQUIRED` |
 | `R-022` | `HIGH` | Sampling、高基数、敏感 prompt/tool payload、queue overflow 或 Collector 故障导致证据链缺失、泄密或成本失控 | OTel 官方明确要求数据最小化、敏感属性处理、最小权限和资源保护 | evidence-critical 事件走非概率 DBOS 路径；默认关闭内容采集；限流、redaction、自观测和故障测试 | `PRODUCTION_CONTROLS_DEFINED_NOT_IMPLEMENTED` |
 | `R-023` | `HIGH` | Production architecture、SLO targets 或模型推荐被误写成生产实现或 `PRODUCTION_READY` | 当前只有 DBA 规范；Collector、endpoint、真实 Pilot 和生产授权均不存在 | 固定 `PR-G0` 至 `PR-G7`、deployment-specific claim 和 `PRODUCTION_READY=false` | `MITIGATED_BY_GATE_BASELINE` |
 | `R-024` | `HIGH` | DBOS/SAEE 本地 remote-tracking refs、远程 `main`、开发分支和发布制品来源被合并成一个“当前实现” | `PR-G1` 观察到 DBOS 本地 `main@0caa2c4` vs remote `main@cd3f867`；SAEE development `697ae208`、滞后本地 `origin/main@e503c221` 和另行检出的 remote public `main@2173c25` 是不同观察面 | 每次映射记录 exact remote commit、development observation、artifact source 和用途；禁止跨表面外推 | `MITIGATED_BY_EXPLICIT_SOURCE_LAYERS_REFRESH_REQUIRED` |
@@ -71,6 +71,10 @@ risk_acceptance_authority_assigned: true
 | `R-049` | `HIGH` | TITMAS 开发者社区在后续建设中漂移为普通 Agent 社区、Agent Platform、基金会、第二治理层，或把 OpenTelemetry 参考误写成组织／运行采用 | 当前已出现“Community 是否等于 Foundation”及首次接触名称不清的认知偏差；TITMAS Authority Freeze 与 Interface 仍未采纳 | `ADR-029` 固定 Infrastructure 名称；C1 Contributor Guide、机器入口、Proposal/成熟度/Workstream 模板和本地首次贡献候选把 Review/Decision/Implementation/External Action 分开；每个社区 gate 重跑防跑偏检查 | `MITIGATED_BY_C0_C1_GOVERNANCE_RECHECK_REQUIRED_AT_EACH_COMMUNITY_GATE` |
 | `R-050` | `HIGH` | 以智能体为首要客户和贡献参与者时，自动生成内容可能隐藏来源、形成低质量批量贡献，或被误写成 Member、Maintainer、Architecture Decision、Authority 或独立验证 | 当前 C1 只有本地贡献入口，没有真实贡献者、角色、安全接收路径或公开渠道；OpenTelemetry 的当前贡献资料也强调 AI 参与者应理解、审查并对生成内容负责 | `CONTRIBUTING.md` 强制 `contributor_type`、`human_accountability_ref`、agent/tool、source、verification 和 unknown 披露；角色模型禁止 agent self-approval；行为规范候选限制批量不可验证输出；重大变化保留人工 DBA Decision | `CONTROL_DEFINED_PUBLIC_ENFORCEMENT_NOT_ESTABLISHED` |
 | `R-051` | `HIGH` | 备案中域名、GitHub slug 或本地网站源码被提前写成 live domain、已创建 Organization、已迁移仓库或已建立社区 | `titmas.cn` 已选择但尚在备案；`titmas-cn` public API 只读检查为 404；当前 live site 仍为 `redcrag.cn` | `ADR-030` 分开 selected／live、slug／organization、source／deployment、organization／repository transfer；cutover 需要 filing、DNS、TLS、health、machine entry 和 rollback 直接证据 | `CONTROL_DEFINED_PRELAUNCH_SOURCE_PREPARATION_ONLY` |
+| `R-052` | `CRITICAL` | 模型、数据集、Skill、工具、依赖、凭据、评测隔离或运行环境发生重大变化后，既有 Agent readiness／reliability／trust 结论仍被自动继承，或把重评估建议直接升级为停机、撤权、合规或 Truth | Hugging Face 2026-07-16 与 OpenAI 2026-07-21 官方说明共同确认自主评测智能体越界进入 Hugging Face；两份说明对初始技术路径仍有差异；Digital Biosphere 没有因此产生资产受影响证据 | 登记 `T2+T3+T4` trust change；采用只读 proposed Capability Provenance Reassessment Profile，变化触发 `REASSESSMENT_REQUIRED`、证据缺失／官方叙述冲突触发 `HOLD_MISSING_EVIDENCE`；禁止跨版本继承和自动 Permission／Authority／Execution effect | `CONTROL_PROPOSED_REFERENCE_ONLY_PROFILE_NOT_ADOPTED_NO_RUNTIME_EFFECT` |
+| `R-053` | `CRITICAL` | 单一 LLM monitor 的 `no alert`、低 suspicion score、自述或 chain-of-thought 被提升为安全、授权执行、证据充分或 gate closure；未送审动作和监控器版本变化被静默忽略 | AISI 2026-07-21 报告受测模型的自述／思维链不足；2026-07-23 对 Google DeepMind 与 Anthropic 的具体 monitor red team 均发现绕过路径和开放问题 | proposed Monitor Evidence Profile 强制 exact model/prompt/policy/threshold、routing coverage、not-reviewed actions、known bypass、red-team 与 independent verification；未知／漏检风险 fail closed；不修改 SAEE | `CONTROL_PROPOSED_MONITOR_IS_EVIDENCE_NOT_AUTHORITY_PROFILE_NOT_ADOPTED` |
+| `R-054` | `HIGH` | MCP `2026-07-28` release candidate 被提前当作 final/adopted contract，触发无授权重构；或 stateless session、explicit handle、trace、cache、OAuth、Tasks 与 Schema 变化被提升为 Identity、Capability、Permission 或完整 Evidence | MCP 官方 RC 于 2026-05-21 锁定并计划 2026-07-28 发布 final；截至 2026-07-25 final 未核验，且官方明确包含 breaking changes | RC-only Trust Impact Matrix 固定 14 项影响和 release-day verification gate；final 前不 adoption、不改 Runtime；final 后核验 exact spec/changelog/SDK/conformance/extension delta | `CONTROL_DEFINED_RC_ONLY_FINAL_RECHECK_REQUIRED_NO_IMPLEMENTATION` |
+| `R-055` | `CRITICAL` | Agent trace、sandbox 标签或事后异常日志被写成评测运行方持续掌握控制；detection、operator awareness、attribution、containment 与 notification 的时间差被隐藏，导致失控评测仍继承“受控”结论 | OpenAI 2026-07-21 初步说明确认内部网络安全评测突破受限网络路径并进入 Hugging Face，同时称内部发现异常；Reuters 2026-07-24 报道活动持续数日且延迟归因，OpenAI 称报道存在若干不准确；最终联合技术报告仍不存在 | proposed Evaluation Operator Control and Third-Party Claim Evidence Matrix 分开 operator、sandbox/egress、external target、detection、awareness、attribution、containment、notification 与 conflicting timeline；冲突／未知 fail closed；不修改 SAEE／DBOS | `CONTROL_PROPOSED_OPERATOR_CONTROL_EVIDENCE_PROFILE_NOT_ADOPTED_FINAL_ACCOUNT_PENDING` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -118,8 +122,8 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=51
-ACTIVE_RISKS=49
+TRACKED_RISKS=52
+ACTIVE_RISKS=50
 RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=10
 BLOCKERS_CLEARED=8

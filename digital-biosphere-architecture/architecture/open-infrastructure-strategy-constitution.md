@@ -1,6 +1,6 @@
-# Digital Biosphere Open Infrastructure Strategy Constitution v0.3
+# Digital Biosphere Open Infrastructure Strategy Constitution v0.4
 
-中文：数字生物圈开放基础设施战略宪法 v0.3
+中文：数字生物圈开放基础设施战略宪法 v0.4
 
 Status: `ADOPTED_STRATEGIC_CONSTITUTION`
 
@@ -12,6 +12,7 @@ Amendment references:
 
 - [`ADR-029`](ADR-029-titmas-infrastructure-developer-community-direction.md)
 - [`ADR-032`](ADR-032-compositional-scale-over-unbounded-center.md)
+- [`ADR-033`](ADR-033-attention-principle-for-dynamic-coordination.md)
 
 ## Constitutional Position
 
@@ -203,6 +204,90 @@ Authority、Permission、Decision、Truth Ownership 或全局控制权。协调�
 详细决策和替代方案见
 [`ADR-032`](ADR-032-compositional-scale-over-unbounded-center.md)。
 
+## Principle 5B: Attention as Dynamic, Decentralized Allocation
+
+Digital Biosphere 吸收 Transformer 中 dynamic attention allocation（动态注意力分配）
+的思想作为架构启发，但不声明与 Transformer 的数学机制、训练过程、自注意力矩阵或
+具体 Runtime 实现等价。
+
+> Intelligence does not emerge from a single dominant entity, but from dynamic
+> attention allocation and evidence-driven coordination among many simple
+> entities.
+
+中文：
+
+> 智能不是来源于单一强大主体，而是在大量简单主体之间通过动态注意力分配和证据驱动协作产生。
+
+在 Digital Biosphere 中，智能不依赖单一超级主体的无限扩大，而来自大量职责简单、
+边界受限主体之间关系权重的动态调整。Attention（注意力）不是中心控制机制，也不是
+Authority、Permission、Decision 或 Truth 的来源；它是根据任务、环境状态和反馈历史，
+对有限系统资源及候选参与关系进行动态分配的逻辑机制。
+
+### Participant Selection
+
+每个 Agent 或 Digital Entity 是否进入候选协作集合，应至少考虑：
+
+- 当前任务需求和上下文相关性；
+- 已声明且适用于当前范围的 Capability 匹配；
+- 带来源、可质疑且有时间边界的历史信誉或可靠性信号；
+- Evidence 的来源、质量、完整性、适用范围和已知限制；
+- 当前环境状态、资源约束和既往反馈历史。
+
+无关主体不应持续占用系统资源。选择结果必须是有范围、可解释、可复核、可撤销且会
+过期的 candidate participation proposal（候选参与建议），而不是执行命令、权限授予
+或不可申诉的全局排名。Reputation（信誉）不等于 Identity、Capability、Permission
+或 Truth。
+
+### Dynamic Organization
+
+主体连接不应固定化。数字主体网络可以把生物神经系统作为有限类比：根据任务目标和
+环境刺激临时调整关系权重，形成有范围的协作结构；任务完成、条件变化或授权失效后，
+关系可以解散、降级并重新组合。
+
+该类比不声称 Digital Biosphere 已实现神经系统、意识、Transformer 网络或自动组织
+Runtime。动态拓扑也不能绕过 DBOS 的 Identity、Capability、Lifecycle、Authorization、
+Execution、Evidence 和 Verification 边界。
+
+### Attention, Coordination and Evidence
+
+在逻辑架构中：
+
+- Attention Layer（注意力层）回答“谁与当前任务相关、谁应进入候选参与集合”；
+- Coordination Layer（协调层）在适用授权和边界内形成临时协作；
+- Evidence Layer（证据层）回答“相关主张由什么材料支持、在什么范围内可被信任”；
+- Memory / Evolution Layer（记忆／演化层）保留有治理的历史与评价输入，并可在后续
+  选择中提供反馈，但不能成为隐藏的自动控制器。
+
+```text
+Agent Layer
+  ↓ task demand + environment context
+Attention Layer
+  ↓ bounded, explainable, expiring participation proposal
+Coordination Layer
+  ↓ authorized, scoped, temporary collaboration
+Evidence Layer
+  ↓ admitted and verified records + limitations + unknowns
+Memory / Evolution Layer
+  ↺ governed feedback history to Attention Layer
+```
+
+箭头表示 conceptual handoff（概念交接），不表示中央控制、代码依赖、Runtime 调用、
+Authority 继承或 Permission 流转。Attention 决定候选“谁参与”；实际参与仍需适用授权。
+Evidence Layer 决定主张“凭什么在有界范围内可信”；Evidence 与 Verification 仍不等于
+绝对 Truth。二者共同形成数字生态的 cognition and immune support（认知与免疫支撑），
+但不构成自动判断、自动隔离或自动淘汰机制。
+
+Agent Evidence Architecture / Agent Evidence 与 EEOAP 可以为执行问责、来源和完整性
+提供 candidate material（候选材料）及有范围的验证结果；这些材料仍须经过适用的
+DBOS Evidence Admission 和 Verification，不能直接成为 canonical Evidence、Truth、
+Permission 或 Certification。SAEE 可以只读消费已接纳的 Evidence / Verification，
+形成 method-bound（方法有界）的可靠性、风险、稳定性和演化建议，并为未来注意力
+分配提供有来源的反馈输入；SAEE 不因此成为 Attention controller（注意力控制器），
+也不得写回 DBOS 或自动实施 Recommendation。
+
+详细决策和非效果见
+[`ADR-033`](ADR-033-attention-principle-for-dynamic-coordination.md)。
+
 ## Principle 6: Applications Grow on DBOS
 
 生态关系为：
@@ -297,6 +382,11 @@ DBOS 不得被重新定位为：
 10. 它是否试图把智能、控制、数据、执行或治理集中到一个无限强中心？
 11. 它能否拆分为边界受限、可替换、可审计的简单主体与显式组合契约？
 12. 组合是否会隐式产生 Authority、Permission、Decision、Truth Ownership 或全局控制？
+13. Attention 的输入、权重、理由、范围、版本、过期和撤销是否可追溯？
+14. 历史信誉、Evidence quality 或模型评分是否被错误提升为身份、权限、Truth 或命令？
+15. 临时协作关系是否能在任务完成、条件变化或授权失效后安全解散和重新组合？
+16. Agent Evidence、EEOAP 与 SAEE 的交接是否保留 candidate material、Evidence
+    Admission、Verification、Evaluation 和 Human Decision 的责任分离？
 
 任一关键问题无法回答时，提案保持 `REVIEW_REQUIRED`，不得进入 DBOS 核心或被宣称为已采用战略。
 
@@ -356,6 +446,14 @@ COMPOSITION_NE_AUTHORITY_AGGREGATION=true
 COORDINATION_NE_UNBOUNDED_CENTER=true
 COVERAGE_NE_CORRECTNESS_OR_TRUTH=true
 EMERGENT_CAPABILITY_NE_AUTOMATIC_PERMISSION=true
+ATTENTION_IS_DYNAMIC_RESOURCE_ALLOCATION=true
+ATTENTION_NE_CENTRAL_CONTROL=true
+ATTENTION_NE_AUTHORITY_OR_PERMISSION=true
+ATTENTION_NE_EVIDENCE_OR_TRUTH=true
+ATTENTION_OUTPUT_IS_BOUNDED_PARTICIPATION_PROPOSAL=true
+ATTENTION_RELATIONSHIPS_ARE_TASK_SCOPED_AND_EXPIRING=true
+SAEE_NE_ATTENTION_CONTROLLER=true
+EEOAP_OR_AGENT_EVIDENCE_NE_CANONICAL_TRUTH_AUTHORITY=true
 AUTOMATIC_AUTHORITY_EFFECT=NONE
 ```
 
@@ -368,4 +466,10 @@ AUTOMATIC_AUTHORITY_EFFECT=NONE
 - TITMAS Infrastructure Developer Community 已经建立，或已存在 SIG、Maintainer、
   公开贡献渠道、组织账号、基金会或独立 Authority；
 - 开放基础设施自动满足安全、合规、审计或认证要求；
+- Attention Layer、Coordination Layer、Memory / Evolution feedback loop、动态路由器
+  或中央调度服务已经实现、部署或通过符合性验证；
+- Attention Principle 与 Transformer 数学机制、生物神经系统、意识或数字免疫
+  Runtime 等价；
+- Agent Evidence、EEOAP 与 SAEE 已形成生产集成，或其输出已经自动成为 DBOS
+  canonical Evidence、Verification、Permission、Decision 或 Truth；
 - 任何 Agent、Runtime、Entity、Capability、Permission 或 Digital Organism 已被创建。

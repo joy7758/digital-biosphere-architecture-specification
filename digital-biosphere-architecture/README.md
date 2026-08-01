@@ -110,6 +110,9 @@ registration_authorized: false
 entity_registered: false
 open_infrastructure_strategy_constitution_defined: true
 open_infrastructure_strategy_implemented: false
+attention_principle_defined: true
+attention_layer_implemented: false
+coordination_layer_implemented: false
 commercial_offering_created: false
 developer_ecosystem_created: false
 titmas_infrastructure_developer_community_strategy_defined: true
@@ -304,6 +307,7 @@ Verification 和 Evolution Interface 形成可版本化 Protocol、Schema、SDK 
 | [`DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md`](DBOS-PUBLIC-VISIBILITY-PREFLIGHT.md) | DBOS 整仓 Gitleaks、路径披露、GitHub 安全面和既有私有试用边界复核 | `WHOLE_REPO_PUBLIC_FAIL_PUBLIC_SAFE_WHEEL_PASS` |
 | [`DBOS-PUBLIC-PACKAGE-READINESS.md`](DBOS-PUBLIC-PACKAGE-READINESS.md) | DBOS 整仓路径披露风险、public-safe wheel 修复、扫描与隔离安装复核 | `PUBLIC_SAFE_WHEEL_PUBLISHED_BY_ADR_022` |
 | [`DBOS-PUBLIC-PACKAGE-MANIFEST-v0.1.json`](DBOS-PUBLIC-PACKAGE-MANIFEST-v0.1.json) | exact DBOS wheel 的 source、hash、下载、内容排除、验证与非效果 | `PUBLISHED` |
+| [`DBA-INTELLIGENCE-BRIEF-2026-07-27.md`](DBA-INTELLIGENCE-BRIEF-2026-07-27.md) | OpenTelemetry GenAI Schema URL、Kimi K3 发布日与 MCP final 前置核验的主来源纠偏 | `REFERENCE_ONLY_PRIMARY_SOURCE_CORRECTED` |
 | [`EXTERNAL-DEVELOPER-TRIAL-PLAN.md`](EXTERNAL-DEVELOPER-TRIAL-PLAN.md) | 历史 3–5 名人类开发者路径 | `SUPERSEDED_PRIMARY_GATE_OPTIONAL_STUDY` |
 | [`EXTERNAL-DEVELOPER-TRIAL-PACKAGE-v0.1.json`](EXTERNAL-DEVELOPER-TRIAL-PACKAGE-v0.1.json) | `TMAI-DP-v0.1-TRIAL-20260721-001` 机器可读来源、命令、隐私和授权边界 | `FROZEN_NOT_DISTRIBUTION_READY` |
 | [`EXTERNAL-DEVELOPER-TRIAL-GUIDE.md`](EXTERNAL-DEVELOPER-TRIAL-GUIDE.md) | 外部开发者本地试用、安全、隐私和清理边界 | `PREPARED_NOT_EXECUTED` |
@@ -497,11 +501,45 @@ SAEE governs evolution.
 DBOS != SAEE.
 ```
 
+### Attention Principle（注意力原则）
+
+> Intelligence does not emerge from a single dominant entity, but from dynamic
+> attention allocation and evidence-driven coordination among many simple
+> entities.
+
+中文：
+
+> 智能不是来源于单一强大主体，而是在大量简单主体之间通过动态注意力分配和证据驱动协作产生。
+
+Attention（注意力）在本项目中是任务、环境和反馈条件下的动态资源分配与候选参与
+选择原则，不是中央控制器。主体连接按任务临时形成，完成后可以解散、降级和重新组合。
+
+```text
+Agent Layer
+  ↓
+Attention Layer
+  ↓
+Coordination Layer
+  ↓
+Evidence Layer
+  ↓
+Memory / Evolution Layer
+  ↺ governed feedback to Attention Layer
+```
+
+Attention 回答候选“谁应参与”，实际参与仍需适用授权；Evidence Layer 回答主张
+“凭什么在有界范围内可信”，但 Evidence 不等于 Truth。Agent Evidence / EEOAP
+可以提供候选问责材料，SAEE 可以提供只读、方法有界的评价反馈；三者都不能成为
+Permission、Decision、Truth 或自动控制来源。完整原则见
+[`Constitution v0.4`](architecture/open-infrastructure-strategy-constitution.md) 和
+[`ADR-033`](architecture/ADR-033-attention-principle-for-dynamic-coordination.md)。
+
 战略治理入口：
 
 | 文档 | 作用 |
 |---|---|
 | [`architecture/open-infrastructure-strategy-constitution.md`](architecture/open-infrastructure-strategy-constitution.md) | 最高开放基础设施战略宪法与 proposal gate |
+| [`architecture/titmas-digital-immune-constitution-v1.0.md`](architecture/titmas-digital-immune-constitution-v1.0.md) | 数字免疫方向的十项底层原则、五个概念面、现有项目交叉映射与审查闸门；`DEVELOPMENT_CONSTITUTION_CANDIDATE`，未采纳、未冻结、无实现效果 |
 | [`architecture/developer-ecosystem-strategy.md`](architecture/developer-ecosystem-strategy.md) | Developer、SDK、Protocol、Community 与 Marketplace 路线 |
 | [`architecture/commercialization-strategy.md`](architecture/commercialization-strategy.md) | Open Core、Enterprise Edition、Industry Solutions 与 Certification 边界 |
 | [`architecture/ADR-015-open-infrastructure-strategy.md`](architecture/ADR-015-open-infrastructure-strategy.md) | 选择开放基础设施路线的架构决策 |
@@ -512,6 +550,7 @@ DBOS != SAEE.
 | [`architecture/ADR-029-titmas-infrastructure-developer-community-direction.md`](architecture/ADR-029-titmas-infrastructure-developer-community-direction.md) | 采纳基础设施开发者社区方向；不宣布社区、基金会、SIG、仓库或独立 Authority 已建立 |
 | [`architecture/ADR-030-titmas-public-front-door-and-github-slug.md`](architecture/ADR-030-titmas-public-front-door-and-github-slug.md) | 选择 `titmas.cn` 与 `titmas-cn`；只授权备案期内的源码和信息架构准备 |
 | [`architecture/ADR-032-compositional-scale-over-unbounded-center.md`](architecture/ADR-032-compositional-scale-over-unbounded-center.md) | 采纳组合式规模原则：以大量简单、受限、可组合主体形成覆盖能力，同时禁止隐式权力聚合和无限强中心 |
+| [`architecture/ADR-033-attention-principle-for-dynamic-coordination.md`](architecture/ADR-033-attention-principle-for-dynamic-coordination.md) | 采纳注意力原则：按任务、环境与证据动态选择候选参与者，形成可撤销、会过期且非中央控制的临时协作 |
 | [`architecture/titmas-public-front-door-migration-plan-v0.1.md`](architecture/titmas-public-front-door-migration-plan-v0.1.md) | 网站、DNS/TLS、canonical cutover、redirect 与 GitHub 的分阶段迁移闸门 |
 | [`architecture/titmas-github-organization-information-architecture-v0.1.md`](architecture/titmas-github-organization-information-architecture-v0.1.md) | `titmas-cn` profile、仓库导航、准入、角色与创建前检查单 |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | 本地已准备、尚未对外授权的贡献者入口；区分人类、受治理智能体、Review、Decision 与 Implementation |
@@ -1255,6 +1294,7 @@ Evidence Reference ≠ Canonical Evidence Object ≠ Truth
 | [`architecture/titmas-infrastructure-developer-community-strategy-v0.1.md`](architecture/titmas-infrastructure-developer-community-strategy-v0.1.md) | TITMAS Infrastructure Developer Community 的名称、首次接触说明、OpenTelemetry 参考、贡献路径、成熟度和防跑偏检查 | “第一次接触 TITMAS 时它解决什么问题，我能贡献什么，当前社区和实现真实状态是什么？” |
 | [`architecture/ADR-029-titmas-infrastructure-developer-community-direction.md`](architecture/ADR-029-titmas-infrastructure-developer-community-direction.md) | 基础设施开发者社区方向的采纳范围与非授权 | “开发者社区方向是否已采纳？它是否意味着社区、基金会、SIG 或仓库已经成立？” |
 | [`architecture/ADR-032-compositional-scale-over-unbounded-center.md`](architecture/ADR-032-compositional-scale-over-unbounded-center.md) | 组合式规模、有限治理、组合级风险和非权力聚合边界 | “为什么不建设无限强中心，简单主体如何组合而不自动获得权力或 Truth？” |
+| [`architecture/ADR-033-attention-principle-for-dynamic-coordination.md`](architecture/ADR-033-attention-principle-for-dynamic-coordination.md) | 动态注意力、临时协作、证据驱动反馈与非中央控制边界 | “如何按任务动态选择参与者，同时避免 Attention、信誉或 Evidence quality 变成隐藏 Authority？” |
 | [`CONTRIBUTING.md`](CONTRIBUTING.md) | 人类和受治理智能体的首次贡献路径、披露、审查、行为和安全边界 | “我现在可以准备什么，谁负责审查，哪些结果不能自动产生？” |
 | [`TITMAS-CONTRIBUTOR-ENTRY-v0.1.json`](TITMAS-CONTRIBUTOR-ENTRY-v0.1.json) | 机器可读名称、目的、状态、贡献表面、文档引用、限制和 false effects | “智能体如何在不猜测当前状态的情况下发现 TITMAS 贡献入口？” |
 | [`TITMAS-CONTRIBUTOR-ENTRY-PREPARATION-REPORT.md`](TITMAS-CONTRIBUTOR-ENTRY-PREPARATION-REPORT.md) | C1 文件、Schema/链接/边界验证与下一闸门 | “贡献入口准备到了什么程度，哪些权限抬升负例已被拒绝？” |

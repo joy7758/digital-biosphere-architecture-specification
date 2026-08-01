@@ -85,6 +85,33 @@ TITMAS 的中心问题不是“把所有项目放进哪里”，而是：
 因此，TITMAS 是 interoperability fabric architecture（互操作织层架构），不是 Agent
 Platform、项目管理系统、治理 Dashboard、证据数据库、审计控制平面或 SAEE 算法服务。
 
+### 2.1 Ownership Boundary（所有权边界）
+
+本地图使用以下 bounded ownership（有界所有权）表达：
+
+```text
+TITMAS = interoperability coordination owner
+Agent Evidence = evidence protocol owner
+DBOS = execution record owner
+```
+
+- `TITMAS` 的 coordination ownership（协调所有权）只覆盖跨生态 mapping、handoff、
+  lineage、version relationship 和 non-elevation constraint；不覆盖连接项目的仓库、
+  Runtime、协议来源、canonical record、Authority 或知识产权；
+- `Agent Evidence` 在其声明的 source scope 内维护 evidence protocol capability；它是
+  interoperability capability connected to TITMAS（连接到 TITMAS 的互操作能力）；
+  TITMAS 不取得其仓库、协议、Runtime、Authority 或知识产权所有权；
+- `DBOS` 保持 canonical Execution record、Evidence admission 与 Verification reference
+  的责任边界；TITMAS 与 Agent Evidence 均不得建立平行写路径；
+- `EEOAP` 保持 connected accountability profile surface（连接的问责 profile 表面）；
+  其 normative/version authority 仍为 `REVIEW_REQUIRED`，不由本 ownership summary 指派。
+
+```text
+POP_TO_DBOS=CANDIDATE_NOT_ADOPTED
+AGENT_EVIDENCE_TO_DBOS=CANDIDATE_NOT_FROZEN
+TITMAS_RUNTIME_CREATED=false
+```
+
 ## 3. Layer Model（分层模型）
 
 这些层表示 responsibility and handoff（职责与交接），不是代码目录或仓库包含关系。
@@ -113,8 +140,8 @@ Platform、项目管理系统、治理 Dashboard、证据数据库、审计控�
 flowchart TD
     DB["Digital Biosphere"] --> DBA["DBA<br/>Program Governance and Architecture"]
     DBA --> TITMAS["TITMAS<br/>Trusted Interoperability Architecture Domain"]
-    TITMAS -. "evidence-material handoff" .-> AE["Agent Evidence Layer"]
-    TITMAS -. "requirements/profile mapping" .-> EEOAP["EEOAP"]
+    TITMAS -. "interoperability capability connection" .-> AE["Agent Evidence<br/>evidence protocol owner"]
+    TITMAS -. "requirements/profile mapping" .-> EEOAP["EEOAP<br/>connected profile surface"]
     TITMAS -. "bounded read-only evaluation contract" .-> SAEE["SAEE"]
     TITMAS -. "bounded audit/review result" .-> AP["ARO / PRA-Server"]
 ```
@@ -166,6 +193,8 @@ SAEE_RECOMMENDATION_NE_COMMAND=true
 ### 5.1 Interpretation vocabulary（判定词表）
 
 - `IN_SCOPE_INTERFACE_PEER`：进入 TITMAS 互操作架构范围，但保持独立 Owner；
+- `INTEROPERABILITY_CAPABILITY_CONNECTED_TO_TITMAS`：通过 mapping、handoff 或 profile
+  连接到 TITMAS，但仓库、协议、Runtime、canonical records、Authority 和知识产权不转移；
 - `PARENT_AUTHORITY`：TITMAS 的上位治理／架构来源，不是 TITMAS 子项目；
 - `CANONICAL_DOMAIN_OWNER`：保持自身事实责任，TITMAS 只能定义交接；
 - `PROTECTED_DOMAIN_OWNER`：只开放有界契约，核心能力不进入公共基础设施；
@@ -180,8 +209,8 @@ SAEE_RECOMMENDATION_NE_COMMAND=true
 | TITMAS | `L2` | 跨生态 adapter/profile/handoff/lineage/version/conformance 架构 | 当前只有 DBA 内 proposed 文档；无 Runtime、API、SDK 或独立仓库 | 只允许先建立 reference mapping；实现需另行授权 | `ARCHITECTURE_DOMAIN` | 不适用；TITMAS 不是现有仓库容器 |
 | DBOS | `L5` | Identity、Lifecycle、Capability/Execution record、Evidence integration、Verification reference 与存在治理 | Owner-created surface 声明 Apache-2.0；当前访问／发布状态必须由 DBOS 自身真值面确认 | `YES_BY_ADMISSION_CONTRACT_AND_REVIEW`；只读、可追溯、失败关闭 | `CANONICAL_DOMAIN_OWNER`；TITMAS 不建立平行 store | `false` |
 | SAEE | `L6` | Fitness、Reliability、Stability、Risk、Adaptation、Evolution Intelligence 与 Recommendation | GitHub public projection 存在，但 private core 明确保留；根许可证范围在本次观察中未形成单一可推断结论 | `BOUNDED_READ_ONLY_CONTRACT_ONLY`；禁止公开核心算法、权重、模型、训练／评价数据和写回路径 | `PROTECTED_DOMAIN_OWNER` | `false` |
-| EEOAP | `L4` | Execution Evidence and Operation Accountability Profile（执行证据与操作问责配置）要求、clause、schema 与 validator 语义 | `agent-evidence` 当前提供 Apache-2.0 的 public schema、toy examples 与 local single-step validation；不包含生产 policy mapping、private decision state 或完整运行桥 | `YES_BY_VERSIONED_PROFILE_MAPPING`；不得把 mapping 写成标准采纳、认证或生产符合性 | `IN_SCOPE_INTERFACE_PEER`；observed canonical candidate 为 `agent-evidence`，正式 Owner 仍需决策记录 | `false` |
-| Agent Evidence | `L4` | 把 Agent/service operation 形成可携带、可验证、可复核的 evidence object/package/receipt | 公共 `agent-evidence` 为 Apache-2.0、窄 EEOAP reference surface；另有 all-rights-reserved 的本地 `agent-evidence-layer` 商业工作区，二者不得混为一体 | `YES_BY_VERSIONED_EXPORTER_OR_HANDOFF_REVIEW`；现有 example/fixture 不等于生态完整集成 | `IN_SCOPE_INTERFACE_PEER` | `false` |
+| EEOAP | `L4` | Execution Evidence and Operation Accountability Profile（执行证据与操作问责配置）要求、clause、schema 与 validator 语义 | `agent-evidence` 当前提供 Apache-2.0 的 public schema、toy examples 与 local single-step validation；不包含生产 policy mapping、private decision state 或完整运行桥 | `YES_BY_VERSIONED_PROFILE_MAPPING`；不得把 mapping 写成标准采纳、认证或生产符合性 | `INTEROPERABILITY_CAPABILITY_CONNECTED_TO_TITMAS` + `IN_SCOPE_INTERFACE_PEER`；connected profile surface，正式 normative/version Owner 仍需决策记录 | `false` |
+| Agent Evidence | `L4` | 把 Agent/service operation 形成可携带、可验证、可复核的 evidence object/package/receipt | 公共 `agent-evidence` 为 Apache-2.0、窄 EEOAP reference surface；另有 all-rights-reserved 的本地 `agent-evidence-layer` 商业工作区，二者不得混为一体 | `YES_BY_VERSIONED_EXPORTER_OR_HANDOFF_REVIEW`；现有 example/fixture 不等于生态完整集成 | `INTEROPERABILITY_CAPABILITY_CONNECTED_TO_TITMAS` + `IN_SCOPE_INTERFACE_PEER`；evidence protocol owner within declared source scope | `false` |
 | ARO / ARO-Audit | `L4` | receipt-shaped artifact、独立验证、最小公开 audit-format 示例 | MIT public reference surface；不包含生产 audit control plane、policy mapping、scoring、runtime decision graph 或 private corpus | `YES_AS_BOUNDED_POST_EXECUTION_RESULT`；demo adapter 不得升级为生产审计路径 | `IN_SCOPE_INTERFACE_PEER` | `false` |
 | PRA-Server | `L4`，并与 `L3` Runtime 相邻 | Personal Research Agent Server / Personal Runtime Authority；科研流程、evidence export、runtime policy、artifact verify 与 review | 当前观察为 local-only、无 `origin`、无顶层许可证；不得推断可公开复用或分发 | `REVIEW_REQUIRED`；只允许未来最小、范围明确的 result contract，不得读取私密研究材料或扩大权限 | `IN_SCOPE_INTERFACE_PEER_CANDIDATE` | `false` |
 | Token Governor | `L3`，并向 `L4/L5/L6` 提供资源记录候选 | budget-window、token/resource policy 输入输出与资源治理相邻信息 | public reference repo；TianJiang Non-Commercial License v1.0；公开层不含生产 routing、scoring、fallback、decision history | `YES_AS_ADJACENT_INPUT_PROVIDER`；商业使用、生产控制和私有 service mapping 需独立授权 | `ADJACENT_INPUT_PROVIDER`，不是 TITMAS 核心 | `false` |
@@ -386,4 +415,7 @@ ADAPTER_IMPLEMENTATION_AUTHORIZED=false
 REAL_USE_LOOP_DEMONSTRATED=false
 SAEE_CORE_PROTECTED=true
 EXTERNAL_ACTION_PERFORMED=false
+POP_TO_DBOS=CANDIDATE_NOT_ADOPTED
+AGENT_EVIDENCE_TO_DBOS=CANDIDATE_NOT_FROZEN
+TITMAS_RUNTIME_CREATED=false
 ```

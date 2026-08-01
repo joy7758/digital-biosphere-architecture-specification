@@ -5,11 +5,12 @@ title_zh: 数字生物圈项目群治理章程 v0.1
 status: accepted-owner-assigned
 decision_reference: architecture/ADR-020-release-preparation-owner-decisions.md
 strategic_amendment_reference: architecture/ADR-032-compositional-scale-over-unbounded-center.md
+attention_amendment_reference: architecture/ADR-033-attention-principle-for-dynamic-coordination.md
 program_authority_assigned: true
 program_owner_ref: zhangbin
 runtime_authority_created: false
 source_of_truth_policy: reference-only-aggregation
-last_reviewed: 2026-07-26
+last_reviewed: 2026-07-28
 ---
 
 # Digital Biosphere Program Governance Charter v0.1（数字生物圈项目群治理章程 v0.1）
@@ -76,6 +77,35 @@ UNBOUNDED_CENTRAL_INTELLIGENCE_IS_NOT_TARGET=true
 COMPOSITIONAL_SCALE_IS_STRATEGIC_DEFAULT=true
 COMPOSITION_NE_AUTHORITY_AGGREGATION=true
 COVERAGE_NE_CORRECTNESS_OR_TRUTH=true
+```
+
+## 2B. Attention Principle（注意力原则）
+
+Digital Biosphere 通过任务、环境状态和反馈历史驱动的动态注意力分配，在大量简单、
+受限主体之间形成临时候选协作关系。主体选择应考虑任务相关性、能力匹配、有来源且
+可质疑的历史信誉、Evidence 质量与限制；无关主体不应持续占用系统资源。
+
+> Intelligence does not emerge from a single dominant entity, but from dynamic
+> attention allocation and evidence-driven coordination among many simple
+> entities.
+
+中文：
+
+> 智能不是来源于单一强大主体，而是在大量简单主体之间通过动态注意力分配和证据驱动协作产生。
+
+Attention 不是中央控制器。它只形成有范围、可解释、可撤销且会过期的候选参与建议；
+实际协作仍需要适用 Authorization。Evidence Layer 负责主张的材料、准入、验证和限制，
+不把 Evidence 升级为 Truth；SAEE 负责只读评价和演化建议，不成为 Attention controller。
+完整原则与交接图见
+[`Digital Biosphere Open Infrastructure Strategy Constitution v0.4`](architecture/open-infrastructure-strategy-constitution.md)
+和 [`ADR-033`](architecture/ADR-033-attention-principle-for-dynamic-coordination.md)。
+
+```text
+ATTENTION_PRINCIPLE_ADOPTED=true
+ATTENTION_NE_CENTRAL_CONTROL=true
+ATTENTION_NE_AUTHORITY_OR_PERMISSION=true
+ATTENTION_NE_EVIDENCE_OR_TRUTH=true
+SAEE_NE_ATTENTION_CONTROLLER=true
 ```
 
 ## 3. DBA Program Governance Scope（DBA 项目群治理范围）
