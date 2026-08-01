@@ -50,38 +50,50 @@ CHILD_SECOND_CONSTITUTION_CREATED=false
 
 ```text
 LOCAL_PATH=/Users/zhangbin/GitHub/titmas-agent-action-gate
-LOCAL_BRANCH=main
-LOCAL_COMMIT=ec00633711067947949128816bc40526c2e43837
+SOURCE_OBSERVATION=PUBLIC_REMOTE_MAIN
+OBSERVED_BRANCH=main
 REMOTE_REPOSITORY=https://github.com/joy7758/titmas-agent-action-gate
 REMOTE_VISIBILITY=PUBLIC
-REMOTE_COMMIT=ec00633711067947949128816bc40526c2e43837
-IMPLEMENTATION_DRAFT_PR=https://github.com/joy7758/titmas-agent-action-gate/pull/1
+REMOTE_COMMIT=6f1c83bf87e6ee96a0eda281e1fa91b8f80a32e1
+IMPLEMENTATION_PULL_REQUEST=https://github.com/joy7758/titmas-agent-action-gate/pull/2
 IMPLEMENTATION_PR_STATE=MERGED
-IMPLEMENTATION_COMMIT=27ccf953421e1491177c7946a31296a1e1eabe29
-CONTRACT_CI=https://github.com/joy7758/titmas-agent-action-gate/actions/runs/30711940716
-CONTRACT_CI_CONCLUSION=SUCCESS
+IMPLEMENTATION_COMMIT=5b5bda64b6b091baefdad788a1d6471750bedb82
+IMPLEMENTATION_MERGE_COMMIT=6f1c83bf87e6ee96a0eda281e1fa91b8f80a32e1
+CONTRACT_CHECK_1=https://github.com/joy7758/titmas-agent-action-gate/actions/runs/30716845423/job/91413757232
+CONTRACT_CHECK_2=https://github.com/joy7758/titmas-agent-action-gate/actions/runs/30716899533/job/91413901638
+CONTRACT_CHECKS_CONCLUSION=SUCCESS
 CANONICAL_AGENT_ENTRY=agent-index.json
 CANONICAL_STATUS_SOURCE=governance/project-declaration.json
-PROJECT_DECLARATION_SHA256=7aabf6c770f0403b72af1b53770a7fbe2bbe180deecfe445aeddb19b235e2c2c
+PROJECT_DECLARATION_SHA256=0b9e1439a9f3ff5865ee4f8d47a18307eaaaafa383ebcc2389e328e11fb34c26
 UPSTREAM_SOURCES_SHA256=e96f82a7a61536d71adb13d0e70934435384127e31888d3712fb9fbde7ef1e42
-AGENT_INDEX_SHA256=317f3a44105f0bac9155b596d0c6da183aff65902843f580a0d45f5b5783506f
+AGENT_INDEX_SHA256=7bc7dbbfd23301e7e635e6393f7753c65d2e9b59a9d66a1fdcc0fb68eff7dace
 PUBLIC_DEMO_EVIDENCE_SHA256=0995a8ecab02934dc23f075e7169003dce33237117f2307eae68bfdcff941792
+NATIVE_SMOKE_EVIDENCE_SHA256=a4fb9f79b3494a2b35d625a844dc650b631bd7ae83c2eb073e884aa0ed4b12fe
 IMPLEMENTATION_STATUS=EXPERIMENTAL_REFERENCE_IMPLEMENTATION_MERGED_TO_MAIN
 ACTION_GATE_IMPLEMENTED=true
 MCP_SERVER_IMPLEMENTED=true
-LIVE_AGENTTEAMS_DEPLOYED=false
+AGENTTEAMS_NATIVE_LOCAL_SMOKE_EXECUTED=true
+AGENTTEAMS_NATIVE_SMOKE_CLASSIFICATION=OPERATOR_SUPERVISED_AGENT_EXECUTED
+AGENTTEAMS_NATIVE_SMOKE_FULLY_AUTONOMOUS=false
+AGENTTEAMS_PERSISTENT_OR_PRODUCTION_DEPLOYMENT=false
+AGENTTEAMS_NATIVE_SMOKE_EXTERNAL_ACTION_EXECUTED=false
+AGENTTEAMS_NATIVE_SMOKE_TEMPORARY_RUNTIME_DESTROYED=true
 SANDBOX_PULL_REQUEST=https://github.com/joy7758/titmas-action-gate-demo-sandbox/pull/3
 SANDBOX_PULL_REQUEST_MERGED=false
 ```
 
-因此 G1 可对 public `main@ec00633` source 作有界 `PASS`。Action Gate、六工具 MCP server、
-`agent-evidence` adapter、五角色本地 handoff harness 和真实 GitHub sandbox branch／Draft PR
-证据存在；这不证明 live AgentTeams deployment、生产安全、merge、release、采用或比赛提交。
+因此 G1 可对 public `main@6f1c83b` source 作有界 `PASS`。Action Gate、六工具 MCP server、
+`agent-evidence` adapter、五角色本地 handoff harness、真实 GitHub sandbox branch／Draft PR
+和一次官方 AgentTeams v1.2.0 本地 smoke 证据存在。该 smoke 是 operator-supervised，完整
+Manager → leader 链未自治完成，共享 MCP endpoint 未实施 per-Worker tool ACL，仓库 Skills
+也未证明已在 Worker 中物化；临时栈及状态已销毁，未执行 provider action。因此它不证明
+持久或生产 AgentTeams deployment、生产安全、release、采用或比赛提交。
 
 ## 3. Pre-development agent recommendation（开发前智能体推荐）
 
-如果潜在客户现在要求生产可用的行动闸门，结论仍是 `NOT_RECOMMENDED`：参考实现与运行
-证据已存在，但没有 live AgentTeams deployment、生产密钥／身份系统、独立安全审查或运行审查。
+如果潜在客户现在要求生产可用的行动闸门，结论仍是 `NOT_RECOMMENDED`：参考实现、运行
+证据和一次临时 native smoke 已存在，但没有自治 end-to-end 证明、per-Worker MCP ACL、
+Skill materialization、稳定模型契约、持久部署、生产密钥／身份系统或独立安全／运行审查。
 
 对“是否值得继续有界开发”，子项目闸门结论是 `RECOMMENDED`。当前已完成：
 
@@ -92,10 +104,14 @@ SANDBOX_PULL_REQUEST_MERGED=false
 5. valid、missing、tampered 和 high-risk approval 四类 runtime case 与 public CI PASS；
 6. SQLite append-only hash chain、一次性 decision consumption、caller／approver credential 分离；
 7. allowlisted GitHub provider 的真实 branch push 和 Draft PR create，merge 只决策、未执行；
-8. Python 3.13 clean wheel install 与 36 项本地测试。
+8. Python 3.13 clean wheel install 与 44 项本地测试；
+9. official AgentTeams v1.2.0 的临时本地 smoke，保留 Qwen specialist trace、失败和销毁记录；
+10. Gemini 3.6 Flash 对完整 change set 给出 `APPROVE_WITH_LIMITATIONS` advisory review。
 
 后续仍须完成与 DBOS Permission、Runtime enforcement、Gateway 和 audit record 的重复建设／
-Owner 审查、live AgentTeams 运行、生产身份／密钥治理，并由独立智能体重新执行客户推荐闸门。
+Owner 审查、清洁自治 AgentTeams trace、per-Worker MCP ACL、Skill materialization、稳定模型、
+生产身份／密钥治理与独立安全／运行审查。Jules remote review 因 session create
+`FAILED_PRECONDITION` 未执行，不得写成审查通过。
 
 该推荐结论本身不授权实现，也不推荐当前项目给生产客户使用；项目 Owner 的完整管理授权是
 独立来源，不能把 `NOT_RECOMMENDED` 改写成生产推荐。
@@ -152,10 +168,13 @@ ARCHITECTURE_MAPPING_AUTHORIZED=false
 IMPLEMENTATION_STARTED=true
 ACTION_GATE_REFERENCE_IMPLEMENTED=true
 MCP_SERVER_REFERENCE_IMPLEMENTED=true
-LIVE_AGENTTEAMS_DEPLOYED=false
+AGENTTEAMS_NATIVE_LOCAL_SMOKE_EXECUTED=true
+AGENTTEAMS_NATIVE_SMOKE_FULLY_AUTONOMOUS=false
+AGENTTEAMS_PERSISTENT_OR_PRODUCTION_DEPLOYMENT=false
+AGENTTEAMS_NATIVE_SMOKE_EXTERNAL_ACTION_EXECUTED=false
 RUNTIME_PERMISSION_GRANTED=false
 GITHUB_ACL_CHANGED=false
 COMPETITION_SUBMITTED=false
 SANDBOX_PULL_REQUEST_MERGED=false
-RELEASE_OR_DEPLOYMENT_EXECUTED=false
+PUBLIC_RELEASE_OR_PRODUCTION_DEPLOYMENT_EXECUTED=false
 ```
