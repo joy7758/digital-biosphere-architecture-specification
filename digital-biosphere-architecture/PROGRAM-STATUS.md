@@ -317,3 +317,64 @@ Current machine-readable program sources:
 `ADR-036` authorizes reversible technical implementation only. Prices,
 payments, contracts, legal publication, DNS, certificates, formal SLA,
 customer production data and certification remain closed Human gates.
+
+## 12. Media Evidence Portfolio Admission Overlay
+
+Observed on 2026-08-01:
+
+```text
+MEDIA_EVIDENCE_PROJECT=TITMAS Media Evidence
+MEDIA_EVIDENCE_VERSION=v0.1.0
+MEDIA_EVIDENCE_LOCAL_TAG_COMMIT=7eac452f66a2b7de525543f80b9a7cf1465ef9a1
+MEDIA_EVIDENCE_LOCAL_TESTS=112
+MEDIA_EVIDENCE_LOCAL_TEST_RESULT=OK
+MEDIA_EVIDENCE_REMOTE_CANONICAL_SOURCE=joy7758/titmas-media-guard
+MEDIA_EVIDENCE_REMOTE_REPOSITORY_VISIBILITY=PRIVATE
+MEDIA_EVIDENCE_REMOTE_MAIN_COMMIT=6ded0dd0d81f8a9fc0fe029f96906cc7bc43f446
+MEDIA_EVIDENCE_CANONICAL_STATUS_SOURCE=governance/project-status.json
+MEDIA_EVIDENCE_FRESHNESS_MAXIMUM_AGE_DAYS=14
+MEDIA_EVIDENCE_OWNER_REF=ZHANGBIN
+MEDIA_EVIDENCE_LICENSE=ALL_RIGHTS_RESERVED
+MEDIA_EVIDENCE_REQUESTED_CLASSIFICATION=APPLICATION_PROFILE_AND_REFERENCE_IMPLEMENTATION_CANDIDATE
+MEDIA_EVIDENCE_ARCHITECTURE_ADMISSION=ACCEPTED_BOUNDED
+MEDIA_EVIDENCE_PORTFOLIO_ADMISSION_GRANTED=true
+MEDIA_EVIDENCE_PORTFOLIO_CLASSIFICATION=ADJACENT_CANDIDATE
+MEDIA_EVIDENCE_DBOS_MAPPING_DECIDED=false
+MEDIA_EVIDENCE_ARCHITECTURE_BOUNDARY_DECIDED=true
+MEDIA_EVIDENCE_ARCHITECTURE_INPUTS_RESOLVED=true
+MEDIA_EVIDENCE_DBOS_MAPPING_AUTHORIZED=false
+MEDIA_EVIDENCE_PR_READY_FOR_HUMAN_PORTFOLIO_DECISION=false
+MEDIA_EVIDENCE_G0=PASS_ADMITTED_AS_ADJACENT_CANDIDATE
+MEDIA_EVIDENCE_G1=PASS
+MEDIA_EVIDENCE_G2=PASS_BOUNDARY_ONLY_MAPPING_NOT_AUTHORIZED
+MEDIA_EVIDENCE_G3=NOT_ASSESSED
+MEDIA_EVIDENCE_G4=NOT_ASSESSED
+MEDIA_EVIDENCE_G5=NOT_AUTHORIZED
+MEDIA_EVIDENCE_G6=NOT_EXECUTED
+MEDIA_EVIDENCE_G7=NOT_ASSESSED
+MEDIA_EVIDENCE_G8=NOT_RELEASED_NOT_ADOPTED
+MEDIA_EVIDENCE_CORE_COMPONENT=false
+MEDIA_EVIDENCE_STANDARD=false
+MEDIA_EVIDENCE_PRODUCTION_READY=false
+MEDIA_EVIDENCE_EXTERNAL_ADOPTION=false
+MEDIA_EVIDENCE_SITE_RC2_DEPLOYED=true
+MEDIA_EVIDENCE_PUBLIC_SURFACE_AVAILABLE=true
+MEDIA_EVIDENCE_SITE_RC2_SOURCE_REVISION=800a3523eab8f3f35295207f4df636dbadf347bf
+MEDIA_EVIDENCE_STAGE23_DEPLOYMENT_REPORT_VERIFIED=true
+```
+
+The source-pinned report and accepted bounded outcome are recorded in
+[`TITMAS-PROP-20260801-MEDIA-EVIDENCE-001`](TITMAS/specifications/proposals/titmas-media-evidence-profile-admission-v0.1.md).
+The portfolio decision is
+[`TITMAS-DEC-20260801-MEDIA-EVIDENCE-PORTFOLIO-001`](TITMAS/specifications/decisions/titmas-media-evidence-portfolio-admission-decision-v0.1.md),
+and the machine projection is
+[`media-evidence.json`](TITMAS/specifications/portfolio/media-evidence.json).
+The existing `redcrag.cn` Media Evidence surface remains a local synthetic
+reference surface; its deployment does not establish DBOS mapping, conformance,
+external adoption or production status.
+
+DBA records only this bounded overlay. The private `titmas-media-guard`
+repository remains the implementation evidence owner; its post-tag competition
+documents and binary assets are outside the v0.1.0 admission evidence. The
+object ownership boundary and bounded Portfolio Admission are accepted, while
+DBOS mapping authorization and G3-G8 remain unresolved or explicitly closed.
