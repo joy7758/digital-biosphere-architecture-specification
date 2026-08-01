@@ -25,7 +25,8 @@ WCAG_CERTIFICATION_CLAIMED=false
 | Chinese control names | PASS | Previous, next, and each page selector expose explicit Chinese accessible names. |
 | Readable text contrast | PASS_WITH_LIMITATIONS | Visual inspection found readable foreground/background contrast in the three viewports; no instrumented independent contrast audit was performed. |
 | State not conveyed by color alone | PASS | Selected tabs, statuses, boundaries, and demo results all include written labels and program-state values. |
-| Mobile target size | PASS_WITH_LIMITATIONS | At 390 CSS pixels, arrows measure 40 × 40 and page selectors 44 × 38. They are usable in local QA but do not all meet a strict 44 × 44 target. |
+| Mobile target size | PASS / RESOLVED | At 390 CSS pixels, previous, next, and all three page selectors each measure 44 × 44. Pairwise rectangle checks found no overlap, and document width equals the 390-pixel viewport. At 768 CSS pixels, arrows measure 44 × 44 and selectors 58 × 44. |
+| Keyboard focus visibility | PASS | Keyboard focus on a carousel arrow exposes a 3-pixel high-contrast outline, changed border, and focus shadow. |
 | Screen-reader interoperability | PASS_WITH_LIMITATIONS | Semantic structure and accessibility names were inspected, but no independent multi-screen-reader test was performed. |
 
 ## Stop condition

@@ -583,10 +583,10 @@ button, input { font: inherit; }
 .hero-carousel .hero-content { padding: 96px 0 48px; }
 .hero-carousel .hero-content h1 { font-size: clamp(2.75rem, 5.5vw, 5rem); }
 .hero-carousel-controls { position: relative; z-index: 3; align-self: end; width: min(520px, calc(100% - 40px)); margin: 0 auto 34px; display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; gap: 12px; }
-.hero-carousel-controls > button { width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: rgba(255,255,255,.9); color: var(--violet); font: 700 1rem/1 var(--font-mono); cursor: pointer; }
+.hero-carousel-controls > button { width: 44px; min-width: 44px; height: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 50%; background: rgba(255,255,255,.9); color: var(--violet); font: 700 1rem/1 var(--font-mono); cursor: pointer; }
 .hero-carousel-controls > button:hover, .hero-carousel-controls > button:focus-visible { border-color: var(--violet); box-shadow: 0 0 0 3px rgba(79,97,171,.12); }
 .hero-carousel-dots { display: flex; align-items: center; justify-content: center; gap: 8px; }
-.hero-carousel-dots button { min-width: 58px; height: 38px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--muted); font: 700 .72rem/1 var(--font-mono); cursor: pointer; }
+.hero-carousel-dots button { min-width: 58px; height: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 999px; background: #fff; color: var(--muted); font: 700 .72rem/1 var(--font-mono); cursor: pointer; }
 .hero-carousel-dots button[aria-current="true"] { border-color: var(--violet); color: var(--violet); box-shadow: inset 0 0 0 1px var(--violet); }
 
 .home-overview { background: #fff; }
@@ -656,8 +656,7 @@ button, input { font: inherit; }
   .hero-carousel .hero-content { width: min(100% - 28px, 950px); padding: 86px 0 28px; }
   .hero-carousel .hero-content h1 { font-size: clamp(2.25rem, 11vw, 3.45rem); }
   .hero-carousel .hero-lead { font-size: 1rem; line-height: 1.65; }
-  .hero-carousel-controls { width: min(100% - 28px, 520px); grid-template-columns: 42px 1fr 42px; margin-bottom: 24px; }
-  .hero-carousel-controls > button { width: 40px; height: 40px; }
+  .hero-carousel-controls { width: min(100% - 28px, 520px); grid-template-columns: 44px 1fr 44px; margin-bottom: 24px; }
   .hero-carousel-dots button { min-width: 44px; }
   .home-showcase-grid, .home-entry-list, .home-status-grid { grid-template-columns: 1fr; }
   .home-showcase-card-featured { grid-column: auto; }

@@ -17,7 +17,12 @@ Recommended follow-up: assess image loading and static-export behavior in a sepa
 
 - `INDEPENDENT_WCAG_AUDIT_COMPLETED=false`
 - Visual contrast and semantic behavior received local browser review only.
-- Mobile carousel arrows are 40 × 40 CSS pixels; page selectors are 44 × 38.
+- Screen-reader behavior has not received an independent multi-product audit.
+
+## Resolved in RC2
+
+- `MOBILE_CAROUSEL_TOUCH_TARGET_LIMITATION=RESOLVED`
+- At 390 CSS pixels, previous, next, and all three page selectors each measure 44 × 44 CSS pixels, with no pairwise overlap or horizontal overflow in local real-browser QA.
 
 ## Demonstration boundary
 

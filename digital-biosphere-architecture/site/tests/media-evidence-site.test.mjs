@@ -25,6 +25,15 @@ test("media carousel contains exactly three complete entries", async () => {
   assert.doesNotMatch(source, /slideCount: [4-9]/);
 });
 
+test("carousel controls preserve 44 by 44 CSS pixel touch targets", async () => {
+  const styles = await readFile(new URL("app/globals.css", siteRoot), "utf8");
+  assert.match(styles, /\.hero-carousel-controls > button \{[^}]*width: 44px;[^}]*min-width: 44px;[^}]*height: 44px;[^}]*min-height: 44px;/s);
+  assert.match(styles, /\.hero-carousel-dots button \{[^}]*height: 44px;[^}]*min-height: 44px;/s);
+  assert.match(styles, /@media \(max-width: 620px\) \{[\s\S]*?\.hero-carousel-controls \{[^}]*grid-template-columns: 44px 1fr 44px;/);
+  assert.match(styles, /@media \(max-width: 620px\) \{[\s\S]*?\.hero-carousel-dots button \{ min-width: 44px; \}/);
+  assert.doesNotMatch(styles, /\.hero-carousel-controls > button \{ width: 40px; height: 40px; \}/);
+});
+
 test("server-rendered homepage exposes the complete first slide without scripts", async () => {
   const response = await render("/");
   assert.equal(response.status, 200);
