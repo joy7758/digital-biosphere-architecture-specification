@@ -161,9 +161,6 @@ class GatewayService:
             server_version = "TITMAS-Evaluation"
             sys_version = ""
 
-            def log_message(self, format: str, *args: object) -> None:
-                del format, args
-
             def do_GET(self) -> None:
                 service._handle(self)
 
