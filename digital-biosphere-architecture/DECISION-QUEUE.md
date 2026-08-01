@@ -27,7 +27,7 @@ last_reviewed: 2026-08-01
 | `DQ-006` | `P2` | POP、ARO、Agent Evidence、Token Governor、ACP 哪些进入正式 Portfolio？ | `OPEN` | 每个项目的目的、Owner、canonical source、重复能力和接口边界 | 项目组合与依赖范围 | 本地发现、历史关联或相邻角色等于正式准入 |
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
-| `TITMAS-MEDIA-EVIDENCE-ADMISSION-D01` | `P1` | 是否把 TITMAS Media Evidence v0.1.0 作为应用场景配置与参考实现候选纳入架构和项目组合？ | `BLOCKED_INPUT` | `TITMAS-PROP-20260801-MEDIA-EVIDENCE-001`、远程 canonical source、DBOS Evidence ownership/mapping、license 与 freshness policy | 决定 G0/G1/G2 是否可继续；不决定 G3-G8 | 本地 112 tests、网站 Demo、tag 或 Draft PR 等于接纳、标准、DBOS Evidence authority、发布或采用 |
+| `TITMAS-MEDIA-EVIDENCE-ADMISSION-D01` | `P1` | 是否把 TITMAS Media Evidence v0.1.0 作为应用场景配置与参考实现候选纳入项目组合？ | `READY_FOR_REVIEW` | `TITMAS-PROP-20260801-MEDIA-EVIDENCE-001`、private canonical source、status/freshness contract、`TITMAS-MEDIA-EVIDENCE-ADMISSION-BOUNDARY-D01` | 决定是否授予 Portfolio Admission；不授权 G3-G8、DBOS mapping 或实现 | 本地 112 tests、网站 Demo、tag、边界决定或 Draft PR 等于项目组合接纳、标准、DBOS Evidence authority、发布或采用 |
 | `TITMAS-FINAL-FORM-IMPLEMENTATION-D01` | `P0` | 是否根据已审计的采用矩阵授权有界 P0 最终形态实施？ | `READY_FOR_REVIEW` | D04 最终处置、Build-versus-Adopt 审计、组件矩阵、七层架构包、P0/P1/P2 Backlog、许可证与数据边界复核 | 决定是否进入分仓、分路径、可回滚的 P0 实施；P1/P2、生产账本、部署和付费仍需独立决定 | 审计完成自动等于实施、依赖安装、服务创建、迁移、部署、Paid Beta 或生产授权 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）

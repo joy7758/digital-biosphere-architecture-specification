@@ -40,7 +40,7 @@ changes_project_status: false
 | `POP` | `/Users/zhangbin/GitHub/persona-object-protocol` | Identity / Persona adjacent component（身份／人格相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 与 DBOS canonical identity 的 Owner 和映射边界是什么？ |
 | `ARO` | `/Users/zhangbin/GitHub/aro-audit` | Audit / Verification adjacent component（审计／验证相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 与 DBOS Verification、Agent Evidence 的阶段和数据所有权如何分离？ |
 | `AGENT-EVIDENCE` | `/Users/zhangbin/GitHub/agent-evidence` | Execution-to-evidence component（执行到证据组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 哪些记录是 canonical Evidence，哪些只是 receipt（回执）或 transport（传输）？ |
-| `MEDIA-EVIDENCE` | `titmas-media-guard:v0.1.0@7eac452f66a2b7de525543f80b9a7cf1465ef9a1`；remote `NOT_CONFIGURED` | AIGC media-review Application Profile / Reference Implementation candidate（人工智能生成内容媒体审核应用场景配置／参考实现候选） | `ADMISSION_REQUESTED_G0_NOT_PASSED_G1_BLOCKED` | 如何保持 domain-local `MediaEvidenceObject` 与 DBOS canonical Evidence Object 不等同，并补齐稳定远程事实源？ |
+| `MEDIA-EVIDENCE` | private `joy7758/titmas-media-guard`；`v0.1.0@7eac452f66a2b7de525543f80b9a7cf1465ef9a1`；status `governance/project-status.json` | AIGC media-review Application Profile / Reference Implementation candidate（人工智能生成内容媒体审核应用场景配置／参考实现候选） | `READY_FOR_HUMAN_PORTFOLIO_DECISION` | 边界已决定、G1 已通过；是否授予 Portfolio Admission 仍需单独人工决定，DBOS mapping 未授权 |
 | `TOKEN-GOVERNOR` | `/Users/zhangbin/GitHub/token-governor` | Resource governance adjacent component（资源治理相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | DBOS 运行约束与 SAEE 资源评价之间的责任边界是什么？ |
 | `ACP` | `/Users/zhangbin/GitHub/海洋/autonomous-cell-protocol` | Physical Cell protocol（物理单元协议） | `MAPPING_ONLY_REVIEW_REQUIRED` | Physical Cell Identity 与 DBOS Entity Identity 如何保持不等同？ |
 

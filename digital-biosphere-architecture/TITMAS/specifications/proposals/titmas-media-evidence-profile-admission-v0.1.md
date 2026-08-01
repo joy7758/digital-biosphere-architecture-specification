@@ -21,7 +21,11 @@ REQUESTED_CLASSIFICATION=APPLICATION_PROFILE_AND_REFERENCE_IMPLEMENTATION_CANDID
 ARCHITECTURE_ADMISSION_REQUESTED=true
 ARCHITECTURE_ADMISSION_DECIDED=false
 PORTFOLIO_ADMISSION_GRANTED=false
-CANONICAL_REMOTE_SOURCE_CONFIGURED=false
+ARCHITECTURE_BOUNDARY_DECIDED=true
+ARCHITECTURE_INPUTS_RESOLVED=true
+CANONICAL_REMOTE_SOURCE_CONFIGURED=true
+DBOS_MAPPING_AUTHORIZED=false
+PR_READY_FOR_HUMAN_PORTFOLIO_DECISION=true
 IMPLEMENTATION_REQUESTED=false
 RUNTIME_REQUESTED=false
 RELEASE_OR_DEPLOYMENT_REQUESTED=false
@@ -66,14 +70,21 @@ PROJECT=TITMAS Media Evidence
 PROJECT_VERSION=v0.1.0
 LOCAL_TAG_COMMIT=7eac452f66a2b7de525543f80b9a7cf1465ef9a1
 TAG_TYPE=ANNOTATED
-REMOTE_CANONICAL_SOURCE=NOT_CONFIGURED
+REMOTE_CANONICAL_SOURCE=joy7758/titmas-media-guard
+REMOTE_REPOSITORY_VISIBILITY=PRIVATE
+REMOTE_MAIN_COMMIT=6ded0dd0d81f8a9fc0fe029f96906cc7bc43f446
+REMOTE_TAG_TARGET=7eac452f66a2b7de525543f80b9a7cf1465ef9a1
+CANONICAL_STATUS_SOURCE=governance/project-status.json
+FRESHNESS_MAXIMUM_AGE_DAYS=14
+OWNER_REF=ZHANGBIN
 LICENSE=ALL_RIGHTS_RESERVED_WITH_PRIOR_WRITTEN_AUTHORIZATION_REQUIRED
 OBSERVED_AT=2026-08-01
 ```
 
-`titmas-media-guard` 当前没有配置 Git remote，因此上述本地 tag 和 commit 只能作为
-source-pinned local observation（来源锁定的本地观察），尚不能满足驾驶舱 `G1` 的稳定
-canonical source（规范事实源）要求。
+Private repository `joy7758/titmas-media-guard` is the canonical implementation
+source. Authenticated verification resolves annotated tag `v0.1.0` to the frozen
+implementation commit. `governance/project-status.json` and
+`governance/source-contract.md` define the source and freshness contract.
 
 ### 2.2 Verified local implementation evidence
 
@@ -103,20 +114,27 @@ README、比赛讲解文档和二进制展示资产存在 tag 之后的未提交
 这些材料不属于本接纳请求的 v0.1.0 实现证据，也不应被驾驶舱汇总为 release、adoption
 或 current canonical status。
 
-### 2.4 Existing public reference surface
+### 2.4 Live public reference surface
 
-驾驶舱网站 RC2 已提供本地合成媒体证据介绍、纯前端演示和机器可读场景配置：
+Stage 24 在 2026-08-01 重新检查线上状态。首页、行业页、Demo 和机器配置均返回 HTTP
+200；线上 Release Manifest 的 source revision 与 RC2 commit 一致：
 
 ```text
+SITE_RC2_LOCAL_FROZEN=true
+SITE_RC2_COMMIT=800a3523eab8f3f35295207f4df636dbadf347bf
+SITE_RC2_DEPLOYED=true
+PUBLIC_MEDIA_EVIDENCE_SURFACE_AVAILABLE=true
+STAGE23_DEPLOYMENT_REPORT_VERIFIED=true
 SITE_SOURCE_REVISION=800a3523eab8f3f35295207f4df636dbadf347bf
 SITE_DEPLOYMENT_REPORT=site/docs/stage23-deployment-report.md
 MACHINE_PROFILE=site/public/media-evidence-profile.json
 PUBLIC_SURFACE_STATUS=LOCAL_SYNTHETIC_REFERENCE_IMPLEMENTATION
 ```
 
-公开页面存在不等于项目已经通过架构接纳；本提案用于关闭“展示面先于架构登记”的治理缺口。
+该实时结果与 Stage 24 输入中的“尚未部署”预设相反，因此本提案保留可复核的线上事实，
+不把预设写成状态。公开页面存在仍不等于项目已经通过架构接纳或公开采用。
 
-## 3. Proposed architecture classification（拟议架构分类）
+## 3. Accepted candidate classification（已接受候选分类）
 
 ```text
 PRIMARY_RESPONSIBILITY_DOMAIN=AIGC_MEDIA_REVIEW_GOVERNANCE_PROFILE
@@ -127,11 +145,11 @@ SAEE_MODULE_REQUESTED=false
 STANDARD_REQUESTED=false
 ```
 
-建议把 Media Evidence 归类为面向广播电视和网络视听人工智能生成内容安全的应用场景
-配置与参考实现候选。它展示如何组合有来源、可质疑、可复核的记录，但不成为通用证据
-权威、运行平台、审核产品或认证系统。
+人工边界决定接受 Media Evidence 作为面向广播电视和网络视听人工智能生成内容安全的
+应用场景配置与参考实现候选。它展示如何组合有来源、可质疑、可复核的记录，但不成为
+通用证据权威、运行平台、审核产品或认证系统。Portfolio Admission 仍未决定。
 
-## 4. Evidence-object ownership gap（证据对象所有权缺口）
+## 4. Evidence-object ownership boundary decision（证据对象所有权边界决定）
 
 驾驶舱现有架构规定：
 
@@ -141,13 +159,18 @@ Evidence Reference != DBOS Canonical Evidence Object
 DBOS Canonical Evidence Object != Truth
 ```
 
-Media Evidence v0.1.0 使用 `MediaEvidenceObject` 名称。架构接纳前必须明确：
+Human architecture decision
+[`TITMAS-MEDIA-EVIDENCE-ADMISSION-BOUNDARY-D01`](../decisions/titmas-media-evidence-admission-boundary-decision-v0.1.md)
+已经明确：
 
 1. 当前对象是 media-domain evidence-bearing record（媒体域承载证据的记录）和本地参考格式；
 2. 它不是 `DBA-ARCHITECTURE-SCHEMA-0.1/EvidenceObject` 或 DBOS canonical Evidence Object；
 3. 若未来进入 DBOS，必须经过单独 Evidence Admission Contract（证据准入契约），保留
    source、version、scope、failure 和 conflict；
 4. 本提案不修改 Media Evidence Schema，也不授权创建映射实现。
+
+该决定接受 candidate classification 和 domain-local object boundary，但没有授予 Portfolio
+Admission，也没有授权 DBOS mapping。
 
 ## 5. Scope and non-goals（范围与非目标）
 
@@ -186,7 +209,7 @@ WOULD_RECOMMEND_OPENING_ARCHITECTURE_REVIEW_REQUEST=CONDITIONAL
 WOULD_RECOMMEND_FINAL_ADOPTION=false
 ```
 
-不直接推荐采用的原因：
+初始阶段不直接推荐采用的原因：
 
 - implementation repository 没有配置远程 canonical source；
 - `MediaEvidenceObject` 与 DBOS canonical Evidence Object 的 ownership/mapping 尚未决策；
@@ -195,18 +218,22 @@ WOULD_RECOMMEND_FINAL_ADOPTION=false
 
 本提案把这些原因分解为可审查 gate，不把智能体建议当作架构决定。
 
-应用上述修正并取得驾驶舱 conformance `PASS`、51 项测试 `OK` 后，同一模型的复审结果
-仍为 `CONDITIONAL`：该结果支持把有界请求提交给人类架构审查，但不解除远程规范来源和
-DBOS Evidence ownership/mapping 两个阻塞项，也不推荐直接采用。
+Stage 24 已建立远程规范来源、状态时效契约和人工边界决定。独立复核仍不得把这些输入
+修正解释为 Portfolio Admission 或 DBOS mapping authorization。
+
+在 112 项实现测试、51 项驾驶舱测试、完整 conformance、远程 tag/status 契约和线上
+网站事实复核通过后，`qwen3.8-max-preview` 对“是否可交由人类作单独 Portfolio Decision”
+返回 `RECOMMENDED`。该建议的对象是 human-decision readiness，不是对接纳、映射、采用、
+发布或生产能力的推荐。
 
 ## 8. Gate assessment（闸门评估）
 
 | Gate | Current result | Required remediation |
 |---|---|---|
-| `G0` Portfolio Admission | `NOT_PASSED` | 确认 owner、许可边界、稳定 project ID 和规范来源 |
-| `G1` Source-of-Truth | `BLOCKED_INPUT` | 配置并确认远程 canonical source、status manifest 和 freshness policy |
-| `G2` Architecture Contract | `REVIEW_REQUIRED` | 决定媒体记录到 DBOS Evidence Admission 的命名、owner、失败和版本边界 |
-| `G3` Interface/Mapping | `NOT_ASSESSED` | 只有 G2 决策后才能准备 mapping；本提案不创建 mapping |
+| `G0` Portfolio Admission | `READY_FOR_HUMAN_PORTFOLIO_DECISION` | 输入已齐备；仍需单独 Human Portfolio Decision |
+| `G1` Source-of-Truth | `PASS` | private canonical repository、remote tag、status source 和 freshness policy 已验证 |
+| `G2` Architecture Contract | `BOUNDARY_DECISION_ACCEPTED_MAPPING_NOT_AUTHORIZED` | domain-local ownership 已决定；Evidence Admission mapping 未授权 |
+| `G3` Interface/Mapping | `NOT_ASSESSED` | 本提案不创建或授权 mapping |
 | `G4` Conformance | `NOT_ASSESSED` | 112 tests 不等于跨仓库 conformance |
 | `G5` Authorization | `NOT_AUTHORIZED` | 需要独立 Human architecture decision |
 | `G6` Execution | `NOT_EXECUTED` | 不在本提案范围 |
@@ -215,25 +242,22 @@ DBOS Evidence ownership/mapping 两个阻塞项，也不推荐直接采用。
 
 ## 9. Required human decisions（所需人工决定）
 
-1. 是否接受 `APPLICATION_PROFILE_AND_REFERENCE_IMPLEMENTATION_CANDIDATE` 分类；
-2. 是否把它保留为 `ADJACENT_CANDIDATE`，而不是 DBOS/TITMAS core；
-3. 哪个远程仓库与状态文件成为 canonical implementation source；
-4. `MediaEvidenceObject` 是否保持 domain-local 名称，或未来通过什么显式 mapping 进入
-   DBOS Evidence Admission；
-5. 谁负责项目状态刷新、接口维护和冲突处理。
+1. 是否授予 Portfolio Admission；当前答案仍为 `NOT_DECIDED`；
+2. 是否在未来单独授权 Evidence Admission Contract 和 mapping work；当前答案为
+   `NOT_AUTHORIZED`。
 
 ## 10. Outcome record（结果记录）
 
 ```yaml
-review_result: PENDING
-decision_result: NOT_DECIDED
+review_result: INPUTS_RESOLVED_AWAITING_HUMAN_PORTFOLIO_DECISION
+decision_result: BOUNDARY_ACCEPTED_PORTFOLIO_NOT_DECIDED
 adopted_version: NOT_ASSIGNED
 implementation_status: EXISTING_LOCAL_REFERENCE_IMPLEMENTATION_NOT_ADMITTED
 conformance_status: LOCAL_TESTS_PASS_CROSS_PROJECT_NOT_EXECUTED
 release_status: NOT_RELEASED_BY_THIS_PROPOSAL
 known_limitations:
-  - REMOTE_CANONICAL_SOURCE_NOT_CONFIGURED
-  - DBOS_CANONICAL_EVIDENCE_OBJECT_MAPPING_NOT_DECIDED
+  - PORTFOLIO_ADMISSION_NOT_GRANTED
+  - DBOS_MAPPING_NOT_AUTHORIZED
   - POST_TAG_COMPETITION_ASSETS_OUTSIDE_V0_1_0
   - NO_EXTERNAL_ADOPTION_OR_CONFORMANCE_EVIDENCE
 ```

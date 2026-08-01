@@ -28,7 +28,7 @@ creates_project_relationships: false
 | `PROJECT-POP` | POP | Identity-related component（身份相关组件）；既有公共语义中也用于 portable persona interface（可移植人格接口） | DBOS Identity 相邻域 | 本表不声明 POP 是 DBOS 子模块、身份权威或已接入 DBOS | POP persona projection（人格投射）与 DBOS canonical identity（规范身份）的责任分界 |
 | `PROJECT-ARO` | ARO / ARO-Audit | Evidence/Audit component（证据/审计组件） | DBOS Evidence/Verification 相邻域 | 本表不声明其采集、验证、审计或回放能力已实现或属于 DBOS | 与 Agent Evidence、DBOS Evidence Collection 的数据所有权和阶段边界 |
 | `PROJECT-AGENT-EVIDENCE` | Agent Evidence | Evidence component（证据组件） | Execution-to-evidence handoff（执行到证据交接）相邻域 | Evidence package（证据包）不自动等于 DBOS 验证或 SAEE 评价 | 与 ARO 的审计职责、与 DBOS 的证据采集职责可能重叠 |
-| `PROJECT-MEDIA-EVIDENCE` | TITMAS Media Evidence v0.1.0 | AIGC media-review Application Profile / Reference Implementation candidate（人工智能生成内容媒体审核应用场景配置／参考实现候选） | Application / Media Governance Profile；DBOS Evidence 相邻域 | `MediaEvidenceObject` 是当前本地场景记录候选，不自动成为 DBOS canonical Evidence Object；112 项本地测试和公开合成 Demo 不表示架构接纳、Truth、Identity、Legal Evidence、Production 或 Adoption | 与 DBOS Evidence Admission/ownership、Agent Evidence receipt handoff 和外部 C2PA/检测/水印来源的映射边界尚未决策；远程 canonical source 未配置 |
+| `PROJECT-MEDIA-EVIDENCE` | TITMAS Media Evidence v0.1.0 | AIGC media-review Application Profile / Reference Implementation candidate（人工智能生成内容媒体审核应用场景配置／参考实现候选） | Application / Media Governance Profile；DBOS Evidence 相邻域 | `MediaEvidenceObject` 已决定为 domain-local evidence-bearing record，不是 DBOS canonical Evidence Object；112 项本地测试和公开合成 Demo 不表示 Portfolio Admission、Truth、Identity、Legal Evidence、Production 或 Adoption | private canonical source 和 status contract 已建立；未来 DBOS Evidence Admission mapping 仍须独立授权和实现 |
 | `PROJECT-TOKEN-GOVERNOR` | Token Governor | Resource governance component（资源治理组件） | DBOS operational governance（运行治理）相邻域；为 SAEE 提供资源评价输入 | 本表不声明其是 DBOS 内置模块或拥有最终治理权 | 与 DBOS 执行约束、SAEE 资源适应度评价的边界 |
 | `PROJECT-RESEARCH-AGENT` | Research Agent | Future Operational Digital Entity（未来运行型数字实体）；第一个 Pilot reference（试验参考） | Digital Entity / Operational | 只是参考规范与 Pilot 设计；没有创建 Agent、Identity、Runtime、Capability、Permission、任务或研究结果 | 接入前需满足 Digital Entity、Capability、授权、Evidence、评价与 Human Oversight 契约 |
 | `ARCH-ROLE-DIGITAL-ORGANISM` | Digital Organism | SAEE Evaluation Target（SAEE 评价目标）；高级 Digital Entity qualification state | Evolution Evaluation + DBOS qualification record | 不是项目、Entity 实例、Agent、Runtime、Capability 或权限；SAEE 评价不自动产生资格 | 长期阈值、Lineage、生态范围、暂停与撤销状态机尚需定义 |
@@ -91,10 +91,12 @@ TITMAS Media Evidence v0.1.0 当前只申请作为 Application Profile 和 Refer
 Implementation 候选进入架构审查。它可以展示媒体生成、来源记录、异议、审核决定和离线
 复核如何组合，但不成为通用 Evidence authority、智能审核平台或 DBOS 模块。
 
-本地 `MediaEvidenceObject` 必须保持为 domain-local evidence-bearing record，直到另有明确的
-DBOS Evidence Admission 契约、Owner 决策和版本映射。接纳请求、网站展示和本地测试都不能
-越过该边界。详见
-[`TITMAS-PROP-20260801-MEDIA-EVIDENCE-001`](../TITMAS/specifications/proposals/titmas-media-evidence-profile-admission-v0.1.md)。
+`MediaEvidenceObject` 已由人工边界决定确认为 domain-local evidence-bearing record。
+未来仍须另有明确的 DBOS Evidence Admission 契约、授权和版本映射；任何单方均不能宣布
+mapping 成立。接纳请求、网站展示和本地测试都不能越过该边界。详见
+[`TITMAS-PROP-20260801-MEDIA-EVIDENCE-001`](../TITMAS/specifications/proposals/titmas-media-evidence-profile-admission-v0.1.md)
+和
+[`TITMAS-MEDIA-EVIDENCE-ADMISSION-BOUNDARY-D01`](../TITMAS/specifications/decisions/titmas-media-evidence-admission-boundary-decision-v0.1.md)。
 
 ### 4.5 Research Agent
 

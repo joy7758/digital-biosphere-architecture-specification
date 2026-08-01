@@ -328,13 +328,27 @@ MEDIA_EVIDENCE_VERSION=v0.1.0
 MEDIA_EVIDENCE_LOCAL_TAG_COMMIT=7eac452f66a2b7de525543f80b9a7cf1465ef9a1
 MEDIA_EVIDENCE_LOCAL_TESTS=112
 MEDIA_EVIDENCE_LOCAL_TEST_RESULT=OK
-MEDIA_EVIDENCE_REMOTE_CANONICAL_SOURCE=NOT_CONFIGURED
+MEDIA_EVIDENCE_REMOTE_CANONICAL_SOURCE=joy7758/titmas-media-guard
+MEDIA_EVIDENCE_REMOTE_REPOSITORY_VISIBILITY=PRIVATE
+MEDIA_EVIDENCE_REMOTE_MAIN_COMMIT=6ded0dd0d81f8a9fc0fe029f96906cc7bc43f446
+MEDIA_EVIDENCE_CANONICAL_STATUS_SOURCE=governance/project-status.json
+MEDIA_EVIDENCE_FRESHNESS_MAXIMUM_AGE_DAYS=14
+MEDIA_EVIDENCE_OWNER_REF=ZHANGBIN
+MEDIA_EVIDENCE_LICENSE=ALL_RIGHTS_RESERVED
 MEDIA_EVIDENCE_REQUESTED_CLASSIFICATION=APPLICATION_PROFILE_AND_REFERENCE_IMPLEMENTATION_CANDIDATE
 MEDIA_EVIDENCE_PORTFOLIO_ADMISSION_GRANTED=false
 MEDIA_EVIDENCE_DBOS_MAPPING_DECIDED=false
-MEDIA_EVIDENCE_G0=NOT_PASSED
-MEDIA_EVIDENCE_G1=BLOCKED_INPUT
-MEDIA_EVIDENCE_G2=REVIEW_REQUIRED
+MEDIA_EVIDENCE_ARCHITECTURE_BOUNDARY_DECIDED=true
+MEDIA_EVIDENCE_ARCHITECTURE_INPUTS_RESOLVED=true
+MEDIA_EVIDENCE_DBOS_MAPPING_AUTHORIZED=false
+MEDIA_EVIDENCE_PR_READY_FOR_HUMAN_PORTFOLIO_DECISION=true
+MEDIA_EVIDENCE_G0=READY_FOR_HUMAN_PORTFOLIO_DECISION
+MEDIA_EVIDENCE_G1=PASS
+MEDIA_EVIDENCE_G2=BOUNDARY_DECISION_ACCEPTED_MAPPING_NOT_AUTHORIZED
+MEDIA_EVIDENCE_SITE_RC2_DEPLOYED=true
+MEDIA_EVIDENCE_PUBLIC_SURFACE_AVAILABLE=true
+MEDIA_EVIDENCE_SITE_RC2_SOURCE_REVISION=800a3523eab8f3f35295207f4df636dbadf347bf
+MEDIA_EVIDENCE_STAGE23_DEPLOYMENT_REPORT_VERIFIED=true
 ```
 
 The source-pinned report and admission request are recorded in
@@ -342,7 +356,8 @@ The source-pinned report and admission request are recorded in
 The existing `redcrag.cn` Media Evidence surface remains a local synthetic
 reference surface and does not establish architecture admission.
 
-DBA records only this bounded overlay. The `titmas-media-guard` repository
-remains the implementation evidence owner; its post-tag competition documents
-and binary assets are outside the v0.1.0 admission evidence. A remote canonical
-source and an explicit DBOS Evidence Object mapping decision are still required.
+DBA records only this bounded overlay. The private `titmas-media-guard`
+repository remains the implementation evidence owner; its post-tag competition
+documents and binary assets are outside the v0.1.0 admission evidence. The
+object ownership boundary is accepted, while Portfolio Admission and DBOS
+mapping authorization remain unresolved.
