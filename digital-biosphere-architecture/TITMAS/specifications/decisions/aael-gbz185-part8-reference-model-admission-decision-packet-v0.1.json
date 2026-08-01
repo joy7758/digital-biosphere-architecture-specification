@@ -1,0 +1,76 @@
+{
+  "schema_version": "0.1",
+  "decision_packet_id": "TITMAS-DP-20260802-AAEL-GBZ185-PART8-001",
+  "decision_queue_id": "TITMAS-AAEL-GBZ185-PART8-ADMISSION-D01",
+  "candidate_repository": "joy7758/agent-accountability-evidence-layer",
+  "candidate_evidence_revision": "debccc2de33d3202049c2c149e85aad8a71286e1",
+  "candidate_role": "IMPLEMENTATION_NEUTRAL_TECHNICAL_REFERENCE_PROFILE_REPOSITORY",
+  "proposed_classification": "ADJACENT_TECHNICAL_REFERENCE_PROFILE_CANDIDATE",
+  "evidence_observed_at": "2026-08-02",
+  "evidence_references": [
+    {
+      "source_repository": "joy7758/agent-accountability-evidence-layer",
+      "source_revision": "debccc2de33d3202049c2c149e85aad8a71286e1",
+      "source_file_path": "GBZ185-PART8-READINESS-AUDIT.md",
+      "observation_date": "2026-08-02"
+    },
+    {
+      "source_repository": "joy7758/agent-accountability-evidence-layer",
+      "source_revision": "debccc2de33d3202049c2c149e85aad8a71286e1",
+      "source_file_path": "READINESS-HARDENING-REPORT.md",
+      "observation_date": "2026-08-02"
+    },
+    {
+      "source_repository": "joy7758/agent-accountability-evidence-layer",
+      "source_revision": "debccc2de33d3202049c2c149e85aad8a71286e1",
+      "source_file_path": "PROFILE-DISCOVERY-ISOLATION-ANALYSIS.md",
+      "observation_date": "2026-08-02"
+    }
+  ],
+  "review_result": "PASS_WITH_CONDITIONS",
+  "agent_recommendation": "OPTION_B_DEFER_PENDING_PR21_MERGE",
+  "decision_status": "PENDING_HUMAN_DECISION",
+  "decision_made": false,
+  "admission_granted": false,
+  "implementation_authorized": false,
+  "reference_model_extension_authorized": false,
+  "standard_conformance_assessed": false,
+  "official_affiliation": false,
+  "external_contact_authorized": false,
+  "conditions": {
+    "aael_pr21_merged": false,
+    "profile_namespace_isolation_implemented": false,
+    "part8_source_version_pinned": false,
+    "reference_model_design_approved": false
+  },
+  "options": [
+    "APPROVE_BOUNDED_ADMISSION_WITH_CONDITIONS",
+    "DEFER_PENDING_PR21_MERGE",
+    "DEFER_PENDING_PROFILE_ISOLATION",
+    "REJECT_ADMISSION"
+  ],
+  "boundary_equations": [
+    "READINESS != ADMISSION",
+    "ADMISSION REVIEW != ADMISSION DECISION",
+    "ADMISSION != IMPLEMENTATION AUTHORIZATION",
+    "REFERENCE MODEL != STANDARD IMPLEMENTATION",
+    "CONFORMANCE != CERTIFICATION",
+    "RELEVANCE != CONTRIBUTION",
+    "CONTRIBUTION != ADOPTION",
+    "EVIDENCE != TRUTH",
+    "VERIFICATION != AUTHORIZATION",
+    "RECOMMENDATION != DECISION",
+    "DECISION != EXECUTION"
+  ],
+  "titmas_drift_check": {
+    "core_interoperability_objective_preserved": true,
+    "new_control_authority_created": false,
+    "new_truth_source_created": false,
+    "duplicate_evidence_or_verification_created": false,
+    "runtime_or_executor_created": false,
+    "current_capability_overclaimed": false,
+    "public_launch_authorized": false,
+    "community_established": false,
+    "result": "PASS_WITH_RECORDED_LIMITATIONS"
+  }
+}
