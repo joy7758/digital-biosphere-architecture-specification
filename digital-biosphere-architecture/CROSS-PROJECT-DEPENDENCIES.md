@@ -5,7 +5,7 @@ title_zh: 数字生物圈跨项目依赖图 v0.1
 status: architecture-dependency-baseline
 dependency_is_implementation: false
 dependency_is_runtime_call: false
-last_reviewed: 2026-08-01
+last_reviewed: 2026-08-02
 ---
 
 # Digital Biosphere Cross-project Dependency Map v0.1（数字生物圈跨项目依赖图 v0.1）
@@ -45,6 +45,7 @@ last_reviewed: 2026-08-01
 |---|---|---|---|
 | POP ↔ DBOS | Persona projection 与 canonical identity 映射 | `REVIEW_REQUIRED` | Owner、schema、状态写权与冲突规则 |
 | Agent Evidence → DBOS | receipt / evidence reference 交接 | `REVIEW_REQUIRED` | canonical Evidence owner、完整性与版本边界 |
+| TITMAS Agent Action Gate → DBA / future execution surfaces | 项目状态只读汇报与未来 action decision / authorization-reference / refusal 交接候选 | `M1_CONTRACT_SPECIFIED_CROSS_PROJECT_MAPPING_REVIEW_REQUIRED` | v0.1 已区分 Agent analysis、evidence verification、policy decision、Human approval、provider execution 和 post-execution release gate；仍须审查 DBOS Permission、Runtime enforcement、Gateway 和 audit-record Owner；当前无 API、Runtime 或执行权 |
 | Media Evidence → DBA / DBOS | 已接纳相邻候选的 private canonical status 只读引用；未来可能的媒体 evidence-bearing record / reference 交接 | `PORTFOLIO_ADMITTED_BOUNDARY_ONLY_MAPPING_NOT_AUTHORIZED` | Source/owner/freshness 和组合准入已建立；DBOS Evidence Admission contract、mapping 实现、跨项目符合性和 G3-G8 仍须独立决定；网站展示不等于架构采用 |
 | ARO → DBOS / SAEE | Audit result 作为 Verification 或 Evaluation 输入 | `REVIEW_REQUIRED` | Audit、Verification、Evaluation 三者分离 |
 | Token Governor → DBOS / SAEE | 资源约束记录与资源适应度输入 | `REVIEW_REQUIRED` | 执行约束、评价和最终决策责任分离 |

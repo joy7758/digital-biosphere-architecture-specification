@@ -3,7 +3,7 @@ document_id: DBA-PROJECT-PORTFOLIO-0.1
 title: Digital Biosphere Project Portfolio v0.1
 title_zh: 数字生物圈项目组合 v0.1
 status: initial-observed-portfolio-baseline
-as_of_date: 2026-08-01
+as_of_date: 2026-08-02
 source_policy: reference-only
 changes_project_ownership: false
 changes_project_status: false
@@ -40,6 +40,7 @@ changes_project_status: false
 | `POP` | `/Users/zhangbin/GitHub/persona-object-protocol` | Identity / Persona adjacent component（身份／人格相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 与 DBOS canonical identity 的 Owner 和映射边界是什么？ |
 | `ARO` | `/Users/zhangbin/GitHub/aro-audit` | Audit / Verification adjacent component（审计／验证相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 与 DBOS Verification、Agent Evidence 的阶段和数据所有权如何分离？ |
 | `AGENT-EVIDENCE` | `/Users/zhangbin/GitHub/agent-evidence` | Execution-to-evidence component（执行到证据组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 哪些记录是 canonical Evidence，哪些只是 receipt（回执）或 transport（传输）？ |
+| `TITMAS-AGENT-ACTION-GATE` | public `joy7758/titmas-agent-action-gate`；`main@626388124dd97853f2e6c08429dd6024ff0b981c`；status `governance/project-declaration.json` | Agent-proposed action 的 fail-closed Governance Service / Application boundary（治理服务／应用边界）候选 | `EXISTENCE_DECLARED_G0_READY_FOR_REVIEW_NOT_ADMITTED` | M1 已区分 action decision、approval、evidence verification 与 execution；仍须审查是否与 DBOS Permission、Runtime policy enforcement、TITMAS conformance 或现有 gateway 重复，以及跨项目 audit record Owner |
 | `MEDIA-EVIDENCE` | private `joy7758/titmas-media-guard`；`v0.1.0@7eac452f66a2b7de525543f80b9a7cf1465ef9a1`；status `governance/project-status.json` | AIGC media-review Application Profile / Reference Implementation candidate（人工智能生成内容媒体审核应用场景配置／参考实现候选） | `ADMITTED_ADJACENT_CANDIDATE` | G0、G1 和边界限定的 G2 已通过；DBOS Evidence Admission mapping 未授权，G3-G8 未评估、未授权或未执行 |
 | `TOKEN-GOVERNOR` | `/Users/zhangbin/GitHub/token-governor` | Resource governance adjacent component（资源治理相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | DBOS 运行约束与 SAEE 资源评价之间的责任边界是什么？ |
 | `ACP` | `/Users/zhangbin/GitHub/海洋/autonomous-cell-protocol` | Physical Cell protocol（物理单元协议） | `MAPPING_ONLY_REVIEW_REQUIRED` | Physical Cell Identity 与 DBOS Entity Identity 如何保持不等同？ |
@@ -73,6 +74,10 @@ ADJACENT_PROJECTS_ADMITTED=true
 MEDIA_EVIDENCE_PORTFOLIO_ADMISSION_GRANTED=true
 MEDIA_EVIDENCE_PORTFOLIO_CLASSIFICATION=ADJACENT_CANDIDATE
 MEDIA_EVIDENCE_DBOS_MAPPING_AUTHORIZED=false
+AGENT_ACTION_GATE_EXISTENCE_DECLARED=true
+AGENT_ACTION_GATE_PORTFOLIO_ADMISSION_GRANTED=false
+AGENT_ACTION_GATE_DBA_MANAGEMENT_POLICY_GRANTED=true
+AGENT_ACTION_GATE_GITHUB_ACL_CHANGED=false
 DISCOVERY_NE_ADOPTION=true
 MAPPING_NE_INTEGRATION=true
 ```
