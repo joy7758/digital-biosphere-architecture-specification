@@ -2,10 +2,10 @@
   "$schema": "architecture/schemas/commercial-program-state-v1.0.schema.json",
   "program_version": "1.0",
   "program_id": "TITMAS-AGENT-NATIVE-COMMERCIAL-MATURITY-PROGRAM",
-  "current_phase": "COMMERCIAL_RELIABILITY_GATE_CR01_LEDGER_TRANSITION_DECISION",
+  "current_phase": "FINAL_FORM_ADOPTION_IMPLEMENTATION_DECISION",
   "phase_status": "WAITING_FOR_HUMAN_DECISION",
   "started_at": "2026-07-30T19:04:07+08:00",
-  "last_updated_at": "2026-07-31T19:35:00+08:00",
+  "last_updated_at": "2026-08-01T04:20:00+08:00",
   "source_commits": {
     "governance": "8b01bb8988c9180392ac2b06a39e2541fc98b260",
     "data_plane": "c319001cc1cf9e44d8b3d0b142a025c6c9af1678",
@@ -35,7 +35,13 @@
     "CR01_D02_HOLD_AND_DESIGN_DECISION_RECORDED",
     "CR01_LEDGER_TRANSITION_DESIGN_REVIEWED",
     "CR01_D03_DECISION_PACKET_PREPARED",
-    "CR01_D03_ADVISORY_ARCHITECTURE_REVIEW_PASS"
+    "CR01_D03_ADVISORY_ARCHITECTURE_REVIEW_PASS",
+    "D04_CLOSED_FAILED_RETAINED_AFTER_THREE_CANARIES",
+    "PR36_CLOSED_UNMERGED_CONFIRMED",
+    "LEGACY_EXPERIMENTAL_LEDGER_BOUNDARY_FROZEN",
+    "FUTURE_PRODUCTION_CLEAN_GENESIS_PRINCIPLE_FROZEN",
+    "BUILD_VERSUS_ADOPT_AUDIT_COMPLETE",
+    "FINAL_FORM_IMPLEMENTATION_DECISION_PACKET_READY"
   ],
   "gate_descriptions": {
     "STAGE_5_8_SOURCE_IDENTITY_VERIFIED": "The canonical source commit was confirmed; Stage 5.8 did not pass.",
@@ -54,16 +60,24 @@
     "CR01_D02_HOLD_AND_DESIGN_DECISION_RECORDED": "Human Owner zhangbin accepted CR01-D02 on 2026-07-31. The decision authorizes design only and keeps implementation, a second deployment retry and soak closed.",
     "CR01_LEDGER_TRANSITION_DESIGN_REVIEWED": "Three role-scoped qwen3.7-max reviews selected immutable exception manifest plus Tenant-scoped anchored clean epochs; the option remains recommended, not authorized.",
     "CR01_D03_DECISION_PACKET_PREPARED": "The bounded implementation, migration, signing, rollback, 19-test and cap-exception proposal is ready for Human review; no execution authority was created.",
-    "CR01_D03_ADVISORY_ARCHITECTURE_REVIEW_PASS": "A remediated qwen3.7-max review and separate deepseek-v4-pro review report zero remaining architecture blockers; these are advisory evidence only."
+    "CR01_D03_ADVISORY_ARCHITECTURE_REVIEW_PASS": "A remediated qwen3.7-max review and separate deepseek-v4-pro review report zero remaining architecture blockers; these are advisory evidence only.",
+    "D04_CLOSED_FAILED_RETAINED_AFTER_THREE_CANARIES": "The restore-tool contract, signer ownership context and clean-ledger query routing attempts all failed and remain failures. No fourth attempt is authorized.",
+    "PR36_CLOSED_UNMERGED_CONFIRMED": "Gateway PR #36 was read-only verified CLOSED, draft and unmerged at head 3b8356d90b5eea3a0056e4672fdd7be077ec8177.",
+    "LEGACY_EXPERIMENTAL_LEDGER_BOUNDARY_FROZEN": "The 1661-receipt ledger is internal experimental evidence only; its 1659 valid and 2 unverifiable signatures remain immutable.",
+    "FUTURE_PRODUCTION_CLEAN_GENESIS_PRINCIPLE_FROZEN": "A future production ledger must start independently at sequence one after separate Paid Beta authorization and cannot inherit legacy chain, sequence or signature exceptions.",
+    "BUILD_VERSUS_ADOPT_AUDIT_COMPLETE": "Fifteen upstream candidates were reviewed from official sources; eight are recommended, six are conditional and one is deferred by score. Seven runtime introductions remain deferred to explicit triggers.",
+    "FINAL_FORM_IMPLEMENTATION_DECISION_PACKET_READY": "The seven-layer architecture and P0/P1/P2 backlog are ready for Human review; no implementation authority was created."
   },
   "blocked_gates": [
-    "CR01_LEDGER_INTEGRITY",
-    "CR01_DEPLOYMENT_AND_REMEDIATION_CAPS_EXHAUSTED",
-    "CR01_LEDGER_TRANSITION_IMPLEMENTATION_NOT_AUTHORIZED",
-    "CR01_NON_EXPORTABLE_ED25519_SIGNER_NOT_CONFIRMED"
+    "CR01_LEDGER_INTEGRITY_FAILED_RETAINED",
+    "FINAL_FORM_IMPLEMENTATION_NOT_AUTHORIZED",
+    "PAID_BETA_PRODUCTION_LEDGER_NOT_AUTHORIZED",
+    "PRODUCTION_SIGNER_NOT_CREATED",
+    "EXTERNAL_AGENT_TECHNICAL_ONBOARDING_NOT_COMPLETE"
   ],
   "human_decisions_required": [
-    "CR01_D03_OPTION_C_IMPLEMENTATION_AND_CAP_EXCEPTION",
+    "AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_MATRIX",
+    "PAID_BETA_PRODUCTION_LEDGER_AND_SIGNER",
     "PUBLISH_FINAL_PRICING",
     "ACCEPT_REAL_PAYMENT",
     "ACCEPT_REAL_CONTRACT",
@@ -89,12 +103,16 @@
     "CR01_APPLICATION_REDEPLOYMENTS_USED_1_OF_1",
     "PUBLIC_INTEGRATION_PACKAGES_NOT_PUBLISHED",
     "PUBLIC_INTEGRATION_RUNTIME_METADATA_DRIFT_DISCLOSED",
-    "CR01_LEDGER_TRANSITION_DESIGN_ONLY_NOT_IMPLEMENTED",
+    "D04_CLOSED_FAILED_RETAINED_NO_FOURTH_CANARY",
+    "PR36_CLOSED_UNMERGED_AND_NOT_REUSABLE",
+    "LEGACY_LEDGER_INTERNAL_EXPERIMENTAL_ONLY",
+    "FUTURE_PRODUCTION_LEDGER_DEFERRED_UNTIL_PAID_BETA",
+    "FINAL_FORM_ARCHITECTURE_PLAN_NOT_IMPLEMENTED",
     "LIVE_API_READINESS_RESTORE_FLAG_STALE_D03_CORRECTION_REQUIRED",
     "EXISTING_NON_EXPORTABLE_ED25519_SIGNER_NOT_CONFIRMED",
     "NO_EXTERNAL_AGENT_BETA_EVIDENCE",
     "NO_72_HOUR_7_DAY_OR_30_DAY_ELAPSED_EVIDENCE",
     "NO_REAL_PAYMENT_OR_CUSTOMER_ADOPTION_EVIDENCE"
   ],
-  "next_action": "Obtain CR01-D03 to authorize or reject Option C implementation and any PR or deployment-cap exception; do not change the Gateway, migrate the database, restart CR-01 or start soak before that decision."
+  "next_action": "Human Owner reviews the accepted adoption matrix and chooses whether to authorize a path-scoped P0 implementation plan. Do not reopen D04 or PR #36, run another canary, create a ledger or signer, change the Gateway/database, deploy, restart, purchase resources, process customer data or start soak."
 }

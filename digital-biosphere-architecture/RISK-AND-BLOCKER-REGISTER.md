@@ -3,7 +3,7 @@ document_id: DBA-RISK-BLOCKER-REGISTER-0.1
 title: Digital Biosphere Program Risk and Blocker Register v0.1
 title_zh: 数字生物圈项目群风险与阻塞台账 v0.1
 status: active-risk-register
-as_of_date: 2026-07-31
+as_of_date: 2026-08-01
 risk_acceptance_authority_assigned: true
 ---
 
@@ -43,13 +43,16 @@ risk_acceptance_authority_assigned: true
 | `R-025` | `HIGH` | Stage 5.7 通过品牌提示、事后调分、失败删除或供应商混用人为提高 TITMAS 胜率 | 24 会话已执行；独立 Auditor 对随机化、品牌提示、隐藏答案、hash、失败保留和结果改写全部 PASS | 保留冻结配置、24 份脱敏会话、私有 raw evidence、Manifest 和 Auditor 输出；不得把合成基准升级为采用或生产证据 | `MITIGATED_BY_STAGE5_7_AUDIT_PASS_RESIDUAL_OVERCLAIM_RISK` |
 | `R-026` | `CRITICAL` | 多租户 API 发生跨租户读取、写入、配额消耗或 Receipt 访问 | Gateway `c319001…` 已有 application + forced-RLS 测试；CR-01 恢复后的 runtime cross-Tenant access test 未执行 | 每次对象查询显式 tenant binding；防御纵深；完整负向矩阵；恢复环境必须独立复验；任一发现立即 `BLOCKED_SECURITY` | `MITIGATED_IMPLEMENTATION_RUNTIME_RESTORE_RECHECK_OPEN` |
 | `R-027` | `HIGH` | 将 Stage 5.8 的 `NOT_ASSESSED`、替换率失败或 12 个未知改写成组合成功 | Gateway `dee6c286...` 保留完整聚合与报告 | DBA 只做 source-pinned 投影；禁止为改善结果重复执行；商业架构记录限制 | `MITIGATED_BY_RETAINED_SOURCE` |
-| `R-028` | `CRITICAL` | Receipt 被伪造、链被篡改或被宣传成 Truth/Authorization/Certification | Receipt 实现、tamper tests 和当前链验证存在；CR-01 发现 2 条历史合成 Receipt 缺少保留公钥；CR01-D02 已完成设计授权 | 保留 CR-01 失败；不得删除、重签或 allowlist；Option C 只为推荐设计，实施仍需 CR01-D03 | `ACTIVE_CRITICAL_CR01_LEDGER_INTEGRITY_DESIGN_ONLY` |
+| `R-028` | `CRITICAL` | Receipt 被伪造、链被篡改或被宣传成 Truth/Authorization/Certification | CR-01 保留 1,661 条历史 Receipt，其中 1,659 签名有效、2 条无法验证、0 链失败；D04 三次 Canary 均失败并已永久关闭 | 旧账本永久归类为内部实验账本；不得删除、重签、allowlist、升级或迁移；未来生产账本只允许 Paid Beta 后独立 clean genesis | `MITIGATED_BY_FAILED_RETAINED_CLOSURE_PRODUCTION_LEDGER_NOT_CREATED` |
 | `R-029` | `HIGH` | 幂等重试导致重复使用量或账单计数 | Usage/Billing Ledger 和事务/idempotency tests 已实现；CR-01 完整 reconciliation 未执行 | tenant-operation-idempotency 唯一约束和原子事务；保留补偿记录；恢复后重新对账 | `MITIGATED_IMPLEMENTATION_CR01_RECONCILIATION_OPEN` |
 | `R-030` | `HIGH` | 原始客户对象、Token、Provider Key 或签名私钥进入数据库、日志或模型 | 商业 PostgreSQL 候选已部署；实现、备份 allowlist 和 disclosure scans 未发现持久化 raw payload 或 secret | 继续默认不持久化 payload；结构化 allowlist 日志；secret scan；停止条件 | `MITIGATED_IMPLEMENTATION_CONTINUOUS_RECHECK_REQUIRED` |
 | `R-031` | `HIGH` | 技术候选被误写成价格、付款、生产或成熟商业采用 | 所有 readiness 状态均为 false，付款与采用计数为 0 | 独立 machine state；Human gates；真实时间和外部采用不可伪造 | `MITIGATED_BY_STATE_MACHINE` |
-| `R-CM-001` | `CRITICAL` | 历史合成 Receipt 缺少可验证公钥，使结构恢复被误写成完整恢复或通过账本完整性闸门 | Gateway `c319001…`：1,661 条已检查、1,659 签名有效、2 条无保留公钥、0 链失败；CR01-D02 保留失败并完成 Option C 设计 | 禁止删除、重写、重签或 allowlist；保持 sustained/soak 关闭；CR01-D03 决定是否实施异常清单加锚定清洁 epoch 及 cap exception | `D02_ACCEPTED_D03_IMPLEMENTATION_DECISION_REQUIRED` |
-| `R-CM-002` | `HIGH` | 公开 `/api/v1/readiness` 的粗粒度 `backup_restore_ready=true` 与规范状态 `backup_restore_drill=false` 冲突，可能误导智能体把备份完整性或结构恢复误读为完整恢复 | 2026-07-31 live endpoint 与 DBA `commercial-readiness.json`、CR-01 报告交叉核验 | CR01-D03 候选实现必须把 backup integrity、structural restore、Receipt integrity、full restore 与 RTO 分开并由证据状态驱动；在授权前不做 status-only 线上修改 | `ACTIVE_D03_CORRECTION_REQUIRED_IMPLEMENTATION_NOT_AUTHORIZED` |
-| `R-CM-003` | `HIGH` | D03 安全设计要求非导出 Ed25519 签名边界，但现有已批准资源尚未确认，且当前禁止新购云资源或 Provider | 官方文档显示百度 KMS 当前列出的非对称规格不含 Ed25519；阿里云 KMS 文档支持 software-protected Ed25519/EdDSA 且私钥不可导出，但没有 TITMAS 账户资源事实 | 先做只读 existing-resource preflight；没有合格资源则停止并请求独立 Human Decision；不得自动换算法、购买或创建 KMS | `ACTIVE_INPUT_BLOCKER_NO_RESOURCE_ACTION_AUTHORIZED` |
+| `R-CM-001` | `CRITICAL` | 历史合成 Receipt 缺少可验证公钥，使结构恢复被误写成完整恢复或通过账本完整性闸门 | 1,661 条已检查、1,659 签名有效、2 条无保留公钥、0 链失败；D04 第三次 Canary 仍失败 | D04 关闭失败并保留；禁止第四次重试及历史修改；旧账本仅供内部开发/研究，生产 clean genesis 延后到 Paid Beta 决策 | `D04_CLOSED_FAILED_RETAINED` |
+| `R-CM-002` | `HIGH` | 公开 `/api/v1/readiness` 的粗粒度 `backup_restore_ready=true` 与规范状态 `backup_restore_drill=false` 冲突，可能误导智能体把备份完整性或结构恢复误读为完整恢复 | 2026-07-31 live endpoint 与 DBA `commercial-readiness.json`、CR-01 报告交叉核验 | 若 P0 最终形态实施被另行授权，必须把 backup integrity、structural restore、Receipt integrity、full restore 与 RTO 分开并由证据状态驱动；在授权前不做 status-only 线上修改 | `ACTIVE_FINAL_FORM_CORRECTION_REQUIRED_IMPLEMENTATION_NOT_AUTHORIZED` |
+| `R-CM-003` | `HIGH` | 未来生产 signer、算法、不可导出边界和运营责任尚未决定 | D04 不再建设内部 signer/clean ledger；当前 `PRODUCTION_SIGNER_CREATED=false`、`KMS_PURCHASE_AUTHORIZED=false` | 延后到 Paid Beta 前的独立 signer 决策；禁止从旧账本或 PR #36 继承 Key、异常或实现 | `DEFERRED_TO_PAID_BETA_HUMAN_DECISION` |
+| `R-CM-004` | `CRITICAL` | 最终形态计划被误写成已实施、技术候选或生产就绪 | Build-versus-Adopt 审计和 Backlog 仅为 DBA 决策材料；Gateway、数据库和 live release 未改变 | 保持所有 readiness false；下一步必须是 `AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_MATRIX` | `ACTIVE_HUMAN_DECISION_REQUIRED` |
+| `R-CM-005` | `HIGH` | 上游版本、许可证或安全状态随时间变化，使采用矩阵过期 | 15 个项目只按 2026-08-01 官方页面/Release 做点时审计 | 每次引入或升级前刷新 Release、LICENSE、SECURITY/advisory、NOTICE、transitive dependency 和服务条款；法律责任由 Human Owner 承担 | `MITIGATED_BY_REFRESH_GATE` |
+| `R-CM-006` | `HIGH` | 过早引入 OpenMeter、OpenFGA、OPA、NATS、Temporal、APISIX 或 OpenBao，导致单机系统运维膨胀和重复建设 | 当前 1 台服务器、并发 10、约 19 RPS、0 付费客户；各项目的运行依赖与触发器已记录 | P2 全部 fail-closed 到量化/结构触发器和单独 Human Decision；禁止把通用组件包装成 TITMAS 核心 | `MITIGATED_BY_TRIGGERED_DEFER_POLICY` |
 
 ## 3. Active Blockers（当前阻塞）
 
@@ -59,8 +62,8 @@ risk_acceptance_authority_assigned: true
 | `B-003` | canonical status source 未确认 | 自动或周期性可信状态汇总 | DBOS、SAEE、Pilot 各自提供 source + freshness + conflict policy | 当前时间点只读 snapshot |
 | `B-004` | Research Agent Human Review 与 approved source 不完整 | Prototype Authorization Review 和实验 | Pilot 自己的 readiness gate 达到可审查状态并获得人工决定 | Pilot 规范改进和 DBA 项目群规划 |
 | `B-005` | 两个 DBA 语义表面未完成 canonical reconciliation | 对外唯一入口、规范优先级和自动检索路由 | `DQ-008` 形成决定并完成引用/迁移验证 | 当前仓库作为 Program Governance Cockpit 的工作树基线 |
-| `B-CM-001` | CR-01 恢复账本存在 2 条不可验证历史合成 Receipt，且实现 PR 与应用重部署上限均已用尽 | CR-01、CM-G4、CM-G5、CM-5、Production Candidate 和后续长运行 | CR01-D03 明确接受或拒绝 Option C，并单独授权实现、迁移和 cap exception；之后完整复验 | DBA 状态对账、设计审查和公开安全 SDK/Adapter assessment |
-| `B-CM-002` | 已批准、非导出 Ed25519 transition-manifest signer 未确认 | D03 实施入口、manifest 签名、迁移与部署 | 只读证明确认已有合格 signer，或单独 Human Decision 授权明确的资源/算法方案 | D03 决策包审查、DBA 文档和无执行的 schema/test 设计 |
+| `B-CM-003` | 最终形态采用矩阵尚未获得实施授权 | 任何 P0 代码、依赖、工作流、服务或适配器变更 | Human Owner 决定 `AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_MATRIX` 并给出仓库/路径/测试/回滚边界 | DBA 审计、只读上游研究和决策包维护 |
+| `B-CM-004` | 生产账本与生产 signer 仅有 clean-genesis 原则，没有 Paid Beta 授权 | 生产 Receipt 权威、真实客户数据、付款、生产恢复和商业长运行 | `PAID_BETA_LAUNCH_AUTHORIZED` 后独立完成 signer、数据保留、合同责任、Genesis、备份恢复和回滚决策 | 不依赖生产账本的 P0 技术候选工作（仍需 B-CM-003 解除） |
 
 ## 4. Resolved Risk and Cleared Blockers（已解决风险与已解除阻塞）
 
@@ -74,6 +77,8 @@ risk_acceptance_authority_assigned: true
 | `B-009` | Agent Customer Validation 基线的 exact invocation、composition、positive fit 和 simple-task negative control 未达阈值 | `TMAI-ACV-20260722-002` 用相同阈值复测：12/12 sessions、全部阈值通过；原 `001=CONDITIONAL` 保留 | 只解除 agent-readable packaging blocker；不产生 DBOS 公开、客户采用或发布授权 |
 | `B-010` | DBOS 没有已发布的公开 package、API 或面向 AI agent 的受控可调用路径 | `ADR-022`、exact GitHub Release asset、匿名 SHA-256 和隔离安装复验 | 只解除有界 package 获取阻塞；没有公共 Runtime、托管 API、Permission 或整仓公开 |
 | `B-011` | 规范名称与公开网络仍未命中 TMAI | `ADR-022` 为 Developer Preview v0.1 显式接受并继续披露 `PARTIAL_METADATA_ONLY` | 只解除 v0.1 发布阻塞；发现事实没有升级，索引刷新后仍需复查 |
+| `B-CM-001` | D04 旧账本异常与重试路线长期开放 | `ADR-038`：三次失败全部保留；D04/PR #36 永久关闭；禁止第四次 Canary；旧账本冻结为内部实验账本 | 不是 CR-01 通过；生产账本仍不存在，Paid Beta clean genesis 另行决定 |
+| `B-CM-002` | transition-manifest signer 阻塞 D04 内部 clean-ledger 实施 | `ADR-038` 取消 D04 实施路线，不再为内部账本创建或购买 signer | 不表示生产 signer 已解决；该问题转入 Paid Beta 的 `B-CM-004` |
 
 | blocker_id | 原阻塞 | 解除证据 | 保留边界 |
 |---|---|---|---|
@@ -89,11 +94,11 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=28
-ACTIVE_RISKS=26
+TRACKED_RISKS=31
+ACTIVE_RISKS=29
 RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=7
-BLOCKERS_CLEARED=7
+BLOCKERS_CLEARED=9
 LOCAL_BLOCKERS_CLEARED_NOT_RELEASED=1
 RISKS_ACCEPTED=1
 RISK_REGISTER_GRANTS_AUTHORITY=false

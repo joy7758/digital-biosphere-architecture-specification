@@ -5,7 +5,7 @@ title_zh: 数字生物圈项目群决策队列 v0.1
 status: active-decision-register-owner-decisions-recorded
 decision_records_created: true
 authority_assignments_created: true
-last_reviewed: 2026-07-31
+last_reviewed: 2026-08-01
 ---
 
 # Digital Biosphere Program Decision Queue v0.1（数字生物圈项目群决策队列 v0.1）
@@ -27,7 +27,7 @@ last_reviewed: 2026-07-31
 | `DQ-006` | `P2` | POP、ARO、Agent Evidence、Token Governor、ACP 哪些进入正式 Portfolio？ | `OPEN` | 每个项目的目的、Owner、canonical source、重复能力和接口边界 | 项目组合与依赖范围 | 本地发现、历史关联或相邻角色等于正式准入 |
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
-| `CR01-D03` | `P0` | 是否授权实施 Option C 不可变历史清单与 Tenant-scoped clean epoch，并给予一次有界 PR、迁移、部署和隔离恢复复验 cap exception？ | `READY_FOR_REVIEW` | D03 决策包、19 项失败关闭矩阵、`qwen3.7-max` 与独立 `deepseek-v4-pro` 零 blocker 审查、签名边界缺口、当前 source/runtime 复核 | 决定是否进入一次受限 Gateway 实现；现有非导出 Ed25519 signer 未确认时仍不可执行 | Packet Ready 自动等于实现、云资源、迁移、部署、CR-01 或 soak 授权 |
+| `TITMAS-FINAL-FORM-IMPLEMENTATION-D01` | `P0` | 是否根据已审计的采用矩阵授权有界 P0 最终形态实施？ | `READY_FOR_REVIEW` | D04 最终处置、Build-versus-Adopt 审计、组件矩阵、七层架构包、P0/P1/P2 Backlog、许可证与数据边界复核 | 决定是否进入分仓、分路径、可回滚的 P0 实施；P1/P2、生产账本、部署和付费仍需独立决定 | 审计完成自动等于实施、依赖安装、服务创建、迁移、部署、Paid Beta 或生产授权 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
@@ -52,7 +52,8 @@ last_reviewed: 2026-07-31
 | `TITMAS-PRIVATE-CORE-COMMERCIALIZATION-SUPERSESSION-D01` | `ACCEPTED_EXECUTION_AUTHORIZED`：所有核心仓库保持 private，并建立源分类、默认拒绝导出、商业草案和私有智能体客户评估候选 | `decided_by_ref=zhangbin`；2026-07-29 | 废止恢复公开可见性的旧建议并关闭当前公共贡献运行面；保留 PR #41/#42/#45、Welcome Issue #43 与此前公开阶段历史；不授权公开导出、公开镜像、客户访问、真实模型调用、Release 或 Deployment |
 | `ADR-035 / TITMAS-AGENT-ABSOLUTE-PRIORITY-CONSTITUTIONAL-CORRECTION-D01` | `ACCEPTED_EXECUTION_AUTHORIZED`：AI Agent 成为 TITMAS 首要运行客户、选择和验证主体；E01 降级为历史可选兼容性观察；进入 Stage 5.7 匿名选择与 ROI 基准 | `decided_by_ref=zhangbin`；2026-07-30 | 允许治理修正、E01 重分类和有界 Stage 5.7 基准；不产生 Agent 自我授权、商业采用、正式标准、生产或人类责任移除 |
 | `ADR-036 / TITMAS-AGENT-NATIVE-COMMERCIAL-MATURITY-PROGRAM-D01` | `ACCEPTED_EXECUTION_AUTHORIZED_WITH_HUMAN_GATES`：进入可恢复、Agent-first 商业技术成熟度计划 | `decided_by_ref=zhangbin`；2026-07-30 | 允许现有私有 Gateway 内的可逆多租户、Receipt、计量、账单预览、测试和现有百度云候选部署；不授权真实价格、付款、合同、法律发布、DNS、证书、正式 SLA、客户生产数据、认证或公共收费上线 |
-| `ADR-037 / CR01-D02` | `ACCEPTED_DESIGN_ONLY`：保持历史 Receipt 不可变并设计异常清单与清洁账本 epoch | `decided_by_ref=zhangbin`；2026-07-31 | 只授权架构设计和审查；Gateway 代码、数据库迁移、第二次部署重试、CR-01 重启和 soak 均为 `false`；下一决定为 `CR01-D03` |
+| `ADR-037 / CR01-D02` | `ACCEPTED_DESIGN_ONLY_THEN_SUPERSEDED_BY_D04_CLOSURE`：保持历史 Receipt 不可变并设计异常清单与清洁账本 epoch | `decided_by_ref=zhangbin`；2026-07-31 | 当时只授权设计并要求下一决定为 `CR01-D03`；后续 D04 三次失败与 `ADR-038` 已关闭该实施路线，历史设计不得恢复为当前授权 |
+| `ADR-038 / TITMAS-D04-FINAL-CLOSURE-AND-ADOPTION-AUDIT-D01` | `ACCEPTED_AND_EXECUTED_GOVERNANCE_ONLY`：D04 在三次失败后永久关闭；PR #36 关闭未合并；旧账本永久归类为内部实验账本；未来生产账本采用 Paid Beta 后的独立 clean genesis；完成优先采用成熟上游的最终形态审计 | `decided_by_ref=zhangbin`；2026-08-01 | 只授权 DBA 最终处置和只读上游审计；不授权第四次 Canary、PR #36 重开/合并/移植、Gateway 修改、Migration 0005、生产账本、部署、购买、客户数据、付款或生产声明 |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 

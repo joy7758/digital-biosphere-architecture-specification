@@ -8,13 +8,16 @@ SANDBOX_PREVIEW_SERVICE_ACTIVE=true
 POSTGRESQL_INSTALLED=true
 RUNBOOK_VALIDATED_BY_DRILL=false
 RUNBOOK_PARTIALLY_VALIDATED=true
-CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
+CR01_STATUS=BLOCKED_LEDGER_INTEGRITY_FAILED_RETAINED
+D04_FINAL_STATUS=CLOSED_FAILED_RETAINED
+D04_FURTHER_CANARY_RETRIES_AUTHORIZED=false
 PRODUCTION_READY=false
 ```
 
 This runbook is the execution contract for the deployed bounded commercial
 candidate. Deployment does not mean Production Candidate validation or
-Production Ready. The current CR-01 recovery gate is blocked.
+Production Ready. The CR-01 recovery gate remains blocked and its D04 internal
+clean-ledger route is closed failed-retained.
 
 ## Baseline environment
 
@@ -151,14 +154,15 @@ because two of 1,661 historical synthetic Receipt signatures could not be
 verified. Counts, schema, audit tip, 12 forced-RLS tables and all Receipt chain
 links matched, but structural restoration is not full recovery.
 
-The historical records must not be deleted, rewritten, re-signed or
-allowlisted. Any quarantine, segregation or clean-ledger transition requires a
-separate Human Decision and a new authorized execution scope.
+The historical records must not be deleted, rewritten, re-signed, allowlisted,
+upgraded or migrated. D04 retained all three Canary failures and permanently
+closed the internal clean-ledger route. CR01-D02 and its Option C are historical
+design evidence only and no longer form a current implementation route.
 
-CR01-D02 now authorizes design only. The reviewed Option C preserves the
-legacy ledger, describes the two exceptions in a signed private manifest and
-anchors new Tenant-scoped epochs to legacy tips. CR01-D03 is still required
-before code, migration, deployment, restore re-execution or soak.
+Future production use requires a separately authorized clean-genesis ledger
+after `PAID_BETA_LAUNCH_AUTHORIZED`; it must not inherit the legacy chain,
+sequence or signature exceptions. Until then, code, migration, deployment,
+restore re-execution, soak and another Canary remain unauthorized.
 
 ## Synthetic drills required
 

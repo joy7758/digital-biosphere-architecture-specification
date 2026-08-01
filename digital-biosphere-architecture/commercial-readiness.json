@@ -1,7 +1,7 @@
 {
   "$schema": "architecture/schemas/commercial-readiness-v1.0.schema.json",
   "readiness_version": "1.0",
-  "observed_at": "2026-07-31T18:44:30+08:00",
+  "observed_at": "2026-08-01T04:20:00+08:00",
   "commercial_technical_ready": false,
   "paid_beta_ready": false,
   "production_ready": false,
@@ -13,11 +13,16 @@
     "billing_ledger": "PASS",
     "signed_receipts": "FAILED_RETAINED",
     "agent_native_onboarding": "IN_PROGRESS",
+    "d04_final_disposition": "FAILED_RETAINED",
+    "final_form_adoption_audit": "PASS_WITH_LIMITATIONS",
+    "final_form_implementation": "WAITING_FOR_HUMAN_DECISION",
     "public_safe_sdks_and_adapters": "PASS_WITH_LIMITATIONS"
   },
   "operational_gates": {
     "production_candidate_deployment": "PASS_WITH_LIMITATIONS",
     "backup_restore_drill": "FAILED_RETAINED",
+    "production_ledger_clean_genesis": "NOT_STARTED",
+    "production_signer": "NOT_STARTED",
     "incident_drill": "PASS_WITH_LIMITATIONS",
     "load_test": "PASS_WITH_LIMITATIONS",
     "internal_72_hour_soak": "NOT_STARTED",
@@ -42,5 +47,5 @@
     "high_findings_without_mitigation": null,
     "cross_tenant_leakage_findings": null
   },
-  "next_human_decision": "CR01_D03_OPTION_C_IMPLEMENTATION_AND_CAP_EXCEPTION"
+  "next_human_decision": "AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_MATRIX"
 }
