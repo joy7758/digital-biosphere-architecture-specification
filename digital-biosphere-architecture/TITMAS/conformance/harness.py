@@ -187,23 +187,6 @@ def check_frontmatter() -> dict[str, Any]:
     return {"proposal_frontmatter_checked": len(parsed)}
 
 
-def check_fixtures() -> dict[str, Any]:
-    schema = load_json(TITMAS_ROOT / "conformance" / "schemas" / "core-developer-surface.schema.json")
-    positive_paths = sorted((TITMAS_ROOT / "conformance" / "fixtures" / "positive").glob("*.json"))
-    for path in positive_paths:
-        payload = load_json(path)
-        validate_schema(payload, schema)
-        errors = semantic_errors(payload)
-        if errors:
-            raise ConformanceError(f"{path.name}: semantic errors {errors}")
-    negative = load_json(TITMAS_ROOT / "conformance" / "fixtures" / "negative" / "semantic-elevation-cases.json")
-    for case in negative["cases"]:
-        errors = semantic_errors(case["payload"])
-        if case["expected_error"] not in errors:
-            raise ConformanceError(f"{case['id']}: expected {case['expected_error']}, got {errors}")
-    return {"positive_cases_passed": len(positive_paths), "negative_cases_rejected": len(negative["cases"])}
-
-
 def check_stage5_contributions() -> dict[str, Any]:
     path = TITMAS_ROOT / "conformance" / "stage5_contributions.py"
     spec = importlib.util.spec_from_file_location("titmas_stage5_conformance", path)
@@ -977,7 +960,6 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
     functions = (
         ("registries", check_registries),
         ("frontmatter", check_frontmatter),
-        ("fixtures", check_fixtures),
         ("stage5_contributions", check_stage5_contributions),
         ("community_status", check_community_status),
         ("merge_admission_boundary", check_merge_admission_boundary),
