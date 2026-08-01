@@ -119,7 +119,7 @@ RELEASE_EXECUTED=true
 - `DQ-003`：确认 DBOS、SAEE、Research Agent Pilot 的 canonical status source；
 - `DQ-004`：选择第一个跨项目 conformance（符合性）里程碑；
 - `DQ-008`：决定当前驾驶舱与既有 DBA public meaning layer 的规范关系和单一前门；
-- `TITMAS-AGENT-ACTION-GATE-ADMISSION-D01`：存在申报、有界 DBA 管理授权、public `main@6263881`、M1 action contracts、AgentTeams/Skills/MCP 规格、威胁模型和四类 contract fixtures 已形成，当前 `READY_FOR_REVIEW`；是否作为 `ADJACENT_CANDIDATE` 准入仍需 Human Decision，并须保留 DBOS Permission／Runtime／Gateway Owner 复核；
+- `TITMAS-AGENT-ACTION-GATE-ADMISSION-D01`：存在申报、完整 DBA 项目管理授权、public Draft PR `#1@27ccf95`、Action Gate／6 MCP tool／agent-evidence adapter／36 tests 与真实 sandbox Draft PR `#3` 已形成，当前 `READY_FOR_REVIEW`；是否作为 `ADJACENT_CANDIDATE` 准入仍需 Human Decision，并须保留 live AgentTeams、DBOS Permission／Runtime／Gateway Owner 复核；
 - `DQ-009`、`DQ-016` 已由 `ADR-022` 关闭：只公开 exact public-safe wheel、DBOS 整仓保持 private、接受 v0.1 的 `PARTIAL_METADATA_ONLY` 限制并由 `released_by_ref=zhangbin` 授权发布；
 - `DQ-001`、`DQ-011`、`DQ-012`、`DQ-014` 已由 `ADR-020` 关闭；
 - `DQ-010` 的人类参与者路径已由 `ADR-021` 标记为 `SUPERSEDED_FOR_PRIMARY_ROUTE`，没有被改写成执行通过；
@@ -382,63 +382,73 @@ DBOS mapping authorization and G3-G8 remain unresolved or explicitly closed.
 
 ## 13. TITMAS Agent Action Gate Existence Declaration Overlay
 
-Observed on 2026-08-02 from the child repository's public `main` specification
-baseline and completed GitHub Actions run `30709733116`:
+Observed on 2026-08-02 from the child repository's public experimental
+implementation Draft PR and completed GitHub Actions run `30711717059`:
 
 ```text
 AGENT_ACTION_GATE_PROJECT_ID=TITMAS-AGENT-ACTION-GATE
 AGENT_ACTION_GATE_LOCAL_PATH=/Users/zhangbin/GitHub/titmas-agent-action-gate
-AGENT_ACTION_GATE_LOCAL_BRANCH=main
-AGENT_ACTION_GATE_LOCAL_COMMIT=626388124dd97853f2e6c08429dd6024ff0b981c
+AGENT_ACTION_GATE_LOCAL_BRANCH=agent/implement-action-gate-runtime
+AGENT_ACTION_GATE_LOCAL_COMMIT=27ccf953421e1491177c7946a31296a1e1eabe29
 AGENT_ACTION_GATE_REMOTE=https://github.com/joy7758/titmas-agent-action-gate
 AGENT_ACTION_GATE_REMOTE_VISIBILITY=PUBLIC
-AGENT_ACTION_GATE_REMOTE_COMMIT=626388124dd97853f2e6c08429dd6024ff0b981c
-AGENT_ACTION_GATE_CONTRACT_CI=https://github.com/joy7758/titmas-agent-action-gate/actions/runs/30709733116
+AGENT_ACTION_GATE_REMOTE_COMMIT=27ccf953421e1491177c7946a31296a1e1eabe29
+AGENT_ACTION_GATE_IMPLEMENTATION_PR=https://github.com/joy7758/titmas-agent-action-gate/pull/1
+AGENT_ACTION_GATE_IMPLEMENTATION_PR_STATE=OPEN_DRAFT_NOT_MERGED
+AGENT_ACTION_GATE_CONTRACT_CI=https://github.com/joy7758/titmas-agent-action-gate/actions/runs/30711717059
 AGENT_ACTION_GATE_CONTRACT_CI_CONCLUSION=SUCCESS
 AGENT_ACTION_GATE_CANONICAL_AGENT_ENTRY=agent-index.json
 AGENT_ACTION_GATE_CANONICAL_STATUS_SOURCE=governance/project-declaration.json
-AGENT_ACTION_GATE_PROJECT_DECLARATION_SHA256=bd0297e5e1188ab185bf8a9840c8deec1ac22c39514ce92007e91b8937bc5164
-AGENT_ACTION_GATE_DBA_MANAGEMENT_GRANT_SHA256=d6c58b4532241eacdb1e60d0466f9106a09381b62242c4bf0846dbaaa8ac099a
-AGENT_ACTION_GATE_RECOMMENDATION_GATE_SHA256=6ebdbf7d99e29205ee3492e83fca718b22c031d2eac602debf650ebae846edec
-AGENT_ACTION_GATE_UPSTREAM_SOURCES_SHA256=41f7a5d258a726e9da7009f752203c4789fffbf6dfacdded9823f523fe3685a0
-AGENT_ACTION_GATE_AGENT_INDEX_SHA256=c2263fd27faf58201a7872c1f6ec0405de57118014b978eba3efd1ccbc6bec7d
+AGENT_ACTION_GATE_PROJECT_DECLARATION_SHA256=7aabf6c770f0403b72af1b53770a7fbe2bbe180deecfe445aeddb19b235e2c2c
+AGENT_ACTION_GATE_DBA_MANAGEMENT_GRANT_SHA256=571be7c324542f876e646842b8554ccb7a29529e98cf1c991df053a7d8c3da7c
+AGENT_ACTION_GATE_RECOMMENDATION_GATE_SHA256=af46ef2b9b52f452b3737aab51ed047acc220dc4b7746921c455e17467d084b9
+AGENT_ACTION_GATE_UPSTREAM_SOURCES_SHA256=e96f82a7a61536d71adb13d0e70934435384127e31888d3712fb9fbde7ef1e42
+AGENT_ACTION_GATE_AGENT_INDEX_SHA256=317f3a44105f0bac9155b596d0c6da183aff65902843f580a0d45f5b5783506f
+AGENT_ACTION_GATE_PUBLIC_DEMO_EVIDENCE_SHA256=0995a8ecab02934dc23f075e7169003dce33237117f2307eae68bfdcff941792
 AGENT_ACTION_GATE_CONSTITUTION_SOURCE_COMMIT=269ab5899047503557f957ba0f7abbd61d8b18d3
 AGENT_ACTION_GATE_CONSTITUTION_SHA256=ca34af2be5152e395454a83a0e9d2f085861497b601e980adee39e0a36113954
 AGENT_ACTION_GATE_EXISTENCE_DECLARED=true
 AGENT_ACTION_GATE_PORTFOLIO_ADMISSION_GRANTED=false
 AGENT_ACTION_GATE_G0=REVIEW_REQUIRED_READY_FOR_HUMAN_DECISION
-AGENT_ACTION_GATE_G1=PASS_PUBLIC_M1_SOURCE_PINNED
+AGENT_ACTION_GATE_G1=PASS_PUBLIC_DRAFT_PR_SOURCE_PINNED
 AGENT_ACTION_GATE_G2=PARTIAL_SPECIFIED_CROSS_PROJECT_OWNER_REVIEW_REQUIRED
-AGENT_ACTION_GATE_G3=NOT_STARTED
-AGENT_ACTION_GATE_G4=NOT_ASSESSED_CONTRACT_FIXTURES_ONLY
-AGENT_ACTION_GATE_G5=NOT_AUTHORIZED
-AGENT_ACTION_GATE_G6=NOT_EXECUTED
-AGENT_ACTION_GATE_G7=NOT_ASSESSED
-AGENT_ACTION_GATE_G8=NOT_RELEASED_NOT_ADOPTED
-AGENT_ACTION_GATE_IMPLEMENTATION_STATUS=NOT_STARTED
+AGENT_ACTION_GATE_G3=EXPERIMENTAL_REFERENCE_IMPLEMENTATION_ON_DRAFT_PR_NOT_MERGED
+AGENT_ACTION_GATE_G4=PASS_LOCAL_AND_CI_REFERENCE_CONFORMANCE_NOT_INDEPENDENT
+AGENT_ACTION_GATE_G5=OWNER_FULL_PROJECT_MANAGEMENT_POLICY_RECORDED_RUNTIME_PERMISSION_NOT_CREATED
+AGENT_ACTION_GATE_G6=REAL_GITHUB_SANDBOX_BRANCH_AND_DRAFT_PR_EXECUTED_NO_MERGE
+AGENT_ACTION_GATE_G7=SELF_RECOMMENDATION_NOT_RECOMMENDED_INDEPENDENT_REVIEW_PENDING
+AGENT_ACTION_GATE_G8=NOT_RELEASED_NOT_ADOPTED_NOT_SUBMITTED
+AGENT_ACTION_GATE_IMPLEMENTATION_STATUS=EXPERIMENTAL_REFERENCE_IMPLEMENTATION
 AGENT_ACTION_GATE_PRODUCT_RECOMMENDATION=NOT_RECOMMENDED
 AGENT_ACTION_GATE_BOUNDED_DEVELOPMENT_RECOMMENDATION=RECOMMENDED
 AGENT_ACTION_GATE_SPECIALIZED_AGENT_IDENTITIES=5
 AGENT_ACTION_GATE_VERSIONED_SKILLS=5
-AGENT_ACTION_GATE_MCP_TOOLS_SPECIFIED=6
+AGENT_ACTION_GATE_MCP_TOOLS_IMPLEMENTED=6
 AGENT_ACTION_GATE_CONTRACT_FIXTURES=4
+AGENT_ACTION_GATE_RUNTIME_TESTS=36
+AGENT_ACTION_GATE_LIVE_AGENTTEAMS_DEPLOYED=false
+AGENT_ACTION_GATE_SANDBOX_PR=https://github.com/joy7758/titmas-action-gate-demo-sandbox/pull/3
+AGENT_ACTION_GATE_SANDBOX_PR_MERGED=false
+AGENT_ACTION_GATE_GITHUB_RELEASE_CREATED=false
 AGENT_ACTION_GATE_DBA_MANAGEMENT_POLICY_GRANTED=true
+AGENT_ACTION_GATE_DBA_MANAGEMENT_SCOPE=FULL_PROJECT_MANAGEMENT_WITH_ACTION_CLASS_GATES
 AGENT_ACTION_GATE_GITHUB_ACL_CHANGED=false
 AGENT_ACTION_GATE_RUNTIME_PERMISSION_CREATED=false
 AGENT_ACTION_GATE_COMPETITION_SUBMISSION=false
 ```
 
-The Human Owner has granted the DBA cockpit a bounded governance-management
-policy scope in the child repository: read, maintain governance and architecture
-alignment, maintain agent-readable discovery and status projections, request
-gates, and propose changes through a branch and Draft PR. DBA is not a GitHub
-principal, so this declaration does not claim that repository ACLs changed.
-Merge, release, deployment, secrets, Runtime permission, external action and
-competition submission remain outside that grant.
+The Human Owner has granted the DBA cockpit full project-management policy scope
+with separate action-class gates. This covers governance, architecture,
+implementation, testing, project-scoped remotes and sandbox evidence, while
+merge, release, deployment and competition submission remain separately
+recorded gated events. DBA is not itself a GitHub principal, so repository ACL
+and Runtime permission remain false until separately mapped and verified.
 
 The proposal is
 [`TITMAS-PROP-20260802-AGENT-ACTION-GATE-001`](TITMAS/specifications/proposals/titmas-agent-action-gate-admission-v0.1.md),
 and the machine projection is
 [`agent-action-gate.json`](TITMAS/specifications/portfolio/agent-action-gate.json).
-DBA records existence and the pending decision only; it does not convert the
-child governance baseline into implementation, admission or operational truth.
+DBA records existence, the experimental child implementation and the pending G0
+decision. It does not convert a Draft PR or sandbox trace into portfolio
+admission, live AgentTeams deployment, production readiness, release, adoption
+or competition submission.

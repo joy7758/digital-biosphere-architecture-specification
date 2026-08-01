@@ -27,7 +27,7 @@ last_reviewed: 2026-08-02
 | `DQ-006` | `P2` | POP、ARO、Agent Evidence、Token Governor、ACP 哪些进入正式 Portfolio？ | `OPEN` | 每个项目的目的、Owner、canonical source、重复能力和接口边界 | 项目组合与依赖范围 | 本地发现、历史关联或相邻角色等于正式准入 |
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
-| `TITMAS-AGENT-ACTION-GATE-ADMISSION-D01` | `P1` | 是否将 TITMAS Agent Action Gate 作为有界 `ADJACENT_CANDIDATE` 纳入项目组合？ | `READY_FOR_REVIEW` | public `main@6263881`、M1 action contracts、AgentTeams/Skills/MCP 规格、威胁模型、四类 contract fixtures、DBA 管理边界；评审时仍须处置 DBOS Permission、Runtime enforcement、Gateway 和 audit-record Owner 的重复／映射风险 | 只决定 G0 项目组合准入和后续 G2/G3 审查路线 | 存在申报、公开仓库、CI PASS、DBA 管理授权或开发前推荐自动等于准入、实现、运行授权、比赛提交或采用 |
+| `TITMAS-AGENT-ACTION-GATE-ADMISSION-D01` | `P1` | 是否将 TITMAS Agent Action Gate 作为有界 `ADJACENT_CANDIDATE` 纳入项目组合？ | `READY_FOR_REVIEW` | public Draft PR `#1@27ccf95`、CI PASS、Action Gate／6 MCP tool／agent-evidence adapter／36 tests、真实 sandbox Draft PR `#3`、完整 DBA 项目管理授权；评审时仍须处置 DBOS Permission、Runtime enforcement、Gateway 和 audit-record Owner 的重复／映射风险 | 只决定 G0 项目组合准入和后续 G2/G3 审查路线 | Draft PR、CI PASS、sandbox 外部写入或管理授权自动等于准入、live AgentTeams、生产就绪、release、比赛提交或采用 |
 | `TITMAS-FINAL-FORM-IMPLEMENTATION-D01` | `P0` | 是否根据已审计的采用矩阵授权有界 P0 最终形态实施？ | `READY_FOR_REVIEW` | D04 最终处置、Build-versus-Adopt 审计、组件矩阵、七层架构包、P0/P1/P2 Backlog、许可证与数据边界复核 | 决定是否进入分仓、分路径、可回滚的 P0 实施；P1/P2、生产账本、部署和付费仍需独立决定 | 审计完成自动等于实施、依赖安装、服务创建、迁移、部署、Paid Beta 或生产授权 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
