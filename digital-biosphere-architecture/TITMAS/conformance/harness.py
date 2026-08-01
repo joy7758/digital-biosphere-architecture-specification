@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import copy
+import functools
 import hashlib
 import json
 import importlib.util
@@ -774,6 +775,11 @@ def check_agent_native_adversarial() -> dict[str, Any]:
 
 LINK_PATTERN = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 
+
+@functools.lru_cache(maxsize=None)
+def get_markdown_links(path: Path) -> list[str]:
+    return LINK_PATTERN.findall(path.read_text(encoding="utf-8"))
+
 PUBLIC_ENTRY_DOCUMENTS = (
     DBA_ROOT.parent / "README.md",
     DBA_ROOT / "CONTRIBUTING.md",
@@ -849,7 +855,7 @@ def check_public_entry_consistency() -> dict[str, Any]:
     registries = sorted(TITMAS_ROOT.rglob("task-registry.json"))
     starter_targets: list[Path] = []
     if starter_path is not None and starter_path.is_file():
-        for raw in LINK_PATTERN.findall(starter_path.read_text(encoding="utf-8")):
+        for raw in get_markdown_links(starter_path):
             target = raw.strip().split("#", 1)[0]
             if target and "://" not in target:
                 starter_targets.append((starter_path.parent / target).resolve())
@@ -958,8 +964,7 @@ def check_public_entry_consistency() -> dict[str, Any]:
 def check_local_links() -> dict[str, Any]:
     checked = 0
     for path in sorted(TITMAS_ROOT.rglob("*.md")):
-        text = path.read_text(encoding="utf-8")
-        for raw in LINK_PATTERN.findall(text):
+        for raw in get_markdown_links(path):
             target = raw.strip().split("#", 1)[0]
             if not target or "://" in target or target.startswith("mailto:"):
                 continue
