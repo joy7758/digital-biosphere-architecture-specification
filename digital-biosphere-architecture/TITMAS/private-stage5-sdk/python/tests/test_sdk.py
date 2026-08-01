@@ -79,6 +79,48 @@ class SDKTests(unittest.TestCase):
                 SCHEMA_ROOT,
             )
 
+    def test_submit_review_request(self) -> None:
+        seen = []
+
+        def transport(method, path, payload, token):
+            seen.append((method, path, payload, token))
+            return 200, {"success": True}
+
+        review_payload = {
+            "review_id": "STAGE5-REVIEW-12345",
+            "submission_id": "stage5-submission-67890",
+            "reviewer_ref": "reviewer-1",
+            "provider": "OpenAI",
+            "requested_model": "gpt-4",
+            "returned_model": "gpt-4",
+            "verdict": "PASS",
+            "checks": {
+                "grounding": True,
+                "schema_correctness": True,
+                "developer_value": True,
+                "scope": True,
+                "compatibility": True,
+                "positive_cases": True,
+                "negative_cases": True,
+                "failure_behavior": True,
+                "semantic_elevation": True,
+                "authority_boundary": True,
+                "commercial_overclaim": True
+            },
+            "blocking_findings": [],
+            "non_blocking_findings": [],
+            "required_corrections": [],
+            "limitations": ["None"]
+        }
+
+        result = self.client(transport).submit_review("stage5-submission-67890", review_payload)
+        self.assertEqual({"success": True}, result)
+        self.assertEqual(1, len(seen))
+        method, path, payload, token = seen[0]
+        self.assertEqual("POST", method)
+        self.assertEqual("/v1/contributions/stage5-submission-67890/reviews", path)
+        self.assertEqual({"review": review_payload}, payload)
+
 
 if __name__ == "__main__":
     unittest.main()
