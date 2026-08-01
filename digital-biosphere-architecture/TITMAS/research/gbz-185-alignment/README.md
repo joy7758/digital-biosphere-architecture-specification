@@ -100,7 +100,12 @@ Verification ≠ Authorization; Recommendation ≠ Decision; Decision ≠ Execut
 
 - Observed at: `2026-08-01T19:37:04+08:00`
 - Observer: `Codex acting within DBA governance scope`
-- Repository commit: `269ab5899047503557f957ba0f7abbd61d8b18d3`
+- Source baseline revision: `269ab5899047503557f957ba0f7abbd61d8b18d3`
+- Artifact revision source: `/release.json#/source_revision`
 - Official part 1 record: <https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=CFF03D872963466AC7F03ED0E28B6702>
 - Official part 8 record: <https://std.samr.gov.cn/gb/search/gbDetailed?id=574304045D075760E06397BE0A0AD7F5>
 - ACPs reference implementation: <https://github.com/AIP-PUB/ACPs-community>
+
+`source_baseline_revision` 表示编制本映射时所依据的仓库基线，不是包含本映射文件的
+提交 SHA。不得把它机械更新为当前 HEAD，否则会产生 Git 自引用循环。实际部署制品的
+Git 版本由 `release.json` 的 `source_revision` 提供。

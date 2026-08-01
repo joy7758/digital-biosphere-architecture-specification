@@ -33,7 +33,7 @@ const copy = {
     boundaryTitle: "研究映射不产生认证、官方关系或执行权",
     sourcesKicker: "OFFICIAL SOURCES / 官方来源",
     sourcesTitle: "标准事实只锚定到一手公开来源",
-    sourceNote: "观察时间与仓库 revision 固定在机器映射中；TITMAS 关系是本项目的架构判断，不是标准机构结论。",
+    sourceNote: "机器映射中的 source baseline revision 是编制基线，不是包含该映射的提交；实际部署制品版本由 release.json 的 source_revision 提供。TITMAS 关系是本项目的架构判断，不是标准机构结论。",
     officialRecord: "打开一手来源",
   },
   en: {
@@ -65,7 +65,7 @@ const copy = {
     boundaryTitle: "A research mapping creates no certification, official relationship, or execution authority",
     sourcesKicker: "OFFICIAL SOURCES",
     sourcesTitle: "Standard facts are anchored only to primary public sources",
-    sourceNote: "The observation time and repository revision are fixed in the machine mapping. The TITMAS relationship is this project's architecture judgment, not a standards-body conclusion.",
+    sourceNote: "The machine mapping's source baseline revision is its preparation baseline, not the commit containing the mapping. release.json source_revision identifies an actual deployed artifact. The TITMAS relationship is this project's architecture judgment, not a standards-body conclusion.",
     officialRecord: "Open primary source",
   },
 } as const;
@@ -155,7 +155,7 @@ export function Gbz185Page({ locale }: { locale: Locale }) {
             <div className="gbz-fact-grid">
               <article><span>{t.currentParts}</span><strong>{t.current}</strong><code>GUIDANCE_DOCUMENTS</code></article>
               <article><span>{t.draftingPart}</span><strong>{t.drafting}</strong><code>NOT_PUBLISHED_STANDARD</code></article>
-              <article><span>Mapping provenance</span><strong>{mapping.observed_at}</strong><code>{mapping.source_revision.slice(0, 12)}</code></article>
+              <article><span>Mapping provenance</span><strong>{mapping.observed_at}</strong><code>{mapping.source_baseline_revision.slice(0, 12)}</code></article>
             </div>
           </div>
         </section>

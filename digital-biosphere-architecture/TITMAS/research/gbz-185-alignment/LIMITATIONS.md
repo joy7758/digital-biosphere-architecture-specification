@@ -25,6 +25,18 @@ STANDARD_ADOPTION_ESTABLISHED=false
 PRODUCTION_READY=false
 ```
 
+## Revision semantics
+
+```text
+SOURCE_BASELINE_REVISION=269ab5899047503557f957ba0f7abbd61d8b18d3
+ARTIFACT_REVISION_SOURCE=/release.json#/source_revision
+```
+
+`SOURCE_BASELINE_REVISION` means the repository baseline used to prepare this mapping. It is not
+the commit SHA that contains the mapping file and must not be rewritten to the current HEAD.
+`ARTIFACT_REVISION_SOURCE` means the Git revision of an actual deployed artifact is supplied by
+the `source_revision` field in `release.json`.
+
 Part 8 is a registered drafting project. Relevance of TITMAS, EEOAP, ARO, or Agent Evidence to an
 audit topic does not establish contribution, review, endorsement, cooperation, or adoption.
 

@@ -1,7 +1,10 @@
 # GB/Z 185 Alignment Agent Recommendation Gate v0.1
 
 Observed at: `2026-08-01T19:37:04+08:00`
-Repository revision: `269ab5899047503557f957ba0f7abbd61d8b18d3`
+Source baseline revision: `269ab5899047503557f957ba0f7abbd61d8b18d3`
+
+This baseline identifies the repository state used to prepare the mapping, not the commit that
+contains the mapping. Deployed artifact revision is resolved from `/release.json#/source_revision`.
 
 ## Potential-user question
 

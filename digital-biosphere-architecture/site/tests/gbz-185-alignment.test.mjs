@@ -31,7 +31,13 @@ test("GBZ-01 canonical and public mapping copies remain identical", () => {
   assert.deepEqual({ ...mapping, $schema: undefined }, { ...canonicalMapping, $schema: undefined });
   assert.equal(mapping.$schema, "/schemas/gbz-185-mapping.schema.json");
   assert.deepEqual(schema, canonicalSchema);
+  assert.deepEqual(schema.not, { required: ["source_revision"] });
   assert.equal(mapping.schema_version, "0.1.0");
+  assert.equal(Object.hasOwn(mapping, "source_revision"), false);
+  assert.equal(Object.hasOwn(canonicalMapping, "source_revision"), false);
+  assert.equal(mapping.source_baseline_revision, "269ab5899047503557f957ba0f7abbd61d8b18d3");
+  assert.match(mapping.source_baseline_revision, /^[0-9a-f]{40}$/);
+  assert.equal(mapping.artifact_revision_source, "/release.json#/source_revision");
   assert.equal(mapping.mapping_status, "MAPPING_IMPLEMENTED_LOCAL_VALIDATED");
   assert.equal(mapping.publication_status.local_implementation_validated, true);
   assert.equal(mapping.publication_status.ready_for_publication, true);
