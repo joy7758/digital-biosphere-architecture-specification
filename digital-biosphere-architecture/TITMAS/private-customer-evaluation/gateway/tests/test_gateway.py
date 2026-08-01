@@ -56,7 +56,7 @@ class PrivateEvaluationGatewayTests(unittest.TestCase):
         content_length: int | None = None,
     ) -> tuple[int, dict, str]:
         if token == "VALID":
-            token = self.gateway.customer_token
+            token = self.gateway.session.token
         headers = {}
         if token is not None:
             headers["Authorization"] = f"Bearer {token}"
@@ -124,7 +124,7 @@ class PrivateEvaluationGatewayTests(unittest.TestCase):
 
     def test_eg03_valid_synthetic_evaluation(self) -> None:
         result = fake_customer.run_fake_customer(
-            token=self.gateway.customer_token,
+            token=self.gateway.session.token,
             customer_workspace=self.gateway.workspaces.customer_root,
         )
         self.assertEqual("PASS", result["FAKE_CUSTOMER_DISCOVERY"])
@@ -276,7 +276,7 @@ class PrivateEvaluationGatewayTests(unittest.TestCase):
                 envelope["customer_session_id"],
             )
             self.assertTrue(envelope["response_body_sha256"])
-            self.assertNotIn(self.gateway.customer_token, json.dumps(envelope))
+            self.assertNotIn(self.gateway.session.token, json.dumps(envelope))
         for root in (
             self.gateway.workspaces.core_root,
             self.gateway.workspaces.customer_root,
@@ -284,13 +284,13 @@ class PrivateEvaluationGatewayTests(unittest.TestCase):
             for path in root.rglob("*"):
                 if path.is_file():
                     self.assertNotIn(
-                        self.gateway.customer_token,
+                        self.gateway.session.token,
                         path.read_text(encoding="utf-8"),
                     )
 
     def test_eg16_shutdown_cleanup(self) -> None:
         self.request("/health")
-        token = self.gateway.customer_token
+        token = self.gateway.session.token
         core_root = self.gateway.workspaces.core_root
         customer_root = self.gateway.workspaces.customer_root
         host, port = self.gateway.bound_address

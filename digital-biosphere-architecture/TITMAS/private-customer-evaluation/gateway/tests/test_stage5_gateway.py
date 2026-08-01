@@ -57,7 +57,7 @@ class Stage5GatewayTests(unittest.TestCase):
         self.endpoint = self.gateway.start()
         self.client = SDK.Stage5Client(
             self.endpoint,
-            self.gateway.customer_token,
+            self.gateway.session.token,
             self.gateway.stage5_assets["protocol_surface"] / "schemas",
         )
 
@@ -112,7 +112,7 @@ class Stage5GatewayTests(unittest.TestCase):
         endpoint = restricted.start()
         client = SDK.Stage5Client(
             endpoint,
-            restricted.customer_token,
+            restricted.session.token,
             restricted.stage5_assets["protocol_surface"] / "schemas",
         )
         try:
@@ -124,7 +124,7 @@ class Stage5GatewayTests(unittest.TestCase):
 
     def test_expired_key_is_401(self) -> None:
         self.gateway.session.expires_at = time.monotonic() - 1
-        self.assertEqual(401, self.raw_request("/v1/standards/catalog", self.gateway.customer_token))
+        self.assertEqual(401, self.raw_request("/v1/standards/catalog", self.gateway.session.token))
 
     def test_non_loopback_host_rejected(self) -> None:
         with self.assertRaises(ValueError):
@@ -139,7 +139,7 @@ class Stage5GatewayTests(unittest.TestCase):
             ).read_text(encoding="utf-8")
         )
         rendered = json.dumps(metadata)
-        self.assertNotIn(self.gateway.customer_token, rendered)
+        self.assertNotIn(self.gateway.session.token, rendered)
         self.assertFalse(metadata["token_persisted"])
         self.assertTrue(metadata["key_binding"]["sandbox_key_ephemeral"])
 
