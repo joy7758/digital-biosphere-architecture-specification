@@ -9,6 +9,7 @@ import shutil
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 
@@ -86,6 +87,9 @@ def run_preflight(candidate: dict, source: str = SOURCE) -> dict:
             "other.json",
             "generated/new.json",
             "community-surface.variant-b.json",
+        "candidate.yaml",
+        "candidate.yml",
+        "candidate.md",
         },
     )
 
@@ -360,3 +364,50 @@ class CandidateGroundingMatrix(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+class CandidateParseErrorsMatrix(unittest.TestCase):
+    def test_json_invalid(self):
+        candidate = produced_candidate(
+            candidate_files={"candidate.json": "{"}
+        )
+        result = run_preflight(candidate)
+        self.assertIn("CANDIDATE_JSON_INVALID:candidate.json", result["errors"])
+        self.assertEqual("REVISION_REQUIRED", result["status"])
+
+    def test_yaml_tab_invalid(self):
+        candidate = produced_candidate(
+            candidate_files={"candidate.yaml": "key:\tvalue"}
+        )
+        result = run_preflight(candidate)
+        self.assertIn("CANDIDATE_YAML_INVALID:candidate.yaml", result["errors"])
+
+    def test_yml_conflict_invalid(self):
+        candidate = produced_candidate(
+            candidate_files={"candidate.yml": "normal\n<<<<<<< SEARCH\nconflict\n"}
+        )
+        result = run_preflight(candidate)
+        self.assertIn("CANDIDATE_YAML_INVALID:candidate.yml", result["errors"])
+
+    def test_markdown_null_invalid(self):
+        candidate = produced_candidate(
+            candidate_files={"candidate.md": "null \x00 byte"}
+        )
+        result = run_preflight(candidate)
+        self.assertIn("CANDIDATE_MARKDOWN_INVALID:candidate.md", result["errors"])
+
+    @patch.object(Path, "read_text", autospec=True)
+    def test_read_error(self, mock_read_text):
+        original_read_text = Path.read_text
+
+        def side_effect(self_obj, *args, **kwargs):
+            if self_obj.name == "candidate.json":
+                raise OSError("Mocked read error")
+            return original_read_text(self_obj, *args, **kwargs)
+
+        mock_read_text.side_effect = side_effect
+
+        candidate = produced_candidate(
+            candidate_files={"candidate.json": "{}"}
+        )
+        result = run_preflight(candidate)
+        self.assertIn("CANDIDATE_READ_FAILED:candidate.json", result["errors"])
