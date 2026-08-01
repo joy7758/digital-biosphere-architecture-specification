@@ -317,3 +317,32 @@ Current machine-readable program sources:
 `ADR-036` authorizes reversible technical implementation only. Prices,
 payments, contracts, legal publication, DNS, certificates, formal SLA,
 customer production data and certification remain closed Human gates.
+
+## 12. Media Evidence Profile Admission Request Overlay
+
+Observed on 2026-08-01:
+
+```text
+MEDIA_EVIDENCE_PROJECT=TITMAS Media Evidence
+MEDIA_EVIDENCE_VERSION=v0.1.0
+MEDIA_EVIDENCE_LOCAL_TAG_COMMIT=7eac452f66a2b7de525543f80b9a7cf1465ef9a1
+MEDIA_EVIDENCE_LOCAL_TESTS=112
+MEDIA_EVIDENCE_LOCAL_TEST_RESULT=OK
+MEDIA_EVIDENCE_REMOTE_CANONICAL_SOURCE=NOT_CONFIGURED
+MEDIA_EVIDENCE_REQUESTED_CLASSIFICATION=APPLICATION_PROFILE_AND_REFERENCE_IMPLEMENTATION_CANDIDATE
+MEDIA_EVIDENCE_PORTFOLIO_ADMISSION_GRANTED=false
+MEDIA_EVIDENCE_DBOS_MAPPING_DECIDED=false
+MEDIA_EVIDENCE_G0=NOT_PASSED
+MEDIA_EVIDENCE_G1=BLOCKED_INPUT
+MEDIA_EVIDENCE_G2=REVIEW_REQUIRED
+```
+
+The source-pinned report and admission request are recorded in
+[`TITMAS-PROP-20260801-MEDIA-EVIDENCE-001`](TITMAS/specifications/proposals/titmas-media-evidence-profile-admission-v0.1.md).
+The existing `redcrag.cn` Media Evidence surface remains a local synthetic
+reference surface and does not establish architecture admission.
+
+DBA records only this bounded overlay. The `titmas-media-guard` repository
+remains the implementation evidence owner; its post-tag competition documents
+and binary assets are outside the v0.1.0 admission evidence. A remote canonical
+source and an explicit DBOS Evidence Object mapping decision are still required.

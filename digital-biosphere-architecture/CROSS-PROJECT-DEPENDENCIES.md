@@ -45,6 +45,7 @@ last_reviewed: 2026-07-21
 |---|---|---|---|
 | POP ↔ DBOS | Persona projection 与 canonical identity 映射 | `REVIEW_REQUIRED` | Owner、schema、状态写权与冲突规则 |
 | Agent Evidence → DBOS | receipt / evidence reference 交接 | `REVIEW_REQUIRED` | canonical Evidence owner、完整性与版本边界 |
+| Media Evidence → DBA / DBOS | 应用场景配置状态引用，以及未来可能的媒体 evidence-bearing record / reference 交接 | `ADMISSION_REQUEST_REVIEW_REQUIRED` | 远程 canonical source、DBOS Evidence owner、Evidence Admission、命名、失败与版本边界；网站展示不等于架构接纳 |
 | ARO → DBOS / SAEE | Audit result 作为 Verification 或 Evaluation 输入 | `REVIEW_REQUIRED` | Audit、Verification、Evaluation 三者分离 |
 | Token Governor → DBOS / SAEE | 资源约束记录与资源适应度输入 | `REVIEW_REQUIRED` | 执行约束、评价和最终决策责任分离 |
 | ACP ↔ DBOS | Physical Cell identity 与 Entity reference 映射 | `REVIEW_REQUIRED` | `cell_id` 不得自动等于 `entity_id` |
