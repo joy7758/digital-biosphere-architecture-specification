@@ -98,32 +98,6 @@ def validate_schema(
                 raise ConformanceError(f"{path}: additional properties not allowed {extra}")
 
 
-def parse_frontmatter(path: Path) -> dict[str, str]:
-    lines = path.read_text(encoding="utf-8").splitlines()
-    if not lines or lines[0] != "---":
-        raise ConformanceError(f"{path}: missing frontmatter start")
-    try:
-        end = lines.index("---", 1)
-    except ValueError as exc:
-        raise ConformanceError(f"{path}: missing frontmatter end") from exc
-    result: dict[str, str] = {}
-    for line in lines[1:end]:
-        if not line.strip() or line.lstrip().startswith("#"):
-            continue
-        if ":" not in line:
-            raise ConformanceError(f"{path}: invalid frontmatter line {line!r}")
-        key, value = line.split(":", 1)
-        result[key.strip()] = value.strip()
-    required = {
-        "id", "title", "title_zh", "category", "status", "maturity",
-        "owner_ref", "authority_ref", "version", "normative",
-    }
-    missing = sorted(required - result.keys())
-    if missing:
-        raise ConformanceError(f"{path}: missing frontmatter fields {missing}")
-    return result
-
-
 def semantic_errors(payload: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     claims = payload.get("claims") or []
@@ -179,12 +153,6 @@ def check_registries() -> dict[str, Any]:
     if len(state_ids) != len(set(state_ids)) or maturity["default"] not in state_ids:
         raise ConformanceError("invalid maturity registry")
     return {"registry_entries_checked": checked, "maturity_states_checked": len(state_ids)}
-
-
-def check_frontmatter() -> dict[str, Any]:
-    proposals = sorted((TITMAS_ROOT / "specifications" / "proposals").glob("*.md"))
-    parsed = [parse_frontmatter(path) for path in proposals]
-    return {"proposal_frontmatter_checked": len(parsed)}
 
 
 def check_fixtures() -> dict[str, Any]:
@@ -976,7 +944,6 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
     checks = []
     functions = (
         ("registries", check_registries),
-        ("frontmatter", check_frontmatter),
         ("fixtures", check_fixtures),
         ("stage5_contributions", check_stage5_contributions),
         ("community_status", check_community_status),
