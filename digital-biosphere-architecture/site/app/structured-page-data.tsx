@@ -10,6 +10,7 @@ type StructuredPageDataProps = {
   type?: StructuredPageType;
   datePublished?: string;
   dateModified?: string;
+  isBasedOn?: string[];
 };
 
 export function StructuredPageData({
@@ -20,6 +21,7 @@ export function StructuredPageData({
   type = "WebPage",
   datePublished,
   dateModified,
+  isBasedOn,
 }: StructuredPageDataProps) {
   const url = new URL(path, "https://redcrag.cn").toString();
   const data = {
@@ -39,6 +41,7 @@ export function StructuredPageData({
     },
     datePublished,
     dateModified,
+    isBasedOn,
   };
 
   return (

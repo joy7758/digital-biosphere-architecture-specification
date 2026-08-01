@@ -26,7 +26,8 @@
       "/llms.txt",
       "/agent-index.json",
       "/site-catalog.json",
-      "/media-evidence-profile.json"
+      "/media-evidence-profile.json",
+      "/gbz-185-mapping.json"
     ],
     "javascript_required": false,
     "runtime_effect": false,
@@ -39,6 +40,20 @@
       "overview_en": "/en/research/",
       "index_zh": "/research/index/",
       "index_en": "/en/research/index/"
+    },
+    "standards_alignment": {
+      "enabled": true,
+      "type": "STANDARD_ALIGNMENT_RESEARCH",
+      "status": "MAPPING_IMPLEMENTED_LOCAL_VALIDATED",
+      "alignment_zh": "/standards/gbz-185/",
+      "alignment_en": "/en/standards/gbz-185/",
+      "machine_entry": "/gbz-185-mapping.json",
+      "local_implementation_validated": true,
+      "ready_for_publication": true,
+      "publication_authorized": false,
+      "publicly_deployed": false,
+      "conformance_assessed": false,
+      "official_affiliation": false
     },
     "applications": {
       "enabled": true,
@@ -119,6 +134,19 @@
       "required_metadata": ["id", "title", "availability", "delivery_model", "support_boundary", "production_status"],
       "publication_precondition": "AVAILABLE_PRODUCTS_GT_0"
     }
+  },
+  "release_candidates": {
+    "research": [
+      {
+        "id": "gbz-185-alignment",
+        "type": "STANDARD_ALIGNMENT_RESEARCH",
+        "status": "MAPPING_IMPLEMENTED_LOCAL_VALIDATED",
+        "href": "/standards/gbz-185/",
+        "href_en": "/en/standards/gbz-185/",
+        "machine_entry": "/gbz-185-mapping.json",
+        "metadata": ["GUIDANCE_DOCUMENT", "MAPPING_ONLY", "READY_FOR_PUBLICATION=true", "PUBLICLY_DEPLOYED=false", "CONFORMANCE_ASSESSED=false", "OFFICIAL_AFFILIATION=false"]
+      }
+    ]
   },
   "published_items": {
     "research": [

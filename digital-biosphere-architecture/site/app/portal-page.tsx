@@ -17,6 +17,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
     medicalIndustry: locale === "zh" ? "/industry/medical-evidence/" : "/en/industry/medical-evidence/",
     medicalDemo: locale === "zh" ? "/demo/medical-evidence/" : "/en/demo/medical-evidence/",
     digitalCell: locale === "zh" ? "/digital-cell/" : "/en/digital-cell/",
+    gbz185: locale === "zh" ? "/standards/gbz-185/" : "/en/standards/gbz-185/",
   };
 
   const humanEntries = [
@@ -31,6 +32,7 @@ export function PortalPage({ locale }: { locale: Locale }) {
     ["agent-index.json", locale === "zh" ? "完整智能体发现索引" : "Complete agent discovery index", "/agent-index.json"],
     ["site-catalog.json", locale === "zh" ? "页面、行业与演示目录" : "Pages, applications, and demos", "/site-catalog.json"],
     ["media-evidence-profile.json", locale === "zh" ? "媒体证据机器可读场景配置" : "Machine-readable media evidence profile", "/media-evidence-profile.json"],
+    ["gbz-185-mapping.json", locale === "zh" ? "GB/Z 185 与 TITMAS 机器可读衔接矩阵" : "Machine-readable GB/Z 185 and TITMAS mapping", "/gbz-185-mapping.json"],
   ];
 
   const structuredData = {
@@ -85,6 +87,23 @@ export function PortalPage({ locale }: { locale: Locale }) {
               <code>Recommendation ≠ Decision</code>
               <code>Decision ≠ Execution</code>
             </div>
+          </div>
+        </section>
+
+        <section className="section home-gbz-alignment" data-section-id="gbz-185-alignment">
+          <div className="section-shell home-gbz-grid">
+            <div>
+              <p className="section-kicker">{locale === "zh" ? "GB/Z 185 ALIGNMENT / 国家标准衔接" : "GB/Z 185 ALIGNMENT"}</p>
+              <h2>{locale === "zh" ? "GB/Z 185 定义智能体如何互联，TITMAS 研究互联行为如何被授权、记录、验证和审计" : "GB/Z 185 defines how agents interconnect; TITMAS researches how interconnection behavior is authorized, recorded, verified, and audited"}</h2>
+              <p>{locale === "zh" ? "TITMAS 不替代身份码、身份管理、智能体描述、发现、交互或工具调用规范。当前工作是建立机器可读映射、证据扩展边界和后续适配验证路径。" : "TITMAS does not replace identity-code, identity-management, agent-description, discovery, interaction, or tool-invocation specifications. The current work establishes a machine-readable mapping, evidence-extension boundaries, and a future adapter-validation path."}</p>
+              <a className="text-link" href={paths.gbz185}>{locale === "zh" ? "查看 GB/Z 185 衔接矩阵" : "View the GB/Z 185 alignment matrix"}<span>→</span></a>
+            </div>
+            <aside className="home-gbz-status">
+              <code>MAPPING_IMPLEMENTED_LOCAL_VALIDATED</code>
+              <code>PUBLICLY_DEPLOYED=false</code>
+              <code>CONFORMANCE_ASSESSED=false</code>
+              <code>OFFICIAL_AFFILIATION=false</code>
+            </aside>
           </div>
         </section>
 

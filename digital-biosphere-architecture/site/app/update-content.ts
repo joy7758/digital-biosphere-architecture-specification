@@ -15,7 +15,9 @@ export type UpdateCategory =
 export type UpdateItem = {
   slug: string;
   category: UpdateCategory;
-  status: "PUBLISHED" | "SUPERSEDED" | "WITHDRAWN";
+  status: "PUBLISHED" | "READY_FOR_RELEASE" | "SUPERSEDED" | "WITHDRAWN";
+  publication_authorized?: boolean;
+  publicly_deployed?: boolean;
   audience: string[];
   effective_date: string;
   expires_at: string | null;
@@ -46,8 +48,8 @@ type UpdatesCatalog = {
 export const updatesCatalog = rawCatalog as unknown as UpdatesCatalog;
 validateUpdatesCatalog(updatesCatalog);
 
-export const publishedUpdates = [...updatesCatalog.items]
-  .filter((item) => item.status === "PUBLISHED")
+export const visibleUpdates = [...updatesCatalog.items]
+  .filter((item) => item.status === "PUBLISHED" || item.status === "READY_FOR_RELEASE")
   .sort((left, right) => Date.parse(right.effective_date) - Date.parse(left.effective_date));
 
 export function getActiveAnnouncement(at = new Date()) {

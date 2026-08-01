@@ -51,6 +51,23 @@ const rules = {
     /\bcustomer[_ -]?(?:name|email|phone|identifier)\s*[:=]/i,
     /\b(?:id_card|identity_card|national_id)\s*[:=]/i,
   ],
+  MISLEADING_GBZ_185_CLAIM_FINDINGS: [
+    /已符合 GB\/Z 185/,
+    /通过 GB\/Z 185 认证/,
+    /GB\/Z 185 官方实现/,
+    /国家标准认证/,
+    /官方合作伙伴/,
+    /参与第8部分起草/,
+    /已被第8部分采纳/,
+    /GB\/Z 185 compliant/i,
+    /GB\/Z 185 certified/i,
+    /official implementation/i,
+    /official partner/i,
+    /standard adopted TITMAS/i,
+    /GBZ_185_MAPPING_PUBLISHED\s*[=:]\s*true/i,
+    /\bPUBLISHED_MAPPING\b/,
+    /\bMAPPING_PUBLISHED(?:_NO_CONFORMANCE)?\b/,
+  ],
 };
 
 const findings = Object.fromEntries(Object.keys(rules).map((name) => [name, []]));
