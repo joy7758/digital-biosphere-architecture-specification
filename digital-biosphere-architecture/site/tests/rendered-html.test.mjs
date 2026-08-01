@@ -55,30 +55,28 @@ test("renders equivalent Chinese and English public entry points", async () => {
   for (const marker of expectedMarkers.enHome) assert.match(en, new RegExp(marker));
   assert.match(zh, /Evidence/);
   assert.match(en, /Evidence/);
-  assert.match(zh, /共同建设 Agent 时代的可信基础设施/);
-  assert.match(en, /Build trustworthy infrastructure for the agent era/);
-  assert.match(zh, /Community Review ≠ Architecture Decision/);
-  assert.match(en, /Contribution ≠ Authority/);
-  assert.match(zh, /PUBLIC CONTRIBUTION/);
+  assert.match(zh, /为不同智能体提供共同的可信互操作边界/);
+  assert.match(en, /A shared trust-interoperability boundary for different agents/);
+  assert.match(zh, /Verification ≠ Authorization/);
+  assert.match(en, /Recommendation ≠ Decision/);
+  assert.match(zh, /机器可读目录/);
   assert.match(en, /NOT ESTABLISHED/);
-  assert.match(zh, /第一个可信闭环：设计完成，尚未执行/);
-  assert.match(en, /The first trustworthy loop is designed—not executed/);
-  assert.match(zh, /Observation ≠ Evidence/);
-  assert.match(en, /Evaluation ≠ Authorization/);
+  assert.match(zh, /测试通过只适用于声明范围/);
+  assert.match(en, /A test pass applies only to its declared scope/);
   assert.match(zh, /E01 Human Compatibility Observation/);
   assert.match(en, /E01 Human Compatibility Observation/);
-  assert.match(zh, /查看智能体基准证据/);
-  assert.match(en, /Read the agent benchmark evidence/);
+  assert.match(zh, /运行媒体证据演示/);
+  assert.match(en, /Run the media evidence demo/);
   assert.match(zh, /24\/24/);
   assert.match(en, /24\/24/);
   assert.match(zh, /AGENT START HERE/);
-  assert.match(en, /Understand TITMAS at a glance/);
-  assert.match(zh, /商业基础设施候选已上线，成熟度验证仍在进行/);
-  assert.match(en, /commercial infrastructure candidate is live; maturity validation continues/);
-  assert.match(zh, /COMMERCIAL_TECHNICAL_READY=false/);
-  assert.match(en, /PAID_BETA_READY=false/);
+  assert.match(en, /Human navigation and explicit machine contracts/);
+  assert.match(zh, /1,661 条历史 Receipt 中有 2 条签名无法验证/);
+  assert.match(en, /2 of 1,661 historical Receipt signatures remain unverifiable/);
+  assert.match(zh, /PRODUCTION_READY=false/);
+  assert.match(en, /PRODUCTION_READY=false/);
   assert.match(zh, /TITMAS Digital Cell Demo/);
-  assert.match(en, /Bring trust infrastructure into medical evidence/);
+  assert.match(en, /Medical Evidence Infrastructure/);
   if (releaseContext.mode === "candidate") {
     assert.match(zh, /Developer Preview Candidate/);
     assert.match(en, /Developer Preview Candidate/);
@@ -126,6 +124,8 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("llms.txt", root)),
     access(new URL("agent-index.json", root)),
     access(new URL("site-catalog.json", root)),
+    access(new URL("media-evidence-profile.json", root)),
+    access(new URL("media-evidence-reproduction.md", root)),
     access(new URL("titmas-community.json", root)),
     access(new URL("updates.json", root)),
     access(new URL("status.json", root)),

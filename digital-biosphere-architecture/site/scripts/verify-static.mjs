@@ -25,12 +25,16 @@ const requiredFiles = [
   "en/updates/constitution/index.html",
   "industries/index.html",
   "en/industries/index.html",
+  "industry/media-evidence/index.html",
+  "en/industry/media-evidence/index.html",
   "industry/medical-evidence/index.html",
   "en/industry/medical-evidence/index.html",
   "industry/space-agent-evidence/index.html",
   "en/industry/space-agent-evidence/index.html",
   "demo/medical-evidence/index.html",
   "en/demo/medical-evidence/index.html",
+  "demo/media-evidence/index.html",
+  "en/demo/media-evidence/index.html",
   "digital-cell/index.html",
   "en/digital-cell/index.html",
   "commercial-evaluation/index.html",
@@ -41,6 +45,8 @@ const requiredFiles = [
   "TITMAS-FIRST-RUN-v0.1.md",
   "agent-index.json",
   "site-catalog.json",
+  "media-evidence-profile.json",
+  "media-evidence-reproduction.md",
   "titmas-community.json",
   "updates.json",
   "status.json",
@@ -60,6 +66,7 @@ const requiredFiles = [
   "medical-evidence-demo.json",
   "space-agent-evidence-profile.json",
   "og.png",
+  "og-media-evidence.png",
 ];
 
 await Promise.all(requiredFiles.map((file) => access(join(outputRoot, file))));
@@ -100,10 +107,10 @@ assert.match(zh, /<html lang="zh-CN">/);
 assert.match(zhStatus, /<html lang="zh-CN">/);
 assert.match(en, /<html lang="en">/);
 assert.match(enStatus, /<html lang="en">/);
-assert.match(zh, /共同建设 Agent 时代的可信基础设施/);
-assert.match(en, /Build trustworthy infrastructure for the agent era/);
-assert.match(zh, /Community Review ≠ Architecture Decision/);
-assert.match(en, /Contribution ≠ Authority/);
+assert.match(zh, /为不同智能体提供共同的可信互操作边界/);
+assert.match(en, /A shared trust-interoperability boundary for different agents/);
+assert.match(zh, /Verification ≠ Authorization/);
+assert.match(en, /Recommendation ≠ Decision/);
 if (releaseContext.mode === "candidate") {
   assert.match(zhStatus, /当前不是正式发布/);
   assert.match(enStatus, /This is not a release/);
@@ -113,18 +120,16 @@ if (releaseContext.mode === "candidate") {
 }
 assert.match(zh, /E01 Human Compatibility Observation/);
 assert.match(en, /E01 Human Compatibility Observation/);
-assert.match(zh, /查看智能体基准证据/);
-assert.match(en, /Read the agent benchmark evidence/);
+assert.match(zh, /运行媒体证据演示/);
+assert.match(en, /Run the media evidence demo/);
 assert.match(zh, /AGENT START HERE/);
-assert.match(en, /Understand TITMAS at a glance/);
-assert.match(zh, /商业基础设施候选已上线，成熟度验证仍在进行/);
-assert.match(en, /commercial infrastructure candidate is live; maturity validation continues/);
+assert.match(en, /Human navigation and explicit machine contracts/);
+assert.match(zh, /1,661 条历史 Receipt 中有 2 条签名无法验证/);
+assert.match(en, /2 of 1,661 historical Receipt signatures remain unverifiable/);
 assert.match(zh, /TITMAS Digital Cell Demo/);
-assert.match(en, /Bring trust infrastructure into medical evidence/);
-assert.match(zh, /第一个可信闭环：设计完成，尚未执行/);
-assert.match(en, /The first trustworthy loop is designed—not executed/);
-assert.match(zh, /Observation ≠ Evidence/);
-assert.match(en, /Evaluation ≠ Authorization/);
+assert.match(en, /Medical Evidence Infrastructure/);
+assert.match(zh, /PRODUCTION_READY=false/);
+assert.match(en, /PRODUCTION_READY=false/);
 assert.doesNotMatch(zh, /codex-preview|Your site is taking shape/);
 assert.doesNotMatch(en, /codex-preview|Your site is taking shape/);
 assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
@@ -198,7 +203,7 @@ assert.equal(release.release_decision_reference, releaseContext.releaseDecisionR
 assert.equal(release.released_by_ref, releaseContext.releasedByRef);
 assert.equal(release.public_release_tag, releaseContext.publicReleaseTag);
 assert.equal(release.dbos_public_package_url, releaseContext.dbosWheelUrl);
-assert.equal(release.routes.length, 34);
+assert.equal(release.routes.length, 38);
 assert.ok(manifest.files.length >= 80);
 assert.equal(manifest.source_revision, release.source_revision);
 

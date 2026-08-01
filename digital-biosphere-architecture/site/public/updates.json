@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "catalog_id": "TITMAS-PUBLIC-UPDATES-0.1",
-  "observed_at": "2026-07-30T03:00:00+08:00",
+  "observed_at": "2026-08-01T20:00:00+08:00",
   "route_template": "/updates/{slug}/",
   "categories": [
     "RELEASE_NOTE",
@@ -33,6 +33,64 @@
     "condition": "UPDATE_COUNT_GT_8_OR_CATEGORY_COUNT_GTE_3"
   },
   "items": [
+    {
+      "slug": "media-evidence-reference-demo",
+      "category": "DEMO_UPDATE",
+      "status": "PUBLISHED",
+      "audience": [
+        "AI_AGENT",
+        "DEVELOPER",
+        "MEDIA_REVIEWER",
+        "TECHNICAL_EVALUATOR"
+      ],
+      "effective_date": "2026-08-01T20:00:00+08:00",
+      "expires_at": null,
+      "is_announcement": false,
+      "severity": null,
+      "source_commit": "7eac452f66a2b7de525543f80b9a7cf1465ef9a1",
+      "source_url": "/media-evidence-profile.json",
+      "supersedes": null,
+      "title": {
+        "zh": "TITMAS 媒体证据行业页面与本地合成演示接入",
+        "en": "TITMAS Media Evidence application page and local synthetic demo added"
+      },
+      "summary": {
+        "zh": "新增广播电视和网络视听场景配置、三个合成演示场景及机器可读入口；不改变上游协议或核心实现。",
+        "en": "Adds a broadcasting and online-audiovisual profile, three synthetic demo scenarios, and a machine-readable entry without changing upstream protocols or core implementation."
+      },
+      "href": {
+        "zh": "/industry/media-evidence/",
+        "en": "/en/industry/media-evidence/"
+      },
+      "changes": {
+        "zh": [
+          "新增媒体证据行业页面与中英文路由。",
+          "新增正常生命周期、证据冲突和篡改检测三个纯前端场景。",
+          "新增 media-evidence-profile.json 智能体入口。",
+          "首页收敛为轮播与四个导航区块。"
+        ],
+        "en": [
+          "Added bilingual Media Evidence application routes.",
+          "Added frontend-only lifecycle, conflict, and tamper scenarios.",
+          "Added media-evidence-profile.json for agent discovery.",
+          "Reduced the homepage to a carousel and four navigation sections."
+        ]
+      },
+      "truth_boundaries": [
+        {
+          "scope": "DEMO_DATA",
+          "limitation": "SYNTHETIC_DATA_ONLY; no upload, external model, identity system, or persistent user data."
+        },
+        {
+          "scope": "VERIFICATION",
+          "limitation": "Local structure and integrity checks do not prove content truth."
+        },
+        {
+          "scope": "MATURITY",
+          "limitation": "PRODUCTION_READY=false; no customer adoption, external certification, or guaranteed-security claim."
+        }
+      ]
+    },
     {
       "slug": "stage5-7-agent-native-selection-roi",
       "category": "RESEARCH_UPDATE",

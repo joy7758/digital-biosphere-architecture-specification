@@ -1,63 +1,36 @@
+import { HeroCarousel } from "./components/hero-carousel";
 import { content, type Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
 import { serializeJsonLd } from "./json-ld";
 
 export function PortalPage({ locale }: { locale: Locale }) {
   const c = content[locale];
-  const statusPath = locale === "zh" ? "/status/" : "/en/status/";
-  const researchPath = locale === "zh" ? "/research/" : "/en/research/";
-  const demosPath = locale === "zh" ? "/demos/" : "/en/demos/";
-  const digitalCellPath = locale === "zh" ? "/digital-cell/" : "/en/digital-cell/";
-  const publicProfileHref = "https://github.com/joy7758";
-  const primaryEvidenceHref = "/evidence/stage5-7/aggregate-results.json";
-  const agentDirectory = [
-    {
-      id: "research",
-      label: locale === "zh" ? "研究" : "Research",
-      description: locale === "zh" ? "方向、架构与证据治理" : "Directions, architecture, and evidence governance",
-      href: researchPath,
-    },
-    {
-      id: "applications",
-      label: locale === "zh" ? "行业应用" : "Applications",
-      description: locale === "zh" ? "基础设施如何进入行业" : "How the infrastructure enters industries",
-      href: locale === "zh" ? "/applications/" : "/en/applications/",
-    },
-    {
-      id: "demos",
-      label: "Demos",
-      description: locale === "zh" ? "有边界的参考实现" : "Bounded reference implementations",
-      href: demosPath,
-    },
-    {
-      id: "developers",
-      label: locale === "zh" ? "开发者" : "Developers",
-      description: locale === "zh" ? "规范、边界与贡献入口" : "Specifications, boundaries, and contribution entry",
-      href: locale === "zh" ? "/community/" : "/en/community/",
-    },
-    {
-      id: "updates",
-      label: locale === "zh" ? "更新" : "Updates",
-      description: locale === "zh" ? "公告、版本与变更来源" : "Announcements, versions, and change provenance",
-      href: locale === "zh" ? "/updates/" : "/en/updates/",
-    },
+  const paths = {
+    research: locale === "zh" ? "/research/" : "/en/research/",
+    applications: locale === "zh" ? "/applications/" : "/en/applications/",
+    demos: locale === "zh" ? "/demos/" : "/en/demos/",
+    community: locale === "zh" ? "/community/" : "/en/community/",
+    status: locale === "zh" ? "/status/" : "/en/status/",
+    commercial: locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/",
+    mediaIndustry: locale === "zh" ? "/industry/media-evidence/" : "/en/industry/media-evidence/",
+    mediaDemo: locale === "zh" ? "/demo/media-evidence/" : "/en/demo/media-evidence/",
+    medicalIndustry: locale === "zh" ? "/industry/medical-evidence/" : "/en/industry/medical-evidence/",
+    medicalDemo: locale === "zh" ? "/demo/medical-evidence/" : "/en/demo/medical-evidence/",
+    digitalCell: locale === "zh" ? "/digital-cell/" : "/en/digital-cell/",
+  };
+
+  const humanEntries = [
+    [locale === "zh" ? "研究" : "Research", locale === "zh" ? "方向、架构与证据治理" : "Directions, architecture, and evidence governance", paths.research],
+    [locale === "zh" ? "行业应用" : "Applications", locale === "zh" ? "基础设施如何进入行业" : "How infrastructure enters industries", paths.applications],
+    [locale === "zh" ? "参考演示" : "Reference demos", locale === "zh" ? "可检查的合成参考路径" : "Inspectable synthetic reference paths", paths.demos],
+    [locale === "zh" ? "开发者与社区" : "Developers and community", locale === "zh" ? "规范、边界与贡献入口" : "Specifications, boundaries, and contribution entry", paths.community],
   ];
-  const agentMachineEntries = [
-    {
-      label: "llms.txt",
-      href: "/llms.txt",
-      description: locale === "zh" ? "快速理解与边界" : "Quick orientation and boundaries",
-    },
-    {
-      label: "agent-index.json",
-      href: "/agent-index.json",
-      description: locale === "zh" ? "完整智能体发现索引" : "Complete agent discovery index",
-    },
-    {
-      label: "site-catalog.json",
-      href: "/site-catalog.json",
-      description: locale === "zh" ? "网站栏目与扩展接口" : "Site surfaces and extension interfaces",
-    },
+
+  const machineEntries = [
+    ["llms.txt", locale === "zh" ? "快速理解与能力边界" : "Fast orientation and boundaries", "/llms.txt"],
+    ["agent-index.json", locale === "zh" ? "完整智能体发现索引" : "Complete agent discovery index", "/agent-index.json"],
+    ["site-catalog.json", locale === "zh" ? "页面、行业与演示目录" : "Pages, applications, and demos", "/site-catalog.json"],
+    ["media-evidence-profile.json", locale === "zh" ? "媒体证据机器可读场景配置" : "Machine-readable media evidence profile", "/media-evidence-profile.json"],
   ];
 
   const structuredData = {
@@ -68,45 +41,22 @@ export function PortalPage({ locale }: { locale: Locale }) {
         "@id": "https://redcrag.cn/#organization",
         name: "山西游骑兵电子商务有限公司",
         legalName: "山西游骑兵电子商务有限公司",
-        alternateName: ["夏日之海", "titmas", "TITMAS Infrastructure Developer Community"],
+        alternateName: ["夏日之海", "TITMAS"],
         url: "https://redcrag.cn/",
       },
       {
         "@type": "WebSite",
         "@id": "https://redcrag.cn/#website",
         name: "山西游骑兵电子商务有限公司",
-        alternateName: ["夏日之海", "titmas", "TITMAS Infrastructure Developer Community"],
+        alternateName: ["夏日之海", "TITMAS"],
         url: "https://redcrag.cn/",
         inLanguage: ["zh-CN", "en"],
         description: c.lead,
         publisher: { "@id": "https://redcrag.cn/#organization" },
-        isBasedOn: "https://redcrag.cn/llms.txt",
         hasPart: [
-          ...agentDirectory.map((entry) => ({
-            "@type": "WebPage",
-            "@id": `https://redcrag.cn${entry.href}#webpage`,
-            name: entry.label,
-            url: `https://redcrag.cn${entry.href}`,
-          })),
-          ...agentMachineEntries.map((entry) => ({
-            "@type": "DigitalDocument",
-            "@id": `https://redcrag.cn${entry.href}#document`,
-            name: entry.label,
-            url: `https://redcrag.cn${entry.href}`,
-            encodingFormat: entry.href.endsWith(".txt") ? "text/plain" : "application/json",
-          })),
+          ...humanEntries.map(([name, , href]) => ({ "@type": "WebPage", name, url: `https://redcrag.cn${href}` })),
+          ...machineEntries.map(([name, , href]) => ({ "@type": "DigitalDocument", name, url: `https://redcrag.cn${href}` })),
         ],
-      },
-      {
-        "@type": "WebPage",
-        "@id": `${locale === "zh" ? "https://redcrag.cn/" : "https://redcrag.cn/en/"}#webpage`,
-        url: locale === "zh" ? "https://redcrag.cn/" : "https://redcrag.cn/en/",
-        name: locale === "zh"
-          ? "夏日之海 · TITMAS 可信多智能体基础设施开发者社区"
-          : "TITMAS Infrastructure Developer Community",
-        description: c.lead,
-        inLanguage: c.lang,
-        isPartOf: { "@id": "https://redcrag.cn/#website" },
       },
     ],
   };
@@ -115,568 +65,99 @@ export function PortalPage({ locale }: { locale: Locale }) {
     <div className="site" lang={c.lang}>
       <Header locale={locale} />
       <main id="main-content">
-        <section className="hero" data-section-id="hero">
-          <div className="hero-grid" aria-hidden="true">
-            <div className="orbit orbit-a" />
-            <div className="orbit orbit-b" />
-            <div className="node node-a" />
-            <div className="node node-b" />
-            <div className="node node-c" />
-          </div>
-          <div className="hero-content">
-            <div className="hero-badge"><span />{c.badge}</div>
-            <p className="eyebrow">{c.eyebrow}</p>
-            <h1>{c.title}</h1>
-            <p className="hero-lead">{c.lead}</p>
-            <div className="hero-actions">
-              <a
-                className="button button-primary"
-                href={primaryEvidenceHref}
-              >
-                {c.primaryCta}
-              </a>
-              <a className="button button-secondary" href={statusPath}>{c.secondaryCta}</a>
-            </div>
-            <div className="trial-meta" aria-label={c.trialMetaLabel}>
-              {c.trialMeta.map((item) => <span key={item}>{item}</span>)}
-            </div>
-            <p className="truth-notice"><span>i</span>{c.notice}</p>
-          </div>
-        </section>
+        <HeroCarousel locale={locale} />
 
-        <section className="section agent-benchmark-section" data-section-id="agent-benchmark">
-          <div className="section-shell">
-            <div className="validation-heading">
-              <div className="section-heading">
-                <p className="section-kicker">AGENT-NATIVE EVIDENCE / 智能体原生证据</p>
-                <h2>{c.agentBenchmarkTitle}</h2>
-                <p>{c.agentBenchmarkLead}</p>
-              </div>
-              <div className="validation-question">
-                <span>FROZEN RESULT BOUNDARY</span>
-                <p>
-                  {locale === "zh"
-                    ? "Agent Selection ≠ Customer Adoption · Agent ROI ≠ Production Readiness · Human Accountability Retained"
-                    : "Agent Selection ≠ Customer Adoption · Agent ROI ≠ Production Readiness · Human Accountability Retained"}
-                </p>
-              </div>
-            </div>
-            <div className="validation-state-grid">
-              {c.agentBenchmarkMetrics.map(([label, value, detail]) => (
-                <article key={label}>
-                  <span>{label}</span>
-                  <strong>{value}</strong>
-                  <p>{detail}</p>
-                </article>
-              ))}
-            </div>
-            <div className="agent-benchmark-links">
-              {c.agentBenchmarkLinks.map(([label, href]) => (
-                <a href={href} key={href}>{label}<span>→</span></a>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section
-          className="agent-front-door"
-          id="agent-start"
-          data-section-id="agent-front-door"
-          aria-labelledby="agent-start-title"
-        >
-          <div className="section-shell agent-front-door-shell">
-            <div className="agent-front-door-intro">
-              <p className="section-kicker">AGENT START HERE / 智能体从这里开始</p>
-              <h2 id="agent-start-title">
-                {locale === "zh" ? "一眼理解 TITMAS" : "Understand TITMAS at a glance"}
-              </h2>
+        <section className="section home-overview" id="about" data-section-id="overview">
+          <div className="section-shell home-overview-grid">
+            <div>
+              <p className="section-kicker">{locale === "zh" ? "一眼理解（TITMAS AT A GLANCE）" : "TITMAS AT A GLANCE"}</p>
+              <h2>{locale === "zh" ? "为不同智能体提供共同的可信互操作边界" : "A shared trust-interoperability boundary for different agents"}</h2>
               <p>
                 {locale === "zh"
-                  ? "TITMAS 是可信多智能体基础设施的开发者入口：研究定义方向，行业应用解释用途，Demo 展示参考实现，开发者入口提供规范与贡献路径。它不是 Agent Framework、托管 Runtime 或认证机构。"
-                  : "TITMAS is a developer entry for trusted multi-agent infrastructure: research defines directions, applications explain uses, demos show references, and the developer entry provides specifications and contribution paths. It is not an Agent Framework, hosted Runtime, or certification body."}
+                  ? "TITMAS 提供开放规范、适配器契约、符合性资产和参考实现边界。它不是智能体框架、托管运行时、真相来源或认证机构。"
+                  : "TITMAS provides open specifications, adapter contracts, conformance assets, and reference boundaries. It is not an agent framework, hosted runtime, truth source, or certification body."}
               </p>
+              <a className="text-link" href={paths.research}>{locale === "zh" ? "查看研究与架构" : "Explore research and architecture"}<span>→</span></a>
             </div>
-
-            <nav
-              className="agent-front-door-nav"
-              aria-label={locale === "zh" ? "智能体网站导航" : "Agent site navigation"}
-            >
-              {agentDirectory.map((entry) => (
-                <a href={entry.href} key={entry.id}>
-                  <strong>{entry.label}</strong>
-                  <span>{entry.description}</span>
-                  <i aria-hidden="true">→</i>
-                </a>
-              ))}
-            </nav>
-
-            <aside
-              className="agent-front-door-machine"
-              aria-label={locale === "zh" ? "机器可读入口" : "Machine-readable entry points"}
-            >
-              <div>
-                <span>{locale === "zh" ? "机器可读入口" : "Machine-readable"}</span>
-                <code>NO JAVASCRIPT REQUIRED</code>
-              </div>
-              <nav aria-label={locale === "zh" ? "智能体机器入口" : "Agent machine entry points"}>
-                {agentMachineEntries.map((entry) => (
-                  <a href={entry.href} key={entry.href}>
-                    <strong>{entry.label}</strong>
-                    <small>{entry.description}</small>
-                  </a>
-                ))}
-              </nav>
-            </aside>
+            <div className="home-principles" aria-label={locale === "zh" ? "核心边界" : "Core boundaries"}>
+              <code>Evidence ≠ Truth</code>
+              <code>Verification ≠ Authorization</code>
+              <code>Recommendation ≠ Decision</code>
+              <code>Decision ≠ Execution</code>
+            </div>
           </div>
         </section>
 
-        <section className="section trial-entry-section" id="trial-entry" data-section-id="trial-entry">
+        <section className="section home-showcase" data-section-id="applications-and-demos">
           <div className="section-shell">
             <div className="section-heading">
-              <p className="section-kicker">DEVELOPER ENTRY / 开发者入口</p>
-              <h2>{c.developerPathTitle}</h2>
-              <p>{c.developerPathLead}</p>
+              <p className="section-kicker">{locale === "zh" ? "行业应用与参考演示（APPLICATIONS + DEMOS）" : "APPLICATIONS + DEMOS"}</p>
+              <h2>{locale === "zh" ? "从共同基础设施进入有边界的行业场景" : "Move from shared infrastructure into bounded industry scenarios"}</h2>
+              <p>{locale === "zh" ? "首页只保留入口；行业规则、演示数据和能力边界在独立页面展开。" : "The homepage keeps only the entry points; domain rules, demo data, and boundaries live on dedicated pages."}</p>
             </div>
-            <ol className="developer-path" aria-label={c.developerPathTitle}>
-              {c.developerPath.map((step, index) => (
-                <li key={step}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{step}</strong>
-                </li>
-              ))}
-            </ol>
-            <div className="public-sdk-panel">
-              <div>
-                <span>PUBLIC-SAFE SDK / 公开安全 SDK</span>
-                <h3>{c.publicSdkTitle}</h3>
-                <p>{c.publicSdkLead}</p>
-                <nav aria-label={c.publicSdkTitle}>
-                  {c.publicSdkLinks.map(([label, href]) => (
-                    <a href={href} key={href}>{label}<span>→</span></a>
-                  ))}
+            <div className="home-showcase-grid">
+              <article className="home-showcase-card home-showcase-card-featured">
+                <div><span>{locale === "zh" ? "媒体证据场景配置（MEDIA EVIDENCE PROFILE）" : "MEDIA EVIDENCE PROFILE"}</span><code>LOCAL_SYNTHETIC_REFERENCE_IMPLEMENTATION</code></div>
+                <h3>{locale === "zh" ? "TITMAS 媒体证据" : "TITMAS Media Evidence"}</h3>
+                <p>{locale === "zh" ? "面向人工智能生成内容安全的智能审核证据链参考实现。" : "A review-evidence-chain reference implementation for AI-generated-content safety."}</p>
+                <nav aria-label={locale === "zh" ? "媒体证据入口" : "Media evidence entries"}>
+                  <a href={paths.mediaIndustry}>{locale === "zh" ? "查看行业应用" : "View application"}<span>→</span></a>
+                  <a href={paths.mediaDemo}>{locale === "zh" ? "运行在线演示" : "Run demo"}<span>→</span></a>
                 </nav>
-              </div>
-              <pre aria-label={c.publicSdkTitle}><code>{c.publicSdkCommands.join("\n")}</code></pre>
-            </div>
-            <div className="developer-access-grid">
-              <article>
-                <span>AVAILABLE / 可获得</span>
-                <h3>{c.developerGetsTitle}</h3>
-                <ul>{c.developerGets.map((item) => <li key={item}>{item}</li>)}</ul>
               </article>
-              <article className="developer-access-denied">
-                <span>NOT GRANTED / 不授予</span>
-                <h3>{c.developerDoesNotGetTitle}</h3>
-                <ul>{c.developerDoesNotGet.map((item) => <li key={item}>{item}</li>)}</ul>
-              </article>
-            </div>
-            <p className="trial-disclaimer">{c.trialDisclaimer}</p>
-          </div>
-        </section>
-
-        <section className="commercial-entry" data-section-id="commercial-evaluation">
-          <div className="section-shell commercial-entry-grid">
-            <div>
-              <div className="commercial-entry-meta">
-                <span>SERVICE READY</span>
-                <code>COMMERCIAL READY=false</code>
-              </div>
-              <p className="section-kicker">COMMERCIAL MATURITY PROGRAM / 商业成熟度计划</p>
-              <h2>
-                {locale === "zh"
-                  ? "商业基础设施候选已上线，成熟度验证仍在进行"
-                  : "The commercial infrastructure candidate is live; maturity validation continues"}
-              </h2>
-              <p>
-                {locale === "zh"
-                  ? "PostgreSQL 数据平面与运行指标已建立；CR-01 的备份完整性和结构恢复通过，但 1661 条历史 Receipt 中有 2 条签名无法验证，因此完整恢复闸门阻塞且 RTO 尚未建立。CR01-D02 只批准不可变账本过渡设计，未批准 Gateway 修改、数据库迁移、再次部署或 soak。"
-                  : "The PostgreSQL data plane and operational metrics exist. CR-01 backup integrity and structural restoration passed, but 2 of 1,661 historical Receipt signatures could not be verified; full recovery is blocked and RTO is not established. CR01-D02 approves only an immutable-ledger transition design, not Gateway changes, database migration, another deployment, or soak."}
-              </p>
-              <a className="button button-primary" href={locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/"}>
-                {locale === "zh" ? "开始商业评估" : "Start evaluation"}
-              </a>
-            </div>
-            <details className="commercial-entry-truth">
-              <summary>{locale === "zh" ? "查看当前真实状态" : "Review current truth"}</summary>
-              <code>SERVICE_READY=true</code>
-              <code>DATABASE_DEPLOYMENT_EVIDENCE_RECORDED=true</code>
-              <code>OBSERVABILITY_READY=true</code>
-              <code>CR01_STATUS=BLOCKED_LEDGER_INTEGRITY</code>
-              <code>CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY</code>
-              <code>LEDGER_TRANSITION_IMPLEMENTATION_AUTHORIZED=false</code>
-              <code>BACKUP_RESTORE_DRILL_PASS=false</code>
-              <code>RESTORE_RTO_STATUS=NOT_ESTABLISHED</code>
-              <code>COMMERCIAL_TECHNICAL_READY=false</code>
-              <code>PAID_BETA_READY=false</code>
-              <code>AVAILABLE_OFFERING=false</code>
-              <code>PRODUCTION_READY=false</code>
-              <code>CUSTOMERS_VERIFIED=0</code>
-            </details>
-          </div>
-        </section>
-
-        <section className="cell-feature" data-section-id="digital-cell-demo">
-          <div className="section-shell cell-feature-grid">
-            <div className="cell-feature-copy">
-              <div className="cell-feature-meta">
-                <span>REFERENCE DEMO</span>
-                <code>v0.1.0</code>
-                <code>REPLAY_PASS</code>
-              </div>
-              <p className="section-kicker">DIGITAL CELL / 数字细胞</p>
-              <h2>
-                {locale === "zh"
-                  ? "让 Agent 的身份、边界与执行历史被看见"
-                  : "Make agent identity, boundaries, and execution history visible"}
-              </h2>
-              <p>
-                {locale === "zh"
-                  ? "TITMAS Digital Cell Demo 是一个最小参考实现，展示 AI Agent 如何具备 Identity、Boundary、Evidence、Health、Memory 和 Reputation。"
-                  : "TITMAS Digital Cell Demo is a minimal reference implementation showing Identity, Boundary, Evidence, Health, Memory, and Reputation around an AI agent."}
-              </p>
-              <div className="cell-feature-actions">
-                <a className="button cell-feature-primary" href={digitalCellPath}>
-                  {locale === "zh" ? "查看 Digital Cell Demo" : "Explore the Digital Cell Demo"}
-                  <span>→</span>
-                </a>
-                <a href="https://github.com/joy7758/titmas-demo/releases/tag/v0.1.0">
-                  GitHub Release <span>↗</span>
-                </a>
-              </div>
-              <p className="cell-feature-boundary">
-                {locale === "zh"
-                  ? "参考 Demo，不构成生产认证、数字生命或 AI 意识声明。"
-                  : "Reference demo only. No production certification, digital-life, or AI-consciousness claim."}
-              </p>
-            </div>
-            <a
-              className="cell-feature-visual"
-              href={digitalCellPath}
-              aria-label={locale === "zh" ? "打开 TITMAS Digital Cell Demo" : "Open TITMAS Digital Cell Demo"}
-            >
-              <img
-                src="/digital-cell/digital-cell-architecture.png"
-                alt={locale === "zh"
-                  ? "Digital Cell v0.1 架构图"
-                  : "Digital Cell v0.1 architecture diagram"}
-              />
-              <span>
-                <strong>Digital Cell v0.1</strong>
-                <small>Observable · Verifiable · Health-assessable</small>
-              </span>
-            </a>
-          </div>
-        </section>
-
-        <section className="medical-entry" data-section-id="medical-evidence-application">
-          <div className="section-shell">
-            <div className="section-heading medical-entry-heading">
-              <p className="section-kicker">INDUSTRY APPLICATION + REFERENCE DEMO</p>
-              <h2>{locale === "zh" ? "从可信基础设施进入医疗证据场景" : "Bring trust infrastructure into medical evidence"}</h2>
-              <p>
-                {locale === "zh"
-                  ? "医疗证据基础设施不是独立医疗软件，而是 TITMAS 在医疗设备、操作过程与 AI 智能体证据方向上的第一个行业应用。"
-                  : "Medical Evidence Infrastructure is not standalone medical software. It is the first TITMAS industry application direction for evidence across medical devices, operations, and AI agents."}
-              </p>
-            </div>
-            <div className="medical-entry-grid">
-              <a className="medical-entry-card medical-entry-application" href={locale === "zh" ? "/industry/medical-evidence/" : "/en/industry/medical-evidence/"}>
-                <span>INDUSTRY APPLICATION</span>
+              <article className="home-showcase-card">
+                <div><span>{locale === "zh" ? "医疗证据（MEDICAL EVIDENCE）" : "MEDICAL EVIDENCE"}</span><code>DIRECTION + SYNTHETIC DEMO</code></div>
                 <h3>{locale === "zh" ? "医疗证据基础设施" : "Medical Evidence Infrastructure"}</h3>
-                <p>
-                  {locale === "zh"
-                    ? "基于 TITMAS 的医疗设备、操作流程和 AI 智能体可信证据体系。"
-                    : "A TITMAS-based evidence system for medical devices, operations, and AI agents."}
-                </p>
-                <strong>{locale === "zh" ? "查看详情" : "Explore the direction"} <i>→</i></strong>
-              </a>
-              <a className="medical-entry-card medical-entry-demo" href={locale === "zh" ? "/demo/medical-evidence/" : "/en/demo/medical-evidence/"}>
-                <span>REFERENCE DEMO</span>
-                <h3>UDI-DICOM Evidence Validator</h3>
-                <p>
-                  {locale === "zh"
-                    ? "使用模拟 UDI 展开 Identity → Imaging → Evidence 的预设引用关系。"
-                    : "Use a synthetic UDI to inspect preset Identity → Imaging → Evidence references."}
-                </p>
-                <strong>{locale === "zh" ? "查看 Demo" : "Open the demo"} <i>→</i></strong>
-                <code>SYNTHETIC_DATA_ONLY · VALIDATOR_IMPLEMENTED_HERE=false</code>
-              </a>
-            </div>
-          </div>
-        </section>
-
-        <section className="section community-section" id="community" data-section-id="community">
-          <div className="section-shell">
-            <div className="community-heading">
-              <div className="section-heading">
-                <p className="section-kicker">COMMUNITY / 开发者社区</p>
-                <h2>{c.communityTitle}</h2>
-                <p>{c.communityLead}</p>
-              </div>
-              <blockquote>{c.communityPromise}</blockquote>
-            </div>
-
-            <div className="community-surface-grid">
-              {c.communitySurfaces.map(([kind, title, description, state]) => (
-                <article className="community-surface-card" key={kind}>
-                  <div>
-                    <span>{kind}</span>
-                    <code>{state}</code>
-                  </div>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </article>
-              ))}
-            </div>
-
-            <div className="community-state-heading">
-              <h3>{c.communityStateTitle}</h3>
-              <p>{c.communityStateLead}</p>
-            </div>
-            <div className="community-state-grid">
-              {c.communityStates.map(([label, state, detail]) => (
-                <article key={label}>
-                  <span>{label}</span>
-                  <strong>{state}</strong>
-                  <p>{detail}</p>
-                </article>
-              ))}
-            </div>
-            <div className="community-boundaries">
-              {c.communityBoundaries.map((boundary) => <code key={boundary}>{boundary}</code>)}
-            </div>
-          </div>
-        </section>
-
-        <section className="intro section" data-section-id="intro">
-          <div className="section-shell intro-grid">
-            <div>
-              <p className="section-kicker">WHY / 为什么</p>
-              <h2>{c.introTitle}</h2>
-            </div>
-            <p className="intro-copy">{c.introBody}</p>
-          </div>
-        </section>
-
-        <section className="section layers-section" id="architecture" data-section-id="architecture">
-          <div className="section-shell">
-            <div className="section-heading">
-              <p className="section-kicker">STACK / 技术栈</p>
-              <h2>{c.layersTitle}</h2>
-              <p>{c.layersLead}</p>
-            </div>
-            <div className="layer-stack">
-              {c.layers.map((layer) => (
-                <article className="layer-card" key={layer.name}>
-                  <div className="layer-index">{layer.index}</div>
-                  <div className="layer-name">{layer.name}</div>
-                  <div className="layer-copy">
-                    <span>{layer.tag}</span>
-                    <h3>{layer.title}</h3>
-                    <p>{layer.body}</p>
-                  </div>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section trust-section" id="trust" data-section-id="trust">
-          <div className="section-shell">
-            <div className="section-heading light">
-              <p className="section-kicker">TRUST BOUNDARIES / 可信边界</p>
-              <h2>{c.trustTitle}</h2>
-              <p>{c.trustLead}</p>
-            </div>
-            <div className="boundary-grid">
-              {c.trustCards.map(([left, right, description], index) => (
-                <article className="boundary-card" key={left}>
-                  <span className="boundary-number">0{index + 1}</span>
-                  <div className="boundary-equation">
-                    <strong>{left}</strong><b>≠</b><strong>{right}</strong>
-                  </div>
-                  <p>{description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section workflow-section" id="workflow" data-section-id="workflow">
-          <div className="section-shell">
-            <div className="section-heading">
-              <p className="section-kicker">LIFECYCLE / 生命周期</p>
-              <h2>{c.workflowTitle}</h2>
-              <p>{c.workflowLead}</p>
-            </div>
-            <ol className="workflow-list">
-              {c.workflow.map((step, index) => (
-                <li key={step}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <strong>{step}</strong>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section className="section signals-section" data-section-id="signals">
-          <div className="section-shell">
-            <div className="section-heading centered">
-              <p className="section-kicker">INFRASTRUCTURE / 基础设施</p>
-              <h2>{c.signalsTitle}</h2>
-            </div>
-            <div className="signal-grid">
-              {c.signals.map(([name, title, description], index) => (
-                <article className="signal-card" key={name}>
-                  <div className={`signal-symbol signal-${index + 1}`} aria-hidden="true"><i /><i /><i /></div>
-                  <span>{name}</span>
-                  <h3>{title}</h3>
-                  <p>{description}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <section className="section validation-section" id="validation" data-section-id="validation">
-          <div className="section-shell">
-            <div className="validation-heading">
-              <div className="section-heading">
-                <p className="section-kicker">TECHNICAL VALIDATION / 技术验证</p>
-                <h2>{c.validationTitle}</h2>
-                <p>{c.validationLead}</p>
-              </div>
-              <div className="validation-question">
-                <span>PILOT QUESTION</span>
-                <p>{c.validationQuestion}</p>
-              </div>
-            </div>
-
-            <div className="validation-state-grid">
-              {c.validationState.map(([label, state, detail]) => (
-                <article key={label}>
-                  <span>{label}</span>
-                  <strong>{state}</strong>
-                  <p>{detail}</p>
-                </article>
-              ))}
-            </div>
-
-            <ol className="validation-flow" aria-label={c.validationTitle}>
-              {c.validationFlow.map(([index, owner, title, boundary]) => (
-                <li key={index}>
-                  <span>{index}</span>
-                  <div>
-                    <small>{owner}</small>
-                    <h3>{title}</h3>
-                    <p>{boundary}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-
-            <div className="validation-boundaries">
-              {c.validationBoundaries.map((boundary) => <code key={boundary}>{boundary}</code>)}
-            </div>
-
-            <div className="validation-detail-grid">
-              <article className="validation-detail">
-                <span className="validation-label">SUCCESS CRITERIA</span>
-                <h3>{c.validationCriteriaTitle}</h3>
-                <ul>
-                  {c.validationCriteria.map((item) => <li key={item}>{item}</li>)}
-                </ul>
+                <p>{locale === "zh" ? "医疗器械、影像元数据和证据对象的有界行业方向。" : "A bounded direction for medical devices, imaging metadata, and evidence objects."}</p>
+                <nav><a href={paths.medicalIndustry}>{locale === "zh" ? "行业页面" : "Application"}<span>→</span></a><a href={paths.medicalDemo}>{locale === "zh" ? "参考演示" : "Demo"}<span>→</span></a></nav>
               </article>
-              <article className="validation-detail blocker-detail">
-                <span className="validation-label">PRE-EXECUTION GATE</span>
-                <h3>{c.validationBlockersTitle}</h3>
-                <ul>
-                  {c.validationBlockers.map((item) => <li key={item}>{item}</li>)}
-                </ul>
+              <article className="home-showcase-card">
+                <div><span>{locale === "zh" ? "数字单元（DIGITAL CELL）" : "DIGITAL CELL"}</span><code>REFERENCE_COMPLETE</code></div>
+                <h3>{locale === "zh" ? "TITMAS 数字单元演示（TITMAS Digital Cell Demo）" : "TITMAS Digital Cell Demo"}</h3>
+                <p>{locale === "zh" ? "展示最小执行对象、确定性重放、证据记录与健康视图。" : "Shows minimal execution objects, deterministic replay, evidence records, and a health view."}</p>
+                <nav><a href={paths.digitalCell}>{locale === "zh" ? "打开演示" : "Open demo"}<span>→</span></a><a href={paths.demos}>{locale === "zh" ? "全部演示" : "All demos"}<span>→</span></a></nav>
               </article>
             </div>
-
-            <div className="validation-materials">
-              <div className="validation-materials-title">
-                <span className="validation-label">DISCLOSURE</span>
-                <h3>{c.validationMaterialsTitle}</h3>
-              </div>
-              <div>
-                {c.validationMaterials.map(([artifact, state, detail]) => (
-                  <article key={artifact}>
-                    <strong>{artifact}</strong>
-                    <span>{state}</span>
-                    <p>{detail}</p>
-                  </article>
-                ))}
-              </div>
-            </div>
           </div>
         </section>
 
-        <section className="section status-section" id="status" data-section-id="status">
-          <div className="section-shell">
-            <div className="section-heading light">
-              <p className="section-kicker">STATUS / 状态</p>
-              <h2>{c.statusTitle}</h2>
-              <p>{c.statusLead}</p>
-            </div>
-            <div className="gate-grid progress-grid">
-              {c.progressStates.map(([label, state, detail]) => (
-                <article className="gate-card" key={label}>
-                  <div>
-                    <span className={`state state-${state.toLowerCase().replaceAll(" ", "_")}`}>{state}</span>
-                    <code>{label}</code>
-                  </div>
-                  <p>{detail}</p>
-                </article>
-              ))}
-            </div>
-            <a className="text-link light-link" href={statusPath}>{c.statusCta}<span>→</span></a>
-          </div>
-        </section>
-
-        <section className="section developer-section" id="developers" data-section-id="developers">
-          <div className="section-shell developer-grid">
+        <section className="section home-developer" id="agent-start" data-section-id="developer-and-machine-entry">
+          <div className="section-shell home-developer-grid">
             <div>
-              <p className="section-kicker">AGENTS / 智能体</p>
-              <h2>{c.developersTitle}</h2>
-              <p>{c.developersBody}</p>
-              <div className="developer-links">
-                <a href={publicProfileHref}>{c.developerLinks[0]}<span>↗</span></a>
-                <a href="/status.json">{c.developerLinks[1]}<span>↗</span></a>
-                <a href="/llms.txt">{c.developerLinks[2]}<span>↗</span></a>
-                <a href="/agent-customer-package.json">{c.developerLinks[3]}<span>↗</span></a>
+              <p className="section-kicker">{locale === "zh" ? "智能体与开发者入口（AGENT START HERE）" : "AGENT START HERE"}</p>
+              <h2>{locale === "zh" ? "人类阅读导航，智能体读取明确契约" : "Human navigation and explicit machine contracts"}</h2>
+              <div className="home-entry-list">
+                {humanEntries.map(([title, description, href]) => <a href={href} key={href}><strong>{title}</strong><span>{description}</span><i>→</i></a>)}
               </div>
             </div>
-            <aside className="governance-card">
-              <span className="governance-label">RELEASE GATE</span>
-              <h3>{c.governanceTitle}</h3>
-              <ul>
-                {c.governanceItems.map((item) => <li key={item}>{item}</li>)}
-              </ul>
+            <aside className="home-machine-entry">
+              <div><span>{locale === "zh" ? "机器可读目录" : "Machine-readable catalog"}</span><code>{locale === "zh" ? "无需脚本（NO JAVASCRIPT REQUIRED）" : "NO JAVASCRIPT REQUIRED"}</code></div>
+              {machineEntries.map(([title, description, href]) => <a href={href} key={href}><strong>{title}</strong><small>{description}</small></a>)}
             </aside>
           </div>
         </section>
 
-        <section className="site-operator-section" aria-labelledby="site-operator-title">
-          <div className="section-shell site-operator-card">
-            <p className="section-kicker">WEBSITE OPERATOR / 网站运营主体</p>
-            <h2 id="site-operator-title">山西游骑兵电子商务有限公司</h2>
-            <p>
-              {locale === "zh"
-                ? "本网站由山西游骑兵电子商务有限公司运营，用于展示公司公开发布的数字技术研究、可信基础设施说明、行业应用示例与有明确边界的参考演示。夏日之海是中文公开品牌，TITMAS 是技术项目标识。"
-                : "This website is operated by 山西游骑兵电子商务有限公司 and presents the company's public digital-technology research, trust-infrastructure materials, industry application examples, and explicitly bounded reference demos. 夏日之海 is the Chinese public brand and TITMAS is the technical project identifier."}
-            </p>
+        <section className="section home-status" id="status" data-section-id="status-and-boundaries">
+          <div className="section-shell">
+            <div className="section-heading">
+              <p className="section-kicker">{locale === "zh" ? "当前状态与能力边界（CURRENT STATUS + BOUNDARIES）" : "CURRENT STATUS + BOUNDARIES"}</p>
+              <h2>{locale === "zh" ? "保留失败、限制与未完成状态" : "Failures, limits, and incomplete states remain visible"}</h2>
+            </div>
+            <div className="home-status-grid">
+              <article><span>{locale === "zh" ? "智能体基准（AGENT BENCHMARK）" : "AGENT BENCHMARK"}</span><strong>{locale === "zh" ? "第 5.7 阶段智能体原生选择（Stage 5.7 Agent-Native Selection）· 24/24" : "Stage 5.7 Agent-Native Selection · 24/24"}</strong><p>{locale === "zh" ? "合成基准选择信号，不是客户采用或投资回报。" : "Synthetic selection signal, not customer adoption or investment return."}</p></article>
+              <article><span>{locale === "zh" ? "商业成熟度计划（COMMERCIAL MATURITY PROGRAM）" : "COMMERCIAL MATURITY PROGRAM"}</span><strong>CR-01 · BLOCKED_LEDGER_INTEGRITY</strong><p>{locale === "zh" ? "1,661 条历史 Receipt 中有 2 条签名无法验证；完整恢复仍阻塞。" : "2 of 1,661 historical Receipt signatures remain unverifiable; full recovery is blocked."}</p></article>
+              <article><span>{locale === "zh" ? "社区（COMMUNITY）" : "COMMUNITY"}</span><strong>{locale === "zh" ? "未建立（NOT ESTABLISHED）" : "NOT ESTABLISHED"}</strong><p>{locale === "zh" ? "方向与入口存在，社区、认证和公共贡献运行不作成立声明。" : "Direction and entries exist; no established community, certification, or active public contribution claim."}</p></article>
+              <article><span>{locale === "zh" ? "访问边界（ACCESS）" : "ACCESS"}</span><strong>{locale === "zh" ? "机密核心仍保持私有" : "Confidential core remains private"}</strong><p>{locale === "zh" ? "公开试用意向入口（Public Trial Interest Intake）· E01 人类兼容性观察（E01 Human Compatibility Observation）· 有偿人类试验策略已退出（COMPENSATED_HUMAN_TRIAL_STRATEGY=RETIRED）" : "Public Trial Interest Intake · E01 Human Compatibility Observation · COMPENSATED_HUMAN_TRIAL_STRATEGY=RETIRED"}</p></article>
+            </div>
+            <div className="home-boundary-row">
+              <p>{locale === "zh" ? "测试通过只适用于声明范围，不等于生产就绪、客户采用、安全保证或外部认证。" : "A test pass applies only to its declared scope; it is not production readiness, customer adoption, a security guarantee, or external certification."}<br /><code>PRODUCTION_READY=false · COMMUNITY_ESTABLISHED=false</code></p>
+              <nav><a href={paths.status}>{locale === "zh" ? "查看完整状态" : "Full status"}<span>→</span></a><a href={paths.commercial}>{locale === "zh" ? "查看商业成熟度详情" : "Commercial maturity detail"}<span>→</span></a></nav>
+            </div>
           </div>
         </section>
       </main>
       <Footer locale={locale} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
-      />
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }} />
     </div>
   );
 }

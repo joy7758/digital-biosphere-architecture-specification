@@ -71,6 +71,24 @@ export const directoryItems: Record<PublicDirectory, DirectoryItem[]> = {
   ],
   applications: [
     {
+      id: "media-evidence",
+      type: "INDUSTRY_APPLICATION_PROFILE",
+      status: "LOCAL_SYNTHETIC_REFERENCE_IMPLEMENTATION",
+      title: {
+        zh: "TITMAS 媒体证据",
+        en: "TITMAS Media Evidence",
+      },
+      description: {
+        zh: "面向人工智能生成内容安全的智能审核证据链参考实现；覆盖生成前、生成中和生成后。",
+        en: "A review-evidence-chain reference implementation for AI-generated-content safety across pre-, during-, and post-generation stages.",
+      },
+      href: {
+        zh: "/industry/media-evidence/",
+        en: "/en/industry/media-evidence/",
+      },
+      metadata: ["SYNTHETIC_DATA_ONLY", "TRUTH_VERIFICATION=false", "PRODUCTION_READY=false"],
+    },
+    {
       id: "medical-evidence",
       type: "INDUSTRY_APPLICATION_DIRECTION",
       status: "PUBLISHED_DIRECTION",
@@ -126,6 +144,24 @@ export const directoryItems: Record<PublicDirectory, DirectoryItem[]> = {
     },
   ],
   demos: [
+    {
+      id: "media-evidence",
+      type: "SYNTHETIC_REFERENCE_DEMO",
+      status: "FRONTEND_ONLY_LOCAL_DEMO",
+      title: {
+        zh: "TITMAS 媒体证据在线演示",
+        en: "TITMAS Media Evidence demo",
+      },
+      description: {
+        zh: "使用三个合成场景展示治理生命周期、证据冲突和篡改检测；不上传媒体或连接外部服务。",
+        en: "Three synthetic scenarios show lifecycle, evidence conflict, and tamper detection without uploads or external services.",
+      },
+      href: {
+        zh: "/demo/media-evidence/",
+        en: "/en/demo/media-evidence/",
+      },
+      metadata: ["SYNTHETIC_DATA=true", "NO_UPLOAD", "NO_EXTERNAL_API"],
+    },
     {
       id: "digital-cell",
       type: "REFERENCE_DEMO",

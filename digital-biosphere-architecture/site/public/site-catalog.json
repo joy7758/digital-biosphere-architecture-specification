@@ -18,14 +18,15 @@
   "current_stage": "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM",
   "agent_front_door": {
     "status": "EMBEDDED_IN_BILINGUAL_HOMEPAGE",
-    "position": "IMMEDIATELY_AFTER_HERO",
+    "position": "DEDICATED_DEVELOPER_AND_MACHINE_SECTION_AFTER_APPLICATIONS",
     "entry_zh": "/#agent-start",
     "entry_en": "/en/#agent-start",
     "machine_entries": [
       "/.well-known/titmas.json",
       "/llms.txt",
       "/agent-index.json",
-      "/site-catalog.json"
+      "/site-catalog.json",
+      "/media-evidence-profile.json"
     ],
     "javascript_required": false,
     "runtime_effect": false,
@@ -48,6 +49,21 @@
       "enabled": true,
       "index_zh": "/demos/",
       "index_en": "/en/demos/"
+    },
+    "media_evidence": {
+      "enabled": true,
+      "type": "MEDIA_EVIDENCE_PROFILE",
+      "status": "LOCAL_SYNTHETIC_REFERENCE_IMPLEMENTATION",
+      "application_zh": "/industry/media-evidence/",
+      "application_en": "/en/industry/media-evidence/",
+      "demo_zh": "/demo/media-evidence/",
+      "demo_en": "/en/demo/media-evidence/",
+      "machine_profile": "/media-evidence-profile.json",
+      "data_policy": "SYNTHETIC_DATA_ONLY",
+      "truth_verification": false,
+      "identity_authentication": false,
+      "legal_evidence": false,
+      "production_ready": false
     },
     "developers": {
       "enabled": true,
@@ -124,6 +140,18 @@
     ],
     "applications": [
       {
+        "id": "media-evidence",
+        "status": "LOCAL_SYNTHETIC_REFERENCE_IMPLEMENTATION",
+        "href": "/industry/media-evidence/",
+        "href_en": "/en/industry/media-evidence/",
+        "machine_entry": "/media-evidence-profile.json",
+        "data_policy": "SYNTHETIC_DATA_ONLY",
+        "truth_verification": false,
+        "identity_authentication": false,
+        "legal_evidence": false,
+        "production_ready": false
+      },
+      {
         "id": "medical-evidence",
         "status": "PUBLISHED_DIRECTION",
         "href": "/industry/medical-evidence/",
@@ -152,6 +180,17 @@
       }
     ],
     "demos": [
+      {
+        "id": "media-evidence",
+        "status": "FRONTEND_ONLY_LOCAL_DEMO",
+        "href": "/demo/media-evidence/",
+        "href_en": "/en/demo/media-evidence/",
+        "synthetic_data": true,
+        "uploads_media": false,
+        "external_api": false,
+        "persists_user_data": false,
+        "production_review_service": false
+      },
       {
         "id": "digital-cell",
         "status": "REFERENCE_COMPLETE",

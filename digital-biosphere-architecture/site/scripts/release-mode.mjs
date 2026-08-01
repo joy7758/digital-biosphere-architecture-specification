@@ -103,8 +103,8 @@ export function resolveReleaseContext(environment, resources) {
 
 export function routeMarkers(mode) {
   return {
-    zhHome: ["<html lang=\"zh-CN\">", "查看智能体基准证据"],
-    enHome: ["<html lang=\"en\">", "Read the agent benchmark evidence"],
+    zhHome: ["<html lang=\"zh-CN\">", "TITMAS 可信多智能体基础设施", "运行媒体证据演示"],
+    enHome: ["<html lang=\"en\">", "TITMAS trustworthy multi-agent infrastructure", "Run the media evidence demo"],
     zhStatus: [
       "<html lang=\"zh-CN\">",
       mode !== "formal" ? "当前不是正式发布" : "TITMAS 商业基础设施成熟度计划进行中",

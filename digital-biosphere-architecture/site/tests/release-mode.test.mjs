@@ -101,8 +101,8 @@ test("accepts formal mode only when every machine truth surface and input agree"
 test("routeMarkers yields formal release markers when mode is formal", () => {
   const markers = routeMarkers("formal");
   assert.deepEqual(markers, {
-    zhHome: ["<html lang=\"zh-CN\">", "查看智能体基准证据"],
-    enHome: ["<html lang=\"en\">", "Read the agent benchmark evidence"],
+    zhHome: ["<html lang=\"zh-CN\">", "TITMAS 可信多智能体基础设施", "运行媒体证据演示"],
+    enHome: ["<html lang=\"en\">", "TITMAS trustworthy multi-agent infrastructure", "Run the media evidence demo"],
     zhStatus: [
       "<html lang=\"zh-CN\">",
       "TITMAS 商业基础设施成熟度计划进行中",
@@ -116,8 +116,8 @@ test("routeMarkers yields formal release markers when mode is formal", () => {
 
 test("routeMarkers yields candidate markers for other modes and edge cases", () => {
   const expectedCandidateMarkers = {
-    zhHome: ["<html lang=\"zh-CN\">", "查看智能体基准证据"],
-    enHome: ["<html lang=\"en\">", "Read the agent benchmark evidence"],
+    zhHome: ["<html lang=\"zh-CN\">", "TITMAS 可信多智能体基础设施", "运行媒体证据演示"],
+    enHome: ["<html lang=\"en\">", "TITMAS trustworthy multi-agent infrastructure", "Run the media evidence demo"],
     zhStatus: [
       "<html lang=\"zh-CN\">",
       "当前不是正式发布",

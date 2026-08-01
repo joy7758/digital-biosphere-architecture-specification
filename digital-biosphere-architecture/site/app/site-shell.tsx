@@ -28,8 +28,10 @@ type SiteSection =
   | "demos"
   | "industries"
   | "medicalIndustry"
+  | "mediaIndustry"
   | "spaceIndustry"
   | "medical"
+  | "mediaDemo"
   | "demo"
   | "updates"
   | "constitution"
@@ -53,8 +55,10 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
     demos: ["/en/demos/", "/demos/"],
     industries: ["/en/industries/", "/industries/"],
     medicalIndustry: ["/en/industry/medical-evidence/", "/industry/medical-evidence/"],
+    mediaIndustry: ["/en/industry/media-evidence/", "/industry/media-evidence/"],
     spaceIndustry: ["/en/industry/space-agent-evidence/", "/industry/space-agent-evidence/"],
     medical: ["/en/demo/medical-evidence/", "/demo/medical-evidence/"],
+    mediaDemo: ["/en/demo/media-evidence/", "/demo/media-evidence/"],
     demo: ["/en/digital-cell/", "/digital-cell/"],
     updates: ["/en/updates/", "/updates/"],
     constitution: ["/en/updates/constitution/", "/updates/constitution/"],
@@ -70,10 +74,10 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
       <a href={research} aria-current={section === "research" || section === "researchIndex" ? "page" : undefined}>
         {locale === "zh" ? "研究" : "Research"}
       </a>
-      <a href={demos} aria-current={section === "demos" || section === "demo" || section === "medical" ? "page" : undefined}>
+      <a href={demos} aria-current={section === "demos" || section === "demo" || section === "medical" || section === "mediaDemo" ? "page" : undefined}>
         {locale === "zh" ? "Demo" : "Demos"}
       </a>
-      <a href={applications} aria-current={section === "applications" || section === "industries" || section === "medicalIndustry" || section === "spaceIndustry" ? "page" : undefined}>
+      <a href={applications} aria-current={section === "applications" || section === "industries" || section === "medicalIndustry" || section === "mediaIndustry" || section === "spaceIndustry" ? "page" : undefined}>
         {locale === "zh" ? "应用" : "Applications"}
       </a>
       <a href={status}>{c.nav.status}</a>
@@ -140,7 +144,7 @@ export function Footer({ locale }: { locale: Locale }) {
         </div>
         <div>
           <strong>{locale === "zh" ? "治理" : "Governance"}</strong>
-          <a href={locale === "zh" ? "/#community" : "/en/#community"}>
+          <a href={locale === "zh" ? "/community/" : "/en/community/"}>
             {locale === "zh" ? "社区方向" : "Community direction"}
           </a>
           <a href={locale === "zh" ? "/status/" : "/en/status/"}>{locale === "zh" ? "当前状态" : "Current status"}</a>
