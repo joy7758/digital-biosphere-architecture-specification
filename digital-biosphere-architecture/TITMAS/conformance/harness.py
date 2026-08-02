@@ -796,43 +796,28 @@ def check_bounded_evolution_surfaces() -> dict[str, Any]:
     if policy["p0_10"]["automatic_reopen"]:
         raise ConformanceError("D19 must not reopen P0-10")
 
-    module_path = root / "evolution.py"
-    spec = importlib.util.spec_from_file_location("titmas_bounded_evolution", module_path)
-    if not spec or not spec.loader:
-        raise ConformanceError("cannot load bounded evolution reference")
-    module = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(module)
-    first = module.run_demo()
-    second = module.run_demo()
-    if module.canonical_bytes(first) != module.canonical_bytes(second):
-        raise ConformanceError("D19 deterministic replay failed")
-
-    schema_map = {
-        "problem_evidence": "problem-evidence.schema.json",
-        "evolution_proposal": "evolution-proposal.schema.json",
-        "selection_record": "selection-record.schema.json",
-        "rollback_evidence": "rollback-evidence.schema.json",
-        "lineage": "evolution-lineage.schema.json",
-    }
+    schema_files = sorted((root / "schemas").glob("*.schema.json"))
+    if len(schema_files) != 7:
+        raise ConformanceError("D19 requires exactly seven normative object schemas")
     schemas_checked = 0
-    for key, filename in schema_map.items():
-        validate_schema(first[key], load_json(root / "schemas" / filename), key)
+    for schema_path in schema_files:
+        schema = load_json(schema_path)
+        if schema.get("type") != "object" or not schema.get("required"):
+            raise ConformanceError(f"{schema_path.name}: incomplete normative schema")
         schemas_checked += 1
-    for item in first["variants"]:
-        validate_schema(item, load_json(root / "schemas" / "patch-variant.schema.json"), "variant")
-        schemas_checked += 1
-    for item in first["fitness_evaluations"]:
-        validate_schema(item, load_json(root / "schemas" / "fitness-evaluation.schema.json"), "fitness")
-        schemas_checked += 1
-    module.assert_no_secret_disclosure(first)
-    if first["selection_record"]["selected_variant"] != "D19-ER1-DEMO-001-V1":
-        raise ConformanceError("D19 deterministic selection drift")
+    owner_map = machine_values["canonical-owner-map.json"]
+    serialized = json.dumps(machine_values, sort_keys=True)
+    forbidden = ("automatic_merge\": true", "automatic_activation\": true", "self_grant")
+    if any(item in serialized for item in forbidden):
+        raise ConformanceError("D19 contract contains prohibited authority semantics")
+    if "titmac-scout" not in json.dumps(owner_map, sort_keys=True):
+        raise ConformanceError("D19 canonical implementation owner is not titmac-scout")
     return {
         "machine_surfaces_checked": len(machine_files),
-        "object_instances_validated": schemas_checked,
-        "deterministic_replay": True,
-        "selected_variant": first["selection_record"]["selected_variant"],
-        "production_side_effect": False,
+        "normative_schemas_checked": schemas_checked,
+        "architecture_only": True,
+        "executable_engine_files": 0,
+        "evolution_run_files": 0,
     }
 
 

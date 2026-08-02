@@ -2,7 +2,7 @@
 
 中文：TITMAS 有界发现、自愈与进化层 v2.1。
 
-This directory is the canonical machine-contract surface for D19. It defines
+This directory is the DBA-owned normative machine-contract surface for D19. It defines
 how bounded agents may discover problems, preserve evidence, generate repair
 variants, evaluate fitness, request authorization, retain outcomes and record
 lineage. It is not a Runtime, executor, semantic owner, truth store or
@@ -19,7 +19,10 @@ certification authority.
 - Canonical owner routing: [`canonical-owner-map.json`](canonical-owner-map.json)
 - Retry and mutation limits: [`mutation-limits.json`](mutation-limits.json)
 - Object schemas: [`schemas/`](schemas/)
-- Deterministic ER-1 demo: [`demo/README.md`](demo/README.md)
+
+Executable implementations and evolution runs belong to `joy7758/titmac-scout`.
+This directory intentionally contains no patch runner, sandbox executor,
+fitness engine, canary runner, rollback executor or run store.
 
 ## Object reuse boundary
 
@@ -41,22 +44,18 @@ evolution lineage and rollback evidence.
 ## Local validation
 
 ```bash
-python3 -m unittest discover \
-  -s TITMAS/agent-native/tests \
-  -p 'test_evolution.py' \
-  -v
-python3 TITMAS/agent-native/evolution/evolution.py demo \
-  --output /tmp/titmas-d19-evolution-demo
+python3 TITMAS/conformance/harness.py
+python3 -m unittest discover -s TITMAS/conformance/tests -v
 ```
 
 Expected D19 result:
 
 ```text
-EVOLUTION_TESTS=25/25_PASS
-SCHEMA_VALIDATION=PASS
-DETERMINISTIC_REPLAY=PASS
+DBA_EVOLUTION_ARCHITECTURE_CONTRACT=PASS
+NORMATIVE_SCHEMA_VALIDATION=PASS
+CANONICAL_OWNER_CONTRACT=PASS
 ```
 
-The reference demo operates only on synthetic fixture copies. It does not
-change canonical `main`, a live runtime, production data, credentials or
+Validation proves only the architecture contract. It does not implement or run
+Scout, change canonical `main`, a live runtime, production data, credentials or
 P0-10.

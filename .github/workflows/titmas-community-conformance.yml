@@ -5,6 +5,8 @@ on:
     paths:
       - "digital-biosphere-architecture/TITMAS/**"
       - "digital-biosphere-architecture/agent-index.json"
+      - "digital-biosphere-architecture/cockpit/**"
+      - "digital-biosphere-architecture/architecture/ADR-040-titmac-scout-canonical-identity-and-read-only-progress-bridge.md"
       - "digital-biosphere-architecture/llms.txt"
       - "digital-biosphere-architecture/architecture/ADR-034-titmas-agent-native-standards-community-direction.md"
       - "digital-biosphere-architecture/architecture/open-infrastructure-strategy-constitution.md"
@@ -20,6 +22,8 @@ on:
     paths:
       - "digital-biosphere-architecture/TITMAS/**"
       - "digital-biosphere-architecture/agent-index.json"
+      - "digital-biosphere-architecture/cockpit/**"
+      - "digital-biosphere-architecture/architecture/ADR-040-titmac-scout-canonical-identity-and-read-only-progress-bridge.md"
       - "digital-biosphere-architecture/llms.txt"
       - "digital-biosphere-architecture/architecture/ADR-034-titmas-agent-native-standards-community-direction.md"
       - "digital-biosphere-architecture/architecture/open-infrastructure-strategy-constitution.md"
@@ -90,6 +94,10 @@ jobs:
       - name: Test conformance harness
         working-directory: digital-biosphere-architecture
         run: python3 -m unittest discover -s TITMAS/conformance/tests -v
+
+      - name: Test read-only cockpit source bridge
+        working-directory: digital-biosphere-architecture
+        run: python3 -m unittest discover -s cockpit/tests -v
 
       - name: Test agent-native local protocol
         working-directory: digital-biosphere-architecture

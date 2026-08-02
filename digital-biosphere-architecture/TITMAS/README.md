@@ -87,8 +87,6 @@ From `digital-biosphere-architecture/`:
 python3 TITMAS/conformance/harness.py
 python3 -m unittest discover -s TITMAS/conformance/tests -v
 python3 -m unittest discover -s TITMAS/agent-native/tests -v
-python3 TITMAS/agent-native/evolution/evolution.py demo \
-  --output /tmp/titmas-d19-evolution-demo
 python3 -m unittest discover \
   -s TITMAS/private-customer-evaluation/gateway/tests -p 'test_*.py' -v
 python3 -m unittest discover \

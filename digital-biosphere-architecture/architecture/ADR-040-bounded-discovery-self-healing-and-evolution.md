@@ -1,6 +1,6 @@
 # ADR-040: Bounded Discovery Self-Healing and Evolution
 
-- Status: Accepted for bounded reference implementation
+- Status: Accepted architecture and normative contract
 - Decision: `TITMAS-AGENT-NATIVE-DISCOVERY-SELF-HEALING-AND-EVOLUTION-D19-V2-1`
 - Decided by: `zhangbin`
 - Date: 2026-08-02
@@ -14,12 +14,13 @@ losing provenance, authority boundaries, rollback or failed evidence.
 
 ## Decision
 
-Adopt a bounded evolution contract in DBA. It introduces the seven missing
-transition objects, deterministic fitness selection, ER-0 through ER-4 risk
-classes, isolated implementation, rollback preparation and autonomous Draft PR
-creation for eligible ER-1 changes.
+Adopt a bounded evolution architecture contract in DBA. It defines seven
+transition object Schemas, multi-objective fitness principles, ER-0 through
+ER-4 risk classes, isolation requirements, rollback preparation and the
+governed Draft PR boundary for eligible ER-1 changes.
 
 DBA remains the normative architecture owner and not a Runtime or executor.
+`joy7758/titmac-scout` is the canonical implementation owner.
 Canonical child repositories retain their existing object ownership. An agent
 may prepare evidence and a Draft PR, but it cannot grant itself authority,
 merge, release, deploy, migrate data or modify constitutional constraints.

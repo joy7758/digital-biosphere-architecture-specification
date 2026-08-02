@@ -165,9 +165,10 @@ P0_10_RESULT_REWRITTEN=false
 D19 may learn from that evidence but may not reinterpret, reopen or overwrite
 it without a later Human Decision and new evidence.
 
-## 13. First deterministic demonstration
+## 13. First deterministic demonstration contract
 
-The first ER-1 demonstration uses synthetic, repository-local data:
+The first ER-1 demonstration contract uses synthetic, repository-local data.
+Its executable realization and run evidence belong to `joy7758/titmac-scout`:
 
 ```text
 stale derived task registry
@@ -179,24 +180,26 @@ stale derived task registry
   -> Draft PR handoff
 ```
 
-The demonstration changes no Runtime, production service, database, credential,
-Receipt semantics or P0-10 result.
+The DBA contract does not execute that demonstration and changes no Runtime,
+production service, database, credential, Receipt semantics or P0-10 result.
 
 ## 14. Effective status
 
 ```text
-DISCOVERY_LAYER_STATUS=BOUNDED_SELF_HEALING_AND_EVOLUTION_CANDIDATE
+DISCOVERY_LAYER_STATUS=ARCHITECTURE_CONTRACT_CANDIDATE
 DISCOVERY_LAYER_VERSION=2.1.0
-SELF_OBSERVATION_READY=true
-PROBLEM_EVIDENCE_READY=true
-CANONICAL_OWNER_RESOLUTION_READY=true
-PATCH_VARIANT_GENERATION_READY=true
-SANDBOX_IMPLEMENTATION_READY=true
-FITNESS_EVALUATION_READY=true
-SELECTION_READY=true
-ROLLBACK_READY=true
-LINEAGE_READY=true
-SELF_HEALING_STATUS=OPEN_BOUNDED
-SELF_EVOLUTION_STATUS=OPEN_EVIDENCE_GATED
+NORMATIVE_OWNER=DBA
+IMPLEMENTATION_OWNER=joy7758/titmac-scout
+SELF_OBSERVATION_IMPLEMENTATION_STATUS=NOT_ASSESSED
+PROBLEM_EVIDENCE_IMPLEMENTATION_STATUS=NOT_ASSESSED
+CANONICAL_OWNER_RESOLUTION_IMPLEMENTATION_STATUS=NOT_ASSESSED
+PATCH_VARIANT_IMPLEMENTATION_STATUS=NOT_ASSESSED
+SANDBOX_IMPLEMENTATION_STATUS=NOT_ASSESSED
+FITNESS_EVALUATION_IMPLEMENTATION_STATUS=NOT_ASSESSED
+SELECTION_IMPLEMENTATION_STATUS=NOT_ASSESSED
+ROLLBACK_IMPLEMENTATION_STATUS=NOT_ASSESSED
+LINEAGE_IMPLEMENTATION_STATUS=NOT_ASSESSED
+SELF_HEALING_STATUS=NOT_ASSESSED
+SELF_EVOLUTION_STATUS=NOT_ASSESSED
 AUTONOMOUS_PRODUCTION_EVOLUTION=false
 ```

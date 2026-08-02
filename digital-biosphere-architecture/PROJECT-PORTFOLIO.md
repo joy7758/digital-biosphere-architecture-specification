@@ -42,6 +42,7 @@ changes_project_status: false
 | `ARO` | `/Users/zhangbin/GitHub/aro-audit` | Audit / Verification adjacent component（审计／验证相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 与 DBOS Verification、Agent Evidence 的阶段和数据所有权如何分离？ |
 | `AGENT-EVIDENCE` | `/Users/zhangbin/GitHub/agent-evidence` | Execution-to-evidence component（执行到证据组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 哪些记录是 canonical Evidence，哪些只是 receipt（回执）或 transport（传输）？ |
 | `TITMAS-AGENT-ACTION-GATE` | public `joy7758/titmas-agent-action-gate`；`main@6f1c83bf87e6ee96a0eda281e1fa91b8f80a32e1`；status `governance/project-declaration.json` | Agent-proposed action 的 fail-closed Governance Service / Application boundary（治理服务／应用边界）候选 | `REFERENCE_IMPLEMENTED_ON_MAIN_G0_READY_FOR_REVIEW_NOT_ADMITTED` | 已实现 action decision、approval、canonical evidence verification、一次性 execution binding、真实 sandbox Draft PR 与已销毁的官方 AgentTeams v1.2.0 operator-supervised 本地 smoke；仍须审查 per-Worker MCP ACL、Skill materialization、自治链、DBOS Permission、Runtime policy enforcement、TITMAS conformance／gateway 重复和 audit record Owner |
+| `titmac-scout` | private `joy7758/titmac-scout`；canonical `main@7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907`；status source `governance/project-status.json` | Discovery self-healing and evolution implementation（发现、自愈与演化实现）候选 | `CANONICAL_STATUS_SOURCE_MERGED_READ_ONLY_COCKPIT_BRIDGE_READY_FOR_HUMAN_REVIEW` | D21 只激活规范状态源和动态只读观察；D19 等价实现、测试与保留 Demo 尚未证明，PR #105/#106 ownership/migration review 仍待决定 |
 | `MEDIA-EVIDENCE` | private `joy7758/titmas-media-guard`；`v0.1.0@7eac452f66a2b7de525543f80b9a7cf1465ef9a1`；status `governance/project-status.json` | AIGC media-review Application Profile / Reference Implementation candidate（人工智能生成内容媒体审核应用场景配置／参考实现候选） | `ADMITTED_ADJACENT_CANDIDATE` | G0、G1 和边界限定的 G2 已通过；DBOS Evidence Admission mapping 未授权，G3-G8 未评估、未授权或未执行 |
 | `TOKEN-GOVERNOR` | `/Users/zhangbin/GitHub/token-governor` | Resource governance adjacent component（资源治理相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | DBOS 运行约束与 SAEE 资源评价之间的责任边界是什么？ |
 | `ACP` | `/Users/zhangbin/GitHub/海洋/autonomous-cell-protocol` | Physical Cell protocol（物理单元协议） | `MAPPING_ONLY_REVIEW_REQUIRED` | Physical Cell Identity 与 DBOS Entity Identity 如何保持不等同？ |
@@ -82,6 +83,10 @@ AGENT_ACTION_GATE_GITHUB_ACL_CHANGED=false
 AGENT_ACTION_GATE_RUNTIME_PERMISSION_CREATED=false
 AGENT_ACTION_GATE_NATIVE_SMOKE_FULLY_AUTONOMOUS=false
 AGENT_ACTION_GATE_NATIVE_SMOKE_PERSISTENT_OR_PRODUCTION_DEPLOYMENT=false
+TITMAC_SCOUT_CANONICAL_IDENTITY_FROZEN=true
+TITMAC_SCOUT_PORTFOLIO_ADMISSION_GRANTED=false
+TITMAC_SCOUT_STATUS_CONTRACT_MERGED=true
+TITMAC_SCOUT_PUBLIC_OPERATION_VERIFIED=false
 DISCOVERY_NE_ADOPTION=true
 MAPPING_NE_INTEGRATION=true
 ```

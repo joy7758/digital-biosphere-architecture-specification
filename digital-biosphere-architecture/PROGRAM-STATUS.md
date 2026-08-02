@@ -45,6 +45,11 @@ AGENT_FIRST_ACCEPTANCE_COMPLETE=false
 P0_10_RESULT=FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT
 NEW_FEATURE_DEVELOPMENT_FROZEN=true
 D15_REMAINS_AUTHORIZED=true
+TITMAC_SCOUT_CANONICAL_MACHINE_PROJECT_ID=titmac-scout
+TITMAC_SCOUT_CONVERSATION_ALIAS=tiamas-scout
+TITMAC_SCOUT_STATUS_SOURCE=CANDIDATE_READY_FOR_HUMAN_REVIEW_NOT_MERGED
+DBA_TITMAC_SCOUT_COCKPIT_BRIDGE=CANDIDATE_READ_ONLY_FAIL_CLOSED
+P0_10_REOPENED=false
 OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY
 OPEN_WEB_DISCOVERY_OBSERVATION_ID=TMAI-OWD-20260722-001
 OPEN_WEB_CANONICAL_NAME_MATCH=false
@@ -537,14 +542,15 @@ Canonical D16 records:
 
 Human Decision `TITMAS-AGENT-NATIVE-DISCOVERY-SELF-HEALING-AND-EVOLUTION-D19-V2-1`
 creates a narrow exception to the D16 freeze for an evidence-driven Discovery
-Evolution Layer. It is a logical DBA-owned policy and reference surface, not a
-new Runtime, executor, Authority or canonical truth owner.
+Evolution architecture and normative contract. DBA owns the rules and Schemas;
+`titmac-scout` owns any implementation candidate. This section is not a Runtime,
+executor, Authority or canonical execution truth source.
 
 ```text
-DISCOVERY_LAYER_STATUS=BOUNDED_SELF_HEALING_AND_EVOLUTION_CANDIDATE
+DISCOVERY_LAYER_STATUS=ARCHITECTURE_CONTRACT_CANDIDATE
 DISCOVERY_LAYER_VERSION=2.1.0
-SELF_HEALING_STATUS=OPEN_BOUNDED
-SELF_EVOLUTION_STATUS=OPEN_EVIDENCE_GATED
+SELF_HEALING_STATUS=NOT_ASSESSED
+SELF_EVOLUTION_STATUS=NOT_ASSESSED
 AUTONOMOUS_PRODUCTION_EVOLUTION=false
 MERGE_AUTHORIZED=false
 DEPLOYMENT_AUTHORIZED=false
@@ -563,3 +569,60 @@ Canonical D19 records:
 - [`architecture/titmas-agent-native-discovery-self-healing-evolution-amendment-v2.1.md`](architecture/titmas-agent-native-discovery-self-healing-evolution-amendment-v2.1.md)
 - [`architecture/ADR-040-bounded-discovery-self-healing-and-evolution.md`](architecture/ADR-040-bounded-discovery-self-healing-and-evolution.md)
 - [`TITMAS/agent-native/evolution/README.md`](TITMAS/agent-native/evolution/README.md)
+
+## 16. TITMAC Scout canonical identity and cockpit bridge overlay
+
+D20 froze the implementation machine identity as `titmac-scout` and retains
+`tiamas-scout` only as a conversation alias. D21 merged corrected status
+contract PR #1 to the private canonical `main` at
+`7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907`.
+
+The existing DBA cockpit now binds only to canonical `main` at the exact
+revision, tree and status digest. Its adapter is pull-only, validates source
+schema and integrity, and separately observes the current remote Head, CI and
+pull requests through the GitHub API. Source-status, remote-revision and CI/PR
+freshness are independent; missing dynamic observation fails partially closed
+instead of carrying forward a stale green state. The stored object is a bounded
+projection, not a copy of a canonical evolution run.
+
+```text
+CANONICAL_MACHINE_PROJECT_ID=titmac-scout
+CONVERSATION_ALIAS=tiamas-scout
+TITMAC_SCOUT_IS_IMPLEMENTATION_OWNER=true
+TITMAC_SCOUT_IS_STATUS_OWNER=true
+DBA_OWNS_ARCHITECTURE_AND_GOVERNANCE=true
+COCKPIT_PULL_ONLY=true
+COCKPIT_PUSH=false
+COCKPIT_STORES_PROJECTION=true
+COCKPIT_STORES_CANONICAL_RUN=false
+STATUS_SOURCE_STATE=MERGED_ON_CANONICAL_MAIN
+COCKPIT_BRIDGE_STATE=READY_FOR_HUMAN_REVIEW
+COCKPIT_SOURCE_BRANCH=main
+COCKPIT_SOURCE_REVISION=7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907
+COCKPIT_SOURCE_TREE=474e20cca30f89b66638cfaf56d6d147c9e9f1d3
+COCKPIT_SOURCE_INTEGRITY=PASS
+COCKPIT_CI_OBSERVATION=PASS
+COCKPIT_PR_OBSERVATION=PASS
+DISCOVERY_LAYER_STATUS=CANDIDATE
+SELF_HEALING_STATUS=NOT_ASSESSED
+SELF_EVOLUTION_STATUS=NOT_ASSESSED
+PR105_OWNERSHIP_REVIEW=PENDING
+PR106_MIGRATION_REVIEW=PENDING
+AGENT_COMMUNITY_ARCHITECTURE_STATUS=READY
+AGENT_COMMUNITY_PROTOCOL_STATUS=CANDIDATE
+AGENT_COMMUNITY_PUBLIC_OPERATION_STATUS=NOT_YET_VERIFIED
+PR_NE_ADOPTION=true
+CI_PASS_NE_PRODUCTION_READY=true
+P0_10_REOPENED=false
+D04_REOPENED=false
+RUNTIME_CHANGED=false
+DATABASE_CHANGED=false
+DEPLOYMENT_EXECUTED=false
+```
+
+Machine entries:
+
+- [`cockpit/source-registry.json`](cockpit/source-registry.json)
+- [`cockpit/projections/titmac-scout.json`](cockpit/projections/titmac-scout.json)
+- [`cockpit/read_only_status_adapter.py`](cockpit/read_only_status_adapter.py)
+- [`ADR-040`](architecture/ADR-040-titmac-scout-canonical-identity-and-read-only-progress-bridge.md)
