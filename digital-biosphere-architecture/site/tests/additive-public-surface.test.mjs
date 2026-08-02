@@ -63,7 +63,8 @@ test("keeps historical E01 while promoting the agent-native mainline", async () 
 
   assert.match(home, /AGENT START HERE/);
   assert.match(home, /夏日之海/);
-  assert.match(home, /\/summersea-logo\.png/);
+  assert.match(home, /\/titmas-logo\.png/);
+  assert.doesNotMatch(home, /\/summersea-logo\.png/);
   assert.match(home, /TITMAS Digital Cell Demo/);
   assert.match(home, /E01 Human Compatibility Observation/);
   assert.match(home, /Stage 5\.7 Agent-Native Selection/);

@@ -47,6 +47,24 @@ test("MT-01 current stage agrees", () => {
   assert.match(enHome, /COMMERCIAL MATURITY PROGRAM/);
 });
 
+test("MT-00 public brand stays distinct from the TITMAS technical identifier", () => {
+  assert.equal(agentIndex.display_name_zh, "夏日之海");
+  assert.equal(agentIndex.display_name_en, "titmas");
+  assert.equal(agentIndex.public_brand_logo, "/titmas-logo.png");
+  assert.equal(agentIndex.technical_project_identifier, "TITMAS");
+  assert.equal(status.community.canonical_name_zh, "夏日之海");
+  assert.equal(status.community.canonical_name_en, "titmas");
+  assert.equal(status.community.public_brand_logo, "/titmas-logo.png");
+  assert.equal(wellKnown.display_brand_zh, "夏日之海");
+  assert.equal(wellKnown.display_brand_en, "titmas");
+  assert.equal(wellKnown.public_brand_logo, "/titmas-logo.png");
+  assert.equal(wellKnown.technical_brand, "TITMAS");
+  assert.match(zhHome, /\/titmas-logo\.png/);
+  assert.match(enHome, /aria-label="titmas · Trusted Multi-Agent Infrastructure"/);
+  assert.doesNotMatch(zhHome, /\/summersea-logo\.png/);
+  assert.doesNotMatch(enHome, /\/summersea-logo\.png/);
+});
+
 test("MT-02 E01 status agrees", () => {
   const expected = "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION";
   assertJsonTruth("e01_status", expected);

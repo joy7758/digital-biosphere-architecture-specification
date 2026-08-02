@@ -4,7 +4,8 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://redcrag.cn"),
   icons: {
-    icon: "/favicon.svg",
+    icon: [{ url: "/titmas-logo.png", type: "image/png", sizes: "1024x1024" }],
+    apple: [{ url: "/titmas-logo.png", type: "image/png", sizes: "1024x1024" }],
   },
   title: {
     default: "山西游骑兵电子商务有限公司",
@@ -20,10 +21,10 @@ export const metadata: Metadata = {
       "Developer Community for Trusted Multi-Agent Infrastructure.",
     images: [
       {
-        url: "/og.png",
-        width: 1731,
-        height: 909,
-        alt: "夏日之海 / TITMAS Infrastructure Developer Community",
+        url: "/titmas-logo.png",
+        width: 1024,
+        height: 1024,
+        alt: "夏日之海 / titmas",
       },
     ],
   },
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     title: "山西游骑兵电子商务有限公司",
     description:
       "Open specifications, adapter contracts, conformance, and reference boundaries for trusted multi-agent infrastructure.",
-    images: ["/og.png"],
+    images: ["/titmas-logo.png"],
   },
 };
 

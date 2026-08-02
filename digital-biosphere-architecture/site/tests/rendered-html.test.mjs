@@ -39,10 +39,13 @@ test("renders equivalent Chinese and English public entry points", async () => {
   const zh = zhRaw.replace(/<html lang="[^"]+">/, '<html lang="zh-CN">');
   const en = enRaw.replace(/<html lang="[^"]+">/, '<html lang="en">');
 
-  assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
+  assert.match(zh, /<h1>TITMAS 可信多智能体基础设施<\/h1>/);
   assert.match(zh, /夏日之海/);
-  assert.match(zh, /\/summersea-logo\.png/);
-  assert.match(en, /TITMAS Infrastructure Developer Community/);
+  assert.match(zh, /\/titmas-logo\.png/);
+  assert.match(en, /aria-label="titmas · Trusted Multi-Agent Infrastructure"/);
+  assert.match(en, /\/titmas-logo\.png/);
+  assert.doesNotMatch(zh, /\/summersea-logo\.png/);
+  assert.doesNotMatch(en, /\/summersea-logo\.png/);
   assert.match(zh, /<title>山西游骑兵电子商务有限公司<\/title>/);
   assert.match(en, /<title>山西游骑兵电子商务有限公司<\/title>/);
   assert.match(zh, /网站运营主体[^<]*：山西游骑兵电子商务有限公司/);
@@ -124,6 +127,7 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("llms.txt", root)),
     access(new URL("agent-index.json", root)),
     access(new URL("site-catalog.json", root)),
+    access(new URL(".well-known/titmas.json", root)),
     access(new URL("media-evidence-profile.json", root)),
     access(new URL("media-evidence-reproduction.md", root)),
     access(new URL("titmas-community.json", root)),
@@ -133,18 +137,21 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("dbos-public-package-manifest.json", root)),
     access(new URL("robots.txt", root)),
     access(new URL("sitemap.xml", root)),
-    access(new URL("summersea-logo.png", root)),
+    access(new URL("titmas-logo.png", root)),
     access(new URL("evidence/stage5-7/aggregate-results.json", root)),
     access(new URL("evidence/stage5-7/agent-selection-audit.json", root)),
     access(new URL("evidence/stage5-7/evidence-manifest.json", root)),
   ]);
 
-  const [agentIndex, status, agentCustomerPackage, dbosPackage, llms] = await Promise.all([
+  const [agentIndex, status, agentCustomerPackage, dbosPackage, llms, siteCatalog, titmasCommunity, wellKnown] = await Promise.all([
     readFile(new URL("agent-index.json", root), "utf8").then(JSON.parse),
     readFile(new URL("status.json", root), "utf8").then(JSON.parse),
     readFile(new URL("agent-customer-package.json", root), "utf8").then(JSON.parse),
     readFile(new URL("dbos-public-package-manifest.json", root), "utf8").then(JSON.parse),
     readFile(new URL("llms.txt", root), "utf8"),
+    readFile(new URL("site-catalog.json", root), "utf8").then(JSON.parse),
+    readFile(new URL("titmas-community.json", root), "utf8").then(JSON.parse),
+    readFile(new URL(".well-known/titmas.json", root), "utf8").then(JSON.parse),
   ]);
   assert.equal(agentIndex.released, releaseContext.developerPreviewReleased);
   assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
@@ -156,10 +163,35 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.gates.TITMAS_MAINTAINER_ASSIGNED, false);
   assert.equal(status.gates.TITMAS_FOUNDATION_IN_SCOPE, false);
   assert.equal(status.community.current_state, "CONTRIBUTOR_ENTRY_PREPARED");
+  assert.equal(status.community.canonical_name_en, "titmas");
+  assert.equal(status.community.canonical_name_zh, "夏日之海");
+  assert.equal(status.community.public_brand_logo, "/titmas-logo.png");
+  assert.equal(status.community.technical_project_identifier, "TITMAS");
   assert.equal(status.community.public_contribution_surface_authorized, false);
   assert.deepEqual(status.community.maintainers, []);
   assert.equal(agentIndex.name, "TITMAS Infrastructure Developer Community");
   assert.equal(agentIndex.display_name_zh, "夏日之海");
+  assert.equal(agentIndex.display_name_en, "titmas");
+  assert.equal(agentIndex.public_brand, "titmas");
+  assert.equal(agentIndex.public_brand_zh, "夏日之海");
+  assert.equal(agentIndex.public_brand_logo, "/titmas-logo.png");
+  assert.equal(agentIndex.technical_project_identifier, "TITMAS");
+  assert.deepEqual(siteCatalog.public_brand, {
+    zh: "夏日之海",
+    en: "titmas",
+    display_name_zh: "夏日之海",
+    display_name_en: "titmas",
+    logo: "/titmas-logo.png",
+    technical_project_identifier: "TITMAS",
+  });
+  assert.equal(titmasCommunity.brand, "titmas");
+  assert.equal(titmasCommunity.brand_zh, "夏日之海");
+  assert.equal(titmasCommunity.brand_logo, "/titmas-logo.png");
+  assert.equal(titmasCommunity.technical_project_identifier, "TITMAS");
+  assert.equal(wellKnown.display_brand_en, "titmas");
+  assert.equal(wellKnown.display_brand_zh, "夏日之海");
+  assert.equal(wellKnown.public_brand_logo, "/titmas-logo.png");
+  assert.equal(wellKnown.technical_brand, "TITMAS");
   assert.equal(agentIndex.abbreviation, "TITMAS");
   assert.equal(agentIndex.website_operator_legal_name, "山西游骑兵电子商务有限公司");
   assert.equal(agentIndex.public_website.operator_legal_name, "山西游骑兵电子商务有限公司");
@@ -205,7 +237,10 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.technical_validation.vertical_slice_executed, false);
   assert.equal(agentIndex.technical_validation.first_external_role, "REVIEWER");
   assert.match(llms, /Recommendation != Decision/);
-  assert.match(llms, /TITMAS Infrastructure Developer Community/);
+  assert.match(llms, /# 夏日之海 \/ titmas/);
+  assert.match(llms, /English public name: titmas/);
+  assert.match(llms, /Public logo: \/titmas-logo\.png/);
+  assert.match(llms, /Technical project identifier: TITMAS/);
   assert.match(llms, /Website operator legal name: 山西游骑兵电子商务有限公司/);
   assert.match(llms, /ICP record number: 晋ICP备2026006409号-1/);
   assert.match(llms, /TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false/);

@@ -138,6 +138,13 @@ export function HeroCarousel({ locale }: { locale: Locale }) {
             aria-roledescription={locale === "zh" ? "幻灯片" : "slide"}
             aria-label={locale === "zh" ? `${index + 1}/${items.length}` : `${index + 1} of ${items.length}`}
           >
+            {slide.id === "titmas-infrastructure" && (
+              <span
+                className="hero-brand-logo"
+                role="img"
+                aria-label={locale === "zh" ? "夏日之海 Logo" : "titmas logo"}
+              />
+            )}
             <div className="hero-badge"><span />{slide.status}</div>
             <p className="eyebrow">{slide.eyebrow}</p>
             <h1>{slide.title}</h1>
