@@ -180,7 +180,7 @@ class TitmacScoutBridgeTest(unittest.TestCase):
         self.assertFalse(projection["projection_boundaries"]["raw_run_copied"])
         self.assertNotIn("latest_run_digest", canonical_json(projection))
 
-    def test_d25_stored_projection_records_retained_er1_without_elevation(self) -> None:
+    def test_d27_stored_projection_records_negative_discovery_without_elevation(self) -> None:
         projection = json.loads(
             (COCKPIT / "projections" / "titmac-scout.json").read_text(
                 encoding="utf-8"
@@ -188,7 +188,7 @@ class TitmacScoutBridgeTest(unittest.TestCase):
         )
         summary = projection["summary"]
         self.assertEqual(
-            "dbbe53eb8a406194fcac6fd459cda195e03c6345",
+            "3f08f1a251b5e979c2984adcf26109ad3e069c4c",
             projection["source_revision"],
         )
         self.assertEqual("PASS", projection["cockpit_status"])
@@ -196,17 +196,30 @@ class TitmacScoutBridgeTest(unittest.TestCase):
         self.assertEqual("CANDIDATE", summary["self_healing_status"])
         self.assertEqual("CANDIDATE", summary["self_evolution_status"])
         self.assertEqual(
-            "evolution-runs/D24-DBA-ER1-001",
+            "evolution-runs/D26-SECOND-INDEPENDENT-ER1",
             summary["latest_evolution_run"],
         )
         self.assertEqual(
-            "PASS_REAL_ER1_REPAIR_APPLIED_AND_RETAINED_POST_MERGE_CANARY",
+            "NO_ELIGIBLE_INDEPENDENT_ER1_FOUND",
             summary["latest_evolution_result"],
         )
         self.assertIn(
-            3,
+            4,
             [item["number"] for item in summary["merged_pull_requests"]],
         )
+        self.assertTrue(
+            any(
+                "D24-DBA-ER1-001 remains the last retained self-healing run" in item
+                for item in summary["known_limitations"]
+            )
+        )
+        self.assertTrue(
+            any(
+                "REAL_SELF_HEALING_OPERATION_COUNT=1" in item
+                for item in summary["known_limitations"]
+            )
+        )
+        self.assertIsNone(summary["latest_rollback_evidence"])
         self.assertFalse(projection["projection_boundaries"]["raw_run_copied"])
         self.assertFalse(summary["ci"]["production_readiness_implied"])
         self.assertNotIn(
