@@ -180,6 +180,45 @@ class TitmacScoutBridgeTest(unittest.TestCase):
         self.assertFalse(projection["projection_boundaries"]["raw_run_copied"])
         self.assertNotIn("latest_run_digest", canonical_json(projection))
 
+    def test_d25_stored_projection_records_retained_er1_without_elevation(self) -> None:
+        projection = json.loads(
+            (COCKPIT / "projections" / "titmac-scout.json").read_text(
+                encoding="utf-8"
+            )
+        )
+        summary = projection["summary"]
+        self.assertEqual(
+            "dbbe53eb8a406194fcac6fd459cda195e03c6345",
+            projection["source_revision"],
+        )
+        self.assertEqual("PASS", projection["cockpit_status"])
+        self.assertEqual("CANDIDATE", summary["discovery_status"])
+        self.assertEqual("CANDIDATE", summary["self_healing_status"])
+        self.assertEqual("CANDIDATE", summary["self_evolution_status"])
+        self.assertEqual(
+            "evolution-runs/D24-DBA-ER1-001",
+            summary["latest_evolution_run"],
+        )
+        self.assertEqual(
+            "PASS_REAL_ER1_REPAIR_APPLIED_AND_RETAINED_POST_MERGE_CANARY",
+            summary["latest_evolution_result"],
+        )
+        self.assertIn(
+            3,
+            [item["number"] for item in summary["merged_pull_requests"]],
+        )
+        self.assertFalse(projection["projection_boundaries"]["raw_run_copied"])
+        self.assertFalse(summary["ci"]["production_readiness_implied"])
+        self.assertNotIn(
+            "PRODUCTION_READY",
+            {
+                summary["implementation_status"],
+                summary["discovery_status"],
+                summary["self_healing_status"],
+                summary["self_evolution_status"],
+            },
+        )
+
     def fetch(self) -> dict[str, object]:
         return self.adapter.fetch_local_git("titmac-scout", self.scout, retrieved_at=self.at)
 
