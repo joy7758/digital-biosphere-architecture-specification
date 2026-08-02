@@ -58,6 +58,7 @@ last_reviewed: 2026-08-02
 | `ADR-039 / DBA-VERIFIED-CORRECTION-AND-CONTEXT-CONTINUITY-D01` | `ACCEPTED_EXECUTION_AUTHORIZED`：采纳执行上下文结论连续性规则，并持续授权已核验问题的有界修正、测试、commit、push 与 Draft PR | `decided_by_ref=zhangbin`；2026-08-01 | 可在证明必要时修改 DBA、DBOS、SAEE、生产 Runtime 与其他 Owner 授权项目的 canonical repository；不授权 merge、tag、release、deployment、service restart、force push、破坏性删除、密钥／付款／合同动作或合规／生产声明 |
 | `TITMAS-MEDIA-EVIDENCE-ADMISSION-D01` | `CLOSED_ACCEPTED_AS_ADJACENT_CANDIDATE`：TITMAS Media Evidence v0.1.0 作为应用场景配置与参考实现候选纳入项目组合 | `TITMAS-DEC-20260801-MEDIA-EVIDENCE-PORTFOLIO-001`；`decided_by_ref=ZHANGBIN`；2026-08-01 | 只关闭 G0 项目组合准入；G1 为事实源通过，G2 仅为边界通过；G3-G8 仍分别保持未评估、未授权、未执行或未发布未采用；不授权 DBOS mapping、实现、标准、核心、生产或采用 |
 | `ADR-040 / DQ-006-RELAY-SCOPE` | `ACCEPTED_WITH_AMENDMENTS_P0_P3_ONLY`：Relay 关系域内，Agent Evidence 是既有 evidence reference/receipt 依赖；ARO 仅为可选 post-execution audit reference；POP 不得承担机器身份/信任绑定；Token Governor 与 ACP 不进入 P0-P3 | `decided_by_ref=zhangbin`；2026-08-02；[`ADR-040`](architecture/ADR-040-titmas-agent-safety-signal-relay-p0-p3-governance-boundary.md) | 对 `DQ-006` 的 Relay scope 作终局处置；不关闭其它项目的全局 Portfolio Admission，不准入候选 Relay 仓库，不授权实现、映射、发布或建仓 |
+| `ADR-041 / TITMAS-ASSR-LOCAL-PILOT-D01` | `ACCEPTED_EXECUTED_LOCAL_ONLY`：P4–P6 硬门通过后创建本地私有实现仓库并连续完成 P7–P10 | `decided_by_ref=zhangbin`；2026-08-02；[`ADR-041`](architecture/ADR-041-titmas-agent-safety-signal-relay-local-offline-pilot.md) | 只授权本地离线实现、对接、测试和本地提交；不授权 remote、push、merge、release、公共信号、部署、生产密钥、真实私有轨迹、远控或自动修复 |
 
 ### 3.1 DQ-006 Relay-scope disposition（DQ-006 中继范围处置）
 

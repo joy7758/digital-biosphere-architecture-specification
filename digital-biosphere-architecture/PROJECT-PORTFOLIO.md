@@ -43,6 +43,7 @@ changes_project_status: false
 | `MEDIA-EVIDENCE` | private `joy7758/titmas-media-guard`；`v0.1.0@7eac452f66a2b7de525543f80b9a7cf1465ef9a1`；status `governance/project-status.json` | AIGC media-review Application Profile / Reference Implementation candidate（人工智能生成内容媒体审核应用场景配置／参考实现候选） | `ADMITTED_ADJACENT_CANDIDATE` | G0、G1 和边界限定的 G2 已通过；DBOS Evidence Admission mapping 未授权，G3-G8 未评估、未授权或未执行 |
 | `TOKEN-GOVERNOR` | `/Users/zhangbin/GitHub/token-governor` | Resource governance adjacent component（资源治理相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | DBOS 运行约束与 SAEE 资源评价之间的责任边界是什么？ |
 | `ACP` | `/Users/zhangbin/GitHub/海洋/autonomous-cell-protocol` | Physical Cell protocol（物理单元协议） | `MAPPING_ONLY_REVIEW_REQUIRED` | Physical Cell Identity 与 DBOS Entity Identity 如何保持不等同？ |
+| `TITMAS-AGENT-SAFETY-SIGNAL-RELAY` | local private `/Users/zhangbin/GitHub/titmas-agent-safety-signal-relay`; ADR-041 | Safety signal domain lifecycle, deterministic applicability and local adapters | `LOCAL_OFFLINE_PILOT` | Gateway and public entry remain blocked; production keys, public signals, deployment and remote action are not authorized |
 
 本地路径只证明在 2026-07-21 的工作区发现了候选目录，不证明其当前能力、维护状态、发布状态、项目所有权或已接入 Digital Biosphere。
 
@@ -75,6 +76,8 @@ MEDIA_EVIDENCE_PORTFOLIO_CLASSIFICATION=ADJACENT_CANDIDATE
 MEDIA_EVIDENCE_DBOS_MAPPING_AUTHORIZED=false
 DISCOVERY_NE_ADOPTION=true
 MAPPING_NE_INTEGRATION=true
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_STATUS=LOCAL_OFFLINE_PILOT
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_PUBLIC_PRODUCTION=false
 ```
 
 ## 6. Commercial Program Implementation Surface

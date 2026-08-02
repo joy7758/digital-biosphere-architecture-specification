@@ -3,6 +3,7 @@ adr_id: ADR-040
 title: TITMAS Agent Safety Signal Relay P0-P3 Governance and Ownership Boundary
 title_zh: TITMAS 智能体安全信号中继 P0-P3 治理与所有权边界
 status: ACCEPTED_WITH_AMENDMENTS_P0_P3_ONLY
+subsequent_decision_ref: ADR-041
 decision_ref: TITMAS-AGENT-SAFETY-SIGNAL-RELAY-P0-P3-D01
 decided_by_ref: zhangbin
 decided_at: 2026-08-02

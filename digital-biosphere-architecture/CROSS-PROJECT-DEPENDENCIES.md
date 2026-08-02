@@ -49,6 +49,10 @@ last_reviewed: 2026-08-01
 | ARO → DBOS / SAEE | Audit result 作为 Verification 或 Evaluation 输入 | `REVIEW_REQUIRED` | Audit、Verification、Evaluation 三者分离 |
 | Token Governor → DBOS / SAEE | 资源约束记录与资源适应度输入 | `REVIEW_REQUIRED` | 执行约束、评价和最终决策责任分离 |
 | ACP ↔ DBOS | Physical Cell identity 与 Entity reference 映射 | `REVIEW_REQUIRED` | `cell_id` 不得自动等于 `entity_id` |
+| DBA → Safety Signal Relay | P0–P6 architecture, object, privacy and lifecycle contract | `LOCAL_PILOT_CONTRACT_ACTIVE` | DBA is not Relay runtime or signal source |
+| Agent Evidence → Safety Signal Relay | existing receipt/bundle verify-only CLI | `LOCAL_SYNTHETIC_VERIFY_ONLY_PASS` | receipt is not Truth; Relay creates no second evidence store |
+| Safety Signal Relay → SAEE | future read-only ApplicabilityAssessment input | `CONTRACT_ONLY_NOT_CONNECTED` | SAEE cannot write/publish signals or authorize action |
+| Safety Signal Relay ↔ Sandbox Gateway | proposed thin preflight pass-through | `BLOCKED_CANONICAL_SOURCE` | no Gateway modification or runtime bridge exists |
 
 ## 4. Dependency Change Rule（依赖变更规则）
 

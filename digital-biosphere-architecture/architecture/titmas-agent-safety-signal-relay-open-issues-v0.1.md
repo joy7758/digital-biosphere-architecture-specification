@@ -2,9 +2,9 @@
 document_id: TITMAS-AGENT-SAFETY-SIGNAL-RELAY-OPEN-ISSUES-0.1
 title: TITMAS Agent Safety Signal Relay Unresolved Issues v0.1
 title_zh: TITMAS 智能体安全信号中继尚未解决问题清单 v0.1
-status: ACTIVE_OPEN_ISSUES_AFTER_P0_P3
+status: ACTIVE_OPEN_ISSUES_AFTER_LOCAL_OFFLINE_PILOT
 decision_ref: ADR-040
-implementation_authorized: false
+implementation_authorized: local-offline-only
 ---
 
 # TITMAS 智能体安全信号中继尚未解决问题清单 v0.1
@@ -35,6 +35,17 @@ P0–P3 完成不消除以下问题。它们不得被隐式默认、LLM 补齐�
 
 ## DQ-006 and R-007 status（DQ-006 与 R-007 状态）
 
+## P4–P10 disposition update
+
+ADR-041 resolves `ASSR-OI-001` for a local private repository only, `ASSR-OI-009` for the current
+`agent-evidence` verify-only local profile, `ASSR-OI-011` for matcher v0.1, and `ASSR-OI-019` for the
+executed local scope. It does not resolve canonical remote/license, production key governance, DBOS mapping,
+public publication roles, Gateway scope, redcrag parity, public disclosure, external adoption or deployment.
+
+`ASSR-OI-003` is resolved only for the local DSSE pilot; SCITT interoperability remains open.
+`ASSR-OI-004` remains open for production TUF/root/threshold/recovery even though local correction and
+revocation behavior is implemented and tested.
+
 这两项在 Relay scope 内不是未决：ADR-040 已做 exact disposition。仍未决的是 DQ-006 对
 其它项目的全局 Portfolio Admission，以及 R-007 在非 Relay 场景的全局重复建设风险。
 
@@ -48,9 +59,10 @@ R_007_GLOBAL_DUPLICATION_RISK_OPEN=true
 ## Stop state（停止状态）
 
 ```text
-P4_P10_AUTHORIZED=false
-IMPLEMENTATION_AUTHORIZED=false
-NEW_REPOSITORY_AUTHORIZED=false
+P4_P10_AUTHORIZED=LOCAL_CONDITIONAL_SCOPE_EXECUTED
+IMPLEMENTATION_AUTHORIZED=LOCAL_OFFLINE_ONLY
+NEW_REPOSITORY_AUTHORIZED=LOCAL_PRIVATE_ONLY
 PUBLIC_SIGNAL_AUTHORIZED=false
-WORK_MUST_STOP_AFTER_P0_P3=true
+PUBLIC_PRODUCTION_DEPLOYMENT_AUTHORIZED=false
+NEXT_SCOPE_REQUIRES_NEW_HUMAN_AUTHORIZATION=true
 ```

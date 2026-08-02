@@ -378,3 +378,26 @@ repository remains the implementation evidence owner; its post-tag competition
 documents and binary assets are outside the v0.1.0 admission evidence. The
 object ownership boundary and bounded Portfolio Admission are accepted, while
 DBOS mapping authorization and G3-G8 remain unresolved or explicitly closed.
+
+## 13. Agent Safety Signal Relay Local Pilot Overlay
+
+Observed on 2026-08-02 under ADR-041. Implementation truth remains in the local
+private Relay repository; this is a reference-only status projection.
+
+```text
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_STATUS=LOCAL_OFFLINE_PILOT
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_P4_P6_GATE=PASS
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_END_TO_END_LOOP=PASS
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_EXTERNAL_RECOMMENDATION=LOCAL_OFFLINE_PILOT
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_GATEWAY_INTEGRATION=BLOCKED_CANONICAL_SOURCE
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_REDCRAG_PARITY=FAIL
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_PUBLIC_SIGNAL_PUBLISHED=false
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_PUBLIC_PRODUCTION_DEPLOYED=false
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_PUBLIC_PRODUCTION_RECOMMENDED=false
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_REMOTE_CONTROL_ENABLED=false
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_AUTO_REMEDIATION_ENABLED=false
+```
+
+This overlay does not claim production readiness, public availability,
+certification, external adoption, DBOS identity mapping, Gateway integration or
+site deployment.

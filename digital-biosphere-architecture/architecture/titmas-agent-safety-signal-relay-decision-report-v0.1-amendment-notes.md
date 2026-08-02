@@ -3,6 +3,7 @@ document_id: TITMAS-AGENT-SAFETY-SIGNAL-RELAY-DECISION-REPORT-0.1-AMENDMENTS
 title: TITMAS Agent Safety Signal Relay Decision Report v0.1 Amendment Notes
 title_zh: TITMAS 智能体安全信号中继决策报告 v0.1 修订说明
 status: ACCEPTED_P0_P3_AMENDMENT_RECORD
+subsequent_decision_ref: ADR-041
 source_report_sha256: 61837df3dc9d687f5b2b71e9dc1735af84556b6ad95a83bd4a8d409d6941842b
 decision_ref: ADR-040
 implementation_status: NOT_IMPLEMENTED
