@@ -8,6 +8,7 @@ import json
 import os
 import stat
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -23,7 +24,38 @@ SPEC.loader.exec_module(BUILDER)
 class Stage5ProtocolSurfaceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
+        cls.tracked_output_root = BUILDER.OUTPUT_ROOT
+        cls.temporary_directory = tempfile.TemporaryDirectory(
+            prefix="titmas-stage5-protocol-surface-"
+        )
+        BUILDER.OUTPUT_ROOT = (
+            Path(cls.temporary_directory.name) / "private-stage5-protocol-surface"
+        )
         cls.manifest = BUILDER.build()
+
+    @classmethod
+    def tearDownClass(cls) -> None:
+        BUILDER.OUTPUT_ROOT = cls.tracked_output_root
+        cls.temporary_directory.cleanup()
+
+    def test_generated_surface_matches_tracked_expected_bytes(self) -> None:
+        generated_files = {
+            path.relative_to(BUILDER.OUTPUT_ROOT)
+            for path in BUILDER.OUTPUT_ROOT.rglob("*")
+            if path.is_file()
+        }
+        tracked_files = {
+            path.relative_to(self.tracked_output_root)
+            for path in self.tracked_output_root.rglob("*")
+            if path.is_file()
+        }
+        self.assertEqual(tracked_files, generated_files)
+        for relative in sorted(generated_files):
+            self.assertEqual(
+                (self.tracked_output_root / relative).read_bytes(),
+                (BUILDER.OUTPUT_ROOT / relative).read_bytes(),
+                str(relative),
+            )
 
     def test_manifest_is_private_and_default_deny(self) -> None:
         self.assertFalse(self.manifest["public_release_allowed"])
