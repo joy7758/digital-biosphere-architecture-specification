@@ -538,7 +538,39 @@ Canonical D16 records:
 - [`TITMAS-OPEN-PR-MAINLINE-REVIEW-D16.md`](TITMAS-OPEN-PR-MAINLINE-REVIEW-D16.md)
 - [`open-pr-classification.json`](open-pr-classification.json)
 
-## 15. TITMAC Scout canonical identity and cockpit bridge overlay
+## 15. D19 Agent-Native Bounded Evolution Overlay
+
+Human Decision `TITMAS-AGENT-NATIVE-DISCOVERY-SELF-HEALING-AND-EVOLUTION-D19-V2-1`
+creates a narrow exception to the D16 freeze for an evidence-driven Discovery
+Evolution architecture and normative contract. DBA owns the rules and Schemas;
+`titmac-scout` owns any implementation candidate. This section is not a Runtime,
+executor, Authority or canonical execution truth source.
+
+```text
+DISCOVERY_LAYER_STATUS=ARCHITECTURE_CONTRACT_CANDIDATE
+DISCOVERY_LAYER_VERSION=2.1.0
+SELF_HEALING_STATUS=NOT_ASSESSED
+SELF_EVOLUTION_STATUS=NOT_ASSESSED
+AUTONOMOUS_PRODUCTION_EVOLUTION=false
+MERGE_AUTHORIZED=false
+DEPLOYMENT_AUTHORIZED=false
+P0_10_FINAL_DISPOSITION=NOT_ASSESSED_DIAGNOSTIC_LIMIT_REACHED
+P0_10_REOPENED=false
+P0_10_RESULT_REWRITTEN=false
+```
+
+The earlier D12/D16 `FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT` evidence remains
+historical and unchanged. `NOT_ASSESSED_DIAGNOSTIC_LIMIT_REACHED` records the
+later disposition after the diagnostic budget was exhausted; it is not a
+rewrite of the failed run.
+
+Canonical D19 records:
+
+- [`architecture/titmas-agent-native-discovery-self-healing-evolution-amendment-v2.1.md`](architecture/titmas-agent-native-discovery-self-healing-evolution-amendment-v2.1.md)
+- [`architecture/ADR-040-bounded-discovery-self-healing-and-evolution.md`](architecture/ADR-040-bounded-discovery-self-healing-and-evolution.md)
+- [`TITMAS/agent-native/evolution/README.md`](TITMAS/agent-native/evolution/README.md)
+
+## 16. TITMAC Scout canonical identity and cockpit bridge overlay
 
 D20 froze the implementation machine identity as `titmac-scout` and retains
 `tiamas-scout` only as a conversation alias. D21 merged corrected status

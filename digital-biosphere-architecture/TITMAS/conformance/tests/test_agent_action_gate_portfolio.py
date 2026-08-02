@@ -108,7 +108,13 @@ class AgentActionGatePortfolioTests(unittest.TestCase):
 
     def test_constitution_pin_matches_current_cockpit_content(self) -> None:
         lock = self.projection["constitution_lock"]
-        self.assertTrue(lock["content_matches_observed_main"])
+        self.assertFalse(lock["content_matches_observed_main"])
+        self.assertTrue(lock["candidate_content_matches_current_branch"])
+        self.assertEqual(
+            lock["candidate_decision_reference"],
+            "TITMAS-AGENT-NATIVE-DISCOVERY-SELF-HEALING-AND-EVOLUTION-D19-V2-1",
+        )
+        self.assertEqual(lock["adoption_status"], "PENDING_D19_DRAFT_PR_REVIEW")
         self.assertFalse(lock["child_second_constitution_created"])
         self.assertEqual(
             hashlib.sha256(CONSTITUTION.read_bytes()).hexdigest(),

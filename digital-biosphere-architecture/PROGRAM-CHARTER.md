@@ -96,6 +96,20 @@ ATTENTION_NE_EVIDENCE_OR_TRUTH=true
 SAEE_NE_ATTENTION_CONTROLLER=true
 ```
 
+## 2C. Bounded Evolution Principle（有界进化原则）
+
+发现层可以把可复现问题转化为有来源的修复或升级候选，但必须通过简单、窄职责主体的组合完成，并保留风险分类、候选比较、失败证据、回滚和谱系。ER-1 可在隔离环境实现并创建 Draft PR；merge、release、deployment、生产激活和不可逆变化继续由 Human Authority 决定。
+
+完整边界见 [`D19 amendment`](architecture/titmas-agent-native-discovery-self-healing-evolution-amendment-v2.1.md) 和 [`ADR-040`](architecture/ADR-040-bounded-discovery-self-healing-and-evolution.md)。
+
+```text
+DISCOVERY_NE_REPORT_ONLY=true
+MANY_SIMPLE_AGENTS_NE_ONE_SUPER_AGENT=true
+EVIDENCE_DRIVEN_SELECTION=true
+SELF_HEALING_NE_AUTHORITY_ESCALATION=true
+AGENT_RECOMMENDATION_NE_HUMAN_DECISION=true
+```
+
 ## 3. DBA Program Governance Scope（DBA 项目群治理范围）
 
 DBA 负责：
@@ -270,5 +284,6 @@ EVIDENCE_TRUTH_CHANGED=false
 AGENT_ABSOLUTE_PRIORITY_ADOPTED=true
 COMPOSITIONAL_SCALE_PRINCIPLE_ADOPTED=true
 ATTENTION_PRINCIPLE_ADOPTED=true
+BOUNDED_EVOLUTION_PRINCIPLE_ADOPTED=true
 HUMAN_ACCOUNTABILITY_REMOVED=false
 ```

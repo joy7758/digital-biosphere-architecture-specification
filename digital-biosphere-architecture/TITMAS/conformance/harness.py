@@ -772,6 +772,55 @@ def check_agent_native_adversarial() -> dict[str, Any]:
     }
 
 
+def check_bounded_evolution_surfaces() -> dict[str, Any]:
+    root = TITMAS_ROOT / "agent-native" / "evolution"
+    machine_files = (
+        "evolution-policy.json",
+        "evolution-state-machine.json",
+        "risk-classification.json",
+        "fitness-profile.json",
+        "self-healing-registry.json",
+        "evolution-capability.json",
+        "canonical-owner-map.json",
+        "mutation-limits.json",
+    )
+    machine_values = {name: load_json(root / name) for name in machine_files}
+    capability = machine_values["evolution-capability.json"]
+    policy = machine_values["evolution-policy.json"]
+    if capability["status"] != "BOUNDED_SELF_HEALING_AND_EVOLUTION_CANDIDATE":
+        raise ConformanceError("D19 discovery layer maturity is elevated or incomplete")
+    if capability["public_launch_authorized"] or capability["community_established"]:
+        raise ConformanceError("D19 reference layer must not claim public launch")
+    if policy["automatic_production_evolution"]:
+        raise ConformanceError("D19 must not authorize production evolution")
+    if policy["p0_10"]["automatic_reopen"]:
+        raise ConformanceError("D19 must not reopen P0-10")
+
+    schema_files = sorted((root / "schemas").glob("*.schema.json"))
+    if len(schema_files) != 7:
+        raise ConformanceError("D19 requires exactly seven normative object schemas")
+    schemas_checked = 0
+    for schema_path in schema_files:
+        schema = load_json(schema_path)
+        if schema.get("type") != "object" or not schema.get("required"):
+            raise ConformanceError(f"{schema_path.name}: incomplete normative schema")
+        schemas_checked += 1
+    owner_map = machine_values["canonical-owner-map.json"]
+    serialized = json.dumps(machine_values, sort_keys=True)
+    forbidden = ("automatic_merge\": true", "automatic_activation\": true", "self_grant")
+    if any(item in serialized for item in forbidden):
+        raise ConformanceError("D19 contract contains prohibited authority semantics")
+    if "titmac-scout" not in json.dumps(owner_map, sort_keys=True):
+        raise ConformanceError("D19 canonical implementation owner is not titmac-scout")
+    return {
+        "machine_surfaces_checked": len(machine_files),
+        "normative_schemas_checked": schemas_checked,
+        "architecture_only": True,
+        "executable_engine_files": 0,
+        "evolution_run_files": 0,
+    }
+
+
 LINK_PATTERN = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 
 PUBLIC_ENTRY_DOCUMENTS = (
@@ -984,6 +1033,7 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("internal_reviews", check_internal_reviews),
         ("agent_native_surfaces", check_agent_native_surfaces),
         ("agent_native_adversarial", check_agent_native_adversarial),
+        ("bounded_evolution_surfaces", check_bounded_evolution_surfaces),
         ("public_entry_consistency", check_public_entry_consistency),
         ("local_links", check_local_links),
     )

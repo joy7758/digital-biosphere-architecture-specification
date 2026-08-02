@@ -228,6 +228,25 @@ available as historical or adjacent candidates, but no new standard alignment,
 reference model, application profile, Demo, Portfolio candidate, Adapter,
 landing page, community feature or commercial feature may displace P0-10.
 
+## 10. D19 Bounded Discovery Evolution Exception
+
+D19 v2.1 is a Human-authorized, narrow exception to the D16 development freeze.
+It does not reopen P0-10 or resume unbounded feature development.
+
+| milestone | objective | status | exit evidence |
+|---|---|---|---|
+| `D19-E1` | Freeze machine-readable evolution policy and seven missing object schemas | `IMPLEMENTED_CANDIDATE` | JSON parse, schema validation, canonical-owner and authority checks |
+| `D19-E2` | Validate bounded ER-1 reference path | `IMPLEMENTED_CANDIDATE` | 25/25 tests, deterministic replay, secret/disclosure scans |
+| `D19-E3` | Open first synthetic self-healing Draft PR | `AUTHORIZED_NOT_MERGED` | stale derived registry repaired, rollback and lineage retained, Draft PR only |
+| `D19-E4` | Human disposition of candidate | `NOT_AUTHORIZED` | independent review plus new merge/activation decision |
+
+```text
+UNBOUNDED_PRODUCT_DEVELOPMENT=FROZEN
+EVIDENCE_TRIGGERED_EVOLUTION=OPEN
+P0_10_REOPENED=false
+PRODUCTION_ACTIVATION_AUTHORIZED=false
+```
+
 ```text
 MAX_ADDITIONAL_DIAGNOSTIC_ROUNDS=1
 MAX_REMEDIATION_PRS_AFTER_D15=1

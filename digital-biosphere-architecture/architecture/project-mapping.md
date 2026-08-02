@@ -25,6 +25,7 @@ creates_project_relationships: false
 | `PROJECT-DBOS` | DBOS | Open Digital Entity Infrastructure（开放数字实体基础设施）；Digital Biosphere Operating System；Operational Authority（运行权力）；Infrastructure Entity（基础设施实体）的架构角色示例 | Existence Governance / DBOS | DBOS repository 不是 Entity；DBOS 不是 Agent Application 或 Foundation Model；Operational Authority 不等于最终授权权，也不证明 Identity、Execution、Federation 或实体实例已存在 | 与 POP、Token Governor、证据组件的实现边界及未来实体资格需逐项契约化 |
 | `PROJECT-SAEE` | SAEE | Evolution Intelligence Layer（演化智能层）；Evolution Engine；Evolution Authority（演化权力）；Evolution Entity（演化实体）的架构角色示例 | Evolution Governance / SAEE | SAEE repository 不是 Entity；Evolution Authority 只覆盖评价，不授予 DBOS 写权、执行权或架构修改权 | Governance Evolution 与 DBOS/Token Governor 的策略生效及未来实体资格需澄清 |
 | `ARCH-LAYER-GOVERNANCE-DECISION` | Governance Decision Layer | Decision Authority（决策权力）的 record and state boundary（记录与状态边界） | SAEE 与 DBOS 之间的独立治理边界 | 不是项目实现、DBOS 模块、SAEE 模块、Runtime、Entity 或自动授权主体；`Decision Authority` 标签不定义最终授权者 | 最终 reviewer、decision authority、adoption authority 与职责分离规则尚需定义 |
+| `ARCH-LAYER-TITMAS-DISCOVERY-EVOLUTION` | TITMAS Agent-Native Discovery Evolution Layer | 有界问题发现、修复候选、适应度选择、回滚与谱系的逻辑层 | DBA normative policy；补丁路由至既有 canonical owner | 不是新仓库、Runtime、生产执行器、Authority、Truth、Receipt 或 Certification owner；ER-1 只到 Draft PR | 跨仓补丁仍需目标 Owner 审查；ER-2 至 ER-4 无自动激活权 |
 | `PROJECT-POP` | POP | Identity-related component（身份相关组件）；既有公共语义中也用于 portable persona interface（可移植人格接口） | DBOS Identity 相邻域 | 本表不声明 POP 是 DBOS 子模块、身份权威或已接入 DBOS | POP persona projection（人格投射）与 DBOS canonical identity（规范身份）的责任分界 |
 | `PROJECT-ARO` | ARO / ARO-Audit | Evidence/Audit component（证据/审计组件） | DBOS Evidence/Verification 相邻域 | 本表不声明其采集、验证、审计或回放能力已实现或属于 DBOS | 与 Agent Evidence、DBOS Evidence Collection 的数据所有权和阶段边界 |
 | `PROJECT-AGENT-EVIDENCE` | Agent Evidence | Evidence component（证据组件） | Execution-to-evidence handoff（执行到证据交接）相邻域 | Evidence package（证据包）不自动等于 DBOS 验证或 SAEE 评价 | 与 ARO 的审计职责、与 DBOS 的证据采集职责可能重叠 |
@@ -42,6 +43,9 @@ DBOS_ROLE=OPEN_DIGITAL_ENTITY_INFRASTRUCTURE
 SAEE_ROLE=EVOLUTION_INTELLIGENCE_LAYER
 DBA_ROLE=PROGRAM_GOVERNANCE_AND_ARCHITECTURE_SPECIFICATION_HUB
 DBA_IS_PROGRAM_COCKPIT=true
+DISCOVERY_EVOLUTION_ROLE=LOGICAL_LAYER
+DISCOVERY_EVOLUTION_NORMATIVE_OWNER=DBA
+DISCOVERY_EVOLUTION_NE_RUNTIME=true
 DBOS_GOVERNS_EXISTENCE=true
 SAEE_GOVERNS_EVOLUTION=true
 DBOS_NE_AGENT_APPLICATION=true

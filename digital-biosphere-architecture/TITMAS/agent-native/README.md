@@ -14,6 +14,8 @@ python3 TITMAS/agent-native/community_cli.py discover \
 python3 TITMAS/agent-native/community_cli.py rank \
   --need "bounded contribution handoff"
 python3 TITMAS/conformance/harness.py
+python3 -m unittest discover \
+  -s TITMAS/agent-native/tests -p 'test_evolution.py' -v
 ```
 
 An agent joins only through an externally issued, bounded, expiring and revocable
@@ -48,6 +50,11 @@ for the canonical integration candidate. Historical pilots remain immutable
 supporting references; no pilot runner is copied here. This directory does not
 establish a public community or create an Agent Runtime.
 
+D19 v2.1 opens an Agent-native machine collaboration contract for bounded
+problem evidence, deterministic repair variants, fitness evaluation, rollback,
+lineage and Draft PR handoff. It does not open unrestricted public access or
+production activation. See [bounded evolution](evolution/README.md).
+
 ## Protocols and guides
 
 - [Participant model](participants/participant-registry.json)
@@ -58,3 +65,4 @@ establish a public community or create an Agent Runtime.
 - [Handoff protocol](handoff/README.md)
 - [Recommendation protocol](recommendations/README.md)
 - [Human exception path](guides/human-exception-and-appeal-path.md)
+- [Bounded discovery, self-healing and evolution](evolution/README.md)

@@ -50,6 +50,8 @@ TITMAS_NE_CERTIFICATION_AUTHORITY=true
 TITMAS_NE_CANONICAL_TRUTH_STORE=true
 TITMAS_NE_SAEE_CORE=true
 TITMAS_NE_REPOSITORY_FIXER=true
+D19_DISCOVERY_LAYER_NE_PRODUCTION_EXECUTOR=true
+D19_SANDBOX_IMPLEMENTATION_NE_RUNTIME_ACTIVATION=true
 DIGITAL_IMMUNE_MODEL_IS_EXPLANATORY_LAYER=true
 APPLICATION_SCENARIO_NE_CORE_ARCHITECTURE=true
 COMMUNITY_GOVERNANCE_NE_PRODUCT_RUNTIME=true
@@ -87,6 +89,23 @@ EXPERIMENTAL_NE_STABLE=true
 Human Owner 决定公共贡献、角色、发布和重大外部动作。模型、Contributor、Reviewer 或
 Conformance PASS 均不能替代 Human Decision。
 
+## Agent-native bounded evolution amendment
+
+D19 v2.1 permits a composition of narrow Agent roles to convert reproducible
+problem evidence into isolated repair variants, fitness evaluation, rollback
+evidence, lineage and a Draft PR. The logical Discovery Evolution Layer is
+normatively owned by DBA, while a patch must be routed to the existing
+canonical owner repository. It creates no new Runtime, Authority or truth
+source.
+
+ER-0 analysis and ER-1 deterministic derived-artifact repair may run under the
+bounded policy. ER-2 through ER-4 require a separate Human Decision for effects
+beyond an isolated proposal. No risk class receives autonomous production
+activation.
+
+See the [D19 amendment](titmas-agent-native-discovery-self-healing-evolution-amendment-v2.1.md)
+and [ADR-040](ADR-040-bounded-discovery-self-healing-and-evolution.md).
+
 ## Change process
 
 规范变化按 `Proposal → Review → Decision → Versioned update → Conformance` 推进。
@@ -123,5 +142,7 @@ TITMAS_FOUNDATION_CREATED=false
 TITMAS_CERTIFICATION_AUTHORIZED=false
 TITMAS_RELEASE_AUTHORIZED=false
 TITMAS_AGENT_ABSOLUTE_PRIORITY=true
+D19_BOUNDED_EVOLUTION_AMENDMENT_ADOPTED=true
+AUTONOMOUS_PRODUCTION_EVOLUTION=false
 HUMAN_ACCOUNTABILITY_REMOVED=false
 ```
