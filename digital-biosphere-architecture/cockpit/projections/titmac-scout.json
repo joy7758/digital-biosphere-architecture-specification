@@ -3,7 +3,7 @@
     "checks": [
       {
         "conclusion": "success",
-        "details_url": "https://github.com/joy7758/titmac-scout/actions/runs/30739863539/job/91475213277",
+        "details_url": "https://github.com/joy7758/titmac-scout/actions/runs/30742791979/job/91483086620",
         "name": "test",
         "status": "completed"
       }
@@ -13,11 +13,11 @@
       "CI state is dynamic and applies only to the exact target revision."
     ],
     "observation_owner": "DBA_COCKPIT_READ_ONLY_ADAPTER",
-    "observed_at": "2026-08-02T08:41:08.794752Z",
+    "observed_at": "2026-08-02T10:00:41.690556Z",
     "production_readiness_implied": false,
     "release_implied": false,
     "status": "PASS",
-    "target_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907"
+    "target_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f"
   },
   "ci_observation_freshness": "FRESH",
   "cockpit_status": "PASS",
@@ -28,7 +28,7 @@
   },
   "conversation_alias": "tiamas-scout",
   "display_name": "titmac-scout",
-  "fresh_until": "2026-08-05T08:23:46Z",
+  "fresh_until": "2026-08-05T09:52:47Z",
   "project_id": "titmac-scout",
   "projection_boundaries": {
     "cockpit_pull_only": true,
@@ -48,6 +48,14 @@
     "merged_pull_requests": [
       {
         "base_branch": "main",
+        "head_revision": "67815bb0be6ca463072815330741d1ca5d8e8589",
+        "is_draft": false,
+        "number": 2,
+        "state": "MERGED",
+        "url": "https://github.com/joy7758/titmac-scout/pull/2"
+      },
+      {
+        "base_branch": "main",
         "head_revision": "c77c44d2a0ed17260aaa5d1336eed7c3da2b2413",
         "is_draft": false,
         "number": 1,
@@ -56,7 +64,7 @@
       }
     ],
     "observation_owner": "DBA_COCKPIT_READ_ONLY_ADAPTER",
-    "observed_at": "2026-08-02T08:41:08.794752Z",
+    "observed_at": "2026-08-02T10:00:41.690556Z",
     "open_pull_requests": [],
     "status": "PASS"
   },
@@ -67,16 +75,16 @@
       "This is a point-in-time GitHub API observation."
     ],
     "observation_owner": "DBA_COCKPIT_READ_ONLY_ADAPTER",
-    "observed_at": "2026-08-02T08:41:08.794752Z",
+    "observed_at": "2026-08-02T10:00:41.690556Z",
     "repository": "joy7758/titmac-scout",
-    "revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
+    "revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
     "revision_match": true,
     "status": "PASS",
-    "tree_digest": "474e20cca30f89b66638cfaf56d6d147c9e9f1d3",
+    "tree_digest": "b6bff3360af3a653d9333f9ad78a96f0e6ab0dc9",
     "tree_match": true
   },
   "remote_revision_freshness": "FRESH",
-  "retrieved_at": "2026-08-02T08:41:08.794752Z",
+  "retrieved_at": "2026-08-02T10:00:41.690556Z",
   "source_declarations": {
     "ci_observation_request": {
       "deployment_implied": false,
@@ -88,13 +96,13 @@
       "production_readiness_implied": false,
       "release_implied": false,
       "status": "EXTERNAL_OBSERVATION_REQUIRED",
-      "target_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
+      "target_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
       "workflow_run": null
     },
     "declared_work_items": [
       {
         "dynamic_state": "EXTERNAL_OBSERVATION_REQUIRED",
-        "purpose": "D20_STATUS_CONTRACT",
+        "purpose": "D20_STATUS_CONTRACT_MERGED_HISTORY",
         "reference": "joy7758/titmac-scout#1"
       }
     ],
@@ -116,7 +124,7 @@
       "observation_owner": "DBA_COCKPIT_READ_ONLY_ADAPTER",
       "status": "EXTERNAL_GITHUB_QUERY_REQUIRED",
       "target_repository": "joy7758/titmac-scout",
-      "target_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907"
+      "target_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f"
     }
   },
   "source_freshness": "FRESH",
@@ -128,12 +136,12 @@
     "schema_path": "governance/project-status.schema.json",
     "status_path": "governance/project-status.json"
   },
-  "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
+  "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
   "source_revision_match": true,
   "source_status_freshness": "FRESH",
-  "source_tree_digest": "474e20cca30f89b66638cfaf56d6d147c9e9f1d3",
+  "source_tree_digest": "b6bff3360af3a653d9333f9ad78a96f0e6ab0dc9",
   "source_tree_match": true,
-  "status_source_digest": "84610eb8bc0aed4bb3ed1a12997a140d4fa44b723d5fb5e4cebec2dc7626a4ab",
+  "status_source_digest": "6cfe7656780ca2dd2f176bccbfa0b01501dd00c6393e5729f94ea0e19b8e788c",
   "summary": {
     "authority_boundaries": [
       "TITMAC_SCOUT_IS_IMPLEMENTATION_AND_STATUS_OWNER",
@@ -144,18 +152,15 @@
       "CI_PASS_NE_PRODUCTION_READY"
     ],
     "blocking_decisions": [
-      "PR105_OWNERSHIP_REVIEW_PENDING",
-      "PR106_MIGRATION_REVIEW_PENDING"
+      "FIRST_REAL_BOUNDED_ER1_OPERATION_HUMAN_DECISION_REQUIRED"
     ],
-    "blocking_issues": [
-      "The legacy local directory tiamas-scout contains unrelated uncommitted work and is excluded from D20."
-    ],
+    "blocking_issues": [],
     "canonical_repository": "joy7758/titmac-scout",
     "ci": {
       "checks": [
         {
           "conclusion": "success",
-          "details_url": "https://github.com/joy7758/titmac-scout/actions/runs/30739863539/job/91475213277",
+          "details_url": "https://github.com/joy7758/titmac-scout/actions/runs/30742791979/job/91483086620",
           "name": "test",
           "status": "completed"
         }
@@ -165,32 +170,33 @@
         "CI state is dynamic and applies only to the exact target revision."
       ],
       "observation_owner": "DBA_COCKPIT_READ_ONLY_ADAPTER",
-      "observed_at": "2026-08-02T08:41:08.794752Z",
+      "observed_at": "2026-08-02T10:00:41.690556Z",
       "production_readiness_implied": false,
       "release_implied": false,
       "status": "PASS",
-      "target_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907"
+      "target_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f"
     },
     "closed_pull_requests": [],
     "cockpit_bridge_state": "READY_FOR_HUMAN_REVIEW",
-    "development_phase": "D21_CANONICAL_STATUS_ACTIVATION",
+    "development_phase": "D23_BOUNDED_SYNTHETIC_EVOLUTION_CANDIDATE",
     "discovery_status": "CANDIDATE",
     "evolution_progress": {
       "APPLY": {
-        "evidence_reference": null,
+        "evidence_reference": "evolution-runs/D19-ER1-DEMO-001/mutation-receipt.json",
         "limitations": [
-          "No repair activation or production mutation is authorized."
+          "No canonical repository, Runtime, service, database or production artifact was mutated."
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
         "status": "NOT_ASSESSED",
-        "updated_at": null
+        "updated_at": "2026-08-02T09:52:47Z"
       },
       "AWAIT_AUTHORIZATION": {
         "evidence_reference": "governance/project-status.json",
         "limitations": [
-          "Only D20 status-contract and read-only bridge work is authorized."
+          "BLOCKED_PENDING_FIRST_REAL_ER1_HUMAN_DECISION",
+          "NO_REAL_REPOSITORY_REPAIR_AUTHORIZED"
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
         "status": "BLOCKED",
         "updated_at": "2026-08-02T07:15:47Z"
       },
@@ -199,7 +205,7 @@
         "limitations": [
           "Policy evaluation does not grant authorization."
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
         "status": "CANDIDATE",
         "updated_at": "2026-08-02T07:15:47Z"
       },
@@ -208,126 +214,161 @@
         "limitations": [
           "Heuristic ordering is uncalibrated."
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
         "status": "CANDIDATE",
         "updated_at": "2026-08-02T07:15:47Z"
       },
       "EVALUATE_FITNESS": {
-        "evidence_reference": null,
+        "evidence_reference": "evolution-runs/D19-ER1-DEMO-001/fitness-evaluations",
         "limitations": [
-          "SAEE fitness evaluation has not been run for a canonical Scout evolution candidate."
+          "SYNTHETIC_FIXTURE_ONLY",
+          "NO_REAL_RUNTIME",
+          "NO_EXTERNAL_REPOSITORY_WRITE",
+          "NO_PRODUCTION_EVIDENCE",
+          "SAEE_HAS_NOT_EVALUATED_THIS_CANDIDATE"
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
-        "status": "NOT_ASSESSED",
-        "updated_at": null
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
+        "status": "CANDIDATE",
+        "updated_at": "2026-08-02T09:52:47Z"
       },
       "EVIDENCE": {
         "evidence_reference": "src/integrations/titmas_evidence_adapter.rb",
         "limitations": [
           "Structure and digest-chain verification do not prove truth."
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
         "status": "CANDIDATE",
         "updated_at": "2026-08-02T07:15:47Z"
       },
       "GENERATE_VARIANTS": {
-        "evidence_reference": null,
+        "evidence_reference": "src/evolution/evolution.py",
         "limitations": [
-          "No D19-equivalent patch-variant evidence is asserted."
+          "SYNTHETIC_FIXTURE_ONLY",
+          "NO_REAL_RUNTIME",
+          "NO_EXTERNAL_REPOSITORY_WRITE",
+          "NO_PRODUCTION_EVIDENCE"
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
-        "status": "NOT_ASSESSED",
-        "updated_at": null
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
+        "status": "CANDIDATE",
+        "updated_at": "2026-08-02T09:52:47Z"
       },
       "IMPLEMENT_IN_SANDBOX": {
-        "evidence_reference": null,
+        "evidence_reference": "evolution-runs/D19-ER1-DEMO-001",
         "limitations": [
-          "No D19-equivalent sandbox implementation is asserted."
+          "SYNTHETIC_FIXTURE_ONLY",
+          "NO_REAL_RUNTIME",
+          "NO_EXTERNAL_REPOSITORY_WRITE",
+          "NO_PRODUCTION_EVIDENCE"
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
-        "status": "NOT_ASSESSED",
-        "updated_at": null
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
+        "status": "CANDIDATE",
+        "updated_at": "2026-08-02T09:52:47Z"
       },
       "OBSERVE": {
         "evidence_reference": "reports/latest-opportunities.json",
         "limitations": [
           "Public-source observation only; current results are not production evidence."
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
         "status": "CANDIDATE",
         "updated_at": "2026-08-02T07:15:47Z"
       },
       "OBSERVE_OUTCOME": {
-        "evidence_reference": null,
+        "evidence_reference": "evolution-runs/D19-ER1-DEMO-001/outcome-evidence.json",
         "limitations": [
-          "No applied variant exists to observe."
+          "SYNTHETIC_FIXTURE_ONLY",
+          "NO_REAL_RUNTIME",
+          "NO_EXTERNAL_REPOSITORY_WRITE",
+          "NO_PRODUCTION_EVIDENCE"
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
-        "status": "NOT_ASSESSED",
-        "updated_at": null
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
+        "status": "CANDIDATE",
+        "updated_at": "2026-08-02T09:52:47Z"
       },
       "RECORD_LINEAGE": {
-        "evidence_reference": null,
+        "evidence_reference": "evolution-runs/D19-ER1-DEMO-001/lineage.json",
         "limitations": [
-          "No evolution lineage is asserted."
+          "SYNTHETIC_FIXTURE_ONLY",
+          "NO_REAL_RUNTIME",
+          "NO_EXTERNAL_REPOSITORY_WRITE",
+          "NO_PRODUCTION_EVIDENCE"
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
-        "status": "NOT_ASSESSED",
-        "updated_at": null
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
+        "status": "CANDIDATE",
+        "updated_at": "2026-08-02T09:52:47Z"
       },
       "REPRODUCE": {
         "evidence_reference": "tests/",
         "limitations": [
           "Only committed repository tests are represented."
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
         "status": "CANDIDATE",
         "updated_at": "2026-08-02T07:15:47Z"
       },
       "RESOLVE_OWNER": {
-        "evidence_reference": null,
+        "evidence_reference": "src/evolution/canonical-owner-map.json",
         "limitations": [
-          "No canonical-owner resolution evidence is asserted."
+          "SYNTHETIC_FIXTURE_ONLY",
+          "NO_REAL_RUNTIME",
+          "NO_EXTERNAL_REPOSITORY_WRITE",
+          "NO_PRODUCTION_EVIDENCE"
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
-        "status": "NOT_ASSESSED",
-        "updated_at": null
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
+        "status": "CANDIDATE",
+        "updated_at": "2026-08-02T09:52:47Z"
       },
       "RETAIN_OR_ROLLBACK": {
-        "evidence_reference": null,
+        "evidence_reference": "evolution-runs/D19-ER1-DEMO-001/rollback-evidence.json",
         "limitations": [
-          "No retention or rollback decision exists."
+          "SYNTHETIC_FIXTURE_ONLY",
+          "NO_REAL_RUNTIME",
+          "NO_EXTERNAL_REPOSITORY_WRITE",
+          "NO_PRODUCTION_EVIDENCE",
+          "ROLLBACK_NOT_EXERCISED_AGAINST_PRODUCTION"
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
-        "status": "NOT_ASSESSED",
-        "updated_at": null
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
+        "status": "CANDIDATE",
+        "updated_at": "2026-08-02T09:52:47Z"
       },
       "SELECT": {
-        "evidence_reference": null,
+        "evidence_reference": "evolution-runs/D19-ER1-DEMO-001/selection-record.json",
         "limitations": [
-          "No variant selection record is asserted."
+          "SYNTHETIC_FIXTURE_ONLY",
+          "NO_REAL_RUNTIME",
+          "NO_EXTERNAL_REPOSITORY_WRITE",
+          "NO_PRODUCTION_EVIDENCE",
+          "SELECTION_NE_AUTHORIZATION"
         ],
-        "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
-        "status": "NOT_ASSESSED",
-        "updated_at": null
+        "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
+        "status": "CANDIDATE",
+        "updated_at": "2026-08-02T09:52:47Z"
       }
     },
     "implementation_owner": "joy7758/titmac-scout",
-    "implementation_status": "STATUS_CONTRACT_READY_FOR_CANONICAL_MAIN",
+    "implementation_status": "CANDIDATE",
     "known_limitations": [
-      "D19-equivalent self-healing implementation, tests, and retained demo have not been established in this canonical repository.",
-      "No canonical evolution run, outcome, rollback, or lineage evidence is asserted.",
+      "The D23 implementation is a candidate reference pipeline, not a production capability.",
+      "The synthetic ER-1 run proves only a bounded repair-artifact pipeline in ephemeral workspaces.",
       "The repository and status source are private; public machine discovery is not established.",
       "No release, deployment, production runtime, external adoption, or certification is authorized.",
       "GitHub CI, pull request, merge, remote-head, and availability facts require a current external read-only observation."
     ],
-    "latest_evolution_result": null,
-    "latest_evolution_run": null,
-    "latest_outcome_evidence": null,
-    "latest_rollback_evidence": null,
+    "latest_evolution_result": "PASS_SYNTHETIC_REPAIR_ARTIFACT_PIPELINE_ONLY",
+    "latest_evolution_run": "evolution-runs/D19-ER1-DEMO-001",
+    "latest_outcome_evidence": "evolution-runs/D19-ER1-DEMO-001/outcome-evidence.json",
+    "latest_rollback_evidence": "evolution-runs/D19-ER1-DEMO-001/rollback-evidence.json",
     "latest_selected_variant": null,
     "lifecycle_status": "IMPLEMENTING",
     "merged_pull_requests": [
+      {
+        "base_branch": "main",
+        "head_revision": "67815bb0be6ca463072815330741d1ca5d8e8589",
+        "is_draft": false,
+        "number": 2,
+        "state": "MERGED",
+        "url": "https://github.com/joy7758/titmac-scout/pull/2"
+      },
       {
         "base_branch": "main",
         "head_revision": "c77c44d2a0ed17260aaa5d1336eed7c3da2b2413",
@@ -337,18 +378,18 @@
         "url": "https://github.com/joy7758/titmac-scout/pull/1"
       }
     ],
-    "next_human_decision": "TITMAC_SCOUT_EVOLUTION_IMPLEMENTATION_OWNERSHIP_MIGRATION",
+    "next_human_decision": "TITMAC_SCOUT_FIRST_REAL_BOUNDED_ER1_SELF_HEALING_OPERATION",
     "open_pull_requests": [],
     "p0_10_reopened": false,
-    "self_evolution_status": "NOT_ASSESSED",
-    "self_healing_status": "NOT_ASSESSED",
+    "self_evolution_status": "CANDIDATE",
+    "self_healing_status": "CANDIDATE",
     "status_source_state": "MERGED_ON_CANONICAL_MAIN",
     "tests": {
       "assertions": 288,
-      "scope": "D20_AND_D21_LOCAL_VALIDATION",
-      "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
+      "scope": "D20_D21_D22_AND_D23_LOCAL_VALIDATION",
+      "source_revision": "4488556adc52bf9a91ffad6cbcd245667ab4628f",
       "status": "PASS",
-      "tests": 85
+      "tests": 122
     }
   }
 }
