@@ -16,6 +16,10 @@ aliases. No fourth community name is created.
 ## Start here
 
 - Agent entry: [`../agent-index.json`](../agent-index.json)
+- Current D16 mainline freeze:
+  [`../TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md`](../TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md)
+- Owner-wide open PR classification:
+  [`../open-pr-classification.json`](../open-pr-classification.json)
 - Machine status: [`community/community-status.json`](community/community-status.json)
 - Human quick start: [`QUICKSTART.md`](QUICKSTART.md)
 - First contribution: [`FIRST_CONTRIBUTION.md`](FIRST_CONTRIBUTION.md)
@@ -134,6 +138,14 @@ TITMAS_AGENT_ABSOLUTE_PRIORITY=true
 PRIMARY_OPERATIONAL_CUSTOMER=AI_AGENT
 MACHINE_INTERFACE_PRECEDES_HUMAN_INTERFACE=true
 HUMAN_USABILITY_GATE_REQUIRED=false
+CURRENT_TECHNICAL_MAINLINE=P0_10_UNKNOWN_AGENT_ONBOARDING_CLOSURE
+MAJOR_INFRASTRUCTURE_DEVELOPMENT_COMPLETE=true
+AGENT_FIRST_ACCEPTANCE_COMPLETE=false
+P0_10_RESULT=FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT
+NEW_FEATURE_DEVELOPMENT_FROZEN=true
+D15_REMAINS_AUTHORIZED=true
+MAX_REMEDIATION_PRS_AFTER_D15=1
+MAX_FINAL_RERUNS=1
 E01_CLASSIFICATION=LEGACY_OPTIONAL_HUMAN_COMPATIBILITY_OBSERVATION
 E01_IS_PROGRAM_GATE=false
 COMPENSATED_HUMAN_TRIAL_STRATEGY_STATUS=RETIRED
@@ -157,6 +169,11 @@ Agent-first（智能体优先）是客户、接口和验证优先级，不是 Au
 自我授权、批准标准、签订合同、控制付款或执行不可逆动作。E01 继续作为历史可选的
 human compatibility observation（人类兼容性观察）保留，不再阻塞 Stage 5.7。
 
+D16 supersedes Stage 5.7 and the open-standards roadmap only as the current
+development focus. Their retained evidence is not deleted or rewritten. Until
+P0-10 is closed, no adjacent standard, profile, Demo, Adapter, Portfolio,
+community or commercial feature is an active development mainline.
+
 Stage 5.7 的有界结果见
 [`../TITMAS-STAGE-5-7-AGENT-NATIVE-SELECTION-ROI-RESULT-v0.1.md`](../TITMAS-STAGE-5-7-AGENT-NATIVE-SELECTION-ROI-RESULT-v0.1.md)。
 结果来自 3 个供应商、4 个精确模型、24 个隔离会话；它是 Agent 选择与冻结公式
@@ -166,14 +183,15 @@ The temporary assignment is revocable and limited to this integration
 candidate. It does not grant DBA, DBOS, SAEE, Evidence Truth, Certification,
 Commercial, Release, automatic merge or Stable-promotion authority.
 
-The separately authorized commercial maturity program is `IN_PROGRESS` at its
-final-form architecture decision stage and is currently
-`WAITING_FOR_HUMAN_DECISION`. It does not change the community state
-or activate public registration, pricing, payment, production, certification
-or a formal standard. Canonical readiness remains:
+The commercial maturity program has completed its bounded core infrastructure
+work and is now fail-closed at the P0-10 Agent-first acceptance gate. D16
+supersedes the old broad final-form implementation question, authorizes only the
+last D15 diagnostic, and freezes non-blocking development. It does not change
+the community state or activate public registration, pricing, payment,
+production, certification or a formal standard. Canonical readiness remains:
 
 ```text
-COMMERCIAL_PROGRAM_STATUS=WAITING_FOR_HUMAN_DECISION
+COMMERCIAL_PROGRAM_STATUS=P0_10_DIAGNOSTIC_LIMIT_ACTIVE
 COMMERCIAL_CR01_STATUS=BLOCKED_LEDGER_INTEGRITY_FAILED_RETAINED
 CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY_SUPERSEDED_BY_D04_CLOSURE
 CR01_D03_DECISION_PACKET_READY=true
@@ -188,7 +206,12 @@ PRODUCTION_LEDGER_CREATED=false
 PRODUCTION_SIGNER_CREATED=false
 BUILD_VERSUS_ADOPT_AUDIT_COMPLETE=true
 FINAL_FORM_IMPLEMENTATION_PLAN_READY=true
-FINAL_FORM_IMPLEMENTATION_AUTHORIZED=false
+FINAL_FORM_IMPLEMENTATION_DECISION_STATUS=SUPERSEDED_BY_BOUNDED_D03_D13_DECISIONS
+FINAL_FORM_CORE_IMPLEMENTATION_COMPLETE=true
+AGENT_FIRST_ACCEPTANCE_COMPLETE=false
+P0_10_RESULT=FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT
+NEW_FEATURE_DEVELOPMENT_FROZEN=true
+D15_REMAINS_AUTHORIZED=true
 EXISTING_NON_EXPORTABLE_ED25519_SIGNER_CONFIRMED=false
 LEDGER_TRANSITION_IMPLEMENTATION_AUTHORIZED=false
 COMMERCIAL_TECHNICAL_READY=false

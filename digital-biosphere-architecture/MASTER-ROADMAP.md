@@ -3,10 +3,10 @@ document_id: DBA-MASTER-ROADMAP-0.1
 title: Digital Biosphere Master Roadmap v0.1
 title_zh: 数字生物圈总路线图 v0.1
 status: program-sequencing-baseline
-current_milestone: DP-R
+current_milestone: P0-10-UNKNOWN-AGENT-ONBOARDING-CLOSURE
 roadmap_is_authorization: false
 roadmap_is_implementation: false
-last_reviewed: 2026-07-21
+last_reviewed: 2026-08-02
 ---
 
 # Digital Biosphere Master Roadmap v0.1（数字生物圈总路线图 v0.1）
@@ -120,16 +120,17 @@ ROADMAP_PROVES_ADOPTION=false
 
 | milestone | objective | status | required evidence |
 |---|---|---|---|
-| `TOS-1` | Selective canonical integration | `IN_PROGRESS` | manifest, one human entry, one agent entry, one status and one registry per type |
-| `TOS-2` | Human merge review | `NOT_STARTED` | clean Draft PR, CI success, Human `COMMUNITY-HD-01` decision |
-| `TOS-3` | Security transport activation decision | `BLOCKED` | real private receiving transport and Human `COMMUNITY-HD-02` decision |
-| `TOS-4` | Limited public contribution preview | `NOT_STARTED` | merged core, security path, explicit activation decision |
-| `TOS-5` | Agent-native contribution pilot | `NOT_STARTED` | separately authorized public pilot and retained evidence |
-| `TOS-6` | Community Preview | `NOT_STARTED` | explicit tag, announcement and launch decisions |
+| `TOS-1` | Selective canonical integration | `HOLD_NON_BLOCKING_BY_D16` | existing history retained; no new merge or implementation during P0-10 closure |
+| `TOS-2` | Human merge review | `HOLD_NON_BLOCKING_BY_D16` | clean Draft PR, CI success, Human `COMMUNITY-HD-01` decision |
+| `TOS-3` | Security transport activation decision | `HOLD_BLOCKED_AND_NON_BLOCKING` | real private receiving transport and Human `COMMUNITY-HD-02` decision |
+| `TOS-4` | Limited public contribution preview | `HOLD_NON_BLOCKING_BY_D16` | merged core, security path, explicit activation decision |
+| `TOS-5` | Agent-native contribution pilot | `HOLD_NON_BLOCKING_BY_D16` | separately authorized public pilot and retained evidence |
+| `TOS-6` | Community Preview | `HOLD_NON_BLOCKING_BY_D16` | explicit tag, announcement and launch decisions |
 
 ```text
-CURRENT_TITMAS_FOCUS=CANONICAL_INTEGRATION
-OPEN_STANDARDS_COMMUNITY_IS_MAINLINE=true
+CURRENT_TITMAS_FOCUS=P0_10_UNKNOWN_AGENT_ONBOARDING_CLOSURE
+OPEN_STANDARDS_COMMUNITY_IS_MAINLINE=false
+OPEN_STANDARDS_COMMUNITY_STATUS=HOLD_NON_BLOCKING_BY_D16
 CALIBRATION_IS_SUPPORTING_VALIDATION_ONLY=true
 CALIBRATION_V0_3_AUTHORIZED=false
 ```
@@ -170,7 +171,7 @@ Agent ROI 为 `12.504572`。该结果只适用于合成基准，不是商业采�
 | `CM-1` | governance, state machine and architecture freeze | `GATE_PASSED` | ADR-036, state schemas, architecture/security/operations/data contracts |
 | `CM-2` | first private multi-tenant vertical slice | `GATE_PASSED` | Gateway `c319001…`: tenant-bound credential, preflight, signed receipt, idempotent usage/quota |
 | `CM-3` | security and operational candidate | `BLOCKED` | implementation and scans exist; CR-01 restore signature verification failed and formal recovery evidence is incomplete |
-| `CM-4` | machine onboarding and public-safe integrations | `IN_PROGRESS` | machine entries exist; commercial SDK/Adapter readiness remains unassessed |
+| `CM-4` | machine onboarding and public-safe integrations | `IMPLEMENTATION_COMPLETE_ACCEPTANCE_FAIL_CLOSED` | machine truth、API v1、Runtime alignment、generated SDK 和 MCP Adapter 已通过；Unknown Agent 完整接入仍未通过 |
 | `CM-5` | internal soak and capacity | `BLOCKED` | frozen capacity observations exist; sustained test, headroom and 72-hour soak did not start |
 | `CM-6` | external Agent Beta | `NOT_STARTED` | independent tenants, Agents, frameworks, calls and repeat-use evidence |
 | `CM-7` | Paid Beta Human Decision | `BLOCKED_INPUT` | technical readiness, Beta, legal/pricing packets and Human authorization |
@@ -190,6 +191,54 @@ LEGACY_LEDGER_CLASSIFICATION=INTERNAL_EXPERIMENTAL_LEDGER
 FUTURE_PRODUCTION_LEDGER_MODE=CLEAN_GENESIS
 BUILD_VERSUS_ADOPT_AUDIT_COMPLETE=true
 FINAL_FORM_IMPLEMENTATION_PLAN_READY=true
-FINAL_FORM_IMPLEMENTATION_AUTHORIZED=false
-NEXT_HUMAN_DECISION=AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_MATRIX
+FINAL_FORM_CORE_IMPLEMENTATION_COMPLETE=true
+AGENT_FIRST_ACCEPTANCE_COMPLETE=false
+NEW_FEATURE_DEVELOPMENT_FROZEN=true
+D15_REMAINS_AUTHORIZED=true
+NEXT_HUMAN_DECISION=AFTER_D15_CHOOSE_ONE_BOUNDED_SINGLE_LAYER_REMEDIATION_OR_FINAL_NOT_ASSESSED_DISPOSITION
 ```
+
+## 9. D16 Unique Mainline and Closure Budget
+
+The current technical roadmap has one path only:
+
+```text
+Unknown Agent
+  -> Machine Discovery
+  -> Capability and Catalog
+  -> Schema Selection
+  -> Schema-valid Object Construction
+  -> Preflight
+  -> Receipt Fetch
+  -> Receipt Verification
+  -> Second-task Reuse
+```
+
+| Step | Current state | Closure evidence |
+|---|---|---|
+| Machine truth | `PASS` | machine entry and frozen API surfaces remain reachable |
+| API v1 Contract | `PASS` | frozen contract is retained |
+| Runtime alignment | `PASS` | legacy envelope mismatch is resolved |
+| Generated SDK | `PASS` | generated Python and TypeScript surfaces retained |
+| MCP Adapter | `PASS` | Adapter reuses the SDK boundary |
+| Agent-first acceptance | `FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT` | PR `titmas-integrations#5`; Receipt fetch reached but valid object/verification/reuse gates not met |
+
+All other roadmap expansion is `HOLD_NON_BLOCKING`. Existing artifacts remain
+available as historical or adjacent candidates, but no new standard alignment,
+reference model, application profile, Demo, Portfolio candidate, Adapter,
+landing page, community feature or commercial feature may displace P0-10.
+
+```text
+MAX_ADDITIONAL_DIAGNOSTIC_ROUNDS=1
+MAX_REMEDIATION_PRS_AFTER_D15=1
+MAX_FINAL_RERUNS=1
+INDEFINITE_AGENT_RETRY=false
+INDEFINITE_OBSERVABILITY_ADDITION=false
+```
+
+If D15 does not establish a single-layer root cause with confidence at least
+`0.85` while excluding competing layers, the route terminates as
+`NOT_ASSESSED_DIAGNOSTIC_LIMIT_REACHED`. If one separately authorized fix and
+the one final rerun fail, the route terminates as `FAIL_CLOSED`. Either terminal
+result ends this development round without creating production, commercial,
+certification, adoption or conformance claims.
