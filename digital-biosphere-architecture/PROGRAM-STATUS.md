@@ -540,16 +540,18 @@ Canonical D16 records:
 
 ## 15. TITMAC Scout canonical identity and cockpit bridge overlay
 
-D20 freezes the implementation machine identity as `titmac-scout` and retains
-`tiamas-scout` only as a conversation alias. A private canonical repository now
-exists at `joy7758/titmac-scout`; its status-contract work remains a Draft PR
-candidate and is not on canonical `main` until separately merged.
+D20 froze the implementation machine identity as `titmac-scout` and retains
+`tiamas-scout` only as a conversation alias. D21 merged corrected status
+contract PR #1 to the private canonical `main` at
+`7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907`.
 
-The existing DBA cockpit registers the canonical `main` source and an exact
-candidate revision for review. Its adapter is pull-only, validates schema,
-revision, tree, file digest and freshness, and fails closed instead of carrying
-forward a stale green state. The stored object is a bounded projection, not a
-copy of a canonical evolution run.
+The existing DBA cockpit now binds only to canonical `main` at the exact
+revision, tree and status digest. Its adapter is pull-only, validates source
+schema and integrity, and separately observes the current remote Head, CI and
+pull requests through the GitHub API. Source-status, remote-revision and CI/PR
+freshness are independent; missing dynamic observation fails partially closed
+instead of carrying forward a stale green state. The stored object is a bounded
+projection, not a copy of a canonical evolution run.
 
 ```text
 CANONICAL_MACHINE_PROJECT_ID=titmac-scout
@@ -561,6 +563,14 @@ COCKPIT_PULL_ONLY=true
 COCKPIT_PUSH=false
 COCKPIT_STORES_PROJECTION=true
 COCKPIT_STORES_CANONICAL_RUN=false
+STATUS_SOURCE_STATE=MERGED_ON_CANONICAL_MAIN
+COCKPIT_BRIDGE_STATE=READY_FOR_HUMAN_REVIEW
+COCKPIT_SOURCE_BRANCH=main
+COCKPIT_SOURCE_REVISION=7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907
+COCKPIT_SOURCE_TREE=474e20cca30f89b66638cfaf56d6d147c9e9f1d3
+COCKPIT_SOURCE_INTEGRITY=PASS
+COCKPIT_CI_OBSERVATION=PASS
+COCKPIT_PR_OBSERVATION=PASS
 DISCOVERY_LAYER_STATUS=CANDIDATE
 SELF_HEALING_STATUS=NOT_ASSESSED
 SELF_EVOLUTION_STATUS=NOT_ASSESSED

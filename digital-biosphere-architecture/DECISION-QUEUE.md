@@ -60,6 +60,7 @@ last_reviewed: 2026-08-02
 | `TITMAS-FINAL-FORM-IMPLEMENTATION-D01` | `SUPERSEDED_BY_D16_AFTER_BOUNDED_P0_IMPLEMENTATION`：原广义最终形态实施问题不再是当前开放开发入口 | D03-D13 的有界事实及 D16；2026-08-02 | 已完成的机器事实、API v1、Runtime 对齐、生成式 SDK 和 MCP Adapter 保留；未完成的 Agent-first acceptance 只走 D15 及 D16 限额；不恢复 P1/P2、生产账本、部署、付费或新功能授权 |
 | `TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16` | `ACCEPTED_GOVERNANCE_FREEZE_ACTIVE`：唯一主线冻结为 Unknown-Agent 完整接入闭环，非阻塞开发暂停 | `decided_by_ref=zhangbin`；2026-08-02 | 允许只读 PR 分类、驾驶舱冻结记录和 D15 最后诊断；不授权代码、merge、PR closure、deployment、release、package publication 或新标准／生产声明 |
 | `ADR-040 / TITMAS-TITMAC-SCOUT-CANONICAL-IDENTITY-AND-COCKPIT-PROGRESS-BRIDGE-D20` | `ACCEPTED_EXECUTION_AUTHORIZED_DRAFT_REVIEW_REQUIRED`：冻结 `titmac-scout` 机器身份、唯一状态合同与 DBA 只读按需桥接 | `decided_by_ref=zhangbin`；2026-08-02 | 允许 private canonical remote、status/schema、source registry、fail-closed projection、测试与最多两个 Draft PR；不授权 PR #105/#106 merge/close、运行、发布、部署、数据库、跨仓写回、P0-10 或 D04 重开 |
+| `ADR-040 / TITMAS-TITMAC-SCOUT-CANONICAL-STATUS-ACTIVATION-AND-COCKPIT-REBIND-D21` | `ACCEPTED_EXECUTED_SCOUT_MERGED_DBA_REBIND_READY_FOR_REVIEW`：分离 Scout 静态声明与 GitHub 动态观察，PR #1 已用 merge commit 进入 canonical `main`，DBA PR #107 仅重绑定该 exact source | `decided_by_ref=zhangbin`；2026-08-02 | 授权更新/合并 Scout PR #1 与更新/合并 DBA PR #107；不授权 PR #105/#106 变化、自愈/演化实现迁移、Runtime、数据库、部署、发布、P0-10 或 D04 重开 |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 

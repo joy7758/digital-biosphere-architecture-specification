@@ -12,15 +12,17 @@
       "source_schema_path": "governance/project-status.schema.json",
       "access_mode": "READ_ONLY",
       "refresh_mode": "ON_DEMAND",
+      "source_mode": "CANONICAL_MAIN_EXACT_REVISION",
       "freshness_policy": {
         "active_development_hours": 72,
         "maintenance_days": 14,
+        "dynamic_observation_max_age_seconds": 300,
         "failure_mode": "FAIL_CLOSED"
       },
-      "candidate_source_branch": "codex/titmac-scout-status-contract-d20",
-      "candidate_source_revision": "5b98bad7da424af98706d3553c8741840e4b0be6",
-      "candidate_source_tree_digest": "98ca271bacacc24d55679a62eef49ba8772fc9c1",
-      "candidate_status_digest": "6c8f6a2ac958a238033c97c012a72fec8d6a27ba931859c081e272bc74dbfddd"
+      "dynamic_observation_mode": "GITHUB_API_READ_ONLY",
+      "source_revision": "7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907",
+      "source_tree_digest": "474e20cca30f89b66638cfaf56d6d147c9e9f1d3",
+      "status_digest": "84610eb8bc0aed4bb3ed1a12997a140d4fa44b723d5fb5e4cebec2dc7626a4ab"
     }
   ]
 }

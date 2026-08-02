@@ -2,8 +2,9 @@
 adr_id: ADR-040
 title: TITMAC Scout Canonical Identity and Read-only Progress Bridge
 title_zh: TITMAC Scout 规范身份与只读进度桥接
-status: accepted-implementation-candidate-draft-review-required
+status: accepted-canonical-status-active-cockpit-rebind-ready-for-review
 decision_id: TITMAS-TITMAC-SCOUT-CANONICAL-IDENTITY-AND-COCKPIT-PROGRESS-BRIDGE-D20
+amendment_decision_id: TITMAS-TITMAC-SCOUT-CANONICAL-STATUS-ACTIVATION-AND-COCKPIT-REBIND-D21
 decided_by_ref: zhangbin
 decided_at: 2026-08-02
 release_authorized: false
@@ -36,6 +37,30 @@ created identity drift, duplicate-implementation risk, and stale cockpit risk.
 8. Store only a bounded projection in DBA; canonical run evidence remains with
    `titmac-scout`.
 
+## D21 Amendment: canonical activation and dynamic observation
+
+D21 accepts the corrected Scout contract and activates it on canonical `main`.
+The project-owned status source declares durable project state and observation
+requests; it does not hardcode current GitHub CI, pull-request, merge,
+default-branch Head, workflow-run or availability state.
+
+The DBA bridge is rebound to:
+
+```text
+repository=joy7758/titmac-scout
+branch=main
+mode=CANONICAL_MAIN_EXACT_REVISION
+revision=7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907
+tree=474e20cca30f89b66638cfaf56d6d147c9e9f1d3
+status_digest=84610eb8bc0aed4bb3ed1a12997a140d4fa44b723d5fb5e4cebec2dc7626a4ab
+```
+
+DBA observes remote Head, CI and pull requests through a read-only GitHub API
+path. It keeps source-status, remote-revision, CI and pull-request freshness
+separate. Source integrity failures remain fail-closed; unavailable or stale
+dynamic observations produce `SOURCE_STALE_OR_PARTIALLY_STALE`. Neither path
+writes to Scout or changes Scout-owned status.
+
 The source uses `SELF` and `SELF_TREE` sentinels because a tracked file cannot
 contain the hash of the Git commit or tree that contains itself without a
 self-reference cycle. The deterministic renderer resolves those sentinels to
@@ -54,7 +79,9 @@ cockpit adapter; D20 addresses only those gaps.
 
 - D20 can expose exact identity, provenance, freshness, progress, and blockers
   without turning DBA into a control plane.
-- The private candidate source can be reviewed before any merge decision.
+- The corrected private status source is canonical on Scout `main`; DBA PR
+  #107 remains the bounded review surface until its separately authorized
+  merge completes.
 - `PR #105` and `PR #106` remain open Drafts. Their ownership and migration
   reviews remain pending until equivalent Scout implementation, tests, and a
   retained demo are proven.
@@ -77,6 +104,11 @@ TITMAC_SCOUT_IS_STATUS_OWNER=true
 TITMAC_SCOUT_IS_IMPLEMENTATION_OWNER=true
 DBA_NE_DISCOVERY_RUNTIME=true
 COCKPIT_NE_CONTROL_PLANE=true
+STATIC_DECLARATION_NE_DYNAMIC_OBSERVATION=true
+SOURCE_STATUS_NE_GITHUB_CI_STATUS=true
+SOURCE_STATUS_NE_GITHUB_PR_STATUS=true
+COCKPIT_SOURCE_MODE=CANONICAL_MAIN_EXACT_REVISION
+COCKPIT_DYNAMIC_OBSERVATION=GITHUB_API_READ_ONLY
 P0_10_REOPENED=false
 D04_REOPENED=false
 ```
