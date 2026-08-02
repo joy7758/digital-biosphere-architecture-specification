@@ -59,6 +59,7 @@ last_reviewed: 2026-08-02
 | `TITMAS-MEDIA-EVIDENCE-ADMISSION-D01` | `CLOSED_ACCEPTED_AS_ADJACENT_CANDIDATE`：TITMAS Media Evidence v0.1.0 作为应用场景配置与参考实现候选纳入项目组合 | `TITMAS-DEC-20260801-MEDIA-EVIDENCE-PORTFOLIO-001`；`decided_by_ref=ZHANGBIN`；2026-08-01 | 只关闭 G0 项目组合准入；G1 为事实源通过，G2 仅为边界通过；G3-G8 仍分别保持未评估、未授权、未执行或未发布未采用；不授权 DBOS mapping、实现、标准、核心、生产或采用 |
 | `TITMAS-FINAL-FORM-IMPLEMENTATION-D01` | `SUPERSEDED_BY_D16_AFTER_BOUNDED_P0_IMPLEMENTATION`：原广义最终形态实施问题不再是当前开放开发入口 | D03-D13 的有界事实及 D16；2026-08-02 | 已完成的机器事实、API v1、Runtime 对齐、生成式 SDK 和 MCP Adapter 保留；未完成的 Agent-first acceptance 只走 D15 及 D16 限额；不恢复 P1/P2、生产账本、部署、付费或新功能授权 |
 | `TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16` | `ACCEPTED_GOVERNANCE_FREEZE_ACTIVE`：唯一主线冻结为 Unknown-Agent 完整接入闭环，非阻塞开发暂停 | `decided_by_ref=zhangbin`；2026-08-02 | 允许只读 PR 分类、驾驶舱冻结记录和 D15 最后诊断；不授权代码、merge、PR closure、deployment、release、package publication 或新标准／生产声明 |
+| `ADR-040 / TITMAS-TITMAC-SCOUT-CANONICAL-IDENTITY-AND-COCKPIT-PROGRESS-BRIDGE-D20` | `ACCEPTED_EXECUTION_AUTHORIZED_DRAFT_REVIEW_REQUIRED`：冻结 `titmac-scout` 机器身份、唯一状态合同与 DBA 只读按需桥接 | `decided_by_ref=zhangbin`；2026-08-02 | 允许 private canonical remote、status/schema、source registry、fail-closed projection、测试与最多两个 Draft PR；不授权 PR #105/#106 merge/close、运行、发布、部署、数据库、跨仓写回、P0-10 或 D04 重开 |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 

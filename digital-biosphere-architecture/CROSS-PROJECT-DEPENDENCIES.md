@@ -38,6 +38,7 @@ last_reviewed: 2026-08-02
 | `DEP-008` | Research Agent Pilot | DBOS | `APPLICATION_SERVICE` | 未来只读/记录接口准备 | `PREPARED_ONLY` | Research Agent 已注册、已连接或已运行 |
 | `DEP-009` | Research Agent Pilot | SAEE | `EVALUATION_INPUT` | 未来 Evaluation Profile（评价配置）准备 | `PREPARED_ONLY` | 已形成 Fitness、Risk 或 Recommendation |
 | `DEP-010` | Core projects | DBA | `STATUS_REFERENCE` | 项目提供带来源的状态，DBA 只读汇总 | `SOURCE_ALIGNMENT_PENDING` | DBA 状态摘要覆盖子项目事实 |
+| `DEP-011` | titmac-scout | DBA | `STATUS_REFERENCE` | `governance/project-status.json`、Schema、exact revision/tree/file digest 与 freshness 的只读按需投影 | `DRAFT_CANDIDATE_SOURCE_PINNED_CANONICAL_MAIN_NOT_YET_MERGED` | DBA 拥有 Scout 状态、运行修复、生成 patch、触发 PR、执行 merge/deploy 或复制 canonical run |
 
 ## 3. Adjacent Dependency Candidates（相邻依赖候选）
 

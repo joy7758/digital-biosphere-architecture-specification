@@ -585,6 +585,17 @@ Program Decision ≠ Execution
 
 驾驶舱采用 reference-only aggregation（仅引用聚合）：子项目继续维护自己的代码、Capability、Evidence、验证和发布事实；DBA 只保存稳定引用、时间点观察和跨项目治理结果。详细规则见 [`architecture/program-governance-specification.md`](architecture/program-governance-specification.md)。
 
+`titmac-scout` 是首个采用来源固定、按需刷新、失败关闭投影的驾驶舱项目源：
+
+- [Cockpit read-only bridge](cockpit/README.md)
+- [Machine source registry](cockpit/source-registry.json)
+- [Current candidate projection](cockpit/projections/titmac-scout.json)
+- [ADR-040](architecture/ADR-040-titmac-scout-canonical-identity-and-read-only-progress-bridge.md)
+
+`tiamas-scout` 仅为对话别名。候选投影不等于 source 已合并，不等于 DBA
+取得子项目写权，也不等于 release、deployment、adoption 或 production
+readiness。
+
 ```text
 PROGRAM_GOVERNANCE_BASELINE_DEFINED=true
 CHILD_PROJECTS_MODIFIED_BY_COCKPIT=false
