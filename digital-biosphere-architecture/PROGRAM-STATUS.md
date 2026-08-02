@@ -1,9 +1,9 @@
 ---
-document_id: DBA-PROGRAM-STATUS-2026-07-22
+document_id: DBA-PROGRAM-STATUS-2026-08-02
 title: Digital Biosphere Program Status Snapshot
 title_zh: 数字生物圈项目群状态快照
-status: observed-governance-snapshot-developer-preview-v0.1-released
-observed_at: 2026-07-22
+status: observed-governance-snapshot-d16-mainline-freeze-active
+observed_at: 2026-08-02
 freshness: point-in-time
 release_status: developer-preview-v0.1-released-not-production-ready
 developer_preview_status: released-exact-public-safe-wheel-open-web-partial-metadata-only
@@ -16,9 +16,9 @@ source_policy: direct-read-only-observation
 
 ```text
 PROGRAM_ID=DIGITAL_BIOSPHERE
-PROGRAM_PHASE=TRUSTED_MULTI_AGENT_INFRASTRUCTURE_DEVELOPER_PREVIEW_V0_1_RELEASED
-PROGRAM_HEALTH=PASS_WITH_DISCLOSED_LIMITATIONS
-CURRENT_MILESTONE=DP-R-GATE-PASSED
+PROGRAM_PHASE=TITMAS_P0_10_MAINLINE_CLOSURE_AND_DEVELOPMENT_FREEZE
+PROGRAM_HEALTH=FAIL_CLOSED_AGENT_FIRST_ACCEPTANCE_WITH_CORE_INFRASTRUCTURE_COMPLETE
+CURRENT_MILESTONE=P0_10_D15_LAST_DIAGNOSTIC
 CORE_PROJECTS=3
 PILOT_PROJECTS=1
 PROGRAM_AUTHORITY_ASSIGNED=true
@@ -40,6 +40,11 @@ AGENT_CUSTOMER_API_SESSIONS_COMPLETED=12
 AGENT_CUSTOMER_PROVIDERS_WITH_SUCCESS=2
 AGENT_CUSTOMER_MODEL_IDENTITIES_WITH_SUCCESS=4
 AGENT_CUSTOMER_AUTHORITY_SAFETY_FAILURES=0
+MAJOR_INFRASTRUCTURE_DEVELOPMENT_COMPLETE=true
+AGENT_FIRST_ACCEPTANCE_COMPLETE=false
+P0_10_RESULT=FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT
+NEW_FEATURE_DEVELOPMENT_FROZEN=true
+D15_REMAINS_AUTHORIZED=true
 OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY
 OPEN_WEB_DISCOVERY_OBSERVATION_ID=TMAI-OWD-20260722-001
 OPEN_WEB_CANONICAL_NAME_MATCH=false
@@ -167,12 +172,12 @@ STATUS_AGGREGATION_CHANGES_CHILD_TRUTH=false
 Observed on 2026-07-29:
 
 ```text
-TITMAS_PROGRAM_MAINLINE=TITMAS_AGENT_NATIVE_OPEN_STANDARDS_COMMUNITY
+HISTORICAL_TITMAS_PROGRAM_MAINLINE_AT_2026_07_29=TITMAS_AGENT_NATIVE_OPEN_STANDARDS_COMMUNITY
 TITMAS_COMMUNITY_STATUS=CANONICAL_INTEGRATION_CANDIDATE
 EXECUTION_PRIORITY_DRIFT_DETECTED=true
 ECOLOGY_BOX_TEMPORARILY_DISPLACED_MAINLINE=true
 CALIBRATION_SUBTRACK_FROZEN=true
-OPEN_STANDARDS_COMMUNITY_MAINLINE_RESTORED=true
+OPEN_STANDARDS_COMMUNITY_MAINLINE_RESTORED_AT_2026_07_29=true
 CALIBRATION_V0_3_AUTHORIZED=false
 FORMAL_ECOLOGY_BOX_EXECUTION_AUTHORIZED=false
 PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
@@ -198,7 +203,7 @@ MACHINE_INTERFACE_PRECEDES_HUMAN_INTERFACE=true
 AGENT_EVIDENCE_PRECEDES_HUMAN_OPINION=true
 HUMAN_VIEW_IS_DERIVED_VIEW=true
 HUMAN_USABILITY_GATE_REQUIRED=false
-CURRENT_TITMAS_STAGE=TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK
+HISTORICAL_TITMAS_STAGE_AT_2026_07_30=TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK
 STAGE5_7_DESIGN_AUTHORIZED=true
 STAGE5_7_IMPLEMENTATION_COMPLETE=true
 STAGE5_7_REAL_SESSIONS_EXECUTED=24
@@ -258,8 +263,8 @@ customer adoption, production readiness, or a formal conformance service.
 Observed on `2026-07-30T19:04:07+08:00` under `ADR-036`:
 
 ```text
-CURRENT_TITMAS_PROGRAM=TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM
-COMMERCIAL_PROGRAM_STATUS=IN_PROGRESS
+HISTORICAL_TITMAS_PROGRAM_AT_2026_07_30=TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM
+COMMERCIAL_PROGRAM_STATUS_AT_2026_07_30=IN_PROGRESS
 COMMERCIAL_PROGRAM_PHASE=COMMERCIAL_FOUNDATION_BASELINE
 
 STAGE5_8_SOURCE_COMMIT=dee6c2861d917950c057a8dc2d2feccfc7527ede
@@ -473,3 +478,57 @@ destroyed temporary native smoke, and the pending G0 decision. It does not
 convert an implementation merge, validator PASS, advisory model review, sandbox
 trace or expired `ALLOW` into portfolio admission, persistent AgentTeams
 deployment, production readiness, release, adoption or competition submission.
+
+## 14. TITMAS D16 Mainline Closure and Development Freeze Overlay
+
+Human Owner decision
+`TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16` freezes the current
+technical mainline to the complete Unknown-Agent onboarding path from machine
+discovery through second-task reuse. Major infrastructure implementation is
+recorded complete, while Agent-first acceptance remains incomplete.
+
+```text
+MAJOR_INFRASTRUCTURE_DEVELOPMENT_COMPLETE=true
+AGENT_FIRST_ACCEPTANCE_COMPLETE=false
+NEW_FEATURE_DEVELOPMENT_SHOULD_STOP=true
+MACHINE_TRUTH=PASS
+API_V1_CONTRACT=PASS
+RUNTIME_ALIGNMENT=PASS
+GENERATED_SDK=PASS
+MCP_ADAPTER=PASS
+P0_10_RESULT=FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT
+```
+
+The owner-wide GitHub snapshot at `2026-08-02T11:20:53+08:00` found 217 open
+PRs in 24 repositories. `joy7758/titmas-integrations#5` is the only
+`MAINLINE_BLOCKER`; there are no `MAINLINE_SUPPORTING` open PRs. All 25 adjacent
+strategic and 181 non-blocking maintenance PRs are deferred. Two zero-change
+PRs are only recommended for later human-authorized closure, and eight historic
+branches require stale/supersession review. D16 did not merge or close any PR.
+
+Only D15 remains authorized as the final privacy-preserving structural
+diagnostic. After D15, at most one separately authorized single-layer
+remediation PR and one final rerun may occur. D15 does not authorize its own
+remediation. Failure to reach the frozen confidence threshold ends this round
+as `NOT_ASSESSED_DIAGNOSTIC_LIMIT_REACHED`; a failed final rerun ends it as
+`FAIL_CLOSED`.
+
+```text
+NEW_FEATURE_FREEZE=true
+D15_REMAINS_AUTHORIZED=true
+MAX_ADDITIONAL_DIAGNOSTIC_ROUNDS=1
+MAX_REMEDIATION_PRS_AFTER_D15=1
+MAX_FINAL_RERUNS=1
+D04_REMAINS_CLOSED=true
+D12_FAILURE_RETAINED=true
+MERGE_AUTHORIZED=false
+DEPLOYMENT_AUTHORIZED=false
+RELEASE_AUTHORIZED=false
+PR_CLOSURE_AUTHORIZED=false
+```
+
+Canonical D16 records:
+
+- [`TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md`](TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md)
+- [`TITMAS-OPEN-PR-MAINLINE-REVIEW-D16.md`](TITMAS-OPEN-PR-MAINLINE-REVIEW-D16.md)
+- [`open-pr-classification.json`](open-pr-classification.json)

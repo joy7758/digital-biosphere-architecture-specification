@@ -50,6 +50,7 @@ MISSING_CONTEXT_COMPARISON_FAILS_CLOSED=true
 | Adjacent components other than Media Evidence | `NOT_PASSED` | `NOT_ASSESSED` | `REVIEW_REQUIRED` | `NOT_ASSESSED` | `NOT_ASSESSED` | `NOT_ASSESSED` | 仅保留候选映射 |
 | TITMAS Media Evidence v0.1.0 | `PASS_ADMITTED_AS_ADJACENT_CANDIDATE` | `PASS` | `PASS_BOUNDARY_ONLY_MAPPING_NOT_AUTHORIZED` | `NOT_ASSESSED` | `NOT_ASSESSED` | `G5_NOT_AUTHORIZED_G6_NOT_EXECUTED_G7_NOT_ASSESSED_G8_NOT_RELEASED_NOT_ADOPTED` | 只完成有界项目组合准入和对象边界；DBOS mapping、跨项目符合性、标准、核心、生产和采用均未建立 |
 | Trusted Multi-Agent Infrastructure Developer Preview | `PASS_CORE_SCOPE` | `PASS_FROZEN_REMOTE_BASELINE` | `PASS` | `PASS_SCOPED_CLEAN_CLONE` | `AGENT_CUSTOMER_RERUN_PASS` | `G6_SYNTHETIC_G7_PASS_G8_RELEASED_BY_ADR_022` | exact wheel 匿名分发、GitHub Release、百度云 formal deployment 和人工发布决定通过；不是生产采用 |
+| P0-10 Unknown-Agent Technical Onboarding | `PASS_UNIQUE_MAINLINE_FROZEN_BY_D16` | `PASS_MACHINE_TRUTH_AND_FROZEN_CONTRACTS` | `PASS_API_V1_SDK_MCP_BOUNDARIES` | `PASS_RUNTIME_ALIGNMENT` | `FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT` | `G5_D15_ONLY_G6_FAILURE_RETAINED_G7_NOT_ASSESSED_G8_NOT_AUTHORIZED` | discovery、MCP/SDK、preflight call 和 Receipt fetch 已到达；Schema-valid PASS、VALID verification 和 second-task reuse 未达，不能以 CI/HTTP/fixture/human-guided success 替代 |
 | TITMAS Agent-Native Commercial Maturity | `PASS_PROGRAM_ROLE` | `PASS_VERIFIED_SOURCE_BASELINE` | `PASS_ADR_036` | `NOT_STARTED` | `NOT_ASSESSED` | `G5_BOUNDED_TECHNICAL_AUTHORIZATION_G6_G8_NOT_ASSESSED` | 只授权可逆技术建设；商业技术、Paid Beta、Production 和成熟度全部保持 false |
 
 ### Developer Preview Gate Detail（开发者预览闸门明细）
@@ -65,6 +66,27 @@ MISSING_CONTEXT_COMPARISON_FAILS_CLOSED=true
 | `DP-5C` | `G1/G4/G8_AGENT_RERUN` | `PASS` | `TMAI-ACV-20260722-002`：2 Providers、4 models、12/12 parsed、全部阈值通过、权限错误 0 | 保留原 `001=CONDITIONAL`；开放网络由独立观察处理 |
 | `DP-5D` | `G1/G8_OPEN_WEB_OBSERVATION` | `PARTIAL_METADATA_ONLY` | `TMAI-OWD-20260722-001`：GitHub 完整新 description 已命中；规范英文名、中文名和 4 个公开搜索仍无命中 | 规范名称索引刷新后复查，或 Human Owner 显式接受限制 |
 | `DP-R` | `G8` | `PASS_RELEASED_WITH_DISCLOSED_LIMITATIONS` | `ADR-022`；exact wheel URL/hash/clean install；GitHub `v0.1-developer-preview`；百度云 formal artifact；`R-015` 与 `PARTIAL_METADATA_ONLY` 继续披露 | 发布后观察；任何生产、Runtime、Permission 或新实现需独立 gate |
+
+### P0-10 D16 Closure Detail
+
+| closure gate | current result | exact continuation boundary |
+|---|---|---|
+| Unique mainline | `FROZEN` | Unknown Agent through second-task reuse; no adjacent replacement |
+| D12 history | `FAILURE_RETAINED` | PR `titmas-integrations#5` stays Draft and unmerged |
+| Last diagnostic | `D15_AUTHORIZED_NOT_EXECUTED_BY_D16` | one privacy-preserving structural diagnostic only |
+| Root-cause threshold | `NOT_ASSESSED` | confidence `>=0.85` and competing layers excluded |
+| Remediation | `NOT_AUTHORIZED` | at most one future single-layer PR after a separate Human Decision |
+| Final rerun | `NOT_AUTHORIZED_YET` | at most one rerun after the separately authorized fix |
+| Non-blocking development | `HOLD` | standards, profiles, Demos, adapters, Portfolio, landing, community and commercial expansion |
+
+```text
+DISCOVERY_PASS_NE_ONBOARDING_PASS=true
+RECEIPT_FETCH_NE_RECEIPT_VERIFY=true
+PREFLIGHT_CALL_NE_PREFLIGHT_PASS=true
+MAX_ADDITIONAL_DIAGNOSTIC_ROUNDS=1
+MAX_REMEDIATION_PRS_AFTER_D15=1
+MAX_FINAL_RERUNS=1
+```
 
 ## 4. Gate Evidence Record（闸门证据记录）
 

@@ -28,7 +28,7 @@ last_reviewed: 2026-08-02
 | `DQ-007` | `P2` | 驾驶舱状态采用人工周期刷新，还是未来建立只读 adapter（适配器）？ | `OPEN` | source contracts、安全边界、维护成本、staleness 需求 | 状态同步机制 | 允许 DBA 写入子仓库或自动改变项目状态 |
 | `DQ-008` | `P0` | 当前 Program Governance Cockpit 与既有 Digital Biosphere public meaning layer 的 canonical relationship（规范关系）是什么？ | `READY_FOR_REVIEW` | 两个仓库的使命、受众、当前 URL、历史、重叠文件和迁移/引用方案 | 单一前门、规范优先级和避免双重 DBA 权威 | 当前驾驶舱自动覆盖、删除或合并既有 public meaning layer |
 | `TITMAS-AGENT-ACTION-GATE-ADMISSION-D01` | `P1` | 是否将 TITMAS Agent Action Gate 作为有界 `ADJACENT_CANDIDATE` 纳入项目组合？ | `READY_FOR_REVIEW` | public `main@6f1c83b`、PR `#2` merged、两项 contract check PASS、44 tests、Action Gate／6 MCP tool／agent-evidence adapter、真实 sandbox Draft PR `#3`、一次官方 AgentTeams v1.2.0 operator-supervised 本地 smoke 和完整 DBA 项目管理 policy grant；评审时仍须处置 per-Worker MCP ACL、Skill materialization、自治链、DBOS Permission、Runtime enforcement、Gateway 和 audit-record Owner 的重复／映射风险 | 只决定 G0 项目组合准入和后续 G2/G3 审查路线 | implementation merge、CI PASS、validator PASS、advisory agent review、sandbox 外部写入、临时 smoke 或管理授权自动等于准入、持久 AgentTeams、生产就绪、release、比赛提交或采用 |
-| `TITMAS-FINAL-FORM-IMPLEMENTATION-D01` | `P0` | 是否根据已审计的采用矩阵授权有界 P0 最终形态实施？ | `READY_FOR_REVIEW` | D04 最终处置、Build-versus-Adopt 审计、组件矩阵、七层架构包、P0/P1/P2 Backlog、许可证与数据边界复核 | 决定是否进入分仓、分路径、可回滚的 P0 实施；P1/P2、生产账本、部署和付费仍需独立决定 | 审计完成自动等于实施、依赖安装、服务创建、迁移、部署、Paid Beta 或生产授权 |
+| `TITMAS-P0-10-POST-D15-DISPOSITION` | `P0` | D15 完成后，是否满足提出一次单层有界修复的条件，或应以诊断额度耗尽结束本轮开发？ | `BLOCKED_INPUT` | D15 脱敏结构诊断；`ROOT_CAUSE_CONFIDENCE`；竞争层排除证据；执行上下文和限制 | 只决定是否提出一个后续有界 remediation decision，或记录 `NOT_ASSESSED_DIAGNOSTIC_LIMIT_REACHED` | D15 自动实施修复、扩大诊断、增加 observability、创建第二个修复 PR 或追加复测 |
 
 ## 3. Closed Program Decision（已关闭项目群决策）
 
@@ -57,6 +57,8 @@ last_reviewed: 2026-08-02
 | `ADR-038 / TITMAS-D04-FINAL-CLOSURE-AND-ADOPTION-AUDIT-D01` | `ACCEPTED_AND_EXECUTED_GOVERNANCE_ONLY`：D04 在三次失败后永久关闭；PR #36 关闭未合并；旧账本永久归类为内部实验账本；未来生产账本采用 Paid Beta 后的独立 clean genesis；完成优先采用成熟上游的最终形态审计 | `decided_by_ref=zhangbin`；2026-08-01 | 只授权 DBA 最终处置和只读上游审计；不授权第四次 Canary、PR #36 重开/合并/移植、Gateway 修改、Migration 0005、生产账本、部署、购买、客户数据、付款或生产声明 |
 | `ADR-039 / DBA-VERIFIED-CORRECTION-AND-CONTEXT-CONTINUITY-D01` | `ACCEPTED_EXECUTION_AUTHORIZED`：采纳执行上下文结论连续性规则，并持续授权已核验问题的有界修正、测试、commit、push 与 Draft PR | `decided_by_ref=zhangbin`；2026-08-01 | 可在证明必要时修改 DBA、DBOS、SAEE、生产 Runtime 与其他 Owner 授权项目的 canonical repository；不授权 merge、tag、release、deployment、service restart、force push、破坏性删除、密钥／付款／合同动作或合规／生产声明 |
 | `TITMAS-MEDIA-EVIDENCE-ADMISSION-D01` | `CLOSED_ACCEPTED_AS_ADJACENT_CANDIDATE`：TITMAS Media Evidence v0.1.0 作为应用场景配置与参考实现候选纳入项目组合 | `TITMAS-DEC-20260801-MEDIA-EVIDENCE-PORTFOLIO-001`；`decided_by_ref=ZHANGBIN`；2026-08-01 | 只关闭 G0 项目组合准入；G1 为事实源通过，G2 仅为边界通过；G3-G8 仍分别保持未评估、未授权、未执行或未发布未采用；不授权 DBOS mapping、实现、标准、核心、生产或采用 |
+| `TITMAS-FINAL-FORM-IMPLEMENTATION-D01` | `SUPERSEDED_BY_D16_AFTER_BOUNDED_P0_IMPLEMENTATION`：原广义最终形态实施问题不再是当前开放开发入口 | D03-D13 的有界事实及 D16；2026-08-02 | 已完成的机器事实、API v1、Runtime 对齐、生成式 SDK 和 MCP Adapter 保留；未完成的 Agent-first acceptance 只走 D15 及 D16 限额；不恢复 P1/P2、生产账本、部署、付费或新功能授权 |
+| `TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16` | `ACCEPTED_GOVERNANCE_FREEZE_ACTIVE`：唯一主线冻结为 Unknown-Agent 完整接入闭环，非阻塞开发暂停 | `decided_by_ref=zhangbin`；2026-08-02 | 允许只读 PR 分类、驾驶舱冻结记录和 D15 最后诊断；不授权代码、merge、PR closure、deployment、release、package publication 或新标准／生产声明 |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 
@@ -79,7 +81,7 @@ release_authorized=true|false
 
 ```text
 DECISION_QUEUE_ACTIVE=true
-OPEN_DECISIONS=8
+OPEN_DECISIONS=9
 CONDITIONALLY_DECIDED_NOT_EFFECTIVE=0
 QUEUE_CREATES_AUTHORITY=false
 QUEUE_CREATES_PERMISSION=false
