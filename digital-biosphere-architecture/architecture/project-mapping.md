@@ -30,6 +30,7 @@ creates_project_relationships: false
 | `PROJECT-AGENT-EVIDENCE` | Agent Evidence | Evidence component（证据组件） | Execution-to-evidence handoff（执行到证据交接）相邻域 | Evidence package（证据包）不自动等于 DBOS 验证或 SAEE 评价 | 与 ARO 的审计职责、与 DBOS 的证据采集职责可能重叠 |
 | `PROJECT-MEDIA-EVIDENCE` | TITMAS Media Evidence v0.1.0 | 已接纳的 AIGC media-review Application Profile / Reference Implementation candidate（人工智能生成内容媒体审核应用场景配置／参考实现候选） | Application / Media Governance Profile；DBOS Evidence 相邻域 | `MediaEvidenceObject` 已决定为 domain-local evidence-bearing record，不是 DBOS canonical Evidence Object；组合准入、112 项本地测试和公开合成 Demo 不表示 Truth、Identity、Legal Evidence、Production、Conformance 或 Adoption | `ADJACENT_CANDIDATE` 已接纳；private canonical source 和 status contract 已建立；未来 DBOS Evidence Admission mapping 仍须独立授权和实现 |
 | `PROJECT-TOKEN-GOVERNOR` | Token Governor | Resource governance component（资源治理组件） | DBOS operational governance（运行治理）相邻域；为 SAEE 提供资源评价输入 | 本表不声明其是 DBOS 内置模块或拥有最终治理权 | 与 DBOS 执行约束、SAEE 资源适应度评价的边界 |
+| `ARCH-CANDIDATE-TITMAS-AGENT-SAFETY-SIGNAL-RELAY` | TITMAS Agent Safety Signal Relay | Future bounded safety-signal domain infrastructure candidate（未来有界安全信号领域基础设施候选） | Agent Safety Signal object lifecycle / compatibility profile / recipient-local validation boundary | 当前只有 DBA P0-P3 规范；候选仓库未创建、未准入、未激活；不拥有 Identity、Execution、Canonical Evidence、Truth、SAEE risk、remote action 或 public trust | 与 DBOS、Agent Evidence、ARO、AOP、OpenID SSF、CSAF、SCITT 的 mapping 均需未来独立 gate；ADR-040 已冻结 Owner 和非 Owner |
 | `PROJECT-RESEARCH-AGENT` | Research Agent | Future Operational Digital Entity（未来运行型数字实体）；第一个 Pilot reference（试验参考） | Digital Entity / Operational | 只是参考规范与 Pilot 设计；没有创建 Agent、Identity、Runtime、Capability、Permission、任务或研究结果 | 接入前需满足 Digital Entity、Capability、授权、Evidence、评价与 Human Oversight 契约 |
 | `ARCH-ROLE-DIGITAL-ORGANISM` | Digital Organism | SAEE Evaluation Target（SAEE 评价目标）；高级 Digital Entity qualification state | Evolution Evaluation + DBOS qualification record | 不是项目、Entity 实例、Agent、Runtime、Capability 或权限；SAEE 评价不自动产生资格 | 长期阈值、Lineage、生态范围、暂停与撤销状态机尚需定义 |
 
@@ -180,4 +181,9 @@ MEDIA_EVIDENCE_DBOS_MAPPING_AUTHORIZED=false
 MEDIA_EVIDENCE_CORE_COMPONENT=false
 MEDIA_EVIDENCE_STANDARD=false
 MEDIA_EVIDENCE_PRODUCTION_READY=false
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_ARCHITECTURE_DEFINED=true
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_REPOSITORY_CREATED=false
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_IMPLEMENTATION_AUTHORIZED=false
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_PUBLIC_SIGNAL_AUTHORIZED=false
+TITMAS_AGENT_SAFETY_SIGNAL_RELAY_RECIPIENT_TRUST_OWNER=LOCAL_RECIPIENT_POLICY
 ```

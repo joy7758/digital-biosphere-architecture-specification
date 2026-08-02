@@ -5,7 +5,7 @@ title_zh: 数字生物圈项目群决策队列 v0.1
 status: active-decision-register-owner-decisions-recorded
 decision_records_created: true
 authority_assignments_created: true
-last_reviewed: 2026-08-01
+last_reviewed: 2026-08-02
 ---
 
 # Digital Biosphere Program Decision Queue v0.1（数字生物圈项目群决策队列 v0.1）
@@ -57,6 +57,23 @@ last_reviewed: 2026-08-01
 | `ADR-038 / TITMAS-D04-FINAL-CLOSURE-AND-ADOPTION-AUDIT-D01` | `ACCEPTED_AND_EXECUTED_GOVERNANCE_ONLY`：D04 在三次失败后永久关闭；PR #36 关闭未合并；旧账本永久归类为内部实验账本；未来生产账本采用 Paid Beta 后的独立 clean genesis；完成优先采用成熟上游的最终形态审计 | `decided_by_ref=zhangbin`；2026-08-01 | 只授权 DBA 最终处置和只读上游审计；不授权第四次 Canary、PR #36 重开/合并/移植、Gateway 修改、Migration 0005、生产账本、部署、购买、客户数据、付款或生产声明 |
 | `ADR-039 / DBA-VERIFIED-CORRECTION-AND-CONTEXT-CONTINUITY-D01` | `ACCEPTED_EXECUTION_AUTHORIZED`：采纳执行上下文结论连续性规则，并持续授权已核验问题的有界修正、测试、commit、push 与 Draft PR | `decided_by_ref=zhangbin`；2026-08-01 | 可在证明必要时修改 DBA、DBOS、SAEE、生产 Runtime 与其他 Owner 授权项目的 canonical repository；不授权 merge、tag、release、deployment、service restart、force push、破坏性删除、密钥／付款／合同动作或合规／生产声明 |
 | `TITMAS-MEDIA-EVIDENCE-ADMISSION-D01` | `CLOSED_ACCEPTED_AS_ADJACENT_CANDIDATE`：TITMAS Media Evidence v0.1.0 作为应用场景配置与参考实现候选纳入项目组合 | `TITMAS-DEC-20260801-MEDIA-EVIDENCE-PORTFOLIO-001`；`decided_by_ref=ZHANGBIN`；2026-08-01 | 只关闭 G0 项目组合准入；G1 为事实源通过，G2 仅为边界通过；G3-G8 仍分别保持未评估、未授权、未执行或未发布未采用；不授权 DBOS mapping、实现、标准、核心、生产或采用 |
+| `ADR-040 / DQ-006-RELAY-SCOPE` | `ACCEPTED_WITH_AMENDMENTS_P0_P3_ONLY`：Relay 关系域内，Agent Evidence 是既有 evidence reference/receipt 依赖；ARO 仅为可选 post-execution audit reference；POP 不得承担机器身份/信任绑定；Token Governor 与 ACP 不进入 P0-P3 | `decided_by_ref=zhangbin`；2026-08-02；[`ADR-040`](architecture/ADR-040-titmas-agent-safety-signal-relay-p0-p3-governance-boundary.md) | 对 `DQ-006` 的 Relay scope 作终局处置；不关闭其它项目的全局 Portfolio Admission，不准入候选 Relay 仓库，不授权实现、映射、发布或建仓 |
+
+### 3.1 DQ-006 Relay-scope disposition（DQ-006 中继范围处置）
+
+```text
+DQ_006_GLOBAL_STATUS=OPEN
+DQ_006_RELAY_SCOPE_DISPOSITION=DECIDED_BY_ADR_040
+AGENT_EVIDENCE_RELAY_ROLE=EXISTING_ADJACENT_EVIDENCE_REFERENCE_AND_RECEIPT_DEPENDENCY
+ARO_RELAY_ROLE=OPTIONAL_POST_EXECUTION_AUDIT_REFERENCE_NOT_OWNER
+POP_RELAY_ROLE=EXCLUDED_FROM_MACHINE_IDENTITY_AND_TRUST_BINDING
+TOKEN_GOVERNOR_RELAY_ROLE=OUT_OF_SCOPE_FOR_P0_P3
+ACP_RELAY_ROLE=OUT_OF_SCOPE_FOR_P0_P3
+RELAY_PORTFOLIO_ADMISSION_CREATED=false
+```
+
+该处置不是模糊备注：在 Relay 数据和权力路径内，上述角色不得由未来实现自行扩大。
+`DQ-006` 继续 `OPEN` 仅因为其原问题还涉及这些项目在其它场景中的全局 Portfolio Admission。
 
 ## 4. Decision Closure Contract（决策关闭契约）
 
