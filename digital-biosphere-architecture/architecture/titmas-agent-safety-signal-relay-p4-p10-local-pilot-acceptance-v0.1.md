@@ -17,7 +17,7 @@ observed_at: 2026-08-02
 | Gateway | canonical resolved; stale/dirty checkout and scope boundary | `BLOCKED_CANONICAL_SOURCE` |
 | P8 loop | A/B/Unknown, feedback, v2 correction, revocation, old-client detection | `PASS` |
 | P9 public entry | source/build/release/live parity | `FAIL_NO_DEPLOY_LOCAL_DERIVED_ONLY` |
-| P10 recommendation | `qwen3.7-max`, `glm-5.2` | `LOCAL_OFFLINE_PILOT` |
+| P10 heterogeneous model review | `qwen3.7-max`, `glm-5.2`; not independent adopter evidence | `LOCAL_OFFLINE_PILOT` |
 
 Current verified local test count is 29 unique unittest cases; `make verify-all`, the independent Ruby evaluator,
 MCP stdio smoke and full demo all pass. This evidence is owned by the private local implementation repository;
@@ -30,4 +30,6 @@ PUBLIC_SIGNAL_PUBLISHED=false
 PUBLIC_PRODUCTION_DEPLOYED=false
 REMOTE_CONTROL_ENABLED=false
 AUTO_REMEDIATION_ENABLED=false
+INDEPENDENT_EXTERNAL_ADOPTER_RECOMMENDATION=NOT_AVAILABLE
+INDEPENDENT_FORMAL_SECURITY_AUDIT=NOT_PERFORMED
 ```

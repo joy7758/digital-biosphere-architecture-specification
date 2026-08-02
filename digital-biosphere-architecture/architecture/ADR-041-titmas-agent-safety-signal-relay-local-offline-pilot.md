@@ -37,6 +37,8 @@ P4–P6 gate 经两个独立语言 evaluator、20 个合成向量和生命周期
 
 ```text
 implementation_repository=/Users/zhangbin/GitHub/titmas-agent-safety-signal-relay
+LOCAL_DEVELOPMENT_PATH_ONLY=true
+NOT_PART_OF_PROTOCOL=true
 implementation_repository_visibility=LOCAL_PRIVATE_NO_REMOTE
 implementation_status=LOCAL_OFFLINE_PILOT
 architecture_owner=DBA
@@ -52,7 +54,9 @@ recipient_trust_authority=LOCAL_RECIPIENT_POLICY
 - correction, revocation, tamper, replay, rollback, freeze and omitted-correction detection pass;
 - `agent-evidence` is verify-only and remains evidence authority;
 - HTTP, CLI, MCP and direct calls share one non-authoritative Relay service;
-- two external heterogeneous reviewers both conditionally recommend no more than a local offline pilot.
+- two heterogeneous models provided local offline advisory reviews that support no more than a local offline pilot;
+- `INDEPENDENT_EXTERNAL_ADOPTER_RECOMMENDATION=NOT_AVAILABLE`;
+- `INDEPENDENT_FORMAL_SECURITY_AUDIT=NOT_PERFORMED`.
 
 ## Blocked integrations
 
