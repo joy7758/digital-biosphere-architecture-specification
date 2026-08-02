@@ -91,10 +91,13 @@ const releaseContext = resolveReleaseContext(process.env, {
   dbosPackage,
 });
 
-assert.match(zh, /TITMAS 可信多智能体基础设施开发者社区/);
+assert.match(zh, /<h1>TITMAS 可信多智能体基础设施<\/h1>/);
 assert.match(zh, /夏日之海/);
-assert.match(zh, /\/summersea-logo\.png/);
-assert.match(en, /TITMAS Infrastructure Developer Community/);
+assert.match(zh, /\/titmas-logo\.png/);
+assert.match(en, /aria-label="titmas · Trusted Multi-Agent Infrastructure"/);
+assert.match(en, /\/titmas-logo\.png/);
+assert.doesNotMatch(zh, /\/summersea-logo\.png/);
+assert.doesNotMatch(en, /\/summersea-logo\.png/);
 assert.match(zh, /<title>山西游骑兵电子商务有限公司<\/title>/);
 assert.match(en, /<title>山西游骑兵电子商务有限公司<\/title>/);
 assert.match(zh, /网站运营主体[^<]*：山西游骑兵电子商务有限公司/);
@@ -141,9 +144,18 @@ assert.equal(status.gates.TITMAS_CODE_OF_CONDUCT_ADOPTED, false);
 assert.equal(status.gates.TITMAS_MAINTAINER_ASSIGNED, false);
 assert.equal(status.gates.TITMAS_FOUNDATION_IN_SCOPE, false);
 assert.equal(status.community.current_state, "CONTRIBUTOR_ENTRY_PREPARED");
+assert.equal(status.community.canonical_name_en, "titmas");
+assert.equal(status.community.canonical_name_zh, "夏日之海");
+assert.equal(status.community.public_brand_logo, "/titmas-logo.png");
+assert.equal(status.community.technical_project_identifier, "TITMAS");
 assert.equal(status.community.public_contribution_surface_authorized, false);
 assert.equal(agentIndex.name, "TITMAS Infrastructure Developer Community");
 assert.equal(agentIndex.display_name_zh, "夏日之海");
+assert.equal(agentIndex.display_name_en, "titmas");
+assert.equal(agentIndex.public_brand, "titmas");
+assert.equal(agentIndex.public_brand_zh, "夏日之海");
+assert.equal(agentIndex.public_brand_logo, "/titmas-logo.png");
+assert.equal(agentIndex.technical_project_identifier, "TITMAS");
 assert.equal(agentIndex.abbreviation, "TITMAS");
 assert.equal(agentIndex.website_operator_legal_name, "山西游骑兵电子商务有限公司");
 assert.equal(agentIndex.public_website.operator_legal_name, "山西游骑兵电子商务有限公司");

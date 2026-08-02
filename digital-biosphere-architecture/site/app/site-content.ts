@@ -355,7 +355,7 @@ export const content = {
     },
     badge: "Stage 5.7: Agent-native selection and ROI benchmark complete",
     eyebrow: "TRUSTED MULTI-AGENT INFRASTRUCTURE",
-    title: "TITMAS",
+    title: "titmas",
     lead:
       "Build Agent products with Specifications, Schemas, SDK, Sandbox, and scoped access. Confidential core remains private.",
     primaryCta: "Read the agent benchmark evidence",
@@ -564,6 +564,6 @@ export const content = {
     ],
     legal:
       "Owner-created public materials use Apache-2.0. This static site collects no login data, sets no analytics cookies, and grants no runtime permission.",
-    footer: "Digital Biosphere is the program; TITMAS is the current trusted multi-agent infrastructure developer-community entry.",
+    footer: "Digital Biosphere is the program; titmas is the public English brand and TITMAS is the technical project identifier.",
   },
 } as const;

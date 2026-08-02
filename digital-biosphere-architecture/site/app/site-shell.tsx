@@ -2,19 +2,19 @@ import type { Locale } from "./site-content";
 import { content } from "./site-content";
 
 export function Brand({ locale }: { locale: Locale }) {
+  const brandName = locale === "zh" ? "夏日之海" : "titmas";
+  const brandDescriptor = locale === "zh" ? "可信多智能体基础设施" : "Trusted Multi-Agent Infrastructure";
+
   return (
-    <span
-      className="brand"
-      aria-label={locale === "zh" ? "夏日之海 TITMAS 可信多智能体基础设施开发者社区" : "TITMAS Infrastructure Developer Community"}
-    >
+    <span className="brand" aria-label={`${brandName} · ${brandDescriptor}`}>
       <span className="brand-mark" aria-hidden="true">
-        {/* Static export uses the original transparent asset without an image-optimization runtime. */}
+        {/* Static export uses the authorized public brand asset without an image-optimization runtime. */}
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/summersea-logo.png" alt="" width="640" height="592" />
+        <img src="/titmas-logo.png" alt="" width="1024" height="1024" />
       </span>
       <span className="brand-name">
-        <strong>{locale === "zh" ? "夏日之海" : "TITMAS"}</strong>
-        <small>{locale === "zh" ? "TITMAS · 可信多智能体基础设施" : "Infrastructure Developer Community"}</small>
+        <strong>{brandName}</strong>
+        <small>{brandDescriptor}</small>
       </span>
     </span>
   );

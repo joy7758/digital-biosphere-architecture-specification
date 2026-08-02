@@ -31,8 +31,8 @@ button, input { font: inherit; }
 .nav-shell { width: min(1240px, calc(100% - 40px)); height: 74px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
 .brand-link { display: flex; }
 .brand { display: inline-flex; align-items: center; gap: 11px; color: var(--ink); }
-.brand-mark { position: relative; width: 44px; height: 42px; display: grid; place-items: center; flex: 0 0 auto; }
-.brand-mark img { width: 100%; height: 100%; object-fit: contain; }
+.brand-mark { position: relative; width: 48px; height: 48px; display: grid; place-items: center; flex: 0 0 48px; overflow: hidden; border: 1px solid rgba(79,97,171,.18); border-radius: 12px; box-shadow: 0 5px 16px rgba(52,64,118,.2); }
+.brand-mark img { width: 100%; height: 100%; object-fit: cover; }
 .brand-name { display: grid; line-height: 1; gap: 4px; }
 .brand-name strong { font-size: 1rem; letter-spacing: .08em; }
 .brand-name small { font-size: .62rem; color: #6a7280; letter-spacing: .02em; white-space: nowrap; }
@@ -581,6 +581,7 @@ button, input { font: inherit; }
 .hero-carousel-stage { width: 100%; min-height: 590px; display: grid; place-items: center; }
 .hero-slide[hidden] { display: none; }
 .hero-carousel .hero-content { padding: 96px 0 48px; }
+.hero-brand-logo { width: 136px; height: 136px; margin: 0 auto 24px; display: block; background: center / cover no-repeat url("/titmas-logo.png"); border: 2px solid rgba(255,255,255,.92); border-radius: 28px; box-shadow: 0 18px 48px rgba(52,64,118,.22); }
 .hero-carousel .hero-content h1 { font-size: clamp(2.75rem, 5.5vw, 5rem); }
 .hero-carousel-controls { position: relative; z-index: 3; align-self: end; width: min(520px, calc(100% - 40px)); margin: 0 auto 34px; display: grid; grid-template-columns: 48px 1fr 48px; align-items: center; gap: 12px; }
 .hero-carousel-controls > button { width: 44px; min-width: 44px; height: 44px; min-height: 44px; border: 1px solid var(--line); border-radius: 50%; background: rgba(255,255,255,.9); color: var(--violet); font: 700 1rem/1 var(--font-mono); cursor: pointer; }
@@ -651,9 +652,11 @@ button, input { font: inherit; }
 }
 
 @media (max-width: 620px) {
+  .brand-mark { width: 42px; height: 42px; flex-basis: 42px; border-radius: 10px; }
   .hero-carousel { min-height: 720px; }
   .hero-carousel-stage { min-height: 625px; }
   .hero-carousel .hero-content { width: min(100% - 28px, 950px); padding: 86px 0 28px; }
+  .hero-brand-logo { width: 124px; height: 124px; border-radius: 26px; }
   .hero-carousel .hero-content h1 { font-size: clamp(2.25rem, 11vw, 3.45rem); }
   .hero-carousel .hero-lead { font-size: 1rem; line-height: 1.65; }
   .hero-carousel-controls { width: min(100% - 28px, 520px); grid-template-columns: 44px 1fr 44px; margin-bottom: 24px; }
