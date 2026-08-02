@@ -1,0 +1,35 @@
+{
+  "affected_component": "DEMO_DERIVED_TASK_REGISTRY",
+  "agent_impact": "Machine task discovery would omit DEMO-TASK-B.",
+  "authority_impact": "NONE",
+  "canonical_owner_repository": "joy7758/digital-biosphere-architecture-specification",
+  "confidence": 1.0,
+  "discovered_at": "2026-08-02T00:00:00+08:00",
+  "discovered_by_agent": "SCOUT_AGENT:REFERENCE",
+  "evidence_references": [
+    "demo/fixtures/source-task-registry.json",
+    "demo/fixtures/stale-derived-registry.json"
+  ],
+  "known_limitations": [
+    "SYNTHETIC_FIXTURE_ONLY",
+    "NO_REAL_RUNTIME"
+  ],
+  "observation": {
+    "source_reference": "demo/fixtures/stale-derived-registry.json",
+    "summary": "Derived fixture omits a source task and retains an obsolete digest.",
+    "type": "STALE_TASK_REGISTRY"
+  },
+  "problem_id": "D19-ER1-DEMO-001",
+  "reproduction": {
+    "attempts": 1,
+    "expected": "sha256:e6ec2c3dcb372bb4633de8c1f57c7f31134d7c33bcbf8e0ccc6d0f146f3ed6d3",
+    "observed": "sha256:1ccb8dd347d0ac562c3baa817496fa23ba7bcff36a601e0ed49129d253e9698b",
+    "status": "REPRODUCED",
+    "steps": [
+      "Compare derived projection with deterministic source projection."
+    ]
+  },
+  "risk_class": "ER-1",
+  "security_impact": "NONE_OBSERVED",
+  "severity": "LOW"
+}

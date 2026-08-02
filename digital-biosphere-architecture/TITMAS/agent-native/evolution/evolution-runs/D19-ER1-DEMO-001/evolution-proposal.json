@@ -1,0 +1,45 @@
+{
+  "authorization_class": "ER-1",
+  "evolution_id": "D19-ER1-EVOLUTION-001",
+  "fitness_dimensions": [
+    "AGENT_DISCOVERABILITY",
+    "AGENT_CALLABILITY",
+    "AGENT_REUSABILITY",
+    "CORRECTNESS",
+    "SECURITY",
+    "INTEROPERABILITY",
+    "EVIDENCE_QUALITY",
+    "REPRODUCIBILITY",
+    "RESOURCE_EFFICIENCY",
+    "LATENCY",
+    "ROLLBACKABILITY",
+    "MAINTAINABILITY",
+    "AUTHORITY_SAFETY"
+  ],
+  "forbidden_changes": [
+    "SOURCE_OF_TRUTH",
+    "AUTHORITY",
+    "SECURITY_BOUNDARY",
+    "P0_10"
+  ],
+  "objective": "Restore the deterministic derived registry without changing source semantics.",
+  "problem_id": "D19-ER1-DEMO-001",
+  "proposed_variants": [
+    "D19-ER1-DEMO-001-V1",
+    "D19-ER1-DEMO-001-V2",
+    "D19-ER1-DEMO-001-V0"
+  ],
+  "required_reviewers": [
+    "FITNESS_EVALUATOR_AGENT",
+    "AUTHORITY_BOUNDARY_AGENT"
+  ],
+  "required_tests": [
+    "EV-T23",
+    "EV-T24",
+    "EV-T25"
+  ],
+  "rollback_requirements": [
+    "RESTORE_STALE_FIXTURE_COPY",
+    "RETAIN_FAILED_MUTATION_EVIDENCE"
+  ]
+}
