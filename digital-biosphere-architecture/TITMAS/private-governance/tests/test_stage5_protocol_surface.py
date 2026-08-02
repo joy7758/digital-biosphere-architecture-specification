@@ -19,24 +19,92 @@ assert SPEC and SPEC.loader
 BUILDER = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = BUILDER
 SPEC.loader.exec_module(BUILDER)
+CANONICAL_OUTPUT_ROOT = BUILDER.OUTPUT_ROOT
+
+
+def build_in_isolated_output(test_case_class, build=None):
+    """Build the surface without leaking temporary output state.
+
+    ``addClassCleanup`` is intentional: unittest runs these cleanups even when
+    ``setUpClass`` raises, whereas ``tearDownClass`` is not guaranteed to run.
+    """
+
+    build = build or BUILDER.build
+    test_case_class.tracked_output_root = BUILDER.OUTPUT_ROOT
+    test_case_class.temporary_directory = tempfile.TemporaryDirectory(
+        prefix="titmas-stage5-protocol-surface-"
+    )
+    test_case_class.temporary_directory_path = Path(
+        test_case_class.temporary_directory.name
+    )
+    test_case_class.addClassCleanup(test_case_class.temporary_directory.cleanup)
+
+    BUILDER.OUTPUT_ROOT = (
+        test_case_class.temporary_directory_path
+        / "private-stage5-protocol-surface"
+    )
+    test_case_class.addClassCleanup(
+        setattr,
+        BUILDER,
+        "OUTPUT_ROOT",
+        test_case_class.tracked_output_root,
+    )
+    return build()
+
+
+class Stage5ProtocolSurfaceCleanupTests(unittest.TestCase):
+    @staticmethod
+    def run_probe(build):
+        class IsolatedBuildProbe(unittest.TestCase):
+            @classmethod
+            def setUpClass(cls) -> None:
+                cls.manifest = build_in_isolated_output(cls, build)
+
+            def test_build_completed(self) -> None:
+                self.assertIsInstance(self.manifest, dict)
+
+        result = unittest.TestResult()
+        unittest.defaultTestLoader.loadTestsFromTestCase(IsolatedBuildProbe).run(
+            result
+        )
+        return IsolatedBuildProbe, result
+
+    def test_d25_t01_normal_build_restores_output_root(self) -> None:
+        _probe, result = self.run_probe(BUILDER.build)
+        self.assertTrue(result.wasSuccessful(), result.errors)
+        self.assertEqual(CANONICAL_OUTPUT_ROOT, BUILDER.OUTPUT_ROOT)
+
+    def test_d25_t02_build_exception_restores_output_root(self) -> None:
+        def controlled_failure():
+            raise RuntimeError("D25 controlled build failure")
+
+        _probe, result = self.run_probe(controlled_failure)
+        self.assertEqual(1, len(result.errors))
+        self.assertIn("D25 controlled build failure", result.errors[0][1])
+        self.assertEqual(CANONICAL_OUTPUT_ROOT, BUILDER.OUTPUT_ROOT)
+
+    def test_d25_t03_normal_build_cleans_temporary_directory(self) -> None:
+        probe, result = self.run_probe(BUILDER.build)
+        self.assertTrue(result.wasSuccessful(), result.errors)
+        self.assertFalse(probe.temporary_directory_path.exists())
+
+    def test_d25_t04_build_exception_cleans_temporary_directory(self) -> None:
+        def controlled_failure():
+            raise RuntimeError("D25 controlled build failure")
+
+        probe, result = self.run_probe(controlled_failure)
+        self.assertEqual(1, len(result.errors))
+        self.assertIn("D25 controlled build failure", result.errors[0][1])
+        self.assertFalse(probe.temporary_directory_path.exists())
+
+    def test_d25_t05_subsequent_test_sees_canonical_output_root(self) -> None:
+        self.assertEqual(CANONICAL_OUTPUT_ROOT, BUILDER.OUTPUT_ROOT)
 
 
 class Stage5ProtocolSurfaceTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
-        cls.tracked_output_root = BUILDER.OUTPUT_ROOT
-        cls.temporary_directory = tempfile.TemporaryDirectory(
-            prefix="titmas-stage5-protocol-surface-"
-        )
-        BUILDER.OUTPUT_ROOT = (
-            Path(cls.temporary_directory.name) / "private-stage5-protocol-surface"
-        )
-        cls.manifest = BUILDER.build()
-
-    @classmethod
-    def tearDownClass(cls) -> None:
-        BUILDER.OUTPUT_ROOT = cls.tracked_output_root
-        cls.temporary_directory.cleanup()
+        cls.manifest = build_in_isolated_output(cls)
 
     def test_generated_surface_matches_tracked_expected_bytes(self) -> None:
         generated_files = {
