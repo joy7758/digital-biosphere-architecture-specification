@@ -99,6 +99,10 @@
     "final_form_implementation_decision_packet": "TITMAS-FINAL-FORM-IMPLEMENTATION-DECISION-PACKET-v1.0.md",
     "final_form_implementation_backlog": "TITMAS-FINAL-FORM-IMPLEMENTATION-BACKLOG-v1.0.json",
     "governance_intelligence": "intelligence/agent-index.json",
+    "cockpit_source_registry": "cockpit/source-registry.json",
+    "cockpit_titmac_scout_projection": "cockpit/projections/titmac-scout.json",
+    "cockpit_titmac_scout_dynamic_observation": "cockpit/projections/titmac-scout.json",
+    "cockpit_read_only_status_adapter": "cockpit/read_only_status_adapter.py",
     "agent_action_gate_admission_proposal": "TITMAS/specifications/proposals/titmas-agent-action-gate-admission-v0.1.md",
     "agent_action_gate_portfolio_projection": "TITMAS/specifications/portfolio/agent-action-gate.json",
     "execution_context_trust_invalidation_profile": "intelligence/2026-08-01/execution-context-trust-invalidation-profile.md",
@@ -122,7 +126,8 @@
     "discover_tasks": "python3 TITMAS/agent-native/community_cli.py discover --need NEED",
     "rank_tasks": "python3 TITMAS/agent-native/community_cli.py rank --need NEED",
     "eligibility": "python3 TITMAS/agent-native/community_cli.py eligibility --participant PARTICIPANT_REF --task TASK_ID --at ISO8601",
-    "recommendation_calibration": "python3 TITMAS/agent-native/community_cli.py calibrate-recommendation --case REC-FIT"
+    "recommendation_calibration": "python3 TITMAS/agent-native/community_cli.py calibrate-recommendation --case REC-FIT",
+    "refresh_titmac_scout_cockpit": "python3 cockpit/read_only_status_adapter.py --project-id titmac-scout --output cockpit/projections/titmac-scout.json"
   },
   "authority_boundaries": [
     "AGENT_PARTICIPATION_NE_AUTHORITY",

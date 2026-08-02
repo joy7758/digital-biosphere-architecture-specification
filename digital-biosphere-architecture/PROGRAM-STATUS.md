@@ -45,6 +45,11 @@ AGENT_FIRST_ACCEPTANCE_COMPLETE=false
 P0_10_RESULT=FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT
 NEW_FEATURE_DEVELOPMENT_FROZEN=true
 D15_REMAINS_AUTHORIZED=true
+TITMAC_SCOUT_CANONICAL_MACHINE_PROJECT_ID=titmac-scout
+TITMAC_SCOUT_CONVERSATION_ALIAS=tiamas-scout
+TITMAC_SCOUT_STATUS_SOURCE=CANDIDATE_READY_FOR_HUMAN_REVIEW_NOT_MERGED
+DBA_TITMAC_SCOUT_COCKPIT_BRIDGE=CANDIDATE_READ_ONLY_FAIL_CLOSED
+P0_10_REOPENED=false
 OPEN_WEB_DISCOVERY=PARTIAL_METADATA_ONLY
 OPEN_WEB_DISCOVERY_OBSERVATION_ID=TMAI-OWD-20260722-001
 OPEN_WEB_CANONICAL_NAME_MATCH=false
@@ -532,3 +537,60 @@ Canonical D16 records:
 - [`TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md`](TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md)
 - [`TITMAS-OPEN-PR-MAINLINE-REVIEW-D16.md`](TITMAS-OPEN-PR-MAINLINE-REVIEW-D16.md)
 - [`open-pr-classification.json`](open-pr-classification.json)
+
+## 15. TITMAC Scout canonical identity and cockpit bridge overlay
+
+D20 froze the implementation machine identity as `titmac-scout` and retains
+`tiamas-scout` only as a conversation alias. D21 merged corrected status
+contract PR #1 to the private canonical `main` at
+`7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907`.
+
+The existing DBA cockpit now binds only to canonical `main` at the exact
+revision, tree and status digest. Its adapter is pull-only, validates source
+schema and integrity, and separately observes the current remote Head, CI and
+pull requests through the GitHub API. Source-status, remote-revision and CI/PR
+freshness are independent; missing dynamic observation fails partially closed
+instead of carrying forward a stale green state. The stored object is a bounded
+projection, not a copy of a canonical evolution run.
+
+```text
+CANONICAL_MACHINE_PROJECT_ID=titmac-scout
+CONVERSATION_ALIAS=tiamas-scout
+TITMAC_SCOUT_IS_IMPLEMENTATION_OWNER=true
+TITMAC_SCOUT_IS_STATUS_OWNER=true
+DBA_OWNS_ARCHITECTURE_AND_GOVERNANCE=true
+COCKPIT_PULL_ONLY=true
+COCKPIT_PUSH=false
+COCKPIT_STORES_PROJECTION=true
+COCKPIT_STORES_CANONICAL_RUN=false
+STATUS_SOURCE_STATE=MERGED_ON_CANONICAL_MAIN
+COCKPIT_BRIDGE_STATE=READY_FOR_HUMAN_REVIEW
+COCKPIT_SOURCE_BRANCH=main
+COCKPIT_SOURCE_REVISION=7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907
+COCKPIT_SOURCE_TREE=474e20cca30f89b66638cfaf56d6d147c9e9f1d3
+COCKPIT_SOURCE_INTEGRITY=PASS
+COCKPIT_CI_OBSERVATION=PASS
+COCKPIT_PR_OBSERVATION=PASS
+DISCOVERY_LAYER_STATUS=CANDIDATE
+SELF_HEALING_STATUS=NOT_ASSESSED
+SELF_EVOLUTION_STATUS=NOT_ASSESSED
+PR105_OWNERSHIP_REVIEW=PENDING
+PR106_MIGRATION_REVIEW=PENDING
+AGENT_COMMUNITY_ARCHITECTURE_STATUS=READY
+AGENT_COMMUNITY_PROTOCOL_STATUS=CANDIDATE
+AGENT_COMMUNITY_PUBLIC_OPERATION_STATUS=NOT_YET_VERIFIED
+PR_NE_ADOPTION=true
+CI_PASS_NE_PRODUCTION_READY=true
+P0_10_REOPENED=false
+D04_REOPENED=false
+RUNTIME_CHANGED=false
+DATABASE_CHANGED=false
+DEPLOYMENT_EXECUTED=false
+```
+
+Machine entries:
+
+- [`cockpit/source-registry.json`](cockpit/source-registry.json)
+- [`cockpit/projections/titmac-scout.json`](cockpit/projections/titmac-scout.json)
+- [`cockpit/read_only_status_adapter.py`](cockpit/read_only_status_adapter.py)
+- [`ADR-040`](architecture/ADR-040-titmac-scout-canonical-identity-and-read-only-progress-bridge.md)
