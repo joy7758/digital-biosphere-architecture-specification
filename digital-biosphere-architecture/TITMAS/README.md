@@ -16,6 +16,10 @@ aliases. No fourth community name is created.
 ## Start here
 
 - Agent entry: [`../agent-index.json`](../agent-index.json)
+- D19 bounded discovery and evolution entry:
+  [`agent-native/evolution/README.md`](agent-native/evolution/README.md)
+- D19 architecture amendment:
+  [`../architecture/titmas-agent-native-discovery-self-healing-evolution-amendment-v2.1.md`](../architecture/titmas-agent-native-discovery-self-healing-evolution-amendment-v2.1.md)
 - Current D16 mainline freeze:
   [`../TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md`](../TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md)
 - Owner-wide open PR classification:
@@ -83,6 +87,8 @@ From `digital-biosphere-architecture/`:
 python3 TITMAS/conformance/harness.py
 python3 -m unittest discover -s TITMAS/conformance/tests -v
 python3 -m unittest discover -s TITMAS/agent-native/tests -v
+python3 TITMAS/agent-native/evolution/evolution.py demo \
+  --output /tmp/titmas-d19-evolution-demo
 python3 -m unittest discover \
   -s TITMAS/private-customer-evaluation/gateway/tests -p 'test_*.py' -v
 python3 -m unittest discover \
@@ -143,6 +149,12 @@ MAJOR_INFRASTRUCTURE_DEVELOPMENT_COMPLETE=true
 AGENT_FIRST_ACCEPTANCE_COMPLETE=false
 P0_10_RESULT=FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT
 NEW_FEATURE_DEVELOPMENT_FROZEN=true
+D19_BOUNDED_EVOLUTION_EXCEPTION_ACTIVE=true
+TITMAS_AGENT_OPEN_COMMUNITY=OPEN_MATURE_AGENT_NATIVE_COMMUNITY_V1
+DISCOVERY_LAYER_STATUS=BOUNDED_SELF_HEALING_AND_EVOLUTION_CANDIDATE
+SELF_HEALING_STATUS=OPEN_BOUNDED
+SELF_EVOLUTION_STATUS=OPEN_EVIDENCE_GATED
+AUTONOMOUS_PRODUCTION_EVOLUTION=false
 D15_REMAINS_AUTHORIZED=true
 MAX_REMEDIATION_PRS_AFTER_D15=1
 MAX_FINAL_RERUNS=1
@@ -164,6 +176,13 @@ COMMUNITY_ESTABLISHED=false
 EXTERNAL_CONTRIBUTOR_COUNT=0
 EXTERNAL_ADOPTER_COUNT=0
 ```
+
+`TITMAS_AGENT_OPEN_COMMUNITY=OPEN_MATURE_AGENT_NATIVE_COMMUNITY_V1` names the
+open machine participation contract for AI agents. It is not a claim that a
+public human organization, Foundation, public core, unrestricted contribution
+surface or production service has launched. D19 supersedes the report-only
+discovery restriction only within its explicit ER-0/ER-1 sandbox and Draft PR
+boundary.
 
 Agent-first（智能体优先）是客户、接口和验证优先级，不是 Authority 转移。模型不能
 自我授权、批准标准、签订合同、控制付款或执行不可逆动作。E01 继续作为历史可选的

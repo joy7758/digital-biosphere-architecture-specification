@@ -532,3 +532,34 @@ Canonical D16 records:
 - [`TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md`](TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md)
 - [`TITMAS-OPEN-PR-MAINLINE-REVIEW-D16.md`](TITMAS-OPEN-PR-MAINLINE-REVIEW-D16.md)
 - [`open-pr-classification.json`](open-pr-classification.json)
+
+## 15. D19 Agent-Native Bounded Evolution Overlay
+
+Human Decision `TITMAS-AGENT-NATIVE-DISCOVERY-SELF-HEALING-AND-EVOLUTION-D19-V2-1`
+creates a narrow exception to the D16 freeze for an evidence-driven Discovery
+Evolution Layer. It is a logical DBA-owned policy and reference surface, not a
+new Runtime, executor, Authority or canonical truth owner.
+
+```text
+DISCOVERY_LAYER_STATUS=BOUNDED_SELF_HEALING_AND_EVOLUTION_CANDIDATE
+DISCOVERY_LAYER_VERSION=2.1.0
+SELF_HEALING_STATUS=OPEN_BOUNDED
+SELF_EVOLUTION_STATUS=OPEN_EVIDENCE_GATED
+AUTONOMOUS_PRODUCTION_EVOLUTION=false
+MERGE_AUTHORIZED=false
+DEPLOYMENT_AUTHORIZED=false
+P0_10_FINAL_DISPOSITION=NOT_ASSESSED_DIAGNOSTIC_LIMIT_REACHED
+P0_10_REOPENED=false
+P0_10_RESULT_REWRITTEN=false
+```
+
+The earlier D12/D16 `FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT` evidence remains
+historical and unchanged. `NOT_ASSESSED_DIAGNOSTIC_LIMIT_REACHED` records the
+later disposition after the diagnostic budget was exhausted; it is not a
+rewrite of the failed run.
+
+Canonical D19 records:
+
+- [`architecture/titmas-agent-native-discovery-self-healing-evolution-amendment-v2.1.md`](architecture/titmas-agent-native-discovery-self-healing-evolution-amendment-v2.1.md)
+- [`architecture/ADR-040-bounded-discovery-self-healing-and-evolution.md`](architecture/ADR-040-bounded-discovery-self-healing-and-evolution.md)
+- [`TITMAS/agent-native/evolution/README.md`](TITMAS/agent-native/evolution/README.md)

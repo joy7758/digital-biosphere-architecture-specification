@@ -24,13 +24,14 @@
     "an agent must discover a bounded standards task",
     "a contribution needs machine-readable provenance and review handoff",
     "multiple agents must review or reuse work without semantic elevation",
-    "a recommendation must distinguish fit, non-fit and insufficient evidence"
+    "a recommendation must distinguish fit, non-fit and insufficient evidence",
+    "a reproducible low-risk defect needs bounded variants, fitness evidence, rollback and a Draft PR handoff"
   ],
   "when_not_to_use": [
     "running or orchestrating production agents",
     "granting permission or authority",
     "certifying safety or compliance",
-    "automatically fixing repositories",
+    "unbounded repository repair, autonomous merge or production self-modification",
     "replacing DBOS, SAEE, an Agent framework or Human constitutional responsibility"
   ],
   "maturity": "Development",
@@ -115,6 +116,8 @@
     "active_issue_template_directory_after_merge": "../.github/ISSUE_TEMPLATE/",
     "active_pull_request_template_after_merge": "../.github/pull_request_template.md",
     "private_security_reporting": "https://github.com/joy7758/digital-biosphere-architecture-specification/security/advisories/new"
+    ,"discovery_evolution": "TITMAS/agent-native/evolution/evolution-capability.json"
+    ,"discovery_evolution_policy": "TITMAS/agent-native/evolution/evolution-policy.json"
   },
   "commands": {
     "conformance": "python3 TITMAS/conformance/harness.py",
@@ -122,13 +125,18 @@
     "discover_tasks": "python3 TITMAS/agent-native/community_cli.py discover --need NEED",
     "rank_tasks": "python3 TITMAS/agent-native/community_cli.py rank --need NEED",
     "eligibility": "python3 TITMAS/agent-native/community_cli.py eligibility --participant PARTICIPANT_REF --task TASK_ID --at ISO8601",
-    "recommendation_calibration": "python3 TITMAS/agent-native/community_cli.py calibrate-recommendation --case REC-FIT"
+    "recommendation_calibration": "python3 TITMAS/agent-native/community_cli.py calibrate-recommendation --case REC-FIT",
+    "evolution_tests": "python3 -m unittest discover -s TITMAS/agent-native/tests -p 'test_evolution.py' -v",
+    "evolution_demo": "python3 TITMAS/agent-native/evolution/evolution.py demo --output /tmp/titmas-d19-evolution-demo"
   },
   "authority_boundaries": [
     "AGENT_PARTICIPATION_NE_AUTHORITY",
     "AGENT_ROLE_NE_SELF_GRANTED_PERMISSION",
     "AGENT_CONTRIBUTION_NE_ADOPTION",
     "AGENT_REVIEW_NE_ARCHITECTURE_DECISION",
+    "DISCOVERY_IMPLEMENTATION_NE_ACTIVATION",
+    "FITNESS_EVALUATION_NE_AUTHORIZATION",
+    "SELF_HEALING_NE_SELF_GRANTED_SCOPE",
     "EVIDENCE_NE_TRUTH",
     "VERIFICATION_NE_AUTHORIZATION",
     "RECOMMENDATION_NE_DECISION"

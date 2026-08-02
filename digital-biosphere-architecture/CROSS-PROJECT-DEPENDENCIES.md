@@ -38,6 +38,7 @@ last_reviewed: 2026-08-02
 | `DEP-008` | Research Agent Pilot | DBOS | `APPLICATION_SERVICE` | 未来只读/记录接口准备 | `PREPARED_ONLY` | Research Agent 已注册、已连接或已运行 |
 | `DEP-009` | Research Agent Pilot | SAEE | `EVALUATION_INPUT` | 未来 Evaluation Profile（评价配置）准备 | `PREPARED_ONLY` | 已形成 Fitness、Risk 或 Recommendation |
 | `DEP-010` | Core projects | DBA | `STATUS_REFERENCE` | 项目提供带来源的状态，DBA 只读汇总 | `SOURCE_ALIGNMENT_PENDING` | DBA 状态摘要覆盖子项目事实 |
+| `DEP-D19-001` | DBA Discovery Evolution policy | Canonical owner repositories | `NORMATIVE` / `GOVERNANCE_GATE` | Problem Evidence、owner routing、risk class、variant evidence、rollback 与 Draft PR handoff | `BOUNDED_REFERENCE_DEFINED_CROSS_REPO_PROPOSAL_ONLY` | DBA 直接执行子项目变化、Agent 自动 merge 或生产激活 |
 
 ## 3. Adjacent Dependency Candidates（相邻依赖候选）
 

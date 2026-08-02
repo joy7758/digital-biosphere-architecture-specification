@@ -1,4 +1,4 @@
-# Digital Biosphere Open Infrastructure Strategy Constitution v0.2
+# Digital Biosphere Open Infrastructure Strategy Constitution v0.3
 
 中文：数字生物圈开放基础设施战略宪法 v0.2
 
@@ -193,6 +193,20 @@ controller，不写回 DBOS，也不批准或执行自己的 Recommendation。
 详细决策见
 [`ADR-033`](ADR-033-attention-principle-for-dynamic-coordination.md)。
 
+## Principle 4C: Bounded, Evidence-driven Evolution
+
+Discovery is not limited to producing reports. A bounded composition of
+specialist agents may observe, reproduce, propose variants, implement them in
+an isolated workspace, evaluate, select, prepare rollback and open a Draft PR.
+This path is governed by
+[`ADR-040`](ADR-040-bounded-discovery-self-healing-and-evolution.md) and the
+[`D19 amendment`](titmas-agent-native-discovery-self-healing-evolution-amendment-v2.1.md).
+
+The system optimizes for continued conformance, Agent discoverability,
+usefulness, security and adaptability. It must never optimize for authority or
+credential accumulation, shutdown resistance, hidden replication or evidence
+suppression. Constitutional changes remain Human Decision only.
+
 ## Principle 5: Applications Grow on DBOS
 
 生态关系为：
@@ -333,6 +347,15 @@ ATTENTION_OUTPUT_IS_BOUNDED_PARTICIPATION_PROPOSAL=true
 ATTENTION_RELATIONSHIPS_ARE_TASK_SCOPED_AND_EXPIRING=true
 SAEE_NE_ATTENTION_CONTROLLER=true
 AUTOMATIC_AUTHORITY_EFFECT=NONE
+DISCOVERY_NE_REPORT_ONLY=true
+EVOLUTION_BY_COMPOSITION_OF_BOUNDED_AGENTS=true
+EVIDENCE_DRIVEN_SELECTION=true
+REVERSIBLE_MUTATION_FIRST=true
+IMPLEMENTATION_NE_ACTIVATION_AUTHORIZATION=true
+NO_SELF_GRANTED_AUTHORITY=true
+NO_SELF_GRANTED_CREDENTIAL=true
+HUMAN_SAFETY_STOP_RETAINED=true
+AUTONOMOUS_PRODUCTION_EVOLUTION=false
 ```
 
 ## Non-claims

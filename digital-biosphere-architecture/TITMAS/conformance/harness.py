@@ -772,6 +772,70 @@ def check_agent_native_adversarial() -> dict[str, Any]:
     }
 
 
+def check_bounded_evolution_surfaces() -> dict[str, Any]:
+    root = TITMAS_ROOT / "agent-native" / "evolution"
+    machine_files = (
+        "evolution-policy.json",
+        "evolution-state-machine.json",
+        "risk-classification.json",
+        "fitness-profile.json",
+        "self-healing-registry.json",
+        "evolution-capability.json",
+        "canonical-owner-map.json",
+        "mutation-limits.json",
+    )
+    machine_values = {name: load_json(root / name) for name in machine_files}
+    capability = machine_values["evolution-capability.json"]
+    policy = machine_values["evolution-policy.json"]
+    if capability["status"] != "BOUNDED_SELF_HEALING_AND_EVOLUTION_CANDIDATE":
+        raise ConformanceError("D19 discovery layer maturity is elevated or incomplete")
+    if capability["public_launch_authorized"] or capability["community_established"]:
+        raise ConformanceError("D19 reference layer must not claim public launch")
+    if policy["automatic_production_evolution"]:
+        raise ConformanceError("D19 must not authorize production evolution")
+    if policy["p0_10"]["automatic_reopen"]:
+        raise ConformanceError("D19 must not reopen P0-10")
+
+    module_path = root / "evolution.py"
+    spec = importlib.util.spec_from_file_location("titmas_bounded_evolution", module_path)
+    if not spec or not spec.loader:
+        raise ConformanceError("cannot load bounded evolution reference")
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    first = module.run_demo()
+    second = module.run_demo()
+    if module.canonical_bytes(first) != module.canonical_bytes(second):
+        raise ConformanceError("D19 deterministic replay failed")
+
+    schema_map = {
+        "problem_evidence": "problem-evidence.schema.json",
+        "evolution_proposal": "evolution-proposal.schema.json",
+        "selection_record": "selection-record.schema.json",
+        "rollback_evidence": "rollback-evidence.schema.json",
+        "lineage": "evolution-lineage.schema.json",
+    }
+    schemas_checked = 0
+    for key, filename in schema_map.items():
+        validate_schema(first[key], load_json(root / "schemas" / filename), key)
+        schemas_checked += 1
+    for item in first["variants"]:
+        validate_schema(item, load_json(root / "schemas" / "patch-variant.schema.json"), "variant")
+        schemas_checked += 1
+    for item in first["fitness_evaluations"]:
+        validate_schema(item, load_json(root / "schemas" / "fitness-evaluation.schema.json"), "fitness")
+        schemas_checked += 1
+    module.assert_no_secret_disclosure(first)
+    if first["selection_record"]["selected_variant"] != "D19-ER1-DEMO-001-V1":
+        raise ConformanceError("D19 deterministic selection drift")
+    return {
+        "machine_surfaces_checked": len(machine_files),
+        "object_instances_validated": schemas_checked,
+        "deterministic_replay": True,
+        "selected_variant": first["selection_record"]["selected_variant"],
+        "production_side_effect": False,
+    }
+
+
 LINK_PATTERN = re.compile(r"\[[^\]]+\]\(([^)]+)\)")
 
 PUBLIC_ENTRY_DOCUMENTS = (
@@ -984,6 +1048,7 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("internal_reviews", check_internal_reviews),
         ("agent_native_surfaces", check_agent_native_surfaces),
         ("agent_native_adversarial", check_agent_native_adversarial),
+        ("bounded_evolution_surfaces", check_bounded_evolution_surfaces),
         ("public_entry_consistency", check_public_entry_consistency),
         ("local_links", check_local_links),
     )
