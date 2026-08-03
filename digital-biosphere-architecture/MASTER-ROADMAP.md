@@ -280,9 +280,10 @@ certification, adoption or conformance claims.
 | `C01-A1` | Freeze low-friction entry as display-order one | `ARCHITECTURE_FROZEN` | ADR-041, Constitution and C-01 machine contract |
 | `C01-A2` | Preserve one platform, one core, four products and classify Observer as entry layer | `CONTRACT_CONFORMANCE_PASS` | catalog and T05/T06/T14/T15 tests |
 | `C01-A3` | Define Human/Agent entry, FirstValue routes and reversible exit | `CONTRACT_CONFORMANCE_PASS` | entry surfaces, examples, access modes and exit controls |
-| `C01-A4` | Implement Observer and measured first value | `BOUNDED_REFERENCE_COMPLETE_NOT_DEPLOYED` | Gateway CE-1/CE-2 on canonical `main@c02926397563940feeba54b1efbe8d62e406e0e8`; zero customer data and no real action |
+| `C01-A4` | Implement Observer and measured first value | `BOUNDED_REFERENCE_COMPLETE_NOT_DEPLOYED` | Gateway CE-1/CE-2 on canonical `main@569dd5506e0030dec9d942846aee50aa92113fd5`; zero customer data and no real action |
 | `C01-A5` | Expose read-only Agent/Human Console projections | `BOUNDED_REFERENCE_COMPLETE_NOT_DEPLOYED` | Gateway CE-3/CE-4; machine projections are canonical and Human HTML is derived |
 | `C01-A6` | Validate one software-delivery Monitor/Enforce comparison | `TESTED_SYNTHETIC_ONLY_NOT_DEPLOYED` | Gateway CE-5; existing Gate, Receipt and Audit reused; real customer authorization and external action count remain zero |
+| `C01-A7` | Persist bounded Receipt/Audit/Health read projections | `BOUNDED_REFERENCE_COMPLETE_PARTIAL_AUDIT_NOT_DEPLOYED` | Gateway CE-6; Receipt is credential-bound, PostgreSQL Audit is an incomplete Tenant subset, Health Audit remains `PARTIAL` |
 
 These bounded implementation rows do not reopen P0-10 or D04 and do not
 authorize website changes, customer contact, paid access or production

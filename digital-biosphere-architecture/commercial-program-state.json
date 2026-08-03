@@ -5,10 +5,10 @@
   "current_phase": "D29_CUSTOMER_ENTRY_REFERENCE_IMPLEMENTATION",
   "phase_status": "IN_PROGRESS",
   "started_at": "2026-07-30T19:04:07+08:00",
-  "last_updated_at": "2026-08-04T05:00:00+08:00",
+  "last_updated_at": "2026-08-04T06:21:06+08:00",
   "source_commits": {
     "governance": "8b01bb8988c9180392ac2b06a39e2541fc98b260",
-    "data_plane": "c02926397563940feeba54b1efbe8d62e406e0e8",
+    "data_plane": "569dd5506e0030dec9d942846aee50aa92113fd5",
     "public_integrations": "6ed4dadd4693129d3daca0a9a29964a4f7f864e9"
   },
   "deployment_releases": {
@@ -50,7 +50,8 @@
     "D29_COMMERCIAL_DELIVERY_DOCUMENTATION_FOUNDATION_COMPLETE",
     "D29_SALES_MATERIALS_COMPLETE_INTERNAL_DRAFTS",
     "D29_MULTI_AGENT_SESSION_THRESHOLDS_PASS_WITH_PREDEPLOYMENT_LIMITATIONS",
-    "D29_PRIVATE_SECURITY_EVALUATION_KIT_READY_TO_INVITE"
+    "D29_PRIVATE_SECURITY_EVALUATION_KIT_READY_TO_INVITE",
+    "D29_DURABLE_EVIDENCE_READ_PROJECTION_REFERENCE_COMPLETE"
   ],
   "gate_descriptions": {
     "STAGE_5_8_SOURCE_IDENTITY_VERIFIED": "The canonical source commit was confirmed; Stage 5.8 did not pass.",
@@ -84,7 +85,8 @@
     "D29_COMMERCIAL_DELIVERY_DOCUMENTATION_FOUNDATION_COMPLETE": "Four offering drafts, an unpriced RMB cost model, seventeen legal drafts, support, design-partner, onboarding, exit and China business-readiness documents exist. They create no price, contract, outreach, customer access, payment, deployment or commercial availability.",
     "D29_SALES_MATERIALS_COMPLETE_INTERNAL_DRAFTS": "All twelve required D29 sales artifacts exist as internal drafts. They are not authorized to send and create no quote, offer, contract or customer fact.",
     "D29_MULTI_AGENT_SESSION_THRESHOLDS_PASS_WITH_PREDEPLOYMENT_LIMITATIONS": "Ten valid sessions across four providers, five model families and three sanitized entry surfaces passed the D29 threshold after retaining and remediating two invalid responses. Live public commercial discovery still returns 404 and customer adoption remains unproven.",
-    "D29_PRIVATE_SECURITY_EVALUATION_KIT_READY_TO_INVITE": "A public-safe private evaluation kit references architecture and threat boundaries, synthetic vectors, deployment, limitations and rollback. No evaluator is assigned or contacted and no security PASS exists."
+    "D29_PRIVATE_SECURITY_EVALUATION_KIT_READY_TO_INVITE": "A public-safe private evaluation kit references architecture and threat boundaries, synthetic vectors, deployment, limitations and rollback. No evaluator is assigned or contacted and no security PASS exists.",
+    "D29_DURABLE_EVIDENCE_READ_PROJECTION_REFERENCE_COMPLETE": "Gateway main 569dd5506e0030dec9d942846aee50aa92113fd5 adds Tenant/Workspace/Agent-bound Receipt reads and durable Audit/Health projections. PostgreSQL Audit is a scoped incomplete subset with audit_chain_complete=false, Health Audit remains PARTIAL, and no deployment or offering is created."
   },
   "blocked_gates": [
     "CR01_LEDGER_INTEGRITY_FAILED_RETAINED",

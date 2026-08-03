@@ -17,9 +17,10 @@ TITMAS 已形成四产品、四 Offering 草案、商业网站源码、私有平
 
 - 产品表面：Gate、Receipt、Audit、Health；Observer 不是第五产品。
 - 首个付费候选：Monitor Pilot；当前 `ENFORCEMENT_EFFECT=NONE`，尚不可售。
-- 私有平台：`joy7758/titmas-sandbox-gateway` main `c02926397563940feeba54b1efbe8d62e406e0e8`。
+- 私有平台：`joy7758/titmas-sandbox-gateway` main `569dd5506e0030dec9d942846aee50aa92113fd5`。
 - 当前公网技术候选返回 HTTP 200，但运行发布仍为 `efdfc844...`，并明确 `commercial_technical_ready=false`、`security_tests_pass=false`、`agent_e2e_ready=false`。
 - D29 商业网站源码已合并；实时商业 JSON 与路由仍为 404，未部署状态已保留。
+- PR #51 已把 Tenant/Workspace/Agent 绑定的 Receipt read 与持久 Audit/Health 读投影合并到私有平台；三项 CI 通过。PostgreSQL Audit 只承诺带缺口披露的 Tenant subset，`audit_chain_complete=false`，所以 Health Audit 仍为 `PARTIAL`，Health Snapshot 仍不可售。
 
 ## Security
 
