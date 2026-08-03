@@ -92,6 +92,8 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/TITMAS/conformance/tests/test_commercial_c01_entry.py",
         "digital-biosphere-architecture/TITMAS/conformance/tests/test_d29_current_implementation_projection.py",
         "digital-biosphere-architecture/TITMAS/conformance/tests/test_fdo_pvs0_cockpit_projection.py",
+        "digital-biosphere-architecture/TITMAS/private-stage5-protocol-surface/protocol-surface-manifest.json",
+        "digital-biosphere-architecture/TITMAS/private-stage5-protocol-surface/standard-catalog.json",
         "digital-biosphere-architecture/TITMAS/specifications/registry.yaml",
         "digital-biosphere-architecture/agent-index.json",
         "digital-biosphere-architecture/architecture/ADR-041-low-friction-entry-and-progressive-value.md",
