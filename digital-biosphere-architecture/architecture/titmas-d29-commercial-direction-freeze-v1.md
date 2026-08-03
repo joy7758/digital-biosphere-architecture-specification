@@ -205,12 +205,24 @@ SECOND_VERIFICATION_AUTHORITY_CREATED=false
 TITMAS_DIRECTION_CHECK_RESULT=PASS
 ```
 
-This D29 integration is architecture only:
+At the C-01 freeze, this D29 integration was architecture only. A later,
+separately authorized bounded implementation sequence is now source-pinned to
+private Gateway canonical
+`main@c02926397563940feeba54b1efbe8d62e406e0e8`. The architecture freeze and
+its non-effects are not rewritten; current implementation facts are projected
+through
+[`d29-reference-implementation.json`](../commercial/discovery/d29-reference-implementation.json).
 
 ```text
-CONSOLE_IMPLEMENTED=false
+CONSOLE_IMPLEMENTED_REFERENCE=true
+CONSOLE_DEPLOYED=false
 WEBSITE_IMPLEMENTED=false
-OBSERVER_RUNTIME_IMPLEMENTED=false
+OBSERVER_RUNTIME_IMPLEMENTED_REFERENCE=true
+OBSERVER_RUNTIME_DEPLOYED=false
+SOFTWARE_DELIVERY_PROOF=TESTED_SYNTHETIC_ONLY_NOT_DEPLOYED
+COMMERCIAL_OFFERING_AVAILABLE=false
+PAID_MONITOR_PILOT_AVAILABLE=false
+CUSTOMER_SPECIFIC_ENFORCE_AUTHORIZED=false
 PUBLIC_LAUNCH_AUTHORIZED=false
 COMMERCIAL_CUSTOMER_CREATED=false
 TITMAS_DRIFT_CHECK_RESULT=PASS_WITH_RECORDED_LIMITATIONS

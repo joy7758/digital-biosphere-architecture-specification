@@ -26,6 +26,8 @@ aliases. No fourth community name is created.
   [`../commercial/entry/first-value-contract.schema.json`](../commercial/entry/first-value-contract.schema.json)
 - Customer Entry Check:
   [`../commercial/entry/customer-entry-check.json`](../commercial/entry/customer-entry-check.json)
+- Current D29 reference implementation projection:
+  [`../commercial/discovery/d29-reference-implementation.json`](../commercial/discovery/d29-reference-implementation.json)
 - D19 bounded discovery and evolution entry:
   [`agent-native/evolution/README.md`](agent-native/evolution/README.md)
 - D19 architecture amendment:
@@ -245,6 +247,23 @@ COMMERCIAL_TECHNICAL_READY=false
 PAID_BETA_READY=false
 PRODUCTION_READY=false
 MATURE_COMMERCIAL_INFRASTRUCTURE=false
+```
+
+The source-pinned D29 projection now records the private Gateway reference at
+`main@c02926397563940feeba54b1efbe8d62e406e0e8`. PostgreSQL application
+wiring, the zero-customer-data synthetic Observer/FirstValue route, read-only
+Console projections and the software-delivery Monitor/Enforce proof exist as
+bounded reference implementations. They are not deployed offerings. The
+Monitor/Enforce proof is synthetic and non-binding; no real customer
+authorization, provider action, customer data, payment or production claim is
+created.
+
+```text
+D29_REFERENCE_IMPLEMENTATION_SOURCE_PINNED=true
+D29_REFERENCE_IMPLEMENTATION_DEPLOYED=false
+COMMERCIAL_OFFERING_AVAILABLE=false
+PAID_MONITOR_PILOT_AVAILABLE=false
+CUSTOMER_SPECIFIC_ENFORCE_AUTHORIZED=false
 ```
 
 D04 is permanently closed after three retained canary failures. PR #36 remains

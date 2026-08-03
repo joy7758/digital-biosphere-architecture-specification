@@ -660,3 +660,44 @@ Canonical records are
 [`TITMAS Commercial Constitution v1.0`](docs/commercial/TITMAS_COMMERCIAL_CONSTITUTION_v1.0.md)
 and the machine
 [`Customer Entry Check`](commercial/entry/customer-entry-check.json).
+
+## 18. D29 Customer Entry Reference Implementation Overlay
+
+Observed on 2026-08-03 from the private Gateway canonical `main` after CE-1
+through CE-5 were merged and clean-clone validation completed:
+
+```text
+D29_IMPLEMENTATION_SOURCE_REPOSITORY=joy7758/titmas-sandbox-gateway
+D29_IMPLEMENTATION_SOURCE_BRANCH=main
+D29_IMPLEMENTATION_SOURCE_REVISION=c02926397563940feeba54b1efbe8d62e406e0e8
+D29_IMPLEMENTATION_SOURCE_STATUS=MERGED_ON_CANONICAL_MAIN
+D29_POSTGRES_APPLICATION_WIRING=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
+D29_SYNTHETIC_OBSERVER_FIRST_VALUE=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
+D29_AGENT_OVERVIEW_CONSOLE=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
+D29_CONSOLE_CORE_PAGES=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
+D29_SOFTWARE_DELIVERY_PROOF=TESTED_SYNTHETIC_ONLY_NOT_DEPLOYED
+D29_CLEAN_CLONE=PASS
+D29_SOURCE_FULL_TESTS=358
+D29_SOURCE_EXPECTED_ENVIRONMENT_GATED_SKIPS=3
+D29_REFERENCE_IMPLEMENTATION_DEPLOYED=false
+COMMERCIAL_OFFERING_AVAILABLE=false
+PAID_MONITOR_PILOT_AVAILABLE=false
+CUSTOMER_SPECIFIC_ENFORCE_AUTHORIZED=false
+COMMERCIAL_PRIVATE_PILOT_READY=false
+PRODUCTION_READY=false
+CUSTOMERS_VERIFIED=0
+```
+
+The exact source evidence is projected through
+[`d29-reference-implementation.json`](commercial/discovery/d29-reference-implementation.json).
+DBA does not copy the child implementation or become its status owner. The
+synthetic FirstValue measurement and Monitor/Enforce proof apply only to their
+local in-process reference contexts. They are not an SLO, real customer
+authorization, external action, deployment, commercial offering, legal result
+or production evidence.
+
+D04 remains `CLOSED_FAILED_RETAINED`, P0-10 Agent-first acceptance remains
+false, and the existing commercial readiness, legal, security, business,
+deployment, pricing, support and external-validation gates remain separate.
+This overlay corrects a stale `NOT_ASSESSED` implementation projection; it does
+not rewrite the architecture-only C-01 freeze or any prior failure.

@@ -98,7 +98,7 @@ MAPPING_NE_INTEGRATION=true
 | surface | portfolio role | source | state |
 |---|---|---|---|
 | Commercial governance | DBA responsibility extension | `commercial-program-state.json`, ADR-036, ADR-037, ADR-038 | `D04_CLOSED_FAILED_RETAINED_FINAL_FORM_DECISION_PENDING` |
-| Commercial data/control modules | private Gateway bounded extension | `joy7758/titmas-sandbox-gateway@c319001…` | `IMPLEMENTED_CANDIDATE_CR01_BLOCKED` |
+| Commercial data/control modules | private Gateway bounded extension | `joy7758/titmas-sandbox-gateway@c02926397563940feeba54b1efbe8d62e406e0e8` | `D29_CE1_CE5_REFERENCE_IMPLEMENTED_NOT_DEPLOYED_CR01_AND_READINESS_BLOCKERS_RETAINED` |
 | Public-safe SDK and adapters | existing integrations repository | `joy7758/titmas-integrations@6ed4dad…` | `PASS_WITH_LIMITATIONS_PACKAGES_UNPUBLISHED` |
 | Commercial control-plane repository | optional candidate | none | `NOT_CREATED_NOT_CURRENTLY_JUSTIFIED` |
 
