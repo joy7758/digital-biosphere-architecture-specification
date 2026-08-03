@@ -37,7 +37,8 @@ type SiteSection =
   | "constitution"
   | "status"
   | "community"
-  | "commercial";
+  | "commercial"
+  | "gbz185";
 
 export function Header({ locale, section = "home" }: { locale: Locale; section?: SiteSection }) {
   const c = content[locale];
@@ -65,13 +66,14 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
     status: ["/en/status/", "/status/"],
     community: ["/en/community/", "/community/"],
     commercial: ["/en/commercial-evaluation/", "/commercial-evaluation/"],
+    gbz185: ["/en/standards/gbz-185/", "/standards/gbz-185/"],
   };
   const language = locale === "zh" ? languageRoutes[section][0] : languageRoutes[section][1];
 
   const nav = (
     <>
       <a href={community} aria-current={section === "community" ? "page" : undefined}>{c.nav.developers}</a>
-      <a href={research} aria-current={section === "research" || section === "researchIndex" ? "page" : undefined}>
+      <a href={research} aria-current={section === "research" || section === "researchIndex" || section === "gbz185" ? "page" : undefined}>
         {locale === "zh" ? "研究" : "Research"}
       </a>
       <a href={demos} aria-current={section === "demos" || section === "demo" || section === "medical" || section === "mediaDemo" ? "page" : undefined}>
@@ -132,6 +134,9 @@ export function Footer({ locale }: { locale: Locale }) {
             {locale === "zh" ? "商业评估" : "Commercial evaluation"}
           </a>
           <a href={locale === "zh" ? "/updates/" : "/en/updates/"}>{locale === "zh" ? "更新" : "Updates"}</a>
+          <a href={locale === "zh" ? "/standards/gbz-185/" : "/en/standards/gbz-185/"}>
+            {locale === "zh" ? "GB/Z 185 衔接" : "GB/Z 185 alignment"}
+          </a>
         </div>
         <div>
           <strong>{locale === "zh" ? "机器可读" : "Machine-readable"}</strong>
@@ -141,6 +146,7 @@ export function Footer({ locale }: { locale: Locale }) {
           <a href="/updates.json">updates.json</a>
           <a href="/titmas-community.json">titmas-community.json</a>
           <a href="/status.json">status.json</a>
+          <a href="/gbz-185-mapping.json">gbz-185-mapping.json</a>
         </div>
         <div>
           <strong>{locale === "zh" ? "治理" : "Governance"}</strong>

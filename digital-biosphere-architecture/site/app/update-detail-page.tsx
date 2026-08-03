@@ -1,7 +1,7 @@
 import { content, type Locale } from "./site-content";
 import {
   formatUpdateDate,
-  publishedUpdates,
+  visibleUpdates,
   updateCategoryLabels,
 } from "./update-content";
 import { Footer, Header } from "./site-shell";
@@ -31,7 +31,7 @@ const copy = {
 export function UpdateDetailPage({ locale, slug }: { locale: Locale; slug: string }) {
   const c = content[locale];
   const t = copy[locale];
-  const item = publishedUpdates.find((candidate) => candidate.slug === slug);
+  const item = visibleUpdates.find((candidate) => candidate.slug === slug);
   if (!item) return null;
   const updates = locale === "zh" ? "/updates/" : "/en/updates/";
 
@@ -44,7 +44,7 @@ export function UpdateDetailPage({ locale, slug }: { locale: Locale; slug: strin
         title={item.title[locale]}
         description={item.summary[locale]}
         type="Article"
-        datePublished={item.effective_date}
+        datePublished={item.status === "PUBLISHED" ? item.effective_date : undefined}
         dateModified={item.effective_date}
       />
       <main id="main-content">

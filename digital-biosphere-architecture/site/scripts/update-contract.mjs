@@ -34,8 +34,12 @@ export function validateUpdatesCatalog(catalog) {
     seen.add(item.slug);
     if (!categories.has(item.category)) throw new Error(`INVALID_UPDATE_CATEGORY:${item.slug}`);
     if (!commitPattern.test(item.source_commit || "")) throw new Error(`INVALID_SOURCE_COMMIT:${item.slug}`);
-    if (!["PUBLISHED", "SUPERSEDED", "WITHDRAWN"].includes(item.status)) {
+    if (!["PUBLISHED", "READY_FOR_RELEASE", "SUPERSEDED", "WITHDRAWN"].includes(item.status)) {
       throw new Error(`INVALID_UPDATE_STATUS:${item.slug}`);
+    }
+    if (item.status === "READY_FOR_RELEASE") {
+      if (item.publication_authorized !== false) throw new Error(`READY_UPDATE_MUST_NOT_BE_AUTHORIZED:${item.slug}`);
+      if (item.publicly_deployed !== false) throw new Error(`READY_UPDATE_MUST_NOT_BE_DEPLOYED:${item.slug}`);
     }
     if (!Array.isArray(item.audience) || item.audience.length === 0) {
       throw new Error(`UPDATE_AUDIENCE_REQUIRED:${item.slug}`);

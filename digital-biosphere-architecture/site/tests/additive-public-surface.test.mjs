@@ -36,6 +36,10 @@ const restoredRoutes = [
   "/en/digital-cell",
   "/commercial-evaluation",
   "/en/commercial-evaluation",
+  "/standards/gbz-185",
+  "/en/standards/gbz-185",
+  "/updates/gbz-185-alignment-v0-1",
+  "/en/updates/gbz-185-alignment-v0-1",
 ];
 
 async function render(pathname) {

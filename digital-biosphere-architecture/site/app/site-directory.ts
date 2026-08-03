@@ -15,6 +15,24 @@ type DirectoryItem = {
 export const directoryItems: Record<PublicDirectory, DirectoryItem[]> = {
   research: [
     {
+      id: "gbz-185-alignment",
+      type: "STANDARD_ALIGNMENT_RESEARCH",
+      status: "MAPPING_IMPLEMENTED_LOCAL_VALIDATED",
+      title: {
+        zh: "GB/Z 185 智能体互联衔接",
+        en: "GB/Z 185 Agent Interconnection Alignment",
+      },
+      description: {
+        zh: "映射 GB/Z 185.1—185.7 与正在起草的第8部分，明确 TITMAS 的采用、扩展、不重复建设和非符合性边界。",
+        en: "Maps GB/Z 185.1–185.7 and the drafting Part 8, clarifying TITMAS adoption, extension, non-duplication, and non-conformance boundaries.",
+      },
+      href: {
+        zh: "/standards/gbz-185/",
+        en: "/en/standards/gbz-185/",
+      },
+      metadata: ["GUIDANCE_DOCUMENT", "MAPPING_ONLY", "CONFORMANCE_ASSESSED=false", "OFFICIAL_AFFILIATION=false"],
+    },
+    {
       id: "digital-biosphere",
       type: "RESEARCH_FOUNDATION",
       status: "PUBLISHED_ARCHITECTURE_BASELINE",

@@ -23,6 +23,10 @@ const requiredFiles = [
   "en/updates/index.html",
   "updates/constitution/index.html",
   "en/updates/constitution/index.html",
+  "standards/gbz-185/index.html",
+  "en/standards/gbz-185/index.html",
+  "updates/gbz-185-alignment-v0-1/index.html",
+  "en/updates/gbz-185-alignment-v0-1/index.html",
   "industries/index.html",
   "en/industries/index.html",
   "industry/media-evidence/index.html",
@@ -47,6 +51,8 @@ const requiredFiles = [
   "site-catalog.json",
   "media-evidence-profile.json",
   "media-evidence-reproduction.md",
+  "gbz-185-mapping.json",
+  "schemas/gbz-185-mapping.schema.json",
   "titmas-community.json",
   "updates.json",
   "status.json",
@@ -84,6 +90,15 @@ const [zh, en, zhStatus, enStatus, status, agentCustomerPackage, dbosPackage, re
 ]);
 const agentIndex = await readFile(join(outputRoot, "agent-index.json"), "utf8").then(JSON.parse);
 const llms = await readFile(join(outputRoot, "llms.txt"), "utf8");
+const [zhGbz185, enGbz185, mapping, mappingSchema, siteCatalog, canonicalMapping, canonicalSchema] = await Promise.all([
+  readFile(join(outputRoot, "standards/gbz-185/index.html"), "utf8"),
+  readFile(join(outputRoot, "en/standards/gbz-185/index.html"), "utf8"),
+  readFile(join(outputRoot, "gbz-185-mapping.json"), "utf8").then(JSON.parse),
+  readFile(join(outputRoot, "schemas/gbz-185-mapping.schema.json"), "utf8").then(JSON.parse),
+  readFile(join(outputRoot, "site-catalog.json"), "utf8").then(JSON.parse),
+  readFile(join(siteRoot, "..", "TITMAS", "research", "gbz-185-alignment", "gbz-185-titmas-mapping-v0.1.json"), "utf8").then(JSON.parse),
+  readFile(join(siteRoot, "..", "TITMAS", "research", "gbz-185-alignment", "gbz-185-titmas-mapping-v0.1.schema.json"), "utf8").then(JSON.parse),
+]);
 const releaseContext = resolveReleaseContext(process.env, {
   status,
   agentIndex,
@@ -131,6 +146,45 @@ assert.match(zh, /1,661 条历史 Receipt 中有 2 条签名无法验证/);
 assert.match(en, /2 of 1,661 historical Receipt signatures remain unverifiable/);
 assert.match(zh, /TITMAS Digital Cell Demo/);
 assert.match(en, /Medical Evidence Infrastructure/);
+assert.match(zh, /GB\/Z 185 定义智能体如何互联/);
+assert.match(en, /GB\/Z 185 defines how agents interconnect/);
+assert.match(zhGbz185, /GBZ_185_CONFORMANCE_ASSESSED=false/);
+assert.match(enGbz185, /GBZ_185_CONFORMANCE_ASSESSED=false/);
+assert.match(zhGbz185, /OFFICIAL_AFFILIATION=false/);
+assert.match(enGbz185, /OFFICIAL_AFFILIATION=false/);
+assert.match(zhGbz185, /href="\/en\/standards\/gbz-185\//);
+assert.match(enGbz185, /href="\/standards\/gbz-185\//);
+assert.match(zhGbz185, /"isBasedOn"/);
+assert.equal(mapping.parts.length, 8);
+assert.deepEqual(mapping.parts.map((part) => part.part), [1, 2, 3, 4, 5, 6, 7, 8]);
+assert.equal(mapping.parts[7].official_status, "DRAFTING");
+assert.deepEqual(mappingSchema.not, { required: ["source_revision"] });
+assert.equal(Object.hasOwn(mapping, "source_revision"), false);
+assert.equal(mapping.source_baseline_revision, "269ab5899047503557f957ba0f7abbd61d8b18d3");
+assert.match(mapping.source_baseline_revision, /^[0-9a-f]{40}$/);
+assert.equal(mapping.artifact_revision_source, "/release.json#/source_revision");
+assert.equal(mapping.mapping_status, "MAPPING_IMPLEMENTED_LOCAL_VALIDATED");
+assert.equal(mapping.publication_status.local_implementation_validated, true);
+assert.equal(mapping.publication_status.ready_for_publication, true);
+assert.equal(mapping.publication_status.publication_authorized, false);
+assert.equal(mapping.publication_status.publicly_deployed, false);
+assert.equal(mapping.publication_status.public_launch_authorized, false);
+assert.equal(mapping.non_claims.gbz_185_conformance_assessed, false);
+assert.equal(mapping.non_claims.gbz_185_official_affiliation, false);
+assert.equal(mapping.non_claims.conformance_assessed, false);
+assert.equal(mapping.non_claims.official_affiliation, false);
+assert.equal(mapping.non_claims.adoption_claimed, false);
+assert.equal(agentIndex.entrypoints.gbz_185_alignment_zh, "/standards/gbz-185/");
+assert.equal(agentIndex.entrypoints.gbz_185_alignment_en, "/en/standards/gbz-185/");
+assert.equal(agentIndex.entrypoints.gbz_185_mapping, "/gbz-185-mapping.json");
+assert.equal(agentIndex.standards_alignment.gbz_185.conformance_assessed, false);
+assert.equal(agentIndex.standards_alignment.gbz_185.official_affiliation, false);
+assert.equal(agentIndex.standards_alignment.gbz_185.adoption_claimed, false);
+assert.equal(siteCatalog.public_surfaces.standards_alignment.status, "MAPPING_IMPLEMENTED_LOCAL_VALIDATED");
+assert.ok(siteCatalog.release_candidates.research.some((item) => item.id === "gbz-185-alignment"));
+assert.equal(siteCatalog.published_items.research.some((item) => item.id === "gbz-185-alignment"), false);
+assert.deepEqual({ ...mapping, $schema: undefined }, { ...canonicalMapping, $schema: undefined });
+assert.deepEqual(mappingSchema, canonicalSchema);
 assert.match(zh, /PRODUCTION_READY=false/);
 assert.match(en, /PRODUCTION_READY=false/);
 assert.doesNotMatch(zh, /codex-preview|Your site is taking shape/);
@@ -187,6 +241,10 @@ assert.equal(status.gates.TITMAS_ADOPTION_VALIDATION_READY, false);
 assert.equal(status.gates.TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE, true);
 assert.equal(status.gates.TITMAS_PILOT_EXECUTION_AUTHORIZED, false);
 assert.equal(status.gates.COMPLETE_VERTICAL_SLICE_EXECUTED, false);
+assert.equal(status.gates.LOCAL_IMPLEMENTATION_VALIDATED, true);
+assert.equal(status.gates.GBZ_185_MAPPING_READY_FOR_PUBLICATION, true);
+assert.equal(status.gates.GBZ_185_MAPPING_PUBLICLY_DEPLOYED, false);
+assert.equal(status.gates.PUBLIC_LAUNCH_AUTHORIZED, false);
 assert.equal(status.current_stage, "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM");
 assert.equal(status.e01_status, "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION");
 assert.equal(status.e01_participant_access_authorized, true);
@@ -215,7 +273,7 @@ assert.equal(release.release_decision_reference, releaseContext.releaseDecisionR
 assert.equal(release.released_by_ref, releaseContext.releasedByRef);
 assert.equal(release.public_release_tag, releaseContext.publicReleaseTag);
 assert.equal(release.dbos_public_package_url, releaseContext.dbosWheelUrl);
-assert.equal(release.routes.length, 38);
+assert.equal(release.routes.length, 42);
 assert.ok(manifest.files.length >= 80);
 assert.equal(manifest.source_revision, release.source_revision);
 

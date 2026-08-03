@@ -1,7 +1,7 @@
 import { content, type Locale } from "./site-content";
 import {
   formatUpdateDate,
-  publishedUpdates,
+  visibleUpdates,
   updateCategoryLabels,
 } from "./update-content";
 import { Footer, Header } from "./site-shell";
@@ -75,7 +75,7 @@ export function UpdatesPage({ locale }: { locale: Locale }) {
               <h2>{t.latest}</h2>
             </div>
             <div className="updates-list">
-              {publishedUpdates.map((item) => (
+              {visibleUpdates.map((item) => (
                 <a href={item.href[locale]} key={item.slug}>
                   <time dateTime={item.effective_date}>{formatUpdateDate(locale, item.effective_date)}</time>
                   <div>

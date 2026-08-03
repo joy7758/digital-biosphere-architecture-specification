@@ -1,0 +1,224 @@
+{
+  "$schema": "gbz-185-titmas-mapping-v0.1.schema.json",
+  "schema_version": "0.1.0",
+  "mapping_id": "TITMAS-GBZ-185-ALIGNMENT-v0.1",
+  "title_zh": "GB/Z 185《人工智能 智能体互联》与 TITMAS 衔接面 v0.1",
+  "title_en": "GB/Z 185 Artificial Intelligence — Agent Interconnection and TITMAS Alignment Surface v0.1",
+  "observed_at": "2026-08-01T19:37:04+08:00",
+  "source_baseline_revision": "269ab5899047503557f957ba0f7abbd61d8b18d3",
+  "artifact_revision_source": "/release.json#/source_revision",
+  "mapping_status": "MAPPING_IMPLEMENTED_LOCAL_VALIDATED",
+  "publication_status": {
+    "local_implementation_validated": true,
+    "ready_for_publication": true,
+    "publication_authorized": false,
+    "publicly_deployed": false,
+    "public_launch_authorized": false,
+    "update_status": "READY_FOR_RELEASE"
+  },
+  "standard_family": {
+    "id": "GB/Z 185",
+    "title_zh": "人工智能 智能体互联",
+    "title_en": "Artificial intelligence — Agent interconnection",
+    "document_type": "NATIONAL_STANDARDIZATION_GUIDANCE_TECHNICAL_DOCUMENT",
+    "parts_1_to_7_status": "CURRENT",
+    "parts_1_to_7_publication_date": "2026-05-22",
+    "part_8_status": "DRAFTING"
+  },
+  "official_sources": [
+    {
+      "id": "SAMR_GBZ_185_1",
+      "role": "OFFICIAL_STANDARD_RECORD_AND_FAMILY_ENTRY",
+      "url": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=CFF03D872963466AC7F03ED0E28B6702"
+    },
+    {
+      "id": "SAMR_GBZ_185_8_PROJECT",
+      "role": "OFFICIAL_PART_8_REGISTRATION_RECORD",
+      "url": "https://std.samr.gov.cn/gb/search/gbDetailed?id=574304045D075760E06397BE0A0AD7F5"
+    },
+    {
+      "id": "AIP_PUB_ACPS_COMMUNITY",
+      "role": "ACPS_REFERENCE_IMPLEMENTATION_AND_PUBLIC_PART_SUMMARIES",
+      "url": "https://github.com/AIP-PUB/ACPs-community"
+    }
+  ],
+  "parts": [
+    {
+      "part": 1,
+      "standard_id": "GB/Z 185.1-2026",
+      "title_zh": "人工智能 智能体互联 第1部分：总体架构",
+      "title_en": "Artificial intelligence — Agent interconnection — Part 1: General architecture",
+      "official_status": "CURRENT",
+      "standard_role": "Defines the conceptual and functional architecture for agent interconnection.",
+      "titmas_relationship": "UPPER_LAYER_TRUST_EXTENSION_MAPPING",
+      "titmas_assets": ["EEOAP", "ARO", "Agent Evidence", "Receipt structures"],
+      "mapping_confidence": "HIGH_FOR_PUBLIC_FACTS_MEDIUM_FOR_TITMAS_MAPPING",
+      "implementation_status": "MAPPING_ONLY",
+      "conformance_assessed": false,
+      "limitations": ["TITMAS does not replace the GB/Z 185 general architecture."],
+      "source": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=CFF03D872963466AC7F03ED0E28B6702"
+    },
+    {
+      "part": 2,
+      "standard_id": "GB/Z 185.2-2026",
+      "title_zh": "人工智能 智能体互联 第2部分：身份码",
+      "title_en": "Artificial intelligence — Agent interconnection — Part 2: Identity code",
+      "official_status": "CURRENT",
+      "standard_role": "Defines agent identity-code use and recommends code structure and allocation principles.",
+      "titmas_relationship": "EXTERNAL_IDENTIFIER_REFERENCE",
+      "titmas_assets": ["External identity references in Evidence Objects", "External identity references in Receipts"],
+      "mapping_confidence": "HIGH_FOR_PUBLIC_FACTS_MEDIUM_FOR_TITMAS_MAPPING",
+      "implementation_status": "MAPPING_ONLY",
+      "conformance_assessed": false,
+      "limitations": ["An identity-code reference does not create permission, activation, or trust."],
+      "source": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=11B33B7532093ED660305B2BF4940A12"
+    },
+    {
+      "part": 3,
+      "standard_id": "GB/Z 185.3-2026",
+      "title_zh": "人工智能 智能体互联 第3部分：身份管理",
+      "title_en": "Artificial intelligence — Agent interconnection — Part 3: Identity management",
+      "official_status": "CURRENT",
+      "standard_role": "Defines the identity-management framework, lifecycle process, and technical requirements.",
+      "titmas_relationship": "LIFECYCLE_AND_EVIDENCE_BOUNDARY_MAPPING",
+      "titmas_assets": ["Lifecycle event references", "Authorization references", "Evidence references"],
+      "mapping_confidence": "HIGH_FOR_PUBLIC_FACTS_MEDIUM_FOR_TITMAS_MAPPING",
+      "implementation_status": "MAPPING_ONLY",
+      "conformance_assessed": false,
+      "limitations": ["TITMAS is not a certificate authority, registration authority, or national identity-management authority."],
+      "source": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=BFCCE65447B30927953D90059AB89E23"
+    },
+    {
+      "part": 4,
+      "standard_id": "GB/Z 185.4-2026",
+      "title_zh": "人工智能 智能体互联 第4部分：智能体描述",
+      "title_en": "Artificial intelligence — Agent interconnection — Part 4: Agent description",
+      "official_status": "CURRENT",
+      "standard_role": "Defines agent-description methods and reference processes for registration, change, and publication.",
+      "titmas_relationship": "DESCRIPTION_EXTENSION_CANDIDATE",
+      "titmas_assets": ["Evidence-capability descriptors", "Authorization-boundary descriptors", "Verification and audit descriptors"],
+      "mapping_confidence": "HIGH_FOR_PUBLIC_FACTS_MEDIUM_FOR_TITMAS_MAPPING",
+      "implementation_status": "DESIGN_CANDIDATE",
+      "conformance_assessed": false,
+      "limitations": ["The extension candidate does not replace the standard description format and has not been validated against Part 4."],
+      "source": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=348CD9F4C2C07D1BE6902D94A7CA5DC5"
+    },
+    {
+      "part": 5,
+      "standard_id": "GB/Z 185.5-2026",
+      "title_zh": "人工智能 智能体互联 第5部分：智能体发现",
+      "title_en": "Artificial intelligence — Agent interconnection — Part 5: Agent discovery",
+      "official_status": "CURRENT",
+      "standard_role": "Defines a reference discovery process for agent interconnection.",
+      "titmas_relationship": "DISCOVERY_RESULT_CONSUMER_EXTENSION",
+      "titmas_assets": ["Future tiamas-scout discovery-result consumer", "Risk and evidence-requirement matching concepts"],
+      "mapping_confidence": "HIGH_FOR_PUBLIC_FACTS_MEDIUM_FOR_TITMAS_MAPPING",
+      "implementation_status": "NOT_IMPLEMENTED",
+      "conformance_assessed": false,
+      "limitations": ["ACPs or another compatible discovery service remains responsible for discovery; TITMAS does not create a competing discovery protocol."],
+      "source": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=D668764F4B1AAFCC4E731E9D7C2597F2"
+    },
+    {
+      "part": 6,
+      "standard_id": "GB/Z 185.6-2026",
+      "title_zh": "人工智能 智能体互联 第6部分：智能体交互",
+      "title_en": "Artificial intelligence — Agent interconnection — Part 6: Agent interaction",
+      "official_status": "CURRENT",
+      "standard_role": "Defines interaction modes, basic interaction elements, and interfaces for large-scale agent interconnection.",
+      "titmas_relationship": "PASSIVE_INTERACTION_EVIDENCE_CAPTURE",
+      "titmas_assets": ["Execution-record structures", "Authorization references", "Integrity metadata"],
+      "mapping_confidence": "HIGH_FOR_PUBLIC_FACTS_MEDIUM_FOR_TITMAS_MAPPING",
+      "implementation_status": "NOT_IMPLEMENTED",
+      "conformance_assessed": false,
+      "limitations": ["The proposed passive adapter must not change interaction semantics, write back, or authorize an interaction."],
+      "source": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=52231E3A8CED414AD7604D7B70C63198"
+    },
+    {
+      "part": 7,
+      "standard_id": "GB/Z 185.7-2026",
+      "title_zh": "人工智能 智能体互联 第7部分：智能体工具调用",
+      "title_en": "Artificial intelligence — Agent interconnection — Part 7: Agent tool invocation",
+      "official_status": "CURRENT",
+      "standard_role": "Defines a standardized architecture, process, and tool description for model-based agent tool invocation.",
+      "titmas_relationship": "TOOL_INVOCATION_EVIDENCE_EXTENSION",
+      "titmas_assets": ["Tool invocation records", "Parameters and result records", "Authorization references", "Integrity verification"],
+      "mapping_confidence": "HIGH_FOR_PUBLIC_FACTS_MEDIUM_FOR_TITMAS_MAPPING",
+      "implementation_status": "PARTIAL_ASSET_EXISTS_NO_GBZ_VALIDATION",
+      "conformance_assessed": false,
+      "limitations": ["Existing assets can express tool evidence but have not been formally mapped or validated against Part 7."],
+      "source": "https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=BD79A8E88A70EBAEAC179367A0F8778E"
+    },
+    {
+      "part": 8,
+      "standard_id": "20264195-Z-469",
+      "title_zh": "人工智能 智能体互联 第8部分：智能体审计",
+      "title_en": "Artificial intelligence — Agent interconnection — Part 8: Agent audit",
+      "official_status": "DRAFTING",
+      "standard_role": "Registered guidance-technical-document project for agent audit.",
+      "titmas_relationship": "HIGH_RELEVANCE_AUDIT_RESEARCH_MAPPING",
+      "titmas_assets": ["TITMAS", "EEOAP", "ARO", "Agent Evidence"],
+      "mapping_confidence": "HIGH_FOR_REGISTRATION_FACTS_LOW_TO_MEDIUM_FOR_DRAFT_ALIGNMENT",
+      "implementation_status": "RESEARCH_ASSETS_EXIST_NO_STANDARD_CONFORMANCE",
+      "conformance_assessed": false,
+      "limitations": ["Relevance does not mean contribution or adoption; no material has been submitted and no official review has been received."],
+      "source": "https://std.samr.gov.cn/gb/search/gbDetailed?id=574304045D075760E06397BE0A0AD7F5"
+    }
+  ],
+  "titmas_role": {
+    "layer": "TRUSTED_EXECUTION_AUTHORIZATION_EVIDENCE_VERIFICATION_AND_AUDIT_RESEARCH_EXTENSION",
+    "statement_zh": "GB/Z 185 规定智能体如何识别、描述、发现、交互和调用工具；TITMAS 研究这些行为如何被授权、记录、转换为证据、验证和审计。",
+    "statement_en": "GB/Z 185 defines how agents are identified, described, discovered, interact, and invoke tools; TITMAS researches how those behaviors are authorized, recorded, converted into evidence, verified, and audited."
+  },
+  "current_assets": [
+    "Execution record and Receipt structures",
+    "Evidence Object",
+    "Authorization references",
+    "Tool invocation records",
+    "Integrity verification",
+    "Positive and negative validation concepts",
+    "EEOAP, ARO, and Agent Evidence research assets"
+  ],
+  "implementation_status": {
+    "acps_adapter_implemented": false,
+    "gbz_185_vertical_slice_executed": false,
+    "gbz_185_conformance_cases_executed": 0,
+    "part8_contribution_submitted": false,
+    "official_review_received": false,
+    "standard_adoption_established": false
+  },
+  "non_claims": {
+    "titmas_replaces_gbz_185": false,
+    "gbz_185_conformance_assessed": false,
+    "conformance_assessed": false,
+    "gbz_185_certification_claim": false,
+    "gbz_185_official_affiliation": false,
+    "official_affiliation": false,
+    "gbz_185_adoption_claim": false,
+    "adoption_claimed": false,
+    "part8_contribution_submitted": false,
+    "acps_adapter_implemented": false,
+    "production_ready": false
+  },
+  "next_validation_slice": {
+    "status": "DEFINED_NOT_EXECUTED",
+    "steps": [
+      "ACPs leader agent",
+      "ACPs discovery and interaction",
+      "ACPs partner agent",
+      "Synthetic tool invocation",
+      "Passive TITMAS adapter",
+      "EEOAP execution evidence",
+      "Independent verification"
+    ],
+    "scenarios": [
+      { "id": "AUTHORIZED_CALL", "title_zh": "正常授权调用", "status": "DEFINED_NOT_EXECUTED" },
+      { "id": "MISSING_AUTHORIZATION", "title_zh": "缺失授权", "status": "DEFINED_NOT_EXECUTED" },
+      { "id": "IDENTITY_REFERENCE_MISMATCH", "title_zh": "身份引用不一致", "status": "DEFINED_NOT_EXECUTED" },
+      { "id": "TOOL_ARGUMENT_TAMPER", "title_zh": "工具参数被修改", "status": "DEFINED_NOT_EXECUTED" },
+      { "id": "RESULT_SUBSTITUTION", "title_zh": "调用结果被替换", "status": "DEFINED_NOT_EXECUTED" },
+      { "id": "MISSING_INTERACTION_EVENT", "title_zh": "交互事件缺失", "status": "DEFINED_NOT_EXECUTED" },
+      { "id": "TEMPORAL_ORDER_ANOMALY", "title_zh": "时间顺序异常", "status": "DEFINED_NOT_EXECUTED" },
+      { "id": "UNVERIFIABLE_EVIDENCE_CHAIN", "title_zh": "证据链无法验证", "status": "DEFINED_NOT_EXECUTED" }
+    ]
+  }
+}

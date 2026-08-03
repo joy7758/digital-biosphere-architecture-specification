@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/gbz-185-mapping.schema.json",
+  "title": "GB/Z 185 and TITMAS alignment mapping v0.1",
+  "type": "object",
+  "not": { "required": ["source_revision"] },
+  "required": [
+    "schema_version",
+    "mapping_id",
+    "title_zh",
+    "title_en",
+    "observed_at",
+    "source_baseline_revision",
+    "artifact_revision_source",
+    "mapping_status",
+    "publication_status",
+    "standard_family",
+    "official_sources",
+    "parts",
+    "titmas_role",
+    "current_assets",
+    "implementation_status",
+    "non_claims",
+    "next_validation_slice"
+  ],
+  "properties": {
+    "$schema": { "type": "string" },
+    "schema_version": { "const": "0.1.0" },
+    "mapping_id": { "const": "TITMAS-GBZ-185-ALIGNMENT-v0.1" },
+    "title_zh": { "type": "string", "minLength": 1 },
+    "title_en": { "type": "string", "minLength": 1 },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "source_baseline_revision": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "artifact_revision_source": { "const": "/release.json#/source_revision" },
+    "mapping_status": { "const": "MAPPING_IMPLEMENTED_LOCAL_VALIDATED" },
+    "publication_status": {
+      "type": "object",
+      "required": ["local_implementation_validated", "ready_for_publication", "publication_authorized", "publicly_deployed", "public_launch_authorized", "update_status"],
+      "properties": {
+        "local_implementation_validated": { "const": true },
+        "ready_for_publication": { "const": true },
+        "publication_authorized": { "const": false },
+        "publicly_deployed": { "const": false },
+        "public_launch_authorized": { "const": false },
+        "update_status": { "const": "READY_FOR_RELEASE" }
+      },
+      "additionalProperties": false
+    },
+    "standard_family": {
+      "type": "object",
+      "required": ["id", "title_zh", "title_en", "document_type", "parts_1_to_7_status", "parts_1_to_7_publication_date", "part_8_status"]
+    },
+    "official_sources": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["id", "role", "url"],
+        "properties": {
+          "id": { "type": "string" },
+          "role": { "type": "string" },
+          "url": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "parts": {
+      "type": "array",
+      "minItems": 8,
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "required": [
+          "part",
+          "standard_id",
+          "title_zh",
+          "title_en",
+          "official_status",
+          "standard_role",
+          "titmas_relationship",
+          "titmas_assets",
+          "mapping_confidence",
+          "implementation_status",
+          "conformance_assessed",
+          "limitations",
+          "source"
+        ],
+        "properties": {
+          "part": { "type": "integer", "minimum": 1, "maximum": 8 },
+          "standard_id": { "type": "string" },
+          "title_zh": { "type": "string" },
+          "title_en": { "type": "string" },
+          "official_status": { "enum": ["CURRENT", "DRAFTING"] },
+          "standard_role": { "type": "string" },
+          "titmas_relationship": { "type": "string" },
+          "titmas_assets": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "mapping_confidence": { "type": "string" },
+          "implementation_status": { "type": "string" },
+          "conformance_assessed": { "const": false },
+          "limitations": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+          "source": { "type": "string", "format": "uri" }
+        }
+      }
+    },
+    "titmas_role": {
+      "type": "object",
+      "required": ["layer", "statement_zh", "statement_en"]
+    },
+    "current_assets": { "type": "array", "minItems": 1, "items": { "type": "string" } },
+    "implementation_status": {
+      "type": "object",
+      "required": ["acps_adapter_implemented", "gbz_185_vertical_slice_executed", "gbz_185_conformance_cases_executed", "part8_contribution_submitted", "official_review_received", "standard_adoption_established"],
+      "properties": {
+        "acps_adapter_implemented": { "const": false },
+        "gbz_185_vertical_slice_executed": { "const": false },
+        "gbz_185_conformance_cases_executed": { "const": 0 },
+        "part8_contribution_submitted": { "const": false },
+        "official_review_received": { "const": false },
+        "standard_adoption_established": { "const": false }
+      }
+    },
+    "non_claims": {
+      "type": "object",
+      "required": ["titmas_replaces_gbz_185", "gbz_185_conformance_assessed", "conformance_assessed", "gbz_185_certification_claim", "gbz_185_official_affiliation", "official_affiliation", "gbz_185_adoption_claim", "adoption_claimed", "part8_contribution_submitted", "acps_adapter_implemented", "production_ready"],
+      "additionalProperties": { "const": false }
+    },
+    "next_validation_slice": {
+      "type": "object",
+      "required": ["status", "steps", "scenarios"],
+      "properties": {
+        "status": { "const": "DEFINED_NOT_EXECUTED" },
+        "steps": { "type": "array", "minItems": 7, "items": { "type": "string" } },
+        "scenarios": {
+          "type": "array",
+          "minItems": 8,
+          "items": {
+            "type": "object",
+            "required": ["id", "title_zh", "status"],
+            "properties": { "status": { "const": "DEFINED_NOT_EXECUTED" } }
+          }
+        }
+      }
+    }
+  }
+}
