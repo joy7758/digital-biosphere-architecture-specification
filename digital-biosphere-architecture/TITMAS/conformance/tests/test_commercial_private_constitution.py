@@ -23,11 +23,42 @@ class CommercialPrivateConstitutionTests(unittest.TestCase):
 
     def test_agent_entry_uses_current_commercial_identity(self):
         index = load_json("agent-index.json")
-        self.assertEqual("3.0.0", index["format_version"])
+        self.assertEqual("3.1.0", index["format_version"])
         self.assertEqual("TITMAS Commercial Agent Infrastructure", index["canonical_program_name"])
         self.assertEqual("COMMERCIAL_PRIVATE_AGENT_INFRASTRUCTURE", index["product_category"])
         self.assertNotIn("canonical_community_name", index)
         self.assertEqual("NONE", index["historical_community_identity"]["current_authority_effect"])
+
+    def test_historical_community_paths_are_not_active_entry_commands(self):
+        index = load_json("agent-index.json")
+        active_commands = index["commands"]
+        active_surfaces = index["machine_surfaces"]
+        archive = index["historical_community_archive"]
+
+        self.assertFalse(any("community_cli.py" in command for command in active_commands.values()))
+        self.assertNotIn("community_status", active_surfaces)
+        self.assertNotIn("contribution_activation_package", active_surfaces)
+        self.assertEqual("NONE", archive["current_authority_effect"])
+        self.assertFalse(archive["invocation_authorized"])
+        self.assertFalse(archive["customer_entry"])
+        self.assertIn("community_status", archive["surfaces"])
+        self.assertTrue(any("community_cli.py" in command for command in archive["commands"].values()))
+
+    def test_human_start_here_separates_historical_contribution_links(self):
+        readme = (ROOT / "TITMAS/README.md").read_text(encoding="utf-8")
+        active_entry, historical_archive = readme.split("## Historical archive — not an active entry", maxsplit=1)
+        self.assertNotIn("FIRST_CONTRIBUTION.md", active_entry)
+        self.assertNotIn("community/CONTRIBUTING.md", active_entry)
+        self.assertNotIn("github-activation-templates", active_entry)
+        self.assertIn("HISTORICAL_COMMUNITY_INVOCATION_AUTHORIZED=false", historical_archive)
+
+    def test_llms_entry_uses_current_commercial_route(self):
+        llms = (ROOT / "llms.txt").read_text(encoding="utf-8")
+        self.assertIn("TITMAS is commercial, private-core infrastructure", llms)
+        self.assertIn("Current commercial machine status: ./COMMERCIAL-READINESS-MACHINE-STATUS.json", llms)
+        self.assertIn("D29 status: IN_PROGRESS_BLOCKED", llms)
+        self.assertNotIn("Agent community CLI:", llms)
+        self.assertNotIn("TITMAS is the Agent-Native Standards Community", llms)
 
     def test_public_surface_does_not_imply_open_core_or_community(self):
         constitution = (ROOT / "architecture/commercial-private-infrastructure-strategy-constitution.md").read_text(encoding="utf-8")

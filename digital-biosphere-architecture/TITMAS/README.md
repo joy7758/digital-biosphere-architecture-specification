@@ -40,11 +40,7 @@ historical names only. They do not describe the current strategy.
   [`../TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md`](../TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md)
 - Owner-wide open PR classification:
   [`../open-pr-classification.json`](../open-pr-classification.json)
-- Historical community status: [`community/community-status.json`](community/community-status.json)
 - Human quick start: [`QUICKSTART.md`](QUICKSTART.md)
-- First contribution: [`FIRST_CONTRIBUTION.md`](FIRST_CONTRIBUTION.md)
-- Contribution policy: [`community/CONTRIBUTING.md`](community/CONTRIBUTING.md)
-- GitHub activation package: [`community/github-activation-templates/README.md`](community/github-activation-templates/README.md)
 - Specification registry: [`specifications/registry.yaml`](specifications/registry.yaml)
 - Conformance: [`conformance/README.md`](conformance/README.md)
 - Reference implementation boundary: [`reference/README.md`](reference/README.md)
@@ -95,6 +91,24 @@ historical names only. They do not describe the current strategy.
 - Final-form P0/P1/P2 backlog:
   [`../TITMAS-FINAL-FORM-IMPLEMENTATION-BACKLOG-v1.0.json`](../TITMAS-FINAL-FORM-IMPLEMENTATION-BACKLOG-v1.0.json)
 
+## Historical archive — not an active entry
+
+The following records preserve the former community and public-contribution
+route. They are not current onboarding, contribution, customer-access or
+execution paths. Their current authority effect is `NONE`, and invoking them as
+a current route is not authorized.
+
+- Historical community status: [`community/community-status.json`](community/community-status.json)
+- Historical first-contribution guide: [`FIRST_CONTRIBUTION.md`](FIRST_CONTRIBUTION.md)
+- Historical contribution policy: [`community/CONTRIBUTING.md`](community/CONTRIBUTING.md)
+- Historical GitHub activation package: [`community/github-activation-templates/README.md`](community/github-activation-templates/README.md)
+
+```text
+HISTORICAL_COMMUNITY_ARCHIVE_VISIBLE=true
+HISTORICAL_COMMUNITY_CURRENT_AUTHORITY_EFFECT=NONE
+HISTORICAL_COMMUNITY_INVOCATION_AUTHORIZED=false
+```
+
 ## Local validation
 
 From `digital-biosphere-architecture/`:
@@ -120,7 +134,8 @@ Authorization, Adoption, Certification, Release or production readiness.
 ## Current state
 
 ```text
-COMMUNITY_STATUS=PRIVATE_COMMERCIALIZATION_BOUNDARY
+CURRENT_STRATEGY_STATUS=COMMERCIAL_PRIVATE_INFRASTRUCTURE
+HISTORICAL_COMMUNITY_STATUS=SUPERSEDED_HISTORICAL_IDENTITY
 CORE_REPOSITORY_VISIBILITY=PRIVATE
 PRIVATE_CORE_IS_CANONICAL=true
 CODE_OF_CONDUCT_HISTORICAL_ADOPTION_RETAINED=true
@@ -135,8 +150,8 @@ PUBLIC_CONTRIBUTION_TEMPLATES_INSTALLED=true
 PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
 PUBLIC_LAUNCH_AUTHORIZED=false
 PUBLIC_LAUNCH_MODE=PRIVATE_COMMERCIALIZATION_BOUNDARY
-OPEN_STANDARDS_COMMUNITY_INFRASTRUCTURE_DEVELOPED=true
-OPEN_STANDARDS_COMMUNITY_OPERATION_ACTIVE=false
+HISTORICAL_OPEN_STANDARDS_COMMUNITY_INFRASTRUCTURE_DEVELOPED=true
+HISTORICAL_OPEN_STANDARDS_COMMUNITY_OPERATION_ACTIVE=false
 PRIVATE_AGENT_CUSTOMER_READINESS_ACTIVE=true
 PRIVATE_STAGE5_CONTRIBUTION_INFRASTRUCTURE_READY=true
 PRIVATE_STAGE5_PROGRAMMATIC_PILOT_PASS=true

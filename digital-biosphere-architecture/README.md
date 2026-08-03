@@ -179,17 +179,20 @@ NEXT_HUMAN_DECISION=AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_M
 ```
 
 统一人类入口是 [`TITMAS/README.md`](TITMAS/README.md)，统一智能体入口是
-[`agent-index.json`](agent-index.json)，统一机器状态投影是
-[`TITMAS/community/community-status.json`](TITMAS/community/community-status.json)。
+[`agent-index.json`](agent-index.json)，当前商业机器状态入口是
+[`commercial/discovery/status.json`](commercial/discovery/status.json)。历史社区状态仅保留在
+[`TITMAS/community/community-status.json`](TITMAS/community/community-status.json)，不再是
+当前统一状态投影。
 Ecology Box、Operational Calibration 和 Candidate Grounding 只作为支持性验证；
 Calibration v0.3 继续冻结。
 
 ```text
-COMMUNITY_STATUS=PRIVATE_COMMERCIALIZATION_BOUNDARY
+CURRENT_STRATEGY_STATUS=COMMERCIAL_PRIVATE_INFRASTRUCTURE
+HISTORICAL_COMMUNITY_STATUS=SUPERSEDED_HISTORICAL_IDENTITY
 CORE_REPOSITORY_VISIBILITY=PRIVATE
 PRIVATE_CORE_IS_CANONICAL=true
-OPEN_STANDARDS_COMMUNITY_INFRASTRUCTURE_DEVELOPED=true
-OPEN_STANDARDS_COMMUNITY_OPERATION_ACTIVE=false
+HISTORICAL_OPEN_STANDARDS_COMMUNITY_INFRASTRUCTURE_DEVELOPED=true
+HISTORICAL_OPEN_STANDARDS_COMMUNITY_OPERATION_ACTIVE=false
 CALIBRATION_SUBTRACK_FROZEN=true
 TITMAS_CANONICAL_MAIN_INTEGRATION_COMPLETE=true
 SECURITY_TRANSPORT_ACTIVE=false

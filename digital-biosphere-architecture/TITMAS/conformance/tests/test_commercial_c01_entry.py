@@ -113,6 +113,7 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/TITMAS/conformance/tests/test_d29_commercial_delivery_foundation.py",
         "digital-biosphere-architecture/TITMAS/conformance/tests/test_d29_commercial_readiness_evidence.py",
         "digital-biosphere-architecture/agent-index.json",
+        "digital-biosphere-architecture/llms.txt",
         "digital-biosphere-architecture/architecture/ADR-041-low-friction-entry-and-progressive-value.md",
         "digital-biosphere-architecture/architecture/ADR-042-commercial-private-infrastructure-direction.md",
         "digital-biosphere-architecture/architecture/commercial-private-infrastructure-strategy-constitution.md",

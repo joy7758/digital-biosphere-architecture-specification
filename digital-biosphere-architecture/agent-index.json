@@ -1,6 +1,6 @@
 {
   "$schema": "TITMAS/agent-native/schemas/agent-index.schema.json",
-  "format_version": "3.0.0",
+  "format_version": "3.1.0",
   "canonical_agent_entry": true,
   "canonical_program_name": "TITMAS Commercial Agent Infrastructure",
   "canonical_program_name_zh": "TITMAS 商业智能体基础设施",
@@ -46,26 +46,17 @@
   "source": {
     "repository": "joy7758/digital-biosphere-architecture-specification",
     "base_branch": "main",
-    "base_revision": "9f8bde9921795f2e981d042ef375e63c26b377fb",
-    "candidate_branch": "codex/commercial-private-constitution-v1",
+    "base_revision": "7808b9d20fb09a3223a3e4c26c2d70061b179a9a",
+    "candidate_branch": "codex/commercial-constitution-entry-cleanup-v1",
     "decision_reference": "TITMAS-COMMERCIAL-PRIVATE-INFRASTRUCTURE-DIRECTION-D30"
   },
   "machine_surfaces": {
     "current_strategy_constitution": "architecture/commercial-private-infrastructure-strategy-constitution.md",
     "current_strategy_decision": "architecture/ADR-042-commercial-private-infrastructure-direction.md",
-    "community_status": "TITMAS/community/community-status.json",
-    "community_manifest": "TITMAS/agent-native/community-manifest.json",
     "current_state": "TITMAS/agent-native/current-state.json",
     "claims": "TITMAS/agent-native/claims.json",
-    "participants": "TITMAS/agent-native/participants/participant-registry.json",
-    "authorities": "TITMAS/agent-native/participants/authority-registry.json",
-    "tasks": "TITMAS/agent-native/tasks/task-registry.json",
-    "review_protocol": "TITMAS/agent-native/reviews/review-protocol.json",
     "specifications": "TITMAS/specifications/registry.yaml",
     "conformance_report": "TITMAS/conformance/reports/latest.json",
-    "contribution_grounding": "TITMAS/conformance/grounding/candidate_preflight.py",
-    "welcome_issue_projection": "TITMAS/community/welcome-issue-43-entry-projection.json",
-    "contribution_activation_package": "TITMAS/community/github-activation-templates/activation-manifest.json",
     "source_classification_registry": "TITMAS/private-governance/source-classification-registry.json",
     "public_exposure_inventory": "TITMAS/private-governance/public-exposure-inventory.json",
     "private_customer_evaluation_bundle": "TITMAS/private-customer-evaluation/README.md",
@@ -165,11 +156,30 @@
   "commands": {
     "conformance": "python3 TITMAS/conformance/harness.py",
     "tests": "python3 -m unittest discover -s TITMAS/conformance/tests -v",
-    "discover_tasks": "python3 TITMAS/agent-native/community_cli.py discover --need NEED",
-    "rank_tasks": "python3 TITMAS/agent-native/community_cli.py rank --need NEED",
-    "eligibility": "python3 TITMAS/agent-native/community_cli.py eligibility --participant PARTICIPANT_REF --task TASK_ID --at ISO8601",
-    "recommendation_calibration": "python3 TITMAS/agent-native/community_cli.py calibrate-recommendation --case REC-FIT",
     "refresh_titmac_scout_cockpit": "python3 cockpit/read_only_status_adapter.py --project-id titmac-scout --output cockpit/projections/titmac-scout.json"
+  },
+  "historical_community_archive": {
+    "status": "SUPERSEDED_HISTORICAL_ARCHIVE",
+    "current_authority_effect": "NONE",
+    "invocation_authorized": false,
+    "customer_entry": false,
+    "surfaces": {
+      "community_status": "TITMAS/community/community-status.json",
+      "community_manifest": "TITMAS/agent-native/community-manifest.json",
+      "participants": "TITMAS/agent-native/participants/participant-registry.json",
+      "authorities": "TITMAS/agent-native/participants/authority-registry.json",
+      "tasks": "TITMAS/agent-native/tasks/task-registry.json",
+      "review_protocol": "TITMAS/agent-native/reviews/review-protocol.json",
+      "contribution_grounding": "TITMAS/conformance/grounding/candidate_preflight.py",
+      "welcome_issue_projection": "TITMAS/community/welcome-issue-43-entry-projection.json",
+      "contribution_activation_package": "TITMAS/community/github-activation-templates/activation-manifest.json"
+    },
+    "commands": {
+      "discover_tasks": "python3 TITMAS/agent-native/community_cli.py discover --need NEED",
+      "rank_tasks": "python3 TITMAS/agent-native/community_cli.py rank --need NEED",
+      "eligibility": "python3 TITMAS/agent-native/community_cli.py eligibility --participant PARTICIPANT_REF --task TASK_ID --at ISO8601",
+      "recommendation_calibration": "python3 TITMAS/agent-native/community_cli.py calibrate-recommendation --case REC-FIT"
+    }
   },
   "authority_boundaries": [
     "AGENT_PARTICIPATION_NE_AUTHORITY",

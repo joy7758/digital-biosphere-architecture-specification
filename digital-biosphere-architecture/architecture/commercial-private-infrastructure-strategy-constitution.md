@@ -110,6 +110,22 @@ DISCOVERY_NE_ACCESS=true
 合成 Demo、FirstValue measurement、Monitor proof 或 machine validation 只能证明其
 精确测试范围，不得写成客户采用、商业可售、SLA、生产就绪或外部价值已证实。
 
+## 5A. Current Entry Projection Rule
+
+当前 Human `Start here`、Agent `commands`、机器 discovery 和商业客户入口只能展示
+当前商业路径。历史 community、contributor、activation、trial 或 Open Core 工件可以
+保留可发现，但必须位于显式 historical archive（历史档案）中，并同时满足：
+
+```text
+HISTORICAL_ENTRY_CURRENT_AUTHORITY_EFFECT=NONE
+HISTORICAL_ENTRY_INVOCATION_AUTHORIZED=false
+HISTORICAL_ENTRY_NE_CUSTOMER_ROUTE=true
+```
+
+历史命令不得继续作为当前可执行建议；历史贡献入口不得与 Observer、Monitor、Gate、
+Receipt、Audit、Health 或商业 access request 并列。该规则不删除历史材料，也不改变其
+既有 Git、Release、License 或审计事实。
+
 ## 6. Agent-First, Not Agent Authority
 
 所有当前和未来公共或私有入口都必须优先提供 machine-readable contract、明确失败语义、
@@ -194,6 +210,7 @@ PUBLIC_SDK_NE_PUBLIC_COMMUNITY=true
 COMMUNITY_IDENTITY_IS_HISTORICAL=true
 PUBLIC_CONTRIBUTION_ROUTE_ACTIVE=false
 COMMUNITY_ESTABLISHED=false
+HISTORICAL_ENTRY_INVOCATION_AUTHORIZED=false
 AGENT_FIRST=true
 AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
 OBSERVER_NE_PRODUCT=true

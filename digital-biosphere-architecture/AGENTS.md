@@ -180,4 +180,7 @@ AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
 - Program Roadmap、Priority 或 Gate 变化不自动修改架构规则；
 - Architecture Change 不自动批准子项目实施；
 - Public Interoperability Surface（公共互操作表面）不表示核心开源、公共贡献、社区建立或免费服务；
+- 历史 community、contributor、activation 与 trial 材料不得出现在当前 `Start here`、
+  当前 Agent `commands` 或商业客户入口中；如需保留可发现性，必须置于显式
+  `historical archive`，并标记 `current_authority_effect=NONE`、`invocation_authorized=false`；
 - Specification、Test、Demo、Validator Pass、Listing 或 Local Artifact 不证明 Implementation、Deployment、Adoption、Certification 或 Commercial Availability。
