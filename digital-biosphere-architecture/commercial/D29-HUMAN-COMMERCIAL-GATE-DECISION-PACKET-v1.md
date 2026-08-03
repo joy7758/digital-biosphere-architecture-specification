@@ -77,7 +77,7 @@ Owner 选择或拒绝 Pilot 价格。结构化价格选项不是报价。
 需由中国执业律师审查合同包和适用性矩阵。特别覆盖主体、数据、跨境、电子签名、密码、
 ICP/VATS、生成式 AI、责任限制、知识产权、终止和争议条款。当前文档不是法律意见。
 
-### HG-05 — Critical and High security disposition
+### HG-05 — Blocker and High security disposition
 
 Human Owner 必须在不重开 D04 的前提下选择：
 
@@ -85,7 +85,8 @@ Human Owner 必须在不重开 D04 的前提下选择：
 2. 单独授权 clean-genesis 候选和独立安全评价；或
 3. 提出新的有界修复决策。
 
-High finding 数量仍为 `NOT_ASSESSED`，不能被空值解释为零。
+当前已完成 20 项控制映射，明确保留 1 个 Blocker 与 6 个 High findings。
+闸门结果为 `FAIL_CLOSED`；完成盘点不等于修复、独立安全评价或商业放行。
 
 ### HG-06 — Commercial route deployment
 
