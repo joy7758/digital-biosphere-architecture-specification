@@ -12,6 +12,11 @@
 - Onboarding: [`onboarding/CUSTOMER-ONBOARDING-RUNBOOK.md`](onboarding/CUSTOMER-ONBOARDING-RUNBOOK.md)
 - Support: [`support/PILOT-SUPPORT-POLICY.md`](support/PILOT-SUPPORT-POLICY.md)
 - Agent-customer review: [`reviews/D29-AGENT-CUSTOMER-RECOMMENDATION-REVIEW-v0.1.json`](reviews/D29-AGENT-CUSTOMER-RECOMMENDATION-REVIEW-v0.1.json)
+- Sales drafts: [`sales/README.md`](sales/README.md)
+- Multi-Agent validation: [`validation/d29-multi-agent-v1/README.md`](validation/d29-multi-agent-v1/README.md)
+- Commercial readiness: [`../COMMERCIAL-READINESS-MACHINE-STATUS.json`](../COMMERCIAL-READINESS-MACHINE-STATUS.json)
+- Security evaluation kit: [`security-evaluation/README.md`](security-evaluation/README.md)
+- Human commercial gate packet: [`D29-HUMAN-COMMERCIAL-GATE-DECISION-PACKET-v1.md`](D29-HUMAN-COMMERCIAL-GATE-DECISION-PACKET-v1.md)
 
 ## Current truth
 

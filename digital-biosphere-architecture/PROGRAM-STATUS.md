@@ -729,3 +729,70 @@ IMPLEMENTATION_AUTHORIZED_BY_D30=false
 RELEASE_AUTHORIZED_BY_D30=false
 DEPLOYMENT_AUTHORIZED_BY_D30=false
 ```
+
+## 20. FDO DTR Migration and PVS-0 Auxiliary Line
+
+Observed from the Human Owner sync on 2026-08-04 and bounded public references:
+
+```text
+PORTFOLIO_ROLE=PUBLIC_EVIDENCE_AUXILIARY_LINE
+FDO_MIGRATION_LINE_STATUS=WAITING_FOR_GWDG_RESPONSE
+PVS0_STATUS=PUBLIC_ARCHIVED_MAINTENANCE_MODE
+PROFILE_CANDIDATE_COUNT=2
+NON_NORMATIVE_DEMO_ASSET_COUNT=3
+NEW_RUNTIME_CREATED=false
+NEW_CONTROL_AUTHORITY_CREATED=false
+V1_STANDARD_AUTHORIZED=false
+PUBLIC_ADOPTION_PROVEN=false
+```
+
+The two `FdoProfile` records remain standardization candidates under protected
+owner evolution. The two `BasicInfoType` records and one `FdoService` record
+remain non-normative demonstration or history assets with their original type
+and provenance. GitHub commit `1dcca69d...`, Zenodo record DOI
+`10.5281/zenodo.21778954`, concept DOI `10.5281/zenodo.21778953` and the five
+PIDs form a bounded public verification chain; they do not establish a formal
+standard, certification, production Runtime or adoption.
+
+Canonical cockpit records are
+[`titmas-fdo-dtr-pvs0-auxiliary-line-status-v0.1.md`](architecture/titmas-fdo-dtr-pvs0-auxiliary-line-status-v0.1.md)
+and
+[`titmas-fdo-dtr-pvs0-assets-v0.1.json`](architecture/titmas-fdo-dtr-pvs0-assets-v0.1.json).
+The only next actions are GWDG account binding, migration preview and
+classification acceptance. Feature expansion is frozen.
+
+## 21. D29 Commercial Readiness Evidence
+
+The D29 documentation, sales and external multi-model validation package is
+complete at its bounded predeployment scope. The commercial program remains
+blocked:
+
+```text
+D29_STATUS=IN_PROGRESS_BLOCKED
+D29_SALES_MATERIALS_PRESENT=12
+D29_MULTI_AGENT_API_SESSIONS=12
+D29_MULTI_AGENT_VALID_SESSIONS=10
+D29_MULTI_AGENT_VALID_PROVIDERS=4
+D29_MULTI_AGENT_VALID_MODEL_FAMILIES=5
+D29_MULTI_AGENT_VALID_ENTRY_SURFACES=3
+D29_MULTI_AGENT_VALIDATION=PASS_WITH_LIMITATIONS_PREDEPLOYMENT
+D29_LIVE_PUBLIC_COMMERCIAL_DISCOVERY=FAIL_404_RETAINED
+COMMERCIAL_MODEL_COMPLETE=false
+COMMERCIAL_PRIVATE_PILOT_READY=false
+PAID_MONITOR_PILOT_AVAILABLE=false
+PRODUCTION_READY=false
+CUSTOMERS_VERIFIED=0
+```
+
+The one Critical blocker is the retained CR-01 restore integrity failure:
+1,659 of 1,661 historical synthetic Receipt signatures verified, while two
+cannot be verified because their random public keys were not retained. D04
+remains closed failed-retained and is not reopened by D29. Human decisions are
+still required for business and invoice evidence, support and security owners,
+cost and pricing, Chinese counsel, Critical/High security disposition, website
+deployment and a customer-specific Monitor SOW.
+
+Machine and Human entries are
+[`COMMERCIAL-READINESS-MACHINE-STATUS.json`](COMMERCIAL-READINESS-MACHINE-STATUS.json),
+[`COMMERCIAL-READINESS-REPORT-v1.md`](COMMERCIAL-READINESS-REPORT-v1.md) and
+[`D29-HUMAN-COMMERCIAL-GATE-DECISION-PACKET-v1.md`](commercial/D29-HUMAN-COMMERCIAL-GATE-DECISION-PACKET-v1.md).

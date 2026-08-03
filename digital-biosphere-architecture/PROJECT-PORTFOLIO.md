@@ -101,6 +101,7 @@ MAPPING_NE_INTEGRATION=true
 | Commercial data/control modules | private Gateway bounded extension | `joy7758/titmas-sandbox-gateway@c02926397563940feeba54b1efbe8d62e406e0e8` | `D29_CE1_CE5_REFERENCE_IMPLEMENTED_NOT_DEPLOYED_CR01_AND_READINESS_BLOCKERS_RETAINED` |
 | Public-safe SDK and adapters | existing integrations repository | `joy7758/titmas-integrations@6ed4dad…` | `PASS_WITH_LIMITATIONS_PACKAGES_UNPUBLISHED` |
 | Commercial control-plane repository | optional candidate | none | `NOT_CREATED_NOT_CURRENTLY_JUSTIFIED` |
+| FDO DTR migration and PVS-0 | public evidence auxiliary line | `joy7758/titmas-fdo-public-verification@1dcca69…`, Zenodo `10.5281/zenodo.21778954`, five PIDs | `PUBLIC_ARCHIVED_MAINTENANCE_MODE_WAITING_FOR_GWDG_RESPONSE` |
 
 No portfolio Owner, repository visibility or canonical implementation truth is
 changed by this entry.
