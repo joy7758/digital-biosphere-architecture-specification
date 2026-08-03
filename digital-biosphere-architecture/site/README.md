@@ -92,8 +92,8 @@ Permission、合同、支付或部署。早期 Community 页面仅作为 `HISTOR
 
 本次候选实现与验证限制记录见
 [`docs/releases/d29-commercial-public-entry-candidate-v1.md`](docs/releases/d29-commercial-public-entry-candidate-v1.md)。
-生产依赖审计为 0 个漏洞；完整开发工具依赖审计仍有 4 个 High 和 3 个 Moderate
-传递依赖发现，因此商业入口候选不能仅凭页面测试通过升级为发布就绪或商业可用。
+生产依赖与完整开发工具依赖审计均为 0 个漏洞。审计结果是时间点证据，仍不能仅凭
+页面测试和依赖审计通过，把商业入口候选升级为部署授权或商业可用。
 
 ## Deployment boundary
 

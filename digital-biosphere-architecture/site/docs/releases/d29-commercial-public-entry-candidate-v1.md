@@ -75,35 +75,34 @@ advisory because the repository pinned `postcss` at `8.5.22`. The bounded
 remediation raised only that existing override to `8.5.25`, regenerated the
 lockfile, and retained the existing framework and architecture.
 
-The post-remediation results are:
+The final bounded remediation also updated compatible transitive releases of
+`brace-expansion`, `fast-uri`, and `undici`. The post-remediation results are:
 
 ```text
 NPM_AUDIT_OMIT_DEV=0_VULNERABILITIES
+NPM_AUDIT_FULL=0_VULNERABILITIES
 FULL_AUDIT_CRITICAL=0
-FULL_AUDIT_HIGH=4
-FULL_AUDIT_MODERATE=3
+FULL_AUDIT_HIGH=0
+FULL_AUDIT_MODERATE=0
 FULL_AUDIT_LOW=0
 ```
 
-The remaining findings are limited to transitive development-time build, lint,
-schema-validation, or local Cloudflare tooling paths (`ajv`, `fast-uri`,
-`brace-expansion`, `undici`). The website output is static, but this does not
-erase development supply-chain risk. Suggested automatic fixes include major or
-invalid version changes, so `npm audit fix --force` was not used.
+No framework major version, service architecture, or runtime behavior changed,
+and `npm audit fix --force` was not used. A future audit result remains
+time-specific evidence and must be rerun for any release candidate.
 
 Therefore:
 
 ```text
 PRODUCTION_DEPENDENCY_AUDIT_PASS=true
-FULL_DEVELOPMENT_DEPENDENCY_AUDIT_PASS=false
+FULL_DEVELOPMENT_DEPENDENCY_AUDIT_PASS=true
 PUBLIC_DEPLOYMENT_AUTHORIZED=false
 COMMERCIAL_OFFERING_AVAILABLE=false
 PRODUCTION_READY=false
 ```
 
-The remaining development-tool findings require a separate dependency refresh
-and regression review. Passing the production dependency audit does not by
-itself authorize deployment or commercial availability.
+Passing the dependency audit does not by itself authorize deployment or
+commercial availability.
 
 ## Non-effects
 
