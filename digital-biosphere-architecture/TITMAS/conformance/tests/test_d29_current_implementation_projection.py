@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-GATEWAY_REVISION = "f4b4bc62f24a4c5ae511c5b417a4e07846f68214"
+GATEWAY_REVISION = "8e4d9636ace647b8d6daacd77223900db6d862db"
 
 
 def load(relative: str):
@@ -81,19 +81,19 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
         gate = self.projection["security_engineering_gate"]
         self.assertEqual("FAIL_CLOSED", gate["status"])
         self.assertEqual(20, gate["control_count"])
-        self.assertEqual(11, gate["pass"])
-        self.assertEqual(4, gate["partial"])
+        self.assertEqual(13, gate["pass"])
+        self.assertEqual(2, gate["partial"])
         self.assertEqual(1, gate["fail_retained"])
         self.assertEqual(3, gate["not_assessed"])
         self.assertEqual(1, gate["not_applicable"])
         self.assertEqual(1, gate["blocker_findings_open"])
-        self.assertEqual(6, gate["high_findings_open"])
+        self.assertEqual(5, gate["high_findings_open"])
         self.assertEqual("NOT_RECOMMENDED", gate["agent_recommendation"])
         self.assertFalse(gate["independent_security_evaluation_executed"])
         self.assertFalse(gate["d04_reopened"])
         self.assertEqual("NONE", gate["commercial_effect"])
         self.assertEqual(
-            "FAIL_CLOSED_ONE_BLOCKER_SIX_HIGH",
+            "FAIL_CLOSED_ONE_BLOCKER_FIVE_HIGH",
             self.status["security_engineering_gate"],
         )
 
