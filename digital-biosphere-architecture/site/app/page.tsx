@@ -4,7 +4,7 @@ import { PortalPage } from "./portal-page";
 export const metadata: Metadata = {
   title: { absolute: "山西游骑兵电子商务有限公司" },
   description:
-    "围绕开放规范、适配器契约、符合性测试和参考实现边界建设可信多智能体基础设施。",
+    "TITMAS智能体行动控制与可验证执行平台。闭源私有核心，公开发现与合成证明。",
   alternates: {
     canonical: "/",
     languages: { "zh-CN": "/", en: "/en/" },

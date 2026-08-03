@@ -36,6 +36,32 @@ const restoredRoutes = [
   "/en/digital-cell",
   "/commercial-evaluation",
   "/en/commercial-evaluation",
+  "/products/gate",
+  "/en/products/gate",
+  "/products/receipt",
+  "/en/products/receipt",
+  "/products/audit",
+  "/en/products/audit",
+  "/products/health",
+  "/en/products/health",
+  "/design-partner",
+  "/en/design-partner",
+  "/private-evaluation",
+  "/en/private-evaluation",
+  "/monitor-pilot",
+  "/en/monitor-pilot",
+  "/enforce-pilot",
+  "/en/enforce-pilot",
+  "/request-access",
+  "/en/request-access",
+  "/security",
+  "/en/security",
+  "/trust-center",
+  "/en/trust-center",
+  "/privacy",
+  "/en/privacy",
+  "/terms",
+  "/en/terms",
 ];
 
 async function render(pathname) {
@@ -57,20 +83,21 @@ test("keeps all established bilingual surfaces reachable", async () => {
   }
 });
 
-test("keeps historical E01 while promoting the agent-native mainline", async () => {
-  const [homeResponse, statusResponse] = await Promise.all([render("/"), render("/status")]);
-  const [home, status] = await Promise.all([homeResponse.text(), statusResponse.text()]);
+test("keeps historical status surfaces while promoting the commercial mainline", async () => {
+  const [homeResponse, statusResponse, communityResponse] = await Promise.all([render("/"), render("/status"), render("/community")]);
+  const [home, status, community] = await Promise.all([homeResponse.text(), statusResponse.text(), communityResponse.text()]);
 
-  assert.match(home, /AGENT START HERE/);
+  assert.match(home, /人类与智能体双入口/);
   assert.match(home, /夏日之海/);
   assert.match(home, /\/titmas-logo\.png/);
   assert.doesNotMatch(home, /\/summersea-logo\.png/);
-  assert.match(home, /TITMAS Digital Cell Demo/);
-  assert.match(home, /E01 Human Compatibility Observation/);
-  assert.match(home, /Stage 5\.7 Agent-Native Selection/);
+  assert.match(home, /让 AI 智能体犯错时，也不能直接造成未经验证的后果/);
+  assert.match(home, /AVAILABLE OFFERINGS/);
   assert.match(status, /TITMAS 商业基础设施成熟度计划进行中/);
   assert.match(status, /Stage 5\.7 结果/);
   assert.match(status, /IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION/);
+  assert.match(community, /HISTORICAL_NON_CURRENT/);
+  assert.match(community, /社区从未建立/);
 });
 
 test("does not restore private-core or deprecated product routes", async () => {

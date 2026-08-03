@@ -29,28 +29,28 @@ export const repositoryBaselines = [
 
 export const gateRows = [
   {
-    id: "TITMAS_COMMUNITY_DIRECTION",
+    id: "TITMAS_COMMERCIAL_DIRECTION",
     state: "ADOPTED",
-    zh: "TITMAS 可信多智能体基础设施开发者社区已成为当前统一公开工作重心。",
-    en: "TITMAS Infrastructure Developer Community is the adopted focus of the public work.",
+    zh: "TITMAS 商业智能体基础设施已成为当前公开工作重心；私有核心保持闭源。",
+    en: "TITMAS Commercial Agent Infrastructure is the current public focus; the private core remains closed.",
   },
   {
-    id: "TITMAS_CONTRIBUTOR_ENTRY",
-    state: "PREPARED",
-    zh: "贡献流程、共同建设表面和机器可读入口已准备；这不是公共贡献授权。",
-    en: "Contribution workflows, shared work surfaces, and machine-readable entry points are prepared; this is not public-contribution authorization.",
+    id: "TITMAS_COMMERCIAL_MACHINE_ENTRY",
+    state: "CANDIDATE",
+    zh: "产品、解决方案、证明、Offering、部署和推荐机器目录已形成候选；尚未部署。",
+    en: "Product, solution, proof, offering, deployment, and recommendation machine catalogs are candidates and are not deployed.",
   },
   {
-    id: "TITMAS_PUBLIC_CONTRIBUTION_SURFACE",
-    state: "NOT_AUTHORIZED",
-    zh: "公开试用意向 Issue 已启用；公共贡献 Issue、Pull Request、SIG、Maintainer 招募和外部贡献渠道尚未授权。",
-    en: "A public trial-interest Issue is active; public contribution issues, pull requests, SIGs, maintainer recruitment, and external contribution channels are not authorized.",
+    id: "TITMAS_AVAILABLE_COMMERCIAL_OFFERINGS",
+    state: "0",
+    zh: "公开商业信息页不创建可用 Offering、客户、合同、Key、支付或部署。",
+    en: "Public commercial information pages create no available offering, customer, contract, key, payment, or deployment.",
   },
   {
     id: "TITMAS_DEVELOPER_COMMUNITY",
-    state: "NOT_ESTABLISHED",
-    zh: "社区方向已经采纳，但正式社区、Code of Conduct、安全接收路径和 Maintainer 尚未建立。",
-    en: "The community direction is adopted, but the operating community, Code of Conduct, security intake, and maintainers are not established.",
+    state: "HISTORICAL_NON_CURRENT",
+    zh: "早期社区设计仅作为历史资料保留；社区从未建立，也不是当前商业模式。",
+    en: "The earlier community design is historical material only; no community was established and it is not the current commercial model.",
   },
   {
     id: "DBA_CLEAN_CLONE_PASS",
@@ -200,11 +200,11 @@ export const content = {
       ["E01 Human Compatibility Observation", "LEGACY", "现有最小访问不延长；不再是项目门槛。"],
       ["Public Trial Interest Intake", "OPEN", "公开接收非保密、非约束性试用意向。"],
     ],
-    communityTitle: "共同建设 Agent 时代的可信基础设施",
+    communityTitle: "历史开发者社区设计资料",
     communityLead:
-      "TITMAS 不是普通 Agent 讨论群。它面向人类开发者和受治理智能体，共同维护跨框架可复用、可测试、可追溯的基础设施规则。",
+      "该内容保留 TITMAS 早期开发者社区设计，供历史追溯；它不是当前商业入口，也不表示开放贡献、开放核心或已经建立社区。",
     communityPromise:
-      "You build agents. TITMAS helps them collaborate through understandable, implementable, and verifiable infrastructure rules.",
+      "HISTORICAL_NON_CURRENT · Current direction: closed private core with public discovery and bounded proof.",
     communitySurfaces: [
       ["Specification", "开放规范", "定义 Identity、Capability、Execution、Evidence、Verification 与 Evaluation 的共享语义。", "PREPARED"],
       ["Semantic Mapping", "语义映射", "把 AGT、OpenTelemetry、LangChain、CrewAI、MCP 等外部表面映射到版本化边界。", "CANDIDATE"],
@@ -213,12 +213,12 @@ export const content = {
       ["Documentation", "文档与本地化", "让开发者和智能体快速发现、理解、引用和复用当前真实能力。", "PUBLIC"],
       ["Reference Boundary", "参考实现边界", "说明规范如何被可替换地实现，而不制造唯一 Runtime 权威。", "NOT AUTHORIZED"],
     ],
-    communityStateTitle: "准备建设，不虚构已经成立",
+    communityStateTitle: "保留历史，不恢复社区路线",
     communityStateLead:
-      "方向、入口和工作表面已经明确；正式运营状态必须等待可验证的公共渠道、行为规范、安全路径、角色和真实贡献。",
+      "早期入口和工作表面仅作为历史材料保存；当前产品、试点、信任中心和人工访问审查构成商业入口。",
     communityStates: [
-      ["DIRECTION", "ADOPTED", "TITMAS 开发者社区是当前统一公开工作重心。"],
-      ["CONTRIBUTOR ENTRY", "PREPARED", "贡献流程和机器入口已准备，但尚未公开启用。"],
+      ["DIRECTION", "HISTORICAL", "开发者社区方向已被闭源商业核心与公开发现路线取代。"],
+      ["CONTRIBUTOR ENTRY", "NON-CURRENT", "早期贡献流程不构成当前产品或客户入口。"],
       ["PUBLIC CONTRIBUTION", "NOT AUTHORIZED", "试用意向表已开放，但没有公共贡献 Issue、PR、SIG 或招募权限。"],
       ["COMMUNITY", "NOT ESTABLISHED", "没有 Maintainer、正式 Code of Conduct 或 Foundation。"],
     ],
@@ -228,7 +228,7 @@ export const content = {
       "Conformance ≠ Adoption",
       "Specification ≠ Implementation",
     ],
-    introTitle: "社区建设基础设施，不制造 Agent",
+    introTitle: "商业基础设施不制造 Agent",
     introBody:
       "普通 Agent Framework 回答“如何创建和编排智能体”。TITMAS 关注智能体数量增加、长期运行并跨框架协作后，如何保持身份连续、行为可追溯、证据可验证，以及评价和演化建议不能越权执行。",
     layersTitle: "三层协作，一个可信栈",
@@ -338,7 +338,7 @@ export const content = {
     ],
     legal:
       "公开自有材料采用 Apache-2.0。网站不采集登录信息、不设置分析 Cookie，也不提供运行时权限。",
-    footer: "Digital Biosphere 是总项目；TITMAS 是当前可信多智能体基础设施开发者社区入口。",
+    footer: "Digital Biosphere 是总项目；TITMAS 是闭源私有核心、公开发现与有界证明的商业智能体基础设施。",
   },
   en: {
     lang: "en",
@@ -419,11 +419,11 @@ export const content = {
       ["E01 Human Compatibility Observation", "LEGACY", "Existing minimal access will not be extended; it is no longer a program gate."],
       ["Public Trial Interest Intake", "OPEN", "Open for non-confidential, non-binding interest."],
     ],
-    communityTitle: "Build trustworthy infrastructure for the agent era",
+    communityTitle: "Historical developer-community design material",
     communityLead:
-      "TITMAS is not a general agent forum. Human developers and governed agents work on framework-neutral infrastructure rules that are reusable, testable, and traceable.",
+      "This preserves an earlier TITMAS developer-community design for traceability. It is not the current commercial entry and does not mean open contribution, open core, or an established community.",
     communityPromise:
-      "You build agents. TITMAS helps them collaborate through understandable, implementable, and verifiable infrastructure rules.",
+      "HISTORICAL_NON_CURRENT · Current direction: closed private core with public discovery and bounded proof.",
     communitySurfaces: [
       ["Specification", "Open specifications", "Shared semantics for Identity, Capability, Execution, Evidence, Verification, and Evaluation.", "PREPARED"],
       ["Semantic Mapping", "Semantic mappings", "Version-pinned mappings from AGT, OpenTelemetry, LangChain, CrewAI, MCP, and other external surfaces.", "CANDIDATE"],
@@ -432,12 +432,12 @@ export const content = {
       ["Documentation", "Docs and localization", "Help developers and agents discover, understand, cite, and reuse current truth quickly.", "PUBLIC"],
       ["Reference Boundary", "Reference boundaries", "Show replaceable implementation patterns without creating a single Runtime authority.", "NOT AUTHORIZED"],
     ],
-    communityStateTitle: "Preparing the work without pretending the community already exists",
+    communityStateTitle: "Retain history without restoring the community route",
     communityStateLead:
-      "The direction, entry points, and work surfaces are clear. Operating status still requires verifiable public channels, conduct, security intake, roles, and real contributions.",
+      "Earlier entry points and work surfaces remain historical material. Products, pilots, the Trust Center, and human-reviewed access now form the commercial entry.",
     communityStates: [
-      ["DIRECTION", "ADOPTED", "The TITMAS developer community is the current public work focus."],
-      ["CONTRIBUTOR ENTRY", "PREPARED", "Workflows and machine entry points are prepared, not publicly enabled."],
+      ["DIRECTION", "HISTORICAL", "The developer-community direction was superseded by the closed-core commercial and public-discovery route."],
+      ["CONTRIBUTOR ENTRY", "NON-CURRENT", "Earlier contribution workflows are not the current product or customer entry."],
       ["PUBLIC CONTRIBUTION", "NOT AUTHORIZED", "The trial-interest form is active; no public contribution issues, PRs, SIGs, or recruitment authority exists."],
       ["COMMUNITY", "NOT ESTABLISHED", "There are no maintainers, adopted Code of Conduct, or foundation."],
     ],
@@ -447,7 +447,7 @@ export const content = {
       "Conformance ≠ Adoption",
       "Specification ≠ Implementation",
     ],
-    introTitle: "A community for infrastructure—not an agent factory",
+    introTitle: "Commercial infrastructure—not an agent factory",
     introBody:
       "Agent frameworks answer how to create and orchestrate agents. TITMAS focuses on identity continuity, traceable behavior, verifiable evidence, and evaluation or evolution recommendations that cannot execute themselves when agents multiply, run for a long time, and collaborate across frameworks.",
     layersTitle: "Three layers, one trustworthy stack",
@@ -564,6 +564,6 @@ export const content = {
     ],
     legal:
       "Owner-created public materials use Apache-2.0. This static site collects no login data, sets no analytics cookies, and grants no runtime permission.",
-    footer: "Digital Biosphere is the program; titmas is the public English brand and TITMAS is the technical project identifier.",
+    footer: "Digital Biosphere is the program; TITMAS is closed-core commercial agent infrastructure with public discovery and bounded proof.",
   },
 } as const;

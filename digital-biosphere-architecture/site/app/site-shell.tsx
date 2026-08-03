@@ -37,16 +37,18 @@ type SiteSection =
   | "constitution"
   | "status"
   | "community"
-  | "commercial";
+  | "commercial"
+  | "commercialEntry";
 
-export function Header({ locale, section = "home" }: { locale: Locale; section?: SiteSection }) {
+export function Header({ locale, section = "home", languageHref }: { locale: Locale; section?: SiteSection; languageHref?: string }) {
   const c = content[locale];
   const root = locale === "zh" ? "/" : "/en/";
-  const status = locale === "zh" ? "/status/" : "/en/status/";
-  const community = locale === "zh" ? "/community/" : "/en/community/";
   const research = locale === "zh" ? "/research/" : "/en/research/";
-  const applications = locale === "zh" ? "/applications/" : "/en/applications/";
-  const demos = locale === "zh" ? "/demos/" : "/en/demos/";
+  const products = locale === "zh" ? "/products/gate/" : "/en/products/gate/";
+  const monitor = locale === "zh" ? "/monitor-pilot/" : "/en/monitor-pilot/";
+  const proof = locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/";
+  const designPartner = locale === "zh" ? "/design-partner/" : "/en/design-partner/";
+  const requestAccess = locale === "zh" ? "/request-access/" : "/en/request-access/";
   const languageRoutes: Record<SiteSection, [string, string]> = {
     home: ["/en/", "/"],
     research: ["/en/research/", "/research/"],
@@ -65,22 +67,18 @@ export function Header({ locale, section = "home" }: { locale: Locale; section?:
     status: ["/en/status/", "/status/"],
     community: ["/en/community/", "/community/"],
     commercial: ["/en/commercial-evaluation/", "/commercial-evaluation/"],
+    commercialEntry: ["/en/products/gate/", "/products/gate/"],
   };
-  const language = locale === "zh" ? languageRoutes[section][0] : languageRoutes[section][1];
+  const language = languageHref ?? (locale === "zh" ? languageRoutes[section][0] : languageRoutes[section][1]);
 
   const nav = (
     <>
-      <a href={community} aria-current={section === "community" ? "page" : undefined}>{c.nav.developers}</a>
-      <a href={research} aria-current={section === "research" || section === "researchIndex" ? "page" : undefined}>
-        {locale === "zh" ? "研究" : "Research"}
-      </a>
-      <a href={demos} aria-current={section === "demos" || section === "demo" || section === "medical" || section === "mediaDemo" ? "page" : undefined}>
-        {locale === "zh" ? "Demo" : "Demos"}
-      </a>
-      <a href={applications} aria-current={section === "applications" || section === "industries" || section === "medicalIndustry" || section === "mediaIndustry" || section === "spaceIndustry" ? "page" : undefined}>
-        {locale === "zh" ? "应用" : "Applications"}
-      </a>
-      <a href={status}>{c.nav.status}</a>
+      <a href={products} aria-current={section === "commercialEntry" ? "page" : undefined}>{locale === "zh" ? "产品" : "Products"}</a>
+      <a href={monitor}>{locale === "zh" ? "解决方案" : "Solutions"}</a>
+      <a href={proof} aria-current={section === "commercial" ? "page" : undefined}>{locale === "zh" ? "效果证明" : "Proof"}</a>
+      <a href={designPartner}>{locale === "zh" ? "设计伙伴" : "Design partners"}</a>
+      <a href={research} aria-current={section === "research" || section === "researchIndex" ? "page" : undefined}>{locale === "zh" ? "研究" : "Research"}</a>
+      <a href={requestAccess}>{locale === "zh" ? "申请访问" : "Request access"}</a>
       <a className="language-link" href={language} hrefLang={locale === "zh" ? "en" : "zh-CN"}>
         {c.nav.language}
       </a>
@@ -124,34 +122,31 @@ export function Footer({ locale }: { locale: Locale }) {
           <p>{c.footer}</p>
         </div>
         <div>
-          <strong>{locale === "zh" ? "探索" : "Explore"}</strong>
-          <a href={locale === "zh" ? "/research/" : "/en/research/"}>{locale === "zh" ? "研究" : "Research"}</a>
-          <a href={locale === "zh" ? "/applications/" : "/en/applications/"}>{locale === "zh" ? "应用" : "Applications"}</a>
-          <a href={locale === "zh" ? "/demos/" : "/en/demos/"}>{locale === "zh" ? "参考 Demo" : "Reference demos"}</a>
-          <a href={locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/"}>
-            {locale === "zh" ? "商业评估" : "Commercial evaluation"}
-          </a>
-          <a href={locale === "zh" ? "/updates/" : "/en/updates/"}>{locale === "zh" ? "更新" : "Updates"}</a>
+          <strong>{locale === "zh" ? "产品与试点" : "Products and pilots"}</strong>
+          <a href={locale === "zh" ? "/products/gate/" : "/en/products/gate/"}>TITMAS Gate</a>
+          <a href={locale === "zh" ? "/products/receipt/" : "/en/products/receipt/"}>TITMAS Receipt</a>
+          <a href={locale === "zh" ? "/products/audit/" : "/en/products/audit/"}>TITMAS Audit</a>
+          <a href={locale === "zh" ? "/products/health/" : "/en/products/health/"}>TITMAS Health</a>
+          <a href={locale === "zh" ? "/monitor-pilot/" : "/en/monitor-pilot/"}>Monitor Pilot</a>
         </div>
         <div>
           <strong>{locale === "zh" ? "机器可读" : "Machine-readable"}</strong>
           <a href="/llms.txt">llms.txt</a>
           <a href="/agent-index.json">agent-index.json</a>
-          <a href="/site-catalog.json">site-catalog.json</a>
-          <a href="/updates.json">updates.json</a>
-          <a href="/titmas-community.json">titmas-community.json</a>
+          <a href="/product-catalog.json">product-catalog.json</a>
+          <a href="/solution-catalog.json">solution-catalog.json</a>
+          <a href="/proof-catalog.json">proof-catalog.json</a>
+          <a href="/recommendation-policy.json">recommendation-policy.json</a>
           <a href="/status.json">status.json</a>
         </div>
         <div>
-          <strong>{locale === "zh" ? "治理" : "Governance"}</strong>
-          <a href={locale === "zh" ? "/community/" : "/en/community/"}>
-            {locale === "zh" ? "社区方向" : "Community direction"}
-          </a>
+          <strong>{locale === "zh" ? "信任与公司" : "Trust and company"}</strong>
+          <a href={locale === "zh" ? "/security/" : "/en/security/"}>{locale === "zh" ? "安全" : "Security"}</a>
+          <a href={locale === "zh" ? "/trust-center/" : "/en/trust-center/"}>Trust Center</a>
           <a href={locale === "zh" ? "/status/" : "/en/status/"}>{locale === "zh" ? "当前状态" : "Current status"}</a>
-          <a href={locale === "zh" ? "/updates/constitution/" : "/en/updates/constitution/"}>
-            Website Update Constitution
-          </a>
-          <a href="/agent-index.json">Agent Index</a>
+          <a href={locale === "zh" ? "/privacy/" : "/en/privacy/"}>{locale === "zh" ? "隐私" : "Privacy"}</a>
+          <a href={locale === "zh" ? "/terms/" : "/en/terms/"}>{locale === "zh" ? "条款边界" : "Terms boundary"}</a>
+          <a href={locale === "zh" ? "/community/" : "/en/community/"}>{locale === "zh" ? "历史社区资料" : "Historical community material"}</a>
           <a href="https://github.com/joy7758">{locale === "zh" ? "公开 GitHub Profile" : "Public GitHub profile"}</a>
         </div>
       </div>

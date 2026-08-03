@@ -5,12 +5,12 @@ import { StructuredPageData } from "./structured-page-data";
 const copy = {
   zh: {
     lang: "zh-CN",
-    eyebrow: "DEVELOPER ENTRY / 开发者入口",
-    title: "共同建设可信多智能体基础设施",
+    eyebrow: "HISTORICAL MATERIAL / 历史资料",
+    title: "历史开发者社区设计资料",
     lead:
-      "TITMAS 把规范、Adapter contract、符合性和参考实现边界组织成可发现、可理解、可复用的开发者入口。",
+      "该页面保留 TITMAS 早期开发者社区设计，供历史追溯。它不是当前商业入口，不表示开放贡献、开放核心或已经建立社区。",
     status: "当前阶段",
-    statusValue: "准备完成一部分 · 社区尚未建立",
+    statusValue: "HISTORICAL_NON_CURRENT · 社区从未建立",
     definitionTitle: "TITMAS 是什么",
     definition:
       "TITMAS 是面向可信多智能体基础设施的开发者入口。开发者继续使用自己选择的 Agent Framework 和 Runtime；TITMAS 关注跨实现的身份、能力、执行、证据、验证和评价接口。",
@@ -69,12 +69,12 @@ const copy = {
   },
   en: {
     lang: "en",
-    eyebrow: "DEVELOPER ENTRY",
-    title: "Build trustworthy multi-agent infrastructure together",
+    eyebrow: "HISTORICAL MATERIAL",
+    title: "Historical developer-community design material",
     lead:
-      "TITMAS organizes specifications, adapter contracts, conformance, and reference-implementation boundaries into a discoverable, understandable, reusable developer entry.",
+      "This page preserves an earlier TITMAS developer-community design for historical traceability. It is not the current commercial entry and does not mean open contribution, open core, or an established community.",
     status: "Current stage",
-    statusValue: "Partially prepared · community not established",
+    statusValue: "HISTORICAL_NON_CURRENT · community was never established",
     definitionTitle: "What TITMAS is",
     definition:
       "titmas is the public developer entry for trusted multi-agent infrastructure; TITMAS remains its technical project identifier. Developers keep their chosen agent frameworks and runtimes; TITMAS focuses on portable identity, capability, execution, evidence, verification, and evaluation interfaces.",
@@ -156,6 +156,11 @@ export function CommunityPage({ locale }: { locale: Locale }) {
               <span>{c.status}</span>
               <strong>{c.statusValue}</strong>
             </div>
+            <p className="historical-surface-notice">
+              {locale === "zh"
+                ? "当前方向：闭源私有核心 + 公开发现与有界证明。商业入口请从产品、Monitor Pilot 或申请访问页面进入。"
+                : "Current direction: closed private core with public discovery and bounded proof. Use Products, Monitor Pilot, or Request Access as the commercial entry."}
+            </p>
           </div>
         </section>
 

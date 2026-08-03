@@ -39,7 +39,8 @@ test("renders equivalent Chinese and English public entry points", async () => {
   const zh = zhRaw.replace(/<html lang="[^"]+">/, '<html lang="zh-CN">');
   const en = enRaw.replace(/<html lang="[^"]+">/, '<html lang="en">');
 
-  assert.match(zh, /<h1>TITMAS 可信多智能体基础设施<\/h1>/);
+  assert.match(zh, /让 AI 智能体犯错时，也不能直接造成未经验证的后果/);
+  assert.match(en, /An AI agent mistake should not directly create an unverified consequence/);
   assert.match(zh, /夏日之海/);
   assert.match(zh, /\/titmas-logo\.png/);
   assert.match(en, /aria-label="titmas · Trusted Multi-Agent Infrastructure"/);
@@ -58,28 +59,20 @@ test("renders equivalent Chinese and English public entry points", async () => {
   for (const marker of expectedMarkers.enHome) assert.match(en, new RegExp(marker));
   assert.match(zh, /Evidence/);
   assert.match(en, /Evidence/);
-  assert.match(zh, /为不同智能体提供共同的可信互操作边界/);
-  assert.match(en, /A shared trust-interoperability boundary for different agents/);
+  assert.match(zh, /关键行动控制与可验证追责/);
+  assert.match(en, /Critical-action control and verifiable accountability/);
   assert.match(zh, /Verification ≠ Authorization/);
-  assert.match(en, /Recommendation ≠ Decision/);
-  assert.match(zh, /机器可读目录/);
-  assert.match(en, /NOT ESTABLISHED/);
-  assert.match(zh, /测试通过只适用于声明范围/);
-  assert.match(en, /A test pass applies only to its declared scope/);
-  assert.match(zh, /E01 Human Compatibility Observation/);
-  assert.match(en, /E01 Human Compatibility Observation/);
-  assert.match(zh, /运行媒体证据演示/);
-  assert.match(en, /Run the media evidence demo/);
-  assert.match(zh, /24\/24/);
-  assert.match(en, /24\/24/);
-  assert.match(zh, /AGENT START HERE/);
-  assert.match(en, /Human navigation and explicit machine contracts/);
-  assert.match(zh, /1,661 条历史 Receipt 中有 2 条签名无法验证/);
-  assert.match(en, /2 of 1,661 historical Receipt signatures remain unverifiable/);
-  assert.match(zh, /PRODUCTION_READY=false/);
-  assert.match(en, /PRODUCTION_READY=false/);
-  assert.match(zh, /TITMAS Digital Cell Demo/);
-  assert.match(en, /Medical Evidence Infrastructure/);
+  assert.match(en, /Request ≠ Access/);
+  assert.match(zh, /机器商业目录/);
+  assert.match(en, /Machine commercial catalogs/);
+  assert.match(zh, /product-catalog\.json/);
+  assert.match(en, /recommendation-policy\.json/);
+  assert.match(zh, /AVAILABLE OFFERINGS/);
+  assert.match(en, /AVAILABLE OFFERINGS/);
+  assert.match(zh, /PRODUCTION READY[^<]*<\/span><strong>false/);
+  assert.match(en, /PRODUCTION READY[^<]*<\/span><strong>false/);
+  assert.match(zh, /人类与智能体双入口/);
+  assert.match(en, /HUMAN AND AGENT ENTRY/);
   if (releaseContext.mode === "candidate") {
     assert.match(zh, /Developer Preview Candidate/);
     assert.match(en, /Developer Preview Candidate/);
@@ -141,6 +134,12 @@ test("ships agent-readable and discovery resources", async () => {
     access(new URL("evidence/stage5-7/aggregate-results.json", root)),
     access(new URL("evidence/stage5-7/agent-selection-audit.json", root)),
     access(new URL("evidence/stage5-7/evidence-manifest.json", root)),
+    access(new URL("product-catalog.json", root)),
+    access(new URL("solution-catalog.json", root)),
+    access(new URL("proof-catalog.json", root)),
+    access(new URL("commercial-offerings.json", root)),
+    access(new URL("deployment-options.json", root)),
+    access(new URL("recommendation-policy.json", root)),
   ]);
 
   const [agentIndex, status, agentCustomerPackage, dbosPackage, llms, siteCatalog, titmasCommunity, wellKnown] = await Promise.all([
@@ -162,14 +161,14 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(status.gates.TITMAS_CODE_OF_CONDUCT_ADOPTED, false);
   assert.equal(status.gates.TITMAS_MAINTAINER_ASSIGNED, false);
   assert.equal(status.gates.TITMAS_FOUNDATION_IN_SCOPE, false);
-  assert.equal(status.community.current_state, "CONTRIBUTOR_ENTRY_PREPARED");
+  assert.equal(status.community.current_state, "HISTORICAL_NON_CURRENT");
   assert.equal(status.community.canonical_name_en, "titmas");
   assert.equal(status.community.canonical_name_zh, "夏日之海");
   assert.equal(status.community.public_brand_logo, "/titmas-logo.png");
   assert.equal(status.community.technical_project_identifier, "TITMAS");
   assert.equal(status.community.public_contribution_surface_authorized, false);
   assert.deepEqual(status.community.maintainers, []);
-  assert.equal(agentIndex.name, "TITMAS Infrastructure Developer Community");
+  assert.equal(agentIndex.name, "TITMAS Commercial Agent Infrastructure");
   assert.equal(agentIndex.display_name_zh, "夏日之海");
   assert.equal(agentIndex.display_name_en, "titmas");
   assert.equal(agentIndex.public_brand, "titmas");
@@ -196,7 +195,8 @@ test("ships agent-readable and discovery resources", async () => {
   assert.equal(agentIndex.website_operator_legal_name, "山西游骑兵电子商务有限公司");
   assert.equal(agentIndex.public_website.operator_legal_name, "山西游骑兵电子商务有限公司");
   assert.equal(agentIndex.public_website.icp_record_number, "晋ICP备2026006409号-1");
-  assert.equal(agentIndex.community.direction_adopted, true);
+  assert.equal(agentIndex.community.direction_adopted, false);
+  assert.equal(agentIndex.community.historical_direction_recorded, true);
   assert.equal(agentIndex.community.public_submission_invitation, false);
   assert.equal(status.gates.DQ_010_SUPERSEDED_FOR_PRIMARY_ROUTE, true);
   assert.equal(status.gates.AGENT_CUSTOMER_VALIDATION_BASELINE_CONDITIONAL, true);
