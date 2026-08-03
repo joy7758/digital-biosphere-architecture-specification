@@ -1,13 +1,13 @@
 {
   "contract_format": "TITMAS-D29-REFERENCE-IMPLEMENTATION-PROJECTION-1.0",
   "projection_id": "TITMAS-D29-CURRENT-REFERENCE-IMPLEMENTATION-v1",
-  "observed_at": "2026-08-04T06:44:39+08:00",
+  "observed_at": "2026-08-04T07:31:33+08:00",
   "source": {
     "repository": "joy7758/titmas-sandbox-gateway",
     "branch": "main",
-    "revision": "f4b4bc62f24a4c5ae511c5b417a4e07846f68214",
+    "revision": "8e4d9636ace647b8d6daacd77223900db6d862db",
     "source_status": "MERGED_ON_CANONICAL_MAIN",
-    "pull_requests": [44, 45, 46, 48, 49, 51, 52]
+    "pull_requests": [44, 45, 46, 48, 49, 51, 52, 53]
   },
   "capabilities": {
     "postgres_application_wiring": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
@@ -17,14 +17,15 @@
     "software_delivery_monitor_enforce_proof": "TESTED_SYNTHETIC_ONLY_NOT_DEPLOYED",
     "durable_receipt_read_projection": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
     "durable_audit_export_projection": "IMPLEMENTED_REFERENCE_PARTIAL_CHAIN_NOT_DEPLOYED",
-    "durable_health_projection": "IMPLEMENTED_REFERENCE_AUDIT_PARTIAL_NOT_DEPLOYED"
+    "durable_health_projection": "IMPLEMENTED_REFERENCE_AUDIT_PARTIAL_NOT_DEPLOYED",
+    "durable_credential_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED"
   },
   "validation": {
     "clean_clone": "PASS_FOR_CE1_CE5_AT_PREDECESSOR_REVISION",
     "clean_clone_evidence_revision": "c02926397563940feeba54b1efbe8d62e406e0e8",
     "ce6_exact_head_ci": "PASS",
-    "full_test_count": 368,
-    "expected_environment_gated_skip_count": 3,
+    "full_test_count": 377,
+    "expected_environment_gated_skip_count": 4,
     "ruff": "PASS",
     "mypy": "PASS",
     "secret_findings": 0,
@@ -38,7 +39,8 @@
       "D29-CE4-CONSOLE-CORE-PAGES-REPORT-v1.0.md",
       "D29-CE5-SOFTWARE-DELIVERY-PROOF-001-REPORT-v1.0.md",
       "D29-CE6-DURABLE-EVIDENCE-READ-PROJECTIONS-REPORT-v1.0.md",
-      "D29-SECURITY-ENGINEERING-GATE-STATUS-v1.0.md"
+      "D29-SECURITY-ENGINEERING-GATE-STATUS-v1.0.md",
+      "D29-DURABLE-CREDENTIAL-LIFECYCLE-REPORT-v1.0.md"
     ],
     "pull_request_51_exact_head": "df6a10a38dfc9f4e7e39775c24410f201432914b",
     "pull_request_51_merge_commit": "569dd5506e0030dec9d942846aee50aa92113fd5",
@@ -55,22 +57,29 @@
     "pull_request_52_url": "https://github.com/joy7758/titmas-sandbox-gateway/pull/52",
     "security_gate_quality_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30859400303/job/91837832892",
     "security_gate_postgres_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30859400303/job/91837832965",
-    "security_gate_supply_chain_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30859399915/job/91837832024"
+    "security_gate_supply_chain_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30859399915/job/91837832024",
+    "pull_request_53_exact_head": "63406a1474cebb8d49b14cb68c6c97e00f07ca7c",
+    "pull_request_53_merge_commit": "8e4d9636ace647b8d6daacd77223900db6d862db",
+    "pull_request_53_url": "https://github.com/joy7758/titmas-sandbox-gateway/pull/53",
+    "credential_lifecycle_quality_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30862250044/job/91847047975",
+    "credential_lifecycle_postgres_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30862250044/job/91847048926",
+    "credential_lifecycle_supply_chain_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30862249986/job/91847050726"
   },
   "security_engineering_gate": {
     "status": "FAIL_CLOSED",
     "control_count": 20,
-    "pass": 11,
-    "partial": 4,
+    "pass": 13,
+    "partial": 2,
     "fail_retained": 1,
     "not_assessed": 3,
     "not_applicable": 1,
     "blocker_findings_open": 1,
-    "high_findings_open": 6,
+    "high_findings_open": 5,
     "agent_recommendation": "NOT_RECOMMENDED",
     "independent_security_evaluation_executed": false,
     "d04_reopened": false,
-    "commercial_effect": "NONE"
+    "commercial_effect": "NONE",
+    "credential_lifecycle_finding": "RESOLVED_IN_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED"
   },
   "measured_synthetic_reference": {
     "scenario_id": "D29-SYNTHETIC-SOFTWARE-DELIVERY-001",
