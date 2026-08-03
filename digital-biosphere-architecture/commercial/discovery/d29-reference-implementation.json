@@ -1,0 +1,88 @@
+{
+  "contract_format": "TITMAS-D29-REFERENCE-IMPLEMENTATION-PROJECTION-1.0",
+  "projection_id": "TITMAS-D29-CURRENT-REFERENCE-IMPLEMENTATION-v1",
+  "observed_at": "2026-08-03T23:23:12+08:00",
+  "source": {
+    "repository": "joy7758/titmas-sandbox-gateway",
+    "branch": "main",
+    "revision": "c02926397563940feeba54b1efbe8d62e406e0e8",
+    "source_status": "MERGED_ON_CANONICAL_MAIN",
+    "pull_requests": [44, 45, 46, 48, 49]
+  },
+  "capabilities": {
+    "postgres_application_wiring": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
+    "synthetic_observer_first_value": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
+    "agent_overview_console": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
+    "console_core_pages": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
+    "software_delivery_monitor_enforce_proof": "TESTED_SYNTHETIC_ONLY_NOT_DEPLOYED"
+  },
+  "validation": {
+    "clean_clone": "PASS",
+    "full_test_count": 358,
+    "expected_environment_gated_skip_count": 3,
+    "ruff": "PASS",
+    "mypy": "PASS",
+    "secret_findings": 0,
+    "private_repository_url_findings": 0,
+    "core_source_disclosure_findings": 0,
+    "frozen_api_v1_byte_identity": "PASS",
+    "source_report_refs": [
+      "D29-CE1-POSTGRES-APPLICATION-WIRING-REPORT-v1.0.md",
+      "D29-CE2-SYNTHETIC-FIRST-VALUE-REPORT-v1.0.md",
+      "D29-CE3-AGENT-OVERVIEW-CONSOLE-REPORT-v1.0.md",
+      "D29-CE4-CONSOLE-CORE-PAGES-REPORT-v1.0.md",
+      "D29-CE5-SOFTWARE-DELIVERY-PROOF-001-REPORT-v1.0.md"
+    ]
+  },
+  "measured_synthetic_reference": {
+    "scenario_id": "D29-SYNTHETIC-SOFTWARE-DELIVERY-001",
+    "customer_data_count": 0,
+    "real_external_action_count": 0,
+    "production_permission_count": 0,
+    "first_value": {
+      "shadow_gate_result": "WOULD_BLOCK",
+      "receipt_verification": "PASS",
+      "audit_event_count": 11,
+      "time_to_observer_value_ms": 8.714,
+      "time_to_verified_value_ms": 8.973,
+      "step_count_to_observer": 1,
+      "step_count_to_verification": 1,
+      "retry_count": 0
+    },
+    "software_delivery_proof": {
+      "scenario_a": "NOT_ASSESSED",
+      "scenario_b": "WOULD_BLOCK",
+      "scenario_c": "BLOCK",
+      "monitor_receipt_verification": "PASS",
+      "enforce_receipt_verification": "PASS",
+      "monitor_audit_replay": "PASS",
+      "enforce_audit_replay": "PASS",
+      "external_network_call_count": 0,
+      "release_or_merge_executed": false
+    },
+    "measurement_scope": "ONE_LOCAL_IN_PROCESS_SYNTHETIC_REFERENCE_RUN",
+    "measurement_classification": "SYNTHETIC_ZERO_DATA_BENCHMARK_NOT_PRODUCTION_PERFORMANCE",
+    "latency_is_slo": false,
+    "result_is_customer_evidence": false,
+    "software_delivery_proof_disclaimer": "NON_BINDING_SYNTHETIC_PROOF_ONLY_NO_CUSTOMER_AUTHORIZATION_OR_RELEASE_ACTION"
+  },
+  "availability": {
+    "reference_implementation_available_in_private_source": true,
+    "deployed": false,
+    "commercial_offering_available": false,
+    "paid_monitor_pilot_available": false,
+    "customer_specific_enforce_authorized": false,
+    "customer_count": 0,
+    "production_ready": false
+  },
+  "retained_fail_closed_boundaries": {
+    "d04_status": "CLOSED_FAILED_RETAINED",
+    "p0_10_agent_first_acceptance": false,
+    "receipt_pass_is_truth": false,
+    "verification_is_authorization": false,
+    "gate_decision_is_execution": false,
+    "synthetic_authorization_is_customer_authorization": false,
+    "public_launch_authorized": false
+  },
+  "projection_effect": "READ_ONLY_DBA_SOURCE_PIN_NO_CHILD_STATUS_WRITE"
+}

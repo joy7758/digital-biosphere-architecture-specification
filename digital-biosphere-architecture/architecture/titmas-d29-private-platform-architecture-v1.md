@@ -1,6 +1,6 @@
 # TITMAS D29 Private Platform Architecture v1
 
-Status: `ARCHITECTURE_FROZEN_IMPLEMENTATION_INCOMPLETE`
+Status: `ARCHITECTURE_FROZEN_BOUNDED_REFERENCE_IMPLEMENTATION_INCOMPLETE`
 
 Commercial entry is governed by `TITMAS-COMMERCIAL-C01`. The entry sequence is
 `TITMAS Observer -> Health Snapshot -> Monitor -> separately authorized
@@ -18,7 +18,7 @@ would duplicate composition and tenant/key surfaces.
 
 ```text
 PRIVATE_PLATFORM_REPOSITORY=joy7758/titmas-sandbox-gateway
-OBSERVED_MAIN_HEAD=efdfc84462628abdfbfe111f61253f76569edec0
+OBSERVED_MAIN_HEAD=c02926397563940feeba54b1efbe8d62e406e0e8
 REUSE_EXISTING_REPOSITORY=true
 CREATE_NEW_PRIVATE_PLATFORM_REPOSITORY=false
 DUPLICATION_AUDIT=PASS_REUSE_REQUIRED
@@ -89,16 +89,21 @@ cannot create credentials, change plan/quota, alter owner maps or deploy.
 | quota and idempotency | store and regression tests | `PRESENT_REVERIFY_REQUIRED` |
 | signed Receipt and verify endpoint | receipt/service/API tests | `PRESENT_REVERIFY_REQUIRED` |
 | audit metadata | database audit insertions | `PARTIAL` |
-| formal Workspace object | no canonical network/control-plane surface observed | `MISSING` |
-| Monitor shadow vocabulary and no-effect proof | C-01 contract defines the target; runtime proof not observed | `C01_CONTRACT_DEFINED_IMPLEMENTATION_MISSING` |
-| bounded Enforce pre-side-effect contract | preflight exists but D29 policy/authorization binding not complete | `PARTIAL` |
-| offline Audit Bundle export | not observed | `MISSING` |
-| Health Snapshot | not observed as D29 product view | `MISSING` |
-| data deletion workflow | not observed | `MISSING` |
-| commercial console | not observed | `MISSING` |
+| formal Workspace object | reference store and PostgreSQL continuity exist; no network control plane is created | `REFERENCE_PRESENT_CONTROL_PLANE_OFFLINE` |
+| Monitor shadow vocabulary and no-effect proof | Observer/FirstValue and CE-5 reuse the existing Gate | `IMPLEMENTED_REFERENCE_NOT_DEPLOYED` |
+| bounded Enforce pre-side-effect contract | customer-specific authorization structure is exercised only in a synthetic non-binding proof | `TESTED_SYNTHETIC_ONLY_NOT_CUSTOMER_AUTHORIZED` |
+| offline Audit Bundle export | metadata-only Bundle and replay verification reused by the reference flows | `IMPLEMENTED_REFERENCE_NOT_EXTERNALLY_ANCHORED` |
+| Health Snapshot | existing D29 builder is exposed through the read-only Console projection | `IMPLEMENTED_REFERENCE_NOT_DEPLOYED` |
+| data deletion workflow | reference request/session cleanup exists; commercial customer deletion is not deployed | `REFERENCE_ONLY` |
+| commercial console | Agent-readable navigation and fourteen read-only pages exist | `IMPLEMENTED_REFERENCE_NOT_DEPLOYED` |
 
-The missing items above are implementation gaps. C-01 defines their target
-contracts but does not upgrade them to `PRESENT`.
+The current statuses above are source-pinned to private Gateway canonical
+`main@c02926397563940feeba54b1efbe8d62e406e0e8` through
+[`d29-reference-implementation.json`](../commercial/discovery/d29-reference-implementation.json).
+They do not upgrade a reference implementation to a deployed or available
+commercial offering. Approval, Support, commercial Billing/Quota,
+Deployment-health and Security-incident sources remain partly or wholly
+`NOT_ASSESSED` in the Console projections.
 
 ## First-value data and permission boundary
 

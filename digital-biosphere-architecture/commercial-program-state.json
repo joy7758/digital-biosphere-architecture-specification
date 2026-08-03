@@ -2,13 +2,13 @@
   "$schema": "architecture/schemas/commercial-program-state-v1.0.schema.json",
   "program_version": "1.0",
   "program_id": "TITMAS-AGENT-NATIVE-COMMERCIAL-MATURITY-PROGRAM",
-  "current_phase": "FINAL_FORM_ADOPTION_IMPLEMENTATION_DECISION",
-  "phase_status": "WAITING_FOR_HUMAN_DECISION",
+  "current_phase": "D29_CUSTOMER_ENTRY_REFERENCE_IMPLEMENTATION",
+  "phase_status": "IN_PROGRESS",
   "started_at": "2026-07-30T19:04:07+08:00",
-  "last_updated_at": "2026-08-01T04:20:00+08:00",
+  "last_updated_at": "2026-08-03T23:23:12+08:00",
   "source_commits": {
     "governance": "8b01bb8988c9180392ac2b06a39e2541fc98b260",
-    "data_plane": "c319001cc1cf9e44d8b3d0b142a025c6c9af1678",
+    "data_plane": "c02926397563940feeba54b1efbe8d62e406e0e8",
     "public_integrations": "6ed4dadd4693129d3daca0a9a29964a4f7f864e9"
   },
   "deployment_releases": {
@@ -41,7 +41,12 @@
     "LEGACY_EXPERIMENTAL_LEDGER_BOUNDARY_FROZEN",
     "FUTURE_PRODUCTION_CLEAN_GENESIS_PRINCIPLE_FROZEN",
     "BUILD_VERSUS_ADOPT_AUDIT_COMPLETE",
-    "FINAL_FORM_IMPLEMENTATION_DECISION_PACKET_READY"
+    "FINAL_FORM_IMPLEMENTATION_DECISION_PACKET_READY",
+    "D29_POSTGRES_APPLICATION_WIRING_REFERENCE_COMPLETE",
+    "D29_SYNTHETIC_OBSERVER_FIRST_VALUE_REFERENCE_COMPLETE",
+    "D29_READ_ONLY_CONSOLE_REFERENCE_COMPLETE",
+    "D29_SOFTWARE_DELIVERY_PROOF_SYNTHETIC_COMPLETE",
+    "D29_CE1_CE5_CLEAN_CLONE_PASS"
   ],
   "gate_descriptions": {
     "STAGE_5_8_SOURCE_IDENTITY_VERIFIED": "The canonical source commit was confirmed; Stage 5.8 did not pass.",
@@ -66,17 +71,25 @@
     "LEGACY_EXPERIMENTAL_LEDGER_BOUNDARY_FROZEN": "The 1661-receipt ledger is internal experimental evidence only; its 1659 valid and 2 unverifiable signatures remain immutable.",
     "FUTURE_PRODUCTION_CLEAN_GENESIS_PRINCIPLE_FROZEN": "A future production ledger must start independently at sequence one after separate Paid Beta authorization and cannot inherit legacy chain, sequence or signature exceptions.",
     "BUILD_VERSUS_ADOPT_AUDIT_COMPLETE": "Fifteen upstream candidates were reviewed from official sources; eight are recommended, six are conditional and one is deferred by score. Seven runtime introductions remain deferred to explicit triggers.",
-    "FINAL_FORM_IMPLEMENTATION_DECISION_PACKET_READY": "The seven-layer architecture and P0/P1/P2 backlog are ready for Human review; no implementation authority was created."
+    "FINAL_FORM_IMPLEMENTATION_DECISION_PACKET_READY": "The seven-layer architecture and P0/P1/P2 backlog were prepared for Human review; this historical gate did not itself create implementation authority.",
+    "D29_POSTGRES_APPLICATION_WIRING_REFERENCE_COMPLETE": "Gateway CE-1 connects the existing D29 application to the existing PostgreSQL adapter through a bounded Store Protocol; it adds no table, migration or deployment.",
+    "D29_SYNTHETIC_OBSERVER_FIRST_VALUE_REFERENCE_COMPLETE": "Gateway CE-2 executes a zero-customer-data Observer, Shadow Gate, Receipt verification and Audit timeline for one fixed synthetic scenario.",
+    "D29_READ_ONLY_CONSOLE_REFERENCE_COMPLETE": "Gateway CE-3 and CE-4 expose Agent-readable read-only projections and Human pages derived from the same projections; the Console is not deployed.",
+    "D29_SOFTWARE_DELIVERY_PROOF_SYNTHETIC_COMPLETE": "Gateway CE-5 compares no-Gate, Monitor and Enforce paths using existing Gate, Receipt and Audit code without a provider action or real customer authorization.",
+    "D29_CE1_CE5_CLEAN_CLONE_PASS": "Canonical Gateway main c02926397563940feeba54b1efbe8d62e406e0e8 passed source tests and clean-clone validation in the declared synthetic reference context."
   },
   "blocked_gates": [
     "CR01_LEDGER_INTEGRITY_FAILED_RETAINED",
-    "FINAL_FORM_IMPLEMENTATION_NOT_AUTHORIZED",
     "PAID_BETA_PRODUCTION_LEDGER_NOT_AUTHORIZED",
     "PRODUCTION_SIGNER_NOT_CREATED",
-    "EXTERNAL_AGENT_TECHNICAL_ONBOARDING_NOT_COMPLETE"
+    "EXTERNAL_AGENT_TECHNICAL_ONBOARDING_NOT_COMPLETE",
+    "D29_REFERENCE_IMPLEMENTATION_NOT_DEPLOYED",
+    "D29_PAID_MONITOR_PILOT_NOT_AVAILABLE",
+    "D29_CUSTOMER_SPECIFIC_ENFORCE_NOT_AUTHORIZED",
+    "D29_LEGAL_BUSINESS_SECURITY_AND_MULTI_AGENT_GATES_INCOMPLETE"
   ],
   "human_decisions_required": [
-    "AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_MATRIX",
+    "SELECT_D29_REMAINING_GATE_SEQUENCE",
     "PAID_BETA_PRODUCTION_LEDGER_AND_SIGNER",
     "PUBLISH_FINAL_PRICING",
     "ACCEPT_REAL_PAYMENT",
@@ -107,12 +120,12 @@
     "PR36_CLOSED_UNMERGED_AND_NOT_REUSABLE",
     "LEGACY_LEDGER_INTERNAL_EXPERIMENTAL_ONLY",
     "FUTURE_PRODUCTION_LEDGER_DEFERRED_UNTIL_PAID_BETA",
-    "FINAL_FORM_ARCHITECTURE_PLAN_NOT_IMPLEMENTED",
+    "D29_REFERENCE_IMPLEMENTATION_NOT_DEPLOYED_OR_COMMERCIALLY_AVAILABLE",
     "LIVE_API_READINESS_RESTORE_FLAG_STALE_D03_CORRECTION_REQUIRED",
     "EXISTING_NON_EXPORTABLE_ED25519_SIGNER_NOT_CONFIRMED",
     "NO_EXTERNAL_AGENT_BETA_EVIDENCE",
     "NO_72_HOUR_7_DAY_OR_30_DAY_ELAPSED_EVIDENCE",
     "NO_REAL_PAYMENT_OR_CUSTOMER_ADOPTION_EVIDENCE"
   ],
-  "next_action": "Human Owner reviews the accepted adoption matrix and chooses whether to authorize a path-scoped P0 implementation plan. Do not reopen D04 or PR #36, run another canary, create a ledger or signer, change the Gateway/database, deploy, restart, purchase resources, process customer data or start soak."
+  "next_action": "Evaluate the remaining D29 legal, business, security, deployment, support, pricing and multi-Agent validation gates from their existing sources. Do not reopen D04 or P0-10, deploy, contact a customer, activate an offering, collect payment, process customer data or create a production ledger or signer."
 }

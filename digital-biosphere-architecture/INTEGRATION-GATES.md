@@ -53,6 +53,7 @@ MISSING_CONTEXT_COMPARISON_FAILS_CLOSED=true
 | P0-10 Unknown-Agent Technical Onboarding | `PASS_UNIQUE_MAINLINE_FROZEN_BY_D16` | `PASS_MACHINE_TRUTH_AND_FROZEN_CONTRACTS` | `PASS_API_V1_SDK_MCP_BOUNDARIES` | `PASS_RUNTIME_ALIGNMENT` | `FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT` | `G5_D15_ONLY_G6_FAILURE_RETAINED_G7_NOT_ASSESSED_G8_NOT_AUTHORIZED` | discovery、MCP/SDK、preflight call 和 Receipt fetch 已到达；Schema-valid PASS、VALID verification 和 second-task reuse 未达，不能以 CI/HTTP/fixture/human-guided success 替代 |
 | D19 Discovery Evolution | `PASS_EXPLICIT_HUMAN_DECISION` | `PASS_DBA_OWNER_ROUTING` | `PASS_SEVEN_SCHEMAS_AND_POLICY` | `PASS_LOCAL_REFERENCE_25_TESTS` | `PENDING_DRAFT_PR_DEMO` | `G5_DRAFT_PR_ONLY_G6_G8_NOT_AUTHORIZED` | ER-1 只允许隔离实现、确定性评价、回滚与 Draft PR；不授权 merge、release、deployment、生产 Runtime 或 P0-10 重开 |
 | TITMAS Agent-Native Commercial Maturity | `PASS_PROGRAM_ROLE` | `PASS_VERIFIED_SOURCE_BASELINE` | `PASS_ADR_036` | `NOT_STARTED` | `NOT_ASSESSED` | `G5_BOUNDED_TECHNICAL_AUTHORIZATION_G6_G8_NOT_ASSESSED` | 只授权可逆技术建设；商业技术、Paid Beta、Production 和成熟度全部保持 false |
+| D29 Customer Entry Reference Implementation | `PASS_EXISTING_PRIVATE_PLATFORM` | `PASS_SOURCE_PINNED_GATEWAY_MAIN_C029263` | `PASS_C01_AND_D29_BOUNDARIES` | `PASS_BOUNDED_REFERENCE_CE1_CE5` | `PASS_SOURCE_TESTS_AND_CLEAN_CLONE_SYNTHETIC_SCOPE` | `G5_NO_REAL_CUSTOMER_AUTHORIZATION_G6_SYNTHETIC_ONLY_G7_G8_NOT_AUTHORIZED` | PostgreSQL 应用接线、Observer/FirstValue、只读 Console 和软件交付 Proof 已形成有界参考实现；未部署、不可购买、无真实客户或外部动作 |
 
 ### Developer Preview Gate Detail（开发者预览闸门明细）
 
@@ -167,6 +168,27 @@ independently closed even if P0 is later accepted.
 | `C01-G4` Cross-document consistency | `PASS` | Constitution, D29, private platform, portfolio, console, website and discovery surfaces |
 | `C01-G5` Change boundary | `PASS` | no core/runtime/database/site implementation, owner-map/resolver or PR #113 change |
 
-These are document-and-machine-contract results. Implementation evaluation,
-measured customer experience and commercial availability remain
-`NOT_ASSESSED`; passing this gate creates no deployment or customer authority.
+These are the recorded document-and-machine-contract results. At this C-01
+architecture gate, implementation evaluation and measured customer experience
+were `NOT_ASSESSED`; commercial availability remains unavailable. The later
+source-pinned implementation projection below does not rewrite this historical
+scope or create deployment or customer authority.
+
+### D29 current implementation projection
+
+The earlier C-01 gate remains the architecture-contract result at its recorded
+scope. A later, separately authorized implementation sequence is now observed
+from `joy7758/titmas-sandbox-gateway` canonical
+`main@c02926397563940feeba54b1efbe8d62e406e0e8`:
+
+| implementation gate | result | retained boundary |
+|---|---|---|
+| Store wiring | `PASS_REFERENCE_NOT_DEPLOYED` | Memory and PostgreSQL implementations share the bounded Store Protocol; no new table or API v1 change |
+| Observer / FirstValue | `PASS_SYNTHETIC_REFERENCE` | zero customer data, no production Permission, no external action |
+| Console | `PASS_READ_ONLY_REFERENCE_NOT_DEPLOYED` | missing sources remain `NOT_ASSESSED`; Human view derives from machine projections |
+| Monitor / Enforce proof | `PASS_SYNTHETIC_NON_BINDING` | no real customer authorization, release, merge or provider call |
+| Commercial availability | `FAIL_CLOSED_NOT_AVAILABLE` | paid Monitor, customer Enforce, deployment, customer, payment and Production remain false |
+
+`PASS` above applies only to the source-pinned reference scope. Receipt
+verification is not Truth, Gate decision is not execution, and a synthetic
+authorization profile is not customer authorization.

@@ -80,13 +80,16 @@ def current_change_paths():
 def forbidden_change_reason(paths):
     forbidden_parts = {"src", "runtime", "server", "migrations", "migration", "database", "db"}
     allowed_exact = {
+        "digital-biosphere-architecture/CROSS-PROJECT-DEPENDENCIES.md",
         "digital-biosphere-architecture/DECISION-QUEUE.md",
         "digital-biosphere-architecture/INTEGRATION-GATES.md",
         "digital-biosphere-architecture/MASTER-ROADMAP.md",
         "digital-biosphere-architecture/PROGRAM-STATUS.md",
+        "digital-biosphere-architecture/PROJECT-PORTFOLIO.md",
         "digital-biosphere-architecture/TITMAS/README.md",
         "digital-biosphere-architecture/TITMAS/conformance/reports/latest.json",
         "digital-biosphere-architecture/TITMAS/conformance/tests/test_commercial_c01_entry.py",
+        "digital-biosphere-architecture/TITMAS/conformance/tests/test_d29_current_implementation_projection.py",
         "digital-biosphere-architecture/agent-index.json",
         "digital-biosphere-architecture/architecture/ADR-041-low-friction-entry-and-progressive-value.md",
         "digital-biosphere-architecture/architecture/titmas-d29-commercial-direction-freeze-v1.md",
@@ -94,6 +97,9 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/docs/TITMAS_PRIVATE_PLATFORM_ARCHITECTURE_v0.1.md",
         "digital-biosphere-architecture/docs/TITMAS_PRODUCT_PORTFOLIO_v0.1.md",
         "digital-biosphere-architecture/docs/TITMAS_WEBSITE_RESTRUCTURE_PLAN_v0.1.md",
+        "digital-biosphere-architecture/commercial-program-state.json",
+        "digital-biosphere-architecture/commercial-readiness.json",
+        "digital-biosphere-architecture/portfolio/canonical-reuse-audit-d29.json",
         "digital-biosphere-architecture/portfolio/product-catalog.internal.json",
         "digital-biosphere-architecture/research/competitive/CONSOLE-INFORMATION-ARCHITECTURE.md",
     }
