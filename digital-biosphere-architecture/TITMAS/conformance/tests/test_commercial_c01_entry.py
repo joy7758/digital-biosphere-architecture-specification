@@ -291,7 +291,11 @@ class CommercialC01EntryTests(unittest.TestCase):
         self.assertTrue(required <= set(drift))
         self.assertTrue(all(drift[key] for key in required))
         self.assertIsNone(forbidden_change_reason(current_change_paths()))
-        self.assertGreaterEqual(len(current_change_paths()), 40)
+        # The original C-01 integration changed at least 40 paths, but that
+        # historical batch size is not a permanent conformance invariant.
+        # Future path-scoped governance updates must still have a visible diff
+        # and every changed path must continue through forbidden_change_reason.
+        self.assertTrue(current_change_paths())
         self.assertEqual("CORE_RUNTIME_OR_DATABASE_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/src/runtime/observer.py"}))
         self.assertEqual("WEBSITE_IMPLEMENTATION_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/site/app/page.tsx"}))
         self.assertEqual("OWNER_ROUTING_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/TITMAS/agent-native/evolution/canonical-owner-map.json"}))
