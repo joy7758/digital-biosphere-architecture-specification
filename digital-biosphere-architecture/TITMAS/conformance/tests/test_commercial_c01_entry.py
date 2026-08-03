@@ -92,6 +92,7 @@ def current_change_paths():
 def forbidden_change_reason(paths):
     forbidden_parts = {"src", "runtime", "server", "migrations", "migration", "database", "db"}
     allowed_exact = {
+        "README.md",
         "digital-biosphere-architecture/AGENTS.md",
         "digital-biosphere-architecture/CROSS-PROJECT-DEPENDENCIES.md",
         "digital-biosphere-architecture/DECISION-QUEUE.md",

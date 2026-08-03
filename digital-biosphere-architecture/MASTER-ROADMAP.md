@@ -30,7 +30,8 @@ SUPERSEDED
 
 ## 2. Program Milestones（项目群里程碑）
 
-Developer Preview 是当前执行主线；原 `M0` 至 `M8` 继续保留为长期项目群路线，不因阶段切换被删除。
+Developer Preview 是已完成的历史发布阶段；当前执行主线是有界的商业私有基础设施
+验证与客户进入准备。原 `M0` 至 `M8` 继续保留为长期项目群路线，不因阶段切换被删除。
 
 | preview milestone | 目标 | primary repository | 当前状态 | 完成证据 | 下一步 |
 |---|---|---|---|---|---|
@@ -54,7 +55,7 @@ Developer Preview 是当前执行主线；原 `M0` 至 `M8` 继续保留为长�
 | `M5` | 决定 Research Agent Prototype（科研智能体原型）是否获准创建 | Research Agent Pilot；DBA 协调 | `NOT_STARTED` | Human Review、approved sources、protocol freeze、prototype authorization | 当前保持 `NOT_READY` |
 | `M6` | 执行第一个受控 Digital Entity research loop（数字主体研究闭环） | Research Agent Pilot + DBOS + SAEE | `NOT_STARTED` | 显式实验授权、执行记录、Evidence、Verification、Evaluation、Human Decision | 不得由路线图自动启动 |
 | `M7` | 建立可重复的多主体接入和联邦符合性 | DBOS + future Digital Entities | `NOT_STARTED` | 至少一个已验证 Pilot 后的通用接入契约和负例 | 不能从单一 Pilot 直接外推 |
-| `M8` | 推进开发者生态、认证与商业服务 | 各相应项目 | `DEFERRED` | 实现、采用和商业状态分别有独立证据 | 不得用战略文档声称已提供 |
+| `M8` | 推进受控客户接入、商业交付与支持服务 | 各相应项目 | `IN_PROGRESS` | D29 设计伙伴入口、私有核心边界和交付基础已定义；商业、部署、支持与客户事实仍分别验证 | 不得用战略文档声称已可售、已部署或已采用 |
 
 ## 3. Critical Path（关键路径）
 
@@ -83,11 +84,13 @@ M2 Canonical Status Sources
 ## 4. Current Program Focus（当前项目群焦点）
 
 ```text
-CURRENT_FOCUS=DEVELOPER_PREVIEW_V0_1_POST_RELEASE_OBSERVATION
-NEXT_BLOCKER=NONE_FOR_RELEASE_V0_1_OPEN_WEB_LIMIT_REMAINS_DISCLOSED
-NEXT_DECISION=SEPARATE_DECISION_REQUIRED_FOR_ANY_NEW_IMPLEMENTATION_OR_PRODUCTION_CLAIM
-NEXT_DELIVERY=ANONYMOUS_INSTALL_AND_AGENT_REUSE_OBSERVATION
-NEXT_INTEGRATION=NONE_AUTOMATICALLY_AUTHORIZED_BY_RELEASE
+CURRENT_FOCUS=D29_COMMERCIAL_PRIVATE_PLATFORM_AND_BOUNDED_CUSTOMER_ENTRY
+CURRENT_STRATEGY=COMMERCIAL_PRIVATE_INFRASTRUCTURE
+CURRENT_ENTRY=OBSERVER_TO_MONITOR_TO_SEPARATELY_AUTHORIZED_ENFORCE
+NEXT_BLOCKER=COMMERCIAL_SECURITY_SUPPORT_PRICING_LEGAL_DEPLOYMENT_AND_CUSTOMER_GATES
+NEXT_DECISION=SEPARATE_HUMAN_DECISIONS_REQUIRED_FOR_OFFER_DEPLOYMENT_ACCESS_AND_CUSTOMER_DATA
+NEXT_DELIVERY=ZERO_CUSTOMER_DATA_SYNTHETIC_FIRST_VALUE_AND_DURABLE_EVIDENCE_READ_VALIDATION
+NEXT_INTEGRATION=NONE_AUTOMATICALLY_AUTHORIZED_BY_PUBLIC_INTEROPERABILITY_SURFACES
 DQ_015_AGENT_NATIVE_VALIDATION_ACCEPTED=true
 BASELINE_VALIDATION_ID=TMAI-ACV-20260721-001
 BASELINE_RESULT=CONDITIONAL
@@ -103,7 +106,10 @@ HUMAN_PARTICIPANT_SOURCE_REQUIRED=false
 RESEARCH_AGENT_PROTOTYPE_AUTHORIZED=false
 ```
 
-当前不应继续增加新的 Entity、生产 Runtime 或无验证接口承诺。优先任务是形成公开开发者可运行、可展示、可验证的最小链路，同时让驾驶舱持续回答：现在在哪里、谁负责、缺什么证据、哪个决定阻塞下一步。
+当前不应继续增加新的 Entity、生产 Runtime 或无验证接口承诺。优先任务是形成零客户
+数据、可验证、可测量首次价值的商业私有基础设施闭环，并保持 Observer、Monitor、Gate、
+Receipt、Audit、Health 与私有 canonical core 的边界。公共互操作表面只服务 Agent 发现、
+调用和验证，不再承担社区增长或核心开源目标。
 
 ## 5. Roadmap Non-claims（路线图非声明）
 

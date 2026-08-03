@@ -1,15 +1,19 @@
-# TITMAS Agent-Native Standards Community
+# TITMAS Commercial Agent Infrastructure
 
-中文：**TITMAS 智能体原生标准社区**
+中文：**TITMAS 商业智能体基础设施**
 
-> Agent-Native Open Standards Community for Trusted Multi-Agent Infrastructure
+> Private-core infrastructure for agent action control and execution evidence
 
-TITMAS is the open-standards mainline of Digital Biosphere. It develops
-machine-readable specifications, conformance, reference boundaries and
-agent-native contribution protocols for trustworthy multi-agent
-infrastructure.
+TITMAS provides machine-readable contracts, bounded interoperability surfaces,
+action-control entry points and execution-evidence verification for AI agents.
+Its canonical implementation core is private.
 
-Start at the single canonical human entry:
+Public Schema, SDK, MCP adapters, examples and validators exist for Agent
+discovery, interoperability and verification. They do not imply an open-source
+core, public contribution route, developer community, formal standard,
+certification or immediate service access.
+
+Start at the canonical human entry:
 
 - [`digital-biosphere-architecture/TITMAS/README.md`](digital-biosphere-architecture/TITMAS/README.md)
 
@@ -18,21 +22,25 @@ Machine clients start at:
 - [`digital-biosphere-architecture/agent-index.json`](digital-biosphere-architecture/agent-index.json)
 - [`digital-biosphere-architecture/llms.txt`](digital-biosphere-architecture/llms.txt)
 
-Program governance remains in:
+Current strategy and program governance:
 
+- [`digital-biosphere-architecture/architecture/commercial-private-infrastructure-strategy-constitution.md`](digital-biosphere-architecture/architecture/commercial-private-infrastructure-strategy-constitution.md)
+- [`digital-biosphere-architecture/architecture/ADR-042-commercial-private-infrastructure-direction.md`](digital-biosphere-architecture/architecture/ADR-042-commercial-private-infrastructure-direction.md)
 - [`digital-biosphere-architecture/README.md`](digital-biosphere-architecture/README.md)
 - [`digital-biosphere-architecture/AGENTS.md`](digital-biosphere-architecture/AGENTS.md)
 
+Former Agent-Native Standards Community and Open Infrastructure materials are
+retained only as historical evidence. They have no current product,
+source-availability, contribution or community authority.
+
 ```text
-COMMUNITY_STATUS=LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW
-TITMAS_CANONICAL_MAIN_INTEGRATION_COMPLETE=true
-PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=true
-PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=true
-SECURITY_TRANSPORT_ACTIVE=true
-WELCOME_ISSUE_CREATED=true
-COMMUNITY_INCUBATION_ACTIVE=true
+CURRENT_STRATEGY=COMMERCIAL_PRIVATE_INFRASTRUCTURE
+PRIVATE_CORE_IS_CANONICAL=true
+PUBLIC_INTEROPERABILITY_SURFACES_RETAINED=true
+PUBLIC_SURFACE_NE_OPEN_SOURCE_CORE=true
+PUBLIC_CONTRIBUTION_ROUTE_ACTIVE=false
+COMMUNITY_IDENTITY_IS_HISTORICAL=true
 COMMUNITY_ESTABLISHED=false
-FIRST_EXTERNAL_CONTRIBUTION_CYCLE_COMPLETE=false
 TITMAS_NE_RUNTIME=true
 TITMAS_NE_EXECUTOR=true
 TITMAS_NE_CERTIFICATION_AUTHORITY=true
