@@ -13,5 +13,13 @@ Before proposing an Adapter:
 6. prove `Mapping != Adoption` and `Observation != Evidence`;
 7. avoid copying external Runtime or governance logic.
 
-Start from [`template.md`](template.md). No external Adapter is implemented or
-adopted in this candidate.
+Start from [`template.md`](template.md). The samples below are local
+Development artifacts; none is an adopted external standard or production
+Adapter.
+
+## Development integration samples
+
+- [TITMAS Evaluation Probe Adapter](../integrations/nist-agent-evaluation/README.md)
+  maps NIST-style agent evaluation concerns to read-only TITMAS execution
+  evidence checks. It is a community-authored Development sample, not an
+  official NIST schema, endorsement, certification, or production control.

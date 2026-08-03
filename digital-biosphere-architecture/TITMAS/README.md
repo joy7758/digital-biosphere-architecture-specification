@@ -4,6 +4,12 @@
 
 > Agent-Native Open Standards Community for Trusted Multi-Agent Infrastructure
 
+[![NIST-style Agent Evaluation Compatible](https://img.shields.io/badge/NIST--style%20Agent%20Evaluation-Compatible%20Sample-2563eb)](integrations/nist-agent-evaluation/README.md)
+
+The badge identifies a Development-stage, community-authored compatibility
+sample. It does not claim NIST endorsement, certification, official
+conformance, adoption, or production readiness.
+
 TITMAS develops machine-readable open specifications, conformance assets,
 reference boundaries and contribution protocols for trustworthy multi-agent
 infrastructure. It is not an Agent Framework, Agent Platform, Runtime,
@@ -45,6 +51,8 @@ aliases. No fourth community name is created.
 - Conformance: [`conformance/README.md`](conformance/README.md)
 - Reference implementation boundary: [`reference/README.md`](reference/README.md)
 - Adapter entry: [`adapters/README.md`](adapters/README.md)
+- NIST-style evaluation probe sample:
+  [`integrations/nist-agent-evaluation/README.md`](integrations/nist-agent-evaluation/README.md)
 - Research archive index: [`research/agent-native-ecology-box-001/README.md`](research/agent-native-ecology-box-001/README.md)
 - Private commercialization boundary:
   [`private-governance/source-classification-registry.json`](private-governance/source-classification-registry.json)
