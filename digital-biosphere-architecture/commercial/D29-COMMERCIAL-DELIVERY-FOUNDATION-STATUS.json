@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "status": "DOCUMENTATION_FOUNDATION_COMPLETE_WITH_BLOCKERS",
-  "observed_at": "2026-08-04T04:22:18+08:00",
+  "observed_at": "2026-08-04T05:00:00+08:00",
   "source_branch": "codex/d29-commercial-delivery-foundation-v1",
   "commercial_effect": "NONE",
   "pre_development_agent_review": {
@@ -21,6 +21,9 @@
     "design_partner": {"required": 6, "present": 6, "status": "OUTREACH_NOT_AUTHORIZED"},
     "onboarding": {"required": 6, "present": 6, "status": "NO_CUSTOMER_AUTHORIZED"},
     "china_business_readiness": {"required": 3, "present": 3, "status": "NOT_VERIFIED"}
+    ,"sales": {"required": 12, "present": 12, "status": "INTERNAL_DRAFTS_NOT_AUTHORIZED_TO_SEND"}
+    ,"multi_agent_validation": {"required_valid_sessions": 10, "valid_sessions": 10, "status": "PASS_WITH_LIMITATIONS_PREDEPLOYMENT"}
+    ,"independent_security_evaluation_kit": {"required": 6, "present": 7, "status": "READY_TO_INVITE_NOT_EXECUTED"}
   },
   "offering_availability": {
     "health_snapshot": false,
@@ -38,7 +41,7 @@
     "support_owner_assigned": false,
     "security_contact_assigned": false,
     "critical_findings_open": 1,
-    "multi_agent_commercial_validation": "NOT_COMPLETE"
+    "multi_agent_commercial_validation": "PASS_WITH_LIMITATIONS_PREDEPLOYMENT_NOT_LAUNCH_PASS"
   },
   "fdo_pvs0_reference": {
     "role": "PUBLIC_EVIDENCE_AUXILIARY_LINE",
@@ -67,8 +70,8 @@
     "ASSIGN_SUPPORT_OWNER_AND_SECURITY_CONTACT",
     "PROVIDE_MEASURED_COST_INPUTS_AND_APPROVE_PRICING",
     "CHINESE_COUNSEL_REVIEW_CONTRACT_PACKAGE",
-    "CLOSE_CRITICAL_SECURITY_FINDING",
-    "COMPLETE_MULTI_AGENT_COMMERCIAL_VALIDATION",
+    "EXPLICITLY_DISPOSE_CRITICAL_AND_HIGH_SECURITY_FINDINGS_WITHOUT_REOPENING_D04",
+    "AUTHORIZE_AND_VERIFY_LIVE_COMMERCIAL_ROUTE_DEPLOYMENT",
     "APPROVE_ONE_CUSTOMER_SPECIFIC_MONITOR_SOW"
   ]
 }

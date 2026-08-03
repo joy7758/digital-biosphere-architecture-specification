@@ -5,7 +5,7 @@
   "current_phase": "D29_CUSTOMER_ENTRY_REFERENCE_IMPLEMENTATION",
   "phase_status": "IN_PROGRESS",
   "started_at": "2026-07-30T19:04:07+08:00",
-  "last_updated_at": "2026-08-04T04:22:18+08:00",
+  "last_updated_at": "2026-08-04T05:00:00+08:00",
   "source_commits": {
     "governance": "8b01bb8988c9180392ac2b06a39e2541fc98b260",
     "data_plane": "c02926397563940feeba54b1efbe8d62e406e0e8",
@@ -47,7 +47,10 @@
     "D29_READ_ONLY_CONSOLE_REFERENCE_COMPLETE",
     "D29_SOFTWARE_DELIVERY_PROOF_SYNTHETIC_COMPLETE",
     "D29_CE1_CE5_CLEAN_CLONE_PASS",
-    "D29_COMMERCIAL_DELIVERY_DOCUMENTATION_FOUNDATION_COMPLETE"
+    "D29_COMMERCIAL_DELIVERY_DOCUMENTATION_FOUNDATION_COMPLETE",
+    "D29_SALES_MATERIALS_COMPLETE_INTERNAL_DRAFTS",
+    "D29_MULTI_AGENT_SESSION_THRESHOLDS_PASS_WITH_PREDEPLOYMENT_LIMITATIONS",
+    "D29_PRIVATE_SECURITY_EVALUATION_KIT_READY_TO_INVITE"
   ],
   "gate_descriptions": {
     "STAGE_5_8_SOURCE_IDENTITY_VERIFIED": "The canonical source commit was confirmed; Stage 5.8 did not pass.",
@@ -78,7 +81,10 @@
     "D29_READ_ONLY_CONSOLE_REFERENCE_COMPLETE": "Gateway CE-3 and CE-4 expose Agent-readable read-only projections and Human pages derived from the same projections; the Console is not deployed.",
     "D29_SOFTWARE_DELIVERY_PROOF_SYNTHETIC_COMPLETE": "Gateway CE-5 compares no-Gate, Monitor and Enforce paths using existing Gate, Receipt and Audit code without a provider action or real customer authorization.",
     "D29_CE1_CE5_CLEAN_CLONE_PASS": "Canonical Gateway main c02926397563940feeba54b1efbe8d62e406e0e8 passed source tests and clean-clone validation in the declared synthetic reference context.",
-    "D29_COMMERCIAL_DELIVERY_DOCUMENTATION_FOUNDATION_COMPLETE": "Four offering drafts, an unpriced RMB cost model, seventeen legal drafts, support, design-partner, onboarding, exit and China business-readiness documents exist. They create no price, contract, outreach, customer access, payment, deployment or commercial availability."
+    "D29_COMMERCIAL_DELIVERY_DOCUMENTATION_FOUNDATION_COMPLETE": "Four offering drafts, an unpriced RMB cost model, seventeen legal drafts, support, design-partner, onboarding, exit and China business-readiness documents exist. They create no price, contract, outreach, customer access, payment, deployment or commercial availability.",
+    "D29_SALES_MATERIALS_COMPLETE_INTERNAL_DRAFTS": "All twelve required D29 sales artifacts exist as internal drafts. They are not authorized to send and create no quote, offer, contract or customer fact.",
+    "D29_MULTI_AGENT_SESSION_THRESHOLDS_PASS_WITH_PREDEPLOYMENT_LIMITATIONS": "Ten valid sessions across four providers, five model families and three sanitized entry surfaces passed the D29 threshold after retaining and remediating two invalid responses. Live public commercial discovery still returns 404 and customer adoption remains unproven.",
+    "D29_PRIVATE_SECURITY_EVALUATION_KIT_READY_TO_INVITE": "A public-safe private evaluation kit references architecture and threat boundaries, synthetic vectors, deployment, limitations and rollback. No evaluator is assigned or contacted and no security PASS exists."
   },
   "blocked_gates": [
     "CR01_LEDGER_INTEGRITY_FAILED_RETAINED",
@@ -93,6 +99,8 @@
     "D29_PRICING_NOT_HUMAN_APPROVED",
     "D29_CONTRACTS_NOT_COUNSEL_APPROVED",
     "D29_SUPPORT_AND_SECURITY_OWNERS_UNASSIGNED"
+    ,"D29_LIVE_PUBLIC_COMMERCIAL_DISCOVERY_404_RETAINED"
+    ,"D29_INDEPENDENT_SECURITY_EVALUATION_NOT_EXECUTED"
   ],
   "human_decisions_required": [
     "SELECT_D29_REMAINING_GATE_SEQUENCE",
@@ -138,5 +146,5 @@
     "NO_72_HOUR_7_DAY_OR_30_DAY_ELAPSED_EVIDENCE",
     "NO_REAL_PAYMENT_OR_CUSTOMER_ADOPTION_EVIDENCE"
   ],
-  "next_action": "Obtain Human evidence for business entity and invoice capability, measured cost inputs and pricing, support and security owner assignment, Chinese counsel review, critical security finding closure and multi-Agent validation. Do not reopen D04 or P0-10, deploy, contact a customer, activate an offering, collect payment, process customer data or create a production ledger or signer."
+  "next_action": "Obtain Human evidence for business entity and invoice capability, measured cost inputs and pricing, support and security owner assignment, Chinese counsel review, critical and high security finding disposition, and a separate website deployment decision. Do not reopen D04 or P0-10, contact a customer, activate an offering, collect payment, process customer data or create a production ledger or signer."
 }

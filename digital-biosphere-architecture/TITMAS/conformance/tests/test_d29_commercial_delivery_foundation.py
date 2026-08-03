@@ -17,6 +17,7 @@ class D29CommercialDeliveryFoundationTest(unittest.TestCase):
             "design-partner": 6,
             "onboarding": 6,
             "china": 3,
+            "sales": 13,
         }
         for folder, minimum in expected.items():
             files = [path for path in (COMMERCIAL / folder).iterdir() if path.is_file()]

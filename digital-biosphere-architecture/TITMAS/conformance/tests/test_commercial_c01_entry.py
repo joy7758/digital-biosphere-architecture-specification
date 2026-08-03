@@ -111,6 +111,7 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/TITMAS/conformance/tests/test_agent_action_gate_portfolio.py",
         "digital-biosphere-architecture/TITMAS/conformance/tests/test_d29_current_implementation_projection.py",
         "digital-biosphere-architecture/TITMAS/conformance/tests/test_d29_commercial_delivery_foundation.py",
+        "digital-biosphere-architecture/TITMAS/conformance/tests/test_d29_commercial_readiness_evidence.py",
         "digital-biosphere-architecture/agent-index.json",
         "digital-biosphere-architecture/architecture/ADR-041-low-friction-entry-and-progressive-value.md",
         "digital-biosphere-architecture/architecture/ADR-042-commercial-private-infrastructure-direction.md",
@@ -129,6 +130,8 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/docs/TITMAS_WEBSITE_RESTRUCTURE_PLAN_v0.1.md",
         "digital-biosphere-architecture/commercial-program-state.json",
         "digital-biosphere-architecture/commercial-readiness.json",
+        "digital-biosphere-architecture/COMMERCIAL-READINESS-MACHINE-STATUS.json",
+        "digital-biosphere-architecture/COMMERCIAL-READINESS-REPORT-v1.md",
         "digital-biosphere-architecture/portfolio/canonical-reuse-audit-d29.json",
         "digital-biosphere-architecture/portfolio/product-catalog.internal.json",
         "digital-biosphere-architecture/research/competitive/CONSOLE-INFORMATION-ARCHITECTURE.md",
@@ -137,9 +140,12 @@ def forbidden_change_reason(paths):
         path = Path(raw)
         parts = set(path.parts)
         lowered = raw.lower()
+        frozen_validation_source = raw.startswith(
+            "digital-biosphere-architecture/commercial/validation/d29-multi-agent-v1/source-materials/"
+        )
         if "owner-map" in lowered or "owner_resolver" in lowered or "owner-resolver" in lowered:
             return "OWNER_ROUTING_CHANGED"
-        if "digital-biosphere-architecture" in parts and "site" in parts:
+        if "digital-biosphere-architecture" in parts and "site" in parts and not frozen_validation_source:
             return "WEBSITE_IMPLEMENTATION_CHANGED"
         if parts & forbidden_parts:
             return "CORE_RUNTIME_OR_DATABASE_CHANGED"
@@ -328,6 +334,7 @@ class CommercialC01EntryTests(unittest.TestCase):
         self.assertTrue(current_change_paths())
         self.assertEqual("CORE_RUNTIME_OR_DATABASE_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/src/runtime/observer.py"}))
         self.assertEqual("WEBSITE_IMPLEMENTATION_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/site/app/page.tsx"}))
+        self.assertIsNone(forbidden_change_reason({"digital-biosphere-architecture/commercial/validation/d29-multi-agent-v1/source-materials/site/public/proof-catalog.json"}))
         self.assertEqual("OWNER_ROUTING_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/TITMAS/agent-native/evolution/canonical-owner-map.json"}))
         self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({"digital-biosphere-architecture/unknown.py"}))
         self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({"digital-biosphere-architecture/commercial/observer.py"}))
