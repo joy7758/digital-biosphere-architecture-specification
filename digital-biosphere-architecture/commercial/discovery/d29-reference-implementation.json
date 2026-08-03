@@ -1,23 +1,28 @@
 {
   "contract_format": "TITMAS-D29-REFERENCE-IMPLEMENTATION-PROJECTION-1.0",
   "projection_id": "TITMAS-D29-CURRENT-REFERENCE-IMPLEMENTATION-v1",
-  "observed_at": "2026-08-03T23:23:12+08:00",
+  "observed_at": "2026-08-04T06:21:06+08:00",
   "source": {
     "repository": "joy7758/titmas-sandbox-gateway",
     "branch": "main",
-    "revision": "c02926397563940feeba54b1efbe8d62e406e0e8",
+    "revision": "569dd5506e0030dec9d942846aee50aa92113fd5",
     "source_status": "MERGED_ON_CANONICAL_MAIN",
-    "pull_requests": [44, 45, 46, 48, 49]
+    "pull_requests": [44, 45, 46, 48, 49, 51]
   },
   "capabilities": {
     "postgres_application_wiring": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
     "synthetic_observer_first_value": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
     "agent_overview_console": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
     "console_core_pages": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
-    "software_delivery_monitor_enforce_proof": "TESTED_SYNTHETIC_ONLY_NOT_DEPLOYED"
+    "software_delivery_monitor_enforce_proof": "TESTED_SYNTHETIC_ONLY_NOT_DEPLOYED",
+    "durable_receipt_read_projection": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
+    "durable_audit_export_projection": "IMPLEMENTED_REFERENCE_PARTIAL_CHAIN_NOT_DEPLOYED",
+    "durable_health_projection": "IMPLEMENTED_REFERENCE_AUDIT_PARTIAL_NOT_DEPLOYED"
   },
   "validation": {
-    "clean_clone": "PASS",
+    "clean_clone": "PASS_FOR_CE1_CE5_AT_PREDECESSOR_REVISION",
+    "clean_clone_evidence_revision": "c02926397563940feeba54b1efbe8d62e406e0e8",
+    "ce6_exact_head_ci": "PASS",
     "full_test_count": 358,
     "expected_environment_gated_skip_count": 3,
     "ruff": "PASS",
@@ -31,8 +36,19 @@
       "D29-CE2-SYNTHETIC-FIRST-VALUE-REPORT-v1.0.md",
       "D29-CE3-AGENT-OVERVIEW-CONSOLE-REPORT-v1.0.md",
       "D29-CE4-CONSOLE-CORE-PAGES-REPORT-v1.0.md",
-      "D29-CE5-SOFTWARE-DELIVERY-PROOF-001-REPORT-v1.0.md"
-    ]
+      "D29-CE5-SOFTWARE-DELIVERY-PROOF-001-REPORT-v1.0.md",
+      "D29-CE6-DURABLE-EVIDENCE-READ-PROJECTIONS-REPORT-v1.0.md"
+    ],
+    "pull_request_51_exact_head": "df6a10a38dfc9f4e7e39775c24410f201432914b",
+    "pull_request_51_merge_commit": "569dd5506e0030dec9d942846aee50aa92113fd5",
+    "pull_request_51_url": "https://github.com/joy7758/titmas-sandbox-gateway/pull/51",
+    "quality_ci": "PASS",
+    "quality_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30858156854/job/91833893683",
+    "postgres_integration_ci": "PASS",
+    "postgres_integration_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30858156854/job/91833893794",
+    "supply_chain_ci": "PASS",
+    "supply_chain_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30858156841/job/91833893640",
+    "dependency_audit": "PASS_WITH_PRIVATE_PACKAGES_UNAUDITABLE_BY_PUBLIC_INDEX"
   },
   "measured_synthetic_reference": {
     "scenario_id": "D29-SYNTHETIC-SOFTWARE-DELIVERY-001",
@@ -83,6 +99,8 @@
     "gate_decision_is_execution": false,
     "synthetic_authorization_is_customer_authorization": false,
     "public_launch_authorized": false
+    ,"postgres_audit_projection_chain_complete": false
+    ,"postgres_audit_projection_profile": "COMMERCIAL_TENANT_AUDIT_SUBSET_V1"
   },
   "projection_effect": "READ_ONLY_DBA_SOURCE_PIN_NO_CHILD_STATUS_WRITE"
 }

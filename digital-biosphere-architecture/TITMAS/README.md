@@ -272,13 +272,19 @@ MATURE_COMMERCIAL_INFRASTRUCTURE=false
 ```
 
 The source-pinned D29 projection now records the private Gateway reference at
-`main@c02926397563940feeba54b1efbe8d62e406e0e8`. PostgreSQL application
+`main@569dd5506e0030dec9d942846aee50aa92113fd5`. PostgreSQL application
 wiring, the zero-customer-data synthetic Observer/FirstValue route, read-only
 Console projections and the software-delivery Monitor/Enforce proof exist as
 bounded reference implementations. They are not deployed offerings. The
 Monitor/Enforce proof is synthetic and non-binding; no real customer
 authorization, provider action, customer data, payment or production claim is
 created.
+
+The same source now includes credential-bound durable Receipt reads and scoped
+Audit/Health projections. The PostgreSQL Audit export is explicitly an
+incomplete Tenant subset, so `audit_chain_complete=false` and Health Audit
+remains `PARTIAL`. This is source-level reference evidence, not a commercially
+available Health Snapshot or Monitor Pilot.
 
 ```text
 D29_REFERENCE_IMPLEMENTATION_SOURCE_PINNED=true

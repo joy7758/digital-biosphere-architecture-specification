@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-GATEWAY_REVISION = "c02926397563940feeba54b1efbe8d62e406e0e8"
+GATEWAY_REVISION = "569dd5506e0030dec9d942846aee50aa92113fd5"
 
 
 def load(relative: str):
@@ -54,6 +54,28 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
         self.assertFalse(self.status["commercial_customer_created"])
         self.assertEqual(0, self.offerings["available_offering_count"])
         self.assertTrue(all(not item.get("currently_available_offering", False) for item in self.offerings["offerings"]))
+
+    def test_durable_read_projections_retain_partial_audit_boundary(self):
+        capabilities = self.projection["capabilities"]
+        boundaries = self.projection["retained_fail_closed_boundaries"]
+        self.assertEqual(
+            "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
+            capabilities["durable_receipt_read_projection"],
+        )
+        self.assertEqual(
+            "IMPLEMENTED_REFERENCE_PARTIAL_CHAIN_NOT_DEPLOYED",
+            capabilities["durable_audit_export_projection"],
+        )
+        self.assertEqual(
+            "IMPLEMENTED_REFERENCE_AUDIT_PARTIAL_NOT_DEPLOYED",
+            capabilities["durable_health_projection"],
+        )
+        self.assertFalse(boundaries["postgres_audit_projection_chain_complete"])
+        self.assertEqual(
+            "COMMERCIAL_TENANT_AUDIT_SUBSET_V1",
+            boundaries["postgres_audit_projection_profile"],
+        )
+        self.assertFalse(self.projection["availability"]["deployed"])
 
     def test_synthetic_measurements_retain_scope_and_non_claims(self):
         measured = self.projection["measured_synthetic_reference"]
