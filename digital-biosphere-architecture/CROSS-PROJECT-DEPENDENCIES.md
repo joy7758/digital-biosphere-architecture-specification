@@ -47,6 +47,7 @@ last_reviewed: 2026-08-02
 |---|---|---|---|
 | POP ↔ DBOS | Persona projection 与 canonical identity 映射 | `REVIEW_REQUIRED` | Owner、schema、状态写权与冲突规则 |
 | Agent Evidence → DBOS | receipt / evidence reference 交接 | `REVIEW_REQUIRED` | canonical Evidence owner、完整性与版本边界 |
+| FDO PVS-0 → DBA / ARO / Agent Evidence | 五条 PID 的分类保全、两个非规范 Profile 候选和公开历史验证链的只读引用 | `AUXILIARY_REFERENCE_FROZEN_GWDG_CONFIRMATION_PENDING` | GWDG 只确认账户绑定、迁移预览和分类；未来 Profile v1 必须独立 Proposal/Decision；PVS-0 不成为 Evidence authority、正式 FDO 标准或运行依赖 |
 | TITMAS Agent Action Gate → DBA / future execution surfaces | 项目状态汇报与未来 action decision / authorization-reference / refusal 交接候选 | `REFERENCE_IMPLEMENTED_MAPPING_REVIEW_REQUIRED_G0_PENDING_NOT_ADMITTED` | public `main@6f1c83b` 已实现确定性 gate、6-tool MCP、pinned agent-evidence、独立 caller／approver credential、一次性 consumption、真实 sandbox Draft PR 和已销毁的官方 AgentTeams v1.2.0 operator-supervised 本地 smoke；G0 仍待 Human Decision，项目未准入；仍须审查 per-Worker MCP ACL、Skill materialization、自治链、DBOS Permission、Runtime enforcement、Gateway 和 audit-record Owner；无跨项目 API mapping、持久／生产 Runtime 或采用权 |
 | Media Evidence → DBA / DBOS | 已接纳相邻候选的 private canonical status 只读引用；未来可能的媒体 evidence-bearing record / reference 交接 | `PORTFOLIO_ADMITTED_BOUNDARY_ONLY_MAPPING_NOT_AUTHORIZED` | Source/owner/freshness 和组合准入已建立；DBOS Evidence Admission contract、mapping 实现、跨项目符合性和 G3-G8 仍须独立决定；网站展示不等于架构采用 |
 | ARO → DBOS / SAEE | Audit result 作为 Verification 或 Evaluation 输入 | `REVIEW_REQUIRED` | Audit、Verification、Evaluation 三者分离 |

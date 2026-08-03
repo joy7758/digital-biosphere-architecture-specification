@@ -49,6 +49,7 @@ MISSING_CONTEXT_COMPARISON_FAILS_CLOSED=true
 | TITMAS Agent Action Gate | `REVIEW_REQUIRED_READY_FOR_HUMAN_DECISION` | `PASS_PUBLIC_MAIN_REFERENCE_SOURCE_PINNED` | `PARTIAL_SPECIFIED_CROSS_PROJECT_OWNER_REVIEW_REQUIRED` | `EXPERIMENTAL_REFERENCE_IMPLEMENTATION_MERGED_TO_MAIN` | `PASS_LOCAL_AND_CI_REFERENCE_CONFORMANCE_NOT_INDEPENDENT` | `G5_OWNER_FULL_MANAGEMENT_POLICY_NO_RUNTIME_PERMISSION_G6_SANDBOX_DRAFT_PR_AND_NATIVE_OPERATOR_SUPERVISED_SMOKE_NO_EXTERNAL_ACTION_G7_NOT_ASSESSED_ADVISORY_REVIEW_ONLY_NO_HUMAN_ADOPTION_DECISION_PRODUCT_NOT_RECOMMENDED_G8_NOT_RELEASED_NOT_ADOPTED_NOT_SUBMITTED` | public `main@6f1c83b`、两项 contract check、44 tests、sandbox Draft PR `#3` 与一次已销毁的官方 AgentTeams v1.2.0 本地 smoke 已验证；smoke 未完成自治链、未实施 per-Worker MCP ACL 或 Skill materialization，也未执行 provider action；G0 准入、G7 Human Adoption Decision、生产审查、release 和比赛提交仍未完成 |
 | Adjacent components other than Media Evidence | `NOT_PASSED` | `NOT_ASSESSED` | `REVIEW_REQUIRED` | `NOT_ASSESSED` | `NOT_ASSESSED` | `NOT_ASSESSED` | 仅保留候选映射 |
 | TITMAS Media Evidence v0.1.0 | `PASS_ADMITTED_AS_ADJACENT_CANDIDATE` | `PASS` | `PASS_BOUNDARY_ONLY_MAPPING_NOT_AUTHORIZED` | `NOT_ASSESSED` | `NOT_ASSESSED` | `G5_NOT_AUTHORIZED_G6_NOT_EXECUTED_G7_NOT_ASSESSED_G8_NOT_RELEASED_NOT_ADOPTED` | 只完成有界项目组合准入和对象边界；DBOS mapping、跨项目符合性、标准、核心、生产和采用均未建立 |
+| TITMAS FDO DTR / PVS-0 auxiliary line | `PASS_AUXILIARY_ROLE_ONLY` | `PASS_PUBLIC_COMMIT_AND_ZENODO_WITH_STALE_EMBEDDED_STATUS_RECORDED` | `PASS_CLASSIFICATION_AND_NON_CLAIM_BOUNDARY` | `NOT_APPLICABLE_NO_RUNTIME_MAPPING` | `PASS_10_OF_10_BOUNDED_OFFLINE_SCOPE_ONLY` | `G5_GWDG_CONFIRMATION_PENDING_G6_PUBLIC_ARCHIVE_ONLY_G7_NOT_ASSESSED_G8_NOT_STANDARD_NOT_ADOPTED` | 五条记录保持 `2 FdoProfile / 2 BasicInfoType / 1 FdoService`；PVS-0 是公开历史验证切片，不是正式 FDO 标准、完整符合性、认证、生产或外部采用 |
 | Trusted Multi-Agent Infrastructure Developer Preview | `PASS_CORE_SCOPE` | `PASS_FROZEN_REMOTE_BASELINE` | `PASS` | `PASS_SCOPED_CLEAN_CLONE` | `AGENT_CUSTOMER_RERUN_PASS` | `G6_SYNTHETIC_G7_PASS_G8_RELEASED_BY_ADR_022` | exact wheel 匿名分发、GitHub Release、百度云 formal deployment 和人工发布决定通过；不是生产采用 |
 | P0-10 Unknown-Agent Technical Onboarding | `PASS_UNIQUE_MAINLINE_FROZEN_BY_D16` | `PASS_MACHINE_TRUTH_AND_FROZEN_CONTRACTS` | `PASS_API_V1_SDK_MCP_BOUNDARIES` | `PASS_RUNTIME_ALIGNMENT` | `FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT` | `G5_D15_ONLY_G6_FAILURE_RETAINED_G7_NOT_ASSESSED_G8_NOT_AUTHORIZED` | discovery、MCP/SDK、preflight call 和 Receipt fetch 已到达；Schema-valid PASS、VALID verification 和 second-task reuse 未达，不能以 CI/HTTP/fixture/human-guided success 替代 |
 | D19 Discovery Evolution | `PASS_EXPLICIT_HUMAN_DECISION` | `PASS_DBA_OWNER_ROUTING` | `PASS_SEVEN_SCHEMAS_AND_POLICY` | `PASS_LOCAL_REFERENCE_25_TESTS` | `PENDING_DRAFT_PR_DEMO` | `G5_DRAFT_PR_ONLY_G6_G8_NOT_AUTHORIZED` | ER-1 只允许隔离实现、确定性评价、回滚与 Draft PR；不授权 merge、release、deployment、生产 Runtime 或 P0-10 重开 |
@@ -192,3 +193,22 @@ from `joy7758/titmas-sandbox-gateway` canonical
 `PASS` above applies only to the source-pinned reference scope. Receipt
 verification is not Truth, Gate decision is not execution, and a synthetic
 authorization profile is not customer authorization.
+
+## 8. FDO DTR / PVS-0 Auxiliary Gate Detail
+
+| gate | current result | retained boundary |
+|---|---|---|
+| Classification preservation | `PASS_PUBLIC_MANIFEST_AND_OWNER_REPORT` | `FdoService` 不得重新分类；两个 `BasicInfoType` 不得提升为 Profile |
+| Public source | `PASS_PINNED` | public `main@1dcca69d0bcc2ee94b7e3ef0c80f21536cd39d1c`，43 files |
+| Bounded reproducibility | `PASS_10_OF_10` | 只覆盖离线 schema/digest runner 的声明范围 |
+| Archive | `PASS_PUBLISHED` | record DOI `10.5281/zenodo.21778954`；concept DOI `10.5281/zenodo.21778953` |
+| Source consistency | `PASS_WITH_RECORDED_LIMITATION` | pinned `STATUS.md` 仍是发布前快照，不能作为当前 publication truth |
+| DTR migration | `WAITING_FOR_GWDG_RESPONSE` | 仅账户绑定、迁移预览和分类验收可继续 |
+| v1 / standardization | `NOT_AUTHORIZED` | 两个 Profile 只是非规范候选资产 |
+
+```text
+PVS0_PASS_NE_FDO_CONFORMANCE=true
+PUBLIC_ARCHIVE_NE_STANDARD=true
+PROFILE_CANDIDATE_NE_NORMATIVE_PROFILE=true
+GWDG_MIGRATION_REQUEST_NE_MIGRATION_ACCEPTANCE=true
+```

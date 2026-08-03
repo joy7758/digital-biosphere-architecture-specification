@@ -1,0 +1,121 @@
+{
+  "$schema": "../fdo-pvs0-projection.schema.json",
+  "projection_contract_version": "0.1",
+  "project_id": "titmas-fdo-pvs0",
+  "portfolio_role": "AUXILIARY_PUBLIC_VERIFICATION_EVIDENCE_LINE",
+  "line_status": "FROZEN_MAINTENANCE_MODE",
+  "observed_at": "2026-08-03T19:00:57Z",
+  "public_source": {
+    "repository": "joy7758/titmas-fdo-public-verification",
+    "branch": "main",
+    "revision": "1dcca69d0bcc2ee94b7e3ef0c80f21536cd39d1c",
+    "visibility": "PUBLIC",
+    "file_count": 43,
+    "revision_verified": true,
+    "tests": {
+      "command": "PYTHONPATH=runner/src python3 -m unittest discover -s runner/tests -p test_*.py -v",
+      "passed": 10,
+      "failed": 0,
+      "result": "PASS_BOUNDED_OFFLINE_SCOPE",
+      "independently_rerun_at": "2026-08-03T19:00:57Z"
+    }
+  },
+  "archive": {
+    "status": "PUBLISHED",
+    "record_doi": "10.5281/zenodo.21778954",
+    "concept_doi": "10.5281/zenodo.21778953",
+    "title": "TITMAS 21.T11966 Five-Record Public Verification Slice PVS-0 Candidate",
+    "version": "PVS-0-candidate",
+    "file_name": "titmas-fdo-pvs0-candidate-1dcca69.zip",
+    "file_size_bytes": 82847,
+    "file_md5": "09defa9345bf5ff6c766c5efa88130e0",
+    "archive_file_count": 43,
+    "matches_public_commit_tree": true,
+    "private_implementation_disclosed": false
+  },
+  "records": [
+    {
+      "identifier": "21.T11966/aro-audit-profile-v1",
+      "classification": "FdoProfile",
+      "governance_role": "FUTURE_ARO_AUDIT_PROFILE_STANDARDIZATION_CANDIDATE",
+      "normative": false,
+      "target_disposition": "STANDARDIZATION_CANDIDATE_ASSET",
+      "classification_preservation_required": true
+    },
+    {
+      "identifier": "21.T11966/fdo-operation-evidence-profile-v0-1",
+      "classification": "FdoProfile",
+      "governance_role": "FUTURE_EXECUTION_EVIDENCE_PROFILE_PRIMARY_CANDIDATE_HISTORICAL_V0_1",
+      "normative": false,
+      "target_disposition": "STANDARDIZATION_CANDIDATE_ASSET",
+      "classification_preservation_required": true
+    },
+    {
+      "identifier": "21.T11966/aro-audit-manifest-v1",
+      "classification": "BasicInfoType",
+      "governance_role": "DEMO_AND_HISTORICAL_RECORD",
+      "normative": false,
+      "target_disposition": "NON_NORMATIVE_DEMO_AND_HISTORICAL_EVIDENCE",
+      "classification_preservation_required": true
+    },
+    {
+      "identifier": "21.T11966/aro-audit-demo-obj-v1",
+      "classification": "BasicInfoType",
+      "governance_role": "NON_NORMATIVE_DEMO_OBJECT",
+      "normative": false,
+      "target_disposition": "NON_NORMATIVE_DEMO_AND_HISTORICAL_EVIDENCE",
+      "classification_preservation_required": true
+    },
+    {
+      "identifier": "21.T11966/aro-audit-demo-do-1",
+      "classification": "FdoService",
+      "governance_role": "DEMO_SERVICE_INSTANCE",
+      "normative": false,
+      "target_disposition": "NON_NORMATIVE_DEMO_AND_HISTORICAL_EVIDENCE",
+      "classification_preservation_required": true
+    }
+  ],
+  "migration": {
+    "status": "WAITING_FOR_GWDG_RESPONSE",
+    "requested_profile_draft_migrations": [
+      "21.T11966/aro-audit-profile-v1",
+      "21.T11966/fdo-operation-evidence-profile-v0-1"
+    ],
+    "external_confirmation": "NOT_YET_RECEIVED",
+    "allowed_follow_up": [
+      "ACCOUNT_BINDING",
+      "MIGRATION_PREVIEW",
+      "CLASSIFICATION_ACCEPTANCE"
+    ],
+    "forbidden_reclassification": true
+  },
+  "source_consistency": {
+    "embedded_status_digest": "212e790b5dd0dec1d60b9110784cca2f42b92b8002a480f818f554a1b55e20ad",
+    "embedded_status_snapshot": "PRE_PUBLICATION",
+    "live_repository_state": "PUBLIC_AT_PINNED_REVISION",
+    "live_archive_state": "PUBLISHED",
+    "result": "PASS_WITH_STALE_EMBEDDED_STATUS_RECORDED",
+    "conflicts": [
+      "STATUS_MD_PUBLIC_REPOSITORY_CREATED_FALSE_VS_LIVE_PUBLIC_REPOSITORY",
+      "STATUS_MD_PUSHED_FALSE_VS_PINNED_COMMIT_AVAILABLE_ON_PUBLIC_MAIN",
+      "STATUS_MD_RELEASED_FALSE_VS_ZENODO_RECORD_PUBLISHED",
+      "STATUS_MD_GWDG_EMAIL_SENT_FALSE_VS_OWNER_REPORTED_EMAIL_SENT"
+    ]
+  },
+  "boundaries": {
+    "formal_fdo_standard": false,
+    "certification_system": false,
+    "production_runtime": false,
+    "full_conformance": false,
+    "external_adoption_proven": false,
+    "new_truth_source": false,
+    "new_control_authority": false,
+    "v1_standard_authorized": false
+  },
+  "next_actions": [
+    "WAIT_FOR_GWDG_RESPONSE",
+    "HANDLE_ONLY_ACCOUNT_BINDING_MIGRATION_PREVIEW_AND_CLASSIFICATION_ACCEPTANCE",
+    "CORRECT_STALE_EMBEDDED_PUBLICATION_STATUS_IN_SOURCE_UNDER_SEPARATE_MAINTENANCE_CHANGE",
+    "FOCUS_MAINLINE_ON_REAL_EXECUTION_EVIDENCE_CROSS_RUNTIME_INTEROPERABILITY_AND_FIRST_REAL_ADOPTION"
+  ]
+}

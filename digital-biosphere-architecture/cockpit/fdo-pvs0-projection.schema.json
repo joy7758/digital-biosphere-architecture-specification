@@ -1,0 +1,144 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://titmas.cn/schemas/dba/fdo-pvs0-projection-v0.1.schema.json",
+  "title": "TITMAS FDO DTR and PVS-0 read-only cockpit projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "projection_contract_version",
+    "project_id",
+    "portfolio_role",
+    "line_status",
+    "observed_at",
+    "public_source",
+    "archive",
+    "records",
+    "migration",
+    "source_consistency",
+    "boundaries",
+    "next_actions"
+  ],
+  "properties": {
+    "$schema": { "const": "../fdo-pvs0-projection.schema.json" },
+    "projection_contract_version": { "const": "0.1" },
+    "project_id": { "const": "titmas-fdo-pvs0" },
+    "portfolio_role": { "const": "AUXILIARY_PUBLIC_VERIFICATION_EVIDENCE_LINE" },
+    "line_status": { "const": "FROZEN_MAINTENANCE_MODE" },
+    "observed_at": { "type": "string", "format": "date-time" },
+    "public_source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "branch", "revision", "visibility", "file_count", "revision_verified", "tests"],
+      "properties": {
+        "repository": { "const": "joy7758/titmas-fdo-public-verification" },
+        "branch": { "const": "main" },
+        "revision": { "pattern": "^[a-f0-9]{40}$", "type": "string" },
+        "visibility": { "const": "PUBLIC" },
+        "file_count": { "const": 43 },
+        "revision_verified": { "const": true },
+        "tests": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["command", "passed", "failed", "result", "independently_rerun_at"],
+          "properties": {
+            "command": { "type": "string", "minLength": 1 },
+            "passed": { "const": 10 },
+            "failed": { "const": 0 },
+            "result": { "const": "PASS_BOUNDED_OFFLINE_SCOPE" },
+            "independently_rerun_at": { "type": "string", "format": "date-time" }
+          }
+        }
+      }
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "record_doi", "concept_doi", "title", "version", "file_name", "file_size_bytes", "file_md5", "archive_file_count", "matches_public_commit_tree", "private_implementation_disclosed"],
+      "properties": {
+        "status": { "const": "PUBLISHED" },
+        "record_doi": { "const": "10.5281/zenodo.21778954" },
+        "concept_doi": { "const": "10.5281/zenodo.21778953" },
+        "title": { "type": "string", "minLength": 1 },
+        "version": { "const": "PVS-0-candidate" },
+        "file_name": { "const": "titmas-fdo-pvs0-candidate-1dcca69.zip" },
+        "file_size_bytes": { "const": 82847 },
+        "file_md5": { "const": "09defa9345bf5ff6c766c5efa88130e0" },
+        "archive_file_count": { "const": 43 },
+        "matches_public_commit_tree": { "const": true },
+        "private_implementation_disclosed": { "const": false }
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["identifier", "classification", "governance_role", "normative", "target_disposition", "classification_preservation_required"],
+        "properties": {
+          "identifier": { "type": "string", "pattern": "^21\\.T11966/.+$" },
+          "classification": { "enum": ["FdoProfile", "BasicInfoType", "FdoService"] },
+          "governance_role": { "type": "string", "minLength": 1 },
+          "normative": { "const": false },
+          "target_disposition": { "enum": ["STANDARDIZATION_CANDIDATE_ASSET", "NON_NORMATIVE_DEMO_AND_HISTORICAL_EVIDENCE"] },
+          "classification_preservation_required": { "const": true }
+        }
+      }
+    },
+    "migration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "requested_profile_draft_migrations", "external_confirmation", "allowed_follow_up", "forbidden_reclassification"],
+      "properties": {
+        "status": { "const": "WAITING_FOR_GWDG_RESPONSE" },
+        "requested_profile_draft_migrations": { "type": "array", "minItems": 2, "maxItems": 2, "uniqueItems": true },
+        "external_confirmation": { "const": "NOT_YET_RECEIVED" },
+        "allowed_follow_up": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "enum": ["ACCOUNT_BINDING", "MIGRATION_PREVIEW", "CLASSIFICATION_ACCEPTANCE"] }
+        },
+        "forbidden_reclassification": { "const": true }
+      }
+    },
+    "source_consistency": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["embedded_status_digest", "embedded_status_snapshot", "live_repository_state", "live_archive_state", "result", "conflicts"],
+      "properties": {
+        "embedded_status_digest": { "pattern": "^[a-f0-9]{64}$", "type": "string" },
+        "embedded_status_snapshot": { "const": "PRE_PUBLICATION" },
+        "live_repository_state": { "const": "PUBLIC_AT_PINNED_REVISION" },
+        "live_archive_state": { "const": "PUBLISHED" },
+        "result": { "const": "PASS_WITH_STALE_EMBEDDED_STATUS_RECORDED" },
+        "conflicts": {
+          "type": "array",
+          "minItems": 1,
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        }
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["formal_fdo_standard", "certification_system", "production_runtime", "full_conformance", "external_adoption_proven", "new_truth_source", "new_control_authority", "v1_standard_authorized"],
+      "properties": {
+        "formal_fdo_standard": { "const": false },
+        "certification_system": { "const": false },
+        "production_runtime": { "const": false },
+        "full_conformance": { "const": false },
+        "external_adoption_proven": { "const": false },
+        "new_truth_source": { "const": false },
+        "new_control_authority": { "const": false },
+        "v1_standard_authorized": { "const": false }
+      }
+    },
+    "next_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    }
+  }
+}

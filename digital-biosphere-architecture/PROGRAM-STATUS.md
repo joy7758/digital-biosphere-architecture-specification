@@ -701,3 +701,40 @@ false, and the existing commercial readiness, legal, security, business,
 deployment, pricing, support and external-validation gates remain separate.
 This overlay corrects a stale `NOT_ASSESSED` implementation projection; it does
 not rewrite the architecture-only C-01 freeze or any prior failure.
+
+## 19. FDO DTR Migration and PVS-0 Auxiliary Closure Overlay
+
+Observed on 2026-08-04 from the public verification repository, Zenodo API and
+the Human Owner migration report:
+
+```text
+FDO_MIGRATION_LINE_STATUS=WAITING_FOR_GWDG_RESPONSE
+PVS0_STATUS=PUBLIC_ARCHIVED_MAINTENANCE_MODE
+PVS0_SOURCE_REPOSITORY=joy7758/titmas-fdo-public-verification
+PVS0_SOURCE_REVISION=1dcca69d0bcc2ee94b7e3ef0c80f21536cd39d1c
+PVS0_PUBLIC_FILE_COUNT=43
+PVS0_OFFLINE_TESTS=10/10_PASS_BOUNDED_SCOPE
+PVS0_RECORD_DOI=10.5281/zenodo.21778954
+PVS0_CONCEPT_DOI=10.5281/zenodo.21778953
+FDO_PROFILE_CANDIDATE_COUNT=2
+NON_NORMATIVE_DEMO_ASSET_COUNT=3
+GWDG_MIGRATION_CONFIRMED=false
+SOURCE_EMBEDDED_STATUS_CURRENT=false
+SOURCE_CONSISTENCY=PASS_WITH_STALE_EMBEDDED_STATUS_RECORDED
+NEW_RUNTIME_CREATED=false
+NEW_CONTROL_AUTHORITY_CREATED=false
+V1_STANDARD_AUTHORIZED=false
+PUBLIC_ADOPTION_PROVEN=false
+```
+
+The exact public commit preserves two `FdoProfile`, two `BasicInfoType` and one
+`FdoService`. DBA registers the two profiles as non-normative standardization
+candidates and the other three records as non-normative demo/history assets.
+It does not change DTR classifications or create FDO standard authority.
+
+The pinned repository `STATUS.md` remains a pre-publication snapshot and
+conflicts with the live public repository and published Zenodo record. The
+conflict is retained rather than silently rewritten. The machine projection is
+[`titmas-fdo-pvs0.json`](cockpit/projections/titmas-fdo-pvs0.json); the human
+boundary record is
+[`titmas-fdo-dtr-migration-pvs0-closure-v0.1.md`](architecture/titmas-fdo-dtr-migration-pvs0-closure-v0.1.md).

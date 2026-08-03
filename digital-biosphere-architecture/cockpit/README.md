@@ -41,3 +41,15 @@ The registry pins canonical `main` to an exact revision, tree and status digest.
 The adapter does not expose a candidate-branch mode or any write path. A source
 or observation PASS must never be presented as released, deployed, adopted,
 certified, self-healing-complete, self-evolution-complete or production-ready.
+
+## FDO DTR / PVS-0 auxiliary projection
+
+[`projections/titmas-fdo-pvs0.json`](projections/titmas-fdo-pvs0.json) is a
+separate, static, source-pinned projection for the frozen FDO migration and
+public verification auxiliary line. It records five PID classifications, the
+public GitHub/Zenodo chain, the bounded 10-test result, and the stale embedded
+publication-status finding.
+
+It is not registered in the dynamic Scout adapter because it is in maintenance
+mode and has no Runtime status to poll. GWDG migration confirmation remains an
+external fact; the projection cannot approve, execute or rewrite migration.

@@ -29,6 +29,7 @@ creates_project_relationships: false
 | `PROJECT-POP` | POP | Identity-related component（身份相关组件）；既有公共语义中也用于 portable persona interface（可移植人格接口） | DBOS Identity 相邻域 | 本表不声明 POP 是 DBOS 子模块、身份权威或已接入 DBOS | POP persona projection（人格投射）与 DBOS canonical identity（规范身份）的责任分界 |
 | `PROJECT-ARO` | ARO / ARO-Audit | Evidence/Audit component（证据/审计组件） | DBOS Evidence/Verification 相邻域 | 本表不声明其采集、验证、审计或回放能力已实现或属于 DBOS | 与 Agent Evidence、DBOS Evidence Collection 的数据所有权和阶段边界 |
 | `PROJECT-AGENT-EVIDENCE` | Agent Evidence | Evidence component（证据组件） | Execution-to-evidence handoff（执行到证据交接）相邻域 | Evidence package（证据包）不自动等于 DBOS 验证或 SAEE 评价 | 与 ARO 的审计职责、与 DBOS 的证据采集职责可能重叠 |
+| `PROJECT-TITMAS-FDO-PVS0` | TITMAS FDO DTR / PVS-0 auxiliary line | FDO migration governance and bounded public verification evidence（FDO 迁移治理与有界公开验证证据） | ARO / Agent Evidence standardization-history adjacent domain | 两个 `FdoProfile` 是非规范标准化候选；两个 `BasicInfoType` 和一个 `FdoService` 是非规范 Demo／历史材料；公开归档不产生标准、Runtime、Truth 或采用 | 等待 GWDG 对账户绑定、迁移预览和分类的外部确认；源仓发布前状态快照待独立维护修正 |
 | `PROJECT-MEDIA-EVIDENCE` | TITMAS Media Evidence v0.1.0 | 已接纳的 AIGC media-review Application Profile / Reference Implementation candidate（人工智能生成内容媒体审核应用场景配置／参考实现候选） | Application / Media Governance Profile；DBOS Evidence 相邻域 | `MediaEvidenceObject` 已决定为 domain-local evidence-bearing record，不是 DBOS canonical Evidence Object；组合准入、112 项本地测试和公开合成 Demo 不表示 Truth、Identity、Legal Evidence、Production、Conformance 或 Adoption | `ADJACENT_CANDIDATE` 已接纳；private canonical source 和 status contract 已建立；未来 DBOS Evidence Admission mapping 仍须独立授权和实现 |
 | `PROJECT-TOKEN-GOVERNOR` | Token Governor | Resource governance component（资源治理组件） | DBOS operational governance（运行治理）相邻域；为 SAEE 提供资源评价输入 | 本表不声明其是 DBOS 内置模块或拥有最终治理权 | 与 DBOS 执行约束、SAEE 资源适应度评价的边界 |
 | `PROJECT-RESEARCH-AGENT` | Research Agent | Future Operational Digital Entity（未来运行型数字实体）；第一个 Pilot reference（试验参考） | Digital Entity / Operational | 只是参考规范与 Pilot 设计；没有创建 Agent、Identity、Runtime、Capability、Permission、任务或研究结果 | 接入前需满足 Digital Entity、Capability、授权、Evidence、评价与 Human Oversight 契约 |
@@ -184,4 +185,10 @@ MEDIA_EVIDENCE_DBOS_MAPPING_AUTHORIZED=false
 MEDIA_EVIDENCE_CORE_COMPONENT=false
 MEDIA_EVIDENCE_STANDARD=false
 MEDIA_EVIDENCE_PRODUCTION_READY=false
+FDO_PVS0_ROLE=AUXILIARY_PUBLIC_VERIFICATION_EVIDENCE_LINE
+FDO_PVS0_LINE_FROZEN=true
+FDO_PVS0_PROFILE_CANDIDATES=2
+FDO_PVS0_NON_NORMATIVE_DEMO_ASSETS=3
+FDO_PVS0_V1_STANDARD_AUTHORIZED=false
+FDO_PVS0_PUBLIC_ADOPTION_PROVEN=false
 ```

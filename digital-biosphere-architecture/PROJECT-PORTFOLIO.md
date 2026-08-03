@@ -41,6 +41,7 @@ changes_project_status: false
 | `POP` | `/Users/zhangbin/GitHub/persona-object-protocol` | Identity / Persona adjacent component（身份／人格相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 与 DBOS canonical identity 的 Owner 和映射边界是什么？ |
 | `ARO` | `/Users/zhangbin/GitHub/aro-audit` | Audit / Verification adjacent component（审计／验证相邻组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 与 DBOS Verification、Agent Evidence 的阶段和数据所有权如何分离？ |
 | `AGENT-EVIDENCE` | `/Users/zhangbin/GitHub/agent-evidence` | Execution-to-evidence component（执行到证据组件） | `MAPPING_ONLY_REVIEW_REQUIRED` | 哪些记录是 canonical Evidence，哪些只是 receipt（回执）或 transport（传输）？ |
+| `TITMAS-FDO-PVS0` | public `joy7758/titmas-fdo-public-verification`；`main@1dcca69d0bcc2ee94b7e3ef0c80f21536cd39d1c`；Zenodo `10.5281/zenodo.21778954` | FDO migration governance and bounded public verification evidence line（FDO 迁移治理与有界公开验证证据线） | `AUXILIARY_LINE_FROZEN_MAINTENANCE_MODE` | 两个 `FdoProfile` 只登记为非规范标准化候选；三个 Demo 资产保持原分类；GWDG 迁移仍待外部确认；PVS-0 不得提升为标准、认证、Runtime 或采用证明 |
 | `TITMAS-AGENT-ACTION-GATE` | public `joy7758/titmas-agent-action-gate`；`main@6f1c83bf87e6ee96a0eda281e1fa91b8f80a32e1`；status `governance/project-declaration.json` | Agent-proposed action 的 fail-closed Governance Service / Application boundary（治理服务／应用边界）候选 | `REFERENCE_IMPLEMENTED_ON_MAIN_G0_READY_FOR_REVIEW_NOT_ADMITTED` | 已实现 action decision、approval、canonical evidence verification、一次性 execution binding、真实 sandbox Draft PR 与已销毁的官方 AgentTeams v1.2.0 operator-supervised 本地 smoke；仍须审查 per-Worker MCP ACL、Skill materialization、自治链、DBOS Permission、Runtime policy enforcement、TITMAS conformance／gateway 重复和 audit record Owner |
 | `titmac-scout` | private `joy7758/titmac-scout`；canonical `main@7cfcde4c22daa8ea3fd2b48a15ba6ab78463c907`；status source `governance/project-status.json` | Discovery self-healing and evolution implementation（发现、自愈与演化实现）候选 | `CANONICAL_STATUS_SOURCE_MERGED_READ_ONLY_COCKPIT_BRIDGE_READY_FOR_HUMAN_REVIEW` | D21 只激活规范状态源和动态只读观察；D19 等价实现、测试与保留 Demo 尚未证明，PR #105/#106 ownership/migration review 仍待决定 |
 | `MEDIA-EVIDENCE` | private `joy7758/titmas-media-guard`；`v0.1.0@7eac452f66a2b7de525543f80b9a7cf1465ef9a1`；status `governance/project-status.json` | AIGC media-review Application Profile / Reference Implementation candidate（人工智能生成内容媒体审核应用场景配置／参考实现候选） | `ADMITTED_ADJACENT_CANDIDATE` | G0、G1 和边界限定的 G2 已通过；DBOS Evidence Admission mapping 未授权，G3-G8 未评估、未授权或未执行 |
@@ -87,6 +88,12 @@ TITMAC_SCOUT_CANONICAL_IDENTITY_FROZEN=true
 TITMAC_SCOUT_PORTFOLIO_ADMISSION_GRANTED=false
 TITMAC_SCOUT_STATUS_CONTRACT_MERGED=true
 TITMAC_SCOUT_PUBLIC_OPERATION_VERIFIED=false
+FDO_PVS0_PORTFOLIO_ROLE=AUXILIARY_PUBLIC_VERIFICATION_EVIDENCE_LINE
+FDO_PVS0_LINE_STATUS=FROZEN_MAINTENANCE_MODE
+FDO_PVS0_PROFILE_CANDIDATE_COUNT=2
+FDO_PVS0_NON_NORMATIVE_DEMO_ASSET_COUNT=3
+FDO_PVS0_STANDARD_AUTHORIZED=false
+FDO_PVS0_EXTERNAL_ADOPTION_PROVEN=false
 DISCOVERY_NE_ADOPTION=true
 MAPPING_NE_INTEGRATION=true
 ```

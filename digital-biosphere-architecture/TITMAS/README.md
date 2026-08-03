@@ -28,6 +28,10 @@ aliases. No fourth community name is created.
   [`../commercial/entry/customer-entry-check.json`](../commercial/entry/customer-entry-check.json)
 - Current D29 reference implementation projection:
   [`../commercial/discovery/d29-reference-implementation.json`](../commercial/discovery/d29-reference-implementation.json)
+- FDO DTR / PVS-0 auxiliary verification projection:
+  [`../cockpit/projections/titmas-fdo-pvs0.json`](../cockpit/projections/titmas-fdo-pvs0.json)
+- FDO DTR / PVS-0 stage closure and boundaries:
+  [`../architecture/titmas-fdo-dtr-migration-pvs0-closure-v0.1.md`](../architecture/titmas-fdo-dtr-migration-pvs0-closure-v0.1.md)
 - D19 bounded discovery and evolution entry:
   [`agent-native/evolution/README.md`](agent-native/evolution/README.md)
 - D19 architecture amendment:

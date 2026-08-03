@@ -276,3 +276,25 @@ certification, adoption or conformance claims.
 These bounded implementation rows do not reopen P0-10 or D04 and do not
 authorize website changes, customer contact, paid access or production
 deployment. They do not make the complete D29 commercial program ready.
+
+## 12. FDO DTR / PVS-0 Auxiliary Maintenance Route
+
+This route is not a new mainline and cannot displace D29 customer entry,
+execution-evidence integration, cross-runtime interoperability or first real
+adoption work.
+
+| milestone | objective | status | next allowed action |
+|---|---|---|---|
+| `FDO-PVS0-A1` | Preserve five-record identity and classification | `COMPLETE_PUBLIC_EVIDENCE` | no reclassification |
+| `FDO-PVS0-A2` | Publish a bounded reproducible history slice | `COMPLETE_PUBLIC_ARCHIVED` | maintenance only |
+| `FDO-PVS0-A3` | Transfer two Profile drafts without changing three other record types | `WAITING_FOR_GWDG_RESPONSE` | account binding, migration preview and classification acceptance only |
+| `FDO-PVS0-A4` | Align source machine status with live publication facts | `MAINTENANCE_CORRECTION_OPEN` | separate non-destructive source PR; never rewrite the pinned commit or Zenodo archive |
+| `FDO-PVS0-A5` | Establish any Profile v1 | `NOT_AUTHORIZED` | separate Proposal, Review, Human Decision, version freeze and Conformance |
+
+```text
+FDO_PVS0_IS_MAINLINE=false
+FDO_PVS0_FEATURE_DEVELOPMENT_FROZEN=true
+FDO_PVS0_MAINTENANCE_ALLOWED=true
+PVS0_ARCHIVE_NE_STANDARD=true
+PVS0_PASS_NE_FULL_CONFORMANCE=true
+```

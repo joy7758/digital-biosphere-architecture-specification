@@ -52,6 +52,7 @@ risk_acceptance_authority_assigned: true
 | `R-034` | `HIGH` | `tiamas-scout` 对话标签、`titmac-scout` 机器身份与 D19 DBA Draft 实现混用，可能形成错误远端、重复发现层或双重状态事实源 | D21 已把唯一状态源合并到 private canonical `titmac-scout/main`；旧拼写本地目录仍有并发未提交工作且未触碰 | 冻结 machine ID；旧目录只读保留；DBA exact-main read-only projection；PR #105/#106 在等价证明前保持 Draft | `MITIGATED_CANONICAL_STATUS_ACTIVE_OWNERSHIP_MIGRATION_PENDING` |
 | `R-035` | `HIGH` | 驾驶舱把静态声明当作当前 GitHub CI、PR 或 remote Head，或继续展示过期观察，造成虚假绿色进度 | D21 将状态声明与 GitHub API 观察分离；source、remote、CI 与 PR freshness 独立记录，GitHub 观察不可用时 partial fail closed | `SOURCE_STALE`、`SOURCE_DRIFT`、`SOURCE_INVALID`、`SOURCE_UNAVAILABLE` 停止源投影；动态观察缺失/过期返回 `SOURCE_STALE_OR_PARTIALLY_STALE`；不得手工成功覆盖 | `MITIGATED_BY_D21_CANONICAL_DYNAMIC_OBSERVATION_ADAPTER` |
 | `R-036` | `CRITICAL` | 自修复或进化能力可能滑向自授 Authority、秘密积累、无限重试、证据删除、语义弱化或生产自我保护 | D19 只定义 DBA 架构与规范合同；执行实现归属 `titmac-scout` 的独立 Draft PR | ER-0 至 ER-4 分级；owner fail-closed；最多三变体、一 PR、有限重试；保留失败/回滚；宪法、人类停止和不可逆授权不可自改 | `MITIGATED_BY_D19_ARCHITECTURE_SCOUT_IMPLEMENTATION_REVIEW_REQUIRED` |
+| `R-037` | `HIGH` | PVS-0 精确提交内的发布前 `STATUS.md` 与当前 public repository、pinned commit、Zenodo published record 及所有者报告的 GWDG 邮件状态不一致，可能误导智能体 | live GitHub/Zenodo 只读复核、43-file tree、`STATUS.md` digest `212e790b...` | DBA 分离 embedded snapshot 与 live observation；登记冲突；源仓只通过独立 maintenance change 修正，禁止改写固定提交或归档 | `MITIGATED_BY_FAIL_CLOSED_PROJECTION_SOURCE_CORRECTION_OPEN` |
 | `R-CM-001` | `CRITICAL` | 历史合成 Receipt 缺少可验证公钥，使结构恢复被误写成完整恢复或通过账本完整性闸门 | 1,661 条已检查、1,659 签名有效、2 条无保留公钥、0 链失败；D04 第三次 Canary 仍失败 | D04 关闭失败并保留；禁止第四次重试及历史修改；旧账本仅供内部开发/研究，生产 clean genesis 延后到 Paid Beta 决策 | `D04_CLOSED_FAILED_RETAINED` |
 | `R-CM-002` | `HIGH` | 公开 `/api/v1/readiness` 的粗粒度 `backup_restore_ready=true` 与规范状态 `backup_restore_drill=false` 冲突，可能误导智能体把备份完整性或结构恢复误读为完整恢复 | 2026-07-31 live endpoint 与 DBA `commercial-readiness.json`、CR-01 报告交叉核验 | 若 P0 最终形态实施被另行授权，必须把 backup integrity、structural restore、Receipt integrity、full restore 与 RTO 分开并由证据状态驱动；在授权前不做 status-only 线上修改 | `ACTIVE_FINAL_FORM_CORRECTION_REQUIRED_IMPLEMENTATION_NOT_AUTHORIZED` |
 | `R-CM-003` | `HIGH` | 未来生产 signer、算法、不可导出边界和运营责任尚未决定 | D04 不再建设内部 signer/clean ledger；当前 `PRODUCTION_SIGNER_CREATED=false`、`KMS_PURCHASE_AUTHORIZED=false` | 延后到 Paid Beta 前的独立 signer 决策；禁止从旧账本或 PR #36 继承 Key、异常或实现 | `DEFERRED_TO_PAID_BETA_HUMAN_DECISION` |
@@ -100,8 +101,8 @@ risk_acceptance_authority_assigned: true
 6. blocker 解除必须引用直接证据，不能只因计划存在而关闭。
 
 ```text
-TRACKED_RISKS=33
-ACTIVE_RISKS=31
+TRACKED_RISKS=34
+ACTIVE_RISKS=32
 RESOLVED_RISKS=2
 ACTIVE_BLOCKERS=7
 BLOCKERS_CLEARED=10
