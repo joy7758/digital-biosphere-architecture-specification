@@ -1,10 +1,21 @@
 # Digital Biosphere Developer Ecosystem Strategy v0.1
 
-Status: `STRATEGY_SPECIFICATION`
+Status: `SUPERSEDED_HISTORICAL_STRATEGY`
+
+Current authority effect: `NONE`
+
+Superseded by:
+
+- [Commercial Private Infrastructure Strategy Constitution](commercial-private-infrastructure-strategy-constitution.md)
+- [ADR-042](ADR-042-commercial-private-infrastructure-direction.md)
 
 Implementation effect: `NONE`
 
-Constitution: [Open Infrastructure Strategy Constitution](open-infrastructure-strategy-constitution.md)
+Historical constitution: [Open Infrastructure Strategy Constitution](open-infrastructure-strategy-constitution.md)
+
+> 本文保留早期 Developer Ecosystem First 路线及其设计依据。它不再定义当前产品身份，
+> 不授权公共贡献、社区重启、核心源码公开或免费服务。当前公共 SDK、Schema、MCP、
+> 文档和 validator 只按商业私有基础设施宪法承担有界互操作功能。
 
 ## Objective
 

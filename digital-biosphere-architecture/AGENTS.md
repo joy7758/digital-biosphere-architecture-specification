@@ -26,16 +26,16 @@ DBA_IS_RUNTIME=false
 7. `CROSS-PROJECT-DEPENDENCIES.md`（跨项目依赖）；
 8. `INTEGRATION-GATES.md`（集成闸门）；
 9. `PROGRAM-GOVERNANCE-BASELINE-AUDIT.md`（项目群驾驶舱基线审计）；
-10. `architecture/open-infrastructure-strategy-constitution.md`（开放基础设施战略宪法）；
+10. `architecture/commercial-private-infrastructure-strategy-constitution.md`（商业私有基础设施战略宪法）；
 11. `architecture/project-mapping.md`（项目角色映射）；
 12. 相关 specification（规范）、strategy（战略）和 ADR。
 
 处理 TITMAS 工作时，还必须依次读取：
 
 13. `architecture/titmas-architecture-charter-v1.0.md`；
-14. `TITMAS/README.md`（唯一社区人类入口）；
+14. `TITMAS/README.md`（唯一 TITMAS 人类入口）；
 15. `agent-index.json`（唯一智能体入口）；
-16. `TITMAS/community/community-status.json`（唯一社区状态投影）；
+16. `TITMAS/community/community-status.json`（历史社区状态投影）；
 17. `TITMAS/specifications/registry.yaml`（唯一规范注册表）；
 18. `TITMAS/agent-native/tasks/task-registry.json`（唯一任务注册表）。
 
@@ -51,10 +51,11 @@ DBA_IS_RUNTIME=false
 恢复执行时必须先以实际 Git、服务器和公网状态复核状态文件。不得只根据状态文件
 重复耗费性实验、伪造已等待时间、外部 Agent 使用、付款或生产就绪。
 
-当前规范名称为 `TITMAS Agent-Native Standards Community`（TITMAS
-智能体原生标准社区）；`TITMAS Developer Standards Community` 与
-`TITMAS Infrastructure Developer Community` 仅为兼容别名。每次重大 TITMAS
-任务必须执行 Charter 的 `TITMAS_DRIFT_CHECK`。
+当前规范名称为 `TITMAS Commercial Agent Infrastructure`（TITMAS
+商业智能体基础设施）。`TITMAS Agent-Native Standards Community`、
+`TITMAS Developer Standards Community` 与 `TITMAS Infrastructure Developer
+Community` 仅为历史名称，不表示当前社区、开源或公共贡献路线。每次重大 TITMAS 任务
+必须执行 Charter 的 `TITMAS_DRIFT_CHECK`。
 
 ## Work Routing（工作路由）
 
@@ -124,7 +125,7 @@ Agent priority（智能体优先）不是 Agent authority（智能体权威）�
 每个提案必须说明：
 
 - 属于 Infrastructure、Evolution、Application、Program Governance、Architecture Governance 还是 Governance Service；
-- 是否强化开放标准、互操作和开发者复用；
+- 是否强化商业智能体基础设施、Agent-first 互操作和可验证首次价值；
 - 是否重复 DBOS、SAEE、Foundation Model、Agent framework 或现有生态组件；
 - 是否混淆 Capability、Permission、Authority、Execution、Evidence、Evaluation、Decision 或 Truth；
 - primary repository、受影响项目、依赖和所需 gate；
@@ -146,8 +147,10 @@ PROGRAM_GOVERNANCE_NE_OPERATIONAL_AUTHORITY=true
 PROGRAM_GOVERNANCE_NE_EVOLUTION_AUTHORITY=true
 PROGRAM_DECISION_NE_EXECUTION=true
 PROGRAM_STATUS_NE_CHILD_PROJECT_TRUTH=true
-DEVELOPER_ECOSYSTEM_FIRST=true
-OPEN_INFRASTRUCTURE_NE_FREE_PRODUCT=true
+COMMERCIAL_PRIVATE_INFRASTRUCTURE_FIRST=true
+PRIVATE_CORE_IS_CANONICAL=true
+PUBLIC_INTEROPERABILITY_SURFACE_NE_OPEN_SOURCE_CORE=true
+COMMUNITY_IDENTITY_IS_HISTORICAL=true
 SPECIFICATION_NE_IMPLEMENTATION=true
 STRATEGY_NE_COMMERCIAL_COMMITMENT=true
 TITMAS_NE_RUNTIME=true
@@ -176,5 +179,5 @@ AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
 - 核心战略或权力变化需要 ADR、Review、显式 Decision 和一致性验证；
 - Program Roadmap、Priority 或 Gate 变化不自动修改架构规则；
 - Architecture Change 不自动批准子项目实施；
-- Open Infrastructure（开放基础设施）不表示所有产品或服务免费；
+- Public Interoperability Surface（公共互操作表面）不表示核心开源、公共贡献、社区建立或免费服务；
 - Specification、Test、Demo、Validator Pass、Listing 或 Local Artifact 不证明 Implementation、Deployment、Adoption、Certification 或 Commercial Availability。

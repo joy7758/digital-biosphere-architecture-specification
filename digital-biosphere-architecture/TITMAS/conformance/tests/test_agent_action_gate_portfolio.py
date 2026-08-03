@@ -9,7 +9,8 @@ import unittest
 ROOT = Path(__file__).resolve().parents[3]
 PROJECTION = ROOT / "TITMAS/specifications/portfolio/agent-action-gate.json"
 PROPOSAL = ROOT / "TITMAS/specifications/proposals/titmas-agent-action-gate-admission-v0.1.md"
-CONSTITUTION = ROOT / "architecture/open-infrastructure-strategy-constitution.md"
+HISTORICAL_CONSTITUTION = ROOT / "architecture/open-infrastructure-strategy-constitution.md"
+CURRENT_CONSTITUTION = ROOT / "architecture/commercial-private-infrastructure-strategy-constitution.md"
 
 
 class AgentActionGatePortfolioTests(unittest.TestCase):
@@ -106,7 +107,7 @@ class AgentActionGatePortfolioTests(unittest.TestCase):
         )
         self.assertEqual(self.projection["product_recommendation"], "NOT_RECOMMENDED")
 
-    def test_constitution_pin_matches_current_cockpit_content(self) -> None:
+    def test_constitution_pin_remains_historical_after_strategy_supersession(self) -> None:
         lock = self.projection["constitution_lock"]
         self.assertFalse(lock["content_matches_observed_main"])
         self.assertTrue(lock["candidate_content_matches_current_branch"])
@@ -116,10 +117,10 @@ class AgentActionGatePortfolioTests(unittest.TestCase):
         )
         self.assertEqual(lock["adoption_status"], "PENDING_D19_DRAFT_PR_REVIEW")
         self.assertFalse(lock["child_second_constitution_created"])
-        self.assertEqual(
-            hashlib.sha256(CONSTITUTION.read_bytes()).hexdigest(),
-            lock["sha256"],
-        )
+        self.assertEqual("51e7ab5cb03953b46bf9216ee4d6be430637b8c2f6d8d195b3b48909b470eb02", lock["sha256"])
+        self.assertNotEqual(hashlib.sha256(HISTORICAL_CONSTITUTION.read_bytes()).hexdigest(), lock["sha256"])
+        self.assertNotEqual(hashlib.sha256(CURRENT_CONSTITUTION.read_bytes()).hexdigest(), lock["sha256"])
+        self.assertIn("SUPERSEDED_HISTORICAL_STRATEGY", HISTORICAL_CONSTITUTION.read_text(encoding="utf-8"))
 
 
 if __name__ == "__main__":
