@@ -1,6 +1,6 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://titmas.cn/schemas/community-status-2.0.json",
+  "$id": "https://titmas.cn/schemas/community-status-3.0.json",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -11,6 +11,11 @@
     "status",
     "state",
     "community_phase",
+    "historical_record",
+    "current_program_identity",
+    "current_route_active",
+    "superseded_by",
+    "current_authority_effect",
     "program_priority",
     "current_validation",
     "community_incubation_active",
@@ -69,24 +74,31 @@
   ],
   "properties": {
     "$schema": {"type": "string"},
-    "version": {"const": "2.0.0"},
+    "version": {"const": "3.0.0"},
     "canonical_name": {"const": "TITMAS Agent-Native Standards Community"},
     "human_aliases": {"type": "array", "minItems": 2, "items": {"type": "string"}},
     "status": {
       "enum": [
         "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE",
         "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW",
-        "PRIVATE_COMMERCIALIZATION_BOUNDARY"
+        "PRIVATE_COMMERCIALIZATION_BOUNDARY",
+        "SUPERSEDED_HISTORICAL_COMMUNITY_RECORD"
       ]
     },
     "state": {
       "enum": [
         "PUBLIC_CONTRIBUTION_ACTIVATION_CANDIDATE",
         "LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW",
-        "PRIVATE_COMMERCIALIZATION_BOUNDARY"
+        "PRIVATE_COMMERCIALIZATION_BOUNDARY",
+        "SUPERSEDED_HISTORICAL_COMMUNITY_RECORD"
       ]
     },
     "community_phase": {"const": "PRIVATE_COMMERCIALIZATION_BOUNDARY"},
+    "historical_record": {"const": true},
+    "current_program_identity": {"const": "TITMAS Commercial Agent Infrastructure"},
+    "current_route_active": {"const": false},
+    "superseded_by": {"const": "architecture/ADR-042-commercial-private-infrastructure-direction.md"},
+    "current_authority_effect": {"const": "NONE"},
     "program_priority": {
       "type": "object",
       "additionalProperties": false,

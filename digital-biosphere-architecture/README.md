@@ -111,15 +111,17 @@ registration_authorization_object_instantiated: false
 registration_authorization_issued: false
 registration_authorized: false
 entity_registered: false
-open_infrastructure_strategy_constitution_defined: true
-open_infrastructure_strategy_implemented: false
+commercial_private_infrastructure_constitution_defined: true
+commercial_private_infrastructure_direction_adopted: true
+historical_open_infrastructure_strategy_superseded: true
+public_interoperability_surfaces_retained: true
 commercial_offering_created: false
 developer_ecosystem_created: false
-titmas_infrastructure_developer_community_direction_adopted: true
-titmas_contributor_entry_prepared: true
-titmas_public_contribution_surface_authorized: true
+titmas_agent_native_standards_community_identity_current: false
+historical_titmas_contributor_entry_prepared: true
+titmas_public_contribution_surface_authorized: false
 titmas_developer_community_established: false
-titmas_code_of_conduct_adopted: true
+historical_titmas_code_of_conduct_adopted: true
 titmas_maintainer_assigned: false
 titmas_foundation_in_scope: false
 titmas_adoption_validation_framework_defined: true
@@ -296,42 +298,43 @@ EXECUTION_CONTEXT_CHANGE_REQUIRES_REASSESSMENT=true
 [`Legacy Material Reconciliation Report`](LEGACY-MATERIAL-RECONCILIATION-REPORT-v1.0.md)。
 该合并只吸收仍有效的组合式规模与注意力原则，不用旧控制面覆盖当前项目状态。
 
-## Public Entry（统一对外入口）
+## Current Entry（当前统一入口）
 
-> **TITMAS Agent-Native Standards Community**
+> **TITMAS Commercial Agent Infrastructure**
 >
-> 中文：**TITMAS 智能体原生标准社区**
+> 中文：**TITMAS 商业智能体基础设施**
 >
-> Agent-Native Open Standards Community for Trusted Multi-Agent Infrastructure
+> Private-core infrastructure for agent action control and execution evidence
 
-TITMAS 共同推进开放规范、Adapter contract、Conformance、reference implementation
-boundary 和机器可读贡献流程，帮助不同 Agent 通过易理解、可实现、可验证的基础设施
-规则可信协作。`TITMAS Developer Standards Community` 与
-`TITMAS Infrastructure Developer Community` 仅保留为兼容别名。
+TITMAS 以私有 canonical core 提供 Agent action control、execution evidence、Gate、
+Receipt、Audit 和 Health。Schema、SDK、MCP、Conformance 与验证资料可以作为有界公共
+互操作表面，但不表示核心开源、公共贡献或开发者社区。
 
 Digital Biosphere 是总项目；`Trusted Multi-Agent Infrastructure`（可信多智能体基础设施）
-是技术定位；TITMAS Agent-Native Standards Community 是当前规范主线。DBA、DBOS、
-SAEE 和 Digital Entities 仍是同一项目群内相互分离的责任域，社区不替代任何责任域，
+是长期技术定位；TITMAS Commercial Agent Infrastructure 是当前商业主线。DBA、DBOS、
+SAEE 和 Digital Entities 仍是同一项目群内相互分离的责任域，商业入口不替代任何责任域，
 也不创建第二套 Architecture Authority。
 
 网站 [`https://redcrag.cn/`](https://redcrag.cn/) 提供完整中英文与机器可读入口，国内
-访问者不需要依赖 GitHub 才能理解社区使命、共同建设范围、当前状态、底层架构和技术
+访问者不需要依赖 GitHub 才能理解产品定位、公共接口范围、当前状态、底层架构和技术
 验证计划。
 
-### TITMAS Community Focus（TITMAS 社区重心）
+### TITMAS Commercial Focus（TITMAS 商业重心）
 
-| 共同建设表面 | 当前事实 |
+| 商业表面 | 当前事实 |
 |---|---|
-| Open Specification | Identity、Capability、Execution、Evidence、Verification 和 Evaluation 的开放边界 |
-| Semantic Mapping | 外部框架／协议的来源固定与版本化映射候选 |
-| Adapter Contract | 被动采集、交接、失败语义和禁止 writeback 的契约候选 |
-| Conformance | 正例、负例、unknown、unsupported 和失败保留的设计 |
-| Documentation | 面向人类与智能体的首次接触、示例、本地化和机器入口 |
-| Reference Boundary | 可替换参考实现边界；当前未授权创建 Runtime 或唯一实现 |
+| Observer / Monitor | 低摩擦进入与不阻断观察；Observer 不是第五个产品 |
+| Gate | Agent 行动前的有界检查；Enforce 需要单独授权 |
+| Receipt | 执行结果与限制的可验证回执 |
+| Audit | 机器事实驱动的审计时间线 |
+| Health | 运行健康与恢复状态投影 |
+| Public Interoperability | Schema、SDK、MCP、示例和验证器；不公开 canonical core |
 
 ```text
-TITMAS_AGENT_NATIVE_STANDARDS_COMMUNITY_DIRECTION_ADOPTED=true
-TITMAS_COMMUNITY_STATUS=PRIVATE_COMMERCIALIZATION_BOUNDARY
+TITMAS_COMMERCIAL_PRIVATE_INFRASTRUCTURE_DIRECTION_ADOPTED=true
+TITMAS_PRIVATE_CORE_IS_CANONICAL=true
+TITMAS_PUBLIC_INTEROPERABILITY_SURFACES_RETAINED=true
+TITMAS_COMMUNITY_IDENTITY_IS_HISTORICAL=true
 TITMAS_CODE_OF_CONDUCT_HISTORICAL_ADOPTION_RETAINED=true
 TITMAS_PUBLIC_CONTRIBUTION_SURFACE_AUTHORIZED=false
 TITMAS_PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=false
@@ -622,10 +625,11 @@ DBOS != SAEE.
 
 | 文档 | 作用 |
 |---|---|
-| [`architecture/open-infrastructure-strategy-constitution.md`](architecture/open-infrastructure-strategy-constitution.md) | 最高开放基础设施战略宪法与 proposal gate |
-| [`architecture/developer-ecosystem-strategy.md`](architecture/developer-ecosystem-strategy.md) | Developer、SDK、Protocol、Community 与 Marketplace 路线 |
-| [`architecture/commercialization-strategy.md`](architecture/commercialization-strategy.md) | Open Core、Enterprise Edition、Industry Solutions 与 Certification 边界 |
-| [`architecture/ADR-015-open-infrastructure-strategy.md`](architecture/ADR-015-open-infrastructure-strategy.md) | 选择开放基础设施路线的架构决策 |
+| [`architecture/commercial-private-infrastructure-strategy-constitution.md`](architecture/commercial-private-infrastructure-strategy-constitution.md) | 当前商业私有基础设施战略宪法与 proposal gate |
+| [`architecture/ADR-042-commercial-private-infrastructure-direction.md`](architecture/ADR-042-commercial-private-infrastructure-direction.md) | 从社区／Open Core 转向商业私有核心的决策 |
+| [`architecture/open-infrastructure-strategy-constitution.md`](architecture/open-infrastructure-strategy-constitution.md) | 已被取代的历史开放基础设施战略 |
+| [`architecture/developer-ecosystem-strategy.md`](architecture/developer-ecosystem-strategy.md) | 历史开发者生态路线；当前 authority effect 为 NONE |
+| [`architecture/commercialization-strategy.md`](architecture/commercialization-strategy.md) | 商业边界与历史 Open Core 迁移说明 |
 | [`architecture/ADR-032-compositional-scale-over-unbounded-center.md`](architecture/ADR-032-compositional-scale-over-unbounded-center.md) | 以大量简单、受限、可替换主体的组合形成覆盖能力，不建设无限强中心 |
 | [`architecture/ADR-033-attention-principle-for-dynamic-coordination.md`](architecture/ADR-033-attention-principle-for-dynamic-coordination.md) | 用动态、可解释、会过期的候选参与建议连接协作与 Evidence，不创建中央控制器 |
 | [`architecture/project-mapping.md`](architecture/project-mapping.md) | DBOS、SAEE、应用与服务生态的战略角色映射 |
@@ -635,10 +639,12 @@ DBOS != SAEE.
 ```text
 DBOS_NE_AGENT_APPLICATION=true
 DBOS_NE_FOUNDATION_MODEL=true
-DEVELOPER_ECOSYSTEM_FIRST=true
-OPEN_INFRASTRUCTURE_NE_FREE_PRODUCT=true
+COMMERCIAL_PRIVATE_INFRASTRUCTURE_FIRST=true
+PRIVATE_CORE_IS_CANONICAL=true
+PUBLIC_INTEROPERABILITY_SURFACE_NE_OPEN_SOURCE_CORE=true
+COMMUNITY_IDENTITY_IS_HISTORICAL=true
 STRATEGY_NE_COMMERCIAL_COMMITMENT=true
-OPEN_INFRASTRUCTURE_STRATEGY_IMPLEMENTED=false
+COMMERCIAL_OFFERING_AVAILABLE=false
 ```
 
 ## 三层定位

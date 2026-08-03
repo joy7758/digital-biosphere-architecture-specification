@@ -2,7 +2,22 @@
 
 中文：数字生物圈开放基础设施战略宪法 v0.2
 
-Status: `ADOPTED_STRATEGIC_CONSTITUTION`
+Status: `SUPERSEDED_HISTORICAL_STRATEGY`
+
+Current authority effect: `NONE`
+
+Superseded on: `2026-08-04`
+
+Superseded by:
+
+- [`Commercial Private Infrastructure Strategy Constitution v1.0`](commercial-private-infrastructure-strategy-constitution.md)
+- [`ADR-042`](ADR-042-commercial-private-infrastructure-direction.md)
+
+> Historical record: this document preserves the former open-infrastructure
+> strategy and its rationale. It is no longer the current TITMAS product,
+> source-availability, contribution or community direction. Nothing in this
+> document reactivates public contribution, opens the private canonical core or
+> creates a community.
 
 Authority: Architecture governance and strategic interpretation only
 

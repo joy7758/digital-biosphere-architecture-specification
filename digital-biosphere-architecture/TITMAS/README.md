@@ -1,21 +1,25 @@
-# TITMAS Agent-Native Standards Community
+# TITMAS Commercial Agent Infrastructure
 
-中文：TITMAS 智能体原生标准社区。
+中文：TITMAS 商业智能体基础设施。
 
-> Agent-Native Open Standards Community for Trusted Multi-Agent Infrastructure
+> Private-core infrastructure for agent action control and execution evidence
 
-TITMAS develops machine-readable open specifications, conformance assets,
-reference boundaries and contribution protocols for trustworthy multi-agent
-infrastructure. It is not an Agent Framework, Agent Platform, Runtime,
-executor, certification authority or central control plane.
+TITMAS provides machine-readable contracts, bounded interoperability surfaces,
+action-control entry points and execution-evidence verification for AI agents.
+Its canonical implementation core remains private. Public Schema, SDK, MCP,
+examples or validators do not imply an open-source core, public contribution
+route or developer community. TITMAS is not an Agent Framework, Agent Platform,
+Runtime, certification authority or central control plane.
 
-The compatibility names **TITMAS Developer Standards Community** and
-**TITMAS Infrastructure Developer Community** remain valid human-facing
-aliases. No fourth community name is created.
+**TITMAS Agent-Native Standards Community**, **TITMAS Developer Standards
+Community** and **TITMAS Infrastructure Developer Community** are retained as
+historical names only. They do not describe the current strategy.
 
 ## Start here
 
 - Agent entry: [`../agent-index.json`](../agent-index.json)
+- Current strategy constitution:
+  [`../architecture/commercial-private-infrastructure-strategy-constitution.md`](../architecture/commercial-private-infrastructure-strategy-constitution.md)
 - C-01 Commercial Constitution:
   [`../docs/commercial/TITMAS_COMMERCIAL_CONSTITUTION_v1.0.md`](../docs/commercial/TITMAS_COMMERCIAL_CONSTITUTION_v1.0.md)
 - Observer customer entry contract:
@@ -36,7 +40,7 @@ aliases. No fourth community name is created.
   [`../TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md`](../TITMAS-MAINLINE-CLOSURE-AND-DEVELOPMENT-FREEZE-D16-v1.0.md)
 - Owner-wide open PR classification:
   [`../open-pr-classification.json`](../open-pr-classification.json)
-- Machine status: [`community/community-status.json`](community/community-status.json)
+- Historical community status: [`community/community-status.json`](community/community-status.json)
 - Human quick start: [`QUICKSTART.md`](QUICKSTART.md)
 - First contribution: [`FIRST_CONTRIBUTION.md`](FIRST_CONTRIBUTION.md)
 - Contribution policy: [`community/CONTRIBUTING.md`](community/CONTRIBUTING.md)
@@ -160,7 +164,12 @@ AGENT_FIRST_ACCEPTANCE_COMPLETE=false
 P0_10_RESULT=FAIL_CLOSED_AFTER_RUNTIME_ALIGNMENT
 NEW_FEATURE_DEVELOPMENT_FROZEN=true
 D19_BOUNDED_EVOLUTION_EXCEPTION_ACTIVE=true
-TITMAS_AGENT_OPEN_COMMUNITY=OPEN_MATURE_AGENT_NATIVE_COMMUNITY_V1
+PROGRAM_IDENTITY=TITMAS_COMMERCIAL_AGENT_INFRASTRUCTURE
+COMMERCIAL_PRIVATE_INFRASTRUCTURE_FIRST=true
+PRIVATE_CORE_IS_CANONICAL=true
+PUBLIC_INTEROPERABILITY_SURFACES_RETAINED=true
+PUBLIC_SURFACE_NE_OPEN_SOURCE_CORE=true
+HISTORICAL_TITMAS_AGENT_OPEN_COMMUNITY=OPEN_MATURE_AGENT_NATIVE_COMMUNITY_V1
 DISCOVERY_LAYER_STATUS=BOUNDED_SELF_HEALING_AND_EVOLUTION_CANDIDATE
 SELF_HEALING_STATUS=OPEN_BOUNDED
 SELF_EVOLUTION_STATUS=OPEN_EVIDENCE_GATED
@@ -187,21 +196,19 @@ EXTERNAL_CONTRIBUTOR_COUNT=0
 EXTERNAL_ADOPTER_COUNT=0
 ```
 
-`TITMAS_AGENT_OPEN_COMMUNITY=OPEN_MATURE_AGENT_NATIVE_COMMUNITY_V1` names the
-open machine participation contract for AI agents. It is not a claim that a
-public human organization, Foundation, public core, unrestricted contribution
-surface or production service has launched. D19 supersedes the report-only
-discovery restriction only within its explicit ER-0/ER-1 sandbox and Draft PR
-boundary.
+Earlier `TITMAS_AGENT_OPEN_COMMUNITY` records name a historical machine
+participation contract. They have no current product, contribution or community
+authority. D19 supersedes the report-only discovery restriction only within its
+explicit ER-0/ER-1 sandbox and Draft PR boundary.
 
 Agent-first（智能体优先）是客户、接口和验证优先级，不是 Authority 转移。模型不能
 自我授权、批准标准、签订合同、控制付款或执行不可逆动作。E01 继续作为历史可选的
 human compatibility observation（人类兼容性观察）保留，不再阻塞 Stage 5.7。
 
-D16 supersedes Stage 5.7 and the open-standards roadmap only as the current
-development focus. Their retained evidence is not deleted or rewritten. Until
-P0-10 is closed, no adjacent standard, profile, Demo, Adapter, Portfolio,
-community or commercial feature is an active development mainline.
+D16 superseded Stage 5.7 and the former open-standards roadmap as a development
+focus. Their retained evidence is not deleted or rewritten. The current
+commercial direction is governed by the Commercial Private Infrastructure
+Strategy Constitution; specific implementation still requires its own gate.
 
 Stage 5.7 的有界结果见
 [`../TITMAS-STAGE-5-7-AGENT-NATIVE-SELECTION-ROI-RESULT-v0.1.md`](../TITMAS-STAGE-5-7-AGENT-NATIVE-SELECTION-ROI-RESULT-v0.1.md)。
@@ -215,8 +222,8 @@ Commercial, Release, automatic merge or Stable-promotion authority.
 The commercial maturity program has completed its bounded core infrastructure
 work and is now fail-closed at the P0-10 Agent-first acceptance gate. D16
 supersedes the old broad final-form implementation question, authorizes only the
-last D15 diagnostic, and freezes non-blocking development. It does not change
-the community state or activate public registration, pricing, payment,
+last D15 diagnostic, and freezes non-blocking development. It does not activate
+public registration, pricing, payment,
 production, certification or a formal standard. Canonical readiness remains:
 
 ```text
