@@ -5,6 +5,26 @@ Status: `FOUR_PRODUCT_PORTFOLIO_FROZEN`
 TITMAS exposes exactly four horizontal products. They are public product
 contracts over one private platform, not four independent cores.
 
+## C-01 entry layer
+
+`TITMAS Observer` is the shared entry layer before the four products. It helps a
+customer discover Agents, actions, risks, evidence gaps and non-enforcing shadow
+results. It is recorded under `entry_layers[]`, never `products[]`.
+
+```text
+ENTRY_LAYER_ID=TITMAS_OBSERVER
+OBSERVER_IS_PRODUCT=false
+PUBLIC_PRODUCT_COUNT_EFFECT=0
+FIRST_VALUE_BEFORE_ENFORCEMENT=true
+MONITOR_BEFORE_ENFORCE=true
+```
+
+Every product machine record now declares `entry_path`, `first_value`,
+`required_permissions`, `required_data`, `monitor_available`,
+`enforce_available`, `reversibility`, `deletion_path` and
+`not_recommended_when`. These are architecture contracts; availability remains
+separate.
+
 ## TITMAS Gate — TITMAS 行动闸门
 
 Customer question: may this Agent perform the declared critical action now?
@@ -63,3 +83,6 @@ PRIVATE_CORE_SOURCE_PUBLIC=false
 
 Adding a fifth product, widening a product into a new core, or moving PACVP out
 of Gate requires a new Human Decision.
+
+Canonical machine catalog:
+[`product-catalog.internal.json`](../portfolio/product-catalog.internal.json).

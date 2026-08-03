@@ -16,6 +16,16 @@ aliases. No fourth community name is created.
 ## Start here
 
 - Agent entry: [`../agent-index.json`](../agent-index.json)
+- C-01 Commercial Constitution:
+  [`../docs/commercial/TITMAS_COMMERCIAL_CONSTITUTION_v1.0.md`](../docs/commercial/TITMAS_COMMERCIAL_CONSTITUTION_v1.0.md)
+- Observer customer entry contract:
+  [`../commercial/entry/entry-layer.json`](../commercial/entry/entry-layer.json)
+- Human and Agent entry surfaces:
+  [`../commercial/entry/entry-surfaces.json`](../commercial/entry/entry-surfaces.json)
+- FirstValue contract:
+  [`../commercial/entry/first-value-contract.schema.json`](../commercial/entry/first-value-contract.schema.json)
+- Customer Entry Check:
+  [`../commercial/entry/customer-entry-check.json`](../commercial/entry/customer-entry-check.json)
 - D19 bounded discovery and evolution entry:
   [`agent-native/evolution/README.md`](agent-native/evolution/README.md)
 - D19 architecture amendment:

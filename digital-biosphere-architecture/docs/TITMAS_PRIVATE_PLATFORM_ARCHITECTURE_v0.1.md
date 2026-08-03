@@ -36,6 +36,29 @@ This check freezes portfolio direction. It does not make the private core
 public, create a Runtime, change a database, grant a credential or authorize a
 production Gateway.
 
+## C-01 customer entry overlay
+
+`TITMAS-COMMERCIAL-C01` adds a non-product `TITMAS Observer` entry layer over
+the same shared platform. The progressive path is Observer, Health Snapshot,
+Monitor, separately authorized Enforce, Receipt/Audit and optional private
+deployment. This does not add a capability domain, product, core or service.
+
+First value may use a zero-customer-data synthetic scenario, an authorized
+public/redacted Trace import or a read-only/event-copy Monitor input. It does
+not require core source access, production write permission, automatic
+enforcement or raw private Trace upload. The contracts are architecture
+requirements; Observer, deletion workflow and first-value runtime remain
+unimplemented.
+
+```text
+OBSERVER_IS_ENTRY_LAYER=true
+OBSERVER_IS_PRODUCT=false
+PUBLIC_PRODUCT_COUNT=4
+FIRST_VALUE_BEFORE_ENFORCEMENT=true
+MONITOR_BEFORE_ENFORCE=true
+C01_CUSTOMER_ENTRY_IMPLEMENTATION_AUTHORIZED=false
+```
+
 ## One shared private platform
 
 TITMAS uses one private platform with eight internal capability domains. The

@@ -156,3 +156,17 @@ No component may be installed, started, purchased or deployed until
 `AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_MATRIX` defines an
 exact repository, path, test, rollback and data boundary. P1 and P2 remain
 independently closed even if P0 is later accepted.
+
+## 7. C-01 Customer Entry Architecture Gate
+
+| gate | result | bounded evidence |
+|---|---|---|
+| `C01-G1` Direction | `PASS` | one platform/core, exact four products, Observer non-product, no duplicate cores |
+| `C01-G2` Machine contract | `PASS` | JSON parsing, FirstValue schema validation, reason-code and reference closure |
+| `C01-G3` Customer entry | `PASS` | T01-T15 baseline and negative-mutation tests |
+| `C01-G4` Cross-document consistency | `PASS` | Constitution, D29, private platform, portfolio, console, website and discovery surfaces |
+| `C01-G5` Change boundary | `PASS` | no core/runtime/database/site implementation, owner-map/resolver or PR #113 change |
+
+These are document-and-machine-contract results. Implementation evaluation,
+measured customer experience and commercial availability remain
+`NOT_ASSESSED`; passing this gate creates no deployment or customer authority.
