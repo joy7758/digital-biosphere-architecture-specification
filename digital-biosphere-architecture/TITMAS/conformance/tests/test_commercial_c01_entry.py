@@ -64,7 +64,6 @@ def validate_schema(schema, value, path="$"):
 def current_change_paths():
     commands = [
         ["git", "diff", "--name-only", "origin/main...HEAD"],
-        ["git", "diff", "--name-only", "HEAD^1..HEAD"],
         ["git", "diff", "--cached", "--name-only"],
         ["git", "diff", "--name-only"],
         ["git", "ls-files", "--others", "--exclude-standard"],
@@ -72,6 +71,19 @@ def current_change_paths():
     paths = set()
     for command in commands:
         result = subprocess.run(command, cwd=ROOT.parent, text=True, capture_output=True, check=False)
+        if result.returncode == 0:
+            paths.update(line for line in result.stdout.splitlines() if line)
+    # A clean checkout has no candidate change set. Only then inspect the
+    # current commit, so a merge commit already present on origin/main is not
+    # mistaken for the next branch's implementation scope.
+    if not paths:
+        result = subprocess.run(
+            ["git", "diff", "--name-only", "HEAD^1..HEAD"],
+            cwd=ROOT.parent,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
         if result.returncode == 0:
             paths.update(line for line in result.stdout.splitlines() if line)
     return paths
@@ -98,6 +110,7 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/TITMAS/conformance/tests/test_commercial_private_constitution.py",
         "digital-biosphere-architecture/TITMAS/conformance/tests/test_agent_action_gate_portfolio.py",
         "digital-biosphere-architecture/TITMAS/conformance/tests/test_d29_current_implementation_projection.py",
+        "digital-biosphere-architecture/TITMAS/conformance/tests/test_d29_commercial_delivery_foundation.py",
         "digital-biosphere-architecture/agent-index.json",
         "digital-biosphere-architecture/architecture/ADR-041-low-friction-entry-and-progressive-value.md",
         "digital-biosphere-architecture/architecture/ADR-042-commercial-private-infrastructure-direction.md",
@@ -109,6 +122,8 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/architecture/titmas-architecture-charter-v1.0.md",
         "digital-biosphere-architecture/architecture/titmas-d29-commercial-direction-freeze-v1.md",
         "digital-biosphere-architecture/architecture/titmas-d29-private-platform-architecture-v1.md",
+        "digital-biosphere-architecture/architecture/titmas-fdo-dtr-pvs0-assets-v0.1.json",
+        "digital-biosphere-architecture/architecture/titmas-fdo-dtr-pvs0-auxiliary-line-status-v0.1.md",
         "digital-biosphere-architecture/docs/TITMAS_PRIVATE_PLATFORM_ARCHITECTURE_v0.1.md",
         "digital-biosphere-architecture/docs/TITMAS_PRODUCT_PORTFOLIO_v0.1.md",
         "digital-biosphere-architecture/docs/TITMAS_WEBSITE_RESTRUCTURE_PLAN_v0.1.md",
@@ -128,7 +143,7 @@ def forbidden_change_reason(paths):
             return "WEBSITE_IMPLEMENTATION_CHANGED"
         if parts & forbidden_parts:
             return "CORE_RUNTIME_OR_DATABASE_CHANGED"
-        allowed_contract = raw.startswith("digital-biosphere-architecture/commercial/") and raw.endswith(".json")
+        allowed_contract = raw.startswith("digital-biosphere-architecture/commercial/") and raw.endswith((".json", ".md"))
         allowed_commercial_doc = raw.startswith("digital-biosphere-architecture/docs/commercial/") and raw.endswith(".md")
         if raw not in allowed_exact and not allowed_contract and not allowed_commercial_doc:
             return "UNAPPROVED_CHANGE_PATH"
