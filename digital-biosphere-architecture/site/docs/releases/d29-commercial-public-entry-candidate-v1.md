@@ -70,32 +70,40 @@ validation. That local artifact was not deployed.
 
 ## Dependency-audit limitation
 
-The 2026-08-04 `npm audit` result for the existing site dependency graph was:
+The initial 2026-08-04 `npm audit` result exposed a production-path PostCSS
+advisory because the repository pinned `postcss` at `8.5.22`. The bounded
+remediation raised only that existing override to `8.5.25`, regenerated the
+lockfile, and retained the existing framework and architecture.
+
+The post-remediation results are:
 
 ```text
-CRITICAL=0
-HIGH=4
-MODERATE=9
-LOW=0
+NPM_AUDIT_OMIT_DEV=0_VULNERABILITIES
+FULL_AUDIT_CRITICAL=0
+FULL_AUDIT_HIGH=4
+FULL_AUDIT_MODERATE=3
+FULL_AUDIT_LOW=0
 ```
 
-The high findings are transitive build, lint, schema-validation, or local
-Cloudflare tooling paths (`ajv`, `fast-uri`, `brace-expansion`, `undici`). The
-website output is static, but this does not erase supply-chain risk. Suggested
-automatic fixes include major or invalid version changes, so dependencies were
-not changed in this bounded information-architecture PR.
+The remaining findings are limited to transitive development-time build, lint,
+schema-validation, or local Cloudflare tooling paths (`ajv`, `fast-uri`,
+`brace-expansion`, `undici`). The website output is static, but this does not
+erase development supply-chain risk. Suggested automatic fixes include major or
+invalid version changes, so `npm audit fix --force` was not used.
 
 Therefore:
 
 ```text
-DEPENDENCY_AUDIT_PASS=false
+PRODUCTION_DEPENDENCY_AUDIT_PASS=true
+FULL_DEVELOPMENT_DEPENDENCY_AUDIT_PASS=false
 PUBLIC_DEPLOYMENT_AUTHORIZED=false
 COMMERCIAL_OFFERING_AVAILABLE=false
 PRODUCTION_READY=false
 ```
 
-A separate dependency-remediation decision and regression review are required
-before treating this candidate as release-ready.
+The remaining development-tool findings require a separate dependency refresh
+and regression review. Passing the production dependency audit does not by
+itself authorize deployment or commercial availability.
 
 ## Non-effects
 
