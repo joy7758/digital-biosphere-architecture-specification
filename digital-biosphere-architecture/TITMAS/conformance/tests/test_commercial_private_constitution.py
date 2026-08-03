@@ -13,6 +13,15 @@ def load_json(relative: str):
 
 
 class CommercialPrivateConstitutionTests(unittest.TestCase):
+    def test_repository_homepage_uses_current_commercial_identity(self):
+        homepage = (ROOT.parent / "README.md").read_text(encoding="utf-8")
+        self.assertTrue(homepage.startswith("# TITMAS Commercial Agent Infrastructure"))
+        self.assertIn("CURRENT_STRATEGY=COMMERCIAL_PRIVATE_INFRASTRUCTURE", homepage)
+        self.assertIn("PUBLIC_SURFACE_NE_OPEN_SOURCE_CORE=true", homepage)
+        self.assertIn("PUBLIC_CONTRIBUTION_ROUTE_ACTIVE=false", homepage)
+        self.assertNotIn("COMMUNITY_STATUS=LIMITED_REPOSITORY_CONTRIBUTION_PREVIEW", homepage)
+        self.assertNotIn("PUBLIC_CONTRIBUTION_SURFACE_ACTIVE=true", homepage)
+
     def test_current_constitution_and_decision_are_present(self):
         constitution = (ROOT / "architecture/commercial-private-infrastructure-strategy-constitution.md").read_text(encoding="utf-8")
         decision = (ROOT / "architecture/ADR-042-commercial-private-infrastructure-direction.md").read_text(encoding="utf-8")
@@ -96,6 +105,13 @@ class CommercialPrivateConstitutionTests(unittest.TestCase):
             "PUBLIC_CONTRIBUTION_AUTHORIZED=false",
         ):
             self.assertIn(boundary, decision)
+
+    def test_current_roadmap_uses_commercial_customer_route(self):
+        roadmap = (ROOT / "MASTER-ROADMAP.md").read_text(encoding="utf-8")
+        self.assertIn("CURRENT_FOCUS=D29_COMMERCIAL_PRIVATE_PLATFORM_AND_BOUNDED_CUSTOMER_ENTRY", roadmap)
+        self.assertIn("CURRENT_STRATEGY=COMMERCIAL_PRIVATE_INFRASTRUCTURE", roadmap)
+        self.assertIn("受控客户接入、商业交付与支持服务", roadmap)
+        self.assertNotIn("CURRENT_FOCUS=DEVELOPER_PREVIEW_V0_1_POST_RELEASE_OBSERVATION", roadmap)
 
 
 if __name__ == "__main__":
