@@ -8,6 +8,7 @@
     "canonical_program_name_zh",
     "product_category",
     "historical_community_identity",
+    "historical_community_archive",
     "purpose",
     "when_to_use",
     "when_not_to_use",
@@ -19,7 +20,7 @@
   ],
   "properties": {
     "$schema": {"type": "string"},
-    "format_version": {"const": "3.0.0"},
+    "format_version": {"const": "3.1.0"},
     "canonical_agent_entry": {"const": true},
     "canonical_program_name": {"const": "TITMAS Commercial Agent Infrastructure"},
     "canonical_program_name_zh": {"const": "TITMAS 商业智能体基础设施"},
@@ -33,6 +34,18 @@
         "aliases": {"type": "array", "minItems": 2, "items": {"type": "string"}},
         "status": {"const": "SUPERSEDED_HISTORICAL_IDENTITY"},
         "current_authority_effect": {"const": "NONE"}
+      }
+    },
+    "historical_community_archive": {
+      "type": "object",
+      "required": ["status", "current_authority_effect", "invocation_authorized", "customer_entry", "surfaces", "commands"],
+      "properties": {
+        "status": {"const": "SUPERSEDED_HISTORICAL_ARCHIVE"},
+        "current_authority_effect": {"const": "NONE"},
+        "invocation_authorized": {"const": false},
+        "customer_entry": {"const": false},
+        "surfaces": {"type": "object"},
+        "commands": {"type": "object"}
       }
     },
     "subtitle": {"type": "string"},

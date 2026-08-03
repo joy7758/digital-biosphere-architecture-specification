@@ -89,3 +89,30 @@ LICENSE_CHANGED=false
 DBOS_CHANGED=false
 SAEE_CHANGED=false
 ```
+
+## 2026-08-04 Post-adoption Entry Residue Review
+
+Exact reviewed base: `main@7808b9d20fb09a3223a3e4c26c2d70061b179a9a`.
+
+The current constitution and identity were already corrected, but the Human
+`Start here` still presented contribution guides beside current commercial
+entry points, and the canonical Agent entry still exposed `community_cli.py`
+discovery, ranking and eligibility commands as active commands.
+
+An independent `qwen3.8-max` advisory review returned
+`CONDITIONALLY_RECOMMENDED`: it recommended removing those paths from the active
+entry or placing them behind an explicit non-operational historical archive.
+The advice created no Authority. The bounded correction keeps the files and
+their Git history, moves their references into an archive projection, and fixes
+the current entry without changing any Runtime, product, License or customer
+fact.
+
+```text
+CURRENT_COMMERCIAL_ENTRY_CLEANUP_REQUIRED=true
+HISTORICAL_COMMUNITY_FILES_DELETED=false
+HISTORICAL_COMMUNITY_CURRENT_AUTHORITY_EFFECT=NONE
+HISTORICAL_COMMUNITY_INVOCATION_AUTHORIZED=false
+IMPLEMENTATION_AUTHORIZED=false
+RELEASE_AUTHORIZED=false
+DEPLOYMENT_AUTHORIZED=false
+```
