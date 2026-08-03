@@ -62,6 +62,7 @@ last_reviewed: 2026-08-02
 | `TITMAS-AGENT-NATIVE-DISCOVERY-SELF-HEALING-AND-EVOLUTION-D19-V2-1` | `ACCEPTED_BOUNDED_EXCEPTION_TO_D16`：允许建立证据驱动的有界自修复与自进化架构、参考实现和 ER-1 Draft PR 演示 | `decided_by_ref=zhangbin`；2026-08-02 | 只允许 self-observation、RCA、最多三变体、隔离实现、测试、适应度、选择、回滚、谱系与 Draft PR；不授权 merge、release、deployment、生产修改、自授权、数据库/API/Schema 语义变化或 P0-10 重开 |
 | `ADR-040 / TITMAS-TITMAC-SCOUT-CANONICAL-IDENTITY-AND-COCKPIT-PROGRESS-BRIDGE-D20` | `ACCEPTED_EXECUTION_AUTHORIZED_DRAFT_REVIEW_REQUIRED`：冻结 `titmac-scout` 机器身份、唯一状态合同与 DBA 只读按需桥接 | `decided_by_ref=zhangbin`；2026-08-02 | 允许 private canonical remote、status/schema、source registry、fail-closed projection、测试与最多两个 Draft PR；不授权 PR #105/#106 merge/close、运行、发布、部署、数据库、跨仓写回、P0-10 或 D04 重开 |
 | `ADR-040 / TITMAS-TITMAC-SCOUT-CANONICAL-STATUS-ACTIVATION-AND-COCKPIT-REBIND-D21` | `ACCEPTED_EXECUTED_SCOUT_MERGED_DBA_REBIND_READY_FOR_REVIEW`：分离 Scout 静态声明与 GitHub 动态观察，PR #1 已用 merge commit 进入 canonical `main`，DBA PR #107 仅重绑定该 exact source | `decided_by_ref=zhangbin`；2026-08-02 | 授权更新/合并 Scout PR #1 与更新/合并 DBA PR #107；不授权 PR #105/#106 变化、自愈/演化实现迁移、Runtime、数据库、部署、发布、P0-10 或 D04 重开 |
+| `ADR-041 / TITMAS-COMMERCIAL-CONSTITUTION-C01-LOW-FRICTION-ENTRY-D29-INTEGRATION` | `ACCEPTED_ARCHITECTURE_FREEZE`：将低门槛进入与渐进式价值冻结为 C-01，并原位约束 D29、四产品组合、Observer 非产品入口及 Human/Agent 双入口 | `decided_by_ref=zhangbin`；2026-08-03 | 允许文档、机器契约、测试、Draft PR 及满足精确闸门后的 merge commit；不授权控制台、网站、Observer/Gate/Health Runtime、数据库、客户、联系、合同、收费、部署、公开内核、owner map/resolver、PR #113 或 D04/P0-10 重开 |
 
 ## 4. Decision Closure Contract（决策关闭契约）
 

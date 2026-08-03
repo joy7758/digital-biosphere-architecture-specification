@@ -5,6 +5,14 @@ Decision reference:
 
 Status: `ACCEPTED_FOR_D29_IMPLEMENTATION_WITH_GATES`
 
+The existing D29 status does not authorize implementation under this C-01
+change. The current decision is architecture-only:
+
+```text
+C01_CUSTOMER_ENTRY_IMPLEMENTATION_AUTHORIZED=false
+C01_ENFORCE_IMPLEMENTATION_AUTHORIZED=false
+```
+
 ## Positioning
 
 ```text
@@ -17,6 +25,26 @@ CLOSED_CORE_OPEN_DISCOVERY_AND_PROOF
 AI_AGENT_IS_OPERATIONAL_CUSTOMER=true
 HUMAN_OR_ORGANIZATION_IS_CONTRACTING_PRINCIPAL=true
 ```
+
+## Commercial Constitution C-01
+
+D29 is subordinate to
+[`TITMAS-COMMERCIAL-C01`](../docs/commercial/TITMAS_CUSTOMER_ENTRY_PRINCIPLE_C01.md):
+
+```text
+LOW_FRICTION_ENTRY_IS_COMMERCIAL_FIRST_PRINCIPLE=true
+FIRST_VALUE_BEFORE_ENFORCEMENT=true
+MONITOR_BEFORE_ENFORCE=true
+MINIMUM_NECESSARY_DATA=true
+REVERSIBLE_ENTRY=true
+EXPLANATION_BEFORE_CONFIGURATION=true
+PROOF_BEFORE_PURCHASE_EXPANSION=true
+```
+
+TITMAS must return an explained and verifiable initial result before asking a
+customer for full architecture understanding, private-core source access,
+production write permission, automatic enforcement, unnecessary raw data,
+complex deployment or a high-cost commitment.
 
 TITMAS is one private platform with one shared core. It exposes four public
 product contracts:
@@ -33,11 +61,24 @@ cores.
 ## Commercial progression
 
 ```text
-Health Snapshot
-  -> paid Monitor Pilot
-  -> customer-specific Enforce Pilot
-  -> enterprise private deployment
+Observer
+  -> Health Snapshot
+  -> Monitor Pilot
+  -> Gate Enforce Pilot
+  -> Receipt + Audit
+  -> Enterprise Private Deployment
 ```
+
+```text
+HEALTH_IS_ACQUISITION_ENTRY=true
+GATE_IS_PRIMARY_PAID_PRODUCT=true
+RECEIPT_IS_PORTABLE_PROOF_LAYER=true
+AUDIT_IS_ENTERPRISE_EXPANSION=true
+```
+
+`TITMAS Observer` is the shared customer entry layer. It contributes zero to
+the public product count, has no authority or enforcement effect, and does not
+own Trace or Evidence semantics.
 
 The primary first market is software, AI SaaS and enterprise-automation teams
 using coding Agents for merge, release, configuration, data write, external
@@ -47,6 +88,36 @@ Monitor computes and records `WOULD_ALLOW`, `WOULD_BLOCK`,
 `WOULD_NEED_APPROVAL` or `NOT_ASSESSED` and has no enforcement effect. Enforce
 uses `ALLOW`, `BLOCK`, `NEEDS_APPROVAL` or `NOT_ASSESSED`; `NOT_ASSESSED` never
 becomes allow.
+
+## First-value routes and dual entry
+
+D29 supports three architecture-level first-value routes:
+
+1. zero-customer-data synthetic Observer → Shadow Gate → Receipt → Audit;
+2. public, synthetic or authorized redacted Trace import with read-only action
+   classification and evidence-gap output;
+3. read-only/event-copy Monitor with `WOULD_*` or `NOT_ASSESSED` output.
+
+The Human entry begins with Agent inventory, activity, attention, shadow
+outcome, permission, data and exit questions. The Agent entry exposes products,
+non-claims, access modes, required inputs, data boundaries, synthetic examples,
+Monitor request semantics, verification and abstention. Both views derive from
+the same machine contracts.
+
+Design targets of ten minutes for a synthetic demonstration and thirty minutes
+for a Monitor sandbox are unmeasured targets, not current product claims.
+
+The normative `FirstValueContract` schema and examples are
+[`first-value-contract.schema.json`](../commercial/entry/first-value-contract.schema.json)
+and [`first-value-examples.json`](../commercial/entry/first-value-examples.json).
+They distinguish architecture requirements from current runtime availability.
+The machine `TITMAS_CUSTOMER_ENTRY_CHECK` is
+[`customer-entry-check.json`](../commercial/entry/customer-entry-check.json).
+If it returns `FAIL`, then `CUSTOMER_ENTRY_TOO_HIGH=true` and
+`REDESIGN_REQUIRED=true`; no later-stage implementation may be inferred.
+
+Exit must support connection removal, key revocation and a deletion request.
+Deletion cannot rewrite immutable retained Evidence or the D04 failure history.
 
 ## Competitive correction
 
@@ -91,7 +162,9 @@ MANUAL_COMMERCIAL_PROVISIONING=true
 HUMAN_LEGAL_REVIEW_REQUIRED=true
 ```
 
-The first offer is a B2B, manually provisioned, bounded private Monitor Pilot.
+The first proposed design-partner offer architecture is a B2B, manually
+provisioned, bounded private Monitor Pilot. `AVAILABLE_OFFERING=false`; this is
+not a currently purchasable or deployed offer.
 No legal, filing, licensing, production, customer adoption or certification
 claim follows from this architecture freeze.
 
@@ -101,7 +174,26 @@ claim follows from this architecture freeze.
 ONE_PRIVATE_PLATFORM=true
 ONE_SHARED_CORE=true
 FOUR_PUBLIC_PRODUCTS=true
+PUBLIC_PRODUCT_COUNT=4
+PUBLIC_PRODUCTS=GATE_RECEIPT_AUDIT_HEALTH
 MULTIPLE_INDUSTRY_CONFIGURATIONS=true
+OBSERVER_IS_ENTRY_LAYER=true
+OBSERVER_IS_FIFTH_PRODUCT=false
+FIRST_VALUE_BEFORE_ENFORCEMENT=true
+MONITOR_BEFORE_ENFORCE=true
+CLOSED_CORE=true
+OPEN_DISCOVERY=true
+OPEN_PROOF=true
+PUBLIC_INTERFACE_NE_PRIVATE_IMPLEMENTATION=true
+COMMERCIAL_ACCESS_NE_SOURCE_LICENSE=true
+NEW_IDENTITY_CORE=false
+NEW_EVIDENCE_CORE=false
+NEW_POLICY_ENGINE=false
+NEW_GATE_ENGINE=false
+NEW_RECEIPT_ENGINE=false
+NEW_AUDIT_ENGINE=false
+NEW_TENANT_SYSTEM=false
+NEW_TRACE_PLATFORM=false
 SECOND_IDENTITY_CORE_CREATED=false
 SECOND_EVIDENCE_OBJECT_SYSTEM_CREATED=false
 SECOND_POLICY_ENGINE_CREATED=false
@@ -110,5 +202,16 @@ SECOND_AUDIT_CHAIN_CREATED=false
 SECOND_TENANT_SYSTEM_CREATED=false
 SECOND_KEY_SYSTEM_CREATED=false
 SECOND_VERIFICATION_AUTHORITY_CREATED=false
-TITMAS_DIRECTION_CHECK_RESULT=PASS_WITH_RECORDED_LIMITATIONS
+TITMAS_DIRECTION_CHECK_RESULT=PASS
+```
+
+This D29 integration is architecture only:
+
+```text
+CONSOLE_IMPLEMENTED=false
+WEBSITE_IMPLEMENTED=false
+OBSERVER_RUNTIME_IMPLEMENTED=false
+PUBLIC_LAUNCH_AUTHORIZED=false
+COMMERCIAL_CUSTOMER_CREATED=false
+TITMAS_DRIFT_CHECK_RESULT=PASS_WITH_RECORDED_LIMITATIONS
 ```

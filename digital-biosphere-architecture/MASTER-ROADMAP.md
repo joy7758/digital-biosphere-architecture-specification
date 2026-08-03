@@ -261,3 +261,16 @@ If D15 does not establish a single-layer root cause with confidence at least
 the one final rerun fail, the route terminates as `FAIL_CLOSED`. Either terminal
 result ends this development round without creating production, commercial,
 certification, adoption or conformance claims.
+
+## 11. C-01 and D29 Customer Entry Architecture
+
+| milestone | objective | status | exit evidence |
+|---|---|---|---|
+| `C01-A1` | Freeze low-friction entry as display-order one | `ARCHITECTURE_FROZEN` | ADR-041, Constitution and C-01 machine contract |
+| `C01-A2` | Preserve one platform, one core, four products and classify Observer as entry layer | `CONTRACT_CONFORMANCE_PASS` | catalog and T05/T06/T14/T15 tests |
+| `C01-A3` | Define Human/Agent entry, FirstValue routes and reversible exit | `CONTRACT_CONFORMANCE_PASS` | entry surfaces, examples, access modes and exit controls |
+| `C01-A4` | Implement Observer and measured first value | `NOT_AUTHORIZED` | new Human Decision required |
+
+This architecture overlay does not reopen P0-10 or D04 and does not authorize
+Runtime, control plane, database, website, customer contact or production
+deployment.

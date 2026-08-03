@@ -626,3 +626,37 @@ Machine entries:
 - [`cockpit/projections/titmac-scout.json`](cockpit/projections/titmac-scout.json)
 - [`cockpit/read_only_status_adapter.py`](cockpit/read_only_status_adapter.py)
 - [`ADR-040`](architecture/ADR-040-titmac-scout-canonical-identity-and-read-only-progress-bridge.md)
+
+## 17. C-01 Low-Friction Commercial Entry and D29 Overlay
+
+Human Decision
+`TITMAS-COMMERCIAL-CONSTITUTION-C01-LOW-FRICTION-ENTRY-D29-INTEGRATION`
+freezes C-01 as the first TITMAS commercial principle and updates D29 in place.
+Observer is a non-product entry layer; Gate, Receipt, Audit and Health remain
+the exact four products. Human and Agent entry, three FirstValue contract
+routes, reversible exit and the Customer Entry Check are architecture and
+machine contracts only.
+
+```text
+COMMERCIAL_CONSTITUTION_STATUS=C01_FROZEN
+C01_IS_FIRST_COMMERCIAL_PRINCIPLE=true
+TITMAS_CUSTOMER_ENTRY_CHECK_RESULT=PASS
+IMPLEMENTATION_EVALUATION=NOT_ASSESSED
+CURRENTLY_ACHIEVED=false
+OBSERVER_IS_PRODUCT=false
+PUBLIC_PRODUCT_COUNT=4
+D29_INTEGRATION_STATUS=ARCHITECTURE_INTEGRATED
+CONSOLE_IMPLEMENTED=false
+WEBSITE_IMPLEMENTED=false
+OBSERVER_RUNTIME_IMPLEMENTED=false
+PUBLIC_LAUNCH_AUTHORIZED=false
+COMMERCIAL_CUSTOMER_CREATED=false
+P0_10_REOPENED=false
+D04_REOPENED=false
+```
+
+Canonical records are
+[`ADR-041`](architecture/ADR-041-low-friction-entry-and-progressive-value.md),
+[`TITMAS Commercial Constitution v1.0`](docs/commercial/TITMAS_COMMERCIAL_CONSTITUTION_v1.0.md)
+and the machine
+[`Customer Entry Check`](commercial/entry/customer-entry-check.json).
