@@ -43,8 +43,8 @@ test("MT-01 current stage agrees", () => {
   const expected = "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM";
   assertJsonTruth("current_stage", expected);
   assert.match(llms, new RegExp(`CURRENT_STAGE=${expected}`));
-  assert.match(zhHome, /商业成熟度计划/);
-  assert.match(enHome, /COMMERCIAL MATURITY PROGRAM/);
+  assert.match(zhHome, /当前商业事实/);
+  assert.match(enHome, /CURRENT COMMERCIAL TRUTH/);
 });
 
 test("MT-00 public brand stays distinct from the TITMAS technical identifier", () => {
@@ -77,15 +77,13 @@ test("MT-03 private core status agrees", () => {
   assertJsonTruth("current_core_repository_visibility", "PRIVATE");
   assertJsonTruth("public_core_clone_available", false);
   assert.match(llms, /CURRENT_CORE_REPOSITORY_VISIBILITY=PRIVATE/);
-  assert.match(zhHome, /机密核心保持私有/);
-  assert.match(enHome, /Confidential core remains private/);
+  assert.match(zhHome, /闭源私有核心/);
+  assert.match(enHome, /closed private core/i);
 });
 
 test("MT-04 public intake status agrees", () => {
   assertJsonTruth("titmas_public_trial_interest_entry_active", true);
   assert.match(llms, /TITMAS_PUBLIC_TRIAL_INTEREST_ENTRY_ACTIVE=true/);
-  assert.match(zhHome, /Public Trial Interest Intake/);
-  assert.match(enHome, /Public Trial Interest Intake/);
 });
 
 test("MT-05 compensated recruitment history is retired", () => {
@@ -106,8 +104,6 @@ test("MT-11 Stage 5.7 evidence agrees", () => {
   assert.equal(agentIndex.stage5_7_agent_native_selection_roi.valid_sessions, 24);
   assert.equal(status.stage5_7_agent_native_selection_roi.agent_selection_auditor_status, "PASS");
   assert.match(llms, /OPTION_D_RANKED_FIRST=24\/24/);
-  assert.match(zhHome, /24\/24/);
-  assert.match(enHome, /24\/24/);
 });
 
 test("MT-06 protocol release status agrees", () => {
@@ -171,8 +167,6 @@ test("MT-12 CR-01 restore failure remains fail-closed across public surfaces", (
   assert.equal(wellKnown.deployment_evidence.restored_receipt_verification_pass, false);
   assert.equal(wellKnown.deployment_evidence.backup_restore_drill_pass, false);
   assert.equal(wellKnown.deployment_evidence.restore_rto_status, "NOT_ESTABLISHED");
-  assert.match(zhHome, /2 条签名无法验证/);
-  assert.match(enHome, /2 of 1,661 historical Receipt signatures/);
   assert.match(zhStatus, /BLOCKED_LEDGER_INTEGRITY/);
   assert.match(enStatus, /BLOCKED_LEDGER_INTEGRITY/);
 });
@@ -180,8 +174,9 @@ test("MT-12 CR-01 restore failure remains fail-closed across public surfaces", (
 test("MT-08 community status agrees", () => {
   assertJsonTruth("titmas_community_established", false);
   assert.match(llms, /TITMAS_COMMUNITY_ESTABLISHED=false/);
-  assert.match(zhHome, /NOT ESTABLISHED/);
-  assert.match(enHome, /NOT ESTABLISHED/);
+  assert.equal(status.community.current_state, "HISTORICAL_NON_CURRENT");
+  assert.equal(agentIndex.community.current_state, "HISTORICAL_NON_CURRENT");
+  assert.match(llms, /COMMUNITY_MATERIAL_STATUS=HISTORICAL_NON_CURRENT/);
 });
 
 test("MT-09 production status agrees", () => {

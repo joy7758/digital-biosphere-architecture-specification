@@ -16,12 +16,12 @@ async function render(pathname) {
   );
 }
 
-test("media carousel contains exactly three complete entries", async () => {
+test("commercial carousel contains exactly three complete entries", async () => {
   const source = await readFile(new URL("app/components/hero-carousel.tsx", siteRoot), "utf8");
   assert.match(source, /slideCount: 3/);
-  assert.match(source, /TITMAS 可信多智能体基础设施/);
-  assert.match(source, /让人工智能生成内容拥有可复核的责任链/);
-  assert.match(source, /医疗影像与设备证据基础设施/);
+  assert.match(source, /让 AI 智能体犯错时，也不能直接造成未经验证的后果/);
+  assert.match(source, /先看哪些动作本应被阻断/);
+  assert.match(source, /一个私有平台，四个对外产品/);
   assert.doesNotMatch(source, /slideCount: [4-9]/);
 });
 
@@ -38,9 +38,9 @@ test("server-rendered homepage exposes the complete first slide without scripts"
   const response = await render("/");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /TITMAS 可信多智能体基础设施/);
-  assert.match(html, /让智能体的身份、授权、执行、证据和决定可以被描述、验证和复核/);
-  assert.match(html, /了解 TITMAS/);
+  assert.match(html, /让 AI 智能体犯错时，也不能直接造成未经验证的后果/);
+  assert.match(html, /闭源私有核心连接行动闸门/);
+  assert.match(html, /申请私有评估/);
 });
 
 test("carousel disables automatic advance for reduced motion and pauses after interaction", async () => {
@@ -82,16 +82,16 @@ test("machine-readable media profile preserves all prohibited claims as false", 
   }
 });
 
-test("homepage, application, demo, and machine links form a closed discovery set", async () => {
+test("application, demo, and machine links remain a closed historical discovery set", async () => {
   const profile = JSON.parse(await readFile(new URL("media-evidence-profile.json", publicRoot), "utf8"));
   const catalog = JSON.parse(await readFile(new URL("site-catalog.json", publicRoot), "utf8"));
   const agentIndex = JSON.parse(await readFile(new URL("agent-index.json", publicRoot), "utf8"));
   assert.equal(catalog.public_surfaces.media_evidence.application_zh, profile.application_url);
   assert.equal(catalog.public_surfaces.media_evidence.demo_zh, profile.demo_url);
   assert.equal(agentIndex.media_evidence.machine_profile, "/media-evidence-profile.json");
-  const home = await (await render("/")).text();
-  assert.match(home, /href="\/industry\/media-evidence\/"/);
-  assert.match(home, /href="\/demo\/media-evidence\/"/);
+  const [application, demo] = await Promise.all([render("/industry/media-evidence"), render("/demo/media-evidence")]);
+  assert.equal(application.status, 200);
+  assert.equal(demo.status, 200);
 });
 
 test("static export contracts include every new bilingual route and public resource", async () => {

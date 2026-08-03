@@ -9,6 +9,32 @@ const outputRoot = join(siteRoot, "out");
 const requiredFiles = [
   "index.html",
   "en/index.html",
+  "products/gate/index.html",
+  "en/products/gate/index.html",
+  "products/receipt/index.html",
+  "en/products/receipt/index.html",
+  "products/audit/index.html",
+  "en/products/audit/index.html",
+  "products/health/index.html",
+  "en/products/health/index.html",
+  "design-partner/index.html",
+  "en/design-partner/index.html",
+  "private-evaluation/index.html",
+  "en/private-evaluation/index.html",
+  "monitor-pilot/index.html",
+  "en/monitor-pilot/index.html",
+  "enforce-pilot/index.html",
+  "en/enforce-pilot/index.html",
+  "request-access/index.html",
+  "en/request-access/index.html",
+  "security/index.html",
+  "en/security/index.html",
+  "trust-center/index.html",
+  "en/trust-center/index.html",
+  "privacy/index.html",
+  "en/privacy/index.html",
+  "terms/index.html",
+  "en/terms/index.html",
   "research/index.html",
   "en/research/index.html",
   "research/index/index.html",
@@ -44,6 +70,12 @@ const requiredFiles = [
   "llms.txt",
   "TITMAS-FIRST-RUN-v0.1.md",
   "agent-index.json",
+  "product-catalog.json",
+  "solution-catalog.json",
+  "proof-catalog.json",
+  "commercial-offerings.json",
+  "deployment-options.json",
+  "recommendation-policy.json",
   "site-catalog.json",
   "media-evidence-profile.json",
   "media-evidence-reproduction.md",
@@ -91,7 +123,7 @@ const releaseContext = resolveReleaseContext(process.env, {
   dbosPackage,
 });
 
-assert.match(zh, /<h1>TITMAS 可信多智能体基础设施<\/h1>/);
+assert.match(zh, /<h1>让 AI 智能体犯错时，也不能直接造成未经验证的后果<\/h1>/);
 assert.match(zh, /夏日之海/);
 assert.match(zh, /\/titmas-logo\.png/);
 assert.match(en, /aria-label="titmas · Trusted Multi-Agent Infrastructure"/);
@@ -110,10 +142,10 @@ assert.match(zh, /<html lang="zh-CN">/);
 assert.match(zhStatus, /<html lang="zh-CN">/);
 assert.match(en, /<html lang="en">/);
 assert.match(enStatus, /<html lang="en">/);
-assert.match(zh, /为不同智能体提供共同的可信互操作边界/);
-assert.match(en, /A shared trust-interoperability boundary for different agents/);
+assert.match(zh, /关键行动控制与可验证追责/);
+assert.match(en, /Critical-action control and verifiable accountability/);
 assert.match(zh, /Verification ≠ Authorization/);
-assert.match(en, /Recommendation ≠ Decision/);
+assert.match(en, /Request ≠ Access/);
 if (releaseContext.mode === "candidate") {
   assert.match(zhStatus, /当前不是正式发布/);
   assert.match(enStatus, /This is not a release/);
@@ -121,18 +153,14 @@ if (releaseContext.mode === "candidate") {
   assert.match(zhStatus, /TITMAS 商业基础设施成熟度计划进行中/);
   assert.match(enStatus, /TITMAS commercial infrastructure maturity program in progress/);
 }
-assert.match(zh, /E01 Human Compatibility Observation/);
-assert.match(en, /E01 Human Compatibility Observation/);
-assert.match(zh, /运行媒体证据演示/);
-assert.match(en, /Run the media evidence demo/);
-assert.match(zh, /AGENT START HERE/);
-assert.match(en, /Human navigation and explicit machine contracts/);
-assert.match(zh, /1,661 条历史 Receipt 中有 2 条签名无法验证/);
-assert.match(en, /2 of 1,661 historical Receipt signatures remain unverifiable/);
-assert.match(zh, /TITMAS Digital Cell Demo/);
-assert.match(en, /Medical Evidence Infrastructure/);
-assert.match(zh, /PRODUCTION_READY=false/);
-assert.match(en, /PRODUCTION_READY=false/);
+assert.match(zh, /机器商业目录/);
+assert.match(en, /Machine commercial catalogs/);
+assert.match(zh, /product-catalog\.json/);
+assert.match(en, /recommendation-policy\.json/);
+assert.match(zh, /AVAILABLE OFFERINGS/);
+assert.match(en, /AVAILABLE OFFERINGS/);
+assert.match(zh, /PRODUCTION READY[^<]*<\/span><strong>false/);
+assert.match(en, /PRODUCTION READY[^<]*<\/span><strong>false/);
 assert.doesNotMatch(zh, /codex-preview|Your site is taking shape/);
 assert.doesNotMatch(en, /codex-preview|Your site is taking shape/);
 assert.equal(status.gates.CROSS_PROJECT_CLEAN_CLONE_PASS, true);
@@ -143,13 +171,15 @@ assert.equal(status.gates.TITMAS_DEVELOPER_COMMUNITY_ESTABLISHED, false);
 assert.equal(status.gates.TITMAS_CODE_OF_CONDUCT_ADOPTED, false);
 assert.equal(status.gates.TITMAS_MAINTAINER_ASSIGNED, false);
 assert.equal(status.gates.TITMAS_FOUNDATION_IN_SCOPE, false);
-assert.equal(status.community.current_state, "CONTRIBUTOR_ENTRY_PREPARED");
+assert.equal(status.community.direction_adopted, false);
+assert.equal(status.community.historical_direction_recorded, true);
+assert.equal(status.community.current_state, "HISTORICAL_NON_CURRENT");
 assert.equal(status.community.canonical_name_en, "titmas");
 assert.equal(status.community.canonical_name_zh, "夏日之海");
 assert.equal(status.community.public_brand_logo, "/titmas-logo.png");
 assert.equal(status.community.technical_project_identifier, "TITMAS");
 assert.equal(status.community.public_contribution_surface_authorized, false);
-assert.equal(agentIndex.name, "TITMAS Infrastructure Developer Community");
+assert.equal(agentIndex.name, "TITMAS Commercial Agent Infrastructure");
 assert.equal(agentIndex.display_name_zh, "夏日之海");
 assert.equal(agentIndex.display_name_en, "titmas");
 assert.equal(agentIndex.public_brand, "titmas");
@@ -215,7 +245,7 @@ assert.equal(release.release_decision_reference, releaseContext.releaseDecisionR
 assert.equal(release.released_by_ref, releaseContext.releasedByRef);
 assert.equal(release.public_release_tag, releaseContext.publicReleaseTag);
 assert.equal(release.dbos_public_package_url, releaseContext.dbosWheelUrl);
-assert.equal(release.routes.length, 38);
+assert.equal(release.routes.length, 64);
 assert.ok(manifest.files.length >= 80);
 assert.equal(manifest.source_revision, release.source_revision);
 

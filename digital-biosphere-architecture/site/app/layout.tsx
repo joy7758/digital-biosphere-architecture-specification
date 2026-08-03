@@ -12,13 +12,13 @@ export const metadata: Metadata = {
     template: "%s · 山西游骑兵电子商务有限公司",
   },
   description:
-    "围绕开放规范、适配器契约、符合性测试和参考实现边界建设可信多智能体基础设施。",
+    "TITMAS智能体行动控制与可验证执行平台：闭源私有核心、公开发现与合成证明。",
   openGraph: {
     type: "website",
     siteName: "山西游骑兵电子商务有限公司",
     title: "山西游骑兵电子商务有限公司",
     description:
-      "Developer Community for Trusted Multi-Agent Infrastructure.",
+      "TITMAS Agent Action Control and Verifiable Accountability Platform.",
     images: [
       {
         url: "/titmas-logo.png",
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "山西游骑兵电子商务有限公司",
     description:
-      "Open specifications, adapter contracts, conformance, and reference boundaries for trusted multi-agent infrastructure.",
+      "Closed-core commercial agent infrastructure with public discovery and bounded synthetic proof.",
     images: ["/titmas-logo.png"],
   },
 };

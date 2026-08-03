@@ -24,6 +24,10 @@ PUBLIC_TRIAL_INTEREST_ENTRY_ACTIVE=true
 FIRST_EXTERNAL_HUMAN_DEVELOPER_TRIAL_COMPLETE=false
 PUBLIC_PROTOCOL_RELEASED=false
 PRODUCTION_READY=false
+COMMERCIAL_PUBLIC_ENTRY_IMPLEMENTED_CANDIDATE=true
+COMMERCIAL_PUBLIC_ENTRY_DEPLOYED=false
+AVAILABLE_COMMERCIAL_OFFERING_COUNT=0
+COMMUNITY_MATERIAL_STATUS=HISTORICAL_NON_CURRENT
 ```
 
 这个目录是网站实现，不是 DBOS Runtime（运行时）、SAEE Evaluation
@@ -42,6 +46,11 @@ Runtime（评价运行时）或 Agent（智能体）实现。页面将当前项�
 | `/llms.txt` | LLM-readable（大模型可读）项目入口 |
 | `/agent-index.json` | Agent discovery（智能体发现）索引 |
 | `/status.json` | 机器可读验证状态 |
+| `/products/gate`, `/products/receipt`, `/products/audit`, `/products/health` | 四个公开产品信息页；不表示 Offering 可用 |
+| `/monitor-pilot`, `/enforce-pilot`, `/private-evaluation`, `/design-partner` | 商业试点边界与人工入口候选 |
+| `/security`, `/trust-center`, `/privacy`, `/terms` | 安全、信任、隐私和条款边界 |
+| `/product-catalog.json`, `/solution-catalog.json`, `/proof-catalog.json` | Agent-readable 商业目录 |
+| `/commercial-offerings.json`, `/deployment-options.json`, `/recommendation-policy.json` | Offering、部署和推荐边界 |
 | `/agent-customer-package.json` | AI agent 的适用／不适用、精确验证命令、组合流和当前阻塞 |
 | `/dbos-public-package-manifest.json` | DBOS exact wheel 的验证、匿名下载、公开边界和已发布状态 |
 | `/downloads/digital_biosphere_os_preview-0.1.0.dev0-py3-none-any.whl` | 已批准 public-safe SDK 的 redcrag.cn 镜像；SHA-256 保持不变 |
@@ -73,6 +82,18 @@ manifest。每次构建都会先清空 `dist/` 和 `.vinext/`，避免旧资源�
 视觉系统重度参考 OpenTelemetry 官网的明亮信息架构：白色与浅灰页面、紫色主色、
 琥珀色与青色强调、清晰导航、模块化能力卡片、有限的高饱和状态区和多语言入口。
 不复制其 Logo、插图、文案或项目事实。
+
+## Commercial entry boundary
+
+当前商业入口采用 `closed core + public discovery + bounded proof`。四产品和试点页面是静态、
+双语、公开安全的信息入口；`request-access` 不包含表单后端，不创建客户、Workspace、Key、
+Permission、合同、支付或部署。早期 Community 页面仅作为 `HISTORICAL_NON_CURRENT`
+资料保留。该候选尚未部署，也不构成可用 Offering、客户采用、生产就绪或法律通过。
+
+本次候选实现与验证限制记录见
+[`docs/releases/d29-commercial-public-entry-candidate-v1.md`](docs/releases/d29-commercial-public-entry-candidate-v1.md)。
+当前依赖审计仍有 4 个 High 和 9 个 Moderate 传递依赖发现，因此商业入口候选不能仅凭
+页面测试通过升级为发布就绪或商业可用。
 
 ## Deployment boundary
 

@@ -15,11 +15,11 @@
     "icp_record_number": "晋ICP备2026006409号-1",
     "icp_query_url": "https://beian.miit.gov.cn"
   },
-  "information_architecture": "PEER_SURFACES_WITH_OVERVIEW_AND_INDEX",
+  "information_architecture": "COMMERCIAL_PLATFORM_PRODUCTS_SOLUTIONS_PROOF_AND_TRUST",
   "current_stage": "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM",
   "agent_front_door": {
     "status": "EMBEDDED_IN_BILINGUAL_HOMEPAGE",
-    "position": "DEDICATED_DEVELOPER_AND_MACHINE_SECTION_AFTER_APPLICATIONS",
+    "position": "DEDICATED_HUMAN_AND_MACHINE_COMMERCIAL_ENTRY",
     "entry_zh": "/#agent-start",
     "entry_en": "/en/#agent-start",
     "machine_entries": [
@@ -27,7 +27,10 @@
       "/llms.txt",
       "/agent-index.json",
       "/site-catalog.json",
-      "/media-evidence-profile.json"
+      "/product-catalog.json",
+      "/solution-catalog.json",
+      "/proof-catalog.json",
+      "/recommendation-policy.json"
     ],
     "javascript_required": false,
     "runtime_effect": false,
@@ -68,6 +71,7 @@
     },
     "developers": {
       "enabled": true,
+      "status": "HISTORICAL_NON_CURRENT",
       "entry_zh": "/community/",
       "entry_en": "/en/community/"
     },
@@ -90,11 +94,32 @@
       "constitution_en": "/en/updates/constitution/"
     },
     "products": {
-      "enabled": false,
-      "public_navigation": false,
-      "sitemap_visible": false,
+      "enabled": true,
+      "public_navigation": true,
+      "sitemap_visible": true,
       "available_products": 0,
-      "activation_gate": "AVAILABLE_PRODUCTS_GT_0"
+      "published_information_pages": 4,
+      "catalog": "/product-catalog.json",
+      "activation_gate": "INFORMATION_PAGES_DO_NOT_ESTABLISH_AVAILABILITY"
+    },
+    "commercial_entry": {
+      "enabled": true,
+      "available_offering_count": 0,
+      "request_access_status": "INFORMATION_ONLY_INTAKE_NOT_ACTIVE",
+      "design_partner_zh": "/design-partner/",
+      "design_partner_en": "/en/design-partner/",
+      "private_evaluation_zh": "/private-evaluation/",
+      "private_evaluation_en": "/en/private-evaluation/",
+      "monitor_pilot_zh": "/monitor-pilot/",
+      "monitor_pilot_en": "/en/monitor-pilot/",
+      "enforce_pilot_zh": "/enforce-pilot/",
+      "enforce_pilot_en": "/en/enforce-pilot/",
+      "request_access_zh": "/request-access/",
+      "request_access_en": "/en/request-access/",
+      "security_zh": "/security/",
+      "security_en": "/en/security/",
+      "trust_center_zh": "/trust-center/",
+      "trust_center_en": "/en/trust-center/"
     }
   },
   "extension_interfaces": {
@@ -118,7 +143,7 @@
     "products": {
       "route_template": "/products/{slug}/",
       "required_metadata": ["id", "title", "availability", "delivery_model", "support_boundary", "production_status"],
-      "publication_precondition": "AVAILABLE_PRODUCTS_GT_0"
+      "publication_precondition": "PUBLIC_INFORMATION_PAGE_MUST_DECLARE_NON_AVAILABILITY"
     }
   },
   "published_items": {
