@@ -666,12 +666,13 @@ and the machine
 Observed on 2026-08-04 from the private Gateway canonical `main` after CE-1
 through CE-6 were merged. CE-1 through CE-5 retain their clean-clone evidence;
 CE-6 has exact-head source, quality, PostgreSQL integration and supply-chain CI
-evidence but no deployment:
+evidence but no deployment. PR #52 then added only a fail-closed security gate
+projection and regression tests; it did not change Runtime or deployment:
 
 ```text
 D29_IMPLEMENTATION_SOURCE_REPOSITORY=joy7758/titmas-sandbox-gateway
 D29_IMPLEMENTATION_SOURCE_BRANCH=main
-D29_IMPLEMENTATION_SOURCE_REVISION=569dd5506e0030dec9d942846aee50aa92113fd5
+D29_IMPLEMENTATION_SOURCE_REVISION=f4b4bc62f24a4c5ae511c5b417a4e07846f68214
 D29_IMPLEMENTATION_SOURCE_STATUS=MERGED_ON_CANONICAL_MAIN
 D29_POSTGRES_APPLICATION_WIRING=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
 D29_SYNTHETIC_OBSERVER_FIRST_VALUE=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
@@ -685,7 +686,16 @@ D29_POSTGRES_AUDIT_CHAIN_COMPLETE=false
 D29_GATEWAY_PR51_CI=PASS
 D29_CLEAN_CLONE=PASS_CE1_CE5_PREDECESSOR_REVISION
 D29_CE6_EXACT_HEAD_CI=PASS
-D29_SOURCE_FULL_TESTS=358
+D29_GATEWAY_PR52_CI=PASS
+D29_SECURITY_ENGINEERING_GATE=FAIL_CLOSED
+D29_SECURITY_CONTROLS_PASS=11
+D29_SECURITY_CONTROLS_PARTIAL=4
+D29_SECURITY_CONTROLS_FAIL_RETAINED=1
+D29_SECURITY_CONTROLS_NOT_ASSESSED=3
+D29_SECURITY_CONTROLS_NOT_APPLICABLE=1
+D29_SECURITY_BLOCKERS_OPEN=1
+D29_SECURITY_HIGH_FINDINGS_OPEN=6
+D29_SOURCE_FULL_TESTS=368
 D29_SOURCE_EXPECTED_ENVIRONMENT_GATED_SKIPS=3
 D29_REFERENCE_IMPLEMENTATION_DEPLOYED=false
 COMMERCIAL_OFFERING_AVAILABLE=false
@@ -713,6 +723,9 @@ facts do not make Health Snapshot or Monitor Pilot commercially available.
 D04 remains `CLOSED_FAILED_RETAINED`, P0-10 Agent-first acceptance remains
 false, and the existing commercial readiness, legal, security, business,
 deployment, pricing, support and external-validation gates remain separate.
+The later security projection explicitly fails closed with one Blocker and six
+High findings open. Mapping the controls is not remediation, independent
+evaluation, commercial readiness or launch authorization.
 This overlay corrects a stale `NOT_ASSESSED` implementation projection; it does
 not rewrite the architecture-only C-01 freeze or any prior failure.
 
@@ -798,12 +811,12 @@ PRODUCTION_READY=false
 CUSTOMERS_VERIFIED=0
 ```
 
-The one Critical blocker is the retained CR-01 restore integrity failure:
+The one security Blocker is the retained CR-01 restore integrity failure:
 1,659 of 1,661 historical synthetic Receipt signatures verified, while two
 cannot be verified because their random public keys were not retained. D04
 remains closed failed-retained and is not reopened by D29. Human decisions are
 still required for business and invoice evidence, support and security owners,
-cost and pricing, Chinese counsel, Critical/High security disposition, website
+cost and pricing, Chinese counsel, Blocker/High security disposition, website
 deployment and a customer-specific Monitor SOW.
 
 Machine and Human entries are

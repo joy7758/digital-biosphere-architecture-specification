@@ -272,7 +272,7 @@ MATURE_COMMERCIAL_INFRASTRUCTURE=false
 ```
 
 The source-pinned D29 projection now records the private Gateway reference at
-`main@569dd5506e0030dec9d942846aee50aa92113fd5`. PostgreSQL application
+`main@f4b4bc62f24a4c5ae511c5b417a4e07846f68214`. PostgreSQL application
 wiring, the zero-customer-data synthetic Observer/FirstValue route, read-only
 Console projections and the software-delivery Monitor/Enforce proof exist as
 bounded reference implementations. They are not deployed offerings. The
@@ -285,6 +285,11 @@ Audit/Health projections. The PostgreSQL Audit export is explicitly an
 incomplete Tenant subset, so `audit_chain_complete=false` and Health Audit
 remains `PARTIAL`. This is source-level reference evidence, not a commercially
 available Health Snapshot or Monitor Pilot.
+
+The same source now carries a fail-closed D29 security engineering projection:
+20 controls are mapped, but one Blocker and six High findings remain open.
+This is an assessment result, not a security pass, remediation, independent
+review, commercial availability or deployment.
 
 ```text
 D29_REFERENCE_IMPLEMENTATION_SOURCE_PINNED=true

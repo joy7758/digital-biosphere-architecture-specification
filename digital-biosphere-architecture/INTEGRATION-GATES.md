@@ -180,7 +180,7 @@ scope or create deployment or customer authority.
 The earlier C-01 gate remains the architecture-contract result at its recorded
 scope. A later, separately authorized implementation sequence is now observed
 from `joy7758/titmas-sandbox-gateway` canonical
-`main@569dd5506e0030dec9d942846aee50aa92113fd5`:
+`main@f4b4bc62f24a4c5ae511c5b417a4e07846f68214`:
 
 | implementation gate | result | retained boundary |
 |---|---|---|
@@ -190,6 +190,7 @@ from `joy7758/titmas-sandbox-gateway` canonical
 | Monitor / Enforce proof | `PASS_SYNTHETIC_NON_BINDING` | no real customer authorization, release, merge or provider call |
 | Durable Receipt read | `PASS_REFERENCE_NOT_DEPLOYED` | Tenant/Workspace/Agent credential binding; no offering or production access |
 | Durable Audit / Health projection | `PASS_WITH_PARTIAL_CHAIN_NOT_DEPLOYED` | PostgreSQL emits a scoped subset with `audit_chain_complete=false`; Health Audit remains `PARTIAL` |
+| Security engineering control mapping | `FAIL_CLOSED` | 20 controls mapped: 11 PASS, 4 PARTIAL, 1 FAIL_RETAINED, 3 NOT_ASSESSED, 1 NOT_APPLICABLE; 1 Blocker and 6 High findings remain open |
 | Commercial availability | `FAIL_CLOSED_NOT_AVAILABLE` | paid Monitor, customer Enforce, deployment, customer, payment and Production remain false |
 
 `PASS` above applies only to the source-pinned reference scope. Receipt

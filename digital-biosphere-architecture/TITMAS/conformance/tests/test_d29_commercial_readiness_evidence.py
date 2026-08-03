@@ -147,7 +147,7 @@ class D29CommercialReadinessEvidenceTests(unittest.TestCase):
         limitations = load(kit / "KNOWN-LIMITATIONS.json")
         self.assertFalse(limitations["security_pass"])
         self.assertEqual(limitations["blocker_count"], 1)
-        self.assertEqual(limitations["high_count"], "NOT_ASSESSED")
+        self.assertEqual(limitations["high_count"], 6)
         readme = (kit / "README.md").read_text(encoding="utf-8")
         self.assertIn("KIT_STATUS=READY_TO_INVITE", readme)
         self.assertIn("EVALUATION_EXECUTED=false", readme)

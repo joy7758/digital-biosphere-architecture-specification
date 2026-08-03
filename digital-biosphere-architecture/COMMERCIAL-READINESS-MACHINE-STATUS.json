@@ -1,7 +1,7 @@
 {
   "schema_version": "1.0",
   "decision_reference": "TITMAS-CHINA-COMMERCIAL-PRIVATE-PLATFORM-AND-PAID-PILOT-D29",
-  "observed_at": "2026-08-04T06:21:06+08:00",
+  "observed_at": "2026-08-04T06:44:39+08:00",
   "d29_status": "IN_PROGRESS_BLOCKED",
   "positioning": "AGENT_ACTION_CONTROL_AND_VERIFIABLE_ACCOUNTABILITY_PLATFORM",
   "platform_model": "CLOSED_CORE_OPEN_DISCOVERY_AND_PROOF",
@@ -16,7 +16,7 @@
   },
   "architecture_status": {
     "private_platform_repository": "joy7758/titmas-sandbox-gateway",
-    "private_platform_main_head": "569dd5506e0030dec9d942846aee50aa92113fd5",
+    "private_platform_main_head": "f4b4bc62f24a4c5ae511c5b417a4e07846f68214",
     "private_platform_architecture": "PASS_WITH_LIMITATIONS",
     "one_private_platform": true,
     "duplicate_core_created": false
@@ -49,7 +49,24 @@
   },
   "security_status": {
     "critical_findings_open": 1,
-    "high_findings_open": "NOT_ASSESSED",
+    "blocker_findings_open": 1,
+    "critical_findings_legacy_alias_of_blocker": true,
+    "high_findings_open": 6,
+    "internal_security_engineering_gate": {
+      "status": "FAIL_CLOSED",
+      "source_pull_request": 52,
+      "source_merge_commit": "f4b4bc62f24a4c5ae511c5b417a4e07846f68214",
+      "control_count": 20,
+      "pass": 11,
+      "partial": 4,
+      "fail_retained": 1,
+      "not_assessed": 3,
+      "not_applicable": 1,
+      "blocker_findings_open": 1,
+      "high_findings_open": 6,
+      "agent_recommendation": "NOT_RECOMMENDED",
+      "d04_reopened": false
+    },
     "independent_security_evaluation": "READY_TO_INVITE_NOT_EXECUTED",
     "production_security_ready": false
   },
@@ -118,7 +135,7 @@
     "SUPPORT_OWNER_UNASSIGNED",
     "SECURITY_CONTACT_UNASSIGNED",
     "CRITICAL_SECURITY_FINDING_OPEN",
-    "HIGH_SECURITY_FINDINGS_NOT_ASSESSED",
+    "HIGH_SECURITY_FINDINGS_OPEN_6",
     "LIVE_COMMERCIAL_ROUTES_NOT_DEPLOYED",
     "LIVE_AGENT_DISCOVERY_NOT_PROVEN",
     "INDEPENDENT_SECURITY_EVALUATION_NOT_EXECUTED",
