@@ -116,21 +116,26 @@ ROADMAP_PROVES_INTEGRATION=false
 ROADMAP_PROVES_ADOPTION=false
 ```
 
-## 6. TITMAS Open Standards Mainline（TITMAS 开放标准主线）
+## 6. Historical TITMAS Open Standards Route（历史开放标准路线）
+
+该路线已由 `ADR-042` 取代，不再是当前产品、社区或增长主线。以下 milestone 只保留
+历史追踪，不得自动恢复公共贡献、社区、源码开放或 Release。
 
 | milestone | objective | status | required evidence |
 |---|---|---|---|
-| `TOS-1` | Selective canonical integration | `HOLD_NON_BLOCKING_BY_D16` | existing history retained; no new merge or implementation during P0-10 closure |
-| `TOS-2` | Human merge review | `HOLD_NON_BLOCKING_BY_D16` | clean Draft PR, CI success, Human `COMMUNITY-HD-01` decision |
-| `TOS-3` | Security transport activation decision | `HOLD_BLOCKED_AND_NON_BLOCKING` | real private receiving transport and Human `COMMUNITY-HD-02` decision |
-| `TOS-4` | Limited public contribution preview | `HOLD_NON_BLOCKING_BY_D16` | merged core, security path, explicit activation decision |
-| `TOS-5` | Agent-native contribution pilot | `HOLD_NON_BLOCKING_BY_D16` | separately authorized public pilot and retained evidence |
-| `TOS-6` | Community Preview | `HOLD_NON_BLOCKING_BY_D16` | explicit tag, announcement and launch decisions |
+| `TOS-1` | Selective canonical integration | `HISTORICAL_COMPLETE` | retained historical evidence |
+| `TOS-2` | Human merge review | `HISTORICAL_COMPLETE` | retained historical evidence |
+| `TOS-3` | Security transport activation decision | `SUPERSEDED_NOT_CURRENT_ROUTE` | no current public transport activation |
+| `TOS-4` | Limited public contribution preview | `SUPERSEDED_NOT_CURRENT_ROUTE` | future activation requires a new Human Decision |
+| `TOS-5` | Agent-native contribution pilot | `SUPERSEDED_NOT_CURRENT_ROUTE` | future activation requires a new Human Decision |
+| `TOS-6` | Community Preview | `SUPERSEDED_NOT_CURRENT_ROUTE` | community is not the current route |
 
 ```text
-CURRENT_TITMAS_FOCUS=P0_10_UNKNOWN_AGENT_ONBOARDING_CLOSURE
+CURRENT_TITMAS_FOCUS=COMMERCIAL_PRIVATE_AGENT_INFRASTRUCTURE
 OPEN_STANDARDS_COMMUNITY_IS_MAINLINE=false
-OPEN_STANDARDS_COMMUNITY_STATUS=HOLD_NON_BLOCKING_BY_D16
+OPEN_STANDARDS_COMMUNITY_STATUS=SUPERSEDED_HISTORICAL_NOT_CURRENT_ROUTE
+PRIVATE_CORE_IS_CANONICAL=true
+PUBLIC_INTEROPERABILITY_SURFACES_RETAINED=true
 CALIBRATION_IS_SUPPORTING_VALIDATION_ONLY=true
 CALIBRATION_V0_3_AUTHORIZED=false
 ```

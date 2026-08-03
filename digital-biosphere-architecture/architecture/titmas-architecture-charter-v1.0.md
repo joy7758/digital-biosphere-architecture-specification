@@ -15,8 +15,9 @@ community_established: false
 
 ## Identity
 
-TITMAS 是面向多智能体系统的开放可信互操作基础设施。DBA 管理 TITMAS 如何建设；
-TITMAS 为外部开发者和系统提供规范、Binding、Crosswalk、Conformance 和参考实现。
+TITMAS 是面向智能体行动控制与执行证据的商业私有核心基础设施。DBA 管理 TITMAS
+如何建设；TITMAS 通过有界公共 Schema、SDK、MCP、Conformance 和验证资料向 Agent
+提供发现、互操作和验证能力。公共表面不表示核心开源、公共贡献或社区建立。
 
 Digital Immune、Agent Health、Jules/Codex/Qoder 修复闭环、VEAP/VEC 应用和 SAEE
 Enterprise 是解释层、Profile、使用场景或上层产品，不是 TITMAS 本体。
@@ -55,20 +56,26 @@ D19_SANDBOX_IMPLEMENTATION_NE_RUNTIME_ACTIVATION=true
 DIGITAL_IMMUNE_MODEL_IS_EXPLANATORY_LAYER=true
 APPLICATION_SCENARIO_NE_CORE_ARCHITECTURE=true
 COMMUNITY_GOVERNANCE_NE_PRODUCT_RUNTIME=true
+PUBLIC_SURFACE_NE_OPEN_SOURCE_CORE=true
+PUBLIC_SDK_NE_PUBLIC_COMMUNITY=true
+PRIVATE_CORE_IS_CANONICAL=true
 AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
 ```
 
 不得通过后续 Profile 或实现创建第二套 Evidence、Verification、Authority、Identity 或
 Evaluation owner。
 
-## Canonical developer surfaces
+## Canonical customer and interoperability surfaces
 
-- `TITMAS/README.md`：唯一开发者入口；
-- `TITMAS/community/`：贡献与治理流程；
+- `TITMAS/README.md`：唯一 TITMAS 人类入口；
+- `agent-index.json`：唯一 Agent 机器入口；
+- `commercial/entry/`：Observer、FirstValue 与客户进入契约；
+- `commercial/discovery/`：商业机器发现与当前限制；
 - `TITMAS/specifications/`：规范生命周期、注册表和提案；
 - `TITMAS/conformance/`：机器验证与正负例；
 - `TITMAS/reference/`：非权威、合成、最小参考实现；
 - `TITMAS/adapters/`：Adapter 契约入口。
+- `TITMAS/community/`：历史社区与贡献材料；当前不接受公共贡献。
 
 规范、实现、符合性、采用和发布状态分别记录，不能互相推导。
 
@@ -135,7 +142,10 @@ Permission。
 
 ```text
 TITMAS_V1_CHARTER_DEFINED=true
-TITMAS_STANDARD_COMMUNITY_INFRASTRUCTURE_IN_PROGRESS=true
+TITMAS_COMMERCIAL_PRIVATE_INFRASTRUCTURE_DIRECTION_ADOPTED=true
+TITMAS_STANDARD_COMMUNITY_IDENTITY_CURRENT=false
+TITMAS_PRIVATE_CORE_IS_CANONICAL=true
+TITMAS_PUBLIC_INTEROPERABILITY_SURFACES_RETAINED=true
 TITMAS_PUBLIC_LAUNCH_AUTHORIZED=false
 TITMAS_COMMUNITY_ESTABLISHED=false
 TITMAS_FOUNDATION_CREATED=false

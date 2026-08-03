@@ -1,15 +1,22 @@
 {
   "$schema": "TITMAS/agent-native/schemas/agent-index.schema.json",
-  "format_version": "2.0.0",
+  "format_version": "3.0.0",
   "canonical_agent_entry": true,
-  "canonical_community_name": "TITMAS Agent-Native Standards Community",
-  "canonical_community_name_zh": "TITMAS 智能体原生标准社区",
-  "subtitle": "Agent-Native Community for Trusted Multi-Agent Infrastructure",
-  "compatibility_aliases": [
-    "TITMAS Developer Standards Community",
-    "TITMAS Infrastructure Developer Community"
-  ],
-  "purpose": "Machine-readable, verifiable contribution, review, maintenance, reuse and recommendation infrastructure for trusted multi-agent standards.",
+  "canonical_program_name": "TITMAS Commercial Agent Infrastructure",
+  "canonical_program_name_zh": "TITMAS 商业智能体基础设施",
+  "product_category": "COMMERCIAL_PRIVATE_AGENT_INFRASTRUCTURE",
+  "subtitle": "Private-core infrastructure for agent action control and execution evidence",
+  "historical_community_identity": {
+    "canonical_name": "TITMAS Agent-Native Standards Community",
+    "canonical_name_zh": "TITMAS 智能体原生标准社区",
+    "aliases": [
+      "TITMAS Developer Standards Community",
+      "TITMAS Infrastructure Developer Community"
+    ],
+    "status": "SUPERSEDED_HISTORICAL_IDENTITY",
+    "current_authority_effect": "NONE"
+  },
+  "purpose": "Machine-readable commercial entry, action-control, execution-evidence, receipt, audit and health discovery for AI agents, with a private canonical core and bounded public interoperability surfaces.",
   "program_priority": {
     "primary_operational_customer": "AI_AGENT",
     "agent_absolute_priority": true,
@@ -21,16 +28,17 @@
     "human_irreversible_authority_retained": true
   },
   "when_to_use": [
-    "an agent must discover a bounded standards task",
-    "a contribution needs machine-readable provenance and review handoff",
-    "multiple agents must review or reuse work without semantic elevation",
-    "a recommendation must distinguish fit, non-fit and insufficient evidence",
-    "a reproducible low-risk defect needs bounded variants, fitness evidence, rollback and a Draft PR handoff"
+    "an agent must discover TITMAS commercial capabilities and current limitations",
+    "an agent needs an Observer, Monitor, Gate, Receipt, Audit or Health entry surface",
+    "an integration needs machine-readable Schema, SDK, MCP or receipt verification",
+    "a customer-entry path must preserve private-core and authority boundaries",
+    "a recommendation must distinguish fit, non-fit and insufficient evidence"
   ],
   "when_not_to_use": [
     "running or orchestrating production agents",
     "granting permission or authority",
     "certifying safety or compliance",
+    "opening the canonical private core or activating public contribution",
     "unbounded repository repair, autonomous merge or production self-modification",
     "replacing DBOS, SAEE, an Agent framework or Human constitutional responsibility"
   ],
@@ -38,11 +46,13 @@
   "source": {
     "repository": "joy7758/digital-biosphere-architecture-specification",
     "base_branch": "main",
-    "base_revision": "7b7e36c3ac5513deb23b03c8d86e6fc8853f4af1",
-    "candidate_branch": "codex/titmas-stage5-private-agent-pilot-audit",
-    "candidate_revision": "8848f2c87f30f14b4ec211c9fb2529b3f542cdaa"
+    "base_revision": "9f8bde9921795f2e981d042ef375e63c26b377fb",
+    "candidate_branch": "codex/commercial-private-constitution-v1",
+    "decision_reference": "TITMAS-COMMERCIAL-PRIVATE-INFRASTRUCTURE-DIRECTION-D30"
   },
   "machine_surfaces": {
+    "current_strategy_constitution": "architecture/commercial-private-infrastructure-strategy-constitution.md",
+    "current_strategy_decision": "architecture/ADR-042-commercial-private-infrastructure-direction.md",
     "community_status": "TITMAS/community/community-status.json",
     "community_manifest": "TITMAS/agent-native/community-manifest.json",
     "current_state": "TITMAS/agent-native/current-state.json",
@@ -170,6 +180,7 @@
     "RECOMMENDATION_NE_DECISION"
   ],
   "public_contribution_state": {
+    "historical_only": true,
     "templates_developed": true,
     "templates_installed": true,
     "surface_active": false,
@@ -179,6 +190,7 @@
     "security_transport_verified": false
   },
   "community_incubation_state": {
+    "historical_only": true,
     "phase": "TITMAS_STAGE_5_7_AGENT_NATIVE_SELECTION_AND_ROI_BENCHMARK",
     "active": false,
     "external_participant_count": 0,

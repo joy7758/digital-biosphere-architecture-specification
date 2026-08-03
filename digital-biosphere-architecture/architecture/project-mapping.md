@@ -22,7 +22,7 @@ creates_project_relationships: false
 | project_id | 项目 | v0.1 架构角色 | 最近责任域 | 事实边界 | 待澄清的重复建设风险 |
 |---|---|---|---|---|---|
 | `PROJECT-DIGITAL-BIOSPHERE-ARCHITECTURE` | Digital Biosphere Architecture | Program Governance Hub（项目群治理中心）+ Architecture Specification Hub（架构规范中心）+ Architecture Authority Layer（架构权力层） | Program Governance / Architecture Governance / Rules | 驾驶舱管理组合、路线图、状态引用、依赖、决策、gate 与风险；`ADR-020` 指派 `zhangbin` 为 Human Program Owner，但 DBA 仍不是 Runtime、Entity、最终授权主体或执行权来源 | 与既有 public meaning layer 的 canonical reconciliation、其余角色任命、Git topology 和版本发布机制仍待定义 |
-| `PROJECT-DBOS` | DBOS | Open Digital Entity Infrastructure（开放数字实体基础设施）；Digital Biosphere Operating System；Operational Authority（运行权力）；Infrastructure Entity（基础设施实体）的架构角色示例 | Existence Governance / DBOS | DBOS repository 不是 Entity；DBOS 不是 Agent Application 或 Foundation Model；Operational Authority 不等于最终授权权，也不证明 Identity、Execution、Federation 或实体实例已存在 | 与 POP、Token Governor、证据组件的实现边界及未来实体资格需逐项契约化 |
+| `PROJECT-DBOS` | DBOS | Trusted Digital Entity Existence Infrastructure（可信数字实体存在基础设施）；Digital Biosphere Operating System；Operational Authority（运行权力）；Infrastructure Entity（基础设施实体）的架构角色示例 | Existence Governance / DBOS | DBOS repository 不是 Entity；DBOS 不是 Agent Application 或 Foundation Model；Operational Authority 不等于最终授权权，也不证明 Identity、Execution、Federation 或实体实例已存在 | 与 POP、Token Governor、证据组件的实现边界及未来实体资格需逐项契约化 |
 | `PROJECT-SAEE` | SAEE | Evolution Intelligence Layer（演化智能层）；Evolution Engine；Evolution Authority（演化权力）；Evolution Entity（演化实体）的架构角色示例 | Evolution Governance / SAEE | SAEE repository 不是 Entity；Evolution Authority 只覆盖评价，不授予 DBOS 写权、执行权或架构修改权 | Governance Evolution 与 DBOS/Token Governor 的策略生效及未来实体资格需澄清 |
 | `ARCH-LAYER-GOVERNANCE-DECISION` | Governance Decision Layer | Decision Authority（决策权力）的 record and state boundary（记录与状态边界） | SAEE 与 DBOS 之间的独立治理边界 | 不是项目实现、DBOS 模块、SAEE 模块、Runtime、Entity 或自动授权主体；`Decision Authority` 标签不定义最终授权者 | 最终 reviewer、decision authority、adoption authority 与职责分离规则尚需定义 |
 | `ARCH-LAYER-TITMAS-DISCOVERY-EVOLUTION` | TITMAS Agent-Native Discovery Evolution Layer | 有界问题发现、修复候选、适应度选择、回滚与谱系的逻辑层 | DBA normative policy；补丁路由至既有 canonical owner | 不是新仓库、Runtime、生产执行器、Authority、Truth、Receipt 或 Certification owner；ER-1 只到 Draft PR | 跨仓补丁仍需目标 Owner 审查；ER-2 至 ER-4 无自动激活权 |
@@ -37,12 +37,16 @@ creates_project_relationships: false
 
 `Digital Entity` 在本表中只是角色分类，不是新对象类型。Digital Organism 的资格关系以 [`digital-organism-crosswalk.md`](digital-organism-crosswalk.md) 为准；与 LAU（Life-like Autonomous Unit，类生命自治单元）或其他主体术语的关系仍未完成 canonical terminology reconciliation（规范术语对齐）。
 
-## 3. Open Infrastructure Strategic Mapping
+## 3. Commercial Private Infrastructure Strategic Mapping
 
 ```text
-DBOS_ROLE=OPEN_DIGITAL_ENTITY_INFRASTRUCTURE
+DBOS_ROLE=TRUSTED_DIGITAL_ENTITY_EXISTENCE_INFRASTRUCTURE
 SAEE_ROLE=EVOLUTION_INTELLIGENCE_LAYER
 DBA_ROLE=PROGRAM_GOVERNANCE_AND_ARCHITECTURE_SPECIFICATION_HUB
+TITMAS_ROLE=COMMERCIAL_PRIVATE_AGENT_INFRASTRUCTURE
+PRIVATE_CORE_IS_CANONICAL=true
+PUBLIC_INTEROPERABILITY_SURFACES_RETAINED=true
+PUBLIC_SURFACE_NE_OPEN_SOURCE_CORE=true
 DBA_IS_PROGRAM_COCKPIT=true
 DISCOVERY_EVOLUTION_ROLE=LOGICAL_LAYER
 DISCOVERY_EVOLUTION_NORMATIVE_OWNER=DBA
@@ -54,11 +58,11 @@ DBOS_NE_FOUNDATION_MODEL=true
 DBOS_NE_SAEE=true
 ```
 
-Research Agent、Medical Agent、Enterprise Agent、Robot Agent 和其他 Industry Agent 默认属于 Application / Digital Entity 生态。只有跨应用复用、开放协议化且不引入领域 Authority 的能力，才可以申请进入 DBOS core roadmap。
+Research Agent、Medical Agent、Enterprise Agent、Robot Agent 和其他 Industry Agent 默认属于 Application / Digital Entity 生态。只有跨应用复用、契约化且不引入领域 Authority 的能力，才可以申请进入 DBOS core roadmap。
 
 Enterprise Deployment、Industry Solution、Audit、Compliance、Certification 和 Advanced Governance 默认属于商业或 Governance Service Ecosystem。它们可以使用 DBOS，但不能通过客户、收入、listing 或付费关系改写 DBOS/SAEE 边界。
 
-该战略映射以 [`open-infrastructure-strategy-constitution.md`](open-infrastructure-strategy-constitution.md) 为最高方向约束，不改变任何项目的 capability truth、evidence truth、implementation status、release status、commercial availability、Authority 或 Permission。
+该战略映射以 [`commercial-private-infrastructure-strategy-constitution.md`](commercial-private-infrastructure-strategy-constitution.md) 为当前最高方向约束，不改变任何项目的 capability truth、evidence truth、implementation status、release status、commercial availability、Authority 或 Permission。原开放基础设施宪法仅保留历史效力。
 
 ## 4. 接入分类说明
 
@@ -173,12 +177,15 @@ DBOS_AUTHORITY_ROLE=OPERATIONAL_AUTHORITY
 SAEE_AUTHORITY_ROLE=EVOLUTION_AUTHORITY
 GOVERNANCE_DECISION_ROLE=DECISION_AUTHORITY_BOUNDARY
 AUTHORITY_ROLE_GRANTS_PERMISSION=false
-DBOS_STRATEGIC_ROLE=OPEN_DIGITAL_ENTITY_INFRASTRUCTURE
+DBOS_STRATEGIC_ROLE=TRUSTED_DIGITAL_ENTITY_EXISTENCE_INFRASTRUCTURE
 SAEE_STRATEGIC_ROLE=EVOLUTION_INTELLIGENCE_LAYER
 DBOS_NE_AGENT_APPLICATION=true
 DBOS_NE_FOUNDATION_MODEL=true
-OPEN_INFRASTRUCTURE_STRATEGY_DEFINED=true
-OPEN_INFRASTRUCTURE_STRATEGY_IMPLEMENTED=false
+TITMAS_CURRENT_STRATEGY=COMMERCIAL_PRIVATE_AGENT_INFRASTRUCTURE
+PRIVATE_CORE_IS_CANONICAL=true
+PUBLIC_INTEROPERABILITY_SURFACES_RETAINED=true
+PUBLIC_SURFACE_NE_OPEN_SOURCE_CORE=true
+HISTORICAL_OPEN_INFRASTRUCTURE_STRATEGY_AUTHORITY_EFFECT=NONE
 MEDIA_EVIDENCE_PORTFOLIO_ADMISSION_GRANTED=true
 MEDIA_EVIDENCE_PORTFOLIO_CLASSIFICATION=ADJACENT_CANDIDATE
 MEDIA_EVIDENCE_DBOS_MAPPING_AUTHORIZED=false

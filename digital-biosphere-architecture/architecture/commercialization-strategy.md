@@ -1,26 +1,31 @@
 # Digital Biosphere Commercialization Strategy v0.1
 
-Status: `STRATEGY_SPECIFICATION`
+Status: `CURRENT_COMMERCIAL_BOUNDARY_ALIGNED_TO_PRIVATE_CORE`
 
 Commercial availability: `NOT_CLAIMED`
 
-Constitution: [Open Infrastructure Strategy Constitution](open-infrastructure-strategy-constitution.md)
+Constitution: [Commercial Private Infrastructure Strategy Constitution](commercial-private-infrastructure-strategy-constitution.md)
 
 ## Commercial Position
 
-商业化服务于开放基础设施生态，而不是通过关闭基础协议制造锁定。对外入口应使用客户可理解的 AI Agent Infrastructure（AI 智能体基础设施）、Industry Solution（行业解决方案）和 Enterprise Governance（企业治理）语言；“Digital Biosphere”保留为长期架构和生态叙事。
+商业化服务于 Agent action control（智能体行动控制）与 execution evidence（执行证据）
+的可验证价值。canonical implementation core 保持私有；对外入口使用客户可理解的
+AI Agent Infrastructure、Observer / Monitor、Gate、Receipt、Audit 和 Health 语言。
+“Digital Biosphere”保留为长期架构和生态叙事。
 
-## Open Core
+## Private Core and Bounded Public Interoperability
 
-Open Core（开放核心）在本战略中表示以下内容优先保持公开和可实现：
+TITMAS 不再采用 Open Core 作为当前战略。私有核心承载执行路径、策略实现、防绕过逻辑、
+安全对抗材料和客户环境连接。以下材料可在逐项授权后形成有界公共互操作表面：
 
 - 基础协议；
 - 数据结构；
 - 接口与兼容性标准；
 - 基础验证工具；
-- 最小 reference implementation。
+- 最小 synthetic example 或 validator。
 
-本策略不修改任何现有许可证，也不要求未来所有组件采用同一许可证。每个仓库仍以其实际 LICENSE、发布状态和维护承诺为准。
+公共材料不表示核心开源、公共贡献、开发者社区、免费服务、正式标准或生产可用。本策略
+不修改任何现有许可证；每个仓库仍以其实际 LICENSE、可见性、发布状态和维护承诺为准。
 
 ## Enterprise Edition
 
@@ -32,7 +37,7 @@ Enterprise Edition（企业版）是可能的未来产品层，可承载：
 - fleet-scale observability；
 - advanced governance administration。
 
-企业版不得秘密改变开放协议语义，也不得把付费状态当作 Identity、Capability、Permission、Verification 或 Certification 的替代品。
+企业版不得秘密改变已发布的公共合同语义，也不得把付费状态当作 Identity、Capability、Permission、Verification 或 Certification 的替代品。
 
 当前没有因本文而创建、发布或承诺 Enterprise Edition。
 
@@ -59,12 +64,12 @@ Certification（认证）可以作为未来 Governance Service Ecosystem 的服�
 ## Commercial Path
 
 ```text
-Open Protocol and Validation Surface
-  -> Developer Adoption
-    -> Reference Integrations
-      -> Industry Solutions
-        -> Enterprise Deployment and Support
-          -> Governance Service Ecosystem
+Bounded public discovery and interoperability
+  -> Observer / synthetic FirstValue
+    -> Design-partner validation
+      -> Monitor pilot
+        -> separately authorized Enforce
+          -> Enterprise deployment and support
 ```
 
 每个箭头都需要独立 adoption evidence（采用证据）和显式 business decision（商业决策）。规范完成、代码存在、demo 成功或本地测试通过均不能自动证明下一阶段成立。

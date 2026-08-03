@@ -4,7 +4,10 @@
   "required": [
     "format_version",
     "canonical_agent_entry",
-    "canonical_community_name",
+    "canonical_program_name",
+    "canonical_program_name_zh",
+    "product_category",
+    "historical_community_identity",
     "purpose",
     "when_to_use",
     "when_not_to_use",
@@ -16,12 +19,23 @@
   ],
   "properties": {
     "$schema": {"type": "string"},
-    "format_version": {"type": "string"},
+    "format_version": {"const": "3.0.0"},
     "canonical_agent_entry": {"const": true},
-    "canonical_community_name": {"const": "TITMAS Agent-Native Standards Community"},
-    "canonical_community_name_zh": {"type": "string"},
+    "canonical_program_name": {"const": "TITMAS Commercial Agent Infrastructure"},
+    "canonical_program_name_zh": {"const": "TITMAS 商业智能体基础设施"},
+    "product_category": {"const": "COMMERCIAL_PRIVATE_AGENT_INFRASTRUCTURE"},
+    "historical_community_identity": {
+      "type": "object",
+      "required": ["canonical_name", "canonical_name_zh", "aliases", "status", "current_authority_effect"],
+      "properties": {
+        "canonical_name": {"const": "TITMAS Agent-Native Standards Community"},
+        "canonical_name_zh": {"const": "TITMAS 智能体原生标准社区"},
+        "aliases": {"type": "array", "minItems": 2, "items": {"type": "string"}},
+        "status": {"const": "SUPERSEDED_HISTORICAL_IDENTITY"},
+        "current_authority_effect": {"const": "NONE"}
+      }
+    },
     "subtitle": {"type": "string"},
-    "compatibility_aliases": {"type": "array", "minItems": 2, "items": {"type": "string"}},
     "purpose": {"type": "string", "minLength": 20},
     "when_to_use": {"type": "array", "minItems": 3, "items": {"type": "string"}},
     "when_not_to_use": {"type": "array", "minItems": 4, "items": {"type": "string"}},

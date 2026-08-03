@@ -702,7 +702,35 @@ deployment, pricing, support and external-validation gates remain separate.
 This overlay corrects a stale `NOT_ASSESSED` implementation projection; it does
 not rewrite the architecture-only C-01 freeze or any prior failure.
 
-## 19. FDO DTR Migration and PVS-0 Auxiliary Closure Overlay
+## 19. Commercial Private Infrastructure Strategy Direction
+
+On 2026-08-04 Human Owner `zhangbin` adopted
+`TITMAS-COMMERCIAL-PRIVATE-INFRASTRUCTURE-DIRECTION-D30`. The current TITMAS
+identity is `TITMAS Commercial Agent Infrastructure`（TITMAS 商业智能体基础设施）.
+The canonical implementation core remains private; bounded public Schema, SDK,
+MCP, examples and verification assets remain available only as separately
+authorized interoperability surfaces.
+
+The former Agent-Native Standards Community, Developer Ecosystem First and Open
+Core directions are retained as historical evidence with no current authority
+effect. This strategic correction creates no offer, customer, implementation,
+release, deployment, access grant, license change or community.
+
+```text
+TITMAS_CURRENT_IDENTITY=TITMAS_COMMERCIAL_AGENT_INFRASTRUCTURE
+COMMERCIAL_PRIVATE_INFRASTRUCTURE_DIRECTION_ADOPTED=true
+PRIVATE_CORE_IS_CANONICAL=true
+PUBLIC_INTEROPERABILITY_SURFACES_RETAINED=true
+PUBLIC_SURFACE_NE_OPEN_SOURCE_CORE=true
+PUBLIC_CONTRIBUTION_ROUTE_ACTIVE=false
+COMMUNITY_ESTABLISHED=false
+COMMERCIAL_OFFERING_AVAILABLE=false
+IMPLEMENTATION_AUTHORIZED_BY_D30=false
+RELEASE_AUTHORIZED_BY_D30=false
+DEPLOYMENT_AUTHORIZED_BY_D30=false
+```
+
+## 20. FDO DTR Migration and PVS-0 Auxiliary Closure Overlay
 
 Observed on 2026-08-04 from the public verification repository, Zenodo API and
 the Human Owner migration report:

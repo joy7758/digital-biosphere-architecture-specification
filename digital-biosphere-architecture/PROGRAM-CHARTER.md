@@ -7,6 +7,7 @@ decision_reference: architecture/ADR-020-release-preparation-owner-decisions.md
 strategic_amendment_reference: architecture/ADR-032-compositional-scale-over-unbounded-center.md
 attention_amendment_reference: architecture/ADR-033-attention-principle-for-dynamic-coordination.md
 conclusion_continuity_reference: architecture/ADR-039-verified-correction-and-execution-context-continuity.md
+commercial_strategy_reference: architecture/commercial-private-infrastructure-strategy-constitution.md
 program_authority_assigned: true
 program_owner_ref: zhangbin
 runtime_authority_created: false
@@ -46,6 +47,20 @@ MACHINE_INTERFACE_PRECEDES_HUMAN_INTERFACE=true
 AGENT_EVIDENCE_PRECEDES_HUMAN_OPINION=true
 HUMAN_VIEW_IS_DERIVED_VIEW=true
 AGENT_PRIORITY_NE_AGENT_AUTHORITY=true
+```
+
+### Commercial Private Infrastructure Direction（商业私有基础设施方向）
+
+TITMAS 当前采用商业私有核心路线：canonical implementation core 保持私有；公共
+Schema、SDK、MCP、示例和 validator 只承担 Agent 发现、互操作和验证功能。开发者社区、
+Open Core 和公共标准社区为历史路线，不是当前项目身份或增长前提。
+
+```text
+COMMERCIAL_PRIVATE_INFRASTRUCTURE_FIRST=true
+PRIVATE_CORE_IS_CANONICAL=true
+PUBLIC_INTEROPERABILITY_SURFACES_RETAINED=true
+PUBLIC_SURFACE_NE_OPEN_SOURCE_CORE=true
+COMMUNITY_IDENTITY_IS_HISTORICAL=true
 ```
 
 ## 2. Program Structure（项目群结构）
