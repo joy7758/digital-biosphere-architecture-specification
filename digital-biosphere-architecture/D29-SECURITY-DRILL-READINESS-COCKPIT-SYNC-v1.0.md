@@ -64,6 +64,30 @@ exact drill target: one health read showed runtime `efdfc844...` with
 failure and a timeout. Fresh server-side read-only preflight is therefore a
 mandatory entry condition, not evidence that a drill is ready to execute.
 
+## Server-side read-only preflight update
+
+At `2026-08-04T11:26:38+08:00`, a read-only SSH preflight observed:
+
+```text
+ACTIVE_SYMLINK_RELEASE=efdfc84462628abdfbfe111f61253f76569edec0
+SERVICE_LOAD_STATE=loaded
+SERVICE_ACTIVE_STATE=active
+SERVICE_SUB_STATE=running
+LOOPBACK_HEALTH_HTTP=200
+LOOPBACK_STATUS_HTTP=200
+LOOPBACK_READINESS_HTTP=200
+CURRENT_MANIFEST_ACTIVATED=false
+CURRENT_MANIFEST_PRODUCTION_READY=false
+FORMAL_ROLLBACK_POINTER_FOUND=false
+```
+
+The active release is now an observed input, but it is not frozen as the drill
+target. No authoritative rollback pointer was present under the declared
+release root, so a rollback release remains unassigned. A directory being
+present, including historical `314cc178...` or `5b13693...` releases, is not
+proof that it is the correct rollback target. The preflight therefore passes
+only as read-only inventory and leaves execution readiness false.
+
 ## Historical boundaries
 
 PR #55 remains the source of the Workspace deletion and retention capability at
