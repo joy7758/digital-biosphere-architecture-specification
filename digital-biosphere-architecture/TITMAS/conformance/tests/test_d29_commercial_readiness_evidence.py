@@ -145,9 +145,14 @@ class D29CommercialReadinessEvidenceTests(unittest.TestCase):
         }
         self.assertTrue(required <= {path.name for path in kit.iterdir() if path.is_file()})
         limitations = load(kit / "KNOWN-LIMITATIONS.json")
+        machine_status = load(ROOT / "COMMERCIAL-READINESS-MACHINE-STATUS.json")
         self.assertFalse(limitations["security_pass"])
         self.assertEqual(limitations["blocker_count"], 1)
-        self.assertEqual(limitations["high_count"], 6)
+        self.assertEqual(
+            limitations["high_count"],
+            machine_status["security_status"]["high_findings_open"],
+        )
+        self.assertEqual(limitations["high_count"], 2)
         readme = (kit / "README.md").read_text(encoding="utf-8")
         self.assertIn("KIT_STATUS=READY_TO_INVITE", readme)
         self.assertIn("EVALUATION_EXECUTED=false", readme)

@@ -85,7 +85,9 @@ Human Owner 必须在不重开 D04 的前提下选择：
 2. 单独授权 clean-genesis 候选和独立安全评价；或
 3. 提出新的有界修复决策。
 
-当前已完成 20 项控制映射，明确保留 1 个 Blocker 与 6 个 High findings。
+当前已完成 20 项控制映射。Gateway PR #53、#54 和 #55 的有界源码与
+临时 PostgreSQL CI 先后关闭凭据生命周期、Workspace Audit、Workspace
+删除和保留 findings；当前明确保留 1 个 Blocker 与 2 个 High findings。
 闸门结果为 `FAIL_CLOSED`；完成盘点不等于修复、独立安全评价或商业放行。
 
 ### HG-06 — Commercial route deployment

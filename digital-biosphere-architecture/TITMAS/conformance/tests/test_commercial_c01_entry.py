@@ -136,6 +136,7 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/COMMERCIAL-READINESS-MACHINE-STATUS.json",
         "digital-biosphere-architecture/COMMERCIAL-READINESS-REPORT-v1.md",
         "digital-biosphere-architecture/D29-DATA-LIFECYCLE-COCKPIT-SYNC-REPORT-v1.0.md",
+        "digital-biosphere-architecture/D29-TERMINAL-CONSISTENCY-AUDIT-v1.0.md",
         "digital-biosphere-architecture/portfolio/canonical-reuse-audit-d29.json",
         "digital-biosphere-architecture/portfolio/product-catalog.internal.json",
         "digital-biosphere-architecture/research/competitive/CONSOLE-INFORMATION-ARCHITECTURE.md",
