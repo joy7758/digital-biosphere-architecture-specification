@@ -272,7 +272,7 @@ MATURE_COMMERCIAL_INFRASTRUCTURE=false
 ```
 
 The source-pinned D29 projection now records the private Gateway reference at
-`main@ddbbb724b6a74eca81cf96773bbc9a6a772ae814`. PostgreSQL application
+`main@e200ea0f00d9d948c3b6dbf7058e08489dea1ccd`. PostgreSQL application
 wiring, the zero-customer-data synthetic Observer/FirstValue route, read-only
 Console projections and the software-delivery Monitor/Enforce proof exist as
 bounded reference implementations. They are not deployed offerings. The
@@ -295,6 +295,12 @@ customer references while preserving declared immutable evidence exceptions;
 it creates no customer self-service endpoint or deployment. One Blocker and two High
 findings remain open. This is not a complete security pass, independent review,
 commercial availability or deployment.
+
+Gateway PR #56 adds only the bounded readiness contract and Human decision
+packet for a future incident and rollback drill. Both drills remain unexecuted
+and unauthorized; the exact candidate/rollback releases and responsible Human
+roles are still unassigned. The preparation closes no security finding and has
+no deployment or commercial effect.
 
 ```text
 D29_REFERENCE_IMPLEMENTATION_SOURCE_PINNED=true

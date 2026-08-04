@@ -90,6 +90,12 @@ Human Owner 必须在不重开 D04 的前提下选择：
 删除和保留 findings；当前明确保留 1 个 Blocker 与 2 个 High findings。
 闸门结果为 `FAIL_CLOSED`；完成盘点不等于修复、独立安全评价或商业放行。
 
+Gateway PR #56 进一步提供事件与回滚演练的准备契约和单独 Human 决策包，
+但没有执行任何演练，也没有指派责任人、冻结候选/回滚版本或维护窗口。
+因此 `INCIDENT_DRILL_EXECUTED=false`、
+`FORMAL_ROLLBACK_DRILL_EXECUTED=false`，安全 finding 数量不变。只有另一个
+明确限定范围的 Human 决策才能授权执行该演练准备包。
+
 ### HG-06 — Commercial route deployment
 
 只有单独部署决定可以把已合并源码发布到线上。部署前须记录精确 source commit、不可变

@@ -5,10 +5,10 @@
   "current_phase": "D29_CUSTOMER_ENTRY_REFERENCE_IMPLEMENTATION",
   "phase_status": "IN_PROGRESS",
   "started_at": "2026-07-30T19:04:07+08:00",
-  "last_updated_at": "2026-08-04T10:15:31+08:00",
+  "last_updated_at": "2026-08-04T11:03:39+08:00",
   "source_commits": {
     "governance": "8b01bb8988c9180392ac2b06a39e2541fc98b260",
-    "data_plane": "ddbbb724b6a74eca81cf96773bbc9a6a772ae814",
+    "data_plane": "e200ea0f00d9d948c3b6dbf7058e08489dea1ccd",
     "public_integrations": "6ed4dadd4693129d3daca0a9a29964a4f7f864e9"
   },
   "deployment_releases": {
@@ -55,7 +55,8 @@
     "D29_SECURITY_ENGINEERING_GATE_MAPPED_FAIL_CLOSED",
     "D29_DURABLE_CREDENTIAL_LIFECYCLE_REFERENCE_COMPLETE",
     "D29_WORKSPACE_AUDIT_EXPORT_REFERENCE_COMPLETE",
-    "D29_WORKSPACE_DATA_LIFECYCLE_REFERENCE_COMPLETE"
+    "D29_WORKSPACE_DATA_LIFECYCLE_REFERENCE_COMPLETE",
+    "D29_SECURITY_DRILL_READINESS_PACKET_COMPLETE"
   ],
   "gate_descriptions": {
     "STAGE_5_8_SOURCE_IDENTITY_VERIFIED": "The canonical source commit was confirmed; Stage 5.8 did not pass.",
@@ -94,7 +95,8 @@
     "D29_SECURITY_ENGINEERING_GATE_MAPPED_FAIL_CLOSED": "Gateway main ddbbb724b6a74eca81cf96773bbc9a6a772ae814 maps 20 D29 security controls: 16 PASS, 1 PARTIAL, 1 FAIL_RETAINED, 1 NOT_ASSESSED and 1 NOT_APPLICABLE. One Blocker and two High findings remain open, so this remains fail closed, not a complete security pass or commercial authorization.",
     "D29_DURABLE_CREDENTIAL_LIFECYCLE_REFERENCE_COMPLETE": "Gateway PR #53 merged offline durable D29 credential rotation and revocation at 8e4d9636ace647b8d6daacd77223900db6d862db. Source and ephemeral PostgreSQL CI passed; no network administration endpoint, customer self-service or deployment was created.",
     "D29_WORKSPACE_AUDIT_EXPORT_REFERENCE_COMPLETE": "Gateway PR #54 merged at 5549259a733ce5c7520d85b26936a98fd7317a3b. Source and ephemeral PostgreSQL CI passed the complete declared Workspace-scope export and Audit tamper control; canonical Tenant event content remains intentionally incomplete, external anchoring is absent, and no deployment was created.",
-    "D29_WORKSPACE_DATA_LIFECYCLE_REFERENCE_COMPLETE": "Gateway PR #55 merged at ddbbb724b6a74eca81cf96773bbc9a6a772ae814. Source and ephemeral PostgreSQL CI passed bounded Workspace deletion and retention lifecycle controls. The path revokes Workspace access, redacts mutable customer references, retains declared immutable evidence exceptions, stores no raw customer content, and creates no customer self-service, schema, migration, API, service or deployment."
+    "D29_WORKSPACE_DATA_LIFECYCLE_REFERENCE_COMPLETE": "Gateway PR #55 merged at ddbbb724b6a74eca81cf96773bbc9a6a772ae814. Source and ephemeral PostgreSQL CI passed bounded Workspace deletion and retention lifecycle controls. The path revokes Workspace access, redacts mutable customer references, retains declared immutable evidence exceptions, stores no raw customer content, and creates no customer self-service, schema, migration, API, service or deployment.",
+    "D29_SECURITY_DRILL_READINESS_PACKET_COMPLETE": "Gateway PR #56 merged at e200ea0f00d9d948c3b6dbf7058e08489dea1ccd. It adds only a bounded incident and rollback drill readiness contract, Human decision packet and regression tests. No drill, deployment, restart or finding closure occurred; the security gate remains FAIL_CLOSED with one Blocker and two High findings."
   },
   "blocked_gates": [
     "CR01_LEDGER_INTEGRITY_FAILED_RETAINED",
