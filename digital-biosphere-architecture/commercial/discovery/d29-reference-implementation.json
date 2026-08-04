@@ -113,12 +113,25 @@
   },
   "security_drill_readiness": {
     "status": "PASS_PREPARATION_ONLY_EXECUTION_NOT_AUTHORIZED",
+    "read_only_preflight_observed_at": "2026-08-04T11:26:38+08:00",
+    "read_only_preflight_status": "PASS_INVENTORY_WITH_ROLLBACK_TARGET_UNASSIGNED",
+    "observed_active_symlink_release": "efdfc84462628abdfbfe111f61253f76569edec0",
+    "observed_service_state": "ACTIVE_RUNNING",
+    "observed_loopback_http": {
+      "health": 200,
+      "status": 200,
+      "readiness": 200
+    },
+    "observed_manifest_activated": false,
+    "observed_manifest_production_ready": false,
+    "drill_target_frozen": false,
+    "formal_rollback_pointer_found": false,
     "incident_drill_executed": false,
     "formal_rollback_drill_executed": false,
     "incident_drill_authorized": false,
     "rollback_drill_authorized": false,
-    "candidate_release": "UNASSIGNED_PENDING_FRESH_PREFLIGHT_AND_HUMAN_DECISION",
-    "rollback_release": "UNASSIGNED_PENDING_FRESH_PREFLIGHT_AND_HUMAN_DECISION",
+    "candidate_release": "UNASSIGNED_PENDING_HUMAN_FREEZE",
+    "rollback_release": "UNASSIGNED_NO_AUTHORITATIVE_ROLLBACK_POINTER",
     "security_findings_closed": 0,
     "commercial_effect": "NONE",
     "cockpit_sync_ref": "D29-SECURITY-DRILL-READINESS-COCKPIT-SYNC-v1.0.md"

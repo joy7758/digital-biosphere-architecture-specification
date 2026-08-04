@@ -130,6 +130,21 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
         self.assertFalse(drill["formal_rollback_drill_executed"])
         self.assertFalse(drill["incident_drill_authorized"])
         self.assertFalse(drill["rollback_drill_authorized"])
+        self.assertEqual(
+            "PASS_INVENTORY_WITH_ROLLBACK_TARGET_UNASSIGNED",
+            drill["read_only_preflight_status"],
+        )
+        self.assertEqual(
+            "efdfc84462628abdfbfe111f61253f76569edec0",
+            drill["observed_active_symlink_release"],
+        )
+        self.assertFalse(drill["drill_target_frozen"])
+        self.assertFalse(drill["formal_rollback_pointer_found"])
+        self.assertEqual("UNASSIGNED_PENDING_HUMAN_FREEZE", drill["candidate_release"])
+        self.assertEqual(
+            "UNASSIGNED_NO_AUTHORITATIVE_ROLLBACK_POINTER",
+            drill["rollback_release"],
+        )
         self.assertEqual(0, drill["security_findings_closed"])
         self.assertEqual("NONE", drill["commercial_effect"])
         self.assertEqual(
