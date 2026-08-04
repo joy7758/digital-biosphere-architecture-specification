@@ -74,10 +74,33 @@ class CommercialPrivateConstitutionTests(unittest.TestCase):
         for invariant in (
             "PUBLIC_SURFACE_NE_OPEN_SOURCE_CORE=true",
             "PUBLIC_SDK_NE_PUBLIC_COMMUNITY=true",
+            "CURRENT_IDENTITY_NE_DEVELOPER_COMMUNITY=true",
+            "CURRENT_IDENTITY_NE_OPEN_SOURCE_COMMUNITY=true",
+            "CURRENT_STRATEGY_NE_OPEN_CORE=true",
+            "PUBLIC_ASSET_NE_PUBLIC_CONTRIBUTION_ROUTE=true",
             "PUBLIC_CONTRIBUTION_ROUTE_ACTIVE=false",
             "COMMUNITY_ESTABLISHED=false",
         ):
             self.assertIn(invariant, constitution)
+
+    def test_historical_agent_native_readme_is_not_an_active_entry(self):
+        readme = (ROOT / "TITMAS/agent-native/README.md").read_text(encoding="utf-8")
+        self.assertTrue(readme.startswith("# TITMAS Agent-Native Architecture — Historical Community Archive"))
+        self.assertIn("COMMUNITY_STATUS=SUPERSEDED_HISTORICAL_ARCHIVE", readme)
+        self.assertIn("COMMUNITY_CURRENT_AUTHORITY_EFFECT=NONE", readme)
+        self.assertIn("COMMUNITY_INVOCATION_AUTHORIZED=false", readme)
+        self.assertNotIn("## Agent in 60 seconds", readme)
+
+    def test_current_public_projection_has_no_active_community_identity(self):
+        public_llms = (ROOT / "site/public/llms.txt").read_text(encoding="utf-8")
+        platform = (ROOT / "docs/TITMAS_PRIVATE_PLATFORM_ARCHITECTURE_v0.1.md").read_text(encoding="utf-8")
+        site_content = (ROOT / "site/app/site-content.ts").read_text(encoding="utf-8")
+
+        self.assertNotIn("## What the community works on", public_llms)
+        self.assertNotIn("TITMAS Infrastructure Developer Community improves", public_llms)
+        self.assertNotIn("The public community repository is", platform)
+        self.assertNotIn("社区仍处于准备状态", site_content)
+        self.assertNotIn("the community remains in preparation", site_content)
 
     def test_historical_community_record_is_fail_closed(self):
         status = load_json("TITMAS/community/community-status.json")

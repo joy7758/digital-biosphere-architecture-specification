@@ -283,7 +283,7 @@ export const content = {
       ["DESIGN", "COMPLETE", "验证问题、步骤、来源、负例和成功标准已经定义。"],
       ["EXECUTION", "NOT AUTHORIZED", "没有运行 Pilot、Demo 或真实 Evidence Admission。"],
       ["EXTERNAL ROLE", "REVIEWER FIRST", "第一位外部参与者应审查价值与边界，不要求先贡献代码。"],
-      ["ADOPTION", "NOT CLAIMED", "没有产品、客户采用或上游项目认可声明；社区仍处于准备状态。"],
+      ["ADOPTION", "NOT CLAIMED", "没有产品、客户采用或上游项目认可声明；历史社区路线不再是当前商业模式。"],
     ],
     validationFlow: [
       ["01", "Microsoft AGT", "观察来源候选", "固定 release/source 后只导出 Observation，不产生 DBOS 身份或权限。"],
@@ -509,7 +509,7 @@ export const content = {
       ["DESIGN", "COMPLETE", "The question, procedure, sources, negative cases, and success criteria are defined."],
       ["EXECUTION", "NOT AUTHORIZED", "No Pilot, Demo, or real Evidence Admission has run."],
       ["EXTERNAL ROLE", "REVIEWER FIRST", "The first external participant should assess value and boundaries, not contribute code first."],
-      ["ADOPTION", "NOT CLAIMED", "No product, customer adoption, or upstream endorsement is claimed; the community remains in preparation."],
+      ["ADOPTION", "NOT CLAIMED", "No product, customer adoption, or upstream endorsement is claimed; the historical community route is not the current commercial model."],
     ],
     validationFlow: [
       ["01", "Microsoft AGT", "Observation source candidate", "After pinning release/source, export Observation only; create no DBOS identity or permission."],

@@ -118,8 +118,9 @@ development.
 
 ## Permanent boundaries
 
-- The public community repository is a discovery, proof and participation
-  surface, not the core.
+- Public interoperability repositories and assets are bounded discovery, proof
+  and integration surfaces, not the core. Historical community material does
+  not define the current route or authorize public contribution.
 - `agent-evidence` remains the unique execution-evidence semantic source.
 - An Adapter does not become a verification engine.
 - A Product interface does not expose private algorithms.

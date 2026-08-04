@@ -101,6 +101,32 @@ CONFORMANCE_NE_CERTIFICATION=true
 DISCOVERY_NE_ACCESS=true
 ```
 
+### 4A. Current Identity and Source-Availability Language
+
+当前对外和机器入口必须使用 `TITMAS Commercial Agent Infrastructure`（TITMAS
+商业智能体基础设施）作为项目身份。以下表达不得再作为当前品牌、产品类别、增长路线、
+客户入口或 Agent 推荐理由：
+
+- developer community（开发者社区）；
+- open-source community（开源社区）；
+- Open Core（开放核心）；
+- public standards community（公共标准社区）。
+
+已经公开的文件、历史仓库和第三方依赖继续遵守各自现有许可证与来源事实；本宪法不追溯
+撤销其可访问性，也不把已经公开的源码改写成私有事实。当前允许公开的 Schema、SDK、
+MCP、示例、validator 和脱敏验证资料统一称为 **public interoperability assets**
+（公共互操作资产），其作用是帮助 Agent 发现、接入和核验商业私有核心，而不是建立社区
+或承诺核心源码开放。
+
+```text
+CURRENT_IDENTITY=TITMAS_COMMERCIAL_AGENT_INFRASTRUCTURE
+CURRENT_IDENTITY_NE_DEVELOPER_COMMUNITY=true
+CURRENT_IDENTITY_NE_OPEN_SOURCE_COMMUNITY=true
+CURRENT_STRATEGY_NE_OPEN_CORE=true
+PUBLIC_ASSET_NE_PUBLIC_CONTRIBUTION_ROUTE=true
+EXISTING_LICENSE_FACTS_PRESERVED=true
+```
+
 ## 5. Commercial Entry Route
 
 当前商业入口采用 design-partner / bounded pilot first（设计伙伴／有界试点优先），而非
@@ -207,6 +233,10 @@ PRIVATE_CORE_IS_CANONICAL=true
 PUBLIC_INTEROPERABILITY_SURFACES_RETAINED=true
 PUBLIC_SURFACE_NE_OPEN_SOURCE_CORE=true
 PUBLIC_SDK_NE_PUBLIC_COMMUNITY=true
+CURRENT_IDENTITY_NE_DEVELOPER_COMMUNITY=true
+CURRENT_IDENTITY_NE_OPEN_SOURCE_COMMUNITY=true
+CURRENT_STRATEGY_NE_OPEN_CORE=true
+PUBLIC_ASSET_NE_PUBLIC_CONTRIBUTION_ROUTE=true
 COMMUNITY_IDENTITY_IS_HISTORICAL=true
 PUBLIC_CONTRIBUTION_ROUTE_ACTIVE=false
 COMMUNITY_ESTABLISHED=false

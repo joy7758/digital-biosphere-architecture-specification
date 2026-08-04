@@ -116,3 +116,24 @@ IMPLEMENTATION_AUTHORIZED=false
 RELEASE_AUTHORIZED=false
 DEPLOYMENT_AUTHORIZED=false
 ```
+
+## 2026-08-04 Current-language Residue Correction
+
+对当前入口的后续扫描确认：核心宪法、统一 Human 入口和 canonical Agent 入口已经采用商业
+私有基础设施身份；残留风险集中在旧 Agent-native README、静态 `llms.txt`、网站派生文案
+和私有平台架构说明中。这些表面仍可能把历史 community flow（社区流程）误读为当前路线。
+
+本次修正不删除历史社区文件、不改变既有许可证，也不把公开互操作资产变为私有事实。
+它只执行本 ADR 已接受的战略：把当前用语统一为 commercial private infrastructure
+（商业私有基础设施）和 public interoperability assets（公共互操作资产），并将旧社区
+命令明确标记为不可调用的历史材料。
+
+```text
+CURRENT_LANGUAGE_RESIDUE_CORRECTED=true
+HISTORICAL_COMMUNITY_FILES_DELETED=false
+EXISTING_LICENSE_FACTS_PRESERVED=true
+PUBLIC_INTEROPERABILITY_ASSETS_RETAINED=true
+COMMUNITY_ROUTE_REACTIVATED=false
+CORE_SOURCE_PUBLICATION_AUTHORIZED=false
+PUBLIC_CONTRIBUTION_AUTHORIZED=false
+```
