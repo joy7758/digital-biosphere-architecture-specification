@@ -17,7 +17,7 @@ TITMAS 已形成四产品、四 Offering 草案、商业网站源码、私有平
 
 - 产品表面：Gate、Receipt、Audit、Health；Observer 不是第五产品。
 - 首个付费候选：Monitor Pilot；当前 `ENFORCEMENT_EFFECT=NONE`，尚不可售。
-- 私有平台：`joy7758/titmas-sandbox-gateway` main `ddbbb724b6a74eca81cf96773bbc9a6a772ae814`。
+- 私有平台：`joy7758/titmas-sandbox-gateway` main `e200ea0f00d9d948c3b6dbf7058e08489dea1ccd`。
 - 当前公网技术候选返回 HTTP 200，但运行发布仍为 `efdfc844...`，并明确 `commercial_technical_ready=false`、`security_tests_pass=false`、`agent_e2e_ready=false`。
 - D29 商业网站源码已合并；实时商业 JSON 与路由仍为 404，未部署状态已保留。
 - PR #51 已把 Tenant/Workspace/Agent 绑定的 Receipt read 与持久 Audit/Health 读投影合并到私有平台；三项 CI 通过。其初始 PostgreSQL Audit 只承诺带缺口披露的 Tenant subset；该历史限制已由后续 PR #54 的有界 Workspace 导出取代。PR #52 只增加安全工程闸门映射、机器合同和回归测试，不改变 Runtime、数据库、API 或部署。
@@ -28,6 +28,11 @@ Quota、Scope 与 operation boundary，且通过临时 PostgreSQL CI。PR #54
 该有界 Audit High finding。它仍不披露其他 Workspace 事件内容，也不提供
 离线排除事件非成员关系的密码学证明或外部锚点；没有增加网络管理接口、
 客户自助流程、Schema、迁移或部署。
+
+PR #56 随后仅增加事件与回滚演练的机器可读准备契约、Human Decision
+Packet 和四项回归测试。事件演练与正式回滚演练均未执行，精确候选版本、
+回滚版本、维护窗口和责任人仍待 Human 决策；因此该 PR 不关闭任何安全
+finding，也不改变 1 个 Blocker、2 个 High 或 `FAIL_CLOSED` 状态。
 
 PR #55 又在既有离线管理员和既有 PostgreSQL 表上实现有界 Workspace 删除
 请求、双人执行、独立验证以及 7/30/90 天托管保留策略。它撤销 Workspace

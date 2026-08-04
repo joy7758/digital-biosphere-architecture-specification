@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-GATEWAY_REVISION = "ddbbb724b6a74eca81cf96773bbc9a6a772ae814"
+GATEWAY_REVISION = "e200ea0f00d9d948c3b6dbf7058e08489dea1ccd"
 
 
 def load(relative: str):
@@ -116,6 +116,24 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
             self.assertEqual(capabilities[key], self.status[key])
         self.assertFalse(self.projection["availability"]["deployed"])
         self.assertFalse(self.status["deployment_executed"])
+
+    def test_security_drill_is_prepared_but_not_authorized_or_executed(self):
+        drill = self.projection["security_drill_readiness"]
+        self.assertEqual(
+            "PASS_PREPARATION_ONLY_EXECUTION_NOT_AUTHORIZED", drill["status"]
+        )
+        self.assertFalse(drill["incident_drill_executed"])
+        self.assertFalse(drill["formal_rollback_drill_executed"])
+        self.assertFalse(drill["incident_drill_authorized"])
+        self.assertFalse(drill["rollback_drill_authorized"])
+        self.assertEqual(0, drill["security_findings_closed"])
+        self.assertEqual("NONE", drill["commercial_effect"])
+        self.assertEqual(
+            "PASS_PREPARATION_ONLY_EXECUTION_NOT_AUTHORIZED",
+            self.status["security_drill_readiness"],
+        )
+        self.assertFalse(self.status["incident_drill_executed"])
+        self.assertFalse(self.status["formal_rollback_drill_executed"])
 
     def test_synthetic_measurements_retain_scope_and_non_claims(self):
         measured = self.projection["measured_synthetic_reference"]

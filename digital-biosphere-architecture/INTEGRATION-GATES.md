@@ -180,7 +180,7 @@ scope or create deployment or customer authority.
 The earlier C-01 gate remains the architecture-contract result at its recorded
 scope. A later, separately authorized implementation sequence is now observed
 from `joy7758/titmas-sandbox-gateway` canonical
-`main@ddbbb724b6a74eca81cf96773bbc9a6a772ae814`:
+`main@e200ea0f00d9d948c3b6dbf7058e08489dea1ccd`:
 
 | implementation gate | result | retained boundary |
 |---|---|---|
@@ -193,6 +193,7 @@ from `joy7758/titmas-sandbox-gateway` canonical
 | Durable credential lifecycle | `PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED` | offline rotation/revocation preserves Tenant, Agent, quota, scopes and operation boundary; no customer self-service or deployment |
 | Workspace deletion lifecycle | `PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED` | auditable request/execute/verify path revokes Workspace access and redacts mutable customer references; retained evidence exceptions remain immutable |
 | Workspace retention lifecycle | `PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED` | managed 7/30/90-day policies and bounded private/on-prem days are machine-defined; enforcement is offline and not deployed |
+| Security drill readiness | `PASS_PREPARATION_ONLY_EXECUTION_NOT_AUTHORIZED` | PR #56 provides a bounded contract and Human decision packet; incident and rollback drills remain unexecuted and findings remain open |
 | Security engineering control mapping | `FAIL_CLOSED` | 20 controls mapped: 16 PASS, 1 PARTIAL, 1 FAIL_RETAINED, 1 NOT_ASSESSED, 1 NOT_APPLICABLE; 1 Blocker and 2 High findings remain open |
 | Commercial availability | `FAIL_CLOSED_NOT_AVAILABLE` | paid Monitor, customer Enforce, deployment, customer, payment and Production remain false |
 
