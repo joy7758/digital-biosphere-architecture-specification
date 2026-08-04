@@ -123,6 +123,7 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/architecture/developer-ecosystem-strategy.md",
         "digital-biosphere-architecture/architecture/open-infrastructure-strategy-constitution.md",
         "digital-biosphere-architecture/architecture/project-mapping.md",
+        "digital-biosphere-architecture/architecture/schemas/commercial-readiness-v1.0.schema.json",
         "digital-biosphere-architecture/architecture/titmas-architecture-charter-v1.0.md",
         "digital-biosphere-architecture/architecture/titmas-d29-commercial-direction-freeze-v1.md",
         "digital-biosphere-architecture/architecture/titmas-d29-private-platform-architecture-v1.md",

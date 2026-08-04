@@ -23,6 +23,9 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
         cls.repositories = load("commercial/discovery/canonical-repositories.json")
         cls.program = load("commercial-program-state.json")
         cls.readiness = load("commercial-readiness.json")
+        cls.readiness_schema = load(
+            "architecture/schemas/commercial-readiness-v1.0.schema.json"
+        )
         cls.machine_readiness = load("COMMERCIAL-READINESS-MACHINE-STATUS.json")
         cls.agent_index = load("agent-index.json")
 
@@ -191,6 +194,39 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
         self.assertFalse(self.readiness["commercial_technical_ready"])
         self.assertFalse(self.readiness["paid_beta_ready"])
         self.assertFalse(self.readiness["production_ready"])
+
+    def test_commercial_readiness_matches_its_declared_schema_contract(self):
+        allowed_gates = set(
+            self.readiness_schema["$defs"]["gateMap"]["additionalProperties"][
+                "enum"
+            ]
+        )
+        for gate_map in ("technical_gates", "operational_gates"):
+            with self.subTest(gate_map=gate_map):
+                self.assertTrue(
+                    set(self.readiness[gate_map].values()).issubset(allowed_gates)
+                )
+
+        external_schema = self.readiness_schema["properties"]["external_evidence"]
+        self.assertTrue(
+            set(self.readiness["external_evidence"]).issubset(
+                external_schema["properties"]
+            )
+        )
+        self.assertEqual(
+            2, self.readiness["security"]["high_findings_without_mitigation"]
+        )
+        self.assertEqual(
+            "NOT_ASSESSED", self.readiness["operational_gates"]["incident_drill"]
+        )
+        self.assertEqual(
+            "NOT_ASSESSED",
+            self.readiness["operational_gates"]["formal_rollback_drill"],
+        )
+        self.assertEqual(
+            "WAITING_FOR_HUMAN_DECISION",
+            self.readiness["technical_gates"]["d29_security_drill_readiness"],
+        )
 
     def test_agent_entry_exposes_one_projection_without_copying_child_truth(self):
         surface = self.agent_index["machine_surfaces"]["commercial_d29_reference_implementation"]
