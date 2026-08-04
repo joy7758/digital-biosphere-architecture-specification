@@ -103,6 +103,7 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/PROJECT-PORTFOLIO.md",
         "digital-biosphere-architecture/README.md",
         "digital-biosphere-architecture/TITMAS/README.md",
+        "digital-biosphere-architecture/TITMAS/agent-native/README.md",
         "digital-biosphere-architecture/TITMAS/agent-native/schemas/agent-index.schema.json",
         "digital-biosphere-architecture/TITMAS/community/community-status.json",
         "digital-biosphere-architecture/TITMAS/conformance/schemas/community-status.schema.json",
@@ -137,6 +138,8 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/portfolio/canonical-reuse-audit-d29.json",
         "digital-biosphere-architecture/portfolio/product-catalog.internal.json",
         "digital-biosphere-architecture/research/competitive/CONSOLE-INFORMATION-ARCHITECTURE.md",
+        "digital-biosphere-architecture/site/app/site-content.ts",
+        "digital-biosphere-architecture/site/public/llms.txt",
     }
     for raw in paths:
         path = Path(raw)
@@ -147,7 +150,12 @@ def forbidden_change_reason(paths):
         )
         if "owner-map" in lowered or "owner_resolver" in lowered or "owner-resolver" in lowered:
             return "OWNER_ROUTING_CHANGED"
-        if "digital-biosphere-architecture" in parts and "site" in parts and not frozen_validation_source:
+        if (
+            "digital-biosphere-architecture" in parts
+            and "site" in parts
+            and not frozen_validation_source
+            and raw not in allowed_exact
+        ):
             return "WEBSITE_IMPLEMENTATION_CHANGED"
         if parts & forbidden_parts:
             return "CORE_RUNTIME_OR_DATABASE_CHANGED"
@@ -336,6 +344,8 @@ class CommercialC01EntryTests(unittest.TestCase):
         self.assertTrue(current_change_paths())
         self.assertEqual("CORE_RUNTIME_OR_DATABASE_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/src/runtime/observer.py"}))
         self.assertEqual("WEBSITE_IMPLEMENTATION_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/site/app/page.tsx"}))
+        self.assertIsNone(forbidden_change_reason({"digital-biosphere-architecture/site/app/site-content.ts"}))
+        self.assertIsNone(forbidden_change_reason({"digital-biosphere-architecture/site/public/llms.txt"}))
         self.assertIsNone(forbidden_change_reason({"digital-biosphere-architecture/commercial/validation/d29-multi-agent-v1/source-materials/site/public/proof-catalog.json"}))
         self.assertEqual("OWNER_ROUTING_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/TITMAS/agent-native/evolution/canonical-owner-map.json"}))
         self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({"digital-biosphere-architecture/unknown.py"}))
