@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-GATEWAY_REVISION = "8e4d9636ace647b8d6daacd77223900db6d862db"
+GATEWAY_REVISION = "5549259a733ce5c7520d85b26936a98fd7317a3b"
 
 
 def load(relative: str):
@@ -55,7 +55,7 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
         self.assertEqual(0, self.offerings["available_offering_count"])
         self.assertTrue(all(not item.get("currently_available_offering", False) for item in self.offerings["offerings"]))
 
-    def test_durable_read_projections_retain_partial_audit_boundary(self):
+    def test_durable_read_projections_retain_bounded_audit_boundary(self):
         capabilities = self.projection["capabilities"]
         boundaries = self.projection["retained_fail_closed_boundaries"]
         self.assertEqual(
@@ -63,37 +63,46 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
             capabilities["durable_receipt_read_projection"],
         )
         self.assertEqual(
-            "IMPLEMENTED_REFERENCE_PARTIAL_CHAIN_NOT_DEPLOYED",
+            "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_COMPLETE_DECLARED_WORKSPACE_SCOPE_NOT_DEPLOYED",
             capabilities["durable_audit_export_projection"],
         )
         self.assertEqual(
-            "IMPLEMENTED_REFERENCE_AUDIT_PARTIAL_NOT_DEPLOYED",
+            "IMPLEMENTED_REFERENCE_AUDIT_COMPLETE_FOR_DECLARED_WORKSPACE_SCOPE_NOT_DEPLOYED",
             capabilities["durable_health_projection"],
         )
-        self.assertFalse(boundaries["postgres_audit_projection_chain_complete"])
+        self.assertTrue(
+            boundaries[
+                "postgres_audit_projection_chain_complete_for_declared_workspace_scope"
+            ]
+        )
         self.assertEqual(
-            "COMMERCIAL_TENANT_AUDIT_SUBSET_V1",
+            "COMMERCIAL_TENANT_WORKSPACE_EXPORT_V1",
             boundaries["postgres_audit_projection_profile"],
         )
+        self.assertFalse(boundaries["canonical_tenant_event_content_complete"])
+        self.assertFalse(
+            boundaries["offline_scope_non_membership_cryptographic_proof"]
+        )
+        self.assertFalse(boundaries["external_cryptographic_anchor"])
         self.assertFalse(self.projection["availability"]["deployed"])
 
     def test_security_engineering_gate_fails_closed_with_exact_counts(self):
         gate = self.projection["security_engineering_gate"]
         self.assertEqual("FAIL_CLOSED", gate["status"])
         self.assertEqual(20, gate["control_count"])
-        self.assertEqual(13, gate["pass"])
-        self.assertEqual(2, gate["partial"])
+        self.assertEqual(14, gate["pass"])
+        self.assertEqual(1, gate["partial"])
         self.assertEqual(1, gate["fail_retained"])
         self.assertEqual(3, gate["not_assessed"])
         self.assertEqual(1, gate["not_applicable"])
         self.assertEqual(1, gate["blocker_findings_open"])
-        self.assertEqual(5, gate["high_findings_open"])
+        self.assertEqual(4, gate["high_findings_open"])
         self.assertEqual("NOT_RECOMMENDED", gate["agent_recommendation"])
         self.assertFalse(gate["independent_security_evaluation_executed"])
         self.assertFalse(gate["d04_reopened"])
         self.assertEqual("NONE", gate["commercial_effect"])
         self.assertEqual(
-            "FAIL_CLOSED_ONE_BLOCKER_FIVE_HIGH",
+            "FAIL_CLOSED_ONE_BLOCKER_FOUR_HIGH",
             self.status["security_engineering_gate"],
         )
 

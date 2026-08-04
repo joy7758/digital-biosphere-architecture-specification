@@ -272,7 +272,7 @@ MATURE_COMMERCIAL_INFRASTRUCTURE=false
 ```
 
 The source-pinned D29 projection now records the private Gateway reference at
-`main@8e4d9636ace647b8d6daacd77223900db6d862db`. PostgreSQL application
+`main@5549259a733ce5c7520d85b26936a98fd7317a3b`. PostgreSQL application
 wiring, the zero-customer-data synthetic Observer/FirstValue route, read-only
 Console projections and the software-delivery Monitor/Enforce proof exist as
 bounded reference implementations. They are not deployed offerings. The
@@ -280,16 +280,18 @@ Monitor/Enforce proof is synthetic and non-binding; no real customer
 authorization, provider action, customer data, payment or production claim is
 created.
 
-The same source now includes credential-bound durable Receipt reads and scoped
-Audit/Health projections. The PostgreSQL Audit export is explicitly an
-incomplete Tenant subset, so `audit_chain_complete=false` and Health Audit
-remains `PARTIAL`. This is source-level reference evidence, not a commercially
-available Health Snapshot or Monitor Pilot.
+The same source now includes credential-bound durable Receipt reads and a
+complete declared Workspace Audit export linked to every canonical Tenant
+chain event through content-free witnesses. Unrelated Tenant event content is
+not exported; offline excluded-event non-membership is not cryptographically
+proven and no external anchor is claimed. This is source-level reference
+evidence, not a commercially available Health Snapshot or Monitor Pilot.
 
 The same source now carries a fail-closed D29 security engineering projection:
-20 controls are mapped. The offline durable credential-lifecycle path passed
-source and ephemeral PostgreSQL CI, closing one High finding without creating
-a customer self-service endpoint or deployment. One Blocker and five High
+20 controls are mapped. The offline durable credential-lifecycle and bounded
+Workspace Audit paths passed source and ephemeral PostgreSQL CI, closing two
+High findings without creating a customer self-service endpoint or deployment.
+One Blocker and four High
 findings remain open. This is not a complete security pass, independent review,
 commercial availability or deployment.
 

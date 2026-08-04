@@ -664,18 +664,19 @@ and the machine
 ## 18. D29 Customer Entry Reference Implementation Overlay
 
 Observed on 2026-08-04 from the private Gateway canonical `main` after CE-1
-through CE-6 and the bounded credential-lifecycle remediation were merged.
+through CE-7 and the bounded credential-lifecycle remediation were merged.
 CE-1 through CE-5 retain their clean-clone evidence;
 CE-6 has exact-head source, quality, PostgreSQL integration and supply-chain CI
 evidence but no deployment. PR #52 then added only a fail-closed security gate
 projection and regression tests; PR #53 then closed only the durable credential
-lifecycle High finding through offline source and ephemeral PostgreSQL CI. It
-did not add a network administration endpoint, Runtime or deployment:
+lifecycle High finding through offline source and ephemeral PostgreSQL CI. PR
+#54 then closed the bounded Workspace Audit High finding without adding a
+schema, migration, Runtime or deployment:
 
 ```text
 D29_IMPLEMENTATION_SOURCE_REPOSITORY=joy7758/titmas-sandbox-gateway
 D29_IMPLEMENTATION_SOURCE_BRANCH=main
-D29_IMPLEMENTATION_SOURCE_REVISION=8e4d9636ace647b8d6daacd77223900db6d862db
+D29_IMPLEMENTATION_SOURCE_REVISION=5549259a733ce5c7520d85b26936a98fd7317a3b
 D29_IMPLEMENTATION_SOURCE_STATUS=MERGED_ON_CANONICAL_MAIN
 D29_POSTGRES_APPLICATION_WIRING=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
 D29_SYNTHETIC_OBSERVER_FIRST_VALUE=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
@@ -683,23 +684,26 @@ D29_AGENT_OVERVIEW_CONSOLE=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
 D29_CONSOLE_CORE_PAGES=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
 D29_SOFTWARE_DELIVERY_PROOF=TESTED_SYNTHETIC_ONLY_NOT_DEPLOYED
 D29_DURABLE_RECEIPT_READ_PROJECTION=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
-D29_DURABLE_AUDIT_EXPORT_PROJECTION=IMPLEMENTED_REFERENCE_PARTIAL_CHAIN_NOT_DEPLOYED
-D29_DURABLE_HEALTH_PROJECTION=IMPLEMENTED_REFERENCE_AUDIT_PARTIAL_NOT_DEPLOYED
-D29_POSTGRES_AUDIT_CHAIN_COMPLETE=false
+D29_DURABLE_AUDIT_EXPORT_PROJECTION=COMPLETE_DECLARED_WORKSPACE_SCOPE_NOT_DEPLOYED
+D29_DURABLE_HEALTH_PROJECTION=IMPLEMENTED_REFERENCE_AUDIT_COMPLETE_FOR_DECLARED_WORKSPACE_SCOPE_NOT_DEPLOYED
+D29_POSTGRES_AUDIT_CHAIN_COMPLETE_FOR_DECLARED_WORKSPACE_SCOPE=true
+D29_CANONICAL_TENANT_EVENT_CONTENT_COMPLETE=false
+D29_OFFLINE_SCOPE_NON_MEMBERSHIP_CRYPTOGRAPHIC_PROOF=false
 D29_GATEWAY_PR51_CI=PASS
 D29_CLEAN_CLONE=PASS_CE1_CE5_PREDECESSOR_REVISION
 D29_CE6_EXACT_HEAD_CI=PASS
 D29_GATEWAY_PR52_CI=PASS
 D29_GATEWAY_PR53_CI=PASS
+D29_GATEWAY_PR54_CI=PASS
 D29_DURABLE_CREDENTIAL_LIFECYCLE=PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED
 D29_SECURITY_ENGINEERING_GATE=FAIL_CLOSED
-D29_SECURITY_CONTROLS_PASS=13
-D29_SECURITY_CONTROLS_PARTIAL=2
+D29_SECURITY_CONTROLS_PASS=14
+D29_SECURITY_CONTROLS_PARTIAL=1
 D29_SECURITY_CONTROLS_FAIL_RETAINED=1
 D29_SECURITY_CONTROLS_NOT_ASSESSED=3
 D29_SECURITY_CONTROLS_NOT_APPLICABLE=1
 D29_SECURITY_BLOCKERS_OPEN=1
-D29_SECURITY_HIGH_FINDINGS_OPEN=5
+D29_SECURITY_HIGH_FINDINGS_OPEN=4
 D29_SOURCE_FULL_TESTS=377
 D29_SOURCE_EXPECTED_ENVIRONMENT_GATED_SKIPS=4
 D29_REFERENCE_IMPLEMENTATION_DEPLOYED=false
@@ -719,19 +723,23 @@ local in-process reference contexts. They are not an SLO, real customer
 authorization, external action, deployment, commercial offering, legal result
 or production evidence.
 
-The CE-6 PostgreSQL Audit projection deliberately reports
-`COMMERCIAL_TENANT_AUDIT_SUBSET_V1` and `audit_chain_complete=false`. Its Health
-projection therefore remains `PARTIAL` for Audit even when included events
-verify. Receipt lookup is Tenant/Workspace/Agent credential-bound. These source
+The CE-7 PostgreSQL Audit projection reports
+`COMMERCIAL_TENANT_WORKSPACE_EXPORT_V1`, verifies the complete declared
+Workspace scope and every canonical Tenant-chain link, and passes the bounded
+Audit tamper control. Unrelated Tenant event content is deliberately omitted,
+so offline excluded-event non-membership is not cryptographically proven and
+no external anchor is claimed. Receipt lookup remains Tenant/Workspace/Agent
+credential-bound. These source
 facts do not make Health Snapshot or Monitor Pilot commercially available.
 
 D04 remains `CLOSED_FAILED_RETAINED`, P0-10 Agent-first acceptance remains
 false, and the existing commercial readiness, legal, security, business,
 deployment, pricing, support and external-validation gates remain separate.
 The later security projection explicitly fails closed with one Blocker and
-five High findings open after the durable credential-lifecycle High finding
-was closed in source and ephemeral PostgreSQL CI. This bounded remediation is
-not an independent evaluation, commercial readiness or launch authorization.
+four High findings open after the durable credential-lifecycle and bounded
+Workspace Audit High findings were closed in source and ephemeral PostgreSQL
+CI. These bounded remediations are not an independent evaluation, commercial
+readiness or launch authorization.
 This overlay corrects a stale `NOT_ASSESSED` implementation projection; it does
 not rewrite the architecture-only C-01 freeze or any prior failure.
 

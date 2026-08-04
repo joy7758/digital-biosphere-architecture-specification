@@ -98,7 +98,7 @@ MAPPING_NE_INTEGRATION=true
 | surface | portfolio role | source | state |
 |---|---|---|---|
 | Commercial governance | DBA responsibility extension | `commercial-program-state.json`, ADR-036, ADR-037, ADR-038 | `D04_CLOSED_FAILED_RETAINED_FINAL_FORM_DECISION_PENDING` |
-| Commercial data/control modules | private Gateway bounded extension | `joy7758/titmas-sandbox-gateway@8e4d9636ace647b8d6daacd77223900db6d862db` | `D29_CE1_CE6_AND_DURABLE_CREDENTIAL_LIFECYCLE_REFERENCE_IMPLEMENTED_NOT_DEPLOYED_SECURITY_GATE_FAIL_CLOSED_ONE_BLOCKER_FIVE_HIGH` |
+| Commercial data/control modules | private Gateway bounded extension | `joy7758/titmas-sandbox-gateway@5549259a733ce5c7520d85b26936a98fd7317a3b` | `D29_CE1_CE7_AND_DURABLE_CREDENTIAL_LIFECYCLE_REFERENCE_IMPLEMENTED_NOT_DEPLOYED_SECURITY_GATE_FAIL_CLOSED_ONE_BLOCKER_FOUR_HIGH` |
 | Public-safe SDK and adapters | existing integrations repository | `joy7758/titmas-integrations@6ed4dad…` | `PASS_WITH_LIMITATIONS_PACKAGES_UNPUBLISHED` |
 | Commercial control-plane repository | optional candidate | none | `NOT_CREATED_NOT_CURRENTLY_JUSTIFIED` |
 | FDO DTR migration and PVS-0 | public evidence auxiliary line | `joy7758/titmas-fdo-public-verification@1dcca69…`, Zenodo `10.5281/zenodo.21778954`, five PIDs | `PUBLIC_ARCHIVED_MAINTENANCE_MODE_WAITING_FOR_GWDG_RESPONSE` |
