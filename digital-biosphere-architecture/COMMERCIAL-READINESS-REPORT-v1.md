@@ -17,7 +17,7 @@ TITMAS 已形成四产品、四 Offering 草案、商业网站源码、私有平
 
 - 产品表面：Gate、Receipt、Audit、Health；Observer 不是第五产品。
 - 首个付费候选：Monitor Pilot；当前 `ENFORCEMENT_EFFECT=NONE`，尚不可售。
-- 私有平台：`joy7758/titmas-sandbox-gateway` main `5549259a733ce5c7520d85b26936a98fd7317a3b`。
+- 私有平台：`joy7758/titmas-sandbox-gateway` main `ddbbb724b6a74eca81cf96773bbc9a6a772ae814`。
 - 当前公网技术候选返回 HTTP 200，但运行发布仍为 `efdfc844...`，并明确 `commercial_technical_ready=false`、`security_tests_pass=false`、`agent_e2e_ready=false`。
 - D29 商业网站源码已合并；实时商业 JSON 与路由仍为 404，未部署状态已保留。
 - PR #51 已把 Tenant/Workspace/Agent 绑定的 Receipt read 与持久 Audit/Health 读投影合并到私有平台；三项 CI 通过。其初始 PostgreSQL Audit 只承诺带缺口披露的 Tenant subset；该历史限制已由后续 PR #54 的有界 Workspace 导出取代。PR #52 只增加安全工程闸门映射、机器合同和回归测试，不改变 Runtime、数据库、API 或部署。
@@ -29,9 +29,16 @@ Quota、Scope 与 operation boundary，且通过临时 PostgreSQL CI。PR #54
 离线排除事件非成员关系的密码学证明或外部锚点；没有增加网络管理接口、
 客户自助流程、Schema、迁移或部署。
 
+PR #55 又在既有离线管理员和既有 PostgreSQL 表上实现有界 Workspace 删除
+请求、双人执行、独立验证以及 7/30/90 天托管保留策略。它撤销 Workspace
+凭据与授权、清除可变客户引用，并把 Gate Decision、signed Receipt、Audit
+chain、usage/billing preview 和 security event 保留为显式完整性、法律或安全
+例外；原始客户内容本来就不持久化。该能力只在源码与临时 PostgreSQL CI
+通过，尚未部署，也不创建客户自助删除承诺。
+
 ## Security
 
-内部安全工程闸门已对 20 项控制完成显式映射：14 `PASS`、1 `PARTIAL`、1 `FAIL_RETAINED`、3 `NOT_ASSESSED`、1 `NOT_APPLICABLE`。当前开放 1 个 Blocker 和 4 个 High finding，因此闸门结果仍是 `FAIL_CLOSED`，不是完整安全 PASS。脱敏独立安全评价 Kit 已齐备，可标记 `READY_TO_INVITE_NOT_EXECUTED`；尚未指派或联系评价者。Signed Receipt 与历史 D04/CR01 失败继续保留，未重开或改写。
+内部安全工程闸门已对 20 项控制完成显式映射：16 `PASS`、1 `PARTIAL`、1 `FAIL_RETAINED`、1 `NOT_ASSESSED`、1 `NOT_APPLICABLE`。当前开放 1 个 Blocker 和 2 个 High finding，因此闸门结果仍是 `FAIL_CLOSED`，不是完整安全 PASS。脱敏独立安全评价 Kit 已齐备，可标记 `READY_TO_INVITE_NOT_EXECUTED`；尚未指派或联系评价者。Signed Receipt 与历史 D04/CR01 失败继续保留，未重开或改写。
 
 ## China legal and business applicability
 
@@ -72,7 +79,7 @@ HUMAN_LEGAL_REVIEW_STATUS=NOT_COMPLETE
 2. 中国律师审查未完成；
 3. 定价与 SOW 未获 Human 批准；
 4. Support Owner 与 Security Contact 未指派；
-5. 1 个 Blocker 与 4 个 High findings 未关闭；
+5. 1 个 Blocker 与 2 个 High findings 未关闭；
 6. 新商业入口未部署，真实公网 Agent discovery 未证明；
 7. 独立安全评价尚未执行；
 8. 无客户、付款、真实生产数据、正式采用或认证证据。

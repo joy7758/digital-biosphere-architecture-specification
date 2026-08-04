@@ -1,7 +1,7 @@
 {
   "schema_version": "0.1",
   "status": "DOCUMENTATION_FOUNDATION_COMPLETE_WITH_BLOCKERS",
-  "observed_at": "2026-08-04T09:04:19+08:00",
+  "observed_at": "2026-08-04T10:15:31+08:00",
   "source_branch": "codex/d29-commercial-delivery-foundation-v1",
   "commercial_effect": "NONE",
   "pre_development_agent_review": {
@@ -33,8 +33,8 @@
   },
   "reference_implementation_evidence": {
     "repository": "joy7758/titmas-sandbox-gateway",
-    "main_revision": "5549259a733ce5c7520d85b26936a98fd7317a3b",
-    "pull_request": 54,
+    "main_revision": "ddbbb724b6a74eca81cf96773bbc9a6a772ae814",
+    "pull_request": 55,
     "quality_ci": "PASS",
     "postgres_integration_ci": "PASS",
     "supply_chain_ci": "PASS",
@@ -44,16 +44,18 @@
     "offline_scope_non_membership_cryptographic_proof": false,
     "health_snapshot_available": false,
     "durable_credential_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
+    "workspace_deletion_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
+    "workspace_retention_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
     "security_engineering_gate": {
       "status": "FAIL_CLOSED",
       "controls_total": 20,
-      "pass": 14,
+      "pass": 16,
       "partial": 1,
       "fail_retained": 1,
-      "not_assessed": 3,
+      "not_assessed": 1,
       "not_applicable": 1,
       "blocker_findings_open": 1,
-      "high_findings_open": 4,
+      "high_findings_open": 2,
       "agent_recommendation": "NOT_RECOMMENDED"
     }
   },
@@ -69,7 +71,7 @@
     "critical_findings_open": 1,
     "blocker_findings_open": 1,
     "critical_findings_legacy_alias_of_blocker": true,
-    "high_findings_open": 4,
+    "high_findings_open": 2,
     "multi_agent_commercial_validation": "PASS_WITH_LIMITATIONS_PREDEPLOYMENT_NOT_LAUNCH_PASS"
   },
   "fdo_pvs0_reference": {
