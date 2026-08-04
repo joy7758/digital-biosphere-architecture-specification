@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-GATEWAY_REVISION = "5549259a733ce5c7520d85b26936a98fd7317a3b"
+GATEWAY_REVISION = "ddbbb724b6a74eca81cf96773bbc9a6a772ae814"
 
 
 def load(relative: str):
@@ -90,21 +90,32 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
         gate = self.projection["security_engineering_gate"]
         self.assertEqual("FAIL_CLOSED", gate["status"])
         self.assertEqual(20, gate["control_count"])
-        self.assertEqual(14, gate["pass"])
+        self.assertEqual(16, gate["pass"])
         self.assertEqual(1, gate["partial"])
         self.assertEqual(1, gate["fail_retained"])
-        self.assertEqual(3, gate["not_assessed"])
+        self.assertEqual(1, gate["not_assessed"])
         self.assertEqual(1, gate["not_applicable"])
         self.assertEqual(1, gate["blocker_findings_open"])
-        self.assertEqual(4, gate["high_findings_open"])
+        self.assertEqual(2, gate["high_findings_open"])
         self.assertEqual("NOT_RECOMMENDED", gate["agent_recommendation"])
         self.assertFalse(gate["independent_security_evaluation_executed"])
         self.assertFalse(gate["d04_reopened"])
         self.assertEqual("NONE", gate["commercial_effect"])
         self.assertEqual(
-            "FAIL_CLOSED_ONE_BLOCKER_FOUR_HIGH",
+            "FAIL_CLOSED_ONE_BLOCKER_TWO_HIGH",
             self.status["security_engineering_gate"],
         )
+
+    def test_workspace_data_lifecycle_is_source_only_and_not_deployed(self):
+        capabilities = self.projection["capabilities"]
+        for key in ("workspace_deletion_lifecycle", "workspace_retention_lifecycle"):
+            self.assertEqual(
+                "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
+                capabilities[key],
+            )
+            self.assertEqual(capabilities[key], self.status[key])
+        self.assertFalse(self.projection["availability"]["deployed"])
+        self.assertFalse(self.status["deployment_executed"])
 
     def test_synthetic_measurements_retain_scope_and_non_claims(self):
         measured = self.projection["measured_synthetic_reference"]

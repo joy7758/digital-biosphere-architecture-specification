@@ -272,7 +272,7 @@ MATURE_COMMERCIAL_INFRASTRUCTURE=false
 ```
 
 The source-pinned D29 projection now records the private Gateway reference at
-`main@5549259a733ce5c7520d85b26936a98fd7317a3b`. PostgreSQL application
+`main@ddbbb724b6a74eca81cf96773bbc9a6a772ae814`. PostgreSQL application
 wiring, the zero-customer-data synthetic Observer/FirstValue route, read-only
 Console projections and the software-delivery Monitor/Enforce proof exist as
 bounded reference implementations. They are not deployed offerings. The
@@ -288,10 +288,11 @@ proven and no external anchor is claimed. This is source-level reference
 evidence, not a commercially available Health Snapshot or Monitor Pilot.
 
 The same source now carries a fail-closed D29 security engineering projection:
-20 controls are mapped. The offline durable credential-lifecycle and bounded
-Workspace Audit paths passed source and ephemeral PostgreSQL CI, closing two
-High findings without creating a customer self-service endpoint or deployment.
-One Blocker and four High
+20 controls are mapped. The offline durable credential-lifecycle, bounded
+Workspace Audit, deletion and retention paths passed source and ephemeral
+PostgreSQL CI. The lifecycle path revokes Workspace access and redacts mutable
+customer references while preserving declared immutable evidence exceptions;
+it creates no customer self-service endpoint or deployment. One Blocker and two High
 findings remain open. This is not a complete security pass, independent review,
 commercial availability or deployment.
 

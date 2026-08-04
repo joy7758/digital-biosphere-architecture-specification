@@ -180,7 +180,7 @@ scope or create deployment or customer authority.
 The earlier C-01 gate remains the architecture-contract result at its recorded
 scope. A later, separately authorized implementation sequence is now observed
 from `joy7758/titmas-sandbox-gateway` canonical
-`main@5549259a733ce5c7520d85b26936a98fd7317a3b`:
+`main@ddbbb724b6a74eca81cf96773bbc9a6a772ae814`:
 
 | implementation gate | result | retained boundary |
 |---|---|---|
@@ -191,7 +191,9 @@ from `joy7758/titmas-sandbox-gateway` canonical
 | Durable Receipt read | `PASS_REFERENCE_NOT_DEPLOYED` | Tenant/Workspace/Agent credential binding; no offering or production access |
 | Durable Audit / Health projection | `PASS_COMPLETE_DECLARED_WORKSPACE_SCOPE_NOT_DEPLOYED` | PostgreSQL verifies every canonical Tenant link and exports complete declared Workspace content; unrelated content, offline non-membership proof and external anchor remain absent |
 | Durable credential lifecycle | `PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED` | offline rotation/revocation preserves Tenant, Agent, quota, scopes and operation boundary; no customer self-service or deployment |
-| Security engineering control mapping | `FAIL_CLOSED` | 20 controls mapped: 14 PASS, 1 PARTIAL, 1 FAIL_RETAINED, 3 NOT_ASSESSED, 1 NOT_APPLICABLE; 1 Blocker and 4 High findings remain open |
+| Workspace deletion lifecycle | `PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED` | auditable request/execute/verify path revokes Workspace access and redacts mutable customer references; retained evidence exceptions remain immutable |
+| Workspace retention lifecycle | `PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED` | managed 7/30/90-day policies and bounded private/on-prem days are machine-defined; enforcement is offline and not deployed |
+| Security engineering control mapping | `FAIL_CLOSED` | 20 controls mapped: 16 PASS, 1 PARTIAL, 1 FAIL_RETAINED, 1 NOT_ASSESSED, 1 NOT_APPLICABLE; 1 Blocker and 2 High findings remain open |
 | Commercial availability | `FAIL_CLOSED_NOT_AVAILABLE` | paid Monitor, customer Enforce, deployment, customer, payment and Production remain false |
 
 `PASS` above applies only to the source-pinned reference scope. Receipt

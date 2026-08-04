@@ -1,13 +1,13 @@
 {
   "contract_format": "TITMAS-D29-REFERENCE-IMPLEMENTATION-PROJECTION-1.0",
   "projection_id": "TITMAS-D29-CURRENT-REFERENCE-IMPLEMENTATION-v1",
-  "observed_at": "2026-08-04T09:04:19+08:00",
+  "observed_at": "2026-08-04T10:15:31+08:00",
   "source": {
     "repository": "joy7758/titmas-sandbox-gateway",
     "branch": "main",
-    "revision": "5549259a733ce5c7520d85b26936a98fd7317a3b",
+    "revision": "ddbbb724b6a74eca81cf96773bbc9a6a772ae814",
     "source_status": "MERGED_ON_CANONICAL_MAIN",
-    "pull_requests": [44, 45, 46, 48, 49, 51, 52, 53, 54]
+    "pull_requests": [44, 45, 46, 48, 49, 51, 52, 53, 54, 55]
   },
   "capabilities": {
     "postgres_application_wiring": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
@@ -18,13 +18,15 @@
     "durable_receipt_read_projection": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
     "durable_audit_export_projection": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_COMPLETE_DECLARED_WORKSPACE_SCOPE_NOT_DEPLOYED",
     "durable_health_projection": "IMPLEMENTED_REFERENCE_AUDIT_COMPLETE_FOR_DECLARED_WORKSPACE_SCOPE_NOT_DEPLOYED",
-    "durable_credential_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED"
+    "durable_credential_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
+    "workspace_deletion_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
+    "workspace_retention_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED"
   },
   "validation": {
     "clean_clone": "PASS_FOR_CE1_CE5_AT_PREDECESSOR_REVISION",
     "clean_clone_evidence_revision": "c02926397563940feeba54b1efbe8d62e406e0e8",
     "ce6_exact_head_ci": "PASS",
-    "full_test_count": 377,
+    "full_test_count": 386,
     "expected_environment_gated_skip_count": 4,
     "ruff": "PASS",
     "mypy": "PASS",
@@ -41,7 +43,8 @@
       "D29-CE6-DURABLE-EVIDENCE-READ-PROJECTIONS-REPORT-v1.0.md",
       "D29-SECURITY-ENGINEERING-GATE-STATUS-v1.0.md",
       "D29-DURABLE-CREDENTIAL-LIFECYCLE-REPORT-v1.0.md",
-      "D29-CE7-COMPLETE-WORKSPACE-AUDIT-EXPORT-REPORT-v1.0.md"
+      "D29-CE7-COMPLETE-WORKSPACE-AUDIT-EXPORT-REPORT-v1.0.md",
+      "D29-DATA-LIFECYCLE-REPORT-v1.0.md"
     ],
     "pull_request_51_exact_head": "df6a10a38dfc9f4e7e39775c24410f201432914b",
     "pull_request_51_merge_commit": "569dd5506e0030dec9d942846aee50aa92113fd5",
@@ -72,24 +75,33 @@
     "workspace_audit_postgres_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30867397403/job/91862129272",
     "workspace_audit_supply_chain_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30867397404/job/91862128942",
     "main_merge_quality_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30867503656",
-    "main_merge_supply_chain_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30867503650"
+    "main_merge_supply_chain_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30867503650",
+    "pull_request_55_exact_head": "539e98c6f3f5310f6a9a625369e37feaa0577ed1",
+    "pull_request_55_merge_commit": "ddbbb724b6a74eca81cf96773bbc9a6a772ae814",
+    "pull_request_55_url": "https://github.com/joy7758/titmas-sandbox-gateway/pull/55",
+    "data_lifecycle_quality_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30870617926",
+    "data_lifecycle_supply_chain_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30870617933",
+    "data_lifecycle_main_quality_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30870769658",
+    "data_lifecycle_main_supply_chain_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30870769625"
   },
   "security_engineering_gate": {
     "status": "FAIL_CLOSED",
     "control_count": 20,
-    "pass": 14,
+    "pass": 16,
     "partial": 1,
     "fail_retained": 1,
-    "not_assessed": 3,
+    "not_assessed": 1,
     "not_applicable": 1,
     "blocker_findings_open": 1,
-    "high_findings_open": 4,
+    "high_findings_open": 2,
     "agent_recommendation": "NOT_RECOMMENDED",
     "independent_security_evaluation_executed": false,
     "d04_reopened": false,
     "commercial_effect": "NONE",
     "credential_lifecycle_finding": "RESOLVED_IN_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
-    "workspace_audit_finding": "RESOLVED_IN_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED"
+    "workspace_audit_finding": "RESOLVED_IN_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
+    "workspace_deletion_finding": "RESOLVED_IN_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
+    "workspace_retention_finding": "RESOLVED_IN_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED"
   },
   "measured_synthetic_reference": {
     "scenario_id": "D29-SYNTHETIC-SOFTWARE-DELIVERY-001",

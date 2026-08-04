@@ -664,19 +664,22 @@ and the machine
 ## 18. D29 Customer Entry Reference Implementation Overlay
 
 Observed on 2026-08-04 from the private Gateway canonical `main` after CE-1
-through CE-7 and the bounded credential-lifecycle remediation were merged.
+through CE-7, the bounded credential-lifecycle remediation and the bounded
+Workspace data-lifecycle remediation were merged.
 CE-1 through CE-5 retain their clean-clone evidence;
 CE-6 has exact-head source, quality, PostgreSQL integration and supply-chain CI
 evidence but no deployment. PR #52 then added only a fail-closed security gate
 projection and regression tests; PR #53 then closed only the durable credential
 lifecycle High finding through offline source and ephemeral PostgreSQL CI. PR
-#54 then closed the bounded Workspace Audit High finding without adding a
-schema, migration, Runtime or deployment:
+#54 then closed the bounded Workspace Audit High finding. PR #55 subsequently
+closed the bounded Workspace deletion and retention High findings in source
+and ephemeral PostgreSQL CI without adding a schema, migration, API, service,
+Runtime or deployment:
 
 ```text
 D29_IMPLEMENTATION_SOURCE_REPOSITORY=joy7758/titmas-sandbox-gateway
 D29_IMPLEMENTATION_SOURCE_BRANCH=main
-D29_IMPLEMENTATION_SOURCE_REVISION=5549259a733ce5c7520d85b26936a98fd7317a3b
+D29_IMPLEMENTATION_SOURCE_REVISION=ddbbb724b6a74eca81cf96773bbc9a6a772ae814
 D29_IMPLEMENTATION_SOURCE_STATUS=MERGED_ON_CANONICAL_MAIN
 D29_POSTGRES_APPLICATION_WIRING=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
 D29_SYNTHETIC_OBSERVER_FIRST_VALUE=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
@@ -695,16 +698,19 @@ D29_CE6_EXACT_HEAD_CI=PASS
 D29_GATEWAY_PR52_CI=PASS
 D29_GATEWAY_PR53_CI=PASS
 D29_GATEWAY_PR54_CI=PASS
+D29_GATEWAY_PR55_CI=PASS
 D29_DURABLE_CREDENTIAL_LIFECYCLE=PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED
+D29_WORKSPACE_DELETION_LIFECYCLE=PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED
+D29_WORKSPACE_RETENTION_LIFECYCLE=PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED
 D29_SECURITY_ENGINEERING_GATE=FAIL_CLOSED
-D29_SECURITY_CONTROLS_PASS=14
+D29_SECURITY_CONTROLS_PASS=16
 D29_SECURITY_CONTROLS_PARTIAL=1
 D29_SECURITY_CONTROLS_FAIL_RETAINED=1
-D29_SECURITY_CONTROLS_NOT_ASSESSED=3
+D29_SECURITY_CONTROLS_NOT_ASSESSED=1
 D29_SECURITY_CONTROLS_NOT_APPLICABLE=1
 D29_SECURITY_BLOCKERS_OPEN=1
-D29_SECURITY_HIGH_FINDINGS_OPEN=4
-D29_SOURCE_FULL_TESTS=377
+D29_SECURITY_HIGH_FINDINGS_OPEN=2
+D29_SOURCE_FULL_TESTS=386
 D29_SOURCE_EXPECTED_ENVIRONMENT_GATED_SKIPS=4
 D29_REFERENCE_IMPLEMENTATION_DEPLOYED=false
 COMMERCIAL_OFFERING_AVAILABLE=false
@@ -736,10 +742,17 @@ D04 remains `CLOSED_FAILED_RETAINED`, P0-10 Agent-first acceptance remains
 false, and the existing commercial readiness, legal, security, business,
 deployment, pricing, support and external-validation gates remain separate.
 The later security projection explicitly fails closed with one Blocker and
-four High findings open after the durable credential-lifecycle and bounded
-Workspace Audit High findings were closed in source and ephemeral PostgreSQL
-CI. These bounded remediations are not an independent evaluation, commercial
-readiness or launch authorization.
+two High findings open after the durable credential-lifecycle, bounded
+Workspace Audit, deletion and retention High findings were closed in source
+and ephemeral PostgreSQL CI. Deletion request, execution and verification use
+distinct auditable roles, revoke Workspace access and redact mutable customer
+references while retaining Gate Decision, signed Receipt, Audit-chain,
+usage/billing-preview and security-event records as declared integrity,
+legal or security exceptions. Raw customer content is not stored. These
+bounded remediations are not deployed, independently evaluated, commercially
+available or a launch authorization.
+Exact PR #55 and post-merge CI references are retained in
+[`D29-DATA-LIFECYCLE-COCKPIT-SYNC-REPORT-v1.0.md`](D29-DATA-LIFECYCLE-COCKPIT-SYNC-REPORT-v1.0.md).
 This overlay corrects a stale `NOT_ASSESSED` implementation projection; it does
 not rewrite the architecture-only C-01 freeze or any prior failure.
 
