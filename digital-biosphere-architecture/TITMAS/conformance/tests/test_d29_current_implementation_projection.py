@@ -23,6 +23,7 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
         cls.repositories = load("commercial/discovery/canonical-repositories.json")
         cls.program = load("commercial-program-state.json")
         cls.readiness = load("commercial-readiness.json")
+        cls.machine_readiness = load("COMMERCIAL-READINESS-MACHINE-STATUS.json")
         cls.agent_index = load("agent-index.json")
 
     def test_source_is_exact_canonical_gateway_main(self):
@@ -105,6 +106,9 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
             "FAIL_CLOSED_ONE_BLOCKER_TWO_HIGH",
             self.status["security_engineering_gate"],
         )
+        blockers = self.machine_readiness["commercial_blockers"]
+        self.assertIn("HIGH_SECURITY_FINDINGS_OPEN_2", blockers)
+        self.assertNotIn("HIGH_SECURITY_FINDINGS_OPEN_4", blockers)
 
     def test_workspace_data_lifecycle_is_source_only_and_not_deployed(self):
         capabilities = self.projection["capabilities"]
