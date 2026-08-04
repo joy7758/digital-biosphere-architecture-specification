@@ -228,6 +228,41 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
             self.readiness["technical_gates"]["d29_security_drill_readiness"],
         )
 
+    def test_agent_only_security_advisory_does_not_become_formal_audit(self):
+        advisory = load(
+            "commercial/security-evaluation/"
+            "D29-AGENT-ONLY-ADVISORY-EVALUATION-v1.0.json"
+        )
+        self.assertEqual(
+            "AGENT_ONLY_ADVISORY_COMPLETE_WITH_CALL_FAILURES", advisory["status"]
+        )
+        self.assertEqual(3, advisory["structured_consensus"]["eligible_response_count"])
+        self.assertEqual(
+            "NOT_RECOMMENDED", advisory["structured_consensus"]["recommendation"]
+        )
+        self.assertEqual(
+            "FAIL_CLOSED", advisory["structured_consensus"]["security_gate"]
+        )
+        self.assertFalse(
+            advisory["structured_consensus"]["paid_monitor_pilot_recommended_now"]
+        )
+        self.assertEqual(0, advisory["structured_consensus"]["security_findings_closed"])
+        self.assertFalse(advisory["authority"]["formal_independent_security_audit"])
+        self.assertEqual(
+            "READY_TO_INVITE_NOT_EXECUTED",
+            advisory["retained_boundaries"]["independent_security_evaluation"],
+        )
+        self.assertFalse(advisory["retained_boundaries"]["paid_monitor_pilot_available"])
+        surface = self.agent_index["machine_surfaces"][
+            "commercial_d29_agent_only_security_advisory"
+        ]
+        self.assertEqual(
+            "commercial/security-evaluation/"
+            "D29-AGENT-ONLY-ADVISORY-EVALUATION-v1.0.json",
+            surface,
+        )
+        self.assertTrue((ROOT / surface).is_file())
+
     def test_agent_entry_exposes_one_projection_without_copying_child_truth(self):
         surface = self.agent_index["machine_surfaces"]["commercial_d29_reference_implementation"]
         self.assertEqual("commercial/discovery/d29-reference-implementation.json", surface)
