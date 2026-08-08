@@ -835,6 +835,13 @@ D29_MULTI_AGENT_VALID_MODEL_FAMILIES=5
 D29_MULTI_AGENT_VALID_ENTRY_SURFACES=3
 D29_MULTI_AGENT_VALIDATION=PASS_WITH_LIMITATIONS_PREDEPLOYMENT
 D29_LIVE_PUBLIC_COMMERCIAL_DISCOVERY=FAIL_404_RETAINED
+D29_CURRENT_DIRECT_CATALOG_REACHABILITY=PASS_7_OF_7
+D29_CURRENT_CATALOG_SOURCE_BYTE_IDENTITY=PASS_6_OF_7
+D29_CURRENT_REQUIRED_COMMERCIAL_PAGES=PASS_10_OF_10
+D29_CURRENT_PRODUCT_DETAIL_PAGES=PASS_4_OF_4
+D29_CURRENT_COLLECTION_PAGES=FAIL_0_OF_4
+D29_CURRENT_LIVE_STATUS_JSON=FAIL_STALE_SOURCE_MISMATCH
+D29_CURRENT_PUBLIC_SURFACE=FAIL_CLOSED_PARTIAL_DEPLOYMENT_MACHINE_STATUS_INCONSISTENT
 COMMERCIAL_MODEL_COMPLETE=false
 COMMERCIAL_PRIVATE_PILOT_READY=false
 PAID_MONITOR_PILOT_AVAILABLE=false
@@ -847,8 +854,17 @@ The one security Blocker is the retained CR-01 restore integrity failure:
 cannot be verified because their random public keys were not retained. D04
 remains closed failed-retained and is not reopened by D29. Human decisions are
 still required for business and invoice evidence, support and security owners,
-cost and pricing, Chinese counsel, Blocker/High security disposition, website
-deployment and a customer-specific Monitor SOW.
+cost and pricing, Chinese counsel, Blocker/High security disposition, bounded
+public status/collection-route correction and a customer-specific Monitor SOW.
+
+The earlier multi-Agent validation failure remains historical evidence. A
+2026-08-08 direct known-URL recheck found seven catalog routes and fourteen
+bounded Human routes reachable. Six catalogs match the current source bytes,
+but live `/status.json` remains stale and source-inconsistent and four
+collection routes do not return HTTP 200. This is a fail-closed partial public
+deployment observation, not open-web discovery, commercial availability or a
+launch authorization. See
+[`D29 Live Public Surface Reverification`](commercial/validation/D29-LIVE-PUBLIC-SURFACE-REVERIFICATION-v1.md).
 
 Machine and Human entries are
 [`COMMERCIAL-READINESS-MACHINE-STATUS.json`](COMMERCIAL-READINESS-MACHINE-STATUS.json),
