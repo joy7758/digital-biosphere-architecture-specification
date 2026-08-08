@@ -124,7 +124,61 @@ class D29CommercialReadinessEvidenceTests(unittest.TestCase):
         self.assertFalse(status["paid_monitor_pilot_available"])
         self.assertFalse(status["production_ready"])
         self.assertEqual(status["non_claims"]["customers_verified"], 0)
-        self.assertIn("LIVE_COMMERCIAL_ROUTES_NOT_DEPLOYED", status["commercial_blockers"])
+        self.assertNotIn("LIVE_COMMERCIAL_ROUTES_NOT_DEPLOYED", status["commercial_blockers"])
+        self.assertIn("LIVE_PUBLIC_MACHINE_STATUS_INCONSISTENT", status["commercial_blockers"])
+        self.assertIn("LIVE_PUBLIC_COLLECTION_ROUTES_INCOMPLETE", status["commercial_blockers"])
+        website = status["website_status"]
+        self.assertEqual(7, website["catalog_routes_http_200"])
+        self.assertEqual(6, website["catalog_routes_source_byte_identical"])
+        self.assertFalse(website["live_status_json_source_match"])
+        self.assertTrue(website["historical_live_discovery_failure_retained"])
+
+    def test_live_public_surface_reverification_fails_closed(self):
+        observation = load(
+            ROOT
+            / "commercial"
+            / "validation"
+            / "D29-LIVE-PUBLIC-SURFACE-REVERIFICATION-v1.json"
+        )
+        self.assertEqual(
+            "FAIL_CLOSED_PARTIAL_DEPLOYMENT_MACHINE_STATUS_INCONSISTENT",
+            observation["result"],
+        )
+        self.assertEqual(7, len(observation["catalog_routes"]))
+        self.assertEqual(
+            6,
+            sum(item["byte_identical"] for item in observation["catalog_routes"]),
+        )
+        status_route = next(
+            item
+            for item in observation["catalog_routes"]
+            if item["path"] == "/status.json"
+        )
+        self.assertFalse(status_route["byte_identical"])
+        human_routes = observation["human_routes"]
+        self.assertEqual(
+            human_routes["required_commercial_routes_checked"],
+            len(human_routes["required_commercial_route_results"]),
+        )
+        self.assertEqual(
+            human_routes["product_detail_routes_checked"],
+            len(human_routes["product_detail_route_results"]),
+        )
+        self.assertEqual(
+            human_routes["collection_routes_checked"],
+            len(human_routes["collection_route_results"]),
+        )
+        self.assertFalse(
+            observation["boundaries"][
+                "direct_known_url_reachability_is_open_web_discovery"
+            ]
+        )
+        self.assertFalse(
+            observation["boundaries"]["http_200_is_commercial_availability"]
+        )
+        self.assertFalse(
+            observation["historical_d29_validation"]["rewritten"]
+        )
 
     def test_session_artifacts_do_not_contain_credentials(self):
         forbidden = ("DASHSCOPE_API_KEY", "QIANFAN_API_KEY", "GEMINI_API_KEY", "ARK_API_KEY", "DEEPSEEK_API_KEY", "Bearer ")

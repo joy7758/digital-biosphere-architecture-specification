@@ -5,7 +5,7 @@
   "current_phase": "D29_CUSTOMER_ENTRY_REFERENCE_IMPLEMENTATION",
   "phase_status": "IN_PROGRESS",
   "started_at": "2026-07-30T19:04:07+08:00",
-  "last_updated_at": "2026-08-04T11:55:07+08:00",
+  "last_updated_at": "2026-08-08T23:27:26+08:00",
   "source_commits": {
     "governance": "8b01bb8988c9180392ac2b06a39e2541fc98b260",
     "data_plane": "e200ea0f00d9d948c3b6dbf7058e08489dea1ccd",
@@ -57,7 +57,8 @@
     "D29_WORKSPACE_AUDIT_EXPORT_REFERENCE_COMPLETE",
     "D29_WORKSPACE_DATA_LIFECYCLE_REFERENCE_COMPLETE",
     "D29_SECURITY_DRILL_READINESS_PACKET_COMPLETE",
-    "D29_AGENT_ONLY_SECURITY_ADVISORY_COMPLETE_WITH_FAILURES"
+    "D29_AGENT_ONLY_SECURITY_ADVISORY_COMPLETE_WITH_FAILURES",
+    "D29_LIVE_PUBLIC_SURFACE_REVERIFIED_FAIL_CLOSED"
   ],
   "gate_descriptions": {
     "STAGE_5_8_SOURCE_IDENTITY_VERIFIED": "The canonical source commit was confirmed; Stage 5.8 did not pass.",
@@ -98,7 +99,8 @@
     "D29_WORKSPACE_AUDIT_EXPORT_REFERENCE_COMPLETE": "Gateway PR #54 merged at 5549259a733ce5c7520d85b26936a98fd7317a3b. Source and ephemeral PostgreSQL CI passed the complete declared Workspace-scope export and Audit tamper control; canonical Tenant event content remains intentionally incomplete, external anchoring is absent, and no deployment was created.",
     "D29_WORKSPACE_DATA_LIFECYCLE_REFERENCE_COMPLETE": "Gateway PR #55 merged at ddbbb724b6a74eca81cf96773bbc9a6a772ae814. Source and ephemeral PostgreSQL CI passed bounded Workspace deletion and retention lifecycle controls. The path revokes Workspace access, redacts mutable customer references, retains declared immutable evidence exceptions, stores no raw customer content, and creates no customer self-service, schema, migration, API, service or deployment.",
     "D29_SECURITY_DRILL_READINESS_PACKET_COMPLETE": "Gateway PR #56 merged at e200ea0f00d9d948c3b6dbf7058e08489dea1ccd. It adds only a bounded incident and rollback drill readiness contract, Human decision packet and regression tests. No drill, deployment, restart or finding closure occurred; the security gate remains FAIL_CLOSED with one Blocker and two High findings.",
-    "D29_AGENT_ONLY_SECURITY_ADVISORY_COMPLETE_WITH_FAILURES": "A sanitized Agent-only review attempted nine calls across five Providers. Three Schema-valid reviews from Qwen, ERNIE and DeepSeek agreed on NOT_RECOMMENDED and FAIL_CLOSED; one Kimi response was Schema-invalid and five call failures were retained. This is not a formal independent security audit and closes no finding."
+    "D29_AGENT_ONLY_SECURITY_ADVISORY_COMPLETE_WITH_FAILURES": "A sanitized Agent-only review attempted nine calls across five Providers. Three Schema-valid reviews from Qwen, ERNIE and DeepSeek agreed on NOT_RECOMMENDED and FAIL_CLOSED; one Kimi response was Schema-invalid and five call failures were retained. This is not a formal independent security audit and closes no finding.",
+    "D29_LIVE_PUBLIC_SURFACE_REVERIFIED_FAIL_CLOSED": "On 2026-08-08, seven catalog routes and fourteen bounded Human routes were reachable. Six catalogs were byte-identical to current DBA source, while /status.json remained stale and source-inconsistent and four collection routes were unavailable. Historical Agent discovery failure remains retained; no deployment or commercial availability was created."
   },
   "blocked_gates": [
     "CR01_LEDGER_INTEGRITY_FAILED_RETAINED",
@@ -113,7 +115,7 @@
     "D29_PRICING_NOT_HUMAN_APPROVED",
     "D29_CONTRACTS_NOT_COUNSEL_APPROVED",
     "D29_SUPPORT_AND_SECURITY_OWNERS_UNASSIGNED"
-    ,"D29_LIVE_PUBLIC_COMMERCIAL_DISCOVERY_404_RETAINED"
+    ,"D29_LIVE_PUBLIC_MACHINE_STATUS_INCONSISTENT_AND_OPEN_WEB_DISCOVERY_NOT_PROVEN"
     ,"D29_INDEPENDENT_SECURITY_EVALUATION_NOT_EXECUTED"
     ,"D29_SECURITY_GATE_FAIL_CLOSED_ONE_BLOCKER_TWO_HIGH"
   ],
@@ -155,6 +157,7 @@
     "LEGACY_LEDGER_INTERNAL_EXPERIMENTAL_ONLY",
     "FUTURE_PRODUCTION_LEDGER_DEFERRED_UNTIL_PAID_BETA",
     "D29_REFERENCE_IMPLEMENTATION_NOT_DEPLOYED_OR_COMMERCIALLY_AVAILABLE",
+    "D29_LIVE_STATUS_JSON_STALE_AND_COLLECTION_ROUTES_INCOMPLETE",
     "LIVE_API_READINESS_RESTORE_FLAG_STALE_D03_CORRECTION_REQUIRED",
     "EXISTING_NON_EXPORTABLE_ED25519_SIGNER_NOT_CONFIRMED",
     "NO_EXTERNAL_AGENT_BETA_EVIDENCE",
