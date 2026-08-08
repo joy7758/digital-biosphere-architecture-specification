@@ -842,6 +842,11 @@ D29_CURRENT_PRODUCT_DETAIL_PAGES=PASS_4_OF_4
 D29_CURRENT_COLLECTION_PAGES=FAIL_0_OF_4
 D29_CURRENT_LIVE_STATUS_JSON=FAIL_STALE_SOURCE_MISMATCH
 D29_CURRENT_PUBLIC_SURFACE=FAIL_CLOSED_PARTIAL_DEPLOYMENT_MACHINE_STATUS_INCONSISTENT
+D29_WEBSITE_SOURCE_CORRECTION_MERGED=true
+D29_WEBSITE_SOURCE_CORRECTION_MERGE_COMMIT=92a33698899153aed424cd7b756e0accca56b6be
+D29_WEBSITE_SOURCE_BILINGUAL_COLLECTION_ROUTES=8
+D29_WEBSITE_SOURCE_E01_STATUS=EXPIRED_ACCESS_REVOKED_NO_CONTRIBUTION_OBSERVED
+D29_WEBSITE_SOURCE_DEPLOYED=false
 COMMERCIAL_MODEL_COMPLETE=false
 COMMERCIAL_PRIVATE_PILOT_READY=false
 PAID_MONITOR_PILOT_AVAILABLE=false
@@ -865,6 +870,13 @@ collection routes do not return HTTP 200. This is a fail-closed partial public
 deployment observation, not open-web discovery, commercial availability or a
 launch authorization. See
 [`D29 Live Public Surface Reverification`](commercial/validation/D29-LIVE-PUBLIC-SURFACE-REVERIFICATION-v1.md).
+
+DBA PR #138 subsequently merged the bounded website source correction at
+`92a33698899153aed424cd7b756e0accca56b6be`. The source now defines the four
+bilingual collection entries and records E01 as expired with access revoked,
+while retaining `Human Disposition=NOT_RECORDED`. The corrected source has not
+been deployed; the live mismatch and deployment decision therefore remain
+open blockers.
 
 Machine and Human entries are
 [`COMMERCIAL-READINESS-MACHINE-STATUS.json`](COMMERCIAL-READINESS-MACHINE-STATUS.json),

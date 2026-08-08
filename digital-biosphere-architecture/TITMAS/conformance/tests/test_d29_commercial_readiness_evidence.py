@@ -128,6 +128,13 @@ class D29CommercialReadinessEvidenceTests(unittest.TestCase):
         self.assertIn("LIVE_PUBLIC_MACHINE_STATUS_INCONSISTENT", status["commercial_blockers"])
         self.assertIn("LIVE_PUBLIC_COLLECTION_ROUTES_INCOMPLETE", status["commercial_blockers"])
         website = status["website_status"]
+        self.assertTrue(website["website_source_correction_merged"])
+        self.assertEqual(
+            "92a33698899153aed424cd7b756e0accca56b6be",
+            website["website_source_correction_merge_commit"],
+        )
+        self.assertEqual(8, website["source_bilingual_collection_routes_defined"])
+        self.assertFalse(website["live_deployment_matches_corrected_source"])
         self.assertEqual(7, website["catalog_routes_http_200"])
         self.assertEqual(6, website["catalog_routes_source_byte_identical"])
         self.assertFalse(website["live_status_json_source_match"])
