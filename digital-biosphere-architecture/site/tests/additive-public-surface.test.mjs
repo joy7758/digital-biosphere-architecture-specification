@@ -4,6 +4,14 @@ import test from "node:test";
 const restoredRoutes = [
   "/research",
   "/en/research",
+  "/platform",
+  "/en/platform",
+  "/products",
+  "/en/products",
+  "/solutions",
+  "/en/solutions",
+  "/proof",
+  "/en/proof",
   "/research/index",
   "/en/research/index",
   "/applications",
@@ -95,7 +103,7 @@ test("keeps historical status surfaces while promoting the commercial mainline",
   assert.match(home, /AVAILABLE OFFERINGS/);
   assert.match(status, /TITMAS 商业基础设施成熟度计划进行中/);
   assert.match(status, /Stage 5\.7 结果/);
-  assert.match(status, /IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION/);
+  assert.match(status, /EXPIRED_ACCESS_REVOKED_NO_CONTRIBUTION_OBSERVED/);
   assert.match(community, /HISTORICAL_NON_CURRENT/);
   assert.match(community, /社区从未建立/);
 });
@@ -104,5 +112,25 @@ test("does not restore private-core or deprecated product routes", async () => {
   for (const route of ["/products/agent-immune", "/en/products/agent-immune"]) {
     const response = await render(route);
     assert.equal(response.status, 404);
+  }
+});
+
+test("adds bounded commercial collection routes without promoting availability", async () => {
+  const expected = new Map([
+    ["/platform", "TITMAS_PLATFORM_COLLECTION"],
+    ["/products", "TITMAS_PRODUCTS_COLLECTION"],
+    ["/solutions", "TITMAS_SOLUTIONS_COLLECTION"],
+    ["/proof", "TITMAS_PROOF_COLLECTION"],
+  ]);
+  for (const [route, marker] of expected) {
+    for (const path of [route, `/en${route}`]) {
+      const response = await render(path);
+      assert.equal(response.status, 200);
+      const html = await response.text();
+      assert.match(html, new RegExp(marker));
+      assert.match(html, /AVAILABLE_OFFERINGS=0/);
+      assert.match(html, /PRODUCTION_READY=false/);
+      assert.match(html, /Verification ≠ Authorization/);
+    }
   }
 });

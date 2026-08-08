@@ -56,12 +56,12 @@ export function StatusPage({ locale }: { locale: Locale }) {
             title: "历史人类兼容性观察",
             rows: [
               ["E01_CLASSIFICATION", "LEGACY_OPTIONAL"],
-              ["E01_STATUS", "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION"],
+              ["E01_STATUS", "EXPIRED_ACCESS_REVOKED_NO_CONTRIBUTION_OBSERVED"],
               ["E01_IS_PROGRAM_GATE", "false"],
               ["E01_EXTENSION_AUTHORIZED", "false"],
               ["COMPENSATED_HUMAN_TRIAL_STRATEGY", "RETIRED"],
             ],
-            note: "E01 历史事实保留；现有最小访问不延长，不催促参与者，也不阻塞 Agent 原生主线。",
+            note: "E01 已到期且仓库访问已撤销；未观察到参与者 Fork、PR 或反馈，Human Disposition 仍未记录。该历史观察不阻塞 Agent 原生主线。",
           },
           {
             title: "尚未完成",
@@ -128,12 +128,12 @@ export function StatusPage({ locale }: { locale: Locale }) {
             title: "Historical human compatibility observation",
             rows: [
               ["E01_CLASSIFICATION", "LEGACY_OPTIONAL"],
-              ["E01_STATUS", "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION"],
+              ["E01_STATUS", "EXPIRED_ACCESS_REVOKED_NO_CONTRIBUTION_OBSERVED"],
               ["E01_IS_PROGRAM_GATE", "false"],
               ["E01_EXTENSION_AUTHORIZED", "false"],
               ["COMPENSATED_HUMAN_TRIAL_STRATEGY", "RETIRED"],
             ],
-            note: "E01 history is retained. Existing minimal access will not be extended or chased, and it does not block the agent-native mainline.",
+            note: "E01 expired and repository access was revoked. No participant Fork, PR, or feedback was observed, and Human Disposition remains unrecorded. This historical observation does not block the agent-native mainline.",
           },
           {
             title: "Not completed",

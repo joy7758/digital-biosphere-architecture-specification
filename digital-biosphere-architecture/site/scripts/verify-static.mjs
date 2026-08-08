@@ -9,6 +9,14 @@ const outputRoot = join(siteRoot, "out");
 const requiredFiles = [
   "index.html",
   "en/index.html",
+  "platform/index.html",
+  "en/platform/index.html",
+  "products/index.html",
+  "en/products/index.html",
+  "solutions/index.html",
+  "en/solutions/index.html",
+  "proof/index.html",
+  "en/proof/index.html",
   "products/gate/index.html",
   "en/products/gate/index.html",
   "products/receipt/index.html",
@@ -218,8 +226,10 @@ assert.equal(status.gates.TITMAS_TECHNICAL_VALIDATION_DESIGN_COMPLETE, true);
 assert.equal(status.gates.TITMAS_PILOT_EXECUTION_AUTHORIZED, false);
 assert.equal(status.gates.COMPLETE_VERTICAL_SLICE_EXECUTED, false);
 assert.equal(status.current_stage, "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM");
-assert.equal(status.e01_status, "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION");
-assert.equal(status.e01_participant_access_authorized, true);
+assert.equal(status.e01_status, "EXPIRED_ACCESS_REVOKED_NO_CONTRIBUTION_OBSERVED");
+assert.equal(status.e01_participant_access_authorized, false);
+assert.equal(status.e01_participant_access_active, false);
+assert.equal(status.e01_access_mode, "NONE");
 assert.equal(status.e01_core_repository_access, false);
 assert.equal(status.new_external_participant_invitation_authorized, false);
 assert.equal(status.public_protocol_released, false);
@@ -245,7 +255,7 @@ assert.equal(release.release_decision_reference, releaseContext.releaseDecisionR
 assert.equal(release.released_by_ref, releaseContext.releasedByRef);
 assert.equal(release.public_release_tag, releaseContext.publicReleaseTag);
 assert.equal(release.dbos_public_package_url, releaseContext.dbosWheelUrl);
-assert.equal(release.routes.length, 64);
+assert.equal(release.routes.length, 72);
 assert.ok(manifest.files.length >= 80);
 assert.equal(manifest.source_revision, release.source_revision);
 

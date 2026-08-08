@@ -65,12 +65,36 @@ test("MT-00 public brand stays distinct from the TITMAS technical identifier", (
   assert.doesNotMatch(enHome, /\/summersea-logo\.png/);
 });
 
+test("MT-00A commercial collection entries are Agent-readable and bilingual", () => {
+  const expected = {
+    platform_collection_zh: "/platform/",
+    platform_collection_en: "/en/platform/",
+    products_collection_zh: "/products/",
+    products_collection_en: "/en/products/",
+    solutions_collection_zh: "/solutions/",
+    solutions_collection_en: "/en/solutions/",
+    proof_collection_zh: "/proof/",
+    proof_collection_en: "/en/proof/",
+  };
+  for (const [key, value] of Object.entries(expected)) {
+    assert.equal(agentIndex.entrypoints[key], value);
+    assert.match(llms, new RegExp(`${key.toUpperCase()}=${value.replaceAll("/", "\\/")}`));
+  }
+});
+
 test("MT-02 E01 status agrees", () => {
-  const expected = "IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION";
+  const expected = "EXPIRED_ACCESS_REVOKED_NO_CONTRIBUTION_OBSERVED";
   assertJsonTruth("e01_status", expected);
   assert.match(llms, new RegExp(`E01_STATUS=${expected}`));
   assert.match(zhStatus, new RegExp(expected));
   assert.match(enStatus, new RegExp(expected));
+  assertJsonTruth("e01_participant_access_authorized", false);
+  assertJsonTruth("e01_participant_access_active", false);
+  assert.equal(status.e01_access_mode, "NONE");
+  assert.equal(agentIndex.e01_access_mode, "NONE");
+  assert.equal(customerPackage.current_truth.e01_access_mode, "NONE");
+  assert.match(llms, /E01_PARTICIPANT_ACCESS_ACTIVE=false/);
+  assert.match(llms, /E01_HUMAN_DISPOSITION=NOT_RECORDED/);
 });
 
 test("MT-03 private core status agrees", () => {
