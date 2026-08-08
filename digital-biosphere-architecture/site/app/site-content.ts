@@ -197,7 +197,7 @@ export const content = {
     progressStates: [
       ["Stage 5 Private Agent Preview", "COMPLETE", "私有 Agent Preview 基础设施已完成。"],
       ["Stage 5.7 Agent-Native Selection & ROI", "COMPLETE", "24 个隔离会话和独立审计均已记录。"],
-      ["E01 Human Compatibility Observation", "LEGACY", "现有最小访问不延长；不再是项目门槛。"],
+      ["E01 Human Compatibility Observation", "LEGACY", "试用已到期、访问已撤销；Human Disposition 未记录，不再是项目门槛。"],
       ["Public Trial Interest Intake", "OPEN", "公开接收非保密、非约束性试用意向。"],
     ],
     communityTitle: "历史开发者社区设计资料",
@@ -416,7 +416,7 @@ export const content = {
     progressStates: [
       ["Stage 5 Private Agent Preview", "COMPLETE", "Private Agent Preview infrastructure is complete."],
       ["Stage 5.7 Agent-Native Selection & ROI", "COMPLETE", "Twenty-four isolated sessions and the independent audit are recorded."],
-      ["E01 Human Compatibility Observation", "LEGACY", "Existing minimal access will not be extended; it is no longer a program gate."],
+      ["E01 Human Compatibility Observation", "LEGACY", "The trial expired and access was revoked. Human Disposition is unrecorded; it is no longer a program gate."],
       ["Public Trial Interest Intake", "OPEN", "Open for non-confidential, non-binding interest."],
     ],
     communityTitle: "Historical developer-community design material",

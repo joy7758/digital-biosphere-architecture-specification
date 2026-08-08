@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import copy
+import hashlib
 import json
 import re
 import subprocess
@@ -9,10 +10,32 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
+WEBSITE_ALLOWLIST = ROOT / "commercial/implementation/D29-WEBSITE-SOURCE-CORRECTION-ALLOWLIST-v1.json"
 
 
 def load(relative: str):
     return json.loads((ROOT / relative).read_text(encoding="utf-8"))
+
+
+def approved_website_paths():
+    if not WEBSITE_ALLOWLIST.is_file():
+        return set()
+    manifest = json.loads(WEBSITE_ALLOWLIST.read_text(encoding="utf-8"))
+    if manifest.get("decision_reference") != "TITMAS-CHINA-COMMERCIAL-PRIVATE-PLATFORM-AND-PAID-PILOT-D29":
+        return set()
+    if manifest.get("deployment_authorized") is not False:
+        return set()
+    approved = set()
+    for item in manifest.get("files", []):
+        relative = item.get("path", "")
+        source = ROOT / relative
+        if not relative.startswith("site/") or not source.is_file():
+            return set()
+        digest = hashlib.sha256(source.read_bytes()).hexdigest()
+        if digest != item.get("sha256"):
+            return set()
+        approved.add(f"digital-biosphere-architecture/{relative}")
+    return approved
 
 
 def validate_schema(schema, value, path="$"):
@@ -145,6 +168,7 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/site/app/site-content.ts",
         "digital-biosphere-architecture/site/public/llms.txt",
     }
+    approved_website = approved_website_paths()
     for raw in paths:
         path = Path(raw)
         parts = set(path.parts)
@@ -159,13 +183,14 @@ def forbidden_change_reason(paths):
             and "site" in parts
             and not frozen_validation_source
             and raw not in allowed_exact
+            and raw not in approved_website
         ):
             return "WEBSITE_IMPLEMENTATION_CHANGED"
         if parts & forbidden_parts:
             return "CORE_RUNTIME_OR_DATABASE_CHANGED"
         allowed_contract = raw.startswith("digital-biosphere-architecture/commercial/") and raw.endswith((".json", ".md"))
         allowed_commercial_doc = raw.startswith("digital-biosphere-architecture/docs/commercial/") and raw.endswith(".md")
-        if raw not in allowed_exact and not allowed_contract and not allowed_commercial_doc:
+        if raw not in allowed_exact and raw not in approved_website and not allowed_contract and not allowed_commercial_doc:
             return "UNAPPROVED_CHANGE_PATH"
     return None
 
@@ -341,6 +366,12 @@ class CommercialC01EntryTests(unittest.TestCase):
         self.assertTrue(required <= set(drift))
         self.assertTrue(all(drift[key] for key in required))
         self.assertIsNone(forbidden_change_reason(current_change_paths()))
+        approved_site_paths = approved_website_paths()
+        changed_site_paths = {
+            path for path in current_change_paths()
+            if path.startswith("digital-biosphere-architecture/site/")
+        }
+        self.assertEqual(approved_site_paths, changed_site_paths)
         # The original C-01 integration changed at least 40 paths, but that
         # historical batch size is not a permanent conformance invariant.
         # Future path-scoped governance updates must still have a visible diff

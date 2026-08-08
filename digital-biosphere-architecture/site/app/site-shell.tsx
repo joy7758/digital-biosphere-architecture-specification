@@ -38,15 +38,18 @@ type SiteSection =
   | "status"
   | "community"
   | "commercial"
-  | "commercialEntry";
+  | "commercialEntry"
+  | "productsCollection"
+  | "solutionsCollection"
+  | "proofCollection";
 
 export function Header({ locale, section = "home", languageHref }: { locale: Locale; section?: SiteSection; languageHref?: string }) {
   const c = content[locale];
   const root = locale === "zh" ? "/" : "/en/";
   const research = locale === "zh" ? "/research/" : "/en/research/";
-  const products = locale === "zh" ? "/products/gate/" : "/en/products/gate/";
-  const monitor = locale === "zh" ? "/monitor-pilot/" : "/en/monitor-pilot/";
-  const proof = locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/";
+  const products = locale === "zh" ? "/products/" : "/en/products/";
+  const solutions = locale === "zh" ? "/solutions/" : "/en/solutions/";
+  const proof = locale === "zh" ? "/proof/" : "/en/proof/";
   const designPartner = locale === "zh" ? "/design-partner/" : "/en/design-partner/";
   const requestAccess = locale === "zh" ? "/request-access/" : "/en/request-access/";
   const languageRoutes: Record<SiteSection, [string, string]> = {
@@ -68,14 +71,17 @@ export function Header({ locale, section = "home", languageHref }: { locale: Loc
     community: ["/en/community/", "/community/"],
     commercial: ["/en/commercial-evaluation/", "/commercial-evaluation/"],
     commercialEntry: ["/en/products/gate/", "/products/gate/"],
+    productsCollection: ["/en/products/", "/products/"],
+    solutionsCollection: ["/en/solutions/", "/solutions/"],
+    proofCollection: ["/en/proof/", "/proof/"],
   };
   const language = languageHref ?? (locale === "zh" ? languageRoutes[section][0] : languageRoutes[section][1]);
 
   const nav = (
     <>
-      <a href={products} aria-current={section === "commercialEntry" ? "page" : undefined}>{locale === "zh" ? "产品" : "Products"}</a>
-      <a href={monitor}>{locale === "zh" ? "解决方案" : "Solutions"}</a>
-      <a href={proof} aria-current={section === "commercial" ? "page" : undefined}>{locale === "zh" ? "效果证明" : "Proof"}</a>
+      <a href={products} aria-current={section === "commercialEntry" || section === "productsCollection" ? "page" : undefined}>{locale === "zh" ? "产品" : "Products"}</a>
+      <a href={solutions} aria-current={section === "solutionsCollection" ? "page" : undefined}>{locale === "zh" ? "解决方案" : "Solutions"}</a>
+      <a href={proof} aria-current={section === "commercial" || section === "proofCollection" ? "page" : undefined}>{locale === "zh" ? "效果证明" : "Proof"}</a>
       <a href={designPartner}>{locale === "zh" ? "设计伙伴" : "Design partners"}</a>
       <a href={research} aria-current={section === "research" || section === "researchIndex" ? "page" : undefined}>{locale === "zh" ? "研究" : "Research"}</a>
       <a href={requestAccess}>{locale === "zh" ? "申请访问" : "Request access"}</a>

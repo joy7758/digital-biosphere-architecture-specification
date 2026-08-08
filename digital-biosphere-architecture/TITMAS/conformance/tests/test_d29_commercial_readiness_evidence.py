@@ -180,6 +180,34 @@ class D29CommercialReadinessEvidenceTests(unittest.TestCase):
             observation["historical_d29_validation"]["rewritten"]
         )
 
+    def test_website_source_correction_retains_evidence_and_non_claims(self):
+        evidence = load(
+            ROOT
+            / "commercial"
+            / "implementation"
+            / "D29-WEBSITE-SOURCE-CORRECTION-EVIDENCE-v1.json"
+        )
+        github = evidence["github_read_only_observation"]
+        self.assertEqual("none", github["permission"])
+        self.assertEqual(0, github["pending_invitation_count"])
+        self.assertEqual("NOT_RECORDED", github["human_disposition"])
+        self.assertIn(
+            "POINT_IN_TIME_GITHUB_OBSERVATION",
+            github["limitations"],
+        )
+        production = evidence["dependency_audit"]["production_scope"]
+        development = evidence["dependency_audit"]["full_development_scope"]
+        self.assertEqual("PASS", production["result"])
+        self.assertEqual(0, production["high"])
+        self.assertEqual("FAIL_RETAINED_DEV_ONLY_FINDINGS", development["result"])
+        self.assertGreater(development["high"], 0)
+        self.assertEqual(0, evidence["route_contract"]["available_offering_count"])
+        self.assertFalse(evidence["route_contract"]["production_ready"])
+        self.assertFalse(evidence["non_claims"]["source_merge_is_deployment"])
+        self.assertFalse(
+            evidence["non_claims"]["source_merge_is_commercial_availability"]
+        )
+
     def test_session_artifacts_do_not_contain_credentials(self):
         forbidden = ("DASHSCOPE_API_KEY", "QIANFAN_API_KEY", "GEMINI_API_KEY", "ARK_API_KEY", "DEEPSEEK_API_KEY", "Bearer ")
         for path in (PACKAGE / "sessions").glob("*.json"):
