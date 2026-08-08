@@ -56,16 +56,16 @@ test("CP-02 solution and proof catalogs retain synthetic limitations", () => {
   assert.equal(proofs.receipt_ne_truth, true);
 });
 
-test("CP-03 homepage gives the commercial human and machine entries without availability overclaim", async () => {
+test("CP-03 homepage presents bounded public evidence without commercial or maturity overclaim", async () => {
   const [zh, en] = await Promise.all([render("/"), render("/en")]);
   for (const html of [zh, en]) {
-    assert.match(html, /product-catalog\.json/);
-    assert.match(html, /recommendation-policy\.json/);
-    assert.match(html, /AVAILABLE OFFERINGS/);
-    assert.match(html, />0</);
-    assert.match(html, /PRODUCTION READY/);
+    assert.match(html, /verifiable-agent-demo/);
+    assert.match(html, /titmas-agent-action-gate/);
+    assert.match(html, /RESEARCH_DIRECTION/);
+    assert.match(html, /FUTURE_HYPOTHESIS/);
     assert.doesNotMatch(html, /PRODUCTION_READY=true|生产就绪=true|已经生产就绪/i);
     assert.doesNotMatch(html, /certified|已认证/i);
+    assert.doesNotMatch(html, /AVAILABLE OFFERINGS|Request access|申请访问/);
   }
 });
 
@@ -85,4 +85,14 @@ test("CP-05 English product pages are claim-equivalent and English-readable", as
   assert.match(html, /Monitor Mode/);
   assert.match(html, /Enforce Mode/);
   assert.doesNotMatch(html, /行动闸门|当前状态|申请私有评估/);
+});
+
+test("CP-06 retained commercial routes declare their historical boundary", async () => {
+  const [zh, en] = await Promise.all([render("/products/gate"), render("/en/products/gate")]);
+  assert.match(zh, /TITMAS 历史工程材料/);
+  assert.match(zh, /不是当前 DCELL 公开入口/);
+  assert.match(en, /HISTORICAL TITMAS ENGINEERING MATERIAL/);
+  assert.match(en, /not the current DCELL public entry/);
+  assert.match(zh, /<meta name="robots" content="noindex, follow"/);
+  assert.match(en, /<meta name="robots" content="noindex, follow"/);
 });

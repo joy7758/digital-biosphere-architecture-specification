@@ -21,7 +21,6 @@ const rules = {
   PRIVATE_REPOSITORY_URL_FINDINGS: [
     /github\.com\/joy7758\/digital-biosphere-architecture-specification/i,
     /github\.com\/joy7758\/digital-biosphere-os/i,
-    /github\.com\/joy7758\/SAEE/i,
     /github\.com\/joy7758\/titmas-private-developer-trial/i,
   ],
   SERVER_INFRASTRUCTURE_DISCLOSURE_FINDINGS: [

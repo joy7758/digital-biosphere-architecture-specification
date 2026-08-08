@@ -1,6 +1,15 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
+  "compatible_with": ["0.1"],
   "catalog_id": "TITMAS-PUBLIC-SITE-CATALOG-0.1",
+  "current_public_alignment": {
+    "focus": "DCELL_RESEARCH_DIRECTION",
+    "researcher": "Bin Zhang",
+    "positioning": "Research Engineer building trustworthy infrastructure for autonomous AI systems.",
+    "homepage_sections": ["hero", "autonomous_experimental_loop", "public_evidence", "dcell_research_direction", "titmas_engineering_history", "researcher"],
+    "maturity_model": ["IMPLEMENTED", "EXPERIMENTALLY_SUPPORTED", "PROTOTYPE", "RESEARCH_DIRECTION", "FUTURE_HYPOTHESIS"],
+    "deployed": false
+  },
   "public_brand": {
     "zh": "夏日之海",
     "en": "titmas",
@@ -15,13 +24,15 @@
     "icp_record_number": "晋ICP备2026006409号-1",
     "icp_query_url": "https://beian.miit.gov.cn"
   },
-  "information_architecture": "COMMERCIAL_PLATFORM_PRODUCTS_SOLUTIONS_PROOF_AND_TRUST",
-  "current_stage": "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM",
+  "information_architecture": "DCELL_RESEARCH_DIRECTION_PUBLIC_EVIDENCE_AND_BOUNDED_CLAIMS",
+  "previous_information_architecture": "COMMERCIAL_PLATFORM_PRODUCTS_SOLUTIONS_PROOF_AND_TRUST",
+  "current_stage": "DCELL_RESEARCH_DIRECTION_ALIGNMENT",
+  "retained_titmas_stage": "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM",
   "agent_front_door": {
     "status": "EMBEDDED_IN_BILINGUAL_HOMEPAGE",
-    "position": "DEDICATED_HUMAN_AND_MACHINE_COMMERCIAL_ENTRY",
-    "entry_zh": "/#agent-start",
-    "entry_en": "/en/#agent-start",
+    "position": "DCELL_RESEARCH_AND_PUBLIC_EVIDENCE_ENTRY",
+    "entry_zh": "/#public-evidence",
+    "entry_en": "/en/#public-evidence",
     "machine_entries": [
       "/.well-known/titmas.json",
       "/llms.txt",

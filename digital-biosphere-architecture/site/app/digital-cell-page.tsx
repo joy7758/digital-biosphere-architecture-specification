@@ -7,9 +7,9 @@ import styles from "./digital-cell/digital-cell.module.css";
 const pageCopy = {
   zh: {
     breadcrumb: ["TITMAS 首页", "行业应用", "Digital Cell Demo"],
-    eyebrow: "REFERENCE DEMO · v0.1.0",
+    eyebrow: "HISTORICAL REFERENCE DEMO · v0.1.0 · PROTOTYPE",
     title: <>让 Agent 的执行<br />变得可观察。</>,
-    lead: "TITMAS Digital Cell Demo 是一个最小参考实现，展示 AI Agent 如何具备身份、边界、执行证据和健康状态。",
+    lead: "TITMAS 是更广泛 DCELL 研究方向下的早期工程种子和第一个实验实例。本页保留其最小参考 Demo：展示 AI Agent 的身份、边界、执行证据和健康状态，不构成完整 Cell 生态。",
     release: "查看公开 Release",
     understand: "理解 Digital Cell",
     whyTitle: "能执行，不等于能被理解。",
@@ -39,9 +39,9 @@ const pageCopy = {
   },
   en: {
     breadcrumb: ["TITMAS home", "Applications", "Digital Cell Demo"],
-    eyebrow: "REFERENCE DEMO · v0.1.0",
+    eyebrow: "HISTORICAL REFERENCE DEMO · v0.1.0 · PROTOTYPE",
     title: <>Make agent execution<br />observable.</>,
-    lead: "The TITMAS Digital Cell Demo is a minimal reference implementation showing how an AI agent can carry identity, boundaries, execution evidence, and health state.",
+    lead: "TITMAS is an early engineering seed and first experimental instance under the broader DCELL research direction. This page preserves its minimal reference demo for agent identity, boundaries, execution evidence, and health state; it is not a complete Cell ecosystem.",
     release: "View public release",
     understand: "Understand Digital Cell",
     whyTitle: "Being executable does not make an agent understandable.",

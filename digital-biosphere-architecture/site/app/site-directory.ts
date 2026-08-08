@@ -15,22 +15,22 @@ type DirectoryItem = {
 export const directoryItems: Record<PublicDirectory, DirectoryItem[]> = {
   research: [
     {
-      id: "digital-biosphere",
-      type: "RESEARCH_FOUNDATION",
-      status: "PUBLISHED_ARCHITECTURE_BASELINE",
+      id: "dcell",
+      type: "RESEARCH_DIRECTION",
+      status: "RESEARCH_DIRECTION",
       title: {
-        zh: "Digital Biosphere",
-        en: "Digital Biosphere",
+        zh: "DCELL：自主 AI 系统可信基础设施",
+        en: "DCELL: Trustworthy infrastructure for autonomous AI systems",
       },
       description: {
-        zh: "把自治数字实体、可信运行基础设施与长期生态治理放在同一研究框架中。",
-        en: "A research frame connecting autonomous digital entities, trust infrastructure, and long-term ecosystem governance.",
+        zh: "研究证据驱动、有界、可独立识别、经验连续、可替换且可演化的自主 AI 系统；不是已完成平台。",
+        en: "Research into evidence-driven, bounded, independently identifiable, experience-preserving, replaceable, and evolvable autonomous AI systems; not a finished platform.",
       },
       href: {
-        zh: "/research/index/#digital-biosphere",
-        en: "/en/research/index/#digital-biosphere",
+        zh: "/#dcell",
+        en: "/en/#dcell",
       },
-      metadata: ["ARCHITECTURE", "LONG_TERM_DIRECTION"],
+      metadata: ["RESEARCH_DIRECTION", "NOT_A_COMPLETE_ECOSYSTEM", "AUTONOMOUS_EXPERIMENTAL_LOOPS"],
     },
     {
       id: "evidence-governance",
@@ -51,22 +51,22 @@ export const directoryItems: Record<PublicDirectory, DirectoryItem[]> = {
       metadata: ["EVIDENCE", "AUDITABILITY", "NO_AUTHORITY_EFFECT"],
     },
     {
-      id: "titmas-trust-infrastructure",
-      type: "INFRASTRUCTURE_RESEARCH",
-      status: "DEVELOPER_PREVIEW_RELEASED",
+      id: "titmas-engineering-seed",
+      type: "FOUNDING_ENGINEERING_EXPERIMENT",
+      status: "HISTORICAL_EXPERIMENTAL_INSTANCE",
       title: {
-        zh: "TITMAS Trust Infrastructure",
-        en: "TITMAS Trust Infrastructure",
+        zh: "TITMAS 工程种子",
+        en: "TITMAS engineering seed",
       },
       description: {
-        zh: "围绕 Identity、Boundary、Evidence、Health、Memory 与 Reputation 的可组合可信关注面。",
-        en: "Composable trust concerns across Identity, Boundary, Evidence, Health, Memory, and Reputation.",
+        zh: "DCELL 研究方向下的早期工程种子和第一个实验实例；不是中央控制器或完整生态。",
+        en: "An early engineering seed and first experimental instance under the broader DCELL research direction; not a central controller or complete ecosystem.",
       },
       href: {
-        zh: "/research/index/#titmas-trust-infrastructure",
-        en: "/en/research/index/#titmas-trust-infrastructure",
+        zh: "/#titmas-history",
+        en: "/en/#titmas-history",
       },
-      metadata: ["SPECIFICATION", "ADAPTER_CONTRACT", "CONFORMANCE"],
+      metadata: ["HISTORICAL", "ENGINEERING_SEED", "NO_CENTRAL_AUTHORITY"],
     },
   ],
   applications: [

@@ -39,7 +39,7 @@ test("keeps the historical candidate mode fail closed", async () => {
     publicReleaseTag: null,
     dbosWheelUrl: null,
   });
-  assert.match(routeMarkers(context.mode).zhStatus[1], /当前不是正式发布/);
+  assert.match(routeMarkers(context.mode).zhStatus[1], /DCELL 是研究方向/);
 });
 
 test("rejects unknown release modes", async () => {
@@ -95,37 +95,25 @@ test("accepts formal mode only when every machine truth surface and input agree"
   assert.equal(context.developerPreviewReleased, true);
   assert.equal(context.dbosWheelUrl, wheelUrl);
   assert.equal(context.releasedByRef, "zhangbin");
-  assert.match(routeMarkers(context.mode).enStatus[1], /commercial infrastructure maturity program in progress/);
+  assert.match(routeMarkers(context.mode).enStatus[1], /DCELL is a research direction/);
 });
 
 test("routeMarkers yields formal release markers when mode is formal", () => {
   const markers = routeMarkers("formal");
   assert.deepEqual(markers, {
-    zhHome: ["<html lang=\"zh-CN\">", "让 AI 智能体犯错时，也不能直接造成未经验证的后果", "product-catalog.json"],
-    enHome: ["<html lang=\"en\">", "An AI agent mistake should not directly create an unverified consequence", "product-catalog.json"],
-    zhStatus: [
-      "<html lang=\"zh-CN\">",
-      "TITMAS 商业基础设施成熟度计划进行中",
-    ],
-    enStatus: [
-      "<html lang=\"en\">",
-      "TITMAS commercial infrastructure maturity program in progress",
-    ],
+    zhHome: ["<html lang=\"zh-CN\">", "为自主 AI 系统构建可信基础设施", "DCELL · RESEARCH_DIRECTION"],
+    enHome: ["<html lang=\"en\">", "Building trustworthy infrastructure for autonomous AI systems", "DCELL · RESEARCH_DIRECTION"],
+    zhStatus: ["<html lang=\"zh-CN\">", "DCELL 是研究方向，公开工程证据保持有界"],
+    enStatus: ["<html lang=\"en\">", "DCELL is a research direction; public engineering evidence remains bounded"],
   });
 });
 
 test("routeMarkers yields candidate markers for other modes and edge cases", () => {
   const expectedCandidateMarkers = {
-    zhHome: ["<html lang=\"zh-CN\">", "让 AI 智能体犯错时，也不能直接造成未经验证的后果", "product-catalog.json"],
-    enHome: ["<html lang=\"en\">", "An AI agent mistake should not directly create an unverified consequence", "product-catalog.json"],
-    zhStatus: [
-      "<html lang=\"zh-CN\">",
-      "当前不是正式发布",
-    ],
-    enStatus: [
-      "<html lang=\"en\">",
-      "This is not a release",
-    ],
+    zhHome: ["<html lang=\"zh-CN\">", "为自主 AI 系统构建可信基础设施", "DCELL · RESEARCH_DIRECTION"],
+    enHome: ["<html lang=\"en\">", "Building trustworthy infrastructure for autonomous AI systems", "DCELL · RESEARCH_DIRECTION"],
+    zhStatus: ["<html lang=\"zh-CN\">", "DCELL 是研究方向，公开工程证据保持有界"],
+    enStatus: ["<html lang=\"en\">", "DCELL is a research direction; public engineering evidence remains bounded"],
   };
 
   assert.deepEqual(routeMarkers("candidate"), expectedCandidateMarkers);

@@ -102,16 +102,11 @@ export function resolveReleaseContext(environment, resources) {
 }
 
 export function routeMarkers(mode) {
+  void mode;
   return {
-    zhHome: ["<html lang=\"zh-CN\">", "让 AI 智能体犯错时，也不能直接造成未经验证的后果", "product-catalog.json"],
-    enHome: ["<html lang=\"en\">", "An AI agent mistake should not directly create an unverified consequence", "product-catalog.json"],
-    zhStatus: [
-      "<html lang=\"zh-CN\">",
-      mode !== "formal" ? "当前不是正式发布" : "TITMAS 商业基础设施成熟度计划进行中",
-    ],
-    enStatus: [
-      "<html lang=\"en\">",
-      mode !== "formal" ? "This is not a release" : "TITMAS commercial infrastructure maturity program in progress",
-    ],
+    zhHome: ["<html lang=\"zh-CN\">", "为自主 AI 系统构建可信基础设施", "DCELL · RESEARCH_DIRECTION"],
+    enHome: ["<html lang=\"en\">", "Building trustworthy infrastructure for autonomous AI systems", "DCELL · RESEARCH_DIRECTION"],
+    zhStatus: ["<html lang=\"zh-CN\">", "DCELL 是研究方向，公开工程证据保持有界"],
+    enStatus: ["<html lang=\"en\">", "DCELL is a research direction; public engineering evidence remains bounded"],
   };
 }

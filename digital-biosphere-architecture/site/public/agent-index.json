@@ -1,5 +1,64 @@
 {
-  "schema_version": "0.1",
+  "schema_version": "0.2",
+  "compatible_with": ["0.1"],
+  "record_scope": "CURRENT_DCELL_PUBLIC_ENTRY_WITH_RETAINED_TITMAS_COMPATIBILITY_RECORDS",
+  "primary_identity_pointer": "/public_identity",
+  "primary_research_direction_pointer": "/research_direction",
+  "legacy_root_field_scope": {
+    "fields": ["name", "name_zh", "display_name_zh", "display_name_en", "public_brand", "public_brand_zh", "public_brand_logo", "technical_project_identifier", "abbreviation", "subtitle", "infrastructure_positioning"],
+    "applies_to": "RETAINED_TITMAS_PROGRAM_RECORDS",
+    "defines_current_public_identity": false
+  },
+  "public_focus": "DCELL_RESEARCH_DIRECTION",
+  "public_identity": {
+    "name": "Bin Zhang",
+    "name_zh": "张斌",
+    "positioning_en": "Research Engineer building trustworthy infrastructure for autonomous AI systems.",
+    "positioning_zh": "为自主 AI 系统构建可信基础设施的研究工程师。",
+    "github": "https://github.com/joy7758",
+    "orcid": "https://orcid.org/0009-0002-8861-1481"
+  },
+  "research_direction": {
+    "id": "DCELL",
+    "maturity": "RESEARCH_DIRECTION",
+    "definition_en": "Evidence-driven, bounded, independently identifiable, experience-preserving, replaceable, and evolvable autonomous AI systems.",
+    "definition_zh": "证据驱动、有界、可独立识别、经验连续、可替换且可演化的自主 AI 系统。",
+    "focus": ["agents", "infrastructure", "environments", "evaluations", "autonomous_experimental_loops"],
+    "complete_system_implemented": false,
+    "autonomous_evolution_achieved": false
+  },
+  "public_evidence": [
+    {
+      "repository": "https://github.com/joy7758/verifiable-agent-demo",
+      "maturity": "IMPLEMENTED",
+      "claim_scope": "minimal_verifiable_agent_execution_evidence",
+      "authority_effect": false
+    },
+    {
+      "repository": "https://github.com/joy7758/SAEE",
+      "maturity": "EXPERIMENTALLY_SUPPORTED",
+      "claim_scope": "agent_evaluation_and_read_only_evolution_recommendations",
+      "boundary": "READ_ONLY_EVALUATION",
+      "authority_effect": false
+    },
+    {
+      "repository": "https://github.com/joy7758/titmas-agent-action-gate",
+      "maturity": "PROTOTYPE",
+      "claim_scope": "bounded_agent_action_gate_and_decision_records",
+      "authority_effect": false
+    }
+  ],
+  "maturity_model": ["IMPLEMENTED", "EXPERIMENTALLY_SUPPORTED", "PROTOTYPE", "RESEARCH_DIRECTION", "FUTURE_HYPOTHESIS"],
+  "titmas_role": {
+    "maturity": "HISTORICAL_EXPERIMENTAL_INSTANCE",
+    "description_en": "An early engineering seed and first experimental instance under the broader DCELL research direction.",
+    "description_zh": "更广泛 DCELL 研究方向下的早期工程种子和第一个实验实例。",
+    "central_controller": false,
+    "operating_system": false,
+    "ecosystem_owner": false,
+    "trust_authority": false
+  },
+  "non_claims": ["DIGITAL_LIFE_IMPLEMENTED", "COMPLETE_CELL_ECOSYSTEM", "AGI_ACHIEVED", "AUTONOMOUS_EVOLUTION_ACHIEVED", "POST_TRAINING_SYSTEM", "PRODUCTION_READY_DCELL_PLATFORM"],
   "name": "TITMAS Commercial Agent Infrastructure",
   "name_zh": "夏日之海 · TITMAS 商业智能体基础设施",
   "display_name_zh": "夏日之海",
@@ -15,7 +74,8 @@
   "project_family": "Digital Biosphere",
   "primary_customer": "AI_AGENT",
   "current_state": "commercial_maturity_program_in_progress",
-  "current_stage": "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM",
+  "current_stage": "DCELL_RESEARCH_DIRECTION_ALIGNMENT",
+  "retained_titmas_stage": "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM",
   "agent_absolute_priority_principle_adopted": true,
   "primary_operational_customer": "AI_AGENT",
   "machine_interface_precedes_human_interface": true,

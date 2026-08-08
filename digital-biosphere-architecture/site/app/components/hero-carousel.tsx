@@ -8,60 +8,60 @@ const AUTO_ADVANCE_MS = 8000;
 const slides = {
   zh: [
     {
-      id: "titmas-infrastructure",
-      eyebrow: "TITMAS / 智能体行动控制与可验证执行平台",
-      title: "让 AI 智能体犯错时，也不能直接造成未经验证的后果",
-      description: "闭源私有核心连接行动闸门、可验证执行回执、证据审计和智能体健康；当前提供公开发现与合成证明，不宣称生产可用。",
-      primary: ["申请私有评估", "/private-evaluation/"],
-      secondary: ["查看效果证明", "/commercial-evaluation/"],
-      status: "私有商业试点候选 · 非生产",
+      id: "dcell-research-direction",
+      eyebrow: "BIN ZHANG / RESEARCH ENGINEER",
+      title: "为自主 AI 系统构建可信基础设施",
+      description: "DCELL 是研究方向：探索证据驱动、有界、可独立识别、经验连续、可替换且可演化的自主 AI 系统。这里区分已实现证据、实验支持、原型、研究方向与未来假设。",
+      primary: ["查看公开证据", "#public-evidence"],
+      secondary: ["理解 DCELL", "#dcell"],
+      status: "DCELL · RESEARCH_DIRECTION",
     },
     {
-      id: "monitor-pilot",
-      eyebrow: "MONITOR BEFORE ENFORCE / 先观察，后控制",
-      title: "先看哪些动作本应被阻断，再决定是否进入执行控制",
-      description: "Monitor Mode 产生 Shadow Decision、技术回执和审计时间线，不阻断、不执行、不改变客户系统。",
-      primary: ["了解 Monitor Pilot", "/monitor-pilot/"],
-      secondary: ["查看行动闸门", "/products/gate/"],
-      status: "合成参考已实现 · 尚未开放 Offering",
+      id: "autonomous-experimental-loops",
+      eyebrow: "AUTONOMOUS EXPERIMENTAL LOOPS / 自主实验循环",
+      title: "让自主实验循环可检查、可复现、可约束",
+      description: "公开工作聚焦执行证据、Agent 评价、身份与来源、受限行动，以及失败和经验如何被保留；不把实验结果升级为自治演化已经实现。",
+      primary: ["研究问题", "#problem"],
+      secondary: ["研究索引", "/research/"],
+      status: "EVIDENCE · EVALUATION · BOUNDED ACTION",
     },
     {
-      id: "product-suite",
-      eyebrow: "GATE · RECEIPT · AUDIT · HEALTH",
-      title: "一个私有平台，四个对外产品",
-      description: "Gate 控制关键行动，Receipt 提供可携带证明，Audit 支持复核与重放，Health 识别接入缺口。",
-      primary: ["查看四产品目录", "/product-catalog.json"],
-      secondary: ["打开 Trust Center", "/trust-center/"],
-      status: "公开接口不等于私有实现",
+      id: "maturity-boundaries",
+      eyebrow: "IMPLEMENTED ≠ RESEARCH_DIRECTION",
+      title: "成熟度标签是公开叙事的一部分",
+      description: "IMPLEMENTED、EXPERIMENTALLY_SUPPORTED、PROTOTYPE、RESEARCH_DIRECTION 与 FUTURE_HYPOTHESIS 分别陈述，避免把仓库、演示或研究设想混写成完整系统。",
+      primary: ["查看成熟度边界", "#dcell"],
+      secondary: ["读取机器入口", "/llms.txt"],
+      status: "NO DIGITAL-LIFE OR AGI CLAIM",
     },
   ],
   en: [
     {
-      id: "titmas-infrastructure",
-      eyebrow: "TITMAS / AGENT ACTION CONTROL AND VERIFIABLE ACCOUNTABILITY",
-      title: "An AI agent mistake should not directly create an unverified consequence",
-      description: "A closed private core connects action gates, verifiable execution receipts, evidence audit, and agent health. Public discovery and synthetic proof do not establish production availability.",
-      primary: ["Request a private evaluation", "/en/private-evaluation/"],
-      secondary: ["View synthetic proof", "/en/commercial-evaluation/"],
-      status: "Private commercial-pilot candidate · non-production",
+      id: "dcell-research-direction",
+      eyebrow: "BIN ZHANG / RESEARCH ENGINEER",
+      title: "Building trustworthy infrastructure for autonomous AI systems",
+      description: "DCELL is a research direction exploring evidence-driven, bounded, independently identifiable, experience-preserving, replaceable, and evolvable autonomous AI systems. Implemented evidence, experimental support, prototypes, research directions, and future hypotheses remain distinct.",
+      primary: ["View public evidence", "#public-evidence"],
+      secondary: ["Understand DCELL", "#dcell"],
+      status: "DCELL · RESEARCH_DIRECTION",
     },
     {
-      id: "monitor-pilot",
-      eyebrow: "MONITOR BEFORE ENFORCE",
-      title: "Observe which actions should be blocked before enabling enforcement",
-      description: "Monitor Mode creates Shadow Decisions, technical Receipts, and an Audit timeline without blocking, executing, or changing the customer system.",
-      primary: ["Understand Monitor Pilot", "/en/monitor-pilot/"],
-      secondary: ["View TITMAS Gate", "/en/products/gate/"],
-      status: "Synthetic reference implemented · no available offering",
+      id: "autonomous-experimental-loops",
+      eyebrow: "AUTONOMOUS EXPERIMENTAL LOOPS",
+      title: "Make autonomous experimental loops inspectable, reproducible, and bounded",
+      description: "The public work focuses on execution evidence, agent evaluation, identity and provenance, bounded action, and retention of failures and experience. It does not claim autonomous evolution has been achieved.",
+      primary: ["See the research problem", "#problem"],
+      secondary: ["Open research index", "/en/research/"],
+      status: "EVIDENCE · EVALUATION · BOUNDED ACTION",
     },
     {
-      id: "product-suite",
-      eyebrow: "GATE · RECEIPT · AUDIT · HEALTH",
-      title: "One private platform, four public products",
-      description: "Gate controls critical actions, Receipt carries proof, Audit supports review and replay, and Health identifies onboarding gaps.",
-      primary: ["Open the product catalog", "/product-catalog.json"],
-      secondary: ["Open Trust Center", "/en/trust-center/"],
-      status: "Public interface is not private implementation",
+      id: "maturity-boundaries",
+      eyebrow: "IMPLEMENTED ≠ RESEARCH_DIRECTION",
+      title: "Maturity labels are part of the public argument",
+      description: "IMPLEMENTED, EXPERIMENTALLY_SUPPORTED, PROTOTYPE, RESEARCH_DIRECTION, and FUTURE_HYPOTHESIS are stated separately, so repositories, demos, and hypotheses are not presented as one complete system.",
+      primary: ["Review maturity boundaries", "#dcell"],
+      secondary: ["Read the machine entry", "/llms.txt"],
+      status: "NO DIGITAL-LIFE OR AGI CLAIM",
     },
   ],
 } as const;
@@ -111,7 +111,7 @@ export function HeroCarousel({ locale }: { locale: Locale }) {
       className="hero hero-carousel"
       data-section-id="hero-carousel"
       aria-roledescription={locale === "zh" ? "轮播" : "carousel"}
-      aria-label={locale === "zh" ? "TITMAS 重点入口" : "TITMAS featured entries"}
+      aria-label={locale === "zh" ? "DCELL 研究重点" : "DCELL research highlights"}
       onMouseEnter={() => setInteractionPaused(true)}
       onMouseLeave={() => setInteractionPaused(false)}
       onFocusCapture={() => setInteractionPaused(true)}
@@ -138,13 +138,6 @@ export function HeroCarousel({ locale }: { locale: Locale }) {
             aria-roledescription={locale === "zh" ? "幻灯片" : "slide"}
             aria-label={locale === "zh" ? `${index + 1}/${items.length}` : `${index + 1} of ${items.length}`}
           >
-            {slide.id === "titmas-infrastructure" && (
-              <span
-                className="hero-brand-logo"
-                role="img"
-                aria-label={locale === "zh" ? "夏日之海 Logo" : "titmas logo"}
-              />
-            )}
             <div className="hero-badge"><span />{slide.status}</div>
             <p className="eyebrow">{slide.eyebrow}</p>
             <h1>{slide.title}</h1>

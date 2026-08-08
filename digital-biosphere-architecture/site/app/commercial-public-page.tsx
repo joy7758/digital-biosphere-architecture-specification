@@ -32,6 +32,7 @@ export function commercialMetadata(locale: Locale, key: CommercialPageKey): Meta
       },
     },
     openGraph: { title: c.title, description: c.lead, url: path },
+    robots: { index: false, follow: true },
     other: { "x-titmas-alternate": commercialPath(alternateLocale, key) },
   };
 }
@@ -46,6 +47,13 @@ export function CommercialPublicPage({ locale, pageKey }: { locale: Locale; page
       <Header locale={locale} section="commercialEntry" languageHref={languageHref} />
       <StructuredPageData locale={locale} path={path} title={c.title} description={c.lead} type="TechArticle" />
       <main id="main-content">
+        <aside className="commercial-history-notice" aria-label={locale === "zh" ? "历史材料边界" : "Historical material boundary"}>
+          <div className="section-shell">
+            <strong>{locale === "zh" ? "TITMAS 历史工程材料" : "HISTORICAL TITMAS ENGINEERING MATERIAL"}</strong>
+            <p>{locale === "zh" ? "本页为可追溯性保留，不是当前 DCELL 公开入口，也不构成可用 Offering 或生产服务。" : "This page is retained for traceability. It is not the current DCELL public entry and does not establish an available offering or production service."}</p>
+            <a href={locale === "zh" ? "/#titmas-history" : "/en/#titmas-history"}>{locale === "zh" ? "返回当前研究叙事" : "Return to the current research narrative"} →</a>
+          </div>
+        </aside>
         <section className="commercial-public-hero">
           <div className="section-shell">
             <p className="section-kicker">{c.eyebrow}</p>

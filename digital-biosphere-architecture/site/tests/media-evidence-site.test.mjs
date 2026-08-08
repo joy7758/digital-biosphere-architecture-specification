@@ -16,12 +16,12 @@ async function render(pathname) {
   );
 }
 
-test("commercial carousel contains exactly three complete entries", async () => {
+test("DCELL research carousel contains exactly three bounded entries", async () => {
   const source = await readFile(new URL("app/components/hero-carousel.tsx", siteRoot), "utf8");
   assert.match(source, /slideCount: 3/);
-  assert.match(source, /让 AI 智能体犯错时，也不能直接造成未经验证的后果/);
-  assert.match(source, /先看哪些动作本应被阻断/);
-  assert.match(source, /一个私有平台，四个对外产品/);
+  assert.match(source, /为自主 AI 系统构建可信基础设施/);
+  assert.match(source, /让自主实验循环可检查、可复现、可约束/);
+  assert.match(source, /成熟度标签是公开叙事的一部分/);
   assert.doesNotMatch(source, /slideCount: [4-9]/);
 });
 
@@ -38,9 +38,9 @@ test("server-rendered homepage exposes the complete first slide without scripts"
   const response = await render("/");
   assert.equal(response.status, 200);
   const html = await response.text();
-  assert.match(html, /让 AI 智能体犯错时，也不能直接造成未经验证的后果/);
-  assert.match(html, /闭源私有核心连接行动闸门/);
-  assert.match(html, /申请私有评估/);
+  assert.match(html, /为自主 AI 系统构建可信基础设施/);
+  assert.match(html, /证据驱动、有界、可独立识别/);
+  assert.match(html, /查看公开证据/);
 });
 
 test("carousel disables automatic advance for reduced motion and pauses after interaction", async () => {

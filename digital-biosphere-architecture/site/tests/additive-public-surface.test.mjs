@@ -83,17 +83,18 @@ test("keeps all established bilingual surfaces reachable", async () => {
   }
 });
 
-test("keeps historical status surfaces while promoting the commercial mainline", async () => {
+test("keeps historical surfaces while promoting the DCELL research direction", async () => {
   const [homeResponse, statusResponse, communityResponse] = await Promise.all([render("/"), render("/status"), render("/community")]);
   const [home, status, community] = await Promise.all([homeResponse.text(), statusResponse.text(), communityResponse.text()]);
 
-  assert.match(home, /人类与智能体双入口/);
-  assert.match(home, /夏日之海/);
-  assert.match(home, /\/titmas-logo\.png/);
-  assert.doesNotMatch(home, /\/summersea-logo\.png/);
-  assert.match(home, /让 AI 智能体犯错时，也不能直接造成未经验证的后果/);
-  assert.match(home, /AVAILABLE OFFERINGS/);
-  assert.match(status, /TITMAS 商业基础设施成熟度计划进行中/);
+  assert.match(home, /为自主 AI 系统构建可信基础设施/);
+  assert.match(home, /DCELL · RESEARCH_DIRECTION/);
+  assert.match(home, /verifiable-agent-demo/);
+  assert.match(home, /SAEE/);
+  assert.match(home, /titmas-agent-action-gate/);
+  assert.match(home, /早期工程种子和第一个实验实例/);
+  assert.match(status, /DCELL 是研究方向/);
+  assert.match(status, /LOCAL_CANDIDATE_NOT_DEPLOYED/);
   assert.match(status, /Stage 5\.7 结果/);
   assert.match(status, /IN_PROGRESS_WAITING_FOR_PARTICIPANT_ACTION/);
   assert.match(community, /HISTORICAL_NON_CURRENT/);

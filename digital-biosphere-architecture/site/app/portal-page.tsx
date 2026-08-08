@@ -1,146 +1,200 @@
 import { HeroCarousel } from "./components/hero-carousel";
-import { content, type Locale } from "./site-content";
+import { type Locale } from "./site-content";
 import { Footer, Header } from "./site-shell";
 import { serializeJsonLd } from "./json-ld";
 
+const copy = {
+  zh: {
+    problemKicker: "RESEARCH PROBLEM / 研究问题",
+    problemTitle: "自主系统需要循环，也需要可验证的边界",
+    problemLead: "自主实验循环把提出假设、执行行动、观察结果、评价证据与下一步决策连接起来。研究问题不是如何制造一个无边界自治体，而是如何让每一步保留来源、身份、范围、失败和可复现记录。",
+    problemSteps: [
+      ["01", "提出假设", "目标与假设必须可引用，并与后续证据分离。"],
+      ["02", "有界执行", "行动需要显式权限边界、输入来源与可验证回执。"],
+      ["03", "评价与保留", "评价输出建议而非命令；失败与经验进入连续记录。"],
+      ["04", "审查后迭代", "新一轮建立在可检查证据上，不把变化自动称为演化。"],
+    ],
+    evidenceKicker: "PUBLIC EVIDENCE / 公开证据",
+    evidenceTitle: "三个可检查入口，分别证明有限能力",
+    evidenceLead: "这些仓库是现有工程证据，不共同构成一个已完成的 DCELL 系统。每个入口都标注存在内容、成熟度与限制。",
+    evidence: [
+      {
+        name: "verifiable-agent-demo",
+        problem: "Agent 执行结果如何形成可检查、可重放的证据。",
+        exists: "公开的最小执行证据演示与验证路径。",
+        maturity: "IMPLEMENTED",
+        limit: "演示不证明通用智能、生产可靠性或自主演化。",
+        href: "https://github.com/joy7758/verifiable-agent-demo",
+      },
+      {
+        name: "SAEE",
+        problem: "如何评价 Agent 行为，同时阻止评价结果越权成为执行命令。",
+        exists: "评价与演化建议的工程研究基线，以及只读边界。",
+        maturity: "EXPERIMENTALLY_SUPPORTED",
+        limit: "评价证据不等于授权，也不是 post-training system。",
+        href: "https://github.com/joy7758/SAEE",
+      },
+      {
+        name: "titmas-agent-action-gate",
+        problem: "Agent 行动如何在执行前经过显式、有界的决策闸门。",
+        exists: "行动闸门原型与可验证决策记录。",
+        maturity: "PROTOTYPE",
+        limit: "原型不是中央控制器、生产服务或完整信任权威。",
+        href: "https://github.com/joy7758/titmas-agent-action-gate",
+      },
+    ],
+    dcellKicker: "DCELL / RESEARCH_DIRECTION",
+    dcellTitle: "把可信基础设施研究组织成可检验的 DCELL 方向",
+    dcellLead: "DCELL 探索证据驱动、有界、可独立识别、经验连续、可替换且可演化的自主 AI 系统。它是连接问题与实验的研究方向，不是已完成的平台、数字生命实现、完整 Cell 生态或中央操作系统。",
+    maturity: [
+      ["IMPLEMENTED", "可验证执行证据的最小公开路径。"],
+      ["EXPERIMENTALLY_SUPPORTED", "Agent 评价和证据基础设施已获得有限实验支持。"],
+      ["PROTOTYPE", "受限行动基础设施与连续性对象仍是原型。"],
+      ["RESEARCH_DIRECTION", "DCELL 组织身份、证据、评价、行动和经验连续性研究。"],
+      ["FUTURE_HYPOTHESIS", "可替换组件与长期经验连续性可能支持更可靠的自主系统。"],
+    ],
+    titmasKicker: "TITMAS / 早期工程种子",
+    titmasTitle: "保留工程历史，但不让历史成为中央控制权",
+    titmasLead: "TITMAS 是更广泛 DCELL 研究方向下的早期工程种子和第一个实验实例。它为身份、边界、执行证据、健康、记忆与声誉等问题提供了初始工程材料；它不是控制器、操作系统、大脑、生态所有者或信任权威。",
+    titmasLinks: [["历史 Demo", "/digital-cell/"], ["历史材料", "/community/"], ["公开 GitHub", "https://github.com/joy7758"]],
+    researcherKicker: "RESEARCHER / 研究者",
+    researcherTitle: "Bin Zhang · 张斌",
+    researcherLead: "Research Engineer building trustworthy infrastructure for autonomous AI systems. 研究关注 agents、infrastructure、environments 与 evaluations，尤其是执行来源、身份连续性、受限行动和自主实验循环的可靠性。",
+    researcherLinks: [["GitHub", "https://github.com/joy7758"], ["ORCID", "https://orcid.org/0009-0002-8861-1481"], ["Research index", "/research/"]],
+  },
+  en: {
+    problemKicker: "RESEARCH PROBLEM",
+    problemTitle: "Autonomous systems need loops—and verifiable boundaries",
+    problemLead: "Autonomous experimental loops connect hypothesis formation, bounded action, observation, evidence evaluation, and the next decision. The question is not how to create an unbounded autonomous entity, but how every step can retain provenance, identity, scope, failure, and reproducible records.",
+    problemSteps: [
+      ["01", "Form a hypothesis", "Goals and hypotheses remain referenceable and separate from later evidence."],
+      ["02", "Execute within bounds", "Actions carry explicit permission boundaries, input provenance, and verifiable receipts."],
+      ["03", "Evaluate and retain", "Evaluations produce recommendations, not commands; failures and experience enter a continuous record."],
+      ["04", "Iterate after review", "A new loop builds on inspectable evidence without automatically calling change evolution."],
+    ],
+    evidenceKicker: "PUBLIC EVIDENCE",
+    evidenceTitle: "Three inspectable entry points, each supporting a bounded claim",
+    evidenceLead: "These repositories are existing engineering evidence. Together they do not constitute a complete DCELL system. Each entry states what exists, its maturity, and its limitation.",
+    evidence: [
+      {
+        name: "verifiable-agent-demo",
+        problem: "How agent execution can produce inspectable, replayable evidence.",
+        exists: "A public minimal execution-evidence demo and verification path.",
+        maturity: "IMPLEMENTED",
+        limit: "The demo does not establish general intelligence, production reliability, or autonomous evolution.",
+        href: "https://github.com/joy7758/verifiable-agent-demo",
+      },
+      {
+        name: "SAEE",
+        problem: "How to evaluate agent behavior without allowing evaluation to become an execution command.",
+        exists: "An engineering research baseline for evaluation and evolution recommendations, with read-only boundaries.",
+        maturity: "EXPERIMENTALLY_SUPPORTED",
+        limit: "Evaluation evidence is not authorization and this is not a post-training system.",
+        href: "https://github.com/joy7758/SAEE",
+      },
+      {
+        name: "titmas-agent-action-gate",
+        problem: "How agent actions can pass through an explicit, bounded decision gate before execution.",
+        exists: "An action-gate prototype with verifiable decision records.",
+        maturity: "PROTOTYPE",
+        limit: "The prototype is not a central controller, production service, or complete trust authority.",
+        href: "https://github.com/joy7758/titmas-agent-action-gate",
+      },
+    ],
+    dcellKicker: "DCELL / RESEARCH_DIRECTION",
+    dcellTitle: "Organizing trustworthy-infrastructure research as a testable DCELL direction",
+    dcellLead: "DCELL explores evidence-driven, bounded, independently identifiable, experience-preserving, replaceable, and evolvable autonomous AI systems. It connects research questions to experiments; it is not a finished platform, implemented digital life, a complete Cell ecosystem, or a central operating system.",
+    maturity: [
+      ["IMPLEMENTED", "A minimal public path for verifiable execution evidence."],
+      ["EXPERIMENTALLY_SUPPORTED", "Agent evaluation and evidence infrastructure with bounded experimental support."],
+      ["PROTOTYPE", "Bounded-action infrastructure and continuity objects remain prototypes."],
+      ["RESEARCH_DIRECTION", "DCELL organizes research on identity, evidence, evaluation, action, and experience continuity."],
+      ["FUTURE_HYPOTHESIS", "Replaceable components and long-term experience continuity may support more dependable autonomous systems."],
+    ],
+    titmasKicker: "TITMAS / EARLY ENGINEERING SEED",
+    titmasTitle: "Preserve the engineering history without turning it into central authority",
+    titmasLead: "TITMAS is an early engineering seed and first experimental instance under the broader DCELL research direction. It supplied initial engineering material for identity, boundaries, execution evidence, health, memory, and reputation. It is not a controller, operating system, brain, ecosystem owner, or trust authority.",
+    titmasLinks: [["Historical demo", "/en/digital-cell/"], ["Historical material", "/en/community/"], ["Public GitHub", "https://github.com/joy7758"]],
+    researcherKicker: "RESEARCHER",
+    researcherTitle: "Bin Zhang · 张斌",
+    researcherLead: "Research Engineer building trustworthy infrastructure for autonomous AI systems. The work focuses on agents, infrastructure, environments, and evaluations—especially execution provenance, identity continuity, bounded action, and the reliability of autonomous experimental loops.",
+    researcherLinks: [["GitHub", "https://github.com/joy7758"], ["ORCID", "https://orcid.org/0009-0002-8861-1481"], ["Research index", "/en/research/"]],
+  },
+} as const;
+
 export function PortalPage({ locale }: { locale: Locale }) {
-  const c = content[locale];
-  const local = (path: string) => locale === "zh" ? path : `/en${path}`;
-
-  const products = [
-    ["TITMAS Gate", locale === "zh" ? "行动闸门" : "Action gate", local("/products/gate/"), "MONITOR_FIRST"],
-    ["TITMAS Receipt", locale === "zh" ? "可验证执行回执" : "Verifiable execution receipt", local("/products/receipt/"), "PORTABLE_PROOF"],
-    ["TITMAS Audit", locale === "zh" ? "证据审计" : "Evidence audit", local("/products/audit/"), "REVIEW_AND_REPLAY"],
-    ["TITMAS Health", locale === "zh" ? "智能体健康快照" : "Agent health snapshot", local("/products/health/"), "LOW_FRICTION_ENTRY"],
-  ] as const;
-
-  const humanEntries = [
-    [locale === "zh" ? "私有评估" : "Private evaluation", locale === "zh" ? "零客户数据的合成第一价值" : "Synthetic first value with zero customer data", local("/private-evaluation/")],
-    ["Monitor Pilot", locale === "zh" ? "只观察，不阻断" : "Observe without blocking", local("/monitor-pilot/")],
-    [locale === "zh" ? "设计伙伴" : "Design partner", locale === "zh" ? "人工、逐范围审查" : "Human-reviewed and scope-bounded", local("/design-partner/")],
-    ["Trust Center", locale === "zh" ? "证据、验证与非声明" : "Evidence, verification, and non-claims", local("/trust-center/")],
-  ] as const;
-
-  const machineEntries = [
-    ["product-catalog.json", locale === "zh" ? "四产品与当前可用性" : "Four products and availability", "/product-catalog.json"],
-    ["solution-catalog.json", locale === "zh" ? "软件交付与行业边界" : "Software delivery and industry boundaries", "/solution-catalog.json"],
-    ["proof-catalog.json", locale === "zh" ? "合成证明、来源与限制" : "Synthetic proof, provenance, and limits", "/proof-catalog.json"],
-    ["recommendation-policy.json", locale === "zh" ? "何时推荐与何时放弃" : "When to recommend or abstain", "/recommendation-policy.json"],
-    ["commercial-offerings.json", locale === "zh" ? "Offering 状态与非声明" : "Offering status and non-claims", "/commercial-offerings.json"],
-    ["deployment-options.json", locale === "zh" ? "部署候选与授权状态" : "Deployment candidates and authority", "/deployment-options.json"],
-  ] as const;
-
+  const c = copy[locale];
   const structuredData = {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "Organization",
-        "@id": "https://redcrag.cn/#organization",
-        name: "山西游骑兵电子商务有限公司",
-        legalName: "山西游骑兵电子商务有限公司",
-        alternateName: ["夏日之海", "titmas", "TITMAS"],
+        "@type": "Person",
+        "@id": "https://redcrag.cn/#bin-zhang",
+        name: "Bin Zhang",
         url: "https://redcrag.cn/",
-        logo: "https://redcrag.cn/titmas-logo.png",
+        sameAs: ["https://github.com/joy7758", "https://orcid.org/0009-0002-8861-1481"],
+        description: "Research Engineer building trustworthy infrastructure for autonomous AI systems.",
       },
       {
-        "@type": "WebSite",
-        "@id": "https://redcrag.cn/#website",
-        name: locale === "zh" ? "夏日之海 · TITMAS" : "titmas · TITMAS",
-        url: "https://redcrag.cn/",
-        inLanguage: ["zh-CN", "en"],
-        description: locale === "zh"
-          ? "TITMAS 智能体行动控制与可验证执行平台。"
-          : "TITMAS Agent Action Control and Verifiable Accountability Platform.",
-        image: "https://redcrag.cn/titmas-logo.png",
-        publisher: { "@id": "https://redcrag.cn/#organization" },
-        hasPart: [
-          ...humanEntries.map(([name, , href]) => ({ "@type": "WebPage", name, url: `https://redcrag.cn${href}` })),
-          ...machineEntries.map(([name, , href]) => ({ "@type": "DigitalDocument", name, url: `https://redcrag.cn${href}` })),
-        ],
+        "@type": "ResearchProject",
+        "@id": "https://redcrag.cn/#dcell",
+        name: "DCELL",
+        url: "https://redcrag.cn/#dcell",
+        description: "A research direction for evidence-driven, bounded, independently identifiable, experience-preserving, replaceable, and evolvable autonomous AI systems.",
+        funder: { "@id": "https://redcrag.cn/#bin-zhang" },
       },
     ],
   };
 
   return (
-    <div className="site" lang={c.lang}>
+    <div className="site" lang={locale === "zh" ? "zh-CN" : "en"}>
       <Header locale={locale} />
       <main id="main-content">
         <HeroCarousel locale={locale} />
 
-        <section className="section home-overview" id="about" data-section-id="platform-and-products">
+        <section className="section home-overview" id="problem" data-section-id="autonomous-experimental-loop">
           <div className="section-shell">
-            <div className="section-heading">
-              <p className="section-kicker">{locale === "zh" ? "一个私有平台，四个对外产品" : "ONE PRIVATE PLATFORM, FOUR PUBLIC PRODUCTS"}</p>
-              <h2>{locale === "zh" ? "关键行动控制与可验证追责，共用同一套私有核心" : "Critical-action control and verifiable accountability on one private core"}</h2>
-              <p>{locale === "zh" ? "公开入口负责发现、理解和独立检查；私有核心保持闭源。产品页描述边界和试点候选，不代表服务已经开放。" : "Public surfaces support discovery, understanding, and independent inspection while the core remains closed. Product pages describe boundaries and pilot candidates, not generally available services."}</p>
-            </div>
+            <div className="section-heading"><p className="section-kicker">{c.problemKicker}</p><h2>{c.problemTitle}</h2><p>{c.problemLead}</p></div>
             <div className="home-product-grid">
-              {products.map(([name, role, href, tag], index) => (
-                <a href={href} key={name}>
-                  <span>{String(index + 1).padStart(2, "0")}</span>
-                  <code>{tag}</code>
-                  <h3>{name}</h3>
-                  <p>{role}</p>
-                  <b>→</b>
-                </a>
-              ))}
+              {c.problemSteps.map(([number, title, body]) => <article key={number}><span>{number}</span><h3>{title}</h3><p>{body}</p></article>)}
             </div>
           </div>
         </section>
 
-        <section className="section home-showcase" data-section-id="monitor-first-path">
+        <section className="section home-showcase" id="public-evidence" data-section-id="public-evidence">
           <div className="section-shell">
-            <div className="section-heading">
-              <p className="section-kicker">MONITOR BEFORE ENFORCE</p>
-              <h2>{locale === "zh" ? "从低风险评估进入客户特定控制" : "Move from low-risk evaluation to customer-specific control"}</h2>
-              <p>{locale === "zh" ? "当前只证明合成参考路径；任何付费、Credential、部署或 Enforce 都必须经过独立 Human Decision。" : "Only synthetic reference paths are currently evidenced. Payment, credentials, deployment, and Enforce each require a separate Human Decision."}</p>
-            </div>
-            <ol className="commercial-path">
-              {[
-                ["01", "Health Snapshot", locale === "zh" ? "识别接入缺口" : "Identify onboarding gaps", local("/products/health/")],
-                ["02", "Monitor Pilot", locale === "zh" ? "产生 Shadow Decision，不阻断" : "Create Shadow Decisions without blocking", local("/monitor-pilot/")],
-                ["03", "Enforce Pilot", locale === "zh" ? "仅客户特定授权后评估" : "Evaluate only after customer-specific authorization", local("/enforce-pilot/")],
-                ["04", locale === "zh" ? "企业私有部署" : "Enterprise private deployment", locale === "zh" ? "未来合同与部署闸门" : "Future contract and deployment gate", local("/request-access/")],
-              ].map(([index, title, body, href]) => (
-                <li key={index}><span>{index}</span><h3>{title}</h3><p>{body}</p><a href={href}>→</a></li>
+            <div className="section-heading"><p className="section-kicker">{c.evidenceKicker}</p><h2>{c.evidenceTitle}</h2><p>{c.evidenceLead}</p></div>
+            <div className="home-showcase-grid">
+              {c.evidence.map((item, index) => (
+                <article className={`home-showcase-card${index === 0 ? " home-showcase-card-featured" : ""}`} key={item.name}>
+                  <div><span>0{index + 1}</span><code>{item.maturity}</code></div><h3>{item.name}</h3><p><strong>Problem:</strong> {item.problem}</p><p><strong>Exists:</strong> {item.exists}</p><p><strong>Limitation:</strong> {item.limit}</p><nav><a href={item.href}>GitHub <span>↗</span></a></nav>
+                </article>
               ))}
-            </ol>
+            </div>
           </div>
         </section>
 
-        <section className="section home-developer" id="agent-start" data-section-id="human-and-agent-entry">
+        <section className="section home-developer" id="dcell" data-section-id="dcell-research-direction">
           <div className="section-shell home-developer-grid">
-            <div>
-              <p className="section-kicker">{locale === "zh" ? "人类与智能体双入口" : "HUMAN AND AGENT ENTRY"}</p>
-              <h2>{locale === "zh" ? "人类审查商业范围，智能体读取精确机器契约" : "Humans review commercial scope; agents read precise machine contracts"}</h2>
-              <p>{locale === "zh" ? "入口不会自动创建客户、Workspace、Key、Permission、合同或生产部署。" : "No entry automatically creates a customer, workspace, key, permission, contract, or production deployment."}</p>
-              <div className="home-entry-list">
-                {humanEntries.map(([title, description, href]) => <a href={href} key={href}><strong>{title}</strong><span>{description}</span><i>→</i></a>)}
-              </div>
-            </div>
+            <div><p className="section-kicker">{c.dcellKicker}</p><h2>{c.dcellTitle}</h2><p>{c.dcellLead}</p></div>
             <aside className="home-machine-entry">
-              <div><span>{locale === "zh" ? "机器商业目录" : "Machine commercial catalogs"}</span><code>STATIC · PUBLIC-SAFE</code></div>
-              {machineEntries.map(([title, description, href]) => <a href={href} key={href}><strong>{title}</strong><small>{description}</small></a>)}
+              <div><span>MATURITY MODEL</span><code>PUBLIC CLAIM BOUNDARY</code></div>
+              {c.maturity.map(([label, text]) => <div key={label}><strong>{label}</strong><small>{text}</small></div>)}
             </aside>
           </div>
         </section>
 
-        <section className="section home-status" id="status" data-section-id="current-commercial-boundary">
+        <section className="section home-showcase" id="titmas-history" data-section-id="titmas-founding-engineering-experiment">
+          <div className="section-shell home-developer-grid">
+            <div><p className="section-kicker">{c.titmasKicker}</p><h2>{c.titmasTitle}</h2><p>{c.titmasLead}</p></div>
+            <div className="home-entry-list">{c.titmasLinks.map(([label, href]) => <a href={href} key={href}><strong>{label}</strong><i>→</i></a>)}</div>
+          </div>
+        </section>
+
+        <section className="section home-status" id="researcher" data-section-id="researcher">
           <div className="section-shell">
-            <div className="section-heading">
-              <p className="section-kicker">{locale === "zh" ? "当前商业事实" : "CURRENT COMMERCIAL TRUTH"}</p>
-              <h2>{locale === "zh" ? "参考实现已形成，可用 Offering 尚未成立" : "Reference implementation exists; no available offering is established"}</h2>
-            </div>
-            <div className="home-status-grid">
-              <article><span>PRIVATE CORE</span><strong>CLOSED</strong><p>{locale === "zh" ? "公开接口不等于私有实现。" : "Public interface is not private implementation."}</p></article>
-              <article><span>MONITOR</span><strong>REFERENCE IMPLEMENTED</strong><p>{locale === "zh" ? "合成、未部署、不会阻断。" : "Synthetic, not deployed, and non-blocking."}</p></article>
-              <article><span>AVAILABLE OFFERINGS</span><strong>0</strong><p>{locale === "zh" ? "没有自动销售、支付或 Key。" : "No automated sales, payment, or keys."}</p></article>
-              <article><span>PRODUCTION READY</span><strong>false</strong><p>{locale === "zh" ? "没有客户采用、认证或法律通过声明。" : "No customer adoption, certification, or legal-pass claim."}</p></article>
-            </div>
-            <div className="home-boundary-row">
-              <p><code>Evidence ≠ Truth · Verification ≠ Authorization · Request ≠ Access</code><br />{locale === "zh" ? "所有结果保持来源、范围、失败与限制。" : "Every result retains provenance, scope, failure, and limits."}</p>
-              <nav><a href={local("/status/")}>{locale === "zh" ? "完整状态" : "Full status"}<span>→</span></a><a href={local("/request-access/")}>{locale === "zh" ? "申请边界" : "Request boundary"}<span>→</span></a></nav>
-            </div>
+            <div className="section-heading"><p className="section-kicker">{c.researcherKicker}</p><h2>{c.researcherTitle}</h2><p>{c.researcherLead}</p></div>
+            <div className="home-boundary-row"><p><code>Evidence ≠ Truth · Evaluation ≠ Authority · Recommendation ≠ Decision · Decision ≠ Execution</code></p><nav>{c.researcherLinks.map(([label, href]) => <a href={href} key={href}>{label}<span>→</span></a>)}</nav></div>
           </div>
         </section>
       </main>

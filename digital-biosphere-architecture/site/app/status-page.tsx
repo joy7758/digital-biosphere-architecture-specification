@@ -6,10 +6,10 @@ export function StatusPage({ locale }: { locale: Locale }) {
   const copy = locale === "zh"
     ? {
         eyebrow: "VERIFIABLE STATUS / 可验证状态",
-        title: "TITMAS 商业基础设施成熟度计划进行中",
-        lead: "有界服务、PostgreSQL 数据平面与运行指标已建立；CR-01 结构恢复通过，但 2 条历史 Receipt 的签名无法验证，完整恢复闸门阻塞且 RTO 尚未建立。",
+        title: "DCELL 是研究方向，公开工程证据保持有界",
+        lead: "本页区分当前 DCELL 公开定位与保留的 TITMAS 历史工程状态。网站对齐候选尚未部署；公开仓库不构成完整 Cell 生态、自主演化或生产平台。",
         observed: "观察时间",
-        current: "当前商业成熟度状态",
+        current: "当前公开定位与保留工程状态",
         baselines: "远程基线",
         gates: "验证闸门",
         visibility: "可见性",
@@ -17,6 +17,17 @@ export function StatusPage({ locale }: { locale: Locale }) {
         nextBody: "CR01-D02 已批准设计但未批准实施。下一步 CR01-D03 决定是否实施“不可变异常清单 + 租户级锚定清洁 epoch”及是否例外增加 PR 和部署额度；此前不修改 Gateway、不迁移数据库、不重启 CR-01 或 72 小时稳定性测试。",
         back: "返回首页",
         groups: [
+          {
+            title: "DCELL 公开对齐",
+            rows: [
+              ["DCELL_MATURITY", "RESEARCH_DIRECTION"],
+              ["WEBSITE_ALIGNMENT", "LOCAL_CANDIDATE_NOT_DEPLOYED"],
+              ["AUTONOMOUS_EXPERIMENTAL_LOOPS", "RESEARCH_FOCUS"],
+              ["COMPLETE_CELL_ECOSYSTEM", "false"],
+              ["AUTONOMOUS_EVOLUTION_ACHIEVED", "false"],
+              ["POST_TRAINING_SYSTEM", "false"],
+            ],
+          },
           {
             title: "商业候选服务",
             rows: [
@@ -78,10 +89,10 @@ export function StatusPage({ locale }: { locale: Locale }) {
       }
     : {
         eyebrow: "VERIFIABLE STATUS",
-        title: "TITMAS commercial infrastructure maturity program in progress",
-        lead: "The bounded service, PostgreSQL data plane, and operational metrics exist. CR-01 structural restoration passed, but 2 historical Receipt signatures could not be verified; full recovery is blocked and RTO is not established.",
+        title: "DCELL is a research direction; public engineering evidence remains bounded",
+        lead: "This page separates the current DCELL public positioning from retained TITMAS engineering history. The website-alignment candidate is not deployed, and public repositories do not constitute a complete Cell ecosystem, achieved autonomous evolution, or a production platform.",
         observed: "Observed at",
-        current: "Current commercial maturity status",
+        current: "Current public alignment and retained engineering status",
         baselines: "Remote baselines",
         gates: "Validation gates",
         visibility: "Visibility",
@@ -89,6 +100,17 @@ export function StatusPage({ locale }: { locale: Locale }) {
         nextBody: "CR01-D02 approved design, not implementation. CR01-D03 must decide whether to implement an immutable exception manifest plus Tenant-scoped anchored clean epochs and whether to grant PR and deployment-cap exceptions. Gateway changes, database migration, CR-01 restart, and the 72-hour soak remain closed.",
         back: "Back to home",
         groups: [
+          {
+            title: "DCELL public alignment",
+            rows: [
+              ["DCELL_MATURITY", "RESEARCH_DIRECTION"],
+              ["WEBSITE_ALIGNMENT", "LOCAL_CANDIDATE_NOT_DEPLOYED"],
+              ["AUTONOMOUS_EXPERIMENTAL_LOOPS", "RESEARCH_FOCUS"],
+              ["COMPLETE_CELL_ECOSYSTEM", "false"],
+              ["AUTONOMOUS_EVOLUTION_ACHIEVED", "false"],
+              ["POST_TRAINING_SYSTEM", "false"],
+            ],
+          },
           {
             title: "Commercial candidate service",
             rows: [
@@ -158,7 +180,7 @@ export function StatusPage({ locale }: { locale: Locale }) {
             <p className="section-kicker">{copy.eyebrow}</p>
             <h1>{copy.title}</h1>
             <p>{copy.lead}</p>
-            <div className="observed-chip"><span>{copy.observed}</span><strong>2026-07-31 · Asia/Shanghai</strong></div>
+            <div className="observed-chip"><span>{copy.observed}</span><strong>2026-08-08 · Asia/Shanghai</strong></div>
           </div>
         </section>
         <section className="section status-detail-section current-truth-section">

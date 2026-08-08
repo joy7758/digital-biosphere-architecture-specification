@@ -1,12 +1,17 @@
-# Trusted Multi-Agent Infrastructure Website
+# DCELL Research Direction Website
 
-中英文双语、agent-readable（智能体可读）的 Trusted Multi-Agent
-Infrastructure（可信多智能体基础设施）公开门户。
+Bin Zhang 的中英文双语、agent-readable（智能体可读）研究门户，公开定位为：
+`Research Engineer building trustworthy infrastructure for autonomous AI systems.`
+DCELL 始终是 `RESEARCH_DIRECTION`。
 
 ## Truth status
 
 ```text
 SITE_IMPLEMENTED=true
+PUBLIC_FOCUS=DCELL_RESEARCH_DIRECTION
+WEBSITE_ALIGNMENT_CANDIDATE_DEPLOYED=false
+DCELL_COMPLETE_SYSTEM_IMPLEMENTED=false
+AUTONOMOUS_EVOLUTION_ACHIEVED=false
 STATIC_SITE_BUILD_PASS=true
 ZH_EN_CONTENT_PARITY_PASS=true
 AGENT_READABLE_ENTRY_PASS=true
@@ -15,7 +20,8 @@ SITE_URL=https://redcrag.cn/
 SITE_HEALTH_PASS=true
 SITE_ROLLBACK_VALIDATED=true
 DEVELOPER_PREVIEW_RELEASED=true
-CURRENT_STAGE=TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM
+CURRENT_STAGE=DCELL_RESEARCH_DIRECTION_ALIGNMENT
+RETAINED_TITMAS_STAGE=TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM
 COMMERCIAL_PROGRAM_STATUS=WAITING_FOR_HUMAN_DECISION
 CR01_STATUS=BLOCKED_LEDGER_INTEGRITY
 CR01_D02_STATUS=ACCEPTED_DESIGN_ONLY
@@ -30,10 +36,10 @@ AVAILABLE_COMMERCIAL_OFFERING_COUNT=0
 COMMUNITY_MATERIAL_STATUS=HISTORICAL_NON_CURRENT
 ```
 
-这个目录是网站实现，不是 DBOS Runtime（运行时）、SAEE Evaluation
-Runtime（评价运行时）或 Agent（智能体）实现。页面将当前项目称为
-`Developer Preview v0.1`（开发者预览版 v0.1）。正式发布不构成生产可用性、
-客户采用、Runtime 或 Permission 声明。
+这个目录是网站实现，不是 DCELL 平台、DBOS Runtime（运行时）、SAEE Evaluation
+Runtime（评价运行时）或 Agent（智能体）实现。TITMAS 作为更广泛 DCELL 研究方向下的
+早期工程种子和第一个实验实例保留。既有 `Developer Preview v0.1` 历史状态不构成
+DCELL 生产可用性、完整 Cell 生态、自主演化、客户采用、Runtime 或 Permission 声明。
 
 ## Routes
 

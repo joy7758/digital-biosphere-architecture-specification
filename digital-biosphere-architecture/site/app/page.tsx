@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import { PortalPage } from "./portal-page";
 
 export const metadata: Metadata = {
-  title: { absolute: "山西游骑兵电子商务有限公司" },
+  title: { absolute: "Bin Zhang · DCELL 研究方向" },
   description:
-    "TITMAS智能体行动控制与可验证执行平台。闭源私有核心，公开发现与合成证明。",
+    "为自主 AI 系统构建可信基础设施的研究工程师。DCELL 是以公开工程证据为基础的研究方向。",
   alternates: {
     canonical: "/",
     languages: { "zh-CN": "/", en: "/en/" },

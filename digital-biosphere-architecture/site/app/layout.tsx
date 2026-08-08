@@ -4,36 +4,35 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL("https://redcrag.cn"),
   icons: {
-    icon: [{ url: "/titmas-logo.png", type: "image/png", sizes: "1024x1024" }],
-    apple: [{ url: "/titmas-logo.png", type: "image/png", sizes: "1024x1024" }],
+    icon: [{ url: "/favicon.svg", type: "image/svg+xml" }],
   },
   title: {
-    default: "山西游骑兵电子商务有限公司",
-    template: "%s · 山西游骑兵电子商务有限公司",
+    default: "Bin Zhang · DCELL Research Direction",
+    template: "%s · Bin Zhang",
   },
   description:
-    "TITMAS智能体行动控制与可验证执行平台：闭源私有核心、公开发现与合成证明。",
+    "Research Engineer building trustworthy infrastructure for autonomous AI systems. DCELL is a research direction grounded in public engineering evidence.",
   openGraph: {
     type: "website",
-    siteName: "山西游骑兵电子商务有限公司",
-    title: "山西游骑兵电子商务有限公司",
+    siteName: "Bin Zhang · DCELL Research Direction",
+    title: "Trustworthy infrastructure for autonomous AI systems",
     description:
-      "TITMAS Agent Action Control and Verifiable Accountability Platform.",
+      "Public engineering evidence and the DCELL research direction for bounded, verifiable autonomous AI systems.",
     images: [
       {
-        url: "/titmas-logo.png",
-        width: 1024,
-        height: 1024,
-        alt: "夏日之海 / titmas",
+        url: "/og-dcell.png",
+        width: 1731,
+        height: 909,
+        alt: "Bin Zhang research website",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "山西游骑兵电子商务有限公司",
+    title: "Bin Zhang · DCELL Research Direction",
     description:
-      "Closed-core commercial agent infrastructure with public discovery and bounded synthetic proof.",
-    images: ["/titmas-logo.png"],
+      "Research Engineer building trustworthy infrastructure for autonomous AI systems.",
+    images: ["/og-dcell.png"],
   },
 };
 

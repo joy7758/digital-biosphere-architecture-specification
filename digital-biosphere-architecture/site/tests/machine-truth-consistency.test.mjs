@@ -40,14 +40,23 @@ function assertJsonTruth(key, expected) {
 }
 
 test("MT-01 current stage agrees", () => {
-  const expected = "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM";
-  assertJsonTruth("current_stage", expected);
+  const expected = "DCELL_RESEARCH_DIRECTION_ALIGNMENT";
+  assert.equal(status.current_stage, expected);
+  assert.equal(agentIndex.current_stage, expected);
+  assert.equal(status.retained_titmas_stage, "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM");
+  assert.equal(agentIndex.retained_titmas_stage, "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM");
+  assert.equal(customerPackage.current_truth.current_stage, "TITMAS_AGENT_NATIVE_COMMERCIAL_MATURITY_PROGRAM");
   assert.match(llms, new RegExp(`CURRENT_STAGE=${expected}`));
-  assert.match(zhHome, /当前商业事实/);
-  assert.match(enHome, /CURRENT COMMERCIAL TRUTH/);
+  assert.match(zhStatus, /保留工程状态/);
+  assert.match(enStatus, /retained engineering status/);
 });
 
-test("MT-00 public brand stays distinct from the TITMAS technical identifier", () => {
+test("MT-00 DCELL public positioning preserves TITMAS compatibility records", () => {
+  assert.equal(agentIndex.public_focus, "DCELL_RESEARCH_DIRECTION");
+  assert.equal(status.public_focus, "DCELL_RESEARCH_DIRECTION");
+  assert.equal(agentIndex.public_identity.name, "Bin Zhang");
+  assert.equal(agentIndex.research_direction.maturity, "RESEARCH_DIRECTION");
+  assert.equal(status.website_alignment.dcell_maturity, "RESEARCH_DIRECTION");
   assert.equal(agentIndex.display_name_zh, "夏日之海");
   assert.equal(agentIndex.display_name_en, "titmas");
   assert.equal(agentIndex.public_brand_logo, "/titmas-logo.png");
@@ -59,10 +68,10 @@ test("MT-00 public brand stays distinct from the TITMAS technical identifier", (
   assert.equal(wellKnown.display_brand_en, "titmas");
   assert.equal(wellKnown.public_brand_logo, "/titmas-logo.png");
   assert.equal(wellKnown.technical_brand, "TITMAS");
-  assert.match(zhHome, /\/titmas-logo\.png/);
-  assert.match(enHome, /aria-label="titmas · Trusted Multi-Agent Infrastructure"/);
-  assert.doesNotMatch(zhHome, /\/summersea-logo\.png/);
-  assert.doesNotMatch(enHome, /\/summersea-logo\.png/);
+  assert.match(zhHome, /DCELL · RESEARCH_DIRECTION/);
+  assert.match(enHome, /Building trustworthy infrastructure for autonomous AI systems/);
+  assert.doesNotMatch(zhHome, /\/titmas-logo\.png|\/summersea-logo\.png/);
+  assert.doesNotMatch(enHome, /\/titmas-logo\.png|\/summersea-logo\.png/);
 });
 
 test("MT-02 E01 status agrees", () => {
@@ -77,8 +86,6 @@ test("MT-03 private core status agrees", () => {
   assertJsonTruth("current_core_repository_visibility", "PRIVATE");
   assertJsonTruth("public_core_clone_available", false);
   assert.match(llms, /CURRENT_CORE_REPOSITORY_VISIBILITY=PRIVATE/);
-  assert.match(zhHome, /闭源私有核心/);
-  assert.match(enHome, /closed private core/i);
 });
 
 test("MT-04 public intake status agrees", () => {
@@ -201,8 +208,22 @@ test("MT-10 private repository URLs are absent", () => {
   const privateRepositoryUrls = [
     /github\.com\/joy7758\/digital-biosphere-architecture-specification/i,
     /github\.com\/joy7758\/digital-biosphere-os/i,
-    /github\.com\/joy7758\/SAEE/i,
     /github\.com\/joy7758\/titmas-private-developer-trial/i,
   ];
   for (const pattern of privateRepositoryUrls) assert.doesNotMatch(publicText, pattern);
+  assert.match(publicText, /github\.com\/joy7758\/SAEE/);
+});
+
+test("MT-13 DCELL maturity and non-claims agree", () => {
+  assert.equal(agentIndex.schema_version, "0.2");
+  assert.deepEqual(agentIndex.compatible_with, ["0.1"]);
+  assert.deepEqual(agentIndex.maturity_model, ["IMPLEMENTED", "EXPERIMENTALLY_SUPPORTED", "PROTOTYPE", "RESEARCH_DIRECTION", "FUTURE_HYPOTHESIS"]);
+  assert.equal(agentIndex.research_direction.complete_system_implemented, false);
+  assert.equal(agentIndex.research_direction.autonomous_evolution_achieved, false);
+  assert.equal(status.website_alignment.digital_life_implemented, false);
+  assert.equal(status.website_alignment.complete_cell_ecosystem, false);
+  assert.equal(status.website_alignment.agi_claimed, false);
+  assert.match(llms, /AUTONOMOUS_EVOLUTION_ACHIEVED=false/);
+  assert.match(zhHome, /不共同构成一个已完成的 DCELL 系统/);
+  assert.match(enHome, /do not constitute a complete DCELL system/);
 });

@@ -2,15 +2,13 @@ import type { Locale } from "./site-content";
 import { content } from "./site-content";
 
 export function Brand({ locale }: { locale: Locale }) {
-  const brandName = locale === "zh" ? "夏日之海" : "titmas";
-  const brandDescriptor = locale === "zh" ? "可信多智能体基础设施" : "Trusted Multi-Agent Infrastructure";
+  const brandName = "DCELL";
+  const brandDescriptor = locale === "zh" ? "自主 AI 系统可信基础设施研究" : "Trustworthy infrastructure research";
 
   return (
     <span className="brand" aria-label={`${brandName} · ${brandDescriptor}`}>
       <span className="brand-mark" aria-hidden="true">
-        {/* Static export uses the authorized public brand asset without an image-optimization runtime. */}
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img src="/titmas-logo.png" alt="" width="1024" height="1024" />
+        <span className="brand-glyph">D</span>
       </span>
       <span className="brand-name">
         <strong>{brandName}</strong>
@@ -44,11 +42,6 @@ export function Header({ locale, section = "home", languageHref }: { locale: Loc
   const c = content[locale];
   const root = locale === "zh" ? "/" : "/en/";
   const research = locale === "zh" ? "/research/" : "/en/research/";
-  const products = locale === "zh" ? "/products/gate/" : "/en/products/gate/";
-  const monitor = locale === "zh" ? "/monitor-pilot/" : "/en/monitor-pilot/";
-  const proof = locale === "zh" ? "/commercial-evaluation/" : "/en/commercial-evaluation/";
-  const designPartner = locale === "zh" ? "/design-partner/" : "/en/design-partner/";
-  const requestAccess = locale === "zh" ? "/request-access/" : "/en/request-access/";
   const languageRoutes: Record<SiteSection, [string, string]> = {
     home: ["/en/", "/"],
     research: ["/en/research/", "/research/"],
@@ -73,12 +66,11 @@ export function Header({ locale, section = "home", languageHref }: { locale: Loc
 
   const nav = (
     <>
-      <a href={products} aria-current={section === "commercialEntry" ? "page" : undefined}>{locale === "zh" ? "产品" : "Products"}</a>
-      <a href={monitor}>{locale === "zh" ? "解决方案" : "Solutions"}</a>
-      <a href={proof} aria-current={section === "commercial" ? "page" : undefined}>{locale === "zh" ? "效果证明" : "Proof"}</a>
-      <a href={designPartner}>{locale === "zh" ? "设计伙伴" : "Design partners"}</a>
+      <a href={`${root}#public-evidence`}>{locale === "zh" ? "公开证据" : "Evidence"}</a>
+      <a href={`${root}#dcell`}>DCELL</a>
       <a href={research} aria-current={section === "research" || section === "researchIndex" ? "page" : undefined}>{locale === "zh" ? "研究" : "Research"}</a>
-      <a href={requestAccess}>{locale === "zh" ? "申请访问" : "Request access"}</a>
+      <a href={`${root}#titmas-history`}>{locale === "zh" ? "TITMAS 历史" : "TITMAS history"}</a>
+      <a href={`${root}#researcher`}>{locale === "zh" ? "研究者" : "Researcher"}</a>
       <a className="language-link" href={language} hrefLang={locale === "zh" ? "en" : "zh-CN"}>
         {c.nav.language}
       </a>
@@ -119,35 +111,27 @@ export function Footer({ locale }: { locale: Locale }) {
       <div className="footer-grid">
         <div>
           <Brand locale={locale} />
-          <p>{c.footer}</p>
+          <p>{locale === "zh" ? "Bin Zhang：为自主 AI 系统构建可信基础设施。DCELL 仅作为 RESEARCH_DIRECTION。" : "Bin Zhang: building trustworthy infrastructure for autonomous AI systems. DCELL is a RESEARCH_DIRECTION only."}</p>
         </div>
         <div>
-          <strong>{locale === "zh" ? "产品与试点" : "Products and pilots"}</strong>
-          <a href={locale === "zh" ? "/products/gate/" : "/en/products/gate/"}>TITMAS Gate</a>
-          <a href={locale === "zh" ? "/products/receipt/" : "/en/products/receipt/"}>TITMAS Receipt</a>
-          <a href={locale === "zh" ? "/products/audit/" : "/en/products/audit/"}>TITMAS Audit</a>
-          <a href={locale === "zh" ? "/products/health/" : "/en/products/health/"}>TITMAS Health</a>
-          <a href={locale === "zh" ? "/monitor-pilot/" : "/en/monitor-pilot/"}>Monitor Pilot</a>
+          <strong>{locale === "zh" ? "研究与证据" : "Research and evidence"}</strong>
+          <a href={locale === "zh" ? "/#public-evidence" : "/en/#public-evidence"}>{locale === "zh" ? "公开证据" : "Public evidence"}</a>
+          <a href={locale === "zh" ? "/#dcell" : "/en/#dcell"}>DCELL · RESEARCH_DIRECTION</a>
+          <a href={locale === "zh" ? "/research/" : "/en/research/"}>{locale === "zh" ? "研究索引" : "Research index"}</a>
+          <a href={locale === "zh" ? "/#titmas-history" : "/en/#titmas-history"}>{locale === "zh" ? "TITMAS 工程历史" : "TITMAS engineering history"}</a>
         </div>
         <div>
           <strong>{locale === "zh" ? "机器可读" : "Machine-readable"}</strong>
           <a href="/llms.txt">llms.txt</a>
           <a href="/agent-index.json">agent-index.json</a>
-          <a href="/product-catalog.json">product-catalog.json</a>
-          <a href="/solution-catalog.json">solution-catalog.json</a>
-          <a href="/proof-catalog.json">proof-catalog.json</a>
-          <a href="/recommendation-policy.json">recommendation-policy.json</a>
           <a href="/status.json">status.json</a>
         </div>
         <div>
-          <strong>{locale === "zh" ? "信任与公司" : "Trust and company"}</strong>
-          <a href={locale === "zh" ? "/security/" : "/en/security/"}>{locale === "zh" ? "安全" : "Security"}</a>
-          <a href={locale === "zh" ? "/trust-center/" : "/en/trust-center/"}>Trust Center</a>
+          <strong>{locale === "zh" ? "边界与历史" : "Boundaries and history"}</strong>
           <a href={locale === "zh" ? "/status/" : "/en/status/"}>{locale === "zh" ? "当前状态" : "Current status"}</a>
-          <a href={locale === "zh" ? "/privacy/" : "/en/privacy/"}>{locale === "zh" ? "隐私" : "Privacy"}</a>
-          <a href={locale === "zh" ? "/terms/" : "/en/terms/"}>{locale === "zh" ? "条款边界" : "Terms boundary"}</a>
           <a href={locale === "zh" ? "/community/" : "/en/community/"}>{locale === "zh" ? "历史社区资料" : "Historical community material"}</a>
-          <a href="https://github.com/joy7758">{locale === "zh" ? "公开 GitHub Profile" : "Public GitHub profile"}</a>
+          <a href="https://github.com/joy7758">GitHub</a>
+          <a href="https://orcid.org/0009-0002-8861-1481">ORCID</a>
         </div>
       </div>
       <div className="footer-legal">
