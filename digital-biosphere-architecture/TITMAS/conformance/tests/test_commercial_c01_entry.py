@@ -152,6 +152,9 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/architecture/titmas-d29-private-platform-architecture-v1.md",
         "digital-biosphere-architecture/architecture/titmas-fdo-dtr-pvs0-assets-v0.1.json",
         "digital-biosphere-architecture/architecture/titmas-fdo-dtr-pvs0-auxiliary-line-status-v0.1.md",
+        "digital-biosphere-architecture/cockpit/projections/titmac-scout.json",
+        "digital-biosphere-architecture/cockpit/source-registry.json",
+        "digital-biosphere-architecture/cockpit/tests/test_titmac_scout_bridge.py",
         "digital-biosphere-architecture/docs/TITMAS_PRIVATE_PLATFORM_ARCHITECTURE_v0.1.md",
         "digital-biosphere-architecture/docs/TITMAS_PRODUCT_PORTFOLIO_v0.1.md",
         "digital-biosphere-architecture/docs/TITMAS_WEBSITE_RESTRUCTURE_PLAN_v0.1.md",
@@ -383,6 +386,14 @@ class CommercialC01EntryTests(unittest.TestCase):
         self.assertIsNone(forbidden_change_reason({"digital-biosphere-architecture/site/app/site-content.ts"}))
         self.assertIsNone(forbidden_change_reason({"digital-biosphere-architecture/site/public/llms.txt"}))
         self.assertIsNone(forbidden_change_reason({"digital-biosphere-architecture/commercial/validation/d29-multi-agent-v1/source-materials/site/public/proof-catalog.json"}))
+        self.assertIsNone(forbidden_change_reason({
+            "digital-biosphere-architecture/cockpit/projections/titmac-scout.json",
+            "digital-biosphere-architecture/cockpit/source-registry.json",
+            "digital-biosphere-architecture/cockpit/tests/test_titmac_scout_bridge.py",
+        }))
+        self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({
+            "digital-biosphere-architecture/cockpit/unregistered-status.json"
+        }))
         self.assertEqual("OWNER_ROUTING_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/TITMAS/agent-native/evolution/canonical-owner-map.json"}))
         self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({"digital-biosphere-architecture/unknown.py"}))
         self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({"digital-biosphere-architecture/commercial/observer.py"}))

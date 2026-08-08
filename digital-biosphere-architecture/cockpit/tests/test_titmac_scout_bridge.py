@@ -188,7 +188,7 @@ class TitmacScoutBridgeTest(unittest.TestCase):
         )
         summary = projection["summary"]
         self.assertEqual(
-            "3f08f1a251b5e979c2984adcf26109ad3e069c4c",
+            "e4adbbbbb149871f108fcf384369182d8c5765f4",
             projection["source_revision"],
         )
         self.assertEqual("PASS", projection["cockpit_status"])
