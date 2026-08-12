@@ -20,6 +20,14 @@ historical names only. They do not describe the current strategy.
 - Agent entry: [`../agent-index.json`](../agent-index.json)
 - Current strategy constitution:
   [`../architecture/commercial-private-infrastructure-strategy-constitution.md`](../architecture/commercial-private-infrastructure-strategy-constitution.md)
+- Draft constitutional coherence amendment — Human review required:
+  [`../architecture/dba-main-constitution-coherence-amendment-v0.1.md`](../architecture/dba-main-constitution-coherence-amendment-v0.1.md)
+- Draft TITMAS unified-entry and DCell amendment — not implemented:
+  [`../architecture/titmas-project-constitution-unified-entry-dcell-amendment-v0.1.md`](../architecture/titmas-project-constitution-unified-entry-dcell-amendment-v0.1.md)
+- Draft constitutional machine contracts:
+  [`../architecture/main-constitution-principles.json`](../architecture/main-constitution-principles.json),
+  [`../architecture/titmas-project-constitution.json`](../architecture/titmas-project-constitution.json),
+  [`../architecture/dcell-module-governance-profile.json`](../architecture/dcell-module-governance-profile.json)
 - C-01 Commercial Constitution:
   [`../docs/commercial/TITMAS_COMMERCIAL_CONSTITUTION_v1.0.md`](../docs/commercial/TITMAS_COMMERCIAL_CONSTITUTION_v1.0.md)
 - Observer customer entry contract:

@@ -1,0 +1,154 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://redcrag.cn/schemas/constitution-machine-contract-v0.1.schema.json",
+  "title": "DBA and TITMAS constitutional machine contract v0.1",
+  "type": "object",
+  "required": [
+    "$schema",
+    "contract_id",
+    "contract_type",
+    "version",
+    "status",
+    "title",
+    "title_zh",
+    "parent_constitution_ref",
+    "authority_effect",
+    "implementation_authorized",
+    "principles",
+    "invariants",
+    "non_claims",
+    "source_refs",
+    "limitations"
+  ],
+  "properties": {
+    "$schema": {
+      "const": "schemas/constitution-machine-contract-v0.1.schema.json"
+    },
+    "contract_id": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]+$"
+    },
+    "contract_type": {
+      "enum": [
+        "DBA_MAIN_CONSTITUTION_PRINCIPLES",
+        "TITMAS_PROJECT_CONSTITUTION",
+        "DCELL_MODULE_GOVERNANCE_PROFILE"
+      ]
+    },
+    "version": {
+      "const": "0.1.0"
+    },
+    "status": {
+      "const": "PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 10
+    },
+    "title_zh": {
+      "type": "string",
+      "minLength": 4
+    },
+    "parent_constitution_ref": {
+      "type": "string",
+      "minLength": 4
+    },
+    "authority_effect": {
+      "const": "NONE"
+    },
+    "implementation_authorized": {
+      "const": false
+    },
+    "principles": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "required": [
+          "stable_id",
+          "title",
+          "title_zh",
+          "status",
+          "statement",
+          "statement_zh",
+          "source_refs"
+        ],
+        "properties": {
+          "stable_id": {
+            "type": "string",
+            "pattern": "^[A-Z0-9][A-Z0-9._-]+$"
+          },
+          "title": {
+            "type": "string",
+            "minLength": 4
+          },
+          "title_zh": {
+            "type": "string",
+            "minLength": 2
+          },
+          "status": {
+            "enum": [
+              "REUSED_ACCEPTED_PRINCIPLE",
+              "PROPOSED_CONSTITUTIONAL_EXTENSION"
+            ]
+          },
+          "statement": {
+            "type": "string",
+            "minLength": 20
+          },
+          "statement_zh": {
+            "type": "string",
+            "minLength": 8
+          },
+          "source_refs": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 4
+            }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "invariants": {
+      "type": "array",
+      "minItems": 5,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z0-9_]+=(true|false)$"
+      }
+    },
+    "non_claims": {
+      "type": "array",
+      "minItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 4
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 4
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 4
+      }
+    }
+  }
+}
