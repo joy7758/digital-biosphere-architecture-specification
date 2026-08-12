@@ -59,6 +59,78 @@
     "implementation_authorized": {
       "const": false
     },
+    "human_interface_contract": {
+      "type": "object",
+      "required": [
+        "human_readback_must_be_comprehensible",
+        "human_readback_must_use_declared_principal_or_market_locale",
+        "locale_must_be_explicitly_declared",
+        "critical_status_must_not_be_machine_code_only",
+        "machine_contract_and_localized_explanation_must_coexist",
+        "global_hardcoded_human_locale"
+      ],
+      "properties": {
+        "human_readback_must_be_comprehensible": {"const": true},
+        "human_readback_must_use_declared_principal_or_market_locale": {"const": true},
+        "locale_must_be_explicitly_declared": {"const": true},
+        "critical_status_must_not_be_machine_code_only": {"const": true},
+        "machine_contract_and_localized_explanation_must_coexist": {"const": true},
+        "global_hardcoded_human_locale": {"const": false},
+        "machine_contract_remains_canonical": {"type": "boolean"},
+        "localized_explanation_creates_authority": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "permission_model": {
+      "type": "object",
+      "required": [
+        "formula",
+        "applicable_constraints",
+        "applicable_constraint_intersection_required",
+        "human_approval_always_required",
+        "human_approval_required_when_policy_requires",
+        "human_approval_required_when_risk_class_requires",
+        "human_approval_required_when_action_class_requires",
+        "human_approval_required_on_explicit_escalation",
+        "not_applicable_constraint_is_missing_constraint",
+        "unknown_applicability_fails_closed",
+        "approval_binding_required",
+        "decision_outcomes",
+        "conformance_examples"
+      ],
+      "properties": {
+        "formula": {"type": "string", "minLength": 20},
+        "applicable_constraints": {"type": "array", "minItems": 8, "uniqueItems": true, "items": {"type": "string"}},
+        "applicable_constraint_intersection_required": {"const": true},
+        "human_approval_always_required": {"const": false},
+        "human_approval_required_when_policy_requires": {"const": true},
+        "human_approval_required_when_risk_class_requires": {"const": true},
+        "human_approval_required_when_action_class_requires": {"const": true},
+        "human_approval_required_on_explicit_escalation": {"const": true},
+        "not_applicable_constraint_is_missing_constraint": {"const": false},
+        "unknown_applicability_fails_closed": {"const": true},
+        "approval_binding_required": {"type": "array", "minItems": 8, "uniqueItems": true, "items": {"type": "string"}},
+        "decision_outcomes": {
+          "type": "object",
+          "required": ["ALLOW_OR_READY", "NEEDS_APPROVAL", "BLOCK", "NOT_ASSESSED_AND_FAIL_CLOSED"],
+          "properties": {
+            "ALLOW_OR_READY": {"type": "string", "minLength": 20},
+            "NEEDS_APPROVAL": {"type": "string", "minLength": 20},
+            "BLOCK": {"type": "string", "minLength": 20},
+            "NOT_ASSESSED_AND_FAIL_CLOSED": {"type": "string", "minLength": 20}
+          },
+          "additionalProperties": false
+        },
+        "conformance_examples": {
+          "type": "array",
+          "minItems": 8,
+          "items": {
+            "type": "object",
+            "required": ["case_id", "approval_applicable", "non_overridable_deny", "applicability_known", "expected_outcome"]
+          }
+        }
+      }
+    },
     "principles": {
       "type": "array",
       "minItems": 1,

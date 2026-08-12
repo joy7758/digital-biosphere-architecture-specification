@@ -10,6 +10,9 @@ Status: `PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW`
 | `ADR-033` | ADR-033 | §2 | module selection is a proposal, not activation | `NATURAL_LANGUAGE_NE_DIRECT_ACTIVATION=true` | `test_dcell_activation_fails_closed` |
 | `DBA-P-COMPATIBILITY-BEFORE-INNOVATION` | reuse audit | §3 | adapters before new runtime | `NEW_RUNTIME_CREATED=false` | `test_nonclaims_and_no_implementation_authority` |
 | `DBA-P-HUMAN-CONSTITUTIONAL-SOVEREIGNTY` | Program Charter / current constitution | §3 | parent cannot be overridden | `TITMAS_MAY_OVERRIDE_DBA=false` | `test_parent_child_inheritance_is_explicit` |
+| Applicable constraint intersection | capability boundary / governance decision | §5 | Human approval applies only when policy, risk, action class or escalation requires it | `APPLICABLE_CONSTRAINT_INTERSECTION_REQUIRED=true`; `HUMAN_APPROVAL_ALWAYS_REQUIRED=false` | `test_conditional_human_approval_semantics` |
+| Unknown applicability | capability boundary / fail-closed governance | §5 | not applicable is distinct from missing; unknown fails closed | `NOT_APPLICABLE_CONSTRAINT_NE_MISSING_CONSTRAINT=true`; `UNKNOWN_APPLICABILITY_FAILS_CLOSED=true` | `test_not_applicable_and_unknown_semantics` |
+| Bound approval | governance decision / parent-child authority | §5 | approval binds principal, Agent/version, task, action/resource, constitution, composition, scope and expiry | `one_time_approval_can_expand_parent_constitution=false` | `test_approval_bindings_and_non_overridable_deny` |
 | `DBA-P-COMPOSITION-ACCOUNTABILITY` | ADR-032 / entity lifecycle | §3 | DCell dependency lineage and composition re-evaluation | `COMPOSITION_NE_AUTHORITY_AGGREGATION=true` | `test_dcell_minimum_contract_and_composition_rules` |
 | `ADR-039` | ADR-039 | §2 | changed module invalidates inherited conclusion | `automatic_pass_inheritance=false` | `test_dcell_minimum_contract_and_composition_rules` |
 | `DBA-P-SHARED-PROTOCOL-NOT-CONTROLLER` | stack and DBOS/SAEE contract | §3 | distributed owned enforcement points | `UNIFIED_ENTRY_NE_GLOBAL_MANDATORY_GATEWAY=true` | `test_titmas_is_not_a_global_controller` |
@@ -17,6 +20,9 @@ Status: `PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW`
 | C-01 four products | ADR-041 / product catalog | §5 | Gate, Receipt, Audit, Health only | `product_count=4` | `test_product_portfolio_remains_four` |
 | Observer entry | ADR-041 / entry layer | §5 | non-product entry | `observer_is_product=false` | `test_product_portfolio_remains_four` |
 | DCell module layer | new profile | non-effect | not a fifth product | `public_product_count_effect=0` | `test_product_portfolio_remains_four` |
+| Global locale layering | Human interface contract | non-effect | declared principal/market locale; no global `zh-CN` hardcode | `GLOBAL_HARDCODED_HUMAN_LOCALE=false` | `test_base_locale_policy_is_declared_and_not_hardcoded` |
+| China market locale | C-01 Human entry surface | non-effect | `CHINA` profile defaults to `zh-CN` and Chinese explanations | `CHINA_MARKET_UI_DEFAULT=SIMPLIFIED_CHINESE` | `test_china_market_profile_preserves_chinese_first` |
+| Human direction record | ADR-043 | non-effect | content approved and adoption intended; effect waits for separate merge decision | `CONSTITUTION_EFFECTIVE=false`; `MERGE_AUTHORIZED=false` | `test_human_direction_is_recorded_without_adoption` |
 | D04 failure retention | ADR-038 / program state | §5 | no reopen or rewrite | `D04_CLOSED_FAILED_RETAINED=true` | `test_nonclaims_and_retained_failures` |
 | P0-10 failure retention | TITMAS README / integration evidence | §5 | no result rewrite | `P0_10_FAIL_CLOSED_RETAINED=true` | `test_nonclaims_and_retained_failures` |
 

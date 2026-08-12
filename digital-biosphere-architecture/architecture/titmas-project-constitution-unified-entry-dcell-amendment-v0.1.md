@@ -128,17 +128,47 @@ Policy-Required Cells 可以包括 Evidence Verification、Context Assurance、H
 
 ```text
 effective permission
-= parent constitution
-  ∩ organization policy
-  ∩ role policy
-  ∩ task authorization
-  ∩ agent boundary
-  ∩ DCell boundary
-  ∩ Human approval
+= intersection of all applicable constraints
+  (parent constitution
+   ∩ organization policy
+   ∩ role policy
+   ∩ task authorization
+   ∩ agent boundary
+   ∩ DCell boundary
+   ∩ current context
+   ∩ Human approval when applicable)
 ```
 
-任何一项缺失或过期都失败关闭。组合不聚合 Authority，新增、移除、更新或重组模块后必须
-重新评价受影响组合。
+这里的“适用”必须显式判断：不适用约束不等于缺失约束；无法判断约束是否适用时，必须
+`NOT_ASSESSED` 并失败关闭。Human approval（人工审批）不是每次行动都无条件要求；只有
+组织策略、风险等级、行动类别或显式升级规则要求时才成为适用约束。有效 standing
+authorization（常设授权）只有在策略明确允许且当前 scope、期限和绑定均有效时，才可满足
+对应审批义务。
+
+决策结果必须区分：
+
+- `ALLOW_OR_READY`：全部适用约束满足，且没有待满足的审批义务；它不是执行结果；
+- `NEEDS_APPROVAL`：审批已成为适用约束，但缺少有效、匹配且未过期的审批；
+- `BLOCK`：存在适用的不可覆盖拒绝，或某项适用约束明确不满足；
+- `NOT_ASSESSED_AND_FAIL_CLOSED`：适用性或必需输入未知，不得继续。
+
+一次性审批必须绑定 principal、Agent及版本、task、action及resource、constitution version、
+适用时的 composition digest，以及 scope 与 expiry。它不能扩大父级宪法，也不能覆盖
+non-overridable deny（不可覆盖拒绝）。组合不聚合 Authority，新增、移除、更新或重组
+模块后必须重新评价受影响组合。
+
+```text
+APPLICABLE_CONSTRAINT_INTERSECTION_REQUIRED=true
+HUMAN_APPROVAL_ALWAYS_REQUIRED=false
+HUMAN_APPROVAL_REQUIRED_WHEN_POLICY_REQUIRES=true
+HUMAN_APPROVAL_REQUIRED_WHEN_RISK_CLASS_REQUIRES=true
+HUMAN_APPROVAL_REQUIRED_WHEN_ACTION_CLASS_REQUIRES=true
+HUMAN_APPROVAL_REQUIRED_ON_EXPLICIT_ESCALATION=true
+NOT_APPLICABLE_CONSTRAINT_NE_MISSING_CONSTRAINT=true
+UNKNOWN_APPLICABILITY_FAILS_CLOSED=true
+ONE_TIME_APPROVAL_CAN_EXPAND_PARENT_CONSTITUTION=false
+ONE_TIME_APPROVAL_CAN_OVERRIDE_NON_OVERRIDABLE_DENY=false
+```
 
 高影响任务必须能够导出或复用 `COMPOSITION_GRAPH`、`AUTHORITY_GRAPH`、
 `DATA_FLOW_GRAPH` 与 `EVIDENCE_GRAPH`。安全单体的组合不自动等于安全组合；必须检查数据
@@ -166,20 +196,34 @@ UPGRADE_RECEIPT_REQUIRED=true
 
 Agent-first 不等于只提供底层 Schema。面向首次价值的入口必须：
 
-- 默认提供简体中文 Human 说明和稳定机器契约；
+- 提供稳定机器契约，以及使用显式声明的 principal locale 或 market locale 的可理解 Human 说明；
 - 不要求用户先掌握隐藏 CLI、猜测 Schema 或手工复制秘密；
 - 明确失败原因、修正路径、限制和是否需要 Human Decision；
 - 保留 `NOT_ASSESSED`，不得为了简单而伪造 PASS。
 
-这是一项入口设计约束，不授权网站、Console、SDK、MCP 或 Runtime 修改。
+基础宪法不硬编码任何全球 Human locale。机器 contract 与本地化解释必须并存，关键状态
+不能只显示机器代码。中国市场继续通过现有 C-01 Human entry surface 的 `CHINA` 市场
+Profile 默认 `zh-CN` 和简体中文；英文 reason code 可以保留，但必须同时提供中文解释。
+这是一项入口设计约束，不授权网站、Console、SDK、MCP、国际化系统或 Runtime 修改。
 
-自然语言规则必须依次经过结构化候选、中文等价回显、主体和范围、冲突／空白／例外检查、
+自然语言规则必须依次经过结构化候选、声明 locale 的等价回显、主体和范围、冲突／空白／例外检查、
 合成测试、Human confirmation、签名与版本发布。自然语言不得直接生效。
 
 ```text
 USABILITY_IS_CONSTITUTIONAL_REQUIREMENT=true
 USABILITY_IS_SAFETY_PROPERTY=true
+HUMAN_READBACK_MUST_BE_COMPREHENSIBLE=true
+HUMAN_READBACK_MUST_USE_DECLARED_PRINCIPAL_OR_MARKET_LOCALE=true
+LOCALE_MUST_BE_EXPLICITLY_DECLARED=true
+CRITICAL_STATUS_MUST_NOT_BE_MACHINE_CODE_ONLY=true
+MACHINE_CONTRACT_AND_LOCALIZED_EXPLANATION_MUST_COEXIST=true
+GLOBAL_HARDCODED_HUMAN_LOCALE=false
+MARKET_PROFILE=CHINA
 CHINA_MARKET_UI_DEFAULT=SIMPLIFIED_CHINESE
+DEFAULT_HUMAN_LOCALE=zh-CN
+CRITICAL_STATUS_REQUIRES_CHINESE_EXPLANATION=true
+ENGLISH_REASON_CODE_MAY_BE_RETAINED=true
+ENGLISH_REASON_CODE_REQUIRES_CHINESE_EXPLANATION=true
 CLI_REQUIRED_FOR_FIRST_VALUE=false
 MANUAL_SCHEMA_EDIT_REQUIRED=false
 LONG_LIVED_SECRET_PASTE_REQUIRED=false

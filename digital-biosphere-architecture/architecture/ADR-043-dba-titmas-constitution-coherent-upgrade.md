@@ -2,9 +2,13 @@
 adr_id: ADR-043
 title: DBA and TITMAS constitutional coherence for unified entry and DCell modules
 title_zh: DBA与TITMAS统一入口和DCell模块宪法一致性
-status: proposed_draft_awaiting_human_review
+status: proposed_draft_human_direction_approved_awaiting_adoption_and_merge_decision
 decision_id: DBA-TITMAS-CONSTITUTION-COHERENT-UPGRADE-v0.1
-decided_by_ref: NOT_DECIDED
+decided_by_ref: zhangbin
+decision_source: human-directed-codex-goal
+human_content_approval_recorded: true
+adoption_intent_recorded: true
+constitution_effective: false
 proposed_at: 2026-08-13
 implementation_authorized: false
 merge_authorized: false
@@ -61,10 +65,28 @@ Proposed. 该方案保持历史、所有权和产品边界，同时让 Agent 可
 
 ## Current decision state
 
+Human Owner `zhangbin` 认可本提案的原则方向，但要求在最终采纳前完成两项语义修正：
+
+1. Permission（权限）必须是所有适用约束的交集；Human approval 只在策略、风险等级、
+   行动类别或显式升级要求时适用，不能被写成每次行动的无条件约束；
+2. 全球基础宪法不得硬编码 `zh-CN`；Human readback 必须使用显式 principal/market locale，
+   中国市场 Profile 继续默认简体中文。
+
+本次 Human Decision 是 content direction approval（内容方向认可）和 adoption intent
+（采纳意向），不是 constitution adoption（宪法采纳）。只有修正后的 Draft PR 通过最终
+人工复核、获得独立 merge authorization 并合并到 canonical `main` 后，候选宪法才可另行
+记录为生效。它不产生实现、部署、发布、Runtime 或产品权限。
+
 ```text
-ADR_043_STATUS=PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW
-HUMAN_DECISION_RECORDED=false
+ADR_043_STATUS=PROPOSED_DRAFT_HUMAN_DIRECTION_APPROVED_AWAITING_ADOPTION_AND_MERGE_DECISION
+HUMAN_DECISION_RECORDED=true
+HUMAN_DECIDED_BY_REF=zhangbin
+HUMAN_DECISION_SOURCE=HUMAN_DIRECTED_CODEX_GOAL
+HUMAN_CONTENT_APPROVAL_RECORDED=true
+ADOPTION_INTENT_RECORDED=true
+CANDIDATE_APPROVED_BY_HUMAN=true
 CONSTITUTION_AMENDMENT_ADOPTED=false
+CONSTITUTION_EFFECTIVE=false
 IMPLEMENTATION_AUTHORIZED=false
 MERGE_AUTHORIZED=false
 RELEASE_AUTHORIZED=false

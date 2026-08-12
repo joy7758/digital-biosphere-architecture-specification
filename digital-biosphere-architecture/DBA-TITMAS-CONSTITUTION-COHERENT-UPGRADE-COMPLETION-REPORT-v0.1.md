@@ -2,7 +2,7 @@
 
 中文：DBA / TITMAS 宪法一致性升级完成报告 v0.1
 
-- Status: `DRAFT_PR_CANDIDATE_VALIDATED_WITH_CLEAN_CLONE`
+- Status: `DRAFT_PR_UPDATED_AWAITING_FINAL_HUMAN_REVIEW`
 - Canonical base: `main@352cdc2dfc548be62cfb3ffcb84e33b541b419f8`
 - Scope: documentation, machine contracts, schema and conformance only
 
@@ -10,6 +10,21 @@
 
 本变更以版本化 Draft amendment（草案修正案）连接 DBA 父级原则、TITMAS 项目宪法与
 DCell 模块治理，没有直接改写现行已采纳战略宪法，也没有创建实现或第五个产品。
+
+v0.2 语义纠偏把 Permission 改为所有适用约束的交集，不再把 Human approval 写成每次
+行动的无条件约束；同时移除全球基础 Profile 的 `zh-CN` 硬编码，并在现有 C-01 Human
+entry surface 中保留中国市场简体中文默认。Human Owner 已认可内容方向和采纳意向，但
+候选宪法尚未采纳或生效。
+
+```text
+APPLICABLE_CONSTRAINT_INTERSECTION_REQUIRED=true
+HUMAN_APPROVAL_ALWAYS_REQUIRED=false
+UNKNOWN_APPLICABILITY_FAILS_CLOSED=true
+GLOBAL_HARDCODED_HUMAN_LOCALE=false
+CHINA_MARKET_DEFAULT_LOCALE=zh-CN
+CONSTITUTION_EFFECTIVE=false
+MERGE_AUTHORIZED=false
+```
 
 ## 2. Artifacts
 
@@ -22,6 +37,8 @@ DCell 模块治理，没有直接改写现行已采纳战略宪法，也没有�
 - Shared Schema: `architecture/schemas/constitution-machine-contract-v0.1.schema.json`
 - Reuse audit and traceability matrix under `architecture/`
 - Conformance test: `TITMAS/conformance/tests/test_dba_titmas_constitution_coherence.py`
+- Human direction record: existing `architecture/ADR-043-dba-titmas-constitution-coherent-upgrade.md`
+- China market locale: reused `commercial/entry/entry-surfaces.json`; no duplicate market Profile file
 
 ## 3. Canonical source audit
 
@@ -88,16 +105,18 @@ FAILURE_REWRITE_EXECUTED=false
 
 本地候选树已完成 JSON、Schema、父子一致性、中英文、稳定 ID、四产品、禁止声明、秘密、
 私有路径和全部现有 conformance 验证。远程分支提交
-`3516c1e8c35cf007e1987f380710e841795030d8` 也已在全新 clone 中通过相同 225 项测试、
-Harness 和全仓 JSON 解析。本地或 clean-clone PASS 都不等于 Human approval 或 merge
-authorization。
+`3516c1e8c35cf007e1987f380710e841795030d8` 也已在全新 clone 中通过原有 225 项测试、
+Harness 和全仓 JSON 解析。v0.2 纠偏在本地新增 8 项宪法语义测试，并按当前 CI 全命令集
+复验 292 项测试；
+最终远端 Head 的 clean-clone 结果在纠偏提交推送后补录。本地或 clean-clone PASS 都不
+等于宪法采纳、合并授权或实现授权。
 
 ```text
 JSON_PARSE=PASS
 SCHEMA_VALIDATION=PASS_3_OF_3_CONTRACTS
-NEW_CONFORMANCE_TESTS=PASS_16_OF_16
+NEW_CONFORMANCE_TESTS=PASS_24_OF_24
 FULL_CONFORMANCE=PASS
-FULL_UNIT_TESTS=PASS_225_OF_225
+FULL_UNIT_TESTS=PASS_292_OF_292
 LINK_CHECK=PASS_133_LOCAL_LINKS
 STABLE_ID_CHECK=PASS
 PRODUCT_COUNT_CHECK=PASS_4
@@ -105,7 +124,7 @@ FORBIDDEN_CLAIM_SCAN=PASS
 SECRET_SCAN=PASS
 PRIVATE_PATH_SCAN=PASS
 GIT_DIFF_ALLOWLIST=PASS
-CLEAN_CLONE_RERUN=PASS_REMOTE_BRANCH_COMMIT_3516C1E8
+CLEAN_CLONE_RERUN=PENDING_FINAL_REMOTE_HEAD
 ```
 
 ## 8. Agent recommendation and external advisory review
@@ -125,7 +144,24 @@ EXTERNAL_AGENT_REVIEW_REQUIRED_FOR_DRAFT=false
 HUMAN_REVIEW_REQUIRED=true
 ```
 
-## 9. Authority state
+## 9. Human decision and technical debt
+
+现有 ADR-043 直接记录 `decided_by_ref=zhangbin` 的 bounded Human disposition（有界人类
+处置）：内容方向获认可且存在采纳意向，但正式采纳必须等待本 PR 修正后最终人工复核、
+独立 merge authorization 与合并到 canonical `main`。未创建第二套决策权威。
+
+GitHub Actions 的 Node.js 20 运行环境警告属于独立 technical debt（技术债）。本 PR 只
+记录它，不升级 Action、依赖或 Runtime。
+
+```text
+HUMAN_CONTENT_APPROVAL_RECORDED=true
+ADOPTION_INTENT_RECORDED=true
+CONSTITUTION_EFFECTIVE=false
+NODE20_WARNING_RECORDED=true
+NODE20_FIX_EXECUTED=false
+```
+
+## 10. Authority state
 
 ```text
 CONSTITUTION_AMENDMENT_ADOPTED=false
@@ -134,5 +170,5 @@ IMPLEMENTATION_AUTHORIZED=false
 MERGE_AUTHORIZED=false
 RELEASE_AUTHORIZED=false
 DEPLOYMENT_AUTHORIZED=false
-FINAL_STATE=DRAFT_PR_OPEN_AWAITING_HUMAN_REVIEW
+FINAL_STATE=DRAFT_PR_UPDATED_AWAITING_FINAL_HUMAN_REVIEW
 ```

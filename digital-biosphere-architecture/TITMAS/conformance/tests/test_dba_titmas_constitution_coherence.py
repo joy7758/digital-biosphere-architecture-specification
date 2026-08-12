@@ -34,6 +34,7 @@ class DbaTitmasConstitutionCoherenceTests(unittest.TestCase):
         cls.main = load("architecture/main-constitution-principles.json")
         cls.titmas = load("architecture/titmas-project-constitution.json")
         cls.dcell = load("architecture/dcell-module-governance-profile.json")
+        cls.entry_surfaces = load("commercial/entry/entry-surfaces.json")
         cls.contracts = (cls.main, cls.titmas, cls.dcell)
 
     def test_machine_contracts_validate_against_shared_schema(self):
@@ -108,6 +109,8 @@ class DbaTitmasConstitutionCoherenceTests(unittest.TestCase):
             "profile_before_core_expansion", "adapter_before_new_runtime",
             "gap_evidence_required_for_new_definition",
             "human_or_organization_is_final_authority",
+            "applicable_constraint_intersection_required",
+            "unknown_applicability_fails_closed",
             "composition_requires_reevaluation",
             "composition_graph_required_for_consequential_action",
             "composite_authority_escalation_forbidden", "change_event_required",
@@ -126,6 +129,8 @@ class DbaTitmasConstitutionCoherenceTests(unittest.TestCase):
             "silent_authority_inheritance", "shared_protocol_is_shared_controller",
             "documented_capability_is_operational_capability",
             "synthetic_test_is_external_adoption",
+            "human_approval_always_required",
+            "not_applicable_constraint_is_missing_constraint",
         }
         self.assertTrue(all(assertions[key] is True for key in expected_true))
         self.assertTrue(all(assertions[key] is False for key in expected_false))
@@ -160,6 +165,10 @@ class DbaTitmasConstitutionCoherenceTests(unittest.TestCase):
         self.assertTrue(model["cell_can_only_reduce_or_preserve_authority"])
         self.assertFalse(model["cell_can_expand_authority"])
         self.assertFalse(model["lower_level_policy_can_override_higher_level_deny"])
+        self.assertFalse(model["human_approval_always_required"])
+        self.assertTrue(model["applicable_constraint_intersection_required"])
+        self.assertFalse(model["not_applicable_constraint_is_missing_constraint"])
+        self.assertTrue(model["unknown_applicability_fails_closed"])
         self.assertEqual(
             {"MANDATORY", "POLICY_REQUIRED", "USER_SELECTABLE", "EXPERIMENTAL"},
             set(self.dcell["activation_classes"]),
@@ -186,9 +195,93 @@ class DbaTitmasConstitutionCoherenceTests(unittest.TestCase):
         self.assertTrue(language["synthetic_test_required"])
         self.assertTrue(language["signed_human_approval_required"])
         entry = self.dcell["entry_defaults"]
-        self.assertEqual("zh-CN", entry["default_human_language"])
+        self.assertNotIn("default_human_language", entry)
+        self.assertFalse(entry["global_hardcoded_human_locale"])
         self.assertTrue(entry["usability_is_constitutional_requirement"])
         self.assertTrue(entry["usability_is_safety_property"])
+
+    def test_low_risk_standing_authorization_does_not_require_per_action_approval(self):
+        model = self.dcell["permission_model"]
+        cases = {item["case_id"]: item for item in model["conformance_examples"]}
+        case = cases["LOW_RISK_VALID_STANDING_AUTH"]
+        self.assertFalse(model["human_approval_always_required"])
+        self.assertFalse(case["approval_applicable"])
+        self.assertTrue(case["standing_authorization_valid"])
+        self.assertEqual("ALLOW_OR_READY", case["expected_outcome"])
+
+    def test_missing_expired_and_scope_mismatch_require_approval(self):
+        cases = {item["case_id"]: item for item in self.dcell["permission_model"]["conformance_examples"]}
+        for case_id in (
+            "REQUIRED_APPROVAL_MISSING",
+            "REQUIRED_APPROVAL_EXPIRED",
+            "REQUIRED_APPROVAL_SCOPE_MISMATCH",
+        ):
+            self.assertTrue(cases[case_id]["approval_applicable"])
+            self.assertEqual("NEEDS_APPROVAL", cases[case_id]["expected_outcome"])
+
+    def test_non_overridable_deny_survives_approval(self):
+        model = self.dcell["permission_model"]
+        cases = {item["case_id"]: item for item in model["conformance_examples"]}
+        self.assertFalse(model["one_time_approval_can_override_non_overridable_rule"])
+        self.assertFalse(model["one_time_approval_can_expand_parent_constitution"])
+        for case_id in ("NON_OVERRIDABLE_DENY_WITHOUT_APPROVAL", "NON_OVERRIDABLE_DENY_WITH_APPROVAL"):
+            self.assertTrue(cases[case_id]["non_overridable_deny"])
+            self.assertEqual("BLOCK", cases[case_id]["expected_outcome"])
+
+    def test_not_applicable_and_unknown_semantics(self):
+        model = self.dcell["permission_model"]
+        cases = {item["case_id"]: item for item in model["conformance_examples"]}
+        not_applicable = cases["HUMAN_APPROVAL_NOT_APPLICABLE"]
+        unknown = cases["UNKNOWN_CONSTRAINT_APPLICABILITY"]
+        self.assertFalse(model["not_applicable_constraint_is_missing_constraint"])
+        self.assertEqual("ALLOW_OR_READY", not_applicable["expected_outcome"])
+        self.assertFalse(unknown["applicability_known"])
+        self.assertEqual("NOT_ASSESSED_AND_FAIL_CLOSED", unknown["expected_outcome"])
+
+    def test_approval_bindings_are_complete(self):
+        bindings = set(self.dcell["permission_model"]["approval_binding_required"])
+        self.assertEqual(
+            {
+                "PRINCIPAL", "AGENT_ID_AND_VERSION", "TASK", "ACTION_AND_RESOURCE",
+                "CONSTITUTION_VERSION", "COMPOSITION_DIGEST_WHEN_APPLICABLE", "SCOPE", "EXPIRY",
+            },
+            bindings,
+        )
+
+    def test_base_locale_policy_is_declared_and_not_hardcoded(self):
+        base = self.titmas["human_interface_contract"]
+        self.assertTrue(base["human_readback_must_be_comprehensible"])
+        self.assertTrue(base["human_readback_must_use_declared_principal_or_market_locale"])
+        self.assertTrue(base["locale_must_be_explicitly_declared"])
+        self.assertTrue(base["critical_status_must_not_be_machine_code_only"])
+        self.assertTrue(base["machine_contract_and_localized_explanation_must_coexist"])
+        self.assertFalse(base["global_hardcoded_human_locale"])
+        self.assertNotIn("default_human_language", self.dcell["entry_defaults"])
+
+    def test_china_market_profile_preserves_chinese_first(self):
+        profile = self.entry_surfaces["surfaces"]["HUMAN"]["locale_profile"]
+        self.assertEqual("CHINA", profile["market_profile"])
+        self.assertEqual("zh-CN", profile["default_human_locale"])
+        self.assertEqual("SIMPLIFIED_CHINESE", profile["china_market_ui_default"])
+        self.assertTrue(profile["critical_status_requires_chinese_explanation"])
+        self.assertTrue(profile["english_reason_code_may_be_retained"])
+        self.assertTrue(profile["english_reason_code_requires_chinese_explanation"])
+        self.assertFalse(profile["global_multilingual_expansion_implemented"])
+        self.assertEqual("NONE", profile["authority_effect"])
+
+    def test_human_direction_is_recorded_without_adoption(self):
+        record = (ROOT / "architecture/ADR-043-dba-titmas-constitution-coherent-upgrade.md").read_text(encoding="utf-8")
+        for assertion in (
+            "HUMAN_DECISION_RECORDED=true",
+            "HUMAN_DECIDED_BY_REF=zhangbin",
+            "HUMAN_CONTENT_APPROVAL_RECORDED=true",
+            "ADOPTION_INTENT_RECORDED=true",
+            "CANDIDATE_APPROVED_BY_HUMAN=true",
+            "CONSTITUTION_EFFECTIVE=false",
+            "MERGE_AUTHORIZED=false",
+            "IMPLEMENTATION_AUTHORIZED=false",
+        ):
+            self.assertIn(assertion, record)
 
     def test_c01_stable_identity_and_meaning_are_preserved(self):
         index = load("commercial/constitution/commercial-constitution-index.json")
@@ -279,6 +372,7 @@ class DbaTitmasConstitutionCoherenceTests(unittest.TestCase):
             "architecture/main-constitution-principles.json",
             "architecture/titmas-project-constitution.json",
             "architecture/dcell-module-governance-profile.json",
+            "commercial/entry/entry-surfaces.json",
             "DBA-TITMAS-CONSTITUTION-COHERENT-UPGRADE-COMPLETION-REPORT-v0.1.md",
         ]
         forbidden = (

@@ -96,6 +96,16 @@
     "distributed_enforcement_required": true,
     "sovereign_central_runtime": false
   },
+  "human_interface_contract": {
+    "human_readback_must_be_comprehensible": true,
+    "human_readback_must_use_declared_principal_or_market_locale": true,
+    "locale_must_be_explicitly_declared": true,
+    "critical_status_must_not_be_machine_code_only": true,
+    "machine_contract_and_localized_explanation_must_coexist": true,
+    "global_hardcoded_human_locale": false,
+    "machine_contract_remains_canonical": true,
+    "localized_explanation_creates_authority": false
+  },
   "invariants": [
     "TITMAS_INHERITS_DBA=true",
     "TITMAS_MAY_OVERRIDE_DBA=false",
@@ -104,6 +114,10 @@
     "TITMAS_NE_RUNTIME=true",
     "TITMAS_NE_TRUTH_SOURCE=true",
     "TITMAS_NE_FINAL_AUTHORITY=true",
+    "APPLICABLE_CONSTRAINT_INTERSECTION_REQUIRED=true",
+    "HUMAN_APPROVAL_ALWAYS_REQUIRED=false",
+    "GLOBAL_HARDCODED_HUMAN_LOCALE=false",
+    "HUMAN_COMPREHENSIBILITY_PRESERVED=true",
     "PUBLIC_PRODUCT_COUNT_REMAINS_FOUR=true",
     "OBSERVER_IS_PRODUCT=false",
     "DCELL_LAYER_IS_PRODUCT=false",
