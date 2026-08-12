@@ -40,8 +40,15 @@ class DbaTitmasConstitutionCoherenceTests(unittest.TestCase):
     def test_machine_contracts_validate_against_shared_schema(self):
         for contract in self.contracts:
             self.harness.validate_schema(contract, self.schema)
-            self.assertEqual("PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW", contract["status"])
-            self.assertEqual("NONE", contract["authority_effect"])
+            self.assertEqual("ACCEPTED_EFFECTIVE_ON_CANONICAL_MERGE", contract["status"])
+            self.assertEqual("EFFECTIVE_WHEN_REACHABLE_FROM_CANONICAL_MAIN", contract["authority_effect"])
+            self.assertEqual("APPROVED", contract["human_adoption_decision"])
+            self.assertEqual("REACHABLE_FROM_CANONICAL_MAIN", contract["effective_trigger"])
+            self.assertEqual("refs/heads/main", contract["canonical_ref"])
+            self.assertEqual("440d0163aea1577437a2a9c6737a37e0af47663a", contract["authorized_content_head"])
+            self.assertEqual("NONE", contract["candidate_branch_authority_effect"])
+            self.assertEqual("ADOPTED_AND_EFFECTIVE", contract["post_merge_authority_effect"])
+            self.assertTrue(contract["merge_authorized"])
             self.assertFalse(contract["implementation_authorized"])
 
     def test_parent_principle_ids_are_unique_and_traceable(self):
@@ -269,16 +276,22 @@ class DbaTitmasConstitutionCoherenceTests(unittest.TestCase):
         self.assertFalse(profile["global_multilingual_expansion_implemented"])
         self.assertEqual("NONE", profile["authority_effect"])
 
-    def test_human_direction_is_recorded_without_adoption(self):
+    def test_human_adoption_decision_and_canonical_trigger_are_recorded(self):
         record = (ROOT / "architecture/ADR-043-dba-titmas-constitution-coherent-upgrade.md").read_text(encoding="utf-8")
         for assertion in (
             "HUMAN_DECISION_RECORDED=true",
             "HUMAN_DECIDED_BY_REF=zhangbin",
             "HUMAN_CONTENT_APPROVAL_RECORDED=true",
-            "ADOPTION_INTENT_RECORDED=true",
+            "HUMAN_FINAL_DECISION_RECORDED=true",
             "CANDIDATE_APPROVED_BY_HUMAN=true",
-            "CONSTITUTION_EFFECTIVE=false",
-            "MERGE_AUTHORIZED=false",
+            "ADOPTION_AUTHORIZED=true",
+            "AUTHORIZED_CONTENT_HEAD=440d0163aea1577437a2a9c6737a37e0af47663a",
+            "ADOPTION_EFFECT_TRIGGER=CANONICAL_MAIN_MERGE_OF_PR_142",
+            "CANONICAL_REF=refs/heads/main",
+            "PRE_MERGE_AUTHORITY_EFFECT=PENDING_CANONICAL_MERGE",
+            "POST_MERGE_AUTHORITY_EFFECT=ADOPTED_AND_EFFECTIVE",
+            "CONSTITUTION_EFFECTIVE_WHEN_REACHABLE_FROM_CANONICAL_MAIN=true",
+            "MERGE_AUTHORIZED=true",
             "IMPLEMENTATION_AUTHORIZED=false",
         ):
             self.assertIn(assertion, record)

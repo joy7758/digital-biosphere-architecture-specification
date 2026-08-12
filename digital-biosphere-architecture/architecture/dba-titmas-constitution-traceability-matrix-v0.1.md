@@ -2,7 +2,7 @@
 
 中文：DBA / TITMAS 宪法追踪矩阵 v0.1
 
-Status: `PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW`
+Status: `ACCEPTED_EFFECTIVE_ON_CANONICAL_MERGE`
 
 | Stable ID / clause | Existing source | Parent amendment | TITMAS / DCell projection | Machine assertion | Test |
 |---|---|---|---|---|---|
@@ -22,7 +22,7 @@ Status: `PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW`
 | DCell module layer | new profile | non-effect | not a fifth product | `public_product_count_effect=0` | `test_product_portfolio_remains_four` |
 | Global locale layering | Human interface contract | non-effect | declared principal/market locale; no global `zh-CN` hardcode | `GLOBAL_HARDCODED_HUMAN_LOCALE=false` | `test_base_locale_policy_is_declared_and_not_hardcoded` |
 | China market locale | C-01 Human entry surface | non-effect | `CHINA` profile defaults to `zh-CN` and Chinese explanations | `CHINA_MARKET_UI_DEFAULT=SIMPLIFIED_CHINESE` | `test_china_market_profile_preserves_chinese_first` |
-| Human direction record | ADR-043 | non-effect | content approved and adoption intended; effect waits for separate merge decision | `CONSTITUTION_EFFECTIVE=false`; `MERGE_AUTHORIZED=false` | `test_human_direction_is_recorded_without_adoption` |
+| Human adoption decision | ADR-043 | Human Owner authority | adoption approved; candidate branch has no authority effect; effect activates when PR #142 becomes reachable from canonical `main` | `human_adoption_decision=APPROVED`; `effective_trigger=REACHABLE_FROM_CANONICAL_MAIN`; `implementation_authorized=false` | `test_human_adoption_decision_and_canonical_trigger_are_recorded` |
 | D04 failure retention | ADR-038 / program state | §5 | no reopen or rewrite | `D04_CLOSED_FAILED_RETAINED=true` | `test_nonclaims_and_retained_failures` |
 | P0-10 failure retention | TITMAS README / integration evidence | §5 | no result rewrite | `P0_10_FAIL_CLOSED_RETAINED=true` | `test_nonclaims_and_retained_failures` |
 
@@ -32,12 +32,14 @@ Status: `PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW`
 MISSING_PARENT_REFERENCE=PARENT_CONSTITUTION_REVIEW_REQUIRED
 UNKNOWN_PRINCIPLE_ID=CONSTITUTION_TRACEABILITY_FAILURE
 PRODUCT_COUNT_DRIFT=PRODUCT_BOUNDARY_FAILURE
-AUTHORITY_EFFECT_NOT_NONE=AUTHORITY_ELEVATION_FAILURE
+UNCONDITIONAL_AUTHORITY_EFFECT_BEFORE_CANONICAL_REACHABILITY=AUTHORITY_ELEVATION_FAILURE
 IMPLEMENTATION_AUTHORIZED_TRUE=IMPLEMENTATION_BOUNDARY_FAILURE
 HISTORICAL_FAILURE_REMOVED=EVIDENCE_RETENTION_FAILURE
 ```
 
-该矩阵只追踪 Draft contract。测试通过不等于 Human adoption、实现、发布或生产正确性。
+该矩阵追踪已获 Human Owner 采纳、并以 canonical merge 为生效条件的 contract。测试通过或
+候选分支存在不等于规范已生效；只有决定可从 canonical `main` 到达时才正式生效。采纳仍
+不等于实现、发布或生产正确性。
 
 ## Current implementation status and non-claims
 

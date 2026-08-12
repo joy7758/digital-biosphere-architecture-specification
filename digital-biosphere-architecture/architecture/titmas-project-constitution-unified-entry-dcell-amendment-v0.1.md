@@ -2,13 +2,16 @@
 
 中文：TITMAS 项目宪法：统一入口与 DCell 修正案 v0.1
 
-- Status: `PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW`
+- Status: `ACCEPTED_EFFECTIVE_ON_CANONICAL_MERGE`
 - Contract ID: `TITMAS-PROJECT-CONSTITUTION-COHERENCE-v0.1`
 - Parent contract: `DBA-MAIN-CONSTITUTION-COHERENCE-v0.1`
 - Machine contracts:
   - [`titmas-project-constitution.json`](titmas-project-constitution.json)
   - [`dcell-module-governance-profile.json`](dcell-module-governance-profile.json)
-- Authority effect: `NONE`
+- Human adoption decision: `APPROVED`
+- Effective trigger: `CANONICAL_MAIN_MERGE_OF_PR_142`
+- Canonical ref: `refs/heads/main`
+- Candidate branch authority effect: `NONE`
 - Implementation authorization: `false`
 
 ## 1. Constitutional inheritance
@@ -260,6 +263,14 @@ OBSERVER_IS_FIFTH_PRODUCT=false
 ## 8. Non-claims and retained failures
 
 ```text
+TITMAS_INHERITS_DBA=true
+TITMAS_MAY_OVERRIDE_DBA=false
+TITMAS_IS_FINAL_CONSTITUTION_AUTHORITY=false
+HUMAN_ADOPTION_DECISION=APPROVED
+EFFECTIVE_TRIGGER=CANONICAL_MAIN_MERGE_OF_PR_142
+CANONICAL_REF=refs/heads/main
+CONSTITUTION_EFFECTIVE_WHEN_REACHABLE_FROM_CANONICAL_MAIN=true
+IMPLEMENTATION_AUTHORIZED=false
 UNIFIED_AGENT_ENTRY_IMPLEMENTED=false
 SELECTABLE_DCELL_LIBRARY_IMPLEMENTED=false
 CROSS_PLATFORM_ENFORCEMENT_PROVEN=false

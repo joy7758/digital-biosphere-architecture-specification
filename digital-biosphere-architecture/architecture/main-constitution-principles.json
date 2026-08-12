@@ -3,11 +3,18 @@
   "contract_id": "DBA-MAIN-CONSTITUTION-COHERENCE-v0.1",
   "contract_type": "DBA_MAIN_CONSTITUTION_PRINCIPLES",
   "version": "0.1.0",
-  "status": "PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW",
+  "status": "ACCEPTED_EFFECTIVE_ON_CANONICAL_MERGE",
   "title": "Digital Biosphere Architecture main constitutional coherence principles",
   "title_zh": "数字生物圈架构主宪法一致性原则",
   "parent_constitution_ref": "PROGRAM-CHARTER.md",
-  "authority_effect": "NONE",
+  "authority_effect": "EFFECTIVE_WHEN_REACHABLE_FROM_CANONICAL_MAIN",
+  "human_adoption_decision": "APPROVED",
+  "effective_trigger": "REACHABLE_FROM_CANONICAL_MAIN",
+  "canonical_ref": "refs/heads/main",
+  "authorized_content_head": "440d0163aea1577437a2a9c6737a37e0af47663a",
+  "candidate_branch_authority_effect": "NONE",
+  "post_merge_authority_effect": "ADOPTED_AND_EFFECTIVE",
+  "merge_authorized": true,
   "implementation_authorized": false,
   "principles": [
     {
@@ -36,7 +43,7 @@
       "stable_id": "DBA-P-COMPATIBILITY-BEFORE-INNOVATION",
       "title": "Compatibility before invention",
       "title_zh": "兼容优先于另造",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "Audit and reuse compatible protocols, schemas, evidence formats and adapters before introducing a new overlapping mechanism.",
       "statement_zh": "引入新的重叠机制前，必须先审计并复用兼容的协议、Schema、证据格式和适配器。",
       "source_refs": [
@@ -47,7 +54,7 @@
       "stable_id": "DBA-P-HUMAN-CONSTITUTIONAL-SOVEREIGNTY",
       "title": "Human constitutional sovereignty",
       "title_zh": "人类宪法主权",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "Agents and components may advise, verify and execute within scope, but only an explicit Human Decision may amend constitutional authority or authorize irreversible effects.",
       "statement_zh": "智能体与组件可以在范围内建议、核验和执行，但只有显式人类决策可以修改宪法权威或授权不可逆效果。",
       "source_refs": [
@@ -59,7 +66,7 @@
       "stable_id": "DBA-P-COMPOSITION-ACCOUNTABILITY",
       "title": "Composition accountability",
       "title_zh": "组合责任可追溯",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "A composition must preserve the identity, task, permission, evidence and responsibility lineage of every participating entity and must be assessed as a composition.",
       "statement_zh": "组合必须保留每个参与主体的身份、任务、权限、证据与责任谱系，并对组合整体重新评估。",
       "source_refs": [
@@ -82,7 +89,7 @@
       "stable_id": "DBA-P-SHARED-PROTOCOL-NOT-CONTROLLER",
       "title": "Shared protocol is not a shared controller",
       "title_zh": "共享协议不等于共享控制器",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "Interoperability should converge on shared contracts while execution and enforcement remain distributed, scoped and owned by their canonical domains.",
       "statement_zh": "互操作应在共享契约上收敛，而执行与执法必须保持分布式、有范围并由规范责任域所有。",
       "source_refs": [
@@ -94,7 +101,7 @@
       "stable_id": "DBA-P-REAL-ENVIRONMENT-FEEDBACK",
       "title": "Real-environment feedback before capability claims",
       "title_zh": "能力声明前需要真实环境反馈",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "Synthetic, local or document-level validation must not be elevated into cross-platform, scale, production, adoption or commercial claims without matching real-environment evidence.",
       "statement_zh": "缺少相匹配的真实环境证据时，不得把合成、本地或文档级验证提升为跨平台、规模、生产、采用或商业声明。",
       "source_refs": [
@@ -170,7 +177,7 @@
     "architecture/commercial-private-infrastructure-strategy-constitution.md"
   ],
   "limitations": [
-    "Draft amendment only; adoption requires a separate Human Decision.",
+    "Human adoption is approved; normative effect begins only when this contract is reachable from canonical refs/heads/main.",
     "No runtime, gateway, SDK, website or product behavior is changed."
   ]
 }

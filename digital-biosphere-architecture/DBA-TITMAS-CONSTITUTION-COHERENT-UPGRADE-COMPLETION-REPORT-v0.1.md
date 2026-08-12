@@ -2,7 +2,7 @@
 
 中文：DBA / TITMAS 宪法一致性升级完成报告 v0.1
 
-- Status: `DRAFT_PR_UPDATED_AWAITING_FINAL_HUMAN_REVIEW`
+- Status: `HUMAN_ADOPTION_APPROVED_EFFECTIVE_ON_CANONICAL_MERGE`
 - Canonical base: `main@352cdc2dfc548be62cfb3ffcb84e33b541b419f8`
 - Scope: documentation, machine contracts, schema and conformance only
 
@@ -13,8 +13,8 @@ DCell 模块治理，没有直接改写现行已采纳战略宪法，也没有�
 
 v0.2 语义纠偏把 Permission 改为所有适用约束的交集，不再把 Human approval 写成每次
 行动的无条件约束；同时移除全球基础 Profile 的 `zh-CN` 硬编码，并在现有 C-01 Human
-entry surface 中保留中国市场简体中文默认。Human Owner 已认可内容方向和采纳意向，但
-候选宪法尚未采纳或生效。
+entry surface 中保留中国市场简体中文默认。Human Owner 已完成最终审查并批准采纳；
+候选分支本身没有规范 Authority，决定在 PR #142 合并并可从 canonical `main` 到达时生效。
 
 ```text
 APPLICABLE_CONSTRAINT_INTERSECTION_REQUIRED=true
@@ -22,8 +22,12 @@ HUMAN_APPROVAL_ALWAYS_REQUIRED=false
 UNKNOWN_APPLICABILITY_FAILS_CLOSED=true
 GLOBAL_HARDCODED_HUMAN_LOCALE=false
 CHINA_MARKET_DEFAULT_LOCALE=zh-CN
-CONSTITUTION_EFFECTIVE=false
-MERGE_AUTHORIZED=false
+HUMAN_ADOPTION_DECISION=APPROVED
+AUTHORIZED_CONTENT_HEAD=440d0163aea1577437a2a9c6737a37e0af47663a
+EFFECTIVE_TRIGGER=REACHABLE_FROM_CANONICAL_MAIN
+CANONICAL_REF=refs/heads/main
+MERGE_AUTHORIZED=true
+IMPLEMENTATION_AUTHORIZED=false
 ```
 
 ## 2. Artifacts
@@ -109,7 +113,8 @@ FAILURE_REWRITE_EXECUTED=false
 Harness 和全仓 JSON 解析。v0.2 纠偏在本地新增 8 项宪法语义测试，并按当前 CI 全命令集
 复验 292 项测试；
 最终远端 Head 的 clean-clone 结果在纠偏提交推送后补录。本地或 clean-clone PASS 都不
-等于宪法采纳、合并授权或实现授权。
+产生 Human Authority 或实现授权；本报告中的采纳来自 Human Owner 决定，canonical merge
+只是该决定的生效条件。
 
 ```text
 JSON_PARSE=PASS
@@ -135,28 +140,29 @@ Codex 作为本轮执行智能体的 pre-development recommendation 为
 实现、真实跨平台验证和 DCell library 前，不会推荐为可部署产品。
 
 外部模型本轮不可用，因此没有执行 advisory review，也没有伪造 reviewer、session、
-recommendation 或 independent review。内部 source-inspected audit 与本地测试不能替代
-Human Review。
+recommendation 或 independent review。内部 source-inspected audit 与本地测试不替代
+Human Owner 的最终采纳决定。
 
 ```text
 EXTERNAL_AGENT_REVIEW_EXECUTED=false
-EXTERNAL_AGENT_REVIEW_REQUIRED_FOR_DRAFT=false
-HUMAN_REVIEW_REQUIRED=true
+EXTERNAL_AGENT_REVIEW_REQUIRED_FOR_ADOPTION=false
+HUMAN_FINAL_REVIEW_COMPLETE=true
 ```
 
 ## 9. Human decision and technical debt
 
-现有 ADR-043 直接记录 `decided_by_ref=zhangbin` 的 bounded Human disposition（有界人类
-处置）：内容方向获认可且存在采纳意向，但正式采纳必须等待本 PR 修正后最终人工复核、
-独立 merge authorization 与合并到 canonical `main`。未创建第二套决策权威。
+ADR-043 直接记录 `decided_by_ref=zhangbin` 的最终 Human disposition（人类处置）：
+内容获批准、采纳和 merge 已授权，且决定以进入 canonical `main` 为生效条件。未创建
+第二套决策权威，Git merge 也没有被写成 Authority 来源。
 
 GitHub Actions 的 Node.js 20 运行环境警告属于独立 technical debt（技术债）。本 PR 只
 记录它，不升级 Action、依赖或 Runtime。
 
 ```text
 HUMAN_CONTENT_APPROVAL_RECORDED=true
-ADOPTION_INTENT_RECORDED=true
-CONSTITUTION_EFFECTIVE=false
+HUMAN_FINAL_DECISION_RECORDED=true
+ADOPTION_AUTHORIZED=true
+CONSTITUTION_EFFECTIVE_WHEN_REACHABLE_FROM_CANONICAL_MAIN=true
 NODE20_WARNING_RECORDED=true
 NODE20_FIX_EXECUTED=false
 ```
@@ -164,11 +170,12 @@ NODE20_FIX_EXECUTED=false
 ## 10. Authority state
 
 ```text
-CONSTITUTION_AMENDMENT_ADOPTED=false
+HUMAN_ADOPTION_DECISION=APPROVED
+ADOPTION_EFFECT_TRIGGER=CANONICAL_MAIN_MERGE_OF_PR_142
 CURRENT_STRATEGIC_CONSTITUTION_REPLACED=false
 IMPLEMENTATION_AUTHORIZED=false
-MERGE_AUTHORIZED=false
+MERGE_AUTHORIZED=true
 RELEASE_AUTHORIZED=false
 DEPLOYMENT_AUTHORIZED=false
-FINAL_STATE=DRAFT_PR_UPDATED_AWAITING_FINAL_HUMAN_REVIEW
+FINAL_STATE=APPROVED_EFFECTIVE_WHEN_REACHABLE_FROM_CANONICAL_MAIN
 ```

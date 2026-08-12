@@ -13,6 +13,13 @@
     "title_zh",
     "parent_constitution_ref",
     "authority_effect",
+    "human_adoption_decision",
+    "effective_trigger",
+    "canonical_ref",
+    "authorized_content_head",
+    "candidate_branch_authority_effect",
+    "post_merge_authority_effect",
+    "merge_authorized",
     "implementation_authorized",
     "principles",
     "invariants",
@@ -39,7 +46,7 @@
       "const": "0.1.0"
     },
     "status": {
-      "const": "PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW"
+      "const": "ACCEPTED_EFFECTIVE_ON_CANONICAL_MERGE"
     },
     "title": {
       "type": "string",
@@ -54,7 +61,28 @@
       "minLength": 4
     },
     "authority_effect": {
+      "const": "EFFECTIVE_WHEN_REACHABLE_FROM_CANONICAL_MAIN"
+    },
+    "human_adoption_decision": {
+      "const": "APPROVED"
+    },
+    "effective_trigger": {
+      "const": "REACHABLE_FROM_CANONICAL_MAIN"
+    },
+    "canonical_ref": {
+      "const": "refs/heads/main"
+    },
+    "authorized_content_head": {
+      "const": "440d0163aea1577437a2a9c6737a37e0af47663a"
+    },
+    "candidate_branch_authority_effect": {
       "const": "NONE"
+    },
+    "post_merge_authority_effect": {
+      "const": "ADOPTED_AND_EFFECTIVE"
+    },
+    "merge_authorized": {
+      "const": true
     },
     "implementation_authorized": {
       "const": false
@@ -162,7 +190,7 @@
           "status": {
             "enum": [
               "REUSED_ACCEPTED_PRINCIPLE",
-              "PROPOSED_CONSTITUTIONAL_EXTENSION"
+              "ADOPTED_CONSTITUTIONAL_EXTENSION"
             ]
           },
           "statement": {

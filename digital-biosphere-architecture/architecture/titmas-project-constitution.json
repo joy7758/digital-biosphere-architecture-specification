@@ -3,11 +3,18 @@
   "contract_id": "TITMAS-PROJECT-CONSTITUTION-COHERENCE-v0.1",
   "contract_type": "TITMAS_PROJECT_CONSTITUTION",
   "version": "0.1.0",
-  "status": "PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW",
+  "status": "ACCEPTED_EFFECTIVE_ON_CANONICAL_MERGE",
   "title": "TITMAS project constitution for unified entry and distributed enforcement",
   "title_zh": "TITMAS统一入口与分布式执法项目宪法",
   "parent_constitution_ref": "DBA-MAIN-CONSTITUTION-COHERENCE-v0.1",
-  "authority_effect": "NONE",
+  "authority_effect": "EFFECTIVE_WHEN_REACHABLE_FROM_CANONICAL_MAIN",
+  "human_adoption_decision": "APPROVED",
+  "effective_trigger": "REACHABLE_FROM_CANONICAL_MAIN",
+  "canonical_ref": "refs/heads/main",
+  "authorized_content_head": "440d0163aea1577437a2a9c6737a37e0af47663a",
+  "candidate_branch_authority_effect": "NONE",
+  "post_merge_authority_effect": "ADOPTED_AND_EFFECTIVE",
+  "merge_authorized": true,
   "implementation_authorized": false,
   "parent_contract": {
     "parent_constitution": "DIGITAL_BIOSPHERE_DBA_MAIN_CONSTITUTION",
@@ -19,7 +26,7 @@
       "stable_id": "TITMAS-P-INHERIT-DBA",
       "title": "DBA constitutional inheritance",
       "title_zh": "继承DBA主宪法",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "TITMAS inherits the DBA main constitution and may narrow its own scope but may not override parent authority, truth, ownership or evidence boundaries.",
       "statement_zh": "TITMAS继承DBA主宪法，可以收窄自身范围，但不得覆盖父级权威、事实、所有权或证据边界。",
       "source_refs": [
@@ -30,7 +37,7 @@
       "stable_id": "TITMAS-P-UNIFIED-LOGICAL-ENTRY",
       "title": "Unified logical entry without physical centralization",
       "title_zh": "统一逻辑入口但不物理集中",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "TITMAS may define a coherent machine-discovery and policy entry contract, but no global mandatory gateway or physical single control point is implied.",
       "statement_zh": "TITMAS可以定义一致的机器发现与策略入口契约，但不推导全局强制网关或物理单一控制点。",
       "source_refs": [
@@ -42,7 +49,7 @@
       "stable_id": "TITMAS-P-DISTRIBUTED-ENFORCEMENT",
       "title": "Distributed and bounded enforcement",
       "title_zh": "分布式有界执法",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "Policy decisions, evidence checks and revalidation may be enforced at owned integration points without turning TITMAS into a runtime, model, truth source or final authority.",
       "statement_zh": "策略决策、证据检查和重新核验可以在各自所有的接入点执行，但不得把TITMAS变成运行时、模型、事实源或最终权威。",
       "source_refs": [
@@ -54,7 +61,7 @@
       "stable_id": "TITMAS-P-REVALIDATE-COMPOSITION",
       "title": "Composition and change revalidation",
       "title_zh": "组合与变化重新核验",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "A changed module, dependency, policy, permission or entity composition must not inherit an earlier PASS without context-bound revalidation.",
       "statement_zh": "模块、依赖、策略、权限或主体组合变化后，未经上下文绑定的重新核验不得继承早先的PASS。",
       "source_refs": [
@@ -143,7 +150,7 @@
     "portfolio/product-catalog.internal.json"
   ],
   "limitations": [
-    "This contract is a constitutional Draft PR surface, not an implemented entry or enforcement system.",
+    "Human adoption is approved; normative effect begins only when this contract is reachable from canonical refs/heads/main, and it is not an implemented entry or enforcement system.",
     "The current commercial private-core direction and four-product portfolio remain unchanged."
   ]
 }

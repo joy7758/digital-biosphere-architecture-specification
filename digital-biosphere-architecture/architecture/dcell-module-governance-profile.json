@@ -3,18 +3,25 @@
   "contract_id": "TITMAS-DCELL-MODULE-GOVERNANCE-PROFILE-v0.1",
   "contract_type": "DCELL_MODULE_GOVERNANCE_PROFILE",
   "version": "0.1.0",
-  "status": "PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW",
+  "status": "ACCEPTED_EFFECTIVE_ON_CANONICAL_MERGE",
   "title": "DCell module governance profile",
   "title_zh": "DCell模块治理配置规范",
   "parent_constitution_ref": "TITMAS-PROJECT-CONSTITUTION-COHERENCE-v0.1",
-  "authority_effect": "NONE",
+  "authority_effect": "EFFECTIVE_WHEN_REACHABLE_FROM_CANONICAL_MAIN",
+  "human_adoption_decision": "APPROVED",
+  "effective_trigger": "REACHABLE_FROM_CANONICAL_MAIN",
+  "canonical_ref": "refs/heads/main",
+  "authorized_content_head": "440d0163aea1577437a2a9c6737a37e0af47663a",
+  "candidate_branch_authority_effect": "NONE",
+  "post_merge_authority_effect": "ADOPTED_AND_EFFECTIVE",
+  "merge_authorized": true,
   "implementation_authorized": false,
   "principles": [
     {
       "stable_id": "DCELL-P-CELL-GRADE-GOVERNANCE",
       "title": "Skill-like selection with cell-grade governance",
       "title_zh": "技能式选择与细胞级治理",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "A DCell may be selected like a skill, but admission, permission, composition, evidence, lifecycle and revalidation remain governed as a digital entity module.",
       "statement_zh": "DCell可以像技能一样被选择，但准入、权限、组合、证据、生命周期和重新核验必须按数字主体模块治理。",
       "source_refs": [
@@ -26,7 +33,7 @@
       "stable_id": "DCELL-P-PERMISSION-INTERSECTION",
       "title": "Permission intersection",
       "title_zh": "权限交集",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "Effective module permission is the intersection of entity permission, task authorization, module constraints, policy constraints and current context validity.",
       "statement_zh": "模块有效权限是主体权限、任务授权、模块约束、策略约束和当前上下文有效性的交集。",
       "source_refs": [
@@ -38,7 +45,7 @@
       "stable_id": "DCELL-P-CHANGE-REVALIDATION",
       "title": "Composition and version change revalidation",
       "title_zh": "组合与版本变化重新核验",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "Selecting, removing, updating or recomposing a module invalidates inherited conclusions until the affected composition is revalidated.",
       "statement_zh": "选择、移除、更新或重组模块都会使继承结论失效，直到受影响组合完成重新核验。",
       "source_refs": [
@@ -49,7 +56,7 @@
       "stable_id": "DCELL-P-USABILITY-AS-SAFETY",
       "title": "Usability is a constitutional safety property",
       "title_zh": "可用性是宪法级安全属性",
-      "status": "PROPOSED_CONSTITUTIONAL_EXTENSION",
+      "status": "ADOPTED_CONSTITUTIONAL_EXTENSION",
       "statement": "A first-value path that requires hidden command syntax, schema guessing or manual secret handling is not constitutionally usable for the intended agent or human entry.",
       "statement_zh": "首次价值路径若要求隐藏命令语法、猜测Schema或手工处理秘密，就不满足预期智能体或人类入口的宪法级可用性。",
       "source_refs": [
@@ -327,7 +334,7 @@
     "architecture/ADR-039-verified-correction-and-execution-context-continuity.md"
   ],
   "limitations": [
-    "The profile defines governance semantics only; it does not create modules, a catalog, a resolver, a runtime or an activation path.",
+    "Human adoption is approved and becomes effective only from canonical refs/heads/main; the profile defines governance semantics only and does not create modules, a catalog, a resolver, a runtime or an activation path.",
     "Classification progression and evaluation criteria require future separately authorized specifications."
   ]
 }

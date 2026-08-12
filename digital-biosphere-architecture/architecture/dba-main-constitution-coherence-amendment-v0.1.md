@@ -2,11 +2,14 @@
 
 中文：DBA 主宪法一致性修正案 v0.1
 
-- Status: `PROPOSED_DRAFT_AWAITING_HUMAN_REVIEW`
+- Status: `ACCEPTED_EFFECTIVE_ON_CANONICAL_MERGE`
 - Contract ID: `DBA-MAIN-CONSTITUTION-COHERENCE-v0.1`
 - Parent: [`PROGRAM-CHARTER.md`](../PROGRAM-CHARTER.md)
 - Machine contract: [`main-constitution-principles.json`](main-constitution-principles.json)
-- Authority effect: `NONE`
+- Human adoption decision: `APPROVED`
+- Effective trigger: `CANONICAL_MAIN_MERGE_OF_PR_142`
+- Canonical ref: `refs/heads/main`
+- Candidate branch authority effect: `NONE`
 - Implementation authorization: `false`
 
 ## 1. Purpose and effect
@@ -15,9 +18,9 @@
 基础设施战略宪法中的原则，整理为一组可追踪、可机读的父级规则；同时补充兼容优先、
 组合责任、共享协议不等于共享控制器，以及真实环境反馈约束。
 
-本修正案是 Draft PR（草案拉取请求）候选。它不直接改写已接受记录，不使候选原则自动
-生效，也不改变现行 `TITMAS Commercial Agent Infrastructure` 身份。只有未来单独的
-Human Decision（人类决策）可以采纳、修订或拒绝它。
+Human Owner 已正式批准本修正案。它在候选分支上不产生规范 Authority；当包含该决定的
+PR #142 合并并可从 canonical `refs/heads/main` 到达时生效。该触发机制不改变现行
+`TITMAS Commercial Agent Infrastructure` 身份，也不授权任何实现或运行效果。
 
 ## 2. Reused constitutional principles
 
@@ -138,10 +141,13 @@ CAPABILITY_CLAIM_REQUIRES_EXECUTION_EVIDENCE=true
 ## 7. Non-effects
 
 ```text
-CONSTITUTION_AMENDMENT_ADOPTED=false
+HUMAN_ADOPTION_DECISION=APPROVED
+EFFECTIVE_TRIGGER=CANONICAL_MAIN_MERGE_OF_PR_142
+CANONICAL_REF=refs/heads/main
+CONSTITUTION_EFFECTIVE_WHEN_REACHABLE_FROM_CANONICAL_MAIN=true
 CURRENT_STRATEGIC_CONSTITUTION_REPLACED=false
 IMPLEMENTATION_AUTHORIZED=false
-MERGE_AUTHORIZED=false
+MERGE_AUTHORIZED=true
 RELEASE_AUTHORIZED=false
 DEPLOYMENT_AUTHORIZED=false
 NEW_RUNTIME_CREATED=false
