@@ -165,6 +165,8 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/D29-DATA-LIFECYCLE-COCKPIT-SYNC-REPORT-v1.0.md",
         "digital-biosphere-architecture/D29-TERMINAL-CONSISTENCY-AUDIT-v1.0.md",
         "digital-biosphere-architecture/D29-SECURITY-DRILL-READINESS-COCKPIT-SYNC-v1.0.md",
+        "digital-biosphere-architecture/D29-SECURITY-FINDINGS-DISPOSITION-COCKPIT-SYNC-v1.0.md",
+        "digital-biosphere-architecture/RISK-AND-BLOCKER-REGISTER.md",
         "digital-biosphere-architecture/portfolio/canonical-reuse-audit-d29.json",
         "digital-biosphere-architecture/portfolio/product-catalog.internal.json",
         "digital-biosphere-architecture/research/competitive/CONSOLE-INFORMATION-ARCHITECTURE.md",

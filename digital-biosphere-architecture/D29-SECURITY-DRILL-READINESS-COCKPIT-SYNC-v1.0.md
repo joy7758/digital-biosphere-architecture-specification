@@ -1,5 +1,8 @@
 # D29 Security Drill Readiness Cockpit Sync v1.0
 
+> Historical preparation snapshot. Superseded by
+> [`D29-SECURITY-FINDINGS-DISPOSITION-COCKPIT-SYNC-v1.0.md`](D29-SECURITY-FINDINGS-DISPOSITION-COCKPIT-SYNC-v1.0.md).
+
 ## Result
 
 ```text

@@ -22,8 +22,8 @@ PRODUCTION_READY=false
   Provider、5 个模型家族和 3 个入口表面。结论仅为
   `PASS_WITH_LIMITATIONS_PREDEPLOYMENT`。
 - 商业网站源码已合并，但实时商业机器入口仍返回 404；本工作未执行部署。
-- 经营主体、开票能力、真实成本、价格、律师意见、支持责任人与安全联系人尚无
-  可核验 Human 证据。
+- 经营主体、开票能力、真实成本、价格和律师意见尚无可核验 Human 证据；
+  Support Owner 与 Security Contact 已指派为 `human:zhangbin`，第二责任人未指派。
 - 独立安全评价包为 `READY_TO_INVITE_NOT_EXECUTED`，尚无评价者、联系行为或
   Security PASS。
 - FDO / PVS-0 仅为公开证据辅助线；2 个 Profile 是标准化候选，3 个 Demo 是
@@ -32,7 +32,8 @@ PRODUCTION_READY=false
 ## Critical security blocker classification
 
 ```text
-CRITICAL_FINDING_COUNT=1
+CRITICAL_FINDING_OPEN_COUNT=0
+CRITICAL_FINDING_DISPOSITIONS_RETAINED=1
 CRITICAL_FINDING_SOURCE=CR01_RESTORE_RECEIPT_INTEGRITY_FAILURE
 RESTORED_RECEIPTS_CHECKED=1661
 RESTORED_RECEIPT_SIGNATURES_VALID=1659
@@ -64,8 +65,9 @@ PAYMENT_COLLECTION_AUTHORIZED=false
 
 ### HG-02 — Support and security responsibility
 
-需指派具备实际责任能力的人类 Support Owner、Security Contact 和 Backup Owner，并
-记录有效期、联系窗口、替补与撤销方式。Agent 不能承担合同或安全责任。
+Support Owner 与 Security Contact 已指派为 `human:zhangbin`，并记录有效期、
+联系窗口与撤销方式。Backup Owner 仍需由第二名具备实际责任能力的人类接受；
+Agent 不能承担合同或安全责任，单人指派不产生 SLA。
 
 ### HG-03 — Cost input and pricing approval
 
@@ -87,14 +89,15 @@ Human Owner 必须在不重开 D04 的前提下选择：
 
 当前已完成 20 项控制映射。Gateway PR #53、#54 和 #55 的有界源码与
 临时 PostgreSQL CI 先后关闭凭据生命周期、Workspace Audit、Workspace
-删除和保留 findings；当前明确保留 1 个 Blocker 与 2 个 High findings。
-闸门结果为 `FAIL_CLOSED`；完成盘点不等于修复、独立安全评价或商业放行。
+删除和保留 findings。PR #57 修复备份前置，PR #58 执行有界事件与正式回滚
+演练并关闭 2 个 High findings。当前开放 Blocker/High 均为 0，但 CR-01 控制
+仍为 `FAIL_RETAINED`，闸门结果为 `FAIL_CLOSED_RETAINED_CR01_LIMITATION`；
+完成处置不等于独立安全评价或商业放行。
 
-Gateway PR #56 进一步提供事件与回滚演练的准备契约和单独 Human 决策包，
-但没有执行任何演练，也没有指派责任人、冻结候选/回滚版本或维护窗口。
-因此 `INCIDENT_DRILL_EXECUTED=false`、
-`FORMAL_ROLLBACK_DRILL_EXECUTED=false`，安全 finding 数量不变。只有另一个
-明确限定范围的 Human 决策才能授权执行该演练准备包。
+Gateway PR #56 的准备契约由 Decision
+`TITMAS-D29-SECURITY-FINDINGS-20260812-01` 使用一次。事件恢复、回滚及前滚均
+低于 120 秒，精确原 release 已恢复，临时服务/回滚/Nginx 权限现已撤销。
+任何未来演练仍需新的 Human Decision 与 fresh preflight。
 
 ### HG-06 — Commercial route deployment
 

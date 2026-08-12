@@ -76,7 +76,7 @@ CHILD_REPOSITORIES_CHANGED=false
 
 | dependency_id | upstream | downstream | type | current state | boundary |
 |---|---|---|---|---|---|
-| `DEP-CM-001` | DBA commercial contracts | private Gateway | `NORMATIVE` | `D29_REFERENCE_IMPLEMENTED_SOURCE_PINNED_NOT_DEPLOYED` | DBA defines objects/gates and projects exact source; Gateway owns implementation truth |
+| `DEP-CM-001` | DBA commercial contracts | private Gateway | `NORMATIVE` | `D29_SOURCE_PINNED_SECURITY_DRILLS_PASS_CR01_FAIL_RETAINED` | DBA defines objects/gates and projects exact source; Gateway owns implementation and operational evidence truth |
 | `DEP-CM-002` | private Gateway | PostgreSQL 16 candidate | `APPLICATION_SERVICE` | `DEPLOYED_SYNTHETIC_METADATA_ONLY` | metadata/ledgers only; no raw payload persistence; restore integrity gate is blocked |
 | `DEP-CM-003` | private Gateway | public integrations | `DATA_CONTRACT` | `COMMERCIAL_READINESS_NOT_ASSESSED` | only public-safe OpenAPI, SDK, Adapter and verifier assets |
 | `DEP-CM-004` | Gateway execution evidence | SAEE | `EVALUATION_INPUT` | `NOT_STARTED` | read-only future evaluation; SAEE does not authorize or mutate Gateway |

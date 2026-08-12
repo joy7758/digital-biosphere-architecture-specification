@@ -11,13 +11,13 @@ PRODUCTION_READY=false
 CUSTOMERS_VERIFIED=0
 ```
 
-TITMAS 已形成四产品、四 Offering 草案、商业网站源码、私有平台候选、商业控制台参考、定价模型、17 个合同草案、支持/入驻/退出流程和 12 项售前材料。它仍不能通过中国境内 B2B 合同开始收费，因为主体、开票、律师、价格、安全、支持责任人和线上入口闸门未关闭。
+TITMAS 已形成四产品、四 Offering 草案、商业网站源码、私有平台候选、商业控制台参考、定价模型、17 个合同草案、支持/入驻/退出流程和 12 项售前材料。它仍不能通过中国境内 B2B 合同开始收费，因为主体、开票、律师、价格、独立安全评价、第二责任人和线上入口闸门未关闭。
 
 ## Product and architecture
 
 - 产品表面：Gate、Receipt、Audit、Health；Observer 不是第五产品。
 - 首个付费候选：Monitor Pilot；当前 `ENFORCEMENT_EFFECT=NONE`，尚不可售。
-- 私有平台：`joy7758/titmas-sandbox-gateway` main `e200ea0f00d9d948c3b6dbf7058e08489dea1ccd`。
+- 私有平台：`joy7758/titmas-sandbox-gateway` main `1a065f1702e355d5f5ed566bdfd3e895cdca2540`。
 - 当前公网技术候选返回 HTTP 200，但运行发布仍为 `efdfc844...`，并明确 `commercial_technical_ready=false`、`security_tests_pass=false`、`agent_e2e_ready=false`。
 - D29 商业网站源码已合并；实时商业 JSON 与路由仍为 404，未部署状态已保留。
 - PR #51 已把 Tenant/Workspace/Agent 绑定的 Receipt read 与持久 Audit/Health 读投影合并到私有平台；三项 CI 通过。其初始 PostgreSQL Audit 只承诺带缺口披露的 Tenant subset；该历史限制已由后续 PR #54 的有界 Workspace 导出取代。PR #52 只增加安全工程闸门映射、机器合同和回归测试，不改变 Runtime、数据库、API 或部署。
@@ -29,10 +29,10 @@ Quota、Scope 与 operation boundary，且通过临时 PostgreSQL CI。PR #54
 离线排除事件非成员关系的密码学证明或外部锚点；没有增加网络管理接口、
 客户自助流程、Schema、迁移或部署。
 
-PR #56 随后仅增加事件与回滚演练的机器可读准备契约、Human Decision
-Packet 和四项回归测试。事件演练与正式回滚演练均未执行，精确候选版本、
-回滚版本、维护窗口和责任人仍待 Human 决策；因此该 PR 不关闭任何安全
-finding，也不改变 1 个 Blocker、2 个 High 或 `FAIL_CLOSED` 状态。
+PR #56 增加事件与回滚演练的机器可读准备契约。PR #57 修复加密备份输入，
+PR #58 随后绑定 Human Decision 并执行有界事件与正式回滚演练。两个 High
+finding 已由运行证据关闭，临时执行权限已撤销。CR-01 仍为
+`FAIL_RETAINED`，安全闸门保持 `FAIL_CLOSED_RETAINED_CR01_LIMITATION`。
 
 PR #55 又在既有离线管理员和既有 PostgreSQL 表上实现有界 Workspace 删除
 请求、双人执行、独立验证以及 7/30/90 天托管保留策略。它撤销 Workspace
@@ -43,7 +43,7 @@ chain、usage/billing preview 和 security event 保留为显式完整性、法�
 
 ## Security
 
-内部安全工程闸门已对 20 项控制完成显式映射：16 `PASS`、1 `PARTIAL`、1 `FAIL_RETAINED`、1 `NOT_ASSESSED`、1 `NOT_APPLICABLE`。当前开放 1 个 Blocker 和 2 个 High finding，因此闸门结果仍是 `FAIL_CLOSED`，不是完整安全 PASS。脱敏独立安全评价 Kit 已齐备，可标记 `READY_TO_INVITE_NOT_EXECUTED`；尚未指派或联系评价者。Signed Receipt 与历史 D04/CR01 失败继续保留，未重开或改写。
+内部安全工程闸门已对 20 项控制完成显式映射：18 `PASS`、1 `FAIL_RETAINED`、1 `NOT_APPLICABLE`。当前开放 Blocker/High finding 均为 0，但 CR-01 以失败保留处置存在，因此闸门仍为 `FAIL_CLOSED_RETAINED_CR01_LIMITATION`，不是完整安全 PASS。脱敏独立安全评价 Kit 已齐备，可标记 `READY_TO_INVITE_NOT_EXECUTED`；尚未指派或联系评价者。Signed Receipt 与历史 D04/CR01 失败继续保留，未重开或改写。
 
 ## China legal and business applicability
 
@@ -68,7 +68,7 @@ HUMAN_LEGAL_REVIEW_STATUS=NOT_COMPLETE
 
 ## Deployment and support
 
-现有百度云资源只能视为受控技术候选，不是生产服务。客户 VPC、本地和隔离部署仍处于参考设计或未完成状态。Support Policy 与事件升级流程存在，但 Support Owner 和 Security Contact 均未指派；未形成对外 SLA 或 Pilot Support Commitment。
+现有百度云资源只能视为受控技术候选，不是生产服务。客户 VPC、本地和隔离部署仍处于参考设计或未完成状态。`human:zhangbin` 已被指派为 Support Owner 与 Security Contact；第二责任人仍未指派，且未形成对外 SLA 或 Pilot Support Commitment。
 
 ## External Agent validation
 
@@ -83,8 +83,8 @@ HUMAN_LEGAL_REVIEW_STATUS=NOT_COMPLETE
 1. 主体和开票未核验；
 2. 中国律师审查未完成；
 3. 定价与 SOW 未获 Human 批准；
-4. Support Owner 与 Security Contact 未指派；
-5. 1 个 Blocker 与 2 个 High findings 未关闭；
+4. Support Owner 与 Security Contact 集中于同一人，第二责任人未指派；
+5. CR-01 仍为 `FAIL_RETAINED`，独立安全评价未执行；
 6. 新商业入口未部署，真实公网 Agent discovery 未证明；
 7. 独立安全评价尚未执行；
 8. 无客户、付款、真实生产数据、正式采用或认证证据。
@@ -95,14 +95,17 @@ Receipt ≠ Truth；Verification ≠ Authorization；Monitor ≠ Enforce；Agent
 
 ## Rollback
 
-本阶段未部署、未改变 Runtime、数据库、Receipt、Quota、D04 或 P0-10。文档与验证证据可通过对应 Git merge revert 回退；原始失败会话必须继续保留。
+本阶段执行了有界服务停止/恢复、不可变 release 回滚/前滚和 Nginx
+rate-limit 配置纠偏；原应用 release 已恢复，数据库、Receipt、Quota、D04 与
+P0-10 均未改变。源码文档可通过对应 Git merge revert 回退；运行配置需按已
+保留的 pre-D29 Nginx 片段单独回退，原始失败会话必须继续保留。
 
 ## Next Human decisions
 
 1. 核验中国经营主体和开票能力；
-2. 指派 Support Owner 与 Security Contact；
+2. 指派第二名 Support/Security Backup Owner；
 3. 提供真实成本输入并批准价格；
 4. 完成中国律师审查；
-5. 关闭或明确处置 Critical/High 安全发现；
+5. 完成独立安全评价并继续保留 CR-01 failed-retained 边界；
 6. 单独授权网站商业路由部署；
 7. 在上述 Gate 通过后批准一份客户特定 Monitor Pilot SOW。

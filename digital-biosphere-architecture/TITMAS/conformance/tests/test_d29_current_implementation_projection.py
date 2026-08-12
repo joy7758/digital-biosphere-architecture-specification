@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
-GATEWAY_REVISION = "e200ea0f00d9d948c3b6dbf7058e08489dea1ccd"
+GATEWAY_REVISION = "1a065f1702e355d5f5ed566bdfd3e895cdca2540"
 
 
 def load(relative: str):
@@ -92,26 +92,33 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
 
     def test_security_engineering_gate_fails_closed_with_exact_counts(self):
         gate = self.projection["security_engineering_gate"]
-        self.assertEqual("FAIL_CLOSED", gate["status"])
+        self.assertEqual("FAIL_CLOSED_RETAINED_CR01_LIMITATION", gate["status"])
         self.assertEqual(20, gate["control_count"])
-        self.assertEqual(16, gate["pass"])
-        self.assertEqual(1, gate["partial"])
+        self.assertEqual(18, gate["pass"])
+        self.assertEqual(0, gate["partial"])
         self.assertEqual(1, gate["fail_retained"])
-        self.assertEqual(1, gate["not_assessed"])
+        self.assertEqual(0, gate["not_assessed"])
         self.assertEqual(1, gate["not_applicable"])
-        self.assertEqual(1, gate["blocker_findings_open"])
-        self.assertEqual(2, gate["high_findings_open"])
-        self.assertEqual("NOT_RECOMMENDED", gate["agent_recommendation"])
+        self.assertEqual(0, gate["blocker_findings_open"])
+        self.assertEqual(1, gate["blocker_dispositions_retained"])
+        self.assertEqual(0, gate["high_findings_open"])
+        self.assertEqual(
+            "RECOMMEND_BOUNDED_TECHNICAL_EVALUATION_ONLY",
+            gate["agent_recommendation"],
+        )
+        self.assertFalse(gate["paid_pilot_recommended"])
         self.assertFalse(gate["independent_security_evaluation_executed"])
         self.assertFalse(gate["d04_reopened"])
         self.assertEqual("NONE", gate["commercial_effect"])
         self.assertEqual(
-            "FAIL_CLOSED_ONE_BLOCKER_TWO_HIGH",
+            "FAIL_CLOSED_RETAINED_CR01_LIMITATION",
             self.status["security_engineering_gate"],
         )
         blockers = self.machine_readiness["commercial_blockers"]
-        self.assertIn("HIGH_SECURITY_FINDINGS_OPEN_2", blockers)
-        self.assertNotIn("HIGH_SECURITY_FINDINGS_OPEN_4", blockers)
+        self.assertNotIn("HIGH_SECURITY_FINDINGS_OPEN_2", blockers)
+        self.assertIn(
+            "SECURITY_GATE_FAIL_CLOSED_RETAINED_CR01_LIMITATION", blockers
+        )
 
     def test_workspace_data_lifecycle_is_source_only_and_not_deployed(self):
         capabilities = self.projection["capabilities"]
@@ -124,38 +131,45 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
         self.assertFalse(self.projection["availability"]["deployed"])
         self.assertFalse(self.status["deployment_executed"])
 
-    def test_security_drill_is_prepared_but_not_authorized_or_executed(self):
+    def test_security_drill_executed_and_temporary_authority_is_closed(self):
         drill = self.projection["security_drill_readiness"]
-        self.assertEqual(
-            "PASS_PREPARATION_ONLY_EXECUTION_NOT_AUTHORIZED", drill["status"]
-        )
-        self.assertFalse(drill["incident_drill_executed"])
-        self.assertFalse(drill["formal_rollback_drill_executed"])
+        self.assertEqual("EXECUTED_PASS_AUTHORITY_CLOSED", drill["status"])
+        self.assertTrue(drill["incident_drill_executed"])
+        self.assertTrue(drill["formal_rollback_drill_executed"])
         self.assertFalse(drill["incident_drill_authorized"])
         self.assertFalse(drill["rollback_drill_authorized"])
         self.assertEqual(
-            "PASS_INVENTORY_WITH_ROLLBACK_TARGET_UNASSIGNED",
+            "PASS_EXACT_RELEASES_BACKUP_AND_SYNTHETIC_BOUNDARY",
             drill["read_only_preflight_status"],
         )
         self.assertEqual(
             "efdfc84462628abdfbfe111f61253f76569edec0",
             drill["observed_active_symlink_release"],
         )
-        self.assertFalse(drill["drill_target_frozen"])
-        self.assertFalse(drill["formal_rollback_pointer_found"])
-        self.assertEqual("UNASSIGNED_PENDING_HUMAN_FREEZE", drill["candidate_release"])
+        self.assertTrue(drill["drill_target_frozen"])
+        self.assertTrue(drill["formal_rollback_pointer_found"])
         self.assertEqual(
-            "UNASSIGNED_NO_AUTHORITATIVE_ROLLBACK_POINTER",
+            "efdfc84462628abdfbfe111f61253f76569edec0",
+            drill["candidate_release"],
+        )
+        self.assertEqual(
+            "314cc178ea4f99c1b39e2a6d5ea9706f56d596f9",
             drill["rollback_release"],
         )
-        self.assertEqual(0, drill["security_findings_closed"])
-        self.assertEqual("NONE", drill["commercial_effect"])
+        self.assertEqual(2166, drill["incident_recovery_milliseconds"])
+        self.assertEqual(2604, drill["formal_rollback_milliseconds"])
+        self.assertEqual(2012, drill["forward_recovery_milliseconds"])
+        self.assertEqual(2, drill["security_findings_closed"])
+        self.assertEqual(1, drill["blocker_dispositions_retained"])
         self.assertEqual(
-            "PASS_PREPARATION_ONLY_EXECUTION_NOT_AUTHORIZED",
+            "NONE_SECURITY_GATE_REMAINS_FAIL_CLOSED", drill["commercial_effect"]
+        )
+        self.assertEqual(
+            "EXECUTED_PASS_AUTHORITY_CLOSED",
             self.status["security_drill_readiness"],
         )
-        self.assertFalse(self.status["incident_drill_executed"])
-        self.assertFalse(self.status["formal_rollback_drill_executed"])
+        self.assertTrue(self.status["incident_drill_executed"])
+        self.assertTrue(self.status["formal_rollback_drill_executed"])
 
     def test_synthetic_measurements_retain_scope_and_non_claims(self):
         measured = self.projection["measured_synthetic_reference"]
@@ -213,18 +227,20 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
                 external_schema["properties"]
             )
         )
+        self.assertEqual(0, self.readiness["security"]["critical_findings_open"])
         self.assertEqual(
-            2, self.readiness["security"]["high_findings_without_mitigation"]
+            0, self.readiness["security"]["high_findings_without_mitigation"]
         )
         self.assertEqual(
-            "NOT_ASSESSED", self.readiness["operational_gates"]["incident_drill"]
+            "PASS_WITH_LIMITATIONS",
+            self.readiness["operational_gates"]["incident_drill"],
         )
         self.assertEqual(
-            "NOT_ASSESSED",
+            "PASS_WITH_LIMITATIONS",
             self.readiness["operational_gates"]["formal_rollback_drill"],
         )
         self.assertEqual(
-            "WAITING_FOR_HUMAN_DECISION",
+            "PASS_WITH_LIMITATIONS",
             self.readiness["technical_gates"]["d29_security_drill_readiness"],
         )
 

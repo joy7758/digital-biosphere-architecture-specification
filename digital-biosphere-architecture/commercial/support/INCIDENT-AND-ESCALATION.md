@@ -1,6 +1,6 @@
 # Incident and Escalation / 事件与升级
 
-`STATUS=HUMAN_REVIEW_DRAFT`
+`STATUS=SECURITY_CONTACT_ASSIGNED_POLICY_STILL_HUMAN_REVIEW_DRAFT`
 
 ## Flow
 
@@ -14,9 +14,15 @@ Every event record must identify the workspace, time, affected surface, reporter
 
 Immediate stop conditions include suspected cross-tenant access, secret disclosure, unauthorized action effect, Receipt integrity failure, uncontrolled retention and inability to revoke access. Verification does not authorize recovery or reopening.
 
-Notification timing, contacts and legal duties remain customer- and contract-specific. Until assigned in a signed SOW:
+Notification timing and legal duties remain customer- and contract-specific.
+The internal Security Contact is `human:zhangbin` through the private GitHub
+owner and authorized operator channel. No public email address is invented by
+this assignment. Until a second person accepts backup duty and a signed SOW
+defines customer notice obligations:
 
 ```text
-SECURITY_CONTACT_ASSIGNED=false
+SECURITY_CONTACT_ASSIGNED=true
+SECURITY_CONTACT_REF=human:zhangbin
+BACKUP_SECURITY_CONTACT_ASSIGNED=false
 INCIDENT_NOTIFICATION_COMMITMENT=false
 ```

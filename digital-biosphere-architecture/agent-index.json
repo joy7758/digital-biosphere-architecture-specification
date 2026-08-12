@@ -123,6 +123,7 @@
     "commercial_entry_status": "commercial/discovery/status.json",
     "commercial_d29_reference_implementation": "commercial/discovery/d29-reference-implementation.json",
     "commercial_d29_security_drill_readiness_cockpit_sync": "D29-SECURITY-DRILL-READINESS-COCKPIT-SYNC-v1.0.md",
+    "commercial_d29_security_findings_disposition_cockpit_sync": "D29-SECURITY-FINDINGS-DISPOSITION-COCKPIT-SYNC-v1.0.md",
     "commercial_d29_agent_only_security_advisory": "commercial/security-evaluation/D29-AGENT-ONLY-ADVISORY-EVALUATION-v1.0.json",
     "commercial_delivery_foundation": "commercial/agent-index.json",
     "commercial_readiness_machine_status": "COMMERCIAL-READINESS-MACHINE-STATUS.json",
@@ -304,10 +305,10 @@
       "real_payment_acceptance_authorized": false
     },
     "d29_customer_entry_reference": {
-      "observed_at": "2026-08-04T11:03:39+08:00",
+      "observed_at": "2026-08-12T21:34:52+08:00",
       "source_repository": "joy7758/titmas-sandbox-gateway",
       "source_branch": "main",
-      "source_revision": "e200ea0f00d9d948c3b6dbf7058e08489dea1ccd",
+      "source_revision": "1a065f1702e355d5f5ed566bdfd3e895cdca2540",
       "postgres_application_wiring": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
       "synthetic_observer_first_value": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
       "console_core_pages": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
@@ -318,10 +319,10 @@
       "durable_credential_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
       "workspace_deletion_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
       "workspace_retention_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
-      "security_drill_readiness": "PASS_PREPARATION_ONLY_EXECUTION_NOT_AUTHORIZED",
-      "incident_drill_executed": false,
-      "formal_rollback_drill_executed": false,
-      "security_engineering_gate": "FAIL_CLOSED_ONE_BLOCKER_TWO_HIGH",
+      "security_drill_readiness": "EXECUTED_PASS_AUTHORITY_CLOSED",
+      "incident_drill_executed": true,
+      "formal_rollback_drill_executed": true,
+      "security_engineering_gate": "FAIL_CLOSED_RETAINED_CR01_LIMITATION",
       "postgres_audit_chain_complete_for_declared_workspace_scope": true,
       "canonical_tenant_event_content_complete": false,
       "offline_scope_non_membership_cryptographic_proof": false,
@@ -332,7 +333,7 @@
     }
   },
   "commercial_runtime_candidate": {
-    "observed_at": "2026-08-04T06:21:06+08:00",
+    "observed_at": "2026-08-12T21:34:52+08:00",
     "status": "WAITING_FOR_HUMAN_DECISION",
     "service_ready": true,
     "commercial_technical_ready": false,
@@ -342,14 +343,14 @@
     "public_api_base": "https://redcrag.cn/api/v1",
     "public_machine_discovery": "https://redcrag.cn/.well-known/titmas.json",
     "data_plane_repository_revision": "c319001cc1cf9e44d8b3d0b142a025c6c9af1678",
-    "latest_reference_implementation_revision": "e200ea0f00d9d948c3b6dbf7058e08489dea1ccd",
+    "latest_reference_implementation_revision": "1a065f1702e355d5f5ed566bdfd3e895cdca2540",
     "latest_reference_implementation_deployed": false,
     "live_commercial_release_revision": "9bbfce6154d67f4ab50e911b5e49611f5a4a8b57",
     "failed_candidate_revision": "33bea67bafcd5fe3aabc7e7f48b456dba42aaf76",
     "integration_source_revision": "6ed4dadd4693129d3daca0a9a29964a4f7f864e9",
     "database_deployment_recorded": true,
     "observability_ready": true,
-    "cr01_status": "BLOCKED_LEDGER_INTEGRITY_FAILED_RETAINED",
+    "cr01_status": "DISPOSED_FAILED_RETAINED_HISTORICAL_SYNTHETIC_SCOPE",
     "cr01_d02_status": "ACCEPTED_DESIGN_ONLY",
     "cr01_d03_decision_packet_ready": true,
     "cr01_d03_decided": true,
@@ -401,6 +402,6 @@
     "external_agent_beta_complete": false,
     "payment_processor_connected": false,
     "pricing_active": false,
-    "next_human_decision": "AUTHORIZE_FINAL_FORM_IMPLEMENTATION_FROM_ACCEPTED_ADOPTION_MATRIX"
+    "next_human_decision": "ASSIGN_SECOND_PERSON_SUPPORT_SECURITY_BACKUP_AND_COMPLETE_INDEPENDENT_SECURITY_EVALUATION"
   }
 }

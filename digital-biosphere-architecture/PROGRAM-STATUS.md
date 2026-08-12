@@ -663,7 +663,7 @@ and the machine
 
 ## 18. D29 Customer Entry Reference Implementation Overlay
 
-Observed on 2026-08-04 from the private Gateway canonical `main` after CE-1
+Observed through 2026-08-12 from the private Gateway canonical `main` after CE-1
 through CE-7, the bounded credential-lifecycle remediation and the bounded
 Workspace data-lifecycle remediation were merged.
 CE-1 through CE-5 retain their clean-clone evidence;
@@ -674,12 +674,16 @@ lifecycle High finding through offline source and ephemeral PostgreSQL CI. PR
 #54 then closed the bounded Workspace Audit High finding. PR #55 subsequently
 closed the bounded Workspace deletion and retention High findings in source
 and ephemeral PostgreSQL CI without adding a schema, migration, API, service,
-Runtime or deployment:
+Runtime or deployment. PR #57 then repaired the encrypted-backup manifest
+inputs and removed CI's public-website availability dependency while retaining
+hash-pinned provenance. PR #58 bound and executed the bounded incident and
+formal rollback drills, retained CR-01 without rewriting history, and closed
+the temporary execution authority:
 
 ```text
 D29_IMPLEMENTATION_SOURCE_REPOSITORY=joy7758/titmas-sandbox-gateway
 D29_IMPLEMENTATION_SOURCE_BRANCH=main
-D29_IMPLEMENTATION_SOURCE_REVISION=e200ea0f00d9d948c3b6dbf7058e08489dea1ccd
+D29_IMPLEMENTATION_SOURCE_REVISION=1a065f1702e355d5f5ed566bdfd3e895cdca2540
 D29_IMPLEMENTATION_SOURCE_STATUS=MERGED_ON_CANONICAL_MAIN
 D29_POSTGRES_APPLICATION_WIRING=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
 D29_SYNTHETIC_OBSERVER_FIRST_VALUE=IMPLEMENTED_REFERENCE_NOT_DEPLOYED
@@ -700,21 +704,27 @@ D29_GATEWAY_PR53_CI=PASS
 D29_GATEWAY_PR54_CI=PASS
 D29_GATEWAY_PR55_CI=PASS
 D29_GATEWAY_PR56_CI=PASS
+D29_GATEWAY_PR57_CI=PASS
+D29_GATEWAY_PR58_CI=PASS
 D29_DURABLE_CREDENTIAL_LIFECYCLE=PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED
 D29_WORKSPACE_DELETION_LIFECYCLE=PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED
 D29_WORKSPACE_RETENTION_LIFECYCLE=PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED
-D29_SECURITY_DRILL_READINESS=PASS_PREPARATION_ONLY_EXECUTION_NOT_AUTHORIZED
-D29_INCIDENT_DRILL_EXECUTED=false
-D29_FORMAL_ROLLBACK_DRILL_EXECUTED=false
-D29_SECURITY_ENGINEERING_GATE=FAIL_CLOSED
-D29_SECURITY_CONTROLS_PASS=16
-D29_SECURITY_CONTROLS_PARTIAL=1
+D29_SECURITY_DRILL_READINESS=EXECUTED_PASS_AUTHORITY_CLOSED
+D29_INCIDENT_DRILL_EXECUTED=true
+D29_INCIDENT_RECOVERY_MILLISECONDS=2166
+D29_FORMAL_ROLLBACK_DRILL_EXECUTED=true
+D29_FORMAL_ROLLBACK_MILLISECONDS=2604
+D29_FORWARD_RECOVERY_MILLISECONDS=2012
+D29_SECURITY_ENGINEERING_GATE=FAIL_CLOSED_RETAINED_CR01_LIMITATION
+D29_SECURITY_CONTROLS_PASS=18
+D29_SECURITY_CONTROLS_PARTIAL=0
 D29_SECURITY_CONTROLS_FAIL_RETAINED=1
-D29_SECURITY_CONTROLS_NOT_ASSESSED=1
+D29_SECURITY_CONTROLS_NOT_ASSESSED=0
 D29_SECURITY_CONTROLS_NOT_APPLICABLE=1
-D29_SECURITY_BLOCKERS_OPEN=1
-D29_SECURITY_HIGH_FINDINGS_OPEN=2
-D29_SOURCE_FULL_TESTS=390
+D29_SECURITY_BLOCKERS_OPEN=0
+D29_SECURITY_BLOCKER_DISPOSITIONS_RETAINED=1
+D29_SECURITY_HIGH_FINDINGS_OPEN=0
+D29_SOURCE_FULL_TESTS=397
 D29_SOURCE_EXPECTED_ENVIRONMENT_GATED_SKIPS=4
 D29_REFERENCE_IMPLEMENTATION_DEPLOYED=false
 COMMERCIAL_OFFERING_AVAILABLE=false
@@ -854,13 +864,17 @@ PRODUCTION_READY=false
 CUSTOMERS_VERIFIED=0
 ```
 
-The one security Blocker is the retained CR-01 restore integrity failure:
+The CR-01 restore integrity failure remains a retained failed control:
 1,659 of 1,661 historical synthetic Receipt signatures verified, while two
 cannot be verified because their random public keys were not retained. D04
-remains closed failed-retained and is not reopened by D29. Human decisions are
-still required for business and invoice evidence, support and security owners,
-cost and pricing, Chinese counsel, Blocker/High security disposition, bounded
-public status/collection-route correction and a customer-specific Monitor SOW.
+remains closed failed-retained and is not reopened by D29. Human disposition
+excludes that ledger from a future D29 launch baseline without changing the
+failed result. The Incident and Rollback High findings are closed by bounded
+execution, and `human:zhangbin` is assigned as both Support Owner and Security
+Contact. A second-person backup remains unassigned. Human decisions are still
+required for business and invoice evidence, cost and pricing, Chinese counsel,
+independent security evaluation, bounded public status/collection-route
+correction and a customer-specific Monitor SOW.
 
 The earlier multi-Agent validation failure remains historical evidence. A
 2026-08-08 direct known-URL recheck found seven catalog routes and fourteen

@@ -272,7 +272,7 @@ MATURE_COMMERCIAL_INFRASTRUCTURE=false
 ```
 
 The source-pinned D29 projection now records the private Gateway reference at
-`main@e200ea0f00d9d948c3b6dbf7058e08489dea1ccd`. PostgreSQL application
+`main@1a065f1702e355d5f5ed566bdfd3e895cdca2540`. PostgreSQL application
 wiring, the zero-customer-data synthetic Observer/FirstValue route, read-only
 Console projections and the software-delivery Monitor/Enforce proof exist as
 bounded reference implementations. They are not deployed offerings. The
@@ -288,19 +288,23 @@ proven and no external anchor is claimed. This is source-level reference
 evidence, not a commercially available Health Snapshot or Monitor Pilot.
 
 The same source now carries a fail-closed D29 security engineering projection:
-20 controls are mapped. The offline durable credential-lifecycle, bounded
-Workspace Audit, deletion and retention paths passed source and ephemeral
-PostgreSQL CI. The lifecycle path revokes Workspace access and redacts mutable
-customer references while preserving declared immutable evidence exceptions;
-it creates no customer self-service endpoint or deployment. One Blocker and two High
-findings remain open. This is not a complete security pass, independent review,
-commercial availability or deployment.
+20 controls are mapped. Gateway PR #58 records 18 `PASS`, one
+`FAIL_RETAINED` and one `NOT_APPLICABLE`. The bounded incident and formal
+rollback drills passed with 2166 ms incident recovery, 2604 ms rollback and
+2012 ms forward recovery; temporary drill authority is closed. The two High
+findings are closed.
 
-Gateway PR #56 adds only the bounded readiness contract and Human decision
-packet for a future incident and rollback drill. Both drills remain unexecuted
-and unauthorized; the exact candidate/rollback releases and responsible Human
-roles are still unassigned. The preparation closes no security finding and has
-no deployment or commercial effect.
+The CR01 action item is disposed only by retaining the immutable historical
+synthetic ledger outside any future D29 launch baseline. Its 1659 valid and two
+unverifiable Receipts remain unchanged, D04 remains `CLOSED_FAILED_RETAINED`,
+and `D29-SEC-11` remains `FAIL_RETAINED`. Open Blocker/High counts are zero,
+but the overall security gate remains
+`FAIL_CLOSED_RETAINED_CR01_LIMITATION`. This is not a complete security pass,
+independent review, SLA, commercial availability or deployment.
+
+Human decision `TITMAS-D29-SECURITY-FINDINGS-20260812-01` assigns
+`human:zhangbin` as Support Owner and Security Contact. A second-person backup
+remains unassigned; the assignment activates no customer support commitment.
 
 ```text
 D29_REFERENCE_IMPLEMENTATION_SOURCE_PINNED=true
