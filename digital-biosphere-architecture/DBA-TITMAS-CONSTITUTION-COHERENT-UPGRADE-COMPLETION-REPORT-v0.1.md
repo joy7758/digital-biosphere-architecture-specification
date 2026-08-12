@@ -2,7 +2,7 @@
 
 中文：DBA / TITMAS 宪法一致性升级完成报告 v0.1
 
-- Status: `DRAFT_PR_CANDIDATE_VALIDATED_LOCALLY`
+- Status: `DRAFT_PR_CANDIDATE_VALIDATED_WITH_CLEAN_CLONE`
 - Canonical base: `main@352cdc2dfc548be62cfb3ffcb84e33b541b419f8`
 - Scope: documentation, machine contracts, schema and conformance only
 
@@ -87,8 +87,10 @@ FAILURE_REWRITE_EXECUTED=false
 ## 7. Validation record
 
 本地候选树已完成 JSON、Schema、父子一致性、中英文、稳定 ID、四产品、禁止声明、秘密、
-私有路径和全部现有 conformance 验证。clean-clone rerun 在分支推送后执行并在下一提交
-登记；本地 PASS 不等于 Human approval 或 merge authorization。
+私有路径和全部现有 conformance 验证。远程分支提交
+`3516c1e8c35cf007e1987f380710e841795030d8` 也已在全新 clone 中通过相同 225 项测试、
+Harness 和全仓 JSON 解析。本地或 clean-clone PASS 都不等于 Human approval 或 merge
+authorization。
 
 ```text
 JSON_PARSE=PASS
@@ -103,7 +105,7 @@ FORBIDDEN_CLAIM_SCAN=PASS
 SECRET_SCAN=PASS
 PRIVATE_PATH_SCAN=PASS
 GIT_DIFF_ALLOWLIST=PASS
-CLEAN_CLONE_RERUN=PENDING_UNTIL_PUSH
+CLEAN_CLONE_RERUN=PASS_REMOTE_BRANCH_COMMIT_3516C1E8
 ```
 
 ## 8. Agent recommendation and external advisory review
