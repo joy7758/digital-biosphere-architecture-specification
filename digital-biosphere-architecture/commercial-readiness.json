@@ -1,7 +1,7 @@
 {
   "$schema": "architecture/schemas/commercial-readiness-v1.0.schema.json",
   "readiness_version": "1.0",
-  "observed_at": "2026-08-04T11:26:38+08:00",
+  "observed_at": "2026-08-12T21:34:52+08:00",
   "commercial_technical_ready": false,
   "paid_beta_ready": false,
   "production_ready": false,
@@ -31,15 +31,15 @@
     "d29_durable_credential_lifecycle": "PASS_WITH_LIMITATIONS",
     "d29_workspace_audit_export": "PASS_WITH_LIMITATIONS",
     "d29_workspace_data_lifecycle": "PASS_WITH_LIMITATIONS",
-    "d29_security_drill_readiness": "WAITING_FOR_HUMAN_DECISION"
+    "d29_security_drill_readiness": "PASS_WITH_LIMITATIONS"
   },
   "operational_gates": {
     "production_candidate_deployment": "PASS_WITH_LIMITATIONS",
     "backup_restore_drill": "FAILED_RETAINED",
     "production_ledger_clean_genesis": "NOT_STARTED",
     "production_signer": "NOT_STARTED",
-    "incident_drill": "NOT_ASSESSED",
-    "formal_rollback_drill": "NOT_ASSESSED",
+    "incident_drill": "PASS_WITH_LIMITATIONS",
+    "formal_rollback_drill": "PASS_WITH_LIMITATIONS",
     "load_test": "PASS_WITH_LIMITATIONS",
     "internal_72_hour_soak": "NOT_STARTED",
     "production_candidate_7_day_soak": "NOT_STARTED",
@@ -64,9 +64,9 @@
     "active_external_agent_identities_30d": 0
   },
   "security": {
-    "critical_findings_open": 1,
-    "high_findings_without_mitigation": 2,
-    "cross_tenant_leakage_findings": null
+    "critical_findings_open": 0,
+    "high_findings_without_mitigation": 0,
+    "cross_tenant_leakage_findings": 0
   },
-  "next_human_decision": "D29_BUSINESS_LEGAL_PRICING_SUPPORT_SECURITY_AND_WEBSITE_DEPLOYMENT_GATE_DISPOSITION"
+  "next_human_decision": "D29_SECOND_PERSON_SUPPORT_SECURITY_BACKUP_INDEPENDENT_EVALUATION_AND_REMAINING_COMMERCIAL_GATES"
 }

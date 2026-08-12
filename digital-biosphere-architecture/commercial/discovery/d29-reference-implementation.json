@@ -1,13 +1,13 @@
 {
   "contract_format": "TITMAS-D29-REFERENCE-IMPLEMENTATION-PROJECTION-1.0",
   "projection_id": "TITMAS-D29-CURRENT-REFERENCE-IMPLEMENTATION-v1",
-  "observed_at": "2026-08-04T11:03:39+08:00",
+  "observed_at": "2026-08-12T21:34:52+08:00",
   "source": {
     "repository": "joy7758/titmas-sandbox-gateway",
     "branch": "main",
-    "revision": "e200ea0f00d9d948c3b6dbf7058e08489dea1ccd",
+    "revision": "1a065f1702e355d5f5ed566bdfd3e895cdca2540",
     "source_status": "MERGED_ON_CANONICAL_MAIN",
-    "pull_requests": [44, 45, 46, 48, 49, 51, 52, 53, 54, 55, 56]
+    "pull_requests": [44, 45, 46, 48, 49, 51, 52, 53, 54, 55, 56, 57, 58]
   },
   "capabilities": {
     "postgres_application_wiring": "IMPLEMENTED_REFERENCE_NOT_DEPLOYED",
@@ -21,13 +21,13 @@
     "durable_credential_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
     "workspace_deletion_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
     "workspace_retention_lifecycle": "PASS_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED",
-    "security_drill_readiness": "PASS_PREPARATION_ONLY_EXECUTION_NOT_AUTHORIZED"
+    "security_drill_readiness": "EXECUTED_PASS_AUTHORITY_CLOSED"
   },
   "validation": {
     "clean_clone": "PASS_FOR_CE1_CE5_AT_PREDECESSOR_REVISION",
     "clean_clone_evidence_revision": "c02926397563940feeba54b1efbe8d62e406e0e8",
     "ce6_exact_head_ci": "PASS",
-    "full_test_count": 390,
+    "full_test_count": 397,
     "expected_environment_gated_skip_count": 4,
     "ruff": "PASS",
     "mypy": "PASS",
@@ -46,7 +46,9 @@
       "D29-DURABLE-CREDENTIAL-LIFECYCLE-REPORT-v1.0.md",
       "D29-CE7-COMPLETE-WORKSPACE-AUDIT-EXPORT-REPORT-v1.0.md",
       "D29-DATA-LIFECYCLE-REPORT-v1.0.md",
-      "D29-SECURITY-DRILL-READINESS-DECISION-PACKET-v1.0.md"
+      "D29-SECURITY-DRILL-READINESS-DECISION-PACKET-v1.0.md",
+      "D29-SECURITY-FINDINGS-DISPOSITION-RESULT-v1.0.md",
+      "contracts/d29-security-drill-result-20260812-v1.json"
     ],
     "pull_request_51_exact_head": "df6a10a38dfc9f4e7e39775c24410f201432914b",
     "pull_request_51_merge_commit": "569dd5506e0030dec9d942846aee50aa92113fd5",
@@ -90,19 +92,28 @@
     "pull_request_56_url": "https://github.com/joy7758/titmas-sandbox-gateway/pull/56",
     "security_drill_readiness_quality_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30873331996",
     "security_drill_readiness_postgres_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30873331996",
-    "security_drill_readiness_supply_chain_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30873332006"
+    "security_drill_readiness_supply_chain_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/30873332006",
+    "pull_request_57_merge_commit": "6b684723dc4f47acc808a35b1eb5007af742aecd",
+    "pull_request_57_url": "https://github.com/joy7758/titmas-sandbox-gateway/pull/57",
+    "pull_request_58_exact_head": "e93e58db24a489549a196b08cc117bc619867f8d",
+    "pull_request_58_merge_commit": "1a065f1702e355d5f5ed566bdfd3e895cdca2540",
+    "pull_request_58_url": "https://github.com/joy7758/titmas-sandbox-gateway/pull/58",
+    "security_disposition_quality_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/31602011919",
+    "security_disposition_supply_chain_ci_url": "https://github.com/joy7758/titmas-sandbox-gateway/actions/runs/31602011913"
   },
   "security_engineering_gate": {
-    "status": "FAIL_CLOSED",
+    "status": "FAIL_CLOSED_RETAINED_CR01_LIMITATION",
     "control_count": 20,
-    "pass": 16,
-    "partial": 1,
+    "pass": 18,
+    "partial": 0,
     "fail_retained": 1,
-    "not_assessed": 1,
+    "not_assessed": 0,
     "not_applicable": 1,
-    "blocker_findings_open": 1,
-    "high_findings_open": 2,
-    "agent_recommendation": "NOT_RECOMMENDED",
+    "blocker_findings_open": 0,
+    "blocker_dispositions_retained": 1,
+    "high_findings_open": 0,
+    "agent_recommendation": "RECOMMEND_BOUNDED_TECHNICAL_EVALUATION_ONLY",
+    "paid_pilot_recommended": false,
     "independent_security_evaluation_executed": false,
     "d04_reopened": false,
     "commercial_effect": "NONE",
@@ -112,9 +123,9 @@
     "workspace_retention_finding": "RESOLVED_IN_SOURCE_AND_EPHEMERAL_POSTGRES_CI_NOT_DEPLOYED"
   },
   "security_drill_readiness": {
-    "status": "PASS_PREPARATION_ONLY_EXECUTION_NOT_AUTHORIZED",
-    "read_only_preflight_observed_at": "2026-08-04T11:26:38+08:00",
-    "read_only_preflight_status": "PASS_INVENTORY_WITH_ROLLBACK_TARGET_UNASSIGNED",
+    "status": "EXECUTED_PASS_AUTHORITY_CLOSED",
+    "read_only_preflight_observed_at": "2026-08-12T21:16:19+08:00",
+    "read_only_preflight_status": "PASS_EXACT_RELEASES_BACKUP_AND_SYNTHETIC_BOUNDARY",
     "observed_active_symlink_release": "efdfc84462628abdfbfe111f61253f76569edec0",
     "observed_service_state": "ACTIVE_RUNNING",
     "observed_loopback_http": {
@@ -124,17 +135,21 @@
     },
     "observed_manifest_activated": false,
     "observed_manifest_production_ready": false,
-    "drill_target_frozen": false,
-    "formal_rollback_pointer_found": false,
-    "incident_drill_executed": false,
-    "formal_rollback_drill_executed": false,
+    "drill_target_frozen": true,
+    "formal_rollback_pointer_found": true,
+    "incident_drill_executed": true,
+    "formal_rollback_drill_executed": true,
     "incident_drill_authorized": false,
     "rollback_drill_authorized": false,
-    "candidate_release": "UNASSIGNED_PENDING_HUMAN_FREEZE",
-    "rollback_release": "UNASSIGNED_NO_AUTHORITATIVE_ROLLBACK_POINTER",
-    "security_findings_closed": 0,
-    "commercial_effect": "NONE",
-    "cockpit_sync_ref": "D29-SECURITY-DRILL-READINESS-COCKPIT-SYNC-v1.0.md"
+    "candidate_release": "efdfc84462628abdfbfe111f61253f76569edec0",
+    "rollback_release": "314cc178ea4f99c1b39e2a6d5ea9706f56d596f9",
+    "incident_recovery_milliseconds": 2166,
+    "formal_rollback_milliseconds": 2604,
+    "forward_recovery_milliseconds": 2012,
+    "security_findings_closed": 2,
+    "blocker_dispositions_retained": 1,
+    "commercial_effect": "NONE_SECURITY_GATE_REMAINS_FAIL_CLOSED",
+    "cockpit_sync_ref": "D29-SECURITY-FINDINGS-DISPOSITION-COCKPIT-SYNC-v1.0.md"
   },
   "measured_synthetic_reference": {
     "scenario_id": "D29-SYNTHETIC-SOFTWARE-DELIVERY-001",

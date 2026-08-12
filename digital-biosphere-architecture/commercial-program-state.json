@@ -5,10 +5,10 @@
   "current_phase": "D29_CUSTOMER_ENTRY_REFERENCE_IMPLEMENTATION",
   "phase_status": "IN_PROGRESS",
   "started_at": "2026-07-30T19:04:07+08:00",
-  "last_updated_at": "2026-08-09T00:11:13+08:00",
+  "last_updated_at": "2026-08-12T21:34:52+08:00",
   "source_commits": {
     "governance": "8b01bb8988c9180392ac2b06a39e2541fc98b260",
-    "data_plane": "e200ea0f00d9d948c3b6dbf7058e08489dea1ccd",
+    "data_plane": "1a065f1702e355d5f5ed566bdfd3e895cdca2540",
     "public_integrations": "6ed4dadd4693129d3daca0a9a29964a4f7f864e9",
     "public_website_source": "92a33698899153aed424cd7b756e0accca56b6be"
   },
@@ -58,6 +58,10 @@
     "D29_WORKSPACE_AUDIT_EXPORT_REFERENCE_COMPLETE",
     "D29_WORKSPACE_DATA_LIFECYCLE_REFERENCE_COMPLETE",
     "D29_SECURITY_DRILL_READINESS_PACKET_COMPLETE",
+    "D29_SECURITY_DRILLS_EXECUTED_PASS_AUTHORITY_CLOSED",
+    "D29_HIGH_SECURITY_FINDINGS_CLOSED_2",
+    "D29_CR01_BLOCKER_DISPOSED_FAILED_RETAINED_HISTORICAL_SYNTHETIC_SCOPE",
+    "D29_SUPPORT_OWNER_AND_SECURITY_CONTACT_ASSIGNED_SINGLE_PERSON",
     "D29_AGENT_ONLY_SECURITY_ADVISORY_COMPLETE_WITH_FAILURES",
     "D29_LIVE_PUBLIC_SURFACE_REVERIFIED_FAIL_CLOSED",
     "D29_WEBSITE_SOURCE_CORRECTION_MERGED_NOT_DEPLOYED"
@@ -101,6 +105,10 @@
     "D29_WORKSPACE_AUDIT_EXPORT_REFERENCE_COMPLETE": "Gateway PR #54 merged at 5549259a733ce5c7520d85b26936a98fd7317a3b. Source and ephemeral PostgreSQL CI passed the complete declared Workspace-scope export and Audit tamper control; canonical Tenant event content remains intentionally incomplete, external anchoring is absent, and no deployment was created.",
     "D29_WORKSPACE_DATA_LIFECYCLE_REFERENCE_COMPLETE": "Gateway PR #55 merged at ddbbb724b6a74eca81cf96773bbc9a6a772ae814. Source and ephemeral PostgreSQL CI passed bounded Workspace deletion and retention lifecycle controls. The path revokes Workspace access, redacts mutable customer references, retains declared immutable evidence exceptions, stores no raw customer content, and creates no customer self-service, schema, migration, API, service or deployment.",
     "D29_SECURITY_DRILL_READINESS_PACKET_COMPLETE": "Gateway PR #56 merged at e200ea0f00d9d948c3b6dbf7058e08489dea1ccd. It adds only a bounded incident and rollback drill readiness contract, Human decision packet and regression tests. No drill, deployment, restart or finding closure occurred; the security gate remains FAIL_CLOSED with one Blocker and two High findings.",
+    "D29_SECURITY_DRILLS_EXECUTED_PASS_AUTHORITY_CLOSED": "Gateway PR #58 merged at 1a065f1702e355d5f5ed566bdfd3e895cdca2540 after the bounded live incident and formal rollback drills passed. Incident recovery measured 2166 ms, rollback 2604 ms and forward recovery 2012 ms; exact current release was restored and temporary authority was closed.",
+    "D29_HIGH_SECURITY_FINDINGS_CLOSED_2": "The incident-drill and formal-rollback-drill High findings are closed by executed evidence. This does not constitute an independent security evaluation, SLA, production readiness or commercial authorization.",
+    "D29_CR01_BLOCKER_DISPOSED_FAILED_RETAINED_HISTORICAL_SYNTHETIC_SCOPE": "The open CR01 action is disposed by retaining the immutable 1661 historical synthetic Receipt ledger outside any future D29 launch baseline. The two unverifiable Receipts remain unchanged, D04 remains CLOSED_FAILED_RETAINED and security control D29-SEC-11 remains FAIL_RETAINED.",
+    "D29_SUPPORT_OWNER_AND_SECURITY_CONTACT_ASSIGNED_SINGLE_PERSON": "Human decision TITMAS-D29-SECURITY-FINDINGS-20260812-01 assigns human:zhangbin as Support Owner and Security Contact through the recorded review and expiry gates. A second-person backup remains unassigned; no SLA or customer support commitment is activated.",
     "D29_AGENT_ONLY_SECURITY_ADVISORY_COMPLETE_WITH_FAILURES": "A sanitized Agent-only review attempted nine calls across five Providers. Three Schema-valid reviews from Qwen, ERNIE and DeepSeek agreed on NOT_RECOMMENDED and FAIL_CLOSED; one Kimi response was Schema-invalid and five call failures were retained. This is not a formal independent security audit and closes no finding.",
     "D29_LIVE_PUBLIC_SURFACE_REVERIFIED_FAIL_CLOSED": "On 2026-08-08, seven catalog routes and fourteen bounded Human routes were reachable. Six catalogs were byte-identical to current DBA source, while /status.json remained stale and source-inconsistent and four collection routes were unavailable. Historical Agent discovery failure remains retained; no deployment or commercial availability was created.",
     "D29_WEBSITE_SOURCE_CORRECTION_MERGED_NOT_DEPLOYED": "DBA PR #138 merged at 92a33698899153aed424cd7b756e0accca56b6be. It adds four bilingual collection entries, corrects expired E01 access truth, pins the remediated production dependency, and preserves explicit non-availability boundaries. No deployment, customer contact, offering activation or commercial authorization occurred."
@@ -117,15 +125,15 @@
     "D29_BUSINESS_ENTITY_AND_INVOICE_NOT_VERIFIED",
     "D29_PRICING_NOT_HUMAN_APPROVED",
     "D29_CONTRACTS_NOT_COUNSEL_APPROVED",
-    "D29_SUPPORT_AND_SECURITY_OWNERS_UNASSIGNED"
+    "D29_SECOND_PERSON_SUPPORT_SECURITY_BACKUP_UNASSIGNED"
     ,"D29_LIVE_PUBLIC_MACHINE_STATUS_INCONSISTENT_AND_OPEN_WEB_DISCOVERY_NOT_PROVEN"
     ,"D29_INDEPENDENT_SECURITY_EVALUATION_NOT_EXECUTED"
-    ,"D29_SECURITY_GATE_FAIL_CLOSED_ONE_BLOCKER_TWO_HIGH"
+    ,"D29_SECURITY_GATE_FAIL_CLOSED_RETAINED_CR01_LIMITATION"
   ],
   "human_decisions_required": [
     "SELECT_D29_REMAINING_GATE_SEQUENCE",
     "VERIFY_CHINA_BUSINESS_ENTITY_AND_INVOICE_CAPABILITY",
-    "ASSIGN_SUPPORT_OWNER_AND_SECURITY_CONTACT",
+    "ASSIGN_SECOND_PERSON_SUPPORT_AND_SECURITY_BACKUP",
     "PROVIDE_MEASURED_COST_INPUTS_AND_APPROVE_PRICING",
     "CHINESE_COUNSEL_REVIEW_CONTRACT_PACKAGE",
     "APPROVE_ONE_CUSTOMER_SPECIFIC_MONITOR_SOW",

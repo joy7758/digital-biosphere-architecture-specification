@@ -1,7 +1,7 @@
 ---
-status: HUMAN_REVIEW_DRAFT
+status: OWNER_ASSIGNED_POLICY_STILL_HUMAN_REVIEW_DRAFT
 commercial_effect: none
-support_owner_assigned: false
+support_owner_assigned: true
 ---
 
 # Pilot Support Policy / 试点支持政策
@@ -29,7 +29,9 @@ support_owner_assigned: false
 Support does not certify safety, correctness, compliance, recovery or production readiness. It cannot expand credentials, data scope, retention, Agent authority or contractual scope.
 
 ```text
-SUPPORT_OWNER_ASSIGNED=false
+SUPPORT_OWNER_ASSIGNED=true
+SUPPORT_OWNER_REF=human:zhangbin
+BACKUP_OWNER_ASSIGNED=false
 SUPPORT_SLA_ACTIVE=false
 CUSTOMER_SUPPORT_AVAILABLE=false
 ```

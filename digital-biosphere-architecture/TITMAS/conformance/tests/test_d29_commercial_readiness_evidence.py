@@ -222,7 +222,7 @@ class D29CommercialReadinessEvidenceTests(unittest.TestCase):
             for marker in forbidden:
                 self.assertNotIn(marker, content, path.name)
 
-    def test_security_evaluation_kit_is_ready_not_executed(self):
+    def test_security_evaluation_kit_is_historical_and_still_not_executed(self):
         kit = ROOT / "commercial" / "security-evaluation"
         required = {
             "ARCHITECTURE-PACKAGE.md",
@@ -237,11 +237,18 @@ class D29CommercialReadinessEvidenceTests(unittest.TestCase):
         machine_status = load(ROOT / "COMMERCIAL-READINESS-MACHINE-STATUS.json")
         self.assertFalse(limitations["security_pass"])
         self.assertEqual(limitations["blocker_count"], 1)
-        self.assertEqual(
-            limitations["high_count"],
-            machine_status["security_status"]["high_findings_open"],
-        )
         self.assertEqual(limitations["high_count"], 2)
+        self.assertEqual(
+            0, machine_status["security_status"]["high_findings_open"]
+        )
+        self.assertEqual(
+            1,
+            machine_status["security_status"]["blocker_dispositions_retained"],
+        )
+        self.assertEqual(
+            "READY_TO_INVITE_NOT_EXECUTED",
+            machine_status["security_status"]["independent_security_evaluation"],
+        )
         readme = (kit / "README.md").read_text(encoding="utf-8")
         self.assertIn("KIT_STATUS=READY_TO_INVITE", readme)
         self.assertIn("EVALUATION_EXECUTED=false", readme)
@@ -259,9 +266,12 @@ class D29CommercialReadinessEvidenceTests(unittest.TestCase):
         foundation = load(ROOT / "commercial" / "D29-COMMERCIAL-DELIVERY-FOUNDATION-STATUS.json")
         decisions = foundation["next_human_decisions"]
         self.assertNotIn("COMPLETE_MULTI_AGENT_COMMERCIAL_VALIDATION", decisions)
-        self.assertIn(
+        self.assertNotIn(
             "EXPLICITLY_DISPOSE_CRITICAL_AND_HIGH_SECURITY_FINDINGS_WITHOUT_REOPENING_D04",
             decisions,
+        )
+        self.assertIn(
+            "ASSIGN_SECOND_PERSON_SUPPORT_AND_SECURITY_BACKUP", decisions
         )
 
 

@@ -11,6 +11,8 @@
 - Contract drafts: [`contracts/CONTRACT-PACKAGE-INDEX.md`](contracts/CONTRACT-PACKAGE-INDEX.md)
 - Onboarding: [`onboarding/CUSTOMER-ONBOARDING-RUNBOOK.md`](onboarding/CUSTOMER-ONBOARDING-RUNBOOK.md)
 - Support: [`support/PILOT-SUPPORT-POLICY.md`](support/PILOT-SUPPORT-POLICY.md)
+- Support owner assignment: [`support/SUPPORT-OWNER-ASSIGNMENT.md`](support/SUPPORT-OWNER-ASSIGNMENT.md)
+- D29 security disposition sync: [`../D29-SECURITY-FINDINGS-DISPOSITION-COCKPIT-SYNC-v1.0.md`](../D29-SECURITY-FINDINGS-DISPOSITION-COCKPIT-SYNC-v1.0.md)
 - Agent-customer review: [`reviews/D29-AGENT-CUSTOMER-RECOMMENDATION-REVIEW-v0.1.json`](reviews/D29-AGENT-CUSTOMER-RECOMMENDATION-REVIEW-v0.1.json)
 - Sales drafts: [`sales/README.md`](sales/README.md)
 - Multi-Agent validation: [`validation/d29-multi-agent-v1/README.md`](validation/d29-multi-agent-v1/README.md)
