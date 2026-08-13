@@ -54,6 +54,17 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
             "MERGED",
             self.convergence["source_truth"]["integrations"]["pull_request_state"],
         )
+        self.assertEqual(
+            "MERGED",
+            self.convergence["source_truth"]["governance"]["pull_request_state"],
+        )
+        self.assertTrue(
+            self.convergence["authority"]["cockpit_status_projection_merge_executed"]
+        )
+        self.assertEqual(
+            "REMAINING_GATEWAY_CONVERGENCE_CANDIDATE_ONLY",
+            self.convergence["authority"]["merge_authority_scope"],
+        )
         self.assertFalse(self.convergence["soak"]["complete"])
         self.assertFalse(self.convergence["candidate"]["commercial_private_pilot_ready"])
         self.assertFalse(self.convergence["candidate"]["production_ready"])

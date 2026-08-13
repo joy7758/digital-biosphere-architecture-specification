@@ -1,6 +1,6 @@
 # TITMAS Commercial Product Convergence Implementation Projection v1.0
 
-Observed at: `2026-08-13T20:24:00+08:00`
+Observed at: `2026-08-13T20:31:00+08:00`
 
 Status: `ENGINEERING_CANDIDATE_PENDING_ELAPSED_SOAK_TIME`
 
@@ -15,12 +15,16 @@ customer, payment, production or certification authority.
 |---|---|---|---|---|---|
 | Private implementation | `joy7758/titmas-sandbox-gateway` | `8437b2c1ac860f10953ff60603ddd6814b97393a` | `1a35dad236d1d6903127d1960d15a27edccd667f` | Draft PR `#59` | local validation PASS; GitHub checks 3/3 PASS; prerequisite metadata-redaction PR `#50` merged |
 | Public integrations | `joy7758/titmas-integrations` | `6d1f076f886b99241a0f1a75e76166ff66f7279b` | `06e60b4261be43fc0c5442509937456768437ce7` | Merged PR `#6`; merge commit `68a05db2a59591bf89f8c31e0d51f94b51e68ed6` | functional checks and pinned SDK regeneration 9/9 PASS; source merge verified on remote `main` |
-| Program governance | `joy7758/digital-biosphere-architecture-specification` | `415a5cccd7a06334d28a8a6eae4c470cf6d1aafa` | this projection branch | Draft PR pending | status evidence only; constitutions unchanged |
+| Program governance | `joy7758/digital-biosphere-architecture-specification` | `415a5cccd7a06334d28a8a6eae4c470cf6d1aafa` | `08205aadc30cb81f2284c7437d682ab2b3916169` | Merged PR `#143`; merge commit `ba913e64c50e8be2f0a1b99ac03c771a9e5e3c35` | status evidence only; constitutions unchanged |
 
 The Integrations source merge was separately authorized and executed during the
 2026-08-13 Human-owner cockpit task. It changes neither the Gateway candidate's
 Draft state nor the elapsed-soak gate, and it does not publish an SDK or MCP
 package, deploy a Runtime, or authorize commercial access.
+
+The cockpit status projection was separately merged after its exact-path
+admission blocker was fixed and both remote checks passed. That governance
+record does not authorize the remaining Gateway candidate merge.
 
 ## Implemented convergence slice
 
