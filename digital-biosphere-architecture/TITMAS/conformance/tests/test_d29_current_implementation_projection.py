@@ -28,6 +28,45 @@ class D29CurrentImplementationProjectionTests(unittest.TestCase):
         )
         cls.machine_readiness = load("COMMERCIAL-READINESS-MACHINE-STATUS.json")
         cls.agent_index = load("agent-index.json")
+        cls.convergence = load(
+            "titmas-commercial-product-convergence-status-v1.0.json"
+        )
+
+    def test_conditional_convergence_projection_is_discoverable_and_fail_closed(self):
+        surfaces = self.agent_index["machine_surfaces"]
+        self.assertEqual(
+            "titmas-commercial-product-convergence-status-v1.0.json",
+            surfaces["commercial_product_convergence_status"],
+        )
+        self.assertEqual(
+            "TITMAS-COMMERCIAL-PRODUCT-CONVERGENCE-IMPLEMENTATION-PROJECTION-v1.0.md",
+            surfaces["commercial_product_convergence_projection"],
+        )
+        self.assertEqual(
+            "ENGINEERING_CANDIDATE_PENDING_ELAPSED_SOAK_TIME",
+            self.convergence["status"],
+        )
+        self.assertEqual(
+            "8437b2c1ac860f10953ff60603ddd6814b97393a",
+            self.convergence["source_truth"]["gateway"]["base_commit"],
+        )
+        self.assertEqual(
+            "MERGED",
+            self.convergence["source_truth"]["integrations"]["pull_request_state"],
+        )
+        self.assertFalse(self.convergence["soak"]["complete"])
+        self.assertFalse(self.convergence["candidate"]["commercial_private_pilot_ready"])
+        self.assertFalse(self.convergence["candidate"]["production_ready"])
+        self.assertFalse(self.convergence["candidate"]["commercial_offering_available"])
+        for authority in (
+            "merge_authorized",
+            "release_authorized",
+            "deployment_authorized",
+            "customer_data_authorized",
+            "payment_authorized",
+        ):
+            with self.subTest(authority=authority):
+                self.assertFalse(self.convergence["authority"][authority])
 
     def test_source_is_exact_canonical_gateway_main(self):
         source = self.projection["source"]

@@ -128,6 +128,8 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/TITMAS/README.md",
         "digital-biosphere-architecture/TITMAS/agent-native/README.md",
         "digital-biosphere-architecture/TITMAS/agent-native/schemas/agent-index.schema.json",
+        "digital-biosphere-architecture/TITMAS-COMMERCIAL-PRODUCT-CONVERGENCE-IMPLEMENTATION-PROJECTION-v1.0.md",
+        "digital-biosphere-architecture/titmas-commercial-product-convergence-status-v1.0.json",
         "digital-biosphere-architecture/TITMAS/community/community-status.json",
         "digital-biosphere-architecture/TITMAS/conformance/schemas/community-status.schema.json",
         "digital-biosphere-architecture/TITMAS/conformance/reports/latest.json",
