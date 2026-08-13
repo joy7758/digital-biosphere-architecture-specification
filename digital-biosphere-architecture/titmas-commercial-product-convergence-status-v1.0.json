@@ -1,12 +1,16 @@
 {
   "document_id": "TITMAS-COMMERCIAL-PRODUCT-CONVERGENCE-STATUS-1.0",
   "schema_version": "1.0.0",
-  "observed_at": "2026-08-13T20:24:00+08:00",
+  "observed_at": "2026-08-13T20:31:00+08:00",
   "status": "ENGINEERING_CANDIDATE_PENDING_ELAPSED_SOAK_TIME",
   "source_truth": {
     "governance": {
       "repository": "joy7758/digital-biosphere-architecture-specification",
-      "base_commit": "415a5cccd7a06334d28a8a6eae4c470cf6d1aafa"
+      "base_commit": "415a5cccd7a06334d28a8a6eae4c470cf6d1aafa",
+      "projection_commit": "08205aadc30cb81f2284c7437d682ab2b3916169",
+      "pull_request": "https://github.com/joy7758/digital-biosphere-architecture-specification/pull/143",
+      "pull_request_state": "MERGED",
+      "merge_commit": "ba913e64c50e8be2f0a1b99ac03c771a9e5e3c35"
     },
     "gateway": {
       "repository": "joy7758/titmas-sandbox-gateway",
@@ -76,8 +80,10 @@
   },
   "authority": {
     "merge_authorized": false,
-    "merge_authority_scope": "REMAINING_CONVERGENCE_PACKAGE_GATEWAY_AND_COCKPIT",
+    "merge_authority_scope": "REMAINING_GATEWAY_CONVERGENCE_CANDIDATE_ONLY",
     "integrations_pr_6_merge_executed": true,
+    "cockpit_status_projection_merge_executed": true,
+    "cockpit_status_projection_merge_commit": "ba913e64c50e8be2f0a1b99ac03c771a9e5e3c35",
     "release_authorized": false,
     "deployment_authorized": false,
     "customer_data_authorized": false,
