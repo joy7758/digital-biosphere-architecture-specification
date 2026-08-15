@@ -208,7 +208,16 @@ def forbidden_change_reason(paths):
             return "CORE_RUNTIME_OR_DATABASE_CHANGED"
         allowed_contract = raw.startswith("digital-biosphere-architecture/commercial/") and raw.endswith((".json", ".md"))
         allowed_commercial_doc = raw.startswith("digital-biosphere-architecture/docs/commercial/") and raw.endswith(".md")
-        if raw not in allowed_exact and raw not in approved_website and not allowed_contract and not allowed_commercial_doc:
+        allowed_intelligence_artifact = raw.startswith(
+            "digital-biosphere-architecture/intelligence/"
+        ) and raw.endswith((".json", ".md"))
+        if (
+            raw not in allowed_exact
+            and raw not in approved_website
+            and not allowed_contract
+            and not allowed_commercial_doc
+            and not allowed_intelligence_artifact
+        ):
             return "UNAPPROVED_CHANGE_PATH"
     return None
 
@@ -400,6 +409,9 @@ class CommercialC01EntryTests(unittest.TestCase):
         self.assertEqual("WEBSITE_IMPLEMENTATION_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/site/app/page.tsx"}))
         self.assertIsNone(forbidden_change_reason({"digital-biosphere-architecture/site/app/site-content.ts"}))
         self.assertIsNone(forbidden_change_reason({"digital-biosphere-architecture/site/public/llms.txt"}))
+        self.assertIsNone(forbidden_change_reason({"digital-biosphere-architecture/intelligence/2026-08-15/intelligence-brief.md"}))
+        self.assertIsNone(forbidden_change_reason({"digital-biosphere-architecture/intelligence/2026-08-15/reference-case.json"}))
+        self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({"digital-biosphere-architecture/intelligence/collector.py"}))
         self.assertIsNone(forbidden_change_reason({"digital-biosphere-architecture/commercial/validation/d29-multi-agent-v1/source-materials/site/public/proof-catalog.json"}))
         self.assertIsNone(forbidden_change_reason({
             "digital-biosphere-architecture/cockpit/projections/titmac-scout.json",

@@ -896,3 +896,34 @@ Machine and Human entries are
 [`COMMERCIAL-READINESS-MACHINE-STATUS.json`](COMMERCIAL-READINESS-MACHINE-STATUS.json),
 [`COMMERCIAL-READINESS-REPORT-v1.md`](COMMERCIAL-READINESS-REPORT-v1.md) and
 [`D29-HUMAN-COMMERCIAL-GATE-DECISION-PACKET-v1.md`](commercial/D29-HUMAN-COMMERCIAL-GATE-DECISION-PACKET-v1.md).
+
+## 22. Trust Continuity Compatibility Intelligence Overlay
+
+Observed and primary-source reconciled on 2026-08-15:
+
+```text
+CURRENT_INTELLIGENCE_BUNDLE=2026-08-15
+TRUST_CONTINUITY_CROSSWALK_STATUS=PRIMARY_SOURCE_RECONCILED_REFERENCE_CASES
+DECLARED_AGENT_VERSION_NE_EFFECTIVE_SESSION_CAPABILITY_STATE=true
+LATEST_REGISTRY_REVISION_NE_APPROVED_EFFECTIVE_REVISION=true
+APPROVED_EFFECTIVE_REVISION_NE_BOUND_OR_EXECUTED_REVISION=true
+OBSERVATION_ORIGIN_NE_SIGNER_ACCOUNTABILITY=true
+AWS_NAMESPACE_MIGRATION_COMPLETION=UNKNOWN_DOCUMENTATION_STILL_SAYS_UPCOMING
+OTEL_ISSUE_386_STATUS=OPEN_NO_MILESTONE_NO_ASSOCIATED_PR
+ENTRA_AGENT_ID_PRODUCT_STATUS=GA_FEATURE_LEVEL_PREVIEW_MARKERS_RETAINED
+ITU_FG_TIDA_STATUS=PRE_STANDARDIZATION_NO_TITMAS_ADOPTION
+NEW_CAPABILITY_CREATED=false
+DBOS_CHANGE_REQUIRED=false
+SAEE_CHANGE_REQUIRED=false
+RUNTIME_CHANGE_PERFORMED=false
+MERGE_AUTHORIZED=false
+RELEASE_OR_DEPLOYMENT_AUTHORIZED=false
+```
+
+The canonical machine mapping is
+[`Trust Continuity Compatibility Crosswalk v0.1`](intelligence/2026-08-15/trust-continuity-compatibility-crosswalk-v0.1.json).
+It adds source-pinned cases to the already adopted `ADR-039` conclusion-continuity
+rule; it does not change that rule or create a new schema, protocol, collector,
+registry, identity system, evaluation engine or Runtime. Missing effective
+Session state, exact approved/bound revision, observation origin or signer
+accountability continues to fail closed through the existing Integration Gates.
