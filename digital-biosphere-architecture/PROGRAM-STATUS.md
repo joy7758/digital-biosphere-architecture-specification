@@ -927,3 +927,44 @@ rule; it does not change that rule or create a new schema, protocol, collector,
 registry, identity system, evaluation engine or Runtime. Missing effective
 Session state, exact approved/bound revision, observation origin or signer
 accountability continues to fail closed through the existing Integration Gates.
+
+## 23. Claim-Scoped Reassessment Candidate Intelligence Overlay
+
+Observed and primary-source reconciled on 2026-08-16:
+
+```text
+CURRENT_INTELLIGENCE_BUNDLE=2026-08-16
+AGENT_BASELINE_CHECK_CANDIDATE_STATUS=REFERENCE_ONLY_DEFERRED_BY_D16
+CLAIM_DEPENDENCY_DIMENSIONS=MODEL_PROMPT_TOOL_OR_MCP_PERMISSION_RUNTIME
+CANDIDATE_OUTPUTS=VALID_STALE_UNKNOWN
+PROHIBITED_OUTPUTS=SAFE_TRUSTED_AUTHORIZED
+REFERENCE_FIXTURE_COUNT=3
+MATURE_COMPLETE_EQUIVALENT_FOUND=false
+GLOBAL_ABSENCE_PROVEN=false
+GBZ185_SERIES_PART_COUNT=7
+GBZ185_STATUS=CURRENT_GUIDANCE_DOCUMENTS
+GBT47507_2026_STATUS=CURRENT_RECOMMENDED_NATIONAL_STANDARD
+MCP_TOOL_CHANGE_SOURCE=STABLE_2026_07_28
+OTEL_PR_445_STATUS=OPEN_NOT_SPECIFICATION
+OTEL_PR_447_STATUS=OPEN_NOT_SPECIFICATION
+SAEE_CANONICAL_PUBLIC_MCP_TOOL_COUNT=2
+SAEE_THIRD_PUBLIC_MCP_TOOL_REGISTERED=false
+SAEE_REPOSITORY_CHANGED=false
+NEW_CAPABILITY_CREATED=false
+NEW_SCHEMA_CREATED=false
+NEW_PROTOCOL_CREATED=false
+NEW_RUNTIME_CREATED=false
+D16_FREEZE_REMAINS_ACTIVE=true
+MERGE_AUTHORIZED=false
+RELEASE_OR_DEPLOYMENT_AUTHORIZED=false
+```
+
+The canonical machine records are
+[`Agent Baseline Check v0.1 Candidate`](intelligence/2026-08-16/agent-baseline-check-candidate-v0.1.json)
+and
+[`GB/Z 185 × MCP × A2A × SPIFFE × SAEE Crosswalk v0.1`](intelligence/2026-08-16/gbz185-mcp-a2a-spiffe-saee-crosswalk-v0.1.json).
+They narrow the possible future implementation to claim-scoped reassessment
+routing and stop duplicate identity, discovery, registry, tracing, receipt or
+execution architecture. They do not override the D16 freeze, create an
+executable Fixture, update the SAEE capability inventory or authorize a third
+public MCP Tool.
