@@ -1,0 +1,191 @@
+preparation_schema: "titmas-zenodo-publication-preparation-v1"
+package_id: "TITMAS-FDO-PVS-0-ZENODO-PREPARATION"
+metadata_status: "PREPARED_NOT_UPLOADED"
+prepared_on: "2026-08-04"
+
+source:
+  repository_url_placeholder: "{{PUBLIC_REPOSITORY_URL}}"
+  repository_url_resolved_candidate: "https://github.com/joy7758/titmas-fdo-public-verification"
+  repository_url_status: "CONFIRMED_FOR_EXACT_PUBLIC_COMMIT"
+  exact_commit: "fe7c1c2e0787fc753953209dfbc53b105406fad5"
+  exact_commit_url: "https://github.com/joy7758/titmas-fdo-public-verification/tree/fe7c1c2e0787fc753953209dfbc53b105406fad5"
+  initial_public_commit: "987ece538668cf41b904a82891ddc7553ef5f231"
+  verification_environment_fix_commit: "fe7c1c2e0787fc753953209dfbc53b105406fad5"
+  branch_observed: "main"
+  github_release_url: null
+  github_release_status: "NOT_CREATED_NOT_AUTHORIZED"
+  git_tag: null
+  zenodo_record_url: null
+  doi: null
+
+metadata:
+  title: "TITMAS 21.T11966 Five-Record Public Verification Slice PVS-0 Candidate"
+  creators:
+    - name: "Zhang, Bin"
+      given_name: "Bin"
+      family_name: "Zhang"
+      orcid: "0009-0002-8861-1481"
+      role: "creator"
+      confirmation_status: "REQUIRES_HUMAN_CONFIRMATION_BEFORE_UPLOAD"
+  description: >-
+    A bounded, public verification slice for five heterogeneous records under
+    prefix 21.T11966. The package preserves their observed FDO registry
+    classifications and lifecycle distinctions, records provenance and
+    relationships, includes exact historical experimental v0.1 specification
+    and schema snapshots, and supplies synthetic fixtures plus a deterministic
+    offline Python runner for limited structural and three-digest integrity
+    checks. It is a historical experimental candidate, not an official FDO
+    standard, certification, production-ready implementation, adoption claim,
+    or community-governed specification.
+  description_source: "zenodo-description.md"
+  keywords:
+    - "FAIR Digital Object"
+    - "FDO Data Type Registry"
+    - "operation evidence"
+    - "audit metadata"
+    - "provenance"
+    - "offline verification"
+    - "experimental profile"
+    - "historical registry record"
+    - "reproducible research"
+    - "TITMAS"
+  language: "eng"
+  version: "PVS-0-candidate+fe7c1c2"
+  publication_date:
+    recommended_value: "2026-08-04"
+    basis: "Date on which the exact repository commit was verified as publicly available."
+    status: "REQUIRES_HUMAN_CONFIRMATION_IN_ZENODO_PREVIEW"
+  publication_type_recommendation:
+    zenodo_resource_type: "dataset"
+    rationale: >-
+      The exact source CITATION.cff classifies the mixed archive as a dataset,
+      and its primary citable contribution is a fixed registry, provenance,
+      historical-snapshot, fixture, and expected-result package. The archive
+      also contains bounded verification software.
+    alternative: "software"
+    alternative_condition: >-
+      Select Software only after a human explicitly decides that the offline
+      runner is the primary research object and reconciles that choice with
+      CITATION.cff; do not silently create conflicting citation metadata.
+  access_right_recommendation: "open"
+
+related_identifiers:
+  - identifier: "https://github.com/joy7758/titmas-fdo-public-verification"
+    relation: "isSupplementTo"
+    resource_type: "software"
+    purpose: "Public source repository."
+  - identifier: "https://github.com/joy7758/titmas-fdo-public-verification/tree/fe7c1c2e0787fc753953209dfbc53b105406fad5"
+    relation: "isDerivedFrom"
+    resource_type: "software"
+    purpose: "Exact source revision proposed for archival publication."
+  - identifier: "https://hdl.handle.net/21.T11966/aro-audit-profile-v1"
+    relation: "documents"
+    resource_type: "other"
+    purpose: "FdoProfile record documented as draft/experimental."
+  - identifier: "https://hdl.handle.net/21.T11966/fdo-operation-evidence-profile-v0-1"
+    relation: "documents"
+    resource_type: "other"
+    purpose: "FdoProfile record documented as immutable historical experimental v0.1."
+  - identifier: "https://hdl.handle.net/21.T11966/aro-audit-manifest-v1"
+    relation: "documents"
+    resource_type: "other"
+    purpose: "BasicInfoType record documented for legacy/demo/history preservation."
+  - identifier: "https://hdl.handle.net/21.T11966/aro-audit-demo-obj-v1"
+    relation: "documents"
+    resource_type: "other"
+    purpose: "BasicInfoType record documented as demo and non-normative."
+  - identifier: "https://hdl.handle.net/21.T11966/aro-audit-demo-do-1"
+    relation: "documents"
+    resource_type: "other"
+    purpose: "FdoService demo service/instance; not a Data Type."
+
+license_mapping:
+  record_level_recommendation: "Declare all three rights where the Zenodo form supports multiple licenses."
+  authoritative_file_mapping: "DISCLOSURE_MANIFEST.yaml and release/RELEASE_MANIFEST.json at the exact source commit"
+  rights:
+    - license_id: "Apache-2.0"
+      applies_to:
+        - "runner code"
+        - "runner tests"
+        - "verification scripts"
+        - "historical schema snapshot"
+    - license_id: "CC-BY-4.0"
+      applies_to:
+        - "documentation"
+        - "historical specification snapshot"
+        - "registry and governance metadata"
+        - "citation and readiness prose"
+    - license_id: "CC0-1.0"
+      applies_to:
+        - "synthetic fixtures"
+        - "expected results"
+        - "generated checksum and release-control results"
+  single_license_fallback: null
+  fallback_status: "HUMAN_DECISION_REQUIRED_DO_NOT_COLLAPSE_MIXED_LICENSES_AUTOMATICALLY"
+  copyright_holder: null
+  copyright_status: "UNRESOLVED_BLOCKING_PUBLICATION"
+
+historical_experimental_status:
+  package_status: "PUBLIC_REPOSITORY_CANDIDATE_NOT_A_GITHUB_RELEASE"
+  historical_profile_identifier: "21.T11966/fdo-operation-evidence-profile-v0-1"
+  historical_specification_sha256: "ba8fb0ae317d1474c60d7f77b8e8da1fab0eccb447213e2b669fe9e30413cd0e"
+  historical_schema_sha256: "cadff8c3b30a47f58563fa8700bcb2aa962338bc68336907d4f228e9b2387ea8"
+  semantics_changed: false
+  v1_created: false
+  successor_note: >-
+    Any future TITMAS v1 candidate must use a separate governed lineage and
+    must not rewrite, relabel, or silently elevate the historical v0.1 bytes.
+
+claims_boundary:
+  official_fdo_standard: false
+  official_fdo_endorsement: false
+  certification: false
+  production_readiness: false
+  adoption: false
+  community_governance: false
+  full_conformance: false
+  registry_migration_completion: false
+
+prepublication_reconciliation:
+  embedded_status_observation: >-
+    The exact public commit retains pre-publication candidate markers in
+    README.md, STATUS.md, registry/five-record-identity-manifest.json,
+    DISCLOSURE_MANIFEST.yaml, release/RELEASE_MANIFEST.json, and
+    release/PUBLICATION_READINESS.md.
+  treatment: >-
+    Preserve those bytes when citing this exact commit. Before Zenodo upload,
+    a human must decide whether they are acceptable historical preparation
+    evidence or whether a separately authorized follow-up public commit is
+    required. This preparation package does not modify the source repository.
+
+verification_surface_observation:
+  verified_commit: "fe7c1c2e0787fc753953209dfbc53b105406fad5"
+  normal_git_clone_status: "PASS_10_OF_10"
+  normal_git_clone_scope: "43 approved tracked files; .git metadata excluded from candidate inventory"
+  exact_git_export_status: "PASS_10_OF_10"
+  exact_git_export_scope: "43 approved files exported from the exact commit without .git metadata"
+  disclosure_boundary_status: "PASS"
+  release_control_status: "PASS_BLOCKED_PENDING_HUMAN_PUBLICATION_APPROVAL"
+  historical_hash_status: "PASS_UNCHANGED"
+  impact: >-
+    The bounded runner, disclosure, historical-hash, and release-control checks
+    pass both in a normal Git working repository and in the proposed exported
+    archive payload. Git mode verifies tracked candidate files only; exported
+    mode recursively rejects unapproved files.
+  remediation_status: "IMPLEMENTED_REVIEWED_COMMITTED_AND_PUBLICLY_PUSHED"
+  publication_gate: >-
+    The verification-environment defect is resolved for the exact archived
+    commit. Zenodo upload, creator/copyright confirmation, final metadata
+    approval, and publication remain separate human decisions.
+
+authorization_state:
+  zenodo_preparation_ready: true
+  zenodo_final_ready: true
+  zenodo_upload_approved: false
+  zenodo_upload_performed: false
+  doi_reserved: false
+  doi_created: false
+  github_release_created: false
+  git_tag_created: false
+  external_communication_sent: false
+  status: "WAITING_FOR_ZENODO_APPROVAL"
