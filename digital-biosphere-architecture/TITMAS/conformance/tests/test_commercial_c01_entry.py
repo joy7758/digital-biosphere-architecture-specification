@@ -171,6 +171,17 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/docs/TITMAS_PRIVATE_PLATFORM_ARCHITECTURE_v0.1.md",
         "digital-biosphere-architecture/docs/TITMAS_PRODUCT_PORTFOLIO_v0.1.md",
         "digital-biosphere-architecture/docs/TITMAS_WEBSITE_RESTRUCTURE_PLAN_v0.1.md",
+        # R0-C1 admits only the frozen TITMAS enterprise-agent-evaluation
+        # subdomain artifacts. This is an existing-product path admission,
+        # not a general docs/ or skills/ allowlist and not runtime authority.
+        "digital-biosphere-architecture/docs/enterprise-agent-evaluation/00_R0_DECISION_AND_ASSET_MAP.md",
+        "digital-biosphere-architecture/docs/enterprise-agent-evaluation/01_UPSTREAM_ADOPTION_AND_LICENSE.md",
+        "digital-biosphere-architecture/docs/enterprise-agent-evaluation/02_ENTERPRISE_EVALUATION_PROFILE.schema.json",
+        "digital-biosphere-architecture/docs/enterprise-agent-evaluation/03_ENTERPRISE_SCENARIO_PACK.schema.json",
+        "digital-biosphere-architecture/docs/enterprise-agent-evaluation/04_EVALUATION_RECOMMENDATION_AND_PRESENTATION.md",
+        "digital-biosphere-architecture/docs/enterprise-agent-evaluation/05_CONTROL_PROVIDER_INTERFACE.md",
+        "digital-biosphere-architecture/docs/enterprise-agent-evaluation/06_FIRST_PROFILE_AND_PHASE_GATES.md",
+        "digital-biosphere-architecture/skills/titmas-enterprise-agent-evaluation/SKILL.md",
         "digital-biosphere-architecture/commercial-program-state.json",
         "digital-biosphere-architecture/commercial-readiness.json",
         "digital-biosphere-architecture/COMMERCIAL-READINESS-MACHINE-STATUS.json",
@@ -425,6 +436,12 @@ class CommercialC01EntryTests(unittest.TestCase):
         self.assertEqual("OWNER_ROUTING_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/TITMAS/agent-native/evolution/canonical-owner-map.json"}))
         self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({"digital-biosphere-architecture/unknown.py"}))
         self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({"digital-biosphere-architecture/commercial/observer.py"}))
+        self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({
+            "digital-biosphere-architecture/docs/enterprise-agent-evaluation/08_UNAPPROVED_EXTENSION.md"
+        }))
+        self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({
+            "digital-biosphere-architecture/skills/titmas-enterprise-agent-evaluation/runtime.py"
+        }))
 
 
 if __name__ == "__main__":

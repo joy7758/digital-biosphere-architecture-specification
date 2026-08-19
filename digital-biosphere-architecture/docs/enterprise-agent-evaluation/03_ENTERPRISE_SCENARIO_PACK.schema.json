@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:titmas:schema:enterprise-scenario-pack:0.1.0",
+  "title": "TITMAS Enterprise Scenario Pack v0.1",
+  "description": "企业政策、工具、任务、状态和裁决的冻结场景包；选择性吸收 tau3-bench 方法，不复制其内部格式。",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "scenario_pack_id",
+    "scenario_pack_version",
+    "policy",
+    "tools",
+    "tasks",
+    "initial_business_state",
+    "expected_business_state",
+    "forbidden_actions",
+    "human_approval_rules",
+    "user_simulation",
+    "judging_rules",
+    "case_categories",
+    "source_and_provenance",
+    "privacy_classification",
+    "hash_manifest"
+  ],
+  "properties": {
+    "scenario_pack_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{2,127}$"},
+    "scenario_pack_version": {"type": "string", "pattern": "^0\\.1\\.[0-9]+$"},
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["policy_id", "policy_version", "policy_text", "policy_digest"],
+      "properties": {
+        "policy_id": {"type": "string", "minLength": 1, "maxLength": 160},
+        "policy_version": {"type": "string", "minLength": 1, "maxLength": 80},
+        "policy_text": {"type": "string", "minLength": 1},
+        "policy_digest": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "tools": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["tool_id", "description", "operations", "mutability"],
+        "properties": {
+          "tool_id": {"type": "string", "minLength": 1, "maxLength": 160},
+          "description": {"type": "string", "minLength": 1, "maxLength": 500},
+          "operations": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+          "mutability": {"enum": ["READ_ONLY", "REVERSIBLE_WRITE", "IRREVERSIBLE_WRITE"]}
+        }
+      }
+    },
+    "tasks": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["task_id", "category", "instruction", "initial_state_reference", "expected_state_reference", "required_actions", "forbidden_action_ids"],
+        "properties": {
+          "task_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{1,127}$"},
+          "category": {"enum": ["NORMAL", "AMBIGUOUS_OR_CONFLICT", "RED_LINE_OR_FAILURE"]},
+          "instruction": {"type": "string", "minLength": 1},
+          "initial_state_reference": {"type": "string", "minLength": 1, "maxLength": 300},
+          "expected_state_reference": {"type": "string", "minLength": 1, "maxLength": 300},
+          "required_actions": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}},
+          "forbidden_action_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "initial_business_state": {"$ref": "#/$defs/stateSnapshot"},
+    "expected_business_state": {"$ref": "#/$defs/expectedState"},
+    "forbidden_actions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/forbiddenAction"}
+    },
+    "human_approval_rules": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rule_id", "action_pattern", "approver_role", "approval_required"],
+        "properties": {
+          "rule_id": {"type": "string", "minLength": 1, "maxLength": 128},
+          "action_pattern": {"type": "string", "minLength": 1, "maxLength": 500},
+          "approver_role": {"type": "string", "minLength": 1, "maxLength": 120},
+          "approval_required": {"const": true}
+        }
+      }
+    },
+    "user_simulation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mode", "persona_reference", "script_reference", "seed", "may_adapt"],
+      "properties": {
+        "mode": {"enum": ["DETERMINISTIC_SCRIPT", "BOUNDED_MODEL", "HUMAN_REPLAY"]},
+        "persona_reference": {"type": "string", "minLength": 1, "maxLength": 300},
+        "script_reference": {"type": "string", "minLength": 1, "maxLength": 300},
+        "seed": {"type": "integer", "minimum": 0},
+        "may_adapt": {"type": "boolean"}
+      }
+    },
+    "judging_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["deterministic_rules_reference", "model_judge_role", "human_final_adjudication", "status_enum"],
+      "properties": {
+        "deterministic_rules_reference": {"type": "string", "minLength": 1, "maxLength": 300},
+        "model_judge_role": {"enum": ["DISABLED", "ADVISORY_ONLY"]},
+        "human_final_adjudication": {"const": true},
+        "status_enum": {
+          "type": "array",
+          "const": ["PASS", "FAIL", "NOT_ASSESSED", "NOT_APPLICABLE", "UNKNOWN", "BLOCKED"]
+        }
+      }
+    },
+    "case_categories": {
+      "type": "array",
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {"enum": ["NORMAL", "AMBIGUOUS_OR_CONFLICT", "RED_LINE_OR_FAILURE"]},
+      "allOf": [
+        {"contains": {"const": "NORMAL"}},
+        {"contains": {"const": "AMBIGUOUS_OR_CONFLICT"}},
+        {"contains": {"const": "RED_LINE_OR_FAILURE"}}
+      ]
+    },
+    "source_and_provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_type", "source_references", "created_by_reference", "frozen_at", "license_or_permission_reference"],
+      "properties": {
+        "source_type": {"enum": ["SYNTHETIC", "SANITIZED_REAL", "MIXED"]},
+        "source_references": {"type": "array", "minItems": 1, "uniqueItems": true, "items": {"type": "string", "minLength": 1, "maxLength": 500}},
+        "created_by_reference": {"type": "string", "minLength": 1, "maxLength": 200},
+        "frozen_at": {"type": "string", "format": "date-time"},
+        "license_or_permission_reference": {"type": "string", "minLength": 1, "maxLength": 500}
+      }
+    },
+    "privacy_classification": {
+      "enum": ["SYNTHETIC", "PUBLIC", "SANITIZED_REAL", "RESTRICTED_REAL"]
+    },
+    "hash_manifest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "canonicalization", "entries"],
+      "properties": {
+        "algorithm": {"const": "SHA-256"},
+        "canonicalization": {"const": "RFC8785"},
+        "entries": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "sha256"],
+            "properties": {
+              "path": {"type": "string", "minLength": 1, "maxLength": 500},
+              "sha256": {"$ref": "#/$defs/sha256"}
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "stateSnapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state_id", "state_version", "snapshot_reference", "snapshot_digest"],
+      "properties": {
+        "state_id": {"type": "string", "minLength": 1, "maxLength": 160},
+        "state_version": {"type": "string", "minLength": 1, "maxLength": 80},
+        "snapshot_reference": {"type": "string", "minLength": 1, "maxLength": 500},
+        "snapshot_digest": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "expectedState": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state_id", "assertions_reference", "assertions_digest"],
+      "properties": {
+        "state_id": {"type": "string", "minLength": 1, "maxLength": 160},
+        "assertions_reference": {"type": "string", "minLength": 1, "maxLength": 500},
+        "assertions_digest": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "forbiddenAction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["action_id", "description", "on_observation"],
+      "properties": {
+        "action_id": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._:-]{1,127}$"},
+        "description": {"type": "string", "minLength": 1, "maxLength": 500},
+        "on_observation": {"enum": ["FAIL", "BLOCKED"]}
+      }
+    }
+  }
+}
