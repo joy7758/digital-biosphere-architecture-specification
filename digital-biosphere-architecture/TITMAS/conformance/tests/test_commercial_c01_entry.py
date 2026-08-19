@@ -193,6 +193,17 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/fixtures/r1_scenario_pack.json",
         "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/fixtures/r1_human_judgments.json",
         "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/tests/test_r1_kernel.py",
+        # R2A-C1 admits only the eight private, synthetic-data, fail-closed
+        # two-route smoke files authorized by the Human Gate.  Live execution
+        # remains separately gated and no directory wildcard is introduced.
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/adapters/__init__.py",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/adapters/aliyun_bailian_workflow.py",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/adapters/dify_workflow.py",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/r2a_smoke_runner.py",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/fixtures/r2a_smoke_cases.json",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/fixtures/r2a_route_contract.json",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/tests/test_r2a_adapters.py",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/tests/test_r2a_smoke_protocol.py",
         "digital-biosphere-architecture/commercial-program-state.json",
         "digital-biosphere-architecture/commercial-readiness.json",
         "digital-biosphere-architecture/COMMERCIAL-READINESS-MACHINE-STATUS.json",
@@ -462,6 +473,17 @@ class CommercialC01EntryTests(unittest.TestCase):
         self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({
             "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/unknown_extension.py"
         }))
+        for unknown_r2a_file in (
+            "production_vendor_adapter.py",
+            "retry_orchestrator.py",
+            "credential_store.py",
+            "public_benchmark_publisher.py",
+            "security_scanner.py",
+        ):
+            self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({
+                "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/"
+                + unknown_r2a_file
+            }))
 
 
 if __name__ == "__main__":
