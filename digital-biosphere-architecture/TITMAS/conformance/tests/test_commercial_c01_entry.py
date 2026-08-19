@@ -182,6 +182,17 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/docs/enterprise-agent-evaluation/05_CONTROL_PROVIDER_INTERFACE.md",
         "digital-biosphere-architecture/docs/enterprise-agent-evaluation/06_FIRST_PROFILE_AND_PHASE_GATES.md",
         "digital-biosphere-architecture/skills/titmas-enterprise-agent-evaluation/SKILL.md",
+        # R1-C1 admits only the nine authorized deterministic reference-kernel
+        # files. The surrounding directory remains default-deny.
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/__init__.py",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/profile_loader.py",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/scenario_loader.py",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/evaluation_runner.py",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/recommendation_projector.py",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/fixtures/r1_evaluation_profile.json",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/fixtures/r1_scenario_pack.json",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/fixtures/r1_human_judgments.json",
+        "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/tests/test_r1_kernel.py",
         "digital-biosphere-architecture/commercial-program-state.json",
         "digital-biosphere-architecture/commercial-readiness.json",
         "digital-biosphere-architecture/COMMERCIAL-READINESS-MACHINE-STATUS.json",
@@ -441,6 +452,15 @@ class CommercialC01EntryTests(unittest.TestCase):
         }))
         self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({
             "digital-biosphere-architecture/skills/titmas-enterprise-agent-evaluation/runtime.py"
+        }))
+        self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({
+            "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/vendor_adapter.py"
+        }))
+        self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({
+            "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/network_client.py"
+        }))
+        self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({
+            "digital-biosphere-architecture/TITMAS/reference/minimal-python/enterprise_agent_evaluation/unknown_extension.py"
         }))
 
 
