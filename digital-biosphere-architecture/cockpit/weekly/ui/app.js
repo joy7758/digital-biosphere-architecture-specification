@@ -39,17 +39,21 @@
   const blindSpots = snapshot.blind_spots || [];
   const cells = snapshot.cell_runs || [];
   const counts = snapshot.counts || {};
+  const memory = snapshot.memory || {};
+  const livePilot = snapshot.mode === "LIVE_READ_ONLY_OBSERVATION_PILOT";
+
+  el("pilot-indicator").textContent = livePilot ? "实时只读试点" : "保留快照 Demo";
 
   const [overallClass] = severity(snapshot.overall_status);
   el("overall-signal").innerHTML = `<span class="status-pill ${overallClass}">需关注</span><div style="margin-top:16px">部分检查尚未完成</div>`;
   el("weekly-sentence").textContent = text(snapshot.weekly_sentence_zh);
   el("hero-metrics").innerHTML = [
     ["项目", projects.length],
-    ["发现信号", first(counts.discovered_count, discoveries.length)],
-    ["已准入", first(counts.admitted_count, 0)],
-    ["拒绝或待确认", first(counts.rejected_or_pending_count, 0)],
-    ["待决定", decisions.length],
-    ["盲区", blindSpots.length]
+    ["实时来源", first(counts.live_source_success, 0)],
+    ["未评估来源", first(counts.source_not_assessed, 0)],
+    ["发现状态", first(snapshot.discovery_state, "UNKNOWN")],
+    ["上轮制品", memory.PREVIOUS_LIVE_ARTIFACT_LOADED === true ? "已读取" : "未读取"],
+    ["依赖高危", first(snapshot.dependency_audit_state?.live_candidate_high_count, "未评估")]
   ].map(([label, value]) => `<div class="metric"><strong>${escapeHtml(value)}</strong><span>${escapeHtml(label)}</span></div>`).join("");
   const firstDecision = decisions[0] || {};
   el("hero-decision").innerHTML = `<strong>最先查看：</strong>${escapeHtml(first(firstDecision.title_zh, "当前没有登记的决定"))}`;
@@ -97,6 +101,7 @@
     <article class="project-card">
       <span class="project-index">${String(index + 1).padStart(2, "0")}</span>
       <h3>${escapeHtml(first(project.display_name_zh, project.display_name, project.name, project.project_id))}</h3>
+      <span class="source-label">${escapeHtml(first(project.source_label, "RETAINED_SNAPSHOT"))}</span>
       ${pill(first(project.status, project.state))}
       <p><strong>${escapeHtml(first(project.status_zh, "状态待解释"))}</strong><br>${escapeHtml(first(project.why_zh, project.human_summary, project.summary, project.explanation, "没有可用的人类解释。"))}<br><br>${escapeHtml(first(project.attention_zh, project.impact_zh, ""))}</p>
     </article>`).join("");
@@ -110,5 +115,7 @@
     <div class="cell-row">快照编号 · ${escapeHtml(snapshot.snapshot_id)}</div>
     <div class="cell-row">机器总体状态 · ${escapeHtml(snapshot.overall_status)}</div>
     <div class="cell-row">原始观察时间 · ${escapeHtml(snapshot.observed_at)}</div>
+    <div class="cell-row">发现可用性 · ${escapeHtml(first(snapshot.discovery_state, "UNKNOWN"))}</div>
+    <div class="cell-row">Memory · ${escapeHtml(first(memory.status, "NOT_ASSESSED"))}</div>
     ${projectEvidence}${cellEvidence}`;
 })();

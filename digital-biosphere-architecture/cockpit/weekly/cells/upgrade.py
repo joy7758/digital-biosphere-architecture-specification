@@ -11,6 +11,25 @@ class UpgradeCell(WeeklyCell):
     cell_id = "UPGRADE_CELL"
 
     def _run(self, context: dict[str, Any]):
+        if context.get("snapshot_mode") == "LIVE_READ_ONLY_OBSERVATION_PILOT":
+            observation = context.get("source_observations", {}).get("TITMAS_SUPPORTING_LAYER", {})
+            available = observation.get("status") == "AVAILABLE"
+            return make_result(
+                self.cell_id,
+                "PASS" if available else "NOT_ASSESSED",
+                "Live repository metadata was observed without creating an upgrade recommendation.",
+                outputs={
+                    "project_updates": [{
+                        "project_id": "TITMAS_SUPPORTING_LAYER",
+                        "status": "OBSERVED" if available else "NOT_ASSESSED",
+                        "status_zh": "已实时观察" if available else "来源未评估",
+                        "source_label": "LIVE" if available else "NOT_ASSESSED",
+                        "why_zh": "只读仓库元数据可用；本轮不形成升级建议。" if available else "实时来源不可用。",
+                        "attention_zh": "仓库可见性不构成版本升级授权。",
+                    }],
+                    "upgrade_recommendations": [],
+                },
+            )
         rejected = context.get("rejected_observations", [])
         component_rejected = any(
             item.get("observation", {}).get("kind") == "COMPONENT_STATUS_SIGNAL"

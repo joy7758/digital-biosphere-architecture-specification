@@ -1,10 +1,18 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import inspect
+import io
 import re
+import subprocess
+import tempfile
 import unittest
+import zipfile
 from html.parser import HTMLParser
+from http.client import IncompleteRead
 from pathlib import Path
+from unittest import mock
 
 from jsonschema import Draft202012Validator
 
@@ -12,6 +20,14 @@ from cockpit.weekly.cells.evidence_admission import EvidenceAdmissionCell
 from cockpit.weekly.cells.handoff import HandoffCell
 from cockpit.weekly.cells.project_discovery import ProjectDiscoveryCell
 from cockpit.weekly.cells.security import SecurityCell
+from cockpit.weekly.cells.memory import MemoryCell
+from cockpit.weekly.coordinator import WeeklyCoordinator
+from cockpit.weekly.run_weekly import load_demo_context, load_live_context
+from cockpit.weekly.sources.artifact_memory import ArtifactMemory
+from cockpit.weekly.sources.dependency_readonly import DependencyReadOnlyAdapter
+from cockpit.weekly.sources.github_readonly import GithubReadOnlyAdapter
+from cockpit.weekly.sources.public_http_readonly import ALLOWED_ENDPOINTS, PublicHttpReadOnlyAdapter
+from cockpit.weekly.sources.source_result import SourceResult
 
 
 WEEKLY = Path(__file__).resolve().parents[1]
@@ -313,6 +329,338 @@ class WeeklyCockpitTests(unittest.TestCase):
         self.assertEqual(6, counts["discovered_count"])
         self.assertEqual(1, counts["admitted_count"])
         self.assertEqual(5, counts["rejected_or_pending_count"])
+
+
+class FakeResponse:
+    def __init__(self, body: bytes = b"ok", status: int = 200):
+        self.body = body
+        self.status = status
+        self.headers = {"Content-Type": "text/plain", "Content-Length": str(len(body))}
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, *_args):
+        return False
+
+    def read(self, size: int = -1):
+        return self.body if size < 0 else self.body[:size]
+
+    def getcode(self):
+        return self.status
+
+
+class FakeArtifactApi:
+    def __init__(self, runs=None, artifacts=None, archive=b""):
+        self.runs = runs or []
+        self.artifacts = artifacts or {}
+        self.archive = archive
+
+    def request_json(self, reference, **_kwargs):
+        if "/runs?" in reference:
+            return {"workflow_runs": self.runs}
+        if "/artifacts?" in reference:
+            run_id = reference.split("/runs/")[1].split("/")[0]
+            return {"artifacts": self.artifacts.get(run_id, [])}
+        raise AssertionError(reference)
+
+    def request_bytes(self, _reference):
+        return self.archive
+
+
+def live_snapshot_bytes(observed_at="2026-08-29T03:00:00+08:00"):
+    snapshot = {
+        "schema_version": "0.1",
+        "snapshot_id": "DBA-WEEKLY-2026-W35-RUN-1",
+        "observed_at": observed_at,
+        "mode": "LIVE_READ_ONLY_OBSERVATION_PILOT",
+        "boundaries": {"pilot_only": True},
+        "findings": [],
+    }
+    stream = io.BytesIO()
+    with zipfile.ZipFile(stream, "w") as package:
+        package.writestr("latest.json", json.dumps(snapshot))
+    return stream.getvalue()
+
+
+class LiveReadOnlyPilotTests(unittest.TestCase):
+    def test_49_live_context_does_not_load_fixed_audit_candidate(self):
+        self.assertNotIn("live-dependency-audit-candidate", inspect.getsource(load_live_context))
+
+    def test_50_demo_replay_is_deterministic(self):
+        context_a = load_demo_context("2026-08-29T00:30:00+08:00")
+        context_b = load_demo_context("2026-08-29T00:30:00+08:00")
+        with tempfile.TemporaryDirectory() as first, tempfile.TemporaryDirectory() as second:
+            a = WeeklyCoordinator().run(context_a, Path(first), "latest.json")
+            b = WeeklyCoordinator().run(context_b, Path(second), "latest.json")
+        self.assertEqual(a, b)
+
+    def test_51_public_http_adapter_uses_get(self):
+        methods = []
+
+        def opener(request, timeout):
+            methods.append((request.get_method(), timeout))
+            return FakeResponse()
+
+        result = PublicHttpReadOnlyAdapter(opener).observe(ALLOWED_ENDPOINTS[0], "2026-08-29T00:00:00Z")
+        self.assertEqual("AVAILABLE", result.status)
+        self.assertEqual([("GET", 20)], methods)
+
+    def test_52_public_http_adapter_rejects_mutating_method(self):
+        with self.assertRaisesRegex(ValueError, "READ_ONLY_HTTP_METHOD_REQUIRED"):
+            PublicHttpReadOnlyAdapter().observe(ALLOWED_ENDPOINTS[0], "2026-08-29T00:00:00Z", "POST")
+
+    def test_53_source_result_does_not_expose_token_field(self):
+        flattened = json.dumps(SourceResult.unavailable(
+            source_id="x", project_id="p", source_reference="r",
+            observed_at="2026-08-29T00:00:00Z", reason="credential unavailable"
+        ).to_dict())
+        self.assertNotIn("token", flattened.lower())
+
+    def test_54_github_repository_allowlist_fails_closed(self):
+        with self.assertRaisesRegex(ValueError, "REPOSITORY_NOT_ALLOWLISTED"):
+            GithubReadOnlyAdapter._assert_allowlisted("DBA_COCKPIT", "joy7758/other")
+
+    def test_55_private_repository_missing_credential_is_not_assessed(self):
+        project = {
+            "project_id": "TITMAC_SCOUT", "repository": "joy7758/titmac-scout",
+            "cross_repo_credential_required": True,
+        }
+        with mock.patch.dict("os.environ", {}, clear=True):
+            result = GithubReadOnlyAdapter().observe_project(project, "2026-08-29T00:00:00Z")
+        self.assertEqual("NOT_ASSESSED_CREDENTIAL_UNAVAILABLE", result.status)
+
+    @staticmethod
+    def dependency_runner(command, _cwd):
+        if command[:2] == ["git", "status"]:
+            return subprocess.CompletedProcess(command, 0, "", "")
+        if command == ["npm", "--version"]:
+            return subprocess.CompletedProcess(command, 0, "10.0.0\n", "")
+        if command[:2] == ["npm", "audit"]:
+            payload = {
+                "metadata": {"vulnerabilities": {"high": 4, "critical": 0}},
+                "vulnerabilities": {"sample": {"isDirect": True, "fixAvailable": True}},
+            }
+            return subprocess.CompletedProcess(command, 1, json.dumps(payload), "")
+        return subprocess.CompletedProcess(command, 2, "", "outdated unavailable")
+
+    def test_56_nonzero_npm_audit_is_retained_and_cells_continue(self):
+        result = DependencyReadOnlyAdapter(self.dependency_runner).observe(
+            Path("/site"), Path("/repo"), "2026-08-29T00:00:00Z"
+        )
+        self.assertEqual("AVAILABLE", result.status)
+        self.assertEqual(1, result.payload["audit_exit_code"])
+        self.assertEqual(4, result.payload["observed_result"]["high_count"])
+
+    def test_57_dependency_observation_proves_git_unchanged(self):
+        result = DependencyReadOnlyAdapter(self.dependency_runner).observe(
+            Path("/site"), Path("/repo"), "2026-08-29T00:00:00Z"
+        )
+        self.assertTrue(result.payload["git_status_unchanged"])
+
+    def test_58_outdated_failure_is_not_assessed(self):
+        result = DependencyReadOnlyAdapter(self.dependency_runner).observe(
+            Path("/site"), Path("/repo"), "2026-08-29T00:00:00Z"
+        )
+        self.assertEqual("NOT_ASSESSED", result.payload["outdated_status"])
+
+    def test_59_scout_existing_adapter_fails_closed_without_credential(self):
+        with mock.patch.dict("os.environ", {}, clear=True):
+            result = GithubReadOnlyAdapter().observe_scout("2026-08-29T00:00:00+00:00")
+        self.assertEqual("NOT_ASSESSED_CREDENTIAL_UNAVAILABLE", result.status)
+
+    def test_60_zero_discovery_failures_is_available(self):
+        self.assertEqual("AVAILABLE", WeeklyCoordinator.classify_discovery_failures(0))
+
+    def test_61_one_discovery_failure_is_partial(self):
+        self.assertEqual("PARTIAL_DISCOVERY_NOT_ASSESSED", WeeklyCoordinator.classify_discovery_failures(1))
+
+    def test_62_two_discovery_failures_are_partial(self):
+        self.assertEqual("PARTIAL_DISCOVERY_NOT_ASSESSED", WeeklyCoordinator.classify_discovery_failures(2))
+
+    def test_63_three_discovery_failures_are_unavailable(self):
+        self.assertEqual("DISCOVERY_UNAVAILABLE", WeeklyCoordinator.classify_discovery_failures(3))
+
+    def test_64_first_run_records_no_previous_live_artifact(self):
+        result = ArtifactMemory(FakeArtifactApi()).load_previous(
+            repository="joy7758/repo", workflow="workflow.yml", branch="main",
+            current_run_id="1", observed_at="2026-08-29T00:00:00Z"
+        )
+        self.assertEqual("NO_PREVIOUS_LIVE_ARTIFACT", result.payload["memory_status"])
+
+    def test_65_second_run_loads_first_run_artifact(self):
+        archive = live_snapshot_bytes()
+        api = FakeArtifactApi(
+            runs=[{"id": 1, "head_branch": "main", "status": "completed", "conclusion": "success"}],
+            artifacts={"1": [{
+                "id": 10, "name": "dba-weekly-cockpit-live-pilot-1", "expired": False,
+                "archive_download_url": "https://api.github.test/archive",
+                "digest": f"sha256:{hashlib.sha256(archive).hexdigest()}",
+            }]}, archive=archive,
+        )
+        result = ArtifactMemory(api).load_previous(
+            repository="joy7758/repo", workflow="workflow.yml", branch="main",
+            current_run_id="2", observed_at="2026-08-29T00:00:00Z"
+        )
+        self.assertTrue(result.payload["PREVIOUS_LIVE_ARTIFACT_LOADED"])
+        self.assertEqual("PASS", result.payload["artifact_digest_verification"])
+
+    def test_66_current_run_artifact_is_rejected(self):
+        api = FakeArtifactApi(runs=[
+            {"id": 2, "head_branch": "main", "status": "completed", "conclusion": "success"}
+        ])
+        result = ArtifactMemory(api).load_previous(
+            repository="joy7758/repo", workflow="workflow.yml", branch="main",
+            current_run_id="2", observed_at="2026-08-29T00:00:00Z"
+        )
+        self.assertFalse(result.payload["PREVIOUS_LIVE_ARTIFACT_LOADED"])
+        self.assertTrue(result.payload["ARTIFACT_FROM_CURRENT_RUN_REJECTED"])
+
+    def test_67_failed_and_expired_artifacts_are_rejected(self):
+        api = FakeArtifactApi(
+            runs=[
+                {"id": 3, "head_branch": "main", "status": "completed", "conclusion": "failure"},
+                {"id": 1, "head_branch": "main", "status": "completed", "conclusion": "success"},
+            ],
+            artifacts={"1": [{"id": 10, "name": "dba-weekly-cockpit-live-pilot-1", "expired": True}]},
+        )
+        result = ArtifactMemory(api).load_previous(
+            repository="joy7758/repo", workflow="workflow.yml", branch="main",
+            current_run_id="4", observed_at="2026-08-29T00:00:00Z"
+        )
+        self.assertFalse(result.payload["PREVIOUS_LIVE_ARTIFACT_LOADED"])
+        self.assertTrue(result.payload["FAILED_OR_EXPIRED_ARTIFACT_REJECTED"])
+
+    def test_68_observed_at_change_does_not_create_false_new_finding(self):
+        base = {
+            "finding_id": "f", "project_id": "p", "finding_type": "t",
+            "observed_at": "2026-08-28T00:00:00Z",
+        }
+        current = {**base, "observed_at": "2026-08-29T00:00:00Z"}
+        comparison = MemoryCell.compare_findings([base], [current])
+        self.assertEqual([], comparison["NEW"])
+        self.assertEqual(["f | p | t"], comparison["CONTINUING"])
+
+    def test_69_every_external_action_is_full_sha_pinned(self):
+        uses = re.findall(r"^\s*uses:\s*([^\s]+)", self._workflow(), re.MULTILINE)
+        self.assertTrue(uses)
+        for reference in uses:
+            if reference.startswith("./"):
+                continue
+            self.assertRegex(reference, r"@[0-9a-f]{40}$")
+
+    def test_70_workflow_contains_no_write_permission(self):
+        self.assertNotRegex(self._workflow(), r":\s*write\b")
+
+    def test_71_schedule_remains_explicitly_disabled_by_default(self):
+        workflow = self._workflow()
+        self.assertIn("DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED", workflow)
+        self.assertIn("schedule-disabled", workflow)
+
+    def test_72_red_yan_runtime_access_is_forbidden(self):
+        source = (WEEKLY / "run_weekly.py").read_text(encoding="utf-8")
+        self.assertNotIn("ssh ", source.lower())
+        self.assertIn('"red_yan_runtime_access": False', source)
+
+    def test_73_ui_has_small_live_pilot_indicator(self):
+        self.assertIn('id="pilot-indicator"', (WEEKLY / "ui" / "template.html").read_text(encoding="utf-8"))
+
+    def test_74_ui_renders_required_source_labels(self):
+        app = (WEEKLY / "ui" / "app.js").read_text(encoding="utf-8")
+        self.assertIn("source_label", app)
+        self.assertIn("RETAINED_SNAPSHOT", app)
+
+    def test_75_live_pilot_preserves_exactly_twelve_cells(self):
+        registry = json.loads((WEEKLY / "cell-registry.json").read_text(encoding="utf-8"))
+        self.assertEqual(12, len(registry["cells"]))
+
+    def test_76_coordinator_remains_source_adapter_free(self):
+        source = (WEEKLY / "coordinator.py").read_text(encoding="utf-8")
+        self.assertNotIn("GithubReadOnlyAdapter", source)
+        self.assertNotIn("DependencyReadOnlyAdapter", source)
+
+    def test_77_handoff_still_emits_no_commands(self):
+        result = HandoffCell().run({})
+        self.assertTrue(all(item["execution_commands"] == [] for item in result.outputs["handoff_packets"]))
+
+    def test_78_no_automatic_dependency_fix_exists(self):
+        corpus = self._workflow() + (WEEKLY / "sources" / "dependency_readonly.py").read_text(encoding="utf-8")
+        self.assertNotIn("npm audit fix", corpus)
+        self.assertNotIn("npm update", corpus)
+
+    def test_79_workflow_uploads_all_six_live_outputs(self):
+        workflow = self._workflow()
+        for name in (
+            "latest.json", "latest.md", "dashboard.html", "cell-run-summary.json",
+            "source-observation-summary.json", "pilot-boundary-report.json",
+        ):
+            self.assertIn(name, workflow)
+
+    def test_80_live_mode_schema_and_boundaries_are_explicit(self):
+        schema = json.loads((WEEKLY / "schemas" / "weekly-snapshot.schema.json").read_text(encoding="utf-8"))
+        self.assertIn("LIVE_READ_ONLY_OBSERVATION_PILOT", schema["properties"]["mode"]["enum"])
+        source = (WEEKLY / "run_weekly.py").read_text(encoding="utf-8")
+        for boundary in ("pilot_only", "schedule_enabled", "source_mutation"):
+            self.assertIn(boundary, source)
+
+    def test_81_source_adapters_have_observation_only_authority(self):
+        result = SourceResult(
+            source_id="s", project_id="p", status="AVAILABLE", source_reference="r",
+            observed_at="2026-08-29T00:00:00Z", retrieved_at="2026-08-29T00:00:00Z",
+        )
+        self.assertEqual("OBSERVATION_ONLY", result.authority)
+
+    def test_82_public_endpoint_allowlist_is_exact(self):
+        self.assertEqual(4, len(ALLOWED_ENDPOINTS))
+        self.assertEqual("https://dcell.net/", ALLOWED_ENDPOINTS[0])
+
+    def test_83_incomplete_github_response_fails_closed_without_partial_payload(self):
+        partial = b'{"private":"SUPER_SECRET", "apparently_valid":true'
+
+        class IncompleteResponse(FakeResponse):
+            def read(self, _size=-1):
+                raise IncompleteRead(partial=partial, expected=20)
+
+        def opener(_request, timeout):
+            self.assertEqual(20, timeout)
+            return IncompleteResponse()
+
+        project = {
+            "project_id": "DIGITAL_CELL_DEMO",
+            "repository": "joy7758/titmas-demo",
+            "branch": "main",
+        }
+        from cockpit.weekly.sources.github_readonly import GithubApi
+
+        failed = GithubReadOnlyAdapter(GithubApi(token="TOKEN_MUST_NOT_LEAK", opener=opener)).observe_project(
+            project, "2026-08-29T00:00:00Z"
+        )
+        unrelated = SourceResult(
+            source_id="http:https://dcell.net/", project_id="PUBLIC_DCELL_ENDPOINTS",
+            status="AVAILABLE", source_reference="https://dcell.net/",
+            observed_at="2026-08-29T00:00:00Z", retrieved_at="2026-08-29T00:00:00Z",
+        )
+        serialized = json.dumps(failed.to_dict(), ensure_ascii=False)
+        self.assertEqual("NOT_ASSESSED", failed.status)
+        self.assertEqual("NOT_ASSESSED_SOURCE_UNAVAILABLE", failed.payload["reason_code"])
+        self.assertFalse(failed.payload["source_available"])
+        self.assertFalse(failed.payload["evidence_admitted"])
+        self.assertFalse(failed.payload["partial_payload_used"])
+        self.assertEqual("OBSERVATION_ONLY", failed.authority)
+        self.assertNotIn(failed.status, {"PASS", "NORMAL", "STABLE"})
+        self.assertEqual("AVAILABLE", unrelated.status)
+        self.assertEqual(
+            "PARTIAL_DISCOVERY_NOT_ASSESSED",
+            WeeklyCoordinator.classify_discovery_failures(1),
+        )
+        self.assertNotIn("SUPER_SECRET", serialized)
+        self.assertNotIn("TOKEN_MUST_NOT_LEAK", serialized)
+        self.assertNotIn("apparently_valid", serialized)
+        self.assertNotIn("findings", failed.payload)
+
+    @staticmethod
+    def _workflow():
+        return (DBA.parent / ".github" / "workflows" / "dba-weekly-cockpit.yml").read_text(encoding="utf-8")
 
 
 if __name__ == "__main__":
