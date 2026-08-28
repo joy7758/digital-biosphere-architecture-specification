@@ -30,7 +30,46 @@
     "infrastructure_supports_product": true,
     "product_exists_to_prove_theory": false,
     "public_titmas_machine_discovery_status": "UNAVAILABLE_ON_CURRENT_CANONICAL_DOMAIN",
-    "public_titmas_api_status": "UNAVAILABLE_ON_CURRENT_CANONICAL_DOMAIN"
+    "public_titmas_api_status": "UNAVAILABLE_ON_CURRENT_CANONICAL_DOMAIN",
+    "dba_cockpit_scope": "PROGRAM_GOVERNANCE_ONLY",
+    "new_titmas_runtime_work": "PAUSED",
+    "deb_status": "PAUSED",
+    "theory_expansion_status": "PAUSED",
+    "d29_role": "RETAINED_TITMAS_SUPPORTING_INFRASTRUCTURE_SNAPSHOT",
+    "d29_active_engineering_mainline": false,
+    "d29_execution_authorized": false,
+    "dba_dependency_audit": "FAIL_2_HIGH_NANOID_VIA_POSTCSS"
+  },
+  "machine_status_precedence": {
+    "level_1_current_program_direction": {
+      "role": "CURRENT_PROGRAM_DIRECTION",
+      "sources": [
+        "CURRENT-PROJECT-DIRECTION-2026-08-28.md",
+        "PROJECT-STATE-RECONCILIATION-2026-08-28.md"
+      ],
+      "authority": "PROGRAM_DIRECTION_PRIORITY_AND_CROSS_PROJECT_HANDOFF"
+    },
+    "level_2_current_supporting_infrastructure_status": {
+      "role": "CURRENT_SUPPORTING_INFRASTRUCTURE_STATUS",
+      "sources": [
+        "COMMERCIAL-READINESS-MACHINE-STATUS.json",
+        "commercial/discovery/status.json"
+      ],
+      "may_override_level_1": false
+    },
+    "level_3_retained_historical_or_candidate_snapshots": {
+      "role": "RETAINED_HISTORICAL_OR_CANDIDATE_SNAPSHOTS",
+      "sources": {
+        "titmas-commercial-product-convergence-status-v1.0.json": "RETAINED_CONDITIONAL_ENGINEERING_CANDIDATE_SNAPSHOT",
+        "TITMAS-COMMERCIAL-PRODUCT-CONVERGENCE-IMPLEMENTATION-PROJECTION-v1.0.md": "RETAINED_IMPLEMENTATION_PROJECTION",
+        "titmas-component-adoption-matrix-v1.0.json": "ARCHITECTURE_DECISION_SUPPORT_SNAPSHOT"
+      },
+      "may_override_level_1_or_level_2": false,
+      "implementation_authority": false,
+      "release_authority": false,
+      "deployment_authority": false
+    },
+    "unknown_current_label_grants_authority": false
   },
   "program_priority": {
     "primary_operational_customer": "AI_AGENT",
@@ -118,6 +157,8 @@
     "d04_final_disposition": "architecture/ADR-038-d04-final-closure-and-adopt-before-build.md",
     "build_versus_adopt_audit": "TITMAS-BUILD-VERSUS-ADOPT-AUDIT-v1.0.md",
     "component_adoption_matrix": "titmas-component-adoption-matrix-v1.0.json",
+    "component_adoption_matrix_role": "ARCHITECTURE_DECISION_SUPPORT_SNAPSHOT",
+    "component_adoption_matrix_refresh_required_before_implementation": true,
     "final_form_implementation_decision_packet": "TITMAS-FINAL-FORM-IMPLEMENTATION-DECISION-PACKET-v1.0.md",
     "final_form_implementation_backlog": "TITMAS-FINAL-FORM-IMPLEMENTATION-BACKLOG-v1.0.json",
     "commercial_constitution": "docs/commercial/TITMAS_COMMERCIAL_CONSTITUTION_v1.0.md",
@@ -141,14 +182,18 @@
     "commercial_deployment_options": "commercial/discovery/deployment-options.json",
     "commercial_known_limitations": "commercial/discovery/known-limitations.json",
     "commercial_entry_status": "commercial/discovery/status.json",
+    "commercial_entry_status_role": "CURRENT_SUPPORTING_INFRASTRUCTURE_STATUS",
     "commercial_d29_reference_implementation": "commercial/discovery/d29-reference-implementation.json",
     "commercial_product_convergence_status": "titmas-commercial-product-convergence-status-v1.0.json",
+    "commercial_product_convergence_status_role": "RETAINED_CONDITIONAL_ENGINEERING_CANDIDATE_SNAPSHOT",
     "commercial_product_convergence_projection": "TITMAS-COMMERCIAL-PRODUCT-CONVERGENCE-IMPLEMENTATION-PROJECTION-v1.0.md",
+    "commercial_product_convergence_projection_role": "RETAINED_IMPLEMENTATION_PROJECTION",
     "commercial_d29_security_drill_readiness_cockpit_sync": "D29-SECURITY-DRILL-READINESS-COCKPIT-SYNC-v1.0.md",
     "commercial_d29_security_findings_disposition_cockpit_sync": "D29-SECURITY-FINDINGS-DISPOSITION-COCKPIT-SYNC-v1.0.md",
     "commercial_d29_agent_only_security_advisory": "commercial/security-evaluation/D29-AGENT-ONLY-ADVISORY-EVALUATION-v1.0.json",
     "commercial_delivery_foundation": "commercial/agent-index.json",
     "commercial_readiness_machine_status": "COMMERCIAL-READINESS-MACHINE-STATUS.json",
+    "commercial_readiness_machine_status_role": "CURRENT_SUPPORTING_INFRASTRUCTURE_STATUS",
     "commercial_readiness_report": "COMMERCIAL-READINESS-REPORT-v1.md",
     "commercial_d29_data_lifecycle_cockpit_sync": "D29-DATA-LIFECYCLE-COCKPIT-SYNC-REPORT-v1.0.md",
     "commercial_d29_terminal_consistency_audit": "D29-TERMINAL-CONSISTENCY-AUDIT-v1.0.md",
