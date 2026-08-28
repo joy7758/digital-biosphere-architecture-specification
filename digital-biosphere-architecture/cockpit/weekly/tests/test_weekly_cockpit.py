@@ -13,6 +13,7 @@ from html.parser import HTMLParser
 from http.client import IncompleteRead
 from pathlib import Path
 from unittest import mock
+from urllib.request import Request
 
 from jsonschema import Draft202012Validator
 
@@ -25,7 +26,7 @@ from cockpit.weekly.coordinator import WeeklyCoordinator
 from cockpit.weekly.run_weekly import load_demo_context, load_live_context
 from cockpit.weekly.sources.artifact_memory import ArtifactMemory
 from cockpit.weekly.sources.dependency_readonly import DependencyReadOnlyAdapter
-from cockpit.weekly.sources.github_readonly import GithubReadOnlyAdapter
+from cockpit.weekly.sources.github_readonly import GithubReadOnlyAdapter, ReadOnlyRedirectHandler
 from cockpit.weekly.sources.public_http_readonly import ALLOWED_ENDPOINTS, PublicHttpReadOnlyAdapter
 from cockpit.weekly.sources.source_result import SourceResult
 
@@ -657,6 +658,65 @@ class LiveReadOnlyPilotTests(unittest.TestCase):
         self.assertNotIn("TOKEN_MUST_NOT_LEAK", serialized)
         self.assertNotIn("apparently_valid", serialized)
         self.assertNotIn("findings", failed.payload)
+
+    def test_84_cross_origin_artifact_redirect_drops_sensitive_headers(self):
+        request = Request(
+            "https://api.github.com/repos/joy7758/repo/actions/artifacts/1/zip",
+            headers={
+                "Authorization": "Bearer MUST_NOT_LEAK",
+                "Proxy-Authorization": "Basic MUST_NOT_LEAK",
+                "Cookie": "session=MUST_NOT_LEAK",
+                "Accept": "application/vnd.github+json",
+            },
+            method="GET",
+        )
+        redirected = ReadOnlyRedirectHandler().redirect_request(
+            request,
+            None,
+            302,
+            "Found",
+            {},
+            "https://productionresults.example.invalid/signed-artifact",
+        )
+        self.assertIsNotNone(redirected)
+        headers = {name.lower(): value for name, value in redirected.header_items()}
+        self.assertNotIn("authorization", headers)
+        self.assertNotIn("proxy-authorization", headers)
+        self.assertNotIn("cookie", headers)
+        self.assertEqual("application/vnd.github+json", headers["accept"])
+        self.assertEqual("GET", redirected.get_method())
+
+    def test_85_same_origin_redirect_preserves_authorization(self):
+        request = Request(
+            "https://api.github.com/repos/joy7758/repo/actions/artifacts/1/zip",
+            headers={"Authorization": "Bearer SAME_ORIGIN_ONLY"},
+            method="GET",
+        )
+        redirected = ReadOnlyRedirectHandler().redirect_request(
+            request,
+            None,
+            302,
+            "Found",
+            {},
+            "https://api.github.com/repos/joy7758/repo/actions/artifacts/1/archive",
+        )
+        self.assertEqual("Bearer SAME_ORIGIN_ONLY", redirected.get_header("Authorization"))
+
+    def test_86_non_https_redirect_fails_closed(self):
+        request = Request(
+            "https://api.github.com/repos/joy7758/repo/actions/artifacts/1/zip",
+            headers={"Authorization": "Bearer MUST_NOT_LEAK"},
+            method="GET",
+        )
+        with self.assertRaisesRegex(ValueError, "GITHUB_REDIRECT_HTTPS_REQUIRED"):
+            ReadOnlyRedirectHandler().redirect_request(
+                request,
+                None,
+                302,
+                "Found",
+                {},
+                "http://artifact.example.invalid/signed-artifact",
+            )
 
     @staticmethod
     def _workflow():
