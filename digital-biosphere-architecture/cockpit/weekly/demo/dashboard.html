@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
+  <link rel="icon" href="data:,">
   <title>DBA Weekly Cockpit · 周检驾驶舱</title>
   <style>:root {
   --paper: #f3f0e9;
@@ -35,7 +36,7 @@ body {
 a { color: inherit; }
 .topbar {
   position: sticky; top: 0; z-index: 10;
-  min-height: 72px; padding: 12px clamp(20px, 4vw, 72px);
+  min-height: 64px; padding: 10px clamp(20px, 4vw, 72px);
   display: flex; align-items: center; gap: 28px;
   border-bottom: 1px solid rgba(17,35,62,.12);
   background: rgba(255,253,248,.9); backdrop-filter: blur(18px);
@@ -50,29 +51,36 @@ nav a { color: var(--muted); text-decoration: none; font-size: 13px; }
 nav a:hover, nav a:focus-visible { color: var(--blue); }
 .read-only { border: 1px solid var(--line); padding: 7px 10px; color: var(--muted); font: 650 11px ui-monospace, monospace; }
 main { max-width: 1440px; margin: auto; }
-.hero { min-height: 620px; padding: clamp(70px, 10vw, 130px) clamp(24px, 7vw, 104px) 70px; display: grid; grid-template-columns: 1.25fr .75fr; align-items: center; gap: 70px; }
+.hero { min-height: 400px; padding: 42px clamp(24px, 7vw, 104px); display: grid; grid-template-columns: 1.12fr .88fr; align-items: center; gap: 44px; }
 .eyebrow, .section-index, .signal-kicker { color: var(--blue); font: 750 11px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; letter-spacing: .14em; }
-h1 { margin: 18px 0 24px; max-width: 720px; font-size: clamp(58px, 7.2vw, 104px); line-height: .96; letter-spacing: -.075em; font-weight: 820; }
-.lede { max-width: 650px; color: #435168; font-size: clamp(17px, 2vw, 22px); }
-.hero-actions { display: flex; gap: 12px; margin-top: 34px; }
+.eyebrow strong, .eyebrow small, .signal-kicker strong, .signal-kicker small { display: block; }
+.eyebrow small, .signal-kicker small { margin-top: 6px; color: var(--muted); font-size: 9px; letter-spacing: .08em; }
+h1 { margin: 14px 0 16px; max-width: 720px; font-size: clamp(46px, 5vw, 64px); line-height: 1; letter-spacing: -.055em; font-weight: 820; }
+.weekly-sentence { max-width: 680px; margin: 0 0 9px; color: var(--ink); font-size: clamp(20px, 2.1vw, 28px); font-weight: 760; }
+.lede { max-width: 650px; margin: 0; color: #435168; font-size: 17px; }
+.hero-actions { display: flex; gap: 10px; margin-top: 22px; }
 .hero-actions a, .ask-panel button { padding: 13px 18px; text-decoration: none; font-weight: 700; font-size: 14px; border: 1px solid var(--ink); }
 .primary { background: var(--ink); color: white; }
 .secondary { background: transparent; }
-.signal-panel { position: relative; padding: 32px; background: var(--ink); color: white; box-shadow: 18px 18px 0 rgba(21,94,239,.18); overflow: hidden; }
+.signal-panel { position: relative; padding: 25px 28px; background: var(--ink); color: white; box-shadow: 14px 14px 0 rgba(21,94,239,.18); overflow: hidden; }
 .signal-panel::after { content: ""; position: absolute; width: 210px; height: 210px; border: 42px solid rgba(255,255,255,.06); border-radius: 50%; right: -84px; top: -70px; }
 .signal-kicker { color: #89b3ff; }
-.overall-signal { margin: 52px 0 34px; font-size: 29px; font-weight: 800; max-width: 360px; }
-.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,.18); }
-.metrics div { background: var(--ink); padding: 18px 10px 12px 0; }
+.signal-kicker small { color: #9facbf; }
+.overall-signal { margin: 20px 0 17px; font-size: 22px; font-weight: 800; max-width: 410px; }
+.metrics { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: rgba(255,255,255,.18); }
+.metrics div { background: var(--ink); padding: 12px 8px 9px 0; }
 .metrics dt { color: #9facbf; font-size: 11px; }
-.metrics dd { margin: 3px 0 0; font: 800 25px ui-monospace, monospace; }
-.as-of { color: #9facbf; font: 11px ui-monospace, monospace; margin: 25px 0 0; }
-.section-block { padding: 88px clamp(24px, 7vw, 104px); border-top: 1px solid rgba(17,35,62,.13); }
-.section-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: end; margin-bottom: 38px; }
-.section-heading h2 { margin: 8px 0 0; font-size: clamp(35px, 4vw, 56px); letter-spacing: -.045em; line-height: 1; }
+.metrics dd { margin: 3px 0 0; font: 800 21px ui-monospace, monospace; }
+.hero-decision { margin-top: 14px; padding: 10px 12px; border-left: 3px solid #89b3ff; background: rgba(255,255,255,.07); color: #dbe7ff; font-size: 12px; }
+.hero-decision strong { color: white; }
+.as-of { color: #9facbf; font: 10px ui-monospace, monospace; margin: 12px 0 0; }
+.section-block { padding: 70px clamp(24px, 7vw, 104px); border-top: 1px solid rgba(17,35,62,.13); }
+#decisions { padding-top: 46px; }
+.section-heading { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: end; margin-bottom: 28px; }
+.section-heading h2 { margin: 8px 0 0; font-size: clamp(32px, 3.4vw, 46px); letter-spacing: -.045em; line-height: 1; }
 .section-heading > p { color: var(--muted); max-width: 510px; }
 .decision-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
-.decision-card { background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--amber); padding: 28px; box-shadow: var(--shadow); }
+.decision-card { background: var(--surface); border: 1px solid var(--line); border-top: 5px solid var(--amber); padding: 22px 24px; box-shadow: var(--shadow); }
 .decision-card h3, .project-card h3 { margin: 12px 0 8px; font-size: 22px; }
 .decision-card p, .project-card p { color: var(--muted); }
 .meta-row { display: flex; flex-wrap: wrap; gap: 8px; font: 11px ui-monospace, monospace; color: var(--muted); }
@@ -99,8 +107,6 @@ h1 { margin: 18px 0 24px; max-width: 720px; font-size: clamp(58px, 7.2vw, 104px)
 .project-grid { display: grid; grid-template-columns: repeat(12, 1fr); gap: 16px; }
 .project-card { grid-column: span 4; min-height: 250px; padding: 24px; border: 1px solid var(--line); background: var(--surface); position: relative; }
 .project-card:nth-child(1), .project-card:nth-child(2) { grid-column: span 6; }
-.project-card .project-code { color: var(--muted); font: 11px ui-monospace, monospace; }
-.project-card .source { position: absolute; left: 24px; right: 24px; bottom: 22px; border-top: 1px solid var(--line); padding-top: 12px; font: 10px ui-monospace, monospace; color: var(--muted); word-break: break-word; }
 .blindspot-section { background: #e7e4dc; }
 .blindspot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
 .blindspot { padding: 20px; background: var(--surface); border-left: 5px solid var(--unknown); }
@@ -123,7 +129,7 @@ footer { display: flex; justify-content: space-between; margin-top: 65px; paddin
   <header class="topbar">
     <a class="brand" href="#overview" aria-label="返回驾驶舱概览">
       <span class="brand-mark" aria-hidden="true">DBA</span>
-      <span><strong>Weekly Cockpit</strong><small>项目群周检驾驶舱 · 内部原型</small></span>
+      <span><strong>DBA 每周驾驶舱</strong><small>Weekly Cockpit · 只读内部视图</small></span>
     </a>
     <nav aria-label="驾驶舱章节">
       <a href="#decisions">待决定</a><a href="#discoveries">新发现</a><a href="#projects">项目</a><a href="#blindspots">盲区</a>
@@ -134,21 +140,23 @@ footer { display: flex; justify-content: space-between; margin-top: 65px; paddin
   <main>
     <section id="overview" class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">DISCOVERY FIRST · CELL COMPOSED</p>
-        <h1 id="hero-title">先看变化，<br>再做决定。</h1>
-        <p class="lede">把分散在项目、证据和环境里的变化，压缩成一份可追溯、可质疑、不可自动执行的周检视图。</p>
+        <p class="eyebrow"><strong>发现优先 · 多细胞协作</strong><small>Discovery First · Cell Composed</small></p>
+        <h1 id="hero-title">DBA 每周驾驶舱</h1>
+        <p id="weekly-sentence" class="weekly-sentence"></p>
+        <p class="lede">先看本周变化，再决定要不要行动。</p>
         <div class="hero-actions"><a class="primary" href="#decisions">查看本周决定</a><a class="secondary" href="#projects">浏览项目状态</a></div>
       </div>
       <div class="signal-panel" aria-label="本周状态摘要">
-        <p class="signal-kicker">WEEKLY SIGNAL</p>
+        <p class="signal-kicker"><strong>本周状态</strong><small>Weekly Signal · 每周信号</small></p>
         <div id="overall-signal" class="overall-signal"></div>
         <dl id="hero-metrics" class="metrics"></dl>
+        <div id="hero-decision" class="hero-decision"></div>
         <p id="as-of" class="as-of"></p>
       </div>
     </section>
 
     <section id="decisions" class="section-block" aria-labelledby="decisions-title">
-      <div class="section-heading"><div><p class="section-index">01 · DECIDE</p><h2 id="decisions-title">本周需要你决定</h2></div><p>驾驶舱只准备证据与边界，决定仍由人作出。</p></div>
+      <div class="section-heading"><div><p class="section-index">01 · 待决定</p><h2 id="decisions-title">本周需要你决定</h2></div><p>驾驶舱只准备证据与边界，决定仍由人作出。</p></div>
       <div id="decision-list" class="decision-grid"></div>
       <div class="ask-panel">
         <label for="preset-query">问驾驶舱</label>
@@ -160,28 +168,28 @@ footer { display: flex; justify-content: space-between; margin-top: 65px; paddin
     </section>
 
     <section id="discoveries" class="section-block split-section" aria-labelledby="discoveries-title">
-      <div class="section-heading"><div><p class="section-index">02 · DISCOVER</p><h2 id="discoveries-title">新发现</h2></div><p>候选先被看见，再接受证据准入；发现不等于纳管。</p></div>
+      <div class="section-heading"><div><p class="section-index">02 · 新发现</p><h2 id="discoveries-title">新发现</h2></div><p>候选先被看见，再接受证据准入；发现不等于纳管。</p></div>
       <div id="discovery-list" class="signal-list"></div>
     </section>
 
     <section id="changes" class="section-block" aria-labelledby="changes-title">
-      <div class="section-heading"><div><p class="section-index">03 · CHANGE</p><h2 id="changes-title">发生了什么变化</h2></div><p>没有上一周证据时，明确显示未评估，而不是猜测趋势。</p></div>
+      <div class="section-heading"><div><p class="section-index">03 · 本周变化</p><h2 id="changes-title">发生了什么变化</h2></div><p>没有上一周证据时，明确显示未评估，而不是猜测趋势。</p></div>
       <div id="change-list" class="timeline"></div>
     </section>
 
     <section id="projects" class="section-block" aria-labelledby="projects-title">
-      <div class="section-heading"><div><p class="section-index">04 · PROJECTS</p><h2 id="projects-title">项目状态</h2></div><p>状态是来源快照的解释层，不是项目验收、权限或综合评分。</p></div>
+      <div class="section-heading"><div><p class="section-index">04 · 项目</p><h2 id="projects-title">项目状态</h2></div><p>状态是来源快照的解释层，不是项目验收、权限或综合评分。</p></div>
       <div id="project-grid" class="project-grid"></div>
     </section>
 
     <section id="blindspots" class="section-block blindspot-section" aria-labelledby="blindspots-title">
-      <div class="section-heading"><div><p class="section-index">05 · BOUNDARY</p><h2 id="blindspots-title">盲区与边界</h2></div><p>不可见的部分被保留下来，未知不会被涂成绿色。</p></div>
+      <div class="section-heading"><div><p class="section-index">05 · 盲区与边界</p><h2 id="blindspots-title">盲区与边界</h2></div><p>不可见的部分被保留下来，未知不会被涂成绿色。</p></div>
       <div id="blindspot-list" class="blindspot-grid"></div>
       <details>
         <summary>查看技术证据与 Cell 运行状态</summary>
         <div id="technical-evidence" class="technical-evidence"></div>
       </details>
-      <footer><strong>DBA Weekly Cockpit v0.1</strong><span>source-backed · read-only · human decision required</span></footer>
+      <footer><strong>DBA 每周驾驶舱 v0.1</strong><span>来源支持 · 只读 · 需要人工决定</span></footer>
     </section>
   </main>
 
@@ -195,8 +203,10 @@ footer { display: flex; justify-content: space-between; margin-top: 65px; paddin
   const severity = (status) => {
     const value = text(status, "UNKNOWN").toUpperCase();
     if (["PASS", "NORMAL", "STABLE", "MONITORED", "AVAILABLE"].includes(value)) return ["normal", "正常"];
-    if (["ATTENTION", "PASS_WITH_NOT_ASSESSED", "PARTIAL"].includes(value)) return ["attention", "需关注"];
+    if (["FRESH", "CURRENT_SNAPSHOT"].includes(value)) return ["normal", "当前证据"];
+    if (["ATTENTION", "PASS_WITH_NOT_ASSESSED", "PARTIAL", "STALE"].includes(value)) return ["attention", value === "STALE" ? "已过期" : "需关注"];
     if (["BLOCKED", "FAILED", "DISCOVERY_UNAVAILABLE"].includes(value)) return ["blocked", "受阻"];
+    if (value === "DISCOVERED") return ["unknown", "待确认候选"];
     return ["unknown", "未评估"];
   };
   const pill = (status) => { const [klass, label] = severity(status); return `<span class="status-pill ${klass}">${escapeHtml(label)} · ${escapeHtml(status)}</span>`; };
@@ -211,17 +221,20 @@ footer { display: flex; justify-content: space-between; margin-top: 65px; paddin
 
   const [overallClass, overallLabel] = severity(snapshot.overall_status);
   el("overall-signal").innerHTML = `${pill(snapshot.overall_status)}<div style="margin-top:16px">${escapeHtml(overallLabel)}，等待人工判断</div>`;
+  el("weekly-sentence").textContent = text(snapshot.weekly_sentence_zh);
   el("hero-metrics").innerHTML = [
-    ["项目", projects.length], ["发现", discoveries.length], ["盲区", blindSpots.length]
+    ["项目", projects.length], ["新发现", discoveries.length], ["待决定", decisions.length], ["盲区", blindSpots.length]
   ].map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("");
-  el("as-of").textContent = `快照时间 ${text(first(snapshot.observed_at, snapshot.as_of))} · ${text(snapshot.snapshot_id)}`;
+  const firstDecision = decisions[0] || {};
+  el("hero-decision").innerHTML = `<strong>最先查看：</strong>${escapeHtml(first(firstDecision.title_zh, "当前没有登记的决定"))}`;
+  el("as-of").textContent = `观察时间 ${text(first(snapshot.observed_at, snapshot.as_of))}`;
 
   el("decision-list").innerHTML = decisions.length ? decisions.map((item, index) => `
     <article class="decision-card">
-      <div class="meta-row"><span>DECISION ${String(index + 1).padStart(2, "0")}</span><span>${escapeHtml(first(item.status, "HUMAN_REQUIRED"))}</span></div>
+      <div class="meta-row"><span>决定 ${String(index + 1).padStart(2, "0")}</span><span>需人工判断</span></div>
       <h3>${escapeHtml(first(item.title_zh, item.title, item.decision_needed, "待人工决定"))}</h3>
       <p>${escapeHtml(first(item.why_zh, item.why, item.summary, item.human_explanation, "查看来源证据后决定。"))}</p>
-      <div class="meta-row"><span>来源 ${escapeHtml(first(item.source_reference, (item.evidence_references || [])[0]))}</span></div>
+      <div class="meta-row"><span>负责人 ${escapeHtml(first(item.owner_conversation, "DBA 专用对话"))}</span></div>
     </article>`).join("") : `<article class="decision-card"><h3>本周没有登记的决定</h3><p>这不表示没有风险；请同时查看盲区。</p></article>`;
 
   const querySource = snapshot.preset_queries || [
@@ -253,17 +266,17 @@ footer { display: flex; justify-content: space-between; margin-top: 65px; paddin
 
   el("project-grid").innerHTML = projects.map((project, index) => `
     <article class="project-card">
-      <div class="project-code">PROJECT ${String(index + 1).padStart(2, "0")} · ${escapeHtml(first(project.project_id))}</div>
       <h3>${escapeHtml(first(project.display_name_zh, project.display_name, project.name, project.project_id))}</h3>
       ${pill(first(project.status, project.state))}
       <p><strong>${escapeHtml(first(project.status_zh, "状态待解释"))}</strong><br>${escapeHtml(first(project.why_zh, project.human_summary, project.summary, project.explanation, "没有可用的人类解释。"))}<br><br>${escapeHtml(first(project.attention_zh, project.impact_zh, ""))}</p>
-      <div class="source">EVIDENCE · ${escapeHtml(first(project.source_reference, project.evidence_reference, (project.technical_evidence || []).join(" · ")))}</div>
     </article>`).join("");
 
   el("blindspot-list").innerHTML = blindSpots.map((item) => `
     <article class="blindspot"><h3>${escapeHtml(first(item.title_zh, item.title, item.subject, "未评估盲区"))}</h3><p>${escapeHtml(first(item.impact_zh, item.human_explanation, item.summary, item.reason, "缺少足够证据。"))}</p></article>`).join("") || `<article class="blindspot"><h3>盲区清单为空</h3><p>空清单不构成全面覆盖证明。</p></article>`;
 
-  el("technical-evidence").innerHTML = cells.map((cell) => `<div class="cell-row">${escapeHtml(first(cell.cell_id, cell.id))}<br>${pill(first(cell.status))}</div>`).join("");
+  const projectEvidence = projects.map((project) => `<div class="cell-row">项目标识 · ${escapeHtml(first(project.project_id))}<br>证据 · ${escapeHtml((project.technical_evidence || []).join(" · "))}</div>`).join("");
+  const cellEvidence = cells.map((cell) => `<div class="cell-row">细胞标识 · ${escapeHtml(first(cell.cell_id, cell.id))}<br>${pill(first(cell.status))}</div>`).join("");
+  el("technical-evidence").innerHTML = `<div class="cell-row">快照编号 · ${escapeHtml(snapshot.snapshot_id)}</div>${projectEvidence}${cellEvidence}`;
 })();
 </script>
 </body>

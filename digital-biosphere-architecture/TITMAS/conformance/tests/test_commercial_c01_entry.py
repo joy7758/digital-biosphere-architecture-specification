@@ -5,12 +5,14 @@ import hashlib
 import json
 import re
 import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[3]
 WEBSITE_ALLOWLIST = ROOT / "commercial/implementation/D29-WEBSITE-SOURCE-CORRECTION-ALLOWLIST-v1.json"
+WEEKLY_COCKPIT_SCOPE_MANIFEST = ROOT / "cockpit/weekly/prototype-scope-v0.1.json"
 
 
 def load(relative: str):
@@ -35,6 +37,79 @@ def approved_website_paths():
         if digest != item.get("sha256"):
             return set()
         approved.add(f"digital-biosphere-architecture/{relative}")
+    return approved
+
+
+def approved_weekly_cockpit_paths(manifest_path=None):
+    """Return only digest-bound prototype paths; any inconsistency fails closed."""
+    path = Path(manifest_path) if manifest_path is not None else WEEKLY_COCKPIT_SCOPE_MANIFEST
+    if not path.is_file():
+        return set()
+    try:
+        manifest = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError):
+        return set()
+    required_identity = {
+        "manifest_id": "DBA-WEEKLY-COCKPIT-PROTOTYPE-SCOPE-v0.1",
+        "version": "0.1",
+        "decision_scope": "PATH_SCOPE_AUTHORIZATION_MANIFEST",
+        "prototype_only": True,
+        "private_internal_cockpit": True,
+        "read_only": True,
+        "schedule_enabled": False,
+        "auto_fix": False,
+        "auto_pr": False,
+        "auto_merge": False,
+        "auto_deploy": False,
+        "new_truth_source": False,
+        "new_control_plane": False,
+    }
+    if any(manifest.get(key) != value for key, value in required_identity.items()):
+        return set()
+    files = manifest.get("files")
+    if not isinstance(files, list) or not files or manifest.get("approved_file_count") != len(files):
+        return set()
+    if not isinstance(manifest.get("generated_at"), str) or not manifest.get("generated_at"):
+        return set()
+    if not isinstance(manifest.get("limitations"), list) or not manifest.get("limitations"):
+        return set()
+
+    manifest_relative = "digital-biosphere-architecture/cockpit/weekly/prototype-scope-v0.1.json"
+    workflow_relative = ".github/workflows/dba-weekly-cockpit.yml"
+    weekly_prefix = "digital-biosphere-architecture/cockpit/weekly/"
+    forbidden_name_tokens = {
+        "auto_fix", "autofix", "deploy", "deployment", "write_project",
+        "runtime", "database", "migration", "server",
+    }
+    approved = {manifest_relative}
+    seen = set()
+    for item in files:
+        if not isinstance(item, dict) or set(item) != {"path", "sha256"}:
+            return set()
+        relative = item.get("path")
+        digest = item.get("sha256")
+        if not isinstance(relative, str) or relative in seen or relative == manifest_relative:
+            return set()
+        if relative != workflow_relative and not relative.startswith(weekly_prefix):
+            return set()
+        lowered_parts = {part.lower() for part in Path(relative).parts}
+        lowered_stem = Path(relative).stem.lower()
+        if lowered_parts & forbidden_name_tokens or any(token in lowered_stem for token in forbidden_name_tokens):
+            return set()
+        if not isinstance(digest, str) or not re.fullmatch(r"[0-9a-f]{64}", digest):
+            return set()
+        source = ROOT.parent / relative
+        if not source.is_file() or hashlib.sha256(source.read_bytes()).hexdigest() != digest:
+            return set()
+        seen.add(relative)
+        approved.add(relative)
+
+    workflow = manifest.get("workflow")
+    if not isinstance(workflow, dict):
+        return set()
+    workflow_item = next((item for item in files if item["path"] == workflow_relative), None)
+    if workflow_item is None or workflow != workflow_item:
+        return set()
     return approved
 
 
@@ -191,6 +266,7 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/site/public/llms.txt",
     }
     approved_website = approved_website_paths()
+    approved_weekly_cockpit = approved_weekly_cockpit_paths()
     for raw in paths:
         path = Path(raw)
         parts = set(path.parts)
@@ -210,6 +286,11 @@ def forbidden_change_reason(paths):
             return "WEBSITE_IMPLEMENTATION_CHANGED"
         if parts & forbidden_parts:
             return "CORE_RUNTIME_OR_DATABASE_CHANGED"
+        weekly_candidate = raw.startswith(
+            "digital-biosphere-architecture/cockpit/weekly/"
+        ) or raw == ".github/workflows/dba-weekly-cockpit.yml"
+        if weekly_candidate and raw not in approved_weekly_cockpit:
+            return "UNAPPROVED_CHANGE_PATH"
         allowed_contract = raw.startswith("digital-biosphere-architecture/commercial/") and raw.endswith((".json", ".md"))
         allowed_commercial_doc = raw.startswith("digital-biosphere-architecture/docs/commercial/") and raw.endswith(".md")
         allowed_intelligence_artifact = raw.startswith(
@@ -218,6 +299,7 @@ def forbidden_change_reason(paths):
         if (
             raw not in allowed_exact
             and raw not in approved_website
+            and raw not in approved_weekly_cockpit
             and not allowed_contract
             and not allowed_commercial_doc
             and not allowed_intelligence_artifact
@@ -433,6 +515,79 @@ class CommercialC01EntryTests(unittest.TestCase):
         self.assertEqual("OWNER_ROUTING_CHANGED", forbidden_change_reason({"digital-biosphere-architecture/TITMAS/agent-native/evolution/canonical-owner-map.json"}))
         self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({"digital-biosphere-architecture/unknown.py"}))
         self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({"digital-biosphere-architecture/commercial/observer.py"}))
+
+    def test_t16_registered_weekly_cockpit_paths_are_digest_bound(self):
+        approved = approved_weekly_cockpit_paths()
+        self.assertIn(
+            "digital-biosphere-architecture/cockpit/weekly/run_weekly.py",
+            approved,
+        )
+        self.assertIn(".github/workflows/dba-weekly-cockpit.yml", approved)
+        self.assertIsNone(forbidden_change_reason(approved))
+
+    def test_t17_unregistered_weekly_cockpit_paths_fail_closed(self):
+        for relative in (
+            "digital-biosphere-architecture/cockpit/weekly/future.py",
+            "digital-biosphere-architecture/cockpit/weekly/auto_fix.py",
+            "digital-biosphere-architecture/cockpit/weekly/deploy.py",
+            "digital-biosphere-architecture/cockpit/weekly/write_project.py",
+        ):
+            self.assertEqual("UNAPPROVED_CHANGE_PATH", forbidden_change_reason({relative}))
+
+    def test_t18_weekly_workflow_remains_read_only_and_schedule_gated(self):
+        workflow = (ROOT.parent / ".github/workflows/dba-weekly-cockpit.yml").read_text(encoding="utf-8")
+        self.assertIn("contents: read", workflow)
+        self.assertNotIn("contents: write", workflow)
+        self.assertNotIn("pull-requests: write", workflow)
+        self.assertIn("DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED", workflow)
+        manifest = json.loads(WEEKLY_COCKPIT_SCOPE_MANIFEST.read_text(encoding="utf-8"))
+        self.assertFalse(manifest["schedule_enabled"])
+
+    def test_t19_weekly_scope_digest_mismatch_fails_closed(self):
+        manifest = json.loads(WEEKLY_COCKPIT_SCOPE_MANIFEST.read_text(encoding="utf-8"))
+        manifest["files"][0]["sha256"] = "0" * 64
+        with tempfile.TemporaryDirectory() as directory:
+            candidate = Path(directory) / "manifest.json"
+            candidate.write_text(json.dumps(manifest), encoding="utf-8")
+            self.assertEqual(set(), approved_weekly_cockpit_paths(candidate))
+
+    def test_t20_missing_weekly_scope_manifest_fails_closed(self):
+        with tempfile.TemporaryDirectory() as directory:
+            self.assertEqual(
+                set(),
+                approved_weekly_cockpit_paths(Path(directory) / "missing.json"),
+            )
+
+    def test_t21_weekly_scope_identity_and_boundaries_are_exact(self):
+        manifest = json.loads(WEEKLY_COCKPIT_SCOPE_MANIFEST.read_text(encoding="utf-8"))
+        self.assertEqual("PATH_SCOPE_AUTHORIZATION_MANIFEST", manifest["decision_scope"])
+        for key in ("prototype_only", "private_internal_cockpit", "read_only"):
+            self.assertTrue(manifest[key])
+        for key in (
+            "schedule_enabled", "auto_fix", "auto_pr", "auto_merge",
+            "auto_deploy", "new_truth_source", "new_control_plane",
+        ):
+            self.assertFalse(manifest[key])
+
+    def test_t22_weekly_scope_cannot_authorize_other_domains(self):
+        original = json.loads(WEEKLY_COCKPIT_SCOPE_MANIFEST.read_text(encoding="utf-8"))
+        forbidden_paths = (
+            "digital-biosphere-architecture/site/README.md",
+            "digital-biosphere-architecture/CURRENT-PROJECT-DIRECTION-2026-08-28.md",
+            "digital-biosphere-architecture/src/runtime/observer.py",
+            "digital-biosphere-architecture/database/state.json",
+            "digital-biosphere-architecture/deployment/release.yml",
+        )
+        for relative in forbidden_paths:
+            manifest = copy.deepcopy(original)
+            source = ROOT.parent / relative
+            digest = hashlib.sha256(source.read_bytes()).hexdigest() if source.is_file() else "0" * 64
+            manifest["files"].append({"path": relative, "sha256": digest})
+            manifest["approved_file_count"] = len(manifest["files"])
+            with tempfile.TemporaryDirectory() as directory:
+                candidate = Path(directory) / "manifest.json"
+                candidate.write_text(json.dumps(manifest), encoding="utf-8")
+                self.assertEqual(set(), approved_weekly_cockpit_paths(candidate), relative)
 
 
 if __name__ == "__main__":

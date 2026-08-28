@@ -38,27 +38,50 @@ class HumanViewCell(WeeklyCell):
     @staticmethod
     def render_markdown(snapshot: dict[str, Any]) -> str:
         lines = [
-            "# DBA Weekly Cockpit",
+            "# DBA 每周驾驶舱",
             "",
-            f"- Snapshot: `{snapshot.get('snapshot_id', 'UNKNOWN')}`",
-            f"- As of: `{snapshot.get('as_of', 'UNKNOWN')}`",
-            f"- Status: `{snapshot.get('overall_status', 'UNKNOWN')}`",
+            f"- 快照编号：`{snapshot['snapshot_id']}`",
+            f"- 观察时间：`{snapshot['observed_at']}`",
+            f"- 总体状态：`{snapshot['overall_status']}`",
+            "",
+            "## 本周一句话",
+            "",
+            snapshot["weekly_sentence_zh"],
             "",
             "## 本周需要人工决定",
             "",
         ]
-        for item in snapshot.get("decisions", []):
-            lines.append(f"- **{item.get('title', '未命名')}**：{item.get('why', '无说明')}")
-        lines.extend(["", "## 项目状态", ""])
-        for project in snapshot.get("project_views", []):
+        for item in snapshot["decisions"]:
             lines.append(
-                f"- **{project.get('display_name', project.get('project_id'))}** "
-                f"`{project.get('status', 'UNKNOWN')}`：{project.get('human_summary', '')}"
+                f"- **{item['title_zh']}**：{item['why_zh']}"
+                f"（负责人：{item['owner_conversation']}）"
+            )
+        lines.extend(["", "## 项目状态", ""])
+        for project in snapshot["projects"]:
+            lines.append(
+                f"- **{project['display_name_zh']}**｜{project['status_zh']}："
+                f"{project['why_zh']} 关注：{project['attention_zh']} "
+                f"影响：{project['impact_zh']} 负责人：{project['owner_conversation']}。"
+            )
+        lines.extend(["", "## 新发现", ""])
+        for item in snapshot["discoveries"]:
+            lines.append(
+                f"- **{item['title_zh']}**｜状态：`{item['status']}`｜"
+                f"来源：`{item['source_reference']}`"
+            )
+        lines.extend(["", "## 检查盲区", ""])
+        for item in snapshot["blind_spots"]:
+            lines.append(
+                f"- **{item['title_zh']}**｜状态：`{item['status']}`：{item['impact_zh']}"
             )
         lines.extend(
             [
                 "",
-                "> 该报告是 source-backed 的只读视图，不是权限、发布、执行或事实真相对象。",
+                "## 只读边界",
+                "",
+                "- 本周报告是来源支持的只读观察视图，不是项目状态事实源。",
+                "- 不产生自动修复、自动 PR、自动合并、自动部署或执行授权。",
+                "- `NOT_ASSESSED`、`STALE` 和检查盲区保持原义，不翻译为正常或通过。",
                 "",
             ]
         )

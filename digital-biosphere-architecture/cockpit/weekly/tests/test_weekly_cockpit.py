@@ -35,6 +35,7 @@ class WeeklyCockpitTests(unittest.TestCase):
             raise AssertionError("demo snapshot must be generated before tests")
         cls.snapshot = json.loads(snapshots[-1].read_text(encoding="utf-8"))
         cls.html = (DEMO / "dashboard.html").read_text(encoding="utf-8")
+        cls.markdown = (DEMO / "latest.md").read_text(encoding="utf-8")
         cls.workflow = (DBA.parent / ".github" / "workflows" / "dba-weekly-cockpit.yml").read_text(encoding="utf-8")
 
     def test_01_all_twelve_manifests_validate(self):
@@ -168,6 +169,40 @@ class WeeklyCockpitTests(unittest.TestCase):
     def test_24_dashboard_has_chinese_language_and_title(self):
         self.assertIn('lang="zh-CN"', self.html)
         self.assertIn("<title>DBA Weekly Cockpit", self.html)
+
+    def test_25_markdown_uses_observed_at_without_false_unknown(self):
+        self.assertIn(self.snapshot["observed_at"], self.markdown)
+        self.assertNotIn("As of: UNKNOWN", self.markdown)
+        self.assertNotIn("观察时间：`UNKNOWN`", self.markdown)
+
+    def test_26_markdown_contains_both_human_decisions(self):
+        self.assertIn("是否启动依赖安全专项评审", self.markdown)
+        self.assertIn("是否把 OpenBao 组件候选纳入正式监测", self.markdown)
+
+    def test_27_markdown_contains_all_five_projects(self):
+        for name in ("红岩公文", "DBA 驾驶舱", "数字细胞演示", "TITMAS 支撑层", "TITMAC 侦察"):
+            self.assertIn(name, self.markdown)
+
+    def test_28_markdown_has_no_false_placeholder_copy(self):
+        self.assertNotIn("未命名", self.markdown)
+        self.assertNotIn("无说明", self.markdown)
+
+    def test_29_html_and_markdown_share_snapshot_identity(self):
+        snapshot_id = self.snapshot["snapshot_id"]
+        self.assertIn(snapshot_id, self.html)
+        self.assertIn(snapshot_id, self.markdown)
+
+    def test_30_not_assessed_is_not_translated_as_normal(self):
+        line = next(line for line in self.markdown.splitlines() if "依赖漏洞的远端运行绑定未观察" in line)
+        self.assertIn("NOT_ASSESSED", line)
+        self.assertNotIn("正常", line)
+
+    def test_31_markdown_semantics_match_snapshot(self):
+        self.assertIn(self.snapshot["weekly_sentence_zh"], self.markdown)
+        for item in self.snapshot["discoveries"]:
+            self.assertIn(item["title_zh"], self.markdown)
+        for item in self.snapshot["blind_spots"]:
+            self.assertIn(item["title_zh"], self.markdown)
 
 
 if __name__ == "__main__":

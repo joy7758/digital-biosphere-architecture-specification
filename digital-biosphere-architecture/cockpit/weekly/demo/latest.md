@@ -1,15 +1,42 @@
-# DBA Weekly Cockpit
+# DBA 每周驾驶舱
 
-- Snapshot: `DBA-WEEKLY-2026-W35-CANDIDATE`
-- As of: `UNKNOWN`
-- Status: `PASS_WITH_NOT_ASSESSED`
+- 快照编号：`DBA-WEEKLY-2026-W35-CANDIDATE`
+- 观察时间：`2026-08-29T00:30:00+08:00`
+- 总体状态：`PASS_WITH_NOT_ASSESSED`
+
+## 本周一句话
+
+5 个项目中，3 个状态稳定，1 个需要关注，1 个存在检查盲区。
 
 ## 本周需要人工决定
 
-- **未命名**：无说明
-- **未命名**：无说明
+- **是否启动依赖安全专项评审**：DBA 现有依赖审计记录了 2 个 high，但远端绑定和可利用性均未评估。（负责人：DBA 专用对话）
+- **是否把 OpenBao 组件候选纳入正式监测**：它只来自历史组件采用矩阵，版本与安全事实必须先刷新。（负责人：DBA 专用对话）
 
 ## 项目状态
 
+- **红岩公文**｜受控试点运行正常：当前运行提交匹配，运行时无漂移，主控制指针有效。 关注：品牌部署谱系仍是部分谱系，4 个旧容器标签不具权威性。 影响：不阻塞当前受控试点；OfficeCLI 当前运行阻断为 0。 负责人：红岩公文专用对话。
+- **DBA 驾驶舱**｜方向清晰，依赖安全待评估：红岩是唯一工程主线，驾驶舱只负责项目群治理。 关注：依赖审计记录 2 个 high，可利用性尚未评估。 影响：属于构建与开发工具链；未观察到远端运行绑定。 负责人：DBA 专用对话。
+- **数字细胞演示**｜已发布并冻结：它是维护模式下的参考资产。 关注：本周没有授权功能变化。 影响：不构成生产认证或数字生命声明。 负责人：Digital Cell Demo 专用对话。
+- **TITMAS 支撑层**｜支撑层边界明确：D29 不是当前工程主线，执行未授权。 关注：旧商业收敛和组件矩阵只作为保留快照。 影响：实施前必须刷新组件版本与安全事实。 负责人：TITMAS 专用对话。
+- **TITMAC 侦察**｜本周动态检查未评估：现有来源注册和只读适配器可复用，但候选 Demo 未调用外部网络。 关注：已存投影不能替代本周动态观察。 影响：不推断最新 CI、PR 或远端 revision 状态。 负责人：TITMAC Scout 专用对话。
 
-> 该报告是 source-backed 的只读视图，不是权限、发布、执行或事实真相对象。
+## 新发现
+
+- **DBA 文档构建依赖保留 2 个 high 级发现**｜状态：`CURRENT_SNAPSHOT`｜来源：`reconciliation/current-dependency-audit`
+- **TITMAS 组件矩阵需要刷新后才能用于升级判断**｜状态：`STALE_OR_UNKNOWN`｜来源：`titmas-component-matrix`
+- **TITMAC Scout 本周动态观察未运行**｜状态：`UNKNOWN`｜来源：`cockpit/source-registry.json`
+- **红岩运行调查证据由产品线产生，DBA 接收摘要**｜状态：`DISCOVERED`｜来源：`current-direction-and-red-yan-evidence-snapshot`
+- **TITMAS 是信任与证据支撑层，不是当前工程主线**｜状态：`DISCOVERED`｜来源：`current-direction`
+- **待人工确认是否监测：OpenBao 邻接信号**｜状态：`DISCOVERED`｜来源：`https://github.com/openbao/openbao`
+
+## 检查盲区
+
+- **依赖漏洞的远端运行绑定未观察**｜状态：`NOT_ASSESSED`：不能判断该构建与开发工具链问题是否可被远端请求利用。
+- **TITMAC Scout 本周动态观察未运行**｜状态：`STALE`：保留已存投影，但不把它当作本周实时状态。
+
+## 只读边界
+
+- 本周报告是来源支持的只读观察视图，不是项目状态事实源。
+- 不产生自动修复、自动 PR、自动合并、自动部署或执行授权。
+- `NOT_ASSESSED`、`STALE` 和检查盲区保持原义，不翻译为正常或通过。
