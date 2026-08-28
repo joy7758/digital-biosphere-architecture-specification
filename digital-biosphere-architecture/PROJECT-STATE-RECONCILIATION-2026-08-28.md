@@ -46,7 +46,7 @@ DIGITAL_CELL_FROZEN_SOURCE_CONSISTENCY=PASS
 DIGITAL_CELL_FROZEN_OUTPUT_CONSISTENCY=PASS
 DBA_CONFORMANCE=PASS
 DBA_UNIT_TESTS=147/147_PASS
-DBA_CI_CONFORMANCE=2/2_PASS
+DBA_CI_CONFORMANCE=PASS
 DBA_CI_DEPENDENCY_AUDIT=FAIL_2_HIGH_NANOID_VIA_POSTCSS
 DBA_PR_148_MERGED=false
 RED_YAN_STATUS_ARTIFACTS_PARSE=PASS
@@ -99,7 +99,7 @@ still treats RedCrag as canonical.
    document toolchain lock. The brand deployment receipt commit `9287c8ae9d507bdf4c4769c5e255dda4210198e8`
    still has no corresponding remote branch, so that evidence lineage remains incomplete.
 4. Production readiness, real customer validation, `main` merge, and `v1.0.0` tag remain false.
-5. DBA PR #148 has two passing conformance checks, but its site build fails `npm audit --omit=dev`
+5. DBA PR #148 has a passing conformance check, but its site build fails `npm audit --omit=dev`
    on two high-severity findings in the existing `postcss` to `nanoid <3.3.18` dependency chain.
    This reconciliation changed no package or lock file. Dependency repair is a separate security
    change and was not authorized by this state-only goal, so the PR was not bypassed or merged.
