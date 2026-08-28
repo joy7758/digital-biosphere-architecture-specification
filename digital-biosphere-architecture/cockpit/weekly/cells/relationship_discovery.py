@@ -1,56 +1,54 @@
-"""Discover declared relationships; never infer authority from adjacency."""
+"""Discover declared relationships without treating them as defects."""
 
 from __future__ import annotations
 
 from typing import Any
 
-try:
-    from cockpit.weekly.cells import WeeklyCell, make_result
-except ModuleNotFoundError:
-    from cells import WeeklyCell, make_result
+from . import WeeklyCell, make_result, source_value
 
 
 class RelationshipDiscoveryCell(WeeklyCell):
     cell_id = "RELATIONSHIP_DISCOVERY_CELL"
 
     def _run(self, context: dict[str, Any]):
-        relationships = [
+        as_of = context.get("as_of", "UNKNOWN")
+        source_ref = source_value(context, "source_paths", {}).get("source_registry", "UNKNOWN")
+        records = [
             {
-                "signal_id": "rel:red-yan-to-dba-evidence-handoff",
-                "kind": "DECLARED_HANDOFF",
-                "signal_type": "DECLARED_HANDOFF",
-                "summary_zh": "红岩运行调查证据由产品线产生，DBA 接收摘要",
-                "subject": "red-yan-evidence-handoff",
+                "signal_id": "RELATIONSHIP-RED-YAN-DBA",
+                "kind": "DECLARED_PROJECT_RELATIONSHIP",
+                "subject": "红岩公文与 DBA 驾驶舱",
+                "title_zh": "红岩公文与 DBA 驾驶舱的声明关系",
                 "observed_state": "DECLARED",
-                "authority": "OBSERVATION_ONLY",
-                "from_project": "red-yan-official-documents",
-                "to_project": "digital-biosphere-architecture-specification",
-                "relationship": "evidence_snapshot_and_governance_reporting",
-                "source_reference": "current-direction-and-red-yan-evidence-snapshot",
-                "observed_at": context.get("as_of", "UNKNOWN"),
-                "authority_inherited": False,
+                "current_state": "DISCOVERED",
+                "source_reference": source_ref,
+                "observed_at": as_of,
+                "freshness": "CURRENT",
+                "authority": "RELATIONSHIP_REFERENCE_ONLY",
+                "admission_status": "PENDING",
+                "admission_label_zh": "待人工确认候选",
+                "details_zh": "这是已声明的项目关系，不是新漏洞，也不授予跨项目控制权。",
             },
             {
-                "signal_id": "rel:titmas-supporting-layer",
-                "kind": "DECLARED_SUPPORT",
-                "signal_type": "DECLARED_SUPPORT",
-                "summary_zh": "TITMAS 是信任与证据支撑层，不是当前工程主线",
-                "subject": "titmas-supporting-layer",
+                "signal_id": "RELATIONSHIP-TITMAS-DIGITAL-CELL",
+                "kind": "DECLARED_PROJECT_RELATIONSHIP",
+                "subject": "TITMAS 支撑层与数字细胞演示",
+                "title_zh": "TITMAS 支撑层与数字细胞演示的声明关系",
                 "observed_state": "DECLARED",
-                "authority": "OBSERVATION_ONLY",
-                "from_project": "titmas",
-                "to_project": "dba-program-governance",
-                "relationship": "supporting_trust_and_evidence_layer",
-                "source_reference": "current-direction",
-                "observed_at": context.get("as_of", "UNKNOWN"),
-                "authority_inherited": False,
+                "current_state": "DISCOVERED",
+                "source_reference": source_ref,
+                "observed_at": as_of,
+                "freshness": "CURRENT",
+                "authority": "RELATIONSHIP_REFERENCE_ONLY",
+                "admission_status": "PENDING",
+                "admission_label_zh": "待人工确认候选",
+                "details_zh": "这是引用关系，不代表部署、认证、运行绑定或新的安全事实。",
             },
         ]
-        context.setdefault("discovery_signals", []).extend(relationships)
         return make_result(
             self.cell_id,
             "PASS",
-            "仅呈现已声明的交接与支持关系，不从仓库邻接推导权限。",
-            discoveries=relationships,
-            observations=relationships,
+            "Declared relationships were recorded as references, not vulnerabilities.",
+            discoveries=records,
+            outputs={"discovery_records": records},
         )

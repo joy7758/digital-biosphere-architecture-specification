@@ -1,67 +1,73 @@
-"""Discover candidate projects without granting monitoring authority."""
+"""Discover registered projects and adjacent candidates without admitting them."""
 
 from __future__ import annotations
 
 from typing import Any
 
-try:
-    from cockpit.weekly.cells import WeeklyCell, make_result, source_value
-except ModuleNotFoundError:
-    from cells import WeeklyCell, make_result, source_value
+from . import WeeklyCell, make_result, source_value
 
 
 class ProjectDiscoveryCell(WeeklyCell):
     cell_id = "PROJECT_DISCOVERY_CELL"
 
     def _run(self, context: dict[str, Any]):
-        registry = (
-            source_value(context, "project_registry")
-            or source_value(context, "project_check_registry", {})
-            or {}
+        as_of = context.get("as_of", "UNKNOWN")
+        registry = source_value(
+            context,
+            "project_registry",
+            source_value(context, "project_check_registry", {}),
         )
-        projects = registry.get("projects", registry.get("entries", []))
-        candidates: list[dict[str, Any]] = []
-        for project in projects:
-            candidate = {
-                "candidate_id": f"candidate:{project.get('project_id', 'unknown')}",
-                "project_id": project.get("project_id", "UNKNOWN"),
-                "display_name_zh": project.get("display_name_zh", project.get("display_name", project.get("project_id", "未知项目"))),
-                "canonical_source_ref": project.get("canonical_source_ref", project.get("source_reference", "UNKNOWN")),
-                "source_reference": project.get("canonical_source_ref", project.get("source_reference", "UNKNOWN")),
-                "discovered_at": context.get("as_of", "UNKNOWN"),
-                "lifecycle": ["DISCOVERED", "ADMITTED", "MONITORED"],
-                "current_state": "MONITORED",
-                "discovery_status": "MONITORED",
-                "scan_authorized": project.get("scan_authorized", False),
-                "private_content_scanned": False,
-                "read_only": True,
-            }
-            candidates.append(candidate)
+        entries = registry.get("projects", registry.get("entries", [])) if isinstance(registry, dict) else registry
+        project_records: list[dict[str, Any]] = []
+        for item in entries or []:
+            project_records.append(
+                {
+                    "project_id": item["project_id"],
+                    "display_name_zh": item.get("display_name_zh", item["project_id"]),
+                    "lifecycle_mode": item.get("lifecycle_mode", "UNKNOWN"),
+                    "owner_conversation": item.get("owner_conversation", "UNKNOWN"),
+                    "source_reference": item.get("canonical_source_ref", "UNKNOWN"),
+                    "source_access_mode": item.get("source_access_mode", "READ_ONLY"),
+                    "status": "NOT_ASSESSED",
+                    "status_zh": "尚未评估",
+                    "why_zh": "已登记项目身份与来源，状态等待有边界的分析 Cell 更新。",
+                    "attention_zh": "未评估不等于正常。",
+                    "technical_evidence": [item.get("canonical_source_ref", "UNKNOWN")],
+                }
+            )
 
-        candidates.append(
-            {
-                "candidate_id": "candidate:openbao-adjacent-signal",
-                "project_id": "openbao-adjacent-signal",
-                "display_name": "OpenBao 邻接信号",
-                "display_name_zh": "OpenBao 邻接信号",
-                "source_reference": "https://github.com/openbao/openbao",
-                "canonical_source_ref": "https://github.com/openbao/openbao",
-                "discovered_at": context.get("as_of", "UNKNOWN"),
-                "lifecycle": ["DISCOVERED"],
-                "current_state": "DISCOVERED",
-                "discovery_status": "DISCOVERED",
-                "scan_authorized": False,
-                "private_content_scanned": False,
-                "read_only": True,
-                "note": "仅记录公开邻接信号；未经人工准入，不进入持续监测。",
-            }
-        )
-        context["project_candidates"] = candidates
+        candidate = {
+            "candidate_id": "candidate-openbao-2026-W35",
+            "signal_id": "DISCOVERY-OPENBAO-CANDIDATE",
+            "project_id": "openbao-adjacent-signal",
+            "kind": "ADJACENT_PROJECT_CANDIDATE",
+            "subject": "OpenBao",
+            "display_name": "OpenBao（机密与密钥管理组件）候选",
+            "title_zh": "OpenBao（机密与密钥管理组件）候选",
+            "source_reference": "project-discovery:public-adjacent-candidate",
+            "discovered_at": as_of,
+            "observed_at": as_of,
+            "lifecycle": "CANDIDATE",
+            "current_state": "DISCOVERED",
+            "observed_state": "DISCOVERED",
+            "freshness": "UNKNOWN",
+            "authority": "DISCOVERY_ONLY",
+            "scan_authorized": False,
+            "private_content_scanned": False,
+            "read_only": True,
+            "admission_status": "NOT_ADMITTED",
+            "monitoring_status": "NOT_MONITORED",
+            "admission_label_zh": "待人工确认候选",
+            "details_zh": "OpenBao（机密与密钥管理组件）仍是待确认候选；应先刷新当前版本与安全事实。",
+            "note": "Discovery does not grant evidence admission, monitoring, or scan authority.",
+        }
         return make_result(
             self.cell_id,
-            "PASS" if projects else "NOT_ASSESSED",
-            f"发现 {len(candidates)} 个候选，其中 {len(projects)} 个来自登记表。",
-            discoveries=candidates,
-            observations=candidates,
-            metadata={"auto_admission": False, "private_scan": False},
+            "PASS",
+            "Registered project identities and one adjacent candidate were discovered without admission.",
+            discoveries=[candidate],
+            outputs={
+                "project_records": project_records,
+                "discovery_records": [candidate],
+            },
         )

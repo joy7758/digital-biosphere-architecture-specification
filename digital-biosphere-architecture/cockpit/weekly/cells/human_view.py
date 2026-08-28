@@ -1,4 +1,4 @@
-"""Render the weekly snapshot as a standalone human-facing artifact."""
+"""Render the standardized weekly snapshot without adding new facts."""
 
 from __future__ import annotations
 
@@ -7,10 +7,7 @@ import json
 from pathlib import Path
 from typing import Any
 
-try:
-    from cockpit.weekly.cells import WeeklyCell, make_result
-except ModuleNotFoundError:
-    from cells import WeeklyCell, make_result
+from . import WeeklyCell, make_result
 
 
 class HumanViewCell(WeeklyCell):
@@ -37,51 +34,103 @@ class HumanViewCell(WeeklyCell):
 
     @staticmethod
     def render_markdown(snapshot: dict[str, Any]) -> str:
+        counts = snapshot.get("counts", {})
+        memory = snapshot.get("memory", {})
         lines = [
             "# DBA 每周驾驶舱",
             "",
             f"- 快照编号：`{snapshot['snapshot_id']}`",
             f"- 观察时间：`{snapshot['observed_at']}`",
             f"- 总体状态：`{snapshot['overall_status']}`",
+            "- 视图边界：只读观察；不构成项目真值、执行授权或发布授权。",
             "",
             "## 本周一句话",
             "",
             snapshot["weekly_sentence_zh"],
             "",
-            "## 本周需要人工决定",
+            "## 本周需要你决定",
             "",
         ]
-        for item in snapshot["decisions"]:
-            lines.append(
-                f"- **{item['title_zh']}**：{item['why_zh']}"
-                f"（负责人：{item['owner_conversation']}）"
+        decisions = snapshot.get("decisions", [])
+        if decisions:
+            for item in decisions:
+                lines.extend(
+                    [
+                        f"### {item['title_zh']}",
+                        "",
+                        item.get("why_zh", "请查看引用证据后作出人工决定。"),
+                        "",
+                    ]
+                )
+        else:
+            lines.extend(["当前没有登记的人工决定；这不表示没有风险。", ""])
+
+        lines.extend(
+            [
+                "## 项目状态",
+                "",
+            ]
+        )
+        for project in snapshot.get("projects", []):
+            lines.extend(
+                [
+                    f"### {project.get('display_name_zh', project.get('project_id', '项目'))}",
+                    "",
+                    f"- 状态：`{project.get('status', 'NOT_ASSESSED')}`（{project.get('status_zh', '尚未评估')}）",
+                    f"- 说明：{project.get('why_zh', '没有可用的人类解释。')}",
+                    f"- 注意：{project.get('attention_zh', '未评估不等于正常。')}",
+                    "",
+                ]
             )
-        lines.extend(["", "## 项目状态", ""])
-        for project in snapshot["projects"]:
-            lines.append(
-                f"- **{project['display_name_zh']}**｜{project['status_zh']}："
-                f"{project['why_zh']} 关注：{project['attention_zh']} "
-                f"影响：{project['impact_zh']} 负责人：{project['owner_conversation']}。"
+
+        lines.extend(
+            [
+                "## 本周发现信号",
+                "",
+                (
+                    f"共记录 {counts.get('discovered_count', len(snapshot.get('discoveries', [])))} 项信号；"
+                    f"已准入 {counts.get('admitted_count', 0)} 项；被拒绝或待确认 "
+                    f"{counts.get('rejected_or_pending_count', 0)} 项。"
+                ),
+                "",
+                memory.get("note_zh", "首次快照，尚不能判断这些信号是否相对于上周新增。"),
+                "",
+            ]
+        )
+        for item in snapshot.get("discoveries", []):
+            lines.extend(
+                [
+                    f"### {item.get('title_zh', item.get('subject', '发现信号'))}",
+                    "",
+                    f"- 准入标签：{item.get('admission_label_zh', '待人工确认候选')}",
+                    f"- 观察状态：`{item.get('observed_state', item.get('current_state', 'UNKNOWN'))}`",
+                    f"- 说明：{item.get('details_zh', item.get('note', '没有附加说明。'))}",
+                    f"- 来源：`{item.get('source_reference', 'UNKNOWN')}`",
+                    "",
+                ]
             )
-        lines.extend(["", "## 新发现", ""])
-        for item in snapshot["discoveries"]:
-            lines.append(
-                f"- **{item['title_zh']}**｜状态：`{item['status']}`｜"
-                f"来源：`{item['source_reference']}`"
-            )
-        lines.extend(["", "## 检查盲区", ""])
-        for item in snapshot["blind_spots"]:
-            lines.append(
-                f"- **{item['title_zh']}**｜状态：`{item['status']}`：{item['impact_zh']}"
+
+        lines.extend(["## 检查盲区", ""])
+        for item in snapshot.get("blind_spots", []):
+            lines.extend(
+                [
+                    f"### {item.get('title_zh', '未评估盲区')} · `{item.get('status', 'NOT_ASSESSED')}`",
+                    "",
+                    f"- 状态：`{item.get('status', 'NOT_ASSESSED')}`",
+                    f"- 影响：{item.get('impact_zh', '缺少足够证据。')}",
+                    "",
+                ]
             )
         lines.extend(
             [
+                "## 技术证据",
                 "",
-                "## 只读边界",
+                f"- 机器总体状态：`{snapshot['overall_status']}`",
+                f"- 原始观察时间：`{snapshot['observed_at']}`",
+                f"- 逻辑 Cell 数量：{len(snapshot.get('logical_cells', snapshot.get('cell_runs', [])))}",
+                f"- 依赖审计状态：`{snapshot.get('dependency_audit_state', {}).get('status', 'NOT_ASSESSED')}`",
                 "",
-                "- 本周报告是来源支持的只读观察视图，不是项目状态事实源。",
-                "- 不产生自动修复、自动 PR、自动合并、自动部署或执行授权。",
-                "- `NOT_ASSESSED`、`STALE` 和检查盲区保持原义，不翻译为正常或通过。",
+                "固定问题仅查询当前快照，不访问外部服务，也不产生执行命令。",
                 "",
             ]
         )
@@ -91,11 +140,12 @@ class HumanViewCell(WeeklyCell):
         snapshot = context.get("snapshot", {})
         output_dir = context.get("output_dir")
         if not snapshot or not output_dir:
-            return make_result(self.cell_id, "NOT_ASSESSED", "缺少快照或输出目录，未生成视图。")
+            return make_result(self.cell_id, "NOT_ASSESSED", "Snapshot or output directory was unavailable.")
         paths = self.render(snapshot, output_dir)
         return make_result(
             self.cell_id,
             "PASS",
-            "已生成独立 HTML 与 Markdown 人类视图。",
+            "Standalone HTML and Markdown were rendered from the standardized snapshot only.",
             observations=[{"artifacts": paths, "snapshot_only": True}],
+            outputs={"human_view_artifacts": paths},
         )

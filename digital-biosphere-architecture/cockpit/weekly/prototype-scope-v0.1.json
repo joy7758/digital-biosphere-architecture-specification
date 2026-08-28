@@ -1,20 +1,10 @@
 {
-  "manifest_id": "DBA-WEEKLY-COCKPIT-PROTOTYPE-SCOPE-v0.1",
-  "version": "0.1",
-  "purpose": "Authorize only the exact human-reviewed files of the DBA Weekly Cockpit v0.1 private read-only prototype.",
-  "decision_scope": "PATH_SCOPE_AUTHORIZATION_MANIFEST",
-  "prototype_only": true,
-  "private_internal_cockpit": true,
-  "read_only": true,
-  "schedule_enabled": false,
-  "auto_fix": false,
-  "auto_pr": false,
-  "auto_merge": false,
+  "approved_file_count": 50,
   "auto_deploy": false,
-  "new_truth_source": false,
-  "new_control_plane": false,
-  "hash_algorithm": "SHA-256",
-  "approved_file_count": 49,
+  "auto_fix": false,
+  "auto_merge": false,
+  "auto_pr": false,
+  "decision_scope": "PATH_SCOPE_AUTHORIZATION_MANIFEST",
   "files": [
     {
       "path": ".github/workflows/dba-weekly-cockpit.yml",
@@ -30,51 +20,51 @@
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/cells/__init__.py",
-      "sha256": "ba66fd90a6ce42168d49e55f9dd2c9b91cfcec118f75f1117b33e1e7eaaec61c"
+      "sha256": "a10678471f172e8ee591b44d9d190e3ec5fa2b62fd47900ec57bd92fd0d8bfbd"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/cells/drift.py",
-      "sha256": "79510d4f2f0bce43a3c81cd1d21650bcfa0054645ab1111da3f1c4d9ee10af0b"
+      "sha256": "84aeb8e7755ab07547f84f5306ed1667d01b5b7f6e1cd663b9e24ae0b7ef0478"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/cells/environment_discovery.py",
-      "sha256": "9d6c5878f7d9aac719b2318ffa56f641d48c9a55e03aadddc8feb7ec7c139455"
+      "sha256": "ebe5e941a94ae27131c2c177b1f704ceb03d7bd8cda78cb6fc5b9d6d072ad0bf"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/cells/evidence_admission.py",
-      "sha256": "a4713c00118566e4723c7f100249be22c60f7fecc3e2ab67c74544d4097cb18b"
+      "sha256": "4ae62362a5b65029535de058f1725459a66aedef176f079fa4842b3c94b51e10"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/cells/handoff.py",
-      "sha256": "5dbe12fe016ecdc4f33a1811483a0e262c5b5506990def98b7b59b368ec437db"
+      "sha256": "c538832327bf654623543a1d23906e0c4ebba2627b719a1b3c87017722190bf8"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/cells/human_view.py",
-      "sha256": "061cd8fc7421af39bcd70812e2767e53ec37103838b4d1f102bcc98b572f3d84"
+      "sha256": "f9b9719c08ffd0cf91625041151b891d06b329922a22682b89cde42d33cb6374"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/cells/memory.py",
-      "sha256": "49dca0591df4221351ac3350cb6441929435279611ec506fd43865eb20b0425d"
+      "sha256": "d28997d3ca63c0787a98549f416a9e1d1d73cda1fc7bb3db1470d37e6e5b87f1"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/cells/project_discovery.py",
-      "sha256": "7bf2a2df028a06ac3cc76fd9816dd57f4490df74d9f48fdf5e7f76b913dd1f0b"
+      "sha256": "4b01bedfc3f7cfa1cba41c8023732f466d8be3a54aafa858d03e055f84282fdf"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/cells/quality.py",
-      "sha256": "33696ac0a9cb3407482eb2fead9bb945c683e68d2e05a6080ed5b54b91baed33"
+      "sha256": "7a0fb4d6b693dc74da849e44193cfc578f3d9d29062bc0c3d8763c24d110e9f1"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/cells/relationship_discovery.py",
-      "sha256": "9822de05e078fcf75cd101f8ca7e0e33d82b009608812ed96147b8b5c238eff5"
+      "sha256": "b9a9bcdd619a33a5c9739548079ead752a735efff7e421b796d04ed35cd82f72"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/cells/security.py",
-      "sha256": "d88ac6f3fa874edcb13661ecba917bc94b05ee3b553f1369d6a9948d2db06fec"
+      "sha256": "3e1b5a18c2bc338429f163c0082b957f73c172146546d162d78b6e880d4fa2c9"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/cells/upgrade.py",
-      "sha256": "f95126eef3b92502b9c5a63987f07796bf09f4564ee531d92d0e242d59551345"
+      "sha256": "746ba73b349f726833a2641762652d83d89fffe0375ce315d94b9fd5d85f61ed"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/contracts.py",
@@ -82,31 +72,35 @@
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/coordinator.py",
-      "sha256": "bb70ed638b859305662ffd6a471d639d9021917ea3022ccbef64e95c8c5c117d"
+      "sha256": "d2108ee3054445920fc1c747380aaa93056256b605bace4473e5992572e87a67"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/demo/cell-run-summary.json",
-      "sha256": "dd0b9f3f6ef0f901e6921c7571068da6c6505763d019f389b1ebbdca29aa28bb"
+      "sha256": "8246b9bdc71104cda48773b29ec22903f55c6381d7156b4cef3e6fc1988f2383"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/demo/dashboard-preview.png",
-      "sha256": "600ffa174e9792832d9d3e8ba5ee5ea8994ebae426b87f6abc5772709a4ba0bb"
+      "sha256": "ee7510766b209a4a0d9e268e2001731738160888b73471d69715e9b0144d831d"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/demo/dashboard.html",
-      "sha256": "096bce426b086c908490d052f536b83b7472bae8d93906a091d57f40c4440da4"
+      "sha256": "894659dee53e481215205bfd9a47ccab2da9de94a444e418f5d1549db3442fd0"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/demo/latest.md",
-      "sha256": "1c8c9b6904408f0a3097491c243e92b1f44a7e9f47568825bc5d9f1ecf764622"
+      "sha256": "0b443975edecfa4cc0ca6dff1e1cdf9c2bb7a1c99b4eb653aa4863e4f33eb291"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/demo/weekly-snapshot-2026-W35.json",
-      "sha256": "74fd5cb1edc8e819ab7690fae34f41655f5284009589f5447b20691f533511d4"
+      "sha256": "05d271002c839672cfc0cde79f0bc8c7362098451cf02c636e21bf33edc6e29d"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/history/README.md",
       "sha256": "ed1eb4fa45ef6030a73ca0345ce3113206d37e1b71c43b0e59fe859fda72538a"
+    },
+    {
+      "path": "digital-biosphere-architecture/cockpit/weekly/inputs/live-dependency-audit-candidate-2026-08-29.json",
+      "sha256": "eaf6c1e2a5791be0ebea2b94e25408d87d02917c6f97286962dc46a565db7c34"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/manifests/01-PROJECT_DISCOVERY_CELL.json",
@@ -162,7 +156,7 @@
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/run_weekly.py",
-      "sha256": "b89141591c9620e36a59ef92967acb6c5f6b571649c9886938c35f6be6f8edb2"
+      "sha256": "b29cb17a3e02ab00010ee7df79986ee15f997420a8f32657213b738c7ace386a"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/schemas/admitted-observation.schema.json",
@@ -190,7 +184,7 @@
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/schemas/weekly-snapshot.schema.json",
-      "sha256": "fb16b2417fed5eb81a84b1769ef7bf36ba07daca9e4dccb7d23f26b85cbb9e9a"
+      "sha256": "f4d4918e8499d63352a2b219c5ef25eebb59094ce59986b445c4a74a9fd8c50c"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/tests/__init__.py",
@@ -198,11 +192,11 @@
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/tests/test_weekly_cockpit.py",
-      "sha256": "3c79fd592dcaf4f84b2105b5abbcbd06f2dae0cce2a1335783eb55a93796d69d"
+      "sha256": "fc1bde8ab9de6e447561b3c58f2b47992ae13fd7204b9cb4fc8c85dd824e5d15"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/ui/app.js",
-      "sha256": "c95fe64927e57f32fd92505a3f89c1550862f558a346efbf36b5fc94b93e76cb"
+      "sha256": "7a774be5a8bd50a5eea80f3c2dffa9a76e1194349f2b2b6912a69249f547022f"
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/ui/styles.css",
@@ -210,18 +204,28 @@
     },
     {
       "path": "digital-biosphere-architecture/cockpit/weekly/ui/template.html",
-      "sha256": "05366df4d7377ab86cdd2f4cc1640c662a5de8e62d3b962c7a2fd48b7e528c3d"
+      "sha256": "05e4e8f07c50e019611a6b8ead973da452cd9bd09a217984264b18b29e3abcae"
     }
   ],
-  "workflow": {
-    "path": ".github/workflows/dba-weekly-cockpit.yml",
-    "sha256": "a26603cf17dfb1dfd5d943179f8e48cf165af76ae4c583a96eafc97d1592a15f"
-  },
-  "generated_at": "2026-08-29T01:33:48+08:00",
+  "generated_at": "2026-08-29T02:08:15+08:00",
+  "hash_algorithm": "SHA-256",
   "limitations": [
     "This manifest is path-scope governance, not project truth or runtime authority.",
     "The manifest does not authorize deployment, production use, merge, or scheduled execution.",
     "Any new or changed approved file requires regenerated digests and a new human review.",
     "The manifest file omits its own digest to avoid a circular identity dependency."
-  ]
+  ],
+  "manifest_id": "DBA-WEEKLY-COCKPIT-PROTOTYPE-SCOPE-v0.1",
+  "new_control_plane": false,
+  "new_truth_source": false,
+  "private_internal_cockpit": true,
+  "prototype_only": true,
+  "purpose": "Authorize only the exact human-reviewed files of the DBA Weekly Cockpit v0.1 private read-only prototype.",
+  "read_only": true,
+  "schedule_enabled": false,
+  "version": "0.1",
+  "workflow": {
+    "path": ".github/workflows/dba-weekly-cockpit.yml",
+    "sha256": "a26603cf17dfb1dfd5d943179f8e48cf165af76ae4c583a96eafc97d1592a15f"
+  }
 }

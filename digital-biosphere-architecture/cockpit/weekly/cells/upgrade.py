@@ -1,35 +1,38 @@
-"""Assess upgrade signals without recommending unverified version changes."""
+"""Keep stale or rejected component signals out of upgrade recommendations."""
 
 from __future__ import annotations
 
 from typing import Any
 
-try:
-    from cockpit.weekly.cells import WeeklyCell, make_result, source_value
-except ModuleNotFoundError:
-    from cells import WeeklyCell, make_result, source_value
+from . import WeeklyCell, make_result
 
 
 class UpgradeCell(WeeklyCell):
     cell_id = "UPGRADE_CELL"
 
     def _run(self, context: dict[str, Any]):
-        matrix = source_value(context, "titmas_component_matrix", {}) or {}
-        finding = {
-            "finding_id": "upgrade:titmas-matrix-refresh-required",
-            "project_id": "titmas",
-            "severity": "NOT_ASSESSED",
-            "category": "UPGRADE_DISCOVERY",
-            "title": "TITMAS 组件版本信号需要刷新",
-            "human_explanation": "组件矩阵新鲜度不足，不能据此判断当前版本或升级优先级。",
-            "source_reference": "titmas-component-matrix",
-            "observed_at": matrix.get("observed_at", matrix.get("generated_at", "UNKNOWN")),
-            "version_change_recommended": False,
-            "authorization": "NONE",
-        }
+        rejected = context.get("rejected_observations", [])
+        component_rejected = any(
+            item.get("observation", {}).get("kind") == "COMPONENT_STATUS_SIGNAL"
+            for item in rejected
+        )
+        updates = []
+        if component_rejected:
+            updates.append(
+                {
+                    "project_id": "TITMAS_SUPPORTING_LAYER",
+                    "status": "NOT_ASSESSED",
+                    "status_zh": "升级状态未评估",
+                    "why_zh": "组件状态来源已过期，不能转化为本周升级建议。",
+                    "attention_zh": "需要新的只读证据后再评估。",
+                }
+            )
         return make_result(
             self.cell_id,
-            "NOT_ASSESSED",
-            "没有足够的新鲜版本证据；升级状态保持未评估。",
-            findings=[finding],
+            "NOT_ASSESSED" if component_rejected else "PASS",
+            "Rejected or stale signals did not become upgrade recommendations.",
+            outputs={
+                "project_updates": updates,
+                "upgrade_recommendations": [],
+            },
         )

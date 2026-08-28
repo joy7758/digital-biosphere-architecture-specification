@@ -34,6 +34,7 @@ def make_result(
     findings: list[dict[str, Any]] | None = None,
     handoffs: list[dict[str, Any]] | None = None,
     metadata: dict[str, Any] | None = None,
+    outputs: dict[str, Any] | None = None,
 ) -> CellResult:
     """Build CellResult while keeping Cells decoupled from minor contract revisions."""
     payload = {
@@ -46,7 +47,7 @@ def make_result(
         "handoffs": handoffs or [],
         "handoff_packets": handoffs or [],
         "metadata": metadata or {},
-        "outputs": {
+        "outputs": outputs if outputs is not None else {
             "discoveries": discoveries or [],
             "observations": observations or [],
             "handoff_packets": handoffs or [],

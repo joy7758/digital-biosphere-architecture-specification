@@ -25,6 +25,7 @@ def load_context(as_of: str) -> dict[str, object]:
     convergence_path = DBA_ROOT / "titmas-commercial-product-convergence-status-v1.0.json"
     source_registry_path = DBA_ROOT / "cockpit" / "source-registry.json"
     scout_projection_path = DBA_ROOT / "cockpit" / "projections" / "titmac-scout.json"
+    live_audit_path = WEEKLY / "inputs" / "live-dependency-audit-candidate-2026-08-29.json"
     previous = sorted((WEEKLY / "history").glob("????-W??.json"))
     return {
         "weekly_root": WEEKLY,
@@ -37,6 +38,7 @@ def load_context(as_of: str) -> dict[str, object]:
         "convergence_snapshot": read_json(convergence_path),
         "source_registry": read_json(source_registry_path),
         "scout_projection": read_json(scout_projection_path),
+        "live_dependency_audit": read_json(live_audit_path),
         "project_registry": read_json(WEEKLY / "project-check-registry.json"),
         "cell_registry": read_json(WEEKLY / "cell-registry.json"),
         "previous_snapshot": read_json(previous[-1]) if previous else None,
@@ -49,6 +51,7 @@ def load_context(as_of: str) -> dict[str, object]:
             "source_registry": str(source_registry_path.relative_to(DBA_ROOT)),
             "read_only_adapter": "cockpit/read_only_status_adapter.py",
             "scout_projection": str(scout_projection_path.relative_to(DBA_ROOT)),
+            "live_dependency_audit": str(live_audit_path.relative_to(DBA_ROOT)),
         },
     }
 
