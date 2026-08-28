@@ -1,17 +1,26 @@
 # Project State Reconciliation — 2026-08-28
 
 ```text
-PROJECT_STATE_RECONCILIATION=PASS_WITH_RECORDED_CI_LIMITATION
+PROJECT_STATE_RECONCILIATION=PASS_WITH_RECORDED_DEPENDENCY_AUDIT_FAILURE
 PRIMARY_ACTIVE_PROJECT=红岩公文
 PRIMARY_ENGINEERING_DIRECTION=红岩公文
 CURRENT_CANONICAL_DOMAIN=https://dcell.net
 REDCRAG_CN_ROLE=LEGACY_HISTORICAL_DOMAIN
-DIGITAL_CELL_DEMO_STATUS=RELEASED_FROZEN_REFERENCE
+DIGITAL_CELL_DEMO_STATUS=RELEASED_FROZEN_REFERENCE_ASSET
 DIGITAL_CELL_DEMO_MAINTENANCE_ONLY=true
-TITMAS_ROLE=SUPPORTING_INFRASTRUCTURE
-DCELL_ROLE=SUPPORTING_ARCHITECTURE
+TITMAS_ROLE=SUPPORTING_TRUST_AND_EVIDENCE_INFRASTRUCTURE
+DCELL_ROLE=SUPPORTING_ARCHITECTURE_AND_LONG_TERM_RESEARCH_LAYER
 DEB_STATUS=PAUSED
 THEORY_EXPANSION_STATUS=PAUSED
+INFRASTRUCTURE_SUPPORTS_PRODUCT=true
+PRODUCT_EXISTS_TO_PROVE_THEORY=false
+CONVERSATION_SCOPE=DBA_COCKPIT_ONLY
+DBA_ROLE=PROGRAM_GOVERNANCE_COCKPIT
+RED_YAN_PRODUCT_EXECUTION_OWNER=SEPARATE_RED_YAN_CONVERSATION
+DBA_MAY_OBSERVE_RED_YAN=true
+DBA_MAY_EXECUTE_RED_YAN=false
+DBA_MAY_RECORD_HANDOFF=true
+DBA_MAY_CHANGE_RED_YAN_RUNTIME=false
 ```
 
 ## Reconciled state
@@ -28,7 +37,7 @@ Survival、Digital Immune、Multi-Cell 和新 TITMAS Runtime 工作默认暂停�
 | Scope | Observed source state | Changes in this reconciliation |
 |---|---|---|
 | Digital Cell Demo | `joy7758/titmas-demo`, public, `origin/main@2bc410b5ea88dea6a0d7deb8f15d8dde67280f26` | Current README/checklist contradiction correction; one current-state index; existing Release body and repository homepage metadata corrected; PR #5 merged |
-| DBA cockpit | `joy7758/digital-biosphere-architecture-specification`, private, baseline `origin/main@40a4b34370578e665767d9ba9a85dca205876b0f` | Current direction, human/machine entry, legacy-site classification, final report, and documentation-only test allowlist; PR #148 was merged by `joy7758` at 2026-08-28T13:19:27Z |
+| DBA cockpit | `joy7758/digital-biosphere-architecture-specification`, private; historical reconciliation baseline `origin/main@40a4b34370578e665767d9ba9a85dca205876b0f`; post-investigation baseline `origin/main@6eaab6d4e4d0608d31f2a49fc1709066043784c2` | PR #148 historical state preserved; PR #150 merged the bounded runtime-metadata investigation and machine-readable evidence snapshot; this sync changes only cockpit direction and reconciliation records |
 | 红岩公文 | `joy7758/hongyan-official-document`, private; canonical reconciliation branch `875b706edbf687b53df6f39ed73e21e87922aef3` | Read-only; GitHub homepage metadata set to `https://dcell.net`; no source, runtime, deployment, feature, or status-record change |
 | Current public site | `https://dcell.net` redirects to `/pilot`; source/runtime ownership remains with 红岩公文 | No visual, branding, architecture, deployment, or redirect change |
 
@@ -48,9 +57,12 @@ DBA_CONFORMANCE=PASS
 DBA_UNIT_TESTS=147/147_PASS
 DBA_CI_CONFORMANCE=PASS
 DBA_CI_DEPENDENCY_AUDIT=FAIL_2_HIGH_NANOID_VIA_POSTCSS
+DEPENDENCY_SECURITY_WORKSTREAM=SEPARATE_NOT_AUTHORIZED_IN_THIS_TASK
 DBA_PR_148_MERGED=true
 DBA_PR_148_MERGED_BY=joy7758
 DBA_MERGE_COMMIT=9a00bde4928180fbb4de813b1970b243dffb2b07
+DBA_PR_150_MERGED=true
+DBA_PR_150_MERGE_COMMIT=6eaab6d4e4d0608d31f2a49fc1709066043784c2
 RED_YAN_STATUS_ARTIFACTS_PARSE=PASS
 RED_YAN_GIT_FSCK=PASS_NO_CORRUPTION
 DCELL_NET_ROOT_GET=200_AT_HTTPS://DCELL.NET/PILOT
@@ -84,19 +96,75 @@ UNRESOLVED_REFERENCES=0
 The zero count applies only to audited current canonical surfaces. Historical publication,
 deployment, source, and audit records remain unchanged and continue to contain RedCrag facts.
 
-## Unresolved factual issues
+## Post-investigation authority boundary
+
+The following authority hierarchy applies to this reconciliation:
+
+1. Red Yan investigation report and machine evidence snapshot govern timestamp-bounded observed
+   remote runtime facts.
+2. DBA cockpit direction records govern project priority, cross-project risk, and handoff state.
+3. Red Yan product decisions and execution remain with the separate Red Yan conversation and the
+   product repository's own authorization chain.
+
+DBA is not a Red Yan runtime source of truth and does not inherit product execution authority from
+receiving an investigation report.
+
+## Superseded pre-investigation findings
+
+The following tokens are preserved as investigation history only. They are not current blockers.
+
+| Pre-investigation token | Status | Current replacement |
+|---|---|---|
+| `STALE_SRV_CURRENT_POINTER` | `SUPERSEDED_BY_POST_INVESTIGATION_EVIDENCE` | Legacy pointer corrected to `CORRECTED_COMPATIBILITY_ALIAS_NO_CURRENT_DRIFT` |
+| `MULTIPLE_SIMULTANEOUS_DRIFTS` | `SUPERSEDED_BY_POST_INVESTIGATION_EVIDENCE` | Current application runtime commit and canonical control pointer agree |
+| `BRAND_DEPLOYMENT_RECEIPT_LINEAGE_NOT_REMOTE` | `SUPERSEDED_BY_POST_INVESTIGATION_EVIDENCE` | Receipt exists in pushed repository evidence; lineage is partial and remote release binding remains missing |
+| `3_OPEN_OFFICECLI_P1` | `SUPERSEDED_BY_POST_INVESTIGATION_EVIDENCE` | Zero current-runtime blockers and three candidate-promotion blockers |
+
+## Current Red Yan runtime and metadata state
+
+```text
+RED_YAN_REMOTE_RUNTIME_COMMIT=4c98ba8a09eb1ae2d1a5dbdc5c66f8b4131848dd
+RED_YAN_CURRENT_RUNTIME_DRIFT=false
+RED_YAN_CANONICAL_CONTROL_POINTER=/home/hongyan-v1/hongyan-v1/current
+RED_YAN_CANONICAL_CONTROL_POINTER_STATUS=ACTIVE_CONTROL_POINTER
+RED_YAN_LEGACY_POINTER=/srv/hongyan-v1/current
+RED_YAN_LEGACY_POINTER_STATUS=CORRECTED_COMPATIBILITY_ALIAS_NO_CURRENT_DRIFT
+BASE_CONTAINER_LABEL_COUNT=4
+BASE_CONTAINER_LABEL_CLASSIFICATION=LABEL_NOT_AUTHORITATIVE
+BASE_CONTAINER_LABEL_CORRECTION_REQUIRES_REBUILD=true
+BRAND_RECEIPT_EXISTENCE=REPOSITORY_EVIDENCE_PRESENT
+BRAND_RECEIPT_LINEAGE=PARTIAL_LINEAGE
+BRAND_RECEIPT_MAINLINE_STATUS=NOT_ON_PRODUCT_MAIN
+BRAND_RECEIPT_REMOTE_BINDING=MISSING_REMOTE_BINDING
+OFFICECLI_CURRENT_RUNTIME_BLOCKER_COUNT=0
+OFFICECLI_PROMOTION_BLOCKER_COUNT=3
+OFFICECLI_CANDIDATE_STATE=QUARANTINED_SHADOW_ONLY
+DEPENDENCY_SECURITY_WORKSTREAM_REQUIRED=true
+DEPENDENCY_FINDING=postcss -> nanoid <3.3.18
+DEPENDENCY_EXPLOITABILITY=NOT_ASSESSED
+```
+
+The active user-level pointer is the canonical control pointer. The legacy `/srv` pointer is now a
+corrected compatibility alias, not a current drift blocker. Four base-container labels remain
+non-authoritative maintenance debt; correcting them requires a separately authorized rebuild and
+was not executed by DBA.
+
+The brand receipt is not absent. It exists as pushed repository evidence, but it is not on product
+`main` and is not bound into the remote release artifact. OfficeCLI remains quarantined and
+shadow-only: three P1 records block candidate promotion, while none is classified as a current
+controlled-pilot runtime blocker.
+
+## Current bounded factual issues
 
 1. `https://dcell.net/digital-cell/`, `/digital-cell.json`, `/.well-known/titmas.json`,
    `/agent-index.json`, and `/llms.txt` all returned 404 on 2026-08-28. No dedicated Digital Cell
    page, TITMAS discovery surface, or public GitHub link was found on the current product page.
-2. 红岩公文 remains in `REFINE_CORRECT_SIMPLIFY_STABILIZE_ONLY` freeze mode. Its current running
-   commit is `4c98ba8a09eb1ae2d1a5dbdc5c66f8b4131848dd` with high confidence, while the old
-   `/srv/hongyan-v1/current` pointer remains at `1e990d5380de83d0048c4ee881ed126b4835d029`.
-   The drift class is `MULTIPLE_SIMULTANEOUS_DRIFTS`; no correction, restart, recreate, image
-   change, release switch, migration, feature-flag change, or customer-task restart was executed.
-3. Three OfficeCLI P1 items remain open: remote runtime drift, macOS screenshot backend, and
-   document toolchain lock. The brand deployment receipt commit `9287c8ae9d507bdf4c4769c5e255dda4210198e8`
-   still has no corresponding remote branch, so that evidence lineage remains incomplete.
+2. 红岩公文 remains in `REFINE_CORRECT_SIMPLIFY_STABILIZE_ONLY` freeze mode. Current remote
+   runtime identity is consistent, while four non-authoritative base-container labels remain for a
+   separately authorized maintenance window.
+3. OfficeCLI has three candidate-promotion blockers but zero current-runtime blockers. Brand
+   receipt evidence has partial lineage: repository evidence is present, product-main integration
+   and remote-release binding are absent.
 4. Production readiness, real customer validation, `main` merge, and `v1.0.0` tag remain false.
 5. DBA PR #148 was manually merged by `joy7758` at 2026-08-28T13:19:27Z while its checks were
    still running. Conformance later passed; the site build later failed `npm audit --omit=dev` on
@@ -104,14 +172,36 @@ deployment, source, and audit records remain unchanged and continue to contain R
    This reconciliation changed no package or lock file. Dependency repair remains a separate
    security task; the failed audit must not be described as passing merely because the PR merged.
 
-## Exact next action for 红岩公文
+## Red Yan Product Handoff
+
+## 红岩产品交接
 
 ```text
-RED_YAN_CURRENT_STATE=REMOTE_RUNTIME_CANONICAL_TRUTH_RECONCILED_WITH_MULTIPLE_DRIFTS_AND_3_OPEN_P1
-RED_YAN_NEXT_SINGLE_EXECUTABLE_MILESTONE=KEEP_REMOTE_RUNTIME_UNCHANGED_AND_INVESTIGATE_STALE_CONTROL_AND_CONFIGURATION_METADATA
-RED_YAN_CURRENT_BLOCKERS=STALE_SRV_CURRENT_POINTER;STALE_BASE_CONTAINER_CONFIGURATION_LABELS;3_OPEN_OFFICECLI_P1;BRAND_DEPLOYMENT_RECEIPT_LINEAGE_NOT_REMOTE
+RED_YAN_HANDOFF_STATUS=READY
+RED_YAN_HANDOFF_TARGET=SEPARATE_RED_YAN_PRODUCT_CONVERSATION
+RED_YAN_HANDOFF_ITEM=CANONICALIZE_VERIFIED_CONTROL_METADATA_AND_DEPLOYMENT_LINEAGE_WITHOUT_RUNTIME_CHANGE
+DBA_EXECUTION_STATUS=NOT_EXECUTED_IN_DBA_COCKPIT
+RUNTIME_CHANGE_AUTHORIZED_BY_DBA=false
+PRODUCT_REPOSITORY_CHANGE_AUTHORIZED_BY_DBA=false
 ```
 
-This recommendation is investigation-only. It does not authorize a runtime pointer correction,
-restart, container recreation, deployment, feature change, merge, tag, release, or production
-claim.
+The separate Red Yan product conversation may, under its own explicit authorization, decide
+whether to integrate verified receipts into product `main`, establish future remote-release
+binding, schedule container-label maintenance, remediate OfficeCLI, or address the security
+dependency. DBA records those workflows and their cross-project effects but does not execute them.
+
+## DBA next action
+
+```text
+DBA_NEXT_ACTION=WAIT_FOR_PROJECT_STATUS_HANDOFFS_AND_MONITOR_CROSS_PROJECT_DRIFT
+DBA_ACTIVE_PRODUCT_IMPLEMENTATION_TASK=NONE
+DBA_RED_YAN_EXECUTION_TASK=NONE
+DBA_CI_DEPENDENCY_AUDIT=FAIL_2_HIGH_NANOID_VIA_POSTCSS
+DEPENDENCY_SECURITY_WORKSTREAM=SEPARATE_NOT_AUTHORIZED_IN_THIS_TASK
+```
+
+After receiving completion summaries from the separate Red Yan conversation, DBA may update
+program state and check architecture drift, new truth-source creation, duplicate construction, and
+project-priority effects. This cockpit record authorizes no product patch, product PR, runtime
+change, deployment, OfficeCLI remediation, dependency remediation, merge, tag, release, or
+production claim.

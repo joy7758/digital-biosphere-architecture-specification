@@ -15,6 +15,26 @@ INFRASTRUCTURE_SUPPORTS_PRODUCT=true
 PRODUCT_EXISTS_TO_PROVE_THEORY=false
 ```
 
+## Cockpit execution boundary
+
+```text
+CONVERSATION_SCOPE=DBA_COCKPIT_ONLY
+DBA_ROLE=PROGRAM_GOVERNANCE_COCKPIT
+RED_YAN_PRODUCT_EXECUTION=SEPARATE_CONVERSATION
+DBA_MAY_OBSERVE_RED_YAN=true
+DBA_MAY_EXECUTE_RED_YAN=false
+DBA_MAY_RECORD_HANDOFF=true
+DBA_MAY_CHANGE_RED_YAN_RUNTIME=false
+DBA_COCKPIT_SCOPE=PROGRAM_GOVERNANCE_ONLY
+RED_YAN_PRODUCT_EXECUTION_OWNER=SEPARATE_RED_YAN_CONVERSATION
+DBA_COCKPIT_MAY_OBSERVE_RED_YAN=true
+DBA_COCKPIT_MAY_EXECUTE_RED_YAN=false
+PROJECT_HANDOFF_REQUIRED=true
+```
+
+DBA 驾驶舱接收红岩的状态摘要、证据、风险与阻断信息，但不直接制作红岩补丁、PR、
+部署或运行时变更。红岩产品执行由独立红岩专用对话在产品仓库自身的授权边界内负责。
+
 红岩公文是当前唯一工程主线和真实产品环境。DCell 提供持续主体模型，TITMAS 与
 Evidence 架构提供边界、执行证据、审查和可验证历史。它们没有被放弃，但其价值应优先
 通过红岩公文的真实用户与真实任务验证，而不是作为独立产品主线继续扩展。
@@ -42,6 +62,7 @@ Survival Dynamics、Digital Immune Architecture 或 TITMAS 内部理论，除非
 |---|---|
 | 项目群方向与优先级 | 本 DBA Program Governance Cockpit 记录 |
 | 红岩公文源码与运行状态 | `joy7758/hongyan-official-document` |
+| 红岩公文后续执行决定 | 独立红岩专用对话与红岩产品仓库授权链 |
 | Digital Cell Demo 冻结实现与发布 | `joy7758/titmas-demo` |
 | 当前公开产品入口 | <https://dcell.net> |
 
@@ -50,4 +71,6 @@ NEW_WORK_GATE=NEW_WORK_DIRECTLY_SUPPORTS_RED_YAN_OFFICIAL_DOCUMENT_OR_IS_REQUIRE
 ACTIVE_FEATURE_DEVELOPMENT_AUTHORIZED_BY_THIS_RECORD=false
 RELEASE_AUTHORIZED_BY_THIS_RECORD=false
 DEPLOYMENT_AUTHORIZED_BY_THIS_RECORD=false
+RED_YAN_PRODUCT_CHANGE_AUTHORIZED_BY_THIS_RECORD=false
+RED_YAN_RUNTIME_CHANGE_AUTHORIZED_BY_THIS_RECORD=false
 ```
