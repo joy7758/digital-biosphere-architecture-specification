@@ -1,9 +1,17 @@
-# Trusted Multi-Agent Infrastructure Website
+# Historical Trusted Multi-Agent Infrastructure Website
 
-中英文双语、agent-readable（智能体可读）的 Trusted Multi-Agent
-Infrastructure（可信多智能体基础设施）公开门户。
+本目录保存曾发布在 `redcrag.cn` 的中英文、agent-readable（智能体可读）Trusted
+Multi-Agent Infrastructure（可信多智能体基础设施）门户源码。它现在是历史网站资产，
+不再是当前公开入口；当前权威域名是 `https://dcell.net`，当前产品是红岩公文。
 
-## Truth status
+```text
+SITE_ROLE=LEGACY_HISTORICAL_SITE_SOURCE
+CURRENT_CANONICAL_DOMAIN=https://dcell.net
+REDCRAG_CN_ROLE=LEGACY_HISTORICAL_DOMAIN
+ACTIVE_DEPLOYMENT_AUTHORIZED=false
+```
+
+## Historical publication truth status
 
 ```text
 SITE_IMPLEMENTED=true

@@ -13,6 +13,24 @@ discovery, interoperability and verification. They do not imply an open-source
 core, public contribution route, developer community, formal standard,
 certification or immediate service access.
 
+## Current engineering direction
+
+The current primary product and engineering line is 红岩公文. Its public entry
+is <https://dcell.net>. DCell and TITMAS remain supporting architecture,
+trust, evidence, and compatibility layers; they are not independent active
+development mainlines.
+
+- [Current project direction](digital-biosphere-architecture/CURRENT-PROJECT-DIRECTION-2026-08-28.md)
+- [State reconciliation report](digital-biosphere-architecture/PROJECT-STATE-RECONCILIATION-2026-08-28.md)
+
+```text
+PRIMARY_ACTIVE_PROJECT=红岩公文
+PRIMARY_ENGINEERING_DIRECTION=红岩公文
+CURRENT_CANONICAL_DOMAIN=https://dcell.net
+INFRASTRUCTURE_SUPPORTS_PRODUCT=true
+PRODUCT_EXISTS_TO_PROVE_THEORY=false
+```
+
 Start at the canonical human entry:
 
 - [`digital-biosphere-architecture/TITMAS/README.md`](digital-biosphere-architecture/TITMAS/README.md)
@@ -35,6 +53,8 @@ source-availability, contribution or community authority.
 
 ```text
 CURRENT_STRATEGY=COMMERCIAL_PRIVATE_INFRASTRUCTURE
+CURRENT_STRATEGY_ROLE=SUPPORTING_INFRASTRUCTURE
+PRIMARY_ACTIVE_PROJECT=红岩公文
 PRIVATE_CORE_IS_CANONICAL=true
 PUBLIC_INTEROPERABILITY_SURFACES_RETAINED=true
 PUBLIC_SURFACE_NE_OPEN_SOURCE_CORE=true
