@@ -1,7 +1,7 @@
 # Project State Reconciliation — 2026-08-28
 
 ```text
-PROJECT_STATE_RECONCILIATION=PASS_WITH_RECORDED_LIMITATIONS
+PROJECT_STATE_RECONCILIATION=PARTIAL_PASS_COCKPIT_MERGE_BLOCKED
 PRIMARY_ACTIVE_PROJECT=红岩公文
 PRIMARY_ENGINEERING_DIRECTION=红岩公文
 CURRENT_CANONICAL_DOMAIN=https://dcell.net
@@ -27,8 +27,8 @@ Survival、Digital Immune、Multi-Cell 和新 TITMAS Runtime 工作默认暂停�
 
 | Scope | Observed source state | Changes in this reconciliation |
 |---|---|---|
-| Digital Cell Demo | `joy7758/titmas-demo`, public, `origin/main@2bc410b5ea88dea6a0d7deb8f15d8dde67280f26` | Current README/checklist contradiction correction; one current-state index; existing Release body and repository homepage metadata corrected |
-| DBA cockpit | `joy7758/digital-biosphere-architecture-specification`, private, `origin/main@40a4b34370578e665767d9ba9a85dca205876b0f` | Current direction, human/machine entry, legacy-site classification, final report, and documentation-only test allowlist |
+| Digital Cell Demo | `joy7758/titmas-demo`, public, `origin/main@2bc410b5ea88dea6a0d7deb8f15d8dde67280f26` | Current README/checklist contradiction correction; one current-state index; existing Release body and repository homepage metadata corrected; PR #5 merged |
+| DBA cockpit | `joy7758/digital-biosphere-architecture-specification`, private, `origin/main@40a4b34370578e665767d9ba9a85dca205876b0f` | Current direction, human/machine entry, legacy-site classification, final report, and documentation-only test allowlist; PR #148 remains open because dependency audit failed |
 | 红岩公文 | `joy7758/hongyan-official-document`, private; canonical reconciliation branch `875b706edbf687b53df6f39ed73e21e87922aef3` | Read-only; GitHub homepage metadata set to `https://dcell.net`; no source, runtime, deployment, feature, or status-record change |
 | Current public site | `https://dcell.net` redirects to `/pilot`; source/runtime ownership remains with 红岩公文 | No visual, branding, architecture, deployment, or redirect change |
 
@@ -46,6 +46,9 @@ DIGITAL_CELL_FROZEN_SOURCE_CONSISTENCY=PASS
 DIGITAL_CELL_FROZEN_OUTPUT_CONSISTENCY=PASS
 DBA_CONFORMANCE=PASS
 DBA_UNIT_TESTS=147/147_PASS
+DBA_CI_CONFORMANCE=2/2_PASS
+DBA_CI_DEPENDENCY_AUDIT=FAIL_2_HIGH_NANOID_VIA_POSTCSS
+DBA_PR_148_MERGED=false
 RED_YAN_STATUS_ARTIFACTS_PARSE=PASS
 RED_YAN_GIT_FSCK=PASS_NO_CORRUPTION
 DCELL_NET_ROOT_GET=200_AT_HTTPS://DCELL.NET/PILOT
@@ -63,19 +66,24 @@ and the complete rerun passed 147/147.
 
 The count scope is the two changed repositories at their `origin/main` baselines plus current
 GitHub repository homepage metadata. Baseline source contained 568 case-insensitive
-`redcrag.cn` occurrences. Nine current-surface occurrence locations were corrected or explicitly
-reclassified; 559 historical occurrences remained byte-untouched. Two additional stale GitHub
-homepage references were corrected.
+`redcrag.cn` occurrences: 556 were already historical, while 12 appeared on current surfaces.
+Two repository homepage references were also current, for 14 stale current references in total.
+
+The merged Demo correction and two live GitHub metadata corrections close 3. The DBA candidate
+branch closes the remaining 11, but those corrections are not current `main` truth until PR #148
+passes CI and merges.
 
 ```text
-CURRENT_REDCRAG_REFERENCES=0
-HISTORICAL_REFERENCES_PRESERVED=559
-STALE_CURRENT_REFERENCES_FIXED=11
-UNRESOLVED_REFERENCES=0
+CURRENT_REDCRAG_REFERENCES=11
+HISTORICAL_REFERENCES_PRESERVED=556
+STALE_CURRENT_REFERENCES_FIXED=3
+STALE_CURRENT_REFERENCES_FIXED_IN_OPEN_PR=11
+UNRESOLVED_REFERENCES=11
 ```
 
-`UNRESOLVED_REFERENCES=0` means no audited current surface still treats RedCrag as canonical. It
-does not mean that current `dcell.net` exposes equivalent TITMAS or Digital Cell endpoints.
+The candidate branch itself has zero current RedCrag references in the audited surfaces. The
+nonzero current count above reflects the unmerged DBA `main` state, not a claim that the candidate
+still treats RedCrag as canonical.
 
 ## Unresolved factual issues
 
@@ -91,6 +99,10 @@ does not mean that current `dcell.net` exposes equivalent TITMAS or Digital Cell
    document toolchain lock. The brand deployment receipt commit `9287c8ae9d507bdf4c4769c5e255dda4210198e8`
    still has no corresponding remote branch, so that evidence lineage remains incomplete.
 4. Production readiness, real customer validation, `main` merge, and `v1.0.0` tag remain false.
+5. DBA PR #148 has two passing conformance checks, but its site build fails `npm audit --omit=dev`
+   on two high-severity findings in the existing `postcss` to `nanoid <3.3.18` dependency chain.
+   This reconciliation changed no package or lock file. Dependency repair is a separate security
+   change and was not authorized by this state-only goal, so the PR was not bypassed or merged.
 
 ## Exact next action for 红岩公文
 
