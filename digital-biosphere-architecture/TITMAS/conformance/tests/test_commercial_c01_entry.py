@@ -175,16 +175,19 @@ def forbidden_change_reason(paths):
         "digital-biosphere-architecture/commercial-readiness.json",
         "digital-biosphere-architecture/COMMERCIAL-READINESS-MACHINE-STATUS.json",
         "digital-biosphere-architecture/COMMERCIAL-READINESS-REPORT-v1.md",
+        "digital-biosphere-architecture/CURRENT-PROJECT-DIRECTION-2026-08-28.md",
         "digital-biosphere-architecture/D29-DATA-LIFECYCLE-COCKPIT-SYNC-REPORT-v1.0.md",
         "digital-biosphere-architecture/D29-TERMINAL-CONSISTENCY-AUDIT-v1.0.md",
         "digital-biosphere-architecture/D29-SECURITY-DRILL-READINESS-COCKPIT-SYNC-v1.0.md",
         "digital-biosphere-architecture/D29-SECURITY-FINDINGS-DISPOSITION-COCKPIT-SYNC-v1.0.md",
         "digital-biosphere-architecture/DBA-TITMAS-CONSTITUTION-COHERENT-UPGRADE-COMPLETION-REPORT-v0.1.md",
+        "digital-biosphere-architecture/PROJECT-STATE-RECONCILIATION-2026-08-28.md",
         "digital-biosphere-architecture/RISK-AND-BLOCKER-REGISTER.md",
         "digital-biosphere-architecture/portfolio/canonical-reuse-audit-d29.json",
         "digital-biosphere-architecture/portfolio/product-catalog.internal.json",
         "digital-biosphere-architecture/research/competitive/CONSOLE-INFORMATION-ARCHITECTURE.md",
         "digital-biosphere-architecture/site/app/site-content.ts",
+        "digital-biosphere-architecture/site/README.md",
         "digital-biosphere-architecture/site/public/llms.txt",
     }
     approved_website = approved_website_paths()
@@ -399,8 +402,13 @@ class CommercialC01EntryTests(unittest.TestCase):
             path for path in current_change_paths()
             if path.startswith("digital-biosphere-architecture/site/")
         }
-        if changed_site_paths:
-            self.assertEqual(approved_site_paths, changed_site_paths)
+        documentation_only_site_paths = {
+            "digital-biosphere-architecture/site/README.md",
+        }
+        changed_site_implementation_paths = changed_site_paths - documentation_only_site_paths
+        if changed_site_implementation_paths:
+            self.assertEqual(approved_site_paths, changed_site_implementation_paths)
+        self.assertTrue(changed_site_paths <= approved_site_paths | documentation_only_site_paths)
         # The original C-01 integration changed at least 40 paths, but that
         # historical batch size is not a permanent conformance invariant.
         # Future path-scoped governance updates must still have a visible diff

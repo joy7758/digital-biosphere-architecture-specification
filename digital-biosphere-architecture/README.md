@@ -41,15 +41,20 @@ research_agent_implementation_contract_adopted: false
 research_agent_implementation_authorized: false
 public_positioning_defined: true
 public_positioning: Trusted Multi-Agent Infrastructure
-public_website_local_build_created: true
-public_website_local_build_validated: true
-public_website_deployed: true
-public_website_url: https://redcrag.cn/
+current_canonical_public_domain: https://dcell.net/
+current_public_product: 红岩公文
+current_public_product_entry: https://dcell.net/pilot
+current_public_site_source_repository_owned_here: false
+historical_public_website_local_build_created: true
+historical_public_website_local_build_validated: true
+historical_public_website_deployed: true
+historical_public_website_url: https://redcrag.cn/
+historical_public_website_role: legacy-historical-domain
 public_website_deployment_state: developer-preview-v0.1-released
-public_website_health_pass: true
-public_website_rollback_validated: true
-public_website_github_prerelease_published: true
-public_website_github_prerelease_tag: v0.1-public-website-candidate.7
+historical_public_website_health_pass: true
+historical_public_website_rollback_validated: true
+historical_public_website_github_prerelease_published: true
+historical_public_website_github_prerelease_tag: v0.1-public-website-candidate.7
 developer_preview_stage_accepted: true
 developer_preview_release_status: released-not-production-ready
 developer_preview_release_authorized: true
@@ -144,7 +149,25 @@ Digital Biosphere Architecture（数字生物圈架构，简称 DBA）是整个 
 
 ## Current Program Mainline（当前项目主线）
 
-### D04 closure and final-form adoption audit
+当前工程主线是红岩公文，当前公开权威域名是
+[`https://dcell.net`](https://dcell.net)。DCell 提供持续主体架构，TITMAS 与 Evidence
+提供边界、执行证据、审查和可验证历史；它们不是当前独立开发主线。
+
+```text
+PRIMARY_ACTIVE_PROJECT=红岩公文
+PRIMARY_ENGINEERING_DIRECTION=红岩公文
+CURRENT_CANONICAL_DOMAIN=https://dcell.net
+DCELL_ROLE=SUPPORTING_ARCHITECTURE_AND_LONG_TERM_RESEARCH_LAYER
+TITMAS_ROLE=SUPPORTING_TRUST_AND_EVIDENCE_INFRASTRUCTURE
+INFRASTRUCTURE_SUPPORTS_PRODUCT=true
+PRODUCT_EXISTS_TO_PROVE_THEORY=false
+```
+
+当前方向记录见
+[`CURRENT-PROJECT-DIRECTION-2026-08-28.md`](CURRENT-PROJECT-DIRECTION-2026-08-28.md)。
+下述 D04 与 TITMAS 商业材料是保留的历史项目状态，不再定义当前工程优先级。
+
+### Historical TITMAS D04 closure and final-form adoption audit
 
 D04 已在三次真实失败后关闭，PR #36 保持关闭未合并。旧 1,661 条 Receipt
 永久属于内部实验账本；未来生产账本只允许在 Paid Beta 另行授权后建立独立
@@ -318,9 +341,9 @@ Digital Biosphere 是总项目；`Trusted Multi-Agent Infrastructure`（可信�
 SAEE 和 Digital Entities 仍是同一项目群内相互分离的责任域，商业入口不替代任何责任域，
 也不创建第二套 Architecture Authority。
 
-网站 [`https://redcrag.cn/`](https://redcrag.cn/) 提供完整中英文与机器可读入口，国内
-访问者不需要依赖 GitHub 才能理解产品定位、公共接口范围、当前状态、底层架构和技术
-验证计划。
+当前公开产品入口是 [`https://dcell.net`](https://dcell.net)。截至 2026-08-28，
+该域名没有 TITMAS 的公开机器发现或商业 API 路径；不得把历史 RedCrag 门户端点改写成
+当前 `dcell.net` 能力。旧 RedCrag 网站实现及部署记录仅作为历史证据保留。
 
 ### TITMAS Commercial Focus（TITMAS 商业重心）
 
