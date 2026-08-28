@@ -11,8 +11,8 @@ from http.client import IncompleteRead
 from pathlib import Path
 from typing import Any, Callable
 from urllib.error import HTTPError, URLError
-from urllib.parse import quote
-from urllib.request import Request, urlopen
+from urllib.parse import quote, urlparse
+from urllib.request import HTTPRedirectHandler, Request, build_opener
 
 from .source_result import (
     AVAILABLE,
@@ -30,6 +30,33 @@ ALLOWLIST = {
     "TITMAC_SCOUT": "joy7758/titmac-scout",
 }
 
+SENSITIVE_REDIRECT_HEADERS = frozenset(
+    {"authorization", "proxy-authorization", "cookie", "cookie2"}
+)
+
+
+class ReadOnlyRedirectHandler(HTTPRedirectHandler):
+    """Follow HTTPS redirects without forwarding credentials across origins."""
+
+    @staticmethod
+    def _origin(url: str) -> tuple[str, str | None, int | None]:
+        parsed = urlparse(url)
+        default_port = 443 if parsed.scheme.lower() == "https" else 80
+        return parsed.scheme.lower(), parsed.hostname, parsed.port or default_port
+
+    def redirect_request(self, req, fp, code, msg, headers, newurl):
+        redirected = super().redirect_request(req, fp, code, msg, headers, newurl)
+        if redirected is None:
+            return None
+        if urlparse(redirected.full_url).scheme.lower() != "https":
+            raise ValueError("GITHUB_REDIRECT_HTTPS_REQUIRED")
+        if self._origin(req.full_url) != self._origin(redirected.full_url):
+            for mapping in (redirected.headers, redirected.unredirected_hdrs):
+                for name in list(mapping):
+                    if name.lower() in SENSITIVE_REDIRECT_HEADERS:
+                        del mapping[name]
+        return redirected
+
 
 class GithubApi:
     """Minimal GitHub API reader. Only GET is exposed."""
@@ -37,11 +64,11 @@ class GithubApi:
     def __init__(
         self,
         token: str | None = None,
-        opener: Callable[..., Any] = urlopen,
+        opener: Callable[..., Any] | None = None,
         api_root: str = "https://api.github.com",
     ) -> None:
         self._token = token or ""
-        self._opener = opener
+        self._opener = opener or build_opener(ReadOnlyRedirectHandler()).open
         self._api_root = api_root.rstrip("/")
 
     def _request(self, reference: str) -> Request:
