@@ -2,6 +2,23 @@ name: DBA Weekly Cockpit Candidate
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: Observation mode
+        required: true
+        default: live-read-only-pilot
+        type: choice
+        options:
+          - live-read-only-pilot
+          - demo
+      pilot_sequence:
+        description: Authorized pilot sequence
+        required: true
+        default: first
+        type: choice
+        options:
+          - first
+          - second
   schedule:
     - cron: "0 1 * * 1"
 
@@ -16,7 +33,7 @@ jobs:
   candidate:
     if: github.event_name == 'workflow_dispatch' || vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED == 'true'
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout exact source
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
@@ -25,17 +42,38 @@ jobs:
       - name: Run weekly cockpit tests
         working-directory: digital-biosphere-architecture
         run: python3 -m unittest discover -s cockpit/weekly/tests -v
-      - name: Generate read-only candidate bundle
+      - name: Generate bounded read-only bundle
         working-directory: digital-biosphere-architecture
-        run: python3 cockpit/weekly/run_weekly.py --output-dir /tmp/dba-weekly-cockpit
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DBA_COCKPIT_READ_TOKEN: ${{ secrets.DBA_COCKPIT_READ_TOKEN }}
+          COCKPIT_MODE: ${{ inputs.mode || 'demo' }}
+          PILOT_SEQUENCE: ${{ inputs.pilot_sequence || 'first' }}
+        run: |
+          python3 cockpit/weekly/run_weekly.py             --mode "$COCKPIT_MODE"             --pilot-sequence "$PILOT_SEQUENCE"             --output-dir /tmp/dba-weekly-cockpit
       - name: Write GitHub Actions Summary
         run: cat /tmp/dba-weekly-cockpit/latest.md >> "$GITHUB_STEP_SUMMARY"
-      - name: Upload candidate artifact bundle
-        uses: actions/upload-artifact@v4
+      - name: Upload live pilot artifact bundle
+        if: inputs.mode == 'live-read-only-pilot'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: dba-weekly-cockpit-candidate
+          name: dba-weekly-cockpit-live-pilot-${{ github.run_id }}
           path: |
             /tmp/dba-weekly-cockpit/latest.json
+            /tmp/dba-weekly-cockpit/latest.md
+            /tmp/dba-weekly-cockpit/dashboard.html
+            /tmp/dba-weekly-cockpit/cell-run-summary.json
+            /tmp/dba-weekly-cockpit/source-observation-summary.json
+            /tmp/dba-weekly-cockpit/pilot-boundary-report.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Upload deterministic demo artifact bundle
+        if: inputs.mode == 'demo'
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: dba-weekly-cockpit-demo-${{ github.run_id }}
+          path: |
+            /tmp/dba-weekly-cockpit/weekly-snapshot-2026-W35.json
             /tmp/dba-weekly-cockpit/latest.md
             /tmp/dba-weekly-cockpit/dashboard.html
             /tmp/dba-weekly-cockpit/cell-run-summary.json

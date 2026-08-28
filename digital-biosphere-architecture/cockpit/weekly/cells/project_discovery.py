@@ -12,6 +12,8 @@ class ProjectDiscoveryCell(WeeklyCell):
 
     def _run(self, context: dict[str, Any]):
         as_of = context.get("as_of", "UNKNOWN")
+        live_mode = context.get("snapshot_mode") == "LIVE_READ_ONLY_OBSERVATION_PILOT"
+        source_observations = context.get("source_observations", {})
         registry = source_value(
             context,
             "project_registry",
@@ -20,6 +22,20 @@ class ProjectDiscoveryCell(WeeklyCell):
         entries = registry.get("projects", registry.get("entries", [])) if isinstance(registry, dict) else registry
         project_records: list[dict[str, Any]] = []
         for item in entries or []:
+            observation = source_observations.get(item["project_id"], {})
+            observation_status = observation.get("status")
+            if observation_status == "AVAILABLE":
+                source_label = "LIVE"
+                why = "已获得限定范围的实时只读来源观察；该观察不构成项目验收。"
+            elif observation_status == "SOURCE_DRIFT":
+                source_label = "STALE"
+                why = "声明来源与实时来源发生漂移，当前状态按失败关闭处理。"
+            elif live_mode:
+                source_label = "NOT_ASSESSED"
+                why = "实时来源不可用或凭据不可用；未评估不等于正常。"
+            else:
+                source_label = "RETAINED_SNAPSHOT"
+                why = "已登记项目身份与保留来源，状态等待有边界的分析 Cell 更新。"
             project_records.append(
                 {
                     "project_id": item["project_id"],
@@ -28,11 +44,15 @@ class ProjectDiscoveryCell(WeeklyCell):
                     "owner_conversation": item.get("owner_conversation", "UNKNOWN"),
                     "source_reference": item.get("canonical_source_ref", "UNKNOWN"),
                     "source_access_mode": item.get("source_access_mode", "READ_ONLY"),
+                    "source_label": source_label,
+                    "source_observation_status": observation_status or "RETAINED_SNAPSHOT",
                     "status": "NOT_ASSESSED",
                     "status_zh": "尚未评估",
-                    "why_zh": "已登记项目身份与来源，状态等待有边界的分析 Cell 更新。",
+                    "why_zh": why,
                     "attention_zh": "未评估不等于正常。",
-                    "technical_evidence": [item.get("canonical_source_ref", "UNKNOWN")],
+                    "technical_evidence": [
+                        observation.get("source_reference", item.get("canonical_source_ref", "UNKNOWN"))
+                    ],
                 }
             )
 

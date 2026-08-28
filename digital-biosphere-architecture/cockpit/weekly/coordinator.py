@@ -8,18 +8,32 @@ from datetime import datetime
 from pathlib import Path
 from typing import Any
 
-from contracts import CellResult
-from cells.drift import DriftCell
-from cells.environment_discovery import EnvironmentDiscoveryCell
-from cells.evidence_admission import EvidenceAdmissionCell
-from cells.handoff import HandoffCell
-from cells.human_view import HumanViewCell
-from cells.memory import MemoryCell
-from cells.project_discovery import ProjectDiscoveryCell
-from cells.quality import QualityCell
-from cells.relationship_discovery import RelationshipDiscoveryCell
-from cells.security import SecurityCell
-from cells.upgrade import UpgradeCell
+try:
+    from .contracts import CellResult
+    from .cells.drift import DriftCell
+    from .cells.environment_discovery import EnvironmentDiscoveryCell
+    from .cells.evidence_admission import EvidenceAdmissionCell
+    from .cells.handoff import HandoffCell
+    from .cells.human_view import HumanViewCell
+    from .cells.memory import MemoryCell
+    from .cells.project_discovery import ProjectDiscoveryCell
+    from .cells.quality import QualityCell
+    from .cells.relationship_discovery import RelationshipDiscoveryCell
+    from .cells.security import SecurityCell
+    from .cells.upgrade import UpgradeCell
+except ImportError:  # Direct execution from cockpit/weekly/run_weekly.py.
+    from contracts import CellResult
+    from cells.drift import DriftCell
+    from cells.environment_discovery import EnvironmentDiscoveryCell
+    from cells.evidence_admission import EvidenceAdmissionCell
+    from cells.handoff import HandoffCell
+    from cells.human_view import HumanViewCell
+    from cells.memory import MemoryCell
+    from cells.project_discovery import ProjectDiscoveryCell
+    from cells.quality import QualityCell
+    from cells.relationship_discovery import RelationshipDiscoveryCell
+    from cells.security import SecurityCell
+    from cells.upgrade import UpgradeCell
 
 
 class WeeklyCoordinator:
@@ -47,7 +61,8 @@ class WeeklyCoordinator:
     ) -> dict[str, Any]:
         working = dict(context)
         results: list[CellResult] = []
-        discovery_unavailable = False
+        discovery_failure_count = 0
+        deterministic = bool(context.get("deterministic"))
 
         for cell_type in self.cell_types:
             cell = cell_type()
@@ -64,8 +79,11 @@ class WeeklyCoordinator:
                     reason_code=reason,
                     exception_summary=f"{type(exc).__name__}: {exc}",
                 )
-                discovery_unavailable = discovery_unavailable or reason == "DISCOVERY_UNAVAILABLE"
-            result.duration_ms = max(0, round((time.monotonic() - started) * 1000))
+                if reason == "DISCOVERY_UNAVAILABLE":
+                    discovery_failure_count += 1
+            result.duration_ms = (
+                0 if deterministic else max(0, round((time.monotonic() - started) * 1000))
+            )
             results.append(result)
             self._merge_result(working, result)
 
@@ -76,7 +94,7 @@ class WeeklyCoordinator:
                 {"cell_id": "WEEKLY_COORDINATOR_CELL", "status": "PASS", "duration_ms": 0},
             ]
         )
-        snapshot = self._snapshot(working, provisional_runs, discovery_unavailable)
+        snapshot = self._snapshot(working, provisional_runs, discovery_failure_count)
         output_dir.mkdir(parents=True, exist_ok=True)
 
         human_started = time.monotonic()
@@ -97,7 +115,9 @@ class WeeklyCoordinator:
                 reason_code="CELL_FAILURE",
                 exception_summary=f"{type(exc).__name__}: {exc}",
             )
-        human_result.duration_ms = max(0, round((time.monotonic() - human_started) * 1000))
+        human_result.duration_ms = (
+            0 if deterministic else max(0, round((time.monotonic() - human_started) * 1000))
+        )
         results.append(human_result)
 
         coordinator_result = CellResult(
@@ -204,7 +224,7 @@ class WeeklyCoordinator:
         self,
         context: dict[str, Any],
         cell_runs: list[dict[str, Any]],
-        discovery_unavailable: bool,
+        discovery_failure_count: int,
     ) -> dict[str, Any]:
         projects = self._projects(context)
         discoveries = list(context.get("discovery_records", []))
@@ -217,8 +237,11 @@ class WeeklyCoordinator:
             status = project.get("status", "NOT_ASSESSED")
             status_counts[status] = status_counts.get(status, 0) + 1
 
-        if discovery_unavailable:
+        discovery_state = self.classify_discovery_failures(discovery_failure_count)
+        if discovery_state == "DISCOVERY_UNAVAILABLE":
             overall_status = "DISCOVERY_UNAVAILABLE"
+        elif discovery_state == "PARTIAL_DISCOVERY_NOT_ASSESSED":
+            overall_status = "PARTIAL_DISCOVERY_NOT_ASSESSED"
         elif status_counts.get("NOT_ASSESSED", 0) or status_counts.get("BLIND_SPOT", 0):
             overall_status = "PASS_WITH_NOT_ASSESSED"
         elif status_counts.get("ATTENTION", 0):
@@ -245,6 +268,12 @@ class WeeklyCoordinator:
             "rejected_or_pending_count": admission.get("rejected_or_pending_count", 0),
             "decisions": len(decisions),
             "blind_spots": len(blind_spots),
+            "live_source_success": context.get("source_observation_summary", {}).get(
+                "live_source_success_count", 0
+            ),
+            "source_not_assessed": context.get("source_observation_summary", {}).get(
+                "not_assessed_count", 0
+            ),
         }
         weekly_sentence = (
             f"本周共纳入{counts['projects']}个项目视图：{counts['stable']}个稳定，"
@@ -260,7 +289,9 @@ class WeeklyCoordinator:
             "week": week,
             "observed_at": observed_at,
             "overall_status": overall_status,
-            "mode": "PROTOTYPE_READ_ONLY_CANDIDATE",
+            "mode": context.get("snapshot_mode", "PROTOTYPE_READ_ONLY_CANDIDATE"),
+            "discovery_state": discovery_state,
+            "discovery_failure_count": discovery_failure_count,
             "weekly_sentence_zh": weekly_sentence,
             "counts": counts,
             "cell_runs": cell_runs,
@@ -278,6 +309,8 @@ class WeeklyCoordinator:
             "handoff_packets": context.get("handoff_packets", []),
             "logical_cells": list(cell_runs),
             "source_references": context.get("source_paths", {}),
+            "run_identity": context.get("run_identity", {}),
+            "source_observation_summary": context.get("source_observation_summary", {}),
             "memory": context.get("memory", {"status": "NOT_ASSESSED"}),
             "admission_summary": admission,
             "dependency_audit_state": context.get(
@@ -293,8 +326,20 @@ class WeeklyCoordinator:
                 "auto_pr": False,
                 "auto_merge": False,
                 "auto_deploy": False,
+                "prototype_only": context.get("snapshot_mode") != "LIVE_READ_ONLY_OBSERVATION_PILOT",
+                "pilot_only": context.get("snapshot_mode") == "LIVE_READ_ONLY_OBSERVATION_PILOT",
+                "schedule_enabled": False,
+                "source_mutation": bool(context.get("source_mutation", False)),
             },
         }
+
+    @staticmethod
+    def classify_discovery_failures(failure_count: int) -> str:
+        if failure_count == 0:
+            return "AVAILABLE"
+        if failure_count in {1, 2}:
+            return "PARTIAL_DISCOVERY_NOT_ASSESSED"
+        return "DISCOVERY_UNAVAILABLE"
 
     @staticmethod
     def _projects(context: dict[str, Any]) -> list[dict[str, Any]]:

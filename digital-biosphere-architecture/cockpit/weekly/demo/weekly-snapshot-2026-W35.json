@@ -31,7 +31,11 @@
     "auto_pr": false,
     "new_control_plane": false,
     "new_truth_source": false,
+    "pilot_only": false,
+    "prototype_only": true,
     "read_only": true,
+    "schedule_enabled": false,
+    "source_mutation": false,
     "view_not_truth": true
   },
   "cell_runs": [
@@ -97,7 +101,7 @@
     },
     {
       "cell_id": "HUMAN_VIEW_CELL",
-      "duration_ms": 1,
+      "duration_ms": 0,
       "status": "PASS",
       "summary": "Standalone HTML and Markdown were rendered from the standardized snapshot only."
     },
@@ -126,9 +130,11 @@
     "blind_spots": 2,
     "decisions": 2,
     "discovered_count": 6,
+    "live_source_success": 0,
     "not_assessed": 1,
     "projects": 5,
     "rejected_or_pending_count": 5,
+    "source_not_assessed": 0,
     "stable": 2
   },
   "decisions": [
@@ -290,6 +296,8 @@
       "title_zh": "TITMAS 支撑层与数字细胞演示的声明关系"
     }
   ],
+  "discovery_failure_count": 0,
+  "discovery_state": "AVAILABLE",
   "findings": [
     {
       "authorization": "NONE",
@@ -406,7 +414,7 @@
     },
     {
       "cell_id": "HUMAN_VIEW_CELL",
-      "duration_ms": 1,
+      "duration_ms": 0,
       "status": "PASS",
       "summary": "Standalone HTML and Markdown were rendered from the standardized snapshot only."
     },
@@ -417,6 +425,10 @@
     }
   ],
   "memory": {
+    "ARTIFACT_FROM_CURRENT_RUN_REJECTED": null,
+    "FAILED_OR_EXPIRED_ARTIFACT_REJECTED": null,
+    "MEMORY_COMPARISON_EXECUTED": false,
+    "PREVIOUS_LIVE_ARTIFACT_LOADED": false,
     "note_zh": "首次快照，尚不能判断这些信号是否相对于上周新增。",
     "previous_snapshot_reference": null,
     "status": "NOT_ASSESSED_NO_PREVIOUS_SNAPSHOT",
@@ -437,7 +449,9 @@
       "lifecycle_mode": "ACTIVE",
       "owner_conversation": "DBA 专用对话",
       "project_id": "DBA_COCKPIT",
-      "source_access_mode": "LOCAL_CANONICAL_SNAPSHOT_READ_ONLY",
+      "source_access_mode": "GITHUB_API_CURRENT_REPOSITORY_READ_ONLY",
+      "source_label": "RETAINED_SNAPSHOT",
+      "source_observation_status": "RETAINED_SNAPSHOT",
       "source_reference": "CURRENT-PROJECT-DIRECTION-2026-08-28.md",
       "status": "ATTENTION",
       "status_zh": "依赖审计状态待复核",
@@ -452,7 +466,9 @@
       "lifecycle_mode": "ACTIVE",
       "owner_conversation": "红岩公文专用对话",
       "project_id": "RED_YAN_OFFICIAL_DOCUMENT",
-      "source_access_mode": "DBA_EXISTING_INVESTIGATION_SNAPSHOT_ONLY_READ_ONLY",
+      "source_access_mode": "CROSS_REPOSITORY_CREDENTIAL_GATED_READ_ONLY",
+      "source_label": "RETAINED_SNAPSHOT",
+      "source_observation_status": "RETAINED_SNAPSHOT",
       "source_reference": "RED-YAN-REMOTE-RUNTIME-EVIDENCE-SNAPSHOT-2026-08-28.json",
       "status": "STABLE",
       "status_zh": "当前主线稳定",
@@ -467,7 +483,9 @@
       "lifecycle_mode": "SUPPORTING",
       "owner_conversation": "TITMAS 专用对话",
       "project_id": "TITMAS_SUPPORTING_LAYER",
-      "source_access_mode": "LOCAL_CANONICAL_SNAPSHOT_READ_ONLY",
+      "source_access_mode": "GITHUB_API_PUBLIC_REPOSITORY_READ_ONLY",
+      "source_label": "RETAINED_SNAPSHOT",
+      "source_observation_status": "RETAINED_SNAPSHOT",
       "source_reference": "PROJECT-STATE-RECONCILIATION-2026-08-28.md",
       "status": "NOT_ASSESSED",
       "status_zh": "升级状态未评估",
@@ -482,7 +500,9 @@
       "lifecycle_mode": "FROZEN",
       "owner_conversation": "Digital Cell Demo 专用对话",
       "project_id": "DIGITAL_CELL_DEMO",
-      "source_access_mode": "LOCAL_CANONICAL_SNAPSHOT_READ_ONLY",
+      "source_access_mode": "GITHUB_API_PUBLIC_REPOSITORY_READ_ONLY",
+      "source_label": "RETAINED_SNAPSHOT",
+      "source_observation_status": "RETAINED_SNAPSHOT",
       "source_reference": "CURRENT-PROJECT-DIRECTION-2026-08-28.md",
       "status": "STABLE",
       "status_zh": "参考演示稳定",
@@ -498,6 +518,8 @@
       "owner_conversation": "TITMAC Scout 专用对话",
       "project_id": "TITMAC_SCOUT",
       "source_access_mode": "EXISTING_READ_ONLY_STATUS_ADAPTER",
+      "source_label": "RETAINED_SNAPSHOT",
+      "source_observation_status": "RETAINED_SNAPSHOT",
       "source_reference": "cockpit/source-registry.json#titmac-scout",
       "status": "BLIND_SPOT",
       "status_zh": "检查盲区",
@@ -507,8 +529,14 @@
       "why_zh": "当前只读状态来源缺少足够新鲜度，不能据此判定项目正常或异常。"
     }
   ],
+  "run_identity": {},
   "schema_version": "0.1",
   "snapshot_id": "DBA-WEEKLY-2026-W35",
+  "source_observation_summary": {
+    "live_source_success_count": 0,
+    "not_assessed_count": 0,
+    "source_mode": "RETAINED_SNAPSHOT"
+  },
   "source_references": {
     "component_matrix": "titmas-component-adoption-matrix-v1.0.json",
     "convergence": "titmas-commercial-product-convergence-status-v1.0.json",

@@ -7,16 +7,18 @@
   "class": "Memory_CellCell",
   "inputs": [
     "current-snapshot",
-    "previous-snapshot"
+    "previous-live-artifact"
   ],
   "outputs": [
     "lifecycle-delta"
   ],
   "source_dependencies": [
+    "github-actions-read-only-artifact-memory",
     "cockpit/weekly/history"
   ],
   "evidence_requirements": [
-    "immutable-week-id"
+    "stable-finding-identity",
+    "successful-main-artifact"
   ],
   "freshness_policy": "NOT_ASSESSED_WITHOUT_PREVIOUS",
   "authority_boundaries": {

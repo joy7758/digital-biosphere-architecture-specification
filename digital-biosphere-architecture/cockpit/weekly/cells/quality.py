@@ -11,6 +11,27 @@ class QualityCell(WeeklyCell):
     cell_id = "QUALITY_CELL"
 
     def _run(self, context: dict[str, Any]):
+        if context.get("snapshot_mode") == "LIVE_READ_ONLY_OBSERVATION_PILOT":
+            observation = context.get("source_observations", {}).get("DIGITAL_CELL_DEMO", {})
+            available = observation.get("status") == "AVAILABLE"
+            updates = [{
+                "project_id": "DIGITAL_CELL_DEMO",
+                "status": "OBSERVED" if available else "NOT_ASSESSED",
+                "status_zh": "已实时观察" if available else "来源未评估",
+                "source_label": "LIVE" if available else "NOT_ASSESSED",
+                "why_zh": (
+                    "已读取公开仓库 HEAD、近期 CI 与发布元数据。"
+                    if available else "公开仓库实时观察未完成。"
+                ),
+                "attention_zh": "该观察不构成生产就绪、认证或部署结论。",
+                "technical_evidence": [observation.get("source_reference", "UNKNOWN")],
+            }]
+            return make_result(
+                self.cell_id,
+                "PASS" if available else "NOT_ASSESSED",
+                "Digital Cell public metadata was interpreted without certification claims.",
+                outputs={"project_updates": updates},
+            )
         source_ref = source_value(context, "source_paths", {}).get("convergence", "UNKNOWN")
         updates = [
             {
