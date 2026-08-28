@@ -1,0 +1,50 @@
+name: DBA Weekly Cockpit Candidate
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 1 * * 1"
+
+permissions:
+  contents: read
+  actions: read
+  issues: read
+  pull-requests: read
+  security-events: read
+
+jobs:
+  candidate:
+    if: github.event_name == 'workflow_dispatch' || vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED == 'true'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Run weekly cockpit tests
+        working-directory: digital-biosphere-architecture
+        run: python3 -m unittest discover -s cockpit/weekly/tests -v
+      - name: Generate read-only candidate bundle
+        working-directory: digital-biosphere-architecture
+        run: python3 cockpit/weekly/run_weekly.py --output-dir /tmp/dba-weekly-cockpit
+      - name: Write GitHub Actions Summary
+        run: cat /tmp/dba-weekly-cockpit/latest.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload candidate artifact bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: dba-weekly-cockpit-candidate
+          path: |
+            /tmp/dba-weekly-cockpit/latest.json
+            /tmp/dba-weekly-cockpit/latest.md
+            /tmp/dba-weekly-cockpit/dashboard.html
+            /tmp/dba-weekly-cockpit/cell-run-summary.json
+          if-no-files-found: error
+          retention-days: 14
+
+  schedule-disabled:
+    if: github.event_name == 'schedule' && vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED != 'true'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Record disabled schedule
+        run: echo "定时周检未启用" >> "$GITHUB_STEP_SUMMARY"
