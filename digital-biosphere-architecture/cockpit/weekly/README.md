@@ -44,9 +44,9 @@ Discovery 只表示“发现了候选”。候选必须经过 Evidence Admission
 
     python3 -m unittest discover -s cockpit/weekly/tests -v
 
-## 人工工作流
+## 人工与每日工作流
 
-在 GitHub Actions 中选择 `DBA Weekly Cockpit Candidate`。只有人工 `workflow_dispatch` 被授权执行两轮试点。定时入口仍受仓库变量 `DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED == true` 约束，本试点不创建或修改该变量。
+在 GitHub Actions 中选择 `DBA Weekly Cockpit Candidate` 可以执行人工只读观察。每日定时入口在 `01:00 UTC`（北京时间 `09:00`）触发，并继续受仓库变量 `DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED == true` 约束。定时运行固定使用 `live-read-only-pilot` 和 `second` 序列；变量缺失或不是 `true` 时只记录禁用状态，不执行观察。
 
 ## 不可变边界
 
