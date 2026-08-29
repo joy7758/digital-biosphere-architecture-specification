@@ -152,7 +152,8 @@ class WeeklyCockpitTests(unittest.TestCase):
         self.assertNotRegex(self.workflow, r"contents:\s*write")
         self.assertNotRegex(self.workflow, r"pull-requests:\s*write")
 
-    def test_17_schedule_requires_explicit_repository_variable(self):
+    def test_17_daily_schedule_requires_explicit_repository_variable(self):
+        self.assertIn('cron: "0 1 * * *"', self.workflow)
         self.assertIn("DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED", self.workflow)
         self.assertIn("'true'", self.workflow)
 
