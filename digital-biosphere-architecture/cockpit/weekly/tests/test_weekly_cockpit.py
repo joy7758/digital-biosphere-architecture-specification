@@ -718,6 +718,153 @@ class LiveReadOnlyPilotTests(unittest.TestCase):
                 "http://artifact.example.invalid/signed-artifact",
             )
 
+    def test_87_dispatch_live_resolves_to_live_mode(self):
+        resolved = self._resolve_execution("workflow_dispatch", "live-read-only-pilot", "first")
+        self.assertEqual("live-read-only-pilot", resolved["resolved_mode"])
+
+    def test_88_dispatch_demo_resolves_to_demo_mode(self):
+        resolved = self._resolve_execution("workflow_dispatch", "demo", "first")
+        self.assertEqual("demo", resolved["resolved_mode"])
+        self.assertEqual("demo", resolved["resolved_artifact_kind"])
+
+    def test_89_schedule_resolves_to_live_mode(self):
+        resolved = self._resolve_execution("schedule")
+        self.assertEqual("live-read-only-pilot", resolved["resolved_mode"])
+
+    def test_90_schedule_resolves_to_second_sequence(self):
+        resolved = self._resolve_execution("schedule")
+        self.assertEqual("second", resolved["resolved_sequence"])
+
+    def test_91_schedule_selects_live_artifact(self):
+        resolved = self._resolve_execution("schedule")
+        self.assertEqual("live", resolved["resolved_artifact_kind"])
+
+    def test_92_schedule_does_not_select_demo_artifact(self):
+        resolved = self._resolve_execution("schedule")
+        self.assertNotEqual("demo", resolved["resolved_artifact_kind"])
+
+    def test_93_downstream_steps_do_not_read_inputs_mode(self):
+        downstream = self._workflow().split("      - name: Run weekly cockpit tests\n", 1)[1]
+        self.assertNotIn("inputs.mode", downstream)
+
+    def test_94_downstream_steps_do_not_read_inputs_sequence(self):
+        downstream = self._workflow().split("      - name: Run weekly cockpit tests\n", 1)[1]
+        self.assertNotIn("inputs.pilot_sequence", downstream)
+
+    def test_95_candidate_schedule_requires_enablement_variable(self):
+        workflow = self._workflow()
+        self.assertIn(
+            "if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED == 'true')",
+            workflow,
+        )
+
+    def test_96_schedule_disabled_notice_remains(self):
+        workflow = self._workflow()
+        self.assertIn("schedule-disabled:", workflow)
+        self.assertIn(
+            "if: github.event_name == 'schedule' && vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED != 'true'",
+            workflow,
+        )
+
+    def test_97_live_upload_uses_resolved_artifact_kind(self):
+        self.assertIn(
+            "if: steps.resolve.outputs.resolved_artifact_kind == 'live'",
+            self._workflow(),
+        )
+
+    def test_98_demo_upload_uses_resolved_artifact_kind(self):
+        self.assertIn(
+            "if: steps.resolve.outputs.resolved_artifact_kind == 'demo'",
+            self._workflow(),
+        )
+
+    def test_99_resolver_fails_closed_for_unsupported_event(self):
+        with tempfile.NamedTemporaryFile(mode="r+", encoding="utf-8") as output:
+            result = subprocess.run(
+                ["/bin/bash", "-euo", "pipefail", "-c", self._resolver_script()],
+                env={
+                    "GITHUB_OUTPUT": output.name,
+                    "EVENT_NAME": "push",
+                    "DISPATCH_MODE": "",
+                    "DISPATCH_SEQUENCE": "",
+                },
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+        self.assertNotEqual(0, result.returncode)
+        self.assertIn("Unsupported event", result.stderr)
+
+    def test_100_workflow_permissions_remain_read_only(self):
+        permissions = self._workflow().split("permissions:\n", 1)[1].split("\njobs:\n", 1)[0]
+        self.assertNotIn("write", permissions)
+        for permission in ("contents", "actions", "issues", "pull-requests", "security-events"):
+            self.assertIn(f"  {permission}: read", permissions)
+
+    def test_101_all_workflow_actions_remain_pinned_to_full_sha(self):
+        references = re.findall(r"^\s*uses:\s*\S+@([0-9a-f]+)\s*$", self._workflow(), re.MULTILINE)
+        self.assertGreaterEqual(len(references), 2)
+        for reference in references:
+            self.assertRegex(reference, r"^[0-9a-f]{40}$")
+
+    def test_102_workflow_contains_no_mutating_or_deployment_command(self):
+        workflow = self._workflow().lower()
+        for forbidden in (
+            "git commit",
+            "git push",
+            "gh issue",
+            "gh pr ",
+            "create-pull-request",
+            "create-release",
+            "deploy-pages",
+        ):
+            self.assertNotIn(forbidden, workflow)
+
+    def test_103_manual_first_and_second_sequences_remain_supported(self):
+        first = self._resolve_execution("workflow_dispatch", "live-read-only-pilot", "first")
+        second = self._resolve_execution("workflow_dispatch", "live-read-only-pilot", "second")
+        self.assertEqual("first", first["resolved_sequence"])
+        self.assertEqual("second", second["resolved_sequence"])
+
+    def test_104_existing_memory_matching_regressions_remain_registered(self):
+        test_source = Path(__file__).read_text(encoding="utf-8")
+        for test_number in range(64, 69):
+            self.assertRegex(test_source, rf"def test_{test_number}_")
+
+    @classmethod
+    def _resolver_script(cls):
+        workflow = cls._workflow()
+        step_marker = "      - name: Resolve execution mode\n"
+        step_start = workflow.index(step_marker)
+        run_marker = "        run: |\n"
+        script_start = workflow.index(run_marker, step_start) + len(run_marker)
+        lines = []
+        for line in workflow[script_start:].splitlines():
+            if not line.startswith("          "):
+                break
+            lines.append(line[10:])
+        return "\n".join(lines)
+
+    @classmethod
+    def _resolve_execution(cls, event_name, mode="", sequence=""):
+        with tempfile.NamedTemporaryFile(mode="r+", encoding="utf-8") as output:
+            result = subprocess.run(
+                ["/bin/bash", "-euo", "pipefail", "-c", cls._resolver_script()],
+                env={
+                    "GITHUB_OUTPUT": output.name,
+                    "EVENT_NAME": event_name,
+                    "DISPATCH_MODE": mode,
+                    "DISPATCH_SEQUENCE": sequence,
+                },
+                capture_output=True,
+                text=True,
+                check=False,
+            )
+            if result.returncode != 0:
+                raise AssertionError(result.stderr)
+            output.seek(0)
+            return dict(line.rstrip("\n").split("=", 1) for line in output if "=" in line)
+
     @staticmethod
     def _workflow():
         return (DBA.parent / ".github" / "workflows" / "dba-weekly-cockpit.yml").read_text(encoding="utf-8")
