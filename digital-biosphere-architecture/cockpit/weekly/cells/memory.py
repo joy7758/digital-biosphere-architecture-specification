@@ -32,6 +32,11 @@ class MemoryCell(WeeklyCell):
                 "PREVIOUS_ARTIFACT_REJECTED": metadata.get(
                     "previous_artifact_rejected", False
                 ),
+                "PREVIOUS_CAPABILITY_RUN_ID": metadata.get("previous_run_id"),
+                "PREVIOUS_CAPABILITY_ARTIFACT_ID": metadata.get("artifact_id"),
+                "PREVIOUS_CAPABILITY_SOURCE_REFERENCE": metadata.get(
+                    "source_reference"
+                ),
                 "note_zh": "已比较本轮候选与上一轮合格注册表；无合格制品时使用DCDAT-001且明确记录。",
                 "capability_delta": delta,
             }
