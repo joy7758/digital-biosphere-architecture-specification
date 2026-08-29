@@ -18,12 +18,20 @@ from urllib.request import Request
 from jsonschema import Draft202012Validator
 
 from cockpit.weekly.cells.evidence_admission import EvidenceAdmissionCell
+from cockpit.weekly.cells.drift import DriftCell
+from cockpit.weekly.cells.environment_discovery import EnvironmentDiscoveryCell
 from cockpit.weekly.cells.handoff import HandoffCell
+from cockpit.weekly.cells.human_view import HumanViewCell
 from cockpit.weekly.cells.project_discovery import ProjectDiscoveryCell
 from cockpit.weekly.cells.security import SecurityCell
 from cockpit.weekly.cells.memory import MemoryCell
 from cockpit.weekly.coordinator import WeeklyCoordinator
-from cockpit.weekly.run_weekly import load_demo_context, load_live_context
+from cockpit.weekly.run_weekly import (
+    _apply_live_result_projection,
+    _build_pilot_boundary,
+    load_demo_context,
+    load_live_context,
+)
 from cockpit.weekly.sources.artifact_memory import ArtifactMemory
 from cockpit.weekly.sources.dependency_readonly import DependencyReadOnlyAdapter
 from cockpit.weekly.sources.github_readonly import (
@@ -1028,6 +1036,242 @@ class LiveReadOnlyPilotTests(unittest.TestCase):
         source = inspect.getsource(GithubReadOnlyAdapter)
         for forbidden in ("git push", "git commit", 'method="POST"', 'method="PUT"', 'method="PATCH"', 'method="DELETE"'):
             self.assertNotIn(forbidden, source)
+
+    def test_127_partial_source_coverage_overrides_available_credential_channel(self):
+        boundary = _build_pilot_boundary(
+            self._synthetic_snapshot(), self._projection_context(not_assessed=1)
+        )
+        self.assertEqual("PARTIAL", boundary["source_coverage_status"])
+        self.assertEqual("LIVE_READ_ONLY_PILOT_PASS_WITH_PARTIAL_COVERAGE", boundary["pilot_status"])
+
+    def test_128_full_pass_requires_all_sources_available(self):
+        snapshot = self._synthetic_snapshot(overall_status="PASS")
+        boundary = _build_pilot_boundary(snapshot, self._projection_context(not_assessed=0))
+        self.assertEqual("COMPLETE", boundary["source_coverage_status"])
+        self.assertEqual("LIVE_READ_ONLY_PILOT_PASS", boundary["pilot_status"])
+
+    def test_129_second_run_without_previous_artifact_fails(self):
+        snapshot = self._synthetic_snapshot(previous_loaded=False)
+        self.assertEqual(
+            "LIVE_READ_ONLY_PILOT_FAILED",
+            _build_pilot_boundary(snapshot, self._projection_context(not_assessed=1))["pilot_status"],
+        )
+
+    def test_130_second_run_without_memory_comparison_fails(self):
+        snapshot = self._synthetic_snapshot(memory_compared=False)
+        self.assertEqual(
+            "LIVE_READ_ONLY_PILOT_FAILED",
+            _build_pilot_boundary(snapshot, self._projection_context(not_assessed=1))["pilot_status"],
+        )
+
+    def test_131_source_mutation_fails_pilot(self):
+        context = self._projection_context(not_assessed=0)
+        context["source_mutation"] = True
+        self.assertEqual(
+            "LIVE_READ_ONLY_PILOT_FAILED",
+            _build_pilot_boundary(self._synthetic_snapshot(overall_status="PASS"), context)["pilot_status"],
+        )
+
+    def test_132_red_yan_available_is_observed_not_credential_unavailable(self):
+        redyan = self._redyan_projection("AVAILABLE")
+        self.assertEqual("OBSERVED", redyan["status"])
+        self.assertNotIn("凭据不可用", redyan["status_zh"])
+
+    def test_133_red_yan_available_source_label_is_live(self):
+        self.assertEqual("LIVE", self._redyan_projection("AVAILABLE")["source_label"])
+
+    def test_134_red_yan_repository_observation_is_not_stable(self):
+        self.assertNotEqual("STABLE", self._redyan_projection("AVAILABLE")["status"])
+
+    def test_135_scout_stale_reason_is_not_mapped_to_credential_failure(self):
+        scout, blind_spot = self._scout_projection(
+            "NOT_ASSESSED_SOURCE_UNAVAILABLE", "SOURCE_STALE"
+        )
+        self.assertNotIn("CREDENTIAL", scout["reason_code"])
+        self.assertEqual("SCOUT_SOURCE_STALE", blind_spot["blind_spot_id"])
+
+    def test_136_scout_stale_human_status_preserves_source_age(self):
+        scout, _ = self._scout_projection("NOT_ASSESSED_SOURCE_UNAVAILABLE", "SOURCE_STALE")
+        self.assertIn("来源过期", scout["status_zh"])
+
+    def test_137_scout_credential_failure_remains_explicit(self):
+        scout, blind_spot = self._scout_projection("NOT_ASSESSED_CREDENTIAL_UNAVAILABLE")
+        self.assertIn("凭据不可用", scout["status_zh"])
+        self.assertEqual("SCOUT_CREDENTIAL_UNAVAILABLE", blind_spot["blind_spot_id"])
+
+    def test_138_scout_source_drift_preserves_drift_reason(self):
+        scout, blind_spot = self._scout_projection("SOURCE_DRIFT")
+        self.assertEqual("SOURCE_DRIFT", scout["reason_code"])
+        self.assertEqual("SCOUT_SOURCE_DRIFT", blind_spot["blind_spot_id"])
+
+    def test_139_project_category_counts_close_to_total(self):
+        snapshot = self._counted_snapshot()
+        counts = snapshot["counts"]
+        total = sum(counts[key] for key in ("stable", "observed", "attention", "blind_spot", "not_assessed", "other"))
+        self.assertEqual(counts["projects"], total)
+        self.assertTrue(counts["project_count_sum_match"])
+
+    def test_140_observed_projects_are_counted(self):
+        self.assertEqual(3, self._counted_snapshot()["counts"]["observed"])
+
+    def test_141_json_markdown_html_and_boundary_share_partial_coverage(self):
+        snapshot = self._synthetic_snapshot()
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory)
+            boundary = _apply_live_result_projection(
+                snapshot, self._projection_context(not_assessed=1), output, "latest.json"
+            )
+            latest = json.loads((output / "latest.json").read_text(encoding="utf-8"))
+            markdown = (output / "latest.md").read_text(encoding="utf-8")
+            html = (output / "dashboard.html").read_text(encoding="utf-8")
+        expected = "LIVE_READ_ONLY_PILOT_PASS_WITH_PARTIAL_COVERAGE"
+        self.assertEqual(expected, boundary["pilot_status"])
+        self.assertEqual(expected, latest["pilot_status"])
+        self.assertIn(expected, markdown)
+        self.assertIn(expected, html)
+
+    def test_142_partial_boundary_cannot_claim_full_pilot_pass(self):
+        boundary = _build_pilot_boundary(
+            self._synthetic_snapshot(), self._projection_context(not_assessed=1)
+        )
+        self.assertNotEqual("LIVE_READ_ONLY_PILOT_PASS", boundary["pilot_status"])
+        self.assertTrue(boundary["result_projection_consistent"])
+
+    def test_143_not_assessed_ui_status_is_not_normal(self):
+        app = (WEEKLY / "ui" / "app.js").read_text(encoding="utf-8")
+        self.assertIn('"NOT_ASSESSED"', app)
+        self.assertNotRegex(app, r'\["PASS"[^\]]*"NOT_ASSESSED"')
+
+    def test_144_repository_observation_does_not_claim_runtime_acceptance(self):
+        redyan = self._redyan_projection("AVAILABLE")
+        self.assertIn("不构成红岩运行时验收", redyan["why_zh"])
+        self.assertNotEqual("RUNTIME_VERIFIED", redyan["status"])
+
+    def test_145_result_projection_preserves_twelve_cells(self):
+        registry = json.loads((WEEKLY / "cell-registry.json").read_text(encoding="utf-8"))
+        self.assertEqual(12, len(registry["cells"]))
+
+    def test_146_coordinator_remains_project_agnostic(self):
+        source = (WEEKLY / "coordinator.py").read_text(encoding="utf-8")
+        for project_id in ("RED_YAN_OFFICIAL_DOCUMENT", "TITMAC_SCOUT"):
+            self.assertNotIn(project_id, source)
+
+    def test_147_projection_boundaries_remain_non_mutating(self):
+        boundary = _build_pilot_boundary(
+            self._synthetic_snapshot(), self._projection_context(not_assessed=1)
+        )
+        for key in ("auto_fix", "auto_pr", "auto_merge", "auto_deploy", "source_mutation"):
+            self.assertFalse(boundary[key])
+        self.assertFalse(boundary["schedule_enabled"])
+        self.assertFalse(boundary["red_yan_runtime_access"])
+
+    def test_148_synthetic_outputs_contain_no_secret_material(self):
+        snapshot = self._synthetic_snapshot()
+        with tempfile.TemporaryDirectory() as directory:
+            output = Path(directory)
+            _apply_live_result_projection(
+                snapshot, self._projection_context(not_assessed=1), output, "latest.json"
+            )
+            corpus = "\n".join(path.read_text(encoding="utf-8") for path in output.iterdir())
+        for forbidden in ("DBA_COCKPIT_READ_TOKEN", "PRIVATE_FAKE_TOKEN", "CURRENT_FAKE_TOKEN"):
+            self.assertNotIn(forbidden, corpus)
+
+    def _redyan_projection(self, source_status):
+        context = self._cell_context()
+        context["source_observations"]["RED_YAN_OFFICIAL_DOCUMENT"] = {
+            "status": source_status,
+            "source_reference": "https://github.test/redyan/tree/abc",
+            "observed_at": "2026-08-29T00:00:00Z",
+            "payload": {"revision": "abc"},
+        }
+        result = DriftCell().run(context)
+        return next(item for item in result.outputs["project_updates"] if item["project_id"] == "RED_YAN_OFFICIAL_DOCUMENT")
+
+    def _scout_projection(self, source_status, reason=None):
+        context = self._cell_context()
+        context["source_observations"]["TITMAC_SCOUT"] = {
+            "status": source_status,
+            "source_reference": "https://github.test/scout",
+            "payload": {"reason": reason} if reason else {},
+        }
+        result = EnvironmentDiscoveryCell().run(context)
+        project = result.outputs["project_updates"][0]
+        blind_spot = result.outputs["blind_spots"][0] if result.outputs["blind_spots"] else None
+        return project, blind_spot
+
+    @staticmethod
+    def _cell_context():
+        return {
+            "snapshot_mode": "LIVE_READ_ONLY_OBSERVATION_PILOT",
+            "as_of": "2026-08-29T00:00:00Z",
+            "live_dependency_audit": {
+                "audit_status": "AVAILABLE",
+                "canonical_retained": {"high_count": 2},
+                "observed_result": {"high_count": 1, "high_packages": ["nanoid"]},
+            },
+            "source_paths": {"live_dependency_audit": "site/package-lock.json"},
+            "source_observations": {
+                "DBA_COCKPIT": {"status": "AVAILABLE", "source_reference": "dba"},
+                "TITMAS_SUPPORTING_LAYER": {"status": "AVAILABLE", "source_reference": "titmas"},
+            },
+            "public_http_observations": [],
+        }
+
+    @staticmethod
+    def _projection_context(not_assessed):
+        return {
+            "pilot_sequence": "second",
+            "source_mutation": False,
+            "source_observation_summary": {
+                "source_mode": "LIVE_READ_ONLY",
+                "live_source_success_count": 11 - not_assessed,
+                "not_assessed_count": not_assessed,
+                "partial_coverage": not_assessed > 0,
+                "cross_repo_read_credential": "AVAILABLE",
+            },
+            "source_observation_records": [],
+        }
+
+    @staticmethod
+    def _synthetic_snapshot(overall_status="PASS_WITH_NOT_ASSESSED", previous_loaded=True, memory_compared=True):
+        projects = [
+            {"project_id": "DBA_COCKPIT", "status": "ATTENTION", "status_zh": "需关注"},
+            {"project_id": "RED_YAN_OFFICIAL_DOCUMENT", "status": "OBSERVED", "status_zh": "已实时观察仓库状态", "source_label": "LIVE"},
+            {"project_id": "TITMAS_SUPPORTING_LAYER", "status": "OBSERVED", "status_zh": "已实时观察", "source_label": "LIVE"},
+            {"project_id": "DIGITAL_CELL_DEMO", "status": "OBSERVED", "status_zh": "已实时观察", "source_label": "LIVE"},
+            {"project_id": "TITMAC_SCOUT", "status": "NOT_ASSESSED", "status_zh": "来源过期，未评估", "source_label": "STALE"},
+        ]
+        return {
+            "schema_version": "0.1",
+            "snapshot_id": "DBA-WEEKLY-SYNTHETIC",
+            "observed_at": "2026-08-29T00:00:00Z",
+            "overall_status": overall_status,
+            "mode": "LIVE_READ_ONLY_OBSERVATION_PILOT",
+            "discovery_state": "AVAILABLE",
+            "weekly_sentence_zh": "本周共纳入5个项目视图：3个已观察，1个需关注，1个尚未评估。",
+            "counts": {"projects": 5, "observed": 3, "attention": 1, "not_assessed": 1, "live_source_success": 10, "source_not_assessed": 1},
+            "projects": projects,
+            "discoveries": [],
+            "decisions": [],
+            "blind_spots": [],
+            "cell_runs": [{"cell_id": f"CELL_{index}", "status": "PASS"} for index in range(12)],
+            "logical_cells": [{"cell_id": f"CELL_{index}", "status": "PASS"} for index in range(12)],
+            "dependency_audit_state": {"status": "CONFLICT_REQUIRES_REVIEW"},
+            "source_observation_summary": {"source_mode": "LIVE_READ_ONLY", "partial_coverage": True},
+            "memory": {
+                "status": "COMPARISON_AVAILABLE",
+                "PREVIOUS_LIVE_ARTIFACT_LOADED": previous_loaded,
+                "MEMORY_COMPARISON_EXECUTED": memory_compared,
+            },
+        }
+
+    def _counted_snapshot(self):
+        context = {
+            "as_of": "2026-08-29T00:00:00Z",
+            "project_records": self._synthetic_snapshot()["projects"],
+            "source_observation_summary": {"live_source_success_count": 10, "not_assessed_count": 1},
+        }
+        return WeeklyCoordinator(cell_types=[])._snapshot(context, [], 0)
 
     @staticmethod
     def _registry_project(project_id):

@@ -145,6 +145,67 @@ class DriftCell(WeeklyCell):
             })
         dba_observation = context.get("source_observations", {}).get("DBA_COCKPIT", {})
         redyan_observation = context.get("source_observations", {}).get("RED_YAN_OFFICIAL_DOCUMENT", {})
+        redyan_source_status = redyan_observation.get("status", "NOT_ASSESSED_SOURCE_UNAVAILABLE")
+        redyan_payload = redyan_observation.get("payload", {})
+        redyan_reason = redyan_payload.get(
+            "reason_code", redyan_payload.get("reason", redyan_source_status)
+        )
+        redyan_reference = redyan_observation.get(
+            "source_reference", "credential-gated-private-repository"
+        )
+        redyan_evidence = [
+            redyan_reference,
+            f"observed_at:{redyan_observation.get('observed_at', as_of)}",
+        ]
+        redyan_head = (
+            redyan_payload.get("revision")
+            or redyan_payload.get("head_sha")
+            or redyan_payload.get("default_branch_sha")
+        )
+        if redyan_head:
+            redyan_evidence.append(f"head:{redyan_head}")
+        if redyan_source_status == "AVAILABLE":
+            redyan_update = {
+                "project_id": "RED_YAN_OFFICIAL_DOCUMENT",
+                "status": "OBSERVED",
+                "status_zh": "已实时观察仓库状态",
+                "source_label": "LIVE",
+                "source_observation_status": "AVAILABLE",
+                "why_zh": (
+                    "已读取红岩仓库的限定只读元数据；该观察不构成红岩运行时验收、"
+                    "产品验收或生产就绪结论。"
+                ),
+                "attention_zh": "红岩运行时真相仍由红岩产品线和其权威运行证据负责。",
+                "technical_evidence": redyan_evidence,
+            }
+        elif redyan_source_status == "NOT_ASSESSED_CREDENTIAL_UNAVAILABLE":
+            redyan_update = {
+                "project_id": "RED_YAN_OFFICIAL_DOCUMENT",
+                "status": "NOT_ASSESSED",
+                "status_zh": "跨仓库凭据不可用，未评估",
+                "source_label": "NOT_ASSESSED",
+                "source_observation_status": redyan_source_status,
+                "reason_code": "CROSS_REPO_READ_CREDENTIAL_UNAVAILABLE",
+                "why_zh": "跨仓库只读凭据不可用，未读取红岩仓库状态。",
+                "attention_zh": "未评估不等于正常；保留快照不替代实时观察。",
+                "technical_evidence": redyan_evidence,
+            }
+        else:
+            redyan_status_zh = {
+                "SOURCE_STALE": "来源过期，未评估",
+                "SOURCE_DRIFT": "来源发生漂移，未评估",
+            }.get(redyan_reason, "来源不可用，未评估")
+            redyan_update = {
+                "project_id": "RED_YAN_OFFICIAL_DOCUMENT",
+                "status": "NOT_ASSESSED",
+                "status_zh": redyan_status_zh,
+                "source_label": "STALE" if redyan_reason in {"SOURCE_STALE", "SOURCE_DRIFT"} else "NOT_ASSESSED",
+                "source_observation_status": redyan_source_status,
+                "reason_code": redyan_reason,
+                "why_zh": f"红岩仓库只读来源未能完成观察；原因：{redyan_reason}。",
+                "attention_zh": "未评估不等于正常；不得以保留快照替代实时观察。",
+                "technical_evidence": redyan_evidence,
+            }
         dba_status = "ATTENTION" if conflict else "OBSERVED" if audit_available else "NOT_ASSESSED"
         project_updates = [
             {
@@ -160,15 +221,7 @@ class DriftCell(WeeklyCell):
                 "attention_zh": "可利用性和远端运行绑定仍未评估。",
                 "technical_evidence": [source_ref, dba_observation.get("source_reference", "UNKNOWN")],
             },
-            {
-                "project_id": "RED_YAN_OFFICIAL_DOCUMENT",
-                "status": "NOT_ASSESSED",
-                "status_zh": "因凭据不可用而未评估",
-                "source_label": "NOT_ASSESSED",
-                "why_zh": "本轮没有跨私有仓库只读凭据，未读取红岩仓库或运行时。",
-                "attention_zh": "未评估不等于正常；保留快照不替代实时观察。",
-                "technical_evidence": [redyan_observation.get("source_reference", "credential-gated-private-repository")],
-            },
+            redyan_update,
         ]
         blind_spots = [{
             "blind_spot_id": "DEPENDENCY_RUNTIME_BINDING_UNKNOWN",

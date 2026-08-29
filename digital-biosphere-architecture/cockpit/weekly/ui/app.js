@@ -8,6 +8,7 @@
   const severity = (status) => {
     const value = text(status, "UNKNOWN").toUpperCase();
     if (["PASS", "STABLE", "NORMAL", "ADMITTED"].includes(value)) return ["good", "稳定"];
+    if (value === "OBSERVED") return ["neutral", "已观察"];
     if (["ATTENTION", "FAIL", "BLOCKED", "CONFLICT_REQUIRES_REVIEW"].includes(value)) return ["warn", "需关注"];
     if (["BLIND_SPOT", "NOT_ASSESSED", "UNKNOWN", "DISCOVERY_UNAVAILABLE", "PASS_WITH_NOT_ASSESSED"].includes(value)) return ["unknown", "尚未完整评估"];
     return ["neutral", "已记录"];
@@ -41,16 +42,19 @@
   const counts = snapshot.counts || {};
   const memory = snapshot.memory || {};
   const livePilot = snapshot.mode === "LIVE_READ_ONLY_OBSERVATION_PILOT";
+  const coverageStatus = first(snapshot.source_coverage_status, counts.source_not_assessed > 0 ? "PARTIAL" : "COMPLETE");
 
   el("pilot-indicator").textContent = livePilot ? "实时只读试点" : "保留快照 Demo";
 
   const [overallClass] = severity(snapshot.overall_status);
-  el("overall-signal").innerHTML = `<span class="status-pill ${overallClass}">需关注</span><div style="margin-top:16px">部分检查尚未完成</div>`;
+  el("overall-signal").innerHTML = coverageStatus === "PARTIAL" ? `<span class="status-pill ${overallClass}">需关注</span><div style="margin-top:16px">部分检查尚未完成</div>` : `<span class="status-pill ${overallClass}">已完成</span><div style="margin-top:16px">本轮来源覆盖完整</div>`;
   el("weekly-sentence").textContent = text(snapshot.weekly_sentence_zh);
   el("hero-metrics").innerHTML = [
     ["项目", projects.length],
     ["实时来源", first(counts.live_source_success, 0)],
     ["未评估来源", first(counts.source_not_assessed, 0)],
+    ["来源覆盖", coverageStatus],
+    ["试点状态", first(snapshot.pilot_status, "NOT_APPLICABLE")],
     ["发现状态", first(snapshot.discovery_state, "UNKNOWN")],
     ["上轮制品", memory.PREVIOUS_LIVE_ARTIFACT_LOADED === true ? "已读取" : "未读取"],
     ["依赖高危", first(snapshot.dependency_audit_state?.live_candidate_high_count, "未评估")]
@@ -114,6 +118,10 @@
   el("technical-evidence").innerHTML = `
     <div class="cell-row">快照编号 · ${escapeHtml(snapshot.snapshot_id)}</div>
     <div class="cell-row">机器总体状态 · ${escapeHtml(snapshot.overall_status)}</div>
+    <div class="cell-row">工作流执行状态 · ${escapeHtml(first(snapshot.workflow_execution_status, "NOT_APPLICABLE"))}</div>
+    <div class="cell-row">来源覆盖状态 · ${escapeHtml(coverageStatus)}</div>
+    <div class="cell-row">试点状态 · ${escapeHtml(first(snapshot.pilot_status, "NOT_APPLICABLE"))}</div>
+    <div class="cell-row">结果投影一致 · ${escapeHtml(first(snapshot.result_projection_consistent, "NOT_APPLICABLE"))}</div>
     <div class="cell-row">原始观察时间 · ${escapeHtml(snapshot.observed_at)}</div>
     <div class="cell-row">发现可用性 · ${escapeHtml(first(snapshot.discovery_state, "UNKNOWN"))}</div>
     <div class="cell-row">Memory · ${escapeHtml(first(memory.status, "NOT_ASSESSED"))}</div>

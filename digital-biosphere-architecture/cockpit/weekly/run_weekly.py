@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import os
 from datetime import datetime
 from pathlib import Path
@@ -11,6 +12,7 @@ from typing import Any
 
 try:
     from .coordinator import WeeklyCoordinator
+    from .cells.human_view import HumanViewCell
     from .contracts import canonical_json, parse_assignments, read_json
     from .sources.artifact_memory import ArtifactMemory
     from .sources.dependency_readonly import DependencyReadOnlyAdapter
@@ -19,6 +21,7 @@ try:
     from .sources.source_result import AVAILABLE, NOT_ASSESSED_CREDENTIAL_UNAVAILABLE, SourceResult
 except ImportError:  # Direct execution from cockpit/weekly/run_weekly.py.
     from coordinator import WeeklyCoordinator
+    from cells.human_view import HumanViewCell
     from contracts import canonical_json, parse_assignments, read_json
     from sources.artifact_memory import ArtifactMemory
     from sources.dependency_readonly import DependencyReadOnlyAdapter
@@ -182,35 +185,57 @@ def load_live_context(as_of: str, pilot_sequence: str) -> dict[str, Any]:
     return context
 
 
-def _write_pilot_files(snapshot: dict[str, Any], context: dict[str, Any], output_dir: Path) -> None:
-    summary = {
-        **context.get("source_observation_summary", {}),
-        "observed_at": snapshot["observed_at"],
-        "discovery_state": snapshot.get("discovery_state", "UNKNOWN"),
-        "sources": context.get("source_observation_records", []),
-    }
+def _build_pilot_boundary(snapshot: dict[str, Any], context: dict[str, Any]) -> dict[str, Any]:
+    source_summary = context.get("source_observation_summary", {})
+    success_count = int(source_summary.get("live_source_success_count", 0))
+    not_assessed_count = int(source_summary.get("not_assessed_count", 0))
+    partial_coverage = bool(source_summary.get("partial_coverage")) or not_assessed_count > 0
+    if success_count == 0 and not_assessed_count > 0:
+        source_coverage_status = "UNAVAILABLE"
+    elif partial_coverage:
+        source_coverage_status = "PARTIAL"
+    else:
+        source_coverage_status = "COMPLETE"
+
     memory = snapshot.get("memory", {})
     sequence = context.get("pilot_sequence", "first")
     source_mutation = (
         context.get("dependency_observation", {}).get("status") == "SOURCE_MUTATION_DETECTED"
+        or bool(context.get("source_mutation"))
     )
-    memory_required_failed = (
-        sequence == "second" and memory.get("PREVIOUS_LIVE_ARTIFACT_LOADED") is not True
+    memory_required_failed = sequence == "second" and (
+        memory.get("PREVIOUS_LIVE_ARTIFACT_LOADED") is not True
+        or memory.get("MEMORY_COMPARISON_EXECUTED") is not True
     )
-    credential_missing = (
-        context.get("source_observation_summary", {}).get("cross_repo_read_credential")
-        == "UNAVAILABLE"
-    )
+    snapshot_status = snapshot.get("overall_status", "DISCOVERY_UNAVAILABLE")
+    snapshot_is_partial = snapshot_status in {
+        "PASS_WITH_NOT_ASSESSED",
+        "PARTIAL_DISCOVERY_NOT_ASSESSED",
+        "DISCOVERY_UNAVAILABLE",
+    }
     if source_mutation or memory_required_failed:
         pilot_status = "LIVE_READ_ONLY_PILOT_FAILED"
-    elif credential_missing:
+    elif partial_coverage or snapshot_is_partial:
         pilot_status = "LIVE_READ_ONLY_PILOT_PASS_WITH_PARTIAL_COVERAGE"
     else:
         pilot_status = "LIVE_READ_ONLY_PILOT_PASS"
-    boundary = {
+
+    result_projection_consistent = not (
+        pilot_status == "LIVE_READ_ONLY_PILOT_PASS"
+        and (source_coverage_status != "COMPLETE" or snapshot_is_partial)
+    )
+    credential_available = source_summary.get("cross_repo_read_credential") == "AVAILABLE"
+    return {
         "mode": LIVE_SNAPSHOT_MODE,
         "pilot_sequence": sequence,
+        "workflow_execution_status": "PASS",
+        "source_coverage_status": source_coverage_status,
+        "snapshot_overall_status": snapshot_status,
         "pilot_status": pilot_status,
+        "live_source_success_count": success_count,
+        "live_source_not_assessed_count": not_assessed_count,
+        "partial_coverage": partial_coverage,
+        "result_projection_consistent": result_projection_consistent,
         "prototype_only": False,
         "pilot_only": True,
         "schedule_enabled": False,
@@ -221,7 +246,8 @@ def _write_pilot_files(snapshot: dict[str, Any], context: dict[str, Any], output
         "auto_merge": False,
         "auto_deploy": False,
         "cross_repo_private_coverage": (
-            "NOT_ASSESSED_CREDENTIAL_UNAVAILABLE" if credential_missing else "AVAILABLE"
+            "CREDENTIAL_CHANNEL_AVAILABLE" if credential_available else
+            "NOT_ASSESSED_CREDENTIAL_UNAVAILABLE"
         ),
         "memory": {
             key: memory.get(key)
@@ -233,12 +259,51 @@ def _write_pilot_files(snapshot: dict[str, Any], context: dict[str, Any], output
             )
         },
     }
+
+
+def _write_pilot_files(
+    snapshot: dict[str, Any],
+    context: dict[str, Any],
+    output_dir: Path,
+    boundary: dict[str, Any],
+) -> None:
+    summary = {
+        **context.get("source_observation_summary", {}),
+        "observed_at": snapshot["observed_at"],
+        "discovery_state": snapshot.get("discovery_state", "UNKNOWN"),
+        "sources": context.get("source_observation_records", []),
+    }
     (output_dir / "source-observation-summary.json").write_text(
         canonical_json(summary), encoding="utf-8"
     )
     (output_dir / "pilot-boundary-report.json").write_text(
         canonical_json(boundary), encoding="utf-8"
     )
+
+
+def _apply_live_result_projection(
+    snapshot: dict[str, Any],
+    context: dict[str, Any],
+    output_dir: Path,
+    snapshot_name: str,
+) -> dict[str, Any]:
+    boundary = _build_pilot_boundary(snapshot, context)
+    for field in (
+        "workflow_execution_status",
+        "source_coverage_status",
+        "snapshot_overall_status",
+        "pilot_status",
+        "result_projection_consistent",
+    ):
+        snapshot[field] = boundary[field]
+    snapshot["source_observation_summary"]["partial_coverage"] = boundary["partial_coverage"]
+    HumanViewCell().render(snapshot, output_dir)
+    (output_dir / snapshot_name).write_text(
+        json.dumps(snapshot, ensure_ascii=False, sort_keys=True, indent=2) + "\n",
+        encoding="utf-8",
+    )
+    _write_pilot_files(snapshot, context, output_dir, boundary)
+    return boundary
 
 
 def main() -> int:
@@ -264,7 +329,7 @@ def main() -> int:
         snapshot_name = "latest.json"
     snapshot = WeeklyCoordinator().run(context, output_dir, snapshot_name)
     if mode == LIVE_MODE:
-        _write_pilot_files(snapshot, context, output_dir)
+        _apply_live_result_projection(snapshot, context, output_dir, snapshot_name)
     print(f"DBA_WEEKLY_COCKPIT_STATUS={snapshot['overall_status']}")
     print(f"SNAPSHOT={output_dir / snapshot_name}")
     print(f"DASHBOARD={output_dir / 'dashboard.html'}")
