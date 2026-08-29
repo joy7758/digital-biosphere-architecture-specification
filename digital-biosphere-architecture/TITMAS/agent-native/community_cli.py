@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import fnmatch
+import functools
 import json
 import sys
 from pathlib import Path
@@ -57,6 +58,7 @@ class ProtocolRejected(ValueError):
         self.reason_code = reason_code
 
 
+@functools.lru_cache(maxsize=None)
 def _load(path: Path) -> dict[str, Any]:
     resolved = path.resolve()
     if not resolved.is_relative_to(DBA_ROOT.resolve()):
