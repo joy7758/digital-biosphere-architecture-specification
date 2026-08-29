@@ -1,5 +1,5 @@
 {
-  "registry_version": "0.2-live-read-only-pilot",
+  "registry_version": "0.3-cross-repository-credential-routing",
   "authority": "CHECK_CONFIGURATION_ONLY_NOT_PROJECT_TRUTH",
   "projects": [
     {
@@ -20,7 +20,7 @@
       "project_id": "RED_YAN_OFFICIAL_DOCUMENT",
       "display_name_zh": "红岩公文",
       "canonical_source_ref": "RED-YAN-REMOTE-RUNTIME-EVIDENCE-SNAPSHOT-2026-08-28.json",
-      "repository": null,
+      "repository": "joy7758/hongyan-official-document",
       "branch": "main",
       "cross_repo_credential_required": true,
       "lifecycle_mode": "ACTIVE",
@@ -36,12 +36,13 @@
       "canonical_source_ref": "PROJECT-STATE-RECONCILIATION-2026-08-28.md",
       "repository": "joy7758/titmas",
       "branch": "main",
+      "cross_repo_credential_required": true,
       "lifecycle_mode": "SUPPORTING",
       "owner_conversation": "TITMAS 专用对话",
       "scan_authorized": true,
-      "data_classification": "PUBLIC_REPOSITORY_METADATA",
+      "data_classification": "PRIVATE_REPOSITORY_METADATA",
       "enabled_cells": ["PROJECT_DISCOVERY_CELL", "ENVIRONMENT_DISCOVERY_CELL", "UPGRADE_CELL", "QUALITY_CELL"],
-      "source_access_mode": "GITHUB_API_PUBLIC_REPOSITORY_READ_ONLY"
+      "source_access_mode": "CROSS_REPOSITORY_CREDENTIAL_GATED_READ_ONLY"
     },
     {
       "project_id": "DIGITAL_CELL_DEMO",

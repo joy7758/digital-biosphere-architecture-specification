@@ -25,9 +25,21 @@ from .source_result import (
 
 ALLOWLIST = {
     "DBA_COCKPIT": "joy7758/digital-biosphere-architecture-specification",
+    "RED_YAN_OFFICIAL_DOCUMENT": "joy7758/hongyan-official-document",
     "TITMAS_SUPPORTING_LAYER": "joy7758/titmas",
     "DIGITAL_CELL_DEMO": "joy7758/titmas-demo",
     "TITMAC_SCOUT": "joy7758/titmac-scout",
+}
+
+CURRENT_REPOSITORY_ACCESS_MODE = "GITHUB_API_CURRENT_REPOSITORY_READ_ONLY"
+PUBLIC_REPOSITORY_ACCESS_MODE = "GITHUB_API_PUBLIC_REPOSITORY_READ_ONLY"
+PRIVATE_CROSS_REPOSITORY_ACCESS_MODE = "CROSS_REPOSITORY_CREDENTIAL_GATED_READ_ONLY"
+PROJECT_ACCESS_MODES = {
+    "DBA_COCKPIT": CURRENT_REPOSITORY_ACCESS_MODE,
+    "RED_YAN_OFFICIAL_DOCUMENT": PRIVATE_CROSS_REPOSITORY_ACCESS_MODE,
+    "TITMAS_SUPPORTING_LAYER": PRIVATE_CROSS_REPOSITORY_ACCESS_MODE,
+    "DIGITAL_CELL_DEMO": PUBLIC_REPOSITORY_ACCESS_MODE,
+    "TITMAC_SCOUT": "EXISTING_READ_ONLY_STATUS_ADAPTER",
 }
 
 SENSITIVE_REDIRECT_HEADERS = frozenset(
@@ -99,14 +111,43 @@ class GithubApi:
 class GithubReadOnlyAdapter:
     """Observe only explicitly configured repositories."""
 
-    def __init__(self, api: GithubApi | None = None) -> None:
-        token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
-        self.api = api or GithubApi(token=token)
+    def __init__(
+        self,
+        api: GithubApi | None = None,
+        *,
+        current_repository_api: GithubApi | None = None,
+        public_repository_api: GithubApi | None = None,
+        private_cross_repository_api: GithubApi | None = None,
+    ) -> None:
+        current_token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+        private_token = os.environ.get("DBA_COCKPIT_READ_TOKEN")
+        self._legacy_api = api
+        self.current_repository_api = current_repository_api or api or GithubApi(token=current_token)
+        self.public_repository_api = public_repository_api or api or GithubApi()
+        self.private_cross_repository_api = private_cross_repository_api or (
+            (api or GithubApi(token=private_token)) if private_token else None
+        )
 
     @staticmethod
     def _assert_allowlisted(project_id: str, repository: str) -> None:
         if ALLOWLIST.get(project_id) != repository:
             raise ValueError("REPOSITORY_NOT_ALLOWLISTED")
+
+    def _api_for_project(self, project: dict[str, Any]) -> GithubApi | None:
+        project_id = project["project_id"]
+        access_mode = project.get("source_access_mode")
+        credential_required = project.get("cross_repo_credential_required") is True
+        if access_mode is None and self._legacy_api is not None:
+            return self._legacy_api
+        if PROJECT_ACCESS_MODES.get(project_id) != access_mode:
+            raise ValueError("SOURCE_ACCESS_MODE_MISMATCH")
+        if access_mode == CURRENT_REPOSITORY_ACCESS_MODE and not credential_required:
+            return self.current_repository_api
+        if access_mode == PUBLIC_REPOSITORY_ACCESS_MODE and not credential_required:
+            return self.public_repository_api
+        if access_mode == PRIVATE_CROSS_REPOSITORY_ACCESS_MODE and credential_required:
+            return self.private_cross_repository_api
+        raise ValueError("SOURCE_ACCESS_CONFIGURATION_INVALID")
 
     def observe_project(self, project: dict[str, Any], observed_at: str) -> SourceResult:
         project_id = project["project_id"]
@@ -121,7 +162,10 @@ class GithubReadOnlyAdapter:
                 reason="CROSS_REPO_READ_CREDENTIAL_UNAVAILABLE",
             )
         self._assert_allowlisted(project_id, repository)
-        if project.get("cross_repo_credential_required") and not os.environ.get("DBA_COCKPIT_READ_TOKEN"):
+        if (
+            project.get("cross_repo_credential_required")
+            and self.private_cross_repository_api is None
+        ):
             return SourceResult.unavailable(
                 source_id=f"github:{repository}",
                 project_id=project_id,
@@ -131,18 +175,30 @@ class GithubReadOnlyAdapter:
                 reason="CROSS_REPO_READ_CREDENTIAL_UNAVAILABLE",
             )
         try:
-            metadata = self.api.request_json(f"repos/{repository}")
+            api = self._api_for_project(project)
+        except (KeyError, ValueError) as exc:
+            return SourceResult.unavailable(
+                source_id=f"github:{repository}",
+                project_id=project_id,
+                source_reference=f"https://github.com/{repository}",
+                observed_at=observed_at,
+                reason=f"GITHUB_READ_FAILED:{type(exc).__name__}",
+            )
+        if api is None:
+            raise AssertionError("PRIVATE_CROSS_REPOSITORY_API_REQUIRED")
+        try:
+            metadata = api.request_json(f"repos/{repository}")
             branch = project.get("branch") or metadata.get("default_branch") or "main"
-            commit = self.api.request_json(f"repos/{repository}/commits/{quote(branch, safe='')}")
+            commit = api.request_json(f"repos/{repository}/commits/{quote(branch, safe='')}")
             revision = commit["sha"]
             tree_digest = commit.get("commit", {}).get("tree", {}).get("sha")
-            runs = self.api.request_json(
+            runs = api.request_json(
                 f"repos/{repository}/actions/runs?branch={quote(branch, safe='')}&status=completed&per_page=5"
             )
-            pulls = self.api.request_json(f"repos/{repository}/pulls?state=open&per_page=100")
-            issues = self.api.request_json(f"repos/{repository}/issues?state=open&per_page=100")
-            release = self.api.request_json(f"repos/{repository}/releases/latest", allow_404=True)
-            status_file = self._status_file(project, repository, revision, branch)
+            pulls = api.request_json(f"repos/{repository}/pulls?state=open&per_page=100")
+            issues = api.request_json(f"repos/{repository}/issues?state=open&per_page=100")
+            release = api.request_json(f"repos/{repository}/releases/latest", allow_404=True)
+            status_file = self._status_file(api, project, repository, revision, branch)
             payload = {
                 "repository": repository,
                 "default_branch": branch,
@@ -216,6 +272,7 @@ class GithubReadOnlyAdapter:
 
     def _status_file(
         self,
+        api: GithubApi,
         project: dict[str, Any],
         repository: str,
         revision: str,
@@ -225,12 +282,12 @@ class GithubReadOnlyAdapter:
         if not path:
             return {"status": "NOT_DECLARED", "path": None, "revision_relation": "NOT_APPLICABLE"}
         encoded = quote(path, safe="/")
-        content = self.api.request_json(
+        content = api.request_json(
             f"repos/{repository}/contents/{encoded}?ref={quote(revision, safe='')}", allow_404=True
         )
         if content is None:
             return {"status": "NOT_FOUND", "path": path, "revision_relation": "NOT_ASSESSED"}
-        history = self.api.request_json(
+        history = api.request_json(
             f"repos/{repository}/commits?path={encoded}&sha={quote(branch, safe='')}&per_page=1"
         )
         latest = history[0] if isinstance(history, list) and history else {}
