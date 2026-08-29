@@ -260,6 +260,7 @@ class WeeklyCoordinator:
         counts = {
             "projects": len(projects),
             "stable": status_counts.get("STABLE", 0),
+            "observed": status_counts.get("OBSERVED", 0),
             "attention": status_counts.get("ATTENTION", 0),
             "blind_spot": status_counts.get("BLIND_SPOT", 0),
             "not_assessed": status_counts.get("NOT_ASSESSED", 0),
@@ -275,10 +276,18 @@ class WeeklyCoordinator:
                 "not_assessed_count", 0
             ),
         }
+        known_project_count = sum(
+            counts[key] for key in ("stable", "observed", "attention", "blind_spot", "not_assessed")
+        )
+        counts["other"] = counts["projects"] - known_project_count
+        counts["project_count_sum_match"] = (
+            known_project_count + counts["other"] == counts["projects"]
+        )
         weekly_sentence = (
             f"本周共纳入{counts['projects']}个项目视图：{counts['stable']}个稳定，"
-            f"{counts['attention']}个需关注，{counts['blind_spot']}个盲区，"
-            f"{counts['not_assessed']}个尚未评估。共收集{counts['discovered_count']}项信号，"
+            f"{counts['observed']}个已观察，{counts['attention']}个需关注，"
+            f"{counts['blind_spot']}个盲区，{counts['not_assessed']}个尚未评估，"
+            f"{counts['other']}个其他状态。共收集{counts['discovered_count']}项信号，"
             f"其中{counts['admitted_count']}项已通过证据准入，"
             f"{counts['rejected_or_pending_count']}项被拒绝或待确认；"
             f"有{counts['decisions']}项需要人工决定。"
