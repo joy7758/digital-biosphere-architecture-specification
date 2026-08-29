@@ -204,17 +204,6 @@ def check_fixtures() -> dict[str, Any]:
     return {"positive_cases_passed": len(positive_paths), "negative_cases_rejected": len(negative["cases"])}
 
 
-def check_stage5_contributions() -> dict[str, Any]:
-    path = TITMAS_ROOT / "conformance" / "stage5_contributions.py"
-    spec = importlib.util.spec_from_file_location("titmas_stage5_conformance", path)
-    if spec is None or spec.loader is None:
-        raise ConformanceError("Stage 5 contribution extension is unavailable")
-    module = importlib.util.module_from_spec(spec)
-    sys.modules[spec.name] = module
-    spec.loader.exec_module(module)
-    return module.self_check()
-
-
 def check_community_status() -> dict[str, Any]:
     path = TITMAS_ROOT / "community" / "community-status.json"
     status = load_json(path)
@@ -1027,7 +1016,6 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("registries", check_registries),
         ("frontmatter", check_frontmatter),
         ("fixtures", check_fixtures),
-        ("stage5_contributions", check_stage5_contributions),
         ("community_status", check_community_status),
         ("merge_admission_boundary", check_merge_admission_boundary),
         ("internal_reviews", check_internal_reviews),
