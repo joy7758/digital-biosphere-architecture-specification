@@ -31,7 +31,7 @@ permissions:
 
 jobs:
   candidate:
-    if: github.event_name == 'workflow_dispatch' || vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED == 'true'
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED == 'true')
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
@@ -39,6 +39,54 @@ jobs:
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
         with:
           persist-credentials: false
+      - name: Resolve execution mode
+        id: resolve
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_MODE: ${{ inputs.mode }}
+          DISPATCH_SEQUENCE: ${{ inputs.pilot_sequence }}
+        run: |
+          case "$EVENT_NAME" in
+            schedule)
+              resolved_mode="live-read-only-pilot"
+              resolved_sequence="second"
+              resolved_artifact_kind="live"
+              ;;
+            workflow_dispatch)
+              case "$DISPATCH_MODE" in
+                live-read-only-pilot)
+                  resolved_mode="live-read-only-pilot"
+                  resolved_artifact_kind="live"
+                  ;;
+                demo)
+                  resolved_mode="demo"
+                  resolved_artifact_kind="demo"
+                  ;;
+                *)
+                  echo "Unsupported dispatch mode" >&2
+                  exit 1
+                  ;;
+              esac
+              case "$DISPATCH_SEQUENCE" in
+                first|second)
+                  resolved_sequence="$DISPATCH_SEQUENCE"
+                  ;;
+                *)
+                  echo "Unsupported pilot sequence" >&2
+                  exit 1
+                  ;;
+              esac
+              ;;
+            *)
+              echo "Unsupported event" >&2
+              exit 1
+              ;;
+          esac
+          {
+            echo "resolved_mode=$resolved_mode"
+            echo "resolved_sequence=$resolved_sequence"
+            echo "resolved_artifact_kind=$resolved_artifact_kind"
+          } >> "$GITHUB_OUTPUT"
       - name: Run weekly cockpit tests
         working-directory: digital-biosphere-architecture
         run: python3 -m unittest discover -s cockpit/weekly/tests -v
@@ -47,14 +95,14 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           DBA_COCKPIT_READ_TOKEN: ${{ secrets.DBA_COCKPIT_READ_TOKEN }}
-          COCKPIT_MODE: ${{ inputs.mode || 'demo' }}
-          PILOT_SEQUENCE: ${{ inputs.pilot_sequence || 'first' }}
+          COCKPIT_MODE: ${{ steps.resolve.outputs.resolved_mode }}
+          PILOT_SEQUENCE: ${{ steps.resolve.outputs.resolved_sequence }}
         run: |
           python3 cockpit/weekly/run_weekly.py             --mode "$COCKPIT_MODE"             --pilot-sequence "$PILOT_SEQUENCE"             --output-dir /tmp/dba-weekly-cockpit
       - name: Write GitHub Actions Summary
         run: cat /tmp/dba-weekly-cockpit/latest.md >> "$GITHUB_STEP_SUMMARY"
       - name: Upload live pilot artifact bundle
-        if: inputs.mode == 'live-read-only-pilot'
+        if: steps.resolve.outputs.resolved_artifact_kind == 'live'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: dba-weekly-cockpit-live-pilot-${{ github.run_id }}
@@ -68,7 +116,7 @@ jobs:
           if-no-files-found: error
           retention-days: 14
       - name: Upload deterministic demo artifact bundle
-        if: inputs.mode == 'demo'
+        if: steps.resolve.outputs.resolved_artifact_kind == 'demo'
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: dba-weekly-cockpit-demo-${{ github.run_id }}
