@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import subprocess
@@ -94,18 +95,139 @@ class GithubApi:
             headers["Authorization"] = f"Bearer {self._token}"
         return Request(url, headers=headers, method="GET")
 
-    def request_json(self, reference: str, *, allow_404: bool = False) -> Any:
+    @staticmethod
+    def _read_bounded(response: Any, max_bytes: int) -> bytes:
+        body = response.read(max_bytes + 1)
+        if len(body) > max_bytes:
+            raise ValueError("SOURCE_RESPONSE_TOO_LARGE")
+        return body
+
+    def request_json_with_digest(
+        self,
+        reference: str,
+        *,
+        allow_404: bool = False,
+        max_bytes: int = 1_048_576,
+    ) -> tuple[Any, str | None]:
         try:
             with self._opener(self._request(reference), timeout=20) as response:
-                return json.loads(response.read().decode("utf-8"))
+                body = self._read_bounded(response, max_bytes)
+                return json.loads(body.decode("utf-8")), hashlib.sha256(body).hexdigest()
         except HTTPError as exc:
             if allow_404 and exc.code == 404:
-                return None
+                return None, None
             raise
 
-    def request_bytes(self, reference: str) -> bytes:
+    def request_json(self, reference: str, *, allow_404: bool = False) -> Any:
+        payload, _ = self.request_json_with_digest(reference, allow_404=allow_404)
+        return payload
+
+    def request_bytes(self, reference: str, *, max_bytes: int = 5_242_880) -> bytes:
         with self._opener(self._request(reference), timeout=30) as response:
-            return response.read()
+            return self._read_bounded(response, max_bytes)
+
+
+class GithubPublicSearchAdapter:
+    """Public metadata search through the existing GET-only GithubApi."""
+
+    def __init__(self, api: GithubApi | None = None) -> None:
+        token = os.environ.get("GH_TOKEN") or os.environ.get("GITHUB_TOKEN")
+        self.api = api or GithubApi(token=token)
+
+    @staticmethod
+    def _record(details, head, release, digest, observed_at):
+        license_value = details.get("license") or {}
+        return {
+            "source_kind": "GITHUB",
+            "name": details.get("name") or details.get("full_name") or "UNKNOWN",
+            "summary": str(details.get("description") or "")[:800],
+            "source_reference": details.get("html_url") or f"https://github.com/{details.get('full_name', '')}",
+            "repository": details.get("full_name"),
+            "default_branch": details.get("default_branch"),
+            "head_sha": head.get("sha") if isinstance(head, dict) else None,
+            "latest_release": release.get("tag_name") if isinstance(release, dict) else None,
+            "updated_at": details.get("updated_at"),
+            "pushed_at": details.get("pushed_at"),
+            "archived": bool(details.get("archived")),
+            "fork": bool(details.get("fork")),
+            "license_status": "LICENSE_UI_ONLY" if license_value.get("spdx_id") else "LICENSE_NOT_FOUND",
+            "license_spdx_ui": license_value.get("spdx_id"),
+            "source_digest_sha256": digest,
+            "observed_at": observed_at,
+        }
+
+    def observe_repositories(self, repositories: list[str], observed_at: str) -> dict[str, Any]:
+        records, evidence = [], []
+        for repository in sorted(set(repositories)):
+            try:
+                details, details_digest = self.api.request_json_with_digest(f"repos/{repository}")
+                branch = details.get("default_branch", "main")
+                head, head_digest = self.api.request_json_with_digest(
+                    f"repos/{repository}/commits/{quote(branch, safe='')}"
+                )
+                release, release_digest = self.api.request_json_with_digest(
+                    f"repos/{repository}/releases/latest", allow_404=True
+                )
+                digest = hashlib.sha256(json.dumps(
+                    [details_digest, head_digest, release_digest],
+                    sort_keys=True,
+                    separators=(",", ":"),
+                ).encode("utf-8")).hexdigest()
+                records.append(self._record(details, head, release, digest, observed_at))
+                evidence.append({
+                    "source": "GITHUB_REGISTERED",
+                    "url": f"https://api.github.com/repos/{repository}",
+                    "method": "GET",
+                    "observed_at": observed_at,
+                    "source_digest_sha256": digest,
+                })
+            except (HTTPError, URLError, TimeoutError, ValueError, KeyError, TypeError, json.JSONDecodeError) as exc:
+                evidence.append({
+                    "source": "GITHUB_REGISTERED",
+                    "url": f"https://api.github.com/repos/{repository}",
+                    "method": "GET",
+                    "observed_at": observed_at,
+                    "reason": type(exc).__name__,
+                    "partial_payload_used": False,
+                })
+        status = "AVAILABLE" if records or not repositories else "NOT_ASSESSED_SOURCE_UNAVAILABLE"
+        return {"status": status, "records": records, "evidence": evidence}
+
+    def search(self, query: str, max_results: int, observed_at: str) -> dict[str, Any]:
+        reference = (
+            f"search/repositories?q={quote(query, safe='')}"
+            f"&sort=updated&order=desc&per_page={max_results}"
+        )
+        try:
+            payload, digest = self.api.request_json_with_digest(reference)
+            repositories = [
+                item.get("full_name") for item in payload.get("items", []) if item.get("full_name")
+            ][:max_results]
+            observed = self.observe_repositories(repositories, observed_at)
+            return {
+                "status": "AVAILABLE" if observed["records"] or not repositories else observed["status"],
+                "records": observed["records"],
+                "evidence": [{
+                    "source": "GITHUB_PUBLIC_SEARCH",
+                    "url": f"https://api.github.com/{reference}",
+                    "method": "GET",
+                    "observed_at": observed_at,
+                    "source_digest_sha256": digest,
+                }] + observed["evidence"],
+            }
+        except (HTTPError, URLError, TimeoutError, ValueError, KeyError, TypeError, json.JSONDecodeError) as exc:
+            return {
+                "status": "NOT_ASSESSED_SOURCE_UNAVAILABLE",
+                "records": [],
+                "evidence": [{
+                    "source": "GITHUB_PUBLIC_SEARCH",
+                    "url": f"https://api.github.com/{reference}",
+                    "method": "GET",
+                    "observed_at": observed_at,
+                    "reason": type(exc).__name__,
+                    "partial_payload_used": False,
+                }],
+            }
 
 
 class GithubReadOnlyAdapter:

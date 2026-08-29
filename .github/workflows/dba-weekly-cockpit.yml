@@ -11,6 +11,7 @@ on:
         options:
           - live-read-only-pilot
           - demo
+          - capability-discovery-auto
       pilot_sequence:
         description: Authorized pilot sequence
         required: true
@@ -21,6 +22,7 @@ on:
           - second
   schedule:
     - cron: "0 1 * * *"
+    - cron: "0 1 * * 1"
 
 permissions:
   contents: read
@@ -31,7 +33,8 @@ permissions:
 
 jobs:
   candidate:
-    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED == 'true')
+    # Legacy gate contract: if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED == 'true')
+    if: (github.event_name == 'workflow_dispatch' && inputs.mode != 'capability-discovery-auto') || (github.event_name == 'schedule' && vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED == 'true') && github.event.schedule == '0 1 * * *'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
@@ -128,9 +131,79 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
+  capability-discovery:
+    if: (github.event_name == 'workflow_dispatch' && github.event.inputs['mode'] == 'capability-discovery-auto') || (github.event_name == 'schedule' && github.event.schedule == '0 1 * * 1' && vars.DBA_AUTOMATIC_CAPABILITY_DISCOVERY_ENABLED == 'true')
+    permissions:
+      contents: read
+      actions: read
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - name: Resolve capability discovery sequence
+        id: capability
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          DISPATCH_SEQUENCE: ${{ github.event.inputs['pilot_sequence'] }}
+        run: |
+          if [ "$EVENT_NAME" = "schedule" ]; then
+            sequence="second"
+          else
+            case "$DISPATCH_SEQUENCE" in
+              first|second) sequence="$DISPATCH_SEQUENCE" ;;
+              *) echo "Unsupported discovery sequence" >&2; exit 1 ;;
+            esac
+          fi
+          echo "sequence=$sequence" >> "$GITHUB_OUTPUT"
+      - name: Run weekly cockpit tests
+        working-directory: digital-biosphere-architecture
+        run: python3 -m unittest discover -s cockpit/weekly/tests -v
+      - name: Run capability discovery tests
+        working-directory: digital-biosphere-architecture
+        run: python3 -m unittest discover -s cockpit/weekly/discovery/tests -v
+      - name: Generate bounded automatic capability discovery bundle
+        working-directory: digital-biosphere-architecture
+        env:
+          GH_TOKEN: ${{ github.token }}
+          DISCOVERY_SEQUENCE: ${{ steps.capability.outputs.sequence }}
+        run: |
+          python3 cockpit/weekly/run_weekly.py \
+            --mode capability-discovery-auto \
+            --pilot-sequence "$DISCOVERY_SEQUENCE" \
+            --output-dir /tmp/dba-automatic-capability-discovery
+      - name: Write capability discovery summary
+        run: cat /tmp/dba-automatic-capability-discovery/latest.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Upload automatic capability discovery artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: dba-automatic-capability-discovery-${{ github.run_id }}
+          path: |
+            /tmp/dba-automatic-capability-discovery/latest.json
+            /tmp/dba-automatic-capability-discovery/latest.md
+            /tmp/dba-automatic-capability-discovery/dashboard.html
+            /tmp/dba-automatic-capability-discovery/cell-run-summary.json
+            /tmp/dba-automatic-capability-discovery/capability-discovery-records.json
+            /tmp/dba-automatic-capability-discovery/reference-absorption-registry.json
+            /tmp/dba-automatic-capability-discovery/discovery-delta.json
+            /tmp/dba-automatic-capability-discovery/source-evidence-manifest.json
+            /tmp/dba-automatic-capability-discovery/automatic-discovery-boundary-report.json
+            /tmp/dba-automatic-capability-discovery/AUTOMATIC-CAPABILITY-DISCOVERY-ACTIVATION-REPORT.md
+          if-no-files-found: error
+          retention-days: 30
+
   schedule-disabled:
-    if: github.event_name == 'schedule' && vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED != 'true'
+    if: github.event_name == 'schedule' && vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED != 'true' && github.event.schedule == '0 1 * * *'
     runs-on: ubuntu-24.04
     steps:
       - name: Record disabled schedule
         run: echo "定时周检未启用" >> "$GITHUB_STEP_SUMMARY"
+
+  capability-discovery-schedule-disabled:
+    if: github.event_name == 'schedule' && github.event.schedule == '0 1 * * 1' && vars.DBA_AUTOMATIC_CAPABILITY_DISCOVERY_ENABLED != 'true'
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Record disabled capability discovery schedule
+        run: echo "自动能力发现定时未启用" >> "$GITHUB_STEP_SUMMARY"

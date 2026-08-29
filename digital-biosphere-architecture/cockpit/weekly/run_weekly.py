@@ -19,6 +19,7 @@ try:
     from .sources.github_readonly import GithubReadOnlyAdapter
     from .sources.public_http_readonly import PublicHttpReadOnlyAdapter
     from .sources.source_result import AVAILABLE, NOT_ASSESSED_CREDENTIAL_UNAVAILABLE, SourceResult
+    from .discovery import build_capability_discovery_context
 except ImportError:  # Direct execution from cockpit/weekly/run_weekly.py.
     from coordinator import WeeklyCoordinator
     from cells.human_view import HumanViewCell
@@ -28,6 +29,7 @@ except ImportError:  # Direct execution from cockpit/weekly/run_weekly.py.
     from sources.github_readonly import GithubReadOnlyAdapter
     from sources.public_http_readonly import PublicHttpReadOnlyAdapter
     from sources.source_result import AVAILABLE, NOT_ASSESSED_CREDENTIAL_UNAVAILABLE, SourceResult
+    from discovery import build_capability_discovery_context
 
 
 WEEKLY = Path(__file__).resolve().parent
@@ -35,7 +37,9 @@ DBA_ROOT = WEEKLY.parents[1]
 REPOSITORY_ROOT = DBA_ROOT.parent
 DEMO_MODE = "demo"
 LIVE_MODE = "live-read-only-pilot"
+CAPABILITY_MODE = "capability-discovery-auto"
 LIVE_SNAPSHOT_MODE = "LIVE_READ_ONLY_OBSERVATION_PILOT"
+CAPABILITY_SNAPSHOT_MODE = "AUTOMATIC_CAPABILITY_DISCOVERY"
 WORKFLOW_FILE = "dba-weekly-cockpit.yml"
 
 
@@ -100,6 +104,52 @@ def load_demo_context(as_of: str) -> dict[str, Any]:
 def load_context(as_of: str) -> dict[str, Any]:
     """Backward-compatible deterministic context used by v0.1 callers."""
     return load_demo_context(as_of)
+
+
+def load_capability_context(as_of: str, sequence: str) -> dict[str, Any]:
+    context = _base_context(as_of)
+    repository = os.environ.get(
+        "GITHUB_REPOSITORY", "joy7758/digital-biosphere-architecture-specification"
+    )
+    run_id = os.environ.get("GITHUB_RUN_ID", f"LOCAL-{as_of}")
+    capability = build_capability_discovery_context(
+        WEEKLY,
+        as_of,
+        repository=repository,
+        workflow=WORKFLOW_FILE,
+        run_id=run_id,
+    )
+    source = capability["capability_source_summary"]
+    context.update(capability)
+    context.update({
+        "snapshot_mode": CAPABILITY_SNAPSHOT_MODE,
+        "deterministic": False,
+        "pilot_sequence": sequence,
+        "run_identity": {
+            "run_id": run_id,
+            "repository": repository,
+            "workflow": WORKFLOW_FILE,
+            "capability_discovery_sequence": sequence,
+        },
+        "source_observations": {},
+        "public_http_observations": [],
+        "source_observation_records": capability[
+            "capability_source_evidence_manifest"
+        ].get("requests", []),
+        "source_observation_summary": {
+            "source_mode": "BOUNDED_PUBLIC_CAPABILITY_DISCOVERY",
+            "live_source_success_count": capability[
+                "capability_source_evidence_manifest"
+            ].get("available_source_batches", 0),
+            "not_assessed_count": source.get("source_not_assessed_count", 0),
+            "partial_coverage": source.get("status")
+            != "PASS",
+            "cross_repo_read_credential": "NOT_USED",
+        },
+        "previous_snapshot": None,
+        "source_mutation": False,
+    })
+    return context
 
 
 def _credential_unavailable(project: dict[str, Any], observed_at: str) -> SourceResult:
@@ -306,10 +356,87 @@ def _apply_live_result_projection(
     return boundary
 
 
+def _apply_capability_projection(
+    snapshot: dict[str, Any], output_dir: Path, snapshot_name: str
+) -> dict[str, Any]:
+    capability = snapshot.get("capability_discovery", {})
+    boundary = {
+        **snapshot.get("capability_discovery_boundary", {}),
+        "automatic_capability_discovery": "ACTIVE",
+        "ac0_automated": True,
+        "ac1_automated": True,
+        "ac2_automated": False,
+        "reference_only": True,
+        "code_adopted": 0,
+        "runtime_changed": False,
+        "private_discovery_token_used": False,
+        "exposed_token_used": False,
+        "private_repository_scanned": False,
+    }
+    snapshot.update({
+        "AUTOMATIC_CAPABILITY_DISCOVERY": "ACTIVE",
+        "AC0_AUTOMATED": True,
+        "AC1_AUTOMATED": True,
+        "AC2_AUTOMATED": False,
+        "REFERENCE_ONLY": True,
+        "CODE_ADOPTED": 0,
+        "RUNTIME_CHANGED": False,
+    })
+    files = {
+        "capability-discovery-records.json": {
+            "schema": "dba.capability_discovery_records.v0.1",
+            "run_identity": snapshot.get("run_identity", {}),
+            "observed_at": snapshot["observed_at"],
+            "records": snapshot.get("capability_discovery_records", []),
+        },
+        "reference-absorption-registry.json": snapshot.get(
+            "capability_reference_registry", {}
+        ),
+        "discovery-delta.json": snapshot.get("capability_discovery_delta", {}),
+        "source-evidence-manifest.json": snapshot.get(
+            "capability_source_evidence_manifest", {}
+        ),
+        "automatic-discovery-boundary-report.json": boundary,
+    }
+    for name, value in files.items():
+        (output_dir / name).write_text(canonical_json(value), encoding="utf-8")
+    report = [
+        "# Automatic Capability Discovery Activation Report",
+        "",
+        f"- 自动化范围：{boundary['automation_scope']}",
+        "- 来源范围：限定公开 arXiv、GitHub 元数据、登记来源与 DCDAT-001。",
+        f"- 基线候选数：7",
+        f"- 本轮原始候选：{capability.get('raw_candidate_count', 0)}",
+        f"- 新候选：{capability.get('new_reference_count', 0)}",
+        f"- 更新候选：{capability.get('updated_reference_count', 0)}",
+        f"- 冲突：{capability.get('conflict_count', 0)}",
+        f"- AC-1参考吸收：{capability.get('reference_absorbed_count', 0)}",
+        f"- AC-2评审候选：{sum(item.get('ac2_readiness_status') == 'REVIEW_ELIGIBLE' for item in snapshot.get('capability_reference_registry', {}).get('entries', []))}",
+        "- 代码采用：0",
+        "- 运行时变化：否",
+        f"- 前次注册表已读取：{snapshot.get('memory', {}).get('PREVIOUS_CAPABILITY_REGISTRY_LOADED', False)}",
+        f"- 注册表摘要：{snapshot.get('capability_registry_digest', 'NOT_APPLICABLE')}",
+        "- 已知限制：不声称开放世界完整性，不执行或评价候选实现。",
+        "",
+    ]
+    (output_dir / "AUTOMATIC-CAPABILITY-DISCOVERY-ACTIVATION-REPORT.md").write_text(
+        "\n".join(report), encoding="utf-8"
+    )
+    HumanViewCell().render(snapshot, output_dir)
+    (output_dir / snapshot_name).write_text(
+        canonical_json(snapshot), encoding="utf-8"
+    )
+    return boundary
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--output-dir", type=Path, required=True)
-    parser.add_argument("--mode", choices=(DEMO_MODE, LIVE_MODE), default=DEMO_MODE)
+    parser.add_argument(
+        "--mode",
+        choices=(DEMO_MODE, LIVE_MODE, CAPABILITY_MODE),
+        default=DEMO_MODE,
+    )
     parser.add_argument("--pilot-sequence", choices=("first", "second"), default="first")
     parser.add_argument("--demo", action="store_true", help="Backward-compatible alias for --mode demo")
     parser.add_argument("--as-of")
@@ -324,12 +451,17 @@ def main() -> int:
     if mode == DEMO_MODE:
         context = load_demo_context(as_of)
         snapshot_name = "weekly-snapshot-2026-W35.json"
-    else:
+    elif mode == LIVE_MODE:
         context = load_live_context(as_of, args.pilot_sequence)
+        snapshot_name = "latest.json"
+    else:
+        context = load_capability_context(as_of, args.pilot_sequence)
         snapshot_name = "latest.json"
     snapshot = WeeklyCoordinator().run(context, output_dir, snapshot_name)
     if mode == LIVE_MODE:
         _apply_live_result_projection(snapshot, context, output_dir, snapshot_name)
+    elif mode == CAPABILITY_MODE:
+        _apply_capability_projection(snapshot, output_dir, snapshot_name)
     print(f"DBA_WEEKLY_COCKPIT_STATUS={snapshot['overall_status']}")
     print(f"SNAPSHOT={output_dir / snapshot_name}")
     print(f"DASHBOARD={output_dir / 'dashboard.html'}")

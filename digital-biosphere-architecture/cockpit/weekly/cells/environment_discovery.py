@@ -42,6 +42,22 @@ class EnvironmentDiscoveryCell(WeeklyCell):
     cell_id = "ENVIRONMENT_DISCOVERY_CELL"
 
     def _run(self, context: dict[str, Any]):
+        if context.get("snapshot_mode") == "AUTOMATIC_CAPABILITY_DISCOVERY":
+            summary = context.get("capability_source_summary", {})
+            source_status = summary.get("status", "DISCOVERY_UNAVAILABLE")
+            status = (
+                "PASS"
+                if source_status == "PASS"
+                else "NOT_ASSESSED"
+                if source_status == "DISCOVERY_UNAVAILABLE"
+                else "PASS_WITH_CANDIDATES"
+            )
+            return make_result(
+                self.cell_id,
+                status,
+                "Bounded public capability sources were observed without executing external content.",
+                outputs={"capability_source_summary": summary},
+            )
         if context.get("snapshot_mode") == "LIVE_READ_ONLY_OBSERVATION_PILOT":
             return self._run_live(context)
         as_of = context.get("as_of", "UNKNOWN")

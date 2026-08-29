@@ -36,6 +36,7 @@ class HumanViewCell(WeeklyCell):
     def render_markdown(snapshot: dict[str, Any]) -> str:
         counts = snapshot.get("counts", {})
         memory = snapshot.get("memory", {})
+        capability = snapshot.get("capability_discovery", {})
         lines = [
             "# DBA 每周驾驶舱",
             "",
@@ -103,6 +104,40 @@ class HumanViewCell(WeeklyCell):
                 "",
             ]
         )
+        if capability:
+            lines.extend(
+                [
+                    "## 外部能力发现",
+                    "",
+                    capability.get(
+                        "human_summary_zh",
+                        "本轮外部能力发现结果未形成可用摘要。",
+                    ),
+                    "",
+                    f"- 自动化范围：{capability.get('automation_scope', 'AC0_DISCOVERY_AND_AC1_REFERENCE_ONLY')}",
+                    f"- 原始候选：{capability.get('raw_candidate_count', 0)}",
+                    f"- 新参考：{capability.get('new_reference_count', 0)}",
+                    f"- 更新参考：{capability.get('updated_reference_count', 0)}",
+                    f"- 身份冲突：{capability.get('conflict_count', 0)}",
+                    f"- 来源未评估：{capability.get('source_not_assessed_count', 0)}",
+                    f"- 代码采用：{capability.get('code_adopted', 0)}",
+                    f"- 运行时变化：{capability.get('runtime_changed', False)}",
+                    f"- AC-2自动化：{capability.get('ac2_automated', False)}",
+                    "",
+                ]
+            )
+            for item in snapshot.get("capability_highlights", [])[:5]:
+                lines.extend(
+                    [
+                        f"### {item.get('name', item.get('candidate_id', '候选'))}",
+                        "",
+                        f"- 状态：{item.get('observation_state', 'UNKNOWN')}",
+                        f"- 能力组：{item.get('capability_group', 'OTHER_OR_UNCLASSIFIED')}",
+                        f"- 身份：{item.get('identity_status', 'UNKNOWN')}",
+                        f"- AC-2：{item.get('ac2_readiness_status', 'NOT_READY')}",
+                        "",
+                    ]
+                )
         for item in snapshot.get("discoveries", []):
             lines.extend(
                 [

@@ -41,6 +41,9 @@
   const cells = snapshot.cell_runs || [];
   const counts = snapshot.counts || {};
   const memory = snapshot.memory || {};
+  const capability = snapshot.capability_discovery || {};
+  const capabilityHighlights = snapshot.capability_highlights || [];
+  const capabilityGroups = snapshot.capability_groups || [];
   const livePilot = snapshot.mode === "LIVE_READ_ONLY_OBSERVATION_PILOT";
   const coverageStatus = first(snapshot.source_coverage_status, counts.source_not_assessed > 0 ? "PARTIAL" : "COMPLETE");
 
@@ -95,6 +98,35 @@
       <small>观察状态：${escapeHtml(first(item.observed_state, item.current_state, item.status, "UNKNOWN"))}</small>
     </article>`).join("") || `<p>当前没有登记的发现信号。</p>`;
 
+  if (Object.keys(capability).length) {
+    el("capability-discovery-panel").hidden = false;
+    el("capability-summary").innerHTML = `
+      <div class="meta-row"><span>External Capability Discovery · 外部能力发现</span><span>AC-1 Reference Only</span></div>
+      <h3>自动发现与参考吸收</h3>
+      <p>${escapeHtml(first(capability.human_summary_zh, "本轮没有可用摘要。"))}</p>
+      <div class="capability-metrics">
+        ${[
+          ["原始候选", capability.raw_candidate_count || 0],
+          ["新参考", capability.new_reference_count || 0],
+          ["更新", capability.updated_reference_count || 0],
+          ["冲突", capability.conflict_count || 0],
+          ["未评估来源", capability.source_not_assessed_count || 0],
+          ["代码采用", capability.code_adopted || 0],
+          ["运行时变化", capability.runtime_changed ? "是" : "否"]
+        ].map(([label, value]) => `<span><strong>${escapeHtml(value)}</strong>${escapeHtml(label)}</span>`).join("")}
+      </div>`;
+    const highlights = capabilityHighlights.slice(0, 5).map((item) => `
+      <article class="signal-card">
+        <span class="status-pill neutral">${escapeHtml(first(item.observation_state, "CONTINUING_REFERENCE"))}</span>
+        <h3>${escapeHtml(first(item.name, item.candidate_id))}</h3>
+        <p>${escapeHtml(first(item.capability_group, "OTHER_OR_UNCLASSIFIED"))}</p>
+        <small>身份：${escapeHtml(first(item.identity_status, "UNKNOWN"))} · AC-2：${escapeHtml(first(item.ac2_readiness_status, "NOT_READY"))}</small>
+      </article>`).join("");
+    const groups = capabilityGroups.map((group) => `
+      <div class="cell-row"><strong>${escapeHtml(group.group)}</strong><br>${escapeHtml((group.members || []).join(" · "))}</div>`).join("");
+    el("capability-groups").innerHTML = highlights + groups || "<p>没有可展示的能力组。</p>";
+  }
+
   el("change-list").innerHTML = changeGroups.map((item) => `
     <article class="timeline-item">
       <time>${escapeHtml(first(item.observed_at, snapshot.observed_at, snapshot.as_of))}</time>
@@ -125,5 +157,9 @@
     <div class="cell-row">原始观察时间 · ${escapeHtml(snapshot.observed_at)}</div>
     <div class="cell-row">发现可用性 · ${escapeHtml(first(snapshot.discovery_state, "UNKNOWN"))}</div>
     <div class="cell-row">Memory · ${escapeHtml(first(memory.status, "NOT_ASSESSED"))}</div>
+    <div class="cell-row">外部能力发现 · ${escapeHtml(first(capability.status, "NOT_APPLICABLE"))}</div>
+    <div class="cell-row">自动化边界 · ${escapeHtml(first(capability.automation_scope, "NOT_APPLICABLE"))}</div>
+    <div class="cell-row">代码采用 · ${escapeHtml(first(capability.code_adopted, 0))}</div>
+    <div class="cell-row">运行时变化 · ${escapeHtml(first(capability.runtime_changed, false))}</div>
     ${projectEvidence}${cellEvidence}`;
 })();

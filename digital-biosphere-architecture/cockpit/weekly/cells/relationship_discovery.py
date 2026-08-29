@@ -11,6 +11,15 @@ class RelationshipDiscoveryCell(WeeklyCell):
     cell_id = "RELATIONSHIP_DISCOVERY_CELL"
 
     def _run(self, context: dict[str, Any]):
+        if context.get("snapshot_mode") == "AUTOMATIC_CAPABILITY_DISCOVERY":
+            relationships = list(context.get("capability_relationship_records", []))
+            return make_result(
+                self.cell_id,
+                "PASS",
+                "Exact paper, repository, product, reproduction, and shared-repository boundaries were preserved.",
+                observations=relationships,
+                outputs={"capability_relationship_records": relationships},
+            )
         as_of = context.get("as_of", "UNKNOWN")
         source_ref = source_value(context, "source_paths", {}).get("source_registry", "UNKNOWN")
         records = [
