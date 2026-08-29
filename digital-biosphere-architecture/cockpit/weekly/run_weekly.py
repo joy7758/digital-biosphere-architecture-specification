@@ -400,11 +400,36 @@ def _apply_capability_projection(
     }
     for name, value in files.items():
         (output_dir / name).write_text(canonical_json(value), encoding="utf-8")
+    memory = snapshot.get("memory", {})
+    run_identity = snapshot.get("run_identity", {})
+    run_id = run_identity.get("run_id", "UNKNOWN")
+    sequence = run_identity.get("capability_discovery_sequence", "UNKNOWN")
+    discovery_schedule = os.environ.get(
+        "DBA_AUTOMATIC_CAPABILITY_DISCOVERY_ENABLED", "NOT_SET"
+    )
+    full_weekly_schedule = os.environ.get(
+        "DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED", "NOT_SET"
+    )
+    previous_run_id = memory.get("PREVIOUS_CAPABILITY_RUN_ID") or "NOT_APPLICABLE"
+    previous_artifact_id = (
+        memory.get("PREVIOUS_CAPABILITY_ARTIFACT_ID") or "NOT_APPLICABLE"
+    )
+    two_run_result = (
+        "PASS_PREVIOUS_SUCCESSFUL_MAIN_ARTIFACT_LOADED"
+        if memory.get("PREVIOUS_CAPABILITY_REGISTRY_LOADED") is True
+        else "FIRST_RUN_BOOTSTRAPPED_FROM_DCDAT_001"
+    )
     report = [
         "# Automatic Capability Discovery Activation Report",
         "",
         f"- 自动化范围：{boundary['automation_scope']}",
         "- 来源范围：限定公开 arXiv、GitHub 元数据、登记来源与 DCDAT-001。",
+        f"- 本轮序列：{sequence}",
+        f"- 本轮运行 ID：{run_id}",
+        f"- 本轮运行状态：{snapshot.get('overall_status', 'UNKNOWN')}",
+        f"- 两轮验证状态：{two_run_result}",
+        f"- 前次运行 ID：{previous_run_id}",
+        f"- 前次 Artifact ID：{previous_artifact_id}",
         f"- 基线候选数：7",
         f"- 本轮原始候选：{capability.get('raw_candidate_count', 0)}",
         f"- 新候选：{capability.get('new_reference_count', 0)}",
@@ -414,8 +439,12 @@ def _apply_capability_projection(
         f"- AC-2评审候选：{sum(item.get('ac2_readiness_status') == 'REVIEW_ELIGIBLE' for item in snapshot.get('capability_reference_registry', {}).get('entries', []))}",
         "- 代码采用：0",
         "- 运行时变化：否",
-        f"- 前次注册表已读取：{snapshot.get('memory', {}).get('PREVIOUS_CAPABILITY_REGISTRY_LOADED', False)}",
+        f"- 前次注册表已读取：{memory.get('PREVIOUS_CAPABILITY_REGISTRY_LOADED', False)}",
+        f"- 前次注册表摘要：{snapshot.get('capability_discovery_delta', {}).get('previous_registry_digest', 'NOT_APPLICABLE')}",
         f"- 注册表摘要：{snapshot.get('capability_registry_digest', 'NOT_APPLICABLE')}",
+        f"- 自动发现定时变量：{discovery_schedule}",
+        f"- 完整周检定时变量：{full_weekly_schedule}",
+        f"- 最新驾驶舱制品：dba-automatic-capability-discovery-{run_id}",
         "- 已知限制：不声称开放世界完整性，不执行或评价候选实现。",
         "",
     ]

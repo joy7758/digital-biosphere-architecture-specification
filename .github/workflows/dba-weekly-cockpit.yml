@@ -169,6 +169,8 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           DISCOVERY_SEQUENCE: ${{ steps.capability.outputs.sequence }}
+          DBA_AUTOMATIC_CAPABILITY_DISCOVERY_ENABLED: ${{ vars.DBA_AUTOMATIC_CAPABILITY_DISCOVERY_ENABLED }}
+          DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED: ${{ vars.DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED }}
         run: |
           python3 cockpit/weekly/run_weekly.py \
             --mode capability-discovery-auto \
