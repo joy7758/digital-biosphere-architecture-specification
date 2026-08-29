@@ -529,32 +529,6 @@ def validate_reviewer_assessment_v11(
             raise GroundingContractError("REVIEWER_ABSTENTION_REASON_REQUIRED")
 
 
-def validate_handoff_v11(handoff: dict[str, Any]) -> None:
-    for field in (
-        "grounding_status",
-        "resource_resolution_receipt_refs",
-        "preflight_result_ref",
-        "unresolved_required_references",
-        "from_role",
-        "to_role",
-    ):
-        if field not in handoff:
-            raise GroundingContractError(f"HANDOFF_{field.upper()}_MISSING")
-    if handoff["grounding_status"] not in GROUNDING_STATUSES:
-        raise GroundingContractError("HANDOFF_GROUNDING_STATUS_INVALID")
-    if (
-        handoff["from_role"] in {"Contributor", "RevisionResponse"}
-        and handoff["to_role"] == "Reviewer"
-        and handoff["grounding_status"] != "GROUNDED"
-    ):
-        raise GroundingContractError("HANDOFF_COMMIT_REJECTED")
-    if (
-        handoff["grounding_status"] == "GROUNDED"
-        and handoff["unresolved_required_references"]
-    ):
-        raise GroundingContractError("GROUNDED_HANDOFF_HAS_UNRESOLVED_REFERENCE")
-
-
 def complete_candidate_validation(
     preflight: dict[str, Any],
     reviewer: dict[str, Any] | None,
@@ -643,6 +617,5 @@ __all__ = [
     "run_candidate_preflight",
     "run_preflight_with_single_revision",
     "validate_contributor_candidate_v11",
-    "validate_handoff_v11",
     "validate_reviewer_assessment_v11",
 ]
