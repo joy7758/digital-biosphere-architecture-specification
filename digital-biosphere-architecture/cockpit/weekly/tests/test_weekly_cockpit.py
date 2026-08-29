@@ -26,7 +26,12 @@ from cockpit.weekly.coordinator import WeeklyCoordinator
 from cockpit.weekly.run_weekly import load_demo_context, load_live_context
 from cockpit.weekly.sources.artifact_memory import ArtifactMemory
 from cockpit.weekly.sources.dependency_readonly import DependencyReadOnlyAdapter
-from cockpit.weekly.sources.github_readonly import GithubReadOnlyAdapter, ReadOnlyRedirectHandler
+from cockpit.weekly.sources.github_readonly import (
+    ALLOWLIST,
+    GithubApi,
+    GithubReadOnlyAdapter,
+    ReadOnlyRedirectHandler,
+)
 from cockpit.weekly.sources.public_http_readonly import ALLOWED_ENDPOINTS, PublicHttpReadOnlyAdapter
 from cockpit.weekly.sources.source_result import SourceResult
 
@@ -830,6 +835,236 @@ class LiveReadOnlyPilotTests(unittest.TestCase):
         test_source = Path(__file__).read_text(encoding="utf-8")
         for test_number in range(64, 69):
             self.assertRegex(test_source, rf"def test_{test_number}_")
+
+    def test_105_current_repository_client_uses_github_token(self):
+        with mock.patch.dict(
+            "os.environ",
+            {"GITHUB_TOKEN": "CURRENT_FAKE_TOKEN", "DBA_COCKPIT_READ_TOKEN": "PRIVATE_FAKE_TOKEN"},
+            clear=True,
+        ):
+            adapter = GithubReadOnlyAdapter()
+        request = adapter.current_repository_api._request("repos/joy7758/digital-biosphere-architecture-specification")
+        self.assertEqual("Bearer CURRENT_FAKE_TOKEN", request.get_header("Authorization"))
+
+    def test_106_private_client_uses_dedicated_cross_repository_token(self):
+        with mock.patch.dict(
+            "os.environ",
+            {"GITHUB_TOKEN": "CURRENT_FAKE_TOKEN", "DBA_COCKPIT_READ_TOKEN": "PRIVATE_FAKE_TOKEN"},
+            clear=True,
+        ):
+            adapter = GithubReadOnlyAdapter()
+        request = adapter.private_cross_repository_api._request("repos/joy7758/titmas")
+        self.assertEqual("Bearer PRIVATE_FAKE_TOKEN", request.get_header("Authorization"))
+
+    def test_107_private_client_does_not_use_current_repository_token(self):
+        with mock.patch.dict(
+            "os.environ",
+            {"GH_TOKEN": "CURRENT_FAKE_TOKEN", "DBA_COCKPIT_READ_TOKEN": "PRIVATE_FAKE_TOKEN"},
+            clear=True,
+        ):
+            adapter = GithubReadOnlyAdapter()
+        request = adapter.private_cross_repository_api._request("repos/joy7758/hongyan-official-document")
+        self.assertNotEqual("Bearer CURRENT_FAKE_TOKEN", request.get_header("Authorization"))
+
+    def test_108_public_client_carries_no_private_or_current_token(self):
+        with mock.patch.dict(
+            "os.environ",
+            {"GH_TOKEN": "CURRENT_FAKE_TOKEN", "DBA_COCKPIT_READ_TOKEN": "PRIVATE_FAKE_TOKEN"},
+            clear=True,
+        ):
+            adapter = GithubReadOnlyAdapter()
+        request = adapter.public_repository_api._request("repos/joy7758/titmas-demo")
+        self.assertIsNone(request.get_header("Authorization"))
+
+    def test_109_red_yan_repository_is_configured(self):
+        project = self._registry_project("RED_YAN_OFFICIAL_DOCUMENT")
+        self.assertIsNotNone(project["repository"])
+        self.assertEqual("joy7758/hongyan-official-document", project["repository"])
+
+    def test_110_red_yan_uses_private_credential_gated_read_only_mode(self):
+        project = self._registry_project("RED_YAN_OFFICIAL_DOCUMENT")
+        self.assertTrue(project["cross_repo_credential_required"])
+        self.assertTrue(project["scan_authorized"])
+        self.assertEqual("CROSS_REPOSITORY_CREDENTIAL_GATED_READ_ONLY", project["source_access_mode"])
+
+    def test_111_titmas_is_classified_as_private_credential_gated(self):
+        project = self._registry_project("TITMAS_SUPPORTING_LAYER")
+        self.assertEqual("joy7758/titmas", project["repository"])
+        self.assertTrue(project["cross_repo_credential_required"])
+        self.assertEqual("PRIVATE_REPOSITORY_METADATA", project["data_classification"])
+        self.assertEqual("CROSS_REPOSITORY_CREDENTIAL_GATED_READ_ONLY", project["source_access_mode"])
+
+    def test_112_scout_keeps_dedicated_read_only_status_adapter(self):
+        project = self._registry_project("TITMAC_SCOUT")
+        self.assertEqual("joy7758/titmac-scout", project["repository"])
+        self.assertTrue(project["cross_repo_credential_required"])
+        self.assertEqual("EXISTING_READ_ONLY_STATUS_ADAPTER", project["source_access_mode"])
+
+    def test_113_all_private_sources_fail_closed_without_dedicated_token(self):
+        with mock.patch.dict("os.environ", {}, clear=True):
+            adapter = GithubReadOnlyAdapter()
+            results = [
+                adapter.observe_project(self._registry_project("RED_YAN_OFFICIAL_DOCUMENT"), "2026-08-29T00:00:00Z"),
+                adapter.observe_project(self._registry_project("TITMAS_SUPPORTING_LAYER"), "2026-08-29T00:00:00Z"),
+                adapter.observe_scout("2026-08-29T00:00:00Z"),
+            ]
+        for result in results:
+            self.assertEqual("NOT_ASSESSED_CREDENTIAL_UNAVAILABLE", result.status)
+            self.assertEqual(
+                "CROSS_REPO_READ_CREDENTIAL_UNAVAILABLE",
+                result.payload.get("reason_code", result.payload.get("reason")),
+            )
+
+    def test_114_private_observation_uses_private_client_not_current_client(self):
+        current_api = mock.Mock()
+        current_api.request_json.side_effect = AssertionError("current repository client used")
+        private_api = self._successful_repository_api()
+        adapter = GithubReadOnlyAdapter(
+            current_repository_api=current_api,
+            public_repository_api=self._successful_repository_api(),
+            private_cross_repository_api=private_api,
+        )
+        result = adapter.observe_project(
+            self._registry_project("RED_YAN_OFFICIAL_DOCUMENT"),
+            "2026-08-29T00:00:00Z",
+        )
+        self.assertEqual("AVAILABLE", result.status)
+        self.assertTrue(private_api.references)
+        current_api.request_json.assert_not_called()
+
+    def test_115_public_observation_uses_anonymous_public_client(self):
+        public_api = self._successful_repository_api()
+        private_api = self._successful_repository_api()
+        adapter = GithubReadOnlyAdapter(
+            current_repository_api=self._successful_repository_api(),
+            public_repository_api=public_api,
+            private_cross_repository_api=private_api,
+        )
+        result = adapter.observe_project(
+            self._registry_project("DIGITAL_CELL_DEMO"),
+            "2026-08-29T00:00:00Z",
+        )
+        self.assertEqual("AVAILABLE", result.status)
+        self.assertTrue(public_api.references)
+        self.assertEqual([], private_api.references)
+
+    def test_116_current_observation_uses_current_repository_client(self):
+        current_api = self._successful_repository_api()
+        public_api = self._successful_repository_api()
+        adapter = GithubReadOnlyAdapter(
+            current_repository_api=current_api,
+            public_repository_api=public_api,
+            private_cross_repository_api=self._successful_repository_api(),
+        )
+        result = adapter.observe_project(
+            self._registry_project("DBA_COCKPIT"),
+            "2026-08-29T00:00:00Z",
+        )
+        self.assertEqual("AVAILABLE", result.status)
+        self.assertTrue(current_api.references)
+        self.assertEqual([], public_api.references)
+
+    def test_117_repository_allowlist_is_exact(self):
+        self.assertEqual(
+            {
+                "DBA_COCKPIT": "joy7758/digital-biosphere-architecture-specification",
+                "RED_YAN_OFFICIAL_DOCUMENT": "joy7758/hongyan-official-document",
+                "TITMAS_SUPPORTING_LAYER": "joy7758/titmas",
+                "DIGITAL_CELL_DEMO": "joy7758/titmas-demo",
+                "TITMAC_SCOUT": "joy7758/titmac-scout",
+            },
+            ALLOWLIST,
+        )
+
+    def test_118_github_api_exposes_get_only(self):
+        source = inspect.getsource(GithubApi)
+        self.assertIn('method="GET"', source)
+        for method in ("POST", "PUT", "PATCH", "DELETE"):
+            self.assertNotIn(f'method="{method}"', source)
+
+    def test_119_incomplete_read_fail_closed_regression_remains_registered(self):
+        self.assertRegex(Path(__file__).read_text(encoding="utf-8"), r"def test_83_")
+
+    def test_120_redirect_credential_stripping_regressions_remain_registered(self):
+        source = Path(__file__).read_text(encoding="utf-8")
+        for test_number in range(84, 87):
+            self.assertRegex(source, rf"def test_{test_number}_")
+
+    def test_121_tokens_do_not_enter_private_observation_result(self):
+        private_api = self._successful_repository_api()
+        result = GithubReadOnlyAdapter(
+            current_repository_api=self._successful_repository_api(),
+            public_repository_api=self._successful_repository_api(),
+            private_cross_repository_api=private_api,
+        ).observe_project(
+            self._registry_project("TITMAS_SUPPORTING_LAYER"),
+            "2026-08-29T00:00:00Z",
+        )
+        serialized = json.dumps(result.to_dict(), ensure_ascii=False)
+        self.assertNotIn("CURRENT_FAKE_TOKEN", serialized)
+        self.assertNotIn("PRIVATE_FAKE_TOKEN", serialized)
+        self.assertNotIn("DBA_COCKPIT_READ_TOKEN", serialized)
+
+    def test_122_credential_routing_preserves_twelve_cells(self):
+        registry = json.loads((WEEKLY / "cell-registry.json").read_text(encoding="utf-8"))
+        self.assertEqual(12, len(registry["cells"]))
+
+    def test_123_coordinator_remains_orchestration_only(self):
+        source = (WEEKLY / "coordinator.py").read_text(encoding="utf-8")
+        self.assertNotIn("GithubReadOnlyAdapter", source)
+        self.assertNotIn("DBA_COCKPIT_READ_TOKEN", source)
+
+    def test_124_schedule_remains_disabled_by_repository_variable(self):
+        workflow = self._workflow()
+        self.assertIn("DBA_WEEKLY_COCKPIT_SCHEDULE_ENABLED", workflow)
+        self.assertIn("schedule-disabled:", workflow)
+
+    def test_125_no_automatic_fix_pr_merge_or_deploy_is_added(self):
+        workflow = self._workflow().lower()
+        for forbidden in ("git push", "gh pr ", "create-pull-request", "auto-fix", "deploy-pages"):
+            self.assertNotIn(forbidden, workflow)
+
+    def test_126_source_repository_observation_has_no_write_method(self):
+        source = inspect.getsource(GithubReadOnlyAdapter)
+        for forbidden in ("git push", "git commit", 'method="POST"', 'method="PUT"', 'method="PATCH"', 'method="DELETE"'):
+            self.assertNotIn(forbidden, source)
+
+    @staticmethod
+    def _registry_project(project_id):
+        registry = json.loads((WEEKLY / "project-check-registry.json").read_text(encoding="utf-8"))
+        return next(project for project in registry["projects"] if project["project_id"] == project_id)
+
+    @staticmethod
+    def _successful_repository_api():
+        api = mock.Mock()
+        api.references = []
+
+        def request_json(reference, *, allow_404=False):
+            api.references.append(reference)
+            if "/actions/runs?" in reference:
+                return {"workflow_runs": []}
+            if "/pulls?" in reference or "/issues?" in reference:
+                return []
+            if reference.endswith("/releases/latest"):
+                return None
+            if "/contents/" in reference:
+                return {"sha": "blob-sha", "size": 1}
+            if "/commits?path=" in reference:
+                return []
+            if "/commits/" in reference:
+                return {
+                    "sha": "head-sha",
+                    "commit": {
+                        "tree": {"sha": "tree-sha"},
+                        "committer": {"date": "2026-08-29T00:00:00Z"},
+                    },
+                }
+            if reference.startswith("repos/") and reference.count("/") == 2:
+                return {"default_branch": "main"}
+            raise AssertionError((reference, allow_404))
+
+        api.request_json.side_effect = request_json
+        return api
 
     @classmethod
     def _resolver_script(cls):
