@@ -131,6 +131,22 @@ class Stage5ContributionTests(unittest.TestCase):
         result = STAGE5.validate_contribution("UNKNOWN", proposal())
         self.assertEqual("CONFORMANCE_FAIL", result["conformance_status"])
 
+    def test_sha256_json_stable_hashing(self) -> None:
+        dict1 = {"b": 2, "a": 1, "c": 3}
+        dict2 = {"a": 1, "c": 3, "b": 2}
+        hash1 = STAGE5.sha256_json(dict1)
+        hash2 = STAGE5.sha256_json(dict2)
+        self.assertEqual(hash1, hash2)
+
+    def test_sha256_json_different_values(self) -> None:
+        hash1 = STAGE5.sha256_json({"a": 1})
+        hash2 = STAGE5.sha256_json({"a": 2})
+        self.assertNotEqual(hash1, hash2)
+
+        hash3 = STAGE5.sha256_json([1, 2, 3])
+        hash4 = STAGE5.sha256_json([3, 2, 1])
+        self.assertNotEqual(hash3, hash4)
+
 
 if __name__ == "__main__":
     unittest.main()
