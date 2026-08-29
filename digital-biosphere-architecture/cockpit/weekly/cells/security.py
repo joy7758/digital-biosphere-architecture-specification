@@ -11,6 +11,16 @@ class SecurityCell(WeeklyCell):
     cell_id = "SECURITY_CELL"
 
     def _run(self, context: dict[str, Any]):
+        if context.get("snapshot_mode") == "AUTOMATIC_CAPABILITY_DISCOVERY":
+            return make_result(
+                self.cell_id,
+                "PASS",
+                "No external security claim was promoted beyond admitted source metadata.",
+                outputs={
+                    "security_observations": [],
+                    "security_conclusion_created": False,
+                },
+            )
         admitted = list(context.get("admitted_observations", []))
         consumed = [
             item for item in admitted

@@ -11,6 +11,23 @@ class UpgradeCell(WeeklyCell):
     cell_id = "UPGRADE_CELL"
 
     def _run(self, context: dict[str, Any]):
+        if context.get("snapshot_mode") == "AUTOMATIC_CAPABILITY_DISCOVERY":
+            entries = context.get("capability_reference_registry", {}).get("entries", [])
+            eligible = [
+                item["candidate_id"]
+                for item in entries
+                if item.get("ac2_readiness_status") == "REVIEW_ELIGIBLE"
+                and item.get("current_problem_match")
+            ]
+            return make_result(
+                self.cell_id,
+                "PASS",
+                "Reference candidates were classified for possible human AC-2 review without adoption.",
+                outputs={
+                    "upgrade_recommendations": [],
+                    "ac2_review_eligible_candidate_ids": eligible,
+                },
+            )
         if context.get("snapshot_mode") == "LIVE_READ_ONLY_OBSERVATION_PILOT":
             observation = context.get("source_observations", {}).get("TITMAS_SUPPORTING_LAYER", {})
             available = observation.get("status") == "AVAILABLE"

@@ -81,13 +81,14 @@ class ProjectDiscoveryCell(WeeklyCell):
             "details_zh": "OpenBao（机密与密钥管理组件）仍是待确认候选；应先刷新当前版本与安全事实。",
             "note": "Discovery does not grant evidence admission, monitoring, or scan authority.",
         }
+        capability_records = list(context.get("capability_discovery_records", []))
         return make_result(
             self.cell_id,
             "PASS",
             "Registered project identities and one adjacent candidate were discovered without admission.",
-            discoveries=[candidate],
+            discoveries=[candidate] + capability_records,
             outputs={
                 "project_records": project_records,
-                "discovery_records": [candidate],
+                "discovery_records": [candidate] + capability_records,
             },
         )

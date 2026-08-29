@@ -12,6 +12,20 @@ class DriftCell(WeeklyCell):
     cell_id = "DRIFT_CELL"
 
     def _run(self, context: dict[str, Any]):
+        if context.get("snapshot_mode") == "AUTOMATIC_CAPABILITY_DISCOVERY":
+            delta = context.get(
+                "capability_discovery_delta", {"counts": {}, "events": []}
+            )
+            return make_result(
+                self.cell_id,
+                (
+                    "ATTENTION"
+                    if delta.get("counts", {}).get("CONFLICTING_REFERENCE", 0)
+                    else "PASS"
+                ),
+                "Current source revisions were compared with reference memory without changing source projects.",
+                outputs={"capability_drift": delta},
+            )
         if context.get("snapshot_mode") == "LIVE_READ_ONLY_OBSERVATION_PILOT":
             return self._run_live(context)
         as_of = context.get("as_of", "UNKNOWN")

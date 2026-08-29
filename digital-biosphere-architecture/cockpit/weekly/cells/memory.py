@@ -11,6 +11,60 @@ class MemoryCell(WeeklyCell):
     cell_id = "MEMORY_CELL"
 
     def _run(self, context: dict[str, Any]):
+        if context.get("snapshot_mode") == "AUTOMATIC_CAPABILITY_DISCOVERY":
+            metadata = context.get("capability_memory_metadata", {})
+            delta = context.get(
+                "capability_discovery_delta", {"counts": {}, "events": []}
+            )
+            previous_loaded = metadata.get("previous_registry_loaded") is True
+            memory = {
+                "status": (
+                    "COMPARISON_AVAILABLE"
+                    if previous_loaded
+                    else "BOOTSTRAPPED_FROM_DCDAT_001"
+                ),
+                "PREVIOUS_CAPABILITY_REGISTRY_LOADED": previous_loaded,
+                "PREVIOUS_LIVE_ARTIFACT_LOADED": previous_loaded,
+                "MEMORY_COMPARISON_EXECUTED": True,
+                "MEMORY_BOOTSTRAP_SOURCE": metadata.get(
+                    "memory_bootstrap_source", "DCDAT_001_BASELINE"
+                ),
+                "PREVIOUS_ARTIFACT_REJECTED": metadata.get(
+                    "previous_artifact_rejected", False
+                ),
+                "note_zh": "已比较本轮候选与上一轮合格注册表；无合格制品时使用DCDAT-001且明确记录。",
+                "capability_delta": delta,
+            }
+            changes = {
+                "improved": [],
+                "worsened": [
+                    item["candidate_id"]
+                    for item in delta.get("events", [])
+                    if item["state"] == "CONFLICTING_REFERENCE"
+                ],
+                "unknown": [
+                    item["candidate_id"]
+                    for item in delta.get("events", [])
+                    if item["state"] in {"NO_LONGER_OBSERVED", "STALE_REFERENCE"}
+                ],
+                "observed_this_week": [
+                    item["candidate_id"]
+                    for item in delta.get("events", [])
+                    if item["state"]
+                    in {
+                        "NEW_REFERENCE",
+                        "UPDATED_REFERENCE",
+                        "CONTINUING_REFERENCE",
+                        "REAPPEARED_REFERENCE",
+                    }
+                ],
+            }
+            return make_result(
+                self.cell_id,
+                "PASS",
+                "Capability reference memory was compared without overwriting historical events.",
+                outputs={"memory": memory, "changes": changes},
+            )
         previous = source_value(context, "previous_snapshot")
         discoveries = context.get("discovery_records", [])
         live_mode = context.get("snapshot_mode") == "LIVE_READ_ONLY_OBSERVATION_PILOT"

@@ -248,6 +248,17 @@ class WeeklyCoordinator:
             overall_status = "ATTENTION"
         else:
             overall_status = "PASS"
+        capability_mode = (
+            context.get("snapshot_mode") == "AUTOMATIC_CAPABILITY_DISCOVERY"
+        )
+        capability_source = context.get("capability_source_summary", {})
+        if capability_mode:
+            if capability_source.get("status") == "DISCOVERY_UNAVAILABLE":
+                overall_status = "DISCOVERY_UNAVAILABLE"
+            elif capability_source.get("status") == "PASS_WITH_PARTIAL_SOURCE_COVERAGE":
+                overall_status = "PASS_WITH_NOT_ASSESSED"
+            else:
+                overall_status = "PASS"
 
         observed_at = context.get("as_of", "UNKNOWN")
         try:
@@ -292,6 +303,61 @@ class WeeklyCoordinator:
             f"{counts['rejected_or_pending_count']}项被拒绝或待确认；"
             f"有{counts['decisions']}项需要人工决定。"
         )
+        registry = context.get("capability_reference_registry", {})
+        delta = context.get("capability_discovery_delta", {})
+        delta_counts = delta.get("counts", {})
+        capability_summary = {}
+        highlights: list[dict[str, Any]] = []
+        if capability_mode:
+            entries = registry.get("entries", [])
+            highlights = [
+                item
+                for item in entries
+                if item.get("observation_state")
+                in {
+                    "NEW_REFERENCE",
+                    "UPDATED_REFERENCE",
+                    "CONFLICTING_REFERENCE",
+                    "STALE_REFERENCE",
+                }
+                or item.get("ac2_readiness_status") == "REVIEW_ELIGIBLE"
+            ][:5]
+            capability_summary = {
+                "status": capability_source.get("status", "DISCOVERY_UNAVAILABLE"),
+                "automation_scope": "AC0_DISCOVERY_AND_AC1_REFERENCE_ONLY",
+                "raw_candidate_count": capability_source.get("raw_candidate_count", 0),
+                "identity_resolved_count": capability_source.get(
+                    "identity_resolved_count", 0
+                ),
+                "admitted_count": sum(
+                    item.get("absorption_status")
+                    not in {"REFERENCE_REJECTED", "REFERENCE_CONFLICT"}
+                    for item in entries
+                ),
+                "reference_absorbed_count": sum(
+                    item.get("absorption_status") == "REFERENCE_ABSORBED"
+                    for item in entries
+                ),
+                "new_reference_count": delta_counts.get("NEW_REFERENCE", 0),
+                "updated_reference_count": delta_counts.get("UPDATED_REFERENCE", 0),
+                "conflict_count": delta_counts.get("CONFLICTING_REFERENCE", 0),
+                "source_not_assessed_count": capability_source.get(
+                    "source_not_assessed_count", 0
+                ),
+                "code_adopted": 0,
+                "runtime_changed": False,
+                "ac2_automated": False,
+                "reference_only": True,
+                "human_decision_count": len(decisions),
+            }
+            capability_summary["human_summary_zh"] = (
+                f"本周自动检查了{capability_summary['raw_candidate_count']}个外部候选，"
+                f"新登记{capability_summary['new_reference_count']}个参考候选，"
+                f"更新{capability_summary['updated_reference_count']}个既有候选，"
+                f"发现{capability_summary['conflict_count']}个身份冲突；"
+                "没有安装代码，也没有改变任何项目。"
+            )
+            weekly_sentence = capability_summary["human_summary_zh"]
         return {
             "schema_version": "0.1",
             "snapshot_id": f"DBA-WEEKLY-{week}",
@@ -321,6 +387,23 @@ class WeeklyCoordinator:
             "run_identity": context.get("run_identity", {}),
             "source_observation_summary": context.get("source_observation_summary", {}),
             "memory": context.get("memory", {"status": "NOT_ASSESSED"}),
+            "capability_discovery": capability_summary,
+            "capability_highlights": highlights,
+            "capability_groups": registry.get("capability_groups", []),
+            "capability_registry_digest": registry.get(
+                "current_registry_digest", "NOT_APPLICABLE"
+            ),
+            "capability_reference_registry": registry,
+            "capability_discovery_records": context.get(
+                "capability_discovery_records", []
+            ),
+            "capability_source_evidence_manifest": context.get(
+                "capability_source_evidence_manifest", {}
+            ),
+            "capability_discovery_boundary": context.get(
+                "capability_discovery_boundary", {}
+            ),
+            "capability_discovery_delta": delta,
             "admission_summary": admission,
             "dependency_audit_state": context.get(
                 "dependency_audit_state",
@@ -338,6 +421,13 @@ class WeeklyCoordinator:
                 "prototype_only": context.get("snapshot_mode") != "LIVE_READ_ONLY_OBSERVATION_PILOT",
                 "pilot_only": context.get("snapshot_mode") == "LIVE_READ_ONLY_OBSERVATION_PILOT",
                 "schedule_enabled": False,
+                "automatic_capability_discovery": capability_mode,
+                "ac0_automated": capability_mode,
+                "ac1_automated": capability_mode,
+                "ac2_automated": False,
+                "reference_only": capability_mode,
+                "code_adopted": 0,
+                "runtime_changed": False,
                 "source_mutation": bool(context.get("source_mutation", False)),
             },
         }

@@ -7,12 +7,14 @@
   "properties": {
     "handoff_id": {"type": "string", "minLength": 1},
     "project_id": {"type": "string", "minLength": 1},
-    "recipient_role": {"const": "human-maintainer"},
+    "recipient_role": {"type": "string", "minLength": 1},
+    "recipient_conversation": {"type": "string"},
     "decision_needed": {"type": "string", "minLength": 1},
     "evidence_references": {"type": "array", "items": {"type": "string"}, "minItems": 1},
     "suggested_next_review": {"type": "string", "minLength": 1},
     "execution_commands": {"type": "array", "maxItems": 0},
-    "authority": {"const": "NONE"}
+    "authority": {"const": "NONE"},
+    "auto_action": {"const": false}
   },
   "additionalProperties": false
 }

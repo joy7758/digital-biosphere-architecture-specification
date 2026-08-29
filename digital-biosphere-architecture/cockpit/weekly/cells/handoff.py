@@ -11,6 +11,62 @@ class HandoffCell(WeeklyCell):
     cell_id = "HANDOFF_CELL"
 
     def _run(self, context: dict[str, Any]):
+        if context.get("snapshot_mode") == "AUTOMATIC_CAPABILITY_DISCOVERY":
+            entries = context.get("capability_reference_registry", {}).get(
+                "entries", []
+            )
+            decisions, packets = [], []
+            for item in entries:
+                needs_identity = (
+                    item.get("identity_status") == "IDENTITY_REVIEW_REQUIRED"
+                )
+                review_eligible = (
+                    item.get("ac2_readiness_status") == "REVIEW_ELIGIBLE"
+                    and item.get("current_problem_match")
+                )
+                if not (needs_identity or review_eligible):
+                    continue
+                reason = (
+                    "来源身份需要人工核对"
+                    if needs_identity
+                    else "候选与当前问题匹配，可评审是否进入AC-2"
+                )
+                decisions.append({
+                    "decision_id": f"DECISION-CAPABILITY-{item['candidate_id']}",
+                    "source_cell_id": self.cell_id,
+                    "project_id": "DBA_COCKPIT",
+                    "title_zh": f"是否评审 {item['name']} 的下一阶段边界",
+                    "why_zh": reason,
+                    "priority": "MEDIUM",
+                    "evidence_references": [item["candidate_id"]],
+                    "authority": "HUMAN_DECISION_REQUIRED",
+                })
+                packets.append({
+                    "handoff_id": f"HANDOFF-CAPABILITY-{item['candidate_id']}",
+                    "project_id": "DBA_COCKPIT",
+                    "recipient_role": "DBA专用对话",
+                    "decision_needed": reason,
+                    "evidence_references": [item["candidate_id"]],
+                    "suggested_next_review": "只评审是否进入AC-2；本包不含执行命令。",
+                    "execution_commands": [],
+                    "authority": "NONE",
+                    "auto_action": False,
+                })
+            return make_result(
+                self.cell_id,
+                "PASS" if not decisions else "PASS_WITH_CANDIDATES",
+                "Only identity conflicts or evidence-backed AC-2 review candidates created handoffs.",
+                handoffs=packets,
+                outputs={
+                    "decisions": decisions,
+                    "handoff_packets": packets,
+                    "preset_queries": {
+                        "本周外部能力发现了什么？": "查看外部能力发现摘要、更新与冲突。",
+                        "是否采用了外部代码？": "没有。代码采用数量固定为0。",
+                        "是否需要人工决定？": f"当前有{len(decisions)}项身份或AC-2边界事项。",
+                    },
+                },
+            )
         findings = context.get("findings", [])
         blind_spots = context.get("blind_spots", [])
         decisions: list[dict[str, Any]] = []

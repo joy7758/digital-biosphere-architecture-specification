@@ -11,6 +11,25 @@ class QualityCell(WeeklyCell):
     cell_id = "QUALITY_CELL"
 
     def _run(self, context: dict[str, Any]):
+        if context.get("snapshot_mode") == "AUTOMATIC_CAPABILITY_DISCOVERY":
+            summary = context.get("capability_source_summary", {})
+            complete = summary.get("status") == "PASS"
+            return make_result(
+                self.cell_id,
+                "PASS" if complete else "NOT_ASSESSED",
+                "Source completeness and identity evidence were reported without a composite score.",
+                outputs={
+                    "capability_quality": {
+                        "source_status": summary.get(
+                            "status", "DISCOVERY_UNAVAILABLE"
+                        ),
+                        "identity_conflict_count": summary.get(
+                            "identity_conflict_count", 0
+                        ),
+                        "composite_score": None,
+                    }
+                },
+            )
         if context.get("snapshot_mode") == "LIVE_READ_ONLY_OBSERVATION_PILOT":
             observation = context.get("source_observations", {}).get("DIGITAL_CELL_DEMO", {})
             available = observation.get("status") == "AVAILABLE"
