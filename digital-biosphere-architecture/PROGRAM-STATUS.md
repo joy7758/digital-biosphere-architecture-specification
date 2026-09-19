@@ -968,3 +968,67 @@ routing and stop duplicate identity, discovery, registry, tracing, receipt or
 execution architecture. They do not override the D16 freeze, create an
 executable Fixture, update the SAEE capability inventory or authorize a third
 public MCP Tool.
+
+## 24. GitHub Upstream Review and Contribution Overlay
+
+Observed from primary GitHub surfaces on 2026-09-19. This bounded overlay was
+prepared against DBA `main@18b54488831d37e30c920866cc02d8fa71dccf44` and does
+not rewrite the older point-in-time observations retained in historical
+architecture material.
+
+```text
+CURRENT_INTELLIGENCE_BUNDLE=2026-09-19
+OBSERVED_AT_UTC=2026-09-19T11:11:47Z
+DBA_SOURCE_BRANCH=main
+DBA_SOURCE_COMMIT_BEFORE_OVERLAY=18b54488831d37e30c920866cc02d8fa71dccf44
+UPSTREAM_ENGAGEMENT_RECOMMENDATION=CONDITIONALLY_RECOMMENDED
+MCP_449_STATE=OPEN
+MCP_449_REVIEW_DECISION=REVIEW_REQUIRED
+MCP_449_HEAD=7bd53511b83731093c9e356e27fed685c4bb6c7f
+MCP_449_CHECKS_REPORTED=0
+MCP_449_RESPONSE_POSTED=true
+MCP_449_RESPONSE_OUTCOME=CHANGES_REQUESTED
+MCP_450_STATE=OPEN
+MCP_450_REVIEW_DECISION=REVIEW_REQUIRED
+MCP_450_HEAD=ef4dc52e090e78adc7245b91e79d1b5be4c87410
+MCP_450_CHECKS_REPORTED=0
+MCP_450_RESPONSE_POSTED=true
+MCP_450_RESPONSE_OUTCOME=CHANGES_REQUESTED
+AGT_3419_STATE=MERGED
+AGT_3419_MERGED_AT=2026-09-13T18:59:44Z
+AGT_3419_HEAD=42f6c394b095ecfa8fbb576d1b853de6c7081330
+AGT_3419_MERGE_COMMIT=c58e6deef89f49bf2ba87c7b5fbc405df7da5670
+AGT_3419_REVIEW_DECISION=APPROVED
+PROFILE_HOMEPAGE_SYNC=VERIFIED_ON_MAIN
+PROFILE_HOMEPAGE_COMMIT=ca4f77c3153e08b316d8bfe7aa0176aace92d88c
+PAID_ACTIONS_PERFORMED=false
+MCP_PR_MERGED=false
+NEW_STANDARD_ADOPTION_CLAIM=false
+MICROSOFT_SAEE_OR_TITMAS_ADOPTION_CLAIM=false
+RUNTIME_CHANGE_PERFORMED=false
+RELEASE_OR_DEPLOYMENT_PERFORMED=false
+```
+
+The two MCP responses are recorded at
+[`#449 comment 5741347615`](https://github.com/modelcontextprotocol/conformance/pull/449#issuecomment-5741347615)
+and
+[`#450 comment 5741347619`](https://github.com/modelcontextprotocol/conformance/pull/450#issuecomment-5741347619).
+Both acknowledge the corrections already made while retaining the remaining
+oracle, severity and evidence gaps as `CHANGES_REQUESTED`; neither response is
+an approval, merge, specification adoption or conformance result.
+
+Microsoft Agent Governance Toolkit
+[`#3419`](https://github.com/microsoft/agent-governance-toolkit/pull/3419)
+is independently observable as merged. The bounded contribution adds a
+read-only external-evaluator handoff example; it does not make the evaluator an
+AGT governance authority and does not prove Microsoft adoption of SAEE,
+TITMAS or the Digital Biosphere architecture. The public GitHub profile was
+updated at
+[`joy7758/joy7758@ca4f77c`](https://github.com/joy7758/joy7758/commit/ca4f77c3153e08b316d8bfe7aa0176aace92d88c)
+to reflect only that merged contribution and the same boundary.
+
+Continued upstream review is `CONDITIONALLY_RECOMMENDED`: precise,
+source-pinned review can improve protocol conformance, but recommendation
+remains conditional on observable positive and negative evidence at each exact
+head. No payment, paid service, Runtime mutation, release or deployment was
+used for this overlay.
