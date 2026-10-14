@@ -1,3 +1,5 @@
+> **Moved:** this repository has been merged into [joy7758/digital-biosphere-os](https://github.com/joy7758/digital-biosphere-os/tree/main/digital-biosphere-architecture-specification) with full history. This repo is archived and read-only.
+
 # TITMAS Commercial Agent Infrastructure
 
 中文：**TITMAS 商业智能体基础设施**
