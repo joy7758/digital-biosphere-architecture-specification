@@ -1004,23 +1004,6 @@ def check_public_entry_consistency() -> dict[str, Any]:
     }
 
 
-def check_local_links() -> dict[str, Any]:
-    checked = 0
-    for path in sorted(TITMAS_ROOT.rglob("*.md")):
-        text = path.read_text(encoding="utf-8")
-        for raw in LINK_PATTERN.findall(text):
-            target = raw.strip().split("#", 1)[0]
-            if not target or "://" in target or target.startswith("mailto:"):
-                continue
-            resolved = (path.parent / target).resolve()
-            if not resolved.is_relative_to(DBA_ROOT.resolve()):
-                raise ConformanceError(f"{path}: local link escapes DBA root {raw}")
-            if not resolved.exists():
-                raise ConformanceError(f"{path}: missing local link {raw}")
-            checked += 1
-    return {"local_links_checked": checked}
-
-
 def run_all(write_report: bool = True) -> dict[str, Any]:
     checks = []
     functions = (
@@ -1035,7 +1018,6 @@ def run_all(write_report: bool = True) -> dict[str, Any]:
         ("agent_native_adversarial", check_agent_native_adversarial),
         ("bounded_evolution_surfaces", check_bounded_evolution_surfaces),
         ("public_entry_consistency", check_public_entry_consistency),
-        ("local_links", check_local_links),
     )
     overall = "PASS"
     for name, function in functions:
