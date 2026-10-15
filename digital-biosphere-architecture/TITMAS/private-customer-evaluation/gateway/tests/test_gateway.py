@@ -223,7 +223,7 @@ class PrivateEvaluationGatewayTests(unittest.TestCase):
         self.assert_sanitized(rendered)
 
     def test_eg13_loopback_binding(self) -> None:
-        self.assertEqual(service.LOOPBACK_HOST, self.gateway.bound_address[0])
+        self.assertEqual(service.LOOPBACK_HOST, self.gateway._server.server_address[0])
         with self.assertRaises(ValueError):
             service.GatewayService(PROJECT_ROOT, host="0.0.0.0")
 
@@ -293,7 +293,7 @@ class PrivateEvaluationGatewayTests(unittest.TestCase):
         token = self.gateway.customer_token
         core_root = self.gateway.workspaces.core_root
         customer_root = self.gateway.workspaces.customer_root
-        host, port = self.gateway.bound_address
+        host, port = self.gateway._server.server_address[:2]
         self.gateway.stop()
         self.assertIsNone(self.gateway.session.token)
         self.assertTrue(self.gateway.session.revoked)
