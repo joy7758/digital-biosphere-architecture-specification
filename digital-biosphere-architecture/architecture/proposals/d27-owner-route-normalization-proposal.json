@@ -1,0 +1,93 @@
+{
+  "proposal_id": "TITMAS-D27-OWNER-ROUTE-NORMALIZATION-PROPOSAL",
+  "version": "0.1.0",
+  "status": "OPEN_DRAFT_PROPOSAL_ONLY",
+  "decision_reference": "TITMAS-D26-NEGATIVE-EVIDENCE-FINALIZATION-AND-OWNER-ROUTE-COVERAGE-PROPOSAL-D27",
+  "design": {
+    "pipeline": [
+      "RAW_OBSERVATION_TYPE",
+      "CONTEXT_BOUND_EXACT_NORMALIZATION",
+      "CANONICAL_PROBLEM_TYPE",
+      "CANONICAL_OWNER_RESOLVER"
+    ],
+    "raw_observation_is_retained": true,
+    "normalization_precedes_owner_resolution": true,
+    "normalization_grants_authority": false,
+    "owner_resolution_grants_authority": false
+  },
+  "conditional_exact_alias_candidates": [
+    {
+      "raw_type": "GENERATED_SDK_DRIFT",
+      "normalized_type": "SDK_CONTRACT_DRIFT",
+      "existing_owner": "joy7758/titmas-integrations",
+      "required_predicates": [
+        "source_repository=joy7758/titmas-integrations",
+        "artifact_kind=GENERATED_SDK",
+        "contract_drift_reproduced=true"
+      ],
+      "owner_unchanged": true,
+      "authority_scope_unchanged": true,
+      "routing_result_unchanged": true,
+      "implementation_status": "NOT_AUTHORIZED"
+    }
+  ],
+  "held_classifications": [
+    "AMBIGUOUS_OWNER",
+    "COMPOSITE_PROBLEM_TYPE",
+    "NO_CANONICAL_OWNER",
+    "NOT_APPROPRIATE_FOR_AUTOMATIC_ROUTING",
+    "OUT_OF_SCOPE"
+  ],
+  "failure_behavior": {
+    "unknown_type": "HOLD_OWNER_REVIEW_REQUIRED",
+    "ambiguous_type": "HOLD_OWNER_REVIEW_REQUIRED",
+    "missing_context": "HOLD_OWNER_REVIEW_REQUIRED",
+    "predicate_mismatch": "HOLD_OWNER_REVIEW_REQUIRED",
+    "agent_can_handwrite_owner": false,
+    "fuzzy_owner_guessing": false,
+    "repository_name_substring_routing": false,
+    "llm_only_owner_decision": false,
+    "default_route_to_dba": false,
+    "default_route_to_scout": false
+  },
+  "authority_and_risk": {
+    "normalization_is_owner_assignment": false,
+    "new_owner_assignment_is_canonical_responsibility_change": true,
+    "new_owner_assignment_is_authority_routing_change": true,
+    "default_owner_route_change_risk": "ER-3_CANDIDATE",
+    "er2_candidate_only_if": [
+      "EXACT_ALIAS_ONLY",
+      "OWNER_UNCHANGED",
+      "NO_AUTHORITY_SCOPE_CHANGE",
+      "NO_SECURITY_SCOPE_CHANGE"
+    ],
+    "proposed_change_risk": "ER-3_CANDIDATE"
+  },
+  "backward_compatibility": {
+    "raw_observation_type_preserved": true,
+    "current_exact_routes_unchanged": true,
+    "unknown_types_continue_to_fail_closed": true,
+    "canonical_owner_map_version_unchanged": true,
+    "scout_pinned_owner_map_version_unchanged": true
+  },
+  "negative_test_plan": [
+    "D27-R01",
+    "D27-R02",
+    "D27-R03",
+    "D27-R04",
+    "D27-R05",
+    "D27-R06",
+    "D27-R07",
+    "D27-R08",
+    "D27-R09",
+    "D27-R10",
+    "D27-R11",
+    "D27-R12"
+  ],
+  "new_owner_assignments": [],
+  "owner_map_changed": false,
+  "owner_resolver_changed": false,
+  "implementation_authorized": false,
+  "merge_authorized": false,
+  "next_human_decision": "TITMAC_SCOUT_OWNER_ROUTE_VOCABULARY_NORMALIZATION_REVIEW"
+}
