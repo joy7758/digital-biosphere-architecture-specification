@@ -140,12 +140,6 @@ class GatewayService:
         )
 
     @property
-    def customer_token(self) -> str:
-        if self.session.token is None:
-            raise RuntimeError("customer session is not active")
-        return self.session.token
-
-    @property
     def bound_address(self) -> tuple[str, int]:
         if self._server is None:
             raise RuntimeError("gateway is not started")
