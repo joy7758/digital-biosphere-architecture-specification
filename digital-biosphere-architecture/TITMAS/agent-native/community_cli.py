@@ -10,6 +10,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import fnmatch
+import functools
 import json
 import sys
 from pathlib import Path
@@ -57,13 +58,16 @@ class ProtocolRejected(ValueError):
         self.reason_code = reason_code
 
 
+@functools.lru_cache(maxsize=None)
 def _load(path: Path) -> dict[str, Any]:
     resolved = path.resolve()
     if not resolved.is_relative_to(DBA_ROOT.resolve()):
         raise ProtocolRejected("PATH_TRAVERSAL", str(path))
     stat = path.stat()
     if (
-        path.is_symlink() or not path.is_file() or stat.st_nlink != 1
+        path.is_symlink()
+        or not path.is_file()
+        or stat.st_nlink != 1
         or stat.st_size > 1_000_000
     ):
         raise ProtocolRejected("UNSAFE_INPUT", str(path))
@@ -74,7 +78,9 @@ def _load(path: Path) -> dict[str, Any]:
     if path == TASKS and not isinstance(value.get("tasks"), list):
         raise ProtocolRejected("SCHEMA_FAIL_CLOSED", "task registry missing tasks")
     if path == PARTICIPANTS and not isinstance(value.get("participants"), list):
-        raise ProtocolRejected("SCHEMA_FAIL_CLOSED", "participant registry missing participants")
+        raise ProtocolRejected(
+            "SCHEMA_FAIL_CLOSED", "participant registry missing participants"
+        )
     return value
 
 
@@ -123,28 +129,43 @@ def _authority(issuer_ref: str, at: str, action: str) -> dict[str, Any]:
 
 
 def discover(need: str) -> list[dict[str, Any]]:
-    tokens = {token.lower() for token in need.replace("/", " ").replace("-", " ").split()}
+    tokens = {
+        token.lower() for token in need.replace("/", " ").replace("-", " ").split()
+    }
     ranked = []
     for task in _load(TASKS)["tasks"]:
-        haystack = " ".join([
-            task["title"], task["intent"], task["value_hypothesis"],
-            task["problem_context"], *task["relevance_conditions"],
-        ]).lower()
+        haystack = " ".join(
+            [
+                task["title"],
+                task["intent"],
+                task["value_hypothesis"],
+                task["problem_context"],
+                *task["relevance_conditions"],
+            ]
+        ).lower()
         score = sum(token in haystack for token in tokens if len(token) > 2)
-        ranked.append({"task_id": task["task_id"], "score": score, "status": task["status"]})
+        ranked.append(
+            {"task_id": task["task_id"], "score": score, "status": task["status"]}
+        )
     return sorted(ranked, key=lambda item: (-item["score"], item["task_id"]))
 
 
-def eligible(participant: dict[str, Any], task: dict[str, Any]) -> tuple[bool, list[str]]:
+def eligible(
+    participant: dict[str, Any], task: dict[str, Any]
+) -> tuple[bool, list[str]]:
     reasons: list[str] = []
     if task["status"] != "AVAILABLE":
         reasons.append("TASK_NOT_AVAILABLE")
     if not set(task["allowed_participant_roles"]) & set(participant["assigned_roles"]):
         reasons.append("ROLE_MISMATCH")
-    if not set(task["required_capabilities"]).issubset(set(participant["declared_capabilities"])):
+    if not set(task["required_capabilities"]).issubset(
+        set(participant["declared_capabilities"])
+    ):
         reasons.append("CAPABILITY_MISMATCH")
     for allowed in task["allowed_files"]:
-        if not any(fnmatch.fnmatch(allowed, scope) for scope in participant["allowed_scope"]):
+        if not any(
+            fnmatch.fnmatch(allowed, scope) for scope in participant["allowed_scope"]
+        ):
             reasons.append("SCOPE_MISMATCH")
             break
     return not reasons, reasons
@@ -287,16 +308,26 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "request-claim":
             _emit(claim_request(args.participant, args.task, args.at))
         elif args.command == "grant-lease":
-            _emit(grant_lease(
-                args.participant, args.task, args.issued_by, args.at, args.active_task
-            ))
+            _emit(
+                grant_lease(
+                    args.participant,
+                    args.task,
+                    args.issued_by,
+                    args.at,
+                    args.active_task,
+                )
+            )
         elif args.command in {"release-claim", "expire-claim"}:
-            _emit({
-                "lease_id": args.lease,
-                "status": "RELEASED" if args.command == "release-claim" else "EXPIRED",
-                "recorded_at": args.at,
-                "authority_effect": "NONE",
-            })
+            _emit(
+                {
+                    "lease_id": args.lease,
+                    "status": (
+                        "RELEASED" if args.command == "release-claim" else "EXPIRED"
+                    ),
+                    "recorded_at": args.at,
+                    "authority_effect": "NONE",
+                }
+            )
         elif args.command == "detect-duplicate":
             duplicate = args.task in args.active_task
             _emit({"task_ref": args.task, "duplicate_active_claim": duplicate})
@@ -306,7 +337,9 @@ def main(argv: list[str] | None = None) -> int:
         elif args.command == "calibrate-recommendation":
             _emit(calibrate_recommendation(args.case))
     except (ProtocolRejected, json.JSONDecodeError) as exc:
-        reason = exc.reason_code if isinstance(exc, ProtocolRejected) else "MALFORMED_JSON"
+        reason = (
+            exc.reason_code if isinstance(exc, ProtocolRejected) else "MALFORMED_JSON"
+        )
         _emit({"status": "REJECTED", "reason_code": reason, "detail": str(exc)})
         return 2
     return 0
