@@ -323,6 +323,14 @@ class SanitizedSemanticCheckpointTests(unittest.TestCase):
         self.assertEqual(0, summary["real_provider_call_count"])
         self.assertFalse(hasattr(CHECKPOINT, "urllib"))
 
+    def test_scp17_atomic_write_failure_cleans_up_temporary_file(self):
+        target = self.checkpoint_directory / "invalid-write.json"
+        writer = CHECKPOINT.AtomicCheckpointWriter()
+        unserializable_payload = {"key": set([1, 2, 3])}
+        with self.assertRaises(TypeError):
+            writer.write(target, unserializable_payload)
+        self.assertEqual([], list(self.checkpoint_directory.iterdir()))
+
 
 if __name__ == "__main__":
     unittest.main()
